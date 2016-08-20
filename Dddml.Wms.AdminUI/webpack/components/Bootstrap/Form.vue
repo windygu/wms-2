@@ -3,6 +3,7 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-body">
+                <form-element :element.sync="form.idElement"></form-element>
                 <template v-for="element in form.displayableElements">
                     <form-element :element.sync="element"></form-element>
                 </template>
@@ -40,7 +41,7 @@
         },
         methods: {
             submit: function () {
-                    this.$dispatch('submit', this.form);
+                this.$dispatch('submit', this.form);
             }
         }
     }

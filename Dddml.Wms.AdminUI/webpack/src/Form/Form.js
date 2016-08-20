@@ -46,17 +46,12 @@ export default class Form {
     static createForm(metadata, config) {
         let form = new Form(metadata, config);
 
-        let idElement = new FormElement(
+        form.idElement = new FormElement(
             metadata.id.name,
             metadata.id.name
         );
 
-        form.idElement = idElement;
-        form.addElement(idElement);
-
-        if (form.hasDisplayableFields()) {
-            form.addDisplayableElement(idElement);
-        } else {
+        if (!form.hasDisplayableFields()) {
             form.displayableElements = form.elements;
         }
 

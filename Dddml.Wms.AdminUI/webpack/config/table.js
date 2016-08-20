@@ -1,7 +1,10 @@
 export default {
     Role: {
-        displayableFields:{
-
+        displayableFields: {
+            roleId: {},
+            name: {},
+            description: {},
+            active: {},
         }
     }
 }
