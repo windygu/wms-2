@@ -222,8 +222,45 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
-    <Content Include="webpack\aggregates.js">
-      <DependentUpon>GenerateAggregatesStructureJson.tt</DependentUpon>
+    <Content Include="webpack\config\view\forms.default.js">
+      <DependentUpon>GenerateAggregatesFormViewConfig.tt</DependentUpon>
+    </Content>
+    <Content Include="webpack\config\view\GenerateAggregatesTableViewConfig.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAggregatesTableViewConfig.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateAggregatesTableViewConfig.txt
+.\tables.default.js
+</LastOutputs>
+    </Content>
+    <Content Include="webpack\config\view\GenerateAggregatesFormViewConfig.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAggregatesFormViewConfig.txt</LastGenOutput>
+      <LastOutputs>
+.\forms.default.js
+.\GenerateAggregatesFormViewConfig.txt
+</LastOutputs>
+    </Content>
+    <Content Include="webpack\config\view\GenerateAggregatesFormViewConfig.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAggregatesFormViewConfig.tt</DependentUpon>
+    </Content>
+    <Content Include="webpack\config\view\GenerateAggregatesTableViewConfig.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAggregatesTableViewConfig.tt</DependentUpon>
+    </Content>
+    <Content Include="webpack\config\view\tables.default.js">
+      <DependentUpon>GenerateAggregatesTableViewConfig.tt</DependentUpon>
+    </Content>
+    <Content Include="webpack\GenerateValueObjectsJSMetadata.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateValueObjectsJSMetadata.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateValueObjectsJSMetadata.txt
+.\valueObjectsMetadata.js
+</LastOutputs>
     </Content>
     <Content Include="webpack\GenerateAggregatesStructureJson.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -237,6 +274,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesStructureJson.tt</DependentUpon>
+    </Content>
+    <Content Include="webpack\GenerateValueObjectsJSMetadata.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateValueObjectsJSMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="webpack\valueObjectsMetadata.js">
+      <DependentUpon>GenerateValueObjectsJSMetadata.tt</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -648,6 +693,7 @@
       <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
