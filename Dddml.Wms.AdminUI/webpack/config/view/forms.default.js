@@ -477,9 +477,9 @@ export default {
             description: {},
             active: {},
       }
-      ,"entities": {
-        AttributeSetInstanceExtensionField: {
-          displayableFields: {
+    },
+    AttributeSetInstanceExtensionField: {
+      displayableFields: {
             index: {},
             name: {},
             type: {},
@@ -487,8 +487,6 @@ export default {
             alias: {},
             description: {},
             active: {},
-          }
-        }
       }
     },
     Role: {
@@ -529,16 +527,14 @@ export default {
             referenceId: {},
             active: {},
       }
-      ,"entities": {
-        AttributeValue: {
-          displayableFields: {
+    },
+    AttributeValue: {
+      displayableFields: {
             value: {},
             name: {},
             description: {},
             referenceId: {},
             active: {},
-          }
-        }
       }
     },
     AttributeSet: {
@@ -552,14 +548,12 @@ export default {
             referenceId: {},
             active: {},
       }
-      ,"entities": {
-        AttributeUse: {
-          displayableFields: {
+    },
+    AttributeUse: {
+      displayableFields: {
             attributeId: {},
             sequenceNumber: {},
             active: {},
-          }
-        }
       }
     },
     Audience: {
@@ -586,33 +580,31 @@ export default {
             securityStamp: {},
             active: {},
       }
-      ,"entities": {
-        UserRole: {
-          displayableFields: {
+    },
+    UserRole: {
+      displayableFields: {
             roleId: {},
             active: {},
-          }
-        },
-        UserClaim: {
-          displayableFields: {
+      }
+    },
+    UserClaim: {
+      displayableFields: {
             claimId: {},
             claimType: {},
             claimValue: {},
             active: {},
-          }
-        },
-        UserPermission: {
-          displayableFields: {
+      }
+    },
+    UserPermission: {
+      displayableFields: {
             permissionId: {},
             active: {},
-          }
-        },
-        UserLogin: {
-          displayableFields: {
+      }
+    },
+    UserLogin: {
+      displayableFields: {
             loginKey: {},
             active: {},
-          }
-        }
       }
     },
     InOut: {
@@ -654,9 +646,9 @@ export default {
             dropShipBusinessPartnerId: {},
             active: {},
       }
-      ,"entities": {
-        InOutLine: {
-          displayableFields: {
+    },
+    InOutLine: {
+      displayableFields: {
             skuId: {},
             lineNumber: {},
             description: {},
@@ -676,8 +668,6 @@ export default {
             rmaLineNumber: {},
             reversalLineNumber: {},
             active: {},
-          }
-        }
       }
     },
     Organization: {
@@ -732,32 +722,26 @@ export default {
             loves: {},
             active: {},
       }
-      ,"entities": {
-        YearPlan: {
-          displayableFields: {
+    },
+    YearPlan: {
+      displayableFields: {
             year: {},
             description: {},
             active: {},
-          }
-          ,"entities": {
-            MonthPlan: {
-              displayableFields: {
-                month: {},
-                description: {},
-                active: {},
-              }
-              ,"entities": {
-                DayPlan: {
-                  displayableFields: {
-                    day: {},
-                    description: {},
-                    active: {},
-                  }
-                }
-              }
-            }
-          }
-        }
+      }
+    },
+    MonthPlan: {
+      displayableFields: {
+            month: {},
+            description: {},
+            active: {},
+      }
+    },
+    DayPlan: {
+      displayableFields: {
+            day: {},
+            description: {},
+            active: {},
       }
     },
     Team: {
