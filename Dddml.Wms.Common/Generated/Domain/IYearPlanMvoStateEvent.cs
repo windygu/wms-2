@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain
 
 		PersonalName PersonLoves { get; set; }
 
+		Contact PersonEmergencyContact { get; set; }
+
 		string PersonCreatedBy { get; set; }
 
 		DateTime? PersonCreatedAt { get; set; }
@@ -57,6 +59,8 @@ namespace Dddml.Wms.Domain
 		bool IsPropertyPersonBirthDateRemoved { get; set; }
 
 		bool IsPropertyPersonLovesRemoved { get; set; }
+
+		bool IsPropertyPersonEmergencyContactRemoved { get; set; }
 
 		bool IsPropertyPersonCreatedByRemoved { get; set; }
 

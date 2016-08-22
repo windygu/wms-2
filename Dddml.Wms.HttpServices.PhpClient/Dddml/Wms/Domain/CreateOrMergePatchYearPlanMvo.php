@@ -117,6 +117,27 @@ class CreateOrMergePatchYearPlanMvo extends AbstractYearPlanMvoCommand
     }
 
     /**
+     * @Type("Dddml\Wms\Domain\Contact")
+     */
+    private $personEmergencyContact;
+
+    /**
+     * @return Contact
+     */
+    public function getPersonEmergencyContact()
+    {
+        return $this->personEmergencyContact;
+    }
+
+    /**
+     * @param Contact $personEmergencyContact
+     */
+    public function setPersonEmergencyContact($personEmergencyContact)
+    {
+        $this->personEmergencyContact = $personEmergencyContact;
+    }
+
+    /**
      * @Type("string")
      */
     private $personCreatedBy;

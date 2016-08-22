@@ -189,6 +189,18 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
             this.personLoves = personLoves;
         }
 
+        private Contact personEmergencyContact;
+
+        public Contact getPersonEmergencyContact()
+        {
+            return this.personEmergencyContact;
+        }
+
+        public void setPersonEmergencyContact(Contact personEmergencyContact)
+        {
+            this.personEmergencyContact = personEmergencyContact;
+        }
+
         private String personCreatedBy;
 
         public String getPersonCreatedBy()
@@ -433,6 +445,18 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
         public void setIsPropertyPersonLovesRemoved(Boolean removed)
         {
             this.isPropertyPersonLovesRemoved = removed;
+        }
+
+        private Boolean isPropertyPersonEmergencyContactRemoved;
+
+        public Boolean getIsPropertyPersonEmergencyContactRemoved()
+        {
+            return this.isPropertyPersonEmergencyContactRemoved;
+        }
+
+        public void setIsPropertyPersonEmergencyContactRemoved(Boolean removed)
+        {
+            this.isPropertyPersonEmergencyContactRemoved = removed;
         }
 
         private Boolean isPropertyPersonCreatedByRemoved;

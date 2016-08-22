@@ -108,6 +108,7 @@ namespace Dddml.Wms.Domain
 		
             e.BirthDate = c.BirthDate;
             e.Loves = c.Loves;
+            e.EmergencyContact = c.EmergencyContact;
             e.Active = c.Active;
             ReflectUtils.CopyPropertyValue("CommandId", c, e);
 
@@ -135,9 +136,11 @@ namespace Dddml.Wms.Domain
 
             e.BirthDate = c.BirthDate;
             e.Loves = c.Loves;
+            e.EmergencyContact = c.EmergencyContact;
             e.Active = c.Active;
             e.IsPropertyBirthDateRemoved = c.IsPropertyBirthDateRemoved;
             e.IsPropertyLovesRemoved = c.IsPropertyLovesRemoved;
+            e.IsPropertyEmergencyContactRemoved = c.IsPropertyEmergencyContactRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             ReflectUtils.CopyPropertyValue("CommandId", c, e);

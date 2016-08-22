@@ -174,6 +174,8 @@ namespace Dddml.Wms.Domain
 
 			this.PersonLoves = e.PersonLoves;
 
+			this.PersonEmergencyContact = e.PersonEmergencyContact;
+
 			this.PersonCreatedBy = e.PersonCreatedBy;
 
             this.PersonCreatedAt = (e.PersonCreatedAt != null && e.PersonCreatedAt.HasValue) ? e.PersonCreatedAt.Value : default(DateTime);
@@ -353,6 +355,18 @@ namespace Dddml.Wms.Domain
 			else
 			{
 				this.PersonLoves = e.PersonLoves;
+			}
+
+			if (e.PersonEmergencyContact == null)
+			{
+				if (e.IsPropertyPersonEmergencyContactRemoved)
+				{
+					this.PersonEmergencyContact = default(Contact);
+				}
+			}
+			else
+			{
+				this.PersonEmergencyContact = e.PersonEmergencyContact;
 			}
 
 			if (e.PersonCreatedBy == null)

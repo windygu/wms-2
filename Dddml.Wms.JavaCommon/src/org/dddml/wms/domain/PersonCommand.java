@@ -25,6 +25,10 @@ public interface PersonCommand extends Command
 
         void setLoves(PersonalName loves);
 
+        Contact getEmergencyContact();
+
+        void setEmergencyContact(Contact emergencyContact);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -48,6 +52,10 @@ public interface PersonCommand extends Command
         Boolean getIsPropertyLovesRemoved();
 
         void setIsPropertyLovesRemoved(Boolean removed);
+
+        Boolean getIsPropertyEmergencyContactRemoved();
+
+        void setIsPropertyEmergencyContactRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

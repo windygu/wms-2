@@ -458,6 +458,36 @@ namespace Dddml.Wms.Domain
             }
         }
 
+
+        public ContactDto PersonEmergencyContact
+        {
+            get
+            {
+                if ((this as IStateDto).ReturnedFieldsContains("PersonEmergencyContact"))
+                {
+					return new ContactDto(_state.PersonEmergencyContact);
+                }
+                return null;
+            }
+            set
+            {
+                _state.PersonEmergencyContact = value.ToContact();
+            }
+        }
+
+
+        Contact IMonthPlanMvoStateProperties.PersonEmergencyContact
+        {
+            get 
+            {
+                return (this._state as IMonthPlanMvoStateProperties).PersonEmergencyContact;
+            }
+            set 
+            {
+                this._state.PersonEmergencyContact = value;
+            }
+        }
+
 		public virtual string PersonCreatedBy
 		{
             get

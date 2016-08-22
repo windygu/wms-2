@@ -160,6 +160,18 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         this.personLoves = personLoves;
     }
 
+    private ContactDto personEmergencyContact;
+
+    public ContactDto getPersonEmergencyContact()
+    {
+        return this.personEmergencyContact;
+    }
+
+    public void setPersonEmergencyContact(ContactDto personEmergencyContact)
+    {
+        this.personEmergencyContact = personEmergencyContact;
+    }
+
     private String personCreatedBy;
 
     public String getPersonCreatedBy()
@@ -386,6 +398,18 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
     public void setIsPropertyPersonLovesRemoved(Boolean removed)
     {
         this.isPropertyPersonLovesRemoved = removed;
+    }
+
+    private Boolean isPropertyPersonEmergencyContactRemoved;
+
+    public Boolean getIsPropertyPersonEmergencyContactRemoved()
+    {
+        return this.isPropertyPersonEmergencyContactRemoved;
+    }
+
+    public void setIsPropertyPersonEmergencyContactRemoved(Boolean removed)
+    {
+        this.isPropertyPersonEmergencyContactRemoved = removed;
     }
 
     private Boolean isPropertyPersonCreatedByRemoved;

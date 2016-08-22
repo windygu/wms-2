@@ -47,6 +47,7 @@
       <LastGenOutput>GenerateBoundedContextDomain.txt</LastGenOutput>
       <LastOutputs>
 .\CommandTrait.php
+.\Contact.php
 .\DocumentAction.php
 .\GenerateBoundedContextDomain.txt
 .\OrganizationStructureId.php
@@ -994,6 +995,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\CommandTrait.php">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </None>
+    <None Include="Dddml\Wms\Domain\Contact.php">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\CreateOrMergePatchAttribute.php">

@@ -41,6 +41,8 @@ namespace Dddml.Wms.Domain
 
 		PersonalName PersonLoves { get; set; }
 
+		Contact PersonEmergencyContact { get; set; }
+
 		long PersonVersion { get; set; }
 
 		string PersonCreatedBy { get; set; }

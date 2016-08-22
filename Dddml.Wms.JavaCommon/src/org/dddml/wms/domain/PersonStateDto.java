@@ -42,6 +42,18 @@ public class PersonStateDto
         this.loves = loves;
     }
 
+    private ContactDto emergencyContact;
+
+    public ContactDto getEmergencyContact()
+    {
+        return this.emergencyContact;
+    }
+
+    public void setEmergencyContact(ContactDto emergencyContact)
+    {
+        this.emergencyContact = emergencyContact;
+    }
+
     private Boolean active;
 
     public Boolean getActive()

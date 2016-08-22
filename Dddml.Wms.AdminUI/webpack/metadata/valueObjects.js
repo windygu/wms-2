@@ -45,6 +45,15 @@ export default [
     ]
   },
   {
+    "name": "Contact",
+    "plural": "Contacts",
+    "label": "Contact",
+    "collectionLabel": "Contacts",
+    "properties": [
+      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName" }, { name: "phoneNumber", label: "Phone Number", chainingName: "phoneNumber" }, { name: "address", label: "Address", chainingName: "address" }
+    ]
+  },
+  {
     "name": "AttributeSetInstanceStateEventId",
     "plural": "AttributeSetInstanceStateEventIds",
     "label": "Attribute Set Instance State Event Id",

@@ -140,6 +140,18 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
         this.personLoves = personLoves;
     }
 
+    private Contact personEmergencyContact;
+
+    public Contact getPersonEmergencyContact()
+    {
+        return this.personEmergencyContact;
+    }
+
+    public void setPersonEmergencyContact(Contact personEmergencyContact)
+    {
+        this.personEmergencyContact = personEmergencyContact;
+    }
+
     private Long personVersion;
 
     public Long getPersonVersion()
@@ -257,6 +269,7 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
         this.setActive(e.getActive());
         this.setPersonBirthDate(e.getPersonBirthDate());
         this.setPersonLoves(e.getPersonLoves());
+        this.setPersonEmergencyContact(e.getPersonEmergencyContact());
         this.setPersonCreatedBy(e.getPersonCreatedBy());
         this.setPersonCreatedAt(e.getPersonCreatedAt());
         this.setPersonUpdatedBy(e.getPersonUpdatedBy());
@@ -329,6 +342,17 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
         else
         {
             this.setPersonLoves(e.getPersonLoves());
+        }
+        if (e.getPersonEmergencyContact() == null)
+        {
+            if (e.getIsPropertyPersonEmergencyContactRemoved() != null && e.getIsPropertyPersonEmergencyContactRemoved())
+            {
+                this.setPersonEmergencyContact(null);
+            }
+        }
+        else
+        {
+            this.setPersonEmergencyContact(e.getPersonEmergencyContact());
         }
         if (e.getPersonCreatedBy() == null)
         {

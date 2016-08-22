@@ -97,6 +97,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomain.txt</LastGenOutput>
       <LastOutputs>
+.\Contact.ts
 .\DocumentAction.ts
 .\GenerateBoundedContextDomain.txt
 .\OrganizationStructureId.ts
@@ -222,6 +223,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <Content Include="webpack\metadata\aggregates.js">
+      <DependentUpon>GenerateAggregatesJSMetadata.tt</DependentUpon>
+    </Content>
     <Content Include="webpack\config\view\forms.default.js">
       <DependentUpon>GenerateAggregatesFormViewConfig.tt</DependentUpon>
     </Content>
@@ -254,33 +258,33 @@
     <Content Include="webpack\config\view\tables.default.js">
       <DependentUpon>GenerateAggregatesTableViewConfig.tt</DependentUpon>
     </Content>
-    <Content Include="webpack\GenerateValueObjectsJSMetadata.tt">
+    <Content Include="webpack\metadata\GenerateValueObjectsJSMetadata.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateValueObjectsJSMetadata.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateValueObjectsJSMetadata.txt
-.\valueObjectsMetadata.js
+.\valueObjects.js
 </LastOutputs>
     </Content>
-    <Content Include="webpack\GenerateAggregatesStructureJson.tt">
+    <Content Include="webpack\metadata\GenerateAggregatesJSMetadata.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateAggregatesStructureJson.txt</LastGenOutput>
+      <LastGenOutput>GenerateAggregatesJSMetadata.txt</LastGenOutput>
       <LastOutputs>
 .\aggregates.js
-.\GenerateAggregatesStructureJson.txt
+.\GenerateAggregatesJSMetadata.txt
 </LastOutputs>
     </Content>
-    <Content Include="webpack\GenerateAggregatesStructureJson.txt">
+    <Content Include="webpack\metadata\GenerateAggregatesJSMetadata.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateAggregatesStructureJson.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesJSMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="webpack\GenerateValueObjectsJSMetadata.txt">
+    <Content Include="webpack\metadata\GenerateValueObjectsJSMetadata.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateValueObjectsJSMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="webpack\valueObjectsMetadata.js">
+    <Content Include="webpack\metadata\valueObjects.js">
       <DependentUpon>GenerateValueObjectsJSMetadata.tt</DependentUpon>
     </Content>
   </ItemGroup>
@@ -362,6 +366,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ts\AudienceStateEventId.ts">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ts\Contact.ts">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ts\DayPlan.ts">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>

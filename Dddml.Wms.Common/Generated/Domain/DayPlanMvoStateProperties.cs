@@ -57,6 +57,8 @@ namespace Dddml.Wms.Domain
 
 		public virtual PersonalName PersonLoves { get; set; }
 
+		public virtual Contact PersonEmergencyContact { get; set; }
+
 		public virtual long PersonVersion { get; set; }
 
 		public virtual string PersonCreatedBy { get; set; }

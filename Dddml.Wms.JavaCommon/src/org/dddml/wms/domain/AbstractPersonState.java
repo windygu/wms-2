@@ -44,6 +44,18 @@ public abstract class AbstractPersonState implements PersonState, Saveable
         this.loves = loves;
     }
 
+    private Contact emergencyContact;
+
+    public Contact getEmergencyContact()
+    {
+        return this.emergencyContact;
+    }
+
+    public void setEmergencyContact(Contact emergencyContact)
+    {
+        this.emergencyContact = emergencyContact;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -172,6 +184,7 @@ public abstract class AbstractPersonState implements PersonState, Saveable
         throwOnWrongEvent(e);
         this.setBirthDate(e.getBirthDate());
         this.setLoves(e.getLoves());
+        this.setEmergencyContact(e.getEmergencyContact());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -210,6 +223,17 @@ public abstract class AbstractPersonState implements PersonState, Saveable
         else
         {
             this.setLoves(e.getLoves());
+        }
+        if (e.getEmergencyContact() == null)
+        {
+            if (e.getIsPropertyEmergencyContactRemoved() != null && e.getIsPropertyEmergencyContactRemoved())
+            {
+                this.setEmergencyContact(null);
+            }
+        }
+        else
+        {
+            this.setEmergencyContact(e.getEmergencyContact());
         }
         if (e.getActive() == null)
         {

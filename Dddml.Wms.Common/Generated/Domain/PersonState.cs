@@ -183,6 +183,8 @@ namespace Dddml.Wms.Domain
 
 			this.Loves = e.Loves;
 
+			this.EmergencyContact = e.EmergencyContact;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
@@ -224,6 +226,18 @@ namespace Dddml.Wms.Domain
 			else
 			{
 				this.Loves = e.Loves;
+			}
+
+			if (e.EmergencyContact == null)
+			{
+				if (e.IsPropertyEmergencyContactRemoved)
+				{
+					this.EmergencyContact = default(Contact);
+				}
+			}
+			else
+			{
+				this.EmergencyContact = e.EmergencyContact;
 			}
 
 			if (e.Active == null)

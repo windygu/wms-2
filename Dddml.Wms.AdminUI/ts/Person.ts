@@ -32,6 +32,16 @@ namespace Dddml.Wms.Domain {
 			this.loves = loves;
 		}
 
+		private emergencyContact: Contact;
+
+		getEmergencyContact(): Contact {
+			return this.emergencyContact;
+		}
+
+		setEmergencyContact(emergencyContact: Contact) {
+			this.emergencyContact = emergencyContact;
+		}
+
 		private active: boolean;
 
 		getActive(): boolean {

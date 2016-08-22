@@ -644,6 +644,12 @@
     <Compile Include="Generated\Domain\AudienceStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Contact.cs">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ContactDto.cs">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\DayPlanCommand.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -4344,6 +4350,8 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomain.txt</LastGenOutput>
       <LastOutputs>
+.\Contact.cs
+.\ContactDto.cs
 .\DocumentAction.cs
 .\DocumentActionDto.cs
 .\GenerateBoundedContextDomain.txt

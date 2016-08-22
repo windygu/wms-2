@@ -32,6 +32,10 @@ public final class YearPlanMvoFilteringProperties
             "yearPlanId.year",
             "personLoves.firstName",
             "personLoves.lastName",
+            "personEmergencyContact.personalNameFirstName",
+            "personEmergencyContact.personalNameLastName",
+            "personEmergencyContact.phoneNumber",
+            "personEmergencyContact.address",
     };
 
     public static final String[] propertyTypes = new String[] {
@@ -54,6 +58,10 @@ public final class YearPlanMvoFilteringProperties
             "String",
             "String",
             "Integer",
+            "String",
+            "String",
+            "String",
+            "String",
             "String",
             "String",
     };

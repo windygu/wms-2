@@ -61,9 +61,11 @@ namespace Dddml.Wms.Domain
             cmd.PersonalName = state.PersonalName;
             cmd.BirthDate = state.BirthDate;
             cmd.Loves = state.Loves;
+            cmd.EmergencyContact = state.EmergencyContact;
             cmd.Active = ((IPersonStateProperties)state).Active;
             
             if (state.Loves == null) { cmd.IsPropertyLovesRemoved = true; }
+            if (state.EmergencyContact == null) { cmd.IsPropertyEmergencyContactRemoved = true; }
             foreach (var d in state.YearPlans)
             {
                 var c = d.ToCreateOrMergePatchYearPlan<TCreateYearPlan, TMergePatchYearPlan, TCreateMonthPlan, TMergePatchMonthPlan, TCreateDayPlan, TMergePatchDayPlan>();
@@ -85,6 +87,7 @@ namespace Dddml.Wms.Domain
             cmd.PersonalName = state.PersonalName;
             cmd.BirthDate = state.BirthDate;
             cmd.Loves = state.Loves;
+            cmd.EmergencyContact = state.EmergencyContact;
             cmd.Active = ((IPersonStateProperties)state).Active;
             foreach (var d in state.YearPlans)
             {

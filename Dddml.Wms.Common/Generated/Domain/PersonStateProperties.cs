@@ -19,6 +19,8 @@ namespace Dddml.Wms.Domain
 
 		public virtual PersonalName Loves { get; set; }
 
+		public virtual Contact EmergencyContact { get; set; }
+
 		public virtual long Version { get; set; }
 
 		public virtual bool Active { get; set; }

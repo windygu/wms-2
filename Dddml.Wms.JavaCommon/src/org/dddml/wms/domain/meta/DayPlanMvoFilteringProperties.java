@@ -50,6 +50,10 @@ public final class DayPlanMvoFilteringProperties
             "dayPlanId.day",
             "personLoves.firstName",
             "personLoves.lastName",
+            "personEmergencyContact.personalNameFirstName",
+            "personEmergencyContact.personalNameLastName",
+            "personEmergencyContact.phoneNumber",
+            "personEmergencyContact.address",
     };
 
     public static final String[] propertyTypes = new String[] {
@@ -90,6 +94,10 @@ public final class DayPlanMvoFilteringProperties
             "Integer",
             "Integer",
             "Integer",
+            "String",
+            "String",
+            "String",
+            "String",
             "String",
             "String",
     };

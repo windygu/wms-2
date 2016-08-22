@@ -20,6 +20,8 @@ namespace Dddml.Wms.Domain
 
 		PersonalName Loves { get; set; }
 
+		Contact EmergencyContact { get; set; }
+
 		bool? Active { get; set; }
 
 	}
@@ -41,6 +43,8 @@ namespace Dddml.Wms.Domain
 		bool IsPropertyBirthDateRemoved { get; set; }
 
 		bool IsPropertyLovesRemoved { get; set; }
+
+		bool IsPropertyEmergencyContactRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

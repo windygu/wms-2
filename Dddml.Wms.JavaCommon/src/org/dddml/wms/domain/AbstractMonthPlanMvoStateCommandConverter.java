@@ -49,6 +49,7 @@ public abstract class AbstractMonthPlanMvoStateCommandConverter<TCreateMonthPlan
         cmd.setYearPlanDeleted(state.getYearPlanDeleted());
         cmd.setPersonBirthDate(state.getPersonBirthDate());
         cmd.setPersonLoves(state.getPersonLoves());
+        cmd.setPersonEmergencyContact(state.getPersonEmergencyContact());
         cmd.setPersonCreatedBy(state.getPersonCreatedBy());
         cmd.setPersonCreatedAt(state.getPersonCreatedAt());
         cmd.setPersonUpdatedBy(state.getPersonUpdatedBy());
@@ -69,6 +70,7 @@ public abstract class AbstractMonthPlanMvoStateCommandConverter<TCreateMonthPlan
         if (state.getYearPlanDeleted() == null) { cmd.setIsPropertyYearPlanDeletedRemoved(true); }
         if (state.getPersonBirthDate() == null) { cmd.setIsPropertyPersonBirthDateRemoved(true); }
         if (state.getPersonLoves() == null) { cmd.setIsPropertyPersonLovesRemoved(true); }
+        if (state.getPersonEmergencyContact() == null) { cmd.setIsPropertyPersonEmergencyContactRemoved(true); }
         if (state.getPersonCreatedBy() == null) { cmd.setIsPropertyPersonCreatedByRemoved(true); }
         if (state.getPersonCreatedAt() == null) { cmd.setIsPropertyPersonCreatedAtRemoved(true); }
         if (state.getPersonUpdatedBy() == null) { cmd.setIsPropertyPersonUpdatedByRemoved(true); }
@@ -97,6 +99,7 @@ public abstract class AbstractMonthPlanMvoStateCommandConverter<TCreateMonthPlan
         cmd.setYearPlanDeleted(state.getYearPlanDeleted());
         cmd.setPersonBirthDate(state.getPersonBirthDate());
         cmd.setPersonLoves(state.getPersonLoves());
+        cmd.setPersonEmergencyContact(state.getPersonEmergencyContact());
         cmd.setPersonCreatedBy(state.getPersonCreatedBy());
         cmd.setPersonCreatedAt(state.getPersonCreatedAt());
         cmd.setPersonUpdatedBy(state.getPersonUpdatedBy());

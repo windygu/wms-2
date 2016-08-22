@@ -77,6 +77,7 @@ public abstract class AbstractYearPlanMvoAggregate extends AbstractAggregate imp
         e.setActive(c.getActive());
         e.setPersonBirthDate(c.getPersonBirthDate());
         e.setPersonLoves(c.getPersonLoves());
+        e.setPersonEmergencyContact(c.getPersonEmergencyContact());
         e.setPersonCreatedBy(c.getPersonCreatedBy());
         e.setPersonCreatedAt(c.getPersonCreatedAt());
         e.setPersonUpdatedBy(c.getPersonUpdatedBy());
@@ -99,6 +100,7 @@ public abstract class AbstractYearPlanMvoAggregate extends AbstractAggregate imp
         e.setActive(c.getActive());
         e.setPersonBirthDate(c.getPersonBirthDate());
         e.setPersonLoves(c.getPersonLoves());
+        e.setPersonEmergencyContact(c.getPersonEmergencyContact());
         e.setPersonCreatedBy(c.getPersonCreatedBy());
         e.setPersonCreatedAt(c.getPersonCreatedAt());
         e.setPersonUpdatedBy(c.getPersonUpdatedBy());
@@ -110,6 +112,7 @@ public abstract class AbstractYearPlanMvoAggregate extends AbstractAggregate imp
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setIsPropertyPersonBirthDateRemoved(c.getIsPropertyPersonBirthDateRemoved());
         e.setIsPropertyPersonLovesRemoved(c.getIsPropertyPersonLovesRemoved());
+        e.setIsPropertyPersonEmergencyContactRemoved(c.getIsPropertyPersonEmergencyContactRemoved());
         e.setIsPropertyPersonCreatedByRemoved(c.getIsPropertyPersonCreatedByRemoved());
         e.setIsPropertyPersonCreatedAtRemoved(c.getIsPropertyPersonCreatedAtRemoved());
         e.setIsPropertyPersonUpdatedByRemoved(c.getIsPropertyPersonUpdatedByRemoved());

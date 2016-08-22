@@ -73,6 +73,27 @@ trait PersonStatePropertiesTrait
     }
 
     /**
+     * @Type("Dddml\Wms\Domain\Contact")
+     */
+    private $emergencyContact;
+
+    /**
+     * @return Contact
+     */
+    public function getEmergencyContact()
+    {
+        return $this->emergencyContact;
+    }
+
+    /**
+     * @param Contact $emergencyContact
+     */
+    public function setEmergencyContact($emergencyContact)
+    {
+        $this->emergencyContact = $emergencyContact;
+    }
+
+    /**
      * @Type("boolean")
      */
     private $active;

@@ -20,6 +20,10 @@ public interface PersonStateEvent extends Event
 
     void setLoves(PersonalName loves);
 
+    Contact getEmergencyContact();
+
+    void setEmergencyContact(Contact emergencyContact);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -54,6 +58,10 @@ public interface PersonStateEvent extends Event
         Boolean getIsPropertyLovesRemoved();
 
         void setIsPropertyLovesRemoved(Boolean removed);
+
+        Boolean getIsPropertyEmergencyContactRemoved();
+
+        void setIsPropertyEmergencyContactRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

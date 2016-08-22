@@ -55,6 +55,8 @@ namespace Dddml.Wms.Domain
 
 		public virtual PersonalName Loves { get; set; }
 
+		public virtual Contact EmergencyContact { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 
@@ -130,6 +132,8 @@ namespace Dddml.Wms.Domain
 		public virtual bool IsPropertyBirthDateRemoved { get; set; }
 
 		public virtual bool IsPropertyLovesRemoved { get; set; }
+
+		public virtual bool IsPropertyEmergencyContactRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

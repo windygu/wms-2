@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain
 
 		public virtual PersonalName PersonLoves { get; set; }
 
+		public virtual Contact PersonEmergencyContact { get; set; }
+
 		public virtual string PersonCreatedBy { get; set; }
 
 		public virtual DateTime? PersonCreatedAt { get; set; }
@@ -156,6 +158,25 @@ namespace Dddml.Wms.Domain
             set 
             {
                 this.IsPropertyPersonLovesRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPersonEmergencyContactRemoved { get; set; }
+
+        bool IYearPlanMvoStateMergePatched.IsPropertyPersonEmergencyContactRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyPersonEmergencyContactRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyPersonEmergencyContactRemoved = value;
             }
         }
 
