@@ -29,7 +29,16 @@ export default class Aggregate {
     }
 
     getFields() {
-        return this.metadata.fields;
+        let fields = [];
+        let properties = this.metadata.properties;
+
+        if (properties) {
+            for (let i = 0; i < properties.length; i++) {
+                fields.push(properties[i].name);
+            }
+        }
+
+        return fields;
     }
 
     getChildEntityMetadata(name = null) {

@@ -65,7 +65,7 @@
             return {
                 entity: new Aggregate({}, {}),
                 children: {},
-                currentChild: new Table()
+                currentChild: {}
             }
         },
         components: {
