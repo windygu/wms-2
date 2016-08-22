@@ -19,7 +19,7 @@
     import VForm from './Bootstrap/Form.vue'
     import FormCls from '../src/Form/Form';
     import Navigator from './Bootstrap/Navigator.vue';
-    import formConfig from '../config/form';
+    import formConfig from '../config/view/forms';
 
     export default{
         data(){

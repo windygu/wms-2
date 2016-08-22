@@ -55,15 +55,15 @@ export default class Form {
             form.displayableElements = form.elements;
         }
 
-        for (let i = 0; i < metadata.fields.length; i++) {
+        for (let i = 0; i < metadata.properties.length; i++) {
             let element = new FormElement(
-                metadata.fields[i],
-                metadata.fields[i]
+                metadata.properties[i].name,
+                metadata.properties[i].name
             );
 
             form.addElement(element);
 
-            if (form.hasDisplayableField(metadata.fields[i])) {
+            if (form.hasDisplayableField(metadata.properties[i].name)) {
                 form.addDisplayableElement(element);
             }
         }
