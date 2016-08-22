@@ -24,7 +24,7 @@ namespace Dddml.Wms.Domain
 
 		bool? IsSOTransaction { get; set; }
 
-		DocumentAction DocumentAction { get; set; }
+		string DocumentAction { get; set; }
 
 		bool? Posted { get; set; }
 

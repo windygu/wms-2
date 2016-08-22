@@ -13,14 +13,27 @@ valueObjects:
           type: string
         AttributeSetInstanceId:
           type: string        
-    
+
+          
+# ------------------------------
+enumObjects:
     
     DocumentAction:
-    
-      properties:
-        Name:
-          type: string
+      baseType: string
+      
+      values:
+        Draft:
+          description: Draft
+        Complete:
+          description: Complete
+        Void:
+          description: Void
+        Close: 
+          description: Close
+        Reverse:
+          description: Reverse
 
+          
 # ------------------------------
 aggregates:
 

@@ -10,7 +10,7 @@ import org.squirrelframework.foundation.fsm.impl.AbstractStateMachine;
 /**
  * Created by Yang on 2016/7/31.
  */
-public class InOutDocumentActionCommandHandler implements PropertyCommandHandler<DocumentAction, String>
+public class InOutDocumentActionCommandHandler implements PropertyCommandHandler<String, String>
 {
 
     public static class DocumentStatusStateMachine extends AbstractStateMachine<DocumentStatusStateMachine, String, String, Object>
@@ -33,10 +33,10 @@ public class InOutDocumentActionCommandHandler implements PropertyCommandHandler
     }
 
     @Override
-    public final void execute(PropertyCommand<DocumentAction, String> command)
+    public final void execute(PropertyCommand<String, String> command)
     {
         String currentState = command.getStateGetter().get();
-        String trigger = command.getContent() != null ? command.getContent().getName() : null;
+        String trigger = command.getContent();
 
         if (command.getOuterCommandType().equals(CommandType.CREATE)) {
             if (currentState == null || currentState.trim().equals("")) {

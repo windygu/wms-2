@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Dddml.Wms.Domain
 {
-    public class InOutDocumentActionCommandHandler : IPropertyCommandHandler<DocumentAction, string>
+    public class InOutDocumentActionCommandHandler : IPropertyCommandHandler<string, string>
     {
         //[ThreadStatic]
         //private static string _currentDocumentStatus;
@@ -25,29 +25,29 @@ namespace Dddml.Wms.Domain
             var tm = new StateMachine<string, string>(stateAccessor, stateMutator);
 
             tm.Configure(DocumentStatus.Initial)
-                .Permit(DocumentActionName.Draft, DocumentStatus.Drafted);
+                .Permit(DocumentAction.Draft, DocumentStatus.Drafted);
 
             tm.Configure(DocumentStatus.Drafted)
-                .Permit(DocumentActionName.Complete, DocumentStatus.Completed)
-                .Permit(DocumentActionName.Void, DocumentStatus.Voided);
+                .Permit(DocumentAction.Complete, DocumentStatus.Completed)
+                .Permit(DocumentAction.Void, DocumentStatus.Voided);
 
             tm.Configure(DocumentStatus.Completed)
-                .Permit(DocumentActionName.Close, DocumentStatus.Closed)
-                .Permit(DocumentActionName.Reverse, DocumentStatus.Reversed);
+                .Permit(DocumentAction.Close, DocumentStatus.Closed)
+                .Permit(DocumentAction.Reverse, DocumentStatus.Reversed);
             return tm;
         }
 
-        public void Execute(IPropertyCommand<DocumentAction, string> command)
+        public void Execute(IPropertyCommand<string, string> command)
         {
             var currentState = command.GetState();
-            var trigger = command.Content != null ? command.Content.Name : null;
+            var trigger = command.Content;
 
             if (command.OuterCommandType == CommandType.Create)
             {
                 if (String.IsNullOrWhiteSpace(currentState))
                 { currentState = DocumentStatus.Initial; }
                 if (trigger == null)
-                { trigger = DocumentActionName.Draft; }
+                { trigger = DocumentAction.Draft; }
             }
 
             //TODO 这样才是线程安全的，但是效率不高，需要改进：

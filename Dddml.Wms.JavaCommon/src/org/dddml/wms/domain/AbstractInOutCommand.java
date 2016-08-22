@@ -47,14 +47,14 @@ public abstract class AbstractInOutCommand extends AbstractCommand implements In
             this.isSOTransaction = isSOTransaction;
         }
 
-        private DocumentAction documentAction;
+        private String documentAction;
 
-        public DocumentAction getDocumentAction()
+        public String getDocumentAction()
         {
             return this.documentAction;
         }
 
-        public void setDocumentAction(DocumentAction documentAction)
+        public void setDocumentAction(String documentAction)
         {
             this.documentAction = documentAction;
         }

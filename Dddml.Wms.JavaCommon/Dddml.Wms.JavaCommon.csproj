@@ -1521,9 +1521,6 @@
     <Content Include="src\org\dddml\wms\domain\DocumentAction.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\DocumentActionDto.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\org\dddml\wms\domain\GenerateBoundedContextDomain.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomain.txt</LastGenOutput>
@@ -1537,7 +1534,6 @@
 .\Contact.java
 .\ContactDto.java
 .\DocumentAction.java
-.\DocumentActionDto.java
 .\GenerateBoundedContextDomain.txt
 .\LocatorTree.java
 .\LocatorTreeApplicationService.java

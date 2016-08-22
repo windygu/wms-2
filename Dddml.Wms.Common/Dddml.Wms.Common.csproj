@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\AttributeSetInstanceAggregate.cs" />
-    <Compile Include="Domain\DocumentActionName.cs" />
     <Compile Include="Domain\DocumentStatus.cs" />
     <Compile Include="Domain\InOutDocumentActionCommandHandler.cs" />
     <Compile Include="Domain\PermissionIds.cs" />
@@ -759,9 +758,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\DocumentAction.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DocumentActionDto.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IAttributeAggregate.cs">
@@ -4353,7 +4349,6 @@
 .\Contact.cs
 .\ContactDto.cs
 .\DocumentAction.cs
-.\DocumentActionDto.cs
 .\GenerateBoundedContextDomain.txt
 .\ILocatorTree.cs
 .\ILocatorTreeApplicationService.cs

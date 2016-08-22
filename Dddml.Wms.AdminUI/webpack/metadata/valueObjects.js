@@ -18,15 +18,6 @@ export default [
     ]
   },
   {
-    "name": "DocumentAction",
-    "plural": "DocumentActions",
-    "label": "Document Action",
-    "collectionLabel": "Document Actions",
-    "properties": [
-      { name: "name", label: "Name", chainingName: "name" }
-    ]
-  },
-  {
     "name": "OrganizationStructureId",
     "plural": "OrganizationStructureIds",
     "label": "Organization Structure Id",

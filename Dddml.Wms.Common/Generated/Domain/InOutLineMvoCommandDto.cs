@@ -92,20 +92,7 @@ namespace Dddml.Wms.Domain
 
 		public virtual bool? InOutIsSOTransaction { get; set; }
 
-
-		public virtual DocumentActionDto DocumentAction { get; set; }
-
-        DocumentAction ICreateOrMergePatchOrDeleteInOutLineMvo.DocumentAction
-        {
-            get 
-            {
-                return this.DocumentAction.ToDocumentAction();
-            }
-            set 
-            {
-                this.DocumentAction = new DocumentActionDto(value);
-            }
-        }
+		public virtual string DocumentAction { get; set; }
 
 		public virtual bool? InOutPosted { get; set; }
 

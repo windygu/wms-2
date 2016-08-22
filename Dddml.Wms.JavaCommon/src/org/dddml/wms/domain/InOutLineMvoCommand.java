@@ -99,9 +99,9 @@ public interface InOutLineMvoCommand extends Command
 
         void setInOutIsSOTransaction(Boolean inOutIsSOTransaction);
 
-        DocumentAction getDocumentAction();
+        String getDocumentAction();
 
-        void setDocumentAction(DocumentAction documentAction);
+        void setDocumentAction(String documentAction);
 
         Boolean getInOutPosted();
 
