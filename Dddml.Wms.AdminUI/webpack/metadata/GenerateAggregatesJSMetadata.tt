@@ -3,11 +3,11 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Dddml.Core.Domain" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Php\Domain\AggregatesStructureJsonGenerator.tt" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Php\Domain\AggregatesJSMetadataGenerator.tt" #>
 <#@ include file="$(SolutionDir)Dddml.Wms.HttpServices.PhpClient\Dddml\Wms\LoadBoundedContext.tt" #>
 <#
 
-    var generator = new AggregatesStructureJsonGenerator(boundedContext.Aggregates.Values.ToList());
+    var generator = new AggregatesJSMetadataGenerator(boundedContext.Aggregates.Values.ToList(), "aggregates");
 
     generator.Run();
 
