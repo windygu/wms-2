@@ -1,10 +1,21 @@
 <template>
     <form role="form" class="form-horizontal">
-        <!-- Default box -->
+        <template v-for="vof in form.valueObjectForms">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{vof.valueObjectName}}</h3>
+                </div>
+                <div class="box-body">
+                    <template v-for="element in vof.elements">
+                        <form-element :element.sync="element"></form-element>
+                    </template>
+                </div>
+            </div>
+        </template>
+
         <div class="box">
             <div class="box-body">
-                <form-element :element.sync="form.idElement"></form-element>
-                <template v-for="element in form.displayableElements">
+                <template v-for="element in form.elements">
                     <form-element :element.sync="element"></form-element>
                 </template>
             </div>
@@ -17,7 +28,6 @@
                         </button>
                     </div>
                 </div>
-
             </div>
             <!-- /.box-footer-->
         </div>

@@ -1,21 +1,22 @@
 import FormElement from "./FormElement";
+import ValueObjectForm from './ValueObjectForm';
+import PropertyMetadata from '../Metadata/PropertyMetadata';
 import ObjectHelper from '../Helper/ObjectHelper';
 
 export default class Form {
     constructor(metadata, config) {
         this.formName = metadata.name;
         this.elements = [];
-        this.displayableElements = [];
+        this.valueObjectForms = [];
         this.config = config || {};
-        this.idElement = {};
     }
 
     addElement(element) {
         this.elements.push(element);
     }
 
-    addDisplayableElement(element) {
-        this.displayableElements.push(element);
+    addValueObjectForm(form) {
+        this.valueObjectForms.push(form);
     }
 
     hasDisplayableField(fieldName) {
@@ -46,25 +47,39 @@ export default class Form {
     static createForm(metadata, config) {
         let form = new Form(metadata, config);
 
-        form.idElement = new FormElement(
-            metadata.id.name,
-            metadata.id.name
-        );
+        let proMetadata = new PropertyMetadata(metadata.id);
 
-        if (!form.hasDisplayableFields()) {
-            form.displayableElements = form.elements;
+        if (proMetadata.isNormalType()) {
+            form.addElement(new FormElement(
+                metadata.id.name,
+                metadata.id.name
+            ));
+        } else {
+            form.addValueObjectForm(
+                ValueObjectForm.create(
+                    metadata.id.name,
+                    proMetadata.getValueObjectMetadata()
+                )
+            )
         }
 
         for (let i = 0; i < metadata.properties.length; i++) {
-            let element = new FormElement(
-                metadata.properties[i].name,
-                metadata.properties[i].name
-            );
-
-            form.addElement(element);
+            let proMetadata = new PropertyMetadata(metadata.properties[i]);
 
             if (form.hasDisplayableField(metadata.properties[i].name)) {
-                form.addDisplayableElement(element);
+                if (proMetadata.isNormalType()) {
+                    form.addElement(new FormElement(
+                        metadata.properties[i].name,
+                        metadata.properties[i].name
+                    ));
+                } else {
+                    form.addValueObjectForm(
+                        ValueObjectForm.create(
+                            metadata.properties[i].name,
+                            proMetadata.getValueObjectMetadata()
+                        )
+                    )
+                }
             }
         }
 

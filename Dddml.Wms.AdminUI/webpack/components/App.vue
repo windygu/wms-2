@@ -106,7 +106,7 @@
 </style>
 <script>
     import data from './../metadata/aggregates';
-    import Metadata from '../src/MetaData';
+    import Metadata from '../src/Metadata/Metadata';
     import Navigator from '../src/Navigator/Navigator';
 
     let metadata = new Metadata(data);
