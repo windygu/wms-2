@@ -1,8 +1,10 @@
+import tableConfig from '../config/view/tables';
+
 export default class Table {
-    constructor(id = "", columns = [], rows = []) {
-        this.id = id;
-        this.columns = columns;
+    constructor(name, rows = []) {
+        this.name = name;
         this.rows = rows;
-        this.routes = []
+        this.routes = [];
+        this.columns = Object.keys(tableConfig[this.name].displayableFields);
     }
 }

@@ -105,7 +105,7 @@
 <style>
 </style>
 <script>
-    import data from './../aggregates';
+    import data from './../metadata/aggregates';
     import Metadata from '../src/MetaData';
     import Navigator from '../src/Navigator/Navigator';
 

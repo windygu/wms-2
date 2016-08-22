@@ -44,7 +44,7 @@
     export default{
         data(){
             return {
-                table: new Table(),
+                table: {},
             }
         },
         components: {

@@ -9,8 +9,7 @@ export default class AggregateCollection {
 
     toTable() {
         let table = new Table(
-            this.metadata.id.name,
-            this.metadata.fields,
+            this.metadata.name,
             this.data
         );
 
