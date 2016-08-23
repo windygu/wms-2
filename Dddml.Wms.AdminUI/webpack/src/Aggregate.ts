@@ -71,11 +71,11 @@ export default class Aggregate {
 
         for (let i = 0; i < names.length; i++) {
             let name = names[i];
-            let entities = new AggregateCollection(
+
+            children[name] = new AggregateCollection(
                 this.data[StringHelper.lcfirst(name)],
                 this.getChildEntityMetadata(name)
             );
-            children[name] = entities;
         }
 
         return children;

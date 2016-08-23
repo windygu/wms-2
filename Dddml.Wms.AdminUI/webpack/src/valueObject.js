@@ -1,5 +1,5 @@
 export default class ObjectValue {
-    constructor(data,metadata) {
+    constructor(data, metadata) {
         this.metadata = metadata;
         this.data = data;
     }

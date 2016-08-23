@@ -4,10 +4,10 @@ import PropertyMetadata from '../Metadata/PropertyMetadata';
 import ObjectHelper from '../Helper/ObjectHelper';
 
 export default class Form {
-    private formName;
-    private elements;
-    private valueObjectForms;
-    private config;
+    public formName;
+    public elements;
+    public valueObjectForms;
+    public config;
 
     constructor(metadata, config) {
         this.formName = metadata.name;
