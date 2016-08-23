@@ -11,28 +11,38 @@ using Dddml.Wms.Domain;
 namespace Dddml.Wms.Domain
 {
 
-	public class DocumentActionDto
+	public class ContactDto
 	{
 
-        private DocumentAction _value = new DocumentAction();
+        private Contact _value = new Contact();
 
-		public DocumentActionDto()
+		public ContactDto()
 		{
 		}
 
-		public DocumentActionDto(DocumentAction val)
+		public ContactDto(Contact val)
 		{
 			this._value = val;
 		}
 
-        public DocumentAction ToDocumentAction()
+        public Contact ToContact()
         {
             return this._value;
         }
 
-		public virtual string Name { 
-			get { return _value.Name; } 
-			set { _value.Name = value; } 
+		public virtual PersonalNameDto PersonalName { 
+			get { return new PersonalNameDto(_value.PersonalName); } 
+			set { _value.PersonalName = value.ToPersonalName(); } 
+		}
+
+		public virtual string PhoneNumber { 
+			get { return _value.PhoneNumber; } 
+			set { _value.PhoneNumber = value; } 
+		}
+
+		public virtual string Address { 
+			get { return _value.Address; } 
+			set { _value.Address = value; } 
 		}
 
 
@@ -42,7 +52,7 @@ namespace Dddml.Wms.Domain
 				return true;
 			}
 
-			DocumentActionDto other = obj as DocumentActionDto;
+			ContactDto other = obj as ContactDto;
 			if (other == null) {
 				return false;
 			}

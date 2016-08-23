@@ -23,6 +23,10 @@ public interface PersonState
 
     void setLoves(PersonalName loves);
 
+    Contact getEmergencyContact();
+
+    void setEmergencyContact(Contact emergencyContact);
+
     Long getVersion();
 
     void setVersion(Long version);

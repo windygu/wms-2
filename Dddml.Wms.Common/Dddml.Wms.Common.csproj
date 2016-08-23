@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\AttributeSetInstanceAggregate.cs" />
-    <Compile Include="Domain\DocumentActionName.cs" />
     <Compile Include="Domain\DocumentStatus.cs" />
     <Compile Include="Domain\InOutDocumentActionCommandHandler.cs" />
     <Compile Include="Domain\PermissionIds.cs" />
@@ -644,6 +643,12 @@
     <Compile Include="Generated\Domain\AudienceStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Contact.cs">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ContactDto.cs">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\DayPlanCommand.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -753,9 +758,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\DocumentAction.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DocumentActionDto.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IAttributeAggregate.cs">
@@ -4344,8 +4346,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomain.txt</LastGenOutput>
       <LastOutputs>
+.\Contact.cs
+.\ContactDto.cs
 .\DocumentAction.cs
-.\DocumentActionDto.cs
 .\GenerateBoundedContextDomain.txt
 .\ILocatorTree.cs
 .\ILocatorTreeApplicationService.cs

@@ -174,6 +174,18 @@ public class MonthPlanMvoStateDto
         this.personLoves = personLoves;
     }
 
+    private ContactDto personEmergencyContact;
+
+    public ContactDto getPersonEmergencyContact()
+    {
+        return this.personEmergencyContact;
+    }
+
+    public void setPersonEmergencyContact(ContactDto personEmergencyContact)
+    {
+        this.personEmergencyContact = personEmergencyContact;
+    }
+
     private String personCreatedBy;
 
     public String getPersonCreatedBy()

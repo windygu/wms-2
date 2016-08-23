@@ -74,6 +74,21 @@ namespace Dddml.Wms.Domain
             }
         }
 
+
+		public virtual ContactDto PersonEmergencyContact { get; set; }
+
+        Contact ICreateOrMergePatchOrDeleteYearPlanMvo.PersonEmergencyContact
+        {
+            get 
+            {
+                return this.PersonEmergencyContact.ToContact();
+            }
+            set 
+            {
+                this.PersonEmergencyContact = new ContactDto(value);
+            }
+        }
+
 		public virtual string PersonCreatedBy { get; set; }
 
 		public virtual DateTime? PersonCreatedAt { get; set; }
@@ -191,6 +206,25 @@ namespace Dddml.Wms.Domain
             set
             {
                 this.IsPropertyPersonLovesRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPersonEmergencyContactRemoved { get; set; }
+
+        bool IMergePatchYearPlanMvo.IsPropertyPersonEmergencyContactRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyPersonEmergencyContactRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyPersonEmergencyContactRemoved = value;
             }
         }
 

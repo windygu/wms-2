@@ -20,6 +20,10 @@ trait PersonFilteringFieldsTrait
             'PersonalName.LastName' => 'string',
             'Loves.FirstName' => 'string',
             'Loves.LastName' => 'string',
+            'EmergencyContact.PersonalNameFirstName' => 'string',
+            'EmergencyContact.PersonalNameLastName' => 'string',
+            'EmergencyContact.PhoneNumber' => 'string',
+            'EmergencyContact.Address' => 'string',
         ];
     }
 

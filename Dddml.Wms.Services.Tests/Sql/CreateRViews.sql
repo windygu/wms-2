@@ -651,6 +651,14 @@ CREATE VIEW `YearPlan_RV` AS
 
         `People`.`LovesLastName` AS `PersonLovesLastName`,
 
+        `People`.`EmergencyContactPersonalNameFirstName` AS `PersonEmergencyContactPersonalNameFirstName`,
+
+        `People`.`EmergencyContactPersonalNameLastName` AS `PersonEmergencyContactPersonalNameLastName`,
+
+        `People`.`EmergencyContactPhoneNumber` AS `PersonEmergencyContactPhoneNumber`,
+
+        `People`.`EmergencyContactAddress` AS `PersonEmergencyContactAddress`,
+
         `People`.`Version` AS `PersonVersion`,
 
         `People`.`CreatedBy` AS `PersonCreatedBy`,
@@ -725,6 +733,14 @@ CREATE VIEW `MonthPlan_RV` AS
         `People`.`LovesFirstName` AS `PersonLovesFirstName`,
 
         `People`.`LovesLastName` AS `PersonLovesLastName`,
+
+        `People`.`EmergencyContactPersonalNameFirstName` AS `PersonEmergencyContactPersonalNameFirstName`,
+
+        `People`.`EmergencyContactPersonalNameLastName` AS `PersonEmergencyContactPersonalNameLastName`,
+
+        `People`.`EmergencyContactPhoneNumber` AS `PersonEmergencyContactPhoneNumber`,
+
+        `People`.`EmergencyContactAddress` AS `PersonEmergencyContactAddress`,
 
         `People`.`Version` AS `PersonVersion`,
 
@@ -827,6 +843,14 @@ CREATE VIEW `DayPlan_RV` AS
         `People`.`LovesFirstName` AS `PersonLovesFirstName`,
 
         `People`.`LovesLastName` AS `PersonLovesLastName`,
+
+        `People`.`EmergencyContactPersonalNameFirstName` AS `PersonEmergencyContactPersonalNameFirstName`,
+
+        `People`.`EmergencyContactPersonalNameLastName` AS `PersonEmergencyContactPersonalNameLastName`,
+
+        `People`.`EmergencyContactPhoneNumber` AS `PersonEmergencyContactPhoneNumber`,
+
+        `People`.`EmergencyContactAddress` AS `PersonEmergencyContactAddress`,
 
         `People`.`Version` AS `PersonVersion`,
 

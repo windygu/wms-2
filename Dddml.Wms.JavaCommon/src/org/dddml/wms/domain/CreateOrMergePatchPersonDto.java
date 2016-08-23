@@ -28,6 +28,18 @@ public class CreateOrMergePatchPersonDto extends AbstractPersonCommandDto
         this.loves = loves;
     }
 
+    private ContactDto emergencyContact;
+
+    public ContactDto getEmergencyContact()
+    {
+        return this.emergencyContact;
+    }
+
+    public void setEmergencyContact(ContactDto emergencyContact)
+    {
+        this.emergencyContact = emergencyContact;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -74,6 +86,18 @@ public class CreateOrMergePatchPersonDto extends AbstractPersonCommandDto
     public void setIsPropertyLovesRemoved(Boolean removed)
     {
         this.isPropertyLovesRemoved = removed;
+    }
+
+    private Boolean isPropertyEmergencyContactRemoved;
+
+    public Boolean getIsPropertyEmergencyContactRemoved()
+    {
+        return this.isPropertyEmergencyContactRemoved;
+    }
+
+    public void setIsPropertyEmergencyContactRemoved(Boolean removed)
+    {
+        this.isPropertyEmergencyContactRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

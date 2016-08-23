@@ -40,6 +40,10 @@ public interface YearPlanMvoStateEvent extends Event
 
     void setPersonLoves(PersonalName personLoves);
 
+    Contact getPersonEmergencyContact();
+
+    void setPersonEmergencyContact(Contact personEmergencyContact);
+
     String getPersonCreatedBy();
 
     void setPersonCreatedBy(String personCreatedBy);
@@ -92,6 +96,10 @@ public interface YearPlanMvoStateEvent extends Event
         Boolean getIsPropertyPersonLovesRemoved();
 
         void setIsPropertyPersonLovesRemoved(Boolean removed);
+
+        Boolean getIsPropertyPersonEmergencyContactRemoved();
+
+        void setIsPropertyPersonEmergencyContactRemoved(Boolean removed);
 
         Boolean getIsPropertyPersonCreatedByRemoved();
 

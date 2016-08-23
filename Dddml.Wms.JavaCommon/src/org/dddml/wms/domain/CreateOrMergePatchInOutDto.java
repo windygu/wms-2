@@ -18,14 +18,14 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isSOTransaction = isSOTransaction;
     }
 
-    private DocumentActionDto documentAction;
+    private String documentAction;
 
-    public DocumentActionDto getDocumentAction()
+    public String getDocumentAction()
     {
         return this.documentAction;
     }
 
-    public void setDocumentAction(DocumentActionDto documentAction)
+    public void setDocumentAction(String documentAction)
     {
         this.documentAction = documentAction;
     }

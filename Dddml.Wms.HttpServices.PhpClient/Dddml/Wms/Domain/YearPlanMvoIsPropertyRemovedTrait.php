@@ -126,6 +126,29 @@ trait YearPlanMvoIsPropertyRemovedTrait
      *
      * @var boolean
      */
+    private $isPropertyPersonEmergencyContactRemoved = false;
+
+    /**
+     * @return boolean
+     */
+    public function getIsPropertyPersonEmergencyContactRemoved()
+    {
+        return $this->isPropertyPersonEmergencyContactRemoved;
+    }
+
+    /**
+     * @param boolean $isPropertyPersonEmergencyContactRemoved
+     */
+    public function setIsPropertyPersonEmergencyContactRemoved($isPropertyPersonEmergencyContactRemoved)
+    {
+        $this->isPropertyPersonEmergencyContactRemoved = $isPropertyPersonEmergencyContactRemoved;
+    }
+
+    /**
+     * @Type("boolean")
+     *
+     * @var boolean
+     */
     private $isPropertyPersonCreatedByRemoved = false;
 
     /**

@@ -35,12 +35,12 @@ class CreateOrMergePatchInOut extends AbstractInOutCommand
     }
 
     /**
-     * @Type("Dddml\Wms\Domain\DocumentAction")
+     * @Type("string")
      */
     private $documentAction;
 
     /**
-     * @return DocumentAction
+     * @return string
      */
     public function getDocumentAction()
     {
@@ -48,7 +48,7 @@ class CreateOrMergePatchInOut extends AbstractInOutCommand
     }
 
     /**
-     * @param DocumentAction $documentAction
+     * @param string $documentAction
      */
     public function setDocumentAction($documentAction)
     {

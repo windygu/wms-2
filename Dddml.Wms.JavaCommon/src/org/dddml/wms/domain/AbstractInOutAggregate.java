@@ -357,9 +357,9 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
 
     protected void newInOutDocumentActionCommandAndExecute(InOutCommand.MergePatchInOut c, InOutState s, InOutStateEvent.InOutStateMergePatched e)
     {
-        PropertyCommandHandler<DocumentAction, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
-        DocumentAction pCmdContent = c.getDocumentAction();
-        PropertyCommand<DocumentAction, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<DocumentAction, String>();
+        PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
+        String pCmdContent = c.getDocumentAction();
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
         pCmd.setContent(pCmdContent);
         pCmd.setStateGetter(() -> s.getDocumentStatus());
         pCmd.setStateSetter(p -> e.setDocumentStatus(p));
@@ -369,9 +369,9 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
 
     protected void newInOutDocumentActionCommandAndExecute(InOutCommand.CreateInOut c, InOutState s, InOutStateEvent.InOutStateCreated e)
     {
-        PropertyCommandHandler<DocumentAction, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
-        DocumentAction pCmdContent = c.getDocumentAction();
-        PropertyCommand<DocumentAction, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<DocumentAction, String>();
+        PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
+        String pCmdContent = c.getDocumentAction();
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
         pCmd.setContent(pCmdContent);
         pCmd.setStateGetter(() -> s.getDocumentStatus());
         pCmd.setStateSetter(p -> e.setDocumentStatus(p));
@@ -379,9 +379,9 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         pCommandHandler.execute(pCmd);
     }
 
-    protected PropertyCommandHandler<DocumentAction, String> getInOutDocumentActionCommandHandler()
+    protected PropertyCommandHandler<String, String> getInOutDocumentActionCommandHandler()
     {
-        return (PropertyCommandHandler<DocumentAction, String>)ApplicationContext.current.get("InOutDocumentActionCommandHandler");
+        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("InOutDocumentActionCommandHandler");
     }
 
 

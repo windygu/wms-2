@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain
 
 		public virtual bool? InOutIsSOTransaction { get; set; }
 
-		public virtual DocumentAction DocumentAction { get; set; }
+		public virtual string DocumentAction { get; set; }
 
 		public virtual bool? InOutPosted { get; set; }
 

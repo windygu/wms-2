@@ -18,15 +18,6 @@ export default [
     ]
   },
   {
-    "name": "DocumentAction",
-    "plural": "DocumentActions",
-    "label": "Document Action",
-    "collectionLabel": "Document Actions",
-    "properties": [
-      { name: "name", label: "Name", chainingName: "name" }
-    ]
-  },
-  {
     "name": "OrganizationStructureId",
     "plural": "OrganizationStructureIds",
     "label": "Organization Structure Id",
@@ -42,6 +33,15 @@ export default [
     "collectionLabel": "Personal Names",
     "properties": [
       { name: "firstName", label: "First Name", chainingName: "firstName" }, { name: "lastName", label: "Last Name", chainingName: "lastName" }
+    ]
+  },
+  {
+    "name": "Contact",
+    "plural": "Contacts",
+    "label": "Contact",
+    "collectionLabel": "Contacts",
+    "properties": [
+      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName" }, { name: "phoneNumber", label: "Phone Number", chainingName: "phoneNumber" }, { name: "address", label: "Address", chainingName: "address" }
     ]
   },
   {

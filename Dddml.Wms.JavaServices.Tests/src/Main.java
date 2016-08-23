@@ -129,7 +129,7 @@ public class Main {
         InOutCommand.CreateInOut inOut = new AbstractInOutCommand.SimpleCreateInOut();
         inOut.setDocumentNumber(documentNumber);
         inOut.setCommandId(UUID.randomUUID().toString());
-        inOut.setDocumentAction(new DocumentAction(DocumentActionName.DRAFT));// 不能这样写：inOut.DocumentStatus = DocumentStatus.DRAFTED
+        inOut.setDocumentAction(DocumentAction.DRAFT);// 不能这样写：inOut.DocumentStatus = DocumentStatus.DRAFTED
         inOut.setChargeAmount(Money.of(CurrencyUnit.getInstance("CNY"), 10000));
         inOut.setFreightAmount(Money.of(CurrencyUnit.getInstance("CNY"), 400));
         inOut.setPOReference("test_PO_reference_yeah");
@@ -139,7 +139,7 @@ public class Main {
 
         InOutCommand.MergePatchInOut patchInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
         patchInOut.setDocumentNumber(documentNumber);
-        patchInOut.setDocumentAction(new DocumentAction(DocumentActionName.VOID));//不能这样写：patchInOut.DocumentStatus = DocumentStatus.VOIDED
+        patchInOut.setDocumentAction(DocumentAction.VOID);//不能这样写：patchInOut.DocumentStatus = DocumentStatus.VOIDED
         patchInOut.setVersion(inOutState1.getVersion());
         patchInOut.setCommandId(UUID.randomUUID().toString());
 

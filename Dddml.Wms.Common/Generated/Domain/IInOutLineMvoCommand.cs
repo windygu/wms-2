@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
 
 		bool? InOutIsSOTransaction { get; set; }
 
-		DocumentAction DocumentAction { get; set; }
+		string DocumentAction { get; set; }
 
 		bool? InOutPosted { get; set; }
 

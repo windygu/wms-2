@@ -57,6 +57,18 @@ public abstract class AbstractPersonCommand extends AbstractCommand implements P
             this.loves = loves;
         }
 
+        private Contact emergencyContact;
+
+        public Contact getEmergencyContact()
+        {
+            return this.emergencyContact;
+        }
+
+        public void setEmergencyContact(Contact emergencyContact)
+        {
+            this.emergencyContact = emergencyContact;
+        }
+
         private Boolean active;
 
         public Boolean getActive()
@@ -140,6 +152,18 @@ public abstract class AbstractPersonCommand extends AbstractCommand implements P
         public void setIsPropertyLovesRemoved(Boolean removed)
         {
             this.isPropertyLovesRemoved = removed;
+        }
+
+        private Boolean isPropertyEmergencyContactRemoved;
+
+        public Boolean getIsPropertyEmergencyContactRemoved()
+        {
+            return this.isPropertyEmergencyContactRemoved;
+        }
+
+        public void setIsPropertyEmergencyContactRemoved(Boolean removed)
+        {
+            this.isPropertyEmergencyContactRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

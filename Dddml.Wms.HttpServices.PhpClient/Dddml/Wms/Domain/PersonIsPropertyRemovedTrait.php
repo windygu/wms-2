@@ -57,6 +57,29 @@ trait PersonIsPropertyRemovedTrait
      *
      * @var boolean
      */
+    private $isPropertyEmergencyContactRemoved = false;
+
+    /**
+     * @return boolean
+     */
+    public function getIsPropertyEmergencyContactRemoved()
+    {
+        return $this->isPropertyEmergencyContactRemoved;
+    }
+
+    /**
+     * @param boolean $isPropertyEmergencyContactRemoved
+     */
+    public function setIsPropertyEmergencyContactRemoved($isPropertyEmergencyContactRemoved)
+    {
+        $this->isPropertyEmergencyContactRemoved = $isPropertyEmergencyContactRemoved;
+    }
+
+    /**
+     * @Type("boolean")
+     *
+     * @var boolean
+     */
     private $isPropertyActiveRemoved = false;
 
     /**

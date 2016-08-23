@@ -46,6 +46,18 @@ public abstract class AbstractPersonStateEvent extends AbstractStateEvent implem
         this.loves = loves;
     }
 
+    private Contact emergencyContact;
+
+    public Contact getEmergencyContact()
+    {
+        return this.emergencyContact;
+    }
+
+    public void setEmergencyContact(Contact emergencyContact)
+    {
+        this.emergencyContact = emergencyContact;
+    }
+
     private String createdBy;
 
     public String getCreatedBy()
@@ -237,6 +249,16 @@ public abstract class AbstractPersonStateEvent extends AbstractStateEvent implem
 
         public void setIsPropertyLovesRemoved(Boolean removed) {
             this.isPropertyLovesRemoved = removed;
+        }
+
+        private Boolean isPropertyEmergencyContactRemoved;
+
+        public Boolean getIsPropertyEmergencyContactRemoved() {
+            return this.isPropertyEmergencyContactRemoved;
+        }
+
+        public void setIsPropertyEmergencyContactRemoved(Boolean removed) {
+            this.isPropertyEmergencyContactRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

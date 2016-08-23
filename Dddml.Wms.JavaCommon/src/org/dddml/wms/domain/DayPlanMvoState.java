@@ -119,6 +119,10 @@ public interface DayPlanMvoState
 
     void setPersonLoves(PersonalName personLoves);
 
+    Contact getPersonEmergencyContact();
+
+    void setPersonEmergencyContact(Contact personEmergencyContact);
+
     Long getPersonVersion();
 
     void setPersonVersion(Long personVersion);

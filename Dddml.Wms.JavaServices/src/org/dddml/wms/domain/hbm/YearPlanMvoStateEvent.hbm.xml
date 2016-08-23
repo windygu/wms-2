@@ -30,6 +30,13 @@
 		<property name="lastName" column="personLovesLastName" length="50"/>
 	</component>
 
+	<component name="personEmergencyContact" class="org.dddml.wms.domain.Contact">
+		<property name="personalNameFirstName" column="personEmergencyContactPersonalNameFirstName" length="50"/>
+		<property name="personalNameLastName" column="personEmergencyContactPersonalNameLastName" length="50"/>
+		<property name="phoneNumber" column="personEmergencyContactPhoneNumber" />
+		<property name="address" column="personEmergencyContactAddress" />
+	</component>
+
 	<property name="personCreatedBy" ></property>
 
 	<property name="personCreatedAt" ></property>
@@ -65,6 +72,8 @@
         <property name="isPropertyPersonBirthDateRemoved" />
 
         <property name="isPropertyPersonLovesRemoved" />
+
+        <property name="isPropertyPersonEmergencyContactRemoved" />
 
         <property name="isPropertyPersonCreatedByRemoved" />
 

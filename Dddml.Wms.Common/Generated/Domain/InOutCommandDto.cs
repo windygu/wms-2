@@ -54,20 +54,7 @@ namespace Dddml.Wms.Domain
 
 		public virtual bool? IsSOTransaction { get; set; }
 
-
-		public virtual DocumentActionDto DocumentAction { get; set; }
-
-        DocumentAction ICreateOrMergePatchOrDeleteInOut.DocumentAction
-        {
-            get 
-            {
-                return this.DocumentAction.ToDocumentAction();
-            }
-            set 
-            {
-                this.DocumentAction = new DocumentActionDto(value);
-            }
-        }
+		public virtual string DocumentAction { get; set; }
 
 		public virtual bool? Posted { get; set; }
 

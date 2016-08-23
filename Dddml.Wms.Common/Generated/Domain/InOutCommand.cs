@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain
 
 		public virtual bool? IsSOTransaction { get; set; }
 
-		public virtual DocumentAction DocumentAction { get; set; }
+		public virtual string DocumentAction { get; set; }
 
 		public virtual bool? Posted { get; set; }
 

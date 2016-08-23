@@ -275,14 +275,14 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.inOutIsSOTransaction = inOutIsSOTransaction;
         }
 
-        private DocumentAction documentAction;
+        private String documentAction;
 
-        public DocumentAction getDocumentAction()
+        public String getDocumentAction()
         {
             return this.documentAction;
         }
 
-        public void setDocumentAction(DocumentAction documentAction)
+        public void setDocumentAction(String documentAction)
         {
             this.documentAction = documentAction;
         }

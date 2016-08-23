@@ -74,6 +74,7 @@ public abstract class AbstractPersonAggregate extends AbstractAggregate implemen
         PersonStateEvent.PersonStateCreated e = newPersonStateCreated(stateEventId);
         e.setBirthDate(c.getBirthDate());
         e.setLoves(c.getLoves());
+        e.setEmergencyContact(c.getEmergencyContact());
         e.setActive(c.getActive());
         ((AbstractPersonStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -95,9 +96,11 @@ public abstract class AbstractPersonAggregate extends AbstractAggregate implemen
         PersonStateEvent.PersonStateMergePatched e = newPersonStateMergePatched(stateEventId);
         e.setBirthDate(c.getBirthDate());
         e.setLoves(c.getLoves());
+        e.setEmergencyContact(c.getEmergencyContact());
         e.setActive(c.getActive());
         e.setIsPropertyBirthDateRemoved(c.getIsPropertyBirthDateRemoved());
         e.setIsPropertyLovesRemoved(c.getIsPropertyLovesRemoved());
+        e.setIsPropertyEmergencyContactRemoved(c.getIsPropertyEmergencyContactRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractPersonStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

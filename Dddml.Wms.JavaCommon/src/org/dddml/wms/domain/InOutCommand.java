@@ -23,9 +23,9 @@ public interface InOutCommand extends Command
 
         void setIsSOTransaction(Boolean isSOTransaction);
 
-        DocumentAction getDocumentAction();
+        String getDocumentAction();
 
-        void setDocumentAction(DocumentAction documentAction);
+        void setDocumentAction(String documentAction);
 
         Boolean getPosted();
 

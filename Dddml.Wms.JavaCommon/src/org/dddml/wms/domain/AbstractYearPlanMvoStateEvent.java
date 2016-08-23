@@ -106,6 +106,18 @@ public abstract class AbstractYearPlanMvoStateEvent extends AbstractStateEvent i
         this.personLoves = personLoves;
     }
 
+    private Contact personEmergencyContact;
+
+    public Contact getPersonEmergencyContact()
+    {
+        return this.personEmergencyContact;
+    }
+
+    public void setPersonEmergencyContact(Contact personEmergencyContact)
+    {
+        this.personEmergencyContact = personEmergencyContact;
+    }
+
     private String personCreatedBy;
 
     public String getPersonCreatedBy()
@@ -277,6 +289,16 @@ public abstract class AbstractYearPlanMvoStateEvent extends AbstractStateEvent i
 
         public void setIsPropertyPersonLovesRemoved(Boolean removed) {
             this.isPropertyPersonLovesRemoved = removed;
+        }
+
+        private Boolean isPropertyPersonEmergencyContactRemoved;
+
+        public Boolean getIsPropertyPersonEmergencyContactRemoved() {
+            return this.isPropertyPersonEmergencyContactRemoved;
+        }
+
+        public void setIsPropertyPersonEmergencyContactRemoved(Boolean removed) {
+            this.isPropertyPersonEmergencyContactRemoved = removed;
         }
 
         private Boolean isPropertyPersonCreatedByRemoved;

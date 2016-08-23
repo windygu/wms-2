@@ -68,6 +68,7 @@ namespace Dddml.Wms.Domain
             cmd.YearPlanDeleted = state.YearPlanDeleted;
             cmd.PersonBirthDate = state.PersonBirthDate;
             cmd.PersonLoves = state.PersonLoves;
+            cmd.PersonEmergencyContact = state.PersonEmergencyContact;
             cmd.PersonCreatedBy = state.PersonCreatedBy;
             cmd.PersonCreatedAt = state.PersonCreatedAt;
             cmd.PersonUpdatedBy = state.PersonUpdatedBy;
@@ -83,6 +84,7 @@ namespace Dddml.Wms.Domain
             if (state.YearPlanCreatedBy == null) { cmd.IsPropertyYearPlanCreatedByRemoved = true; }
             if (state.YearPlanUpdatedBy == null) { cmd.IsPropertyYearPlanUpdatedByRemoved = true; }
             if (state.PersonLoves == null) { cmd.IsPropertyPersonLovesRemoved = true; }
+            if (state.PersonEmergencyContact == null) { cmd.IsPropertyPersonEmergencyContactRemoved = true; }
             if (state.PersonCreatedBy == null) { cmd.IsPropertyPersonCreatedByRemoved = true; }
             if (state.PersonUpdatedBy == null) { cmd.IsPropertyPersonUpdatedByRemoved = true; }
             return cmd;
@@ -117,6 +119,7 @@ namespace Dddml.Wms.Domain
             cmd.YearPlanDeleted = state.YearPlanDeleted;
             cmd.PersonBirthDate = state.PersonBirthDate;
             cmd.PersonLoves = state.PersonLoves;
+            cmd.PersonEmergencyContact = state.PersonEmergencyContact;
             cmd.PersonCreatedBy = state.PersonCreatedBy;
             cmd.PersonCreatedAt = state.PersonCreatedAt;
             cmd.PersonUpdatedBy = state.PersonUpdatedBy;

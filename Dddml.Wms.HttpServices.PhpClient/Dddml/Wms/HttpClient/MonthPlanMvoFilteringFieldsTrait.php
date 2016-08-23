@@ -38,6 +38,10 @@ trait MonthPlanMvoFilteringFieldsTrait
             'MonthPlanId.Month' => 'integer',
             'PersonLoves.FirstName' => 'string',
             'PersonLoves.LastName' => 'string',
+            'PersonEmergencyContact.PersonalNameFirstName' => 'string',
+            'PersonEmergencyContact.PersonalNameLastName' => 'string',
+            'PersonEmergencyContact.PhoneNumber' => 'string',
+            'PersonEmergencyContact.Address' => 'string',
         ];
     }
 

@@ -62,6 +62,16 @@ namespace Dddml.Wms.Domain {
 			this.personLoves = personLoves;
 		}
 
+		private personEmergencyContact: Contact;
+
+		getPersonEmergencyContact(): Contact {
+			return this.personEmergencyContact;
+		}
+
+		setPersonEmergencyContact(personEmergencyContact: Contact) {
+			this.personEmergencyContact = personEmergencyContact;
+		}
+
 		private personCreatedBy: string;
 
 		getPersonCreatedBy(): string {

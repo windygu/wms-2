@@ -434,12 +434,12 @@ class CreateOrMergePatchInOutLineMvo extends AbstractInOutLineMvoCommand
     }
 
     /**
-     * @Type("Dddml\Wms\Domain\DocumentAction")
+     * @Type("string")
      */
     private $documentAction;
 
     /**
-     * @return DocumentAction
+     * @return string
      */
     public function getDocumentAction()
     {
@@ -447,7 +447,7 @@ class CreateOrMergePatchInOutLineMvo extends AbstractInOutLineMvoCommand
     }
 
     /**
-     * @param DocumentAction $documentAction
+     * @param string $documentAction
      */
     public function setDocumentAction($documentAction)
     {

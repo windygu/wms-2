@@ -69,6 +69,10 @@ public interface MonthPlanMvoCommand extends Command
 
         void setPersonLoves(PersonalName personLoves);
 
+        Contact getPersonEmergencyContact();
+
+        void setPersonEmergencyContact(Contact personEmergencyContact);
+
         String getPersonCreatedBy();
 
         void setPersonCreatedBy(String personCreatedBy);
@@ -152,6 +156,10 @@ public interface MonthPlanMvoCommand extends Command
         Boolean getIsPropertyPersonLovesRemoved();
 
         void setIsPropertyPersonLovesRemoved(Boolean removed);
+
+        Boolean getIsPropertyPersonEmergencyContactRemoved();
+
+        void setIsPropertyPersonEmergencyContactRemoved(Boolean removed);
 
         Boolean getIsPropertyPersonCreatedByRemoved();
 

@@ -23,6 +23,10 @@ public final class PersonFilteringProperties
             "personalName.lastName",
             "loves.firstName",
             "loves.lastName",
+            "emergencyContact.personalNameFirstName",
+            "emergencyContact.personalNameLastName",
+            "emergencyContact.phoneNumber",
+            "emergencyContact.address",
     };
 
     public static final String[] propertyTypes = new String[] {
@@ -34,6 +38,10 @@ public final class PersonFilteringProperties
             "Date",
             "Boolean",
             "Boolean",
+            "String",
+            "String",
+            "String",
+            "String",
             "String",
             "String",
             "String",
