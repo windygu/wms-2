@@ -3,6 +3,36 @@
 alter table AttributeSetInstanceStateEventRemovedProperties  drop foreign key FK9C8A405747E4A019
 ;
 
+    
+alter table TeamPlayers  drop foreign key FKB13B0820CF73904F
+;
+
+    
+alter table TeamMascots  drop foreign key FK5FD05D69CF73904F
+;
+
+    
+alter table TeamStateEventPlayers  drop foreign key FKA55D710EDFD9A6F1
+;
+
+    
+alter table TeamStateEventMascots  drop foreign key FK750DD7B3DFD9A6F1
+;
+
+    drop table if exists AttributeSetInstances;
+
+    drop table if exists AttributeSetInstanceStateEvents;
+
+    drop table if exists AttributeSetInstanceStateEventRemovedProperties;
+
+    drop table if exists AttributeSetInstanceExtensionFieldGroups;
+
+    drop table if exists AttributeSetInstanceExtensionFieldGroupStateEvents;
+
+    drop table if exists AttributeSetInstanceExtensionFields;
+
+    drop table if exists AttributeSetInstanceExtensionFieldStateEvents;
+
     drop table if exists Attributes;
 
     drop table if exists AttributeStateEvents;
@@ -19,19 +49,17 @@ alter table AttributeSetInstanceStateEventRemovedProperties  drop foreign key FK
 
     drop table if exists AttributeUseStateEvents;
 
-    drop table if exists AttributeSetInstances;
+    drop table if exists Audiences;
 
-    drop table if exists AttributeSetInstanceStateEvents;
+    drop table if exists AudienceStateEvents;
 
-    drop table if exists AttributeSetInstanceStateEventRemovedProperties;
+    drop table if exists DayPlans;
 
-    drop table if exists AttributeSetInstanceExtensionFieldGroups;
+    drop table if exists DayPlanStateEvents;
 
-    drop table if exists AttributeSetInstanceExtensionFieldGroupStateEvents;
+    drop table if exists AttributeSetInstanceExtensionField_RV;
 
-    drop table if exists AttributeSetInstanceExtensionFields;
-
-    drop table if exists AttributeSetInstanceExtensionFieldStateEvents;
+    drop table if exists AttributeSetInstanceExtensionFieldMvoStateEvents;
 
     drop table if exists AttributeValue_RV;
 
@@ -41,45 +69,9 @@ alter table AttributeSetInstanceStateEventRemovedProperties  drop foreign key FK
 
     drop table if exists AttributeUseMvoStateEvents;
 
-    drop table if exists AttributeSetInstanceExtensionField_RV;
+    drop table if exists DayPlan_RV;
 
-    drop table if exists AttributeSetInstanceExtensionFieldMvoStateEvents;
-
-    drop table if exists Audiences;
-
-    drop table if exists AudienceStateEvents;
-
-    drop table if exists InOuts;
-
-    drop table if exists InOutStateEvents;
-
-    drop table if exists InOutLines;
-
-    drop table if exists InOutLineStateEvents;
-
-    drop table if exists Warehouses;
-
-    drop table if exists WarehouseStateEvents;
-
-    drop table if exists Locators;
-
-    drop table if exists LocatorStateEvents;
-
-    drop table if exists Organizations;
-
-    drop table if exists OrganizationStateEvents;
-
-    drop table if exists OrganizationStructureTypes;
-
-    drop table if exists OrganizationStructureTypeStateEvents;
-
-    drop table if exists OrganizationStructures;
-
-    drop table if exists OrganizationStructureStateEvents;
-
-    drop table if exists InOutLine_RV;
-
-    drop table if exists InOutLineMvoStateEvents;
+    drop table if exists DayPlanMvoStateEvents;
 
     drop table if exists Roles;
 
@@ -93,205 +85,105 @@ alter table AttributeSetInstanceStateEventRemovedProperties  drop foreign key FK
 
     drop table if exists RolePermissionStateEvents;
 
-    drop table if exists UserRoles;
-
-    drop table if exists UserRoleStateEvents;
-
-    drop table if exists UserPermissions;
-
-    drop table if exists UserPermissionStateEvents;
-
     drop table if exists Users;
 
     drop table if exists UserStateEvents;
 
-    drop table if exists UserRole_RV;
+    drop table if exists UserRoles;
 
-    drop table if exists UserRoleMvoStateEvents;
-
-    drop table if exists UserPermission_RV;
-
-    drop table if exists UserPermissionMvoStateEvents;
+    drop table if exists UserRoleStateEvents;
 
     drop table if exists UserClaims;
 
     drop table if exists UserClaimStateEvents;
 
-    drop table if exists UserClaim_RV;
+    drop table if exists UserPermissions;
 
-    drop table if exists UserClaimMvoStateEvents;
+    drop table if exists UserPermissionStateEvents;
 
     drop table if exists UserLogins;
 
     drop table if exists UserLoginStateEvents;
 
+    drop table if exists InOuts;
+
+    drop table if exists InOutStateEvents;
+
+    drop table if exists InOutLines;
+
+    drop table if exists InOutLineStateEvents;
+
+    drop table if exists Organizations;
+
+    drop table if exists OrganizationStateEvents;
+
+    drop table if exists OrganizationStructureTypes;
+
+    drop table if exists OrganizationStructureTypeStateEvents;
+
+    drop table if exists OrganizationStructures;
+
+    drop table if exists OrganizationStructureStateEvents;
+
+    drop table if exists Warehouses;
+
+    drop table if exists WarehouseStateEvents;
+
+    drop table if exists Locators;
+
+    drop table if exists LocatorStateEvents;
+
+    drop table if exists People;
+
+    drop table if exists PersonStateEvents;
+
+    drop table if exists YearPlans;
+
+    drop table if exists YearPlanStateEvents;
+
+    drop table if exists MonthPlans;
+
+    drop table if exists MonthPlanStateEvents;
+
+    drop table if exists Teams;
+
+    drop table if exists TeamPlayers;
+
+    drop table if exists TeamMascots;
+
+    drop table if exists TeamStateEvents;
+
+    drop table if exists TeamStateEventPlayers;
+
+    drop table if exists TeamStateEventMascots;
+
+    drop table if exists UserRole_RV;
+
+    drop table if exists UserRoleMvoStateEvents;
+
+    drop table if exists UserClaim_RV;
+
+    drop table if exists UserClaimMvoStateEvents;
+
+    drop table if exists UserPermission_RV;
+
+    drop table if exists UserPermissionMvoStateEvents;
+
     drop table if exists UserLogin_RV;
 
     drop table if exists UserLoginMvoStateEvents;
 
-    create table Attributes (
-        AttributeId VARCHAR(50) not null,
-       Version BIGINT not null,
-       Name VARCHAR(255),
-       OrganizationId VARCHAR(255),
-       Description VARCHAR(255),
-       IsMandatory TINYINT(1),
-       IsInstanceAttribute TINYINT(1),
-       AttributeValueType VARCHAR(255),
-       AttributeValueLength INTEGER,
-       IsList TINYINT(1),
-       FieldName VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (AttributeId),
-      unique (FieldName)
-    );
+    drop table if exists InOutLine_RV;
 
-    create table AttributeStateEvents (
-        AttributeId VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       OrganizationId VARCHAR(255),
-       Description VARCHAR(255),
-       IsMandatory TINYINT(1),
-       IsInstanceAttribute TINYINT(1),
-       AttributeValueType VARCHAR(255),
-       AttributeValueLength INTEGER,
-       IsList TINYINT(1),
-       FieldName VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyOrganizationIdRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyIsMandatoryRemoved TINYINT(1),
-       IsPropertyIsInstanceAttributeRemoved TINYINT(1),
-       IsPropertyAttributeValueTypeRemoved TINYINT(1),
-       IsPropertyAttributeValueLengthRemoved TINYINT(1),
-       IsPropertyIsListRemoved TINYINT(1),
-       IsPropertyFieldNameRemoved TINYINT(1),
-       IsPropertyReferenceIdRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (AttributeId, Version),
-      unique (FieldName)
-    );
+    drop table if exists InOutLineMvoStateEvents;
 
-    create table AttributeValues (
-        AttributeValueIdAttributeId VARCHAR(50) not null,
-       AttributeValueIdValue VARCHAR(50) not null,
-       Version BIGINT not null,
-       Name VARCHAR(255),
-       Description VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (AttributeValueIdAttributeId, AttributeValueIdValue)
-    );
+    drop table if exists YearPlan_RV;
 
-    create table AttributeValueStateEvents (
-        AttributeValueIdAttributeId VARCHAR(50) not null,
-       AttributeValueIdValue VARCHAR(50) not null,
-       AttributeVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       Description VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyReferenceIdRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (AttributeValueIdAttributeId, AttributeValueIdValue, AttributeVersion)
-    );
+    drop table if exists YearPlanMvoStateEvents;
 
-    create table AttributeSets (
-        AttributeSetId VARCHAR(50) not null,
-       Version BIGINT not null,
-       Name VARCHAR(255),
-       OrganizationId VARCHAR(255),
-       Description VARCHAR(255),
-       SerialNumberAttributeId VARCHAR(255),
-       LotAttributeId VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (AttributeSetId)
-    );
+    drop table if exists MonthPlan_RV;
 
-    create table AttributeSetStateEvents (
-        AttributeSetId VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       OrganizationId VARCHAR(255),
-       Description VARCHAR(255),
-       SerialNumberAttributeId VARCHAR(255),
-       LotAttributeId VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyOrganizationIdRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertySerialNumberAttributeIdRemoved TINYINT(1),
-       IsPropertyLotAttributeIdRemoved TINYINT(1),
-       IsPropertyReferenceIdRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (AttributeSetId, Version)
-    );
-
-    create table AttributeUses (
-        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
-       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
-       Version BIGINT not null,
-       SequenceNumber INTEGER,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
-    );
-
-    create table AttributeUseStateEvents (
-        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
-       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
-       AttributeSetVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       SequenceNumber INTEGER,
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertySequenceNumberRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
-    );
+    drop table if exists MonthPlanMvoStateEvents;
 
     create table AttributeSetInstances (
         AttributeSetInstanceId VARCHAR(50) not null,
@@ -1332,6 +1224,317 @@ alter table AttributeSetInstanceStateEventRemovedProperties  drop foreign key FK
       unique (Alias)
     );
 
+    create table Attributes (
+        AttributeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       Name VARCHAR(255),
+       OrganizationId VARCHAR(255),
+       Description VARCHAR(255),
+       IsMandatory TINYINT(1),
+       IsInstanceAttribute TINYINT(1),
+       AttributeValueType VARCHAR(255),
+       AttributeValueLength INTEGER,
+       IsList TINYINT(1),
+       FieldName VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (AttributeId),
+      unique (FieldName)
+    );
+
+    create table AttributeStateEvents (
+        AttributeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       OrganizationId VARCHAR(255),
+       Description VARCHAR(255),
+       IsMandatory TINYINT(1),
+       IsInstanceAttribute TINYINT(1),
+       AttributeValueType VARCHAR(255),
+       AttributeValueLength INTEGER,
+       IsList TINYINT(1),
+       FieldName VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyOrganizationIdRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyIsMandatoryRemoved TINYINT(1),
+       IsPropertyIsInstanceAttributeRemoved TINYINT(1),
+       IsPropertyAttributeValueTypeRemoved TINYINT(1),
+       IsPropertyAttributeValueLengthRemoved TINYINT(1),
+       IsPropertyIsListRemoved TINYINT(1),
+       IsPropertyFieldNameRemoved TINYINT(1),
+       IsPropertyReferenceIdRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (AttributeId, Version),
+      unique (FieldName)
+    );
+
+    create table AttributeValues (
+        AttributeValueIdAttributeId VARCHAR(50) not null,
+       AttributeValueIdValue VARCHAR(50) not null,
+       Version BIGINT not null,
+       Name VARCHAR(255),
+       Description VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (AttributeValueIdAttributeId, AttributeValueIdValue)
+    );
+
+    create table AttributeValueStateEvents (
+        AttributeValueIdAttributeId VARCHAR(50) not null,
+       AttributeValueIdValue VARCHAR(50) not null,
+       AttributeVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       Description VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyReferenceIdRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (AttributeValueIdAttributeId, AttributeValueIdValue, AttributeVersion)
+    );
+
+    create table AttributeSets (
+        AttributeSetId VARCHAR(50) not null,
+       Version BIGINT not null,
+       Name VARCHAR(255),
+       OrganizationId VARCHAR(255),
+       Description VARCHAR(255),
+       SerialNumberAttributeId VARCHAR(255),
+       LotAttributeId VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (AttributeSetId)
+    );
+
+    create table AttributeSetStateEvents (
+        AttributeSetId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       OrganizationId VARCHAR(255),
+       Description VARCHAR(255),
+       SerialNumberAttributeId VARCHAR(255),
+       LotAttributeId VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyOrganizationIdRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertySerialNumberAttributeIdRemoved TINYINT(1),
+       IsPropertyLotAttributeIdRemoved TINYINT(1),
+       IsPropertyReferenceIdRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (AttributeSetId, Version)
+    );
+
+    create table AttributeUses (
+        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
+       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       SequenceNumber INTEGER,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
+    );
+
+    create table AttributeUseStateEvents (
+        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
+       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
+       AttributeSetVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       SequenceNumber INTEGER,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertySequenceNumberRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
+    );
+
+    create table Audiences (
+        ClientId VARCHAR(50) not null,
+       Version BIGINT not null,
+       Name VARCHAR(255),
+       Base64Secret VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (ClientId)
+    );
+
+    create table AudienceStateEvents (
+        ClientId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       Base64Secret VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyBase64SecretRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (ClientId, Version)
+    );
+
+    create table DayPlans (
+        DayPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       DayPlanIdPersonalNameLastName VARCHAR(50) not null,
+       DayPlanIdYear INTEGER not null,
+       DayPlanIdMonth INTEGER not null,
+       DayPlanIdDay INTEGER not null,
+       Version BIGINT not null,
+       Description TEXT,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (DayPlanIdPersonalNameFirstName, DayPlanIdPersonalNameLastName, DayPlanIdYear, DayPlanIdMonth, DayPlanIdDay)
+    );
+
+    create table DayPlanStateEvents (
+        DayPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       DayPlanIdPersonalNameLastName VARCHAR(50) not null,
+       DayPlanIdYear INTEGER not null,
+       DayPlanIdMonth INTEGER not null,
+       DayPlanIdDay INTEGER not null,
+       PersonVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Description TEXT,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (DayPlanIdPersonalNameFirstName, DayPlanIdPersonalNameLastName, DayPlanIdYear, DayPlanIdMonth, DayPlanIdDay, PersonVersion)
+    );
+
+    create table AttributeSetInstanceExtensionField_RV (
+        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
+       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
+       AttrSetInstEFGroupVersion BIGINT not null,
+       Name VARCHAR(255),
+       Type VARCHAR(255),
+       Length INTEGER,
+       Alias VARCHAR(255),
+       Description VARCHAR(255),
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       AttrSetInstEFGroupFieldType VARCHAR(255),
+       AttrSetInstEFGroupFieldLength INTEGER,
+       AttrSetInstEFGroupFieldCount INTEGER,
+       AttrSetInstEFGroupNameFormat VARCHAR(255),
+       AttrSetInstEFGroupDescription VARCHAR(255),
+       AttrSetInstEFGroupCreatedBy VARCHAR(255),
+       AttrSetInstEFGroupCreatedAt DATETIME,
+       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
+       AttrSetInstEFGroupUpdatedAt DATETIME,
+       AttrSetInstEFGroupActive TINYINT(1),
+       AttrSetInstEFGroupDeleted TINYINT(1),
+       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex),
+      unique (Name),
+      unique (Alias)
+    );
+
+    create table AttributeSetInstanceExtensionFieldMvoStateEvents (
+        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
+       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
+       AttrSetInstEFGroupVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       Type VARCHAR(255),
+       Length INTEGER,
+       Alias VARCHAR(255),
+       Description VARCHAR(255),
+       Version BIGINT,
+       Active TINYINT(1),
+       AttrSetInstEFGroupFieldType VARCHAR(255),
+       AttrSetInstEFGroupFieldLength INTEGER,
+       AttrSetInstEFGroupFieldCount INTEGER,
+       AttrSetInstEFGroupNameFormat VARCHAR(255),
+       AttrSetInstEFGroupDescription VARCHAR(255),
+       AttrSetInstEFGroupCreatedBy VARCHAR(255),
+       AttrSetInstEFGroupCreatedAt DATETIME,
+       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
+       AttrSetInstEFGroupUpdatedAt DATETIME,
+       AttrSetInstEFGroupActive TINYINT(1),
+       AttrSetInstEFGroupDeleted TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyTypeRemoved TINYINT(1),
+       IsPropertyLengthRemoved TINYINT(1),
+       IsPropertyAliasRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupFieldTypeRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupFieldLengthRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupFieldCountRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupNameFormatRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupDescriptionRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupCreatedByRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupCreatedAtRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupUpdatedByRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupUpdatedAtRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupActiveRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupDeletedRemoved TINYINT(1),
+       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex, AttrSetInstEFGroupVersion),
+      unique (Name),
+      unique (Alias)
+    );
+
     create table AttributeValue_RV (
         AttributeValueIdAttributeId VARCHAR(50) not null,
        AttributeValueIdValue VARCHAR(50) not null,
@@ -1486,15 +1689,14 @@ alter table AttributeSetInstanceStateEventRemovedProperties  drop foreign key FK
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
     );
 
-    create table AttributeSetInstanceExtensionField_RV (
-        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
-       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
-       AttrSetInstEFGroupVersion BIGINT not null,
-       Name VARCHAR(255),
-       Type VARCHAR(255),
-       Length INTEGER,
-       Alias VARCHAR(255),
-       Description VARCHAR(255),
+    create table DayPlan_RV (
+        DayPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       DayPlanIdPersonalNameLastName VARCHAR(50) not null,
+       DayPlanIdYear INTEGER not null,
+       DayPlanIdMonth INTEGER not null,
+       DayPlanIdDay INTEGER not null,
+       PersonVersion BIGINT not null,
+       Description TEXT,
        Version BIGINT,
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
@@ -1502,99 +1704,374 @@ alter table AttributeSetInstanceStateEventRemovedProperties  drop foreign key FK
        UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
-       AttrSetInstEFGroupFieldType VARCHAR(255),
-       AttrSetInstEFGroupFieldLength INTEGER,
-       AttrSetInstEFGroupFieldCount INTEGER,
-       AttrSetInstEFGroupNameFormat VARCHAR(255),
-       AttrSetInstEFGroupDescription VARCHAR(255),
-       AttrSetInstEFGroupCreatedBy VARCHAR(255),
-       AttrSetInstEFGroupCreatedAt DATETIME,
-       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
-       AttrSetInstEFGroupUpdatedAt DATETIME,
-       AttrSetInstEFGroupActive TINYINT(1),
-       AttrSetInstEFGroupDeleted TINYINT(1),
-       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex),
-      unique (Name),
-      unique (Alias)
+       MonthPlanDescription TEXT,
+       MonthPlanVersion BIGINT,
+       MonthPlanCreatedBy VARCHAR(255),
+       MonthPlanCreatedAt DATETIME,
+       MonthPlanUpdatedBy VARCHAR(255),
+       MonthPlanUpdatedAt DATETIME,
+       MonthPlanActive TINYINT(1),
+       MonthPlanDeleted TINYINT(1),
+       YearPlanDescription TEXT,
+       YearPlanVersion BIGINT,
+       YearPlanCreatedBy VARCHAR(255),
+       YearPlanCreatedAt DATETIME,
+       YearPlanUpdatedBy VARCHAR(255),
+       YearPlanUpdatedAt DATETIME,
+       YearPlanActive TINYINT(1),
+       YearPlanDeleted TINYINT(1),
+       PersonBirthDate DATETIME,
+       PersonLovesFirstName VARCHAR(50),
+       PersonLovesLastName VARCHAR(50),
+       PersonEmergencyContactPersonalNameFirstName VARCHAR(50),
+       PersonEmergencyContactPersonalNameLastName VARCHAR(50),
+       PersonEmergencyContactPhoneNumber VARCHAR(255),
+       PersonEmergencyContactAddress VARCHAR(255),
+       PersonCreatedBy VARCHAR(255),
+       PersonCreatedAt DATETIME,
+       PersonUpdatedBy VARCHAR(255),
+       PersonUpdatedAt DATETIME,
+       PersonActive TINYINT(1),
+       PersonDeleted TINYINT(1),
+       primary key (DayPlanIdPersonalNameFirstName, DayPlanIdPersonalNameLastName, DayPlanIdYear, DayPlanIdMonth, DayPlanIdDay)
     );
 
-    create table AttributeSetInstanceExtensionFieldMvoStateEvents (
-        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
-       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
-       AttrSetInstEFGroupVersion BIGINT not null,
+    create table DayPlanMvoStateEvents (
+        DayPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       DayPlanIdPersonalNameLastName VARCHAR(50) not null,
+       DayPlanIdYear INTEGER not null,
+       DayPlanIdMonth INTEGER not null,
+       DayPlanIdDay INTEGER not null,
+       PersonVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       Type VARCHAR(255),
-       Length INTEGER,
-       Alias VARCHAR(255),
-       Description VARCHAR(255),
+       Description TEXT,
        Version BIGINT,
        Active TINYINT(1),
-       AttrSetInstEFGroupFieldType VARCHAR(255),
-       AttrSetInstEFGroupFieldLength INTEGER,
-       AttrSetInstEFGroupFieldCount INTEGER,
-       AttrSetInstEFGroupNameFormat VARCHAR(255),
-       AttrSetInstEFGroupDescription VARCHAR(255),
-       AttrSetInstEFGroupCreatedBy VARCHAR(255),
-       AttrSetInstEFGroupCreatedAt DATETIME,
-       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
-       AttrSetInstEFGroupUpdatedAt DATETIME,
-       AttrSetInstEFGroupActive TINYINT(1),
-       AttrSetInstEFGroupDeleted TINYINT(1),
+       MonthPlanDescription TEXT,
+       MonthPlanVersion BIGINT,
+       MonthPlanCreatedBy VARCHAR(255),
+       MonthPlanCreatedAt DATETIME,
+       MonthPlanUpdatedBy VARCHAR(255),
+       MonthPlanUpdatedAt DATETIME,
+       MonthPlanActive TINYINT(1),
+       MonthPlanDeleted TINYINT(1),
+       YearPlanDescription TEXT,
+       YearPlanVersion BIGINT,
+       YearPlanCreatedBy VARCHAR(255),
+       YearPlanCreatedAt DATETIME,
+       YearPlanUpdatedBy VARCHAR(255),
+       YearPlanUpdatedAt DATETIME,
+       YearPlanActive TINYINT(1),
+       YearPlanDeleted TINYINT(1),
+       PersonBirthDate DATETIME,
+       PersonLovesFirstName VARCHAR(50),
+       PersonLovesLastName VARCHAR(50),
+       PersonEmergencyContactPersonalNameFirstName VARCHAR(50),
+       PersonEmergencyContactPersonalNameLastName VARCHAR(50),
+       PersonEmergencyContactPhoneNumber VARCHAR(255),
+       PersonEmergencyContactAddress VARCHAR(255),
+       PersonCreatedBy VARCHAR(255),
+       PersonCreatedAt DATETIME,
+       PersonUpdatedBy VARCHAR(255),
+       PersonUpdatedAt DATETIME,
+       PersonActive TINYINT(1),
+       PersonDeleted TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyTypeRemoved TINYINT(1),
-       IsPropertyLengthRemoved TINYINT(1),
-       IsPropertyAliasRemoved TINYINT(1),
        IsPropertyDescriptionRemoved TINYINT(1),
        IsPropertyVersionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupFieldTypeRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupFieldLengthRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupFieldCountRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupNameFormatRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupDescriptionRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupCreatedByRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupCreatedAtRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupUpdatedByRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupUpdatedAtRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupActiveRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupDeletedRemoved TINYINT(1),
-       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex, AttrSetInstEFGroupVersion),
-      unique (Name),
-      unique (Alias)
+       IsPropertyMonthPlanDescriptionRemoved TINYINT(1),
+       IsPropertyMonthPlanVersionRemoved TINYINT(1),
+       IsPropertyMonthPlanCreatedByRemoved TINYINT(1),
+       IsPropertyMonthPlanCreatedAtRemoved TINYINT(1),
+       IsPropertyMonthPlanUpdatedByRemoved TINYINT(1),
+       IsPropertyMonthPlanUpdatedAtRemoved TINYINT(1),
+       IsPropertyMonthPlanActiveRemoved TINYINT(1),
+       IsPropertyMonthPlanDeletedRemoved TINYINT(1),
+       IsPropertyYearPlanDescriptionRemoved TINYINT(1),
+       IsPropertyYearPlanVersionRemoved TINYINT(1),
+       IsPropertyYearPlanCreatedByRemoved TINYINT(1),
+       IsPropertyYearPlanCreatedAtRemoved TINYINT(1),
+       IsPropertyYearPlanUpdatedByRemoved TINYINT(1),
+       IsPropertyYearPlanUpdatedAtRemoved TINYINT(1),
+       IsPropertyYearPlanActiveRemoved TINYINT(1),
+       IsPropertyYearPlanDeletedRemoved TINYINT(1),
+       IsPropertyPersonBirthDateRemoved TINYINT(1),
+       IsPropertyPersonLovesRemoved TINYINT(1),
+       IsPropertyPersonEmergencyContactRemoved TINYINT(1),
+       IsPropertyPersonCreatedByRemoved TINYINT(1),
+       IsPropertyPersonCreatedAtRemoved TINYINT(1),
+       IsPropertyPersonUpdatedByRemoved TINYINT(1),
+       IsPropertyPersonUpdatedAtRemoved TINYINT(1),
+       IsPropertyPersonActiveRemoved TINYINT(1),
+       IsPropertyPersonDeletedRemoved TINYINT(1),
+       primary key (DayPlanIdPersonalNameFirstName, DayPlanIdPersonalNameLastName, DayPlanIdYear, DayPlanIdMonth, DayPlanIdDay, PersonVersion)
     );
 
-    create table Audiences (
-        ClientId VARCHAR(50) not null,
+    create table Roles (
+        RoleId VARCHAR(50) not null,
        Version BIGINT not null,
        Name VARCHAR(255),
-       Base64Secret VARCHAR(255),
+       Description VARCHAR(255),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
        UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
-       primary key (ClientId)
+       primary key (RoleId)
     );
 
-    create table AudienceStateEvents (
-        ClientId VARCHAR(50) not null,
+    create table RoleStateEvents (
+        RoleId VARCHAR(50) not null,
        Version BIGINT not null,
        StateEventType VARCHAR(255) not null,
        Name VARCHAR(255),
-       Base64Secret VARCHAR(255),
+       Description VARCHAR(255),
        Active TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
        IsPropertyNameRemoved TINYINT(1),
-       IsPropertyBase64SecretRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (ClientId, Version)
+       primary key (RoleId, Version)
+    );
+
+    create table Permissions (
+        PermissionId VARCHAR(50) not null,
+       Version BIGINT not null,
+       Name VARCHAR(255),
+       ParentPermissionId VARCHAR(255),
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (PermissionId)
+    );
+
+    create table PermissionStateEvents (
+        PermissionId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       ParentPermissionId VARCHAR(255),
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyParentPermissionIdRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (PermissionId, Version)
+    );
+
+    create table RolePermissions (
+        IdRoleId VARCHAR(255) not null,
+       IdPermissionId VARCHAR(255) not null,
+       Version BIGINT not null,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (IdRoleId, IdPermissionId)
+    );
+
+    create table RolePermissionStateEvents (
+        IdRoleId VARCHAR(255) not null,
+       IdPermissionId VARCHAR(255) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (IdRoleId, IdPermissionId, Version)
+    );
+
+    create table Users (
+        UserId VARCHAR(50) not null,
+       Version BIGINT not null,
+       UserName VARCHAR(255),
+       AccessFailedCount INTEGER,
+       Email VARCHAR(255),
+       EmailConfirmed TINYINT(1),
+       LockoutEnabled TINYINT(1),
+       LockoutEndDateUtc DATETIME,
+       PasswordHash VARCHAR(255),
+       PhoneNumber VARCHAR(255),
+       PhoneNumberConfirmed TINYINT(1),
+       TwoFactorEnabled TINYINT(1),
+       SecurityStamp VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (UserId),
+      unique (UserName)
+    );
+
+    create table UserStateEvents (
+        UserId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       UserName VARCHAR(255),
+       AccessFailedCount INTEGER,
+       Email VARCHAR(255),
+       EmailConfirmed TINYINT(1),
+       LockoutEnabled TINYINT(1),
+       LockoutEndDateUtc DATETIME,
+       PasswordHash VARCHAR(255),
+       PhoneNumber VARCHAR(255),
+       PhoneNumberConfirmed TINYINT(1),
+       TwoFactorEnabled TINYINT(1),
+       SecurityStamp VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyUserNameRemoved TINYINT(1),
+       IsPropertyAccessFailedCountRemoved TINYINT(1),
+       IsPropertyEmailRemoved TINYINT(1),
+       IsPropertyEmailConfirmedRemoved TINYINT(1),
+       IsPropertyLockoutEnabledRemoved TINYINT(1),
+       IsPropertyLockoutEndDateUtcRemoved TINYINT(1),
+       IsPropertyPasswordHashRemoved TINYINT(1),
+       IsPropertyPhoneNumberRemoved TINYINT(1),
+       IsPropertyPhoneNumberConfirmedRemoved TINYINT(1),
+       IsPropertyTwoFactorEnabledRemoved TINYINT(1),
+       IsPropertySecurityStampRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (UserId, Version),
+      unique (UserName)
+    );
+
+    create table UserRoles (
+        UserRoleIdUserId VARCHAR(50) not null,
+       UserRoleIdRoleId VARCHAR(50) not null,
+       Version BIGINT not null,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (UserRoleIdUserId, UserRoleIdRoleId)
+    );
+
+    create table UserRoleStateEvents (
+        UserRoleIdUserId VARCHAR(50) not null,
+       UserRoleIdRoleId VARCHAR(50) not null,
+       UserVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (UserRoleIdUserId, UserRoleIdRoleId, UserVersion)
+    );
+
+    create table UserClaims (
+        UserClaimIdUserId VARCHAR(50) not null,
+       UserClaimIdClaimId INTEGER not null,
+       Version BIGINT not null,
+       ClaimType VARCHAR(255),
+       ClaimValue VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (UserClaimIdUserId, UserClaimIdClaimId)
+    );
+
+    create table UserClaimStateEvents (
+        UserClaimIdUserId VARCHAR(50) not null,
+       UserClaimIdClaimId INTEGER not null,
+       UserVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       ClaimType VARCHAR(255),
+       ClaimValue VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyClaimTypeRemoved TINYINT(1),
+       IsPropertyClaimValueRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (UserClaimIdUserId, UserClaimIdClaimId, UserVersion)
+    );
+
+    create table UserPermissions (
+        UserPermissionIdUserId VARCHAR(50) not null,
+       UserPermissionIdPermissionId VARCHAR(50) not null,
+       Version BIGINT not null,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (UserPermissionIdUserId, UserPermissionIdPermissionId)
+    );
+
+    create table UserPermissionStateEvents (
+        UserPermissionIdUserId VARCHAR(50) not null,
+       UserPermissionIdPermissionId VARCHAR(50) not null,
+       UserVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (UserPermissionIdUserId, UserPermissionIdPermissionId, UserVersion)
+    );
+
+    create table UserLogins (
+        UserLoginIdUserId VARCHAR(50) not null,
+       UserLoginIdLoginKeyLoginProvider VARCHAR(255) not null,
+       UserLoginIdLoginKeyProviderKey VARCHAR(255) not null,
+       Version BIGINT not null,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (UserLoginIdUserId, UserLoginIdLoginKeyLoginProvider, UserLoginIdLoginKeyProviderKey)
+    );
+
+    create table UserLoginStateEvents (
+        UserLoginIdUserId VARCHAR(50) not null,
+       UserLoginIdLoginKeyLoginProvider VARCHAR(255) not null,
+       UserLoginIdLoginKeyProviderKey VARCHAR(255) not null,
+       UserVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (UserLoginIdUserId, UserLoginIdLoginKeyLoginProvider, UserLoginIdLoginKeyProviderKey, UserVersion)
     );
 
     create table InOuts (
@@ -1807,87 +2284,6 @@ alter table AttributeSetInstanceStateEventRemovedProperties  drop foreign key FK
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdSkuIdProductId, InOutLineIdSkuIdAttributeSetInstanceId, InOutVersion)
     );
 
-    create table Warehouses (
-        WarehouseId VARCHAR(50) not null,
-       Version BIGINT not null,
-       Name VARCHAR(255),
-       Description VARCHAR(255),
-       IsInTransit TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (WarehouseId)
-    );
-
-    create table WarehouseStateEvents (
-        WarehouseId VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       Description VARCHAR(255),
-       IsInTransit TINYINT(1),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyIsInTransitRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (WarehouseId, Version)
-    );
-
-    create table Locators (
-        LocatorId VARCHAR(50) not null,
-       Version BIGINT not null,
-       WarehouseId VARCHAR(255) not null,
-       ParentLocatorId VARCHAR(255),
-       LocatorType VARCHAR(255),
-       PriorityNumber VARCHAR(255),
-       IsDefault TINYINT(1),
-       X VARCHAR(255),
-       Y VARCHAR(255),
-       Z VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (LocatorId)
-    );
-
-    create table LocatorStateEvents (
-        LocatorId VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       WarehouseId VARCHAR(255) not null,
-       ParentLocatorId VARCHAR(255),
-       LocatorType VARCHAR(255),
-       PriorityNumber VARCHAR(255),
-       IsDefault TINYINT(1),
-       X VARCHAR(255),
-       Y VARCHAR(255),
-       Z VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyWarehouseIdRemoved TINYINT(1),
-       IsPropertyParentLocatorIdRemoved TINYINT(1),
-       IsPropertyLocatorTypeRemoved TINYINT(1),
-       IsPropertyPriorityNumberRemoved TINYINT(1),
-       IsPropertyIsDefaultRemoved TINYINT(1),
-       IsPropertyXRemoved TINYINT(1),
-       IsPropertyYRemoved TINYINT(1),
-       IsPropertyZRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (LocatorId, Version)
-    );
-
     create table Organizations (
         OrganizationId VARCHAR(50) not null,
        Version BIGINT not null,
@@ -1974,6 +2370,579 @@ alter table AttributeSetInstanceStateEventRemovedProperties  drop foreign key FK
        CommandId VARCHAR(255),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (IdOrganizationStructureTypeId, IdParentId, IdSubsidiaryId, Version)
+    );
+
+    create table Warehouses (
+        WarehouseId VARCHAR(50) not null,
+       Version BIGINT not null,
+       Name VARCHAR(255),
+       Description VARCHAR(255),
+       IsInTransit TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (WarehouseId)
+    );
+
+    create table WarehouseStateEvents (
+        WarehouseId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       Description VARCHAR(255),
+       IsInTransit TINYINT(1),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyIsInTransitRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (WarehouseId, Version)
+    );
+
+    create table Locators (
+        LocatorId VARCHAR(50) not null,
+       Version BIGINT not null,
+       WarehouseId VARCHAR(255) not null,
+       ParentLocatorId VARCHAR(255),
+       LocatorType VARCHAR(255),
+       PriorityNumber VARCHAR(255),
+       IsDefault TINYINT(1),
+       X VARCHAR(255),
+       Y VARCHAR(255),
+       Z VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (LocatorId)
+    );
+
+    create table LocatorStateEvents (
+        LocatorId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       WarehouseId VARCHAR(255) not null,
+       ParentLocatorId VARCHAR(255),
+       LocatorType VARCHAR(255),
+       PriorityNumber VARCHAR(255),
+       IsDefault TINYINT(1),
+       X VARCHAR(255),
+       Y VARCHAR(255),
+       Z VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyWarehouseIdRemoved TINYINT(1),
+       IsPropertyParentLocatorIdRemoved TINYINT(1),
+       IsPropertyLocatorTypeRemoved TINYINT(1),
+       IsPropertyPriorityNumberRemoved TINYINT(1),
+       IsPropertyIsDefaultRemoved TINYINT(1),
+       IsPropertyXRemoved TINYINT(1),
+       IsPropertyYRemoved TINYINT(1),
+       IsPropertyZRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (LocatorId, Version)
+    );
+
+    create table People (
+        PersonalNameFirstName VARCHAR(50) not null,
+       PersonalNameLastName VARCHAR(50) not null,
+       Version BIGINT not null,
+       BirthDate DATETIME,
+       LovesFirstName VARCHAR(50),
+       LovesLastName VARCHAR(50),
+       EmergencyContactPersonalNameFirstName VARCHAR(50),
+       EmergencyContactPersonalNameLastName VARCHAR(50),
+       EmergencyContactPhoneNumber VARCHAR(255),
+       EmergencyContactAddress VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (PersonalNameFirstName, PersonalNameLastName)
+    );
+
+    create table PersonStateEvents (
+        PersonalNameFirstName VARCHAR(50) not null,
+       PersonalNameLastName VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       BirthDate DATETIME,
+       LovesFirstName VARCHAR(50),
+       LovesLastName VARCHAR(50),
+       EmergencyContactPersonalNameFirstName VARCHAR(50),
+       EmergencyContactPersonalNameLastName VARCHAR(50),
+       EmergencyContactPhoneNumber VARCHAR(255),
+       EmergencyContactAddress VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyBirthDateRemoved TINYINT(1),
+       IsPropertyLovesRemoved TINYINT(1),
+       IsPropertyEmergencyContactRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (PersonalNameFirstName, PersonalNameLastName, Version)
+    );
+
+    create table YearPlans (
+        YearPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       YearPlanIdPersonalNameLastName VARCHAR(50) not null,
+       YearPlanIdYear INTEGER not null,
+       Version BIGINT not null,
+       Description TEXT,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (YearPlanIdPersonalNameFirstName, YearPlanIdPersonalNameLastName, YearPlanIdYear)
+    );
+
+    create table YearPlanStateEvents (
+        YearPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       YearPlanIdPersonalNameLastName VARCHAR(50) not null,
+       YearPlanIdYear INTEGER not null,
+       PersonVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Description TEXT,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (YearPlanIdPersonalNameFirstName, YearPlanIdPersonalNameLastName, YearPlanIdYear, PersonVersion)
+    );
+
+    create table MonthPlans (
+        MonthPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       MonthPlanIdPersonalNameLastName VARCHAR(50) not null,
+       MonthPlanIdYear INTEGER not null,
+       MonthPlanIdMonth INTEGER not null,
+       Version BIGINT not null,
+       Description TEXT,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (MonthPlanIdPersonalNameFirstName, MonthPlanIdPersonalNameLastName, MonthPlanIdYear, MonthPlanIdMonth)
+    );
+
+    create table MonthPlanStateEvents (
+        MonthPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       MonthPlanIdPersonalNameLastName VARCHAR(50) not null,
+       MonthPlanIdYear INTEGER not null,
+       MonthPlanIdMonth INTEGER not null,
+       PersonVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Description TEXT,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (MonthPlanIdPersonalNameFirstName, MonthPlanIdPersonalNameLastName, MonthPlanIdYear, MonthPlanIdMonth, PersonVersion)
+    );
+
+    create table Teams (
+        TeamName VARCHAR(50) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (TeamName)
+    );
+
+    create table TeamPlayers (
+        TeamName VARCHAR(50) not null,
+       FirstName VARCHAR(50) not null,
+       LastName VARCHAR(50) not null,
+       primary key (TeamName, FirstName, LastName)
+    );
+
+    create table TeamMascots (
+        TeamName VARCHAR(50) not null,
+       MascotsItem VARCHAR(255) not null,
+       primary key (TeamName, MascotsItem)
+    );
+
+    create table TeamStateEvents (
+        TeamName VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (TeamName, Version)
+    );
+
+    create table TeamStateEventPlayers (
+        TeamName VARCHAR(50) not null,
+       Version BIGINT not null,
+       FirstName VARCHAR(50) not null,
+       LastName VARCHAR(50) not null,
+       primary key (TeamName, Version, FirstName, LastName)
+    );
+
+    create table TeamStateEventMascots (
+        TeamName VARCHAR(50) not null,
+       Version BIGINT not null,
+       MascotsItem VARCHAR(255) not null,
+       primary key (TeamName, Version, MascotsItem)
+    );
+
+    create table UserRole_RV (
+        UserRoleIdUserId VARCHAR(50) not null,
+       UserRoleIdRoleId VARCHAR(50) not null,
+       UserVersion BIGINT not null,
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       UserUserName VARCHAR(255),
+       UserAccessFailedCount INTEGER,
+       UserEmail VARCHAR(255),
+       UserEmailConfirmed TINYINT(1),
+       UserLockoutEnabled TINYINT(1),
+       UserLockoutEndDateUtc DATETIME,
+       UserPasswordHash VARCHAR(255),
+       UserPhoneNumber VARCHAR(255),
+       UserPhoneNumberConfirmed TINYINT(1),
+       UserTwoFactorEnabled TINYINT(1),
+       UserSecurityStamp VARCHAR(255),
+       UserCreatedBy VARCHAR(255),
+       UserCreatedAt DATETIME,
+       UserUpdatedBy VARCHAR(255),
+       UserUpdatedAt DATETIME,
+       UserActive TINYINT(1),
+       UserDeleted TINYINT(1),
+       primary key (UserRoleIdUserId, UserRoleIdRoleId)
+    );
+
+    create table UserRoleMvoStateEvents (
+        UserRoleIdUserId VARCHAR(50) not null,
+       UserRoleIdRoleId VARCHAR(50) not null,
+       UserVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Version BIGINT,
+       Active TINYINT(1),
+       UserUserName VARCHAR(255),
+       UserAccessFailedCount INTEGER,
+       UserEmail VARCHAR(255),
+       UserEmailConfirmed TINYINT(1),
+       UserLockoutEnabled TINYINT(1),
+       UserLockoutEndDateUtc DATETIME,
+       UserPasswordHash VARCHAR(255),
+       UserPhoneNumber VARCHAR(255),
+       UserPhoneNumberConfirmed TINYINT(1),
+       UserTwoFactorEnabled TINYINT(1),
+       UserSecurityStamp VARCHAR(255),
+       UserCreatedBy VARCHAR(255),
+       UserCreatedAt DATETIME,
+       UserUpdatedBy VARCHAR(255),
+       UserUpdatedAt DATETIME,
+       UserActive TINYINT(1),
+       UserDeleted TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       IsPropertyUserUserNameRemoved TINYINT(1),
+       IsPropertyUserAccessFailedCountRemoved TINYINT(1),
+       IsPropertyUserEmailRemoved TINYINT(1),
+       IsPropertyUserEmailConfirmedRemoved TINYINT(1),
+       IsPropertyUserLockoutEnabledRemoved TINYINT(1),
+       IsPropertyUserLockoutEndDateUtcRemoved TINYINT(1),
+       IsPropertyUserPasswordHashRemoved TINYINT(1),
+       IsPropertyUserPhoneNumberRemoved TINYINT(1),
+       IsPropertyUserPhoneNumberConfirmedRemoved TINYINT(1),
+       IsPropertyUserTwoFactorEnabledRemoved TINYINT(1),
+       IsPropertyUserSecurityStampRemoved TINYINT(1),
+       IsPropertyUserCreatedByRemoved TINYINT(1),
+       IsPropertyUserCreatedAtRemoved TINYINT(1),
+       IsPropertyUserUpdatedByRemoved TINYINT(1),
+       IsPropertyUserUpdatedAtRemoved TINYINT(1),
+       IsPropertyUserActiveRemoved TINYINT(1),
+       IsPropertyUserDeletedRemoved TINYINT(1),
+       primary key (UserRoleIdUserId, UserRoleIdRoleId, UserVersion)
+    );
+
+    create table UserClaim_RV (
+        UserClaimIdUserId VARCHAR(50) not null,
+       UserClaimIdClaimId INTEGER not null,
+       UserVersion BIGINT not null,
+       ClaimType VARCHAR(255),
+       ClaimValue VARCHAR(255),
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       UserUserName VARCHAR(255),
+       UserAccessFailedCount INTEGER,
+       UserEmail VARCHAR(255),
+       UserEmailConfirmed TINYINT(1),
+       UserLockoutEnabled TINYINT(1),
+       UserLockoutEndDateUtc DATETIME,
+       UserPasswordHash VARCHAR(255),
+       UserPhoneNumber VARCHAR(255),
+       UserPhoneNumberConfirmed TINYINT(1),
+       UserTwoFactorEnabled TINYINT(1),
+       UserSecurityStamp VARCHAR(255),
+       UserCreatedBy VARCHAR(255),
+       UserCreatedAt DATETIME,
+       UserUpdatedBy VARCHAR(255),
+       UserUpdatedAt DATETIME,
+       UserActive TINYINT(1),
+       UserDeleted TINYINT(1),
+       primary key (UserClaimIdUserId, UserClaimIdClaimId)
+    );
+
+    create table UserClaimMvoStateEvents (
+        UserClaimIdUserId VARCHAR(50) not null,
+       UserClaimIdClaimId INTEGER not null,
+       UserVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       ClaimType VARCHAR(255),
+       ClaimValue VARCHAR(255),
+       Version BIGINT,
+       Active TINYINT(1),
+       UserUserName VARCHAR(255),
+       UserAccessFailedCount INTEGER,
+       UserEmail VARCHAR(255),
+       UserEmailConfirmed TINYINT(1),
+       UserLockoutEnabled TINYINT(1),
+       UserLockoutEndDateUtc DATETIME,
+       UserPasswordHash VARCHAR(255),
+       UserPhoneNumber VARCHAR(255),
+       UserPhoneNumberConfirmed TINYINT(1),
+       UserTwoFactorEnabled TINYINT(1),
+       UserSecurityStamp VARCHAR(255),
+       UserCreatedBy VARCHAR(255),
+       UserCreatedAt DATETIME,
+       UserUpdatedBy VARCHAR(255),
+       UserUpdatedAt DATETIME,
+       UserActive TINYINT(1),
+       UserDeleted TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyClaimTypeRemoved TINYINT(1),
+       IsPropertyClaimValueRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       IsPropertyUserUserNameRemoved TINYINT(1),
+       IsPropertyUserAccessFailedCountRemoved TINYINT(1),
+       IsPropertyUserEmailRemoved TINYINT(1),
+       IsPropertyUserEmailConfirmedRemoved TINYINT(1),
+       IsPropertyUserLockoutEnabledRemoved TINYINT(1),
+       IsPropertyUserLockoutEndDateUtcRemoved TINYINT(1),
+       IsPropertyUserPasswordHashRemoved TINYINT(1),
+       IsPropertyUserPhoneNumberRemoved TINYINT(1),
+       IsPropertyUserPhoneNumberConfirmedRemoved TINYINT(1),
+       IsPropertyUserTwoFactorEnabledRemoved TINYINT(1),
+       IsPropertyUserSecurityStampRemoved TINYINT(1),
+       IsPropertyUserCreatedByRemoved TINYINT(1),
+       IsPropertyUserCreatedAtRemoved TINYINT(1),
+       IsPropertyUserUpdatedByRemoved TINYINT(1),
+       IsPropertyUserUpdatedAtRemoved TINYINT(1),
+       IsPropertyUserActiveRemoved TINYINT(1),
+       IsPropertyUserDeletedRemoved TINYINT(1),
+       primary key (UserClaimIdUserId, UserClaimIdClaimId, UserVersion)
+    );
+
+    create table UserPermission_RV (
+        UserPermissionIdUserId VARCHAR(50) not null,
+       UserPermissionIdPermissionId VARCHAR(50) not null,
+       UserVersion BIGINT not null,
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       UserUserName VARCHAR(255),
+       UserAccessFailedCount INTEGER,
+       UserEmail VARCHAR(255),
+       UserEmailConfirmed TINYINT(1),
+       UserLockoutEnabled TINYINT(1),
+       UserLockoutEndDateUtc DATETIME,
+       UserPasswordHash VARCHAR(255),
+       UserPhoneNumber VARCHAR(255),
+       UserPhoneNumberConfirmed TINYINT(1),
+       UserTwoFactorEnabled TINYINT(1),
+       UserSecurityStamp VARCHAR(255),
+       UserCreatedBy VARCHAR(255),
+       UserCreatedAt DATETIME,
+       UserUpdatedBy VARCHAR(255),
+       UserUpdatedAt DATETIME,
+       UserActive TINYINT(1),
+       UserDeleted TINYINT(1),
+       primary key (UserPermissionIdUserId, UserPermissionIdPermissionId)
+    );
+
+    create table UserPermissionMvoStateEvents (
+        UserPermissionIdUserId VARCHAR(50) not null,
+       UserPermissionIdPermissionId VARCHAR(50) not null,
+       UserVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Version BIGINT,
+       Active TINYINT(1),
+       UserUserName VARCHAR(255),
+       UserAccessFailedCount INTEGER,
+       UserEmail VARCHAR(255),
+       UserEmailConfirmed TINYINT(1),
+       UserLockoutEnabled TINYINT(1),
+       UserLockoutEndDateUtc DATETIME,
+       UserPasswordHash VARCHAR(255),
+       UserPhoneNumber VARCHAR(255),
+       UserPhoneNumberConfirmed TINYINT(1),
+       UserTwoFactorEnabled TINYINT(1),
+       UserSecurityStamp VARCHAR(255),
+       UserCreatedBy VARCHAR(255),
+       UserCreatedAt DATETIME,
+       UserUpdatedBy VARCHAR(255),
+       UserUpdatedAt DATETIME,
+       UserActive TINYINT(1),
+       UserDeleted TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       IsPropertyUserUserNameRemoved TINYINT(1),
+       IsPropertyUserAccessFailedCountRemoved TINYINT(1),
+       IsPropertyUserEmailRemoved TINYINT(1),
+       IsPropertyUserEmailConfirmedRemoved TINYINT(1),
+       IsPropertyUserLockoutEnabledRemoved TINYINT(1),
+       IsPropertyUserLockoutEndDateUtcRemoved TINYINT(1),
+       IsPropertyUserPasswordHashRemoved TINYINT(1),
+       IsPropertyUserPhoneNumberRemoved TINYINT(1),
+       IsPropertyUserPhoneNumberConfirmedRemoved TINYINT(1),
+       IsPropertyUserTwoFactorEnabledRemoved TINYINT(1),
+       IsPropertyUserSecurityStampRemoved TINYINT(1),
+       IsPropertyUserCreatedByRemoved TINYINT(1),
+       IsPropertyUserCreatedAtRemoved TINYINT(1),
+       IsPropertyUserUpdatedByRemoved TINYINT(1),
+       IsPropertyUserUpdatedAtRemoved TINYINT(1),
+       IsPropertyUserActiveRemoved TINYINT(1),
+       IsPropertyUserDeletedRemoved TINYINT(1),
+       primary key (UserPermissionIdUserId, UserPermissionIdPermissionId, UserVersion)
+    );
+
+    create table UserLogin_RV (
+        UserLoginIdUserId VARCHAR(50) not null,
+       UserLoginIdLoginKeyLoginProvider VARCHAR(255) not null,
+       UserLoginIdLoginKeyProviderKey VARCHAR(255) not null,
+       UserVersion BIGINT not null,
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       UserUserName VARCHAR(255),
+       UserAccessFailedCount INTEGER,
+       UserEmail VARCHAR(255),
+       UserEmailConfirmed TINYINT(1),
+       UserLockoutEnabled TINYINT(1),
+       UserLockoutEndDateUtc DATETIME,
+       UserPasswordHash VARCHAR(255),
+       UserPhoneNumber VARCHAR(255),
+       UserPhoneNumberConfirmed TINYINT(1),
+       UserTwoFactorEnabled TINYINT(1),
+       UserSecurityStamp VARCHAR(255),
+       UserCreatedBy VARCHAR(255),
+       UserCreatedAt DATETIME,
+       UserUpdatedBy VARCHAR(255),
+       UserUpdatedAt DATETIME,
+       UserActive TINYINT(1),
+       UserDeleted TINYINT(1),
+       primary key (UserLoginIdUserId, UserLoginIdLoginKeyLoginProvider, UserLoginIdLoginKeyProviderKey)
+    );
+
+    create table UserLoginMvoStateEvents (
+        UserLoginIdUserId VARCHAR(50) not null,
+       UserLoginIdLoginKeyLoginProvider VARCHAR(255) not null,
+       UserLoginIdLoginKeyProviderKey VARCHAR(255) not null,
+       UserVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Version BIGINT,
+       Active TINYINT(1),
+       UserUserName VARCHAR(255),
+       UserAccessFailedCount INTEGER,
+       UserEmail VARCHAR(255),
+       UserEmailConfirmed TINYINT(1),
+       UserLockoutEnabled TINYINT(1),
+       UserLockoutEndDateUtc DATETIME,
+       UserPasswordHash VARCHAR(255),
+       UserPhoneNumber VARCHAR(255),
+       UserPhoneNumberConfirmed TINYINT(1),
+       UserTwoFactorEnabled TINYINT(1),
+       UserSecurityStamp VARCHAR(255),
+       UserCreatedBy VARCHAR(255),
+       UserCreatedAt DATETIME,
+       UserUpdatedBy VARCHAR(255),
+       UserUpdatedAt DATETIME,
+       UserActive TINYINT(1),
+       UserDeleted TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       IsPropertyUserUserNameRemoved TINYINT(1),
+       IsPropertyUserAccessFailedCountRemoved TINYINT(1),
+       IsPropertyUserEmailRemoved TINYINT(1),
+       IsPropertyUserEmailConfirmedRemoved TINYINT(1),
+       IsPropertyUserLockoutEnabledRemoved TINYINT(1),
+       IsPropertyUserLockoutEndDateUtcRemoved TINYINT(1),
+       IsPropertyUserPasswordHashRemoved TINYINT(1),
+       IsPropertyUserPhoneNumberRemoved TINYINT(1),
+       IsPropertyUserPhoneNumberConfirmedRemoved TINYINT(1),
+       IsPropertyUserTwoFactorEnabledRemoved TINYINT(1),
+       IsPropertyUserSecurityStampRemoved TINYINT(1),
+       IsPropertyUserCreatedByRemoved TINYINT(1),
+       IsPropertyUserCreatedAtRemoved TINYINT(1),
+       IsPropertyUserUpdatedByRemoved TINYINT(1),
+       IsPropertyUserUpdatedAtRemoved TINYINT(1),
+       IsPropertyUserActiveRemoved TINYINT(1),
+       IsPropertyUserDeletedRemoved TINYINT(1),
+       primary key (UserLoginIdUserId, UserLoginIdLoginKeyLoginProvider, UserLoginIdLoginKeyProviderKey, UserVersion)
     );
 
     create table InOutLine_RV (
@@ -2182,596 +3151,168 @@ alter table AttributeSetInstanceStateEventRemovedProperties  drop foreign key FK
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdSkuIdProductId, InOutLineIdSkuIdAttributeSetInstanceId, InOutVersion)
     );
 
-    create table Roles (
-        RoleId VARCHAR(50) not null,
-       Version BIGINT not null,
-       Name VARCHAR(255),
-       Description VARCHAR(255),
+    create table YearPlan_RV (
+        YearPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       YearPlanIdPersonalNameLastName VARCHAR(50) not null,
+       YearPlanIdYear INTEGER not null,
+       PersonVersion BIGINT not null,
+       Description TEXT,
+       Version BIGINT,
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
        UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
-       primary key (RoleId)
+       PersonBirthDate DATETIME,
+       PersonLovesFirstName VARCHAR(50),
+       PersonLovesLastName VARCHAR(50),
+       PersonEmergencyContactPersonalNameFirstName VARCHAR(50),
+       PersonEmergencyContactPersonalNameLastName VARCHAR(50),
+       PersonEmergencyContactPhoneNumber VARCHAR(255),
+       PersonEmergencyContactAddress VARCHAR(255),
+       PersonCreatedBy VARCHAR(255),
+       PersonCreatedAt DATETIME,
+       PersonUpdatedBy VARCHAR(255),
+       PersonUpdatedAt DATETIME,
+       PersonActive TINYINT(1),
+       PersonDeleted TINYINT(1),
+       primary key (YearPlanIdPersonalNameFirstName, YearPlanIdPersonalNameLastName, YearPlanIdYear)
     );
 
-    create table RoleStateEvents (
-        RoleId VARCHAR(50) not null,
-       Version BIGINT not null,
+    create table YearPlanMvoStateEvents (
+        YearPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       YearPlanIdPersonalNameLastName VARCHAR(50) not null,
+       YearPlanIdYear INTEGER not null,
+       PersonVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       Description VARCHAR(255),
+       Description TEXT,
+       Version BIGINT,
        Active TINYINT(1),
+       PersonBirthDate DATETIME,
+       PersonLovesFirstName VARCHAR(50),
+       PersonLovesLastName VARCHAR(50),
+       PersonEmergencyContactPersonalNameFirstName VARCHAR(50),
+       PersonEmergencyContactPersonalNameLastName VARCHAR(50),
+       PersonEmergencyContactPhoneNumber VARCHAR(255),
+       PersonEmergencyContactAddress VARCHAR(255),
+       PersonCreatedBy VARCHAR(255),
+       PersonCreatedAt DATETIME,
+       PersonUpdatedBy VARCHAR(255),
+       PersonUpdatedAt DATETIME,
+       PersonActive TINYINT(1),
+       PersonDeleted TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyNameRemoved TINYINT(1),
        IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (RoleId, Version)
+       IsPropertyPersonBirthDateRemoved TINYINT(1),
+       IsPropertyPersonLovesRemoved TINYINT(1),
+       IsPropertyPersonEmergencyContactRemoved TINYINT(1),
+       IsPropertyPersonCreatedByRemoved TINYINT(1),
+       IsPropertyPersonCreatedAtRemoved TINYINT(1),
+       IsPropertyPersonUpdatedByRemoved TINYINT(1),
+       IsPropertyPersonUpdatedAtRemoved TINYINT(1),
+       IsPropertyPersonActiveRemoved TINYINT(1),
+       IsPropertyPersonDeletedRemoved TINYINT(1),
+       primary key (YearPlanIdPersonalNameFirstName, YearPlanIdPersonalNameLastName, YearPlanIdYear, PersonVersion)
     );
 
-    create table Permissions (
-        PermissionId VARCHAR(50) not null,
-       Version BIGINT not null,
-       Name VARCHAR(255),
-       ParentPermissionId VARCHAR(255),
-       Description VARCHAR(255),
+    create table MonthPlan_RV (
+        MonthPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       MonthPlanIdPersonalNameLastName VARCHAR(50) not null,
+       MonthPlanIdYear INTEGER not null,
+       MonthPlanIdMonth INTEGER not null,
+       PersonVersion BIGINT not null,
+       Description TEXT,
+       Version BIGINT,
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
        UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
-       primary key (PermissionId)
+       YearPlanDescription TEXT,
+       YearPlanVersion BIGINT,
+       YearPlanCreatedBy VARCHAR(255),
+       YearPlanCreatedAt DATETIME,
+       YearPlanUpdatedBy VARCHAR(255),
+       YearPlanUpdatedAt DATETIME,
+       YearPlanActive TINYINT(1),
+       YearPlanDeleted TINYINT(1),
+       PersonBirthDate DATETIME,
+       PersonLovesFirstName VARCHAR(50),
+       PersonLovesLastName VARCHAR(50),
+       PersonEmergencyContactPersonalNameFirstName VARCHAR(50),
+       PersonEmergencyContactPersonalNameLastName VARCHAR(50),
+       PersonEmergencyContactPhoneNumber VARCHAR(255),
+       PersonEmergencyContactAddress VARCHAR(255),
+       PersonCreatedBy VARCHAR(255),
+       PersonCreatedAt DATETIME,
+       PersonUpdatedBy VARCHAR(255),
+       PersonUpdatedAt DATETIME,
+       PersonActive TINYINT(1),
+       PersonDeleted TINYINT(1),
+       primary key (MonthPlanIdPersonalNameFirstName, MonthPlanIdPersonalNameLastName, MonthPlanIdYear, MonthPlanIdMonth)
     );
 
-    create table PermissionStateEvents (
-        PermissionId VARCHAR(50) not null,
-       Version BIGINT not null,
+    create table MonthPlanMvoStateEvents (
+        MonthPlanIdPersonalNameFirstName VARCHAR(50) not null,
+       MonthPlanIdPersonalNameLastName VARCHAR(50) not null,
+       MonthPlanIdYear INTEGER not null,
+       MonthPlanIdMonth INTEGER not null,
+       PersonVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       ParentPermissionId VARCHAR(255),
-       Description VARCHAR(255),
+       Description TEXT,
+       Version BIGINT,
        Active TINYINT(1),
+       YearPlanDescription TEXT,
+       YearPlanVersion BIGINT,
+       YearPlanCreatedBy VARCHAR(255),
+       YearPlanCreatedAt DATETIME,
+       YearPlanUpdatedBy VARCHAR(255),
+       YearPlanUpdatedAt DATETIME,
+       YearPlanActive TINYINT(1),
+       YearPlanDeleted TINYINT(1),
+       PersonBirthDate DATETIME,
+       PersonLovesFirstName VARCHAR(50),
+       PersonLovesLastName VARCHAR(50),
+       PersonEmergencyContactPersonalNameFirstName VARCHAR(50),
+       PersonEmergencyContactPersonalNameLastName VARCHAR(50),
+       PersonEmergencyContactPhoneNumber VARCHAR(255),
+       PersonEmergencyContactAddress VARCHAR(255),
+       PersonCreatedBy VARCHAR(255),
+       PersonCreatedAt DATETIME,
+       PersonUpdatedBy VARCHAR(255),
+       PersonUpdatedAt DATETIME,
+       PersonActive TINYINT(1),
+       PersonDeleted TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyParentPermissionIdRemoved TINYINT(1),
        IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (PermissionId, Version)
-    );
-
-    create table RolePermissions (
-        IdRoleId VARCHAR(255) not null,
-       IdPermissionId VARCHAR(255) not null,
-       Version BIGINT not null,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (IdRoleId, IdPermissionId)
-    );
-
-    create table RolePermissionStateEvents (
-        IdRoleId VARCHAR(255) not null,
-       IdPermissionId VARCHAR(255) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (IdRoleId, IdPermissionId, Version)
-    );
-
-    create table UserRoles (
-        UserRoleIdUserId VARCHAR(50) not null,
-       UserRoleIdRoleId VARCHAR(50) not null,
-       Version BIGINT not null,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (UserRoleIdUserId, UserRoleIdRoleId)
-    );
-
-    create table UserRoleStateEvents (
-        UserRoleIdUserId VARCHAR(50) not null,
-       UserRoleIdRoleId VARCHAR(50) not null,
-       UserVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (UserRoleIdUserId, UserRoleIdRoleId, UserVersion)
-    );
-
-    create table UserPermissions (
-        UserPermissionIdUserId VARCHAR(50) not null,
-       UserPermissionIdPermissionId VARCHAR(50) not null,
-       Version BIGINT not null,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (UserPermissionIdUserId, UserPermissionIdPermissionId)
-    );
-
-    create table UserPermissionStateEvents (
-        UserPermissionIdUserId VARCHAR(50) not null,
-       UserPermissionIdPermissionId VARCHAR(50) not null,
-       UserVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (UserPermissionIdUserId, UserPermissionIdPermissionId, UserVersion)
-    );
-
-    create table Users (
-        UserId VARCHAR(50) not null,
-       Version BIGINT not null,
-       UserName VARCHAR(255),
-       AccessFailedCount INTEGER,
-       Email VARCHAR(255),
-       EmailConfirmed TINYINT(1),
-       LockoutEnabled TINYINT(1),
-       LockoutEndDateUtc DATETIME,
-       PasswordHash VARCHAR(255),
-       PhoneNumber VARCHAR(255),
-       PhoneNumberConfirmed TINYINT(1),
-       TwoFactorEnabled TINYINT(1),
-       SecurityStamp VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (UserId),
-      unique (UserName)
-    );
-
-    create table UserStateEvents (
-        UserId VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       UserName VARCHAR(255),
-       AccessFailedCount INTEGER,
-       Email VARCHAR(255),
-       EmailConfirmed TINYINT(1),
-       LockoutEnabled TINYINT(1),
-       LockoutEndDateUtc DATETIME,
-       PasswordHash VARCHAR(255),
-       PhoneNumber VARCHAR(255),
-       PhoneNumberConfirmed TINYINT(1),
-       TwoFactorEnabled TINYINT(1),
-       SecurityStamp VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyUserNameRemoved TINYINT(1),
-       IsPropertyAccessFailedCountRemoved TINYINT(1),
-       IsPropertyEmailRemoved TINYINT(1),
-       IsPropertyEmailConfirmedRemoved TINYINT(1),
-       IsPropertyLockoutEnabledRemoved TINYINT(1),
-       IsPropertyLockoutEndDateUtcRemoved TINYINT(1),
-       IsPropertyPasswordHashRemoved TINYINT(1),
-       IsPropertyPhoneNumberRemoved TINYINT(1),
-       IsPropertyPhoneNumberConfirmedRemoved TINYINT(1),
-       IsPropertyTwoFactorEnabledRemoved TINYINT(1),
-       IsPropertySecurityStampRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (UserId, Version),
-      unique (UserName)
-    );
-
-    create table UserRole_RV (
-        UserRoleIdUserId VARCHAR(50) not null,
-       UserRoleIdRoleId VARCHAR(50) not null,
-       UserVersion BIGINT not null,
-       Version BIGINT,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       UserUserName VARCHAR(255),
-       UserAccessFailedCount INTEGER,
-       UserEmail VARCHAR(255),
-       UserEmailConfirmed TINYINT(1),
-       UserLockoutEnabled TINYINT(1),
-       UserLockoutEndDateUtc DATETIME,
-       UserPasswordHash VARCHAR(255),
-       UserPhoneNumber VARCHAR(255),
-       UserPhoneNumberConfirmed TINYINT(1),
-       UserTwoFactorEnabled TINYINT(1),
-       UserSecurityStamp VARCHAR(255),
-       UserCreatedBy VARCHAR(255),
-       UserCreatedAt DATETIME,
-       UserUpdatedBy VARCHAR(255),
-       UserUpdatedAt DATETIME,
-       UserActive TINYINT(1),
-       UserDeleted TINYINT(1),
-       primary key (UserRoleIdUserId, UserRoleIdRoleId)
-    );
-
-    create table UserRoleMvoStateEvents (
-        UserRoleIdUserId VARCHAR(50) not null,
-       UserRoleIdRoleId VARCHAR(50) not null,
-       UserVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Version BIGINT,
-       Active TINYINT(1),
-       UserUserName VARCHAR(255),
-       UserAccessFailedCount INTEGER,
-       UserEmail VARCHAR(255),
-       UserEmailConfirmed TINYINT(1),
-       UserLockoutEnabled TINYINT(1),
-       UserLockoutEndDateUtc DATETIME,
-       UserPasswordHash VARCHAR(255),
-       UserPhoneNumber VARCHAR(255),
-       UserPhoneNumberConfirmed TINYINT(1),
-       UserTwoFactorEnabled TINYINT(1),
-       UserSecurityStamp VARCHAR(255),
-       UserCreatedBy VARCHAR(255),
-       UserCreatedAt DATETIME,
-       UserUpdatedBy VARCHAR(255),
-       UserUpdatedAt DATETIME,
-       UserActive TINYINT(1),
-       UserDeleted TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
        IsPropertyVersionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       IsPropertyUserUserNameRemoved TINYINT(1),
-       IsPropertyUserAccessFailedCountRemoved TINYINT(1),
-       IsPropertyUserEmailRemoved TINYINT(1),
-       IsPropertyUserEmailConfirmedRemoved TINYINT(1),
-       IsPropertyUserLockoutEnabledRemoved TINYINT(1),
-       IsPropertyUserLockoutEndDateUtcRemoved TINYINT(1),
-       IsPropertyUserPasswordHashRemoved TINYINT(1),
-       IsPropertyUserPhoneNumberRemoved TINYINT(1),
-       IsPropertyUserPhoneNumberConfirmedRemoved TINYINT(1),
-       IsPropertyUserTwoFactorEnabledRemoved TINYINT(1),
-       IsPropertyUserSecurityStampRemoved TINYINT(1),
-       IsPropertyUserCreatedByRemoved TINYINT(1),
-       IsPropertyUserCreatedAtRemoved TINYINT(1),
-       IsPropertyUserUpdatedByRemoved TINYINT(1),
-       IsPropertyUserUpdatedAtRemoved TINYINT(1),
-       IsPropertyUserActiveRemoved TINYINT(1),
-       IsPropertyUserDeletedRemoved TINYINT(1),
-       primary key (UserRoleIdUserId, UserRoleIdRoleId, UserVersion)
-    );
-
-    create table UserPermission_RV (
-        UserPermissionIdUserId VARCHAR(50) not null,
-       UserPermissionIdPermissionId VARCHAR(50) not null,
-       UserVersion BIGINT not null,
-       Version BIGINT,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       UserUserName VARCHAR(255),
-       UserAccessFailedCount INTEGER,
-       UserEmail VARCHAR(255),
-       UserEmailConfirmed TINYINT(1),
-       UserLockoutEnabled TINYINT(1),
-       UserLockoutEndDateUtc DATETIME,
-       UserPasswordHash VARCHAR(255),
-       UserPhoneNumber VARCHAR(255),
-       UserPhoneNumberConfirmed TINYINT(1),
-       UserTwoFactorEnabled TINYINT(1),
-       UserSecurityStamp VARCHAR(255),
-       UserCreatedBy VARCHAR(255),
-       UserCreatedAt DATETIME,
-       UserUpdatedBy VARCHAR(255),
-       UserUpdatedAt DATETIME,
-       UserActive TINYINT(1),
-       UserDeleted TINYINT(1),
-       primary key (UserPermissionIdUserId, UserPermissionIdPermissionId)
-    );
-
-    create table UserPermissionMvoStateEvents (
-        UserPermissionIdUserId VARCHAR(50) not null,
-       UserPermissionIdPermissionId VARCHAR(50) not null,
-       UserVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Version BIGINT,
-       Active TINYINT(1),
-       UserUserName VARCHAR(255),
-       UserAccessFailedCount INTEGER,
-       UserEmail VARCHAR(255),
-       UserEmailConfirmed TINYINT(1),
-       UserLockoutEnabled TINYINT(1),
-       UserLockoutEndDateUtc DATETIME,
-       UserPasswordHash VARCHAR(255),
-       UserPhoneNumber VARCHAR(255),
-       UserPhoneNumberConfirmed TINYINT(1),
-       UserTwoFactorEnabled TINYINT(1),
-       UserSecurityStamp VARCHAR(255),
-       UserCreatedBy VARCHAR(255),
-       UserCreatedAt DATETIME,
-       UserUpdatedBy VARCHAR(255),
-       UserUpdatedAt DATETIME,
-       UserActive TINYINT(1),
-       UserDeleted TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyVersionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       IsPropertyUserUserNameRemoved TINYINT(1),
-       IsPropertyUserAccessFailedCountRemoved TINYINT(1),
-       IsPropertyUserEmailRemoved TINYINT(1),
-       IsPropertyUserEmailConfirmedRemoved TINYINT(1),
-       IsPropertyUserLockoutEnabledRemoved TINYINT(1),
-       IsPropertyUserLockoutEndDateUtcRemoved TINYINT(1),
-       IsPropertyUserPasswordHashRemoved TINYINT(1),
-       IsPropertyUserPhoneNumberRemoved TINYINT(1),
-       IsPropertyUserPhoneNumberConfirmedRemoved TINYINT(1),
-       IsPropertyUserTwoFactorEnabledRemoved TINYINT(1),
-       IsPropertyUserSecurityStampRemoved TINYINT(1),
-       IsPropertyUserCreatedByRemoved TINYINT(1),
-       IsPropertyUserCreatedAtRemoved TINYINT(1),
-       IsPropertyUserUpdatedByRemoved TINYINT(1),
-       IsPropertyUserUpdatedAtRemoved TINYINT(1),
-       IsPropertyUserActiveRemoved TINYINT(1),
-       IsPropertyUserDeletedRemoved TINYINT(1),
-       primary key (UserPermissionIdUserId, UserPermissionIdPermissionId, UserVersion)
-    );
-
-    create table UserClaims (
-        UserClaimIdUserId VARCHAR(50) not null,
-       UserClaimIdClaimId INTEGER not null,
-       Version BIGINT not null,
-       ClaimType VARCHAR(255),
-       ClaimValue VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (UserClaimIdUserId, UserClaimIdClaimId)
-    );
-
-    create table UserClaimStateEvents (
-        UserClaimIdUserId VARCHAR(50) not null,
-       UserClaimIdClaimId INTEGER not null,
-       UserVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       ClaimType VARCHAR(255),
-       ClaimValue VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyClaimTypeRemoved TINYINT(1),
-       IsPropertyClaimValueRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (UserClaimIdUserId, UserClaimIdClaimId, UserVersion)
-    );
-
-    create table UserClaim_RV (
-        UserClaimIdUserId VARCHAR(50) not null,
-       UserClaimIdClaimId INTEGER not null,
-       UserVersion BIGINT not null,
-       ClaimType VARCHAR(255),
-       ClaimValue VARCHAR(255),
-       Version BIGINT,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       UserUserName VARCHAR(255),
-       UserAccessFailedCount INTEGER,
-       UserEmail VARCHAR(255),
-       UserEmailConfirmed TINYINT(1),
-       UserLockoutEnabled TINYINT(1),
-       UserLockoutEndDateUtc DATETIME,
-       UserPasswordHash VARCHAR(255),
-       UserPhoneNumber VARCHAR(255),
-       UserPhoneNumberConfirmed TINYINT(1),
-       UserTwoFactorEnabled TINYINT(1),
-       UserSecurityStamp VARCHAR(255),
-       UserCreatedBy VARCHAR(255),
-       UserCreatedAt DATETIME,
-       UserUpdatedBy VARCHAR(255),
-       UserUpdatedAt DATETIME,
-       UserActive TINYINT(1),
-       UserDeleted TINYINT(1),
-       primary key (UserClaimIdUserId, UserClaimIdClaimId)
-    );
-
-    create table UserClaimMvoStateEvents (
-        UserClaimIdUserId VARCHAR(50) not null,
-       UserClaimIdClaimId INTEGER not null,
-       UserVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       ClaimType VARCHAR(255),
-       ClaimValue VARCHAR(255),
-       Version BIGINT,
-       Active TINYINT(1),
-       UserUserName VARCHAR(255),
-       UserAccessFailedCount INTEGER,
-       UserEmail VARCHAR(255),
-       UserEmailConfirmed TINYINT(1),
-       UserLockoutEnabled TINYINT(1),
-       UserLockoutEndDateUtc DATETIME,
-       UserPasswordHash VARCHAR(255),
-       UserPhoneNumber VARCHAR(255),
-       UserPhoneNumberConfirmed TINYINT(1),
-       UserTwoFactorEnabled TINYINT(1),
-       UserSecurityStamp VARCHAR(255),
-       UserCreatedBy VARCHAR(255),
-       UserCreatedAt DATETIME,
-       UserUpdatedBy VARCHAR(255),
-       UserUpdatedAt DATETIME,
-       UserActive TINYINT(1),
-       UserDeleted TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyClaimTypeRemoved TINYINT(1),
-       IsPropertyClaimValueRemoved TINYINT(1),
-       IsPropertyVersionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       IsPropertyUserUserNameRemoved TINYINT(1),
-       IsPropertyUserAccessFailedCountRemoved TINYINT(1),
-       IsPropertyUserEmailRemoved TINYINT(1),
-       IsPropertyUserEmailConfirmedRemoved TINYINT(1),
-       IsPropertyUserLockoutEnabledRemoved TINYINT(1),
-       IsPropertyUserLockoutEndDateUtcRemoved TINYINT(1),
-       IsPropertyUserPasswordHashRemoved TINYINT(1),
-       IsPropertyUserPhoneNumberRemoved TINYINT(1),
-       IsPropertyUserPhoneNumberConfirmedRemoved TINYINT(1),
-       IsPropertyUserTwoFactorEnabledRemoved TINYINT(1),
-       IsPropertyUserSecurityStampRemoved TINYINT(1),
-       IsPropertyUserCreatedByRemoved TINYINT(1),
-       IsPropertyUserCreatedAtRemoved TINYINT(1),
-       IsPropertyUserUpdatedByRemoved TINYINT(1),
-       IsPropertyUserUpdatedAtRemoved TINYINT(1),
-       IsPropertyUserActiveRemoved TINYINT(1),
-       IsPropertyUserDeletedRemoved TINYINT(1),
-       primary key (UserClaimIdUserId, UserClaimIdClaimId, UserVersion)
-    );
-
-    create table UserLogins (
-        UserLoginIdUserId VARCHAR(50) not null,
-       UserLoginIdLoginKeyLoginProvider VARCHAR(255) not null,
-       UserLoginIdLoginKeyProviderKey VARCHAR(255) not null,
-       Version BIGINT not null,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (UserLoginIdUserId, UserLoginIdLoginKeyLoginProvider, UserLoginIdLoginKeyProviderKey)
-    );
-
-    create table UserLoginStateEvents (
-        UserLoginIdUserId VARCHAR(50) not null,
-       UserLoginIdLoginKeyLoginProvider VARCHAR(255) not null,
-       UserLoginIdLoginKeyProviderKey VARCHAR(255) not null,
-       UserVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (UserLoginIdUserId, UserLoginIdLoginKeyLoginProvider, UserLoginIdLoginKeyProviderKey, UserVersion)
-    );
-
-    create table UserLogin_RV (
-        UserLoginIdUserId VARCHAR(50) not null,
-       UserLoginIdLoginKeyLoginProvider VARCHAR(255) not null,
-       UserLoginIdLoginKeyProviderKey VARCHAR(255) not null,
-       UserVersion BIGINT not null,
-       Version BIGINT,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       UserUserName VARCHAR(255),
-       UserAccessFailedCount INTEGER,
-       UserEmail VARCHAR(255),
-       UserEmailConfirmed TINYINT(1),
-       UserLockoutEnabled TINYINT(1),
-       UserLockoutEndDateUtc DATETIME,
-       UserPasswordHash VARCHAR(255),
-       UserPhoneNumber VARCHAR(255),
-       UserPhoneNumberConfirmed TINYINT(1),
-       UserTwoFactorEnabled TINYINT(1),
-       UserSecurityStamp VARCHAR(255),
-       UserCreatedBy VARCHAR(255),
-       UserCreatedAt DATETIME,
-       UserUpdatedBy VARCHAR(255),
-       UserUpdatedAt DATETIME,
-       UserActive TINYINT(1),
-       UserDeleted TINYINT(1),
-       primary key (UserLoginIdUserId, UserLoginIdLoginKeyLoginProvider, UserLoginIdLoginKeyProviderKey)
-    );
-
-    create table UserLoginMvoStateEvents (
-        UserLoginIdUserId VARCHAR(50) not null,
-       UserLoginIdLoginKeyLoginProvider VARCHAR(255) not null,
-       UserLoginIdLoginKeyProviderKey VARCHAR(255) not null,
-       UserVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Version BIGINT,
-       Active TINYINT(1),
-       UserUserName VARCHAR(255),
-       UserAccessFailedCount INTEGER,
-       UserEmail VARCHAR(255),
-       UserEmailConfirmed TINYINT(1),
-       UserLockoutEnabled TINYINT(1),
-       UserLockoutEndDateUtc DATETIME,
-       UserPasswordHash VARCHAR(255),
-       UserPhoneNumber VARCHAR(255),
-       UserPhoneNumberConfirmed TINYINT(1),
-       UserTwoFactorEnabled TINYINT(1),
-       UserSecurityStamp VARCHAR(255),
-       UserCreatedBy VARCHAR(255),
-       UserCreatedAt DATETIME,
-       UserUpdatedBy VARCHAR(255),
-       UserUpdatedAt DATETIME,
-       UserActive TINYINT(1),
-       UserDeleted TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyVersionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       IsPropertyUserUserNameRemoved TINYINT(1),
-       IsPropertyUserAccessFailedCountRemoved TINYINT(1),
-       IsPropertyUserEmailRemoved TINYINT(1),
-       IsPropertyUserEmailConfirmedRemoved TINYINT(1),
-       IsPropertyUserLockoutEnabledRemoved TINYINT(1),
-       IsPropertyUserLockoutEndDateUtcRemoved TINYINT(1),
-       IsPropertyUserPasswordHashRemoved TINYINT(1),
-       IsPropertyUserPhoneNumberRemoved TINYINT(1),
-       IsPropertyUserPhoneNumberConfirmedRemoved TINYINT(1),
-       IsPropertyUserTwoFactorEnabledRemoved TINYINT(1),
-       IsPropertyUserSecurityStampRemoved TINYINT(1),
-       IsPropertyUserCreatedByRemoved TINYINT(1),
-       IsPropertyUserCreatedAtRemoved TINYINT(1),
-       IsPropertyUserUpdatedByRemoved TINYINT(1),
-       IsPropertyUserUpdatedAtRemoved TINYINT(1),
-       IsPropertyUserActiveRemoved TINYINT(1),
-       IsPropertyUserDeletedRemoved TINYINT(1),
-       primary key (UserLoginIdUserId, UserLoginIdLoginKeyLoginProvider, UserLoginIdLoginKeyProviderKey, UserVersion)
+       IsPropertyYearPlanDescriptionRemoved TINYINT(1),
+       IsPropertyYearPlanVersionRemoved TINYINT(1),
+       IsPropertyYearPlanCreatedByRemoved TINYINT(1),
+       IsPropertyYearPlanCreatedAtRemoved TINYINT(1),
+       IsPropertyYearPlanUpdatedByRemoved TINYINT(1),
+       IsPropertyYearPlanUpdatedAtRemoved TINYINT(1),
+       IsPropertyYearPlanActiveRemoved TINYINT(1),
+       IsPropertyYearPlanDeletedRemoved TINYINT(1),
+       IsPropertyPersonBirthDateRemoved TINYINT(1),
+       IsPropertyPersonLovesRemoved TINYINT(1),
+       IsPropertyPersonEmergencyContactRemoved TINYINT(1),
+       IsPropertyPersonCreatedByRemoved TINYINT(1),
+       IsPropertyPersonCreatedAtRemoved TINYINT(1),
+       IsPropertyPersonUpdatedByRemoved TINYINT(1),
+       IsPropertyPersonUpdatedAtRemoved TINYINT(1),
+       IsPropertyPersonActiveRemoved TINYINT(1),
+       IsPropertyPersonDeletedRemoved TINYINT(1),
+       primary key (MonthPlanIdPersonalNameFirstName, MonthPlanIdPersonalNameLastName, MonthPlanIdYear, MonthPlanIdMonth, PersonVersion)
     );
 
     alter table AttributeSetInstanceStateEventRemovedProperties 
@@ -2779,3 +3320,27 @@ alter table AttributeSetInstanceStateEventRemovedProperties  drop foreign key FK
         add constraint FK9C8A405747E4A019 
         foreign key (AttributeSetInstanceId, Version) 
         references AttributeSetInstanceStateEvents (AttributeSetInstanceId, Version);
+
+    alter table TeamPlayers 
+        add index (TeamName), 
+        add constraint FKB13B0820CF73904F 
+        foreign key (TeamName) 
+        references Teams (TeamName);
+
+    alter table TeamMascots 
+        add index (TeamName), 
+        add constraint FK5FD05D69CF73904F 
+        foreign key (TeamName) 
+        references Teams (TeamName);
+
+    alter table TeamStateEventPlayers 
+        add index (TeamName, Version), 
+        add constraint FKA55D710EDFD9A6F1 
+        foreign key (TeamName, Version) 
+        references TeamStateEvents (TeamName, Version);
+
+    alter table TeamStateEventMascots 
+        add index (TeamName, Version), 
+        add constraint FK750DD7B3DFD9A6F1 
+        foreign key (TeamName, Version) 
+        references TeamStateEvents (TeamName, Version);

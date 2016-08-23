@@ -3,12 +3,12 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Dddml.Core.Domain" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Php\Domain\AggregatesFormViewConfigGenerator.tt" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Php\Domain\AggregatesDetailViewConfigGenerator.tt" #>
 <#@ include file="$(SolutionDir)Dddml.Wms.HttpServices.PhpClient\Dddml\Wms\LoadBoundedContext.tt" #>
 <#
 
+    var formDetailConfigGenerator = new AggregatesDetailViewConfigGenerator(boundedContext.Aggregates.Values.ToList());
+    formDetailConfigGenerator.Run();
 
-    var formViewConfigGenerator = new AggregatesFormViewConfigGenerator(boundedContext.Aggregates.Values.ToList());
-    formViewConfigGenerator.Run();
 
 #>

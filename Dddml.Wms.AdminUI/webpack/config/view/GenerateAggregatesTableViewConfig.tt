@@ -7,8 +7,7 @@
 <#@ include file="$(SolutionDir)Dddml.Wms.HttpServices.PhpClient\Dddml\Wms\LoadBoundedContext.tt" #>
 <#
 
-    var generator = new AggregatesTableViewConfigGenerator(boundedContext.Aggregates.Values.ToList());
-
-    generator.Run();
+    var tableViewConfigGenerator = new AggregatesTableViewConfigGenerator(boundedContext.Aggregates.Values.ToList());
+    tableViewConfigGenerator.Run();
 
 #>
