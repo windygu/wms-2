@@ -7,7 +7,7 @@
 <#@ include file="$(SolutionDir)Dddml.Wms.HttpServices.PhpClient\Dddml\Wms\LoadBoundedContext.tt" #>
 <#
 
-    var formDetailConfigGenerator = new AggregatesDetailViewConfigGenerator(boundedContext.Aggregates.Values.ToList());
+    var formDetailConfigGenerator = new AggregatesDetailViewConfigGenerator(boundedContext.Aggregates.Values.ToList(), "details.default.ts");
     formDetailConfigGenerator.Run();
 
 

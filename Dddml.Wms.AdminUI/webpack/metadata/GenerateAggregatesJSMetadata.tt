@@ -7,7 +7,7 @@
 <#@ include file="$(SolutionDir)Dddml.Wms.HttpServices.PhpClient\Dddml\Wms\LoadBoundedContext.tt" #>
 <#
 
-    var generator = new AggregatesJSMetadataGenerator(boundedContext.Aggregates.Values.ToList(), "aggregates");
+    var generator = new AggregatesJSMetadataGenerator(boundedContext.Aggregates.Values.ToList(), "aggregates.ts");
 
     generator.Run();
 

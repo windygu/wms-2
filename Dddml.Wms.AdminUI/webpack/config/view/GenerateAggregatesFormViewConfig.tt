@@ -8,7 +8,7 @@
 <#
 
 
-    var formViewConfigGenerator = new AggregatesFormViewConfigGenerator(boundedContext.Aggregates.Values.ToList());
+    var formViewConfigGenerator = new AggregatesFormViewConfigGenerator(boundedContext.Aggregates.Values.ToList(), "forms.default.ts");
     formViewConfigGenerator.Run();
 
 #>
