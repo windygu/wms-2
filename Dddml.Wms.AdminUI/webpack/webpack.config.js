@@ -1,28 +1,20 @@
 module.exports = {
-    // entry point of our application
-    entry: './main.js',
-    // where to place the compiled bundle
+    entry: './main.ts',
     output: {
         path: __dirname + '/../site/web/js',
         filename: 'dddml-app.js'
     },
+    resolve: {
+        // Add `.ts` and `.tsx` as a resolvable extension.
+        extensions: ['', '.ts', '.tsx', '.js']
+    },
     module: {
-        // `loaders` is an array of loaders to use.
-        // here we are only configuring vue-loader
         loaders: [
+            {test: /\.tsx?$/, loader: 'ts-loader'},
             {
-                test: /\.vue$/, // a regex for matching all files that end in `.vue`
-                loader: 'vue'   // loader to use for matched files
-            },
-            {
-                test: /\.js$/,
-                loader: 'babel',
-                exclude: /node_modules/
+                test: /\.html$/,
+                loader: "html"
             }
         ]
-    },
-    babel: {
-        presets: ['es2015'],
-        plugins: ['transform-runtime']
     }
 };
