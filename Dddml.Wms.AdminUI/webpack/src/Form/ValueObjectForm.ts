@@ -22,11 +22,17 @@ export default class ValueObjectForm {
 
             this.elements.push(new FormElement(metadata, this.parentData[this.name]));
         } else if (PropertyType.isValueObject(metadata)) {
+            let vbMetadata = MetadataHelper.getValueObjectMetadata(metadata);
+
+            if (!vbMetadata) {
+                return;
+            }
+
             this.parentData[this.name][metadata.name] = {};
 
             let childForm = new ValueObjectForm(
                 metadata.name,
-                MetadataHelper.getValueObjectMetadata(metadata),
+                vbMetadata,
                 this.parentData[this.name]
             );
 
