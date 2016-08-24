@@ -15,9 +15,9 @@ export default class MetadataHelper {
             return false;
         }
 
-        for (let metadata of valueObjectsMetadata) {
-            if (metadata.type == metadata.name) {
-                return metadata;
+        for (let valueObject of valueObjectsMetadata) {
+            if (valueObject.type == metadata.name) {
+                return valueObject;
             }
         }
 

@@ -44,7 +44,7 @@ export default class EntityForm {
         }
     }
 
-    hasDisplayableField(fieldName) {
+    protected hasDisplayableField(fieldName) {
         return this.config.displayableFields[fieldName];
     }
 
@@ -57,4 +57,4 @@ export default class EntityForm {
             }
         }
     }
-}
+};
