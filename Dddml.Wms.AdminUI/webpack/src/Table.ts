@@ -6,10 +6,10 @@ export default class Table {
     public routes;
     public columns;
 
-    constructor(name, rows = []) {
-        this.name = name;
-        this.rows = rows;
-        this.routes = [];
+    constructor(name: string, rows = []) {
+        this.name    = name;
+        this.rows    = rows;
+        this.routes  = [];
         this.columns = Object.keys(tableConfig[this.name].displayableFields);
     }
 }

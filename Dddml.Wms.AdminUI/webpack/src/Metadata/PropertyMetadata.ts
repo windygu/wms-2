@@ -18,8 +18,8 @@ export default class PropertyMetadata {
 
     isNormalType() {
         if (this.metadata.type) {
-            for (let i = 0; i < PropertyMetadata.types.length; i++) {
-                if (this.metadata.type == PropertyMetadata.types[i]) {
+            for (let type of PropertyMetadata.types) {
+                if (this.metadata.type == type) {
                     return true;
                 }
             }
@@ -43,9 +43,9 @@ export default class PropertyMetadata {
             return null;
         }
 
-        for (let i = 0; i < valueObjectsMetadata.length; i++) {
-            if (this.metadata.type == valueObjectsMetadata[i].name) {
-                return valueObjectsMetadata[i];
+        for (let metadata of valueObjectsMetadata) {
+            if (this.metadata.type == metadata.name) {
+                return metadata;
             }
         }
 

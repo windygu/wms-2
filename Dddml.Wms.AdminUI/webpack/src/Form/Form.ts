@@ -38,8 +38,8 @@ export default class Form {
 
     getData() {
         let data = {};
-        for (let i = 0; i < this.elements.length; i++) {
-            data[this.elements[i].elementName] = this.elements[i].value;
+        for (let element of this.elements) {
+            data[element.elementName] = element.value;
         }
 
         return data;
