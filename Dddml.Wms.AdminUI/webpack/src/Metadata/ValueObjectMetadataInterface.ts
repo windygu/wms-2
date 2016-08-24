@@ -1,4 +1,4 @@
-interface ValueObjectMetadata {
+interface ValueObjectMetadataInterface {
     name: string;
     plural: string;
     label: string;
