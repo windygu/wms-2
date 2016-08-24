@@ -1,5 +1,5 @@
 import Navigator from '../src/Navigator/Navigator';
-import Metadata from "../src/Metadata/Metadata";
+import Metadata from "Metadata.ts";
 import * as Vue from 'vue'
 import data from './../metadata/aggregates';
 

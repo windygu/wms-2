@@ -1,13 +1,7 @@
 import Application from './src/Application'
 import AppComponent from './components/App'
-import appConfig from './config/application'
-import aggregatesMetadata from './metadata/aggregates';
-import valueObjectsMetadata from './metadata/valueObjects'
+import config from './config/application'
 
-var app = new Application(
-    aggregatesMetadata,
-    valueObjectsMetadata,
-    appConfig
-);
+var app = new Application(config);
 
 app.run(AppComponent, '#app');

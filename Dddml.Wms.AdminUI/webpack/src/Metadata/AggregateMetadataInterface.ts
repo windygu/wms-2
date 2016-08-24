@@ -3,7 +3,7 @@ interface AggregateMetadataInterface {
     plural: string;
     label: string;
     collectionLabel: string;
-    id: AggregatePropertyMetadataInterface;
-    properties: Array<AggregatePropertyMetadataInterface>
+    id: PropertyMetadataInterface;
+    properties: Array<PropertyMetadataInterface>
     entities?: Array<AggregateMetadataInterface>
 }

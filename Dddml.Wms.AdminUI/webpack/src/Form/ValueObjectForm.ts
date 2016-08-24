@@ -1,29 +1,45 @@
+import PropertyType from "../Metadata/PropertyType";
 import FormElement from "./FormElement";
+import MetadataHelper from "../Helper/MetadataHelper";
 
 export default class ValueObjectForm {
-    public valueObjectName;
-    public elements;
+    public name: string;
+    public elements: Array<FormElement>;
+    public childrenForms: Array<ValueObjectForm>;
+    public metadata: ValueObjectMetadataInterface;
+    public parentData;
 
-    constructor(name, metadata) {
-        this.valueObjectName = name;
-        this.elements = [];
+    constructor(name: string, metadata: ValueObjectMetadataInterface, parentData = {}) {
+        this.name       = name;
+        this.metadata   = metadata;
+        this.parentData = parentData;
+
+        this.build();
     }
 
-    addElement(element) {
-        this.elements.push(element);
-    }
+    protected addItemFromMetadata(metadata: PropertyMetadataInterface) {
+        if (PropertyType.isBuildInType(metadata)) {
+            this.parentData[this.name][metadata.name] = '';
 
-    static create(name, metadata) {
-        let form = new ValueObjectForm(name, metadata);
-        for (let i = 0; i < metadata.properties.length; i++) {
-            let element = new FormElement(
-                metadata.properties[i].name,
-                name + '_' + metadata.properties[i].name
+            this.elements.push(new FormElement(metadata, this.parentData[this.name]))
+        } else if (PropertyType.isValueObject(metadata)) {
+            this.parentData[this.name][metadata.name] = {};
+
+            let childForm = new ValueObjectForm(
+                metadata.name,
+                MetadataHelper.getValueObjectMetadata(metadata),
+                this.parentData[this.name]
             );
 
-            form.addElement(element);
+            for (let element of childForm.elements) {
+                this.elements.push(element);
+            }
         }
+    }
 
-        return form;
+    build() {
+        for (let property of this.metadata.properties) {
+            this.addItemFromMetadata(property);
+        }
     }
 }

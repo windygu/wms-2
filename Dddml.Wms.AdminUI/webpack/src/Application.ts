@@ -9,15 +9,8 @@ export default class Application {
     router;
     apiClient: ApiClient;
     config;
-    aggregatesMetadata: Array<AggregateMetadataInterface>;
-    valueObjectsMetadata: Array<ValueObjectMetadataInterface>;
 
-    constructor(aggregatesMetadata: Array<AggregateMetadataInterface>,
-                valueObjectsMetadata: Array<ValueObjectMetadataInterface>,
-                config) {
-        this.aggregatesMetadata   = aggregatesMetadata;
-        this.valueObjectsMetadata = valueObjectsMetadata;
-
+    constructor(config) {
         this.config = config;
 
         this.initVue();

@@ -3,5 +3,5 @@ interface ValueObjectMetadataInterface {
     plural: string;
     label: string;
     collectionLabel: string;
-    properties: Array<ValueObjectPropertyMetadataInterface>
+    properties: Array<PropertyMetadataInterface>
 }

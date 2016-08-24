@@ -1,11 +1,19 @@
 export default class FormElement {
     public label;
-    public elementName;
-    public value;
+    public name;
+    private parentData;
 
-    constructor(label, name, value = '') {
-        this.label = label;
-        this.elementName = name;
-        this.value = value;
+    constructor(metadata: PropertyMetadataInterface, parentData) {
+        this.label      = metadata.name;
+        this.name       = metadata.name;
+        this.parentData = parentData;
+    }
+
+    get value() {
+        return this.parentData[this.name];
+    }
+
+    set value(value) {
+        this.parentData[this.name] = value;
     }
 }
