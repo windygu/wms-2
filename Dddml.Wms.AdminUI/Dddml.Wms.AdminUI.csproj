@@ -222,12 +222,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
-    <Content Include="webpack\config\view\details.default.js">
-      <DependentUpon>GenerateAggregatesDetailViewConfig.tt</DependentUpon>
-    </Content>
-    <Content Include="webpack\config\view\forms.default.js">
-      <DependentUpon>GenerateAggregatesFormViewConfig.tt</DependentUpon>
-    </Content>
     <Content Include="webpack\config\view\GenerateAggregatesDetailViewConfig.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -238,14 +232,14 @@
       <LastGenOutput>GenerateAggregatesTableViewConfig.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateAggregatesTableViewConfig.txt
-.\tables.default.js
+.\tables.default.ts
 </LastOutputs>
     </Content>
     <Content Include="webpack\config\view\GenerateAggregatesDetailViewConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesDetailViewConfig.txt</LastGenOutput>
       <LastOutputs>
-.\details.default.js
+.\details.default.ts
 .\GenerateAggregatesDetailViewConfig.txt
 </LastOutputs>
     </Content>
@@ -253,7 +247,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesFormViewConfig.txt</LastGenOutput>
       <LastOutputs>
-.\forms.default.js
+.\forms.default.ts
 .\GenerateAggregatesFormViewConfig.txt
 </LastOutputs>
     </Content>
@@ -267,25 +261,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesTableViewConfig.tt</DependentUpon>
     </Content>
-    <Content Include="webpack\config\view\tables.default.js">
-      <DependentUpon>GenerateAggregatesTableViewConfig.tt</DependentUpon>
-    </Content>
-    <Content Include="webpack\metadata\aggregates.js">
-      <DependentUpon>GenerateAggregatesJSMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="webpack\metadata\GenerateValueObjectsJSMetadata.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateValueObjectsJSMetadata.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateValueObjectsJSMetadata.txt
-.\valueObjects.js
+.\valueObjects.ts
 </LastOutputs>
     </Content>
     <Content Include="webpack\metadata\GenerateAggregatesJSMetadata.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesJSMetadata.txt</LastGenOutput>
       <LastOutputs>
-.\aggregates.js
+.\aggregates.ts
 .\GenerateAggregatesJSMetadata.txt
 </LastOutputs>
     </Content>
@@ -297,9 +285,6 @@
     <Content Include="webpack\metadata\GenerateValueObjectsJSMetadata.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateValueObjectsJSMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="webpack\metadata\valueObjects.js">
       <DependentUpon>GenerateValueObjectsJSMetadata.tt</DependentUpon>
     </Content>
   </ItemGroup>
@@ -710,6 +695,21 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ts\YearPlanStateEventId.ts">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="webpack\config\view\details.default.ts">
+      <DependentUpon>GenerateAggregatesDetailViewConfig.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="webpack\config\view\forms.default.ts">
+      <DependentUpon>GenerateAggregatesFormViewConfig.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="webpack\config\view\tables.default.ts">
+      <DependentUpon>GenerateAggregatesTableViewConfig.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="webpack\metadata\aggregates.ts">
+      <DependentUpon>GenerateAggregatesJSMetadata.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="webpack\metadata\valueObjects.ts">
+      <DependentUpon>GenerateValueObjectsJSMetadata.tt</DependentUpon>
     </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

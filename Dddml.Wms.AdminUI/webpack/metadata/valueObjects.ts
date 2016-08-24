@@ -5,7 +5,7 @@ export default [
     "label": "Role Permission Id",
     "collectionLabel": "Role Permission Ids",
     "properties": [
-      { name: "roleId", label: "Role Id", chainingName: "roleId" }, { name: "permissionId", label: "Permission Id", chainingName: "permissionId" }
+      { name: "roleId", label: "Role Id", chainingName: "roleId", type: "string" }, { name: "permissionId", label: "Permission Id", chainingName: "permissionId", type: "string" }
     ]
   },
   {
@@ -14,7 +14,7 @@ export default [
     "label": "Sku Id",
     "collectionLabel": "Sku Ids",
     "properties": [
-      { name: "productId", label: "Product Id", chainingName: "productId" }, { name: "attributeSetInstanceId", label: "Attribute Set Instance Id", chainingName: "attributeSetInstanceId" }
+      { name: "productId", label: "Product Id", chainingName: "productId", type: "string" }, { name: "attributeSetInstanceId", label: "Attribute Set Instance Id", chainingName: "attributeSetInstanceId", type: "string" }
     ]
   },
   {
@@ -23,7 +23,7 @@ export default [
     "label": "Organization Structure Id",
     "collectionLabel": "Organization Structure Ids",
     "properties": [
-      { name: "organizationStructureTypeId", label: "Organization Structure Type Id", chainingName: "organizationStructureTypeId" }, { name: "parentId", label: "Parent Id", chainingName: "parentId" }, { name: "subsidiaryId", label: "Subsidiary Id", chainingName: "subsidiaryId" }
+      { name: "organizationStructureTypeId", label: "Organization Structure Type Id", chainingName: "organizationStructureTypeId", type: "string" }, { name: "parentId", label: "Parent Id", chainingName: "parentId", type: "string" }, { name: "subsidiaryId", label: "Subsidiary Id", chainingName: "subsidiaryId", type: "string" }
     ]
   },
   {
@@ -32,7 +32,7 @@ export default [
     "label": "Personal Name",
     "collectionLabel": "Personal Names",
     "properties": [
-      { name: "firstName", label: "First Name", chainingName: "firstName" }, { name: "lastName", label: "Last Name", chainingName: "lastName" }
+      { name: "firstName", label: "First Name", chainingName: "firstName", type: "string" }, { name: "lastName", label: "Last Name", chainingName: "lastName", type: "string" }
     ]
   },
   {
@@ -41,7 +41,7 @@ export default [
     "label": "Contact",
     "collectionLabel": "Contacts",
     "properties": [
-      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName" }, { name: "phoneNumber", label: "Phone Number", chainingName: "phoneNumber" }, { name: "address", label: "Address", chainingName: "address" }
+      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName", type: "string" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName", type: "string" }, { name: "phoneNumber", label: "Phone Number", chainingName: "phoneNumber", type: "string" }, { name: "address", label: "Address", chainingName: "address", type: "string" }
     ]
   },
   {
@@ -50,7 +50,7 @@ export default [
     "label": "Attribute Set Instance State Event Id",
     "collectionLabel": "Attribute Set Instance State Event Ids",
     "properties": [
-      { name: "attributeSetInstanceId", label: "Attribute Set Instance Id", chainingName: "attributeSetInstanceId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "attributeSetInstanceId", label: "Attribute Set Instance Id", chainingName: "attributeSetInstanceId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -59,7 +59,7 @@ export default [
     "label": "Attribute Set Instance Extension Field Id",
     "collectionLabel": "Attribute Set Instance Extension Field Ids",
     "properties": [
-      { name: "groupId", label: "Group Id", chainingName: "groupId" }, { name: "index", label: "Index", chainingName: "index" }
+      { name: "groupId", label: "Group Id", chainingName: "groupId", type: "string" }, { name: "index", label: "Index", chainingName: "index", type: "string" }
     ]
   },
   {
@@ -68,7 +68,7 @@ export default [
     "label": "Attribute Set Instance Extension Field Group State Event Id",
     "collectionLabel": "Attribute Set Instance Extension Field Group State Event Ids",
     "properties": [
-      { name: "id", label: "Id", chainingName: "id" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "id", label: "Id", chainingName: "id", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -77,7 +77,7 @@ export default [
     "label": "Attribute Set Instance Extension Field State Event Id",
     "collectionLabel": "Attribute Set Instance Extension Field State Event Ids",
     "properties": [
-      { name: "groupId", label: "Group Id", chainingName: "groupId" }, { name: "index", label: "Index", chainingName: "index" }, { name: "attributeSetInstanceExtensionFieldGroupVersion", label: "Attribute Set Instance Extension Field Group Version", chainingName: "attributeSetInstanceExtensionFieldGroupVersion" }
+      { name: "groupId", label: "Group Id", chainingName: "groupId", type: "string" }, { name: "index", label: "Index", chainingName: "index", type: "string" }, { name: "attributeSetInstanceExtensionFieldGroupVersion", label: "Attribute Set Instance Extension Field Group Version", chainingName: "attributeSetInstanceExtensionFieldGroupVersion", type: "long" }
     ]
   },
   {
@@ -86,7 +86,7 @@ export default [
     "label": "Role State Event Id",
     "collectionLabel": "Role State Event Ids",
     "properties": [
-      { name: "roleId", label: "Role Id", chainingName: "roleId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "roleId", label: "Role Id", chainingName: "roleId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -95,7 +95,7 @@ export default [
     "label": "Permission State Event Id",
     "collectionLabel": "Permission State Event Ids",
     "properties": [
-      { name: "permissionId", label: "Permission Id", chainingName: "permissionId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "permissionId", label: "Permission Id", chainingName: "permissionId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -104,7 +104,7 @@ export default [
     "label": "Role Permission State Event Id",
     "collectionLabel": "Role Permission State Event Ids",
     "properties": [
-      { name: "idRoleId", label: "Id / Role Id", chainingName: "id.roleId" }, { name: "idPermissionId", label: "Id / Permission Id", chainingName: "id.permissionId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "idRoleId", label: "Id / Role Id", chainingName: "id.roleId", type: "string" }, { name: "idPermissionId", label: "Id / Permission Id", chainingName: "id.permissionId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -113,7 +113,7 @@ export default [
     "label": "Attribute Value Id",
     "collectionLabel": "Attribute Value Ids",
     "properties": [
-      { name: "attributeId", label: "Attribute Id", chainingName: "attributeId" }, { name: "value", label: "Value", chainingName: "value" }
+      { name: "attributeId", label: "Attribute Id", chainingName: "attributeId", type: "string" }, { name: "value", label: "Value", chainingName: "value", type: "string" }
     ]
   },
   {
@@ -122,7 +122,7 @@ export default [
     "label": "Attribute State Event Id",
     "collectionLabel": "Attribute State Event Ids",
     "properties": [
-      { name: "attributeId", label: "Attribute Id", chainingName: "attributeId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "attributeId", label: "Attribute Id", chainingName: "attributeId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -131,7 +131,7 @@ export default [
     "label": "Attribute Value State Event Id",
     "collectionLabel": "Attribute Value State Event Ids",
     "properties": [
-      { name: "attributeId", label: "Attribute Id", chainingName: "attributeId" }, { name: "value", label: "Value", chainingName: "value" }, { name: "attributeVersion", label: "Attribute Version", chainingName: "attributeVersion" }
+      { name: "attributeId", label: "Attribute Id", chainingName: "attributeId", type: "string" }, { name: "value", label: "Value", chainingName: "value", type: "string" }, { name: "attributeVersion", label: "Attribute Version", chainingName: "attributeVersion", type: "long" }
     ]
   },
   {
@@ -140,7 +140,7 @@ export default [
     "label": "Attribute Set Attribute Use Id",
     "collectionLabel": "Attribute Set Attribute Use Ids",
     "properties": [
-      { name: "attributeSetId", label: "Attribute Set Id", chainingName: "attributeSetId" }, { name: "attributeId", label: "Attribute Id", chainingName: "attributeId" }
+      { name: "attributeSetId", label: "Attribute Set Id", chainingName: "attributeSetId", type: "string" }, { name: "attributeId", label: "Attribute Id", chainingName: "attributeId", type: "string" }
     ]
   },
   {
@@ -149,7 +149,7 @@ export default [
     "label": "Attribute Set State Event Id",
     "collectionLabel": "Attribute Set State Event Ids",
     "properties": [
-      { name: "attributeSetId", label: "Attribute Set Id", chainingName: "attributeSetId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "attributeSetId", label: "Attribute Set Id", chainingName: "attributeSetId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -158,7 +158,7 @@ export default [
     "label": "Attribute Use State Event Id",
     "collectionLabel": "Attribute Use State Event Ids",
     "properties": [
-      { name: "attributeSetId", label: "Attribute Set Id", chainingName: "attributeSetId" }, { name: "attributeId", label: "Attribute Id", chainingName: "attributeId" }, { name: "attributeSetVersion", label: "Attribute Set Version", chainingName: "attributeSetVersion" }
+      { name: "attributeSetId", label: "Attribute Set Id", chainingName: "attributeSetId", type: "string" }, { name: "attributeId", label: "Attribute Id", chainingName: "attributeId", type: "string" }, { name: "attributeSetVersion", label: "Attribute Set Version", chainingName: "attributeSetVersion", type: "long" }
     ]
   },
   {
@@ -167,7 +167,7 @@ export default [
     "label": "Audience State Event Id",
     "collectionLabel": "Audience State Event Ids",
     "properties": [
-      { name: "clientId", label: "Client Id", chainingName: "clientId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "clientId", label: "Client Id", chainingName: "clientId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -176,7 +176,7 @@ export default [
     "label": "Login Key",
     "collectionLabel": "Login Keys",
     "properties": [
-      { name: "loginProvider", label: "Login Provider", chainingName: "loginProvider" }, { name: "providerKey", label: "Provider Key", chainingName: "providerKey" }
+      { name: "loginProvider", label: "Login Provider", chainingName: "loginProvider", type: "string" }, { name: "providerKey", label: "Provider Key", chainingName: "providerKey", type: "string" }
     ]
   },
   {
@@ -185,7 +185,7 @@ export default [
     "label": "User Role Id",
     "collectionLabel": "User Role Ids",
     "properties": [
-      { name: "userId", label: "User Id", chainingName: "userId" }, { name: "roleId", label: "Role Id", chainingName: "roleId" }
+      { name: "userId", label: "User Id", chainingName: "userId", type: "string" }, { name: "roleId", label: "Role Id", chainingName: "roleId", type: "string" }
     ]
   },
   {
@@ -194,7 +194,7 @@ export default [
     "label": "User Claim Id",
     "collectionLabel": "User Claim Ids",
     "properties": [
-      { name: "userId", label: "User Id", chainingName: "userId" }, { name: "claimId", label: "Claim Id", chainingName: "claimId" }
+      { name: "userId", label: "User Id", chainingName: "userId", type: "string" }, { name: "claimId", label: "Claim Id", chainingName: "claimId", type: "int" }
     ]
   },
   {
@@ -203,7 +203,7 @@ export default [
     "label": "User Permission Id",
     "collectionLabel": "User Permission Ids",
     "properties": [
-      { name: "userId", label: "User Id", chainingName: "userId" }, { name: "permissionId", label: "Permission Id", chainingName: "permissionId" }
+      { name: "userId", label: "User Id", chainingName: "userId", type: "string" }, { name: "permissionId", label: "Permission Id", chainingName: "permissionId", type: "string" }
     ]
   },
   {
@@ -212,7 +212,7 @@ export default [
     "label": "User Login Id",
     "collectionLabel": "User Login Ids",
     "properties": [
-      { name: "userId", label: "User Id", chainingName: "userId" }, { name: "loginKeyLoginProvider", label: "Login Key / Login Provider", chainingName: "loginKey.loginProvider" }, { name: "loginKeyProviderKey", label: "Login Key / Provider Key", chainingName: "loginKey.providerKey" }
+      { name: "userId", label: "User Id", chainingName: "userId", type: "string" }, { name: "loginKeyLoginProvider", label: "Login Key / Login Provider", chainingName: "loginKey.loginProvider", type: "string" }, { name: "loginKeyProviderKey", label: "Login Key / Provider Key", chainingName: "loginKey.providerKey", type: "string" }
     ]
   },
   {
@@ -221,7 +221,7 @@ export default [
     "label": "User State Event Id",
     "collectionLabel": "User State Event Ids",
     "properties": [
-      { name: "userId", label: "User Id", chainingName: "userId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "userId", label: "User Id", chainingName: "userId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -230,7 +230,7 @@ export default [
     "label": "User Role State Event Id",
     "collectionLabel": "User Role State Event Ids",
     "properties": [
-      { name: "userId", label: "User Id", chainingName: "userId" }, { name: "roleId", label: "Role Id", chainingName: "roleId" }, { name: "userVersion", label: "User Version", chainingName: "userVersion" }
+      { name: "userId", label: "User Id", chainingName: "userId", type: "string" }, { name: "roleId", label: "Role Id", chainingName: "roleId", type: "string" }, { name: "userVersion", label: "User Version", chainingName: "userVersion", type: "long" }
     ]
   },
   {
@@ -239,7 +239,7 @@ export default [
     "label": "User Claim State Event Id",
     "collectionLabel": "User Claim State Event Ids",
     "properties": [
-      { name: "userId", label: "User Id", chainingName: "userId" }, { name: "claimId", label: "Claim Id", chainingName: "claimId" }, { name: "userVersion", label: "User Version", chainingName: "userVersion" }
+      { name: "userId", label: "User Id", chainingName: "userId", type: "string" }, { name: "claimId", label: "Claim Id", chainingName: "claimId", type: "int" }, { name: "userVersion", label: "User Version", chainingName: "userVersion", type: "long" }
     ]
   },
   {
@@ -248,7 +248,7 @@ export default [
     "label": "User Permission State Event Id",
     "collectionLabel": "User Permission State Event Ids",
     "properties": [
-      { name: "userId", label: "User Id", chainingName: "userId" }, { name: "permissionId", label: "Permission Id", chainingName: "permissionId" }, { name: "userVersion", label: "User Version", chainingName: "userVersion" }
+      { name: "userId", label: "User Id", chainingName: "userId", type: "string" }, { name: "permissionId", label: "Permission Id", chainingName: "permissionId", type: "string" }, { name: "userVersion", label: "User Version", chainingName: "userVersion", type: "long" }
     ]
   },
   {
@@ -257,7 +257,7 @@ export default [
     "label": "User Login State Event Id",
     "collectionLabel": "User Login State Event Ids",
     "properties": [
-      { name: "userId", label: "User Id", chainingName: "userId" }, { name: "loginKeyLoginProvider", label: "Login Key / Login Provider", chainingName: "loginKey.loginProvider" }, { name: "loginKeyProviderKey", label: "Login Key / Provider Key", chainingName: "loginKey.providerKey" }, { name: "userVersion", label: "User Version", chainingName: "userVersion" }
+      { name: "userId", label: "User Id", chainingName: "userId", type: "string" }, { name: "loginKeyLoginProvider", label: "Login Key / Login Provider", chainingName: "loginKey.loginProvider", type: "string" }, { name: "loginKeyProviderKey", label: "Login Key / Provider Key", chainingName: "loginKey.providerKey", type: "string" }, { name: "userVersion", label: "User Version", chainingName: "userVersion", type: "long" }
     ]
   },
   {
@@ -266,7 +266,7 @@ export default [
     "label": "In Out Line Id",
     "collectionLabel": "In Out Line Ids",
     "properties": [
-      { name: "inOutDocumentNumber", label: "In Out Document Number", chainingName: "inOutDocumentNumber" }, { name: "skuIdProductId", label: "Sku Id / Product Id", chainingName: "skuId.productId" }, { name: "skuIdAttributeSetInstanceId", label: "Sku Id / Attribute Set Instance Id", chainingName: "skuId.attributeSetInstanceId" }
+      { name: "inOutDocumentNumber", label: "In Out Document Number", chainingName: "inOutDocumentNumber", type: "string" }, { name: "skuIdProductId", label: "Sku Id / Product Id", chainingName: "skuId.productId", type: "string" }, { name: "skuIdAttributeSetInstanceId", label: "Sku Id / Attribute Set Instance Id", chainingName: "skuId.attributeSetInstanceId", type: "string" }
     ]
   },
   {
@@ -275,7 +275,7 @@ export default [
     "label": "In Out State Event Id",
     "collectionLabel": "In Out State Event Ids",
     "properties": [
-      { name: "documentNumber", label: "Document Number", chainingName: "documentNumber" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "documentNumber", label: "Document Number", chainingName: "documentNumber", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -284,7 +284,7 @@ export default [
     "label": "In Out Line State Event Id",
     "collectionLabel": "In Out Line State Event Ids",
     "properties": [
-      { name: "inOutDocumentNumber", label: "In Out Document Number", chainingName: "inOutDocumentNumber" }, { name: "skuIdProductId", label: "Sku Id / Product Id", chainingName: "skuId.productId" }, { name: "skuIdAttributeSetInstanceId", label: "Sku Id / Attribute Set Instance Id", chainingName: "skuId.attributeSetInstanceId" }, { name: "inOutVersion", label: "In Out Version", chainingName: "inOutVersion" }
+      { name: "inOutDocumentNumber", label: "In Out Document Number", chainingName: "inOutDocumentNumber", type: "string" }, { name: "skuIdProductId", label: "Sku Id / Product Id", chainingName: "skuId.productId", type: "string" }, { name: "skuIdAttributeSetInstanceId", label: "Sku Id / Attribute Set Instance Id", chainingName: "skuId.attributeSetInstanceId", type: "string" }, { name: "inOutVersion", label: "In Out Version", chainingName: "inOutVersion", type: "long" }
     ]
   },
   {
@@ -293,7 +293,7 @@ export default [
     "label": "Organization State Event Id",
     "collectionLabel": "Organization State Event Ids",
     "properties": [
-      { name: "organizationId", label: "Organization Id", chainingName: "organizationId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "organizationId", label: "Organization Id", chainingName: "organizationId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -302,7 +302,7 @@ export default [
     "label": "Organization Structure Type State Event Id",
     "collectionLabel": "Organization Structure Type State Event Ids",
     "properties": [
-      { name: "id", label: "Id", chainingName: "id" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "id", label: "Id", chainingName: "id", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -311,7 +311,7 @@ export default [
     "label": "Organization Structure State Event Id",
     "collectionLabel": "Organization Structure State Event Ids",
     "properties": [
-      { name: "idOrganizationStructureTypeId", label: "Id / Organization Structure Type Id", chainingName: "id.organizationStructureTypeId" }, { name: "idParentId", label: "Id / Parent Id", chainingName: "id.parentId" }, { name: "idSubsidiaryId", label: "Id / Subsidiary Id", chainingName: "id.subsidiaryId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "idOrganizationStructureTypeId", label: "Id / Organization Structure Type Id", chainingName: "id.organizationStructureTypeId", type: "string" }, { name: "idParentId", label: "Id / Parent Id", chainingName: "id.parentId", type: "string" }, { name: "idSubsidiaryId", label: "Id / Subsidiary Id", chainingName: "id.subsidiaryId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -320,7 +320,7 @@ export default [
     "label": "Warehouse State Event Id",
     "collectionLabel": "Warehouse State Event Ids",
     "properties": [
-      { name: "warehouseId", label: "Warehouse Id", chainingName: "warehouseId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "warehouseId", label: "Warehouse Id", chainingName: "warehouseId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -329,7 +329,7 @@ export default [
     "label": "Locator State Event Id",
     "collectionLabel": "Locator State Event Ids",
     "properties": [
-      { name: "locatorId", label: "Locator Id", chainingName: "locatorId" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "locatorId", label: "Locator Id", chainingName: "locatorId", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -338,7 +338,7 @@ export default [
     "label": "Year Plan Id",
     "collectionLabel": "Year Plan Ids",
     "properties": [
-      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName" }, { name: "year", label: "Year", chainingName: "year" }
+      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName", type: "string" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName", type: "string" }, { name: "year", label: "Year", chainingName: "year", type: "int" }
     ]
   },
   {
@@ -347,7 +347,7 @@ export default [
     "label": "Month Plan Id",
     "collectionLabel": "Month Plan Ids",
     "properties": [
-      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName" }, { name: "year", label: "Year", chainingName: "year" }, { name: "month", label: "Month", chainingName: "month" }
+      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName", type: "string" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName", type: "string" }, { name: "year", label: "Year", chainingName: "year", type: "int" }, { name: "month", label: "Month", chainingName: "month", type: "int" }
     ]
   },
   {
@@ -356,7 +356,7 @@ export default [
     "label": "Day Plan Id",
     "collectionLabel": "Day Plan Ids",
     "properties": [
-      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName" }, { name: "year", label: "Year", chainingName: "year" }, { name: "month", label: "Month", chainingName: "month" }, { name: "day", label: "Day", chainingName: "day" }
+      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName", type: "string" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName", type: "string" }, { name: "year", label: "Year", chainingName: "year", type: "int" }, { name: "month", label: "Month", chainingName: "month", type: "int" }, { name: "day", label: "Day", chainingName: "day", type: "int" }
     ]
   },
   {
@@ -365,7 +365,7 @@ export default [
     "label": "Person State Event Id",
     "collectionLabel": "Person State Event Ids",
     "properties": [
-      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName", type: "string" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -374,7 +374,7 @@ export default [
     "label": "Year Plan State Event Id",
     "collectionLabel": "Year Plan State Event Ids",
     "properties": [
-      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName" }, { name: "year", label: "Year", chainingName: "year" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion" }
+      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName", type: "string" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName", type: "string" }, { name: "year", label: "Year", chainingName: "year", type: "int" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion", type: "long" }
     ]
   },
   {
@@ -383,7 +383,7 @@ export default [
     "label": "Month Plan State Event Id",
     "collectionLabel": "Month Plan State Event Ids",
     "properties": [
-      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName" }, { name: "year", label: "Year", chainingName: "year" }, { name: "month", label: "Month", chainingName: "month" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion" }
+      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName", type: "string" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName", type: "string" }, { name: "year", label: "Year", chainingName: "year", type: "int" }, { name: "month", label: "Month", chainingName: "month", type: "int" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion", type: "long" }
     ]
   },
   {
@@ -392,7 +392,7 @@ export default [
     "label": "Day Plan State Event Id",
     "collectionLabel": "Day Plan State Event Ids",
     "properties": [
-      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName" }, { name: "year", label: "Year", chainingName: "year" }, { name: "month", label: "Month", chainingName: "month" }, { name: "day", label: "Day", chainingName: "day" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion" }
+      { name: "personalNameFirstName", label: "Personal Name / First Name", chainingName: "personalName.firstName", type: "string" }, { name: "personalNameLastName", label: "Personal Name / Last Name", chainingName: "personalName.lastName", type: "string" }, { name: "year", label: "Year", chainingName: "year", type: "int" }, { name: "month", label: "Month", chainingName: "month", type: "int" }, { name: "day", label: "Day", chainingName: "day", type: "int" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion", type: "long" }
     ]
   },
   {
@@ -401,7 +401,7 @@ export default [
     "label": "Team State Event Id",
     "collectionLabel": "Team State Event Ids",
     "properties": [
-      { name: "teamName", label: "Team Name", chainingName: "teamName" }, { name: "version", label: "Version", chainingName: "version" }
+      { name: "teamName", label: "Team Name", chainingName: "teamName", type: "string" }, { name: "version", label: "Version", chainingName: "version", type: "long" }
     ]
   },
   {
@@ -410,7 +410,7 @@ export default [
     "label": "Attribute Set Instance Extension Field Mvo State Event Id",
     "collectionLabel": "Attribute Set Instance Extension Field Mvo State Event Ids",
     "properties": [
-      { name: "attributeSetInstanceExtensionFieldIdGroupId", label: "Attribute Set Instance Extension Field Id / Group Id", chainingName: "attributeSetInstanceExtensionFieldId.groupId" }, { name: "attributeSetInstanceExtensionFieldIdIndex", label: "Attribute Set Instance Extension Field Id / Index", chainingName: "attributeSetInstanceExtensionFieldId.index" }, { name: "attrSetInstEFGroupVersion", label: "Attr Set Inst EF Group Version", chainingName: "attrSetInstEFGroupVersion" }
+      { name: "attributeSetInstanceExtensionFieldIdGroupId", label: "Attribute Set Instance Extension Field Id / Group Id", chainingName: "attributeSetInstanceExtensionFieldId.groupId", type: "string" }, { name: "attributeSetInstanceExtensionFieldIdIndex", label: "Attribute Set Instance Extension Field Id / Index", chainingName: "attributeSetInstanceExtensionFieldId.index", type: "string" }, { name: "attrSetInstEFGroupVersion", label: "Attr Set Inst EF Group Version", chainingName: "attrSetInstEFGroupVersion", type: "long" }
     ]
   },
   {
@@ -419,7 +419,7 @@ export default [
     "label": "Attribute Value Mvo State Event Id",
     "collectionLabel": "Attribute Value Mvo State Event Ids",
     "properties": [
-      { name: "attributeValueIdAttributeId", label: "Attribute Value Id / Attribute Id", chainingName: "attributeValueId.attributeId" }, { name: "attributeValueIdValue", label: "Attribute Value Id / Value", chainingName: "attributeValueId.value" }, { name: "attributeVersion", label: "Attribute Version", chainingName: "attributeVersion" }
+      { name: "attributeValueIdAttributeId", label: "Attribute Value Id / Attribute Id", chainingName: "attributeValueId.attributeId", type: "string" }, { name: "attributeValueIdValue", label: "Attribute Value Id / Value", chainingName: "attributeValueId.value", type: "string" }, { name: "attributeVersion", label: "Attribute Version", chainingName: "attributeVersion", type: "long" }
     ]
   },
   {
@@ -428,7 +428,7 @@ export default [
     "label": "Attribute Use Mvo State Event Id",
     "collectionLabel": "Attribute Use Mvo State Event Ids",
     "properties": [
-      { name: "attributeSetAttributeUseIdAttributeSetId", label: "Attribute Set Attribute Use Id / Attribute Set Id", chainingName: "attributeSetAttributeUseId.attributeSetId" }, { name: "attributeSetAttributeUseIdAttributeId", label: "Attribute Set Attribute Use Id / Attribute Id", chainingName: "attributeSetAttributeUseId.attributeId" }, { name: "attributeSetVersion", label: "Attribute Set Version", chainingName: "attributeSetVersion" }
+      { name: "attributeSetAttributeUseIdAttributeSetId", label: "Attribute Set Attribute Use Id / Attribute Set Id", chainingName: "attributeSetAttributeUseId.attributeSetId", type: "string" }, { name: "attributeSetAttributeUseIdAttributeId", label: "Attribute Set Attribute Use Id / Attribute Id", chainingName: "attributeSetAttributeUseId.attributeId", type: "string" }, { name: "attributeSetVersion", label: "Attribute Set Version", chainingName: "attributeSetVersion", type: "long" }
     ]
   },
   {
@@ -437,7 +437,7 @@ export default [
     "label": "User Role Mvo State Event Id",
     "collectionLabel": "User Role Mvo State Event Ids",
     "properties": [
-      { name: "userRoleIdUserId", label: "User Role Id / User Id", chainingName: "userRoleId.userId" }, { name: "userRoleIdRoleId", label: "User Role Id / Role Id", chainingName: "userRoleId.roleId" }, { name: "userVersion", label: "User Version", chainingName: "userVersion" }
+      { name: "userRoleIdUserId", label: "User Role Id / User Id", chainingName: "userRoleId.userId", type: "string" }, { name: "userRoleIdRoleId", label: "User Role Id / Role Id", chainingName: "userRoleId.roleId", type: "string" }, { name: "userVersion", label: "User Version", chainingName: "userVersion", type: "long" }
     ]
   },
   {
@@ -446,7 +446,7 @@ export default [
     "label": "User Claim Mvo State Event Id",
     "collectionLabel": "User Claim Mvo State Event Ids",
     "properties": [
-      { name: "userClaimIdUserId", label: "User Claim Id / User Id", chainingName: "userClaimId.userId" }, { name: "userClaimIdClaimId", label: "User Claim Id / Claim Id", chainingName: "userClaimId.claimId" }, { name: "userVersion", label: "User Version", chainingName: "userVersion" }
+      { name: "userClaimIdUserId", label: "User Claim Id / User Id", chainingName: "userClaimId.userId", type: "string" }, { name: "userClaimIdClaimId", label: "User Claim Id / Claim Id", chainingName: "userClaimId.claimId", type: "int" }, { name: "userVersion", label: "User Version", chainingName: "userVersion", type: "long" }
     ]
   },
   {
@@ -455,7 +455,7 @@ export default [
     "label": "User Permission Mvo State Event Id",
     "collectionLabel": "User Permission Mvo State Event Ids",
     "properties": [
-      { name: "userPermissionIdUserId", label: "User Permission Id / User Id", chainingName: "userPermissionId.userId" }, { name: "userPermissionIdPermissionId", label: "User Permission Id / Permission Id", chainingName: "userPermissionId.permissionId" }, { name: "userVersion", label: "User Version", chainingName: "userVersion" }
+      { name: "userPermissionIdUserId", label: "User Permission Id / User Id", chainingName: "userPermissionId.userId", type: "string" }, { name: "userPermissionIdPermissionId", label: "User Permission Id / Permission Id", chainingName: "userPermissionId.permissionId", type: "string" }, { name: "userVersion", label: "User Version", chainingName: "userVersion", type: "long" }
     ]
   },
   {
@@ -464,7 +464,7 @@ export default [
     "label": "User Login Mvo State Event Id",
     "collectionLabel": "User Login Mvo State Event Ids",
     "properties": [
-      { name: "userLoginIdUserId", label: "User Login Id / User Id", chainingName: "userLoginId.userId" }, { name: "userLoginIdLoginKeyLoginProvider", label: "User Login Id / Login Key / Login Provider", chainingName: "userLoginId.loginKey.loginProvider" }, { name: "userLoginIdLoginKeyProviderKey", label: "User Login Id / Login Key / Provider Key", chainingName: "userLoginId.loginKey.providerKey" }, { name: "userVersion", label: "User Version", chainingName: "userVersion" }
+      { name: "userLoginIdUserId", label: "User Login Id / User Id", chainingName: "userLoginId.userId", type: "string" }, { name: "userLoginIdLoginKeyLoginProvider", label: "User Login Id / Login Key / Login Provider", chainingName: "userLoginId.loginKey.loginProvider", type: "string" }, { name: "userLoginIdLoginKeyProviderKey", label: "User Login Id / Login Key / Provider Key", chainingName: "userLoginId.loginKey.providerKey", type: "string" }, { name: "userVersion", label: "User Version", chainingName: "userVersion", type: "long" }
     ]
   },
   {
@@ -473,7 +473,7 @@ export default [
     "label": "In Out Line Mvo State Event Id",
     "collectionLabel": "In Out Line Mvo State Event Ids",
     "properties": [
-      { name: "inOutLineIdInOutDocumentNumber", label: "In Out Line Id / In Out Document Number", chainingName: "inOutLineId.inOutDocumentNumber" }, { name: "inOutLineIdSkuIdProductId", label: "In Out Line Id / Sku Id / Product Id", chainingName: "inOutLineId.skuId.productId" }, { name: "inOutLineIdSkuIdAttributeSetInstanceId", label: "In Out Line Id / Sku Id / Attribute Set Instance Id", chainingName: "inOutLineId.skuId.attributeSetInstanceId" }, { name: "inOutVersion", label: "In Out Version", chainingName: "inOutVersion" }
+      { name: "inOutLineIdInOutDocumentNumber", label: "In Out Line Id / In Out Document Number", chainingName: "inOutLineId.inOutDocumentNumber", type: "string" }, { name: "inOutLineIdSkuIdProductId", label: "In Out Line Id / Sku Id / Product Id", chainingName: "inOutLineId.skuId.productId", type: "string" }, { name: "inOutLineIdSkuIdAttributeSetInstanceId", label: "In Out Line Id / Sku Id / Attribute Set Instance Id", chainingName: "inOutLineId.skuId.attributeSetInstanceId", type: "string" }, { name: "inOutVersion", label: "In Out Version", chainingName: "inOutVersion", type: "long" }
     ]
   },
   {
@@ -482,7 +482,7 @@ export default [
     "label": "Year Plan Mvo State Event Id",
     "collectionLabel": "Year Plan Mvo State Event Ids",
     "properties": [
-      { name: "yearPlanIdPersonalNameFirstName", label: "Year Plan Id / Personal Name / First Name", chainingName: "yearPlanId.personalName.firstName" }, { name: "yearPlanIdPersonalNameLastName", label: "Year Plan Id / Personal Name / Last Name", chainingName: "yearPlanId.personalName.lastName" }, { name: "yearPlanIdYear", label: "Year Plan Id / Year", chainingName: "yearPlanId.year" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion" }
+      { name: "yearPlanIdPersonalNameFirstName", label: "Year Plan Id / Personal Name / First Name", chainingName: "yearPlanId.personalName.firstName", type: "string" }, { name: "yearPlanIdPersonalNameLastName", label: "Year Plan Id / Personal Name / Last Name", chainingName: "yearPlanId.personalName.lastName", type: "string" }, { name: "yearPlanIdYear", label: "Year Plan Id / Year", chainingName: "yearPlanId.year", type: "int" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion", type: "long" }
     ]
   },
   {
@@ -491,7 +491,7 @@ export default [
     "label": "Month Plan Mvo State Event Id",
     "collectionLabel": "Month Plan Mvo State Event Ids",
     "properties": [
-      { name: "monthPlanIdPersonalNameFirstName", label: "Month Plan Id / Personal Name / First Name", chainingName: "monthPlanId.personalName.firstName" }, { name: "monthPlanIdPersonalNameLastName", label: "Month Plan Id / Personal Name / Last Name", chainingName: "monthPlanId.personalName.lastName" }, { name: "monthPlanIdYear", label: "Month Plan Id / Year", chainingName: "monthPlanId.year" }, { name: "monthPlanIdMonth", label: "Month Plan Id / Month", chainingName: "monthPlanId.month" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion" }
+      { name: "monthPlanIdPersonalNameFirstName", label: "Month Plan Id / Personal Name / First Name", chainingName: "monthPlanId.personalName.firstName", type: "string" }, { name: "monthPlanIdPersonalNameLastName", label: "Month Plan Id / Personal Name / Last Name", chainingName: "monthPlanId.personalName.lastName", type: "string" }, { name: "monthPlanIdYear", label: "Month Plan Id / Year", chainingName: "monthPlanId.year", type: "int" }, { name: "monthPlanIdMonth", label: "Month Plan Id / Month", chainingName: "monthPlanId.month", type: "int" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion", type: "long" }
     ]
   },
   {
@@ -500,7 +500,7 @@ export default [
     "label": "Day Plan Mvo State Event Id",
     "collectionLabel": "Day Plan Mvo State Event Ids",
     "properties": [
-      { name: "dayPlanIdPersonalNameFirstName", label: "Day Plan Id / Personal Name / First Name", chainingName: "dayPlanId.personalName.firstName" }, { name: "dayPlanIdPersonalNameLastName", label: "Day Plan Id / Personal Name / Last Name", chainingName: "dayPlanId.personalName.lastName" }, { name: "dayPlanIdYear", label: "Day Plan Id / Year", chainingName: "dayPlanId.year" }, { name: "dayPlanIdMonth", label: "Day Plan Id / Month", chainingName: "dayPlanId.month" }, { name: "dayPlanIdDay", label: "Day Plan Id / Day", chainingName: "dayPlanId.day" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion" }
+      { name: "dayPlanIdPersonalNameFirstName", label: "Day Plan Id / Personal Name / First Name", chainingName: "dayPlanId.personalName.firstName", type: "string" }, { name: "dayPlanIdPersonalNameLastName", label: "Day Plan Id / Personal Name / Last Name", chainingName: "dayPlanId.personalName.lastName", type: "string" }, { name: "dayPlanIdYear", label: "Day Plan Id / Year", chainingName: "dayPlanId.year", type: "int" }, { name: "dayPlanIdMonth", label: "Day Plan Id / Month", chainingName: "dayPlanId.month", type: "int" }, { name: "dayPlanIdDay", label: "Day Plan Id / Day", chainingName: "dayPlanId.day", type: "int" }, { name: "personVersion", label: "Person Version", chainingName: "personVersion", type: "long" }
     ]
   }
 ]
