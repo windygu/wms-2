@@ -2,10 +2,10 @@ import PropertyType from "../Metadata/PropertyType";
 import valueObjectsMetadata from '../../metadata/valueObjects'
 
 export default class MetadataHelper {
-    static getAggregateByPlural(metadata: Array<AggregateMetadataInterface>, value: String) {
-        for (let agg of metadata) {
-            if (agg.plural == value) {
-                return agg;
+    static getEntityByPlural(metadata: Array<EntityMetadataInterface>, value: String) {
+        for (let entity of metadata) {
+            if (entity.plural == value) {
+                return entity;
             }
         }
     }

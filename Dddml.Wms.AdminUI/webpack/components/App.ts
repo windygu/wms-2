@@ -1,6 +1,5 @@
 import Navigator from '../src/Navigator/Navigator';
 import * as Vue from 'vue'
-import aggregateMetadata from './../metadata/aggregates';
 import MetadataHelper from "../src/Helper/MetadataHelper";
 import Application from "../src/Application";
 
@@ -11,7 +10,7 @@ export default Vue.extend({
     data(){
         return {
             application: application,
-            currentAggregate: {},
+            currentEntity: {},
             navigator: new Navigator(application)
         }
     },
@@ -19,13 +18,13 @@ export default Vue.extend({
         userImg: String
     },
     methods: {
-        changeAggregate(aggregate){
-            this.currentAggregate = aggregate
+        changeEntity(entity){
+            this.currentEntity = entity
         }
     },
     ready(){
-        this.currentAggregate = MetadataHelper.getAggregateByPlural(
-            application.aggregatesMetadata,
+        this.currentEntity = MetadataHelper.getEntityByPlural(
+            application.entitiesMetadata,
             this.$route.params.name
         );
     }

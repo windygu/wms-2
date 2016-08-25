@@ -1,7 +1,7 @@
 import Table from './Table';
-import Aggregate from './Aggregate';
+import Entity from './Entity';
 
-export default class AggregateCollection {
+export default class EntityCollection {
     public data;
     public metadata;
 
@@ -16,14 +16,14 @@ export default class AggregateCollection {
             this.data
         );
 
-        for (let i = 0; i < table.rows.length; i++) {
-            let aggregate = new Aggregate(table.rows[i], this.metadata);
+        for (let row of table.rows) {
+            let entity = new Entity(row, this.metadata);
 
-            table.rows[i].detailRoute = {
+            row.detailRoute = {
                 name: 'entity',
                 params: {
                     name: this.metadata.plural,
-                    id: aggregate.getStringId()
+                    id: entity.getStringId()
                 }
             };
         }

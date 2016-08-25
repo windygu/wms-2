@@ -2,7 +2,7 @@ import * as Vue from 'vue'
 import * as VueRouter from 'vue-router'
 import defaultFilter from './Filter/defaultFilter';
 import routes from '../routes';
-import aggregateMetadata from './../metadata/aggregates';
+import entitiesMetadata from './../metadata/aggregates';
 import valueObjectsMetadata from './../metadata/valueObjects';
 import config from './../config/application'
 import * as VueResource from 'vue-resource'
@@ -13,14 +13,14 @@ export default class Application {
 
     routesConfig;
     config;
-    aggregatesMetadata: Array<AggregateMetadataInterface>;
+    entitiesMetadata: Array<EntityMetadataInterface>;
     valueObjectsMetadata: Array<ValueObjectMetadataInterface>;
 
-    constructor(aggregatesMetadata: Array<AggregateMetadataInterface>,
+    constructor(entitiesMetadata: Array<EntityMetadataInterface>,
                 valueObjectsMetadata: Array<ValueObjectMetadataInterface>,
                 config,
                 routesConfig) {
-        this.aggregatesMetadata   = aggregatesMetadata;
+        this.entitiesMetadata     = entitiesMetadata;
         this.valueObjectsMetadata = valueObjectsMetadata;
 
         this.routesConfig = routesConfig;
@@ -54,7 +54,7 @@ export default class Application {
     static getInstance(): Application {
         if (!Application.instance) {
             Application.instance = new Application(
-                aggregateMetadata,
+                entitiesMetadata,
                 valueObjectsMetadata,
                 config,
                 routes

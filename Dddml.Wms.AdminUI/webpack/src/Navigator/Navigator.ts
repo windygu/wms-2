@@ -5,7 +5,6 @@ import Application from "../Application";
 export default class Navigator {
     public items;
     public app;
-    public aggregateMetadata;
 
     constructor(application: Application) {
         this.items = [];
@@ -13,7 +12,7 @@ export default class Navigator {
     }
 
     build(route) {
-        let metadata = this.getAggregateMetadata(route.params.name);
+        let metadata = this.getEntityMetadata(route.params.name);
         this.reset();
 
         this.addItem(
@@ -49,9 +48,9 @@ export default class Navigator {
         }
     }
 
-    getAggregateMetadata(name) {
-        return MetadataHelper.getAggregateByPlural(
-            this.app.aggregatesMetadata,
+    getEntityMetadata(name) {
+        return MetadataHelper.getEntityByPlural(
+            this.app.entitiesMetadata,
             name
         );
     }

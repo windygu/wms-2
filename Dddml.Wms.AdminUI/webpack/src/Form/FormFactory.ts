@@ -5,7 +5,7 @@ import EntityForm from "./EntityForm";
 export default class FormFactory {
     static application: Application;
 
-    static createEntityForm(metadata: AggregateMetadataInterface, data = {}) {
+    static createEntityForm(metadata: EntityMetadataInterface, data = {}) {
         return new EntityForm(
             metadata,
             config[metadata.name],

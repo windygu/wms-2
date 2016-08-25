@@ -1,7 +1,7 @@
 import StringHelper from './Helper/StringHelper';
-import AggregateCollection from '../src/AggregateCollection';
+import EntityCollection from '../src/EntityCollection';
 
-export default class Aggregate {
+export default class Entity {
     public data;
     public metadata;
     public childMetadatas;
@@ -72,7 +72,7 @@ export default class Aggregate {
         for (let i = 0; i < names.length; i++) {
             let name = names[i];
 
-            children[name] = new AggregateCollection(
+            children[name] = new EntityCollection(
                 this.data[StringHelper.lcfirst(name)],
                 this.getChildEntityMetadata(name)
             );

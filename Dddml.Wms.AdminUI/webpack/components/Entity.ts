@@ -1,5 +1,5 @@
 import VTable from './Bootstrap/Table'
-import Aggregate from '../src/Aggregate';
+import Entity from '../src/Entity';
 import Navigator from './Bootstrap/Navigator';
 import * as Vue from 'vue'
 
@@ -7,7 +7,7 @@ export default Vue.extend({
     template: require('./View/Entity.html'),
     data(){
         return {
-            entity: new Aggregate({}, {}),
+            entity: new Entity({}, {}),
             children: {},
             currentChild: {}
         }
@@ -27,7 +27,7 @@ export default Vue.extend({
     route: {
         data(){
             this.$http.get(this.$route.params.name + '/' + this.$route.params.id).then((response) => {
-                this.entity = new Aggregate(response.data, this.metadata);
+                this.entity = new Entity(response.data, this.metadata);
                 let entitiesList = this.entity.getChildEntities();
                 let children = [];
 
