@@ -3,4 +3,5 @@ interface PropertyMetadataInterface {
     label?: string;
     type?: string;
     itemType?: string;
+    chainingName?: string;
 }

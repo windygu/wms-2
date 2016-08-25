@@ -10,9 +10,9 @@ export default class MetadataHelper {
         }
     }
 
-    static getValueObjectMetadata(metadata: PropertyMetadataInterface):boolean|ValueObjectMetadataInterface {
+    static getValueObjectMetadata(metadata: PropertyMetadataInterface): ValueObjectMetadataInterface {
         if (!PropertyType.isValueObject(metadata)) {
-            return false;
+            throw new Error('类型错误');
         }
 
         for (let valueObject of valueObjectsMetadata) {
@@ -21,6 +21,6 @@ export default class MetadataHelper {
             }
         }
 
-        return false;
+        throw new Error('类型错误');
     }
 }

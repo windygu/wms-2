@@ -1,17 +1,18 @@
 import Navigator from '../src/Navigator/Navigator';
-import Metadata from "Metadata.ts";
 import * as Vue from 'vue'
-import data from './../metadata/aggregates';
+import aggregateMetadata from './../metadata/aggregates';
+import MetadataHelper from "../src/Helper/MetadataHelper";
+import Application from "../src/Application";
 
-let metadata = new Metadata(data);
+var application = Application.getInstance();
 
 export default Vue.extend({
     template: require('./View/App.html'),
     data(){
         return {
-            metadata: metadata,
-            current: {},
-            navigator: new Navigator(metadata)
+            application: application,
+            currentAggregate: {},
+            navigator: new Navigator(application)
         }
     },
     props: {
@@ -19,11 +20,12 @@ export default Vue.extend({
     },
     methods: {
         changeAggregate(aggregate){
-            this.current = aggregate
+            this.currentAggregate = aggregate
         }
     },
     ready(){
-        this.current = this.metadata.getAggregateByPlural(
+        this.currentAggregate = MetadataHelper.getAggregateByPlural(
+            application.aggregatesMetadata,
             this.$route.params.name
         );
     }

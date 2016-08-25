@@ -32,18 +32,12 @@ export default class EntityForm {
 
             this.elements.push(new FormElement(metadata, this.data));
         } else if (PropertyType.isValueObject(metadata)) {
-            let vbMetadata = MetadataHelper.getValueObjectMetadata(metadata);
-
-            if (!vbMetadata) {
-                return;
-            }
-
             this.data[metadata.name] = {};
 
             this.valueObjectForms.push(
                 new ValueObjectForm(
                     metadata.name,
-                    vbMetadata,
+                    MetadataHelper.getValueObjectMetadata(metadata),
                     this.data
                 )
             );

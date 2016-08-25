@@ -1,14 +1,15 @@
-import NavItem from './NavigatorItem'
+import NavigatorItem from './NavigatorItem'
+import MetadataHelper from "../Helper/MetadataHelper";
+import Application from "../Application";
 
 export default class Navigator {
     public items;
-    public metadata;
-    public aggregateMeta;
+    public app;
+    public aggregateMetadata;
 
-    constructor(metadata) {
+    constructor(application: Application) {
         this.items = [];
-        this.metadata = metadata;
-        this.aggregateMeta = {};
+        this.app   = application;
     }
 
     build(route) {
@@ -16,7 +17,7 @@ export default class Navigator {
         this.reset();
 
         this.addItem(
-            new NavItem(metadata.collectionLabel, {
+            new NavigatorItem(metadata.collectionLabel, {
                 name: 'entities',
                 params: {
                     name: route.params.name
@@ -26,7 +27,7 @@ export default class Navigator {
 
         if (route.name == 'entity') {
             this.addItem(
-                new NavItem(metadata.label, {
+                new NavigatorItem(metadata.label, {
                     name: 'entity',
                     params: {
                         name: route.params.name,
@@ -38,7 +39,7 @@ export default class Navigator {
 
         if (route.name == 'createEntity') {
             this.addItem(
-                new NavItem('创建 ' + metadata.label, {
+                new NavigatorItem('创建 ' + metadata.label, {
                     name: 'createEntity',
                     params: {
                         name: route.params.name
@@ -49,16 +50,13 @@ export default class Navigator {
     }
 
     getAggregateMetadata(name) {
-        if (!this.aggregateMeta[name]) {
-            this.aggregateMeta[name] = this.metadata.getAggregateByPlural(
-                name
-            );
-        }
-
-        return this.aggregateMeta[name];
+        return MetadataHelper.getAggregateByPlural(
+            this.app.aggregatesMetadata,
+            name
+        );
     }
 
-    addItem(item) {
+    addItem(item: NavigatorItem) {
         this.items.push(item);
     }
 

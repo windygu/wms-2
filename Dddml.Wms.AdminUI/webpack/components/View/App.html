@@ -77,7 +77,7 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul id="main-menu" class="sidebar-menu">
                     <li class="header">聚合</li>
-                    <li v-for="aggregate in metadata.data">
+                    <li v-for="aggregate in application.aggregatesMetadata">
                         <a v-link="{ name: 'entities', params: { name: aggregate.plural } }"
                            v-on:click="changeAggregate(aggregate)">
                             <i class="fa fa-th"></i> <span>{{aggregate.collectionLabel}}</span>
@@ -89,7 +89,7 @@
 
         <!-- =============================================== -->
 
-        <router-view :metadata="current"></router-view>
+        <router-view :metadata="currentAggregate"></router-view>
 
         <footer class="main-footer">
             <div class="pull-right hidden-xs">

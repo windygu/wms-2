@@ -11,7 +11,9 @@ export default class PropertyType {
     static isBuildInType(metadata: PropertyMetadataInterface) {
         if (metadata.type) {
             for (let type of PropertyType.builtInTypes) {
-                if (metadata.type == type) {
+                let proType = metadata.type.replace('?', '');
+
+                if (proType == type) {
                     return true;
                 }
             }

@@ -12,6 +12,7 @@ export default class ValueObjectForm {
         this.name       = name;
         this.metadata   = metadata;
         this.parentData = parentData;
+        this.elements   = [];
 
         this.build();
     }
@@ -22,17 +23,11 @@ export default class ValueObjectForm {
 
             this.elements.push(new FormElement(metadata, this.parentData[this.name]));
         } else if (PropertyType.isValueObject(metadata)) {
-            let vbMetadata = MetadataHelper.getValueObjectMetadata(metadata);
-
-            if (!vbMetadata) {
-                return;
-            }
-
             this.parentData[this.name][metadata.name] = {};
 
             let childForm = new ValueObjectForm(
                 metadata.name,
-                vbMetadata,
+                MetadataHelper.getValueObjectMetadata(metadata),
                 this.parentData[this.name]
             );
 

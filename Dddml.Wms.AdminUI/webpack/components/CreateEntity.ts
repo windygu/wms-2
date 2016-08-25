@@ -1,14 +1,15 @@
 import VForm from './Bootstrap/Form'
-import FormCls from '../src/Form/Form';
 import Navigator from './Bootstrap/Navigator';
-import formConfig from '../config/view/forms';
 import * as Vue from 'vue'
+import FormFactory from "../src/Form/FormFactory";
 
-export default{
+export default Vue.extend({
     template: require('./View/CreateEntity.html'),
     data(){
         return {
-            form: FormCls.createForm(this.metadata, formConfig[this.metadata.name])
+            form: FormFactory.createEntityForm(
+                this.metadata
+            ),
         }
     },
     components: {
@@ -34,4 +35,4 @@ export default{
             this.$root.navigator.build(this.$route);
         }
     }
-}
+});
