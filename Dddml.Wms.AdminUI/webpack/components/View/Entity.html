@@ -36,17 +36,20 @@
             <!-- /.box-footer-->
         </div>
         <!-- /.box -->
-        <div class="box">
-            <div class="box-header with-border nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                    <li role="presentation" data-toggle="tab" v-for="item in entity.getChildEntityMetadataNames()">
-                        <a href="javascript:;" v-on:click="changeChild(item)">{{item}}</a>
-                    </li>
-                </ul>
+        <template v-if="entity.getChildEntityNames().length">
+            <div class="box">
+                <div class="box-header with-border nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" data-toggle="tab" v-for="item in entity.getChildEntityNames()">
+                            <a href="javascript:;" v-on:click="changeChild(item)">{{item}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box-body no-padding table-responsive">
+                    <v-table :table-data="currentChild"></v-table>
+                </div>
             </div>
-            <div class="box-body no-padding table-responsive">
-                <v-table :table-data="currentChild"></v-table>
-            </div>
-        </div>
+        </template>
+
     </section>
 </div>

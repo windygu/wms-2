@@ -59,7 +59,7 @@ export default class Entity {
         return this.childMetadatas;
     }
 
-    getChildEntityMetadataNames() {
+    getChildEntityNames() {
         let metadata = this.getChildEntityMetadata();
 
         return Object.keys(metadata);
@@ -67,7 +67,7 @@ export default class Entity {
 
     getChildEntities() {
         let children = {};
-        let names = this.getChildEntityMetadataNames();
+        let names = this.getChildEntityNames();
 
         for (let i = 0; i < names.length; i++) {
             let name = names[i];
