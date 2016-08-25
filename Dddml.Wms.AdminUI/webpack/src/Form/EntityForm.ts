@@ -5,20 +5,20 @@ import MetadataHelper from "../Helper/MetadataHelper";
 
 export default class EntityForm {
     public data;
-    public EntityMetadata: EntityMetadataInterface;
+    public metadata: EntityMetadataInterface;
     public elements: Array<FormElement>;
     public valueObjectForms: Array<ValueObjectForm>;
     public config;
 
     get name() {
-        return this.EntityMetadata.name;
+        return this.metadata.name;
     }
 
-    constructor(EntityMetadata: EntityMetadataInterface,
+    constructor(entityMetadata: EntityMetadataInterface,
                 config,
                 data = {}) {
         this.data             = data;
-        this.EntityMetadata   = EntityMetadata;
+        this.metadata         = entityMetadata;
         this.config           = config;
         this.valueObjectForms = [];
         this.elements         = [];
@@ -49,9 +49,9 @@ export default class EntityForm {
     }
 
     protected build() {
-        this.addItemFromMetadata(this.EntityMetadata.id);
+        this.addItemFromMetadata(this.metadata.id);
 
-        for (let property of this.EntityMetadata.properties) {
+        for (let property of this.metadata.properties) {
             if (this.hasDisplayableField(property.name)) {
                 this.addItemFromMetadata(property);
             }

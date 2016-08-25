@@ -1,26 +1,29 @@
 import StringHelper from './Helper/StringHelper';
 import EntityCollection from '../src/EntityCollection';
+import PropertyType from "./Metadata/PropertyType";
+import MetadataHelper from "./Helper/MetadataHelper";
 
 export default class Entity {
     public data;
-    public metadata;
-    public childMetadatas;
+    public metadata: EntityMetadataInterface;
+    public childrenMetadata;
 
     constructor(data, metadata) {
-        this.data = data;
-        this.metadata = metadata;
-        this.childMetadatas = {};
+        this.data             = data;
+        this.metadata         = metadata;
+        this.childrenMetadata = {};
     }
 
     getStringId(encode = true) {
         let id;
         let idName = this.metadata.id.name;
 
-        if (this.metadata.id.properties) {
+        if (PropertyType.isValueObject(this.metadata.id)) {
+            let voMetadata = MetadataHelper.getValueObjectMetadata(this.metadata.id);
             let properties = [];
 
-            for (let i = 0; i < this.metadata.id.properties.length; i++) {
-                let propertyName = this.metadata.id.properties[i];
+            for (let property of voMetadata.properties) {
+                let propertyName = property.name;
 
                 properties.push(this.data[idName][propertyName]);
             }
@@ -33,7 +36,7 @@ export default class Entity {
     }
 
     getFields() {
-        let fields = [];
+        let fields     = [];
         let properties = this.metadata.properties;
 
         if (properties) {
@@ -46,17 +49,17 @@ export default class Entity {
     }
 
     getChildEntityMetadata(name = null) {
-        if (!this.childMetadatas.length && this.metadata.entities) {
+        if (!this.childrenMetadata.length && this.metadata.entities) {
             let entities = this.metadata.entities;
-            for (let i = 0; i < entities.length; i++) {
-                this.childMetadatas[entities[i].plural] = entities[i];
+            for (let entity of entities) {
+                this.childrenMetadata[entity.plural] = entity;
             }
         }
         if (name) {
-            return this.childMetadatas[name];
+            return this.childrenMetadata[name];
         }
 
-        return this.childMetadatas;
+        return this.childrenMetadata;
     }
 
     getChildEntityNames() {
@@ -67,11 +70,9 @@ export default class Entity {
 
     getChildEntities() {
         let children = {};
-        let names = this.getChildEntityNames();
+        let names    = this.getChildEntityNames();
 
-        for (let i = 0; i < names.length; i++) {
-            let name = names[i];
-
+        for (let name of names) {
             children[name] = new EntityCollection(
                 this.data[StringHelper.lcfirst(name)],
                 this.getChildEntityMetadata(name)
