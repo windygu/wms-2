@@ -18,17 +18,17 @@ export default class Navigator {
 
         this.addItem(
             new NavigatorItem(metadata.collectionLabel, {
-                name: 'aggregates',
+                name: 'entities',
                 params: {
                     name: route.params.name
                 }
             })
         );
 
-        if (route.name == 'aggregate') {
+        if (route.name == 'entity') {
             this.addItem(
                 new NavigatorItem(metadata.label, {
-                    name: 'aggregate',
+                    name: 'entity',
                     params: {
                         name: route.params.name,
                         id: route.params.id
@@ -37,10 +37,10 @@ export default class Navigator {
             );
         }
 
-        if (route.name == 'createAggregate') {
+        if (route.name == 'createEntity') {
             this.addItem(
                 new NavigatorItem('创建 ' + metadata.label, {
-                    name: 'createAggregate',
+                    name: 'createEntity',
                     params: {
                         name: route.params.name
                     }

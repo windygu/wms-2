@@ -20,7 +20,7 @@ export default class AggregateCollection {
             let aggregate = new Aggregate(table.rows[i], this.metadata);
 
             table.rows[i].detailRoute = {
-                name: 'aggregate',
+                name: 'entity',
                 params: {
                     name: this.metadata.plural,
                     id: aggregate.getStringId()

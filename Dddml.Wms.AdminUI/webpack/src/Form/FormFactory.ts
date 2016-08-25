@@ -1,12 +1,12 @@
 import Application from "../Application";
 import config from "../../config/view/tables";
-import AggregateForm from "./AggregateForm";
+import EntityForm from "./EntityForm";
 
 export default class FormFactory {
     static application: Application;
 
-    static createAggregateForm(metadata: AggregateMetadataInterface, data = {}) {
-        return new AggregateForm(
+    static createEntityForm(metadata: AggregateMetadataInterface, data = {}) {
+        return new EntityForm(
             metadata,
             config[metadata.name],
             data

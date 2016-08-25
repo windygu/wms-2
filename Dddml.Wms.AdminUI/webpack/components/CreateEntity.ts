@@ -4,10 +4,10 @@ import * as Vue from 'vue'
 import FormFactory from "../src/Form/FormFactory";
 
 export default Vue.extend({
-    template: require('./View/CreateAggregate.html'),
+    template: require('./View/CreateEntity.html'),
     data(){
         return {
-            form: FormFactory.createAggregateForm(
+            form: FormFactory.createEntityForm(
                 this.metadata
             ),
         }

@@ -3,7 +3,7 @@ import PropertyType from "../Metadata/PropertyType";
 import FormElement from "./FormElement";
 import MetadataHelper from "../Helper/MetadataHelper";
 
-export default class AggregateForm {
+export default class EntityForm {
     public data;
     public aggregateMetadata: AggregateMetadataInterface;
     public elements: Array<FormElement>;

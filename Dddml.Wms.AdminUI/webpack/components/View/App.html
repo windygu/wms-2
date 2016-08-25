@@ -78,7 +78,7 @@
                 <ul id="main-menu" class="sidebar-menu">
                     <li class="header">聚合</li>
                     <li v-for="aggregate in application.aggregatesMetadata">
-                        <a v-link="{ name: 'aggregates', params: { name: aggregate.plural } }"
+                        <a v-link="{ name: 'entities', params: { name: aggregate.plural } }"
                            v-on:click="changeAggregate(aggregate)">
                             <i class="fa fa-th"></i> <span>{{aggregate.collectionLabel}}</span>
                         </a>
