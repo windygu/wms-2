@@ -1,7 +1,7 @@
 import Index from './components/Index';
 import AggregateRoot from './components/AggregateRoot';
-import Entity from './components/Entity';
-import CreateEntity from './components/CreateEntity';
+import Aggregate from './components/Aggregate';
+import CreateAggregate from './components/CreateAggregate';
 
 export default {
     '/': {
@@ -9,12 +9,12 @@ export default {
         component: Index
     },
     '/get/:name/': {
-        name: 'entities',
+        name: 'aggregates',
         component: AggregateRoot
     },
     '/get/:name/:id/': {
-        name: 'entity',
-        component: Entity
+        name: 'aggregate',
+        component: Aggregate
     },
     // '/:name/:id/:embedEntities': {
     //     name: 'embedEntities',
@@ -25,7 +25,7 @@ export default {
     //     component: Entity
     // },
     '/create/:name/': {
-        name: 'createEntity',
-        component: CreateEntity
+        name: 'createAggregate',
+        component: CreateAggregate
     }
 };

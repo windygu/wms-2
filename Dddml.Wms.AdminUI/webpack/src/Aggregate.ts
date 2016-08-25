@@ -45,7 +45,7 @@ export default class Aggregate {
         return fields;
     }
 
-    getChildEntityMetadata(name = null) {
+    getChildAggregateMetadata(name = null) {
         if (!this.childMetadatas.length && this.metadata.entities) {
             let entities = this.metadata.entities;
             for (let i = 0; i < entities.length; i++) {
@@ -59,22 +59,22 @@ export default class Aggregate {
         return this.childMetadatas;
     }
 
-    getChildEntityMetadataNames() {
-        let metadata = this.getChildEntityMetadata();
+    getChildAggregateMetadataNames() {
+        let metadata = this.getChildAggregateMetadata();
 
         return Object.keys(metadata);
     }
 
-    getChildEntities() {
+    getChildAggregates() {
         let children = {};
-        let names = this.getChildEntityMetadataNames();
+        let names = this.getChildAggregateMetadataNames();
 
         for (let i = 0; i < names.length; i++) {
             let name = names[i];
 
             children[name] = new AggregateCollection(
                 this.data[StringHelper.lcfirst(name)],
-                this.getChildEntityMetadata(name)
+                this.getChildAggregateMetadata(name)
             );
         }
 

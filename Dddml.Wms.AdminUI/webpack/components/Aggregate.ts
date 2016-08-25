@@ -4,10 +4,10 @@ import Navigator from './Bootstrap/Navigator';
 import * as Vue from 'vue'
 
 export default Vue.extend({
-    template: require('./View/Entity.html'),
+    template: require('./View/Aggregate.html'),
     data(){
         return {
-            entity: new Aggregate({}, {}),
+            aggregate: new Aggregate({}, {}),
             children: {},
             currentChild: {}
         }
@@ -27,12 +27,12 @@ export default Vue.extend({
     route: {
         data(){
             this.$http.get(this.$route.params.name + '/' + this.$route.params.id).then((response) => {
-                this.entity = new Aggregate(response.data, this.metadata);
-                let entitiesList = this.entity.getChildEntities();
+                this.aggregate = new Aggregate(response.data, this.metadata);
+                let aggregates = this.aggregate.getChildAggregates();
                 let children = [];
 
-                for (let name in entitiesList) {
-                    children[name] = entitiesList[name].toTable();
+                for (let name in aggregates) {
+                    children[name] = aggregates[name].toTable();
                 }
 
                 this.children = children;
