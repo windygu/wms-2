@@ -1,6 +1,7 @@
 import VTable from './Bootstrap/Table';
 import EntityCollection from '../src/EntityCollection';
 import Navigator from './Bootstrap/Navigator';
+import Alert from './Bootstrap/Alert';
 import * as Vue from 'vue'
 
 export default Vue.extend({
@@ -8,11 +9,14 @@ export default Vue.extend({
     data(){
         return {
             table: {},
+            showError: false,
+            errorMessage: ""
         }
     },
     components: {
         VTable,
-        Navigator
+        Navigator,
+        Alert
     },
     props: {
         metadata: Object
@@ -27,7 +31,8 @@ export default Vue.extend({
 
                 this.table = entityCollection.toTable();
             }, (response) => {
-                // error callback
+                this.showError    = true;
+                this.errorMessage = response.statusText;
             });
 
             this.$root.navigator.build(this.$route);
