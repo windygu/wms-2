@@ -76,7 +76,7 @@ abstract class AbstractExecutor
         $this->setBaseUri($baseUri);
 
         if (!$serializer) {
-            $ipns   = new IdenticalPropertyNamingStrategy();
+            $ipns = new IdenticalPropertyNamingStrategy();
             $snas = new SerializedNameAnnotationStrategy($ipns);
 
             $serializer = SerializerBuilder::create()
@@ -99,6 +99,11 @@ abstract class AbstractExecutor
         $this->routes = new RouteCollection();
 
         $this->setOption($option);
+    }
+
+    public function getClient()
+    {
+        return $this->client;
     }
 
     /**
@@ -157,6 +162,11 @@ abstract class AbstractExecutor
     public function setBaseUri($uri)
     {
         $this->baseUri = $uri;
+    }
+
+    public function getBaseUri()
+    {
+        return $this->baseUri;
     }
 
     /**

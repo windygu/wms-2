@@ -70,13 +70,18 @@ class QueryExecutor extends AbstractExecutor
             isset($option['parameters']) ? $option['parameters'] : []
         );
 
+        $this->requestUrl($url, $option);
+
+        return $this->lastResponse;
+    }
+
+    public function requestUrl($url, array $option = [])
+    {
         $this->lastResponse = $this->client->request(
             self::METHOD_GET,
             $url,
             $this->getClientOption($option)
         );
-
-        return $this->lastResponse;
     }
 
     public function getLastResponse()

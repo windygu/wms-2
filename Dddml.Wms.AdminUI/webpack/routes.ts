@@ -8,11 +8,11 @@ export default {
         name: 'index',
         component: Index
     },
-    '/get/:name/': {
+    '/entities/:name/': {
         name: 'entities',
         component: AggregateRoot
     },
-    '/get/:name/:id/': {
+    '/entity/:chainingName/': {
         name: 'entity',
         component: Entity
     },

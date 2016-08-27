@@ -74,6 +74,28 @@ class ApiProxy
         return $json;
     }
 
+    public function request($url, Request $httpRequest)
+    {
+        /** @var QueryExecutor $executor */
+        $executor = $this->app['api.query.executor'];
+
+        $url = $executor->getBaseUri() . $url;
+
+        $executor->requestUrl($url, [
+            'query'   => $httpRequest->query->all(),
+            'headers' => $this->getHeaders($httpRequest),
+        ]);
+
+        $response = $executor->getLastResponse();
+
+        return new JsonResponse(
+            $response->getBody()->getContents(),
+            $response->getStatusCode(),
+            $response->getHeaders(),
+            true
+        );
+    }
+
     public function create($entityName, $id, Request $httpRequest)
     {
         $className = 'Dddml\Wms\HttpClient\\Create' . $entityName . 'Request';

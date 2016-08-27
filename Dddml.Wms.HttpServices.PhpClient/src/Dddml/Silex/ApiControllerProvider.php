@@ -24,6 +24,17 @@ class ApiControllerProvider implements ControllerProviderInterface
         $controllers->get('{entities}', [$this, 'getEntities'])->bind('api_get_entities');
         $controllers->put('{entities}/{id}', [$this, 'createEntity'])->bind('api_create_entity');
         $controllers->patch('{entities}/{id}', [$this, 'mergePatchEntity'])->bind('api_merge_patch_entity');
+        $controllers->get('{a}/{b}/{c}/{d}/{e}/{f}{g}/{h}/{i}', [$this, 'freeRoute'])
+            ->bind('free_route')
+            ->value('a', null)
+            ->value('b', null)
+            ->value('c', null)
+            ->value('d', null)
+            ->value('e', null)
+            ->value('f', null)
+            ->value('g', null)
+            ->value('h', null)
+            ->value('i', null);
 
         return $controllers;
     }
@@ -72,5 +83,21 @@ class ApiControllerProvider implements ControllerProviderInterface
     public function deleteRole(Application $app, Request $request, $entities, $id)
     {
 
+    }
+
+    public function freeRoute(Application $app, Request $request)
+    {
+        $params = $request->attributes->all();
+        $url    = '';
+
+        foreach (range('a', 'i') as $key){
+            if ($params[$key]) {
+                $url .= '/' . $params[$key];
+            }
+        }
+
+        $response = $app['api.proxy']->request($url, $request);
+
+        return $response;
     }
 }

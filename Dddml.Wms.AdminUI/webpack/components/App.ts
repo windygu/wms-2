@@ -23,9 +23,19 @@ export default Vue.extend({
         }
     },
     ready(){
-        this.currentEntity = MetadataHelper.getEntityByPlural(
-            application.entitiesMetadata,
-            this.$route.params.name
-        );
+        switch (this.$route.name) {
+            case 'entities':
+                this.currentEntity = MetadataHelper.getEntityByPlural(
+                    application.entitiesMetadata,
+                    this.$route.params.name
+                );
+                break;
+            case 'entity':
+                this.currentEntity = MetadataHelper.getMetadataByChainingName(
+                    application.entitiesMetadata,
+                    this.$route.params.chainingName
+                );
+                break;
+        }
     }
 });

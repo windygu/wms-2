@@ -15,25 +15,30 @@ export default class Navigator {
         let metadata = this.getEntityMetadata(route.params.name);
         this.reset();
 
-        this.addItem(
-            new NavigatorItem(metadata.collectionLabel, {
-                name: 'entities',
-                params: {
-                    name: route.params.name
-                }
-            })
-        );
-
-        if (route.name == 'entity') {
+        if (route.name == 'entities') {
             this.addItem(
-                new NavigatorItem(metadata.label, {
-                    name: 'entity',
+                new NavigatorItem(metadata.collectionLabel, {
+                    name: 'entities',
                     params: {
-                        name: route.params.name,
-                        id: route.params.id
+                        name: route.params.name
                     }
                 })
             );
+
+            return;
+        }
+
+        if (route.name == 'entity') {
+            this.addItem(
+                new NavigatorItem(route.params.chainingName, {
+                    name: 'entity',
+                    params: {
+                        chainingName: route.params.chainingName
+                    }
+                })
+            );
+
+            return;
         }
 
         if (route.name == 'createEntity') {
@@ -45,6 +50,8 @@ export default class Navigator {
                     }
                 })
             );
+
+            return;
         }
     }
 
