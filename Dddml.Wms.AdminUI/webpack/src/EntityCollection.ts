@@ -1,6 +1,6 @@
 import Table from './Table';
 import Entity from './Entity';
-import RouteHelper from "./Helper/RouteHelper";
+import EntityChainHelper from "./Helper/EntityChainHelper";
 
 export default class EntityCollection {
     public data;
@@ -18,7 +18,7 @@ export default class EntityCollection {
         );
 
         for (let row of table.rows) {
-            let chainingName = RouteHelper.createChainingName(row, this.metadata, $route);
+            let chainingName = EntityChainHelper.createChainingName(row, this.metadata, $route);
 
             row.detailRoute = {
                 name: 'entity',

@@ -1,6 +1,7 @@
 import NavigatorItem from './NavigatorItem'
 import MetadataHelper from "../Helper/MetadataHelper";
 import Application from "../Application";
+import EntityChainHelper from "../Helper/EntityChainHelper";
 
 export default class Navigator {
     public items;
@@ -29,14 +30,31 @@ export default class Navigator {
         }
 
         if (route.name == 'entity') {
+            let chaining = EntityChainHelper.chainingNameToArray(route.params.chainingName);
+            console.log(chaining);
+            let root = chaining[0];
             this.addItem(
-                new NavigatorItem(route.params.chainingName, {
-                    name: 'entity',
+                new NavigatorItem(root.name, {
+                    name: 'entities',
                     params: {
-                        chainingName: route.params.chainingName
+                        name: root.name,
                     }
                 })
             );
+
+            for (let i = 0; i < chaining.length; i++) {
+                console.log(chaining.slice(0, i + 1));
+                this.addItem(
+                    new NavigatorItem(chaining[i].name + ':' + chaining[i].id, {
+                        name: 'entity',
+                        params: {
+                            chainingName: EntityChainHelper.arrayToChainingName(
+                                chaining.slice(0, i+1)
+                            )
+                        }
+                    })
+                );
+            }
 
             return;
         }

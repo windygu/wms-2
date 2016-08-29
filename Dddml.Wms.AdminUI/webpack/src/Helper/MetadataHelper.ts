@@ -1,6 +1,5 @@
 import PropertyType from "../Metadata/PropertyType";
 import valueObjectsMetadata from '../../metadata/valueObjects'
-import RouteHelper from "./RouteHelper";
 
 export default class MetadataHelper {
     static getEntityByPlural(metadata: Array<EntityMetadataInterface>, value: String) {

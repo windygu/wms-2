@@ -2,7 +2,7 @@ import VTable from './Bootstrap/Table'
 import Entity from '../src/Entity';
 import Navigator from './Bootstrap/Navigator';
 import * as Vue from 'vue'
-import RouteHelper from "../src/Helper/RouteHelper";
+import EntityChainHelper from "../src/Helper/EntityChainHelper";
 import MetadataHelper from "../src/Helper/MetadataHelper";
 import ObjectHelper from '../src/Helper/ObjectHelper';
 
@@ -34,7 +34,7 @@ export default Vue.extend({
     },
     route: {
         data: function (transition) {
-            let route = RouteHelper.createEntityApiRoute(this.$route);
+            let route = EntityChainHelper.createEntityApiRoute(this.$route);
 
             this.$http.get(route).then((response) => {
                 this.metadata = MetadataHelper.getMetadataByChainingName(
