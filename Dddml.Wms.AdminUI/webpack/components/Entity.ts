@@ -4,6 +4,7 @@ import Navigator from './Bootstrap/Navigator';
 import * as Vue from 'vue'
 import RouteHelper from "../src/Helper/RouteHelper";
 import MetadataHelper from "../src/Helper/MetadataHelper";
+import ObjectHelper from '../src/Helper/ObjectHelper';
 
 export default Vue.extend({
     template: require('./View/Entity.html'),
@@ -21,6 +22,11 @@ export default Vue.extend({
     props: {
         metadata: Object
     },
+    computed: {
+        hasCurrentChild(){
+            return ObjectHelper.isNotEmpty(this.currentChild);
+        }
+    },
     methods: {
         changeChild(key){
             this.currentChild = this.children[key];
@@ -28,7 +34,7 @@ export default Vue.extend({
     },
     route: {
         data: function (transition) {
-            let route = RouteHelper.buildGetEntityApiRoute(this.$route);
+            let route = RouteHelper.createEntityApiRoute(this.$route);
 
             this.$http.get(route).then((response) => {
                 this.metadata = MetadataHelper.getMetadataByChainingName(

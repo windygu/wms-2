@@ -43,6 +43,7 @@
                         <li role="presentation" data-toggle="tab" v-for="item in entity.getChildEntityNames()">
                             <a href="javascript:;" v-on:click="changeChild(item)">{{item}}</a>
                         </li>
+                        <li v-if="hasCurrentChild" class="pull-right"><a href="#" class="text-muted"><i class="fa fa-plus-circle"></i></a></li>
                     </ul>
                 </div>
                 <div class="box-body no-padding table-responsive">

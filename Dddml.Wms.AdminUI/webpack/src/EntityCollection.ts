@@ -18,14 +18,7 @@ export default class EntityCollection {
         );
 
         for (let row of table.rows) {
-            let entity       = new Entity(row, this.metadata);
-            let chainingName = this.metadata.plural +
-                RouteHelper.entitySeparator +
-                entity.getStringId();
-
-            if ($route) {
-                chainingName = $route.params.chainingName + '..' + chainingName;
-            }
+            let chainingName = RouteHelper.createChainingName(row, this.metadata, $route);
 
             row.detailRoute = {
                 name: 'entity',

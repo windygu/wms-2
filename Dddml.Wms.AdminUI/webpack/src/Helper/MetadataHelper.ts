@@ -27,10 +27,10 @@ export default class MetadataHelper {
 
     static getMetadataByChainingName(metadata: Array<EntityMetadataInterface>, chainingName: string) {
 
-        let chaining = chainingName.split(RouteHelper.entitiesSeparator);
+        let chaining = JSON.parse(decodeURIComponent(chainingName));
 
-        let root = chaining.shift().split(RouteHelper.entitySeparator);
-        let name = root.shift();
+        let root = chaining.shift();
+        let name = root.name;
 
         let data = MetadataHelper.getEntityByPlural(metadata, name);
 
@@ -39,10 +39,7 @@ export default class MetadataHelper {
         }
 
         for (let item of chaining) {
-            let entity = item.split(RouteHelper.entitySeparator);
-            let name   = entity.shift();
-
-            data = MetadataHelper.getEntityByPlural(data.entities, name);
+            data = MetadataHelper.getEntityByPlural(data.entities, item.name);
 
             if (!data) {
                 throw new Error('没有该实体的定义');

@@ -1,20 +1,40 @@
+import Entity from "../Entity";
+
 export default class RouteHelper {
-    public static entitiesSeparator = '..';
-    public static entitySeparator   = '::';
-
-    static buildGetEntityApiRoute($route) {
-        let chaining: Array<string> = $route.params.chainingName.split(RouteHelper.entitiesSeparator);
-
+    static createEntityApiRoute($route) {
+        let chaining: any = decodeURIComponent($route.params.chainingName);
         let route: string = '';
 
-        for (let item of chaining) {
-            let entity = item.split(RouteHelper.entitySeparator);
-            let name = entity.shift();
-            let id   = entity.shift();
+        chaining = JSON.parse(chaining);
 
-            route += `${name}/${id}/`;
+        for (let item of chaining) {
+            route += `${item.name}/${item.id}/`;
         }
 
-        return route.substr(0, route.length-1);
+        return route.substr(0, route.length - 1);
+    }
+
+    static createChainingName(data, metadata, $route = null) {
+        let entity      = new Entity(data, metadata);
+        let chainingObj = [];
+
+        chainingObj.push({
+            name: metadata.plural,
+            id: entity.getStringId()
+        });
+
+        if ($route) {
+            let routeChainingName: any = decodeURIComponent($route.params.chainingName);
+            routeChainingName          = JSON.parse(routeChainingName);
+
+            for (let item of chainingObj) {
+                routeChainingName.push(item);
+            }
+
+            chainingObj = routeChainingName;
+        }
+//console.log(routeChainingName);
+
+        return encodeURIComponent(JSON.stringify(chainingObj));
     }
 }

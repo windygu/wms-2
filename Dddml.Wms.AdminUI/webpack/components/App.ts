@@ -25,6 +25,7 @@ export default Vue.extend({
     ready(){
         switch (this.$route.name) {
             case 'entities':
+            case 'createEntity':
                 this.currentEntity = MetadataHelper.getEntityByPlural(
                     application.entitiesMetadata,
                     this.$route.params.name
