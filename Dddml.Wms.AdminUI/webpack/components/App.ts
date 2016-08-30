@@ -1,8 +1,6 @@
 import Navigator from '../src/Navigator/Navigator';
 import * as Vue from 'vue'
-import MetadataHelper from "../src/Helper/MetadataHelper";
 import Application from "../src/Application";
-import EntityChainHelper from "../src/Helper/EntityChainHelper";
 
 var application = Application.getInstance();
 

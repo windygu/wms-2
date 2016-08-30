@@ -4,7 +4,6 @@ import ChildEntities from './ChildEntities';
 import * as Vue from 'vue'
 import EntityChainHelper from "../src/Helper/EntityChainHelper";
 import MetadataHelper from "../src/Helper/MetadataHelper";
-import ObjectHelper from '../src/Helper/ObjectHelper';
 
 export default Vue.extend({
     template: require('./View/Entity.html'),

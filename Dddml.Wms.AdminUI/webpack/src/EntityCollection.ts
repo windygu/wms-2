@@ -1,5 +1,4 @@
 import Table from './Table';
-import Entity from './Entity';
 import EntityChainHelper from "./Helper/EntityChainHelper";
 
 export default class EntityCollection {

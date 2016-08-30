@@ -4,7 +4,6 @@ import Navigator from './Bootstrap/Navigator';
 import Alert from './Bootstrap/Alert';
 import * as Vue from 'vue'
 import MetadataHelper from "../src/Helper/MetadataHelper";
-import Application from "../src/Application";
 
 export default Vue.extend({
     template: require('./View/AggregateRoot.html'),

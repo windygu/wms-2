@@ -1,6 +1,5 @@
 import * as Vue from 'vue'
 import VTable from './Bootstrap/Table'
-import ObjectHelper from "../src/Helper/ObjectHelper";
 import EntityChainHelper from "../src/Helper/EntityChainHelper";
 
 export default Vue.extend({
