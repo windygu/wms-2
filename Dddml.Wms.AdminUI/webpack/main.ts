@@ -3,4 +3,4 @@ import AppComponent from './components/App'
 
 var app = Application.getInstance();
 
-app.run(AppComponent, '#app');
+app.run(AppComponent, '#app', true);

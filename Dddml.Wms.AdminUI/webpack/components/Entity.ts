@@ -1,6 +1,6 @@
-import VTable from './Bootstrap/Table'
 import Entity from '../src/Entity';
 import Navigator from './Bootstrap/Navigator';
+import ChildEntities from './ChildEntities';
 import * as Vue from 'vue'
 import EntityChainHelper from "../src/Helper/EntityChainHelper";
 import MetadataHelper from "../src/Helper/MetadataHelper";
@@ -12,25 +12,14 @@ export default Vue.extend({
         return {
             entity: new Entity({}, {}),
             children: {},
-            currentChild: {}
         }
     },
     components: {
-        VTable,
-        Navigator
+        Navigator,
+        ChildEntities,
     },
     props: {
         metadata: Object
-    },
-    computed: {
-        hasCurrentChild(){
-            return ObjectHelper.isNotEmpty(this.currentChild);
-        }
-    },
-    methods: {
-        changeChild(key){
-            this.currentChild = this.children[key];
-        }
     },
     route: {
         data: function (transition) {

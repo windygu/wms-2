@@ -44,7 +44,9 @@ export default class Application {
         FormFactory.application = this;
     }
 
-    public run(component, selector: string) {
+    public run(component, selector: string, debug: boolean = false) {
+        Vue.config.debug = debug;
+
         var router = new VueRouter();
 
         router.map(this.routesConfig);

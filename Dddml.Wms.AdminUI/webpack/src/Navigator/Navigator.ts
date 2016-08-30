@@ -31,7 +31,6 @@ export default class Navigator {
 
         if (route.name == 'entity') {
             let chaining = EntityChainHelper.chainingNameToArray(route.params.chainingName);
-            console.log(chaining);
             let root = chaining[0];
             this.addItem(
                 new NavigatorItem(root.name, {
@@ -43,7 +42,6 @@ export default class Navigator {
             );
 
             for (let i = 0; i < chaining.length; i++) {
-                console.log(chaining.slice(0, i + 1));
                 this.addItem(
                     new NavigatorItem(chaining[i].name + ':' + chaining[i].id, {
                         name: 'entity',
