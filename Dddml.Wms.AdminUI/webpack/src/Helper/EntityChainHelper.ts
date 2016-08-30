@@ -1,16 +1,26 @@
 import Entity from "../Entity";
 
 export default class EntityChainHelper {
-    static createEntityApiRoute($route) {
+    static createGetEntityApiRoute($route, root: boolean = false) {
         let route: string = '';
 
         let chaining = EntityChainHelper.chainingNameToArray($route.params.chainingName);
+
+        if (root) {
+            chaining = [chaining.shift()];
+        }
 
         for (let item of chaining) {
             route += `${item.name}/${item.id}/`;
         }
 
         return route.substr(0, route.length - 1);
+    }
+
+    static root($route){
+        let chaining = EntityChainHelper.chainingNameToArray($route.params.chainingName);
+
+        return chaining.shift();
     }
 
     static chainingNameToArray(chainingName: string) {

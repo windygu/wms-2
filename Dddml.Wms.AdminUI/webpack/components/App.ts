@@ -2,6 +2,7 @@ import Navigator from '../src/Navigator/Navigator';
 import * as Vue from 'vue'
 import MetadataHelper from "../src/Helper/MetadataHelper";
 import Application from "../src/Application";
+import EntityChainHelper from "../src/Helper/EntityChainHelper";
 
 var application = Application.getInstance();
 
@@ -10,7 +11,6 @@ export default Vue.extend({
     data(){
         return {
             application: application,
-            currentEntity: {},
             navigator: new Navigator(application)
         }
     },
@@ -22,21 +22,4 @@ export default Vue.extend({
             this.currentEntity = entity
         }
     },
-    ready(){
-        switch (this.$route.name) {
-            case 'entities':
-            case 'createEntity':
-                this.currentEntity = MetadataHelper.getEntityByPlural(
-                    application.entitiesMetadata,
-                    this.$route.params.name
-                );
-                break;
-            case 'entity':
-                this.currentEntity = MetadataHelper.getMetadataByChainingName(
-                    application.entitiesMetadata,
-                    this.$route.params.chainingName
-                );
-                break;
-        }
-    }
 });

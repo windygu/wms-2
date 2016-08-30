@@ -3,6 +3,8 @@ import EntityCollection from '../src/EntityCollection';
 import Navigator from './Bootstrap/Navigator';
 import Alert from './Bootstrap/Alert';
 import * as Vue from 'vue'
+import MetadataHelper from "../src/Helper/MetadataHelper";
+import Application from "../src/Application";
 
 export default Vue.extend({
     template: require('./View/AggregateRoot.html'),
@@ -10,7 +12,8 @@ export default Vue.extend({
         return {
             table: {},
             showError: false,
-            errorMessage: ""
+            errorMessage: "",
+            metadata: null,
         }
     },
     components: {
@@ -18,12 +21,21 @@ export default Vue.extend({
         Navigator,
         Alert
     },
-    props: {
-        metadata: Object
+    computed:{
+        title(){
+            if(this.metadata){
+                return this.metadata.collectionLabel;
+            }
+        }
     },
     route: {
         data() {
-            this.$http.get(this.metadata.plural).then((response) => {
+            this.$http.get(this.$route.params.name).then((response) => {
+                this.metadata = MetadataHelper.getEntityByPlural(
+                    this.$root.application.entitiesMetadata,
+                    this.$route.params.name
+                );
+
                 let entityCollection = new EntityCollection(
                     response.data,
                     this.metadata
@@ -35,7 +47,7 @@ export default Vue.extend({
                 this.errorMessage = response.statusText;
             });
 
-            this.$root.navigator.build(this.$route);
+            this.$root.navigator.buildEntities(this.$route);
         }
     }
 });

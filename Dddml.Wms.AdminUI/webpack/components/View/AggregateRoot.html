@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            {{metadata.collectionLabel}}
+            {{title}}
         </h1>
         <navigator :navigator="$root.navigator"></navigator>
     </section>
@@ -13,9 +13,9 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">{{metadata.collectionLabel}}</h3>
+                <h3 class="box-title">{{title}}</h3>
                 <div class="box-tools">
-                    <a v-link="{name:'createEntity', params:{name: metadata.plural}}" class="btn btn-block btn-warning">创建</a>
+                    <a v-if="metadata" v-link="{name:'createEntity', params:{name: metadata.plural}}" class="btn btn-block btn-warning">创建</a>
                 </div>
             </div>
             <div class="box-body no-padding table-responsive">

@@ -33,17 +33,20 @@ export default Vue.extend({
     methods: {
         change(key){
             this.selected = true;
-            let chaining  = EntityChainHelper.chainingNameToArray(this.$route.params.chainingName);
+
+            let chaining = EntityChainHelper.chainingNameToArray(this.$route.params.chainingName);
             chaining.push({
                 name: key,
             });
 
+            this.createRoute = {
+                name: 'mergePatchEntity',
+                params: {
+                    chainingName: EntityChainHelper.arrayToChainingName(chaining),
+                }
+            };
+
             this.current = this.tables[key];
         }
     },
-    route: {
-        data(){
-
-        }
-    }
 });

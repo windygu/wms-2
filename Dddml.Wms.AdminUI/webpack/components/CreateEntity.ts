@@ -3,22 +3,19 @@ import Navigator from './Bootstrap/Navigator';
 import * as Vue from 'vue'
 import FormFactory from "../src/Form/FormFactory";
 import Entity from "../src/Entity";
+import MetadataHelper from "../src/Helper/MetadataHelper";
 
 export default Vue.extend({
     template: require('./View/CreateEntity.html'),
     data(){
         return {
-            form: FormFactory.createEntityForm(
-                this.metadata
-            ),
+            metadata: null,
+            form: {},
         }
     },
     components: {
         VForm,
         Navigator
-    },
-    props: {
-        metadata: Object
     },
     events: {
         submit(form){
@@ -33,9 +30,25 @@ export default Vue.extend({
             });
         }
     },
+    computed: {
+        title(){
+            if (this.metadata) {
+                return this.metadata.label;
+            }
+        }
+    },
     route: {
         data(){
-            this.$root.navigator.build(this.$route);
+            this.metadata = MetadataHelper.getEntityByPlural(
+                this.$root.application.entitiesMetadata,
+                this.$route.params.name
+            );
+
+            this.form = FormFactory.createEntityForm(
+                this.metadata
+            );
+
+            this.$root.navigator.buildCreateEntity(this.$route);
         }
     }
 });
