@@ -22,7 +22,7 @@ export default Vue.extend({
         metadata: Object
     },
     route: {
-        data: function (transition) {
+        data () {
             let route = EntityChainHelper.createEntityApiRoute(this.$route);
 
             this.$http.get(route).then((response) => {
@@ -32,16 +32,8 @@ export default Vue.extend({
                 );
 
                 this.entity      = new Entity(response.data, this.metadata);
-                let entitiesList = this.entity.getChildEntities();
-                let children     = [];
-
-                for (let name in entitiesList) {
-                    children[name] = entitiesList[name].toTable(this.$route);
-                }
-
-                this.children = children;
+                this.children = this.entity.getChildEntities();
                 this.$root.navigator.build(this.$route);
-                transition.next();
             }, (response) => {
                 // error callback
             });
