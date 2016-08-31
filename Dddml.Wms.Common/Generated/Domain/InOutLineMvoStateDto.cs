@@ -46,13 +46,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("InOutLineId"))
                 {
-					return new InOutLineIdDto(_state.InOutLineId);
+					return (_state.InOutLineId == null) ? null : new InOutLineIdDto(_state.InOutLineId);
                 }
                 return null;
             }
             set
             {
-                _state.InOutLineId = value.ToInOutLineId();
+                _state.InOutLineId = (value == null) ? null : value.ToInOutLineId();
             }
         }
 

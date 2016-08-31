@@ -45,13 +45,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("MonthPlanId"))
                 {
-					return new MonthPlanIdDto(_state.MonthPlanId);
+					return (_state.MonthPlanId == null) ? null : new MonthPlanIdDto(_state.MonthPlanId);
                 }
                 return null;
             }
             set
             {
-                _state.MonthPlanId = value.ToMonthPlanId();
+                _state.MonthPlanId = (value == null) ? null : value.ToMonthPlanId();
             }
         }
 
@@ -435,13 +435,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("PersonLoves"))
                 {
-					return new PersonalNameDto(_state.PersonLoves);
+					return (_state.PersonLoves == null) ? null : new PersonalNameDto(_state.PersonLoves);
                 }
                 return null;
             }
             set
             {
-                _state.PersonLoves = value.ToPersonalName();
+                _state.PersonLoves = (value == null) ? null : value.ToPersonalName();
             }
         }
 
@@ -465,13 +465,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("PersonEmergencyContact"))
                 {
-					return new ContactDto(_state.PersonEmergencyContact);
+					return (_state.PersonEmergencyContact == null) ? null : new ContactDto(_state.PersonEmergencyContact);
                 }
                 return null;
             }
             set
             {
-                _state.PersonEmergencyContact = value.ToContact();
+                _state.PersonEmergencyContact = (value == null) ? null : value.ToContact();
             }
         }
 

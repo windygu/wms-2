@@ -45,13 +45,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("UserLoginId"))
                 {
-					return new UserLoginIdDto(_state.UserLoginId);
+					return (_state.UserLoginId == null) ? null : new UserLoginIdDto(_state.UserLoginId);
                 }
                 return null;
             }
             set
             {
-                _state.UserLoginId = value.ToUserLoginId();
+                _state.UserLoginId = (value == null) ? null : value.ToUserLoginId();
             }
         }
 

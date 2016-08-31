@@ -166,13 +166,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("PersonalName"))
                 {
-					return new PersonalNameDto(_state.PersonalName);
+					return (_state.PersonalName == null) ? null : new PersonalNameDto(_state.PersonalName);
                 }
                 return null;
             }
             set
             {
-                _state.PersonalName = value.ToPersonalName();
+                _state.PersonalName = (value == null) ? null : value.ToPersonalName();
             }
         }
 

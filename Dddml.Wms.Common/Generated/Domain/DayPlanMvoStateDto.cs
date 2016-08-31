@@ -45,13 +45,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("DayPlanId"))
                 {
-					return new DayPlanIdDto(_state.DayPlanId);
+					return (_state.DayPlanId == null) ? null : new DayPlanIdDto(_state.DayPlanId);
                 }
                 return null;
             }
             set
             {
-                _state.DayPlanId = value.ToDayPlanId();
+                _state.DayPlanId = (value == null) ? null : value.ToDayPlanId();
             }
         }
 
@@ -674,13 +674,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("PersonLoves"))
                 {
-					return new PersonalNameDto(_state.PersonLoves);
+					return (_state.PersonLoves == null) ? null : new PersonalNameDto(_state.PersonLoves);
                 }
                 return null;
             }
             set
             {
-                _state.PersonLoves = value.ToPersonalName();
+                _state.PersonLoves = (value == null) ? null : value.ToPersonalName();
             }
         }
 
@@ -704,13 +704,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("PersonEmergencyContact"))
                 {
-					return new ContactDto(_state.PersonEmergencyContact);
+					return (_state.PersonEmergencyContact == null) ? null : new ContactDto(_state.PersonEmergencyContact);
                 }
                 return null;
             }
             set
             {
-                _state.PersonEmergencyContact = value.ToContact();
+                _state.PersonEmergencyContact = (value == null) ? null : value.ToContact();
             }
         }
 
