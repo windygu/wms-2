@@ -43,11 +43,11 @@ namespace Dddml.Wms.Domain
         {
             get 
             {
-                return this.PersonalName.ToPersonalName();
+                return (this.PersonalName == null) ? null : this.PersonalName.ToPersonalName();
             }
             set 
             {
-                this.PersonalName = new PersonalNameDto(value);
+                this.PersonalName = (value == null) ? null : new PersonalNameDto(value);
             }
         }
 
