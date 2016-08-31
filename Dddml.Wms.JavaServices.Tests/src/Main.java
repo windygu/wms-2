@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -262,6 +261,7 @@ public class Main {
         System.out.println(orgState2.getDescription());
     }
 
+    /*
     static class HibernateTest {
         private static final SessionFactory ourSessionFactory;
         private static final ServiceRegistry serviceRegistry;
@@ -302,5 +302,5 @@ public class Main {
             }
         }
     }
-
+    */
 }

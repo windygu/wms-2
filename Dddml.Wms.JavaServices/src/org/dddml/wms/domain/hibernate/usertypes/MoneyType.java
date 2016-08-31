@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.hibernate.usertypes;
 
 import org.hibernate.HibernateException;
-import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.type.BigDecimalType;
 import org.hibernate.type.StringType;
 import org.hibernate.type.Type;
@@ -72,24 +72,24 @@ public class MoneyType implements CompositeUserType {
     }
 
     @Override
-    public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner) throws HibernateException, SQLException {
+    public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor sharedSessionContractImplementor, Object owner) throws HibernateException, SQLException {
         assert names.length == 2;
-        BigDecimal amount = BigDecimalType.INSTANCE.nullSafeGet(rs, names[0], session);
-        String currencyCode = StringType.INSTANCE.nullSafeGet(rs, names[1], session);
+        BigDecimal amount = BigDecimalType.INSTANCE.nullSafeGet(rs, names[0], sharedSessionContractImplementor);
+        String currencyCode = StringType.INSTANCE.nullSafeGet(rs, names[1], sharedSessionContractImplementor);
         return amount == null && currencyCode == null
                 ? null
                 : BigMoney.of(CurrencyUnit.getInstance(currencyCode), amount).toMoney();
     }
 
     @Override
-    public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session) throws HibernateException, SQLException {
+    public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor sharedSessionContractImplementor) throws HibernateException, SQLException {
         if (value == null) {
-            BigDecimalType.INSTANCE.set(st, null, index, session);
-            StringType.INSTANCE.set(st, null, index + 1, session);
+            BigDecimalType.INSTANCE.set(st, null, index, sharedSessionContractImplementor);
+            StringType.INSTANCE.set(st, null, index + 1, sharedSessionContractImplementor);
         } else {
             final Money money = (Money) value;
-            BigDecimalType.INSTANCE.set(st, money.getAmount(), index, session);
-            StringType.INSTANCE.set(st, money.getCurrencyUnit().getCurrencyCode(), index + 1, session);
+            BigDecimalType.INSTANCE.set(st, money.getAmount(), index, sharedSessionContractImplementor);
+            StringType.INSTANCE.set(st, money.getCurrencyUnit().getCurrencyCode(), index + 1, sharedSessionContractImplementor);
         }
     }
 
@@ -107,17 +107,17 @@ public class MoneyType implements CompositeUserType {
     }
 
     @Override
-    public Serializable disassemble(Object value, SessionImplementor session) throws HibernateException {
+    public Serializable disassemble(Object value, SharedSessionContractImplementor sharedSessionContractImplementor) throws HibernateException {
         return (Serializable) value;
     }
 
     @Override
-    public Object assemble(Serializable cached, SessionImplementor session, Object owner) throws HibernateException {
+    public Object assemble(Serializable cached, SharedSessionContractImplementor sharedSessionContractImplementor, Object owner) throws HibernateException {
         return cached;
     }
 
     @Override
-    public Object replace(Object original, Object target, SessionImplementor session, Object owner) throws HibernateException {
+    public Object replace(Object original, Object target, SharedSessionContractImplementor sharedSessionContractImplementor, Object owner) throws HibernateException {
         return deepCopy(original);
     }
 }
