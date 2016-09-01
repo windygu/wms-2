@@ -96,16 +96,6 @@ public class YearPlanMvoStateEventDto extends AbstractStateEvent
         this.personCreatedBy = personCreatedBy;
     }
 
-    private Date personCreatedAt;
-
-    public Date getPersonCreatedAt() {
-        return this.personCreatedAt;
-    }
-
-    public void setPersonCreatedAt(Date personCreatedAt) {
-        this.personCreatedAt = personCreatedAt;
-    }
-
     private String personUpdatedBy;
 
     public String getPersonUpdatedBy() {
@@ -114,6 +104,16 @@ public class YearPlanMvoStateEventDto extends AbstractStateEvent
 
     public void setPersonUpdatedBy(String personUpdatedBy) {
         this.personUpdatedBy = personUpdatedBy;
+    }
+
+    private Date personCreatedAt;
+
+    public Date getPersonCreatedAt() {
+        return this.personCreatedAt;
+    }
+
+    public void setPersonCreatedAt(Date personCreatedAt) {
+        this.personCreatedAt = personCreatedAt;
     }
 
     private Date personUpdatedAt;
@@ -246,16 +246,6 @@ public class YearPlanMvoStateEventDto extends AbstractStateEvent
         this.isPropertyPersonCreatedByRemoved = removed;
     }
 
-    private Boolean isPropertyPersonCreatedAtRemoved;
-
-    public Boolean getIsPropertyPersonCreatedAtRemoved() {
-        return this.isPropertyPersonCreatedAtRemoved;
-    }
-
-    public void setIsPropertyPersonCreatedAtRemoved(Boolean removed) {
-        this.isPropertyPersonCreatedAtRemoved = removed;
-    }
-
     private Boolean isPropertyPersonUpdatedByRemoved;
 
     public Boolean getIsPropertyPersonUpdatedByRemoved() {
@@ -264,6 +254,16 @@ public class YearPlanMvoStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyPersonUpdatedByRemoved(Boolean removed) {
         this.isPropertyPersonUpdatedByRemoved = removed;
+    }
+
+    private Boolean isPropertyPersonCreatedAtRemoved;
+
+    public Boolean getIsPropertyPersonCreatedAtRemoved() {
+        return this.isPropertyPersonCreatedAtRemoved;
+    }
+
+    public void setIsPropertyPersonCreatedAtRemoved(Boolean removed) {
+        this.isPropertyPersonCreatedAtRemoved = removed;
     }
 
     private Boolean isPropertyPersonUpdatedAtRemoved;

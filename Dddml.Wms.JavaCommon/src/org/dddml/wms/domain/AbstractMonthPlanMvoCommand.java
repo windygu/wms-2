@@ -81,18 +81,6 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
             this.yearPlanDescription = yearPlanDescription;
         }
 
-        private Long yearPlanVersion;
-
-        public Long getYearPlanVersion()
-        {
-            return this.yearPlanVersion;
-        }
-
-        public void setYearPlanVersion(Long yearPlanVersion)
-        {
-            this.yearPlanVersion = yearPlanVersion;
-        }
-
         private String yearPlanCreatedBy;
 
         public String getYearPlanCreatedBy()
@@ -105,18 +93,6 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
             this.yearPlanCreatedBy = yearPlanCreatedBy;
         }
 
-        private Date yearPlanCreatedAt;
-
-        public Date getYearPlanCreatedAt()
-        {
-            return this.yearPlanCreatedAt;
-        }
-
-        public void setYearPlanCreatedAt(Date yearPlanCreatedAt)
-        {
-            this.yearPlanCreatedAt = yearPlanCreatedAt;
-        }
-
         private String yearPlanUpdatedBy;
 
         public String getYearPlanUpdatedBy()
@@ -127,6 +103,30 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
         public void setYearPlanUpdatedBy(String yearPlanUpdatedBy)
         {
             this.yearPlanUpdatedBy = yearPlanUpdatedBy;
+        }
+
+        private Long yearPlanVersion;
+
+        public Long getYearPlanVersion()
+        {
+            return this.yearPlanVersion;
+        }
+
+        public void setYearPlanVersion(Long yearPlanVersion)
+        {
+            this.yearPlanVersion = yearPlanVersion;
+        }
+
+        private Date yearPlanCreatedAt;
+
+        public Date getYearPlanCreatedAt()
+        {
+            return this.yearPlanCreatedAt;
+        }
+
+        public void setYearPlanCreatedAt(Date yearPlanCreatedAt)
+        {
+            this.yearPlanCreatedAt = yearPlanCreatedAt;
         }
 
         private Date yearPlanUpdatedAt;
@@ -213,18 +213,6 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
             this.personCreatedBy = personCreatedBy;
         }
 
-        private Date personCreatedAt;
-
-        public Date getPersonCreatedAt()
-        {
-            return this.personCreatedAt;
-        }
-
-        public void setPersonCreatedAt(Date personCreatedAt)
-        {
-            this.personCreatedAt = personCreatedAt;
-        }
-
         private String personUpdatedBy;
 
         public String getPersonUpdatedBy()
@@ -235,6 +223,18 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
         public void setPersonUpdatedBy(String personUpdatedBy)
         {
             this.personUpdatedBy = personUpdatedBy;
+        }
+
+        private Date personCreatedAt;
+
+        public Date getPersonCreatedAt()
+        {
+            return this.personCreatedAt;
+        }
+
+        public void setPersonCreatedAt(Date personCreatedAt)
+        {
+            this.personCreatedAt = personCreatedAt;
         }
 
         private Date personUpdatedAt;
@@ -339,18 +339,6 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
             this.isPropertyYearPlanDescriptionRemoved = removed;
         }
 
-        private Boolean isPropertyYearPlanVersionRemoved;
-
-        public Boolean getIsPropertyYearPlanVersionRemoved()
-        {
-            return this.isPropertyYearPlanVersionRemoved;
-        }
-
-        public void setIsPropertyYearPlanVersionRemoved(Boolean removed)
-        {
-            this.isPropertyYearPlanVersionRemoved = removed;
-        }
-
         private Boolean isPropertyYearPlanCreatedByRemoved;
 
         public Boolean getIsPropertyYearPlanCreatedByRemoved()
@@ -363,18 +351,6 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
             this.isPropertyYearPlanCreatedByRemoved = removed;
         }
 
-        private Boolean isPropertyYearPlanCreatedAtRemoved;
-
-        public Boolean getIsPropertyYearPlanCreatedAtRemoved()
-        {
-            return this.isPropertyYearPlanCreatedAtRemoved;
-        }
-
-        public void setIsPropertyYearPlanCreatedAtRemoved(Boolean removed)
-        {
-            this.isPropertyYearPlanCreatedAtRemoved = removed;
-        }
-
         private Boolean isPropertyYearPlanUpdatedByRemoved;
 
         public Boolean getIsPropertyYearPlanUpdatedByRemoved()
@@ -385,6 +361,30 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
         public void setIsPropertyYearPlanUpdatedByRemoved(Boolean removed)
         {
             this.isPropertyYearPlanUpdatedByRemoved = removed;
+        }
+
+        private Boolean isPropertyYearPlanVersionRemoved;
+
+        public Boolean getIsPropertyYearPlanVersionRemoved()
+        {
+            return this.isPropertyYearPlanVersionRemoved;
+        }
+
+        public void setIsPropertyYearPlanVersionRemoved(Boolean removed)
+        {
+            this.isPropertyYearPlanVersionRemoved = removed;
+        }
+
+        private Boolean isPropertyYearPlanCreatedAtRemoved;
+
+        public Boolean getIsPropertyYearPlanCreatedAtRemoved()
+        {
+            return this.isPropertyYearPlanCreatedAtRemoved;
+        }
+
+        public void setIsPropertyYearPlanCreatedAtRemoved(Boolean removed)
+        {
+            this.isPropertyYearPlanCreatedAtRemoved = removed;
         }
 
         private Boolean isPropertyYearPlanUpdatedAtRemoved;
@@ -471,18 +471,6 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
             this.isPropertyPersonCreatedByRemoved = removed;
         }
 
-        private Boolean isPropertyPersonCreatedAtRemoved;
-
-        public Boolean getIsPropertyPersonCreatedAtRemoved()
-        {
-            return this.isPropertyPersonCreatedAtRemoved;
-        }
-
-        public void setIsPropertyPersonCreatedAtRemoved(Boolean removed)
-        {
-            this.isPropertyPersonCreatedAtRemoved = removed;
-        }
-
         private Boolean isPropertyPersonUpdatedByRemoved;
 
         public Boolean getIsPropertyPersonUpdatedByRemoved()
@@ -493,6 +481,18 @@ public abstract class AbstractMonthPlanMvoCommand extends AbstractCommand implem
         public void setIsPropertyPersonUpdatedByRemoved(Boolean removed)
         {
             this.isPropertyPersonUpdatedByRemoved = removed;
+        }
+
+        private Boolean isPropertyPersonCreatedAtRemoved;
+
+        public Boolean getIsPropertyPersonCreatedAtRemoved()
+        {
+            return this.isPropertyPersonCreatedAtRemoved;
+        }
+
+        public void setIsPropertyPersonCreatedAtRemoved(Boolean removed)
+        {
+            this.isPropertyPersonCreatedAtRemoved = removed;
         }
 
         private Boolean isPropertyPersonUpdatedAtRemoved;

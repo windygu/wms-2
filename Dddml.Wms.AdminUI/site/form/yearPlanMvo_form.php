@@ -24,13 +24,13 @@ return $app['form.factory']->createBuilder(FormType::class, $data)
         'required' => false,
         'label'    => 'Person Created By',
     ])
-    ->add('personCreatedAt', DateTimeType::class, [
-        'required' => false,
-        'label'    => 'Person Created At',
-    ])
     ->add('personUpdatedBy', TextType::class, [
         'required' => false,
         'label'    => 'Person Updated By',
+    ])
+    ->add('personCreatedAt', DateTimeType::class, [
+        'required' => false,
+        'label'    => 'Person Created At',
     ])
     ->add('personUpdatedAt', DateTimeType::class, [
         'required' => false,

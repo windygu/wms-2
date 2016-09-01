@@ -117,18 +117,6 @@ public abstract class AbstractYearPlanMvoCommand extends AbstractCommand impleme
             this.personCreatedBy = personCreatedBy;
         }
 
-        private Date personCreatedAt;
-
-        public Date getPersonCreatedAt()
-        {
-            return this.personCreatedAt;
-        }
-
-        public void setPersonCreatedAt(Date personCreatedAt)
-        {
-            this.personCreatedAt = personCreatedAt;
-        }
-
         private String personUpdatedBy;
 
         public String getPersonUpdatedBy()
@@ -139,6 +127,18 @@ public abstract class AbstractYearPlanMvoCommand extends AbstractCommand impleme
         public void setPersonUpdatedBy(String personUpdatedBy)
         {
             this.personUpdatedBy = personUpdatedBy;
+        }
+
+        private Date personCreatedAt;
+
+        public Date getPersonCreatedAt()
+        {
+            return this.personCreatedAt;
+        }
+
+        public void setPersonCreatedAt(Date personCreatedAt)
+        {
+            this.personCreatedAt = personCreatedAt;
         }
 
         private Date personUpdatedAt;
@@ -279,18 +279,6 @@ public abstract class AbstractYearPlanMvoCommand extends AbstractCommand impleme
             this.isPropertyPersonCreatedByRemoved = removed;
         }
 
-        private Boolean isPropertyPersonCreatedAtRemoved;
-
-        public Boolean getIsPropertyPersonCreatedAtRemoved()
-        {
-            return this.isPropertyPersonCreatedAtRemoved;
-        }
-
-        public void setIsPropertyPersonCreatedAtRemoved(Boolean removed)
-        {
-            this.isPropertyPersonCreatedAtRemoved = removed;
-        }
-
         private Boolean isPropertyPersonUpdatedByRemoved;
 
         public Boolean getIsPropertyPersonUpdatedByRemoved()
@@ -301,6 +289,18 @@ public abstract class AbstractYearPlanMvoCommand extends AbstractCommand impleme
         public void setIsPropertyPersonUpdatedByRemoved(Boolean removed)
         {
             this.isPropertyPersonUpdatedByRemoved = removed;
+        }
+
+        private Boolean isPropertyPersonCreatedAtRemoved;
+
+        public Boolean getIsPropertyPersonCreatedAtRemoved()
+        {
+            return this.isPropertyPersonCreatedAtRemoved;
+        }
+
+        public void setIsPropertyPersonCreatedAtRemoved(Boolean removed)
+        {
+            this.isPropertyPersonCreatedAtRemoved = removed;
         }
 
         private Boolean isPropertyPersonUpdatedAtRemoved;

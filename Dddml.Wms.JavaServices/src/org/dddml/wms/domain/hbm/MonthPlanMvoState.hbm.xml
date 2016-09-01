@@ -19,13 +19,13 @@
 
 	<property name="description" length="500"></property>
 
-	<property name="version" ></property>
-
 	<property name="createdBy" ></property>
 
-	<property name="createdAt" ></property>
-
 	<property name="updatedBy" ></property>
+
+	<property name="version" ></property>
+
+	<property name="createdAt" ></property>
 
 	<property name="updatedAt" ></property>
 
@@ -35,13 +35,13 @@
 
 	<property name="yearPlanDescription" length="500"></property>
 
-	<property name="yearPlanVersion" ></property>
-
 	<property name="yearPlanCreatedBy" ></property>
 
-	<property name="yearPlanCreatedAt" ></property>
-
 	<property name="yearPlanUpdatedBy" ></property>
+
+	<property name="yearPlanVersion" ></property>
+
+	<property name="yearPlanCreatedAt" ></property>
 
 	<property name="yearPlanUpdatedAt" ></property>
 
@@ -65,9 +65,9 @@
 
 	<property name="personCreatedBy" ></property>
 
-	<property name="personCreatedAt" ></property>
-
 	<property name="personUpdatedBy" ></property>
+
+	<property name="personCreatedAt" ></property>
 
 	<property name="personUpdatedAt" ></property>
 

@@ -186,6 +186,62 @@ namespace Dddml.Wms.Domain
             }
         }
 
+		public virtual string MonthPlanCreatedBy
+		{
+            get
+            {
+                if ((this as IStateDto).ReturnedFieldsContains("MonthPlanCreatedBy"))
+                {
+                    return _state.MonthPlanCreatedBy;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MonthPlanCreatedBy = value;
+            }
+        }
+
+        string IDayPlanMvoStateProperties.MonthPlanCreatedBy
+        {
+            get 
+            {
+                return (this._state as IDayPlanMvoStateProperties).MonthPlanCreatedBy;
+            }
+            set 
+            {
+                this._state.MonthPlanCreatedBy = value;
+            }
+        }
+
+		public virtual string MonthPlanUpdatedBy
+		{
+            get
+            {
+                if ((this as IStateDto).ReturnedFieldsContains("MonthPlanUpdatedBy"))
+                {
+                    return _state.MonthPlanUpdatedBy;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MonthPlanUpdatedBy = value;
+            }
+        }
+
+        string IDayPlanMvoStateProperties.MonthPlanUpdatedBy
+        {
+            get 
+            {
+                return (this._state as IDayPlanMvoStateProperties).MonthPlanUpdatedBy;
+            }
+            set 
+            {
+                this._state.MonthPlanUpdatedBy = value;
+            }
+        }
+
 		public virtual long? MonthPlanVersion
         {
             get
@@ -217,34 +273,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual string MonthPlanCreatedBy
-		{
-            get
-            {
-                if ((this as IStateDto).ReturnedFieldsContains("MonthPlanCreatedBy"))
-                {
-                    return _state.MonthPlanCreatedBy;
-                }
-                return null;
-            }
-            set
-            {
-                _state.MonthPlanCreatedBy = value;
-            }
-        }
-
-        string IDayPlanMvoStateProperties.MonthPlanCreatedBy
-        {
-            get 
-            {
-                return (this._state as IDayPlanMvoStateProperties).MonthPlanCreatedBy;
-            }
-            set 
-            {
-                this._state.MonthPlanCreatedBy = value;
-            }
-        }
-
 		public virtual DateTime? MonthPlanCreatedAt
         {
             get
@@ -273,34 +301,6 @@ namespace Dddml.Wms.Domain
             set 
             {
                 this._state.MonthPlanCreatedAt = value;
-            }
-        }
-
-		public virtual string MonthPlanUpdatedBy
-		{
-            get
-            {
-                if ((this as IStateDto).ReturnedFieldsContains("MonthPlanUpdatedBy"))
-                {
-                    return _state.MonthPlanUpdatedBy;
-                }
-                return null;
-            }
-            set
-            {
-                _state.MonthPlanUpdatedBy = value;
-            }
-        }
-
-        string IDayPlanMvoStateProperties.MonthPlanUpdatedBy
-        {
-            get 
-            {
-                return (this._state as IDayPlanMvoStateProperties).MonthPlanUpdatedBy;
-            }
-            set 
-            {
-                this._state.MonthPlanUpdatedBy = value;
             }
         }
 
@@ -425,6 +425,62 @@ namespace Dddml.Wms.Domain
             }
         }
 
+		public virtual string YearPlanCreatedBy
+		{
+            get
+            {
+                if ((this as IStateDto).ReturnedFieldsContains("YearPlanCreatedBy"))
+                {
+                    return _state.YearPlanCreatedBy;
+                }
+                return null;
+            }
+            set
+            {
+                _state.YearPlanCreatedBy = value;
+            }
+        }
+
+        string IDayPlanMvoStateProperties.YearPlanCreatedBy
+        {
+            get 
+            {
+                return (this._state as IDayPlanMvoStateProperties).YearPlanCreatedBy;
+            }
+            set 
+            {
+                this._state.YearPlanCreatedBy = value;
+            }
+        }
+
+		public virtual string YearPlanUpdatedBy
+		{
+            get
+            {
+                if ((this as IStateDto).ReturnedFieldsContains("YearPlanUpdatedBy"))
+                {
+                    return _state.YearPlanUpdatedBy;
+                }
+                return null;
+            }
+            set
+            {
+                _state.YearPlanUpdatedBy = value;
+            }
+        }
+
+        string IDayPlanMvoStateProperties.YearPlanUpdatedBy
+        {
+            get 
+            {
+                return (this._state as IDayPlanMvoStateProperties).YearPlanUpdatedBy;
+            }
+            set 
+            {
+                this._state.YearPlanUpdatedBy = value;
+            }
+        }
+
 		public virtual long? YearPlanVersion
         {
             get
@@ -456,34 +512,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual string YearPlanCreatedBy
-		{
-            get
-            {
-                if ((this as IStateDto).ReturnedFieldsContains("YearPlanCreatedBy"))
-                {
-                    return _state.YearPlanCreatedBy;
-                }
-                return null;
-            }
-            set
-            {
-                _state.YearPlanCreatedBy = value;
-            }
-        }
-
-        string IDayPlanMvoStateProperties.YearPlanCreatedBy
-        {
-            get 
-            {
-                return (this._state as IDayPlanMvoStateProperties).YearPlanCreatedBy;
-            }
-            set 
-            {
-                this._state.YearPlanCreatedBy = value;
-            }
-        }
-
 		public virtual DateTime? YearPlanCreatedAt
         {
             get
@@ -512,34 +540,6 @@ namespace Dddml.Wms.Domain
             set 
             {
                 this._state.YearPlanCreatedAt = value;
-            }
-        }
-
-		public virtual string YearPlanUpdatedBy
-		{
-            get
-            {
-                if ((this as IStateDto).ReturnedFieldsContains("YearPlanUpdatedBy"))
-                {
-                    return _state.YearPlanUpdatedBy;
-                }
-                return null;
-            }
-            set
-            {
-                _state.YearPlanUpdatedBy = value;
-            }
-        }
-
-        string IDayPlanMvoStateProperties.YearPlanUpdatedBy
-        {
-            get 
-            {
-                return (this._state as IDayPlanMvoStateProperties).YearPlanUpdatedBy;
-            }
-            set 
-            {
-                this._state.YearPlanUpdatedBy = value;
             }
         }
 
@@ -755,6 +755,34 @@ namespace Dddml.Wms.Domain
             }
         }
 
+		public virtual string PersonUpdatedBy
+		{
+            get
+            {
+                if ((this as IStateDto).ReturnedFieldsContains("PersonUpdatedBy"))
+                {
+                    return _state.PersonUpdatedBy;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PersonUpdatedBy = value;
+            }
+        }
+
+        string IDayPlanMvoStateProperties.PersonUpdatedBy
+        {
+            get 
+            {
+                return (this._state as IDayPlanMvoStateProperties).PersonUpdatedBy;
+            }
+            set 
+            {
+                this._state.PersonUpdatedBy = value;
+            }
+        }
+
 		public virtual DateTime? PersonCreatedAt
         {
             get
@@ -783,34 +811,6 @@ namespace Dddml.Wms.Domain
             set 
             {
                 this._state.PersonCreatedAt = value;
-            }
-        }
-
-		public virtual string PersonUpdatedBy
-		{
-            get
-            {
-                if ((this as IStateDto).ReturnedFieldsContains("PersonUpdatedBy"))
-                {
-                    return _state.PersonUpdatedBy;
-                }
-                return null;
-            }
-            set
-            {
-                _state.PersonUpdatedBy = value;
-            }
-        }
-
-        string IDayPlanMvoStateProperties.PersonUpdatedBy
-        {
-            get 
-            {
-                return (this._state as IDayPlanMvoStateProperties).PersonUpdatedBy;
-            }
-            set 
-            {
-                this._state.PersonUpdatedBy = value;
             }
         }
 

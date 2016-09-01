@@ -172,29 +172,6 @@ trait YearPlanMvoIsPropertyRemovedTrait
      *
      * @var boolean
      */
-    private $isPropertyPersonCreatedAtRemoved = false;
-
-    /**
-     * @return boolean
-     */
-    public function getIsPropertyPersonCreatedAtRemoved()
-    {
-        return $this->isPropertyPersonCreatedAtRemoved;
-    }
-
-    /**
-     * @param boolean $isPropertyPersonCreatedAtRemoved
-     */
-    public function setIsPropertyPersonCreatedAtRemoved($isPropertyPersonCreatedAtRemoved)
-    {
-        $this->isPropertyPersonCreatedAtRemoved = $isPropertyPersonCreatedAtRemoved;
-    }
-
-    /**
-     * @Type("boolean")
-     *
-     * @var boolean
-     */
     private $isPropertyPersonUpdatedByRemoved = false;
 
     /**
@@ -211,6 +188,29 @@ trait YearPlanMvoIsPropertyRemovedTrait
     public function setIsPropertyPersonUpdatedByRemoved($isPropertyPersonUpdatedByRemoved)
     {
         $this->isPropertyPersonUpdatedByRemoved = $isPropertyPersonUpdatedByRemoved;
+    }
+
+    /**
+     * @Type("boolean")
+     *
+     * @var boolean
+     */
+    private $isPropertyPersonCreatedAtRemoved = false;
+
+    /**
+     * @return boolean
+     */
+    public function getIsPropertyPersonCreatedAtRemoved()
+    {
+        return $this->isPropertyPersonCreatedAtRemoved;
+    }
+
+    /**
+     * @param boolean $isPropertyPersonCreatedAtRemoved
+     */
+    public function setIsPropertyPersonCreatedAtRemoved($isPropertyPersonCreatedAtRemoved)
+    {
+        $this->isPropertyPersonCreatedAtRemoved = $isPropertyPersonCreatedAtRemoved;
     }
 
     /**

@@ -39,9 +39,9 @@
 
 	<property name="personCreatedBy" ></property>
 
-	<property name="personCreatedAt" ></property>
-
 	<property name="personUpdatedBy" ></property>
+
+	<property name="personCreatedAt" ></property>
 
 	<property name="personUpdatedAt" ></property>
 
@@ -77,9 +77,9 @@
 
         <property name="isPropertyPersonCreatedByRemoved" />
 
-        <property name="isPropertyPersonCreatedAtRemoved" />
-
         <property name="isPropertyPersonUpdatedByRemoved" />
+
+        <property name="isPropertyPersonCreatedAtRemoved" />
 
         <property name="isPropertyPersonUpdatedAtRemoved" />
 

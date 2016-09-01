@@ -27,13 +27,13 @@ namespace Dddml.Wms.Domain
 
 		Contact PersonEmergencyContact { get; set; }
 
-		long PersonVersion { get; set; }
-
 		string PersonCreatedBy { get; set; }
 
-		DateTime PersonCreatedAt { get; set; }
-
 		string PersonUpdatedBy { get; set; }
+
+		long PersonVersion { get; set; }
+
+		DateTime PersonCreatedAt { get; set; }
 
 		DateTime PersonUpdatedAt { get; set; }
 

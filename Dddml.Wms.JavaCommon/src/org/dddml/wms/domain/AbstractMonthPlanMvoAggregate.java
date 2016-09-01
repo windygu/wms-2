@@ -76,10 +76,10 @@ public abstract class AbstractMonthPlanMvoAggregate extends AbstractAggregate im
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
         e.setYearPlanDescription(c.getYearPlanDescription());
-        e.setYearPlanVersion(c.getYearPlanVersion());
         e.setYearPlanCreatedBy(c.getYearPlanCreatedBy());
-        e.setYearPlanCreatedAt(c.getYearPlanCreatedAt());
         e.setYearPlanUpdatedBy(c.getYearPlanUpdatedBy());
+        e.setYearPlanVersion(c.getYearPlanVersion());
+        e.setYearPlanCreatedAt(c.getYearPlanCreatedAt());
         e.setYearPlanUpdatedAt(c.getYearPlanUpdatedAt());
         e.setYearPlanActive(c.getYearPlanActive());
         e.setYearPlanDeleted(c.getYearPlanDeleted());
@@ -87,8 +87,8 @@ public abstract class AbstractMonthPlanMvoAggregate extends AbstractAggregate im
         e.setPersonLoves(c.getPersonLoves());
         e.setPersonEmergencyContact(c.getPersonEmergencyContact());
         e.setPersonCreatedBy(c.getPersonCreatedBy());
-        e.setPersonCreatedAt(c.getPersonCreatedAt());
         e.setPersonUpdatedBy(c.getPersonUpdatedBy());
+        e.setPersonCreatedAt(c.getPersonCreatedAt());
         e.setPersonUpdatedAt(c.getPersonUpdatedAt());
         e.setPersonActive(c.getPersonActive());
         e.setPersonDeleted(c.getPersonDeleted());
@@ -107,10 +107,10 @@ public abstract class AbstractMonthPlanMvoAggregate extends AbstractAggregate im
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
         e.setYearPlanDescription(c.getYearPlanDescription());
-        e.setYearPlanVersion(c.getYearPlanVersion());
         e.setYearPlanCreatedBy(c.getYearPlanCreatedBy());
-        e.setYearPlanCreatedAt(c.getYearPlanCreatedAt());
         e.setYearPlanUpdatedBy(c.getYearPlanUpdatedBy());
+        e.setYearPlanVersion(c.getYearPlanVersion());
+        e.setYearPlanCreatedAt(c.getYearPlanCreatedAt());
         e.setYearPlanUpdatedAt(c.getYearPlanUpdatedAt());
         e.setYearPlanActive(c.getYearPlanActive());
         e.setYearPlanDeleted(c.getYearPlanDeleted());
@@ -118,8 +118,8 @@ public abstract class AbstractMonthPlanMvoAggregate extends AbstractAggregate im
         e.setPersonLoves(c.getPersonLoves());
         e.setPersonEmergencyContact(c.getPersonEmergencyContact());
         e.setPersonCreatedBy(c.getPersonCreatedBy());
-        e.setPersonCreatedAt(c.getPersonCreatedAt());
         e.setPersonUpdatedBy(c.getPersonUpdatedBy());
+        e.setPersonCreatedAt(c.getPersonCreatedAt());
         e.setPersonUpdatedAt(c.getPersonUpdatedAt());
         e.setPersonActive(c.getPersonActive());
         e.setPersonDeleted(c.getPersonDeleted());
@@ -127,10 +127,10 @@ public abstract class AbstractMonthPlanMvoAggregate extends AbstractAggregate im
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setIsPropertyYearPlanDescriptionRemoved(c.getIsPropertyYearPlanDescriptionRemoved());
-        e.setIsPropertyYearPlanVersionRemoved(c.getIsPropertyYearPlanVersionRemoved());
         e.setIsPropertyYearPlanCreatedByRemoved(c.getIsPropertyYearPlanCreatedByRemoved());
-        e.setIsPropertyYearPlanCreatedAtRemoved(c.getIsPropertyYearPlanCreatedAtRemoved());
         e.setIsPropertyYearPlanUpdatedByRemoved(c.getIsPropertyYearPlanUpdatedByRemoved());
+        e.setIsPropertyYearPlanVersionRemoved(c.getIsPropertyYearPlanVersionRemoved());
+        e.setIsPropertyYearPlanCreatedAtRemoved(c.getIsPropertyYearPlanCreatedAtRemoved());
         e.setIsPropertyYearPlanUpdatedAtRemoved(c.getIsPropertyYearPlanUpdatedAtRemoved());
         e.setIsPropertyYearPlanActiveRemoved(c.getIsPropertyYearPlanActiveRemoved());
         e.setIsPropertyYearPlanDeletedRemoved(c.getIsPropertyYearPlanDeletedRemoved());
@@ -138,8 +138,8 @@ public abstract class AbstractMonthPlanMvoAggregate extends AbstractAggregate im
         e.setIsPropertyPersonLovesRemoved(c.getIsPropertyPersonLovesRemoved());
         e.setIsPropertyPersonEmergencyContactRemoved(c.getIsPropertyPersonEmergencyContactRemoved());
         e.setIsPropertyPersonCreatedByRemoved(c.getIsPropertyPersonCreatedByRemoved());
-        e.setIsPropertyPersonCreatedAtRemoved(c.getIsPropertyPersonCreatedAtRemoved());
         e.setIsPropertyPersonUpdatedByRemoved(c.getIsPropertyPersonUpdatedByRemoved());
+        e.setIsPropertyPersonCreatedAtRemoved(c.getIsPropertyPersonCreatedAtRemoved());
         e.setIsPropertyPersonUpdatedAtRemoved(c.getIsPropertyPersonUpdatedAtRemoved());
         e.setIsPropertyPersonActiveRemoved(c.getIsPropertyPersonActiveRemoved());
         e.setIsPropertyPersonDeletedRemoved(c.getIsPropertyPersonDeletedRemoved());

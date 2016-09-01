@@ -66,18 +66,6 @@ public class DayPlanMvoStateDto
         this.monthPlanDescription = monthPlanDescription;
     }
 
-    private Long monthPlanVersion;
-
-    public Long getMonthPlanVersion()
-    {
-        return this.monthPlanVersion;
-    }
-
-    public void setMonthPlanVersion(Long monthPlanVersion)
-    {
-        this.monthPlanVersion = monthPlanVersion;
-    }
-
     private String monthPlanCreatedBy;
 
     public String getMonthPlanCreatedBy()
@@ -90,18 +78,6 @@ public class DayPlanMvoStateDto
         this.monthPlanCreatedBy = monthPlanCreatedBy;
     }
 
-    private Date monthPlanCreatedAt;
-
-    public Date getMonthPlanCreatedAt()
-    {
-        return this.monthPlanCreatedAt;
-    }
-
-    public void setMonthPlanCreatedAt(Date monthPlanCreatedAt)
-    {
-        this.monthPlanCreatedAt = monthPlanCreatedAt;
-    }
-
     private String monthPlanUpdatedBy;
 
     public String getMonthPlanUpdatedBy()
@@ -112,6 +88,30 @@ public class DayPlanMvoStateDto
     public void setMonthPlanUpdatedBy(String monthPlanUpdatedBy)
     {
         this.monthPlanUpdatedBy = monthPlanUpdatedBy;
+    }
+
+    private Long monthPlanVersion;
+
+    public Long getMonthPlanVersion()
+    {
+        return this.monthPlanVersion;
+    }
+
+    public void setMonthPlanVersion(Long monthPlanVersion)
+    {
+        this.monthPlanVersion = monthPlanVersion;
+    }
+
+    private Date monthPlanCreatedAt;
+
+    public Date getMonthPlanCreatedAt()
+    {
+        return this.monthPlanCreatedAt;
+    }
+
+    public void setMonthPlanCreatedAt(Date monthPlanCreatedAt)
+    {
+        this.monthPlanCreatedAt = monthPlanCreatedAt;
     }
 
     private Date monthPlanUpdatedAt;
@@ -162,18 +162,6 @@ public class DayPlanMvoStateDto
         this.yearPlanDescription = yearPlanDescription;
     }
 
-    private Long yearPlanVersion;
-
-    public Long getYearPlanVersion()
-    {
-        return this.yearPlanVersion;
-    }
-
-    public void setYearPlanVersion(Long yearPlanVersion)
-    {
-        this.yearPlanVersion = yearPlanVersion;
-    }
-
     private String yearPlanCreatedBy;
 
     public String getYearPlanCreatedBy()
@@ -186,18 +174,6 @@ public class DayPlanMvoStateDto
         this.yearPlanCreatedBy = yearPlanCreatedBy;
     }
 
-    private Date yearPlanCreatedAt;
-
-    public Date getYearPlanCreatedAt()
-    {
-        return this.yearPlanCreatedAt;
-    }
-
-    public void setYearPlanCreatedAt(Date yearPlanCreatedAt)
-    {
-        this.yearPlanCreatedAt = yearPlanCreatedAt;
-    }
-
     private String yearPlanUpdatedBy;
 
     public String getYearPlanUpdatedBy()
@@ -208,6 +184,30 @@ public class DayPlanMvoStateDto
     public void setYearPlanUpdatedBy(String yearPlanUpdatedBy)
     {
         this.yearPlanUpdatedBy = yearPlanUpdatedBy;
+    }
+
+    private Long yearPlanVersion;
+
+    public Long getYearPlanVersion()
+    {
+        return this.yearPlanVersion;
+    }
+
+    public void setYearPlanVersion(Long yearPlanVersion)
+    {
+        this.yearPlanVersion = yearPlanVersion;
+    }
+
+    private Date yearPlanCreatedAt;
+
+    public Date getYearPlanCreatedAt()
+    {
+        return this.yearPlanCreatedAt;
+    }
+
+    public void setYearPlanCreatedAt(Date yearPlanCreatedAt)
+    {
+        this.yearPlanCreatedAt = yearPlanCreatedAt;
     }
 
     private Date yearPlanUpdatedAt;
@@ -294,18 +294,6 @@ public class DayPlanMvoStateDto
         this.personCreatedBy = personCreatedBy;
     }
 
-    private Date personCreatedAt;
-
-    public Date getPersonCreatedAt()
-    {
-        return this.personCreatedAt;
-    }
-
-    public void setPersonCreatedAt(Date personCreatedAt)
-    {
-        this.personCreatedAt = personCreatedAt;
-    }
-
     private String personUpdatedBy;
 
     public String getPersonUpdatedBy()
@@ -316,6 +304,18 @@ public class DayPlanMvoStateDto
     public void setPersonUpdatedBy(String personUpdatedBy)
     {
         this.personUpdatedBy = personUpdatedBy;
+    }
+
+    private Date personCreatedAt;
+
+    public Date getPersonCreatedAt()
+    {
+        return this.personCreatedAt;
+    }
+
+    public void setPersonCreatedAt(Date personCreatedAt)
+    {
+        this.personCreatedAt = personCreatedAt;
     }
 
     private Date personUpdatedAt;

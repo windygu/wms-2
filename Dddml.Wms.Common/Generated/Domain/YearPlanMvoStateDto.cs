@@ -277,6 +277,34 @@ namespace Dddml.Wms.Domain
             }
         }
 
+		public virtual string PersonUpdatedBy
+		{
+            get
+            {
+                if ((this as IStateDto).ReturnedFieldsContains("PersonUpdatedBy"))
+                {
+                    return _state.PersonUpdatedBy;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PersonUpdatedBy = value;
+            }
+        }
+
+        string IYearPlanMvoStateProperties.PersonUpdatedBy
+        {
+            get 
+            {
+                return (this._state as IYearPlanMvoStateProperties).PersonUpdatedBy;
+            }
+            set 
+            {
+                this._state.PersonUpdatedBy = value;
+            }
+        }
+
 		public virtual DateTime? PersonCreatedAt
         {
             get
@@ -305,34 +333,6 @@ namespace Dddml.Wms.Domain
             set 
             {
                 this._state.PersonCreatedAt = value;
-            }
-        }
-
-		public virtual string PersonUpdatedBy
-		{
-            get
-            {
-                if ((this as IStateDto).ReturnedFieldsContains("PersonUpdatedBy"))
-                {
-                    return _state.PersonUpdatedBy;
-                }
-                return null;
-            }
-            set
-            {
-                _state.PersonUpdatedBy = value;
-            }
-        }
-
-        string IYearPlanMvoStateProperties.PersonUpdatedBy
-        {
-            get 
-            {
-                return (this._state as IYearPlanMvoStateProperties).PersonUpdatedBy;
-            }
-            set 
-            {
-                this._state.PersonUpdatedBy = value;
             }
         }
 

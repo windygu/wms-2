@@ -52,16 +52,6 @@ namespace Dddml.Wms.Domain {
 			this.monthPlanDescription = monthPlanDescription;
 		}
 
-		private monthPlanVersion: string;
-
-		getMonthPlanVersion(): string {
-			return this.monthPlanVersion;
-		}
-
-		setMonthPlanVersion(monthPlanVersion: string) {
-			this.monthPlanVersion = monthPlanVersion;
-		}
-
 		private monthPlanCreatedBy: string;
 
 		getMonthPlanCreatedBy(): string {
@@ -72,16 +62,6 @@ namespace Dddml.Wms.Domain {
 			this.monthPlanCreatedBy = monthPlanCreatedBy;
 		}
 
-		private monthPlanCreatedAt: string;
-
-		getMonthPlanCreatedAt(): string {
-			return this.monthPlanCreatedAt;
-		}
-
-		setMonthPlanCreatedAt(monthPlanCreatedAt: string) {
-			this.monthPlanCreatedAt = monthPlanCreatedAt;
-		}
-
 		private monthPlanUpdatedBy: string;
 
 		getMonthPlanUpdatedBy(): string {
@@ -90,6 +70,26 @@ namespace Dddml.Wms.Domain {
 
 		setMonthPlanUpdatedBy(monthPlanUpdatedBy: string) {
 			this.monthPlanUpdatedBy = monthPlanUpdatedBy;
+		}
+
+		private monthPlanVersion: string;
+
+		getMonthPlanVersion(): string {
+			return this.monthPlanVersion;
+		}
+
+		setMonthPlanVersion(monthPlanVersion: string) {
+			this.monthPlanVersion = monthPlanVersion;
+		}
+
+		private monthPlanCreatedAt: string;
+
+		getMonthPlanCreatedAt(): string {
+			return this.monthPlanCreatedAt;
+		}
+
+		setMonthPlanCreatedAt(monthPlanCreatedAt: string) {
+			this.monthPlanCreatedAt = monthPlanCreatedAt;
 		}
 
 		private monthPlanUpdatedAt: string;
@@ -132,16 +132,6 @@ namespace Dddml.Wms.Domain {
 			this.yearPlanDescription = yearPlanDescription;
 		}
 
-		private yearPlanVersion: string;
-
-		getYearPlanVersion(): string {
-			return this.yearPlanVersion;
-		}
-
-		setYearPlanVersion(yearPlanVersion: string) {
-			this.yearPlanVersion = yearPlanVersion;
-		}
-
 		private yearPlanCreatedBy: string;
 
 		getYearPlanCreatedBy(): string {
@@ -152,16 +142,6 @@ namespace Dddml.Wms.Domain {
 			this.yearPlanCreatedBy = yearPlanCreatedBy;
 		}
 
-		private yearPlanCreatedAt: string;
-
-		getYearPlanCreatedAt(): string {
-			return this.yearPlanCreatedAt;
-		}
-
-		setYearPlanCreatedAt(yearPlanCreatedAt: string) {
-			this.yearPlanCreatedAt = yearPlanCreatedAt;
-		}
-
 		private yearPlanUpdatedBy: string;
 
 		getYearPlanUpdatedBy(): string {
@@ -170,6 +150,26 @@ namespace Dddml.Wms.Domain {
 
 		setYearPlanUpdatedBy(yearPlanUpdatedBy: string) {
 			this.yearPlanUpdatedBy = yearPlanUpdatedBy;
+		}
+
+		private yearPlanVersion: string;
+
+		getYearPlanVersion(): string {
+			return this.yearPlanVersion;
+		}
+
+		setYearPlanVersion(yearPlanVersion: string) {
+			this.yearPlanVersion = yearPlanVersion;
+		}
+
+		private yearPlanCreatedAt: string;
+
+		getYearPlanCreatedAt(): string {
+			return this.yearPlanCreatedAt;
+		}
+
+		setYearPlanCreatedAt(yearPlanCreatedAt: string) {
+			this.yearPlanCreatedAt = yearPlanCreatedAt;
 		}
 
 		private yearPlanUpdatedAt: string;
@@ -242,16 +242,6 @@ namespace Dddml.Wms.Domain {
 			this.personCreatedBy = personCreatedBy;
 		}
 
-		private personCreatedAt: string;
-
-		getPersonCreatedAt(): string {
-			return this.personCreatedAt;
-		}
-
-		setPersonCreatedAt(personCreatedAt: string) {
-			this.personCreatedAt = personCreatedAt;
-		}
-
 		private personUpdatedBy: string;
 
 		getPersonUpdatedBy(): string {
@@ -260,6 +250,16 @@ namespace Dddml.Wms.Domain {
 
 		setPersonUpdatedBy(personUpdatedBy: string) {
 			this.personUpdatedBy = personUpdatedBy;
+		}
+
+		private personCreatedAt: string;
+
+		getPersonCreatedAt(): string {
+			return this.personCreatedAt;
+		}
+
+		setPersonCreatedAt(personCreatedAt: string) {
+			this.personCreatedAt = personCreatedAt;
 		}
 
 		private personUpdatedAt: string;

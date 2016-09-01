@@ -19,21 +19,21 @@ public interface YearPlanMvoState
 
     void setDescription(String description);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
 
-    Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
 
     void setUpdatedBy(String updatedBy);
+
+    Long getVersion();
+
+    void setVersion(Long version);
+
+    Date getCreatedAt();
+
+    void setCreatedAt(Date createdAt);
 
     Date getUpdatedAt();
 
@@ -59,21 +59,21 @@ public interface YearPlanMvoState
 
     void setPersonEmergencyContact(Contact personEmergencyContact);
 
-    Long getPersonVersion();
-
-    void setPersonVersion(Long personVersion);
-
     String getPersonCreatedBy();
 
     void setPersonCreatedBy(String personCreatedBy);
 
-    Date getPersonCreatedAt();
-
-    void setPersonCreatedAt(Date personCreatedAt);
-
     String getPersonUpdatedBy();
 
     void setPersonUpdatedBy(String personUpdatedBy);
+
+    Long getPersonVersion();
+
+    void setPersonVersion(Long personVersion);
+
+    Date getPersonCreatedAt();
+
+    void setPersonCreatedAt(Date personCreatedAt);
 
     Date getPersonUpdatedAt();
 

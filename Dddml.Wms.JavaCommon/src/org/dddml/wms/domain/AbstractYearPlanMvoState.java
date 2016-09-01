@@ -32,18 +32,6 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
         this.description = description;
     }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -56,18 +44,6 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
         this.createdBy = createdBy;
     }
 
-    private Date createdAt;
-
-    public Date getCreatedAt()
-    {
-        return this.createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt)
-    {
-        this.createdAt = createdAt;
-    }
-
     private String updatedBy;
 
     public String getUpdatedBy()
@@ -78,6 +54,30 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
     public void setUpdatedBy(String updatedBy)
     {
         this.updatedBy = updatedBy;
+    }
+
+    private Long version;
+
+    public Long getVersion()
+    {
+        return this.version;
+    }
+
+    public void setVersion(Long version)
+    {
+        this.version = version;
+    }
+
+    private Date createdAt;
+
+    public Date getCreatedAt()
+    {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt)
+    {
+        this.createdAt = createdAt;
     }
 
     private Date updatedAt;
@@ -152,18 +152,6 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
         this.personEmergencyContact = personEmergencyContact;
     }
 
-    private Long personVersion;
-
-    public Long getPersonVersion()
-    {
-        return this.personVersion;
-    }
-
-    public void setPersonVersion(Long personVersion)
-    {
-        this.personVersion = personVersion;
-    }
-
     private String personCreatedBy;
 
     public String getPersonCreatedBy()
@@ -176,18 +164,6 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
         this.personCreatedBy = personCreatedBy;
     }
 
-    private Date personCreatedAt;
-
-    public Date getPersonCreatedAt()
-    {
-        return this.personCreatedAt;
-    }
-
-    public void setPersonCreatedAt(Date personCreatedAt)
-    {
-        this.personCreatedAt = personCreatedAt;
-    }
-
     private String personUpdatedBy;
 
     public String getPersonUpdatedBy()
@@ -198,6 +174,30 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
     public void setPersonUpdatedBy(String personUpdatedBy)
     {
         this.personUpdatedBy = personUpdatedBy;
+    }
+
+    private Long personVersion;
+
+    public Long getPersonVersion()
+    {
+        return this.personVersion;
+    }
+
+    public void setPersonVersion(Long personVersion)
+    {
+        this.personVersion = personVersion;
+    }
+
+    private Date personCreatedAt;
+
+    public Date getPersonCreatedAt()
+    {
+        return this.personCreatedAt;
+    }
+
+    public void setPersonCreatedAt(Date personCreatedAt)
+    {
+        this.personCreatedAt = personCreatedAt;
     }
 
     private Date personUpdatedAt;
@@ -271,8 +271,8 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
         this.setPersonLoves(e.getPersonLoves());
         this.setPersonEmergencyContact(e.getPersonEmergencyContact());
         this.setPersonCreatedBy(e.getPersonCreatedBy());
-        this.setPersonCreatedAt(e.getPersonCreatedAt());
         this.setPersonUpdatedBy(e.getPersonUpdatedBy());
+        this.setPersonCreatedAt(e.getPersonCreatedAt());
         this.setPersonUpdatedAt(e.getPersonUpdatedAt());
         this.setPersonActive(e.getPersonActive());
         this.setPersonDeleted(e.getPersonDeleted());
@@ -365,17 +365,6 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
         {
             this.setPersonCreatedBy(e.getPersonCreatedBy());
         }
-        if (e.getPersonCreatedAt() == null)
-        {
-            if (e.getIsPropertyPersonCreatedAtRemoved() != null && e.getIsPropertyPersonCreatedAtRemoved())
-            {
-                this.setPersonCreatedAt(null);
-            }
-        }
-        else
-        {
-            this.setPersonCreatedAt(e.getPersonCreatedAt());
-        }
         if (e.getPersonUpdatedBy() == null)
         {
             if (e.getIsPropertyPersonUpdatedByRemoved() != null && e.getIsPropertyPersonUpdatedByRemoved())
@@ -386,6 +375,17 @@ public abstract class AbstractYearPlanMvoState implements YearPlanMvoState
         else
         {
             this.setPersonUpdatedBy(e.getPersonUpdatedBy());
+        }
+        if (e.getPersonCreatedAt() == null)
+        {
+            if (e.getIsPropertyPersonCreatedAtRemoved() != null && e.getIsPropertyPersonCreatedAtRemoved())
+            {
+                this.setPersonCreatedAt(null);
+            }
+        }
+        else
+        {
+            this.setPersonCreatedAt(e.getPersonCreatedAt());
         }
         if (e.getPersonUpdatedAt() == null)
         {

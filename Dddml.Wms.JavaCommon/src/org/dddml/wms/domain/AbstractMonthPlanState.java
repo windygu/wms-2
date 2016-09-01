@@ -54,18 +54,6 @@ public abstract class AbstractMonthPlanState implements MonthPlanState, Saveable
         this.description = description;
     }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -78,18 +66,6 @@ public abstract class AbstractMonthPlanState implements MonthPlanState, Saveable
         this.createdBy = createdBy;
     }
 
-    private Date createdAt;
-
-    public Date getCreatedAt()
-    {
-        return this.createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt)
-    {
-        this.createdAt = createdAt;
-    }
-
     private String updatedBy;
 
     public String getUpdatedBy()
@@ -100,6 +76,30 @@ public abstract class AbstractMonthPlanState implements MonthPlanState, Saveable
     public void setUpdatedBy(String updatedBy)
     {
         this.updatedBy = updatedBy;
+    }
+
+    private Long version;
+
+    public Long getVersion()
+    {
+        return this.version;
+    }
+
+    public void setVersion(Long version)
+    {
+        this.version = version;
+    }
+
+    private Date createdAt;
+
+    public Date getCreatedAt()
+    {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt)
+    {
+        this.createdAt = createdAt;
     }
 
     private Date updatedAt;

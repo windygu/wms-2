@@ -88,18 +88,6 @@ public class CreateOrMergePatchYearPlanMvoDto extends AbstractYearPlanMvoCommand
         this.personCreatedBy = personCreatedBy;
     }
 
-    private Date personCreatedAt;
-
-    public Date getPersonCreatedAt()
-    {
-        return this.personCreatedAt;
-    }
-
-    public void setPersonCreatedAt(Date personCreatedAt)
-    {
-        this.personCreatedAt = personCreatedAt;
-    }
-
     private String personUpdatedBy;
 
     public String getPersonUpdatedBy()
@@ -110,6 +98,18 @@ public class CreateOrMergePatchYearPlanMvoDto extends AbstractYearPlanMvoCommand
     public void setPersonUpdatedBy(String personUpdatedBy)
     {
         this.personUpdatedBy = personUpdatedBy;
+    }
+
+    private Date personCreatedAt;
+
+    public Date getPersonCreatedAt()
+    {
+        return this.personCreatedAt;
+    }
+
+    public void setPersonCreatedAt(Date personCreatedAt)
+    {
+        this.personCreatedAt = personCreatedAt;
     }
 
     private Date personUpdatedAt;
@@ -232,18 +232,6 @@ public class CreateOrMergePatchYearPlanMvoDto extends AbstractYearPlanMvoCommand
         this.isPropertyPersonCreatedByRemoved = removed;
     }
 
-    private Boolean isPropertyPersonCreatedAtRemoved;
-
-    public Boolean getIsPropertyPersonCreatedAtRemoved()
-    {
-        return this.isPropertyPersonCreatedAtRemoved;
-    }
-
-    public void setIsPropertyPersonCreatedAtRemoved(Boolean removed)
-    {
-        this.isPropertyPersonCreatedAtRemoved = removed;
-    }
-
     private Boolean isPropertyPersonUpdatedByRemoved;
 
     public Boolean getIsPropertyPersonUpdatedByRemoved()
@@ -254,6 +242,18 @@ public class CreateOrMergePatchYearPlanMvoDto extends AbstractYearPlanMvoCommand
     public void setIsPropertyPersonUpdatedByRemoved(Boolean removed)
     {
         this.isPropertyPersonUpdatedByRemoved = removed;
+    }
+
+    private Boolean isPropertyPersonCreatedAtRemoved;
+
+    public Boolean getIsPropertyPersonCreatedAtRemoved()
+    {
+        return this.isPropertyPersonCreatedAtRemoved;
+    }
+
+    public void setIsPropertyPersonCreatedAtRemoved(Boolean removed)
+    {
+        this.isPropertyPersonCreatedAtRemoved = removed;
     }
 
     private Boolean isPropertyPersonUpdatedAtRemoved;
@@ -303,8 +303,8 @@ public class CreateOrMergePatchYearPlanMvoDto extends AbstractYearPlanMvoCommand
         command.setPersonLoves((this.getPersonLoves() == null) ? null : this.getPersonLoves().toPersonalName());
         command.setPersonEmergencyContact((this.getPersonEmergencyContact() == null) ? null : this.getPersonEmergencyContact().toContact());
         command.setPersonCreatedBy(this.getPersonCreatedBy());
-        command.setPersonCreatedAt(this.getPersonCreatedAt());
         command.setPersonUpdatedBy(this.getPersonUpdatedBy());
+        command.setPersonCreatedAt(this.getPersonCreatedAt());
         command.setPersonUpdatedAt(this.getPersonUpdatedAt());
         command.setPersonActive(this.getPersonActive());
         command.setPersonDeleted(this.getPersonDeleted());
@@ -339,8 +339,8 @@ public class CreateOrMergePatchYearPlanMvoDto extends AbstractYearPlanMvoCommand
         command.setIsPropertyPersonLovesRemoved(this.getIsPropertyPersonLovesRemoved());
         command.setIsPropertyPersonEmergencyContactRemoved(this.getIsPropertyPersonEmergencyContactRemoved());
         command.setIsPropertyPersonCreatedByRemoved(this.getIsPropertyPersonCreatedByRemoved());
-        command.setIsPropertyPersonCreatedAtRemoved(this.getIsPropertyPersonCreatedAtRemoved());
         command.setIsPropertyPersonUpdatedByRemoved(this.getIsPropertyPersonUpdatedByRemoved());
+        command.setIsPropertyPersonCreatedAtRemoved(this.getIsPropertyPersonCreatedAtRemoved());
         command.setIsPropertyPersonUpdatedAtRemoved(this.getIsPropertyPersonUpdatedAtRemoved());
         command.setIsPropertyPersonActiveRemoved(this.getIsPropertyPersonActiveRemoved());
         command.setIsPropertyPersonDeletedRemoved(this.getIsPropertyPersonDeletedRemoved());

@@ -32,18 +32,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.description = description;
     }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -56,18 +44,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.createdBy = createdBy;
     }
 
-    private Date createdAt;
-
-    public Date getCreatedAt()
-    {
-        return this.createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt)
-    {
-        this.createdAt = createdAt;
-    }
-
     private String updatedBy;
 
     public String getUpdatedBy()
@@ -78,6 +54,30 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
     public void setUpdatedBy(String updatedBy)
     {
         this.updatedBy = updatedBy;
+    }
+
+    private Long version;
+
+    public Long getVersion()
+    {
+        return this.version;
+    }
+
+    public void setVersion(Long version)
+    {
+        this.version = version;
+    }
+
+    private Date createdAt;
+
+    public Date getCreatedAt()
+    {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt)
+    {
+        this.createdAt = createdAt;
     }
 
     private Date updatedAt;
@@ -128,18 +128,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.monthPlanDescription = monthPlanDescription;
     }
 
-    private Long monthPlanVersion;
-
-    public Long getMonthPlanVersion()
-    {
-        return this.monthPlanVersion;
-    }
-
-    public void setMonthPlanVersion(Long monthPlanVersion)
-    {
-        this.monthPlanVersion = monthPlanVersion;
-    }
-
     private String monthPlanCreatedBy;
 
     public String getMonthPlanCreatedBy()
@@ -152,18 +140,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.monthPlanCreatedBy = monthPlanCreatedBy;
     }
 
-    private Date monthPlanCreatedAt;
-
-    public Date getMonthPlanCreatedAt()
-    {
-        return this.monthPlanCreatedAt;
-    }
-
-    public void setMonthPlanCreatedAt(Date monthPlanCreatedAt)
-    {
-        this.monthPlanCreatedAt = monthPlanCreatedAt;
-    }
-
     private String monthPlanUpdatedBy;
 
     public String getMonthPlanUpdatedBy()
@@ -174,6 +150,30 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
     public void setMonthPlanUpdatedBy(String monthPlanUpdatedBy)
     {
         this.monthPlanUpdatedBy = monthPlanUpdatedBy;
+    }
+
+    private Long monthPlanVersion;
+
+    public Long getMonthPlanVersion()
+    {
+        return this.monthPlanVersion;
+    }
+
+    public void setMonthPlanVersion(Long monthPlanVersion)
+    {
+        this.monthPlanVersion = monthPlanVersion;
+    }
+
+    private Date monthPlanCreatedAt;
+
+    public Date getMonthPlanCreatedAt()
+    {
+        return this.monthPlanCreatedAt;
+    }
+
+    public void setMonthPlanCreatedAt(Date monthPlanCreatedAt)
+    {
+        this.monthPlanCreatedAt = monthPlanCreatedAt;
     }
 
     private Date monthPlanUpdatedAt;
@@ -224,18 +224,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.yearPlanDescription = yearPlanDescription;
     }
 
-    private Long yearPlanVersion;
-
-    public Long getYearPlanVersion()
-    {
-        return this.yearPlanVersion;
-    }
-
-    public void setYearPlanVersion(Long yearPlanVersion)
-    {
-        this.yearPlanVersion = yearPlanVersion;
-    }
-
     private String yearPlanCreatedBy;
 
     public String getYearPlanCreatedBy()
@@ -248,18 +236,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.yearPlanCreatedBy = yearPlanCreatedBy;
     }
 
-    private Date yearPlanCreatedAt;
-
-    public Date getYearPlanCreatedAt()
-    {
-        return this.yearPlanCreatedAt;
-    }
-
-    public void setYearPlanCreatedAt(Date yearPlanCreatedAt)
-    {
-        this.yearPlanCreatedAt = yearPlanCreatedAt;
-    }
-
     private String yearPlanUpdatedBy;
 
     public String getYearPlanUpdatedBy()
@@ -270,6 +246,30 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
     public void setYearPlanUpdatedBy(String yearPlanUpdatedBy)
     {
         this.yearPlanUpdatedBy = yearPlanUpdatedBy;
+    }
+
+    private Long yearPlanVersion;
+
+    public Long getYearPlanVersion()
+    {
+        return this.yearPlanVersion;
+    }
+
+    public void setYearPlanVersion(Long yearPlanVersion)
+    {
+        this.yearPlanVersion = yearPlanVersion;
+    }
+
+    private Date yearPlanCreatedAt;
+
+    public Date getYearPlanCreatedAt()
+    {
+        return this.yearPlanCreatedAt;
+    }
+
+    public void setYearPlanCreatedAt(Date yearPlanCreatedAt)
+    {
+        this.yearPlanCreatedAt = yearPlanCreatedAt;
     }
 
     private Date yearPlanUpdatedAt;
@@ -344,18 +344,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.personEmergencyContact = personEmergencyContact;
     }
 
-    private Long personVersion;
-
-    public Long getPersonVersion()
-    {
-        return this.personVersion;
-    }
-
-    public void setPersonVersion(Long personVersion)
-    {
-        this.personVersion = personVersion;
-    }
-
     private String personCreatedBy;
 
     public String getPersonCreatedBy()
@@ -368,18 +356,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.personCreatedBy = personCreatedBy;
     }
 
-    private Date personCreatedAt;
-
-    public Date getPersonCreatedAt()
-    {
-        return this.personCreatedAt;
-    }
-
-    public void setPersonCreatedAt(Date personCreatedAt)
-    {
-        this.personCreatedAt = personCreatedAt;
-    }
-
     private String personUpdatedBy;
 
     public String getPersonUpdatedBy()
@@ -390,6 +366,30 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
     public void setPersonUpdatedBy(String personUpdatedBy)
     {
         this.personUpdatedBy = personUpdatedBy;
+    }
+
+    private Long personVersion;
+
+    public Long getPersonVersion()
+    {
+        return this.personVersion;
+    }
+
+    public void setPersonVersion(Long personVersion)
+    {
+        this.personVersion = personVersion;
+    }
+
+    private Date personCreatedAt;
+
+    public Date getPersonCreatedAt()
+    {
+        return this.personCreatedAt;
+    }
+
+    public void setPersonCreatedAt(Date personCreatedAt)
+    {
+        this.personCreatedAt = personCreatedAt;
     }
 
     private Date personUpdatedAt;
@@ -460,18 +460,18 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
         this.setMonthPlanDescription(e.getMonthPlanDescription());
-        this.setMonthPlanVersion(e.getMonthPlanVersion());
         this.setMonthPlanCreatedBy(e.getMonthPlanCreatedBy());
-        this.setMonthPlanCreatedAt(e.getMonthPlanCreatedAt());
         this.setMonthPlanUpdatedBy(e.getMonthPlanUpdatedBy());
+        this.setMonthPlanVersion(e.getMonthPlanVersion());
+        this.setMonthPlanCreatedAt(e.getMonthPlanCreatedAt());
         this.setMonthPlanUpdatedAt(e.getMonthPlanUpdatedAt());
         this.setMonthPlanActive(e.getMonthPlanActive());
         this.setMonthPlanDeleted(e.getMonthPlanDeleted());
         this.setYearPlanDescription(e.getYearPlanDescription());
-        this.setYearPlanVersion(e.getYearPlanVersion());
         this.setYearPlanCreatedBy(e.getYearPlanCreatedBy());
-        this.setYearPlanCreatedAt(e.getYearPlanCreatedAt());
         this.setYearPlanUpdatedBy(e.getYearPlanUpdatedBy());
+        this.setYearPlanVersion(e.getYearPlanVersion());
+        this.setYearPlanCreatedAt(e.getYearPlanCreatedAt());
         this.setYearPlanUpdatedAt(e.getYearPlanUpdatedAt());
         this.setYearPlanActive(e.getYearPlanActive());
         this.setYearPlanDeleted(e.getYearPlanDeleted());
@@ -479,8 +479,8 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.setPersonLoves(e.getPersonLoves());
         this.setPersonEmergencyContact(e.getPersonEmergencyContact());
         this.setPersonCreatedBy(e.getPersonCreatedBy());
-        this.setPersonCreatedAt(e.getPersonCreatedAt());
         this.setPersonUpdatedBy(e.getPersonUpdatedBy());
+        this.setPersonCreatedAt(e.getPersonCreatedAt());
         this.setPersonUpdatedAt(e.getPersonUpdatedAt());
         this.setPersonActive(e.getPersonActive());
         this.setPersonDeleted(e.getPersonDeleted());
@@ -540,17 +540,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         {
             this.setMonthPlanDescription(e.getMonthPlanDescription());
         }
-        if (e.getMonthPlanVersion() == null)
-        {
-            if (e.getIsPropertyMonthPlanVersionRemoved() != null && e.getIsPropertyMonthPlanVersionRemoved())
-            {
-                this.setMonthPlanVersion(null);
-            }
-        }
-        else
-        {
-            this.setMonthPlanVersion(e.getMonthPlanVersion());
-        }
         if (e.getMonthPlanCreatedBy() == null)
         {
             if (e.getIsPropertyMonthPlanCreatedByRemoved() != null && e.getIsPropertyMonthPlanCreatedByRemoved())
@@ -562,17 +551,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         {
             this.setMonthPlanCreatedBy(e.getMonthPlanCreatedBy());
         }
-        if (e.getMonthPlanCreatedAt() == null)
-        {
-            if (e.getIsPropertyMonthPlanCreatedAtRemoved() != null && e.getIsPropertyMonthPlanCreatedAtRemoved())
-            {
-                this.setMonthPlanCreatedAt(null);
-            }
-        }
-        else
-        {
-            this.setMonthPlanCreatedAt(e.getMonthPlanCreatedAt());
-        }
         if (e.getMonthPlanUpdatedBy() == null)
         {
             if (e.getIsPropertyMonthPlanUpdatedByRemoved() != null && e.getIsPropertyMonthPlanUpdatedByRemoved())
@@ -583,6 +561,28 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         else
         {
             this.setMonthPlanUpdatedBy(e.getMonthPlanUpdatedBy());
+        }
+        if (e.getMonthPlanVersion() == null)
+        {
+            if (e.getIsPropertyMonthPlanVersionRemoved() != null && e.getIsPropertyMonthPlanVersionRemoved())
+            {
+                this.setMonthPlanVersion(null);
+            }
+        }
+        else
+        {
+            this.setMonthPlanVersion(e.getMonthPlanVersion());
+        }
+        if (e.getMonthPlanCreatedAt() == null)
+        {
+            if (e.getIsPropertyMonthPlanCreatedAtRemoved() != null && e.getIsPropertyMonthPlanCreatedAtRemoved())
+            {
+                this.setMonthPlanCreatedAt(null);
+            }
+        }
+        else
+        {
+            this.setMonthPlanCreatedAt(e.getMonthPlanCreatedAt());
         }
         if (e.getMonthPlanUpdatedAt() == null)
         {
@@ -628,17 +628,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         {
             this.setYearPlanDescription(e.getYearPlanDescription());
         }
-        if (e.getYearPlanVersion() == null)
-        {
-            if (e.getIsPropertyYearPlanVersionRemoved() != null && e.getIsPropertyYearPlanVersionRemoved())
-            {
-                this.setYearPlanVersion(null);
-            }
-        }
-        else
-        {
-            this.setYearPlanVersion(e.getYearPlanVersion());
-        }
         if (e.getYearPlanCreatedBy() == null)
         {
             if (e.getIsPropertyYearPlanCreatedByRemoved() != null && e.getIsPropertyYearPlanCreatedByRemoved())
@@ -650,17 +639,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         {
             this.setYearPlanCreatedBy(e.getYearPlanCreatedBy());
         }
-        if (e.getYearPlanCreatedAt() == null)
-        {
-            if (e.getIsPropertyYearPlanCreatedAtRemoved() != null && e.getIsPropertyYearPlanCreatedAtRemoved())
-            {
-                this.setYearPlanCreatedAt(null);
-            }
-        }
-        else
-        {
-            this.setYearPlanCreatedAt(e.getYearPlanCreatedAt());
-        }
         if (e.getYearPlanUpdatedBy() == null)
         {
             if (e.getIsPropertyYearPlanUpdatedByRemoved() != null && e.getIsPropertyYearPlanUpdatedByRemoved())
@@ -671,6 +649,28 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         else
         {
             this.setYearPlanUpdatedBy(e.getYearPlanUpdatedBy());
+        }
+        if (e.getYearPlanVersion() == null)
+        {
+            if (e.getIsPropertyYearPlanVersionRemoved() != null && e.getIsPropertyYearPlanVersionRemoved())
+            {
+                this.setYearPlanVersion(null);
+            }
+        }
+        else
+        {
+            this.setYearPlanVersion(e.getYearPlanVersion());
+        }
+        if (e.getYearPlanCreatedAt() == null)
+        {
+            if (e.getIsPropertyYearPlanCreatedAtRemoved() != null && e.getIsPropertyYearPlanCreatedAtRemoved())
+            {
+                this.setYearPlanCreatedAt(null);
+            }
+        }
+        else
+        {
+            this.setYearPlanCreatedAt(e.getYearPlanCreatedAt());
         }
         if (e.getYearPlanUpdatedAt() == null)
         {
@@ -749,17 +749,6 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         {
             this.setPersonCreatedBy(e.getPersonCreatedBy());
         }
-        if (e.getPersonCreatedAt() == null)
-        {
-            if (e.getIsPropertyPersonCreatedAtRemoved() != null && e.getIsPropertyPersonCreatedAtRemoved())
-            {
-                this.setPersonCreatedAt(null);
-            }
-        }
-        else
-        {
-            this.setPersonCreatedAt(e.getPersonCreatedAt());
-        }
         if (e.getPersonUpdatedBy() == null)
         {
             if (e.getIsPropertyPersonUpdatedByRemoved() != null && e.getIsPropertyPersonUpdatedByRemoved())
@@ -770,6 +759,17 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         else
         {
             this.setPersonUpdatedBy(e.getPersonUpdatedBy());
+        }
+        if (e.getPersonCreatedAt() == null)
+        {
+            if (e.getIsPropertyPersonCreatedAtRemoved() != null && e.getIsPropertyPersonCreatedAtRemoved())
+            {
+                this.setPersonCreatedAt(null);
+            }
+        }
+        else
+        {
+            this.setPersonCreatedAt(e.getPersonCreatedAt());
         }
         if (e.getPersonUpdatedAt() == null)
         {

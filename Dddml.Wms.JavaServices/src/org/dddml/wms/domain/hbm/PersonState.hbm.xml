@@ -31,9 +31,9 @@
 
 	<property name="createdBy" ></property>
 
-	<property name="createdAt" ></property>
-
 	<property name="updatedBy" ></property>
+
+	<property name="createdAt" ></property>
 
 	<property name="updatedAt" ></property>
 

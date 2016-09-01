@@ -115,27 +115,6 @@ trait MonthPlanMvoStatePropertiesTrait
     }
 
     /**
-     * @Type("Dddml\Serializer\Type\Long")
-     */
-    private $yearPlanVersion;
-
-    /**
-     * @return Long
-     */
-    public function getYearPlanVersion()
-    {
-        return $this->yearPlanVersion;
-    }
-
-    /**
-     * @param Long $yearPlanVersion
-     */
-    public function setYearPlanVersion($yearPlanVersion)
-    {
-        $this->yearPlanVersion = $yearPlanVersion;
-    }
-
-    /**
      * @Type("string")
      */
     private $yearPlanCreatedBy;
@@ -157,27 +136,6 @@ trait MonthPlanMvoStatePropertiesTrait
     }
 
     /**
-     * @Type("DateTime")
-     */
-    private $yearPlanCreatedAt;
-
-    /**
-     * @return \DateTime
-     */
-    public function getYearPlanCreatedAt()
-    {
-        return $this->yearPlanCreatedAt;
-    }
-
-    /**
-     * @param \DateTime $yearPlanCreatedAt
-     */
-    public function setYearPlanCreatedAt($yearPlanCreatedAt)
-    {
-        $this->yearPlanCreatedAt = $yearPlanCreatedAt;
-    }
-
-    /**
      * @Type("string")
      */
     private $yearPlanUpdatedBy;
@@ -196,6 +154,48 @@ trait MonthPlanMvoStatePropertiesTrait
     public function setYearPlanUpdatedBy($yearPlanUpdatedBy)
     {
         $this->yearPlanUpdatedBy = $yearPlanUpdatedBy;
+    }
+
+    /**
+     * @Type("Dddml\Serializer\Type\Long")
+     */
+    private $yearPlanVersion;
+
+    /**
+     * @return Long
+     */
+    public function getYearPlanVersion()
+    {
+        return $this->yearPlanVersion;
+    }
+
+    /**
+     * @param Long $yearPlanVersion
+     */
+    public function setYearPlanVersion($yearPlanVersion)
+    {
+        $this->yearPlanVersion = $yearPlanVersion;
+    }
+
+    /**
+     * @Type("DateTime")
+     */
+    private $yearPlanCreatedAt;
+
+    /**
+     * @return \DateTime
+     */
+    public function getYearPlanCreatedAt()
+    {
+        return $this->yearPlanCreatedAt;
+    }
+
+    /**
+     * @param \DateTime $yearPlanCreatedAt
+     */
+    public function setYearPlanCreatedAt($yearPlanCreatedAt)
+    {
+        $this->yearPlanCreatedAt = $yearPlanCreatedAt;
     }
 
     /**
@@ -346,27 +346,6 @@ trait MonthPlanMvoStatePropertiesTrait
     }
 
     /**
-     * @Type("DateTime")
-     */
-    private $personCreatedAt;
-
-    /**
-     * @return \DateTime
-     */
-    public function getPersonCreatedAt()
-    {
-        return $this->personCreatedAt;
-    }
-
-    /**
-     * @param \DateTime $personCreatedAt
-     */
-    public function setPersonCreatedAt($personCreatedAt)
-    {
-        $this->personCreatedAt = $personCreatedAt;
-    }
-
-    /**
      * @Type("string")
      */
     private $personUpdatedBy;
@@ -385,6 +364,27 @@ trait MonthPlanMvoStatePropertiesTrait
     public function setPersonUpdatedBy($personUpdatedBy)
     {
         $this->personUpdatedBy = $personUpdatedBy;
+    }
+
+    /**
+     * @Type("DateTime")
+     */
+    private $personCreatedAt;
+
+    /**
+     * @return \DateTime
+     */
+    public function getPersonCreatedAt()
+    {
+        return $this->personCreatedAt;
+    }
+
+    /**
+     * @param \DateTime $personCreatedAt
+     */
+    public function setPersonCreatedAt($personCreatedAt)
+    {
+        $this->personCreatedAt = $personCreatedAt;
     }
 
     /**

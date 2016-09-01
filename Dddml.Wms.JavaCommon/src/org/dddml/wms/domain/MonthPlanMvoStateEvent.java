@@ -16,13 +16,13 @@ public interface MonthPlanMvoStateEvent extends Event
 
     void setDescription(String description);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
+
+    Long getVersion();
+
+    void setVersion(Long version);
 
     Date getCreatedAt();
 
@@ -36,21 +36,21 @@ public interface MonthPlanMvoStateEvent extends Event
 
     void setYearPlanDescription(String yearPlanDescription);
 
-    Long getYearPlanVersion();
-
-    void setYearPlanVersion(Long yearPlanVersion);
-
     String getYearPlanCreatedBy();
 
     void setYearPlanCreatedBy(String yearPlanCreatedBy);
 
-    Date getYearPlanCreatedAt();
-
-    void setYearPlanCreatedAt(Date yearPlanCreatedAt);
-
     String getYearPlanUpdatedBy();
 
     void setYearPlanUpdatedBy(String yearPlanUpdatedBy);
+
+    Long getYearPlanVersion();
+
+    void setYearPlanVersion(Long yearPlanVersion);
+
+    Date getYearPlanCreatedAt();
+
+    void setYearPlanCreatedAt(Date yearPlanCreatedAt);
 
     Date getYearPlanUpdatedAt();
 
@@ -80,13 +80,13 @@ public interface MonthPlanMvoStateEvent extends Event
 
     void setPersonCreatedBy(String personCreatedBy);
 
-    Date getPersonCreatedAt();
-
-    void setPersonCreatedAt(Date personCreatedAt);
-
     String getPersonUpdatedBy();
 
     void setPersonUpdatedBy(String personUpdatedBy);
+
+    Date getPersonCreatedAt();
+
+    void setPersonCreatedAt(Date personCreatedAt);
 
     Date getPersonUpdatedAt();
 
@@ -125,21 +125,21 @@ public interface MonthPlanMvoStateEvent extends Event
 
         void setIsPropertyYearPlanDescriptionRemoved(Boolean removed);
 
-        Boolean getIsPropertyYearPlanVersionRemoved();
-
-        void setIsPropertyYearPlanVersionRemoved(Boolean removed);
-
         Boolean getIsPropertyYearPlanCreatedByRemoved();
 
         void setIsPropertyYearPlanCreatedByRemoved(Boolean removed);
 
-        Boolean getIsPropertyYearPlanCreatedAtRemoved();
-
-        void setIsPropertyYearPlanCreatedAtRemoved(Boolean removed);
-
         Boolean getIsPropertyYearPlanUpdatedByRemoved();
 
         void setIsPropertyYearPlanUpdatedByRemoved(Boolean removed);
+
+        Boolean getIsPropertyYearPlanVersionRemoved();
+
+        void setIsPropertyYearPlanVersionRemoved(Boolean removed);
+
+        Boolean getIsPropertyYearPlanCreatedAtRemoved();
+
+        void setIsPropertyYearPlanCreatedAtRemoved(Boolean removed);
 
         Boolean getIsPropertyYearPlanUpdatedAtRemoved();
 
@@ -169,13 +169,13 @@ public interface MonthPlanMvoStateEvent extends Event
 
         void setIsPropertyPersonCreatedByRemoved(Boolean removed);
 
-        Boolean getIsPropertyPersonCreatedAtRemoved();
-
-        void setIsPropertyPersonCreatedAtRemoved(Boolean removed);
-
         Boolean getIsPropertyPersonUpdatedByRemoved();
 
         void setIsPropertyPersonUpdatedByRemoved(Boolean removed);
+
+        Boolean getIsPropertyPersonCreatedAtRemoved();
+
+        void setIsPropertyPersonCreatedAtRemoved(Boolean removed);
 
         Boolean getIsPropertyPersonUpdatedAtRemoved();
 

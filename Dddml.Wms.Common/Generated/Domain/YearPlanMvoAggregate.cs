@@ -113,8 +113,8 @@ namespace Dddml.Wms.Domain
             e.PersonLoves = c.PersonLoves;
             e.PersonEmergencyContact = c.PersonEmergencyContact;
             e.PersonCreatedBy = c.PersonCreatedBy;
-            e.PersonCreatedAt = c.PersonCreatedAt;
             e.PersonUpdatedBy = c.PersonUpdatedBy;
+            e.PersonCreatedAt = c.PersonCreatedAt;
             e.PersonUpdatedAt = c.PersonUpdatedAt;
             e.PersonActive = c.PersonActive;
             e.PersonDeleted = c.PersonDeleted;
@@ -141,8 +141,8 @@ namespace Dddml.Wms.Domain
             e.PersonLoves = c.PersonLoves;
             e.PersonEmergencyContact = c.PersonEmergencyContact;
             e.PersonCreatedBy = c.PersonCreatedBy;
-            e.PersonCreatedAt = c.PersonCreatedAt;
             e.PersonUpdatedBy = c.PersonUpdatedBy;
+            e.PersonCreatedAt = c.PersonCreatedAt;
             e.PersonUpdatedAt = c.PersonUpdatedAt;
             e.PersonActive = c.PersonActive;
             e.PersonDeleted = c.PersonDeleted;
@@ -153,8 +153,8 @@ namespace Dddml.Wms.Domain
             e.IsPropertyPersonLovesRemoved = c.IsPropertyPersonLovesRemoved;
             e.IsPropertyPersonEmergencyContactRemoved = c.IsPropertyPersonEmergencyContactRemoved;
             e.IsPropertyPersonCreatedByRemoved = c.IsPropertyPersonCreatedByRemoved;
-            e.IsPropertyPersonCreatedAtRemoved = c.IsPropertyPersonCreatedAtRemoved;
             e.IsPropertyPersonUpdatedByRemoved = c.IsPropertyPersonUpdatedByRemoved;
+            e.IsPropertyPersonCreatedAtRemoved = c.IsPropertyPersonCreatedAtRemoved;
             e.IsPropertyPersonUpdatedAtRemoved = c.IsPropertyPersonUpdatedAtRemoved;
             e.IsPropertyPersonActiveRemoved = c.IsPropertyPersonActiveRemoved;
             e.IsPropertyPersonDeletedRemoved = c.IsPropertyPersonDeletedRemoved;

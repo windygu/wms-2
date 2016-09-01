@@ -43,8 +43,8 @@ public abstract class AbstractYearPlanMvoStateCommandConverter<TCreateYearPlanMv
         cmd.setPersonLoves(state.getPersonLoves());
         cmd.setPersonEmergencyContact(state.getPersonEmergencyContact());
         cmd.setPersonCreatedBy(state.getPersonCreatedBy());
-        cmd.setPersonCreatedAt(state.getPersonCreatedAt());
         cmd.setPersonUpdatedBy(state.getPersonUpdatedBy());
+        cmd.setPersonCreatedAt(state.getPersonCreatedAt());
         cmd.setPersonUpdatedAt(state.getPersonUpdatedAt());
         cmd.setPersonActive(state.getPersonActive());
         cmd.setPersonDeleted(state.getPersonDeleted());
@@ -56,8 +56,8 @@ public abstract class AbstractYearPlanMvoStateCommandConverter<TCreateYearPlanMv
         if (state.getPersonLoves() == null) { cmd.setIsPropertyPersonLovesRemoved(true); }
         if (state.getPersonEmergencyContact() == null) { cmd.setIsPropertyPersonEmergencyContactRemoved(true); }
         if (state.getPersonCreatedBy() == null) { cmd.setIsPropertyPersonCreatedByRemoved(true); }
-        if (state.getPersonCreatedAt() == null) { cmd.setIsPropertyPersonCreatedAtRemoved(true); }
         if (state.getPersonUpdatedBy() == null) { cmd.setIsPropertyPersonUpdatedByRemoved(true); }
+        if (state.getPersonCreatedAt() == null) { cmd.setIsPropertyPersonCreatedAtRemoved(true); }
         if (state.getPersonUpdatedAt() == null) { cmd.setIsPropertyPersonUpdatedAtRemoved(true); }
         if (state.getPersonActive() == null) { cmd.setIsPropertyPersonActiveRemoved(true); }
         if (state.getPersonDeleted() == null) { cmd.setIsPropertyPersonDeletedRemoved(true); }
@@ -77,8 +77,8 @@ public abstract class AbstractYearPlanMvoStateCommandConverter<TCreateYearPlanMv
         cmd.setPersonLoves(state.getPersonLoves());
         cmd.setPersonEmergencyContact(state.getPersonEmergencyContact());
         cmd.setPersonCreatedBy(state.getPersonCreatedBy());
-        cmd.setPersonCreatedAt(state.getPersonCreatedAt());
         cmd.setPersonUpdatedBy(state.getPersonUpdatedBy());
+        cmd.setPersonCreatedAt(state.getPersonCreatedAt());
         cmd.setPersonUpdatedAt(state.getPersonUpdatedAt());
         cmd.setPersonActive(state.getPersonActive());
         cmd.setPersonDeleted(state.getPersonDeleted());

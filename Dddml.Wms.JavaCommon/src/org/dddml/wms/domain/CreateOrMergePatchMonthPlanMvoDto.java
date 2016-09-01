@@ -52,18 +52,6 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         this.yearPlanDescription = yearPlanDescription;
     }
 
-    private Long yearPlanVersion;
-
-    public Long getYearPlanVersion()
-    {
-        return this.yearPlanVersion;
-    }
-
-    public void setYearPlanVersion(Long yearPlanVersion)
-    {
-        this.yearPlanVersion = yearPlanVersion;
-    }
-
     private String yearPlanCreatedBy;
 
     public String getYearPlanCreatedBy()
@@ -76,18 +64,6 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         this.yearPlanCreatedBy = yearPlanCreatedBy;
     }
 
-    private Date yearPlanCreatedAt;
-
-    public Date getYearPlanCreatedAt()
-    {
-        return this.yearPlanCreatedAt;
-    }
-
-    public void setYearPlanCreatedAt(Date yearPlanCreatedAt)
-    {
-        this.yearPlanCreatedAt = yearPlanCreatedAt;
-    }
-
     private String yearPlanUpdatedBy;
 
     public String getYearPlanUpdatedBy()
@@ -98,6 +74,30 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
     public void setYearPlanUpdatedBy(String yearPlanUpdatedBy)
     {
         this.yearPlanUpdatedBy = yearPlanUpdatedBy;
+    }
+
+    private Long yearPlanVersion;
+
+    public Long getYearPlanVersion()
+    {
+        return this.yearPlanVersion;
+    }
+
+    public void setYearPlanVersion(Long yearPlanVersion)
+    {
+        this.yearPlanVersion = yearPlanVersion;
+    }
+
+    private Date yearPlanCreatedAt;
+
+    public Date getYearPlanCreatedAt()
+    {
+        return this.yearPlanCreatedAt;
+    }
+
+    public void setYearPlanCreatedAt(Date yearPlanCreatedAt)
+    {
+        this.yearPlanCreatedAt = yearPlanCreatedAt;
     }
 
     private Date yearPlanUpdatedAt;
@@ -184,18 +184,6 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         this.personCreatedBy = personCreatedBy;
     }
 
-    private Date personCreatedAt;
-
-    public Date getPersonCreatedAt()
-    {
-        return this.personCreatedAt;
-    }
-
-    public void setPersonCreatedAt(Date personCreatedAt)
-    {
-        this.personCreatedAt = personCreatedAt;
-    }
-
     private String personUpdatedBy;
 
     public String getPersonUpdatedBy()
@@ -206,6 +194,18 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
     public void setPersonUpdatedBy(String personUpdatedBy)
     {
         this.personUpdatedBy = personUpdatedBy;
+    }
+
+    private Date personCreatedAt;
+
+    public Date getPersonCreatedAt()
+    {
+        return this.personCreatedAt;
+    }
+
+    public void setPersonCreatedAt(Date personCreatedAt)
+    {
+        this.personCreatedAt = personCreatedAt;
     }
 
     private Date personUpdatedAt;
@@ -292,18 +292,6 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         this.isPropertyYearPlanDescriptionRemoved = removed;
     }
 
-    private Boolean isPropertyYearPlanVersionRemoved;
-
-    public Boolean getIsPropertyYearPlanVersionRemoved()
-    {
-        return this.isPropertyYearPlanVersionRemoved;
-    }
-
-    public void setIsPropertyYearPlanVersionRemoved(Boolean removed)
-    {
-        this.isPropertyYearPlanVersionRemoved = removed;
-    }
-
     private Boolean isPropertyYearPlanCreatedByRemoved;
 
     public Boolean getIsPropertyYearPlanCreatedByRemoved()
@@ -316,18 +304,6 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         this.isPropertyYearPlanCreatedByRemoved = removed;
     }
 
-    private Boolean isPropertyYearPlanCreatedAtRemoved;
-
-    public Boolean getIsPropertyYearPlanCreatedAtRemoved()
-    {
-        return this.isPropertyYearPlanCreatedAtRemoved;
-    }
-
-    public void setIsPropertyYearPlanCreatedAtRemoved(Boolean removed)
-    {
-        this.isPropertyYearPlanCreatedAtRemoved = removed;
-    }
-
     private Boolean isPropertyYearPlanUpdatedByRemoved;
 
     public Boolean getIsPropertyYearPlanUpdatedByRemoved()
@@ -338,6 +314,30 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
     public void setIsPropertyYearPlanUpdatedByRemoved(Boolean removed)
     {
         this.isPropertyYearPlanUpdatedByRemoved = removed;
+    }
+
+    private Boolean isPropertyYearPlanVersionRemoved;
+
+    public Boolean getIsPropertyYearPlanVersionRemoved()
+    {
+        return this.isPropertyYearPlanVersionRemoved;
+    }
+
+    public void setIsPropertyYearPlanVersionRemoved(Boolean removed)
+    {
+        this.isPropertyYearPlanVersionRemoved = removed;
+    }
+
+    private Boolean isPropertyYearPlanCreatedAtRemoved;
+
+    public Boolean getIsPropertyYearPlanCreatedAtRemoved()
+    {
+        return this.isPropertyYearPlanCreatedAtRemoved;
+    }
+
+    public void setIsPropertyYearPlanCreatedAtRemoved(Boolean removed)
+    {
+        this.isPropertyYearPlanCreatedAtRemoved = removed;
     }
 
     private Boolean isPropertyYearPlanUpdatedAtRemoved;
@@ -424,18 +424,6 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         this.isPropertyPersonCreatedByRemoved = removed;
     }
 
-    private Boolean isPropertyPersonCreatedAtRemoved;
-
-    public Boolean getIsPropertyPersonCreatedAtRemoved()
-    {
-        return this.isPropertyPersonCreatedAtRemoved;
-    }
-
-    public void setIsPropertyPersonCreatedAtRemoved(Boolean removed)
-    {
-        this.isPropertyPersonCreatedAtRemoved = removed;
-    }
-
     private Boolean isPropertyPersonUpdatedByRemoved;
 
     public Boolean getIsPropertyPersonUpdatedByRemoved()
@@ -446,6 +434,18 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
     public void setIsPropertyPersonUpdatedByRemoved(Boolean removed)
     {
         this.isPropertyPersonUpdatedByRemoved = removed;
+    }
+
+    private Boolean isPropertyPersonCreatedAtRemoved;
+
+    public Boolean getIsPropertyPersonCreatedAtRemoved()
+    {
+        return this.isPropertyPersonCreatedAtRemoved;
+    }
+
+    public void setIsPropertyPersonCreatedAtRemoved(Boolean removed)
+    {
+        this.isPropertyPersonCreatedAtRemoved = removed;
     }
 
     private Boolean isPropertyPersonUpdatedAtRemoved;
@@ -492,10 +492,10 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
         command.setYearPlanDescription(this.getYearPlanDescription());
-        command.setYearPlanVersion(this.getYearPlanVersion());
         command.setYearPlanCreatedBy(this.getYearPlanCreatedBy());
-        command.setYearPlanCreatedAt(this.getYearPlanCreatedAt());
         command.setYearPlanUpdatedBy(this.getYearPlanUpdatedBy());
+        command.setYearPlanVersion(this.getYearPlanVersion());
+        command.setYearPlanCreatedAt(this.getYearPlanCreatedAt());
         command.setYearPlanUpdatedAt(this.getYearPlanUpdatedAt());
         command.setYearPlanActive(this.getYearPlanActive());
         command.setYearPlanDeleted(this.getYearPlanDeleted());
@@ -503,8 +503,8 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         command.setPersonLoves((this.getPersonLoves() == null) ? null : this.getPersonLoves().toPersonalName());
         command.setPersonEmergencyContact((this.getPersonEmergencyContact() == null) ? null : this.getPersonEmergencyContact().toContact());
         command.setPersonCreatedBy(this.getPersonCreatedBy());
-        command.setPersonCreatedAt(this.getPersonCreatedAt());
         command.setPersonUpdatedBy(this.getPersonUpdatedBy());
+        command.setPersonCreatedAt(this.getPersonCreatedAt());
         command.setPersonUpdatedAt(this.getPersonUpdatedAt());
         command.setPersonActive(this.getPersonActive());
         command.setPersonDeleted(this.getPersonDeleted());
@@ -536,10 +536,10 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
         command.setIsPropertyYearPlanDescriptionRemoved(this.getIsPropertyYearPlanDescriptionRemoved());
-        command.setIsPropertyYearPlanVersionRemoved(this.getIsPropertyYearPlanVersionRemoved());
         command.setIsPropertyYearPlanCreatedByRemoved(this.getIsPropertyYearPlanCreatedByRemoved());
-        command.setIsPropertyYearPlanCreatedAtRemoved(this.getIsPropertyYearPlanCreatedAtRemoved());
         command.setIsPropertyYearPlanUpdatedByRemoved(this.getIsPropertyYearPlanUpdatedByRemoved());
+        command.setIsPropertyYearPlanVersionRemoved(this.getIsPropertyYearPlanVersionRemoved());
+        command.setIsPropertyYearPlanCreatedAtRemoved(this.getIsPropertyYearPlanCreatedAtRemoved());
         command.setIsPropertyYearPlanUpdatedAtRemoved(this.getIsPropertyYearPlanUpdatedAtRemoved());
         command.setIsPropertyYearPlanActiveRemoved(this.getIsPropertyYearPlanActiveRemoved());
         command.setIsPropertyYearPlanDeletedRemoved(this.getIsPropertyYearPlanDeletedRemoved());
@@ -547,8 +547,8 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         command.setIsPropertyPersonLovesRemoved(this.getIsPropertyPersonLovesRemoved());
         command.setIsPropertyPersonEmergencyContactRemoved(this.getIsPropertyPersonEmergencyContactRemoved());
         command.setIsPropertyPersonCreatedByRemoved(this.getIsPropertyPersonCreatedByRemoved());
-        command.setIsPropertyPersonCreatedAtRemoved(this.getIsPropertyPersonCreatedAtRemoved());
         command.setIsPropertyPersonUpdatedByRemoved(this.getIsPropertyPersonUpdatedByRemoved());
+        command.setIsPropertyPersonCreatedAtRemoved(this.getIsPropertyPersonCreatedAtRemoved());
         command.setIsPropertyPersonUpdatedAtRemoved(this.getIsPropertyPersonUpdatedAtRemoved());
         command.setIsPropertyPersonActiveRemoved(this.getIsPropertyPersonActiveRemoved());
         command.setIsPropertyPersonDeletedRemoved(this.getIsPropertyPersonDeletedRemoved());

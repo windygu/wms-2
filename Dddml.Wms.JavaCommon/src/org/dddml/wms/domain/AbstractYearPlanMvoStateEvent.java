@@ -34,18 +34,6 @@ public abstract class AbstractYearPlanMvoStateEvent extends AbstractStateEvent i
         this.description = description;
     }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -56,6 +44,18 @@ public abstract class AbstractYearPlanMvoStateEvent extends AbstractStateEvent i
     public void setCreatedBy(String createdBy)
     {
         this.createdBy = createdBy;
+    }
+
+    private Long version;
+
+    public Long getVersion()
+    {
+        return this.version;
+    }
+
+    public void setVersion(Long version)
+    {
+        this.version = version;
     }
 
     private Date createdAt;
@@ -130,18 +130,6 @@ public abstract class AbstractYearPlanMvoStateEvent extends AbstractStateEvent i
         this.personCreatedBy = personCreatedBy;
     }
 
-    private Date personCreatedAt;
-
-    public Date getPersonCreatedAt()
-    {
-        return this.personCreatedAt;
-    }
-
-    public void setPersonCreatedAt(Date personCreatedAt)
-    {
-        this.personCreatedAt = personCreatedAt;
-    }
-
     private String personUpdatedBy;
 
     public String getPersonUpdatedBy()
@@ -152,6 +140,18 @@ public abstract class AbstractYearPlanMvoStateEvent extends AbstractStateEvent i
     public void setPersonUpdatedBy(String personUpdatedBy)
     {
         this.personUpdatedBy = personUpdatedBy;
+    }
+
+    private Date personCreatedAt;
+
+    public Date getPersonCreatedAt()
+    {
+        return this.personCreatedAt;
+    }
+
+    public void setPersonCreatedAt(Date personCreatedAt)
+    {
+        this.personCreatedAt = personCreatedAt;
     }
 
     private Date personUpdatedAt;
@@ -311,16 +311,6 @@ public abstract class AbstractYearPlanMvoStateEvent extends AbstractStateEvent i
             this.isPropertyPersonCreatedByRemoved = removed;
         }
 
-        private Boolean isPropertyPersonCreatedAtRemoved;
-
-        public Boolean getIsPropertyPersonCreatedAtRemoved() {
-            return this.isPropertyPersonCreatedAtRemoved;
-        }
-
-        public void setIsPropertyPersonCreatedAtRemoved(Boolean removed) {
-            this.isPropertyPersonCreatedAtRemoved = removed;
-        }
-
         private Boolean isPropertyPersonUpdatedByRemoved;
 
         public Boolean getIsPropertyPersonUpdatedByRemoved() {
@@ -329,6 +319,16 @@ public abstract class AbstractYearPlanMvoStateEvent extends AbstractStateEvent i
 
         public void setIsPropertyPersonUpdatedByRemoved(Boolean removed) {
             this.isPropertyPersonUpdatedByRemoved = removed;
+        }
+
+        private Boolean isPropertyPersonCreatedAtRemoved;
+
+        public Boolean getIsPropertyPersonCreatedAtRemoved() {
+            return this.isPropertyPersonCreatedAtRemoved;
+        }
+
+        public void setIsPropertyPersonCreatedAtRemoved(Boolean removed) {
+            this.isPropertyPersonCreatedAtRemoved = removed;
         }
 
         private Boolean isPropertyPersonUpdatedAtRemoved;

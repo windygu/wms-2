@@ -79,8 +79,8 @@ public abstract class AbstractYearPlanMvoAggregate extends AbstractAggregate imp
         e.setPersonLoves(c.getPersonLoves());
         e.setPersonEmergencyContact(c.getPersonEmergencyContact());
         e.setPersonCreatedBy(c.getPersonCreatedBy());
-        e.setPersonCreatedAt(c.getPersonCreatedAt());
         e.setPersonUpdatedBy(c.getPersonUpdatedBy());
+        e.setPersonCreatedAt(c.getPersonCreatedAt());
         e.setPersonUpdatedAt(c.getPersonUpdatedAt());
         e.setPersonActive(c.getPersonActive());
         e.setPersonDeleted(c.getPersonDeleted());
@@ -102,8 +102,8 @@ public abstract class AbstractYearPlanMvoAggregate extends AbstractAggregate imp
         e.setPersonLoves(c.getPersonLoves());
         e.setPersonEmergencyContact(c.getPersonEmergencyContact());
         e.setPersonCreatedBy(c.getPersonCreatedBy());
-        e.setPersonCreatedAt(c.getPersonCreatedAt());
         e.setPersonUpdatedBy(c.getPersonUpdatedBy());
+        e.setPersonCreatedAt(c.getPersonCreatedAt());
         e.setPersonUpdatedAt(c.getPersonUpdatedAt());
         e.setPersonActive(c.getPersonActive());
         e.setPersonDeleted(c.getPersonDeleted());
@@ -114,8 +114,8 @@ public abstract class AbstractYearPlanMvoAggregate extends AbstractAggregate imp
         e.setIsPropertyPersonLovesRemoved(c.getIsPropertyPersonLovesRemoved());
         e.setIsPropertyPersonEmergencyContactRemoved(c.getIsPropertyPersonEmergencyContactRemoved());
         e.setIsPropertyPersonCreatedByRemoved(c.getIsPropertyPersonCreatedByRemoved());
-        e.setIsPropertyPersonCreatedAtRemoved(c.getIsPropertyPersonCreatedAtRemoved());
         e.setIsPropertyPersonUpdatedByRemoved(c.getIsPropertyPersonUpdatedByRemoved());
+        e.setIsPropertyPersonCreatedAtRemoved(c.getIsPropertyPersonCreatedAtRemoved());
         e.setIsPropertyPersonUpdatedAtRemoved(c.getIsPropertyPersonUpdatedAtRemoved());
         e.setIsPropertyPersonActiveRemoved(c.getIsPropertyPersonActiveRemoved());
         e.setIsPropertyPersonDeletedRemoved(c.getIsPropertyPersonDeletedRemoved());

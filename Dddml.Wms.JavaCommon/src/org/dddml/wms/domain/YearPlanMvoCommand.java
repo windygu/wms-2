@@ -45,13 +45,13 @@ public interface YearPlanMvoCommand extends Command
 
         void setPersonCreatedBy(String personCreatedBy);
 
-        Date getPersonCreatedAt();
-
-        void setPersonCreatedAt(Date personCreatedAt);
-
         String getPersonUpdatedBy();
 
         void setPersonUpdatedBy(String personUpdatedBy);
+
+        Date getPersonCreatedAt();
+
+        void setPersonCreatedAt(Date personCreatedAt);
 
         Date getPersonUpdatedAt();
 
@@ -101,13 +101,13 @@ public interface YearPlanMvoCommand extends Command
 
         void setIsPropertyPersonCreatedByRemoved(Boolean removed);
 
-        Boolean getIsPropertyPersonCreatedAtRemoved();
-
-        void setIsPropertyPersonCreatedAtRemoved(Boolean removed);
-
         Boolean getIsPropertyPersonUpdatedByRemoved();
 
         void setIsPropertyPersonUpdatedByRemoved(Boolean removed);
+
+        Boolean getIsPropertyPersonCreatedAtRemoved();
+
+        void setIsPropertyPersonCreatedAtRemoved(Boolean removed);
 
         Boolean getIsPropertyPersonUpdatedAtRemoved();
 

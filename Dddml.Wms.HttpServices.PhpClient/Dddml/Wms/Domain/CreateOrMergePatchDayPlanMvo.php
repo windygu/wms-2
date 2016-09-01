@@ -96,27 +96,6 @@ class CreateOrMergePatchDayPlanMvo extends AbstractDayPlanMvoCommand
     }
 
     /**
-     * @Type("Dddml\Serializer\Type\Long")
-     */
-    private $monthPlanVersion;
-
-    /**
-     * @return Long
-     */
-    public function getMonthPlanVersion()
-    {
-        return $this->monthPlanVersion;
-    }
-
-    /**
-     * @param Long $monthPlanVersion
-     */
-    public function setMonthPlanVersion($monthPlanVersion)
-    {
-        $this->monthPlanVersion = $monthPlanVersion;
-    }
-
-    /**
      * @Type("string")
      */
     private $monthPlanCreatedBy;
@@ -138,27 +117,6 @@ class CreateOrMergePatchDayPlanMvo extends AbstractDayPlanMvoCommand
     }
 
     /**
-     * @Type("DateTime")
-     */
-    private $monthPlanCreatedAt;
-
-    /**
-     * @return \DateTime
-     */
-    public function getMonthPlanCreatedAt()
-    {
-        return $this->monthPlanCreatedAt;
-    }
-
-    /**
-     * @param \DateTime $monthPlanCreatedAt
-     */
-    public function setMonthPlanCreatedAt($monthPlanCreatedAt)
-    {
-        $this->monthPlanCreatedAt = $monthPlanCreatedAt;
-    }
-
-    /**
      * @Type("string")
      */
     private $monthPlanUpdatedBy;
@@ -177,6 +135,48 @@ class CreateOrMergePatchDayPlanMvo extends AbstractDayPlanMvoCommand
     public function setMonthPlanUpdatedBy($monthPlanUpdatedBy)
     {
         $this->monthPlanUpdatedBy = $monthPlanUpdatedBy;
+    }
+
+    /**
+     * @Type("Dddml\Serializer\Type\Long")
+     */
+    private $monthPlanVersion;
+
+    /**
+     * @return Long
+     */
+    public function getMonthPlanVersion()
+    {
+        return $this->monthPlanVersion;
+    }
+
+    /**
+     * @param Long $monthPlanVersion
+     */
+    public function setMonthPlanVersion($monthPlanVersion)
+    {
+        $this->monthPlanVersion = $monthPlanVersion;
+    }
+
+    /**
+     * @Type("DateTime")
+     */
+    private $monthPlanCreatedAt;
+
+    /**
+     * @return \DateTime
+     */
+    public function getMonthPlanCreatedAt()
+    {
+        return $this->monthPlanCreatedAt;
+    }
+
+    /**
+     * @param \DateTime $monthPlanCreatedAt
+     */
+    public function setMonthPlanCreatedAt($monthPlanCreatedAt)
+    {
+        $this->monthPlanCreatedAt = $monthPlanCreatedAt;
     }
 
     /**
@@ -264,27 +264,6 @@ class CreateOrMergePatchDayPlanMvo extends AbstractDayPlanMvoCommand
     }
 
     /**
-     * @Type("Dddml\Serializer\Type\Long")
-     */
-    private $yearPlanVersion;
-
-    /**
-     * @return Long
-     */
-    public function getYearPlanVersion()
-    {
-        return $this->yearPlanVersion;
-    }
-
-    /**
-     * @param Long $yearPlanVersion
-     */
-    public function setYearPlanVersion($yearPlanVersion)
-    {
-        $this->yearPlanVersion = $yearPlanVersion;
-    }
-
-    /**
      * @Type("string")
      */
     private $yearPlanCreatedBy;
@@ -306,27 +285,6 @@ class CreateOrMergePatchDayPlanMvo extends AbstractDayPlanMvoCommand
     }
 
     /**
-     * @Type("DateTime")
-     */
-    private $yearPlanCreatedAt;
-
-    /**
-     * @return \DateTime
-     */
-    public function getYearPlanCreatedAt()
-    {
-        return $this->yearPlanCreatedAt;
-    }
-
-    /**
-     * @param \DateTime $yearPlanCreatedAt
-     */
-    public function setYearPlanCreatedAt($yearPlanCreatedAt)
-    {
-        $this->yearPlanCreatedAt = $yearPlanCreatedAt;
-    }
-
-    /**
      * @Type("string")
      */
     private $yearPlanUpdatedBy;
@@ -345,6 +303,48 @@ class CreateOrMergePatchDayPlanMvo extends AbstractDayPlanMvoCommand
     public function setYearPlanUpdatedBy($yearPlanUpdatedBy)
     {
         $this->yearPlanUpdatedBy = $yearPlanUpdatedBy;
+    }
+
+    /**
+     * @Type("Dddml\Serializer\Type\Long")
+     */
+    private $yearPlanVersion;
+
+    /**
+     * @return Long
+     */
+    public function getYearPlanVersion()
+    {
+        return $this->yearPlanVersion;
+    }
+
+    /**
+     * @param Long $yearPlanVersion
+     */
+    public function setYearPlanVersion($yearPlanVersion)
+    {
+        $this->yearPlanVersion = $yearPlanVersion;
+    }
+
+    /**
+     * @Type("DateTime")
+     */
+    private $yearPlanCreatedAt;
+
+    /**
+     * @return \DateTime
+     */
+    public function getYearPlanCreatedAt()
+    {
+        return $this->yearPlanCreatedAt;
+    }
+
+    /**
+     * @param \DateTime $yearPlanCreatedAt
+     */
+    public function setYearPlanCreatedAt($yearPlanCreatedAt)
+    {
+        $this->yearPlanCreatedAt = $yearPlanCreatedAt;
     }
 
     /**
@@ -495,27 +495,6 @@ class CreateOrMergePatchDayPlanMvo extends AbstractDayPlanMvoCommand
     }
 
     /**
-     * @Type("DateTime")
-     */
-    private $personCreatedAt;
-
-    /**
-     * @return \DateTime
-     */
-    public function getPersonCreatedAt()
-    {
-        return $this->personCreatedAt;
-    }
-
-    /**
-     * @param \DateTime $personCreatedAt
-     */
-    public function setPersonCreatedAt($personCreatedAt)
-    {
-        $this->personCreatedAt = $personCreatedAt;
-    }
-
-    /**
      * @Type("string")
      */
     private $personUpdatedBy;
@@ -534,6 +513,27 @@ class CreateOrMergePatchDayPlanMvo extends AbstractDayPlanMvoCommand
     public function setPersonUpdatedBy($personUpdatedBy)
     {
         $this->personUpdatedBy = $personUpdatedBy;
+    }
+
+    /**
+     * @Type("DateTime")
+     */
+    private $personCreatedAt;
+
+    /**
+     * @return \DateTime
+     */
+    public function getPersonCreatedAt()
+    {
+        return $this->personCreatedAt;
+    }
+
+    /**
+     * @param \DateTime $personCreatedAt
+     */
+    public function setPersonCreatedAt($personCreatedAt)
+    {
+        $this->personCreatedAt = $personCreatedAt;
     }
 
     /**

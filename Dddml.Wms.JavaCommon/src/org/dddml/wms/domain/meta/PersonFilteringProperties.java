@@ -12,10 +12,10 @@ public final class PersonFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "birthDate",
-            "version",
             "createdBy",
-            "createdAt",
             "updatedBy",
+            "version",
+            "createdAt",
             "updatedAt",
             "active",
             "deleted",
@@ -31,10 +31,10 @@ public final class PersonFilteringProperties
 
     public static final String[] propertyTypes = new String[] {
             "Date",
+            "String",
+            "String",
             "Long",
-            "String",
             "Date",
-            "String",
             "Date",
             "Boolean",
             "Boolean",

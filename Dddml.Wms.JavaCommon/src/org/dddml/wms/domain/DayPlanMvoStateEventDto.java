@@ -66,16 +66,6 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         this.monthPlanDescription = monthPlanDescription;
     }
 
-    private Long monthPlanVersion;
-
-    public Long getMonthPlanVersion() {
-        return this.monthPlanVersion;
-    }
-
-    public void setMonthPlanVersion(Long monthPlanVersion) {
-        this.monthPlanVersion = monthPlanVersion;
-    }
-
     private String monthPlanCreatedBy;
 
     public String getMonthPlanCreatedBy() {
@@ -86,16 +76,6 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         this.monthPlanCreatedBy = monthPlanCreatedBy;
     }
 
-    private Date monthPlanCreatedAt;
-
-    public Date getMonthPlanCreatedAt() {
-        return this.monthPlanCreatedAt;
-    }
-
-    public void setMonthPlanCreatedAt(Date monthPlanCreatedAt) {
-        this.monthPlanCreatedAt = monthPlanCreatedAt;
-    }
-
     private String monthPlanUpdatedBy;
 
     public String getMonthPlanUpdatedBy() {
@@ -104,6 +84,26 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
 
     public void setMonthPlanUpdatedBy(String monthPlanUpdatedBy) {
         this.monthPlanUpdatedBy = monthPlanUpdatedBy;
+    }
+
+    private Long monthPlanVersion;
+
+    public Long getMonthPlanVersion() {
+        return this.monthPlanVersion;
+    }
+
+    public void setMonthPlanVersion(Long monthPlanVersion) {
+        this.monthPlanVersion = monthPlanVersion;
+    }
+
+    private Date monthPlanCreatedAt;
+
+    public Date getMonthPlanCreatedAt() {
+        return this.monthPlanCreatedAt;
+    }
+
+    public void setMonthPlanCreatedAt(Date monthPlanCreatedAt) {
+        this.monthPlanCreatedAt = monthPlanCreatedAt;
     }
 
     private Date monthPlanUpdatedAt;
@@ -146,16 +146,6 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         this.yearPlanDescription = yearPlanDescription;
     }
 
-    private Long yearPlanVersion;
-
-    public Long getYearPlanVersion() {
-        return this.yearPlanVersion;
-    }
-
-    public void setYearPlanVersion(Long yearPlanVersion) {
-        this.yearPlanVersion = yearPlanVersion;
-    }
-
     private String yearPlanCreatedBy;
 
     public String getYearPlanCreatedBy() {
@@ -166,16 +156,6 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         this.yearPlanCreatedBy = yearPlanCreatedBy;
     }
 
-    private Date yearPlanCreatedAt;
-
-    public Date getYearPlanCreatedAt() {
-        return this.yearPlanCreatedAt;
-    }
-
-    public void setYearPlanCreatedAt(Date yearPlanCreatedAt) {
-        this.yearPlanCreatedAt = yearPlanCreatedAt;
-    }
-
     private String yearPlanUpdatedBy;
 
     public String getYearPlanUpdatedBy() {
@@ -184,6 +164,26 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
 
     public void setYearPlanUpdatedBy(String yearPlanUpdatedBy) {
         this.yearPlanUpdatedBy = yearPlanUpdatedBy;
+    }
+
+    private Long yearPlanVersion;
+
+    public Long getYearPlanVersion() {
+        return this.yearPlanVersion;
+    }
+
+    public void setYearPlanVersion(Long yearPlanVersion) {
+        this.yearPlanVersion = yearPlanVersion;
+    }
+
+    private Date yearPlanCreatedAt;
+
+    public Date getYearPlanCreatedAt() {
+        return this.yearPlanCreatedAt;
+    }
+
+    public void setYearPlanCreatedAt(Date yearPlanCreatedAt) {
+        this.yearPlanCreatedAt = yearPlanCreatedAt;
     }
 
     private Date yearPlanUpdatedAt;
@@ -256,16 +256,6 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         this.personCreatedBy = personCreatedBy;
     }
 
-    private Date personCreatedAt;
-
-    public Date getPersonCreatedAt() {
-        return this.personCreatedAt;
-    }
-
-    public void setPersonCreatedAt(Date personCreatedAt) {
-        this.personCreatedAt = personCreatedAt;
-    }
-
     private String personUpdatedBy;
 
     public String getPersonUpdatedBy() {
@@ -274,6 +264,16 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
 
     public void setPersonUpdatedBy(String personUpdatedBy) {
         this.personUpdatedBy = personUpdatedBy;
+    }
+
+    private Date personCreatedAt;
+
+    public Date getPersonCreatedAt() {
+        return this.personCreatedAt;
+    }
+
+    public void setPersonCreatedAt(Date personCreatedAt) {
+        this.personCreatedAt = personCreatedAt;
     }
 
     private Date personUpdatedAt;
@@ -376,16 +376,6 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         this.isPropertyMonthPlanDescriptionRemoved = removed;
     }
 
-    private Boolean isPropertyMonthPlanVersionRemoved;
-
-    public Boolean getIsPropertyMonthPlanVersionRemoved() {
-        return this.isPropertyMonthPlanVersionRemoved;
-    }
-
-    public void setIsPropertyMonthPlanVersionRemoved(Boolean removed) {
-        this.isPropertyMonthPlanVersionRemoved = removed;
-    }
-
     private Boolean isPropertyMonthPlanCreatedByRemoved;
 
     public Boolean getIsPropertyMonthPlanCreatedByRemoved() {
@@ -396,16 +386,6 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         this.isPropertyMonthPlanCreatedByRemoved = removed;
     }
 
-    private Boolean isPropertyMonthPlanCreatedAtRemoved;
-
-    public Boolean getIsPropertyMonthPlanCreatedAtRemoved() {
-        return this.isPropertyMonthPlanCreatedAtRemoved;
-    }
-
-    public void setIsPropertyMonthPlanCreatedAtRemoved(Boolean removed) {
-        this.isPropertyMonthPlanCreatedAtRemoved = removed;
-    }
-
     private Boolean isPropertyMonthPlanUpdatedByRemoved;
 
     public Boolean getIsPropertyMonthPlanUpdatedByRemoved() {
@@ -414,6 +394,26 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyMonthPlanUpdatedByRemoved(Boolean removed) {
         this.isPropertyMonthPlanUpdatedByRemoved = removed;
+    }
+
+    private Boolean isPropertyMonthPlanVersionRemoved;
+
+    public Boolean getIsPropertyMonthPlanVersionRemoved() {
+        return this.isPropertyMonthPlanVersionRemoved;
+    }
+
+    public void setIsPropertyMonthPlanVersionRemoved(Boolean removed) {
+        this.isPropertyMonthPlanVersionRemoved = removed;
+    }
+
+    private Boolean isPropertyMonthPlanCreatedAtRemoved;
+
+    public Boolean getIsPropertyMonthPlanCreatedAtRemoved() {
+        return this.isPropertyMonthPlanCreatedAtRemoved;
+    }
+
+    public void setIsPropertyMonthPlanCreatedAtRemoved(Boolean removed) {
+        this.isPropertyMonthPlanCreatedAtRemoved = removed;
     }
 
     private Boolean isPropertyMonthPlanUpdatedAtRemoved;
@@ -456,16 +456,6 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         this.isPropertyYearPlanDescriptionRemoved = removed;
     }
 
-    private Boolean isPropertyYearPlanVersionRemoved;
-
-    public Boolean getIsPropertyYearPlanVersionRemoved() {
-        return this.isPropertyYearPlanVersionRemoved;
-    }
-
-    public void setIsPropertyYearPlanVersionRemoved(Boolean removed) {
-        this.isPropertyYearPlanVersionRemoved = removed;
-    }
-
     private Boolean isPropertyYearPlanCreatedByRemoved;
 
     public Boolean getIsPropertyYearPlanCreatedByRemoved() {
@@ -476,16 +466,6 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         this.isPropertyYearPlanCreatedByRemoved = removed;
     }
 
-    private Boolean isPropertyYearPlanCreatedAtRemoved;
-
-    public Boolean getIsPropertyYearPlanCreatedAtRemoved() {
-        return this.isPropertyYearPlanCreatedAtRemoved;
-    }
-
-    public void setIsPropertyYearPlanCreatedAtRemoved(Boolean removed) {
-        this.isPropertyYearPlanCreatedAtRemoved = removed;
-    }
-
     private Boolean isPropertyYearPlanUpdatedByRemoved;
 
     public Boolean getIsPropertyYearPlanUpdatedByRemoved() {
@@ -494,6 +474,26 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyYearPlanUpdatedByRemoved(Boolean removed) {
         this.isPropertyYearPlanUpdatedByRemoved = removed;
+    }
+
+    private Boolean isPropertyYearPlanVersionRemoved;
+
+    public Boolean getIsPropertyYearPlanVersionRemoved() {
+        return this.isPropertyYearPlanVersionRemoved;
+    }
+
+    public void setIsPropertyYearPlanVersionRemoved(Boolean removed) {
+        this.isPropertyYearPlanVersionRemoved = removed;
+    }
+
+    private Boolean isPropertyYearPlanCreatedAtRemoved;
+
+    public Boolean getIsPropertyYearPlanCreatedAtRemoved() {
+        return this.isPropertyYearPlanCreatedAtRemoved;
+    }
+
+    public void setIsPropertyYearPlanCreatedAtRemoved(Boolean removed) {
+        this.isPropertyYearPlanCreatedAtRemoved = removed;
     }
 
     private Boolean isPropertyYearPlanUpdatedAtRemoved;
@@ -566,16 +566,6 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         this.isPropertyPersonCreatedByRemoved = removed;
     }
 
-    private Boolean isPropertyPersonCreatedAtRemoved;
-
-    public Boolean getIsPropertyPersonCreatedAtRemoved() {
-        return this.isPropertyPersonCreatedAtRemoved;
-    }
-
-    public void setIsPropertyPersonCreatedAtRemoved(Boolean removed) {
-        this.isPropertyPersonCreatedAtRemoved = removed;
-    }
-
     private Boolean isPropertyPersonUpdatedByRemoved;
 
     public Boolean getIsPropertyPersonUpdatedByRemoved() {
@@ -584,6 +574,16 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyPersonUpdatedByRemoved(Boolean removed) {
         this.isPropertyPersonUpdatedByRemoved = removed;
+    }
+
+    private Boolean isPropertyPersonCreatedAtRemoved;
+
+    public Boolean getIsPropertyPersonCreatedAtRemoved() {
+        return this.isPropertyPersonCreatedAtRemoved;
+    }
+
+    public void setIsPropertyPersonCreatedAtRemoved(Boolean removed) {
+        this.isPropertyPersonCreatedAtRemoved = removed;
     }
 
     private Boolean isPropertyPersonUpdatedAtRemoved;

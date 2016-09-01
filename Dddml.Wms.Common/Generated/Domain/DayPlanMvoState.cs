@@ -156,13 +156,13 @@ namespace Dddml.Wms.Domain
 
 			this.MonthPlanDescription = e.MonthPlanDescription;
 
-            this.MonthPlanVersion = (e.MonthPlanVersion != null && e.MonthPlanVersion.HasValue) ? e.MonthPlanVersion.Value : default(long);
-
 			this.MonthPlanCreatedBy = e.MonthPlanCreatedBy;
 
-            this.MonthPlanCreatedAt = (e.MonthPlanCreatedAt != null && e.MonthPlanCreatedAt.HasValue) ? e.MonthPlanCreatedAt.Value : default(DateTime);
-
 			this.MonthPlanUpdatedBy = e.MonthPlanUpdatedBy;
+
+            this.MonthPlanVersion = (e.MonthPlanVersion != null && e.MonthPlanVersion.HasValue) ? e.MonthPlanVersion.Value : default(long);
+
+            this.MonthPlanCreatedAt = (e.MonthPlanCreatedAt != null && e.MonthPlanCreatedAt.HasValue) ? e.MonthPlanCreatedAt.Value : default(DateTime);
 
             this.MonthPlanUpdatedAt = (e.MonthPlanUpdatedAt != null && e.MonthPlanUpdatedAt.HasValue) ? e.MonthPlanUpdatedAt.Value : default(DateTime);
 
@@ -172,13 +172,13 @@ namespace Dddml.Wms.Domain
 
 			this.YearPlanDescription = e.YearPlanDescription;
 
-            this.YearPlanVersion = (e.YearPlanVersion != null && e.YearPlanVersion.HasValue) ? e.YearPlanVersion.Value : default(long);
-
 			this.YearPlanCreatedBy = e.YearPlanCreatedBy;
 
-            this.YearPlanCreatedAt = (e.YearPlanCreatedAt != null && e.YearPlanCreatedAt.HasValue) ? e.YearPlanCreatedAt.Value : default(DateTime);
-
 			this.YearPlanUpdatedBy = e.YearPlanUpdatedBy;
+
+            this.YearPlanVersion = (e.YearPlanVersion != null && e.YearPlanVersion.HasValue) ? e.YearPlanVersion.Value : default(long);
+
+            this.YearPlanCreatedAt = (e.YearPlanCreatedAt != null && e.YearPlanCreatedAt.HasValue) ? e.YearPlanCreatedAt.Value : default(DateTime);
 
             this.YearPlanUpdatedAt = (e.YearPlanUpdatedAt != null && e.YearPlanUpdatedAt.HasValue) ? e.YearPlanUpdatedAt.Value : default(DateTime);
 
@@ -194,9 +194,9 @@ namespace Dddml.Wms.Domain
 
 			this.PersonCreatedBy = e.PersonCreatedBy;
 
-            this.PersonCreatedAt = (e.PersonCreatedAt != null && e.PersonCreatedAt.HasValue) ? e.PersonCreatedAt.Value : default(DateTime);
-
 			this.PersonUpdatedBy = e.PersonUpdatedBy;
+
+            this.PersonCreatedAt = (e.PersonCreatedAt != null && e.PersonCreatedAt.HasValue) ? e.PersonCreatedAt.Value : default(DateTime);
 
             this.PersonUpdatedAt = (e.PersonUpdatedAt != null && e.PersonUpdatedAt.HasValue) ? e.PersonUpdatedAt.Value : default(DateTime);
 
@@ -265,18 +265,6 @@ namespace Dddml.Wms.Domain
 				this.MonthPlanDescription = e.MonthPlanDescription;
 			}
 
-			if (e.MonthPlanVersion == null)
-			{
-				if (e.IsPropertyMonthPlanVersionRemoved)
-				{
-					this.MonthPlanVersion = default(long);
-				}
-			}
-			else
-			{
-				this.MonthPlanVersion = (e.MonthPlanVersion != null && e.MonthPlanVersion.HasValue) ? e.MonthPlanVersion.Value : default(long);
-			}
-
 			if (e.MonthPlanCreatedBy == null)
 			{
 				if (e.IsPropertyMonthPlanCreatedByRemoved)
@@ -289,18 +277,6 @@ namespace Dddml.Wms.Domain
 				this.MonthPlanCreatedBy = e.MonthPlanCreatedBy;
 			}
 
-			if (e.MonthPlanCreatedAt == null)
-			{
-				if (e.IsPropertyMonthPlanCreatedAtRemoved)
-				{
-					this.MonthPlanCreatedAt = default(DateTime);
-				}
-			}
-			else
-			{
-				this.MonthPlanCreatedAt = (e.MonthPlanCreatedAt != null && e.MonthPlanCreatedAt.HasValue) ? e.MonthPlanCreatedAt.Value : default(DateTime);
-			}
-
 			if (e.MonthPlanUpdatedBy == null)
 			{
 				if (e.IsPropertyMonthPlanUpdatedByRemoved)
@@ -311,6 +287,30 @@ namespace Dddml.Wms.Domain
 			else
 			{
 				this.MonthPlanUpdatedBy = e.MonthPlanUpdatedBy;
+			}
+
+			if (e.MonthPlanVersion == null)
+			{
+				if (e.IsPropertyMonthPlanVersionRemoved)
+				{
+					this.MonthPlanVersion = default(long);
+				}
+			}
+			else
+			{
+				this.MonthPlanVersion = (e.MonthPlanVersion != null && e.MonthPlanVersion.HasValue) ? e.MonthPlanVersion.Value : default(long);
+			}
+
+			if (e.MonthPlanCreatedAt == null)
+			{
+				if (e.IsPropertyMonthPlanCreatedAtRemoved)
+				{
+					this.MonthPlanCreatedAt = default(DateTime);
+				}
+			}
+			else
+			{
+				this.MonthPlanCreatedAt = (e.MonthPlanCreatedAt != null && e.MonthPlanCreatedAt.HasValue) ? e.MonthPlanCreatedAt.Value : default(DateTime);
 			}
 
 			if (e.MonthPlanUpdatedAt == null)
@@ -361,18 +361,6 @@ namespace Dddml.Wms.Domain
 				this.YearPlanDescription = e.YearPlanDescription;
 			}
 
-			if (e.YearPlanVersion == null)
-			{
-				if (e.IsPropertyYearPlanVersionRemoved)
-				{
-					this.YearPlanVersion = default(long);
-				}
-			}
-			else
-			{
-				this.YearPlanVersion = (e.YearPlanVersion != null && e.YearPlanVersion.HasValue) ? e.YearPlanVersion.Value : default(long);
-			}
-
 			if (e.YearPlanCreatedBy == null)
 			{
 				if (e.IsPropertyYearPlanCreatedByRemoved)
@@ -385,18 +373,6 @@ namespace Dddml.Wms.Domain
 				this.YearPlanCreatedBy = e.YearPlanCreatedBy;
 			}
 
-			if (e.YearPlanCreatedAt == null)
-			{
-				if (e.IsPropertyYearPlanCreatedAtRemoved)
-				{
-					this.YearPlanCreatedAt = default(DateTime);
-				}
-			}
-			else
-			{
-				this.YearPlanCreatedAt = (e.YearPlanCreatedAt != null && e.YearPlanCreatedAt.HasValue) ? e.YearPlanCreatedAt.Value : default(DateTime);
-			}
-
 			if (e.YearPlanUpdatedBy == null)
 			{
 				if (e.IsPropertyYearPlanUpdatedByRemoved)
@@ -407,6 +383,30 @@ namespace Dddml.Wms.Domain
 			else
 			{
 				this.YearPlanUpdatedBy = e.YearPlanUpdatedBy;
+			}
+
+			if (e.YearPlanVersion == null)
+			{
+				if (e.IsPropertyYearPlanVersionRemoved)
+				{
+					this.YearPlanVersion = default(long);
+				}
+			}
+			else
+			{
+				this.YearPlanVersion = (e.YearPlanVersion != null && e.YearPlanVersion.HasValue) ? e.YearPlanVersion.Value : default(long);
+			}
+
+			if (e.YearPlanCreatedAt == null)
+			{
+				if (e.IsPropertyYearPlanCreatedAtRemoved)
+				{
+					this.YearPlanCreatedAt = default(DateTime);
+				}
+			}
+			else
+			{
+				this.YearPlanCreatedAt = (e.YearPlanCreatedAt != null && e.YearPlanCreatedAt.HasValue) ? e.YearPlanCreatedAt.Value : default(DateTime);
 			}
 
 			if (e.YearPlanUpdatedAt == null)
@@ -493,18 +493,6 @@ namespace Dddml.Wms.Domain
 				this.PersonCreatedBy = e.PersonCreatedBy;
 			}
 
-			if (e.PersonCreatedAt == null)
-			{
-				if (e.IsPropertyPersonCreatedAtRemoved)
-				{
-					this.PersonCreatedAt = default(DateTime);
-				}
-			}
-			else
-			{
-				this.PersonCreatedAt = (e.PersonCreatedAt != null && e.PersonCreatedAt.HasValue) ? e.PersonCreatedAt.Value : default(DateTime);
-			}
-
 			if (e.PersonUpdatedBy == null)
 			{
 				if (e.IsPropertyPersonUpdatedByRemoved)
@@ -515,6 +503,18 @@ namespace Dddml.Wms.Domain
 			else
 			{
 				this.PersonUpdatedBy = e.PersonUpdatedBy;
+			}
+
+			if (e.PersonCreatedAt == null)
+			{
+				if (e.IsPropertyPersonCreatedAtRemoved)
+				{
+					this.PersonCreatedAt = default(DateTime);
+				}
+			}
+			else
+			{
+				this.PersonCreatedAt = (e.PersonCreatedAt != null && e.PersonCreatedAt.HasValue) ? e.PersonCreatedAt.Value : default(DateTime);
 			}
 
 			if (e.PersonUpdatedAt == null)

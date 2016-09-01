@@ -12,10 +12,10 @@ public final class YearPlanFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "description",
-            "version",
             "createdBy",
-            "createdAt",
             "updatedBy",
+            "version",
+            "createdAt",
             "updatedAt",
             "active",
             "deleted",
@@ -28,10 +28,10 @@ public final class YearPlanFilteringProperties
 
     public static final String[] propertyTypes = new String[] {
             "String",
+            "String",
+            "String",
             "Long",
-            "String",
             "Date",
-            "String",
             "Date",
             "Boolean",
             "Boolean",

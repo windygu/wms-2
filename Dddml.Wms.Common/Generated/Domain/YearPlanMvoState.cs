@@ -162,9 +162,9 @@ namespace Dddml.Wms.Domain
 
 			this.PersonCreatedBy = e.PersonCreatedBy;
 
-            this.PersonCreatedAt = (e.PersonCreatedAt != null && e.PersonCreatedAt.HasValue) ? e.PersonCreatedAt.Value : default(DateTime);
-
 			this.PersonUpdatedBy = e.PersonUpdatedBy;
+
+            this.PersonCreatedAt = (e.PersonCreatedAt != null && e.PersonCreatedAt.HasValue) ? e.PersonCreatedAt.Value : default(DateTime);
 
             this.PersonUpdatedAt = (e.PersonUpdatedAt != null && e.PersonUpdatedAt.HasValue) ? e.PersonUpdatedAt.Value : default(DateTime);
 
@@ -269,18 +269,6 @@ namespace Dddml.Wms.Domain
 				this.PersonCreatedBy = e.PersonCreatedBy;
 			}
 
-			if (e.PersonCreatedAt == null)
-			{
-				if (e.IsPropertyPersonCreatedAtRemoved)
-				{
-					this.PersonCreatedAt = default(DateTime);
-				}
-			}
-			else
-			{
-				this.PersonCreatedAt = (e.PersonCreatedAt != null && e.PersonCreatedAt.HasValue) ? e.PersonCreatedAt.Value : default(DateTime);
-			}
-
 			if (e.PersonUpdatedBy == null)
 			{
 				if (e.IsPropertyPersonUpdatedByRemoved)
@@ -291,6 +279,18 @@ namespace Dddml.Wms.Domain
 			else
 			{
 				this.PersonUpdatedBy = e.PersonUpdatedBy;
+			}
+
+			if (e.PersonCreatedAt == null)
+			{
+				if (e.IsPropertyPersonCreatedAtRemoved)
+				{
+					this.PersonCreatedAt = default(DateTime);
+				}
+			}
+			else
+			{
+				this.PersonCreatedAt = (e.PersonCreatedAt != null && e.PersonCreatedAt.HasValue) ? e.PersonCreatedAt.Value : default(DateTime);
 			}
 
 			if (e.PersonUpdatedAt == null)

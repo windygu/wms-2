@@ -54,8 +54,8 @@ namespace Dddml.Wms.Domain
             cmd.PersonLoves = state.PersonLoves;
             cmd.PersonEmergencyContact = state.PersonEmergencyContact;
             cmd.PersonCreatedBy = state.PersonCreatedBy;
-            cmd.PersonCreatedAt = state.PersonCreatedAt;
             cmd.PersonUpdatedBy = state.PersonUpdatedBy;
+            cmd.PersonCreatedAt = state.PersonCreatedAt;
             cmd.PersonUpdatedAt = state.PersonUpdatedAt;
             cmd.PersonActive = state.PersonActive;
             cmd.PersonDeleted = state.PersonDeleted;
@@ -83,8 +83,8 @@ namespace Dddml.Wms.Domain
             cmd.PersonLoves = state.PersonLoves;
             cmd.PersonEmergencyContact = state.PersonEmergencyContact;
             cmd.PersonCreatedBy = state.PersonCreatedBy;
-            cmd.PersonCreatedAt = state.PersonCreatedAt;
             cmd.PersonUpdatedBy = state.PersonUpdatedBy;
+            cmd.PersonCreatedAt = state.PersonCreatedAt;
             cmd.PersonUpdatedAt = state.PersonUpdatedAt;
             cmd.PersonActive = state.PersonActive;
             cmd.PersonDeleted = state.PersonDeleted;

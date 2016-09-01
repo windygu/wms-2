@@ -23,21 +23,21 @@ public interface YearPlanState
 
     void setDescription(String description);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
 
-    Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
 
     void setUpdatedBy(String updatedBy);
+
+    Long getVersion();
+
+    void setVersion(Long version);
+
+    Date getCreatedAt();
+
+    void setCreatedAt(Date createdAt);
 
     Date getUpdatedAt();
 
