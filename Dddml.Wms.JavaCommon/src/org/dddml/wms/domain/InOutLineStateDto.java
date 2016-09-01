@@ -1,7 +1,9 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class InOutLineStateDto
@@ -308,5 +310,106 @@ public class InOutLineStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public InOutLineStateDto[] toInOutLineStateDtoArray(Iterable<InOutLineState> states) 
+        {
+            ArrayList<InOutLineStateDto> stateDtos = new ArrayList();
+            for (InOutLineState s : states) {
+                InOutLineStateDto dto = toInOutLineStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new InOutLineStateDto[0]);
+        }
+
+        public InOutLineStateDto toInOutLineStateDto(InOutLineState state)
+        {
+            InOutLineStateDto dto = new InOutLineStateDto();
+            if (returnedFieldsContains("SkuId")) {
+                dto.setSkuId((state.getSkuId() == null) ? null : new SkuIdDto(state.getSkuId()));
+            }
+            if (returnedFieldsContains("LineNumber")) {
+                dto.setLineNumber(state.getLineNumber());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("LocatorId")) {
+                dto.setLocatorId(state.getLocatorId());
+            }
+            if (returnedFieldsContains("Product")) {
+                dto.setProduct(state.getProduct());
+            }
+            if (returnedFieldsContains("UomId")) {
+                dto.setUomId(state.getUomId());
+            }
+            if (returnedFieldsContains("MovementQuantity")) {
+                dto.setMovementQuantity(state.getMovementQuantity());
+            }
+            if (returnedFieldsContains("ConfirmedQuantity")) {
+                dto.setConfirmedQuantity(state.getConfirmedQuantity());
+            }
+            if (returnedFieldsContains("ScrappedQuantity")) {
+                dto.setScrappedQuantity(state.getScrappedQuantity());
+            }
+            if (returnedFieldsContains("TargetQuantity")) {
+                dto.setTargetQuantity(state.getTargetQuantity());
+            }
+            if (returnedFieldsContains("PickedQuantity")) {
+                dto.setPickedQuantity(state.getPickedQuantity());
+            }
+            if (returnedFieldsContains("IsInvoiced")) {
+                dto.setIsInvoiced(state.getIsInvoiced());
+            }
+            if (returnedFieldsContains("AttributeSetInstanceId")) {
+                dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+            }
+            if (returnedFieldsContains("IsDescription")) {
+                dto.setIsDescription(state.getIsDescription());
+            }
+            if (returnedFieldsContains("Processed")) {
+                dto.setProcessed(state.getProcessed());
+            }
+            if (returnedFieldsContains("QuantityEntered")) {
+                dto.setQuantityEntered(state.getQuantityEntered());
+            }
+            if (returnedFieldsContains("RmaLineNumber")) {
+                dto.setRmaLineNumber(state.getRmaLineNumber());
+            }
+            if (returnedFieldsContains("ReversalLineNumber")) {
+                dto.setReversalLineNumber(state.getReversalLineNumber());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("InOutDocumentNumber")) {
+                dto.setInOutDocumentNumber(state.getInOutDocumentNumber());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            return dto;
+        }
+
+    }
 }
 

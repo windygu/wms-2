@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class UserStateDto
@@ -222,7 +224,6 @@ public class UserStateDto
         this.updatedAt = updatedAt;
     }
 
-
     private UserRoleStateDto[] userRoles;
 
     public UserRoleStateDto[] getUserRoles()
@@ -234,7 +235,6 @@ public class UserStateDto
     {
         this.userRoles = userRoles;
     }
-
 
     private UserClaimStateDto[] userClaims;
 
@@ -248,7 +248,6 @@ public class UserStateDto
         this.userClaims = userClaims;
     }
 
-
     private UserPermissionStateDto[] userPermissions;
 
     public UserPermissionStateDto[] getUserPermissions()
@@ -260,7 +259,6 @@ public class UserStateDto
     {
         this.userPermissions = userPermissions;
     }
-
 
     private UserLoginStateDto[] userLogins;
 
@@ -275,5 +273,133 @@ public class UserStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"UserRoles", "UserClaims", "UserPermissions", "UserLogins"});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public UserStateDto[] toUserStateDtoArray(Iterable<UserState> states) 
+        {
+            ArrayList<UserStateDto> stateDtos = new ArrayList();
+            for (UserState s : states) {
+                UserStateDto dto = toUserStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new UserStateDto[0]);
+        }
+
+        public UserStateDto toUserStateDto(UserState state)
+        {
+            UserStateDto dto = new UserStateDto();
+            if (returnedFieldsContains("UserId")) {
+                dto.setUserId(state.getUserId());
+            }
+            if (returnedFieldsContains("UserName")) {
+                dto.setUserName(state.getUserName());
+            }
+            if (returnedFieldsContains("AccessFailedCount")) {
+                dto.setAccessFailedCount(state.getAccessFailedCount());
+            }
+            if (returnedFieldsContains("Email")) {
+                dto.setEmail(state.getEmail());
+            }
+            if (returnedFieldsContains("EmailConfirmed")) {
+                dto.setEmailConfirmed(state.getEmailConfirmed());
+            }
+            if (returnedFieldsContains("LockoutEnabled")) {
+                dto.setLockoutEnabled(state.getLockoutEnabled());
+            }
+            if (returnedFieldsContains("LockoutEndDateUtc")) {
+                dto.setLockoutEndDateUtc(state.getLockoutEndDateUtc());
+            }
+            if (returnedFieldsContains("PasswordHash")) {
+                dto.setPasswordHash(state.getPasswordHash());
+            }
+            if (returnedFieldsContains("PhoneNumber")) {
+                dto.setPhoneNumber(state.getPhoneNumber());
+            }
+            if (returnedFieldsContains("PhoneNumberConfirmed")) {
+                dto.setPhoneNumberConfirmed(state.getPhoneNumberConfirmed());
+            }
+            if (returnedFieldsContains("TwoFactorEnabled")) {
+                dto.setTwoFactorEnabled(state.getTwoFactorEnabled());
+            }
+            if (returnedFieldsContains("SecurityStamp")) {
+                dto.setSecurityStamp(state.getSecurityStamp());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("UserRoles")) {
+                ArrayList<UserRoleStateDto> arrayList = new ArrayList();
+                if (state.getUserRoles() != null) {
+                    UserRoleStateDto.DtoConverter conv = new UserRoleStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "UserRoles");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (UserRoleState s : state.getUserRoles()) {
+                        arrayList.add(conv.toUserRoleStateDto(s));
+                    }
+                }
+                dto.setUserRoles(arrayList.toArray(new UserRoleStateDto[0]));
+            }
+            if (returnedFieldsContains("UserClaims")) {
+                ArrayList<UserClaimStateDto> arrayList = new ArrayList();
+                if (state.getUserClaims() != null) {
+                    UserClaimStateDto.DtoConverter conv = new UserClaimStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "UserClaims");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (UserClaimState s : state.getUserClaims()) {
+                        arrayList.add(conv.toUserClaimStateDto(s));
+                    }
+                }
+                dto.setUserClaims(arrayList.toArray(new UserClaimStateDto[0]));
+            }
+            if (returnedFieldsContains("UserPermissions")) {
+                ArrayList<UserPermissionStateDto> arrayList = new ArrayList();
+                if (state.getUserPermissions() != null) {
+                    UserPermissionStateDto.DtoConverter conv = new UserPermissionStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "UserPermissions");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (UserPermissionState s : state.getUserPermissions()) {
+                        arrayList.add(conv.toUserPermissionStateDto(s));
+                    }
+                }
+                dto.setUserPermissions(arrayList.toArray(new UserPermissionStateDto[0]));
+            }
+            if (returnedFieldsContains("UserLogins")) {
+                ArrayList<UserLoginStateDto> arrayList = new ArrayList();
+                if (state.getUserLogins() != null) {
+                    UserLoginStateDto.DtoConverter conv = new UserLoginStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "UserLogins");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (UserLoginState s : state.getUserLogins()) {
+                        arrayList.add(conv.toUserLoginStateDto(s));
+                    }
+                }
+                dto.setUserLogins(arrayList.toArray(new UserLoginStateDto[0]));
+            }
+            return dto;
+        }
+
+    }
 }
 

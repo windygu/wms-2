@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class PersonStateDto
@@ -126,7 +128,6 @@ public class PersonStateDto
         this.updatedAt = updatedAt;
     }
 
-
     private YearPlanStateDto[] yearPlans;
 
     public YearPlanStateDto[] getYearPlans()
@@ -140,5 +141,73 @@ public class PersonStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"YearPlans"});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public PersonStateDto[] toPersonStateDtoArray(Iterable<PersonState> states) 
+        {
+            ArrayList<PersonStateDto> stateDtos = new ArrayList();
+            for (PersonState s : states) {
+                PersonStateDto dto = toPersonStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new PersonStateDto[0]);
+        }
+
+        public PersonStateDto toPersonStateDto(PersonState state)
+        {
+            PersonStateDto dto = new PersonStateDto();
+            if (returnedFieldsContains("PersonalName")) {
+                dto.setPersonalName((state.getPersonalName() == null) ? null : new PersonalNameDto(state.getPersonalName()));
+            }
+            if (returnedFieldsContains("BirthDate")) {
+                dto.setBirthDate(state.getBirthDate());
+            }
+            if (returnedFieldsContains("Loves")) {
+                dto.setLoves((state.getLoves() == null) ? null : new PersonalNameDto(state.getLoves()));
+            }
+            if (returnedFieldsContains("EmergencyContact")) {
+                dto.setEmergencyContact((state.getEmergencyContact() == null) ? null : new ContactDto(state.getEmergencyContact()));
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("YearPlans")) {
+                ArrayList<YearPlanStateDto> arrayList = new ArrayList();
+                if (state.getYearPlans() != null) {
+                    YearPlanStateDto.DtoConverter conv = new YearPlanStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "YearPlans");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (YearPlanState s : state.getYearPlans()) {
+                        arrayList.add(conv.toYearPlanStateDto(s));
+                    }
+                }
+                dto.setYearPlans(arrayList.toArray(new YearPlanStateDto[0]));
+            }
+            return dto;
+        }
+
+    }
 }
 

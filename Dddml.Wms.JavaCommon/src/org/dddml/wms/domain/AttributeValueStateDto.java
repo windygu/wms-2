@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class AttributeValueStateDto
@@ -139,5 +141,64 @@ public class AttributeValueStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public AttributeValueStateDto[] toAttributeValueStateDtoArray(Iterable<AttributeValueState> states) 
+        {
+            ArrayList<AttributeValueStateDto> stateDtos = new ArrayList();
+            for (AttributeValueState s : states) {
+                AttributeValueStateDto dto = toAttributeValueStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new AttributeValueStateDto[0]);
+        }
+
+        public AttributeValueStateDto toAttributeValueStateDto(AttributeValueState state)
+        {
+            AttributeValueStateDto dto = new AttributeValueStateDto();
+            if (returnedFieldsContains("Value")) {
+                dto.setValue(state.getValue());
+            }
+            if (returnedFieldsContains("Name")) {
+                dto.setName(state.getName());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("ReferenceId")) {
+                dto.setReferenceId(state.getReferenceId());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("AttributeId")) {
+                dto.setAttributeId(state.getAttributeId());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            return dto;
+        }
+
+    }
 }
 

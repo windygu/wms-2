@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class TeamStateDto
@@ -123,5 +125,73 @@ public class TeamStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public TeamStateDto[] toTeamStateDtoArray(Iterable<TeamState> states) 
+        {
+            ArrayList<TeamStateDto> stateDtos = new ArrayList();
+            for (TeamState s : states) {
+                TeamStateDto dto = toTeamStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new TeamStateDto[0]);
+        }
+
+        public TeamStateDto toTeamStateDto(TeamState state)
+        {
+            TeamStateDto dto = new TeamStateDto();
+            if (returnedFieldsContains("TeamName")) {
+                dto.setTeamName(state.getTeamName());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("Players")) {
+                ArrayList<PersonalNameDto> arrayList = new ArrayList();
+                if (state.getPlayers() != null) {
+                    for (PersonalName s : state.getPlayers()) {
+                        arrayList.add(new PersonalNameDto(s));
+                    }
+                }
+                dto.setPlayers(arrayList.toArray(new PersonalNameDto[0]));
+            }
+            if (returnedFieldsContains("Mascots")) {
+                ArrayList<String> arrayList = new ArrayList();
+                if (state.getMascots() != null) {
+                    for (String s : state.getMascots()) {
+                        arrayList.add(s);
+                    }
+                }
+                dto.setMascots(arrayList.toArray(new String[0]));
+            }
+            return dto;
+        }
+
+    }
 }
 

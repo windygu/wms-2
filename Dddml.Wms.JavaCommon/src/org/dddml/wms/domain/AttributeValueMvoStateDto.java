@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class AttributeValueMvoStateDto
@@ -331,5 +333,112 @@ public class AttributeValueMvoStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public AttributeValueMvoStateDto[] toAttributeValueMvoStateDtoArray(Iterable<AttributeValueMvoState> states) 
+        {
+            ArrayList<AttributeValueMvoStateDto> stateDtos = new ArrayList();
+            for (AttributeValueMvoState s : states) {
+                AttributeValueMvoStateDto dto = toAttributeValueMvoStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new AttributeValueMvoStateDto[0]);
+        }
+
+        public AttributeValueMvoStateDto toAttributeValueMvoStateDto(AttributeValueMvoState state)
+        {
+            AttributeValueMvoStateDto dto = new AttributeValueMvoStateDto();
+            if (returnedFieldsContains("AttributeValueId")) {
+                dto.setAttributeValueId((state.getAttributeValueId() == null) ? null : new AttributeValueIdDto(state.getAttributeValueId()));
+            }
+            if (returnedFieldsContains("Name")) {
+                dto.setName(state.getName());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("ReferenceId")) {
+                dto.setReferenceId(state.getReferenceId());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("AttributeName")) {
+                dto.setAttributeName(state.getAttributeName());
+            }
+            if (returnedFieldsContains("AttributeOrganizationId")) {
+                dto.setAttributeOrganizationId(state.getAttributeOrganizationId());
+            }
+            if (returnedFieldsContains("AttributeDescription")) {
+                dto.setAttributeDescription(state.getAttributeDescription());
+            }
+            if (returnedFieldsContains("AttributeIsMandatory")) {
+                dto.setAttributeIsMandatory(state.getAttributeIsMandatory());
+            }
+            if (returnedFieldsContains("AttributeIsInstanceAttribute")) {
+                dto.setAttributeIsInstanceAttribute(state.getAttributeIsInstanceAttribute());
+            }
+            if (returnedFieldsContains("AttributeAttributeValueType")) {
+                dto.setAttributeAttributeValueType(state.getAttributeAttributeValueType());
+            }
+            if (returnedFieldsContains("AttributeAttributeValueLength")) {
+                dto.setAttributeAttributeValueLength(state.getAttributeAttributeValueLength());
+            }
+            if (returnedFieldsContains("AttributeIsList")) {
+                dto.setAttributeIsList(state.getAttributeIsList());
+            }
+            if (returnedFieldsContains("AttributeFieldName")) {
+                dto.setAttributeFieldName(state.getAttributeFieldName());
+            }
+            if (returnedFieldsContains("AttributeReferenceId")) {
+                dto.setAttributeReferenceId(state.getAttributeReferenceId());
+            }
+            if (returnedFieldsContains("AttributeCreatedBy")) {
+                dto.setAttributeCreatedBy(state.getAttributeCreatedBy());
+            }
+            if (returnedFieldsContains("AttributeCreatedAt")) {
+                dto.setAttributeCreatedAt(state.getAttributeCreatedAt());
+            }
+            if (returnedFieldsContains("AttributeUpdatedBy")) {
+                dto.setAttributeUpdatedBy(state.getAttributeUpdatedBy());
+            }
+            if (returnedFieldsContains("AttributeUpdatedAt")) {
+                dto.setAttributeUpdatedAt(state.getAttributeUpdatedAt());
+            }
+            if (returnedFieldsContains("AttributeActive")) {
+                dto.setAttributeActive(state.getAttributeActive());
+            }
+            if (returnedFieldsContains("AttributeDeleted")) {
+                dto.setAttributeDeleted(state.getAttributeDeleted());
+            }
+            if (returnedFieldsContains("AttributeVersion")) {
+                dto.setAttributeVersion(state.getAttributeVersion());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            return dto;
+        }
+
+    }
 }
 

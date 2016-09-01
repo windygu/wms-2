@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class YearPlanStateDto
@@ -114,7 +116,6 @@ public class YearPlanStateDto
         this.updatedAt = updatedAt;
     }
 
-
     private MonthPlanStateDto[] monthPlans;
 
     public MonthPlanStateDto[] getMonthPlans()
@@ -128,5 +129,70 @@ public class YearPlanStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"MonthPlans"});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public YearPlanStateDto[] toYearPlanStateDtoArray(Iterable<YearPlanState> states) 
+        {
+            ArrayList<YearPlanStateDto> stateDtos = new ArrayList();
+            for (YearPlanState s : states) {
+                YearPlanStateDto dto = toYearPlanStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new YearPlanStateDto[0]);
+        }
+
+        public YearPlanStateDto toYearPlanStateDto(YearPlanState state)
+        {
+            YearPlanStateDto dto = new YearPlanStateDto();
+            if (returnedFieldsContains("Year")) {
+                dto.setYear(state.getYear());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("PersonalName")) {
+                dto.setPersonalName((state.getPersonalName() == null) ? null : new PersonalNameDto(state.getPersonalName()));
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("MonthPlans")) {
+                ArrayList<MonthPlanStateDto> arrayList = new ArrayList();
+                if (state.getMonthPlans() != null) {
+                    MonthPlanStateDto.DtoConverter conv = new MonthPlanStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "MonthPlans");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (MonthPlanState s : state.getMonthPlans()) {
+                        arrayList.add(conv.toMonthPlanStateDto(s));
+                    }
+                }
+                dto.setMonthPlans(arrayList.toArray(new MonthPlanStateDto[0]));
+            }
+            return dto;
+        }
+
+    }
 }
 

@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class DayPlanStateDto
@@ -139,5 +141,64 @@ public class DayPlanStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public DayPlanStateDto[] toDayPlanStateDtoArray(Iterable<DayPlanState> states) 
+        {
+            ArrayList<DayPlanStateDto> stateDtos = new ArrayList();
+            for (DayPlanState s : states) {
+                DayPlanStateDto dto = toDayPlanStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new DayPlanStateDto[0]);
+        }
+
+        public DayPlanStateDto toDayPlanStateDto(DayPlanState state)
+        {
+            DayPlanStateDto dto = new DayPlanStateDto();
+            if (returnedFieldsContains("Day")) {
+                dto.setDay(state.getDay());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("PersonalName")) {
+                dto.setPersonalName((state.getPersonalName() == null) ? null : new PersonalNameDto(state.getPersonalName()));
+            }
+            if (returnedFieldsContains("Year")) {
+                dto.setYear(state.getYear());
+            }
+            if (returnedFieldsContains("Month")) {
+                dto.setMonth(state.getMonth());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            return dto;
+        }
+
+    }
 }
 

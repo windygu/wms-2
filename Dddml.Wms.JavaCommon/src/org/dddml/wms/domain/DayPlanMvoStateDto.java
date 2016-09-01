@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class DayPlanMvoStateDto
@@ -415,5 +417,133 @@ public class DayPlanMvoStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public DayPlanMvoStateDto[] toDayPlanMvoStateDtoArray(Iterable<DayPlanMvoState> states) 
+        {
+            ArrayList<DayPlanMvoStateDto> stateDtos = new ArrayList();
+            for (DayPlanMvoState s : states) {
+                DayPlanMvoStateDto dto = toDayPlanMvoStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new DayPlanMvoStateDto[0]);
+        }
+
+        public DayPlanMvoStateDto toDayPlanMvoStateDto(DayPlanMvoState state)
+        {
+            DayPlanMvoStateDto dto = new DayPlanMvoStateDto();
+            if (returnedFieldsContains("DayPlanId")) {
+                dto.setDayPlanId((state.getDayPlanId() == null) ? null : new DayPlanIdDto(state.getDayPlanId()));
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("MonthPlanDescription")) {
+                dto.setMonthPlanDescription(state.getMonthPlanDescription());
+            }
+            if (returnedFieldsContains("MonthPlanCreatedBy")) {
+                dto.setMonthPlanCreatedBy(state.getMonthPlanCreatedBy());
+            }
+            if (returnedFieldsContains("MonthPlanUpdatedBy")) {
+                dto.setMonthPlanUpdatedBy(state.getMonthPlanUpdatedBy());
+            }
+            if (returnedFieldsContains("MonthPlanVersion")) {
+                dto.setMonthPlanVersion(state.getMonthPlanVersion());
+            }
+            if (returnedFieldsContains("MonthPlanCreatedAt")) {
+                dto.setMonthPlanCreatedAt(state.getMonthPlanCreatedAt());
+            }
+            if (returnedFieldsContains("MonthPlanUpdatedAt")) {
+                dto.setMonthPlanUpdatedAt(state.getMonthPlanUpdatedAt());
+            }
+            if (returnedFieldsContains("MonthPlanActive")) {
+                dto.setMonthPlanActive(state.getMonthPlanActive());
+            }
+            if (returnedFieldsContains("MonthPlanDeleted")) {
+                dto.setMonthPlanDeleted(state.getMonthPlanDeleted());
+            }
+            if (returnedFieldsContains("YearPlanDescription")) {
+                dto.setYearPlanDescription(state.getYearPlanDescription());
+            }
+            if (returnedFieldsContains("YearPlanCreatedBy")) {
+                dto.setYearPlanCreatedBy(state.getYearPlanCreatedBy());
+            }
+            if (returnedFieldsContains("YearPlanUpdatedBy")) {
+                dto.setYearPlanUpdatedBy(state.getYearPlanUpdatedBy());
+            }
+            if (returnedFieldsContains("YearPlanVersion")) {
+                dto.setYearPlanVersion(state.getYearPlanVersion());
+            }
+            if (returnedFieldsContains("YearPlanCreatedAt")) {
+                dto.setYearPlanCreatedAt(state.getYearPlanCreatedAt());
+            }
+            if (returnedFieldsContains("YearPlanUpdatedAt")) {
+                dto.setYearPlanUpdatedAt(state.getYearPlanUpdatedAt());
+            }
+            if (returnedFieldsContains("YearPlanActive")) {
+                dto.setYearPlanActive(state.getYearPlanActive());
+            }
+            if (returnedFieldsContains("YearPlanDeleted")) {
+                dto.setYearPlanDeleted(state.getYearPlanDeleted());
+            }
+            if (returnedFieldsContains("PersonBirthDate")) {
+                dto.setPersonBirthDate(state.getPersonBirthDate());
+            }
+            if (returnedFieldsContains("PersonLoves")) {
+                dto.setPersonLoves((state.getPersonLoves() == null) ? null : new PersonalNameDto(state.getPersonLoves()));
+            }
+            if (returnedFieldsContains("PersonEmergencyContact")) {
+                dto.setPersonEmergencyContact((state.getPersonEmergencyContact() == null) ? null : new ContactDto(state.getPersonEmergencyContact()));
+            }
+            if (returnedFieldsContains("PersonCreatedBy")) {
+                dto.setPersonCreatedBy(state.getPersonCreatedBy());
+            }
+            if (returnedFieldsContains("PersonUpdatedBy")) {
+                dto.setPersonUpdatedBy(state.getPersonUpdatedBy());
+            }
+            if (returnedFieldsContains("PersonCreatedAt")) {
+                dto.setPersonCreatedAt(state.getPersonCreatedAt());
+            }
+            if (returnedFieldsContains("PersonUpdatedAt")) {
+                dto.setPersonUpdatedAt(state.getPersonUpdatedAt());
+            }
+            if (returnedFieldsContains("PersonActive")) {
+                dto.setPersonActive(state.getPersonActive());
+            }
+            if (returnedFieldsContains("PersonDeleted")) {
+                dto.setPersonDeleted(state.getPersonDeleted());
+            }
+            if (returnedFieldsContains("PersonVersion")) {
+                dto.setPersonVersion(state.getPersonVersion());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            return dto;
+        }
+
+    }
 }
 

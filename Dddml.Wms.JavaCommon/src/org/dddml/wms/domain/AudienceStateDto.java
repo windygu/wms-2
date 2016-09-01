@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class AudienceStateDto
@@ -115,5 +117,58 @@ public class AudienceStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public AudienceStateDto[] toAudienceStateDtoArray(Iterable<AudienceState> states) 
+        {
+            ArrayList<AudienceStateDto> stateDtos = new ArrayList();
+            for (AudienceState s : states) {
+                AudienceStateDto dto = toAudienceStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new AudienceStateDto[0]);
+        }
+
+        public AudienceStateDto toAudienceStateDto(AudienceState state)
+        {
+            AudienceStateDto dto = new AudienceStateDto();
+            if (returnedFieldsContains("ClientId")) {
+                dto.setClientId(state.getClientId());
+            }
+            if (returnedFieldsContains("Name")) {
+                dto.setName(state.getName());
+            }
+            if (returnedFieldsContains("Base64Secret")) {
+                dto.setBase64Secret(state.getBase64Secret());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            return dto;
+        }
+
+    }
 }
 

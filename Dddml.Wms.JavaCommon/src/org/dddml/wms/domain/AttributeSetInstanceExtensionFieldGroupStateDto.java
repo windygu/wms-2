@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class AttributeSetInstanceExtensionFieldGroupStateDto
@@ -150,7 +152,6 @@ public class AttributeSetInstanceExtensionFieldGroupStateDto
         this.updatedAt = updatedAt;
     }
 
-
     private AttributeSetInstanceExtensionFieldStateDto[] fields;
 
     public AttributeSetInstanceExtensionFieldStateDto[] getFields()
@@ -164,5 +165,79 @@ public class AttributeSetInstanceExtensionFieldGroupStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"Fields"});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public AttributeSetInstanceExtensionFieldGroupStateDto[] toAttributeSetInstanceExtensionFieldGroupStateDtoArray(Iterable<AttributeSetInstanceExtensionFieldGroupState> states) 
+        {
+            ArrayList<AttributeSetInstanceExtensionFieldGroupStateDto> stateDtos = new ArrayList();
+            for (AttributeSetInstanceExtensionFieldGroupState s : states) {
+                AttributeSetInstanceExtensionFieldGroupStateDto dto = toAttributeSetInstanceExtensionFieldGroupStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new AttributeSetInstanceExtensionFieldGroupStateDto[0]);
+        }
+
+        public AttributeSetInstanceExtensionFieldGroupStateDto toAttributeSetInstanceExtensionFieldGroupStateDto(AttributeSetInstanceExtensionFieldGroupState state)
+        {
+            AttributeSetInstanceExtensionFieldGroupStateDto dto = new AttributeSetInstanceExtensionFieldGroupStateDto();
+            if (returnedFieldsContains("Id")) {
+                dto.setId(state.getId());
+            }
+            if (returnedFieldsContains("FieldType")) {
+                dto.setFieldType(state.getFieldType());
+            }
+            if (returnedFieldsContains("FieldLength")) {
+                dto.setFieldLength(state.getFieldLength());
+            }
+            if (returnedFieldsContains("FieldCount")) {
+                dto.setFieldCount(state.getFieldCount());
+            }
+            if (returnedFieldsContains("NameFormat")) {
+                dto.setNameFormat(state.getNameFormat());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("Fields")) {
+                ArrayList<AttributeSetInstanceExtensionFieldStateDto> arrayList = new ArrayList();
+                if (state.getFields() != null) {
+                    AttributeSetInstanceExtensionFieldStateDto.DtoConverter conv = new AttributeSetInstanceExtensionFieldStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "Fields");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (AttributeSetInstanceExtensionFieldState s : state.getFields()) {
+                        arrayList.add(conv.toAttributeSetInstanceExtensionFieldStateDto(s));
+                    }
+                }
+                dto.setFields(arrayList.toArray(new AttributeSetInstanceExtensionFieldStateDto[0]));
+            }
+            return dto;
+        }
+
+    }
 }
 

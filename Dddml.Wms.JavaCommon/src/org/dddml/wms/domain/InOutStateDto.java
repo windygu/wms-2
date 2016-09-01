@@ -1,8 +1,10 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import org.joda.money.Money;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class InOutStateDto
@@ -500,7 +502,6 @@ public class InOutStateDto
         this.updatedAt = updatedAt;
     }
 
-
     private InOutLineStateDto[] inOutLines;
 
     public InOutLineStateDto[] getInOutLines()
@@ -514,5 +515,166 @@ public class InOutStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"InOutLines"});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public InOutStateDto[] toInOutStateDtoArray(Iterable<InOutState> states) 
+        {
+            ArrayList<InOutStateDto> stateDtos = new ArrayList();
+            for (InOutState s : states) {
+                InOutStateDto dto = toInOutStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new InOutStateDto[0]);
+        }
+
+        public InOutStateDto toInOutStateDto(InOutState state)
+        {
+            InOutStateDto dto = new InOutStateDto();
+            if (returnedFieldsContains("DocumentNumber")) {
+                dto.setDocumentNumber(state.getDocumentNumber());
+            }
+            if (returnedFieldsContains("IsSOTransaction")) {
+                dto.setIsSOTransaction(state.getIsSOTransaction());
+            }
+            if (returnedFieldsContains("DocumentStatus")) {
+                dto.setDocumentStatus(state.getDocumentStatus());
+            }
+            if (returnedFieldsContains("Posted")) {
+                dto.setPosted(state.getPosted());
+            }
+            if (returnedFieldsContains("Processing")) {
+                dto.setProcessing(state.getProcessing());
+            }
+            if (returnedFieldsContains("Processed")) {
+                dto.setProcessed(state.getProcessed());
+            }
+            if (returnedFieldsContains("DocumentType")) {
+                dto.setDocumentType(state.getDocumentType());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("OrderNumber")) {
+                dto.setOrderNumber(state.getOrderNumber());
+            }
+            if (returnedFieldsContains("DateOrdered")) {
+                dto.setDateOrdered(state.getDateOrdered());
+            }
+            if (returnedFieldsContains("IsPrinted")) {
+                dto.setIsPrinted(state.getIsPrinted());
+            }
+            if (returnedFieldsContains("MovementType")) {
+                dto.setMovementType(state.getMovementType());
+            }
+            if (returnedFieldsContains("MovementDate")) {
+                dto.setMovementDate(state.getMovementDate());
+            }
+            if (returnedFieldsContains("BusinessPartnerId")) {
+                dto.setBusinessPartnerId(state.getBusinessPartnerId());
+            }
+            if (returnedFieldsContains("WarehouseId")) {
+                dto.setWarehouseId(state.getWarehouseId());
+            }
+            if (returnedFieldsContains("POReference")) {
+                dto.setPOReference(state.getPOReference());
+            }
+            if (returnedFieldsContains("FreightAmount")) {
+                dto.setFreightAmount(state.getFreightAmount());
+            }
+            if (returnedFieldsContains("ShipperId")) {
+                dto.setShipperId(state.getShipperId());
+            }
+            if (returnedFieldsContains("ChargeAmount")) {
+                dto.setChargeAmount(state.getChargeAmount());
+            }
+            if (returnedFieldsContains("DatePrinted")) {
+                dto.setDatePrinted(state.getDatePrinted());
+            }
+            if (returnedFieldsContains("SalesRepresentative")) {
+                dto.setSalesRepresentative(state.getSalesRepresentative());
+            }
+            if (returnedFieldsContains("NumberOfPackages")) {
+                dto.setNumberOfPackages(state.getNumberOfPackages());
+            }
+            if (returnedFieldsContains("PickDate")) {
+                dto.setPickDate(state.getPickDate());
+            }
+            if (returnedFieldsContains("ShipDate")) {
+                dto.setShipDate(state.getShipDate());
+            }
+            if (returnedFieldsContains("TrackingNumber")) {
+                dto.setTrackingNumber(state.getTrackingNumber());
+            }
+            if (returnedFieldsContains("DateReceived")) {
+                dto.setDateReceived(state.getDateReceived());
+            }
+            if (returnedFieldsContains("IsInTransit")) {
+                dto.setIsInTransit(state.getIsInTransit());
+            }
+            if (returnedFieldsContains("IsApproved")) {
+                dto.setIsApproved(state.getIsApproved());
+            }
+            if (returnedFieldsContains("IsInDispute")) {
+                dto.setIsInDispute(state.getIsInDispute());
+            }
+            if (returnedFieldsContains("Volume")) {
+                dto.setVolume(state.getVolume());
+            }
+            if (returnedFieldsContains("Weight")) {
+                dto.setWeight(state.getWeight());
+            }
+            if (returnedFieldsContains("RmaNumber")) {
+                dto.setRmaNumber(state.getRmaNumber());
+            }
+            if (returnedFieldsContains("ReversalNumber")) {
+                dto.setReversalNumber(state.getReversalNumber());
+            }
+            if (returnedFieldsContains("IsDropShip")) {
+                dto.setIsDropShip(state.getIsDropShip());
+            }
+            if (returnedFieldsContains("DropShipBusinessPartnerId")) {
+                dto.setDropShipBusinessPartnerId(state.getDropShipBusinessPartnerId());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("InOutLines")) {
+                ArrayList<InOutLineStateDto> arrayList = new ArrayList();
+                if (state.getInOutLines() != null) {
+                    InOutLineStateDto.DtoConverter conv = new InOutLineStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "InOutLines");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (InOutLineState s : state.getInOutLines()) {
+                        arrayList.add(conv.toInOutLineStateDto(s));
+                    }
+                }
+                dto.setInOutLines(arrayList.toArray(new InOutLineStateDto[0]));
+            }
+            return dto;
+        }
+
+    }
 }
 

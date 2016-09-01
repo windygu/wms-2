@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class AttributeSetStateDto
@@ -162,7 +164,6 @@ public class AttributeSetStateDto
         this.updatedAt = updatedAt;
     }
 
-
     private AttributeUseStateDto[] attributeUses;
 
     public AttributeUseStateDto[] getAttributeUses()
@@ -176,5 +177,82 @@ public class AttributeSetStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"AttributeUses"});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public AttributeSetStateDto[] toAttributeSetStateDtoArray(Iterable<AttributeSetState> states) 
+        {
+            ArrayList<AttributeSetStateDto> stateDtos = new ArrayList();
+            for (AttributeSetState s : states) {
+                AttributeSetStateDto dto = toAttributeSetStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new AttributeSetStateDto[0]);
+        }
+
+        public AttributeSetStateDto toAttributeSetStateDto(AttributeSetState state)
+        {
+            AttributeSetStateDto dto = new AttributeSetStateDto();
+            if (returnedFieldsContains("AttributeSetId")) {
+                dto.setAttributeSetId(state.getAttributeSetId());
+            }
+            if (returnedFieldsContains("Name")) {
+                dto.setName(state.getName());
+            }
+            if (returnedFieldsContains("OrganizationId")) {
+                dto.setOrganizationId(state.getOrganizationId());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("SerialNumberAttributeId")) {
+                dto.setSerialNumberAttributeId(state.getSerialNumberAttributeId());
+            }
+            if (returnedFieldsContains("LotAttributeId")) {
+                dto.setLotAttributeId(state.getLotAttributeId());
+            }
+            if (returnedFieldsContains("ReferenceId")) {
+                dto.setReferenceId(state.getReferenceId());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("AttributeUses")) {
+                ArrayList<AttributeUseStateDto> arrayList = new ArrayList();
+                if (state.getAttributeUses() != null) {
+                    AttributeUseStateDto.DtoConverter conv = new AttributeUseStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "AttributeUses");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (AttributeUseState s : state.getAttributeUses()) {
+                        arrayList.add(conv.toAttributeUseStateDto(s));
+                    }
+                }
+                dto.setAttributeUses(arrayList.toArray(new AttributeUseStateDto[0]));
+            }
+            return dto;
+        }
+
+    }
 }
 

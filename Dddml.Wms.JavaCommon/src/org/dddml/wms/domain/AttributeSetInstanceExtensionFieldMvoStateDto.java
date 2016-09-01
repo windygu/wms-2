@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class AttributeSetInstanceExtensionFieldMvoStateDto
@@ -295,5 +297,103 @@ public class AttributeSetInstanceExtensionFieldMvoStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public AttributeSetInstanceExtensionFieldMvoStateDto[] toAttributeSetInstanceExtensionFieldMvoStateDtoArray(Iterable<AttributeSetInstanceExtensionFieldMvoState> states) 
+        {
+            ArrayList<AttributeSetInstanceExtensionFieldMvoStateDto> stateDtos = new ArrayList();
+            for (AttributeSetInstanceExtensionFieldMvoState s : states) {
+                AttributeSetInstanceExtensionFieldMvoStateDto dto = toAttributeSetInstanceExtensionFieldMvoStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new AttributeSetInstanceExtensionFieldMvoStateDto[0]);
+        }
+
+        public AttributeSetInstanceExtensionFieldMvoStateDto toAttributeSetInstanceExtensionFieldMvoStateDto(AttributeSetInstanceExtensionFieldMvoState state)
+        {
+            AttributeSetInstanceExtensionFieldMvoStateDto dto = new AttributeSetInstanceExtensionFieldMvoStateDto();
+            if (returnedFieldsContains("AttributeSetInstanceExtensionFieldId")) {
+                dto.setAttributeSetInstanceExtensionFieldId((state.getAttributeSetInstanceExtensionFieldId() == null) ? null : new AttributeSetInstanceExtensionFieldIdDto(state.getAttributeSetInstanceExtensionFieldId()));
+            }
+            if (returnedFieldsContains("Name")) {
+                dto.setName(state.getName());
+            }
+            if (returnedFieldsContains("Type")) {
+                dto.setType(state.getType());
+            }
+            if (returnedFieldsContains("Length")) {
+                dto.setLength(state.getLength());
+            }
+            if (returnedFieldsContains("Alias")) {
+                dto.setAlias(state.getAlias());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupFieldType")) {
+                dto.setAttrSetInstEFGroupFieldType(state.getAttrSetInstEFGroupFieldType());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupFieldLength")) {
+                dto.setAttrSetInstEFGroupFieldLength(state.getAttrSetInstEFGroupFieldLength());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupFieldCount")) {
+                dto.setAttrSetInstEFGroupFieldCount(state.getAttrSetInstEFGroupFieldCount());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupNameFormat")) {
+                dto.setAttrSetInstEFGroupNameFormat(state.getAttrSetInstEFGroupNameFormat());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupDescription")) {
+                dto.setAttrSetInstEFGroupDescription(state.getAttrSetInstEFGroupDescription());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupCreatedBy")) {
+                dto.setAttrSetInstEFGroupCreatedBy(state.getAttrSetInstEFGroupCreatedBy());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupCreatedAt")) {
+                dto.setAttrSetInstEFGroupCreatedAt(state.getAttrSetInstEFGroupCreatedAt());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupUpdatedBy")) {
+                dto.setAttrSetInstEFGroupUpdatedBy(state.getAttrSetInstEFGroupUpdatedBy());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupUpdatedAt")) {
+                dto.setAttrSetInstEFGroupUpdatedAt(state.getAttrSetInstEFGroupUpdatedAt());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupActive")) {
+                dto.setAttrSetInstEFGroupActive(state.getAttrSetInstEFGroupActive());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupDeleted")) {
+                dto.setAttrSetInstEFGroupDeleted(state.getAttrSetInstEFGroupDeleted());
+            }
+            if (returnedFieldsContains("AttrSetInstEFGroupVersion")) {
+                dto.setAttrSetInstEFGroupVersion(state.getAttrSetInstEFGroupVersion());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            return dto;
+        }
+
+    }
 }
 

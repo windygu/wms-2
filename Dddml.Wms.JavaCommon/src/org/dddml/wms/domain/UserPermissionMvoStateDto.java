@@ -1,6 +1,8 @@
 package org.dddml.wms.domain;
 
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.specialization.*;
 
 
 public class UserPermissionMvoStateDto
@@ -307,5 +309,106 @@ public class UserPermissionMvoStateDto
     }
 
 
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+
+        @Override
+        protected boolean isCollectionField(String fieldName) {
+            return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
+        }
+
+        public UserPermissionMvoStateDto[] toUserPermissionMvoStateDtoArray(Iterable<UserPermissionMvoState> states) 
+        {
+            ArrayList<UserPermissionMvoStateDto> stateDtos = new ArrayList();
+            for (UserPermissionMvoState s : states) {
+                UserPermissionMvoStateDto dto = toUserPermissionMvoStateDto(s);
+                stateDtos.add(dto);
+            }
+            return stateDtos.toArray(new UserPermissionMvoStateDto[0]);
+        }
+
+        public UserPermissionMvoStateDto toUserPermissionMvoStateDto(UserPermissionMvoState state)
+        {
+            UserPermissionMvoStateDto dto = new UserPermissionMvoStateDto();
+            if (returnedFieldsContains("UserPermissionId")) {
+                dto.setUserPermissionId((state.getUserPermissionId() == null) ? null : new UserPermissionIdDto(state.getUserPermissionId()));
+            }
+            if (returnedFieldsContains("Version")) {
+                dto.setVersion(state.getVersion());
+            }
+            if (returnedFieldsContains("Active")) {
+                dto.setActive(state.getActive());
+            }
+            if (returnedFieldsContains("UserUserName")) {
+                dto.setUserUserName(state.getUserUserName());
+            }
+            if (returnedFieldsContains("UserAccessFailedCount")) {
+                dto.setUserAccessFailedCount(state.getUserAccessFailedCount());
+            }
+            if (returnedFieldsContains("UserEmail")) {
+                dto.setUserEmail(state.getUserEmail());
+            }
+            if (returnedFieldsContains("UserEmailConfirmed")) {
+                dto.setUserEmailConfirmed(state.getUserEmailConfirmed());
+            }
+            if (returnedFieldsContains("UserLockoutEnabled")) {
+                dto.setUserLockoutEnabled(state.getUserLockoutEnabled());
+            }
+            if (returnedFieldsContains("UserLockoutEndDateUtc")) {
+                dto.setUserLockoutEndDateUtc(state.getUserLockoutEndDateUtc());
+            }
+            if (returnedFieldsContains("UserPasswordHash")) {
+                dto.setUserPasswordHash(state.getUserPasswordHash());
+            }
+            if (returnedFieldsContains("UserPhoneNumber")) {
+                dto.setUserPhoneNumber(state.getUserPhoneNumber());
+            }
+            if (returnedFieldsContains("UserPhoneNumberConfirmed")) {
+                dto.setUserPhoneNumberConfirmed(state.getUserPhoneNumberConfirmed());
+            }
+            if (returnedFieldsContains("UserTwoFactorEnabled")) {
+                dto.setUserTwoFactorEnabled(state.getUserTwoFactorEnabled());
+            }
+            if (returnedFieldsContains("UserSecurityStamp")) {
+                dto.setUserSecurityStamp(state.getUserSecurityStamp());
+            }
+            if (returnedFieldsContains("UserCreatedBy")) {
+                dto.setUserCreatedBy(state.getUserCreatedBy());
+            }
+            if (returnedFieldsContains("UserCreatedAt")) {
+                dto.setUserCreatedAt(state.getUserCreatedAt());
+            }
+            if (returnedFieldsContains("UserUpdatedBy")) {
+                dto.setUserUpdatedBy(state.getUserUpdatedBy());
+            }
+            if (returnedFieldsContains("UserUpdatedAt")) {
+                dto.setUserUpdatedAt(state.getUserUpdatedAt());
+            }
+            if (returnedFieldsContains("UserActive")) {
+                dto.setUserActive(state.getUserActive());
+            }
+            if (returnedFieldsContains("UserDeleted")) {
+                dto.setUserDeleted(state.getUserDeleted());
+            }
+            if (returnedFieldsContains("UserVersion")) {
+                dto.setUserVersion(state.getUserVersion());
+            }
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
+            }
+            if (returnedFieldsContains("CreatedAt")) {
+                dto.setCreatedAt(state.getCreatedAt());
+            }
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
+            }
+            if (returnedFieldsContains("UpdatedAt")) {
+                dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            return dto;
+        }
+
+    }
 }
 
