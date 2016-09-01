@@ -125,10 +125,33 @@ class ApiProxy
         );
     }
 
-    public function mergePatch(AbstractCommandRequest $commandRequest, Request $httpRequest, $id)
+    public function mergePatch($entityName, $id, Request $httpRequest)
     {
-        /** @var CommandExecutor $executor */
-        $executor = $this->app['api.command.executor'];
+        $className = 'Dddml\Wms\HttpClient\\MergePatch' . $entityName . 'Request';
+
+        /** @var AbstractCommandRequest $mergePatchRequest */
+        $mergePatchRequest = new $className(
+            $this->app['api.command.executor']
+        );
+
+        $json = $httpRequest->getContent();
+
+        $command = $mergePatchRequest->getCommandFromJson($json);
+
+        $uuid = Uuid::uuid4();
+        $command->setCommandId($uuid->toString());
+
+        $response = $this->app['api.command.executor']
+            ->execute($mergePatchRequest, [
+                'parameters' => ['id' => $id,],
+                'headers'    => $this->getHeaders($httpRequest),
+            ]);
+
+        return new JsonResponse(
+            '',
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
     }
 
     /**

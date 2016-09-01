@@ -48,4 +48,10 @@ export default Vue.extend({
             this.current = this.tables[key];
         }
     },
+    ready(){
+        this.$watch('entities', function () {
+            this.current  = {};
+            this.selected = false;
+        })
+    }
 });

@@ -44,7 +44,7 @@ export default Vue.extend({
         entityNames(){
             if (this.entity.getChildEntityNames) {
                 return this.entity.getChildEntityNames();
-            }else{
+            } else {
                 return [];
             }
         }

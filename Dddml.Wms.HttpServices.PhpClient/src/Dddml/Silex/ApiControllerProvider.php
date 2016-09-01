@@ -24,7 +24,7 @@ class ApiControllerProvider implements ControllerProviderInterface
         $controllers->get('{entities}', [$this, 'getEntities'])->bind('api_get_entities');
         $controllers->put('{entities}/{id}', [$this, 'createEntity'])->bind('api_create_entity');
         $controllers->patch('{entities}/{id}', [$this, 'mergePatchEntity'])->bind('api_merge_patch_entity');
-        $controllers->get('{a}/{b}/{c}/{d}/{e}/{f}{g}/{h}/{i}', [$this, 'freeRoute'])
+        $controllers->get('{a}/{b}/{c}/{d}/{e}/{f}/{g}/{h}/{i}/{j}/{k}', [$this, 'freeRoute'])
             ->bind('free_route')
             ->value('a', null)
             ->value('b', null)
@@ -34,7 +34,9 @@ class ApiControllerProvider implements ControllerProviderInterface
             ->value('f', null)
             ->value('g', null)
             ->value('h', null)
-            ->value('i', null);
+            ->value('i', null)
+            ->value('j', null)
+            ->value('k', null);
 
         return $controllers;
     }
@@ -78,6 +80,11 @@ class ApiControllerProvider implements ControllerProviderInterface
 
     public function mergePatchEntity(Application $app, Request $request, $entities, $id)
     {
+        $entityName = Inflector::singularize($entities);
+
+        $response = $app['api.proxy']->mergePatch($entityName, $id, $request);
+
+        return $response;
     }
 
     public function deleteRole(Application $app, Request $request, $entities, $id)
@@ -90,7 +97,7 @@ class ApiControllerProvider implements ControllerProviderInterface
         $params = $request->attributes->all();
         $url    = '';
 
-        foreach (range('a', 'i') as $key){
+        foreach (range('a', 'k') as $key) {
             if ($params[$key]) {
                 $url .= '/' . $params[$key];
             }

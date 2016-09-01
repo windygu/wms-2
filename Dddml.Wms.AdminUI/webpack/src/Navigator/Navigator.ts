@@ -28,6 +28,7 @@ export default class Navigator {
     }
 
     protected buildEntities($route) {
+        this.reset();
         let metadata = this.getEntityMetadata($route.params.name);
 
         this.addItem(
@@ -41,6 +42,7 @@ export default class Navigator {
     }
 
     protected buildEntity($route) {
+        this.reset();
         let chaining = EntityChainHelper.chainingNameToArray($route.params.chainingName);
         let root     = chaining[0];
 
@@ -68,6 +70,7 @@ export default class Navigator {
     }
 
     protected buildCreateEntity($route) {
+        this.reset();
         let metadata = this.getEntityMetadata($route.params.name);
 
         this.addItem(
@@ -81,6 +84,6 @@ export default class Navigator {
     }
 
     protected buildMergePatchEntity($route) {
-
+        this.reset();
     }
 }
