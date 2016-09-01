@@ -1,28 +1,28 @@
-import Index from './components/Index';
-import AggregateRoot from './components/AggregateRoot';
-import Entity from './components/Entity';
-import CreateEntity from './components/CreateEntity';
-import MergePatchEntity from './components/MergePatchEntity';
+import IndexComponent from './components/Index.component';
+import AggregateRootComponent from './components/AggregateRoot.component';
+import EntityComponent from './components/Entity.component';
+import CreateEntityComponent from './components/CreateEntity.component';
+import MergePatchEntityComponent from './components/MergePatchEntity.component';
 
 export default {
     '/': {
         name: 'index',
-        component: Index
+        component: IndexComponent
     },
     '/entities/:name/': {
         name: 'entities',
-        component: AggregateRoot
+        component: AggregateRootComponent
     },
     '/entity/:chainingName/': {
         name: 'entity',
-        component: Entity
+        component: EntityComponent
     },
     '/create/:name/': {
         name: 'createEntity',
-        component: CreateEntity
+        component: CreateEntityComponent
     },
     '/mergePatch/:chainingName': {
         name: 'mergePatchEntity',
-        component: MergePatchEntity
+        component: MergePatchEntityComponent
     }
 };

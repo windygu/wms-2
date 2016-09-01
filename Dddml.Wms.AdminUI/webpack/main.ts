@@ -1,5 +1,5 @@
 import Application from './src/Application'
-import AppComponent from './components/App'
+import AppComponent from './components/App.component'
 
 var app = Application.getInstance();
 

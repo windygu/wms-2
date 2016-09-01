@@ -1,5 +1,5 @@
-import VForm from './Bootstrap/Form'
-import Navigator from './Bootstrap/Navigator';
+import VForm from './Bootstrap/Form.component'
+import Navigator from './Bootstrap/Navigator.component';
 import * as Vue from 'vue'
 import FormFactory from "../src/Form/FormFactory";
 import Entity from "../src/Entity";

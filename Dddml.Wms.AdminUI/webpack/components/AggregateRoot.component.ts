@@ -1,7 +1,7 @@
 import VTable from './Bootstrap/Table';
 import EntityCollection from '../src/EntityCollection';
-import Navigator from './Bootstrap/Navigator';
-import Alert from './Bootstrap/Alert';
+import Navigator from './Bootstrap/Navigator.component';
+import Alert from './Bootstrap/Alert.component';
 import * as Vue from 'vue'
 import MetadataHelper from "../src/Helper/MetadataHelper";
 

@@ -1,4 +1,4 @@
-import FormElement from './FormElement';
+import FormElement from './FormElement.component';
 import * as Vue from 'vue'
 
 export default Vue.extend({

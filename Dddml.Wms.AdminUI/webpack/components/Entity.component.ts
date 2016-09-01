@@ -1,6 +1,6 @@
 import Entity from '../src/Entity';
-import Navigator from './Bootstrap/Navigator';
-import ChildEntities from './ChildEntities';
+import Navigator from './Bootstrap/Navigator.component';
+import SubEntities from './Bootstrap/SubEntities.component';
 import * as Vue from 'vue'
 import EntityChainHelper from "../src/Helper/EntityChainHelper";
 import MetadataHelper from "../src/Helper/MetadataHelper";
@@ -16,7 +16,7 @@ export default Vue.extend({
     },
     components: {
         Navigator,
-        ChildEntities,
+        SubEntities,
     },
     computed: {
         title(){

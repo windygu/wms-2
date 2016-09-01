@@ -1,4 +1,4 @@
-import Navigator from './Bootstrap/Navigator';
+import Navigator from './Bootstrap/Navigator.component';
 import * as Vue from 'vue'
 
 export default Vue.extend({

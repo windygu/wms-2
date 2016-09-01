@@ -1,9 +1,9 @@
 import * as Vue from 'vue'
-import VTable from './Bootstrap/Table'
-import EntityChainHelper from "../src/Helper/EntityChainHelper";
+import VTable from './Table'
+import EntityChainHelper from "../../src/Helper/EntityChainHelper";
 
 export default Vue.extend({
-    template: require('./View/ChildEntities.html'),
+    template: require('./../View/ChildEntities.html'),
     data(){
         return {
             current: {},
