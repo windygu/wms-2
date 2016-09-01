@@ -257,7 +257,7 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteUser;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveUserRole;
             if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.UserId == null)
+            if (innerProperties.UserId == default(string))
             {
                 innerProperties.UserId = properties.UserId;
             }
@@ -279,7 +279,7 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteUser;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveUserClaim;
             if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.UserId == null)
+            if (innerProperties.UserId == default(string))
             {
                 innerProperties.UserId = properties.UserId;
             }
@@ -301,7 +301,7 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteUser;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveUserPermission;
             if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.UserId == null)
+            if (innerProperties.UserId == default(string))
             {
                 innerProperties.UserId = properties.UserId;
             }
@@ -323,7 +323,7 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteUser;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveUserLogin;
             if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.UserId == null)
+            if (innerProperties.UserId == default(string))
             {
                 innerProperties.UserId = properties.UserId;
             }

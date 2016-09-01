@@ -206,7 +206,7 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteAttribute;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveAttributeValue;
             if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.AttributeId == null)
+            if (innerProperties.AttributeId == default(string))
             {
                 innerProperties.AttributeId = properties.AttributeId;
             }

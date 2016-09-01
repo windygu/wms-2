@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeletePerson;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveYearPlan;
             if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.PersonalName == null)
+            if (innerProperties.PersonalName == default(PersonalName))
             {
                 innerProperties.PersonalName = properties.PersonalName;
             }
@@ -207,7 +207,7 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrRemoveYearPlan;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveMonthPlan;
             if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.PersonalName == null)
+            if (innerProperties.PersonalName == default(PersonalName))
             {
                 innerProperties.PersonalName = properties.PersonalName;
             }
@@ -220,7 +220,7 @@ namespace Dddml.Wms.Domain
                 ThrowOnInconsistentIds(innerProperties, innerPersonalNameName, innerPersonalNameValue, outerPersonalNameName, outerPersonalNameValue);
             }
 
-            if (innerProperties.Year == null)
+            if (innerProperties.Year == default(int))
             {
                 innerProperties.Year = properties.Year;
             }
@@ -242,7 +242,7 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrRemoveMonthPlan;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveDayPlan;
             if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.PersonalName == null)
+            if (innerProperties.PersonalName == default(PersonalName))
             {
                 innerProperties.PersonalName = properties.PersonalName;
             }
@@ -255,7 +255,7 @@ namespace Dddml.Wms.Domain
                 ThrowOnInconsistentIds(innerProperties, innerPersonalNameName, innerPersonalNameValue, outerPersonalNameName, outerPersonalNameValue);
             }
 
-            if (innerProperties.Year == null)
+            if (innerProperties.Year == default(int))
             {
                 innerProperties.Year = properties.Year;
             }
@@ -268,7 +268,7 @@ namespace Dddml.Wms.Domain
                 ThrowOnInconsistentIds(innerProperties, innerYearName, innerYearValue, outerYearName, outerYearValue);
             }
 
-            if (innerProperties.Month == null)
+            if (innerProperties.Month == default(int))
             {
                 innerProperties.Month = properties.Month;
             }

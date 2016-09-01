@@ -191,7 +191,7 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteAttributeSetInstanceExtensionFieldGroup;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveAttributeSetInstanceExtensionField;
             if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.GroupId == null)
+            if (innerProperties.GroupId == default(string))
             {
                 innerProperties.GroupId = properties.Id;
             }

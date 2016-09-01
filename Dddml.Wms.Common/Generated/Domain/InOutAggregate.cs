@@ -278,7 +278,7 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteInOut;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveInOutLine;
             if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.InOutDocumentNumber == null)
+            if (innerProperties.InOutDocumentNumber == default(string))
             {
                 innerProperties.InOutDocumentNumber = properties.DocumentNumber;
             }
