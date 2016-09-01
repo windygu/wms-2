@@ -9,5 +9,12 @@ public class DeleteUserDto extends AbstractUserCommandDto
         return COMMAND_TYPE_DELETE;
     }
 
+    public UserCommand.DeleteUser toDeleteUser()
+    {
+        AbstractUserCommand.SimpleDeleteUser command = new AbstractUserCommand.SimpleDeleteUser();
+        ((AbstractUserCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

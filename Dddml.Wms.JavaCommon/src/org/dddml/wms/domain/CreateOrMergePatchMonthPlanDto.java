@@ -65,11 +65,64 @@ public class CreateOrMergePatchMonthPlanDto extends AbstractMonthPlanCommandDto
     }
 
 
+    public void copyTo(AbstractMonthPlanCommand.AbstractCreateOrMergePatchMonthPlan command)
+    {
+        ((AbstractMonthPlanCommandDto) this).copyTo(command);
+        command.setDescription(this.getDescription());
+        command.setActive(this.getActive());
+    }
+
+    public MonthPlanCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractMonthPlanCommand.SimpleCreateMonthPlan command = new AbstractMonthPlanCommand.SimpleCreateMonthPlan();
+            copyTo((AbstractMonthPlanCommand.AbstractCreateMonthPlan) command);
+            if (this.getDayPlans() != null) {
+                for (CreateOrMergePatchDayPlanDto cmd : this.getDayPlans()) {
+                    command.getDayPlans().add((DayPlanCommand.CreateDayPlan) cmd.toCommand());
+                }
+            }
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractMonthPlanCommand.SimpleMergePatchMonthPlan command = new AbstractMonthPlanCommand.SimpleMergePatchMonthPlan();
+            copyTo((AbstractMonthPlanCommand.SimpleMergePatchMonthPlan) command);
+            if (this.getDayPlans() != null) {
+                for (CreateOrMergePatchDayPlanDto cmd : this.getDayPlans()) {
+                    command.getDayPlanCommands().add(cmd.toCommand());
+                }
+            }
+            return command;
+        } 
+        else if (COMMAND_TYPE_REMOVE.equals(getCommandType())) {
+            AbstractMonthPlanCommand.SimpleRemoveMonthPlan command = new AbstractMonthPlanCommand.SimpleRemoveMonthPlan();
+            ((AbstractMonthPlanCommandDto) this).copyTo(command);
+            return command;
+        }
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractMonthPlanCommand.AbstractCreateMonthPlan command)
+    {
+        copyTo((AbstractMonthPlanCommand.AbstractCreateOrMergePatchMonthPlan) command);
+    }
+
+    public void copyTo(AbstractMonthPlanCommand.AbstractMergePatchMonthPlan command)
+    {
+        copyTo((AbstractMonthPlanCommand.AbstractCreateOrMergePatchMonthPlan) command);
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    }
+
     public static class CreateMonthPlanDto extends CreateOrMergePatchMonthPlanDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public MonthPlanCommand.CreateMonthPlan toCreateMonthPlan()
+        {
+            return (MonthPlanCommand.CreateMonthPlan) toCommand();
         }
 
     }
@@ -79,6 +132,11 @@ public class CreateOrMergePatchMonthPlanDto extends AbstractMonthPlanCommandDto
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public MonthPlanCommand.MergePatchMonthPlan toMergePatchMonthPlan()
+        {
+            return (MonthPlanCommand.MergePatchMonthPlan) toCommand();
         }
 
     }

@@ -9,5 +9,12 @@ public class RemoveMonthPlanDto extends CreateOrMergePatchMonthPlanDto
         return COMMAND_TYPE_REMOVE;
     }
 
+    public MonthPlanCommand.RemoveMonthPlan toRemoveMonthPlan()
+    {
+        AbstractMonthPlanCommand.SimpleRemoveMonthPlan command = new AbstractMonthPlanCommand.SimpleRemoveMonthPlan();
+        ((AbstractMonthPlanCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

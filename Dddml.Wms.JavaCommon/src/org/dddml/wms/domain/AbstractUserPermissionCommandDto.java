@@ -18,5 +18,10 @@ public abstract class AbstractUserPermissionCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractUserPermissionCommand command)
+    {
+        command.setPermissionId(this.getPermissionId());
+    }
+
 }
 

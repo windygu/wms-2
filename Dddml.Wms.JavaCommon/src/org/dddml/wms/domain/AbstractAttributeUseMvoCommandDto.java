@@ -30,5 +30,11 @@ public abstract class AbstractAttributeUseMvoCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractAttributeUseMvoCommand command)
+    {
+        command.setAttributeSetAttributeUseId((this.getAttributeSetAttributeUseId() == null) ? null : this.getAttributeSetAttributeUseId().toAttributeSetAttributeUseId());
+        command.setAttributeSetVersion(this.getAttributeSetVersion());
+    }
+
 }
 

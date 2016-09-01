@@ -30,5 +30,11 @@ public abstract class AbstractTeamCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractTeamCommand command)
+    {
+        command.setTeamName(this.getTeamName());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

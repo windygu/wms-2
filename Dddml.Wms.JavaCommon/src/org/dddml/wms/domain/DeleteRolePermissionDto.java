@@ -9,5 +9,12 @@ public class DeleteRolePermissionDto extends AbstractRolePermissionCommandDto
         return COMMAND_TYPE_DELETE;
     }
 
+    public RolePermissionCommand.DeleteRolePermission toDeleteRolePermission()
+    {
+        AbstractRolePermissionCommand.SimpleDeleteRolePermission command = new AbstractRolePermissionCommand.SimpleDeleteRolePermission();
+        ((AbstractRolePermissionCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

@@ -30,5 +30,11 @@ public abstract class AbstractOrganizationStructureTypeCommandDto extends Abstra
     }
 
 
+    public void copyTo(AbstractOrganizationStructureTypeCommand command)
+    {
+        command.setId(this.getId());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

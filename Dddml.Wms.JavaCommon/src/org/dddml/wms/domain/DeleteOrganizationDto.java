@@ -9,5 +9,12 @@ public class DeleteOrganizationDto extends AbstractOrganizationCommandDto
         return COMMAND_TYPE_DELETE;
     }
 
+    public OrganizationCommand.DeleteOrganization toDeleteOrganization()
+    {
+        AbstractOrganizationCommand.SimpleDeleteOrganization command = new AbstractOrganizationCommand.SimpleDeleteOrganization();
+        ((AbstractOrganizationCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

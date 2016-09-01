@@ -101,11 +101,53 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
     }
 
 
+    public void copyTo(AbstractWarehouseCommand.AbstractCreateOrMergePatchWarehouse command)
+    {
+        ((AbstractWarehouseCommandDto) this).copyTo(command);
+        command.setName(this.getName());
+        command.setDescription(this.getDescription());
+        command.setIsInTransit(this.getIsInTransit());
+        command.setActive(this.getActive());
+    }
+
+    public WarehouseCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractWarehouseCommand.SimpleCreateWarehouse command = new AbstractWarehouseCommand.SimpleCreateWarehouse();
+            copyTo((AbstractWarehouseCommand.AbstractCreateWarehouse) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractWarehouseCommand.SimpleMergePatchWarehouse command = new AbstractWarehouseCommand.SimpleMergePatchWarehouse();
+            copyTo((AbstractWarehouseCommand.SimpleMergePatchWarehouse) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractWarehouseCommand.AbstractCreateWarehouse command)
+    {
+        copyTo((AbstractWarehouseCommand.AbstractCreateOrMergePatchWarehouse) command);
+    }
+
+    public void copyTo(AbstractWarehouseCommand.AbstractMergePatchWarehouse command)
+    {
+        copyTo((AbstractWarehouseCommand.AbstractCreateOrMergePatchWarehouse) command);
+        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyIsInTransitRemoved(this.getIsPropertyIsInTransitRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    }
+
     public static class CreateWarehouseDto extends CreateOrMergePatchWarehouseDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public WarehouseCommand.CreateWarehouse toCreateWarehouse()
+        {
+            return (WarehouseCommand.CreateWarehouse) toCommand();
         }
 
     }
@@ -115,6 +157,11 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public WarehouseCommand.MergePatchWarehouse toMergePatchWarehouse()
+        {
+            return (WarehouseCommand.MergePatchWarehouse) toCommand();
         }
 
     }

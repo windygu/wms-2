@@ -9,5 +9,12 @@ public class RemoveUserClaimDto extends CreateOrMergePatchUserClaimDto
         return COMMAND_TYPE_REMOVE;
     }
 
+    public UserClaimCommand.RemoveUserClaim toRemoveUserClaim()
+    {
+        AbstractUserClaimCommand.SimpleRemoveUserClaim command = new AbstractUserClaimCommand.SimpleRemoveUserClaim();
+        ((AbstractUserClaimCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

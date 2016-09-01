@@ -149,11 +149,62 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
     }
 
 
+    public void copyTo(AbstractAttributeSetInstanceExtensionFieldCommand.AbstractCreateOrMergePatchAttributeSetInstanceExtensionField command)
+    {
+        ((AbstractAttributeSetInstanceExtensionFieldCommandDto) this).copyTo(command);
+        command.setName(this.getName());
+        command.setType(this.getType());
+        command.setLength(this.getLength());
+        command.setAlias(this.getAlias());
+        command.setDescription(this.getDescription());
+        command.setActive(this.getActive());
+    }
+
+    public AttributeSetInstanceExtensionFieldCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractAttributeSetInstanceExtensionFieldCommand.SimpleCreateAttributeSetInstanceExtensionField command = new AbstractAttributeSetInstanceExtensionFieldCommand.SimpleCreateAttributeSetInstanceExtensionField();
+            copyTo((AbstractAttributeSetInstanceExtensionFieldCommand.AbstractCreateAttributeSetInstanceExtensionField) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractAttributeSetInstanceExtensionFieldCommand.SimpleMergePatchAttributeSetInstanceExtensionField command = new AbstractAttributeSetInstanceExtensionFieldCommand.SimpleMergePatchAttributeSetInstanceExtensionField();
+            copyTo((AbstractAttributeSetInstanceExtensionFieldCommand.SimpleMergePatchAttributeSetInstanceExtensionField) command);
+            return command;
+        } 
+        else if (COMMAND_TYPE_REMOVE.equals(getCommandType())) {
+            AbstractAttributeSetInstanceExtensionFieldCommand.SimpleRemoveAttributeSetInstanceExtensionField command = new AbstractAttributeSetInstanceExtensionFieldCommand.SimpleRemoveAttributeSetInstanceExtensionField();
+            ((AbstractAttributeSetInstanceExtensionFieldCommandDto) this).copyTo(command);
+            return command;
+        }
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractAttributeSetInstanceExtensionFieldCommand.AbstractCreateAttributeSetInstanceExtensionField command)
+    {
+        copyTo((AbstractAttributeSetInstanceExtensionFieldCommand.AbstractCreateOrMergePatchAttributeSetInstanceExtensionField) command);
+    }
+
+    public void copyTo(AbstractAttributeSetInstanceExtensionFieldCommand.AbstractMergePatchAttributeSetInstanceExtensionField command)
+    {
+        copyTo((AbstractAttributeSetInstanceExtensionFieldCommand.AbstractCreateOrMergePatchAttributeSetInstanceExtensionField) command);
+        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyTypeRemoved(this.getIsPropertyTypeRemoved());
+        command.setIsPropertyLengthRemoved(this.getIsPropertyLengthRemoved());
+        command.setIsPropertyAliasRemoved(this.getIsPropertyAliasRemoved());
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    }
+
     public static class CreateAttributeSetInstanceExtensionFieldDto extends CreateOrMergePatchAttributeSetInstanceExtensionFieldDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField toCreateAttributeSetInstanceExtensionField()
+        {
+            return (AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField) toCommand();
         }
 
     }
@@ -163,6 +214,11 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField toMergePatchAttributeSetInstanceExtensionField()
+        {
+            return (AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField) toCommand();
         }
 
     }

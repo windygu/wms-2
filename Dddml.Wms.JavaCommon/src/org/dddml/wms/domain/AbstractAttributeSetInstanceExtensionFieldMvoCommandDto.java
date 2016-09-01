@@ -30,5 +30,11 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoCommandDto ex
     }
 
 
+    public void copyTo(AbstractAttributeSetInstanceExtensionFieldMvoCommand command)
+    {
+        command.setAttributeSetInstanceExtensionFieldId((this.getAttributeSetInstanceExtensionFieldId() == null) ? null : this.getAttributeSetInstanceExtensionFieldId().toAttributeSetInstanceExtensionFieldId());
+        command.setAttrSetInstEFGroupVersion(this.getAttrSetInstEFGroupVersion());
+    }
+
 }
 

@@ -30,5 +30,11 @@ public abstract class AbstractUserLoginMvoCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractUserLoginMvoCommand command)
+    {
+        command.setUserLoginId((this.getUserLoginId() == null) ? null : this.getUserLoginId().toUserLoginId());
+        command.setUserVersion(this.getUserVersion());
+    }
+
 }
 

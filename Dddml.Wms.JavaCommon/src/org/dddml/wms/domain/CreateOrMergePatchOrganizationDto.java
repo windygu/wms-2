@@ -125,11 +125,55 @@ public class CreateOrMergePatchOrganizationDto extends AbstractOrganizationComma
     }
 
 
+    public void copyTo(AbstractOrganizationCommand.AbstractCreateOrMergePatchOrganization command)
+    {
+        ((AbstractOrganizationCommandDto) this).copyTo(command);
+        command.setName(this.getName());
+        command.setDescription(this.getDescription());
+        command.setType(this.getType());
+        command.setIsSummary(this.getIsSummary());
+        command.setActive(this.getActive());
+    }
+
+    public OrganizationCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractOrganizationCommand.SimpleCreateOrganization command = new AbstractOrganizationCommand.SimpleCreateOrganization();
+            copyTo((AbstractOrganizationCommand.AbstractCreateOrganization) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractOrganizationCommand.SimpleMergePatchOrganization command = new AbstractOrganizationCommand.SimpleMergePatchOrganization();
+            copyTo((AbstractOrganizationCommand.SimpleMergePatchOrganization) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractOrganizationCommand.AbstractCreateOrganization command)
+    {
+        copyTo((AbstractOrganizationCommand.AbstractCreateOrMergePatchOrganization) command);
+    }
+
+    public void copyTo(AbstractOrganizationCommand.AbstractMergePatchOrganization command)
+    {
+        copyTo((AbstractOrganizationCommand.AbstractCreateOrMergePatchOrganization) command);
+        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyTypeRemoved(this.getIsPropertyTypeRemoved());
+        command.setIsPropertyIsSummaryRemoved(this.getIsPropertyIsSummaryRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    }
+
     public static class CreateOrganizationDto extends CreateOrMergePatchOrganizationDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public OrganizationCommand.CreateOrganization toCreateOrganization()
+        {
+            return (OrganizationCommand.CreateOrganization) toCommand();
         }
 
     }
@@ -139,6 +183,11 @@ public class CreateOrMergePatchOrganizationDto extends AbstractOrganizationComma
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public OrganizationCommand.MergePatchOrganization toMergePatchOrganization()
+        {
+            return (OrganizationCommand.MergePatchOrganization) toCommand();
         }
 
     }

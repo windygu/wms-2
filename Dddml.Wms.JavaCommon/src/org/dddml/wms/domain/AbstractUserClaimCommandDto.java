@@ -18,5 +18,10 @@ public abstract class AbstractUserClaimCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractUserClaimCommand command)
+    {
+        command.setClaimId(this.getClaimId());
+    }
+
 }
 

@@ -97,11 +97,51 @@ public class CreateOrMergePatchTeamDto extends AbstractTeamCommandDto
     }
 
 
+    public void copyTo(AbstractTeamCommand.AbstractCreateOrMergePatchTeam command)
+    {
+        ((AbstractTeamCommandDto) this).copyTo(command);
+        command.setDescription(this.getDescription());
+        command.setActive(this.getActive());
+    }
+
+    public TeamCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractTeamCommand.SimpleCreateTeam command = new AbstractTeamCommand.SimpleCreateTeam();
+            copyTo((AbstractTeamCommand.AbstractCreateTeam) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractTeamCommand.SimpleMergePatchTeam command = new AbstractTeamCommand.SimpleMergePatchTeam();
+            copyTo((AbstractTeamCommand.SimpleMergePatchTeam) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractTeamCommand.AbstractCreateTeam command)
+    {
+        copyTo((AbstractTeamCommand.AbstractCreateOrMergePatchTeam) command);
+    }
+
+    public void copyTo(AbstractTeamCommand.AbstractMergePatchTeam command)
+    {
+        copyTo((AbstractTeamCommand.AbstractCreateOrMergePatchTeam) command);
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyPlayersRemoved(this.getIsPropertyPlayersRemoved());
+        command.setIsPropertyMascotsRemoved(this.getIsPropertyMascotsRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    }
+
     public static class CreateTeamDto extends CreateOrMergePatchTeamDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public TeamCommand.CreateTeam toCreateTeam()
+        {
+            return (TeamCommand.CreateTeam) toCommand();
         }
 
     }
@@ -111,6 +151,11 @@ public class CreateOrMergePatchTeamDto extends AbstractTeamCommandDto
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public TeamCommand.MergePatchTeam toMergePatchTeam()
+        {
+            return (TeamCommand.MergePatchTeam) toCommand();
         }
 
     }

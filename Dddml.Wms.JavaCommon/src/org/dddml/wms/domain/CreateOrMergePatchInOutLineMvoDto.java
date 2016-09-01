@@ -1411,11 +1411,162 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
     }
 
 
+    public void copyTo(AbstractInOutLineMvoCommand.AbstractCreateOrMergePatchInOutLineMvo command)
+    {
+        ((AbstractInOutLineMvoCommandDto) this).copyTo(command);
+        command.setLineNumber(this.getLineNumber());
+        command.setDescription(this.getDescription());
+        command.setLocatorId(this.getLocatorId());
+        command.setProduct(this.getProduct());
+        command.setUomId(this.getUomId());
+        command.setMovementQuantity(this.getMovementQuantity());
+        command.setConfirmedQuantity(this.getConfirmedQuantity());
+        command.setScrappedQuantity(this.getScrappedQuantity());
+        command.setTargetQuantity(this.getTargetQuantity());
+        command.setPickedQuantity(this.getPickedQuantity());
+        command.setIsInvoiced(this.getIsInvoiced());
+        command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
+        command.setIsDescription(this.getIsDescription());
+        command.setProcessed(this.getProcessed());
+        command.setQuantityEntered(this.getQuantityEntered());
+        command.setRmaLineNumber(this.getRmaLineNumber());
+        command.setReversalLineNumber(this.getReversalLineNumber());
+        command.setVersion(this.getVersion());
+        command.setActive(this.getActive());
+        command.setInOutIsSOTransaction(this.getInOutIsSOTransaction());
+        command.setDocumentAction(this.getDocumentAction());
+        command.setInOutPosted(this.getInOutPosted());
+        command.setInOutProcessing(this.getInOutProcessing());
+        command.setInOutProcessed(this.getInOutProcessed());
+        command.setInOutDocumentType(this.getInOutDocumentType());
+        command.setInOutDescription(this.getInOutDescription());
+        command.setInOutOrderNumber(this.getInOutOrderNumber());
+        command.setInOutDateOrdered(this.getInOutDateOrdered());
+        command.setInOutIsPrinted(this.getInOutIsPrinted());
+        command.setInOutMovementType(this.getInOutMovementType());
+        command.setInOutMovementDate(this.getInOutMovementDate());
+        command.setInOutBusinessPartnerId(this.getInOutBusinessPartnerId());
+        command.setInOutWarehouseId(this.getInOutWarehouseId());
+        command.setInOutPOReference(this.getInOutPOReference());
+        command.setInOutFreightAmount(this.getInOutFreightAmount());
+        command.setInOutShipperId(this.getInOutShipperId());
+        command.setInOutChargeAmount(this.getInOutChargeAmount());
+        command.setInOutDatePrinted(this.getInOutDatePrinted());
+        command.setInOutSalesRepresentative(this.getInOutSalesRepresentative());
+        command.setInOutNumberOfPackages(this.getInOutNumberOfPackages());
+        command.setInOutPickDate(this.getInOutPickDate());
+        command.setInOutShipDate(this.getInOutShipDate());
+        command.setInOutTrackingNumber(this.getInOutTrackingNumber());
+        command.setInOutDateReceived(this.getInOutDateReceived());
+        command.setInOutIsInTransit(this.getInOutIsInTransit());
+        command.setInOutIsApproved(this.getInOutIsApproved());
+        command.setInOutIsInDispute(this.getInOutIsInDispute());
+        command.setInOutVolume(this.getInOutVolume());
+        command.setInOutWeight(this.getInOutWeight());
+        command.setInOutRmaNumber(this.getInOutRmaNumber());
+        command.setInOutReversalNumber(this.getInOutReversalNumber());
+        command.setInOutIsDropShip(this.getInOutIsDropShip());
+        command.setInOutDropShipBusinessPartnerId(this.getInOutDropShipBusinessPartnerId());
+        command.setInOutCreatedBy(this.getInOutCreatedBy());
+        command.setInOutCreatedAt(this.getInOutCreatedAt());
+        command.setInOutUpdatedBy(this.getInOutUpdatedBy());
+        command.setInOutUpdatedAt(this.getInOutUpdatedAt());
+        command.setInOutActive(this.getInOutActive());
+        command.setInOutDeleted(this.getInOutDeleted());
+    }
+
+    public InOutLineMvoCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractInOutLineMvoCommand.SimpleCreateInOutLineMvo command = new AbstractInOutLineMvoCommand.SimpleCreateInOutLineMvo();
+            copyTo((AbstractInOutLineMvoCommand.AbstractCreateInOutLineMvo) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractInOutLineMvoCommand.SimpleMergePatchInOutLineMvo command = new AbstractInOutLineMvoCommand.SimpleMergePatchInOutLineMvo();
+            copyTo((AbstractInOutLineMvoCommand.SimpleMergePatchInOutLineMvo) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractInOutLineMvoCommand.AbstractCreateInOutLineMvo command)
+    {
+        copyTo((AbstractInOutLineMvoCommand.AbstractCreateOrMergePatchInOutLineMvo) command);
+    }
+
+    public void copyTo(AbstractInOutLineMvoCommand.AbstractMergePatchInOutLineMvo command)
+    {
+        copyTo((AbstractInOutLineMvoCommand.AbstractCreateOrMergePatchInOutLineMvo) command);
+        command.setIsPropertyLineNumberRemoved(this.getIsPropertyLineNumberRemoved());
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyLocatorIdRemoved(this.getIsPropertyLocatorIdRemoved());
+        command.setIsPropertyProductRemoved(this.getIsPropertyProductRemoved());
+        command.setIsPropertyUomIdRemoved(this.getIsPropertyUomIdRemoved());
+        command.setIsPropertyMovementQuantityRemoved(this.getIsPropertyMovementQuantityRemoved());
+        command.setIsPropertyConfirmedQuantityRemoved(this.getIsPropertyConfirmedQuantityRemoved());
+        command.setIsPropertyScrappedQuantityRemoved(this.getIsPropertyScrappedQuantityRemoved());
+        command.setIsPropertyTargetQuantityRemoved(this.getIsPropertyTargetQuantityRemoved());
+        command.setIsPropertyPickedQuantityRemoved(this.getIsPropertyPickedQuantityRemoved());
+        command.setIsPropertyIsInvoicedRemoved(this.getIsPropertyIsInvoicedRemoved());
+        command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
+        command.setIsPropertyIsDescriptionRemoved(this.getIsPropertyIsDescriptionRemoved());
+        command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());
+        command.setIsPropertyQuantityEnteredRemoved(this.getIsPropertyQuantityEnteredRemoved());
+        command.setIsPropertyRmaLineNumberRemoved(this.getIsPropertyRmaLineNumberRemoved());
+        command.setIsPropertyReversalLineNumberRemoved(this.getIsPropertyReversalLineNumberRemoved());
+        command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+        command.setIsPropertyInOutIsSOTransactionRemoved(this.getIsPropertyInOutIsSOTransactionRemoved());
+        command.setIsPropertyInOutPostedRemoved(this.getIsPropertyInOutPostedRemoved());
+        command.setIsPropertyInOutProcessingRemoved(this.getIsPropertyInOutProcessingRemoved());
+        command.setIsPropertyInOutProcessedRemoved(this.getIsPropertyInOutProcessedRemoved());
+        command.setIsPropertyInOutDocumentTypeRemoved(this.getIsPropertyInOutDocumentTypeRemoved());
+        command.setIsPropertyInOutDescriptionRemoved(this.getIsPropertyInOutDescriptionRemoved());
+        command.setIsPropertyInOutOrderNumberRemoved(this.getIsPropertyInOutOrderNumberRemoved());
+        command.setIsPropertyInOutDateOrderedRemoved(this.getIsPropertyInOutDateOrderedRemoved());
+        command.setIsPropertyInOutIsPrintedRemoved(this.getIsPropertyInOutIsPrintedRemoved());
+        command.setIsPropertyInOutMovementTypeRemoved(this.getIsPropertyInOutMovementTypeRemoved());
+        command.setIsPropertyInOutMovementDateRemoved(this.getIsPropertyInOutMovementDateRemoved());
+        command.setIsPropertyInOutBusinessPartnerIdRemoved(this.getIsPropertyInOutBusinessPartnerIdRemoved());
+        command.setIsPropertyInOutWarehouseIdRemoved(this.getIsPropertyInOutWarehouseIdRemoved());
+        command.setIsPropertyInOutPOReferenceRemoved(this.getIsPropertyInOutPOReferenceRemoved());
+        command.setIsPropertyInOutFreightAmountRemoved(this.getIsPropertyInOutFreightAmountRemoved());
+        command.setIsPropertyInOutShipperIdRemoved(this.getIsPropertyInOutShipperIdRemoved());
+        command.setIsPropertyInOutChargeAmountRemoved(this.getIsPropertyInOutChargeAmountRemoved());
+        command.setIsPropertyInOutDatePrintedRemoved(this.getIsPropertyInOutDatePrintedRemoved());
+        command.setIsPropertyInOutSalesRepresentativeRemoved(this.getIsPropertyInOutSalesRepresentativeRemoved());
+        command.setIsPropertyInOutNumberOfPackagesRemoved(this.getIsPropertyInOutNumberOfPackagesRemoved());
+        command.setIsPropertyInOutPickDateRemoved(this.getIsPropertyInOutPickDateRemoved());
+        command.setIsPropertyInOutShipDateRemoved(this.getIsPropertyInOutShipDateRemoved());
+        command.setIsPropertyInOutTrackingNumberRemoved(this.getIsPropertyInOutTrackingNumberRemoved());
+        command.setIsPropertyInOutDateReceivedRemoved(this.getIsPropertyInOutDateReceivedRemoved());
+        command.setIsPropertyInOutIsInTransitRemoved(this.getIsPropertyInOutIsInTransitRemoved());
+        command.setIsPropertyInOutIsApprovedRemoved(this.getIsPropertyInOutIsApprovedRemoved());
+        command.setIsPropertyInOutIsInDisputeRemoved(this.getIsPropertyInOutIsInDisputeRemoved());
+        command.setIsPropertyInOutVolumeRemoved(this.getIsPropertyInOutVolumeRemoved());
+        command.setIsPropertyInOutWeightRemoved(this.getIsPropertyInOutWeightRemoved());
+        command.setIsPropertyInOutRmaNumberRemoved(this.getIsPropertyInOutRmaNumberRemoved());
+        command.setIsPropertyInOutReversalNumberRemoved(this.getIsPropertyInOutReversalNumberRemoved());
+        command.setIsPropertyInOutIsDropShipRemoved(this.getIsPropertyInOutIsDropShipRemoved());
+        command.setIsPropertyInOutDropShipBusinessPartnerIdRemoved(this.getIsPropertyInOutDropShipBusinessPartnerIdRemoved());
+        command.setIsPropertyInOutCreatedByRemoved(this.getIsPropertyInOutCreatedByRemoved());
+        command.setIsPropertyInOutCreatedAtRemoved(this.getIsPropertyInOutCreatedAtRemoved());
+        command.setIsPropertyInOutUpdatedByRemoved(this.getIsPropertyInOutUpdatedByRemoved());
+        command.setIsPropertyInOutUpdatedAtRemoved(this.getIsPropertyInOutUpdatedAtRemoved());
+        command.setIsPropertyInOutActiveRemoved(this.getIsPropertyInOutActiveRemoved());
+        command.setIsPropertyInOutDeletedRemoved(this.getIsPropertyInOutDeletedRemoved());
+    }
+
     public static class CreateInOutLineMvoDto extends CreateOrMergePatchInOutLineMvoDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public InOutLineMvoCommand.CreateInOutLineMvo toCreateInOutLineMvo()
+        {
+            return (InOutLineMvoCommand.CreateInOutLineMvo) toCommand();
         }
 
     }
@@ -1425,6 +1576,11 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public InOutLineMvoCommand.MergePatchInOutLineMvo toMergePatchInOutLineMvo()
+        {
+            return (InOutLineMvoCommand.MergePatchInOutLineMvo) toCommand();
         }
 
     }

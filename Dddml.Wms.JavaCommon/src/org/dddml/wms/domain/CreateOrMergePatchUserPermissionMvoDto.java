@@ -461,11 +461,83 @@ public class CreateOrMergePatchUserPermissionMvoDto extends AbstractUserPermissi
     }
 
 
+    public void copyTo(AbstractUserPermissionMvoCommand.AbstractCreateOrMergePatchUserPermissionMvo command)
+    {
+        ((AbstractUserPermissionMvoCommandDto) this).copyTo(command);
+        command.setVersion(this.getVersion());
+        command.setActive(this.getActive());
+        command.setUserUserName(this.getUserUserName());
+        command.setUserAccessFailedCount(this.getUserAccessFailedCount());
+        command.setUserEmail(this.getUserEmail());
+        command.setUserEmailConfirmed(this.getUserEmailConfirmed());
+        command.setUserLockoutEnabled(this.getUserLockoutEnabled());
+        command.setUserLockoutEndDateUtc(this.getUserLockoutEndDateUtc());
+        command.setUserPasswordHash(this.getUserPasswordHash());
+        command.setUserPhoneNumber(this.getUserPhoneNumber());
+        command.setUserPhoneNumberConfirmed(this.getUserPhoneNumberConfirmed());
+        command.setUserTwoFactorEnabled(this.getUserTwoFactorEnabled());
+        command.setUserSecurityStamp(this.getUserSecurityStamp());
+        command.setUserCreatedBy(this.getUserCreatedBy());
+        command.setUserCreatedAt(this.getUserCreatedAt());
+        command.setUserUpdatedBy(this.getUserUpdatedBy());
+        command.setUserUpdatedAt(this.getUserUpdatedAt());
+        command.setUserActive(this.getUserActive());
+        command.setUserDeleted(this.getUserDeleted());
+    }
+
+    public UserPermissionMvoCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractUserPermissionMvoCommand.SimpleCreateUserPermissionMvo command = new AbstractUserPermissionMvoCommand.SimpleCreateUserPermissionMvo();
+            copyTo((AbstractUserPermissionMvoCommand.AbstractCreateUserPermissionMvo) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractUserPermissionMvoCommand.SimpleMergePatchUserPermissionMvo command = new AbstractUserPermissionMvoCommand.SimpleMergePatchUserPermissionMvo();
+            copyTo((AbstractUserPermissionMvoCommand.SimpleMergePatchUserPermissionMvo) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractUserPermissionMvoCommand.AbstractCreateUserPermissionMvo command)
+    {
+        copyTo((AbstractUserPermissionMvoCommand.AbstractCreateOrMergePatchUserPermissionMvo) command);
+    }
+
+    public void copyTo(AbstractUserPermissionMvoCommand.AbstractMergePatchUserPermissionMvo command)
+    {
+        copyTo((AbstractUserPermissionMvoCommand.AbstractCreateOrMergePatchUserPermissionMvo) command);
+        command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+        command.setIsPropertyUserUserNameRemoved(this.getIsPropertyUserUserNameRemoved());
+        command.setIsPropertyUserAccessFailedCountRemoved(this.getIsPropertyUserAccessFailedCountRemoved());
+        command.setIsPropertyUserEmailRemoved(this.getIsPropertyUserEmailRemoved());
+        command.setIsPropertyUserEmailConfirmedRemoved(this.getIsPropertyUserEmailConfirmedRemoved());
+        command.setIsPropertyUserLockoutEnabledRemoved(this.getIsPropertyUserLockoutEnabledRemoved());
+        command.setIsPropertyUserLockoutEndDateUtcRemoved(this.getIsPropertyUserLockoutEndDateUtcRemoved());
+        command.setIsPropertyUserPasswordHashRemoved(this.getIsPropertyUserPasswordHashRemoved());
+        command.setIsPropertyUserPhoneNumberRemoved(this.getIsPropertyUserPhoneNumberRemoved());
+        command.setIsPropertyUserPhoneNumberConfirmedRemoved(this.getIsPropertyUserPhoneNumberConfirmedRemoved());
+        command.setIsPropertyUserTwoFactorEnabledRemoved(this.getIsPropertyUserTwoFactorEnabledRemoved());
+        command.setIsPropertyUserSecurityStampRemoved(this.getIsPropertyUserSecurityStampRemoved());
+        command.setIsPropertyUserCreatedByRemoved(this.getIsPropertyUserCreatedByRemoved());
+        command.setIsPropertyUserCreatedAtRemoved(this.getIsPropertyUserCreatedAtRemoved());
+        command.setIsPropertyUserUpdatedByRemoved(this.getIsPropertyUserUpdatedByRemoved());
+        command.setIsPropertyUserUpdatedAtRemoved(this.getIsPropertyUserUpdatedAtRemoved());
+        command.setIsPropertyUserActiveRemoved(this.getIsPropertyUserActiveRemoved());
+        command.setIsPropertyUserDeletedRemoved(this.getIsPropertyUserDeletedRemoved());
+    }
+
     public static class CreateUserPermissionMvoDto extends CreateOrMergePatchUserPermissionMvoDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public UserPermissionMvoCommand.CreateUserPermissionMvo toCreateUserPermissionMvo()
+        {
+            return (UserPermissionMvoCommand.CreateUserPermissionMvo) toCommand();
         }
 
     }
@@ -475,6 +547,11 @@ public class CreateOrMergePatchUserPermissionMvoDto extends AbstractUserPermissi
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public UserPermissionMvoCommand.MergePatchUserPermissionMvo toMergePatchUserPermissionMvo()
+        {
+            return (UserPermissionMvoCommand.MergePatchUserPermissionMvo) toCommand();
         }
 
     }

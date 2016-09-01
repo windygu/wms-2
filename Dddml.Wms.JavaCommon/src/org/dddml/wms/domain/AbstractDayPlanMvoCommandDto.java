@@ -30,5 +30,11 @@ public abstract class AbstractDayPlanMvoCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractDayPlanMvoCommand command)
+    {
+        command.setDayPlanId((this.getDayPlanId() == null) ? null : this.getDayPlanId().toDayPlanId());
+        command.setPersonVersion(this.getPersonVersion());
+    }
+
 }
 

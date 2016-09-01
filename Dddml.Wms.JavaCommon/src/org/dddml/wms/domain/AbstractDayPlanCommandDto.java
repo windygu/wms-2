@@ -18,5 +18,10 @@ public abstract class AbstractDayPlanCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractDayPlanCommand command)
+    {
+        command.setDay(this.getDay());
+    }
+
 }
 

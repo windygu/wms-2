@@ -293,11 +293,69 @@ public class CreateOrMergePatchYearPlanMvoDto extends AbstractYearPlanMvoCommand
     }
 
 
+    public void copyTo(AbstractYearPlanMvoCommand.AbstractCreateOrMergePatchYearPlanMvo command)
+    {
+        ((AbstractYearPlanMvoCommandDto) this).copyTo(command);
+        command.setDescription(this.getDescription());
+        command.setVersion(this.getVersion());
+        command.setActive(this.getActive());
+        command.setPersonBirthDate(this.getPersonBirthDate());
+        command.setPersonLoves((this.getPersonLoves() == null) ? null : this.getPersonLoves().toPersonalName());
+        command.setPersonEmergencyContact((this.getPersonEmergencyContact() == null) ? null : this.getPersonEmergencyContact().toContact());
+        command.setPersonCreatedBy(this.getPersonCreatedBy());
+        command.setPersonCreatedAt(this.getPersonCreatedAt());
+        command.setPersonUpdatedBy(this.getPersonUpdatedBy());
+        command.setPersonUpdatedAt(this.getPersonUpdatedAt());
+        command.setPersonActive(this.getPersonActive());
+        command.setPersonDeleted(this.getPersonDeleted());
+    }
+
+    public YearPlanMvoCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractYearPlanMvoCommand.SimpleCreateYearPlanMvo command = new AbstractYearPlanMvoCommand.SimpleCreateYearPlanMvo();
+            copyTo((AbstractYearPlanMvoCommand.AbstractCreateYearPlanMvo) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractYearPlanMvoCommand.SimpleMergePatchYearPlanMvo command = new AbstractYearPlanMvoCommand.SimpleMergePatchYearPlanMvo();
+            copyTo((AbstractYearPlanMvoCommand.SimpleMergePatchYearPlanMvo) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractYearPlanMvoCommand.AbstractCreateYearPlanMvo command)
+    {
+        copyTo((AbstractYearPlanMvoCommand.AbstractCreateOrMergePatchYearPlanMvo) command);
+    }
+
+    public void copyTo(AbstractYearPlanMvoCommand.AbstractMergePatchYearPlanMvo command)
+    {
+        copyTo((AbstractYearPlanMvoCommand.AbstractCreateOrMergePatchYearPlanMvo) command);
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+        command.setIsPropertyPersonBirthDateRemoved(this.getIsPropertyPersonBirthDateRemoved());
+        command.setIsPropertyPersonLovesRemoved(this.getIsPropertyPersonLovesRemoved());
+        command.setIsPropertyPersonEmergencyContactRemoved(this.getIsPropertyPersonEmergencyContactRemoved());
+        command.setIsPropertyPersonCreatedByRemoved(this.getIsPropertyPersonCreatedByRemoved());
+        command.setIsPropertyPersonCreatedAtRemoved(this.getIsPropertyPersonCreatedAtRemoved());
+        command.setIsPropertyPersonUpdatedByRemoved(this.getIsPropertyPersonUpdatedByRemoved());
+        command.setIsPropertyPersonUpdatedAtRemoved(this.getIsPropertyPersonUpdatedAtRemoved());
+        command.setIsPropertyPersonActiveRemoved(this.getIsPropertyPersonActiveRemoved());
+        command.setIsPropertyPersonDeletedRemoved(this.getIsPropertyPersonDeletedRemoved());
+    }
+
     public static class CreateYearPlanMvoDto extends CreateOrMergePatchYearPlanMvoDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public YearPlanMvoCommand.CreateYearPlanMvo toCreateYearPlanMvo()
+        {
+            return (YearPlanMvoCommand.CreateYearPlanMvo) toCommand();
         }
 
     }
@@ -307,6 +365,11 @@ public class CreateOrMergePatchYearPlanMvoDto extends AbstractYearPlanMvoCommand
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public YearPlanMvoCommand.MergePatchYearPlanMvo toMergePatchYearPlanMvo()
+        {
+            return (YearPlanMvoCommand.MergePatchYearPlanMvo) toCommand();
         }
 
     }

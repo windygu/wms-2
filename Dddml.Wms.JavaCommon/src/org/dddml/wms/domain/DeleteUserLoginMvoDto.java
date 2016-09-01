@@ -9,5 +9,12 @@ public class DeleteUserLoginMvoDto extends AbstractUserLoginMvoCommandDto
         return COMMAND_TYPE_DELETE;
     }
 
+    public UserLoginMvoCommand.DeleteUserLoginMvo toDeleteUserLoginMvo()
+    {
+        AbstractUserLoginMvoCommand.SimpleDeleteUserLoginMvo command = new AbstractUserLoginMvoCommand.SimpleDeleteUserLoginMvo();
+        ((AbstractUserLoginMvoCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

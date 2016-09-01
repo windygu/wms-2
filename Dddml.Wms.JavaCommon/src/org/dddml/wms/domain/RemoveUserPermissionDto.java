@@ -9,5 +9,12 @@ public class RemoveUserPermissionDto extends CreateOrMergePatchUserPermissionDto
         return COMMAND_TYPE_REMOVE;
     }
 
+    public UserPermissionCommand.RemoveUserPermission toRemoveUserPermission()
+    {
+        AbstractUserPermissionCommand.SimpleRemoveUserPermission command = new AbstractUserPermissionCommand.SimpleRemoveUserPermission();
+        ((AbstractUserPermissionCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

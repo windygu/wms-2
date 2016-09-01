@@ -30,5 +30,11 @@ public abstract class AbstractOrganizationCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractOrganizationCommand command)
+    {
+        command.setOrganizationId(this.getOrganizationId());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

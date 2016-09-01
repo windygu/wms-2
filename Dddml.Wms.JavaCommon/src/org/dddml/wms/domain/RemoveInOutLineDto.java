@@ -9,5 +9,12 @@ public class RemoveInOutLineDto extends CreateOrMergePatchInOutLineDto
         return COMMAND_TYPE_REMOVE;
     }
 
+    public InOutLineCommand.RemoveInOutLine toRemoveInOutLine()
+    {
+        AbstractInOutLineCommand.SimpleRemoveInOutLine command = new AbstractInOutLineCommand.SimpleRemoveInOutLine();
+        ((AbstractInOutLineCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

@@ -9,5 +9,12 @@ public class RemoveYearPlanDto extends CreateOrMergePatchYearPlanDto
         return COMMAND_TYPE_REMOVE;
     }
 
+    public YearPlanCommand.RemoveYearPlan toRemoveYearPlan()
+    {
+        AbstractYearPlanCommand.SimpleRemoveYearPlan command = new AbstractYearPlanCommand.SimpleRemoveYearPlan();
+        ((AbstractYearPlanCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

@@ -18,5 +18,10 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldCommandDto exten
     }
 
 
+    public void copyTo(AbstractAttributeSetInstanceExtensionFieldCommand command)
+    {
+        command.setIndex(this.getIndex());
+    }
+
 }
 

@@ -101,11 +101,53 @@ public class CreateOrMergePatchPermissionDto extends AbstractPermissionCommandDt
     }
 
 
+    public void copyTo(AbstractPermissionCommand.AbstractCreateOrMergePatchPermission command)
+    {
+        ((AbstractPermissionCommandDto) this).copyTo(command);
+        command.setName(this.getName());
+        command.setParentPermissionId(this.getParentPermissionId());
+        command.setDescription(this.getDescription());
+        command.setActive(this.getActive());
+    }
+
+    public PermissionCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractPermissionCommand.SimpleCreatePermission command = new AbstractPermissionCommand.SimpleCreatePermission();
+            copyTo((AbstractPermissionCommand.AbstractCreatePermission) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractPermissionCommand.SimpleMergePatchPermission command = new AbstractPermissionCommand.SimpleMergePatchPermission();
+            copyTo((AbstractPermissionCommand.SimpleMergePatchPermission) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractPermissionCommand.AbstractCreatePermission command)
+    {
+        copyTo((AbstractPermissionCommand.AbstractCreateOrMergePatchPermission) command);
+    }
+
+    public void copyTo(AbstractPermissionCommand.AbstractMergePatchPermission command)
+    {
+        copyTo((AbstractPermissionCommand.AbstractCreateOrMergePatchPermission) command);
+        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyParentPermissionIdRemoved(this.getIsPropertyParentPermissionIdRemoved());
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    }
+
     public static class CreatePermissionDto extends CreateOrMergePatchPermissionDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public PermissionCommand.CreatePermission toCreatePermission()
+        {
+            return (PermissionCommand.CreatePermission) toCommand();
         }
 
     }
@@ -115,6 +157,11 @@ public class CreateOrMergePatchPermissionDto extends AbstractPermissionCommandDt
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public PermissionCommand.MergePatchPermission toMergePatchPermission()
+        {
+            return (PermissionCommand.MergePatchPermission) toCommand();
         }
 
     }

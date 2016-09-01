@@ -9,5 +9,12 @@ public class DeleteDayPlanMvoDto extends AbstractDayPlanMvoCommandDto
         return COMMAND_TYPE_DELETE;
     }
 
+    public DayPlanMvoCommand.DeleteDayPlanMvo toDeleteDayPlanMvo()
+    {
+        AbstractDayPlanMvoCommand.SimpleDeleteDayPlanMvo command = new AbstractDayPlanMvoCommand.SimpleDeleteDayPlanMvo();
+        ((AbstractDayPlanMvoCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

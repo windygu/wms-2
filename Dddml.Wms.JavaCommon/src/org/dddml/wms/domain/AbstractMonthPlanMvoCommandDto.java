@@ -30,5 +30,11 @@ public abstract class AbstractMonthPlanMvoCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractMonthPlanMvoCommand command)
+    {
+        command.setMonthPlanId((this.getMonthPlanId() == null) ? null : this.getMonthPlanId().toMonthPlanId());
+        command.setPersonVersion(this.getPersonVersion());
+    }
+
 }
 

@@ -221,11 +221,63 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
     }
 
 
+    public void copyTo(AbstractLocatorCommand.AbstractCreateOrMergePatchLocator command)
+    {
+        ((AbstractLocatorCommandDto) this).copyTo(command);
+        command.setWarehouseId(this.getWarehouseId());
+        command.setParentLocatorId(this.getParentLocatorId());
+        command.setLocatorType(this.getLocatorType());
+        command.setPriorityNumber(this.getPriorityNumber());
+        command.setIsDefault(this.getIsDefault());
+        command.setX(this.getX());
+        command.setY(this.getY());
+        command.setZ(this.getZ());
+        command.setActive(this.getActive());
+    }
+
+    public LocatorCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractLocatorCommand.SimpleCreateLocator command = new AbstractLocatorCommand.SimpleCreateLocator();
+            copyTo((AbstractLocatorCommand.AbstractCreateLocator) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractLocatorCommand.SimpleMergePatchLocator command = new AbstractLocatorCommand.SimpleMergePatchLocator();
+            copyTo((AbstractLocatorCommand.SimpleMergePatchLocator) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractLocatorCommand.AbstractCreateLocator command)
+    {
+        copyTo((AbstractLocatorCommand.AbstractCreateOrMergePatchLocator) command);
+    }
+
+    public void copyTo(AbstractLocatorCommand.AbstractMergePatchLocator command)
+    {
+        copyTo((AbstractLocatorCommand.AbstractCreateOrMergePatchLocator) command);
+        command.setIsPropertyWarehouseIdRemoved(this.getIsPropertyWarehouseIdRemoved());
+        command.setIsPropertyParentLocatorIdRemoved(this.getIsPropertyParentLocatorIdRemoved());
+        command.setIsPropertyLocatorTypeRemoved(this.getIsPropertyLocatorTypeRemoved());
+        command.setIsPropertyPriorityNumberRemoved(this.getIsPropertyPriorityNumberRemoved());
+        command.setIsPropertyIsDefaultRemoved(this.getIsPropertyIsDefaultRemoved());
+        command.setIsPropertyXRemoved(this.getIsPropertyXRemoved());
+        command.setIsPropertyYRemoved(this.getIsPropertyYRemoved());
+        command.setIsPropertyZRemoved(this.getIsPropertyZRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    }
+
     public static class CreateLocatorDto extends CreateOrMergePatchLocatorDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public LocatorCommand.CreateLocator toCreateLocator()
+        {
+            return (LocatorCommand.CreateLocator) toCommand();
         }
 
     }
@@ -235,6 +287,11 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public LocatorCommand.MergePatchLocator toMergePatchLocator()
+        {
+            return (LocatorCommand.MergePatchLocator) toCommand();
         }
 
     }

@@ -365,11 +365,75 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
     }
 
 
+    public void copyTo(AbstractAttributeUseMvoCommand.AbstractCreateOrMergePatchAttributeUseMvo command)
+    {
+        ((AbstractAttributeUseMvoCommandDto) this).copyTo(command);
+        command.setSequenceNumber(this.getSequenceNumber());
+        command.setVersion(this.getVersion());
+        command.setActive(this.getActive());
+        command.setAttributeSetName(this.getAttributeSetName());
+        command.setAttributeSetOrganizationId(this.getAttributeSetOrganizationId());
+        command.setAttributeSetDescription(this.getAttributeSetDescription());
+        command.setAttributeSetSerialNumberAttributeId(this.getAttributeSetSerialNumberAttributeId());
+        command.setAttributeSetLotAttributeId(this.getAttributeSetLotAttributeId());
+        command.setAttributeSetReferenceId(this.getAttributeSetReferenceId());
+        command.setAttributeSetCreatedBy(this.getAttributeSetCreatedBy());
+        command.setAttributeSetCreatedAt(this.getAttributeSetCreatedAt());
+        command.setAttributeSetUpdatedBy(this.getAttributeSetUpdatedBy());
+        command.setAttributeSetUpdatedAt(this.getAttributeSetUpdatedAt());
+        command.setAttributeSetActive(this.getAttributeSetActive());
+        command.setAttributeSetDeleted(this.getAttributeSetDeleted());
+    }
+
+    public AttributeUseMvoCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractAttributeUseMvoCommand.SimpleCreateAttributeUseMvo command = new AbstractAttributeUseMvoCommand.SimpleCreateAttributeUseMvo();
+            copyTo((AbstractAttributeUseMvoCommand.AbstractCreateAttributeUseMvo) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractAttributeUseMvoCommand.SimpleMergePatchAttributeUseMvo command = new AbstractAttributeUseMvoCommand.SimpleMergePatchAttributeUseMvo();
+            copyTo((AbstractAttributeUseMvoCommand.SimpleMergePatchAttributeUseMvo) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractAttributeUseMvoCommand.AbstractCreateAttributeUseMvo command)
+    {
+        copyTo((AbstractAttributeUseMvoCommand.AbstractCreateOrMergePatchAttributeUseMvo) command);
+    }
+
+    public void copyTo(AbstractAttributeUseMvoCommand.AbstractMergePatchAttributeUseMvo command)
+    {
+        copyTo((AbstractAttributeUseMvoCommand.AbstractCreateOrMergePatchAttributeUseMvo) command);
+        command.setIsPropertySequenceNumberRemoved(this.getIsPropertySequenceNumberRemoved());
+        command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+        command.setIsPropertyAttributeSetNameRemoved(this.getIsPropertyAttributeSetNameRemoved());
+        command.setIsPropertyAttributeSetOrganizationIdRemoved(this.getIsPropertyAttributeSetOrganizationIdRemoved());
+        command.setIsPropertyAttributeSetDescriptionRemoved(this.getIsPropertyAttributeSetDescriptionRemoved());
+        command.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(this.getIsPropertyAttributeSetSerialNumberAttributeIdRemoved());
+        command.setIsPropertyAttributeSetLotAttributeIdRemoved(this.getIsPropertyAttributeSetLotAttributeIdRemoved());
+        command.setIsPropertyAttributeSetReferenceIdRemoved(this.getIsPropertyAttributeSetReferenceIdRemoved());
+        command.setIsPropertyAttributeSetCreatedByRemoved(this.getIsPropertyAttributeSetCreatedByRemoved());
+        command.setIsPropertyAttributeSetCreatedAtRemoved(this.getIsPropertyAttributeSetCreatedAtRemoved());
+        command.setIsPropertyAttributeSetUpdatedByRemoved(this.getIsPropertyAttributeSetUpdatedByRemoved());
+        command.setIsPropertyAttributeSetUpdatedAtRemoved(this.getIsPropertyAttributeSetUpdatedAtRemoved());
+        command.setIsPropertyAttributeSetActiveRemoved(this.getIsPropertyAttributeSetActiveRemoved());
+        command.setIsPropertyAttributeSetDeletedRemoved(this.getIsPropertyAttributeSetDeletedRemoved());
+    }
+
     public static class CreateAttributeUseMvoDto extends CreateOrMergePatchAttributeUseMvoDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public AttributeUseMvoCommand.CreateAttributeUseMvo toCreateAttributeUseMvo()
+        {
+            return (AttributeUseMvoCommand.CreateAttributeUseMvo) toCommand();
         }
 
     }
@@ -379,6 +443,11 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public AttributeUseMvoCommand.MergePatchAttributeUseMvo toMergePatchAttributeUseMvo()
+        {
+            return (AttributeUseMvoCommand.MergePatchAttributeUseMvo) toCommand();
         }
 
     }

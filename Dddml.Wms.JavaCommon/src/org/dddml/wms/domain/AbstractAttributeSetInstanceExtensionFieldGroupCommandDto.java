@@ -30,5 +30,11 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupCommandDto 
     }
 
 
+    public void copyTo(AbstractAttributeSetInstanceExtensionFieldGroupCommand command)
+    {
+        command.setId(this.getId());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

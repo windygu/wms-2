@@ -9,5 +9,12 @@ public class DeleteTeamDto extends AbstractTeamCommandDto
         return COMMAND_TYPE_DELETE;
     }
 
+    public TeamCommand.DeleteTeam toDeleteTeam()
+    {
+        AbstractTeamCommand.SimpleDeleteTeam command = new AbstractTeamCommand.SimpleDeleteTeam();
+        ((AbstractTeamCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

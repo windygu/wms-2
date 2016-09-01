@@ -509,11 +509,87 @@ public class CreateOrMergePatchUserClaimMvoDto extends AbstractUserClaimMvoComma
     }
 
 
+    public void copyTo(AbstractUserClaimMvoCommand.AbstractCreateOrMergePatchUserClaimMvo command)
+    {
+        ((AbstractUserClaimMvoCommandDto) this).copyTo(command);
+        command.setClaimType(this.getClaimType());
+        command.setClaimValue(this.getClaimValue());
+        command.setVersion(this.getVersion());
+        command.setActive(this.getActive());
+        command.setUserUserName(this.getUserUserName());
+        command.setUserAccessFailedCount(this.getUserAccessFailedCount());
+        command.setUserEmail(this.getUserEmail());
+        command.setUserEmailConfirmed(this.getUserEmailConfirmed());
+        command.setUserLockoutEnabled(this.getUserLockoutEnabled());
+        command.setUserLockoutEndDateUtc(this.getUserLockoutEndDateUtc());
+        command.setUserPasswordHash(this.getUserPasswordHash());
+        command.setUserPhoneNumber(this.getUserPhoneNumber());
+        command.setUserPhoneNumberConfirmed(this.getUserPhoneNumberConfirmed());
+        command.setUserTwoFactorEnabled(this.getUserTwoFactorEnabled());
+        command.setUserSecurityStamp(this.getUserSecurityStamp());
+        command.setUserCreatedBy(this.getUserCreatedBy());
+        command.setUserCreatedAt(this.getUserCreatedAt());
+        command.setUserUpdatedBy(this.getUserUpdatedBy());
+        command.setUserUpdatedAt(this.getUserUpdatedAt());
+        command.setUserActive(this.getUserActive());
+        command.setUserDeleted(this.getUserDeleted());
+    }
+
+    public UserClaimMvoCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractUserClaimMvoCommand.SimpleCreateUserClaimMvo command = new AbstractUserClaimMvoCommand.SimpleCreateUserClaimMvo();
+            copyTo((AbstractUserClaimMvoCommand.AbstractCreateUserClaimMvo) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractUserClaimMvoCommand.SimpleMergePatchUserClaimMvo command = new AbstractUserClaimMvoCommand.SimpleMergePatchUserClaimMvo();
+            copyTo((AbstractUserClaimMvoCommand.SimpleMergePatchUserClaimMvo) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractUserClaimMvoCommand.AbstractCreateUserClaimMvo command)
+    {
+        copyTo((AbstractUserClaimMvoCommand.AbstractCreateOrMergePatchUserClaimMvo) command);
+    }
+
+    public void copyTo(AbstractUserClaimMvoCommand.AbstractMergePatchUserClaimMvo command)
+    {
+        copyTo((AbstractUserClaimMvoCommand.AbstractCreateOrMergePatchUserClaimMvo) command);
+        command.setIsPropertyClaimTypeRemoved(this.getIsPropertyClaimTypeRemoved());
+        command.setIsPropertyClaimValueRemoved(this.getIsPropertyClaimValueRemoved());
+        command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+        command.setIsPropertyUserUserNameRemoved(this.getIsPropertyUserUserNameRemoved());
+        command.setIsPropertyUserAccessFailedCountRemoved(this.getIsPropertyUserAccessFailedCountRemoved());
+        command.setIsPropertyUserEmailRemoved(this.getIsPropertyUserEmailRemoved());
+        command.setIsPropertyUserEmailConfirmedRemoved(this.getIsPropertyUserEmailConfirmedRemoved());
+        command.setIsPropertyUserLockoutEnabledRemoved(this.getIsPropertyUserLockoutEnabledRemoved());
+        command.setIsPropertyUserLockoutEndDateUtcRemoved(this.getIsPropertyUserLockoutEndDateUtcRemoved());
+        command.setIsPropertyUserPasswordHashRemoved(this.getIsPropertyUserPasswordHashRemoved());
+        command.setIsPropertyUserPhoneNumberRemoved(this.getIsPropertyUserPhoneNumberRemoved());
+        command.setIsPropertyUserPhoneNumberConfirmedRemoved(this.getIsPropertyUserPhoneNumberConfirmedRemoved());
+        command.setIsPropertyUserTwoFactorEnabledRemoved(this.getIsPropertyUserTwoFactorEnabledRemoved());
+        command.setIsPropertyUserSecurityStampRemoved(this.getIsPropertyUserSecurityStampRemoved());
+        command.setIsPropertyUserCreatedByRemoved(this.getIsPropertyUserCreatedByRemoved());
+        command.setIsPropertyUserCreatedAtRemoved(this.getIsPropertyUserCreatedAtRemoved());
+        command.setIsPropertyUserUpdatedByRemoved(this.getIsPropertyUserUpdatedByRemoved());
+        command.setIsPropertyUserUpdatedAtRemoved(this.getIsPropertyUserUpdatedAtRemoved());
+        command.setIsPropertyUserActiveRemoved(this.getIsPropertyUserActiveRemoved());
+        command.setIsPropertyUserDeletedRemoved(this.getIsPropertyUserDeletedRemoved());
+    }
+
     public static class CreateUserClaimMvoDto extends CreateOrMergePatchUserClaimMvoDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public UserClaimMvoCommand.CreateUserClaimMvo toCreateUserClaimMvo()
+        {
+            return (UserClaimMvoCommand.CreateUserClaimMvo) toCommand();
         }
 
     }
@@ -523,6 +599,11 @@ public class CreateOrMergePatchUserClaimMvoDto extends AbstractUserClaimMvoComma
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public UserClaimMvoCommand.MergePatchUserClaimMvo toMergePatchUserClaimMvo()
+        {
+            return (UserClaimMvoCommand.MergePatchUserClaimMvo) toCommand();
         }
 
     }

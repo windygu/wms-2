@@ -9,5 +9,12 @@ public class DeleteUserRoleMvoDto extends AbstractUserRoleMvoCommandDto
         return COMMAND_TYPE_DELETE;
     }
 
+    public UserRoleMvoCommand.DeleteUserRoleMvo toDeleteUserRoleMvo()
+    {
+        AbstractUserRoleMvoCommand.SimpleDeleteUserRoleMvo command = new AbstractUserRoleMvoCommand.SimpleDeleteUserRoleMvo();
+        ((AbstractUserRoleMvoCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

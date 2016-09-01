@@ -9,5 +9,12 @@ public class RemoveUserRoleDto extends CreateOrMergePatchUserRoleDto
         return COMMAND_TYPE_REMOVE;
     }
 
+    public UserRoleCommand.RemoveUserRole toRemoveUserRole()
+    {
+        AbstractUserRoleCommand.SimpleRemoveUserRole command = new AbstractUserRoleCommand.SimpleRemoveUserRole();
+        ((AbstractUserRoleCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

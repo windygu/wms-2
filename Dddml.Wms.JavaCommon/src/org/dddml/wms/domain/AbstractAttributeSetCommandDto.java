@@ -30,5 +30,11 @@ public abstract class AbstractAttributeSetCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractAttributeSetCommand command)
+    {
+        command.setAttributeSetId(this.getAttributeSetId());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

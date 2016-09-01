@@ -30,5 +30,11 @@ public abstract class AbstractYearPlanMvoCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractYearPlanMvoCommand command)
+    {
+        command.setYearPlanId((this.getYearPlanId() == null) ? null : this.getYearPlanId().toYearPlanId());
+        command.setPersonVersion(this.getPersonVersion());
+    }
+
 }
 

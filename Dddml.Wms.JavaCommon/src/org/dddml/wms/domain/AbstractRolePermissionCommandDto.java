@@ -30,5 +30,11 @@ public abstract class AbstractRolePermissionCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractRolePermissionCommand command)
+    {
+        command.setId((this.getId() == null) ? null : this.getId().toRolePermissionId());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

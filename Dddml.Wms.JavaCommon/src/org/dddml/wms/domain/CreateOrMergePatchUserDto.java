@@ -341,11 +341,109 @@ public class CreateOrMergePatchUserDto extends AbstractUserCommandDto
     }
 
 
+    public void copyTo(AbstractUserCommand.AbstractCreateOrMergePatchUser command)
+    {
+        ((AbstractUserCommandDto) this).copyTo(command);
+        command.setUserName(this.getUserName());
+        command.setAccessFailedCount(this.getAccessFailedCount());
+        command.setEmail(this.getEmail());
+        command.setEmailConfirmed(this.getEmailConfirmed());
+        command.setLockoutEnabled(this.getLockoutEnabled());
+        command.setLockoutEndDateUtc(this.getLockoutEndDateUtc());
+        command.setPasswordHash(this.getPasswordHash());
+        command.setPhoneNumber(this.getPhoneNumber());
+        command.setPhoneNumberConfirmed(this.getPhoneNumberConfirmed());
+        command.setTwoFactorEnabled(this.getTwoFactorEnabled());
+        command.setSecurityStamp(this.getSecurityStamp());
+        command.setActive(this.getActive());
+    }
+
+    public UserCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractUserCommand.SimpleCreateUser command = new AbstractUserCommand.SimpleCreateUser();
+            copyTo((AbstractUserCommand.AbstractCreateUser) command);
+            if (this.getUserRoles() != null) {
+                for (CreateOrMergePatchUserRoleDto cmd : this.getUserRoles()) {
+                    command.getUserRoles().add((UserRoleCommand.CreateUserRole) cmd.toCommand());
+                }
+            }
+            if (this.getUserClaims() != null) {
+                for (CreateOrMergePatchUserClaimDto cmd : this.getUserClaims()) {
+                    command.getUserClaims().add((UserClaimCommand.CreateUserClaim) cmd.toCommand());
+                }
+            }
+            if (this.getUserPermissions() != null) {
+                for (CreateOrMergePatchUserPermissionDto cmd : this.getUserPermissions()) {
+                    command.getUserPermissions().add((UserPermissionCommand.CreateUserPermission) cmd.toCommand());
+                }
+            }
+            if (this.getUserLogins() != null) {
+                for (CreateOrMergePatchUserLoginDto cmd : this.getUserLogins()) {
+                    command.getUserLogins().add((UserLoginCommand.CreateUserLogin) cmd.toCommand());
+                }
+            }
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractUserCommand.SimpleMergePatchUser command = new AbstractUserCommand.SimpleMergePatchUser();
+            copyTo((AbstractUserCommand.SimpleMergePatchUser) command);
+            if (this.getUserRoles() != null) {
+                for (CreateOrMergePatchUserRoleDto cmd : this.getUserRoles()) {
+                    command.getUserRoleCommands().add(cmd.toCommand());
+                }
+            }
+            if (this.getUserClaims() != null) {
+                for (CreateOrMergePatchUserClaimDto cmd : this.getUserClaims()) {
+                    command.getUserClaimCommands().add(cmd.toCommand());
+                }
+            }
+            if (this.getUserPermissions() != null) {
+                for (CreateOrMergePatchUserPermissionDto cmd : this.getUserPermissions()) {
+                    command.getUserPermissionCommands().add(cmd.toCommand());
+                }
+            }
+            if (this.getUserLogins() != null) {
+                for (CreateOrMergePatchUserLoginDto cmd : this.getUserLogins()) {
+                    command.getUserLoginCommands().add(cmd.toCommand());
+                }
+            }
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractUserCommand.AbstractCreateUser command)
+    {
+        copyTo((AbstractUserCommand.AbstractCreateOrMergePatchUser) command);
+    }
+
+    public void copyTo(AbstractUserCommand.AbstractMergePatchUser command)
+    {
+        copyTo((AbstractUserCommand.AbstractCreateOrMergePatchUser) command);
+        command.setIsPropertyUserNameRemoved(this.getIsPropertyUserNameRemoved());
+        command.setIsPropertyAccessFailedCountRemoved(this.getIsPropertyAccessFailedCountRemoved());
+        command.setIsPropertyEmailRemoved(this.getIsPropertyEmailRemoved());
+        command.setIsPropertyEmailConfirmedRemoved(this.getIsPropertyEmailConfirmedRemoved());
+        command.setIsPropertyLockoutEnabledRemoved(this.getIsPropertyLockoutEnabledRemoved());
+        command.setIsPropertyLockoutEndDateUtcRemoved(this.getIsPropertyLockoutEndDateUtcRemoved());
+        command.setIsPropertyPasswordHashRemoved(this.getIsPropertyPasswordHashRemoved());
+        command.setIsPropertyPhoneNumberRemoved(this.getIsPropertyPhoneNumberRemoved());
+        command.setIsPropertyPhoneNumberConfirmedRemoved(this.getIsPropertyPhoneNumberConfirmedRemoved());
+        command.setIsPropertyTwoFactorEnabledRemoved(this.getIsPropertyTwoFactorEnabledRemoved());
+        command.setIsPropertySecurityStampRemoved(this.getIsPropertySecurityStampRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    }
+
     public static class CreateUserDto extends CreateOrMergePatchUserDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public UserCommand.CreateUser toCreateUser()
+        {
+            return (UserCommand.CreateUser) toCommand();
         }
 
     }
@@ -355,6 +453,11 @@ public class CreateOrMergePatchUserDto extends AbstractUserCommandDto
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public UserCommand.MergePatchUser toMergePatchUser()
+        {
+            return (UserCommand.MergePatchUser) toCommand();
         }
 
     }

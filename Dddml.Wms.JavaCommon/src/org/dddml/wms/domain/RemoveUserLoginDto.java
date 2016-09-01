@@ -9,5 +9,12 @@ public class RemoveUserLoginDto extends CreateOrMergePatchUserLoginDto
         return COMMAND_TYPE_REMOVE;
     }
 
+    public UserLoginCommand.RemoveUserLogin toRemoveUserLogin()
+    {
+        AbstractUserLoginCommand.SimpleRemoveUserLogin command = new AbstractUserLoginCommand.SimpleRemoveUserLogin();
+        ((AbstractUserLoginCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

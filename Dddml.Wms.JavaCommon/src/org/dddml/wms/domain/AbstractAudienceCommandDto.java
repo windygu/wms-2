@@ -30,5 +30,11 @@ public abstract class AbstractAudienceCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractAudienceCommand command)
+    {
+        command.setClientId(this.getClientId());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

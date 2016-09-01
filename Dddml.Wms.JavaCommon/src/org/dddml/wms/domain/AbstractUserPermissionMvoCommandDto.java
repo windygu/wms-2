@@ -30,5 +30,11 @@ public abstract class AbstractUserPermissionMvoCommandDto extends AbstractComman
     }
 
 
+    public void copyTo(AbstractUserPermissionMvoCommand command)
+    {
+        command.setUserPermissionId((this.getUserPermissionId() == null) ? null : this.getUserPermissionId().toUserPermissionId());
+        command.setUserVersion(this.getUserVersion());
+    }
+
 }
 

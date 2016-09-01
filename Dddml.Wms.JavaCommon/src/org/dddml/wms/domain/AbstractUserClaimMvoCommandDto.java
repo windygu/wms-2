@@ -30,5 +30,11 @@ public abstract class AbstractUserClaimMvoCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractUserClaimMvoCommand command)
+    {
+        command.setUserClaimId((this.getUserClaimId() == null) ? null : this.getUserClaimId().toUserClaimId());
+        command.setUserVersion(this.getUserVersion());
+    }
+
 }
 

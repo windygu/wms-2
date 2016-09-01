@@ -30,5 +30,11 @@ public abstract class AbstractUserCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractUserCommand command)
+    {
+        command.setUserId(this.getUserId());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

@@ -77,11 +77,51 @@ public class CreateOrMergePatchRoleDto extends AbstractRoleCommandDto
     }
 
 
+    public void copyTo(AbstractRoleCommand.AbstractCreateOrMergePatchRole command)
+    {
+        ((AbstractRoleCommandDto) this).copyTo(command);
+        command.setName(this.getName());
+        command.setDescription(this.getDescription());
+        command.setActive(this.getActive());
+    }
+
+    public RoleCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractRoleCommand.SimpleCreateRole command = new AbstractRoleCommand.SimpleCreateRole();
+            copyTo((AbstractRoleCommand.AbstractCreateRole) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractRoleCommand.SimpleMergePatchRole command = new AbstractRoleCommand.SimpleMergePatchRole();
+            copyTo((AbstractRoleCommand.SimpleMergePatchRole) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractRoleCommand.AbstractCreateRole command)
+    {
+        copyTo((AbstractRoleCommand.AbstractCreateOrMergePatchRole) command);
+    }
+
+    public void copyTo(AbstractRoleCommand.AbstractMergePatchRole command)
+    {
+        copyTo((AbstractRoleCommand.AbstractCreateOrMergePatchRole) command);
+        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    }
+
     public static class CreateRoleDto extends CreateOrMergePatchRoleDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public RoleCommand.CreateRole toCreateRole()
+        {
+            return (RoleCommand.CreateRole) toCommand();
         }
 
     }
@@ -91,6 +131,11 @@ public class CreateOrMergePatchRoleDto extends AbstractRoleCommandDto
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public RoleCommand.MergePatchRole toMergePatchRole()
+        {
+            return (RoleCommand.MergePatchRole) toCommand();
         }
 
     }

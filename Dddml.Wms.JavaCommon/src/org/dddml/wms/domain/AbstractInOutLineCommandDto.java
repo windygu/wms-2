@@ -19,5 +19,10 @@ public abstract class AbstractInOutLineCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractInOutLineCommand command)
+    {
+        command.setSkuId((this.getSkuId() == null) ? null : this.getSkuId().toSkuId());
+    }
+
 }
 

@@ -32,5 +32,11 @@ public abstract class AbstractInOutCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractInOutCommand command)
+    {
+        command.setDocumentNumber(this.getDocumentNumber());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

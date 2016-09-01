@@ -9,5 +9,12 @@ public class DeleteUserClaimMvoDto extends AbstractUserClaimMvoCommandDto
         return COMMAND_TYPE_DELETE;
     }
 
+    public UserClaimMvoCommand.DeleteUserClaimMvo toDeleteUserClaimMvo()
+    {
+        AbstractUserClaimMvoCommand.SimpleDeleteUserClaimMvo command = new AbstractUserClaimMvoCommand.SimpleDeleteUserClaimMvo();
+        ((AbstractUserClaimMvoCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

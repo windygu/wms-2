@@ -77,11 +77,51 @@ public class CreateOrMergePatchAudienceDto extends AbstractAudienceCommandDto
     }
 
 
+    public void copyTo(AbstractAudienceCommand.AbstractCreateOrMergePatchAudience command)
+    {
+        ((AbstractAudienceCommandDto) this).copyTo(command);
+        command.setName(this.getName());
+        command.setBase64Secret(this.getBase64Secret());
+        command.setActive(this.getActive());
+    }
+
+    public AudienceCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractAudienceCommand.SimpleCreateAudience command = new AbstractAudienceCommand.SimpleCreateAudience();
+            copyTo((AbstractAudienceCommand.AbstractCreateAudience) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractAudienceCommand.SimpleMergePatchAudience command = new AbstractAudienceCommand.SimpleMergePatchAudience();
+            copyTo((AbstractAudienceCommand.SimpleMergePatchAudience) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractAudienceCommand.AbstractCreateAudience command)
+    {
+        copyTo((AbstractAudienceCommand.AbstractCreateOrMergePatchAudience) command);
+    }
+
+    public void copyTo(AbstractAudienceCommand.AbstractMergePatchAudience command)
+    {
+        copyTo((AbstractAudienceCommand.AbstractCreateOrMergePatchAudience) command);
+        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyBase64SecretRemoved(this.getIsPropertyBase64SecretRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    }
+
     public static class CreateAudienceDto extends CreateOrMergePatchAudienceDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public AudienceCommand.CreateAudience toCreateAudience()
+        {
+            return (AudienceCommand.CreateAudience) toCommand();
         }
 
     }
@@ -91,6 +131,11 @@ public class CreateOrMergePatchAudienceDto extends AbstractAudienceCommandDto
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public AudienceCommand.MergePatchAudience toMergePatchAudience()
+        {
+            return (AudienceCommand.MergePatchAudience) toCommand();
         }
 
     }

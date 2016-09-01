@@ -9,5 +9,12 @@ public class RemoveAttributeValueDto extends CreateOrMergePatchAttributeValueDto
         return COMMAND_TYPE_REMOVE;
     }
 
+    public AttributeValueCommand.RemoveAttributeValue toRemoveAttributeValue()
+    {
+        AbstractAttributeValueCommand.SimpleRemoveAttributeValue command = new AbstractAttributeValueCommand.SimpleRemoveAttributeValue();
+        ((AbstractAttributeValueCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

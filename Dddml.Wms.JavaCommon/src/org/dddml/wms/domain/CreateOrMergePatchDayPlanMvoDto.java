@@ -677,11 +677,101 @@ public class CreateOrMergePatchDayPlanMvoDto extends AbstractDayPlanMvoCommandDt
     }
 
 
+    public void copyTo(AbstractDayPlanMvoCommand.AbstractCreateOrMergePatchDayPlanMvo command)
+    {
+        ((AbstractDayPlanMvoCommandDto) this).copyTo(command);
+        command.setDescription(this.getDescription());
+        command.setVersion(this.getVersion());
+        command.setActive(this.getActive());
+        command.setMonthPlanDescription(this.getMonthPlanDescription());
+        command.setMonthPlanVersion(this.getMonthPlanVersion());
+        command.setMonthPlanCreatedBy(this.getMonthPlanCreatedBy());
+        command.setMonthPlanCreatedAt(this.getMonthPlanCreatedAt());
+        command.setMonthPlanUpdatedBy(this.getMonthPlanUpdatedBy());
+        command.setMonthPlanUpdatedAt(this.getMonthPlanUpdatedAt());
+        command.setMonthPlanActive(this.getMonthPlanActive());
+        command.setMonthPlanDeleted(this.getMonthPlanDeleted());
+        command.setYearPlanDescription(this.getYearPlanDescription());
+        command.setYearPlanVersion(this.getYearPlanVersion());
+        command.setYearPlanCreatedBy(this.getYearPlanCreatedBy());
+        command.setYearPlanCreatedAt(this.getYearPlanCreatedAt());
+        command.setYearPlanUpdatedBy(this.getYearPlanUpdatedBy());
+        command.setYearPlanUpdatedAt(this.getYearPlanUpdatedAt());
+        command.setYearPlanActive(this.getYearPlanActive());
+        command.setYearPlanDeleted(this.getYearPlanDeleted());
+        command.setPersonBirthDate(this.getPersonBirthDate());
+        command.setPersonLoves((this.getPersonLoves() == null) ? null : this.getPersonLoves().toPersonalName());
+        command.setPersonEmergencyContact((this.getPersonEmergencyContact() == null) ? null : this.getPersonEmergencyContact().toContact());
+        command.setPersonCreatedBy(this.getPersonCreatedBy());
+        command.setPersonCreatedAt(this.getPersonCreatedAt());
+        command.setPersonUpdatedBy(this.getPersonUpdatedBy());
+        command.setPersonUpdatedAt(this.getPersonUpdatedAt());
+        command.setPersonActive(this.getPersonActive());
+        command.setPersonDeleted(this.getPersonDeleted());
+    }
+
+    public DayPlanMvoCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractDayPlanMvoCommand.SimpleCreateDayPlanMvo command = new AbstractDayPlanMvoCommand.SimpleCreateDayPlanMvo();
+            copyTo((AbstractDayPlanMvoCommand.AbstractCreateDayPlanMvo) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractDayPlanMvoCommand.SimpleMergePatchDayPlanMvo command = new AbstractDayPlanMvoCommand.SimpleMergePatchDayPlanMvo();
+            copyTo((AbstractDayPlanMvoCommand.SimpleMergePatchDayPlanMvo) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractDayPlanMvoCommand.AbstractCreateDayPlanMvo command)
+    {
+        copyTo((AbstractDayPlanMvoCommand.AbstractCreateOrMergePatchDayPlanMvo) command);
+    }
+
+    public void copyTo(AbstractDayPlanMvoCommand.AbstractMergePatchDayPlanMvo command)
+    {
+        copyTo((AbstractDayPlanMvoCommand.AbstractCreateOrMergePatchDayPlanMvo) command);
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+        command.setIsPropertyMonthPlanDescriptionRemoved(this.getIsPropertyMonthPlanDescriptionRemoved());
+        command.setIsPropertyMonthPlanVersionRemoved(this.getIsPropertyMonthPlanVersionRemoved());
+        command.setIsPropertyMonthPlanCreatedByRemoved(this.getIsPropertyMonthPlanCreatedByRemoved());
+        command.setIsPropertyMonthPlanCreatedAtRemoved(this.getIsPropertyMonthPlanCreatedAtRemoved());
+        command.setIsPropertyMonthPlanUpdatedByRemoved(this.getIsPropertyMonthPlanUpdatedByRemoved());
+        command.setIsPropertyMonthPlanUpdatedAtRemoved(this.getIsPropertyMonthPlanUpdatedAtRemoved());
+        command.setIsPropertyMonthPlanActiveRemoved(this.getIsPropertyMonthPlanActiveRemoved());
+        command.setIsPropertyMonthPlanDeletedRemoved(this.getIsPropertyMonthPlanDeletedRemoved());
+        command.setIsPropertyYearPlanDescriptionRemoved(this.getIsPropertyYearPlanDescriptionRemoved());
+        command.setIsPropertyYearPlanVersionRemoved(this.getIsPropertyYearPlanVersionRemoved());
+        command.setIsPropertyYearPlanCreatedByRemoved(this.getIsPropertyYearPlanCreatedByRemoved());
+        command.setIsPropertyYearPlanCreatedAtRemoved(this.getIsPropertyYearPlanCreatedAtRemoved());
+        command.setIsPropertyYearPlanUpdatedByRemoved(this.getIsPropertyYearPlanUpdatedByRemoved());
+        command.setIsPropertyYearPlanUpdatedAtRemoved(this.getIsPropertyYearPlanUpdatedAtRemoved());
+        command.setIsPropertyYearPlanActiveRemoved(this.getIsPropertyYearPlanActiveRemoved());
+        command.setIsPropertyYearPlanDeletedRemoved(this.getIsPropertyYearPlanDeletedRemoved());
+        command.setIsPropertyPersonBirthDateRemoved(this.getIsPropertyPersonBirthDateRemoved());
+        command.setIsPropertyPersonLovesRemoved(this.getIsPropertyPersonLovesRemoved());
+        command.setIsPropertyPersonEmergencyContactRemoved(this.getIsPropertyPersonEmergencyContactRemoved());
+        command.setIsPropertyPersonCreatedByRemoved(this.getIsPropertyPersonCreatedByRemoved());
+        command.setIsPropertyPersonCreatedAtRemoved(this.getIsPropertyPersonCreatedAtRemoved());
+        command.setIsPropertyPersonUpdatedByRemoved(this.getIsPropertyPersonUpdatedByRemoved());
+        command.setIsPropertyPersonUpdatedAtRemoved(this.getIsPropertyPersonUpdatedAtRemoved());
+        command.setIsPropertyPersonActiveRemoved(this.getIsPropertyPersonActiveRemoved());
+        command.setIsPropertyPersonDeletedRemoved(this.getIsPropertyPersonDeletedRemoved());
+    }
+
     public static class CreateDayPlanMvoDto extends CreateOrMergePatchDayPlanMvoDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public DayPlanMvoCommand.CreateDayPlanMvo toCreateDayPlanMvo()
+        {
+            return (DayPlanMvoCommand.CreateDayPlanMvo) toCommand();
         }
 
     }
@@ -691,6 +781,11 @@ public class CreateOrMergePatchDayPlanMvoDto extends AbstractDayPlanMvoCommandDt
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public DayPlanMvoCommand.MergePatchDayPlanMvo toMergePatchDayPlanMvo()
+        {
+            return (DayPlanMvoCommand.MergePatchDayPlanMvo) toCommand();
         }
 
     }

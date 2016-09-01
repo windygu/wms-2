@@ -9,5 +9,12 @@ public class RemoveDayPlanDto extends CreateOrMergePatchDayPlanDto
         return COMMAND_TYPE_REMOVE;
     }
 
+    public DayPlanCommand.RemoveDayPlan toRemoveDayPlan()
+    {
+        AbstractDayPlanCommand.SimpleRemoveDayPlan command = new AbstractDayPlanCommand.SimpleRemoveDayPlan();
+        ((AbstractDayPlanCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

@@ -9,5 +9,12 @@ public class DeleteAttributeSetInstanceExtensionFieldGroupDto extends AbstractAt
         return COMMAND_TYPE_DELETE;
     }
 
+    public AttributeSetInstanceExtensionFieldGroupCommand.DeleteAttributeSetInstanceExtensionFieldGroup toDeleteAttributeSetInstanceExtensionFieldGroup()
+    {
+        AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleDeleteAttributeSetInstanceExtensionFieldGroup command = new AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleDeleteAttributeSetInstanceExtensionFieldGroup();
+        ((AbstractAttributeSetInstanceExtensionFieldGroupCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

@@ -30,5 +30,11 @@ public abstract class AbstractPersonCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractPersonCommand command)
+    {
+        command.setPersonalName((this.getPersonalName() == null) ? null : this.getPersonalName().toPersonalName());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

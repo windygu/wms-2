@@ -30,5 +30,11 @@ public abstract class AbstractRoleCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractRoleCommand command)
+    {
+        command.setRoleId(this.getRoleId());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

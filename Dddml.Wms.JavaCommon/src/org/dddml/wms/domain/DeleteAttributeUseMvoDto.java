@@ -9,5 +9,12 @@ public class DeleteAttributeUseMvoDto extends AbstractAttributeUseMvoCommandDto
         return COMMAND_TYPE_DELETE;
     }
 
+    public AttributeUseMvoCommand.DeleteAttributeUseMvo toDeleteAttributeUseMvo()
+    {
+        AbstractAttributeUseMvoCommand.SimpleDeleteAttributeUseMvo command = new AbstractAttributeUseMvoCommand.SimpleDeleteAttributeUseMvo();
+        ((AbstractAttributeUseMvoCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

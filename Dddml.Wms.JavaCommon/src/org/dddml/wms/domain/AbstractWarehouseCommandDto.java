@@ -30,5 +30,11 @@ public abstract class AbstractWarehouseCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractWarehouseCommand command)
+    {
+        command.setWarehouseId(this.getWarehouseId());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

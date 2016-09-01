@@ -9,5 +9,12 @@ public class DeleteWarehouseDto extends AbstractWarehouseCommandDto
         return COMMAND_TYPE_DELETE;
     }
 
+    public WarehouseCommand.DeleteWarehouse toDeleteWarehouse()
+    {
+        AbstractWarehouseCommand.SimpleDeleteWarehouse command = new AbstractWarehouseCommand.SimpleDeleteWarehouse();
+        ((AbstractWarehouseCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

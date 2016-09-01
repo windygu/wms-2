@@ -185,11 +185,69 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
     }
 
 
+    public void copyTo(AbstractAttributeSetCommand.AbstractCreateOrMergePatchAttributeSet command)
+    {
+        ((AbstractAttributeSetCommandDto) this).copyTo(command);
+        command.setName(this.getName());
+        command.setOrganizationId(this.getOrganizationId());
+        command.setDescription(this.getDescription());
+        command.setSerialNumberAttributeId(this.getSerialNumberAttributeId());
+        command.setLotAttributeId(this.getLotAttributeId());
+        command.setReferenceId(this.getReferenceId());
+        command.setActive(this.getActive());
+    }
+
+    public AttributeSetCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractAttributeSetCommand.SimpleCreateAttributeSet command = new AbstractAttributeSetCommand.SimpleCreateAttributeSet();
+            copyTo((AbstractAttributeSetCommand.AbstractCreateAttributeSet) command);
+            if (this.getAttributeUses() != null) {
+                for (CreateOrMergePatchAttributeUseDto cmd : this.getAttributeUses()) {
+                    command.getAttributeUses().add((AttributeUseCommand.CreateAttributeUse) cmd.toCommand());
+                }
+            }
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractAttributeSetCommand.SimpleMergePatchAttributeSet command = new AbstractAttributeSetCommand.SimpleMergePatchAttributeSet();
+            copyTo((AbstractAttributeSetCommand.SimpleMergePatchAttributeSet) command);
+            if (this.getAttributeUses() != null) {
+                for (CreateOrMergePatchAttributeUseDto cmd : this.getAttributeUses()) {
+                    command.getAttributeUseCommands().add(cmd.toCommand());
+                }
+            }
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractAttributeSetCommand.AbstractCreateAttributeSet command)
+    {
+        copyTo((AbstractAttributeSetCommand.AbstractCreateOrMergePatchAttributeSet) command);
+    }
+
+    public void copyTo(AbstractAttributeSetCommand.AbstractMergePatchAttributeSet command)
+    {
+        copyTo((AbstractAttributeSetCommand.AbstractCreateOrMergePatchAttributeSet) command);
+        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyOrganizationIdRemoved(this.getIsPropertyOrganizationIdRemoved());
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertySerialNumberAttributeIdRemoved(this.getIsPropertySerialNumberAttributeIdRemoved());
+        command.setIsPropertyLotAttributeIdRemoved(this.getIsPropertyLotAttributeIdRemoved());
+        command.setIsPropertyReferenceIdRemoved(this.getIsPropertyReferenceIdRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    }
+
     public static class CreateAttributeSetDto extends CreateOrMergePatchAttributeSetDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public AttributeSetCommand.CreateAttributeSet toCreateAttributeSet()
+        {
+            return (AttributeSetCommand.CreateAttributeSet) toCommand();
         }
 
     }
@@ -199,6 +257,11 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public AttributeSetCommand.MergePatchAttributeSet toMergePatchAttributeSet()
+        {
+            return (AttributeSetCommand.MergePatchAttributeSet) toCommand();
         }
 
     }

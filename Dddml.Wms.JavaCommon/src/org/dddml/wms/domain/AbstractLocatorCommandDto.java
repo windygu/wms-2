@@ -30,5 +30,11 @@ public abstract class AbstractLocatorCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractLocatorCommand command)
+    {
+        command.setLocatorId(this.getLocatorId());
+        command.setVersion(this.getVersion());
+    }
+
 }
 

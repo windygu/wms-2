@@ -509,11 +509,87 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
     }
 
 
+    public void copyTo(AbstractAttributeValueMvoCommand.AbstractCreateOrMergePatchAttributeValueMvo command)
+    {
+        ((AbstractAttributeValueMvoCommandDto) this).copyTo(command);
+        command.setName(this.getName());
+        command.setDescription(this.getDescription());
+        command.setReferenceId(this.getReferenceId());
+        command.setVersion(this.getVersion());
+        command.setActive(this.getActive());
+        command.setAttributeName(this.getAttributeName());
+        command.setAttributeOrganizationId(this.getAttributeOrganizationId());
+        command.setAttributeDescription(this.getAttributeDescription());
+        command.setAttributeIsMandatory(this.getAttributeIsMandatory());
+        command.setAttributeIsInstanceAttribute(this.getAttributeIsInstanceAttribute());
+        command.setAttributeAttributeValueType(this.getAttributeAttributeValueType());
+        command.setAttributeAttributeValueLength(this.getAttributeAttributeValueLength());
+        command.setAttributeIsList(this.getAttributeIsList());
+        command.setAttributeFieldName(this.getAttributeFieldName());
+        command.setAttributeReferenceId(this.getAttributeReferenceId());
+        command.setAttributeCreatedBy(this.getAttributeCreatedBy());
+        command.setAttributeCreatedAt(this.getAttributeCreatedAt());
+        command.setAttributeUpdatedBy(this.getAttributeUpdatedBy());
+        command.setAttributeUpdatedAt(this.getAttributeUpdatedAt());
+        command.setAttributeActive(this.getAttributeActive());
+        command.setAttributeDeleted(this.getAttributeDeleted());
+    }
+
+    public AttributeValueMvoCommand toCommand()
+    {
+        if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
+            AbstractAttributeValueMvoCommand.SimpleCreateAttributeValueMvo command = new AbstractAttributeValueMvoCommand.SimpleCreateAttributeValueMvo();
+            copyTo((AbstractAttributeValueMvoCommand.AbstractCreateAttributeValueMvo) command);
+            return command;
+        } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
+            AbstractAttributeValueMvoCommand.SimpleMergePatchAttributeValueMvo command = new AbstractAttributeValueMvoCommand.SimpleMergePatchAttributeValueMvo();
+            copyTo((AbstractAttributeValueMvoCommand.SimpleMergePatchAttributeValueMvo) command);
+            return command;
+        } 
+        throw new IllegalStateException("Unknown command type:" + getCommandType());
+    }
+
+    public void copyTo(AbstractAttributeValueMvoCommand.AbstractCreateAttributeValueMvo command)
+    {
+        copyTo((AbstractAttributeValueMvoCommand.AbstractCreateOrMergePatchAttributeValueMvo) command);
+    }
+
+    public void copyTo(AbstractAttributeValueMvoCommand.AbstractMergePatchAttributeValueMvo command)
+    {
+        copyTo((AbstractAttributeValueMvoCommand.AbstractCreateOrMergePatchAttributeValueMvo) command);
+        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyReferenceIdRemoved(this.getIsPropertyReferenceIdRemoved());
+        command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
+        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+        command.setIsPropertyAttributeNameRemoved(this.getIsPropertyAttributeNameRemoved());
+        command.setIsPropertyAttributeOrganizationIdRemoved(this.getIsPropertyAttributeOrganizationIdRemoved());
+        command.setIsPropertyAttributeDescriptionRemoved(this.getIsPropertyAttributeDescriptionRemoved());
+        command.setIsPropertyAttributeIsMandatoryRemoved(this.getIsPropertyAttributeIsMandatoryRemoved());
+        command.setIsPropertyAttributeIsInstanceAttributeRemoved(this.getIsPropertyAttributeIsInstanceAttributeRemoved());
+        command.setIsPropertyAttributeAttributeValueTypeRemoved(this.getIsPropertyAttributeAttributeValueTypeRemoved());
+        command.setIsPropertyAttributeAttributeValueLengthRemoved(this.getIsPropertyAttributeAttributeValueLengthRemoved());
+        command.setIsPropertyAttributeIsListRemoved(this.getIsPropertyAttributeIsListRemoved());
+        command.setIsPropertyAttributeFieldNameRemoved(this.getIsPropertyAttributeFieldNameRemoved());
+        command.setIsPropertyAttributeReferenceIdRemoved(this.getIsPropertyAttributeReferenceIdRemoved());
+        command.setIsPropertyAttributeCreatedByRemoved(this.getIsPropertyAttributeCreatedByRemoved());
+        command.setIsPropertyAttributeCreatedAtRemoved(this.getIsPropertyAttributeCreatedAtRemoved());
+        command.setIsPropertyAttributeUpdatedByRemoved(this.getIsPropertyAttributeUpdatedByRemoved());
+        command.setIsPropertyAttributeUpdatedAtRemoved(this.getIsPropertyAttributeUpdatedAtRemoved());
+        command.setIsPropertyAttributeActiveRemoved(this.getIsPropertyAttributeActiveRemoved());
+        command.setIsPropertyAttributeDeletedRemoved(this.getIsPropertyAttributeDeletedRemoved());
+    }
+
     public static class CreateAttributeValueMvoDto extends CreateOrMergePatchAttributeValueMvoDto
     {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        public AttributeValueMvoCommand.CreateAttributeValueMvo toCreateAttributeValueMvo()
+        {
+            return (AttributeValueMvoCommand.CreateAttributeValueMvo) toCommand();
         }
 
     }
@@ -523,6 +599,11 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        public AttributeValueMvoCommand.MergePatchAttributeValueMvo toMergePatchAttributeValueMvo()
+        {
+            return (AttributeValueMvoCommand.MergePatchAttributeValueMvo) toCommand();
         }
 
     }

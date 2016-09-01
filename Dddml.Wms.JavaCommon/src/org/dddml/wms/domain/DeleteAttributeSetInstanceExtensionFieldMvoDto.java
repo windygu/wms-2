@@ -9,5 +9,12 @@ public class DeleteAttributeSetInstanceExtensionFieldMvoDto extends AbstractAttr
         return COMMAND_TYPE_DELETE;
     }
 
+    public AttributeSetInstanceExtensionFieldMvoCommand.DeleteAttributeSetInstanceExtensionFieldMvo toDeleteAttributeSetInstanceExtensionFieldMvo()
+    {
+        AbstractAttributeSetInstanceExtensionFieldMvoCommand.SimpleDeleteAttributeSetInstanceExtensionFieldMvo command = new AbstractAttributeSetInstanceExtensionFieldMvoCommand.SimpleDeleteAttributeSetInstanceExtensionFieldMvo();
+        ((AbstractAttributeSetInstanceExtensionFieldMvoCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 

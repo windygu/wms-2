@@ -32,5 +32,11 @@ public abstract class AbstractInOutLineMvoCommandDto extends AbstractCommand
     }
 
 
+    public void copyTo(AbstractInOutLineMvoCommand command)
+    {
+        command.setInOutLineId((this.getInOutLineId() == null) ? null : this.getInOutLineId().toInOutLineId());
+        command.setInOutVersion(this.getInOutVersion());
+    }
+
 }
 

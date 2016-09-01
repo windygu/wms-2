@@ -9,5 +9,12 @@ public class RemoveAttributeSetInstanceExtensionFieldDto extends CreateOrMergePa
         return COMMAND_TYPE_REMOVE;
     }
 
+    public AttributeSetInstanceExtensionFieldCommand.RemoveAttributeSetInstanceExtensionField toRemoveAttributeSetInstanceExtensionField()
+    {
+        AbstractAttributeSetInstanceExtensionFieldCommand.SimpleRemoveAttributeSetInstanceExtensionField command = new AbstractAttributeSetInstanceExtensionFieldCommand.SimpleRemoveAttributeSetInstanceExtensionField();
+        ((AbstractAttributeSetInstanceExtensionFieldCommandDto)this).copyTo(command);
+        return command;
+    }
+
 }
 
