@@ -1,5 +1,6 @@
 import PropertyType from "../Metadata/PropertyType";
 import valueObjectsMetadata from '../../metadata/valueObjects'
+import customerValueObjectMetadata from '../../metadata/customerValueObject'
 
 export default class MetadataHelper {
     static getEntityByPlural(metadata: Array<EntityMetadataInterface>, value: String) {
@@ -16,6 +17,12 @@ export default class MetadataHelper {
         }
 
         for (let valueObject of valueObjectsMetadata) {
+            if (metadata.type == valueObject.name) {
+                return valueObject;
+            }
+        }
+
+        for (let valueObject of customerValueObjectMetadata) {
             if (metadata.type == valueObject.name) {
                 return valueObject;
             }
