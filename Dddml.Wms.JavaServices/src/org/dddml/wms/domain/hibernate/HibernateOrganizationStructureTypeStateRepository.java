@@ -28,8 +28,14 @@ public class HibernateOrganizationStructureTypeStateRepository implements Organi
     @Transactional(readOnly = true)
     public OrganizationStructureTypeState get(String id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public OrganizationStructureTypeState get(String id, boolean nullAllowed)
+    {
         OrganizationStructureTypeState state = (OrganizationStructureTypeState)getCurrentSession().get(AbstractOrganizationStructureTypeState.SimpleOrganizationStructureTypeState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractOrganizationStructureTypeState.SimpleOrganizationStructureTypeState();
             state.setId(id);
         }

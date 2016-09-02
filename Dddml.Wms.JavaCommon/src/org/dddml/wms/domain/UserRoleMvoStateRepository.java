@@ -9,6 +9,8 @@ public interface UserRoleMvoStateRepository
 {
     UserRoleMvoState get(UserRoleId id);
 
+    UserRoleMvoState get(UserRoleId id, boolean nullAllowed);
+
     Iterable<UserRoleMvoState> getAll(Integer firstResult, Integer maxResults);
     
     void save(UserRoleMvoState state);

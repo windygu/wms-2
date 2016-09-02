@@ -43,10 +43,8 @@ public abstract class AbstractUserPermissionMvoApplicationService implements Use
     }
 
     public UserPermissionMvoState get(UserPermissionId id) {
-        UserPermissionMvoState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        UserPermissionMvoState state = getStateRepository().get(id, true);
         return state;
     }
 

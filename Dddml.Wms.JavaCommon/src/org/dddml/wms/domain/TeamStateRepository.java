@@ -9,6 +9,8 @@ public interface TeamStateRepository
 {
     TeamState get(String id);
 
+    TeamState get(String id, boolean nullAllowed);
+
     Iterable<TeamState> getAll(Integer firstResult, Integer maxResults);
     
     void save(TeamState state);

@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IUserPermissionMvoState Get(UserPermissionId id);
 
+        IUserPermissionMvoState Get(UserPermissionId id, bool nullAllowed);
+
         IEnumerable<IUserPermissionMvoState> GetAll(int firstResult, int maxResults);
         
         void Save(IUserPermissionMvoState state);

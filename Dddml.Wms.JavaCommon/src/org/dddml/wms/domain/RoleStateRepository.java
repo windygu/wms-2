@@ -9,6 +9,8 @@ public interface RoleStateRepository
 {
     RoleState get(String id);
 
+    RoleState get(String id, boolean nullAllowed);
+
     Iterable<RoleState> getAll(Integer firstResult, Integer maxResults);
     
     void save(RoleState state);

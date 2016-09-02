@@ -9,6 +9,8 @@ public interface AttributeSetInstanceExtensionFieldMvoStateRepository
 {
     AttributeSetInstanceExtensionFieldMvoState get(AttributeSetInstanceExtensionFieldId id);
 
+    AttributeSetInstanceExtensionFieldMvoState get(AttributeSetInstanceExtensionFieldId id, boolean nullAllowed);
+
     Iterable<AttributeSetInstanceExtensionFieldMvoState> getAll(Integer firstResult, Integer maxResults);
     
     void save(AttributeSetInstanceExtensionFieldMvoState state);

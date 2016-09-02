@@ -28,8 +28,14 @@ public class HibernateUserRoleMvoStateRepository implements UserRoleMvoStateRepo
     @Transactional(readOnly = true)
     public UserRoleMvoState get(UserRoleId id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public UserRoleMvoState get(UserRoleId id, boolean nullAllowed)
+    {
         UserRoleMvoState state = (UserRoleMvoState)getCurrentSession().get(AbstractUserRoleMvoState.SimpleUserRoleMvoState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractUserRoleMvoState.SimpleUserRoleMvoState();
             state.setUserRoleId(id);
         }

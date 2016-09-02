@@ -45,10 +45,8 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
     }
 
     public InOutState get(String id) {
-        InOutState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        InOutState state = getStateRepository().get(id, true);
         return state;
     }
 

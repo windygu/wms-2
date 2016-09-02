@@ -43,10 +43,8 @@ public abstract class AbstractPermissionApplicationService implements Permission
     }
 
     public PermissionState get(String id) {
-        PermissionState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        PermissionState state = getStateRepository().get(id, true);
         return state;
     }
 

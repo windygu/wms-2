@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IWarehouseState Get(string warehouseId)
         {
-            var state = StateRepository.Get(warehouseId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(warehouseId, true);
             return state;
         }
 

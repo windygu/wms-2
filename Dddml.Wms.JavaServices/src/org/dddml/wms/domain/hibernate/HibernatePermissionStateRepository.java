@@ -28,8 +28,14 @@ public class HibernatePermissionStateRepository implements PermissionStateReposi
     @Transactional(readOnly = true)
     public PermissionState get(String id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public PermissionState get(String id, boolean nullAllowed)
+    {
         PermissionState state = (PermissionState)getCurrentSession().get(AbstractPermissionState.SimplePermissionState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractPermissionState.SimplePermissionState();
             state.setPermissionId(id);
         }

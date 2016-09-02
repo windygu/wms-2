@@ -28,8 +28,14 @@ public class HibernateUserClaimMvoStateRepository implements UserClaimMvoStateRe
     @Transactional(readOnly = true)
     public UserClaimMvoState get(UserClaimId id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public UserClaimMvoState get(UserClaimId id, boolean nullAllowed)
+    {
         UserClaimMvoState state = (UserClaimMvoState)getCurrentSession().get(AbstractUserClaimMvoState.SimpleUserClaimMvoState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractUserClaimMvoState.SimpleUserClaimMvoState();
             state.setUserClaimId(id);
         }

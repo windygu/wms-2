@@ -28,8 +28,14 @@ public class HibernateYearPlanMvoStateRepository implements YearPlanMvoStateRepo
     @Transactional(readOnly = true)
     public YearPlanMvoState get(YearPlanId id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public YearPlanMvoState get(YearPlanId id, boolean nullAllowed)
+    {
         YearPlanMvoState state = (YearPlanMvoState)getCurrentSession().get(AbstractYearPlanMvoState.SimpleYearPlanMvoState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractYearPlanMvoState.SimpleYearPlanMvoState();
             state.setYearPlanId(id);
         }

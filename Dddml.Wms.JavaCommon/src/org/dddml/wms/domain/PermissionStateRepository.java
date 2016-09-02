@@ -9,6 +9,8 @@ public interface PermissionStateRepository
 {
     PermissionState get(String id);
 
+    PermissionState get(String id, boolean nullAllowed);
+
     Iterable<PermissionState> getAll(Integer firstResult, Integer maxResults);
     
     void save(PermissionState state);

@@ -43,10 +43,8 @@ public abstract class AbstractAudienceApplicationService implements AudienceAppl
     }
 
     public AudienceState get(String id) {
-        AudienceState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        AudienceState state = getStateRepository().get(id, true);
         return state;
     }
 

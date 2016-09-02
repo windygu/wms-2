@@ -9,6 +9,8 @@ public interface RolePermissionStateRepository
 {
     RolePermissionState get(RolePermissionId id);
 
+    RolePermissionState get(RolePermissionId id, boolean nullAllowed);
+
     Iterable<RolePermissionState> getAll(Integer firstResult, Integer maxResults);
     
     void save(RolePermissionState state);

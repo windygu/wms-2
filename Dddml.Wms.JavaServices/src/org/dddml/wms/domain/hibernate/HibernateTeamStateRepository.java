@@ -28,8 +28,14 @@ public class HibernateTeamStateRepository implements TeamStateRepository
     @Transactional(readOnly = true)
     public TeamState get(String id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public TeamState get(String id, boolean nullAllowed)
+    {
         TeamState state = (TeamState)getCurrentSession().get(AbstractTeamState.SimpleTeamState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractTeamState.SimpleTeamState();
             state.setTeamName(id);
         }

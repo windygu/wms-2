@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IAttributeSetInstanceState Get(string id);
 
+        IAttributeSetInstanceState Get(string id, bool nullAllowed);
+
         IEnumerable<IAttributeSetInstanceState> GetAll(int firstResult, int maxResults);
         
         void Save(IAttributeSetInstanceState state);

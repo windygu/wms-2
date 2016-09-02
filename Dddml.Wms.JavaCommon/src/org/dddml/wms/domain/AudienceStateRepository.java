@@ -9,6 +9,8 @@ public interface AudienceStateRepository
 {
     AudienceState get(String id);
 
+    AudienceState get(String id, boolean nullAllowed);
+
     Iterable<AudienceState> getAll(Integer firstResult, Integer maxResults);
     
     void save(AudienceState state);

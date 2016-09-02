@@ -9,6 +9,8 @@ public interface OrganizationStructureTypeStateRepository
 {
     OrganizationStructureTypeState get(String id);
 
+    OrganizationStructureTypeState get(String id, boolean nullAllowed);
+
     Iterable<OrganizationStructureTypeState> getAll(Integer firstResult, Integer maxResults);
     
     void save(OrganizationStructureTypeState state);

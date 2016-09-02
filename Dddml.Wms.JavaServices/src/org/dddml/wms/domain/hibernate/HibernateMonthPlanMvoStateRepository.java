@@ -28,8 +28,14 @@ public class HibernateMonthPlanMvoStateRepository implements MonthPlanMvoStateRe
     @Transactional(readOnly = true)
     public MonthPlanMvoState get(MonthPlanId id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public MonthPlanMvoState get(MonthPlanId id, boolean nullAllowed)
+    {
         MonthPlanMvoState state = (MonthPlanMvoState)getCurrentSession().get(AbstractMonthPlanMvoState.SimpleMonthPlanMvoState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractMonthPlanMvoState.SimpleMonthPlanMvoState();
             state.setMonthPlanId(id);
         }

@@ -43,10 +43,8 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
     }
 
     public OrganizationStructureTypeState get(String id) {
-        OrganizationStructureTypeState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        OrganizationStructureTypeState state = getStateRepository().get(id, true);
         return state;
     }
 

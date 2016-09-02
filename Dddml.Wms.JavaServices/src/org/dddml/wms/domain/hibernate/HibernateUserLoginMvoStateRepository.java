@@ -28,8 +28,14 @@ public class HibernateUserLoginMvoStateRepository implements UserLoginMvoStateRe
     @Transactional(readOnly = true)
     public UserLoginMvoState get(UserLoginId id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public UserLoginMvoState get(UserLoginId id, boolean nullAllowed)
+    {
         UserLoginMvoState state = (UserLoginMvoState)getCurrentSession().get(AbstractUserLoginMvoState.SimpleUserLoginMvoState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractUserLoginMvoState.SimpleUserLoginMvoState();
             state.setUserLoginId(id);
         }

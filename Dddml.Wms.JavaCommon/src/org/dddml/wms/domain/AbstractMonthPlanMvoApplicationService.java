@@ -43,10 +43,8 @@ public abstract class AbstractMonthPlanMvoApplicationService implements MonthPla
     }
 
     public MonthPlanMvoState get(MonthPlanId id) {
-        MonthPlanMvoState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        MonthPlanMvoState state = getStateRepository().get(id, true);
         return state;
     }
 

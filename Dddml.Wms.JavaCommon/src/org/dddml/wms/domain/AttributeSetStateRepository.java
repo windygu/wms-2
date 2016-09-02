@@ -9,6 +9,8 @@ public interface AttributeSetStateRepository
 {
     AttributeSetState get(String id);
 
+    AttributeSetState get(String id, boolean nullAllowed);
+
     Iterable<AttributeSetState> getAll(Integer firstResult, Integer maxResults);
     
     void save(AttributeSetState state);

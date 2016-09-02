@@ -28,8 +28,14 @@ public class HibernatePersonStateRepository implements PersonStateRepository
     @Transactional(readOnly = true)
     public PersonState get(PersonalName id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public PersonState get(PersonalName id, boolean nullAllowed)
+    {
         PersonState state = (PersonState)getCurrentSession().get(AbstractPersonState.SimplePersonState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractPersonState.SimplePersonState();
             state.setPersonalName(id);
         }

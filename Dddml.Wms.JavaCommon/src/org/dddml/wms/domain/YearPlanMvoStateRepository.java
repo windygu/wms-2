@@ -9,6 +9,8 @@ public interface YearPlanMvoStateRepository
 {
     YearPlanMvoState get(YearPlanId id);
 
+    YearPlanMvoState get(YearPlanId id, boolean nullAllowed);
+
     Iterable<YearPlanMvoState> getAll(Integer firstResult, Integer maxResults);
     
     void save(YearPlanMvoState state);

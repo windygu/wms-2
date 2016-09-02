@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IOrganizationState Get(string organizationId)
         {
-            var state = StateRepository.Get(organizationId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(organizationId, true);
             return state;
         }
 

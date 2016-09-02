@@ -44,10 +44,8 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
     }
 
     public AttributeSetInstanceState get(String id) {
-        AttributeSetInstanceState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        AttributeSetInstanceState state = getStateRepository().get(id, true);
         return state;
     }
 

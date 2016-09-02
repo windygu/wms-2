@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IAudienceState Get(string clientId)
         {
-            var state = StateRepository.Get(clientId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(clientId, true);
             return state;
         }
 

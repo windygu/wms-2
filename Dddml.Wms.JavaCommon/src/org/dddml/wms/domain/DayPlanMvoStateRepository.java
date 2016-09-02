@@ -9,6 +9,8 @@ public interface DayPlanMvoStateRepository
 {
     DayPlanMvoState get(DayPlanId id);
 
+    DayPlanMvoState get(DayPlanId id, boolean nullAllowed);
+
     Iterable<DayPlanMvoState> getAll(Integer firstResult, Integer maxResults);
     
     void save(DayPlanMvoState state);

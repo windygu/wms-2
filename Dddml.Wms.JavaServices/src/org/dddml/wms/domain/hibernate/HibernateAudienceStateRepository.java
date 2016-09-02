@@ -28,8 +28,14 @@ public class HibernateAudienceStateRepository implements AudienceStateRepository
     @Transactional(readOnly = true)
     public AudienceState get(String id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public AudienceState get(String id, boolean nullAllowed)
+    {
         AudienceState state = (AudienceState)getCurrentSession().get(AbstractAudienceState.SimpleAudienceState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractAudienceState.SimpleAudienceState();
             state.setClientId(id);
         }

@@ -43,10 +43,8 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
     }
 
     public AttributeValueMvoState get(AttributeValueId id) {
-        AttributeValueMvoState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        AttributeValueMvoState state = getStateRepository().get(id, true);
         return state;
     }
 

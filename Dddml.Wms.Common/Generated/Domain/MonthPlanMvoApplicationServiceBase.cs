@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IMonthPlanMvoState Get(MonthPlanId monthPlanId)
         {
-            var state = StateRepository.Get(monthPlanId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(monthPlanId, true);
             return state;
         }
 

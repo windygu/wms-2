@@ -28,8 +28,14 @@ public class HibernateLocatorStateRepository implements LocatorStateRepository
     @Transactional(readOnly = true)
     public LocatorState get(String id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public LocatorState get(String id, boolean nullAllowed)
+    {
         LocatorState state = (LocatorState)getCurrentSession().get(AbstractLocatorState.SimpleLocatorState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractLocatorState.SimpleLocatorState();
             state.setLocatorId(id);
         }

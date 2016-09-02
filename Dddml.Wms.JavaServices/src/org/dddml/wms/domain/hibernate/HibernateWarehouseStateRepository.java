@@ -28,8 +28,14 @@ public class HibernateWarehouseStateRepository implements WarehouseStateReposito
     @Transactional(readOnly = true)
     public WarehouseState get(String id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public WarehouseState get(String id, boolean nullAllowed)
+    {
         WarehouseState state = (WarehouseState)getCurrentSession().get(AbstractWarehouseState.SimpleWarehouseState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractWarehouseState.SimpleWarehouseState();
             state.setWarehouseId(id);
         }

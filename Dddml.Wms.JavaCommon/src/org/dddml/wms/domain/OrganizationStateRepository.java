@@ -9,6 +9,8 @@ public interface OrganizationStateRepository
 {
     OrganizationState get(String id);
 
+    OrganizationState get(String id, boolean nullAllowed);
+
     Iterable<OrganizationState> getAll(Integer firstResult, Integer maxResults);
     
     void save(OrganizationState state);

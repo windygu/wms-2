@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IPersonState Get(PersonalName personalName)
         {
-            var state = StateRepository.Get(personalName);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(personalName, true);
             return state;
         }
 

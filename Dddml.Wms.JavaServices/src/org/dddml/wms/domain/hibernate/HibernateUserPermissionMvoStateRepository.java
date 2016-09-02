@@ -28,8 +28,14 @@ public class HibernateUserPermissionMvoStateRepository implements UserPermission
     @Transactional(readOnly = true)
     public UserPermissionMvoState get(UserPermissionId id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public UserPermissionMvoState get(UserPermissionId id, boolean nullAllowed)
+    {
         UserPermissionMvoState state = (UserPermissionMvoState)getCurrentSession().get(AbstractUserPermissionMvoState.SimpleUserPermissionMvoState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractUserPermissionMvoState.SimpleUserPermissionMvoState();
             state.setUserPermissionId(id);
         }

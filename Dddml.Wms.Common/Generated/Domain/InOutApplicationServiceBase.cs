@@ -77,10 +77,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IInOutState Get(string documentNumber)
         {
-            var state = StateRepository.Get(documentNumber);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(documentNumber, true);
             return state;
         }
 

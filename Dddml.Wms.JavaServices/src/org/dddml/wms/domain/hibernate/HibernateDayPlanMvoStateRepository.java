@@ -28,8 +28,14 @@ public class HibernateDayPlanMvoStateRepository implements DayPlanMvoStateReposi
     @Transactional(readOnly = true)
     public DayPlanMvoState get(DayPlanId id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public DayPlanMvoState get(DayPlanId id, boolean nullAllowed)
+    {
         DayPlanMvoState state = (DayPlanMvoState)getCurrentSession().get(AbstractDayPlanMvoState.SimpleDayPlanMvoState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractDayPlanMvoState.SimpleDayPlanMvoState();
             state.setDayPlanId(id);
         }

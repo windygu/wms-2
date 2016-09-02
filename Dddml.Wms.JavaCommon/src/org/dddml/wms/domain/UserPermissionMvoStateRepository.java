@@ -9,6 +9,8 @@ public interface UserPermissionMvoStateRepository
 {
     UserPermissionMvoState get(UserPermissionId id);
 
+    UserPermissionMvoState get(UserPermissionId id, boolean nullAllowed);
+
     Iterable<UserPermissionMvoState> getAll(Integer firstResult, Integer maxResults);
     
     void save(UserPermissionMvoState state);

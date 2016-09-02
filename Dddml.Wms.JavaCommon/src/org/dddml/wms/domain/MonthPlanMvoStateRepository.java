@@ -9,6 +9,8 @@ public interface MonthPlanMvoStateRepository
 {
     MonthPlanMvoState get(MonthPlanId id);
 
+    MonthPlanMvoState get(MonthPlanId id, boolean nullAllowed);
+
     Iterable<MonthPlanMvoState> getAll(Integer firstResult, Integer maxResults);
     
     void save(MonthPlanMvoState state);

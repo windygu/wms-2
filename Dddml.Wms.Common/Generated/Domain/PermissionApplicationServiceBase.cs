@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IPermissionState Get(string permissionId)
         {
-            var state = StateRepository.Get(permissionId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(permissionId, true);
             return state;
         }
 

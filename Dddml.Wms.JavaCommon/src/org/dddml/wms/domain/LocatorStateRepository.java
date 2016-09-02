@@ -9,6 +9,8 @@ public interface LocatorStateRepository
 {
     LocatorState get(String id);
 
+    LocatorState get(String id, boolean nullAllowed);
+
     Iterable<LocatorState> getAll(Integer firstResult, Integer maxResults);
     
     void save(LocatorState state);

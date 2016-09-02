@@ -9,6 +9,8 @@ public interface UserStateRepository
 {
     UserState get(String id);
 
+    UserState get(String id, boolean nullAllowed);
+
     Iterable<UserState> getAll(Integer firstResult, Integer maxResults);
     
     void save(UserState state);

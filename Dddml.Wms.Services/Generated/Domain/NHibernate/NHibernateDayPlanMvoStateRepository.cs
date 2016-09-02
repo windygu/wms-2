@@ -34,8 +34,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public IDayPlanMvoState Get (DayPlanId id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public IDayPlanMvoState Get (DayPlanId id, bool nullAllowed)
+		{
 			IDayPlanMvoState state = CurrentSession.Get<DayPlanMvoState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new DayPlanMvoState ();
 				(state as DayPlanMvoState).DayPlanId = id;
 			}

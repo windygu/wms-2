@@ -45,10 +45,8 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
     }
 
     public InOutLineMvoState get(InOutLineId id) {
-        InOutLineMvoState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        InOutLineMvoState state = getStateRepository().get(id, true);
         return state;
     }
 

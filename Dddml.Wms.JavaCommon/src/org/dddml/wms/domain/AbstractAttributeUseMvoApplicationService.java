@@ -43,10 +43,8 @@ public abstract class AbstractAttributeUseMvoApplicationService implements Attri
     }
 
     public AttributeUseMvoState get(AttributeSetAttributeUseId id) {
-        AttributeUseMvoState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        AttributeUseMvoState state = getStateRepository().get(id, true);
         return state;
     }
 

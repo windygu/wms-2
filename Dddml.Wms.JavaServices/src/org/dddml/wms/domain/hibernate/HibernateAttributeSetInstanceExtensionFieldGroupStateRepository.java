@@ -28,8 +28,14 @@ public class HibernateAttributeSetInstanceExtensionFieldGroupStateRepository imp
     @Transactional(readOnly = true)
     public AttributeSetInstanceExtensionFieldGroupState get(String id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public AttributeSetInstanceExtensionFieldGroupState get(String id, boolean nullAllowed)
+    {
         AttributeSetInstanceExtensionFieldGroupState state = (AttributeSetInstanceExtensionFieldGroupState)getCurrentSession().get(AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState();
             state.setId(id);
         }

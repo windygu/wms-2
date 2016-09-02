@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IPermissionState Get(string id);
 
+        IPermissionState Get(string id, bool nullAllowed);
+
         IEnumerable<IPermissionState> GetAll(int firstResult, int maxResults);
         
         void Save(IPermissionState state);

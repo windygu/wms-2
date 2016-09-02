@@ -9,6 +9,8 @@ public interface WarehouseStateRepository
 {
     WarehouseState get(String id);
 
+    WarehouseState get(String id, boolean nullAllowed);
+
     Iterable<WarehouseState> getAll(Integer firstResult, Integer maxResults);
     
     void save(WarehouseState state);

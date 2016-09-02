@@ -30,8 +30,14 @@ public class HibernateInOutStateRepository implements InOutStateRepository
     @Transactional(readOnly = true)
     public InOutState get(String id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public InOutState get(String id, boolean nullAllowed)
+    {
         InOutState state = (InOutState)getCurrentSession().get(AbstractInOutState.SimpleInOutState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractInOutState.SimpleInOutState();
             state.setDocumentNumber(id);
         }

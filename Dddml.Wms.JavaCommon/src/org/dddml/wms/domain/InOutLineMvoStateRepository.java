@@ -11,6 +11,8 @@ public interface InOutLineMvoStateRepository
 {
     InOutLineMvoState get(InOutLineId id);
 
+    InOutLineMvoState get(InOutLineId id, boolean nullAllowed);
+
     Iterable<InOutLineMvoState> getAll(Integer firstResult, Integer maxResults);
     
     void save(InOutLineMvoState state);

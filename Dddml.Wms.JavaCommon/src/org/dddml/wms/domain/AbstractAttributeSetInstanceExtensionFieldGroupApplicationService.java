@@ -43,10 +43,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
     }
 
     public AttributeSetInstanceExtensionFieldGroupState get(String id) {
-        AttributeSetInstanceExtensionFieldGroupState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        AttributeSetInstanceExtensionFieldGroupState state = getStateRepository().get(id, true);
         return state;
     }
 

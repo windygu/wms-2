@@ -43,10 +43,8 @@ public abstract class AbstractYearPlanMvoApplicationService implements YearPlanM
     }
 
     public YearPlanMvoState get(YearPlanId id) {
-        YearPlanMvoState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        YearPlanMvoState state = getStateRepository().get(id, true);
         return state;
     }
 

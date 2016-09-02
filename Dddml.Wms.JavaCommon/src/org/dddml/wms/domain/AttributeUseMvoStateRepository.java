@@ -9,6 +9,8 @@ public interface AttributeUseMvoStateRepository
 {
     AttributeUseMvoState get(AttributeSetAttributeUseId id);
 
+    AttributeUseMvoState get(AttributeSetAttributeUseId id, boolean nullAllowed);
+
     Iterable<AttributeUseMvoState> getAll(Integer firstResult, Integer maxResults);
     
     void save(AttributeUseMvoState state);

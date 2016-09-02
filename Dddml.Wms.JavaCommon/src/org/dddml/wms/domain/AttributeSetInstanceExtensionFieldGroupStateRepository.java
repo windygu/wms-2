@@ -9,6 +9,8 @@ public interface AttributeSetInstanceExtensionFieldGroupStateRepository
 {
     AttributeSetInstanceExtensionFieldGroupState get(String id);
 
+    AttributeSetInstanceExtensionFieldGroupState get(String id, boolean nullAllowed);
+
     Iterable<AttributeSetInstanceExtensionFieldGroupState> getAll(Integer firstResult, Integer maxResults);
     
     void save(AttributeSetInstanceExtensionFieldGroupState state);

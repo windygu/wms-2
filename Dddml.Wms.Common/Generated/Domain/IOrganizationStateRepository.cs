@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IOrganizationState Get(string id);
 
+        IOrganizationState Get(string id, bool nullAllowed);
+
         IEnumerable<IOrganizationState> GetAll(int firstResult, int maxResults);
         
         void Save(IOrganizationState state);

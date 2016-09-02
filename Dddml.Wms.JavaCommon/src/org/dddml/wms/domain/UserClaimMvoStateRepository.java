@@ -9,6 +9,8 @@ public interface UserClaimMvoStateRepository
 {
     UserClaimMvoState get(UserClaimId id);
 
+    UserClaimMvoState get(UserClaimId id, boolean nullAllowed);
+
     Iterable<UserClaimMvoState> getAll(Integer firstResult, Integer maxResults);
     
     void save(UserClaimMvoState state);

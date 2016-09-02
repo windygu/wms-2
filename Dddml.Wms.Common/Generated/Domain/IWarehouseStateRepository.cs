@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IWarehouseState Get(string id);
 
+        IWarehouseState Get(string id, bool nullAllowed);
+
         IEnumerable<IWarehouseState> GetAll(int firstResult, int maxResults);
         
         void Save(IWarehouseState state);

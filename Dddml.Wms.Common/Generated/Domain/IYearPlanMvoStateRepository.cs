@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IYearPlanMvoState Get(YearPlanId id);
 
+        IYearPlanMvoState Get(YearPlanId id, bool nullAllowed);
+
         IEnumerable<IYearPlanMvoState> GetAll(int firstResult, int maxResults);
         
         void Save(IYearPlanMvoState state);

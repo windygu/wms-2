@@ -43,10 +43,8 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
     }
 
     public OrganizationState get(String id) {
-        OrganizationState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        OrganizationState state = getStateRepository().get(id, true);
         return state;
     }
 

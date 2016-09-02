@@ -28,8 +28,14 @@ public class HibernateRolePermissionStateRepository implements RolePermissionSta
     @Transactional(readOnly = true)
     public RolePermissionState get(RolePermissionId id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public RolePermissionState get(RolePermissionId id, boolean nullAllowed)
+    {
         RolePermissionState state = (RolePermissionState)getCurrentSession().get(AbstractRolePermissionState.SimpleRolePermissionState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractRolePermissionState.SimpleRolePermissionState();
             state.setId(id);
         }

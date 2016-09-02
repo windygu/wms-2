@@ -43,10 +43,8 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
     }
 
     public AttributeState get(String id) {
-        AttributeState state = getStateRepository().get(id);
 
-        if (state != null && state.isStateUnsaved()) { state = null; }
-
+        AttributeState state = getStateRepository().get(id, true);
         return state;
     }
 

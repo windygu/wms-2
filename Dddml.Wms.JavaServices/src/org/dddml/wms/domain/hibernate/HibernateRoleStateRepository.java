@@ -28,8 +28,14 @@ public class HibernateRoleStateRepository implements RoleStateRepository
     @Transactional(readOnly = true)
     public RoleState get(String id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public RoleState get(String id, boolean nullAllowed)
+    {
         RoleState state = (RoleState)getCurrentSession().get(AbstractRoleState.SimpleRoleState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractRoleState.SimpleRoleState();
             state.setRoleId(id);
         }

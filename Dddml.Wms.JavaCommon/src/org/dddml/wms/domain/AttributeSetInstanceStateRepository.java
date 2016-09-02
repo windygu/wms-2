@@ -10,6 +10,8 @@ public interface AttributeSetInstanceStateRepository
 {
     AttributeSetInstanceState get(String id);
 
+    AttributeSetInstanceState get(String id, boolean nullAllowed);
+
     Iterable<AttributeSetInstanceState> getAll(Integer firstResult, Integer maxResults);
     
     void save(AttributeSetInstanceState state);

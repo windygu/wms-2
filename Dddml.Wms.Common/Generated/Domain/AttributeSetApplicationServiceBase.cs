@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeSetState Get(string attributeSetId)
         {
-            var state = StateRepository.Get(attributeSetId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(attributeSetId, true);
             return state;
         }
 

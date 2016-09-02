@@ -11,6 +11,8 @@ public interface InOutStateRepository
 {
     InOutState get(String id);
 
+    InOutState get(String id, boolean nullAllowed);
+
     Iterable<InOutState> getAll(Integer firstResult, Integer maxResults);
     
     void save(InOutState state);

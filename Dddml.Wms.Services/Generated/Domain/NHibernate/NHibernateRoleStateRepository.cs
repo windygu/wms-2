@@ -34,8 +34,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public IRoleState Get (string id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public IRoleState Get (string id, bool nullAllowed)
+		{
 			IRoleState state = CurrentSession.Get<RoleState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new RoleState ();
 				(state as RoleState).RoleId = id;
 			}

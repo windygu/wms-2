@@ -9,6 +9,8 @@ public interface PersonStateRepository
 {
     PersonState get(PersonalName id);
 
+    PersonState get(PersonalName id, boolean nullAllowed);
+
     Iterable<PersonState> getAll(Integer firstResult, Integer maxResults);
     
     void save(PersonState state);

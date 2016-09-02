@@ -28,8 +28,14 @@ public class HibernateUserStateRepository implements UserStateRepository
     @Transactional(readOnly = true)
     public UserState get(String id)
     {
+        return get(id, false);
+    }
+
+   @Transactional(readOnly = true)
+    public UserState get(String id, boolean nullAllowed)
+    {
         UserState state = (UserState)getCurrentSession().get(AbstractUserState.SimpleUserState.class, id);
-        if (state == null) {
+        if (!nullAllowed && state == null) {
             state = new AbstractUserState.SimpleUserState();
             state.setUserId(id);
         }

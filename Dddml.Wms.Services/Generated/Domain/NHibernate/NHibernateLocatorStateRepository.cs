@@ -34,8 +34,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public ILocatorState Get (string id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public ILocatorState Get (string id, bool nullAllowed)
+		{
 			ILocatorState state = CurrentSession.Get<LocatorState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new LocatorState ();
 				(state as LocatorState).LocatorId = id;
 			}

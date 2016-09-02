@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IPersonState Get(PersonalName id);
 
+        IPersonState Get(PersonalName id, bool nullAllowed);
+
         IEnumerable<IPersonState> GetAll(int firstResult, int maxResults);
         
         void Save(IPersonState state);
