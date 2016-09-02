@@ -78,6 +78,10 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
         InOutLineMvoStateEvent e = (InOutLineMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(inOutLineId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(inOutLineId, 0);
+        }
         return e;
     }
 

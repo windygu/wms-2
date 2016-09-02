@@ -76,6 +76,10 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
         OrganizationStructureTypeStateEvent e = (OrganizationStructureTypeStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(id), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(id, 0);
+        }
         return e;
     }
 

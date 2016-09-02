@@ -76,6 +76,10 @@ public abstract class AbstractDayPlanMvoApplicationService implements DayPlanMvo
         DayPlanMvoStateEvent e = (DayPlanMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(dayPlanId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(dayPlanId, 0);
+        }
         return e;
     }
 

@@ -76,6 +76,10 @@ public abstract class AbstractAudienceApplicationService implements AudienceAppl
         AudienceStateEvent e = (AudienceStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(clientId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(clientId, 0);
+        }
         return e;
     }
 

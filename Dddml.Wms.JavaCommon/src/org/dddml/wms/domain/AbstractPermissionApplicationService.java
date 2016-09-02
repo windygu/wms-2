@@ -76,6 +76,10 @@ public abstract class AbstractPermissionApplicationService implements Permission
         PermissionStateEvent e = (PermissionStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(permissionId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(permissionId, 0);
+        }
         return e;
     }
 

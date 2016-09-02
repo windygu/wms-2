@@ -76,6 +76,10 @@ public abstract class AbstractTeamApplicationService implements TeamApplicationS
         TeamStateEvent e = (TeamStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(teamName), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(teamName, 0);
+        }
         return e;
     }
 

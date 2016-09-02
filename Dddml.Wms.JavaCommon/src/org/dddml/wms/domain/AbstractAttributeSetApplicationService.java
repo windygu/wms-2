@@ -76,6 +76,10 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
         AttributeSetStateEvent e = (AttributeSetStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(attributeSetId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(attributeSetId, 0);
+        }
         return e;
     }
 

@@ -76,6 +76,10 @@ public abstract class AbstractUserClaimMvoApplicationService implements UserClai
         UserClaimMvoStateEvent e = (UserClaimMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(userClaimId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(userClaimId, 0);
+        }
         return e;
     }
 

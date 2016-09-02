@@ -76,6 +76,10 @@ public abstract class AbstractRoleApplicationService implements RoleApplicationS
         RoleStateEvent e = (RoleStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(roleId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(roleId, 0);
+        }
         return e;
     }
 

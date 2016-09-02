@@ -122,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(attributeSetInstanceId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IAttributeSetInstanceAggregate GetAttributeSetInstanceAggregate(IAttributeSetInstanceState state);

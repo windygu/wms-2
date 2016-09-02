@@ -76,6 +76,10 @@ public abstract class AbstractUserRoleMvoApplicationService implements UserRoleM
         UserRoleMvoStateEvent e = (UserRoleMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(userRoleId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(userRoleId, 0);
+        }
         return e;
     }
 

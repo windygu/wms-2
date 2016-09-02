@@ -76,6 +76,10 @@ public abstract class AbstractUserLoginMvoApplicationService implements UserLogi
         UserLoginMvoStateEvent e = (UserLoginMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(userLoginId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(userLoginId, 0);
+        }
         return e;
     }
 

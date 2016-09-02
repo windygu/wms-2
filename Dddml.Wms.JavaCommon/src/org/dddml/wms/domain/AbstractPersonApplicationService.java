@@ -76,6 +76,10 @@ public abstract class AbstractPersonApplicationService implements PersonApplicat
         PersonStateEvent e = (PersonStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(personalName), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(personalName, 0);
+        }
         return e;
     }
 

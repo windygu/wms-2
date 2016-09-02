@@ -122,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(userRoleId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IUserRoleMvoAggregate GetUserRoleMvoAggregate(IUserRoleMvoState state);

@@ -122,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(attributeSetId, 0);
+            }
             return e;
         }
+
 
         public virtual IAttributeUseState GetAttributeUse(string attributeSetId, string attributeId)
         {

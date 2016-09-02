@@ -76,6 +76,10 @@ public abstract class AbstractAttributeUseMvoApplicationService implements Attri
         AttributeUseMvoStateEvent e = (AttributeUseMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(attributeSetAttributeUseId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(attributeSetAttributeUseId, 0);
+        }
         return e;
     }
 

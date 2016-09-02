@@ -76,6 +76,10 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
         OrganizationStateEvent e = (OrganizationStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(organizationId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(organizationId, 0);
+        }
         return e;
     }
 

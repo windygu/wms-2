@@ -76,6 +76,10 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoApplicationSe
         AttributeSetInstanceExtensionFieldMvoStateEvent e = (AttributeSetInstanceExtensionFieldMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(attributeSetInstanceExtensionFieldId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(attributeSetInstanceExtensionFieldId, 0);
+        }
         return e;
     }
 

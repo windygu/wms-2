@@ -76,6 +76,10 @@ public abstract class AbstractUserPermissionMvoApplicationService implements Use
         UserPermissionMvoStateEvent e = (UserPermissionMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(userPermissionId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(userPermissionId, 0);
+        }
         return e;
     }
 

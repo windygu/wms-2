@@ -78,6 +78,10 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         InOutStateEvent e = (InOutStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(documentNumber), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(documentNumber, 0);
+        }
         return e;
     }
 

@@ -76,6 +76,10 @@ public abstract class AbstractMonthPlanMvoApplicationService implements MonthPla
         MonthPlanMvoStateEvent e = (MonthPlanMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(monthPlanId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(monthPlanId, 0);
+        }
         return e;
     }
 

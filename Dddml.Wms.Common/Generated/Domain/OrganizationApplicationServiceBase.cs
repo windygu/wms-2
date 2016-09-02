@@ -122,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(organizationId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IOrganizationAggregate GetOrganizationAggregate(IOrganizationState state);

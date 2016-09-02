@@ -76,6 +76,10 @@ public abstract class AbstractUserApplicationService implements UserApplicationS
         UserStateEvent e = (UserStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(userId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(userId, 0);
+        }
         return e;
     }
 

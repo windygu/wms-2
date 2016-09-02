@@ -76,6 +76,10 @@ public abstract class AbstractLocatorApplicationService implements LocatorApplic
         LocatorStateEvent e = (LocatorStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(locatorId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(locatorId, 0);
+        }
         return e;
     }
 

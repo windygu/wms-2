@@ -76,6 +76,10 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
         AttributeValueMvoStateEvent e = (AttributeValueMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(attributeValueId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(attributeValueId, 0);
+        }
         return e;
     }
 

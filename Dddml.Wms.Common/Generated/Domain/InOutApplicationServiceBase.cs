@@ -123,8 +123,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(documentNumber, 0);
+            }
             return e;
         }
+
 
         public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, SkuId skuId)
         {

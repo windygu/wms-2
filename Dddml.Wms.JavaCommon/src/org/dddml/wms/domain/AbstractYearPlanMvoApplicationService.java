@@ -76,6 +76,10 @@ public abstract class AbstractYearPlanMvoApplicationService implements YearPlanM
         YearPlanMvoStateEvent e = (YearPlanMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(yearPlanId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
+            return getStateEvent(yearPlanId, 0);
+        }
         return e;
     }
 

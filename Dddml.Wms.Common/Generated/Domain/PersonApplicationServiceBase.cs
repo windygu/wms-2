@@ -122,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(personalName, 0);
+            }
             return e;
         }
+
 
         public virtual IYearPlanState GetYearPlan(PersonalName personalName, int year)
         {

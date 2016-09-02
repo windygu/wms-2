@@ -122,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(userClaimId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IUserClaimMvoAggregate GetUserClaimMvoAggregate(IUserClaimMvoState state);

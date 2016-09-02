@@ -122,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(userId, 0);
+            }
             return e;
         }
+
 
         public virtual IUserRoleState GetUserRole(string userId, string roleId)
         {
