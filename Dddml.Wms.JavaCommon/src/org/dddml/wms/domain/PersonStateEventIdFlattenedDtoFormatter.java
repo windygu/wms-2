@@ -3,26 +3,30 @@ package org.dddml.wms.domain;
 import java.util.*;
 import org.dddml.wms.specialization.*;
 
-public class AttributeSetStateEventIdFlattenedDtoFormatter extends AbstractIdFlattenedDtoFormatter<AttributeSetStateEventIdFlattenedDto>
+public class PersonStateEventIdFlattenedDtoFormatter extends AbstractIdFlattenedDtoFormatter<PersonStateEventIdFlattenedDto>
 {
 
 
     @Override
-    protected AttributeSetStateEventIdFlattenedDto newDto() {
-        return new AttributeSetStateEventIdFlattenedDto();
+    protected PersonStateEventIdFlattenedDto newDto() {
+        return new PersonStateEventIdFlattenedDto();
     }
 
     @Override
     protected String[] getFieldNames() {
-        return AttributeSetStateEventIdFlattenedDto.propertyNames;
+        return PersonStateEventIdFlattenedDto.propertyNames;
     }
 
     @Override
-    protected void setFieldStringValue(AttributeSetStateEventIdFlattenedDto dto, String fieldName, String fieldValue) {
+    protected void setFieldStringValue(PersonStateEventIdFlattenedDto dto, String fieldName, String fieldValue) {
         Class clazz = getFieldClass(fieldName);
         Object objVal = ApplicationContext.current.getTypeConverter().convertFromString(clazz, fieldValue);
-        if ("attributeSetId".equals(fieldName)) {
-            dto.setAttributeSetId((String) objVal);
+        if ("personalNameFirstName".equals(fieldName)) {
+            dto.setPersonalNameFirstName((String) objVal);
+            return;
+        }
+        if ("personalNameLastName".equals(fieldName)) {
+            dto.setPersonalNameLastName((String) objVal);
             return;
         }
         if ("version".equals(fieldName)) {
@@ -32,10 +36,15 @@ public class AttributeSetStateEventIdFlattenedDtoFormatter extends AbstractIdFla
     }
 
     @Override
-    protected String getFieldStringValue(AttributeSetStateEventIdFlattenedDto dto, String fieldName) {
+    protected String getFieldStringValue(PersonStateEventIdFlattenedDto dto, String fieldName) {
         Class clazz = getFieldClass(fieldName);
-        if ("attributeSetId".equals(fieldName)) {
-            Object objVal = dto.getAttributeSetId();
+        if ("personalNameFirstName".equals(fieldName)) {
+            Object objVal = dto.getPersonalNameFirstName();
+            String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
+            return strVal;
+        }
+        if ("personalNameLastName".equals(fieldName)) {
+            Object objVal = dto.getPersonalNameLastName();
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }
@@ -48,7 +57,7 @@ public class AttributeSetStateEventIdFlattenedDtoFormatter extends AbstractIdFla
     }
 
     protected Class getFieldClass(String fieldName) {
-        String type = AttributeSetStateEventIdFlattenedDto.propertyTypeMap.get(fieldName);
+        String type = PersonStateEventIdFlattenedDto.propertyTypeMap.get(fieldName);
         if(type == null) {
             throw new IllegalArgumentException(String.format("The field name \"%1$s\" is NOT right.", fieldName));
         }

@@ -3,26 +3,30 @@ package org.dddml.wms.domain;
 import java.util.*;
 import org.dddml.wms.specialization.*;
 
-public class AttributeSetStateEventIdFlattenedDtoFormatter extends AbstractIdFlattenedDtoFormatter<AttributeSetStateEventIdFlattenedDto>
+public class RolePermissionStateEventIdFlattenedDtoFormatter extends AbstractIdFlattenedDtoFormatter<RolePermissionStateEventIdFlattenedDto>
 {
 
 
     @Override
-    protected AttributeSetStateEventIdFlattenedDto newDto() {
-        return new AttributeSetStateEventIdFlattenedDto();
+    protected RolePermissionStateEventIdFlattenedDto newDto() {
+        return new RolePermissionStateEventIdFlattenedDto();
     }
 
     @Override
     protected String[] getFieldNames() {
-        return AttributeSetStateEventIdFlattenedDto.propertyNames;
+        return RolePermissionStateEventIdFlattenedDto.propertyNames;
     }
 
     @Override
-    protected void setFieldStringValue(AttributeSetStateEventIdFlattenedDto dto, String fieldName, String fieldValue) {
+    protected void setFieldStringValue(RolePermissionStateEventIdFlattenedDto dto, String fieldName, String fieldValue) {
         Class clazz = getFieldClass(fieldName);
         Object objVal = ApplicationContext.current.getTypeConverter().convertFromString(clazz, fieldValue);
-        if ("attributeSetId".equals(fieldName)) {
-            dto.setAttributeSetId((String) objVal);
+        if ("idRoleId".equals(fieldName)) {
+            dto.setIdRoleId((String) objVal);
+            return;
+        }
+        if ("idPermissionId".equals(fieldName)) {
+            dto.setIdPermissionId((String) objVal);
             return;
         }
         if ("version".equals(fieldName)) {
@@ -32,10 +36,15 @@ public class AttributeSetStateEventIdFlattenedDtoFormatter extends AbstractIdFla
     }
 
     @Override
-    protected String getFieldStringValue(AttributeSetStateEventIdFlattenedDto dto, String fieldName) {
+    protected String getFieldStringValue(RolePermissionStateEventIdFlattenedDto dto, String fieldName) {
         Class clazz = getFieldClass(fieldName);
-        if ("attributeSetId".equals(fieldName)) {
-            Object objVal = dto.getAttributeSetId();
+        if ("idRoleId".equals(fieldName)) {
+            Object objVal = dto.getIdRoleId();
+            String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
+            return strVal;
+        }
+        if ("idPermissionId".equals(fieldName)) {
+            Object objVal = dto.getIdPermissionId();
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }
@@ -48,7 +57,7 @@ public class AttributeSetStateEventIdFlattenedDtoFormatter extends AbstractIdFla
     }
 
     protected Class getFieldClass(String fieldName) {
-        String type = AttributeSetStateEventIdFlattenedDto.propertyTypeMap.get(fieldName);
+        String type = RolePermissionStateEventIdFlattenedDto.propertyTypeMap.get(fieldName);
         if(type == null) {
             throw new IllegalArgumentException(String.format("The field name \"%1$s\" is NOT right.", fieldName));
         }

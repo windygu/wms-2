@@ -1,13 +1,10 @@
 package org.dddml.wms.domain;
 
-import org.dddml.wms.specialization.AbstractIdFlattenedDtoFormatter;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class AttributeSetStateEventIdFlattenedDto
 {
-
 
 
     public static final String[] propertyNames = new String[]{
