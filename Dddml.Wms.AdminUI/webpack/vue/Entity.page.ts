@@ -1,12 +1,12 @@
 import Entity from '../src/Entity';
-import Navigator from './Bootstrap/Navigator.component';
-import SubEntities from './Bootstrap/SubEntities.component';
+import Navigator from './components/Navigator.component';
+import SubEntities from './components/SubEntities.component';
 import * as Vue from 'vue'
 import EntityChainHelper from "../src/Helper/EntityChainHelper";
 import MetadataHelper from "../src/Helper/MetadataHelper";
 
 export default Vue.extend({
-    template: require('./View/Entity.html'),
+    template: require('./views/Entity.html'),
     data(){
         return {
             entity: {},

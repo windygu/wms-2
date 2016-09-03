@@ -75,15 +75,7 @@
                 </div>
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
-                <ul id="main-menu" class="sidebar-menu">
-                    <li class="header">聚合</li>
-                    <li v-for="entity in application.entitiesMetadata">
-                        <a v-link="{ name: 'entities', params: { name: entity.plural } }"
-                           v-on:click="changeEntity(entity)">
-                            <i class="fa fa-th"></i> <span>{{entity.collectionLabel}}</span>
-                        </a>
-                    </li>
-                </ul>
+                <aggregates-menu></aggregates-menu>
             </section>        <!-- /.sidebar -->
         </aside>
 

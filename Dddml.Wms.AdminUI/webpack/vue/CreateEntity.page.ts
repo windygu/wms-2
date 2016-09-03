@@ -1,12 +1,12 @@
-import VForm from './Bootstrap/Form.component'
-import Navigator from './Bootstrap/Navigator.component';
+import VForm from './components/Form.component'
+import Navigator from './components/Navigator.component';
 import * as Vue from 'vue'
 import FormFactory from "../src/Form/FormFactory";
 import Entity from "../src/Entity";
 import MetadataHelper from "../src/Helper/MetadataHelper";
 
 export default Vue.extend({
-    template: require('./View/CreateEntity.html'),
+    template: require('./views/CreateEntity.html'),
     data(){
         return {
             metadata: null,

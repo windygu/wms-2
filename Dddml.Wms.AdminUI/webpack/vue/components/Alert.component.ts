@@ -1,7 +1,7 @@
 import * as Vue from 'vue'
 
 export default Vue.extend({
-    template: require('./View/Alert.html'),
+    template: require('./views/Alert.html'),
     data(){
         return {}
     },

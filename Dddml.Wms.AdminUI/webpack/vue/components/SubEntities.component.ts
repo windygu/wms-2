@@ -3,7 +3,7 @@ import VTable from './Table'
 import EntityChainHelper from "../../src/Helper/EntityChainHelper";
 
 export default Vue.extend({
-    template: require('./../View/ChildEntities.html'),
+    template: require('./views/ChildEntities.html'),
     data(){
         return {
             current: {},

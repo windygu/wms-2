@@ -1,28 +1,28 @@
-import IndexComponent from './components/Index.component';
-import AggregateRootComponent from './components/AggregateRoot.component';
-import EntityComponent from './components/Entity.component';
-import CreateEntityComponent from './components/CreateEntity.component';
-import MergePatchEntityComponent from './components/MergePatchEntity.component';
+import IndexPage from './vue/Index.page';
+import AggregateRootPage from './vue/AggregateRoot.page';
+import EntityPage from './vue/Entity.page';
+import CreateEntityPage from './vue/CreateEntity.page';
+import MergePatchEntityPage from './vue/MergePatchEntity.page';
 
 export default {
     '/': {
         name: 'index',
-        component: IndexComponent
+        component: IndexPage
     },
     '/entities/:name/': {
         name: 'entities',
-        component: AggregateRootComponent
+        component: AggregateRootPage
     },
     '/entity/:chainingName/': {
         name: 'entity',
-        component: EntityComponent
+        component: EntityPage
     },
     '/create/:name/': {
         name: 'createEntity',
-        component: CreateEntityComponent
+        component: CreateEntityPage
     },
     '/mergePatch/:chainingName': {
         name: 'mergePatchEntity',
-        component: MergePatchEntityComponent
+        component: MergePatchEntityPage
     }
 };

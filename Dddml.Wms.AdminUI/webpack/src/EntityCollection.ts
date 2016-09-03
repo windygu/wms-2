@@ -1,4 +1,4 @@
-import Table from './Table';
+import Table from './Model/Table/TableListModel';
 import EntityChainHelper from "./Helper/EntityChainHelper";
 
 export default class EntityCollection {

@@ -1,12 +1,12 @@
-import VTable from './Bootstrap/Table';
+import VTable from './components/Table';
 import EntityCollection from '../src/EntityCollection';
-import Navigator from './Bootstrap/Navigator.component';
-import Alert from './Bootstrap/Alert.component';
+import Navigator from './components/Navigator.component';
+import Alert from './components/Alert.component';
 import * as Vue from 'vue'
 import MetadataHelper from "../src/Helper/MetadataHelper";
 
 export default Vue.extend({
-    template: require('./View/AggregateRoot.html'),
+    template: require('./views/AggregateRoot.html'),
     data(){
         return {
             table: {},

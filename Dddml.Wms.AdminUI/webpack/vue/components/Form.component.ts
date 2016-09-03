@@ -2,7 +2,7 @@ import FormElement from './FormElement.component';
 import * as Vue from 'vue'
 
 export default Vue.extend({
-    template: require('./View/Form.html'),
+    template: require('./views/Form.html'),
     data(){
         return {}
     },

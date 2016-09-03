@@ -1,6 +1,6 @@
 import Application from './src/Application'
-import AppComponent from './components/App.component'
+import App from './vue/App'
 
 var app = Application.getInstance();
 
-app.run(AppComponent, '#app', true);
+app.run(App, '#app', true);

@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "html-loader": "^0.4.3",
+    "lodash": "^4.15.0",
     "vue": "^1.0.26"
   }
 }

@@ -1,12 +1,11 @@
 import * as Vue from 'vue'
 
 export default Vue.extend({
-    template: require('./View/Table.html'),
+    template: require('./views/Navigator.html'),
     data(){
         return {}
     },
     props: {
-        tableData: Object
-    },
-    components: {}
+        navigator: {}
+    }
 });
