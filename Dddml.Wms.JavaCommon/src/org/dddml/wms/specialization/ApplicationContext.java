@@ -12,10 +12,37 @@ public class ApplicationContext {
         current = context;
     }
 
-    //private ITypeConverter _typeConverter = new DefaultTypeConverter();
-
     public Object get(String name) {
         throw new UnsupportedOperationException();
     }
 
+
+    public TypeConverter getTypeConverter() {
+        return new DefaultTypeConverter();
+    }
+
+    public static class DefaultTypeConverter implements TypeConverter {
+
+        private org.dddml.support.criterion.DefaultTypeConverter innerTypeConverter = new org.dddml.support.criterion.DefaultTypeConverter();
+
+        @Override
+        public Object convertFromString(Class type, String text) {
+            return innerTypeConverter.convertFromString(type, text);
+        }
+
+        @Override
+        public String convertToString(Object value) {
+            return innerTypeConverter.convertToString(value);
+        }
+
+        @Override
+        public String convertToString(Class type, Object value) {
+            return innerTypeConverter.convertToString(value);
+        }
+
+        @Override
+        public String[] convertToStringArray(Object[] values) {
+            return innerTypeConverter.convertToStringArray(values);
+        }
+    }
 }
