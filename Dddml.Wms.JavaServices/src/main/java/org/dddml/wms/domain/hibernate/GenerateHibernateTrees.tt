@@ -3,7 +3,7 @@
 <#@ import namespace="Dddml.Core.Domain" #>
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Java\Domain\Hibernate\TreesHibernateGenerator.tt" #>
-<#@ include file="$(SolutionDir)Dddml.Wms.JavaCommon\src\org\dddml\wms\LoadBoundedContext.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.JavaCommon\src\main\java\org\dddml\wms\LoadBoundedContext.tt" #>
 <#
 
 	

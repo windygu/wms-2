@@ -43,262 +43,262 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeSetEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldStateDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldStateDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldStateEventDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeSetStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeUseMvoEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeUseMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeUseMvoStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeUseMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeUseStateDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeUseStateDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeUseStateEventDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeUseStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeValueMvoEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeValueMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeValueMvoStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeValueMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeValueStateDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeValueStateDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAttributeValueStateEventDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeValueStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAudienceEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAudienceEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateAudienceStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAudienceStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateDayPlanMvoEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateDayPlanMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateDayPlanMvoStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateDayPlanMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateDayPlanStateDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateDayPlanStateDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateDayPlanStateEventDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateDayPlanStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateInOutEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateInOutLineMvoEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutLineMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateInOutLineMvoStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutLineMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateInOutLineStateDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutLineStateDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateInOutLineStateEventDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutLineStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateInOutStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateLocatorEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateLocatorStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateLocatorTreeRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorTreeRepository.java">
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateMonthPlanMvoEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateMonthPlanMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateMonthPlanMvoStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateMonthPlanMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateMonthPlanStateDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateMonthPlanStateDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateMonthPlanStateEventDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateMonthPlanStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateOrganizationEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateOrganizationStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureTypeEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureTypeEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureTypeStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureTypeStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateOrganizationTreeRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationTreeRepository.java">
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernatePermissionEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernatePermissionEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernatePermissionStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernatePermissionStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernatePermissionTreeRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernatePermissionTreeRepository.java">
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernatePersonEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernatePersonEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernatePersonStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernatePersonStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateRoleEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateRoleEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateRolePermissionEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateRolePermissionEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateRolePermissionStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateRolePermissionStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateRoleStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateRoleStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateTeamEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateTeamEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateTeamStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateTeamStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateTreeLocatorStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateTreeLocatorStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateTreeOrganizationStructureStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateTreeOrganizationStructureStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateTreePermissionStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateTreePermissionStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserClaimMvoEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserClaimMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserClaimMvoStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserClaimMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserClaimStateDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserClaimStateDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserClaimStateEventDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserClaimStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserLoginMvoEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserLoginMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserLoginMvoStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserLoginMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserLoginStateDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserLoginStateDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserLoginStateEventDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserLoginStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserPermissionMvoEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserPermissionMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserPermissionMvoStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserPermissionMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserPermissionStateDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserPermissionStateDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserPermissionStateEventDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserPermissionStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserRoleMvoEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserRoleMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserRoleMvoStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserRoleMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserRoleStateDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserRoleStateDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserRoleStateEventDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserRoleStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateUserStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateUserStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateWarehouseEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateWarehouseEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateWarehouseStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateWarehouseStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateYearPlanMvoEventStore.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateYearPlanMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateYearPlanMvoStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateYearPlanMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateYearPlanStateDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateYearPlanStateDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\HibernateYearPlanStateEventDao.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateYearPlanStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <EmbeddedResource Include="src\config\AggregatesHibernateConfig.xml">
+    <EmbeddedResource Include="src\main\java\config\AggregatesHibernateConfig.xml">
       <DependentUpon>GenerateAggregatesConfig.tt</DependentUpon>
     </EmbeddedResource>
-    <Content Include="src\config\GenerateTreesConfig.tt">
+    <Content Include="src\main\java\config\GenerateTreesConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateTreesConfig.txt</LastGenOutput>
       <LastOutputs>
@@ -307,252 +307,252 @@
 .\TreesHibernateConfig.xml
 </LastOutputs>
     </Content>
-    <Content Include="src\config\GenerateTreesConfig.txt">
+    <Content Include="src\main\java\config\GenerateTreesConfig.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
     </Content>
-    <EmbeddedResource Include="src\config\TreesHibernateConfig.xml">
+    <EmbeddedResource Include="src\main\java\config\TreesHibernateConfig.xml">
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\config\TreesConfig.xml">
+    <EmbeddedResource Include="src\main\java\config\TreesConfig.xml">
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeSetInstanceState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeSetInstanceState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeSetInstanceStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeSetInstanceStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\RoleState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\RoleState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\RoleStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\RoleStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\PermissionState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\PermissionState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\PermissionStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\PermissionStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\RolePermissionState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\RolePermissionState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\RolePermissionStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\RolePermissionStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeValueState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeValueState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeValueStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeValueStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeSetState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeSetState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeSetStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeSetStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeUseState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeUseState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeUseStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeUseStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AudienceState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AudienceState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AudienceStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AudienceStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserRoleState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserRoleState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserRoleStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserRoleStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserClaimState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserClaimState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserClaimStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserClaimStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserPermissionState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserPermissionState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserPermissionStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserPermissionStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserLoginState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserLoginState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserLoginStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserLoginStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\InOutState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\InOutState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\InOutStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\InOutStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\InOutLineState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\InOutLineState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\InOutLineStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\InOutLineStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\OrganizationState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\OrganizationState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\OrganizationStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\OrganizationStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\OrganizationStructureTypeState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\OrganizationStructureTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\OrganizationStructureTypeStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\OrganizationStructureTypeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\OrganizationStructureState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\OrganizationStructureState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\OrganizationStructureStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\OrganizationStructureStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\WarehouseState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\WarehouseState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\WarehouseStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\WarehouseStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\LocatorState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\LocatorState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\LocatorStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\LocatorStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\PersonState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\PersonState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\PersonStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\PersonStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\YearPlanState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\YearPlanState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\YearPlanStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\YearPlanStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\MonthPlanState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\MonthPlanState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\MonthPlanStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\MonthPlanStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\DayPlanState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\DayPlanState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\DayPlanStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\DayPlanStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\TeamState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\TeamState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\TeamStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\TeamStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldMvoState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeValueMvoState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeValueMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeValueMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeValueMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeUseMvoState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeUseMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\AttributeUseMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\AttributeUseMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserRoleMvoState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserRoleMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserRoleMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserRoleMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserClaimMvoState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserClaimMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserClaimMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserClaimMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserPermissionMvoState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserPermissionMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserPermissionMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserPermissionMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserLoginMvoState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserLoginMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\UserLoginMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\UserLoginMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\InOutLineMvoState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\InOutLineMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\InOutLineMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\InOutLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\YearPlanMvoState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\YearPlanMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\YearPlanMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\YearPlanMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\MonthPlanMvoState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\MonthPlanMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\MonthPlanMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\MonthPlanMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\DayPlanMvoState.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\DayPlanMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\org\dddml\wms\domain\hbm\DayPlanMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\main\java\org\dddml\wms\domain\hbm\DayPlanMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <Content Include="src\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.tt">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateHibernateTrees.txt</LastGenOutput>
       <LastOutputs>
@@ -562,17 +562,17 @@
 .\HibernatePermissionTreeRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainNHibernateAggregates.txt">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainNHibernateAggregates.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.txt">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
-    <Content Include="src\config\GenerateAggregatesConfig.tt">
+    <Content Include="src\main\java\config\GenerateAggregatesConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesConfig.txt</LastGenOutput>
       <LastOutputs>
@@ -580,17 +580,17 @@
 .\GenerateAggregatesConfig.txt
 </LastOutputs>
     </Content>
-    <Content Include="src\config\GenerateAggregatesConfig.txt">
+    <Content Include="src\main\java\config\GenerateAggregatesConfig.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesConfig.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.txt">
+    <Content Include="src\main\java\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainNHibernateAggregates.tt">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainNHibernateAggregates.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomainNHibernateAggregates.txt</LastGenOutput>
       <LastOutputs>
@@ -678,7 +678,7 @@
 .\HibernateYearPlanStateEventDao.java
 </LastOutputs>
     </Content>
-    <Content Include="src\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.tt">
+    <Content Include="src\main\java\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
       <LastOutputs>
