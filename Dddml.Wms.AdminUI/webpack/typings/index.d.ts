@@ -1,3 +1,4 @@
+/// <reference path="globals/lodash/index.d.ts" />
 /// <reference path="globals/require/index.d.ts" />
 /// <reference path="globals/vue-resource/index.d.ts" />
 /// <reference path="globals/vue-router/index.d.ts" />
