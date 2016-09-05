@@ -21,7 +21,8 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/People")][Authorize]
+    [RoutePrefix("api/People")]
+    [Authorize]
     public partial class PeopleController : ApiController
     {
 
@@ -31,54 +32,58 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         [HttpGet]
         public IEnumerable<PersonStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
-          try {
-            IEnumerable<IPersonState> states = null; 
-            if (!String.IsNullOrWhiteSpace(filter))
+            try
             {
-                states = _personApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
-                    , PeopleControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-            }
-            else 
-            {
-                states = _personApplicationService.Get(PeopleControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
-                    , PeopleControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-            }
-            var stateDtos = new List<PersonStateDto>();
-            foreach (var s in states)
-            {
-                var dto = s is PersonStateDto ? (PersonStateDto)s : new PersonStateDto((PersonState)s);
-                if (String.IsNullOrWhiteSpace(fields))
+                IEnumerable<IPersonState> states = null;
+                if (!String.IsNullOrWhiteSpace(filter))
                 {
-                    dto.AllFieldsReturned = true;
+                    states = _personApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                        , PeopleControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                 }
                 else
                 {
-                    dto.ReturnedFieldsString = fields;
+                    states = _personApplicationService.Get(PeopleControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                        , PeopleControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                 }
-                stateDtos.Add(dto);
+                var stateDtos = new List<PersonStateDto>();
+                foreach (var s in states)
+                {
+                    var dto = s is PersonStateDto ? (PersonStateDto)s : new PersonStateDto((PersonState)s);
+                    if (String.IsNullOrWhiteSpace(fields))
+                    {
+                        dto.AllFieldsReturned = true;
+                    }
+                    else
+                    {
+                        dto.ReturnedFieldsString = fields;
+                    }
+                    stateDtos.Add(dto);
+                }
+                return stateDtos;
             }
-            return stateDtos;
-          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpGet]
         public PersonStateDto Get(string id, string fields = null)
         {
-          try {
-            var idObj = PeopleControllerUtils.ParseIdString(id);
-            var state = (PersonState)_personApplicationService.Get(idObj);
-            if (state == null) { return null; }
-            var stateDto = new PersonStateDto(state);
-            if (String.IsNullOrWhiteSpace(fields))
+            try
             {
-                stateDto.AllFieldsReturned = true;
+                var idObj = PeopleControllerUtils.ParseIdString(id);
+                var state = (PersonState)_personApplicationService.Get(idObj);
+                if (state == null) { return null; }
+                var stateDto = new PersonStateDto(state);
+                if (String.IsNullOrWhiteSpace(fields))
+                {
+                    stateDto.AllFieldsReturned = true;
+                }
+                else
+                {
+                    stateDto.ReturnedFieldsString = fields;
+                }
+                return stateDto;
             }
-            else
-            {
-                stateDto.ReturnedFieldsString = fields;
-            }
-            return stateDto;
-          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
@@ -86,50 +91,60 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         [HttpGet]
         public long GetCount(string filter = null)
         {
-          try
-          {
-            long count = 0;
-            if (!String.IsNullOrWhiteSpace(filter))
+            try
             {
-                count = _personApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()));
+                long count = 0;
+                if (!String.IsNullOrWhiteSpace(filter))
+                {
+                    count = _personApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()));
+                }
+                else
+                {
+                    count = _personApplicationService.GetCount(PeopleControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs()));
+                }
+                return count;
             }
-            else 
-            {
-                count = _personApplicationService.GetCount(PeopleControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs()));
-            }
-            return count;
-          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [HttpPut][SetRequesterId]
+        [HttpPut]
+        [SetRequesterId]
         public void Put(string id, [FromBody]CreatePersonDto value)
         {
-          try {
-            PeopleControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _personApplicationService.When(value as ICreatePerson);
-          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            try
+            {
+                PeopleControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                _personApplicationService.When(value as ICreatePerson);
+            }
+            catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [HttpPatch][SetRequesterId]
+        [HttpPatch]
+        [SetRequesterId]
         public void Patch(string id, [FromBody]MergePatchPersonDto value)
         {
-          try {
-            PeopleControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _personApplicationService.When(value as IMergePatchPerson);
-          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            try
+            {
+                PeopleControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                _personApplicationService.When(value as IMergePatchPerson);
+            }
+            catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [HttpDelete][SetRequesterId]
+        [HttpDelete]
+        [SetRequesterId]
         public void Delete(string id, string commandId, string version, string requesterId = default(string))
         {
-          try {
-            var value = new DeletePersonDto();
-            value.CommandId = commandId;
-            value.RequesterId = requesterId;
-            value.Version = (long)Convert.ChangeType(version, typeof(long));
-            PeopleControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _personApplicationService.When(value as IDeletePerson);
-          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            try
+            {
+                var value = new DeletePersonDto();
+                value.CommandId = commandId;
+                value.RequesterId = requesterId;
+                value.Version = (long)Convert.ChangeType(version, typeof(long));
+                PeopleControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                _personApplicationService.When(value as IDeletePerson);
+            }
+            catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
@@ -137,70 +152,80 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         [HttpGet]
         public IEnumerable<PropertyMetadata> GetMetadataFilteringFields()
         {
-          try {
-            var filtering = new List<PropertyMetadata>();
-            foreach (var p in PersonMetadata.Instance.Properties)
+            try
             {
-                if (p.IsFilteringProperty)
+                var filtering = new List<PropertyMetadata>();
+                foreach (var p in PersonMetadata.Instance.Properties)
                 {
-                    filtering.Add(p);
+                    if (p.IsFilteringProperty)
+                    {
+                        filtering.Add(p);
+                    }
                 }
+                return filtering;
             }
-            return filtering;
-          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
         public IPersonStateEvent GetStateEvent(string id, long version)
         {
-          try {
-            var idObj = PeopleControllerUtils.ParseIdString(id);
-            return _personApplicationService.GetStateEvent(idObj, version);
-          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            try
+            {
+                var idObj = PeopleControllerUtils.ParseIdString(id);
+                return _personApplicationService.GetStateEvent(idObj, version);
+            }
+            catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{personalName}/YearPlans/{year}")]
         [HttpGet]
         public YearPlanStateDto GetYearPlan(string personalName, int year)
         {
-          try {
-            var state = (YearPlanState)_personApplicationService.GetYearPlan((new PersonalNameFlattenedDtoFormatter().Parse(personalName)).ToPersonalName(), year);
-            if (state == null) { return null; }
-            var stateDto = new YearPlanStateDto(state);
-            stateDto.AllFieldsReturned = true;
-            return stateDto;
-          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            try
+            {
+                var state = (YearPlanState)_personApplicationService.GetYearPlan((new PersonalNameFlattenedDtoFormatter().Parse(personalName)).ToPersonalName(), year);
+                if (state == null) { return null; }
+                var stateDto = new YearPlanStateDto(state);
+                stateDto.AllFieldsReturned = true;
+                return stateDto;
+            }
+            catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{personalName}/YearPlans/{year}/MonthPlans/{month}")]
         [HttpGet]
         public MonthPlanStateDto GetMonthPlan(string personalName, int year, int month)
         {
-          try {
-            var state = (MonthPlanState)_personApplicationService.GetMonthPlan((new PersonalNameFlattenedDtoFormatter().Parse(personalName)).ToPersonalName(), year, month);
-            if (state == null) { return null; }
-            var stateDto = new MonthPlanStateDto(state);
-            stateDto.AllFieldsReturned = true;
-            return stateDto;
-          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            try
+            {
+                var state = (MonthPlanState)_personApplicationService.GetMonthPlan((new PersonalNameFlattenedDtoFormatter().Parse(personalName)).ToPersonalName(), year, month);
+                if (state == null) { return null; }
+                var stateDto = new MonthPlanStateDto(state);
+                stateDto.AllFieldsReturned = true;
+                return stateDto;
+            }
+            catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{personalName}/YearPlans/{year}/MonthPlans/{month}/DayPlans/{day}")]
         [HttpGet]
         public DayPlanStateDto GetDayPlan(string personalName, int year, int month, int day)
         {
-          try {
-            var state = (DayPlanState)_personApplicationService.GetDayPlan((new PersonalNameFlattenedDtoFormatter().Parse(personalName)).ToPersonalName(), year, month, day);
-            if (state == null) { return null; }
-            var stateDto = new DayPlanStateDto(state);
-            stateDto.AllFieldsReturned = true;
-            return stateDto;
-          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            try
+            {
+                var state = (DayPlanState)_personApplicationService.GetDayPlan((new PersonalNameFlattenedDtoFormatter().Parse(personalName)).ToPersonalName(), year, month, day);
+                if (state == null) { return null; }
+                var stateDto = new DayPlanStateDto(state);
+                stateDto.AllFieldsReturned = true;
+                return stateDto;
+            }
+            catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
-		// /////////////////////////////////////////////////
+        // /////////////////////////////////////////////////
 
         protected virtual string QueryOrderSeparator
         {
@@ -249,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
     }
 
 
-    
+
     public static class PeopleControllerUtils
     {
 
