@@ -34,6 +34,9 @@ public abstract class AbstractUserPermissionMvoCommandDto extends AbstractComman
     {
         command.setUserPermissionId((this.getUserPermissionId() == null) ? null : this.getUserPermissionId().toUserPermissionId());
         command.setUserVersion(this.getUserVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

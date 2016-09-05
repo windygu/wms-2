@@ -34,6 +34,9 @@ public abstract class AbstractUserCommandDto extends AbstractCommand
     {
         command.setUserId(this.getUserId());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

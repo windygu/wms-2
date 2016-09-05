@@ -21,6 +21,9 @@ public abstract class AbstractYearPlanCommandDto extends AbstractCommand
     public void copyTo(AbstractYearPlanCommand command)
     {
         command.setYear(this.getYear());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

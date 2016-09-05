@@ -34,6 +34,9 @@ public abstract class AbstractAttributeCommandDto extends AbstractCommand
     {
         command.setAttributeId(this.getAttributeId());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

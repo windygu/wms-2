@@ -34,6 +34,9 @@ public abstract class AbstractUserClaimMvoCommandDto extends AbstractCommand
     {
         command.setUserClaimId((this.getUserClaimId() == null) ? null : this.getUserClaimId().toUserClaimId());
         command.setUserVersion(this.getUserVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

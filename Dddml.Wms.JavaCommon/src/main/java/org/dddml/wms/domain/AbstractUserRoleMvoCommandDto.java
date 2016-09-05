@@ -34,6 +34,9 @@ public abstract class AbstractUserRoleMvoCommandDto extends AbstractCommand
     {
         command.setUserRoleId((this.getUserRoleId() == null) ? null : this.getUserRoleId().toUserRoleId());
         command.setUserVersion(this.getUserVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

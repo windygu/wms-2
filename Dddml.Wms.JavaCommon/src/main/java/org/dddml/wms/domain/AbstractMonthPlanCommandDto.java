@@ -21,6 +21,9 @@ public abstract class AbstractMonthPlanCommandDto extends AbstractCommand
     public void copyTo(AbstractMonthPlanCommand command)
     {
         command.setMonth(this.getMonth());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

@@ -34,6 +34,9 @@ public abstract class AbstractAttributeUseMvoCommandDto extends AbstractCommand
     {
         command.setAttributeSetAttributeUseId((this.getAttributeSetAttributeUseId() == null) ? null : this.getAttributeSetAttributeUseId().toAttributeSetAttributeUseId());
         command.setAttributeSetVersion(this.getAttributeSetVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

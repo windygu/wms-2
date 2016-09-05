@@ -34,6 +34,9 @@ public abstract class AbstractTeamCommandDto extends AbstractCommand
     {
         command.setTeamName(this.getTeamName());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

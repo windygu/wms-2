@@ -34,6 +34,9 @@ public abstract class AbstractRoleCommandDto extends AbstractCommand
     {
         command.setRoleId(this.getRoleId());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

@@ -21,6 +21,9 @@ public abstract class AbstractAttributeValueCommandDto extends AbstractCommand
     public void copyTo(AbstractAttributeValueCommand command)
     {
         command.setValue(this.getValue());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

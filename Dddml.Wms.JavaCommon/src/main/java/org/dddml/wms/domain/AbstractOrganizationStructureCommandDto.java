@@ -34,6 +34,9 @@ public abstract class AbstractOrganizationStructureCommandDto extends AbstractCo
     {
         command.setId((this.getId() == null) ? null : this.getId().toOrganizationStructureId());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

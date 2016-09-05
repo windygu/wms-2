@@ -21,6 +21,9 @@ public abstract class AbstractUserRoleCommandDto extends AbstractCommand
     public void copyTo(AbstractUserRoleCommand command)
     {
         command.setRoleId(this.getRoleId());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

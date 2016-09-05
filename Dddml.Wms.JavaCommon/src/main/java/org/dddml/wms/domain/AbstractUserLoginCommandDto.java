@@ -21,6 +21,9 @@ public abstract class AbstractUserLoginCommandDto extends AbstractCommand
     public void copyTo(AbstractUserLoginCommand command)
     {
         command.setLoginKey((this.getLoginKey() == null) ? null : this.getLoginKey().toLoginKey());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

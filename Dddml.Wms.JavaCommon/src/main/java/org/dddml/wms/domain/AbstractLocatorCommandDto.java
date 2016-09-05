@@ -34,6 +34,9 @@ public abstract class AbstractLocatorCommandDto extends AbstractCommand
     {
         command.setLocatorId(this.getLocatorId());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

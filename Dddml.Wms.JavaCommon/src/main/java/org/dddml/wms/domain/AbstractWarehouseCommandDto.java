@@ -34,6 +34,9 @@ public abstract class AbstractWarehouseCommandDto extends AbstractCommand
     {
         command.setWarehouseId(this.getWarehouseId());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

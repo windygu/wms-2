@@ -34,6 +34,9 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupCommandDto 
     {
         command.setId(this.getId());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

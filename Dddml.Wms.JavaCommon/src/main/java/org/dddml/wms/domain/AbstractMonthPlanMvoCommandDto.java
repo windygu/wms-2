@@ -34,6 +34,9 @@ public abstract class AbstractMonthPlanMvoCommandDto extends AbstractCommand
     {
         command.setMonthPlanId((this.getMonthPlanId() == null) ? null : this.getMonthPlanId().toMonthPlanId());
         command.setPersonVersion(this.getPersonVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

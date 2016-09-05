@@ -34,6 +34,9 @@ public abstract class AbstractOrganizationCommandDto extends AbstractCommand
     {
         command.setOrganizationId(this.getOrganizationId());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

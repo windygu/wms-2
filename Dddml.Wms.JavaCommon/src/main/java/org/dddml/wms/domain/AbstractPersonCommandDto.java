@@ -34,6 +34,9 @@ public abstract class AbstractPersonCommandDto extends AbstractCommand
     {
         command.setPersonalName((this.getPersonalName() == null) ? null : this.getPersonalName().toPersonalName());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

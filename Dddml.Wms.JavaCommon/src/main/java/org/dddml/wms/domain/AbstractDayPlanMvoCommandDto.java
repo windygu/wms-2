@@ -34,6 +34,9 @@ public abstract class AbstractDayPlanMvoCommandDto extends AbstractCommand
     {
         command.setDayPlanId((this.getDayPlanId() == null) ? null : this.getDayPlanId().toDayPlanId());
         command.setPersonVersion(this.getPersonVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

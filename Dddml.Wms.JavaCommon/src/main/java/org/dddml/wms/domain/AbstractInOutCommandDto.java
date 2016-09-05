@@ -36,6 +36,9 @@ public abstract class AbstractInOutCommandDto extends AbstractCommand
     {
         command.setDocumentNumber(this.getDocumentNumber());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

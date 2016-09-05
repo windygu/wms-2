@@ -34,6 +34,9 @@ public abstract class AbstractUserLoginMvoCommandDto extends AbstractCommand
     {
         command.setUserLoginId((this.getUserLoginId() == null) ? null : this.getUserLoginId().toUserLoginId());
         command.setUserVersion(this.getUserVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

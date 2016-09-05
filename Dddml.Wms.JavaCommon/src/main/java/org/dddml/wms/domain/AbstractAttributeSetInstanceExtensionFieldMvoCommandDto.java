@@ -34,6 +34,9 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoCommandDto ex
     {
         command.setAttributeSetInstanceExtensionFieldId((this.getAttributeSetInstanceExtensionFieldId() == null) ? null : this.getAttributeSetInstanceExtensionFieldId().toAttributeSetInstanceExtensionFieldId());
         command.setAttrSetInstEFGroupVersion(this.getAttrSetInstEFGroupVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

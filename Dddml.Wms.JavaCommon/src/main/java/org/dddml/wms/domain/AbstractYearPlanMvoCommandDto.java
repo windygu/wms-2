@@ -34,6 +34,9 @@ public abstract class AbstractYearPlanMvoCommandDto extends AbstractCommand
     {
         command.setYearPlanId((this.getYearPlanId() == null) ? null : this.getYearPlanId().toYearPlanId());
         command.setPersonVersion(this.getPersonVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

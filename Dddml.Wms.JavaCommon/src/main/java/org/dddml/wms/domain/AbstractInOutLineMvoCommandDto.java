@@ -36,6 +36,9 @@ public abstract class AbstractInOutLineMvoCommandDto extends AbstractCommand
     {
         command.setInOutLineId((this.getInOutLineId() == null) ? null : this.getInOutLineId().toInOutLineId());
         command.setInOutVersion(this.getInOutVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

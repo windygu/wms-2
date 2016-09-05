@@ -34,6 +34,9 @@ public abstract class AbstractPermissionCommandDto extends AbstractCommand
     {
         command.setPermissionId(this.getPermissionId());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

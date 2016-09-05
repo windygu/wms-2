@@ -34,6 +34,9 @@ public abstract class AbstractAudienceCommandDto extends AbstractCommand
     {
         command.setClientId(this.getClientId());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }

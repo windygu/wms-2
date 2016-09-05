@@ -34,6 +34,9 @@ public abstract class AbstractRolePermissionCommandDto extends AbstractCommand
     {
         command.setId((this.getId() == null) ? null : this.getId().toRolePermissionId());
         command.setVersion(this.getVersion());
+        
+        command.setRequesterId(this.getRequesterId());
+        command.setCommandId(this.getCommandId());
     }
 
 }
