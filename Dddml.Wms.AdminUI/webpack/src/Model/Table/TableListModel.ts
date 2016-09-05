@@ -1,14 +1,15 @@
 import tableConfig from '../../../config/view/tables';
 import FieldsModel from "./TableFieldsModel";
 import EntityCollection from "../../Domain/EntityCollection";
+import TableRowModel from "./TableRowModel";
 
 export default class TableListModel {
     public name;
-    public rows: FieldsModel[];
+    public rows: TableRowModel[];
     public operations: LinkButtonModelInterface[];
     public columns: string[];
 
-    constructor(name: string, rows: FieldsModel[] = []) {
+    constructor(name: string, rows: TableRowModel[] = []) {
         this.name       = name;
         this.rows       = rows;
         this.operations = [];
@@ -16,10 +17,11 @@ export default class TableListModel {
     }
 
     static createFromEntityCollection(entities: EntityCollection): TableListModel {
-        let fields: FieldsModel[] = [];
+        //todo
+        let rows: TableRowModel[] = [];
 
         for (let entity of entities.all()) {
-            fields.push(FieldsModel.createFromEntity(entity));
+            rows.push(FieldsModel.createFromEntity(entity));
         }
 
         let table = TableListModel(entities.name, fields);
