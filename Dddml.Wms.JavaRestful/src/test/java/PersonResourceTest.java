@@ -1,4 +1,6 @@
 import com.alibaba.fastjson.JSON;
+import org.dddml.support.criterion.Conjunction;
+import org.dddml.support.criterion.Restrictions;
 import org.dddml.wms.domain.*;
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,6 +8,7 @@ import org.junit.Test;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.*;
 
 import static com.alibaba.fastjson.serializer.SerializerFeature.PrettyFormat;
@@ -18,8 +21,8 @@ public class PersonResourceTest extends AbstractResourceTest {
 
     public static final String RESOURCE_URL = BASE_URL + "people/";
     public static final String REQUESTER_ID = "requestId";
-    public static final String FIRST_NAME = "YONGCHUN";
-    public static final String LAST_NAME = "Qing";
+    public static final String FIRST_NAME = "Andy";
+    public static final String LAST_NAME = "Liu";
     public static final String FULL_NAME = FIRST_NAME + "," + LAST_NAME;
 
 
@@ -99,8 +102,8 @@ public class PersonResourceTest extends AbstractResourceTest {
 
     @Test
     public void CreatePerson() {
-        String url = RESOURCE_URL.concat(FULL_NAME);
         try {
+            String url = RESOURCE_URL.concat(URLEncoder.encode(FULL_NAME, "UTF-8"));
             URL requestUrl = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setRequestMethod("PUT");
@@ -127,6 +130,9 @@ public class PersonResourceTest extends AbstractResourceTest {
         }
     }
 
+    /**
+     * 获取指定Person的详细信息
+     */
     @Test
     public void getPerson() {
         String url = RESOURCE_URL.concat(FULL_NAME);
@@ -142,16 +148,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                InputStream inputStream = connection.getInputStream();
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader reader = new BufferedReader(inputStreamReader);
-
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line);
-                }
-                String response = sb.toString();
+                String response = getContentFromResponseInputStream(connection.getInputStream());
                 //System.out.println(response);
                 PersonStateDto personStateDto = null;
                 if (response != null && response.length() > 0) {
@@ -166,10 +163,23 @@ public class PersonResourceTest extends AbstractResourceTest {
     }
 
 
+    /**
+     * 获取符合条件的Person总数
+     */
     @Test
-    public void getPersonCountNoFilter() {
-        String url = RESOURCE_URL.concat("_count");
+    public void getPersonCount() {
         try {
+
+            Conjunction conjunctionAll = Restrictions.conjunction();
+            conjunctionAll.add(Restrictions.eq("personalName.firstName", FIRST_NAME));
+            conjunctionAll.add(Restrictions.eq("personalName.lastName", LAST_NAME));
+
+            String filterJson = JSON.toJSONString(conjunctionAll, PrettyFormat);
+
+            System.out.println(filterJson);
+
+            String url = RESOURCE_URL.concat("_count")
+                    .concat((filterJson == null || filterJson.length() < 1) ? "" : "?filter=" + URLEncoder.encode(filterJson, "UTF-8"));
             URL requestUrl = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setRequestMethod("GET");
@@ -180,16 +190,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                InputStream inputStream = connection.getInputStream();
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader reader = new BufferedReader(inputStreamReader);
-
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line);
-                }
-                String response = sb.toString();
+                String response = getContentFromResponseInputStream(connection.getInputStream());
                 System.out.println("数量：" + response);
                 Assert.assertEquals(true, response != null && response.length() > 0);
                 Integer count = Integer.valueOf(response);
@@ -202,7 +203,7 @@ public class PersonResourceTest extends AbstractResourceTest {
 
     @Test
     public void deletePerson() {
-        String commandId = "";
+        String commandId = "770c7764-f63b-46a7-9659-0b5fa79e03f9";
         int version = 0;
         String url = RESOURCE_URL.concat(FULL_NAME).concat("?commandId=").concat(commandId)
                 .concat("&version=").concat(String.valueOf(version))
@@ -214,7 +215,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             connection.setRequestMethod("DELETE");
             connection.connect();
             int responseCode = connection.getResponseCode();
-            Assert.assertEquals("204", responseCode);
+            Assert.assertEquals(204, responseCode);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

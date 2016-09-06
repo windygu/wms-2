@@ -172,7 +172,7 @@ public class PersonResource {
             deletePersonDto.setCommandId(commandId);
             deletePersonDto.setVersion(version);
             deletePersonDto.setPersonalName(new PersonalNameDto(PeopleApiUtils.parseIdString(id)));
-            personApplicationService.when((PersonCommand.DeletePerson) deletePersonDto);
+            personApplicationService.when(deletePersonDto.toDeletePerson());
         } catch (DomainError error) {
             throw error;
         } catch (Exception ex) {
