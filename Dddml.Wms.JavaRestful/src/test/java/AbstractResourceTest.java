@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 
 /**
  * Created by Li Yongchun on 2016/9/5.
@@ -16,7 +17,24 @@ public abstract class AbstractResourceTest {
 
     public final static String BASE_URL = "http://localhost:8080/";
 
-    public String getContentFromResponseInputStream(InputStream inputStream) {
+    public String getContentFromResponseInputStream(HttpURLConnection connection) {
+        if (connection == null) {
+            return null;
+        }
+        InputStream inputStream = null;
+        try {
+            int responseCode = connection.getResponseCode();
+            if (String.valueOf(responseCode).startsWith("20")) {
+                inputStream = connection.getInputStream();
+            } else {
+                inputStream = connection.getErrorStream();
+            }
+        } catch (Exception ex) {
+            return null;
+        }
+        if (inputStream == null) {
+            return null;
+        }
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader reader = new BufferedReader(inputStreamReader);
         try {
@@ -26,6 +44,7 @@ public abstract class AbstractResourceTest {
                 sb.append(line);
             }
             String response = sb.toString();
+            System.out.println(response);
             return response;
         } catch (IOException ex) {
             return null;

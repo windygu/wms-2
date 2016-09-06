@@ -66,7 +66,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             //yearPlanDto.setCommandId(dto.getCommandId());
             yearPlanDto.setYear(year);
             yearPlanDtos.add(yearPlanDto);
-            System.out.println(yearPlanDto.getDescription());
+            //System.out.println(yearPlanDto.getDescription());
             int monthStart = random.nextInt(3) + 1;//这里定义为起始月份，随机的，最小是1，最大是3
             int monthLoop = random.nextInt(9) + 1;//生成几个月的月计划？最少是1，最多是9个
             List<CreateOrMergePatchMonthPlanDto.CreateMonthPlanDto> monthPlanList = new ArrayList<>();
@@ -78,7 +78,7 @@ public class PersonResourceTest extends AbstractResourceTest {
                 monthPlanDto.setMonth(month);
                 monthPlanDto.setRequesterId(REQUESTER_ID);
                 monthPlanList.add(monthPlanDto);
-                System.out.println("--" + monthPlanDto.getDescription());
+                //System.out.println("--" + monthPlanDto.getDescription());
 
                 int dayStart = random.nextInt(10) + 1;//起始日
                 int dayLoop = random.nextInt(15) + 1;
@@ -92,7 +92,7 @@ public class PersonResourceTest extends AbstractResourceTest {
                     createDayPlanDto.setDay(day);
                     createDayPlanDto.setDescription(yearPlanDto.getYear() + "年" + month + "月" + day + "日计划");
                     dayPlanDtos.add(createDayPlanDto);
-                    System.out.println("----" + createDayPlanDto.getDescription());
+                    //System.out.println("----" + createDayPlanDto.getDescription());
                 }
                 monthPlanDto.setDayPlans(dayPlanDtos.toArray(new CreateOrMergePatchDayPlanDto.CreateDayPlanDto[0]));
             }
@@ -124,10 +124,10 @@ public class PersonResourceTest extends AbstractResourceTest {
             writer.write(json);
             writer.flush();
             writer.close();
-            System.out.println(json);
+            //System.out.println(json);
             int responseCode = connection.getResponseCode();
+            getContentFromResponseInputStream(connection);
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
-            System.out.println(connection.getResponseMessage());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -136,7 +136,7 @@ public class PersonResourceTest extends AbstractResourceTest {
     private CreateOrMergePatchPersonDto.MergePatchPersonDto createMergePatchPersonInfo() {
         CreateOrMergePatchPersonDto.MergePatchPersonDto dto = new CreateOrMergePatchPersonDto.MergePatchPersonDto();
         dto.setPersonalName(new PersonalNameDto());
-        dto.setVersion(0L);
+        dto.setVersion(1L);
         dto.getPersonalName().setFirstName(FIRST_NAME);
         dto.getPersonalName().setLastName(LAST_NAME);
         List<CreateOrMergePatchYearPlanDto.MergePatchYearPlanDto> yearPlanDtos = new ArrayList<>();
@@ -165,7 +165,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             connection.setRequestMethod("POST");
             connection.setDoInput(true);
             connection.setDoOutput(true);
-            connection.setRequestProperty("x-http-method-override", "PATCH");
+            connection.setRequestProperty("x-http-method-override", "PATCH");//用来模拟 PATCH 方法
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("ACCEPT", "application/json");
             connection.connect();
@@ -180,8 +180,8 @@ public class PersonResourceTest extends AbstractResourceTest {
             writer.close();
             System.out.println(json);
             int responseCode = connection.getResponseCode();
+            getContentFromResponseInputStream(connection);
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
-            System.out.println(getContentFromResponseInputStream(connection.getInputStream()));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -205,8 +205,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection.getInputStream());
-                //System.out.println(response);
+                String response = getContentFromResponseInputStream(connection);
                 PersonStateDto personStateDto = null;
                 if (response != null && response.length() > 0) {
                     personStateDto = JSON.parseObject(response, PersonStateDto.class);
@@ -267,7 +266,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection.getInputStream());
+                String response = getContentFromResponseInputStream(connection);
                 System.out.println("数量：" + response);
                 Assert.assertEquals(true, response != null && response.length() > 0);
                 Integer count = Integer.valueOf(response);
@@ -302,8 +301,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection.getInputStream());
-                System.out.println("Response：" + response);
+                String response = getContentFromResponseInputStream(connection);
                 List<PersonStateDto> personStateDtos = JSON.parseArray(response, PersonStateDto.class);
                 System.out.println("符合条件的数据数量：" + personStateDtos.size());
                 Assert.assertEquals(true, personStateDtos.size() >= 0);
@@ -354,7 +352,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection.getInputStream());
+                String response = getContentFromResponseInputStream(connection);
                 if (response != null && response.length() > 0) {
                     List<PropertyMetadataDto> dtos = JSON.parseArray(response, PropertyMetadataDto.class);
                     Assert.assertEquals(true, dtos.size() >= 0);
@@ -381,7 +379,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection.getInputStream());
+                String response = getContentFromResponseInputStream(connection);
                 if (response != null && response.length() > 0) {
                     PersonStateEvent stateEvent = JSON.parseObject(response, PersonStateEvent.class);
                     System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));
@@ -409,7 +407,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection.getInputStream());
+                String response = getContentFromResponseInputStream(connection);
                 if (response != null && response.length() > 0) {
                     YearPlanStateDto stateEvent = JSON.parseObject(response, YearPlanStateDto.class);
                     System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));
@@ -438,7 +436,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection.getInputStream());
+                String response = getContentFromResponseInputStream(connection);
                 if (response != null && response.length() > 0) {
                     MonthPlanIdDto stateEvent = JSON.parseObject(response, MonthPlanIdDto.class);
                     System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));
@@ -467,7 +465,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection.getInputStream());
+                String response = getContentFromResponseInputStream(connection);
                 if (response != null && response.length() > 0) {
                     DayPlanIdDto stateEvent = JSON.parseObject(response, DayPlanIdDto.class);
                     System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));

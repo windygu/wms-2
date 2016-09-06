@@ -57,6 +57,7 @@ public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyW
             String content = readFromByteStream(entityStream);
             return JSON.parseObject(content, genericType);
         } catch (Exception ex) {
+
             throw new WebApplicationException("读取请求数据错误");
         }
     }
