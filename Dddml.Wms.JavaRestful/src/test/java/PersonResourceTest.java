@@ -1,6 +1,5 @@
 import com.alibaba.fastjson.JSON;
-import org.dddml.support.criterion.Conjunction;
-import org.dddml.support.criterion.Restrictions;
+import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.*;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,7 +10,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.*;
 
+import static com.alibaba.fastjson.serializer.SerializerFeature.DisableCircularReferenceDetect;
 import static com.alibaba.fastjson.serializer.SerializerFeature.PrettyFormat;
+import static com.alibaba.fastjson.serializer.SerializerFeature.UseISO8601DateFormat;
 
 /**
  * Created by Li Yongchun on 2016/9/5.
@@ -163,23 +164,43 @@ public class PersonResourceTest extends AbstractResourceTest {
     }
 
 
+    public static final String PERSONAL_NAME_FIRST_NAME = "personalName.firstName";
+    public static final String PERSONAL_NAME_LAST_NAME = "personalName.lastName";
+    public static final String ACTIVE = "active";
+    public static final String BIRTH_DATE = "birthDate";
+
+
+    /**
+     * 生成过滤条件
+     *
+     * @return
+     */
+    private String createFilter() {
+        try {
+            Conjunction conjunctionAll = Restrictions.conjunction();
+            conjunctionAll.add(Restrictions.eq(PERSONAL_NAME_FIRST_NAME, FIRST_NAME));
+            conjunctionAll.add(Restrictions.eq(PERSONAL_NAME_LAST_NAME, LAST_NAME));
+            conjunctionAll.add(Restrictions.eq(ACTIVE, true));
+            //conjunctionAll.add(Restrictions.gt(BIRTH_DATE, new Date()));
+            CriterionDto dto = new CriterionDto(conjunctionAll, new DefaultTypeConverter());
+            /**DisableCircularReferenceDetect 去掉循环引用*/
+            String filterJson = JSON.toJSONString(dto, UseISO8601DateFormat, DisableCircularReferenceDetect, PrettyFormat);
+            System.out.println(filterJson);
+            return URLEncoder.encode(filterJson, "UTF-8");
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
     /**
      * 获取符合条件的Person总数
      */
     @Test
     public void getPersonCount() {
         try {
-
-            Conjunction conjunctionAll = Restrictions.conjunction();
-            conjunctionAll.add(Restrictions.eq("personalName.firstName", FIRST_NAME));
-            conjunctionAll.add(Restrictions.eq("personalName.lastName", LAST_NAME));
-
-            String filterJson = JSON.toJSONString(conjunctionAll, PrettyFormat);
-
-            System.out.println(filterJson);
-
+            String filterJson = createFilter();
             String url = RESOURCE_URL.concat("_count")
-                    .concat((filterJson == null || filterJson.length() < 1) ? "" : "?filter=" + URLEncoder.encode(filterJson, "UTF-8"));
+                    .concat((filterJson == null || filterJson.length() < 1) ? "" : "?filter=" + filterJson);
             URL requestUrl = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
             connection.setRequestMethod("GET");
@@ -195,6 +216,41 @@ public class PersonResourceTest extends AbstractResourceTest {
                 Assert.assertEquals(true, response != null && response.length() > 0);
                 Integer count = Integer.valueOf(response);
                 Assert.assertEquals(true, count >= 0);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void getPersons() {
+        try {
+            String filterJson = createFilter();
+            String fields = PERSONAL_NAME_FIRST_NAME + "," + PERSONAL_NAME_LAST_NAME;
+            String sort = "";
+            String firstResult = "1";
+            String maxResults = "10";
+            String url = RESOURCE_URL
+                    .concat((filterJson == null || filterJson.length() < 1) ? "" : "?filter=" + filterJson)
+                    .concat(StringHelper.isNullOrEmpty(sort) ? "" : "&sort=" + sort)
+                    .concat(StringHelper.isNullOrEmpty(firstResult) ? "" : "&maxResults=" + maxResults)
+                    .concat(StringHelper.isNullOrEmpty(firstResult) ? "" : "&firstResult=" + firstResult)
+                    .concat(StringHelper.isNullOrEmpty(fields) ? "" : "&fields=" + fields);
+            URL requestUrl = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setDoOutput(true);
+            connection.setRequestProperty("ACCEPT", "application/json");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
+            Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                String response = getContentFromResponseInputStream(connection.getInputStream());
+                System.out.println("Response：" + response);
+                List<PersonStateDto> personStateDtos = JSON.parseArray(response, PersonStateDto.class);
+                System.out.println("符合条件的数据数量：" + personStateDtos.size());
+                Assert.assertEquals(true, personStateDtos.size() >= 0);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

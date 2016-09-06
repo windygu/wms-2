@@ -54,7 +54,7 @@ public class PersonResource {
         }
         try {
             Iterable<PersonState> states = null;
-            if (StringHelper.isNullOrEmpty(filter)) {
+            if (!StringHelper.isNullOrEmpty(filter)) {
                 states = personApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
