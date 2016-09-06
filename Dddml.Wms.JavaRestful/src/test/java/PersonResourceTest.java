@@ -1,6 +1,7 @@
 import com.alibaba.fastjson.JSON;
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.PropertyMetadataDto;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -228,8 +229,8 @@ public class PersonResourceTest extends AbstractResourceTest {
         try {
             String filterJson = createFilter();
             String fields = PERSONAL_NAME_FIRST_NAME + "," + PERSONAL_NAME_LAST_NAME;
-            String sort = "";
-            String firstResult = "1";
+            String sort = BIRTH_DATE;
+            String firstResult = "0";
             String maxResults = "10";
             String url = RESOURCE_URL
                     .concat((filterJson == null || filterJson.length() < 1) ? "" : "?filter=" + filterJson)
@@ -257,6 +258,9 @@ public class PersonResourceTest extends AbstractResourceTest {
         }
     }
 
+    /**
+     * 删除
+     */
     @Test
     public void deletePerson() {
         String commandId = "770c7764-f63b-46a7-9659-0b5fa79e03f9";
@@ -276,4 +280,148 @@ public class PersonResourceTest extends AbstractResourceTest {
             ex.printStackTrace();
         }
     }
+
+
+    /**
+     * 获取可过滤的查询条件
+     */
+    @Test
+    public void getFilteringFields() {
+        String url = RESOURCE_URL.concat("_metadata/filteringFields");
+        try {
+            URL requestUrl = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setDoOutput(true);
+            //connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("ACCEPT", "application/json");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
+            Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                String response = getContentFromResponseInputStream(connection.getInputStream());
+                if (response != null && response.length() > 0) {
+                    List<PropertyMetadataDto> dtos = JSON.parseArray(response, PropertyMetadataDto.class);
+                    Assert.assertEquals(true, dtos.size() >= 0);
+                    System.out.println(JSON.toJSONString(dtos, PrettyFormat));
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    
+    @Test
+    public void getStateEvent() {
+        String url = RESOURCE_URL.concat(FULL_NAME).concat("/_stateEvents/").concat("-1");
+        try {
+            URL requestUrl = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setDoOutput(true);
+            //connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("ACCEPT", "application/json");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
+            Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                String response = getContentFromResponseInputStream(connection.getInputStream());
+                if (response != null && response.length() > 0) {
+                    PersonStateEvent stateEvent = JSON.parseObject(response, PersonStateEvent.class);
+                    System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * 获取年计划
+     */
+    @Test
+    public void getYearPlan() {
+        String url = RESOURCE_URL.concat(FULL_NAME).concat("/YearPlans/").concat("2016");//{year}/MonthPlans/{month});
+        try {
+            URL requestUrl = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setDoOutput(true);
+            //connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("ACCEPT", "application/json");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
+            Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                String response = getContentFromResponseInputStream(connection.getInputStream());
+                if (response != null && response.length() > 0) {
+                    YearPlanStateDto stateEvent = JSON.parseObject(response, YearPlanStateDto.class);
+                    System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+    /**
+     * 获取月计划
+     */
+    @Test
+    public void getMonthPlan() {
+        String url = RESOURCE_URL.concat(FULL_NAME).concat("/YearPlans/").concat("2016").concat("/MonthPlans/").concat("7");
+        try {
+            URL requestUrl = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setDoOutput(true);
+            //connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("ACCEPT", "application/json");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
+            Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                String response = getContentFromResponseInputStream(connection.getInputStream());
+                if (response != null && response.length() > 0) {
+                    MonthPlanIdDto stateEvent = JSON.parseObject(response, MonthPlanIdDto.class);
+                    System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+    /**
+     * 获取日计划
+     */
+    @Test
+    public void getDayPlan() {
+        String url = RESOURCE_URL.concat(FULL_NAME).concat("/YearPlans/").concat("2016").concat("/MonthPlans/").concat("7").concat("/DayPlans/").concat("5");
+        try {
+            URL requestUrl = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setDoOutput(true);
+            //connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("ACCEPT", "application/json");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
+            Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                String response = getContentFromResponseInputStream(connection.getInputStream());
+                if (response != null && response.length() > 0) {
+                    DayPlanIdDto stateEvent = JSON.parseObject(response, DayPlanIdDto.class);
+                    System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }
+
+
