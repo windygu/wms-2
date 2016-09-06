@@ -37,7 +37,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="org.dddml.wms.services" />
     <orderEntry type="module" module-name="org.dddml.wms.common" />
-    <orderEntry type="module" module-name="Dddml.Support.Criterion.Java" />
+    <orderEntry type="module" module-name="org.dddml.support" />
     <orderEntry type="library" name="Maven: com.github.drapostolos:type-parser:0.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.strategicgains:DateAdapterJ:1.1.4" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.16" level="project" />
