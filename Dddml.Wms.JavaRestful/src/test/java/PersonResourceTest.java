@@ -1,5 +1,11 @@
 import com.alibaba.fastjson.JSON;
-import org.apache.http.client.HttpClient;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPatch;
+import org.apache.http.entity.HttpEntityWrapper;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.PropertyMetadataDto;
@@ -126,7 +132,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             writer.close();
             //System.out.println(json);
             int responseCode = connection.getResponseCode();
-            getContentFromResponseInputStream(connection);
+            getContentFromConnection(connection);
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -136,7 +142,7 @@ public class PersonResourceTest extends AbstractResourceTest {
     private CreateOrMergePatchPersonDto.MergePatchPersonDto createMergePatchPersonInfo() {
         CreateOrMergePatchPersonDto.MergePatchPersonDto dto = new CreateOrMergePatchPersonDto.MergePatchPersonDto();
         dto.setPersonalName(new PersonalNameDto());
-        dto.setVersion(1L);
+        dto.setVersion(4L);
         dto.getPersonalName().setFirstName(FIRST_NAME);
         dto.getPersonalName().setLastName(LAST_NAME);
         List<CreateOrMergePatchYearPlanDto.MergePatchYearPlanDto> yearPlanDtos = new ArrayList<>();
@@ -180,8 +186,54 @@ public class PersonResourceTest extends AbstractResourceTest {
             writer.close();
             System.out.println(json);
             int responseCode = connection.getResponseCode();
-            getContentFromResponseInputStream(connection);
+            getContentFromConnection(connection);
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+    /**
+     * 使用Apache HttpClient 修改Person 信息
+     */
+    @Test
+    public void ModifyPersonByHttpClient() {
+        try {
+            String url = RESOURCE_URL.concat(URLEncoder.encode(FULL_NAME, "UTF-8"));
+            CloseableHttpClient client = HttpClientBuilder.create().build();
+            HttpPatch patch = new HttpPatch(url);
+            patch.setHeader("Accept", "application/json");
+            patch.setHeader("Content-Type", "application/json");
+            CreateOrMergePatchPersonDto.MergePatchPersonDto dto = createMergePatchPersonInfo();
+            String json = JSON.toJSONString(dto, PrettyFormat);
+            StringEntity entity = new StringEntity(json, "utf-8");
+            entity.setContentType("application/json");
+            patch.setEntity(entity);
+            HttpResponse response = client.execute(patch);
+            getConentFromResponse(response);
+            int responseCode = response.getStatusLine().getStatusCode();
+            Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
+            client.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * 使用 Apcache HttpClient 来查询 Person 信息
+     */
+    @Test
+    public void getPersonByHttpClient() {
+        String url = RESOURCE_URL.concat(FULL_NAME);
+        CloseableHttpClient client = HttpClientBuilder.create().build();
+        try {
+            HttpGet httpGet = new HttpGet(url);
+            httpGet.setHeader("ACCEPT", "application/json");
+            HttpResponse response = client.execute(httpGet);
+            Assert.assertEquals(true, String.valueOf(response.getStatusLine().getStatusCode()).startsWith("20"));
+            getConentFromResponse(response);
+            client.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -205,7 +257,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection);
+                String response = getContentFromConnection(connection);
                 PersonStateDto personStateDto = null;
                 if (response != null && response.length() > 0) {
                     personStateDto = JSON.parseObject(response, PersonStateDto.class);
@@ -266,7 +318,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection);
+                String response = getContentFromConnection(connection);
                 System.out.println("数量：" + response);
                 Assert.assertEquals(true, response != null && response.length() > 0);
                 Integer count = Integer.valueOf(response);
@@ -301,7 +353,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection);
+                String response = getContentFromConnection(connection);
                 List<PersonStateDto> personStateDtos = JSON.parseArray(response, PersonStateDto.class);
                 System.out.println("符合条件的数据数量：" + personStateDtos.size());
                 Assert.assertEquals(true, personStateDtos.size() >= 0);
@@ -352,7 +404,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection);
+                String response = getContentFromConnection(connection);
                 if (response != null && response.length() > 0) {
                     List<PropertyMetadataDto> dtos = JSON.parseArray(response, PropertyMetadataDto.class);
                     Assert.assertEquals(true, dtos.size() >= 0);
@@ -379,7 +431,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection);
+                String response = getContentFromConnection(connection);
                 if (response != null && response.length() > 0) {
                     PersonStateEvent stateEvent = JSON.parseObject(response, PersonStateEvent.class);
                     System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));
@@ -407,7 +459,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection);
+                String response = getContentFromConnection(connection);
                 if (response != null && response.length() > 0) {
                     YearPlanStateDto stateEvent = JSON.parseObject(response, YearPlanStateDto.class);
                     System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));
@@ -436,7 +488,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection);
+                String response = getContentFromConnection(connection);
                 if (response != null && response.length() > 0) {
                     MonthPlanIdDto stateEvent = JSON.parseObject(response, MonthPlanIdDto.class);
                     System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));
@@ -465,7 +517,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                String response = getContentFromResponseInputStream(connection);
+                String response = getContentFromConnection(connection);
                 if (response != null && response.length() > 0) {
                     DayPlanIdDto stateEvent = JSON.parseObject(response, DayPlanIdDto.class);
                     System.out.println(JSON.toJSONString(stateEvent, PrettyFormat));

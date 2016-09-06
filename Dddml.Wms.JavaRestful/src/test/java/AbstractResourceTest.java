@@ -1,3 +1,4 @@
+import org.apache.http.HttpResponse;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -17,21 +18,22 @@ public abstract class AbstractResourceTest {
 
     public final static String BASE_URL = "http://localhost:8080/";
 
-    public String getContentFromResponseInputStream(HttpURLConnection connection) {
-        if (connection == null) {
+    public String getConentFromResponse(HttpResponse response) {
+        if (response == null) {
             return null;
         }
-        InputStream inputStream = null;
         try {
-            int responseCode = connection.getResponseCode();
-            if (String.valueOf(responseCode).startsWith("20")) {
-                inputStream = connection.getInputStream();
-            } else {
-                inputStream = connection.getErrorStream();
+            if (response.getEntity() == null || response.getEntity().getContent() == null) {
+                return null;
             }
+            return getContentFromResponseInputStream(response.getEntity().getContent());
         } catch (Exception ex) {
             return null;
         }
+    }
+
+
+    public String getContentFromResponseInputStream(InputStream inputStream) {
         if (inputStream == null) {
             return null;
         }
@@ -55,5 +57,23 @@ public abstract class AbstractResourceTest {
             } catch (Exception ex) {
             }
         }
+    }
+
+    public String getContentFromConnection(HttpURLConnection connection) {
+        if (connection == null) {
+            return null;
+        }
+        InputStream inputStream = null;
+        try {
+            int responseCode = connection.getResponseCode();
+            if (String.valueOf(responseCode).startsWith("20")) {
+                inputStream = connection.getInputStream();
+            } else {
+                inputStream = connection.getErrorStream();
+            }
+        } catch (Exception ex) {
+            return null;
+        }
+        return getContentFromResponseInputStream(inputStream);
     }
 }
