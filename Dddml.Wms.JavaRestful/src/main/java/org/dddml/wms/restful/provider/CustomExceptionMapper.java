@@ -2,6 +2,7 @@ package org.dddml.wms.restful.provider;
 
 import org.dddml.wms.restful.exception.AuthenticateException;
 import org.dddml.wms.restful.exception.WebApiApplicationException;
+import org.dddml.wms.specialization.DomainError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +24,7 @@ public class CustomExceptionMapper implements ExceptionMapper<Exception> {
         if (e instanceof AuthenticateException) {
             return Response.status(Status.FORBIDDEN).encoding("UTF-8").language(Locale.SIMPLIFIED_CHINESE)
                     .type(MediaType.TEXT_PLAIN).entity(e.getMessage()).build();
-        } else if (e instanceof WebApiApplicationException) {
+        } else if (e instanceof WebApiApplicationException || e instanceof DomainError) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).encoding("UTF-8").language(Locale.SIMPLIFIED_CHINESE)
                     .type(MediaType.TEXT_PLAIN).entity(e.getMessage()).build();
 
@@ -75,7 +76,7 @@ public class CustomExceptionMapper implements ExceptionMapper<Exception> {
                     .language(Locale.SIMPLIFIED_CHINESE).entity(error).build();
         }
         log.error(e.getMessage(), e);
-        return Response.status(Status.OK).encoding("UTF-8").language(Locale.SIMPLIFIED_CHINESE)
+        return Response.status(Status.INTERNAL_SERVER_ERROR).encoding("UTF-8").language(Locale.SIMPLIFIED_CHINESE)
                 .type(MediaType.TEXT_PLAIN).entity("服务器错误").build();
     }
 

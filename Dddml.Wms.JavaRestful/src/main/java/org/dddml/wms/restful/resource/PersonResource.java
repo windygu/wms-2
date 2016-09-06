@@ -1,6 +1,6 @@
 package org.dddml.wms.restful.resource;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSON;
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.meta.PersonFilteringProperties;
@@ -28,6 +28,7 @@ import java.util.Map;
 @Path("people")
 @Produces(MediaType.APPLICATION_JSON)
 public class PersonResource {
+
     @Autowired
     private PersonApplicationService personApplicationService;
 
@@ -56,7 +57,7 @@ public class PersonResource {
             if (StringHelper.isNullOrEmpty(filter)) {
                 states = personApplicationService.get(
                         CriterionDto.toSubclass(
-                                (CriterionDto) JSONObject.parse(filter),
+                                JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionDefaultTypeConvert(),
                                 new PeoplePropertyTypeResolver()),
                         PeopleApiUtils.getQueryOrders(sort, getQueryOrderSeparator()),
@@ -76,6 +77,8 @@ public class PersonResource {
                 dtoConverter.setReturnedFieldsString(fields);
             }
             return dtoConverter.toPersonStateDtoArray(states);
+        } catch (DomainError error) {
+            throw error;
         } catch (Exception ex) {
             throw new WebApiApplicationException(ex);
         }
@@ -105,6 +108,8 @@ public class PersonResource {
                 dtoConverter.setReturnedFieldsString(fields);
             }
             return dtoConverter.toPersonStateDto(personState);
+        } catch (DomainError error) {
+            throw error;
         } catch (Exception ex) {
             throw new WebApplicationException(ex);
         }
@@ -123,12 +128,14 @@ public class PersonResource {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = personApplicationService.getCount(CriterionDto.toSubclass((CriterionDto) JSONObject.parse(filter),
+                count = personApplicationService.getCount(CriterionDto.toSubclass(JSON.parseObject(filter, CriterionDto.class),
                         getCriterionDefaultTypeConvert(), new PeoplePropertyTypeResolver()));
             } else {
                 count = personApplicationService.getCount(PeopleApiUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
+        } catch (DomainError error) {
+            throw error;
         } catch (Exception ex) {
             throw new WebApplicationException(ex);
         }
@@ -150,7 +157,7 @@ public class PersonResource {
         } catch (DomainError error) {
             throw error;
         } catch (Exception ex) {
-            throw new WebApplicationException(ex);
+            throw new WebApiApplicationException(ex);
         }
     }
 
@@ -197,6 +204,8 @@ public class PersonResource {
         try {
             PersonalName idObj = PeopleApiUtils.parseIdString(id);
             return personApplicationService.getStateEvent(idObj, version);
+        } catch (DomainError error) {
+            throw error;
         } catch (Exception ex) {
             throw new WebApiApplicationException(ex);
         }
@@ -215,6 +224,8 @@ public class PersonResource {
             YearPlanStateDto stateDto = dtoConverter.toYearPlanStateDto(state);
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
+        } catch (DomainError error) {
+            throw error;
         } catch (Exception ex) {
             throw new WebApiApplicationException(ex);
         }
@@ -235,6 +246,8 @@ public class PersonResource {
             MonthPlanStateDto stateDto = dtoConverter.toMonthPlanStateDto(state);
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
+        } catch (DomainError error) {
+            throw error;
         } catch (Exception ex) {
             throw new WebApiApplicationException(ex);
         }
@@ -265,6 +278,8 @@ public class PersonResource {
             DayPlanStateDto stateDto = dtoConverter.toDayPlanStateDto(state);
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
+        } catch (DomainError error) {
+            throw error;
         } catch (Exception ex) {
             throw new WebApiApplicationException(ex);
         }
