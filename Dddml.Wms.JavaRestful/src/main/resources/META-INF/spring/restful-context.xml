@@ -16,8 +16,11 @@
         </property>
         <property name="providers">
             <list>
-                <ref bean="jsonProvider"/>
-                <!--bean class="com.tonglukuaijian.im.api.provider.CustomExceptionMapper"/ -->
+                <!--Jackson 方式-->
+                <!--<ref bean="jsonProvider"/>-->
+                <!--FastJson方式，任选其一-->
+                <bean class="org.dddml.wms.restful.provider.FastJsonProvider"/>
+                <bean class="org.dddml.wms.restful.provider.CustomExceptionMapper"/>
             </list>
         </property>
         <property name="properties">
