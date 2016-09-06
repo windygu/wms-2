@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import com.alibaba.fastjson.JSON;
+import org.apache.cxf.jaxrs.ext.PATCH;
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.meta.PersonFilteringProperties;
@@ -143,7 +144,7 @@ public class PersonResource {
 
 
     /**
-     * 修改人的信息
+     * 创建
      *
      * @param id    唯一标识
      * @param value
@@ -154,6 +155,25 @@ public class PersonResource {
         try {
             PeopleApiUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             personApplicationService.when(value.toCreatePerson());
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new WebApiApplicationException(ex);
+        }
+    }
+
+    /**
+     * 修改
+     *
+     * @param id  唯一标识
+     * @param dto
+     */
+    @PATCH
+    @Path("/{id}")
+    public void Put(@PathParam("id") String id, CreateOrMergePatchPersonDto.MergePatchPersonDto dto) {
+        try {
+            PeopleApiUtils.setNullIdOrThrowOnInconsistentIds(id, dto);
+            personApplicationService.when(dto.toMergePatchPerson());
         } catch (DomainError error) {
             throw error;
         } catch (Exception ex) {

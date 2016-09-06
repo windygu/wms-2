@@ -1,4 +1,5 @@
 import com.alibaba.fastjson.JSON;
+import org.apache.http.client.HttpClient;
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.PropertyMetadataDto;
@@ -127,6 +128,60 @@ public class PersonResourceTest extends AbstractResourceTest {
             int responseCode = connection.getResponseCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             System.out.println(connection.getResponseMessage());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private CreateOrMergePatchPersonDto.MergePatchPersonDto createMergePatchPersonInfo() {
+        CreateOrMergePatchPersonDto.MergePatchPersonDto dto = new CreateOrMergePatchPersonDto.MergePatchPersonDto();
+        dto.setPersonalName(new PersonalNameDto());
+        dto.setVersion(0L);
+        dto.getPersonalName().setFirstName(FIRST_NAME);
+        dto.getPersonalName().setLastName(LAST_NAME);
+        List<CreateOrMergePatchYearPlanDto.MergePatchYearPlanDto> yearPlanDtos = new ArrayList<>();
+        CreateOrMergePatchYearPlanDto.MergePatchYearPlanDto yearPlanDto = new CreateOrMergePatchYearPlanDto.MergePatchYearPlanDto();
+        yearPlanDto.setYear(2016);
+        yearPlanDtos.add(yearPlanDto);
+        List<CreateOrMergePatchMonthPlanDto> monthPlanDtos = new ArrayList<>();
+        RemoveMonthPlanDto removeMonthPlanDto = new RemoveMonthPlanDto();
+        removeMonthPlanDto.setMonth(5);
+        removeMonthPlanDto.setDescription("2016年5月份计划删除了");
+        monthPlanDtos.add(removeMonthPlanDto);
+        yearPlanDto.setMonthPlans(monthPlanDtos.toArray(new CreateOrMergePatchMonthPlanDto[0]));
+        dto.setYearPlans(yearPlanDtos.toArray(new CreateOrMergePatchYearPlanDto.MergePatchYearPlanDto[0]));
+        return dto;
+    }
+
+    /**
+     * 修改Person信息
+     */
+    @Test
+    public void ModifyPerson() {
+        try {
+            String url = RESOURCE_URL.concat(URLEncoder.encode(FULL_NAME, "UTF-8"));
+            URL requestUrl = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) requestUrl.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setDoInput(true);
+            connection.setDoOutput(true);
+            connection.setRequestProperty("x-http-method-override", "PATCH");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("ACCEPT", "application/json");
+            connection.connect();
+            //写入
+            OutputStream outputStream = connection.getOutputStream();
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
+            BufferedWriter writer = new BufferedWriter(outputStreamWriter);
+            CreateOrMergePatchPersonDto.MergePatchPersonDto dto = createMergePatchPersonInfo();
+            String json = JSON.toJSONString(dto, PrettyFormat);
+            writer.write(json);
+            writer.flush();
+            writer.close();
+            System.out.println(json);
+            int responseCode = connection.getResponseCode();
+            Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
+            System.out.println(getContentFromResponseInputStream(connection.getInputStream()));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -311,7 +366,7 @@ public class PersonResourceTest extends AbstractResourceTest {
         }
     }
 
-    
+
     @Test
     public void getStateEvent() {
         String url = RESOURCE_URL.concat(FULL_NAME).concat("/_stateEvents/").concat("-1");
