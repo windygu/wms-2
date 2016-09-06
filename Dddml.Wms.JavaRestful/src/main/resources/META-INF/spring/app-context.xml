@@ -17,11 +17,11 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
 
-    <import resource="classpath:AggregatesHibernateConfig.xml"/>
-    <import resource="classpath:DatabaseConfig.xml"/>
-    <import resource="classpath:DomainConfig.xml"/>
-    <import resource="classpath:TreesConfig.xml"/>
-    <import resource="classpath:TreesHibernateConfig.xml"/>
+    <import resource="classpath:config/AggregatesHibernateConfig.xml"/>
+    <import resource="classpath:config/DatabaseConfig.xml"/>
+    <import resource="classpath:config/DomainConfig.xml"/>
+    <import resource="classpath:config/TreesConfig.xml"/>
+    <import resource="classpath:config/TreesHibernateConfig.xml"/>
     <import resource="restful-context.xml"/>
 
 </beans>
