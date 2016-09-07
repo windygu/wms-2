@@ -1,12 +1,13 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
-import java.util.Date;
+import org.dddml.wms.domain.PersonStateEvent.PersonStateCreated;
+import org.dddml.wms.domain.PersonStateEvent.PersonStateDeleted;
+import org.dddml.wms.domain.PersonStateEvent.PersonStateMergePatched;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.PersonStateEvent.*;
 
-public interface PersonState
-{
+import java.util.Date;
+
+public interface PersonState {
     Long VERSION_ZERO = 0L;
 
     Long VERSION_NULL = VERSION_ZERO - 1;
@@ -68,6 +69,6 @@ public interface PersonState
     void when(PersonStateMergePatched e);
 
     void when(PersonStateDeleted e);
-    
+
 }
 

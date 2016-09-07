@@ -44,13 +44,17 @@ public class PersonResource {
      * @return Person列表
      */
     @GET
-    public PersonStateDto[] getAll(@Context HttpServletRequest request, @QueryParam("sort") String sort,
+    public PersonStateDto[] getAll(@Context HttpServletRequest request,
+                                   @QueryParam("sort") String sort,
                                    @QueryParam("fields") String fields,
                                    @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
                                    /*@DefaultValue(String.valueOf(Integer.MAX_VALUE))*/
                                    @QueryParam("maxResults") Integer maxResults,
                                    @QueryParam("filter") String filter) {
-        if (maxResults == null) {
+        if (firstResult < 0) {
+            firstResult = 0;
+        }
+        if (maxResults == null || maxResults < 1) {
             maxResults = Integer.MAX_VALUE;
         }
         try {
@@ -232,6 +236,13 @@ public class PersonResource {
     }
 
 
+    /**
+     * 获取某 Person 某年的年计划
+     *
+     * @param personalName
+     * @param year
+     * @return
+     */
     @Path("{personalName}/YearPlans/{year}")
     @GET
     public YearPlanStateDto GetYearPlan(@PathParam("personalName") String personalName, @PathParam("year") int year) {
@@ -306,15 +317,15 @@ public class PersonResource {
     }
 
 
-    public String getQueryOrderSeparator() {
+    private String getQueryOrderSeparator() {
         return ",";
     }
 
-    public TypeConverter getCriterionDefaultTypeConvert() {
+    private TypeConverter getCriterionDefaultTypeConvert() {
         return new DefaultTypeConverter();
     }
 
-    public class PeoplePropertyTypeResolver implements PropertyTypeResolver {
+    private class PeoplePropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
             return PeopleApiUtils.GetFilterPropertyType(propertyName);
@@ -322,7 +333,7 @@ public class PersonResource {
     }
 
 
-    public static class PeopleApiUtils {
+    private static class PeopleApiUtils {
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
             if (StringHelper.isNullOrEmpty(str)) {

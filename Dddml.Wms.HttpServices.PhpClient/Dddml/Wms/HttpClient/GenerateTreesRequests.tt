@@ -1,0 +1,16 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ import namespace="Dddml.Core.Domain" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Php\HttpClient\TreeRequestsGenerator.tt" #>
+<#@ include file="..\LoadBoundedContext.tt" #>
+<#
+
+	foreach (var aggregate in boundedContext.Trees.Values)
+	{
+		var generator = new TreeRequestsGenerator(aggregate);
+
+	    generator.Run();
+	}
+
+#>
