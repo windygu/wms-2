@@ -30,9 +30,9 @@ namespace Dddml.Wms.Domain
 
 		public virtual string PersonCreatedBy { get; set; }
 
-		public virtual DateTime? PersonCreatedAt { get; set; }
-
 		public virtual string PersonUpdatedBy { get; set; }
+
+		public virtual DateTime? PersonCreatedAt { get; set; }
 
 		public virtual DateTime? PersonUpdatedAt { get; set; }
 
@@ -199,25 +199,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual bool? IsPropertyPersonCreatedAtRemoved { get; set; }
-
-        bool IYearPlanMvoStateMergePatched.IsPropertyPersonCreatedAtRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyPersonCreatedAtRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyPersonCreatedAtRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyPersonUpdatedByRemoved { get; set; }
 
         bool IYearPlanMvoStateMergePatched.IsPropertyPersonUpdatedByRemoved
@@ -234,6 +215,25 @@ namespace Dddml.Wms.Domain
             set 
             {
                 this.IsPropertyPersonUpdatedByRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPersonCreatedAtRemoved { get; set; }
+
+        bool IYearPlanMvoStateMergePatched.IsPropertyPersonCreatedAtRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyPersonCreatedAtRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyPersonCreatedAtRemoved = value;
             }
         }
 

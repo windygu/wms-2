@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IOrganizationState Get(string organizationId)
         {
-            var state = StateRepository.Get(organizationId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(organizationId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(organizationId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IOrganizationAggregate GetOrganizationAggregate(IOrganizationState state);

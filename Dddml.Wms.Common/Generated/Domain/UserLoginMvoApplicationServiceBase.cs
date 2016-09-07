@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserLoginMvoState Get(UserLoginId userLoginId)
         {
-            var state = StateRepository.Get(userLoginId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(userLoginId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(userLoginId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IUserLoginMvoAggregate GetUserLoginMvoAggregate(IUserLoginMvoState state);

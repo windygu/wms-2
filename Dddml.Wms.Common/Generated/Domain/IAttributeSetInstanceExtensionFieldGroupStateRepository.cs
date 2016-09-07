@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IAttributeSetInstanceExtensionFieldGroupState Get(string id);
 
+        IAttributeSetInstanceExtensionFieldGroupState Get(string id, bool nullAllowed);
+
         IEnumerable<IAttributeSetInstanceExtensionFieldGroupState> GetAll(int firstResult, int maxResults);
         
         void Save(IAttributeSetInstanceExtensionFieldGroupState state);

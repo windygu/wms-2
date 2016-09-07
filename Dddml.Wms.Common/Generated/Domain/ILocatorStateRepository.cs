@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         ILocatorState Get(string id);
 
+        ILocatorState Get(string id, bool nullAllowed);
+
         IEnumerable<ILocatorState> GetAll(int firstResult, int maxResults);
         
         void Save(ILocatorState state);

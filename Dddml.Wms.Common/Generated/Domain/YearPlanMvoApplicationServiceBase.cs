@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IYearPlanMvoState Get(YearPlanId yearPlanId)
         {
-            var state = StateRepository.Get(yearPlanId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(yearPlanId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(yearPlanId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IYearPlanMvoAggregate GetYearPlanMvoAggregate(IYearPlanMvoState state);

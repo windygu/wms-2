@@ -46,13 +46,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("SkuId"))
                 {
-					return new SkuIdDto(_state.SkuId);
+					return (_state.SkuId == null) ? null : new SkuIdDto(_state.SkuId);
                 }
                 return null;
             }
             set
             {
-                _state.SkuId = value.ToSkuId();
+                _state.SkuId = (value == null) ? null : value.ToSkuId();
             }
         }
 

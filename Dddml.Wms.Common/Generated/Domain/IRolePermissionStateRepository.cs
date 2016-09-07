@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IRolePermissionState Get(RolePermissionId id);
 
+        IRolePermissionState Get(RolePermissionId id, bool nullAllowed);
+
         IEnumerable<IRolePermissionState> GetAll(int firstResult, int maxResults);
         
         void Save(IRolePermissionState state);

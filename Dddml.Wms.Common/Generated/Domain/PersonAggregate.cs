@@ -185,11 +185,18 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeletePerson;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveYearPlan;
             if (properties == null || innerProperties == null) { return; }
-            var outerPersonalNameName = "PersonalName";
-            var outerPersonalNameValue = properties.PersonalName;
-            var innerPersonalNameName = "PersonalName";
-            var innerPersonalNameValue = innerProperties.PersonalName;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerPersonalNameName, innerPersonalNameValue, outerPersonalNameName, outerPersonalNameValue);
+            if (innerProperties.PersonalName == default(PersonalName))
+            {
+                innerProperties.PersonalName = properties.PersonalName;
+            }
+            else
+            {
+                var outerPersonalNameName = "PersonalName";
+                var outerPersonalNameValue = properties.PersonalName;
+                var innerPersonalNameName = "PersonalName";
+                var innerPersonalNameValue = innerProperties.PersonalName;
+                ThrowOnInconsistentIds(innerProperties, innerPersonalNameName, innerPersonalNameValue, outerPersonalNameName, outerPersonalNameValue);
+            }
 
         }// END ThrowOnInconsistentCommands /////////////////////
 
@@ -200,17 +207,31 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrRemoveYearPlan;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveMonthPlan;
             if (properties == null || innerProperties == null) { return; }
-            var outerPersonalNameName = "PersonalName";
-            var outerPersonalNameValue = properties.PersonalName;
-            var innerPersonalNameName = "PersonalName";
-            var innerPersonalNameValue = innerProperties.PersonalName;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerPersonalNameName, innerPersonalNameValue, outerPersonalNameName, outerPersonalNameValue);
+            if (innerProperties.PersonalName == default(PersonalName))
+            {
+                innerProperties.PersonalName = properties.PersonalName;
+            }
+            else
+            {
+                var outerPersonalNameName = "PersonalName";
+                var outerPersonalNameValue = properties.PersonalName;
+                var innerPersonalNameName = "PersonalName";
+                var innerPersonalNameValue = innerProperties.PersonalName;
+                ThrowOnInconsistentIds(innerProperties, innerPersonalNameName, innerPersonalNameValue, outerPersonalNameName, outerPersonalNameValue);
+            }
 
-            var outerYearName = "Year";
-            var outerYearValue = properties.Year;
-            var innerYearName = "Year";
-            var innerYearValue = innerProperties.Year;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerYearName, innerYearValue, outerYearName, outerYearValue);
+            if (innerProperties.Year == default(int))
+            {
+                innerProperties.Year = properties.Year;
+            }
+            else
+            {
+                var outerYearName = "Year";
+                var outerYearValue = properties.Year;
+                var innerYearName = "Year";
+                var innerYearValue = innerProperties.Year;
+                ThrowOnInconsistentIds(innerProperties, innerYearName, innerYearValue, outerYearName, outerYearValue);
+            }
 
         }// END ThrowOnInconsistentCommands /////////////////////
 
@@ -221,23 +242,44 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrRemoveMonthPlan;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveDayPlan;
             if (properties == null || innerProperties == null) { return; }
-            var outerPersonalNameName = "PersonalName";
-            var outerPersonalNameValue = properties.PersonalName;
-            var innerPersonalNameName = "PersonalName";
-            var innerPersonalNameValue = innerProperties.PersonalName;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerPersonalNameName, innerPersonalNameValue, outerPersonalNameName, outerPersonalNameValue);
+            if (innerProperties.PersonalName == default(PersonalName))
+            {
+                innerProperties.PersonalName = properties.PersonalName;
+            }
+            else
+            {
+                var outerPersonalNameName = "PersonalName";
+                var outerPersonalNameValue = properties.PersonalName;
+                var innerPersonalNameName = "PersonalName";
+                var innerPersonalNameValue = innerProperties.PersonalName;
+                ThrowOnInconsistentIds(innerProperties, innerPersonalNameName, innerPersonalNameValue, outerPersonalNameName, outerPersonalNameValue);
+            }
 
-            var outerYearName = "Year";
-            var outerYearValue = properties.Year;
-            var innerYearName = "Year";
-            var innerYearValue = innerProperties.Year;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerYearName, innerYearValue, outerYearName, outerYearValue);
+            if (innerProperties.Year == default(int))
+            {
+                innerProperties.Year = properties.Year;
+            }
+            else
+            {
+                var outerYearName = "Year";
+                var outerYearValue = properties.Year;
+                var innerYearName = "Year";
+                var innerYearValue = innerProperties.Year;
+                ThrowOnInconsistentIds(innerProperties, innerYearName, innerYearValue, outerYearName, outerYearValue);
+            }
 
-            var outerMonthName = "Month";
-            var outerMonthValue = properties.Month;
-            var innerMonthName = "Month";
-            var innerMonthValue = innerProperties.Month;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerMonthName, innerMonthValue, outerMonthName, outerMonthValue);
+            if (innerProperties.Month == default(int))
+            {
+                innerProperties.Month = properties.Month;
+            }
+            else
+            {
+                var outerMonthName = "Month";
+                var outerMonthValue = properties.Month;
+                var innerMonthName = "Month";
+                var innerMonthValue = innerProperties.Month;
+                ThrowOnInconsistentIds(innerProperties, innerMonthName, innerMonthValue, outerMonthName, outerMonthValue);
+            }
 
         }// END ThrowOnInconsistentCommands /////////////////////
 
@@ -502,13 +544,9 @@ namespace Dddml.Wms.Domain
 
         }// END Map(IRemove... ////////////////////////////
 
-        private void SetNullInnerIdOrThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
+        private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
-            if (innerIdValue == null)
-            {
-                ReflectUtils.SetPropertyValue(innerIdName, innerObject, outerIdValue);
-            }
-            else if (!Object.Equals(innerIdValue, outerIdValue))
+            if (!Object.Equals(innerIdValue, outerIdValue))
             {
                 if (innerIdValue is string && outerIdValue is string && ((string)innerIdValue).Normalize() == ((string)outerIdValue).Normalize())
                 {

@@ -15,13 +15,13 @@
 
 	<property name="Description" length="500"></property>
 
-	<property name="Version" ></property>
-
 	<property name="CreatedBy" ></property>
 
-	<property name="CreatedAt" ></property>
-
 	<property name="UpdatedBy" ></property>
+
+	<property name="Version" ></property>
+
+	<property name="CreatedAt" ></property>
 
 	<property name="UpdatedAt" ></property>
 
@@ -45,9 +45,9 @@
 
 	<property name="PersonCreatedBy" ></property>
 
-	<property name="PersonCreatedAt" ></property>
-
 	<property name="PersonUpdatedBy" ></property>
+
+	<property name="PersonCreatedAt" ></property>
 
 	<property name="PersonUpdatedAt" ></property>
 

@@ -159,27 +159,6 @@ class CreateOrMergePatchYearPlanMvo extends AbstractYearPlanMvoCommand
     }
 
     /**
-     * @Type("DateTime")
-     */
-    private $personCreatedAt;
-
-    /**
-     * @return \DateTime
-     */
-    public function getPersonCreatedAt()
-    {
-        return $this->personCreatedAt;
-    }
-
-    /**
-     * @param \DateTime $personCreatedAt
-     */
-    public function setPersonCreatedAt($personCreatedAt)
-    {
-        $this->personCreatedAt = $personCreatedAt;
-    }
-
-    /**
      * @Type("string")
      */
     private $personUpdatedBy;
@@ -198,6 +177,27 @@ class CreateOrMergePatchYearPlanMvo extends AbstractYearPlanMvoCommand
     public function setPersonUpdatedBy($personUpdatedBy)
     {
         $this->personUpdatedBy = $personUpdatedBy;
+    }
+
+    /**
+     * @Type("DateTime")
+     */
+    private $personCreatedAt;
+
+    /**
+     * @return \DateTime
+     */
+    public function getPersonCreatedAt()
+    {
+        return $this->personCreatedAt;
+    }
+
+    /**
+     * @param \DateTime $personCreatedAt
+     */
+    public function setPersonCreatedAt($personCreatedAt)
+    {
+        $this->personCreatedAt = $personCreatedAt;
     }
 
     /**

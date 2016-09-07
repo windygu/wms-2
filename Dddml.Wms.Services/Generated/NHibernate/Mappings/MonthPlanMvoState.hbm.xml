@@ -16,13 +16,13 @@
 
 	<property name="Description" length="500"></property>
 
-	<property name="Version" ></property>
-
 	<property name="CreatedBy" ></property>
 
-	<property name="CreatedAt" ></property>
-
 	<property name="UpdatedBy" ></property>
+
+	<property name="Version" ></property>
+
+	<property name="CreatedAt" ></property>
 
 	<property name="UpdatedAt" ></property>
 
@@ -32,13 +32,13 @@
 
 	<property name="YearPlanDescription" length="500"></property>
 
-	<property name="YearPlanVersion" ></property>
-
 	<property name="YearPlanCreatedBy" ></property>
 
-	<property name="YearPlanCreatedAt" ></property>
-
 	<property name="YearPlanUpdatedBy" ></property>
+
+	<property name="YearPlanVersion" ></property>
+
+	<property name="YearPlanCreatedAt" ></property>
 
 	<property name="YearPlanUpdatedAt" ></property>
 
@@ -62,9 +62,9 @@
 
 	<property name="PersonCreatedBy" ></property>
 
-	<property name="PersonCreatedAt" ></property>
-
 	<property name="PersonUpdatedBy" ></property>
+
+	<property name="PersonCreatedAt" ></property>
 
 	<property name="PersonUpdatedAt" ></property>
 

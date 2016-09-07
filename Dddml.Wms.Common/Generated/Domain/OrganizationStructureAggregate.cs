@@ -153,13 +153,9 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
-        private void SetNullInnerIdOrThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
+        private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
-            if (innerIdValue == null)
-            {
-                ReflectUtils.SetPropertyValue(innerIdName, innerObject, outerIdValue);
-            }
-            else if (!Object.Equals(innerIdValue, outerIdValue))
+            if (!Object.Equals(innerIdValue, outerIdValue))
             {
                 if (innerIdValue is string && outerIdValue is string && ((string)innerIdValue).Normalize() == ((string)outerIdValue).Normalize())
                 {

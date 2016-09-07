@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IUserRoleMvoState Get(UserRoleId id);
 
+        IUserRoleMvoState Get(UserRoleId id, bool nullAllowed);
+
         IEnumerable<IUserRoleMvoState> GetAll(int firstResult, int maxResults);
         
         void Save(IUserRoleMvoState state);

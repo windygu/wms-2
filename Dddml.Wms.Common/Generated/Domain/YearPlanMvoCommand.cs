@@ -65,9 +65,9 @@ namespace Dddml.Wms.Domain
 
 		public virtual string PersonCreatedBy { get; set; }
 
-		public virtual DateTime? PersonCreatedAt { get; set; }
-
 		public virtual string PersonUpdatedBy { get; set; }
+
+		public virtual DateTime? PersonCreatedAt { get; set; }
 
 		public virtual DateTime? PersonUpdatedAt { get; set; }
 
@@ -134,9 +134,9 @@ namespace Dddml.Wms.Domain
 
 		public virtual bool IsPropertyPersonCreatedByRemoved { get; set; }
 
-		public virtual bool IsPropertyPersonCreatedAtRemoved { get; set; }
-
 		public virtual bool IsPropertyPersonUpdatedByRemoved { get; set; }
+
+		public virtual bool IsPropertyPersonCreatedAtRemoved { get; set; }
 
 		public virtual bool IsPropertyPersonUpdatedAtRemoved { get; set; }
 

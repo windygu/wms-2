@@ -34,8 +34,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public IPersonState Get (PersonalName id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public IPersonState Get (PersonalName id, bool nullAllowed)
+		{
 			IPersonState state = CurrentSession.Get<PersonState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new PersonState ();
 				(state as PersonState).PersonalName = id;
 			}

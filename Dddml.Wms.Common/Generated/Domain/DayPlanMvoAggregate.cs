@@ -110,18 +110,18 @@ namespace Dddml.Wms.Domain
             e.Version = c.Version;
             e.Active = c.Active;
             e.MonthPlanDescription = c.MonthPlanDescription;
-            e.MonthPlanVersion = c.MonthPlanVersion;
             e.MonthPlanCreatedBy = c.MonthPlanCreatedBy;
-            e.MonthPlanCreatedAt = c.MonthPlanCreatedAt;
             e.MonthPlanUpdatedBy = c.MonthPlanUpdatedBy;
+            e.MonthPlanVersion = c.MonthPlanVersion;
+            e.MonthPlanCreatedAt = c.MonthPlanCreatedAt;
             e.MonthPlanUpdatedAt = c.MonthPlanUpdatedAt;
             e.MonthPlanActive = c.MonthPlanActive;
             e.MonthPlanDeleted = c.MonthPlanDeleted;
             e.YearPlanDescription = c.YearPlanDescription;
-            e.YearPlanVersion = c.YearPlanVersion;
             e.YearPlanCreatedBy = c.YearPlanCreatedBy;
-            e.YearPlanCreatedAt = c.YearPlanCreatedAt;
             e.YearPlanUpdatedBy = c.YearPlanUpdatedBy;
+            e.YearPlanVersion = c.YearPlanVersion;
+            e.YearPlanCreatedAt = c.YearPlanCreatedAt;
             e.YearPlanUpdatedAt = c.YearPlanUpdatedAt;
             e.YearPlanActive = c.YearPlanActive;
             e.YearPlanDeleted = c.YearPlanDeleted;
@@ -129,8 +129,8 @@ namespace Dddml.Wms.Domain
             e.PersonLoves = c.PersonLoves;
             e.PersonEmergencyContact = c.PersonEmergencyContact;
             e.PersonCreatedBy = c.PersonCreatedBy;
-            e.PersonCreatedAt = c.PersonCreatedAt;
             e.PersonUpdatedBy = c.PersonUpdatedBy;
+            e.PersonCreatedAt = c.PersonCreatedAt;
             e.PersonUpdatedAt = c.PersonUpdatedAt;
             e.PersonActive = c.PersonActive;
             e.PersonDeleted = c.PersonDeleted;
@@ -154,18 +154,18 @@ namespace Dddml.Wms.Domain
             e.Version = c.Version;
             e.Active = c.Active;
             e.MonthPlanDescription = c.MonthPlanDescription;
-            e.MonthPlanVersion = c.MonthPlanVersion;
             e.MonthPlanCreatedBy = c.MonthPlanCreatedBy;
-            e.MonthPlanCreatedAt = c.MonthPlanCreatedAt;
             e.MonthPlanUpdatedBy = c.MonthPlanUpdatedBy;
+            e.MonthPlanVersion = c.MonthPlanVersion;
+            e.MonthPlanCreatedAt = c.MonthPlanCreatedAt;
             e.MonthPlanUpdatedAt = c.MonthPlanUpdatedAt;
             e.MonthPlanActive = c.MonthPlanActive;
             e.MonthPlanDeleted = c.MonthPlanDeleted;
             e.YearPlanDescription = c.YearPlanDescription;
-            e.YearPlanVersion = c.YearPlanVersion;
             e.YearPlanCreatedBy = c.YearPlanCreatedBy;
-            e.YearPlanCreatedAt = c.YearPlanCreatedAt;
             e.YearPlanUpdatedBy = c.YearPlanUpdatedBy;
+            e.YearPlanVersion = c.YearPlanVersion;
+            e.YearPlanCreatedAt = c.YearPlanCreatedAt;
             e.YearPlanUpdatedAt = c.YearPlanUpdatedAt;
             e.YearPlanActive = c.YearPlanActive;
             e.YearPlanDeleted = c.YearPlanDeleted;
@@ -173,8 +173,8 @@ namespace Dddml.Wms.Domain
             e.PersonLoves = c.PersonLoves;
             e.PersonEmergencyContact = c.PersonEmergencyContact;
             e.PersonCreatedBy = c.PersonCreatedBy;
-            e.PersonCreatedAt = c.PersonCreatedAt;
             e.PersonUpdatedBy = c.PersonUpdatedBy;
+            e.PersonCreatedAt = c.PersonCreatedAt;
             e.PersonUpdatedAt = c.PersonUpdatedAt;
             e.PersonActive = c.PersonActive;
             e.PersonDeleted = c.PersonDeleted;
@@ -182,18 +182,18 @@ namespace Dddml.Wms.Domain
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
             e.IsPropertyMonthPlanDescriptionRemoved = c.IsPropertyMonthPlanDescriptionRemoved;
-            e.IsPropertyMonthPlanVersionRemoved = c.IsPropertyMonthPlanVersionRemoved;
             e.IsPropertyMonthPlanCreatedByRemoved = c.IsPropertyMonthPlanCreatedByRemoved;
-            e.IsPropertyMonthPlanCreatedAtRemoved = c.IsPropertyMonthPlanCreatedAtRemoved;
             e.IsPropertyMonthPlanUpdatedByRemoved = c.IsPropertyMonthPlanUpdatedByRemoved;
+            e.IsPropertyMonthPlanVersionRemoved = c.IsPropertyMonthPlanVersionRemoved;
+            e.IsPropertyMonthPlanCreatedAtRemoved = c.IsPropertyMonthPlanCreatedAtRemoved;
             e.IsPropertyMonthPlanUpdatedAtRemoved = c.IsPropertyMonthPlanUpdatedAtRemoved;
             e.IsPropertyMonthPlanActiveRemoved = c.IsPropertyMonthPlanActiveRemoved;
             e.IsPropertyMonthPlanDeletedRemoved = c.IsPropertyMonthPlanDeletedRemoved;
             e.IsPropertyYearPlanDescriptionRemoved = c.IsPropertyYearPlanDescriptionRemoved;
-            e.IsPropertyYearPlanVersionRemoved = c.IsPropertyYearPlanVersionRemoved;
             e.IsPropertyYearPlanCreatedByRemoved = c.IsPropertyYearPlanCreatedByRemoved;
-            e.IsPropertyYearPlanCreatedAtRemoved = c.IsPropertyYearPlanCreatedAtRemoved;
             e.IsPropertyYearPlanUpdatedByRemoved = c.IsPropertyYearPlanUpdatedByRemoved;
+            e.IsPropertyYearPlanVersionRemoved = c.IsPropertyYearPlanVersionRemoved;
+            e.IsPropertyYearPlanCreatedAtRemoved = c.IsPropertyYearPlanCreatedAtRemoved;
             e.IsPropertyYearPlanUpdatedAtRemoved = c.IsPropertyYearPlanUpdatedAtRemoved;
             e.IsPropertyYearPlanActiveRemoved = c.IsPropertyYearPlanActiveRemoved;
             e.IsPropertyYearPlanDeletedRemoved = c.IsPropertyYearPlanDeletedRemoved;
@@ -201,8 +201,8 @@ namespace Dddml.Wms.Domain
             e.IsPropertyPersonLovesRemoved = c.IsPropertyPersonLovesRemoved;
             e.IsPropertyPersonEmergencyContactRemoved = c.IsPropertyPersonEmergencyContactRemoved;
             e.IsPropertyPersonCreatedByRemoved = c.IsPropertyPersonCreatedByRemoved;
-            e.IsPropertyPersonCreatedAtRemoved = c.IsPropertyPersonCreatedAtRemoved;
             e.IsPropertyPersonUpdatedByRemoved = c.IsPropertyPersonUpdatedByRemoved;
+            e.IsPropertyPersonCreatedAtRemoved = c.IsPropertyPersonCreatedAtRemoved;
             e.IsPropertyPersonUpdatedAtRemoved = c.IsPropertyPersonUpdatedAtRemoved;
             e.IsPropertyPersonActiveRemoved = c.IsPropertyPersonActiveRemoved;
             e.IsPropertyPersonDeletedRemoved = c.IsPropertyPersonDeletedRemoved;
@@ -234,13 +234,9 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
-        private void SetNullInnerIdOrThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
+        private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
-            if (innerIdValue == null)
-            {
-                ReflectUtils.SetPropertyValue(innerIdName, innerObject, outerIdValue);
-            }
-            else if (!Object.Equals(innerIdValue, outerIdValue))
+            if (!Object.Equals(innerIdValue, outerIdValue))
             {
                 if (innerIdValue is string && outerIdValue is string && ((string)innerIdValue).Normalize() == ((string)outerIdValue).Normalize())
                 {

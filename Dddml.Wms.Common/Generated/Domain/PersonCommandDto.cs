@@ -60,11 +60,11 @@ namespace Dddml.Wms.Domain
         {
             get 
             {
-                return this.Loves.ToPersonalName();
+                return (this.Loves == null) ? null : this.Loves.ToPersonalName();
             }
             set 
             {
-                this.Loves = new PersonalNameDto(value);
+                this.Loves = (value == null) ? null : new PersonalNameDto(value);
             }
         }
 
@@ -75,11 +75,11 @@ namespace Dddml.Wms.Domain
         {
             get 
             {
-                return this.EmergencyContact.ToContact();
+                return (this.EmergencyContact == null) ? null : this.EmergencyContact.ToContact();
             }
             set 
             {
-                this.EmergencyContact = new ContactDto(value);
+                this.EmergencyContact = (value == null) ? null : new ContactDto(value);
             }
         }
 

@@ -34,8 +34,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public ITeamState Get (string id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public ITeamState Get (string id, bool nullAllowed)
+		{
 			ITeamState state = CurrentSession.Get<TeamState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new TeamState ();
 				(state as TeamState).TeamName = id;
 			}

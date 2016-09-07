@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeSetInstanceExtensionFieldMvoState Get(AttributeSetInstanceExtensionFieldId attributeSetInstanceExtensionFieldId)
         {
-            var state = StateRepository.Get(attributeSetInstanceExtensionFieldId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(attributeSetInstanceExtensionFieldId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(attributeSetInstanceExtensionFieldId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IAttributeSetInstanceExtensionFieldMvoAggregate GetAttributeSetInstanceExtensionFieldMvoAggregate(IAttributeSetInstanceExtensionFieldMvoState state);

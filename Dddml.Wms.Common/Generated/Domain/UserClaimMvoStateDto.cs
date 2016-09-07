@@ -45,13 +45,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("UserClaimId"))
                 {
-					return new UserClaimIdDto(_state.UserClaimId);
+					return (_state.UserClaimId == null) ? null : new UserClaimIdDto(_state.UserClaimId);
                 }
                 return null;
             }
             set
             {
-                _state.UserClaimId = value.ToUserClaimId();
+                _state.UserClaimId = (value == null) ? null : value.ToUserClaimId();
             }
         }
 

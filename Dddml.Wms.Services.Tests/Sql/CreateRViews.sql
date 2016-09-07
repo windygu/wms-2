@@ -631,13 +631,13 @@ CREATE VIEW `YearPlan_RV` AS
 
         `YearPlans`.`Description`,
 
-        `YearPlans`.`Version`,
-
         `YearPlans`.`CreatedBy`,
 
-        `YearPlans`.`CreatedAt`,
-
         `YearPlans`.`UpdatedBy`,
+
+        `YearPlans`.`Version`,
+
+        `YearPlans`.`CreatedAt`,
 
         `YearPlans`.`UpdatedAt`,
 
@@ -659,13 +659,13 @@ CREATE VIEW `YearPlan_RV` AS
 
         `People`.`EmergencyContactAddress` AS `PersonEmergencyContactAddress`,
 
-        `People`.`Version` AS `PersonVersion`,
-
         `People`.`CreatedBy` AS `PersonCreatedBy`,
 
-        `People`.`CreatedAt` AS `PersonCreatedAt`,
-
         `People`.`UpdatedBy` AS `PersonUpdatedBy`,
+
+        `People`.`Version` AS `PersonVersion`,
+
+        `People`.`CreatedAt` AS `PersonCreatedAt`,
 
         `People`.`UpdatedAt` AS `PersonUpdatedAt`,
 
@@ -698,13 +698,13 @@ CREATE VIEW `MonthPlan_RV` AS
 
         `MonthPlans`.`Description`,
 
-        `MonthPlans`.`Version`,
-
         `MonthPlans`.`CreatedBy`,
 
-        `MonthPlans`.`CreatedAt`,
-
         `MonthPlans`.`UpdatedBy`,
+
+        `MonthPlans`.`Version`,
+
+        `MonthPlans`.`CreatedAt`,
 
         `MonthPlans`.`UpdatedAt`,
 
@@ -714,13 +714,13 @@ CREATE VIEW `MonthPlan_RV` AS
 
         `YearPlans`.`Description` AS `YearPlanDescription`,
 
-        `YearPlans`.`Version` AS `YearPlanVersion`,
-
         `YearPlans`.`CreatedBy` AS `YearPlanCreatedBy`,
 
-        `YearPlans`.`CreatedAt` AS `YearPlanCreatedAt`,
-
         `YearPlans`.`UpdatedBy` AS `YearPlanUpdatedBy`,
+
+        `YearPlans`.`Version` AS `YearPlanVersion`,
+
+        `YearPlans`.`CreatedAt` AS `YearPlanCreatedAt`,
 
         `YearPlans`.`UpdatedAt` AS `YearPlanUpdatedAt`,
 
@@ -742,13 +742,13 @@ CREATE VIEW `MonthPlan_RV` AS
 
         `People`.`EmergencyContactAddress` AS `PersonEmergencyContactAddress`,
 
-        `People`.`Version` AS `PersonVersion`,
-
         `People`.`CreatedBy` AS `PersonCreatedBy`,
 
-        `People`.`CreatedAt` AS `PersonCreatedAt`,
-
         `People`.`UpdatedBy` AS `PersonUpdatedBy`,
+
+        `People`.`Version` AS `PersonVersion`,
+
+        `People`.`CreatedAt` AS `PersonCreatedAt`,
 
         `People`.`UpdatedAt` AS `PersonUpdatedAt`,
 
@@ -792,13 +792,13 @@ CREATE VIEW `DayPlan_RV` AS
 
         `DayPlans`.`Description`,
 
-        `DayPlans`.`Version`,
-
         `DayPlans`.`CreatedBy`,
 
-        `DayPlans`.`CreatedAt`,
-
         `DayPlans`.`UpdatedBy`,
+
+        `DayPlans`.`Version`,
+
+        `DayPlans`.`CreatedAt`,
 
         `DayPlans`.`UpdatedAt`,
 
@@ -808,13 +808,13 @@ CREATE VIEW `DayPlan_RV` AS
 
         `MonthPlans`.`Description` AS `MonthPlanDescription`,
 
-        `MonthPlans`.`Version` AS `MonthPlanVersion`,
-
         `MonthPlans`.`CreatedBy` AS `MonthPlanCreatedBy`,
 
-        `MonthPlans`.`CreatedAt` AS `MonthPlanCreatedAt`,
-
         `MonthPlans`.`UpdatedBy` AS `MonthPlanUpdatedBy`,
+
+        `MonthPlans`.`Version` AS `MonthPlanVersion`,
+
+        `MonthPlans`.`CreatedAt` AS `MonthPlanCreatedAt`,
 
         `MonthPlans`.`UpdatedAt` AS `MonthPlanUpdatedAt`,
 
@@ -824,13 +824,13 @@ CREATE VIEW `DayPlan_RV` AS
 
         `YearPlans`.`Description` AS `YearPlanDescription`,
 
-        `YearPlans`.`Version` AS `YearPlanVersion`,
-
         `YearPlans`.`CreatedBy` AS `YearPlanCreatedBy`,
 
-        `YearPlans`.`CreatedAt` AS `YearPlanCreatedAt`,
-
         `YearPlans`.`UpdatedBy` AS `YearPlanUpdatedBy`,
+
+        `YearPlans`.`Version` AS `YearPlanVersion`,
+
+        `YearPlans`.`CreatedAt` AS `YearPlanCreatedAt`,
 
         `YearPlans`.`UpdatedAt` AS `YearPlanUpdatedAt`,
 
@@ -852,13 +852,13 @@ CREATE VIEW `DayPlan_RV` AS
 
         `People`.`EmergencyContactAddress` AS `PersonEmergencyContactAddress`,
 
-        `People`.`Version` AS `PersonVersion`,
-
         `People`.`CreatedBy` AS `PersonCreatedBy`,
 
-        `People`.`CreatedAt` AS `PersonCreatedAt`,
-
         `People`.`UpdatedBy` AS `PersonUpdatedBy`,
+
+        `People`.`Version` AS `PersonVersion`,
+
+        `People`.`CreatedAt` AS `PersonCreatedAt`,
 
         `People`.`UpdatedAt` AS `PersonUpdatedAt`,
 

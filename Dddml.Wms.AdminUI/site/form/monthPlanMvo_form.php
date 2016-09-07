@@ -20,21 +20,21 @@ return $app['form.factory']->createBuilder(FormType::class, $data)
         'required' => false,
         'label'    => 'Year Plan Description',
     ])
-    ->add('yearPlanVersion', IntegerType::class, [
-        'required' => false,
-        'label'    => 'Year Plan Version',
-    ])
     ->add('yearPlanCreatedBy', TextType::class, [
         'required' => false,
         'label'    => 'Year Plan Created By',
     ])
-    ->add('yearPlanCreatedAt', DateTimeType::class, [
-        'required' => false,
-        'label'    => 'Year Plan Created At',
-    ])
     ->add('yearPlanUpdatedBy', TextType::class, [
         'required' => false,
         'label'    => 'Year Plan Updated By',
+    ])
+    ->add('yearPlanVersion', IntegerType::class, [
+        'required' => false,
+        'label'    => 'Year Plan Version',
+    ])
+    ->add('yearPlanCreatedAt', DateTimeType::class, [
+        'required' => false,
+        'label'    => 'Year Plan Created At',
     ])
     ->add('yearPlanUpdatedAt', DateTimeType::class, [
         'required' => false,
@@ -56,13 +56,13 @@ return $app['form.factory']->createBuilder(FormType::class, $data)
         'required' => false,
         'label'    => 'Person Created By',
     ])
-    ->add('personCreatedAt', DateTimeType::class, [
-        'required' => false,
-        'label'    => 'Person Created At',
-    ])
     ->add('personUpdatedBy', TextType::class, [
         'required' => false,
         'label'    => 'Person Updated By',
+    ])
+    ->add('personCreatedAt', DateTimeType::class, [
+        'required' => false,
+        'label'    => 'Person Created At',
     ])
     ->add('personUpdatedAt', DateTimeType::class, [
         'required' => false,

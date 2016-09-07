@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IRoleState Get(string id);
 
+        IRoleState Get(string id, bool nullAllowed);
+
         IEnumerable<IRoleState> GetAll(int firstResult, int maxResults);
         
         void Save(IRoleState state);

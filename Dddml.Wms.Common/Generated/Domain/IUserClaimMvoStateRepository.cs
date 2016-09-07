@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IUserClaimMvoState Get(UserClaimId id);
 
+        IUserClaimMvoState Get(UserClaimId id, bool nullAllowed);
+
         IEnumerable<IUserClaimMvoState> GetAll(int firstResult, int maxResults);
         
         void Save(IUserClaimMvoState state);

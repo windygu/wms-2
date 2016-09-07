@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IUserState Get(string id);
 
+        IUserState Get(string id, bool nullAllowed);
+
         IEnumerable<IUserState> GetAll(int firstResult, int maxResults);
         
         void Save(IUserState state);

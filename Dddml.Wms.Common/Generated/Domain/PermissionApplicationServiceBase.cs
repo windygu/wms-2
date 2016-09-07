@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IPermissionState Get(string permissionId)
         {
-            var state = StateRepository.Get(permissionId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(permissionId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(permissionId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IPermissionAggregate GetPermissionAggregate(IPermissionState state);

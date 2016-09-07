@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         IAudienceState Get(string id);
 
+        IAudienceState Get(string id, bool nullAllowed);
+
         IEnumerable<IAudienceState> GetAll(int firstResult, int maxResults);
         
         void Save(IAudienceState state);

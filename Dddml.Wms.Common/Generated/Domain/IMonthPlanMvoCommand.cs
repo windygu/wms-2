@@ -29,13 +29,13 @@ namespace Dddml.Wms.Domain
 
 		string YearPlanDescription { get; set; }
 
-		long? YearPlanVersion { get; set; }
-
 		string YearPlanCreatedBy { get; set; }
 
-		DateTime? YearPlanCreatedAt { get; set; }
-
 		string YearPlanUpdatedBy { get; set; }
+
+		long? YearPlanVersion { get; set; }
+
+		DateTime? YearPlanCreatedAt { get; set; }
 
 		DateTime? YearPlanUpdatedAt { get; set; }
 
@@ -51,9 +51,9 @@ namespace Dddml.Wms.Domain
 
 		string PersonCreatedBy { get; set; }
 
-		DateTime? PersonCreatedAt { get; set; }
-
 		string PersonUpdatedBy { get; set; }
+
+		DateTime? PersonCreatedAt { get; set; }
 
 		DateTime? PersonUpdatedAt { get; set; }
 
@@ -79,13 +79,13 @@ namespace Dddml.Wms.Domain
 
 		bool IsPropertyYearPlanDescriptionRemoved { get; set; }
 
-		bool IsPropertyYearPlanVersionRemoved { get; set; }
-
 		bool IsPropertyYearPlanCreatedByRemoved { get; set; }
 
-		bool IsPropertyYearPlanCreatedAtRemoved { get; set; }
-
 		bool IsPropertyYearPlanUpdatedByRemoved { get; set; }
+
+		bool IsPropertyYearPlanVersionRemoved { get; set; }
+
+		bool IsPropertyYearPlanCreatedAtRemoved { get; set; }
 
 		bool IsPropertyYearPlanUpdatedAtRemoved { get; set; }
 
@@ -101,9 +101,9 @@ namespace Dddml.Wms.Domain
 
 		bool IsPropertyPersonCreatedByRemoved { get; set; }
 
-		bool IsPropertyPersonCreatedAtRemoved { get; set; }
-
 		bool IsPropertyPersonUpdatedByRemoved { get; set; }
+
+		bool IsPropertyPersonCreatedAtRemoved { get; set; }
 
 		bool IsPropertyPersonUpdatedAtRemoved { get; set; }
 

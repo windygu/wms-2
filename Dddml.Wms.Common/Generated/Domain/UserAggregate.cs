@@ -257,11 +257,18 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteUser;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveUserRole;
             if (properties == null || innerProperties == null) { return; }
-            var outerUserIdName = "UserId";
-            var outerUserIdValue = properties.UserId;
-            var innerUserIdName = "UserId";
-            var innerUserIdValue = innerProperties.UserId;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerUserIdName, innerUserIdValue, outerUserIdName, outerUserIdValue);
+            if (innerProperties.UserId == default(string))
+            {
+                innerProperties.UserId = properties.UserId;
+            }
+            else
+            {
+                var outerUserIdName = "UserId";
+                var outerUserIdValue = properties.UserId;
+                var innerUserIdName = "UserId";
+                var innerUserIdValue = innerProperties.UserId;
+                ThrowOnInconsistentIds(innerProperties, innerUserIdName, innerUserIdValue, outerUserIdName, outerUserIdValue);
+            }
 
         }// END ThrowOnInconsistentCommands /////////////////////
 
@@ -272,11 +279,18 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteUser;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveUserClaim;
             if (properties == null || innerProperties == null) { return; }
-            var outerUserIdName = "UserId";
-            var outerUserIdValue = properties.UserId;
-            var innerUserIdName = "UserId";
-            var innerUserIdValue = innerProperties.UserId;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerUserIdName, innerUserIdValue, outerUserIdName, outerUserIdValue);
+            if (innerProperties.UserId == default(string))
+            {
+                innerProperties.UserId = properties.UserId;
+            }
+            else
+            {
+                var outerUserIdName = "UserId";
+                var outerUserIdValue = properties.UserId;
+                var innerUserIdName = "UserId";
+                var innerUserIdValue = innerProperties.UserId;
+                ThrowOnInconsistentIds(innerProperties, innerUserIdName, innerUserIdValue, outerUserIdName, outerUserIdValue);
+            }
 
         }// END ThrowOnInconsistentCommands /////////////////////
 
@@ -287,11 +301,18 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteUser;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveUserPermission;
             if (properties == null || innerProperties == null) { return; }
-            var outerUserIdName = "UserId";
-            var outerUserIdValue = properties.UserId;
-            var innerUserIdName = "UserId";
-            var innerUserIdValue = innerProperties.UserId;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerUserIdName, innerUserIdValue, outerUserIdName, outerUserIdValue);
+            if (innerProperties.UserId == default(string))
+            {
+                innerProperties.UserId = properties.UserId;
+            }
+            else
+            {
+                var outerUserIdName = "UserId";
+                var outerUserIdValue = properties.UserId;
+                var innerUserIdName = "UserId";
+                var innerUserIdValue = innerProperties.UserId;
+                ThrowOnInconsistentIds(innerProperties, innerUserIdName, innerUserIdValue, outerUserIdName, outerUserIdValue);
+            }
 
         }// END ThrowOnInconsistentCommands /////////////////////
 
@@ -302,11 +323,18 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteUser;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveUserLogin;
             if (properties == null || innerProperties == null) { return; }
-            var outerUserIdName = "UserId";
-            var outerUserIdValue = properties.UserId;
-            var innerUserIdName = "UserId";
-            var innerUserIdValue = innerProperties.UserId;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerUserIdName, innerUserIdValue, outerUserIdName, outerUserIdValue);
+            if (innerProperties.UserId == default(string))
+            {
+                innerProperties.UserId = properties.UserId;
+            }
+            else
+            {
+                var outerUserIdName = "UserId";
+                var outerUserIdValue = properties.UserId;
+                var innerUserIdName = "UserId";
+                var innerUserIdValue = innerProperties.UserId;
+                ThrowOnInconsistentIds(innerProperties, innerUserIdName, innerUserIdValue, outerUserIdName, outerUserIdValue);
+            }
 
         }// END ThrowOnInconsistentCommands /////////////////////
 
@@ -604,13 +632,9 @@ namespace Dddml.Wms.Domain
 
         }// END Map(IRemove... ////////////////////////////
 
-        private void SetNullInnerIdOrThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
+        private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
-            if (innerIdValue == null)
-            {
-                ReflectUtils.SetPropertyValue(innerIdName, innerObject, outerIdValue);
-            }
-            else if (!Object.Equals(innerIdValue, outerIdValue))
+            if (!Object.Equals(innerIdValue, outerIdValue))
             {
                 if (innerIdValue is string && outerIdValue is string && ((string)innerIdValue).Normalize() == ((string)outerIdValue).Normalize())
                 {

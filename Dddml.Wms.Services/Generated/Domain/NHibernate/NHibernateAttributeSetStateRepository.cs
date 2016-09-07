@@ -34,8 +34,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public IAttributeSetState Get (string id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public IAttributeSetState Get (string id, bool nullAllowed)
+		{
 			IAttributeSetState state = CurrentSession.Get<AttributeSetState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new AttributeSetState ();
 				(state as AttributeSetState).AttributeSetId = id;
 			}

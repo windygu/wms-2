@@ -35,8 +35,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public IInOutState Get (string id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public IInOutState Get (string id, bool nullAllowed)
+		{
 			IInOutState state = CurrentSession.Get<InOutState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new InOutState ();
 				(state as InOutState).DocumentNumber = id;
 			}

@@ -34,8 +34,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public IWarehouseState Get (string id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public IWarehouseState Get (string id, bool nullAllowed)
+		{
 			IWarehouseState state = CurrentSession.Get<WarehouseState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new WarehouseState ();
 				(state as WarehouseState).WarehouseId = id;
 			}

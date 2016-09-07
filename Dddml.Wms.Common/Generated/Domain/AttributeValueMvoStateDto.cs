@@ -45,13 +45,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("AttributeValueId"))
                 {
-					return new AttributeValueIdDto(_state.AttributeValueId);
+					return (_state.AttributeValueId == null) ? null : new AttributeValueIdDto(_state.AttributeValueId);
                 }
                 return null;
             }
             set
             {
-                _state.AttributeValueId = value.ToAttributeValueId();
+                _state.AttributeValueId = (value == null) ? null : value.ToAttributeValueId();
             }
         }
 

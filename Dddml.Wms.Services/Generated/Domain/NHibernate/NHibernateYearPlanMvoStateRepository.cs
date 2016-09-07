@@ -34,8 +34,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public IYearPlanMvoState Get (YearPlanId id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public IYearPlanMvoState Get (YearPlanId id, bool nullAllowed)
+		{
 			IYearPlanMvoState state = CurrentSession.Get<YearPlanMvoState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new YearPlanMvoState ();
 				(state as YearPlanMvoState).YearPlanId = id;
 			}

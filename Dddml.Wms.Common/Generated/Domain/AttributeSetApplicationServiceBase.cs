@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeSetState Get(string attributeSetId)
         {
-            var state = StateRepository.Get(attributeSetId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(attributeSetId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(attributeSetId, 0);
+            }
             return e;
         }
+
 
         public virtual IAttributeUseState GetAttributeUse(string attributeSetId, string attributeId)
         {

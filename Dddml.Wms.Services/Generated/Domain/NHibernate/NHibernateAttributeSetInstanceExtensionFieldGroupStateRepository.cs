@@ -34,8 +34,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public IAttributeSetInstanceExtensionFieldGroupState Get (string id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public IAttributeSetInstanceExtensionFieldGroupState Get (string id, bool nullAllowed)
+		{
 			IAttributeSetInstanceExtensionFieldGroupState state = CurrentSession.Get<AttributeSetInstanceExtensionFieldGroupState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new AttributeSetInstanceExtensionFieldGroupState ();
 				(state as AttributeSetInstanceExtensionFieldGroupState).Id = id;
 			}

@@ -9,10 +9,10 @@ trait PersonFilteringFieldsTrait
     {
         return [
             'BirthDate' => '\DateTime',
-            'Version' => 'Long',
             'CreatedBy' => 'string',
-            'CreatedAt' => '\DateTime',
             'UpdatedBy' => 'string',
+            'Version' => 'Long',
+            'CreatedAt' => '\DateTime',
             'UpdatedAt' => '\DateTime',
             'Active' => 'boolean',
             'Deleted' => 'boolean',

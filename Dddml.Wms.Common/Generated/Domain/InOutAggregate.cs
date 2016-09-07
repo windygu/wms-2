@@ -278,11 +278,18 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteInOut;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveInOutLine;
             if (properties == null || innerProperties == null) { return; }
-            var outerDocumentNumberName = "DocumentNumber";
-            var outerDocumentNumberValue = properties.DocumentNumber;
-            var innerInOutDocumentNumberName = "InOutDocumentNumber";
-            var innerInOutDocumentNumberValue = innerProperties.InOutDocumentNumber;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerInOutDocumentNumberName, innerInOutDocumentNumberValue, outerDocumentNumberName, outerDocumentNumberValue);
+            if (innerProperties.InOutDocumentNumber == default(string))
+            {
+                innerProperties.InOutDocumentNumber = properties.DocumentNumber;
+            }
+            else
+            {
+                var outerDocumentNumberName = "DocumentNumber";
+                var outerDocumentNumberValue = properties.DocumentNumber;
+                var innerInOutDocumentNumberName = "InOutDocumentNumber";
+                var innerInOutDocumentNumberValue = innerProperties.InOutDocumentNumber;
+                ThrowOnInconsistentIds(innerProperties, innerInOutDocumentNumberName, innerInOutDocumentNumberValue, outerDocumentNumberName, outerDocumentNumberValue);
+            }
 
         }// END ThrowOnInconsistentCommands /////////////////////
 
@@ -433,13 +440,9 @@ namespace Dddml.Wms.Domain
             }
         }
 
-        private void SetNullInnerIdOrThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
+        private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
-            if (innerIdValue == null)
-            {
-                ReflectUtils.SetPropertyValue(innerIdName, innerObject, outerIdValue);
-            }
-            else if (!Object.Equals(innerIdValue, outerIdValue))
+            if (!Object.Equals(innerIdValue, outerIdValue))
             {
                 if (innerIdValue is string && outerIdValue is string && ((string)innerIdValue).Normalize() == ((string)outerIdValue).Normalize())
                 {
