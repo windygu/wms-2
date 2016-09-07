@@ -1,5 +1,6 @@
 package org.dddml.wms.restful.provider;
 
+import com.alibaba.fastjson.JSONException;
 import org.dddml.wms.restful.exception.AuthenticateException;
 import org.dddml.wms.restful.exception.WebApiApplicationException;
 import org.dddml.wms.specialization.DomainError;
@@ -27,7 +28,9 @@ public class CustomExceptionMapper implements ExceptionMapper<Exception> {
         } else if (e instanceof WebApiApplicationException || e instanceof DomainError) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).encoding("UTF-8").language(Locale.SIMPLIFIED_CHINESE)
                     .type(MediaType.TEXT_PLAIN).entity(e.getMessage()).build();
-
+        } else if (e instanceof JSONException) {
+            return Response.status(Status.BAD_REQUEST).encoding("UTF-8").language(Locale.SIMPLIFIED_CHINESE)
+                    .type(MediaType.TEXT_PLAIN).entity("参数转换失败").build();
         } else if (e instanceof ConstraintViolationException) {/** 参数验证失败异常 */
             ConstraintViolationException exception = (ConstraintViolationException) e;
             StringBuilder sbHint = new StringBuilder("参数错误");
