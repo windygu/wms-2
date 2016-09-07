@@ -1,5 +1,6 @@
+package org.dddml.wms.restful.resource;
+
 import com.alibaba.fastjson.JSONObject;
-import org.dddml.wms.restful.resource.IndexResource;
 import org.junit.Assert;
 import org.junit.Test;
 
