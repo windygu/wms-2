@@ -1,7 +1,7 @@
 <?php
 namespace Dddml\Wms\HttpClient;
 
-class LocatorTreeQueryRequest extends AbstractQueryRequest
+class LocatorTreesQueryRequest extends AbstractQueryRequest
 {
     use LocatorFilteringFieldsTrait;
 

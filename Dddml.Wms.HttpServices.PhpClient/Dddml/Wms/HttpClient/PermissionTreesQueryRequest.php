@@ -1,7 +1,7 @@
 <?php
 namespace Dddml\Wms\HttpClient;
 
-class PermissionTreeQueryRequest extends AbstractQueryRequest
+class PermissionTreesQueryRequest extends AbstractQueryRequest
 {
     use PermissionFilteringFieldsTrait;
 

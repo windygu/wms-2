@@ -1,7 +1,7 @@
 <?php
 namespace Dddml\Wms\HttpClient;
 
-class OrganizationTreeQueryRequest extends AbstractQueryRequest
+class OrganizationTreesQueryRequest extends AbstractQueryRequest
 {
     use OrganizationFilteringFieldsTrait;
 
