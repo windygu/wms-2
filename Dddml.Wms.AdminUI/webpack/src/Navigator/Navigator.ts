@@ -86,4 +86,17 @@ export default class Navigator {
     protected buildMergePatchEntity($route) {
         this.reset();
     }
+
+    protected buildTree($route) {
+        this.reset();
+
+        this.addItem(
+            new NavigatorItem('Tree:' + $route.params.name, {
+                name: 'tree',
+                params: {
+                    name: $route.params.name
+                }
+            })
+        );
+    }
 }

@@ -3,6 +3,7 @@ import AggregateRootComponent from './components/AggregateRoot.component';
 import EntityComponent from './components/Entity.component';
 import CreateEntityComponent from './components/CreateEntity.component';
 import MergePatchEntityComponent from './components/MergePatchEntity.component';
+import EntityTree from './components/EntityTree.component';
 
 export default {
     '/': {
@@ -24,5 +25,9 @@ export default {
     '/mergePatch/:chainingName': {
         name: 'mergePatchEntity',
         component: MergePatchEntityComponent
+    },
+    '/tree/:name': {
+        name: 'tree',
+        component: EntityTree
     }
 };

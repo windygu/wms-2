@@ -2,8 +2,10 @@ export default class TreeNode {
     public title: string;
     public id: string;
     public level: number        = 0;
-    public folded: boolean      = false;//是否折叠
+    public folded: boolean      = true;//是否折叠
     public children: TreeNode[] = [];
+    public data: {};
+    public selected: boolean    = false;
 
     get icon() {
         if (this.folded) {

@@ -4,12 +4,23 @@ import TreeNode from './TreeNode.component'
 export default Vue.extend({
     template: require('./View/Tree.html'),
     data(){
-        return {}
+        return {
+            selectedNode: {},
+        }
     },
     props: {
-        //tableData: Object
+        nodes: Array,
+    },
+    computed: {
+        container(){
+            return this.$parent;
+        },
+        tree(){
+            return this;
+        }
     },
     components: {
         TreeNode
-    }
+    },
+    methods: {}
 });
