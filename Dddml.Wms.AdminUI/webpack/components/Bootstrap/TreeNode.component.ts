@@ -28,8 +28,8 @@ export default Vue.extend({
                 this.$http.get(this.$route.params.name + '?parentId=' + node.id).then((response) => {
                     node.setChildren(_.map(response.data, (entity: any)=> {
                         let node   = new TreeNode();
-                        node.title = entity.locatorId;
-                        node.id    = entity.locatorId;
+                        node.title = entity[this.container.entityMetadata.id.name];
+                        node.id    = entity[this.container.entityMetadata.id.name]
                         node.data  = entity;
 
                         return node;

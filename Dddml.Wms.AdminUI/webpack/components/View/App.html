@@ -78,9 +78,13 @@
                 <ul id="main-menu" class="sidebar-menu">
                     <li class="header">聚合</li>
                     <li v-for="entity in application.entitiesMetadata">
-                        <a v-link="{ name: 'entities', params: { name: entity.plural } }"
-                           v-on:click="changeEntity(entity)">
+                        <a v-link="{ name: 'entities', params: { name: entity.plural } }">
                             <i class="fa fa-th"></i> <span>{{entity.collectionLabel}}</span>
+                        </a>
+                    </li>
+                    <li v-for="tree in application.treesMetadata">
+                        <a v-link="{ name: 'tree', params: { name: tree.plural } }">
+                            <i class="fa fa-th"></i> <span>{{tree.collectionLabel}}</span>
                         </a>
                     </li>
                 </ul>

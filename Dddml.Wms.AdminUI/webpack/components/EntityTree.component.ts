@@ -62,8 +62,8 @@ export default Vue.extend({
             this.$http.get(this.$route.params.name).then((response) => {
                 this.nodes = _.map(response.data, (entity: any)=> {
                     let node   = new TreeNode();
-                    node.title = entity.locatorId;
-                    node.id    = entity.locatorId;
+                    node.title = entity[this.entityMetadata.id.name];
+                    node.id    = entity[this.entityMetadata.id.name];
                     node.data  = entity;
 
                     return node;
@@ -74,5 +74,10 @@ export default Vue.extend({
                 // error callback
             });
         }
+    },
+    ready(){
+        this.$watch('$route.params.name', function () {
+            this.selected = {};
+        })
     }
 });

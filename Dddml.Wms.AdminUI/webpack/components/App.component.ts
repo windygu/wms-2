@@ -15,9 +15,5 @@ export default Vue.extend({
     props: {
         userImg: String
     },
-    methods: {
-        changeEntity(entity){
-            this.currentEntity = entity
-        }
-    },
+    methods: {},
 });
