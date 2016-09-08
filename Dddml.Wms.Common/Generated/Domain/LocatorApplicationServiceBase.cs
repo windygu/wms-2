@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual ILocatorState Get(string locatorId)
         {
-            var state = StateRepository.Get(locatorId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(locatorId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(locatorId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract ILocatorAggregate GetLocatorAggregate(ILocatorState state);

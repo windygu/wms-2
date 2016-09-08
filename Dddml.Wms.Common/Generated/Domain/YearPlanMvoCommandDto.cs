@@ -66,11 +66,11 @@ namespace Dddml.Wms.Domain
         {
             get 
             {
-                return this.PersonLoves.ToPersonalName();
+                return (this.PersonLoves == null) ? null : this.PersonLoves.ToPersonalName();
             }
             set 
             {
-                this.PersonLoves = new PersonalNameDto(value);
+                this.PersonLoves = (value == null) ? null : new PersonalNameDto(value);
             }
         }
 
@@ -81,19 +81,19 @@ namespace Dddml.Wms.Domain
         {
             get 
             {
-                return this.PersonEmergencyContact.ToContact();
+                return (this.PersonEmergencyContact == null) ? null : this.PersonEmergencyContact.ToContact();
             }
             set 
             {
-                this.PersonEmergencyContact = new ContactDto(value);
+                this.PersonEmergencyContact = (value == null) ? null : new ContactDto(value);
             }
         }
 
 		public virtual string PersonCreatedBy { get; set; }
 
-		public virtual DateTime? PersonCreatedAt { get; set; }
-
 		public virtual string PersonUpdatedBy { get; set; }
+
+		public virtual DateTime? PersonCreatedAt { get; set; }
 
 		public virtual DateTime? PersonUpdatedAt { get; set; }
 
@@ -247,25 +247,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual bool? IsPropertyPersonCreatedAtRemoved { get; set; }
-
-        bool IMergePatchYearPlanMvo.IsPropertyPersonCreatedAtRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyPersonCreatedAtRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyPersonCreatedAtRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyPersonUpdatedByRemoved { get; set; }
 
         bool IMergePatchYearPlanMvo.IsPropertyPersonUpdatedByRemoved
@@ -282,6 +263,25 @@ namespace Dddml.Wms.Domain
             set
             {
                 this.IsPropertyPersonUpdatedByRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPersonCreatedAtRemoved { get; set; }
+
+        bool IMergePatchYearPlanMvo.IsPropertyPersonCreatedAtRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyPersonCreatedAtRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyPersonCreatedAtRemoved = value;
             }
         }
 

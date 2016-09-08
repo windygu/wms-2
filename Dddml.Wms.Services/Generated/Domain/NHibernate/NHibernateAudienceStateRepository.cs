@@ -34,8 +34,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public IAudienceState Get (string id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public IAudienceState Get (string id, bool nullAllowed)
+		{
 			IAudienceState state = CurrentSession.Get<AudienceState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new AudienceState ();
 				(state as AudienceState).ClientId = id;
 			}

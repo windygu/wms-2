@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual ITeamState Get(string teamName)
         {
-            var state = StateRepository.Get(teamName);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(teamName, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(teamName, 0);
+            }
             return e;
         }
+
 
 
 		public abstract ITeamAggregate GetTeamAggregate(ITeamState state);

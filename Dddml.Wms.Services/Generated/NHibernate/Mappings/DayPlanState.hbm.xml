@@ -19,9 +19,9 @@
 
 	<property name="CreatedBy" ></property>
 
-	<property name="CreatedAt" ></property>
-
 	<property name="UpdatedBy" ></property>
+
+	<property name="CreatedAt" ></property>
 
 	<property name="UpdatedAt" ></property>
 

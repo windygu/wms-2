@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
 	{
         ITeamState Get(string id);
 
+        ITeamState Get(string id, bool nullAllowed);
+
         IEnumerable<ITeamState> GetAll(int firstResult, int maxResults);
         
         void Save(ITeamState state);

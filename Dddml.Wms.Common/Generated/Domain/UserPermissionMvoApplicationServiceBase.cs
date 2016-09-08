@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserPermissionMvoState Get(UserPermissionId userPermissionId)
         {
-            var state = StateRepository.Get(userPermissionId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(userPermissionId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(userPermissionId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IUserPermissionMvoAggregate GetUserPermissionMvoAggregate(IUserPermissionMvoState state);

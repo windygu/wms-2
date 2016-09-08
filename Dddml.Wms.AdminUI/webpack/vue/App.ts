@@ -1,4 +1,4 @@
-import Navigator from '../src/Navigator/Navigator';
+﻿import Navigator from '../src/Navigator/Navigator';
 import * as Vue from 'vue';
 import Application from "../src/Application";
 import AggregatesMenu from "./components/AggregatesMenu.component";

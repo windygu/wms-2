@@ -191,11 +191,18 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteAttributeSetInstanceExtensionFieldGroup;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveAttributeSetInstanceExtensionField;
             if (properties == null || innerProperties == null) { return; }
-            var outerIdName = "Id";
-            var outerIdValue = properties.Id;
-            var innerGroupIdName = "GroupId";
-            var innerGroupIdValue = innerProperties.GroupId;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerGroupIdName, innerGroupIdValue, outerIdName, outerIdValue);
+            if (innerProperties.GroupId == default(string))
+            {
+                innerProperties.GroupId = properties.Id;
+            }
+            else
+            {
+                var outerIdName = "Id";
+                var outerIdValue = properties.Id;
+                var innerGroupIdName = "GroupId";
+                var innerGroupIdValue = innerProperties.GroupId;
+                ThrowOnInconsistentIds(innerProperties, innerGroupIdName, innerGroupIdValue, outerIdName, outerIdValue);
+            }
 
         }// END ThrowOnInconsistentCommands /////////////////////
 
@@ -286,13 +293,9 @@ namespace Dddml.Wms.Domain
 
         }// END Map(IRemove... ////////////////////////////
 
-        private void SetNullInnerIdOrThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
+        private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
-            if (innerIdValue == null)
-            {
-                ReflectUtils.SetPropertyValue(innerIdName, innerObject, outerIdValue);
-            }
-            else if (!Object.Equals(innerIdValue, outerIdValue))
+            if (!Object.Equals(innerIdValue, outerIdValue))
             {
                 if (innerIdValue is string && outerIdValue is string && ((string)innerIdValue).Normalize() == ((string)outerIdValue).Normalize())
                 {

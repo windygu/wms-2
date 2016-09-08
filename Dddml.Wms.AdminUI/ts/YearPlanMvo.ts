@@ -82,16 +82,6 @@ namespace Dddml.Wms.Domain {
 			this.personCreatedBy = personCreatedBy;
 		}
 
-		private personCreatedAt: string;
-
-		getPersonCreatedAt(): string {
-			return this.personCreatedAt;
-		}
-
-		setPersonCreatedAt(personCreatedAt: string) {
-			this.personCreatedAt = personCreatedAt;
-		}
-
 		private personUpdatedBy: string;
 
 		getPersonUpdatedBy(): string {
@@ -100,6 +90,16 @@ namespace Dddml.Wms.Domain {
 
 		setPersonUpdatedBy(personUpdatedBy: string) {
 			this.personUpdatedBy = personUpdatedBy;
+		}
+
+		private personCreatedAt: string;
+
+		getPersonCreatedAt(): string {
+			return this.personCreatedAt;
+		}
+
+		setPersonCreatedAt(personCreatedAt: string) {
+			this.personCreatedAt = personCreatedAt;
 		}
 
 		private personUpdatedAt: string;

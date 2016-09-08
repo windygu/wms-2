@@ -51,10 +51,10 @@ namespace Dddml.Wms.Domain
             cmd.Version = ((IMonthPlanMvoStateProperties)state).Version;
             cmd.Active = ((IMonthPlanMvoStateProperties)state).Active;
             cmd.YearPlanDescription = state.YearPlanDescription;
-            cmd.YearPlanVersion = state.YearPlanVersion;
             cmd.YearPlanCreatedBy = state.YearPlanCreatedBy;
-            cmd.YearPlanCreatedAt = state.YearPlanCreatedAt;
             cmd.YearPlanUpdatedBy = state.YearPlanUpdatedBy;
+            cmd.YearPlanVersion = state.YearPlanVersion;
+            cmd.YearPlanCreatedAt = state.YearPlanCreatedAt;
             cmd.YearPlanUpdatedAt = state.YearPlanUpdatedAt;
             cmd.YearPlanActive = state.YearPlanActive;
             cmd.YearPlanDeleted = state.YearPlanDeleted;
@@ -62,8 +62,8 @@ namespace Dddml.Wms.Domain
             cmd.PersonLoves = state.PersonLoves;
             cmd.PersonEmergencyContact = state.PersonEmergencyContact;
             cmd.PersonCreatedBy = state.PersonCreatedBy;
-            cmd.PersonCreatedAt = state.PersonCreatedAt;
             cmd.PersonUpdatedBy = state.PersonUpdatedBy;
+            cmd.PersonCreatedAt = state.PersonCreatedAt;
             cmd.PersonUpdatedAt = state.PersonUpdatedAt;
             cmd.PersonActive = state.PersonActive;
             cmd.PersonDeleted = state.PersonDeleted;
@@ -91,10 +91,10 @@ namespace Dddml.Wms.Domain
             cmd.Version = ((IMonthPlanMvoStateProperties)state).Version;
             cmd.Active = ((IMonthPlanMvoStateProperties)state).Active;
             cmd.YearPlanDescription = state.YearPlanDescription;
-            cmd.YearPlanVersion = state.YearPlanVersion;
             cmd.YearPlanCreatedBy = state.YearPlanCreatedBy;
-            cmd.YearPlanCreatedAt = state.YearPlanCreatedAt;
             cmd.YearPlanUpdatedBy = state.YearPlanUpdatedBy;
+            cmd.YearPlanVersion = state.YearPlanVersion;
+            cmd.YearPlanCreatedAt = state.YearPlanCreatedAt;
             cmd.YearPlanUpdatedAt = state.YearPlanUpdatedAt;
             cmd.YearPlanActive = state.YearPlanActive;
             cmd.YearPlanDeleted = state.YearPlanDeleted;
@@ -102,8 +102,8 @@ namespace Dddml.Wms.Domain
             cmd.PersonLoves = state.PersonLoves;
             cmd.PersonEmergencyContact = state.PersonEmergencyContact;
             cmd.PersonCreatedBy = state.PersonCreatedBy;
-            cmd.PersonCreatedAt = state.PersonCreatedAt;
             cmd.PersonUpdatedBy = state.PersonUpdatedBy;
+            cmd.PersonCreatedAt = state.PersonCreatedAt;
             cmd.PersonUpdatedAt = state.PersonUpdatedAt;
             cmd.PersonActive = state.PersonActive;
             cmd.PersonDeleted = state.PersonDeleted;

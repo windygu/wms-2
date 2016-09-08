@@ -63,7 +63,7 @@ export default Vue.extend({
                     metadata = MetadataHelper.getEntityByPlural(metadata, item.name);
 
                     if (entity) {
-                        for (let e of data[StringHelper.lcfirst(item.name)]) {
+                        for (let e of data[_.lowerFirst(item.name)]) {
                             if (e[metadata.id.name] == item.id) {
                                 data = e;
                                 break;

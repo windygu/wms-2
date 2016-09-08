@@ -16,7 +16,7 @@ namespace Dddml.Wms.Specialization
 
         public virtual bool IsBasicType { get; set; }
 
-        public virtual string DeclairingObjectName { get; set; }
+        public virtual string DeclaringObjectName { get; set; }
 
         public virtual string DisplayName { get; set; }
 

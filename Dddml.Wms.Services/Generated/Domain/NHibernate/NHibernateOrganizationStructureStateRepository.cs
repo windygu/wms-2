@@ -34,8 +34,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public IOrganizationStructureState Get (OrganizationStructureId id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public IOrganizationStructureState Get (OrganizationStructureId id, bool nullAllowed)
+		{
 			IOrganizationStructureState state = CurrentSession.Get<OrganizationStructureState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new OrganizationStructureState ();
 				(state as OrganizationStructureState).Id = id;
 			}

@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IPersonState Get(PersonalName personalName)
         {
-            var state = StateRepository.Get(personalName);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(personalName, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(personalName, 0);
+            }
             return e;
         }
+
 
         public virtual IYearPlanState GetYearPlan(PersonalName personalName, int year)
         {

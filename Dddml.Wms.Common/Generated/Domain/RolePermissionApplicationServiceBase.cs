@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IRolePermissionState Get(RolePermissionId id)
         {
-            var state = StateRepository.Get(id);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(id, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(id, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IRolePermissionAggregate GetRolePermissionAggregate(IRolePermissionState state);

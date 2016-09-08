@@ -35,8 +35,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction (ReadOnly = true)]
 		public IInOutLineMvoState Get (InOutLineId id)
 		{
+			return Get(id, false);
+		}
+
+		[Transaction (ReadOnly = true)]
+		public IInOutLineMvoState Get (InOutLineId id, bool nullAllowed)
+		{
 			IInOutLineMvoState state = CurrentSession.Get<InOutLineMvoState> (id);
-			if (state == null) {
+			if (!nullAllowed && state == null) {
 				state = new InOutLineMvoState ();
 				(state as InOutLineMvoState).InOutLineId = id;
 			}

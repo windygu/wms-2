@@ -261,6 +261,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesTableViewConfig.tt</DependentUpon>
     </Content>
+    <Content Include="webpack\metadata\GenerateTreesJSMetadata.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateTreesJSMetadata.txt</LastGenOutput>
+      <LastOutputs>
+.\aggregates.ts
+.\GenerateTreesJSMetadata.txt
+</LastOutputs>
+    </Content>
+    <Content Include="webpack\metadata\GenerateTreesJSMetadata.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateTreesJSMetadata.tt</DependentUpon>
+    </Content>
     <Content Include="webpack\metadata\GenerateValueObjectsJSMetadata.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateValueObjectsJSMetadata.txt</LastGenOutput>

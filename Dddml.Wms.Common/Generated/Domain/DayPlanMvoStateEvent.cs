@@ -24,13 +24,13 @@ namespace Dddml.Wms.Domain
 
 		public virtual string MonthPlanDescription { get; set; }
 
-		public virtual long? MonthPlanVersion { get; set; }
-
 		public virtual string MonthPlanCreatedBy { get; set; }
 
-		public virtual DateTime? MonthPlanCreatedAt { get; set; }
-
 		public virtual string MonthPlanUpdatedBy { get; set; }
+
+		public virtual long? MonthPlanVersion { get; set; }
+
+		public virtual DateTime? MonthPlanCreatedAt { get; set; }
 
 		public virtual DateTime? MonthPlanUpdatedAt { get; set; }
 
@@ -40,13 +40,13 @@ namespace Dddml.Wms.Domain
 
 		public virtual string YearPlanDescription { get; set; }
 
-		public virtual long? YearPlanVersion { get; set; }
-
 		public virtual string YearPlanCreatedBy { get; set; }
 
-		public virtual DateTime? YearPlanCreatedAt { get; set; }
-
 		public virtual string YearPlanUpdatedBy { get; set; }
+
+		public virtual long? YearPlanVersion { get; set; }
+
+		public virtual DateTime? YearPlanCreatedAt { get; set; }
 
 		public virtual DateTime? YearPlanUpdatedAt { get; set; }
 
@@ -62,9 +62,9 @@ namespace Dddml.Wms.Domain
 
 		public virtual string PersonCreatedBy { get; set; }
 
-		public virtual DateTime? PersonCreatedAt { get; set; }
-
 		public virtual string PersonUpdatedBy { get; set; }
+
+		public virtual DateTime? PersonCreatedAt { get; set; }
 
 		public virtual DateTime? PersonUpdatedAt { get; set; }
 
@@ -166,13 +166,13 @@ namespace Dddml.Wms.Domain
 
 		public virtual bool IsPropertyMonthPlanDescriptionRemoved { get; set; }
 
-		public virtual bool IsPropertyMonthPlanVersionRemoved { get; set; }
-
 		public virtual bool IsPropertyMonthPlanCreatedByRemoved { get; set; }
 
-		public virtual bool IsPropertyMonthPlanCreatedAtRemoved { get; set; }
-
 		public virtual bool IsPropertyMonthPlanUpdatedByRemoved { get; set; }
+
+		public virtual bool IsPropertyMonthPlanVersionRemoved { get; set; }
+
+		public virtual bool IsPropertyMonthPlanCreatedAtRemoved { get; set; }
 
 		public virtual bool IsPropertyMonthPlanUpdatedAtRemoved { get; set; }
 
@@ -182,13 +182,13 @@ namespace Dddml.Wms.Domain
 
 		public virtual bool IsPropertyYearPlanDescriptionRemoved { get; set; }
 
-		public virtual bool IsPropertyYearPlanVersionRemoved { get; set; }
-
 		public virtual bool IsPropertyYearPlanCreatedByRemoved { get; set; }
 
-		public virtual bool IsPropertyYearPlanCreatedAtRemoved { get; set; }
-
 		public virtual bool IsPropertyYearPlanUpdatedByRemoved { get; set; }
+
+		public virtual bool IsPropertyYearPlanVersionRemoved { get; set; }
+
+		public virtual bool IsPropertyYearPlanCreatedAtRemoved { get; set; }
 
 		public virtual bool IsPropertyYearPlanUpdatedAtRemoved { get; set; }
 
@@ -204,9 +204,9 @@ namespace Dddml.Wms.Domain
 
 		public virtual bool IsPropertyPersonCreatedByRemoved { get; set; }
 
-		public virtual bool IsPropertyPersonCreatedAtRemoved { get; set; }
-
 		public virtual bool IsPropertyPersonUpdatedByRemoved { get; set; }
+
+		public virtual bool IsPropertyPersonCreatedAtRemoved { get; set; }
 
 		public virtual bool IsPropertyPersonUpdatedAtRemoved { get; set; }
 

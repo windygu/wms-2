@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeUseMvoState Get(AttributeSetAttributeUseId attributeSetAttributeUseId)
         {
-            var state = StateRepository.Get(attributeSetAttributeUseId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(attributeSetAttributeUseId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(attributeSetAttributeUseId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IAttributeUseMvoAggregate GetAttributeUseMvoAggregate(IAttributeUseMvoState state);

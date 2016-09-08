@@ -77,10 +77,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IInOutState Get(string documentNumber)
         {
-            var state = StateRepository.Get(documentNumber);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(documentNumber, true);
             return state;
         }
 
@@ -125,8 +123,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(documentNumber, 0);
+            }
             return e;
         }
+
 
         public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, SkuId skuId)
         {

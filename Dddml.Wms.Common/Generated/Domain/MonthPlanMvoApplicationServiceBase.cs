@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IMonthPlanMvoState Get(MonthPlanId monthPlanId)
         {
-            var state = StateRepository.Get(monthPlanId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(monthPlanId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(monthPlanId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IMonthPlanMvoAggregate GetMonthPlanMvoAggregate(IMonthPlanMvoState state);

@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserState Get(string userId)
         {
-            var state = StateRepository.Get(userId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(userId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(userId, 0);
+            }
             return e;
         }
+
 
         public virtual IUserRoleState GetUserRole(string userId, string roleId)
         {

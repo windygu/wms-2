@@ -40,9 +40,7 @@ export default class Entity {
         let properties = this.metadata.properties;
 
         if (properties) {
-            for (let i = 0; i < properties.length; i++) {
-                fields.push(properties[i].name);
-            }
+            fields = _.map(properties, 'name');
         }
 
         return fields;

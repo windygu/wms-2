@@ -1,8 +1,9 @@
-import IndexPage from './vue/Index.page';
+﻿import IndexPage from './vue/Index.page';
 import AggregateRootPage from './vue/AggregateRoot.page';
 import EntityPage from './vue/Entity.page';
 import CreateEntityPage from './vue/CreateEntity.page';
 import MergePatchEntityPage from './vue/MergePatchEntity.page';
+import EntityTree from './components/EntityTree.component';
 
 export default {
     '/': {
@@ -24,5 +25,9 @@ export default {
     '/mergePatch/:chainingName': {
         name: 'mergePatchEntity',
         component: MergePatchEntityPage
-    }
+    },
+    '/tree/:name': {
+        name: 'tree',
+        component: EntityTree
 };
+

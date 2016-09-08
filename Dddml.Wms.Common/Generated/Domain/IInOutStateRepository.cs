@@ -16,6 +16,8 @@ namespace Dddml.Wms.Domain
 	{
         IInOutState Get(string id);
 
+        IInOutState Get(string id, bool nullAllowed);
+
         IEnumerable<IInOutState> GetAll(int firstResult, int maxResults);
         
         void Save(IInOutState state);

@@ -24,13 +24,13 @@
 
 	<property name="MonthPlanDescription" length="500"></property>
 
-	<property name="MonthPlanVersion" ></property>
-
 	<property name="MonthPlanCreatedBy" ></property>
 
-	<property name="MonthPlanCreatedAt" ></property>
-
 	<property name="MonthPlanUpdatedBy" ></property>
+
+	<property name="MonthPlanVersion" ></property>
+
+	<property name="MonthPlanCreatedAt" ></property>
 
 	<property name="MonthPlanUpdatedAt" ></property>
 
@@ -40,13 +40,13 @@
 
 	<property name="YearPlanDescription" length="500"></property>
 
-	<property name="YearPlanVersion" ></property>
-
 	<property name="YearPlanCreatedBy" ></property>
 
-	<property name="YearPlanCreatedAt" ></property>
-
 	<property name="YearPlanUpdatedBy" ></property>
+
+	<property name="YearPlanVersion" ></property>
+
+	<property name="YearPlanCreatedAt" ></property>
 
 	<property name="YearPlanUpdatedAt" ></property>
 
@@ -70,9 +70,9 @@
 
 	<property name="PersonCreatedBy" ></property>
 
-	<property name="PersonCreatedAt" ></property>
-
 	<property name="PersonUpdatedBy" ></property>
+
+	<property name="PersonCreatedAt" ></property>
 
 	<property name="PersonUpdatedAt" ></property>
 
@@ -102,13 +102,13 @@
 
         <property name="IsPropertyMonthPlanDescriptionRemoved" />
 
-        <property name="IsPropertyMonthPlanVersionRemoved" />
-
         <property name="IsPropertyMonthPlanCreatedByRemoved" />
 
-        <property name="IsPropertyMonthPlanCreatedAtRemoved" />
-
         <property name="IsPropertyMonthPlanUpdatedByRemoved" />
+
+        <property name="IsPropertyMonthPlanVersionRemoved" />
+
+        <property name="IsPropertyMonthPlanCreatedAtRemoved" />
 
         <property name="IsPropertyMonthPlanUpdatedAtRemoved" />
 
@@ -118,13 +118,13 @@
 
         <property name="IsPropertyYearPlanDescriptionRemoved" />
 
-        <property name="IsPropertyYearPlanVersionRemoved" />
-
         <property name="IsPropertyYearPlanCreatedByRemoved" />
 
-        <property name="IsPropertyYearPlanCreatedAtRemoved" />
-
         <property name="IsPropertyYearPlanUpdatedByRemoved" />
+
+        <property name="IsPropertyYearPlanVersionRemoved" />
+
+        <property name="IsPropertyYearPlanCreatedAtRemoved" />
 
         <property name="IsPropertyYearPlanUpdatedAtRemoved" />
 
@@ -140,9 +140,9 @@
 
         <property name="IsPropertyPersonCreatedByRemoved" />
 
-        <property name="IsPropertyPersonCreatedAtRemoved" />
-
         <property name="IsPropertyPersonUpdatedByRemoved" />
+
+        <property name="IsPropertyPersonCreatedAtRemoved" />
 
         <property name="IsPropertyPersonUpdatedAtRemoved" />
 

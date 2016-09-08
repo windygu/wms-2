@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IDayPlanMvoState Get(DayPlanId dayPlanId)
         {
-            var state = StateRepository.Get(dayPlanId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(dayPlanId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(dayPlanId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IDayPlanMvoAggregate GetDayPlanMvoAggregate(IDayPlanMvoState state);

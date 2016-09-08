@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IAudienceState Get(string clientId)
         {
-            var state = StateRepository.Get(clientId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(clientId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(clientId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IAudienceAggregate GetAudienceAggregate(IAudienceState state);

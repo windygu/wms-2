@@ -45,13 +45,13 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("Id"))
                 {
-					return new RolePermissionIdDto(_state.Id);
+					return (_state.Id == null) ? null : new RolePermissionIdDto(_state.Id);
                 }
                 return null;
             }
             set
             {
-                _state.Id = value.ToRolePermissionId();
+                _state.Id = (value == null) ? null : value.ToRolePermissionId();
             }
         }
 

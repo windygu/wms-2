@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserClaimMvoState Get(UserClaimId userClaimId)
         {
-            var state = StateRepository.Get(userClaimId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(userClaimId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(userClaimId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IUserClaimMvoAggregate GetUserClaimMvoAggregate(IUserClaimMvoState state);

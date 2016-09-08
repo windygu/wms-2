@@ -206,11 +206,18 @@ namespace Dddml.Wms.Domain
             var properties =  command as ICreateOrMergePatchOrDeleteAttribute;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveAttributeValue;
             if (properties == null || innerProperties == null) { return; }
-            var outerAttributeIdName = "AttributeId";
-            var outerAttributeIdValue = properties.AttributeId;
-            var innerAttributeIdName = "AttributeId";
-            var innerAttributeIdValue = innerProperties.AttributeId;
-            SetNullInnerIdOrThrowOnInconsistentIds(innerProperties, innerAttributeIdName, innerAttributeIdValue, outerAttributeIdName, outerAttributeIdValue);
+            if (innerProperties.AttributeId == default(string))
+            {
+                innerProperties.AttributeId = properties.AttributeId;
+            }
+            else
+            {
+                var outerAttributeIdName = "AttributeId";
+                var outerAttributeIdValue = properties.AttributeId;
+                var innerAttributeIdName = "AttributeId";
+                var innerAttributeIdValue = innerProperties.AttributeId;
+                ThrowOnInconsistentIds(innerProperties, innerAttributeIdName, innerAttributeIdValue, outerAttributeIdName, outerAttributeIdValue);
+            }
 
         }// END ThrowOnInconsistentCommands /////////////////////
 
@@ -295,13 +302,9 @@ namespace Dddml.Wms.Domain
 
         }// END Map(IRemove... ////////////////////////////
 
-        private void SetNullInnerIdOrThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
+        private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
-            if (innerIdValue == null)
-            {
-                ReflectUtils.SetPropertyValue(innerIdName, innerObject, outerIdValue);
-            }
-            else if (!Object.Equals(innerIdValue, outerIdValue))
+            if (!Object.Equals(innerIdValue, outerIdValue))
             {
                 if (innerIdValue is string && outerIdValue is string && ((string)innerIdValue).Normalize() == ((string)outerIdValue).Normalize())
                 {

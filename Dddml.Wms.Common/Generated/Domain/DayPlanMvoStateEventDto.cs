@@ -24,13 +24,13 @@ namespace Dddml.Wms.Domain
 
 		public virtual string MonthPlanDescription { get; set; }
 
-		public virtual long? MonthPlanVersion { get; set; }
-
 		public virtual string MonthPlanCreatedBy { get; set; }
 
-		public virtual DateTime? MonthPlanCreatedAt { get; set; }
-
 		public virtual string MonthPlanUpdatedBy { get; set; }
+
+		public virtual long? MonthPlanVersion { get; set; }
+
+		public virtual DateTime? MonthPlanCreatedAt { get; set; }
 
 		public virtual DateTime? MonthPlanUpdatedAt { get; set; }
 
@@ -40,13 +40,13 @@ namespace Dddml.Wms.Domain
 
 		public virtual string YearPlanDescription { get; set; }
 
-		public virtual long? YearPlanVersion { get; set; }
-
 		public virtual string YearPlanCreatedBy { get; set; }
 
-		public virtual DateTime? YearPlanCreatedAt { get; set; }
-
 		public virtual string YearPlanUpdatedBy { get; set; }
+
+		public virtual long? YearPlanVersion { get; set; }
+
+		public virtual DateTime? YearPlanCreatedAt { get; set; }
 
 		public virtual DateTime? YearPlanUpdatedAt { get; set; }
 
@@ -62,9 +62,9 @@ namespace Dddml.Wms.Domain
 
 		public virtual string PersonCreatedBy { get; set; }
 
-		public virtual DateTime? PersonCreatedAt { get; set; }
-
 		public virtual string PersonUpdatedBy { get; set; }
+
+		public virtual DateTime? PersonCreatedAt { get; set; }
 
 		public virtual DateTime? PersonUpdatedAt { get; set; }
 
@@ -174,25 +174,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual bool? IsPropertyMonthPlanVersionRemoved { get; set; }
-
-        bool IDayPlanMvoStateMergePatched.IsPropertyMonthPlanVersionRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyMonthPlanVersionRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyMonthPlanVersionRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyMonthPlanCreatedByRemoved { get; set; }
 
         bool IDayPlanMvoStateMergePatched.IsPropertyMonthPlanCreatedByRemoved
@@ -212,25 +193,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual bool? IsPropertyMonthPlanCreatedAtRemoved { get; set; }
-
-        bool IDayPlanMvoStateMergePatched.IsPropertyMonthPlanCreatedAtRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyMonthPlanCreatedAtRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyMonthPlanCreatedAtRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyMonthPlanUpdatedByRemoved { get; set; }
 
         bool IDayPlanMvoStateMergePatched.IsPropertyMonthPlanUpdatedByRemoved
@@ -247,6 +209,44 @@ namespace Dddml.Wms.Domain
             set 
             {
                 this.IsPropertyMonthPlanUpdatedByRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMonthPlanVersionRemoved { get; set; }
+
+        bool IDayPlanMvoStateMergePatched.IsPropertyMonthPlanVersionRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyMonthPlanVersionRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyMonthPlanVersionRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMonthPlanCreatedAtRemoved { get; set; }
+
+        bool IDayPlanMvoStateMergePatched.IsPropertyMonthPlanCreatedAtRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyMonthPlanCreatedAtRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyMonthPlanCreatedAtRemoved = value;
             }
         }
 
@@ -326,25 +326,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual bool? IsPropertyYearPlanVersionRemoved { get; set; }
-
-        bool IDayPlanMvoStateMergePatched.IsPropertyYearPlanVersionRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyYearPlanVersionRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyYearPlanVersionRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyYearPlanCreatedByRemoved { get; set; }
 
         bool IDayPlanMvoStateMergePatched.IsPropertyYearPlanCreatedByRemoved
@@ -364,25 +345,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual bool? IsPropertyYearPlanCreatedAtRemoved { get; set; }
-
-        bool IDayPlanMvoStateMergePatched.IsPropertyYearPlanCreatedAtRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyYearPlanCreatedAtRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyYearPlanCreatedAtRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyYearPlanUpdatedByRemoved { get; set; }
 
         bool IDayPlanMvoStateMergePatched.IsPropertyYearPlanUpdatedByRemoved
@@ -399,6 +361,44 @@ namespace Dddml.Wms.Domain
             set 
             {
                 this.IsPropertyYearPlanUpdatedByRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyYearPlanVersionRemoved { get; set; }
+
+        bool IDayPlanMvoStateMergePatched.IsPropertyYearPlanVersionRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyYearPlanVersionRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyYearPlanVersionRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyYearPlanCreatedAtRemoved { get; set; }
+
+        bool IDayPlanMvoStateMergePatched.IsPropertyYearPlanCreatedAtRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyYearPlanCreatedAtRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyYearPlanCreatedAtRemoved = value;
             }
         }
 
@@ -535,25 +535,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual bool? IsPropertyPersonCreatedAtRemoved { get; set; }
-
-        bool IDayPlanMvoStateMergePatched.IsPropertyPersonCreatedAtRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyPersonCreatedAtRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyPersonCreatedAtRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyPersonUpdatedByRemoved { get; set; }
 
         bool IDayPlanMvoStateMergePatched.IsPropertyPersonUpdatedByRemoved
@@ -570,6 +551,25 @@ namespace Dddml.Wms.Domain
             set 
             {
                 this.IsPropertyPersonUpdatedByRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPersonCreatedAtRemoved { get; set; }
+
+        bool IDayPlanMvoStateMergePatched.IsPropertyPersonCreatedAtRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyPersonCreatedAtRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyPersonCreatedAtRemoved = value;
             }
         }
 

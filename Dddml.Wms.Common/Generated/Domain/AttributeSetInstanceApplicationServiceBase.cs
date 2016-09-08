@@ -76,10 +76,8 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeSetInstanceState Get(string attributeSetInstanceId)
         {
-            var state = StateRepository.Get(attributeSetInstanceId);
 
-            if (state != null && state.IsUnsaved) { state = null; }
-
+            var state = StateRepository.Get(attributeSetInstanceId, true);
             return state;
         }
 
@@ -124,8 +122,13 @@ namespace Dddml.Wms.Domain
             {
                 e.ReadOnly = true;
             }
+            else if (version == -1)
+            {
+                return GetStateEvent(attributeSetInstanceId, 0);
+            }
             return e;
         }
+
 
 
 		public abstract IAttributeSetInstanceAggregate GetAttributeSetInstanceAggregate(IAttributeSetInstanceState state);
