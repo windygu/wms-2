@@ -13,17 +13,16 @@ import org.dddml.wms.specialization.ReflectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import java.util.*;
 
 /**
  * Created by Li Yongchun on 2016/9/7.
  */
-@Path("locatorTrees")
+@Path("/locatorTrees")
+@Produces(MediaType.APPLICATION_JSON)
 public class LocatorTreesResource {
     @Autowired
     LocatorTreeApplicationService locatorTreeApplicationService;

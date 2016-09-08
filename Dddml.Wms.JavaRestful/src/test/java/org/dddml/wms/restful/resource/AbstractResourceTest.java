@@ -1,3 +1,5 @@
+package org.dddml.wms.restful.resource;
+
 import org.apache.http.HttpResponse;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -46,7 +48,7 @@ public abstract class AbstractResourceTest {
                 sb.append(line);
             }
             String response = sb.toString();
-            System.out.println(response);
+            //System.out.println(response);
             return response;
         } catch (IOException ex) {
             return null;
