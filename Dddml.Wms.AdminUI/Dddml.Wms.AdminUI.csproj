@@ -265,8 +265,8 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateTreesJSMetadata.txt</LastGenOutput>
       <LastOutputs>
-.\aggregates.ts
 .\GenerateTreesJSMetadata.txt
+.\trees.ts
 </LastOutputs>
     </Content>
     <Content Include="webpack\metadata\GenerateTreesJSMetadata.txt">
@@ -720,6 +720,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="webpack\metadata\aggregates.ts">
       <DependentUpon>GenerateAggregatesJSMetadata.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="webpack\metadata\trees.ts">
+      <DependentUpon>GenerateTreesJSMetadata.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="webpack\metadata\valueObjects.ts">
       <DependentUpon>GenerateValueObjectsJSMetadata.tt</DependentUpon>
