@@ -3,13 +3,13 @@ import EntityCollection from "./EntityCollection";
 import EntityMetadata from "../Metadata/EntityMetadata";
 
 export default class Entity {
-    private data: EntityInterface;
+    private _data: EntityInterface;
     private metadata: EntityMetadata;
     private _hierarchies: EntityHierarchyInterface[];
 
     constructor(hierarchies: EntityHierarchyInterface[],
                 data: EntityInterface = {}) {
-        this.data         = data;
+        this._data         = data;
         this.metadata     = AggregatesMetadata
             .getAggregates()
             .getMetadataByHierarchies(hierarchies);
@@ -46,7 +46,7 @@ export default class Entity {
             数据：${JSON.stringify(this.data)}`);
     }
 
-    getData(){
-        return this.data;
+    get data(){
+        return this._data;
     }
 }

@@ -1,13 +1,13 @@
 import * as Vue from 'vue'
-import Tree from './Bootstrap/Tree.component'
+import Tree from './components/Tree.component'
 import treeMetadata from '../metadata/trees';
-import Navigator from './Bootstrap/Navigator.component';
+import Navigator from './components/Navigator.component';
 import TreeNode from "../src/Tree/TreeNode";
 import * as _ from 'lodash';
 import Entity from "../src/Entity";
 
 export default Vue.extend({
-    template: require('./View/EntityTree.html'),
+    template: require('./views/EntityTree.html'),
     data(){
         return {
             nodes: [],

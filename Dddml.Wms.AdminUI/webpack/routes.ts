@@ -3,7 +3,7 @@ import AggregateRootPage from './vue/AggregateRoot.page';
 import EntityPage from './vue/Entity.page';
 import CreateEntityPage from './vue/CreateEntity.page';
 import MergePatchEntityPage from './vue/MergePatchEntity.page';
-import EntityTree from './components/EntityTree.component';
+import EntityTree from './vue/EntityTree.component';
 
 export default {
     '/': {
@@ -29,5 +29,6 @@ export default {
     '/tree/:name': {
         name: 'tree',
         component: EntityTree
+    }
 };
 

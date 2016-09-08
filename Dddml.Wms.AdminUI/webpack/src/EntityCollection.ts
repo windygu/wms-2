@@ -16,16 +16,16 @@ export default class EntityCollection {
             this.data
         );
 
-        for (let row of table.rows) {
-            let chainingName = EntityChainHelper.createChainingName(row, this.metadata, $route);
-
-            row.detailRoute = {
-                name: 'entity',
-                params: {
-                    chainingName: chainingName
-                }
-            };
-        }
+        //for (let row of table.rows) {
+        //    let chainingName = EntityChainHelper.createChainingName(row, this.metadata, $route);
+        //
+        //    row.detailRoute = {
+        //        name: 'entity',
+        //        params: {
+        //            chainingName: chainingName
+        //        }
+        //    };
+        //}
 
         return table;
     }

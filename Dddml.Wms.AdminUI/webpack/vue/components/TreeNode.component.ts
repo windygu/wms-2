@@ -4,7 +4,7 @@ import TreeNode from '../../src/Tree/TreeNode'
 
 export default Vue.extend({
     name: 'tree-node',
-    template: require('./View/TreeNode.html'),
+    template: require('./views/TreeNode.html'),
     data(){
         return {}
     },

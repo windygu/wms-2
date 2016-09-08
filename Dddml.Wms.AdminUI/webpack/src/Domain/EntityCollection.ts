@@ -62,6 +62,7 @@ export default class EntityCollection {
 
     public all() {
         let entities = [];
+
         for (let entity of this.data) {
             let hierarchies = _.concat(this.hierarchies, [{
                 name: this.metadata.name,
@@ -70,5 +71,7 @@ export default class EntityCollection {
 
             entities.push(new Entity(hierarchies, entity));
         }
+
+        return entities;
     }
 }

@@ -21,9 +21,9 @@ export default class TableListModel {
         let rows: TableRowModel[] = [];
 
         for (let entity of entities.all()) {
-            rows.push(FieldsModel.createFromEntity(entity));
+            rows.push(TableRowModel.createFromEntity(entity));
         }
 
-        let table = TableListModel(entities.name, fields);
+        return new TableListModel(entities.name, rows);
     }
 }
