@@ -1,13 +1,19 @@
-import TableFieldModel from "./TableFieldMode";
+import TableFieldModel from "./AbstractTableFieldModel";
 import Entity from "../../Domain/Entity";
-import * as _ from 'lodash';
 
 export default class TableRowModel {
-    private fields: TableFieldModel[];
-    public operations: LinkButtonModelInterface[];
+    private _fields: TableFieldModel[];
+
+    get fields(): TableFieldModel[] {
+        return this._fields;
+    }
+
+    set fields(value: Array) {
+        this._fields = value;
+    }
 
     add(field: TableFieldModel) {
-        this.fields.push(field);
+        this._fields.push(field);
     }
 
     static createFromEntity(entity: Entity): TableRowModel {

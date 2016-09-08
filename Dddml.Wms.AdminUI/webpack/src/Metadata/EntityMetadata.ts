@@ -1,4 +1,5 @@
 import EntityCollectionMetadata from "./EntityCollectionMetadata";
+
 export default class EntityMetadata {
     private rawMetadata: EntityMetadataInterface;
 

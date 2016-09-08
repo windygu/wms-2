@@ -1,5 +1,4 @@
 import tableConfig from '../../../config/view/tables';
-import FieldsModel from "./TableFieldsModel";
 import EntityCollection from "../../Domain/EntityCollection";
 import TableRowModel from "./TableRowModel";
 
