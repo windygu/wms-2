@@ -6,7 +6,6 @@ import Entity from "../src/Entity";
 import EntityChainHelper from "../src/Helper/EntityChainHelper";
 import MetadataHelper from "../src/Helper/MetadataHelper";
 import MergePatchEntity from "../src/MergePatchEntity";
-import StringHelper from "../src/Helper/StringHelper";
 
 export default Vue.extend({
     template: require('./views/MergePatchEntity.html'),
@@ -87,13 +86,13 @@ export default Vue.extend({
 
                 this.postEntity = entity.getRoot().data;
 
-                entity.data[StringHelper.lcfirst(this.metadata.plural)] = [{
+                entity.data[_.lowerFirst(this.metadata.plural)] = [{
                     'commandType': 'Create',
                 }];
 
                 this.form = FormFactory.createEntityForm(
                     this.metadata,
-                    entity.data[StringHelper.lcfirst(this.metadata.plural)][0]
+                    entity.data[_.lowerFirst(this.metadata.plural)][0]
                 );
 
                 this.$root.navigator.buildMergePatchEntity(this.$route);

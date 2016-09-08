@@ -1,4 +1,3 @@
-import StringHelper from "./Helper/StringHelper";
 export default class MergePatchEntity {
     public parent;
     public data = {
@@ -8,7 +7,7 @@ export default class MergePatchEntity {
 
     constructor(name: string, parent: MergePatchEntity = null) {
         this.parent = parent;
-        this.name   = StringHelper.lcfirst(name);
+        this.name   = _.lowerFirst(name);
     }
 
     setProperty(property, value: any) {

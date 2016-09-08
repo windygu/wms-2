@@ -1,4 +1,3 @@
-import StringHelper from './Helper/StringHelper';
 import EntityCollection from '../src/EntityCollection';
 import PropertyType from "./Metadata/PropertyType";
 import MetadataHelper from "./Helper/MetadataHelper";
@@ -72,7 +71,7 @@ export default class Entity {
 
         for (let name of names) {
             children[name] = new EntityCollection(
-                this.data[StringHelper.lcfirst(name)],
+                this.data[_.lowerFirst(name)],
                 this.getChildEntityMetadata(name)
             );
         }
