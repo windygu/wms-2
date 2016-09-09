@@ -22,10 +22,10 @@ namespace Dddml.Wms.Domain
             string hash = AttributeSetInstancePropertyUtils.GetHash(command);
             command.Hash = hash;
 
-            var old = AttributeSetInstanceStateRepository.GetFirst(new KeyValuePair<string, object>("Hash", hash));
+            IAttributeSetInstanceState old = AttributeSetInstanceStateRepository.GetFirst(new KeyValuePair<string, object>("Hash", hash));
             if (old != null)
             {
-                if (AttributeSetInstancePropertyUtils.Equals(command, old))
+                if (AttributeSetInstancePropertyUtils.Equals((ICreateAttributeSetInstance)command, (IAttributeSetInstanceState)old))
                 {
                     reused = true;
                     return old.AttributeSetInstanceId;

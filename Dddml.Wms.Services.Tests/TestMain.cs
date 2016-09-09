@@ -18,7 +18,7 @@ namespace Dddml.Wms.Services.Tests
 
         static void Main(string[] args)
         {
-
+            //System.Console.WriteLine( AttributeSetInstancePropertyUtils.GetMD5HashString(MD5.Create(), "Do you love me?"));
             Console.ReadKey();
             
         }

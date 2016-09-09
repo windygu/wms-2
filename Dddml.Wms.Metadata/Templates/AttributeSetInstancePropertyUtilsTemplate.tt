@@ -87,7 +87,7 @@ namespace Dddml.Wms.Support
 		}
 #>
 
-        public static bool Equals(IAttributeSetInstanceStateProperties state1, IAttributeSetInstanceStateProperties state2)
+        public static bool Equals(ICreateAttributeSetInstance state1, IAttributeSetInstanceStateProperties state2)
         {
             if (!Object.Equals(state1.AttributeSetId, state2.AttributeSetId)
                 || !Object.Equals(state1.OrganizationId, state2.OrganizationId)

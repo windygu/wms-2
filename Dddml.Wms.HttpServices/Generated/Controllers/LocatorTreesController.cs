@@ -21,8 +21,7 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/LocatorTrees")]
-    [Authorize]
+    [RoutePrefix("api/LocatorTrees")][Authorize]
     public partial class LocatorTreesController : ApiController
     {
 
@@ -32,111 +31,107 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         [HttpGet]
         public IEnumerable<LocatorStateDto> Get(string parentId = null, string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
-            try
+          try {
+            var parentIdObj = parentId == null ? null : parentId;
+            IEnumerable<ILocatorState> states = null; 
+            if (!String.IsNullOrWhiteSpace(filter))
             {
-                var parentIdObj = parentId == null ? null : parentId;
-                IEnumerable<ILocatorState> states = null;
-                if (!String.IsNullOrWhiteSpace(filter))
+                if (parentIdObj == null)
                 {
-                    if (parentIdObj == null)
+                    if (IsOnlyIdReturned(fields))
                     {
-                        if (IsOnlyIdReturned(fields))
-                        {
-                            var ids = _locatorTreeApplicationService.GetRootIds(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver())
-                                , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                            states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
-                        }
-                        else
-                        {
-                            states = _locatorTreeApplicationService.GetRoots(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver())
-                                , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        }
+                        var ids = _locatorTreeApplicationService.GetRootIds(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                            , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                        states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
                     }
                     else
                     {
-                        if (IsOnlyIdReturned(fields))
-                        {
-                            var ids = _locatorTreeApplicationService.GetChildIds(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver())
-                                , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                            states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
-                        }
-                        else
-                        {
-                            states = _locatorTreeApplicationService.GetChildren(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver())
-                                , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        }
+                        states = _locatorTreeApplicationService.GetRoots(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                            , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                     }
                 }
                 else
                 {
-                    if (parentIdObj == null)
+                    if (IsOnlyIdReturned(fields))
                     {
-                        if (IsOnlyIdReturned(fields))
-                        {
-                            var ids = _locatorTreeApplicationService.GetRootIds(LocatorsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
-                                , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                            states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
-                        }
-                        else
-                        {
-                            states = _locatorTreeApplicationService.GetRoots(LocatorsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
-                                , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        }
+                        var ids = _locatorTreeApplicationService.GetChildIds(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                            , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                        states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
                     }
                     else
                     {
-                        if (IsOnlyIdReturned(fields))
-                        {
-                            var ids = _locatorTreeApplicationService.GetChildIds(parentIdObj, LocatorsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
-                                , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                            states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
-                        }
-                        else
-                        {
-                            states = _locatorTreeApplicationService.GetChildren(parentIdObj, LocatorsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
-                                , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        }
+                        states = _locatorTreeApplicationService.GetChildren(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                            , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                     }
                 }
-                var stateDtos = new List<LocatorStateDto>();
-                foreach (var s in states)
-                {
-                    var dto = s is LocatorStateDto ? (LocatorStateDto)s : new LocatorStateDto((LocatorState)s);
-                    if (String.IsNullOrWhiteSpace(fields))
-                    {
-                        dto.AllFieldsReturned = true;
-                    }
-                    else
-                    {
-                        dto.ReturnedFieldsString = fields;
-                    }
-                    stateDtos.Add(dto);
-                }
-                return stateDtos;
             }
-            catch (Exception ex) { var response = LocatorsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            else 
+            {
+                if (parentIdObj == null)
+                {
+                    if (IsOnlyIdReturned(fields))
+                    {
+                        var ids = _locatorTreeApplicationService.GetRootIds(LocatorsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                            , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                        states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
+                    }
+                    else
+                    {
+                        states = _locatorTreeApplicationService.GetRoots(LocatorsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                            , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                    }
+                }
+                else
+                {
+                    if (IsOnlyIdReturned(fields))
+                    {
+                        var ids = _locatorTreeApplicationService.GetChildIds(parentIdObj, LocatorsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                            , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                        states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
+                    }
+                    else
+                    {
+                        states = _locatorTreeApplicationService.GetChildren(parentIdObj, LocatorsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                            , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                    }
+                }
+            }
+            var stateDtos = new List<LocatorStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is LocatorStateDto ? (LocatorStateDto)s : new LocatorStateDto((LocatorState)s);
+                if (String.IsNullOrWhiteSpace(fields))
+                {
+                    dto.AllFieldsReturned = true;
+                }
+                else
+                {
+                    dto.ReturnedFieldsString = fields;
+                }
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = LocatorsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("_metadata/filteringFields")]
         [HttpGet]
         public IEnumerable<PropertyMetadata> GetMetadataFilteringFields()
         {
-            try
+          try {
+            var filtering = new List<PropertyMetadata>();
+            foreach (var p in LocatorMetadata.Instance.Properties)
             {
-                var filtering = new List<PropertyMetadata>();
-                foreach (var p in LocatorMetadata.Instance.Properties)
+                if (p.IsFilteringProperty)
                 {
-                    if (p.IsFilteringProperty)
-                    {
-                        filtering.Add(p);
-                    }
+                    filtering.Add(p);
                 }
-                return filtering;
             }
-            catch (Exception ex) { var response = LocatorsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            return filtering;
+          } catch (Exception ex) { var response = LocatorsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        // /////////////////////////////////////////////////
+		// /////////////////////////////////////////////////
 
         protected bool IsOnlyIdReturned(string fields)
         {
