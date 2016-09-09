@@ -11,11 +11,12 @@
   "author": "",
   "license": "",
   "devDependencies": {
+    "jasmine-core": "2.5.1",
     "ts-loader": "^0.8.2",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1",
+    "vue-resource": "^0.9.3",
     "vue-router": "^0.7.13",
-    "vue-resource": "^0.9.3"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "html-loader": "^0.4.3",

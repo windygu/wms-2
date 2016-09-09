@@ -2,9 +2,6 @@ import * as Vue from 'vue'
 import * as VueRouter from 'vue-router'
 import defaultFilter from './Filter/defaultFilter';
 import routes from '../routes';
-import entitiesMetadata from './../metadata/aggregates';
-import valueObjectsMetadata from './../metadata/valueObjects';
-import treesMetadata from '../metadata/trees';
 import config from './../config/application'
 import * as VueResource from 'vue-resource'
 import FormFactory from "./Form/FormFactory";
@@ -14,19 +11,10 @@ export default class Application {
 
     routesConfig;
     config;
-    entitiesMetadata: Array<EntityMetadataInterface>;
-    valueObjectsMetadata: Array<ValueObjectMetadataInterface>;
-    treesMetadata;
 
-    constructor(entitiesMetadata: Array<EntityMetadataInterface>,
-                valueObjectsMetadata: Array<ValueObjectMetadataInterface>,
-                treesMetadata,
+    constructor(
                 config,
                 routesConfig) {
-        this.entitiesMetadata     = entitiesMetadata;
-        this.valueObjectsMetadata = valueObjectsMetadata;
-        this.treesMetadata        = treesMetadata;
-
         this.routesConfig = routesConfig;
         this.config       = config;
 
@@ -60,9 +48,6 @@ export default class Application {
     static getInstance(): Application {
         if (!Application.instance) {
             Application.instance = new Application(
-                entitiesMetadata,
-                valueObjectsMetadata,
-                treesMetadata,
                 config,
                 routes
             )

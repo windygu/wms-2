@@ -1,21 +1,19 @@
 import tableConfig from '../../../config/view/tables';
-import EntityCollection from "../../Domain/EntityCollection";
 import TableRowModel from "./TableRowModel";
+import EntityCollection from "../../Dddml/Domain/EntityCollection";
 
-export default class TableListModel {
+export default class TableModel {
     public name;
     public rows: TableRowModel[];
-    public operations: LinkButtonModelInterface[];
     public columns: string[];
 
     constructor(name: string, rows: TableRowModel[] = []) {
         this.name       = name;
         this.rows       = rows;
-        this.operations = [];
         this.columns    = Object.keys(tableConfig[this.name].displayableFields);
     }
 
-    static createFromEntityCollection(entities: EntityCollection): TableListModel {
+    static createFromEntityCollection(entities: EntityCollection): TableModel {
         //todo
         let rows: TableRowModel[] = [];
 
@@ -23,6 +21,6 @@ export default class TableListModel {
             rows.push(TableRowModel.createFromEntity(entity));
         }
 
-        return new TableListModel(entities.name, rows);
+        return new TableModel(entities.name, rows);
     }
 }

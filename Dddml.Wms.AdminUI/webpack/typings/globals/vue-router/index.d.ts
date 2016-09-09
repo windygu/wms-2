@@ -77,8 +77,7 @@ declare namespace vuejs {
     }
 }
 
-//declare var VueRouter: vuejs.RouterStatic;
-declare var VueRouter: any;
+declare var VueRouter: vuejs.RouterStatic;
 
 declare module "vue-router" {
     export = VueRouter;

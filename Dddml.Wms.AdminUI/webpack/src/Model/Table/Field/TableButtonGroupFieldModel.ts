@@ -1,6 +1,11 @@
-import AbstractTableFieldModel from "../AbstractTableFieldModel";
+export default class TableButtonGroupFieldModel implements TableFieldModelInterface {
+    private _buttons: ButtonModelInterface[];
 
-export default class TableButtonGroupFieldModel extends AbstractTableFieldModel {
-    get html() {
+    get buttons(): ButtonModelInterface[] {
+        return this._buttons;
+    }
+
+    addButton(button: ButtonModelInterface) {
+        this._buttons.push(button);
     }
 }

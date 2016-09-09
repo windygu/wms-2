@@ -1,26 +1,22 @@
-import TableFieldModel from "./AbstractTableFieldModel";
 import Entity from "../../Domain/Entity";
+import TableFieldModelFactory from "./Field/TableFieldModelFactory";
 
 export default class TableRowModel {
-    private _fields: TableFieldModel[];
+    private _fields: TableFieldModelInterface[];
 
-    get fields(): TableFieldModel[] {
+    get fields(): TableFieldModelInterface[] {
         return this._fields;
     }
 
-    set fields(value: Array) {
-        this._fields = value;
-    }
-
-    add(field: TableFieldModel) {
+    add(field: TableFieldModelInterface) {
         this._fields.push(field);
     }
 
-    static createFromEntity(entity: Entity): TableRowModel {
+    static createFromEntity(entity: Entity, displayedFields: string[]): TableRowModel {
         let row = new TableRowModel();
 
-        for (let name in entity.data) {
-            row.add(new TableFieldModel(entity.data[name]));
+        for (let name of displayedFields) {
+            row.add(TableFieldModelFactory.createFromEntity(entity, name));
         }
 
         return row;
