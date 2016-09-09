@@ -46,10 +46,10 @@ namespace Dddml.Wms.Support
 
 <#+
 		var getHashParameterTypeNames = new string[] {"ICreateAttributeSetInstance", "IAttributeSetInstanceStateCreated", "IAttributeSetInstanceStateProperties" };
-		foreach (var name in getHashParameterTypeNames)
+		foreach (var pTypeName in getHashParameterTypeNames)
 		{
 #>
-        public static string GetHash(<#= name #> state)
+        public static string GetHash(<#= pTypeName #> state)
         {
             StringBuilder sb = new StringBuilder();
 

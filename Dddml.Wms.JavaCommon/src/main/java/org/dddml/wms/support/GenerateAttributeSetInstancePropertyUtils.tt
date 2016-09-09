@@ -1,0 +1,13 @@
+﻿<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.Metadata\Templates\JavaAttributeSetInstancePropertyUtilsTemplate.tt" #><#
+// <copyright file="GenerateAttributeSetInstancePropertyUtils.tt" company="dddml.org">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+	
+	var attributeSetInstancePropertyUtilsTemplate = new JavaAttributeSetInstancePropertyUtilsTemplate();
+	attributeSetInstancePropertyUtilsTemplate.Output.Encoding = new System.Text.UTF8Encoding(false);
+	attributeSetInstancePropertyUtilsTemplate.RenderToFile("AttributeSetInstancePropertyUtils.java");
+
+#>

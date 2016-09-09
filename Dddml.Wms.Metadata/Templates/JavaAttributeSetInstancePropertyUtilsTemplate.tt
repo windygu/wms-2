@@ -1,0 +1,129 @@
+﻿<#@ template language="C#" debug="True" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" #>
+<#+
+// <copyright file="JavaAttributeSetInstanceExtensionFieldUtilsTemplate.tt" company="dddml.org">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class JavaAttributeSetInstancePropertyUtilsTemplate : CSharpTemplate
+{
+	public override string TransformText()
+	{
+		base.TransformText();
+
+		var extensionFields = AttributeSetInstanceExtensionFieldMetadataUtils.GetAllExtensionFields();
+
+#>
+package org.dddml.wms.support;
+
+import org.dddml.wms.domain.*;
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+
+public class AttributeSetInstancePropertyUtils {
+    private AttributeSetInstancePropertyUtils() {
+    }
+
+    private static String getSafeStringValue(String str) {
+        if (str == null) {
+            return "[null]";
+        }
+        return str;
+    }
+
+
+    private static String getMD5HashString(MessageDigest md5Hash, String input) {
+        try {
+            byte[] data = md5Hash.digest(input.getBytes("UTF-8"));
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < data.length; i++) {
+                String hex = Integer.toHexString(data[i] & 0xFF);
+                if (hex.length() == 1) {
+                    hex = '0' + hex;
+                }
+                sBuilder.append(hex.toLowerCase());
+            }
+            return sBuilder.toString();
+        } catch (UnsupportedEncodingException ex) {
+            return null;
+        }
+    }
+
+<#+
+		var getHashParameterTypeNames = new string[] {"AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated", "AttributeSetInstanceCommand.CreateAttributeSetInstance", "AttributeSetInstanceState"};
+		foreach (var pTypeName in getHashParameterTypeNames)
+		{
+#>
+
+
+    public static String getHash(<#= pTypeName #> instance) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("AttributeSetId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
+        sb.append("OrganizationId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
+        sb.append("ReferenceId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
+        sb.append("SerialNumber").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
+        sb.append("Lot").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
+        sb.append("Description").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
+        sb.append("Active").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
+<#+ 
+			foreach (var fMeta in extensionFields)
+			{
+				if (fMeta.Type.Equals("string", StringComparison.InvariantCultureIgnoreCase))
+				{ 
+#>
+        sb.append("<#= fMeta.Name #>").append("=").append(getSafeStringValue(instance.get<#= fMeta.Name #>())).append("|");
+<#+
+				} else {
+#>
+        sb.append("<#= fMeta.Name #>").append("=").append(instance.get<#= fMeta.Name #>()).append("|");
+<#+ 
+				}
+			}
+#>
+
+        try {
+            String hash = getMD5HashString(MessageDigest.getInstance("MD5"), sb.toString());
+            return hash;
+        } catch (NoSuchAlgorithmException ex) {
+            return null;
+        }
+    }
+
+<#+
+		}
+#>
+
+    public static boolean equals(AttributeSetInstanceCommand.CreateAttributeSetInstance instance1,
+                                 AttributeSetInstanceState instance2) {
+        if (!instance1.getAttributeSetId().equals(instance2.getAttributeSetId())
+                //|| !Object.Equals(state1.OrganizationId, state2.OrganizationId)
+                //|| !Object.Equals(state1.ReferenceId, state2.ReferenceId)
+                //|| !Object.Equals(state1.SerialNumber, state2.SerialNumber)
+                //|| !Object.Equals(state1.Lot, state2.Lot)
+                //|| !Object.Equals(state1.Description, state2.Description)
+                //|| !Object.Equals(state1.Active, state2.Active)
+<#+ 
+		foreach (var fMeta in extensionFields)
+		{
+#>
+                //|| !Object.Equals(state1.<#= fMeta.Name #>, state2.<#= fMeta.Name #>)
+<#+ 
+		}
+#>
+            )
+        { return false; }
+        return true;
+    }
+
+}
+
+
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>
