@@ -3996,6 +3996,22 @@
     <Content Include="src\main\java\org\dddml\wms\specialization\EventStream.java" />
     <Content Include="src\main\java\org\dddml\wms\specialization\Saveable.java" />
     <Content Include="src\main\java\org\dddml\wms\specialization\StateEventType.java" />
+    <Content Include="src\main\java\org\dddml\wms\support\AttributeSetInstancePropertyUtils.java">
+      <DependentUpon>GenerateAttributeSetInstancePropertyUtils.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\support\GenerateAttributeSetInstancePropertyUtils.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstancePropertyUtils.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeSetInstancePropertyUtils.java
+.\GenerateAttributeSetInstancePropertyUtils.txt
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\support\GenerateAttributeSetInstancePropertyUtils.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetInstancePropertyUtils.tt</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

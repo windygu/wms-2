@@ -99,24 +99,34 @@ public class AttributeSetInstancePropertyUtils {
 
     public static boolean equals(AttributeSetInstanceCommand.CreateAttributeSetInstance instance1,
                                  AttributeSetInstanceState instance2) {
-        if (!instance1.getAttributeSetId().equals(instance2.getAttributeSetId())
-                //|| !Object.Equals(state1.OrganizationId, state2.OrganizationId)
-                //|| !Object.Equals(state1.ReferenceId, state2.ReferenceId)
-                //|| !Object.Equals(state1.SerialNumber, state2.SerialNumber)
-                //|| !Object.Equals(state1.Lot, state2.Lot)
-                //|| !Object.Equals(state1.Description, state2.Description)
-                //|| !Object.Equals(state1.Active, state2.Active)
+        if (!propertyEquals(instance1.getAttributeSetId(), instance2.getAttributeSetId())
+                || !propertyEquals(instance1.getOrganizationId(), instance2.getOrganizationId())
+                || !propertyEquals(instance1.getReferenceId(), instance2.getReferenceId())
+                || !propertyEquals(instance1.getSerialNumber(), instance2.getSerialNumber())
+                || !propertyEquals(instance1.getLot(), instance2.getLot())
+                || !propertyEquals(instance1.getDescription(), instance2.getDescription())
+                || !propertyEquals(instance1.getActive(), instance2.getActive())
 <#+ 
 		foreach (var fMeta in extensionFields)
 		{
 #>
-                //|| !Object.Equals(state1.<#= fMeta.Name #>, state2.<#= fMeta.Name #>)
+                || !propertyEquals(instance1.get<#= fMeta.Name #>(), instance2.get<#= fMeta.Name #>())
 <#+ 
 		}
 #>
             )
         { return false; }
         return true;
+    }
+
+    private static boolean propertyEquals(Object p1, Object p2) {
+        if (p1 == p2) {
+            return true;
+        }
+        if (p1 == null) {
+            return false;
+        }
+        return p1.equals(p2);
     }
 
 }
