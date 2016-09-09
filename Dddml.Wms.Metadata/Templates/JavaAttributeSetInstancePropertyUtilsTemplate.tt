@@ -115,7 +115,9 @@ public class AttributeSetInstancePropertyUtils {
 		}
 #>
             )
-        { return false; }
+        {
+            return false; 
+        }
         return true;
     }
 
