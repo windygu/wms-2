@@ -1469,6 +1469,7 @@ public class AttributeSetInstancePropertyUtils {
 
     public static boolean equals(AttributeSetInstanceCommand.CreateAttributeSetInstance instance1,
                                  AttributeSetInstanceState instance2) {
+
         if (!instance1.getAttributeSetId().equals(instance2.getAttributeSetId())
                 //|| !Object.Equals(state1.OrganizationId, state2.OrganizationId)
                 //|| !Object.Equals(state1.ReferenceId, state2.ReferenceId)

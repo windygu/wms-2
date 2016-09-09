@@ -13,6 +13,7 @@
                 <bean class="org.dddml.wms.restful.resource.InOutResource"/>
                 <bean class="org.dddml.wms.restful.resource.PersonResource"/>
                 <bean class="org.dddml.wms.restful.resource.LocatorTreesResource"/>
+                <bean class="org.dddml.wms.restful.resource.AttributeSetInstanceResource"/>
             </list>
         </property>
         <property name="providers">

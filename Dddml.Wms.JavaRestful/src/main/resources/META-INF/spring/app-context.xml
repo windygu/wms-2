@@ -22,6 +22,9 @@
     <import resource="classpath:config/DomainConfig.xml"/>
     <import resource="classpath:config/TreesConfig.xml"/>
     <import resource="classpath:config/TreesHibernateConfig.xml"/>
+    <import resource="classpath:config/IdGeneratorsConfig.xml"/>
+    <import resource="classpath:config/NHibernateServicesConfig.xml"/>
     <import resource="restful-context.xml"/>
+    <import resource="AttributeSetInstanceDtoJObjectMapperConfig.xml"/>
 
 </beans>
