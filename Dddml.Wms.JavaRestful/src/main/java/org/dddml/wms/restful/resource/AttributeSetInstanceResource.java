@@ -1,11 +1,13 @@
 package org.dddml.wms.restful.resource;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import org.dddml.support.criterion.DefaultTypeConverter;
-import org.dddml.support.criterion.PropertyTypeResolver;
-import org.dddml.support.criterion.StringHelper;
+import org.dddml.support.criterion.*;
 import org.dddml.support.criterion.TypeConverter;
-import org.dddml.wms.domain.*;
+import org.dddml.wms.domain.AttributeSetInstanceApplicationService;
+import org.dddml.wms.domain.AttributeSetInstanceCommand;
+import org.dddml.wms.domain.AttributeSetInstanceState;
+import org.dddml.wms.domain.AttributeSetInstanceStateDto;
 import org.dddml.wms.domain.meta.AttributeSetInstanceFilteringProperties;
 import org.dddml.wms.domain.meta.PersonFilteringProperties;
 import org.dddml.wms.ext.AttributeSetInstanceIdGenerator;
@@ -13,6 +15,7 @@ import org.dddml.wms.restful.exception.WebApiApplicationException;
 import org.dddml.wms.specialization.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -38,6 +41,62 @@ public class AttributeSetInstanceResource {
             AttributeSetInstanceStateDto,
             AttributeSetInstanceCommand.CreateAttributeSetInstance,
             AttributeSetInstanceCommand.MergePatchAttributeSetInstance> dynamicObjectMapper;
+
+    /**
+     * 根据指定条件查询 AttributeSetInstance
+     *
+     * @param request     请求
+     * @param sort        排序
+     * @param fields      返回属性字段
+     * @param firstResult 起始行
+     * @param maxResults  最大结果数量
+     * @param filter      过滤条件
+     * @return 结果
+     */
+    @GET
+    public JSONArray GetAll(@Context HttpServletRequest request,
+                            @QueryParam("sort") String sort,
+                            @QueryParam("fields") String fields,
+                            @DefaultValue("0") @QueryParam("firstResult") Integer firstResult,
+                            @QueryParam("maxResults") Integer maxResults,
+                            @QueryParam("filter") String filter) {
+        if (maxResults == null || maxResults < 1) {
+            maxResults = Integer.MAX_VALUE;
+        }
+        if (firstResult < 0) {
+            firstResult = 0;
+        }
+        try {
+            Iterable<AttributeSetInstanceState> states = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                states = attributeSetInstanceApplicationService.get(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
+                        getCriterionDefaultTypeConvert(), new AttributeSetInstancePropertyTypeResolver())
+                        , AttributeSetInstanceApiUtils.getQueryOrders(sort, getQueryOrderSeparator()), firstResult, maxResults);
+            } else {
+                states = attributeSetInstanceApplicationService.get(AttributeSetInstanceApiUtils.getQueryFilterDictionary(request.getParameterMap())
+                        , AttributeSetInstanceApiUtils.getQueryOrders(sort, getQueryOrderSeparator()), firstResult, maxResults);
+            }
+            JSONArray dynamicArray = new JSONArray();
+            if (states != null) {
+                AttributeSetInstanceStateDto.DtoConverter converter = new AttributeSetInstanceStateDto.DtoConverter();
+                if (fields != null) {
+                    converter.setReturnedFieldsString(fields);
+                } else {
+                    converter.setAllFieldsReturned(true);
+                }
+                states.forEach(state -> {
+                    AttributeSetInstanceStateDto dto = converter.toAttributeSetInstanceStateDto(state);
+                    dynamicArray.add(dynamicObjectMapper.mapState(dto));
+                });
+            }
+            return dynamicArray;
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new WebApiApplicationException(ex);
+        }
+    }
+
 
     /**
      * 获取单个属性集实例的信息
@@ -69,12 +128,62 @@ public class AttributeSetInstanceResource {
         }
     }
 
+
     /**
-     * 添加
+     * 查询符合条件的 AttributeSetInstance 数量
      *
-     * @param jsonObject
-     * @param response
-     * @return
+     * @param request 请求
+     * @param filter  过滤条件
+     * @return 数量
+     */
+    @Path("_count")
+    @GET
+    public long getCount(@Context HttpServletRequest request,
+                         @QueryParam("filter") String filter) {
+        try {
+            long count = 0;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                count = attributeSetInstanceApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
+                        getCriterionDefaultTypeConvert(), new AttributeSetInstancePropertyTypeResolver()));
+            } else {
+                count = attributeSetInstanceApplicationService.getCount(AttributeSetInstanceApiUtils.getQueryFilterDictionary(request.getParameterMap()));
+            }
+            return count;
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new WebApiApplicationException(ex);
+        }
+    }
+
+
+    /**
+     * 修改AttributeSetInstance
+     *
+     * @param id            AttributeSetInstanceId
+     * @param dynamicObject AttributeSetInstance Body
+     */
+    @PUT
+    @Path("/{id}")
+    public void Put(@PathParam("id") String id, JSONObject dynamicObject) {
+        try {
+            AttributeSetInstanceCommand.CreateAttributeSetInstance value = dynamicObjectMapper.toCommandCreate(dynamicObject);
+            AttributeSetInstanceApiUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            attributeSetInstanceApplicationService.when(value);
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new WebApiApplicationException(ex);
+        }
+    }
+
+
+    /**
+     * 添加 AttributeSetInstance
+     *
+     * @param jsonObject AttributeSetInstance Body
+     * @param response   响应
+     * @return AttributeSetInstance Id
      */
     @POST
     public String post(JSONObject jsonObject, @Context HttpServletResponse response) {
@@ -86,6 +195,23 @@ public class AttributeSetInstanceResource {
             attributeSetInstanceApplicationService.when(createAttributeSetInstance);
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return idResult.getId();
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new WebApiApplicationException(ex);
+        }
+    }
+
+
+    @Path("_metadata/filteringFields")
+    @GET
+    public Iterable<PropertyMetadataDto> getMetadataFilteringFields() {
+        try {
+            List<PropertyMetadataDto> filtering = new ArrayList<>();
+            AttributeSetInstanceFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+                filtering.add(new PropertyMetadataDto(key, value, true));
+            });
+            return filtering;
         } catch (DomainError error) {
             throw error;
         } catch (Exception ex) {
@@ -111,6 +237,16 @@ public class AttributeSetInstanceResource {
 
 
     private static class AttributeSetInstanceApiUtils {
+
+
+        public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetInstanceCommand.CreateOrMergePatchAttributeSetInstance value) {
+            if (value.getAttributeSetInstanceId() == null) {
+                value.setAttributeSetInstanceId(id);
+            } else if (!value.getAttributeSetInstanceId().equals(id)) {
+                throw DomainError.named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, value.getAttributeSetInstanceId());
+            }
+        }
+
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
             if (StringHelper.isNullOrEmpty(str)) {
