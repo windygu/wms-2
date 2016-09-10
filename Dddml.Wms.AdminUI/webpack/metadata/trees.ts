@@ -1,4 +1,4 @@
-export default [
+export const TREES_METADATA = [
   {
     "name": "PermissionTree",
     "plural": "PermissionTrees",

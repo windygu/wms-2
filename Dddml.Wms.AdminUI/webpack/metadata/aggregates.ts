@@ -1,4 +1,4 @@
-export default [
+export const AGGREGATES_METADATA = [
   {
     "name": "AttributeSetInstance",
     "plural": "AttributeSetInstances",

@@ -1,4 +1,4 @@
-export default [
+export const VALUE_OBJECT_METADATA = [
   {
     "name": "RolePermissionId",
     "plural": "RolePermissionIds",
