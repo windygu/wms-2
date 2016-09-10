@@ -1,4 +1,5 @@
 import EntityCollectionMetadata from "./EntityCollectionMetadata";
+import PropertyMetadata from "./PropertyMetadata";
 
 export default class EntityMetadata {
     private _rawData: EntityMetadataInterface;
@@ -28,7 +29,13 @@ export default class EntityMetadata {
     }
 
     get properties() {
-        return this._rawData.properties;
+        return _.map(this._rawData.properties, (property)=> {
+            return new PropertyMetadata(property);
+        })
+    }
+
+    property(name) {
+        return _.find(this.properties, ['name', name]);
     }
 
     get propertyNames() {

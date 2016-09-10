@@ -1,31 +1,35 @@
-import AggregatesMetadata from "../Metadata/EntityCollectionMetadata";
 import EntityCollection from "./EntityCollection";
 import EntityMetadata from "../Metadata/EntityMetadata";
+import AggregatesMetadata from "../Metadata/AggregatesMetadata";
 
 export default class Entity {
     private _rawData: EntityInterface;
-    private metadata: EntityMetadata;
+    private _metadata: EntityMetadata;
     private _hierarchies: EntityHierarchyInterface[];
 
     constructor(hierarchies: EntityHierarchyInterface[],
                 data: EntityInterface = {}) {
         this._rawData     = data;
-        this.metadata     = AggregatesMetadata
-            .getAggregates()
-            .getMetadataByHierarchies(hierarchies);
+        this._metadata    = AggregatesMetadata
+            .getInstance()
+            .getMetadataByHierarchies(_.keys(hierarchies));
         this._hierarchies = hierarchies;
     }
 
     get name() {
-        return this.metadata.name;
+        return this._metadata.name;
     }
 
     get label() {
-        return this.metadata.label;
+        return this._metadata.label;
     }
 
     get hierarchies(): EntityHierarchyInterface[] {
         return this._hierarchies;
+    }
+
+    get metadata(): EntityMetadata {
+        return this._metadata;
     }
 
     property(name: string, value: any) {
@@ -38,7 +42,7 @@ export default class Entity {
 
     entities(name: string) {
         if (this._rawData[name]) {
-            return new EntityCollection(this.hierarchies, this._rawData[name]);
+            return new EntityCollection(name, this.hierarchies, this._rawData[name]);
         }
 
         throw new Error(

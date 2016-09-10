@@ -1,3 +1,3 @@
 interface ButtonModelInterface {
-    styleClass: string;
+    styleClasses: string[];
 }

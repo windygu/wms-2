@@ -1,6 +1,6 @@
-import PropertyType from "../Metadata/PropertyType";
 import FormElement from "./FormElement";
 import MetadataHelper from "../Helper/MetadataHelper";
+import PropertyType from "../Dddml/Metadata/PropertyType";
 
 export default class ValueObjectForm {
     public name: string;

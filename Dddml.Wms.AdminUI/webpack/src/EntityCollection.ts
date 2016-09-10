@@ -10,10 +10,10 @@ export default class EntityCollection {
     }
 
     toTable($route = null) {
-        let table = new Table(
-            this.metadata.name,
-            this.data
-        );
+        //let table = new Table(
+        //    this.metadata.name,
+        //    this.data
+        //);
 
         //for (let row of table.rows) {
         //    let chainingName = EntityChainHelper.createChainingName(row, this.metadata, $route);
@@ -26,6 +26,6 @@ export default class EntityCollection {
         //    };
         //}
 
-        return table;
+        //return table;
     }
 }

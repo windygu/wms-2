@@ -8,6 +8,10 @@ export default class EntityCollection {
     private _hierarchies: EntityHierarchyInterface[];
 
     get name() {
+        return this.metadata.plural;
+    }
+
+    get entityName() {
         return this.metadata.name;
     }
 
@@ -19,7 +23,8 @@ export default class EntityCollection {
         return this._hierarchies;
     }
 
-    constructor(name: string, hierarchies: EntityHierarchyInterface[],
+    constructor(name: string,
+                hierarchies: EntityHierarchyInterface[],
                 data: EntityInterface[] = []) {
         this.data         = data;
         this._hierarchies = hierarchies;

@@ -1,5 +1,5 @@
 import EntityCollectionMetadata from "./EntityCollectionMetadata";
-import aggregatesMetadata from '../../../metadata/aggregates';
+import AGGREGATES_METADATA from '../../../metadata/aggregates';
 import EntityMetadata from "./EntityMetadata";
 
 export default class AggregatesMetadata extends EntityCollectionMetadata {
@@ -7,7 +7,7 @@ export default class AggregatesMetadata extends EntityCollectionMetadata {
 
     static getInstance() {
         if (!AggregatesMetadata.metadata) {
-            AggregatesMetadata.metadata = new AggregatesMetadata(aggregatesMetadata);
+            AggregatesMetadata.metadata = new AggregatesMetadata(AGGREGATES_METADATA);
         }
 
         return AggregatesMetadata.metadata;

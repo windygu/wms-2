@@ -1,6 +1,6 @@
 import EntityCollection from '../src/EntityCollection';
-import PropertyType from "./Metadata/PropertyType";
 import MetadataHelper from "./Helper/MetadataHelper";
+import PropertyType from "./Dddml/Metadata/PropertyType";
 
 export default class Entity {
     public data;

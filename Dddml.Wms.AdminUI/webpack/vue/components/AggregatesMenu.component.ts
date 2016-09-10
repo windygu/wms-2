@@ -1,7 +1,6 @@
-import EntityCollectionMetadata from "../../src/Metadata/EntityCollectionMetadata";
-import * as Vue from 'vue';
+import AggregatesMetadata from "../../src/Dddml/Metadata/AggregatesMetadata";
 
-var aggregatesMetadata = EntityCollectionMetadata.getAggregates();
+var aggregatesMetadata = AggregatesMetadata.getInstance();
 
 export default Vue.extend({
     template: require('./views/AggregatesMenu.html'),

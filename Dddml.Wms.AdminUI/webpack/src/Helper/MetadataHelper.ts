@@ -1,6 +1,6 @@
-import PropertyType from "../Metadata/PropertyType";
 import valueObjectsMetadata from '../../metadata/valueObjects'
 import customerValueObjectMetadata from '../../metadata/customerValueObject'
+import PropertyType from "../Dddml/Metadata/PropertyType";
 
 export default class MetadataHelper {
     static getEntityByPlural(metadata: Array<EntityMetadataInterface>, value: String) {

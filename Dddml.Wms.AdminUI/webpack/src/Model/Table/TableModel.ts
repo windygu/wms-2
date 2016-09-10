@@ -7,20 +7,20 @@ export default class TableModel {
     public rows: TableRowModel[];
     public columns: string[];
 
-    constructor(name: string, rows: TableRowModel[] = []) {
-        this.name       = name;
-        this.rows       = rows;
-        this.columns    = Object.keys(tableConfig[this.name].displayableFields);
+    constructor(name: string, rows: TableRowModel[] = [], columns: string[]) {
+        this.name    = name;
+        this.rows    = rows;
+        this.columns = columns;
     }
-
-    static createFromEntityCollection(entities: EntityCollection): TableModel {
-        //todo
-        let rows: TableRowModel[] = [];
-
-        for (let entity of entities.all()) {
-            rows.push(TableRowModel.createFromEntity(entity));
-        }
-
-        return new TableModel(entities.name, rows);
-    }
+    //
+    //static createFromEntityCollection(entities: EntityCollection): TableModel {
+    //    //todo
+    //    let rows: TableRowModel[] = [];
+    //
+    //    for (let entity of entities.all()) {
+    //        rows.push(TableRowModel.createFromEntity(entity));
+    //    }
+    //
+    //    return new TableModel(entities.name, rows);
+    //}
 }
