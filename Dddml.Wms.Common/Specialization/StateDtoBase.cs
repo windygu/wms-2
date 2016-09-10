@@ -67,15 +67,29 @@ namespace Dddml.Wms.Specialization
                         {
                             var f1 = f.Trim();
                             int i = f.IndexOf('.');
+                            string k = f1;
+                            string v = null;
                             if (i >= 0)
                             {
-                                fsDic[f1.Substring(0, i)] = f1.Substring(i+1);
+                                k = f1.Substring(0, i);
+                                v = f1.Substring(i + 1);
+                            }
+                            if (fsDic.ContainsKey(k))
+                            {
+                                if (String.IsNullOrWhiteSpace(fsDic[k]))
+                                {
+                                    fsDic[k] = v;
+                                }
+                                else
+                                {
+                                    fsDic[k] = fsDic[k] + ReturnedFieldsStringSeparator + v;
+                                }
                             }
                             else
                             {
-                                fsDic.Add(f1, null);
+                                fsDic.Add(k, v);
                             }
-                        }
+                        }                        
                     }
                 }
                 _returnedFields = fsDic;

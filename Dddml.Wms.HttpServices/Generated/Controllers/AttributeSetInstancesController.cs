@@ -21,8 +21,7 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/AttributeSetInstances")]
-    [Authorize]
+    [RoutePrefix("api/AttributeSetInstances")][Authorize]
     public partial class AttributeSetInstancesController : ApiController
     {
 
@@ -36,58 +35,54 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         [HttpGet]
         public JArray GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
-            try
+          try {
+            IEnumerable<IAttributeSetInstanceState> states = null; 
+            if (!String.IsNullOrWhiteSpace(filter))
             {
-                IEnumerable<IAttributeSetInstanceState> states = null;
-                if (!String.IsNullOrWhiteSpace(filter))
+                states = _attributeSetInstanceApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                    , AttributeSetInstancesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+            }
+            else 
+            {
+                states = _attributeSetInstanceApplicationService.Get(AttributeSetInstancesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                    , AttributeSetInstancesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+            }
+            JArray dynamicArray = new JArray(); 
+            foreach (var s in states)
+            {
+                var dto = s is AttributeSetInstanceStateDto ? (AttributeSetInstanceStateDto)s : new AttributeSetInstanceStateDto((AttributeSetInstanceState)s);
+                if (String.IsNullOrWhiteSpace(fields))
                 {
-                    states = _attributeSetInstanceApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver())
-                        , AttributeSetInstancesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                    dto.AllFieldsReturned = true;
                 }
                 else
                 {
-                    states = _attributeSetInstanceApplicationService.Get(AttributeSetInstancesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
-                        , AttributeSetInstancesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                    dto.ReturnedFieldsString = fields;
                 }
-                JArray dynamicArray = new JArray();
-                foreach (var s in states)
-                {
-                    var dto = s is AttributeSetInstanceStateDto ? (AttributeSetInstanceStateDto)s : new AttributeSetInstanceStateDto((AttributeSetInstanceState)s);
-                    if (String.IsNullOrWhiteSpace(fields))
-                    {
-                        dto.AllFieldsReturned = true;
-                    }
-                    else
-                    {
-                        dto.ReturnedFieldsString = fields;
-                    }
-                    dynamicArray.Add(_attributeSetInstanceDtoJObjectMapper.MapState(dto));
-                }
-                return dynamicArray;
+                dynamicArray.Add(_attributeSetInstanceDtoJObjectMapper.MapState(dto));
             }
-            catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            return dynamicArray; 
+          } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpGet]
         public JObject Get(string id, string fields = null)
         {
-            try
+          try {
+            var idObj = id;
+            var state = (AttributeSetInstanceState)_attributeSetInstanceApplicationService.Get(idObj);
+            if (state == null) { return null; }
+            var stateDto = new AttributeSetInstanceStateDto(state);
+            if (String.IsNullOrWhiteSpace(fields))
             {
-                var idObj = id;
-                var state = (AttributeSetInstanceState)_attributeSetInstanceApplicationService.Get(idObj);
-                if (state == null) { return null; }
-                var stateDto = new AttributeSetInstanceStateDto(state);
-                if (String.IsNullOrWhiteSpace(fields))
-                {
-                    stateDto.AllFieldsReturned = true;
-                }
-                else
-                {
-                    stateDto.ReturnedFieldsString = fields;
-                }
-                return _attributeSetInstanceDtoJObjectMapper.MapState(stateDto);
+                stateDto.AllFieldsReturned = true;
             }
-            catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            else
+            {
+                stateDto.ReturnedFieldsString = fields;
+            }
+            return _attributeSetInstanceDtoJObjectMapper.MapState(stateDto);
+          } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
@@ -95,82 +90,69 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         [HttpGet]
         public long GetCount(string filter = null)
         {
-            try
+          try
+          {
+            long count = 0;
+            if (!String.IsNullOrWhiteSpace(filter))
             {
-                long count = 0;
-                if (!String.IsNullOrWhiteSpace(filter))
-                {
-                    count = _attributeSetInstanceApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()));
-                }
-                else
-                {
-                    count = _attributeSetInstanceApplicationService.GetCount(AttributeSetInstancesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs()));
-                }
-                return count;
+                count = _attributeSetInstanceApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()));
             }
-            catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            else 
+            {
+                count = _attributeSetInstanceApplicationService.GetCount(AttributeSetInstancesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs()));
+            }
+            return count;
+          } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [HttpPost]
-        [SetRequesterId]
+        [HttpPost][SetRequesterId]
         public HttpResponseMessage Post([FromBody]JObject dynamicObject)
         {
-            try
+          try {
+            CreateAttributeSetInstanceDto value = _attributeSetInstanceDtoJObjectMapper.ToCommandCreate(dynamicObject);
+            bool reused;
+            string idObj = _attributeSetInstanceIdGenerator.GetOrGenerateId(value, out reused);
+            if (!reused)
             {
-                CreateAttributeSetInstanceDto value = _attributeSetInstanceDtoJObjectMapper.ToCommandCreate(dynamicObject);
-                bool reused;
-                string idObj = _attributeSetInstanceIdGenerator.GetOrGenerateId(value, out reused);
-                if (!reused)
-                {
-                    ((ICreateOrMergePatchOrDeleteAttributeSetInstance)value).AttributeSetInstanceId = idObj;
-                    _attributeSetInstanceApplicationService.When(value as ICreateAttributeSetInstance);
-                }
-
-                return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
-            }
-            catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
-        [HttpPut]
-        [SetRequesterId]
-        public void Put(string id, [FromBody]JObject dynamicObject)
-        {
-            try
-            {
-                CreateAttributeSetInstanceDto value = _attributeSetInstanceDtoJObjectMapper.ToCommandCreate(dynamicObject);
-                AttributeSetInstancesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                ((ICreateOrMergePatchOrDeleteAttributeSetInstance)value).AttributeSetInstanceId = idObj;
                 _attributeSetInstanceApplicationService.When(value as ICreateAttributeSetInstance);
             }
-            catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+
+            return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [HttpPatch]
-        [SetRequesterId]
+        [HttpPut][SetRequesterId]
+        public void Put(string id, [FromBody]JObject dynamicObject)
+        {
+          try {
+            CreateAttributeSetInstanceDto value = _attributeSetInstanceDtoJObjectMapper.ToCommandCreate(dynamicObject);
+            AttributeSetInstancesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+            _attributeSetInstanceApplicationService.When(value as ICreateAttributeSetInstance);
+          } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [HttpPatch][SetRequesterId]
         public void Patch(string id, [FromBody]JObject dynamicObject)
         {
-            try
-            {
-                MergePatchAttributeSetInstanceDto value = _attributeSetInstanceDtoJObjectMapper.ToCommandMergePatch(dynamicObject);
-                AttributeSetInstancesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-                _attributeSetInstanceApplicationService.When(value as IMergePatchAttributeSetInstance);
-            }
-            catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          try {
+            MergePatchAttributeSetInstanceDto value = _attributeSetInstanceDtoJObjectMapper.ToCommandMergePatch(dynamicObject);
+            AttributeSetInstancesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+            _attributeSetInstanceApplicationService.When(value as IMergePatchAttributeSetInstance);
+          } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [HttpDelete]
-        [SetRequesterId]
+        [HttpDelete][SetRequesterId]
         public void Delete(string id, string commandId, string version, string requesterId = default(string))
         {
-            try
-            {
-                var value = new DeleteAttributeSetInstanceDto();
-                value.CommandId = commandId;
-                value.RequesterId = requesterId;
-                value.Version = (long)Convert.ChangeType(version, typeof(long));
-                AttributeSetInstancesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-                _attributeSetInstanceApplicationService.When(value as IDeleteAttributeSetInstance);
-            }
-            catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          try {
+            var value = new DeleteAttributeSetInstanceDto();
+            value.CommandId = commandId;
+            value.RequesterId = requesterId;
+            value.Version = (long)Convert.ChangeType(version, typeof(long));
+            AttributeSetInstancesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+            _attributeSetInstanceApplicationService.When(value as IDeleteAttributeSetInstance);
+          } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
@@ -178,35 +160,31 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         [HttpGet]
         public IEnumerable<PropertyMetadata> GetMetadataFilteringFields()
         {
-            try
+          try {
+            var filtering = new List<PropertyMetadata>();
+            foreach (var p in AttributeSetInstanceMetadata.Instance.Properties)
             {
-                var filtering = new List<PropertyMetadata>();
-                foreach (var p in AttributeSetInstanceMetadata.Instance.Properties)
+                if (p.IsFilteringProperty)
                 {
-                    if (p.IsFilteringProperty)
-                    {
-                        filtering.Add(p);
-                    }
+                    filtering.Add(p);
                 }
-                return filtering;
             }
-            catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+            return filtering;
+          } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
         public IAttributeSetInstanceStateEvent GetStateEvent(string id, long version)
         {
-            try
-            {
-                var idObj = id;
-                return _attributeSetInstanceApplicationService.GetStateEvent(idObj, version);
-            }
-            catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          try {
+            var idObj = id;
+            return _attributeSetInstanceApplicationService.GetStateEvent(idObj, version);
+          } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
-        // /////////////////////////////////////////////////
+		// /////////////////////////////////////////////////
 
         protected virtual string QueryOrderSeparator
         {
@@ -304,7 +282,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
     }
 
-
+    
     public static class AttributeSetInstancesControllerUtils
     {
 

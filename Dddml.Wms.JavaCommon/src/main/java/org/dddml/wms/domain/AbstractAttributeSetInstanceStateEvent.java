@@ -5665,7 +5665,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsPropertyAttributeSetIdRemoved(Boolean removed) {
-            if (removed) { removedPropertyNames.add("AttributeSetId"); } else { removedPropertyNames.remove("AttributeSetId"); } 
+            if (removed != null && removed) { removedPropertyNames.add("AttributeSetId"); } else { removedPropertyNames.remove("AttributeSetId"); } 
         }
 
         public Boolean getIsPropertyOrganizationIdRemoved() {
@@ -5673,7 +5673,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsPropertyOrganizationIdRemoved(Boolean removed) {
-            if (removed) { removedPropertyNames.add("OrganizationId"); } else { removedPropertyNames.remove("OrganizationId"); } 
+            if (removed != null && removed) { removedPropertyNames.add("OrganizationId"); } else { removedPropertyNames.remove("OrganizationId"); } 
         }
 
         public Boolean getIsPropertyReferenceIdRemoved() {
@@ -5681,7 +5681,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsPropertyReferenceIdRemoved(Boolean removed) {
-            if (removed) { removedPropertyNames.add("ReferenceId"); } else { removedPropertyNames.remove("ReferenceId"); } 
+            if (removed != null && removed) { removedPropertyNames.add("ReferenceId"); } else { removedPropertyNames.remove("ReferenceId"); } 
         }
 
         public Boolean getIsPropertySerialNumberRemoved() {
@@ -5689,7 +5689,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsPropertySerialNumberRemoved(Boolean removed) {
-            if (removed) { removedPropertyNames.add("SerialNumber"); } else { removedPropertyNames.remove("SerialNumber"); } 
+            if (removed != null && removed) { removedPropertyNames.add("SerialNumber"); } else { removedPropertyNames.remove("SerialNumber"); } 
         }
 
         public Boolean getIsPropertyLotRemoved() {
@@ -5697,7 +5697,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsPropertyLotRemoved(Boolean removed) {
-            if (removed) { removedPropertyNames.add("Lot"); } else { removedPropertyNames.remove("Lot"); } 
+            if (removed != null && removed) { removedPropertyNames.add("Lot"); } else { removedPropertyNames.remove("Lot"); } 
         }
 
         public Boolean getIsPropertyDescriptionRemoved() {
@@ -5705,7 +5705,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsPropertyDescriptionRemoved(Boolean removed) {
-            if (removed) { removedPropertyNames.add("Description"); } else { removedPropertyNames.remove("Description"); } 
+            if (removed != null && removed) { removedPropertyNames.add("Description"); } else { removedPropertyNames.remove("Description"); } 
         }
 
         public Boolean getIsPropertyHashRemoved() {
@@ -5713,7 +5713,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsPropertyHashRemoved(Boolean removed) {
-            if (removed) { removedPropertyNames.add("Hash"); } else { removedPropertyNames.remove("Hash"); } 
+            if (removed != null && removed) { removedPropertyNames.add("Hash"); } else { removedPropertyNames.remove("Hash"); } 
         }
 
         public Boolean getIsProperty_F_B_0_Removed() {
@@ -5721,7 +5721,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_0_"); } else { removedPropertyNames.remove("_F_B_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_0_"); } else { removedPropertyNames.remove("_F_B_0_"); } 
         }
 
         public Boolean getIsProperty_F_I_0_Removed() {
@@ -5729,7 +5729,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_0_"); } else { removedPropertyNames.remove("_F_I_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_0_"); } else { removedPropertyNames.remove("_F_I_0_"); } 
         }
 
         public Boolean getIsProperty_F_L_0_Removed() {
@@ -5737,7 +5737,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_0_"); } else { removedPropertyNames.remove("_F_L_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_0_"); } else { removedPropertyNames.remove("_F_L_0_"); } 
         }
 
         public Boolean getIsProperty_F_DT_0_Removed() {
@@ -5745,7 +5745,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_0_"); } else { removedPropertyNames.remove("_F_DT_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_0_"); } else { removedPropertyNames.remove("_F_DT_0_"); } 
         }
 
         public Boolean getIsProperty_F_N_0_Removed() {
@@ -5753,7 +5753,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_0_"); } else { removedPropertyNames.remove("_F_N_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_0_"); } else { removedPropertyNames.remove("_F_N_0_"); } 
         }
 
         public Boolean getIsProperty_F_C5_0_Removed() {
@@ -5761,7 +5761,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_0_"); } else { removedPropertyNames.remove("_F_C5_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_0_"); } else { removedPropertyNames.remove("_F_C5_0_"); } 
         }
 
         public Boolean getIsProperty_F_C10_0_Removed() {
@@ -5769,7 +5769,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_0_"); } else { removedPropertyNames.remove("_F_C10_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_0_"); } else { removedPropertyNames.remove("_F_C10_0_"); } 
         }
 
         public Boolean getIsProperty_F_C20_0_Removed() {
@@ -5777,7 +5777,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_0_"); } else { removedPropertyNames.remove("_F_C20_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_0_"); } else { removedPropertyNames.remove("_F_C20_0_"); } 
         }
 
         public Boolean getIsProperty_F_C50_0_Removed() {
@@ -5785,7 +5785,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_0_"); } else { removedPropertyNames.remove("_F_C50_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_0_"); } else { removedPropertyNames.remove("_F_C50_0_"); } 
         }
 
         public Boolean getIsProperty_F_C100_0_Removed() {
@@ -5793,7 +5793,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_0_"); } else { removedPropertyNames.remove("_F_C100_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_0_"); } else { removedPropertyNames.remove("_F_C100_0_"); } 
         }
 
         public Boolean getIsProperty_F_C200_0_Removed() {
@@ -5801,7 +5801,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_0_"); } else { removedPropertyNames.remove("_F_C200_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_0_"); } else { removedPropertyNames.remove("_F_C200_0_"); } 
         }
 
         public Boolean getIsProperty_F_C500_0_Removed() {
@@ -5809,7 +5809,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C500_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C500_0_"); } else { removedPropertyNames.remove("_F_C500_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C500_0_"); } else { removedPropertyNames.remove("_F_C500_0_"); } 
         }
 
         public Boolean getIsProperty_F_C1000_0_Removed() {
@@ -5817,7 +5817,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C1000_0_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C1000_0_"); } else { removedPropertyNames.remove("_F_C1000_0_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C1000_0_"); } else { removedPropertyNames.remove("_F_C1000_0_"); } 
         }
 
         public Boolean getIsProperty_F_B_1_Removed() {
@@ -5825,7 +5825,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_1_"); } else { removedPropertyNames.remove("_F_B_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_1_"); } else { removedPropertyNames.remove("_F_B_1_"); } 
         }
 
         public Boolean getIsProperty_F_I_1_Removed() {
@@ -5833,7 +5833,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_1_"); } else { removedPropertyNames.remove("_F_I_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_1_"); } else { removedPropertyNames.remove("_F_I_1_"); } 
         }
 
         public Boolean getIsProperty_F_L_1_Removed() {
@@ -5841,7 +5841,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_1_"); } else { removedPropertyNames.remove("_F_L_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_1_"); } else { removedPropertyNames.remove("_F_L_1_"); } 
         }
 
         public Boolean getIsProperty_F_DT_1_Removed() {
@@ -5849,7 +5849,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_1_"); } else { removedPropertyNames.remove("_F_DT_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_1_"); } else { removedPropertyNames.remove("_F_DT_1_"); } 
         }
 
         public Boolean getIsProperty_F_N_1_Removed() {
@@ -5857,7 +5857,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_1_"); } else { removedPropertyNames.remove("_F_N_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_1_"); } else { removedPropertyNames.remove("_F_N_1_"); } 
         }
 
         public Boolean getIsProperty_F_C5_1_Removed() {
@@ -5865,7 +5865,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_1_"); } else { removedPropertyNames.remove("_F_C5_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_1_"); } else { removedPropertyNames.remove("_F_C5_1_"); } 
         }
 
         public Boolean getIsProperty_F_C10_1_Removed() {
@@ -5873,7 +5873,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_1_"); } else { removedPropertyNames.remove("_F_C10_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_1_"); } else { removedPropertyNames.remove("_F_C10_1_"); } 
         }
 
         public Boolean getIsProperty_F_C20_1_Removed() {
@@ -5881,7 +5881,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_1_"); } else { removedPropertyNames.remove("_F_C20_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_1_"); } else { removedPropertyNames.remove("_F_C20_1_"); } 
         }
 
         public Boolean getIsProperty_F_C50_1_Removed() {
@@ -5889,7 +5889,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_1_"); } else { removedPropertyNames.remove("_F_C50_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_1_"); } else { removedPropertyNames.remove("_F_C50_1_"); } 
         }
 
         public Boolean getIsProperty_F_C100_1_Removed() {
@@ -5897,7 +5897,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_1_"); } else { removedPropertyNames.remove("_F_C100_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_1_"); } else { removedPropertyNames.remove("_F_C100_1_"); } 
         }
 
         public Boolean getIsProperty_F_C200_1_Removed() {
@@ -5905,7 +5905,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_1_"); } else { removedPropertyNames.remove("_F_C200_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_1_"); } else { removedPropertyNames.remove("_F_C200_1_"); } 
         }
 
         public Boolean getIsProperty_F_C500_1_Removed() {
@@ -5913,7 +5913,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C500_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C500_1_"); } else { removedPropertyNames.remove("_F_C500_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C500_1_"); } else { removedPropertyNames.remove("_F_C500_1_"); } 
         }
 
         public Boolean getIsProperty_F_C1000_1_Removed() {
@@ -5921,7 +5921,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C1000_1_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C1000_1_"); } else { removedPropertyNames.remove("_F_C1000_1_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C1000_1_"); } else { removedPropertyNames.remove("_F_C1000_1_"); } 
         }
 
         public Boolean getIsProperty_F_B_2_Removed() {
@@ -5929,7 +5929,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_2_"); } else { removedPropertyNames.remove("_F_B_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_2_"); } else { removedPropertyNames.remove("_F_B_2_"); } 
         }
 
         public Boolean getIsProperty_F_I_2_Removed() {
@@ -5937,7 +5937,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_2_"); } else { removedPropertyNames.remove("_F_I_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_2_"); } else { removedPropertyNames.remove("_F_I_2_"); } 
         }
 
         public Boolean getIsProperty_F_L_2_Removed() {
@@ -5945,7 +5945,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_2_"); } else { removedPropertyNames.remove("_F_L_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_2_"); } else { removedPropertyNames.remove("_F_L_2_"); } 
         }
 
         public Boolean getIsProperty_F_DT_2_Removed() {
@@ -5953,7 +5953,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_2_"); } else { removedPropertyNames.remove("_F_DT_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_2_"); } else { removedPropertyNames.remove("_F_DT_2_"); } 
         }
 
         public Boolean getIsProperty_F_N_2_Removed() {
@@ -5961,7 +5961,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_2_"); } else { removedPropertyNames.remove("_F_N_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_2_"); } else { removedPropertyNames.remove("_F_N_2_"); } 
         }
 
         public Boolean getIsProperty_F_C5_2_Removed() {
@@ -5969,7 +5969,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_2_"); } else { removedPropertyNames.remove("_F_C5_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_2_"); } else { removedPropertyNames.remove("_F_C5_2_"); } 
         }
 
         public Boolean getIsProperty_F_C10_2_Removed() {
@@ -5977,7 +5977,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_2_"); } else { removedPropertyNames.remove("_F_C10_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_2_"); } else { removedPropertyNames.remove("_F_C10_2_"); } 
         }
 
         public Boolean getIsProperty_F_C20_2_Removed() {
@@ -5985,7 +5985,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_2_"); } else { removedPropertyNames.remove("_F_C20_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_2_"); } else { removedPropertyNames.remove("_F_C20_2_"); } 
         }
 
         public Boolean getIsProperty_F_C50_2_Removed() {
@@ -5993,7 +5993,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_2_"); } else { removedPropertyNames.remove("_F_C50_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_2_"); } else { removedPropertyNames.remove("_F_C50_2_"); } 
         }
 
         public Boolean getIsProperty_F_C100_2_Removed() {
@@ -6001,7 +6001,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_2_"); } else { removedPropertyNames.remove("_F_C100_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_2_"); } else { removedPropertyNames.remove("_F_C100_2_"); } 
         }
 
         public Boolean getIsProperty_F_C200_2_Removed() {
@@ -6009,7 +6009,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_2_"); } else { removedPropertyNames.remove("_F_C200_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_2_"); } else { removedPropertyNames.remove("_F_C200_2_"); } 
         }
 
         public Boolean getIsProperty_F_C500_2_Removed() {
@@ -6017,7 +6017,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C500_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C500_2_"); } else { removedPropertyNames.remove("_F_C500_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C500_2_"); } else { removedPropertyNames.remove("_F_C500_2_"); } 
         }
 
         public Boolean getIsProperty_F_C1000_2_Removed() {
@@ -6025,7 +6025,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C1000_2_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C1000_2_"); } else { removedPropertyNames.remove("_F_C1000_2_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C1000_2_"); } else { removedPropertyNames.remove("_F_C1000_2_"); } 
         }
 
         public Boolean getIsProperty_F_B_3_Removed() {
@@ -6033,7 +6033,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_3_"); } else { removedPropertyNames.remove("_F_B_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_3_"); } else { removedPropertyNames.remove("_F_B_3_"); } 
         }
 
         public Boolean getIsProperty_F_I_3_Removed() {
@@ -6041,7 +6041,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_3_"); } else { removedPropertyNames.remove("_F_I_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_3_"); } else { removedPropertyNames.remove("_F_I_3_"); } 
         }
 
         public Boolean getIsProperty_F_L_3_Removed() {
@@ -6049,7 +6049,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_3_"); } else { removedPropertyNames.remove("_F_L_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_3_"); } else { removedPropertyNames.remove("_F_L_3_"); } 
         }
 
         public Boolean getIsProperty_F_DT_3_Removed() {
@@ -6057,7 +6057,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_3_"); } else { removedPropertyNames.remove("_F_DT_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_3_"); } else { removedPropertyNames.remove("_F_DT_3_"); } 
         }
 
         public Boolean getIsProperty_F_N_3_Removed() {
@@ -6065,7 +6065,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_3_"); } else { removedPropertyNames.remove("_F_N_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_3_"); } else { removedPropertyNames.remove("_F_N_3_"); } 
         }
 
         public Boolean getIsProperty_F_C5_3_Removed() {
@@ -6073,7 +6073,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_3_"); } else { removedPropertyNames.remove("_F_C5_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_3_"); } else { removedPropertyNames.remove("_F_C5_3_"); } 
         }
 
         public Boolean getIsProperty_F_C10_3_Removed() {
@@ -6081,7 +6081,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_3_"); } else { removedPropertyNames.remove("_F_C10_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_3_"); } else { removedPropertyNames.remove("_F_C10_3_"); } 
         }
 
         public Boolean getIsProperty_F_C20_3_Removed() {
@@ -6089,7 +6089,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_3_"); } else { removedPropertyNames.remove("_F_C20_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_3_"); } else { removedPropertyNames.remove("_F_C20_3_"); } 
         }
 
         public Boolean getIsProperty_F_C50_3_Removed() {
@@ -6097,7 +6097,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_3_"); } else { removedPropertyNames.remove("_F_C50_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_3_"); } else { removedPropertyNames.remove("_F_C50_3_"); } 
         }
 
         public Boolean getIsProperty_F_C100_3_Removed() {
@@ -6105,7 +6105,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_3_"); } else { removedPropertyNames.remove("_F_C100_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_3_"); } else { removedPropertyNames.remove("_F_C100_3_"); } 
         }
 
         public Boolean getIsProperty_F_C200_3_Removed() {
@@ -6113,7 +6113,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_3_"); } else { removedPropertyNames.remove("_F_C200_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_3_"); } else { removedPropertyNames.remove("_F_C200_3_"); } 
         }
 
         public Boolean getIsProperty_F_C500_3_Removed() {
@@ -6121,7 +6121,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C500_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C500_3_"); } else { removedPropertyNames.remove("_F_C500_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C500_3_"); } else { removedPropertyNames.remove("_F_C500_3_"); } 
         }
 
         public Boolean getIsProperty_F_C1000_3_Removed() {
@@ -6129,7 +6129,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C1000_3_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C1000_3_"); } else { removedPropertyNames.remove("_F_C1000_3_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C1000_3_"); } else { removedPropertyNames.remove("_F_C1000_3_"); } 
         }
 
         public Boolean getIsProperty_F_B_4_Removed() {
@@ -6137,7 +6137,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_4_"); } else { removedPropertyNames.remove("_F_B_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_4_"); } else { removedPropertyNames.remove("_F_B_4_"); } 
         }
 
         public Boolean getIsProperty_F_I_4_Removed() {
@@ -6145,7 +6145,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_4_"); } else { removedPropertyNames.remove("_F_I_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_4_"); } else { removedPropertyNames.remove("_F_I_4_"); } 
         }
 
         public Boolean getIsProperty_F_L_4_Removed() {
@@ -6153,7 +6153,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_4_"); } else { removedPropertyNames.remove("_F_L_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_4_"); } else { removedPropertyNames.remove("_F_L_4_"); } 
         }
 
         public Boolean getIsProperty_F_DT_4_Removed() {
@@ -6161,7 +6161,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_4_"); } else { removedPropertyNames.remove("_F_DT_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_4_"); } else { removedPropertyNames.remove("_F_DT_4_"); } 
         }
 
         public Boolean getIsProperty_F_N_4_Removed() {
@@ -6169,7 +6169,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_4_"); } else { removedPropertyNames.remove("_F_N_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_4_"); } else { removedPropertyNames.remove("_F_N_4_"); } 
         }
 
         public Boolean getIsProperty_F_C5_4_Removed() {
@@ -6177,7 +6177,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_4_"); } else { removedPropertyNames.remove("_F_C5_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_4_"); } else { removedPropertyNames.remove("_F_C5_4_"); } 
         }
 
         public Boolean getIsProperty_F_C10_4_Removed() {
@@ -6185,7 +6185,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_4_"); } else { removedPropertyNames.remove("_F_C10_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_4_"); } else { removedPropertyNames.remove("_F_C10_4_"); } 
         }
 
         public Boolean getIsProperty_F_C20_4_Removed() {
@@ -6193,7 +6193,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_4_"); } else { removedPropertyNames.remove("_F_C20_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_4_"); } else { removedPropertyNames.remove("_F_C20_4_"); } 
         }
 
         public Boolean getIsProperty_F_C50_4_Removed() {
@@ -6201,7 +6201,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_4_"); } else { removedPropertyNames.remove("_F_C50_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_4_"); } else { removedPropertyNames.remove("_F_C50_4_"); } 
         }
 
         public Boolean getIsProperty_F_C100_4_Removed() {
@@ -6209,7 +6209,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_4_"); } else { removedPropertyNames.remove("_F_C100_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_4_"); } else { removedPropertyNames.remove("_F_C100_4_"); } 
         }
 
         public Boolean getIsProperty_F_C200_4_Removed() {
@@ -6217,7 +6217,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_4_"); } else { removedPropertyNames.remove("_F_C200_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_4_"); } else { removedPropertyNames.remove("_F_C200_4_"); } 
         }
 
         public Boolean getIsProperty_F_C500_4_Removed() {
@@ -6225,7 +6225,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C500_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C500_4_"); } else { removedPropertyNames.remove("_F_C500_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C500_4_"); } else { removedPropertyNames.remove("_F_C500_4_"); } 
         }
 
         public Boolean getIsProperty_F_C1000_4_Removed() {
@@ -6233,7 +6233,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C1000_4_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C1000_4_"); } else { removedPropertyNames.remove("_F_C1000_4_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C1000_4_"); } else { removedPropertyNames.remove("_F_C1000_4_"); } 
         }
 
         public Boolean getIsProperty_F_B_5_Removed() {
@@ -6241,7 +6241,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_5_"); } else { removedPropertyNames.remove("_F_B_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_5_"); } else { removedPropertyNames.remove("_F_B_5_"); } 
         }
 
         public Boolean getIsProperty_F_I_5_Removed() {
@@ -6249,7 +6249,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_5_"); } else { removedPropertyNames.remove("_F_I_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_5_"); } else { removedPropertyNames.remove("_F_I_5_"); } 
         }
 
         public Boolean getIsProperty_F_L_5_Removed() {
@@ -6257,7 +6257,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_5_"); } else { removedPropertyNames.remove("_F_L_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_5_"); } else { removedPropertyNames.remove("_F_L_5_"); } 
         }
 
         public Boolean getIsProperty_F_DT_5_Removed() {
@@ -6265,7 +6265,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_5_"); } else { removedPropertyNames.remove("_F_DT_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_5_"); } else { removedPropertyNames.remove("_F_DT_5_"); } 
         }
 
         public Boolean getIsProperty_F_N_5_Removed() {
@@ -6273,7 +6273,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_5_"); } else { removedPropertyNames.remove("_F_N_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_5_"); } else { removedPropertyNames.remove("_F_N_5_"); } 
         }
 
         public Boolean getIsProperty_F_C5_5_Removed() {
@@ -6281,7 +6281,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_5_"); } else { removedPropertyNames.remove("_F_C5_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_5_"); } else { removedPropertyNames.remove("_F_C5_5_"); } 
         }
 
         public Boolean getIsProperty_F_C10_5_Removed() {
@@ -6289,7 +6289,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_5_"); } else { removedPropertyNames.remove("_F_C10_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_5_"); } else { removedPropertyNames.remove("_F_C10_5_"); } 
         }
 
         public Boolean getIsProperty_F_C20_5_Removed() {
@@ -6297,7 +6297,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_5_"); } else { removedPropertyNames.remove("_F_C20_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_5_"); } else { removedPropertyNames.remove("_F_C20_5_"); } 
         }
 
         public Boolean getIsProperty_F_C50_5_Removed() {
@@ -6305,7 +6305,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_5_"); } else { removedPropertyNames.remove("_F_C50_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_5_"); } else { removedPropertyNames.remove("_F_C50_5_"); } 
         }
 
         public Boolean getIsProperty_F_C100_5_Removed() {
@@ -6313,7 +6313,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_5_"); } else { removedPropertyNames.remove("_F_C100_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_5_"); } else { removedPropertyNames.remove("_F_C100_5_"); } 
         }
 
         public Boolean getIsProperty_F_C200_5_Removed() {
@@ -6321,7 +6321,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_5_"); } else { removedPropertyNames.remove("_F_C200_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_5_"); } else { removedPropertyNames.remove("_F_C200_5_"); } 
         }
 
         public Boolean getIsProperty_F_C500_5_Removed() {
@@ -6329,7 +6329,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C500_5_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C500_5_"); } else { removedPropertyNames.remove("_F_C500_5_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C500_5_"); } else { removedPropertyNames.remove("_F_C500_5_"); } 
         }
 
         public Boolean getIsProperty_F_B_6_Removed() {
@@ -6337,7 +6337,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_6_"); } else { removedPropertyNames.remove("_F_B_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_6_"); } else { removedPropertyNames.remove("_F_B_6_"); } 
         }
 
         public Boolean getIsProperty_F_I_6_Removed() {
@@ -6345,7 +6345,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_6_"); } else { removedPropertyNames.remove("_F_I_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_6_"); } else { removedPropertyNames.remove("_F_I_6_"); } 
         }
 
         public Boolean getIsProperty_F_L_6_Removed() {
@@ -6353,7 +6353,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_6_"); } else { removedPropertyNames.remove("_F_L_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_6_"); } else { removedPropertyNames.remove("_F_L_6_"); } 
         }
 
         public Boolean getIsProperty_F_DT_6_Removed() {
@@ -6361,7 +6361,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_6_"); } else { removedPropertyNames.remove("_F_DT_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_6_"); } else { removedPropertyNames.remove("_F_DT_6_"); } 
         }
 
         public Boolean getIsProperty_F_N_6_Removed() {
@@ -6369,7 +6369,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_6_"); } else { removedPropertyNames.remove("_F_N_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_6_"); } else { removedPropertyNames.remove("_F_N_6_"); } 
         }
 
         public Boolean getIsProperty_F_C5_6_Removed() {
@@ -6377,7 +6377,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_6_"); } else { removedPropertyNames.remove("_F_C5_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_6_"); } else { removedPropertyNames.remove("_F_C5_6_"); } 
         }
 
         public Boolean getIsProperty_F_C10_6_Removed() {
@@ -6385,7 +6385,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_6_"); } else { removedPropertyNames.remove("_F_C10_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_6_"); } else { removedPropertyNames.remove("_F_C10_6_"); } 
         }
 
         public Boolean getIsProperty_F_C20_6_Removed() {
@@ -6393,7 +6393,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_6_"); } else { removedPropertyNames.remove("_F_C20_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_6_"); } else { removedPropertyNames.remove("_F_C20_6_"); } 
         }
 
         public Boolean getIsProperty_F_C50_6_Removed() {
@@ -6401,7 +6401,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_6_"); } else { removedPropertyNames.remove("_F_C50_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_6_"); } else { removedPropertyNames.remove("_F_C50_6_"); } 
         }
 
         public Boolean getIsProperty_F_C100_6_Removed() {
@@ -6409,7 +6409,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_6_"); } else { removedPropertyNames.remove("_F_C100_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_6_"); } else { removedPropertyNames.remove("_F_C100_6_"); } 
         }
 
         public Boolean getIsProperty_F_C200_6_Removed() {
@@ -6417,7 +6417,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_6_"); } else { removedPropertyNames.remove("_F_C200_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_6_"); } else { removedPropertyNames.remove("_F_C200_6_"); } 
         }
 
         public Boolean getIsProperty_F_C500_6_Removed() {
@@ -6425,7 +6425,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C500_6_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C500_6_"); } else { removedPropertyNames.remove("_F_C500_6_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C500_6_"); } else { removedPropertyNames.remove("_F_C500_6_"); } 
         }
 
         public Boolean getIsProperty_F_B_7_Removed() {
@@ -6433,7 +6433,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_7_"); } else { removedPropertyNames.remove("_F_B_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_7_"); } else { removedPropertyNames.remove("_F_B_7_"); } 
         }
 
         public Boolean getIsProperty_F_I_7_Removed() {
@@ -6441,7 +6441,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_7_"); } else { removedPropertyNames.remove("_F_I_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_7_"); } else { removedPropertyNames.remove("_F_I_7_"); } 
         }
 
         public Boolean getIsProperty_F_L_7_Removed() {
@@ -6449,7 +6449,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_7_"); } else { removedPropertyNames.remove("_F_L_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_7_"); } else { removedPropertyNames.remove("_F_L_7_"); } 
         }
 
         public Boolean getIsProperty_F_DT_7_Removed() {
@@ -6457,7 +6457,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_7_"); } else { removedPropertyNames.remove("_F_DT_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_7_"); } else { removedPropertyNames.remove("_F_DT_7_"); } 
         }
 
         public Boolean getIsProperty_F_N_7_Removed() {
@@ -6465,7 +6465,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_7_"); } else { removedPropertyNames.remove("_F_N_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_7_"); } else { removedPropertyNames.remove("_F_N_7_"); } 
         }
 
         public Boolean getIsProperty_F_C5_7_Removed() {
@@ -6473,7 +6473,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_7_"); } else { removedPropertyNames.remove("_F_C5_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_7_"); } else { removedPropertyNames.remove("_F_C5_7_"); } 
         }
 
         public Boolean getIsProperty_F_C10_7_Removed() {
@@ -6481,7 +6481,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_7_"); } else { removedPropertyNames.remove("_F_C10_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_7_"); } else { removedPropertyNames.remove("_F_C10_7_"); } 
         }
 
         public Boolean getIsProperty_F_C20_7_Removed() {
@@ -6489,7 +6489,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_7_"); } else { removedPropertyNames.remove("_F_C20_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_7_"); } else { removedPropertyNames.remove("_F_C20_7_"); } 
         }
 
         public Boolean getIsProperty_F_C50_7_Removed() {
@@ -6497,7 +6497,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_7_"); } else { removedPropertyNames.remove("_F_C50_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_7_"); } else { removedPropertyNames.remove("_F_C50_7_"); } 
         }
 
         public Boolean getIsProperty_F_C100_7_Removed() {
@@ -6505,7 +6505,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_7_"); } else { removedPropertyNames.remove("_F_C100_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_7_"); } else { removedPropertyNames.remove("_F_C100_7_"); } 
         }
 
         public Boolean getIsProperty_F_C200_7_Removed() {
@@ -6513,7 +6513,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_7_"); } else { removedPropertyNames.remove("_F_C200_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_7_"); } else { removedPropertyNames.remove("_F_C200_7_"); } 
         }
 
         public Boolean getIsProperty_F_C500_7_Removed() {
@@ -6521,7 +6521,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C500_7_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C500_7_"); } else { removedPropertyNames.remove("_F_C500_7_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C500_7_"); } else { removedPropertyNames.remove("_F_C500_7_"); } 
         }
 
         public Boolean getIsProperty_F_B_8_Removed() {
@@ -6529,7 +6529,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_8_"); } else { removedPropertyNames.remove("_F_B_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_8_"); } else { removedPropertyNames.remove("_F_B_8_"); } 
         }
 
         public Boolean getIsProperty_F_I_8_Removed() {
@@ -6537,7 +6537,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_8_"); } else { removedPropertyNames.remove("_F_I_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_8_"); } else { removedPropertyNames.remove("_F_I_8_"); } 
         }
 
         public Boolean getIsProperty_F_L_8_Removed() {
@@ -6545,7 +6545,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_8_"); } else { removedPropertyNames.remove("_F_L_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_8_"); } else { removedPropertyNames.remove("_F_L_8_"); } 
         }
 
         public Boolean getIsProperty_F_DT_8_Removed() {
@@ -6553,7 +6553,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_8_"); } else { removedPropertyNames.remove("_F_DT_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_8_"); } else { removedPropertyNames.remove("_F_DT_8_"); } 
         }
 
         public Boolean getIsProperty_F_N_8_Removed() {
@@ -6561,7 +6561,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_8_"); } else { removedPropertyNames.remove("_F_N_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_8_"); } else { removedPropertyNames.remove("_F_N_8_"); } 
         }
 
         public Boolean getIsProperty_F_C5_8_Removed() {
@@ -6569,7 +6569,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_8_"); } else { removedPropertyNames.remove("_F_C5_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_8_"); } else { removedPropertyNames.remove("_F_C5_8_"); } 
         }
 
         public Boolean getIsProperty_F_C10_8_Removed() {
@@ -6577,7 +6577,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_8_"); } else { removedPropertyNames.remove("_F_C10_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_8_"); } else { removedPropertyNames.remove("_F_C10_8_"); } 
         }
 
         public Boolean getIsProperty_F_C20_8_Removed() {
@@ -6585,7 +6585,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_8_"); } else { removedPropertyNames.remove("_F_C20_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_8_"); } else { removedPropertyNames.remove("_F_C20_8_"); } 
         }
 
         public Boolean getIsProperty_F_C50_8_Removed() {
@@ -6593,7 +6593,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_8_"); } else { removedPropertyNames.remove("_F_C50_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_8_"); } else { removedPropertyNames.remove("_F_C50_8_"); } 
         }
 
         public Boolean getIsProperty_F_C100_8_Removed() {
@@ -6601,7 +6601,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_8_"); } else { removedPropertyNames.remove("_F_C100_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_8_"); } else { removedPropertyNames.remove("_F_C100_8_"); } 
         }
 
         public Boolean getIsProperty_F_C200_8_Removed() {
@@ -6609,7 +6609,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_8_"); } else { removedPropertyNames.remove("_F_C200_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_8_"); } else { removedPropertyNames.remove("_F_C200_8_"); } 
         }
 
         public Boolean getIsProperty_F_C500_8_Removed() {
@@ -6617,7 +6617,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C500_8_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C500_8_"); } else { removedPropertyNames.remove("_F_C500_8_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C500_8_"); } else { removedPropertyNames.remove("_F_C500_8_"); } 
         }
 
         public Boolean getIsProperty_F_B_9_Removed() {
@@ -6625,7 +6625,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_9_"); } else { removedPropertyNames.remove("_F_B_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_9_"); } else { removedPropertyNames.remove("_F_B_9_"); } 
         }
 
         public Boolean getIsProperty_F_I_9_Removed() {
@@ -6633,7 +6633,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_9_"); } else { removedPropertyNames.remove("_F_I_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_9_"); } else { removedPropertyNames.remove("_F_I_9_"); } 
         }
 
         public Boolean getIsProperty_F_L_9_Removed() {
@@ -6641,7 +6641,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_9_"); } else { removedPropertyNames.remove("_F_L_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_9_"); } else { removedPropertyNames.remove("_F_L_9_"); } 
         }
 
         public Boolean getIsProperty_F_DT_9_Removed() {
@@ -6649,7 +6649,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_9_"); } else { removedPropertyNames.remove("_F_DT_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_9_"); } else { removedPropertyNames.remove("_F_DT_9_"); } 
         }
 
         public Boolean getIsProperty_F_N_9_Removed() {
@@ -6657,7 +6657,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_9_"); } else { removedPropertyNames.remove("_F_N_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_9_"); } else { removedPropertyNames.remove("_F_N_9_"); } 
         }
 
         public Boolean getIsProperty_F_C5_9_Removed() {
@@ -6665,7 +6665,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_9_"); } else { removedPropertyNames.remove("_F_C5_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_9_"); } else { removedPropertyNames.remove("_F_C5_9_"); } 
         }
 
         public Boolean getIsProperty_F_C10_9_Removed() {
@@ -6673,7 +6673,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_9_"); } else { removedPropertyNames.remove("_F_C10_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_9_"); } else { removedPropertyNames.remove("_F_C10_9_"); } 
         }
 
         public Boolean getIsProperty_F_C20_9_Removed() {
@@ -6681,7 +6681,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_9_"); } else { removedPropertyNames.remove("_F_C20_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_9_"); } else { removedPropertyNames.remove("_F_C20_9_"); } 
         }
 
         public Boolean getIsProperty_F_C50_9_Removed() {
@@ -6689,7 +6689,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_9_"); } else { removedPropertyNames.remove("_F_C50_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_9_"); } else { removedPropertyNames.remove("_F_C50_9_"); } 
         }
 
         public Boolean getIsProperty_F_C100_9_Removed() {
@@ -6697,7 +6697,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_9_"); } else { removedPropertyNames.remove("_F_C100_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_9_"); } else { removedPropertyNames.remove("_F_C100_9_"); } 
         }
 
         public Boolean getIsProperty_F_C200_9_Removed() {
@@ -6705,7 +6705,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_9_"); } else { removedPropertyNames.remove("_F_C200_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_9_"); } else { removedPropertyNames.remove("_F_C200_9_"); } 
         }
 
         public Boolean getIsProperty_F_C500_9_Removed() {
@@ -6713,7 +6713,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C500_9_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C500_9_"); } else { removedPropertyNames.remove("_F_C500_9_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C500_9_"); } else { removedPropertyNames.remove("_F_C500_9_"); } 
         }
 
         public Boolean getIsProperty_F_B_10_Removed() {
@@ -6721,7 +6721,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_10_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_10_"); } else { removedPropertyNames.remove("_F_B_10_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_10_"); } else { removedPropertyNames.remove("_F_B_10_"); } 
         }
 
         public Boolean getIsProperty_F_I_10_Removed() {
@@ -6729,7 +6729,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_10_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_10_"); } else { removedPropertyNames.remove("_F_I_10_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_10_"); } else { removedPropertyNames.remove("_F_I_10_"); } 
         }
 
         public Boolean getIsProperty_F_L_10_Removed() {
@@ -6737,7 +6737,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_10_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_10_"); } else { removedPropertyNames.remove("_F_L_10_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_10_"); } else { removedPropertyNames.remove("_F_L_10_"); } 
         }
 
         public Boolean getIsProperty_F_DT_10_Removed() {
@@ -6745,7 +6745,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_10_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_10_"); } else { removedPropertyNames.remove("_F_DT_10_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_10_"); } else { removedPropertyNames.remove("_F_DT_10_"); } 
         }
 
         public Boolean getIsProperty_F_N_10_Removed() {
@@ -6753,7 +6753,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_10_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_10_"); } else { removedPropertyNames.remove("_F_N_10_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_10_"); } else { removedPropertyNames.remove("_F_N_10_"); } 
         }
 
         public Boolean getIsProperty_F_C5_10_Removed() {
@@ -6761,7 +6761,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_10_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_10_"); } else { removedPropertyNames.remove("_F_C5_10_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_10_"); } else { removedPropertyNames.remove("_F_C5_10_"); } 
         }
 
         public Boolean getIsProperty_F_C10_10_Removed() {
@@ -6769,7 +6769,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_10_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_10_"); } else { removedPropertyNames.remove("_F_C10_10_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_10_"); } else { removedPropertyNames.remove("_F_C10_10_"); } 
         }
 
         public Boolean getIsProperty_F_C20_10_Removed() {
@@ -6777,7 +6777,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_10_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_10_"); } else { removedPropertyNames.remove("_F_C20_10_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_10_"); } else { removedPropertyNames.remove("_F_C20_10_"); } 
         }
 
         public Boolean getIsProperty_F_C50_10_Removed() {
@@ -6785,7 +6785,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_10_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_10_"); } else { removedPropertyNames.remove("_F_C50_10_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_10_"); } else { removedPropertyNames.remove("_F_C50_10_"); } 
         }
 
         public Boolean getIsProperty_F_C100_10_Removed() {
@@ -6793,7 +6793,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_10_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_10_"); } else { removedPropertyNames.remove("_F_C100_10_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_10_"); } else { removedPropertyNames.remove("_F_C100_10_"); } 
         }
 
         public Boolean getIsProperty_F_C200_10_Removed() {
@@ -6801,7 +6801,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_10_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_10_"); } else { removedPropertyNames.remove("_F_C200_10_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_10_"); } else { removedPropertyNames.remove("_F_C200_10_"); } 
         }
 
         public Boolean getIsProperty_F_B_11_Removed() {
@@ -6809,7 +6809,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_11_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_11_"); } else { removedPropertyNames.remove("_F_B_11_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_11_"); } else { removedPropertyNames.remove("_F_B_11_"); } 
         }
 
         public Boolean getIsProperty_F_I_11_Removed() {
@@ -6817,7 +6817,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_11_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_11_"); } else { removedPropertyNames.remove("_F_I_11_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_11_"); } else { removedPropertyNames.remove("_F_I_11_"); } 
         }
 
         public Boolean getIsProperty_F_L_11_Removed() {
@@ -6825,7 +6825,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_11_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_11_"); } else { removedPropertyNames.remove("_F_L_11_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_11_"); } else { removedPropertyNames.remove("_F_L_11_"); } 
         }
 
         public Boolean getIsProperty_F_DT_11_Removed() {
@@ -6833,7 +6833,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_11_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_11_"); } else { removedPropertyNames.remove("_F_DT_11_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_11_"); } else { removedPropertyNames.remove("_F_DT_11_"); } 
         }
 
         public Boolean getIsProperty_F_N_11_Removed() {
@@ -6841,7 +6841,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_11_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_11_"); } else { removedPropertyNames.remove("_F_N_11_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_11_"); } else { removedPropertyNames.remove("_F_N_11_"); } 
         }
 
         public Boolean getIsProperty_F_C5_11_Removed() {
@@ -6849,7 +6849,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_11_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_11_"); } else { removedPropertyNames.remove("_F_C5_11_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_11_"); } else { removedPropertyNames.remove("_F_C5_11_"); } 
         }
 
         public Boolean getIsProperty_F_C10_11_Removed() {
@@ -6857,7 +6857,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_11_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_11_"); } else { removedPropertyNames.remove("_F_C10_11_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_11_"); } else { removedPropertyNames.remove("_F_C10_11_"); } 
         }
 
         public Boolean getIsProperty_F_C20_11_Removed() {
@@ -6865,7 +6865,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_11_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_11_"); } else { removedPropertyNames.remove("_F_C20_11_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_11_"); } else { removedPropertyNames.remove("_F_C20_11_"); } 
         }
 
         public Boolean getIsProperty_F_C50_11_Removed() {
@@ -6873,7 +6873,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_11_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_11_"); } else { removedPropertyNames.remove("_F_C50_11_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_11_"); } else { removedPropertyNames.remove("_F_C50_11_"); } 
         }
 
         public Boolean getIsProperty_F_C100_11_Removed() {
@@ -6881,7 +6881,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_11_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_11_"); } else { removedPropertyNames.remove("_F_C100_11_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_11_"); } else { removedPropertyNames.remove("_F_C100_11_"); } 
         }
 
         public Boolean getIsProperty_F_C200_11_Removed() {
@@ -6889,7 +6889,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_11_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_11_"); } else { removedPropertyNames.remove("_F_C200_11_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_11_"); } else { removedPropertyNames.remove("_F_C200_11_"); } 
         }
 
         public Boolean getIsProperty_F_B_12_Removed() {
@@ -6897,7 +6897,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_12_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_12_"); } else { removedPropertyNames.remove("_F_B_12_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_12_"); } else { removedPropertyNames.remove("_F_B_12_"); } 
         }
 
         public Boolean getIsProperty_F_I_12_Removed() {
@@ -6905,7 +6905,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_12_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_12_"); } else { removedPropertyNames.remove("_F_I_12_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_12_"); } else { removedPropertyNames.remove("_F_I_12_"); } 
         }
 
         public Boolean getIsProperty_F_L_12_Removed() {
@@ -6913,7 +6913,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_12_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_12_"); } else { removedPropertyNames.remove("_F_L_12_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_12_"); } else { removedPropertyNames.remove("_F_L_12_"); } 
         }
 
         public Boolean getIsProperty_F_DT_12_Removed() {
@@ -6921,7 +6921,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_12_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_12_"); } else { removedPropertyNames.remove("_F_DT_12_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_12_"); } else { removedPropertyNames.remove("_F_DT_12_"); } 
         }
 
         public Boolean getIsProperty_F_N_12_Removed() {
@@ -6929,7 +6929,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_12_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_12_"); } else { removedPropertyNames.remove("_F_N_12_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_12_"); } else { removedPropertyNames.remove("_F_N_12_"); } 
         }
 
         public Boolean getIsProperty_F_C5_12_Removed() {
@@ -6937,7 +6937,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_12_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_12_"); } else { removedPropertyNames.remove("_F_C5_12_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_12_"); } else { removedPropertyNames.remove("_F_C5_12_"); } 
         }
 
         public Boolean getIsProperty_F_C10_12_Removed() {
@@ -6945,7 +6945,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_12_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_12_"); } else { removedPropertyNames.remove("_F_C10_12_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_12_"); } else { removedPropertyNames.remove("_F_C10_12_"); } 
         }
 
         public Boolean getIsProperty_F_C20_12_Removed() {
@@ -6953,7 +6953,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_12_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_12_"); } else { removedPropertyNames.remove("_F_C20_12_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_12_"); } else { removedPropertyNames.remove("_F_C20_12_"); } 
         }
 
         public Boolean getIsProperty_F_C50_12_Removed() {
@@ -6961,7 +6961,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_12_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_12_"); } else { removedPropertyNames.remove("_F_C50_12_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_12_"); } else { removedPropertyNames.remove("_F_C50_12_"); } 
         }
 
         public Boolean getIsProperty_F_C100_12_Removed() {
@@ -6969,7 +6969,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_12_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_12_"); } else { removedPropertyNames.remove("_F_C100_12_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_12_"); } else { removedPropertyNames.remove("_F_C100_12_"); } 
         }
 
         public Boolean getIsProperty_F_C200_12_Removed() {
@@ -6977,7 +6977,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_12_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_12_"); } else { removedPropertyNames.remove("_F_C200_12_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_12_"); } else { removedPropertyNames.remove("_F_C200_12_"); } 
         }
 
         public Boolean getIsProperty_F_B_13_Removed() {
@@ -6985,7 +6985,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_13_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_13_"); } else { removedPropertyNames.remove("_F_B_13_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_13_"); } else { removedPropertyNames.remove("_F_B_13_"); } 
         }
 
         public Boolean getIsProperty_F_I_13_Removed() {
@@ -6993,7 +6993,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_13_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_13_"); } else { removedPropertyNames.remove("_F_I_13_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_13_"); } else { removedPropertyNames.remove("_F_I_13_"); } 
         }
 
         public Boolean getIsProperty_F_L_13_Removed() {
@@ -7001,7 +7001,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_13_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_13_"); } else { removedPropertyNames.remove("_F_L_13_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_13_"); } else { removedPropertyNames.remove("_F_L_13_"); } 
         }
 
         public Boolean getIsProperty_F_DT_13_Removed() {
@@ -7009,7 +7009,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_13_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_13_"); } else { removedPropertyNames.remove("_F_DT_13_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_13_"); } else { removedPropertyNames.remove("_F_DT_13_"); } 
         }
 
         public Boolean getIsProperty_F_N_13_Removed() {
@@ -7017,7 +7017,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_13_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_13_"); } else { removedPropertyNames.remove("_F_N_13_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_13_"); } else { removedPropertyNames.remove("_F_N_13_"); } 
         }
 
         public Boolean getIsProperty_F_C5_13_Removed() {
@@ -7025,7 +7025,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_13_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_13_"); } else { removedPropertyNames.remove("_F_C5_13_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_13_"); } else { removedPropertyNames.remove("_F_C5_13_"); } 
         }
 
         public Boolean getIsProperty_F_C10_13_Removed() {
@@ -7033,7 +7033,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_13_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_13_"); } else { removedPropertyNames.remove("_F_C10_13_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_13_"); } else { removedPropertyNames.remove("_F_C10_13_"); } 
         }
 
         public Boolean getIsProperty_F_C20_13_Removed() {
@@ -7041,7 +7041,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_13_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_13_"); } else { removedPropertyNames.remove("_F_C20_13_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_13_"); } else { removedPropertyNames.remove("_F_C20_13_"); } 
         }
 
         public Boolean getIsProperty_F_C50_13_Removed() {
@@ -7049,7 +7049,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_13_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_13_"); } else { removedPropertyNames.remove("_F_C50_13_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_13_"); } else { removedPropertyNames.remove("_F_C50_13_"); } 
         }
 
         public Boolean getIsProperty_F_C100_13_Removed() {
@@ -7057,7 +7057,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_13_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_13_"); } else { removedPropertyNames.remove("_F_C100_13_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_13_"); } else { removedPropertyNames.remove("_F_C100_13_"); } 
         }
 
         public Boolean getIsProperty_F_C200_13_Removed() {
@@ -7065,7 +7065,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_13_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_13_"); } else { removedPropertyNames.remove("_F_C200_13_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_13_"); } else { removedPropertyNames.remove("_F_C200_13_"); } 
         }
 
         public Boolean getIsProperty_F_B_14_Removed() {
@@ -7073,7 +7073,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_14_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_14_"); } else { removedPropertyNames.remove("_F_B_14_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_14_"); } else { removedPropertyNames.remove("_F_B_14_"); } 
         }
 
         public Boolean getIsProperty_F_I_14_Removed() {
@@ -7081,7 +7081,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_14_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_14_"); } else { removedPropertyNames.remove("_F_I_14_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_14_"); } else { removedPropertyNames.remove("_F_I_14_"); } 
         }
 
         public Boolean getIsProperty_F_L_14_Removed() {
@@ -7089,7 +7089,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_14_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_14_"); } else { removedPropertyNames.remove("_F_L_14_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_14_"); } else { removedPropertyNames.remove("_F_L_14_"); } 
         }
 
         public Boolean getIsProperty_F_DT_14_Removed() {
@@ -7097,7 +7097,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_14_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_14_"); } else { removedPropertyNames.remove("_F_DT_14_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_14_"); } else { removedPropertyNames.remove("_F_DT_14_"); } 
         }
 
         public Boolean getIsProperty_F_N_14_Removed() {
@@ -7105,7 +7105,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_14_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_14_"); } else { removedPropertyNames.remove("_F_N_14_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_14_"); } else { removedPropertyNames.remove("_F_N_14_"); } 
         }
 
         public Boolean getIsProperty_F_C5_14_Removed() {
@@ -7113,7 +7113,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_14_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_14_"); } else { removedPropertyNames.remove("_F_C5_14_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_14_"); } else { removedPropertyNames.remove("_F_C5_14_"); } 
         }
 
         public Boolean getIsProperty_F_C10_14_Removed() {
@@ -7121,7 +7121,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_14_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_14_"); } else { removedPropertyNames.remove("_F_C10_14_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_14_"); } else { removedPropertyNames.remove("_F_C10_14_"); } 
         }
 
         public Boolean getIsProperty_F_C20_14_Removed() {
@@ -7129,7 +7129,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_14_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_14_"); } else { removedPropertyNames.remove("_F_C20_14_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_14_"); } else { removedPropertyNames.remove("_F_C20_14_"); } 
         }
 
         public Boolean getIsProperty_F_C50_14_Removed() {
@@ -7137,7 +7137,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_14_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_14_"); } else { removedPropertyNames.remove("_F_C50_14_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_14_"); } else { removedPropertyNames.remove("_F_C50_14_"); } 
         }
 
         public Boolean getIsProperty_F_C100_14_Removed() {
@@ -7145,7 +7145,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_14_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_14_"); } else { removedPropertyNames.remove("_F_C100_14_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_14_"); } else { removedPropertyNames.remove("_F_C100_14_"); } 
         }
 
         public Boolean getIsProperty_F_C200_14_Removed() {
@@ -7153,7 +7153,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_14_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_14_"); } else { removedPropertyNames.remove("_F_C200_14_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_14_"); } else { removedPropertyNames.remove("_F_C200_14_"); } 
         }
 
         public Boolean getIsProperty_F_B_15_Removed() {
@@ -7161,7 +7161,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_15_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_15_"); } else { removedPropertyNames.remove("_F_B_15_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_15_"); } else { removedPropertyNames.remove("_F_B_15_"); } 
         }
 
         public Boolean getIsProperty_F_I_15_Removed() {
@@ -7169,7 +7169,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_15_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_15_"); } else { removedPropertyNames.remove("_F_I_15_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_15_"); } else { removedPropertyNames.remove("_F_I_15_"); } 
         }
 
         public Boolean getIsProperty_F_L_15_Removed() {
@@ -7177,7 +7177,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_15_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_15_"); } else { removedPropertyNames.remove("_F_L_15_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_15_"); } else { removedPropertyNames.remove("_F_L_15_"); } 
         }
 
         public Boolean getIsProperty_F_DT_15_Removed() {
@@ -7185,7 +7185,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_15_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_15_"); } else { removedPropertyNames.remove("_F_DT_15_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_15_"); } else { removedPropertyNames.remove("_F_DT_15_"); } 
         }
 
         public Boolean getIsProperty_F_N_15_Removed() {
@@ -7193,7 +7193,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_15_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_15_"); } else { removedPropertyNames.remove("_F_N_15_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_15_"); } else { removedPropertyNames.remove("_F_N_15_"); } 
         }
 
         public Boolean getIsProperty_F_C5_15_Removed() {
@@ -7201,7 +7201,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_15_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_15_"); } else { removedPropertyNames.remove("_F_C5_15_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_15_"); } else { removedPropertyNames.remove("_F_C5_15_"); } 
         }
 
         public Boolean getIsProperty_F_C10_15_Removed() {
@@ -7209,7 +7209,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_15_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_15_"); } else { removedPropertyNames.remove("_F_C10_15_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_15_"); } else { removedPropertyNames.remove("_F_C10_15_"); } 
         }
 
         public Boolean getIsProperty_F_C20_15_Removed() {
@@ -7217,7 +7217,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_15_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_15_"); } else { removedPropertyNames.remove("_F_C20_15_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_15_"); } else { removedPropertyNames.remove("_F_C20_15_"); } 
         }
 
         public Boolean getIsProperty_F_C50_15_Removed() {
@@ -7225,7 +7225,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_15_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_15_"); } else { removedPropertyNames.remove("_F_C50_15_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_15_"); } else { removedPropertyNames.remove("_F_C50_15_"); } 
         }
 
         public Boolean getIsProperty_F_C100_15_Removed() {
@@ -7233,7 +7233,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_15_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_15_"); } else { removedPropertyNames.remove("_F_C100_15_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_15_"); } else { removedPropertyNames.remove("_F_C100_15_"); } 
         }
 
         public Boolean getIsProperty_F_C200_15_Removed() {
@@ -7241,7 +7241,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_15_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_15_"); } else { removedPropertyNames.remove("_F_C200_15_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_15_"); } else { removedPropertyNames.remove("_F_C200_15_"); } 
         }
 
         public Boolean getIsProperty_F_B_16_Removed() {
@@ -7249,7 +7249,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_16_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_16_"); } else { removedPropertyNames.remove("_F_B_16_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_16_"); } else { removedPropertyNames.remove("_F_B_16_"); } 
         }
 
         public Boolean getIsProperty_F_I_16_Removed() {
@@ -7257,7 +7257,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_16_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_16_"); } else { removedPropertyNames.remove("_F_I_16_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_16_"); } else { removedPropertyNames.remove("_F_I_16_"); } 
         }
 
         public Boolean getIsProperty_F_L_16_Removed() {
@@ -7265,7 +7265,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_16_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_16_"); } else { removedPropertyNames.remove("_F_L_16_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_16_"); } else { removedPropertyNames.remove("_F_L_16_"); } 
         }
 
         public Boolean getIsProperty_F_DT_16_Removed() {
@@ -7273,7 +7273,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_16_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_16_"); } else { removedPropertyNames.remove("_F_DT_16_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_16_"); } else { removedPropertyNames.remove("_F_DT_16_"); } 
         }
 
         public Boolean getIsProperty_F_N_16_Removed() {
@@ -7281,7 +7281,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_16_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_16_"); } else { removedPropertyNames.remove("_F_N_16_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_16_"); } else { removedPropertyNames.remove("_F_N_16_"); } 
         }
 
         public Boolean getIsProperty_F_C5_16_Removed() {
@@ -7289,7 +7289,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_16_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_16_"); } else { removedPropertyNames.remove("_F_C5_16_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_16_"); } else { removedPropertyNames.remove("_F_C5_16_"); } 
         }
 
         public Boolean getIsProperty_F_C10_16_Removed() {
@@ -7297,7 +7297,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_16_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_16_"); } else { removedPropertyNames.remove("_F_C10_16_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_16_"); } else { removedPropertyNames.remove("_F_C10_16_"); } 
         }
 
         public Boolean getIsProperty_F_C20_16_Removed() {
@@ -7305,7 +7305,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_16_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_16_"); } else { removedPropertyNames.remove("_F_C20_16_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_16_"); } else { removedPropertyNames.remove("_F_C20_16_"); } 
         }
 
         public Boolean getIsProperty_F_C50_16_Removed() {
@@ -7313,7 +7313,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_16_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_16_"); } else { removedPropertyNames.remove("_F_C50_16_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_16_"); } else { removedPropertyNames.remove("_F_C50_16_"); } 
         }
 
         public Boolean getIsProperty_F_C100_16_Removed() {
@@ -7321,7 +7321,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_16_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_16_"); } else { removedPropertyNames.remove("_F_C100_16_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_16_"); } else { removedPropertyNames.remove("_F_C100_16_"); } 
         }
 
         public Boolean getIsProperty_F_C200_16_Removed() {
@@ -7329,7 +7329,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_16_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_16_"); } else { removedPropertyNames.remove("_F_C200_16_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_16_"); } else { removedPropertyNames.remove("_F_C200_16_"); } 
         }
 
         public Boolean getIsProperty_F_B_17_Removed() {
@@ -7337,7 +7337,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_17_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_17_"); } else { removedPropertyNames.remove("_F_B_17_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_17_"); } else { removedPropertyNames.remove("_F_B_17_"); } 
         }
 
         public Boolean getIsProperty_F_I_17_Removed() {
@@ -7345,7 +7345,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_17_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_17_"); } else { removedPropertyNames.remove("_F_I_17_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_17_"); } else { removedPropertyNames.remove("_F_I_17_"); } 
         }
 
         public Boolean getIsProperty_F_L_17_Removed() {
@@ -7353,7 +7353,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_17_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_17_"); } else { removedPropertyNames.remove("_F_L_17_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_17_"); } else { removedPropertyNames.remove("_F_L_17_"); } 
         }
 
         public Boolean getIsProperty_F_DT_17_Removed() {
@@ -7361,7 +7361,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_17_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_17_"); } else { removedPropertyNames.remove("_F_DT_17_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_17_"); } else { removedPropertyNames.remove("_F_DT_17_"); } 
         }
 
         public Boolean getIsProperty_F_N_17_Removed() {
@@ -7369,7 +7369,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_17_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_17_"); } else { removedPropertyNames.remove("_F_N_17_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_17_"); } else { removedPropertyNames.remove("_F_N_17_"); } 
         }
 
         public Boolean getIsProperty_F_C5_17_Removed() {
@@ -7377,7 +7377,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_17_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_17_"); } else { removedPropertyNames.remove("_F_C5_17_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_17_"); } else { removedPropertyNames.remove("_F_C5_17_"); } 
         }
 
         public Boolean getIsProperty_F_C10_17_Removed() {
@@ -7385,7 +7385,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_17_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_17_"); } else { removedPropertyNames.remove("_F_C10_17_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_17_"); } else { removedPropertyNames.remove("_F_C10_17_"); } 
         }
 
         public Boolean getIsProperty_F_C20_17_Removed() {
@@ -7393,7 +7393,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_17_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_17_"); } else { removedPropertyNames.remove("_F_C20_17_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_17_"); } else { removedPropertyNames.remove("_F_C20_17_"); } 
         }
 
         public Boolean getIsProperty_F_C50_17_Removed() {
@@ -7401,7 +7401,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_17_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_17_"); } else { removedPropertyNames.remove("_F_C50_17_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_17_"); } else { removedPropertyNames.remove("_F_C50_17_"); } 
         }
 
         public Boolean getIsProperty_F_C100_17_Removed() {
@@ -7409,7 +7409,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_17_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_17_"); } else { removedPropertyNames.remove("_F_C100_17_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_17_"); } else { removedPropertyNames.remove("_F_C100_17_"); } 
         }
 
         public Boolean getIsProperty_F_C200_17_Removed() {
@@ -7417,7 +7417,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_17_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_17_"); } else { removedPropertyNames.remove("_F_C200_17_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_17_"); } else { removedPropertyNames.remove("_F_C200_17_"); } 
         }
 
         public Boolean getIsProperty_F_B_18_Removed() {
@@ -7425,7 +7425,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_18_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_18_"); } else { removedPropertyNames.remove("_F_B_18_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_18_"); } else { removedPropertyNames.remove("_F_B_18_"); } 
         }
 
         public Boolean getIsProperty_F_I_18_Removed() {
@@ -7433,7 +7433,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_18_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_18_"); } else { removedPropertyNames.remove("_F_I_18_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_18_"); } else { removedPropertyNames.remove("_F_I_18_"); } 
         }
 
         public Boolean getIsProperty_F_L_18_Removed() {
@@ -7441,7 +7441,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_18_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_18_"); } else { removedPropertyNames.remove("_F_L_18_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_18_"); } else { removedPropertyNames.remove("_F_L_18_"); } 
         }
 
         public Boolean getIsProperty_F_DT_18_Removed() {
@@ -7449,7 +7449,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_18_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_18_"); } else { removedPropertyNames.remove("_F_DT_18_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_18_"); } else { removedPropertyNames.remove("_F_DT_18_"); } 
         }
 
         public Boolean getIsProperty_F_N_18_Removed() {
@@ -7457,7 +7457,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_18_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_18_"); } else { removedPropertyNames.remove("_F_N_18_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_18_"); } else { removedPropertyNames.remove("_F_N_18_"); } 
         }
 
         public Boolean getIsProperty_F_C5_18_Removed() {
@@ -7465,7 +7465,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_18_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_18_"); } else { removedPropertyNames.remove("_F_C5_18_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_18_"); } else { removedPropertyNames.remove("_F_C5_18_"); } 
         }
 
         public Boolean getIsProperty_F_C10_18_Removed() {
@@ -7473,7 +7473,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_18_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_18_"); } else { removedPropertyNames.remove("_F_C10_18_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_18_"); } else { removedPropertyNames.remove("_F_C10_18_"); } 
         }
 
         public Boolean getIsProperty_F_C20_18_Removed() {
@@ -7481,7 +7481,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_18_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_18_"); } else { removedPropertyNames.remove("_F_C20_18_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_18_"); } else { removedPropertyNames.remove("_F_C20_18_"); } 
         }
 
         public Boolean getIsProperty_F_C50_18_Removed() {
@@ -7489,7 +7489,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_18_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_18_"); } else { removedPropertyNames.remove("_F_C50_18_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_18_"); } else { removedPropertyNames.remove("_F_C50_18_"); } 
         }
 
         public Boolean getIsProperty_F_C100_18_Removed() {
@@ -7497,7 +7497,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_18_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_18_"); } else { removedPropertyNames.remove("_F_C100_18_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_18_"); } else { removedPropertyNames.remove("_F_C100_18_"); } 
         }
 
         public Boolean getIsProperty_F_C200_18_Removed() {
@@ -7505,7 +7505,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_18_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_18_"); } else { removedPropertyNames.remove("_F_C200_18_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_18_"); } else { removedPropertyNames.remove("_F_C200_18_"); } 
         }
 
         public Boolean getIsProperty_F_B_19_Removed() {
@@ -7513,7 +7513,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_19_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_19_"); } else { removedPropertyNames.remove("_F_B_19_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_19_"); } else { removedPropertyNames.remove("_F_B_19_"); } 
         }
 
         public Boolean getIsProperty_F_I_19_Removed() {
@@ -7521,7 +7521,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_19_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_19_"); } else { removedPropertyNames.remove("_F_I_19_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_19_"); } else { removedPropertyNames.remove("_F_I_19_"); } 
         }
 
         public Boolean getIsProperty_F_L_19_Removed() {
@@ -7529,7 +7529,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_19_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_19_"); } else { removedPropertyNames.remove("_F_L_19_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_19_"); } else { removedPropertyNames.remove("_F_L_19_"); } 
         }
 
         public Boolean getIsProperty_F_DT_19_Removed() {
@@ -7537,7 +7537,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_DT_19_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_DT_19_"); } else { removedPropertyNames.remove("_F_DT_19_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_DT_19_"); } else { removedPropertyNames.remove("_F_DT_19_"); } 
         }
 
         public Boolean getIsProperty_F_N_19_Removed() {
@@ -7545,7 +7545,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_19_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_19_"); } else { removedPropertyNames.remove("_F_N_19_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_19_"); } else { removedPropertyNames.remove("_F_N_19_"); } 
         }
 
         public Boolean getIsProperty_F_C5_19_Removed() {
@@ -7553,7 +7553,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_19_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_19_"); } else { removedPropertyNames.remove("_F_C5_19_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_19_"); } else { removedPropertyNames.remove("_F_C5_19_"); } 
         }
 
         public Boolean getIsProperty_F_C10_19_Removed() {
@@ -7561,7 +7561,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_19_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_19_"); } else { removedPropertyNames.remove("_F_C10_19_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_19_"); } else { removedPropertyNames.remove("_F_C10_19_"); } 
         }
 
         public Boolean getIsProperty_F_C20_19_Removed() {
@@ -7569,7 +7569,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_19_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_19_"); } else { removedPropertyNames.remove("_F_C20_19_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_19_"); } else { removedPropertyNames.remove("_F_C20_19_"); } 
         }
 
         public Boolean getIsProperty_F_C50_19_Removed() {
@@ -7577,7 +7577,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_19_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_19_"); } else { removedPropertyNames.remove("_F_C50_19_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_19_"); } else { removedPropertyNames.remove("_F_C50_19_"); } 
         }
 
         public Boolean getIsProperty_F_C100_19_Removed() {
@@ -7585,7 +7585,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C100_19_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C100_19_"); } else { removedPropertyNames.remove("_F_C100_19_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C100_19_"); } else { removedPropertyNames.remove("_F_C100_19_"); } 
         }
 
         public Boolean getIsProperty_F_C200_19_Removed() {
@@ -7593,7 +7593,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C200_19_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C200_19_"); } else { removedPropertyNames.remove("_F_C200_19_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C200_19_"); } else { removedPropertyNames.remove("_F_C200_19_"); } 
         }
 
         public Boolean getIsProperty_F_B_20_Removed() {
@@ -7601,7 +7601,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_20_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_20_"); } else { removedPropertyNames.remove("_F_B_20_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_20_"); } else { removedPropertyNames.remove("_F_B_20_"); } 
         }
 
         public Boolean getIsProperty_F_I_20_Removed() {
@@ -7609,7 +7609,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_20_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_20_"); } else { removedPropertyNames.remove("_F_I_20_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_20_"); } else { removedPropertyNames.remove("_F_I_20_"); } 
         }
 
         public Boolean getIsProperty_F_L_20_Removed() {
@@ -7617,7 +7617,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_20_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_20_"); } else { removedPropertyNames.remove("_F_L_20_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_20_"); } else { removedPropertyNames.remove("_F_L_20_"); } 
         }
 
         public Boolean getIsProperty_F_N_20_Removed() {
@@ -7625,7 +7625,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_20_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_20_"); } else { removedPropertyNames.remove("_F_N_20_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_20_"); } else { removedPropertyNames.remove("_F_N_20_"); } 
         }
 
         public Boolean getIsProperty_F_C5_20_Removed() {
@@ -7633,7 +7633,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_20_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_20_"); } else { removedPropertyNames.remove("_F_C5_20_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_20_"); } else { removedPropertyNames.remove("_F_C5_20_"); } 
         }
 
         public Boolean getIsProperty_F_C10_20_Removed() {
@@ -7641,7 +7641,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_20_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_20_"); } else { removedPropertyNames.remove("_F_C10_20_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_20_"); } else { removedPropertyNames.remove("_F_C10_20_"); } 
         }
 
         public Boolean getIsProperty_F_C20_20_Removed() {
@@ -7649,7 +7649,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_20_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_20_"); } else { removedPropertyNames.remove("_F_C20_20_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_20_"); } else { removedPropertyNames.remove("_F_C20_20_"); } 
         }
 
         public Boolean getIsProperty_F_C50_20_Removed() {
@@ -7657,7 +7657,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_20_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_20_"); } else { removedPropertyNames.remove("_F_C50_20_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_20_"); } else { removedPropertyNames.remove("_F_C50_20_"); } 
         }
 
         public Boolean getIsProperty_F_B_21_Removed() {
@@ -7665,7 +7665,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_21_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_21_"); } else { removedPropertyNames.remove("_F_B_21_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_21_"); } else { removedPropertyNames.remove("_F_B_21_"); } 
         }
 
         public Boolean getIsProperty_F_I_21_Removed() {
@@ -7673,7 +7673,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_21_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_21_"); } else { removedPropertyNames.remove("_F_I_21_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_21_"); } else { removedPropertyNames.remove("_F_I_21_"); } 
         }
 
         public Boolean getIsProperty_F_L_21_Removed() {
@@ -7681,7 +7681,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_21_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_21_"); } else { removedPropertyNames.remove("_F_L_21_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_21_"); } else { removedPropertyNames.remove("_F_L_21_"); } 
         }
 
         public Boolean getIsProperty_F_N_21_Removed() {
@@ -7689,7 +7689,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_21_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_21_"); } else { removedPropertyNames.remove("_F_N_21_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_21_"); } else { removedPropertyNames.remove("_F_N_21_"); } 
         }
 
         public Boolean getIsProperty_F_C5_21_Removed() {
@@ -7697,7 +7697,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_21_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_21_"); } else { removedPropertyNames.remove("_F_C5_21_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_21_"); } else { removedPropertyNames.remove("_F_C5_21_"); } 
         }
 
         public Boolean getIsProperty_F_C10_21_Removed() {
@@ -7705,7 +7705,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_21_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_21_"); } else { removedPropertyNames.remove("_F_C10_21_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_21_"); } else { removedPropertyNames.remove("_F_C10_21_"); } 
         }
 
         public Boolean getIsProperty_F_C20_21_Removed() {
@@ -7713,7 +7713,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_21_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_21_"); } else { removedPropertyNames.remove("_F_C20_21_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_21_"); } else { removedPropertyNames.remove("_F_C20_21_"); } 
         }
 
         public Boolean getIsProperty_F_C50_21_Removed() {
@@ -7721,7 +7721,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_21_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_21_"); } else { removedPropertyNames.remove("_F_C50_21_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_21_"); } else { removedPropertyNames.remove("_F_C50_21_"); } 
         }
 
         public Boolean getIsProperty_F_B_22_Removed() {
@@ -7729,7 +7729,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_22_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_22_"); } else { removedPropertyNames.remove("_F_B_22_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_22_"); } else { removedPropertyNames.remove("_F_B_22_"); } 
         }
 
         public Boolean getIsProperty_F_I_22_Removed() {
@@ -7737,7 +7737,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_22_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_22_"); } else { removedPropertyNames.remove("_F_I_22_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_22_"); } else { removedPropertyNames.remove("_F_I_22_"); } 
         }
 
         public Boolean getIsProperty_F_L_22_Removed() {
@@ -7745,7 +7745,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_22_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_22_"); } else { removedPropertyNames.remove("_F_L_22_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_22_"); } else { removedPropertyNames.remove("_F_L_22_"); } 
         }
 
         public Boolean getIsProperty_F_N_22_Removed() {
@@ -7753,7 +7753,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_22_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_22_"); } else { removedPropertyNames.remove("_F_N_22_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_22_"); } else { removedPropertyNames.remove("_F_N_22_"); } 
         }
 
         public Boolean getIsProperty_F_C5_22_Removed() {
@@ -7761,7 +7761,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_22_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_22_"); } else { removedPropertyNames.remove("_F_C5_22_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_22_"); } else { removedPropertyNames.remove("_F_C5_22_"); } 
         }
 
         public Boolean getIsProperty_F_C10_22_Removed() {
@@ -7769,7 +7769,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_22_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_22_"); } else { removedPropertyNames.remove("_F_C10_22_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_22_"); } else { removedPropertyNames.remove("_F_C10_22_"); } 
         }
 
         public Boolean getIsProperty_F_C20_22_Removed() {
@@ -7777,7 +7777,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_22_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_22_"); } else { removedPropertyNames.remove("_F_C20_22_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_22_"); } else { removedPropertyNames.remove("_F_C20_22_"); } 
         }
 
         public Boolean getIsProperty_F_C50_22_Removed() {
@@ -7785,7 +7785,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_22_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_22_"); } else { removedPropertyNames.remove("_F_C50_22_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_22_"); } else { removedPropertyNames.remove("_F_C50_22_"); } 
         }
 
         public Boolean getIsProperty_F_B_23_Removed() {
@@ -7793,7 +7793,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_23_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_23_"); } else { removedPropertyNames.remove("_F_B_23_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_23_"); } else { removedPropertyNames.remove("_F_B_23_"); } 
         }
 
         public Boolean getIsProperty_F_I_23_Removed() {
@@ -7801,7 +7801,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_23_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_23_"); } else { removedPropertyNames.remove("_F_I_23_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_23_"); } else { removedPropertyNames.remove("_F_I_23_"); } 
         }
 
         public Boolean getIsProperty_F_L_23_Removed() {
@@ -7809,7 +7809,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_23_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_23_"); } else { removedPropertyNames.remove("_F_L_23_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_23_"); } else { removedPropertyNames.remove("_F_L_23_"); } 
         }
 
         public Boolean getIsProperty_F_N_23_Removed() {
@@ -7817,7 +7817,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_23_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_23_"); } else { removedPropertyNames.remove("_F_N_23_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_23_"); } else { removedPropertyNames.remove("_F_N_23_"); } 
         }
 
         public Boolean getIsProperty_F_C5_23_Removed() {
@@ -7825,7 +7825,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_23_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_23_"); } else { removedPropertyNames.remove("_F_C5_23_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_23_"); } else { removedPropertyNames.remove("_F_C5_23_"); } 
         }
 
         public Boolean getIsProperty_F_C10_23_Removed() {
@@ -7833,7 +7833,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_23_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_23_"); } else { removedPropertyNames.remove("_F_C10_23_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_23_"); } else { removedPropertyNames.remove("_F_C10_23_"); } 
         }
 
         public Boolean getIsProperty_F_C20_23_Removed() {
@@ -7841,7 +7841,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_23_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_23_"); } else { removedPropertyNames.remove("_F_C20_23_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_23_"); } else { removedPropertyNames.remove("_F_C20_23_"); } 
         }
 
         public Boolean getIsProperty_F_C50_23_Removed() {
@@ -7849,7 +7849,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_23_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_23_"); } else { removedPropertyNames.remove("_F_C50_23_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_23_"); } else { removedPropertyNames.remove("_F_C50_23_"); } 
         }
 
         public Boolean getIsProperty_F_B_24_Removed() {
@@ -7857,7 +7857,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_24_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_24_"); } else { removedPropertyNames.remove("_F_B_24_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_24_"); } else { removedPropertyNames.remove("_F_B_24_"); } 
         }
 
         public Boolean getIsProperty_F_I_24_Removed() {
@@ -7865,7 +7865,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_24_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_24_"); } else { removedPropertyNames.remove("_F_I_24_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_24_"); } else { removedPropertyNames.remove("_F_I_24_"); } 
         }
 
         public Boolean getIsProperty_F_L_24_Removed() {
@@ -7873,7 +7873,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_24_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_24_"); } else { removedPropertyNames.remove("_F_L_24_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_24_"); } else { removedPropertyNames.remove("_F_L_24_"); } 
         }
 
         public Boolean getIsProperty_F_N_24_Removed() {
@@ -7881,7 +7881,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_24_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_24_"); } else { removedPropertyNames.remove("_F_N_24_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_24_"); } else { removedPropertyNames.remove("_F_N_24_"); } 
         }
 
         public Boolean getIsProperty_F_C5_24_Removed() {
@@ -7889,7 +7889,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_24_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_24_"); } else { removedPropertyNames.remove("_F_C5_24_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_24_"); } else { removedPropertyNames.remove("_F_C5_24_"); } 
         }
 
         public Boolean getIsProperty_F_C10_24_Removed() {
@@ -7897,7 +7897,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_24_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_24_"); } else { removedPropertyNames.remove("_F_C10_24_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_24_"); } else { removedPropertyNames.remove("_F_C10_24_"); } 
         }
 
         public Boolean getIsProperty_F_C20_24_Removed() {
@@ -7905,7 +7905,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_24_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_24_"); } else { removedPropertyNames.remove("_F_C20_24_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_24_"); } else { removedPropertyNames.remove("_F_C20_24_"); } 
         }
 
         public Boolean getIsProperty_F_C50_24_Removed() {
@@ -7913,7 +7913,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_24_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_24_"); } else { removedPropertyNames.remove("_F_C50_24_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_24_"); } else { removedPropertyNames.remove("_F_C50_24_"); } 
         }
 
         public Boolean getIsProperty_F_B_25_Removed() {
@@ -7921,7 +7921,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_25_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_25_"); } else { removedPropertyNames.remove("_F_B_25_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_25_"); } else { removedPropertyNames.remove("_F_B_25_"); } 
         }
 
         public Boolean getIsProperty_F_I_25_Removed() {
@@ -7929,7 +7929,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_25_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_25_"); } else { removedPropertyNames.remove("_F_I_25_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_25_"); } else { removedPropertyNames.remove("_F_I_25_"); } 
         }
 
         public Boolean getIsProperty_F_L_25_Removed() {
@@ -7937,7 +7937,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_25_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_25_"); } else { removedPropertyNames.remove("_F_L_25_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_25_"); } else { removedPropertyNames.remove("_F_L_25_"); } 
         }
 
         public Boolean getIsProperty_F_N_25_Removed() {
@@ -7945,7 +7945,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_25_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_25_"); } else { removedPropertyNames.remove("_F_N_25_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_25_"); } else { removedPropertyNames.remove("_F_N_25_"); } 
         }
 
         public Boolean getIsProperty_F_C5_25_Removed() {
@@ -7953,7 +7953,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_25_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_25_"); } else { removedPropertyNames.remove("_F_C5_25_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_25_"); } else { removedPropertyNames.remove("_F_C5_25_"); } 
         }
 
         public Boolean getIsProperty_F_C10_25_Removed() {
@@ -7961,7 +7961,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_25_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_25_"); } else { removedPropertyNames.remove("_F_C10_25_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_25_"); } else { removedPropertyNames.remove("_F_C10_25_"); } 
         }
 
         public Boolean getIsProperty_F_C20_25_Removed() {
@@ -7969,7 +7969,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_25_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_25_"); } else { removedPropertyNames.remove("_F_C20_25_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_25_"); } else { removedPropertyNames.remove("_F_C20_25_"); } 
         }
 
         public Boolean getIsProperty_F_C50_25_Removed() {
@@ -7977,7 +7977,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_25_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_25_"); } else { removedPropertyNames.remove("_F_C50_25_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_25_"); } else { removedPropertyNames.remove("_F_C50_25_"); } 
         }
 
         public Boolean getIsProperty_F_B_26_Removed() {
@@ -7985,7 +7985,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_26_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_26_"); } else { removedPropertyNames.remove("_F_B_26_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_26_"); } else { removedPropertyNames.remove("_F_B_26_"); } 
         }
 
         public Boolean getIsProperty_F_I_26_Removed() {
@@ -7993,7 +7993,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_26_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_26_"); } else { removedPropertyNames.remove("_F_I_26_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_26_"); } else { removedPropertyNames.remove("_F_I_26_"); } 
         }
 
         public Boolean getIsProperty_F_L_26_Removed() {
@@ -8001,7 +8001,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_26_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_26_"); } else { removedPropertyNames.remove("_F_L_26_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_26_"); } else { removedPropertyNames.remove("_F_L_26_"); } 
         }
 
         public Boolean getIsProperty_F_N_26_Removed() {
@@ -8009,7 +8009,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_26_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_26_"); } else { removedPropertyNames.remove("_F_N_26_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_26_"); } else { removedPropertyNames.remove("_F_N_26_"); } 
         }
 
         public Boolean getIsProperty_F_C5_26_Removed() {
@@ -8017,7 +8017,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_26_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_26_"); } else { removedPropertyNames.remove("_F_C5_26_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_26_"); } else { removedPropertyNames.remove("_F_C5_26_"); } 
         }
 
         public Boolean getIsProperty_F_C10_26_Removed() {
@@ -8025,7 +8025,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_26_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_26_"); } else { removedPropertyNames.remove("_F_C10_26_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_26_"); } else { removedPropertyNames.remove("_F_C10_26_"); } 
         }
 
         public Boolean getIsProperty_F_C20_26_Removed() {
@@ -8033,7 +8033,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_26_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_26_"); } else { removedPropertyNames.remove("_F_C20_26_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_26_"); } else { removedPropertyNames.remove("_F_C20_26_"); } 
         }
 
         public Boolean getIsProperty_F_C50_26_Removed() {
@@ -8041,7 +8041,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_26_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_26_"); } else { removedPropertyNames.remove("_F_C50_26_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_26_"); } else { removedPropertyNames.remove("_F_C50_26_"); } 
         }
 
         public Boolean getIsProperty_F_B_27_Removed() {
@@ -8049,7 +8049,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_27_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_27_"); } else { removedPropertyNames.remove("_F_B_27_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_27_"); } else { removedPropertyNames.remove("_F_B_27_"); } 
         }
 
         public Boolean getIsProperty_F_I_27_Removed() {
@@ -8057,7 +8057,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_27_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_27_"); } else { removedPropertyNames.remove("_F_I_27_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_27_"); } else { removedPropertyNames.remove("_F_I_27_"); } 
         }
 
         public Boolean getIsProperty_F_L_27_Removed() {
@@ -8065,7 +8065,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_27_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_27_"); } else { removedPropertyNames.remove("_F_L_27_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_27_"); } else { removedPropertyNames.remove("_F_L_27_"); } 
         }
 
         public Boolean getIsProperty_F_N_27_Removed() {
@@ -8073,7 +8073,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_27_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_27_"); } else { removedPropertyNames.remove("_F_N_27_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_27_"); } else { removedPropertyNames.remove("_F_N_27_"); } 
         }
 
         public Boolean getIsProperty_F_C5_27_Removed() {
@@ -8081,7 +8081,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_27_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_27_"); } else { removedPropertyNames.remove("_F_C5_27_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_27_"); } else { removedPropertyNames.remove("_F_C5_27_"); } 
         }
 
         public Boolean getIsProperty_F_C10_27_Removed() {
@@ -8089,7 +8089,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_27_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_27_"); } else { removedPropertyNames.remove("_F_C10_27_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_27_"); } else { removedPropertyNames.remove("_F_C10_27_"); } 
         }
 
         public Boolean getIsProperty_F_C20_27_Removed() {
@@ -8097,7 +8097,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_27_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_27_"); } else { removedPropertyNames.remove("_F_C20_27_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_27_"); } else { removedPropertyNames.remove("_F_C20_27_"); } 
         }
 
         public Boolean getIsProperty_F_C50_27_Removed() {
@@ -8105,7 +8105,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_27_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_27_"); } else { removedPropertyNames.remove("_F_C50_27_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_27_"); } else { removedPropertyNames.remove("_F_C50_27_"); } 
         }
 
         public Boolean getIsProperty_F_B_28_Removed() {
@@ -8113,7 +8113,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_28_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_28_"); } else { removedPropertyNames.remove("_F_B_28_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_28_"); } else { removedPropertyNames.remove("_F_B_28_"); } 
         }
 
         public Boolean getIsProperty_F_I_28_Removed() {
@@ -8121,7 +8121,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_28_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_28_"); } else { removedPropertyNames.remove("_F_I_28_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_28_"); } else { removedPropertyNames.remove("_F_I_28_"); } 
         }
 
         public Boolean getIsProperty_F_L_28_Removed() {
@@ -8129,7 +8129,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_28_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_28_"); } else { removedPropertyNames.remove("_F_L_28_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_28_"); } else { removedPropertyNames.remove("_F_L_28_"); } 
         }
 
         public Boolean getIsProperty_F_N_28_Removed() {
@@ -8137,7 +8137,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_28_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_28_"); } else { removedPropertyNames.remove("_F_N_28_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_28_"); } else { removedPropertyNames.remove("_F_N_28_"); } 
         }
 
         public Boolean getIsProperty_F_C5_28_Removed() {
@@ -8145,7 +8145,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_28_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_28_"); } else { removedPropertyNames.remove("_F_C5_28_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_28_"); } else { removedPropertyNames.remove("_F_C5_28_"); } 
         }
 
         public Boolean getIsProperty_F_C10_28_Removed() {
@@ -8153,7 +8153,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_28_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_28_"); } else { removedPropertyNames.remove("_F_C10_28_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_28_"); } else { removedPropertyNames.remove("_F_C10_28_"); } 
         }
 
         public Boolean getIsProperty_F_C20_28_Removed() {
@@ -8161,7 +8161,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_28_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_28_"); } else { removedPropertyNames.remove("_F_C20_28_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_28_"); } else { removedPropertyNames.remove("_F_C20_28_"); } 
         }
 
         public Boolean getIsProperty_F_C50_28_Removed() {
@@ -8169,7 +8169,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_28_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_28_"); } else { removedPropertyNames.remove("_F_C50_28_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_28_"); } else { removedPropertyNames.remove("_F_C50_28_"); } 
         }
 
         public Boolean getIsProperty_F_B_29_Removed() {
@@ -8177,7 +8177,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_29_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_29_"); } else { removedPropertyNames.remove("_F_B_29_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_29_"); } else { removedPropertyNames.remove("_F_B_29_"); } 
         }
 
         public Boolean getIsProperty_F_I_29_Removed() {
@@ -8185,7 +8185,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_29_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_29_"); } else { removedPropertyNames.remove("_F_I_29_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_29_"); } else { removedPropertyNames.remove("_F_I_29_"); } 
         }
 
         public Boolean getIsProperty_F_L_29_Removed() {
@@ -8193,7 +8193,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_L_29_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_L_29_"); } else { removedPropertyNames.remove("_F_L_29_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_L_29_"); } else { removedPropertyNames.remove("_F_L_29_"); } 
         }
 
         public Boolean getIsProperty_F_N_29_Removed() {
@@ -8201,7 +8201,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_29_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_29_"); } else { removedPropertyNames.remove("_F_N_29_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_29_"); } else { removedPropertyNames.remove("_F_N_29_"); } 
         }
 
         public Boolean getIsProperty_F_C5_29_Removed() {
@@ -8209,7 +8209,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_29_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_29_"); } else { removedPropertyNames.remove("_F_C5_29_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_29_"); } else { removedPropertyNames.remove("_F_C5_29_"); } 
         }
 
         public Boolean getIsProperty_F_C10_29_Removed() {
@@ -8217,7 +8217,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_29_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_29_"); } else { removedPropertyNames.remove("_F_C10_29_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_29_"); } else { removedPropertyNames.remove("_F_C10_29_"); } 
         }
 
         public Boolean getIsProperty_F_C20_29_Removed() {
@@ -8225,7 +8225,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_29_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_29_"); } else { removedPropertyNames.remove("_F_C20_29_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_29_"); } else { removedPropertyNames.remove("_F_C20_29_"); } 
         }
 
         public Boolean getIsProperty_F_C50_29_Removed() {
@@ -8233,7 +8233,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_29_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_29_"); } else { removedPropertyNames.remove("_F_C50_29_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_29_"); } else { removedPropertyNames.remove("_F_C50_29_"); } 
         }
 
         public Boolean getIsProperty_F_B_30_Removed() {
@@ -8241,7 +8241,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_30_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_30_"); } else { removedPropertyNames.remove("_F_B_30_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_30_"); } else { removedPropertyNames.remove("_F_B_30_"); } 
         }
 
         public Boolean getIsProperty_F_I_30_Removed() {
@@ -8249,7 +8249,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_30_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_30_"); } else { removedPropertyNames.remove("_F_I_30_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_30_"); } else { removedPropertyNames.remove("_F_I_30_"); } 
         }
 
         public Boolean getIsProperty_F_N_30_Removed() {
@@ -8257,7 +8257,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_30_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_30_"); } else { removedPropertyNames.remove("_F_N_30_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_30_"); } else { removedPropertyNames.remove("_F_N_30_"); } 
         }
 
         public Boolean getIsProperty_F_C5_30_Removed() {
@@ -8265,7 +8265,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_30_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_30_"); } else { removedPropertyNames.remove("_F_C5_30_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_30_"); } else { removedPropertyNames.remove("_F_C5_30_"); } 
         }
 
         public Boolean getIsProperty_F_C10_30_Removed() {
@@ -8273,7 +8273,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_30_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_30_"); } else { removedPropertyNames.remove("_F_C10_30_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_30_"); } else { removedPropertyNames.remove("_F_C10_30_"); } 
         }
 
         public Boolean getIsProperty_F_C20_30_Removed() {
@@ -8281,7 +8281,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_30_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_30_"); } else { removedPropertyNames.remove("_F_C20_30_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_30_"); } else { removedPropertyNames.remove("_F_C20_30_"); } 
         }
 
         public Boolean getIsProperty_F_C50_30_Removed() {
@@ -8289,7 +8289,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_30_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_30_"); } else { removedPropertyNames.remove("_F_C50_30_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_30_"); } else { removedPropertyNames.remove("_F_C50_30_"); } 
         }
 
         public Boolean getIsProperty_F_B_31_Removed() {
@@ -8297,7 +8297,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_31_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_31_"); } else { removedPropertyNames.remove("_F_B_31_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_31_"); } else { removedPropertyNames.remove("_F_B_31_"); } 
         }
 
         public Boolean getIsProperty_F_I_31_Removed() {
@@ -8305,7 +8305,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_31_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_31_"); } else { removedPropertyNames.remove("_F_I_31_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_31_"); } else { removedPropertyNames.remove("_F_I_31_"); } 
         }
 
         public Boolean getIsProperty_F_N_31_Removed() {
@@ -8313,7 +8313,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_31_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_31_"); } else { removedPropertyNames.remove("_F_N_31_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_31_"); } else { removedPropertyNames.remove("_F_N_31_"); } 
         }
 
         public Boolean getIsProperty_F_C5_31_Removed() {
@@ -8321,7 +8321,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_31_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_31_"); } else { removedPropertyNames.remove("_F_C5_31_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_31_"); } else { removedPropertyNames.remove("_F_C5_31_"); } 
         }
 
         public Boolean getIsProperty_F_C10_31_Removed() {
@@ -8329,7 +8329,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_31_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_31_"); } else { removedPropertyNames.remove("_F_C10_31_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_31_"); } else { removedPropertyNames.remove("_F_C10_31_"); } 
         }
 
         public Boolean getIsProperty_F_C20_31_Removed() {
@@ -8337,7 +8337,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_31_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_31_"); } else { removedPropertyNames.remove("_F_C20_31_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_31_"); } else { removedPropertyNames.remove("_F_C20_31_"); } 
         }
 
         public Boolean getIsProperty_F_C50_31_Removed() {
@@ -8345,7 +8345,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_31_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_31_"); } else { removedPropertyNames.remove("_F_C50_31_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_31_"); } else { removedPropertyNames.remove("_F_C50_31_"); } 
         }
 
         public Boolean getIsProperty_F_B_32_Removed() {
@@ -8353,7 +8353,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_32_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_32_"); } else { removedPropertyNames.remove("_F_B_32_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_32_"); } else { removedPropertyNames.remove("_F_B_32_"); } 
         }
 
         public Boolean getIsProperty_F_I_32_Removed() {
@@ -8361,7 +8361,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_32_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_32_"); } else { removedPropertyNames.remove("_F_I_32_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_32_"); } else { removedPropertyNames.remove("_F_I_32_"); } 
         }
 
         public Boolean getIsProperty_F_N_32_Removed() {
@@ -8369,7 +8369,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_32_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_32_"); } else { removedPropertyNames.remove("_F_N_32_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_32_"); } else { removedPropertyNames.remove("_F_N_32_"); } 
         }
 
         public Boolean getIsProperty_F_C5_32_Removed() {
@@ -8377,7 +8377,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_32_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_32_"); } else { removedPropertyNames.remove("_F_C5_32_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_32_"); } else { removedPropertyNames.remove("_F_C5_32_"); } 
         }
 
         public Boolean getIsProperty_F_C10_32_Removed() {
@@ -8385,7 +8385,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_32_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_32_"); } else { removedPropertyNames.remove("_F_C10_32_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_32_"); } else { removedPropertyNames.remove("_F_C10_32_"); } 
         }
 
         public Boolean getIsProperty_F_C20_32_Removed() {
@@ -8393,7 +8393,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_32_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_32_"); } else { removedPropertyNames.remove("_F_C20_32_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_32_"); } else { removedPropertyNames.remove("_F_C20_32_"); } 
         }
 
         public Boolean getIsProperty_F_C50_32_Removed() {
@@ -8401,7 +8401,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_32_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_32_"); } else { removedPropertyNames.remove("_F_C50_32_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_32_"); } else { removedPropertyNames.remove("_F_C50_32_"); } 
         }
 
         public Boolean getIsProperty_F_B_33_Removed() {
@@ -8409,7 +8409,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_33_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_33_"); } else { removedPropertyNames.remove("_F_B_33_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_33_"); } else { removedPropertyNames.remove("_F_B_33_"); } 
         }
 
         public Boolean getIsProperty_F_I_33_Removed() {
@@ -8417,7 +8417,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_33_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_33_"); } else { removedPropertyNames.remove("_F_I_33_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_33_"); } else { removedPropertyNames.remove("_F_I_33_"); } 
         }
 
         public Boolean getIsProperty_F_N_33_Removed() {
@@ -8425,7 +8425,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_33_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_33_"); } else { removedPropertyNames.remove("_F_N_33_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_33_"); } else { removedPropertyNames.remove("_F_N_33_"); } 
         }
 
         public Boolean getIsProperty_F_C5_33_Removed() {
@@ -8433,7 +8433,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_33_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_33_"); } else { removedPropertyNames.remove("_F_C5_33_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_33_"); } else { removedPropertyNames.remove("_F_C5_33_"); } 
         }
 
         public Boolean getIsProperty_F_C10_33_Removed() {
@@ -8441,7 +8441,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_33_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_33_"); } else { removedPropertyNames.remove("_F_C10_33_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_33_"); } else { removedPropertyNames.remove("_F_C10_33_"); } 
         }
 
         public Boolean getIsProperty_F_C20_33_Removed() {
@@ -8449,7 +8449,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_33_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_33_"); } else { removedPropertyNames.remove("_F_C20_33_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_33_"); } else { removedPropertyNames.remove("_F_C20_33_"); } 
         }
 
         public Boolean getIsProperty_F_C50_33_Removed() {
@@ -8457,7 +8457,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_33_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_33_"); } else { removedPropertyNames.remove("_F_C50_33_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_33_"); } else { removedPropertyNames.remove("_F_C50_33_"); } 
         }
 
         public Boolean getIsProperty_F_B_34_Removed() {
@@ -8465,7 +8465,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_34_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_34_"); } else { removedPropertyNames.remove("_F_B_34_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_34_"); } else { removedPropertyNames.remove("_F_B_34_"); } 
         }
 
         public Boolean getIsProperty_F_I_34_Removed() {
@@ -8473,7 +8473,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_34_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_34_"); } else { removedPropertyNames.remove("_F_I_34_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_34_"); } else { removedPropertyNames.remove("_F_I_34_"); } 
         }
 
         public Boolean getIsProperty_F_N_34_Removed() {
@@ -8481,7 +8481,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_34_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_34_"); } else { removedPropertyNames.remove("_F_N_34_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_34_"); } else { removedPropertyNames.remove("_F_N_34_"); } 
         }
 
         public Boolean getIsProperty_F_C5_34_Removed() {
@@ -8489,7 +8489,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_34_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_34_"); } else { removedPropertyNames.remove("_F_C5_34_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_34_"); } else { removedPropertyNames.remove("_F_C5_34_"); } 
         }
 
         public Boolean getIsProperty_F_C10_34_Removed() {
@@ -8497,7 +8497,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_34_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_34_"); } else { removedPropertyNames.remove("_F_C10_34_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_34_"); } else { removedPropertyNames.remove("_F_C10_34_"); } 
         }
 
         public Boolean getIsProperty_F_C20_34_Removed() {
@@ -8505,7 +8505,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_34_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_34_"); } else { removedPropertyNames.remove("_F_C20_34_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_34_"); } else { removedPropertyNames.remove("_F_C20_34_"); } 
         }
 
         public Boolean getIsProperty_F_C50_34_Removed() {
@@ -8513,7 +8513,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_34_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_34_"); } else { removedPropertyNames.remove("_F_C50_34_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_34_"); } else { removedPropertyNames.remove("_F_C50_34_"); } 
         }
 
         public Boolean getIsProperty_F_B_35_Removed() {
@@ -8521,7 +8521,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_35_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_35_"); } else { removedPropertyNames.remove("_F_B_35_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_35_"); } else { removedPropertyNames.remove("_F_B_35_"); } 
         }
 
         public Boolean getIsProperty_F_I_35_Removed() {
@@ -8529,7 +8529,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_35_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_35_"); } else { removedPropertyNames.remove("_F_I_35_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_35_"); } else { removedPropertyNames.remove("_F_I_35_"); } 
         }
 
         public Boolean getIsProperty_F_N_35_Removed() {
@@ -8537,7 +8537,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_35_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_35_"); } else { removedPropertyNames.remove("_F_N_35_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_35_"); } else { removedPropertyNames.remove("_F_N_35_"); } 
         }
 
         public Boolean getIsProperty_F_C5_35_Removed() {
@@ -8545,7 +8545,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_35_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_35_"); } else { removedPropertyNames.remove("_F_C5_35_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_35_"); } else { removedPropertyNames.remove("_F_C5_35_"); } 
         }
 
         public Boolean getIsProperty_F_C10_35_Removed() {
@@ -8553,7 +8553,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_35_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_35_"); } else { removedPropertyNames.remove("_F_C10_35_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_35_"); } else { removedPropertyNames.remove("_F_C10_35_"); } 
         }
 
         public Boolean getIsProperty_F_C20_35_Removed() {
@@ -8561,7 +8561,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_35_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_35_"); } else { removedPropertyNames.remove("_F_C20_35_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_35_"); } else { removedPropertyNames.remove("_F_C20_35_"); } 
         }
 
         public Boolean getIsProperty_F_C50_35_Removed() {
@@ -8569,7 +8569,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_35_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_35_"); } else { removedPropertyNames.remove("_F_C50_35_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_35_"); } else { removedPropertyNames.remove("_F_C50_35_"); } 
         }
 
         public Boolean getIsProperty_F_B_36_Removed() {
@@ -8577,7 +8577,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_36_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_36_"); } else { removedPropertyNames.remove("_F_B_36_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_36_"); } else { removedPropertyNames.remove("_F_B_36_"); } 
         }
 
         public Boolean getIsProperty_F_I_36_Removed() {
@@ -8585,7 +8585,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_36_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_36_"); } else { removedPropertyNames.remove("_F_I_36_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_36_"); } else { removedPropertyNames.remove("_F_I_36_"); } 
         }
 
         public Boolean getIsProperty_F_N_36_Removed() {
@@ -8593,7 +8593,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_36_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_36_"); } else { removedPropertyNames.remove("_F_N_36_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_36_"); } else { removedPropertyNames.remove("_F_N_36_"); } 
         }
 
         public Boolean getIsProperty_F_C5_36_Removed() {
@@ -8601,7 +8601,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_36_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_36_"); } else { removedPropertyNames.remove("_F_C5_36_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_36_"); } else { removedPropertyNames.remove("_F_C5_36_"); } 
         }
 
         public Boolean getIsProperty_F_C10_36_Removed() {
@@ -8609,7 +8609,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_36_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_36_"); } else { removedPropertyNames.remove("_F_C10_36_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_36_"); } else { removedPropertyNames.remove("_F_C10_36_"); } 
         }
 
         public Boolean getIsProperty_F_C20_36_Removed() {
@@ -8617,7 +8617,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_36_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_36_"); } else { removedPropertyNames.remove("_F_C20_36_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_36_"); } else { removedPropertyNames.remove("_F_C20_36_"); } 
         }
 
         public Boolean getIsProperty_F_C50_36_Removed() {
@@ -8625,7 +8625,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_36_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_36_"); } else { removedPropertyNames.remove("_F_C50_36_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_36_"); } else { removedPropertyNames.remove("_F_C50_36_"); } 
         }
 
         public Boolean getIsProperty_F_B_37_Removed() {
@@ -8633,7 +8633,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_37_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_37_"); } else { removedPropertyNames.remove("_F_B_37_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_37_"); } else { removedPropertyNames.remove("_F_B_37_"); } 
         }
 
         public Boolean getIsProperty_F_I_37_Removed() {
@@ -8641,7 +8641,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_37_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_37_"); } else { removedPropertyNames.remove("_F_I_37_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_37_"); } else { removedPropertyNames.remove("_F_I_37_"); } 
         }
 
         public Boolean getIsProperty_F_N_37_Removed() {
@@ -8649,7 +8649,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_37_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_37_"); } else { removedPropertyNames.remove("_F_N_37_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_37_"); } else { removedPropertyNames.remove("_F_N_37_"); } 
         }
 
         public Boolean getIsProperty_F_C5_37_Removed() {
@@ -8657,7 +8657,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_37_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_37_"); } else { removedPropertyNames.remove("_F_C5_37_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_37_"); } else { removedPropertyNames.remove("_F_C5_37_"); } 
         }
 
         public Boolean getIsProperty_F_C10_37_Removed() {
@@ -8665,7 +8665,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_37_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_37_"); } else { removedPropertyNames.remove("_F_C10_37_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_37_"); } else { removedPropertyNames.remove("_F_C10_37_"); } 
         }
 
         public Boolean getIsProperty_F_C20_37_Removed() {
@@ -8673,7 +8673,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_37_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_37_"); } else { removedPropertyNames.remove("_F_C20_37_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_37_"); } else { removedPropertyNames.remove("_F_C20_37_"); } 
         }
 
         public Boolean getIsProperty_F_C50_37_Removed() {
@@ -8681,7 +8681,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_37_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_37_"); } else { removedPropertyNames.remove("_F_C50_37_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_37_"); } else { removedPropertyNames.remove("_F_C50_37_"); } 
         }
 
         public Boolean getIsProperty_F_B_38_Removed() {
@@ -8689,7 +8689,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_38_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_38_"); } else { removedPropertyNames.remove("_F_B_38_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_38_"); } else { removedPropertyNames.remove("_F_B_38_"); } 
         }
 
         public Boolean getIsProperty_F_I_38_Removed() {
@@ -8697,7 +8697,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_38_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_38_"); } else { removedPropertyNames.remove("_F_I_38_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_38_"); } else { removedPropertyNames.remove("_F_I_38_"); } 
         }
 
         public Boolean getIsProperty_F_N_38_Removed() {
@@ -8705,7 +8705,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_38_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_38_"); } else { removedPropertyNames.remove("_F_N_38_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_38_"); } else { removedPropertyNames.remove("_F_N_38_"); } 
         }
 
         public Boolean getIsProperty_F_C5_38_Removed() {
@@ -8713,7 +8713,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_38_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_38_"); } else { removedPropertyNames.remove("_F_C5_38_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_38_"); } else { removedPropertyNames.remove("_F_C5_38_"); } 
         }
 
         public Boolean getIsProperty_F_C10_38_Removed() {
@@ -8721,7 +8721,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_38_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_38_"); } else { removedPropertyNames.remove("_F_C10_38_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_38_"); } else { removedPropertyNames.remove("_F_C10_38_"); } 
         }
 
         public Boolean getIsProperty_F_C20_38_Removed() {
@@ -8729,7 +8729,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_38_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_38_"); } else { removedPropertyNames.remove("_F_C20_38_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_38_"); } else { removedPropertyNames.remove("_F_C20_38_"); } 
         }
 
         public Boolean getIsProperty_F_C50_38_Removed() {
@@ -8737,7 +8737,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_38_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_38_"); } else { removedPropertyNames.remove("_F_C50_38_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_38_"); } else { removedPropertyNames.remove("_F_C50_38_"); } 
         }
 
         public Boolean getIsProperty_F_B_39_Removed() {
@@ -8745,7 +8745,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_39_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_39_"); } else { removedPropertyNames.remove("_F_B_39_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_39_"); } else { removedPropertyNames.remove("_F_B_39_"); } 
         }
 
         public Boolean getIsProperty_F_I_39_Removed() {
@@ -8753,7 +8753,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_39_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_39_"); } else { removedPropertyNames.remove("_F_I_39_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_39_"); } else { removedPropertyNames.remove("_F_I_39_"); } 
         }
 
         public Boolean getIsProperty_F_N_39_Removed() {
@@ -8761,7 +8761,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_39_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_39_"); } else { removedPropertyNames.remove("_F_N_39_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_39_"); } else { removedPropertyNames.remove("_F_N_39_"); } 
         }
 
         public Boolean getIsProperty_F_C5_39_Removed() {
@@ -8769,7 +8769,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_39_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_39_"); } else { removedPropertyNames.remove("_F_C5_39_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_39_"); } else { removedPropertyNames.remove("_F_C5_39_"); } 
         }
 
         public Boolean getIsProperty_F_C10_39_Removed() {
@@ -8777,7 +8777,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_39_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_39_"); } else { removedPropertyNames.remove("_F_C10_39_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_39_"); } else { removedPropertyNames.remove("_F_C10_39_"); } 
         }
 
         public Boolean getIsProperty_F_C20_39_Removed() {
@@ -8785,7 +8785,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_39_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_39_"); } else { removedPropertyNames.remove("_F_C20_39_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_39_"); } else { removedPropertyNames.remove("_F_C20_39_"); } 
         }
 
         public Boolean getIsProperty_F_C50_39_Removed() {
@@ -8793,7 +8793,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_39_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_39_"); } else { removedPropertyNames.remove("_F_C50_39_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_39_"); } else { removedPropertyNames.remove("_F_C50_39_"); } 
         }
 
         public Boolean getIsProperty_F_B_40_Removed() {
@@ -8801,7 +8801,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_40_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_40_"); } else { removedPropertyNames.remove("_F_B_40_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_40_"); } else { removedPropertyNames.remove("_F_B_40_"); } 
         }
 
         public Boolean getIsProperty_F_I_40_Removed() {
@@ -8809,7 +8809,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_40_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_40_"); } else { removedPropertyNames.remove("_F_I_40_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_40_"); } else { removedPropertyNames.remove("_F_I_40_"); } 
         }
 
         public Boolean getIsProperty_F_N_40_Removed() {
@@ -8817,7 +8817,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_40_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_40_"); } else { removedPropertyNames.remove("_F_N_40_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_40_"); } else { removedPropertyNames.remove("_F_N_40_"); } 
         }
 
         public Boolean getIsProperty_F_C5_40_Removed() {
@@ -8825,7 +8825,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_40_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_40_"); } else { removedPropertyNames.remove("_F_C5_40_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_40_"); } else { removedPropertyNames.remove("_F_C5_40_"); } 
         }
 
         public Boolean getIsProperty_F_C10_40_Removed() {
@@ -8833,7 +8833,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_40_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_40_"); } else { removedPropertyNames.remove("_F_C10_40_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_40_"); } else { removedPropertyNames.remove("_F_C10_40_"); } 
         }
 
         public Boolean getIsProperty_F_C20_40_Removed() {
@@ -8841,7 +8841,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_40_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_40_"); } else { removedPropertyNames.remove("_F_C20_40_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_40_"); } else { removedPropertyNames.remove("_F_C20_40_"); } 
         }
 
         public Boolean getIsProperty_F_C50_40_Removed() {
@@ -8849,7 +8849,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_40_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_40_"); } else { removedPropertyNames.remove("_F_C50_40_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_40_"); } else { removedPropertyNames.remove("_F_C50_40_"); } 
         }
 
         public Boolean getIsProperty_F_B_41_Removed() {
@@ -8857,7 +8857,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_41_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_41_"); } else { removedPropertyNames.remove("_F_B_41_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_41_"); } else { removedPropertyNames.remove("_F_B_41_"); } 
         }
 
         public Boolean getIsProperty_F_I_41_Removed() {
@@ -8865,7 +8865,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_41_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_41_"); } else { removedPropertyNames.remove("_F_I_41_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_41_"); } else { removedPropertyNames.remove("_F_I_41_"); } 
         }
 
         public Boolean getIsProperty_F_N_41_Removed() {
@@ -8873,7 +8873,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_41_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_41_"); } else { removedPropertyNames.remove("_F_N_41_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_41_"); } else { removedPropertyNames.remove("_F_N_41_"); } 
         }
 
         public Boolean getIsProperty_F_C5_41_Removed() {
@@ -8881,7 +8881,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_41_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_41_"); } else { removedPropertyNames.remove("_F_C5_41_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_41_"); } else { removedPropertyNames.remove("_F_C5_41_"); } 
         }
 
         public Boolean getIsProperty_F_C10_41_Removed() {
@@ -8889,7 +8889,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_41_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_41_"); } else { removedPropertyNames.remove("_F_C10_41_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_41_"); } else { removedPropertyNames.remove("_F_C10_41_"); } 
         }
 
         public Boolean getIsProperty_F_C20_41_Removed() {
@@ -8897,7 +8897,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_41_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_41_"); } else { removedPropertyNames.remove("_F_C20_41_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_41_"); } else { removedPropertyNames.remove("_F_C20_41_"); } 
         }
 
         public Boolean getIsProperty_F_C50_41_Removed() {
@@ -8905,7 +8905,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_41_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_41_"); } else { removedPropertyNames.remove("_F_C50_41_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_41_"); } else { removedPropertyNames.remove("_F_C50_41_"); } 
         }
 
         public Boolean getIsProperty_F_B_42_Removed() {
@@ -8913,7 +8913,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_42_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_42_"); } else { removedPropertyNames.remove("_F_B_42_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_42_"); } else { removedPropertyNames.remove("_F_B_42_"); } 
         }
 
         public Boolean getIsProperty_F_I_42_Removed() {
@@ -8921,7 +8921,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_42_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_42_"); } else { removedPropertyNames.remove("_F_I_42_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_42_"); } else { removedPropertyNames.remove("_F_I_42_"); } 
         }
 
         public Boolean getIsProperty_F_N_42_Removed() {
@@ -8929,7 +8929,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_42_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_42_"); } else { removedPropertyNames.remove("_F_N_42_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_42_"); } else { removedPropertyNames.remove("_F_N_42_"); } 
         }
 
         public Boolean getIsProperty_F_C5_42_Removed() {
@@ -8937,7 +8937,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_42_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_42_"); } else { removedPropertyNames.remove("_F_C5_42_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_42_"); } else { removedPropertyNames.remove("_F_C5_42_"); } 
         }
 
         public Boolean getIsProperty_F_C10_42_Removed() {
@@ -8945,7 +8945,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_42_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_42_"); } else { removedPropertyNames.remove("_F_C10_42_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_42_"); } else { removedPropertyNames.remove("_F_C10_42_"); } 
         }
 
         public Boolean getIsProperty_F_C20_42_Removed() {
@@ -8953,7 +8953,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_42_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_42_"); } else { removedPropertyNames.remove("_F_C20_42_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_42_"); } else { removedPropertyNames.remove("_F_C20_42_"); } 
         }
 
         public Boolean getIsProperty_F_C50_42_Removed() {
@@ -8961,7 +8961,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_42_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_42_"); } else { removedPropertyNames.remove("_F_C50_42_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_42_"); } else { removedPropertyNames.remove("_F_C50_42_"); } 
         }
 
         public Boolean getIsProperty_F_B_43_Removed() {
@@ -8969,7 +8969,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_43_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_43_"); } else { removedPropertyNames.remove("_F_B_43_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_43_"); } else { removedPropertyNames.remove("_F_B_43_"); } 
         }
 
         public Boolean getIsProperty_F_I_43_Removed() {
@@ -8977,7 +8977,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_43_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_43_"); } else { removedPropertyNames.remove("_F_I_43_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_43_"); } else { removedPropertyNames.remove("_F_I_43_"); } 
         }
 
         public Boolean getIsProperty_F_N_43_Removed() {
@@ -8985,7 +8985,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_43_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_43_"); } else { removedPropertyNames.remove("_F_N_43_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_43_"); } else { removedPropertyNames.remove("_F_N_43_"); } 
         }
 
         public Boolean getIsProperty_F_C5_43_Removed() {
@@ -8993,7 +8993,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_43_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_43_"); } else { removedPropertyNames.remove("_F_C5_43_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_43_"); } else { removedPropertyNames.remove("_F_C5_43_"); } 
         }
 
         public Boolean getIsProperty_F_C10_43_Removed() {
@@ -9001,7 +9001,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_43_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_43_"); } else { removedPropertyNames.remove("_F_C10_43_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_43_"); } else { removedPropertyNames.remove("_F_C10_43_"); } 
         }
 
         public Boolean getIsProperty_F_C20_43_Removed() {
@@ -9009,7 +9009,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_43_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_43_"); } else { removedPropertyNames.remove("_F_C20_43_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_43_"); } else { removedPropertyNames.remove("_F_C20_43_"); } 
         }
 
         public Boolean getIsProperty_F_C50_43_Removed() {
@@ -9017,7 +9017,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_43_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_43_"); } else { removedPropertyNames.remove("_F_C50_43_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_43_"); } else { removedPropertyNames.remove("_F_C50_43_"); } 
         }
 
         public Boolean getIsProperty_F_B_44_Removed() {
@@ -9025,7 +9025,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_44_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_44_"); } else { removedPropertyNames.remove("_F_B_44_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_44_"); } else { removedPropertyNames.remove("_F_B_44_"); } 
         }
 
         public Boolean getIsProperty_F_I_44_Removed() {
@@ -9033,7 +9033,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_44_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_44_"); } else { removedPropertyNames.remove("_F_I_44_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_44_"); } else { removedPropertyNames.remove("_F_I_44_"); } 
         }
 
         public Boolean getIsProperty_F_N_44_Removed() {
@@ -9041,7 +9041,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_44_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_44_"); } else { removedPropertyNames.remove("_F_N_44_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_44_"); } else { removedPropertyNames.remove("_F_N_44_"); } 
         }
 
         public Boolean getIsProperty_F_C5_44_Removed() {
@@ -9049,7 +9049,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_44_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_44_"); } else { removedPropertyNames.remove("_F_C5_44_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_44_"); } else { removedPropertyNames.remove("_F_C5_44_"); } 
         }
 
         public Boolean getIsProperty_F_C10_44_Removed() {
@@ -9057,7 +9057,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_44_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_44_"); } else { removedPropertyNames.remove("_F_C10_44_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_44_"); } else { removedPropertyNames.remove("_F_C10_44_"); } 
         }
 
         public Boolean getIsProperty_F_C20_44_Removed() {
@@ -9065,7 +9065,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_44_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_44_"); } else { removedPropertyNames.remove("_F_C20_44_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_44_"); } else { removedPropertyNames.remove("_F_C20_44_"); } 
         }
 
         public Boolean getIsProperty_F_C50_44_Removed() {
@@ -9073,7 +9073,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_44_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_44_"); } else { removedPropertyNames.remove("_F_C50_44_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_44_"); } else { removedPropertyNames.remove("_F_C50_44_"); } 
         }
 
         public Boolean getIsProperty_F_B_45_Removed() {
@@ -9081,7 +9081,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_45_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_45_"); } else { removedPropertyNames.remove("_F_B_45_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_45_"); } else { removedPropertyNames.remove("_F_B_45_"); } 
         }
 
         public Boolean getIsProperty_F_I_45_Removed() {
@@ -9089,7 +9089,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_45_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_45_"); } else { removedPropertyNames.remove("_F_I_45_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_45_"); } else { removedPropertyNames.remove("_F_I_45_"); } 
         }
 
         public Boolean getIsProperty_F_N_45_Removed() {
@@ -9097,7 +9097,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_45_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_45_"); } else { removedPropertyNames.remove("_F_N_45_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_45_"); } else { removedPropertyNames.remove("_F_N_45_"); } 
         }
 
         public Boolean getIsProperty_F_C5_45_Removed() {
@@ -9105,7 +9105,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_45_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_45_"); } else { removedPropertyNames.remove("_F_C5_45_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_45_"); } else { removedPropertyNames.remove("_F_C5_45_"); } 
         }
 
         public Boolean getIsProperty_F_C10_45_Removed() {
@@ -9113,7 +9113,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_45_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_45_"); } else { removedPropertyNames.remove("_F_C10_45_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_45_"); } else { removedPropertyNames.remove("_F_C10_45_"); } 
         }
 
         public Boolean getIsProperty_F_C20_45_Removed() {
@@ -9121,7 +9121,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_45_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_45_"); } else { removedPropertyNames.remove("_F_C20_45_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_45_"); } else { removedPropertyNames.remove("_F_C20_45_"); } 
         }
 
         public Boolean getIsProperty_F_C50_45_Removed() {
@@ -9129,7 +9129,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_45_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_45_"); } else { removedPropertyNames.remove("_F_C50_45_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_45_"); } else { removedPropertyNames.remove("_F_C50_45_"); } 
         }
 
         public Boolean getIsProperty_F_B_46_Removed() {
@@ -9137,7 +9137,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_46_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_46_"); } else { removedPropertyNames.remove("_F_B_46_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_46_"); } else { removedPropertyNames.remove("_F_B_46_"); } 
         }
 
         public Boolean getIsProperty_F_I_46_Removed() {
@@ -9145,7 +9145,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_46_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_46_"); } else { removedPropertyNames.remove("_F_I_46_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_46_"); } else { removedPropertyNames.remove("_F_I_46_"); } 
         }
 
         public Boolean getIsProperty_F_N_46_Removed() {
@@ -9153,7 +9153,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_46_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_46_"); } else { removedPropertyNames.remove("_F_N_46_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_46_"); } else { removedPropertyNames.remove("_F_N_46_"); } 
         }
 
         public Boolean getIsProperty_F_C5_46_Removed() {
@@ -9161,7 +9161,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_46_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_46_"); } else { removedPropertyNames.remove("_F_C5_46_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_46_"); } else { removedPropertyNames.remove("_F_C5_46_"); } 
         }
 
         public Boolean getIsProperty_F_C10_46_Removed() {
@@ -9169,7 +9169,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_46_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_46_"); } else { removedPropertyNames.remove("_F_C10_46_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_46_"); } else { removedPropertyNames.remove("_F_C10_46_"); } 
         }
 
         public Boolean getIsProperty_F_C20_46_Removed() {
@@ -9177,7 +9177,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_46_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_46_"); } else { removedPropertyNames.remove("_F_C20_46_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_46_"); } else { removedPropertyNames.remove("_F_C20_46_"); } 
         }
 
         public Boolean getIsProperty_F_C50_46_Removed() {
@@ -9185,7 +9185,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_46_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_46_"); } else { removedPropertyNames.remove("_F_C50_46_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_46_"); } else { removedPropertyNames.remove("_F_C50_46_"); } 
         }
 
         public Boolean getIsProperty_F_B_47_Removed() {
@@ -9193,7 +9193,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_47_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_47_"); } else { removedPropertyNames.remove("_F_B_47_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_47_"); } else { removedPropertyNames.remove("_F_B_47_"); } 
         }
 
         public Boolean getIsProperty_F_I_47_Removed() {
@@ -9201,7 +9201,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_47_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_47_"); } else { removedPropertyNames.remove("_F_I_47_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_47_"); } else { removedPropertyNames.remove("_F_I_47_"); } 
         }
 
         public Boolean getIsProperty_F_N_47_Removed() {
@@ -9209,7 +9209,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_47_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_47_"); } else { removedPropertyNames.remove("_F_N_47_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_47_"); } else { removedPropertyNames.remove("_F_N_47_"); } 
         }
 
         public Boolean getIsProperty_F_C5_47_Removed() {
@@ -9217,7 +9217,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_47_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_47_"); } else { removedPropertyNames.remove("_F_C5_47_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_47_"); } else { removedPropertyNames.remove("_F_C5_47_"); } 
         }
 
         public Boolean getIsProperty_F_C10_47_Removed() {
@@ -9225,7 +9225,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_47_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_47_"); } else { removedPropertyNames.remove("_F_C10_47_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_47_"); } else { removedPropertyNames.remove("_F_C10_47_"); } 
         }
 
         public Boolean getIsProperty_F_C20_47_Removed() {
@@ -9233,7 +9233,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_47_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_47_"); } else { removedPropertyNames.remove("_F_C20_47_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_47_"); } else { removedPropertyNames.remove("_F_C20_47_"); } 
         }
 
         public Boolean getIsProperty_F_C50_47_Removed() {
@@ -9241,7 +9241,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_47_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_47_"); } else { removedPropertyNames.remove("_F_C50_47_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_47_"); } else { removedPropertyNames.remove("_F_C50_47_"); } 
         }
 
         public Boolean getIsProperty_F_B_48_Removed() {
@@ -9249,7 +9249,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_48_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_48_"); } else { removedPropertyNames.remove("_F_B_48_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_48_"); } else { removedPropertyNames.remove("_F_B_48_"); } 
         }
 
         public Boolean getIsProperty_F_I_48_Removed() {
@@ -9257,7 +9257,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_48_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_48_"); } else { removedPropertyNames.remove("_F_I_48_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_48_"); } else { removedPropertyNames.remove("_F_I_48_"); } 
         }
 
         public Boolean getIsProperty_F_N_48_Removed() {
@@ -9265,7 +9265,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_48_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_48_"); } else { removedPropertyNames.remove("_F_N_48_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_48_"); } else { removedPropertyNames.remove("_F_N_48_"); } 
         }
 
         public Boolean getIsProperty_F_C5_48_Removed() {
@@ -9273,7 +9273,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_48_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_48_"); } else { removedPropertyNames.remove("_F_C5_48_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_48_"); } else { removedPropertyNames.remove("_F_C5_48_"); } 
         }
 
         public Boolean getIsProperty_F_C10_48_Removed() {
@@ -9281,7 +9281,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_48_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_48_"); } else { removedPropertyNames.remove("_F_C10_48_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_48_"); } else { removedPropertyNames.remove("_F_C10_48_"); } 
         }
 
         public Boolean getIsProperty_F_C20_48_Removed() {
@@ -9289,7 +9289,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_48_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_48_"); } else { removedPropertyNames.remove("_F_C20_48_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_48_"); } else { removedPropertyNames.remove("_F_C20_48_"); } 
         }
 
         public Boolean getIsProperty_F_C50_48_Removed() {
@@ -9297,7 +9297,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_48_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_48_"); } else { removedPropertyNames.remove("_F_C50_48_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_48_"); } else { removedPropertyNames.remove("_F_C50_48_"); } 
         }
 
         public Boolean getIsProperty_F_B_49_Removed() {
@@ -9305,7 +9305,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_B_49_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_B_49_"); } else { removedPropertyNames.remove("_F_B_49_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_B_49_"); } else { removedPropertyNames.remove("_F_B_49_"); } 
         }
 
         public Boolean getIsProperty_F_I_49_Removed() {
@@ -9313,7 +9313,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_I_49_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_I_49_"); } else { removedPropertyNames.remove("_F_I_49_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_I_49_"); } else { removedPropertyNames.remove("_F_I_49_"); } 
         }
 
         public Boolean getIsProperty_F_N_49_Removed() {
@@ -9321,7 +9321,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_N_49_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_N_49_"); } else { removedPropertyNames.remove("_F_N_49_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_N_49_"); } else { removedPropertyNames.remove("_F_N_49_"); } 
         }
 
         public Boolean getIsProperty_F_C5_49_Removed() {
@@ -9329,7 +9329,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C5_49_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C5_49_"); } else { removedPropertyNames.remove("_F_C5_49_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C5_49_"); } else { removedPropertyNames.remove("_F_C5_49_"); } 
         }
 
         public Boolean getIsProperty_F_C10_49_Removed() {
@@ -9337,7 +9337,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C10_49_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C10_49_"); } else { removedPropertyNames.remove("_F_C10_49_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C10_49_"); } else { removedPropertyNames.remove("_F_C10_49_"); } 
         }
 
         public Boolean getIsProperty_F_C20_49_Removed() {
@@ -9345,7 +9345,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C20_49_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C20_49_"); } else { removedPropertyNames.remove("_F_C20_49_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C20_49_"); } else { removedPropertyNames.remove("_F_C20_49_"); } 
         }
 
         public Boolean getIsProperty_F_C50_49_Removed() {
@@ -9353,7 +9353,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsProperty_F_C50_49_Removed(Boolean removed) {
-            if (removed) { removedPropertyNames.add("_F_C50_49_"); } else { removedPropertyNames.remove("_F_C50_49_"); } 
+            if (removed != null && removed) { removedPropertyNames.add("_F_C50_49_"); } else { removedPropertyNames.remove("_F_C50_49_"); } 
         }
 
         public Boolean getIsPropertyActiveRemoved() {
@@ -9361,7 +9361,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
         public void setIsPropertyActiveRemoved(Boolean removed) {
-            if (removed) { removedPropertyNames.add("Active"); } else { removedPropertyNames.remove("Active"); } 
+            if (removed != null && removed) { removedPropertyNames.add("Active"); } else { removedPropertyNames.remove("Active"); } 
         }
 
     }
