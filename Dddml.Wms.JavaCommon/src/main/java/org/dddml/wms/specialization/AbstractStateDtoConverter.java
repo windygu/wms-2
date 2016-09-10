@@ -54,10 +54,21 @@ public abstract class AbstractStateDtoConverter {
                 if (f != null && !f.trim().isEmpty()) {
                     String f1 = f.trim();
                     int i = f.indexOf('.');
+                    String k = f1;
+                    String v = null;
                     if (i >= 0) {
-                        fsMap.put(f1.substring(0, i), f1.substring(i + 1));
+                        k = f1.substring(0, i);
+                        v = f1.substring(i + 1);
+                    }
+                    if (fsMap.containsKey(k)) {
+                        String oldVal = fsMap.get(k);
+                        if (oldVal != null && !oldVal.trim().isEmpty()) {
+                            fsMap.put(k, oldVal + getReturnedFieldsStringSeparator() + v);
+                        } else {
+                            fsMap.put(k, v);
+                        }
                     } else {
-                        fsMap.put(f1, null);
+                        fsMap.put(k, v);
                     }
                 }
             }
