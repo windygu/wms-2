@@ -1,6 +1,8 @@
 package org.dddml.wms.restful.resource;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,8 +21,10 @@ import java.net.HttpURLConnection;
 public abstract class AbstractResourceTest {
 
     public final static String BASE_URL = "http://localhost:8080/";
+    public final static CloseableHttpClient HTTP_CLIENT = HttpClientBuilder.create().build();
+    public final static String HTTP_HEADER_ACCEPT = "Accept";
 
-    public String getConentFromResponse(HttpResponse response) {
+    public String getContentFromResponse(HttpResponse response) {
         if (response == null) {
             return null;
         }

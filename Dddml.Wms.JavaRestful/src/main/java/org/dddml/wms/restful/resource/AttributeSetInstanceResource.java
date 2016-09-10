@@ -2,6 +2,7 @@ package org.dddml.wms.restful.resource;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.cxf.jaxrs.ext.PATCH;
 import org.dddml.support.criterion.*;
 import org.dddml.support.criterion.TypeConverter;
 import org.dddml.wms.domain.AttributeSetInstanceApplicationService;
@@ -38,7 +39,7 @@ public class AttributeSetInstanceResource {
 
     @Autowired
     private AbstractDynamicObjectMapper<JSONObject,
-            AttributeSetInstanceStateDto,
+            AttributeSetInstanceState,
             AttributeSetInstanceCommand.CreateAttributeSetInstance,
             AttributeSetInstanceCommand.MergePatchAttributeSetInstance> dynamicObjectMapper;
 
@@ -78,15 +79,8 @@ public class AttributeSetInstanceResource {
             }
             JSONArray dynamicArray = new JSONArray();
             if (states != null) {
-                AttributeSetInstanceStateDto.DtoConverter converter = new AttributeSetInstanceStateDto.DtoConverter();
-                if (fields != null) {
-                    converter.setReturnedFieldsString(fields);
-                } else {
-                    converter.setAllFieldsReturned(true);
-                }
                 states.forEach(state -> {
-                    AttributeSetInstanceStateDto dto = converter.toAttributeSetInstanceStateDto(state);
-                    dynamicArray.add(dynamicObjectMapper.mapState(dto));
+                    dynamicArray.add(dynamicObjectMapper.mapState(state, fields));
                 });
             }
             return dynamicArray;
@@ -113,14 +107,7 @@ public class AttributeSetInstanceResource {
             if (state == null) {
                 return null;
             }
-            AttributeSetInstanceStateDto.DtoConverter converter = new AttributeSetInstanceStateDto.DtoConverter();
-            if (!StringHelper.isNullOrEmpty(fields)) {
-                converter.setAllFieldsReturned(true);
-            } else {
-                converter.setReturnedFieldsString(fields);
-            }
-            AttributeSetInstanceStateDto stateDto = converter.toAttributeSetInstanceStateDto(state);
-            return dynamicObjectMapper.mapState(stateDto);
+            return dynamicObjectMapper.mapState(state, fields);
         } catch (DomainError error) {
             throw error;
         } catch (Exception ex) {
@@ -168,6 +155,7 @@ public class AttributeSetInstanceResource {
     public void Put(@PathParam("id") String id, JSONObject dynamicObject) {
         try {
             AttributeSetInstanceCommand.CreateAttributeSetInstance value = dynamicObjectMapper.toCommandCreate(dynamicObject);
+            //System.out.println(value.get_F_C5_4_());
             AttributeSetInstanceApiUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetInstanceApplicationService.when(value);
         } catch (DomainError error) {
@@ -192,7 +180,9 @@ public class AttributeSetInstanceResource {
                     = dynamicObjectMapper.toCommandCreate(jsonObject);
             IdGenerator.GetOrGenerateIdResult<String> idResult = attributeSetInstanceIdGenerator.getOrGenerateId(createAttributeSetInstance);
             createAttributeSetInstance.setAttributeSetInstanceId(idResult.getId());
-            attributeSetInstanceApplicationService.when(createAttributeSetInstance);
+            if (!idResult.isReused()) {
+                attributeSetInstanceApplicationService.when(createAttributeSetInstance);
+            }
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return idResult.getId();
         } catch (DomainError error) {
@@ -200,6 +190,45 @@ public class AttributeSetInstanceResource {
         } catch (Exception ex) {
             throw new WebApiApplicationException(ex);
         }
+    }
+
+
+    /**
+     * 修改已经存在的 AttributeSetInstance
+     *
+     * @param id            AttributeSetInstance Id
+     * @param dynamicObject 修改的属性
+     */
+    @PATCH
+    @Path("{id}")
+    public void patch(@PathParam("id") String id, JSONObject dynamicObject) {
+        try {
+            AttributeSetInstanceCommand.MergePatchAttributeSetInstance value = dynamicObjectMapper.toCommandMergePatch(dynamicObject);
+            AttributeSetInstanceApiUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            attributeSetInstanceApplicationService.when(value);
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new WebApiApplicationException(ex);
+        }
+    }
+
+
+    @DELETE
+    @Path("/{id}")
+    public void delete(@PathParam("id") String id, @QueryParam("commandId") String commandId, @QueryParam("version") String version,
+                       @QueryParam("requesterId") String requesterId) {
+        /*try {
+            var value = new DeleteAttributeSetInstanceDto();
+            value.CommandId = commandId;
+            value.RequesterId = requesterId;
+            value.Version = (long) Convert.ChangeType(version, typeof(long));
+            AttributeSetInstancesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+            _attributeSetInstanceApplicationService.When(value as IDeleteAttributeSetInstance);
+        } catch (Exception ex) {
+            var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex);
+            throw new HttpResponseException(response);
+        }*/
     }
 
 
@@ -294,8 +323,7 @@ public class AttributeSetInstanceResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = GetFilterPropertyType(pName);
-                        ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]);
-                        filter.put(pName, null);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }
             });

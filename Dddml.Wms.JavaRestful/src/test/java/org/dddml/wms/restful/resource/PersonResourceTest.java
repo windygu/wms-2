@@ -212,7 +212,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             entity.setContentType("application/json");
             patch.setEntity(entity);
             HttpResponse response = client.execute(patch);
-            getConentFromResponse(response);
+            getContentFromResponse(response);
             int responseCode = response.getStatusLine().getStatusCode();
             Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             client.close();
@@ -233,7 +233,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             httpGet.setHeader("ACCEPT", "application/json");
             HttpResponse response = client.execute(httpGet);
             Assert.assertEquals(true, String.valueOf(response.getStatusLine().getStatusCode()).startsWith("20"));
-            getConentFromResponse(response);
+            getContentFromResponse(response);
             client.close();
         } catch (Exception ex) {
             ex.printStackTrace();

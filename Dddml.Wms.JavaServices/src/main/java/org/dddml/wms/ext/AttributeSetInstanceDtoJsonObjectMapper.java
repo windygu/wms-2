@@ -6,7 +6,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.dddml.wms.domain.AbstractAttributeSetInstanceCommand;
 import org.dddml.wms.domain.AttributeSetInstanceCommand;
-import org.dddml.wms.domain.AttributeSetInstanceStateDto;
+import org.dddml.wms.domain.AttributeSetInstanceState;
 import org.dddml.wms.specialization.AbstractDynamicObjectMapper;
 
 import java.util.Map;
@@ -15,33 +15,59 @@ import java.util.Map;
  * Created by Li Yongchun on 2016/9/8.
  */
 public class AttributeSetInstanceDtoJsonObjectMapper extends AbstractDynamicObjectMapper<JSONObject,
-        AttributeSetInstanceStateDto,
+        AttributeSetInstanceState,
         AttributeSetInstanceCommand.CreateAttributeSetInstance,
         AttributeSetInstanceCommand.MergePatchAttributeSetInstance> {
 
+    //需要注入
     private AttributeSetService attributeSetService;
 
-    private static String resolveFieldName(String fieldName) {
-        if (fieldName == null) {
-            return fieldName;
-        }
-        if (fieldName.startsWith("_")) {
-            return fieldName.substring(1);
-        }
-        return fieldName;
-    }
-
     @Override
-    public JSONObject mapState(AttributeSetInstanceStateDto attributeSetInstanceStateDto) {
-        JSONObject jsonObject = (JSONObject) JSON.toJSON(attributeSetInstanceStateDto);
+    public JSONObject mapState(AttributeSetInstanceState state, String fields) {
+        JSONObject jsonObject = new JSONObject();
+        //FIXME 先不判断 fields
+        if (state.getAttributeSetId() != null) {
+            jsonObject.put("AttributeSetInstanceId", state.getAttributeSetInstanceId());
+        }
+        if (state.getAttributeSetId() != null) {
+            jsonObject.put("attributeSetId", state.getAttributeSetId());
+        }
+        if (state.getActive() != null) {
+            jsonObject.put("active", state.getActive());
+        }
+        if (state.getCreatedAt() != null) {
+            jsonObject.put("createdAt", state.getCreatedAt());
+        }
+        if (state.getSerialNumber() != null) {
+            jsonObject.put("serialNumber", state.getSerialNumber());
+        }
+        if (state.getUpdatedAt() != null) {
+            jsonObject.put("updatedAt", state.getUpdatedAt());
+        }
+        if (state.getOrganizationId() != null) {
+            jsonObject.put("organizationId", state.getOrganizationId());
+        }
+        if (state.getReferenceId() != null) {
+            jsonObject.put("referenceId", state.getReferenceId());
+        }
+        if (state.getLot() != null) {
+            jsonObject.put("lot", state.getLot());
+        }
+        if (state.getDescription() != null) {
+            jsonObject.put("description", state.getDescription());
+        }
+        if (state.getHash() != null) {
+            jsonObject.put("hash", state.getHash());
+        }
+        //FIXME 也许遗漏了固定字段
         Map<String, String> maps = attributeSetService.
-                getExtensionPropertyFieldDictionary(attributeSetInstanceStateDto.getAttributeSetId());
-        maps.forEach((name, filedName) -> {
+                getExtensionPropertyFieldDictionary(state.getAttributeSetId());
+        maps.forEach((name, fieldName) -> {
+            //FIXME 这里应该判断fields是否为空，并且判断 name 是否位于 fields 中
             try {
                 /**这里还是自己重写吧，没有必要引进一个库，直接使用 JDK 的内省读写*/
-                Object value = new PropertyUtilsBean().getSimpleProperty(attributeSetInstanceStateDto, filedName);
+                Object value = new PropertyUtilsBean().getSimpleProperty(state, fieldName);
                 if (value != null) {
-                    jsonObject.remove(resolveFieldName(filedName));
                     jsonObject.put(name, value);
                 }
             } catch (Exception ex) {
@@ -75,8 +101,11 @@ public class AttributeSetInstanceDtoJsonObjectMapper extends AbstractDynamicObje
 
     @Override
     public AttributeSetInstanceCommand.MergePatchAttributeSetInstance toCommandMergePatch(JSONObject jsonObject) {
+        //String jsonText = jsonObject.toJSONString();
         AbstractAttributeSetInstanceCommand.MergePatchAttributeSetInstance mergePatchAttributeSetInstance =
                 jsonObject.toJavaObject(AbstractAttributeSetInstanceCommand.MergePatchAttributeSetInstance.class);
+        //AbstractAttributeSetInstanceCommand.MergePatchAttributeSetInstance mergePatchAttributeSetInstance =
+        //        JSON.parseObject(jsonText, AbstractAttributeSetInstanceCommand.MergePatchAttributeSetInstance.class);
         Map<String, String> maps = attributeSetService.
                 getExtensionPropertyFieldDictionary(mergePatchAttributeSetInstance.getAttributeSetId());
         maps.forEach((name, filedName) -> {

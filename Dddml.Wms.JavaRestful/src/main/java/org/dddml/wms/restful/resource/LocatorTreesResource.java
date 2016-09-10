@@ -249,8 +249,7 @@ public class LocatorTreesResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = GetFilterPropertyType(pName);
-                        ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]);
-                        filter.put(pName, null);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }
             });

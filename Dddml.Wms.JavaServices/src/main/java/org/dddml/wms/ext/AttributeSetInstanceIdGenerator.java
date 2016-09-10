@@ -38,7 +38,7 @@ public class AttributeSetInstanceIdGenerator implements IdGenerator<String, Attr
         String hash = AttributeSetInstancePropertyUtils.getHash(createAttributeSetInstance);
         createAttributeSetInstance.setHash(hash);
         Map<String, Object> hashMap = new HashMap<>();
-        hashMap.put("Hash", hash);
+        hashMap.put("hash", hash);
         AttributeSetInstanceState old = attributeSetInstanceStateRepository.getFirst(hashMap.entrySet().iterator().next(), null);
         if (old != null) {
             if (AttributeSetInstancePropertyUtils.equals(createAttributeSetInstance, old)) {
