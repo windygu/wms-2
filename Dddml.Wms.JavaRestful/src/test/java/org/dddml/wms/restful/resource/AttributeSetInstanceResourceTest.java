@@ -6,10 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPatch;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.dddml.wms.domain.AttributeSetInstanceStateDto;
 import org.junit.Assert;
@@ -112,6 +109,7 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("serialNumber", "serialNumber");
         jsonObject.put("lot", "lot");
+        jsonObject.put("commandId", UUID.randomUUID().toString());
         jsonObject.put("description", "description");
         jsonObject.put("attributeSetInstanceId", attributeSetInstanceId);
         jsonObject.put("attributeSetId", "TestColorAttributeSetId8c0fXA8idM6GE");
@@ -136,6 +134,7 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
         String url = RESOURCE_URL;
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("serialNumber", "serialNumber");
+        jsonObject.put("commandId", UUID.randomUUID().toString());
         jsonObject.put("lot", "lot");
         jsonObject.put("description", "description");
         jsonObject.put("attributeSetId", "TestColorAttributeSetId8c0fXA8idM6GE");
@@ -162,10 +161,11 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
         String attributeSetInstanceId = "a6ba1b3c-622a-4f3b-8782-42078c3942d0";
         String url = RESOURCE_URL.concat("/").concat(attributeSetInstanceId);
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("version",0);
+        jsonObject.put("version", 0);
         jsonObject.put("serialNumber", "serialNumber-modify");
         jsonObject.put("lot", "lot-modify");
         jsonObject.put("description", "description-modify");
+        jsonObject.put("commandId", UUID.randomUUID().toString());
         jsonObject.put("attributeSetInstanceId", attributeSetInstanceId);
         jsonObject.put("attributeSetId", "TestColorAttributeSetId8c0fXA8idM6GE");
         jsonObject.put("Color", "F");//注意，凡是动态字段的属性名称第一个字母必须大写，否则影响转换
@@ -177,6 +177,26 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
         try {
             HttpResponse response = HTTP_CLIENT.execute(httpPatch);
             System.out.println(getContentFromResponse(response));
+            Assert.assertEquals(204, response.getStatusLine().getStatusCode());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void deleteTest() {
+        String attributeSetInstanceId = "f4e447b3-b8a3-44a9-be08-dd0522c799f6";
+
+        String url = RESOURCE_URL.concat("/").concat(attributeSetInstanceId).concat("?version=").concat("0")
+                .concat("&commandId=").concat(UUID.randomUUID().toString()).concat("&requesterId=").concat("requesterId");
+        JSONObject jsonObject = new JSONObject();
+        HttpDelete httpDelete = new HttpDelete(url);
+        try {
+            HttpResponse response = HTTP_CLIENT.execute(httpDelete);
+            String responseText = getContentFromResponse(response);
+            System.out.println(responseText);
+            Assert.assertNull(responseText);
             Assert.assertEquals(204, response.getStatusLine().getStatusCode());
         } catch (Exception ex) {
             ex.printStackTrace();

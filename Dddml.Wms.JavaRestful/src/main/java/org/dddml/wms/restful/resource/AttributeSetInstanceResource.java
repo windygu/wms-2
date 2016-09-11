@@ -5,10 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.apache.cxf.jaxrs.ext.PATCH;
 import org.dddml.support.criterion.*;
 import org.dddml.support.criterion.TypeConverter;
-import org.dddml.wms.domain.AttributeSetInstanceApplicationService;
-import org.dddml.wms.domain.AttributeSetInstanceCommand;
-import org.dddml.wms.domain.AttributeSetInstanceState;
-import org.dddml.wms.domain.AttributeSetInstanceStateDto;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.meta.AttributeSetInstanceFilteringProperties;
 import org.dddml.wms.domain.meta.PersonFilteringProperties;
 import org.dddml.wms.ext.AttributeSetInstanceIdGenerator;
@@ -18,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
@@ -214,21 +212,31 @@ public class AttributeSetInstanceResource {
     }
 
 
+    /**
+     * 删除
+     *
+     * @param id
+     * @param commandId
+     * @param version
+     * @param requesterId
+     */
     @DELETE
     @Path("/{id}")
-    public void delete(@PathParam("id") String id, @QueryParam("commandId") String commandId, @QueryParam("version") String version,
+    public void delete(@PathParam("id") String id, @QueryParam("commandId") String commandId,
+                       @NotNull(message = "version can't be null") @QueryParam("version") String version,
                        @QueryParam("requesterId") String requesterId) {
-        /*try {
-            var value = new DeleteAttributeSetInstanceDto();
-            value.CommandId = commandId;
-            value.RequesterId = requesterId;
-            value.Version = (long) Convert.ChangeType(version, typeof(long));
-            AttributeSetInstancesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _attributeSetInstanceApplicationService.When(value as IDeleteAttributeSetInstance);
+        try {
+            AttributeSetInstanceCommand.DeleteAttributeSetInstance value = new AbstractAttributeSetInstanceCommand.SimpleDeleteAttributeSetInstance();
+            value.setCommandId(commandId);
+            value.setRequesterId(requesterId);
+            value.setVersion(Long.parseLong(version));
+            AttributeSetInstanceApiUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            attributeSetInstanceApplicationService.when(value);
+        } catch (DomainError error) {
+            throw error;
         } catch (Exception ex) {
-            var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex);
-            throw new HttpResponseException(response);
-        }*/
+            throw new WebApiApplicationException(ex);
+        }
     }
 
 
@@ -269,6 +277,14 @@ public class AttributeSetInstanceResource {
 
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetInstanceCommand.CreateOrMergePatchAttributeSetInstance value) {
+            if (value.getAttributeSetInstanceId() == null) {
+                value.setAttributeSetInstanceId(id);
+            } else if (!value.getAttributeSetInstanceId().equals(id)) {
+                throw DomainError.named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, value.getAttributeSetInstanceId());
+            }
+        }
+
+        public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetInstanceCommand.DeleteAttributeSetInstance value) {
             if (value.getAttributeSetInstanceId() == null) {
                 value.setAttributeSetInstanceId(id);
             } else if (!value.getAttributeSetInstanceId().equals(id)) {
