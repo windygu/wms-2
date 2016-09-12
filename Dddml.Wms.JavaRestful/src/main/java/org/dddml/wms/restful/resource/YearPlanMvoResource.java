@@ -68,7 +68,7 @@ public class YearPlanMvoResource {
     @Path("{id}")
     public YearPlanMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = YearPlanMvoResourceUtils.parseIdString(id);
+            YearPlanId idObj = YearPlanMvoResourceUtils.parseIdString(id);
             YearPlanMvoState state = yearPlanMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -106,8 +106,9 @@ public class YearPlanMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchYearPlanMvoDto.CreateYearPlanMvoDto value) {
         try {
 
-            YearPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            yearPlanMvoApplicationService.when(value);
+            YearPlanMvoCommand.CreateYearPlanMvo cmd = value.toCreateYearPlanMvo();
+            YearPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            yearPlanMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class YearPlanMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchYearPlanMvoDto.MergePatchYearPlanMvoDto value) {
         try {
 
-            YearPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            yearPlanMvoApplicationService.when(value);
+            YearPlanMvoCommand.MergePatchYearPlanMvo cmd = value.toMergePatchYearPlanMvo();
+            YearPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            yearPlanMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class YearPlanMvoResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setPersonVersion(version);
-            YearPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            YearPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             yearPlanMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

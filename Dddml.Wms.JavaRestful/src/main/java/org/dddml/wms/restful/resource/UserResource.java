@@ -106,8 +106,9 @@ public class UserResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchUserDto.CreateUserDto value) {
         try {
 
-            UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            userApplicationService.when(value);
+            UserCommand.CreateUser cmd = value.toCreateUser();
+            UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            userApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class UserResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchUserDto.MergePatchUserDto value) {
         try {
 
-            UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            userApplicationService.when(value);
+            UserCommand.MergePatchUser cmd = value.toMergePatchUser();
+            UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            userApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class UserResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             userApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

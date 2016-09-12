@@ -106,8 +106,9 @@ public class AudienceResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchAudienceDto.CreateAudienceDto value) {
         try {
 
-            AudienceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            audienceApplicationService.when(value);
+            AudienceCommand.CreateAudience cmd = value.toCreateAudience();
+            AudienceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            audienceApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class AudienceResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchAudienceDto.MergePatchAudienceDto value) {
         try {
 
-            AudienceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            audienceApplicationService.when(value);
+            AudienceCommand.MergePatchAudience cmd = value.toMergePatchAudience();
+            AudienceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            audienceApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class AudienceResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AudienceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AudienceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             audienceApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

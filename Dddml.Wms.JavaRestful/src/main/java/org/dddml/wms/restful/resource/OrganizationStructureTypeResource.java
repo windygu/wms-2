@@ -106,8 +106,9 @@ public class OrganizationStructureTypeResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchOrganizationStructureTypeDto.CreateOrganizationStructureTypeDto value) {
         try {
 
-            OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            organizationStructureTypeApplicationService.when(value);
+            OrganizationStructureTypeCommand.CreateOrganizationStructureType cmd = value.toCreateOrganizationStructureType();
+            OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            organizationStructureTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class OrganizationStructureTypeResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchOrganizationStructureTypeDto.MergePatchOrganizationStructureTypeDto value) {
         try {
 
-            OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            organizationStructureTypeApplicationService.when(value);
+            OrganizationStructureTypeCommand.MergePatchOrganizationStructureType cmd = value.toMergePatchOrganizationStructureType();
+            OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            organizationStructureTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class OrganizationStructureTypeResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             organizationStructureTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

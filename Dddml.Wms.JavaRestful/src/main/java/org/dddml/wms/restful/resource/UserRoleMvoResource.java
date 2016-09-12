@@ -68,7 +68,7 @@ public class UserRoleMvoResource {
     @Path("{id}")
     public UserRoleMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = UserRoleMvoResourceUtils.parseIdString(id);
+            UserRoleId idObj = UserRoleMvoResourceUtils.parseIdString(id);
             UserRoleMvoState state = userRoleMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -106,8 +106,9 @@ public class UserRoleMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchUserRoleMvoDto.CreateUserRoleMvoDto value) {
         try {
 
-            UserRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            userRoleMvoApplicationService.when(value);
+            UserRoleMvoCommand.CreateUserRoleMvo cmd = value.toCreateUserRoleMvo();
+            UserRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            userRoleMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class UserRoleMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchUserRoleMvoDto.MergePatchUserRoleMvoDto value) {
         try {
 
-            UserRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            userRoleMvoApplicationService.when(value);
+            UserRoleMvoCommand.MergePatchUserRoleMvo cmd = value.toMergePatchUserRoleMvo();
+            UserRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            userRoleMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class UserRoleMvoResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setUserVersion(version);
-            UserRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             userRoleMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

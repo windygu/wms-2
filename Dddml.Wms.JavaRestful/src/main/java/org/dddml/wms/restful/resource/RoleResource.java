@@ -106,8 +106,9 @@ public class RoleResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchRoleDto.CreateRoleDto value) {
         try {
 
-            RoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            roleApplicationService.when(value);
+            RoleCommand.CreateRole cmd = value.toCreateRole();
+            RoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            roleApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class RoleResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchRoleDto.MergePatchRoleDto value) {
         try {
 
-            RoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            roleApplicationService.when(value);
+            RoleCommand.MergePatchRole cmd = value.toMergePatchRole();
+            RoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            roleApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class RoleResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            RoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            RoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             roleApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

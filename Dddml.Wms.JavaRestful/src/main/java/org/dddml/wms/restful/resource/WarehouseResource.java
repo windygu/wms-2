@@ -106,8 +106,9 @@ public class WarehouseResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchWarehouseDto.CreateWarehouseDto value) {
         try {
 
-            WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            warehouseApplicationService.when(value);
+            WarehouseCommand.CreateWarehouse cmd = value.toCreateWarehouse();
+            WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            warehouseApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class WarehouseResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchWarehouseDto.MergePatchWarehouseDto value) {
         try {
 
-            WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            warehouseApplicationService.when(value);
+            WarehouseCommand.MergePatchWarehouse cmd = value.toMergePatchWarehouse();
+            WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            warehouseApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class WarehouseResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             warehouseApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

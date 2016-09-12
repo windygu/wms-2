@@ -68,7 +68,7 @@ public class AttributeUseMvoResource {
     @Path("{id}")
     public AttributeUseMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = AttributeUseMvoResourceUtils.parseIdString(id);
+            AttributeSetAttributeUseId idObj = AttributeUseMvoResourceUtils.parseIdString(id);
             AttributeUseMvoState state = attributeUseMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -106,8 +106,9 @@ public class AttributeUseMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeUseMvoDto.CreateAttributeUseMvoDto value) {
         try {
 
-            AttributeUseMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeUseMvoApplicationService.when(value);
+            AttributeUseMvoCommand.CreateAttributeUseMvo cmd = value.toCreateAttributeUseMvo();
+            AttributeUseMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            attributeUseMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class AttributeUseMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeUseMvoDto.MergePatchAttributeUseMvoDto value) {
         try {
 
-            AttributeUseMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeUseMvoApplicationService.when(value);
+            AttributeUseMvoCommand.MergePatchAttributeUseMvo cmd = value.toMergePatchAttributeUseMvo();
+            AttributeUseMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            attributeUseMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class AttributeUseMvoResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setAttributeSetVersion(version);
-            AttributeUseMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeUseMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             attributeUseMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

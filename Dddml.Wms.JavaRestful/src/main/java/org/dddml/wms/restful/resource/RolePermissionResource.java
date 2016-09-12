@@ -68,7 +68,7 @@ public class RolePermissionResource {
     @Path("{id}")
     public RolePermissionStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = RolePermissionResourceUtils.parseIdString(id);
+            RolePermissionId idObj = RolePermissionResourceUtils.parseIdString(id);
             RolePermissionState state = rolePermissionApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -106,8 +106,9 @@ public class RolePermissionResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchRolePermissionDto.CreateRolePermissionDto value) {
         try {
 
-            RolePermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            rolePermissionApplicationService.when(value);
+            RolePermissionCommand.CreateRolePermission cmd = value.toCreateRolePermission();
+            RolePermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            rolePermissionApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class RolePermissionResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchRolePermissionDto.MergePatchRolePermissionDto value) {
         try {
 
-            RolePermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            rolePermissionApplicationService.when(value);
+            RolePermissionCommand.MergePatchRolePermission cmd = value.toMergePatchRolePermission();
+            RolePermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            rolePermissionApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class RolePermissionResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            RolePermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            RolePermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             rolePermissionApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

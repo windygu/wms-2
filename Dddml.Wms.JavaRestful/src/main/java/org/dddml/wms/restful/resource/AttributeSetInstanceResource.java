@@ -107,9 +107,9 @@ public class AttributeSetInstanceResource {
     public void put(@PathParam("id") String id, JSONObject dynamicObject) {
         try {
 
-            AttributeSetInstanceCommand.CreateAttributeSetInstance value = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
-            AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceApplicationService.when(value);
+            AttributeSetInstanceCommand.CreateAttributeSetInstance cmd = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
+            AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            attributeSetInstanceApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -120,9 +120,9 @@ public class AttributeSetInstanceResource {
     public void patch(@PathParam("id") String id, JSONObject dynamicObject) {
         try {
 
-            AttributeSetInstanceCommand.MergePatchAttributeSetInstance value = attributeSetInstanceDynamicObjectMapper.toCommandMergePatch(dynamicObject);
-            AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceApplicationService.when(value);
+            AttributeSetInstanceCommand.MergePatchAttributeSetInstance cmd = attributeSetInstanceDynamicObjectMapper.toCommandMergePatch(dynamicObject);
+            AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            attributeSetInstanceApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -140,7 +140,7 @@ public class AttributeSetInstanceResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             attributeSetInstanceApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

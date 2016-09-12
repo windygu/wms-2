@@ -106,8 +106,9 @@ public class OrganizationResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchOrganizationDto.CreateOrganizationDto value) {
         try {
 
-            OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            organizationApplicationService.when(value);
+            OrganizationCommand.CreateOrganization cmd = value.toCreateOrganization();
+            OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            organizationApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class OrganizationResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchOrganizationDto.MergePatchOrganizationDto value) {
         try {
 
-            OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            organizationApplicationService.when(value);
+            OrganizationCommand.MergePatchOrganization cmd = value.toMergePatchOrganization();
+            OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            organizationApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class OrganizationResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             organizationApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

@@ -106,8 +106,9 @@ public class TeamResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchTeamDto.CreateTeamDto value) {
         try {
 
-            TeamResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            teamApplicationService.when(value);
+            TeamCommand.CreateTeam cmd = value.toCreateTeam();
+            TeamResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            teamApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class TeamResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchTeamDto.MergePatchTeamDto value) {
         try {
 
-            TeamResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            teamApplicationService.when(value);
+            TeamCommand.MergePatchTeam cmd = value.toMergePatchTeam();
+            TeamResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            teamApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class TeamResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            TeamResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            TeamResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             teamApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

@@ -68,7 +68,7 @@ public class UserLoginMvoResource {
     @Path("{id}")
     public UserLoginMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = UserLoginMvoResourceUtils.parseIdString(id);
+            UserLoginId idObj = UserLoginMvoResourceUtils.parseIdString(id);
             UserLoginMvoState state = userLoginMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -106,8 +106,9 @@ public class UserLoginMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchUserLoginMvoDto.CreateUserLoginMvoDto value) {
         try {
 
-            UserLoginMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            userLoginMvoApplicationService.when(value);
+            UserLoginMvoCommand.CreateUserLoginMvo cmd = value.toCreateUserLoginMvo();
+            UserLoginMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            userLoginMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class UserLoginMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchUserLoginMvoDto.MergePatchUserLoginMvoDto value) {
         try {
 
-            UserLoginMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            userLoginMvoApplicationService.when(value);
+            UserLoginMvoCommand.MergePatchUserLoginMvo cmd = value.toMergePatchUserLoginMvo();
+            UserLoginMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            userLoginMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class UserLoginMvoResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setUserVersion(version);
-            UserLoginMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserLoginMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             userLoginMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

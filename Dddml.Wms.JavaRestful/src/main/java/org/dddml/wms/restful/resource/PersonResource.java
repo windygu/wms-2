@@ -68,7 +68,7 @@ public class PersonResource {
     @Path("{id}")
     public PersonStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = PersonResourceUtils.parseIdString(id);
+            PersonalName idObj = PersonResourceUtils.parseIdString(id);
             PersonState state = personApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -106,8 +106,9 @@ public class PersonResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchPersonDto.CreatePersonDto value) {
         try {
 
-            PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            personApplicationService.when(value);
+            PersonCommand.CreatePerson cmd = value.toCreatePerson();
+            PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            personApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class PersonResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchPersonDto.MergePatchPersonDto value) {
         try {
 
-            PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            personApplicationService.when(value);
+            PersonCommand.MergePatchPerson cmd = value.toMergePatchPerson();
+            PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            personApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class PersonResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             personApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

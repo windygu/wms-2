@@ -108,8 +108,9 @@ public class InOutResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchInOutDto.CreateInOutDto value) {
         try {
 
-            InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            inOutApplicationService.when(value);
+            InOutCommand.CreateInOut cmd = value.toCreateInOut();
+            InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            inOutApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -120,8 +121,9 @@ public class InOutResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchInOutDto.MergePatchInOutDto value) {
         try {
 
-            InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            inOutApplicationService.when(value);
+            InOutCommand.MergePatchInOut cmd = value.toMergePatchInOut();
+            InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            inOutApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -139,7 +141,7 @@ public class InOutResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             inOutApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

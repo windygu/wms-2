@@ -68,7 +68,7 @@ public class OrganizationStructureResource {
     @Path("{id}")
     public OrganizationStructureStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = OrganizationStructureResourceUtils.parseIdString(id);
+            OrganizationStructureId idObj = OrganizationStructureResourceUtils.parseIdString(id);
             OrganizationStructureState state = organizationStructureApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -106,8 +106,9 @@ public class OrganizationStructureResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchOrganizationStructureDto.CreateOrganizationStructureDto value) {
         try {
 
-            OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            organizationStructureApplicationService.when(value);
+            OrganizationStructureCommand.CreateOrganizationStructure cmd = value.toCreateOrganizationStructure();
+            OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            organizationStructureApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class OrganizationStructureResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchOrganizationStructureDto.MergePatchOrganizationStructureDto value) {
         try {
 
-            OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            organizationStructureApplicationService.when(value);
+            OrganizationStructureCommand.MergePatchOrganizationStructure cmd = value.toMergePatchOrganizationStructure();
+            OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            organizationStructureApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class OrganizationStructureResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             organizationStructureApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

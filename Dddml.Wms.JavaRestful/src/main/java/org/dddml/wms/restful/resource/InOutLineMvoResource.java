@@ -70,7 +70,7 @@ public class InOutLineMvoResource {
     @Path("{id}")
     public InOutLineMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = InOutLineMvoResourceUtils.parseIdString(id);
+            InOutLineId idObj = InOutLineMvoResourceUtils.parseIdString(id);
             InOutLineMvoState state = inOutLineMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -108,8 +108,9 @@ public class InOutLineMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchInOutLineMvoDto.CreateInOutLineMvoDto value) {
         try {
 
-            InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            inOutLineMvoApplicationService.when(value);
+            InOutLineMvoCommand.CreateInOutLineMvo cmd = value.toCreateInOutLineMvo();
+            InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            inOutLineMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -120,8 +121,9 @@ public class InOutLineMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchInOutLineMvoDto.MergePatchInOutLineMvoDto value) {
         try {
 
-            InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            inOutLineMvoApplicationService.when(value);
+            InOutLineMvoCommand.MergePatchInOutLineMvo cmd = value.toMergePatchInOutLineMvo();
+            InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            inOutLineMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -139,7 +141,7 @@ public class InOutLineMvoResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setInOutVersion(version);
-            InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             inOutLineMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

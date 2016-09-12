@@ -106,8 +106,9 @@ public class LocatorResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchLocatorDto.CreateLocatorDto value) {
         try {
 
-            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            locatorApplicationService.when(value);
+            LocatorCommand.CreateLocator cmd = value.toCreateLocator();
+            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            locatorApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class LocatorResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchLocatorDto.MergePatchLocatorDto value) {
         try {
 
-            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            locatorApplicationService.when(value);
+            LocatorCommand.MergePatchLocator cmd = value.toMergePatchLocator();
+            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            locatorApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class LocatorResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             locatorApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

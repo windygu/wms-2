@@ -68,7 +68,7 @@ public class UserPermissionMvoResource {
     @Path("{id}")
     public UserPermissionMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = UserPermissionMvoResourceUtils.parseIdString(id);
+            UserPermissionId idObj = UserPermissionMvoResourceUtils.parseIdString(id);
             UserPermissionMvoState state = userPermissionMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -106,8 +106,9 @@ public class UserPermissionMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchUserPermissionMvoDto.CreateUserPermissionMvoDto value) {
         try {
 
-            UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            userPermissionMvoApplicationService.when(value);
+            UserPermissionMvoCommand.CreateUserPermissionMvo cmd = value.toCreateUserPermissionMvo();
+            UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            userPermissionMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class UserPermissionMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchUserPermissionMvoDto.MergePatchUserPermissionMvoDto value) {
         try {
 
-            UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            userPermissionMvoApplicationService.when(value);
+            UserPermissionMvoCommand.MergePatchUserPermissionMvo cmd = value.toMergePatchUserPermissionMvo();
+            UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            userPermissionMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class UserPermissionMvoResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setUserVersion(version);
-            UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             userPermissionMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

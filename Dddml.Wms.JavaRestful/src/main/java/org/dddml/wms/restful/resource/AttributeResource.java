@@ -118,8 +118,9 @@ public class AttributeResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeDto.CreateAttributeDto value) {
         try {
 
-            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeApplicationService.when(value);
+            AttributeCommand.CreateAttribute cmd = value.toCreateAttribute();
+            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            attributeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -130,8 +131,9 @@ public class AttributeResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeDto.MergePatchAttributeDto value) {
         try {
 
-            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeApplicationService.when(value);
+            AttributeCommand.MergePatchAttribute cmd = value.toMergePatchAttribute();
+            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            attributeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -149,7 +151,7 @@ public class AttributeResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             attributeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

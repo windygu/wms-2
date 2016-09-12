@@ -106,8 +106,9 @@ public class PermissionResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchPermissionDto.CreatePermissionDto value) {
         try {
 
-            PermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            permissionApplicationService.when(value);
+            PermissionCommand.CreatePermission cmd = value.toCreatePermission();
+            PermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            permissionApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class PermissionResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchPermissionDto.MergePatchPermissionDto value) {
         try {
 
-            PermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            permissionApplicationService.when(value);
+            PermissionCommand.MergePatchPermission cmd = value.toMergePatchPermission();
+            PermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            permissionApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class PermissionResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            PermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            PermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             permissionApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

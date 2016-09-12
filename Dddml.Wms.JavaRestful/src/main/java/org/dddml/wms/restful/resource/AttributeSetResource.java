@@ -106,8 +106,9 @@ public class AttributeSetResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value) {
         try {
 
-            AttributeSetResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetApplicationService.when(value);
+            AttributeSetCommand.CreateAttributeSet cmd = value.toCreateAttributeSet();
+            AttributeSetResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            attributeSetApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class AttributeSetResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeSetDto.MergePatchAttributeSetDto value) {
         try {
 
-            AttributeSetResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetApplicationService.when(value);
+            AttributeSetCommand.MergePatchAttributeSet cmd = value.toMergePatchAttributeSet();
+            AttributeSetResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            attributeSetApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class AttributeSetResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AttributeSetResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             attributeSetApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

@@ -68,7 +68,7 @@ public class DayPlanMvoResource {
     @Path("{id}")
     public DayPlanMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = DayPlanMvoResourceUtils.parseIdString(id);
+            DayPlanId idObj = DayPlanMvoResourceUtils.parseIdString(id);
             DayPlanMvoState state = dayPlanMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -106,8 +106,9 @@ public class DayPlanMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchDayPlanMvoDto.CreateDayPlanMvoDto value) {
         try {
 
-            DayPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            dayPlanMvoApplicationService.when(value);
+            DayPlanMvoCommand.CreateDayPlanMvo cmd = value.toCreateDayPlanMvo();
+            DayPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            dayPlanMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class DayPlanMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchDayPlanMvoDto.MergePatchDayPlanMvoDto value) {
         try {
 
-            DayPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            dayPlanMvoApplicationService.when(value);
+            DayPlanMvoCommand.MergePatchDayPlanMvo cmd = value.toMergePatchDayPlanMvo();
+            DayPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            dayPlanMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class DayPlanMvoResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setPersonVersion(version);
-            DayPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            DayPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             dayPlanMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

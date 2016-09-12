@@ -68,7 +68,7 @@ public class MonthPlanMvoResource {
     @Path("{id}")
     public MonthPlanMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = MonthPlanMvoResourceUtils.parseIdString(id);
+            MonthPlanId idObj = MonthPlanMvoResourceUtils.parseIdString(id);
             MonthPlanMvoState state = monthPlanMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -106,8 +106,9 @@ public class MonthPlanMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchMonthPlanMvoDto.CreateMonthPlanMvoDto value) {
         try {
 
-            MonthPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            monthPlanMvoApplicationService.when(value);
+            MonthPlanMvoCommand.CreateMonthPlanMvo cmd = value.toCreateMonthPlanMvo();
+            MonthPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            monthPlanMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class MonthPlanMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchMonthPlanMvoDto.MergePatchMonthPlanMvoDto value) {
         try {
 
-            MonthPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            monthPlanMvoApplicationService.when(value);
+            MonthPlanMvoCommand.MergePatchMonthPlanMvo cmd = value.toMergePatchMonthPlanMvo();
+            MonthPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            monthPlanMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class MonthPlanMvoResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setPersonVersion(version);
-            MonthPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            MonthPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             monthPlanMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }

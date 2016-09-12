@@ -68,7 +68,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
     @Path("{id}")
     public AttributeSetInstanceExtensionFieldMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = AttributeSetInstanceExtensionFieldMvoResourceUtils.parseIdString(id);
+            AttributeSetInstanceExtensionFieldId idObj = AttributeSetInstanceExtensionFieldMvoResourceUtils.parseIdString(id);
             AttributeSetInstanceExtensionFieldMvoState state = attributeSetInstanceExtensionFieldMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -106,8 +106,9 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldMvoDto.CreateAttributeSetInstanceExtensionFieldMvoDto value) {
         try {
 
-            AttributeSetInstanceExtensionFieldMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceExtensionFieldMvoApplicationService.when(value);
+            AttributeSetInstanceExtensionFieldMvoCommand.CreateAttributeSetInstanceExtensionFieldMvo cmd = value.toCreateAttributeSetInstanceExtensionFieldMvo();
+            AttributeSetInstanceExtensionFieldMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            attributeSetInstanceExtensionFieldMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -118,8 +119,9 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldMvoDto.MergePatchAttributeSetInstanceExtensionFieldMvoDto value) {
         try {
 
-            AttributeSetInstanceExtensionFieldMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceExtensionFieldMvoApplicationService.when(value);
+            AttributeSetInstanceExtensionFieldMvoCommand.MergePatchAttributeSetInstanceExtensionFieldMvo cmd = value.toMergePatchAttributeSetInstanceExtensionFieldMvo();
+            AttributeSetInstanceExtensionFieldMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            attributeSetInstanceExtensionFieldMvoApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -137,7 +139,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setAttrSetInstEFGroupVersion(version);
-            AttributeSetInstanceExtensionFieldMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetInstanceExtensionFieldMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             attributeSetInstanceExtensionFieldMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
