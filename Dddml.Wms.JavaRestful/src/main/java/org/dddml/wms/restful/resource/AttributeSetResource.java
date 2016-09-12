@@ -16,7 +16,7 @@ import com.alibaba.fastjson.*;
 import org.apache.cxf.jaxrs.ext.PATCH;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.wms.restful.exception.WebApiApplicationException;
-import org.dddml.support.criterion.TypeConvert;
+import org.dddml.support.criterion.TypeConverter;
 
 @Path("AttributeSets")
 @Produces(MediaType.APPLICATION_JSON)
