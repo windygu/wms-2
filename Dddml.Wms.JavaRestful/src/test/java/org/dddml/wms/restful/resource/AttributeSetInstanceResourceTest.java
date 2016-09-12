@@ -24,15 +24,6 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
 
     private final static String RESOURCE_URL = BASE_URL.concat("attributeSetInstances");
 
-    /**
-     * public JSONArray GetAll(@Context HttpServletRequest request,
-     *
-     * @QueryParam("sort") String sort,
-     * @QueryParam("fields") String fields,
-     * @DefaultValue("0") @QueryParam("firstResult") Integer firstResult,
-     * @QueryParam("maxResults") Integer maxResults,
-     * @QueryParam("filter") String filter) {
-     */
     @Test
     public void getAllTest() {
         //AttributeSetInstanceStateDto dto = new AttributeSetInstanceStateDto();
