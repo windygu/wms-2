@@ -44,12 +44,12 @@ public class UserClaimMvoResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        UserClaimMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        UserClaimMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = userClaimMvoApplicationService.get(
-                        UserClaimMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        UserClaimMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        UserClaimMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        UserClaimMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class UserClaimMvoResource {
     @Path("{id}")
     public UserClaimMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = UserClaimMvosResourceUtils.parseIdString(id);
+            String idObj = UserClaimMvoResourceUtils.parseIdString(id);
             UserClaimMvoState state = userClaimMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class UserClaimMvoResource {
                 count = userClaimMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = userClaimMvoApplicationService.getCount(UserClaimMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = userClaimMvoApplicationService.getCount(UserClaimMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class UserClaimMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchUserClaimMvoDto.CreateUserClaimMvoDto value) {
         try {
 
-            UserClaimMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserClaimMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userClaimMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class UserClaimMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchUserClaimMvoDto.MergePatchUserClaimMvoDto value) {
         try {
 
-            UserClaimMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserClaimMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userClaimMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class UserClaimMvoResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteUserClaimMvo deleteCmd = new DeleteUserClaimMvo();
+            UserClaimMvoCommand.DeleteUserClaimMvo deleteCmd = new AbstractUserClaimMvoCommand.SimpleDeleteUserClaimMvo();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setUserVersion(version);
-            UserClaimMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserClaimMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userClaimMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class UserClaimMvoResource {
     public UserClaimMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            UserClaimId idObj = UserClaimMvosResourceUtils.parseIdString(id);
+            UserClaimId idObj = UserClaimMvoResourceUtils.parseIdString(id);
             return userClaimMvoApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class UserClaimMvoResource {
     private class UserClaimMvoPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return UserClaimMvosResourceUtils.getFilterPropertyType(propertyName);
+            return UserClaimMvoResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class UserClaimMvosResourceUtils {
+    public static class UserClaimMvoResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

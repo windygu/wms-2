@@ -44,12 +44,12 @@ public class UserRoleMvoResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        UserRoleMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        UserRoleMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = userRoleMvoApplicationService.get(
-                        UserRoleMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        UserRoleMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        UserRoleMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        UserRoleMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class UserRoleMvoResource {
     @Path("{id}")
     public UserRoleMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = UserRoleMvosResourceUtils.parseIdString(id);
+            String idObj = UserRoleMvoResourceUtils.parseIdString(id);
             UserRoleMvoState state = userRoleMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class UserRoleMvoResource {
                 count = userRoleMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = userRoleMvoApplicationService.getCount(UserRoleMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = userRoleMvoApplicationService.getCount(UserRoleMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class UserRoleMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchUserRoleMvoDto.CreateUserRoleMvoDto value) {
         try {
 
-            UserRoleMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userRoleMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class UserRoleMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchUserRoleMvoDto.MergePatchUserRoleMvoDto value) {
         try {
 
-            UserRoleMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userRoleMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class UserRoleMvoResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteUserRoleMvo deleteCmd = new DeleteUserRoleMvo();
+            UserRoleMvoCommand.DeleteUserRoleMvo deleteCmd = new AbstractUserRoleMvoCommand.SimpleDeleteUserRoleMvo();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setUserVersion(version);
-            UserRoleMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userRoleMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class UserRoleMvoResource {
     public UserRoleMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            UserRoleId idObj = UserRoleMvosResourceUtils.parseIdString(id);
+            UserRoleId idObj = UserRoleMvoResourceUtils.parseIdString(id);
             return userRoleMvoApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class UserRoleMvoResource {
     private class UserRoleMvoPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return UserRoleMvosResourceUtils.getFilterPropertyType(propertyName);
+            return UserRoleMvoResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class UserRoleMvosResourceUtils {
+    public static class UserRoleMvoResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

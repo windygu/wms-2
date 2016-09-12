@@ -44,12 +44,12 @@ public class OrganizationResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        OrganizationsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = organizationApplicationService.get(
-                        OrganizationsResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        OrganizationsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        OrganizationResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -93,7 +93,7 @@ public class OrganizationResource {
                 count = organizationApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = organizationApplicationService.getCount(OrganizationsResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = organizationApplicationService.getCount(OrganizationResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class OrganizationResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchOrganizationDto.CreateOrganizationDto value) {
         try {
 
-            OrganizationsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             organizationApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class OrganizationResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchOrganizationDto.MergePatchOrganizationDto value) {
         try {
 
-            OrganizationsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             organizationApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class OrganizationResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteOrganization deleteCmd = new DeleteOrganization();
+            OrganizationCommand.DeleteOrganization deleteCmd = new AbstractOrganizationCommand.SimpleDeleteOrganization();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            OrganizationsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             organizationApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class OrganizationResource {
     private class OrganizationPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return OrganizationsResourceUtils.getFilterPropertyType(propertyName);
+            return OrganizationResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class OrganizationsResourceUtils {
+    public static class OrganizationResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -207,7 +208,7 @@ public class OrganizationResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, OrganizationCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getOrganizationId() == null) {
                 value.setOrganizationId(idObj);
             } else if (!value.getOrganizationId().equals(idObj)) {

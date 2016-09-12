@@ -44,12 +44,12 @@ public class RolePermissionResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        RolePermissionsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        RolePermissionResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = rolePermissionApplicationService.get(
-                        RolePermissionsResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        RolePermissionsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        RolePermissionResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        RolePermissionResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class RolePermissionResource {
     @Path("{id}")
     public RolePermissionStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = RolePermissionsResourceUtils.parseIdString(id);
+            String idObj = RolePermissionResourceUtils.parseIdString(id);
             RolePermissionState state = rolePermissionApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class RolePermissionResource {
                 count = rolePermissionApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = rolePermissionApplicationService.getCount(RolePermissionsResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = rolePermissionApplicationService.getCount(RolePermissionResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class RolePermissionResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchRolePermissionDto.CreateRolePermissionDto value) {
         try {
 
-            RolePermissionsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            RolePermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             rolePermissionApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class RolePermissionResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchRolePermissionDto.MergePatchRolePermissionDto value) {
         try {
 
-            RolePermissionsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            RolePermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             rolePermissionApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class RolePermissionResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteRolePermission deleteCmd = new DeleteRolePermission();
+            RolePermissionCommand.DeleteRolePermission deleteCmd = new AbstractRolePermissionCommand.SimpleDeleteRolePermission();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            RolePermissionsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            RolePermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             rolePermissionApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class RolePermissionResource {
     public RolePermissionStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            RolePermissionId idObj = RolePermissionsResourceUtils.parseIdString(id);
+            RolePermissionId idObj = RolePermissionResourceUtils.parseIdString(id);
             return rolePermissionApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class RolePermissionResource {
     private class RolePermissionPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return RolePermissionsResourceUtils.getFilterPropertyType(propertyName);
+            return RolePermissionResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class RolePermissionsResourceUtils {
+    public static class RolePermissionResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

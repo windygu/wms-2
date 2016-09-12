@@ -44,12 +44,12 @@ public class AttributeSetResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        AttributeSetsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeSetResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = attributeSetApplicationService.get(
-                        AttributeSetsResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        AttributeSetsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeSetResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeSetResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -93,7 +93,7 @@ public class AttributeSetResource {
                 count = attributeSetApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeSetApplicationService.getCount(AttributeSetsResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeSetApplicationService.getCount(AttributeSetResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class AttributeSetResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value) {
         try {
 
-            AttributeSetsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class AttributeSetResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeSetDto.MergePatchAttributeSetDto value) {
         try {
 
-            AttributeSetsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class AttributeSetResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteAttributeSet deleteCmd = new DeleteAttributeSet();
+            AttributeSetCommand.DeleteAttributeSet deleteCmd = new AbstractAttributeSetCommand.SimpleDeleteAttributeSet();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AttributeSetsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -169,7 +170,7 @@ public class AttributeSetResource {
 
     @Path("{attributeSetId}/AttributeUses/{attributeId}")
     @GET
-    public AttributeUseStateDto getAttributeUse(@PathParam("attributeSetId") string attributeSetId, @PathParam("attributeId") string attributeId) {
+    public AttributeUseStateDto getAttributeUse(@PathParam("attributeSetId") String attributeSetId, @PathParam("attributeId") String attributeId) {
         try {
 
             AttributeUseState state = attributeSetApplicationService.getAttributeUse(attributeSetId, attributeId);
@@ -200,12 +201,12 @@ public class AttributeSetResource {
     private class AttributeSetPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeSetsResourceUtils.getFilterPropertyType(propertyName);
+            return AttributeSetResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class AttributeSetsResourceUtils {
+    public static class AttributeSetResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -222,7 +223,7 @@ public class AttributeSetResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getAttributeSetId() == null) {
                 value.setAttributeSetId(idObj);
             } else if (!value.getAttributeSetId().equals(idObj)) {

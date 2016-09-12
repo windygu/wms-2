@@ -44,12 +44,12 @@ public class AttributeUseMvoResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        AttributeUseMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeUseMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = attributeUseMvoApplicationService.get(
-                        AttributeUseMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        AttributeUseMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeUseMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeUseMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class AttributeUseMvoResource {
     @Path("{id}")
     public AttributeUseMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = AttributeUseMvosResourceUtils.parseIdString(id);
+            String idObj = AttributeUseMvoResourceUtils.parseIdString(id);
             AttributeUseMvoState state = attributeUseMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class AttributeUseMvoResource {
                 count = attributeUseMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeUseMvoApplicationService.getCount(AttributeUseMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeUseMvoApplicationService.getCount(AttributeUseMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class AttributeUseMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeUseMvoDto.CreateAttributeUseMvoDto value) {
         try {
 
-            AttributeUseMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeUseMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeUseMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class AttributeUseMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeUseMvoDto.MergePatchAttributeUseMvoDto value) {
         try {
 
-            AttributeUseMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeUseMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeUseMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class AttributeUseMvoResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteAttributeUseMvo deleteCmd = new DeleteAttributeUseMvo();
+            AttributeUseMvoCommand.DeleteAttributeUseMvo deleteCmd = new AbstractAttributeUseMvoCommand.SimpleDeleteAttributeUseMvo();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setAttributeSetVersion(version);
-            AttributeUseMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeUseMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeUseMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class AttributeUseMvoResource {
     public AttributeUseMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            AttributeSetAttributeUseId idObj = AttributeUseMvosResourceUtils.parseIdString(id);
+            AttributeSetAttributeUseId idObj = AttributeUseMvoResourceUtils.parseIdString(id);
             return attributeUseMvoApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class AttributeUseMvoResource {
     private class AttributeUseMvoPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeUseMvosResourceUtils.getFilterPropertyType(propertyName);
+            return AttributeUseMvoResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class AttributeUseMvosResourceUtils {
+    public static class AttributeUseMvoResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

@@ -44,12 +44,12 @@ public class UserPermissionMvoResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        UserPermissionMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        UserPermissionMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = userPermissionMvoApplicationService.get(
-                        UserPermissionMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        UserPermissionMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        UserPermissionMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        UserPermissionMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class UserPermissionMvoResource {
     @Path("{id}")
     public UserPermissionMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = UserPermissionMvosResourceUtils.parseIdString(id);
+            String idObj = UserPermissionMvoResourceUtils.parseIdString(id);
             UserPermissionMvoState state = userPermissionMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class UserPermissionMvoResource {
                 count = userPermissionMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = userPermissionMvoApplicationService.getCount(UserPermissionMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = userPermissionMvoApplicationService.getCount(UserPermissionMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class UserPermissionMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchUserPermissionMvoDto.CreateUserPermissionMvoDto value) {
         try {
 
-            UserPermissionMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userPermissionMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class UserPermissionMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchUserPermissionMvoDto.MergePatchUserPermissionMvoDto value) {
         try {
 
-            UserPermissionMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userPermissionMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class UserPermissionMvoResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteUserPermissionMvo deleteCmd = new DeleteUserPermissionMvo();
+            UserPermissionMvoCommand.DeleteUserPermissionMvo deleteCmd = new AbstractUserPermissionMvoCommand.SimpleDeleteUserPermissionMvo();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setUserVersion(version);
-            UserPermissionMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userPermissionMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class UserPermissionMvoResource {
     public UserPermissionMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            UserPermissionId idObj = UserPermissionMvosResourceUtils.parseIdString(id);
+            UserPermissionId idObj = UserPermissionMvoResourceUtils.parseIdString(id);
             return userPermissionMvoApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class UserPermissionMvoResource {
     private class UserPermissionMvoPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return UserPermissionMvosResourceUtils.getFilterPropertyType(propertyName);
+            return UserPermissionMvoResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class UserPermissionMvosResourceUtils {
+    public static class UserPermissionMvoResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

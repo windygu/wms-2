@@ -44,12 +44,12 @@ public class WarehouseResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        WarehousesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        WarehouseResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = warehouseApplicationService.get(
-                        WarehousesResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        WarehousesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        WarehouseResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        WarehouseResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -93,7 +93,7 @@ public class WarehouseResource {
                 count = warehouseApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = warehouseApplicationService.getCount(WarehousesResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = warehouseApplicationService.getCount(WarehouseResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class WarehouseResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchWarehouseDto.CreateWarehouseDto value) {
         try {
 
-            WarehousesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             warehouseApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class WarehouseResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchWarehouseDto.MergePatchWarehouseDto value) {
         try {
 
-            WarehousesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             warehouseApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class WarehouseResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteWarehouse deleteCmd = new DeleteWarehouse();
+            WarehouseCommand.DeleteWarehouse deleteCmd = new AbstractWarehouseCommand.SimpleDeleteWarehouse();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            WarehousesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             warehouseApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class WarehouseResource {
     private class WarehousePropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return WarehousesResourceUtils.getFilterPropertyType(propertyName);
+            return WarehouseResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class WarehousesResourceUtils {
+    public static class WarehouseResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -207,7 +208,7 @@ public class WarehouseResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, WarehouseCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getWarehouseId() == null) {
                 value.setWarehouseId(idObj);
             } else if (!value.getWarehouseId().equals(idObj)) {

@@ -44,12 +44,12 @@ public class RoleResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        RolesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        RoleResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = roleApplicationService.get(
-                        RolesResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        RolesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        RoleResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        RoleResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -93,7 +93,7 @@ public class RoleResource {
                 count = roleApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = roleApplicationService.getCount(RolesResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = roleApplicationService.getCount(RoleResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class RoleResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchRoleDto.CreateRoleDto value) {
         try {
 
-            RolesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            RoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             roleApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class RoleResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchRoleDto.MergePatchRoleDto value) {
         try {
 
-            RolesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            RoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             roleApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class RoleResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteRole deleteCmd = new DeleteRole();
+            RoleCommand.DeleteRole deleteCmd = new AbstractRoleCommand.SimpleDeleteRole();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            RolesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            RoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             roleApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class RoleResource {
     private class RolePropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return RolesResourceUtils.getFilterPropertyType(propertyName);
+            return RoleResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class RolesResourceUtils {
+    public static class RoleResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -207,7 +208,7 @@ public class RoleResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, RoleCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getRoleId() == null) {
                 value.setRoleId(idObj);
             } else if (!value.getRoleId().equals(idObj)) {

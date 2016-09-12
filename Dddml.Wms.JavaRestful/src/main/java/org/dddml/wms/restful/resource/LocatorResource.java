@@ -44,12 +44,12 @@ public class LocatorResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        LocatorsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        LocatorResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = locatorApplicationService.get(
-                        LocatorsResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        LocatorsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        LocatorResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        LocatorResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -93,7 +93,7 @@ public class LocatorResource {
                 count = locatorApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = locatorApplicationService.getCount(LocatorsResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = locatorApplicationService.getCount(LocatorResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class LocatorResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchLocatorDto.CreateLocatorDto value) {
         try {
 
-            LocatorsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             locatorApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class LocatorResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchLocatorDto.MergePatchLocatorDto value) {
         try {
 
-            LocatorsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             locatorApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class LocatorResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteLocator deleteCmd = new DeleteLocator();
+            LocatorCommand.DeleteLocator deleteCmd = new AbstractLocatorCommand.SimpleDeleteLocator();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            LocatorsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             locatorApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class LocatorResource {
     private class LocatorPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return LocatorsResourceUtils.getFilterPropertyType(propertyName);
+            return LocatorResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class LocatorsResourceUtils {
+    public static class LocatorResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -207,7 +208,7 @@ public class LocatorResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, LocatorCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getLocatorId() == null) {
                 value.setLocatorId(idObj);
             } else if (!value.getLocatorId().equals(idObj)) {

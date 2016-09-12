@@ -44,12 +44,12 @@ public class DayPlanMvoResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        DayPlanMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        DayPlanMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = dayPlanMvoApplicationService.get(
-                        DayPlanMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        DayPlanMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        DayPlanMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        DayPlanMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class DayPlanMvoResource {
     @Path("{id}")
     public DayPlanMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = DayPlanMvosResourceUtils.parseIdString(id);
+            String idObj = DayPlanMvoResourceUtils.parseIdString(id);
             DayPlanMvoState state = dayPlanMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class DayPlanMvoResource {
                 count = dayPlanMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = dayPlanMvoApplicationService.getCount(DayPlanMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = dayPlanMvoApplicationService.getCount(DayPlanMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class DayPlanMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchDayPlanMvoDto.CreateDayPlanMvoDto value) {
         try {
 
-            DayPlanMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            DayPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             dayPlanMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class DayPlanMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchDayPlanMvoDto.MergePatchDayPlanMvoDto value) {
         try {
 
-            DayPlanMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            DayPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             dayPlanMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class DayPlanMvoResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteDayPlanMvo deleteCmd = new DeleteDayPlanMvo();
+            DayPlanMvoCommand.DeleteDayPlanMvo deleteCmd = new AbstractDayPlanMvoCommand.SimpleDeleteDayPlanMvo();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setPersonVersion(version);
-            DayPlanMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            DayPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             dayPlanMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class DayPlanMvoResource {
     public DayPlanMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            DayPlanId idObj = DayPlanMvosResourceUtils.parseIdString(id);
+            DayPlanId idObj = DayPlanMvoResourceUtils.parseIdString(id);
             return dayPlanMvoApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class DayPlanMvoResource {
     private class DayPlanMvoPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return DayPlanMvosResourceUtils.getFilterPropertyType(propertyName);
+            return DayPlanMvoResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class DayPlanMvosResourceUtils {
+    public static class DayPlanMvoResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

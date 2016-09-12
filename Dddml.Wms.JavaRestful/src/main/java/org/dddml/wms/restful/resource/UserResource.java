@@ -44,12 +44,12 @@ public class UserResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        UsersResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        UserResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = userApplicationService.get(
-                        UsersResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        UsersResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        UserResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        UserResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -93,7 +93,7 @@ public class UserResource {
                 count = userApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = userApplicationService.getCount(UsersResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = userApplicationService.getCount(UserResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class UserResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchUserDto.CreateUserDto value) {
         try {
 
-            UsersResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class UserResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchUserDto.MergePatchUserDto value) {
         try {
 
-            UsersResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class UserResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteUser deleteCmd = new DeleteUser();
+            UserCommand.DeleteUser deleteCmd = new AbstractUserCommand.SimpleDeleteUser();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            UsersResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -169,7 +170,7 @@ public class UserResource {
 
     @Path("{userId}/UserRoles/{roleId}")
     @GET
-    public UserRoleStateDto getUserRole(@PathParam("userId") string userId, @PathParam("roleId") string roleId) {
+    public UserRoleStateDto getUserRole(@PathParam("userId") String userId, @PathParam("roleId") String roleId) {
         try {
 
             UserRoleState state = userApplicationService.getUserRole(userId, roleId);
@@ -184,7 +185,7 @@ public class UserResource {
 
     @Path("{userId}/UserClaims/{claimId}")
     @GET
-    public UserClaimStateDto getUserClaim(@PathParam("userId") string userId, @PathParam("claimId") int claimId) {
+    public UserClaimStateDto getUserClaim(@PathParam("userId") String userId, @PathParam("claimId") Integer claimId) {
         try {
 
             UserClaimState state = userApplicationService.getUserClaim(userId, claimId);
@@ -199,7 +200,7 @@ public class UserResource {
 
     @Path("{userId}/UserPermissions/{permissionId}")
     @GET
-    public UserPermissionStateDto getUserPermission(@PathParam("userId") string userId, @PathParam("permissionId") string permissionId) {
+    public UserPermissionStateDto getUserPermission(@PathParam("userId") String userId, @PathParam("permissionId") String permissionId) {
         try {
 
             UserPermissionState state = userApplicationService.getUserPermission(userId, permissionId);
@@ -214,7 +215,7 @@ public class UserResource {
 
     @Path("{userId}/UserLogins/{loginKey}")
     @GET
-    public UserLoginStateDto getUserLogin(@PathParam("userId") string userId, @PathParam("loginKey") String loginKey) {
+    public UserLoginStateDto getUserLogin(@PathParam("userId") String userId, @PathParam("loginKey") String loginKey) {
         try {
 
             UserLoginState state = userApplicationService.getUserLogin(userId, (new LoginKeyFlattenedDtoFormatter().parse(loginKey)).toLoginKey());
@@ -245,12 +246,12 @@ public class UserResource {
     private class UserPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return UsersResourceUtils.getFilterPropertyType(propertyName);
+            return UserResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class UsersResourceUtils {
+    public static class UserResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -267,7 +268,7 @@ public class UserResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, UserCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getUserId() == null) {
                 value.setUserId(idObj);
             } else if (!value.getUserId().equals(idObj)) {

@@ -44,12 +44,12 @@ public class UserLoginMvoResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        UserLoginMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        UserLoginMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = userLoginMvoApplicationService.get(
-                        UserLoginMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        UserLoginMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        UserLoginMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        UserLoginMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class UserLoginMvoResource {
     @Path("{id}")
     public UserLoginMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = UserLoginMvosResourceUtils.parseIdString(id);
+            String idObj = UserLoginMvoResourceUtils.parseIdString(id);
             UserLoginMvoState state = userLoginMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class UserLoginMvoResource {
                 count = userLoginMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = userLoginMvoApplicationService.getCount(UserLoginMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = userLoginMvoApplicationService.getCount(UserLoginMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class UserLoginMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchUserLoginMvoDto.CreateUserLoginMvoDto value) {
         try {
 
-            UserLoginMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserLoginMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userLoginMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class UserLoginMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchUserLoginMvoDto.MergePatchUserLoginMvoDto value) {
         try {
 
-            UserLoginMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserLoginMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userLoginMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class UserLoginMvoResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteUserLoginMvo deleteCmd = new DeleteUserLoginMvo();
+            UserLoginMvoCommand.DeleteUserLoginMvo deleteCmd = new AbstractUserLoginMvoCommand.SimpleDeleteUserLoginMvo();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setUserVersion(version);
-            UserLoginMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            UserLoginMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             userLoginMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class UserLoginMvoResource {
     public UserLoginMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            UserLoginId idObj = UserLoginMvosResourceUtils.parseIdString(id);
+            UserLoginId idObj = UserLoginMvoResourceUtils.parseIdString(id);
             return userLoginMvoApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class UserLoginMvoResource {
     private class UserLoginMvoPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return UserLoginMvosResourceUtils.getFilterPropertyType(propertyName);
+            return UserLoginMvoResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class UserLoginMvosResourceUtils {
+    public static class UserLoginMvoResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

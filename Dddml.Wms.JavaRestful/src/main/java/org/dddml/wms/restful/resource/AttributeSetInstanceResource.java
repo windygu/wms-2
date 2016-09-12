@@ -51,12 +51,12 @@ public class AttributeSetInstanceResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        AttributeSetInstancesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeSetInstanceResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = attributeSetInstanceApplicationService.get(
-                        AttributeSetInstancesResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        AttributeSetInstancesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeSetInstanceResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeSetInstanceResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -94,7 +94,7 @@ public class AttributeSetInstanceResource {
                 count = attributeSetInstanceApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeSetInstanceApplicationService.getCount(AttributeSetInstancesResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeSetInstanceApplicationService.getCount(AttributeSetInstanceResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -108,7 +108,7 @@ public class AttributeSetInstanceResource {
         try {
 
             AttributeSetInstanceCommand.CreateAttributeSetInstance value = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetInstanceApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -121,7 +121,7 @@ public class AttributeSetInstanceResource {
         try {
 
             AttributeSetInstanceCommand.MergePatchAttributeSetInstance value = attributeSetInstanceDynamicObjectMapper.toCommandMergePatch(dynamicObject);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetInstanceApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -135,11 +135,12 @@ public class AttributeSetInstanceResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteAttributeSetInstance deleteCmd = new DeleteAttributeSetInstance();
+            AttributeSetInstanceCommand.DeleteAttributeSetInstance deleteCmd = new AbstractAttributeSetInstanceCommand.SimpleDeleteAttributeSetInstance();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetInstanceApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -188,12 +189,12 @@ public class AttributeSetInstanceResource {
     private class AttributeSetInstancePropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeSetInstancesResourceUtils.getFilterPropertyType(propertyName);
+            return AttributeSetInstanceResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class AttributeSetInstancesResourceUtils {
+    public static class AttributeSetInstanceResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -210,7 +211,7 @@ public class AttributeSetInstanceResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetInstanceCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getAttributeSetInstanceId() == null) {
                 value.setAttributeSetInstanceId(idObj);
             } else if (!value.getAttributeSetInstanceId().equals(idObj)) {

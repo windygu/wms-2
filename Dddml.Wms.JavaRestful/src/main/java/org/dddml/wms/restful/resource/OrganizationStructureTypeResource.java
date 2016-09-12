@@ -44,12 +44,12 @@ public class OrganizationStructureTypeResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        OrganizationStructureTypesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        OrganizationStructureTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = organizationStructureTypeApplicationService.get(
-                        OrganizationStructureTypesResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        OrganizationStructureTypesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        OrganizationStructureTypeResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        OrganizationStructureTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -93,7 +93,7 @@ public class OrganizationStructureTypeResource {
                 count = organizationStructureTypeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = organizationStructureTypeApplicationService.getCount(OrganizationStructureTypesResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = organizationStructureTypeApplicationService.getCount(OrganizationStructureTypeResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class OrganizationStructureTypeResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchOrganizationStructureTypeDto.CreateOrganizationStructureTypeDto value) {
         try {
 
-            OrganizationStructureTypesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             organizationStructureTypeApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class OrganizationStructureTypeResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchOrganizationStructureTypeDto.MergePatchOrganizationStructureTypeDto value) {
         try {
 
-            OrganizationStructureTypesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             organizationStructureTypeApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class OrganizationStructureTypeResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteOrganizationStructureType deleteCmd = new DeleteOrganizationStructureType();
+            OrganizationStructureTypeCommand.DeleteOrganizationStructureType deleteCmd = new AbstractOrganizationStructureTypeCommand.SimpleDeleteOrganizationStructureType();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            OrganizationStructureTypesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             organizationStructureTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class OrganizationStructureTypeResource {
     private class OrganizationStructureTypePropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return OrganizationStructureTypesResourceUtils.getFilterPropertyType(propertyName);
+            return OrganizationStructureTypeResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class OrganizationStructureTypesResourceUtils {
+    public static class OrganizationStructureTypeResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -207,7 +208,7 @@ public class OrganizationStructureTypeResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, OrganizationStructureTypeCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getId() == null) {
                 value.setId(idObj);
             } else if (!value.getId().equals(idObj)) {

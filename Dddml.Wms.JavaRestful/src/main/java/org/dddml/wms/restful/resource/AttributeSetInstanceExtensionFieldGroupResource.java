@@ -44,12 +44,12 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        AttributeSetInstanceExtensionFieldGroupsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = attributeSetInstanceExtensionFieldGroupApplicationService.get(
-                        AttributeSetInstanceExtensionFieldGroupsResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        AttributeSetInstanceExtensionFieldGroupsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -93,7 +93,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                 count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(AttributeSetInstanceExtensionFieldGroupsResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.CreateAttributeSetInstanceExtensionFieldGroupDto value) {
         try {
 
-            AttributeSetInstanceExtensionFieldGroupsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetInstanceExtensionFieldGroupResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetInstanceExtensionFieldGroupApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.MergePatchAttributeSetInstanceExtensionFieldGroupDto value) {
         try {
 
-            AttributeSetInstanceExtensionFieldGroupsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetInstanceExtensionFieldGroupResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetInstanceExtensionFieldGroupApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteAttributeSetInstanceExtensionFieldGroup deleteCmd = new DeleteAttributeSetInstanceExtensionFieldGroup();
+            AttributeSetInstanceExtensionFieldGroupCommand.DeleteAttributeSetInstanceExtensionFieldGroup deleteCmd = new AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleDeleteAttributeSetInstanceExtensionFieldGroup();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AttributeSetInstanceExtensionFieldGroupsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetInstanceExtensionFieldGroupResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetInstanceExtensionFieldGroupApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -169,7 +170,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
 
     @Path("{groupId}/AttributeSetInstanceExtensionFields/{index}")
     @GET
-    public AttributeSetInstanceExtensionFieldStateDto getAttributeSetInstanceExtensionField(@PathParam("groupId") string groupId, @PathParam("index") string index) {
+    public AttributeSetInstanceExtensionFieldStateDto getAttributeSetInstanceExtensionField(@PathParam("groupId") String groupId, @PathParam("index") String index) {
         try {
 
             AttributeSetInstanceExtensionFieldState state = attributeSetInstanceExtensionFieldGroupApplicationService.getAttributeSetInstanceExtensionField(groupId, index);
@@ -200,12 +201,12 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
     private class AttributeSetInstanceExtensionFieldGroupPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeSetInstanceExtensionFieldGroupsResourceUtils.getFilterPropertyType(propertyName);
+            return AttributeSetInstanceExtensionFieldGroupResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class AttributeSetInstanceExtensionFieldGroupsResourceUtils {
+    public static class AttributeSetInstanceExtensionFieldGroupResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -222,7 +223,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetInstanceExtensionFieldGroupCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getId() == null) {
                 value.setId(idObj);
             } else if (!value.getId().equals(idObj)) {

@@ -44,12 +44,12 @@ public class PersonResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        PeopleResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        PersonResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = personApplicationService.get(
-                        PeopleResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        PeopleResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        PersonResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        PersonResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class PersonResource {
     @Path("{id}")
     public PersonStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = PeopleResourceUtils.parseIdString(id);
+            String idObj = PersonResourceUtils.parseIdString(id);
             PersonState state = personApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class PersonResource {
                 count = personApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = personApplicationService.getCount(PeopleResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = personApplicationService.getCount(PersonResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class PersonResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchPersonDto.CreatePersonDto value) {
         try {
 
-            PeopleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             personApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class PersonResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchPersonDto.MergePatchPersonDto value) {
         try {
 
-            PeopleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             personApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class PersonResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeletePerson deleteCmd = new DeletePerson();
+            PersonCommand.DeletePerson deleteCmd = new AbstractPersonCommand.SimpleDeletePerson();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            PeopleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             personApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class PersonResource {
     public PersonStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            PersonalName idObj = PeopleResourceUtils.parseIdString(id);
+            PersonalName idObj = PersonResourceUtils.parseIdString(id);
             return personApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -169,7 +170,7 @@ public class PersonResource {
 
     @Path("{personalName}/YearPlans/{year}")
     @GET
-    public YearPlanStateDto getYearPlan(@PathParam("personalName") String personalName, @PathParam("year") int year) {
+    public YearPlanStateDto getYearPlan(@PathParam("personalName") String personalName, @PathParam("year") Integer year) {
         try {
 
             YearPlanState state = personApplicationService.getYearPlan((new PersonalNameFlattenedDtoFormatter().parse(personalName)).toPersonalName(), year);
@@ -184,7 +185,7 @@ public class PersonResource {
 
     @Path("{personalName}/YearPlans/{year}/MonthPlans/{month}")
     @GET
-    public MonthPlanStateDto getMonthPlan(@PathParam("personalName") String personalName, @PathParam("year") int year, @PathParam("month") int month) {
+    public MonthPlanStateDto getMonthPlan(@PathParam("personalName") String personalName, @PathParam("year") Integer year, @PathParam("month") Integer month) {
         try {
 
             MonthPlanState state = personApplicationService.getMonthPlan((new PersonalNameFlattenedDtoFormatter().parse(personalName)).toPersonalName(), year, month);
@@ -199,7 +200,7 @@ public class PersonResource {
 
     @Path("{personalName}/YearPlans/{year}/MonthPlans/{month}/DayPlans/{day}")
     @GET
-    public DayPlanStateDto getDayPlan(@PathParam("personalName") String personalName, @PathParam("year") int year, @PathParam("month") int month, @PathParam("day") int day) {
+    public DayPlanStateDto getDayPlan(@PathParam("personalName") String personalName, @PathParam("year") Integer year, @PathParam("month") Integer month, @PathParam("day") Integer day) {
         try {
 
             DayPlanState state = personApplicationService.getDayPlan((new PersonalNameFlattenedDtoFormatter().parse(personalName)).toPersonalName(), year, month, day);
@@ -230,12 +231,12 @@ public class PersonResource {
     private class PersonPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return PeopleResourceUtils.getFilterPropertyType(propertyName);
+            return PersonResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class PeopleResourceUtils {
+    public static class PersonResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

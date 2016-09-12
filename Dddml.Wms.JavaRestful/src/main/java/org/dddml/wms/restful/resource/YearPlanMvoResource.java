@@ -44,12 +44,12 @@ public class YearPlanMvoResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        YearPlanMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        YearPlanMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = yearPlanMvoApplicationService.get(
-                        YearPlanMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        YearPlanMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        YearPlanMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        YearPlanMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class YearPlanMvoResource {
     @Path("{id}")
     public YearPlanMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = YearPlanMvosResourceUtils.parseIdString(id);
+            String idObj = YearPlanMvoResourceUtils.parseIdString(id);
             YearPlanMvoState state = yearPlanMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class YearPlanMvoResource {
                 count = yearPlanMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = yearPlanMvoApplicationService.getCount(YearPlanMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = yearPlanMvoApplicationService.getCount(YearPlanMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class YearPlanMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchYearPlanMvoDto.CreateYearPlanMvoDto value) {
         try {
 
-            YearPlanMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            YearPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             yearPlanMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class YearPlanMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchYearPlanMvoDto.MergePatchYearPlanMvoDto value) {
         try {
 
-            YearPlanMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            YearPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             yearPlanMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class YearPlanMvoResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteYearPlanMvo deleteCmd = new DeleteYearPlanMvo();
+            YearPlanMvoCommand.DeleteYearPlanMvo deleteCmd = new AbstractYearPlanMvoCommand.SimpleDeleteYearPlanMvo();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setPersonVersion(version);
-            YearPlanMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            YearPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             yearPlanMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class YearPlanMvoResource {
     public YearPlanMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            YearPlanId idObj = YearPlanMvosResourceUtils.parseIdString(id);
+            YearPlanId idObj = YearPlanMvoResourceUtils.parseIdString(id);
             return yearPlanMvoApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class YearPlanMvoResource {
     private class YearPlanMvoPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return YearPlanMvosResourceUtils.getFilterPropertyType(propertyName);
+            return YearPlanMvoResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class YearPlanMvosResourceUtils {
+    public static class YearPlanMvoResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

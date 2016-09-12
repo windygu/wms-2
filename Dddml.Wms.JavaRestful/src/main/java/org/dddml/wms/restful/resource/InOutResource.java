@@ -46,12 +46,12 @@ public class InOutResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        InOutsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        InOutResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = inOutApplicationService.get(
-                        InOutsResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        InOutsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        InOutResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        InOutResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -95,7 +95,7 @@ public class InOutResource {
                 count = inOutApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = inOutApplicationService.getCount(InOutsResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = inOutApplicationService.getCount(InOutResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -108,7 +108,7 @@ public class InOutResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchInOutDto.CreateInOutDto value) {
         try {
 
-            InOutsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             inOutApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -120,7 +120,7 @@ public class InOutResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchInOutDto.MergePatchInOutDto value) {
         try {
 
-            InOutsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             inOutApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -134,11 +134,12 @@ public class InOutResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteInOut deleteCmd = new DeleteInOut();
+            InOutCommand.DeleteInOut deleteCmd = new AbstractInOutCommand.SimpleDeleteInOut();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            InOutsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             inOutApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -171,7 +172,7 @@ public class InOutResource {
 
     @Path("{inOutDocumentNumber}/InOutLines/{skuId}")
     @GET
-    public InOutLineStateDto getInOutLine(@PathParam("inOutDocumentNumber") string inOutDocumentNumber, @PathParam("skuId") String skuId) {
+    public InOutLineStateDto getInOutLine(@PathParam("inOutDocumentNumber") String inOutDocumentNumber, @PathParam("skuId") String skuId) {
         try {
 
             InOutLineState state = inOutApplicationService.getInOutLine(inOutDocumentNumber, (new SkuIdFlattenedDtoFormatter().parse(skuId)).toSkuId());
@@ -202,12 +203,12 @@ public class InOutResource {
     private class InOutPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return InOutsResourceUtils.getFilterPropertyType(propertyName);
+            return InOutResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class InOutsResourceUtils {
+    public static class InOutResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -224,7 +225,7 @@ public class InOutResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, InOutCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getDocumentNumber() == null) {
                 value.setDocumentNumber(idObj);
             } else if (!value.getDocumentNumber().equals(idObj)) {

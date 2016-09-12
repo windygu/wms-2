@@ -44,12 +44,12 @@ public class MonthPlanMvoResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        MonthPlanMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        MonthPlanMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = monthPlanMvoApplicationService.get(
-                        MonthPlanMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        MonthPlanMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        MonthPlanMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        MonthPlanMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class MonthPlanMvoResource {
     @Path("{id}")
     public MonthPlanMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = MonthPlanMvosResourceUtils.parseIdString(id);
+            String idObj = MonthPlanMvoResourceUtils.parseIdString(id);
             MonthPlanMvoState state = monthPlanMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class MonthPlanMvoResource {
                 count = monthPlanMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = monthPlanMvoApplicationService.getCount(MonthPlanMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = monthPlanMvoApplicationService.getCount(MonthPlanMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class MonthPlanMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchMonthPlanMvoDto.CreateMonthPlanMvoDto value) {
         try {
 
-            MonthPlanMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            MonthPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             monthPlanMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class MonthPlanMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchMonthPlanMvoDto.MergePatchMonthPlanMvoDto value) {
         try {
 
-            MonthPlanMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            MonthPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             monthPlanMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class MonthPlanMvoResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteMonthPlanMvo deleteCmd = new DeleteMonthPlanMvo();
+            MonthPlanMvoCommand.DeleteMonthPlanMvo deleteCmd = new AbstractMonthPlanMvoCommand.SimpleDeleteMonthPlanMvo();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setPersonVersion(version);
-            MonthPlanMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            MonthPlanMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             monthPlanMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class MonthPlanMvoResource {
     public MonthPlanMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            MonthPlanId idObj = MonthPlanMvosResourceUtils.parseIdString(id);
+            MonthPlanId idObj = MonthPlanMvoResourceUtils.parseIdString(id);
             return monthPlanMvoApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class MonthPlanMvoResource {
     private class MonthPlanMvoPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return MonthPlanMvosResourceUtils.getFilterPropertyType(propertyName);
+            return MonthPlanMvoResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class MonthPlanMvosResourceUtils {
+    public static class MonthPlanMvoResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

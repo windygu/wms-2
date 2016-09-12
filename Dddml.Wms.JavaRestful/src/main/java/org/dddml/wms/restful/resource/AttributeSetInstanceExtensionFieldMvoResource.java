@@ -44,12 +44,12 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        AttributeSetInstanceExtensionFieldMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeSetInstanceExtensionFieldMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = attributeSetInstanceExtensionFieldMvoApplicationService.get(
-                        AttributeSetInstanceExtensionFieldMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        AttributeSetInstanceExtensionFieldMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeSetInstanceExtensionFieldMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeSetInstanceExtensionFieldMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
     @Path("{id}")
     public AttributeSetInstanceExtensionFieldMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = AttributeSetInstanceExtensionFieldMvosResourceUtils.parseIdString(id);
+            String idObj = AttributeSetInstanceExtensionFieldMvoResourceUtils.parseIdString(id);
             AttributeSetInstanceExtensionFieldMvoState state = attributeSetInstanceExtensionFieldMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
                 count = attributeSetInstanceExtensionFieldMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeSetInstanceExtensionFieldMvoApplicationService.getCount(AttributeSetInstanceExtensionFieldMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeSetInstanceExtensionFieldMvoApplicationService.getCount(AttributeSetInstanceExtensionFieldMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldMvoDto.CreateAttributeSetInstanceExtensionFieldMvoDto value) {
         try {
 
-            AttributeSetInstanceExtensionFieldMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetInstanceExtensionFieldMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetInstanceExtensionFieldMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldMvoDto.MergePatchAttributeSetInstanceExtensionFieldMvoDto value) {
         try {
 
-            AttributeSetInstanceExtensionFieldMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetInstanceExtensionFieldMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetInstanceExtensionFieldMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteAttributeSetInstanceExtensionFieldMvo deleteCmd = new DeleteAttributeSetInstanceExtensionFieldMvo();
+            AttributeSetInstanceExtensionFieldMvoCommand.DeleteAttributeSetInstanceExtensionFieldMvo deleteCmd = new AbstractAttributeSetInstanceExtensionFieldMvoCommand.SimpleDeleteAttributeSetInstanceExtensionFieldMvo();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setAttrSetInstEFGroupVersion(version);
-            AttributeSetInstanceExtensionFieldMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeSetInstanceExtensionFieldMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeSetInstanceExtensionFieldMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
     public AttributeSetInstanceExtensionFieldMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            AttributeSetInstanceExtensionFieldId idObj = AttributeSetInstanceExtensionFieldMvosResourceUtils.parseIdString(id);
+            AttributeSetInstanceExtensionFieldId idObj = AttributeSetInstanceExtensionFieldMvoResourceUtils.parseIdString(id);
             return attributeSetInstanceExtensionFieldMvoApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
     private class AttributeSetInstanceExtensionFieldMvoPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeSetInstanceExtensionFieldMvosResourceUtils.getFilterPropertyType(propertyName);
+            return AttributeSetInstanceExtensionFieldMvoResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class AttributeSetInstanceExtensionFieldMvosResourceUtils {
+    public static class AttributeSetInstanceExtensionFieldMvoResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

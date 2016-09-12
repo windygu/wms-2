@@ -44,12 +44,12 @@ public class AudienceResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        AudiencesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AudienceResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = audienceApplicationService.get(
-                        AudiencesResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        AudiencesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AudienceResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AudienceResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -93,7 +93,7 @@ public class AudienceResource {
                 count = audienceApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = audienceApplicationService.getCount(AudiencesResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = audienceApplicationService.getCount(AudienceResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class AudienceResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchAudienceDto.CreateAudienceDto value) {
         try {
 
-            AudiencesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AudienceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             audienceApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class AudienceResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchAudienceDto.MergePatchAudienceDto value) {
         try {
 
-            AudiencesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AudienceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             audienceApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class AudienceResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteAudience deleteCmd = new DeleteAudience();
+            AudienceCommand.DeleteAudience deleteCmd = new AbstractAudienceCommand.SimpleDeleteAudience();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AudiencesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AudienceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             audienceApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class AudienceResource {
     private class AudiencePropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return AudiencesResourceUtils.getFilterPropertyType(propertyName);
+            return AudienceResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class AudiencesResourceUtils {
+    public static class AudienceResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -207,7 +208,7 @@ public class AudienceResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, AudienceCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getClientId() == null) {
                 value.setClientId(idObj);
             } else if (!value.getClientId().equals(idObj)) {

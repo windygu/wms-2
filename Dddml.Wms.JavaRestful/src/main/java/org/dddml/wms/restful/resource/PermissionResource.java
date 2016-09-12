@@ -44,12 +44,12 @@ public class PermissionResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        PermissionsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        PermissionResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = permissionApplicationService.get(
-                        PermissionsResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        PermissionsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        PermissionResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        PermissionResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -93,7 +93,7 @@ public class PermissionResource {
                 count = permissionApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = permissionApplicationService.getCount(PermissionsResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = permissionApplicationService.getCount(PermissionResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class PermissionResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchPermissionDto.CreatePermissionDto value) {
         try {
 
-            PermissionsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            PermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             permissionApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class PermissionResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchPermissionDto.MergePatchPermissionDto value) {
         try {
 
-            PermissionsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            PermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             permissionApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class PermissionResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeletePermission deleteCmd = new DeletePermission();
+            PermissionCommand.DeletePermission deleteCmd = new AbstractPermissionCommand.SimpleDeletePermission();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            PermissionsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            PermissionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             permissionApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class PermissionResource {
     private class PermissionPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return PermissionsResourceUtils.getFilterPropertyType(propertyName);
+            return PermissionResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class PermissionsResourceUtils {
+    public static class PermissionResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -207,7 +208,7 @@ public class PermissionResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, PermissionCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getPermissionId() == null) {
                 value.setPermissionId(idObj);
             } else if (!value.getPermissionId().equals(idObj)) {

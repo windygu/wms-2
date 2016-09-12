@@ -44,12 +44,12 @@ public class TeamResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        TeamsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        TeamResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = teamApplicationService.get(
-                        TeamsResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        TeamsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        TeamResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        TeamResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -93,7 +93,7 @@ public class TeamResource {
                 count = teamApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = teamApplicationService.getCount(TeamsResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = teamApplicationService.getCount(TeamResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class TeamResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchTeamDto.CreateTeamDto value) {
         try {
 
-            TeamsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            TeamResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             teamApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class TeamResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchTeamDto.MergePatchTeamDto value) {
         try {
 
-            TeamsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            TeamResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             teamApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class TeamResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteTeam deleteCmd = new DeleteTeam();
+            TeamCommand.DeleteTeam deleteCmd = new AbstractTeamCommand.SimpleDeleteTeam();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            TeamsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            TeamResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             teamApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class TeamResource {
     private class TeamPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return TeamsResourceUtils.getFilterPropertyType(propertyName);
+            return TeamResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class TeamsResourceUtils {
+    public static class TeamResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -207,7 +208,7 @@ public class TeamResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, TeamCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getTeamName() == null) {
                 value.setTeamName(idObj);
             } else if (!value.getTeamName().equals(idObj)) {

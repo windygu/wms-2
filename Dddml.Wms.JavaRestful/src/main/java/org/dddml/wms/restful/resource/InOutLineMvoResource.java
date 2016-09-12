@@ -46,12 +46,12 @@ public class InOutLineMvoResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        InOutLineMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        InOutLineMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = inOutLineMvoApplicationService.get(
-                        InOutLineMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        InOutLineMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        InOutLineMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        InOutLineMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -70,7 +70,7 @@ public class InOutLineMvoResource {
     @Path("{id}")
     public InOutLineMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = InOutLineMvosResourceUtils.parseIdString(id);
+            String idObj = InOutLineMvoResourceUtils.parseIdString(id);
             InOutLineMvoState state = inOutLineMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -95,7 +95,7 @@ public class InOutLineMvoResource {
                 count = inOutLineMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = inOutLineMvoApplicationService.getCount(InOutLineMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = inOutLineMvoApplicationService.getCount(InOutLineMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -108,7 +108,7 @@ public class InOutLineMvoResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchInOutLineMvoDto.CreateInOutLineMvoDto value) {
         try {
 
-            InOutLineMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             inOutLineMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -120,7 +120,7 @@ public class InOutLineMvoResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchInOutLineMvoDto.MergePatchInOutLineMvoDto value) {
         try {
 
-            InOutLineMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             inOutLineMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -134,11 +134,12 @@ public class InOutLineMvoResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteInOutLineMvo deleteCmd = new DeleteInOutLineMvo();
+            InOutLineMvoCommand.DeleteInOutLineMvo deleteCmd = new AbstractInOutLineMvoCommand.SimpleDeleteInOutLineMvo();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setInOutVersion(version);
-            InOutLineMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             inOutLineMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -163,7 +164,7 @@ public class InOutLineMvoResource {
     public InOutLineMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            InOutLineId idObj = InOutLineMvosResourceUtils.parseIdString(id);
+            InOutLineId idObj = InOutLineMvoResourceUtils.parseIdString(id);
             return inOutLineMvoApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -187,12 +188,12 @@ public class InOutLineMvoResource {
     private class InOutLineMvoPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return InOutLineMvosResourceUtils.getFilterPropertyType(propertyName);
+            return InOutLineMvoResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class InOutLineMvosResourceUtils {
+    public static class InOutLineMvoResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();

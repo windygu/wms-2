@@ -47,12 +47,12 @@ public class AttributeResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        AttributesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = attributeApplicationService.get(
-                        AttributesResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        AttributesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -105,7 +105,7 @@ public class AttributeResource {
                 count = attributeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeApplicationService.getCount(AttributesResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeApplicationService.getCount(AttributeResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -118,7 +118,7 @@ public class AttributeResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeDto.CreateAttributeDto value) {
         try {
 
-            AttributesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -130,7 +130,7 @@ public class AttributeResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeDto.MergePatchAttributeDto value) {
         try {
 
-            AttributesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -144,11 +144,12 @@ public class AttributeResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteAttribute deleteCmd = new DeleteAttribute();
+            AttributeCommand.DeleteAttribute deleteCmd = new AbstractAttributeCommand.SimpleDeleteAttribute();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AttributesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             attributeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -181,7 +182,7 @@ public class AttributeResource {
 
     @Path("{attributeId}/AttributeValues/{value}")
     @GET
-    public AttributeValueStateDto getAttributeValue(@PathParam("attributeId") string attributeId, @PathParam("value") string value) {
+    public AttributeValueStateDto getAttributeValue(@PathParam("attributeId") String attributeId, @PathParam("value") String value) {
         try {
 
             AttributeValueState state = attributeApplicationService.getAttributeValue(attributeId, value);
@@ -212,12 +213,12 @@ public class AttributeResource {
     private class AttributePropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributesResourceUtils.getFilterPropertyType(propertyName);
+            return AttributeResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class AttributesResourceUtils {
+    public static class AttributeResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -234,7 +235,7 @@ public class AttributeResource {
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeCommand value) {
-            String idObj = parseIdString(id);
+            String idObj = id;
             if (value.getAttributeId() == null) {
                 value.setAttributeId(idObj);
             } else if (!value.getAttributeId().equals(idObj)) {

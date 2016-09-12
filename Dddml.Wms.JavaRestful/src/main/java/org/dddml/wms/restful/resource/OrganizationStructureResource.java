@@ -44,12 +44,12 @@ public class OrganizationStructureResource {
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        OrganizationStructuresResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
                 states = organizationStructureApplicationService.get(
-                        OrganizationStructuresResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        OrganizationStructuresResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        OrganizationStructureResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
@@ -68,7 +68,7 @@ public class OrganizationStructureResource {
     @Path("{id}")
     public OrganizationStructureStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = OrganizationStructuresResourceUtils.parseIdString(id);
+            String idObj = OrganizationStructureResourceUtils.parseIdString(id);
             OrganizationStructureState state = organizationStructureApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -93,7 +93,7 @@ public class OrganizationStructureResource {
                 count = organizationStructureApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = organizationStructureApplicationService.getCount(OrganizationStructuresResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = organizationStructureApplicationService.getCount(OrganizationStructureResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -106,7 +106,7 @@ public class OrganizationStructureResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchOrganizationStructureDto.CreateOrganizationStructureDto value) {
         try {
 
-            OrganizationStructuresResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             organizationStructureApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -118,7 +118,7 @@ public class OrganizationStructureResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchOrganizationStructureDto.MergePatchOrganizationStructureDto value) {
         try {
 
-            OrganizationStructuresResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             organizationStructureApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -132,11 +132,12 @@ public class OrganizationStructureResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteOrganizationStructure deleteCmd = new DeleteOrganizationStructure();
+            OrganizationStructureCommand.DeleteOrganizationStructure deleteCmd = new AbstractOrganizationStructureCommand.SimpleDeleteOrganizationStructure();
+
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            OrganizationStructuresResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
             organizationStructureApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -161,7 +162,7 @@ public class OrganizationStructureResource {
     public OrganizationStructureStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            OrganizationStructureId idObj = OrganizationStructuresResourceUtils.parseIdString(id);
+            OrganizationStructureId idObj = OrganizationStructureResourceUtils.parseIdString(id);
             return organizationStructureApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
@@ -185,12 +186,12 @@ public class OrganizationStructureResource {
     private class OrganizationStructurePropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return OrganizationStructuresResourceUtils.getFilterPropertyType(propertyName);
+            return OrganizationStructureResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class OrganizationStructuresResourceUtils {
+    public static class OrganizationStructureResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
