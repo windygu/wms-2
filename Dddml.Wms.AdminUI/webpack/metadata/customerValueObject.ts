@@ -1,4 +1,4 @@
-export default [{
+export const CUSTOMER_VALUE_OBJECT_METADATA = [{
     name: "Money",
     plural: "Money",
     label: "Money",
