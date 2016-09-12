@@ -81,6 +81,7 @@
 	boundedContext.SetJavaTypes(GetJavaTypes());
 
 	boundedContext.Aggregates["AttributeSetInstance"].Metadata["httpPostCreationEnabled"] = true;
+	//boundedContext.Aggregates["Person"].Metadata["httpPostCreationEnabled"] = true;
 
 #>
 <#+

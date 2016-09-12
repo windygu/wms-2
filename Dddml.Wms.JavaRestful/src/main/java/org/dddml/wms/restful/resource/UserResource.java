@@ -1,7 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -60,7 +60,7 @@ public class UserResource {
             }
             return dtoConverter.toUserStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
 
     @GET
     @Path("{id}")
@@ -78,7 +78,7 @@ public class UserResource {
             }
             return dtoConverter.toUserStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("_count")
@@ -95,7 +95,7 @@ public class UserResource {
             }
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -108,7 +108,7 @@ public class UserResource {
             UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             userApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -121,7 +121,7 @@ public class UserResource {
             UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             userApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @DELETE
@@ -140,7 +140,7 @@ public class UserResource {
             UserResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             userApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("_metadata/filteringFields")
@@ -154,7 +154,7 @@ public class UserResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{id}/_stateEvents/{version}")
@@ -165,7 +165,7 @@ public class UserResource {
             String idObj = id;
             return userApplicationService.getStateEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{userId}/UserRoles/{roleId}")
@@ -180,7 +180,7 @@ public class UserResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{userId}/UserClaims/{claimId}")
@@ -195,7 +195,7 @@ public class UserResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{userId}/UserPermissions/{permissionId}")
@@ -210,7 +210,7 @@ public class UserResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{userId}/UserLogins/{loginKey}")
@@ -225,7 +225,7 @@ public class UserResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 

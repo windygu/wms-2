@@ -1,7 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -62,7 +62,7 @@ public class InOutLineMvoResource {
             }
             return dtoConverter.toInOutLineMvoStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
 
     @GET
     @Path("{id}")
@@ -80,7 +80,7 @@ public class InOutLineMvoResource {
             }
             return dtoConverter.toInOutLineMvoStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("_count")
@@ -97,7 +97,7 @@ public class InOutLineMvoResource {
             }
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -110,7 +110,7 @@ public class InOutLineMvoResource {
             InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             inOutLineMvoApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -123,7 +123,7 @@ public class InOutLineMvoResource {
             InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             inOutLineMvoApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @DELETE
@@ -142,7 +142,7 @@ public class InOutLineMvoResource {
             InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             inOutLineMvoApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("_metadata/filteringFields")
@@ -156,7 +156,7 @@ public class InOutLineMvoResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{id}/_stateEvents/{version}")
@@ -167,7 +167,7 @@ public class InOutLineMvoResource {
             InOutLineId idObj = InOutLineMvoResourceUtils.parseIdString(id);
             return inOutLineMvoApplicationService.getStateEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 

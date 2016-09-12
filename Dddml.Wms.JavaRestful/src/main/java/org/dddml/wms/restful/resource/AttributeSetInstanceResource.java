@@ -1,7 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -70,7 +70,7 @@ public class AttributeSetInstanceResource {
             }
             return dynamicArray;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
 
     @GET
     @Path("{id}")
@@ -82,7 +82,7 @@ public class AttributeSetInstanceResource {
 
             return attributeSetInstanceDynamicObjectMapper.mapState(state, fields);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("_count")
@@ -99,7 +99,7 @@ public class AttributeSetInstanceResource {
             }
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -107,7 +107,7 @@ public class AttributeSetInstanceResource {
     public String post(JSONObject dynamicObject, @Context HttpServletResponse response) {
         try {
 
-            AttributeSetInstanceCommand.CreateAttributeSetInstance value = attributeSetInstanceDynamicObjectMapper.ToCommandCreate(dynamicObject);
+            AttributeSetInstanceCommand.CreateAttributeSetInstance cmd = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
             IdGenerator.GetOrGenerateIdResult<String> idResult = attributeSetInstanceIdGenerator.getOrGenerateId(cmd);
             if (!idResult.isReused()) {
                 cmd.setAttributeSetInstanceId(idResult.getId());
@@ -115,9 +115,8 @@ public class AttributeSetInstanceResource {
             }
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
-            return null;//TODO? idResult.getId();
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+            return idResult.getId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -130,7 +129,7 @@ public class AttributeSetInstanceResource {
             AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeSetInstanceApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -143,7 +142,7 @@ public class AttributeSetInstanceResource {
             AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeSetInstanceApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @DELETE
@@ -162,7 +161,7 @@ public class AttributeSetInstanceResource {
             AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             attributeSetInstanceApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("_metadata/filteringFields")
@@ -176,7 +175,7 @@ public class AttributeSetInstanceResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{id}/_stateEvents/{version}")
@@ -187,7 +186,7 @@ public class AttributeSetInstanceResource {
             String idObj = id;
             return attributeSetInstanceApplicationService.getStateEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
