@@ -47,7 +47,7 @@ public class RoleResource {
                         firstResult, maxResults);
             } else {
                 states = roleApplicationService.get(
-                        RoleResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        RoleResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         RoleResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -60,7 +60,8 @@ public class RoleResource {
             }
             return dtoConverter.toRoleStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -91,7 +92,7 @@ public class RoleResource {
                 count = roleApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = roleApplicationService.getCount(RoleResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = roleApplicationService.getCount(RoleResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -255,7 +256,7 @@ public class RoleResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -267,6 +268,16 @@ public class RoleResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static RoleStateDto[] toRoleStateDtoArray(Iterable<String> ids) {
+            List<RoleStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                RoleStateDto dto = new RoleStateDto();
+                dto.setRoleId(id);
+                states.add(dto);
+            });
+            return states.toArray(new RoleStateDto[0]);
         }
 
     }

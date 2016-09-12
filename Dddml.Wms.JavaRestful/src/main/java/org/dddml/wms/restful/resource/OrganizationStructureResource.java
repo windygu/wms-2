@@ -47,7 +47,7 @@ public class OrganizationStructureResource {
                         firstResult, maxResults);
             } else {
                 states = organizationStructureApplicationService.get(
-                        OrganizationStructureResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        OrganizationStructureResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -60,7 +60,8 @@ public class OrganizationStructureResource {
             }
             return dtoConverter.toOrganizationStructureStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -91,7 +92,7 @@ public class OrganizationStructureResource {
                 count = organizationStructureApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = organizationStructureApplicationService.getCount(OrganizationStructureResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = organizationStructureApplicationService.getCount(OrganizationStructureResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -261,7 +262,7 @@ public class OrganizationStructureResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -273,6 +274,16 @@ public class OrganizationStructureResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static OrganizationStructureStateDto[] toOrganizationStructureStateDtoArray(Iterable<OrganizationStructureId> ids) {
+            List<OrganizationStructureStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                OrganizationStructureStateDto dto = new OrganizationStructureStateDto();
+                dto.setId(id);
+                states.add(dto);
+            });
+            return states.toArray(new OrganizationStructureStateDto[0]);
         }
 
     }

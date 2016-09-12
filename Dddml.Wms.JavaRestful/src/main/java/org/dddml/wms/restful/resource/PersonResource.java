@@ -47,7 +47,7 @@ public class PersonResource {
                         firstResult, maxResults);
             } else {
                 states = personApplicationService.get(
-                        PersonResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        PersonResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         PersonResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -60,7 +60,8 @@ public class PersonResource {
             }
             return dtoConverter.toPersonStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -91,7 +92,7 @@ public class PersonResource {
                 count = personApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = personApplicationService.getCount(PersonResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = personApplicationService.getCount(PersonResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -306,7 +307,7 @@ public class PersonResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -318,6 +319,16 @@ public class PersonResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static PersonStateDto[] toPersonStateDtoArray(Iterable<PersonalName> ids) {
+            List<PersonStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                PersonStateDto dto = new PersonStateDto();
+                dto.setPersonalName(id);
+                states.add(dto);
+            });
+            return states.toArray(new PersonStateDto[0]);
         }
 
     }

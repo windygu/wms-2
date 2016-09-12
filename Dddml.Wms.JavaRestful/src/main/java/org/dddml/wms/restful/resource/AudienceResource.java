@@ -47,7 +47,7 @@ public class AudienceResource {
                         firstResult, maxResults);
             } else {
                 states = audienceApplicationService.get(
-                        AudienceResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AudienceResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         AudienceResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -60,7 +60,8 @@ public class AudienceResource {
             }
             return dtoConverter.toAudienceStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -91,7 +92,7 @@ public class AudienceResource {
                 count = audienceApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = audienceApplicationService.getCount(AudienceResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = audienceApplicationService.getCount(AudienceResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -255,7 +256,7 @@ public class AudienceResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -267,6 +268,16 @@ public class AudienceResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static AudienceStateDto[] toAudienceStateDtoArray(Iterable<String> ids) {
+            List<AudienceStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                AudienceStateDto dto = new AudienceStateDto();
+                dto.setClientId(id);
+                states.add(dto);
+            });
+            return states.toArray(new AudienceStateDto[0]);
         }
 
     }

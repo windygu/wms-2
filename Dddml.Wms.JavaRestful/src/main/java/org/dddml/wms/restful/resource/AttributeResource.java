@@ -50,7 +50,7 @@ public class AttributeResource {
                         firstResult, maxResults);
             } else {
                 states = attributeApplicationService.get(
-                        AttributeResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         AttributeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -63,7 +63,8 @@ public class AttributeResource {
             }
             return dtoConverter.toAttributeStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -103,7 +104,7 @@ public class AttributeResource {
                 count = attributeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeApplicationService.getCount(AttributeResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeApplicationService.getCount(AttributeResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -282,7 +283,7 @@ public class AttributeResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -294,6 +295,16 @@ public class AttributeResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static AttributeStateDto[] toAttributeStateDtoArray(Iterable<String> ids) {
+            List<AttributeStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                AttributeStateDto dto = new AttributeStateDto();
+                dto.setAttributeId(id);
+                states.add(dto);
+            });
+            return states.toArray(new AttributeStateDto[0]);
         }
 
     }

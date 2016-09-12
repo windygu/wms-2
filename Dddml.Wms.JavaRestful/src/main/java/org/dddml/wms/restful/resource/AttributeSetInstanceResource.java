@@ -57,7 +57,7 @@ public class AttributeSetInstanceResource {
                         firstResult, maxResults);
             } else {
                 states = attributeSetInstanceApplicationService.get(
-                        AttributeSetInstanceResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeSetInstanceResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         AttributeSetInstanceResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -70,7 +70,8 @@ public class AttributeSetInstanceResource {
             }
             return dynamicArray;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -95,7 +96,7 @@ public class AttributeSetInstanceResource {
                 count = attributeSetInstanceApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeSetInstanceApplicationService.getCount(AttributeSetInstanceResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeSetInstanceApplicationService.getCount(AttributeSetInstanceResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -276,7 +277,7 @@ public class AttributeSetInstanceResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -288,6 +289,16 @@ public class AttributeSetInstanceResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static AttributeSetInstanceStateDto[] toAttributeSetInstanceStateDtoArray(Iterable<String> ids) {
+            List<AttributeSetInstanceStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                AttributeSetInstanceStateDto dto = new AttributeSetInstanceStateDto();
+                dto.setAttributeSetInstanceId(id);
+                states.add(dto);
+            });
+            return states.toArray(new AttributeSetInstanceStateDto[0]);
         }
 
     }

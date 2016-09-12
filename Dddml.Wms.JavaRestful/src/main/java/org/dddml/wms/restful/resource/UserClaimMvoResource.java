@@ -47,7 +47,7 @@ public class UserClaimMvoResource {
                         firstResult, maxResults);
             } else {
                 states = userClaimMvoApplicationService.get(
-                        UserClaimMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        UserClaimMvoResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         UserClaimMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -60,7 +60,8 @@ public class UserClaimMvoResource {
             }
             return dtoConverter.toUserClaimMvoStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -91,7 +92,7 @@ public class UserClaimMvoResource {
                 count = userClaimMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = userClaimMvoApplicationService.getCount(UserClaimMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = userClaimMvoApplicationService.getCount(UserClaimMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -261,7 +262,7 @@ public class UserClaimMvoResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -273,6 +274,16 @@ public class UserClaimMvoResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static UserClaimMvoStateDto[] toUserClaimMvoStateDtoArray(Iterable<UserClaimId> ids) {
+            List<UserClaimMvoStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                UserClaimMvoStateDto dto = new UserClaimMvoStateDto();
+                dto.setUserClaimId(id);
+                states.add(dto);
+            });
+            return states.toArray(new UserClaimMvoStateDto[0]);
         }
 
     }
