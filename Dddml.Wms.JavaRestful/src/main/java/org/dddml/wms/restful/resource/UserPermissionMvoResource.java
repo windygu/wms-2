@@ -15,7 +15,6 @@ import org.dddml.wms.domain.meta.*;
 import com.alibaba.fastjson.*;
 import org.apache.cxf.jaxrs.ext.PATCH;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.dddml.wms.restful.exception.WebApiApplicationException;
 import org.dddml.support.criterion.TypeConverter;
 
 @Path("UserPermissionMvos")
@@ -61,8 +60,7 @@ public class UserPermissionMvoResource {
             }
             return dtoConverter.toUserPermissionMvoStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
-    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }    }
 
     @GET
     @Path("{id}")
@@ -80,7 +78,7 @@ public class UserPermissionMvoResource {
             }
             return dtoConverter.toUserPermissionMvoStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("_count")
@@ -97,7 +95,7 @@ public class UserPermissionMvoResource {
             }
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 
@@ -110,7 +108,7 @@ public class UserPermissionMvoResource {
             UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             userPermissionMvoApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 
@@ -123,7 +121,7 @@ public class UserPermissionMvoResource {
             UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             userPermissionMvoApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @DELETE
@@ -142,7 +140,7 @@ public class UserPermissionMvoResource {
             UserPermissionMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             userPermissionMvoApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("_metadata/filteringFields")
@@ -156,7 +154,7 @@ public class UserPermissionMvoResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("{id}/_stateEvents/{version}")
@@ -167,7 +165,7 @@ public class UserPermissionMvoResource {
             UserPermissionId idObj = UserPermissionMvoResourceUtils.parseIdString(id);
             return userPermissionMvoApplicationService.getStateEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 

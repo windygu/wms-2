@@ -17,7 +17,6 @@ import org.dddml.wms.domain.meta.*;
 import com.alibaba.fastjson.*;
 import org.apache.cxf.jaxrs.ext.PATCH;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.dddml.wms.restful.exception.WebApiApplicationException;
 import org.dddml.support.criterion.TypeConverter;
 
 @Path("InOutLineMvos")
@@ -63,8 +62,7 @@ public class InOutLineMvoResource {
             }
             return dtoConverter.toInOutLineMvoStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
-    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }    }
 
     @GET
     @Path("{id}")
@@ -82,7 +80,7 @@ public class InOutLineMvoResource {
             }
             return dtoConverter.toInOutLineMvoStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("_count")
@@ -99,7 +97,7 @@ public class InOutLineMvoResource {
             }
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 
@@ -112,7 +110,7 @@ public class InOutLineMvoResource {
             InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             inOutLineMvoApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 
@@ -125,7 +123,7 @@ public class InOutLineMvoResource {
             InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             inOutLineMvoApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @DELETE
@@ -144,7 +142,7 @@ public class InOutLineMvoResource {
             InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             inOutLineMvoApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("_metadata/filteringFields")
@@ -158,7 +156,7 @@ public class InOutLineMvoResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("{id}/_stateEvents/{version}")
@@ -169,7 +167,7 @@ public class InOutLineMvoResource {
             InOutLineId idObj = InOutLineMvoResourceUtils.parseIdString(id);
             return inOutLineMvoApplicationService.getStateEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 

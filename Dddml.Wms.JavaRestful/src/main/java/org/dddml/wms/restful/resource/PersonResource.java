@@ -15,7 +15,6 @@ import org.dddml.wms.domain.meta.*;
 import com.alibaba.fastjson.*;
 import org.apache.cxf.jaxrs.ext.PATCH;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.dddml.wms.restful.exception.WebApiApplicationException;
 import org.dddml.support.criterion.TypeConverter;
 
 @Path("People")
@@ -61,8 +60,7 @@ public class PersonResource {
             }
             return dtoConverter.toPersonStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
-    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }    }
 
     @GET
     @Path("{id}")
@@ -80,7 +78,7 @@ public class PersonResource {
             }
             return dtoConverter.toPersonStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("_count")
@@ -97,7 +95,7 @@ public class PersonResource {
             }
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 
@@ -110,7 +108,7 @@ public class PersonResource {
             PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             personApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 
@@ -123,7 +121,7 @@ public class PersonResource {
             PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             personApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @DELETE
@@ -142,7 +140,7 @@ public class PersonResource {
             PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             personApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("_metadata/filteringFields")
@@ -156,7 +154,7 @@ public class PersonResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("{id}/_stateEvents/{version}")
@@ -167,7 +165,7 @@ public class PersonResource {
             PersonalName idObj = PersonResourceUtils.parseIdString(id);
             return personApplicationService.getStateEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("{personalName}/YearPlans/{year}")
@@ -182,7 +180,7 @@ public class PersonResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("{personalName}/YearPlans/{year}/MonthPlans/{month}")
@@ -197,7 +195,7 @@ public class PersonResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("{personalName}/YearPlans/{year}/MonthPlans/{month}/DayPlans/{day}")
@@ -212,7 +210,7 @@ public class PersonResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 

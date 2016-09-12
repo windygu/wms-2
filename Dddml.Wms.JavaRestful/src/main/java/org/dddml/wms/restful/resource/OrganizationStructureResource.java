@@ -15,7 +15,6 @@ import org.dddml.wms.domain.meta.*;
 import com.alibaba.fastjson.*;
 import org.apache.cxf.jaxrs.ext.PATCH;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.dddml.wms.restful.exception.WebApiApplicationException;
 import org.dddml.support.criterion.TypeConverter;
 
 @Path("OrganizationStructures")
@@ -61,8 +60,7 @@ public class OrganizationStructureResource {
             }
             return dtoConverter.toOrganizationStructureStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
-    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }    }
 
     @GET
     @Path("{id}")
@@ -80,7 +78,7 @@ public class OrganizationStructureResource {
             }
             return dtoConverter.toOrganizationStructureStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("_count")
@@ -97,7 +95,7 @@ public class OrganizationStructureResource {
             }
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 
@@ -110,7 +108,7 @@ public class OrganizationStructureResource {
             OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             organizationStructureApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 
@@ -123,7 +121,7 @@ public class OrganizationStructureResource {
             OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             organizationStructureApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @DELETE
@@ -142,7 +140,7 @@ public class OrganizationStructureResource {
             OrganizationStructureResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             organizationStructureApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("_metadata/filteringFields")
@@ -156,7 +154,7 @@ public class OrganizationStructureResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
     @Path("{id}/_stateEvents/{version}")
@@ -167,7 +165,7 @@ public class OrganizationStructureResource {
             OrganizationStructureId idObj = OrganizationStructureResourceUtils.parseIdString(id);
             return organizationStructureApplicationService.getStateEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCatched", ex); }
     }
 
 
