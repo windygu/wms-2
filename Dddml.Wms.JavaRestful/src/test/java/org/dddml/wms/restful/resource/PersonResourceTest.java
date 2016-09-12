@@ -29,7 +29,7 @@ import static com.alibaba.fastjson.serializer.SerializerFeature.UseISO8601DateFo
 
 public class PersonResourceTest extends AbstractResourceTest {
 
-    public static final String RESOURCE_URL = BASE_URL + "people/";
+    public static final String RESOURCE_URL = BASE_URL + "People/";
     public static final String REQUESTER_ID = "requestId";
     public static final String FIRST_NAME = "Andy";
     public static final String LAST_NAME = "Liu";

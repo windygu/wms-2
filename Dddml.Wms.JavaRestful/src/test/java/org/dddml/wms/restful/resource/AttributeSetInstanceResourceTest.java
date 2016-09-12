@@ -22,7 +22,7 @@ import java.util.UUID;
  */
 public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
 
-    private final static String RESOURCE_URL = BASE_URL.concat("attributeSetInstances");
+    private final static String RESOURCE_URL = BASE_URL.concat("AttributeSetInstances");
 
     @Test
     public void getAllTest() {
@@ -152,7 +152,7 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
         String attributeSetInstanceId = "a6ba1b3c-622a-4f3b-8782-42078c3942d0";
         String url = RESOURCE_URL.concat("/").concat(attributeSetInstanceId);
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("version", 0);
+        jsonObject.put("version", 1);
         jsonObject.put("serialNumber", "serialNumber-modify");
         jsonObject.put("lot", "lot-modify");
         jsonObject.put("description", "description-modify");
