@@ -7,7 +7,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 import org.dddml.support.criterion.*;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.*;
@@ -19,23 +18,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.wms.restful.exception.WebApiApplicationException;
 
 
-@Path("AttributeSetInstances")
+@Path("AttributeSetInstanceExtensionFieldGroups")
 @Produces(MediaType.APPLICATION_JSON)
-public class AttributeSetInstanceResource {
-
-    @Autowired
-    private AbstractDynamicObjectMapper<JSONObject,
-            AttributeSetInstanceState,
-            AttributeSetInstanceCommand.CreateAttributeSetInstance,
-            AttributeSetInstanceCommand.MergePatchAttributeSetInstance> attributeSetInstanceDynamicObjectMapper;
+public class AttributeSetInstanceExtensionFieldGroupResource {
 
 
     @Autowired
-    private AttributeSetInstanceApplicationService attributeSetInstanceApplicationService;
+    private AttributeSetInstanceExtensionFieldGroupApplicationService attributeSetInstanceExtensionFieldGroupApplicationService;
 
 
     @GET
-    public JSONArray getAll(@Context HttpServletRequest request,
+    public AttributeSetInstanceExtensionFieldGroupStateDto[] getAll(@Context HttpServletRequest request,
                                    @QueryParam("sort") String sort,
                                    @QueryParam("fields") String fields,
                                    @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
@@ -45,41 +38,47 @@ public class AttributeSetInstanceResource {
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
 
-            Iterable<AttributeSetInstanceState> states = null; 
+            Iterable<AttributeSetInstanceExtensionFieldGroupState> states = null; 
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = attributeSetInstanceApplicationService.get(
+                states = attributeSetInstanceExtensionFieldGroupApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        AttributeSetInstancesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        AttributeSetInstanceExtensionFieldGroupsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
-                states = attributeSetInstanceApplicationService.get(
-                        AttributeSetInstancesResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        AttributeSetInstancesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                states = attributeSetInstanceExtensionFieldGroupApplicationService.get(
+                        AttributeSetInstanceExtensionFieldGroupsResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeSetInstanceExtensionFieldGroupsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
-            JSONArray dynamicArray = new JSONArray();
-            if (states != null) {
-                states.forEach(state -> {
-                    dynamicArray.add(attributeSetInstanceDynamicObjectMapper.mapState(state, fields));
-                });
+            AttributeSetInstanceExtensionFieldGroupStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldGroupStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
             }
-            return dynamicArray;
+            return dtoConverter.toAttributeSetInstanceExtensionFieldGroupStateDtoArray(states);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
 
     @GET
     @Path("{id}")
-    public JSONObject get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    public AttributeSetInstanceExtensionFieldGroupStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
             String idObj = id;
-            AttributeSetInstanceState state = attributeSetInstanceApplicationService.get(idObj);
+            AttributeSetInstanceExtensionFieldGroupState state = attributeSetInstanceExtensionFieldGroupApplicationService.get(idObj);
             if (state == null) { return null; }
 
-            return attributeSetInstanceDynamicObjectMapper.mapState(state, fields);
+            AttributeSetInstanceExtensionFieldGroupStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldGroupStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
+            return dtoConverter.toAttributeSetInstanceExtensionFieldGroupStateDto(state);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -91,10 +90,10 @@ public class AttributeSetInstanceResource {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = attributeSetInstanceApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
+                count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeSetInstanceApplicationService.getCount(AttributeSetInstancesResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(AttributeSetInstanceExtensionFieldGroupsResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -104,12 +103,11 @@ public class AttributeSetInstanceResource {
 
     @PUT
     @Path("/{id}")
-    public void put(@PathParam("id") String id, JSONObject dynamicObject) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.CreateAttributeSetInstanceExtensionFieldGroupDto value) {
         try {
 
-            AttributeSetInstanceCommand.CreateAttributeSetInstance value = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceApplicationService.when(value);
+            AttributeSetInstanceExtensionFieldGroupsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            attributeSetInstanceExtensionFieldGroupApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -117,12 +115,11 @@ public class AttributeSetInstanceResource {
 
     @PATCH
     @Path("/{id}")
-    public void patch(@PathParam("id") String id, JSONObject dynamicObject) {
+    public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.MergePatchAttributeSetInstanceExtensionFieldGroupDto value) {
         try {
 
-            AttributeSetInstanceCommand.MergePatchAttributeSetInstance value = attributeSetInstanceDynamicObjectMapper.toCommandMergePatch(dynamicObject);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceApplicationService.when(value);
+            AttributeSetInstanceExtensionFieldGroupsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            attributeSetInstanceExtensionFieldGroupApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -135,12 +132,12 @@ public class AttributeSetInstanceResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteAttributeSetInstance deleteCmd = new DeleteAttributeSetInstance();
+            DeleteAttributeSetInstanceExtensionFieldGroup deleteCmd = new DeleteAttributeSetInstanceExtensionFieldGroup();
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceApplicationService.when(deleteCmd);
+            AttributeSetInstanceExtensionFieldGroupsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            attributeSetInstanceExtensionFieldGroupApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -151,7 +148,7 @@ public class AttributeSetInstanceResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            AttributeSetInstanceFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            AttributeSetInstanceExtensionFieldGroupFilteringProperties.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -161,11 +158,26 @@ public class AttributeSetInstanceResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public AttributeSetInstanceStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public AttributeSetInstanceExtensionFieldGroupStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            return attributeSetInstanceApplicationService.getStateEvent(idObj, version);
+            return attributeSetInstanceExtensionFieldGroupApplicationService.getStateEvent(idObj, version);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
+    }
+
+    @Path("{groupId}/AttributeSetInstanceExtensionFields/{index}")
+    @GET
+    public AttributeSetInstanceExtensionFieldStateDto getAttributeSetInstanceExtensionField(@PathParam("groupId") string groupId, @PathParam("index") string index) {
+        try {
+
+            AttributeSetInstanceExtensionFieldState state = attributeSetInstanceExtensionFieldGroupApplicationService.getAttributeSetInstanceExtensionField(groupId, index);
+            if (state == null) { return null; }
+            AttributeSetInstanceExtensionFieldStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldStateDto.DtoConverter();
+            AttributeSetInstanceExtensionFieldStateDto stateDto = dtoConverter.toAttributeSetInstanceExtensionFieldStateDto(state);
+            dtoConverter.setAllFieldsReturned(true);
+            return stateDto;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -180,20 +192,20 @@ public class AttributeSetInstanceResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new AttributeSetInstancePropertyTypeResolver();
+        return new AttributeSetInstanceExtensionFieldGroupPropertyTypeResolver();
     }
 
     // ////////////////////////////////
 
-    private class AttributeSetInstancePropertyTypeResolver implements PropertyTypeResolver {
+    private class AttributeSetInstanceExtensionFieldGroupPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeSetInstancesResourceUtils.getFilterPropertyType(propertyName);
+            return AttributeSetInstanceExtensionFieldGroupsResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class AttributeSetInstancesResourceUtils {
+    public static class AttributeSetInstanceExtensionFieldGroupsResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -209,12 +221,12 @@ public class AttributeSetInstanceResource {
             return orders;
         }
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetInstanceCommand value) {
+        public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetInstanceExtensionFieldGroupCommand value) {
             String idObj = parseIdString(id);
-            if (value.getAttributeSetInstanceId() == null) {
-                value.setAttributeSetInstanceId(idObj);
-            } else if (!value.getAttributeSetInstanceId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getAttributeSetInstanceId());
+            if (value.getId() == null) {
+                value.setId(idObj);
+            } else if (!value.getId().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getId());
             }
         }
     
@@ -227,9 +239,9 @@ public class AttributeSetInstanceResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeSetInstanceFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
+            if (AttributeSetInstanceExtensionFieldGroupFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
 /* TODO...
-                var p = AttributeSetInstanceMetadata.Instance.PropertyMetadataDictionary[fieldName];
+                var p = AttributeSetInstanceExtensionFieldGroupMetadata.Instance.PropertyMetadataDictionary[fieldName];
                 if (p.IsFilteringProperty)
                 {
                     var propertyName = fieldName;
@@ -246,8 +258,8 @@ public class AttributeSetInstanceResource {
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (AttributeSetInstanceFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = AttributeSetInstanceFilteringProperties.propertyTypeMap.get(propertyName);
+            if (AttributeSetInstanceExtensionFieldGroupFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = AttributeSetInstanceExtensionFieldGroupFilteringProperties.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (ReflectUtils.CLASS_MAP.containsKey(propertyType)) {
                         return ReflectUtils.CLASS_MAP.get(propertyType);

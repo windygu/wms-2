@@ -7,7 +7,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 import org.dddml.support.criterion.*;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.*;
@@ -19,23 +18,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.wms.restful.exception.WebApiApplicationException;
 
 
-@Path("AttributeSetInstances")
+@Path("Teams")
 @Produces(MediaType.APPLICATION_JSON)
-public class AttributeSetInstanceResource {
-
-    @Autowired
-    private AbstractDynamicObjectMapper<JSONObject,
-            AttributeSetInstanceState,
-            AttributeSetInstanceCommand.CreateAttributeSetInstance,
-            AttributeSetInstanceCommand.MergePatchAttributeSetInstance> attributeSetInstanceDynamicObjectMapper;
+public class TeamResource {
 
 
     @Autowired
-    private AttributeSetInstanceApplicationService attributeSetInstanceApplicationService;
+    private TeamApplicationService teamApplicationService;
 
 
     @GET
-    public JSONArray getAll(@Context HttpServletRequest request,
+    public TeamStateDto[] getAll(@Context HttpServletRequest request,
                                    @QueryParam("sort") String sort,
                                    @QueryParam("fields") String fields,
                                    @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
@@ -45,41 +38,47 @@ public class AttributeSetInstanceResource {
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
 
-            Iterable<AttributeSetInstanceState> states = null; 
+            Iterable<TeamState> states = null; 
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = attributeSetInstanceApplicationService.get(
+                states = teamApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        AttributeSetInstancesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        TeamsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
-                states = attributeSetInstanceApplicationService.get(
-                        AttributeSetInstancesResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        AttributeSetInstancesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                states = teamApplicationService.get(
+                        TeamsResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        TeamsResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
-            JSONArray dynamicArray = new JSONArray();
-            if (states != null) {
-                states.forEach(state -> {
-                    dynamicArray.add(attributeSetInstanceDynamicObjectMapper.mapState(state, fields));
-                });
+            TeamStateDto.DtoConverter dtoConverter = new TeamStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
             }
-            return dynamicArray;
+            return dtoConverter.toTeamStateDtoArray(states);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
 
     @GET
     @Path("{id}")
-    public JSONObject get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    public TeamStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
             String idObj = id;
-            AttributeSetInstanceState state = attributeSetInstanceApplicationService.get(idObj);
+            TeamState state = teamApplicationService.get(idObj);
             if (state == null) { return null; }
 
-            return attributeSetInstanceDynamicObjectMapper.mapState(state, fields);
+            TeamStateDto.DtoConverter dtoConverter = new TeamStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
+            return dtoConverter.toTeamStateDto(state);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -91,10 +90,10 @@ public class AttributeSetInstanceResource {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = attributeSetInstanceApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
+                count = teamApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeSetInstanceApplicationService.getCount(AttributeSetInstancesResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = teamApplicationService.getCount(TeamsResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -104,12 +103,11 @@ public class AttributeSetInstanceResource {
 
     @PUT
     @Path("/{id}")
-    public void put(@PathParam("id") String id, JSONObject dynamicObject) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchTeamDto.CreateTeamDto value) {
         try {
 
-            AttributeSetInstanceCommand.CreateAttributeSetInstance value = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceApplicationService.when(value);
+            TeamsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            teamApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -117,12 +115,11 @@ public class AttributeSetInstanceResource {
 
     @PATCH
     @Path("/{id}")
-    public void patch(@PathParam("id") String id, JSONObject dynamicObject) {
+    public void patch(@PathParam("id") String id, CreateOrMergePatchTeamDto.MergePatchTeamDto value) {
         try {
 
-            AttributeSetInstanceCommand.MergePatchAttributeSetInstance value = attributeSetInstanceDynamicObjectMapper.toCommandMergePatch(dynamicObject);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceApplicationService.when(value);
+            TeamsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            teamApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -135,12 +132,12 @@ public class AttributeSetInstanceResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteAttributeSetInstance deleteCmd = new DeleteAttributeSetInstance();
+            DeleteTeam deleteCmd = new DeleteTeam();
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceApplicationService.when(deleteCmd);
+            TeamsResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            teamApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -151,7 +148,7 @@ public class AttributeSetInstanceResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            AttributeSetInstanceFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            TeamFilteringProperties.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -161,11 +158,11 @@ public class AttributeSetInstanceResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public AttributeSetInstanceStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public TeamStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            return attributeSetInstanceApplicationService.getStateEvent(idObj, version);
+            return teamApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -180,20 +177,20 @@ public class AttributeSetInstanceResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new AttributeSetInstancePropertyTypeResolver();
+        return new TeamPropertyTypeResolver();
     }
 
     // ////////////////////////////////
 
-    private class AttributeSetInstancePropertyTypeResolver implements PropertyTypeResolver {
+    private class TeamPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeSetInstancesResourceUtils.getFilterPropertyType(propertyName);
+            return TeamsResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class AttributeSetInstancesResourceUtils {
+    public static class TeamsResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -209,12 +206,12 @@ public class AttributeSetInstanceResource {
             return orders;
         }
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetInstanceCommand value) {
+        public static void setNullIdOrThrowOnInconsistentIds(String id, TeamCommand value) {
             String idObj = parseIdString(id);
-            if (value.getAttributeSetInstanceId() == null) {
-                value.setAttributeSetInstanceId(idObj);
-            } else if (!value.getAttributeSetInstanceId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getAttributeSetInstanceId());
+            if (value.getTeamName() == null) {
+                value.setTeamName(idObj);
+            } else if (!value.getTeamName().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getTeamName());
             }
         }
     
@@ -227,9 +224,9 @@ public class AttributeSetInstanceResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeSetInstanceFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
+            if (TeamFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
 /* TODO...
-                var p = AttributeSetInstanceMetadata.Instance.PropertyMetadataDictionary[fieldName];
+                var p = TeamMetadata.Instance.PropertyMetadataDictionary[fieldName];
                 if (p.IsFilteringProperty)
                 {
                     var propertyName = fieldName;
@@ -246,8 +243,8 @@ public class AttributeSetInstanceResource {
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (AttributeSetInstanceFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = AttributeSetInstanceFilteringProperties.propertyTypeMap.get(propertyName);
+            if (TeamFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = TeamFilteringProperties.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (ReflectUtils.CLASS_MAP.containsKey(propertyType)) {
                         return ReflectUtils.CLASS_MAP.get(propertyType);

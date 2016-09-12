@@ -7,7 +7,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 import org.dddml.support.criterion.*;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.*;
@@ -19,23 +18,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.wms.restful.exception.WebApiApplicationException;
 
 
-@Path("AttributeSetInstances")
+@Path("UserClaimMvos")
 @Produces(MediaType.APPLICATION_JSON)
-public class AttributeSetInstanceResource {
-
-    @Autowired
-    private AbstractDynamicObjectMapper<JSONObject,
-            AttributeSetInstanceState,
-            AttributeSetInstanceCommand.CreateAttributeSetInstance,
-            AttributeSetInstanceCommand.MergePatchAttributeSetInstance> attributeSetInstanceDynamicObjectMapper;
+public class UserClaimMvoResource {
 
 
     @Autowired
-    private AttributeSetInstanceApplicationService attributeSetInstanceApplicationService;
+    private UserClaimMvoApplicationService userClaimMvoApplicationService;
 
 
     @GET
-    public JSONArray getAll(@Context HttpServletRequest request,
+    public UserClaimMvoStateDto[] getAll(@Context HttpServletRequest request,
                                    @QueryParam("sort") String sort,
                                    @QueryParam("fields") String fields,
                                    @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
@@ -45,41 +38,47 @@ public class AttributeSetInstanceResource {
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
 
-            Iterable<AttributeSetInstanceState> states = null; 
+            Iterable<UserClaimMvoState> states = null; 
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = attributeSetInstanceApplicationService.get(
+                states = userClaimMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
                                 getCriterionTypeConverter(), getPropertyTypeResolver()),
-                        AttributeSetInstancesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        UserClaimMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
-                states = attributeSetInstanceApplicationService.get(
-                        AttributeSetInstancesResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
-                        AttributeSetInstancesResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                states = userClaimMvoApplicationService.get(
+                        UserClaimMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        UserClaimMvosResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
-            JSONArray dynamicArray = new JSONArray();
-            if (states != null) {
-                states.forEach(state -> {
-                    dynamicArray.add(attributeSetInstanceDynamicObjectMapper.mapState(state, fields));
-                });
+            UserClaimMvoStateDto.DtoConverter dtoConverter = new UserClaimMvoStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
             }
-            return dynamicArray;
+            return dtoConverter.toUserClaimMvoStateDtoArray(states);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
 
     @GET
     @Path("{id}")
-    public JSONObject get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    public UserClaimMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
-            String idObj = id;
-            AttributeSetInstanceState state = attributeSetInstanceApplicationService.get(idObj);
+            String idObj = UserClaimMvosResourceUtils.parseIdString(id);
+            UserClaimMvoState state = userClaimMvoApplicationService.get(idObj);
             if (state == null) { return null; }
 
-            return attributeSetInstanceDynamicObjectMapper.mapState(state, fields);
+            UserClaimMvoStateDto.DtoConverter dtoConverter = new UserClaimMvoStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
+            return dtoConverter.toUserClaimMvoStateDto(state);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -91,10 +90,10 @@ public class AttributeSetInstanceResource {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = attributeSetInstanceApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
+                count = userClaimMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeSetInstanceApplicationService.getCount(AttributeSetInstancesResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = userClaimMvoApplicationService.getCount(UserClaimMvosResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
             }
             return count;
 
@@ -104,12 +103,11 @@ public class AttributeSetInstanceResource {
 
     @PUT
     @Path("/{id}")
-    public void put(@PathParam("id") String id, JSONObject dynamicObject) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchUserClaimMvoDto.CreateUserClaimMvoDto value) {
         try {
 
-            AttributeSetInstanceCommand.CreateAttributeSetInstance value = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceApplicationService.when(value);
+            UserClaimMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            userClaimMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -117,12 +115,11 @@ public class AttributeSetInstanceResource {
 
     @PATCH
     @Path("/{id}")
-    public void patch(@PathParam("id") String id, JSONObject dynamicObject) {
+    public void patch(@PathParam("id") String id, CreateOrMergePatchUserClaimMvoDto.MergePatchUserClaimMvoDto value) {
         try {
 
-            AttributeSetInstanceCommand.MergePatchAttributeSetInstance value = attributeSetInstanceDynamicObjectMapper.toCommandMergePatch(dynamicObject);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceApplicationService.when(value);
+            UserClaimMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            userClaimMvoApplicationService.when(value);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -135,12 +132,12 @@ public class AttributeSetInstanceResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DeleteAttributeSetInstance deleteCmd = new DeleteAttributeSetInstance();
+            DeleteUserClaimMvo deleteCmd = new DeleteUserClaimMvo();
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
-            deleteCmd.setVersion(version);
-            AttributeSetInstancesResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
-            attributeSetInstanceApplicationService.when(deleteCmd);
+            deleteCmd.setUserVersion(version);
+            UserClaimMvosResourceUtils.setNullIdOrThrowOnInconsistentIds(id, value);
+            userClaimMvoApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -151,7 +148,7 @@ public class AttributeSetInstanceResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            AttributeSetInstanceFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            UserClaimMvoFilteringProperties.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -161,11 +158,11 @@ public class AttributeSetInstanceResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public AttributeSetInstanceStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public UserClaimMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
-            String idObj = id;
-            return attributeSetInstanceApplicationService.getStateEvent(idObj, version);
+            UserClaimId idObj = UserClaimMvosResourceUtils.parseIdString(id);
+            return userClaimMvoApplicationService.getStateEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new WebApiApplicationException(ex); }
     }
@@ -180,20 +177,20 @@ public class AttributeSetInstanceResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new AttributeSetInstancePropertyTypeResolver();
+        return new UserClaimMvoPropertyTypeResolver();
     }
 
     // ////////////////////////////////
 
-    private class AttributeSetInstancePropertyTypeResolver implements PropertyTypeResolver {
+    private class UserClaimMvoPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeSetInstancesResourceUtils.getFilterPropertyType(propertyName);
+            return UserClaimMvosResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
  
-    public static class AttributeSetInstancesResourceUtils {
+    public static class UserClaimMvosResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
             List<String> orders = new ArrayList<>();
@@ -209,15 +206,21 @@ public class AttributeSetInstanceResource {
             return orders;
         }
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetInstanceCommand value) {
-            String idObj = parseIdString(id);
-            if (value.getAttributeSetInstanceId() == null) {
-                value.setAttributeSetInstanceId(idObj);
-            } else if (!value.getAttributeSetInstanceId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getAttributeSetInstanceId());
+        public static void setNullIdOrThrowOnInconsistentIds(String id, UserClaimMvoCommand value) {
+            UserClaimId idObj = parseIdString(id);
+            if (value.getUserClaimId() == null) {
+                value.setUserClaimId(idObj);
+            } else if (!value.getUserClaimId().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getUserClaimId());
             }
         }
     
+
+        public static UserClaimId parseIdString(String idString) {
+            UserClaimIdFlattenedDtoFormatter formatter = new UserClaimIdFlattenedDtoFormatter();
+            UserClaimIdFlattenedDto idDto = formatter.parse(idString);
+            return idDto.toUserClaimId();
+        }
 
 
         public static String getFilterPropertyName(String fieldName) {
@@ -227,9 +230,9 @@ public class AttributeSetInstanceResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeSetInstanceFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
+            if (UserClaimMvoFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
 /* TODO...
-                var p = AttributeSetInstanceMetadata.Instance.PropertyMetadataDictionary[fieldName];
+                var p = UserClaimMvoMetadata.Instance.PropertyMetadataDictionary[fieldName];
                 if (p.IsFilteringProperty)
                 {
                     var propertyName = fieldName;
@@ -246,8 +249,8 @@ public class AttributeSetInstanceResource {
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (AttributeSetInstanceFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = AttributeSetInstanceFilteringProperties.propertyTypeMap.get(propertyName);
+            if (UserClaimMvoFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = UserClaimMvoFilteringProperties.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (ReflectUtils.CLASS_MAP.containsKey(propertyType)) {
                         return ReflectUtils.CLASS_MAP.get(propertyType);
