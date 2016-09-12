@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dddml.Wms.JavaServices", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dddml.Wms.AdminUI", "Dddml.Wms.AdminUI\Dddml.Wms.AdminUI.csproj", "{C500182C-DF1A-4D32-BD02-498697AFD900}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dddml.Wms.JavaRestful", "Dddml.Wms.JavaRestful\Dddml.Wms.JavaRestful.csproj", "{CA52A30C-CFD1-4793-923D-D8E880E6FC99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +120,10 @@ Global
 		{C500182C-DF1A-4D32-BD02-498697AFD900}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C500182C-DF1A-4D32-BD02-498697AFD900}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C500182C-DF1A-4D32-BD02-498697AFD900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA52A30C-CFD1-4793-923D-D8E880E6FC99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA52A30C-CFD1-4793-923D-D8E880E6FC99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA52A30C-CFD1-4793-923D-D8E880E6FC99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA52A30C-CFD1-4793-923D-D8E880E6FC99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

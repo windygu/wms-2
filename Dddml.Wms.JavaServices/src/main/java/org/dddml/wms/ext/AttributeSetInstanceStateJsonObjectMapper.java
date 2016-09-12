@@ -14,13 +14,17 @@ import java.util.Map;
 /**
  * Created by Li Yongchun on 2016/9/8.
  */
-public class AttributeSetInstanceDtoJsonObjectMapper extends AbstractDynamicObjectMapper<JSONObject,
+public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicObjectMapper<JSONObject,
         AttributeSetInstanceState,
         AttributeSetInstanceCommand.CreateAttributeSetInstance,
         AttributeSetInstanceCommand.MergePatchAttributeSetInstance> {
 
     //需要注入
     private AttributeSetService attributeSetService;
+
+    public void setAttributeSetService(AttributeSetService attributeSetService) {
+        this.attributeSetService = attributeSetService;
+    }
 
     @Override
     public JSONObject mapState(AttributeSetInstanceState state, String fields) {
@@ -119,9 +123,5 @@ public class AttributeSetInstanceDtoJsonObjectMapper extends AbstractDynamicObje
             }
         });
         return mergePatchAttributeSetInstance;
-    }
-
-    public void setAttributeSetService(AttributeSetService attributeSetService) {
-        this.attributeSetService = attributeSetService;
     }
 }

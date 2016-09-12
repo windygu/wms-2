@@ -39,8 +39,140 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetInstanceExtensionFieldGroupResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetInstanceExtensionFieldMvoResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetInstanceResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeUseMvoResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeValueMvoResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\AudienceResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\DayPlanMvoResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\GenerateResources.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateResources.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeResource.java
+.\AttributeSetInstanceExtensionFieldGroupResource.java
+.\AttributeSetInstanceExtensionFieldMvoResource.java
+.\AttributeSetInstanceResource.java
+.\AttributeSetResource.java
+.\AttributeUseMvoResource.java
+.\AttributeValueMvoResource.java
+.\AudienceResource.java
+.\DayPlanMvoResource.java
+.\GenerateResources.txt
+.\InOutLineMvoResource.java
+.\InOutResource.java
+.\LocatorResource.java
+.\MonthPlanMvoResource.java
+.\OrganizationResource.java
+.\OrganizationStructureResource.java
+.\OrganizationStructureTypeResource.java
+.\PermissionResource.java
+.\PersonResource.java
+.\RolePermissionResource.java
+.\RoleResource.java
+.\TeamResource.java
+.\UserClaimMvoResource.java
+.\UserLoginMvoResource.java
+.\UserPermissionMvoResource.java
+.\UserResource.java
+.\UserRoleMvoResource.java
+.\WarehouseResource.java
+.\YearPlanMvoResource.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\GenerateResources.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\IndexResource.java" />
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\InOutLineMvoResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\InOutResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\LocatorResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\LocatorTreesResource.java" />
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\MonthPlanMvoResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationStructureResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationStructureTypeResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\PermissionResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\PersonResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\RolePermissionResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\RoleResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\TeamResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\UserClaimMvoResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\UserLoginMvoResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\UserPermissionMvoResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\UserResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\UserRoleMvoResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\WarehouseResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\YearPlanMvoResource.java">
+      <DependentUpon>GenerateResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\_AttributeSetInstance_Resource.java" />
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\_Person_Resource.java" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
