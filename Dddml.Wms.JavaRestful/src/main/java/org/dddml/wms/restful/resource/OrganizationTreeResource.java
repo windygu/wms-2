@@ -43,7 +43,7 @@ public class OrganizationTreeResource {
                         Iterable<String> ids = organizationTreeApplicationService.getRootIds(
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
@@ -53,7 +53,7 @@ public class OrganizationTreeResource {
                         states = organizationTreeApplicationService.getRoots(
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
@@ -64,7 +64,7 @@ public class OrganizationTreeResource {
                         Iterable<String> ids = organizationTreeApplicationService.getChildIds(parentIdObj,
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
@@ -75,7 +75,7 @@ public class OrganizationTreeResource {
                                 parentIdObj,
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);

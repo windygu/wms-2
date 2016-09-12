@@ -43,7 +43,7 @@ public class LocatorTreeResource {
                         Iterable<String> ids = locatorTreeApplicationService.getRootIds(
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 LocatorResource.LocatorResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
@@ -53,7 +53,7 @@ public class LocatorTreeResource {
                         states = locatorTreeApplicationService.getRoots(
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 LocatorResource.LocatorResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
@@ -64,7 +64,7 @@ public class LocatorTreeResource {
                         Iterable<String> ids = locatorTreeApplicationService.getChildIds(parentIdObj,
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 LocatorResource.LocatorResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
@@ -75,7 +75,7 @@ public class LocatorTreeResource {
                                 parentIdObj,
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 LocatorResource.LocatorResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);

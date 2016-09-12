@@ -43,7 +43,7 @@ public class PermissionTreeResource {
                         Iterable<String> ids = permissionTreeApplicationService.getRootIds(
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 PermissionResource.PermissionResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
@@ -53,7 +53,7 @@ public class PermissionTreeResource {
                         states = permissionTreeApplicationService.getRoots(
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 PermissionResource.PermissionResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
@@ -64,7 +64,7 @@ public class PermissionTreeResource {
                         Iterable<String> ids = permissionTreeApplicationService.getChildIds(parentIdObj,
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 PermissionResource.PermissionResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
@@ -75,7 +75,7 @@ public class PermissionTreeResource {
                                 parentIdObj,
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
-                                        getCriterionTypeConvert(),
+                                        getCriterionTypeConverter(),
                                         getPropertyTypeResolver()),
                                 PermissionResource.PermissionResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
