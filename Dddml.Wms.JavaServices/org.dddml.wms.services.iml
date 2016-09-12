@@ -6,10 +6,10 @@
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/config/DomainConfig.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/config/TreesHibernateConfig.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/config/IdGeneratorsConfig.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/config/AggregatesHibernateConfig.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/config/DatabaseConfig.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/config/TreesConfig.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/config/IdGeneratorsConfig.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/config/NHibernateServicesConfig.xml</file>
         </fileset>
       </configuration>
@@ -26,7 +26,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="org.dddml.wms.common" />
-    <orderEntry type="module" module-name="Dddml.Support.Criterion.Java" />
+    <orderEntry type="module" module-name="org.dddml.support" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.1" level="project" />

@@ -23,6 +23,9 @@
                 <!--FastJson方式，任选其一-->
                 <bean class="org.dddml.wms.restful.provider.FastJsonProvider"/>
                 <bean class="org.dddml.wms.restful.provider.CustomExceptionMapper"/>
+                <bean class="org.dddml.wms.restful.provider.CustomJwtAuthenticationFilter">
+                    <property name="jwsVerifier" ref="hmacJwsSignatureVerifier"/>
+                </bean>
             </list>
         </property>
         <property name="properties">
@@ -43,6 +46,9 @@
                 <bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
             </list>
         </property>
+    </bean>
+    <bean name="hmacJwsSignatureVerifier" class="org.apache.cxf.rs.security.jose.jws.HmacJwsSignatureVerifier">
+        <constructor-arg name="encodedKey" value="dWEgNi-mXlzYCeyh44hYHhDfa0iU161WWRu2SEAE8rU"/>
     </bean>
     <bean name="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider">
         <constructor-arg name="mapper" ref="mapper"/>

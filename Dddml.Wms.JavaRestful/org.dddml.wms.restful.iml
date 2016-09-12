@@ -19,8 +19,8 @@
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/META-INF/spring/app-context.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/META-INF/spring/AttributeSetInstanceStateJSONObjectMapperConfig.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/META-INF/spring/restful-context.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/META-INF/spring/AttributeSetInstanceDtoJObjectMapperConfig.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -38,7 +38,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="org.dddml.wms.services" />
     <orderEntry type="module" module-name="org.dddml.wms.common" />
-    <orderEntry type="module" module-name="Dddml.Support.Criterion.Java" />
+    <orderEntry type="module" module-name="org.dddml.support" />
     <orderEntry type="library" name="Maven: com.github.drapostolos:type-parser:0.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.strategicgains:DateAdapterJ:1.1.4" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.16" level="project" />
@@ -108,6 +108,11 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.8.1" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-client:3.1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-security-oauth2:3.1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-security-jose-jaxrs:3.1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-security:3.1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-security-jose:3.1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-json-basic:3.1.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:4.3.2.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpclient:4.5.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpcore:4.4.4" level="project" />

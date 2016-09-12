@@ -19,7 +19,8 @@ public class IndexResource {
     private SecurityContext securityContext;
 
     @GET
-    public PersonTemp get() {
+    public PersonTemp get(@Context SecurityContext context) {
+        System.out.println(context.getUserPrincipal().getName());
         PersonTemp person = new PersonTemp();
         person.setAge(11);
         person.setName("Li yongchun");
