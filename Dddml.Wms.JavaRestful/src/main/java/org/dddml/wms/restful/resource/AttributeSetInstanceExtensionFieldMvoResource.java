@@ -47,7 +47,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
                         firstResult, maxResults);
             } else {
                 states = attributeSetInstanceExtensionFieldMvoApplicationService.get(
-                        AttributeSetInstanceExtensionFieldMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeSetInstanceExtensionFieldMvoResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         AttributeSetInstanceExtensionFieldMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -60,7 +60,8 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
             }
             return dtoConverter.toAttributeSetInstanceExtensionFieldMvoStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -91,7 +92,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
                 count = attributeSetInstanceExtensionFieldMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeSetInstanceExtensionFieldMvoApplicationService.getCount(AttributeSetInstanceExtensionFieldMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeSetInstanceExtensionFieldMvoApplicationService.getCount(AttributeSetInstanceExtensionFieldMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -261,7 +262,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -273,6 +274,16 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static AttributeSetInstanceExtensionFieldMvoStateDto[] toAttributeSetInstanceExtensionFieldMvoStateDtoArray(Iterable<AttributeSetInstanceExtensionFieldId> ids) {
+            List<AttributeSetInstanceExtensionFieldMvoStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                AttributeSetInstanceExtensionFieldMvoStateDto dto = new AttributeSetInstanceExtensionFieldMvoStateDto();
+                dto.setAttributeSetInstanceExtensionFieldId(id);
+                states.add(dto);
+            });
+            return states.toArray(new AttributeSetInstanceExtensionFieldMvoStateDto[0]);
         }
 
     }

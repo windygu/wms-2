@@ -47,7 +47,7 @@ public class YearPlanMvoResource {
                         firstResult, maxResults);
             } else {
                 states = yearPlanMvoApplicationService.get(
-                        YearPlanMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        YearPlanMvoResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         YearPlanMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -60,7 +60,8 @@ public class YearPlanMvoResource {
             }
             return dtoConverter.toYearPlanMvoStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -91,7 +92,7 @@ public class YearPlanMvoResource {
                 count = yearPlanMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = yearPlanMvoApplicationService.getCount(YearPlanMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = yearPlanMvoApplicationService.getCount(YearPlanMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -261,7 +262,7 @@ public class YearPlanMvoResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -273,6 +274,16 @@ public class YearPlanMvoResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static YearPlanMvoStateDto[] toYearPlanMvoStateDtoArray(Iterable<YearPlanId> ids) {
+            List<YearPlanMvoStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                YearPlanMvoStateDto dto = new YearPlanMvoStateDto();
+                dto.setYearPlanId(id);
+                states.add(dto);
+            });
+            return states.toArray(new YearPlanMvoStateDto[0]);
         }
 
     }

@@ -47,7 +47,7 @@ public class PermissionResource {
                         firstResult, maxResults);
             } else {
                 states = permissionApplicationService.get(
-                        PermissionResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        PermissionResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         PermissionResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -60,7 +60,8 @@ public class PermissionResource {
             }
             return dtoConverter.toPermissionStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -91,7 +92,7 @@ public class PermissionResource {
                 count = permissionApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = permissionApplicationService.getCount(PermissionResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = permissionApplicationService.getCount(PermissionResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -255,7 +256,7 @@ public class PermissionResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -267,6 +268,16 @@ public class PermissionResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static PermissionStateDto[] toPermissionStateDtoArray(Iterable<String> ids) {
+            List<PermissionStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                PermissionStateDto dto = new PermissionStateDto();
+                dto.setPermissionId(id);
+                states.add(dto);
+            });
+            return states.toArray(new PermissionStateDto[0]);
         }
 
     }

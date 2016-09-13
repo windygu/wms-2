@@ -47,7 +47,7 @@ public class MonthPlanMvoResource {
                         firstResult, maxResults);
             } else {
                 states = monthPlanMvoApplicationService.get(
-                        MonthPlanMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        MonthPlanMvoResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         MonthPlanMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -60,7 +60,8 @@ public class MonthPlanMvoResource {
             }
             return dtoConverter.toMonthPlanMvoStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -91,7 +92,7 @@ public class MonthPlanMvoResource {
                 count = monthPlanMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = monthPlanMvoApplicationService.getCount(MonthPlanMvoResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = monthPlanMvoApplicationService.getCount(MonthPlanMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -261,7 +262,7 @@ public class MonthPlanMvoResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -273,6 +274,16 @@ public class MonthPlanMvoResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static MonthPlanMvoStateDto[] toMonthPlanMvoStateDtoArray(Iterable<MonthPlanId> ids) {
+            List<MonthPlanMvoStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                MonthPlanMvoStateDto dto = new MonthPlanMvoStateDto();
+                dto.setMonthPlanId(id);
+                states.add(dto);
+            });
+            return states.toArray(new MonthPlanMvoStateDto[0]);
         }
 
     }

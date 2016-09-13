@@ -47,7 +47,7 @@ public class TeamResource {
                         firstResult, maxResults);
             } else {
                 states = teamApplicationService.get(
-                        TeamResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        TeamResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         TeamResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -60,7 +60,8 @@ public class TeamResource {
             }
             return dtoConverter.toTeamStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -91,7 +92,7 @@ public class TeamResource {
                 count = teamApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = teamApplicationService.getCount(TeamResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = teamApplicationService.getCount(TeamResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -255,7 +256,7 @@ public class TeamResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -267,6 +268,16 @@ public class TeamResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static TeamStateDto[] toTeamStateDtoArray(Iterable<String> ids) {
+            List<TeamStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                TeamStateDto dto = new TeamStateDto();
+                dto.setTeamName(id);
+                states.add(dto);
+            });
+            return states.toArray(new TeamStateDto[0]);
         }
 
     }

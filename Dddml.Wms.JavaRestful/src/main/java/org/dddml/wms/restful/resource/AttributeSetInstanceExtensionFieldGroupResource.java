@@ -47,7 +47,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                         firstResult, maxResults);
             } else {
                 states = attributeSetInstanceExtensionFieldGroupApplicationService.get(
-                        AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -60,7 +60,8 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             }
             return dtoConverter.toAttributeSetInstanceExtensionFieldGroupStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }    }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
 
     @GET
     @Path("{id}")
@@ -91,7 +92,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                 count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -270,7 +271,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -282,6 +283,16 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static AttributeSetInstanceExtensionFieldGroupStateDto[] toAttributeSetInstanceExtensionFieldGroupStateDtoArray(Iterable<String> ids) {
+            List<AttributeSetInstanceExtensionFieldGroupStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                AttributeSetInstanceExtensionFieldGroupStateDto dto = new AttributeSetInstanceExtensionFieldGroupStateDto();
+                dto.setId(id);
+                states.add(dto);
+            });
+            return states.toArray(new AttributeSetInstanceExtensionFieldGroupStateDto[0]);
         }
 
     }
