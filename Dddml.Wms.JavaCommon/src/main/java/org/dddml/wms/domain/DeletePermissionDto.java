@@ -15,6 +15,5 @@ public class DeletePermissionDto extends AbstractPermissionCommandDto
         ((AbstractPermissionCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

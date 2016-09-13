@@ -15,6 +15,5 @@ public class RemoveInOutLineDto extends CreateOrMergePatchInOutLineDto
         ((AbstractInOutLineCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

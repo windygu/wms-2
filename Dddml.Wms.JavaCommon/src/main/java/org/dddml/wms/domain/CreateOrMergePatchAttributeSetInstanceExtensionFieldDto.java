@@ -148,7 +148,6 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractAttributeSetInstanceExtensionFieldCommand.AbstractCreateOrMergePatchAttributeSetInstanceExtensionField command)
     {
         ((AbstractAttributeSetInstanceExtensionFieldCommandDto) this).copyTo(command);
@@ -201,7 +200,6 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField toCreateAttributeSetInstanceExtensionField()
         {
             return (AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField) toCommand();
@@ -215,7 +213,6 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField toMergePatchAttributeSetInstanceExtensionField()
         {
             return (AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField) toCommand();

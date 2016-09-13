@@ -15,6 +15,5 @@ public class RemoveUserRoleDto extends CreateOrMergePatchUserRoleDto
         ((AbstractUserRoleCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

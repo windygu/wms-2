@@ -40,4 +40,3 @@ public abstract class AbstractLocatorCommandDto extends AbstractCommand
     }
 
 }
-

@@ -292,7 +292,6 @@ public class CreateOrMergePatchYearPlanMvoDto extends AbstractYearPlanMvoCommand
         this.isPropertyPersonDeletedRemoved = removed;
     }
 
-
     public void copyTo(AbstractYearPlanMvoCommand.AbstractCreateOrMergePatchYearPlanMvo command)
     {
         ((AbstractYearPlanMvoCommandDto) this).copyTo(command);
@@ -352,7 +351,6 @@ public class CreateOrMergePatchYearPlanMvoDto extends AbstractYearPlanMvoCommand
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public YearPlanMvoCommand.CreateYearPlanMvo toCreateYearPlanMvo()
         {
             return (YearPlanMvoCommand.CreateYearPlanMvo) toCommand();
@@ -366,7 +364,6 @@ public class CreateOrMergePatchYearPlanMvoDto extends AbstractYearPlanMvoCommand
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public YearPlanMvoCommand.MergePatchYearPlanMvo toMergePatchYearPlanMvo()
         {
             return (YearPlanMvoCommand.MergePatchYearPlanMvo) toCommand();

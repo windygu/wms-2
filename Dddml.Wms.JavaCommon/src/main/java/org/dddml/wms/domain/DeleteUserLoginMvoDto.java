@@ -15,6 +15,5 @@ public class DeleteUserLoginMvoDto extends AbstractUserLoginMvoCommandDto
         ((AbstractUserLoginMvoCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

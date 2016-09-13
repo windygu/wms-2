@@ -28,7 +28,6 @@ public class CreateOrMergePatchUserLoginDto extends AbstractUserLoginCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractUserLoginCommand.AbstractCreateOrMergePatchUserLogin command)
     {
         ((AbstractUserLoginCommandDto) this).copyTo(command);
@@ -71,7 +70,6 @@ public class CreateOrMergePatchUserLoginDto extends AbstractUserLoginCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public UserLoginCommand.CreateUserLogin toCreateUserLogin()
         {
             return (UserLoginCommand.CreateUserLogin) toCommand();
@@ -85,7 +83,6 @@ public class CreateOrMergePatchUserLoginDto extends AbstractUserLoginCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public UserLoginCommand.MergePatchUserLogin toMergePatchUserLogin()
         {
             return (UserLoginCommand.MergePatchUserLogin) toCommand();

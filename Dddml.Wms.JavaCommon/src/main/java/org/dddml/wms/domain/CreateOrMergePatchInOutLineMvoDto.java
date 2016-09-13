@@ -1410,7 +1410,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyInOutDeletedRemoved = removed;
     }
 
-
     public void copyTo(AbstractInOutLineMvoCommand.AbstractCreateOrMergePatchInOutLineMvo command)
     {
         ((AbstractInOutLineMvoCommandDto) this).copyTo(command);
@@ -1563,7 +1562,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public InOutLineMvoCommand.CreateInOutLineMvo toCreateInOutLineMvo()
         {
             return (InOutLineMvoCommand.CreateInOutLineMvo) toCommand();
@@ -1577,7 +1575,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public InOutLineMvoCommand.MergePatchInOutLineMvo toMergePatchInOutLineMvo()
         {
             return (InOutLineMvoCommand.MergePatchInOutLineMvo) toCommand();

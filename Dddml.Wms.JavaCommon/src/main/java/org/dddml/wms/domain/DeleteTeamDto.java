@@ -15,6 +15,5 @@ public class DeleteTeamDto extends AbstractTeamCommandDto
         ((AbstractTeamCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

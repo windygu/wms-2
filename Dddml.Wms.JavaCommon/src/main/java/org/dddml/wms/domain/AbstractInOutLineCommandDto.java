@@ -28,4 +28,3 @@ public abstract class AbstractInOutLineCommandDto extends AbstractCommand
     }
 
 }
-

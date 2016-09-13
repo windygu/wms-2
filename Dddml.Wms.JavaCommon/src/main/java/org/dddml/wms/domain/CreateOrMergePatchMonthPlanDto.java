@@ -64,7 +64,6 @@ public class CreateOrMergePatchMonthPlanDto extends AbstractMonthPlanCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractMonthPlanCommand.AbstractCreateOrMergePatchMonthPlan command)
     {
         ((AbstractMonthPlanCommandDto) this).copyTo(command);
@@ -119,7 +118,6 @@ public class CreateOrMergePatchMonthPlanDto extends AbstractMonthPlanCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public MonthPlanCommand.CreateMonthPlan toCreateMonthPlan()
         {
             return (MonthPlanCommand.CreateMonthPlan) toCommand();
@@ -133,7 +131,6 @@ public class CreateOrMergePatchMonthPlanDto extends AbstractMonthPlanCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public MonthPlanCommand.MergePatchMonthPlan toMergePatchMonthPlan()
         {
             return (MonthPlanCommand.MergePatchMonthPlan) toCommand();

@@ -15,6 +15,5 @@ public class RemoveAttributeSetInstanceExtensionFieldDto extends CreateOrMergePa
         ((AbstractAttributeSetInstanceExtensionFieldCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

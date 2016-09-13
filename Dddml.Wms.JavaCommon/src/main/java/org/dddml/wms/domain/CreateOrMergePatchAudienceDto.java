@@ -76,7 +76,6 @@ public class CreateOrMergePatchAudienceDto extends AbstractAudienceCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractAudienceCommand.AbstractCreateOrMergePatchAudience command)
     {
         ((AbstractAudienceCommandDto) this).copyTo(command);
@@ -118,7 +117,6 @@ public class CreateOrMergePatchAudienceDto extends AbstractAudienceCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public AudienceCommand.CreateAudience toCreateAudience()
         {
             return (AudienceCommand.CreateAudience) toCommand();
@@ -132,7 +130,6 @@ public class CreateOrMergePatchAudienceDto extends AbstractAudienceCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public AudienceCommand.MergePatchAudience toMergePatchAudience()
         {
             return (AudienceCommand.MergePatchAudience) toCommand();

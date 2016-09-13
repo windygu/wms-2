@@ -15,6 +15,5 @@ public class DeleteRoleDto extends AbstractRoleCommandDto
         ((AbstractRoleCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

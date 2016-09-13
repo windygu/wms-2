@@ -96,7 +96,6 @@ public class CreateOrMergePatchTeamDto extends AbstractTeamCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractTeamCommand.AbstractCreateOrMergePatchTeam command)
     {
         ((AbstractTeamCommandDto) this).copyTo(command);
@@ -138,7 +137,6 @@ public class CreateOrMergePatchTeamDto extends AbstractTeamCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public TeamCommand.CreateTeam toCreateTeam()
         {
             return (TeamCommand.CreateTeam) toCommand();
@@ -152,7 +150,6 @@ public class CreateOrMergePatchTeamDto extends AbstractTeamCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public TeamCommand.MergePatchTeam toMergePatchTeam()
         {
             return (TeamCommand.MergePatchTeam) toCommand();

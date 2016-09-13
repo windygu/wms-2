@@ -15,6 +15,5 @@ public class DeleteInOutDto extends AbstractInOutCommandDto
         ((AbstractInOutCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

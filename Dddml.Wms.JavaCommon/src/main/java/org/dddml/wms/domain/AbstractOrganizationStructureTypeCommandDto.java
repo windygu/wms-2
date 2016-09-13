@@ -40,4 +40,3 @@ public abstract class AbstractOrganizationStructureTypeCommandDto extends Abstra
     }
 
 }
-

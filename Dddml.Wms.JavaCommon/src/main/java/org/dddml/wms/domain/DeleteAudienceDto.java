@@ -15,6 +15,5 @@ public class DeleteAudienceDto extends AbstractAudienceCommandDto
         ((AbstractAudienceCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

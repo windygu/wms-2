@@ -15,6 +15,5 @@ public class RemoveUserPermissionDto extends CreateOrMergePatchUserPermissionDto
         ((AbstractUserPermissionCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

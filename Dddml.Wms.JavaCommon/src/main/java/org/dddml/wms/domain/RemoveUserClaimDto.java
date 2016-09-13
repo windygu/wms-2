@@ -15,6 +15,5 @@ public class RemoveUserClaimDto extends CreateOrMergePatchUserClaimDto
         ((AbstractUserClaimCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

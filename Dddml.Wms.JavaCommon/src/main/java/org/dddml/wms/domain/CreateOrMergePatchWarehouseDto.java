@@ -100,7 +100,6 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractWarehouseCommand.AbstractCreateOrMergePatchWarehouse command)
     {
         ((AbstractWarehouseCommandDto) this).copyTo(command);
@@ -144,7 +143,6 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public WarehouseCommand.CreateWarehouse toCreateWarehouse()
         {
             return (WarehouseCommand.CreateWarehouse) toCommand();
@@ -158,7 +156,6 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public WarehouseCommand.MergePatchWarehouse toMergePatchWarehouse()
         {
             return (WarehouseCommand.MergePatchWarehouse) toCommand();

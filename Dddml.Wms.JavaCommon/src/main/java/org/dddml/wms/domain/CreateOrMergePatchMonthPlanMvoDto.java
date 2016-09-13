@@ -484,7 +484,6 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         this.isPropertyPersonDeletedRemoved = removed;
     }
 
-
     public void copyTo(AbstractMonthPlanMvoCommand.AbstractCreateOrMergePatchMonthPlanMvo command)
     {
         ((AbstractMonthPlanMvoCommandDto) this).copyTo(command);
@@ -560,7 +559,6 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public MonthPlanMvoCommand.CreateMonthPlanMvo toCreateMonthPlanMvo()
         {
             return (MonthPlanMvoCommand.CreateMonthPlanMvo) toCommand();
@@ -574,7 +572,6 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public MonthPlanMvoCommand.MergePatchMonthPlanMvo toMergePatchMonthPlanMvo()
         {
             return (MonthPlanMvoCommand.MergePatchMonthPlanMvo) toCommand();

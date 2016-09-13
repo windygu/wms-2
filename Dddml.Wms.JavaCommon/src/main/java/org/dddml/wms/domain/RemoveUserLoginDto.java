@@ -15,6 +15,5 @@ public class RemoveUserLoginDto extends CreateOrMergePatchUserLoginDto
         ((AbstractUserLoginCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

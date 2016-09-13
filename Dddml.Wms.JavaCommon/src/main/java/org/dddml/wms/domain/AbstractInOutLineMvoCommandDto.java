@@ -42,4 +42,3 @@ public abstract class AbstractInOutLineMvoCommandDto extends AbstractCommand
     }
 
 }
-

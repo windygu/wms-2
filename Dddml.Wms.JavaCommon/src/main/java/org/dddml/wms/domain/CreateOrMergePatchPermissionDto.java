@@ -100,7 +100,6 @@ public class CreateOrMergePatchPermissionDto extends AbstractPermissionCommandDt
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractPermissionCommand.AbstractCreateOrMergePatchPermission command)
     {
         ((AbstractPermissionCommandDto) this).copyTo(command);
@@ -144,7 +143,6 @@ public class CreateOrMergePatchPermissionDto extends AbstractPermissionCommandDt
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public PermissionCommand.CreatePermission toCreatePermission()
         {
             return (PermissionCommand.CreatePermission) toCommand();
@@ -158,7 +156,6 @@ public class CreateOrMergePatchPermissionDto extends AbstractPermissionCommandDt
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public PermissionCommand.MergePatchPermission toMergePatchPermission()
         {
             return (PermissionCommand.MergePatchPermission) toCommand();

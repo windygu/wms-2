@@ -15,6 +15,5 @@ public class DeleteAttributeValueMvoDto extends AbstractAttributeValueMvoCommand
         ((AbstractAttributeValueMvoCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

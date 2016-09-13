@@ -508,7 +508,6 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.isPropertyAttributeDeletedRemoved = removed;
     }
 
-
     public void copyTo(AbstractAttributeValueMvoCommand.AbstractCreateOrMergePatchAttributeValueMvo command)
     {
         ((AbstractAttributeValueMvoCommandDto) this).copyTo(command);
@@ -586,7 +585,6 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public AttributeValueMvoCommand.CreateAttributeValueMvo toCreateAttributeValueMvo()
         {
             return (AttributeValueMvoCommand.CreateAttributeValueMvo) toCommand();
@@ -600,7 +598,6 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public AttributeValueMvoCommand.MergePatchAttributeValueMvo toMergePatchAttributeValueMvo()
         {
             return (AttributeValueMvoCommand.MergePatchAttributeValueMvo) toCommand();

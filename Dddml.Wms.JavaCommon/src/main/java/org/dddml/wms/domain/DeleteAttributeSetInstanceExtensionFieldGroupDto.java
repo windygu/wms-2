@@ -15,6 +15,5 @@ public class DeleteAttributeSetInstanceExtensionFieldGroupDto extends AbstractAt
         ((AbstractAttributeSetInstanceExtensionFieldGroupCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

@@ -508,7 +508,6 @@ public class CreateOrMergePatchUserClaimMvoDto extends AbstractUserClaimMvoComma
         this.isPropertyUserDeletedRemoved = removed;
     }
 
-
     public void copyTo(AbstractUserClaimMvoCommand.AbstractCreateOrMergePatchUserClaimMvo command)
     {
         ((AbstractUserClaimMvoCommandDto) this).copyTo(command);
@@ -586,7 +585,6 @@ public class CreateOrMergePatchUserClaimMvoDto extends AbstractUserClaimMvoComma
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public UserClaimMvoCommand.CreateUserClaimMvo toCreateUserClaimMvo()
         {
             return (UserClaimMvoCommand.CreateUserClaimMvo) toCommand();
@@ -600,7 +598,6 @@ public class CreateOrMergePatchUserClaimMvoDto extends AbstractUserClaimMvoComma
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public UserClaimMvoCommand.MergePatchUserClaimMvo toMergePatchUserClaimMvo()
         {
             return (UserClaimMvoCommand.MergePatchUserClaimMvo) toCommand();

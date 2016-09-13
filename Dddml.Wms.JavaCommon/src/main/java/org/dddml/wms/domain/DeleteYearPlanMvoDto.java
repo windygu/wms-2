@@ -15,6 +15,5 @@ public class DeleteYearPlanMvoDto extends AbstractYearPlanMvoCommandDto
         ((AbstractYearPlanMvoCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

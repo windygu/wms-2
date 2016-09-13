@@ -15,6 +15,5 @@ public class DeleteUserDto extends AbstractUserCommandDto
         ((AbstractUserCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

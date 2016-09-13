@@ -15,6 +15,5 @@ public class DeleteInOutLineMvoDto extends AbstractInOutLineMvoCommandDto
         ((AbstractInOutLineMvoCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

@@ -52,7 +52,6 @@ public class CreateOrMergePatchDayPlanDto extends AbstractDayPlanCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractDayPlanCommand.AbstractCreateOrMergePatchDayPlan command)
     {
         ((AbstractDayPlanCommandDto) this).copyTo(command);
@@ -97,7 +96,6 @@ public class CreateOrMergePatchDayPlanDto extends AbstractDayPlanCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public DayPlanCommand.CreateDayPlan toCreateDayPlan()
         {
             return (DayPlanCommand.CreateDayPlan) toCommand();
@@ -111,7 +109,6 @@ public class CreateOrMergePatchDayPlanDto extends AbstractDayPlanCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public DayPlanCommand.MergePatchDayPlan toMergePatchDayPlan()
         {
             return (DayPlanCommand.MergePatchDayPlan) toCommand();

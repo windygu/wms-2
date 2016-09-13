@@ -15,6 +15,5 @@ public class DeleteWarehouseDto extends AbstractWarehouseCommandDto
         ((AbstractWarehouseCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

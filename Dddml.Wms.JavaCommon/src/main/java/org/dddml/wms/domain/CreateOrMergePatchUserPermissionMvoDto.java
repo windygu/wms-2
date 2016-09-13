@@ -460,7 +460,6 @@ public class CreateOrMergePatchUserPermissionMvoDto extends AbstractUserPermissi
         this.isPropertyUserDeletedRemoved = removed;
     }
 
-
     public void copyTo(AbstractUserPermissionMvoCommand.AbstractCreateOrMergePatchUserPermissionMvo command)
     {
         ((AbstractUserPermissionMvoCommandDto) this).copyTo(command);
@@ -534,7 +533,6 @@ public class CreateOrMergePatchUserPermissionMvoDto extends AbstractUserPermissi
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public UserPermissionMvoCommand.CreateUserPermissionMvo toCreateUserPermissionMvo()
         {
             return (UserPermissionMvoCommand.CreateUserPermissionMvo) toCommand();
@@ -548,7 +546,6 @@ public class CreateOrMergePatchUserPermissionMvoDto extends AbstractUserPermissi
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public UserPermissionMvoCommand.MergePatchUserPermissionMvo toMergePatchUserPermissionMvo()
         {
             return (UserPermissionMvoCommand.MergePatchUserPermissionMvo) toCommand();

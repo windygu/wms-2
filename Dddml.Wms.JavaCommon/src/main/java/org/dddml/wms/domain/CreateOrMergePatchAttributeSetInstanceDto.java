@@ -11117,7 +11117,6 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractAttributeSetInstanceCommand.AbstractCreateOrMergePatchAttributeSetInstance command)
     {
         ((AbstractAttributeSetInstanceCommandDto) this).copyTo(command);
@@ -12079,7 +12078,6 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public AttributeSetInstanceCommand.CreateAttributeSetInstance toCreateAttributeSetInstance()
         {
             return (AttributeSetInstanceCommand.CreateAttributeSetInstance) toCommand();
@@ -12093,7 +12091,6 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public AttributeSetInstanceCommand.MergePatchAttributeSetInstance toMergePatchAttributeSetInstance()
         {
             return (AttributeSetInstanceCommand.MergePatchAttributeSetInstance) toCommand();

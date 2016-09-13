@@ -15,6 +15,5 @@ public class DeleteLocatorDto extends AbstractLocatorCommandDto
         ((AbstractLocatorCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

@@ -112,7 +112,6 @@ public class CreateOrMergePatchPersonDto extends AbstractPersonCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractPersonCommand.AbstractCreateOrMergePatchPerson command)
     {
         ((AbstractPersonCommandDto) this).copyTo(command);
@@ -166,7 +165,6 @@ public class CreateOrMergePatchPersonDto extends AbstractPersonCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public PersonCommand.CreatePerson toCreatePerson()
         {
             return (PersonCommand.CreatePerson) toCommand();
@@ -180,7 +178,6 @@ public class CreateOrMergePatchPersonDto extends AbstractPersonCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public PersonCommand.MergePatchPerson toMergePatchPerson()
         {
             return (PersonCommand.MergePatchPerson) toCommand();

@@ -76,7 +76,6 @@ public class CreateOrMergePatchUserClaimDto extends AbstractUserClaimCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractUserClaimCommand.AbstractCreateOrMergePatchUserClaim command)
     {
         ((AbstractUserClaimCommandDto) this).copyTo(command);
@@ -123,7 +122,6 @@ public class CreateOrMergePatchUserClaimDto extends AbstractUserClaimCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public UserClaimCommand.CreateUserClaim toCreateUserClaim()
         {
             return (UserClaimCommand.CreateUserClaim) toCommand();
@@ -137,7 +135,6 @@ public class CreateOrMergePatchUserClaimDto extends AbstractUserClaimCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public UserClaimCommand.MergePatchUserClaim toMergePatchUserClaim()
         {
             return (UserClaimCommand.MergePatchUserClaim) toCommand();

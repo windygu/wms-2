@@ -460,7 +460,6 @@ public class CreateOrMergePatchUserLoginMvoDto extends AbstractUserLoginMvoComma
         this.isPropertyUserDeletedRemoved = removed;
     }
 
-
     public void copyTo(AbstractUserLoginMvoCommand.AbstractCreateOrMergePatchUserLoginMvo command)
     {
         ((AbstractUserLoginMvoCommandDto) this).copyTo(command);
@@ -534,7 +533,6 @@ public class CreateOrMergePatchUserLoginMvoDto extends AbstractUserLoginMvoComma
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public UserLoginMvoCommand.CreateUserLoginMvo toCreateUserLoginMvo()
         {
             return (UserLoginMvoCommand.CreateUserLoginMvo) toCommand();
@@ -548,7 +546,6 @@ public class CreateOrMergePatchUserLoginMvoDto extends AbstractUserLoginMvoComma
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public UserLoginMvoCommand.MergePatchUserLoginMvo toMergePatchUserLoginMvo()
         {
             return (UserLoginMvoCommand.MergePatchUserLoginMvo) toCommand();

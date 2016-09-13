@@ -15,6 +15,5 @@ public class DeleteMonthPlanMvoDto extends AbstractMonthPlanMvoCommandDto
         ((AbstractMonthPlanMvoCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

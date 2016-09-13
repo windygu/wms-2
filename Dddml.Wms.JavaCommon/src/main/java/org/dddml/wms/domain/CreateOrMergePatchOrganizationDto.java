@@ -124,7 +124,6 @@ public class CreateOrMergePatchOrganizationDto extends AbstractOrganizationComma
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractOrganizationCommand.AbstractCreateOrMergePatchOrganization command)
     {
         ((AbstractOrganizationCommandDto) this).copyTo(command);
@@ -170,7 +169,6 @@ public class CreateOrMergePatchOrganizationDto extends AbstractOrganizationComma
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public OrganizationCommand.CreateOrganization toCreateOrganization()
         {
             return (OrganizationCommand.CreateOrganization) toCommand();
@@ -184,7 +182,6 @@ public class CreateOrMergePatchOrganizationDto extends AbstractOrganizationComma
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public OrganizationCommand.MergePatchOrganization toMergePatchOrganization()
         {
             return (OrganizationCommand.MergePatchOrganization) toCommand();

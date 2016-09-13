@@ -15,6 +15,5 @@ public class RemoveMonthPlanDto extends CreateOrMergePatchMonthPlanDto
         ((AbstractMonthPlanCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

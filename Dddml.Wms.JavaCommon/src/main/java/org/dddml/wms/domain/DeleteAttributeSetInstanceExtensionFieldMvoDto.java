@@ -15,6 +15,5 @@ public class DeleteAttributeSetInstanceExtensionFieldMvoDto extends AbstractAttr
         ((AbstractAttributeSetInstanceExtensionFieldMvoCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

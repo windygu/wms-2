@@ -76,7 +76,6 @@ public class CreateOrMergePatchRoleDto extends AbstractRoleCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractRoleCommand.AbstractCreateOrMergePatchRole command)
     {
         ((AbstractRoleCommandDto) this).copyTo(command);
@@ -118,7 +117,6 @@ public class CreateOrMergePatchRoleDto extends AbstractRoleCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public RoleCommand.CreateRole toCreateRole()
         {
             return (RoleCommand.CreateRole) toCommand();
@@ -132,7 +130,6 @@ public class CreateOrMergePatchRoleDto extends AbstractRoleCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public RoleCommand.MergePatchRole toMergePatchRole()
         {
             return (RoleCommand.MergePatchRole) toCommand();

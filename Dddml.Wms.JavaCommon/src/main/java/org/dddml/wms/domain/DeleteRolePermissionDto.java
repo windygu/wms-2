@@ -15,6 +15,5 @@ public class DeleteRolePermissionDto extends AbstractRolePermissionCommandDto
         ((AbstractRolePermissionCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

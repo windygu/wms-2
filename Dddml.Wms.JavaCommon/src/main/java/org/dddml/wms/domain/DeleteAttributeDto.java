@@ -15,6 +15,5 @@ public class DeleteAttributeDto extends AbstractAttributeCommandDto
         ((AbstractAttributeCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

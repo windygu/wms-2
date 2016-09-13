@@ -220,7 +220,6 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractLocatorCommand.AbstractCreateOrMergePatchLocator command)
     {
         ((AbstractLocatorCommandDto) this).copyTo(command);
@@ -274,7 +273,6 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public LocatorCommand.CreateLocator toCreateLocator()
         {
             return (LocatorCommand.CreateLocator) toCommand();
@@ -288,7 +286,6 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public LocatorCommand.MergePatchLocator toMergePatchLocator()
         {
             return (LocatorCommand.MergePatchLocator) toCommand();

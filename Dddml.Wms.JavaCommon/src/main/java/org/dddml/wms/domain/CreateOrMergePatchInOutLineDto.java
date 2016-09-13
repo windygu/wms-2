@@ -437,7 +437,6 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractInOutLineCommand.AbstractCreateOrMergePatchInOutLine command)
     {
         ((AbstractInOutLineCommandDto) this).copyTo(command);
@@ -514,7 +513,6 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public InOutLineCommand.CreateInOutLine toCreateInOutLine()
         {
             return (InOutLineCommand.CreateInOutLine) toCommand();
@@ -528,7 +526,6 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public InOutLineCommand.MergePatchInOutLine toMergePatchInOutLine()
         {
             return (InOutLineCommand.MergePatchInOutLine) toCommand();

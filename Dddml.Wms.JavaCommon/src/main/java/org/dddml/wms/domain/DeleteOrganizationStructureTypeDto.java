@@ -15,6 +15,5 @@ public class DeleteOrganizationStructureTypeDto extends AbstractOrganizationStru
         ((AbstractOrganizationStructureTypeCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

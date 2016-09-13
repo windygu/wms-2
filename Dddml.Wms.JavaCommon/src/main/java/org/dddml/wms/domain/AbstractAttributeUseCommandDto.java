@@ -27,4 +27,3 @@ public abstract class AbstractAttributeUseCommandDto extends AbstractCommand
     }
 
 }
-

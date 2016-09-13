@@ -15,6 +15,5 @@ public class DeleteDayPlanMvoDto extends AbstractDayPlanMvoCommandDto
         ((AbstractDayPlanMvoCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

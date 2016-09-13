@@ -436,7 +436,6 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldMvoDto extends 
         this.isPropertyAttrSetInstEFGroupDeletedRemoved = removed;
     }
 
-
     public void copyTo(AbstractAttributeSetInstanceExtensionFieldMvoCommand.AbstractCreateOrMergePatchAttributeSetInstanceExtensionFieldMvo command)
     {
         ((AbstractAttributeSetInstanceExtensionFieldMvoCommandDto) this).copyTo(command);
@@ -508,7 +507,6 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldMvoDto extends 
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public AttributeSetInstanceExtensionFieldMvoCommand.CreateAttributeSetInstanceExtensionFieldMvo toCreateAttributeSetInstanceExtensionFieldMvo()
         {
             return (AttributeSetInstanceExtensionFieldMvoCommand.CreateAttributeSetInstanceExtensionFieldMvo) toCommand();
@@ -522,7 +520,6 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldMvoDto extends 
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public AttributeSetInstanceExtensionFieldMvoCommand.MergePatchAttributeSetInstanceExtensionFieldMvo toMergePatchAttributeSetInstanceExtensionFieldMvo()
         {
             return (AttributeSetInstanceExtensionFieldMvoCommand.MergePatchAttributeSetInstanceExtensionFieldMvo) toCommand();

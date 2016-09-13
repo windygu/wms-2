@@ -184,7 +184,6 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.isPropertyActiveRemoved = removed;
     }
 
-
     public void copyTo(AbstractAttributeSetCommand.AbstractCreateOrMergePatchAttributeSet command)
     {
         ((AbstractAttributeSetCommandDto) this).copyTo(command);
@@ -244,7 +243,6 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public AttributeSetCommand.CreateAttributeSet toCreateAttributeSet()
         {
             return (AttributeSetCommand.CreateAttributeSet) toCommand();
@@ -258,7 +256,6 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public AttributeSetCommand.MergePatchAttributeSet toMergePatchAttributeSet()
         {
             return (AttributeSetCommand.MergePatchAttributeSet) toCommand();

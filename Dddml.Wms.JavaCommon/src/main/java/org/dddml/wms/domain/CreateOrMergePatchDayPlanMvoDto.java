@@ -676,7 +676,6 @@ public class CreateOrMergePatchDayPlanMvoDto extends AbstractDayPlanMvoCommandDt
         this.isPropertyPersonDeletedRemoved = removed;
     }
 
-
     public void copyTo(AbstractDayPlanMvoCommand.AbstractCreateOrMergePatchDayPlanMvo command)
     {
         ((AbstractDayPlanMvoCommandDto) this).copyTo(command);
@@ -768,7 +767,6 @@ public class CreateOrMergePatchDayPlanMvoDto extends AbstractDayPlanMvoCommandDt
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
         public DayPlanMvoCommand.CreateDayPlanMvo toCreateDayPlanMvo()
         {
             return (DayPlanMvoCommand.CreateDayPlanMvo) toCommand();
@@ -782,7 +780,6 @@ public class CreateOrMergePatchDayPlanMvoDto extends AbstractDayPlanMvoCommandDt
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
         public DayPlanMvoCommand.MergePatchDayPlanMvo toMergePatchDayPlanMvo()
         {
             return (DayPlanMvoCommand.MergePatchDayPlanMvo) toCommand();

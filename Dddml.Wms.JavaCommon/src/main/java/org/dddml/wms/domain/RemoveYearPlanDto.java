@@ -15,6 +15,5 @@ public class RemoveYearPlanDto extends CreateOrMergePatchYearPlanDto
         ((AbstractYearPlanCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

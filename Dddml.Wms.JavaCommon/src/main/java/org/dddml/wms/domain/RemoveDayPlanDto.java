@@ -15,6 +15,5 @@ public class RemoveDayPlanDto extends CreateOrMergePatchDayPlanDto
         ((AbstractDayPlanCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

@@ -15,6 +15,5 @@ public class RemoveAttributeValueDto extends CreateOrMergePatchAttributeValueDto
         ((AbstractAttributeValueCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

@@ -15,6 +15,5 @@ public class DeleteUserClaimMvoDto extends AbstractUserClaimMvoCommandDto
         ((AbstractUserClaimMvoCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 

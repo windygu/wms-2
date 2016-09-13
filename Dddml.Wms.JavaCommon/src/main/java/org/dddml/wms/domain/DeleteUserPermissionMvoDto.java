@@ -15,6 +15,5 @@ public class DeleteUserPermissionMvoDto extends AbstractUserPermissionMvoCommand
         ((AbstractUserPermissionMvoCommandDto)this).copyTo(command);
         return command;
     }
-
 }
 
