@@ -10,33 +10,30 @@ import org.apache.cxf.security.SecurityContext;
 import org.dddml.wms.domain.Command;
 import org.dddml.wms.restful.annotation.SetRequesterId;
 
-import javax.ws.rs.core.Context;
 import java.lang.reflect.Method;
 import java.util.List;
 
 /**
- * Created by Li Yongchun on 2016/9/13.
+ * 按需给 {@link Command Command} 设置 requesterId
  */
 public class SetRequestIdInterceptor extends AbstractPhaseInterceptor<Message> {
 
     public SetRequestIdInterceptor() {
+        //发生在调用资源方法前
         super(Phase.PRE_INVOKE);
     }
 
-    @Context
     private SecurityContext securityContext;
-
-    private javax.ws.rs.core.SecurityContext securityContext1;
-
-    @Context
-    public void setSecurityContext(javax.ws.rs.core.SecurityContext securityContext) {
-        this.securityContext1 = securityContext;
-    }
 
     @Override
     public void handleMessage(Message message) throws Fault {
         if (securityContext == null) {
             securityContext = message.get(SecurityContext.class);
+        }
+        String requesterId = securityContext == null || securityContext.getUserPrincipal() == null ?
+                null : securityContext.getUserPrincipal().getName();
+        if (requesterId == null || requesterId.length() < 1) {
+            return;
         }
         Method method = (Method) message.get("org.apache.cxf.resource.method");
         if (method != null) {
@@ -44,22 +41,30 @@ public class SetRequestIdInterceptor extends AbstractPhaseInterceptor<Message> {
             if (setRequesterId == null) {
                 return;
             }
+            //Copy from org.apache.cxf.interceptor.ServiceInvokerInterceptor
+            // private Object getInvokee(Message message)
             Object invokee = message.getContent(List.class);
             if (invokee == null) {
                 invokee = message.getContent(Object.class);
             }
+            if (invokee == null) {
+                return;
+            }
+            // Copy from org.apache.cxf.jaxrs.JAXRSInvoker
+            // public Object invoke(Exchange exchange, Object request, Object resourceObject)
             List<Object> params = null;
             if (invokee instanceof List) {
                 params = CastUtils.cast((List<?>) invokee);
             } else if (invokee != null) {
                 params = new MessageContentsList(invokee);
             }
+            if (params == null || params.size() < 1) {
+                return;
+            }
             for (int i = 0; i < method.getParameters().length; i++) {
                 if (Command.class.isAssignableFrom(method.getParameters()[i].getType())) {
                     Command command = (Command) params.get(i);
-                    if (securityContext != null && securityContext.getUserPrincipal() != null) {
-                        command.setRequesterId(securityContext.getUserPrincipal().getName());
-                    }
+                    command.setRequesterId(requesterId);
                 }
             }
 
