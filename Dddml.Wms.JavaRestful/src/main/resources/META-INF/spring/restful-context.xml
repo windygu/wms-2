@@ -25,6 +25,7 @@
                 <bean class="org.dddml.wms.restful.provider.CustomExceptionMapper"/>
                 <bean class="org.dddml.wms.restful.provider.CustomJwtAuthenticationFilter">
                     <property name="jwsVerifier" ref="hmacJwsSignatureVerifier"/>
+                    <property name="expectedAuthScheme" value="Bearer"/>
                 </bean>
             </list>
         </property>
@@ -37,6 +38,7 @@
         <property name="inInterceptors">
             <list>
                 <bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+                <bean class="org.dddml.wms.restful.provider.SetRequestIdInterceptor"/>
                 <!-- bean
                     class="org.apache.cxf.jaxrs.validation.JAXRSBeanValidationInInterceptor" /-->
             </list>

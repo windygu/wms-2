@@ -105,8 +105,8 @@ public class PersonResourceTest extends AbstractResourceTest {
             }
             yearPlanDto.setMonthPlans(monthPlanList.toArray(new CreateOrMergePatchMonthPlanDto.CreateMonthPlanDto[0]));
         }
-        dto.setYearPlans(yearPlanDtos.toArray(new CreateOrMergePatchYearPlanDto[0]));
-        dto.setRequesterId("RequestId");
+        //dto.setYearPlans(yearPlanDtos.toArray(new CreateOrMergePatchYearPlanDto[0]));
+        //dto.setRequesterId("RequestId");
         return dto;
     }
 
@@ -119,6 +119,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             connection.setRequestMethod("PUT");
             connection.setDoInput(true);
             connection.setDoOutput(true);
+            connection.setRequestProperty("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6InRlc3RAZGRkbWwub3JnIiwic3ViIjoidGVzdEBkZGRtbC5vcmciLCJyb2xlIjpbIlN5c3RlbUFkbWluaXN0cmF0b3IiLCJXYXJlaG91c2VNYW5hZ2VyIiwiV2FyZWhvdXNlT3BlcmF0b3IiLCJEYXRhSW1wb3J0IiwiTG9jYXRvck1hbmFnZW1lbnQiLCJPcmdhbml6YXRpb25NYW5hZ2VtZW50IiwiUHJvZHVjdExvY2F0b3JVc2VNYW5hZ2VtZW50IiwiUHJvZHVjdE1hbmFnZW1lbnQiLCJSb2xlTWFuYWdlbWVudCIsIlNvZnRWZXJzaW9uTWFuYWdlbWVudCIsIlN5c3RlbU1hbmFnZW1lbnQiLCJVc2VyTWFuYWdlbWVudCIsIldhcmVob3VzZU1hbmFnZW1lbnQiLCJDcmVhdGVXYXJlaG91c2VJbnZlbnRvcnkiLCJEYWlseUludmVudG9yeSIsIkluT3V0VmlldyIsIkluVHJhbnNpdE1vdmVtZW50IiwiSW5UcmFuc2l0TW92ZW1lbnRBY2NlcHQiLCJJblRyYW5zaXRNb3ZlbWVudENvbmZpcm0iLCJJblRyYW5zaXRNb3ZlbWVudFJlamVjdCIsIkluVHJhbnNpdE1vdmVtZW50UmV2ZXJzZSIsIkluVHJhbnNpdE1vdmVtZW50Vm9pZCIsIkludmVudG9yeU1hbmFnZW1lbnQiLCJJbnZlbnRvcnlWaWV3IiwiTG9jYXRvclByb2R1Y3RUcmFuc2FjdGlvblZpZXciLCJNYXRlcmFpbEluIiwiTWF0ZXJhaWxJbkNvbXBsZXRlIiwiTWF0ZXJhaWxJbk91dE1hbmFnZW1lbnQiLCJNYXRlcmFpbEluUmV2ZXJzZSIsIk1hdGVyYWlsSW5Wb2lkIiwiTWF0ZXJhaWxMb2NhdG9yVHJhbnNmZXIiLCJNYXRlcmFpbE91dCIsIk1hdGVyYWlsT3V0Q29tcGxldGUiLCJNYXRlcmFpbE91dFJldmVyc2UiLCJNYXRlcmFpbE91dFZvaWQiLCJTdG9yYWdlVHJhbnNhY3Rpb25DaGVjayIsIlN0b3JhZ2VWaWV3IiwiVHJhbnNhY3Rpb25WaWV3IiwiVmlld3NBbmRSZXBvcnRzIiwiV2FyZWhvdXNlSW52ZW50b3J5IiwiV2FyZWhvdXNlSW52ZW50b3J5Q29tcGxldGUiLCJXYXJlaG91c2VJbnZlbnRvcnlSZXZlcnNlIiwiV2FyZWhvdXNlSW52ZW50b3J5Vm9pZCJdLCJpc3MiOiJodHRwOi8vand0YXV0aHpzcnYud21zLmRkZG1sLm9yZyIsImF1ZCI6IjU0ZmExMjA4Mzg0ZjQ3NjJhM2FjZTIzMWRiZGJlODhkIiwiZXhwIjoxNDczNjc3MzM4LCJuYmYiOjE0NzM2NzU1Mzh9.eXf9r0HJy39ff5QfQH7K5axd1yeX6QlT_6V1QNBXVVE");
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("ACCEPT", "application/json");
             connection.connect();
