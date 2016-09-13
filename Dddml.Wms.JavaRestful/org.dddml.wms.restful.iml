@@ -108,11 +108,10 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.8.1" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-client:3.1.7" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-security-oauth2:3.1.7" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-security-jose-jaxrs:3.1.7" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-security:3.1.7" level="project" />
     <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-security-jose:3.1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-security:3.1.7" level="project" />
     <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-json-basic:3.1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-rs-security-jose-jaxrs:3.1.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:4.3.2.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpclient:4.5.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpcore:4.4.4" level="project" />
