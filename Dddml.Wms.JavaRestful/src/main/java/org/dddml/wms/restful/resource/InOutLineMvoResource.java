@@ -282,7 +282,7 @@ public class InOutLineMvoResource {
             List<InOutLineMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 InOutLineMvoStateDto dto = new InOutLineMvoStateDto();
-                dto.setInOutLineId(id);
+                dto.setInOutLineId(new InOutLineIdDto(id));
                 states.add(dto);
             });
             return states.toArray(new InOutLineMvoStateDto[0]);

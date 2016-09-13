@@ -25,6 +25,8 @@
         <property name="ConfigSections" value="databaseSettings" />
       </object>
 
+      <!-- You maybe NEED a custom AttributeSetInstanceIdGenerator! -->
+
 
     </objects>
 

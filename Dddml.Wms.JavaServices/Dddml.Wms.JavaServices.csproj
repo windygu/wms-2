@@ -419,29 +419,27 @@
     <Content Include="src\main\resources\config\DomainConfig.xml" />
     <Content Include="src\main\resources\config\GenerateAggregatesConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateAggregatesConfig1.txt</LastGenOutput>
+      <LastGenOutput>GenerateAggregatesConfig.txt</LastGenOutput>
       <LastOutputs>
 .\AggregatesHibernateConfig.xml
-.\GenerateAggregatesConfig1.txt
+.\GenerateAggregatesConfig.txt
 </LastOutputs>
     </Content>
-    <Content Include="src\main\resources\config\GenerateAggregatesConfig.txt" />
-    <Content Include="src\main\resources\config\GenerateAggregatesConfig1.txt">
+    <Content Include="src\main\resources\config\GenerateAggregatesConfig.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesConfig.tt</DependentUpon>
     </Content>
     <Content Include="src\main\resources\config\GenerateTreesConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateTreesConfig1.txt</LastGenOutput>
+      <LastGenOutput>GenerateTreesConfig.txt</LastGenOutput>
       <LastOutputs>
-.\GenerateTreesConfig1.txt
+.\GenerateTreesConfig.txt
 .\TreesConfig.xml
 .\TreesHibernateConfig.xml
 </LastOutputs>
     </Content>
-    <Content Include="src\main\resources\config\GenerateTreesConfig.txt" />
-    <Content Include="src\main\resources\config\GenerateTreesConfig1.txt">
+    <Content Include="src\main\resources\config\GenerateTreesConfig.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
@@ -532,7 +530,7 @@
     </EmbeddedResource>
     <Content Include="src\main\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateAggregatesHbm1.txt</LastGenOutput>
+      <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
       <LastOutputs>
 .\AttributeSetInstanceExtensionFieldGroupState.hbm.xml
 .\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml
@@ -560,7 +558,7 @@
 .\DayPlanMvoStateEvent.hbm.xml
 .\DayPlanState.hbm.xml
 .\DayPlanStateEvent.hbm.xml
-.\GenerateAggregatesHbm1.txt
+.\GenerateAggregatesHbm.txt
 .\InOutLineMvoState.hbm.xml
 .\InOutLineMvoStateEvent.hbm.xml
 .\InOutLineState.hbm.xml
@@ -615,8 +613,7 @@
 .\YearPlanStateEvent.hbm.xml
 </LastOutputs>
     </Content>
-    <Content Include="src\main\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.txt" />
-    <Content Include="src\main\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm1.txt">
+    <Content Include="src\main\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>

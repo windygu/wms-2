@@ -382,6 +382,15 @@ public class PersonResource {
             });
             return filter.entrySet();
         }
+        public static PersonStateDto[] toPersonStateDtoArray(Iterable<PersonalName> ids) {
+            List<PersonStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                PersonStateDto dto = new PersonStateDto();
+                dto.setPersonalName(new PersonalNameDto(id));
+                states.add(dto);
+            });
+            return states.toArray(new PersonStateDto[0]);
+        }
 
     }
 
