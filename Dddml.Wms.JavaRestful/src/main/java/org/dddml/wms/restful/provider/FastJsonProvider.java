@@ -6,7 +6,6 @@ import com.alibaba.fastjson.serializer.SerializeConfig;
 import org.dddml.support.json.JodaMoneyFastJsonDeserializer;
 import org.dddml.support.json.JodaMoneyFastJsonSerializer;
 import org.joda.money.Money;
-import org.springframework.beans.factory.InitializingBean;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
@@ -20,12 +19,22 @@ import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 
 /**
- * JAX-RS Provider for fastjson.
+ * JAX-RS Provider for FastJson.
  *
  * @author smallnest
  */
 @Provider
-public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyWriter<Object>, InitializingBean {
+public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyWriter<Object> {
+
+    private FastJsonProvider() throws Exception {
+        /**
+         * 添加反序列化器
+         */
+        ParserConfig.global.putDeserializer(Money.class, new JodaMoneyFastJsonDeserializer());
+        //添加序列化器
+        SerializeConfig.getGlobalInstance().put(Money.class, new JodaMoneyFastJsonSerializer());
+    }
+
     @Override
     public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         if (mediaType != null) {
@@ -59,7 +68,6 @@ public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyW
             String content = readFromByteStream(entityStream);
             return JSON.parseObject(content, genericType);
         } catch (Exception ex) {
-
             throw new WebApplicationException("读取请求数据错误");
         }
     }
@@ -79,15 +87,5 @@ public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyW
                         MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
             throws IOException, WebApplicationException {
         entityStream.write(JSON.toJSONString(o).getBytes(Charset.forName("utf8")));
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        /**
-         * 添加反序列化器
-         */
-        ParserConfig.global.putDeserializer(Money.class, new JodaMoneyFastJsonDeserializer());
-        //添加序列化器
-        SerializeConfig.getGlobalInstance().put(Money.class, new JodaMoneyFastJsonSerializer());
     }
 }

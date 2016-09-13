@@ -21,9 +21,11 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.HttpHeaders;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.logging.Logger;
 
 /**
+ * 处理JWT
  * Created by Li Yongchun on 2016/9/12.
  */
 @Logged

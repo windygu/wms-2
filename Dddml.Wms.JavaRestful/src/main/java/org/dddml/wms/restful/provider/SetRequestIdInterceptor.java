@@ -2,14 +2,15 @@ package org.dddml.wms.restful.provider;
 
 import org.apache.cxf.helpers.CastUtils;
 import org.apache.cxf.interceptor.Fault;
+import org.apache.cxf.jaxrs.impl.SecurityContextImpl;
 import org.apache.cxf.message.Message;
 import org.apache.cxf.message.MessageContentsList;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
-import org.apache.cxf.security.SecurityContext;
 import org.dddml.wms.domain.Command;
 import org.dddml.wms.restful.annotation.SetRequesterId;
 
+import javax.ws.rs.core.SecurityContext;
 import java.lang.reflect.Method;
 import java.util.List;
 
@@ -23,14 +24,10 @@ public class SetRequestIdInterceptor extends AbstractPhaseInterceptor<Message> {
         super(Phase.PRE_INVOKE);
     }
 
-    private SecurityContext securityContext;
-
     @Override
     public void handleMessage(Message message) throws Fault {
-        if (securityContext == null) {
-            securityContext = message.get(SecurityContext.class);
-        }
-        String requesterId = securityContext == null || securityContext.getUserPrincipal() == null ?
+        SecurityContext securityContext = new SecurityContextImpl(message);
+        String requesterId = securityContext.getUserPrincipal() == null ?
                 null : securityContext.getUserPrincipal().getName();
         if (requesterId == null || requesterId.length() < 1) {
             return;
