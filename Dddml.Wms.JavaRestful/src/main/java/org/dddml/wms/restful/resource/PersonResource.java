@@ -325,7 +325,7 @@ public class PersonResource {
             List<PersonStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 PersonStateDto dto = new PersonStateDto();
-                dto.setPersonalName(id);
+                dto.setPersonalName(new PersonalNameDto(id));
                 states.add(dto);
             });
             return states.toArray(new PersonStateDto[0]);

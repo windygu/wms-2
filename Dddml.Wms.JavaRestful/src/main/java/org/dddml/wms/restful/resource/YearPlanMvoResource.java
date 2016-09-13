@@ -280,7 +280,7 @@ public class YearPlanMvoResource {
             List<YearPlanMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 YearPlanMvoStateDto dto = new YearPlanMvoStateDto();
-                dto.setYearPlanId(id);
+                dto.setYearPlanId(new YearPlanIdDto(id));
                 states.add(dto);
             });
             return states.toArray(new YearPlanMvoStateDto[0]);

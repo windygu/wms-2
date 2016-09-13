@@ -280,7 +280,7 @@ public class UserLoginMvoResource {
             List<UserLoginMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 UserLoginMvoStateDto dto = new UserLoginMvoStateDto();
-                dto.setUserLoginId(id);
+                dto.setUserLoginId(new UserLoginIdDto(id));
                 states.add(dto);
             });
             return states.toArray(new UserLoginMvoStateDto[0]);

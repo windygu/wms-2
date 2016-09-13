@@ -280,7 +280,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
             List<AttributeSetInstanceExtensionFieldMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 AttributeSetInstanceExtensionFieldMvoStateDto dto = new AttributeSetInstanceExtensionFieldMvoStateDto();
-                dto.setAttributeSetInstanceExtensionFieldId(id);
+                dto.setAttributeSetInstanceExtensionFieldId(new AttributeSetInstanceExtensionFieldIdDto(id));
                 states.add(dto);
             });
             return states.toArray(new AttributeSetInstanceExtensionFieldMvoStateDto[0]);
