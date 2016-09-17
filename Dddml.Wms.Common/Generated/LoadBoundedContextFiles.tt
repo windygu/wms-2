@@ -15,10 +15,23 @@
 
     var boundedContext = LoadBoundedContextFiles();
 	boundedContext.DefaultUserIdType = "string";
-
+	boundedContext.Refresh();
+	ReplacePropertyTypesWithBaseTypes(boundedContext);
 #>
 <#+
-	
+	private void ReplacePropertyTypesWithBaseTypes(BoundedContext boundedContext)
+	{
+		boundedContext.SetValueObjectBaseTypes(GetValueObjectBaseTypes());
+		boundedContext.ReplacePropertyTypesWithBaseTypes();	
+	}
+
+	private IDictionary<string, string> GetValueObjectBaseTypes()
+	{
+		var baseTypes = new Dictionary<string, string>();
+		baseTypes.Add("Email", "string");
+		return baseTypes;
+	}
+
     private BoundedContext LoadBoundedContextFiles()
     {
         string projectFile = TransformationContext.Current.GetPropertyValue("MSBuildProjectFullPath");

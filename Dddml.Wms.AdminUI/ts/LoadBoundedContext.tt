@@ -60,7 +60,7 @@
 	}
 
 	boundedContext.Refresh();
-	boundedContext.ReplacePropertyTypesWithBaseTypes();
+	//boundedContext.ReplacePropertyTypesWithBaseTypes();
 
 	var mviewObjects = new List<Aggregate>();
 	foreach (var aggregate in boundedContext.Aggregates.Values)
