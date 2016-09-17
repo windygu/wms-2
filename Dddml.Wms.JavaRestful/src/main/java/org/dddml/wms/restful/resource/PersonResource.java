@@ -7,11 +7,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 import org.dddml.support.criterion.*;
-
 import java.util.Date;
-
-import org.dddml.wms.restful.annotation.Logged;
-import org.dddml.wms.restful.annotation.SetRequesterId;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.meta.*;
@@ -37,15 +33,11 @@ public class PersonResource {
                                    @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
                                    @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
                                    @QueryParam("filter") String filter) {
-        if (firstResult < 0) {
-            firstResult = 0;
-        }
-        if (maxResults == null || maxResults < 1) {
-            maxResults = Integer.MAX_VALUE;
-        }
+        if (firstResult < 0) { firstResult = 0; }
+        if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
 
-            Iterable<PersonState> states = null;
+            Iterable<PersonState> states = null; 
             if (!StringHelper.isNullOrEmpty(filter)) {
                 states = personApplicationService.get(
                         CriterionDto.toSubclass(
@@ -55,7 +47,7 @@ public class PersonResource {
                         firstResult, maxResults);
             } else {
                 states = personApplicationService.get(
-                        PersonResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        PersonResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         PersonResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -68,11 +60,7 @@ public class PersonResource {
             }
             return dtoConverter.toPersonStateDtoArray(states);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GET
@@ -81,9 +69,7 @@ public class PersonResource {
         try {
             PersonalName idObj = PersonResourceUtils.parseIdString(id);
             PersonState state = personApplicationService.get(idObj);
-            if (state == null) {
-                return null;
-            }
+            if (state == null) { return null; }
 
             PersonStateDto.DtoConverter dtoConverter = new PersonStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -93,11 +79,7 @@ public class PersonResource {
             }
             return dtoConverter.toPersonStateDto(state);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("_count")
@@ -110,20 +92,14 @@ public class PersonResource {
                 count = personApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = personApplicationService.getCount(PersonResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = personApplicationService.getCount(PersonResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @Logged
-    @SetRequesterId
     @PUT
     @Path("/{id}")
     public void put(@PathParam("id") String id, CreateOrMergePatchPersonDto.CreatePersonDto value) {
@@ -133,11 +109,7 @@ public class PersonResource {
             PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             personApplicationService.when(cmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -150,11 +122,7 @@ public class PersonResource {
             PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             personApplicationService.when(cmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @DELETE
@@ -173,11 +141,7 @@ public class PersonResource {
             PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             personApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("_metadata/filteringFields")
@@ -191,11 +155,7 @@ public class PersonResource {
             });
             return filtering;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{id}/_stateEvents/{version}")
@@ -206,11 +166,7 @@ public class PersonResource {
             PersonalName idObj = PersonResourceUtils.parseIdString(id);
             return personApplicationService.getStateEvent(idObj, version);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{personalName}/YearPlans/{year}")
@@ -219,19 +175,13 @@ public class PersonResource {
         try {
 
             YearPlanState state = personApplicationService.getYearPlan((new PersonalNameFlattenedDtoFormatter().parse(personalName)).toPersonalName(), year);
-            if (state == null) {
-                return null;
-            }
+            if (state == null) { return null; }
             YearPlanStateDto.DtoConverter dtoConverter = new YearPlanStateDto.DtoConverter();
             YearPlanStateDto stateDto = dtoConverter.toYearPlanStateDto(state);
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{personalName}/YearPlans/{year}/MonthPlans/{month}")
@@ -240,19 +190,13 @@ public class PersonResource {
         try {
 
             MonthPlanState state = personApplicationService.getMonthPlan((new PersonalNameFlattenedDtoFormatter().parse(personalName)).toPersonalName(), year, month);
-            if (state == null) {
-                return null;
-            }
+            if (state == null) { return null; }
             MonthPlanStateDto.DtoConverter dtoConverter = new MonthPlanStateDto.DtoConverter();
             MonthPlanStateDto stateDto = dtoConverter.toMonthPlanStateDto(state);
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{personalName}/YearPlans/{year}/MonthPlans/{month}/DayPlans/{day}")
@@ -261,19 +205,13 @@ public class PersonResource {
         try {
 
             DayPlanState state = personApplicationService.getDayPlan((new PersonalNameFlattenedDtoFormatter().parse(personalName)).toPersonalName(), year, month, day);
-            if (state == null) {
-                return null;
-            }
+            if (state == null) { return null; }
             DayPlanStateDto.DtoConverter dtoConverter = new DayPlanStateDto.DtoConverter();
             DayPlanStateDto stateDto = dtoConverter.toDayPlanStateDto(state);
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -298,7 +236,7 @@ public class PersonResource {
         }
     }
 
-
+ 
     public static class PersonResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
@@ -323,7 +261,7 @@ public class PersonResource {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getPersonalName());
             }
         }
-
+    
 
         public static PersonalName parseIdString(String idString) {
             PersonalNameFlattenedDtoFormatter formatter = new PersonalNameFlattenedDtoFormatter();
@@ -369,7 +307,7 @@ public class PersonResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -382,6 +320,7 @@ public class PersonResource {
             });
             return filter.entrySet();
         }
+
         public static PersonStateDto[] toPersonStateDtoArray(Iterable<PersonalName> ids) {
             List<PersonStateDto> states = new ArrayList<>();
             ids.forEach(id -> {

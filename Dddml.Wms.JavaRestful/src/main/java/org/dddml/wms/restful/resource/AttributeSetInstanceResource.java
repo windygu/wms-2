@@ -7,11 +7,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 import org.dddml.support.criterion.*;
-
 import java.math.BigDecimal;
 import java.util.Date;
-
-import org.dddml.wms.restful.annotation.SetRequesterId;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.meta.*;
@@ -41,20 +38,16 @@ public class AttributeSetInstanceResource {
 
     @GET
     public JSONArray getAll(@Context HttpServletRequest request,
-                            @QueryParam("sort") String sort,
-                            @QueryParam("fields") String fields,
-                            @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                            @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                            @QueryParam("filter") String filter) {
-        if (firstResult < 0) {
-            firstResult = 0;
-        }
-        if (maxResults == null || maxResults < 1) {
-            maxResults = Integer.MAX_VALUE;
-        }
+                                   @QueryParam("sort") String sort,
+                                   @QueryParam("fields") String fields,
+                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
+                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
+                                   @QueryParam("filter") String filter) {
+        if (firstResult < 0) { firstResult = 0; }
+        if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
 
-            Iterable<AttributeSetInstanceState> states = null;
+            Iterable<AttributeSetInstanceState> states = null; 
             if (!StringHelper.isNullOrEmpty(filter)) {
                 states = attributeSetInstanceApplicationService.get(
                         CriterionDto.toSubclass(
@@ -64,7 +57,7 @@ public class AttributeSetInstanceResource {
                         firstResult, maxResults);
             } else {
                 states = attributeSetInstanceApplicationService.get(
-                        AttributeSetInstanceResourceUtils.getQueryFilterDictionary(request.getParameterMap()),
+                        AttributeSetInstanceResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         AttributeSetInstanceResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
@@ -77,11 +70,7 @@ public class AttributeSetInstanceResource {
             }
             return dynamicArray;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GET
@@ -90,17 +79,11 @@ public class AttributeSetInstanceResource {
         try {
             String idObj = id;
             AttributeSetInstanceState state = attributeSetInstanceApplicationService.get(idObj);
-            if (state == null) {
-                return null;
-            }
+            if (state == null) { return null; }
 
             return attributeSetInstanceDynamicObjectMapper.mapState(state, fields);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("_count")
@@ -113,15 +96,11 @@ public class AttributeSetInstanceResource {
                 count = attributeSetInstanceApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
                         getCriterionTypeConverter(), getPropertyTypeResolver()));
             } else {
-                count = attributeSetInstanceApplicationService.getCount(AttributeSetInstanceResourceUtils.getQueryFilterDictionary(request.getParameterMap()));
+                count = attributeSetInstanceApplicationService.getCount(AttributeSetInstanceResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -138,11 +117,7 @@ public class AttributeSetInstanceResource {
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return idResult.getId();
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -155,11 +130,7 @@ public class AttributeSetInstanceResource {
             AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeSetInstanceApplicationService.when(cmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -172,14 +143,9 @@ public class AttributeSetInstanceResource {
             AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeSetInstanceApplicationService.when(cmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @SetRequesterId
     @DELETE
     @Path("/{id}")
     public void delete(@PathParam("id") String id,
@@ -196,11 +162,7 @@ public class AttributeSetInstanceResource {
             AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             attributeSetInstanceApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("_metadata/filteringFields")
@@ -214,11 +176,7 @@ public class AttributeSetInstanceResource {
             });
             return filtering;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{id}/_stateEvents/{version}")
@@ -229,11 +187,7 @@ public class AttributeSetInstanceResource {
             String idObj = id;
             return attributeSetInstanceApplicationService.getStateEvent(idObj, version);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -258,7 +212,7 @@ public class AttributeSetInstanceResource {
         }
     }
 
-
+ 
     public static class AttributeSetInstanceResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
@@ -283,6 +237,7 @@ public class AttributeSetInstanceResource {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getAttributeSetInstanceId());
             }
         }
+    
 
 
         public static String getFilterPropertyName(String fieldName) {
@@ -322,7 +277,7 @@ public class AttributeSetInstanceResource {
             return String.class;
         }
 
-        public static Iterable<Map.Entry<String, Object>> getQueryFilterDictionary(Map<String, String[]> queryNameValuePairs) {
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
             Map<String, Object> filter = new HashMap<>();
             queryNameValuePairs.forEach((key, values) -> {
                 if (values.length > 0) {
@@ -334,6 +289,16 @@ public class AttributeSetInstanceResource {
                 }
             });
             return filter.entrySet();
+        }
+
+        public static AttributeSetInstanceStateDto[] toAttributeSetInstanceStateDtoArray(Iterable<String> ids) {
+            List<AttributeSetInstanceStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                AttributeSetInstanceStateDto dto = new AttributeSetInstanceStateDto();
+                dto.setAttributeSetInstanceId(id);
+                states.add(dto);
+            });
+            return states.toArray(new AttributeSetInstanceStateDto[0]);
         }
 
     }
