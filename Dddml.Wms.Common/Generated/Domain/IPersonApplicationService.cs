@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain
 
         IPersonStateEvent GetStateEvent(PersonalName personalName, long version);
 
+        IPersonState GetHistoryState(PersonalName personalName, long version);
+
         IYearPlanState GetYearPlan(PersonalName personalName, int year);
 
         IMonthPlanState GetMonthPlan(PersonalName personalName, int year, int month);

@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain
 
         IAttributeSetInstanceExtensionFieldMvoStateEvent GetStateEvent(AttributeSetInstanceExtensionFieldId attributeSetInstanceExtensionFieldId, long version);
 
+        IAttributeSetInstanceExtensionFieldMvoState GetHistoryState(AttributeSetInstanceExtensionFieldId attributeSetInstanceExtensionFieldId, long version);
+
 
 	}
 

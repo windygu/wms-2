@@ -263,6 +263,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(attributeSetAttributeUseId, version).GetAwaiter().GetResult();
         }
 
+        public virtual IAttributeUseMvoState GetHistoryState(AttributeSetAttributeUseId attributeSetAttributeUseId, long version)
+        {
+                return null;//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

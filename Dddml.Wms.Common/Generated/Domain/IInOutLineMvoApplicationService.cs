@@ -37,6 +37,8 @@ namespace Dddml.Wms.Domain
 
         IInOutLineMvoStateEvent GetStateEvent(InOutLineId inOutLineId, long version);
 
+        IInOutLineMvoState GetHistoryState(InOutLineId inOutLineId, long version);
+
 
 	}
 

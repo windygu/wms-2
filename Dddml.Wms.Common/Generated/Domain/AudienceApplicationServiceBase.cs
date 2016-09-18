@@ -129,6 +129,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual IAudienceState GetHistoryState(string clientId, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(IAudienceStateEvent), ToEventStoreAggregateId(clientId), version - 1);
+            return new AudienceState(eventStream.Events);
+        }
 
 
 		public abstract IAudienceAggregate GetAudienceAggregate(IAudienceState state);

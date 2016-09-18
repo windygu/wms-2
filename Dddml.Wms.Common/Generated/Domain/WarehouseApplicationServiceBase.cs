@@ -129,6 +129,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual IWarehouseState GetHistoryState(string warehouseId, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(IWarehouseStateEvent), ToEventStoreAggregateId(warehouseId), version - 1);
+            return new WarehouseState(eventStream.Events);
+        }
 
 
 		public abstract IWarehouseAggregate GetWarehouseAggregate(IWarehouseState state);

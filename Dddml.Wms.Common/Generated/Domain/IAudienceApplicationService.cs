@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain
 
         IAudienceStateEvent GetStateEvent(string clientId, long version);
 
+        IAudienceState GetHistoryState(string clientId, long version);
+
 
 	}
 

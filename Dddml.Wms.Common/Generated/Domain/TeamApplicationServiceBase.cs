@@ -129,6 +129,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual ITeamState GetHistoryState(string teamName, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(ITeamStateEvent), ToEventStoreAggregateId(teamName), version - 1);
+            return new TeamState(eventStream.Events);
+        }
 
 
 		public abstract ITeamAggregate GetTeamAggregate(ITeamState state);

@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain
 
         ITeamStateEvent GetStateEvent(string teamName, long version);
 
+        ITeamState GetHistoryState(string teamName, long version);
+
 
 	}
 

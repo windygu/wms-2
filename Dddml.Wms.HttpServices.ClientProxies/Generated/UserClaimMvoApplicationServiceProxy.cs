@@ -263,6 +263,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(userClaimId, version).GetAwaiter().GetResult();
         }
 
+        public virtual IUserClaimMvoState GetHistoryState(UserClaimId userClaimId, long version)
+        {
+                return null;//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

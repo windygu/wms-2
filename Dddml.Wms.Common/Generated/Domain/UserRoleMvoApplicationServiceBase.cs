@@ -129,6 +129,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual IUserRoleMvoState GetHistoryState(UserRoleId userRoleId, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(IUserRoleMvoStateEvent), ToEventStoreAggregateId(userRoleId), version - 1);
+            return new UserRoleMvoState(eventStream.Events);
+        }
 
 
 		public abstract IUserRoleMvoAggregate GetUserRoleMvoAggregate(IUserRoleMvoState state);

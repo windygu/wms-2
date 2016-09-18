@@ -263,6 +263,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(personalName, version).GetAwaiter().GetResult();
         }
 
+        public virtual IPersonState GetHistoryState(PersonalName personalName, long version)
+        {
+                return null;//todo
+        }
+
         public async virtual Task<IYearPlanState> GetYearPlanAsync(PersonalName personalName, int year)
         {
             var uriParameters = new YearPlanUriParameters();

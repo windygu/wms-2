@@ -129,6 +129,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual IPersonState GetHistoryState(PersonalName personalName, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(IPersonStateEvent), ToEventStoreAggregateId(personalName), version - 1);
+            return new PersonState(eventStream.Events);
+        }
 
         public virtual IYearPlanState GetYearPlan(PersonalName personalName, int year)
         {

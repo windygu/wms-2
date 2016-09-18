@@ -129,6 +129,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual IDayPlanMvoState GetHistoryState(DayPlanId dayPlanId, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(IDayPlanMvoStateEvent), ToEventStoreAggregateId(dayPlanId), version - 1);
+            return new DayPlanMvoState(eventStream.Events);
+        }
 
 
 		public abstract IDayPlanMvoAggregate GetDayPlanMvoAggregate(IDayPlanMvoState state);

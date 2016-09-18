@@ -130,6 +130,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual IInOutLineMvoState GetHistoryState(InOutLineId inOutLineId, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(IInOutLineMvoStateEvent), ToEventStoreAggregateId(inOutLineId), version - 1);
+            return new InOutLineMvoState(eventStream.Events);
+        }
 
 
 		public abstract IInOutLineMvoAggregate GetInOutLineMvoAggregate(IInOutLineMvoState state);

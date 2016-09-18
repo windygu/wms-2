@@ -263,6 +263,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(userPermissionId, version).GetAwaiter().GetResult();
         }
 
+        public virtual IUserPermissionMvoState GetHistoryState(UserPermissionId userPermissionId, long version)
+        {
+                return null;//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

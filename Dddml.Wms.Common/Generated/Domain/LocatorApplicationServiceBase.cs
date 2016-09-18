@@ -129,6 +129,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual ILocatorState GetHistoryState(string locatorId, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(ILocatorStateEvent), ToEventStoreAggregateId(locatorId), version - 1);
+            return new LocatorState(eventStream.Events);
+        }
 
 
 		public abstract ILocatorAggregate GetLocatorAggregate(ILocatorState state);

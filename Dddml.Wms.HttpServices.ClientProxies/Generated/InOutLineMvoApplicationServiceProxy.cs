@@ -264,6 +264,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(inOutLineId, version).GetAwaiter().GetResult();
         }
 
+        public virtual IInOutLineMvoState GetHistoryState(InOutLineId inOutLineId, long version)
+        {
+                return null;//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

@@ -263,6 +263,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(organizationId, version).GetAwaiter().GetResult();
         }
 
+        public virtual IOrganizationState GetHistoryState(string organizationId, long version)
+        {
+                return null;//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

@@ -263,6 +263,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(locatorId, version).GetAwaiter().GetResult();
         }
 
+        public virtual ILocatorState GetHistoryState(string locatorId, long version)
+        {
+                return null;//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

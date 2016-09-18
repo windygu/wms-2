@@ -129,6 +129,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual IAttributeSetInstanceState GetHistoryState(string attributeSetInstanceId, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(IAttributeSetInstanceStateEvent), ToEventStoreAggregateId(attributeSetInstanceId), version - 1);
+            return new AttributeSetInstanceState(eventStream.Events);
+        }
 
 
 		public abstract IAttributeSetInstanceAggregate GetAttributeSetInstanceAggregate(IAttributeSetInstanceState state);

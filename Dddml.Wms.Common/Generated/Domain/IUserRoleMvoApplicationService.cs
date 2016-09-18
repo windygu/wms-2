@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain
 
         IUserRoleMvoStateEvent GetStateEvent(UserRoleId userRoleId, long version);
 
+        IUserRoleMvoState GetHistoryState(UserRoleId userRoleId, long version);
+
 
 	}
 

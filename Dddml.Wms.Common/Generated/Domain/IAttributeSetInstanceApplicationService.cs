@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain
 
         IAttributeSetInstanceStateEvent GetStateEvent(string attributeSetInstanceId, long version);
 
+        IAttributeSetInstanceState GetHistoryState(string attributeSetInstanceId, long version);
+
 
 	}
 

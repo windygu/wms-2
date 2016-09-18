@@ -129,6 +129,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual IOrganizationStructureState GetHistoryState(OrganizationStructureId id, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(IOrganizationStructureStateEvent), ToEventStoreAggregateId(id), version - 1);
+            return new OrganizationStructureState(eventStream.Events);
+        }
 
 
 		public abstract IOrganizationStructureAggregate GetOrganizationStructureAggregate(IOrganizationStructureState state);

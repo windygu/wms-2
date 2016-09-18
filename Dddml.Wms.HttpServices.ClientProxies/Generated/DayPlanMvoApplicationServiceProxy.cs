@@ -263,6 +263,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(dayPlanId, version).GetAwaiter().GetResult();
         }
 
+        public virtual IDayPlanMvoState GetHistoryState(DayPlanId dayPlanId, long version)
+        {
+                return null;//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

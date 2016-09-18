@@ -129,6 +129,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual IRolePermissionState GetHistoryState(RolePermissionId id, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(IRolePermissionStateEvent), ToEventStoreAggregateId(id), version - 1);
+            return new RolePermissionState(eventStream.Events);
+        }
 
 
 		public abstract IRolePermissionAggregate GetRolePermissionAggregate(IRolePermissionState state);

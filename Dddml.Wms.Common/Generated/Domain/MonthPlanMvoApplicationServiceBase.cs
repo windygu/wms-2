@@ -129,6 +129,11 @@ namespace Dddml.Wms.Domain
             return e;
         }
 
+        public virtual IMonthPlanMvoState GetHistoryState(MonthPlanId monthPlanId, long version)
+        {
+            var eventStream = EventStore.LoadEventStream(typeof(IMonthPlanMvoStateEvent), ToEventStoreAggregateId(monthPlanId), version - 1);
+            return new MonthPlanMvoState(eventStream.Events);
+        }
 
 
 		public abstract IMonthPlanMvoAggregate GetMonthPlanMvoAggregate(IMonthPlanMvoState state);

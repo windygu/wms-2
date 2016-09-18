@@ -263,6 +263,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(id, version).GetAwaiter().GetResult();
         }
 
+        public virtual IAttributeSetInstanceExtensionFieldGroupState GetHistoryState(string id, long version)
+        {
+                return null;//todo
+        }
+
         public async virtual Task<IAttributeSetInstanceExtensionFieldState> GetAttributeSetInstanceExtensionFieldAsync(string groupId, string index)
         {
             var uriParameters = new AttributeSetInstanceExtensionFieldUriParameters();

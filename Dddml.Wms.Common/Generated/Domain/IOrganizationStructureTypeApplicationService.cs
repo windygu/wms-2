@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain
 
         IOrganizationStructureTypeStateEvent GetStateEvent(string id, long version);
 
+        IOrganizationStructureTypeState GetHistoryState(string id, long version);
+
 
 	}
 

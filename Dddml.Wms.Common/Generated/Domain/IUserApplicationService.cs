@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain
 
         IUserStateEvent GetStateEvent(string userId, long version);
 
+        IUserState GetHistoryState(string userId, long version);
+
         IUserRoleState GetUserRole(string userId, string roleId);
 
         IUserClaimState GetUserClaim(string userId, int claimId);

@@ -23,13 +23,13 @@ namespace Dddml.Wms.Specialization.NHibernate
 		#region IEventStore implementation
 
 		[Transaction (ReadOnly = true)]
-		public EventStream LoadEventStream (IEventStoreAggregateId aggregateId)
+        public EventStream LoadEventStream(IEventStoreAggregateId eventStoreAggregateId)
 		{
 			throw new NotImplementedException ();
 		}
 
 		[Transaction]
-		public void AppendEvents (IEventStoreAggregateId aggregateId, long version, ICollection<IEvent> events, Action afterEventsAppended)
+        public void AppendEvents(IEventStoreAggregateId eventStoreAggregateId, long version, ICollection<IEvent> events, Action afterEventsAppended)
 		{
 			foreach (IEvent e in events) {
 				CurrentSession.Save (e);
@@ -70,6 +70,7 @@ namespace Dddml.Wms.Specialization.NHibernate
 
         public abstract object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version);
 
+        public abstract EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version);
     }
 }
 

@@ -264,6 +264,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(documentNumber, version).GetAwaiter().GetResult();
         }
 
+        public virtual IInOutState GetHistoryState(string documentNumber, long version)
+        {
+                return null;//todo
+        }
+
         public async virtual Task<IInOutLineState> GetInOutLineAsync(string inOutDocumentNumber, SkuId skuId)
         {
             var uriParameters = new InOutLineUriParameters();

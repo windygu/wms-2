@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain
 
         IRolePermissionStateEvent GetStateEvent(RolePermissionId id, long version);
 
+        IRolePermissionState GetHistoryState(RolePermissionId id, long version);
+
 
 	}
 

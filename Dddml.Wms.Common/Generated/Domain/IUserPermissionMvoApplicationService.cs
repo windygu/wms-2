@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain
 
         IUserPermissionMvoStateEvent GetStateEvent(UserPermissionId userPermissionId, long version);
 
+        IUserPermissionMvoState GetHistoryState(UserPermissionId userPermissionId, long version);
+
 
 	}
 

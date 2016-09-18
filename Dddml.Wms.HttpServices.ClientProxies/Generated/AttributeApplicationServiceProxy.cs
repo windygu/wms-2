@@ -263,6 +263,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(attributeId, version).GetAwaiter().GetResult();
         }
 
+        public virtual IAttributeState GetHistoryState(string attributeId, long version)
+        {
+                return null;//todo
+        }
+
         public async virtual Task<IAttributeValueState> GetAttributeValueAsync(string attributeId, string value)
         {
             var uriParameters = new AttributeValueUriParameters();

@@ -263,6 +263,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(userRoleId, version).GetAwaiter().GetResult();
         }
 
+        public virtual IUserRoleMvoState GetHistoryState(UserRoleId userRoleId, long version)
+        {
+                return null;//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

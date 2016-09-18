@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain
 
         IYearPlanMvoStateEvent GetStateEvent(YearPlanId yearPlanId, long version);
 
+        IYearPlanMvoState GetHistoryState(YearPlanId yearPlanId, long version);
+
 
 	}
 
