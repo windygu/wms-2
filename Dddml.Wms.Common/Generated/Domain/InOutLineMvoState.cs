@@ -139,14 +139,17 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public InOutLineMvoState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public InOutLineMvoState(IEnumerable<IEvent> events)
+        public InOutLineMvoState(IEnumerable<IEvent> events) : this(true)
         {
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.InOutLineId = ((IInOutLineMvoStateEvent)events.First()).StateEventId.InOutLineId;
@@ -156,6 +159,16 @@ namespace Dddml.Wms.Domain
                     this.InOutVersion += 1;
                 }
             }
+        }
+
+        public InOutLineMvoState() : this(false)
+        {
+        }
+
+        public InOutLineMvoState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 

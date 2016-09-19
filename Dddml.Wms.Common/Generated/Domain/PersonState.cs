@@ -155,16 +155,17 @@ namespace Dddml.Wms.Domain
         }
 
 
-        public PersonState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public PersonState(IEnumerable<IEvent> events)
+        public PersonState(IEnumerable<IEvent> events) : this(true)
         {
-            _yearPlans = new YearPlanStates(this);
-
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.PersonalName = ((IPersonStateEvent)events.First()).StateEventId.PersonalName;
@@ -174,6 +175,18 @@ namespace Dddml.Wms.Domain
                     this.Version += 1;
                 }
             }
+        }
+
+        public PersonState() : this(false)
+        {
+        }
+
+        public PersonState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            _yearPlans = new YearPlanStates(this);
+
+            InitializeProperties();
         }
 
 

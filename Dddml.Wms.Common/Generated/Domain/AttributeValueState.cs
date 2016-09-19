@@ -171,10 +171,23 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public AttributeValueState()
-        {
-            InitializeProperties();
 
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
+        {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
+        }
+
+        public AttributeValueState() : this(false)
+        {
+        }
+
+        public AttributeValueState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 
@@ -289,6 +302,7 @@ namespace Dddml.Wms.Domain
 					throw DomainError.Named("mutateWrongEntity", "Entity Id Value {0} in state but entity id Value {1} in event", stateEntityIdValue, eventEntityIdValue);
 				}
 
+			if (ForReapplying) { return; }
 			var stateVersion = this.Version;
 			var eventVersion = stateEvent.Version;
 			if (AttributeValueState.VersionZero == eventVersion)

@@ -189,10 +189,23 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public DayPlanState()
-        {
-            InitializeProperties();
 
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
+        {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
+        }
+
+        public DayPlanState() : this(false)
+        {
+        }
+
+        public DayPlanState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 
@@ -293,6 +306,7 @@ namespace Dddml.Wms.Domain
 					throw DomainError.Named("mutateWrongEntity", "Entity Id Day {0} in state but entity id Day {1} in event", stateEntityIdDay, eventEntityIdDay);
 				}
 
+			if (ForReapplying) { return; }
 			var stateVersion = this.Version;
 			var eventVersion = stateEvent.Version;
 			if (DayPlanState.VersionZero == eventVersion)

@@ -160,6 +160,27 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = AttributeSetInstanceExtensionFieldGroupsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_historyStates/{version}")]
+        [HttpGet]
+        public AttributeSetInstanceExtensionFieldGroupStateDto Get(string id, long version, string fields = null)
+        {
+          try {
+            var idObj = id;
+            var state = (AttributeSetInstanceExtensionFieldGroupState)_attributeSetInstanceExtensionFieldGroupApplicationService.GetHistoryState(idObj, version);
+            if (state == null) { return null; }
+            var stateDto = new AttributeSetInstanceExtensionFieldGroupStateDto(state);
+            if (String.IsNullOrWhiteSpace(fields))
+            {
+                stateDto.AllFieldsReturned = true;
+            }
+            else
+            {
+                stateDto.ReturnedFieldsString = fields;
+            }
+            return stateDto;
+          } catch (Exception ex) { var response = AttributeSetInstanceExtensionFieldGroupsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{groupId}/AttributeSetInstanceExtensionFields/{index}")]
         [HttpGet]
         public AttributeSetInstanceExtensionFieldStateDto GetAttributeSetInstanceExtensionField(string groupId, string index)

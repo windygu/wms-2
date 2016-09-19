@@ -138,14 +138,17 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public AudienceState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public AudienceState(IEnumerable<IEvent> events)
+        public AudienceState(IEnumerable<IEvent> events) : this(true)
         {
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.ClientId = ((IAudienceStateEvent)events.First()).StateEventId.ClientId;
@@ -155,6 +158,16 @@ namespace Dddml.Wms.Domain
                     this.Version += 1;
                 }
             }
+        }
+
+        public AudienceState() : this(false)
+        {
+        }
+
+        public AudienceState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 

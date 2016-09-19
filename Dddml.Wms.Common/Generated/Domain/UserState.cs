@@ -206,22 +206,17 @@ namespace Dddml.Wms.Domain
         }
 
 
-        public UserState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public UserState(IEnumerable<IEvent> events)
+        public UserState(IEnumerable<IEvent> events) : this(true)
         {
-            _userRoles = new UserRoleStates(this);
-
-            _userClaims = new UserClaimStates(this);
-
-            _userPermissions = new UserPermissionStates(this);
-
-            _userLogins = new UserLoginStates(this);
-
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.UserId = ((IUserStateEvent)events.First()).StateEventId.UserId;
@@ -231,6 +226,24 @@ namespace Dddml.Wms.Domain
                     this.Version += 1;
                 }
             }
+        }
+
+        public UserState() : this(false)
+        {
+        }
+
+        public UserState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            _userRoles = new UserRoleStates(this);
+
+            _userClaims = new UserClaimStates(this);
+
+            _userPermissions = new UserPermissionStates(this);
+
+            _userLogins = new UserLoginStates(this);
+
+            InitializeProperties();
         }
 
 

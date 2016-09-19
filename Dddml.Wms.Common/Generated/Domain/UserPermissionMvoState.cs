@@ -138,14 +138,17 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public UserPermissionMvoState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public UserPermissionMvoState(IEnumerable<IEvent> events)
+        public UserPermissionMvoState(IEnumerable<IEvent> events) : this(true)
         {
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.UserPermissionId = ((IUserPermissionMvoStateEvent)events.First()).StateEventId.UserPermissionId;
@@ -155,6 +158,16 @@ namespace Dddml.Wms.Domain
                     this.UserVersion += 1;
                 }
             }
+        }
+
+        public UserPermissionMvoState() : this(false)
+        {
+        }
+
+        public UserPermissionMvoState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 

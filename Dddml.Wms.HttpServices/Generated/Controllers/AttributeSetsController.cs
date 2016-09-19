@@ -160,6 +160,27 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = AttributeSetsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_historyStates/{version}")]
+        [HttpGet]
+        public AttributeSetStateDto Get(string id, long version, string fields = null)
+        {
+          try {
+            var idObj = id;
+            var state = (AttributeSetState)_attributeSetApplicationService.GetHistoryState(idObj, version);
+            if (state == null) { return null; }
+            var stateDto = new AttributeSetStateDto(state);
+            if (String.IsNullOrWhiteSpace(fields))
+            {
+                stateDto.AllFieldsReturned = true;
+            }
+            else
+            {
+                stateDto.ReturnedFieldsString = fields;
+            }
+            return stateDto;
+          } catch (Exception ex) { var response = AttributeSetsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{attributeSetId}/AttributeUses/{attributeId}")]
         [HttpGet]
         public AttributeUseStateDto GetAttributeUse(string attributeSetId, string attributeId)

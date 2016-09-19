@@ -138,14 +138,17 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public UserRoleMvoState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public UserRoleMvoState(IEnumerable<IEvent> events)
+        public UserRoleMvoState(IEnumerable<IEvent> events) : this(true)
         {
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.UserRoleId = ((IUserRoleMvoStateEvent)events.First()).StateEventId.UserRoleId;
@@ -155,6 +158,16 @@ namespace Dddml.Wms.Domain
                     this.UserVersion += 1;
                 }
             }
+        }
+
+        public UserRoleMvoState() : this(false)
+        {
+        }
+
+        public UserRoleMvoState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 

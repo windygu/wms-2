@@ -171,10 +171,23 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public AttributeSetInstanceExtensionFieldState()
-        {
-            InitializeProperties();
 
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
+        {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
+        }
+
+        public AttributeSetInstanceExtensionFieldState() : this(false)
+        {
+        }
+
+        public AttributeSetInstanceExtensionFieldState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 
@@ -317,6 +330,7 @@ namespace Dddml.Wms.Domain
 					throw DomainError.Named("mutateWrongEntity", "Entity Id Index {0} in state but entity id Index {1} in event", stateEntityIdIndex, eventEntityIdIndex);
 				}
 
+			if (ForReapplying) { return; }
 			var stateVersion = this.Version;
 			var eventVersion = stateEvent.Version;
 			if (AttributeSetInstanceExtensionFieldState.VersionZero == eventVersion)

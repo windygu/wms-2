@@ -160,6 +160,27 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_historyStates/{version}")]
+        [HttpGet]
+        public PersonStateDto Get(string id, long version, string fields = null)
+        {
+          try {
+            var idObj = PeopleControllerUtils.ParseIdString(id);
+            var state = (PersonState)_personApplicationService.GetHistoryState(idObj, version);
+            if (state == null) { return null; }
+            var stateDto = new PersonStateDto(state);
+            if (String.IsNullOrWhiteSpace(fields))
+            {
+                stateDto.AllFieldsReturned = true;
+            }
+            else
+            {
+                stateDto.ReturnedFieldsString = fields;
+            }
+            return stateDto;
+          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{personalName}/YearPlans/{year}")]
         [HttpGet]
         public YearPlanStateDto GetYearPlan(string personalName, int year)

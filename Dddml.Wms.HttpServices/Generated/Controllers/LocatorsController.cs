@@ -160,6 +160,27 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = LocatorsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_historyStates/{version}")]
+        [HttpGet]
+        public LocatorStateDto Get(string id, long version, string fields = null)
+        {
+          try {
+            var idObj = id;
+            var state = (LocatorState)_locatorApplicationService.GetHistoryState(idObj, version);
+            if (state == null) { return null; }
+            var stateDto = new LocatorStateDto(state);
+            if (String.IsNullOrWhiteSpace(fields))
+            {
+                stateDto.AllFieldsReturned = true;
+            }
+            else
+            {
+                stateDto.ReturnedFieldsString = fields;
+            }
+            return stateDto;
+          } catch (Exception ex) { var response = LocatorsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

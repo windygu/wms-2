@@ -188,12 +188,25 @@ namespace Dddml.Wms.Domain
         }
 
 
-        public YearPlanState()
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
+        }
+
+        public YearPlanState() : this(false)
+        {
+        }
+
+        public YearPlanState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
             _monthPlans = new MonthPlanStates(this);
 
             InitializeProperties();
-
         }
 
 
@@ -321,6 +334,7 @@ namespace Dddml.Wms.Domain
 					throw DomainError.Named("mutateWrongEntity", "Entity Id Year {0} in state but entity id Year {1} in event", stateEntityIdYear, eventEntityIdYear);
 				}
 
+			if (ForReapplying) { return; }
 			var stateVersion = this.Version;
 			var eventVersion = stateEvent.Version;
 			if (YearPlanState.VersionZero == eventVersion)

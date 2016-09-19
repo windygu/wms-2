@@ -160,6 +160,27 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = UserPermissionMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_historyStates/{version}")]
+        [HttpGet]
+        public UserPermissionMvoStateDto Get(string id, long version, string fields = null)
+        {
+          try {
+            var idObj = UserPermissionMvosControllerUtils.ParseIdString(id);
+            var state = (UserPermissionMvoState)_userPermissionMvoApplicationService.GetHistoryState(idObj, version);
+            if (state == null) { return null; }
+            var stateDto = new UserPermissionMvoStateDto(state);
+            if (String.IsNullOrWhiteSpace(fields))
+            {
+                stateDto.AllFieldsReturned = true;
+            }
+            else
+            {
+                stateDto.ReturnedFieldsString = fields;
+            }
+            return stateDto;
+          } catch (Exception ex) { var response = UserPermissionMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

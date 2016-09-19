@@ -155,16 +155,17 @@ namespace Dddml.Wms.Domain
         }
 
 
-        public AttributeSetState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public AttributeSetState(IEnumerable<IEvent> events)
+        public AttributeSetState(IEnumerable<IEvent> events) : this(true)
         {
-            _attributeUses = new AttributeUseStates(this);
-
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.AttributeSetId = ((IAttributeSetStateEvent)events.First()).StateEventId.AttributeSetId;
@@ -174,6 +175,18 @@ namespace Dddml.Wms.Domain
                     this.Version += 1;
                 }
             }
+        }
+
+        public AttributeSetState() : this(false)
+        {
+        }
+
+        public AttributeSetState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            _attributeUses = new AttributeUseStates(this);
+
+            InitializeProperties();
         }
 
 

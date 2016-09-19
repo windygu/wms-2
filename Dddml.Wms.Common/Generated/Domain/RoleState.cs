@@ -138,14 +138,17 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public RoleState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public RoleState(IEnumerable<IEvent> events)
+        public RoleState(IEnumerable<IEvent> events) : this(true)
         {
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.RoleId = ((IRoleStateEvent)events.First()).StateEventId.RoleId;
@@ -155,6 +158,16 @@ namespace Dddml.Wms.Domain
                     this.Version += 1;
                 }
             }
+        }
+
+        public RoleState() : this(false)
+        {
+        }
+
+        public RoleState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 

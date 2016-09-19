@@ -138,14 +138,17 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public OrganizationStructureTypeState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public OrganizationStructureTypeState(IEnumerable<IEvent> events)
+        public OrganizationStructureTypeState(IEnumerable<IEvent> events) : this(true)
         {
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.Id = ((IOrganizationStructureTypeStateEvent)events.First()).StateEventId.Id;
@@ -155,6 +158,16 @@ namespace Dddml.Wms.Domain
                     this.Version += 1;
                 }
             }
+        }
+
+        public OrganizationStructureTypeState() : this(false)
+        {
+        }
+
+        public OrganizationStructureTypeState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 

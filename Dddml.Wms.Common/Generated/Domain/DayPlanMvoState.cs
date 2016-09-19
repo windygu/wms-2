@@ -138,14 +138,17 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public DayPlanMvoState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public DayPlanMvoState(IEnumerable<IEvent> events)
+        public DayPlanMvoState(IEnumerable<IEvent> events) : this(true)
         {
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.DayPlanId = ((IDayPlanMvoStateEvent)events.First()).StateEventId.DayPlanId;
@@ -155,6 +158,16 @@ namespace Dddml.Wms.Domain
                     this.PersonVersion += 1;
                 }
             }
+        }
+
+        public DayPlanMvoState() : this(false)
+        {
+        }
+
+        public DayPlanMvoState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 

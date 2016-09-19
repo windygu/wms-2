@@ -171,10 +171,23 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public UserLoginState()
-        {
-            InitializeProperties();
 
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
+        {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
+        }
+
+        public UserLoginState() : this(false)
+        {
+        }
+
+        public UserLoginState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 
@@ -247,6 +260,7 @@ namespace Dddml.Wms.Domain
 					throw DomainError.Named("mutateWrongEntity", "Entity Id LoginKey {0} in state but entity id LoginKey {1} in event", stateEntityIdLoginKey, eventEntityIdLoginKey);
 				}
 
+			if (ForReapplying) { return; }
 			var stateVersion = this.Version;
 			var eventVersion = stateEvent.Version;
 			if (UserLoginState.VersionZero == eventVersion)

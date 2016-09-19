@@ -138,14 +138,17 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public YearPlanMvoState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public YearPlanMvoState(IEnumerable<IEvent> events)
+        public YearPlanMvoState(IEnumerable<IEvent> events) : this(true)
         {
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.YearPlanId = ((IYearPlanMvoStateEvent)events.First()).StateEventId.YearPlanId;
@@ -155,6 +158,16 @@ namespace Dddml.Wms.Domain
                     this.PersonVersion += 1;
                 }
             }
+        }
+
+        public YearPlanMvoState() : this(false)
+        {
+        }
+
+        public YearPlanMvoState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 

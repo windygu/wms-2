@@ -138,14 +138,17 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public AttributeSetInstanceExtensionFieldMvoState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public AttributeSetInstanceExtensionFieldMvoState(IEnumerable<IEvent> events)
+        public AttributeSetInstanceExtensionFieldMvoState(IEnumerable<IEvent> events) : this(true)
         {
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.AttributeSetInstanceExtensionFieldId = ((IAttributeSetInstanceExtensionFieldMvoStateEvent)events.First()).StateEventId.AttributeSetInstanceExtensionFieldId;
@@ -155,6 +158,16 @@ namespace Dddml.Wms.Domain
                     this.AttrSetInstEFGroupVersion += 1;
                 }
             }
+        }
+
+        public AttributeSetInstanceExtensionFieldMvoState() : this(false)
+        {
+        }
+
+        public AttributeSetInstanceExtensionFieldMvoState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 

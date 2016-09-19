@@ -138,14 +138,17 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public UserLoginMvoState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public UserLoginMvoState(IEnumerable<IEvent> events)
+        public UserLoginMvoState(IEnumerable<IEvent> events) : this(true)
         {
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.UserLoginId = ((IUserLoginMvoStateEvent)events.First()).StateEventId.UserLoginId;
@@ -155,6 +158,16 @@ namespace Dddml.Wms.Domain
                     this.UserVersion += 1;
                 }
             }
+        }
+
+        public UserLoginMvoState() : this(false)
+        {
+        }
+
+        public UserLoginMvoState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 

@@ -156,16 +156,17 @@ namespace Dddml.Wms.Domain
         }
 
 
-        public InOutState() : this(null)
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
         }
 
-        public InOutState(IEnumerable<IEvent> events)
+        public InOutState(IEnumerable<IEvent> events) : this(true)
         {
-            _inOutLines = new InOutLineStates(this);
-
-            InitializeProperties();
-
             if (events != null && events.Count() > 0)
             {
                 this.DocumentNumber = ((IInOutStateEvent)events.First()).StateEventId.DocumentNumber;
@@ -175,6 +176,18 @@ namespace Dddml.Wms.Domain
                     this.Version += 1;
                 }
             }
+        }
+
+        public InOutState() : this(false)
+        {
+        }
+
+        public InOutState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            _inOutLines = new InOutLineStates(this);
+
+            InitializeProperties();
         }
 
 

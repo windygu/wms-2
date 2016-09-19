@@ -43,6 +43,10 @@ namespace Dddml.Wms.Domain.NHibernate
             criteria.Add(Restrictions.Le("StateEventId.AttrSetInstEFGroupVersion", version));
             criteria.AddOrder(Order.Asc("StateEventId.AttrSetInstEFGroupVersion"));
             var es = criteria.List<IEvent>();
+            foreach (AttributeSetInstanceExtensionFieldMvoStateEventBase e in es)
+            {
+                e.StateEventReadOnly = true;
+            }
             return new EventStream()
             {
                 SteamVersion = ((AttributeSetInstanceExtensionFieldMvoStateEventBase)es.Last()).StateEventId.AttrSetInstEFGroupVersion,

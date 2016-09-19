@@ -171,10 +171,23 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public UserRoleState()
-        {
-            InitializeProperties();
 
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
+        {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
+        }
+
+        public UserRoleState() : this(false)
+        {
+        }
+
+        public UserRoleState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
+            InitializeProperties();
         }
 
 
@@ -247,6 +260,7 @@ namespace Dddml.Wms.Domain
 					throw DomainError.Named("mutateWrongEntity", "Entity Id RoleId {0} in state but entity id RoleId {1} in event", stateEntityIdRoleId, eventEntityIdRoleId);
 				}
 
+			if (ForReapplying) { return; }
 			var stateVersion = this.Version;
 			var eventVersion = stateEvent.Version;
 			if (UserRoleState.VersionZero == eventVersion)

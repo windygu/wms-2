@@ -44,6 +44,10 @@ namespace Dddml.Wms.Domain.NHibernate
             criteria.Add(Restrictions.Le("StateEventId.PersonVersion", version));
             criteria.AddOrder(Order.Asc("StateEventId.PersonVersion"));
             var es = criteria.List<IEvent>();
+            foreach (YearPlanMvoStateEventBase e in es)
+            {
+                e.StateEventReadOnly = true;
+            }
             return new EventStream()
             {
                 SteamVersion = ((YearPlanMvoStateEventBase)es.Last()).StateEventId.PersonVersion,

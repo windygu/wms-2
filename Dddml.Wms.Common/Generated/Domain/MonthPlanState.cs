@@ -197,12 +197,25 @@ namespace Dddml.Wms.Domain
         }
 
 
-        public MonthPlanState()
+
+        private bool _forReapplying;
+
+        public virtual bool ForReapplying
         {
+            get { return _forReapplying; }
+            set { _forReapplying = value; } 
+        }
+
+        public MonthPlanState() : this(false)
+        {
+        }
+
+        public MonthPlanState(bool forReapplying)
+        {
+            this._forReapplying = forReapplying;
             _dayPlans = new DayPlanStates(this);
 
             InitializeProperties();
-
         }
 
 
@@ -337,6 +350,7 @@ namespace Dddml.Wms.Domain
 					throw DomainError.Named("mutateWrongEntity", "Entity Id Month {0} in state but entity id Month {1} in event", stateEntityIdMonth, eventEntityIdMonth);
 				}
 
+			if (ForReapplying) { return; }
 			var stateVersion = this.Version;
 			var eventVersion = stateEvent.Version;
 			if (MonthPlanState.VersionZero == eventVersion)

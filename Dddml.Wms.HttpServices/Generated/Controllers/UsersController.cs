@@ -160,6 +160,27 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = UsersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_historyStates/{version}")]
+        [HttpGet]
+        public UserStateDto Get(string id, long version, string fields = null)
+        {
+          try {
+            var idObj = id;
+            var state = (UserState)_userApplicationService.GetHistoryState(idObj, version);
+            if (state == null) { return null; }
+            var stateDto = new UserStateDto(state);
+            if (String.IsNullOrWhiteSpace(fields))
+            {
+                stateDto.AllFieldsReturned = true;
+            }
+            else
+            {
+                stateDto.ReturnedFieldsString = fields;
+            }
+            return stateDto;
+          } catch (Exception ex) { var response = UsersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{userId}/UserRoles/{roleId}")]
         [HttpGet]
         public UserRoleStateDto GetUserRole(string userId, string roleId)

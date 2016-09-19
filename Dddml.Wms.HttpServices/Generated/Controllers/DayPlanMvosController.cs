@@ -160,6 +160,27 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = DayPlanMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_historyStates/{version}")]
+        [HttpGet]
+        public DayPlanMvoStateDto Get(string id, long version, string fields = null)
+        {
+          try {
+            var idObj = DayPlanMvosControllerUtils.ParseIdString(id);
+            var state = (DayPlanMvoState)_dayPlanMvoApplicationService.GetHistoryState(idObj, version);
+            if (state == null) { return null; }
+            var stateDto = new DayPlanMvoStateDto(state);
+            if (String.IsNullOrWhiteSpace(fields))
+            {
+                stateDto.AllFieldsReturned = true;
+            }
+            else
+            {
+                stateDto.ReturnedFieldsString = fields;
+            }
+            return stateDto;
+          } catch (Exception ex) { var response = DayPlanMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 
