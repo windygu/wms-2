@@ -218,12 +218,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IUserPermissionStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IUserPermissionStateCreated> IEnumerable<IUserPermissionStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

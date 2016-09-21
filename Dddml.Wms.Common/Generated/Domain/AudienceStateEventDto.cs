@@ -258,12 +258,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IAudienceStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IAudienceStateCreated> IEnumerable<IAudienceStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

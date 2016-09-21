@@ -875,12 +875,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IUserStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IUserStateCreated> IEnumerable<IUserStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

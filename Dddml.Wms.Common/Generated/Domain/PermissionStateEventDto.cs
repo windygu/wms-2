@@ -279,12 +279,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IPermissionStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IPermissionStateCreated> IEnumerable<IPermissionStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

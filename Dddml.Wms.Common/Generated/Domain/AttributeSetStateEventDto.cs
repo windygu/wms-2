@@ -449,12 +449,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IAttributeSetStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IAttributeSetStateCreated> IEnumerable<IAttributeSetStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

@@ -1435,12 +1435,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IInOutLineMvoStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IInOutLineMvoStateCreated> IEnumerable<IInOutLineMvoStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

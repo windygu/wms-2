@@ -1038,12 +1038,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IInOutStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IInOutStateCreated> IEnumerable<IInOutStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

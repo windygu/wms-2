@@ -573,12 +573,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IAttributeSetInstanceExtensionFieldMvoStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IAttributeSetInstanceExtensionFieldMvoStateCreated> IEnumerable<IAttributeSetInstanceExtensionFieldMvoStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

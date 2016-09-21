@@ -533,12 +533,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IAttributeStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IAttributeStateCreated> IEnumerable<IAttributeStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

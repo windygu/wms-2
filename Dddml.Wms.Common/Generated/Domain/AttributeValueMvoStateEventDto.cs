@@ -636,12 +636,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IAttributeValueMvoStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IAttributeValueMvoStateCreated> IEnumerable<IAttributeValueMvoStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

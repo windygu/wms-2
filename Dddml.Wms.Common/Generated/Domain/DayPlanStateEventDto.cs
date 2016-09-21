@@ -239,12 +239,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IDayPlanStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IDayPlanStateCreated> IEnumerable<IDayPlanStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

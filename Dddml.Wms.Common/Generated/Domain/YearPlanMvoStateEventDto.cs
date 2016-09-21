@@ -447,12 +447,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IYearPlanMvoStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IYearPlanMvoStateCreated> IEnumerable<IYearPlanMvoStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }

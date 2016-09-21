@@ -216,12 +216,12 @@ namespace Dddml.Wms.Domain
             _innerStateEvents.AddRange(es);
         }
 
-        public IEnumerator<IOrganizationStructureStateCreated> GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator<IOrganizationStructureStateCreated> IEnumerable<IOrganizationStructureStateCreated>.GetEnumerator()
         {
             return _innerStateEvents.GetEnumerator();
         }
