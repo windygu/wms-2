@@ -152,11 +152,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public IPersonStateEvent GetStateEvent(string id, long version)
+        public PersonStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = PeopleControllerUtils.ParseIdString(id);
-            return _personApplicationService.GetStateEvent(idObj, version);
+            var conv = new PersonStateEventDtoConverter();
+            return conv.ToPersonStateEventDto(_personApplicationService.GetStateEvent(idObj, version));
           } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

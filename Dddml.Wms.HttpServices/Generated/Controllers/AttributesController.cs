@@ -163,11 +163,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public IAttributeStateEvent GetStateEvent(string id, long version)
+        public AttributeStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = id;
-            return _attributeApplicationService.GetStateEvent(idObj, version);
+            var conv = new AttributeStateEventDtoConverter();
+            return conv.ToAttributeStateEventDto(_attributeApplicationService.GetStateEvent(idObj, version));
           } catch (Exception ex) { var response = AttributesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

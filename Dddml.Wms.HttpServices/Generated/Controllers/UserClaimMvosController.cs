@@ -152,11 +152,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public IUserClaimMvoStateEvent GetStateEvent(string id, long version)
+        public UserClaimMvoStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = UserClaimMvosControllerUtils.ParseIdString(id);
-            return _userClaimMvoApplicationService.GetStateEvent(idObj, version);
+            var conv = new UserClaimMvoStateEventDtoConverter();
+            return conv.ToUserClaimMvoStateEventDto(_userClaimMvoApplicationService.GetStateEvent(idObj, version));
           } catch (Exception ex) { var response = UserClaimMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

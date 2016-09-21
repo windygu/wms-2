@@ -152,11 +152,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public IWarehouseStateEvent GetStateEvent(string id, long version)
+        public WarehouseStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = id;
-            return _warehouseApplicationService.GetStateEvent(idObj, version);
+            var conv = new WarehouseStateEventDtoConverter();
+            return conv.ToWarehouseStateEventDto(_warehouseApplicationService.GetStateEvent(idObj, version));
           } catch (Exception ex) { var response = WarehousesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

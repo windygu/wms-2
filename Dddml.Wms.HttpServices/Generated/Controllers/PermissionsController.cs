@@ -152,11 +152,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public IPermissionStateEvent GetStateEvent(string id, long version)
+        public PermissionStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = id;
-            return _permissionApplicationService.GetStateEvent(idObj, version);
+            var conv = new PermissionStateEventDtoConverter();
+            return conv.ToPermissionStateEventDto(_permissionApplicationService.GetStateEvent(idObj, version));
           } catch (Exception ex) { var response = PermissionsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

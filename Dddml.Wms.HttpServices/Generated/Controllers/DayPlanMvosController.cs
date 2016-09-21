@@ -152,11 +152,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public IDayPlanMvoStateEvent GetStateEvent(string id, long version)
+        public DayPlanMvoStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = DayPlanMvosControllerUtils.ParseIdString(id);
-            return _dayPlanMvoApplicationService.GetStateEvent(idObj, version);
+            var conv = new DayPlanMvoStateEventDtoConverter();
+            return conv.ToDayPlanMvoStateEventDto(_dayPlanMvoApplicationService.GetStateEvent(idObj, version));
           } catch (Exception ex) { var response = DayPlanMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

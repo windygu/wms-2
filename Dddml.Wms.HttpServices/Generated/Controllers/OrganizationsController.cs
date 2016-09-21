@@ -152,11 +152,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public IOrganizationStateEvent GetStateEvent(string id, long version)
+        public OrganizationStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = id;
-            return _organizationApplicationService.GetStateEvent(idObj, version);
+            var conv = new OrganizationStateEventDtoConverter();
+            return conv.ToOrganizationStateEventDto(_organizationApplicationService.GetStateEvent(idObj, version));
           } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

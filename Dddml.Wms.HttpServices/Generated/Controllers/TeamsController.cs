@@ -152,11 +152,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public ITeamStateEvent GetStateEvent(string id, long version)
+        public TeamStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = id;
-            return _teamApplicationService.GetStateEvent(idObj, version);
+            var conv = new TeamStateEventDtoConverter();
+            return conv.ToTeamStateEventDto(_teamApplicationService.GetStateEvent(idObj, version));
           } catch (Exception ex) { var response = TeamsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

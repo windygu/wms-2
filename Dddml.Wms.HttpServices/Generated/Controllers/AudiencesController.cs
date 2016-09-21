@@ -152,11 +152,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public IAudienceStateEvent GetStateEvent(string id, long version)
+        public AudienceStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = id;
-            return _audienceApplicationService.GetStateEvent(idObj, version);
+            var conv = new AudienceStateEventDtoConverter();
+            return conv.ToAudienceStateEventDto(_audienceApplicationService.GetStateEvent(idObj, version));
           } catch (Exception ex) { var response = AudiencesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

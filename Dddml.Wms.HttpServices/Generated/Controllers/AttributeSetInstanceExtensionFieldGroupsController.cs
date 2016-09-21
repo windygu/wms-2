@@ -152,11 +152,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public IAttributeSetInstanceExtensionFieldGroupStateEvent GetStateEvent(string id, long version)
+        public AttributeSetInstanceExtensionFieldGroupStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = id;
-            return _attributeSetInstanceExtensionFieldGroupApplicationService.GetStateEvent(idObj, version);
+            var conv = new AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter();
+            return conv.ToAttributeSetInstanceExtensionFieldGroupStateEventDto(_attributeSetInstanceExtensionFieldGroupApplicationService.GetStateEvent(idObj, version));
           } catch (Exception ex) { var response = AttributeSetInstanceExtensionFieldGroupsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

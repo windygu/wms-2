@@ -152,11 +152,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public ILocatorStateEvent GetStateEvent(string id, long version)
+        public LocatorStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = id;
-            return _locatorApplicationService.GetStateEvent(idObj, version);
+            var conv = new LocatorStateEventDtoConverter();
+            return conv.ToLocatorStateEventDto(_locatorApplicationService.GetStateEvent(idObj, version));
           } catch (Exception ex) { var response = LocatorsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
