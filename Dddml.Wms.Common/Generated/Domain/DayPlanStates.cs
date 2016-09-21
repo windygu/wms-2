@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<DayPlanId, IDayPlanState> _loadedDayPlanStates = new Dictionary<DayPlanId, IDayPlanState>();
 
-        //private List<IDayPlanState> _removedDayPlanStates = new List<IDayPlanState>();
-
 		private Dictionary<DayPlanId, IDayPlanState> _removedDayPlanStates = new Dictionary<DayPlanId, IDayPlanState>();
 
 		protected virtual IEnumerable<IDayPlanState> LoadedDayPlanStates {
@@ -49,7 +47,7 @@ namespace Dddml.Wms.Domain
                 }
                 else //return _innerEnumerable;
                 {
-                    return _loadedDayPlanStates.Values.Where(s => !_removedDayPlanStates.ContainsKey(s.GlobalId));
+                    return _loadedDayPlanStates.Values.Where(s => !(_removedDayPlanStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }
             }
         }

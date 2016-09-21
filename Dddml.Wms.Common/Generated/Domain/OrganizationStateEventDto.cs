@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class OrganizationStateEventDtoBase : IStateEventDto, IOrganizationStateCreated, IOrganizationStateMergePatched, IOrganizationStateDeleted
 	{
 
-		public virtual OrganizationStateEventIdDto StateEventId { get; set; }
+        private OrganizationStateEventIdDto _stateEventId;
+
+		protected internal virtual OrganizationStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new OrganizationStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual string OrganizationId
+        {
+            get { return StateEventId.OrganizationId; }
+            set { StateEventId.OrganizationId = value; }
+        }
+
+        public virtual long Version
+        {
+            get { return StateEventId.Version; }
+            set { StateEventId.Version = value; }
+        }
 
 		public virtual string Name { get; set; }
 

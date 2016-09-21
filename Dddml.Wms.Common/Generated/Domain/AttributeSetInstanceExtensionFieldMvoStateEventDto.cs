@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class AttributeSetInstanceExtensionFieldMvoStateEventDtoBase : IStateEventDto, IAttributeSetInstanceExtensionFieldMvoStateCreated, IAttributeSetInstanceExtensionFieldMvoStateMergePatched, IAttributeSetInstanceExtensionFieldMvoStateDeleted
 	{
 
-		public virtual AttributeSetInstanceExtensionFieldMvoStateEventIdDto StateEventId { get; set; }
+        private AttributeSetInstanceExtensionFieldMvoStateEventIdDto _stateEventId;
+
+		protected internal virtual AttributeSetInstanceExtensionFieldMvoStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual AttributeSetInstanceExtensionFieldIdDto AttributeSetInstanceExtensionFieldId
+        {
+            get { return StateEventId.AttributeSetInstanceExtensionFieldId; }
+            set { StateEventId.AttributeSetInstanceExtensionFieldId = value; }
+        }
+
+        public virtual long AttrSetInstEFGroupVersion
+        {
+            get { return StateEventId.AttrSetInstEFGroupVersion; }
+            set { StateEventId.AttrSetInstEFGroupVersion = value; }
+        }
 
 		public virtual string Name { get; set; }
 

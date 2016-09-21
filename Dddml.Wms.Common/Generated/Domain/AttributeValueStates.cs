@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<AttributeValueId, IAttributeValueState> _loadedAttributeValueStates = new Dictionary<AttributeValueId, IAttributeValueState>();
 
-        //private List<IAttributeValueState> _removedAttributeValueStates = new List<IAttributeValueState>();
-
 		private Dictionary<AttributeValueId, IAttributeValueState> _removedAttributeValueStates = new Dictionary<AttributeValueId, IAttributeValueState>();
 
 		protected virtual IEnumerable<IAttributeValueState> LoadedAttributeValueStates {
@@ -49,7 +47,7 @@ namespace Dddml.Wms.Domain
                 }
                 else //return _innerEnumerable;
                 {
-                    return _loadedAttributeValueStates.Values.Where(s => !_removedAttributeValueStates.ContainsKey(s.GlobalId));
+                    return _loadedAttributeValueStates.Values.Where(s => !(_removedAttributeValueStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }
             }
         }

@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<UserRoleId, IUserRoleState> _loadedUserRoleStates = new Dictionary<UserRoleId, IUserRoleState>();
 
-        //private List<IUserRoleState> _removedUserRoleStates = new List<IUserRoleState>();
-
 		private Dictionary<UserRoleId, IUserRoleState> _removedUserRoleStates = new Dictionary<UserRoleId, IUserRoleState>();
 
 		protected virtual IEnumerable<IUserRoleState> LoadedUserRoleStates {
@@ -49,7 +47,7 @@ namespace Dddml.Wms.Domain
                 }
                 else //return _innerEnumerable;
                 {
-                    return _loadedUserRoleStates.Values.Where(s => !_removedUserRoleStates.ContainsKey(s.GlobalId));
+                    return _loadedUserRoleStates.Values.Where(s => !(_removedUserRoleStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }
             }
         }

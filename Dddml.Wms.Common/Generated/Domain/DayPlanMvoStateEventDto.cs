@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class DayPlanMvoStateEventDtoBase : IStateEventDto, IDayPlanMvoStateCreated, IDayPlanMvoStateMergePatched, IDayPlanMvoStateDeleted
 	{
 
-		public virtual DayPlanMvoStateEventIdDto StateEventId { get; set; }
+        private DayPlanMvoStateEventIdDto _stateEventId;
+
+		protected internal virtual DayPlanMvoStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new DayPlanMvoStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual DayPlanIdDto DayPlanId
+        {
+            get { return StateEventId.DayPlanId; }
+            set { StateEventId.DayPlanId = value; }
+        }
+
+        public virtual long PersonVersion
+        {
+            get { return StateEventId.PersonVersion; }
+            set { StateEventId.PersonVersion = value; }
+        }
 
 		public virtual string Description { get; set; }
 

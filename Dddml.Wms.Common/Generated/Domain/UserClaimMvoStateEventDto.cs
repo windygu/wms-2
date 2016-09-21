@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class UserClaimMvoStateEventDtoBase : IStateEventDto, IUserClaimMvoStateCreated, IUserClaimMvoStateMergePatched, IUserClaimMvoStateDeleted
 	{
 
-		public virtual UserClaimMvoStateEventIdDto StateEventId { get; set; }
+        private UserClaimMvoStateEventIdDto _stateEventId;
+
+		protected internal virtual UserClaimMvoStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new UserClaimMvoStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual UserClaimIdDto UserClaimId
+        {
+            get { return StateEventId.UserClaimId; }
+            set { StateEventId.UserClaimId = value; }
+        }
+
+        public virtual long UserVersion
+        {
+            get { return StateEventId.UserVersion; }
+            set { StateEventId.UserVersion = value; }
+        }
 
 		public virtual string ClaimType { get; set; }
 

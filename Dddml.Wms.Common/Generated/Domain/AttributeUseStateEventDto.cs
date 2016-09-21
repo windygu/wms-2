@@ -14,7 +14,26 @@ namespace Dddml.Wms.Domain
 	public abstract class AttributeUseStateEventDtoBase : IStateEventDto, IAttributeUseStateCreated, IAttributeUseStateMergePatched, IAttributeUseStateRemoved
 	{
 
-		public virtual AttributeUseStateEventIdDto StateEventId { get; set; }
+        private AttributeUseStateEventIdDto _stateEventId;
+
+		protected internal virtual AttributeUseStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new AttributeUseStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual string AttributeId
+        {
+            get { return StateEventId.AttributeId; }
+            set { StateEventId.AttributeId = value; }
+        }
 
 		public virtual int? SequenceNumber { get; set; }
 

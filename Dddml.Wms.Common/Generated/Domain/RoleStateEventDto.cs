@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class RoleStateEventDtoBase : IStateEventDto, IRoleStateCreated, IRoleStateMergePatched, IRoleStateDeleted
 	{
 
-		public virtual RoleStateEventIdDto StateEventId { get; set; }
+        private RoleStateEventIdDto _stateEventId;
+
+		protected internal virtual RoleStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new RoleStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual string RoleId
+        {
+            get { return StateEventId.RoleId; }
+            set { StateEventId.RoleId = value; }
+        }
+
+        public virtual long Version
+        {
+            get { return StateEventId.Version; }
+            set { StateEventId.Version = value; }
+        }
 
 		public virtual string Name { get; set; }
 

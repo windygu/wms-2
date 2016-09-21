@@ -14,7 +14,26 @@ namespace Dddml.Wms.Domain
 	public abstract class YearPlanStateEventDtoBase : IStateEventDto, IYearPlanStateCreated, IYearPlanStateMergePatched, IYearPlanStateRemoved
 	{
 
-		public virtual YearPlanStateEventIdDto StateEventId { get; set; }
+        private YearPlanStateEventIdDto _stateEventId;
+
+		protected internal virtual YearPlanStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new YearPlanStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual int Year
+        {
+            get { return StateEventId.Year; }
+            set { StateEventId.Year = value; }
+        }
 
 		public virtual string Description { get; set; }
 

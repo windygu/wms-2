@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class LocatorStateEventDtoBase : IStateEventDto, ILocatorStateCreated, ILocatorStateMergePatched, ILocatorStateDeleted
 	{
 
-		public virtual LocatorStateEventIdDto StateEventId { get; set; }
+        private LocatorStateEventIdDto _stateEventId;
+
+		protected internal virtual LocatorStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new LocatorStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual string LocatorId
+        {
+            get { return StateEventId.LocatorId; }
+            set { StateEventId.LocatorId = value; }
+        }
+
+        public virtual long Version
+        {
+            get { return StateEventId.Version; }
+            set { StateEventId.Version = value; }
+        }
 
 		public virtual string WarehouseId { get; set; }
 

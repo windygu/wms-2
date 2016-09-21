@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class UserPermissionMvoStateEventDtoBase : IStateEventDto, IUserPermissionMvoStateCreated, IUserPermissionMvoStateMergePatched, IUserPermissionMvoStateDeleted
 	{
 
-		public virtual UserPermissionMvoStateEventIdDto StateEventId { get; set; }
+        private UserPermissionMvoStateEventIdDto _stateEventId;
+
+		protected internal virtual UserPermissionMvoStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new UserPermissionMvoStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual UserPermissionIdDto UserPermissionId
+        {
+            get { return StateEventId.UserPermissionId; }
+            set { StateEventId.UserPermissionId = value; }
+        }
+
+        public virtual long UserVersion
+        {
+            get { return StateEventId.UserVersion; }
+            set { StateEventId.UserVersion = value; }
+        }
 
 		public virtual long? Version { get; set; }
 

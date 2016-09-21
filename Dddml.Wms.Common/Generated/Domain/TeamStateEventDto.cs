@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class TeamStateEventDtoBase : IStateEventDto, ITeamStateCreated, ITeamStateMergePatched, ITeamStateDeleted
 	{
 
-		public virtual TeamStateEventIdDto StateEventId { get; set; }
+        private TeamStateEventIdDto _stateEventId;
+
+		protected internal virtual TeamStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new TeamStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual string TeamName
+        {
+            get { return StateEventId.TeamName; }
+            set { StateEventId.TeamName = value; }
+        }
+
+        public virtual long Version
+        {
+            get { return StateEventId.Version; }
+            set { StateEventId.Version = value; }
+        }
 
 		public virtual string Description { get; set; }
 

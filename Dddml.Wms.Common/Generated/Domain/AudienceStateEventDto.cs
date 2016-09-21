@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class AudienceStateEventDtoBase : IStateEventDto, IAudienceStateCreated, IAudienceStateMergePatched, IAudienceStateDeleted
 	{
 
-		public virtual AudienceStateEventIdDto StateEventId { get; set; }
+        private AudienceStateEventIdDto _stateEventId;
+
+		protected internal virtual AudienceStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new AudienceStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual string ClientId
+        {
+            get { return StateEventId.ClientId; }
+            set { StateEventId.ClientId = value; }
+        }
+
+        public virtual long Version
+        {
+            get { return StateEventId.Version; }
+            set { StateEventId.Version = value; }
+        }
 
 		public virtual string Name { get; set; }
 

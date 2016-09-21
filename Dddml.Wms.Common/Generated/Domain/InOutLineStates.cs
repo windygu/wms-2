@@ -26,8 +26,6 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<InOutLineId, IInOutLineState> _loadedInOutLineStates = new Dictionary<InOutLineId, IInOutLineState>();
 
-        //private List<IInOutLineState> _removedInOutLineStates = new List<IInOutLineState>();
-
 		private Dictionary<InOutLineId, IInOutLineState> _removedInOutLineStates = new Dictionary<InOutLineId, IInOutLineState>();
 
 		protected virtual IEnumerable<IInOutLineState> LoadedInOutLineStates {
@@ -50,7 +48,7 @@ namespace Dddml.Wms.Domain
                 }
                 else //return _innerEnumerable;
                 {
-                    return _loadedInOutLineStates.Values.Where(s => !_removedInOutLineStates.ContainsKey(s.GlobalId));
+                    return _loadedInOutLineStates.Values.Where(s => !(_removedInOutLineStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }
             }
         }

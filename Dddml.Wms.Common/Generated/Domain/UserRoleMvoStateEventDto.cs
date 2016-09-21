@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class UserRoleMvoStateEventDtoBase : IStateEventDto, IUserRoleMvoStateCreated, IUserRoleMvoStateMergePatched, IUserRoleMvoStateDeleted
 	{
 
-		public virtual UserRoleMvoStateEventIdDto StateEventId { get; set; }
+        private UserRoleMvoStateEventIdDto _stateEventId;
+
+		protected internal virtual UserRoleMvoStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new UserRoleMvoStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual UserRoleIdDto UserRoleId
+        {
+            get { return StateEventId.UserRoleId; }
+            set { StateEventId.UserRoleId = value; }
+        }
+
+        public virtual long UserVersion
+        {
+            get { return StateEventId.UserVersion; }
+            set { StateEventId.UserVersion = value; }
+        }
 
 		public virtual long? Version { get; set; }
 

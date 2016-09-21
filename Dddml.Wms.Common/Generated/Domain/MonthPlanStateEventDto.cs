@@ -14,7 +14,26 @@ namespace Dddml.Wms.Domain
 	public abstract class MonthPlanStateEventDtoBase : IStateEventDto, IMonthPlanStateCreated, IMonthPlanStateMergePatched, IMonthPlanStateRemoved
 	{
 
-		public virtual MonthPlanStateEventIdDto StateEventId { get; set; }
+        private MonthPlanStateEventIdDto _stateEventId;
+
+		protected internal virtual MonthPlanStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new MonthPlanStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual int Month
+        {
+            get { return StateEventId.Month; }
+            set { StateEventId.Month = value; }
+        }
 
 		public virtual string Description { get; set; }
 

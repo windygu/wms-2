@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<YearPlanId, IYearPlanState> _loadedYearPlanStates = new Dictionary<YearPlanId, IYearPlanState>();
 
-        //private List<IYearPlanState> _removedYearPlanStates = new List<IYearPlanState>();
-
 		private Dictionary<YearPlanId, IYearPlanState> _removedYearPlanStates = new Dictionary<YearPlanId, IYearPlanState>();
 
 		protected virtual IEnumerable<IYearPlanState> LoadedYearPlanStates {
@@ -49,7 +47,7 @@ namespace Dddml.Wms.Domain
                 }
                 else //return _innerEnumerable;
                 {
-                    return _loadedYearPlanStates.Values.Where(s => !_removedYearPlanStates.ContainsKey(s.GlobalId));
+                    return _loadedYearPlanStates.Values.Where(s => !(_removedYearPlanStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }
             }
         }

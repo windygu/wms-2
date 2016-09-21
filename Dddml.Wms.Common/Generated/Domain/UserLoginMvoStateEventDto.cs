@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class UserLoginMvoStateEventDtoBase : IStateEventDto, IUserLoginMvoStateCreated, IUserLoginMvoStateMergePatched, IUserLoginMvoStateDeleted
 	{
 
-		public virtual UserLoginMvoStateEventIdDto StateEventId { get; set; }
+        private UserLoginMvoStateEventIdDto _stateEventId;
+
+		protected internal virtual UserLoginMvoStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new UserLoginMvoStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual UserLoginIdDto UserLoginId
+        {
+            get { return StateEventId.UserLoginId; }
+            set { StateEventId.UserLoginId = value; }
+        }
+
+        public virtual long UserVersion
+        {
+            get { return StateEventId.UserVersion; }
+            set { StateEventId.UserVersion = value; }
+        }
 
 		public virtual long? Version { get; set; }
 

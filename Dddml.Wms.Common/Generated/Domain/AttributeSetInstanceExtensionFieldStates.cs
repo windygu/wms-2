@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<AttributeSetInstanceExtensionFieldId, IAttributeSetInstanceExtensionFieldState> _loadedAttributeSetInstanceExtensionFieldStates = new Dictionary<AttributeSetInstanceExtensionFieldId, IAttributeSetInstanceExtensionFieldState>();
 
-        //private List<IAttributeSetInstanceExtensionFieldState> _removedAttributeSetInstanceExtensionFieldStates = new List<IAttributeSetInstanceExtensionFieldState>();
-
 		private Dictionary<AttributeSetInstanceExtensionFieldId, IAttributeSetInstanceExtensionFieldState> _removedAttributeSetInstanceExtensionFieldStates = new Dictionary<AttributeSetInstanceExtensionFieldId, IAttributeSetInstanceExtensionFieldState>();
 
 		protected virtual IEnumerable<IAttributeSetInstanceExtensionFieldState> LoadedAttributeSetInstanceExtensionFieldStates {
@@ -49,7 +47,7 @@ namespace Dddml.Wms.Domain
                 }
                 else //return _innerEnumerable;
                 {
-                    return _loadedAttributeSetInstanceExtensionFieldStates.Values.Where(s => !_removedAttributeSetInstanceExtensionFieldStates.ContainsKey(s.GlobalId));
+                    return _loadedAttributeSetInstanceExtensionFieldStates.Values.Where(s => !(_removedAttributeSetInstanceExtensionFieldStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }
             }
         }

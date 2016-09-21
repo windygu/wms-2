@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class PersonStateEventDtoBase : IStateEventDto, IPersonStateCreated, IPersonStateMergePatched, IPersonStateDeleted
 	{
 
-		public virtual PersonStateEventIdDto StateEventId { get; set; }
+        private PersonStateEventIdDto _stateEventId;
+
+		protected internal virtual PersonStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new PersonStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual PersonalNameDto PersonalName
+        {
+            get { return StateEventId.PersonalName; }
+            set { StateEventId.PersonalName = value; }
+        }
+
+        public virtual long Version
+        {
+            get { return StateEventId.Version; }
+            set { StateEventId.Version = value; }
+        }
 
 		public virtual DateTime? BirthDate { get; set; }
 

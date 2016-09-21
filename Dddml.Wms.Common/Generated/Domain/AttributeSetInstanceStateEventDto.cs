@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class AttributeSetInstanceStateEventDtoBase : IStateEventDto, IAttributeSetInstanceStateCreated, IAttributeSetInstanceStateMergePatched, IAttributeSetInstanceStateDeleted
 	{
 
-		public virtual AttributeSetInstanceStateEventIdDto StateEventId { get; set; }
+        private AttributeSetInstanceStateEventIdDto _stateEventId;
+
+		protected internal virtual AttributeSetInstanceStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new AttributeSetInstanceStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual string AttributeSetInstanceId
+        {
+            get { return StateEventId.AttributeSetInstanceId; }
+            set { StateEventId.AttributeSetInstanceId = value; }
+        }
+
+        public virtual long Version
+        {
+            get { return StateEventId.Version; }
+            set { StateEventId.Version = value; }
+        }
 
 		public virtual string AttributeSetId { get; set; }
 

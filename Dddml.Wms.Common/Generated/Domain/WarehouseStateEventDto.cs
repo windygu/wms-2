@@ -14,7 +14,32 @@ namespace Dddml.Wms.Domain
 	public abstract class WarehouseStateEventDtoBase : IStateEventDto, IWarehouseStateCreated, IWarehouseStateMergePatched, IWarehouseStateDeleted
 	{
 
-		public virtual WarehouseStateEventIdDto StateEventId { get; set; }
+        private WarehouseStateEventIdDto _stateEventId;
+
+		protected internal virtual WarehouseStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new WarehouseStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual string WarehouseId
+        {
+            get { return StateEventId.WarehouseId; }
+            set { StateEventId.WarehouseId = value; }
+        }
+
+        public virtual long Version
+        {
+            get { return StateEventId.Version; }
+            set { StateEventId.Version = value; }
+        }
 
 		public virtual string Name { get; set; }
 

@@ -15,7 +15,32 @@ namespace Dddml.Wms.Domain
 	public abstract class InOutStateEventDtoBase : IStateEventDto, IInOutStateCreated, IInOutStateMergePatched, IInOutStateDeleted
 	{
 
-		public virtual InOutStateEventIdDto StateEventId { get; set; }
+        private InOutStateEventIdDto _stateEventId;
+
+		protected internal virtual InOutStateEventIdDto StateEventId 
+        {
+            get 
+            {
+                if (_stateEventId == null) { _stateEventId = new InOutStateEventIdDto(); }
+                return _stateEventId;
+            }
+            set
+            {
+                _stateEventId = value;
+            }
+        }
+
+        public virtual string DocumentNumber
+        {
+            get { return StateEventId.DocumentNumber; }
+            set { StateEventId.DocumentNumber = value; }
+        }
+
+        public virtual long Version
+        {
+            get { return StateEventId.Version; }
+            set { StateEventId.Version = value; }
+        }
 
 		public virtual bool? IsSOTransaction { get; set; }
 

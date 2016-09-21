@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<UserClaimId, IUserClaimState> _loadedUserClaimStates = new Dictionary<UserClaimId, IUserClaimState>();
 
-        //private List<IUserClaimState> _removedUserClaimStates = new List<IUserClaimState>();
-
 		private Dictionary<UserClaimId, IUserClaimState> _removedUserClaimStates = new Dictionary<UserClaimId, IUserClaimState>();
 
 		protected virtual IEnumerable<IUserClaimState> LoadedUserClaimStates {
@@ -49,7 +47,7 @@ namespace Dddml.Wms.Domain
                 }
                 else //return _innerEnumerable;
                 {
-                    return _loadedUserClaimStates.Values.Where(s => !_removedUserClaimStates.ContainsKey(s.GlobalId));
+                    return _loadedUserClaimStates.Values.Where(s => !(_removedUserClaimStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }
             }
         }

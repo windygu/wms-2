@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<MonthPlanId, IMonthPlanState> _loadedMonthPlanStates = new Dictionary<MonthPlanId, IMonthPlanState>();
 
-        //private List<IMonthPlanState> _removedMonthPlanStates = new List<IMonthPlanState>();
-
 		private Dictionary<MonthPlanId, IMonthPlanState> _removedMonthPlanStates = new Dictionary<MonthPlanId, IMonthPlanState>();
 
 		protected virtual IEnumerable<IMonthPlanState> LoadedMonthPlanStates {
@@ -49,7 +47,7 @@ namespace Dddml.Wms.Domain
                 }
                 else //return _innerEnumerable;
                 {
-                    return _loadedMonthPlanStates.Values.Where(s => !_removedMonthPlanStates.ContainsKey(s.GlobalId));
+                    return _loadedMonthPlanStates.Values.Where(s => !(_removedMonthPlanStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }
             }
         }
