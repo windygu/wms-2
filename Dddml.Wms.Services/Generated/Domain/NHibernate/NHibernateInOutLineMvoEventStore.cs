@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = ((InOutLineMvoStateEventBase)es.Last()).StateEventId.InOutVersion,
+                SteamVersion = es.Count > 0 ? ((InOutLineMvoStateEventBase)es.Last()).StateEventId.InOutVersion : default(long),
                 Events = es
             };
         }
