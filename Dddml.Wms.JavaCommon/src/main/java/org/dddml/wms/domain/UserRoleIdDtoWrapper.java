@@ -13,6 +13,7 @@ public class UserRoleIdDtoWrapper extends UserRoleIdDto
 
     public UserRoleIdDtoWrapper(UserRoleId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

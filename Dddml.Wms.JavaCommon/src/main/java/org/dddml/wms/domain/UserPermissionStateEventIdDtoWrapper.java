@@ -13,6 +13,7 @@ public class UserPermissionStateEventIdDtoWrapper extends UserPermissionStateEve
 
     public UserPermissionStateEventIdDtoWrapper(UserPermissionStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

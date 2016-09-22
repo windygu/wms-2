@@ -13,6 +13,7 @@ public class DayPlanMvoStateEventIdDtoWrapper extends DayPlanMvoStateEventIdDto
 
     public DayPlanMvoStateEventIdDtoWrapper(DayPlanMvoStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

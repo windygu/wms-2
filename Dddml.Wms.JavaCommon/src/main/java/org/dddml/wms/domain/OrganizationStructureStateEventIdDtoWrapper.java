@@ -13,6 +13,7 @@ public class OrganizationStructureStateEventIdDtoWrapper extends OrganizationStr
 
     public OrganizationStructureStateEventIdDtoWrapper(OrganizationStructureStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

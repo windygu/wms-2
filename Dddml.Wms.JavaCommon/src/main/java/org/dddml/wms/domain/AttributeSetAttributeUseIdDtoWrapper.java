@@ -13,6 +13,7 @@ public class AttributeSetAttributeUseIdDtoWrapper extends AttributeSetAttributeU
 
     public AttributeSetAttributeUseIdDtoWrapper(AttributeSetAttributeUseId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

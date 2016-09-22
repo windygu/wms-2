@@ -13,6 +13,7 @@ public class TeamStateEventIdDtoWrapper extends TeamStateEventIdDto
 
     public TeamStateEventIdDtoWrapper(TeamStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

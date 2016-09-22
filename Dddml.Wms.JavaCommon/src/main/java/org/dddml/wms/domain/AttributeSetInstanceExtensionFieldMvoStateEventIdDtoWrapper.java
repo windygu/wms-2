@@ -13,6 +13,7 @@ public class AttributeSetInstanceExtensionFieldMvoStateEventIdDtoWrapper extends
 
     public AttributeSetInstanceExtensionFieldMvoStateEventIdDtoWrapper(AttributeSetInstanceExtensionFieldMvoStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

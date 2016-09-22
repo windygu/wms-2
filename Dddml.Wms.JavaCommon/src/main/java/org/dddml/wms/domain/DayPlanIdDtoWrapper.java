@@ -13,6 +13,7 @@ public class DayPlanIdDtoWrapper extends DayPlanIdDto
 
     public DayPlanIdDtoWrapper(DayPlanId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

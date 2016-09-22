@@ -13,6 +13,7 @@ public class MonthPlanIdDtoWrapper extends MonthPlanIdDto
 
     public MonthPlanIdDtoWrapper(MonthPlanId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

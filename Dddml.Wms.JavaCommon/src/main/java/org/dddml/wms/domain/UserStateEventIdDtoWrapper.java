@@ -13,6 +13,7 @@ public class UserStateEventIdDtoWrapper extends UserStateEventIdDto
 
     public UserStateEventIdDtoWrapper(UserStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

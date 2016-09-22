@@ -13,6 +13,7 @@ public class AttributeSetInstanceStateEventIdDtoWrapper extends AttributeSetInst
 
     public AttributeSetInstanceStateEventIdDtoWrapper(AttributeSetInstanceStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

@@ -13,6 +13,7 @@ public class AttributeUseStateEventIdDtoWrapper extends AttributeUseStateEventId
 
     public AttributeUseStateEventIdDtoWrapper(AttributeUseStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

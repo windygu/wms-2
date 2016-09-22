@@ -13,6 +13,7 @@ public class LoginKeyDtoWrapper extends LoginKeyDto
 
     public LoginKeyDtoWrapper(LoginKey value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

@@ -13,6 +13,7 @@ public class UserPermissionIdDtoWrapper extends UserPermissionIdDto
 
     public UserPermissionIdDtoWrapper(UserPermissionId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

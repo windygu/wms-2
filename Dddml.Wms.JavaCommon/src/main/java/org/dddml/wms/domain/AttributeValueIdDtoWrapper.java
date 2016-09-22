@@ -13,6 +13,7 @@ public class AttributeValueIdDtoWrapper extends AttributeValueIdDto
 
     public AttributeValueIdDtoWrapper(AttributeValueId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

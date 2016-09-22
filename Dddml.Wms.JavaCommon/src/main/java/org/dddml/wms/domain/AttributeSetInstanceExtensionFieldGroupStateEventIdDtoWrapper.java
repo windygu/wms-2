@@ -13,6 +13,7 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventIdDtoWrapper exten
 
     public AttributeSetInstanceExtensionFieldGroupStateEventIdDtoWrapper(AttributeSetInstanceExtensionFieldGroupStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

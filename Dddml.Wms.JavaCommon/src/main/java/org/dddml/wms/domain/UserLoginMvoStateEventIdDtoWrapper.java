@@ -13,6 +13,7 @@ public class UserLoginMvoStateEventIdDtoWrapper extends UserLoginMvoStateEventId
 
     public UserLoginMvoStateEventIdDtoWrapper(UserLoginMvoStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

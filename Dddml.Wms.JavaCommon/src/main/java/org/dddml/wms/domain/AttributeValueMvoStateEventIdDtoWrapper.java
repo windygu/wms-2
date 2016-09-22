@@ -13,6 +13,7 @@ public class AttributeValueMvoStateEventIdDtoWrapper extends AttributeValueMvoSt
 
     public AttributeValueMvoStateEventIdDtoWrapper(AttributeValueMvoStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

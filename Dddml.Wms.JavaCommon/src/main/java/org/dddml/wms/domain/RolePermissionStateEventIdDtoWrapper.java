@@ -13,6 +13,7 @@ public class RolePermissionStateEventIdDtoWrapper extends RolePermissionStateEve
 
     public RolePermissionStateEventIdDtoWrapper(RolePermissionStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

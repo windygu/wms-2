@@ -13,6 +13,7 @@ public class InOutLineIdDtoWrapper extends InOutLineIdDto
 
     public InOutLineIdDtoWrapper(InOutLineId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

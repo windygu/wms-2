@@ -13,6 +13,7 @@ public class OrganizationStructureIdDtoWrapper extends OrganizationStructureIdDt
 
     public OrganizationStructureIdDtoWrapper(OrganizationStructureId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

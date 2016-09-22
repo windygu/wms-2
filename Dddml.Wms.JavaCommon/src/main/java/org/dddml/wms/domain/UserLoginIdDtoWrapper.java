@@ -13,6 +13,7 @@ public class UserLoginIdDtoWrapper extends UserLoginIdDto
 
     public UserLoginIdDtoWrapper(UserLoginId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

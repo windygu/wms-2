@@ -13,6 +13,7 @@ public class InOutStateEventIdDtoWrapper extends InOutStateEventIdDto
 
     public InOutStateEventIdDtoWrapper(InOutStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

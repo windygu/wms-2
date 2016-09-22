@@ -13,6 +13,7 @@ public class LocatorStateEventIdDtoWrapper extends LocatorStateEventIdDto
 
     public LocatorStateEventIdDtoWrapper(LocatorStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

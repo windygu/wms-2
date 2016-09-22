@@ -13,6 +13,7 @@ public class YearPlanIdDtoWrapper extends YearPlanIdDto
 
     public YearPlanIdDtoWrapper(YearPlanId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

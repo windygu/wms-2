@@ -13,6 +13,7 @@ public class ContactDtoWrapper extends ContactDto
 
     public ContactDtoWrapper(Contact value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

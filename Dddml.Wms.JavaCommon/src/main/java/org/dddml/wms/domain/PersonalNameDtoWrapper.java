@@ -13,6 +13,7 @@ public class PersonalNameDtoWrapper extends PersonalNameDto
 
     public PersonalNameDtoWrapper(PersonalName value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 

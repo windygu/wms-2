@@ -13,6 +13,7 @@ public class YearPlanMvoStateEventIdDtoWrapper extends YearPlanMvoStateEventIdDt
 
     public YearPlanMvoStateEventIdDtoWrapper(YearPlanMvoStateEventId value)
     {
+        if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 
