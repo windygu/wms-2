@@ -157,7 +157,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new LocatorStateEventDtoConverter();
-            return conv.ToLocatorStateEventDto(_locatorApplicationService.GetStateEvent(idObj, version));
+            var se = _locatorApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToLocatorStateEventDto(se);
           } catch (Exception ex) { var response = LocatorsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

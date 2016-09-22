@@ -22,6 +22,7 @@ namespace Dddml.Wms.Domain
 
 		public AttributeSetInstanceExtensionFieldStateEventIdDto(AttributeSetInstanceExtensionFieldStateEventId val)
 		{
+			if (val == null) { throw new ArgumentNullException("val"); }
 			this._value = val;
 		}
 

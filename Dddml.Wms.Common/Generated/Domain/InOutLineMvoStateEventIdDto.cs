@@ -23,6 +23,7 @@ namespace Dddml.Wms.Domain
 
 		public InOutLineMvoStateEventIdDto(InOutLineMvoStateEventId val)
 		{
+			if (val == null) { throw new ArgumentNullException("val"); }
 			this._value = val;
 		}
 

@@ -157,7 +157,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = PeopleControllerUtils.ParseIdString(id);
             var conv = new PersonStateEventDtoConverter();
-            return conv.ToPersonStateEventDto(_personApplicationService.GetStateEvent(idObj, version));
+            var se = _personApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToPersonStateEventDto(se);
           } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

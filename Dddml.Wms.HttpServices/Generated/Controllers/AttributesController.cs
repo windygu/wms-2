@@ -168,7 +168,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new AttributeStateEventDtoConverter();
-            return conv.ToAttributeStateEventDto(_attributeApplicationService.GetStateEvent(idObj, version));
+            var se = _attributeApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToAttributeStateEventDto(se);
           } catch (Exception ex) { var response = AttributesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

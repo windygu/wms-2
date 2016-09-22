@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain
             dto.CommandId = e.CommandId;
             dto.Description = e.Description;
             dto.Active = e.Active;
-            dto.Players = e.Players.Select(p => new PersonalNameDto(p)).ToArray();
+            dto.Players = e.Players.Select(p => p == null ? null : new PersonalNameDto(p)).ToArray();
             dto.Mascots = e.Mascots.ToArray();
             return dto;
         }
@@ -58,7 +58,7 @@ namespace Dddml.Wms.Domain
             dto.CommandId = e.CommandId;
             dto.Description = e.Description;
             dto.Active = e.Active;
-            dto.Players = e.Players.Select(p => new PersonalNameDto(p)).ToArray();
+            dto.Players = e.Players.Select(p => p == null ? null : new PersonalNameDto(p)).ToArray();
             dto.Mascots = e.Mascots.ToArray();
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyPlayersRemoved = e.IsPropertyPlayersRemoved;

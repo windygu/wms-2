@@ -157,7 +157,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = RolePermissionsControllerUtils.ParseIdString(id);
             var conv = new RolePermissionStateEventDtoConverter();
-            return conv.ToRolePermissionStateEventDto(_rolePermissionApplicationService.GetStateEvent(idObj, version));
+            var se = _rolePermissionApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToRolePermissionStateEventDto(se);
           } catch (Exception ex) { var response = RolePermissionsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

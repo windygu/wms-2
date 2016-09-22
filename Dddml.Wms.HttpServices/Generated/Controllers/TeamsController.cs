@@ -157,7 +157,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new TeamStateEventDtoConverter();
-            return conv.ToTeamStateEventDto(_teamApplicationService.GetStateEvent(idObj, version));
+            var se = _teamApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToTeamStateEventDto(se);
           } catch (Exception ex) { var response = TeamsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

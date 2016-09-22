@@ -23,6 +23,7 @@ namespace Dddml.Wms.Domain
 
 		public InOutLineIdDto(InOutLineId val)
 		{
+			if (val == null) { throw new ArgumentNullException("val"); }
 			this._value = val;
 		}
 

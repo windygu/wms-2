@@ -157,7 +157,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = AttributeSetInstanceExtensionFieldMvosControllerUtils.ParseIdString(id);
             var conv = new AttributeSetInstanceExtensionFieldMvoStateEventDtoConverter();
-            return conv.ToAttributeSetInstanceExtensionFieldMvoStateEventDto(_attributeSetInstanceExtensionFieldMvoApplicationService.GetStateEvent(idObj, version));
+            var se = _attributeSetInstanceExtensionFieldMvoApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToAttributeSetInstanceExtensionFieldMvoStateEventDto(se);
           } catch (Exception ex) { var response = AttributeSetInstanceExtensionFieldMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

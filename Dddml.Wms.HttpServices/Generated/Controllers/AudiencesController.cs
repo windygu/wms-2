@@ -157,7 +157,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new AudienceStateEventDtoConverter();
-            return conv.ToAudienceStateEventDto(_audienceApplicationService.GetStateEvent(idObj, version));
+            var se = _audienceApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToAudienceStateEventDto(se);
           } catch (Exception ex) { var response = AudiencesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

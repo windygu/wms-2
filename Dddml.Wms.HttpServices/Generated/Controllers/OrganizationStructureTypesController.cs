@@ -157,7 +157,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new OrganizationStructureTypeStateEventDtoConverter();
-            return conv.ToOrganizationStructureTypeStateEventDto(_organizationStructureTypeApplicationService.GetStateEvent(idObj, version));
+            var se = _organizationStructureTypeApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToOrganizationStructureTypeStateEventDto(se);
           } catch (Exception ex) { var response = OrganizationStructureTypesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

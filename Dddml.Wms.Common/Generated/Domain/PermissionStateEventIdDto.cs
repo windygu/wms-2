@@ -22,6 +22,7 @@ namespace Dddml.Wms.Domain
 
 		public PermissionStateEventIdDto(PermissionStateEventId val)
 		{
+			if (val == null) { throw new ArgumentNullException("val"); }
 			this._value = val;
 		}
 

@@ -22,6 +22,7 @@ namespace Dddml.Wms.Domain
 
 		public OrganizationStructureStateEventIdDto(OrganizationStructureStateEventId val)
 		{
+			if (val == null) { throw new ArgumentNullException("val"); }
 			this._value = val;
 		}
 

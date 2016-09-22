@@ -157,7 +157,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = DayPlanMvosControllerUtils.ParseIdString(id);
             var conv = new DayPlanMvoStateEventDtoConverter();
-            return conv.ToDayPlanMvoStateEventDto(_dayPlanMvoApplicationService.GetStateEvent(idObj, version));
+            var se = _dayPlanMvoApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToDayPlanMvoStateEventDto(se);
           } catch (Exception ex) { var response = DayPlanMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

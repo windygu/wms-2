@@ -180,7 +180,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new AttributeSetInstanceStateEventDtoConverter();
-            return conv.ToAttributeSetInstanceStateEventDto(_attributeSetInstanceApplicationService.GetStateEvent(idObj, version));
+            var se = _attributeSetInstanceApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToAttributeSetInstanceStateEventDto(se);
           } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

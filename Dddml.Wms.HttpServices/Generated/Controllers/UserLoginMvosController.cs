@@ -157,7 +157,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = UserLoginMvosControllerUtils.ParseIdString(id);
             var conv = new UserLoginMvoStateEventDtoConverter();
-            return conv.ToUserLoginMvoStateEventDto(_userLoginMvoApplicationService.GetStateEvent(idObj, version));
+            var se = _userLoginMvoApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToUserLoginMvoStateEventDto(se);
           } catch (Exception ex) { var response = UserLoginMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

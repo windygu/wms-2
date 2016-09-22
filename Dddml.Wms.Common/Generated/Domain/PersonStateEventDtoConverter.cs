@@ -43,8 +43,8 @@ namespace Dddml.Wms.Domain
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.BirthDate = e.BirthDate;
-            dto.Loves = new PersonalNameDto(e.Loves);
-            dto.EmergencyContact = new ContactDto(e.EmergencyContact);
+            dto.Loves = (e.Loves == null) ? null : new PersonalNameDto(e.Loves);
+            dto.EmergencyContact = (e.EmergencyContact == null) ? null : new ContactDto(e.EmergencyContact);
             dto.Active = e.Active;
             var yearPlanEvents = new List<YearPlanStateCreatedDto>();
             foreach (var ee in e.YearPlanEvents)
@@ -65,8 +65,8 @@ namespace Dddml.Wms.Domain
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.BirthDate = e.BirthDate;
-            dto.Loves = new PersonalNameDto(e.Loves);
-            dto.EmergencyContact = new ContactDto(e.EmergencyContact);
+            dto.Loves = (e.Loves == null) ? null : new PersonalNameDto(e.Loves);
+            dto.EmergencyContact = (e.EmergencyContact == null) ? null : new ContactDto(e.EmergencyContact);
             dto.Active = e.Active;
             dto.IsPropertyBirthDateRemoved = e.IsPropertyBirthDateRemoved;
             dto.IsPropertyLovesRemoved = e.IsPropertyLovesRemoved;

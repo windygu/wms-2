@@ -53,13 +53,33 @@ namespace Dddml.Wms.Domain
 
 		public virtual PersonalNameDto PersonLoves { get { return _personLoves; } set { _personLoves = value; } }
 
-		PersonalName IYearPlanMvoStateEvent.PersonLoves { get { return this.PersonLoves.ToPersonalName(); } set { PersonLoves = new PersonalNameDto(value); } }
+		PersonalName IYearPlanMvoStateEvent.PersonLoves
+		{ 
+			get 
+			{
+				return this.PersonLoves == null ? null : this.PersonLoves.ToPersonalName(); 
+			} 
+			set
+			{
+				if (value == null) { PersonLoves = null; } else { PersonLoves = new PersonalNameDto(value); }
+			} 
+		}
 
 		private ContactDto _personEmergencyContact = new ContactDto();
 
 		public virtual ContactDto PersonEmergencyContact { get { return _personEmergencyContact; } set { _personEmergencyContact = value; } }
 
-		Contact IYearPlanMvoStateEvent.PersonEmergencyContact { get { return this.PersonEmergencyContact.ToContact(); } set { PersonEmergencyContact = new ContactDto(value); } }
+		Contact IYearPlanMvoStateEvent.PersonEmergencyContact
+		{ 
+			get 
+			{
+				return this.PersonEmergencyContact == null ? null : this.PersonEmergencyContact.ToContact(); 
+			} 
+			set
+			{
+				if (value == null) { PersonEmergencyContact = null; } else { PersonEmergencyContact = new ContactDto(value); }
+			} 
+		}
 
 		public virtual string PersonCreatedBy { get; set; }
 
