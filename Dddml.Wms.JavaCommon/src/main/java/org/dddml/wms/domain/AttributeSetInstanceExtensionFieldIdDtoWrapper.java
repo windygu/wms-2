@@ -66,11 +66,5 @@ public class AttributeSetInstanceExtensionFieldIdDtoWrapper extends AttributeSet
         return value.equals(other.value);
     }
 
-    //@Override
-    //public int hashCode()
-    //{
-    //    return value.hashCode();
-    //}
-
 }
 

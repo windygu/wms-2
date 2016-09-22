@@ -53,8 +53,8 @@ public class AttributeValueIdDto
 
         AttributeValueIdDto other = (AttributeValueIdDto)obj;
         return true 
-            && (attributeId == other.attributeId || (attributeId != null && attributeId.equals(other.attributeId)))
-            && (value == other.value || (value != null && value.equals(other.value)))
+            && (getAttributeId() == other.getAttributeId() || (getAttributeId() != null && getAttributeId().equals(other.getAttributeId())))
+            && (getValue() == other.getValue() || (getValue() != null && getValue().equals(other.getValue())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class AttributeValueIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.attributeId != null) {
-            hash += 13 * this.attributeId.hashCode();
+        if (this.getAttributeId() != null) {
+            hash += 13 * this.getAttributeId().hashCode();
         }
-        if (this.value != null) {
-            hash += 13 * this.value.hashCode();
+        if (this.getValue() != null) {
+            hash += 13 * this.getValue().hashCode();
         }
         return hash;
     }

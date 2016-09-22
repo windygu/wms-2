@@ -53,8 +53,8 @@ public class PersonStateEventIdDto
 
         PersonStateEventIdDto other = (PersonStateEventIdDto)obj;
         return true 
-            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
-            && (version == other.version || (version != null && version.equals(other.version)))
+            && (getPersonalName() == other.getPersonalName() || (getPersonalName() != null && getPersonalName().equals(other.getPersonalName())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class PersonStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.personalName != null) {
-            hash += 13 * this.personalName.hashCode();
+        if (this.getPersonalName() != null) {
+            hash += 13 * this.getPersonalName().hashCode();
         }
-        if (this.version != null) {
-            hash += 13 * this.version.hashCode();
+        if (this.getVersion() != null) {
+            hash += 13 * this.getVersion().hashCode();
         }
         return hash;
     }

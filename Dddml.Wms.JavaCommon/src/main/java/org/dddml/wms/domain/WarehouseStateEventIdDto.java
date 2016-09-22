@@ -53,8 +53,8 @@ public class WarehouseStateEventIdDto
 
         WarehouseStateEventIdDto other = (WarehouseStateEventIdDto)obj;
         return true 
-            && (warehouseId == other.warehouseId || (warehouseId != null && warehouseId.equals(other.warehouseId)))
-            && (version == other.version || (version != null && version.equals(other.version)))
+            && (getWarehouseId() == other.getWarehouseId() || (getWarehouseId() != null && getWarehouseId().equals(other.getWarehouseId())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class WarehouseStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.warehouseId != null) {
-            hash += 13 * this.warehouseId.hashCode();
+        if (this.getWarehouseId() != null) {
+            hash += 13 * this.getWarehouseId().hashCode();
         }
-        if (this.version != null) {
-            hash += 13 * this.version.hashCode();
+        if (this.getVersion() != null) {
+            hash += 13 * this.getVersion().hashCode();
         }
         return hash;
     }

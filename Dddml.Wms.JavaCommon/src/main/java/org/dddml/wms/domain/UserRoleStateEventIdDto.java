@@ -66,9 +66,9 @@ public class UserRoleStateEventIdDto
 
         UserRoleStateEventIdDto other = (UserRoleStateEventIdDto)obj;
         return true 
-            && (userId == other.userId || (userId != null && userId.equals(other.userId)))
-            && (roleId == other.roleId || (roleId != null && roleId.equals(other.roleId)))
-            && (userVersion == other.userVersion || (userVersion != null && userVersion.equals(other.userVersion)))
+            && (getUserId() == other.getUserId() || (getUserId() != null && getUserId().equals(other.getUserId())))
+            && (getRoleId() == other.getRoleId() || (getRoleId() != null && getRoleId().equals(other.getRoleId())))
+            && (getUserVersion() == other.getUserVersion() || (getUserVersion() != null && getUserVersion().equals(other.getUserVersion())))
             ;
 
     }
@@ -77,14 +77,14 @@ public class UserRoleStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.userId != null) {
-            hash += 13 * this.userId.hashCode();
+        if (this.getUserId() != null) {
+            hash += 13 * this.getUserId().hashCode();
         }
-        if (this.roleId != null) {
-            hash += 13 * this.roleId.hashCode();
+        if (this.getRoleId() != null) {
+            hash += 13 * this.getRoleId().hashCode();
         }
-        if (this.userVersion != null) {
-            hash += 13 * this.userVersion.hashCode();
+        if (this.getUserVersion() != null) {
+            hash += 13 * this.getUserVersion().hashCode();
         }
         return hash;
     }

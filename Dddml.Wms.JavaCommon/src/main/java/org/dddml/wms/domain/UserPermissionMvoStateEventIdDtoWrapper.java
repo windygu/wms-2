@@ -66,11 +66,5 @@ public class UserPermissionMvoStateEventIdDtoWrapper extends UserPermissionMvoSt
         return value.equals(other.value);
     }
 
-    //@Override
-    //public int hashCode()
-    //{
-    //    return value.hashCode();
-    //}
-
 }
 

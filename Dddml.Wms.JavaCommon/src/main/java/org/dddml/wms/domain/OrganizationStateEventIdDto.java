@@ -53,8 +53,8 @@ public class OrganizationStateEventIdDto
 
         OrganizationStateEventIdDto other = (OrganizationStateEventIdDto)obj;
         return true 
-            && (organizationId == other.organizationId || (organizationId != null && organizationId.equals(other.organizationId)))
-            && (version == other.version || (version != null && version.equals(other.version)))
+            && (getOrganizationId() == other.getOrganizationId() || (getOrganizationId() != null && getOrganizationId().equals(other.getOrganizationId())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class OrganizationStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.organizationId != null) {
-            hash += 13 * this.organizationId.hashCode();
+        if (this.getOrganizationId() != null) {
+            hash += 13 * this.getOrganizationId().hashCode();
         }
-        if (this.version != null) {
-            hash += 13 * this.version.hashCode();
+        if (this.getVersion() != null) {
+            hash += 13 * this.getVersion().hashCode();
         }
         return hash;
     }

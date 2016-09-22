@@ -66,9 +66,9 @@ public class YearPlanStateEventIdDto
 
         YearPlanStateEventIdDto other = (YearPlanStateEventIdDto)obj;
         return true 
-            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
-            && (year == other.year || (year != null && year.equals(other.year)))
-            && (personVersion == other.personVersion || (personVersion != null && personVersion.equals(other.personVersion)))
+            && (getPersonalName() == other.getPersonalName() || (getPersonalName() != null && getPersonalName().equals(other.getPersonalName())))
+            && (getYear() == other.getYear() || (getYear() != null && getYear().equals(other.getYear())))
+            && (getPersonVersion() == other.getPersonVersion() || (getPersonVersion() != null && getPersonVersion().equals(other.getPersonVersion())))
             ;
 
     }
@@ -77,14 +77,14 @@ public class YearPlanStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.personalName != null) {
-            hash += 13 * this.personalName.hashCode();
+        if (this.getPersonalName() != null) {
+            hash += 13 * this.getPersonalName().hashCode();
         }
-        if (this.year != null) {
-            hash += 13 * this.year.hashCode();
+        if (this.getYear() != null) {
+            hash += 13 * this.getYear().hashCode();
         }
-        if (this.personVersion != null) {
-            hash += 13 * this.personVersion.hashCode();
+        if (this.getPersonVersion() != null) {
+            hash += 13 * this.getPersonVersion().hashCode();
         }
         return hash;
     }

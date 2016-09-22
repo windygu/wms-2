@@ -79,10 +79,10 @@ public class DayPlanIdDto
 
         DayPlanIdDto other = (DayPlanIdDto)obj;
         return true 
-            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
-            && (year == other.year || (year != null && year.equals(other.year)))
-            && (month == other.month || (month != null && month.equals(other.month)))
-            && (day == other.day || (day != null && day.equals(other.day)))
+            && (getPersonalName() == other.getPersonalName() || (getPersonalName() != null && getPersonalName().equals(other.getPersonalName())))
+            && (getYear() == other.getYear() || (getYear() != null && getYear().equals(other.getYear())))
+            && (getMonth() == other.getMonth() || (getMonth() != null && getMonth().equals(other.getMonth())))
+            && (getDay() == other.getDay() || (getDay() != null && getDay().equals(other.getDay())))
             ;
 
     }
@@ -91,17 +91,17 @@ public class DayPlanIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.personalName != null) {
-            hash += 13 * this.personalName.hashCode();
+        if (this.getPersonalName() != null) {
+            hash += 13 * this.getPersonalName().hashCode();
         }
-        if (this.year != null) {
-            hash += 13 * this.year.hashCode();
+        if (this.getYear() != null) {
+            hash += 13 * this.getYear().hashCode();
         }
-        if (this.month != null) {
-            hash += 13 * this.month.hashCode();
+        if (this.getMonth() != null) {
+            hash += 13 * this.getMonth().hashCode();
         }
-        if (this.day != null) {
-            hash += 13 * this.day.hashCode();
+        if (this.getDay() != null) {
+            hash += 13 * this.getDay().hashCode();
         }
         return hash;
     }

@@ -66,9 +66,9 @@ public class UserClaimStateEventIdDto
 
         UserClaimStateEventIdDto other = (UserClaimStateEventIdDto)obj;
         return true 
-            && (userId == other.userId || (userId != null && userId.equals(other.userId)))
-            && (claimId == other.claimId || (claimId != null && claimId.equals(other.claimId)))
-            && (userVersion == other.userVersion || (userVersion != null && userVersion.equals(other.userVersion)))
+            && (getUserId() == other.getUserId() || (getUserId() != null && getUserId().equals(other.getUserId())))
+            && (getClaimId() == other.getClaimId() || (getClaimId() != null && getClaimId().equals(other.getClaimId())))
+            && (getUserVersion() == other.getUserVersion() || (getUserVersion() != null && getUserVersion().equals(other.getUserVersion())))
             ;
 
     }
@@ -77,14 +77,14 @@ public class UserClaimStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.userId != null) {
-            hash += 13 * this.userId.hashCode();
+        if (this.getUserId() != null) {
+            hash += 13 * this.getUserId().hashCode();
         }
-        if (this.claimId != null) {
-            hash += 13 * this.claimId.hashCode();
+        if (this.getClaimId() != null) {
+            hash += 13 * this.getClaimId().hashCode();
         }
-        if (this.userVersion != null) {
-            hash += 13 * this.userVersion.hashCode();
+        if (this.getUserVersion() != null) {
+            hash += 13 * this.getUserVersion().hashCode();
         }
         return hash;
     }

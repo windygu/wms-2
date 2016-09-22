@@ -66,9 +66,9 @@ public class InOutLineStateEventIdDto
 
         InOutLineStateEventIdDto other = (InOutLineStateEventIdDto)obj;
         return true 
-            && (inOutDocumentNumber == other.inOutDocumentNumber || (inOutDocumentNumber != null && inOutDocumentNumber.equals(other.inOutDocumentNumber)))
-            && (skuId == other.skuId || (skuId != null && skuId.equals(other.skuId)))
-            && (inOutVersion == other.inOutVersion || (inOutVersion != null && inOutVersion.equals(other.inOutVersion)))
+            && (getInOutDocumentNumber() == other.getInOutDocumentNumber() || (getInOutDocumentNumber() != null && getInOutDocumentNumber().equals(other.getInOutDocumentNumber())))
+            && (getSkuId() == other.getSkuId() || (getSkuId() != null && getSkuId().equals(other.getSkuId())))
+            && (getInOutVersion() == other.getInOutVersion() || (getInOutVersion() != null && getInOutVersion().equals(other.getInOutVersion())))
             ;
 
     }
@@ -77,14 +77,14 @@ public class InOutLineStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.inOutDocumentNumber != null) {
-            hash += 13 * this.inOutDocumentNumber.hashCode();
+        if (this.getInOutDocumentNumber() != null) {
+            hash += 13 * this.getInOutDocumentNumber().hashCode();
         }
-        if (this.skuId != null) {
-            hash += 13 * this.skuId.hashCode();
+        if (this.getSkuId() != null) {
+            hash += 13 * this.getSkuId().hashCode();
         }
-        if (this.inOutVersion != null) {
-            hash += 13 * this.inOutVersion.hashCode();
+        if (this.getInOutVersion() != null) {
+            hash += 13 * this.getInOutVersion().hashCode();
         }
         return hash;
     }

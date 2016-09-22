@@ -53,8 +53,8 @@ public class InOutStateEventIdDto
 
         InOutStateEventIdDto other = (InOutStateEventIdDto)obj;
         return true 
-            && (documentNumber == other.documentNumber || (documentNumber != null && documentNumber.equals(other.documentNumber)))
-            && (version == other.version || (version != null && version.equals(other.version)))
+            && (getDocumentNumber() == other.getDocumentNumber() || (getDocumentNumber() != null && getDocumentNumber().equals(other.getDocumentNumber())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class InOutStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.documentNumber != null) {
-            hash += 13 * this.documentNumber.hashCode();
+        if (this.getDocumentNumber() != null) {
+            hash += 13 * this.getDocumentNumber().hashCode();
         }
-        if (this.version != null) {
-            hash += 13 * this.version.hashCode();
+        if (this.getVersion() != null) {
+            hash += 13 * this.getVersion().hashCode();
         }
         return hash;
     }

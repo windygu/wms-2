@@ -53,8 +53,8 @@ public class DayPlanMvoStateEventIdDto
 
         DayPlanMvoStateEventIdDto other = (DayPlanMvoStateEventIdDto)obj;
         return true 
-            && (dayPlanId == other.dayPlanId || (dayPlanId != null && dayPlanId.equals(other.dayPlanId)))
-            && (personVersion == other.personVersion || (personVersion != null && personVersion.equals(other.personVersion)))
+            && (getDayPlanId() == other.getDayPlanId() || (getDayPlanId() != null && getDayPlanId().equals(other.getDayPlanId())))
+            && (getPersonVersion() == other.getPersonVersion() || (getPersonVersion() != null && getPersonVersion().equals(other.getPersonVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class DayPlanMvoStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.dayPlanId != null) {
-            hash += 13 * this.dayPlanId.hashCode();
+        if (this.getDayPlanId() != null) {
+            hash += 13 * this.getDayPlanId().hashCode();
         }
-        if (this.personVersion != null) {
-            hash += 13 * this.personVersion.hashCode();
+        if (this.getPersonVersion() != null) {
+            hash += 13 * this.getPersonVersion().hashCode();
         }
         return hash;
     }

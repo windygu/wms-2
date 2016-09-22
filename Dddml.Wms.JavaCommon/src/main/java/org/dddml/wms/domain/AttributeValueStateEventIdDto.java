@@ -66,9 +66,9 @@ public class AttributeValueStateEventIdDto
 
         AttributeValueStateEventIdDto other = (AttributeValueStateEventIdDto)obj;
         return true 
-            && (attributeId == other.attributeId || (attributeId != null && attributeId.equals(other.attributeId)))
-            && (value == other.value || (value != null && value.equals(other.value)))
-            && (attributeVersion == other.attributeVersion || (attributeVersion != null && attributeVersion.equals(other.attributeVersion)))
+            && (getAttributeId() == other.getAttributeId() || (getAttributeId() != null && getAttributeId().equals(other.getAttributeId())))
+            && (getValue() == other.getValue() || (getValue() != null && getValue().equals(other.getValue())))
+            && (getAttributeVersion() == other.getAttributeVersion() || (getAttributeVersion() != null && getAttributeVersion().equals(other.getAttributeVersion())))
             ;
 
     }
@@ -77,14 +77,14 @@ public class AttributeValueStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.attributeId != null) {
-            hash += 13 * this.attributeId.hashCode();
+        if (this.getAttributeId() != null) {
+            hash += 13 * this.getAttributeId().hashCode();
         }
-        if (this.value != null) {
-            hash += 13 * this.value.hashCode();
+        if (this.getValue() != null) {
+            hash += 13 * this.getValue().hashCode();
         }
-        if (this.attributeVersion != null) {
-            hash += 13 * this.attributeVersion.hashCode();
+        if (this.getAttributeVersion() != null) {
+            hash += 13 * this.getAttributeVersion().hashCode();
         }
         return hash;
     }

@@ -53,8 +53,8 @@ public class PermissionStateEventIdDto
 
         PermissionStateEventIdDto other = (PermissionStateEventIdDto)obj;
         return true 
-            && (permissionId == other.permissionId || (permissionId != null && permissionId.equals(other.permissionId)))
-            && (version == other.version || (version != null && version.equals(other.version)))
+            && (getPermissionId() == other.getPermissionId() || (getPermissionId() != null && getPermissionId().equals(other.getPermissionId())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class PermissionStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.permissionId != null) {
-            hash += 13 * this.permissionId.hashCode();
+        if (this.getPermissionId() != null) {
+            hash += 13 * this.getPermissionId().hashCode();
         }
-        if (this.version != null) {
-            hash += 13 * this.version.hashCode();
+        if (this.getVersion() != null) {
+            hash += 13 * this.getVersion().hashCode();
         }
         return hash;
     }

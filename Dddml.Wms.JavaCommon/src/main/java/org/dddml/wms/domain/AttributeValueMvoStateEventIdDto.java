@@ -53,8 +53,8 @@ public class AttributeValueMvoStateEventIdDto
 
         AttributeValueMvoStateEventIdDto other = (AttributeValueMvoStateEventIdDto)obj;
         return true 
-            && (attributeValueId == other.attributeValueId || (attributeValueId != null && attributeValueId.equals(other.attributeValueId)))
-            && (attributeVersion == other.attributeVersion || (attributeVersion != null && attributeVersion.equals(other.attributeVersion)))
+            && (getAttributeValueId() == other.getAttributeValueId() || (getAttributeValueId() != null && getAttributeValueId().equals(other.getAttributeValueId())))
+            && (getAttributeVersion() == other.getAttributeVersion() || (getAttributeVersion() != null && getAttributeVersion().equals(other.getAttributeVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class AttributeValueMvoStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.attributeValueId != null) {
-            hash += 13 * this.attributeValueId.hashCode();
+        if (this.getAttributeValueId() != null) {
+            hash += 13 * this.getAttributeValueId().hashCode();
         }
-        if (this.attributeVersion != null) {
-            hash += 13 * this.attributeVersion.hashCode();
+        if (this.getAttributeVersion() != null) {
+            hash += 13 * this.getAttributeVersion().hashCode();
         }
         return hash;
     }

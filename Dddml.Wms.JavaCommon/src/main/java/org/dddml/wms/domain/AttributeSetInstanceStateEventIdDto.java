@@ -53,8 +53,8 @@ public class AttributeSetInstanceStateEventIdDto
 
         AttributeSetInstanceStateEventIdDto other = (AttributeSetInstanceStateEventIdDto)obj;
         return true 
-            && (attributeSetInstanceId == other.attributeSetInstanceId || (attributeSetInstanceId != null && attributeSetInstanceId.equals(other.attributeSetInstanceId)))
-            && (version == other.version || (version != null && version.equals(other.version)))
+            && (getAttributeSetInstanceId() == other.getAttributeSetInstanceId() || (getAttributeSetInstanceId() != null && getAttributeSetInstanceId().equals(other.getAttributeSetInstanceId())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class AttributeSetInstanceStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.attributeSetInstanceId != null) {
-            hash += 13 * this.attributeSetInstanceId.hashCode();
+        if (this.getAttributeSetInstanceId() != null) {
+            hash += 13 * this.getAttributeSetInstanceId().hashCode();
         }
-        if (this.version != null) {
-            hash += 13 * this.version.hashCode();
+        if (this.getVersion() != null) {
+            hash += 13 * this.getVersion().hashCode();
         }
         return hash;
     }

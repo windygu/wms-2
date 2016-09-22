@@ -53,8 +53,8 @@ public class UserLoginIdDto
 
         UserLoginIdDto other = (UserLoginIdDto)obj;
         return true 
-            && (userId == other.userId || (userId != null && userId.equals(other.userId)))
-            && (loginKey == other.loginKey || (loginKey != null && loginKey.equals(other.loginKey)))
+            && (getUserId() == other.getUserId() || (getUserId() != null && getUserId().equals(other.getUserId())))
+            && (getLoginKey() == other.getLoginKey() || (getLoginKey() != null && getLoginKey().equals(other.getLoginKey())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class UserLoginIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.userId != null) {
-            hash += 13 * this.userId.hashCode();
+        if (this.getUserId() != null) {
+            hash += 13 * this.getUserId().hashCode();
         }
-        if (this.loginKey != null) {
-            hash += 13 * this.loginKey.hashCode();
+        if (this.getLoginKey() != null) {
+            hash += 13 * this.getLoginKey().hashCode();
         }
         return hash;
     }

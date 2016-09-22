@@ -66,9 +66,9 @@ public class AttributeSetInstanceExtensionFieldStateEventIdDto
 
         AttributeSetInstanceExtensionFieldStateEventIdDto other = (AttributeSetInstanceExtensionFieldStateEventIdDto)obj;
         return true 
-            && (groupId == other.groupId || (groupId != null && groupId.equals(other.groupId)))
-            && (index == other.index || (index != null && index.equals(other.index)))
-            && (attributeSetInstanceExtensionFieldGroupVersion == other.attributeSetInstanceExtensionFieldGroupVersion || (attributeSetInstanceExtensionFieldGroupVersion != null && attributeSetInstanceExtensionFieldGroupVersion.equals(other.attributeSetInstanceExtensionFieldGroupVersion)))
+            && (getGroupId() == other.getGroupId() || (getGroupId() != null && getGroupId().equals(other.getGroupId())))
+            && (getIndex() == other.getIndex() || (getIndex() != null && getIndex().equals(other.getIndex())))
+            && (getAttributeSetInstanceExtensionFieldGroupVersion() == other.getAttributeSetInstanceExtensionFieldGroupVersion() || (getAttributeSetInstanceExtensionFieldGroupVersion() != null && getAttributeSetInstanceExtensionFieldGroupVersion().equals(other.getAttributeSetInstanceExtensionFieldGroupVersion())))
             ;
 
     }
@@ -77,14 +77,14 @@ public class AttributeSetInstanceExtensionFieldStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.groupId != null) {
-            hash += 13 * this.groupId.hashCode();
+        if (this.getGroupId() != null) {
+            hash += 13 * this.getGroupId().hashCode();
         }
-        if (this.index != null) {
-            hash += 13 * this.index.hashCode();
+        if (this.getIndex() != null) {
+            hash += 13 * this.getIndex().hashCode();
         }
-        if (this.attributeSetInstanceExtensionFieldGroupVersion != null) {
-            hash += 13 * this.attributeSetInstanceExtensionFieldGroupVersion.hashCode();
+        if (this.getAttributeSetInstanceExtensionFieldGroupVersion() != null) {
+            hash += 13 * this.getAttributeSetInstanceExtensionFieldGroupVersion().hashCode();
         }
         return hash;
     }

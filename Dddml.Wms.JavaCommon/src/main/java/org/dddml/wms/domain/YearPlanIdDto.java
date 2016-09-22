@@ -53,8 +53,8 @@ public class YearPlanIdDto
 
         YearPlanIdDto other = (YearPlanIdDto)obj;
         return true 
-            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
-            && (year == other.year || (year != null && year.equals(other.year)))
+            && (getPersonalName() == other.getPersonalName() || (getPersonalName() != null && getPersonalName().equals(other.getPersonalName())))
+            && (getYear() == other.getYear() || (getYear() != null && getYear().equals(other.getYear())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class YearPlanIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.personalName != null) {
-            hash += 13 * this.personalName.hashCode();
+        if (this.getPersonalName() != null) {
+            hash += 13 * this.getPersonalName().hashCode();
         }
-        if (this.year != null) {
-            hash += 13 * this.year.hashCode();
+        if (this.getYear() != null) {
+            hash += 13 * this.getYear().hashCode();
         }
         return hash;
     }

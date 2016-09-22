@@ -53,8 +53,8 @@ public class MonthPlanMvoStateEventIdDto
 
         MonthPlanMvoStateEventIdDto other = (MonthPlanMvoStateEventIdDto)obj;
         return true 
-            && (monthPlanId == other.monthPlanId || (monthPlanId != null && monthPlanId.equals(other.monthPlanId)))
-            && (personVersion == other.personVersion || (personVersion != null && personVersion.equals(other.personVersion)))
+            && (getMonthPlanId() == other.getMonthPlanId() || (getMonthPlanId() != null && getMonthPlanId().equals(other.getMonthPlanId())))
+            && (getPersonVersion() == other.getPersonVersion() || (getPersonVersion() != null && getPersonVersion().equals(other.getPersonVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class MonthPlanMvoStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.monthPlanId != null) {
-            hash += 13 * this.monthPlanId.hashCode();
+        if (this.getMonthPlanId() != null) {
+            hash += 13 * this.getMonthPlanId().hashCode();
         }
-        if (this.personVersion != null) {
-            hash += 13 * this.personVersion.hashCode();
+        if (this.getPersonVersion() != null) {
+            hash += 13 * this.getPersonVersion().hashCode();
         }
         return hash;
     }

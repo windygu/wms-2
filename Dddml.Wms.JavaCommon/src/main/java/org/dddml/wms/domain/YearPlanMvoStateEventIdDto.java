@@ -53,8 +53,8 @@ public class YearPlanMvoStateEventIdDto
 
         YearPlanMvoStateEventIdDto other = (YearPlanMvoStateEventIdDto)obj;
         return true 
-            && (yearPlanId == other.yearPlanId || (yearPlanId != null && yearPlanId.equals(other.yearPlanId)))
-            && (personVersion == other.personVersion || (personVersion != null && personVersion.equals(other.personVersion)))
+            && (getYearPlanId() == other.getYearPlanId() || (getYearPlanId() != null && getYearPlanId().equals(other.getYearPlanId())))
+            && (getPersonVersion() == other.getPersonVersion() || (getPersonVersion() != null && getPersonVersion().equals(other.getPersonVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class YearPlanMvoStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.yearPlanId != null) {
-            hash += 13 * this.yearPlanId.hashCode();
+        if (this.getYearPlanId() != null) {
+            hash += 13 * this.getYearPlanId().hashCode();
         }
-        if (this.personVersion != null) {
-            hash += 13 * this.personVersion.hashCode();
+        if (this.getPersonVersion() != null) {
+            hash += 13 * this.getPersonVersion().hashCode();
         }
         return hash;
     }

@@ -66,11 +66,5 @@ public class RolePermissionIdDtoWrapper extends RolePermissionIdDto
         return value.equals(other.value);
     }
 
-    //@Override
-    //public int hashCode()
-    //{
-    //    return value.hashCode();
-    //}
-
 }
 

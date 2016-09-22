@@ -53,8 +53,8 @@ public class PersonalNameDto
 
         PersonalNameDto other = (PersonalNameDto)obj;
         return true 
-            && (firstName == other.firstName || (firstName != null && firstName.equals(other.firstName)))
-            && (lastName == other.lastName || (lastName != null && lastName.equals(other.lastName)))
+            && (getFirstName() == other.getFirstName() || (getFirstName() != null && getFirstName().equals(other.getFirstName())))
+            && (getLastName() == other.getLastName() || (getLastName() != null && getLastName().equals(other.getLastName())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class PersonalNameDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.firstName != null) {
-            hash += 13 * this.firstName.hashCode();
+        if (this.getFirstName() != null) {
+            hash += 13 * this.getFirstName().hashCode();
         }
-        if (this.lastName != null) {
-            hash += 13 * this.lastName.hashCode();
+        if (this.getLastName() != null) {
+            hash += 13 * this.getLastName().hashCode();
         }
         return hash;
     }

@@ -78,11 +78,5 @@ public class ContactDtoWrapper extends ContactDto
         return value.equals(other.value);
     }
 
-    //@Override
-    //public int hashCode()
-    //{
-    //    return value.hashCode();
-    //}
-
 }
 

@@ -66,9 +66,9 @@ public class UserLoginStateEventIdDto
 
         UserLoginStateEventIdDto other = (UserLoginStateEventIdDto)obj;
         return true 
-            && (userId == other.userId || (userId != null && userId.equals(other.userId)))
-            && (loginKey == other.loginKey || (loginKey != null && loginKey.equals(other.loginKey)))
-            && (userVersion == other.userVersion || (userVersion != null && userVersion.equals(other.userVersion)))
+            && (getUserId() == other.getUserId() || (getUserId() != null && getUserId().equals(other.getUserId())))
+            && (getLoginKey() == other.getLoginKey() || (getLoginKey() != null && getLoginKey().equals(other.getLoginKey())))
+            && (getUserVersion() == other.getUserVersion() || (getUserVersion() != null && getUserVersion().equals(other.getUserVersion())))
             ;
 
     }
@@ -77,14 +77,14 @@ public class UserLoginStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.userId != null) {
-            hash += 13 * this.userId.hashCode();
+        if (this.getUserId() != null) {
+            hash += 13 * this.getUserId().hashCode();
         }
-        if (this.loginKey != null) {
-            hash += 13 * this.loginKey.hashCode();
+        if (this.getLoginKey() != null) {
+            hash += 13 * this.getLoginKey().hashCode();
         }
-        if (this.userVersion != null) {
-            hash += 13 * this.userVersion.hashCode();
+        if (this.getUserVersion() != null) {
+            hash += 13 * this.getUserVersion().hashCode();
         }
         return hash;
     }

@@ -66,9 +66,9 @@ public class OrganizationStructureIdDto
 
         OrganizationStructureIdDto other = (OrganizationStructureIdDto)obj;
         return true 
-            && (organizationStructureTypeId == other.organizationStructureTypeId || (organizationStructureTypeId != null && organizationStructureTypeId.equals(other.organizationStructureTypeId)))
-            && (parentId == other.parentId || (parentId != null && parentId.equals(other.parentId)))
-            && (subsidiaryId == other.subsidiaryId || (subsidiaryId != null && subsidiaryId.equals(other.subsidiaryId)))
+            && (getOrganizationStructureTypeId() == other.getOrganizationStructureTypeId() || (getOrganizationStructureTypeId() != null && getOrganizationStructureTypeId().equals(other.getOrganizationStructureTypeId())))
+            && (getParentId() == other.getParentId() || (getParentId() != null && getParentId().equals(other.getParentId())))
+            && (getSubsidiaryId() == other.getSubsidiaryId() || (getSubsidiaryId() != null && getSubsidiaryId().equals(other.getSubsidiaryId())))
             ;
 
     }
@@ -77,14 +77,14 @@ public class OrganizationStructureIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.organizationStructureTypeId != null) {
-            hash += 13 * this.organizationStructureTypeId.hashCode();
+        if (this.getOrganizationStructureTypeId() != null) {
+            hash += 13 * this.getOrganizationStructureTypeId().hashCode();
         }
-        if (this.parentId != null) {
-            hash += 13 * this.parentId.hashCode();
+        if (this.getParentId() != null) {
+            hash += 13 * this.getParentId().hashCode();
         }
-        if (this.subsidiaryId != null) {
-            hash += 13 * this.subsidiaryId.hashCode();
+        if (this.getSubsidiaryId() != null) {
+            hash += 13 * this.getSubsidiaryId().hashCode();
         }
         return hash;
     }

@@ -53,8 +53,8 @@ public class InOutLineMvoStateEventIdDto
 
         InOutLineMvoStateEventIdDto other = (InOutLineMvoStateEventIdDto)obj;
         return true 
-            && (inOutLineId == other.inOutLineId || (inOutLineId != null && inOutLineId.equals(other.inOutLineId)))
-            && (inOutVersion == other.inOutVersion || (inOutVersion != null && inOutVersion.equals(other.inOutVersion)))
+            && (getInOutLineId() == other.getInOutLineId() || (getInOutLineId() != null && getInOutLineId().equals(other.getInOutLineId())))
+            && (getInOutVersion() == other.getInOutVersion() || (getInOutVersion() != null && getInOutVersion().equals(other.getInOutVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class InOutLineMvoStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.inOutLineId != null) {
-            hash += 13 * this.inOutLineId.hashCode();
+        if (this.getInOutLineId() != null) {
+            hash += 13 * this.getInOutLineId().hashCode();
         }
-        if (this.inOutVersion != null) {
-            hash += 13 * this.inOutVersion.hashCode();
+        if (this.getInOutVersion() != null) {
+            hash += 13 * this.getInOutVersion().hashCode();
         }
         return hash;
     }

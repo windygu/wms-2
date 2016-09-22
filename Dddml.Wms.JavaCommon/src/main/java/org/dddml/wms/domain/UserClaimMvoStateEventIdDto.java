@@ -53,8 +53,8 @@ public class UserClaimMvoStateEventIdDto
 
         UserClaimMvoStateEventIdDto other = (UserClaimMvoStateEventIdDto)obj;
         return true 
-            && (userClaimId == other.userClaimId || (userClaimId != null && userClaimId.equals(other.userClaimId)))
-            && (userVersion == other.userVersion || (userVersion != null && userVersion.equals(other.userVersion)))
+            && (getUserClaimId() == other.getUserClaimId() || (getUserClaimId() != null && getUserClaimId().equals(other.getUserClaimId())))
+            && (getUserVersion() == other.getUserVersion() || (getUserVersion() != null && getUserVersion().equals(other.getUserVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class UserClaimMvoStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.userClaimId != null) {
-            hash += 13 * this.userClaimId.hashCode();
+        if (this.getUserClaimId() != null) {
+            hash += 13 * this.getUserClaimId().hashCode();
         }
-        if (this.userVersion != null) {
-            hash += 13 * this.userVersion.hashCode();
+        if (this.getUserVersion() != null) {
+            hash += 13 * this.getUserVersion().hashCode();
         }
         return hash;
     }

@@ -53,8 +53,8 @@ public class UserRoleMvoStateEventIdDto
 
         UserRoleMvoStateEventIdDto other = (UserRoleMvoStateEventIdDto)obj;
         return true 
-            && (userRoleId == other.userRoleId || (userRoleId != null && userRoleId.equals(other.userRoleId)))
-            && (userVersion == other.userVersion || (userVersion != null && userVersion.equals(other.userVersion)))
+            && (getUserRoleId() == other.getUserRoleId() || (getUserRoleId() != null && getUserRoleId().equals(other.getUserRoleId())))
+            && (getUserVersion() == other.getUserVersion() || (getUserVersion() != null && getUserVersion().equals(other.getUserVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class UserRoleMvoStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.userRoleId != null) {
-            hash += 13 * this.userRoleId.hashCode();
+        if (this.getUserRoleId() != null) {
+            hash += 13 * this.getUserRoleId().hashCode();
         }
-        if (this.userVersion != null) {
-            hash += 13 * this.userVersion.hashCode();
+        if (this.getUserVersion() != null) {
+            hash += 13 * this.getUserVersion().hashCode();
         }
         return hash;
     }

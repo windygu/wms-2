@@ -66,11 +66,5 @@ public class RoleStateEventIdDtoWrapper extends RoleStateEventIdDto
         return value.equals(other.value);
     }
 
-    //@Override
-    //public int hashCode()
-    //{
-    //    return value.hashCode();
-    //}
-
 }
 

@@ -53,8 +53,8 @@ public class UserLoginMvoStateEventIdDto
 
         UserLoginMvoStateEventIdDto other = (UserLoginMvoStateEventIdDto)obj;
         return true 
-            && (userLoginId == other.userLoginId || (userLoginId != null && userLoginId.equals(other.userLoginId)))
-            && (userVersion == other.userVersion || (userVersion != null && userVersion.equals(other.userVersion)))
+            && (getUserLoginId() == other.getUserLoginId() || (getUserLoginId() != null && getUserLoginId().equals(other.getUserLoginId())))
+            && (getUserVersion() == other.getUserVersion() || (getUserVersion() != null && getUserVersion().equals(other.getUserVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class UserLoginMvoStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.userLoginId != null) {
-            hash += 13 * this.userLoginId.hashCode();
+        if (this.getUserLoginId() != null) {
+            hash += 13 * this.getUserLoginId().hashCode();
         }
-        if (this.userVersion != null) {
-            hash += 13 * this.userVersion.hashCode();
+        if (this.getUserVersion() != null) {
+            hash += 13 * this.getUserVersion().hashCode();
         }
         return hash;
     }

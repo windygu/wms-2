@@ -53,8 +53,8 @@ public class UserPermissionIdDto
 
         UserPermissionIdDto other = (UserPermissionIdDto)obj;
         return true 
-            && (userId == other.userId || (userId != null && userId.equals(other.userId)))
-            && (permissionId == other.permissionId || (permissionId != null && permissionId.equals(other.permissionId)))
+            && (getUserId() == other.getUserId() || (getUserId() != null && getUserId().equals(other.getUserId())))
+            && (getPermissionId() == other.getPermissionId() || (getPermissionId() != null && getPermissionId().equals(other.getPermissionId())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class UserPermissionIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.userId != null) {
-            hash += 13 * this.userId.hashCode();
+        if (this.getUserId() != null) {
+            hash += 13 * this.getUserId().hashCode();
         }
-        if (this.permissionId != null) {
-            hash += 13 * this.permissionId.hashCode();
+        if (this.getPermissionId() != null) {
+            hash += 13 * this.getPermissionId().hashCode();
         }
         return hash;
     }

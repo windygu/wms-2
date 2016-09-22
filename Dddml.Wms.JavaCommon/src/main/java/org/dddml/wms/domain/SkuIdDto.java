@@ -53,8 +53,8 @@ public class SkuIdDto
 
         SkuIdDto other = (SkuIdDto)obj;
         return true 
-            && (productId == other.productId || (productId != null && productId.equals(other.productId)))
-            && (attributeSetInstanceId == other.attributeSetInstanceId || (attributeSetInstanceId != null && attributeSetInstanceId.equals(other.attributeSetInstanceId)))
+            && (getProductId() == other.getProductId() || (getProductId() != null && getProductId().equals(other.getProductId())))
+            && (getAttributeSetInstanceId() == other.getAttributeSetInstanceId() || (getAttributeSetInstanceId() != null && getAttributeSetInstanceId().equals(other.getAttributeSetInstanceId())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class SkuIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.productId != null) {
-            hash += 13 * this.productId.hashCode();
+        if (this.getProductId() != null) {
+            hash += 13 * this.getProductId().hashCode();
         }
-        if (this.attributeSetInstanceId != null) {
-            hash += 13 * this.attributeSetInstanceId.hashCode();
+        if (this.getAttributeSetInstanceId() != null) {
+            hash += 13 * this.getAttributeSetInstanceId().hashCode();
         }
         return hash;
     }

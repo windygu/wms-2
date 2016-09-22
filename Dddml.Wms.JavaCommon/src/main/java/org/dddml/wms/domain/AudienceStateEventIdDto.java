@@ -53,8 +53,8 @@ public class AudienceStateEventIdDto
 
         AudienceStateEventIdDto other = (AudienceStateEventIdDto)obj;
         return true 
-            && (clientId == other.clientId || (clientId != null && clientId.equals(other.clientId)))
-            && (version == other.version || (version != null && version.equals(other.version)))
+            && (getClientId() == other.getClientId() || (getClientId() != null && getClientId().equals(other.getClientId())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class AudienceStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.clientId != null) {
-            hash += 13 * this.clientId.hashCode();
+        if (this.getClientId() != null) {
+            hash += 13 * this.getClientId().hashCode();
         }
-        if (this.version != null) {
-            hash += 13 * this.version.hashCode();
+        if (this.getVersion() != null) {
+            hash += 13 * this.getVersion().hashCode();
         }
         return hash;
     }

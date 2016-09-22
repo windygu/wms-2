@@ -53,8 +53,8 @@ public class LocatorStateEventIdDto
 
         LocatorStateEventIdDto other = (LocatorStateEventIdDto)obj;
         return true 
-            && (locatorId == other.locatorId || (locatorId != null && locatorId.equals(other.locatorId)))
-            && (version == other.version || (version != null && version.equals(other.version)))
+            && (getLocatorId() == other.getLocatorId() || (getLocatorId() != null && getLocatorId().equals(other.getLocatorId())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class LocatorStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.locatorId != null) {
-            hash += 13 * this.locatorId.hashCode();
+        if (this.getLocatorId() != null) {
+            hash += 13 * this.getLocatorId().hashCode();
         }
-        if (this.version != null) {
-            hash += 13 * this.version.hashCode();
+        if (this.getVersion() != null) {
+            hash += 13 * this.getVersion().hashCode();
         }
         return hash;
     }

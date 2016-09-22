@@ -53,8 +53,8 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventIdDto
 
         AttributeSetInstanceExtensionFieldGroupStateEventIdDto other = (AttributeSetInstanceExtensionFieldGroupStateEventIdDto)obj;
         return true 
-            && (id == other.id || (id != null && id.equals(other.id)))
-            && (version == other.version || (version != null && version.equals(other.version)))
+            && (getId() == other.getId() || (getId() != null && getId().equals(other.getId())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.id != null) {
-            hash += 13 * this.id.hashCode();
+        if (this.getId() != null) {
+            hash += 13 * this.getId().hashCode();
         }
-        if (this.version != null) {
-            hash += 13 * this.version.hashCode();
+        if (this.getVersion() != null) {
+            hash += 13 * this.getVersion().hashCode();
         }
         return hash;
     }

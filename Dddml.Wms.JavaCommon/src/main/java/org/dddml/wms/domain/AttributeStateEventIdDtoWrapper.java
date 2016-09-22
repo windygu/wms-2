@@ -66,11 +66,5 @@ public class AttributeStateEventIdDtoWrapper extends AttributeStateEventIdDto
         return value.equals(other.value);
     }
 
-    //@Override
-    //public int hashCode()
-    //{
-    //    return value.hashCode();
-    //}
-
 }
 

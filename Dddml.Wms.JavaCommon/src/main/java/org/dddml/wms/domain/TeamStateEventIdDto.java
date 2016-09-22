@@ -53,8 +53,8 @@ public class TeamStateEventIdDto
 
         TeamStateEventIdDto other = (TeamStateEventIdDto)obj;
         return true 
-            && (teamName == other.teamName || (teamName != null && teamName.equals(other.teamName)))
-            && (version == other.version || (version != null && version.equals(other.version)))
+            && (getTeamName() == other.getTeamName() || (getTeamName() != null && getTeamName().equals(other.getTeamName())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class TeamStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.teamName != null) {
-            hash += 13 * this.teamName.hashCode();
+        if (this.getTeamName() != null) {
+            hash += 13 * this.getTeamName().hashCode();
         }
-        if (this.version != null) {
-            hash += 13 * this.version.hashCode();
+        if (this.getVersion() != null) {
+            hash += 13 * this.getVersion().hashCode();
         }
         return hash;
     }

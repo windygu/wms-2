@@ -66,9 +66,9 @@ public class ContactDto
 
         ContactDto other = (ContactDto)obj;
         return true 
-            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
-            && (phoneNumber == other.phoneNumber || (phoneNumber != null && phoneNumber.equals(other.phoneNumber)))
-            && (address == other.address || (address != null && address.equals(other.address)))
+            && (getPersonalName() == other.getPersonalName() || (getPersonalName() != null && getPersonalName().equals(other.getPersonalName())))
+            && (getPhoneNumber() == other.getPhoneNumber() || (getPhoneNumber() != null && getPhoneNumber().equals(other.getPhoneNumber())))
+            && (getAddress() == other.getAddress() || (getAddress() != null && getAddress().equals(other.getAddress())))
             ;
 
     }
@@ -77,14 +77,14 @@ public class ContactDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.personalName != null) {
-            hash += 13 * this.personalName.hashCode();
+        if (this.getPersonalName() != null) {
+            hash += 13 * this.getPersonalName().hashCode();
         }
-        if (this.phoneNumber != null) {
-            hash += 13 * this.phoneNumber.hashCode();
+        if (this.getPhoneNumber() != null) {
+            hash += 13 * this.getPhoneNumber().hashCode();
         }
-        if (this.address != null) {
-            hash += 13 * this.address.hashCode();
+        if (this.getAddress() != null) {
+            hash += 13 * this.getAddress().hashCode();
         }
         return hash;
     }

@@ -53,8 +53,8 @@ public class UserPermissionMvoStateEventIdDto
 
         UserPermissionMvoStateEventIdDto other = (UserPermissionMvoStateEventIdDto)obj;
         return true 
-            && (userPermissionId == other.userPermissionId || (userPermissionId != null && userPermissionId.equals(other.userPermissionId)))
-            && (userVersion == other.userVersion || (userVersion != null && userVersion.equals(other.userVersion)))
+            && (getUserPermissionId() == other.getUserPermissionId() || (getUserPermissionId() != null && getUserPermissionId().equals(other.getUserPermissionId())))
+            && (getUserVersion() == other.getUserVersion() || (getUserVersion() != null && getUserVersion().equals(other.getUserVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class UserPermissionMvoStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.userPermissionId != null) {
-            hash += 13 * this.userPermissionId.hashCode();
+        if (this.getUserPermissionId() != null) {
+            hash += 13 * this.getUserPermissionId().hashCode();
         }
-        if (this.userVersion != null) {
-            hash += 13 * this.userVersion.hashCode();
+        if (this.getUserVersion() != null) {
+            hash += 13 * this.getUserVersion().hashCode();
         }
         return hash;
     }

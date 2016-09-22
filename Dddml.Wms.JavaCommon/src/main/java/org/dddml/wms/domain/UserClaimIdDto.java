@@ -53,8 +53,8 @@ public class UserClaimIdDto
 
         UserClaimIdDto other = (UserClaimIdDto)obj;
         return true 
-            && (userId == other.userId || (userId != null && userId.equals(other.userId)))
-            && (claimId == other.claimId || (claimId != null && claimId.equals(other.claimId)))
+            && (getUserId() == other.getUserId() || (getUserId() != null && getUserId().equals(other.getUserId())))
+            && (getClaimId() == other.getClaimId() || (getClaimId() != null && getClaimId().equals(other.getClaimId())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class UserClaimIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.userId != null) {
-            hash += 13 * this.userId.hashCode();
+        if (this.getUserId() != null) {
+            hash += 13 * this.getUserId().hashCode();
         }
-        if (this.claimId != null) {
-            hash += 13 * this.claimId.hashCode();
+        if (this.getClaimId() != null) {
+            hash += 13 * this.getClaimId().hashCode();
         }
         return hash;
     }

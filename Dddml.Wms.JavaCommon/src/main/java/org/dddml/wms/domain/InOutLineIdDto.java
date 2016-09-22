@@ -53,8 +53,8 @@ public class InOutLineIdDto
 
         InOutLineIdDto other = (InOutLineIdDto)obj;
         return true 
-            && (inOutDocumentNumber == other.inOutDocumentNumber || (inOutDocumentNumber != null && inOutDocumentNumber.equals(other.inOutDocumentNumber)))
-            && (skuId == other.skuId || (skuId != null && skuId.equals(other.skuId)))
+            && (getInOutDocumentNumber() == other.getInOutDocumentNumber() || (getInOutDocumentNumber() != null && getInOutDocumentNumber().equals(other.getInOutDocumentNumber())))
+            && (getSkuId() == other.getSkuId() || (getSkuId() != null && getSkuId().equals(other.getSkuId())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class InOutLineIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.inOutDocumentNumber != null) {
-            hash += 13 * this.inOutDocumentNumber.hashCode();
+        if (this.getInOutDocumentNumber() != null) {
+            hash += 13 * this.getInOutDocumentNumber().hashCode();
         }
-        if (this.skuId != null) {
-            hash += 13 * this.skuId.hashCode();
+        if (this.getSkuId() != null) {
+            hash += 13 * this.getSkuId().hashCode();
         }
         return hash;
     }

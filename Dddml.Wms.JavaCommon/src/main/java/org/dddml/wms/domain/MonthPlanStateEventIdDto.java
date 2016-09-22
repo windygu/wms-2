@@ -79,10 +79,10 @@ public class MonthPlanStateEventIdDto
 
         MonthPlanStateEventIdDto other = (MonthPlanStateEventIdDto)obj;
         return true 
-            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
-            && (year == other.year || (year != null && year.equals(other.year)))
-            && (month == other.month || (month != null && month.equals(other.month)))
-            && (personVersion == other.personVersion || (personVersion != null && personVersion.equals(other.personVersion)))
+            && (getPersonalName() == other.getPersonalName() || (getPersonalName() != null && getPersonalName().equals(other.getPersonalName())))
+            && (getYear() == other.getYear() || (getYear() != null && getYear().equals(other.getYear())))
+            && (getMonth() == other.getMonth() || (getMonth() != null && getMonth().equals(other.getMonth())))
+            && (getPersonVersion() == other.getPersonVersion() || (getPersonVersion() != null && getPersonVersion().equals(other.getPersonVersion())))
             ;
 
     }
@@ -91,17 +91,17 @@ public class MonthPlanStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.personalName != null) {
-            hash += 13 * this.personalName.hashCode();
+        if (this.getPersonalName() != null) {
+            hash += 13 * this.getPersonalName().hashCode();
         }
-        if (this.year != null) {
-            hash += 13 * this.year.hashCode();
+        if (this.getYear() != null) {
+            hash += 13 * this.getYear().hashCode();
         }
-        if (this.month != null) {
-            hash += 13 * this.month.hashCode();
+        if (this.getMonth() != null) {
+            hash += 13 * this.getMonth().hashCode();
         }
-        if (this.personVersion != null) {
-            hash += 13 * this.personVersion.hashCode();
+        if (this.getPersonVersion() != null) {
+            hash += 13 * this.getPersonVersion().hashCode();
         }
         return hash;
     }

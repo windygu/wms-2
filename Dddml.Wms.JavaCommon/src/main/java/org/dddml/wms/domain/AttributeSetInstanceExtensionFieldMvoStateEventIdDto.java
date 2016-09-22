@@ -53,8 +53,8 @@ public class AttributeSetInstanceExtensionFieldMvoStateEventIdDto
 
         AttributeSetInstanceExtensionFieldMvoStateEventIdDto other = (AttributeSetInstanceExtensionFieldMvoStateEventIdDto)obj;
         return true 
-            && (attributeSetInstanceExtensionFieldId == other.attributeSetInstanceExtensionFieldId || (attributeSetInstanceExtensionFieldId != null && attributeSetInstanceExtensionFieldId.equals(other.attributeSetInstanceExtensionFieldId)))
-            && (attrSetInstEFGroupVersion == other.attrSetInstEFGroupVersion || (attrSetInstEFGroupVersion != null && attrSetInstEFGroupVersion.equals(other.attrSetInstEFGroupVersion)))
+            && (getAttributeSetInstanceExtensionFieldId() == other.getAttributeSetInstanceExtensionFieldId() || (getAttributeSetInstanceExtensionFieldId() != null && getAttributeSetInstanceExtensionFieldId().equals(other.getAttributeSetInstanceExtensionFieldId())))
+            && (getAttrSetInstEFGroupVersion() == other.getAttrSetInstEFGroupVersion() || (getAttrSetInstEFGroupVersion() != null && getAttrSetInstEFGroupVersion().equals(other.getAttrSetInstEFGroupVersion())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class AttributeSetInstanceExtensionFieldMvoStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.attributeSetInstanceExtensionFieldId != null) {
-            hash += 13 * this.attributeSetInstanceExtensionFieldId.hashCode();
+        if (this.getAttributeSetInstanceExtensionFieldId() != null) {
+            hash += 13 * this.getAttributeSetInstanceExtensionFieldId().hashCode();
         }
-        if (this.attrSetInstEFGroupVersion != null) {
-            hash += 13 * this.attrSetInstEFGroupVersion.hashCode();
+        if (this.getAttrSetInstEFGroupVersion() != null) {
+            hash += 13 * this.getAttrSetInstEFGroupVersion().hashCode();
         }
         return hash;
     }

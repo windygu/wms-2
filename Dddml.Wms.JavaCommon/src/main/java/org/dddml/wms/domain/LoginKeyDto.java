@@ -53,8 +53,8 @@ public class LoginKeyDto
 
         LoginKeyDto other = (LoginKeyDto)obj;
         return true 
-            && (loginProvider == other.loginProvider || (loginProvider != null && loginProvider.equals(other.loginProvider)))
-            && (providerKey == other.providerKey || (providerKey != null && providerKey.equals(other.providerKey)))
+            && (getLoginProvider() == other.getLoginProvider() || (getLoginProvider() != null && getLoginProvider().equals(other.getLoginProvider())))
+            && (getProviderKey() == other.getProviderKey() || (getProviderKey() != null && getProviderKey().equals(other.getProviderKey())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class LoginKeyDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.loginProvider != null) {
-            hash += 13 * this.loginProvider.hashCode();
+        if (this.getLoginProvider() != null) {
+            hash += 13 * this.getLoginProvider().hashCode();
         }
-        if (this.providerKey != null) {
-            hash += 13 * this.providerKey.hashCode();
+        if (this.getProviderKey() != null) {
+            hash += 13 * this.getProviderKey().hashCode();
         }
         return hash;
     }

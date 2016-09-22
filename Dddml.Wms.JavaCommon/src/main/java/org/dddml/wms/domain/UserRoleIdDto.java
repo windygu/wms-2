@@ -53,8 +53,8 @@ public class UserRoleIdDto
 
         UserRoleIdDto other = (UserRoleIdDto)obj;
         return true 
-            && (userId == other.userId || (userId != null && userId.equals(other.userId)))
-            && (roleId == other.roleId || (roleId != null && roleId.equals(other.roleId)))
+            && (getUserId() == other.getUserId() || (getUserId() != null && getUserId().equals(other.getUserId())))
+            && (getRoleId() == other.getRoleId() || (getRoleId() != null && getRoleId().equals(other.getRoleId())))
             ;
 
     }
@@ -63,11 +63,11 @@ public class UserRoleIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.userId != null) {
-            hash += 13 * this.userId.hashCode();
+        if (this.getUserId() != null) {
+            hash += 13 * this.getUserId().hashCode();
         }
-        if (this.roleId != null) {
-            hash += 13 * this.roleId.hashCode();
+        if (this.getRoleId() != null) {
+            hash += 13 * this.getRoleId().hashCode();
         }
         return hash;
     }
