@@ -280,7 +280,7 @@ public class MonthPlanMvoResource {
             List<MonthPlanMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 MonthPlanMvoStateDto dto = new MonthPlanMvoStateDto();
-                dto.setMonthPlanId(new MonthPlanIdDto(id));
+                dto.setMonthPlanId(new MonthPlanIdDtoWrapper(id));
                 states.add(dto);
             });
             return states.toArray(new MonthPlanMvoStateDto[0]);

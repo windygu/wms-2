@@ -226,23 +226,23 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         this.personBirthDate = personBirthDate;
     }
 
-    private PersonalName personLoves;
+    private PersonalNameDto personLoves = new PersonalNameDto();
 
-    public PersonalName getPersonLoves() {
+    public PersonalNameDto getPersonLoves() {
         return this.personLoves;
     }
 
-    public void setPersonLoves(PersonalName personLoves) {
+    public void setPersonLoves(PersonalNameDto personLoves) {
         this.personLoves = personLoves;
     }
 
-    private Contact personEmergencyContact;
+    private ContactDto personEmergencyContact = new ContactDto();
 
-    public Contact getPersonEmergencyContact() {
+    public ContactDto getPersonEmergencyContact() {
         return this.personEmergencyContact;
     }
 
-    public void setPersonEmergencyContact(Contact personEmergencyContact) {
+    public void setPersonEmergencyContact(ContactDto personEmergencyContact) {
         this.personEmergencyContact = personEmergencyContact;
     }
 

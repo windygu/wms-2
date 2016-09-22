@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class YearPlanIdDto
 {
-	
-    private YearPlanId value;
 
     public YearPlanIdDto()
     {
-        this(new YearPlanId());
-    }
-
-    public YearPlanIdDto(YearPlanId value)
-    {
-        this.value = value;
     }
 
     public YearPlanId toYearPlanId()
     {
-        return this.value;
+        YearPlanId v = new YearPlanId();
+        v.setPersonalName(this.getPersonalName().toPersonalName());
+        v.setYear(this.getYear());
+        return v;
     }
+
+    private PersonalNameDto personalName = new PersonalNameDto();
 
     public PersonalNameDto getPersonalName()
     {
-        return new PersonalNameDto(this.value.getPersonalName());
+        return this.personalName;
     }
 
     public void setPersonalName(PersonalNameDto personalName)
     {
-        this.value.setPersonalName(personalName.toPersonalName());
+        this.personalName = personalName;
     }
+
+    private Integer year;
 
     public Integer getYear()
     {
-        return this.value.getYear();
+        return this.year;
     }
 
     public void setYear(Integer year)
     {
-        this.value.setYear(year);
+        this.year = year;
     }
 
 
@@ -48,18 +47,29 @@ public class YearPlanIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != YearPlanIdDto.class) {
             return false;
         }
 
         YearPlanIdDto other = (YearPlanIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
+            && (year == other.year || (year != null && year.equals(other.year)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.personalName != null) {
+            hash += 13 * this.personalName.hashCode();
+        }
+        if (this.year != null) {
+            hash += 13 * this.year.hashCode();
+        }
+        return hash;
     }
 
 }

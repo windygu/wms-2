@@ -356,7 +356,7 @@ public class UserClaimMvoStateDto
         {
             UserClaimMvoStateDto dto = new UserClaimMvoStateDto();
             if (returnedFieldsContains("UserClaimId")) {
-                dto.setUserClaimId((state.getUserClaimId() == null) ? null : new UserClaimIdDto(state.getUserClaimId()));
+                dto.setUserClaimId((state.getUserClaimId() == null) ? null : new UserClaimIdDtoWrapper(state.getUserClaimId()));
             }
             if (returnedFieldsContains("ClaimType")) {
                 dto.setClaimType(state.getClaimType());

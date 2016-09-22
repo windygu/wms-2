@@ -28,23 +28,27 @@ public class AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto
         }
     }
 	
-    private AttributeSetInstanceExtensionFieldStateEventId value;
+    private AttributeSetInstanceExtensionFieldStateEventIdDto value;
 
     public AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto()
     {
-        this(new AttributeSetInstanceExtensionFieldStateEventId());
+        this(new AttributeSetInstanceExtensionFieldStateEventIdDto());
     }
 
-    public AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto(AttributeSetInstanceExtensionFieldStateEventId value)
+    public AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto(AttributeSetInstanceExtensionFieldStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public AttributeSetInstanceExtensionFieldStateEventId toAttributeSetInstanceExtensionFieldStateEventId()
+    public AttributeSetInstanceExtensionFieldStateEventIdDto toAttributeSetInstanceExtensionFieldStateEventIdDto()
     {
         return this.value;
     }
 
+    public AttributeSetInstanceExtensionFieldStateEventId toAttributeSetInstanceExtensionFieldStateEventId()
+    {
+        return this.value.toAttributeSetInstanceExtensionFieldStateEventId();
+    }
 
     public String getGroupId()
     {

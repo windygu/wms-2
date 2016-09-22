@@ -280,7 +280,7 @@ public class RolePermissionResource {
             List<RolePermissionStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 RolePermissionStateDto dto = new RolePermissionStateDto();
-                dto.setId(new RolePermissionIdDto(id));
+                dto.setId(new RolePermissionIdDtoWrapper(id));
                 states.add(dto);
             });
             return states.toArray(new RolePermissionStateDto[0]);

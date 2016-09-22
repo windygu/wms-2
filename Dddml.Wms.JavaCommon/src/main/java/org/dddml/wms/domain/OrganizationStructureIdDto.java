@@ -3,52 +3,54 @@ package org.dddml.wms.domain;
 
 public class OrganizationStructureIdDto
 {
-	
-    private OrganizationStructureId value;
 
     public OrganizationStructureIdDto()
     {
-        this(new OrganizationStructureId());
-    }
-
-    public OrganizationStructureIdDto(OrganizationStructureId value)
-    {
-        this.value = value;
     }
 
     public OrganizationStructureId toOrganizationStructureId()
     {
-        return this.value;
+        OrganizationStructureId v = new OrganizationStructureId();
+        v.setOrganizationStructureTypeId(this.getOrganizationStructureTypeId());
+        v.setParentId(this.getParentId());
+        v.setSubsidiaryId(this.getSubsidiaryId());
+        return v;
     }
+
+    private String organizationStructureTypeId;
 
     public String getOrganizationStructureTypeId()
     {
-        return this.value.getOrganizationStructureTypeId();
+        return this.organizationStructureTypeId;
     }
 
     public void setOrganizationStructureTypeId(String organizationStructureTypeId)
     {
-        this.value.setOrganizationStructureTypeId(organizationStructureTypeId);
+        this.organizationStructureTypeId = organizationStructureTypeId;
     }
+
+    private String parentId;
 
     public String getParentId()
     {
-        return this.value.getParentId();
+        return this.parentId;
     }
 
     public void setParentId(String parentId)
     {
-        this.value.setParentId(parentId);
+        this.parentId = parentId;
     }
+
+    private String subsidiaryId;
 
     public String getSubsidiaryId()
     {
-        return this.value.getSubsidiaryId();
+        return this.subsidiaryId;
     }
 
     public void setSubsidiaryId(String subsidiaryId)
     {
-        this.value.setSubsidiaryId(subsidiaryId);
+        this.subsidiaryId = subsidiaryId;
     }
 
 
@@ -58,18 +60,33 @@ public class OrganizationStructureIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != OrganizationStructureIdDto.class) {
             return false;
         }
 
         OrganizationStructureIdDto other = (OrganizationStructureIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (organizationStructureTypeId == other.organizationStructureTypeId || (organizationStructureTypeId != null && organizationStructureTypeId.equals(other.organizationStructureTypeId)))
+            && (parentId == other.parentId || (parentId != null && parentId.equals(other.parentId)))
+            && (subsidiaryId == other.subsidiaryId || (subsidiaryId != null && subsidiaryId.equals(other.subsidiaryId)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.organizationStructureTypeId != null) {
+            hash += 13 * this.organizationStructureTypeId.hashCode();
+        }
+        if (this.parentId != null) {
+            hash += 13 * this.parentId.hashCode();
+        }
+        if (this.subsidiaryId != null) {
+            hash += 13 * this.subsidiaryId.hashCode();
+        }
+        return hash;
     }
 
 }

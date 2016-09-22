@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class OrganizationStructureStateEventIdDto
 {
-	
-    private OrganizationStructureStateEventId value;
 
     public OrganizationStructureStateEventIdDto()
     {
-        this(new OrganizationStructureStateEventId());
-    }
-
-    public OrganizationStructureStateEventIdDto(OrganizationStructureStateEventId value)
-    {
-        this.value = value;
     }
 
     public OrganizationStructureStateEventId toOrganizationStructureStateEventId()
     {
-        return this.value;
+        OrganizationStructureStateEventId v = new OrganizationStructureStateEventId();
+        v.setId(this.getId().toOrganizationStructureId());
+        v.setVersion(this.getVersion());
+        return v;
     }
+
+    private OrganizationStructureIdDto id = new OrganizationStructureIdDto();
 
     public OrganizationStructureIdDto getId()
     {
-        return new OrganizationStructureIdDto(this.value.getId());
+        return this.id;
     }
 
     public void setId(OrganizationStructureIdDto id)
     {
-        this.value.setId(id.toOrganizationStructureId());
+        this.id = id;
     }
+
+    private Long version;
 
     public Long getVersion()
     {
-        return this.value.getVersion();
+        return this.version;
     }
 
     public void setVersion(Long version)
     {
-        this.value.setVersion(version);
+        this.version = version;
     }
 
 
@@ -48,18 +47,29 @@ public class OrganizationStructureStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != OrganizationStructureStateEventIdDto.class) {
             return false;
         }
 
         OrganizationStructureStateEventIdDto other = (OrganizationStructureStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (id == other.id || (id != null && id.equals(other.id)))
+            && (version == other.version || (version != null && version.equals(other.version)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.id != null) {
+            hash += 13 * this.id.hashCode();
+        }
+        if (this.version != null) {
+            hash += 13 * this.version.hashCode();
+        }
+        return hash;
     }
 
 }

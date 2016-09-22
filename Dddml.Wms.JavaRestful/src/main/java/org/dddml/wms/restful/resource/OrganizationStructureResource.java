@@ -280,7 +280,7 @@ public class OrganizationStructureResource {
             List<OrganizationStructureStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 OrganizationStructureStateDto dto = new OrganizationStructureStateDto();
-                dto.setId(new OrganizationStructureIdDto(id));
+                dto.setId(new OrganizationStructureIdDtoWrapper(id));
                 states.add(dto);
             });
             return states.toArray(new OrganizationStructureStateDto[0]);

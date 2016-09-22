@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class AttributeSetAttributeUseIdDto
 {
-	
-    private AttributeSetAttributeUseId value;
 
     public AttributeSetAttributeUseIdDto()
     {
-        this(new AttributeSetAttributeUseId());
-    }
-
-    public AttributeSetAttributeUseIdDto(AttributeSetAttributeUseId value)
-    {
-        this.value = value;
     }
 
     public AttributeSetAttributeUseId toAttributeSetAttributeUseId()
     {
-        return this.value;
+        AttributeSetAttributeUseId v = new AttributeSetAttributeUseId();
+        v.setAttributeSetId(this.getAttributeSetId());
+        v.setAttributeId(this.getAttributeId());
+        return v;
     }
+
+    private String attributeSetId;
 
     public String getAttributeSetId()
     {
-        return this.value.getAttributeSetId();
+        return this.attributeSetId;
     }
 
     public void setAttributeSetId(String attributeSetId)
     {
-        this.value.setAttributeSetId(attributeSetId);
+        this.attributeSetId = attributeSetId;
     }
+
+    private String attributeId;
 
     public String getAttributeId()
     {
-        return this.value.getAttributeId();
+        return this.attributeId;
     }
 
     public void setAttributeId(String attributeId)
     {
-        this.value.setAttributeId(attributeId);
+        this.attributeId = attributeId;
     }
 
 
@@ -48,18 +47,29 @@ public class AttributeSetAttributeUseIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != AttributeSetAttributeUseIdDto.class) {
             return false;
         }
 
         AttributeSetAttributeUseIdDto other = (AttributeSetAttributeUseIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (attributeSetId == other.attributeSetId || (attributeSetId != null && attributeSetId.equals(other.attributeSetId)))
+            && (attributeId == other.attributeId || (attributeId != null && attributeId.equals(other.attributeId)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.attributeSetId != null) {
+            hash += 13 * this.attributeSetId.hashCode();
+        }
+        if (this.attributeId != null) {
+            hash += 13 * this.attributeId.hashCode();
+        }
+        return hash;
     }
 
 }

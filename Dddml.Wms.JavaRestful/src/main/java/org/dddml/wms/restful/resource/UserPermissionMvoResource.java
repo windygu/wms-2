@@ -280,7 +280,7 @@ public class UserPermissionMvoResource {
             List<UserPermissionMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 UserPermissionMvoStateDto dto = new UserPermissionMvoStateDto();
-                dto.setUserPermissionId(new UserPermissionIdDto(id));
+                dto.setUserPermissionId(new UserPermissionIdDtoWrapper(id));
                 states.add(dto);
             });
             return states.toArray(new UserPermissionMvoStateDto[0]);

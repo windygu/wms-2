@@ -164,7 +164,7 @@ public class YearPlanStateDto
                 dto.setVersion(state.getVersion());
             }
             if (returnedFieldsContains("PersonalName")) {
-                dto.setPersonalName((state.getPersonalName() == null) ? null : new PersonalNameDto(state.getPersonalName()));
+                dto.setPersonalName((state.getPersonalName() == null) ? null : new PersonalNameDtoWrapper(state.getPersonalName()));
             }
             if (returnedFieldsContains("CreatedBy")) {
                 dto.setCreatedBy(state.getCreatedBy());

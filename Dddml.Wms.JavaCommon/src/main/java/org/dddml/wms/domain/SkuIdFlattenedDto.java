@@ -26,23 +26,27 @@ public class SkuIdFlattenedDto
         }
     }
 	
-    private SkuId value;
+    private SkuIdDto value;
 
     public SkuIdFlattenedDto()
     {
-        this(new SkuId());
+        this(new SkuIdDto());
     }
 
-    public SkuIdFlattenedDto(SkuId value)
+    public SkuIdFlattenedDto(SkuIdDto value)
     {
         this.value = value;
     }
 
-    public SkuId toSkuId()
+    public SkuIdDto toSkuIdDto()
     {
         return this.value;
     }
 
+    public SkuId toSkuId()
+    {
+        return this.value.toSkuId();
+    }
 
     public String getProductId()
     {

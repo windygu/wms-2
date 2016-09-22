@@ -26,23 +26,27 @@ public class WarehouseStateEventIdFlattenedDto
         }
     }
 	
-    private WarehouseStateEventId value;
+    private WarehouseStateEventIdDto value;
 
     public WarehouseStateEventIdFlattenedDto()
     {
-        this(new WarehouseStateEventId());
+        this(new WarehouseStateEventIdDto());
     }
 
-    public WarehouseStateEventIdFlattenedDto(WarehouseStateEventId value)
+    public WarehouseStateEventIdFlattenedDto(WarehouseStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public WarehouseStateEventId toWarehouseStateEventId()
+    public WarehouseStateEventIdDto toWarehouseStateEventIdDto()
     {
         return this.value;
     }
 
+    public WarehouseStateEventId toWarehouseStateEventId()
+    {
+        return this.value.toWarehouseStateEventId();
+    }
 
     public String getWarehouseId()
     {

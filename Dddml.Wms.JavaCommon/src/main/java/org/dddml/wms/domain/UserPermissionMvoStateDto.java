@@ -332,7 +332,7 @@ public class UserPermissionMvoStateDto
         {
             UserPermissionMvoStateDto dto = new UserPermissionMvoStateDto();
             if (returnedFieldsContains("UserPermissionId")) {
-                dto.setUserPermissionId((state.getUserPermissionId() == null) ? null : new UserPermissionIdDto(state.getUserPermissionId()));
+                dto.setUserPermissionId((state.getUserPermissionId() == null) ? null : new UserPermissionIdDtoWrapper(state.getUserPermissionId()));
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());

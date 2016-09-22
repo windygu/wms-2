@@ -26,23 +26,27 @@ public class TeamStateEventIdFlattenedDto
         }
     }
 	
-    private TeamStateEventId value;
+    private TeamStateEventIdDto value;
 
     public TeamStateEventIdFlattenedDto()
     {
-        this(new TeamStateEventId());
+        this(new TeamStateEventIdDto());
     }
 
-    public TeamStateEventIdFlattenedDto(TeamStateEventId value)
+    public TeamStateEventIdFlattenedDto(TeamStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public TeamStateEventId toTeamStateEventId()
+    public TeamStateEventIdDto toTeamStateEventIdDto()
     {
         return this.value;
     }
 
+    public TeamStateEventId toTeamStateEventId()
+    {
+        return this.value.toTeamStateEventId();
+    }
 
     public String getTeamName()
     {

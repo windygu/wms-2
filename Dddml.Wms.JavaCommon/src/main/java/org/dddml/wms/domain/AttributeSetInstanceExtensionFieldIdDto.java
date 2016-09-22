@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class AttributeSetInstanceExtensionFieldIdDto
 {
-	
-    private AttributeSetInstanceExtensionFieldId value;
 
     public AttributeSetInstanceExtensionFieldIdDto()
     {
-        this(new AttributeSetInstanceExtensionFieldId());
-    }
-
-    public AttributeSetInstanceExtensionFieldIdDto(AttributeSetInstanceExtensionFieldId value)
-    {
-        this.value = value;
     }
 
     public AttributeSetInstanceExtensionFieldId toAttributeSetInstanceExtensionFieldId()
     {
-        return this.value;
+        AttributeSetInstanceExtensionFieldId v = new AttributeSetInstanceExtensionFieldId();
+        v.setGroupId(this.getGroupId());
+        v.setIndex(this.getIndex());
+        return v;
     }
+
+    private String groupId;
 
     public String getGroupId()
     {
-        return this.value.getGroupId();
+        return this.groupId;
     }
 
     public void setGroupId(String groupId)
     {
-        this.value.setGroupId(groupId);
+        this.groupId = groupId;
     }
+
+    private String index;
 
     public String getIndex()
     {
-        return this.value.getIndex();
+        return this.index;
     }
 
     public void setIndex(String index)
     {
-        this.value.setIndex(index);
+        this.index = index;
     }
 
 
@@ -48,18 +47,29 @@ public class AttributeSetInstanceExtensionFieldIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != AttributeSetInstanceExtensionFieldIdDto.class) {
             return false;
         }
 
         AttributeSetInstanceExtensionFieldIdDto other = (AttributeSetInstanceExtensionFieldIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (groupId == other.groupId || (groupId != null && groupId.equals(other.groupId)))
+            && (index == other.index || (index != null && index.equals(other.index)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.groupId != null) {
+            hash += 13 * this.groupId.hashCode();
+        }
+        if (this.index != null) {
+            hash += 13 * this.index.hashCode();
+        }
+        return hash;
     }
 
 }

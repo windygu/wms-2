@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class AttributeSetInstanceExtensionFieldMvoStateEventIdDto
 {
-	
-    private AttributeSetInstanceExtensionFieldMvoStateEventId value;
 
     public AttributeSetInstanceExtensionFieldMvoStateEventIdDto()
     {
-        this(new AttributeSetInstanceExtensionFieldMvoStateEventId());
-    }
-
-    public AttributeSetInstanceExtensionFieldMvoStateEventIdDto(AttributeSetInstanceExtensionFieldMvoStateEventId value)
-    {
-        this.value = value;
     }
 
     public AttributeSetInstanceExtensionFieldMvoStateEventId toAttributeSetInstanceExtensionFieldMvoStateEventId()
     {
-        return this.value;
+        AttributeSetInstanceExtensionFieldMvoStateEventId v = new AttributeSetInstanceExtensionFieldMvoStateEventId();
+        v.setAttributeSetInstanceExtensionFieldId(this.getAttributeSetInstanceExtensionFieldId().toAttributeSetInstanceExtensionFieldId());
+        v.setAttrSetInstEFGroupVersion(this.getAttrSetInstEFGroupVersion());
+        return v;
     }
+
+    private AttributeSetInstanceExtensionFieldIdDto attributeSetInstanceExtensionFieldId = new AttributeSetInstanceExtensionFieldIdDto();
 
     public AttributeSetInstanceExtensionFieldIdDto getAttributeSetInstanceExtensionFieldId()
     {
-        return new AttributeSetInstanceExtensionFieldIdDto(this.value.getAttributeSetInstanceExtensionFieldId());
+        return this.attributeSetInstanceExtensionFieldId;
     }
 
     public void setAttributeSetInstanceExtensionFieldId(AttributeSetInstanceExtensionFieldIdDto attributeSetInstanceExtensionFieldId)
     {
-        this.value.setAttributeSetInstanceExtensionFieldId(attributeSetInstanceExtensionFieldId.toAttributeSetInstanceExtensionFieldId());
+        this.attributeSetInstanceExtensionFieldId = attributeSetInstanceExtensionFieldId;
     }
+
+    private Long attrSetInstEFGroupVersion;
 
     public Long getAttrSetInstEFGroupVersion()
     {
-        return this.value.getAttrSetInstEFGroupVersion();
+        return this.attrSetInstEFGroupVersion;
     }
 
     public void setAttrSetInstEFGroupVersion(Long attrSetInstEFGroupVersion)
     {
-        this.value.setAttrSetInstEFGroupVersion(attrSetInstEFGroupVersion);
+        this.attrSetInstEFGroupVersion = attrSetInstEFGroupVersion;
     }
 
 
@@ -48,18 +47,29 @@ public class AttributeSetInstanceExtensionFieldMvoStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != AttributeSetInstanceExtensionFieldMvoStateEventIdDto.class) {
             return false;
         }
 
         AttributeSetInstanceExtensionFieldMvoStateEventIdDto other = (AttributeSetInstanceExtensionFieldMvoStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (attributeSetInstanceExtensionFieldId == other.attributeSetInstanceExtensionFieldId || (attributeSetInstanceExtensionFieldId != null && attributeSetInstanceExtensionFieldId.equals(other.attributeSetInstanceExtensionFieldId)))
+            && (attrSetInstEFGroupVersion == other.attrSetInstEFGroupVersion || (attrSetInstEFGroupVersion != null && attrSetInstEFGroupVersion.equals(other.attrSetInstEFGroupVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.attributeSetInstanceExtensionFieldId != null) {
+            hash += 13 * this.attributeSetInstanceExtensionFieldId.hashCode();
+        }
+        if (this.attrSetInstEFGroupVersion != null) {
+            hash += 13 * this.attrSetInstEFGroupVersion.hashCode();
+        }
+        return hash;
     }
 
 }

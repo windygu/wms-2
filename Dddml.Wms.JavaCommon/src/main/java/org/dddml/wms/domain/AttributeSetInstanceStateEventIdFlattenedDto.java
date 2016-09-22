@@ -26,23 +26,27 @@ public class AttributeSetInstanceStateEventIdFlattenedDto
         }
     }
 	
-    private AttributeSetInstanceStateEventId value;
+    private AttributeSetInstanceStateEventIdDto value;
 
     public AttributeSetInstanceStateEventIdFlattenedDto()
     {
-        this(new AttributeSetInstanceStateEventId());
+        this(new AttributeSetInstanceStateEventIdDto());
     }
 
-    public AttributeSetInstanceStateEventIdFlattenedDto(AttributeSetInstanceStateEventId value)
+    public AttributeSetInstanceStateEventIdFlattenedDto(AttributeSetInstanceStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public AttributeSetInstanceStateEventId toAttributeSetInstanceStateEventId()
+    public AttributeSetInstanceStateEventIdDto toAttributeSetInstanceStateEventIdDto()
     {
         return this.value;
     }
 
+    public AttributeSetInstanceStateEventId toAttributeSetInstanceStateEventId()
+    {
+        return this.value.toAttributeSetInstanceStateEventId();
+    }
 
     public String getAttributeSetInstanceId()
     {

@@ -3,52 +3,54 @@ package org.dddml.wms.domain;
 
 public class InOutLineStateEventIdDto
 {
-	
-    private InOutLineStateEventId value;
 
     public InOutLineStateEventIdDto()
     {
-        this(new InOutLineStateEventId());
-    }
-
-    public InOutLineStateEventIdDto(InOutLineStateEventId value)
-    {
-        this.value = value;
     }
 
     public InOutLineStateEventId toInOutLineStateEventId()
     {
-        return this.value;
+        InOutLineStateEventId v = new InOutLineStateEventId();
+        v.setInOutDocumentNumber(this.getInOutDocumentNumber());
+        v.setSkuId(this.getSkuId().toSkuId());
+        v.setInOutVersion(this.getInOutVersion());
+        return v;
     }
+
+    private String inOutDocumentNumber;
 
     public String getInOutDocumentNumber()
     {
-        return this.value.getInOutDocumentNumber();
+        return this.inOutDocumentNumber;
     }
 
     public void setInOutDocumentNumber(String inOutDocumentNumber)
     {
-        this.value.setInOutDocumentNumber(inOutDocumentNumber);
+        this.inOutDocumentNumber = inOutDocumentNumber;
     }
+
+    private SkuIdDto skuId = new SkuIdDto();
 
     public SkuIdDto getSkuId()
     {
-        return new SkuIdDto(this.value.getSkuId());
+        return this.skuId;
     }
 
     public void setSkuId(SkuIdDto skuId)
     {
-        this.value.setSkuId(skuId.toSkuId());
+        this.skuId = skuId;
     }
+
+    private Long inOutVersion;
 
     public Long getInOutVersion()
     {
-        return this.value.getInOutVersion();
+        return this.inOutVersion;
     }
 
     public void setInOutVersion(Long inOutVersion)
     {
-        this.value.setInOutVersion(inOutVersion);
+        this.inOutVersion = inOutVersion;
     }
 
 
@@ -58,18 +60,33 @@ public class InOutLineStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != InOutLineStateEventIdDto.class) {
             return false;
         }
 
         InOutLineStateEventIdDto other = (InOutLineStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (inOutDocumentNumber == other.inOutDocumentNumber || (inOutDocumentNumber != null && inOutDocumentNumber.equals(other.inOutDocumentNumber)))
+            && (skuId == other.skuId || (skuId != null && skuId.equals(other.skuId)))
+            && (inOutVersion == other.inOutVersion || (inOutVersion != null && inOutVersion.equals(other.inOutVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.inOutDocumentNumber != null) {
+            hash += 13 * this.inOutDocumentNumber.hashCode();
+        }
+        if (this.skuId != null) {
+            hash += 13 * this.skuId.hashCode();
+        }
+        if (this.inOutVersion != null) {
+            hash += 13 * this.inOutVersion.hashCode();
+        }
+        return hash;
     }
 
 }

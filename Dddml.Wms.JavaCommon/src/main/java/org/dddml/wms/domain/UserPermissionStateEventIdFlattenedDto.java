@@ -28,23 +28,27 @@ public class UserPermissionStateEventIdFlattenedDto
         }
     }
 	
-    private UserPermissionStateEventId value;
+    private UserPermissionStateEventIdDto value;
 
     public UserPermissionStateEventIdFlattenedDto()
     {
-        this(new UserPermissionStateEventId());
+        this(new UserPermissionStateEventIdDto());
     }
 
-    public UserPermissionStateEventIdFlattenedDto(UserPermissionStateEventId value)
+    public UserPermissionStateEventIdFlattenedDto(UserPermissionStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public UserPermissionStateEventId toUserPermissionStateEventId()
+    public UserPermissionStateEventIdDto toUserPermissionStateEventIdDto()
     {
         return this.value;
     }
 
+    public UserPermissionStateEventId toUserPermissionStateEventId()
+    {
+        return this.value.toUserPermissionStateEventId();
+    }
 
     public String getUserId()
     {

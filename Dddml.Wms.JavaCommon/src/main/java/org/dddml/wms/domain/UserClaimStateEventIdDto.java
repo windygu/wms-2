@@ -3,52 +3,54 @@ package org.dddml.wms.domain;
 
 public class UserClaimStateEventIdDto
 {
-	
-    private UserClaimStateEventId value;
 
     public UserClaimStateEventIdDto()
     {
-        this(new UserClaimStateEventId());
-    }
-
-    public UserClaimStateEventIdDto(UserClaimStateEventId value)
-    {
-        this.value = value;
     }
 
     public UserClaimStateEventId toUserClaimStateEventId()
     {
-        return this.value;
+        UserClaimStateEventId v = new UserClaimStateEventId();
+        v.setUserId(this.getUserId());
+        v.setClaimId(this.getClaimId());
+        v.setUserVersion(this.getUserVersion());
+        return v;
     }
+
+    private String userId;
 
     public String getUserId()
     {
-        return this.value.getUserId();
+        return this.userId;
     }
 
     public void setUserId(String userId)
     {
-        this.value.setUserId(userId);
+        this.userId = userId;
     }
+
+    private Integer claimId;
 
     public Integer getClaimId()
     {
-        return this.value.getClaimId();
+        return this.claimId;
     }
 
     public void setClaimId(Integer claimId)
     {
-        this.value.setClaimId(claimId);
+        this.claimId = claimId;
     }
+
+    private Long userVersion;
 
     public Long getUserVersion()
     {
-        return this.value.getUserVersion();
+        return this.userVersion;
     }
 
     public void setUserVersion(Long userVersion)
     {
-        this.value.setUserVersion(userVersion);
+        this.userVersion = userVersion;
     }
 
 
@@ -58,18 +60,33 @@ public class UserClaimStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != UserClaimStateEventIdDto.class) {
             return false;
         }
 
         UserClaimStateEventIdDto other = (UserClaimStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (userId == other.userId || (userId != null && userId.equals(other.userId)))
+            && (claimId == other.claimId || (claimId != null && claimId.equals(other.claimId)))
+            && (userVersion == other.userVersion || (userVersion != null && userVersion.equals(other.userVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.userId != null) {
+            hash += 13 * this.userId.hashCode();
+        }
+        if (this.claimId != null) {
+            hash += 13 * this.claimId.hashCode();
+        }
+        if (this.userVersion != null) {
+            hash += 13 * this.userVersion.hashCode();
+        }
+        return hash;
     }
 
 }

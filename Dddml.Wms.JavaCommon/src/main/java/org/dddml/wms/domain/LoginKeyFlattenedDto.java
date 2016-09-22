@@ -26,23 +26,27 @@ public class LoginKeyFlattenedDto
         }
     }
 	
-    private LoginKey value;
+    private LoginKeyDto value;
 
     public LoginKeyFlattenedDto()
     {
-        this(new LoginKey());
+        this(new LoginKeyDto());
     }
 
-    public LoginKeyFlattenedDto(LoginKey value)
+    public LoginKeyFlattenedDto(LoginKeyDto value)
     {
         this.value = value;
     }
 
-    public LoginKey toLoginKey()
+    public LoginKeyDto toLoginKeyDto()
     {
         return this.value;
     }
 
+    public LoginKey toLoginKey()
+    {
+        return this.value.toLoginKey();
+    }
 
     public String getLoginProvider()
     {

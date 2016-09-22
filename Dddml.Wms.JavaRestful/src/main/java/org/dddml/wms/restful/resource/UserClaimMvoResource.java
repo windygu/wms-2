@@ -280,7 +280,7 @@ public class UserClaimMvoResource {
             List<UserClaimMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 UserClaimMvoStateDto dto = new UserClaimMvoStateDto();
-                dto.setUserClaimId(new UserClaimIdDto(id));
+                dto.setUserClaimId(new UserClaimIdDtoWrapper(id));
                 states.add(dto);
             });
             return states.toArray(new UserClaimMvoStateDto[0]);

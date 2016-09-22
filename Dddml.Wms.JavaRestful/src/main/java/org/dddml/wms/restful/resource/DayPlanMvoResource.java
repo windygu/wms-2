@@ -280,7 +280,7 @@ public class DayPlanMvoResource {
             List<DayPlanMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 DayPlanMvoStateDto dto = new DayPlanMvoStateDto();
-                dto.setDayPlanId(new DayPlanIdDto(id));
+                dto.setDayPlanId(new DayPlanIdDtoWrapper(id));
                 states.add(dto);
             });
             return states.toArray(new DayPlanMvoStateDto[0]);

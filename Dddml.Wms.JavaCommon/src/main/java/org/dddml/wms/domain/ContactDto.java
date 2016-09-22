@@ -3,52 +3,54 @@ package org.dddml.wms.domain;
 
 public class ContactDto
 {
-	
-    private Contact value;
 
     public ContactDto()
     {
-        this(new Contact());
-    }
-
-    public ContactDto(Contact value)
-    {
-        this.value = value;
     }
 
     public Contact toContact()
     {
-        return this.value;
+        Contact v = new Contact();
+        v.setPersonalName(this.getPersonalName().toPersonalName());
+        v.setPhoneNumber(this.getPhoneNumber());
+        v.setAddress(this.getAddress());
+        return v;
     }
+
+    private PersonalNameDto personalName = new PersonalNameDto();
 
     public PersonalNameDto getPersonalName()
     {
-        return new PersonalNameDto(this.value.getPersonalName());
+        return this.personalName;
     }
 
     public void setPersonalName(PersonalNameDto personalName)
     {
-        this.value.setPersonalName(personalName.toPersonalName());
+        this.personalName = personalName;
     }
+
+    private String phoneNumber;
 
     public String getPhoneNumber()
     {
-        return this.value.getPhoneNumber();
+        return this.phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber)
     {
-        this.value.setPhoneNumber(phoneNumber);
+        this.phoneNumber = phoneNumber;
     }
+
+    private String address;
 
     public String getAddress()
     {
-        return this.value.getAddress();
+        return this.address;
     }
 
     public void setAddress(String address)
     {
-        this.value.setAddress(address);
+        this.address = address;
     }
 
 
@@ -58,18 +60,33 @@ public class ContactDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != ContactDto.class) {
             return false;
         }
 
         ContactDto other = (ContactDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
+            && (phoneNumber == other.phoneNumber || (phoneNumber != null && phoneNumber.equals(other.phoneNumber)))
+            && (address == other.address || (address != null && address.equals(other.address)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.personalName != null) {
+            hash += 13 * this.personalName.hashCode();
+        }
+        if (this.phoneNumber != null) {
+            hash += 13 * this.phoneNumber.hashCode();
+        }
+        if (this.address != null) {
+            hash += 13 * this.address.hashCode();
+        }
+        return hash;
     }
 
 }

@@ -26,23 +26,27 @@ public class AudienceStateEventIdFlattenedDto
         }
     }
 	
-    private AudienceStateEventId value;
+    private AudienceStateEventIdDto value;
 
     public AudienceStateEventIdFlattenedDto()
     {
-        this(new AudienceStateEventId());
+        this(new AudienceStateEventIdDto());
     }
 
-    public AudienceStateEventIdFlattenedDto(AudienceStateEventId value)
+    public AudienceStateEventIdFlattenedDto(AudienceStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public AudienceStateEventId toAudienceStateEventId()
+    public AudienceStateEventIdDto toAudienceStateEventIdDto()
     {
         return this.value;
     }
 
+    public AudienceStateEventId toAudienceStateEventId()
+    {
+        return this.value.toAudienceStateEventId();
+    }
 
     public String getClientId()
     {

@@ -164,16 +164,16 @@ public class PersonStateDto
         {
             PersonStateDto dto = new PersonStateDto();
             if (returnedFieldsContains("PersonalName")) {
-                dto.setPersonalName((state.getPersonalName() == null) ? null : new PersonalNameDto(state.getPersonalName()));
+                dto.setPersonalName((state.getPersonalName() == null) ? null : new PersonalNameDtoWrapper(state.getPersonalName()));
             }
             if (returnedFieldsContains("BirthDate")) {
                 dto.setBirthDate(state.getBirthDate());
             }
             if (returnedFieldsContains("Loves")) {
-                dto.setLoves((state.getLoves() == null) ? null : new PersonalNameDto(state.getLoves()));
+                dto.setLoves((state.getLoves() == null) ? null : new PersonalNameDtoWrapper(state.getLoves()));
             }
             if (returnedFieldsContains("EmergencyContact")) {
-                dto.setEmergencyContact((state.getEmergencyContact() == null) ? null : new ContactDto(state.getEmergencyContact()));
+                dto.setEmergencyContact((state.getEmergencyContact() == null) ? null : new ContactDtoWrapper(state.getEmergencyContact()));
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

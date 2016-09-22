@@ -280,7 +280,7 @@ public class UserRoleMvoResource {
             List<UserRoleMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 UserRoleMvoStateDto dto = new UserRoleMvoStateDto();
-                dto.setUserRoleId(new UserRoleIdDto(id));
+                dto.setUserRoleId(new UserRoleIdDtoWrapper(id));
                 states.add(dto);
             });
             return states.toArray(new UserRoleMvoStateDto[0]);

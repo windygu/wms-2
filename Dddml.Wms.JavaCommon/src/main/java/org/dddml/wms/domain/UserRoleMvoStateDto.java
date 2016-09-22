@@ -332,7 +332,7 @@ public class UserRoleMvoStateDto
         {
             UserRoleMvoStateDto dto = new UserRoleMvoStateDto();
             if (returnedFieldsContains("UserRoleId")) {
-                dto.setUserRoleId((state.getUserRoleId() == null) ? null : new UserRoleIdDto(state.getUserRoleId()));
+                dto.setUserRoleId((state.getUserRoleId() == null) ? null : new UserRoleIdDtoWrapper(state.getUserRoleId()));
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());

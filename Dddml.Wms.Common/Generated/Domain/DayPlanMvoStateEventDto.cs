@@ -81,9 +81,17 @@ namespace Dddml.Wms.Domain
 
 		public virtual DateTime? PersonBirthDate { get; set; }
 
-		public virtual PersonalName PersonLoves { get; set; }
+		private PersonalNameDto _personLoves = new PersonalNameDto();
 
-		public virtual Contact PersonEmergencyContact { get; set; }
+		public virtual PersonalNameDto PersonLoves { get { return _personLoves; } set { _personLoves = value; } }
+
+		PersonalName IDayPlanMvoStateEvent.PersonLoves { get { return this.PersonLoves.ToPersonalName(); } set { PersonLoves = new PersonalNameDto(value); } }
+
+		private ContactDto _personEmergencyContact = new ContactDto();
+
+		public virtual ContactDto PersonEmergencyContact { get { return _personEmergencyContact; } set { _personEmergencyContact = value; } }
+
+		Contact IDayPlanMvoStateEvent.PersonEmergencyContact { get { return this.PersonEmergencyContact.ToContact(); } set { PersonEmergencyContact = new ContactDto(value); } }
 
 		public virtual string PersonCreatedBy { get; set; }
 

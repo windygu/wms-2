@@ -28,23 +28,27 @@ public class UserClaimStateEventIdFlattenedDto
         }
     }
 	
-    private UserClaimStateEventId value;
+    private UserClaimStateEventIdDto value;
 
     public UserClaimStateEventIdFlattenedDto()
     {
-        this(new UserClaimStateEventId());
+        this(new UserClaimStateEventIdDto());
     }
 
-    public UserClaimStateEventIdFlattenedDto(UserClaimStateEventId value)
+    public UserClaimStateEventIdFlattenedDto(UserClaimStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public UserClaimStateEventId toUserClaimStateEventId()
+    public UserClaimStateEventIdDto toUserClaimStateEventIdDto()
     {
         return this.value;
     }
 
+    public UserClaimStateEventId toUserClaimStateEventId()
+    {
+        return this.value.toUserClaimStateEventId();
+    }
 
     public String getUserId()
     {

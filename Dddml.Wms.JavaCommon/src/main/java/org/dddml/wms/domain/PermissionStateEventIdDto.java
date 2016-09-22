@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class PermissionStateEventIdDto
 {
-	
-    private PermissionStateEventId value;
 
     public PermissionStateEventIdDto()
     {
-        this(new PermissionStateEventId());
-    }
-
-    public PermissionStateEventIdDto(PermissionStateEventId value)
-    {
-        this.value = value;
     }
 
     public PermissionStateEventId toPermissionStateEventId()
     {
-        return this.value;
+        PermissionStateEventId v = new PermissionStateEventId();
+        v.setPermissionId(this.getPermissionId());
+        v.setVersion(this.getVersion());
+        return v;
     }
+
+    private String permissionId;
 
     public String getPermissionId()
     {
-        return this.value.getPermissionId();
+        return this.permissionId;
     }
 
     public void setPermissionId(String permissionId)
     {
-        this.value.setPermissionId(permissionId);
+        this.permissionId = permissionId;
     }
+
+    private Long version;
 
     public Long getVersion()
     {
-        return this.value.getVersion();
+        return this.version;
     }
 
     public void setVersion(Long version)
     {
-        this.value.setVersion(version);
+        this.version = version;
     }
 
 
@@ -48,18 +47,29 @@ public class PermissionStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != PermissionStateEventIdDto.class) {
             return false;
         }
 
         PermissionStateEventIdDto other = (PermissionStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (permissionId == other.permissionId || (permissionId != null && permissionId.equals(other.permissionId)))
+            && (version == other.version || (version != null && version.equals(other.version)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.permissionId != null) {
+            hash += 13 * this.permissionId.hashCode();
+        }
+        if (this.version != null) {
+            hash += 13 * this.version.hashCode();
+        }
+        return hash;
     }
 
 }

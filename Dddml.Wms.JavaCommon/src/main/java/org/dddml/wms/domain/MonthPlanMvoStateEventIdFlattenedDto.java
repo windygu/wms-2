@@ -32,23 +32,27 @@ public class MonthPlanMvoStateEventIdFlattenedDto
         }
     }
 	
-    private MonthPlanMvoStateEventId value;
+    private MonthPlanMvoStateEventIdDto value;
 
     public MonthPlanMvoStateEventIdFlattenedDto()
     {
-        this(new MonthPlanMvoStateEventId());
+        this(new MonthPlanMvoStateEventIdDto());
     }
 
-    public MonthPlanMvoStateEventIdFlattenedDto(MonthPlanMvoStateEventId value)
+    public MonthPlanMvoStateEventIdFlattenedDto(MonthPlanMvoStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public MonthPlanMvoStateEventId toMonthPlanMvoStateEventId()
+    public MonthPlanMvoStateEventIdDto toMonthPlanMvoStateEventIdDto()
     {
         return this.value;
     }
 
+    public MonthPlanMvoStateEventId toMonthPlanMvoStateEventId()
+    {
+        return this.value.toMonthPlanMvoStateEventId();
+    }
 
     public String getMonthPlanIdPersonalNameFirstName()
     {

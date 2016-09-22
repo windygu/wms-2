@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class TeamStateEventIdDto
 {
-	
-    private TeamStateEventId value;
 
     public TeamStateEventIdDto()
     {
-        this(new TeamStateEventId());
-    }
-
-    public TeamStateEventIdDto(TeamStateEventId value)
-    {
-        this.value = value;
     }
 
     public TeamStateEventId toTeamStateEventId()
     {
-        return this.value;
+        TeamStateEventId v = new TeamStateEventId();
+        v.setTeamName(this.getTeamName());
+        v.setVersion(this.getVersion());
+        return v;
     }
+
+    private String teamName;
 
     public String getTeamName()
     {
-        return this.value.getTeamName();
+        return this.teamName;
     }
 
     public void setTeamName(String teamName)
     {
-        this.value.setTeamName(teamName);
+        this.teamName = teamName;
     }
+
+    private Long version;
 
     public Long getVersion()
     {
-        return this.value.getVersion();
+        return this.version;
     }
 
     public void setVersion(Long version)
     {
-        this.value.setVersion(version);
+        this.version = version;
     }
 
 
@@ -48,18 +47,29 @@ public class TeamStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != TeamStateEventIdDto.class) {
             return false;
         }
 
         TeamStateEventIdDto other = (TeamStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (teamName == other.teamName || (teamName != null && teamName.equals(other.teamName)))
+            && (version == other.version || (version != null && version.equals(other.version)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.teamName != null) {
+            hash += 13 * this.teamName.hashCode();
+        }
+        if (this.version != null) {
+            hash += 13 * this.version.hashCode();
+        }
+        return hash;
     }
 
 }

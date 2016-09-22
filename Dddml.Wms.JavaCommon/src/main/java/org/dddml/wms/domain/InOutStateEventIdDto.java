@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class InOutStateEventIdDto
 {
-	
-    private InOutStateEventId value;
 
     public InOutStateEventIdDto()
     {
-        this(new InOutStateEventId());
-    }
-
-    public InOutStateEventIdDto(InOutStateEventId value)
-    {
-        this.value = value;
     }
 
     public InOutStateEventId toInOutStateEventId()
     {
-        return this.value;
+        InOutStateEventId v = new InOutStateEventId();
+        v.setDocumentNumber(this.getDocumentNumber());
+        v.setVersion(this.getVersion());
+        return v;
     }
+
+    private String documentNumber;
 
     public String getDocumentNumber()
     {
-        return this.value.getDocumentNumber();
+        return this.documentNumber;
     }
 
     public void setDocumentNumber(String documentNumber)
     {
-        this.value.setDocumentNumber(documentNumber);
+        this.documentNumber = documentNumber;
     }
+
+    private Long version;
 
     public Long getVersion()
     {
-        return this.value.getVersion();
+        return this.version;
     }
 
     public void setVersion(Long version)
     {
-        this.value.setVersion(version);
+        this.version = version;
     }
 
 
@@ -48,18 +47,29 @@ public class InOutStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != InOutStateEventIdDto.class) {
             return false;
         }
 
         InOutStateEventIdDto other = (InOutStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (documentNumber == other.documentNumber || (documentNumber != null && documentNumber.equals(other.documentNumber)))
+            && (version == other.version || (version != null && version.equals(other.version)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.documentNumber != null) {
+            hash += 13 * this.documentNumber.hashCode();
+        }
+        if (this.version != null) {
+            hash += 13 * this.version.hashCode();
+        }
+        return hash;
     }
 
 }

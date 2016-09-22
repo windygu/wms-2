@@ -26,23 +26,27 @@ public class OrganizationStructureTypeStateEventIdFlattenedDto
         }
     }
 	
-    private OrganizationStructureTypeStateEventId value;
+    private OrganizationStructureTypeStateEventIdDto value;
 
     public OrganizationStructureTypeStateEventIdFlattenedDto()
     {
-        this(new OrganizationStructureTypeStateEventId());
+        this(new OrganizationStructureTypeStateEventIdDto());
     }
 
-    public OrganizationStructureTypeStateEventIdFlattenedDto(OrganizationStructureTypeStateEventId value)
+    public OrganizationStructureTypeStateEventIdFlattenedDto(OrganizationStructureTypeStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public OrganizationStructureTypeStateEventId toOrganizationStructureTypeStateEventId()
+    public OrganizationStructureTypeStateEventIdDto toOrganizationStructureTypeStateEventIdDto()
     {
         return this.value;
     }
 
+    public OrganizationStructureTypeStateEventId toOrganizationStructureTypeStateEventId()
+    {
+        return this.value.toOrganizationStructureTypeStateEventId();
+    }
 
     public String getId()
     {

@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class AttributeUseMvoStateEventIdDto
 {
-	
-    private AttributeUseMvoStateEventId value;
 
     public AttributeUseMvoStateEventIdDto()
     {
-        this(new AttributeUseMvoStateEventId());
-    }
-
-    public AttributeUseMvoStateEventIdDto(AttributeUseMvoStateEventId value)
-    {
-        this.value = value;
     }
 
     public AttributeUseMvoStateEventId toAttributeUseMvoStateEventId()
     {
-        return this.value;
+        AttributeUseMvoStateEventId v = new AttributeUseMvoStateEventId();
+        v.setAttributeSetAttributeUseId(this.getAttributeSetAttributeUseId().toAttributeSetAttributeUseId());
+        v.setAttributeSetVersion(this.getAttributeSetVersion());
+        return v;
     }
+
+    private AttributeSetAttributeUseIdDto attributeSetAttributeUseId = new AttributeSetAttributeUseIdDto();
 
     public AttributeSetAttributeUseIdDto getAttributeSetAttributeUseId()
     {
-        return new AttributeSetAttributeUseIdDto(this.value.getAttributeSetAttributeUseId());
+        return this.attributeSetAttributeUseId;
     }
 
     public void setAttributeSetAttributeUseId(AttributeSetAttributeUseIdDto attributeSetAttributeUseId)
     {
-        this.value.setAttributeSetAttributeUseId(attributeSetAttributeUseId.toAttributeSetAttributeUseId());
+        this.attributeSetAttributeUseId = attributeSetAttributeUseId;
     }
+
+    private Long attributeSetVersion;
 
     public Long getAttributeSetVersion()
     {
-        return this.value.getAttributeSetVersion();
+        return this.attributeSetVersion;
     }
 
     public void setAttributeSetVersion(Long attributeSetVersion)
     {
-        this.value.setAttributeSetVersion(attributeSetVersion);
+        this.attributeSetVersion = attributeSetVersion;
     }
 
 
@@ -48,18 +47,29 @@ public class AttributeUseMvoStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != AttributeUseMvoStateEventIdDto.class) {
             return false;
         }
 
         AttributeUseMvoStateEventIdDto other = (AttributeUseMvoStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (attributeSetAttributeUseId == other.attributeSetAttributeUseId || (attributeSetAttributeUseId != null && attributeSetAttributeUseId.equals(other.attributeSetAttributeUseId)))
+            && (attributeSetVersion == other.attributeSetVersion || (attributeSetVersion != null && attributeSetVersion.equals(other.attributeSetVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.attributeSetAttributeUseId != null) {
+            hash += 13 * this.attributeSetAttributeUseId.hashCode();
+        }
+        if (this.attributeSetVersion != null) {
+            hash += 13 * this.attributeSetVersion.hashCode();
+        }
+        return hash;
     }
 
 }

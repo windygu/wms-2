@@ -30,23 +30,27 @@ public class YearPlanMvoStateEventIdFlattenedDto
         }
     }
 	
-    private YearPlanMvoStateEventId value;
+    private YearPlanMvoStateEventIdDto value;
 
     public YearPlanMvoStateEventIdFlattenedDto()
     {
-        this(new YearPlanMvoStateEventId());
+        this(new YearPlanMvoStateEventIdDto());
     }
 
-    public YearPlanMvoStateEventIdFlattenedDto(YearPlanMvoStateEventId value)
+    public YearPlanMvoStateEventIdFlattenedDto(YearPlanMvoStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public YearPlanMvoStateEventId toYearPlanMvoStateEventId()
+    public YearPlanMvoStateEventIdDto toYearPlanMvoStateEventIdDto()
     {
         return this.value;
     }
 
+    public YearPlanMvoStateEventId toYearPlanMvoStateEventId()
+    {
+        return this.value.toYearPlanMvoStateEventId();
+    }
 
     public String getYearPlanIdPersonalNameFirstName()
     {

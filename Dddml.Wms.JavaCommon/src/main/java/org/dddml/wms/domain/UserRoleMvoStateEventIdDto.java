@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class UserRoleMvoStateEventIdDto
 {
-	
-    private UserRoleMvoStateEventId value;
 
     public UserRoleMvoStateEventIdDto()
     {
-        this(new UserRoleMvoStateEventId());
-    }
-
-    public UserRoleMvoStateEventIdDto(UserRoleMvoStateEventId value)
-    {
-        this.value = value;
     }
 
     public UserRoleMvoStateEventId toUserRoleMvoStateEventId()
     {
-        return this.value;
+        UserRoleMvoStateEventId v = new UserRoleMvoStateEventId();
+        v.setUserRoleId(this.getUserRoleId().toUserRoleId());
+        v.setUserVersion(this.getUserVersion());
+        return v;
     }
+
+    private UserRoleIdDto userRoleId = new UserRoleIdDto();
 
     public UserRoleIdDto getUserRoleId()
     {
-        return new UserRoleIdDto(this.value.getUserRoleId());
+        return this.userRoleId;
     }
 
     public void setUserRoleId(UserRoleIdDto userRoleId)
     {
-        this.value.setUserRoleId(userRoleId.toUserRoleId());
+        this.userRoleId = userRoleId;
     }
+
+    private Long userVersion;
 
     public Long getUserVersion()
     {
-        return this.value.getUserVersion();
+        return this.userVersion;
     }
 
     public void setUserVersion(Long userVersion)
     {
-        this.value.setUserVersion(userVersion);
+        this.userVersion = userVersion;
     }
 
 
@@ -48,18 +47,29 @@ public class UserRoleMvoStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != UserRoleMvoStateEventIdDto.class) {
             return false;
         }
 
         UserRoleMvoStateEventIdDto other = (UserRoleMvoStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (userRoleId == other.userRoleId || (userRoleId != null && userRoleId.equals(other.userRoleId)))
+            && (userVersion == other.userVersion || (userVersion != null && userVersion.equals(other.userVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.userRoleId != null) {
+            hash += 13 * this.userRoleId.hashCode();
+        }
+        if (this.userVersion != null) {
+            hash += 13 * this.userVersion.hashCode();
+        }
+        return hash;
     }
 
 }

@@ -3,52 +3,54 @@ package org.dddml.wms.domain;
 
 public class UserLoginStateEventIdDto
 {
-	
-    private UserLoginStateEventId value;
 
     public UserLoginStateEventIdDto()
     {
-        this(new UserLoginStateEventId());
-    }
-
-    public UserLoginStateEventIdDto(UserLoginStateEventId value)
-    {
-        this.value = value;
     }
 
     public UserLoginStateEventId toUserLoginStateEventId()
     {
-        return this.value;
+        UserLoginStateEventId v = new UserLoginStateEventId();
+        v.setUserId(this.getUserId());
+        v.setLoginKey(this.getLoginKey().toLoginKey());
+        v.setUserVersion(this.getUserVersion());
+        return v;
     }
+
+    private String userId;
 
     public String getUserId()
     {
-        return this.value.getUserId();
+        return this.userId;
     }
 
     public void setUserId(String userId)
     {
-        this.value.setUserId(userId);
+        this.userId = userId;
     }
+
+    private LoginKeyDto loginKey = new LoginKeyDto();
 
     public LoginKeyDto getLoginKey()
     {
-        return new LoginKeyDto(this.value.getLoginKey());
+        return this.loginKey;
     }
 
     public void setLoginKey(LoginKeyDto loginKey)
     {
-        this.value.setLoginKey(loginKey.toLoginKey());
+        this.loginKey = loginKey;
     }
+
+    private Long userVersion;
 
     public Long getUserVersion()
     {
-        return this.value.getUserVersion();
+        return this.userVersion;
     }
 
     public void setUserVersion(Long userVersion)
     {
-        this.value.setUserVersion(userVersion);
+        this.userVersion = userVersion;
     }
 
 
@@ -58,18 +60,33 @@ public class UserLoginStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != UserLoginStateEventIdDto.class) {
             return false;
         }
 
         UserLoginStateEventIdDto other = (UserLoginStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (userId == other.userId || (userId != null && userId.equals(other.userId)))
+            && (loginKey == other.loginKey || (loginKey != null && loginKey.equals(other.loginKey)))
+            && (userVersion == other.userVersion || (userVersion != null && userVersion.equals(other.userVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.userId != null) {
+            hash += 13 * this.userId.hashCode();
+        }
+        if (this.loginKey != null) {
+            hash += 13 * this.loginKey.hashCode();
+        }
+        if (this.userVersion != null) {
+            hash += 13 * this.userVersion.hashCode();
+        }
+        return hash;
     }
 
 }

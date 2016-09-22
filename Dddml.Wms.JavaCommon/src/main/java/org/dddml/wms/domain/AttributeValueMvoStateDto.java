@@ -356,7 +356,7 @@ public class AttributeValueMvoStateDto
         {
             AttributeValueMvoStateDto dto = new AttributeValueMvoStateDto();
             if (returnedFieldsContains("AttributeValueId")) {
-                dto.setAttributeValueId((state.getAttributeValueId() == null) ? null : new AttributeValueIdDto(state.getAttributeValueId()));
+                dto.setAttributeValueId((state.getAttributeValueId() == null) ? null : new AttributeValueIdDtoWrapper(state.getAttributeValueId()));
             }
             if (returnedFieldsContains("Name")) {
                 dto.setName(state.getName());

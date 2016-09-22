@@ -280,7 +280,7 @@ public class AttributeValueMvoResource {
             List<AttributeValueMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 AttributeValueMvoStateDto dto = new AttributeValueMvoStateDto();
-                dto.setAttributeValueId(new AttributeValueIdDto(id));
+                dto.setAttributeValueId(new AttributeValueIdDtoWrapper(id));
                 states.add(dto);
             });
             return states.toArray(new AttributeValueMvoStateDto[0]);

@@ -28,23 +28,27 @@ public class PersonStateEventIdFlattenedDto
         }
     }
 	
-    private PersonStateEventId value;
+    private PersonStateEventIdDto value;
 
     public PersonStateEventIdFlattenedDto()
     {
-        this(new PersonStateEventId());
+        this(new PersonStateEventIdDto());
     }
 
-    public PersonStateEventIdFlattenedDto(PersonStateEventId value)
+    public PersonStateEventIdFlattenedDto(PersonStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public PersonStateEventId toPersonStateEventId()
+    public PersonStateEventIdDto toPersonStateEventIdDto()
     {
         return this.value;
     }
 
+    public PersonStateEventId toPersonStateEventId()
+    {
+        return this.value.toPersonStateEventId();
+    }
 
     public String getPersonalNameFirstName()
     {

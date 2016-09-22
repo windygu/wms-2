@@ -26,23 +26,27 @@ public class LocatorStateEventIdFlattenedDto
         }
     }
 	
-    private LocatorStateEventId value;
+    private LocatorStateEventIdDto value;
 
     public LocatorStateEventIdFlattenedDto()
     {
-        this(new LocatorStateEventId());
+        this(new LocatorStateEventIdDto());
     }
 
-    public LocatorStateEventIdFlattenedDto(LocatorStateEventId value)
+    public LocatorStateEventIdFlattenedDto(LocatorStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public LocatorStateEventId toLocatorStateEventId()
+    public LocatorStateEventIdDto toLocatorStateEventIdDto()
     {
         return this.value;
     }
 
+    public LocatorStateEventId toLocatorStateEventId()
+    {
+        return this.value.toLocatorStateEventId();
+    }
 
     public String getLocatorId()
     {

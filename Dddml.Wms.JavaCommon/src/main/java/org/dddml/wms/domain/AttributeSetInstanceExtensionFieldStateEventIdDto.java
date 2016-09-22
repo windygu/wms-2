@@ -3,52 +3,54 @@ package org.dddml.wms.domain;
 
 public class AttributeSetInstanceExtensionFieldStateEventIdDto
 {
-	
-    private AttributeSetInstanceExtensionFieldStateEventId value;
 
     public AttributeSetInstanceExtensionFieldStateEventIdDto()
     {
-        this(new AttributeSetInstanceExtensionFieldStateEventId());
-    }
-
-    public AttributeSetInstanceExtensionFieldStateEventIdDto(AttributeSetInstanceExtensionFieldStateEventId value)
-    {
-        this.value = value;
     }
 
     public AttributeSetInstanceExtensionFieldStateEventId toAttributeSetInstanceExtensionFieldStateEventId()
     {
-        return this.value;
+        AttributeSetInstanceExtensionFieldStateEventId v = new AttributeSetInstanceExtensionFieldStateEventId();
+        v.setGroupId(this.getGroupId());
+        v.setIndex(this.getIndex());
+        v.setAttributeSetInstanceExtensionFieldGroupVersion(this.getAttributeSetInstanceExtensionFieldGroupVersion());
+        return v;
     }
+
+    private String groupId;
 
     public String getGroupId()
     {
-        return this.value.getGroupId();
+        return this.groupId;
     }
 
     public void setGroupId(String groupId)
     {
-        this.value.setGroupId(groupId);
+        this.groupId = groupId;
     }
+
+    private String index;
 
     public String getIndex()
     {
-        return this.value.getIndex();
+        return this.index;
     }
 
     public void setIndex(String index)
     {
-        this.value.setIndex(index);
+        this.index = index;
     }
+
+    private Long attributeSetInstanceExtensionFieldGroupVersion;
 
     public Long getAttributeSetInstanceExtensionFieldGroupVersion()
     {
-        return this.value.getAttributeSetInstanceExtensionFieldGroupVersion();
+        return this.attributeSetInstanceExtensionFieldGroupVersion;
     }
 
     public void setAttributeSetInstanceExtensionFieldGroupVersion(Long attributeSetInstanceExtensionFieldGroupVersion)
     {
-        this.value.setAttributeSetInstanceExtensionFieldGroupVersion(attributeSetInstanceExtensionFieldGroupVersion);
+        this.attributeSetInstanceExtensionFieldGroupVersion = attributeSetInstanceExtensionFieldGroupVersion;
     }
 
 
@@ -58,18 +60,33 @@ public class AttributeSetInstanceExtensionFieldStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != AttributeSetInstanceExtensionFieldStateEventIdDto.class) {
             return false;
         }
 
         AttributeSetInstanceExtensionFieldStateEventIdDto other = (AttributeSetInstanceExtensionFieldStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (groupId == other.groupId || (groupId != null && groupId.equals(other.groupId)))
+            && (index == other.index || (index != null && index.equals(other.index)))
+            && (attributeSetInstanceExtensionFieldGroupVersion == other.attributeSetInstanceExtensionFieldGroupVersion || (attributeSetInstanceExtensionFieldGroupVersion != null && attributeSetInstanceExtensionFieldGroupVersion.equals(other.attributeSetInstanceExtensionFieldGroupVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.groupId != null) {
+            hash += 13 * this.groupId.hashCode();
+        }
+        if (this.index != null) {
+            hash += 13 * this.index.hashCode();
+        }
+        if (this.attributeSetInstanceExtensionFieldGroupVersion != null) {
+            hash += 13 * this.attributeSetInstanceExtensionFieldGroupVersion.hashCode();
+        }
+        return hash;
     }
 
 }

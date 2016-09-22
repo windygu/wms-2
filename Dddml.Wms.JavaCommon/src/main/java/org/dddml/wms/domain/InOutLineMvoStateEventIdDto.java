@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class InOutLineMvoStateEventIdDto
 {
-	
-    private InOutLineMvoStateEventId value;
 
     public InOutLineMvoStateEventIdDto()
     {
-        this(new InOutLineMvoStateEventId());
-    }
-
-    public InOutLineMvoStateEventIdDto(InOutLineMvoStateEventId value)
-    {
-        this.value = value;
     }
 
     public InOutLineMvoStateEventId toInOutLineMvoStateEventId()
     {
-        return this.value;
+        InOutLineMvoStateEventId v = new InOutLineMvoStateEventId();
+        v.setInOutLineId(this.getInOutLineId().toInOutLineId());
+        v.setInOutVersion(this.getInOutVersion());
+        return v;
     }
+
+    private InOutLineIdDto inOutLineId = new InOutLineIdDto();
 
     public InOutLineIdDto getInOutLineId()
     {
-        return new InOutLineIdDto(this.value.getInOutLineId());
+        return this.inOutLineId;
     }
 
     public void setInOutLineId(InOutLineIdDto inOutLineId)
     {
-        this.value.setInOutLineId(inOutLineId.toInOutLineId());
+        this.inOutLineId = inOutLineId;
     }
+
+    private Long inOutVersion;
 
     public Long getInOutVersion()
     {
-        return this.value.getInOutVersion();
+        return this.inOutVersion;
     }
 
     public void setInOutVersion(Long inOutVersion)
     {
-        this.value.setInOutVersion(inOutVersion);
+        this.inOutVersion = inOutVersion;
     }
 
 
@@ -48,18 +47,29 @@ public class InOutLineMvoStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != InOutLineMvoStateEventIdDto.class) {
             return false;
         }
 
         InOutLineMvoStateEventIdDto other = (InOutLineMvoStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (inOutLineId == other.inOutLineId || (inOutLineId != null && inOutLineId.equals(other.inOutLineId)))
+            && (inOutVersion == other.inOutVersion || (inOutVersion != null && inOutVersion.equals(other.inOutVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.inOutLineId != null) {
+            hash += 13 * this.inOutLineId.hashCode();
+        }
+        if (this.inOutVersion != null) {
+            hash += 13 * this.inOutVersion.hashCode();
+        }
+        return hash;
     }
 
 }

@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class UserLoginIdDto
 {
-	
-    private UserLoginId value;
 
     public UserLoginIdDto()
     {
-        this(new UserLoginId());
-    }
-
-    public UserLoginIdDto(UserLoginId value)
-    {
-        this.value = value;
     }
 
     public UserLoginId toUserLoginId()
     {
-        return this.value;
+        UserLoginId v = new UserLoginId();
+        v.setUserId(this.getUserId());
+        v.setLoginKey(this.getLoginKey().toLoginKey());
+        return v;
     }
+
+    private String userId;
 
     public String getUserId()
     {
-        return this.value.getUserId();
+        return this.userId;
     }
 
     public void setUserId(String userId)
     {
-        this.value.setUserId(userId);
+        this.userId = userId;
     }
+
+    private LoginKeyDto loginKey = new LoginKeyDto();
 
     public LoginKeyDto getLoginKey()
     {
-        return new LoginKeyDto(this.value.getLoginKey());
+        return this.loginKey;
     }
 
     public void setLoginKey(LoginKeyDto loginKey)
     {
-        this.value.setLoginKey(loginKey.toLoginKey());
+        this.loginKey = loginKey;
     }
 
 
@@ -48,18 +47,29 @@ public class UserLoginIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != UserLoginIdDto.class) {
             return false;
         }
 
         UserLoginIdDto other = (UserLoginIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (userId == other.userId || (userId != null && userId.equals(other.userId)))
+            && (loginKey == other.loginKey || (loginKey != null && loginKey.equals(other.loginKey)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.userId != null) {
+            hash += 13 * this.userId.hashCode();
+        }
+        if (this.loginKey != null) {
+            hash += 13 * this.loginKey.hashCode();
+        }
+        return hash;
     }
 
 }

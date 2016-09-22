@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class LoginKeyDto
 {
-	
-    private LoginKey value;
 
     public LoginKeyDto()
     {
-        this(new LoginKey());
-    }
-
-    public LoginKeyDto(LoginKey value)
-    {
-        this.value = value;
     }
 
     public LoginKey toLoginKey()
     {
-        return this.value;
+        LoginKey v = new LoginKey();
+        v.setLoginProvider(this.getLoginProvider());
+        v.setProviderKey(this.getProviderKey());
+        return v;
     }
+
+    private String loginProvider;
 
     public String getLoginProvider()
     {
-        return this.value.getLoginProvider();
+        return this.loginProvider;
     }
 
     public void setLoginProvider(String loginProvider)
     {
-        this.value.setLoginProvider(loginProvider);
+        this.loginProvider = loginProvider;
     }
+
+    private String providerKey;
 
     public String getProviderKey()
     {
-        return this.value.getProviderKey();
+        return this.providerKey;
     }
 
     public void setProviderKey(String providerKey)
     {
-        this.value.setProviderKey(providerKey);
+        this.providerKey = providerKey;
     }
 
 
@@ -48,18 +47,29 @@ public class LoginKeyDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != LoginKeyDto.class) {
             return false;
         }
 
         LoginKeyDto other = (LoginKeyDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (loginProvider == other.loginProvider || (loginProvider != null && loginProvider.equals(other.loginProvider)))
+            && (providerKey == other.providerKey || (providerKey != null && providerKey.equals(other.providerKey)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.loginProvider != null) {
+            hash += 13 * this.loginProvider.hashCode();
+        }
+        if (this.providerKey != null) {
+            hash += 13 * this.providerKey.hashCode();
+        }
+        return hash;
     }
 
 }

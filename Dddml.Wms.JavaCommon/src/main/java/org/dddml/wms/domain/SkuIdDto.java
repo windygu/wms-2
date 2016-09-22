@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class SkuIdDto
 {
-	
-    private SkuId value;
 
     public SkuIdDto()
     {
-        this(new SkuId());
-    }
-
-    public SkuIdDto(SkuId value)
-    {
-        this.value = value;
     }
 
     public SkuId toSkuId()
     {
-        return this.value;
+        SkuId v = new SkuId();
+        v.setProductId(this.getProductId());
+        v.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
+        return v;
     }
+
+    private String productId;
 
     public String getProductId()
     {
-        return this.value.getProductId();
+        return this.productId;
     }
 
     public void setProductId(String productId)
     {
-        this.value.setProductId(productId);
+        this.productId = productId;
     }
+
+    private String attributeSetInstanceId;
 
     public String getAttributeSetInstanceId()
     {
-        return this.value.getAttributeSetInstanceId();
+        return this.attributeSetInstanceId;
     }
 
     public void setAttributeSetInstanceId(String attributeSetInstanceId)
     {
-        this.value.setAttributeSetInstanceId(attributeSetInstanceId);
+        this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
 
@@ -48,18 +47,29 @@ public class SkuIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != SkuIdDto.class) {
             return false;
         }
 
         SkuIdDto other = (SkuIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (productId == other.productId || (productId != null && productId.equals(other.productId)))
+            && (attributeSetInstanceId == other.attributeSetInstanceId || (attributeSetInstanceId != null && attributeSetInstanceId.equals(other.attributeSetInstanceId)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.productId != null) {
+            hash += 13 * this.productId.hashCode();
+        }
+        if (this.attributeSetInstanceId != null) {
+            hash += 13 * this.attributeSetInstanceId.hashCode();
+        }
+        return hash;
     }
 
 }

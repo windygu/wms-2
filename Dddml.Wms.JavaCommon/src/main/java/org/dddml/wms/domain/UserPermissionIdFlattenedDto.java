@@ -26,23 +26,27 @@ public class UserPermissionIdFlattenedDto
         }
     }
 	
-    private UserPermissionId value;
+    private UserPermissionIdDto value;
 
     public UserPermissionIdFlattenedDto()
     {
-        this(new UserPermissionId());
+        this(new UserPermissionIdDto());
     }
 
-    public UserPermissionIdFlattenedDto(UserPermissionId value)
+    public UserPermissionIdFlattenedDto(UserPermissionIdDto value)
     {
         this.value = value;
     }
 
-    public UserPermissionId toUserPermissionId()
+    public UserPermissionIdDto toUserPermissionIdDto()
     {
         return this.value;
     }
 
+    public UserPermissionId toUserPermissionId()
+    {
+        return this.value.toUserPermissionId();
+    }
 
     public String getUserId()
     {

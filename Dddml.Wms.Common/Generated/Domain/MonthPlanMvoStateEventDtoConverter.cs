@@ -54,8 +54,8 @@ namespace Dddml.Wms.Domain
             dto.YearPlanActive = e.YearPlanActive;
             dto.YearPlanDeleted = e.YearPlanDeleted;
             dto.PersonBirthDate = e.PersonBirthDate;
-            dto.PersonLoves = e.PersonLoves;
-            dto.PersonEmergencyContact = e.PersonEmergencyContact;
+            dto.PersonLoves = new PersonalNameDto(e.PersonLoves);
+            dto.PersonEmergencyContact = new ContactDto(e.PersonEmergencyContact);
             dto.PersonCreatedBy = e.PersonCreatedBy;
             dto.PersonUpdatedBy = e.PersonUpdatedBy;
             dto.PersonCreatedAt = e.PersonCreatedAt;
@@ -84,8 +84,8 @@ namespace Dddml.Wms.Domain
             dto.YearPlanActive = e.YearPlanActive;
             dto.YearPlanDeleted = e.YearPlanDeleted;
             dto.PersonBirthDate = e.PersonBirthDate;
-            dto.PersonLoves = e.PersonLoves;
-            dto.PersonEmergencyContact = e.PersonEmergencyContact;
+            dto.PersonLoves = new PersonalNameDto(e.PersonLoves);
+            dto.PersonEmergencyContact = new ContactDto(e.PersonEmergencyContact);
             dto.PersonCreatedBy = e.PersonCreatedBy;
             dto.PersonUpdatedBy = e.PersonUpdatedBy;
             dto.PersonCreatedAt = e.PersonCreatedAt;

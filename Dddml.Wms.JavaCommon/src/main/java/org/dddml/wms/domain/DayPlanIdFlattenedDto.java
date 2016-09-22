@@ -32,23 +32,27 @@ public class DayPlanIdFlattenedDto
         }
     }
 	
-    private DayPlanId value;
+    private DayPlanIdDto value;
 
     public DayPlanIdFlattenedDto()
     {
-        this(new DayPlanId());
+        this(new DayPlanIdDto());
     }
 
-    public DayPlanIdFlattenedDto(DayPlanId value)
+    public DayPlanIdFlattenedDto(DayPlanIdDto value)
     {
         this.value = value;
     }
 
-    public DayPlanId toDayPlanId()
+    public DayPlanIdDto toDayPlanIdDto()
     {
         return this.value;
     }
 
+    public DayPlanId toDayPlanId()
+    {
+        return this.value.toDayPlanId();
+    }
 
     public String getPersonalNameFirstName()
     {

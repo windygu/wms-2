@@ -3,52 +3,54 @@ package org.dddml.wms.domain;
 
 public class YearPlanStateEventIdDto
 {
-	
-    private YearPlanStateEventId value;
 
     public YearPlanStateEventIdDto()
     {
-        this(new YearPlanStateEventId());
-    }
-
-    public YearPlanStateEventIdDto(YearPlanStateEventId value)
-    {
-        this.value = value;
     }
 
     public YearPlanStateEventId toYearPlanStateEventId()
     {
-        return this.value;
+        YearPlanStateEventId v = new YearPlanStateEventId();
+        v.setPersonalName(this.getPersonalName().toPersonalName());
+        v.setYear(this.getYear());
+        v.setPersonVersion(this.getPersonVersion());
+        return v;
     }
+
+    private PersonalNameDto personalName = new PersonalNameDto();
 
     public PersonalNameDto getPersonalName()
     {
-        return new PersonalNameDto(this.value.getPersonalName());
+        return this.personalName;
     }
 
     public void setPersonalName(PersonalNameDto personalName)
     {
-        this.value.setPersonalName(personalName.toPersonalName());
+        this.personalName = personalName;
     }
+
+    private Integer year;
 
     public Integer getYear()
     {
-        return this.value.getYear();
+        return this.year;
     }
 
     public void setYear(Integer year)
     {
-        this.value.setYear(year);
+        this.year = year;
     }
+
+    private Long personVersion;
 
     public Long getPersonVersion()
     {
-        return this.value.getPersonVersion();
+        return this.personVersion;
     }
 
     public void setPersonVersion(Long personVersion)
     {
-        this.value.setPersonVersion(personVersion);
+        this.personVersion = personVersion;
     }
 
 
@@ -58,18 +60,33 @@ public class YearPlanStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != YearPlanStateEventIdDto.class) {
             return false;
         }
 
         YearPlanStateEventIdDto other = (YearPlanStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
+            && (year == other.year || (year != null && year.equals(other.year)))
+            && (personVersion == other.personVersion || (personVersion != null && personVersion.equals(other.personVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.personalName != null) {
+            hash += 13 * this.personalName.hashCode();
+        }
+        if (this.year != null) {
+            hash += 13 * this.year.hashCode();
+        }
+        if (this.personVersion != null) {
+            hash += 13 * this.personVersion.hashCode();
+        }
+        return hash;
     }
 
 }

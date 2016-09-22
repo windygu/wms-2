@@ -28,23 +28,27 @@ public class InOutLineIdFlattenedDto
         }
     }
 	
-    private InOutLineId value;
+    private InOutLineIdDto value;
 
     public InOutLineIdFlattenedDto()
     {
-        this(new InOutLineId());
+        this(new InOutLineIdDto());
     }
 
-    public InOutLineIdFlattenedDto(InOutLineId value)
+    public InOutLineIdFlattenedDto(InOutLineIdDto value)
     {
         this.value = value;
     }
 
-    public InOutLineId toInOutLineId()
+    public InOutLineIdDto toInOutLineIdDto()
     {
         return this.value;
     }
 
+    public InOutLineId toInOutLineId()
+    {
+        return this.value.toInOutLineId();
+    }
 
     public String getInOutDocumentNumber()
     {

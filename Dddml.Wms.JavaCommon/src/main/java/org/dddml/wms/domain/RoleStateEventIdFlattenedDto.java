@@ -26,23 +26,27 @@ public class RoleStateEventIdFlattenedDto
         }
     }
 	
-    private RoleStateEventId value;
+    private RoleStateEventIdDto value;
 
     public RoleStateEventIdFlattenedDto()
     {
-        this(new RoleStateEventId());
+        this(new RoleStateEventIdDto());
     }
 
-    public RoleStateEventIdFlattenedDto(RoleStateEventId value)
+    public RoleStateEventIdFlattenedDto(RoleStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public RoleStateEventId toRoleStateEventId()
+    public RoleStateEventIdDto toRoleStateEventIdDto()
     {
         return this.value;
     }
 
+    public RoleStateEventId toRoleStateEventId()
+    {
+        return this.value.toRoleStateEventId();
+    }
 
     public String getRoleId()
     {

@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class AttributeValueIdDto
 {
-	
-    private AttributeValueId value;
 
     public AttributeValueIdDto()
     {
-        this(new AttributeValueId());
-    }
-
-    public AttributeValueIdDto(AttributeValueId value)
-    {
-        this.value = value;
     }
 
     public AttributeValueId toAttributeValueId()
     {
-        return this.value;
+        AttributeValueId v = new AttributeValueId();
+        v.setAttributeId(this.getAttributeId());
+        v.setValue(this.getValue());
+        return v;
     }
+
+    private String attributeId;
 
     public String getAttributeId()
     {
-        return this.value.getAttributeId();
+        return this.attributeId;
     }
 
     public void setAttributeId(String attributeId)
     {
-        this.value.setAttributeId(attributeId);
+        this.attributeId = attributeId;
     }
+
+    private String value;
 
     public String getValue()
     {
-        return this.value.getValue();
+        return this.value;
     }
 
     public void setValue(String value)
     {
-        this.value.setValue(value);
+        this.value = value;
     }
 
 
@@ -48,18 +47,29 @@ public class AttributeValueIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != AttributeValueIdDto.class) {
             return false;
         }
 
         AttributeValueIdDto other = (AttributeValueIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (attributeId == other.attributeId || (attributeId != null && attributeId.equals(other.attributeId)))
+            && (value == other.value || (value != null && value.equals(other.value)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.attributeId != null) {
+            hash += 13 * this.attributeId.hashCode();
+        }
+        if (this.value != null) {
+            hash += 13 * this.value.hashCode();
+        }
+        return hash;
     }
 
 }

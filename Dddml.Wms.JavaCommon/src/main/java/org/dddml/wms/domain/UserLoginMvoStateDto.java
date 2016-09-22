@@ -332,7 +332,7 @@ public class UserLoginMvoStateDto
         {
             UserLoginMvoStateDto dto = new UserLoginMvoStateDto();
             if (returnedFieldsContains("UserLoginId")) {
-                dto.setUserLoginId((state.getUserLoginId() == null) ? null : new UserLoginIdDto(state.getUserLoginId()));
+                dto.setUserLoginId((state.getUserLoginId() == null) ? null : new UserLoginIdDtoWrapper(state.getUserLoginId()));
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());

@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class UserStateEventIdDto
 {
-	
-    private UserStateEventId value;
 
     public UserStateEventIdDto()
     {
-        this(new UserStateEventId());
-    }
-
-    public UserStateEventIdDto(UserStateEventId value)
-    {
-        this.value = value;
     }
 
     public UserStateEventId toUserStateEventId()
     {
-        return this.value;
+        UserStateEventId v = new UserStateEventId();
+        v.setUserId(this.getUserId());
+        v.setVersion(this.getVersion());
+        return v;
     }
+
+    private String userId;
 
     public String getUserId()
     {
-        return this.value.getUserId();
+        return this.userId;
     }
 
     public void setUserId(String userId)
     {
-        this.value.setUserId(userId);
+        this.userId = userId;
     }
+
+    private Long version;
 
     public Long getVersion()
     {
-        return this.value.getVersion();
+        return this.version;
     }
 
     public void setVersion(Long version)
     {
-        this.value.setVersion(version);
+        this.version = version;
     }
 
 
@@ -48,18 +47,29 @@ public class UserStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != UserStateEventIdDto.class) {
             return false;
         }
 
         UserStateEventIdDto other = (UserStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (userId == other.userId || (userId != null && userId.equals(other.userId)))
+            && (version == other.version || (version != null && version.equals(other.version)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.userId != null) {
+            hash += 13 * this.userId.hashCode();
+        }
+        if (this.version != null) {
+            hash += 13 * this.version.hashCode();
+        }
+        return hash;
     }
 
 }

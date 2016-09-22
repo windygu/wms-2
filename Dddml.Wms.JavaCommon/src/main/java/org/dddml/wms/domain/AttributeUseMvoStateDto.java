@@ -284,7 +284,7 @@ public class AttributeUseMvoStateDto
         {
             AttributeUseMvoStateDto dto = new AttributeUseMvoStateDto();
             if (returnedFieldsContains("AttributeSetAttributeUseId")) {
-                dto.setAttributeSetAttributeUseId((state.getAttributeSetAttributeUseId() == null) ? null : new AttributeSetAttributeUseIdDto(state.getAttributeSetAttributeUseId()));
+                dto.setAttributeSetAttributeUseId((state.getAttributeSetAttributeUseId() == null) ? null : new AttributeSetAttributeUseIdDtoWrapper(state.getAttributeSetAttributeUseId()));
             }
             if (returnedFieldsContains("SequenceNumber")) {
                 dto.setSequenceNumber(state.getSequenceNumber());

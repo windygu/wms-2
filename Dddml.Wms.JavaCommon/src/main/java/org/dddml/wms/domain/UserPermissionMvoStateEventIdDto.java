@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class UserPermissionMvoStateEventIdDto
 {
-	
-    private UserPermissionMvoStateEventId value;
 
     public UserPermissionMvoStateEventIdDto()
     {
-        this(new UserPermissionMvoStateEventId());
-    }
-
-    public UserPermissionMvoStateEventIdDto(UserPermissionMvoStateEventId value)
-    {
-        this.value = value;
     }
 
     public UserPermissionMvoStateEventId toUserPermissionMvoStateEventId()
     {
-        return this.value;
+        UserPermissionMvoStateEventId v = new UserPermissionMvoStateEventId();
+        v.setUserPermissionId(this.getUserPermissionId().toUserPermissionId());
+        v.setUserVersion(this.getUserVersion());
+        return v;
     }
+
+    private UserPermissionIdDto userPermissionId = new UserPermissionIdDto();
 
     public UserPermissionIdDto getUserPermissionId()
     {
-        return new UserPermissionIdDto(this.value.getUserPermissionId());
+        return this.userPermissionId;
     }
 
     public void setUserPermissionId(UserPermissionIdDto userPermissionId)
     {
-        this.value.setUserPermissionId(userPermissionId.toUserPermissionId());
+        this.userPermissionId = userPermissionId;
     }
+
+    private Long userVersion;
 
     public Long getUserVersion()
     {
-        return this.value.getUserVersion();
+        return this.userVersion;
     }
 
     public void setUserVersion(Long userVersion)
     {
-        this.value.setUserVersion(userVersion);
+        this.userVersion = userVersion;
     }
 
 
@@ -48,18 +47,29 @@ public class UserPermissionMvoStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != UserPermissionMvoStateEventIdDto.class) {
             return false;
         }
 
         UserPermissionMvoStateEventIdDto other = (UserPermissionMvoStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (userPermissionId == other.userPermissionId || (userPermissionId != null && userPermissionId.equals(other.userPermissionId)))
+            && (userVersion == other.userVersion || (userVersion != null && userVersion.equals(other.userVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.userPermissionId != null) {
+            hash += 13 * this.userPermissionId.hashCode();
+        }
+        if (this.userVersion != null) {
+            hash += 13 * this.userVersion.hashCode();
+        }
+        return hash;
     }
 
 }

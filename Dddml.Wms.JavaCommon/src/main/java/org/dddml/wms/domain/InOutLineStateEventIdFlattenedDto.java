@@ -30,23 +30,27 @@ public class InOutLineStateEventIdFlattenedDto
         }
     }
 	
-    private InOutLineStateEventId value;
+    private InOutLineStateEventIdDto value;
 
     public InOutLineStateEventIdFlattenedDto()
     {
-        this(new InOutLineStateEventId());
+        this(new InOutLineStateEventIdDto());
     }
 
-    public InOutLineStateEventIdFlattenedDto(InOutLineStateEventId value)
+    public InOutLineStateEventIdFlattenedDto(InOutLineStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public InOutLineStateEventId toInOutLineStateEventId()
+    public InOutLineStateEventIdDto toInOutLineStateEventIdDto()
     {
         return this.value;
     }
 
+    public InOutLineStateEventId toInOutLineStateEventId()
+    {
+        return this.value.toInOutLineStateEventId();
+    }
 
     public String getInOutDocumentNumber()
     {

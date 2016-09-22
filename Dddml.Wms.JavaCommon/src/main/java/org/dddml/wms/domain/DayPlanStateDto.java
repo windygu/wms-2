@@ -176,7 +176,7 @@ public class DayPlanStateDto
                 dto.setVersion(state.getVersion());
             }
             if (returnedFieldsContains("PersonalName")) {
-                dto.setPersonalName((state.getPersonalName() == null) ? null : new PersonalNameDto(state.getPersonalName()));
+                dto.setPersonalName((state.getPersonalName() == null) ? null : new PersonalNameDtoWrapper(state.getPersonalName()));
             }
             if (returnedFieldsContains("Year")) {
                 dto.setYear(state.getYear());

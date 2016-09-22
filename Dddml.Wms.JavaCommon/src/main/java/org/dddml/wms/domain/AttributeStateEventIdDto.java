@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class AttributeStateEventIdDto
 {
-	
-    private AttributeStateEventId value;
 
     public AttributeStateEventIdDto()
     {
-        this(new AttributeStateEventId());
-    }
-
-    public AttributeStateEventIdDto(AttributeStateEventId value)
-    {
-        this.value = value;
     }
 
     public AttributeStateEventId toAttributeStateEventId()
     {
-        return this.value;
+        AttributeStateEventId v = new AttributeStateEventId();
+        v.setAttributeId(this.getAttributeId());
+        v.setVersion(this.getVersion());
+        return v;
     }
+
+    private String attributeId;
 
     public String getAttributeId()
     {
-        return this.value.getAttributeId();
+        return this.attributeId;
     }
 
     public void setAttributeId(String attributeId)
     {
-        this.value.setAttributeId(attributeId);
+        this.attributeId = attributeId;
     }
+
+    private Long version;
 
     public Long getVersion()
     {
-        return this.value.getVersion();
+        return this.version;
     }
 
     public void setVersion(Long version)
     {
-        this.value.setVersion(version);
+        this.version = version;
     }
 
 
@@ -48,18 +47,29 @@ public class AttributeStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != AttributeStateEventIdDto.class) {
             return false;
         }
 
         AttributeStateEventIdDto other = (AttributeStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (attributeId == other.attributeId || (attributeId != null && attributeId.equals(other.attributeId)))
+            && (version == other.version || (version != null && version.equals(other.version)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.attributeId != null) {
+            hash += 13 * this.attributeId.hashCode();
+        }
+        if (this.version != null) {
+            hash += 13 * this.version.hashCode();
+        }
+        return hash;
     }
 
 }

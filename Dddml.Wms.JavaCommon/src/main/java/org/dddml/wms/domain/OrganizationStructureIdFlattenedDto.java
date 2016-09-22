@@ -28,23 +28,27 @@ public class OrganizationStructureIdFlattenedDto
         }
     }
 	
-    private OrganizationStructureId value;
+    private OrganizationStructureIdDto value;
 
     public OrganizationStructureIdFlattenedDto()
     {
-        this(new OrganizationStructureId());
+        this(new OrganizationStructureIdDto());
     }
 
-    public OrganizationStructureIdFlattenedDto(OrganizationStructureId value)
+    public OrganizationStructureIdFlattenedDto(OrganizationStructureIdDto value)
     {
         this.value = value;
     }
 
-    public OrganizationStructureId toOrganizationStructureId()
+    public OrganizationStructureIdDto toOrganizationStructureIdDto()
     {
         return this.value;
     }
 
+    public OrganizationStructureId toOrganizationStructureId()
+    {
+        return this.value.toOrganizationStructureId();
+    }
 
     public String getOrganizationStructureTypeId()
     {

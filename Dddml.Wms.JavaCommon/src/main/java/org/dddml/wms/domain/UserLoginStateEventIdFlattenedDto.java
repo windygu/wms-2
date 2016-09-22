@@ -30,23 +30,27 @@ public class UserLoginStateEventIdFlattenedDto
         }
     }
 	
-    private UserLoginStateEventId value;
+    private UserLoginStateEventIdDto value;
 
     public UserLoginStateEventIdFlattenedDto()
     {
-        this(new UserLoginStateEventId());
+        this(new UserLoginStateEventIdDto());
     }
 
-    public UserLoginStateEventIdFlattenedDto(UserLoginStateEventId value)
+    public UserLoginStateEventIdFlattenedDto(UserLoginStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public UserLoginStateEventId toUserLoginStateEventId()
+    public UserLoginStateEventIdDto toUserLoginStateEventIdDto()
     {
         return this.value;
     }
 
+    public UserLoginStateEventId toUserLoginStateEventId()
+    {
+        return this.value.toUserLoginStateEventId();
+    }
 
     public String getUserId()
     {

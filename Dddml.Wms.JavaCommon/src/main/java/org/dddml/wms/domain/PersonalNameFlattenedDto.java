@@ -26,23 +26,27 @@ public class PersonalNameFlattenedDto
         }
     }
 	
-    private PersonalName value;
+    private PersonalNameDto value;
 
     public PersonalNameFlattenedDto()
     {
-        this(new PersonalName());
+        this(new PersonalNameDto());
     }
 
-    public PersonalNameFlattenedDto(PersonalName value)
+    public PersonalNameFlattenedDto(PersonalNameDto value)
     {
         this.value = value;
     }
 
-    public PersonalName toPersonalName()
+    public PersonalNameDto toPersonalNameDto()
     {
         return this.value;
     }
 
+    public PersonalName toPersonalName()
+    {
+        return this.value.toPersonalName();
+    }
 
     public String getFirstName()
     {

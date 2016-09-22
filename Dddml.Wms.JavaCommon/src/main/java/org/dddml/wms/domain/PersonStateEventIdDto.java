@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class PersonStateEventIdDto
 {
-	
-    private PersonStateEventId value;
 
     public PersonStateEventIdDto()
     {
-        this(new PersonStateEventId());
-    }
-
-    public PersonStateEventIdDto(PersonStateEventId value)
-    {
-        this.value = value;
     }
 
     public PersonStateEventId toPersonStateEventId()
     {
-        return this.value;
+        PersonStateEventId v = new PersonStateEventId();
+        v.setPersonalName(this.getPersonalName().toPersonalName());
+        v.setVersion(this.getVersion());
+        return v;
     }
+
+    private PersonalNameDto personalName = new PersonalNameDto();
 
     public PersonalNameDto getPersonalName()
     {
-        return new PersonalNameDto(this.value.getPersonalName());
+        return this.personalName;
     }
 
     public void setPersonalName(PersonalNameDto personalName)
     {
-        this.value.setPersonalName(personalName.toPersonalName());
+        this.personalName = personalName;
     }
+
+    private Long version;
 
     public Long getVersion()
     {
-        return this.value.getVersion();
+        return this.version;
     }
 
     public void setVersion(Long version)
     {
-        this.value.setVersion(version);
+        this.version = version;
     }
 
 
@@ -48,18 +47,29 @@ public class PersonStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != PersonStateEventIdDto.class) {
             return false;
         }
 
         PersonStateEventIdDto other = (PersonStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
+            && (version == other.version || (version != null && version.equals(other.version)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.personalName != null) {
+            hash += 13 * this.personalName.hashCode();
+        }
+        if (this.version != null) {
+            hash += 13 * this.version.hashCode();
+        }
+        return hash;
     }
 
 }

@@ -28,23 +28,27 @@ public class RolePermissionStateEventIdFlattenedDto
         }
     }
 	
-    private RolePermissionStateEventId value;
+    private RolePermissionStateEventIdDto value;
 
     public RolePermissionStateEventIdFlattenedDto()
     {
-        this(new RolePermissionStateEventId());
+        this(new RolePermissionStateEventIdDto());
     }
 
-    public RolePermissionStateEventIdFlattenedDto(RolePermissionStateEventId value)
+    public RolePermissionStateEventIdFlattenedDto(RolePermissionStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public RolePermissionStateEventId toRolePermissionStateEventId()
+    public RolePermissionStateEventIdDto toRolePermissionStateEventIdDto()
     {
         return this.value;
     }
 
+    public RolePermissionStateEventId toRolePermissionStateEventId()
+    {
+        return this.value.toRolePermissionStateEventId();
+    }
 
     public String getIdRoleId()
     {

@@ -26,23 +26,27 @@ public class RolePermissionIdFlattenedDto
         }
     }
 	
-    private RolePermissionId value;
+    private RolePermissionIdDto value;
 
     public RolePermissionIdFlattenedDto()
     {
-        this(new RolePermissionId());
+        this(new RolePermissionIdDto());
     }
 
-    public RolePermissionIdFlattenedDto(RolePermissionId value)
+    public RolePermissionIdFlattenedDto(RolePermissionIdDto value)
     {
         this.value = value;
     }
 
-    public RolePermissionId toRolePermissionId()
+    public RolePermissionIdDto toRolePermissionIdDto()
     {
         return this.value;
     }
 
+    public RolePermissionId toRolePermissionId()
+    {
+        return this.value.toRolePermissionId();
+    }
 
     public String getRoleId()
     {

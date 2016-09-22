@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class YearPlanMvoStateEventIdDto
 {
-	
-    private YearPlanMvoStateEventId value;
 
     public YearPlanMvoStateEventIdDto()
     {
-        this(new YearPlanMvoStateEventId());
-    }
-
-    public YearPlanMvoStateEventIdDto(YearPlanMvoStateEventId value)
-    {
-        this.value = value;
     }
 
     public YearPlanMvoStateEventId toYearPlanMvoStateEventId()
     {
-        return this.value;
+        YearPlanMvoStateEventId v = new YearPlanMvoStateEventId();
+        v.setYearPlanId(this.getYearPlanId().toYearPlanId());
+        v.setPersonVersion(this.getPersonVersion());
+        return v;
     }
+
+    private YearPlanIdDto yearPlanId = new YearPlanIdDto();
 
     public YearPlanIdDto getYearPlanId()
     {
-        return new YearPlanIdDto(this.value.getYearPlanId());
+        return this.yearPlanId;
     }
 
     public void setYearPlanId(YearPlanIdDto yearPlanId)
     {
-        this.value.setYearPlanId(yearPlanId.toYearPlanId());
+        this.yearPlanId = yearPlanId;
     }
+
+    private Long personVersion;
 
     public Long getPersonVersion()
     {
-        return this.value.getPersonVersion();
+        return this.personVersion;
     }
 
     public void setPersonVersion(Long personVersion)
     {
-        this.value.setPersonVersion(personVersion);
+        this.personVersion = personVersion;
     }
 
 
@@ -48,18 +47,29 @@ public class YearPlanMvoStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != YearPlanMvoStateEventIdDto.class) {
             return false;
         }
 
         YearPlanMvoStateEventIdDto other = (YearPlanMvoStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (yearPlanId == other.yearPlanId || (yearPlanId != null && yearPlanId.equals(other.yearPlanId)))
+            && (personVersion == other.personVersion || (personVersion != null && personVersion.equals(other.personVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.yearPlanId != null) {
+            hash += 13 * this.yearPlanId.hashCode();
+        }
+        if (this.personVersion != null) {
+            hash += 13 * this.personVersion.hashCode();
+        }
+        return hash;
     }
 
 }

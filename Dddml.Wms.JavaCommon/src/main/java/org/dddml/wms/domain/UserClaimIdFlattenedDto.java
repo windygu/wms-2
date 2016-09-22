@@ -26,23 +26,27 @@ public class UserClaimIdFlattenedDto
         }
     }
 	
-    private UserClaimId value;
+    private UserClaimIdDto value;
 
     public UserClaimIdFlattenedDto()
     {
-        this(new UserClaimId());
+        this(new UserClaimIdDto());
     }
 
-    public UserClaimIdFlattenedDto(UserClaimId value)
+    public UserClaimIdFlattenedDto(UserClaimIdDto value)
     {
         this.value = value;
     }
 
-    public UserClaimId toUserClaimId()
+    public UserClaimIdDto toUserClaimIdDto()
     {
         return this.value;
     }
 
+    public UserClaimId toUserClaimId()
+    {
+        return this.value.toUserClaimId();
+    }
 
     public String getUserId()
     {

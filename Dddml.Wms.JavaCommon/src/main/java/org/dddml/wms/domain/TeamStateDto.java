@@ -175,7 +175,7 @@ public class TeamStateDto
                 ArrayList<PersonalNameDto> arrayList = new ArrayList();
                 if (state.getPlayers() != null) {
                     for (PersonalName s : state.getPlayers()) {
-                        arrayList.add(new PersonalNameDto(s));
+                        arrayList.add(new PersonalNameDtoWrapper(s));
                     }
                 }
                 dto.setPlayers(arrayList.toArray(new PersonalNameDto[0]));

@@ -3,52 +3,54 @@ package org.dddml.wms.domain;
 
 public class MonthPlanIdDto
 {
-	
-    private MonthPlanId value;
 
     public MonthPlanIdDto()
     {
-        this(new MonthPlanId());
-    }
-
-    public MonthPlanIdDto(MonthPlanId value)
-    {
-        this.value = value;
     }
 
     public MonthPlanId toMonthPlanId()
     {
-        return this.value;
+        MonthPlanId v = new MonthPlanId();
+        v.setPersonalName(this.getPersonalName().toPersonalName());
+        v.setYear(this.getYear());
+        v.setMonth(this.getMonth());
+        return v;
     }
+
+    private PersonalNameDto personalName = new PersonalNameDto();
 
     public PersonalNameDto getPersonalName()
     {
-        return new PersonalNameDto(this.value.getPersonalName());
+        return this.personalName;
     }
 
     public void setPersonalName(PersonalNameDto personalName)
     {
-        this.value.setPersonalName(personalName.toPersonalName());
+        this.personalName = personalName;
     }
+
+    private Integer year;
 
     public Integer getYear()
     {
-        return this.value.getYear();
+        return this.year;
     }
 
     public void setYear(Integer year)
     {
-        this.value.setYear(year);
+        this.year = year;
     }
+
+    private Integer month;
 
     public Integer getMonth()
     {
-        return this.value.getMonth();
+        return this.month;
     }
 
     public void setMonth(Integer month)
     {
-        this.value.setMonth(month);
+        this.month = month;
     }
 
 
@@ -58,18 +60,33 @@ public class MonthPlanIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != MonthPlanIdDto.class) {
             return false;
         }
 
         MonthPlanIdDto other = (MonthPlanIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
+            && (year == other.year || (year != null && year.equals(other.year)))
+            && (month == other.month || (month != null && month.equals(other.month)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.personalName != null) {
+            hash += 13 * this.personalName.hashCode();
+        }
+        if (this.year != null) {
+            hash += 13 * this.year.hashCode();
+        }
+        if (this.month != null) {
+            hash += 13 * this.month.hashCode();
+        }
+        return hash;
     }
 
 }

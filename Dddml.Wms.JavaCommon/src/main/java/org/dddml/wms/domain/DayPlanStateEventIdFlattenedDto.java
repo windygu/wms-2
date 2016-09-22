@@ -34,23 +34,27 @@ public class DayPlanStateEventIdFlattenedDto
         }
     }
 	
-    private DayPlanStateEventId value;
+    private DayPlanStateEventIdDto value;
 
     public DayPlanStateEventIdFlattenedDto()
     {
-        this(new DayPlanStateEventId());
+        this(new DayPlanStateEventIdDto());
     }
 
-    public DayPlanStateEventIdFlattenedDto(DayPlanStateEventId value)
+    public DayPlanStateEventIdFlattenedDto(DayPlanStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public DayPlanStateEventId toDayPlanStateEventId()
+    public DayPlanStateEventIdDto toDayPlanStateEventIdDto()
     {
         return this.value;
     }
 
+    public DayPlanStateEventId toDayPlanStateEventId()
+    {
+        return this.value.toDayPlanStateEventId();
+    }
 
     public String getPersonalNameFirstName()
     {

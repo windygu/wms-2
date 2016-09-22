@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class AttributeValueMvoStateEventIdDto
 {
-	
-    private AttributeValueMvoStateEventId value;
 
     public AttributeValueMvoStateEventIdDto()
     {
-        this(new AttributeValueMvoStateEventId());
-    }
-
-    public AttributeValueMvoStateEventIdDto(AttributeValueMvoStateEventId value)
-    {
-        this.value = value;
     }
 
     public AttributeValueMvoStateEventId toAttributeValueMvoStateEventId()
     {
-        return this.value;
+        AttributeValueMvoStateEventId v = new AttributeValueMvoStateEventId();
+        v.setAttributeValueId(this.getAttributeValueId().toAttributeValueId());
+        v.setAttributeVersion(this.getAttributeVersion());
+        return v;
     }
+
+    private AttributeValueIdDto attributeValueId = new AttributeValueIdDto();
 
     public AttributeValueIdDto getAttributeValueId()
     {
-        return new AttributeValueIdDto(this.value.getAttributeValueId());
+        return this.attributeValueId;
     }
 
     public void setAttributeValueId(AttributeValueIdDto attributeValueId)
     {
-        this.value.setAttributeValueId(attributeValueId.toAttributeValueId());
+        this.attributeValueId = attributeValueId;
     }
+
+    private Long attributeVersion;
 
     public Long getAttributeVersion()
     {
-        return this.value.getAttributeVersion();
+        return this.attributeVersion;
     }
 
     public void setAttributeVersion(Long attributeVersion)
     {
-        this.value.setAttributeVersion(attributeVersion);
+        this.attributeVersion = attributeVersion;
     }
 
 
@@ -48,18 +47,29 @@ public class AttributeValueMvoStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != AttributeValueMvoStateEventIdDto.class) {
             return false;
         }
 
         AttributeValueMvoStateEventIdDto other = (AttributeValueMvoStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (attributeValueId == other.attributeValueId || (attributeValueId != null && attributeValueId.equals(other.attributeValueId)))
+            && (attributeVersion == other.attributeVersion || (attributeVersion != null && attributeVersion.equals(other.attributeVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.attributeValueId != null) {
+            hash += 13 * this.attributeValueId.hashCode();
+        }
+        if (this.attributeVersion != null) {
+            hash += 13 * this.attributeVersion.hashCode();
+        }
+        return hash;
     }
 
 }

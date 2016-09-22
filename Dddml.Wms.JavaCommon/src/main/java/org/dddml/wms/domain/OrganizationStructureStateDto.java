@@ -116,7 +116,7 @@ public class OrganizationStructureStateDto
         {
             OrganizationStructureStateDto dto = new OrganizationStructureStateDto();
             if (returnedFieldsContains("Id")) {
-                dto.setId((state.getId() == null) ? null : new OrganizationStructureIdDto(state.getId()));
+                dto.setId((state.getId() == null) ? null : new OrganizationStructureIdDtoWrapper(state.getId()));
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

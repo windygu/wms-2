@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class AttributeSetStateEventIdDto
 {
-	
-    private AttributeSetStateEventId value;
 
     public AttributeSetStateEventIdDto()
     {
-        this(new AttributeSetStateEventId());
-    }
-
-    public AttributeSetStateEventIdDto(AttributeSetStateEventId value)
-    {
-        this.value = value;
     }
 
     public AttributeSetStateEventId toAttributeSetStateEventId()
     {
-        return this.value;
+        AttributeSetStateEventId v = new AttributeSetStateEventId();
+        v.setAttributeSetId(this.getAttributeSetId());
+        v.setVersion(this.getVersion());
+        return v;
     }
+
+    private String attributeSetId;
 
     public String getAttributeSetId()
     {
-        return this.value.getAttributeSetId();
+        return this.attributeSetId;
     }
 
     public void setAttributeSetId(String attributeSetId)
     {
-        this.value.setAttributeSetId(attributeSetId);
+        this.attributeSetId = attributeSetId;
     }
+
+    private Long version;
 
     public Long getVersion()
     {
-        return this.value.getVersion();
+        return this.version;
     }
 
     public void setVersion(Long version)
     {
-        this.value.setVersion(version);
+        this.version = version;
     }
 
 
@@ -48,18 +47,29 @@ public class AttributeSetStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != AttributeSetStateEventIdDto.class) {
             return false;
         }
 
         AttributeSetStateEventIdDto other = (AttributeSetStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (attributeSetId == other.attributeSetId || (attributeSetId != null && attributeSetId.equals(other.attributeSetId)))
+            && (version == other.version || (version != null && version.equals(other.version)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.attributeSetId != null) {
+            hash += 13 * this.attributeSetId.hashCode();
+        }
+        if (this.version != null) {
+            hash += 13 * this.version.hashCode();
+        }
+        return hash;
     }
 
 }

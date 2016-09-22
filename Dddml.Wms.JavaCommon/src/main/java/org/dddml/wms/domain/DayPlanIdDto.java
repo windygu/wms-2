@@ -3,62 +3,67 @@ package org.dddml.wms.domain;
 
 public class DayPlanIdDto
 {
-	
-    private DayPlanId value;
 
     public DayPlanIdDto()
     {
-        this(new DayPlanId());
-    }
-
-    public DayPlanIdDto(DayPlanId value)
-    {
-        this.value = value;
     }
 
     public DayPlanId toDayPlanId()
     {
-        return this.value;
+        DayPlanId v = new DayPlanId();
+        v.setPersonalName(this.getPersonalName().toPersonalName());
+        v.setYear(this.getYear());
+        v.setMonth(this.getMonth());
+        v.setDay(this.getDay());
+        return v;
     }
+
+    private PersonalNameDto personalName = new PersonalNameDto();
 
     public PersonalNameDto getPersonalName()
     {
-        return new PersonalNameDto(this.value.getPersonalName());
+        return this.personalName;
     }
 
     public void setPersonalName(PersonalNameDto personalName)
     {
-        this.value.setPersonalName(personalName.toPersonalName());
+        this.personalName = personalName;
     }
+
+    private Integer year;
 
     public Integer getYear()
     {
-        return this.value.getYear();
+        return this.year;
     }
 
     public void setYear(Integer year)
     {
-        this.value.setYear(year);
+        this.year = year;
     }
+
+    private Integer month;
 
     public Integer getMonth()
     {
-        return this.value.getMonth();
+        return this.month;
     }
 
     public void setMonth(Integer month)
     {
-        this.value.setMonth(month);
+        this.month = month;
     }
+
+    private Integer day;
 
     public Integer getDay()
     {
-        return this.value.getDay();
+        return this.day;
     }
 
     public void setDay(Integer day)
     {
-        this.value.setDay(day);
+        this.day = day;
     }
 
 
@@ -68,18 +73,37 @@ public class DayPlanIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != DayPlanIdDto.class) {
             return false;
         }
 
         DayPlanIdDto other = (DayPlanIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (personalName == other.personalName || (personalName != null && personalName.equals(other.personalName)))
+            && (year == other.year || (year != null && year.equals(other.year)))
+            && (month == other.month || (month != null && month.equals(other.month)))
+            && (day == other.day || (day != null && day.equals(other.day)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.personalName != null) {
+            hash += 13 * this.personalName.hashCode();
+        }
+        if (this.year != null) {
+            hash += 13 * this.year.hashCode();
+        }
+        if (this.month != null) {
+            hash += 13 * this.month.hashCode();
+        }
+        if (this.day != null) {
+            hash += 13 * this.day.hashCode();
+        }
+        return hash;
     }
 
 }

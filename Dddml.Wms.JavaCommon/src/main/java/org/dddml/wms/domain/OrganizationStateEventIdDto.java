@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class OrganizationStateEventIdDto
 {
-	
-    private OrganizationStateEventId value;
 
     public OrganizationStateEventIdDto()
     {
-        this(new OrganizationStateEventId());
-    }
-
-    public OrganizationStateEventIdDto(OrganizationStateEventId value)
-    {
-        this.value = value;
     }
 
     public OrganizationStateEventId toOrganizationStateEventId()
     {
-        return this.value;
+        OrganizationStateEventId v = new OrganizationStateEventId();
+        v.setOrganizationId(this.getOrganizationId());
+        v.setVersion(this.getVersion());
+        return v;
     }
+
+    private String organizationId;
 
     public String getOrganizationId()
     {
-        return this.value.getOrganizationId();
+        return this.organizationId;
     }
 
     public void setOrganizationId(String organizationId)
     {
-        this.value.setOrganizationId(organizationId);
+        this.organizationId = organizationId;
     }
+
+    private Long version;
 
     public Long getVersion()
     {
-        return this.value.getVersion();
+        return this.version;
     }
 
     public void setVersion(Long version)
     {
-        this.value.setVersion(version);
+        this.version = version;
     }
 
 
@@ -48,18 +47,29 @@ public class OrganizationStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != OrganizationStateEventIdDto.class) {
             return false;
         }
 
         OrganizationStateEventIdDto other = (OrganizationStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (organizationId == other.organizationId || (organizationId != null && organizationId.equals(other.organizationId)))
+            && (version == other.version || (version != null && version.equals(other.version)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.organizationId != null) {
+            hash += 13 * this.organizationId.hashCode();
+        }
+        if (this.version != null) {
+            hash += 13 * this.version.hashCode();
+        }
+        return hash;
     }
 
 }

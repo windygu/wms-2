@@ -344,7 +344,7 @@ public class MonthPlanMvoStateDto
         {
             MonthPlanMvoStateDto dto = new MonthPlanMvoStateDto();
             if (returnedFieldsContains("MonthPlanId")) {
-                dto.setMonthPlanId((state.getMonthPlanId() == null) ? null : new MonthPlanIdDto(state.getMonthPlanId()));
+                dto.setMonthPlanId((state.getMonthPlanId() == null) ? null : new MonthPlanIdDtoWrapper(state.getMonthPlanId()));
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
@@ -383,10 +383,10 @@ public class MonthPlanMvoStateDto
                 dto.setPersonBirthDate(state.getPersonBirthDate());
             }
             if (returnedFieldsContains("PersonLoves")) {
-                dto.setPersonLoves((state.getPersonLoves() == null) ? null : new PersonalNameDto(state.getPersonLoves()));
+                dto.setPersonLoves((state.getPersonLoves() == null) ? null : new PersonalNameDtoWrapper(state.getPersonLoves()));
             }
             if (returnedFieldsContains("PersonEmergencyContact")) {
-                dto.setPersonEmergencyContact((state.getPersonEmergencyContact() == null) ? null : new ContactDto(state.getPersonEmergencyContact()));
+                dto.setPersonEmergencyContact((state.getPersonEmergencyContact() == null) ? null : new ContactDtoWrapper(state.getPersonEmergencyContact()));
             }
             if (returnedFieldsContains("PersonCreatedBy")) {
                 dto.setPersonCreatedBy(state.getPersonCreatedBy());

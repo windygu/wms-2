@@ -814,7 +814,7 @@ public class InOutLineMvoStateDto
         {
             InOutLineMvoStateDto dto = new InOutLineMvoStateDto();
             if (returnedFieldsContains("InOutLineId")) {
-                dto.setInOutLineId((state.getInOutLineId() == null) ? null : new InOutLineIdDto(state.getInOutLineId()));
+                dto.setInOutLineId((state.getInOutLineId() == null) ? null : new InOutLineIdDtoWrapper(state.getInOutLineId()));
             }
             if (returnedFieldsContains("LineNumber")) {
                 dto.setLineNumber(state.getLineNumber());

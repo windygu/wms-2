@@ -3,42 +3,41 @@ package org.dddml.wms.domain;
 
 public class DayPlanMvoStateEventIdDto
 {
-	
-    private DayPlanMvoStateEventId value;
 
     public DayPlanMvoStateEventIdDto()
     {
-        this(new DayPlanMvoStateEventId());
-    }
-
-    public DayPlanMvoStateEventIdDto(DayPlanMvoStateEventId value)
-    {
-        this.value = value;
     }
 
     public DayPlanMvoStateEventId toDayPlanMvoStateEventId()
     {
-        return this.value;
+        DayPlanMvoStateEventId v = new DayPlanMvoStateEventId();
+        v.setDayPlanId(this.getDayPlanId().toDayPlanId());
+        v.setPersonVersion(this.getPersonVersion());
+        return v;
     }
+
+    private DayPlanIdDto dayPlanId = new DayPlanIdDto();
 
     public DayPlanIdDto getDayPlanId()
     {
-        return new DayPlanIdDto(this.value.getDayPlanId());
+        return this.dayPlanId;
     }
 
     public void setDayPlanId(DayPlanIdDto dayPlanId)
     {
-        this.value.setDayPlanId(dayPlanId.toDayPlanId());
+        this.dayPlanId = dayPlanId;
     }
+
+    private Long personVersion;
 
     public Long getPersonVersion()
     {
-        return this.value.getPersonVersion();
+        return this.personVersion;
     }
 
     public void setPersonVersion(Long personVersion)
     {
-        this.value.setPersonVersion(personVersion);
+        this.personVersion = personVersion;
     }
 
 
@@ -48,18 +47,29 @@ public class DayPlanMvoStateEventIdDto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != DayPlanMvoStateEventIdDto.class) {
             return false;
         }
 
         DayPlanMvoStateEventIdDto other = (DayPlanMvoStateEventIdDto)obj;
-        return value.equals(other.value);
+        return true 
+            && (dayPlanId == other.dayPlanId || (dayPlanId != null && dayPlanId.equals(other.dayPlanId)))
+            && (personVersion == other.personVersion || (personVersion != null && personVersion.equals(other.personVersion)))
+            ;
+
     }
 
     @Override
     public int hashCode()
     {
-        return value.hashCode();
+        int hash = 0;
+        if (this.dayPlanId != null) {
+            hash += 13 * this.dayPlanId.hashCode();
+        }
+        if (this.personVersion != null) {
+            hash += 13 * this.personVersion.hashCode();
+        }
+        return hash;
     }
 
 }

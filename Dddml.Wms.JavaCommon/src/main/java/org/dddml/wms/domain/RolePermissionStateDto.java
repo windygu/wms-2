@@ -116,7 +116,7 @@ public class RolePermissionStateDto
         {
             RolePermissionStateDto dto = new RolePermissionStateDto();
             if (returnedFieldsContains("Id")) {
-                dto.setId((state.getId() == null) ? null : new RolePermissionIdDto(state.getId()));
+                dto.setId((state.getId() == null) ? null : new RolePermissionIdDtoWrapper(state.getId()));
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

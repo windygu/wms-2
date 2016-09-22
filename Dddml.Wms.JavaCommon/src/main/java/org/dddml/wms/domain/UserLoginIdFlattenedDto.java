@@ -28,23 +28,27 @@ public class UserLoginIdFlattenedDto
         }
     }
 	
-    private UserLoginId value;
+    private UserLoginIdDto value;
 
     public UserLoginIdFlattenedDto()
     {
-        this(new UserLoginId());
+        this(new UserLoginIdDto());
     }
 
-    public UserLoginIdFlattenedDto(UserLoginId value)
+    public UserLoginIdFlattenedDto(UserLoginIdDto value)
     {
         this.value = value;
     }
 
-    public UserLoginId toUserLoginId()
+    public UserLoginIdDto toUserLoginIdDto()
     {
         return this.value;
     }
 
+    public UserLoginId toUserLoginId()
+    {
+        return this.value.toUserLoginId();
+    }
 
     public String getUserId()
     {

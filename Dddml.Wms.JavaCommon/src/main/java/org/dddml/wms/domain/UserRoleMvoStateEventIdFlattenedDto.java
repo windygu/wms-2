@@ -28,23 +28,27 @@ public class UserRoleMvoStateEventIdFlattenedDto
         }
     }
 	
-    private UserRoleMvoStateEventId value;
+    private UserRoleMvoStateEventIdDto value;
 
     public UserRoleMvoStateEventIdFlattenedDto()
     {
-        this(new UserRoleMvoStateEventId());
+        this(new UserRoleMvoStateEventIdDto());
     }
 
-    public UserRoleMvoStateEventIdFlattenedDto(UserRoleMvoStateEventId value)
+    public UserRoleMvoStateEventIdFlattenedDto(UserRoleMvoStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public UserRoleMvoStateEventId toUserRoleMvoStateEventId()
+    public UserRoleMvoStateEventIdDto toUserRoleMvoStateEventIdDto()
     {
         return this.value;
     }
 
+    public UserRoleMvoStateEventId toUserRoleMvoStateEventId()
+    {
+        return this.value.toUserRoleMvoStateEventId();
+    }
 
     public String getUserRoleIdUserId()
     {

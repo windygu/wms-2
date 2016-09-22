@@ -26,23 +26,27 @@ public class AttributeSetAttributeUseIdFlattenedDto
         }
     }
 	
-    private AttributeSetAttributeUseId value;
+    private AttributeSetAttributeUseIdDto value;
 
     public AttributeSetAttributeUseIdFlattenedDto()
     {
-        this(new AttributeSetAttributeUseId());
+        this(new AttributeSetAttributeUseIdDto());
     }
 
-    public AttributeSetAttributeUseIdFlattenedDto(AttributeSetAttributeUseId value)
+    public AttributeSetAttributeUseIdFlattenedDto(AttributeSetAttributeUseIdDto value)
     {
         this.value = value;
     }
 
-    public AttributeSetAttributeUseId toAttributeSetAttributeUseId()
+    public AttributeSetAttributeUseIdDto toAttributeSetAttributeUseIdDto()
     {
         return this.value;
     }
 
+    public AttributeSetAttributeUseId toAttributeSetAttributeUseId()
+    {
+        return this.value.toAttributeSetAttributeUseId();
+    }
 
     public String getAttributeSetId()
     {

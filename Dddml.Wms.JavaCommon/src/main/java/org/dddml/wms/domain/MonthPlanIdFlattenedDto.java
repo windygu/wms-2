@@ -30,23 +30,27 @@ public class MonthPlanIdFlattenedDto
         }
     }
 	
-    private MonthPlanId value;
+    private MonthPlanIdDto value;
 
     public MonthPlanIdFlattenedDto()
     {
-        this(new MonthPlanId());
+        this(new MonthPlanIdDto());
     }
 
-    public MonthPlanIdFlattenedDto(MonthPlanId value)
+    public MonthPlanIdFlattenedDto(MonthPlanIdDto value)
     {
         this.value = value;
     }
 
-    public MonthPlanId toMonthPlanId()
+    public MonthPlanIdDto toMonthPlanIdDto()
     {
         return this.value;
     }
 
+    public MonthPlanId toMonthPlanId()
+    {
+        return this.value.toMonthPlanId();
+    }
 
     public String getPersonalNameFirstName()
     {

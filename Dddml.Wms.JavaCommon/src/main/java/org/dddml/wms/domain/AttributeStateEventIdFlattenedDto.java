@@ -26,23 +26,27 @@ public class AttributeStateEventIdFlattenedDto
         }
     }
 	
-    private AttributeStateEventId value;
+    private AttributeStateEventIdDto value;
 
     public AttributeStateEventIdFlattenedDto()
     {
-        this(new AttributeStateEventId());
+        this(new AttributeStateEventIdDto());
     }
 
-    public AttributeStateEventIdFlattenedDto(AttributeStateEventId value)
+    public AttributeStateEventIdFlattenedDto(AttributeStateEventIdDto value)
     {
         this.value = value;
     }
 
-    public AttributeStateEventId toAttributeStateEventId()
+    public AttributeStateEventIdDto toAttributeStateEventIdDto()
     {
         return this.value;
     }
 
+    public AttributeStateEventId toAttributeStateEventId()
+    {
+        return this.value.toAttributeStateEventId();
+    }
 
     public String getAttributeId()
     {

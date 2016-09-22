@@ -440,7 +440,7 @@ public class DayPlanMvoStateDto
         {
             DayPlanMvoStateDto dto = new DayPlanMvoStateDto();
             if (returnedFieldsContains("DayPlanId")) {
-                dto.setDayPlanId((state.getDayPlanId() == null) ? null : new DayPlanIdDto(state.getDayPlanId()));
+                dto.setDayPlanId((state.getDayPlanId() == null) ? null : new DayPlanIdDtoWrapper(state.getDayPlanId()));
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
@@ -503,10 +503,10 @@ public class DayPlanMvoStateDto
                 dto.setPersonBirthDate(state.getPersonBirthDate());
             }
             if (returnedFieldsContains("PersonLoves")) {
-                dto.setPersonLoves((state.getPersonLoves() == null) ? null : new PersonalNameDto(state.getPersonLoves()));
+                dto.setPersonLoves((state.getPersonLoves() == null) ? null : new PersonalNameDtoWrapper(state.getPersonLoves()));
             }
             if (returnedFieldsContains("PersonEmergencyContact")) {
-                dto.setPersonEmergencyContact((state.getPersonEmergencyContact() == null) ? null : new ContactDto(state.getPersonEmergencyContact()));
+                dto.setPersonEmergencyContact((state.getPersonEmergencyContact() == null) ? null : new ContactDtoWrapper(state.getPersonEmergencyContact()));
             }
             if (returnedFieldsContains("PersonCreatedBy")) {
                 dto.setPersonCreatedBy(state.getPersonCreatedBy());

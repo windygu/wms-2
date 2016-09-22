@@ -28,23 +28,27 @@ public class YearPlanIdFlattenedDto
         }
     }
 	
-    private YearPlanId value;
+    private YearPlanIdDto value;
 
     public YearPlanIdFlattenedDto()
     {
-        this(new YearPlanId());
+        this(new YearPlanIdDto());
     }
 
-    public YearPlanIdFlattenedDto(YearPlanId value)
+    public YearPlanIdFlattenedDto(YearPlanIdDto value)
     {
         this.value = value;
     }
 
-    public YearPlanId toYearPlanId()
+    public YearPlanIdDto toYearPlanIdDto()
     {
         return this.value;
     }
 
+    public YearPlanId toYearPlanId()
+    {
+        return this.value.toYearPlanId();
+    }
 
     public String getPersonalNameFirstName()
     {

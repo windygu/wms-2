@@ -333,7 +333,7 @@ public class InOutLineStateDto
         {
             InOutLineStateDto dto = new InOutLineStateDto();
             if (returnedFieldsContains("SkuId")) {
-                dto.setSkuId((state.getSkuId() == null) ? null : new SkuIdDto(state.getSkuId()));
+                dto.setSkuId((state.getSkuId() == null) ? null : new SkuIdDtoWrapper(state.getSkuId()));
             }
             if (returnedFieldsContains("LineNumber")) {
                 dto.setLineNumber(state.getLineNumber());

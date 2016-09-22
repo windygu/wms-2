@@ -36,23 +36,23 @@ public class PersonStateEventDto extends AbstractStateEvent
         this.birthDate = birthDate;
     }
 
-    private PersonalName loves;
+    private PersonalNameDto loves = new PersonalNameDto();
 
-    public PersonalName getLoves() {
+    public PersonalNameDto getLoves() {
         return this.loves;
     }
 
-    public void setLoves(PersonalName loves) {
+    public void setLoves(PersonalNameDto loves) {
         this.loves = loves;
     }
 
-    private Contact emergencyContact;
+    private ContactDto emergencyContact = new ContactDto();
 
-    public Contact getEmergencyContact() {
+    public ContactDto getEmergencyContact() {
         return this.emergencyContact;
     }
 
-    public void setEmergencyContact(Contact emergencyContact) {
+    public void setEmergencyContact(ContactDto emergencyContact) {
         this.emergencyContact = emergencyContact;
     }
 

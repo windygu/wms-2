@@ -128,7 +128,7 @@ public class UserLoginStateDto
         {
             UserLoginStateDto dto = new UserLoginStateDto();
             if (returnedFieldsContains("LoginKey")) {
-                dto.setLoginKey((state.getLoginKey() == null) ? null : new LoginKeyDto(state.getLoginKey()));
+                dto.setLoginKey((state.getLoginKey() == null) ? null : new LoginKeyDtoWrapper(state.getLoginKey()));
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

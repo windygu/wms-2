@@ -248,7 +248,7 @@ public class YearPlanMvoStateDto
         {
             YearPlanMvoStateDto dto = new YearPlanMvoStateDto();
             if (returnedFieldsContains("YearPlanId")) {
-                dto.setYearPlanId((state.getYearPlanId() == null) ? null : new YearPlanIdDto(state.getYearPlanId()));
+                dto.setYearPlanId((state.getYearPlanId() == null) ? null : new YearPlanIdDtoWrapper(state.getYearPlanId()));
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
@@ -263,10 +263,10 @@ public class YearPlanMvoStateDto
                 dto.setPersonBirthDate(state.getPersonBirthDate());
             }
             if (returnedFieldsContains("PersonLoves")) {
-                dto.setPersonLoves((state.getPersonLoves() == null) ? null : new PersonalNameDto(state.getPersonLoves()));
+                dto.setPersonLoves((state.getPersonLoves() == null) ? null : new PersonalNameDtoWrapper(state.getPersonLoves()));
             }
             if (returnedFieldsContains("PersonEmergencyContact")) {
-                dto.setPersonEmergencyContact((state.getPersonEmergencyContact() == null) ? null : new ContactDto(state.getPersonEmergencyContact()));
+                dto.setPersonEmergencyContact((state.getPersonEmergencyContact() == null) ? null : new ContactDtoWrapper(state.getPersonEmergencyContact()));
             }
             if (returnedFieldsContains("PersonCreatedBy")) {
                 dto.setPersonCreatedBy(state.getPersonCreatedBy());

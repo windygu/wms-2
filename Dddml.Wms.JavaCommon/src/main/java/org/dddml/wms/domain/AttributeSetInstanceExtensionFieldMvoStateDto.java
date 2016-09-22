@@ -320,7 +320,7 @@ public class AttributeSetInstanceExtensionFieldMvoStateDto
         {
             AttributeSetInstanceExtensionFieldMvoStateDto dto = new AttributeSetInstanceExtensionFieldMvoStateDto();
             if (returnedFieldsContains("AttributeSetInstanceExtensionFieldId")) {
-                dto.setAttributeSetInstanceExtensionFieldId((state.getAttributeSetInstanceExtensionFieldId() == null) ? null : new AttributeSetInstanceExtensionFieldIdDto(state.getAttributeSetInstanceExtensionFieldId()));
+                dto.setAttributeSetInstanceExtensionFieldId((state.getAttributeSetInstanceExtensionFieldId() == null) ? null : new AttributeSetInstanceExtensionFieldIdDtoWrapper(state.getAttributeSetInstanceExtensionFieldId()));
             }
             if (returnedFieldsContains("Name")) {
                 dto.setName(state.getName());
