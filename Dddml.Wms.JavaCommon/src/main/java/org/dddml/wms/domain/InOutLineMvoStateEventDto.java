@@ -13,19 +13,34 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private InOutLineMvoStateEventIdDto stateEventId;
 
-    public InOutLineMvoStateEventIdDto getStateEventId() {
+    InOutLineMvoStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new InOutLineMvoStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(InOutLineMvoStateEventIdDto stateEventId) {
+    void setStateEventId(InOutLineMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public InOutLineIdDto getInOutLineId() {
+        return getStateEventId().getInOutLineId();
+    }
+
+    public void setInOutLineId(InOutLineIdDto inOutLineId) {
+        getStateEventId().setInOutLineId(inOutLineId);
+    }
+
+    public Long getInOutVersion() {
+        return getStateEventId().getInOutVersion();
+    }
+    
+    public void getInOutVersion(Long inOutVersion) {
+        getStateEventId().setInOutVersion(inOutVersion);
     }
 
     private Long lineNumber;

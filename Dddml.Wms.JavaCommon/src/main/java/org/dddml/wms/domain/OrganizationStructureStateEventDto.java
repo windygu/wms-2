@@ -11,19 +11,34 @@ public class OrganizationStructureStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private OrganizationStructureStateEventIdDto stateEventId;
 
-    public OrganizationStructureStateEventIdDto getStateEventId() {
+    OrganizationStructureStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new OrganizationStructureStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(OrganizationStructureStateEventIdDto stateEventId) {
+    void setStateEventId(OrganizationStructureStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public OrganizationStructureIdDto getId() {
+        return getStateEventId().getId();
+    }
+
+    public void setId(OrganizationStructureIdDto id) {
+        getStateEventId().setId(id);
+    }
+
+    public Long getVersion() {
+        return getStateEventId().getVersion();
+    }
+    
+    public void getVersion(Long version) {
+        getStateEventId().setVersion(version);
     }
 
     private Boolean active;

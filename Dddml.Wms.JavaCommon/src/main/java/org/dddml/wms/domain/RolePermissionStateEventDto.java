@@ -11,19 +11,34 @@ public class RolePermissionStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private RolePermissionStateEventIdDto stateEventId;
 
-    public RolePermissionStateEventIdDto getStateEventId() {
+    RolePermissionStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new RolePermissionStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(RolePermissionStateEventIdDto stateEventId) {
+    void setStateEventId(RolePermissionStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public RolePermissionIdDto getId() {
+        return getStateEventId().getId();
+    }
+
+    public void setId(RolePermissionIdDto id) {
+        getStateEventId().setId(id);
+    }
+
+    public Long getVersion() {
+        return getStateEventId().getVersion();
+    }
+    
+    public void getVersion(Long version) {
+        getStateEventId().setVersion(version);
     }
 
     private Boolean active;

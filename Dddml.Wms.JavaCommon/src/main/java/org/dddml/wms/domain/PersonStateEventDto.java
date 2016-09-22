@@ -11,19 +11,34 @@ public class PersonStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private PersonStateEventIdDto stateEventId;
 
-    public PersonStateEventIdDto getStateEventId() {
+    PersonStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new PersonStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(PersonStateEventIdDto stateEventId) {
+    void setStateEventId(PersonStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public PersonalNameDto getPersonalName() {
+        return getStateEventId().getPersonalName();
+    }
+
+    public void setPersonalName(PersonalNameDto personalName) {
+        getStateEventId().setPersonalName(personalName);
+    }
+
+    public Long getVersion() {
+        return getStateEventId().getVersion();
+    }
+    
+    public void getVersion(Long version) {
+        getStateEventId().setVersion(version);
     }
 
     private Date birthDate;

@@ -11,19 +11,34 @@ public class AudienceStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private AudienceStateEventIdDto stateEventId;
 
-    public AudienceStateEventIdDto getStateEventId() {
+    AudienceStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new AudienceStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(AudienceStateEventIdDto stateEventId) {
+    void setStateEventId(AudienceStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public String getClientId() {
+        return getStateEventId().getClientId();
+    }
+
+    public void setClientId(String clientId) {
+        getStateEventId().setClientId(clientId);
+    }
+
+    public Long getVersion() {
+        return getStateEventId().getVersion();
+    }
+    
+    public void getVersion(Long version) {
+        getStateEventId().setVersion(version);
     }
 
     private String name;

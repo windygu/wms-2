@@ -11,19 +11,34 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDto extends Abstra
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private AttributeSetInstanceExtensionFieldGroupStateEventIdDto stateEventId;
 
-    public AttributeSetInstanceExtensionFieldGroupStateEventIdDto getStateEventId() {
+    AttributeSetInstanceExtensionFieldGroupStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(AttributeSetInstanceExtensionFieldGroupStateEventIdDto stateEventId) {
+    void setStateEventId(AttributeSetInstanceExtensionFieldGroupStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public String getId() {
+        return getStateEventId().getId();
+    }
+
+    public void setId(String id) {
+        getStateEventId().setId(id);
+    }
+
+    public Long getVersion() {
+        return getStateEventId().getVersion();
+    }
+    
+    public void getVersion(Long version) {
+        getStateEventId().setVersion(version);
     }
 
     private String fieldType;

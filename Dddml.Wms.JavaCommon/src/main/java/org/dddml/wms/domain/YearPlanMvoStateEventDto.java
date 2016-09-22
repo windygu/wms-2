@@ -11,19 +11,34 @@ public class YearPlanMvoStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private YearPlanMvoStateEventIdDto stateEventId;
 
-    public YearPlanMvoStateEventIdDto getStateEventId() {
+    YearPlanMvoStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new YearPlanMvoStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(YearPlanMvoStateEventIdDto stateEventId) {
+    void setStateEventId(YearPlanMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public YearPlanIdDto getYearPlanId() {
+        return getStateEventId().getYearPlanId();
+    }
+
+    public void setYearPlanId(YearPlanIdDto yearPlanId) {
+        getStateEventId().setYearPlanId(yearPlanId);
+    }
+
+    public Long getPersonVersion() {
+        return getStateEventId().getPersonVersion();
+    }
+    
+    public void getPersonVersion(Long personVersion) {
+        getStateEventId().setPersonVersion(personVersion);
     }
 
     private String description;

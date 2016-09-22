@@ -11,19 +11,26 @@ public class DayPlanStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private DayPlanStateEventIdDto stateEventId;
 
-    public DayPlanStateEventIdDto getStateEventId() {
+    DayPlanStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new DayPlanStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(DayPlanStateEventIdDto stateEventId) {
+    void setStateEventId(DayPlanStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public Integer getDay() {
+        return getStateEventId().getDay();
+    }
+
+    public void setDay(Integer day) {
+        getStateEventId().setDay(day);
     }
 
     private String description;

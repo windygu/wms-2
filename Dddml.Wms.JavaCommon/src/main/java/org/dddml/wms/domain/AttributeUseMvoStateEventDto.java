@@ -11,19 +11,34 @@ public class AttributeUseMvoStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private AttributeUseMvoStateEventIdDto stateEventId;
 
-    public AttributeUseMvoStateEventIdDto getStateEventId() {
+    AttributeUseMvoStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new AttributeUseMvoStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(AttributeUseMvoStateEventIdDto stateEventId) {
+    void setStateEventId(AttributeUseMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public AttributeSetAttributeUseIdDto getAttributeSetAttributeUseId() {
+        return getStateEventId().getAttributeSetAttributeUseId();
+    }
+
+    public void setAttributeSetAttributeUseId(AttributeSetAttributeUseIdDto attributeSetAttributeUseId) {
+        getStateEventId().setAttributeSetAttributeUseId(attributeSetAttributeUseId);
+    }
+
+    public Long getAttributeSetVersion() {
+        return getStateEventId().getAttributeSetVersion();
+    }
+    
+    public void getAttributeSetVersion(Long attributeSetVersion) {
+        getStateEventId().setAttributeSetVersion(attributeSetVersion);
     }
 
     private Integer sequenceNumber;

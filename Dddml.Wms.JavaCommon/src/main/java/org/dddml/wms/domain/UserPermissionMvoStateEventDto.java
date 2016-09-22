@@ -11,19 +11,34 @@ public class UserPermissionMvoStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private UserPermissionMvoStateEventIdDto stateEventId;
 
-    public UserPermissionMvoStateEventIdDto getStateEventId() {
+    UserPermissionMvoStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new UserPermissionMvoStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(UserPermissionMvoStateEventIdDto stateEventId) {
+    void setStateEventId(UserPermissionMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public UserPermissionIdDto getUserPermissionId() {
+        return getStateEventId().getUserPermissionId();
+    }
+
+    public void setUserPermissionId(UserPermissionIdDto userPermissionId) {
+        getStateEventId().setUserPermissionId(userPermissionId);
+    }
+
+    public Long getUserVersion() {
+        return getStateEventId().getUserVersion();
+    }
+    
+    public void getUserVersion(Long userVersion) {
+        getStateEventId().setUserVersion(userVersion);
     }
 
     private Long version;

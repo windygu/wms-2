@@ -11,19 +11,26 @@ public class AttributeSetInstanceExtensionFieldStateEventDto extends AbstractSta
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private AttributeSetInstanceExtensionFieldStateEventIdDto stateEventId;
 
-    public AttributeSetInstanceExtensionFieldStateEventIdDto getStateEventId() {
+    AttributeSetInstanceExtensionFieldStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new AttributeSetInstanceExtensionFieldStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(AttributeSetInstanceExtensionFieldStateEventIdDto stateEventId) {
+    void setStateEventId(AttributeSetInstanceExtensionFieldStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public String getIndex() {
+        return getStateEventId().getIndex();
+    }
+
+    public void setIndex(String index) {
+        getStateEventId().setIndex(index);
     }
 
     private String name;

@@ -11,19 +11,34 @@ public class UserClaimMvoStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private UserClaimMvoStateEventIdDto stateEventId;
 
-    public UserClaimMvoStateEventIdDto getStateEventId() {
+    UserClaimMvoStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new UserClaimMvoStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(UserClaimMvoStateEventIdDto stateEventId) {
+    void setStateEventId(UserClaimMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public UserClaimIdDto getUserClaimId() {
+        return getStateEventId().getUserClaimId();
+    }
+
+    public void setUserClaimId(UserClaimIdDto userClaimId) {
+        getStateEventId().setUserClaimId(userClaimId);
+    }
+
+    public Long getUserVersion() {
+        return getStateEventId().getUserVersion();
+    }
+    
+    public void getUserVersion(Long userVersion) {
+        getStateEventId().setUserVersion(userVersion);
     }
 
     private String claimType;

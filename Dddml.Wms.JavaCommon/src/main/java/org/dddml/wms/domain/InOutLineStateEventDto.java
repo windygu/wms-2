@@ -12,19 +12,26 @@ public class InOutLineStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private InOutLineStateEventIdDto stateEventId;
 
-    public InOutLineStateEventIdDto getStateEventId() {
+    InOutLineStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new InOutLineStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(InOutLineStateEventIdDto stateEventId) {
+    void setStateEventId(InOutLineStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public SkuIdDto getSkuId() {
+        return getStateEventId().getSkuId();
+    }
+
+    public void setSkuId(SkuIdDto skuId) {
+        getStateEventId().setSkuId(skuId);
     }
 
     private Long lineNumber;

@@ -11,19 +11,34 @@ public class LocatorStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private LocatorStateEventIdDto stateEventId;
 
-    public LocatorStateEventIdDto getStateEventId() {
+    LocatorStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new LocatorStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(LocatorStateEventIdDto stateEventId) {
+    void setStateEventId(LocatorStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public String getLocatorId() {
+        return getStateEventId().getLocatorId();
+    }
+
+    public void setLocatorId(String locatorId) {
+        getStateEventId().setLocatorId(locatorId);
+    }
+
+    public Long getVersion() {
+        return getStateEventId().getVersion();
+    }
+    
+    public void getVersion(Long version) {
+        getStateEventId().setVersion(version);
     }
 
     private String warehouseId;

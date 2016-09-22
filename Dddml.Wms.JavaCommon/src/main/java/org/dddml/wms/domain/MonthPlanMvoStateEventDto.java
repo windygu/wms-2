@@ -11,19 +11,34 @@ public class MonthPlanMvoStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private MonthPlanMvoStateEventIdDto stateEventId;
 
-    public MonthPlanMvoStateEventIdDto getStateEventId() {
+    MonthPlanMvoStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new MonthPlanMvoStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(MonthPlanMvoStateEventIdDto stateEventId) {
+    void setStateEventId(MonthPlanMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public MonthPlanIdDto getMonthPlanId() {
+        return getStateEventId().getMonthPlanId();
+    }
+
+    public void setMonthPlanId(MonthPlanIdDto monthPlanId) {
+        getStateEventId().setMonthPlanId(monthPlanId);
+    }
+
+    public Long getPersonVersion() {
+        return getStateEventId().getPersonVersion();
+    }
+    
+    public void getPersonVersion(Long personVersion) {
+        getStateEventId().setPersonVersion(personVersion);
     }
 
     private String description;

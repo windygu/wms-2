@@ -13,19 +13,34 @@ public class InOutStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private InOutStateEventIdDto stateEventId;
 
-    public InOutStateEventIdDto getStateEventId() {
+    InOutStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new InOutStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(InOutStateEventIdDto stateEventId) {
+    void setStateEventId(InOutStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public String getDocumentNumber() {
+        return getStateEventId().getDocumentNumber();
+    }
+
+    public void setDocumentNumber(String documentNumber) {
+        getStateEventId().setDocumentNumber(documentNumber);
+    }
+
+    public Long getVersion() {
+        return getStateEventId().getVersion();
+    }
+    
+    public void getVersion(Long version) {
+        getStateEventId().setVersion(version);
     }
 
     private Boolean isSOTransaction;

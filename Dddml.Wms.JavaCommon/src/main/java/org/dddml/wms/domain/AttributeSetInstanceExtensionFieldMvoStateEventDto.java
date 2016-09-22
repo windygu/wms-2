@@ -11,19 +11,34 @@ public class AttributeSetInstanceExtensionFieldMvoStateEventDto extends Abstract
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private AttributeSetInstanceExtensionFieldMvoStateEventIdDto stateEventId;
 
-    public AttributeSetInstanceExtensionFieldMvoStateEventIdDto getStateEventId() {
+    AttributeSetInstanceExtensionFieldMvoStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(AttributeSetInstanceExtensionFieldMvoStateEventIdDto stateEventId) {
+    void setStateEventId(AttributeSetInstanceExtensionFieldMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public AttributeSetInstanceExtensionFieldIdDto getAttributeSetInstanceExtensionFieldId() {
+        return getStateEventId().getAttributeSetInstanceExtensionFieldId();
+    }
+
+    public void setAttributeSetInstanceExtensionFieldId(AttributeSetInstanceExtensionFieldIdDto attributeSetInstanceExtensionFieldId) {
+        getStateEventId().setAttributeSetInstanceExtensionFieldId(attributeSetInstanceExtensionFieldId);
+    }
+
+    public Long getAttrSetInstEFGroupVersion() {
+        return getStateEventId().getAttrSetInstEFGroupVersion();
+    }
+    
+    public void getAttrSetInstEFGroupVersion(Long attrSetInstEFGroupVersion) {
+        getStateEventId().setAttrSetInstEFGroupVersion(attrSetInstEFGroupVersion);
     }
 
     private String name;

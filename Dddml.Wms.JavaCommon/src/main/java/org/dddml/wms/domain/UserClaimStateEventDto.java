@@ -11,19 +11,26 @@ public class UserClaimStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private UserClaimStateEventIdDto stateEventId;
 
-    public UserClaimStateEventIdDto getStateEventId() {
+    UserClaimStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new UserClaimStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(UserClaimStateEventIdDto stateEventId) {
+    void setStateEventId(UserClaimStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public Integer getClaimId() {
+        return getStateEventId().getClaimId();
+    }
+
+    public void setClaimId(Integer claimId) {
+        getStateEventId().setClaimId(claimId);
     }
 
     private String claimType;

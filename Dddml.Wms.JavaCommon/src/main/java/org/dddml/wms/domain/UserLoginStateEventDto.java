@@ -11,19 +11,26 @@ public class UserLoginStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private UserLoginStateEventIdDto stateEventId;
 
-    public UserLoginStateEventIdDto getStateEventId() {
+    UserLoginStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new UserLoginStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(UserLoginStateEventIdDto stateEventId) {
+    void setStateEventId(UserLoginStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public LoginKeyDto getLoginKey() {
+        return getStateEventId().getLoginKey();
+    }
+
+    public void setLoginKey(LoginKeyDto loginKey) {
+        getStateEventId().setLoginKey(loginKey);
     }
 
     private Boolean active;

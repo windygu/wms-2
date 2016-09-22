@@ -11,19 +11,34 @@ public class TeamStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private TeamStateEventIdDto stateEventId;
 
-    public TeamStateEventIdDto getStateEventId() {
+    TeamStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new TeamStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(TeamStateEventIdDto stateEventId) {
+    void setStateEventId(TeamStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public String getTeamName() {
+        return getStateEventId().getTeamName();
+    }
+
+    public void setTeamName(String teamName) {
+        getStateEventId().setTeamName(teamName);
+    }
+
+    public Long getVersion() {
+        return getStateEventId().getVersion();
+    }
+    
+    public void getVersion(Long version) {
+        getStateEventId().setVersion(version);
     }
 
     private String description;

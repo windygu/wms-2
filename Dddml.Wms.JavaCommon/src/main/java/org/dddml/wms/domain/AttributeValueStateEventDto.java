@@ -11,19 +11,26 @@ public class AttributeValueStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private AttributeValueStateEventIdDto stateEventId;
 
-    public AttributeValueStateEventIdDto getStateEventId() {
+    AttributeValueStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new AttributeValueStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(AttributeValueStateEventIdDto stateEventId) {
+    void setStateEventId(AttributeValueStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public String getValue() {
+        return getStateEventId().getValue();
+    }
+
+    public void setValue(String value) {
+        getStateEventId().setValue(value);
     }
 
     private String name;

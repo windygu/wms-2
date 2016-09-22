@@ -11,19 +11,26 @@ public class UserRoleStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private UserRoleStateEventIdDto stateEventId;
 
-    public UserRoleStateEventIdDto getStateEventId() {
+    UserRoleStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new UserRoleStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(UserRoleStateEventIdDto stateEventId) {
+    void setStateEventId(UserRoleStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public String getRoleId() {
+        return getStateEventId().getRoleId();
+    }
+
+    public void setRoleId(String roleId) {
+        getStateEventId().setRoleId(roleId);
     }
 
     private Boolean active;

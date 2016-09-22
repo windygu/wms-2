@@ -11,19 +11,34 @@ public class DayPlanMvoStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private DayPlanMvoStateEventIdDto stateEventId;
 
-    public DayPlanMvoStateEventIdDto getStateEventId() {
+    DayPlanMvoStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new DayPlanMvoStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(DayPlanMvoStateEventIdDto stateEventId) {
+    void setStateEventId(DayPlanMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public DayPlanIdDto getDayPlanId() {
+        return getStateEventId().getDayPlanId();
+    }
+
+    public void setDayPlanId(DayPlanIdDto dayPlanId) {
+        getStateEventId().setDayPlanId(dayPlanId);
+    }
+
+    public Long getPersonVersion() {
+        return getStateEventId().getPersonVersion();
+    }
+    
+    public void getPersonVersion(Long personVersion) {
+        getStateEventId().setPersonVersion(personVersion);
     }
 
     private String description;

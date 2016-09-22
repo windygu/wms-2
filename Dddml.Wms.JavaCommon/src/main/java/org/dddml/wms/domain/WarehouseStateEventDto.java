@@ -11,19 +11,34 @@ public class WarehouseStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private WarehouseStateEventIdDto stateEventId;
 
-    public WarehouseStateEventIdDto getStateEventId() {
+    WarehouseStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new WarehouseStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(WarehouseStateEventIdDto stateEventId) {
+    void setStateEventId(WarehouseStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public String getWarehouseId() {
+        return getStateEventId().getWarehouseId();
+    }
+
+    public void setWarehouseId(String warehouseId) {
+        getStateEventId().setWarehouseId(warehouseId);
+    }
+
+    public Long getVersion() {
+        return getStateEventId().getVersion();
+    }
+    
+    public void getVersion(Long version) {
+        getStateEventId().setVersion(version);
     }
 
     private String name;

@@ -11,19 +11,34 @@ public class UserStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private UserStateEventIdDto stateEventId;
 
-    public UserStateEventIdDto getStateEventId() {
+    UserStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new UserStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(UserStateEventIdDto stateEventId) {
+    void setStateEventId(UserStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public String getUserId() {
+        return getStateEventId().getUserId();
+    }
+
+    public void setUserId(String userId) {
+        getStateEventId().setUserId(userId);
+    }
+
+    public Long getVersion() {
+        return getStateEventId().getVersion();
+    }
+    
+    public void getVersion(Long version) {
+        getStateEventId().setVersion(version);
     }
 
     private String userName;

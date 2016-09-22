@@ -11,19 +11,26 @@ public class AttributeUseStateEventDto extends AbstractStateEvent
         return this.stateEventType;
     }
 
-    public void setStateEventType(String type)
-    {
+    public void setStateEventType(String type) {
         this.stateEventType = type;
     }
 
     private AttributeUseStateEventIdDto stateEventId;
 
-    public AttributeUseStateEventIdDto getStateEventId() {
+    AttributeUseStateEventIdDto getStateEventId() {
+        if (stateEventId == null) { stateEventId = new AttributeUseStateEventIdDto(); }
         return this.stateEventId;
     }
 
-    public void getStateEventId(AttributeUseStateEventIdDto stateEventId) {
+    void setStateEventId(AttributeUseStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
+    }
+    public String getAttributeId() {
+        return getStateEventId().getAttributeId();
+    }
+
+    public void setAttributeId(String attributeId) {
+        getStateEventId().setAttributeId(attributeId);
     }
 
     private Integer sequenceNumber;
