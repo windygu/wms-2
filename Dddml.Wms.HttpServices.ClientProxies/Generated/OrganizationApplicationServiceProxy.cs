@@ -263,9 +263,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(organizationId, version).GetAwaiter().GetResult();
         }
 
+
+        public async Task<IOrganizationState> GetHistoryStateAsync(string organizationId, long version)
+        {
+            var idObj = organizationId;
+            var uriParameters = new OrganizationHistoryStateUriParameters();
+            uriParameters.Id = idObj;
+            uriParameters.Version = version.ToString();
+
+            var req = new OrganizationHistoryStateGetRequest(uriParameters);
+            var resp = await _ramlClient.OrganizationHistoryState.Get(req);
+            OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
+            return resp.Content;
+        }
+
         public virtual IOrganizationState GetHistoryState(string organizationId, long version)
         {
-                return null;//todo
+            return GetHistoryStateAsync(organizationId, version).GetAwaiter().GetResult();
         }
 
 

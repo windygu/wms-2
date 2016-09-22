@@ -264,9 +264,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(documentNumber, version).GetAwaiter().GetResult();
         }
 
+
+        public async Task<IInOutState> GetHistoryStateAsync(string documentNumber, long version)
+        {
+            var idObj = documentNumber;
+            var uriParameters = new InOutHistoryStateUriParameters();
+            uriParameters.Id = idObj;
+            uriParameters.Version = version.ToString();
+
+            var req = new InOutHistoryStateGetRequest(uriParameters);
+            var resp = await _ramlClient.InOutHistoryState.Get(req);
+            InOutProxyUtils.ThrowOnHttpResponseError(resp);
+            return resp.Content;
+        }
+
         public virtual IInOutState GetHistoryState(string documentNumber, long version)
         {
-                return null;//todo
+            return GetHistoryStateAsync(documentNumber, version).GetAwaiter().GetResult();
         }
 
         public async virtual Task<IInOutLineState> GetInOutLineAsync(string inOutDocumentNumber, SkuId skuId)

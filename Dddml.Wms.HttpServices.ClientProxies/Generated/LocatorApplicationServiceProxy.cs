@@ -263,9 +263,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(locatorId, version).GetAwaiter().GetResult();
         }
 
+
+        public async Task<ILocatorState> GetHistoryStateAsync(string locatorId, long version)
+        {
+            var idObj = locatorId;
+            var uriParameters = new LocatorHistoryStateUriParameters();
+            uriParameters.Id = idObj;
+            uriParameters.Version = version.ToString();
+
+            var req = new LocatorHistoryStateGetRequest(uriParameters);
+            var resp = await _ramlClient.LocatorHistoryState.Get(req);
+            LocatorProxyUtils.ThrowOnHttpResponseError(resp);
+            return resp.Content;
+        }
+
         public virtual ILocatorState GetHistoryState(string locatorId, long version)
         {
-                return null;//todo
+            return GetHistoryStateAsync(locatorId, version).GetAwaiter().GetResult();
         }
 
 

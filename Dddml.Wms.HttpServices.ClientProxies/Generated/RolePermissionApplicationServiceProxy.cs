@@ -263,9 +263,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(id, version).GetAwaiter().GetResult();
         }
 
+
+        public async Task<IRolePermissionState> GetHistoryStateAsync(RolePermissionId id, long version)
+        {
+            var idObj = RolePermissionProxyUtils.ToIdString(id);
+            var uriParameters = new RolePermissionHistoryStateUriParameters();
+            uriParameters.Id = idObj;
+            uriParameters.Version = version.ToString();
+
+            var req = new RolePermissionHistoryStateGetRequest(uriParameters);
+            var resp = await _ramlClient.RolePermissionHistoryState.Get(req);
+            RolePermissionProxyUtils.ThrowOnHttpResponseError(resp);
+            return resp.Content;
+        }
+
         public virtual IRolePermissionState GetHistoryState(RolePermissionId id, long version)
         {
-                return null;//todo
+            return GetHistoryStateAsync(id, version).GetAwaiter().GetResult();
         }
 
 

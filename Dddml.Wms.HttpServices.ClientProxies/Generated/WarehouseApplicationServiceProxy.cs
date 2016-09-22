@@ -263,9 +263,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(warehouseId, version).GetAwaiter().GetResult();
         }
 
+
+        public async Task<IWarehouseState> GetHistoryStateAsync(string warehouseId, long version)
+        {
+            var idObj = warehouseId;
+            var uriParameters = new WarehouseHistoryStateUriParameters();
+            uriParameters.Id = idObj;
+            uriParameters.Version = version.ToString();
+
+            var req = new WarehouseHistoryStateGetRequest(uriParameters);
+            var resp = await _ramlClient.WarehouseHistoryState.Get(req);
+            WarehouseProxyUtils.ThrowOnHttpResponseError(resp);
+            return resp.Content;
+        }
+
         public virtual IWarehouseState GetHistoryState(string warehouseId, long version)
         {
-                return null;//todo
+            return GetHistoryStateAsync(warehouseId, version).GetAwaiter().GetResult();
         }
 
 

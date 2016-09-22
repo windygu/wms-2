@@ -263,9 +263,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(personalName, version).GetAwaiter().GetResult();
         }
 
+
+        public async Task<IPersonState> GetHistoryStateAsync(PersonalName personalName, long version)
+        {
+            var idObj = PersonProxyUtils.ToIdString(personalName);
+            var uriParameters = new PersonHistoryStateUriParameters();
+            uriParameters.Id = idObj;
+            uriParameters.Version = version.ToString();
+
+            var req = new PersonHistoryStateGetRequest(uriParameters);
+            var resp = await _ramlClient.PersonHistoryState.Get(req);
+            PersonProxyUtils.ThrowOnHttpResponseError(resp);
+            return resp.Content;
+        }
+
         public virtual IPersonState GetHistoryState(PersonalName personalName, long version)
         {
-                return null;//todo
+            return GetHistoryStateAsync(personalName, version).GetAwaiter().GetResult();
         }
 
         public async virtual Task<IYearPlanState> GetYearPlanAsync(PersonalName personalName, int year)

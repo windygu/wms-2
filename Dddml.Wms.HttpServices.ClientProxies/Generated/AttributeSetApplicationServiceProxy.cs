@@ -263,9 +263,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(attributeSetId, version).GetAwaiter().GetResult();
         }
 
+
+        public async Task<IAttributeSetState> GetHistoryStateAsync(string attributeSetId, long version)
+        {
+            var idObj = attributeSetId;
+            var uriParameters = new AttributeSetHistoryStateUriParameters();
+            uriParameters.Id = idObj;
+            uriParameters.Version = version.ToString();
+
+            var req = new AttributeSetHistoryStateGetRequest(uriParameters);
+            var resp = await _ramlClient.AttributeSetHistoryState.Get(req);
+            AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
+            return resp.Content;
+        }
+
         public virtual IAttributeSetState GetHistoryState(string attributeSetId, long version)
         {
-                return null;//todo
+            return GetHistoryStateAsync(attributeSetId, version).GetAwaiter().GetResult();
         }
 
         public async virtual Task<IAttributeUseState> GetAttributeUseAsync(string attributeSetId, string attributeId)

@@ -263,9 +263,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(yearPlanId, version).GetAwaiter().GetResult();
         }
 
+
+        public async Task<IYearPlanMvoState> GetHistoryStateAsync(YearPlanId yearPlanId, long version)
+        {
+            var idObj = YearPlanMvoProxyUtils.ToIdString(yearPlanId);
+            var uriParameters = new YearPlanMvoHistoryStateUriParameters();
+            uriParameters.Id = idObj;
+            uriParameters.Version = version.ToString();
+
+            var req = new YearPlanMvoHistoryStateGetRequest(uriParameters);
+            var resp = await _ramlClient.YearPlanMvoHistoryState.Get(req);
+            YearPlanMvoProxyUtils.ThrowOnHttpResponseError(resp);
+            return resp.Content;
+        }
+
         public virtual IYearPlanMvoState GetHistoryState(YearPlanId yearPlanId, long version)
         {
-                return null;//todo
+            return GetHistoryStateAsync(yearPlanId, version).GetAwaiter().GetResult();
         }
 
 

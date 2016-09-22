@@ -263,9 +263,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetStateEventAsync(clientId, version).GetAwaiter().GetResult();
         }
 
+
+        public async Task<IAudienceState> GetHistoryStateAsync(string clientId, long version)
+        {
+            var idObj = clientId;
+            var uriParameters = new AudienceHistoryStateUriParameters();
+            uriParameters.Id = idObj;
+            uriParameters.Version = version.ToString();
+
+            var req = new AudienceHistoryStateGetRequest(uriParameters);
+            var resp = await _ramlClient.AudienceHistoryState.Get(req);
+            AudienceProxyUtils.ThrowOnHttpResponseError(resp);
+            return resp.Content;
+        }
+
         public virtual IAudienceState GetHistoryState(string clientId, long version)
         {
-                return null;//todo
+            return GetHistoryStateAsync(clientId, version).GetAwaiter().GetResult();
         }
 
 
