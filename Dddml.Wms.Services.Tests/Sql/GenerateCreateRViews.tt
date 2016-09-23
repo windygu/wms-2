@@ -10,7 +10,6 @@
 	var aggregates = new List<Aggregate>();
 	foreach (var agg in mviewObjects)
 	{
-		if (agg.Name.StartsWith("Account")) { continue; }
 		aggregates.Add(agg);
 	} 
 	
