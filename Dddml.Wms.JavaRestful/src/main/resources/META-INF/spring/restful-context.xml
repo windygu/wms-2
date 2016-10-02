@@ -55,6 +55,6 @@
     <bean name="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider">
         <constructor-arg name="mapper" ref="mapper"/>
     </bean>
-    <bean name="mapper" class="org.dddml.support.json.CustomObjectMapper"/>
+    <bean name="mapper" class="org.dddml.wms.restful.provider.CustomObjectMapper"/>
 </beans>
 

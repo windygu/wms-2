@@ -3,8 +3,6 @@ package org.dddml.wms.restful.provider;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.parser.ParserConfig;
 import com.alibaba.fastjson.serializer.SerializeConfig;
-import org.dddml.support.json.JodaMoneyFastJsonDeserializer;
-import org.dddml.support.json.JodaMoneyFastJsonSerializer;
 import org.joda.money.Money;
 
 import javax.ws.rs.WebApplicationException;
