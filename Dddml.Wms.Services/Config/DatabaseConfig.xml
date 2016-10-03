@@ -9,8 +9,10 @@
   <object id="RoutingConnectionProviderDictionary" type="System.Collections.Generic.Dictionary&lt;string,string&gt;">
     <constructor-arg>
       <dictionary key-type="string" value-type="string">
-        <entry key="testtenant1" value="Database=test;Data Source=10.201.2.13;Charset=utf8;User Id=db_user;Password=z5J9OT0urtbfVuRuViK7"/>
-        <entry key="testtenant2" value="Database=test2;Data Source=10.201.2.13;Charset=utf8;User Id=db_user;Password=z5J9OT0urtbfVuRuViK7"/>
+        <!--<entry key="testtenant1" value="Database=test;Data Source=10.201.2.13;Charset=utf8;User Id=db_user;Password=z5J9OT0urtbfVuRuViK7"/>
+        <entry key="testtenant2" value="Database=test2;Data Source=10.201.2.13;Charset=utf8;User Id=db_user;Password=z5J9OT0urtbfVuRuViK7"/>-->
+        <entry key="testtenant1" value="Database=test;Data Source=localhost;Charset=utf8;User Id=root;Password=123456"/>
+        <entry key="testtenant2" value="Database=test2;Data Source=localhost;Charset=utf8;User Id=root;Password=123456"/>
       </dictionary>
     </constructor-arg>
   </object>

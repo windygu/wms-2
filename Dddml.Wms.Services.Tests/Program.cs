@@ -13,15 +13,24 @@ using System.Security.Cryptography;
 namespace Dddml.Wms.Services.Tests
 {
     
-    class TestMain
+    class Program
     {
-
         static void Main(string[] args)
         {
-            //System.Console.WriteLine( AttributeSetInstancePropertyUtils.GetMD5HashString(MD5.Create(), "Do you love me?"));
+            var initdb = new InitDatabase();
+            initdb.SetUp();
+
+            initdb.Hbm2DdlOutput();
+            Console.WriteLine("Output hbm2ddl files, ok.");
+
+            initdb.CopyAndFixHbm2DdlCreateSql();
+            Console.WriteLine("Copy and fix hbm2ddl creation sql, ok.");
+
+            initdb.CreateDatabaseAndSeed();
+            Console.WriteLine("Create database and seed, ok.");
+
             Console.ReadKey();
-            
         }
- 
     }
+
 }

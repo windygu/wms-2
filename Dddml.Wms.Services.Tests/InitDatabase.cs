@@ -12,6 +12,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Dddml.Wms.Services.Tests
 {
@@ -253,6 +254,40 @@ namespace Dddml.Wms.Services.Tests
             }
         }
 
+
+        private const string OldDropFKPatten =
+@"alter table(\s+)(\w+)(\s+)drop foreign key(\s+)(\w+)";
+
+        private const string NewDropFKReplacement =
+@"set @fkConstraintName = (SELECT CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = '$2' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY');
+set @sqlVar = if(@fkConstraintName is not null, 
+			concat('ALTER TABLE $2 drop foreign key ', @fkConstraintName),
+            'select 1');
+prepare stmt from @sqlVar;
+execute stmt;
+deallocate prepare stmt";
+
+        [Test]
+        public void CopyAndFixHbm2DdlCreateSql()
+        {
+            var srcFilePath = @"..\..\sql\hbm2ddl_create.sql";
+            var dstFilePatch = @"..\..\sql\hbm2ddl_create_fix.sql";
+
+            var rgx = new Regex(OldDropFKPatten, RegexOptions.IgnoreCase);
+            using (StreamReader reader = new StreamReader(File.OpenRead(srcFilePath)))
+            {
+                string sql = reader.ReadToEnd();
+                string newSql = rgx.Replace(sql, NewDropFKReplacement);
+                //Console.WriteLine(newSql);
+                using (var writer = new StreamWriter(dstFilePatch))
+                {
+                    writer.Write(newSql);
+                }
+            }
+        }
 
         //[Category("InitDatabase_999")]
         //[Test]

@@ -102,7 +102,7 @@
     <Compile Include="InOutTests.cs" />
     <Compile Include="AttributeSetBuilderTests.cs" />
     <Compile Include="AttributeSetInstanceExtensionFieldUtilsTests.cs" />
-    <Compile Include="TestMain.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestsBase.cs" />
   </ItemGroup>

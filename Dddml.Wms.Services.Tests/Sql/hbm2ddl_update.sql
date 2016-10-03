@@ -126,6 +126,7 @@
        PersonEmergencyContactPersonalNameLastName VARCHAR(50),
        PersonEmergencyContactPhoneNumber VARCHAR(255),
        PersonEmergencyContactAddress VARCHAR(255),
+       PersonEmail VARCHAR(255),
        PersonCreatedBy VARCHAR(255),
        PersonUpdatedBy VARCHAR(255),
        PersonCreatedAt DATETIME,
@@ -134,6 +135,16 @@
        PersonDeleted TINYINT(1),
        primary key (DayPlanIdPersonalNameFirstName, DayPlanIdPersonalNameLastName, DayPlanIdYear, DayPlanIdMonth, DayPlanIdDay)
     );
+    alter table DayPlanMvoStateEvents 
+        add column PersonEmail VARCHAR(255);
+    alter table DayPlanMvoStateEvents 
+        add column IsPropertyPersonEmailRemoved TINYINT(1);
+    alter table People 
+        add column Email VARCHAR(255);
+    alter table PersonStateEvents 
+        add column Email VARCHAR(255);
+    alter table PersonStateEvents 
+        add column IsPropertyEmailRemoved TINYINT(1);
     create table UserRole_RV (
         UserRoleIdUserId VARCHAR(50) not null,
        UserRoleIdRoleId VARCHAR(50) not null,
@@ -350,6 +361,7 @@
        PersonEmergencyContactPersonalNameLastName VARCHAR(50),
        PersonEmergencyContactPhoneNumber VARCHAR(255),
        PersonEmergencyContactAddress VARCHAR(255),
+       PersonEmail VARCHAR(255),
        PersonCreatedBy VARCHAR(255),
        PersonUpdatedBy VARCHAR(255),
        PersonCreatedAt DATETIME,
@@ -358,6 +370,10 @@
        PersonDeleted TINYINT(1),
        primary key (YearPlanIdPersonalNameFirstName, YearPlanIdPersonalNameLastName, YearPlanIdYear)
     );
+    alter table YearPlanMvoStateEvents 
+        add column PersonEmail VARCHAR(255);
+    alter table YearPlanMvoStateEvents 
+        add column IsPropertyPersonEmailRemoved TINYINT(1);
     create table MonthPlan_RV (
         MonthPlanIdPersonalNameFirstName VARCHAR(50) not null,
        MonthPlanIdPersonalNameLastName VARCHAR(50) not null,
@@ -387,6 +403,7 @@
        PersonEmergencyContactPersonalNameLastName VARCHAR(50),
        PersonEmergencyContactPhoneNumber VARCHAR(255),
        PersonEmergencyContactAddress VARCHAR(255),
+       PersonEmail VARCHAR(255),
        PersonCreatedBy VARCHAR(255),
        PersonUpdatedBy VARCHAR(255),
        PersonCreatedAt DATETIME,
@@ -395,3 +412,7 @@
        PersonDeleted TINYINT(1),
        primary key (MonthPlanIdPersonalNameFirstName, MonthPlanIdPersonalNameLastName, MonthPlanIdYear, MonthPlanIdMonth)
     );
+    alter table MonthPlanMvoStateEvents 
+        add column PersonEmail VARCHAR(255);
+    alter table MonthPlanMvoStateEvents 
+        add column IsPropertyPersonEmailRemoved TINYINT(1);
