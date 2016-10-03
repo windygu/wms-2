@@ -75,6 +75,7 @@ public abstract class AbstractPersonAggregate extends AbstractAggregate implemen
         e.setBirthDate(c.getBirthDate());
         e.setLoves(c.getLoves());
         e.setEmergencyContact(c.getEmergencyContact());
+        e.setEmail(c.getEmail());
         e.setActive(c.getActive());
         ((AbstractPersonStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -97,10 +98,12 @@ public abstract class AbstractPersonAggregate extends AbstractAggregate implemen
         e.setBirthDate(c.getBirthDate());
         e.setLoves(c.getLoves());
         e.setEmergencyContact(c.getEmergencyContact());
+        e.setEmail(c.getEmail());
         e.setActive(c.getActive());
         e.setIsPropertyBirthDateRemoved(c.getIsPropertyBirthDateRemoved());
         e.setIsPropertyLovesRemoved(c.getIsPropertyLovesRemoved());
         e.setIsPropertyEmergencyContactRemoved(c.getIsPropertyEmergencyContactRemoved());
+        e.setIsPropertyEmailRemoved(c.getIsPropertyEmailRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractPersonStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

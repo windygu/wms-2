@@ -21,6 +21,8 @@ namespace Dddml.Wms.Domain
 
 		Contact EmergencyContact { get; set; }
 
+		string Email { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

@@ -15,26 +15,39 @@ public abstract class AbstractUserClaimStates implements UserClaimStates
 
     private Map<UserClaimId, UserClaimState> loadedUserClaimStates = new HashMap<UserClaimId, UserClaimState>();
 
-    private List<UserClaimState> removedUserClaimStates = new ArrayList<UserClaimState>();
+    private Map<UserClaimId, UserClaimState> removedUserClaimStates = new HashMap<UserClaimId, UserClaimState>();
 
     protected Iterable<UserClaimState> getLoadedUserClaimStates() {
         return this.loadedUserClaimStates.values();
     }
 
-    private Iterable<UserClaimState> innerIterable;
+    private boolean forReapplying;
 
-    protected Iterable<UserClaimState> getInnerIterable()
-    {
-        if (innerIterable == null)
-        {
-            innerIterable = getUserClaimStateDao().findByUserId(userState.getUserId());
-        }
-        return innerIterable;
+    public boolean getForReapplying() {
+        return forReapplying;
     }
 
-    public AbstractUserClaimStates(UserState outerState)
-    {
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    protected Iterable<UserClaimState> getInnerIterable() {
+        if (!getForReapplying()) {
+            return getUserClaimStateDao().findByUserId(userState.getUserId());
+        } else {
+            List<UserClaimState> ss = new ArrayList<UserClaimState>();
+            for (UserClaimState s : loadedUserClaimStates.values()) {
+                if (!(removedUserClaimStates.containsKey(s.getUserClaimId()) && s.getDeleted())) {
+                    ss.add(s);
+                }
+            }
+            return ss;
+        }
+    }
+
+    public AbstractUserClaimStates(AbstractUserState outerState) {
         this.userState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -48,14 +61,22 @@ public abstract class AbstractUserClaimStates implements UserClaimStates
         if (loadedUserClaimStates.containsKey(globalId)) {
             return loadedUserClaimStates.get(globalId);
         }
-        UserClaimState state = getUserClaimStateDao().get(globalId);
-        loadedUserClaimStates.put(globalId, state);
-        return state;
+        if (getForReapplying()) {
+            UserClaimState state = new AbstractUserClaimState.SimpleUserClaimState(true);
+            state.setUserClaimId(globalId);
+            loadedUserClaimStates.put(globalId, state);
+            return state;
+        } else {
+            UserClaimState state = getUserClaimStateDao().get(globalId);
+            loadedUserClaimStates.put(globalId, state);
+            return state;
+        }
+
     }
 
     public void remove(UserClaimState state)
     {
-        this.removedUserClaimStates.add(state);
+        this.removedUserClaimStates.put(state.getUserClaimId(), state);
     }
 
     public void addToSave(UserClaimState state)
@@ -70,7 +91,7 @@ public abstract class AbstractUserClaimStates implements UserClaimStates
         for (UserClaimState s : this.getLoadedUserClaimStates()) {
             getUserClaimStateDao().save(s);
         }
-        for (UserClaimState s : this.removedUserClaimStates) {
+        for (UserClaimState s : this.removedUserClaimStates.values()) {
             getUserClaimStateDao().delete(s);
         }
     }

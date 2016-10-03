@@ -53,6 +53,7 @@ namespace Dddml.Wms.Domain
             cmd.PersonBirthDate = state.PersonBirthDate;
             cmd.PersonLoves = state.PersonLoves;
             cmd.PersonEmergencyContact = state.PersonEmergencyContact;
+            cmd.PersonEmail = state.PersonEmail;
             cmd.PersonCreatedBy = state.PersonCreatedBy;
             cmd.PersonUpdatedBy = state.PersonUpdatedBy;
             cmd.PersonCreatedAt = state.PersonCreatedAt;
@@ -63,6 +64,7 @@ namespace Dddml.Wms.Domain
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.PersonLoves == null) { cmd.IsPropertyPersonLovesRemoved = true; }
             if (state.PersonEmergencyContact == null) { cmd.IsPropertyPersonEmergencyContactRemoved = true; }
+            if (state.PersonEmail == null) { cmd.IsPropertyPersonEmailRemoved = true; }
             if (state.PersonCreatedBy == null) { cmd.IsPropertyPersonCreatedByRemoved = true; }
             if (state.PersonUpdatedBy == null) { cmd.IsPropertyPersonUpdatedByRemoved = true; }
             return cmd;
@@ -82,6 +84,7 @@ namespace Dddml.Wms.Domain
             cmd.PersonBirthDate = state.PersonBirthDate;
             cmd.PersonLoves = state.PersonLoves;
             cmd.PersonEmergencyContact = state.PersonEmergencyContact;
+            cmd.PersonEmail = state.PersonEmail;
             cmd.PersonCreatedBy = state.PersonCreatedBy;
             cmd.PersonUpdatedBy = state.PersonUpdatedBy;
             cmd.PersonCreatedAt = state.PersonCreatedAt;

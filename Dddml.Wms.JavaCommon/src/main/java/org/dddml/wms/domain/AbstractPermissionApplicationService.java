@@ -43,7 +43,6 @@ public abstract class AbstractPermissionApplicationService implements Permission
     }
 
     public PermissionState get(String id) {
-
         PermissionState state = getStateRepository().get(id, true);
         return state;
     }

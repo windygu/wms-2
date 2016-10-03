@@ -76,7 +76,6 @@ namespace Dddml.Wms.Domain
 
         public virtual ITeamState Get(string teamName)
         {
-
             var state = StateRepository.Get(teamName, true);
             return state;
         }

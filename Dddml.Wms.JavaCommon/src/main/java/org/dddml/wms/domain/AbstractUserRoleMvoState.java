@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.UserRoleMvoStateEvent.*;
@@ -326,8 +326,34 @@ public abstract class AbstractUserRoleMvoState implements UserRoleMvoState
     }
 
 
-    public AbstractUserRoleMvoState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractUserRoleMvoState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setUserRoleId(((UserRoleMvoStateEvent) events.get(0)).getStateEventId().getUserRoleId());
+            for (Event e : events) {
+                mutate(e);
+                this.setUserVersion(this.getUserVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractUserRoleMvoState() {
+        this(false);
+    }
+
+    public AbstractUserRoleMvoState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -631,6 +657,14 @@ public abstract class AbstractUserRoleMvoState implements UserRoleMvoState
 
     public static class SimpleUserRoleMvoState extends AbstractUserRoleMvoState
     {
+
+        public SimpleUserRoleMvoState() {
+        }
+
+        public SimpleUserRoleMvoState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

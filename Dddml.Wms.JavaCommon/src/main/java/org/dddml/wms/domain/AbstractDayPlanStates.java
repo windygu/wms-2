@@ -15,26 +15,39 @@ public abstract class AbstractDayPlanStates implements DayPlanStates
 
     private Map<DayPlanId, DayPlanState> loadedDayPlanStates = new HashMap<DayPlanId, DayPlanState>();
 
-    private List<DayPlanState> removedDayPlanStates = new ArrayList<DayPlanState>();
+    private Map<DayPlanId, DayPlanState> removedDayPlanStates = new HashMap<DayPlanId, DayPlanState>();
 
     protected Iterable<DayPlanState> getLoadedDayPlanStates() {
         return this.loadedDayPlanStates.values();
     }
 
-    private Iterable<DayPlanState> innerIterable;
+    private boolean forReapplying;
 
-    protected Iterable<DayPlanState> getInnerIterable()
-    {
-        if (innerIterable == null)
-        {
-            innerIterable = getDayPlanStateDao().findByPersonalNameAndYearAndMonth(monthPlanState.getMonthPlanId().getPersonalName(), monthPlanState.getMonthPlanId().getYear(), monthPlanState.getMonthPlanId().getMonth());
-        }
-        return innerIterable;
+    public boolean getForReapplying() {
+        return forReapplying;
     }
 
-    public AbstractDayPlanStates(MonthPlanState outerState)
-    {
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    protected Iterable<DayPlanState> getInnerIterable() {
+        if (!getForReapplying()) {
+            return getDayPlanStateDao().findByPersonalNameAndYearAndMonth(monthPlanState.getMonthPlanId().getPersonalName(), monthPlanState.getMonthPlanId().getYear(), monthPlanState.getMonthPlanId().getMonth());
+        } else {
+            List<DayPlanState> ss = new ArrayList<DayPlanState>();
+            for (DayPlanState s : loadedDayPlanStates.values()) {
+                if (!(removedDayPlanStates.containsKey(s.getDayPlanId()) && s.getDeleted())) {
+                    ss.add(s);
+                }
+            }
+            return ss;
+        }
+    }
+
+    public AbstractDayPlanStates(AbstractMonthPlanState outerState) {
         this.monthPlanState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -48,14 +61,22 @@ public abstract class AbstractDayPlanStates implements DayPlanStates
         if (loadedDayPlanStates.containsKey(globalId)) {
             return loadedDayPlanStates.get(globalId);
         }
-        DayPlanState state = getDayPlanStateDao().get(globalId);
-        loadedDayPlanStates.put(globalId, state);
-        return state;
+        if (getForReapplying()) {
+            DayPlanState state = new AbstractDayPlanState.SimpleDayPlanState(true);
+            state.setDayPlanId(globalId);
+            loadedDayPlanStates.put(globalId, state);
+            return state;
+        } else {
+            DayPlanState state = getDayPlanStateDao().get(globalId);
+            loadedDayPlanStates.put(globalId, state);
+            return state;
+        }
+
     }
 
     public void remove(DayPlanState state)
     {
-        this.removedDayPlanStates.add(state);
+        this.removedDayPlanStates.put(state.getDayPlanId(), state);
     }
 
     public void addToSave(DayPlanState state)
@@ -70,7 +91,7 @@ public abstract class AbstractDayPlanStates implements DayPlanStates
         for (DayPlanState s : this.getLoadedDayPlanStates()) {
             getDayPlanStateDao().save(s);
         }
-        for (DayPlanState s : this.removedDayPlanStates) {
+        for (DayPlanState s : this.removedDayPlanStates.values()) {
             getDayPlanStateDao().delete(s);
         }
     }

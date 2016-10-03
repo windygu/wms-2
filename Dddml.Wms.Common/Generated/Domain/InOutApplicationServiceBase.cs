@@ -77,7 +77,6 @@ namespace Dddml.Wms.Domain
 
         public virtual IInOutState Get(string documentNumber)
         {
-
             var state = StateRepository.Get(documentNumber, true);
             return state;
         }

@@ -15,26 +15,39 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStates implement
 
     private Map<AttributeSetInstanceExtensionFieldId, AttributeSetInstanceExtensionFieldState> loadedAttributeSetInstanceExtensionFieldStates = new HashMap<AttributeSetInstanceExtensionFieldId, AttributeSetInstanceExtensionFieldState>();
 
-    private List<AttributeSetInstanceExtensionFieldState> removedAttributeSetInstanceExtensionFieldStates = new ArrayList<AttributeSetInstanceExtensionFieldState>();
+    private Map<AttributeSetInstanceExtensionFieldId, AttributeSetInstanceExtensionFieldState> removedAttributeSetInstanceExtensionFieldStates = new HashMap<AttributeSetInstanceExtensionFieldId, AttributeSetInstanceExtensionFieldState>();
 
     protected Iterable<AttributeSetInstanceExtensionFieldState> getLoadedAttributeSetInstanceExtensionFieldStates() {
         return this.loadedAttributeSetInstanceExtensionFieldStates.values();
     }
 
-    private Iterable<AttributeSetInstanceExtensionFieldState> innerIterable;
+    private boolean forReapplying;
 
-    protected Iterable<AttributeSetInstanceExtensionFieldState> getInnerIterable()
-    {
-        if (innerIterable == null)
-        {
-            innerIterable = getAttributeSetInstanceExtensionFieldStateDao().findByGroupId(attributeSetInstanceExtensionFieldGroupState.getId());
-        }
-        return innerIterable;
+    public boolean getForReapplying() {
+        return forReapplying;
     }
 
-    public AbstractAttributeSetInstanceExtensionFieldStates(AttributeSetInstanceExtensionFieldGroupState outerState)
-    {
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    protected Iterable<AttributeSetInstanceExtensionFieldState> getInnerIterable() {
+        if (!getForReapplying()) {
+            return getAttributeSetInstanceExtensionFieldStateDao().findByGroupId(attributeSetInstanceExtensionFieldGroupState.getId());
+        } else {
+            List<AttributeSetInstanceExtensionFieldState> ss = new ArrayList<AttributeSetInstanceExtensionFieldState>();
+            for (AttributeSetInstanceExtensionFieldState s : loadedAttributeSetInstanceExtensionFieldStates.values()) {
+                if (!(removedAttributeSetInstanceExtensionFieldStates.containsKey(s.getAttributeSetInstanceExtensionFieldId()) && s.getDeleted())) {
+                    ss.add(s);
+                }
+            }
+            return ss;
+        }
+    }
+
+    public AbstractAttributeSetInstanceExtensionFieldStates(AbstractAttributeSetInstanceExtensionFieldGroupState outerState) {
         this.attributeSetInstanceExtensionFieldGroupState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -48,14 +61,22 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStates implement
         if (loadedAttributeSetInstanceExtensionFieldStates.containsKey(globalId)) {
             return loadedAttributeSetInstanceExtensionFieldStates.get(globalId);
         }
-        AttributeSetInstanceExtensionFieldState state = getAttributeSetInstanceExtensionFieldStateDao().get(globalId);
-        loadedAttributeSetInstanceExtensionFieldStates.put(globalId, state);
-        return state;
+        if (getForReapplying()) {
+            AttributeSetInstanceExtensionFieldState state = new AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState(true);
+            state.setAttributeSetInstanceExtensionFieldId(globalId);
+            loadedAttributeSetInstanceExtensionFieldStates.put(globalId, state);
+            return state;
+        } else {
+            AttributeSetInstanceExtensionFieldState state = getAttributeSetInstanceExtensionFieldStateDao().get(globalId);
+            loadedAttributeSetInstanceExtensionFieldStates.put(globalId, state);
+            return state;
+        }
+
     }
 
     public void remove(AttributeSetInstanceExtensionFieldState state)
     {
-        this.removedAttributeSetInstanceExtensionFieldStates.add(state);
+        this.removedAttributeSetInstanceExtensionFieldStates.put(state.getAttributeSetInstanceExtensionFieldId(), state);
     }
 
     public void addToSave(AttributeSetInstanceExtensionFieldState state)
@@ -70,7 +91,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStates implement
         for (AttributeSetInstanceExtensionFieldState s : this.getLoadedAttributeSetInstanceExtensionFieldStates()) {
             getAttributeSetInstanceExtensionFieldStateDao().save(s);
         }
-        for (AttributeSetInstanceExtensionFieldState s : this.removedAttributeSetInstanceExtensionFieldStates) {
+        for (AttributeSetInstanceExtensionFieldState s : this.removedAttributeSetInstanceExtensionFieldStates.values()) {
             getAttributeSetInstanceExtensionFieldStateDao().delete(s);
         }
     }

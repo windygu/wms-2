@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.OrganizationStructureTypeStateEvent.*;
@@ -110,8 +110,34 @@ public abstract class AbstractOrganizationStructureTypeState implements Organiza
     }
 
 
-    public AbstractOrganizationStructureTypeState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractOrganizationStructureTypeState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setId(((OrganizationStructureTypeStateEvent) events.get(0)).getStateEventId().getId());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractOrganizationStructureTypeState() {
+        this(false);
+    }
+
+    public AbstractOrganizationStructureTypeState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -199,6 +225,14 @@ public abstract class AbstractOrganizationStructureTypeState implements Organiza
 
     public static class SimpleOrganizationStructureTypeState extends AbstractOrganizationStructureTypeState
     {
+
+        public SimpleOrganizationStructureTypeState() {
+        }
+
+        public SimpleOrganizationStructureTypeState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

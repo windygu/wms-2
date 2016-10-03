@@ -35,17 +35,15 @@ namespace Dddml.Wms.Domain
 
         private IAttributeSetInstanceExtensionFieldGroupState _attributeSetInstanceExtensionFieldGroupState;
 
-        //private IEnumerable<IAttributeSetInstanceExtensionFieldState> _innerEnumerable;
-
         private IEnumerable<IAttributeSetInstanceExtensionFieldState> InnerEnumeralbe
         {
             get
             {
-                if (!ForReapplying)//(_innerEnumerable == null)
+                if (!ForReapplying)
                 {
                     return AttributeSetInstanceExtensionFieldStateDao.FindByGroupId(_attributeSetInstanceExtensionFieldGroupState.Id);
                 }
-                else //return _innerEnumerable;
+                else
                 {
                     return _loadedAttributeSetInstanceExtensionFieldStates.Values.Where(s => !(_removedAttributeSetInstanceExtensionFieldStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }

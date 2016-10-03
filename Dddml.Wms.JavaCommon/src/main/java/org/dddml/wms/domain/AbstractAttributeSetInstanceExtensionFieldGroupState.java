@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AttributeSetInstanceExtensionFieldGroupStateEvent.*;
@@ -182,8 +182,34 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
     }
 
 
-    public AbstractAttributeSetInstanceExtensionFieldGroupState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractAttributeSetInstanceExtensionFieldGroupState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setId(((AttributeSetInstanceExtensionFieldGroupStateEvent) events.get(0)).getStateEventId().getId());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractAttributeSetInstanceExtensionFieldGroupState() {
+        this(false);
+    }
+
+    public AbstractAttributeSetInstanceExtensionFieldGroupState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         fields = new SimpleAttributeSetInstanceExtensionFieldStates(this);
 
         initializeProperties();
@@ -358,11 +384,19 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
 
     public static class SimpleAttributeSetInstanceExtensionFieldGroupState extends AbstractAttributeSetInstanceExtensionFieldGroupState
     {
+
+        public SimpleAttributeSetInstanceExtensionFieldGroupState() {
+        }
+
+        public SimpleAttributeSetInstanceExtensionFieldGroupState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
     static class SimpleAttributeSetInstanceExtensionFieldStates extends AbstractAttributeSetInstanceExtensionFieldStates
     {
-        public SimpleAttributeSetInstanceExtensionFieldStates(AttributeSetInstanceExtensionFieldGroupState outerState)
+        public SimpleAttributeSetInstanceExtensionFieldStates(AbstractAttributeSetInstanceExtensionFieldGroupState outerState)
         {
             super(outerState);
         }

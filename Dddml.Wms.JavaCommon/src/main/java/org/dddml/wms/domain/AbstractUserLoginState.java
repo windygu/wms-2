@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.UserLoginStateEvent.*;
@@ -124,8 +124,23 @@ public abstract class AbstractUserLoginState implements UserLoginState
     }
 
 
-    public AbstractUserLoginState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+
+    public AbstractUserLoginState() {
+        this(false);
+    }
+
+    public AbstractUserLoginState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -206,6 +221,8 @@ public abstract class AbstractUserLoginState implements UserLoginState
             throw DomainError.named("mutateWrongEntity", "Entity Id LoginKey %1$s in state but entity id LoginKey %2$s in event", stateEntityIdLoginKey, eventEntityIdLoginKey);
         }
 
+        if (getForReapplying()) { return; }
+
         Long stateVersion = this.getVersion();
         Long eventVersion = stateEvent.getVersion();
         if (eventVersion == null) {
@@ -221,6 +238,14 @@ public abstract class AbstractUserLoginState implements UserLoginState
 
     public static class SimpleUserLoginState extends AbstractUserLoginState
     {
+
+        public SimpleUserLoginState() {
+        }
+
+        public SimpleUserLoginState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import org.joda.money.Money;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -532,8 +532,34 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     }
 
 
-    public AbstractInOutState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractInOutState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setDocumentNumber(((InOutStateEvent) events.get(0)).getStateEventId().getDocumentNumber());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractInOutState() {
+        this(false);
+    }
+
+    public AbstractInOutState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         inOutLines = new SimpleInOutLineStates(this);
 
         initializeProperties();
@@ -1056,11 +1082,19 @@ public abstract class AbstractInOutState implements InOutState, Saveable
 
     public static class SimpleInOutState extends AbstractInOutState
     {
+
+        public SimpleInOutState() {
+        }
+
+        public SimpleInOutState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
     static class SimpleInOutLineStates extends AbstractInOutLineStates
     {
-        public SimpleInOutLineStates(InOutState outerState)
+        public SimpleInOutLineStates(AbstractInOutState outerState)
         {
             super(outerState);
         }

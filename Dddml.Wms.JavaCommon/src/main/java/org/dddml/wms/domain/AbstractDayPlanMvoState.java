@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.DayPlanMvoStateEvent.*;
@@ -344,6 +344,18 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.personEmergencyContact = personEmergencyContact;
     }
 
+    private String personEmail;
+
+    public String getPersonEmail()
+    {
+        return this.personEmail;
+    }
+
+    public void setPersonEmail(String personEmail)
+    {
+        this.personEmail = personEmail;
+    }
+
     private String personCreatedBy;
 
     public String getPersonCreatedBy()
@@ -434,8 +446,34 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
     }
 
 
-    public AbstractDayPlanMvoState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractDayPlanMvoState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setDayPlanId(((DayPlanMvoStateEvent) events.get(0)).getStateEventId().getDayPlanId());
+            for (Event e : events) {
+                mutate(e);
+                this.setPersonVersion(this.getPersonVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractDayPlanMvoState() {
+        this(false);
+    }
+
+    public AbstractDayPlanMvoState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -478,6 +516,7 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         this.setPersonBirthDate(e.getPersonBirthDate());
         this.setPersonLoves(e.getPersonLoves());
         this.setPersonEmergencyContact(e.getPersonEmergencyContact());
+        this.setPersonEmail(e.getPersonEmail());
         this.setPersonCreatedBy(e.getPersonCreatedBy());
         this.setPersonUpdatedBy(e.getPersonUpdatedBy());
         this.setPersonCreatedAt(e.getPersonCreatedAt());
@@ -738,6 +777,17 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
         {
             this.setPersonEmergencyContact(e.getPersonEmergencyContact());
         }
+        if (e.getPersonEmail() == null)
+        {
+            if (e.getIsPropertyPersonEmailRemoved() != null && e.getIsPropertyPersonEmailRemoved())
+            {
+                this.setPersonEmail(null);
+            }
+        }
+        else
+        {
+            this.setPersonEmail(e.getPersonEmail());
+        }
         if (e.getPersonCreatedBy() == null)
         {
             if (e.getIsPropertyPersonCreatedByRemoved() != null && e.getIsPropertyPersonCreatedByRemoved())
@@ -847,6 +897,14 @@ public abstract class AbstractDayPlanMvoState implements DayPlanMvoState
 
     public static class SimpleDayPlanMvoState extends AbstractDayPlanMvoState
     {
+
+        public SimpleDayPlanMvoState() {
+        }
+
+        public SimpleDayPlanMvoState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

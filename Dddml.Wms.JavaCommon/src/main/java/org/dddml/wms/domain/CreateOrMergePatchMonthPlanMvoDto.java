@@ -172,6 +172,18 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         this.personEmergencyContact = personEmergencyContact;
     }
 
+    private String personEmail;
+
+    public String getPersonEmail()
+    {
+        return this.personEmail;
+    }
+
+    public void setPersonEmail(String personEmail)
+    {
+        this.personEmail = personEmail;
+    }
+
     private String personCreatedBy;
 
     public String getPersonCreatedBy()
@@ -412,6 +424,18 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         this.isPropertyPersonEmergencyContactRemoved = removed;
     }
 
+    private Boolean isPropertyPersonEmailRemoved;
+
+    public Boolean getIsPropertyPersonEmailRemoved()
+    {
+        return this.isPropertyPersonEmailRemoved;
+    }
+
+    public void setIsPropertyPersonEmailRemoved(Boolean removed)
+    {
+        this.isPropertyPersonEmailRemoved = removed;
+    }
+
     private Boolean isPropertyPersonCreatedByRemoved;
 
     public Boolean getIsPropertyPersonCreatedByRemoved()
@@ -501,6 +525,7 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         command.setPersonBirthDate(this.getPersonBirthDate());
         command.setPersonLoves((this.getPersonLoves() == null) ? null : this.getPersonLoves().toPersonalName());
         command.setPersonEmergencyContact((this.getPersonEmergencyContact() == null) ? null : this.getPersonEmergencyContact().toContact());
+        command.setPersonEmail(this.getPersonEmail());
         command.setPersonCreatedBy(this.getPersonCreatedBy());
         command.setPersonUpdatedBy(this.getPersonUpdatedBy());
         command.setPersonCreatedAt(this.getPersonCreatedAt());
@@ -545,6 +570,7 @@ public class CreateOrMergePatchMonthPlanMvoDto extends AbstractMonthPlanMvoComma
         command.setIsPropertyPersonBirthDateRemoved(this.getIsPropertyPersonBirthDateRemoved());
         command.setIsPropertyPersonLovesRemoved(this.getIsPropertyPersonLovesRemoved());
         command.setIsPropertyPersonEmergencyContactRemoved(this.getIsPropertyPersonEmergencyContactRemoved());
+        command.setIsPropertyPersonEmailRemoved(this.getIsPropertyPersonEmailRemoved());
         command.setIsPropertyPersonCreatedByRemoved(this.getIsPropertyPersonCreatedByRemoved());
         command.setIsPropertyPersonUpdatedByRemoved(this.getIsPropertyPersonUpdatedByRemoved());
         command.setIsPropertyPersonCreatedAtRemoved(this.getIsPropertyPersonCreatedAtRemoved());

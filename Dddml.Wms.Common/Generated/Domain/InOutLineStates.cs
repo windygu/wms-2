@@ -36,17 +36,15 @@ namespace Dddml.Wms.Domain
 
         private IInOutState _inOutState;
 
-        //private IEnumerable<IInOutLineState> _innerEnumerable;
-
         private IEnumerable<IInOutLineState> InnerEnumeralbe
         {
             get
             {
-                if (!ForReapplying)//(_innerEnumerable == null)
+                if (!ForReapplying)
                 {
                     return InOutLineStateDao.FindByInOutDocumentNumber(_inOutState.DocumentNumber);
                 }
-                else //return _innerEnumerable;
+                else
                 {
                     return _loadedInOutLineStates.Values.Where(s => !(_removedInOutLineStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }

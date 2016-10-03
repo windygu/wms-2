@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.RoleStateEvent.*;
@@ -134,8 +134,34 @@ public abstract class AbstractRoleState implements RoleState
     }
 
 
-    public AbstractRoleState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractRoleState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setRoleId(((RoleStateEvent) events.get(0)).getStateEventId().getRoleId());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractRoleState() {
+        this(false);
+    }
+
+    public AbstractRoleState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -247,6 +273,14 @@ public abstract class AbstractRoleState implements RoleState
 
     public static class SimpleRoleState extends AbstractRoleState
     {
+
+        public SimpleRoleState() {
+        }
+
+        public SimpleRoleState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AttributeSetInstanceExtensionFieldMvoStateEvent.*;
@@ -314,8 +314,34 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoState impleme
     }
 
 
-    public AbstractAttributeSetInstanceExtensionFieldMvoState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractAttributeSetInstanceExtensionFieldMvoState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setAttributeSetInstanceExtensionFieldId(((AttributeSetInstanceExtensionFieldMvoStateEvent) events.get(0)).getStateEventId().getAttributeSetInstanceExtensionFieldId());
+            for (Event e : events) {
+                mutate(e);
+                this.setAttrSetInstEFGroupVersion(this.getAttrSetInstEFGroupVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractAttributeSetInstanceExtensionFieldMvoState() {
+        this(false);
+    }
+
+    public AbstractAttributeSetInstanceExtensionFieldMvoState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -607,6 +633,14 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoState impleme
 
     public static class SimpleAttributeSetInstanceExtensionFieldMvoState extends AbstractAttributeSetInstanceExtensionFieldMvoState
     {
+
+        public SimpleAttributeSetInstanceExtensionFieldMvoState() {
+        }
+
+        public SimpleAttributeSetInstanceExtensionFieldMvoState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

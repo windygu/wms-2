@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.UserPermissionMvoStateEvent.*;
@@ -326,8 +326,34 @@ public abstract class AbstractUserPermissionMvoState implements UserPermissionMv
     }
 
 
-    public AbstractUserPermissionMvoState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractUserPermissionMvoState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setUserPermissionId(((UserPermissionMvoStateEvent) events.get(0)).getStateEventId().getUserPermissionId());
+            for (Event e : events) {
+                mutate(e);
+                this.setUserVersion(this.getUserVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractUserPermissionMvoState() {
+        this(false);
+    }
+
+    public AbstractUserPermissionMvoState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -631,6 +657,14 @@ public abstract class AbstractUserPermissionMvoState implements UserPermissionMv
 
     public static class SimpleUserPermissionMvoState extends AbstractUserPermissionMvoState
     {
+
+        public SimpleUserPermissionMvoState() {
+        }
+
+        public SimpleUserPermissionMvoState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

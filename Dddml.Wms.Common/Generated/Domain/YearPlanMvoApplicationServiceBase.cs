@@ -76,7 +76,6 @@ namespace Dddml.Wms.Domain
 
         public virtual IYearPlanMvoState Get(YearPlanId yearPlanId)
         {
-
             var state = StateRepository.Get(yearPlanId, true);
             return state;
         }

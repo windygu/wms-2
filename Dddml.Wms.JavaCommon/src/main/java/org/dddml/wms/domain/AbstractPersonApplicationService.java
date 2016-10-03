@@ -43,7 +43,6 @@ public abstract class AbstractPersonApplicationService implements PersonApplicat
     }
 
     public PersonState get(PersonalName id) {
-
         PersonState state = getStateRepository().get(id, true);
         return state;
     }

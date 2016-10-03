@@ -42,6 +42,16 @@ namespace Dddml.Wms.Domain {
 			this.emergencyContact = emergencyContact;
 		}
 
+		private email: string;
+
+		getEmail(): string {
+			return this.email;
+		}
+
+		setEmail(email: string) {
+			this.email = email;
+		}
+
 		private active: boolean;
 
 		getActive(): boolean {

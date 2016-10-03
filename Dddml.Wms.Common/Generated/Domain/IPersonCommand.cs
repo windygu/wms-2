@@ -27,6 +27,8 @@ namespace Dddml.Wms.Domain
 
 		Contact EmergencyContact { get; set; }
 
+		string Email { get; set; }
+
 		bool? Active { get; set; }
 
 
@@ -48,6 +50,8 @@ namespace Dddml.Wms.Domain
 		bool IsPropertyLovesRemoved { get; set; }
 
 		bool IsPropertyEmergencyContactRemoved { get; set; }
+
+		bool IsPropertyEmailRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

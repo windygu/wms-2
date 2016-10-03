@@ -77,7 +77,6 @@ namespace Dddml.Wms.Domain
 
         public virtual IInOutLineMvoState Get(InOutLineId inOutLineId)
         {
-
             var state = StateRepository.Get(inOutLineId, true);
             return state;
         }

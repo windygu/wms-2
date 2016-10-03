@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.UserPermissionStateEvent.*;
@@ -124,8 +124,23 @@ public abstract class AbstractUserPermissionState implements UserPermissionState
     }
 
 
-    public AbstractUserPermissionState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+
+    public AbstractUserPermissionState() {
+        this(false);
+    }
+
+    public AbstractUserPermissionState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -206,6 +221,8 @@ public abstract class AbstractUserPermissionState implements UserPermissionState
             throw DomainError.named("mutateWrongEntity", "Entity Id PermissionId %1$s in state but entity id PermissionId %2$s in event", stateEntityIdPermissionId, eventEntityIdPermissionId);
         }
 
+        if (getForReapplying()) { return; }
+
         Long stateVersion = this.getVersion();
         Long eventVersion = stateEvent.getVersion();
         if (eventVersion == null) {
@@ -221,6 +238,14 @@ public abstract class AbstractUserPermissionState implements UserPermissionState
 
     public static class SimpleUserPermissionState extends AbstractUserPermissionState
     {
+
+        public SimpleUserPermissionState() {
+        }
+
+        public SimpleUserPermissionState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

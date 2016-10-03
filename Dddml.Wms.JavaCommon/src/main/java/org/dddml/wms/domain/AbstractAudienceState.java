@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AudienceStateEvent.*;
@@ -134,8 +134,34 @@ public abstract class AbstractAudienceState implements AudienceState
     }
 
 
-    public AbstractAudienceState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractAudienceState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setClientId(((AudienceStateEvent) events.get(0)).getStateEventId().getClientId());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractAudienceState() {
+        this(false);
+    }
+
+    public AbstractAudienceState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -247,6 +273,14 @@ public abstract class AbstractAudienceState implements AudienceState
 
     public static class SimpleAudienceState extends AbstractAudienceState
     {
+
+        public SimpleAudienceState() {
+        }
+
+        public SimpleAudienceState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

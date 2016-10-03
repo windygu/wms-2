@@ -310,6 +310,18 @@ public abstract class AbstractDayPlanMvoStateEvent extends AbstractStateEvent im
         this.personEmergencyContact = personEmergencyContact;
     }
 
+    private String personEmail;
+
+    public String getPersonEmail()
+    {
+        return this.personEmail;
+    }
+
+    public void setPersonEmail(String personEmail)
+    {
+        this.personEmail = personEmail;
+    }
+
     private String personCreatedBy;
 
     public String getPersonCreatedBy()
@@ -651,6 +663,16 @@ public abstract class AbstractDayPlanMvoStateEvent extends AbstractStateEvent im
 
         public void setIsPropertyPersonEmergencyContactRemoved(Boolean removed) {
             this.isPropertyPersonEmergencyContactRemoved = removed;
+        }
+
+        private Boolean isPropertyPersonEmailRemoved;
+
+        public Boolean getIsPropertyPersonEmailRemoved() {
+            return this.isPropertyPersonEmailRemoved;
+        }
+
+        public void setIsPropertyPersonEmailRemoved(Boolean removed) {
+            this.isPropertyPersonEmailRemoved = removed;
         }
 
         private Boolean isPropertyPersonCreatedByRemoved;

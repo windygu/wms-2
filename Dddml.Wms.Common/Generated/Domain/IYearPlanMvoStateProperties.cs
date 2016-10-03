@@ -27,6 +27,8 @@ namespace Dddml.Wms.Domain
 
 		Contact PersonEmergencyContact { get; set; }
 
+		string PersonEmail { get; set; }
+
 		string PersonCreatedBy { get; set; }
 
 		string PersonUpdatedBy { get; set; }

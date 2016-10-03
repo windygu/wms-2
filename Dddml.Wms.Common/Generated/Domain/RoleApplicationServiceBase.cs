@@ -76,7 +76,6 @@ namespace Dddml.Wms.Domain
 
         public virtual IRoleState Get(string roleId)
         {
-
             var state = StateRepository.Get(roleId, true);
             return state;
         }

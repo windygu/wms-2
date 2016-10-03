@@ -30,6 +30,8 @@
 		<property name="address" column="emergencyContactAddress" />
 	</component>
 
+	<property name="email" ></property>
+
 	<property name="active" ></property>
 
 
@@ -51,6 +53,8 @@
         <property name="isPropertyLovesRemoved" />
 
         <property name="isPropertyEmergencyContactRemoved" />
+
+        <property name="isPropertyEmailRemoved" />
 
         <property name="isPropertyActiveRemoved" />
 

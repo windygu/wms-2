@@ -43,7 +43,6 @@ public abstract class AbstractLocatorApplicationService implements LocatorApplic
     }
 
     public LocatorState get(String id) {
-
         LocatorState state = getStateRepository().get(id, true);
         return state;
     }

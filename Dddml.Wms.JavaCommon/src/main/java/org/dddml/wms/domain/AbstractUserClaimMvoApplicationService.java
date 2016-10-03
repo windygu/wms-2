@@ -43,7 +43,6 @@ public abstract class AbstractUserClaimMvoApplicationService implements UserClai
     }
 
     public UserClaimMvoState get(UserClaimId id) {
-
         UserClaimMvoState state = getStateRepository().get(id, true);
         return state;
     }

@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AttributeUseStateEvent.*;
@@ -136,8 +136,23 @@ public abstract class AbstractAttributeUseState implements AttributeUseState
     }
 
 
-    public AbstractAttributeUseState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+
+    public AbstractAttributeUseState() {
+        this(false);
+    }
+
+    public AbstractAttributeUseState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -230,6 +245,8 @@ public abstract class AbstractAttributeUseState implements AttributeUseState
             throw DomainError.named("mutateWrongEntity", "Entity Id AttributeId %1$s in state but entity id AttributeId %2$s in event", stateEntityIdAttributeId, eventEntityIdAttributeId);
         }
 
+        if (getForReapplying()) { return; }
+
         Long stateVersion = this.getVersion();
         Long eventVersion = stateEvent.getVersion();
         if (eventVersion == null) {
@@ -245,6 +262,14 @@ public abstract class AbstractAttributeUseState implements AttributeUseState
 
     public static class SimpleAttributeUseState extends AbstractAttributeUseState
     {
+
+        public SimpleAttributeUseState() {
+        }
+
+        public SimpleAttributeUseState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

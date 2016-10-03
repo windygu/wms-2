@@ -80,6 +80,29 @@ trait PersonIsPropertyRemovedTrait
      *
      * @var boolean
      */
+    private $isPropertyEmailRemoved = false;
+
+    /**
+     * @return boolean
+     */
+    public function getIsPropertyEmailRemoved()
+    {
+        return $this->isPropertyEmailRemoved;
+    }
+
+    /**
+     * @param boolean $isPropertyEmailRemoved
+     */
+    public function setIsPropertyEmailRemoved($isPropertyEmailRemoved)
+    {
+        $this->isPropertyEmailRemoved = $isPropertyEmailRemoved;
+    }
+
+    /**
+     * @Type("boolean")
+     *
+     * @var boolean
+     */
     private $isPropertyActiveRemoved = false;
 
     /**

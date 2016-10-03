@@ -43,7 +43,6 @@ public abstract class AbstractDayPlanMvoApplicationService implements DayPlanMvo
     }
 
     public DayPlanMvoState get(DayPlanId id) {
-
         DayPlanMvoState state = getStateRepository().get(id, true);
         return state;
     }

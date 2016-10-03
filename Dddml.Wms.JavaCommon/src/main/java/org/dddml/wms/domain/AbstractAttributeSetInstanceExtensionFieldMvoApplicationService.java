@@ -43,7 +43,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoApplicationSe
     }
 
     public AttributeSetInstanceExtensionFieldMvoState get(AttributeSetInstanceExtensionFieldId id) {
-
         AttributeSetInstanceExtensionFieldMvoState state = getStateRepository().get(id, true);
         return state;
     }

@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.UserRoleStateEvent.*;
@@ -124,8 +124,23 @@ public abstract class AbstractUserRoleState implements UserRoleState
     }
 
 
-    public AbstractUserRoleState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+
+    public AbstractUserRoleState() {
+        this(false);
+    }
+
+    public AbstractUserRoleState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -206,6 +221,8 @@ public abstract class AbstractUserRoleState implements UserRoleState
             throw DomainError.named("mutateWrongEntity", "Entity Id RoleId %1$s in state but entity id RoleId %2$s in event", stateEntityIdRoleId, eventEntityIdRoleId);
         }
 
+        if (getForReapplying()) { return; }
+
         Long stateVersion = this.getVersion();
         Long eventVersion = stateEvent.getVersion();
         if (eventVersion == null) {
@@ -221,6 +238,14 @@ public abstract class AbstractUserRoleState implements UserRoleState
 
     public static class SimpleUserRoleState extends AbstractUserRoleState
     {
+
+        public SimpleUserRoleState() {
+        }
+
+        public SimpleUserRoleState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

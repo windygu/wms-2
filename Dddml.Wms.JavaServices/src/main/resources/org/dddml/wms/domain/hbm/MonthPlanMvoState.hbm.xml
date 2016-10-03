@@ -63,6 +63,8 @@
 		<property name="address" column="personEmergencyContactAddress" />
 	</component>
 
+	<property name="personEmail" ></property>
+
 	<property name="personCreatedBy" ></property>
 
 	<property name="personUpdatedBy" ></property>

@@ -105,6 +105,10 @@ public interface DayPlanMvoCommand extends Command
 
         void setPersonEmergencyContact(Contact personEmergencyContact);
 
+        String getPersonEmail();
+
+        void setPersonEmail(String personEmail);
+
         String getPersonCreatedBy();
 
         void setPersonCreatedBy(String personCreatedBy);
@@ -224,6 +228,10 @@ public interface DayPlanMvoCommand extends Command
         Boolean getIsPropertyPersonEmergencyContactRemoved();
 
         void setIsPropertyPersonEmergencyContactRemoved(Boolean removed);
+
+        Boolean getIsPropertyPersonEmailRemoved();
+
+        void setIsPropertyPersonEmailRemoved(Boolean removed);
 
         Boolean getIsPropertyPersonCreatedByRemoved();
 

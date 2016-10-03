@@ -92,6 +92,18 @@ public class YearPlanMvoStateDto
         this.personEmergencyContact = personEmergencyContact;
     }
 
+    private String personEmail;
+
+    public String getPersonEmail()
+    {
+        return this.personEmail;
+    }
+
+    public void setPersonEmail(String personEmail)
+    {
+        this.personEmail = personEmail;
+    }
+
     private String personCreatedBy;
 
     public String getPersonCreatedBy()
@@ -267,6 +279,9 @@ public class YearPlanMvoStateDto
             }
             if (returnedFieldsContains("PersonEmergencyContact")) {
                 dto.setPersonEmergencyContact((state.getPersonEmergencyContact() == null) ? null : new ContactDtoWrapper(state.getPersonEmergencyContact()));
+            }
+            if (returnedFieldsContains("PersonEmail")) {
+                dto.setPersonEmail(state.getPersonEmail());
             }
             if (returnedFieldsContains("PersonCreatedBy")) {
                 dto.setPersonCreatedBy(state.getPersonCreatedBy());

@@ -159,6 +159,27 @@ trait YearPlanMvoStatePropertiesTrait
     /**
      * @Type("string")
      */
+    private $personEmail;
+
+    /**
+     * @return string
+     */
+    public function getPersonEmail()
+    {
+        return $this->personEmail;
+    }
+
+    /**
+     * @param string $personEmail
+     */
+    public function setPersonEmail($personEmail)
+    {
+        $this->personEmail = $personEmail;
+    }
+
+    /**
+     * @Type("string")
+     */
     private $personCreatedBy;
 
     /**

@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.joda.money.Money;
@@ -808,8 +808,34 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     }
 
 
-    public AbstractInOutLineMvoState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractInOutLineMvoState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setInOutLineId(((InOutLineMvoStateEvent) events.get(0)).getStateEventId().getInOutLineId());
+            for (Event e : events) {
+                mutate(e);
+                this.setInOutVersion(this.getInOutVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractInOutLineMvoState() {
+        this(false);
+    }
+
+    public AbstractInOutLineMvoState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -1593,6 +1619,14 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
 
     public static class SimpleInOutLineMvoState extends AbstractInOutLineMvoState
     {
+
+        public SimpleInOutLineMvoState() {
+        }
+
+        public SimpleInOutLineMvoState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

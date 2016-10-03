@@ -25,6 +25,7 @@ trait MonthPlanMvoFilteringFieldsTrait
             'YearPlanActive' => 'boolean',
             'YearPlanDeleted' => 'boolean',
             'PersonBirthDate' => '\DateTime',
+            'PersonEmail' => 'string',
             'PersonCreatedBy' => 'string',
             'PersonUpdatedBy' => 'string',
             'PersonVersion' => 'Long',

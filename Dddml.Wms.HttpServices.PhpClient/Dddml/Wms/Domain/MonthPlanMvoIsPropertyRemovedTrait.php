@@ -333,6 +333,29 @@ trait MonthPlanMvoIsPropertyRemovedTrait
      *
      * @var boolean
      */
+    private $isPropertyPersonEmailRemoved = false;
+
+    /**
+     * @return boolean
+     */
+    public function getIsPropertyPersonEmailRemoved()
+    {
+        return $this->isPropertyPersonEmailRemoved;
+    }
+
+    /**
+     * @param boolean $isPropertyPersonEmailRemoved
+     */
+    public function setIsPropertyPersonEmailRemoved($isPropertyPersonEmailRemoved)
+    {
+        $this->isPropertyPersonEmailRemoved = $isPropertyPersonEmailRemoved;
+    }
+
+    /**
+     * @Type("boolean")
+     *
+     * @var boolean
+     */
     private $isPropertyPersonCreatedByRemoved = false;
 
     /**

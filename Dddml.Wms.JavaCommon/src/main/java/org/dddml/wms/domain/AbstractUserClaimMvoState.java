@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.UserClaimMvoStateEvent.*;
@@ -350,8 +350,34 @@ public abstract class AbstractUserClaimMvoState implements UserClaimMvoState
     }
 
 
-    public AbstractUserClaimMvoState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractUserClaimMvoState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setUserClaimId(((UserClaimMvoStateEvent) events.get(0)).getStateEventId().getUserClaimId());
+            for (Event e : events) {
+                mutate(e);
+                this.setUserVersion(this.getUserVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractUserClaimMvoState() {
+        this(false);
+    }
+
+    public AbstractUserClaimMvoState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -679,6 +705,14 @@ public abstract class AbstractUserClaimMvoState implements UserClaimMvoState
 
     public static class SimpleUserClaimMvoState extends AbstractUserClaimMvoState
     {
+
+        public SimpleUserClaimMvoState() {
+        }
+
+        public SimpleUserClaimMvoState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

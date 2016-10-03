@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.UserLoginMvoStateEvent.*;
@@ -326,8 +326,34 @@ public abstract class AbstractUserLoginMvoState implements UserLoginMvoState
     }
 
 
-    public AbstractUserLoginMvoState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractUserLoginMvoState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setUserLoginId(((UserLoginMvoStateEvent) events.get(0)).getStateEventId().getUserLoginId());
+            for (Event e : events) {
+                mutate(e);
+                this.setUserVersion(this.getUserVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractUserLoginMvoState() {
+        this(false);
+    }
+
+    public AbstractUserLoginMvoState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -631,6 +657,14 @@ public abstract class AbstractUserLoginMvoState implements UserLoginMvoState
 
     public static class SimpleUserLoginMvoState extends AbstractUserLoginMvoState
     {
+
+        public SimpleUserLoginMvoState() {
+        }
+
+        public SimpleUserLoginMvoState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

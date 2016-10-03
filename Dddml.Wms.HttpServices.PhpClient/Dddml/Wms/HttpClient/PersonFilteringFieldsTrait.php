@@ -9,6 +9,7 @@ trait PersonFilteringFieldsTrait
     {
         return [
             'BirthDate' => '\DateTime',
+            'Email' => 'string',
             'CreatedBy' => 'string',
             'UpdatedBy' => 'string',
             'Version' => 'Long',

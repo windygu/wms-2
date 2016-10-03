@@ -16,26 +16,39 @@ public abstract class AbstractInOutLineStates implements InOutLineStates
 
     private Map<InOutLineId, InOutLineState> loadedInOutLineStates = new HashMap<InOutLineId, InOutLineState>();
 
-    private List<InOutLineState> removedInOutLineStates = new ArrayList<InOutLineState>();
+    private Map<InOutLineId, InOutLineState> removedInOutLineStates = new HashMap<InOutLineId, InOutLineState>();
 
     protected Iterable<InOutLineState> getLoadedInOutLineStates() {
         return this.loadedInOutLineStates.values();
     }
 
-    private Iterable<InOutLineState> innerIterable;
+    private boolean forReapplying;
 
-    protected Iterable<InOutLineState> getInnerIterable()
-    {
-        if (innerIterable == null)
-        {
-            innerIterable = getInOutLineStateDao().findByInOutDocumentNumber(inOutState.getDocumentNumber());
-        }
-        return innerIterable;
+    public boolean getForReapplying() {
+        return forReapplying;
     }
 
-    public AbstractInOutLineStates(InOutState outerState)
-    {
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    protected Iterable<InOutLineState> getInnerIterable() {
+        if (!getForReapplying()) {
+            return getInOutLineStateDao().findByInOutDocumentNumber(inOutState.getDocumentNumber());
+        } else {
+            List<InOutLineState> ss = new ArrayList<InOutLineState>();
+            for (InOutLineState s : loadedInOutLineStates.values()) {
+                if (!(removedInOutLineStates.containsKey(s.getInOutLineId()) && s.getDeleted())) {
+                    ss.add(s);
+                }
+            }
+            return ss;
+        }
+    }
+
+    public AbstractInOutLineStates(AbstractInOutState outerState) {
         this.inOutState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -49,14 +62,22 @@ public abstract class AbstractInOutLineStates implements InOutLineStates
         if (loadedInOutLineStates.containsKey(globalId)) {
             return loadedInOutLineStates.get(globalId);
         }
-        InOutLineState state = getInOutLineStateDao().get(globalId);
-        loadedInOutLineStates.put(globalId, state);
-        return state;
+        if (getForReapplying()) {
+            InOutLineState state = new AbstractInOutLineState.SimpleInOutLineState(true);
+            state.setInOutLineId(globalId);
+            loadedInOutLineStates.put(globalId, state);
+            return state;
+        } else {
+            InOutLineState state = getInOutLineStateDao().get(globalId);
+            loadedInOutLineStates.put(globalId, state);
+            return state;
+        }
+
     }
 
     public void remove(InOutLineState state)
     {
-        this.removedInOutLineStates.add(state);
+        this.removedInOutLineStates.put(state.getInOutLineId(), state);
     }
 
     public void addToSave(InOutLineState state)
@@ -71,7 +92,7 @@ public abstract class AbstractInOutLineStates implements InOutLineStates
         for (InOutLineState s : this.getLoadedInOutLineStates()) {
             getInOutLineStateDao().save(s);
         }
-        for (InOutLineState s : this.removedInOutLineStates) {
+        for (InOutLineState s : this.removedInOutLineStates.values()) {
             getInOutLineStateDao().delete(s);
         }
     }

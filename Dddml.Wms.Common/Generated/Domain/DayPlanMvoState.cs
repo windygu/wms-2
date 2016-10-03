@@ -218,6 +218,8 @@ namespace Dddml.Wms.Domain
 
 			this.PersonEmergencyContact = e.PersonEmergencyContact;
 
+			this.PersonEmail = e.PersonEmail;
+
 			this.PersonCreatedBy = e.PersonCreatedBy;
 
 			this.PersonUpdatedBy = e.PersonUpdatedBy;
@@ -505,6 +507,18 @@ namespace Dddml.Wms.Domain
 			else
 			{
 				this.PersonEmergencyContact = e.PersonEmergencyContact;
+			}
+
+			if (e.PersonEmail == null)
+			{
+				if (e.IsPropertyPersonEmailRemoved)
+				{
+					this.PersonEmail = default(string);
+				}
+			}
+			else
+			{
+				this.PersonEmail = e.PersonEmail;
 			}
 
 			if (e.PersonCreatedBy == null)

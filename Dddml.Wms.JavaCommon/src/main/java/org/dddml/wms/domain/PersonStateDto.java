@@ -56,6 +56,18 @@ public class PersonStateDto
         this.emergencyContact = emergencyContact;
     }
 
+    private String email;
+
+    public String getEmail()
+    {
+        return this.email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -174,6 +186,9 @@ public class PersonStateDto
             }
             if (returnedFieldsContains("EmergencyContact")) {
                 dto.setEmergencyContact((state.getEmergencyContact() == null) ? null : new ContactDtoWrapper(state.getEmergencyContact()));
+            }
+            if (returnedFieldsContains("Email")) {
+                dto.setEmail(state.getEmail());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

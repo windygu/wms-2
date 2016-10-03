@@ -51,6 +51,8 @@
 		<property name="Address" column="PersonEmergencyContactAddress" />
 	</component>
 
+	<property name="PersonEmail" ></property>
+
 	<property name="PersonCreatedBy" ></property>
 
 	<property name="PersonUpdatedBy" ></property>
@@ -104,6 +106,8 @@
         <property name="IsPropertyPersonLovesRemoved" />
 
         <property name="IsPropertyPersonEmergencyContactRemoved" />
+
+        <property name="IsPropertyPersonEmailRemoved" />
 
         <property name="IsPropertyPersonCreatedByRemoved" />
 

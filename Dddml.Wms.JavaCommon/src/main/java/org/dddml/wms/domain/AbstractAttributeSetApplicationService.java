@@ -43,7 +43,6 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
     }
 
     public AttributeSetState get(String id) {
-
         AttributeSetState state = getStateRepository().get(id, true);
         return state;
     }

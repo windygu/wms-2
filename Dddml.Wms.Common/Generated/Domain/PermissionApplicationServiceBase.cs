@@ -76,7 +76,6 @@ namespace Dddml.Wms.Domain
 
         public virtual IPermissionState Get(string permissionId)
         {
-
             var state = StateRepository.Get(permissionId, true);
             return state;
         }

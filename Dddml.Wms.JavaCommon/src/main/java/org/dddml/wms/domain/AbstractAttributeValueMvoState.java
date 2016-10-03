@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AttributeValueMvoStateEvent.*;
@@ -350,8 +350,34 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
     }
 
 
-    public AbstractAttributeValueMvoState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractAttributeValueMvoState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setAttributeValueId(((AttributeValueMvoStateEvent) events.get(0)).getStateEventId().getAttributeValueId());
+            for (Event e : events) {
+                mutate(e);
+                this.setAttributeVersion(this.getAttributeVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractAttributeValueMvoState() {
+        this(false);
+    }
+
+    public AbstractAttributeValueMvoState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -679,6 +705,14 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
 
     public static class SimpleAttributeValueMvoState extends AbstractAttributeValueMvoState
     {
+
+        public SimpleAttributeValueMvoState() {
+        }
+
+        public SimpleAttributeValueMvoState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

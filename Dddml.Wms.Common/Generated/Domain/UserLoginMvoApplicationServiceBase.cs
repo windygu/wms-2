@@ -76,7 +76,6 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserLoginMvoState Get(UserLoginId userLoginId)
         {
-
             var state = StateRepository.Get(userLoginId, true);
             return state;
         }

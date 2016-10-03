@@ -94,6 +94,7 @@ public abstract class AbstractDayPlanMvoAggregate extends AbstractAggregate impl
         e.setPersonBirthDate(c.getPersonBirthDate());
         e.setPersonLoves(c.getPersonLoves());
         e.setPersonEmergencyContact(c.getPersonEmergencyContact());
+        e.setPersonEmail(c.getPersonEmail());
         e.setPersonCreatedBy(c.getPersonCreatedBy());
         e.setPersonUpdatedBy(c.getPersonUpdatedBy());
         e.setPersonCreatedAt(c.getPersonCreatedAt());
@@ -133,6 +134,7 @@ public abstract class AbstractDayPlanMvoAggregate extends AbstractAggregate impl
         e.setPersonBirthDate(c.getPersonBirthDate());
         e.setPersonLoves(c.getPersonLoves());
         e.setPersonEmergencyContact(c.getPersonEmergencyContact());
+        e.setPersonEmail(c.getPersonEmail());
         e.setPersonCreatedBy(c.getPersonCreatedBy());
         e.setPersonUpdatedBy(c.getPersonUpdatedBy());
         e.setPersonCreatedAt(c.getPersonCreatedAt());
@@ -161,6 +163,7 @@ public abstract class AbstractDayPlanMvoAggregate extends AbstractAggregate impl
         e.setIsPropertyPersonBirthDateRemoved(c.getIsPropertyPersonBirthDateRemoved());
         e.setIsPropertyPersonLovesRemoved(c.getIsPropertyPersonLovesRemoved());
         e.setIsPropertyPersonEmergencyContactRemoved(c.getIsPropertyPersonEmergencyContactRemoved());
+        e.setIsPropertyPersonEmailRemoved(c.getIsPropertyPersonEmailRemoved());
         e.setIsPropertyPersonCreatedByRemoved(c.getIsPropertyPersonCreatedByRemoved());
         e.setIsPropertyPersonUpdatedByRemoved(c.getIsPropertyPersonUpdatedByRemoved());
         e.setIsPropertyPersonCreatedAtRemoved(c.getIsPropertyPersonCreatedAtRemoved());

@@ -91,6 +91,10 @@ public interface MonthPlanMvoState
 
     void setPersonEmergencyContact(Contact personEmergencyContact);
 
+    String getPersonEmail();
+
+    void setPersonEmail(String personEmail);
+
     String getPersonCreatedBy();
 
     void setPersonCreatedBy(String personCreatedBy);

@@ -29,6 +29,10 @@ public interface PersonCommand extends Command
 
         void setEmergencyContact(Contact emergencyContact);
 
+        String getEmail();
+
+        void setEmail(String email);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -56,6 +60,10 @@ public interface PersonCommand extends Command
         Boolean getIsPropertyEmergencyContactRemoved();
 
         void setIsPropertyEmergencyContactRemoved(Boolean removed);
+
+        Boolean getIsPropertyEmailRemoved();
+
+        void setIsPropertyEmailRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

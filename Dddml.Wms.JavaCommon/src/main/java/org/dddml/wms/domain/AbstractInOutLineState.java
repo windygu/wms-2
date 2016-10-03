@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
@@ -329,8 +329,23 @@ public abstract class AbstractInOutLineState implements InOutLineState
     }
 
 
-    public AbstractInOutLineState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+
+    public AbstractInOutLineState() {
+        this(false);
+    }
+
+    public AbstractInOutLineState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -615,6 +630,8 @@ public abstract class AbstractInOutLineState implements InOutLineState
             throw DomainError.named("mutateWrongEntity", "Entity Id SkuId %1$s in state but entity id SkuId %2$s in event", stateEntityIdSkuId, eventEntityIdSkuId);
         }
 
+        if (getForReapplying()) { return; }
+
         Long stateVersion = this.getVersion();
         Long eventVersion = stateEvent.getVersion();
         if (eventVersion == null) {
@@ -630,6 +647,14 @@ public abstract class AbstractInOutLineState implements InOutLineState
 
     public static class SimpleInOutLineState extends AbstractInOutLineState
     {
+
+        public SimpleInOutLineState() {
+        }
+
+        public SimpleInOutLineState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

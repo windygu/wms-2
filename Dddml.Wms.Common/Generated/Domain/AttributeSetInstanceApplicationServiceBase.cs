@@ -76,7 +76,6 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeSetInstanceState Get(string attributeSetInstanceId)
         {
-
             var state = StateRepository.Get(attributeSetInstanceId, true);
             return state;
         }

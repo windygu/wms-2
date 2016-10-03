@@ -43,6 +43,8 @@ namespace Dddml.Wms.Domain
 
 		public virtual Contact PersonEmergencyContact { get; set; }
 
+		public virtual string PersonEmail { get; set; }
+
 		public virtual string PersonCreatedBy { get; set; }
 
 		public virtual string PersonUpdatedBy { get; set; }

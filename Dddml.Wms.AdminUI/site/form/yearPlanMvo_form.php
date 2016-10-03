@@ -20,6 +20,10 @@ return $app['form.factory']->createBuilder(FormType::class, $data)
         'required' => false,
         'label'    => 'Person Birth Date',
     ])
+    ->add('personEmail', TextType::class, [
+        'required' => false,
+        'label'    => 'Person Email',
+    ])
     ->add('personCreatedBy', TextType::class, [
         'required' => false,
         'label'    => 'Person Created By',

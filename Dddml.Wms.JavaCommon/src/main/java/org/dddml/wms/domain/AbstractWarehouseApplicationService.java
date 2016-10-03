@@ -43,7 +43,6 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
     }
 
     public WarehouseState get(String id) {
-
         WarehouseState state = getStateRepository().get(id, true);
         return state;
     }

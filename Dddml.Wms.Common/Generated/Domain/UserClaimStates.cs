@@ -35,17 +35,15 @@ namespace Dddml.Wms.Domain
 
         private IUserState _userState;
 
-        //private IEnumerable<IUserClaimState> _innerEnumerable;
-
         private IEnumerable<IUserClaimState> InnerEnumeralbe
         {
             get
             {
-                if (!ForReapplying)//(_innerEnumerable == null)
+                if (!ForReapplying)
                 {
                     return UserClaimStateDao.FindByUserId(_userState.UserId);
                 }
-                else //return _innerEnumerable;
+                else
                 {
                     return _loadedUserClaimStates.Values.Where(s => !(_removedUserClaimStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }

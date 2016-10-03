@@ -15,26 +15,39 @@ public abstract class AbstractUserLoginStates implements UserLoginStates
 
     private Map<UserLoginId, UserLoginState> loadedUserLoginStates = new HashMap<UserLoginId, UserLoginState>();
 
-    private List<UserLoginState> removedUserLoginStates = new ArrayList<UserLoginState>();
+    private Map<UserLoginId, UserLoginState> removedUserLoginStates = new HashMap<UserLoginId, UserLoginState>();
 
     protected Iterable<UserLoginState> getLoadedUserLoginStates() {
         return this.loadedUserLoginStates.values();
     }
 
-    private Iterable<UserLoginState> innerIterable;
+    private boolean forReapplying;
 
-    protected Iterable<UserLoginState> getInnerIterable()
-    {
-        if (innerIterable == null)
-        {
-            innerIterable = getUserLoginStateDao().findByUserId(userState.getUserId());
-        }
-        return innerIterable;
+    public boolean getForReapplying() {
+        return forReapplying;
     }
 
-    public AbstractUserLoginStates(UserState outerState)
-    {
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    protected Iterable<UserLoginState> getInnerIterable() {
+        if (!getForReapplying()) {
+            return getUserLoginStateDao().findByUserId(userState.getUserId());
+        } else {
+            List<UserLoginState> ss = new ArrayList<UserLoginState>();
+            for (UserLoginState s : loadedUserLoginStates.values()) {
+                if (!(removedUserLoginStates.containsKey(s.getUserLoginId()) && s.getDeleted())) {
+                    ss.add(s);
+                }
+            }
+            return ss;
+        }
+    }
+
+    public AbstractUserLoginStates(AbstractUserState outerState) {
         this.userState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -48,14 +61,22 @@ public abstract class AbstractUserLoginStates implements UserLoginStates
         if (loadedUserLoginStates.containsKey(globalId)) {
             return loadedUserLoginStates.get(globalId);
         }
-        UserLoginState state = getUserLoginStateDao().get(globalId);
-        loadedUserLoginStates.put(globalId, state);
-        return state;
+        if (getForReapplying()) {
+            UserLoginState state = new AbstractUserLoginState.SimpleUserLoginState(true);
+            state.setUserLoginId(globalId);
+            loadedUserLoginStates.put(globalId, state);
+            return state;
+        } else {
+            UserLoginState state = getUserLoginStateDao().get(globalId);
+            loadedUserLoginStates.put(globalId, state);
+            return state;
+        }
+
     }
 
     public void remove(UserLoginState state)
     {
-        this.removedUserLoginStates.add(state);
+        this.removedUserLoginStates.put(state.getUserLoginId(), state);
     }
 
     public void addToSave(UserLoginState state)
@@ -70,7 +91,7 @@ public abstract class AbstractUserLoginStates implements UserLoginStates
         for (UserLoginState s : this.getLoadedUserLoginStates()) {
             getUserLoginStateDao().save(s);
         }
-        for (UserLoginState s : this.removedUserLoginStates) {
+        for (UserLoginState s : this.removedUserLoginStates.values()) {
             getUserLoginStateDao().delete(s);
         }
     }

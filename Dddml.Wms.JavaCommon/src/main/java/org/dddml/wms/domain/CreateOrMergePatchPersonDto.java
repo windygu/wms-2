@@ -40,6 +40,18 @@ public class CreateOrMergePatchPersonDto extends AbstractPersonCommandDto
         this.emergencyContact = emergencyContact;
     }
 
+    private String email;
+
+    public String getEmail()
+    {
+        return this.email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -100,6 +112,18 @@ public class CreateOrMergePatchPersonDto extends AbstractPersonCommandDto
         this.isPropertyEmergencyContactRemoved = removed;
     }
 
+    private Boolean isPropertyEmailRemoved;
+
+    public Boolean getIsPropertyEmailRemoved()
+    {
+        return this.isPropertyEmailRemoved;
+    }
+
+    public void setIsPropertyEmailRemoved(Boolean removed)
+    {
+        this.isPropertyEmailRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -118,6 +142,7 @@ public class CreateOrMergePatchPersonDto extends AbstractPersonCommandDto
         command.setBirthDate(this.getBirthDate());
         command.setLoves((this.getLoves() == null) ? null : this.getLoves().toPersonalName());
         command.setEmergencyContact((this.getEmergencyContact() == null) ? null : this.getEmergencyContact().toContact());
+        command.setEmail(this.getEmail());
         command.setActive(this.getActive());
     }
 
@@ -156,6 +181,7 @@ public class CreateOrMergePatchPersonDto extends AbstractPersonCommandDto
         command.setIsPropertyBirthDateRemoved(this.getIsPropertyBirthDateRemoved());
         command.setIsPropertyLovesRemoved(this.getIsPropertyLovesRemoved());
         command.setIsPropertyEmergencyContactRemoved(this.getIsPropertyEmergencyContactRemoved());
+        command.setIsPropertyEmailRemoved(this.getIsPropertyEmailRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

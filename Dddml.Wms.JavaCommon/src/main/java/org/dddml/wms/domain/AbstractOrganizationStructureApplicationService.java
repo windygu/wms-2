@@ -43,7 +43,6 @@ public abstract class AbstractOrganizationStructureApplicationService implements
     }
 
     public OrganizationStructureState get(OrganizationStructureId id) {
-
         OrganizationStructureState state = getStateRepository().get(id, true);
         return state;
     }

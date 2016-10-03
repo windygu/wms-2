@@ -8,6 +8,10 @@ return $app['form.factory']->createBuilder(FormType::class, $data)
         'required' => false,
         'label'    => 'Birth Date',
     ])
+    ->add('email', TextType::class, [
+        'required' => false,
+        'label'    => 'Email',
+    ])
     ->add('active', CheckboxType::class, [
         'required' => false,
         'label'    => 'Active',

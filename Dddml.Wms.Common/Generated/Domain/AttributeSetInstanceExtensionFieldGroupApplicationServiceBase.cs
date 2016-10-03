@@ -76,7 +76,6 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeSetInstanceExtensionFieldGroupState Get(string id)
         {
-
             var state = StateRepository.Get(id, true);
             return state;
         }

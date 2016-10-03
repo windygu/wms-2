@@ -159,6 +159,34 @@ namespace Dddml.Wms.Domain
             }
         }
 
+		public virtual string Email
+		{
+            get
+            {
+                if ((this as IStateDto).ReturnedFieldsContains("Email"))
+                {
+                    return _state.Email;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Email = value;
+            }
+        }
+
+        string IPersonStateProperties.Email
+        {
+            get 
+            {
+                return (this._state as IPersonStateProperties).Email;
+            }
+            set 
+            {
+                this._state.Email = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

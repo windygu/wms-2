@@ -43,7 +43,6 @@ public abstract class AbstractTeamApplicationService implements TeamApplicationS
     }
 
     public TeamState get(String id) {
-
         TeamState state = getStateRepository().get(id, true);
         return state;
     }

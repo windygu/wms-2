@@ -39,11 +39,13 @@ public abstract class AbstractPersonStateCommandConverter<TCreatePerson extends 
         cmd.setBirthDate(state.getBirthDate());
         cmd.setLoves(state.getLoves());
         cmd.setEmergencyContact(state.getEmergencyContact());
+        cmd.setEmail(state.getEmail());
         cmd.setActive(state.getActive());
             
         if (state.getBirthDate() == null) { cmd.setIsPropertyBirthDateRemoved(true); }
         if (state.getLoves() == null) { cmd.setIsPropertyLovesRemoved(true); }
         if (state.getEmergencyContact() == null) { cmd.setIsPropertyEmergencyContactRemoved(true); }
+        if (state.getEmail() == null) { cmd.setIsPropertyEmailRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         for (YearPlanState d : state.getYearPlans())
         {
@@ -62,6 +64,7 @@ public abstract class AbstractPersonStateCommandConverter<TCreatePerson extends 
         cmd.setBirthDate(state.getBirthDate());
         cmd.setLoves(state.getLoves());
         cmd.setEmergencyContact(state.getEmergencyContact());
+        cmd.setEmail(state.getEmail());
         cmd.setActive(state.getActive());
         for (YearPlanState d : state.getYearPlans())
         {

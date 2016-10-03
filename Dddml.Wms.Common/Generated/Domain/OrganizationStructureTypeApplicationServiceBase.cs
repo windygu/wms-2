@@ -76,7 +76,6 @@ namespace Dddml.Wms.Domain
 
         public virtual IOrganizationStructureTypeState Get(string id)
         {
-
             var state = StateRepository.Get(id, true);
             return state;
         }

@@ -43,7 +43,6 @@ public abstract class AbstractRolePermissionApplicationService implements RolePe
     }
 
     public RolePermissionState get(RolePermissionId id) {
-
         RolePermissionState state = getStateRepository().get(id, true);
         return state;
     }

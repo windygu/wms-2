@@ -76,7 +76,6 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserRoleMvoState Get(UserRoleId userRoleId)
         {
-
             var state = StateRepository.Get(userRoleId, true);
             return state;
         }

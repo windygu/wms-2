@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.OrganizationStateEvent.*;
@@ -158,8 +158,34 @@ public abstract class AbstractOrganizationState implements OrganizationState
     }
 
 
-    public AbstractOrganizationState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractOrganizationState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setOrganizationId(((OrganizationStateEvent) events.get(0)).getStateEventId().getOrganizationId());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractOrganizationState() {
+        this(false);
+    }
+
+    public AbstractOrganizationState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -295,6 +321,14 @@ public abstract class AbstractOrganizationState implements OrganizationState
 
     public static class SimpleOrganizationState extends AbstractOrganizationState
     {
+
+        public SimpleOrganizationState() {
+        }
+
+        public SimpleOrganizationState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

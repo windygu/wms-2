@@ -79,6 +79,8 @@ namespace Dddml.Wms.Domain
 
 		public virtual Contact PersonEmergencyContact { get; set; }
 
+		public virtual string PersonEmail { get; set; }
+
 		public virtual string PersonCreatedBy { get; set; }
 
 		public virtual string PersonUpdatedBy { get; set; }
@@ -163,6 +165,8 @@ namespace Dddml.Wms.Domain
 		public virtual bool IsPropertyPersonLovesRemoved { get; set; }
 
 		public virtual bool IsPropertyPersonEmergencyContactRemoved { get; set; }
+
+		public virtual bool IsPropertyPersonEmailRemoved { get; set; }
 
 		public virtual bool IsPropertyPersonCreatedByRemoved { get; set; }
 

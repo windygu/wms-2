@@ -43,7 +43,6 @@ public abstract class AbstractRoleApplicationService implements RoleApplicationS
     }
 
     public RoleState get(String id) {
-
         RoleState state = getStateRepository().get(id, true);
         return state;
     }

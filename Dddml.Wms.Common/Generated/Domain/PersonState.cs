@@ -211,6 +211,8 @@ namespace Dddml.Wms.Domain
 
 			this.EmergencyContact = e.EmergencyContact;
 
+			this.Email = e.Email;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
@@ -264,6 +266,18 @@ namespace Dddml.Wms.Domain
 			else
 			{
 				this.EmergencyContact = e.EmergencyContact;
+			}
+
+			if (e.Email == null)
+			{
+				if (e.IsPropertyEmailRemoved)
+				{
+					this.Email = default(string);
+				}
+			}
+			else
+			{
+				this.Email = e.Email;
 			}
 
 			if (e.Active == null)

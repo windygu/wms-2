@@ -12,6 +12,7 @@ public final class PersonFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "birthDate",
+            "email",
             "createdBy",
             "updatedBy",
             "version",
@@ -31,6 +32,7 @@ public final class PersonFilteringProperties
 
     public static final String[] propertyTypes = new String[] {
             "Date",
+            "String",
             "String",
             "String",
             "Long",

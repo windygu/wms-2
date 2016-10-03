@@ -35,17 +35,15 @@ namespace Dddml.Wms.Domain
 
         private IYearPlanState _yearPlanState;
 
-        //private IEnumerable<IMonthPlanState> _innerEnumerable;
-
         private IEnumerable<IMonthPlanState> InnerEnumeralbe
         {
             get
             {
-                if (!ForReapplying)//(_innerEnumerable == null)
+                if (!ForReapplying)
                 {
                     return MonthPlanStateDao.FindByPersonalNameAndYear((_yearPlanState as IGlobalIdentity<YearPlanId>).GlobalId.PersonalName, (_yearPlanState as IGlobalIdentity<YearPlanId>).GlobalId.Year);
                 }
-                else //return _innerEnumerable;
+                else
                 {
                     return _loadedMonthPlanStates.Values.Where(s => !(_removedMonthPlanStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }

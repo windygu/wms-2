@@ -43,7 +43,6 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
     }
 
     public OrganizationState get(String id) {
-
         OrganizationState state = getStateRepository().get(id, true);
         return state;
     }

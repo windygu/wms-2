@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
@@ -5655,8 +5655,34 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
     }
 
 
-    public AbstractAttributeSetInstanceState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractAttributeSetInstanceState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setAttributeSetInstanceId(((AttributeSetInstanceStateEvent) events.get(0)).getStateEventId().getAttributeSetInstanceId());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractAttributeSetInstanceState() {
+        this(false);
+    }
+
+    public AbstractAttributeSetInstanceState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -11288,6 +11314,14 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
 
     public static class SimpleAttributeSetInstanceState extends AbstractAttributeSetInstanceState
     {
+
+        public SimpleAttributeSetInstanceState() {
+        }
+
+        public SimpleAttributeSetInstanceState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

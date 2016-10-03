@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AttributeStateEvent.*;
@@ -242,8 +242,34 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
     }
 
 
-    public AbstractAttributeState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractAttributeState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setAttributeId(((AttributeStateEvent) events.get(0)).getStateEventId().getAttributeId());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractAttributeState() {
+        this(false);
+    }
+
+    public AbstractAttributeState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         attributeValues = new SimpleAttributeValueStates(this);
 
         initializeProperties();
@@ -478,11 +504,19 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
 
     public static class SimpleAttributeState extends AbstractAttributeState
     {
+
+        public SimpleAttributeState() {
+        }
+
+        public SimpleAttributeState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
     static class SimpleAttributeValueStates extends AbstractAttributeValueStates
     {
-        public SimpleAttributeValueStates(AttributeState outerState)
+        public SimpleAttributeValueStates(AbstractAttributeState outerState)
         {
             super(outerState);
         }

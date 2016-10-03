@@ -727,6 +727,34 @@ namespace Dddml.Wms.Domain
             }
         }
 
+		public virtual string PersonEmail
+		{
+            get
+            {
+                if ((this as IStateDto).ReturnedFieldsContains("PersonEmail"))
+                {
+                    return _state.PersonEmail;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PersonEmail = value;
+            }
+        }
+
+        string IDayPlanMvoStateProperties.PersonEmail
+        {
+            get 
+            {
+                return (this._state as IDayPlanMvoStateProperties).PersonEmail;
+            }
+            set 
+            {
+                this._state.PersonEmail = value;
+            }
+        }
+
 		public virtual string PersonCreatedBy
 		{
             get

@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.PersonStateEvent.*;
@@ -54,6 +54,18 @@ public abstract class AbstractPersonState implements PersonState, Saveable
     public void setEmergencyContact(Contact emergencyContact)
     {
         this.emergencyContact = emergencyContact;
+    }
+
+    private String email;
+
+    public String getEmail()
+    {
+        return this.email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
     }
 
     private String createdBy;
@@ -158,8 +170,34 @@ public abstract class AbstractPersonState implements PersonState, Saveable
     }
 
 
-    public AbstractPersonState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractPersonState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setPersonalName(((PersonStateEvent) events.get(0)).getStateEventId().getPersonalName());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractPersonState() {
+        this(false);
+    }
+
+    public AbstractPersonState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         yearPlans = new SimpleYearPlanStates(this);
 
         initializeProperties();
@@ -185,6 +223,7 @@ public abstract class AbstractPersonState implements PersonState, Saveable
         this.setBirthDate(e.getBirthDate());
         this.setLoves(e.getLoves());
         this.setEmergencyContact(e.getEmergencyContact());
+        this.setEmail(e.getEmail());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -234,6 +273,17 @@ public abstract class AbstractPersonState implements PersonState, Saveable
         else
         {
             this.setEmergencyContact(e.getEmergencyContact());
+        }
+        if (e.getEmail() == null)
+        {
+            if (e.getIsPropertyEmailRemoved() != null && e.getIsPropertyEmailRemoved())
+            {
+                this.setEmail(null);
+            }
+        }
+        else
+        {
+            this.setEmail(e.getEmail());
         }
         if (e.getActive() == null)
         {
@@ -310,11 +360,19 @@ public abstract class AbstractPersonState implements PersonState, Saveable
 
     public static class SimplePersonState extends AbstractPersonState
     {
+
+        public SimplePersonState() {
+        }
+
+        public SimplePersonState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
     static class SimpleYearPlanStates extends AbstractYearPlanStates
     {
-        public SimpleYearPlanStates(PersonState outerState)
+        public SimpleYearPlanStates(AbstractPersonState outerState)
         {
             super(outerState);
         }

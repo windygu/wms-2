@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AttributeSetInstanceExtensionFieldStateEvent.*;
@@ -184,8 +184,23 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
     }
 
 
-    public AbstractAttributeSetInstanceExtensionFieldState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+
+    public AbstractAttributeSetInstanceExtensionFieldState() {
+        this(false);
+    }
+
+    public AbstractAttributeSetInstanceExtensionFieldState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -326,6 +341,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
             throw DomainError.named("mutateWrongEntity", "Entity Id Index %1$s in state but entity id Index %2$s in event", stateEntityIdIndex, eventEntityIdIndex);
         }
 
+        if (getForReapplying()) { return; }
+
         Long stateVersion = this.getVersion();
         Long eventVersion = stateEvent.getVersion();
         if (eventVersion == null) {
@@ -341,6 +358,14 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
 
     public static class SimpleAttributeSetInstanceExtensionFieldState extends AbstractAttributeSetInstanceExtensionFieldState
     {
+
+        public SimpleAttributeSetInstanceExtensionFieldState() {
+        }
+
+        public SimpleAttributeSetInstanceExtensionFieldState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

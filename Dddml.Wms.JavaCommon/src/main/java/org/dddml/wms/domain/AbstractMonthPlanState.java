@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.MonthPlanStateEvent.*;
@@ -156,8 +156,23 @@ public abstract class AbstractMonthPlanState implements MonthPlanState, Saveable
     }
 
 
-    public AbstractMonthPlanState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+
+    public AbstractMonthPlanState() {
+        this(false);
+    }
+
+    public AbstractMonthPlanState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         dayPlans = new SimpleDayPlanStates(this);
 
         initializeProperties();
@@ -284,6 +299,8 @@ public abstract class AbstractMonthPlanState implements MonthPlanState, Saveable
             throw DomainError.named("mutateWrongEntity", "Entity Id Month %1$s in state but entity id Month %2$s in event", stateEntityIdMonth, eventEntityIdMonth);
         }
 
+        if (getForReapplying()) { return; }
+
         Long stateVersion = this.getVersion();
         Long eventVersion = stateEvent.getVersion();
         if (eventVersion == null) {
@@ -299,11 +316,19 @@ public abstract class AbstractMonthPlanState implements MonthPlanState, Saveable
 
     public static class SimpleMonthPlanState extends AbstractMonthPlanState
     {
+
+        public SimpleMonthPlanState() {
+        }
+
+        public SimpleMonthPlanState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
     static class SimpleDayPlanStates extends AbstractDayPlanStates
     {
-        public SimpleDayPlanStates(MonthPlanState outerState)
+        public SimpleDayPlanStates(AbstractMonthPlanState outerState)
         {
             super(outerState);
         }

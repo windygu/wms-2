@@ -297,6 +297,18 @@ public abstract class AbstractDayPlanMvoCommand extends AbstractCommand implemen
             this.personEmergencyContact = personEmergencyContact;
         }
 
+        private String personEmail;
+
+        public String getPersonEmail()
+        {
+            return this.personEmail;
+        }
+
+        public void setPersonEmail(String personEmail)
+        {
+            this.personEmail = personEmail;
+        }
+
         private String personCreatedBy;
 
         public String getPersonCreatedBy()
@@ -649,6 +661,18 @@ public abstract class AbstractDayPlanMvoCommand extends AbstractCommand implemen
         public void setIsPropertyPersonEmergencyContactRemoved(Boolean removed)
         {
             this.isPropertyPersonEmergencyContactRemoved = removed;
+        }
+
+        private Boolean isPropertyPersonEmailRemoved;
+
+        public Boolean getIsPropertyPersonEmailRemoved()
+        {
+            return this.isPropertyPersonEmailRemoved;
+        }
+
+        public void setIsPropertyPersonEmailRemoved(Boolean removed)
+        {
+            this.isPropertyPersonEmailRemoved = removed;
         }
 
         private Boolean isPropertyPersonCreatedByRemoved;

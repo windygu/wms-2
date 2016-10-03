@@ -26,6 +26,8 @@
 		<property name="Address" column="EmergencyContactAddress" />
 	</component>
 
+	<property name="Email" ></property>
+
 	<property name="CreatedBy" ></property>
 
 	<property name="UpdatedBy" ></property>

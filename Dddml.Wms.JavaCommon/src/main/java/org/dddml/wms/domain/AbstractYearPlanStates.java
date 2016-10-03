@@ -15,26 +15,39 @@ public abstract class AbstractYearPlanStates implements YearPlanStates
 
     private Map<YearPlanId, YearPlanState> loadedYearPlanStates = new HashMap<YearPlanId, YearPlanState>();
 
-    private List<YearPlanState> removedYearPlanStates = new ArrayList<YearPlanState>();
+    private Map<YearPlanId, YearPlanState> removedYearPlanStates = new HashMap<YearPlanId, YearPlanState>();
 
     protected Iterable<YearPlanState> getLoadedYearPlanStates() {
         return this.loadedYearPlanStates.values();
     }
 
-    private Iterable<YearPlanState> innerIterable;
+    private boolean forReapplying;
 
-    protected Iterable<YearPlanState> getInnerIterable()
-    {
-        if (innerIterable == null)
-        {
-            innerIterable = getYearPlanStateDao().findByPersonalName(personState.getPersonalName());
-        }
-        return innerIterable;
+    public boolean getForReapplying() {
+        return forReapplying;
     }
 
-    public AbstractYearPlanStates(PersonState outerState)
-    {
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    protected Iterable<YearPlanState> getInnerIterable() {
+        if (!getForReapplying()) {
+            return getYearPlanStateDao().findByPersonalName(personState.getPersonalName());
+        } else {
+            List<YearPlanState> ss = new ArrayList<YearPlanState>();
+            for (YearPlanState s : loadedYearPlanStates.values()) {
+                if (!(removedYearPlanStates.containsKey(s.getYearPlanId()) && s.getDeleted())) {
+                    ss.add(s);
+                }
+            }
+            return ss;
+        }
+    }
+
+    public AbstractYearPlanStates(AbstractPersonState outerState) {
         this.personState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -48,14 +61,22 @@ public abstract class AbstractYearPlanStates implements YearPlanStates
         if (loadedYearPlanStates.containsKey(globalId)) {
             return loadedYearPlanStates.get(globalId);
         }
-        YearPlanState state = getYearPlanStateDao().get(globalId);
-        loadedYearPlanStates.put(globalId, state);
-        return state;
+        if (getForReapplying()) {
+            YearPlanState state = new AbstractYearPlanState.SimpleYearPlanState(true);
+            state.setYearPlanId(globalId);
+            loadedYearPlanStates.put(globalId, state);
+            return state;
+        } else {
+            YearPlanState state = getYearPlanStateDao().get(globalId);
+            loadedYearPlanStates.put(globalId, state);
+            return state;
+        }
+
     }
 
     public void remove(YearPlanState state)
     {
-        this.removedYearPlanStates.add(state);
+        this.removedYearPlanStates.put(state.getYearPlanId(), state);
     }
 
     public void addToSave(YearPlanState state)
@@ -70,7 +91,7 @@ public abstract class AbstractYearPlanStates implements YearPlanStates
         for (YearPlanState s : this.getLoadedYearPlanStates()) {
             getYearPlanStateDao().save(s);
         }
-        for (YearPlanState s : this.removedYearPlanStates) {
+        for (YearPlanState s : this.removedYearPlanStates.values()) {
             getYearPlanStateDao().delete(s);
         }
     }

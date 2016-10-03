@@ -64,6 +64,7 @@ namespace Dddml.Wms.Domain
             dto.PersonBirthDate = e.PersonBirthDate;
             dto.PersonLoves = (e.PersonLoves == null) ? null : new PersonalNameDto(e.PersonLoves);
             dto.PersonEmergencyContact = (e.PersonEmergencyContact == null) ? null : new ContactDto(e.PersonEmergencyContact);
+            dto.PersonEmail = e.PersonEmail;
             dto.PersonCreatedBy = e.PersonCreatedBy;
             dto.PersonUpdatedBy = e.PersonUpdatedBy;
             dto.PersonCreatedAt = e.PersonCreatedAt;
@@ -102,6 +103,7 @@ namespace Dddml.Wms.Domain
             dto.PersonBirthDate = e.PersonBirthDate;
             dto.PersonLoves = (e.PersonLoves == null) ? null : new PersonalNameDto(e.PersonLoves);
             dto.PersonEmergencyContact = (e.PersonEmergencyContact == null) ? null : new ContactDto(e.PersonEmergencyContact);
+            dto.PersonEmail = e.PersonEmail;
             dto.PersonCreatedBy = e.PersonCreatedBy;
             dto.PersonUpdatedBy = e.PersonUpdatedBy;
             dto.PersonCreatedAt = e.PersonCreatedAt;
@@ -130,6 +132,7 @@ namespace Dddml.Wms.Domain
             dto.IsPropertyPersonBirthDateRemoved = e.IsPropertyPersonBirthDateRemoved;
             dto.IsPropertyPersonLovesRemoved = e.IsPropertyPersonLovesRemoved;
             dto.IsPropertyPersonEmergencyContactRemoved = e.IsPropertyPersonEmergencyContactRemoved;
+            dto.IsPropertyPersonEmailRemoved = e.IsPropertyPersonEmailRemoved;
             dto.IsPropertyPersonCreatedByRemoved = e.IsPropertyPersonCreatedByRemoved;
             dto.IsPropertyPersonUpdatedByRemoved = e.IsPropertyPersonUpdatedByRemoved;
             dto.IsPropertyPersonCreatedAtRemoved = e.IsPropertyPersonCreatedAtRemoved;

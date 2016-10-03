@@ -43,7 +43,6 @@ public abstract class AbstractUserRoleMvoApplicationService implements UserRoleM
     }
 
     public UserRoleMvoState get(UserRoleId id) {
-
         UserRoleMvoState state = getStateRepository().get(id, true);
         return state;
     }

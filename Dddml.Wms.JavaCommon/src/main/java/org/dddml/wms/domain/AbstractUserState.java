@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.UserStateEvent.*;
@@ -290,8 +290,34 @@ public abstract class AbstractUserState implements UserState, Saveable
     }
 
 
-    public AbstractUserState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractUserState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setUserId(((UserStateEvent) events.get(0)).getStateEventId().getUserId());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractUserState() {
+        this(false);
+    }
+
+    public AbstractUserState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         userRoles = new SimpleUserRoleStates(this);
 
         userClaims = new SimpleUserClaimStates(this);
@@ -619,11 +645,19 @@ public abstract class AbstractUserState implements UserState, Saveable
 
     public static class SimpleUserState extends AbstractUserState
     {
+
+        public SimpleUserState() {
+        }
+
+        public SimpleUserState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
     static class SimpleUserRoleStates extends AbstractUserRoleStates
     {
-        public SimpleUserRoleStates(UserState outerState)
+        public SimpleUserRoleStates(AbstractUserState outerState)
         {
             super(outerState);
         }
@@ -631,7 +665,7 @@ public abstract class AbstractUserState implements UserState, Saveable
 
     static class SimpleUserClaimStates extends AbstractUserClaimStates
     {
-        public SimpleUserClaimStates(UserState outerState)
+        public SimpleUserClaimStates(AbstractUserState outerState)
         {
             super(outerState);
         }
@@ -639,7 +673,7 @@ public abstract class AbstractUserState implements UserState, Saveable
 
     static class SimpleUserPermissionStates extends AbstractUserPermissionStates
     {
-        public SimpleUserPermissionStates(UserState outerState)
+        public SimpleUserPermissionStates(AbstractUserState outerState)
         {
             super(outerState);
         }
@@ -647,7 +681,7 @@ public abstract class AbstractUserState implements UserState, Saveable
 
     static class SimpleUserLoginStates extends AbstractUserLoginStates
     {
-        public SimpleUserLoginStates(UserState outerState)
+        public SimpleUserLoginStates(AbstractUserState outerState)
         {
             super(outerState);
         }

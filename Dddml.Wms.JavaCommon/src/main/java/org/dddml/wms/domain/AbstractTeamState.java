@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.TeamStateEvent.*;
@@ -146,8 +146,34 @@ public abstract class AbstractTeamState implements TeamState
     }
 
 
-    public AbstractTeamState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractTeamState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setTeamName(((TeamStateEvent) events.get(0)).getStateEventId().getTeamName());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractTeamState() {
+        this(false);
+    }
+
+    public AbstractTeamState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -271,6 +297,14 @@ public abstract class AbstractTeamState implements TeamState
 
     public static class SimpleTeamState extends AbstractTeamState
     {
+
+        public SimpleTeamState() {
+        }
+
+        public SimpleTeamState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

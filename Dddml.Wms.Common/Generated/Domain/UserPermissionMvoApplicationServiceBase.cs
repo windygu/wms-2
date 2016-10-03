@@ -76,7 +76,6 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserPermissionMvoState Get(UserPermissionId userPermissionId)
         {
-
             var state = StateRepository.Get(userPermissionId, true);
             return state;
         }

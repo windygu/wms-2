@@ -15,26 +15,39 @@ public abstract class AbstractMonthPlanStates implements MonthPlanStates
 
     private Map<MonthPlanId, MonthPlanState> loadedMonthPlanStates = new HashMap<MonthPlanId, MonthPlanState>();
 
-    private List<MonthPlanState> removedMonthPlanStates = new ArrayList<MonthPlanState>();
+    private Map<MonthPlanId, MonthPlanState> removedMonthPlanStates = new HashMap<MonthPlanId, MonthPlanState>();
 
     protected Iterable<MonthPlanState> getLoadedMonthPlanStates() {
         return this.loadedMonthPlanStates.values();
     }
 
-    private Iterable<MonthPlanState> innerIterable;
+    private boolean forReapplying;
 
-    protected Iterable<MonthPlanState> getInnerIterable()
-    {
-        if (innerIterable == null)
-        {
-            innerIterable = getMonthPlanStateDao().findByPersonalNameAndYear(yearPlanState.getYearPlanId().getPersonalName(), yearPlanState.getYearPlanId().getYear());
-        }
-        return innerIterable;
+    public boolean getForReapplying() {
+        return forReapplying;
     }
 
-    public AbstractMonthPlanStates(YearPlanState outerState)
-    {
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    protected Iterable<MonthPlanState> getInnerIterable() {
+        if (!getForReapplying()) {
+            return getMonthPlanStateDao().findByPersonalNameAndYear(yearPlanState.getYearPlanId().getPersonalName(), yearPlanState.getYearPlanId().getYear());
+        } else {
+            List<MonthPlanState> ss = new ArrayList<MonthPlanState>();
+            for (MonthPlanState s : loadedMonthPlanStates.values()) {
+                if (!(removedMonthPlanStates.containsKey(s.getMonthPlanId()) && s.getDeleted())) {
+                    ss.add(s);
+                }
+            }
+            return ss;
+        }
+    }
+
+    public AbstractMonthPlanStates(AbstractYearPlanState outerState) {
         this.yearPlanState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -48,14 +61,22 @@ public abstract class AbstractMonthPlanStates implements MonthPlanStates
         if (loadedMonthPlanStates.containsKey(globalId)) {
             return loadedMonthPlanStates.get(globalId);
         }
-        MonthPlanState state = getMonthPlanStateDao().get(globalId);
-        loadedMonthPlanStates.put(globalId, state);
-        return state;
+        if (getForReapplying()) {
+            MonthPlanState state = new AbstractMonthPlanState.SimpleMonthPlanState(true);
+            state.setMonthPlanId(globalId);
+            loadedMonthPlanStates.put(globalId, state);
+            return state;
+        } else {
+            MonthPlanState state = getMonthPlanStateDao().get(globalId);
+            loadedMonthPlanStates.put(globalId, state);
+            return state;
+        }
+
     }
 
     public void remove(MonthPlanState state)
     {
-        this.removedMonthPlanStates.add(state);
+        this.removedMonthPlanStates.put(state.getMonthPlanId(), state);
     }
 
     public void addToSave(MonthPlanState state)
@@ -70,7 +91,7 @@ public abstract class AbstractMonthPlanStates implements MonthPlanStates
         for (MonthPlanState s : this.getLoadedMonthPlanStates()) {
             getMonthPlanStateDao().save(s);
         }
-        for (MonthPlanState s : this.removedMonthPlanStates) {
+        for (MonthPlanState s : this.removedMonthPlanStates.values()) {
             getMonthPlanStateDao().delete(s);
         }
     }

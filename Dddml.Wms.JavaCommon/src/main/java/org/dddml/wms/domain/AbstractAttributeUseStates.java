@@ -15,26 +15,39 @@ public abstract class AbstractAttributeUseStates implements AttributeUseStates
 
     private Map<AttributeSetAttributeUseId, AttributeUseState> loadedAttributeUseStates = new HashMap<AttributeSetAttributeUseId, AttributeUseState>();
 
-    private List<AttributeUseState> removedAttributeUseStates = new ArrayList<AttributeUseState>();
+    private Map<AttributeSetAttributeUseId, AttributeUseState> removedAttributeUseStates = new HashMap<AttributeSetAttributeUseId, AttributeUseState>();
 
     protected Iterable<AttributeUseState> getLoadedAttributeUseStates() {
         return this.loadedAttributeUseStates.values();
     }
 
-    private Iterable<AttributeUseState> innerIterable;
+    private boolean forReapplying;
 
-    protected Iterable<AttributeUseState> getInnerIterable()
-    {
-        if (innerIterable == null)
-        {
-            innerIterable = getAttributeUseStateDao().findByAttributeSetId(attributeSetState.getAttributeSetId());
-        }
-        return innerIterable;
+    public boolean getForReapplying() {
+        return forReapplying;
     }
 
-    public AbstractAttributeUseStates(AttributeSetState outerState)
-    {
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    protected Iterable<AttributeUseState> getInnerIterable() {
+        if (!getForReapplying()) {
+            return getAttributeUseStateDao().findByAttributeSetId(attributeSetState.getAttributeSetId());
+        } else {
+            List<AttributeUseState> ss = new ArrayList<AttributeUseState>();
+            for (AttributeUseState s : loadedAttributeUseStates.values()) {
+                if (!(removedAttributeUseStates.containsKey(s.getAttributeSetAttributeUseId()) && s.getDeleted())) {
+                    ss.add(s);
+                }
+            }
+            return ss;
+        }
+    }
+
+    public AbstractAttributeUseStates(AbstractAttributeSetState outerState) {
         this.attributeSetState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -48,14 +61,22 @@ public abstract class AbstractAttributeUseStates implements AttributeUseStates
         if (loadedAttributeUseStates.containsKey(globalId)) {
             return loadedAttributeUseStates.get(globalId);
         }
-        AttributeUseState state = getAttributeUseStateDao().get(globalId);
-        loadedAttributeUseStates.put(globalId, state);
-        return state;
+        if (getForReapplying()) {
+            AttributeUseState state = new AbstractAttributeUseState.SimpleAttributeUseState(true);
+            state.setAttributeSetAttributeUseId(globalId);
+            loadedAttributeUseStates.put(globalId, state);
+            return state;
+        } else {
+            AttributeUseState state = getAttributeUseStateDao().get(globalId);
+            loadedAttributeUseStates.put(globalId, state);
+            return state;
+        }
+
     }
 
     public void remove(AttributeUseState state)
     {
-        this.removedAttributeUseStates.add(state);
+        this.removedAttributeUseStates.put(state.getAttributeSetAttributeUseId(), state);
     }
 
     public void addToSave(AttributeUseState state)
@@ -70,7 +91,7 @@ public abstract class AbstractAttributeUseStates implements AttributeUseStates
         for (AttributeUseState s : this.getLoadedAttributeUseStates()) {
             getAttributeUseStateDao().save(s);
         }
-        for (AttributeUseState s : this.removedAttributeUseStates) {
+        for (AttributeUseState s : this.removedAttributeUseStates.values()) {
             getAttributeUseStateDao().delete(s);
         }
     }

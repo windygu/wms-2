@@ -43,7 +43,6 @@ public abstract class AbstractUserApplicationService implements UserApplicationS
     }
 
     public UserState get(String id) {
-
         UserState state = getStateRepository().get(id, true);
         return state;
     }

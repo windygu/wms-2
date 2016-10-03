@@ -15,26 +15,39 @@ public abstract class AbstractUserRoleStates implements UserRoleStates
 
     private Map<UserRoleId, UserRoleState> loadedUserRoleStates = new HashMap<UserRoleId, UserRoleState>();
 
-    private List<UserRoleState> removedUserRoleStates = new ArrayList<UserRoleState>();
+    private Map<UserRoleId, UserRoleState> removedUserRoleStates = new HashMap<UserRoleId, UserRoleState>();
 
     protected Iterable<UserRoleState> getLoadedUserRoleStates() {
         return this.loadedUserRoleStates.values();
     }
 
-    private Iterable<UserRoleState> innerIterable;
+    private boolean forReapplying;
 
-    protected Iterable<UserRoleState> getInnerIterable()
-    {
-        if (innerIterable == null)
-        {
-            innerIterable = getUserRoleStateDao().findByUserId(userState.getUserId());
-        }
-        return innerIterable;
+    public boolean getForReapplying() {
+        return forReapplying;
     }
 
-    public AbstractUserRoleStates(UserState outerState)
-    {
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    protected Iterable<UserRoleState> getInnerIterable() {
+        if (!getForReapplying()) {
+            return getUserRoleStateDao().findByUserId(userState.getUserId());
+        } else {
+            List<UserRoleState> ss = new ArrayList<UserRoleState>();
+            for (UserRoleState s : loadedUserRoleStates.values()) {
+                if (!(removedUserRoleStates.containsKey(s.getUserRoleId()) && s.getDeleted())) {
+                    ss.add(s);
+                }
+            }
+            return ss;
+        }
+    }
+
+    public AbstractUserRoleStates(AbstractUserState outerState) {
         this.userState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -48,14 +61,22 @@ public abstract class AbstractUserRoleStates implements UserRoleStates
         if (loadedUserRoleStates.containsKey(globalId)) {
             return loadedUserRoleStates.get(globalId);
         }
-        UserRoleState state = getUserRoleStateDao().get(globalId);
-        loadedUserRoleStates.put(globalId, state);
-        return state;
+        if (getForReapplying()) {
+            UserRoleState state = new AbstractUserRoleState.SimpleUserRoleState(true);
+            state.setUserRoleId(globalId);
+            loadedUserRoleStates.put(globalId, state);
+            return state;
+        } else {
+            UserRoleState state = getUserRoleStateDao().get(globalId);
+            loadedUserRoleStates.put(globalId, state);
+            return state;
+        }
+
     }
 
     public void remove(UserRoleState state)
     {
-        this.removedUserRoleStates.add(state);
+        this.removedUserRoleStates.put(state.getUserRoleId(), state);
     }
 
     public void addToSave(UserRoleState state)
@@ -70,7 +91,7 @@ public abstract class AbstractUserRoleStates implements UserRoleStates
         for (UserRoleState s : this.getLoadedUserRoleStates()) {
             getUserRoleStateDao().save(s);
         }
-        for (UserRoleState s : this.removedUserRoleStates) {
+        for (UserRoleState s : this.removedUserRoleStates.values()) {
             getUserRoleStateDao().delete(s);
         }
     }

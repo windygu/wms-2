@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.RolePermissionStateEvent.*;
@@ -110,8 +110,34 @@ public abstract class AbstractRolePermissionState implements RolePermissionState
     }
 
 
-    public AbstractRolePermissionState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractRolePermissionState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setId(((RolePermissionStateEvent) events.get(0)).getStateEventId().getId());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractRolePermissionState() {
+        this(false);
+    }
+
+    public AbstractRolePermissionState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -199,6 +225,14 @@ public abstract class AbstractRolePermissionState implements RolePermissionState
 
     public static class SimpleRolePermissionState extends AbstractRolePermissionState
     {
+
+        public SimpleRolePermissionState() {
+        }
+
+        public SimpleRolePermissionState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

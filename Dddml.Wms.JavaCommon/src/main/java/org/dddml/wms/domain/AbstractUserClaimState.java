@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.UserClaimStateEvent.*;
@@ -148,8 +148,23 @@ public abstract class AbstractUserClaimState implements UserClaimState
     }
 
 
-    public AbstractUserClaimState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+
+    public AbstractUserClaimState() {
+        this(false);
+    }
+
+    public AbstractUserClaimState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -254,6 +269,8 @@ public abstract class AbstractUserClaimState implements UserClaimState
             throw DomainError.named("mutateWrongEntity", "Entity Id ClaimId %1$s in state but entity id ClaimId %2$s in event", stateEntityIdClaimId, eventEntityIdClaimId);
         }
 
+        if (getForReapplying()) { return; }
+
         Long stateVersion = this.getVersion();
         Long eventVersion = stateEvent.getVersion();
         if (eventVersion == null) {
@@ -269,6 +286,14 @@ public abstract class AbstractUserClaimState implements UserClaimState
 
     public static class SimpleUserClaimState extends AbstractUserClaimState
     {
+
+        public SimpleUserClaimState() {
+        }
+
+        public SimpleUserClaimState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

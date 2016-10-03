@@ -108,6 +108,10 @@ public interface DayPlanMvoStateEvent extends Event
 
     void setPersonEmergencyContact(Contact personEmergencyContact);
 
+    String getPersonEmail();
+
+    void setPersonEmail(String personEmail);
+
     String getPersonCreatedBy();
 
     void setPersonCreatedBy(String personCreatedBy);
@@ -228,6 +232,10 @@ public interface DayPlanMvoStateEvent extends Event
         Boolean getIsPropertyPersonEmergencyContactRemoved();
 
         void setIsPropertyPersonEmergencyContactRemoved(Boolean removed);
+
+        Boolean getIsPropertyPersonEmailRemoved();
+
+        void setIsPropertyPersonEmailRemoved(Boolean removed);
 
         Boolean getIsPropertyPersonCreatedByRemoved();
 

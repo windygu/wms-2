@@ -232,6 +232,16 @@ namespace Dddml.Wms.Domain {
 			this.personEmergencyContact = personEmergencyContact;
 		}
 
+		private personEmail: string;
+
+		getPersonEmail(): string {
+			return this.personEmail;
+		}
+
+		setPersonEmail(personEmail: string) {
+			this.personEmail = personEmail;
+		}
+
 		private personCreatedBy: string;
 
 		getPersonCreatedBy(): string {

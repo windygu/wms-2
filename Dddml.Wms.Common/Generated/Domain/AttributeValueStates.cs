@@ -35,17 +35,15 @@ namespace Dddml.Wms.Domain
 
         private IAttributeState _attributeState;
 
-        //private IEnumerable<IAttributeValueState> _innerEnumerable;
-
         private IEnumerable<IAttributeValueState> InnerEnumeralbe
         {
             get
             {
-                if (!ForReapplying)//(_innerEnumerable == null)
+                if (!ForReapplying)
                 {
                     return AttributeValueStateDao.FindByAttributeId(_attributeState.AttributeId);
                 }
-                else //return _innerEnumerable;
+                else
                 {
                     return _loadedAttributeValueStates.Values.Where(s => !(_removedAttributeValueStates.ContainsKey(s.GlobalId) && s.Deleted));
                 }

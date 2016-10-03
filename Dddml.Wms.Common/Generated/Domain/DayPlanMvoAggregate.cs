@@ -128,6 +128,7 @@ namespace Dddml.Wms.Domain
             e.PersonBirthDate = c.PersonBirthDate;
             e.PersonLoves = c.PersonLoves;
             e.PersonEmergencyContact = c.PersonEmergencyContact;
+            e.PersonEmail = c.PersonEmail;
             e.PersonCreatedBy = c.PersonCreatedBy;
             e.PersonUpdatedBy = c.PersonUpdatedBy;
             e.PersonCreatedAt = c.PersonCreatedAt;
@@ -172,6 +173,7 @@ namespace Dddml.Wms.Domain
             e.PersonBirthDate = c.PersonBirthDate;
             e.PersonLoves = c.PersonLoves;
             e.PersonEmergencyContact = c.PersonEmergencyContact;
+            e.PersonEmail = c.PersonEmail;
             e.PersonCreatedBy = c.PersonCreatedBy;
             e.PersonUpdatedBy = c.PersonUpdatedBy;
             e.PersonCreatedAt = c.PersonCreatedAt;
@@ -200,6 +202,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyPersonBirthDateRemoved = c.IsPropertyPersonBirthDateRemoved;
             e.IsPropertyPersonLovesRemoved = c.IsPropertyPersonLovesRemoved;
             e.IsPropertyPersonEmergencyContactRemoved = c.IsPropertyPersonEmergencyContactRemoved;
+            e.IsPropertyPersonEmailRemoved = c.IsPropertyPersonEmailRemoved;
             e.IsPropertyPersonCreatedByRemoved = c.IsPropertyPersonCreatedByRemoved;
             e.IsPropertyPersonUpdatedByRemoved = c.IsPropertyPersonUpdatedByRemoved;
             e.IsPropertyPersonCreatedAtRemoved = c.IsPropertyPersonCreatedAtRemoved;

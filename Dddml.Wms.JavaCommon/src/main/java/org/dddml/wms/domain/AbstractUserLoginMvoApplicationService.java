@@ -43,7 +43,6 @@ public abstract class AbstractUserLoginMvoApplicationService implements UserLogi
     }
 
     public UserLoginMvoState get(UserLoginId id) {
-
         UserLoginMvoState state = getStateRepository().get(id, true);
         return state;
     }

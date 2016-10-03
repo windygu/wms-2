@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.DayPlanStateEvent.*;
@@ -152,8 +152,23 @@ public abstract class AbstractDayPlanState implements DayPlanState
     }
 
 
-    public AbstractDayPlanState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+
+    public AbstractDayPlanState() {
+        this(false);
+    }
+
+    public AbstractDayPlanState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -260,6 +275,8 @@ public abstract class AbstractDayPlanState implements DayPlanState
             throw DomainError.named("mutateWrongEntity", "Entity Id Day %1$s in state but entity id Day %2$s in event", stateEntityIdDay, eventEntityIdDay);
         }
 
+        if (getForReapplying()) { return; }
+
         Long stateVersion = this.getVersion();
         Long eventVersion = stateEvent.getVersion();
         if (eventVersion == null) {
@@ -275,6 +292,14 @@ public abstract class AbstractDayPlanState implements DayPlanState
 
     public static class SimpleDayPlanState extends AbstractDayPlanState
     {
+
+        public SimpleDayPlanState() {
+        }
+
+        public SimpleDayPlanState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

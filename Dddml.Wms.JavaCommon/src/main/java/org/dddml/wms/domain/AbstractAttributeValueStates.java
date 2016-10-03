@@ -15,26 +15,39 @@ public abstract class AbstractAttributeValueStates implements AttributeValueStat
 
     private Map<AttributeValueId, AttributeValueState> loadedAttributeValueStates = new HashMap<AttributeValueId, AttributeValueState>();
 
-    private List<AttributeValueState> removedAttributeValueStates = new ArrayList<AttributeValueState>();
+    private Map<AttributeValueId, AttributeValueState> removedAttributeValueStates = new HashMap<AttributeValueId, AttributeValueState>();
 
     protected Iterable<AttributeValueState> getLoadedAttributeValueStates() {
         return this.loadedAttributeValueStates.values();
     }
 
-    private Iterable<AttributeValueState> innerIterable;
+    private boolean forReapplying;
 
-    protected Iterable<AttributeValueState> getInnerIterable()
-    {
-        if (innerIterable == null)
-        {
-            innerIterable = getAttributeValueStateDao().findByAttributeId(attributeState.getAttributeId());
-        }
-        return innerIterable;
+    public boolean getForReapplying() {
+        return forReapplying;
     }
 
-    public AbstractAttributeValueStates(AttributeState outerState)
-    {
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    protected Iterable<AttributeValueState> getInnerIterable() {
+        if (!getForReapplying()) {
+            return getAttributeValueStateDao().findByAttributeId(attributeState.getAttributeId());
+        } else {
+            List<AttributeValueState> ss = new ArrayList<AttributeValueState>();
+            for (AttributeValueState s : loadedAttributeValueStates.values()) {
+                if (!(removedAttributeValueStates.containsKey(s.getAttributeValueId()) && s.getDeleted())) {
+                    ss.add(s);
+                }
+            }
+            return ss;
+        }
+    }
+
+    public AbstractAttributeValueStates(AbstractAttributeState outerState) {
         this.attributeState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -48,14 +61,22 @@ public abstract class AbstractAttributeValueStates implements AttributeValueStat
         if (loadedAttributeValueStates.containsKey(globalId)) {
             return loadedAttributeValueStates.get(globalId);
         }
-        AttributeValueState state = getAttributeValueStateDao().get(globalId);
-        loadedAttributeValueStates.put(globalId, state);
-        return state;
+        if (getForReapplying()) {
+            AttributeValueState state = new AbstractAttributeValueState.SimpleAttributeValueState(true);
+            state.setAttributeValueId(globalId);
+            loadedAttributeValueStates.put(globalId, state);
+            return state;
+        } else {
+            AttributeValueState state = getAttributeValueStateDao().get(globalId);
+            loadedAttributeValueStates.put(globalId, state);
+            return state;
+        }
+
     }
 
     public void remove(AttributeValueState state)
     {
-        this.removedAttributeValueStates.add(state);
+        this.removedAttributeValueStates.put(state.getAttributeValueId(), state);
     }
 
     public void addToSave(AttributeValueState state)
@@ -70,7 +91,7 @@ public abstract class AbstractAttributeValueStates implements AttributeValueStat
         for (AttributeValueState s : this.getLoadedAttributeValueStates()) {
             getAttributeValueStateDao().save(s);
         }
-        for (AttributeValueState s : this.removedAttributeValueStates) {
+        for (AttributeValueState s : this.removedAttributeValueStates.values()) {
             getAttributeValueStateDao().delete(s);
         }
     }

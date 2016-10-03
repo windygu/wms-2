@@ -15,26 +15,39 @@ public abstract class AbstractUserPermissionStates implements UserPermissionStat
 
     private Map<UserPermissionId, UserPermissionState> loadedUserPermissionStates = new HashMap<UserPermissionId, UserPermissionState>();
 
-    private List<UserPermissionState> removedUserPermissionStates = new ArrayList<UserPermissionState>();
+    private Map<UserPermissionId, UserPermissionState> removedUserPermissionStates = new HashMap<UserPermissionId, UserPermissionState>();
 
     protected Iterable<UserPermissionState> getLoadedUserPermissionStates() {
         return this.loadedUserPermissionStates.values();
     }
 
-    private Iterable<UserPermissionState> innerIterable;
+    private boolean forReapplying;
 
-    protected Iterable<UserPermissionState> getInnerIterable()
-    {
-        if (innerIterable == null)
-        {
-            innerIterable = getUserPermissionStateDao().findByUserId(userState.getUserId());
-        }
-        return innerIterable;
+    public boolean getForReapplying() {
+        return forReapplying;
     }
 
-    public AbstractUserPermissionStates(UserState outerState)
-    {
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    protected Iterable<UserPermissionState> getInnerIterable() {
+        if (!getForReapplying()) {
+            return getUserPermissionStateDao().findByUserId(userState.getUserId());
+        } else {
+            List<UserPermissionState> ss = new ArrayList<UserPermissionState>();
+            for (UserPermissionState s : loadedUserPermissionStates.values()) {
+                if (!(removedUserPermissionStates.containsKey(s.getUserPermissionId()) && s.getDeleted())) {
+                    ss.add(s);
+                }
+            }
+            return ss;
+        }
+    }
+
+    public AbstractUserPermissionStates(AbstractUserState outerState) {
         this.userState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -48,14 +61,22 @@ public abstract class AbstractUserPermissionStates implements UserPermissionStat
         if (loadedUserPermissionStates.containsKey(globalId)) {
             return loadedUserPermissionStates.get(globalId);
         }
-        UserPermissionState state = getUserPermissionStateDao().get(globalId);
-        loadedUserPermissionStates.put(globalId, state);
-        return state;
+        if (getForReapplying()) {
+            UserPermissionState state = new AbstractUserPermissionState.SimpleUserPermissionState(true);
+            state.setUserPermissionId(globalId);
+            loadedUserPermissionStates.put(globalId, state);
+            return state;
+        } else {
+            UserPermissionState state = getUserPermissionStateDao().get(globalId);
+            loadedUserPermissionStates.put(globalId, state);
+            return state;
+        }
+
     }
 
     public void remove(UserPermissionState state)
     {
-        this.removedUserPermissionStates.add(state);
+        this.removedUserPermissionStates.put(state.getUserPermissionId(), state);
     }
 
     public void addToSave(UserPermissionState state)
@@ -70,7 +91,7 @@ public abstract class AbstractUserPermissionStates implements UserPermissionStat
         for (UserPermissionState s : this.getLoadedUserPermissionStates()) {
             getUserPermissionStateDao().save(s);
         }
-        for (UserPermissionState s : this.removedUserPermissionStates) {
+        for (UserPermissionState s : this.removedUserPermissionStates.values()) {
             getUserPermissionStateDao().delete(s);
         }
     }

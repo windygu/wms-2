@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AttributeUseMvoStateEvent.*;
@@ -278,8 +278,34 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
     }
 
 
-    public AbstractAttributeUseMvoState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractAttributeUseMvoState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setAttributeSetAttributeUseId(((AttributeUseMvoStateEvent) events.get(0)).getStateEventId().getAttributeSetAttributeUseId());
+            for (Event e : events) {
+                mutate(e);
+                this.setAttributeSetVersion(this.getAttributeSetVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractAttributeUseMvoState() {
+        this(false);
+    }
+
+    public AbstractAttributeUseMvoState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         initializeProperties();
     }
     
@@ -535,6 +561,14 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
 
     public static class SimpleAttributeUseMvoState extends AbstractAttributeUseMvoState
     {
+
+        public SimpleAttributeUseMvoState() {
+        }
+
+        public SimpleAttributeUseMvoState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
 

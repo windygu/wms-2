@@ -1,6 +1,6 @@
 package org.dddml.wms.domain;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AttributeSetStateEvent.*;
@@ -194,8 +194,34 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
     }
 
 
-    public AbstractAttributeSetState()
-    {
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public AbstractAttributeSetState(List<Event> events) {
+        this(true);
+        if (events != null && events.size() > 0) {
+            this.setAttributeSetId(((AttributeSetStateEvent) events.get(0)).getStateEventId().getAttributeSetId());
+            for (Event e : events) {
+                mutate(e);
+                this.setVersion(this.getVersion() + 1);
+            }
+        }
+    }
+
+
+    public AbstractAttributeSetState() {
+        this(false);
+    }
+
+    public AbstractAttributeSetState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
         attributeUses = new SimpleAttributeUseStates(this);
 
         initializeProperties();
@@ -382,11 +408,19 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
 
     public static class SimpleAttributeSetState extends AbstractAttributeSetState
     {
+
+        public SimpleAttributeSetState() {
+        }
+
+        public SimpleAttributeSetState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
     }
 
     static class SimpleAttributeUseStates extends AbstractAttributeUseStates
     {
-        public SimpleAttributeUseStates(AttributeSetState outerState)
+        public SimpleAttributeUseStates(AbstractAttributeSetState outerState)
         {
             super(outerState);
         }

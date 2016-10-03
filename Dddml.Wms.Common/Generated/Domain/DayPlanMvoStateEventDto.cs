@@ -113,6 +113,8 @@ namespace Dddml.Wms.Domain
 			} 
 		}
 
+		public virtual string PersonEmail { get; set; }
+
 		public virtual string PersonCreatedBy { get; set; }
 
 		public virtual string PersonUpdatedBy { get; set; }
@@ -566,6 +568,25 @@ namespace Dddml.Wms.Domain
             set 
             {
                 this.IsPropertyPersonEmergencyContactRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPersonEmailRemoved { get; set; }
+
+        bool IDayPlanMvoStateMergePatched.IsPropertyPersonEmailRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyPersonEmailRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyPersonEmailRemoved = value;
             }
         }
 

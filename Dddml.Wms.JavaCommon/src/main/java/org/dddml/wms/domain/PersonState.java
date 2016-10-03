@@ -27,6 +27,10 @@ public interface PersonState
 
     void setEmergencyContact(Contact emergencyContact);
 
+    String getEmail();
+
+    void setEmail(String email);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
