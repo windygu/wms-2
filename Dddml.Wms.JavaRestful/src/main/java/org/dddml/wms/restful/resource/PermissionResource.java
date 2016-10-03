@@ -227,18 +227,6 @@ public class PermissionResource {
                 return null;
             }
             if (PermissionFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = PermissionMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

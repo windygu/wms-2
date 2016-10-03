@@ -27,24 +27,6 @@ export const VALUE_OBJECT_METADATA = [
     ]
   },
   {
-    "name": "PersonalName",
-    "plural": "PersonalNames",
-    "label": "Personal Name",
-    "collectionLabel": "Personal Names",
-    "properties": [
-      { name: "firstName", label: "First Name", type: "string" }, { name: "lastName", label: "Last Name", type: "string" }
-    ]
-  },
-  {
-    "name": "Contact",
-    "plural": "Contacts",
-    "label": "Contact",
-    "collectionLabel": "Contacts",
-    "properties": [
-      { name: "personalName", label: "Personal Name", type: "PersonalName" }, { name: "phoneNumber", label: "Phone Number", type: "string" }, { name: "address", label: "Address", type: "string" }
-    ]
-  },
-  {
     "name": "AttributeSetInstanceStateEventId",
     "plural": "AttributeSetInstanceStateEventIds",
     "label": "Attribute Set Instance State Event Id",
@@ -333,78 +315,6 @@ export const VALUE_OBJECT_METADATA = [
     ]
   },
   {
-    "name": "YearPlanId",
-    "plural": "YearPlanIds",
-    "label": "Year Plan Id",
-    "collectionLabel": "Year Plan Ids",
-    "properties": [
-      { name: "personalName", label: "Personal Name", type: "PersonalName" }, { name: "year", label: "Year", type: "int" }
-    ]
-  },
-  {
-    "name": "MonthPlanId",
-    "plural": "MonthPlanIds",
-    "label": "Month Plan Id",
-    "collectionLabel": "Month Plan Ids",
-    "properties": [
-      { name: "personalName", label: "Personal Name", type: "PersonalName" }, { name: "year", label: "Year", type: "int" }, { name: "month", label: "Month", type: "int" }
-    ]
-  },
-  {
-    "name": "DayPlanId",
-    "plural": "DayPlanIds",
-    "label": "Day Plan Id",
-    "collectionLabel": "Day Plan Ids",
-    "properties": [
-      { name: "personalName", label: "Personal Name", type: "PersonalName" }, { name: "year", label: "Year", type: "int" }, { name: "month", label: "Month", type: "int" }, { name: "day", label: "Day", type: "int" }
-    ]
-  },
-  {
-    "name": "PersonStateEventId",
-    "plural": "PersonStateEventIds",
-    "label": "Person State Event Id",
-    "collectionLabel": "Person State Event Ids",
-    "properties": [
-      { name: "personalName", label: "Personal Name", type: "PersonalName" }, { name: "version", label: "Version", type: "long" }
-    ]
-  },
-  {
-    "name": "YearPlanStateEventId",
-    "plural": "YearPlanStateEventIds",
-    "label": "Year Plan State Event Id",
-    "collectionLabel": "Year Plan State Event Ids",
-    "properties": [
-      { name: "personalName", label: "Personal Name", type: "PersonalName" }, { name: "year", label: "Year", type: "int" }, { name: "personVersion", label: "Person Version", type: "long" }
-    ]
-  },
-  {
-    "name": "MonthPlanStateEventId",
-    "plural": "MonthPlanStateEventIds",
-    "label": "Month Plan State Event Id",
-    "collectionLabel": "Month Plan State Event Ids",
-    "properties": [
-      { name: "personalName", label: "Personal Name", type: "PersonalName" }, { name: "year", label: "Year", type: "int" }, { name: "month", label: "Month", type: "int" }, { name: "personVersion", label: "Person Version", type: "long" }
-    ]
-  },
-  {
-    "name": "DayPlanStateEventId",
-    "plural": "DayPlanStateEventIds",
-    "label": "Day Plan State Event Id",
-    "collectionLabel": "Day Plan State Event Ids",
-    "properties": [
-      { name: "personalName", label: "Personal Name", type: "PersonalName" }, { name: "year", label: "Year", type: "int" }, { name: "month", label: "Month", type: "int" }, { name: "day", label: "Day", type: "int" }, { name: "personVersion", label: "Person Version", type: "long" }
-    ]
-  },
-  {
-    "name": "TeamStateEventId",
-    "plural": "TeamStateEventIds",
-    "label": "Team State Event Id",
-    "collectionLabel": "Team State Event Ids",
-    "properties": [
-      { name: "teamName", label: "Team Name", type: "string" }, { name: "version", label: "Version", type: "long" }
-    ]
-  },
-  {
     "name": "AttributeSetInstanceExtensionFieldMvoStateEventId",
     "plural": "AttributeSetInstanceExtensionFieldMvoStateEventIds",
     "label": "Attribute Set Instance Extension Field Mvo State Event Id",
@@ -474,33 +384,6 @@ export const VALUE_OBJECT_METADATA = [
     "collectionLabel": "In Out Line Mvo State Event Ids",
     "properties": [
       { name: "inOutLineId", label: "In Out Line Id", type: "InOutLineId" }, { name: "inOutVersion", label: "In Out Version", type: "long" }
-    ]
-  },
-  {
-    "name": "YearPlanMvoStateEventId",
-    "plural": "YearPlanMvoStateEventIds",
-    "label": "Year Plan Mvo State Event Id",
-    "collectionLabel": "Year Plan Mvo State Event Ids",
-    "properties": [
-      { name: "yearPlanId", label: "Year Plan Id", type: "YearPlanId" }, { name: "personVersion", label: "Person Version", type: "long" }
-    ]
-  },
-  {
-    "name": "MonthPlanMvoStateEventId",
-    "plural": "MonthPlanMvoStateEventIds",
-    "label": "Month Plan Mvo State Event Id",
-    "collectionLabel": "Month Plan Mvo State Event Ids",
-    "properties": [
-      { name: "monthPlanId", label: "Month Plan Id", type: "MonthPlanId" }, { name: "personVersion", label: "Person Version", type: "long" }
-    ]
-  },
-  {
-    "name": "DayPlanMvoStateEventId",
-    "plural": "DayPlanMvoStateEventIds",
-    "label": "Day Plan Mvo State Event Id",
-    "collectionLabel": "Day Plan Mvo State Event Ids",
-    "properties": [
-      { name: "dayPlanId", label: "Day Plan Id", type: "DayPlanId" }, { name: "personVersion", label: "Person Version", type: "long" }
     ]
   }
 ]

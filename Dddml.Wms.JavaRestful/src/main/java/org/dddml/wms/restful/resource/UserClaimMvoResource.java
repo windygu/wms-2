@@ -233,18 +233,6 @@ public class UserClaimMvoResource {
                 return null;
             }
             if (UserClaimMvoFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = UserClaimMvoMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

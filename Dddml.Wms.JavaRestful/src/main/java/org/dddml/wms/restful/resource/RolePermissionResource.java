@@ -233,18 +233,6 @@ public class RolePermissionResource {
                 return null;
             }
             if (RolePermissionFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = RolePermissionMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

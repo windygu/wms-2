@@ -8,6 +8,3 @@ DROP TABLE  if exists `UserClaim_RV`;
 DROP TABLE  if exists `UserPermission_RV`;
 DROP TABLE  if exists `UserLogin_RV`;
 DROP TABLE  if exists `InOutLine_RV`;
-DROP TABLE  if exists `YearPlan_RV`;
-DROP TABLE  if exists `MonthPlan_RV`;
-DROP TABLE  if exists `DayPlan_RV`;

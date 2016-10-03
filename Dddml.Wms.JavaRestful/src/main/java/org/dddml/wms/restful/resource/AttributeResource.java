@@ -254,18 +254,6 @@ public class AttributeResource {
                 return null;
             }
             if (AttributeFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = AttributeMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

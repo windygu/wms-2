@@ -715,46 +715,6 @@ export default {
             active: {},
       }
     },
-    Person: {
-      displayableFields: {
-            personalName: {},
-            birthDate: {},
-            loves: {},
-            emergencyContact: {},
-            email: {},
-            active: {},
-      }
-    },
-    YearPlan: {
-      displayableFields: {
-            year: {},
-            description: {},
-            active: {},
-      }
-    },
-    MonthPlan: {
-      displayableFields: {
-            month: {},
-            description: {},
-            active: {},
-      }
-    },
-    DayPlan: {
-      displayableFields: {
-            day: {},
-            description: {},
-            active: {},
-      }
-    },
-    Team: {
-      displayableFields: {
-            teamName: {},
-            description: {},
-            players: {},
-            mascots: {},
-            active: {},
-      }
-    },
     AttributeSetInstanceExtensionFieldMvo: {
       displayableFields: {
             attributeSetInstanceExtensionFieldId: {},
@@ -984,84 +944,6 @@ export default {
             inOutUpdatedAt: {},
             inOutActive: {},
             inOutDeleted: {},
-      }
-    },
-    YearPlanMvo: {
-      displayableFields: {
-            yearPlanId: {},
-            description: {},
-            version: {},
-            active: {},
-            personBirthDate: {},
-            personLoves: {},
-            personEmergencyContact: {},
-            personEmail: {},
-            personCreatedBy: {},
-            personUpdatedBy: {},
-            personCreatedAt: {},
-            personUpdatedAt: {},
-            personActive: {},
-            personDeleted: {},
-      }
-    },
-    MonthPlanMvo: {
-      displayableFields: {
-            monthPlanId: {},
-            description: {},
-            version: {},
-            active: {},
-            yearPlanDescription: {},
-            yearPlanCreatedBy: {},
-            yearPlanUpdatedBy: {},
-            yearPlanVersion: {},
-            yearPlanCreatedAt: {},
-            yearPlanUpdatedAt: {},
-            yearPlanActive: {},
-            yearPlanDeleted: {},
-            personBirthDate: {},
-            personLoves: {},
-            personEmergencyContact: {},
-            personEmail: {},
-            personCreatedBy: {},
-            personUpdatedBy: {},
-            personCreatedAt: {},
-            personUpdatedAt: {},
-            personActive: {},
-            personDeleted: {},
-      }
-    },
-    DayPlanMvo: {
-      displayableFields: {
-            dayPlanId: {},
-            description: {},
-            version: {},
-            active: {},
-            monthPlanDescription: {},
-            monthPlanCreatedBy: {},
-            monthPlanUpdatedBy: {},
-            monthPlanVersion: {},
-            monthPlanCreatedAt: {},
-            monthPlanUpdatedAt: {},
-            monthPlanActive: {},
-            monthPlanDeleted: {},
-            yearPlanDescription: {},
-            yearPlanCreatedBy: {},
-            yearPlanUpdatedBy: {},
-            yearPlanVersion: {},
-            yearPlanCreatedAt: {},
-            yearPlanUpdatedAt: {},
-            yearPlanActive: {},
-            yearPlanDeleted: {},
-            personBirthDate: {},
-            personLoves: {},
-            personEmergencyContact: {},
-            personEmail: {},
-            personCreatedBy: {},
-            personUpdatedBy: {},
-            personCreatedAt: {},
-            personUpdatedAt: {},
-            personActive: {},
-            personDeleted: {},
       }
     }
 }

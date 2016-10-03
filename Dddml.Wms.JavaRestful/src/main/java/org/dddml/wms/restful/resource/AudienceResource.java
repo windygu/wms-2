@@ -227,18 +227,6 @@ public class AudienceResource {
                 return null;
             }
             if (AudienceFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = AudienceMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

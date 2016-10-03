@@ -233,18 +233,6 @@ public class UserLoginMvoResource {
                 return null;
             }
             if (UserLoginMvoFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = UserLoginMvoMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

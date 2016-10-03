@@ -66,9 +66,6 @@
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AudienceResource.java">
       <DependentUpon>GenerateResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\DayPlanMvoResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\GenerateResources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateResources.txt</LastGenOutput>
@@ -81,27 +78,22 @@
 .\AttributeUseMvoResource.java
 .\AttributeValueMvoResource.java
 .\AudienceResource.java
-.\DayPlanMvoResource.java
 .\GenerateResources.txt
 .\InOutLineMvoResource.java
 .\InOutResource.java
 .\LocatorResource.java
-.\MonthPlanMvoResource.java
 .\OrganizationResource.java
 .\OrganizationStructureResource.java
 .\OrganizationStructureTypeResource.java
 .\PermissionResource.java
-.\PersonResource.java
 .\RolePermissionResource.java
 .\RoleResource.java
-.\TeamResource.java
 .\UserClaimMvoResource.java
 .\UserLoginMvoResource.java
 .\UserPermissionMvoResource.java
 .\UserResource.java
 .\UserRoleMvoResource.java
 .\WarehouseResource.java
-.\YearPlanMvoResource.java
 </LastOutputs>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\GenerateResources.txt">
@@ -137,9 +129,6 @@
     <Content Include="src\main\java\org\dddml\wms\restful\resource\LocatorTreeResource.java">
       <DependentUpon>GenerateTreeResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\MonthPlanMvoResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationResource.java">
       <DependentUpon>GenerateResources.tt</DependentUpon>
     </Content>
@@ -158,16 +147,10 @@
     <Content Include="src\main\java\org\dddml\wms\restful\resource\PermissionTreeResource.java">
       <DependentUpon>GenerateTreeResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\PersonResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\RolePermissionResource.java">
       <DependentUpon>GenerateResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\RoleResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\TeamResource.java">
       <DependentUpon>GenerateResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\UserClaimMvoResource.java">
@@ -186,9 +169,6 @@
       <DependentUpon>GenerateResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\WarehouseResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\YearPlanMvoResource.java">
       <DependentUpon>GenerateResources.tt</DependentUpon>
     </Content>
   </ItemGroup>

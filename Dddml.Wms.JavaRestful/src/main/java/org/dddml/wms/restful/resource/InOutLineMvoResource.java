@@ -235,18 +235,6 @@ public class InOutLineMvoResource {
                 return null;
             }
             if (InOutLineMvoFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = InOutLineMvoMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

@@ -233,18 +233,6 @@ public class AttributeValueMvoResource {
                 return null;
             }
             if (AttributeValueMvoFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = AttributeValueMvoMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

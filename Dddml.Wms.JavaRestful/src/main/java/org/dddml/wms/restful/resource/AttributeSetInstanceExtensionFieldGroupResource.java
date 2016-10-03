@@ -242,18 +242,6 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                 return null;
             }
             if (AttributeSetInstanceExtensionFieldGroupFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = AttributeSetInstanceExtensionFieldGroupMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

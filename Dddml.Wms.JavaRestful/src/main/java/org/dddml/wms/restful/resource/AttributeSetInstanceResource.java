@@ -248,18 +248,6 @@ public class AttributeSetInstanceResource {
                 return null;
             }
             if (AttributeSetInstanceFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = AttributeSetInstanceMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

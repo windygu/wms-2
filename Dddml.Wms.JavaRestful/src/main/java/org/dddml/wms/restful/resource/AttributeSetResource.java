@@ -242,18 +242,6 @@ public class AttributeSetResource {
                 return null;
             }
             if (AttributeSetFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = AttributeSetMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

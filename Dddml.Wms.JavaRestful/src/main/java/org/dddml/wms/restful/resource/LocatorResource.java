@@ -227,18 +227,6 @@ public class LocatorResource {
                 return null;
             }
             if (LocatorFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = LocatorMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

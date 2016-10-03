@@ -194,52 +194,6 @@ export const AGGREGATES_METADATA = [
     "properties": [ { "name": "warehouseId", "type": "string" }, { "name": "parentLocatorId", "type": "string" }, { "name": "locatorType", "type": "string" }, { "name": "priorityNumber", "type": "string" }, { "name": "isDefault", "type": "bool" }, { "name": "x", "type": "string" }, { "name": "y", "type": "string" }, { "name": "z", "type": "string" }, { "name": "version", "type": "long" }, { "name": "createdBy", "type": "string" }, { "name": "createdAt", "type": "DateTime" }, { "name": "updatedBy", "type": "string" }, { "name": "updatedAt", "type": "DateTime" }, { "name": "active", "type": "bool" }, { "name": "deleted", "type": "bool" } ]
   },
   {
-    "name": "Person",
-    "plural": "People",
-    "label": "Person",
-    "collectionLabel": "People",
-    "id": { "name": "personalName", "type": "PersonalName" },
-    "properties": [ { "name": "birthDate", "type": "DateTime" }, { "name": "loves", "type": "PersonalName" }, { "name": "emergencyContact", "type": "Contact" }, { "name": "email", "type": "string" }, { "name": "createdBy", "type": "string" }, { "name": "updatedBy", "type": "string" }, { "name": "version", "type": "long" }, { "name": "createdAt", "type": "DateTime" }, { "name": "updatedAt", "type": "DateTime" }, { "name": "active", "type": "bool" }, { "name": "deleted", "type": "bool" } ]
-    ,"entities": [
-      {
-        "name": "YearPlan",
-        "plural": "YearPlans",
-        "label": "Year Plan",
-        "collectionLabel": "Year Plans",
-        "id": { "name": "year", "type": "int" },
-        "properties": [ { "name": "description", "type": "string" }, { "name": "createdBy", "type": "string" }, { "name": "updatedBy", "type": "string" }, { "name": "version", "type": "long" }, { "name": "createdAt", "type": "DateTime" }, { "name": "updatedAt", "type": "DateTime" }, { "name": "active", "type": "bool" }, { "name": "deleted", "type": "bool" } ]
-        ,"entities": [
-          {
-            "name": "MonthPlan",
-            "plural": "MonthPlans",
-            "label": "Month Plan",
-            "collectionLabel": "Month Plans",
-            "id": { "name": "month", "type": "int" },
-            "properties": [ { "name": "description", "type": "string" }, { "name": "createdBy", "type": "string" }, { "name": "updatedBy", "type": "string" }, { "name": "version", "type": "long" }, { "name": "createdAt", "type": "DateTime" }, { "name": "updatedAt", "type": "DateTime" }, { "name": "active", "type": "bool" }, { "name": "deleted", "type": "bool" } ]
-            ,"entities": [
-              {
-                "name": "DayPlan",
-                "plural": "DayPlans",
-                "label": "Day Plan",
-                "collectionLabel": "Day Plans",
-                "id": { "name": "day", "type": "int" },
-                "properties": [ { "name": "description", "type": "string" }, { "name": "createdBy", "type": "string" }, { "name": "updatedBy", "type": "string" }, { "name": "version", "type": "long" }, { "name": "createdAt", "type": "DateTime" }, { "name": "updatedAt", "type": "DateTime" }, { "name": "active", "type": "bool" }, { "name": "deleted", "type": "bool" } ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Team",
-    "plural": "Teams",
-    "label": "Team",
-    "collectionLabel": "Teams",
-    "id": { "name": "teamName", "type": "string" },
-    "properties": [ { "name": "description", "type": "string" }, { "name": "players", "itemType": "PersonalName" }, { "name": "mascots", "itemType": "string" }, { "name": "version", "type": "long" }, { "name": "createdBy", "type": "string" }, { "name": "createdAt", "type": "DateTime" }, { "name": "updatedBy", "type": "string" }, { "name": "updatedAt", "type": "DateTime" }, { "name": "active", "type": "bool" }, { "name": "deleted", "type": "bool" } ]
-  },
-  {
     "name": "AttributeSetInstanceExtensionFieldMvo",
     "plural": "AttributeSetInstanceExtensionFieldMvos",
     "label": "Attribute Set Instance Extension Field Mvo",
@@ -302,30 +256,6 @@ export const AGGREGATES_METADATA = [
     "collectionLabel": "In Out Line Mvos",
     "id": { "name": "inOutLineId", "type": "InOutLineId" },
     "properties": [ { "name": "lineNumber", "type": "long" }, { "name": "description", "type": "string" }, { "name": "locatorId", "type": "string" }, { "name": "product", "type": "string" }, { "name": "uomId", "type": "string" }, { "name": "movementQuantity", "type": "decimal" }, { "name": "confirmedQuantity", "type": "decimal" }, { "name": "scrappedQuantity", "type": "decimal" }, { "name": "targetQuantity", "type": "decimal" }, { "name": "pickedQuantity", "type": "decimal" }, { "name": "isInvoiced", "type": "bool" }, { "name": "attributeSetInstanceId", "type": "string" }, { "name": "isDescription", "type": "bool" }, { "name": "processed", "type": "bool" }, { "name": "quantityEntered", "type": "decimal" }, { "name": "rmaLineNumber", "type": "long" }, { "name": "reversalLineNumber", "type": "long" }, { "name": "version", "type": "long" }, { "name": "createdBy", "type": "string" }, { "name": "createdAt", "type": "DateTime" }, { "name": "updatedBy", "type": "string" }, { "name": "updatedAt", "type": "DateTime" }, { "name": "active", "type": "bool" }, { "name": "deleted", "type": "bool" }, { "name": "inOutIsSOTransaction", "type": "bool" }, { "name": "inOutDocumentStatus", "type": "string" }, { "name": "inOutPosted", "type": "bool" }, { "name": "inOutProcessing", "type": "bool" }, { "name": "inOutProcessed", "type": "bool" }, { "name": "inOutDocumentType", "type": "int" }, { "name": "inOutDescription", "type": "string" }, { "name": "inOutOrderNumber", "type": "string" }, { "name": "inOutDateOrdered", "type": "DateTime?" }, { "name": "inOutIsPrinted", "type": "bool" }, { "name": "inOutMovementType", "type": "string" }, { "name": "inOutMovementDate", "type": "DateTime?" }, { "name": "inOutBusinessPartnerId", "type": "string" }, { "name": "inOutWarehouseId", "type": "string" }, { "name": "inOutPOReference", "type": "string" }, { "name": "inOutFreightAmount", "type": "Money" }, { "name": "inOutShipperId", "type": "string" }, { "name": "inOutChargeAmount", "type": "Money" }, { "name": "inOutDatePrinted", "type": "DateTime?" }, { "name": "inOutSalesRepresentative", "type": "string" }, { "name": "inOutNumberOfPackages", "type": "int" }, { "name": "inOutPickDate", "type": "DateTime?" }, { "name": "inOutShipDate", "type": "DateTime?" }, { "name": "inOutTrackingNumber", "type": "string" }, { "name": "inOutDateReceived", "type": "DateTime?" }, { "name": "inOutIsInTransit", "type": "bool" }, { "name": "inOutIsApproved", "type": "bool" }, { "name": "inOutIsInDispute", "type": "bool" }, { "name": "inOutVolume", "type": "decimal" }, { "name": "inOutWeight", "type": "decimal" }, { "name": "inOutRmaNumber", "type": "string" }, { "name": "inOutReversalNumber", "type": "string" }, { "name": "inOutIsDropShip", "type": "bool" }, { "name": "inOutDropShipBusinessPartnerId", "type": "string" }, { "name": "inOutVersion", "type": "long" }, { "name": "inOutCreatedBy", "type": "string" }, { "name": "inOutCreatedAt", "type": "DateTime" }, { "name": "inOutUpdatedBy", "type": "string" }, { "name": "inOutUpdatedAt", "type": "DateTime" }, { "name": "inOutActive", "type": "bool" }, { "name": "inOutDeleted", "type": "bool" } ]
-  },
-  {
-    "name": "YearPlanMvo",
-    "plural": "YearPlanMvos",
-    "label": "Year Plan Mvo",
-    "collectionLabel": "Year Plan Mvos",
-    "id": { "name": "yearPlanId", "type": "YearPlanId" },
-    "properties": [ { "name": "description", "type": "string" }, { "name": "createdBy", "type": "string" }, { "name": "updatedBy", "type": "string" }, { "name": "version", "type": "long" }, { "name": "createdAt", "type": "DateTime" }, { "name": "updatedAt", "type": "DateTime" }, { "name": "active", "type": "bool" }, { "name": "deleted", "type": "bool" }, { "name": "personBirthDate", "type": "DateTime" }, { "name": "personLoves", "type": "PersonalName" }, { "name": "personEmergencyContact", "type": "Contact" }, { "name": "personEmail", "type": "string" }, { "name": "personCreatedBy", "type": "string" }, { "name": "personUpdatedBy", "type": "string" }, { "name": "personVersion", "type": "long" }, { "name": "personCreatedAt", "type": "DateTime" }, { "name": "personUpdatedAt", "type": "DateTime" }, { "name": "personActive", "type": "bool" }, { "name": "personDeleted", "type": "bool" } ]
-  },
-  {
-    "name": "MonthPlanMvo",
-    "plural": "MonthPlanMvos",
-    "label": "Month Plan Mvo",
-    "collectionLabel": "Month Plan Mvos",
-    "id": { "name": "monthPlanId", "type": "MonthPlanId" },
-    "properties": [ { "name": "description", "type": "string" }, { "name": "createdBy", "type": "string" }, { "name": "updatedBy", "type": "string" }, { "name": "version", "type": "long" }, { "name": "createdAt", "type": "DateTime" }, { "name": "updatedAt", "type": "DateTime" }, { "name": "active", "type": "bool" }, { "name": "deleted", "type": "bool" }, { "name": "yearPlanDescription", "type": "string" }, { "name": "yearPlanCreatedBy", "type": "string" }, { "name": "yearPlanUpdatedBy", "type": "string" }, { "name": "yearPlanVersion", "type": "long" }, { "name": "yearPlanCreatedAt", "type": "DateTime" }, { "name": "yearPlanUpdatedAt", "type": "DateTime" }, { "name": "yearPlanActive", "type": "bool" }, { "name": "yearPlanDeleted", "type": "bool" }, { "name": "personBirthDate", "type": "DateTime" }, { "name": "personLoves", "type": "PersonalName" }, { "name": "personEmergencyContact", "type": "Contact" }, { "name": "personEmail", "type": "string" }, { "name": "personCreatedBy", "type": "string" }, { "name": "personUpdatedBy", "type": "string" }, { "name": "personVersion", "type": "long" }, { "name": "personCreatedAt", "type": "DateTime" }, { "name": "personUpdatedAt", "type": "DateTime" }, { "name": "personActive", "type": "bool" }, { "name": "personDeleted", "type": "bool" } ]
-  },
-  {
-    "name": "DayPlanMvo",
-    "plural": "DayPlanMvos",
-    "label": "Day Plan Mvo",
-    "collectionLabel": "Day Plan Mvos",
-    "id": { "name": "dayPlanId", "type": "DayPlanId" },
-    "properties": [ { "name": "description", "type": "string" }, { "name": "createdBy", "type": "string" }, { "name": "updatedBy", "type": "string" }, { "name": "version", "type": "long" }, { "name": "createdAt", "type": "DateTime" }, { "name": "updatedAt", "type": "DateTime" }, { "name": "active", "type": "bool" }, { "name": "deleted", "type": "bool" }, { "name": "monthPlanDescription", "type": "string" }, { "name": "monthPlanCreatedBy", "type": "string" }, { "name": "monthPlanUpdatedBy", "type": "string" }, { "name": "monthPlanVersion", "type": "long" }, { "name": "monthPlanCreatedAt", "type": "DateTime" }, { "name": "monthPlanUpdatedAt", "type": "DateTime" }, { "name": "monthPlanActive", "type": "bool" }, { "name": "monthPlanDeleted", "type": "bool" }, { "name": "yearPlanDescription", "type": "string" }, { "name": "yearPlanCreatedBy", "type": "string" }, { "name": "yearPlanUpdatedBy", "type": "string" }, { "name": "yearPlanVersion", "type": "long" }, { "name": "yearPlanCreatedAt", "type": "DateTime" }, { "name": "yearPlanUpdatedAt", "type": "DateTime" }, { "name": "yearPlanActive", "type": "bool" }, { "name": "yearPlanDeleted", "type": "bool" }, { "name": "personBirthDate", "type": "DateTime" }, { "name": "personLoves", "type": "PersonalName" }, { "name": "personEmergencyContact", "type": "Contact" }, { "name": "personEmail", "type": "string" }, { "name": "personCreatedBy", "type": "string" }, { "name": "personUpdatedBy", "type": "string" }, { "name": "personVersion", "type": "long" }, { "name": "personCreatedAt", "type": "DateTime" }, { "name": "personUpdatedAt", "type": "DateTime" }, { "name": "personActive", "type": "bool" }, { "name": "personDeleted", "type": "bool" } ]
   }
 ]
 

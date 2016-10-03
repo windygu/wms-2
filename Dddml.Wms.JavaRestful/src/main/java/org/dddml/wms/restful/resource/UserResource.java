@@ -287,18 +287,6 @@ public class UserResource {
                 return null;
             }
             if (UserFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = UserMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

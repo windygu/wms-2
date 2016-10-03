@@ -227,18 +227,6 @@ public class OrganizationResource {
                 return null;
             }
             if (OrganizationFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = OrganizationMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

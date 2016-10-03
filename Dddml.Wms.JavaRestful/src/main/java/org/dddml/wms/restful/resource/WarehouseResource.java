@@ -227,18 +227,6 @@ public class WarehouseResource {
                 return null;
             }
             if (WarehouseFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = WarehouseMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;

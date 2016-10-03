@@ -244,18 +244,6 @@ public class InOutResource {
                 return null;
             }
             if (InOutFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-/* TODO...
-                var p = InOutMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
-*/
                 return fieldName;
             }
             return null;
