@@ -27,6 +27,7 @@ public class InOutStateEventDto extends AbstractStateEvent
     void setStateEventId(InOutStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public String getDocumentNumber() {
         return getStateEventId().getDocumentNumber();
     }
@@ -807,7 +808,7 @@ public class InOutStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class InOutStateDeletedDto extends InOutStateEventDto
+	public static class InOutStateDeletedDto extends InOutStateEventDto
 	{
         @Override
         public String getStateEventType()

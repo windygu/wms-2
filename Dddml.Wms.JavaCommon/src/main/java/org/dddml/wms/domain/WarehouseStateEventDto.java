@@ -25,6 +25,7 @@ public class WarehouseStateEventDto extends AbstractStateEvent
     void setStateEventId(WarehouseStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public String getWarehouseId() {
         return getStateEventId().getWarehouseId();
     }
@@ -174,7 +175,7 @@ public class WarehouseStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class WarehouseStateDeletedDto extends WarehouseStateEventDto
+	public static class WarehouseStateDeletedDto extends WarehouseStateEventDto
 	{
         @Override
         public String getStateEventType()

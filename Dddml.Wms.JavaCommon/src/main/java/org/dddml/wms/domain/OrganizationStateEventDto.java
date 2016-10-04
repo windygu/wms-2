@@ -25,6 +25,7 @@ public class OrganizationStateEventDto extends AbstractStateEvent
     void setStateEventId(OrganizationStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public String getOrganizationId() {
         return getStateEventId().getOrganizationId();
     }
@@ -194,7 +195,7 @@ public class OrganizationStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class OrganizationStateDeletedDto extends OrganizationStateEventDto
+	public static class OrganizationStateDeletedDto extends OrganizationStateEventDto
 	{
         @Override
         public String getStateEventType()

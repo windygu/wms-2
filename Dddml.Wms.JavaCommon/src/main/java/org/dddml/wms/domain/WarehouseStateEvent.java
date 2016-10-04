@@ -36,6 +36,9 @@ public interface WarehouseStateEvent extends Event
 
     void setActive(Boolean active);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface WarehouseStateCreated extends WarehouseStateEvent
     {

@@ -26,6 +26,7 @@ public class AttributeSetInstanceStateEventDto extends AbstractStateEvent
     void setStateEventId(AttributeSetInstanceStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public String getAttributeSetInstanceId() {
         return getStateEventId().getAttributeSetInstanceId();
     }
@@ -9355,7 +9356,7 @@ public class AttributeSetInstanceStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class AttributeSetInstanceStateDeletedDto extends AttributeSetInstanceStateEventDto
+	public static class AttributeSetInstanceStateDeletedDto extends AttributeSetInstanceStateEventDto
 	{
         @Override
         public String getStateEventType()

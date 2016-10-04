@@ -52,6 +52,9 @@ public interface AttributeSetInstanceExtensionFieldStateEvent extends Event
 
     void setGroupId(String groupId);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface AttributeSetInstanceExtensionFieldStateCreated extends AttributeSetInstanceExtensionFieldStateEvent
     {

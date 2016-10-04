@@ -48,6 +48,9 @@ public interface AttributeSetStateEvent extends Event
 
     void setActive(Boolean active);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface AttributeSetStateCreated extends AttributeSetStateEvent
     {

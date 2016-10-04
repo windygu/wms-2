@@ -25,6 +25,7 @@ public class LocatorStateEventDto extends AbstractStateEvent
     void setStateEventId(LocatorStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public String getLocatorId() {
         return getStateEventId().getLocatorId();
     }
@@ -274,7 +275,7 @@ public class LocatorStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class LocatorStateDeletedDto extends LocatorStateEventDto
+	public static class LocatorStateDeletedDto extends LocatorStateEventDto
 	{
         @Override
         public String getStateEventType()

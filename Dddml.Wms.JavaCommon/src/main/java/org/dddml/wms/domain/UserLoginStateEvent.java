@@ -32,6 +32,9 @@ public interface UserLoginStateEvent extends Event
 
     void setUserId(String userId);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface UserLoginStateCreated extends UserLoginStateEvent
     {

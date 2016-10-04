@@ -44,6 +44,9 @@ public interface AttributeValueStateEvent extends Event
 
     void setAttributeId(String attributeId);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface AttributeValueStateCreated extends AttributeValueStateEvent
     {

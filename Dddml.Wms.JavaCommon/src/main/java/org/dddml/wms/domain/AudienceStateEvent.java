@@ -32,6 +32,9 @@ public interface AudienceStateEvent extends Event
 
     void setActive(Boolean active);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface AudienceStateCreated extends AudienceStateEvent
     {

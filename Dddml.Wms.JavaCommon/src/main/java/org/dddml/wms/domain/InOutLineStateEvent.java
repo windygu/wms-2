@@ -101,6 +101,9 @@ public interface InOutLineStateEvent extends Event
 
     void setInOutDocumentNumber(String inOutDocumentNumber);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface InOutLineStateCreated extends InOutLineStateEvent
     {

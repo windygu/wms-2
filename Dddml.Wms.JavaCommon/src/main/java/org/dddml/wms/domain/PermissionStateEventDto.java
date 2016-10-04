@@ -25,6 +25,7 @@ public class PermissionStateEventDto extends AbstractStateEvent
     void setStateEventId(PermissionStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public String getPermissionId() {
         return getStateEventId().getPermissionId();
     }
@@ -174,7 +175,7 @@ public class PermissionStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class PermissionStateDeletedDto extends PermissionStateEventDto
+	public static class PermissionStateDeletedDto extends PermissionStateEventDto
 	{
         @Override
         public String getStateEventType()

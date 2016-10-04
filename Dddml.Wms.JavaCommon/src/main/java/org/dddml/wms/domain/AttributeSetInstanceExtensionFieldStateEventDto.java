@@ -25,6 +25,7 @@ public class AttributeSetInstanceExtensionFieldStateEventDto extends AbstractSta
     void setStateEventId(AttributeSetInstanceExtensionFieldStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public String getIndex() {
         return getStateEventId().getIndex();
     }
@@ -216,7 +217,7 @@ public class AttributeSetInstanceExtensionFieldStateEventDto extends AbstractSta
 	}
 
 
-	public class AttributeSetInstanceExtensionFieldStateRemovedDto extends AttributeSetInstanceExtensionFieldStateEventDto
+	public static class AttributeSetInstanceExtensionFieldStateRemovedDto extends AttributeSetInstanceExtensionFieldStateEventDto
 	{
         @Override
         public String getStateEventType()

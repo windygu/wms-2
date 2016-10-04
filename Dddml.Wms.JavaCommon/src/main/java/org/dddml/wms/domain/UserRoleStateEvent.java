@@ -32,6 +32,9 @@ public interface UserRoleStateEvent extends Event
 
     void setUserId(String userId);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface UserRoleStateCreated extends UserRoleStateEvent
     {

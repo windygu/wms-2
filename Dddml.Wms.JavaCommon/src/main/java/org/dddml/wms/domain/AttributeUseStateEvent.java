@@ -36,6 +36,9 @@ public interface AttributeUseStateEvent extends Event
 
     void setAttributeSetId(String attributeSetId);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface AttributeUseStateCreated extends AttributeUseStateEvent
     {

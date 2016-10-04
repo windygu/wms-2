@@ -25,6 +25,7 @@ public class AttributeSetInstanceExtensionFieldMvoStateEventDto extends Abstract
     void setStateEventId(AttributeSetInstanceExtensionFieldMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public AttributeSetInstanceExtensionFieldIdDto getAttributeSetInstanceExtensionFieldId() {
         return getStateEventId().getAttributeSetInstanceExtensionFieldId();
     }
@@ -454,7 +455,7 @@ public class AttributeSetInstanceExtensionFieldMvoStateEventDto extends Abstract
 	}
 
 
-	public class AttributeSetInstanceExtensionFieldMvoStateDeletedDto extends AttributeSetInstanceExtensionFieldMvoStateEventDto
+	public static class AttributeSetInstanceExtensionFieldMvoStateDeletedDto extends AttributeSetInstanceExtensionFieldMvoStateEventDto
 	{
         @Override
         public String getStateEventType()

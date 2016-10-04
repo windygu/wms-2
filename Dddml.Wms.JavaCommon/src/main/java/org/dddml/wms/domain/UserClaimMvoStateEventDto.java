@@ -25,6 +25,7 @@ public class UserClaimMvoStateEventDto extends AbstractStateEvent
     void setStateEventId(UserClaimMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public UserClaimIdDto getUserClaimId() {
         return getStateEventId().getUserClaimId();
     }
@@ -514,7 +515,7 @@ public class UserClaimMvoStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class UserClaimMvoStateDeletedDto extends UserClaimMvoStateEventDto
+	public static class UserClaimMvoStateDeletedDto extends UserClaimMvoStateEventDto
 	{
         @Override
         public String getStateEventType()

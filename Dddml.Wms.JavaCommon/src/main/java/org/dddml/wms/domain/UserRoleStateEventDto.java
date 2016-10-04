@@ -25,6 +25,7 @@ public class UserRoleStateEventDto extends AbstractStateEvent
     void setStateEventId(UserRoleStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public String getRoleId() {
         return getStateEventId().getRoleId();
     }
@@ -116,7 +117,7 @@ public class UserRoleStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class UserRoleStateRemovedDto extends UserRoleStateEventDto
+	public static class UserRoleStateRemovedDto extends UserRoleStateEventDto
 	{
         @Override
         public String getStateEventType()

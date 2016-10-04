@@ -96,6 +96,9 @@ public interface UserPermissionMvoStateEvent extends Event
 
     void setUserDeleted(Boolean userDeleted);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface UserPermissionMvoStateCreated extends UserPermissionMvoStateEvent
     {

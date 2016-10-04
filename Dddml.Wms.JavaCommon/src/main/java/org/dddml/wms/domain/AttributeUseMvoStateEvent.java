@@ -80,6 +80,9 @@ public interface AttributeUseMvoStateEvent extends Event
 
     void setAttributeSetDeleted(Boolean attributeSetDeleted);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface AttributeUseMvoStateCreated extends AttributeUseMvoStateEvent
     {

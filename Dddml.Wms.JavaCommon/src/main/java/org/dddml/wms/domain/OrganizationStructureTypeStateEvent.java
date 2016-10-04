@@ -24,6 +24,9 @@ public interface OrganizationStructureTypeStateEvent extends Event
 
     void setActive(Boolean active);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface OrganizationStructureTypeStateCreated extends OrganizationStructureTypeStateEvent
     {

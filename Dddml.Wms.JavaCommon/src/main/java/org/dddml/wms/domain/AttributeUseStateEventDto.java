@@ -25,6 +25,7 @@ public class AttributeUseStateEventDto extends AbstractStateEvent
     void setStateEventId(AttributeUseStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public String getAttributeId() {
         return getStateEventId().getAttributeId();
     }
@@ -136,7 +137,7 @@ public class AttributeUseStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class AttributeUseStateRemovedDto extends AttributeUseStateEventDto
+	public static class AttributeUseStateRemovedDto extends AttributeUseStateEventDto
 	{
         @Override
         public String getStateEventType()

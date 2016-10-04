@@ -26,6 +26,7 @@ public class InOutLineStateEventDto extends AbstractStateEvent
     void setStateEventId(InOutLineStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public SkuIdDto getSkuId() {
         return getStateEventId().getSkuId();
     }
@@ -457,7 +458,7 @@ public class InOutLineStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class InOutLineStateRemovedDto extends InOutLineStateEventDto
+	public static class InOutLineStateRemovedDto extends InOutLineStateEventDto
 	{
         @Override
         public String getStateEventType()

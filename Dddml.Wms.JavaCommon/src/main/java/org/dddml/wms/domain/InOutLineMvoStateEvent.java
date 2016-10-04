@@ -258,6 +258,9 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setInOutDeleted(Boolean inOutDeleted);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface InOutLineMvoStateCreated extends InOutLineMvoStateEvent
     {

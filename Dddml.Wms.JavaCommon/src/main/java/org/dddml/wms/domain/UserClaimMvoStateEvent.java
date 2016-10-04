@@ -104,6 +104,9 @@ public interface UserClaimMvoStateEvent extends Event
 
     void setUserDeleted(Boolean userDeleted);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface UserClaimMvoStateCreated extends UserClaimMvoStateEvent
     {

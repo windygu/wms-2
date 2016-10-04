@@ -27,6 +27,7 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
     void setStateEventId(InOutLineMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public InOutLineIdDto getInOutLineId() {
         return getStateEventId().getInOutLineId();
     }
@@ -1276,7 +1277,7 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class InOutLineMvoStateDeletedDto extends InOutLineMvoStateEventDto
+	public static class InOutLineMvoStateDeletedDto extends InOutLineMvoStateEventDto
 	{
         @Override
         public String getStateEventType()

@@ -24,6 +24,9 @@ public interface RolePermissionStateEvent extends Event
 
     void setActive(Boolean active);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface RolePermissionStateCreated extends RolePermissionStateEvent
     {

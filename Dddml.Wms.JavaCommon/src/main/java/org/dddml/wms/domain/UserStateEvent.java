@@ -68,6 +68,9 @@ public interface UserStateEvent extends Event
 
     void setActive(Boolean active);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface UserStateCreated extends UserStateEvent
     {

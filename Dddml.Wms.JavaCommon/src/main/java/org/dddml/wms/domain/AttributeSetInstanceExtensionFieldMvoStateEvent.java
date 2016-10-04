@@ -92,6 +92,9 @@ public interface AttributeSetInstanceExtensionFieldMvoStateEvent extends Event
 
     void setAttrSetInstEFGroupDeleted(Boolean attrSetInstEFGroupDeleted);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface AttributeSetInstanceExtensionFieldMvoStateCreated extends AttributeSetInstanceExtensionFieldMvoStateEvent
     {

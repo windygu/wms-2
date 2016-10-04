@@ -36,6 +36,9 @@ public interface PermissionStateEvent extends Event
 
     void setActive(Boolean active);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface PermissionStateCreated extends PermissionStateEvent
     {

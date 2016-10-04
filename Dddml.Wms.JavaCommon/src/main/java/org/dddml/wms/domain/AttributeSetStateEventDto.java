@@ -25,6 +25,7 @@ public class AttributeSetStateEventDto extends AbstractStateEvent
     void setStateEventId(AttributeSetStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public String getAttributeSetId() {
         return getStateEventId().getAttributeSetId();
     }
@@ -245,7 +246,7 @@ public class AttributeSetStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class AttributeSetStateDeletedDto extends AttributeSetStateEventDto
+	public static class AttributeSetStateDeletedDto extends AttributeSetStateEventDto
 	{
         @Override
         public String getStateEventType()

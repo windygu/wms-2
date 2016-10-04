@@ -162,6 +162,9 @@ public interface InOutStateEvent extends Event
 
     void setActive(Boolean active);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface InOutStateCreated extends InOutStateEvent
     {

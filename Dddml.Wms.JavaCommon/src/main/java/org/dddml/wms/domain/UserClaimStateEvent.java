@@ -40,6 +40,9 @@ public interface UserClaimStateEvent extends Event
 
     void setUserId(String userId);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface UserClaimStateCreated extends UserClaimStateEvent
     {

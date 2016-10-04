@@ -25,6 +25,7 @@ public class AudienceStateEventDto extends AbstractStateEvent
     void setStateEventId(AudienceStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public String getClientId() {
         return getStateEventId().getClientId();
     }
@@ -154,7 +155,7 @@ public class AudienceStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class AudienceStateDeletedDto extends AudienceStateEventDto
+	public static class AudienceStateDeletedDto extends AudienceStateEventDto
 	{
         @Override
         public String getStateEventType()

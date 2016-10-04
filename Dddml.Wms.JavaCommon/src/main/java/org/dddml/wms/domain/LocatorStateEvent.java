@@ -56,6 +56,9 @@ public interface LocatorStateEvent extends Event
 
     void setActive(Boolean active);
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
 
     interface LocatorStateCreated extends LocatorStateEvent
     {

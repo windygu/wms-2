@@ -25,6 +25,7 @@ public class AttributeUseMvoStateEventDto extends AbstractStateEvent
     void setStateEventId(AttributeUseMvoStateEventIdDto stateEventId) {
         this.stateEventId = stateEventId;
     }
+
     public AttributeSetAttributeUseIdDto getAttributeSetAttributeUseId() {
         return getStateEventId().getAttributeSetAttributeUseId();
     }
@@ -394,7 +395,7 @@ public class AttributeUseMvoStateEventDto extends AbstractStateEvent
 	}
 
 
-	public class AttributeUseMvoStateDeletedDto extends AttributeUseMvoStateEventDto
+	public static class AttributeUseMvoStateDeletedDto extends AttributeUseMvoStateEventDto
 	{
         @Override
         public String getStateEventType()
