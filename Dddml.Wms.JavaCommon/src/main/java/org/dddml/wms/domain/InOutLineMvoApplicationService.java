@@ -33,5 +33,7 @@ public interface InOutLineMvoApplicationService
 
     InOutLineMvoStateEvent getStateEvent(InOutLineId inOutLineId, long version);
 
+    InOutLineMvoState getHistoryState(InOutLineId inOutLineId, long version);
+
 }
 

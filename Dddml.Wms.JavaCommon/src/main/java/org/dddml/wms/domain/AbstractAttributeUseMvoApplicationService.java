@@ -82,6 +82,11 @@ public abstract class AbstractAttributeUseMvoApplicationService implements Attri
         return e;
     }
 
+    public AttributeUseMvoState getHistoryState(AttributeSetAttributeUseId attributeSetAttributeUseId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeUseMvoStateEvent.class, toEventStoreAggregateId(attributeSetAttributeUseId), version - 1);
+        return new AbstractAttributeUseMvoState.SimpleAttributeUseMvoState(eventStream.getEvents());
+    }
+
 
     public AttributeUseMvoAggregate getAttributeUseMvoAggregate(AttributeUseMvoState state)
     {

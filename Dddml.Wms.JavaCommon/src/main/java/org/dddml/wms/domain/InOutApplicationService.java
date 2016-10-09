@@ -33,6 +33,8 @@ public interface InOutApplicationService
 
     InOutStateEvent getStateEvent(String documentNumber, long version);
 
+    InOutState getHistoryState(String documentNumber, long version);
+
     InOutLineState getInOutLine(String inOutDocumentNumber, SkuId skuId);
 
 }

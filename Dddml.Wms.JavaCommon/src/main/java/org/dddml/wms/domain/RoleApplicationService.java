@@ -31,5 +31,7 @@ public interface RoleApplicationService
 
     RoleStateEvent getStateEvent(String roleId, long version);
 
+    RoleState getHistoryState(String roleId, long version);
+
 }
 

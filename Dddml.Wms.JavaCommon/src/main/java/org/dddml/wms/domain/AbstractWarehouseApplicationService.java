@@ -82,6 +82,11 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
         return e;
     }
 
+    public WarehouseState getHistoryState(String warehouseId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractWarehouseStateEvent.class, toEventStoreAggregateId(warehouseId), version - 1);
+        return new AbstractWarehouseState.SimpleWarehouseState(eventStream.getEvents());
+    }
+
 
     public WarehouseAggregate getWarehouseAggregate(WarehouseState state)
     {

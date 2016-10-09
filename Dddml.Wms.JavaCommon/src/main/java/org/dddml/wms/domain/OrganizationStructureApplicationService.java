@@ -31,5 +31,7 @@ public interface OrganizationStructureApplicationService
 
     OrganizationStructureStateEvent getStateEvent(OrganizationStructureId id, long version);
 
+    OrganizationStructureState getHistoryState(OrganizationStructureId id, long version);
+
 }
 

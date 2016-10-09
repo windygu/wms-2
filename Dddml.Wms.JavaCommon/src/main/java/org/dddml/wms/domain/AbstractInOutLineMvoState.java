@@ -1627,6 +1627,10 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
             super(forReapplying);
         }
 
+        public SimpleInOutLineMvoState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

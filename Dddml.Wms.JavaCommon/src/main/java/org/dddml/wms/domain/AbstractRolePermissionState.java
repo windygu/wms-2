@@ -233,6 +233,10 @@ public abstract class AbstractRolePermissionState implements RolePermissionState
             super(forReapplying);
         }
 
+        public SimpleRolePermissionState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

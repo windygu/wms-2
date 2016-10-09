@@ -31,5 +31,7 @@ public interface WarehouseApplicationService
 
     WarehouseStateEvent getStateEvent(String warehouseId, long version);
 
+    WarehouseState getHistoryState(String warehouseId, long version);
+
 }
 

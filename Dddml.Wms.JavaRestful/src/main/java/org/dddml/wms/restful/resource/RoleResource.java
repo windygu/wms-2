@@ -160,15 +160,32 @@ public class RoleResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public RoleStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public RoleStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            return roleApplicationService.getStateEvent(idObj, version);
+            RoleStateEventDtoConverter dtoConverter = getRoleStateEventDtoConverter();
+            return dtoConverter.toRoleStateEventDto((AbstractRoleStateEvent) roleApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public RoleStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            String idObj = id;
+            RoleStateDto.DtoConverter dtoConverter = new RoleStateDto.DtoConverter();
+            return dtoConverter.toRoleStateDto(roleApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  RoleStateEventDtoConverter getRoleStateEventDtoConverter() {
+        return new RoleStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

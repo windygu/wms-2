@@ -164,7 +164,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public LocatorStateDto Get(string id, long version, string fields = null)
+        public LocatorStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;

@@ -82,6 +82,11 @@ public abstract class AbstractUserRoleMvoApplicationService implements UserRoleM
         return e;
     }
 
+    public UserRoleMvoState getHistoryState(UserRoleId userRoleId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractUserRoleMvoStateEvent.class, toEventStoreAggregateId(userRoleId), version - 1);
+        return new AbstractUserRoleMvoState.SimpleUserRoleMvoState(eventStream.getEvents());
+    }
+
 
     public UserRoleMvoAggregate getUserRoleMvoAggregate(UserRoleMvoState state)
     {

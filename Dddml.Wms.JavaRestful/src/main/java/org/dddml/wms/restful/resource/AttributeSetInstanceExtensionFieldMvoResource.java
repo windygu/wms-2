@@ -160,15 +160,32 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public AttributeSetInstanceExtensionFieldMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public AttributeSetInstanceExtensionFieldMvoStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             AttributeSetInstanceExtensionFieldId idObj = AttributeSetInstanceExtensionFieldMvoResourceUtils.parseIdString(id);
-            return attributeSetInstanceExtensionFieldMvoApplicationService.getStateEvent(idObj, version);
+            AttributeSetInstanceExtensionFieldMvoStateEventDtoConverter dtoConverter = getAttributeSetInstanceExtensionFieldMvoStateEventDtoConverter();
+            return dtoConverter.toAttributeSetInstanceExtensionFieldMvoStateEventDto((AbstractAttributeSetInstanceExtensionFieldMvoStateEvent) attributeSetInstanceExtensionFieldMvoApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public AttributeSetInstanceExtensionFieldMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            AttributeSetInstanceExtensionFieldId idObj = AttributeSetInstanceExtensionFieldMvoResourceUtils.parseIdString(id);
+            AttributeSetInstanceExtensionFieldMvoStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldMvoStateDto.DtoConverter();
+            return dtoConverter.toAttributeSetInstanceExtensionFieldMvoStateDto(attributeSetInstanceExtensionFieldMvoApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  AttributeSetInstanceExtensionFieldMvoStateEventDtoConverter getAttributeSetInstanceExtensionFieldMvoStateEventDtoConverter() {
+        return new AttributeSetInstanceExtensionFieldMvoStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

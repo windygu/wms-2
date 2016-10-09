@@ -31,5 +31,7 @@ public interface UserClaimMvoApplicationService
 
     UserClaimMvoStateEvent getStateEvent(UserClaimId userClaimId, long version);
 
+    UserClaimMvoState getHistoryState(UserClaimId userClaimId, long version);
+
 }
 

@@ -569,6 +569,10 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
             super(forReapplying);
         }
 
+        public SimpleAttributeUseMvoState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

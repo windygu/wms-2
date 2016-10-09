@@ -83,6 +83,11 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
         return e;
     }
 
+    public AttributeSetInstanceState getHistoryState(String attributeSetInstanceId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeSetInstanceStateEvent.class, toEventStoreAggregateId(attributeSetInstanceId), version - 1);
+        return new AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState(eventStream.getEvents());
+    }
+
 
     public AttributeSetInstanceAggregate getAttributeSetInstanceAggregate(AttributeSetInstanceState state)
     {

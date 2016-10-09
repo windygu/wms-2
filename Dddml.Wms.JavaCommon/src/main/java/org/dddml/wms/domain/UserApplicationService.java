@@ -31,6 +31,8 @@ public interface UserApplicationService
 
     UserStateEvent getStateEvent(String userId, long version);
 
+    UserState getHistoryState(String userId, long version);
+
     UserRoleState getUserRole(String userId, String roleId);
 
     UserClaimState getUserClaim(String userId, Integer claimId);

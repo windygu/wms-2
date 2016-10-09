@@ -31,5 +31,7 @@ public interface AttributeSetInstanceExtensionFieldMvoApplicationService
 
     AttributeSetInstanceExtensionFieldMvoStateEvent getStateEvent(AttributeSetInstanceExtensionFieldId attributeSetInstanceExtensionFieldId, long version);
 
+    AttributeSetInstanceExtensionFieldMvoState getHistoryState(AttributeSetInstanceExtensionFieldId attributeSetInstanceExtensionFieldId, long version);
+
 }
 

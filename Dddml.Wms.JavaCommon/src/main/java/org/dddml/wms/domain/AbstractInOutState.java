@@ -1090,6 +1090,10 @@ public abstract class AbstractInOutState implements InOutState, Saveable
             super(forReapplying);
         }
 
+        public SimpleInOutState(List<Event> events) {
+            super(events);
+        }
+
     }
 
     static class SimpleInOutLineStates extends AbstractInOutLineStates

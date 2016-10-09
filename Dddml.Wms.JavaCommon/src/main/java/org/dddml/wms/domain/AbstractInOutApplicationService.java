@@ -84,6 +84,11 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         return e;
     }
 
+    public InOutState getHistoryState(String documentNumber, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractInOutStateEvent.class, toEventStoreAggregateId(documentNumber), version - 1);
+        return new AbstractInOutState.SimpleInOutState(eventStream.getEvents());
+    }
+
     public InOutLineState getInOutLine(String inOutDocumentNumber, SkuId skuId) {
         return getStateRepository().getInOutLine(inOutDocumentNumber, skuId);
     }

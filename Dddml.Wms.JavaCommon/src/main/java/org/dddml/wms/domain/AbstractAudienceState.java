@@ -281,6 +281,10 @@ public abstract class AbstractAudienceState implements AudienceState
             super(forReapplying);
         }
 
+        public SimpleAudienceState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

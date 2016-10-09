@@ -31,5 +31,7 @@ public interface OrganizationStructureTypeApplicationService
 
     OrganizationStructureTypeStateEvent getStateEvent(String id, long version);
 
+    OrganizationStructureTypeState getHistoryState(String id, long version);
+
 }
 

@@ -512,6 +512,10 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
             super(forReapplying);
         }
 
+        public SimpleAttributeState(List<Event> events) {
+            super(events);
+        }
+
     }
 
     static class SimpleAttributeValueStates extends AbstractAttributeValueStates

@@ -82,6 +82,11 @@ public abstract class AbstractUserLoginMvoApplicationService implements UserLogi
         return e;
     }
 
+    public UserLoginMvoState getHistoryState(UserLoginId userLoginId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractUserLoginMvoStateEvent.class, toEventStoreAggregateId(userLoginId), version - 1);
+        return new AbstractUserLoginMvoState.SimpleUserLoginMvoState(eventStream.getEvents());
+    }
+
 
     public UserLoginMvoAggregate getUserLoginMvoAggregate(UserLoginMvoState state)
     {

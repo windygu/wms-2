@@ -160,15 +160,32 @@ public class UserClaimMvoResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public UserClaimMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public UserClaimMvoStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             UserClaimId idObj = UserClaimMvoResourceUtils.parseIdString(id);
-            return userClaimMvoApplicationService.getStateEvent(idObj, version);
+            UserClaimMvoStateEventDtoConverter dtoConverter = getUserClaimMvoStateEventDtoConverter();
+            return dtoConverter.toUserClaimMvoStateEventDto((AbstractUserClaimMvoStateEvent) userClaimMvoApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public UserClaimMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            UserClaimId idObj = UserClaimMvoResourceUtils.parseIdString(id);
+            UserClaimMvoStateDto.DtoConverter dtoConverter = new UserClaimMvoStateDto.DtoConverter();
+            return dtoConverter.toUserClaimMvoStateDto(userClaimMvoApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  UserClaimMvoStateEventDtoConverter getUserClaimMvoStateEventDtoConverter() {
+        return new UserClaimMvoStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

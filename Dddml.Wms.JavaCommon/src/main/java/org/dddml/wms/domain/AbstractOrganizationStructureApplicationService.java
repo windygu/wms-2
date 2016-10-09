@@ -82,6 +82,11 @@ public abstract class AbstractOrganizationStructureApplicationService implements
         return e;
     }
 
+    public OrganizationStructureState getHistoryState(OrganizationStructureId id, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractOrganizationStructureStateEvent.class, toEventStoreAggregateId(id), version - 1);
+        return new AbstractOrganizationStructureState.SimpleOrganizationStructureState(eventStream.getEvents());
+    }
+
 
     public OrganizationStructureAggregate getOrganizationStructureAggregate(OrganizationStructureState state)
     {

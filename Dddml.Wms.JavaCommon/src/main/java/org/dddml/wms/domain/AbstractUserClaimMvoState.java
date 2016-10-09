@@ -713,6 +713,10 @@ public abstract class AbstractUserClaimMvoState implements UserClaimMvoState
             super(forReapplying);
         }
 
+        public SimpleUserClaimMvoState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

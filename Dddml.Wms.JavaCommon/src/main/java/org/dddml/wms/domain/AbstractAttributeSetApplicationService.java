@@ -82,6 +82,11 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
         return e;
     }
 
+    public AttributeSetState getHistoryState(String attributeSetId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeSetStateEvent.class, toEventStoreAggregateId(attributeSetId), version - 1);
+        return new AbstractAttributeSetState.SimpleAttributeSetState(eventStream.getEvents());
+    }
+
     public AttributeUseState getAttributeUse(String attributeSetId, String attributeId) {
         return getStateRepository().getAttributeUse(attributeSetId, attributeId);
     }

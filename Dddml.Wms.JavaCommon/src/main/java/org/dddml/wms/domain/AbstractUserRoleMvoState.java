@@ -665,6 +665,10 @@ public abstract class AbstractUserRoleMvoState implements UserRoleMvoState
             super(forReapplying);
         }
 
+        public SimpleUserRoleMvoState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

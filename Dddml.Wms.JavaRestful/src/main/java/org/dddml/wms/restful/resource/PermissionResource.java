@@ -160,15 +160,32 @@ public class PermissionResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public PermissionStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public PermissionStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            return permissionApplicationService.getStateEvent(idObj, version);
+            PermissionStateEventDtoConverter dtoConverter = getPermissionStateEventDtoConverter();
+            return dtoConverter.toPermissionStateEventDto((AbstractPermissionStateEvent) permissionApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public PermissionStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            String idObj = id;
+            PermissionStateDto.DtoConverter dtoConverter = new PermissionStateDto.DtoConverter();
+            return dtoConverter.toPermissionStateDto(permissionApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  PermissionStateEventDtoConverter getPermissionStateEventDtoConverter() {
+        return new PermissionStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

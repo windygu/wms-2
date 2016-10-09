@@ -31,5 +31,7 @@ public interface UserPermissionMvoApplicationService
 
     UserPermissionMvoStateEvent getStateEvent(UserPermissionId userPermissionId, long version);
 
+    UserPermissionMvoState getHistoryState(UserPermissionId userPermissionId, long version);
+
 }
 

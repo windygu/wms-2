@@ -164,7 +164,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public UserLoginMvoStateDto Get(string id, long version, string fields = null)
+        public UserLoginMvoStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = UserLoginMvosControllerUtils.ParseIdString(id);

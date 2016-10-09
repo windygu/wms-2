@@ -160,11 +160,24 @@ public class UserResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public UserStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public UserStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            return userApplicationService.getStateEvent(idObj, version);
+            UserStateEventDtoConverter dtoConverter = getUserStateEventDtoConverter();
+            return dtoConverter.toUserStateEventDto((AbstractUserStateEvent) userApplicationService.getStateEvent(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public UserStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            String idObj = id;
+            UserStateDto.DtoConverter dtoConverter = new UserStateDto.DtoConverter();
+            return dtoConverter.toUserStateDto(userApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -229,6 +242,10 @@ public class UserResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+
+    protected  UserStateEventDtoConverter getUserStateEventDtoConverter() {
+        return new UserStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

@@ -162,11 +162,24 @@ public class InOutResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public InOutStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public InOutStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            return inOutApplicationService.getStateEvent(idObj, version);
+            InOutStateEventDtoConverter dtoConverter = getInOutStateEventDtoConverter();
+            return dtoConverter.toInOutStateEventDto((AbstractInOutStateEvent) inOutApplicationService.getStateEvent(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public InOutStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            String idObj = id;
+            InOutStateDto.DtoConverter dtoConverter = new InOutStateDto.DtoConverter();
+            return dtoConverter.toInOutStateDto(inOutApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -186,6 +199,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+
+    protected  InOutStateEventDtoConverter getInOutStateEventDtoConverter() {
+        return new InOutStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

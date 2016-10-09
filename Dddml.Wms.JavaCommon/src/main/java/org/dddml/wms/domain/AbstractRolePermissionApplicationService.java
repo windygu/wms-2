@@ -82,6 +82,11 @@ public abstract class AbstractRolePermissionApplicationService implements RolePe
         return e;
     }
 
+    public RolePermissionState getHistoryState(RolePermissionId id, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractRolePermissionStateEvent.class, toEventStoreAggregateId(id), version - 1);
+        return new AbstractRolePermissionState.SimpleRolePermissionState(eventStream.getEvents());
+    }
+
 
     public RolePermissionAggregate getRolePermissionAggregate(RolePermissionState state)
     {

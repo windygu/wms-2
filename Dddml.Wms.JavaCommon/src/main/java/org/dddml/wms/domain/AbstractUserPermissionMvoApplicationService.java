@@ -82,6 +82,11 @@ public abstract class AbstractUserPermissionMvoApplicationService implements Use
         return e;
     }
 
+    public UserPermissionMvoState getHistoryState(UserPermissionId userPermissionId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractUserPermissionMvoStateEvent.class, toEventStoreAggregateId(userPermissionId), version - 1);
+        return new AbstractUserPermissionMvoState.SimpleUserPermissionMvoState(eventStream.getEvents());
+    }
+
 
     public UserPermissionMvoAggregate getUserPermissionMvoAggregate(UserPermissionMvoState state)
     {

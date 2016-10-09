@@ -641,6 +641,10 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoState impleme
             super(forReapplying);
         }
 
+        public SimpleAttributeSetInstanceExtensionFieldMvoState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

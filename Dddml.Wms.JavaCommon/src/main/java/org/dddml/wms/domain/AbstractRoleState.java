@@ -281,6 +281,10 @@ public abstract class AbstractRoleState implements RoleState
             super(forReapplying);
         }
 
+        public SimpleRoleState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

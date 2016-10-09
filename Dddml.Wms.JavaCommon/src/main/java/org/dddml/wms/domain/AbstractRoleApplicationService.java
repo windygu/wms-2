@@ -82,6 +82,11 @@ public abstract class AbstractRoleApplicationService implements RoleApplicationS
         return e;
     }
 
+    public RoleState getHistoryState(String roleId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractRoleStateEvent.class, toEventStoreAggregateId(roleId), version - 1);
+        return new AbstractRoleState.SimpleRoleState(eventStream.getEvents());
+    }
+
 
     public RoleAggregate getRoleAggregate(RoleState state)
     {

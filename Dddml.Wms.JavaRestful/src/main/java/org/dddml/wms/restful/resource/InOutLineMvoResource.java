@@ -162,15 +162,32 @@ public class InOutLineMvoResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public InOutLineMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public InOutLineMvoStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             InOutLineId idObj = InOutLineMvoResourceUtils.parseIdString(id);
-            return inOutLineMvoApplicationService.getStateEvent(idObj, version);
+            InOutLineMvoStateEventDtoConverter dtoConverter = getInOutLineMvoStateEventDtoConverter();
+            return dtoConverter.toInOutLineMvoStateEventDto((AbstractInOutLineMvoStateEvent) inOutLineMvoApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public InOutLineMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            InOutLineId idObj = InOutLineMvoResourceUtils.parseIdString(id);
+            InOutLineMvoStateDto.DtoConverter dtoConverter = new InOutLineMvoStateDto.DtoConverter();
+            return dtoConverter.toInOutLineMvoStateDto(inOutLineMvoApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  InOutLineMvoStateEventDtoConverter getInOutLineMvoStateEventDtoConverter() {
+        return new InOutLineMvoStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

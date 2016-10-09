@@ -181,15 +181,32 @@ public class AttributeSetInstanceResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public AttributeSetInstanceStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public AttributeSetInstanceStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            return attributeSetInstanceApplicationService.getStateEvent(idObj, version);
+            AttributeSetInstanceStateEventDtoConverter dtoConverter = getAttributeSetInstanceStateEventDtoConverter();
+            return dtoConverter.toAttributeSetInstanceStateEventDto((AbstractAttributeSetInstanceStateEvent) attributeSetInstanceApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public AttributeSetInstanceStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            String idObj = id;
+            AttributeSetInstanceStateDto.DtoConverter dtoConverter = new AttributeSetInstanceStateDto.DtoConverter();
+            return dtoConverter.toAttributeSetInstanceStateDto(attributeSetInstanceApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  AttributeSetInstanceStateEventDtoConverter getAttributeSetInstanceStateEventDtoConverter() {
+        return new AttributeSetInstanceStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

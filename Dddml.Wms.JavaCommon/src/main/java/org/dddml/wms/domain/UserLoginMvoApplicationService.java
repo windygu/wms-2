@@ -31,5 +31,7 @@ public interface UserLoginMvoApplicationService
 
     UserLoginMvoStateEvent getStateEvent(UserLoginId userLoginId, long version);
 
+    UserLoginMvoState getHistoryState(UserLoginId userLoginId, long version);
+
 }
 

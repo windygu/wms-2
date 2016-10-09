@@ -305,6 +305,10 @@ public abstract class AbstractWarehouseState implements WarehouseState
             super(forReapplying);
         }
 
+        public SimpleWarehouseState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

@@ -713,6 +713,10 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
             super(forReapplying);
         }
 
+        public SimpleAttributeValueMvoState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

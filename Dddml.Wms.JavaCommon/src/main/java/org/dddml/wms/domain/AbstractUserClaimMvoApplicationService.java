@@ -82,6 +82,11 @@ public abstract class AbstractUserClaimMvoApplicationService implements UserClai
         return e;
     }
 
+    public UserClaimMvoState getHistoryState(UserClaimId userClaimId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractUserClaimMvoStateEvent.class, toEventStoreAggregateId(userClaimId), version - 1);
+        return new AbstractUserClaimMvoState.SimpleUserClaimMvoState(eventStream.getEvents());
+    }
+
 
     public UserClaimMvoAggregate getUserClaimMvoAggregate(UserClaimMvoState state)
     {

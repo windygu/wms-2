@@ -82,6 +82,11 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
         return e;
     }
 
+    public AttributeSetInstanceExtensionFieldGroupState getHistoryState(String id, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeSetInstanceExtensionFieldGroupStateEvent.class, toEventStoreAggregateId(id), version - 1);
+        return new AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState(eventStream.getEvents());
+    }
+
     public AttributeSetInstanceExtensionFieldState getAttributeSetInstanceExtensionField(String groupId, String index) {
         return getStateRepository().getAttributeSetInstanceExtensionField(groupId, index);
     }

@@ -160,15 +160,32 @@ public class WarehouseResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public WarehouseStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public WarehouseStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            return warehouseApplicationService.getStateEvent(idObj, version);
+            WarehouseStateEventDtoConverter dtoConverter = getWarehouseStateEventDtoConverter();
+            return dtoConverter.toWarehouseStateEventDto((AbstractWarehouseStateEvent) warehouseApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public WarehouseStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            String idObj = id;
+            WarehouseStateDto.DtoConverter dtoConverter = new WarehouseStateDto.DtoConverter();
+            return dtoConverter.toWarehouseStateDto(warehouseApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  WarehouseStateEventDtoConverter getWarehouseStateEventDtoConverter() {
+        return new WarehouseStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

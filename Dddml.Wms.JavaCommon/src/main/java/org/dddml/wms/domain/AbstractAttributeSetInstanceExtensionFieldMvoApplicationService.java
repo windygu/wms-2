@@ -82,6 +82,11 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoApplicationSe
         return e;
     }
 
+    public AttributeSetInstanceExtensionFieldMvoState getHistoryState(AttributeSetInstanceExtensionFieldId attributeSetInstanceExtensionFieldId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeSetInstanceExtensionFieldMvoStateEvent.class, toEventStoreAggregateId(attributeSetInstanceExtensionFieldId), version - 1);
+        return new AbstractAttributeSetInstanceExtensionFieldMvoState.SimpleAttributeSetInstanceExtensionFieldMvoState(eventStream.getEvents());
+    }
+
 
     public AttributeSetInstanceExtensionFieldMvoAggregate getAttributeSetInstanceExtensionFieldMvoAggregate(AttributeSetInstanceExtensionFieldMvoState state)
     {

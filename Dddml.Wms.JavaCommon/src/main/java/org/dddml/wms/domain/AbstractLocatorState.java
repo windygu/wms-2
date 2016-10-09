@@ -425,6 +425,10 @@ public abstract class AbstractLocatorState implements LocatorState
             super(forReapplying);
         }
 
+        public SimpleLocatorState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

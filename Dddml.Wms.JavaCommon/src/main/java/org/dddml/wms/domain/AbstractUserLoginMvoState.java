@@ -665,6 +665,10 @@ public abstract class AbstractUserLoginMvoState implements UserLoginMvoState
             super(forReapplying);
         }
 
+        public SimpleUserLoginMvoState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

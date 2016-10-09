@@ -31,5 +31,7 @@ public interface AudienceApplicationService
 
     AudienceStateEvent getStateEvent(String clientId, long version);
 
+    AudienceState getHistoryState(String clientId, long version);
+
 }
 

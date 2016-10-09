@@ -160,11 +160,24 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public AttributeSetInstanceExtensionFieldGroupStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public AttributeSetInstanceExtensionFieldGroupStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            return attributeSetInstanceExtensionFieldGroupApplicationService.getStateEvent(idObj, version);
+            AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter dtoConverter = getAttributeSetInstanceExtensionFieldGroupStateEventDtoConverter();
+            return dtoConverter.toAttributeSetInstanceExtensionFieldGroupStateEventDto((AbstractAttributeSetInstanceExtensionFieldGroupStateEvent) attributeSetInstanceExtensionFieldGroupApplicationService.getStateEvent(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public AttributeSetInstanceExtensionFieldGroupStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            String idObj = id;
+            AttributeSetInstanceExtensionFieldGroupStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldGroupStateDto.DtoConverter();
+            return dtoConverter.toAttributeSetInstanceExtensionFieldGroupStateDto(attributeSetInstanceExtensionFieldGroupApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -184,6 +197,10 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+
+    protected  AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter getAttributeSetInstanceExtensionFieldGroupStateEventDtoConverter() {
+        return new AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

@@ -14,4 +14,6 @@ public interface EventStore {
     Event findLastEvent(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version);
 
     Event getStateEvent(EventStoreAggregateId eventStoreAggregateId, long version);
+
+    EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version);
 }

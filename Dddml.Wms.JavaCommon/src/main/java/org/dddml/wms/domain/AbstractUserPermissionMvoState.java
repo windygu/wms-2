@@ -665,6 +665,10 @@ public abstract class AbstractUserPermissionMvoState implements UserPermissionMv
             super(forReapplying);
         }
 
+        public SimpleUserPermissionMvoState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

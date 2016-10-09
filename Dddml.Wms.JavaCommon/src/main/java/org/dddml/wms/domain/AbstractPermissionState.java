@@ -305,6 +305,10 @@ public abstract class AbstractPermissionState implements PermissionState
             super(forReapplying);
         }
 
+        public SimplePermissionState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

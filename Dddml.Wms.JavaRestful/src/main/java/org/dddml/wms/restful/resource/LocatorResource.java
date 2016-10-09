@@ -160,15 +160,32 @@ public class LocatorResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public LocatorStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public LocatorStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            return locatorApplicationService.getStateEvent(idObj, version);
+            LocatorStateEventDtoConverter dtoConverter = getLocatorStateEventDtoConverter();
+            return dtoConverter.toLocatorStateEventDto((AbstractLocatorStateEvent) locatorApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public LocatorStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            String idObj = id;
+            LocatorStateDto.DtoConverter dtoConverter = new LocatorStateDto.DtoConverter();
+            return dtoConverter.toLocatorStateDto(locatorApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  LocatorStateEventDtoConverter getLocatorStateEventDtoConverter() {
+        return new LocatorStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

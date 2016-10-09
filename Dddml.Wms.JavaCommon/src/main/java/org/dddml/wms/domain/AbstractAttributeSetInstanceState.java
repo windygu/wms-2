@@ -11322,6 +11322,10 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
             super(forReapplying);
         }
 
+        public SimpleAttributeSetInstanceState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

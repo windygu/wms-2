@@ -32,5 +32,7 @@ public interface AttributeSetInstanceApplicationService
 
     AttributeSetInstanceStateEvent getStateEvent(String attributeSetInstanceId, long version);
 
+    AttributeSetInstanceState getHistoryState(String attributeSetInstanceId, long version);
+
 }
 

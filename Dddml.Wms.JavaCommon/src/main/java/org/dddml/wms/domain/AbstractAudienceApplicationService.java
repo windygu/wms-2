@@ -82,6 +82,11 @@ public abstract class AbstractAudienceApplicationService implements AudienceAppl
         return e;
     }
 
+    public AudienceState getHistoryState(String clientId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAudienceStateEvent.class, toEventStoreAggregateId(clientId), version - 1);
+        return new AbstractAudienceState.SimpleAudienceState(eventStream.getEvents());
+    }
+
 
     public AudienceAggregate getAudienceAggregate(AudienceState state)
     {

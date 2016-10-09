@@ -82,6 +82,11 @@ public abstract class AbstractLocatorApplicationService implements LocatorApplic
         return e;
     }
 
+    public LocatorState getHistoryState(String locatorId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractLocatorStateEvent.class, toEventStoreAggregateId(locatorId), version - 1);
+        return new AbstractLocatorState.SimpleLocatorState(eventStream.getEvents());
+    }
+
 
     public LocatorAggregate getLocatorAggregate(LocatorState state)
     {

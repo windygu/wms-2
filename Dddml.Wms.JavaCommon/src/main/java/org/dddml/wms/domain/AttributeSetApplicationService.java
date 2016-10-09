@@ -31,6 +31,8 @@ public interface AttributeSetApplicationService
 
     AttributeSetStateEvent getStateEvent(String attributeSetId, long version);
 
+    AttributeSetState getHistoryState(String attributeSetId, long version);
+
     AttributeUseState getAttributeUse(String attributeSetId, String attributeId);
 
 }

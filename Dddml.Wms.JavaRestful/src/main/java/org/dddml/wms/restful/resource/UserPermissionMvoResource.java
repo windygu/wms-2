@@ -160,15 +160,32 @@ public class UserPermissionMvoResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public UserPermissionMvoStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public UserPermissionMvoStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             UserPermissionId idObj = UserPermissionMvoResourceUtils.parseIdString(id);
-            return userPermissionMvoApplicationService.getStateEvent(idObj, version);
+            UserPermissionMvoStateEventDtoConverter dtoConverter = getUserPermissionMvoStateEventDtoConverter();
+            return dtoConverter.toUserPermissionMvoStateEventDto((AbstractUserPermissionMvoStateEvent) userPermissionMvoApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public UserPermissionMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            UserPermissionId idObj = UserPermissionMvoResourceUtils.parseIdString(id);
+            UserPermissionMvoStateDto.DtoConverter dtoConverter = new UserPermissionMvoStateDto.DtoConverter();
+            return dtoConverter.toUserPermissionMvoStateDto(userPermissionMvoApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  UserPermissionMvoStateEventDtoConverter getUserPermissionMvoStateEventDtoConverter() {
+        return new UserPermissionMvoStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

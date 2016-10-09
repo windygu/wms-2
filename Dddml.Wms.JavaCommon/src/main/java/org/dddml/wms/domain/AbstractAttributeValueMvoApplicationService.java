@@ -82,6 +82,11 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
         return e;
     }
 
+    public AttributeValueMvoState getHistoryState(AttributeValueId attributeValueId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeValueMvoStateEvent.class, toEventStoreAggregateId(attributeValueId), version - 1);
+        return new AbstractAttributeValueMvoState.SimpleAttributeValueMvoState(eventStream.getEvents());
+    }
+
 
     public AttributeValueMvoAggregate getAttributeValueMvoAggregate(AttributeValueMvoState state)
     {

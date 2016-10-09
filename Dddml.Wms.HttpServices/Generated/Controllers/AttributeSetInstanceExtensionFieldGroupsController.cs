@@ -164,7 +164,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public AttributeSetInstanceExtensionFieldGroupStateDto Get(string id, long version, string fields = null)
+        public AttributeSetInstanceExtensionFieldGroupStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;

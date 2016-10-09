@@ -31,5 +31,7 @@ public interface AttributeValueMvoApplicationService
 
     AttributeValueMvoStateEvent getStateEvent(AttributeValueId attributeValueId, long version);
 
+    AttributeValueMvoState getHistoryState(AttributeValueId attributeValueId, long version);
+
 }
 

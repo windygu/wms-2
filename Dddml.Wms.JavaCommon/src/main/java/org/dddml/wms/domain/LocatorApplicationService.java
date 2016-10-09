@@ -31,5 +31,7 @@ public interface LocatorApplicationService
 
     LocatorStateEvent getStateEvent(String locatorId, long version);
 
+    LocatorState getHistoryState(String locatorId, long version);
+
 }
 

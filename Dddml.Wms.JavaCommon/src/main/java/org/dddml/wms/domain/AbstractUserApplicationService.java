@@ -82,6 +82,11 @@ public abstract class AbstractUserApplicationService implements UserApplicationS
         return e;
     }
 
+    public UserState getHistoryState(String userId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractUserStateEvent.class, toEventStoreAggregateId(userId), version - 1);
+        return new AbstractUserState.SimpleUserState(eventStream.getEvents());
+    }
+
     public UserRoleState getUserRole(String userId, String roleId) {
         return getStateRepository().getUserRole(userId, roleId);
     }

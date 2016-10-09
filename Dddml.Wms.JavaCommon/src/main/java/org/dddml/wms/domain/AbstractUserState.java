@@ -653,6 +653,10 @@ public abstract class AbstractUserState implements UserState, Saveable
             super(forReapplying);
         }
 
+        public SimpleUserState(List<Event> events) {
+            super(events);
+        }
+
     }
 
     static class SimpleUserRoleStates extends AbstractUserRoleStates

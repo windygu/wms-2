@@ -416,6 +416,10 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
             super(forReapplying);
         }
 
+        public SimpleAttributeSetState(List<Event> events) {
+            super(events);
+        }
+
     }
 
     static class SimpleAttributeUseStates extends AbstractAttributeUseStates

@@ -82,6 +82,11 @@ public abstract class AbstractPermissionApplicationService implements Permission
         return e;
     }
 
+    public PermissionState getHistoryState(String permissionId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractPermissionStateEvent.class, toEventStoreAggregateId(permissionId), version - 1);
+        return new AbstractPermissionState.SimplePermissionState(eventStream.getEvents());
+    }
+
 
     public PermissionAggregate getPermissionAggregate(PermissionState state)
     {

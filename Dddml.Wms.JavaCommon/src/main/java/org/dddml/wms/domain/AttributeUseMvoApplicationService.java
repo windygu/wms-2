@@ -31,5 +31,7 @@ public interface AttributeUseMvoApplicationService
 
     AttributeUseMvoStateEvent getStateEvent(AttributeSetAttributeUseId attributeSetAttributeUseId, long version);
 
+    AttributeUseMvoState getHistoryState(AttributeSetAttributeUseId attributeSetAttributeUseId, long version);
+
 }
 

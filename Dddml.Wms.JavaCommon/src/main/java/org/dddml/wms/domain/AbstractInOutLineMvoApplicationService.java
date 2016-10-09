@@ -84,6 +84,11 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
         return e;
     }
 
+    public InOutLineMvoState getHistoryState(InOutLineId inOutLineId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractInOutLineMvoStateEvent.class, toEventStoreAggregateId(inOutLineId), version - 1);
+        return new AbstractInOutLineMvoState.SimpleInOutLineMvoState(eventStream.getEvents());
+    }
+
 
     public InOutLineMvoAggregate getInOutLineMvoAggregate(InOutLineMvoState state)
     {

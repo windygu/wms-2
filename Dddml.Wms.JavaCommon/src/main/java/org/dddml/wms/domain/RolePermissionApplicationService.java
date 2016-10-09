@@ -31,5 +31,7 @@ public interface RolePermissionApplicationService
 
     RolePermissionStateEvent getStateEvent(RolePermissionId id, long version);
 
+    RolePermissionState getHistoryState(RolePermissionId id, long version);
+
 }
 

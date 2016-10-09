@@ -31,5 +31,7 @@ public interface PermissionApplicationService
 
     PermissionStateEvent getStateEvent(String permissionId, long version);
 
+    PermissionState getHistoryState(String permissionId, long version);
+
 }
 

@@ -160,15 +160,32 @@ public class RolePermissionResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public RolePermissionStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public RolePermissionStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             RolePermissionId idObj = RolePermissionResourceUtils.parseIdString(id);
-            return rolePermissionApplicationService.getStateEvent(idObj, version);
+            RolePermissionStateEventDtoConverter dtoConverter = getRolePermissionStateEventDtoConverter();
+            return dtoConverter.toRolePermissionStateEventDto((AbstractRolePermissionStateEvent) rolePermissionApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public RolePermissionStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            RolePermissionId idObj = RolePermissionResourceUtils.parseIdString(id);
+            RolePermissionStateDto.DtoConverter dtoConverter = new RolePermissionStateDto.DtoConverter();
+            return dtoConverter.toRolePermissionStateDto(rolePermissionApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  RolePermissionStateEventDtoConverter getRolePermissionStateEventDtoConverter() {
+        return new RolePermissionStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

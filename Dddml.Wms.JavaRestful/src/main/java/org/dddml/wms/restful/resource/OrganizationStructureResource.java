@@ -160,15 +160,32 @@ public class OrganizationStructureResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public OrganizationStructureStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public OrganizationStructureStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             OrganizationStructureId idObj = OrganizationStructureResourceUtils.parseIdString(id);
-            return organizationStructureApplicationService.getStateEvent(idObj, version);
+            OrganizationStructureStateEventDtoConverter dtoConverter = getOrganizationStructureStateEventDtoConverter();
+            return dtoConverter.toOrganizationStructureStateEventDto((AbstractOrganizationStructureStateEvent) organizationStructureApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public OrganizationStructureStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            OrganizationStructureId idObj = OrganizationStructureResourceUtils.parseIdString(id);
+            OrganizationStructureStateDto.DtoConverter dtoConverter = new OrganizationStructureStateDto.DtoConverter();
+            return dtoConverter.toOrganizationStructureStateDto(organizationStructureApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  OrganizationStructureStateEventDtoConverter getOrganizationStructureStateEventDtoConverter() {
+        return new OrganizationStructureStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

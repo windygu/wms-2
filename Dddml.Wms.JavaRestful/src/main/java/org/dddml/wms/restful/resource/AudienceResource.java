@@ -160,15 +160,32 @@ public class AudienceResource {
 
     @Path("{id}/_stateEvents/{version}")
     @GET
-    public AudienceStateEvent getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public AudienceStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            return audienceApplicationService.getStateEvent(idObj, version);
+            AudienceStateEventDtoConverter dtoConverter = getAudienceStateEventDtoConverter();
+            return dtoConverter.toAudienceStateEventDto((AbstractAudienceStateEvent) audienceApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{id}/_historyStates/{version}")
+    @GET
+    public AudienceStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            String idObj = id;
+            AudienceStateDto.DtoConverter dtoConverter = new AudienceStateDto.DtoConverter();
+            return dtoConverter.toAudienceStateDto(audienceApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  AudienceStateEventDtoConverter getAudienceStateEventDtoConverter() {
+        return new AudienceStateEventDtoConverter();
+    }
 
     protected String getQueryOrderSeparator() {
         return ",";

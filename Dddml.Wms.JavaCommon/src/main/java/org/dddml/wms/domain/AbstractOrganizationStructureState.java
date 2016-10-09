@@ -233,6 +233,10 @@ public abstract class AbstractOrganizationStructureState implements Organization
             super(forReapplying);
         }
 
+        public SimpleOrganizationStructureState(List<Event> events) {
+            super(events);
+        }
+
     }
 
 

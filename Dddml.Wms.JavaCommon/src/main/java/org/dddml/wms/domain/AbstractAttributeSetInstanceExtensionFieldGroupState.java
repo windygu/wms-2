@@ -392,6 +392,10 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
             super(forReapplying);
         }
 
+        public SimpleAttributeSetInstanceExtensionFieldGroupState(List<Event> events) {
+            super(events);
+        }
+
     }
 
     static class SimpleAttributeSetInstanceExtensionFieldStates extends AbstractAttributeSetInstanceExtensionFieldStates

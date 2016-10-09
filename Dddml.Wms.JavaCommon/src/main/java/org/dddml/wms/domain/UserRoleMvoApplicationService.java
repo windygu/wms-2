@@ -31,5 +31,7 @@ public interface UserRoleMvoApplicationService
 
     UserRoleMvoStateEvent getStateEvent(UserRoleId userRoleId, long version);
 
+    UserRoleMvoState getHistoryState(UserRoleId userRoleId, long version);
+
 }
 
