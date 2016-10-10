@@ -172,11 +172,16 @@ public class WarehouseResource {
 
     @Path("{id}/_historyStates/{version}")
     @GET
-    public WarehouseStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+    public WarehouseStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 
             String idObj = id;
             WarehouseStateDto.DtoConverter dtoConverter = new WarehouseStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toWarehouseStateDto(warehouseApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }

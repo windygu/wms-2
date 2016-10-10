@@ -172,11 +172,16 @@ public class AttributeUseMvoResource {
 
     @Path("{id}/_historyStates/{version}")
     @GET
-    public AttributeUseMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+    public AttributeUseMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 
             AttributeSetAttributeUseId idObj = AttributeUseMvoResourceUtils.parseIdString(id);
             AttributeUseMvoStateDto.DtoConverter dtoConverter = new AttributeUseMvoStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toAttributeUseMvoStateDto(attributeUseMvoApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }

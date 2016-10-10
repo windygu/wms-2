@@ -172,11 +172,16 @@ public class AttributeSetResource {
 
     @Path("{id}/_historyStates/{version}")
     @GET
-    public AttributeSetStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+    public AttributeSetStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 
             String idObj = id;
             AttributeSetStateDto.DtoConverter dtoConverter = new AttributeSetStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toAttributeSetStateDto(attributeSetApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }

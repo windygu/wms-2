@@ -172,11 +172,16 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
 
     @Path("{id}/_historyStates/{version}")
     @GET
-    public AttributeSetInstanceExtensionFieldGroupStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+    public AttributeSetInstanceExtensionFieldGroupStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 
             String idObj = id;
             AttributeSetInstanceExtensionFieldGroupStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldGroupStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toAttributeSetInstanceExtensionFieldGroupStateDto(attributeSetInstanceExtensionFieldGroupApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }

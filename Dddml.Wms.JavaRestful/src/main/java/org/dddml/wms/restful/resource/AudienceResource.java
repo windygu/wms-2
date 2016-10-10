@@ -172,11 +172,16 @@ public class AudienceResource {
 
     @Path("{id}/_historyStates/{version}")
     @GET
-    public AudienceStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+    public AudienceStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 
             String idObj = id;
             AudienceStateDto.DtoConverter dtoConverter = new AudienceStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toAudienceStateDto(audienceApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }

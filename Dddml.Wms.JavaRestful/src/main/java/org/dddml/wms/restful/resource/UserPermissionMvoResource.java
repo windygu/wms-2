@@ -172,11 +172,16 @@ public class UserPermissionMvoResource {
 
     @Path("{id}/_historyStates/{version}")
     @GET
-    public UserPermissionMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+    public UserPermissionMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 
             UserPermissionId idObj = UserPermissionMvoResourceUtils.parseIdString(id);
             UserPermissionMvoStateDto.DtoConverter dtoConverter = new UserPermissionMvoStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toUserPermissionMvoStateDto(userPermissionMvoApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }

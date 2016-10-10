@@ -174,11 +174,16 @@ public class InOutLineMvoResource {
 
     @Path("{id}/_historyStates/{version}")
     @GET
-    public InOutLineMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+    public InOutLineMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 
             InOutLineId idObj = InOutLineMvoResourceUtils.parseIdString(id);
             InOutLineMvoStateDto.DtoConverter dtoConverter = new InOutLineMvoStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toInOutLineMvoStateDto(inOutLineMvoApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }

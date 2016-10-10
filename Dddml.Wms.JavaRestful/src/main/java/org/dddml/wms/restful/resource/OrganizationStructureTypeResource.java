@@ -172,11 +172,16 @@ public class OrganizationStructureTypeResource {
 
     @Path("{id}/_historyStates/{version}")
     @GET
-    public OrganizationStructureTypeStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version) {
+    public OrganizationStructureTypeStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 
             String idObj = id;
             OrganizationStructureTypeStateDto.DtoConverter dtoConverter = new OrganizationStructureTypeStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toOrganizationStructureTypeStateDto(organizationStructureTypeApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
