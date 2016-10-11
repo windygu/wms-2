@@ -11,7 +11,7 @@ namespace Dddml.Wms.Specialization
 
         public TDto Parse(string text)
         {
-            string[] strValues = text.Split(new string[] { FieldSeparator }, StringSplitOptions.RemoveEmptyEntries);
+            string[] strValues = text.Split(new string[] { FieldSeparator }, StringSplitOptions.None);
             var obj = new TDto();
 
             var fieldNames = obj.FieldNames;

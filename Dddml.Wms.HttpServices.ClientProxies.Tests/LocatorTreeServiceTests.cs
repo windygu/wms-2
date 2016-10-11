@@ -28,7 +28,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
         }
 
         [Test]
-        public void TestGetAttributeSetInstance()
+        public void TestGetLocatorTrees()
         {
             var treeService = _locatorTreeApplicationServiceFactory.LocatorTreeApplicationService;
             var ids = treeService.GetRootIds((IEnumerable<KeyValuePair<string, object>>)null);
