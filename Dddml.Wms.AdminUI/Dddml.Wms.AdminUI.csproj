@@ -232,6 +232,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesTableViewConfig.tt</DependentUpon>
     </Content>
+    <Content Include="webpack\metadata\GenerateEnumValuesMap.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateEnumValuesMap.tt</DependentUpon>
+    </Content>
     <Content Include="webpack\metadata\GenerateTreesJSMetadata.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateTreesJSMetadata.txt</LastGenOutput>
@@ -244,6 +249,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateTreesJSMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="webpack\metadata\GenerateEnumValuesMap.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateEnumValuesMap.txt</LastGenOutput>
+      <LastOutputs>
+.\enumValuesMap.ts
+.\GenerateEnumValuesMap.txt
+</LastOutputs>
     </Content>
     <Content Include="webpack\metadata\GenerateValueObjectsJSMetadata.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -604,6 +617,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="webpack\metadata\aggregates.ts">
       <DependentUpon>GenerateAggregatesJSMetadata.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="webpack\metadata\enumValuesMap.ts">
+      <DependentUpon>GenerateEnumValuesMap.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="webpack\metadata\trees.ts">
       <DependentUpon>GenerateTreesJSMetadata.tt</DependentUpon>
