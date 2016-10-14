@@ -1,7 +1,7 @@
 export const ENUM_VALUES_MAP = [
   {
     "name": "DocumentAction",
-    "values": [
+    "values": {
 		
       "Draft": "Draft",
 		
@@ -12,7 +12,7 @@ export const ENUM_VALUES_MAP = [
       "Close": "Close",
 		
       "Reverse": "Reverse",
-    ]
+    }
   }
 ]
 

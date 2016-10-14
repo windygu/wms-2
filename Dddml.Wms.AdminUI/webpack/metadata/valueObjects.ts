@@ -23,7 +23,7 @@ export const VALUE_OBJECT_METADATA = [
     "label": "Organization Structure Id",
     "collectionLabel": "Organization Structure Ids",
     "properties": [
-      { name: "organizationStructureTypeId", label: "Organization Structure Type Id", type: "string" }, { name: "parentId", label: "Parent Id", type: "string" }, { name: "subsidiaryId", label: "Subsidiary Id", type: "string" }
+      { name: "organizationStructureTypeId", label: "Organization Structure Type Id", type: "string", referenceType: "OrganizationStructureType" }, { name: "parentId", label: "Parent Id", type: "string", referenceType: "Organization" }, { name: "subsidiaryId", label: "Subsidiary Id", type: "string", referenceType: "Organization" }
     ]
   },
   {
