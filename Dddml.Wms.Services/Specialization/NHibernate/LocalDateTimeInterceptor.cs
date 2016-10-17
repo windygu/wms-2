@@ -4,7 +4,7 @@ using System;
 
 namespace Dddml.Wms.Services.Specialization.NHibernate
 {
-   public class LocalDateTimeInterceptor : EmptyInterceptor
+    public class LocalDateTimeInterceptor : EmptyInterceptor
     {
         public override bool OnLoad(object entity, object id, object[] state, string[] propertyNames, global::NHibernate.Type.IType[] types)
         {
@@ -28,4 +28,5 @@ namespace Dddml.Wms.Services.Specialization.NHibernate
                 ++index;
             }
         }
+    }
 }
