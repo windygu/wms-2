@@ -5,15 +5,6 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public class UserRoleStateEventDto extends AbstractStateEvent
 {
-    private String stateEventType;
-
-    public String getStateEventType() {
-        return this.stateEventType;
-    }
-
-    public void setStateEventType(String type) {
-        this.stateEventType = type;
-    }
 
     private UserRoleStateEventIdDto stateEventId;
 
@@ -72,16 +63,6 @@ public class UserRoleStateEventDto extends AbstractStateEvent
 
     public void setVersion(Long version) {
         this.version = version;
-    }
-
-    private String commandId;
-
-    public String getCommandId() {
-        return commandId;
-    }
-
-    public void setCommandId(String commandId) {
-        this.commandId = commandId;
     }
 
     private Boolean isPropertyActiveRemoved;

@@ -179,7 +179,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("CreatedAt"))
                 {
-                    return _state.CreatedAt;
+                    return _state.CreatedAt.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.CreatedAt;
                 }
                 return null;
             }
@@ -212,7 +212,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("UpdatedAt"))
                 {
-                    return _state.UpdatedAt;
+                    return _state.UpdatedAt.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.UpdatedAt;
                 }
                 return null;
             }

@@ -15,7 +15,7 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="warehouseId" not-null="true"></property>
+	<property name="warehouseId" ></property>
 
 	<property name="parentLocatorId" ></property>
 

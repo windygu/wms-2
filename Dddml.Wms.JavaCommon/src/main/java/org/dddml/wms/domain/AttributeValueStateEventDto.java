@@ -5,15 +5,6 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public class AttributeValueStateEventDto extends AbstractStateEvent
 {
-    private String stateEventType;
-
-    public String getStateEventType() {
-        return this.stateEventType;
-    }
-
-    public void setStateEventType(String type) {
-        this.stateEventType = type;
-    }
 
     private AttributeValueStateEventIdDto stateEventId;
 
@@ -102,16 +93,6 @@ public class AttributeValueStateEventDto extends AbstractStateEvent
 
     public void setVersion(Long version) {
         this.version = version;
-    }
-
-    private String commandId;
-
-    public String getCommandId() {
-        return commandId;
-    }
-
-    public void setCommandId(String commandId) {
-        this.commandId = commandId;
     }
 
     private Boolean isPropertyNameRemoved;

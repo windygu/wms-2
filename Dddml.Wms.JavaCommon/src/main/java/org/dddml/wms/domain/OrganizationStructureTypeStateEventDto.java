@@ -5,15 +5,6 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public class OrganizationStructureTypeStateEventDto extends AbstractStateEvent
 {
-    private String stateEventType;
-
-    public String getStateEventType() {
-        return this.stateEventType;
-    }
-
-    public void setStateEventType(String type) {
-        this.stateEventType = type;
-    }
 
     private OrganizationStructureTypeStateEventIdDto stateEventId;
 
@@ -70,16 +61,6 @@ public class OrganizationStructureTypeStateEventDto extends AbstractStateEvent
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }
-
-    private String commandId;
-
-    public String getCommandId() {
-        return commandId;
-    }
-
-    public void setCommandId(String commandId) {
-        this.commandId = commandId;
     }
 
     private Boolean isPropertyActiveRemoved;

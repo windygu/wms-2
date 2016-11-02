@@ -1674,7 +1674,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("InOutCreatedAt"))
                 {
-                    return _state.InOutCreatedAt;
+                    return _state.InOutCreatedAt.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.InOutCreatedAt;
                 }
                 return null;
             }
@@ -1733,7 +1733,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("InOutUpdatedAt"))
                 {
-                    return _state.InOutUpdatedAt;
+                    return _state.InOutUpdatedAt.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.InOutUpdatedAt;
                 }
                 return null;
             }
@@ -1872,7 +1872,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("CreatedAt"))
                 {
-                    return _state.CreatedAt;
+                    return _state.CreatedAt.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.CreatedAt;
                 }
                 return null;
             }
@@ -1905,7 +1905,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("UpdatedAt"))
                 {
-                    return _state.UpdatedAt;
+                    return _state.UpdatedAt.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.UpdatedAt;
                 }
                 return null;
             }
