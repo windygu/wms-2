@@ -1,0 +1,14 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ import namespace="Dddml.Core.Domain" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\Domain\BoundedContextDomainServicesGenerator.tt" #>
+<#@ include file="..\..\LoadBoundedContext.tt" #>
+<#
+
+
+    var generator = new BoundedContextDomainServicesGenerator(boundedContext);
+
+    generator.Run();
+
+#>

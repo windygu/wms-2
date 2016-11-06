@@ -2713,6 +2713,26 @@
     </Compile>
     <Compile Include="Support\AuthorizationUtils.cs" />
     <Compile Include="Support\PermissionUtils.cs" />
+    <Content Include="Generated\Domain\Services\GenerateBoundedContextDomainServices.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateBoundedContextDomainServices.txt</LastGenOutput>
+      <LastOutputs>.\GenerateBoundedContextDomainServices.txt</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Services\GenerateBoundedContextDomainServices.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Services\GenerateDomainServicesDtos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDomainServicesDtos.txt</LastGenOutput>
+      <LastOutputs>.\GenerateDomainServicesDtos.txt</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Services\GenerateDomainServicesDtos.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDomainServicesDtos.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\ListAllTypes.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>.\ListAllTypes.txt</LastOutputs>

@@ -274,82 +274,82 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Filters\SetRequesterIdAttribute.cs" />
     <Compile Include="Generated\Controllers\AttributesController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\AttributeSetInstanceExtensionFieldGroupsController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\AttributeSetInstanceExtensionFieldMvosController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\AttributeSetInstancesController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\AttributeSetsController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\AttributeUseMvosController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\AttributeValueMvosController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\AudiencesController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\InOutLineMvosController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\InOutsController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\LocatorsController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\LocatorTreesController.cs">
       <DependentUpon>GenerateTreeControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\OrganizationsController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\OrganizationStructuresController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\OrganizationStructureTypesController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\OrganizationTreesController.cs">
       <DependentUpon>GenerateTreeControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\PermissionsController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\PermissionTreesController.cs">
       <DependentUpon>GenerateTreeControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\RolePermissionsController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\RolesController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\UserClaimMvosController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\UserLoginMvosController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\UserPermissionMvosController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\UserRoleMvosController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\UsersController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\WarehousesController.cs">
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -386,6 +386,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAppSettingsSecretsConfig.config</LastGenOutput>
     </Content>
+    <Content Include="Generated\Controllers\GenerateDomainServicesControllers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastOutputs>.\GenerateDomainServicesControllers.txt</LastOutputs>
+      <LastGenOutput>GenerateDomainServicesControllers.txt</LastGenOutput>
+    </Content>
+    <Content Include="Generated\Controllers\GenerateDomainServicesControllers.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDomainServicesControllers.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Controllers\GenerateTreeControllers.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateTreeControllers.txt</LastGenOutput>
@@ -396,9 +406,9 @@
 .\PermissionTreesController.cs
 </LastOutputs>
     </Content>
-    <Content Include="Generated\Controllers\GenerateControllers.tt">
+    <Content Include="Generated\Controllers\GenerateAggregatesControllers.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateControllers.txt</LastGenOutput>
+      <LastGenOutput>GenerateAggregatesControllers.txt</LastGenOutput>
       <LastOutputs>
 .\AttributesController.cs
 .\AttributeSetInstanceExtensionFieldGroupsController.cs
@@ -408,7 +418,7 @@
 .\AttributeUseMvosController.cs
 .\AttributeValueMvosController.cs
 .\AudiencesController.cs
-.\GenerateControllers.txt
+.\GenerateAggregatesControllers.txt
 .\InOutLineMvosController.cs
 .\InOutsController.cs
 .\LocatorsController.cs
@@ -426,10 +436,10 @@
 .\WarehousesController.cs
 </LastOutputs>
     </Content>
-    <Content Include="Generated\Controllers\GenerateControllers.txt">
+    <Content Include="Generated\Controllers\GenerateAggregatesControllers.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateControllers.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
