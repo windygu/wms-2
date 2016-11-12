@@ -25,7 +25,7 @@ namespace Dddml.Wms.Domain
 
 		void Delete (IDeleteWarehouse c);
 
-	   
+
 	}
 
 }

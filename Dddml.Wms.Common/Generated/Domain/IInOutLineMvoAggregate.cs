@@ -26,7 +26,7 @@ namespace Dddml.Wms.Domain
 
 		void Delete (IDeleteInOutLineMvo c);
 
-	   
+
 	}
 
 }
