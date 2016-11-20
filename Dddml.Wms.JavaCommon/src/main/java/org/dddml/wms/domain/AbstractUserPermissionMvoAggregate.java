@@ -213,6 +213,7 @@ public abstract class AbstractUserPermissionMvoAggregate extends AbstractAggrega
         public SimpleUserPermissionMvoAggregate(UserPermissionMvoState state) {
             super(state);
         }
+
     }
 
 }

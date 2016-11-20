@@ -165,6 +165,7 @@ public abstract class AbstractAudienceAggregate extends AbstractAggregate implem
         public SimpleAudienceAggregate(AudienceState state) {
             super(state);
         }
+
     }
 
 }

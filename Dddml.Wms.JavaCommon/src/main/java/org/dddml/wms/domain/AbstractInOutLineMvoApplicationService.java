@@ -140,7 +140,6 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

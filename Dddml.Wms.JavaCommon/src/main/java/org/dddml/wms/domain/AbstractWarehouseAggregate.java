@@ -168,6 +168,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         public SimpleWarehouseAggregate(WarehouseState state) {
             super(state);
         }
+
     }
 
 }

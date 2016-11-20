@@ -13,7 +13,7 @@
             //foreach (var t in allTypes)
             //{
 <#
-            foreach (var t in boundedContext.AllTypes)
+            foreach (var t in boundedContext.AllPropertyTypes)
             {
 				if (boundedContext.GetAllNestedValueObjects().ContainsKey(t))
 				{
@@ -26,7 +26,7 @@
 #>
 // //////////////////////
 <#
-            foreach (var t in boundedContext.AllTypes)
+            foreach (var t in boundedContext.AllPropertyTypes)
             {
 				if (!listedTypes.Contains(t))
 				{

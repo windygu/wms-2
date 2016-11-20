@@ -183,6 +183,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         public SimpleLocatorAggregate(LocatorState state) {
             super(state);
         }
+
     }
 
 }

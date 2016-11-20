@@ -138,7 +138,6 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

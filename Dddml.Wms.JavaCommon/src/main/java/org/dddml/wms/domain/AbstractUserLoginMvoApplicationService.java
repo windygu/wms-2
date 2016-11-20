@@ -138,7 +138,6 @@ public abstract class AbstractUserLoginMvoApplicationService implements UserLogi
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

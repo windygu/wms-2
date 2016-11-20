@@ -138,7 +138,6 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

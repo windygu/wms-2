@@ -138,7 +138,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoApplicationSe
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

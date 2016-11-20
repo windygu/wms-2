@@ -541,7 +541,6 @@ namespace Dddml.Wms.Domain
     }
 
 
-
     public class CreateUserClaimCommands : ICreateUserClaimCommands
     {
         private List<ICreateUserClaim> _innerCommands = new List<ICreateUserClaim>();
@@ -603,7 +602,6 @@ namespace Dddml.Wms.Domain
         }
 
     }
-
 
 
     public class CreateUserPermissionCommands : ICreateUserPermissionCommands
@@ -669,7 +667,6 @@ namespace Dddml.Wms.Domain
     }
 
 
-
     public class CreateUserLoginCommands : ICreateUserLoginCommands
     {
         private List<ICreateUserLogin> _innerCommands = new List<ICreateUserLogin>();
@@ -732,7 +729,10 @@ namespace Dddml.Wms.Domain
 
     }
 
+    public static class UserCommands
+    {
 
+    }
 
 
 }

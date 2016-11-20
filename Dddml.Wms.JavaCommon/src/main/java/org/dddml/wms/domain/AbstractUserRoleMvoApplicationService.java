@@ -138,7 +138,6 @@ public abstract class AbstractUserRoleMvoApplicationService implements UserRoleM
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

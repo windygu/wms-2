@@ -453,6 +453,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         public SimpleInOutAggregate(InOutState state) {
             super(state);
         }
+
     }
 
 }

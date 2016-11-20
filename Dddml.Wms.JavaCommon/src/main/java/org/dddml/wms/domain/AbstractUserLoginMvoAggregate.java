@@ -213,6 +213,7 @@ public abstract class AbstractUserLoginMvoAggregate extends AbstractAggregate im
         public SimpleUserLoginMvoAggregate(UserLoginMvoState state) {
             super(state);
         }
+
     }
 
 }

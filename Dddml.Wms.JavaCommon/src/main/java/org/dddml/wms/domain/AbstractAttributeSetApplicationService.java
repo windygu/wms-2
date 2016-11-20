@@ -142,7 +142,6 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

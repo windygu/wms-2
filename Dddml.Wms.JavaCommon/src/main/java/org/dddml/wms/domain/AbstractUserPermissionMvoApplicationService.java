@@ -138,7 +138,6 @@ public abstract class AbstractUserPermissionMvoApplicationService implements Use
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

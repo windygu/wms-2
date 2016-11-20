@@ -213,6 +213,7 @@ public abstract class AbstractUserRoleMvoAggregate extends AbstractAggregate imp
         public SimpleUserRoleMvoAggregate(UserRoleMvoState state) {
             super(state);
         }
+
     }
 
 }

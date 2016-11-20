@@ -138,7 +138,6 @@ public abstract class AbstractLocatorApplicationService implements LocatorApplic
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

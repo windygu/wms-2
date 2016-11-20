@@ -363,6 +363,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         public SimpleInOutLineMvoAggregate(InOutLineMvoState state) {
             super(state);
         }
+
     }
 
 }

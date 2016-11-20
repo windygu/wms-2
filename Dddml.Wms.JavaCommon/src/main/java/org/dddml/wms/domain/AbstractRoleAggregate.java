@@ -165,6 +165,7 @@ public abstract class AbstractRoleAggregate extends AbstractAggregate implements
         public SimpleRoleAggregate(RoleState state) {
             super(state);
         }
+
     }
 
 }

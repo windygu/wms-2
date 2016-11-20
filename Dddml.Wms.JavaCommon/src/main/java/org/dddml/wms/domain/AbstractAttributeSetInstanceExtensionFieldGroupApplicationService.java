@@ -142,7 +142,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

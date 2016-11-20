@@ -144,7 +144,6 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

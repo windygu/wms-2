@@ -159,6 +159,7 @@ public abstract class AbstractRolePermissionAggregate extends AbstractAggregate 
         public SimpleRolePermissionAggregate(RolePermissionState state) {
             super(state);
         }
+
     }
 
 }

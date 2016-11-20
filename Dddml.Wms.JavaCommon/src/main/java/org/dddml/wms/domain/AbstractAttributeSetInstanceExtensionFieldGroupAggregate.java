@@ -300,6 +300,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         public SimpleAttributeSetInstanceExtensionFieldGroupAggregate(AttributeSetInstanceExtensionFieldGroupState state) {
             super(state);
         }
+
     }
 
 }

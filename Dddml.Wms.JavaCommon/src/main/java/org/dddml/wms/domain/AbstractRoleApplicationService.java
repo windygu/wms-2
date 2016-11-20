@@ -138,7 +138,6 @@ public abstract class AbstractRoleApplicationService implements RoleApplicationS
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

@@ -168,6 +168,7 @@ public abstract class AbstractPermissionAggregate extends AbstractAggregate impl
         public SimplePermissionAggregate(PermissionState state) {
             super(state);
         }
+
     }
 
 }

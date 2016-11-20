@@ -2036,6 +2036,8 @@
 .\UserClaimStateEventIdFlattenedDtoFormatter.java
 .\UserClaimStates.java
 .\UserCommand.java
+.\UserCommandDtos.java
+.\UserCommands.java
 .\UserLoginCommand.java
 .\UserLoginId.java
 .\UserLoginIdDto.java
@@ -3104,6 +3106,12 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\UserCommand.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\UserCommandDtos.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\UserCommands.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\UserLoginCommand.java">

@@ -143,7 +143,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = AttributesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-
         [Route("_metadata/filteringFields")]
         [HttpGet]
         public IEnumerable<PropertyMetadata> GetMetadataFilteringFields()

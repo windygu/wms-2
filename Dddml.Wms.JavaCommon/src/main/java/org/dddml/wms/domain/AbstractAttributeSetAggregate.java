@@ -291,6 +291,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         public SimpleAttributeSetAggregate(AttributeSetState state) {
             super(state);
         }
+
     }
 
 }

@@ -139,7 +139,6 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

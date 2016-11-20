@@ -1546,6 +1546,7 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         public SimpleAttributeSetInstanceAggregate(AttributeSetInstanceState state) {
             super(state);
         }
+
     }
 
 }

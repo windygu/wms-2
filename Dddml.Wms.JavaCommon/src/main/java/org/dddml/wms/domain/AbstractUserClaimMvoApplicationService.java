@@ -138,7 +138,6 @@ public abstract class AbstractUserClaimMvoApplicationService implements UserClai
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

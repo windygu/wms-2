@@ -210,6 +210,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         public SimpleAttributeSetInstanceExtensionFieldMvoAggregate(AttributeSetInstanceExtensionFieldMvoState state) {
             super(state);
         }
+
     }
 
 }

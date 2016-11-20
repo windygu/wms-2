@@ -154,7 +154,6 @@ public abstract class AbstractUserApplicationService implements UserApplicationS
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

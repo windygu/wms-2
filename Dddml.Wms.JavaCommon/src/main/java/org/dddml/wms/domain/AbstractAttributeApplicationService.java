@@ -142,7 +142,6 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

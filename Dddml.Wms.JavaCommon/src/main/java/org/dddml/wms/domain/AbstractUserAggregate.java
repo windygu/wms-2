@@ -642,6 +642,7 @@ public abstract class AbstractUserAggregate extends AbstractAggregate implements
         public SimpleUserAggregate(UserState state) {
             super(state);
         }
+
     }
 
 }

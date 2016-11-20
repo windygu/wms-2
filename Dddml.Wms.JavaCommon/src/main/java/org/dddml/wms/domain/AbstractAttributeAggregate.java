@@ -309,6 +309,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         public SimpleAttributeAggregate(AttributeState state) {
             super(state);
         }
+
     }
 
 }

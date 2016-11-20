@@ -138,7 +138,6 @@ public abstract class AbstractAudienceApplicationService implements AudienceAppl
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

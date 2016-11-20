@@ -138,7 +138,6 @@ public abstract class AbstractAttributeUseMvoApplicationService implements Attri
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

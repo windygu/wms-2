@@ -201,6 +201,7 @@ public abstract class AbstractAttributeUseMvoAggregate extends AbstractAggregate
         public SimpleAttributeUseMvoAggregate(AttributeUseMvoState state) {
             super(state);
         }
+
     }
 
 }

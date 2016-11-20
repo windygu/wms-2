@@ -138,7 +138,6 @@ public abstract class AbstractPermissionApplicationService implements Permission
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

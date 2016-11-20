@@ -159,6 +159,7 @@ public abstract class AbstractOrganizationStructureAggregate extends AbstractAgg
         public SimpleOrganizationStructureAggregate(OrganizationStructureState state) {
             super(state);
         }
+
     }
 
 }

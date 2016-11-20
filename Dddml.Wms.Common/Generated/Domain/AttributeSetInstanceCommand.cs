@@ -1971,6 +1971,5 @@ namespace Dddml.Wms.Domain
 	}
 
 
-
 }
 

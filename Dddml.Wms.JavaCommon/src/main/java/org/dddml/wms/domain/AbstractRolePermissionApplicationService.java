@@ -138,7 +138,6 @@ public abstract class AbstractRolePermissionApplicationService implements RolePe
         {
             super(eventStore, stateRepository);
         }
-
     }
 
 }

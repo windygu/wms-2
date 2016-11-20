@@ -219,6 +219,7 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
         public SimpleAttributeValueMvoAggregate(AttributeValueMvoState state) {
             super(state);
         }
+
     }
 
 }

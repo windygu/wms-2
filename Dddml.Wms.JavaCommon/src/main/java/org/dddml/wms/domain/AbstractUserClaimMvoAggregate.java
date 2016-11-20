@@ -219,6 +219,7 @@ public abstract class AbstractUserClaimMvoAggregate extends AbstractAggregate im
         public SimpleUserClaimMvoAggregate(UserClaimMvoState state) {
             super(state);
         }
+
     }
 
 }
