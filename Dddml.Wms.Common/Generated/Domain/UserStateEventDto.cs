@@ -319,7 +319,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-
 		string ICreated<string>.CreatedBy {
 			get {
 				return this.CreatedBy;
@@ -446,6 +445,7 @@ namespace Dddml.Wms.Domain
         }
 
 
+
         private UserClaimStateCreatedOrMergePatchedOrRemovedDtos _userClaimEvents = new UserClaimStateCreatedOrMergePatchedOrRemovedDtos();
 
         public virtual UserClaimStateCreatedOrMergePatchedOrRemovedDto[] UserClaimEvents
@@ -551,6 +551,7 @@ namespace Dddml.Wms.Domain
         {
             return NewUserClaimStateRemoved(claimId);
         }
+
 
 
         private UserPermissionStateCreatedOrMergePatchedOrRemovedDtos _userPermissionEvents = new UserPermissionStateCreatedOrMergePatchedOrRemovedDtos();
@@ -660,6 +661,7 @@ namespace Dddml.Wms.Domain
         }
 
 
+
         private UserLoginStateCreatedOrMergePatchedOrRemovedDtos _userLoginEvents = new UserLoginStateCreatedOrMergePatchedOrRemovedDtos();
 
         public virtual UserLoginStateCreatedOrMergePatchedOrRemovedDto[] UserLoginEvents
@@ -765,6 +767,7 @@ namespace Dddml.Wms.Domain
         {
             return NewUserLoginStateRemoved(loginKey);
         }
+
 
 
         UserStateEventId IUserStateEvent.StateEventId

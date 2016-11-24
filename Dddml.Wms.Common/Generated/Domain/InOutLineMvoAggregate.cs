@@ -422,7 +422,6 @@ namespace Dddml.Wms.Domain
 			return new InOutLineMvoStateDeleted(stateEventId);
 		}
 
-
     }
 
 }

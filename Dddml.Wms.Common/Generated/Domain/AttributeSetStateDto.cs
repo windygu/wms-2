@@ -541,6 +541,11 @@ namespace Dddml.Wms.Domain
                 throw new NotSupportedException();
             }
 
+            public IAttributeUseState Get(string attributeId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
             public void Remove(IAttributeUseState state)
             {
                 throw new NotSupportedException();

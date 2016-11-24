@@ -382,7 +382,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-
 		string ICreated<string>.CreatedBy {
 			get {
 				return this.CreatedBy;

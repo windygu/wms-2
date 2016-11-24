@@ -662,6 +662,11 @@ namespace Dddml.Wms.Domain
                 throw new NotSupportedException();
             }
 
+            public IAttributeValueState Get(string value, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
             public void Remove(IAttributeValueState state)
             {
                 throw new NotSupportedException();

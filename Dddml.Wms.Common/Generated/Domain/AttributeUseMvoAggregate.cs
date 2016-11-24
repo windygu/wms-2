@@ -266,7 +266,6 @@ namespace Dddml.Wms.Domain
 			return new AttributeUseMvoStateDeleted(stateEventId);
 		}
 
-
     }
 
 }

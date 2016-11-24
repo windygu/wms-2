@@ -235,7 +235,7 @@ namespace Dddml.Wms.Domain
             c.RequesterId = outerCommand.RequesterId;
 			var stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(c.GroupId, c.Index, version);
             IAttributeSetInstanceExtensionFieldStateCreated e = NewAttributeSetInstanceExtensionFieldStateCreated(stateEventId);
-            var s = outerState.Fields.Get(c.Index);
+            var s = outerState.Fields.Get(c.Index, true);
 
             e.Name = c.Name;
             e.Type = c.Type;
@@ -363,7 +363,6 @@ namespace Dddml.Wms.Domain
 		{
 			return new AttributeSetInstanceExtensionFieldGroupStateDeleted(stateEventId);
 		}
-
 
 		private AttributeSetInstanceExtensionFieldStateCreated NewAttributeSetInstanceExtensionFieldStateCreated(AttributeSetInstanceExtensionFieldStateEventId stateEventId)
 		{

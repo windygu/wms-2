@@ -107,16 +107,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((CreateAttributeSetInstanceDto)c);
         }
 
-        void IAttributeSetInstanceApplicationService.When(IMergePatchAttributeSetInstance c)
-        {
-            this.When((MergePatchAttributeSetInstanceDto)c);
-        }
-
-        void IAttributeSetInstanceApplicationService.When(IDeleteAttributeSetInstance c)
-        {
-            this.When((DeleteAttributeSetInstanceDto)c);
-        }
-
         public async Task<IAttributeSetInstanceState> GetAsync(string attributeSetInstanceId)
         {
             IAttributeSetInstanceState state = null;

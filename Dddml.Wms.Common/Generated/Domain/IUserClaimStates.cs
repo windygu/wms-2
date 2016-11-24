@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
     {
         
         IUserClaimState Get(int claimId);
+
+        IUserClaimState Get(int claimId, bool forCreation);
         
         void Remove(IUserClaimState state);
 

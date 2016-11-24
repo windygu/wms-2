@@ -322,7 +322,7 @@ namespace Dddml.Wms.Domain
             c.RequesterId = outerCommand.RequesterId;
 			var stateEventId = new InOutLineStateEventId(c.InOutDocumentNumber, c.SkuId, version);
             IInOutLineStateCreated e = NewInOutLineStateCreated(stateEventId);
-            var s = outerState.InOutLines.Get(c.SkuId);
+            var s = outerState.InOutLines.Get(c.SkuId, true);
 
             e.LineNumber = c.LineNumber;
             e.Description = c.Description;
@@ -510,7 +510,6 @@ namespace Dddml.Wms.Domain
 		{
 			return new InOutStateDeleted(stateEventId);
 		}
-
 
 		private InOutLineStateCreated NewInOutLineStateCreated(InOutLineStateEventId stateEventId)
 		{

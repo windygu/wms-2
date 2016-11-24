@@ -82,13 +82,18 @@ namespace Dddml.Wms.Domain
 
         public virtual IInOutLineState Get(SkuId skuId)
 		{
+			return Get(skuId, false);
+		}
+
+        public virtual IInOutLineState Get(SkuId skuId, bool forCreation)
+		{
 			InOutLineId globalId = new InOutLineId(_inOutState.DocumentNumber, skuId);
             if (_loadedInOutLineStates.ContainsKey(globalId)) {
                 return _loadedInOutLineStates[globalId];
             }
-            if (ForReapplying)
+            if (forCreation || ForReapplying)
             {
-                var state = new InOutLineState(true); // state.ForReapplying = true;
+                var state = new InOutLineState(ForReapplying);
                 state.InOutLineId = globalId;
 			    _loadedInOutLineStates.Add(globalId, state);
 			    return state;

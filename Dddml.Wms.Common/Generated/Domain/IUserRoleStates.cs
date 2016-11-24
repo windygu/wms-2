@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
     {
         
         IUserRoleState Get(string roleId);
+
+        IUserRoleState Get(string roleId, bool forCreation);
         
         void Remove(IUserRoleState state);
 

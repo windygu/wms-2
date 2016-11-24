@@ -16,10 +16,6 @@ namespace Dddml.Wms.Domain
 	{
 		void When(ICreateAttributeSetInstance c);
 
-		void When(IMergePatchAttributeSetInstance c);
-
-		void When(IDeleteAttributeSetInstance c);
-
  		IAttributeSetInstanceState Get(string attributeSetInstanceId);
 
         IEnumerable<IAttributeSetInstanceState> GetAll(int firstResult, int maxResults);

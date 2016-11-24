@@ -16,6 +16,8 @@ namespace Dddml.Wms.Domain
     {
         
         IInOutLineState Get(SkuId skuId);
+
+        IInOutLineState Get(SkuId skuId, bool forCreation);
         
         void Remove(IInOutLineState state);
 

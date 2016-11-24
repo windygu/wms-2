@@ -81,13 +81,18 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserRoleState Get(string roleId)
 		{
+			return Get(roleId, false);
+		}
+
+        public virtual IUserRoleState Get(string roleId, bool forCreation)
+		{
 			UserRoleId globalId = new UserRoleId(_userState.UserId, roleId);
             if (_loadedUserRoleStates.ContainsKey(globalId)) {
                 return _loadedUserRoleStates[globalId];
             }
-            if (ForReapplying)
+            if (forCreation || ForReapplying)
             {
-                var state = new UserRoleState(true); // state.ForReapplying = true;
+                var state = new UserRoleState(ForReapplying);
                 state.UserRoleId = globalId;
 			    _loadedUserRoleStates.Add(globalId, state);
 			    return state;

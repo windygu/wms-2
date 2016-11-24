@@ -8,6 +8,7 @@
   
   <class name="org.dddml.wms.domain.AbstractAttributeSetInstanceState$SimpleAttributeSetInstanceState" table="AttributeSetInstances">
 
+    <cache usage="read-only"/>
 	<id name="attributeSetInstanceId" length="50">
 		<generator class="assigned"/>
 	</id>

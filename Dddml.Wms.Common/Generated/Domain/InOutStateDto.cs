@@ -1371,6 +1371,11 @@ namespace Dddml.Wms.Domain
                 throw new NotSupportedException();
             }
 
+            public IInOutLineState Get(SkuId skuId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
             public void Remove(IInOutLineState state)
             {
                 throw new NotSupportedException();

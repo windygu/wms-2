@@ -81,13 +81,18 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserLoginState Get(LoginKey loginKey)
 		{
+			return Get(loginKey, false);
+		}
+
+        public virtual IUserLoginState Get(LoginKey loginKey, bool forCreation)
+		{
 			UserLoginId globalId = new UserLoginId(_userState.UserId, loginKey);
             if (_loadedUserLoginStates.ContainsKey(globalId)) {
                 return _loadedUserLoginStates[globalId];
             }
-            if (ForReapplying)
+            if (forCreation || ForReapplying)
             {
-                var state = new UserLoginState(true); // state.ForReapplying = true;
+                var state = new UserLoginState(ForReapplying);
                 state.UserLoginId = globalId;
 			    _loadedUserLoginStates.Add(globalId, state);
 			    return state;

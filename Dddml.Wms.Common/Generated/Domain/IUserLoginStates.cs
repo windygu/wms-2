@@ -15,6 +15,8 @@ namespace Dddml.Wms.Domain
     {
         
         IUserLoginState Get(LoginKey loginKey);
+
+        IUserLoginState Get(LoginKey loginKey, bool forCreation);
         
         void Remove(IUserLoginState state);
 

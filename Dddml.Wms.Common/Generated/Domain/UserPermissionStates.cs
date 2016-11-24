@@ -81,13 +81,18 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserPermissionState Get(string permissionId)
 		{
+			return Get(permissionId, false);
+		}
+
+        public virtual IUserPermissionState Get(string permissionId, bool forCreation)
+		{
 			UserPermissionId globalId = new UserPermissionId(_userState.UserId, permissionId);
             if (_loadedUserPermissionStates.ContainsKey(globalId)) {
                 return _loadedUserPermissionStates[globalId];
             }
-            if (ForReapplying)
+            if (forCreation || ForReapplying)
             {
-                var state = new UserPermissionState(true); // state.ForReapplying = true;
+                var state = new UserPermissionState(ForReapplying);
                 state.UserPermissionId = globalId;
 			    _loadedUserPermissionStates.Add(globalId, state);
 			    return state;

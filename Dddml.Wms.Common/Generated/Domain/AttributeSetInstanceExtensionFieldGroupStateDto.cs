@@ -516,6 +516,11 @@ namespace Dddml.Wms.Domain
                 throw new NotSupportedException();
             }
 
+            public IAttributeSetInstanceExtensionFieldState Get(string index, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
             public void Remove(IAttributeSetInstanceExtensionFieldState state)
             {
                 throw new NotSupportedException();

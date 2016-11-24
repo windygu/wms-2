@@ -21,10 +21,6 @@ namespace Dddml.Wms.Domain
 
 		void When(IAttributeSetInstanceStateCreated e);
 
-		void When(IAttributeSetInstanceStateMergePatched e);
-
-		void When(IAttributeSetInstanceStateDeleted e);
-
 		void Mutate(IEvent e);
 
 

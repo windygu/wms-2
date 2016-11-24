@@ -81,13 +81,18 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeValueState Get(string value)
 		{
+			return Get(value, false);
+		}
+
+        public virtual IAttributeValueState Get(string value, bool forCreation)
+		{
 			AttributeValueId globalId = new AttributeValueId(_attributeState.AttributeId, value);
             if (_loadedAttributeValueStates.ContainsKey(globalId)) {
                 return _loadedAttributeValueStates[globalId];
             }
-            if (ForReapplying)
+            if (forCreation || ForReapplying)
             {
-                var state = new AttributeValueState(true); // state.ForReapplying = true;
+                var state = new AttributeValueState(ForReapplying);
                 state.AttributeValueId = globalId;
 			    _loadedAttributeValueStates.Add(globalId, state);
 			    return state;

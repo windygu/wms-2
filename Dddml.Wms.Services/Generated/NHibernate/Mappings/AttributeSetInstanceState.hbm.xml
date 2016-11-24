@@ -5,6 +5,7 @@
   
   <class name="Dddml.Wms.Domain.AttributeSetInstanceState" table="AttributeSetInstances">
 
+    <cache usage="read-only"/>
 	<id name="AttributeSetInstanceId" length="50">
 		<generator class="assigned"/>
 	</id>

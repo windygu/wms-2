@@ -230,7 +230,6 @@ namespace Dddml.Wms.Domain
 			return new RoleStateDeleted(stateEventId);
 		}
 
-
     }
 
 }

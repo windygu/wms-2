@@ -831,6 +831,11 @@ namespace Dddml.Wms.Domain
                 throw new NotSupportedException();
             }
 
+            public IUserRoleState Get(string roleId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
             public void Remove(IUserRoleState state)
             {
                 throw new NotSupportedException();
@@ -878,6 +883,11 @@ namespace Dddml.Wms.Domain
             }
 
             public IUserClaimState Get(int claimId)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IUserClaimState Get(int claimId, bool forCreation)
             {
                 throw new NotSupportedException();
             }
@@ -933,6 +943,11 @@ namespace Dddml.Wms.Domain
                 throw new NotSupportedException();
             }
 
+            public IUserPermissionState Get(string permissionId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
             public void Remove(IUserPermissionState state)
             {
                 throw new NotSupportedException();
@@ -980,6 +995,11 @@ namespace Dddml.Wms.Domain
             }
 
             public IUserLoginState Get(LoginKey loginKey)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IUserLoginState Get(LoginKey loginKey, bool forCreation)
             {
                 throw new NotSupportedException();
             }

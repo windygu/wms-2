@@ -64,16 +64,6 @@ namespace Dddml.Wms.Domain
 			Update(c, ar => ar.Create(c));
 		}
 
-		public virtual void When(IMergePatchAttributeSetInstance c)
-		{
-			Update(c, ar => ar.MergePatch(c));
-		}
-
-		public virtual void When(IDeleteAttributeSetInstance c)
-		{
-			Update(c, ar => ar.Delete(c));
-		}
-
         public virtual IAttributeSetInstanceState Get(string attributeSetInstanceId)
         {
             var state = StateRepository.Get(attributeSetInstanceId, true);

@@ -81,13 +81,18 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserClaimState Get(int claimId)
 		{
+			return Get(claimId, false);
+		}
+
+        public virtual IUserClaimState Get(int claimId, bool forCreation)
+		{
 			UserClaimId globalId = new UserClaimId(_userState.UserId, claimId);
             if (_loadedUserClaimStates.ContainsKey(globalId)) {
                 return _loadedUserClaimStates[globalId];
             }
-            if (ForReapplying)
+            if (forCreation || ForReapplying)
             {
-                var state = new UserClaimState(true); // state.ForReapplying = true;
+                var state = new UserClaimState(ForReapplying);
                 state.UserClaimId = globalId;
 			    _loadedUserClaimStates.Add(globalId, state);
 			    return state;

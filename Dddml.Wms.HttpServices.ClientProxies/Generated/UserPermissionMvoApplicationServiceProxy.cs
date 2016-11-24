@@ -88,7 +88,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var q = new UserPermissionMvoDeleteQuery();
             q.CommandId = c.CommandId;
             q.RequesterId = c.RequesterId;
-            q.Version = Convert.ToString(c.Version);
+            q.Version = Convert.ToString(c.UserVersion);
                 
             var req = new UserPermissionMvoDeleteRequest(uriParameters);
             req.Query = q;

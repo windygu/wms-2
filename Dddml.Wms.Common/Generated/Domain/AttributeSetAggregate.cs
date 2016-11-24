@@ -238,7 +238,7 @@ namespace Dddml.Wms.Domain
             c.RequesterId = outerCommand.RequesterId;
 			var stateEventId = new AttributeUseStateEventId(c.AttributeSetId, c.AttributeId, version);
             IAttributeUseStateCreated e = NewAttributeUseStateCreated(stateEventId);
-            var s = outerState.AttributeUses.Get(c.AttributeId);
+            var s = outerState.AttributeUses.Get(c.AttributeId, true);
 
             e.SequenceNumber = c.SequenceNumber;
             e.Active = c.Active;
@@ -354,7 +354,6 @@ namespace Dddml.Wms.Domain
 		{
 			return new AttributeSetStateDeleted(stateEventId);
 		}
-
 
 		private AttributeUseStateCreated NewAttributeUseStateCreated(AttributeUseStateEventId stateEventId)
 		{

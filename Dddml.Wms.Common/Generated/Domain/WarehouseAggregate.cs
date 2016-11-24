@@ -233,7 +233,6 @@ namespace Dddml.Wms.Domain
 			return new WarehouseStateDeleted(stateEventId);
 		}
 
-
     }
 
 }

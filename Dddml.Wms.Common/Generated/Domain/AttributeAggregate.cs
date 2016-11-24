@@ -250,7 +250,7 @@ namespace Dddml.Wms.Domain
             c.RequesterId = outerCommand.RequesterId;
 			var stateEventId = new AttributeValueStateEventId(c.AttributeId, c.Value, version);
             IAttributeValueStateCreated e = NewAttributeValueStateCreated(stateEventId);
-            var s = outerState.AttributeValues.Get(c.Value);
+            var s = outerState.AttributeValues.Get(c.Value, true);
 
             e.Name = c.Name;
             e.Description = c.Description;
@@ -372,7 +372,6 @@ namespace Dddml.Wms.Domain
 		{
 			return new AttributeStateDeleted(stateEventId);
 		}
-
 
 		private AttributeValueStateCreated NewAttributeValueStateCreated(AttributeValueStateEventId stateEventId)
 		{

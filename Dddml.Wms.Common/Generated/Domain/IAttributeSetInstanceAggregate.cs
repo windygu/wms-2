@@ -21,10 +21,6 @@ namespace Dddml.Wms.Domain
 
 		void Create (ICreateAttributeSetInstance c);
 
-		void MergePatch (IMergePatchAttributeSetInstance c);
-
-		void Delete (IDeleteAttributeSetInstance c);
-
 
 	}
 

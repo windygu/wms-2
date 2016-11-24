@@ -132,29 +132,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [HttpPatch][SetRequesterId]
-        public void Patch(string id, [FromBody]JObject dynamicObject)
-        {
-          try {
-            MergePatchAttributeSetInstanceDto value = _attributeSetInstanceDtoJObjectMapper.ToCommandMergePatch(dynamicObject);
-            AttributeSetInstancesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _attributeSetInstanceApplicationService.When(value as IMergePatchAttributeSetInstance);
-          } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
-        [HttpDelete][SetRequesterId]
-        public void Delete(string id, string commandId, string version, string requesterId = default(string))
-        {
-          try {
-            var value = new DeleteAttributeSetInstanceDto();
-            value.CommandId = commandId;
-            value.RequesterId = requesterId;
-            value.Version = (long)Convert.ChangeType(version, typeof(long));
-            AttributeSetInstancesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _attributeSetInstanceApplicationService.When(value as IDeleteAttributeSetInstance);
-          } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
         [Route("_metadata/filteringFields")]
         [HttpGet]
         public IEnumerable<PropertyMetadata> GetMetadataFilteringFields()

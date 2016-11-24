@@ -89,7 +89,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var q = new InOutLineMvoDeleteQuery();
             q.CommandId = c.CommandId;
             q.RequesterId = c.RequesterId;
-            q.Version = Convert.ToString(c.Version);
+            q.Version = Convert.ToString(c.InOutVersion);
                 
             var req = new InOutLineMvoDeleteRequest(uriParameters);
             req.Query = q;

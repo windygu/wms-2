@@ -13210,16 +13210,6 @@ namespace Dddml.Wms.Domain
 		}
 
 
-		void IAttributeSetInstanceState.When(IAttributeSetInstanceStateMergePatched e)
-		{
-            throw new NotSupportedException();
-		}
-
-		void IAttributeSetInstanceState.When(IAttributeSetInstanceStateDeleted e)
-		{
-            throw new NotSupportedException();
-		}
-
 
 		void IAttributeSetInstanceState.Mutate(IEvent e)
 		{

@@ -298,7 +298,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-
 		string ICreated<string>.CreatedBy {
 			get {
 				return this.CreatedBy;
@@ -423,6 +422,7 @@ namespace Dddml.Wms.Domain
         {
             return NewAttributeValueStateRemoved(value);
         }
+
 
 
         AttributeStateEventId IAttributeStateEvent.StateEventId

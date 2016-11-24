@@ -950,23 +950,6 @@
     	
     </subclass>
 
-    <subclass name="AttributeSetInstanceStateMergePatched"  discriminator-value="MergePatched">
-
-      <set name="RemovedPropertyNames" table="AttributeSetInstanceStateEventRemovedProperties">
-        <key>
-          <column name="AttributeSetInstanceId" />
-          <column name="Version" />
-        </key>
-        <element column="RemovedPropertyName" type="string" not-null="true" />
-      </set>
-
-
-    </subclass>
-
-    <subclass name="AttributeSetInstanceStateDeleted"  discriminator-value="Deleted">
-
-    </subclass>
-
   </class>
   
 </hibernate-mapping>

@@ -367,7 +367,7 @@ namespace Dddml.Wms.Domain
             c.RequesterId = outerCommand.RequesterId;
 			var stateEventId = new UserRoleStateEventId(c.UserId, c.RoleId, version);
             IUserRoleStateCreated e = NewUserRoleStateCreated(stateEventId);
-            var s = outerState.UserRoles.Get(c.RoleId);
+            var s = outerState.UserRoles.Get(c.RoleId, true);
 
             e.Active = c.Active;
 
@@ -439,7 +439,7 @@ namespace Dddml.Wms.Domain
             c.RequesterId = outerCommand.RequesterId;
 			var stateEventId = new UserClaimStateEventId(c.UserId, c.ClaimId, version);
             IUserClaimStateCreated e = NewUserClaimStateCreated(stateEventId);
-            var s = outerState.UserClaims.Get(c.ClaimId);
+            var s = outerState.UserClaims.Get(c.ClaimId, true);
 
             e.ClaimType = c.ClaimType;
             e.ClaimValue = c.ClaimValue;
@@ -517,7 +517,7 @@ namespace Dddml.Wms.Domain
             c.RequesterId = outerCommand.RequesterId;
 			var stateEventId = new UserPermissionStateEventId(c.UserId, c.PermissionId, version);
             IUserPermissionStateCreated e = NewUserPermissionStateCreated(stateEventId);
-            var s = outerState.UserPermissions.Get(c.PermissionId);
+            var s = outerState.UserPermissions.Get(c.PermissionId, true);
 
             e.Active = c.Active;
 
@@ -589,7 +589,7 @@ namespace Dddml.Wms.Domain
             c.RequesterId = outerCommand.RequesterId;
 			var stateEventId = new UserLoginStateEventId(c.UserId, c.LoginKey, version);
             IUserLoginStateCreated e = NewUserLoginStateCreated(stateEventId);
-            var s = outerState.UserLogins.Get(c.LoginKey);
+            var s = outerState.UserLogins.Get(c.LoginKey, true);
 
             e.Active = c.Active;
 
@@ -702,7 +702,6 @@ namespace Dddml.Wms.Domain
 		{
 			return new UserStateDeleted(stateEventId);
 		}
-
 
 		private UserRoleStateCreated NewUserRoleStateCreated(UserRoleStateEventId stateEventId)
 		{
