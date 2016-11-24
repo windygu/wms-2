@@ -948,6 +948,8 @@
 
 	<property name="Deleted" ></property>
 
+    <property name="CommandId" />
+
 
   </class>
   

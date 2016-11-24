@@ -25,6 +25,8 @@ namespace Dddml.Wms.Domain
 
 		public virtual bool Deleted { get; set; }
 
+        public virtual string CommandId { get; set; }
+
 
 		#region IIdentity implementation
 
