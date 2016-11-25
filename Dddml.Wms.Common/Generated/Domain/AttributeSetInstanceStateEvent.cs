@@ -957,10 +957,9 @@ namespace Dddml.Wms.Domain
 
         public virtual bool? Active { get { return _state.Active; } set { _state.Active = (value != null && value.HasValue) ? value.Value : default(bool); } }
 
+		public virtual string CreatedBy { get { return _state.CreatedBy; } set { _state.CreatedBy = value; } }
 
-		public virtual string CreatedBy { get; set; }
-
-		public virtual DateTime CreatedAt { get; set; }
+		public virtual DateTime CreatedAt { get { return _state.CreatedAt; } set { _state.CreatedAt = value; } }
 
         public virtual string CommandId { get { return _state.CommandId; } set { _state.CommandId = value; } }
 

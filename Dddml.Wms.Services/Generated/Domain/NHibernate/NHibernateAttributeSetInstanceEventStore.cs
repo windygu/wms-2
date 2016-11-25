@@ -16,40 +16,82 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.NHibernate
 {
 
-	public class NHibernateAttributeSetInstanceEventStore : NHibernateEventStoreBase
+	public class NHibernateAttributeSetInstanceEventStore : IEventStore
 	{
-		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
-		{
-			return new AttributeSetInstanceStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+		public ISessionFactory SessionFactory { get; set; }
+
+		protected ISession CurrentSession {
+			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-		public override Type GetSupportedStateEventType()
+		public NHibernateAttributeSetInstanceEventStore()
 		{
-			return typeof(AttributeSetInstanceStateEventBase);
 		}
+
+		[Transaction (ReadOnly = true)]
+        public EventStream LoadEventStream(IEventStoreAggregateId eventStoreAggregateId)
+		{
+			throw new NotImplementedException ();
+		}
+
+		[Transaction]
+        public void AppendEvents(IEventStoreAggregateId eventStoreAggregateId, long version, ICollection<IEvent> events, Action afterEventsAppended)
+		{
+            foreach (IEvent e in events) 
+            {
+                if (e is AttributeSetInstanceStateCreated)
+                {
+                    AttributeSetInstanceState s = ((AttributeSetInstanceStateCreated)e).AttributeSetInstanceState;
+                    CurrentSession.Save(s);
+                }
+                else
+                {
+                    CurrentSession.Save(e);
+                }
+                var saveable = e as ISaveable;
+                if (saveable != null)
+                {
+                    saveable.Save();
+                }
+            }
+
+            //Console.WriteLine("####################################################");
+            afterEventsAppended();
+            //Console.WriteLine("####################################################");
+
+        }
 
         [Transaction(ReadOnly = true)]
-        public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
+        public virtual IEvent FindLastEvent(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(AttributeSetInstanceStateEventBase);
+            Type supportedEventType = typeof(AttributeSetInstanceStateCreated);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
-            string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<AttributeSetInstanceStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.AttributeSetInstanceId", idObj));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(Order.Asc("StateEventId.Version"));
-            var es = criteria.List<IEvent>();
-            foreach (AttributeSetInstanceStateEventBase e in es)
+            return GetStateEvent(eventStoreAggregateId, version);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual IEvent GetStateEvent(IEventStoreAggregateId eventStoreAggregateId, long version)
+        {
+            object idObj = ((EventStoreAggregateId)eventStoreAggregateId).Id;
+            AttributeSetInstanceState state = CurrentSession.Get<AttributeSetInstanceState>(idObj);
+            return new AttributeSetInstanceStateCreated(state);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
+        {
+            Type supportedEventType = typeof(AttributeSetInstanceStateCreated);
+            if (!eventType.IsAssignableFrom(supportedEventType))
             {
-                e.StateEventReadOnly = true;
+                throw new NotSupportedException();
             }
+            IEvent e = GetStateEvent(eventStoreAggregateId, version);
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((AttributeSetInstanceStateEventBase)es.Last()).StateEventId.Version : default(long),
-                Events = es
+                Events = e != null ? (new IEvent[]{ e }).ToList() : new List<IEvent>()
             };
         }
 
