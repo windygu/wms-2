@@ -298,19 +298,19 @@ namespace Dddml.Wms.Domain
 			this.CreatedAt = e.CreatedAt;
 
 			foreach (IUserRoleStateCreated innerEvent in e.UserRoleEvents) {
-				IUserRoleState innerState = this.UserRoles.Get(innerEvent.GlobalId.RoleId);
+				IUserRoleState innerState = this.UserRoles.Get(innerEvent.GlobalId.RoleId, true);
 				innerState.Mutate (innerEvent);
 			}
 			foreach (IUserClaimStateCreated innerEvent in e.UserClaimEvents) {
-				IUserClaimState innerState = this.UserClaims.Get(innerEvent.GlobalId.ClaimId);
+				IUserClaimState innerState = this.UserClaims.Get(innerEvent.GlobalId.ClaimId, true);
 				innerState.Mutate (innerEvent);
 			}
 			foreach (IUserPermissionStateCreated innerEvent in e.UserPermissionEvents) {
-				IUserPermissionState innerState = this.UserPermissions.Get(innerEvent.GlobalId.PermissionId);
+				IUserPermissionState innerState = this.UserPermissions.Get(innerEvent.GlobalId.PermissionId, true);
 				innerState.Mutate (innerEvent);
 			}
 			foreach (IUserLoginStateCreated innerEvent in e.UserLoginEvents) {
-				IUserLoginState innerState = this.UserLogins.Get(innerEvent.GlobalId.LoginKey);
+				IUserLoginState innerState = this.UserLogins.Get(innerEvent.GlobalId.LoginKey, true);
 				innerState.Mutate (innerEvent);
 			}
 

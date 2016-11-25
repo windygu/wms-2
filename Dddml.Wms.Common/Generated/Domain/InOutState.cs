@@ -282,7 +282,7 @@ namespace Dddml.Wms.Domain
 			this.CreatedAt = e.CreatedAt;
 
 			foreach (IInOutLineStateCreated innerEvent in e.InOutLineEvents) {
-				IInOutLineState innerState = this.InOutLines.Get(innerEvent.GlobalId.SkuId);
+				IInOutLineState innerState = this.InOutLines.Get(innerEvent.GlobalId.SkuId, true);
 				innerState.Mutate (innerEvent);
 			}
 

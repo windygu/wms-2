@@ -223,7 +223,7 @@ namespace Dddml.Wms.Domain
 			this.CreatedAt = e.CreatedAt;
 
 			foreach (IAttributeSetInstanceExtensionFieldStateCreated innerEvent in e.AttributeSetInstanceExtensionFieldEvents) {
-				IAttributeSetInstanceExtensionFieldState innerState = this.Fields.Get(innerEvent.GlobalId.Index);
+				IAttributeSetInstanceExtensionFieldState innerState = this.Fields.Get(innerEvent.GlobalId.Index, true);
 				innerState.Mutate (innerEvent);
 			}
 

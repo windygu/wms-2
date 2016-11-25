@@ -225,7 +225,7 @@ namespace Dddml.Wms.Domain
 			this.CreatedAt = e.CreatedAt;
 
 			foreach (IAttributeUseStateCreated innerEvent in e.AttributeUseEvents) {
-				IAttributeUseState innerState = this.AttributeUses.Get(innerEvent.GlobalId.AttributeId);
+				IAttributeUseState innerState = this.AttributeUses.Get(innerEvent.GlobalId.AttributeId, true);
 				innerState.Mutate (innerEvent);
 			}
 

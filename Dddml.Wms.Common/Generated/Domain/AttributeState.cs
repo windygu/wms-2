@@ -233,7 +233,7 @@ namespace Dddml.Wms.Domain
 			this.CreatedAt = e.CreatedAt;
 
 			foreach (IAttributeValueStateCreated innerEvent in e.AttributeValueEvents) {
-				IAttributeValueState innerState = this.AttributeValues.Get(innerEvent.GlobalId.Value);
+				IAttributeValueState innerState = this.AttributeValues.Get(innerEvent.GlobalId.Value, true);
 				innerState.Mutate (innerEvent);
 			}
 
