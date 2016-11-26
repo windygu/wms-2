@@ -85,8 +85,8 @@ namespace Dddml.Wms.Domain
 		}
 
         public virtual IAttributeSetInstanceExtensionFieldState Get(string index, bool forCreation)
-		{
-			AttributeSetInstanceExtensionFieldId globalId = new AttributeSetInstanceExtensionFieldId(_attributeSetInstanceExtensionFieldGroupState.Id, index);
+        {
+            AttributeSetInstanceExtensionFieldId globalId = new AttributeSetInstanceExtensionFieldId(_attributeSetInstanceExtensionFieldGroupState.Id, index);
             if (_loadedAttributeSetInstanceExtensionFieldStates.ContainsKey(globalId)) {
                 return _loadedAttributeSetInstanceExtensionFieldStates[globalId];
             }
@@ -94,16 +94,16 @@ namespace Dddml.Wms.Domain
             {
                 var state = new AttributeSetInstanceExtensionFieldState(ForReapplying);
                 state.AttributeSetInstanceExtensionFieldId = globalId;
-			    _loadedAttributeSetInstanceExtensionFieldStates.Add(globalId, state);
-			    return state;
+                _loadedAttributeSetInstanceExtensionFieldStates.Add(globalId, state);
+                return state;
             }
             else
             {
                 var state = AttributeSetInstanceExtensionFieldStateDao.Get(globalId);
-			    _loadedAttributeSetInstanceExtensionFieldStates.Add(globalId, state);
-			    return state;
+                _loadedAttributeSetInstanceExtensionFieldStates.Add(globalId, state);
+                return state;
             }
-		}
+        }
 
         public virtual void AddToSave(IAttributeSetInstanceExtensionFieldState state)
         {

@@ -85,8 +85,8 @@ namespace Dddml.Wms.Domain
 		}
 
         public virtual IUserRoleState Get(string roleId, bool forCreation)
-		{
-			UserRoleId globalId = new UserRoleId(_userState.UserId, roleId);
+        {
+            UserRoleId globalId = new UserRoleId(_userState.UserId, roleId);
             if (_loadedUserRoleStates.ContainsKey(globalId)) {
                 return _loadedUserRoleStates[globalId];
             }
@@ -94,16 +94,16 @@ namespace Dddml.Wms.Domain
             {
                 var state = new UserRoleState(ForReapplying);
                 state.UserRoleId = globalId;
-			    _loadedUserRoleStates.Add(globalId, state);
-			    return state;
+                _loadedUserRoleStates.Add(globalId, state);
+                return state;
             }
             else
             {
                 var state = UserRoleStateDao.Get(globalId);
-			    _loadedUserRoleStates.Add(globalId, state);
-			    return state;
+                _loadedUserRoleStates.Add(globalId, state);
+                return state;
             }
-		}
+        }
 
         public virtual void AddToSave(IUserRoleState state)
         {

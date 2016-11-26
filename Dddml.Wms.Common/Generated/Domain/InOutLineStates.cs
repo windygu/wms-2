@@ -86,8 +86,8 @@ namespace Dddml.Wms.Domain
 		}
 
         public virtual IInOutLineState Get(SkuId skuId, bool forCreation)
-		{
-			InOutLineId globalId = new InOutLineId(_inOutState.DocumentNumber, skuId);
+        {
+            InOutLineId globalId = new InOutLineId(_inOutState.DocumentNumber, skuId);
             if (_loadedInOutLineStates.ContainsKey(globalId)) {
                 return _loadedInOutLineStates[globalId];
             }
@@ -95,16 +95,16 @@ namespace Dddml.Wms.Domain
             {
                 var state = new InOutLineState(ForReapplying);
                 state.InOutLineId = globalId;
-			    _loadedInOutLineStates.Add(globalId, state);
-			    return state;
+                _loadedInOutLineStates.Add(globalId, state);
+                return state;
             }
             else
             {
                 var state = InOutLineStateDao.Get(globalId);
-			    _loadedInOutLineStates.Add(globalId, state);
-			    return state;
+                _loadedInOutLineStates.Add(globalId, state);
+                return state;
             }
-		}
+        }
 
         public virtual void AddToSave(IInOutLineState state)
         {

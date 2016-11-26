@@ -85,8 +85,8 @@ namespace Dddml.Wms.Domain
 		}
 
         public virtual IUserPermissionState Get(string permissionId, bool forCreation)
-		{
-			UserPermissionId globalId = new UserPermissionId(_userState.UserId, permissionId);
+        {
+            UserPermissionId globalId = new UserPermissionId(_userState.UserId, permissionId);
             if (_loadedUserPermissionStates.ContainsKey(globalId)) {
                 return _loadedUserPermissionStates[globalId];
             }
@@ -94,16 +94,16 @@ namespace Dddml.Wms.Domain
             {
                 var state = new UserPermissionState(ForReapplying);
                 state.UserPermissionId = globalId;
-			    _loadedUserPermissionStates.Add(globalId, state);
-			    return state;
+                _loadedUserPermissionStates.Add(globalId, state);
+                return state;
             }
             else
             {
                 var state = UserPermissionStateDao.Get(globalId);
-			    _loadedUserPermissionStates.Add(globalId, state);
-			    return state;
+                _loadedUserPermissionStates.Add(globalId, state);
+                return state;
             }
-		}
+        }
 
         public virtual void AddToSave(IUserPermissionState state)
         {

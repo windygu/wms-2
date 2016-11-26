@@ -85,8 +85,8 @@ namespace Dddml.Wms.Domain
 		}
 
         public virtual IUserClaimState Get(int claimId, bool forCreation)
-		{
-			UserClaimId globalId = new UserClaimId(_userState.UserId, claimId);
+        {
+            UserClaimId globalId = new UserClaimId(_userState.UserId, claimId);
             if (_loadedUserClaimStates.ContainsKey(globalId)) {
                 return _loadedUserClaimStates[globalId];
             }
@@ -94,16 +94,16 @@ namespace Dddml.Wms.Domain
             {
                 var state = new UserClaimState(ForReapplying);
                 state.UserClaimId = globalId;
-			    _loadedUserClaimStates.Add(globalId, state);
-			    return state;
+                _loadedUserClaimStates.Add(globalId, state);
+                return state;
             }
             else
             {
                 var state = UserClaimStateDao.Get(globalId);
-			    _loadedUserClaimStates.Add(globalId, state);
-			    return state;
+                _loadedUserClaimStates.Add(globalId, state);
+                return state;
             }
-		}
+        }
 
         public virtual void AddToSave(IUserClaimState state)
         {

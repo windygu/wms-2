@@ -85,8 +85,8 @@ namespace Dddml.Wms.Domain
 		}
 
         public virtual IAttributeUseState Get(string attributeId, bool forCreation)
-		{
-			AttributeSetAttributeUseId globalId = new AttributeSetAttributeUseId(_attributeSetState.AttributeSetId, attributeId);
+        {
+            AttributeSetAttributeUseId globalId = new AttributeSetAttributeUseId(_attributeSetState.AttributeSetId, attributeId);
             if (_loadedAttributeUseStates.ContainsKey(globalId)) {
                 return _loadedAttributeUseStates[globalId];
             }
@@ -94,16 +94,16 @@ namespace Dddml.Wms.Domain
             {
                 var state = new AttributeUseState(ForReapplying);
                 state.AttributeSetAttributeUseId = globalId;
-			    _loadedAttributeUseStates.Add(globalId, state);
-			    return state;
+                _loadedAttributeUseStates.Add(globalId, state);
+                return state;
             }
             else
             {
                 var state = AttributeUseStateDao.Get(globalId);
-			    _loadedAttributeUseStates.Add(globalId, state);
-			    return state;
+                _loadedAttributeUseStates.Add(globalId, state);
+                return state;
             }
-		}
+        }
 
         public virtual void AddToSave(IAttributeUseState state)
         {

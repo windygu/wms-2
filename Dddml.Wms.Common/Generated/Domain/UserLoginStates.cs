@@ -85,8 +85,8 @@ namespace Dddml.Wms.Domain
 		}
 
         public virtual IUserLoginState Get(LoginKey loginKey, bool forCreation)
-		{
-			UserLoginId globalId = new UserLoginId(_userState.UserId, loginKey);
+        {
+            UserLoginId globalId = new UserLoginId(_userState.UserId, loginKey);
             if (_loadedUserLoginStates.ContainsKey(globalId)) {
                 return _loadedUserLoginStates[globalId];
             }
@@ -94,16 +94,16 @@ namespace Dddml.Wms.Domain
             {
                 var state = new UserLoginState(ForReapplying);
                 state.UserLoginId = globalId;
-			    _loadedUserLoginStates.Add(globalId, state);
-			    return state;
+                _loadedUserLoginStates.Add(globalId, state);
+                return state;
             }
             else
             {
                 var state = UserLoginStateDao.Get(globalId);
-			    _loadedUserLoginStates.Add(globalId, state);
-			    return state;
+                _loadedUserLoginStates.Add(globalId, state);
+                return state;
             }
-		}
+        }
 
         public virtual void AddToSave(IUserLoginState state)
         {

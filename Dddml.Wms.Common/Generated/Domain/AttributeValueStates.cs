@@ -85,8 +85,8 @@ namespace Dddml.Wms.Domain
 		}
 
         public virtual IAttributeValueState Get(string value, bool forCreation)
-		{
-			AttributeValueId globalId = new AttributeValueId(_attributeState.AttributeId, value);
+        {
+            AttributeValueId globalId = new AttributeValueId(_attributeState.AttributeId, value);
             if (_loadedAttributeValueStates.ContainsKey(globalId)) {
                 return _loadedAttributeValueStates[globalId];
             }
@@ -94,16 +94,16 @@ namespace Dddml.Wms.Domain
             {
                 var state = new AttributeValueState(ForReapplying);
                 state.AttributeValueId = globalId;
-			    _loadedAttributeValueStates.Add(globalId, state);
-			    return state;
+                _loadedAttributeValueStates.Add(globalId, state);
+                return state;
             }
             else
             {
                 var state = AttributeValueStateDao.Get(globalId);
-			    _loadedAttributeValueStates.Add(globalId, state);
-			    return state;
+                _loadedAttributeValueStates.Add(globalId, state);
+                return state;
             }
-		}
+        }
 
         public virtual void AddToSave(IAttributeValueState state)
         {
