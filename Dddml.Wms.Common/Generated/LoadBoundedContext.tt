@@ -18,23 +18,23 @@
     //var boundedContext = LoadBoundedContextFiles();
 	//boundedContext.DefaultUserIdType = "string";
 
-    TemplatingContext.Current.CurrentAssembly = "Dddml.Wms.Common";
-    TemplatingContext.Current.SpecializationNamespace = "Dddml.Wms.Specialization";
+    //TemplatingContext.Current.CurrentAssembly = "Dddml.Wms.Common";
+    //TemplatingContext.Current.SpecializationNamespace = "Dddml.Wms.Specialization";
 
-	boundedContext.IsUsingSeparatedDomainAggregateNamespace = false;
+	//boundedContext.IsUsingSeparatedDomainAggregateNamespace = false;
 
-	boundedContext.IsGenericTypeAsType = true;
+	//boundedContext.IsGenericTypeAsType = true;
 
-	boundedContext.SetClrDomainAssembly("Dddml.Wms.Common");
+	//boundedContext.SetClrDomainAssembly("Dddml.Wms.Common");
 
-	boundedContext.Aggregates["AttributeSetInstance"].SetPersistingStateEventRemovedPropertiesAsSet(true);
+	//boundedContext.Aggregates["AttributeSetInstance"].SetPersistingStateEventRemovedPropertiesAsSet(true);
 
 	//boundedContext.Aggregates["AttributeSetInstance"].AuthorizationEnabled = true;
 	//boundedContext.Aggregates["AttributeSetInstance"].AnonymousAllowed = true;
 
-	boundedContext.SetTypeNamespaces(GetTypeNamespaces());
-	boundedContext.SetClrValueTypes(GetClrValueTypes());
-	boundedContext.SetNHibernateTypes(GetNHibernateTypes());
+	//boundedContext.SetTypeNamespaces(GetTypeNamespaces());
+	//boundedContext.SetClrValueTypes(GetClrValueTypes());
+	//boundedContext.SetNHibernateTypes(GetNHibernateTypes());
 
 	boundedContext.Refresh();
 
@@ -49,21 +49,22 @@
 
 	// ////////////////////////////
 
-	foreach (var aggregate in boundedContext.Aggregates.Values)
-	{
-		var mvObjcts = aggregate.GenerateAllEntityMViewObjects();
-		foreach (var mvo in mvObjcts)
-		{
-			boundedContext.Aggregates.Add(mvo.Name, mvo);
-			mvo.GenerateAggregateStateEventIdValueObject();
-			mvo.SetClrAggregateDomainSubNamespaceName("MViews");
-			mvo.SetStateDatabaseTableNameFormat("{0}s");
-			mvo.SetUsingRViewAsMView(true);
-			mvo.SetHttpServiceResourceCollectionNameFormat("{0}s");
-		} 
-	}
-
-	boundedContext.Refresh();
+	//foreach (var aggregate in boundedContext.Aggregates.Values)
+	//{
+		//var mvObjcts = aggregate.GenerateAllEntityMViewObjects();
+		//foreach (var mvo in mvObjcts)
+		//{
+			//boundedContext.Aggregates.Add(mvo.Name, mvo);
+			//mvo.GenerateAggregateStateEventIdValueObject();
+			//mvo.SetClrAggregateDomainSubNamespaceName("MViews");
+			//mvo.SetStateDatabaseTableNameFormat("{0}s");
+			//mvo.SetUsingRViewAsMView(true);
+			//mvo.SetHttpServiceResourceCollectionNameFormat("{0}s");
+		//} 
+	//}
+	//boundedContext.Refresh();
+	boundedContext.GenerateAllEntityMViewObjectsAndRefresh();
+	// ///////////////////////////////////
 	//boundedContext.ReplacePropertyTypesWithBaseTypes();
 
 	var mviewObjects = new List<Aggregate>();
@@ -77,45 +78,44 @@
 
 	// ////////////////////////////
 	
-	boundedContext.SetHttpServicesAuthorizationEnabled(true);
-	boundedContext.SetClrHttpServiceSetRequesterIdAttributeEnabled(true);
+	//boundedContext.SetHttpServicesAuthorizationEnabled(true);
+	//boundedContext.SetClrHttpServiceSetRequesterIdAttributeEnabled(true);
+	//boundedContext.Aggregates["AttributeSetInstance"].Metadata["httpPostCreationEnabled"] = true;
 
-	boundedContext.Aggregates["AttributeSetInstance"].Metadata["httpPostCreationEnabled"] = true;
-
-	boundedContext.SetHttpServiceJsonConverters(new string[] {
-		"Dddml.Wms.HttpServices.JsonConverters.LongConverter",
-		"Dddml.Wms.HttpServices.JsonConverters.DecimalConverter",
-	});
+	//boundedContext.SetHttpServiceJsonConverters(new string[] {
+		//"Dddml.Wms.HttpServices.JsonConverters.LongConverter",
+		//"Dddml.Wms.HttpServices.JsonConverters.DecimalConverter",
+	//});
 	
-	boundedContext.SetHttpServiceJsonContractResolver("Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver");
+	//boundedContext.SetHttpServiceJsonContractResolver("Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver");
 
 #>
 <#+
 	
-	private IDictionary<string, NHibernateType> GetNHibernateTypes()
-	{
-		var nhibernateTypes = new Dictionary<string, NHibernateType>();
-		var nodaMoneyNHibernateType = new NHibernateType() {
-				ActualTypeName = "Money", 
-				AssemblyQualifiedName = "Dddml.Wms.Services.Domain.NHibernate.NodaMoneyType, Dddml.Wms.Services",
-				PropertyNames = new string[] { "Amount", "Currency" }, 
-				PropertyClrTypes = new string[] { "decimal", "string" }
-			};
-		nhibernateTypes.Add(nodaMoneyNHibernateType.ActualTypeName, nodaMoneyNHibernateType);
-		return nhibernateTypes;
-	}
+	//private IDictionary<string, NHibernateType> GetNHibernateTypes()
+	//{
+		//var nhibernateTypes = new Dictionary<string, NHibernateType>();
+		//var nodaMoneyNHibernateType = new NHibernateType() {
+				//ActualTypeName = "Money", 
+				//AssemblyQualifiedName = "Dddml.Wms.Services.Domain.NHibernate.NodaMoneyType, Dddml.Wms.Services",
+				//PropertyNames = new string[] { "Amount", "Currency" }, 
+				//PropertyTypes = new string[] { "decimal", "string" }
+			//};
+		//nhibernateTypes.Add(nodaMoneyNHibernateType.ActualTypeName, nodaMoneyNHibernateType);
+		//return nhibernateTypes;
+	//}
 
-	private string[] GetClrValueTypes()
-	{
-		var clrValueTypes = new string[]{ "Money" };
-		return clrValueTypes;
-	}
+	//private string[] GetClrValueTypes()
+	//{
+		//var clrValueTypes = new string[]{ "Money" };
+		//return clrValueTypes;
+	//}
 
-	private IDictionary<string, string> GetTypeNamespaces()
-	{
-		var typeNamespaces = new Dictionary<string, string>();
-		typeNamespaces.Add("Money", "NodaMoney");
-		return typeNamespaces;
-	}
+	//private IDictionary<string, string> GetTypeNamespaces()
+	//{
+		//var typeNamespaces = new Dictionary<string, string>();
+		//typeNamespaces.Add("Money", "NodaMoney");
+		//return typeNamespaces;
+	//}
 
 #>

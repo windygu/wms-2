@@ -14,23 +14,23 @@
 <#
 
     var boundedContext = LoadBoundedContextFiles();
-	boundedContext.DefaultUserIdType = "string";
+	//boundedContext.DefaultUserIdType = "string";
 	boundedContext.Refresh();
 	ReplacePropertyTypesWithBaseTypes(boundedContext);
 #>
 <#+
 	private void ReplacePropertyTypesWithBaseTypes(BoundedContext boundedContext)
 	{
-		boundedContext.SetValueObjectBaseTypes(GetValueObjectBaseTypes());
+		//boundedContext.SetValueObjectBaseTypes(GetValueObjectBaseTypes());
 		boundedContext.ReplacePropertyTypesWithBaseTypes();	
 	}
 
-	private IDictionary<string, string> GetValueObjectBaseTypes()
-	{
-		var baseTypes = new Dictionary<string, string>();
-		baseTypes.Add("Email", "string");
-		return baseTypes;
-	}
+	//private IDictionary<string, string> GetValueObjectBaseTypes()
+	//{
+		//var baseTypes = new Dictionary<string, string>();
+		//baseTypes.Add("Email", "string");
+		//return baseTypes;
+	//}
 
     private BoundedContext LoadBoundedContextFiles()
     {
@@ -67,7 +67,7 @@
 			//@"C:\Users\Yang\Documents\GitHub\dddml-spec\examples\Person.yaml"
 			//});
 
-        boundedContext.DefaultModule = "Dddml.Wms";
+        //boundedContext.DefaultModule = "Dddml.Wms";
         return boundedContext; 
     }
 #>

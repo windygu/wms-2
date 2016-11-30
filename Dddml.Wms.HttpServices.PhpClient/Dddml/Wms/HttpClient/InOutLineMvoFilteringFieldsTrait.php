@@ -76,6 +76,10 @@ trait InOutLineMvoFilteringFieldsTrait
             'InOutLineId.InOutDocumentNumber' => 'string',
             'InOutLineId.SkuIdProductId' => 'string',
             'InOutLineId.SkuIdAttributeSetInstanceId' => 'string',
+            'InOutFreightAmount.Amount' => 'Decimal',
+            'InOutFreightAmount.Currency' => 'string',
+            'InOutChargeAmount.Amount' => 'Decimal',
+            'InOutChargeAmount.Currency' => 'string',
         ];
     }
 

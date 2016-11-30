@@ -50,6 +50,10 @@ trait InOutFilteringFieldsTrait
             'UpdatedAt' => '\DateTime',
             'Active' => 'boolean',
             'Deleted' => 'boolean',
+            'FreightAmount.Amount' => 'Decimal',
+            'FreightAmount.Currency' => 'string',
+            'ChargeAmount.Amount' => 'Decimal',
+            'ChargeAmount.Currency' => 'string',
         ];
     }
 

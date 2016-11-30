@@ -23,7 +23,7 @@
 
     <context>
       <resource uri="config://spring/objects" />
-      <resource uri="assembly://<#= TemplatingContext.Current.CurrentAssembly #>/<#= boundedContext.DefaultModule #>.Services.Config/DatabaseConfig.xml" />
+      <resource uri="assembly://<#= boundedContext.GetClrServiceAssembly() #>/<#= boundedContext.DefaultModule #>.Services.Config/DatabaseConfig.xml" />
 
       <!-- Can copy this to App.config/spring/context -->
 
@@ -33,14 +33,14 @@
 	  if (false)
 	  {
 #>
-      <resource uri="assembly://<#= TemplatingContext.Current.CurrentAssembly #>/<#= boundedContext.DefaultModule #>.Services.Config/<#= aggregate.Name #>AggregateConfig.xml"/>
+      <resource uri="assembly://<#= boundedContext.GetClrServiceAssembly() #>/<#= boundedContext.DefaultModule #>.Services.Config/<#= aggregate.Name #>AggregateConfig.xml"/>
 <#
 	  }
 	}
 #>
-      <resource uri="assembly://<#= TemplatingContext.Current.CurrentAssembly #>/<#= boundedContext.DefaultModule #>.Services.Config/AggregatesNHibernateConfig.xml"/>
+      <resource uri="assembly://<#= boundedContext.GetClrServiceAssembly() #>/<#= boundedContext.DefaultModule #>.Services.Config/AggregatesNHibernateConfig.xml"/>
 
-      <resource uri="assembly://<#= TemplatingContext.Current.CurrentAssembly #>/<#= boundedContext.DefaultModule #>.Services.Config/AggregatesIdGeneratorConfig.xml"/>
+      <resource uri="assembly://<#= boundedContext.GetClrServiceAssembly() #>/<#= boundedContext.DefaultModule #>.Services.Config/AggregatesIdGeneratorConfig.xml"/>
 
     </context>
 

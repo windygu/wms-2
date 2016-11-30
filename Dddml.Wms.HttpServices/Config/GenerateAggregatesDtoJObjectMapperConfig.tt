@@ -37,7 +37,7 @@
 		if (aggregate.IsDynamic)
 		{
 #>
-      <resource uri="assembly://<#= TemplatingContext.Current.CurrentAssembly #>/<#= boundedContext.DefaultModule #>.HttpServices.Config/<#= aggregate.Name #>DtoJObjectMapperConfig.xml"/>
+      <resource uri="assembly://<#= boundedContext.GetClrHttpServiceDtoJObjectMapperAssembly() #>/<#= boundedContext.DefaultModule #>.HttpServices.Config/<#= aggregate.Name #>DtoJObjectMapperConfig.xml"/>
 
 <#
 		}

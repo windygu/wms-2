@@ -15,24 +15,19 @@
 <#@ include file="$(SolutionDir)Dddml.Wms.Common\Generated\LoadBoundedContextFiles.tt" #>
 <#
 
-	boundedContext.SetBoundedContextNamespace("Dddml.Wms");
-
-    TemplatingContext.Current.SpecializationNamespace = "Dddml";
-
-	boundedContext.IsUsingSeparatedDomainAggregateNamespace = false;
-
-	boundedContext.IsGenericTypeAsType = true;
-
+	//boundedContext.SetBoundedContextNamespace("Dddml.Wms");
+    //TemplatingContext.Current.SpecializationNamespace = "Dddml";
+	//boundedContext.IsUsingSeparatedDomainAggregateNamespace = false;
+	//boundedContext.IsGenericTypeAsType = true;
 	//boundedContext.Aggregates["AttributeSetInstance"].SetPersistingStateEventRemovedPropertiesAsSet(true);
-
 	//boundedContext.Aggregates["AttributeSetInstance"].AuthorizationEnabled = true;
 	//boundedContext.Aggregates["AttributeSetInstance"].AnonymousAllowed = true;
 
-	boundedContext.SetTypeScriptTypeNamespaces(GetTypeScriptTypeNamespaces());
+	//boundedContext.SetTypeScriptTypeNamespaces(GetTypeScriptTypeNamespaces());
 	//boundedContext.SetClrValueTypes(GetClrValueTypes());
 	//boundedContext.SetNHibernateTypes(GetNHibernateTypes());
 
-	boundedContext.Refresh();
+	//boundedContext.Refresh();
 
 	foreach (var agg in boundedContext.Aggregates.Values)
 	{
@@ -45,21 +40,23 @@
 
 	// ////////////////////////////
 
-	foreach (var aggregate in boundedContext.Aggregates.Values)
-	{
-		var mvObjcts = aggregate.GenerateAllEntityMViewObjects();
-		foreach (var mvo in mvObjcts)
-		{
-			boundedContext.Aggregates.Add(mvo.Name, mvo);
-			mvo.GenerateAggregateStateEventIdValueObject();
-			//mvo.SetClrAggregateDomainSubNamespaceName("MViews");
-			mvo.SetStateDatabaseTableNameFormat("{0}s");
-			mvo.SetUsingRViewAsMView(true);
-			mvo.SetHttpServiceResourceCollectionNameFormat("{0}s");
-		} 
-	}
+	//foreach (var aggregate in boundedContext.Aggregates.Values)
+	//{
+		//var mvObjcts = aggregate.GenerateAllEntityMViewObjects();
+		//foreach (var mvo in mvObjcts)
+		//{
+			//boundedContext.Aggregates.Add(mvo.Name, mvo);
+			//mvo.GenerateAggregateStateEventIdValueObject();
+			////mvo.SetClrAggregateDomainSubNamespaceName("MViews");
+			//mvo.SetStateDatabaseTableNameFormat("{0}s");
+			//mvo.SetUsingRViewAsMView(true);
+			//mvo.SetHttpServiceResourceCollectionNameFormat("{0}s");
+		//} 
+	//}
+	//boundedContext.Refresh();
+	boundedContext.GenerateAllEntityMViewObjectsAndRefresh();
+	// ////////////////////////////
 
-	boundedContext.Refresh();
 	//boundedContext.ReplacePropertyTypesWithBaseTypes();
 
 	var mviewObjects = new List<Aggregate>();
@@ -73,13 +70,11 @@
 
 	// ////////////////////////////
 	
-	boundedContext.SetHttpServicesAuthorizationEnabled(true);
-	//boundedContext.SetClrHttpServiceSetRequesterIdAttributeEnabled(true);
-
-	//boundedContext.SetSerializationAnnotationTypes(GetSerializationAnnotationTypes());
-	
-	boundedContext.SetTypeScriptTypes(GetTypeScriptTypes());
-	boundedContext.SetTypeScriptJsonUsingCamelCasePropertyName(true);
+	//boundedContext.SetHttpServicesAuthorizationEnabled(true);
+	////boundedContext.SetClrHttpServiceSetRequesterIdAttributeEnabled(true);
+	////boundedContext.SetSerializationAnnotationTypes(GetSerializationAnnotationTypes());
+	//boundedContext.SetTypeScriptTypes(GetTypeScriptTypes());
+	//boundedContext.SetTypeScriptJsonUsingCamelCasePropertyName(true);
 #>
 <#+
 	
@@ -96,34 +91,33 @@
 			//return dict;
 	//}
 
-	private IDictionary<string, string> GetTypeScriptTypes()
-	{
-			var dict = new Dictionary<string, string>();
-           
-			dict.Add("bool", "boolean");
-			dict.Add("bool?", "boolean");
-			dict.Add("DateTime", "string");
-			dict.Add("DateTime?", "string");
-			dict.Add("decimal", "string");
-			dict.Add("decimal?", "string");
-			dict.Add("int", "number");
-			dict.Add("int?", "number");
-			dict.Add("float", "number");
-			dict.Add("double", "number");
-			dict.Add("long", "string");
-			dict.Add("long?", "string");
-			dict.Add("Money", "Money");
-			dict.Add("string", "string");
-			
-			return dict;
-	}
+	//private IDictionary<string, string> GetTypeScriptTypes()
+	//{
+			//var dict = new Dictionary<string, string>();
+			//dict.Add("bool", "boolean");
+			//dict.Add("bool?", "boolean");
+			//dict.Add("DateTime", "string");
+			//dict.Add("DateTime?", "string");
+			//dict.Add("decimal", "string");
+			//dict.Add("decimal?", "string");
+			//dict.Add("int", "number");
+			//dict.Add("int?", "number");
+			//dict.Add("float", "number");
+			//dict.Add("double", "number");
+			//dict.Add("long", "string");
+			//dict.Add("long?", "string");
+			//dict.Add("Money", "Money");
+			//dict.Add("string", "string");
+			//
+			//return dict;
+	//}
 
-	private IDictionary<string, string> GetTypeScriptTypeNamespaces()
-	{
-		var typeNamespaces = new Dictionary<string, string>();
-		typeNamespaces.Add("Money", "NodaMoney");
-		return typeNamespaces;
-	}
+	//private IDictionary<string, string> GetTypeScriptTypeNamespaces()
+	//{
+		//var typeNamespaces = new Dictionary<string, string>();
+		//typeNamespaces.Add("Money", "NodaMoney");
+		//return typeNamespaces;
+	//}
 
 	//private IDictionary<string, NHibernateType> GetNHibernateTypes()
 	//{
