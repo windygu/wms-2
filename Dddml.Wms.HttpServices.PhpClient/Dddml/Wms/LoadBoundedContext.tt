@@ -15,50 +15,13 @@
 <#@ include file="$(SolutionDir)Dddml.Wms.Common\Generated\LoadBoundedContextFiles.tt" #>
 <#
 
-	//boundedContext.SetBoundedContextNamespace("Dddml\\Wms");
-    //TemplatingContext.Current.SpecializationNamespace = "Dddml";
-	//boundedContext.IsUsingSeparatedDomainAggregateNamespace = false;
-	//boundedContext.IsGenericTypeAsType = true;
-	//boundedContext.Aggregates["AttributeSetInstance"].SetPersistingStateEventRemovedPropertiesAsSet(true);
-
-	//boundedContext.Aggregates["AttributeSetInstance"].AuthorizationEnabled = true;
-	//boundedContext.Aggregates["AttributeSetInstance"].AnonymousAllowed = true;
-
-	//boundedContext.SetTypeNamespaces(GetTypeNamespaces());
-	//boundedContext.SetClrValueTypes(GetClrValueTypes());
-	//boundedContext.SetNHibernateTypes(GetNHibernateTypes());
-
-	//boundedContext.Refresh();
-
-	foreach (var agg in boundedContext.Aggregates.Values)
-	{
-		agg.GenerateAggregateStateEventIdValueObject();
-		agg.GenerateAllEntityStateEventIdValueObjects();
-	}
-
-	boundedContext.Refresh();
-	//boundedContext.ReplacePropertyTypesWithBaseTypes();	
+	var generationOptions = new GenerationOptions();
+	generationOptions.Php = true;
+	boundedContext.PrepareGeneration(generationOptions);
 
 	// ////////////////////////////
 
-	//foreach (var aggregate in boundedContext.Aggregates.Values)
-	//{
-		//var mvObjcts = aggregate.GenerateAllEntityMViewObjects();
-		//foreach (var mvo in mvObjcts)
-		//{
-			//boundedContext.Aggregates.Add(mvo.Name, mvo);
-			//mvo.GenerateAggregateStateEventIdValueObject();
-			////mvo.SetClrAggregateDomainSubNamespaceName("MViews");
-			//mvo.SetStateDatabaseTableNameFormat("{0}s");
-			//mvo.SetUsingRViewAsMView(true);
-			//mvo.SetHttpServiceResourceCollectionNameFormat("{0}s");
-		//} 
-	//}
-	//boundedContext.Refresh();
 	boundedContext.GenerateAllEntityMViewObjectsAndRefresh();
-	// ////////////////////////////
-
-	//boundedContext.ReplacePropertyTypesWithBaseTypes();
 
 	var mviewObjects = new List<Aggregate>();
 	foreach (var aggregate in boundedContext.Aggregates.Values)
@@ -68,82 +31,5 @@
 			mviewObjects.Add(aggregate);
 		}
 	}
-
-	// ////////////////////////////
-	
-	//boundedContext.SetHttpServicesAuthorizationEnabled(true);
-	//boundedContext.SetClrHttpServiceSetRequesterIdAttributeEnabled(true);
-
-	//boundedContext.SetSerializationAnnotationTypes(GetSerializationAnnotationTypes());
-	
-	//boundedContext.SetPhpTypes(GetPhpTypes());
-	
-	//boundedContext.SetSymfonyFieldTypes(GetSymfonyFieldTypes());
-#>
-<#+
-	
-	//private IDictionary<string, string> GetSerializationAnnotationTypes()
-	//{
-            //var dict = GetPhpTypes();
-			//dict["decimal"] = "Dddml\\Serializer\\Type\\Decimal";
-			//dict["decimal?"] = "Dddml\\Serializer\\Type\\Decimal";
-			//dict["long"] = "Dddml\\Serializer\\Type\\Long";
-			//dict["long?"] = "Dddml\\Serializer\\Type\\Long";
-			//dict["Money"] = "Dddml\\Serializer\\Type\\Money";
-			//dict["DateTime"] = "DateTime";
-			//dict["DateTime?"] = "DateTime";
-			//return dict;
-	//}
-
-	//private IDictionary<string, string> GetPhpTypes()
-	//{
-			//var dict = new Dictionary<string, string>();
-           //
-			//dict.Add("bool", "boolean");
-			//dict.Add("bool?", "boolean");
-			//dict.Add("DateTime", "\\DateTime");
-			//dict.Add("DateTime?", "\\DateTime");
-			//dict.Add("decimal", "Decimal");
-			//dict.Add("decimal?", "Decimal");
-			//dict.Add("int", "integer");
-			//dict.Add("int?", "integer");
-			//dict.Add("long", "Long");
-			//dict.Add("long?", "Long");
-			//dict.Add("Money", "Money");
-			//dict.Add("string", "string");
-			//
-			//return dict;
-	//}
-
-	//private IDictionary<string, string> GetTypeNamespaces()
-	//{
-		//var typeNamespaces = new Dictionary<string, string>();
-		////typeNamespaces.Add("Money", "NodaMoney");
-		//return typeNamespaces;
-	//}
-
-	//private IDictionary<string, string> GetSymfonyFieldTypes()
-	//{
-		//var dict = new Dictionary<string, string>();
-		//dict.Add("bool", "CheckboxType");
-		//dict.Add("bool?", "CheckboxType");
-		//dict.Add("DateTime", "DateTimeType");
-		//dict.Add("DateTime?", "DateTimeType");
-		//dict.Add("decimal", "NumberType");
-		//dict.Add("decimal?", "NumberType");
-		//dict.Add("int", "IntegerType");
-		//dict.Add("int?", "IntegerType");
-		//dict.Add("long", "IntegerType");
-		//dict.Add("long?", "IntegerType");
-		//dict.Add("string", "TextType");
-		//dict.Add("Money", "MoneyType");
-		//return dict;
-	//}
-
-	//private string[] GetClrValueTypes()
-	//{
-		//var clrValueTypes = new string[]{ "Money" };
-		//return clrValueTypes;
-	//}
 
 #>

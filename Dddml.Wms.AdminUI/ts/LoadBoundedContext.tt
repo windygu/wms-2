@@ -15,49 +15,11 @@
 <#@ include file="$(SolutionDir)Dddml.Wms.Common\Generated\LoadBoundedContextFiles.tt" #>
 <#
 
-	//boundedContext.SetBoundedContextNamespace("Dddml.Wms");
-    //TemplatingContext.Current.SpecializationNamespace = "Dddml";
-	//boundedContext.IsUsingSeparatedDomainAggregateNamespace = false;
-	//boundedContext.IsGenericTypeAsType = true;
-	//boundedContext.Aggregates["AttributeSetInstance"].SetPersistingStateEventRemovedPropertiesAsSet(true);
-	//boundedContext.Aggregates["AttributeSetInstance"].AuthorizationEnabled = true;
-	//boundedContext.Aggregates["AttributeSetInstance"].AnonymousAllowed = true;
+	var generationOptions = new GenerationOptions();
+	generationOptions.TypeScript = true;
+	boundedContext.PrepareGeneration(generationOptions);
 
-	//boundedContext.SetTypeScriptTypeNamespaces(GetTypeScriptTypeNamespaces());
-	//boundedContext.SetClrValueTypes(GetClrValueTypes());
-	//boundedContext.SetNHibernateTypes(GetNHibernateTypes());
-
-	//boundedContext.Refresh();
-
-	foreach (var agg in boundedContext.Aggregates.Values)
-	{
-		agg.GenerateAggregateStateEventIdValueObject();
-		agg.GenerateAllEntityStateEventIdValueObjects();
-	}
-
-	boundedContext.Refresh();
-	//boundedContext.ReplacePropertyTypesWithBaseTypes();	
-
-	// ////////////////////////////
-
-	//foreach (var aggregate in boundedContext.Aggregates.Values)
-	//{
-		//var mvObjcts = aggregate.GenerateAllEntityMViewObjects();
-		//foreach (var mvo in mvObjcts)
-		//{
-			//boundedContext.Aggregates.Add(mvo.Name, mvo);
-			//mvo.GenerateAggregateStateEventIdValueObject();
-			////mvo.SetClrAggregateDomainSubNamespaceName("MViews");
-			//mvo.SetStateDatabaseTableNameFormat("{0}s");
-			//mvo.SetUsingRViewAsMView(true);
-			//mvo.SetHttpServiceResourceCollectionNameFormat("{0}s");
-		//} 
-	//}
-	//boundedContext.Refresh();
 	boundedContext.GenerateAllEntityMViewObjectsAndRefresh();
-	// ////////////////////////////
-
-	//boundedContext.ReplacePropertyTypesWithBaseTypes();
 
 	var mviewObjects = new List<Aggregate>();
 	foreach (var aggregate in boundedContext.Aggregates.Values)
@@ -67,75 +29,5 @@
 			mviewObjects.Add(aggregate);
 		}
 	}
-
-	// ////////////////////////////
-	
-	//boundedContext.SetHttpServicesAuthorizationEnabled(true);
-	////boundedContext.SetClrHttpServiceSetRequesterIdAttributeEnabled(true);
-	////boundedContext.SetSerializationAnnotationTypes(GetSerializationAnnotationTypes());
-	//boundedContext.SetTypeScriptTypes(GetTypeScriptTypes());
-	//boundedContext.SetTypeScriptJsonUsingCamelCasePropertyName(true);
-#>
-<#+
-	
-	//private IDictionary<string, string> GetSerializationAnnotationTypes()
-	//{
-            //var dict = GetTypeScriptTypes();
-			//dict["decimal"] = "Dddml\\Serializer\\Type\\Decimal";
-			//dict["decimal?"] = "Dddml\\Serializer\\Type\\Decimal";
-			//dict["long"] = "Dddml\\Serializer\\Type\\Long";
-			//dict["long?"] = "Dddml\\Serializer\\Type\\Long";
-			//dict["Money"] = "Dddml\\Serializer\\Type\\Money";
-			//dict["DateTime"] = "DateTime";
-			//dict["DateTime?"] = "DateTime";
-			//return dict;
-	//}
-
-	//private IDictionary<string, string> GetTypeScriptTypes()
-	//{
-			//var dict = new Dictionary<string, string>();
-			//dict.Add("bool", "boolean");
-			//dict.Add("bool?", "boolean");
-			//dict.Add("DateTime", "string");
-			//dict.Add("DateTime?", "string");
-			//dict.Add("decimal", "string");
-			//dict.Add("decimal?", "string");
-			//dict.Add("int", "number");
-			//dict.Add("int?", "number");
-			//dict.Add("float", "number");
-			//dict.Add("double", "number");
-			//dict.Add("long", "string");
-			//dict.Add("long?", "string");
-			//dict.Add("Money", "Money");
-			//dict.Add("string", "string");
-			//
-			//return dict;
-	//}
-
-	//private IDictionary<string, string> GetTypeScriptTypeNamespaces()
-	//{
-		//var typeNamespaces = new Dictionary<string, string>();
-		//typeNamespaces.Add("Money", "NodaMoney");
-		//return typeNamespaces;
-	//}
-
-	//private IDictionary<string, NHibernateType> GetNHibernateTypes()
-	//{
-		//var nhibernateTypes = new Dictionary<string, NHibernateType>();
-		//var nodaMoneyNHibernateType = new NHibernateType() {
-				//ActualTypeName = "Money", 
-				//AssemblyQualifiedName = "Dddml.Wms.Services.Domain.NHibernate.NodaMoneyType, Dddml.Wms.Services",
-				//PropertyNames = new string[] { "Amount", "Currency" }, 
-				//PropertyClrTypes = new string[] { "decimal", "string" }
-			//};
-		//nhibernateTypes.Add(nodaMoneyNHibernateType.ActualTypeName, nodaMoneyNHibernateType);
-		//return nhibernateTypes;
-	//}
-
-	//private string[] GetClrValueTypes()
-	//{
-		//var clrValueTypes = new string[]{ "Money" };
-		//return clrValueTypes;
-	//}
 
 #>

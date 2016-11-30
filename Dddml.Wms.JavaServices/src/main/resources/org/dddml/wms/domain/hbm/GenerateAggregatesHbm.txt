@@ -12,6 +12,7 @@
 
 
 
+
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldGroupState.hbm.xml"/>

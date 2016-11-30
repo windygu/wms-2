@@ -16,46 +16,13 @@
 <#@ include file="$(SolutionDir)Dddml.Wms.Common\Generated\LoadBoundedContextFiles.tt" #>
 <#
 
-	//boundedContext.SetBoundedContextPackage("org.dddml.wms");
-    //boundedContext.SetJavaSpecializationPackage("org.dddml.wms.specialization");
-	//boundedContext.IsUsingSeparatedDomainAggregateNamespace = false;
-	//boundedContext.IsGenericTypeAsType = true;
-	//boundedContext.Aggregates["AttributeSetInstance"].SetPersistingStateEventRemovedPropertiesAsSet(true);
-	//boundedContext.Aggregates["AttributeSetInstance"].AuthorizationEnabled = true;
-	//boundedContext.Aggregates["AttributeSetInstance"].AnonymousAllowed = true;
-	//boundedContext.SetJavaTypePackages(GetTypePackages());
-	//boundedContext.SetHibernateTypes(GetHibernateTypes());
-	//boundedContext.Refresh();
-
-	foreach (var agg in boundedContext.Aggregates.Values)
-	{
-		agg.GenerateAggregateStateEventIdValueObject();
-		agg.GenerateAllEntityStateEventIdValueObjects();
-	}
-
-	boundedContext.Refresh();
-	//boundedContext.ReplacePropertyTypesWithBaseTypes();	
+	var generationOptions = new GenerationOptions();
+	generationOptions.Java = true;
+	boundedContext.PrepareGeneration(generationOptions);
 
 	// ////////////////////////////
 
-	//foreach (var aggregate in boundedContext.Aggregates.Values)
-	//{
-		//var mvObjcts = aggregate.GenerateAllEntityMViewObjects();
-		//foreach (var mvo in mvObjcts)
-		//{
-			//boundedContext.Aggregates.Add(mvo.Name, mvo);
-			//mvo.GenerateAggregateStateEventIdValueObject();
-			//mvo.SetAggregateDomainSubPackageName("mviews");
-			//mvo.SetStateDatabaseTableNameFormat("{0}s");
-			//mvo.SetUsingRViewAsMView(true);
-			//mvo.SetHttpServiceResourceCollectionNameFormat("{0}s");
-		//} 
-	//}
-	//boundedContext.Refresh();
 	boundedContext.GenerateAllEntityMViewObjectsAndRefresh();
-	// ////////////////////////////
-
-	//boundedContext.ReplacePropertyTypesWithBaseTypes();
 
 	var mviewObjects = new List<Aggregate>();
 	foreach (var aggregate in boundedContext.Aggregates.Values)
@@ -66,66 +33,5 @@
 		}
 	}
 
-	// ////////////////////////////
-	
-	//boundedContext.SetHttpServicesAuthorizationEnabled(true);
-	//boundedContext.SetClrHttpServiceSetRequesterIdAttributeEnabled(true);
-
-	//boundedContext.SetSerializationAnnotationTypes(GetSerializationAnnotationTypes());
-	
-	//boundedContext.SetJavaTypes(GetJavaTypes());
-	//boundedContext.Aggregates["AttributeSetInstance"].Metadata["HttpPostCreationEnabled"] = true;
-	//boundedContext.Aggregates["Person"].Metadata["httpPostCreationEnabled"] = true;
-
 #>
-<#+
-	
-	//private IDictionary<string, string> GetSerializationAnnotationTypes()
-	//{
-            //var dict = GetJavaTypes();
-			//return dict;
-	//}
 
-	//private IDictionary<string, string> GetJavaTypes()
-	//{
-			//var dict = new Dictionary<string, string>();
-		   //
-			//dict.Add("bool", "Boolean");
-			//dict.Add("bool?", "Boolean");
-			//dict.Add("DateTime", "Date");
-			//dict.Add("DateTime?", "Date");
-			//dict.Add("decimal", "BigDecimal");
-			//dict.Add("decimal?", "BigDecimal");
-			//dict.Add("int", "Integer");
-			//dict.Add("int?", "Integer");
-			//dict.Add("long", "Long");
-			//dict.Add("long?", "Long");
-			//dict.Add("Money", "Money");
-			//dict.Add("string", "String");
-			//dict.Add("String", "String");
-			//return dict;
-	//}
-
-	//private IDictionary<string, HibernateType> GetHibernateTypes()
-	//{
-		//var hibernateTypes = new Dictionary<string, HibernateType>();
-		//var jodaMoneyHibernateType = new HibernateType() {
-				//ActualTypeName = "Money", 
-				//QualifiedName = "org.dddml.wms.domain.hibernate.usertypes.MoneyType",
-				//PropertyNames = new string[] { "Amount", "Currency" }, 
-				//PropertyJavaTypes = new string[] { "BigDecimal", "String" }
-			//};
-		//hibernateTypes.Add(jodaMoneyHibernateType.ActualTypeName, jodaMoneyHibernateType);
-		//return hibernateTypes;
-	//}
-
-	//private IDictionary<string, string> GetTypePackages()
-	//{
-		//var typePackages = new Dictionary<string, string>();
-		//typePackages.Add("Money", "org.joda.money");
-		//typePackages.Add("BigDecimal", "java.math");
-		//typePackages.Add("Date", "java.util");
-		//return typePackages;
-	//}
-//
-#>
