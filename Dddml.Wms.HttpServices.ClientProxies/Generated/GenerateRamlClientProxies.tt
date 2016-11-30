@@ -5,11 +5,6 @@
 <#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\WebApi\RamlClient\RamlClientBoundedContextApplicationServicesProxiesGenerator.tt" #>
 <#@ include file="$(SolutionDir)Dddml.Wms.Common\Generated\LoadBoundedContext.tt" #>
 <#
-    //TemplatingContext.Current.CurrentAssembly = "Dddml.Wms.HttpServices.ClientProxies";
-    //boundedContext.BaseUri = "/api";
-	//boundedContext.Metadata["ramlVersion"] = "0.8";
-	//boundedContext.Metadata["ramlClientNamespace"] = boundedContext.GetHttpServicesClientProxiesNamespace() + ".Raml";
-	//boundedContext.Metadata["ramlClientMainClassName"] = "DddmlWmsRamlClient";
 
     var generator = new RamlClientBoundedContextApplicationServicesProxiesGenerator(boundedContext);
 

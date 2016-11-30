@@ -14,23 +14,14 @@
 <#
 
     var boundedContext = LoadBoundedContextFiles();
-	//boundedContext.DefaultUserIdType = "string";
 	boundedContext.Refresh();
 	ReplacePropertyTypesWithBaseTypes(boundedContext);
 #>
 <#+
 	private void ReplacePropertyTypesWithBaseTypes(BoundedContext boundedContext)
 	{
-		//boundedContext.SetValueObjectBaseTypes(GetValueObjectBaseTypes());
 		boundedContext.ReplacePropertyTypesWithBaseTypes();	
 	}
-
-	//private IDictionary<string, string> GetValueObjectBaseTypes()
-	//{
-		//var baseTypes = new Dictionary<string, string>();
-		//baseTypes.Add("Email", "string");
-		//return baseTypes;
-	//}
 
     private BoundedContext LoadBoundedContextFiles()
     {
@@ -53,21 +44,7 @@
 				//System.Diagnostics.Debug.WriteLine(f + " is excluded.");
 			}
 		}
-		//files.Add(@"C:\Users\Yang\Documents\GitHub\dddml-spec\examples\Person.yaml");// FOR TESTS ONLY.
 		BoundedContext boundedContext = BoundedContextUtils.LoadFromFiles(files);
-        //string filePath3 = System.IO.Path.Combine(projectDir, "../dddml/AttributeSet.yaml");
-        //string filePath4 = System.IO.Path.Combine(projectDir, "../dddml/InOut.yaml");
-		//string filePath5 = System.IO.Path.Combine(projectDir, "../dddml/Warehouse.yaml");
-		//string filePath6 = System.IO.Path.Combine(projectDir, "../dddml/Organization.yaml");
-		//string filePath7 = System.IO.Path.Combine(projectDir, "../dddml/IdentityManagement.yaml");
-		//string filePath8 = System.IO.Path.Combine(projectDir, "../dddml/AccessManagement.yaml");
-		//string filePath9 = System.IO.Path.Combine(projectDir, "../dddml/Audience.yaml");
-        //BoundedContext boundedContext = BoundedContextUtils.LoadFromFiles(new string[]{ 
-			//filePath1, filePath2, filePath3, filePath4, filePath5, filePath6, filePath7, filePath8, filePath9,
-			//@"C:\Users\Yang\Documents\GitHub\dddml-spec\examples\Person.yaml"
-			//});
-
-        //boundedContext.DefaultModule = "Dddml.Wms";
         return boundedContext; 
     }
 #>
