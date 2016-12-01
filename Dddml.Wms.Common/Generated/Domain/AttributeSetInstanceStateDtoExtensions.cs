@@ -14,26 +14,6 @@ namespace Dddml.Wms.Domain
 	public static partial class AttributeSetInstanceStateDtoExtensions
 	{
 
-        public static IAttributeSetInstanceCommand ToCreateOrMergePatchAttributeSetInstance(this AttributeSetInstanceStateDto state)
-        {
-            return state.ToCreateOrMergePatchAttributeSetInstance<CreateAttributeSetInstanceDto, MergePatchAttributeSetInstanceDto>();
-        }
-
-        public static DeleteAttributeSetInstanceDto ToDeleteAttributeSetInstance(this AttributeSetInstanceStateDto state)
-        {
-            return state.ToDeleteAttributeSetInstance<DeleteAttributeSetInstanceDto>();
-        }
-
-        public static MergePatchAttributeSetInstanceDto ToMergePatchAttributeSetInstance(this AttributeSetInstanceStateDto state)
-        {
-            return state.ToMergePatchAttributeSetInstance<MergePatchAttributeSetInstanceDto>();
-        }
-
-        public static CreateAttributeSetInstanceDto ToCreateAttributeSetInstance(this AttributeSetInstanceStateDto state)
-        {
-            return state.ToCreateAttributeSetInstance<CreateAttributeSetInstanceDto>();
-        }
-		
 
 	}
 

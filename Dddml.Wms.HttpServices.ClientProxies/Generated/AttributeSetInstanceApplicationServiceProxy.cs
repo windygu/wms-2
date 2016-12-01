@@ -63,45 +63,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             WhenAsync(c).GetAwaiter().GetResult();
         }
 
-        public async Task WhenAsync(MergePatchAttributeSetInstanceDto c)
-        {
-            var idObj = (c as IMergePatchAttributeSetInstance).AttributeSetInstanceId;
-            var uriParameters = new AttributeSetInstanceUriParameters();
-            uriParameters.Id = idObj;
-
-            var req = new AttributeSetInstancePatchRequest(uriParameters, (MergePatchAttributeSetInstanceDto)c);
-            var resp = await _ramlClient.AttributeSetInstance.Patch(req);
-            AttributeSetInstanceProxyUtils.ThrowOnHttpResponseError(resp);
-        }
-
-        public void When(MergePatchAttributeSetInstanceDto c)
-        {
-            WhenAsync(c).GetAwaiter().GetResult();
-        }
-
-        public async Task WhenAsync(DeleteAttributeSetInstanceDto c)
-        {
-            var idObj = (c as IDeleteAttributeSetInstance).AttributeSetInstanceId;
-            var uriParameters = new AttributeSetInstanceUriParameters();
-            uriParameters.Id = idObj;
-
-            var q = new AttributeSetInstanceDeleteQuery();
-            q.CommandId = c.CommandId;
-            q.RequesterId = c.RequesterId;
-            q.Version = Convert.ToString(c.Version);
-                
-            var req = new AttributeSetInstanceDeleteRequest(uriParameters);
-            req.Query = q;
-
-            var resp = await _ramlClient.AttributeSetInstance.Delete(req);
-            AttributeSetInstanceProxyUtils.ThrowOnHttpResponseError(resp);
-        }
-
-        public void When(DeleteAttributeSetInstanceDto c)
-        {
-            WhenAsync(c).GetAwaiter().GetResult();
-        }
-		
         void IAttributeSetInstanceApplicationService.When(ICreateAttributeSetInstance c)
         {
             this.When((CreateAttributeSetInstanceDto)c);
@@ -308,15 +269,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return new CreateAttributeSetInstanceDto();
         }
 
-        public IMergePatchAttributeSetInstance NewMergePatchAttributeSetInstance()
-        {
-            return new MergePatchAttributeSetInstanceDto();
-        }
-
-        public IDeleteAttributeSetInstance NewDeleteAttributeSetInstance()
-        {
-            return new DeleteAttributeSetInstanceDto();
-        }
     }
 
     public static class AttributeSetInstanceProxyUtils

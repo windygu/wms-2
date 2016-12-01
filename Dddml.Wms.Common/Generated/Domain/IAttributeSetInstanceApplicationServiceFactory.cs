@@ -18,9 +18,6 @@ namespace Dddml.Wms.Domain
 
         ICreateAttributeSetInstance NewCreateAttributeSetInstance();
 
-        IMergePatchAttributeSetInstance NewMergePatchAttributeSetInstance();
-
-        IDeleteAttributeSetInstance NewDeleteAttributeSetInstance();
     }
 
 

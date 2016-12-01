@@ -27,16 +27,6 @@ namespace Dddml.Wms.Domain
 		    return new CreateAttributeSetInstance();
         }
 
-        public virtual IMergePatchAttributeSetInstance NewMergePatchAttributeSetInstance()
-        {
-            return new MergePatchAttributeSetInstance();
-        }
-
-        public virtual IDeleteAttributeSetInstance NewDeleteAttributeSetInstance()
-        {
-            return new DeleteAttributeSetInstance();
-        }
-
     }
 
 
