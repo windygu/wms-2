@@ -17,17 +17,9 @@
 
 	var generationOptions = new GenerationOptions();
 	generationOptions.TypeScript = true;
+	generationOptions.NoMViewObjects = false;
 	boundedContext.PrepareGeneration(generationOptions);
 
-	boundedContext.GenerateAllEntityMViewObjectsAndRefresh();
-
-	var mviewObjects = new List<Aggregate>();
-	foreach (var aggregate in boundedContext.Aggregates.Values)
-	{
-		if (aggregate.IsMViewObject())
-		{
-			mviewObjects.Add(aggregate);
-		}
-	}
+	var mviewObjects = boundedContext.GetMViewObjects();
 
 #>
