@@ -40,9 +40,9 @@ configuration:
         "Dddml.Wms.HttpServices.JsonConverters.LongConverter",
         "Dddml.Wms.HttpServices.JsonConverters.DecimalConverter"]
     ClrHttpServiceDtoJObjectMapperAssembly: "Dddml.Wms.HttpServices"
-    
+
     ClrRamlVersion: "0.8"
-    ClrRamlClientNamespace: "Dddml.Wms.HttpServices.ClientProxies.Raml"
+    ClrRamlClientSubNamespace: "HttpServices.ClientProxies.Raml"
     ClrRamlClientMainClassName: "DddmlWmsRamlClient"
 
     TypeScriptJsonUsingCamelCasePropertyName: true
