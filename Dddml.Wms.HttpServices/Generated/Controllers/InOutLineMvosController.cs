@@ -268,7 +268,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.InOutLineId == null)
             {
-                value.InOutLineId = new InOutLineIdDto(idObj);
+                value.InOutLineId = new InOutLineIdDtoWrapper(idObj);
             }
             else if (!((ICreateOrMergePatchOrDeleteInOutLineMvo)value).InOutLineId.Equals(idObj))
             {
@@ -355,7 +355,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new InOutLineMvoStateDto();
-                dto.InOutLineId = new InOutLineIdDto(id);
+                dto.InOutLineId = new InOutLineIdDtoWrapper(id);
                 states.Add(dto);
             }
             return states;

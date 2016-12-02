@@ -843,7 +843,7 @@ namespace Dddml.Wms.Domain
         {
             var eId = new InOutLineStateEventIdDto();
             eId.InOutDocumentNumber = this.StateEventId.DocumentNumber;
-            eId.SkuId = new SkuIdDto(skuId);
+            eId.SkuId = new SkuIdDtoWrapper(skuId);
             eId.InOutVersion = this.StateEventId.Version;
             return eId;
         }

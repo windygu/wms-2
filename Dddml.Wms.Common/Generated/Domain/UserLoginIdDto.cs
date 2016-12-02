@@ -14,31 +14,28 @@ namespace Dddml.Wms.Domain
 	public class UserLoginIdDto
 	{
 
-        private UserLoginId _value = new UserLoginId();
-
 		public UserLoginIdDto()
 		{
 		}
 
-		public UserLoginIdDto(UserLoginId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public UserLoginId ToUserLoginId()
+        public virtual UserLoginId ToUserLoginId()
         {
-            return this._value;
+            UserLoginId v = new UserLoginId();
+            v.UserId = this.UserId;
+            v.LoginKey = this.LoginKey.ToLoginKey();
+            return v;
         }
 
 		public virtual string UserId { 
-			get { return _value.UserId; } 
-			set { _value.UserId = value; } 
+			get;
+			set;
 		}
 
+		private LoginKeyDto _loginKey = new LoginKeyDto();
+
 		public virtual LoginKeyDto LoginKey { 
-			get { return new LoginKeyDto(_value.LoginKey); } 
-			set { _value.LoginKey = value.ToLoginKey(); } 
+			get { return this._loginKey; } 
+			set { this._loginKey = value; } 
 		}
 
 
@@ -53,13 +50,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.UserId, other.UserId)
+				&& Object.Equals (this.LoginKey, other.LoginKey)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.UserId != null) {
+				hash += 13 * this.UserId.GetHashCode ();
+			}
+			if (this.LoginKey != null) {
+				hash += 13 * this.LoginKey.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

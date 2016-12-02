@@ -98,7 +98,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.UserPermissionId = new UserPermissionIdDto(value);
+                this.UserPermissionId = new UserPermissionIdDtoWrapper(value);
             }
         }
 

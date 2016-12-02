@@ -90,6 +90,16 @@ namespace Dddml.Wms.Domain
 			return hash;
 		}
 
+        public static bool operator ==(OrganizationStructureStateEventId obj1, OrganizationStructureStateEventId obj2)
+        {
+            return Object.Equals(obj1, obj2);
+        }
+
+        public static bool operator !=(OrganizationStructureStateEventId obj1, OrganizationStructureStateEventId obj2)
+        {
+            return !Object.Equals(obj1, obj2);
+        }
+
 	}
 
 }

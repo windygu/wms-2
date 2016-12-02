@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class WarehouseStateEventIdDto
 	{
 
-        private WarehouseStateEventId _value = new WarehouseStateEventId();
-
 		public WarehouseStateEventIdDto()
 		{
 		}
 
-		public WarehouseStateEventIdDto(WarehouseStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public WarehouseStateEventId ToWarehouseStateEventId()
+        public virtual WarehouseStateEventId ToWarehouseStateEventId()
         {
-            return this._value;
+            WarehouseStateEventId v = new WarehouseStateEventId();
+            v.WarehouseId = this.WarehouseId;
+            v.Version = this.Version;
+            return v;
         }
 
 		public virtual string WarehouseId { 
-			get { return _value.WarehouseId; } 
-			set { _value.WarehouseId = value; } 
+			get;
+			set;
 		}
 
 		public virtual long Version { 
-			get { return _value.Version; } 
-			set { _value.Version = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.WarehouseId, other.WarehouseId)
+				&& Object.Equals (this.Version, other.Version)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.WarehouseId != null) {
+				hash += 13 * this.WarehouseId.GetHashCode ();
+			}
+			if (this.Version != null) {
+				hash += 13 * this.Version.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

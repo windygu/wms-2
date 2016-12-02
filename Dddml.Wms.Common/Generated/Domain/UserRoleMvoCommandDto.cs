@@ -98,7 +98,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.UserRoleId = new UserRoleIdDto(value);
+                this.UserRoleId = new UserRoleIdDtoWrapper(value);
             }
         }
 

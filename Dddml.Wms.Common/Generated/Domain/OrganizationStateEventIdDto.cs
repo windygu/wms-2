@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class OrganizationStateEventIdDto
 	{
 
-        private OrganizationStateEventId _value = new OrganizationStateEventId();
-
 		public OrganizationStateEventIdDto()
 		{
 		}
 
-		public OrganizationStateEventIdDto(OrganizationStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public OrganizationStateEventId ToOrganizationStateEventId()
+        public virtual OrganizationStateEventId ToOrganizationStateEventId()
         {
-            return this._value;
+            OrganizationStateEventId v = new OrganizationStateEventId();
+            v.OrganizationId = this.OrganizationId;
+            v.Version = this.Version;
+            return v;
         }
 
 		public virtual string OrganizationId { 
-			get { return _value.OrganizationId; } 
-			set { _value.OrganizationId = value; } 
+			get;
+			set;
 		}
 
 		public virtual long Version { 
-			get { return _value.Version; } 
-			set { _value.Version = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.OrganizationId, other.OrganizationId)
+				&& Object.Equals (this.Version, other.Version)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.OrganizationId != null) {
+				hash += 13 * this.OrganizationId.GetHashCode ();
+			}
+			if (this.Version != null) {
+				hash += 13 * this.Version.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

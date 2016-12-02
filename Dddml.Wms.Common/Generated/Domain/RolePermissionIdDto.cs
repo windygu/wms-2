@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class RolePermissionIdDto
 	{
 
-        private RolePermissionId _value = new RolePermissionId();
-
 		public RolePermissionIdDto()
 		{
 		}
 
-		public RolePermissionIdDto(RolePermissionId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public RolePermissionId ToRolePermissionId()
+        public virtual RolePermissionId ToRolePermissionId()
         {
-            return this._value;
+            RolePermissionId v = new RolePermissionId();
+            v.RoleId = this.RoleId;
+            v.PermissionId = this.PermissionId;
+            return v;
         }
 
 		public virtual string RoleId { 
-			get { return _value.RoleId; } 
-			set { _value.RoleId = value; } 
+			get;
+			set;
 		}
 
 		public virtual string PermissionId { 
-			get { return _value.PermissionId; } 
-			set { _value.PermissionId = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.RoleId, other.RoleId)
+				&& Object.Equals (this.PermissionId, other.PermissionId)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.RoleId != null) {
+				hash += 13 * this.RoleId.GetHashCode ();
+			}
+			if (this.PermissionId != null) {
+				hash += 13 * this.PermissionId.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

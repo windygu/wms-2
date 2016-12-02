@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.Id = new RolePermissionIdDto(value);
+                this.Id = new RolePermissionIdDtoWrapper(value);
             }
         }
 

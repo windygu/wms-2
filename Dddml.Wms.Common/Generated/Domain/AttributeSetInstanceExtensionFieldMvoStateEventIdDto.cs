@@ -14,31 +14,28 @@ namespace Dddml.Wms.Domain
 	public class AttributeSetInstanceExtensionFieldMvoStateEventIdDto
 	{
 
-        private AttributeSetInstanceExtensionFieldMvoStateEventId _value = new AttributeSetInstanceExtensionFieldMvoStateEventId();
-
 		public AttributeSetInstanceExtensionFieldMvoStateEventIdDto()
 		{
 		}
 
-		public AttributeSetInstanceExtensionFieldMvoStateEventIdDto(AttributeSetInstanceExtensionFieldMvoStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public AttributeSetInstanceExtensionFieldMvoStateEventId ToAttributeSetInstanceExtensionFieldMvoStateEventId()
+        public virtual AttributeSetInstanceExtensionFieldMvoStateEventId ToAttributeSetInstanceExtensionFieldMvoStateEventId()
         {
-            return this._value;
+            AttributeSetInstanceExtensionFieldMvoStateEventId v = new AttributeSetInstanceExtensionFieldMvoStateEventId();
+            v.AttributeSetInstanceExtensionFieldId = this.AttributeSetInstanceExtensionFieldId.ToAttributeSetInstanceExtensionFieldId();
+            v.AttrSetInstEFGroupVersion = this.AttrSetInstEFGroupVersion;
+            return v;
         }
 
+		private AttributeSetInstanceExtensionFieldIdDto _attributeSetInstanceExtensionFieldId = new AttributeSetInstanceExtensionFieldIdDto();
+
 		public virtual AttributeSetInstanceExtensionFieldIdDto AttributeSetInstanceExtensionFieldId { 
-			get { return new AttributeSetInstanceExtensionFieldIdDto(_value.AttributeSetInstanceExtensionFieldId); } 
-			set { _value.AttributeSetInstanceExtensionFieldId = value.ToAttributeSetInstanceExtensionFieldId(); } 
+			get { return this._attributeSetInstanceExtensionFieldId; } 
+			set { this._attributeSetInstanceExtensionFieldId = value; } 
 		}
 
 		public virtual long AttrSetInstEFGroupVersion { 
-			get { return _value.AttrSetInstEFGroupVersion; } 
-			set { _value.AttrSetInstEFGroupVersion = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +50,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.AttributeSetInstanceExtensionFieldId, other.AttributeSetInstanceExtensionFieldId)
+				&& Object.Equals (this.AttrSetInstEFGroupVersion, other.AttrSetInstEFGroupVersion)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.AttributeSetInstanceExtensionFieldId != null) {
+				hash += 13 * this.AttributeSetInstanceExtensionFieldId.GetHashCode ();
+			}
+			if (this.AttrSetInstEFGroupVersion != null) {
+				hash += 13 * this.AttrSetInstEFGroupVersion.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

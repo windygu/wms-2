@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain
         public virtual UserRoleMvoStateCreatedDto ToUserRoleMvoStateCreatedDto(IUserRoleMvoStateCreated e)
         {
             var dto = new UserRoleMvoStateCreatedDto();
-            dto.StateEventId = new UserRoleMvoStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new UserRoleMvoStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain
         public virtual UserRoleMvoStateMergePatchedDto ToUserRoleMvoStateMergePatchedDto(IUserRoleMvoStateMergePatched e)
         {
             var dto = new UserRoleMvoStateMergePatchedDto();
-            dto.StateEventId = new UserRoleMvoStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new UserRoleMvoStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -117,7 +117,7 @@ namespace Dddml.Wms.Domain
         public virtual UserRoleMvoStateDeletedDto ToUserRoleMvoStateDeletedDto(IUserRoleMvoStateDeleted e)
         {
             var dto = new UserRoleMvoStateDeletedDto();
-            dto.StateEventId = new UserRoleMvoStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new UserRoleMvoStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

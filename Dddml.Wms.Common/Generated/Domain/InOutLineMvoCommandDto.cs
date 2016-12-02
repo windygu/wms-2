@@ -179,7 +179,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.InOutLineId = new InOutLineIdDto(value);
+                this.InOutLineId = new InOutLineIdDtoWrapper(value);
             }
         }
 

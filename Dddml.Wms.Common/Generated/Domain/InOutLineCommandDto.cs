@@ -80,7 +80,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.SkuId = new SkuIdDto(value);
+                this.SkuId = new SkuIdDtoWrapper(value);
             }
         }
 

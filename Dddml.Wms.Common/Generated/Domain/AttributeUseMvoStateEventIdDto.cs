@@ -14,31 +14,28 @@ namespace Dddml.Wms.Domain
 	public class AttributeUseMvoStateEventIdDto
 	{
 
-        private AttributeUseMvoStateEventId _value = new AttributeUseMvoStateEventId();
-
 		public AttributeUseMvoStateEventIdDto()
 		{
 		}
 
-		public AttributeUseMvoStateEventIdDto(AttributeUseMvoStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public AttributeUseMvoStateEventId ToAttributeUseMvoStateEventId()
+        public virtual AttributeUseMvoStateEventId ToAttributeUseMvoStateEventId()
         {
-            return this._value;
+            AttributeUseMvoStateEventId v = new AttributeUseMvoStateEventId();
+            v.AttributeSetAttributeUseId = this.AttributeSetAttributeUseId.ToAttributeSetAttributeUseId();
+            v.AttributeSetVersion = this.AttributeSetVersion;
+            return v;
         }
 
+		private AttributeSetAttributeUseIdDto _attributeSetAttributeUseId = new AttributeSetAttributeUseIdDto();
+
 		public virtual AttributeSetAttributeUseIdDto AttributeSetAttributeUseId { 
-			get { return new AttributeSetAttributeUseIdDto(_value.AttributeSetAttributeUseId); } 
-			set { _value.AttributeSetAttributeUseId = value.ToAttributeSetAttributeUseId(); } 
+			get { return this._attributeSetAttributeUseId; } 
+			set { this._attributeSetAttributeUseId = value; } 
 		}
 
 		public virtual long AttributeSetVersion { 
-			get { return _value.AttributeSetVersion; } 
-			set { _value.AttributeSetVersion = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +50,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.AttributeSetAttributeUseId, other.AttributeSetAttributeUseId)
+				&& Object.Equals (this.AttributeSetVersion, other.AttributeSetVersion)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.AttributeSetAttributeUseId != null) {
+				hash += 13 * this.AttributeSetAttributeUseId.GetHashCode ();
+			}
+			if (this.AttributeSetVersion != null) {
+				hash += 13 * this.AttributeSetVersion.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

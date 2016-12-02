@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain
         public virtual AttributeSetInstanceExtensionFieldMvoStateCreatedDto ToAttributeSetInstanceExtensionFieldMvoStateCreatedDto(IAttributeSetInstanceExtensionFieldMvoStateCreated e)
         {
             var dto = new AttributeSetInstanceExtensionFieldMvoStateCreatedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.Domain
         public virtual AttributeSetInstanceExtensionFieldMvoStateMergePatchedDto ToAttributeSetInstanceExtensionFieldMvoStateMergePatchedDto(IAttributeSetInstanceExtensionFieldMvoStateMergePatched e)
         {
             var dto = new AttributeSetInstanceExtensionFieldMvoStateMergePatchedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -114,7 +114,7 @@ namespace Dddml.Wms.Domain
         public virtual AttributeSetInstanceExtensionFieldMvoStateDeletedDto ToAttributeSetInstanceExtensionFieldMvoStateDeletedDto(IAttributeSetInstanceExtensionFieldMvoStateDeleted e)
         {
             var dto = new AttributeSetInstanceExtensionFieldMvoStateDeletedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

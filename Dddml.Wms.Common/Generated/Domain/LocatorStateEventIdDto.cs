@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class LocatorStateEventIdDto
 	{
 
-        private LocatorStateEventId _value = new LocatorStateEventId();
-
 		public LocatorStateEventIdDto()
 		{
 		}
 
-		public LocatorStateEventIdDto(LocatorStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public LocatorStateEventId ToLocatorStateEventId()
+        public virtual LocatorStateEventId ToLocatorStateEventId()
         {
-            return this._value;
+            LocatorStateEventId v = new LocatorStateEventId();
+            v.LocatorId = this.LocatorId;
+            v.Version = this.Version;
+            return v;
         }
 
 		public virtual string LocatorId { 
-			get { return _value.LocatorId; } 
-			set { _value.LocatorId = value; } 
+			get;
+			set;
 		}
 
 		public virtual long Version { 
-			get { return _value.Version; } 
-			set { _value.Version = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.LocatorId, other.LocatorId)
+				&& Object.Equals (this.Version, other.Version)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.LocatorId != null) {
+				hash += 13 * this.LocatorId.GetHashCode ();
+			}
+			if (this.Version != null) {
+				hash += 13 * this.Version.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

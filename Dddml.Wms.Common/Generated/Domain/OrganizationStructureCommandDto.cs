@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.Id = new OrganizationStructureIdDto(value);
+                this.Id = new OrganizationStructureIdDtoWrapper(value);
             }
         }
 

@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("AttributeSetAttributeUseId"))
                 {
-					return (_state.AttributeSetAttributeUseId == null) ? null : new AttributeSetAttributeUseIdDto(_state.AttributeSetAttributeUseId);
+					return (_state.AttributeSetAttributeUseId == null) ? null : new AttributeSetAttributeUseIdDtoWrapper(_state.AttributeSetAttributeUseId);
                 }
                 return null;
             }

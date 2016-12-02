@@ -102,7 +102,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.AttributeValueId = new AttributeValueIdDto(value);
+                this.AttributeValueId = new AttributeValueIdDtoWrapper(value);
             }
         }
 

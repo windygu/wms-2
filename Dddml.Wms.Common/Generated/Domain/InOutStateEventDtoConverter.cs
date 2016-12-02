@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain
         public virtual InOutStateCreatedDto ToInOutStateCreatedDto(IInOutStateCreated e)
         {
             var dto = new InOutStateCreatedDto();
-            dto.StateEventId = new InOutStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new InOutStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain
         public virtual InOutStateMergePatchedDto ToInOutStateMergePatchedDto(IInOutStateMergePatched e)
         {
             var dto = new InOutStateMergePatchedDto();
-            dto.StateEventId = new InOutStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new InOutStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -182,7 +182,7 @@ namespace Dddml.Wms.Domain
         public virtual InOutStateDeletedDto ToInOutStateDeletedDto(IInOutStateDeleted e)
         {
             var dto = new InOutStateDeletedDto();
-            dto.StateEventId = new InOutStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new InOutStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

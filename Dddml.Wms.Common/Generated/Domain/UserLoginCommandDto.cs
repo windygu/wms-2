@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.LoginKey = new LoginKeyDto(value);
+                this.LoginKey = new LoginKeyDtoWrapper(value);
             }
         }
 

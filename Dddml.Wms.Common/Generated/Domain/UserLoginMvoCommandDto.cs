@@ -98,7 +98,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.UserLoginId = new UserLoginIdDto(value);
+                this.UserLoginId = new UserLoginIdDtoWrapper(value);
             }
         }
 

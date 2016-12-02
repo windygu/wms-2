@@ -267,7 +267,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.Id == null)
             {
-                value.Id = new RolePermissionIdDto(idObj);
+                value.Id = new RolePermissionIdDtoWrapper(idObj);
             }
             else if (!((ICreateOrMergePatchOrDeleteRolePermission)value).Id.Equals(idObj))
             {
@@ -354,7 +354,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new RolePermissionStateDto();
-                dto.Id = new RolePermissionIdDto(id);
+                dto.Id = new RolePermissionIdDtoWrapper(id);
                 states.Add(dto);
             }
             return states;

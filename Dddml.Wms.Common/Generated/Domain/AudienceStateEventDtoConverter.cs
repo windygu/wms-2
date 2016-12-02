@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain
         public virtual AudienceStateCreatedDto ToAudienceStateCreatedDto(IAudienceStateCreated e)
         {
             var dto = new AudienceStateCreatedDto();
-            dto.StateEventId = new AudienceStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AudienceStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain
         public virtual AudienceStateMergePatchedDto ToAudienceStateMergePatchedDto(IAudienceStateMergePatched e)
         {
             var dto = new AudienceStateMergePatchedDto();
-            dto.StateEventId = new AudienceStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AudienceStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -69,7 +69,7 @@ namespace Dddml.Wms.Domain
         public virtual AudienceStateDeletedDto ToAudienceStateDeletedDto(IAudienceStateDeleted e)
         {
             var dto = new AudienceStateDeletedDto();
-            dto.StateEventId = new AudienceStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AudienceStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

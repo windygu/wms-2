@@ -85,6 +85,16 @@ namespace Dddml.Wms.Domain
 			return hash;
 		}
 
+        public static bool operator ==(AttributeSetInstanceExtensionFieldMvoStateEventId obj1, AttributeSetInstanceExtensionFieldMvoStateEventId obj2)
+        {
+            return Object.Equals(obj1, obj2);
+        }
+
+        public static bool operator !=(AttributeSetInstanceExtensionFieldMvoStateEventId obj1, AttributeSetInstanceExtensionFieldMvoStateEventId obj2)
+        {
+            return !Object.Equals(obj1, obj2);
+        }
+
 	}
 
 }

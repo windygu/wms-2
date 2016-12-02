@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("Id"))
                 {
-					return (_state.Id == null) ? null : new OrganizationStructureIdDto(_state.Id);
+					return (_state.Id == null) ? null : new OrganizationStructureIdDtoWrapper(_state.Id);
                 }
                 return null;
             }

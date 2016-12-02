@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("InOutLineId"))
                 {
-					return (_state.InOutLineId == null) ? null : new InOutLineIdDto(_state.InOutLineId);
+					return (_state.InOutLineId == null) ? null : new InOutLineIdDtoWrapper(_state.InOutLineId);
                 }
                 return null;
             }

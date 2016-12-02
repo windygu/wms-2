@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.AttributeSetAttributeUseId = new AttributeSetAttributeUseIdDto(value);
+                this.AttributeSetAttributeUseId = new AttributeSetAttributeUseIdDtoWrapper(value);
             }
         }
 

@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain
         public virtual AttributeSetInstanceExtensionFieldStateCreatedDto ToAttributeSetInstanceExtensionFieldStateCreatedDto(IAttributeSetInstanceExtensionFieldStateCreated e)
         {
             var dto = new AttributeSetInstanceExtensionFieldStateCreatedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AttributeSetInstanceExtensionFieldStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain
         public virtual AttributeSetInstanceExtensionFieldStateMergePatchedDto ToAttributeSetInstanceExtensionFieldStateMergePatchedDto(IAttributeSetInstanceExtensionFieldStateMergePatched e)
         {
             var dto = new AttributeSetInstanceExtensionFieldStateMergePatchedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AttributeSetInstanceExtensionFieldStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -80,7 +80,7 @@ namespace Dddml.Wms.Domain
         public virtual AttributeSetInstanceExtensionFieldStateRemovedDto ToAttributeSetInstanceExtensionFieldStateRemovedDto(IAttributeSetInstanceExtensionFieldStateRemoved e)
         {
             var dto = new AttributeSetInstanceExtensionFieldStateRemovedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AttributeSetInstanceExtensionFieldStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

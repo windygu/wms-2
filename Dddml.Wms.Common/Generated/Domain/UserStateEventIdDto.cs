@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class UserStateEventIdDto
 	{
 
-        private UserStateEventId _value = new UserStateEventId();
-
 		public UserStateEventIdDto()
 		{
 		}
 
-		public UserStateEventIdDto(UserStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public UserStateEventId ToUserStateEventId()
+        public virtual UserStateEventId ToUserStateEventId()
         {
-            return this._value;
+            UserStateEventId v = new UserStateEventId();
+            v.UserId = this.UserId;
+            v.Version = this.Version;
+            return v;
         }
 
 		public virtual string UserId { 
-			get { return _value.UserId; } 
-			set { _value.UserId = value; } 
+			get;
+			set;
 		}
 
 		public virtual long Version { 
-			get { return _value.Version; } 
-			set { _value.Version = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.UserId, other.UserId)
+				&& Object.Equals (this.Version, other.Version)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.UserId != null) {
+				hash += 13 * this.UserId.GetHashCode ();
+			}
+			if (this.Version != null) {
+				hash += 13 * this.Version.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

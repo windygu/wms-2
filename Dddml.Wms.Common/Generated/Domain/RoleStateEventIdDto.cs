@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class RoleStateEventIdDto
 	{
 
-        private RoleStateEventId _value = new RoleStateEventId();
-
 		public RoleStateEventIdDto()
 		{
 		}
 
-		public RoleStateEventIdDto(RoleStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public RoleStateEventId ToRoleStateEventId()
+        public virtual RoleStateEventId ToRoleStateEventId()
         {
-            return this._value;
+            RoleStateEventId v = new RoleStateEventId();
+            v.RoleId = this.RoleId;
+            v.Version = this.Version;
+            return v;
         }
 
 		public virtual string RoleId { 
-			get { return _value.RoleId; } 
-			set { _value.RoleId = value; } 
+			get;
+			set;
 		}
 
 		public virtual long Version { 
-			get { return _value.Version; } 
-			set { _value.Version = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.RoleId, other.RoleId)
+				&& Object.Equals (this.Version, other.Version)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.RoleId != null) {
+				hash += 13 * this.RoleId.GetHashCode ();
+			}
+			if (this.Version != null) {
+				hash += 13 * this.Version.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

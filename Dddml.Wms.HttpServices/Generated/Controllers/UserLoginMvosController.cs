@@ -267,7 +267,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.UserLoginId == null)
             {
-                value.UserLoginId = new UserLoginIdDto(idObj);
+                value.UserLoginId = new UserLoginIdDtoWrapper(idObj);
             }
             else if (!((ICreateOrMergePatchOrDeleteUserLoginMvo)value).UserLoginId.Equals(idObj))
             {
@@ -354,7 +354,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new UserLoginMvoStateDto();
-                dto.UserLoginId = new UserLoginIdDto(id);
+                dto.UserLoginId = new UserLoginIdDtoWrapper(id);
                 states.Add(dto);
             }
             return states;

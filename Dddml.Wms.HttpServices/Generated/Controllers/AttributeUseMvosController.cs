@@ -267,7 +267,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.AttributeSetAttributeUseId == null)
             {
-                value.AttributeSetAttributeUseId = new AttributeSetAttributeUseIdDto(idObj);
+                value.AttributeSetAttributeUseId = new AttributeSetAttributeUseIdDtoWrapper(idObj);
             }
             else if (!((ICreateOrMergePatchOrDeleteAttributeUseMvo)value).AttributeSetAttributeUseId.Equals(idObj))
             {
@@ -354,7 +354,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new AttributeUseMvoStateDto();
-                dto.AttributeSetAttributeUseId = new AttributeSetAttributeUseIdDto(id);
+                dto.AttributeSetAttributeUseId = new AttributeSetAttributeUseIdDtoWrapper(id);
                 states.Add(dto);
             }
             return states;

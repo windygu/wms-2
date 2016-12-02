@@ -14,36 +14,32 @@ namespace Dddml.Wms.Domain
 	public class UserClaimStateEventIdDto
 	{
 
-        private UserClaimStateEventId _value = new UserClaimStateEventId();
-
 		public UserClaimStateEventIdDto()
 		{
 		}
 
-		public UserClaimStateEventIdDto(UserClaimStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public UserClaimStateEventId ToUserClaimStateEventId()
+        public virtual UserClaimStateEventId ToUserClaimStateEventId()
         {
-            return this._value;
+            UserClaimStateEventId v = new UserClaimStateEventId();
+            v.UserId = this.UserId;
+            v.ClaimId = this.ClaimId;
+            v.UserVersion = this.UserVersion;
+            return v;
         }
 
 		public virtual string UserId { 
-			get { return _value.UserId; } 
-			set { _value.UserId = value; } 
+			get;
+			set;
 		}
 
 		public virtual int ClaimId { 
-			get { return _value.ClaimId; } 
-			set { _value.ClaimId = value; } 
+			get;
+			set;
 		}
 
 		public virtual long UserVersion { 
-			get { return _value.UserVersion; } 
-			set { _value.UserVersion = value; } 
+			get;
+			set;
 		}
 
 
@@ -58,13 +54,26 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.UserId, other.UserId)
+				&& Object.Equals (this.ClaimId, other.ClaimId)
+				&& Object.Equals (this.UserVersion, other.UserVersion)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.UserId != null) {
+				hash += 13 * this.UserId.GetHashCode ();
+			}
+			if (this.ClaimId != null) {
+				hash += 13 * this.ClaimId.GetHashCode ();
+			}
+			if (this.UserVersion != null) {
+				hash += 13 * this.UserVersion.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

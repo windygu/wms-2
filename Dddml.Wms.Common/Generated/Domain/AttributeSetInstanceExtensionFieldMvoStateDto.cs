@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("AttributeSetInstanceExtensionFieldId"))
                 {
-					return (_state.AttributeSetInstanceExtensionFieldId == null) ? null : new AttributeSetInstanceExtensionFieldIdDto(_state.AttributeSetInstanceExtensionFieldId);
+					return (_state.AttributeSetInstanceExtensionFieldId == null) ? null : new AttributeSetInstanceExtensionFieldIdDtoWrapper(_state.AttributeSetInstanceExtensionFieldId);
                 }
                 return null;
             }

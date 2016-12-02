@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class SkuIdDto
 	{
 
-        private SkuId _value = new SkuId();
-
 		public SkuIdDto()
 		{
 		}
 
-		public SkuIdDto(SkuId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public SkuId ToSkuId()
+        public virtual SkuId ToSkuId()
         {
-            return this._value;
+            SkuId v = new SkuId();
+            v.ProductId = this.ProductId;
+            v.AttributeSetInstanceId = this.AttributeSetInstanceId;
+            return v;
         }
 
 		public virtual string ProductId { 
-			get { return _value.ProductId; } 
-			set { _value.ProductId = value; } 
+			get;
+			set;
 		}
 
 		public virtual string AttributeSetInstanceId { 
-			get { return _value.AttributeSetInstanceId; } 
-			set { _value.AttributeSetInstanceId = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.ProductId, other.ProductId)
+				&& Object.Equals (this.AttributeSetInstanceId, other.AttributeSetInstanceId)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.ProductId != null) {
+				hash += 13 * this.ProductId.GetHashCode ();
+			}
+			if (this.AttributeSetInstanceId != null) {
+				hash += 13 * this.AttributeSetInstanceId.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

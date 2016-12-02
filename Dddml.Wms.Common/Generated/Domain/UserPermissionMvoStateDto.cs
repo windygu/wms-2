@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("UserPermissionId"))
                 {
-					return (_state.UserPermissionId == null) ? null : new UserPermissionIdDto(_state.UserPermissionId);
+					return (_state.UserPermissionId == null) ? null : new UserPermissionIdDtoWrapper(_state.UserPermissionId);
                 }
                 return null;
             }

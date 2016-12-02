@@ -14,31 +14,28 @@ namespace Dddml.Wms.Domain
 	public class UserPermissionMvoStateEventIdDto
 	{
 
-        private UserPermissionMvoStateEventId _value = new UserPermissionMvoStateEventId();
-
 		public UserPermissionMvoStateEventIdDto()
 		{
 		}
 
-		public UserPermissionMvoStateEventIdDto(UserPermissionMvoStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public UserPermissionMvoStateEventId ToUserPermissionMvoStateEventId()
+        public virtual UserPermissionMvoStateEventId ToUserPermissionMvoStateEventId()
         {
-            return this._value;
+            UserPermissionMvoStateEventId v = new UserPermissionMvoStateEventId();
+            v.UserPermissionId = this.UserPermissionId.ToUserPermissionId();
+            v.UserVersion = this.UserVersion;
+            return v;
         }
 
+		private UserPermissionIdDto _userPermissionId = new UserPermissionIdDto();
+
 		public virtual UserPermissionIdDto UserPermissionId { 
-			get { return new UserPermissionIdDto(_value.UserPermissionId); } 
-			set { _value.UserPermissionId = value.ToUserPermissionId(); } 
+			get { return this._userPermissionId; } 
+			set { this._userPermissionId = value; } 
 		}
 
 		public virtual long UserVersion { 
-			get { return _value.UserVersion; } 
-			set { _value.UserVersion = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +50,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.UserPermissionId, other.UserPermissionId)
+				&& Object.Equals (this.UserVersion, other.UserVersion)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.UserPermissionId != null) {
+				hash += 13 * this.UserPermissionId.GetHashCode ();
+			}
+			if (this.UserVersion != null) {
+				hash += 13 * this.UserVersion.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

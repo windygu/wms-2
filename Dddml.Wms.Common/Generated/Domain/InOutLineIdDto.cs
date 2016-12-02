@@ -15,31 +15,28 @@ namespace Dddml.Wms.Domain
 	public class InOutLineIdDto
 	{
 
-        private InOutLineId _value = new InOutLineId();
-
 		public InOutLineIdDto()
 		{
 		}
 
-		public InOutLineIdDto(InOutLineId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public InOutLineId ToInOutLineId()
+        public virtual InOutLineId ToInOutLineId()
         {
-            return this._value;
+            InOutLineId v = new InOutLineId();
+            v.InOutDocumentNumber = this.InOutDocumentNumber;
+            v.SkuId = this.SkuId.ToSkuId();
+            return v;
         }
 
 		public virtual string InOutDocumentNumber { 
-			get { return _value.InOutDocumentNumber; } 
-			set { _value.InOutDocumentNumber = value; } 
+			get;
+			set;
 		}
 
+		private SkuIdDto _skuId = new SkuIdDto();
+
 		public virtual SkuIdDto SkuId { 
-			get { return new SkuIdDto(_value.SkuId); } 
-			set { _value.SkuId = value.ToSkuId(); } 
+			get { return this._skuId; } 
+			set { this._skuId = value; } 
 		}
 
 
@@ -54,13 +51,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.InOutDocumentNumber, other.InOutDocumentNumber)
+				&& Object.Equals (this.SkuId, other.SkuId)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.InOutDocumentNumber != null) {
+				hash += 13 * this.InOutDocumentNumber.GetHashCode ();
+			}
+			if (this.SkuId != null) {
+				hash += 13 * this.SkuId.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class AudienceStateEventIdDto
 	{
 
-        private AudienceStateEventId _value = new AudienceStateEventId();
-
 		public AudienceStateEventIdDto()
 		{
 		}
 
-		public AudienceStateEventIdDto(AudienceStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public AudienceStateEventId ToAudienceStateEventId()
+        public virtual AudienceStateEventId ToAudienceStateEventId()
         {
-            return this._value;
+            AudienceStateEventId v = new AudienceStateEventId();
+            v.ClientId = this.ClientId;
+            v.Version = this.Version;
+            return v;
         }
 
 		public virtual string ClientId { 
-			get { return _value.ClientId; } 
-			set { _value.ClientId = value; } 
+			get;
+			set;
 		}
 
 		public virtual long Version { 
-			get { return _value.Version; } 
-			set { _value.Version = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.ClientId, other.ClientId)
+				&& Object.Equals (this.Version, other.Version)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.ClientId != null) {
+				hash += 13 * this.ClientId.GetHashCode ();
+			}
+			if (this.Version != null) {
+				hash += 13 * this.Version.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

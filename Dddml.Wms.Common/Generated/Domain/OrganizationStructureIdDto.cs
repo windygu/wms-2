@@ -14,36 +14,32 @@ namespace Dddml.Wms.Domain
 	public class OrganizationStructureIdDto
 	{
 
-        private OrganizationStructureId _value = new OrganizationStructureId();
-
 		public OrganizationStructureIdDto()
 		{
 		}
 
-		public OrganizationStructureIdDto(OrganizationStructureId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public OrganizationStructureId ToOrganizationStructureId()
+        public virtual OrganizationStructureId ToOrganizationStructureId()
         {
-            return this._value;
+            OrganizationStructureId v = new OrganizationStructureId();
+            v.OrganizationStructureTypeId = this.OrganizationStructureTypeId;
+            v.ParentId = this.ParentId;
+            v.SubsidiaryId = this.SubsidiaryId;
+            return v;
         }
 
 		public virtual string OrganizationStructureTypeId { 
-			get { return _value.OrganizationStructureTypeId; } 
-			set { _value.OrganizationStructureTypeId = value; } 
+			get;
+			set;
 		}
 
 		public virtual string ParentId { 
-			get { return _value.ParentId; } 
-			set { _value.ParentId = value; } 
+			get;
+			set;
 		}
 
 		public virtual string SubsidiaryId { 
-			get { return _value.SubsidiaryId; } 
-			set { _value.SubsidiaryId = value; } 
+			get;
+			set;
 		}
 
 
@@ -58,13 +54,26 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.OrganizationStructureTypeId, other.OrganizationStructureTypeId)
+				&& Object.Equals (this.ParentId, other.ParentId)
+				&& Object.Equals (this.SubsidiaryId, other.SubsidiaryId)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.OrganizationStructureTypeId != null) {
+				hash += 13 * this.OrganizationStructureTypeId.GetHashCode ();
+			}
+			if (this.ParentId != null) {
+				hash += 13 * this.ParentId.GetHashCode ();
+			}
+			if (this.SubsidiaryId != null) {
+				hash += 13 * this.SubsidiaryId.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

@@ -267,7 +267,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.UserPermissionId == null)
             {
-                value.UserPermissionId = new UserPermissionIdDto(idObj);
+                value.UserPermissionId = new UserPermissionIdDtoWrapper(idObj);
             }
             else if (!((ICreateOrMergePatchOrDeleteUserPermissionMvo)value).UserPermissionId.Equals(idObj))
             {
@@ -354,7 +354,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new UserPermissionMvoStateDto();
-                dto.UserPermissionId = new UserPermissionIdDto(id);
+                dto.UserPermissionId = new UserPermissionIdDtoWrapper(id);
                 states.Add(dto);
             }
             return states;

@@ -683,7 +683,7 @@ namespace Dddml.Wms.Domain
         {
             var eId = new UserLoginStateEventIdDto();
             eId.UserId = this.StateEventId.UserId;
-            eId.LoginKey = new LoginKeyDto(loginKey);
+            eId.LoginKey = new LoginKeyDtoWrapper(loginKey);
             eId.UserVersion = this.StateEventId.Version;
             return eId;
         }

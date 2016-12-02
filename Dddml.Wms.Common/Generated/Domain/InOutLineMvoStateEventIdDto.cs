@@ -15,31 +15,28 @@ namespace Dddml.Wms.Domain
 	public class InOutLineMvoStateEventIdDto
 	{
 
-        private InOutLineMvoStateEventId _value = new InOutLineMvoStateEventId();
-
 		public InOutLineMvoStateEventIdDto()
 		{
 		}
 
-		public InOutLineMvoStateEventIdDto(InOutLineMvoStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public InOutLineMvoStateEventId ToInOutLineMvoStateEventId()
+        public virtual InOutLineMvoStateEventId ToInOutLineMvoStateEventId()
         {
-            return this._value;
+            InOutLineMvoStateEventId v = new InOutLineMvoStateEventId();
+            v.InOutLineId = this.InOutLineId.ToInOutLineId();
+            v.InOutVersion = this.InOutVersion;
+            return v;
         }
 
+		private InOutLineIdDto _inOutLineId = new InOutLineIdDto();
+
 		public virtual InOutLineIdDto InOutLineId { 
-			get { return new InOutLineIdDto(_value.InOutLineId); } 
-			set { _value.InOutLineId = value.ToInOutLineId(); } 
+			get { return this._inOutLineId; } 
+			set { this._inOutLineId = value; } 
 		}
 
 		public virtual long InOutVersion { 
-			get { return _value.InOutVersion; } 
-			set { _value.InOutVersion = value; } 
+			get;
+			set;
 		}
 
 
@@ -54,13 +51,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.InOutLineId, other.InOutLineId)
+				&& Object.Equals (this.InOutVersion, other.InOutVersion)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.InOutLineId != null) {
+				hash += 13 * this.InOutLineId.GetHashCode ();
+			}
+			if (this.InOutVersion != null) {
+				hash += 13 * this.InOutVersion.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

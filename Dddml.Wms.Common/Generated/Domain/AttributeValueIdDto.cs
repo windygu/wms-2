@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class AttributeValueIdDto
 	{
 
-        private AttributeValueId _value = new AttributeValueId();
-
 		public AttributeValueIdDto()
 		{
 		}
 
-		public AttributeValueIdDto(AttributeValueId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public AttributeValueId ToAttributeValueId()
+        public virtual AttributeValueId ToAttributeValueId()
         {
-            return this._value;
+            AttributeValueId v = new AttributeValueId();
+            v.AttributeId = this.AttributeId;
+            v.Value = this.Value;
+            return v;
         }
 
 		public virtual string AttributeId { 
-			get { return _value.AttributeId; } 
-			set { _value.AttributeId = value; } 
+			get;
+			set;
 		}
 
 		public virtual string Value { 
-			get { return _value.Value; } 
-			set { _value.Value = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.AttributeId, other.AttributeId)
+				&& Object.Equals (this.Value, other.Value)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.AttributeId != null) {
+				hash += 13 * this.AttributeId.GetHashCode ();
+			}
+			if (this.Value != null) {
+				hash += 13 * this.Value.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

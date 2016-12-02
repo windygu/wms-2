@@ -96,7 +96,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.AttributeSetInstanceExtensionFieldId = new AttributeSetInstanceExtensionFieldIdDto(value);
+                this.AttributeSetInstanceExtensionFieldId = new AttributeSetInstanceExtensionFieldIdDtoWrapper(value);
             }
         }
 

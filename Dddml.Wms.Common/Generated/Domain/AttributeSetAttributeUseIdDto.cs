@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class AttributeSetAttributeUseIdDto
 	{
 
-        private AttributeSetAttributeUseId _value = new AttributeSetAttributeUseId();
-
 		public AttributeSetAttributeUseIdDto()
 		{
 		}
 
-		public AttributeSetAttributeUseIdDto(AttributeSetAttributeUseId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public AttributeSetAttributeUseId ToAttributeSetAttributeUseId()
+        public virtual AttributeSetAttributeUseId ToAttributeSetAttributeUseId()
         {
-            return this._value;
+            AttributeSetAttributeUseId v = new AttributeSetAttributeUseId();
+            v.AttributeSetId = this.AttributeSetId;
+            v.AttributeId = this.AttributeId;
+            return v;
         }
 
 		public virtual string AttributeSetId { 
-			get { return _value.AttributeSetId; } 
-			set { _value.AttributeSetId = value; } 
+			get;
+			set;
 		}
 
 		public virtual string AttributeId { 
-			get { return _value.AttributeId; } 
-			set { _value.AttributeId = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.AttributeSetId, other.AttributeSetId)
+				&& Object.Equals (this.AttributeId, other.AttributeId)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.AttributeSetId != null) {
+				hash += 13 * this.AttributeSetId.GetHashCode ();
+			}
+			if (this.AttributeId != null) {
+				hash += 13 * this.AttributeId.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

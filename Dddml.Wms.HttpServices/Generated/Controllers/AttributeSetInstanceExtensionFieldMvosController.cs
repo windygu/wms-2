@@ -267,7 +267,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.AttributeSetInstanceExtensionFieldId == null)
             {
-                value.AttributeSetInstanceExtensionFieldId = new AttributeSetInstanceExtensionFieldIdDto(idObj);
+                value.AttributeSetInstanceExtensionFieldId = new AttributeSetInstanceExtensionFieldIdDtoWrapper(idObj);
             }
             else if (!((ICreateOrMergePatchOrDeleteAttributeSetInstanceExtensionFieldMvo)value).AttributeSetInstanceExtensionFieldId.Equals(idObj))
             {
@@ -354,7 +354,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new AttributeSetInstanceExtensionFieldMvoStateDto();
-                dto.AttributeSetInstanceExtensionFieldId = new AttributeSetInstanceExtensionFieldIdDto(id);
+                dto.AttributeSetInstanceExtensionFieldId = new AttributeSetInstanceExtensionFieldIdDtoWrapper(id);
                 states.Add(dto);
             }
             return states;

@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("LoginKey"))
                 {
-					return (_state.LoginKey == null) ? null : new LoginKeyDto(_state.LoginKey);
+					return (_state.LoginKey == null) ? null : new LoginKeyDtoWrapper(_state.LoginKey);
                 }
                 return null;
             }

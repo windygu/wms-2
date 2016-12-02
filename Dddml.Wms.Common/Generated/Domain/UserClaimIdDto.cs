@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class UserClaimIdDto
 	{
 
-        private UserClaimId _value = new UserClaimId();
-
 		public UserClaimIdDto()
 		{
 		}
 
-		public UserClaimIdDto(UserClaimId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public UserClaimId ToUserClaimId()
+        public virtual UserClaimId ToUserClaimId()
         {
-            return this._value;
+            UserClaimId v = new UserClaimId();
+            v.UserId = this.UserId;
+            v.ClaimId = this.ClaimId;
+            return v;
         }
 
 		public virtual string UserId { 
-			get { return _value.UserId; } 
-			set { _value.UserId = value; } 
+			get;
+			set;
 		}
 
 		public virtual int ClaimId { 
-			get { return _value.ClaimId; } 
-			set { _value.ClaimId = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.UserId, other.UserId)
+				&& Object.Equals (this.ClaimId, other.ClaimId)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.UserId != null) {
+				hash += 13 * this.UserId.GetHashCode ();
+			}
+			if (this.ClaimId != null) {
+				hash += 13 * this.ClaimId.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

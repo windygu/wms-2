@@ -267,7 +267,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.Id == null)
             {
-                value.Id = new OrganizationStructureIdDto(idObj);
+                value.Id = new OrganizationStructureIdDtoWrapper(idObj);
             }
             else if (!((ICreateOrMergePatchOrDeleteOrganizationStructure)value).Id.Equals(idObj))
             {
@@ -354,7 +354,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new OrganizationStructureStateDto();
-                dto.Id = new OrganizationStructureIdDto(id);
+                dto.Id = new OrganizationStructureIdDtoWrapper(id);
                 states.Add(dto);
             }
             return states;

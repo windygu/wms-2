@@ -102,7 +102,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.UserClaimId = new UserClaimIdDto(value);
+                this.UserClaimId = new UserClaimIdDtoWrapper(value);
             }
         }
 

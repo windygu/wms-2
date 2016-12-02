@@ -14,36 +14,34 @@ namespace Dddml.Wms.Domain
 	public class UserLoginStateEventIdDto
 	{
 
-        private UserLoginStateEventId _value = new UserLoginStateEventId();
-
 		public UserLoginStateEventIdDto()
 		{
 		}
 
-		public UserLoginStateEventIdDto(UserLoginStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public UserLoginStateEventId ToUserLoginStateEventId()
+        public virtual UserLoginStateEventId ToUserLoginStateEventId()
         {
-            return this._value;
+            UserLoginStateEventId v = new UserLoginStateEventId();
+            v.UserId = this.UserId;
+            v.LoginKey = this.LoginKey.ToLoginKey();
+            v.UserVersion = this.UserVersion;
+            return v;
         }
 
 		public virtual string UserId { 
-			get { return _value.UserId; } 
-			set { _value.UserId = value; } 
+			get;
+			set;
 		}
 
+		private LoginKeyDto _loginKey = new LoginKeyDto();
+
 		public virtual LoginKeyDto LoginKey { 
-			get { return new LoginKeyDto(_value.LoginKey); } 
-			set { _value.LoginKey = value.ToLoginKey(); } 
+			get { return this._loginKey; } 
+			set { this._loginKey = value; } 
 		}
 
 		public virtual long UserVersion { 
-			get { return _value.UserVersion; } 
-			set { _value.UserVersion = value; } 
+			get;
+			set;
 		}
 
 
@@ -58,13 +56,26 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.UserId, other.UserId)
+				&& Object.Equals (this.LoginKey, other.LoginKey)
+				&& Object.Equals (this.UserVersion, other.UserVersion)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.UserId != null) {
+				hash += 13 * this.UserId.GetHashCode ();
+			}
+			if (this.LoginKey != null) {
+				hash += 13 * this.LoginKey.GetHashCode ();
+			}
+			if (this.UserVersion != null) {
+				hash += 13 * this.UserVersion.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

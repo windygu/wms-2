@@ -15,31 +15,26 @@ namespace Dddml.Wms.Domain
 	public class InOutStateEventIdDto
 	{
 
-        private InOutStateEventId _value = new InOutStateEventId();
-
 		public InOutStateEventIdDto()
 		{
 		}
 
-		public InOutStateEventIdDto(InOutStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public InOutStateEventId ToInOutStateEventId()
+        public virtual InOutStateEventId ToInOutStateEventId()
         {
-            return this._value;
+            InOutStateEventId v = new InOutStateEventId();
+            v.DocumentNumber = this.DocumentNumber;
+            v.Version = this.Version;
+            return v;
         }
 
 		public virtual string DocumentNumber { 
-			get { return _value.DocumentNumber; } 
-			set { _value.DocumentNumber = value; } 
+			get;
+			set;
 		}
 
 		public virtual long Version { 
-			get { return _value.Version; } 
-			set { _value.Version = value; } 
+			get;
+			set;
 		}
 
 
@@ -54,13 +49,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.DocumentNumber, other.DocumentNumber)
+				&& Object.Equals (this.Version, other.Version)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.DocumentNumber != null) {
+				hash += 13 * this.DocumentNumber.GetHashCode ();
+			}
+			if (this.Version != null) {
+				hash += 13 * this.Version.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

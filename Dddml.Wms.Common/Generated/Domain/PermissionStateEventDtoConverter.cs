@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain
         public virtual PermissionStateCreatedDto ToPermissionStateCreatedDto(IPermissionStateCreated e)
         {
             var dto = new PermissionStateCreatedDto();
-            dto.StateEventId = new PermissionStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new PermissionStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain
         public virtual PermissionStateMergePatchedDto ToPermissionStateMergePatchedDto(IPermissionStateMergePatched e)
         {
             var dto = new PermissionStateMergePatchedDto();
-            dto.StateEventId = new PermissionStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new PermissionStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -72,7 +72,7 @@ namespace Dddml.Wms.Domain
         public virtual PermissionStateDeletedDto ToPermissionStateDeletedDto(IPermissionStateDeleted e)
         {
             var dto = new PermissionStateDeletedDto();
-            dto.StateEventId = new PermissionStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new PermissionStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

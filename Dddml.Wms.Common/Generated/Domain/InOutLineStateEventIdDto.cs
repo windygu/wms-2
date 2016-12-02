@@ -15,36 +15,34 @@ namespace Dddml.Wms.Domain
 	public class InOutLineStateEventIdDto
 	{
 
-        private InOutLineStateEventId _value = new InOutLineStateEventId();
-
 		public InOutLineStateEventIdDto()
 		{
 		}
 
-		public InOutLineStateEventIdDto(InOutLineStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public InOutLineStateEventId ToInOutLineStateEventId()
+        public virtual InOutLineStateEventId ToInOutLineStateEventId()
         {
-            return this._value;
+            InOutLineStateEventId v = new InOutLineStateEventId();
+            v.InOutDocumentNumber = this.InOutDocumentNumber;
+            v.SkuId = this.SkuId.ToSkuId();
+            v.InOutVersion = this.InOutVersion;
+            return v;
         }
 
 		public virtual string InOutDocumentNumber { 
-			get { return _value.InOutDocumentNumber; } 
-			set { _value.InOutDocumentNumber = value; } 
+			get;
+			set;
 		}
 
+		private SkuIdDto _skuId = new SkuIdDto();
+
 		public virtual SkuIdDto SkuId { 
-			get { return new SkuIdDto(_value.SkuId); } 
-			set { _value.SkuId = value.ToSkuId(); } 
+			get { return this._skuId; } 
+			set { this._skuId = value; } 
 		}
 
 		public virtual long InOutVersion { 
-			get { return _value.InOutVersion; } 
-			set { _value.InOutVersion = value; } 
+			get;
+			set;
 		}
 
 
@@ -59,13 +57,26 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.InOutDocumentNumber, other.InOutDocumentNumber)
+				&& Object.Equals (this.SkuId, other.SkuId)
+				&& Object.Equals (this.InOutVersion, other.InOutVersion)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.InOutDocumentNumber != null) {
+				hash += 13 * this.InOutDocumentNumber.GetHashCode ();
+			}
+			if (this.SkuId != null) {
+				hash += 13 * this.SkuId.GetHashCode ();
+			}
+			if (this.InOutVersion != null) {
+				hash += 13 * this.InOutVersion.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

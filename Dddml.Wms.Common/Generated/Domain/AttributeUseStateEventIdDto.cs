@@ -14,36 +14,32 @@ namespace Dddml.Wms.Domain
 	public class AttributeUseStateEventIdDto
 	{
 
-        private AttributeUseStateEventId _value = new AttributeUseStateEventId();
-
 		public AttributeUseStateEventIdDto()
 		{
 		}
 
-		public AttributeUseStateEventIdDto(AttributeUseStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public AttributeUseStateEventId ToAttributeUseStateEventId()
+        public virtual AttributeUseStateEventId ToAttributeUseStateEventId()
         {
-            return this._value;
+            AttributeUseStateEventId v = new AttributeUseStateEventId();
+            v.AttributeSetId = this.AttributeSetId;
+            v.AttributeId = this.AttributeId;
+            v.AttributeSetVersion = this.AttributeSetVersion;
+            return v;
         }
 
 		public virtual string AttributeSetId { 
-			get { return _value.AttributeSetId; } 
-			set { _value.AttributeSetId = value; } 
+			get;
+			set;
 		}
 
 		public virtual string AttributeId { 
-			get { return _value.AttributeId; } 
-			set { _value.AttributeId = value; } 
+			get;
+			set;
 		}
 
 		public virtual long AttributeSetVersion { 
-			get { return _value.AttributeSetVersion; } 
-			set { _value.AttributeSetVersion = value; } 
+			get;
+			set;
 		}
 
 
@@ -58,13 +54,26 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.AttributeSetId, other.AttributeSetId)
+				&& Object.Equals (this.AttributeId, other.AttributeId)
+				&& Object.Equals (this.AttributeSetVersion, other.AttributeSetVersion)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.AttributeSetId != null) {
+				hash += 13 * this.AttributeSetId.GetHashCode ();
+			}
+			if (this.AttributeId != null) {
+				hash += 13 * this.AttributeId.GetHashCode ();
+			}
+			if (this.AttributeSetVersion != null) {
+				hash += 13 * this.AttributeSetVersion.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

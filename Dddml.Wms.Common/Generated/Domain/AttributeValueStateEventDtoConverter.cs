@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain
         public virtual AttributeValueStateCreatedDto ToAttributeValueStateCreatedDto(IAttributeValueStateCreated e)
         {
             var dto = new AttributeValueStateCreatedDto();
-            dto.StateEventId = new AttributeValueStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AttributeValueStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain
         public virtual AttributeValueStateMergePatchedDto ToAttributeValueStateMergePatchedDto(IAttributeValueStateMergePatched e)
         {
             var dto = new AttributeValueStateMergePatchedDto();
-            dto.StateEventId = new AttributeValueStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AttributeValueStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain
         public virtual AttributeValueStateRemovedDto ToAttributeValueStateRemovedDto(IAttributeValueStateRemoved e)
         {
             var dto = new AttributeValueStateRemovedDto();
-            dto.StateEventId = new AttributeValueStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new AttributeValueStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

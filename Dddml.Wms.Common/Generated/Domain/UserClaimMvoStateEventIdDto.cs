@@ -14,31 +14,28 @@ namespace Dddml.Wms.Domain
 	public class UserClaimMvoStateEventIdDto
 	{
 
-        private UserClaimMvoStateEventId _value = new UserClaimMvoStateEventId();
-
 		public UserClaimMvoStateEventIdDto()
 		{
 		}
 
-		public UserClaimMvoStateEventIdDto(UserClaimMvoStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public UserClaimMvoStateEventId ToUserClaimMvoStateEventId()
+        public virtual UserClaimMvoStateEventId ToUserClaimMvoStateEventId()
         {
-            return this._value;
+            UserClaimMvoStateEventId v = new UserClaimMvoStateEventId();
+            v.UserClaimId = this.UserClaimId.ToUserClaimId();
+            v.UserVersion = this.UserVersion;
+            return v;
         }
 
+		private UserClaimIdDto _userClaimId = new UserClaimIdDto();
+
 		public virtual UserClaimIdDto UserClaimId { 
-			get { return new UserClaimIdDto(_value.UserClaimId); } 
-			set { _value.UserClaimId = value.ToUserClaimId(); } 
+			get { return this._userClaimId; } 
+			set { this._userClaimId = value; } 
 		}
 
 		public virtual long UserVersion { 
-			get { return _value.UserVersion; } 
-			set { _value.UserVersion = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +50,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.UserClaimId, other.UserClaimId)
+				&& Object.Equals (this.UserVersion, other.UserVersion)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.UserClaimId != null) {
+				hash += 13 * this.UserClaimId.GetHashCode ();
+			}
+			if (this.UserVersion != null) {
+				hash += 13 * this.UserVersion.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

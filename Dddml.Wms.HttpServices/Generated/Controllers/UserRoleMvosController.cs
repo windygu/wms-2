@@ -267,7 +267,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.UserRoleId == null)
             {
-                value.UserRoleId = new UserRoleIdDto(idObj);
+                value.UserRoleId = new UserRoleIdDtoWrapper(idObj);
             }
             else if (!((ICreateOrMergePatchOrDeleteUserRoleMvo)value).UserRoleId.Equals(idObj))
             {
@@ -354,7 +354,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new UserRoleMvoStateDto();
-                dto.UserRoleId = new UserRoleIdDto(id);
+                dto.UserRoleId = new UserRoleIdDtoWrapper(id);
                 states.Add(dto);
             }
             return states;

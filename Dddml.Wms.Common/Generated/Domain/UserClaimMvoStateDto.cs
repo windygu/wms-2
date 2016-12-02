@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("UserClaimId"))
                 {
-					return (_state.UserClaimId == null) ? null : new UserClaimIdDto(_state.UserClaimId);
+					return (_state.UserClaimId == null) ? null : new UserClaimIdDtoWrapper(_state.UserClaimId);
                 }
                 return null;
             }

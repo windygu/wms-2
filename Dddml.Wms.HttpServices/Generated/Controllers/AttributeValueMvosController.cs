@@ -267,7 +267,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.AttributeValueId == null)
             {
-                value.AttributeValueId = new AttributeValueIdDto(idObj);
+                value.AttributeValueId = new AttributeValueIdDtoWrapper(idObj);
             }
             else if (!((ICreateOrMergePatchOrDeleteAttributeValueMvo)value).AttributeValueId.Equals(idObj))
             {
@@ -354,7 +354,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new AttributeValueMvoStateDto();
-                dto.AttributeValueId = new AttributeValueIdDto(id);
+                dto.AttributeValueId = new AttributeValueIdDtoWrapper(id);
                 states.Add(dto);
             }
             return states;

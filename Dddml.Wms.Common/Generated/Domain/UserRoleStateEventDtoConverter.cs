@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain
         public virtual UserRoleStateCreatedDto ToUserRoleStateCreatedDto(IUserRoleStateCreated e)
         {
             var dto = new UserRoleStateCreatedDto();
-            dto.StateEventId = new UserRoleStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new UserRoleStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain
         public virtual UserRoleStateMergePatchedDto ToUserRoleStateMergePatchedDto(IUserRoleStateMergePatched e)
         {
             var dto = new UserRoleStateMergePatchedDto();
-            dto.StateEventId = new UserRoleStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new UserRoleStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain
         public virtual UserRoleStateRemovedDto ToUserRoleStateRemovedDto(IUserRoleStateRemoved e)
         {
             var dto = new UserRoleStateRemovedDto();
-            dto.StateEventId = new UserRoleStateEventIdDto(e.StateEventId);
+            dto.StateEventId = new UserRoleStateEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

@@ -267,7 +267,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.UserClaimId == null)
             {
-                value.UserClaimId = new UserClaimIdDto(idObj);
+                value.UserClaimId = new UserClaimIdDtoWrapper(idObj);
             }
             else if (!((ICreateOrMergePatchOrDeleteUserClaimMvo)value).UserClaimId.Equals(idObj))
             {
@@ -354,7 +354,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new UserClaimMvoStateDto();
-                dto.UserClaimId = new UserClaimIdDto(id);
+                dto.UserClaimId = new UserClaimIdDtoWrapper(id);
                 states.Add(dto);
             }
             return states;

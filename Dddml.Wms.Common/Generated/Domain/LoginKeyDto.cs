@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class LoginKeyDto
 	{
 
-        private LoginKey _value = new LoginKey();
-
 		public LoginKeyDto()
 		{
 		}
 
-		public LoginKeyDto(LoginKey val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public LoginKey ToLoginKey()
+        public virtual LoginKey ToLoginKey()
         {
-            return this._value;
+            LoginKey v = new LoginKey();
+            v.LoginProvider = this.LoginProvider;
+            v.ProviderKey = this.ProviderKey;
+            return v;
         }
 
 		public virtual string LoginProvider { 
-			get { return _value.LoginProvider; } 
-			set { _value.LoginProvider = value; } 
+			get;
+			set;
 		}
 
 		public virtual string ProviderKey { 
-			get { return _value.ProviderKey; } 
-			set { _value.ProviderKey = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.LoginProvider, other.LoginProvider)
+				&& Object.Equals (this.ProviderKey, other.ProviderKey)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.LoginProvider != null) {
+				hash += 13 * this.LoginProvider.GetHashCode ();
+			}
+			if (this.ProviderKey != null) {
+				hash += 13 * this.ProviderKey.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

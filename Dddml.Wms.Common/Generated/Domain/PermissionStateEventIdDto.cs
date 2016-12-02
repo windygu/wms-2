@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class PermissionStateEventIdDto
 	{
 
-        private PermissionStateEventId _value = new PermissionStateEventId();
-
 		public PermissionStateEventIdDto()
 		{
 		}
 
-		public PermissionStateEventIdDto(PermissionStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public PermissionStateEventId ToPermissionStateEventId()
+        public virtual PermissionStateEventId ToPermissionStateEventId()
         {
-            return this._value;
+            PermissionStateEventId v = new PermissionStateEventId();
+            v.PermissionId = this.PermissionId;
+            v.Version = this.Version;
+            return v;
         }
 
 		public virtual string PermissionId { 
-			get { return _value.PermissionId; } 
-			set { _value.PermissionId = value; } 
+			get;
+			set;
 		}
 
 		public virtual long Version { 
-			get { return _value.Version; } 
-			set { _value.Version = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.PermissionId, other.PermissionId)
+				&& Object.Equals (this.Version, other.Version)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.PermissionId != null) {
+				hash += 13 * this.PermissionId.GetHashCode ();
+			}
+			if (this.Version != null) {
+				hash += 13 * this.Version.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

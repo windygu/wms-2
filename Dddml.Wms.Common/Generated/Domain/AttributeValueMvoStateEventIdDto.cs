@@ -14,31 +14,28 @@ namespace Dddml.Wms.Domain
 	public class AttributeValueMvoStateEventIdDto
 	{
 
-        private AttributeValueMvoStateEventId _value = new AttributeValueMvoStateEventId();
-
 		public AttributeValueMvoStateEventIdDto()
 		{
 		}
 
-		public AttributeValueMvoStateEventIdDto(AttributeValueMvoStateEventId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public AttributeValueMvoStateEventId ToAttributeValueMvoStateEventId()
+        public virtual AttributeValueMvoStateEventId ToAttributeValueMvoStateEventId()
         {
-            return this._value;
+            AttributeValueMvoStateEventId v = new AttributeValueMvoStateEventId();
+            v.AttributeValueId = this.AttributeValueId.ToAttributeValueId();
+            v.AttributeVersion = this.AttributeVersion;
+            return v;
         }
 
+		private AttributeValueIdDto _attributeValueId = new AttributeValueIdDto();
+
 		public virtual AttributeValueIdDto AttributeValueId { 
-			get { return new AttributeValueIdDto(_value.AttributeValueId); } 
-			set { _value.AttributeValueId = value.ToAttributeValueId(); } 
+			get { return this._attributeValueId; } 
+			set { this._attributeValueId = value; } 
 		}
 
 		public virtual long AttributeVersion { 
-			get { return _value.AttributeVersion; } 
-			set { _value.AttributeVersion = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +50,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.AttributeValueId, other.AttributeValueId)
+				&& Object.Equals (this.AttributeVersion, other.AttributeVersion)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.AttributeValueId != null) {
+				hash += 13 * this.AttributeValueId.GetHashCode ();
+			}
+			if (this.AttributeVersion != null) {
+				hash += 13 * this.AttributeVersion.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

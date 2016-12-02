@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class UserPermissionIdDto
 	{
 
-        private UserPermissionId _value = new UserPermissionId();
-
 		public UserPermissionIdDto()
 		{
 		}
 
-		public UserPermissionIdDto(UserPermissionId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public UserPermissionId ToUserPermissionId()
+        public virtual UserPermissionId ToUserPermissionId()
         {
-            return this._value;
+            UserPermissionId v = new UserPermissionId();
+            v.UserId = this.UserId;
+            v.PermissionId = this.PermissionId;
+            return v;
         }
 
 		public virtual string UserId { 
-			get { return _value.UserId; } 
-			set { _value.UserId = value; } 
+			get;
+			set;
 		}
 
 		public virtual string PermissionId { 
-			get { return _value.PermissionId; } 
-			set { _value.PermissionId = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.UserId, other.UserId)
+				&& Object.Equals (this.PermissionId, other.PermissionId)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.UserId != null) {
+				hash += 13 * this.UserId.GetHashCode ();
+			}
+			if (this.PermissionId != null) {
+				hash += 13 * this.PermissionId.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

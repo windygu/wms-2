@@ -14,31 +14,26 @@ namespace Dddml.Wms.Domain
 	public class AttributeSetInstanceExtensionFieldIdDto
 	{
 
-        private AttributeSetInstanceExtensionFieldId _value = new AttributeSetInstanceExtensionFieldId();
-
 		public AttributeSetInstanceExtensionFieldIdDto()
 		{
 		}
 
-		public AttributeSetInstanceExtensionFieldIdDto(AttributeSetInstanceExtensionFieldId val)
-		{
-			if (val == null) { throw new ArgumentNullException("val"); }
-			this._value = val;
-		}
-
-        public AttributeSetInstanceExtensionFieldId ToAttributeSetInstanceExtensionFieldId()
+        public virtual AttributeSetInstanceExtensionFieldId ToAttributeSetInstanceExtensionFieldId()
         {
-            return this._value;
+            AttributeSetInstanceExtensionFieldId v = new AttributeSetInstanceExtensionFieldId();
+            v.GroupId = this.GroupId;
+            v.Index = this.Index;
+            return v;
         }
 
 		public virtual string GroupId { 
-			get { return _value.GroupId; } 
-			set { _value.GroupId = value; } 
+			get;
+			set;
 		}
 
 		public virtual string Index { 
-			get { return _value.Index; } 
-			set { _value.Index = value; } 
+			get;
+			set;
 		}
 
 
@@ -53,13 +48,22 @@ namespace Dddml.Wms.Domain
 				return false;
 			}
 
-            return _value.Equals(other._value);
-
+			return true 
+				&& Object.Equals (this.GroupId, other.GroupId)
+				&& Object.Equals (this.Index, other.Index)
+				;
 		}
 
 		public override int GetHashCode ()
 		{
-			return _value.GetHashCode();
+			int hash = 0;
+			if (this.GroupId != null) {
+				hash += 13 * this.GroupId.GetHashCode ();
+			}
+			if (this.Index != null) {
+				hash += 13 * this.Index.GetHashCode ();
+			}
+			return hash;
 		}
 
 	}

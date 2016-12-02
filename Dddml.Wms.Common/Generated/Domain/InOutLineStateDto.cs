@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDto).ReturnedFieldsContains("SkuId"))
                 {
-					return (_state.SkuId == null) ? null : new SkuIdDto(_state.SkuId);
+					return (_state.SkuId == null) ? null : new SkuIdDtoWrapper(_state.SkuId);
                 }
                 return null;
             }
