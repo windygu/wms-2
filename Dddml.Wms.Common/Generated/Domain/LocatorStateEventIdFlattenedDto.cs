@@ -47,22 +47,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private LocatorStateEventId _value = new LocatorStateEventId();
+        private LocatorStateEventIdDto _value = new LocatorStateEventIdDto();
 
 		public LocatorStateEventIdFlattenedDto()
 		{
 		}
 
-		public LocatorStateEventIdFlattenedDto(LocatorStateEventId val)
+		public LocatorStateEventIdFlattenedDto(LocatorStateEventIdDto val)
 		{
 			this._value = val;
 		}
 
-        public LocatorStateEventId ToLocatorStateEventId()
+        public LocatorStateEventIdDto ToLocatorStateEventIdDto()
         {
             return this._value;
         }
 
+		public LocatorStateEventIdFlattenedDto(LocatorStateEventId val)
+		{
+			this._value = new LocatorStateEventIdDtoWrapper(val);
+		}
+
+        public LocatorStateEventId ToLocatorStateEventId()
+        {
+            return this._value.ToLocatorStateEventId();
+        }
 
 		public virtual string LocatorId { 
 			get { return _value.LocatorId; } 

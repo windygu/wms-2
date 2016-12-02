@@ -47,22 +47,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private OrganizationStructureTypeStateEventId _value = new OrganizationStructureTypeStateEventId();
+        private OrganizationStructureTypeStateEventIdDto _value = new OrganizationStructureTypeStateEventIdDto();
 
 		public OrganizationStructureTypeStateEventIdFlattenedDto()
 		{
 		}
 
-		public OrganizationStructureTypeStateEventIdFlattenedDto(OrganizationStructureTypeStateEventId val)
+		public OrganizationStructureTypeStateEventIdFlattenedDto(OrganizationStructureTypeStateEventIdDto val)
 		{
 			this._value = val;
 		}
 
-        public OrganizationStructureTypeStateEventId ToOrganizationStructureTypeStateEventId()
+        public OrganizationStructureTypeStateEventIdDto ToOrganizationStructureTypeStateEventIdDto()
         {
             return this._value;
         }
 
+		public OrganizationStructureTypeStateEventIdFlattenedDto(OrganizationStructureTypeStateEventId val)
+		{
+			this._value = new OrganizationStructureTypeStateEventIdDtoWrapper(val);
+		}
+
+        public OrganizationStructureTypeStateEventId ToOrganizationStructureTypeStateEventId()
+        {
+            return this._value.ToOrganizationStructureTypeStateEventId();
+        }
 
 		public virtual string Id { 
 			get { return _value.Id; } 

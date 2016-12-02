@@ -47,22 +47,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private LoginKey _value = new LoginKey();
+        private LoginKeyDto _value = new LoginKeyDto();
 
 		public LoginKeyFlattenedDto()
 		{
 		}
 
-		public LoginKeyFlattenedDto(LoginKey val)
+		public LoginKeyFlattenedDto(LoginKeyDto val)
 		{
 			this._value = val;
 		}
 
-        public LoginKey ToLoginKey()
+        public LoginKeyDto ToLoginKeyDto()
         {
             return this._value;
         }
 
+		public LoginKeyFlattenedDto(LoginKey val)
+		{
+			this._value = new LoginKeyDtoWrapper(val);
+		}
+
+        public LoginKey ToLoginKey()
+        {
+            return this._value.ToLoginKey();
+        }
 
 		public virtual string LoginProvider { 
 			get { return _value.LoginProvider; } 

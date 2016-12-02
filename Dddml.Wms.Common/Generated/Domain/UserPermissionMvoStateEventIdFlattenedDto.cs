@@ -52,22 +52,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private UserPermissionMvoStateEventId _value = new UserPermissionMvoStateEventId();
+        private UserPermissionMvoStateEventIdDto _value = new UserPermissionMvoStateEventIdDto();
 
 		public UserPermissionMvoStateEventIdFlattenedDto()
 		{
 		}
 
-		public UserPermissionMvoStateEventIdFlattenedDto(UserPermissionMvoStateEventId val)
+		public UserPermissionMvoStateEventIdFlattenedDto(UserPermissionMvoStateEventIdDto val)
 		{
 			this._value = val;
 		}
 
-        public UserPermissionMvoStateEventId ToUserPermissionMvoStateEventId()
+        public UserPermissionMvoStateEventIdDto ToUserPermissionMvoStateEventIdDto()
         {
             return this._value;
         }
 
+		public UserPermissionMvoStateEventIdFlattenedDto(UserPermissionMvoStateEventId val)
+		{
+			this._value = new UserPermissionMvoStateEventIdDtoWrapper(val);
+		}
+
+        public UserPermissionMvoStateEventId ToUserPermissionMvoStateEventId()
+        {
+            return this._value.ToUserPermissionMvoStateEventId();
+        }
 
 		public virtual string UserPermissionIdUserId {
 			get { return _value.UserPermissionId.UserId; }

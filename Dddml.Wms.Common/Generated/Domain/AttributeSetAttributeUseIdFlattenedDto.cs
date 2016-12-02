@@ -47,22 +47,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private AttributeSetAttributeUseId _value = new AttributeSetAttributeUseId();
+        private AttributeSetAttributeUseIdDto _value = new AttributeSetAttributeUseIdDto();
 
 		public AttributeSetAttributeUseIdFlattenedDto()
 		{
 		}
 
-		public AttributeSetAttributeUseIdFlattenedDto(AttributeSetAttributeUseId val)
+		public AttributeSetAttributeUseIdFlattenedDto(AttributeSetAttributeUseIdDto val)
 		{
 			this._value = val;
 		}
 
-        public AttributeSetAttributeUseId ToAttributeSetAttributeUseId()
+        public AttributeSetAttributeUseIdDto ToAttributeSetAttributeUseIdDto()
         {
             return this._value;
         }
 
+		public AttributeSetAttributeUseIdFlattenedDto(AttributeSetAttributeUseId val)
+		{
+			this._value = new AttributeSetAttributeUseIdDtoWrapper(val);
+		}
+
+        public AttributeSetAttributeUseId ToAttributeSetAttributeUseId()
+        {
+            return this._value.ToAttributeSetAttributeUseId();
+        }
 
 		public virtual string AttributeSetId { 
 			get { return _value.AttributeSetId; } 

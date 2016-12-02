@@ -47,22 +47,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private AudienceStateEventId _value = new AudienceStateEventId();
+        private AudienceStateEventIdDto _value = new AudienceStateEventIdDto();
 
 		public AudienceStateEventIdFlattenedDto()
 		{
 		}
 
-		public AudienceStateEventIdFlattenedDto(AudienceStateEventId val)
+		public AudienceStateEventIdFlattenedDto(AudienceStateEventIdDto val)
 		{
 			this._value = val;
 		}
 
-        public AudienceStateEventId ToAudienceStateEventId()
+        public AudienceStateEventIdDto ToAudienceStateEventIdDto()
         {
             return this._value;
         }
 
+		public AudienceStateEventIdFlattenedDto(AudienceStateEventId val)
+		{
+			this._value = new AudienceStateEventIdDtoWrapper(val);
+		}
+
+        public AudienceStateEventId ToAudienceStateEventId()
+        {
+            return this._value.ToAudienceStateEventId();
+        }
 
 		public virtual string ClientId { 
 			get { return _value.ClientId; } 

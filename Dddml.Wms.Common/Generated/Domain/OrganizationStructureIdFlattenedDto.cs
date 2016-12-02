@@ -52,22 +52,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private OrganizationStructureId _value = new OrganizationStructureId();
+        private OrganizationStructureIdDto _value = new OrganizationStructureIdDto();
 
 		public OrganizationStructureIdFlattenedDto()
 		{
 		}
 
-		public OrganizationStructureIdFlattenedDto(OrganizationStructureId val)
+		public OrganizationStructureIdFlattenedDto(OrganizationStructureIdDto val)
 		{
 			this._value = val;
 		}
 
-        public OrganizationStructureId ToOrganizationStructureId()
+        public OrganizationStructureIdDto ToOrganizationStructureIdDto()
         {
             return this._value;
         }
 
+		public OrganizationStructureIdFlattenedDto(OrganizationStructureId val)
+		{
+			this._value = new OrganizationStructureIdDtoWrapper(val);
+		}
+
+        public OrganizationStructureId ToOrganizationStructureId()
+        {
+            return this._value.ToOrganizationStructureId();
+        }
 
 		public virtual string OrganizationStructureTypeId { 
 			get { return _value.OrganizationStructureTypeId; } 

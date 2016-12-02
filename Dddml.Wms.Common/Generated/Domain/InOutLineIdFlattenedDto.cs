@@ -53,22 +53,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private InOutLineId _value = new InOutLineId();
+        private InOutLineIdDto _value = new InOutLineIdDto();
 
 		public InOutLineIdFlattenedDto()
 		{
 		}
 
-		public InOutLineIdFlattenedDto(InOutLineId val)
+		public InOutLineIdFlattenedDto(InOutLineIdDto val)
 		{
 			this._value = val;
 		}
 
-        public InOutLineId ToInOutLineId()
+        public InOutLineIdDto ToInOutLineIdDto()
         {
             return this._value;
         }
 
+		public InOutLineIdFlattenedDto(InOutLineId val)
+		{
+			this._value = new InOutLineIdDtoWrapper(val);
+		}
+
+        public InOutLineId ToInOutLineId()
+        {
+            return this._value.ToInOutLineId();
+        }
 
 		public virtual string InOutDocumentNumber { 
 			get { return _value.InOutDocumentNumber; } 

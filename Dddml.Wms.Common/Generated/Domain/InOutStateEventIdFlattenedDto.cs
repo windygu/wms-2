@@ -48,22 +48,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private InOutStateEventId _value = new InOutStateEventId();
+        private InOutStateEventIdDto _value = new InOutStateEventIdDto();
 
 		public InOutStateEventIdFlattenedDto()
 		{
 		}
 
-		public InOutStateEventIdFlattenedDto(InOutStateEventId val)
+		public InOutStateEventIdFlattenedDto(InOutStateEventIdDto val)
 		{
 			this._value = val;
 		}
 
-        public InOutStateEventId ToInOutStateEventId()
+        public InOutStateEventIdDto ToInOutStateEventIdDto()
         {
             return this._value;
         }
 
+		public InOutStateEventIdFlattenedDto(InOutStateEventId val)
+		{
+			this._value = new InOutStateEventIdDtoWrapper(val);
+		}
+
+        public InOutStateEventId ToInOutStateEventId()
+        {
+            return this._value.ToInOutStateEventId();
+        }
 
 		public virtual string DocumentNumber { 
 			get { return _value.DocumentNumber; } 

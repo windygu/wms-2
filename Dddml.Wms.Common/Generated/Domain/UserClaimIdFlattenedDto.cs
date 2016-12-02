@@ -47,22 +47,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private UserClaimId _value = new UserClaimId();
+        private UserClaimIdDto _value = new UserClaimIdDto();
 
 		public UserClaimIdFlattenedDto()
 		{
 		}
 
-		public UserClaimIdFlattenedDto(UserClaimId val)
+		public UserClaimIdFlattenedDto(UserClaimIdDto val)
 		{
 			this._value = val;
 		}
 
-        public UserClaimId ToUserClaimId()
+        public UserClaimIdDto ToUserClaimIdDto()
         {
             return this._value;
         }
 
+		public UserClaimIdFlattenedDto(UserClaimId val)
+		{
+			this._value = new UserClaimIdDtoWrapper(val);
+		}
+
+        public UserClaimId ToUserClaimId()
+        {
+            return this._value.ToUserClaimId();
+        }
 
 		public virtual string UserId { 
 			get { return _value.UserId; } 

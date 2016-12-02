@@ -52,22 +52,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private AttributeSetInstanceExtensionFieldMvoStateEventId _value = new AttributeSetInstanceExtensionFieldMvoStateEventId();
+        private AttributeSetInstanceExtensionFieldMvoStateEventIdDto _value = new AttributeSetInstanceExtensionFieldMvoStateEventIdDto();
 
 		public AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDto()
 		{
 		}
 
-		public AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDto(AttributeSetInstanceExtensionFieldMvoStateEventId val)
+		public AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDto(AttributeSetInstanceExtensionFieldMvoStateEventIdDto val)
 		{
 			this._value = val;
 		}
 
-        public AttributeSetInstanceExtensionFieldMvoStateEventId ToAttributeSetInstanceExtensionFieldMvoStateEventId()
+        public AttributeSetInstanceExtensionFieldMvoStateEventIdDto ToAttributeSetInstanceExtensionFieldMvoStateEventIdDto()
         {
             return this._value;
         }
 
+		public AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDto(AttributeSetInstanceExtensionFieldMvoStateEventId val)
+		{
+			this._value = new AttributeSetInstanceExtensionFieldMvoStateEventIdDtoWrapper(val);
+		}
+
+        public AttributeSetInstanceExtensionFieldMvoStateEventId ToAttributeSetInstanceExtensionFieldMvoStateEventId()
+        {
+            return this._value.ToAttributeSetInstanceExtensionFieldMvoStateEventId();
+        }
 
 		public virtual string AttributeSetInstanceExtensionFieldIdGroupId {
 			get { return _value.AttributeSetInstanceExtensionFieldId.GroupId; }

@@ -47,22 +47,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private WarehouseStateEventId _value = new WarehouseStateEventId();
+        private WarehouseStateEventIdDto _value = new WarehouseStateEventIdDto();
 
 		public WarehouseStateEventIdFlattenedDto()
 		{
 		}
 
-		public WarehouseStateEventIdFlattenedDto(WarehouseStateEventId val)
+		public WarehouseStateEventIdFlattenedDto(WarehouseStateEventIdDto val)
 		{
 			this._value = val;
 		}
 
-        public WarehouseStateEventId ToWarehouseStateEventId()
+        public WarehouseStateEventIdDto ToWarehouseStateEventIdDto()
         {
             return this._value;
         }
 
+		public WarehouseStateEventIdFlattenedDto(WarehouseStateEventId val)
+		{
+			this._value = new WarehouseStateEventIdDtoWrapper(val);
+		}
+
+        public WarehouseStateEventId ToWarehouseStateEventId()
+        {
+            return this._value.ToWarehouseStateEventId();
+        }
 
 		public virtual string WarehouseId { 
 			get { return _value.WarehouseId; } 

@@ -47,22 +47,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private UserRoleId _value = new UserRoleId();
+        private UserRoleIdDto _value = new UserRoleIdDto();
 
 		public UserRoleIdFlattenedDto()
 		{
 		}
 
-		public UserRoleIdFlattenedDto(UserRoleId val)
+		public UserRoleIdFlattenedDto(UserRoleIdDto val)
 		{
 			this._value = val;
 		}
 
-        public UserRoleId ToUserRoleId()
+        public UserRoleIdDto ToUserRoleIdDto()
         {
             return this._value;
         }
 
+		public UserRoleIdFlattenedDto(UserRoleId val)
+		{
+			this._value = new UserRoleIdDtoWrapper(val);
+		}
+
+        public UserRoleId ToUserRoleId()
+        {
+            return this._value.ToUserRoleId();
+        }
 
 		public virtual string UserId { 
 			get { return _value.UserId; } 

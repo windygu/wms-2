@@ -47,22 +47,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private SkuId _value = new SkuId();
+        private SkuIdDto _value = new SkuIdDto();
 
 		public SkuIdFlattenedDto()
 		{
 		}
 
-		public SkuIdFlattenedDto(SkuId val)
+		public SkuIdFlattenedDto(SkuIdDto val)
 		{
 			this._value = val;
 		}
 
-        public SkuId ToSkuId()
+        public SkuIdDto ToSkuIdDto()
         {
             return this._value;
         }
 
+		public SkuIdFlattenedDto(SkuId val)
+		{
+			this._value = new SkuIdDtoWrapper(val);
+		}
+
+        public SkuId ToSkuId()
+        {
+            return this._value.ToSkuId();
+        }
 
 		public virtual string ProductId { 
 			get { return _value.ProductId; } 

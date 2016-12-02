@@ -52,22 +52,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private AttributeValueMvoStateEventId _value = new AttributeValueMvoStateEventId();
+        private AttributeValueMvoStateEventIdDto _value = new AttributeValueMvoStateEventIdDto();
 
 		public AttributeValueMvoStateEventIdFlattenedDto()
 		{
 		}
 
-		public AttributeValueMvoStateEventIdFlattenedDto(AttributeValueMvoStateEventId val)
+		public AttributeValueMvoStateEventIdFlattenedDto(AttributeValueMvoStateEventIdDto val)
 		{
 			this._value = val;
 		}
 
-        public AttributeValueMvoStateEventId ToAttributeValueMvoStateEventId()
+        public AttributeValueMvoStateEventIdDto ToAttributeValueMvoStateEventIdDto()
         {
             return this._value;
         }
 
+		public AttributeValueMvoStateEventIdFlattenedDto(AttributeValueMvoStateEventId val)
+		{
+			this._value = new AttributeValueMvoStateEventIdDtoWrapper(val);
+		}
+
+        public AttributeValueMvoStateEventId ToAttributeValueMvoStateEventId()
+        {
+            return this._value.ToAttributeValueMvoStateEventId();
+        }
 
 		public virtual string AttributeValueIdAttributeId {
 			get { return _value.AttributeValueId.AttributeId; }

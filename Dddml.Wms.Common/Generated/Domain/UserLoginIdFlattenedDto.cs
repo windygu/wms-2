@@ -52,22 +52,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private UserLoginId _value = new UserLoginId();
+        private UserLoginIdDto _value = new UserLoginIdDto();
 
 		public UserLoginIdFlattenedDto()
 		{
 		}
 
-		public UserLoginIdFlattenedDto(UserLoginId val)
+		public UserLoginIdFlattenedDto(UserLoginIdDto val)
 		{
 			this._value = val;
 		}
 
-        public UserLoginId ToUserLoginId()
+        public UserLoginIdDto ToUserLoginIdDto()
         {
             return this._value;
         }
 
+		public UserLoginIdFlattenedDto(UserLoginId val)
+		{
+			this._value = new UserLoginIdDtoWrapper(val);
+		}
+
+        public UserLoginId ToUserLoginId()
+        {
+            return this._value.ToUserLoginId();
+        }
 
 		public virtual string UserId { 
 			get { return _value.UserId; } 

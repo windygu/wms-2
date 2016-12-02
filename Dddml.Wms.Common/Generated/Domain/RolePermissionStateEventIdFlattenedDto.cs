@@ -52,22 +52,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private RolePermissionStateEventId _value = new RolePermissionStateEventId();
+        private RolePermissionStateEventIdDto _value = new RolePermissionStateEventIdDto();
 
 		public RolePermissionStateEventIdFlattenedDto()
 		{
 		}
 
-		public RolePermissionStateEventIdFlattenedDto(RolePermissionStateEventId val)
+		public RolePermissionStateEventIdFlattenedDto(RolePermissionStateEventIdDto val)
 		{
 			this._value = val;
 		}
 
-        public RolePermissionStateEventId ToRolePermissionStateEventId()
+        public RolePermissionStateEventIdDto ToRolePermissionStateEventIdDto()
         {
             return this._value;
         }
 
+		public RolePermissionStateEventIdFlattenedDto(RolePermissionStateEventId val)
+		{
+			this._value = new RolePermissionStateEventIdDtoWrapper(val);
+		}
+
+        public RolePermissionStateEventId ToRolePermissionStateEventId()
+        {
+            return this._value.ToRolePermissionStateEventId();
+        }
 
 		public virtual string IdRoleId {
 			get { return _value.Id.RoleId; }

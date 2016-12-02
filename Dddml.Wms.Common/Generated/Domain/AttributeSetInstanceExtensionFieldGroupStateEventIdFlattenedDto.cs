@@ -47,22 +47,31 @@ namespace Dddml.Wms.Domain
         }
 
 
-        private AttributeSetInstanceExtensionFieldGroupStateEventId _value = new AttributeSetInstanceExtensionFieldGroupStateEventId();
+        private AttributeSetInstanceExtensionFieldGroupStateEventIdDto _value = new AttributeSetInstanceExtensionFieldGroupStateEventIdDto();
 
 		public AttributeSetInstanceExtensionFieldGroupStateEventIdFlattenedDto()
 		{
 		}
 
-		public AttributeSetInstanceExtensionFieldGroupStateEventIdFlattenedDto(AttributeSetInstanceExtensionFieldGroupStateEventId val)
+		public AttributeSetInstanceExtensionFieldGroupStateEventIdFlattenedDto(AttributeSetInstanceExtensionFieldGroupStateEventIdDto val)
 		{
 			this._value = val;
 		}
 
-        public AttributeSetInstanceExtensionFieldGroupStateEventId ToAttributeSetInstanceExtensionFieldGroupStateEventId()
+        public AttributeSetInstanceExtensionFieldGroupStateEventIdDto ToAttributeSetInstanceExtensionFieldGroupStateEventIdDto()
         {
             return this._value;
         }
 
+		public AttributeSetInstanceExtensionFieldGroupStateEventIdFlattenedDto(AttributeSetInstanceExtensionFieldGroupStateEventId val)
+		{
+			this._value = new AttributeSetInstanceExtensionFieldGroupStateEventIdDtoWrapper(val);
+		}
+
+        public AttributeSetInstanceExtensionFieldGroupStateEventId ToAttributeSetInstanceExtensionFieldGroupStateEventId()
+        {
+            return this._value.ToAttributeSetInstanceExtensionFieldGroupStateEventId();
+        }
 
 		public virtual string Id { 
 			get { return _value.Id; } 
