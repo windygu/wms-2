@@ -11,7 +11,7 @@ using Dddml.Wms.Domain;
 namespace Dddml.Wms.Domain
 {
 
-	public partial class UserClaimMvoStateDto : StateDtoBase, IUserClaimMvoState
+	public partial class UserClaimMvoStateDto : StateDtoBase, IUserClaimMvoStateDto, IUserClaimMvoState
 	{
 
         internal static IList<string> _collectionFieldNames = new string[] {  };

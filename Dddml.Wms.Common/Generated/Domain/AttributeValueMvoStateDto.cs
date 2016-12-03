@@ -11,7 +11,7 @@ using Dddml.Wms.Domain;
 namespace Dddml.Wms.Domain
 {
 
-	public partial class AttributeValueMvoStateDto : StateDtoBase, IAttributeValueMvoState
+	public partial class AttributeValueMvoStateDto : StateDtoBase, IAttributeValueMvoStateDto, IAttributeValueMvoState
 	{
 
         internal static IList<string> _collectionFieldNames = new string[] {  };

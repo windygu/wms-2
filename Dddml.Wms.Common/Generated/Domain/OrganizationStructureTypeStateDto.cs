@@ -11,7 +11,7 @@ using Dddml.Wms.Domain;
 namespace Dddml.Wms.Domain
 {
 
-	public partial class OrganizationStructureTypeStateDto : StateDtoBase, IOrganizationStructureTypeState
+	public partial class OrganizationStructureTypeStateDto : StateDtoBase, IOrganizationStructureTypeStateDto, IOrganizationStructureTypeState
 	{
 
         internal static IList<string> _collectionFieldNames = new string[] {  };

@@ -12,7 +12,7 @@ using NodaMoney;
 namespace Dddml.Wms.Domain
 {
 
-	public partial class InOutLineStateDto : StateDtoBase, IInOutLineState
+	public partial class InOutLineStateDto : StateDtoBase, IInOutLineStateDto, IInOutLineState
 	{
 
         internal static IList<string> _collectionFieldNames = new string[] {  };

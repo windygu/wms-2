@@ -11,7 +11,7 @@ using Dddml.Wms.Domain;
 namespace Dddml.Wms.Domain
 {
 
-	public partial class RolePermissionStateDto : StateDtoBase, IRolePermissionState
+	public partial class RolePermissionStateDto : StateDtoBase, IRolePermissionStateDto, IRolePermissionState
 	{
 
         internal static IList<string> _collectionFieldNames = new string[] {  };

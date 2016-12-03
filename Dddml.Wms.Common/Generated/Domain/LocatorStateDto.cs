@@ -11,7 +11,7 @@ using Dddml.Wms.Domain;
 namespace Dddml.Wms.Domain
 {
 
-	public partial class LocatorStateDto : StateDtoBase, ILocatorState
+	public partial class LocatorStateDto : StateDtoBase, ILocatorStateDto, ILocatorState
 	{
 
         internal static IList<string> _collectionFieldNames = new string[] {  };
