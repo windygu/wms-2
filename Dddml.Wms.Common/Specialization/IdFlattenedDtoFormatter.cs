@@ -6,8 +6,21 @@ using System.ComponentModel;
 
 namespace Dddml.Wms.Specialization
 {
+
+    public class IdFlattenedDtoFormatter<TDto> : IdFlattenedDtoFormatterBase<TDto> where TDto : IIdFlattenedDto, new()
+    { }
+
+
     public abstract class IdFlattenedDtoFormatterBase<TDto> : IIdFlattenedDtoFormatter<TDto> where TDto : IIdFlattenedDto, new()
     {
+
+        private string _fieldSeparator = ",";
+
+        public virtual string FieldSeparator
+        {
+            get { return _fieldSeparator; }
+            set { _fieldSeparator = value; }
+        }
 
         public TDto Parse(string text)
         {
@@ -45,14 +58,6 @@ namespace Dddml.Wms.Specialization
             return sb.ToString();
         }
 
-
-        protected virtual string FieldSeparator
-        {
-            get
-            {
-                return ",";
-            }
-        }
     }
 
 

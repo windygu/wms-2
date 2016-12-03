@@ -126,6 +126,11 @@ namespace Dddml.Wms.Domain
 
 	}
 
+    public class UserLoginStateEventIdFlattenedDtoFormatter : IdFlattenedDtoFormatterBase<UserLoginStateEventIdFlattenedDto>
+    {
+
+    }
+
 }
 
 

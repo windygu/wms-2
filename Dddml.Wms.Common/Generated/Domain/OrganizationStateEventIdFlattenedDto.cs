@@ -106,6 +106,11 @@ namespace Dddml.Wms.Domain
 
 	}
 
+    public class OrganizationStateEventIdFlattenedDtoFormatter : IdFlattenedDtoFormatterBase<OrganizationStateEventIdFlattenedDto>
+    {
+
+    }
+
 }
 
 

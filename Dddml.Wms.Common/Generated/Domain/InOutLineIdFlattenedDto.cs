@@ -117,6 +117,11 @@ namespace Dddml.Wms.Domain
 
 	}
 
+    public class InOutLineIdFlattenedDtoFormatter : IdFlattenedDtoFormatterBase<InOutLineIdFlattenedDto>
+    {
+
+    }
+
 }
 
 
