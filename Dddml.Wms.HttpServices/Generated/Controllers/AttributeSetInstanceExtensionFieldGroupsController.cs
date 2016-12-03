@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<AttributeSetInstanceExtensionFieldGroupStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IAttributeSetInstanceExtensionFieldGroupStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IAttributeSetInstanceExtensionFieldGroupState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _attributeSetInstanceExtensionFieldGroupApplicationService.Get(AttributeSetInstanceExtensionFieldGroupsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , AttributeSetInstanceExtensionFieldGroupsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<AttributeSetInstanceExtensionFieldGroupStateDto>();
+            var stateDtos = new List<IAttributeSetInstanceExtensionFieldGroupStateDto>();
             foreach (var s in states)
             {
                 var dto = s is AttributeSetInstanceExtensionFieldGroupStateDto ? (AttributeSetInstanceExtensionFieldGroupStateDto)s : new AttributeSetInstanceExtensionFieldGroupStateDto((AttributeSetInstanceExtensionFieldGroupState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public AttributeSetInstanceExtensionFieldGroupStateDto Get(string id, string fields = null)
+        public IAttributeSetInstanceExtensionFieldGroupStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public AttributeSetInstanceExtensionFieldGroupStateDto GetHistoryState(string id, long version, string fields = null)
+        public IAttributeSetInstanceExtensionFieldGroupStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -184,7 +184,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{groupId}/AttributeSetInstanceExtensionFields/{index}")]
         [HttpGet]
-        public AttributeSetInstanceExtensionFieldStateDto GetAttributeSetInstanceExtensionField(string groupId, string index)
+        public IAttributeSetInstanceExtensionFieldStateDto GetAttributeSetInstanceExtensionField(string groupId, string index)
         {
           try {
             var state = (AttributeSetInstanceExtensionFieldState)_attributeSetInstanceExtensionFieldGroupApplicationService.GetAttributeSetInstanceExtensionField(groupId, index);
@@ -354,7 +354,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<AttributeSetInstanceExtensionFieldGroupStateDto> ToAttributeSetInstanceExtensionFieldGroupStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IAttributeSetInstanceExtensionFieldGroupStateDto> ToAttributeSetInstanceExtensionFieldGroupStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<AttributeSetInstanceExtensionFieldGroupStateDto>();
             foreach (var id in ids)
@@ -362,6 +362,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new AttributeSetInstanceExtensionFieldGroupStateDto();
                 dto.Id = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IAttributeSetInstanceExtensionFieldGroupState> ToAttributeSetInstanceExtensionFieldGroupStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<AttributeSetInstanceExtensionFieldGroupState>();
+            foreach (var id in ids)
+            {
+                var s = new AttributeSetInstanceExtensionFieldGroupState();
+                s.Id = id;
+                states.Add(s);
             }
             return states;
         }

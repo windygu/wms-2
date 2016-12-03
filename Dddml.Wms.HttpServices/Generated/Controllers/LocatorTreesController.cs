@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<LocatorStateDto> Get(string parentId = null, string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<ILocatorStateDto> Get(string parentId = null, string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             var parentIdObj = parentId == null ? null : parentId;
@@ -42,7 +42,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _locatorTreeApplicationService.GetRootIds(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
                             , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
+                        states = LocatorsControllerUtils.ToLocatorStateCollection(ids);
                     }
                     else
                     {
@@ -56,7 +56,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _locatorTreeApplicationService.GetChildIds(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
                             , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
+                        states = LocatorsControllerUtils.ToLocatorStateCollection(ids);
                     }
                     else
                     {
@@ -73,7 +73,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _locatorTreeApplicationService.GetRootIds(LocatorsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                             , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
+                        states = LocatorsControllerUtils.ToLocatorStateCollection(ids);
                     }
                     else
                     {
@@ -87,7 +87,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _locatorTreeApplicationService.GetChildIds(parentIdObj, LocatorsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                             , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = LocatorsControllerUtils.ToLocatorStateDtoCollection(ids);
+                        states = LocatorsControllerUtils.ToLocatorStateCollection(ids);
                     }
                     else
                     {

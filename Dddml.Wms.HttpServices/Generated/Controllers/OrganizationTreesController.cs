@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<OrganizationStateDto> Get(string parentId = null, string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IOrganizationStateDto> Get(string parentId = null, string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             var parentIdObj = parentId == null ? null : parentId;
@@ -42,7 +42,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _organizationTreeApplicationService.GetRootIds(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
                             , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = OrganizationsControllerUtils.ToOrganizationStateDtoCollection(ids);
+                        states = OrganizationsControllerUtils.ToOrganizationStateCollection(ids);
                     }
                     else
                     {
@@ -56,7 +56,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _organizationTreeApplicationService.GetChildIds(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
                             , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = OrganizationsControllerUtils.ToOrganizationStateDtoCollection(ids);
+                        states = OrganizationsControllerUtils.ToOrganizationStateCollection(ids);
                     }
                     else
                     {
@@ -73,7 +73,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _organizationTreeApplicationService.GetRootIds(OrganizationsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                             , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = OrganizationsControllerUtils.ToOrganizationStateDtoCollection(ids);
+                        states = OrganizationsControllerUtils.ToOrganizationStateCollection(ids);
                     }
                     else
                     {
@@ -87,7 +87,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _organizationTreeApplicationService.GetChildIds(parentIdObj, OrganizationsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                             , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = OrganizationsControllerUtils.ToOrganizationStateDtoCollection(ids);
+                        states = OrganizationsControllerUtils.ToOrganizationStateCollection(ids);
                     }
                     else
                     {

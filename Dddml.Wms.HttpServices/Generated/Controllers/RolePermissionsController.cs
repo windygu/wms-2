@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<RolePermissionStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IRolePermissionStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IRolePermissionState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _rolePermissionApplicationService.Get(RolePermissionsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , RolePermissionsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<RolePermissionStateDto>();
+            var stateDtos = new List<IRolePermissionStateDto>();
             foreach (var s in states)
             {
                 var dto = s is RolePermissionStateDto ? (RolePermissionStateDto)s : new RolePermissionStateDto((RolePermissionState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public RolePermissionStateDto Get(string id, string fields = null)
+        public IRolePermissionStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = RolePermissionsControllerUtils.ParseIdString(id);
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public RolePermissionStateDto GetHistoryState(string id, long version, string fields = null)
+        public IRolePermissionStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = RolePermissionsControllerUtils.ParseIdString(id);
@@ -348,7 +348,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<RolePermissionStateDto> ToRolePermissionStateDtoCollection(IEnumerable<RolePermissionId> ids)
+        public static IEnumerable<IRolePermissionStateDto> ToRolePermissionStateDtoCollection(IEnumerable<RolePermissionId> ids)
         {
             var states = new List<RolePermissionStateDto>();
             foreach (var id in ids)
@@ -356,6 +356,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new RolePermissionStateDto();
                 dto.Id = new RolePermissionIdDtoWrapper(id);
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IRolePermissionState> ToRolePermissionStateCollection(IEnumerable<RolePermissionId> ids)
+        {
+            var states = new List<RolePermissionState>();
+            foreach (var id in ids)
+            {
+                var s = new RolePermissionState();
+                s.Id = id;
+                states.Add(s);
             }
             return states;
         }

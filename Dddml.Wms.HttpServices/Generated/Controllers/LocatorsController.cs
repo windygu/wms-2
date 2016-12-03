@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<LocatorStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<ILocatorStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<ILocatorState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _locatorApplicationService.Get(LocatorsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<LocatorStateDto>();
+            var stateDtos = new List<ILocatorStateDto>();
             foreach (var s in states)
             {
                 var dto = s is LocatorStateDto ? (LocatorStateDto)s : new LocatorStateDto((LocatorState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public LocatorStateDto Get(string id, string fields = null)
+        public ILocatorStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public LocatorStateDto GetHistoryState(string id, long version, string fields = null)
+        public ILocatorStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -341,7 +341,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<LocatorStateDto> ToLocatorStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<ILocatorStateDto> ToLocatorStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<LocatorStateDto>();
             foreach (var id in ids)
@@ -349,6 +349,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new LocatorStateDto();
                 dto.LocatorId = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<ILocatorState> ToLocatorStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<LocatorState>();
+            foreach (var id in ids)
+            {
+                var s = new LocatorState();
+                s.LocatorId = id;
+                states.Add(s);
             }
             return states;
         }

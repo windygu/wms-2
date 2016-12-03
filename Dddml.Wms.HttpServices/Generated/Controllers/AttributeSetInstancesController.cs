@@ -27,7 +27,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         IIdGenerator<string, ICreateAttributeSetInstance> _attributeSetInstanceIdGenerator = ApplicationContext.Current["AttributeSetInstanceIdGenerator"] as IIdGenerator<string, ICreateAttributeSetInstance>;
 
-        DynamicObjectMapperBase<JObject, AttributeSetInstanceStateDto, CreateAttributeSetInstanceDto, MergePatchAttributeSetInstanceDto> _attributeSetInstanceDtoJObjectMapper = ApplicationContext.Current["AttributeSetInstanceDtoJObjectMapper"] as DynamicObjectMapperBase<JObject, AttributeSetInstanceStateDto, CreateAttributeSetInstanceDto, MergePatchAttributeSetInstanceDto>;
+        DynamicObjectMapperBase<JObject, IAttributeSetInstanceStateDto, CreateAttributeSetInstanceDto, MergePatchAttributeSetInstanceDto> _attributeSetInstanceDtoJObjectMapper = ApplicationContext.Current["AttributeSetInstanceDtoJObjectMapper"] as DynamicObjectMapperBase<JObject, IAttributeSetInstanceStateDto, CreateAttributeSetInstanceDto, MergePatchAttributeSetInstanceDto>;
 
         IAttributeSetInstanceApplicationService _attributeSetInstanceApplicationService = ApplicationContext.Current["AttributeSetInstanceApplicationService"] as IAttributeSetInstanceApplicationService;
 
@@ -232,9 +232,9 @@ namespace Dddml.Wms.HttpServices.ApiControllers
     }
 
 
-    public abstract partial class AttributeSetInstanceDtoJObjectMapperBase : DynamicObjectMapperBase<JObject, AttributeSetInstanceStateDto, CreateAttributeSetInstanceDto, MergePatchAttributeSetInstanceDto>
+    public abstract partial class AttributeSetInstanceDtoJObjectMapperBase : DynamicObjectMapperBase<JObject, IAttributeSetInstanceStateDto, CreateAttributeSetInstanceDto, MergePatchAttributeSetInstanceDto>
     {
-        public override JObject MapState(AttributeSetInstanceStateDto state)
+        public override JObject MapState(IAttributeSetInstanceStateDto state)
         {
             var dynamicObject = NewJObject(state);
             MapExtensionProperties(state, dynamicObject);
@@ -267,13 +267,13 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return command;
         }
 
-        protected virtual JObject NewJObject(AttributeSetInstanceStateDto state)
+        protected virtual JObject NewJObject(IAttributeSetInstanceStateDto state)
         {
             var dynamicObject = JObject.FromObject(state);
             return dynamicObject;
         }
 
-        protected abstract void MapExtensionProperties(AttributeSetInstanceStateDto state, JObject dynamicObject);
+        protected abstract void MapExtensionProperties(IAttributeSetInstanceStateDto state, JObject dynamicObject);
 
         protected abstract void MapExtensionProperties(JObject dynamicObject, CreateAttributeSetInstanceDto command);
 
@@ -390,7 +390,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<AttributeSetInstanceStateDto> ToAttributeSetInstanceStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IAttributeSetInstanceStateDto> ToAttributeSetInstanceStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<AttributeSetInstanceStateDto>();
             foreach (var id in ids)
@@ -398,6 +398,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new AttributeSetInstanceStateDto();
                 dto.AttributeSetInstanceId = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IAttributeSetInstanceState> ToAttributeSetInstanceStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<AttributeSetInstanceState>();
+            foreach (var id in ids)
+            {
+                var s = new AttributeSetInstanceState();
+                s.AttributeSetInstanceId = id;
+                states.Add(s);
             }
             return states;
         }

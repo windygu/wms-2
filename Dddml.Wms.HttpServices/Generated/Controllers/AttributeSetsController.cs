@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<AttributeSetStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IAttributeSetStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IAttributeSetState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _attributeSetApplicationService.Get(AttributeSetsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , AttributeSetsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<AttributeSetStateDto>();
+            var stateDtos = new List<IAttributeSetStateDto>();
             foreach (var s in states)
             {
                 var dto = s is AttributeSetStateDto ? (AttributeSetStateDto)s : new AttributeSetStateDto((AttributeSetState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public AttributeSetStateDto Get(string id, string fields = null)
+        public IAttributeSetStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public AttributeSetStateDto GetHistoryState(string id, long version, string fields = null)
+        public IAttributeSetStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -184,7 +184,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{attributeSetId}/AttributeUses/{attributeId}")]
         [HttpGet]
-        public AttributeUseStateDto GetAttributeUse(string attributeSetId, string attributeId)
+        public IAttributeUseStateDto GetAttributeUse(string attributeSetId, string attributeId)
         {
           try {
             var state = (AttributeUseState)_attributeSetApplicationService.GetAttributeUse(attributeSetId, attributeId);
@@ -354,7 +354,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<AttributeSetStateDto> ToAttributeSetStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IAttributeSetStateDto> ToAttributeSetStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<AttributeSetStateDto>();
             foreach (var id in ids)
@@ -362,6 +362,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new AttributeSetStateDto();
                 dto.AttributeSetId = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IAttributeSetState> ToAttributeSetStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<AttributeSetState>();
+            foreach (var id in ids)
+            {
+                var s = new AttributeSetState();
+                s.AttributeSetId = id;
+                states.Add(s);
             }
             return states;
         }

@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<PermissionStateDto> Get(string parentId = null, string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IPermissionStateDto> Get(string parentId = null, string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             var parentIdObj = parentId == null ? null : parentId;
@@ -42,7 +42,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _permissionTreeApplicationService.GetRootIds(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
                             , PermissionsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = PermissionsControllerUtils.ToPermissionStateDtoCollection(ids);
+                        states = PermissionsControllerUtils.ToPermissionStateCollection(ids);
                     }
                     else
                     {
@@ -56,7 +56,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _permissionTreeApplicationService.GetChildIds(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
                             , PermissionsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = PermissionsControllerUtils.ToPermissionStateDtoCollection(ids);
+                        states = PermissionsControllerUtils.ToPermissionStateCollection(ids);
                     }
                     else
                     {
@@ -73,7 +73,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _permissionTreeApplicationService.GetRootIds(PermissionsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                             , PermissionsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = PermissionsControllerUtils.ToPermissionStateDtoCollection(ids);
+                        states = PermissionsControllerUtils.ToPermissionStateCollection(ids);
                     }
                     else
                     {
@@ -87,7 +87,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _permissionTreeApplicationService.GetChildIds(parentIdObj, PermissionsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                             , PermissionsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
-                        states = PermissionsControllerUtils.ToPermissionStateDtoCollection(ids);
+                        states = PermissionsControllerUtils.ToPermissionStateCollection(ids);
                     }
                     else
                     {

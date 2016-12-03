@@ -30,14 +30,14 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             MapExtensionProperties(dynamicObject, command, pDic, propertyRemovedFormat);
         }
 
-        protected override void MapExtensionProperties(AttributeSetInstanceStateDto state, JObject dynamicObject)
+        protected override void MapExtensionProperties(IAttributeSetInstanceStateDto state, JObject dynamicObject)
         {
             var pDic = AttributeSetService.GetExtensionPropertyFieldDictionary(state.AttributeSetId);
             MapExtensionProperties(state, dynamicObject, pDic, null);
         }
 
 
-        //protected override JObject NewJObject(AttributeSetInstanceStateDto state)
+        //protected override JObject NewJObject(IAttributeSetInstanceStateDto state)
         //{
         //    dynamic dynamicObject = new JObject();
         //    return dynamicObject;
@@ -64,7 +64,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             }
         }
 
-        private static void MapExtensionProperties(AttributeSetInstanceStateDto state, JObject dynamicObject, IDictionary<string, string> propertyFieldDictionary, string nameFormat)
+        private static void MapExtensionProperties(IAttributeSetInstanceStateDto state, JObject dynamicObject, IDictionary<string, string> propertyFieldDictionary, string nameFormat)
         {
             foreach (var p in propertyFieldDictionary)
             {

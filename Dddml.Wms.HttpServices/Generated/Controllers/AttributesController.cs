@@ -31,7 +31,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<AttributeStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IAttributeStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IAttributeState> states = null; 
@@ -45,7 +45,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _attributeApplicationService.Get(AttributesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , AttributesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<AttributeStateDto>();
+            var stateDtos = new List<IAttributeStateDto>();
             foreach (var s in states)
             {
                 var dto = s is AttributeStateDto ? (AttributeStateDto)s : new AttributeStateDto((AttributeState)s);
@@ -64,7 +64,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public AttributeStateDto Get(string id, string fields = null)
+        public IAttributeStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -174,7 +174,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public AttributeStateDto GetHistoryState(string id, long version, string fields = null)
+        public IAttributeStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -195,7 +195,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{attributeId}/AttributeValues/{value}")]
         [HttpGet]
-        public AttributeValueStateDto GetAttributeValue(string attributeId, string value)
+        public IAttributeValueStateDto GetAttributeValue(string attributeId, string value)
         {
           try {
             var state = (AttributeValueState)_attributeApplicationService.GetAttributeValue(attributeId, value);
@@ -365,7 +365,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<AttributeStateDto> ToAttributeStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IAttributeStateDto> ToAttributeStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<AttributeStateDto>();
             foreach (var id in ids)
@@ -373,6 +373,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new AttributeStateDto();
                 dto.AttributeId = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IAttributeState> ToAttributeStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<AttributeState>();
+            foreach (var id in ids)
+            {
+                var s = new AttributeState();
+                s.AttributeId = id;
+                states.Add(s);
             }
             return states;
         }

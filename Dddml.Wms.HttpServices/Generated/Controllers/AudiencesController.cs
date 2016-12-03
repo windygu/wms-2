@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<AudienceStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IAudienceStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IAudienceState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _audienceApplicationService.Get(AudiencesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , AudiencesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<AudienceStateDto>();
+            var stateDtos = new List<IAudienceStateDto>();
             foreach (var s in states)
             {
                 var dto = s is AudienceStateDto ? (AudienceStateDto)s : new AudienceStateDto((AudienceState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public AudienceStateDto Get(string id, string fields = null)
+        public IAudienceStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public AudienceStateDto GetHistoryState(string id, long version, string fields = null)
+        public IAudienceStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -341,7 +341,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<AudienceStateDto> ToAudienceStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IAudienceStateDto> ToAudienceStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<AudienceStateDto>();
             foreach (var id in ids)
@@ -349,6 +349,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new AudienceStateDto();
                 dto.ClientId = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IAudienceState> ToAudienceStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<AudienceState>();
+            foreach (var id in ids)
+            {
+                var s = new AudienceState();
+                s.ClientId = id;
+                states.Add(s);
             }
             return states;
         }

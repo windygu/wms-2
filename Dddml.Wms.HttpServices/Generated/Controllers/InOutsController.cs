@@ -30,7 +30,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<InOutStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IInOutStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IInOutState> states = null; 
@@ -44,7 +44,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _inOutApplicationService.Get(InOutsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , InOutsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<InOutStateDto>();
+            var stateDtos = new List<IInOutStateDto>();
             foreach (var s in states)
             {
                 var dto = s is InOutStateDto ? (InOutStateDto)s : new InOutStateDto((InOutState)s);
@@ -63,7 +63,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public InOutStateDto Get(string id, string fields = null)
+        public IInOutStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -164,7 +164,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public InOutStateDto GetHistoryState(string id, long version, string fields = null)
+        public IInOutStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -185,7 +185,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{inOutDocumentNumber}/InOutLines/{skuId}")]
         [HttpGet]
-        public InOutLineStateDto GetInOutLine(string inOutDocumentNumber, string skuId)
+        public IInOutLineStateDto GetInOutLine(string inOutDocumentNumber, string skuId)
         {
           try {
             var state = (InOutLineState)_inOutApplicationService.GetInOutLine(inOutDocumentNumber, (new SkuIdFlattenedDtoFormatter().Parse(skuId)).ToSkuId());
@@ -355,7 +355,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<InOutStateDto> ToInOutStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IInOutStateDto> ToInOutStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<InOutStateDto>();
             foreach (var id in ids)
@@ -363,6 +363,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new InOutStateDto();
                 dto.DocumentNumber = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IInOutState> ToInOutStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<InOutState>();
+            foreach (var id in ids)
+            {
+                var s = new InOutState();
+                s.DocumentNumber = id;
+                states.Add(s);
             }
             return states;
         }

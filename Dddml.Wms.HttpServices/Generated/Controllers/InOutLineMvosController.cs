@@ -30,7 +30,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<InOutLineMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IInOutLineMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IInOutLineMvoState> states = null; 
@@ -44,7 +44,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _inOutLineMvoApplicationService.Get(InOutLineMvosControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , InOutLineMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<InOutLineMvoStateDto>();
+            var stateDtos = new List<IInOutLineMvoStateDto>();
             foreach (var s in states)
             {
                 var dto = s is InOutLineMvoStateDto ? (InOutLineMvoStateDto)s : new InOutLineMvoStateDto((InOutLineMvoState)s);
@@ -63,7 +63,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public InOutLineMvoStateDto Get(string id, string fields = null)
+        public IInOutLineMvoStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = InOutLineMvosControllerUtils.ParseIdString(id);
@@ -164,7 +164,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public InOutLineMvoStateDto GetHistoryState(string id, long version, string fields = null)
+        public IInOutLineMvoStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = InOutLineMvosControllerUtils.ParseIdString(id);
@@ -349,7 +349,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<InOutLineMvoStateDto> ToInOutLineMvoStateDtoCollection(IEnumerable<InOutLineId> ids)
+        public static IEnumerable<IInOutLineMvoStateDto> ToInOutLineMvoStateDtoCollection(IEnumerable<InOutLineId> ids)
         {
             var states = new List<InOutLineMvoStateDto>();
             foreach (var id in ids)
@@ -357,6 +357,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new InOutLineMvoStateDto();
                 dto.InOutLineId = new InOutLineIdDtoWrapper(id);
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IInOutLineMvoState> ToInOutLineMvoStateCollection(IEnumerable<InOutLineId> ids)
+        {
+            var states = new List<InOutLineMvoState>();
+            foreach (var id in ids)
+            {
+                var s = new InOutLineMvoState();
+                s.InOutLineId = id;
+                states.Add(s);
             }
             return states;
         }

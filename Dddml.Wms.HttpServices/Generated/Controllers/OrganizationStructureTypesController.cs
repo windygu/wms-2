@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<OrganizationStructureTypeStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IOrganizationStructureTypeStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IOrganizationStructureTypeState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _organizationStructureTypeApplicationService.Get(OrganizationStructureTypesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , OrganizationStructureTypesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<OrganizationStructureTypeStateDto>();
+            var stateDtos = new List<IOrganizationStructureTypeStateDto>();
             foreach (var s in states)
             {
                 var dto = s is OrganizationStructureTypeStateDto ? (OrganizationStructureTypeStateDto)s : new OrganizationStructureTypeStateDto((OrganizationStructureTypeState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public OrganizationStructureTypeStateDto Get(string id, string fields = null)
+        public IOrganizationStructureTypeStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public OrganizationStructureTypeStateDto GetHistoryState(string id, long version, string fields = null)
+        public IOrganizationStructureTypeStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -341,7 +341,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<OrganizationStructureTypeStateDto> ToOrganizationStructureTypeStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IOrganizationStructureTypeStateDto> ToOrganizationStructureTypeStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<OrganizationStructureTypeStateDto>();
             foreach (var id in ids)
@@ -349,6 +349,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new OrganizationStructureTypeStateDto();
                 dto.Id = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IOrganizationStructureTypeState> ToOrganizationStructureTypeStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<OrganizationStructureTypeState>();
+            foreach (var id in ids)
+            {
+                var s = new OrganizationStructureTypeState();
+                s.Id = id;
+                states.Add(s);
             }
             return states;
         }

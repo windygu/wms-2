@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<RoleStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IRoleStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IRoleState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _roleApplicationService.Get(RolesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , RolesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<RoleStateDto>();
+            var stateDtos = new List<IRoleStateDto>();
             foreach (var s in states)
             {
                 var dto = s is RoleStateDto ? (RoleStateDto)s : new RoleStateDto((RoleState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public RoleStateDto Get(string id, string fields = null)
+        public IRoleStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public RoleStateDto GetHistoryState(string id, long version, string fields = null)
+        public IRoleStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -341,7 +341,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<RoleStateDto> ToRoleStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IRoleStateDto> ToRoleStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<RoleStateDto>();
             foreach (var id in ids)
@@ -349,6 +349,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new RoleStateDto();
                 dto.RoleId = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IRoleState> ToRoleStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<RoleState>();
+            foreach (var id in ids)
+            {
+                var s = new RoleState();
+                s.RoleId = id;
+                states.Add(s);
             }
             return states;
         }

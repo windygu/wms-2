@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<UserRoleMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IUserRoleMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IUserRoleMvoState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _userRoleMvoApplicationService.Get(UserRoleMvosControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , UserRoleMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<UserRoleMvoStateDto>();
+            var stateDtos = new List<IUserRoleMvoStateDto>();
             foreach (var s in states)
             {
                 var dto = s is UserRoleMvoStateDto ? (UserRoleMvoStateDto)s : new UserRoleMvoStateDto((UserRoleMvoState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public UserRoleMvoStateDto Get(string id, string fields = null)
+        public IUserRoleMvoStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = UserRoleMvosControllerUtils.ParseIdString(id);
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public UserRoleMvoStateDto GetHistoryState(string id, long version, string fields = null)
+        public IUserRoleMvoStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = UserRoleMvosControllerUtils.ParseIdString(id);
@@ -348,7 +348,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<UserRoleMvoStateDto> ToUserRoleMvoStateDtoCollection(IEnumerable<UserRoleId> ids)
+        public static IEnumerable<IUserRoleMvoStateDto> ToUserRoleMvoStateDtoCollection(IEnumerable<UserRoleId> ids)
         {
             var states = new List<UserRoleMvoStateDto>();
             foreach (var id in ids)
@@ -356,6 +356,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new UserRoleMvoStateDto();
                 dto.UserRoleId = new UserRoleIdDtoWrapper(id);
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IUserRoleMvoState> ToUserRoleMvoStateCollection(IEnumerable<UserRoleId> ids)
+        {
+            var states = new List<UserRoleMvoState>();
+            foreach (var id in ids)
+            {
+                var s = new UserRoleMvoState();
+                s.UserRoleId = id;
+                states.Add(s);
             }
             return states;
         }

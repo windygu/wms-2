@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<OrganizationStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IOrganizationStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IOrganizationState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _organizationApplicationService.Get(OrganizationsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<OrganizationStateDto>();
+            var stateDtos = new List<IOrganizationStateDto>();
             foreach (var s in states)
             {
                 var dto = s is OrganizationStateDto ? (OrganizationStateDto)s : new OrganizationStateDto((OrganizationState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public OrganizationStateDto Get(string id, string fields = null)
+        public IOrganizationStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public OrganizationStateDto GetHistoryState(string id, long version, string fields = null)
+        public IOrganizationStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -341,7 +341,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<OrganizationStateDto> ToOrganizationStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IOrganizationStateDto> ToOrganizationStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<OrganizationStateDto>();
             foreach (var id in ids)
@@ -349,6 +349,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new OrganizationStateDto();
                 dto.OrganizationId = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IOrganizationState> ToOrganizationStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<OrganizationState>();
+            foreach (var id in ids)
+            {
+                var s = new OrganizationState();
+                s.OrganizationId = id;
+                states.Add(s);
             }
             return states;
         }

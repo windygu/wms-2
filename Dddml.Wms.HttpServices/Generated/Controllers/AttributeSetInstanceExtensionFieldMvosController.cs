@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<AttributeSetInstanceExtensionFieldMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IAttributeSetInstanceExtensionFieldMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IAttributeSetInstanceExtensionFieldMvoState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _attributeSetInstanceExtensionFieldMvoApplicationService.Get(AttributeSetInstanceExtensionFieldMvosControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , AttributeSetInstanceExtensionFieldMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<AttributeSetInstanceExtensionFieldMvoStateDto>();
+            var stateDtos = new List<IAttributeSetInstanceExtensionFieldMvoStateDto>();
             foreach (var s in states)
             {
                 var dto = s is AttributeSetInstanceExtensionFieldMvoStateDto ? (AttributeSetInstanceExtensionFieldMvoStateDto)s : new AttributeSetInstanceExtensionFieldMvoStateDto((AttributeSetInstanceExtensionFieldMvoState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public AttributeSetInstanceExtensionFieldMvoStateDto Get(string id, string fields = null)
+        public IAttributeSetInstanceExtensionFieldMvoStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = AttributeSetInstanceExtensionFieldMvosControllerUtils.ParseIdString(id);
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public AttributeSetInstanceExtensionFieldMvoStateDto GetHistoryState(string id, long version, string fields = null)
+        public IAttributeSetInstanceExtensionFieldMvoStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = AttributeSetInstanceExtensionFieldMvosControllerUtils.ParseIdString(id);
@@ -348,7 +348,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<AttributeSetInstanceExtensionFieldMvoStateDto> ToAttributeSetInstanceExtensionFieldMvoStateDtoCollection(IEnumerable<AttributeSetInstanceExtensionFieldId> ids)
+        public static IEnumerable<IAttributeSetInstanceExtensionFieldMvoStateDto> ToAttributeSetInstanceExtensionFieldMvoStateDtoCollection(IEnumerable<AttributeSetInstanceExtensionFieldId> ids)
         {
             var states = new List<AttributeSetInstanceExtensionFieldMvoStateDto>();
             foreach (var id in ids)
@@ -356,6 +356,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new AttributeSetInstanceExtensionFieldMvoStateDto();
                 dto.AttributeSetInstanceExtensionFieldId = new AttributeSetInstanceExtensionFieldIdDtoWrapper(id);
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IAttributeSetInstanceExtensionFieldMvoState> ToAttributeSetInstanceExtensionFieldMvoStateCollection(IEnumerable<AttributeSetInstanceExtensionFieldId> ids)
+        {
+            var states = new List<AttributeSetInstanceExtensionFieldMvoState>();
+            foreach (var id in ids)
+            {
+                var s = new AttributeSetInstanceExtensionFieldMvoState();
+                s.AttributeSetInstanceExtensionFieldId = id;
+                states.Add(s);
             }
             return states;
         }

@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<PermissionStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IPermissionStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IPermissionState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _permissionApplicationService.Get(PermissionsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , PermissionsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<PermissionStateDto>();
+            var stateDtos = new List<IPermissionStateDto>();
             foreach (var s in states)
             {
                 var dto = s is PermissionStateDto ? (PermissionStateDto)s : new PermissionStateDto((PermissionState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public PermissionStateDto Get(string id, string fields = null)
+        public IPermissionStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public PermissionStateDto GetHistoryState(string id, long version, string fields = null)
+        public IPermissionStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -341,7 +341,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<PermissionStateDto> ToPermissionStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IPermissionStateDto> ToPermissionStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<PermissionStateDto>();
             foreach (var id in ids)
@@ -349,6 +349,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new PermissionStateDto();
                 dto.PermissionId = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IPermissionState> ToPermissionStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<PermissionState>();
+            foreach (var id in ids)
+            {
+                var s = new PermissionState();
+                s.PermissionId = id;
+                states.Add(s);
             }
             return states;
         }

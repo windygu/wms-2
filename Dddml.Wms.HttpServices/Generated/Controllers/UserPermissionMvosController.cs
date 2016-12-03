@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<UserPermissionMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IUserPermissionMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IUserPermissionMvoState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _userPermissionMvoApplicationService.Get(UserPermissionMvosControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , UserPermissionMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<UserPermissionMvoStateDto>();
+            var stateDtos = new List<IUserPermissionMvoStateDto>();
             foreach (var s in states)
             {
                 var dto = s is UserPermissionMvoStateDto ? (UserPermissionMvoStateDto)s : new UserPermissionMvoStateDto((UserPermissionMvoState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public UserPermissionMvoStateDto Get(string id, string fields = null)
+        public IUserPermissionMvoStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = UserPermissionMvosControllerUtils.ParseIdString(id);
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public UserPermissionMvoStateDto GetHistoryState(string id, long version, string fields = null)
+        public IUserPermissionMvoStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = UserPermissionMvosControllerUtils.ParseIdString(id);
@@ -348,7 +348,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<UserPermissionMvoStateDto> ToUserPermissionMvoStateDtoCollection(IEnumerable<UserPermissionId> ids)
+        public static IEnumerable<IUserPermissionMvoStateDto> ToUserPermissionMvoStateDtoCollection(IEnumerable<UserPermissionId> ids)
         {
             var states = new List<UserPermissionMvoStateDto>();
             foreach (var id in ids)
@@ -356,6 +356,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new UserPermissionMvoStateDto();
                 dto.UserPermissionId = new UserPermissionIdDtoWrapper(id);
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IUserPermissionMvoState> ToUserPermissionMvoStateCollection(IEnumerable<UserPermissionId> ids)
+        {
+            var states = new List<UserPermissionMvoState>();
+            foreach (var id in ids)
+            {
+                var s = new UserPermissionMvoState();
+                s.UserPermissionId = id;
+                states.Add(s);
             }
             return states;
         }

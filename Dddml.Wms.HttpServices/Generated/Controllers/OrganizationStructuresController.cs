@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<OrganizationStructureStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IOrganizationStructureStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IOrganizationStructureState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _organizationStructureApplicationService.Get(OrganizationStructuresControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , OrganizationStructuresControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<OrganizationStructureStateDto>();
+            var stateDtos = new List<IOrganizationStructureStateDto>();
             foreach (var s in states)
             {
                 var dto = s is OrganizationStructureStateDto ? (OrganizationStructureStateDto)s : new OrganizationStructureStateDto((OrganizationStructureState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public OrganizationStructureStateDto Get(string id, string fields = null)
+        public IOrganizationStructureStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = OrganizationStructuresControllerUtils.ParseIdString(id);
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public OrganizationStructureStateDto GetHistoryState(string id, long version, string fields = null)
+        public IOrganizationStructureStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = OrganizationStructuresControllerUtils.ParseIdString(id);
@@ -348,7 +348,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<OrganizationStructureStateDto> ToOrganizationStructureStateDtoCollection(IEnumerable<OrganizationStructureId> ids)
+        public static IEnumerable<IOrganizationStructureStateDto> ToOrganizationStructureStateDtoCollection(IEnumerable<OrganizationStructureId> ids)
         {
             var states = new List<OrganizationStructureStateDto>();
             foreach (var id in ids)
@@ -356,6 +356,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new OrganizationStructureStateDto();
                 dto.Id = new OrganizationStructureIdDtoWrapper(id);
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IOrganizationStructureState> ToOrganizationStructureStateCollection(IEnumerable<OrganizationStructureId> ids)
+        {
+            var states = new List<OrganizationStructureState>();
+            foreach (var id in ids)
+            {
+                var s = new OrganizationStructureState();
+                s.Id = id;
+                states.Add(s);
             }
             return states;
         }

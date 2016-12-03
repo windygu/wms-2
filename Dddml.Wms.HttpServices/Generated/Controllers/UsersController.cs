@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<UserStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IUserStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IUserState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _userApplicationService.Get(UsersControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , UsersControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<UserStateDto>();
+            var stateDtos = new List<IUserStateDto>();
             foreach (var s in states)
             {
                 var dto = s is UserStateDto ? (UserStateDto)s : new UserStateDto((UserState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public UserStateDto Get(string id, string fields = null)
+        public IUserStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public UserStateDto GetHistoryState(string id, long version, string fields = null)
+        public IUserStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -184,7 +184,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{userId}/UserRoles/{roleId}")]
         [HttpGet]
-        public UserRoleStateDto GetUserRole(string userId, string roleId)
+        public IUserRoleStateDto GetUserRole(string userId, string roleId)
         {
           try {
             var state = (UserRoleState)_userApplicationService.GetUserRole(userId, roleId);
@@ -197,7 +197,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{userId}/UserClaims/{claimId}")]
         [HttpGet]
-        public UserClaimStateDto GetUserClaim(string userId, int claimId)
+        public IUserClaimStateDto GetUserClaim(string userId, int claimId)
         {
           try {
             var state = (UserClaimState)_userApplicationService.GetUserClaim(userId, claimId);
@@ -210,7 +210,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{userId}/UserPermissions/{permissionId}")]
         [HttpGet]
-        public UserPermissionStateDto GetUserPermission(string userId, string permissionId)
+        public IUserPermissionStateDto GetUserPermission(string userId, string permissionId)
         {
           try {
             var state = (UserPermissionState)_userApplicationService.GetUserPermission(userId, permissionId);
@@ -223,7 +223,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{userId}/UserLogins/{loginKey}")]
         [HttpGet]
-        public UserLoginStateDto GetUserLogin(string userId, string loginKey)
+        public IUserLoginStateDto GetUserLogin(string userId, string loginKey)
         {
           try {
             var state = (UserLoginState)_userApplicationService.GetUserLogin(userId, (new LoginKeyFlattenedDtoFormatter().Parse(loginKey)).ToLoginKey());
@@ -393,7 +393,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<UserStateDto> ToUserStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IUserStateDto> ToUserStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<UserStateDto>();
             foreach (var id in ids)
@@ -401,6 +401,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new UserStateDto();
                 dto.UserId = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IUserState> ToUserStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<UserState>();
+            foreach (var id in ids)
+            {
+                var s = new UserState();
+                s.UserId = id;
+                states.Add(s);
             }
             return states;
         }

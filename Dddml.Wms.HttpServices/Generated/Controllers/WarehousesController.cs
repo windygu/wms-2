@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<WarehouseStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IWarehouseStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IWarehouseState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _warehouseApplicationService.Get(WarehousesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , WarehousesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<WarehouseStateDto>();
+            var stateDtos = new List<IWarehouseStateDto>();
             foreach (var s in states)
             {
                 var dto = s is WarehouseStateDto ? (WarehouseStateDto)s : new WarehouseStateDto((WarehouseState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public WarehouseStateDto Get(string id, string fields = null)
+        public IWarehouseStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public WarehouseStateDto GetHistoryState(string id, long version, string fields = null)
+        public IWarehouseStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
@@ -341,7 +341,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<WarehouseStateDto> ToWarehouseStateDtoCollection(IEnumerable<string> ids)
+        public static IEnumerable<IWarehouseStateDto> ToWarehouseStateDtoCollection(IEnumerable<string> ids)
         {
             var states = new List<WarehouseStateDto>();
             foreach (var id in ids)
@@ -349,6 +349,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new WarehouseStateDto();
                 dto.WarehouseId = id;
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IWarehouseState> ToWarehouseStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<WarehouseState>();
+            foreach (var id in ids)
+            {
+                var s = new WarehouseState();
+                s.WarehouseId = id;
+                states.Add(s);
             }
             return states;
         }

@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<AttributeUseMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IAttributeUseMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IAttributeUseMvoState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _attributeUseMvoApplicationService.Get(AttributeUseMvosControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , AttributeUseMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<AttributeUseMvoStateDto>();
+            var stateDtos = new List<IAttributeUseMvoStateDto>();
             foreach (var s in states)
             {
                 var dto = s is AttributeUseMvoStateDto ? (AttributeUseMvoStateDto)s : new AttributeUseMvoStateDto((AttributeUseMvoState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public AttributeUseMvoStateDto Get(string id, string fields = null)
+        public IAttributeUseMvoStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = AttributeUseMvosControllerUtils.ParseIdString(id);
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public AttributeUseMvoStateDto GetHistoryState(string id, long version, string fields = null)
+        public IAttributeUseMvoStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = AttributeUseMvosControllerUtils.ParseIdString(id);
@@ -348,7 +348,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<AttributeUseMvoStateDto> ToAttributeUseMvoStateDtoCollection(IEnumerable<AttributeSetAttributeUseId> ids)
+        public static IEnumerable<IAttributeUseMvoStateDto> ToAttributeUseMvoStateDtoCollection(IEnumerable<AttributeSetAttributeUseId> ids)
         {
             var states = new List<AttributeUseMvoStateDto>();
             foreach (var id in ids)
@@ -356,6 +356,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new AttributeUseMvoStateDto();
                 dto.AttributeSetAttributeUseId = new AttributeSetAttributeUseIdDtoWrapper(id);
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IAttributeUseMvoState> ToAttributeUseMvoStateCollection(IEnumerable<AttributeSetAttributeUseId> ids)
+        {
+            var states = new List<AttributeUseMvoState>();
+            foreach (var id in ids)
+            {
+                var s = new AttributeUseMvoState();
+                s.AttributeSetAttributeUseId = id;
+                states.Add(s);
             }
             return states;
         }

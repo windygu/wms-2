@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<UserClaimMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IUserClaimMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IUserClaimMvoState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _userClaimMvoApplicationService.Get(UserClaimMvosControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , UserClaimMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<UserClaimMvoStateDto>();
+            var stateDtos = new List<IUserClaimMvoStateDto>();
             foreach (var s in states)
             {
                 var dto = s is UserClaimMvoStateDto ? (UserClaimMvoStateDto)s : new UserClaimMvoStateDto((UserClaimMvoState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public UserClaimMvoStateDto Get(string id, string fields = null)
+        public IUserClaimMvoStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = UserClaimMvosControllerUtils.ParseIdString(id);
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public UserClaimMvoStateDto GetHistoryState(string id, long version, string fields = null)
+        public IUserClaimMvoStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = UserClaimMvosControllerUtils.ParseIdString(id);
@@ -348,7 +348,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<UserClaimMvoStateDto> ToUserClaimMvoStateDtoCollection(IEnumerable<UserClaimId> ids)
+        public static IEnumerable<IUserClaimMvoStateDto> ToUserClaimMvoStateDtoCollection(IEnumerable<UserClaimId> ids)
         {
             var states = new List<UserClaimMvoStateDto>();
             foreach (var id in ids)
@@ -356,6 +356,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new UserClaimMvoStateDto();
                 dto.UserClaimId = new UserClaimIdDtoWrapper(id);
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IUserClaimMvoState> ToUserClaimMvoStateCollection(IEnumerable<UserClaimId> ids)
+        {
+            var states = new List<UserClaimMvoState>();
+            foreach (var id in ids)
+            {
+                var s = new UserClaimMvoState();
+                s.UserClaimId = id;
+                states.Add(s);
             }
             return states;
         }

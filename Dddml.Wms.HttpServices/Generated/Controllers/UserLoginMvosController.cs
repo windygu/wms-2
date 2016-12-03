@@ -29,7 +29,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<UserLoginMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IUserLoginMvoStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
             IEnumerable<IUserLoginMvoState> states = null; 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 states = _userLoginMvoApplicationService.Get(UserLoginMvosControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , UserLoginMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<UserLoginMvoStateDto>();
+            var stateDtos = new List<IUserLoginMvoStateDto>();
             foreach (var s in states)
             {
                 var dto = s is UserLoginMvoStateDto ? (UserLoginMvoStateDto)s : new UserLoginMvoStateDto((UserLoginMvoState)s);
@@ -62,7 +62,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public UserLoginMvoStateDto Get(string id, string fields = null)
+        public IUserLoginMvoStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = UserLoginMvosControllerUtils.ParseIdString(id);
@@ -163,7 +163,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public UserLoginMvoStateDto GetHistoryState(string id, long version, string fields = null)
+        public IUserLoginMvoStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = UserLoginMvosControllerUtils.ParseIdString(id);
@@ -348,7 +348,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return orders;
         }
 
-        public static IEnumerable<UserLoginMvoStateDto> ToUserLoginMvoStateDtoCollection(IEnumerable<UserLoginId> ids)
+        public static IEnumerable<IUserLoginMvoStateDto> ToUserLoginMvoStateDtoCollection(IEnumerable<UserLoginId> ids)
         {
             var states = new List<UserLoginMvoStateDto>();
             foreach (var id in ids)
@@ -356,6 +356,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 var dto = new UserLoginMvoStateDto();
                 dto.UserLoginId = new UserLoginIdDtoWrapper(id);
                 states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IUserLoginMvoState> ToUserLoginMvoStateCollection(IEnumerable<UserLoginId> ids)
+        {
+            var states = new List<UserLoginMvoState>();
+            foreach (var id in ids)
+            {
+                var s = new UserLoginMvoState();
+                s.UserLoginId = id;
+                states.Add(s);
             }
             return states;
         }
