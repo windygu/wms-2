@@ -15,22 +15,22 @@ namespace Dddml.Wms.Domain
 	public static partial class InOutLineMvoStateDtoExtensions
 	{
 
-        public static IInOutLineMvoCommand ToCreateOrMergePatchInOutLineMvo(this InOutLineMvoStateDto state)
+        public static IInOutLineMvoCommand ToCreateOrMergePatchInOutLineMvo(this InOutLineMvoStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchInOutLineMvo<CreateInOutLineMvoDto, MergePatchInOutLineMvoDto>();
         }
 
-        public static DeleteInOutLineMvoDto ToDeleteInOutLineMvo(this InOutLineMvoStateDto state)
+        public static DeleteInOutLineMvoDto ToDeleteInOutLineMvo(this InOutLineMvoStateDtoWrapper state)
         {
             return state.ToDeleteInOutLineMvo<DeleteInOutLineMvoDto>();
         }
 
-        public static MergePatchInOutLineMvoDto ToMergePatchInOutLineMvo(this InOutLineMvoStateDto state)
+        public static MergePatchInOutLineMvoDto ToMergePatchInOutLineMvo(this InOutLineMvoStateDtoWrapper state)
         {
             return state.ToMergePatchInOutLineMvo<MergePatchInOutLineMvoDto>();
         }
 
-        public static CreateInOutLineMvoDto ToCreateInOutLineMvo(this InOutLineMvoStateDto state)
+        public static CreateInOutLineMvoDto ToCreateInOutLineMvo(this InOutLineMvoStateDtoWrapper state)
         {
             return state.ToCreateInOutLineMvo<CreateInOutLineMvoDto>();
         }

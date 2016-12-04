@@ -158,6 +158,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IAttributeSetInstanceExtensionFieldMvoState ToAttributeSetInstanceExtensionFieldMvoState();
+
     }
 
 }

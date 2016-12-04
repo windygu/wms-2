@@ -55,6 +55,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IOrganizationStructureTypeState ToOrganizationStructureTypeState();
+
     }
 
 }

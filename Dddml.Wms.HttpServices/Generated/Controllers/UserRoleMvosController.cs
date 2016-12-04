@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IUserRoleMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is UserRoleMvoStateDto ? (UserRoleMvoStateDto)s : new UserRoleMvoStateDto((UserRoleMvoState)s);
+                var dto = s is UserRoleMvoStateDtoWrapper ? (UserRoleMvoStateDtoWrapper)s : new UserRoleMvoStateDtoWrapper((UserRoleMvoState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = UserRoleMvosControllerUtils.ParseIdString(id);
             var state = (UserRoleMvoState)_userRoleMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new UserRoleMvoStateDto(state);
+            var stateDto = new UserRoleMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = UserRoleMvosControllerUtils.ParseIdString(id);
             var state = (UserRoleMvoState)_userRoleMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new UserRoleMvoStateDto(state);
+            var stateDto = new UserRoleMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -350,10 +350,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IUserRoleMvoStateDto> ToUserRoleMvoStateDtoCollection(IEnumerable<UserRoleId> ids)
         {
-            var states = new List<UserRoleMvoStateDto>();
+            var states = new List<IUserRoleMvoStateDto>();
             foreach (var id in ids)
             {
-                var dto = new UserRoleMvoStateDto();
+                var dto = new UserRoleMvoStateDtoWrapper();
                 dto.UserRoleId = new UserRoleIdDtoWrapper(id);
                 states.Add(dto);
             }

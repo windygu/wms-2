@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class AttributeSetInstanceExtensionFieldMvoStateDtoExtensions
 	{
 
-        public static IAttributeSetInstanceExtensionFieldMvoCommand ToCreateOrMergePatchAttributeSetInstanceExtensionFieldMvo(this AttributeSetInstanceExtensionFieldMvoStateDto state)
+        public static IAttributeSetInstanceExtensionFieldMvoCommand ToCreateOrMergePatchAttributeSetInstanceExtensionFieldMvo(this AttributeSetInstanceExtensionFieldMvoStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchAttributeSetInstanceExtensionFieldMvo<CreateAttributeSetInstanceExtensionFieldMvoDto, MergePatchAttributeSetInstanceExtensionFieldMvoDto>();
         }
 
-        public static DeleteAttributeSetInstanceExtensionFieldMvoDto ToDeleteAttributeSetInstanceExtensionFieldMvo(this AttributeSetInstanceExtensionFieldMvoStateDto state)
+        public static DeleteAttributeSetInstanceExtensionFieldMvoDto ToDeleteAttributeSetInstanceExtensionFieldMvo(this AttributeSetInstanceExtensionFieldMvoStateDtoWrapper state)
         {
             return state.ToDeleteAttributeSetInstanceExtensionFieldMvo<DeleteAttributeSetInstanceExtensionFieldMvoDto>();
         }
 
-        public static MergePatchAttributeSetInstanceExtensionFieldMvoDto ToMergePatchAttributeSetInstanceExtensionFieldMvo(this AttributeSetInstanceExtensionFieldMvoStateDto state)
+        public static MergePatchAttributeSetInstanceExtensionFieldMvoDto ToMergePatchAttributeSetInstanceExtensionFieldMvo(this AttributeSetInstanceExtensionFieldMvoStateDtoWrapper state)
         {
             return state.ToMergePatchAttributeSetInstanceExtensionFieldMvo<MergePatchAttributeSetInstanceExtensionFieldMvoDto>();
         }
 
-        public static CreateAttributeSetInstanceExtensionFieldMvoDto ToCreateAttributeSetInstanceExtensionFieldMvo(this AttributeSetInstanceExtensionFieldMvoStateDto state)
+        public static CreateAttributeSetInstanceExtensionFieldMvoDto ToCreateAttributeSetInstanceExtensionFieldMvo(this AttributeSetInstanceExtensionFieldMvoStateDtoWrapper state)
         {
             return state.ToCreateAttributeSetInstanceExtensionFieldMvo<CreateAttributeSetInstanceExtensionFieldMvoDto>();
         }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Dddml.Wms.Specialization
 {
 
-    public abstract class StateDtoBase : IStateDto
+    public abstract class StateDtoWrapperBase : IStateDtoWrapper
     {
 
         private string _returnedFieldsString;

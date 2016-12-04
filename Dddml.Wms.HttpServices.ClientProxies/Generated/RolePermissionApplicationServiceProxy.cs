@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.RolePermission.Get(req);
             RolePermissionProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToRolePermissionState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.RolePermissions.Get(req);
             RolePermissionProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToRolePermissionState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.RolePermissions.Get(req);
             RolePermissionProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToRolePermissionState());
             return states;
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new RolePermissionHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.RolePermissionHistoryState.Get(req);
             RolePermissionProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToRolePermissionState();
         }
 
         public virtual IRolePermissionState GetHistoryState(RolePermissionId id, long version)

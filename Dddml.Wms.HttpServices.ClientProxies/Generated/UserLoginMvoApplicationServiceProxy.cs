@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.UserLoginMvo.Get(req);
             UserLoginMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToUserLoginMvoState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserLoginMvos.Get(req);
             UserLoginMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToUserLoginMvoState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserLoginMvos.Get(req);
             UserLoginMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToUserLoginMvoState());
             return states;
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new UserLoginMvoHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.UserLoginMvoHistoryState.Get(req);
             UserLoginMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToUserLoginMvoState();
         }
 
         public virtual IUserLoginMvoState GetHistoryState(UserLoginId userLoginId, long version)

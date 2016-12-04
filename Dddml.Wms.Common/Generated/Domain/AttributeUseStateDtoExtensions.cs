@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class AttributeUseStateDtoExtensions
 	{
 
-        public static IAttributeUseCommand ToCreateOrMergePatchAttributeUse(this AttributeUseStateDto state)
+        public static IAttributeUseCommand ToCreateOrMergePatchAttributeUse(this AttributeUseStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchAttributeUse<CreateAttributeUseDto, MergePatchAttributeUseDto>();
         }
 
-        public static RemoveAttributeUseDto ToRemoveAttributeUse(this AttributeUseStateDto state)
+        public static RemoveAttributeUseDto ToRemoveAttributeUse(this AttributeUseStateDtoWrapper state)
         {
             return state.ToRemoveAttributeUse<RemoveAttributeUseDto>();
         }
 
-        public static MergePatchAttributeUseDto ToMergePatchAttributeUse(this AttributeUseStateDto state)
+        public static MergePatchAttributeUseDto ToMergePatchAttributeUse(this AttributeUseStateDtoWrapper state)
         {
             return state.ToMergePatchAttributeUse<MergePatchAttributeUseDto>();
         }
 
-        public static CreateAttributeUseDto ToCreateAttributeUse(this AttributeUseStateDto state)
+        public static CreateAttributeUseDto ToCreateAttributeUse(this AttributeUseStateDtoWrapper state)
         {
             return state.ToCreateAttributeUse<CreateAttributeUseDto>();
         }

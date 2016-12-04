@@ -79,7 +79,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.AttributeSetInstance.Get(req);
             AttributeSetInstanceProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToAttributeSetInstanceState();
             return state;
         }
 
@@ -112,7 +112,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSetInstances.Get(req);
             AttributeSetInstanceProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToAttributeSetInstanceState());
             return states;
         }
 
@@ -155,7 +155,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSetInstances.Get(req);
             AttributeSetInstanceProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToAttributeSetInstanceState());
             return states;
         }
 
@@ -225,7 +225,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new AttributeSetInstanceHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.AttributeSetInstanceHistoryState.Get(req);
             AttributeSetInstanceProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToAttributeSetInstanceState();
         }
 
         public virtual IAttributeSetInstanceState GetHistoryState(string attributeSetInstanceId, long version)

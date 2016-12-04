@@ -73,6 +73,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IWarehouseState ToWarehouseState();
+
     }
 
 }

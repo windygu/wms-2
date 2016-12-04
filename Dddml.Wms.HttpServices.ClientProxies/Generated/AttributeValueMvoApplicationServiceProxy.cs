@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.AttributeValueMvo.Get(req);
             AttributeValueMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToAttributeValueMvoState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeValueMvos.Get(req);
             AttributeValueMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToAttributeValueMvoState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeValueMvos.Get(req);
             AttributeValueMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToAttributeValueMvoState());
             return states;
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new AttributeValueMvoHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.AttributeValueMvoHistoryState.Get(req);
             AttributeValueMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToAttributeValueMvoState();
         }
 
         public virtual IAttributeValueMvoState GetHistoryState(AttributeValueId attributeValueId, long version)

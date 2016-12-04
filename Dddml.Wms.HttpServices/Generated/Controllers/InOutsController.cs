@@ -47,7 +47,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IInOutStateDto>();
             foreach (var s in states)
             {
-                var dto = s is InOutStateDto ? (InOutStateDto)s : new InOutStateDto((InOutState)s);
+                var dto = s is InOutStateDtoWrapper ? (InOutStateDtoWrapper)s : new InOutStateDtoWrapper((InOutState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -69,7 +69,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (InOutState)_inOutApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new InOutStateDto(state);
+            var stateDto = new InOutStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -170,7 +170,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (InOutState)_inOutApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new InOutStateDto(state);
+            var stateDto = new InOutStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -190,7 +190,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var state = (InOutLineState)_inOutApplicationService.GetInOutLine(inOutDocumentNumber, (new SkuIdFlattenedDtoFormatter().Parse(skuId)).ToSkuId());
             if (state == null) { return null; }
-            var stateDto = new InOutLineStateDto(state);
+            var stateDto = new InOutLineStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
           } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
@@ -357,10 +357,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IInOutStateDto> ToInOutStateDtoCollection(IEnumerable<string> ids)
         {
-            var states = new List<InOutStateDto>();
+            var states = new List<IInOutStateDto>();
             foreach (var id in ids)
             {
-                var dto = new InOutStateDto();
+                var dto = new InOutStateDtoWrapper();
                 dto.DocumentNumber = id;
                 states.Add(dto);
             }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Dddml.Wms.Specialization
 {
-    public interface IStateDto
+    public interface IStateDtoWrapper
     {
         string ReturnedFieldsString { set; }
 

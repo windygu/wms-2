@@ -129,7 +129,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.InOut.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToInOutState();
             return state;
         }
 
@@ -162,7 +162,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOuts.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToInOutState());
             return states;
         }
 
@@ -205,7 +205,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOuts.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToInOutState());
             return states;
         }
 
@@ -275,7 +275,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new InOutHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.InOutHistoryState.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToInOutState();
         }
 
         public virtual IInOutState GetHistoryState(string documentNumber, long version)
@@ -292,7 +292,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new InOutLineGetRequest(uriParameters);
             var resp = await _ramlClient.InOutLine.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToInOutLineState();
         }
 
         public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, SkuId skuId)

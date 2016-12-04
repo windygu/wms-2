@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.Permission.Get(req);
             PermissionProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToPermissionState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.Permissions.Get(req);
             PermissionProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToPermissionState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.Permissions.Get(req);
             PermissionProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToPermissionState());
             return states;
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new PermissionHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.PermissionHistoryState.Get(req);
             PermissionProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToPermissionState();
         }
 
         public virtual IPermissionState GetHistoryState(string permissionId, long version)

@@ -129,7 +129,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.InOutLineMvo.Get(req);
             InOutLineMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToInOutLineMvoState();
             return state;
         }
 
@@ -162,7 +162,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOutLineMvos.Get(req);
             InOutLineMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToInOutLineMvoState());
             return states;
         }
 
@@ -205,7 +205,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOutLineMvos.Get(req);
             InOutLineMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToInOutLineMvoState());
             return states;
         }
 
@@ -275,7 +275,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new InOutLineMvoHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.InOutLineMvoHistoryState.Get(req);
             InOutLineMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToInOutLineMvoState();
         }
 
         public virtual IInOutLineMvoState GetHistoryState(InOutLineId inOutLineId, long version)

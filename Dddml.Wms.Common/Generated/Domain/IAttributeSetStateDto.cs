@@ -91,11 +91,13 @@ namespace Dddml.Wms.Domain
             set;
         }
 
-        AttributeUseStateDto[] AttributeUses
+        IAttributeUseStateDto[] AttributeUses
         {
             get;
             set;
         }
+
+        IAttributeSetState ToAttributeSetState();
 
     }
 

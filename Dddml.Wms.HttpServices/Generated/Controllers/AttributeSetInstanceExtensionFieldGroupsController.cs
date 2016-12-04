@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAttributeSetInstanceExtensionFieldGroupStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AttributeSetInstanceExtensionFieldGroupStateDto ? (AttributeSetInstanceExtensionFieldGroupStateDto)s : new AttributeSetInstanceExtensionFieldGroupStateDto((AttributeSetInstanceExtensionFieldGroupState)s);
+                var dto = s is AttributeSetInstanceExtensionFieldGroupStateDtoWrapper ? (AttributeSetInstanceExtensionFieldGroupStateDtoWrapper)s : new AttributeSetInstanceExtensionFieldGroupStateDtoWrapper((AttributeSetInstanceExtensionFieldGroupState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (AttributeSetInstanceExtensionFieldGroupState)_attributeSetInstanceExtensionFieldGroupApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new AttributeSetInstanceExtensionFieldGroupStateDto(state);
+            var stateDto = new AttributeSetInstanceExtensionFieldGroupStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (AttributeSetInstanceExtensionFieldGroupState)_attributeSetInstanceExtensionFieldGroupApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new AttributeSetInstanceExtensionFieldGroupStateDto(state);
+            var stateDto = new AttributeSetInstanceExtensionFieldGroupStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -189,7 +189,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var state = (AttributeSetInstanceExtensionFieldState)_attributeSetInstanceExtensionFieldGroupApplicationService.GetAttributeSetInstanceExtensionField(groupId, index);
             if (state == null) { return null; }
-            var stateDto = new AttributeSetInstanceExtensionFieldStateDto(state);
+            var stateDto = new AttributeSetInstanceExtensionFieldStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
           } catch (Exception ex) { var response = AttributeSetInstanceExtensionFieldGroupsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
@@ -356,10 +356,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IAttributeSetInstanceExtensionFieldGroupStateDto> ToAttributeSetInstanceExtensionFieldGroupStateDtoCollection(IEnumerable<string> ids)
         {
-            var states = new List<AttributeSetInstanceExtensionFieldGroupStateDto>();
+            var states = new List<IAttributeSetInstanceExtensionFieldGroupStateDto>();
             foreach (var id in ids)
             {
-                var dto = new AttributeSetInstanceExtensionFieldGroupStateDto();
+                var dto = new AttributeSetInstanceExtensionFieldGroupStateDtoWrapper();
                 dto.Id = id;
                 states.Add(dto);
             }

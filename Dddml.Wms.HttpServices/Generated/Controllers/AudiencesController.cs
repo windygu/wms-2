@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAudienceStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AudienceStateDto ? (AudienceStateDto)s : new AudienceStateDto((AudienceState)s);
+                var dto = s is AudienceStateDtoWrapper ? (AudienceStateDtoWrapper)s : new AudienceStateDtoWrapper((AudienceState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (AudienceState)_audienceApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new AudienceStateDto(state);
+            var stateDto = new AudienceStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (AudienceState)_audienceApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new AudienceStateDto(state);
+            var stateDto = new AudienceStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -343,10 +343,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IAudienceStateDto> ToAudienceStateDtoCollection(IEnumerable<string> ids)
         {
-            var states = new List<AudienceStateDto>();
+            var states = new List<IAudienceStateDto>();
             foreach (var id in ids)
             {
-                var dto = new AudienceStateDto();
+                var dto = new AudienceStateDtoWrapper();
                 dto.ClientId = id;
                 states.Add(dto);
             }

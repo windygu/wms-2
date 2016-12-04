@@ -47,7 +47,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IInOutLineMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is InOutLineMvoStateDto ? (InOutLineMvoStateDto)s : new InOutLineMvoStateDto((InOutLineMvoState)s);
+                var dto = s is InOutLineMvoStateDtoWrapper ? (InOutLineMvoStateDtoWrapper)s : new InOutLineMvoStateDtoWrapper((InOutLineMvoState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -69,7 +69,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = InOutLineMvosControllerUtils.ParseIdString(id);
             var state = (InOutLineMvoState)_inOutLineMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new InOutLineMvoStateDto(state);
+            var stateDto = new InOutLineMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -170,7 +170,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = InOutLineMvosControllerUtils.ParseIdString(id);
             var state = (InOutLineMvoState)_inOutLineMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new InOutLineMvoStateDto(state);
+            var stateDto = new InOutLineMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -351,10 +351,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IInOutLineMvoStateDto> ToInOutLineMvoStateDtoCollection(IEnumerable<InOutLineId> ids)
         {
-            var states = new List<InOutLineMvoStateDto>();
+            var states = new List<IInOutLineMvoStateDto>();
             foreach (var id in ids)
             {
-                var dto = new InOutLineMvoStateDto();
+                var dto = new InOutLineMvoStateDtoWrapper();
                 dto.InOutLineId = new InOutLineIdDtoWrapper(id);
                 states.Add(dto);
             }

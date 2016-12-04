@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAttributeValueMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AttributeValueMvoStateDto ? (AttributeValueMvoStateDto)s : new AttributeValueMvoStateDto((AttributeValueMvoState)s);
+                var dto = s is AttributeValueMvoStateDtoWrapper ? (AttributeValueMvoStateDtoWrapper)s : new AttributeValueMvoStateDtoWrapper((AttributeValueMvoState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = AttributeValueMvosControllerUtils.ParseIdString(id);
             var state = (AttributeValueMvoState)_attributeValueMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new AttributeValueMvoStateDto(state);
+            var stateDto = new AttributeValueMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = AttributeValueMvosControllerUtils.ParseIdString(id);
             var state = (AttributeValueMvoState)_attributeValueMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new AttributeValueMvoStateDto(state);
+            var stateDto = new AttributeValueMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -350,10 +350,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IAttributeValueMvoStateDto> ToAttributeValueMvoStateDtoCollection(IEnumerable<AttributeValueId> ids)
         {
-            var states = new List<AttributeValueMvoStateDto>();
+            var states = new List<IAttributeValueMvoStateDto>();
             foreach (var id in ids)
             {
-                var dto = new AttributeValueMvoStateDto();
+                var dto = new AttributeValueMvoStateDtoWrapper();
                 dto.AttributeValueId = new AttributeValueIdDtoWrapper(id);
                 states.Add(dto);
             }

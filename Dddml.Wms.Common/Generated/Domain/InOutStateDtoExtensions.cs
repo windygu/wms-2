@@ -15,22 +15,22 @@ namespace Dddml.Wms.Domain
 	public static partial class InOutStateDtoExtensions
 	{
 
-        public static IInOutCommand ToCreateOrMergePatchInOut(this InOutStateDto state)
+        public static IInOutCommand ToCreateOrMergePatchInOut(this InOutStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchInOut<CreateInOutDto, MergePatchInOutDto, CreateInOutLineDto, MergePatchInOutLineDto>();
         }
 
-        public static DeleteInOutDto ToDeleteInOut(this InOutStateDto state)
+        public static DeleteInOutDto ToDeleteInOut(this InOutStateDtoWrapper state)
         {
             return state.ToDeleteInOut<DeleteInOutDto>();
         }
 
-        public static MergePatchInOutDto ToMergePatchInOut(this InOutStateDto state)
+        public static MergePatchInOutDto ToMergePatchInOut(this InOutStateDtoWrapper state)
         {
             return state.ToMergePatchInOut<MergePatchInOutDto, CreateInOutLineDto, MergePatchInOutLineDto>();
         }
 
-        public static CreateInOutDto ToCreateInOut(this InOutStateDto state)
+        public static CreateInOutDto ToCreateInOut(this InOutStateDtoWrapper state)
         {
             return state.ToCreateInOut<CreateInOutDto, CreateInOutLineDto>();
         }

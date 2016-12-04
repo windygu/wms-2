@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IOrganizationStateDto>();
             foreach (var s in states)
             {
-                var dto = s is OrganizationStateDto ? (OrganizationStateDto)s : new OrganizationStateDto((OrganizationState)s);
+                var dto = s is OrganizationStateDtoWrapper ? (OrganizationStateDtoWrapper)s : new OrganizationStateDtoWrapper((OrganizationState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (OrganizationState)_organizationApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new OrganizationStateDto(state);
+            var stateDto = new OrganizationStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (OrganizationState)_organizationApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new OrganizationStateDto(state);
+            var stateDto = new OrganizationStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -343,10 +343,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IOrganizationStateDto> ToOrganizationStateDtoCollection(IEnumerable<string> ids)
         {
-            var states = new List<OrganizationStateDto>();
+            var states = new List<IOrganizationStateDto>();
             foreach (var id in ids)
             {
-                var dto = new OrganizationStateDto();
+                var dto = new OrganizationStateDtoWrapper();
                 dto.OrganizationId = id;
                 states.Add(dto);
             }

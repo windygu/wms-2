@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IPermissionStateDto>();
             foreach (var s in states)
             {
-                var dto = s is PermissionStateDto ? (PermissionStateDto)s : new PermissionStateDto((PermissionState)s);
+                var dto = s is PermissionStateDtoWrapper ? (PermissionStateDtoWrapper)s : new PermissionStateDtoWrapper((PermissionState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (PermissionState)_permissionApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new PermissionStateDto(state);
+            var stateDto = new PermissionStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (PermissionState)_permissionApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new PermissionStateDto(state);
+            var stateDto = new PermissionStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -343,10 +343,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IPermissionStateDto> ToPermissionStateDtoCollection(IEnumerable<string> ids)
         {
-            var states = new List<PermissionStateDto>();
+            var states = new List<IPermissionStateDto>();
             foreach (var id in ids)
             {
-                var dto = new PermissionStateDto();
+                var dto = new PermissionStateDtoWrapper();
                 dto.PermissionId = id;
                 states.Add(dto);
             }

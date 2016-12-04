@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.User.Get(req);
             UserProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToUserState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.Users.Get(req);
             UserProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToUserState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.Users.Get(req);
             UserProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToUserState());
             return states;
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new UserHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.UserHistoryState.Get(req);
             UserProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToUserState();
         }
 
         public virtual IUserState GetHistoryState(string userId, long version)
@@ -291,7 +291,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new UserRoleGetRequest(uriParameters);
             var resp = await _ramlClient.UserRole.Get(req);
             UserProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToUserRoleState();
         }
 
         public virtual IUserRoleState GetUserRole(string userId, string roleId)
@@ -308,7 +308,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new UserClaimGetRequest(uriParameters);
             var resp = await _ramlClient.UserClaim.Get(req);
             UserProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToUserClaimState();
         }
 
         public virtual IUserClaimState GetUserClaim(string userId, int claimId)
@@ -325,7 +325,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new UserPermissionGetRequest(uriParameters);
             var resp = await _ramlClient.UserPermission.Get(req);
             UserProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToUserPermissionState();
         }
 
         public virtual IUserPermissionState GetUserPermission(string userId, string permissionId)
@@ -342,7 +342,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new UserLoginGetRequest(uriParameters);
             var resp = await _ramlClient.UserLogin.Get(req);
             UserProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToUserLoginState();
         }
 
         public virtual IUserLoginState GetUserLogin(string userId, LoginKey loginKey)

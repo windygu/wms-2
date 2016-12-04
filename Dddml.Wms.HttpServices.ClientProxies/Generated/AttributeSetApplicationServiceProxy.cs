@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.AttributeSet.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToAttributeSetState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSets.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToAttributeSetState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSets.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToAttributeSetState());
             return states;
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new AttributeSetHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.AttributeSetHistoryState.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToAttributeSetState();
         }
 
         public virtual IAttributeSetState GetHistoryState(string attributeSetId, long version)
@@ -291,7 +291,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new AttributeUseGetRequest(uriParameters);
             var resp = await _ramlClient.AttributeUse.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToAttributeUseState();
         }
 
         public virtual IAttributeUseState GetAttributeUse(string attributeSetId, string attributeId)

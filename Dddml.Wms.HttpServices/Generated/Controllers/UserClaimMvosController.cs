@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IUserClaimMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is UserClaimMvoStateDto ? (UserClaimMvoStateDto)s : new UserClaimMvoStateDto((UserClaimMvoState)s);
+                var dto = s is UserClaimMvoStateDtoWrapper ? (UserClaimMvoStateDtoWrapper)s : new UserClaimMvoStateDtoWrapper((UserClaimMvoState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = UserClaimMvosControllerUtils.ParseIdString(id);
             var state = (UserClaimMvoState)_userClaimMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new UserClaimMvoStateDto(state);
+            var stateDto = new UserClaimMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = UserClaimMvosControllerUtils.ParseIdString(id);
             var state = (UserClaimMvoState)_userClaimMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new UserClaimMvoStateDto(state);
+            var stateDto = new UserClaimMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -350,10 +350,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IUserClaimMvoStateDto> ToUserClaimMvoStateDtoCollection(IEnumerable<UserClaimId> ids)
         {
-            var states = new List<UserClaimMvoStateDto>();
+            var states = new List<IUserClaimMvoStateDto>();
             foreach (var id in ids)
             {
-                var dto = new UserClaimMvoStateDto();
+                var dto = new UserClaimMvoStateDtoWrapper();
                 dto.UserClaimId = new UserClaimIdDtoWrapper(id);
                 states.Add(dto);
             }

@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.UserRoleMvo.Get(req);
             UserRoleMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToUserRoleMvoState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserRoleMvos.Get(req);
             UserRoleMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToUserRoleMvoState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserRoleMvos.Get(req);
             UserRoleMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToUserRoleMvoState());
             return states;
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new UserRoleMvoHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.UserRoleMvoHistoryState.Get(req);
             UserRoleMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToUserRoleMvoState();
         }
 
         public virtual IUserRoleMvoState GetHistoryState(UserRoleId userRoleId, long version)

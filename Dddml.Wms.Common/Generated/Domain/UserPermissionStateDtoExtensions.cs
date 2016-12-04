@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class UserPermissionStateDtoExtensions
 	{
 
-        public static IUserPermissionCommand ToCreateOrMergePatchUserPermission(this UserPermissionStateDto state)
+        public static IUserPermissionCommand ToCreateOrMergePatchUserPermission(this UserPermissionStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchUserPermission<CreateUserPermissionDto, MergePatchUserPermissionDto>();
         }
 
-        public static RemoveUserPermissionDto ToRemoveUserPermission(this UserPermissionStateDto state)
+        public static RemoveUserPermissionDto ToRemoveUserPermission(this UserPermissionStateDtoWrapper state)
         {
             return state.ToRemoveUserPermission<RemoveUserPermissionDto>();
         }
 
-        public static MergePatchUserPermissionDto ToMergePatchUserPermission(this UserPermissionStateDto state)
+        public static MergePatchUserPermissionDto ToMergePatchUserPermission(this UserPermissionStateDtoWrapper state)
         {
             return state.ToMergePatchUserPermission<MergePatchUserPermissionDto>();
         }
 
-        public static CreateUserPermissionDto ToCreateUserPermission(this UserPermissionStateDto state)
+        public static CreateUserPermissionDto ToCreateUserPermission(this UserPermissionStateDtoWrapper state)
         {
             return state.ToCreateUserPermission<CreateUserPermissionDto>();
         }

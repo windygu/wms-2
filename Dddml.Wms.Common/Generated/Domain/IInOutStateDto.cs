@@ -260,11 +260,13 @@ namespace Dddml.Wms.Domain
             set;
         }
 
-        InOutLineStateDto[] InOutLines
+        IInOutLineStateDto[] InOutLines
         {
             get;
             set;
         }
+
+        IInOutState ToInOutState();
 
     }
 

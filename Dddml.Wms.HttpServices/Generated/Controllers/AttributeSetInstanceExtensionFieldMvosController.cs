@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAttributeSetInstanceExtensionFieldMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AttributeSetInstanceExtensionFieldMvoStateDto ? (AttributeSetInstanceExtensionFieldMvoStateDto)s : new AttributeSetInstanceExtensionFieldMvoStateDto((AttributeSetInstanceExtensionFieldMvoState)s);
+                var dto = s is AttributeSetInstanceExtensionFieldMvoStateDtoWrapper ? (AttributeSetInstanceExtensionFieldMvoStateDtoWrapper)s : new AttributeSetInstanceExtensionFieldMvoStateDtoWrapper((AttributeSetInstanceExtensionFieldMvoState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = AttributeSetInstanceExtensionFieldMvosControllerUtils.ParseIdString(id);
             var state = (AttributeSetInstanceExtensionFieldMvoState)_attributeSetInstanceExtensionFieldMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new AttributeSetInstanceExtensionFieldMvoStateDto(state);
+            var stateDto = new AttributeSetInstanceExtensionFieldMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = AttributeSetInstanceExtensionFieldMvosControllerUtils.ParseIdString(id);
             var state = (AttributeSetInstanceExtensionFieldMvoState)_attributeSetInstanceExtensionFieldMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new AttributeSetInstanceExtensionFieldMvoStateDto(state);
+            var stateDto = new AttributeSetInstanceExtensionFieldMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -350,10 +350,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IAttributeSetInstanceExtensionFieldMvoStateDto> ToAttributeSetInstanceExtensionFieldMvoStateDtoCollection(IEnumerable<AttributeSetInstanceExtensionFieldId> ids)
         {
-            var states = new List<AttributeSetInstanceExtensionFieldMvoStateDto>();
+            var states = new List<IAttributeSetInstanceExtensionFieldMvoStateDto>();
             foreach (var id in ids)
             {
-                var dto = new AttributeSetInstanceExtensionFieldMvoStateDto();
+                var dto = new AttributeSetInstanceExtensionFieldMvoStateDtoWrapper();
                 dto.AttributeSetInstanceExtensionFieldId = new AttributeSetInstanceExtensionFieldIdDtoWrapper(id);
                 states.Add(dto);
             }

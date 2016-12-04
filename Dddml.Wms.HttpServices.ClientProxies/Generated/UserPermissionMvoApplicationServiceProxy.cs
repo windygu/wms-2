@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.UserPermissionMvo.Get(req);
             UserPermissionMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToUserPermissionMvoState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserPermissionMvos.Get(req);
             UserPermissionMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToUserPermissionMvoState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserPermissionMvos.Get(req);
             UserPermissionMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToUserPermissionMvoState());
             return states;
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new UserPermissionMvoHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.UserPermissionMvoHistoryState.Get(req);
             UserPermissionMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToUserPermissionMvoState();
         }
 
         public virtual IUserPermissionMvoState GetHistoryState(UserPermissionId userPermissionId, long version)

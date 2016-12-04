@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class UserLoginStateDtoExtensions
 	{
 
-        public static IUserLoginCommand ToCreateOrMergePatchUserLogin(this UserLoginStateDto state)
+        public static IUserLoginCommand ToCreateOrMergePatchUserLogin(this UserLoginStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchUserLogin<CreateUserLoginDto, MergePatchUserLoginDto>();
         }
 
-        public static RemoveUserLoginDto ToRemoveUserLogin(this UserLoginStateDto state)
+        public static RemoveUserLoginDto ToRemoveUserLogin(this UserLoginStateDtoWrapper state)
         {
             return state.ToRemoveUserLogin<RemoveUserLoginDto>();
         }
 
-        public static MergePatchUserLoginDto ToMergePatchUserLogin(this UserLoginStateDto state)
+        public static MergePatchUserLoginDto ToMergePatchUserLogin(this UserLoginStateDtoWrapper state)
         {
             return state.ToMergePatchUserLogin<MergePatchUserLoginDto>();
         }
 
-        public static CreateUserLoginDto ToCreateUserLogin(this UserLoginStateDto state)
+        public static CreateUserLoginDto ToCreateUserLogin(this UserLoginStateDtoWrapper state)
         {
             return state.ToCreateUserLogin<CreateUserLoginDto>();
         }

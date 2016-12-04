@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class LocatorStateDtoExtensions
 	{
 
-        public static ILocatorCommand ToCreateOrMergePatchLocator(this LocatorStateDto state)
+        public static ILocatorCommand ToCreateOrMergePatchLocator(this LocatorStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchLocator<CreateLocatorDto, MergePatchLocatorDto>();
         }
 
-        public static DeleteLocatorDto ToDeleteLocator(this LocatorStateDto state)
+        public static DeleteLocatorDto ToDeleteLocator(this LocatorStateDtoWrapper state)
         {
             return state.ToDeleteLocator<DeleteLocatorDto>();
         }
 
-        public static MergePatchLocatorDto ToMergePatchLocator(this LocatorStateDto state)
+        public static MergePatchLocatorDto ToMergePatchLocator(this LocatorStateDtoWrapper state)
         {
             return state.ToMergePatchLocator<MergePatchLocatorDto>();
         }
 
-        public static CreateLocatorDto ToCreateLocator(this LocatorStateDto state)
+        public static CreateLocatorDto ToCreateLocator(this LocatorStateDtoWrapper state)
         {
             return state.ToCreateLocator<CreateLocatorDto>();
         }

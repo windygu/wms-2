@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.AttributeSetInstanceExtensionFieldGroup.Get(req);
             AttributeSetInstanceExtensionFieldGroupProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToAttributeSetInstanceExtensionFieldGroupState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSetInstanceExtensionFieldGroups.Get(req);
             AttributeSetInstanceExtensionFieldGroupProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToAttributeSetInstanceExtensionFieldGroupState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSetInstanceExtensionFieldGroups.Get(req);
             AttributeSetInstanceExtensionFieldGroupProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToAttributeSetInstanceExtensionFieldGroupState());
             return states;
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new AttributeSetInstanceExtensionFieldGroupHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.AttributeSetInstanceExtensionFieldGroupHistoryState.Get(req);
             AttributeSetInstanceExtensionFieldGroupProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToAttributeSetInstanceExtensionFieldGroupState();
         }
 
         public virtual IAttributeSetInstanceExtensionFieldGroupState GetHistoryState(string id, long version)
@@ -291,7 +291,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new AttributeSetInstanceExtensionFieldGetRequest(uriParameters);
             var resp = await _ramlClient.AttributeSetInstanceExtensionField.Get(req);
             AttributeSetInstanceExtensionFieldGroupProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToAttributeSetInstanceExtensionFieldState();
         }
 
         public virtual IAttributeSetInstanceExtensionFieldState GetAttributeSetInstanceExtensionField(string groupId, string index)

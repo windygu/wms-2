@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class RolePermissionStateDtoExtensions
 	{
 
-        public static IRolePermissionCommand ToCreateOrMergePatchRolePermission(this RolePermissionStateDto state)
+        public static IRolePermissionCommand ToCreateOrMergePatchRolePermission(this RolePermissionStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchRolePermission<CreateRolePermissionDto, MergePatchRolePermissionDto>();
         }
 
-        public static DeleteRolePermissionDto ToDeleteRolePermission(this RolePermissionStateDto state)
+        public static DeleteRolePermissionDto ToDeleteRolePermission(this RolePermissionStateDtoWrapper state)
         {
             return state.ToDeleteRolePermission<DeleteRolePermissionDto>();
         }
 
-        public static MergePatchRolePermissionDto ToMergePatchRolePermission(this RolePermissionStateDto state)
+        public static MergePatchRolePermissionDto ToMergePatchRolePermission(this RolePermissionStateDtoWrapper state)
         {
             return state.ToMergePatchRolePermission<MergePatchRolePermissionDto>();
         }
 
-        public static CreateRolePermissionDto ToCreateRolePermission(this RolePermissionStateDto state)
+        public static CreateRolePermissionDto ToCreateRolePermission(this RolePermissionStateDtoWrapper state)
         {
             return state.ToCreateRolePermission<CreateRolePermissionDto>();
         }

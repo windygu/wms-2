@@ -96,10 +96,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     }
                 }
             }
-            var stateDtos = new List<PermissionStateDto>();
+            var stateDtos = new List<IPermissionStateDto>();
             foreach (var s in states)
             {
-                var dto = s is PermissionStateDto ? (PermissionStateDto)s : new PermissionStateDto((PermissionState)s);
+                var dto = s is PermissionStateDtoWrapper ? (PermissionStateDtoWrapper)s : new PermissionStateDtoWrapper((PermissionState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;

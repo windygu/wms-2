@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAttributeUseMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AttributeUseMvoStateDto ? (AttributeUseMvoStateDto)s : new AttributeUseMvoStateDto((AttributeUseMvoState)s);
+                var dto = s is AttributeUseMvoStateDtoWrapper ? (AttributeUseMvoStateDtoWrapper)s : new AttributeUseMvoStateDtoWrapper((AttributeUseMvoState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = AttributeUseMvosControllerUtils.ParseIdString(id);
             var state = (AttributeUseMvoState)_attributeUseMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new AttributeUseMvoStateDto(state);
+            var stateDto = new AttributeUseMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = AttributeUseMvosControllerUtils.ParseIdString(id);
             var state = (AttributeUseMvoState)_attributeUseMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new AttributeUseMvoStateDto(state);
+            var stateDto = new AttributeUseMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -350,10 +350,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IAttributeUseMvoStateDto> ToAttributeUseMvoStateDtoCollection(IEnumerable<AttributeSetAttributeUseId> ids)
         {
-            var states = new List<AttributeUseMvoStateDto>();
+            var states = new List<IAttributeUseMvoStateDto>();
             foreach (var id in ids)
             {
-                var dto = new AttributeUseMvoStateDto();
+                var dto = new AttributeUseMvoStateDtoWrapper();
                 dto.AttributeSetAttributeUseId = new AttributeSetAttributeUseIdDtoWrapper(id);
                 states.Add(dto);
             }

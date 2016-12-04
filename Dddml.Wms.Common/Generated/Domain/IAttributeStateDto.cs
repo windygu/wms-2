@@ -115,11 +115,13 @@ namespace Dddml.Wms.Domain
             set;
         }
 
-        AttributeValueStateDto[] AttributeValues
+        IAttributeValueStateDto[] AttributeValues
         {
             get;
             set;
         }
+
+        IAttributeState ToAttributeState();
 
     }
 

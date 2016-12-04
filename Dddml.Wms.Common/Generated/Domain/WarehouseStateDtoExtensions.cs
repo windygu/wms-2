@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class WarehouseStateDtoExtensions
 	{
 
-        public static IWarehouseCommand ToCreateOrMergePatchWarehouse(this WarehouseStateDto state)
+        public static IWarehouseCommand ToCreateOrMergePatchWarehouse(this WarehouseStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchWarehouse<CreateWarehouseDto, MergePatchWarehouseDto>();
         }
 
-        public static DeleteWarehouseDto ToDeleteWarehouse(this WarehouseStateDto state)
+        public static DeleteWarehouseDto ToDeleteWarehouse(this WarehouseStateDtoWrapper state)
         {
             return state.ToDeleteWarehouse<DeleteWarehouseDto>();
         }
 
-        public static MergePatchWarehouseDto ToMergePatchWarehouse(this WarehouseStateDto state)
+        public static MergePatchWarehouseDto ToMergePatchWarehouse(this WarehouseStateDtoWrapper state)
         {
             return state.ToMergePatchWarehouse<MergePatchWarehouseDto>();
         }
 
-        public static CreateWarehouseDto ToCreateWarehouse(this WarehouseStateDto state)
+        public static CreateWarehouseDto ToCreateWarehouse(this WarehouseStateDtoWrapper state)
         {
             return state.ToCreateWarehouse<CreateWarehouseDto>();
         }

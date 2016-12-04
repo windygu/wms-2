@@ -96,10 +96,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     }
                 }
             }
-            var stateDtos = new List<LocatorStateDto>();
+            var stateDtos = new List<ILocatorStateDto>();
             foreach (var s in states)
             {
-                var dto = s is LocatorStateDto ? (LocatorStateDto)s : new LocatorStateDto((LocatorState)s);
+                var dto = s is LocatorStateDtoWrapper ? (LocatorStateDtoWrapper)s : new LocatorStateDtoWrapper((LocatorState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;

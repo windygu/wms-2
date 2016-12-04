@@ -50,7 +50,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             JArray dynamicArray = new JArray(); 
             foreach (var s in states)
             {
-                var dto = s is AttributeSetInstanceStateDto ? (AttributeSetInstanceStateDto)s : new AttributeSetInstanceStateDto((AttributeSetInstanceState)s);
+                var dto = s is AttributeSetInstanceStateDtoWrapper ? (AttributeSetInstanceStateDtoWrapper)s : new AttributeSetInstanceStateDtoWrapper((AttributeSetInstanceState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -72,7 +72,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (AttributeSetInstanceState)_attributeSetInstanceApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new AttributeSetInstanceStateDto(state);
+            var stateDto = new AttributeSetInstanceStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (AttributeSetInstanceState)_attributeSetInstanceApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new AttributeSetInstanceStateDto(state);
+            var stateDto = new AttributeSetInstanceStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -392,10 +392,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IAttributeSetInstanceStateDto> ToAttributeSetInstanceStateDtoCollection(IEnumerable<string> ids)
         {
-            var states = new List<AttributeSetInstanceStateDto>();
+            var states = new List<IAttributeSetInstanceStateDto>();
             foreach (var id in ids)
             {
-                var dto = new AttributeSetInstanceStateDto();
+                var dto = new AttributeSetInstanceStateDtoWrapper();
                 dto.AttributeSetInstanceId = id;
                 states.Add(dto);
             }

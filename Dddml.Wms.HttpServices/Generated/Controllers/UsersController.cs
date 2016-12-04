@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IUserStateDto>();
             foreach (var s in states)
             {
-                var dto = s is UserStateDto ? (UserStateDto)s : new UserStateDto((UserState)s);
+                var dto = s is UserStateDtoWrapper ? (UserStateDtoWrapper)s : new UserStateDtoWrapper((UserState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (UserState)_userApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new UserStateDto(state);
+            var stateDto = new UserStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (UserState)_userApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new UserStateDto(state);
+            var stateDto = new UserStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -189,7 +189,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var state = (UserRoleState)_userApplicationService.GetUserRole(userId, roleId);
             if (state == null) { return null; }
-            var stateDto = new UserRoleStateDto(state);
+            var stateDto = new UserRoleStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
           } catch (Exception ex) { var response = UsersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
@@ -202,7 +202,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var state = (UserClaimState)_userApplicationService.GetUserClaim(userId, claimId);
             if (state == null) { return null; }
-            var stateDto = new UserClaimStateDto(state);
+            var stateDto = new UserClaimStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
           } catch (Exception ex) { var response = UsersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
@@ -215,7 +215,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var state = (UserPermissionState)_userApplicationService.GetUserPermission(userId, permissionId);
             if (state == null) { return null; }
-            var stateDto = new UserPermissionStateDto(state);
+            var stateDto = new UserPermissionStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
           } catch (Exception ex) { var response = UsersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
@@ -228,7 +228,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var state = (UserLoginState)_userApplicationService.GetUserLogin(userId, (new LoginKeyFlattenedDtoFormatter().Parse(loginKey)).ToLoginKey());
             if (state == null) { return null; }
-            var stateDto = new UserLoginStateDto(state);
+            var stateDto = new UserLoginStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
           } catch (Exception ex) { var response = UsersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
@@ -395,10 +395,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IUserStateDto> ToUserStateDtoCollection(IEnumerable<string> ids)
         {
-            var states = new List<UserStateDto>();
+            var states = new List<IUserStateDto>();
             foreach (var id in ids)
             {
-                var dto = new UserStateDto();
+                var dto = new UserStateDtoWrapper();
                 dto.UserId = id;
                 states.Add(dto);
             }

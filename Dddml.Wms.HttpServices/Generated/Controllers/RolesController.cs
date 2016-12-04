@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IRoleStateDto>();
             foreach (var s in states)
             {
-                var dto = s is RoleStateDto ? (RoleStateDto)s : new RoleStateDto((RoleState)s);
+                var dto = s is RoleStateDtoWrapper ? (RoleStateDtoWrapper)s : new RoleStateDtoWrapper((RoleState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (RoleState)_roleApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new RoleStateDto(state);
+            var stateDto = new RoleStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (RoleState)_roleApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new RoleStateDto(state);
+            var stateDto = new RoleStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -343,10 +343,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IRoleStateDto> ToRoleStateDtoCollection(IEnumerable<string> ids)
         {
-            var states = new List<RoleStateDto>();
+            var states = new List<IRoleStateDto>();
             foreach (var id in ids)
             {
-                var dto = new RoleStateDto();
+                var dto = new RoleStateDtoWrapper();
                 dto.RoleId = id;
                 states.Add(dto);
             }

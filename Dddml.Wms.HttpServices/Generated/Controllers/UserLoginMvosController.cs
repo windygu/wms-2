@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IUserLoginMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is UserLoginMvoStateDto ? (UserLoginMvoStateDto)s : new UserLoginMvoStateDto((UserLoginMvoState)s);
+                var dto = s is UserLoginMvoStateDtoWrapper ? (UserLoginMvoStateDtoWrapper)s : new UserLoginMvoStateDtoWrapper((UserLoginMvoState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = UserLoginMvosControllerUtils.ParseIdString(id);
             var state = (UserLoginMvoState)_userLoginMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new UserLoginMvoStateDto(state);
+            var stateDto = new UserLoginMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = UserLoginMvosControllerUtils.ParseIdString(id);
             var state = (UserLoginMvoState)_userLoginMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new UserLoginMvoStateDto(state);
+            var stateDto = new UserLoginMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -350,10 +350,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IUserLoginMvoStateDto> ToUserLoginMvoStateDtoCollection(IEnumerable<UserLoginId> ids)
         {
-            var states = new List<UserLoginMvoStateDto>();
+            var states = new List<IUserLoginMvoStateDto>();
             foreach (var id in ids)
             {
-                var dto = new UserLoginMvoStateDto();
+                var dto = new UserLoginMvoStateDtoWrapper();
                 dto.UserLoginId = new UserLoginIdDtoWrapper(id);
                 states.Add(dto);
             }

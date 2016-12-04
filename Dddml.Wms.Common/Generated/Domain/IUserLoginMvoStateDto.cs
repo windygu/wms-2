@@ -164,6 +164,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IUserLoginMvoState ToUserLoginMvoState();
+
     }
 
 }

@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class UserClaimMvoStateDtoExtensions
 	{
 
-        public static IUserClaimMvoCommand ToCreateOrMergePatchUserClaimMvo(this UserClaimMvoStateDto state)
+        public static IUserClaimMvoCommand ToCreateOrMergePatchUserClaimMvo(this UserClaimMvoStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchUserClaimMvo<CreateUserClaimMvoDto, MergePatchUserClaimMvoDto>();
         }
 
-        public static DeleteUserClaimMvoDto ToDeleteUserClaimMvo(this UserClaimMvoStateDto state)
+        public static DeleteUserClaimMvoDto ToDeleteUserClaimMvo(this UserClaimMvoStateDtoWrapper state)
         {
             return state.ToDeleteUserClaimMvo<DeleteUserClaimMvoDto>();
         }
 
-        public static MergePatchUserClaimMvoDto ToMergePatchUserClaimMvo(this UserClaimMvoStateDto state)
+        public static MergePatchUserClaimMvoDto ToMergePatchUserClaimMvo(this UserClaimMvoStateDtoWrapper state)
         {
             return state.ToMergePatchUserClaimMvo<MergePatchUserClaimMvoDto>();
         }
 
-        public static CreateUserClaimMvoDto ToCreateUserClaimMvo(this UserClaimMvoStateDto state)
+        public static CreateUserClaimMvoDto ToCreateUserClaimMvo(this UserClaimMvoStateDtoWrapper state)
         {
             return state.ToCreateUserClaimMvo<CreateUserClaimMvoDto>();
         }

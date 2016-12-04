@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class AttributeSetInstanceExtensionFieldGroupStateDtoExtensions
 	{
 
-        public static IAttributeSetInstanceExtensionFieldGroupCommand ToCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDto state)
+        public static IAttributeSetInstanceExtensionFieldGroupCommand ToCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup<CreateAttributeSetInstanceExtensionFieldGroupDto, MergePatchAttributeSetInstanceExtensionFieldGroupDto, CreateAttributeSetInstanceExtensionFieldDto, MergePatchAttributeSetInstanceExtensionFieldDto>();
         }
 
-        public static DeleteAttributeSetInstanceExtensionFieldGroupDto ToDeleteAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDto state)
+        public static DeleteAttributeSetInstanceExtensionFieldGroupDto ToDeleteAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDtoWrapper state)
         {
             return state.ToDeleteAttributeSetInstanceExtensionFieldGroup<DeleteAttributeSetInstanceExtensionFieldGroupDto>();
         }
 
-        public static MergePatchAttributeSetInstanceExtensionFieldGroupDto ToMergePatchAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDto state)
+        public static MergePatchAttributeSetInstanceExtensionFieldGroupDto ToMergePatchAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDtoWrapper state)
         {
             return state.ToMergePatchAttributeSetInstanceExtensionFieldGroup<MergePatchAttributeSetInstanceExtensionFieldGroupDto, CreateAttributeSetInstanceExtensionFieldDto, MergePatchAttributeSetInstanceExtensionFieldDto>();
         }
 
-        public static CreateAttributeSetInstanceExtensionFieldGroupDto ToCreateAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDto state)
+        public static CreateAttributeSetInstanceExtensionFieldGroupDto ToCreateAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDtoWrapper state)
         {
             return state.ToCreateAttributeSetInstanceExtensionFieldGroup<CreateAttributeSetInstanceExtensionFieldGroupDto, CreateAttributeSetInstanceExtensionFieldDto>();
         }

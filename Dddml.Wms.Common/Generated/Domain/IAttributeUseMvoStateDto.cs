@@ -140,6 +140,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IAttributeUseMvoState ToAttributeUseMvoState();
+
     }
 
 }

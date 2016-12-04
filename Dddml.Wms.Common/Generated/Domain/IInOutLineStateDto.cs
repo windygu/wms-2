@@ -165,6 +165,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IInOutLineState ToInOutLineState();
+
     }
 
 }

@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<ILocatorStateDto>();
             foreach (var s in states)
             {
-                var dto = s is LocatorStateDto ? (LocatorStateDto)s : new LocatorStateDto((LocatorState)s);
+                var dto = s is LocatorStateDtoWrapper ? (LocatorStateDtoWrapper)s : new LocatorStateDtoWrapper((LocatorState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (LocatorState)_locatorApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new LocatorStateDto(state);
+            var stateDto = new LocatorStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (LocatorState)_locatorApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new LocatorStateDto(state);
+            var stateDto = new LocatorStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -343,10 +343,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<ILocatorStateDto> ToLocatorStateDtoCollection(IEnumerable<string> ids)
         {
-            var states = new List<LocatorStateDto>();
+            var states = new List<ILocatorStateDto>();
             foreach (var id in ids)
             {
-                var dto = new LocatorStateDto();
+                var dto = new LocatorStateDtoWrapper();
                 dto.LocatorId = id;
                 states.Add(dto);
             }

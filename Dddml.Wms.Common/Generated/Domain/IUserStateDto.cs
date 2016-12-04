@@ -121,29 +121,31 @@ namespace Dddml.Wms.Domain
             set;
         }
 
-        UserRoleStateDto[] UserRoles
+        IUserRoleStateDto[] UserRoles
         {
             get;
             set;
         }
 
-        UserClaimStateDto[] UserClaims
+        IUserClaimStateDto[] UserClaims
         {
             get;
             set;
         }
 
-        UserPermissionStateDto[] UserPermissions
+        IUserPermissionStateDto[] UserPermissions
         {
             get;
             set;
         }
 
-        UserLoginStateDto[] UserLogins
+        IUserLoginStateDto[] UserLogins
         {
             get;
             set;
         }
+
+        IUserState ToUserState();
 
     }
 

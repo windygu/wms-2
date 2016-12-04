@@ -176,6 +176,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IAttributeValueMvoState ToAttributeValueMvoState();
+
     }
 
 }

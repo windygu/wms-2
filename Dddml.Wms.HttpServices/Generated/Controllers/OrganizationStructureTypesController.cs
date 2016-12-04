@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IOrganizationStructureTypeStateDto>();
             foreach (var s in states)
             {
-                var dto = s is OrganizationStructureTypeStateDto ? (OrganizationStructureTypeStateDto)s : new OrganizationStructureTypeStateDto((OrganizationStructureTypeState)s);
+                var dto = s is OrganizationStructureTypeStateDtoWrapper ? (OrganizationStructureTypeStateDtoWrapper)s : new OrganizationStructureTypeStateDtoWrapper((OrganizationStructureTypeState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (OrganizationStructureTypeState)_organizationStructureTypeApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new OrganizationStructureTypeStateDto(state);
+            var stateDto = new OrganizationStructureTypeStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (OrganizationStructureTypeState)_organizationStructureTypeApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new OrganizationStructureTypeStateDto(state);
+            var stateDto = new OrganizationStructureTypeStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -343,10 +343,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IOrganizationStructureTypeStateDto> ToOrganizationStructureTypeStateDtoCollection(IEnumerable<string> ids)
         {
-            var states = new List<OrganizationStructureTypeStateDto>();
+            var states = new List<IOrganizationStructureTypeStateDto>();
             foreach (var id in ids)
             {
-                var dto = new OrganizationStructureTypeStateDto();
+                var dto = new OrganizationStructureTypeStateDtoWrapper();
                 dto.Id = id;
                 states.Add(dto);
             }

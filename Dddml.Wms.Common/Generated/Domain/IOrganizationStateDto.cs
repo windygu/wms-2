@@ -79,6 +79,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IOrganizationState ToOrganizationState();
+
     }
 
 }

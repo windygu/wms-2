@@ -6,7 +6,7 @@ using Dddml.Wms.Specialization;
 
 namespace Dddml.Wms.Specialization
 {
-    public abstract class StateDtoCollectionBase<TDto> : StateDtoBase, IStateDto, ICollection<TDto> where TDto : StateDtoBase
+    public abstract class StateDtoWrapperCollectionBase<TDto> : StateDtoWrapperBase, IStateDtoWrapper, ICollection<TDto> where TDto : StateDtoWrapperBase
     {
         private List<TDto> _collection = new List<TDto>();
 

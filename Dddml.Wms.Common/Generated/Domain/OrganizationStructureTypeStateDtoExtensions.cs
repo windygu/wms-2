@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class OrganizationStructureTypeStateDtoExtensions
 	{
 
-        public static IOrganizationStructureTypeCommand ToCreateOrMergePatchOrganizationStructureType(this OrganizationStructureTypeStateDto state)
+        public static IOrganizationStructureTypeCommand ToCreateOrMergePatchOrganizationStructureType(this OrganizationStructureTypeStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchOrganizationStructureType<CreateOrganizationStructureTypeDto, MergePatchOrganizationStructureTypeDto>();
         }
 
-        public static DeleteOrganizationStructureTypeDto ToDeleteOrganizationStructureType(this OrganizationStructureTypeStateDto state)
+        public static DeleteOrganizationStructureTypeDto ToDeleteOrganizationStructureType(this OrganizationStructureTypeStateDtoWrapper state)
         {
             return state.ToDeleteOrganizationStructureType<DeleteOrganizationStructureTypeDto>();
         }
 
-        public static MergePatchOrganizationStructureTypeDto ToMergePatchOrganizationStructureType(this OrganizationStructureTypeStateDto state)
+        public static MergePatchOrganizationStructureTypeDto ToMergePatchOrganizationStructureType(this OrganizationStructureTypeStateDtoWrapper state)
         {
             return state.ToMergePatchOrganizationStructureType<MergePatchOrganizationStructureTypeDto>();
         }
 
-        public static CreateOrganizationStructureTypeDto ToCreateOrganizationStructureType(this OrganizationStructureTypeStateDto state)
+        public static CreateOrganizationStructureTypeDto ToCreateOrganizationStructureType(this OrganizationStructureTypeStateDtoWrapper state)
         {
             return state.ToCreateOrganizationStructureType<CreateOrganizationStructureTypeDto>();
         }

@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class AttributeValueMvoStateDtoExtensions
 	{
 
-        public static IAttributeValueMvoCommand ToCreateOrMergePatchAttributeValueMvo(this AttributeValueMvoStateDto state)
+        public static IAttributeValueMvoCommand ToCreateOrMergePatchAttributeValueMvo(this AttributeValueMvoStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchAttributeValueMvo<CreateAttributeValueMvoDto, MergePatchAttributeValueMvoDto>();
         }
 
-        public static DeleteAttributeValueMvoDto ToDeleteAttributeValueMvo(this AttributeValueMvoStateDto state)
+        public static DeleteAttributeValueMvoDto ToDeleteAttributeValueMvo(this AttributeValueMvoStateDtoWrapper state)
         {
             return state.ToDeleteAttributeValueMvo<DeleteAttributeValueMvoDto>();
         }
 
-        public static MergePatchAttributeValueMvoDto ToMergePatchAttributeValueMvo(this AttributeValueMvoStateDto state)
+        public static MergePatchAttributeValueMvoDto ToMergePatchAttributeValueMvo(this AttributeValueMvoStateDtoWrapper state)
         {
             return state.ToMergePatchAttributeValueMvo<MergePatchAttributeValueMvoDto>();
         }
 
-        public static CreateAttributeValueMvoDto ToCreateAttributeValueMvo(this AttributeValueMvoStateDto state)
+        public static CreateAttributeValueMvoDto ToCreateAttributeValueMvo(this AttributeValueMvoStateDtoWrapper state)
         {
             return state.ToCreateAttributeValueMvo<CreateAttributeValueMvoDto>();
         }

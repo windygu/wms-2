@@ -67,6 +67,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IRoleState ToRoleState();
+
     }
 
 }

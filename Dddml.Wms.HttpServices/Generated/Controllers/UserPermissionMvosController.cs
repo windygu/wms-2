@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IUserPermissionMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is UserPermissionMvoStateDto ? (UserPermissionMvoStateDto)s : new UserPermissionMvoStateDto((UserPermissionMvoState)s);
+                var dto = s is UserPermissionMvoStateDtoWrapper ? (UserPermissionMvoStateDtoWrapper)s : new UserPermissionMvoStateDtoWrapper((UserPermissionMvoState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = UserPermissionMvosControllerUtils.ParseIdString(id);
             var state = (UserPermissionMvoState)_userPermissionMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new UserPermissionMvoStateDto(state);
+            var stateDto = new UserPermissionMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = UserPermissionMvosControllerUtils.ParseIdString(id);
             var state = (UserPermissionMvoState)_userPermissionMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new UserPermissionMvoStateDto(state);
+            var stateDto = new UserPermissionMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -350,10 +350,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IUserPermissionMvoStateDto> ToUserPermissionMvoStateDtoCollection(IEnumerable<UserPermissionId> ids)
         {
-            var states = new List<UserPermissionMvoStateDto>();
+            var states = new List<IUserPermissionMvoStateDto>();
             foreach (var id in ids)
             {
-                var dto = new UserPermissionMvoStateDto();
+                var dto = new UserPermissionMvoStateDtoWrapper();
                 dto.UserPermissionId = new UserPermissionIdDtoWrapper(id);
                 states.Add(dto);
             }

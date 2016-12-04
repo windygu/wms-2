@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.OrganizationStructureType.Get(req);
             OrganizationStructureTypeProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToOrganizationStructureTypeState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.OrganizationStructureTypes.Get(req);
             OrganizationStructureTypeProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToOrganizationStructureTypeState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.OrganizationStructureTypes.Get(req);
             OrganizationStructureTypeProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToOrganizationStructureTypeState());
             return states;
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new OrganizationStructureTypeHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.OrganizationStructureTypeHistoryState.Get(req);
             OrganizationStructureTypeProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToOrganizationStructureTypeState();
         }
 
         public virtual IOrganizationStructureTypeState GetHistoryState(string id, long version)

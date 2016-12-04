@@ -164,6 +164,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IUserPermissionMvoState ToUserPermissionMvoState();
+
     }
 
 }

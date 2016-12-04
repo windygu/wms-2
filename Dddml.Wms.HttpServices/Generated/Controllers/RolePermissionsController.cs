@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IRolePermissionStateDto>();
             foreach (var s in states)
             {
-                var dto = s is RolePermissionStateDto ? (RolePermissionStateDto)s : new RolePermissionStateDto((RolePermissionState)s);
+                var dto = s is RolePermissionStateDtoWrapper ? (RolePermissionStateDtoWrapper)s : new RolePermissionStateDtoWrapper((RolePermissionState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = RolePermissionsControllerUtils.ParseIdString(id);
             var state = (RolePermissionState)_rolePermissionApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new RolePermissionStateDto(state);
+            var stateDto = new RolePermissionStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = RolePermissionsControllerUtils.ParseIdString(id);
             var state = (RolePermissionState)_rolePermissionApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new RolePermissionStateDto(state);
+            var stateDto = new RolePermissionStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -350,10 +350,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IRolePermissionStateDto> ToRolePermissionStateDtoCollection(IEnumerable<RolePermissionId> ids)
         {
-            var states = new List<RolePermissionStateDto>();
+            var states = new List<IRolePermissionStateDto>();
             foreach (var id in ids)
             {
-                var dto = new RolePermissionStateDto();
+                var dto = new RolePermissionStateDtoWrapper();
                 dto.Id = new RolePermissionIdDtoWrapper(id);
                 states.Add(dto);
             }

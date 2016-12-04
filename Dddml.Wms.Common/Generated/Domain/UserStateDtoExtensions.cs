@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class UserStateDtoExtensions
 	{
 
-        public static IUserCommand ToCreateOrMergePatchUser(this UserStateDto state)
+        public static IUserCommand ToCreateOrMergePatchUser(this UserStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchUser<CreateUserDto, MergePatchUserDto, CreateUserRoleDto, MergePatchUserRoleDto, CreateUserClaimDto, MergePatchUserClaimDto, CreateUserPermissionDto, MergePatchUserPermissionDto, CreateUserLoginDto, MergePatchUserLoginDto>();
         }
 
-        public static DeleteUserDto ToDeleteUser(this UserStateDto state)
+        public static DeleteUserDto ToDeleteUser(this UserStateDtoWrapper state)
         {
             return state.ToDeleteUser<DeleteUserDto>();
         }
 
-        public static MergePatchUserDto ToMergePatchUser(this UserStateDto state)
+        public static MergePatchUserDto ToMergePatchUser(this UserStateDtoWrapper state)
         {
             return state.ToMergePatchUser<MergePatchUserDto, CreateUserRoleDto, MergePatchUserRoleDto, CreateUserClaimDto, MergePatchUserClaimDto, CreateUserPermissionDto, MergePatchUserPermissionDto, CreateUserLoginDto, MergePatchUserLoginDto>();
         }
 
-        public static CreateUserDto ToCreateUser(this UserStateDto state)
+        public static CreateUserDto ToCreateUser(this UserStateDtoWrapper state)
         {
             return state.ToCreateUser<CreateUserDto, CreateUserRoleDto, CreateUserClaimDto, CreateUserPermissionDto, CreateUserLoginDto>();
         }

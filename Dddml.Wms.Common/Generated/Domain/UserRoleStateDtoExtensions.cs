@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class UserRoleStateDtoExtensions
 	{
 
-        public static IUserRoleCommand ToCreateOrMergePatchUserRole(this UserRoleStateDto state)
+        public static IUserRoleCommand ToCreateOrMergePatchUserRole(this UserRoleStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchUserRole<CreateUserRoleDto, MergePatchUserRoleDto>();
         }
 
-        public static RemoveUserRoleDto ToRemoveUserRole(this UserRoleStateDto state)
+        public static RemoveUserRoleDto ToRemoveUserRole(this UserRoleStateDtoWrapper state)
         {
             return state.ToRemoveUserRole<RemoveUserRoleDto>();
         }
 
-        public static MergePatchUserRoleDto ToMergePatchUserRole(this UserRoleStateDto state)
+        public static MergePatchUserRoleDto ToMergePatchUserRole(this UserRoleStateDtoWrapper state)
         {
             return state.ToMergePatchUserRole<MergePatchUserRoleDto>();
         }
 
-        public static CreateUserRoleDto ToCreateUserRole(this UserRoleStateDto state)
+        public static CreateUserRoleDto ToCreateUserRole(this UserRoleStateDtoWrapper state)
         {
             return state.ToCreateUserRole<CreateUserRoleDto>();
         }

@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class AudienceStateDtoExtensions
 	{
 
-        public static IAudienceCommand ToCreateOrMergePatchAudience(this AudienceStateDto state)
+        public static IAudienceCommand ToCreateOrMergePatchAudience(this AudienceStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchAudience<CreateAudienceDto, MergePatchAudienceDto>();
         }
 
-        public static DeleteAudienceDto ToDeleteAudience(this AudienceStateDto state)
+        public static DeleteAudienceDto ToDeleteAudience(this AudienceStateDtoWrapper state)
         {
             return state.ToDeleteAudience<DeleteAudienceDto>();
         }
 
-        public static MergePatchAudienceDto ToMergePatchAudience(this AudienceStateDto state)
+        public static MergePatchAudienceDto ToMergePatchAudience(this AudienceStateDtoWrapper state)
         {
             return state.ToMergePatchAudience<MergePatchAudienceDto>();
         }
 
-        public static CreateAudienceDto ToCreateAudience(this AudienceStateDto state)
+        public static CreateAudienceDto ToCreateAudience(this AudienceStateDtoWrapper state)
         {
             return state.ToCreateAudience<CreateAudienceDto>();
         }

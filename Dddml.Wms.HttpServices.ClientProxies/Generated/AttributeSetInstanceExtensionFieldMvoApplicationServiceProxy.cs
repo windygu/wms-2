@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.AttributeSetInstanceExtensionFieldMvo.Get(req);
             AttributeSetInstanceExtensionFieldMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content;
+            state = resp.Content.ToAttributeSetInstanceExtensionFieldMvoState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSetInstanceExtensionFieldMvos.Get(req);
             AttributeSetInstanceExtensionFieldMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToAttributeSetInstanceExtensionFieldMvoState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSetInstanceExtensionFieldMvos.Get(req);
             AttributeSetInstanceExtensionFieldMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToAttributeSetInstanceExtensionFieldMvoState());
             return states;
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new AttributeSetInstanceExtensionFieldMvoHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.AttributeSetInstanceExtensionFieldMvoHistoryState.Get(req);
             AttributeSetInstanceExtensionFieldMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content;
+            return resp.Content.ToAttributeSetInstanceExtensionFieldMvoState();
         }
 
         public virtual IAttributeSetInstanceExtensionFieldMvoState GetHistoryState(AttributeSetInstanceExtensionFieldId attributeSetInstanceExtensionFieldId, long version)

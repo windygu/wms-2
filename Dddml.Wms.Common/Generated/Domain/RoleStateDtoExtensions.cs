@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class RoleStateDtoExtensions
 	{
 
-        public static IRoleCommand ToCreateOrMergePatchRole(this RoleStateDto state)
+        public static IRoleCommand ToCreateOrMergePatchRole(this RoleStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchRole<CreateRoleDto, MergePatchRoleDto>();
         }
 
-        public static DeleteRoleDto ToDeleteRole(this RoleStateDto state)
+        public static DeleteRoleDto ToDeleteRole(this RoleStateDtoWrapper state)
         {
             return state.ToDeleteRole<DeleteRoleDto>();
         }
 
-        public static MergePatchRoleDto ToMergePatchRole(this RoleStateDto state)
+        public static MergePatchRoleDto ToMergePatchRole(this RoleStateDtoWrapper state)
         {
             return state.ToMergePatchRole<MergePatchRoleDto>();
         }
 
-        public static CreateRoleDto ToCreateRole(this RoleStateDto state)
+        public static CreateRoleDto ToCreateRole(this RoleStateDtoWrapper state)
         {
             return state.ToCreateRole<CreateRoleDto>();
         }

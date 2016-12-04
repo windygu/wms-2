@@ -2827,6 +2827,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IAttributeSetInstanceState ToAttributeSetInstanceState();
+
     }
 
 }

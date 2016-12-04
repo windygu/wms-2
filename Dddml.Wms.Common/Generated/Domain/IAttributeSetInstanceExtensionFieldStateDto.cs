@@ -91,6 +91,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IAttributeSetInstanceExtensionFieldState ToAttributeSetInstanceExtensionFieldState();
+
     }
 
 }

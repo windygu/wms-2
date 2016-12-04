@@ -64,7 +64,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.LocatorTrees.Get(req);
             LocatorProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToLocatorState());
             return states;
         }
 
@@ -93,7 +93,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.LocatorTrees.Get(req);
             LocatorProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToLocatorState());
             return states;
         }
 
@@ -120,7 +120,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.LocatorTrees.Get(req);
             LocatorProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToLocatorState());
             return states;
         }
 
@@ -149,7 +149,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.LocatorTrees.Get(req);
             LocatorProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToLocatorState());
             return states;
         }
 
@@ -176,7 +176,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.LocatorTrees.Get(req);
             LocatorProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToLocatorState());
             return LocatorProxyUtils.ToIdCollection(states);
         }
 
@@ -205,7 +205,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.LocatorTrees.Get(req);
             LocatorProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToLocatorState());
             return LocatorProxyUtils.ToIdCollection(states);
         }
 
@@ -232,7 +232,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.LocatorTrees.Get(req);
             LocatorProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToLocatorState());
             return LocatorProxyUtils.ToIdCollection(states);
         }
 
@@ -261,7 +261,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.LocatorTrees.Get(req);
             LocatorProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content;
+            states = resp.Content.Select(e => e.ToLocatorState());
             return LocatorProxyUtils.ToIdCollection(states);
         }
 

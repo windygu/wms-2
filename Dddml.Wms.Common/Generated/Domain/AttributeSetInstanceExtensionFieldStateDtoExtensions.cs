@@ -14,22 +14,22 @@ namespace Dddml.Wms.Domain
 	public static partial class AttributeSetInstanceExtensionFieldStateDtoExtensions
 	{
 
-        public static IAttributeSetInstanceExtensionFieldCommand ToCreateOrMergePatchAttributeSetInstanceExtensionField(this AttributeSetInstanceExtensionFieldStateDto state)
+        public static IAttributeSetInstanceExtensionFieldCommand ToCreateOrMergePatchAttributeSetInstanceExtensionField(this AttributeSetInstanceExtensionFieldStateDtoWrapper state)
         {
             return state.ToCreateOrMergePatchAttributeSetInstanceExtensionField<CreateAttributeSetInstanceExtensionFieldDto, MergePatchAttributeSetInstanceExtensionFieldDto>();
         }
 
-        public static RemoveAttributeSetInstanceExtensionFieldDto ToRemoveAttributeSetInstanceExtensionField(this AttributeSetInstanceExtensionFieldStateDto state)
+        public static RemoveAttributeSetInstanceExtensionFieldDto ToRemoveAttributeSetInstanceExtensionField(this AttributeSetInstanceExtensionFieldStateDtoWrapper state)
         {
             return state.ToRemoveAttributeSetInstanceExtensionField<RemoveAttributeSetInstanceExtensionFieldDto>();
         }
 
-        public static MergePatchAttributeSetInstanceExtensionFieldDto ToMergePatchAttributeSetInstanceExtensionField(this AttributeSetInstanceExtensionFieldStateDto state)
+        public static MergePatchAttributeSetInstanceExtensionFieldDto ToMergePatchAttributeSetInstanceExtensionField(this AttributeSetInstanceExtensionFieldStateDtoWrapper state)
         {
             return state.ToMergePatchAttributeSetInstanceExtensionField<MergePatchAttributeSetInstanceExtensionFieldDto>();
         }
 
-        public static CreateAttributeSetInstanceExtensionFieldDto ToCreateAttributeSetInstanceExtensionField(this AttributeSetInstanceExtensionFieldStateDto state)
+        public static CreateAttributeSetInstanceExtensionFieldDto ToCreateAttributeSetInstanceExtensionField(this AttributeSetInstanceExtensionFieldStateDtoWrapper state)
         {
             return state.ToCreateAttributeSetInstanceExtensionField<CreateAttributeSetInstanceExtensionFieldDto>();
         }

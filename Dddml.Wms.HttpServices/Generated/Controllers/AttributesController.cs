@@ -48,7 +48,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAttributeStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AttributeStateDto ? (AttributeStateDto)s : new AttributeStateDto((AttributeState)s);
+                var dto = s is AttributeStateDtoWrapper ? (AttributeStateDtoWrapper)s : new AttributeStateDtoWrapper((AttributeState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -70,7 +70,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (AttributeState)_attributeApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new AttributeStateDto(state);
+            var stateDto = new AttributeStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -180,7 +180,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = (AttributeState)_attributeApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new AttributeStateDto(state);
+            var stateDto = new AttributeStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -200,7 +200,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var state = (AttributeValueState)_attributeApplicationService.GetAttributeValue(attributeId, value);
             if (state == null) { return null; }
-            var stateDto = new AttributeValueStateDto(state);
+            var stateDto = new AttributeValueStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
           } catch (Exception ex) { var response = AttributesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
@@ -367,10 +367,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static IEnumerable<IAttributeStateDto> ToAttributeStateDtoCollection(IEnumerable<string> ids)
         {
-            var states = new List<AttributeStateDto>();
+            var states = new List<IAttributeStateDto>();
             foreach (var id in ids)
             {
-                var dto = new AttributeStateDto();
+                var dto = new AttributeStateDtoWrapper();
                 dto.AttributeId = id;
                 states.Add(dto);
             }

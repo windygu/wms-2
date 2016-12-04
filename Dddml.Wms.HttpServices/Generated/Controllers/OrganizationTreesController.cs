@@ -96,10 +96,10 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     }
                 }
             }
-            var stateDtos = new List<OrganizationStateDto>();
+            var stateDtos = new List<IOrganizationStateDto>();
             foreach (var s in states)
             {
-                var dto = s is OrganizationStateDto ? (OrganizationStateDto)s : new OrganizationStateDto((OrganizationState)s);
+                var dto = s is OrganizationStateDtoWrapper ? (OrganizationStateDtoWrapper)s : new OrganizationStateDtoWrapper((OrganizationState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;

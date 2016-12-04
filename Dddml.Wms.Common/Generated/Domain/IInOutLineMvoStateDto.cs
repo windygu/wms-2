@@ -405,6 +405,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        IInOutLineMvoState ToInOutLineMvoState();
+
     }
 
 }

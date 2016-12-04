@@ -103,6 +103,8 @@ namespace Dddml.Wms.Domain
             set;
         }
 
+        ILocatorState ToLocatorState();
+
     }
 
 }
