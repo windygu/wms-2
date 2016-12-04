@@ -179,7 +179,36 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserClaimMvoState ToUserClaimMvoState()
         {
-            throw new NotImplementedException();
+            var state = new UserClaimMvoState(true);
+            state.UserClaimId = (this.UserClaimId == null) ? null : this.UserClaimId.ToUserClaimId();
+            state.ClaimType = this.ClaimType;
+            state.ClaimValue = this.ClaimValue;
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            state.UserUserName = this.UserUserName;
+            if (this.UserAccessFailedCount != null && this.UserAccessFailedCount.HasValue) { state.UserAccessFailedCount = this.UserAccessFailedCount.Value; }
+            state.UserEmail = this.UserEmail;
+            if (this.UserEmailConfirmed != null && this.UserEmailConfirmed.HasValue) { state.UserEmailConfirmed = this.UserEmailConfirmed.Value; }
+            if (this.UserLockoutEnabled != null && this.UserLockoutEnabled.HasValue) { state.UserLockoutEnabled = this.UserLockoutEnabled.Value; }
+            state.UserLockoutEndDateUtc = this.UserLockoutEndDateUtc;
+            state.UserPasswordHash = this.UserPasswordHash;
+            state.UserPhoneNumber = this.UserPhoneNumber;
+            if (this.UserPhoneNumberConfirmed != null && this.UserPhoneNumberConfirmed.HasValue) { state.UserPhoneNumberConfirmed = this.UserPhoneNumberConfirmed.Value; }
+            if (this.UserTwoFactorEnabled != null && this.UserTwoFactorEnabled.HasValue) { state.UserTwoFactorEnabled = this.UserTwoFactorEnabled.Value; }
+            state.UserSecurityStamp = this.UserSecurityStamp;
+            state.UserCreatedBy = this.UserCreatedBy;
+            if (this.UserCreatedAt != null && this.UserCreatedAt.HasValue) { state.UserCreatedAt = this.UserCreatedAt.Value; }
+            state.UserUpdatedBy = this.UserUpdatedBy;
+            if (this.UserUpdatedAt != null && this.UserUpdatedAt.HasValue) { state.UserUpdatedAt = this.UserUpdatedAt.Value; }
+            if (this.UserActive != null && this.UserActive.HasValue) { state.UserActive = this.UserActive.Value; }
+            if (this.UserDeleted != null && this.UserDeleted.HasValue) { state.UserDeleted = this.UserDeleted.Value; }
+            if (this.UserVersion != null && this.UserVersion.HasValue) { state.UserVersion = this.UserVersion.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
         }
 
     }

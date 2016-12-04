@@ -82,7 +82,20 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeValueState ToAttributeValueState()
         {
-            throw new NotImplementedException();
+            var state = new AttributeValueState(true);
+            state.Value = this.Value;
+            state.Name = this.Name;
+            state.Description = this.Description;
+            state.ReferenceId = this.ReferenceId;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.AttributeId = this.AttributeId;
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
         }
 
     }

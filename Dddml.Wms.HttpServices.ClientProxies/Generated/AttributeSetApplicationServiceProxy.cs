@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.AttributeSet.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content.ToAttributeSetState();
+            state = (resp.Content == null) ? null : resp.Content.ToAttributeSetState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSets.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToAttributeSetState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToAttributeSetState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSets.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToAttributeSetState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToAttributeSetState());
             return states;
         }
 
@@ -221,7 +221,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSetsCount.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
@@ -237,7 +240,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.AttributeSetsCount.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(ICriterion filter)
@@ -274,7 +280,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new AttributeSetHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.AttributeSetHistoryState.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content.ToAttributeSetState();
+            return (resp.Content == null) ? null : resp.Content.ToAttributeSetState();
         }
 
         public virtual IAttributeSetState GetHistoryState(string attributeSetId, long version)
@@ -291,7 +297,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new AttributeUseGetRequest(uriParameters);
             var resp = await _ramlClient.AttributeUse.Get(req);
             AttributeSetProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content.ToAttributeUseState();
+            return (resp.Content == null) ? null : resp.Content.ToAttributeUseState();
         }
 
         public virtual IAttributeUseState GetAttributeUse(string attributeSetId, string attributeId)

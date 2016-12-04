@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.UserPermissionMvo.Get(req);
             UserPermissionMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content.ToUserPermissionMvoState();
+            state = (resp.Content == null) ? null : resp.Content.ToUserPermissionMvoState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserPermissionMvos.Get(req);
             UserPermissionMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToUserPermissionMvoState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToUserPermissionMvoState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserPermissionMvos.Get(req);
             UserPermissionMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToUserPermissionMvoState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToUserPermissionMvoState());
             return states;
         }
 
@@ -221,7 +221,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserPermissionMvosCount.Get(req);
             UserPermissionMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
@@ -237,7 +240,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserPermissionMvosCount.Get(req);
             UserPermissionMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(ICriterion filter)
@@ -274,7 +280,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new UserPermissionMvoHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.UserPermissionMvoHistoryState.Get(req);
             UserPermissionMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content.ToUserPermissionMvoState();
+            return (resp.Content == null) ? null : resp.Content.ToUserPermissionMvoState();
         }
 
         public virtual IUserPermissionMvoState GetHistoryState(UserPermissionId userPermissionId, long version)

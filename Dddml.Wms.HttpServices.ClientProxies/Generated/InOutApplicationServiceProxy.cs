@@ -129,7 +129,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.InOut.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content.ToInOutState();
+            state = (resp.Content == null) ? null : resp.Content.ToInOutState();
             return state;
         }
 
@@ -162,7 +162,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOuts.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToInOutState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToInOutState());
             return states;
         }
 
@@ -205,7 +205,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOuts.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToInOutState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToInOutState());
             return states;
         }
 
@@ -222,7 +222,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOutsCount.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
@@ -238,7 +241,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOutsCount.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(ICriterion filter)
@@ -275,7 +281,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new InOutHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.InOutHistoryState.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content.ToInOutState();
+            return (resp.Content == null) ? null : resp.Content.ToInOutState();
         }
 
         public virtual IInOutState GetHistoryState(string documentNumber, long version)
@@ -292,7 +298,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new InOutLineGetRequest(uriParameters);
             var resp = await _ramlClient.InOutLine.Get(req);
             InOutProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content.ToInOutLineState();
+            return (resp.Content == null) ? null : resp.Content.ToInOutLineState();
         }
 
         public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, SkuId skuId)

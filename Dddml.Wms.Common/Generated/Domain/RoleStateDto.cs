@@ -70,7 +70,18 @@ namespace Dddml.Wms.Domain
 
         public virtual IRoleState ToRoleState()
         {
-            throw new NotImplementedException();
+            var state = new RoleState(true);
+            state.RoleId = this.RoleId;
+            state.Name = this.Name;
+            state.Description = this.Description;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
         }
 
     }

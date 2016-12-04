@@ -106,7 +106,24 @@ namespace Dddml.Wms.Domain
 
         public virtual ILocatorState ToLocatorState()
         {
-            throw new NotImplementedException();
+            var state = new LocatorState(true);
+            state.LocatorId = this.LocatorId;
+            state.WarehouseId = this.WarehouseId;
+            state.ParentLocatorId = this.ParentLocatorId;
+            state.LocatorType = this.LocatorType;
+            state.PriorityNumber = this.PriorityNumber;
+            if (this.IsDefault != null && this.IsDefault.HasValue) { state.IsDefault = this.IsDefault.Value; }
+            state.X = this.X;
+            state.Y = this.Y;
+            state.Z = this.Z;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
         }
 
     }

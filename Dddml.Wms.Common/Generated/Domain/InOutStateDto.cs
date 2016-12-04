@@ -275,7 +275,51 @@ namespace Dddml.Wms.Domain
 
         public virtual IInOutState ToInOutState()
         {
-            throw new NotImplementedException();
+            var state = new InOutState(true);
+            state.DocumentNumber = this.DocumentNumber;
+            if (this.IsSOTransaction != null && this.IsSOTransaction.HasValue) { state.IsSOTransaction = this.IsSOTransaction.Value; }
+            state.DocumentStatus = this.DocumentStatus;
+            if (this.Posted != null && this.Posted.HasValue) { state.Posted = this.Posted.Value; }
+            if (this.Processing != null && this.Processing.HasValue) { state.Processing = this.Processing.Value; }
+            if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
+            if (this.DocumentType != null && this.DocumentType.HasValue) { state.DocumentType = this.DocumentType.Value; }
+            state.Description = this.Description;
+            state.OrderNumber = this.OrderNumber;
+            state.DateOrdered = this.DateOrdered;
+            if (this.IsPrinted != null && this.IsPrinted.HasValue) { state.IsPrinted = this.IsPrinted.Value; }
+            state.MovementType = this.MovementType;
+            state.MovementDate = this.MovementDate;
+            state.BusinessPartnerId = this.BusinessPartnerId;
+            state.WarehouseId = this.WarehouseId;
+            state.POReference = this.POReference;
+            if (this.FreightAmount != null && this.FreightAmount.HasValue) { state.FreightAmount = this.FreightAmount.Value; }
+            state.ShipperId = this.ShipperId;
+            if (this.ChargeAmount != null && this.ChargeAmount.HasValue) { state.ChargeAmount = this.ChargeAmount.Value; }
+            state.DatePrinted = this.DatePrinted;
+            state.SalesRepresentative = this.SalesRepresentative;
+            if (this.NumberOfPackages != null && this.NumberOfPackages.HasValue) { state.NumberOfPackages = this.NumberOfPackages.Value; }
+            state.PickDate = this.PickDate;
+            state.ShipDate = this.ShipDate;
+            state.TrackingNumber = this.TrackingNumber;
+            state.DateReceived = this.DateReceived;
+            if (this.IsInTransit != null && this.IsInTransit.HasValue) { state.IsInTransit = this.IsInTransit.Value; }
+            if (this.IsApproved != null && this.IsApproved.HasValue) { state.IsApproved = this.IsApproved.Value; }
+            if (this.IsInDispute != null && this.IsInDispute.HasValue) { state.IsInDispute = this.IsInDispute.Value; }
+            if (this.Volume != null && this.Volume.HasValue) { state.Volume = this.Volume.Value; }
+            if (this.Weight != null && this.Weight.HasValue) { state.Weight = this.Weight.Value; }
+            state.RmaNumber = this.RmaNumber;
+            state.ReversalNumber = this.ReversalNumber;
+            if (this.IsDropShip != null && this.IsDropShip.HasValue) { state.IsDropShip = this.IsDropShip.Value; }
+            state.DropShipBusinessPartnerId = this.DropShipBusinessPartnerId;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.InOutLines != null) { foreach (var s in this.InOutLines) { state.InOutLines.AddToSave(s.ToInOutLineState()); } };
+
+            return state;
         }
 
     }

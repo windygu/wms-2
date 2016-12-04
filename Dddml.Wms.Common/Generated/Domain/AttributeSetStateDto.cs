@@ -106,7 +106,23 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeSetState ToAttributeSetState()
         {
-            throw new NotImplementedException();
+            var state = new AttributeSetState(true);
+            state.AttributeSetId = this.AttributeSetId;
+            state.Name = this.Name;
+            state.OrganizationId = this.OrganizationId;
+            state.Description = this.Description;
+            state.SerialNumberAttributeId = this.SerialNumberAttributeId;
+            state.LotAttributeId = this.LotAttributeId;
+            state.ReferenceId = this.ReferenceId;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.AttributeUses != null) { foreach (var s in this.AttributeUses) { state.AttributeUses.AddToSave(s.ToAttributeUseState()); } };
+
+            return state;
         }
 
     }

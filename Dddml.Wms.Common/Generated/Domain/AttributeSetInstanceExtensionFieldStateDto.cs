@@ -94,7 +94,22 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeSetInstanceExtensionFieldState ToAttributeSetInstanceExtensionFieldState()
         {
-            throw new NotImplementedException();
+            var state = new AttributeSetInstanceExtensionFieldState(true);
+            state.Index = this.Index;
+            state.Name = this.Name;
+            state.Type = this.Type;
+            state.Length = this.Length;
+            state.Alias = this.Alias;
+            state.Description = this.Description;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.GroupId = this.GroupId;
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
         }
 
     }

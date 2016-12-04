@@ -179,7 +179,36 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeValueMvoState ToAttributeValueMvoState()
         {
-            throw new NotImplementedException();
+            var state = new AttributeValueMvoState(true);
+            state.AttributeValueId = (this.AttributeValueId == null) ? null : this.AttributeValueId.ToAttributeValueId();
+            state.Name = this.Name;
+            state.Description = this.Description;
+            state.ReferenceId = this.ReferenceId;
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            state.AttributeName = this.AttributeName;
+            state.AttributeOrganizationId = this.AttributeOrganizationId;
+            state.AttributeDescription = this.AttributeDescription;
+            if (this.AttributeIsMandatory != null && this.AttributeIsMandatory.HasValue) { state.AttributeIsMandatory = this.AttributeIsMandatory.Value; }
+            if (this.AttributeIsInstanceAttribute != null && this.AttributeIsInstanceAttribute.HasValue) { state.AttributeIsInstanceAttribute = this.AttributeIsInstanceAttribute.Value; }
+            state.AttributeAttributeValueType = this.AttributeAttributeValueType;
+            state.AttributeAttributeValueLength = this.AttributeAttributeValueLength;
+            if (this.AttributeIsList != null && this.AttributeIsList.HasValue) { state.AttributeIsList = this.AttributeIsList.Value; }
+            state.AttributeFieldName = this.AttributeFieldName;
+            state.AttributeReferenceId = this.AttributeReferenceId;
+            state.AttributeCreatedBy = this.AttributeCreatedBy;
+            if (this.AttributeCreatedAt != null && this.AttributeCreatedAt.HasValue) { state.AttributeCreatedAt = this.AttributeCreatedAt.Value; }
+            state.AttributeUpdatedBy = this.AttributeUpdatedBy;
+            if (this.AttributeUpdatedAt != null && this.AttributeUpdatedAt.HasValue) { state.AttributeUpdatedAt = this.AttributeUpdatedAt.Value; }
+            if (this.AttributeActive != null && this.AttributeActive.HasValue) { state.AttributeActive = this.AttributeActive.Value; }
+            if (this.AttributeDeleted != null && this.AttributeDeleted.HasValue) { state.AttributeDeleted = this.AttributeDeleted.Value; }
+            if (this.AttributeVersion != null && this.AttributeVersion.HasValue) { state.AttributeVersion = this.AttributeVersion.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
         }
 
     }

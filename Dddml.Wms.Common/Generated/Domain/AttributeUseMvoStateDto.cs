@@ -143,7 +143,30 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeUseMvoState ToAttributeUseMvoState()
         {
-            throw new NotImplementedException();
+            var state = new AttributeUseMvoState(true);
+            state.AttributeSetAttributeUseId = (this.AttributeSetAttributeUseId == null) ? null : this.AttributeSetAttributeUseId.ToAttributeSetAttributeUseId();
+            if (this.SequenceNumber != null && this.SequenceNumber.HasValue) { state.SequenceNumber = this.SequenceNumber.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            state.AttributeSetName = this.AttributeSetName;
+            state.AttributeSetOrganizationId = this.AttributeSetOrganizationId;
+            state.AttributeSetDescription = this.AttributeSetDescription;
+            state.AttributeSetSerialNumberAttributeId = this.AttributeSetSerialNumberAttributeId;
+            state.AttributeSetLotAttributeId = this.AttributeSetLotAttributeId;
+            state.AttributeSetReferenceId = this.AttributeSetReferenceId;
+            state.AttributeSetCreatedBy = this.AttributeSetCreatedBy;
+            if (this.AttributeSetCreatedAt != null && this.AttributeSetCreatedAt.HasValue) { state.AttributeSetCreatedAt = this.AttributeSetCreatedAt.Value; }
+            state.AttributeSetUpdatedBy = this.AttributeSetUpdatedBy;
+            if (this.AttributeSetUpdatedAt != null && this.AttributeSetUpdatedAt.HasValue) { state.AttributeSetUpdatedAt = this.AttributeSetUpdatedAt.Value; }
+            if (this.AttributeSetActive != null && this.AttributeSetActive.HasValue) { state.AttributeSetActive = this.AttributeSetActive.Value; }
+            if (this.AttributeSetDeleted != null && this.AttributeSetDeleted.HasValue) { state.AttributeSetDeleted = this.AttributeSetDeleted.Value; }
+            if (this.AttributeSetVersion != null && this.AttributeSetVersion.HasValue) { state.AttributeSetVersion = this.AttributeSetVersion.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
         }
 
     }

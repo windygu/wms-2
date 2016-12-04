@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.OrganizationStructureType.Get(req);
             OrganizationStructureTypeProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content.ToOrganizationStructureTypeState();
+            state = (resp.Content == null) ? null : resp.Content.ToOrganizationStructureTypeState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.OrganizationStructureTypes.Get(req);
             OrganizationStructureTypeProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToOrganizationStructureTypeState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationStructureTypeState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.OrganizationStructureTypes.Get(req);
             OrganizationStructureTypeProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToOrganizationStructureTypeState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationStructureTypeState());
             return states;
         }
 
@@ -221,7 +221,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.OrganizationStructureTypesCount.Get(req);
             OrganizationStructureTypeProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
@@ -237,7 +240,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.OrganizationStructureTypesCount.Get(req);
             OrganizationStructureTypeProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(ICriterion filter)
@@ -274,7 +280,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new OrganizationStructureTypeHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.OrganizationStructureTypeHistoryState.Get(req);
             OrganizationStructureTypeProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content.ToOrganizationStructureTypeState();
+            return (resp.Content == null) ? null : resp.Content.ToOrganizationStructureTypeState();
         }
 
         public virtual IOrganizationStructureTypeState GetHistoryState(string id, long version)

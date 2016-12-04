@@ -70,7 +70,18 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeUseState ToAttributeUseState()
         {
-            throw new NotImplementedException();
+            var state = new AttributeUseState(true);
+            state.AttributeId = this.AttributeId;
+            if (this.SequenceNumber != null && this.SequenceNumber.HasValue) { state.SequenceNumber = this.SequenceNumber.Value; }
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.AttributeSetId = this.AttributeSetId;
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
         }
 
     }

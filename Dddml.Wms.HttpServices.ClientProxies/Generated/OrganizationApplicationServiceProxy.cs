@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.Organization.Get(req);
             OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content.ToOrganizationState();
+            state = (resp.Content == null) ? null : resp.Content.ToOrganizationState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.Organizations.Get(req);
             OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToOrganizationState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.Organizations.Get(req);
             OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToOrganizationState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationState());
             return states;
         }
 
@@ -221,7 +221,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.OrganizationsCount.Get(req);
             OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
@@ -237,7 +240,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.OrganizationsCount.Get(req);
             OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(ICriterion filter)
@@ -274,7 +280,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new OrganizationHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.OrganizationHistoryState.Get(req);
             OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content.ToOrganizationState();
+            return (resp.Content == null) ? null : resp.Content.ToOrganizationState();
         }
 
         public virtual IOrganizationState GetHistoryState(string organizationId, long version)

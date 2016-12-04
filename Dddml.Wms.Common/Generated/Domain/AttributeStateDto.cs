@@ -130,7 +130,27 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeState ToAttributeState()
         {
-            throw new NotImplementedException();
+            var state = new AttributeState(true);
+            state.AttributeId = this.AttributeId;
+            state.Name = this.Name;
+            state.OrganizationId = this.OrganizationId;
+            state.Description = this.Description;
+            if (this.IsMandatory != null && this.IsMandatory.HasValue) { state.IsMandatory = this.IsMandatory.Value; }
+            if (this.IsInstanceAttribute != null && this.IsInstanceAttribute.HasValue) { state.IsInstanceAttribute = this.IsInstanceAttribute.Value; }
+            state.AttributeValueType = this.AttributeValueType;
+            state.AttributeValueLength = this.AttributeValueLength;
+            if (this.IsList != null && this.IsList.HasValue) { state.IsList = this.IsList.Value; }
+            state.FieldName = this.FieldName;
+            state.ReferenceId = this.ReferenceId;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.AttributeValues != null) { foreach (var s in this.AttributeValues) { state.AttributeValues.AddToSave(s.ToAttributeValueState()); } };
+
+            return state;
         }
 
     }

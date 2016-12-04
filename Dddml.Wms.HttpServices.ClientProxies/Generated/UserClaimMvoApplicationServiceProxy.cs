@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.UserClaimMvo.Get(req);
             UserClaimMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content.ToUserClaimMvoState();
+            state = (resp.Content == null) ? null : resp.Content.ToUserClaimMvoState();
             return state;
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserClaimMvos.Get(req);
             UserClaimMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToUserClaimMvoState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToUserClaimMvoState());
             return states;
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserClaimMvos.Get(req);
             UserClaimMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToUserClaimMvoState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToUserClaimMvoState());
             return states;
         }
 
@@ -221,7 +221,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserClaimMvosCount.Get(req);
             UserClaimMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
@@ -237,7 +240,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.UserClaimMvosCount.Get(req);
             UserClaimMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(ICriterion filter)
@@ -274,7 +280,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new UserClaimMvoHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.UserClaimMvoHistoryState.Get(req);
             UserClaimMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content.ToUserClaimMvoState();
+            return (resp.Content == null) ? null : resp.Content.ToUserClaimMvoState();
         }
 
         public virtual IUserClaimMvoState GetHistoryState(UserClaimId userClaimId, long version)

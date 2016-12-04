@@ -76,7 +76,19 @@ namespace Dddml.Wms.Domain
 
         public virtual IPermissionState ToPermissionState()
         {
-            throw new NotImplementedException();
+            var state = new PermissionState(true);
+            state.PermissionId = this.PermissionId;
+            state.Name = this.Name;
+            state.ParentPermissionId = this.ParentPermissionId;
+            state.Description = this.Description;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
         }
 
     }

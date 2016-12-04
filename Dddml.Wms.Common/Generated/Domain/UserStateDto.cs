@@ -172,7 +172,31 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserState ToUserState()
         {
-            throw new NotImplementedException();
+            var state = new UserState(true);
+            state.UserId = this.UserId;
+            state.UserName = this.UserName;
+            if (this.AccessFailedCount != null && this.AccessFailedCount.HasValue) { state.AccessFailedCount = this.AccessFailedCount.Value; }
+            state.Email = this.Email;
+            if (this.EmailConfirmed != null && this.EmailConfirmed.HasValue) { state.EmailConfirmed = this.EmailConfirmed.Value; }
+            if (this.LockoutEnabled != null && this.LockoutEnabled.HasValue) { state.LockoutEnabled = this.LockoutEnabled.Value; }
+            state.LockoutEndDateUtc = this.LockoutEndDateUtc;
+            state.PasswordHash = this.PasswordHash;
+            state.PhoneNumber = this.PhoneNumber;
+            if (this.PhoneNumberConfirmed != null && this.PhoneNumberConfirmed.HasValue) { state.PhoneNumberConfirmed = this.PhoneNumberConfirmed.Value; }
+            if (this.TwoFactorEnabled != null && this.TwoFactorEnabled.HasValue) { state.TwoFactorEnabled = this.TwoFactorEnabled.Value; }
+            state.SecurityStamp = this.SecurityStamp;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.UserRoles != null) { foreach (var s in this.UserRoles) { state.UserRoles.AddToSave(s.ToUserRoleState()); } };
+            if (this.UserClaims != null) { foreach (var s in this.UserClaims) { state.UserClaims.AddToSave(s.ToUserClaimState()); } };
+            if (this.UserPermissions != null) { foreach (var s in this.UserPermissions) { state.UserPermissions.AddToSave(s.ToUserPermissionState()); } };
+            if (this.UserLogins != null) { foreach (var s in this.UserLogins) { state.UserLogins.AddToSave(s.ToUserLoginState()); } };
+
+            return state;
         }
 
     }

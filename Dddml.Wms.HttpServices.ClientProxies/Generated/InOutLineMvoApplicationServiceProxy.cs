@@ -129,7 +129,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
             var resp = await _ramlClient.InOutLineMvo.Get(req);
             InOutLineMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            state = resp.Content.ToInOutLineMvoState();
+            state = (resp.Content == null) ? null : resp.Content.ToInOutLineMvoState();
             return state;
         }
 
@@ -162,7 +162,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOutLineMvos.Get(req);
             InOutLineMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToInOutLineMvoState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToInOutLineMvoState());
             return states;
         }
 
@@ -205,7 +205,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOutLineMvos.Get(req);
             InOutLineMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            states = resp.Content.Select(e => e.ToInOutLineMvoState());
+            states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToInOutLineMvoState());
             return states;
         }
 
@@ -222,7 +222,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOutLineMvosCount.Get(req);
             InOutLineMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
@@ -238,7 +241,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             req.Query = q;
             var resp = await _ramlClient.InOutLineMvosCount.Get(req);
             InOutLineMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return long.Parse(await resp.RawContent.ReadAsStringAsync());
+            string str = await resp.RawContent.ReadAsStringAsync();
+            if (str.StartsWith("\"")) { str = str.Substring(1); }
+            if (str.EndsWith("\"")) { str = str.Substring(0, str.Length - 1); }
+            return long.Parse(str);
 		}
 
         public virtual long GetCount(ICriterion filter)
@@ -275,7 +281,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var req = new InOutLineMvoHistoryStateGetRequest(uriParameters);
             var resp = await _ramlClient.InOutLineMvoHistoryState.Get(req);
             InOutLineMvoProxyUtils.ThrowOnHttpResponseError(resp);
-            return resp.Content.ToInOutLineMvoState();
+            return (resp.Content == null) ? null : resp.Content.ToInOutLineMvoState();
         }
 
         public virtual IInOutLineMvoState GetHistoryState(InOutLineId inOutLineId, long version)

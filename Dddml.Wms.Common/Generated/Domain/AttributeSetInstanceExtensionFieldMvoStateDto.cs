@@ -161,7 +161,33 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeSetInstanceExtensionFieldMvoState ToAttributeSetInstanceExtensionFieldMvoState()
         {
-            throw new NotImplementedException();
+            var state = new AttributeSetInstanceExtensionFieldMvoState(true);
+            state.AttributeSetInstanceExtensionFieldId = (this.AttributeSetInstanceExtensionFieldId == null) ? null : this.AttributeSetInstanceExtensionFieldId.ToAttributeSetInstanceExtensionFieldId();
+            state.Name = this.Name;
+            state.Type = this.Type;
+            state.Length = this.Length;
+            state.Alias = this.Alias;
+            state.Description = this.Description;
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            state.AttrSetInstEFGroupFieldType = this.AttrSetInstEFGroupFieldType;
+            state.AttrSetInstEFGroupFieldLength = this.AttrSetInstEFGroupFieldLength;
+            if (this.AttrSetInstEFGroupFieldCount != null && this.AttrSetInstEFGroupFieldCount.HasValue) { state.AttrSetInstEFGroupFieldCount = this.AttrSetInstEFGroupFieldCount.Value; }
+            state.AttrSetInstEFGroupNameFormat = this.AttrSetInstEFGroupNameFormat;
+            state.AttrSetInstEFGroupDescription = this.AttrSetInstEFGroupDescription;
+            state.AttrSetInstEFGroupCreatedBy = this.AttrSetInstEFGroupCreatedBy;
+            if (this.AttrSetInstEFGroupCreatedAt != null && this.AttrSetInstEFGroupCreatedAt.HasValue) { state.AttrSetInstEFGroupCreatedAt = this.AttrSetInstEFGroupCreatedAt.Value; }
+            state.AttrSetInstEFGroupUpdatedBy = this.AttrSetInstEFGroupUpdatedBy;
+            if (this.AttrSetInstEFGroupUpdatedAt != null && this.AttrSetInstEFGroupUpdatedAt.HasValue) { state.AttrSetInstEFGroupUpdatedAt = this.AttrSetInstEFGroupUpdatedAt.Value; }
+            if (this.AttrSetInstEFGroupActive != null && this.AttrSetInstEFGroupActive.HasValue) { state.AttrSetInstEFGroupActive = this.AttrSetInstEFGroupActive.Value; }
+            if (this.AttrSetInstEFGroupDeleted != null && this.AttrSetInstEFGroupDeleted.HasValue) { state.AttrSetInstEFGroupDeleted = this.AttrSetInstEFGroupDeleted.Value; }
+            if (this.AttrSetInstEFGroupVersion != null && this.AttrSetInstEFGroupVersion.HasValue) { state.AttrSetInstEFGroupVersion = this.AttrSetInstEFGroupVersion.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
         }
 
     }

@@ -408,7 +408,74 @@ namespace Dddml.Wms.Domain
 
         public virtual IInOutLineMvoState ToInOutLineMvoState()
         {
-            throw new NotImplementedException();
+            var state = new InOutLineMvoState(true);
+            state.InOutLineId = (this.InOutLineId == null) ? null : this.InOutLineId.ToInOutLineId();
+            if (this.LineNumber != null && this.LineNumber.HasValue) { state.LineNumber = this.LineNumber.Value; }
+            state.Description = this.Description;
+            state.LocatorId = this.LocatorId;
+            state.Product = this.Product;
+            state.UomId = this.UomId;
+            if (this.MovementQuantity != null && this.MovementQuantity.HasValue) { state.MovementQuantity = this.MovementQuantity.Value; }
+            if (this.ConfirmedQuantity != null && this.ConfirmedQuantity.HasValue) { state.ConfirmedQuantity = this.ConfirmedQuantity.Value; }
+            if (this.ScrappedQuantity != null && this.ScrappedQuantity.HasValue) { state.ScrappedQuantity = this.ScrappedQuantity.Value; }
+            if (this.TargetQuantity != null && this.TargetQuantity.HasValue) { state.TargetQuantity = this.TargetQuantity.Value; }
+            if (this.PickedQuantity != null && this.PickedQuantity.HasValue) { state.PickedQuantity = this.PickedQuantity.Value; }
+            if (this.IsInvoiced != null && this.IsInvoiced.HasValue) { state.IsInvoiced = this.IsInvoiced.Value; }
+            state.AttributeSetInstanceId = this.AttributeSetInstanceId;
+            if (this.IsDescription != null && this.IsDescription.HasValue) { state.IsDescription = this.IsDescription.Value; }
+            if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
+            if (this.QuantityEntered != null && this.QuantityEntered.HasValue) { state.QuantityEntered = this.QuantityEntered.Value; }
+            if (this.RmaLineNumber != null && this.RmaLineNumber.HasValue) { state.RmaLineNumber = this.RmaLineNumber.Value; }
+            if (this.ReversalLineNumber != null && this.ReversalLineNumber.HasValue) { state.ReversalLineNumber = this.ReversalLineNumber.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.InOutIsSOTransaction != null && this.InOutIsSOTransaction.HasValue) { state.InOutIsSOTransaction = this.InOutIsSOTransaction.Value; }
+            state.InOutDocumentStatus = this.InOutDocumentStatus;
+            if (this.InOutPosted != null && this.InOutPosted.HasValue) { state.InOutPosted = this.InOutPosted.Value; }
+            if (this.InOutProcessing != null && this.InOutProcessing.HasValue) { state.InOutProcessing = this.InOutProcessing.Value; }
+            if (this.InOutProcessed != null && this.InOutProcessed.HasValue) { state.InOutProcessed = this.InOutProcessed.Value; }
+            if (this.InOutDocumentType != null && this.InOutDocumentType.HasValue) { state.InOutDocumentType = this.InOutDocumentType.Value; }
+            state.InOutDescription = this.InOutDescription;
+            state.InOutOrderNumber = this.InOutOrderNumber;
+            state.InOutDateOrdered = this.InOutDateOrdered;
+            if (this.InOutIsPrinted != null && this.InOutIsPrinted.HasValue) { state.InOutIsPrinted = this.InOutIsPrinted.Value; }
+            state.InOutMovementType = this.InOutMovementType;
+            state.InOutMovementDate = this.InOutMovementDate;
+            state.InOutBusinessPartnerId = this.InOutBusinessPartnerId;
+            state.InOutWarehouseId = this.InOutWarehouseId;
+            state.InOutPOReference = this.InOutPOReference;
+            if (this.InOutFreightAmount != null && this.InOutFreightAmount.HasValue) { state.InOutFreightAmount = this.InOutFreightAmount.Value; }
+            state.InOutShipperId = this.InOutShipperId;
+            if (this.InOutChargeAmount != null && this.InOutChargeAmount.HasValue) { state.InOutChargeAmount = this.InOutChargeAmount.Value; }
+            state.InOutDatePrinted = this.InOutDatePrinted;
+            state.InOutSalesRepresentative = this.InOutSalesRepresentative;
+            if (this.InOutNumberOfPackages != null && this.InOutNumberOfPackages.HasValue) { state.InOutNumberOfPackages = this.InOutNumberOfPackages.Value; }
+            state.InOutPickDate = this.InOutPickDate;
+            state.InOutShipDate = this.InOutShipDate;
+            state.InOutTrackingNumber = this.InOutTrackingNumber;
+            state.InOutDateReceived = this.InOutDateReceived;
+            if (this.InOutIsInTransit != null && this.InOutIsInTransit.HasValue) { state.InOutIsInTransit = this.InOutIsInTransit.Value; }
+            if (this.InOutIsApproved != null && this.InOutIsApproved.HasValue) { state.InOutIsApproved = this.InOutIsApproved.Value; }
+            if (this.InOutIsInDispute != null && this.InOutIsInDispute.HasValue) { state.InOutIsInDispute = this.InOutIsInDispute.Value; }
+            if (this.InOutVolume != null && this.InOutVolume.HasValue) { state.InOutVolume = this.InOutVolume.Value; }
+            if (this.InOutWeight != null && this.InOutWeight.HasValue) { state.InOutWeight = this.InOutWeight.Value; }
+            state.InOutRmaNumber = this.InOutRmaNumber;
+            state.InOutReversalNumber = this.InOutReversalNumber;
+            if (this.InOutIsDropShip != null && this.InOutIsDropShip.HasValue) { state.InOutIsDropShip = this.InOutIsDropShip.Value; }
+            state.InOutDropShipBusinessPartnerId = this.InOutDropShipBusinessPartnerId;
+            state.InOutCreatedBy = this.InOutCreatedBy;
+            if (this.InOutCreatedAt != null && this.InOutCreatedAt.HasValue) { state.InOutCreatedAt = this.InOutCreatedAt.Value; }
+            state.InOutUpdatedBy = this.InOutUpdatedBy;
+            if (this.InOutUpdatedAt != null && this.InOutUpdatedAt.HasValue) { state.InOutUpdatedAt = this.InOutUpdatedAt.Value; }
+            if (this.InOutActive != null && this.InOutActive.HasValue) { state.InOutActive = this.InOutActive.Value; }
+            if (this.InOutDeleted != null && this.InOutDeleted.HasValue) { state.InOutDeleted = this.InOutDeleted.Value; }
+            if (this.InOutVersion != null && this.InOutVersion.HasValue) { state.InOutVersion = this.InOutVersion.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
         }
 
     }
