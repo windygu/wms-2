@@ -5,7 +5,7 @@ namespace Dddml\Wms\Domain;
 use JMS\Serializer\Annotation\Type;
 use Dddml\StringIdInterface;
 
-class SkuId
+class SkuId implements StringIdInterface
 {
     /**
      * @Type("string")
@@ -47,6 +47,37 @@ class SkuId
     public function setAttributeSetInstanceId($attributeSetInstanceId)
     {
         $this->attributeSetInstanceId = $attributeSetInstanceId;
+    }
+
+
+
+    /**
+     * @var SkuIdFlattenedDto
+     */
+    private $idFlattenedDto;
+
+    /**
+     * @return string
+     */
+    public function toString()
+    {
+        if (!$this->idFlattenedDto) {
+            $this->idFlattenedDto = new SkuIdFlattenedDto($this);
+        }
+
+        return $this->idFlattenedDto->toString();
+    }
+
+    /**
+     * @param string $idStr
+     *
+     * @return SkuId
+     */
+    public static function createFromString($idStr)
+    {
+        return (new SkuIdFlattenedDto())
+            ->fromString($idStr)
+            ->toSkuId();
     }
 
 

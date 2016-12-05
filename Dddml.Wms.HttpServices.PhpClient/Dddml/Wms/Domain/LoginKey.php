@@ -5,7 +5,7 @@ namespace Dddml\Wms\Domain;
 use JMS\Serializer\Annotation\Type;
 use Dddml\StringIdInterface;
 
-class LoginKey
+class LoginKey implements StringIdInterface
 {
     /**
      * @Type("string")
@@ -47,6 +47,37 @@ class LoginKey
     public function setProviderKey($providerKey)
     {
         $this->providerKey = $providerKey;
+    }
+
+
+
+    /**
+     * @var LoginKeyFlattenedDto
+     */
+    private $idFlattenedDto;
+
+    /**
+     * @return string
+     */
+    public function toString()
+    {
+        if (!$this->idFlattenedDto) {
+            $this->idFlattenedDto = new LoginKeyFlattenedDto($this);
+        }
+
+        return $this->idFlattenedDto->toString();
+    }
+
+    /**
+     * @param string $idStr
+     *
+     * @return LoginKey
+     */
+    public static function createFromString($idStr)
+    {
+        return (new LoginKeyFlattenedDto())
+            ->fromString($idStr)
+            ->toLoginKey();
     }
 
 

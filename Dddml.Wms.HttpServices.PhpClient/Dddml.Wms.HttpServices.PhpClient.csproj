@@ -54,6 +54,7 @@
 .\RolePermissionId.php
 .\RolePermissionIdFlattenedDto.php
 .\SkuId.php
+.\SkuIdFlattenedDto.php
 </LastOutputs>
     </Content>
     <Content Include="Dddml\Wms\Domain\GenerateBoundedContextDomain.txt">
@@ -235,6 +236,7 @@
 .\LocatorStateEventIdFlattenedDto.php
 .\LocatorStatePropertiesTrait.php
 .\LoginKey.php
+.\LoginKeyFlattenedDto.php
 .\Organization.php
 .\OrganizationIsPropertyRemovedTrait.php
 .\OrganizationStateEventId.php
@@ -1108,6 +1110,9 @@
     <None Include="Dddml\Wms\Domain\LoginKey.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
+    <None Include="Dddml\Wms\Domain\LoginKeyFlattenedDto.php">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </None>
     <None Include="Dddml\Wms\Domain\Metadata\AttributeMetadata.php">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </None>
@@ -1331,6 +1336,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\SkuId.php">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </None>
+    <None Include="Dddml\Wms\Domain\SkuIdFlattenedDto.php">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\User.php">
