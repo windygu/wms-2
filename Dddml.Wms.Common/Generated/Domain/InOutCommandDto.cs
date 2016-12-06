@@ -928,6 +928,10 @@ namespace Dddml.Wms.Domain
 
 	}
 
+    public static partial class InOutCommandDtos
+    {
+
+    }
 
 }
 

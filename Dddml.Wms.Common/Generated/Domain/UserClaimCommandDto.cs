@@ -245,6 +245,5 @@ namespace Dddml.Wms.Domain
 
     }
 
-
 }
 

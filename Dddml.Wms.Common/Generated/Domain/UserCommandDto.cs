@@ -688,11 +688,10 @@ namespace Dddml.Wms.Domain
 
 	}
 
-    public static class UserCommandDtos
+    public static partial class UserCommandDtos
     {
 
     }
-
 
 }
 

@@ -729,11 +729,8 @@ namespace Dddml.Wms.Domain
 
     }
 
-    public static class UserCommands
+    public static partial class UserCommands
     {
-
     }
 
-
 }
-

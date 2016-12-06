@@ -308,6 +308,5 @@ namespace Dddml.Wms.Domain
 
     }
 
-
 }
 

@@ -574,6 +574,5 @@ namespace Dddml.Wms.Domain
 
     }
 
-
 }
 

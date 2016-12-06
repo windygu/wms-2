@@ -205,6 +205,8 @@ namespace Dddml.Wms.Domain
 
 	}
 
+    public static partial class AttributeValueMvoCommands
+    {
+    }
 
 }
-
