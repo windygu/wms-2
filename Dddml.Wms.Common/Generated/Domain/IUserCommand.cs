@@ -14,12 +14,13 @@ namespace Dddml.Wms.Domain
 	{
 		long Version { get; set; }
 
+		string UserId { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteUser : IUserCommand
 	{
-		string UserId { get; set; }
 
 		string UserName { get; set; }
 

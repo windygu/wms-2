@@ -82,7 +82,7 @@ namespace Dddml.Wms.Domain
 		public virtual bool? AttributeSetDeleted { get; set; }
 
 
-        AttributeSetAttributeUseId ICreateOrMergePatchOrDeleteAttributeUseMvo.AttributeSetAttributeUseId
+        AttributeSetAttributeUseId IAttributeUseMvoCommand.AttributeSetAttributeUseId
         {
             get 
             {

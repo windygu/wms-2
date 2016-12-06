@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain
 		public virtual bool? UserDeleted { get; set; }
 
 
-        UserClaimId ICreateOrMergePatchOrDeleteUserClaimMvo.UserClaimId
+        UserClaimId IUserClaimMvoCommand.UserClaimId
         {
             get 
             {

@@ -14,12 +14,13 @@ namespace Dddml.Wms.Domain
 	{
 		long Version { get; set; }
 
+		string AttributeId { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteAttribute : IAttributeCommand
 	{
-		string AttributeId { get; set; }
 
 		string Name { get; set; }
 

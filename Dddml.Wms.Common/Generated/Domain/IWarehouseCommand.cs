@@ -14,12 +14,13 @@ namespace Dddml.Wms.Domain
 	{
 		long Version { get; set; }
 
+		string WarehouseId { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteWarehouse : IWarehouseCommand
 	{
-		string WarehouseId { get; set; }
 
 		string Name { get; set; }
 

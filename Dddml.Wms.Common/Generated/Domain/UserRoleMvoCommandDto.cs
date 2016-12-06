@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain
 		public virtual bool? UserDeleted { get; set; }
 
 
-        UserRoleId ICreateOrMergePatchOrDeleteUserRoleMvo.UserRoleId
+        UserRoleId IUserRoleMvoCommand.UserRoleId
         {
             get 
             {

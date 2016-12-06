@@ -15,12 +15,13 @@ namespace Dddml.Wms.Domain
 	{
 		long InOutVersion { get; set; }
 
+		InOutLineId InOutLineId { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteInOutLineMvo : IInOutLineMvoCommand
 	{
-		InOutLineId InOutLineId { get; set; }
 
 		long? LineNumber { get; set; }
 

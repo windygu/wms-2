@@ -12,19 +12,19 @@ namespace Dddml.Wms.Domain
 {
 	public interface IUserRoleCommand : ICommand, ICommandDto
 	{
+		// Outer Id:
+
+		string UserId { get; set; }
+
+		string RoleId { get; set; }
 
 	}
 
 
 	public interface ICreateOrMergePatchOrRemoveUserRole : IUserRoleCommand
 	{
-		string RoleId { get; set; }
 
 		bool? Active { get; set; }
-
-		// Outer Id:
-
-		string UserId { get; set; }
 
 
 	}

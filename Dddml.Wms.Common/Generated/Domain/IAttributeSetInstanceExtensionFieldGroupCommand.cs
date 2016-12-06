@@ -14,12 +14,13 @@ namespace Dddml.Wms.Domain
 	{
 		long Version { get; set; }
 
+		string Id { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteAttributeSetInstanceExtensionFieldGroup : IAttributeSetInstanceExtensionFieldGroupCommand
 	{
-		string Id { get; set; }
 
 		string FieldType { get; set; }
 

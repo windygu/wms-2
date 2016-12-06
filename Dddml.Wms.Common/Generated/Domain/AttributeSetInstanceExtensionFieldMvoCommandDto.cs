@@ -88,7 +88,7 @@ namespace Dddml.Wms.Domain
 		public virtual bool? AttrSetInstEFGroupDeleted { get; set; }
 
 
-        AttributeSetInstanceExtensionFieldId ICreateOrMergePatchOrDeleteAttributeSetInstanceExtensionFieldMvo.AttributeSetInstanceExtensionFieldId
+        AttributeSetInstanceExtensionFieldId IAttributeSetInstanceExtensionFieldMvoCommand.AttributeSetInstanceExtensionFieldId
         {
             get 
             {

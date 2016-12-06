@@ -12,19 +12,19 @@ namespace Dddml.Wms.Domain
 {
 	public interface IUserPermissionCommand : ICommand, ICommandDto
 	{
+		// Outer Id:
+
+		string UserId { get; set; }
+
+		string PermissionId { get; set; }
 
 	}
 
 
 	public interface ICreateOrMergePatchOrRemoveUserPermission : IUserPermissionCommand
 	{
-		string PermissionId { get; set; }
 
 		bool? Active { get; set; }
-
-		// Outer Id:
-
-		string UserId { get; set; }
 
 
 	}

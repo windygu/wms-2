@@ -12,19 +12,19 @@ namespace Dddml.Wms.Domain
 {
 	public interface IUserLoginCommand : ICommand, ICommandDto
 	{
+		// Outer Id:
+
+		string UserId { get; set; }
+
+		LoginKey LoginKey { get; set; }
 
 	}
 
 
 	public interface ICreateOrMergePatchOrRemoveUserLogin : IUserLoginCommand
 	{
-		LoginKey LoginKey { get; set; }
 
 		bool? Active { get; set; }
-
-		// Outer Id:
-
-		string UserId { get; set; }
 
 
 	}

@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain
 		public virtual bool? AttributeDeleted { get; set; }
 
 
-        AttributeValueId ICreateOrMergePatchOrDeleteAttributeValueMvo.AttributeValueId
+        AttributeValueId IAttributeValueMvoCommand.AttributeValueId
         {
             get 
             {

@@ -14,12 +14,13 @@ namespace Dddml.Wms.Domain
 	{
 		long UserVersion { get; set; }
 
+		UserClaimId UserClaimId { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteUserClaimMvo : IUserClaimMvoCommand
 	{
-		UserClaimId UserClaimId { get; set; }
 
 		string ClaimType { get; set; }
 

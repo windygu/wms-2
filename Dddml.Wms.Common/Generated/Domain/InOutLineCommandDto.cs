@@ -72,7 +72,7 @@ namespace Dddml.Wms.Domain
 		public virtual string InOutDocumentNumber { get; set; }
 
 
-        SkuId ICreateOrMergePatchOrRemoveInOutLine.SkuId
+        SkuId IInOutLineCommand.SkuId
         {
             get 
             {

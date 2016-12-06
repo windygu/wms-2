@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain
 		public virtual string UserId { get; set; }
 
 
-        LoginKey ICreateOrMergePatchOrRemoveUserLogin.LoginKey
+        LoginKey IUserLoginCommand.LoginKey
         {
             get 
             {

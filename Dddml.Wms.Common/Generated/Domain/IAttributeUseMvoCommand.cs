@@ -14,12 +14,13 @@ namespace Dddml.Wms.Domain
 	{
 		long AttributeSetVersion { get; set; }
 
+		AttributeSetAttributeUseId AttributeSetAttributeUseId { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteAttributeUseMvo : IAttributeUseMvoCommand
 	{
-		AttributeSetAttributeUseId AttributeSetAttributeUseId { get; set; }
 
 		int? SequenceNumber { get; set; }
 

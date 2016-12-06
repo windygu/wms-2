@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain
 		public virtual bool? Active { get; set; }
 
 
-        OrganizationStructureId ICreateOrMergePatchOrDeleteOrganizationStructure.Id
+        OrganizationStructureId IOrganizationStructureCommand.Id
         {
             get 
             {

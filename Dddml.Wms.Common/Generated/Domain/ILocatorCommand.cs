@@ -14,12 +14,13 @@ namespace Dddml.Wms.Domain
 	{
 		long Version { get; set; }
 
+		string LocatorId { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteLocator : ILocatorCommand
 	{
-		string LocatorId { get; set; }
 
 		string WarehouseId { get; set; }
 

@@ -13,13 +13,17 @@ namespace Dddml.Wms.Domain
 {
 	public interface IInOutLineCommand : ICommand, ICommandDto
 	{
+		// Outer Id:
+
+		string InOutDocumentNumber { get; set; }
+
+		SkuId SkuId { get; set; }
 
 	}
 
 
 	public interface ICreateOrMergePatchOrRemoveInOutLine : IInOutLineCommand
 	{
-		SkuId SkuId { get; set; }
 
 		long? LineNumber { get; set; }
 
@@ -56,10 +60,6 @@ namespace Dddml.Wms.Domain
 		long? ReversalLineNumber { get; set; }
 
 		bool? Active { get; set; }
-
-		// Outer Id:
-
-		string InOutDocumentNumber { get; set; }
 
 
 	}

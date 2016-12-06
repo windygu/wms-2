@@ -14,12 +14,13 @@ namespace Dddml.Wms.Domain
 	{
 		long Version { get; set; }
 
+		string ClientId { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteAudience : IAudienceCommand
 	{
-		string ClientId { get; set; }
 
 		string Name { get; set; }
 

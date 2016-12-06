@@ -12,13 +12,17 @@ namespace Dddml.Wms.Domain
 {
 	public interface IAttributeValueCommand : ICommand, ICommandDto
 	{
+		// Outer Id:
+
+		string AttributeId { get; set; }
+
+		string Value { get; set; }
 
 	}
 
 
 	public interface ICreateOrMergePatchOrRemoveAttributeValue : IAttributeValueCommand
 	{
-		string Value { get; set; }
 
 		string Name { get; set; }
 
@@ -27,10 +31,6 @@ namespace Dddml.Wms.Domain
 		string ReferenceId { get; set; }
 
 		bool? Active { get; set; }
-
-		// Outer Id:
-
-		string AttributeId { get; set; }
 
 
 	}

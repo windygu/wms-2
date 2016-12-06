@@ -12,13 +12,17 @@ namespace Dddml.Wms.Domain
 {
 	public interface IAttributeSetInstanceExtensionFieldCommand : ICommand, ICommandDto
 	{
+		// Outer Id:
+
+		string GroupId { get; set; }
+
+		string Index { get; set; }
 
 	}
 
 
 	public interface ICreateOrMergePatchOrRemoveAttributeSetInstanceExtensionField : IAttributeSetInstanceExtensionFieldCommand
 	{
-		string Index { get; set; }
 
 		string Name { get; set; }
 
@@ -31,10 +35,6 @@ namespace Dddml.Wms.Domain
 		string Description { get; set; }
 
 		bool? Active { get; set; }
-
-		// Outer Id:
-
-		string GroupId { get; set; }
 
 
 	}

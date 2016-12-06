@@ -12,23 +12,23 @@ namespace Dddml.Wms.Domain
 {
 	public interface IUserClaimCommand : ICommand, ICommandDto
 	{
+		// Outer Id:
+
+		string UserId { get; set; }
+
+		int ClaimId { get; set; }
 
 	}
 
 
 	public interface ICreateOrMergePatchOrRemoveUserClaim : IUserClaimCommand
 	{
-		int ClaimId { get; set; }
 
 		string ClaimType { get; set; }
 
 		string ClaimValue { get; set; }
 
 		bool? Active { get; set; }
-
-		// Outer Id:
-
-		string UserId { get; set; }
 
 
 	}

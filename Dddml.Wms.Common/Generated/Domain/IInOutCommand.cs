@@ -15,12 +15,13 @@ namespace Dddml.Wms.Domain
 	{
 		long Version { get; set; }
 
+		string DocumentNumber { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteInOut : IInOutCommand
 	{
-		string DocumentNumber { get; set; }
 
 		bool? IsSOTransaction { get; set; }
 

@@ -171,7 +171,7 @@ namespace Dddml.Wms.Domain
 		public virtual bool? InOutDeleted { get; set; }
 
 
-        InOutLineId ICreateOrMergePatchOrDeleteInOutLineMvo.InOutLineId
+        InOutLineId IInOutLineMvoCommand.InOutLineId
         {
             get 
             {

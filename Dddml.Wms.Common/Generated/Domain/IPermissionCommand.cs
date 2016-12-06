@@ -14,12 +14,13 @@ namespace Dddml.Wms.Domain
 	{
 		long Version { get; set; }
 
+		string PermissionId { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeletePermission : IPermissionCommand
 	{
-		string PermissionId { get; set; }
 
 		string Name { get; set; }
 

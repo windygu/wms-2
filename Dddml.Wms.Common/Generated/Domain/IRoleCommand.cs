@@ -14,12 +14,13 @@ namespace Dddml.Wms.Domain
 	{
 		long Version { get; set; }
 
+		string RoleId { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteRole : IRoleCommand
 	{
-		string RoleId { get; set; }
 
 		string Name { get; set; }
 

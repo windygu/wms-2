@@ -14,12 +14,13 @@ namespace Dddml.Wms.Domain
 	{
 		long Version { get; set; }
 
+		OrganizationStructureId Id { get; set; }
+
 	}
 
 
 	public interface ICreateOrMergePatchOrDeleteOrganizationStructure : IOrganizationStructureCommand
 	{
-		OrganizationStructureId Id { get; set; }
 
 		bool? Active { get; set; }
 
