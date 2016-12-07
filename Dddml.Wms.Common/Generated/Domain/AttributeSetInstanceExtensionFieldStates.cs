@@ -58,7 +58,7 @@ namespace Dddml.Wms.Domain
             set { _forReapplying = value; } 
         }
 
-        public AttributeSetInstanceExtensionFieldStates(AttributeSetInstanceExtensionFieldGroupState outerState)
+        public AttributeSetInstanceExtensionFieldStates(IAttributeSetInstanceExtensionFieldGroupState outerState)
         {
             this._attributeSetInstanceExtensionFieldGroupState = outerState;
             this._forReapplying = outerState.ForReapplying;

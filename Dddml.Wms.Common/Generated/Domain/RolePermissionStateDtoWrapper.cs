@@ -275,6 +275,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IRolePermissionState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IRolePermissionState.When(IRolePermissionStateMergePatched e)
 		{

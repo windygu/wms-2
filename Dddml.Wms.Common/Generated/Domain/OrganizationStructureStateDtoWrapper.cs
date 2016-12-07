@@ -275,6 +275,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IOrganizationStructureState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IOrganizationStructureState.When(IOrganizationStructureStateMergePatched e)
 		{

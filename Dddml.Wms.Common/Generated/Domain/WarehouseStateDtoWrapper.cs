@@ -360,6 +360,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IWarehouseState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IWarehouseState.When(IWarehouseStateMergePatched e)
 		{

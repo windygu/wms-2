@@ -365,6 +365,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IUserClaimState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IUserClaimState.When(IUserClaimStateMergePatched e)
 		{

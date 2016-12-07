@@ -1996,6 +1996,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IInOutLineMvoState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IInOutLineMvoState.When(IInOutLineMvoStateMergePatched e)
 		{

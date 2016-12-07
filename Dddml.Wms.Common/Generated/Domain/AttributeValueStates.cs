@@ -58,7 +58,7 @@ namespace Dddml.Wms.Domain
             set { _forReapplying = value; } 
         }
 
-        public AttributeValueStates(AttributeState outerState)
+        public AttributeValueStates(IAttributeState outerState)
         {
             this._attributeState = outerState;
             this._forReapplying = outerState.ForReapplying;

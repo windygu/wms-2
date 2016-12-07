@@ -20,6 +20,8 @@ namespace Dddml.Wms.Domain
 		IVersioned<long>
 	{
 
+		bool ForReapplying { get; }
+
 		void When(IInOutStateCreated e);
 
 		void When(IInOutStateMergePatched e);

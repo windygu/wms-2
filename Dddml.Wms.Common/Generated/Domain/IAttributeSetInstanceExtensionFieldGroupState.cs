@@ -19,6 +19,8 @@ namespace Dddml.Wms.Domain
 		IVersioned<long>
 	{
 
+		bool ForReapplying { get; }
+
 		void When(IAttributeSetInstanceExtensionFieldGroupStateCreated e);
 
 		void When(IAttributeSetInstanceExtensionFieldGroupStateMergePatched e);

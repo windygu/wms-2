@@ -306,6 +306,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IUserPermissionState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IUserPermissionState.When(IUserPermissionStateMergePatched e)
 		{

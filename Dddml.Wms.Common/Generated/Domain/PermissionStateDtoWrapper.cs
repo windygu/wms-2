@@ -357,6 +357,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IPermissionState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IPermissionState.When(IPermissionStateMergePatched e)
 		{

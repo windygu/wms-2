@@ -809,6 +809,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IUserRoleMvoState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IUserRoleMvoState.When(IUserRoleMvoStateMergePatched e)
 		{

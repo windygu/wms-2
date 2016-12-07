@@ -308,6 +308,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IUserLoginState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IUserLoginState.When(IUserLoginStateMergePatched e)
 		{

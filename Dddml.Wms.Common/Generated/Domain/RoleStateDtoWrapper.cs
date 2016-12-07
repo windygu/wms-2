@@ -329,6 +329,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IRoleState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IRoleState.When(IRoleStateMergePatched e)
 		{

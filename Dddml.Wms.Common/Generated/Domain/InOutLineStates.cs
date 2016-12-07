@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain
             set { _forReapplying = value; } 
         }
 
-        public InOutLineStates(InOutState outerState)
+        public InOutLineStates(IInOutState outerState)
         {
             this._inOutState = outerState;
             this._forReapplying = outerState.ForReapplying;

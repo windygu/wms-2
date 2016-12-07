@@ -329,6 +329,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IAudienceState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IAudienceState.When(IAudienceStateMergePatched e)
 		{

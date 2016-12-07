@@ -500,6 +500,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool ILocatorState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void ILocatorState.When(ILocatorStateMergePatched e)
 		{

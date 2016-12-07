@@ -388,6 +388,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IOrganizationState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IOrganizationState.When(IOrganizationStateMergePatched e)
 		{

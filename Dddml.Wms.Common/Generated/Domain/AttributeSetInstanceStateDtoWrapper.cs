@@ -13209,6 +13209,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IAttributeSetInstanceState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 
 		void IAttributeSetInstanceState.Mutate(IEvent e)

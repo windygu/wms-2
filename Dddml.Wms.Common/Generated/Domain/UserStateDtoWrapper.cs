@@ -776,6 +776,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IUserState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IUserState.When(IUserStateMergePatched e)
 		{

@@ -769,6 +769,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IAttributeSetInstanceExtensionFieldMvoState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IAttributeSetInstanceExtensionFieldMvoState.When(IAttributeSetInstanceExtensionFieldMvoStateMergePatched e)
 		{

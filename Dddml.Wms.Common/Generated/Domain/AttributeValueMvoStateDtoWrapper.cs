@@ -859,6 +859,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IAttributeValueMvoState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IAttributeValueMvoState.When(IAttributeValueMvoStateMergePatched e)
 		{

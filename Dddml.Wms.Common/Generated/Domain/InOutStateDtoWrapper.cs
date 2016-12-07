@@ -1316,6 +1316,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IInOutState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IInOutState.When(IInOutStateMergePatched e)
 		{

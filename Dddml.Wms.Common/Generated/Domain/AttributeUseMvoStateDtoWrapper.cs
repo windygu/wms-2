@@ -685,6 +685,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IAttributeUseMvoState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IAttributeUseMvoState.When(IAttributeUseMvoStateMergePatched e)
 		{

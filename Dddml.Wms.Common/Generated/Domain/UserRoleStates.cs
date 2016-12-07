@@ -58,7 +58,7 @@ namespace Dddml.Wms.Domain
             set { _forReapplying = value; } 
         }
 
-        public UserRoleStates(UserState outerState)
+        public UserRoleStates(IUserState outerState)
         {
             this._userState = outerState;
             this._forReapplying = outerState.ForReapplying;

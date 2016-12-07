@@ -19,6 +19,8 @@ namespace Dddml.Wms.Domain
 		IVersioned<long>
 	{
 
+		bool ForReapplying { get; }
+
 		void When(IPermissionStateCreated e);
 
 		void When(IPermissionStateMergePatched e);

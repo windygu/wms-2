@@ -306,6 +306,10 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
+		bool IUserRoleState.ForReapplying
+		{
+            get { throw new NotSupportedException(); }
+		}
 
 		void IUserRoleState.When(IUserRoleStateMergePatched e)
 		{
