@@ -23,6 +23,10 @@ namespace Dddml.Wms.Domain.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "RoleId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "UserId" });
+    
+        public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
+
 		public NHibernateUserRoleStateDao()
 		{
 		}
@@ -37,14 +41,23 @@ namespace Dddml.Wms.Domain.NHibernate
                 state = new UserRoleState();
                 (state as UserRoleState).UserRoleId = id;
             }
+            if (ReadOnlyProxyGenerator != null)
+            {
+                return ReadOnlyProxyGenerator.CreateProxy<IUserRoleState>(state, new Type[] {  }, _readOnlyPropertyNames);
+            }
             return state;
         }
 
        
         public void Save(IUserRoleState state)
         {
-            CurrentSession.SaveOrUpdate(state);
-            var saveable = state as ISaveable;
+            IUserRoleState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IUserRoleState>(state);
+            }
+            CurrentSession.SaveOrUpdate(s);
+            var saveable = s as ISaveable;
             if (saveable != null)
             {
                 saveable.Save();
@@ -54,12 +67,17 @@ namespace Dddml.Wms.Domain.NHibernate
 
         public void Delete(IUserRoleState state)
         {
-            var saveable = state as ISaveable;
+            IUserRoleState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IUserRoleState>(state);
+            }
+            var saveable = s as ISaveable;
             if (saveable != null)
             {
                 saveable.Save();
             }
-            CurrentSession.Delete(state);
+            CurrentSession.Delete(s);
         }
 
 

@@ -27,6 +27,10 @@ namespace Dddml.Wms.Domain.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "AttributeSetInstanceExtensionFieldId", "Name", "Type", "Length", "Alias", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "AttrSetInstEFGroupFieldType", "AttrSetInstEFGroupFieldLength", "AttrSetInstEFGroupFieldCount", "AttrSetInstEFGroupNameFormat", "AttrSetInstEFGroupDescription", "AttrSetInstEFGroupFields", "AttrSetInstEFGroupVersion", "AttrSetInstEFGroupCreatedBy", "AttrSetInstEFGroupCreatedAt", "AttrSetInstEFGroupUpdatedBy", "AttrSetInstEFGroupUpdatedAt", "AttrSetInstEFGroupActive", "AttrSetInstEFGroupDeleted" });
+    
+        public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
+
 		public NHibernateAttributeSetInstanceExtensionFieldMvoStateRepository ()
 		{
 		}
@@ -45,6 +49,10 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new AttributeSetInstanceExtensionFieldMvoState ();
 				(state as AttributeSetInstanceExtensionFieldMvoState).AttributeSetInstanceExtensionFieldId = id;
 			}
+            if (ReadOnlyProxyGenerator != null)
+            {
+                return ReadOnlyProxyGenerator.CreateProxy<IAttributeSetInstanceExtensionFieldMvoState>(state, new Type[] {  }, _readOnlyPropertyNames);
+            }
 			return state;
 		}
 
@@ -61,9 +69,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction]
 		public void Save (IAttributeSetInstanceExtensionFieldMvoState state)
 		{
-			CurrentSession.SaveOrUpdate (state);
+            IAttributeSetInstanceExtensionFieldMvoState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IAttributeSetInstanceExtensionFieldMvoState>(state);
+            }
+			CurrentSession.SaveOrUpdate (s);
 
-			var saveable = state as ISaveable;
+			var saveable = s as ISaveable;
 			if (saveable != null) {
 				saveable.Save ();
 			}

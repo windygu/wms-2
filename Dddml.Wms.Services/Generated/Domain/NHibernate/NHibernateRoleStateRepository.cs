@@ -27,6 +27,10 @@ namespace Dddml.Wms.Domain.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "RoleId", "Name", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+    
+        public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
+
 		public NHibernateRoleStateRepository ()
 		{
 		}
@@ -45,6 +49,10 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new RoleState ();
 				(state as RoleState).RoleId = id;
 			}
+            if (ReadOnlyProxyGenerator != null)
+            {
+                return ReadOnlyProxyGenerator.CreateProxy<IRoleState>(state, new Type[] {  }, _readOnlyPropertyNames);
+            }
 			return state;
 		}
 
@@ -61,9 +69,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction]
 		public void Save (IRoleState state)
 		{
-			CurrentSession.SaveOrUpdate (state);
+            IRoleState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IRoleState>(state);
+            }
+			CurrentSession.SaveOrUpdate (s);
 
-			var saveable = state as ISaveable;
+			var saveable = s as ISaveable;
 			if (saveable != null) {
 				saveable.Save ();
 			}

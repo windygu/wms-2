@@ -23,6 +23,10 @@ namespace Dddml.Wms.Domain.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "Index", "Name", "Type", "Length", "Alias", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "GroupId" });
+    
+        public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
+
 		public NHibernateAttributeSetInstanceExtensionFieldStateDao()
 		{
 		}
@@ -37,14 +41,23 @@ namespace Dddml.Wms.Domain.NHibernate
                 state = new AttributeSetInstanceExtensionFieldState();
                 (state as AttributeSetInstanceExtensionFieldState).AttributeSetInstanceExtensionFieldId = id;
             }
+            if (ReadOnlyProxyGenerator != null)
+            {
+                return ReadOnlyProxyGenerator.CreateProxy<IAttributeSetInstanceExtensionFieldState>(state, new Type[] {  }, _readOnlyPropertyNames);
+            }
             return state;
         }
 
        
         public void Save(IAttributeSetInstanceExtensionFieldState state)
         {
-            CurrentSession.SaveOrUpdate(state);
-            var saveable = state as ISaveable;
+            IAttributeSetInstanceExtensionFieldState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IAttributeSetInstanceExtensionFieldState>(state);
+            }
+            CurrentSession.SaveOrUpdate(s);
+            var saveable = s as ISaveable;
             if (saveable != null)
             {
                 saveable.Save();
@@ -54,12 +67,17 @@ namespace Dddml.Wms.Domain.NHibernate
 
         public void Delete(IAttributeSetInstanceExtensionFieldState state)
         {
-            var saveable = state as ISaveable;
+            IAttributeSetInstanceExtensionFieldState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IAttributeSetInstanceExtensionFieldState>(state);
+            }
+            var saveable = s as ISaveable;
             if (saveable != null)
             {
                 saveable.Save();
             }
-            CurrentSession.Delete(state);
+            CurrentSession.Delete(s);
         }
 
 

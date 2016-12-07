@@ -27,6 +27,10 @@ namespace Dddml.Wms.Domain.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "PermissionId", "Name", "ParentPermissionId", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+    
+        public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
+
 		public NHibernatePermissionStateRepository ()
 		{
 		}
@@ -45,6 +49,10 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new PermissionState ();
 				(state as PermissionState).PermissionId = id;
 			}
+            if (ReadOnlyProxyGenerator != null)
+            {
+                return ReadOnlyProxyGenerator.CreateProxy<IPermissionState>(state, new Type[] {  }, _readOnlyPropertyNames);
+            }
 			return state;
 		}
 
@@ -61,9 +69,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction]
 		public void Save (IPermissionState state)
 		{
-			CurrentSession.SaveOrUpdate (state);
+            IPermissionState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IPermissionState>(state);
+            }
+			CurrentSession.SaveOrUpdate (s);
 
-			var saveable = state as ISaveable;
+			var saveable = s as ISaveable;
 			if (saveable != null) {
 				saveable.Save ();
 			}

@@ -23,6 +23,10 @@ namespace Dddml.Wms.Domain.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "AttributeId", "SequenceNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "AttributeSetId" });
+    
+        public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
+
 		public NHibernateAttributeUseStateDao()
 		{
 		}
@@ -37,14 +41,23 @@ namespace Dddml.Wms.Domain.NHibernate
                 state = new AttributeUseState();
                 (state as AttributeUseState).AttributeSetAttributeUseId = id;
             }
+            if (ReadOnlyProxyGenerator != null)
+            {
+                return ReadOnlyProxyGenerator.CreateProxy<IAttributeUseState>(state, new Type[] {  }, _readOnlyPropertyNames);
+            }
             return state;
         }
 
        
         public void Save(IAttributeUseState state)
         {
-            CurrentSession.SaveOrUpdate(state);
-            var saveable = state as ISaveable;
+            IAttributeUseState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IAttributeUseState>(state);
+            }
+            CurrentSession.SaveOrUpdate(s);
+            var saveable = s as ISaveable;
             if (saveable != null)
             {
                 saveable.Save();
@@ -54,12 +67,17 @@ namespace Dddml.Wms.Domain.NHibernate
 
         public void Delete(IAttributeUseState state)
         {
-            var saveable = state as ISaveable;
+            IAttributeUseState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IAttributeUseState>(state);
+            }
+            var saveable = s as ISaveable;
             if (saveable != null)
             {
                 saveable.Save();
             }
-            CurrentSession.Delete(state);
+            CurrentSession.Delete(s);
         }
 
 

@@ -27,6 +27,10 @@ namespace Dddml.Wms.Domain.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "UserLoginId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "UserUserName", "UserAccessFailedCount", "UserEmail", "UserEmailConfirmed", "UserLockoutEnabled", "UserLockoutEndDateUtc", "UserPasswordHash", "UserPhoneNumber", "UserPhoneNumberConfirmed", "UserTwoFactorEnabled", "UserSecurityStamp", "UserUserRoles", "UserUserClaims", "UserUserPermissions", "UserUserLogins", "UserVersion", "UserCreatedBy", "UserCreatedAt", "UserUpdatedBy", "UserUpdatedAt", "UserActive", "UserDeleted" });
+    
+        public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
+
 		public NHibernateUserLoginMvoStateRepository ()
 		{
 		}
@@ -45,6 +49,10 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new UserLoginMvoState ();
 				(state as UserLoginMvoState).UserLoginId = id;
 			}
+            if (ReadOnlyProxyGenerator != null)
+            {
+                return ReadOnlyProxyGenerator.CreateProxy<IUserLoginMvoState>(state, new Type[] {  }, _readOnlyPropertyNames);
+            }
 			return state;
 		}
 
@@ -61,9 +69,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction]
 		public void Save (IUserLoginMvoState state)
 		{
-			CurrentSession.SaveOrUpdate (state);
+            IUserLoginMvoState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IUserLoginMvoState>(state);
+            }
+			CurrentSession.SaveOrUpdate (s);
 
-			var saveable = state as ISaveable;
+			var saveable = s as ISaveable;
 			if (saveable != null) {
 				saveable.Save ();
 			}

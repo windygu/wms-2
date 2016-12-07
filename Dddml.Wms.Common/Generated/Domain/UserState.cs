@@ -155,7 +155,6 @@ namespace Dddml.Wms.Domain
         }
 
 
-
         private IUserClaimStates _userClaims;
       
         public virtual IUserClaimStates UserClaims
@@ -170,7 +169,6 @@ namespace Dddml.Wms.Domain
         {
             this._userClaims = value;
         }
-
 
 
         private IUserPermissionStates _userPermissions;
@@ -189,7 +187,6 @@ namespace Dddml.Wms.Domain
         }
 
 
-
         private IUserLoginStates _userLogins;
       
         public virtual IUserLoginStates UserLogins
@@ -206,7 +203,14 @@ namespace Dddml.Wms.Domain
         }
 
 
+        public virtual bool StateReadOnly { get; set; }
 
+        bool IState.ReadOnly
+        {
+            get { return this.StateReadOnly; }
+            set { this.StateReadOnly = value; }
+        }
+	
         private bool _forReapplying;
 
         public virtual bool ForReapplying
@@ -585,6 +589,7 @@ namespace Dddml.Wms.Domain
 
 		public virtual void Mutate(IEvent e)
 		{
+            StateReadOnly = false;
 			((dynamic)this).When((dynamic)e);
 		}
 

@@ -27,6 +27,10 @@ namespace Dddml.Wms.Domain.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "AttributeSetId", "Name", "OrganizationId", "Description", "SerialNumberAttributeId", "LotAttributeId", "ReferenceId", "AttributeUses", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+    
+        public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
+
 		public NHibernateAttributeSetStateRepository ()
 		{
 		}
@@ -45,6 +49,10 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new AttributeSetState ();
 				(state as AttributeSetState).AttributeSetId = id;
 			}
+            if (ReadOnlyProxyGenerator != null)
+            {
+                return ReadOnlyProxyGenerator.CreateProxy<IAttributeSetState>(state, new Type[] { typeof(ISaveable) }, _readOnlyPropertyNames);
+            }
 			return state;
 		}
 
@@ -61,9 +69,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction]
 		public void Save (IAttributeSetState state)
 		{
-			CurrentSession.SaveOrUpdate (state);
+            IAttributeSetState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IAttributeSetState>(state);
+            }
+			CurrentSession.SaveOrUpdate (s);
 
-			var saveable = state as ISaveable;
+			var saveable = s as ISaveable;
 			if (saveable != null) {
 				saveable.Save ();
 			}

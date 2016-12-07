@@ -28,6 +28,10 @@ namespace Dddml.Wms.Domain.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentNumber", "IsSOTransaction", "DocumentStatus", "Posted", "Processing", "Processed", "DocumentType", "Description", "OrderNumber", "DateOrdered", "IsPrinted", "MovementType", "MovementDate", "BusinessPartnerId", "WarehouseId", "POReference", "FreightAmount", "ShipperId", "ChargeAmount", "DatePrinted", "SalesRepresentative", "NumberOfPackages", "PickDate", "ShipDate", "TrackingNumber", "DateReceived", "IsInTransit", "IsApproved", "IsInDispute", "Volume", "Weight", "RmaNumber", "ReversalNumber", "IsDropShip", "DropShipBusinessPartnerId", "InOutLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+    
+        public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
+
 		public NHibernateInOutStateRepository ()
 		{
 		}
@@ -46,6 +50,10 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new InOutState ();
 				(state as InOutState).DocumentNumber = id;
 			}
+            if (ReadOnlyProxyGenerator != null)
+            {
+                return ReadOnlyProxyGenerator.CreateProxy<IInOutState>(state, new Type[] { typeof(ISaveable) }, _readOnlyPropertyNames);
+            }
 			return state;
 		}
 
@@ -62,9 +70,14 @@ namespace Dddml.Wms.Domain.NHibernate
 		[Transaction]
 		public void Save (IInOutState state)
 		{
-			CurrentSession.SaveOrUpdate (state);
+            IInOutState s = state;
+            if (ReadOnlyProxyGenerator != null)
+            {
+                s = ReadOnlyProxyGenerator.GetTarget<IInOutState>(state);
+            }
+			CurrentSession.SaveOrUpdate (s);
 
-			var saveable = state as ISaveable;
+			var saveable = s as ISaveable;
 			if (saveable != null) {
 				saveable.Save ();
 			}

@@ -18,7 +18,8 @@ namespace Dddml.Wms.Domain
 		IUpdated<string>, 
 		IDeleted, 
 		IActive, 
-		IVersioned<long>
+		IVersioned<long>,
+		IState
 	{
 
 		bool ForReapplying { get; }

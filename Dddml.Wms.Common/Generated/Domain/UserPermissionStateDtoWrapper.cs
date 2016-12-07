@@ -311,6 +311,14 @@ namespace Dddml.Wms.Domain
             get { throw new NotSupportedException(); }
 		}
 
+        public bool StateReadOnly { get; set; }
+
+        bool IState.ReadOnly
+        {
+            get { return this.StateReadOnly; }
+            set { this.StateReadOnly = value; }
+        }
+
 		void IUserPermissionState.When(IUserPermissionStateMergePatched e)
 		{
             throw new NotSupportedException();

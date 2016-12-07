@@ -173,6 +173,14 @@ namespace Dddml.Wms.Domain
 		}
 
 
+        public virtual bool StateReadOnly { get; set; }
+
+        bool IState.ReadOnly
+        {
+            get { return this.StateReadOnly; }
+            set { this.StateReadOnly = value; }
+        }
+	
         private bool _forReapplying;
 
         public virtual bool ForReapplying
@@ -480,6 +488,7 @@ namespace Dddml.Wms.Domain
 
 		public virtual void Mutate(IEvent e)
 		{
+            StateReadOnly = false;
 			((dynamic)this).When((dynamic)e);
 		}
 

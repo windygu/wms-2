@@ -2881,6 +2881,8 @@
     <Compile Include="Specialization\IIdGenerator.cs" />
     <Compile Include="Specialization\IPropertyCommand.cs" />
     <Compile Include="Specialization\IPropertyCommandHandler.cs" />
+    <Compile Include="Specialization\IReadOnlyProxyGenerator.cs" />
+    <Compile Include="Specialization\IState.cs" />
     <Compile Include="Specialization\IStateEventDto.cs" />
     <Compile Include="Specialization\ITree.cs" />
     <Compile Include="Specialization\ITreeRepository.cs" />
