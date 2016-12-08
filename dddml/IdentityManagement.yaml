@@ -84,6 +84,7 @@ aggregates:
           
           id:
             name: RoleId
+            type: string
           
           globalId:
             name: UserRoleId
@@ -111,6 +112,7 @@ aggregates:
           
           id:
             name: PermissionId
+            type: string
             
           globalId:
             name: UserPermissionId

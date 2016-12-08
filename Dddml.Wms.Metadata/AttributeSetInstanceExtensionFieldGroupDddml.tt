@@ -54,6 +54,7 @@ aggregates:
           
           id:
             name: Index
+            type: string
           
           outerId:
             name: GroupId
