@@ -96,18 +96,14 @@ namespace Dddml.Wms.Domain
 
 		string IUpdated<string>.UpdatedBy
 		{
-			get
-			{
-				return this.UpdatedBy;
-			}
+			get { return this.UpdatedBy; }
+			set { this.UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
-			get
-			{
-				return this.UpdatedAt;
-			}
+			get { return this.UpdatedAt; }
+			set { this.UpdatedAt = value; }
 		}
 
 		#endregion

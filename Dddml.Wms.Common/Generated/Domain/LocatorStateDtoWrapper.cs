@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private LocatorState _state;
+		private ILocatorState _state;
 
         public LocatorStateDtoWrapper()
         {
             this._state = new LocatorState();
         }
 
-		public LocatorStateDtoWrapper(LocatorState state)
+		public LocatorStateDtoWrapper(ILocatorState state)
 		{
             this._state = state;
 		}
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.LocatorId = value;
+                (this._state as ILocatorStateProperties).LocatorId = value;
             }
         }
 
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.WarehouseId = value;
+                (this._state as ILocatorStateProperties).WarehouseId = value;
             }
         }
 
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ParentLocatorId = value;
+                (this._state as ILocatorStateProperties).ParentLocatorId = value;
             }
         }
 
@@ -146,7 +146,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.LocatorType = value;
+                (this._state as ILocatorStateProperties).LocatorType = value;
             }
         }
 
@@ -174,7 +174,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.PriorityNumber = value;
+                (this._state as ILocatorStateProperties).PriorityNumber = value;
             }
         }
 
@@ -205,7 +205,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsDefault = value;
+                (this._state as ILocatorStateProperties).IsDefault = value;
             }
         }
 
@@ -233,7 +233,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.X = value;
+                (this._state as ILocatorStateProperties).X = value;
             }
         }
 
@@ -261,7 +261,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Y = value;
+                (this._state as ILocatorStateProperties).Y = value;
             }
         }
 
@@ -289,7 +289,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Z = value;
+                (this._state as ILocatorStateProperties).Z = value;
             }
         }
 
@@ -299,7 +299,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as ILocatorStateProperties).Active;
                 }
                 return null;
             }
@@ -307,7 +307,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as ILocatorStateProperties).Active = value.Value;
                 }
             }
         }
@@ -320,7 +320,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as ILocatorStateProperties).Active = value;
             }
         }
 
@@ -330,7 +330,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as ILocatorStateProperties).Version;
                 }
                 return null;
             }
@@ -338,7 +338,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as ILocatorStateProperties).Version = value.Value;
                 }
             }
         }
@@ -351,7 +351,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as ILocatorStateProperties).Version = value;
             }
         }
 
@@ -471,11 +471,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as ILocatorState).UpdatedBy; }
+            set { (_state as ILocatorState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as ILocatorState).UpdatedAt; }
+            set { (_state as ILocatorState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -484,7 +486,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as ILocatorStateProperties).Version; }
 		}
 
 		#endregion

@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private UserRoleState _state;
+		private IUserRoleState _state;
 
         public UserRoleStateDtoWrapper()
         {
             this._state = new UserRoleState();
         }
 
-		public UserRoleStateDtoWrapper(UserRoleState state)
+		public UserRoleStateDtoWrapper(IUserRoleState state)
 		{
             this._state = state;
 		}
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.RoleId = value;
+                (this._state as IUserRoleStateProperties).RoleId = value;
             }
         }
 
@@ -72,7 +72,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IUserRoleStateProperties).Active;
                 }
                 return null;
             }
@@ -80,7 +80,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IUserRoleStateProperties).Active = value.Value;
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IUserRoleStateProperties).Active = value;
             }
         }
 
@@ -103,7 +103,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IUserRoleStateProperties).Version;
                 }
                 return null;
             }
@@ -111,7 +111,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IUserRoleStateProperties).Version = value.Value;
                 }
             }
         }
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IUserRoleStateProperties).Version = value;
             }
         }
 
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserId = value;
+                (this._state as IUserRoleStateProperties).UserId = value;
             }
         }
 
@@ -277,11 +277,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IUserRoleState).UpdatedBy; }
+            set { (_state as IUserRoleState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IUserRoleState).UpdatedAt; }
+            set { (_state as IUserRoleState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -290,7 +292,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as IUserRoleStateProperties).Version; }
 		}
 
 		#endregion

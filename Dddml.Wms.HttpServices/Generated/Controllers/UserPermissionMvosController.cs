@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IUserPermissionMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is UserPermissionMvoStateDtoWrapper ? (UserPermissionMvoStateDtoWrapper)s : new UserPermissionMvoStateDtoWrapper((UserPermissionMvoState)s);
+                var dto = s is UserPermissionMvoStateDtoWrapper ? (UserPermissionMvoStateDtoWrapper)s : new UserPermissionMvoStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = UserPermissionMvosControllerUtils.ParseIdString(id);
-            var state = (UserPermissionMvoState)_userPermissionMvoApplicationService.Get(idObj);
+            var state = _userPermissionMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new UserPermissionMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = UserPermissionMvosControllerUtils.ParseIdString(id);
-            var state = (UserPermissionMvoState)_userPermissionMvoApplicationService.GetHistoryState(idObj, version);
+            var state = _userPermissionMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new UserPermissionMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

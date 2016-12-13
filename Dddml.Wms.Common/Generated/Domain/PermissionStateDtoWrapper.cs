@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private PermissionState _state;
+		private IPermissionState _state;
 
         public PermissionStateDtoWrapper()
         {
             this._state = new PermissionState();
         }
 
-		public PermissionStateDtoWrapper(PermissionState state)
+		public PermissionStateDtoWrapper(IPermissionState state)
 		{
             this._state = state;
 		}
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.PermissionId = value;
+                (this._state as IPermissionStateProperties).PermissionId = value;
             }
         }
 
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Name = value;
+                (this._state as IPermissionStateProperties).Name = value;
             }
         }
 
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ParentPermissionId = value;
+                (this._state as IPermissionStateProperties).ParentPermissionId = value;
             }
         }
 
@@ -146,7 +146,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Description = value;
+                (this._state as IPermissionStateProperties).Description = value;
             }
         }
 
@@ -156,7 +156,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IPermissionStateProperties).Active;
                 }
                 return null;
             }
@@ -164,7 +164,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IPermissionStateProperties).Active = value.Value;
                 }
             }
         }
@@ -177,7 +177,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IPermissionStateProperties).Active = value;
             }
         }
 
@@ -187,7 +187,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IPermissionStateProperties).Version;
                 }
                 return null;
             }
@@ -195,7 +195,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IPermissionStateProperties).Version = value.Value;
                 }
             }
         }
@@ -208,7 +208,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IPermissionStateProperties).Version = value;
             }
         }
 
@@ -328,11 +328,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IPermissionState).UpdatedBy; }
+            set { (_state as IPermissionState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IPermissionState).UpdatedAt; }
+            set { (_state as IPermissionState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -341,7 +343,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as IPermissionStateProperties).Version; }
 		}
 
 		#endregion

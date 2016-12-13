@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAttributeSetInstanceExtensionFieldGroupStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AttributeSetInstanceExtensionFieldGroupStateDtoWrapper ? (AttributeSetInstanceExtensionFieldGroupStateDtoWrapper)s : new AttributeSetInstanceExtensionFieldGroupStateDtoWrapper((AttributeSetInstanceExtensionFieldGroupState)s);
+                var dto = s is AttributeSetInstanceExtensionFieldGroupStateDtoWrapper ? (AttributeSetInstanceExtensionFieldGroupStateDtoWrapper)s : new AttributeSetInstanceExtensionFieldGroupStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (AttributeSetInstanceExtensionFieldGroupState)_attributeSetInstanceExtensionFieldGroupApplicationService.Get(idObj);
+            var state = _attributeSetInstanceExtensionFieldGroupApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new AttributeSetInstanceExtensionFieldGroupStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (AttributeSetInstanceExtensionFieldGroupState)_attributeSetInstanceExtensionFieldGroupApplicationService.GetHistoryState(idObj, version);
+            var state = _attributeSetInstanceExtensionFieldGroupApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new AttributeSetInstanceExtensionFieldGroupStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

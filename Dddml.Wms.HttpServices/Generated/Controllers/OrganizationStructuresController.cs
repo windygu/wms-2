@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IOrganizationStructureStateDto>();
             foreach (var s in states)
             {
-                var dto = s is OrganizationStructureStateDtoWrapper ? (OrganizationStructureStateDtoWrapper)s : new OrganizationStructureStateDtoWrapper((OrganizationStructureState)s);
+                var dto = s is OrganizationStructureStateDtoWrapper ? (OrganizationStructureStateDtoWrapper)s : new OrganizationStructureStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = OrganizationStructuresControllerUtils.ParseIdString(id);
-            var state = (OrganizationStructureState)_organizationStructureApplicationService.Get(idObj);
+            var state = _organizationStructureApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new OrganizationStructureStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = OrganizationStructuresControllerUtils.ParseIdString(id);
-            var state = (OrganizationStructureState)_organizationStructureApplicationService.GetHistoryState(idObj, version);
+            var state = _organizationStructureApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new OrganizationStructureStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

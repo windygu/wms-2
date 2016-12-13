@@ -96,18 +96,14 @@ namespace Dddml.Wms.Domain
 
 		string IUpdated<string>.UpdatedBy
 		{
-			get
-			{
-				return this.UpdatedBy;
-			}
+			get { return this.UpdatedBy; }
+			set { this.UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
-			get
-			{
-				return this.UpdatedAt;
-			}
+			get { return this.UpdatedAt; }
+			set { this.UpdatedAt = value; }
 		}
 
 		#endregion
@@ -147,11 +143,10 @@ namespace Dddml.Wms.Domain
             {
                 return this._userRoles;
             }
-        }
-
-        protected internal virtual void SetUserRoles(IUserRoleStates value)
-        {
-            this._userRoles = value;
+            set
+            {
+                this._userRoles = value;
+            }
         }
 
 
@@ -163,11 +158,10 @@ namespace Dddml.Wms.Domain
             {
                 return this._userClaims;
             }
-        }
-
-        protected internal virtual void SetUserClaims(IUserClaimStates value)
-        {
-            this._userClaims = value;
+            set
+            {
+                this._userClaims = value;
+            }
         }
 
 
@@ -179,11 +173,10 @@ namespace Dddml.Wms.Domain
             {
                 return this._userPermissions;
             }
-        }
-
-        protected internal virtual void SetUserPermissions(IUserPermissionStates value)
-        {
-            this._userPermissions = value;
+            set
+            {
+                this._userPermissions = value;
+            }
         }
 
 
@@ -195,11 +188,10 @@ namespace Dddml.Wms.Domain
             {
                 return this._userLogins;
             }
-        }
-
-        protected internal virtual void SetUserLogins(IUserLoginStates value)
-        {
-            this._userLogins = value;
+            set
+            {
+                this._userLogins = value;
+            }
         }
 
 

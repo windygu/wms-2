@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private AttributeSetInstanceExtensionFieldMvoState _state;
+		private IAttributeSetInstanceExtensionFieldMvoState _state;
 
         public AttributeSetInstanceExtensionFieldMvoStateDtoWrapper()
         {
             this._state = new AttributeSetInstanceExtensionFieldMvoState();
         }
 
-		public AttributeSetInstanceExtensionFieldMvoStateDtoWrapper(AttributeSetInstanceExtensionFieldMvoState state)
+		public AttributeSetInstanceExtensionFieldMvoStateDtoWrapper(IAttributeSetInstanceExtensionFieldMvoState state)
 		{
             this._state = state;
 		}
@@ -64,7 +64,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetInstanceExtensionFieldId = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttributeSetInstanceExtensionFieldId = value;
             }
         }
 
@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Name = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).Name = value;
             }
         }
 
@@ -120,7 +120,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Type = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).Type = value;
             }
         }
 
@@ -148,7 +148,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Length = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).Length = value;
             }
         }
 
@@ -176,7 +176,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Alias = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).Alias = value;
             }
         }
 
@@ -204,7 +204,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Description = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).Description = value;
             }
         }
 
@@ -214,7 +214,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).Version;
                 }
                 return null;
             }
@@ -222,7 +222,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).Version = value.Value;
                 }
             }
         }
@@ -235,7 +235,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).Version = value;
             }
         }
 
@@ -245,7 +245,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).Active;
                 }
                 return null;
             }
@@ -253,7 +253,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).Active = value.Value;
                 }
             }
         }
@@ -266,7 +266,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).Active = value;
             }
         }
 
@@ -294,7 +294,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupFieldType = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupFieldType = value;
             }
         }
 
@@ -322,7 +322,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupFieldLength = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupFieldLength = value;
             }
         }
 
@@ -353,7 +353,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupFieldCount = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupFieldCount = value;
             }
         }
 
@@ -381,7 +381,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupNameFormat = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupNameFormat = value;
             }
         }
 
@@ -409,7 +409,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupDescription = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupDescription = value;
             }
         }
 
@@ -437,7 +437,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupCreatedBy = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupCreatedBy = value;
             }
         }
 
@@ -468,7 +468,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupCreatedAt = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupCreatedAt = value;
             }
         }
 
@@ -496,7 +496,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupUpdatedBy = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupUpdatedBy = value;
             }
         }
 
@@ -527,7 +527,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupUpdatedAt = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupUpdatedAt = value;
             }
         }
 
@@ -558,7 +558,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupActive = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupActive = value;
             }
         }
 
@@ -589,7 +589,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupDeleted = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupDeleted = value;
             }
         }
 
@@ -620,7 +620,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttrSetInstEFGroupVersion = value;
+                (this._state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupVersion = value;
             }
         }
 
@@ -740,11 +740,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IAttributeSetInstanceExtensionFieldMvoState).UpdatedBy; }
+            set { (_state as IAttributeSetInstanceExtensionFieldMvoState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IAttributeSetInstanceExtensionFieldMvoState).UpdatedAt; }
+            set { (_state as IAttributeSetInstanceExtensionFieldMvoState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -753,7 +755,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.AttrSetInstEFGroupVersion; }
+            get { return (_state as IAttributeSetInstanceExtensionFieldMvoStateProperties).AttrSetInstEFGroupVersion; }
 		}
 
 		#endregion

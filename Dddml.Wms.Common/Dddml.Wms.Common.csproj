@@ -2887,6 +2887,7 @@
     <Compile Include="Specialization\ITree.cs" />
     <Compile Include="Specialization\ITreeRepository.cs" />
     <Compile Include="Specialization\ITypeConverter.cs" />
+    <Compile Include="Specialization\NullReadOnlyProxyGenerator.cs" />
     <Compile Include="Specialization\PropertyCommand.cs" />
     <Compile Include="Specialization\PropertyMetadata.cs" />
     <Compile Include="Specialization\StateEventType.cs" />

@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private AttributeState _state;
+		private IAttributeState _state;
 
         public AttributeStateDtoWrapper()
         {
             this._state = new AttributeState();
         }
 
-		public AttributeStateDtoWrapper(AttributeState state)
+		public AttributeStateDtoWrapper(IAttributeState state)
 		{
             this._state = state;
 		}
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeId = value;
+                (this._state as IAttributeStateProperties).AttributeId = value;
             }
         }
 
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Name = value;
+                (this._state as IAttributeStateProperties).Name = value;
             }
         }
 
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.OrganizationId = value;
+                (this._state as IAttributeStateProperties).OrganizationId = value;
             }
         }
 
@@ -146,7 +146,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Description = value;
+                (this._state as IAttributeStateProperties).Description = value;
             }
         }
 
@@ -177,7 +177,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsMandatory = value;
+                (this._state as IAttributeStateProperties).IsMandatory = value;
             }
         }
 
@@ -208,7 +208,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsInstanceAttribute = value;
+                (this._state as IAttributeStateProperties).IsInstanceAttribute = value;
             }
         }
 
@@ -236,7 +236,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeValueType = value;
+                (this._state as IAttributeStateProperties).AttributeValueType = value;
             }
         }
 
@@ -264,7 +264,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeValueLength = value;
+                (this._state as IAttributeStateProperties).AttributeValueLength = value;
             }
         }
 
@@ -295,7 +295,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsList = value;
+                (this._state as IAttributeStateProperties).IsList = value;
             }
         }
 
@@ -323,7 +323,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.FieldName = value;
+                (this._state as IAttributeStateProperties).FieldName = value;
             }
         }
 
@@ -351,7 +351,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ReferenceId = value;
+                (this._state as IAttributeStateProperties).ReferenceId = value;
             }
         }
 
@@ -361,7 +361,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IAttributeStateProperties).Active;
                 }
                 return null;
             }
@@ -369,7 +369,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IAttributeStateProperties).Active = value.Value;
                 }
             }
         }
@@ -382,7 +382,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IAttributeStateProperties).Active = value;
             }
         }
 
@@ -392,7 +392,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IAttributeStateProperties).Version;
                 }
                 return null;
             }
@@ -400,7 +400,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IAttributeStateProperties).Version = value.Value;
                 }
             }
         }
@@ -413,7 +413,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IAttributeStateProperties).Version = value;
             }
         }
 
@@ -533,11 +533,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IAttributeState).UpdatedBy; }
+            set { (_state as IAttributeState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IAttributeState).UpdatedAt; }
+            set { (_state as IAttributeState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -546,7 +548,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as IAttributeStateProperties).Version; }
 		}
 
 		#endregion
@@ -592,13 +594,14 @@ namespace Dddml.Wms.Domain
                 {
                     states.Add(s.ToAttributeValueState());
                 }
-                this._state.SetAttributeValues(new DtoAttributeValueStates(this._state, states));
+                this._state.AttributeValues = new DtoAttributeValueStates(this._state, states);
             }
         }
 
         IAttributeValueStates IAttributeState.AttributeValues
         {
             get { return _state.AttributeValues; }
+            set { _state.AttributeValues = value; }
         }
 
 

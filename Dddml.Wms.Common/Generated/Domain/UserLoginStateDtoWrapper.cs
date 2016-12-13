@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private UserLoginState _state;
+		private IUserLoginState _state;
 
         public UserLoginStateDtoWrapper()
         {
             this._state = new UserLoginState();
         }
 
-		public UserLoginStateDtoWrapper(UserLoginState state)
+		public UserLoginStateDtoWrapper(IUserLoginState state)
 		{
             this._state = state;
 		}
@@ -64,7 +64,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.LoginKey = value;
+                (this._state as IUserLoginStateProperties).LoginKey = value;
             }
         }
 
@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IUserLoginStateProperties).Active;
                 }
                 return null;
             }
@@ -82,7 +82,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IUserLoginStateProperties).Active = value.Value;
                 }
             }
         }
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IUserLoginStateProperties).Active = value;
             }
         }
 
@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IUserLoginStateProperties).Version;
                 }
                 return null;
             }
@@ -113,7 +113,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IUserLoginStateProperties).Version = value.Value;
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IUserLoginStateProperties).Version = value;
             }
         }
 
@@ -154,7 +154,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserId = value;
+                (this._state as IUserLoginStateProperties).UserId = value;
             }
         }
 
@@ -279,11 +279,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IUserLoginState).UpdatedBy; }
+            set { (_state as IUserLoginState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IUserLoginState).UpdatedAt; }
+            set { (_state as IUserLoginState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -292,7 +294,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as IUserLoginStateProperties).Version; }
 		}
 
 		#endregion

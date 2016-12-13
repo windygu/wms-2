@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAudienceStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AudienceStateDtoWrapper ? (AudienceStateDtoWrapper)s : new AudienceStateDtoWrapper((AudienceState)s);
+                var dto = s is AudienceStateDtoWrapper ? (AudienceStateDtoWrapper)s : new AudienceStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (AudienceState)_audienceApplicationService.Get(idObj);
+            var state = _audienceApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new AudienceStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (AudienceState)_audienceApplicationService.GetHistoryState(idObj, version);
+            var state = _audienceApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new AudienceStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

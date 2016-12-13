@@ -22,14 +22,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private InOutLineMvoState _state;
+		private IInOutLineMvoState _state;
 
         public InOutLineMvoStateDtoWrapper()
         {
             this._state = new InOutLineMvoState();
         }
 
-		public InOutLineMvoStateDtoWrapper(InOutLineMvoState state)
+		public InOutLineMvoStateDtoWrapper(IInOutLineMvoState state)
 		{
             this._state = state;
 		}
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutLineId = value;
+                (this._state as IInOutLineMvoStateProperties).InOutLineId = value;
             }
         }
 
@@ -96,7 +96,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.LineNumber = value;
+                (this._state as IInOutLineMvoStateProperties).LineNumber = value;
             }
         }
 
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Description = value;
+                (this._state as IInOutLineMvoStateProperties).Description = value;
             }
         }
 
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.LocatorId = value;
+                (this._state as IInOutLineMvoStateProperties).LocatorId = value;
             }
         }
 
@@ -180,7 +180,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Product = value;
+                (this._state as IInOutLineMvoStateProperties).Product = value;
             }
         }
 
@@ -208,7 +208,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UomId = value;
+                (this._state as IInOutLineMvoStateProperties).UomId = value;
             }
         }
 
@@ -239,7 +239,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.MovementQuantity = value;
+                (this._state as IInOutLineMvoStateProperties).MovementQuantity = value;
             }
         }
 
@@ -270,7 +270,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ConfirmedQuantity = value;
+                (this._state as IInOutLineMvoStateProperties).ConfirmedQuantity = value;
             }
         }
 
@@ -301,7 +301,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ScrappedQuantity = value;
+                (this._state as IInOutLineMvoStateProperties).ScrappedQuantity = value;
             }
         }
 
@@ -332,7 +332,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.TargetQuantity = value;
+                (this._state as IInOutLineMvoStateProperties).TargetQuantity = value;
             }
         }
 
@@ -363,7 +363,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.PickedQuantity = value;
+                (this._state as IInOutLineMvoStateProperties).PickedQuantity = value;
             }
         }
 
@@ -394,7 +394,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsInvoiced = value;
+                (this._state as IInOutLineMvoStateProperties).IsInvoiced = value;
             }
         }
 
@@ -422,7 +422,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetInstanceId = value;
+                (this._state as IInOutLineMvoStateProperties).AttributeSetInstanceId = value;
             }
         }
 
@@ -453,7 +453,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsDescription = value;
+                (this._state as IInOutLineMvoStateProperties).IsDescription = value;
             }
         }
 
@@ -484,7 +484,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Processed = value;
+                (this._state as IInOutLineMvoStateProperties).Processed = value;
             }
         }
 
@@ -515,7 +515,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.QuantityEntered = value;
+                (this._state as IInOutLineMvoStateProperties).QuantityEntered = value;
             }
         }
 
@@ -546,7 +546,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.RmaLineNumber = value;
+                (this._state as IInOutLineMvoStateProperties).RmaLineNumber = value;
             }
         }
 
@@ -577,7 +577,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ReversalLineNumber = value;
+                (this._state as IInOutLineMvoStateProperties).ReversalLineNumber = value;
             }
         }
 
@@ -587,7 +587,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IInOutLineMvoStateProperties).Version;
                 }
                 return null;
             }
@@ -595,7 +595,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IInOutLineMvoStateProperties).Version = value.Value;
                 }
             }
         }
@@ -608,7 +608,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IInOutLineMvoStateProperties).Version = value;
             }
         }
 
@@ -618,7 +618,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IInOutLineMvoStateProperties).Active;
                 }
                 return null;
             }
@@ -626,7 +626,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IInOutLineMvoStateProperties).Active = value.Value;
                 }
             }
         }
@@ -639,7 +639,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IInOutLineMvoStateProperties).Active = value;
             }
         }
 
@@ -670,7 +670,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutIsSOTransaction = value;
+                (this._state as IInOutLineMvoStateProperties).InOutIsSOTransaction = value;
             }
         }
 
@@ -698,7 +698,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutDocumentStatus = value;
+                (this._state as IInOutLineMvoStateProperties).InOutDocumentStatus = value;
             }
         }
 
@@ -729,7 +729,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutPosted = value;
+                (this._state as IInOutLineMvoStateProperties).InOutPosted = value;
             }
         }
 
@@ -760,7 +760,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutProcessing = value;
+                (this._state as IInOutLineMvoStateProperties).InOutProcessing = value;
             }
         }
 
@@ -791,7 +791,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutProcessed = value;
+                (this._state as IInOutLineMvoStateProperties).InOutProcessed = value;
             }
         }
 
@@ -822,7 +822,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutDocumentType = value;
+                (this._state as IInOutLineMvoStateProperties).InOutDocumentType = value;
             }
         }
 
@@ -850,7 +850,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutDescription = value;
+                (this._state as IInOutLineMvoStateProperties).InOutDescription = value;
             }
         }
 
@@ -878,7 +878,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutOrderNumber = value;
+                (this._state as IInOutLineMvoStateProperties).InOutOrderNumber = value;
             }
         }
 
@@ -906,7 +906,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutDateOrdered = value;
+                (this._state as IInOutLineMvoStateProperties).InOutDateOrdered = value;
             }
         }
 
@@ -937,7 +937,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutIsPrinted = value;
+                (this._state as IInOutLineMvoStateProperties).InOutIsPrinted = value;
             }
         }
 
@@ -965,7 +965,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutMovementType = value;
+                (this._state as IInOutLineMvoStateProperties).InOutMovementType = value;
             }
         }
 
@@ -993,7 +993,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutMovementDate = value;
+                (this._state as IInOutLineMvoStateProperties).InOutMovementDate = value;
             }
         }
 
@@ -1021,7 +1021,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutBusinessPartnerId = value;
+                (this._state as IInOutLineMvoStateProperties).InOutBusinessPartnerId = value;
             }
         }
 
@@ -1049,7 +1049,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutWarehouseId = value;
+                (this._state as IInOutLineMvoStateProperties).InOutWarehouseId = value;
             }
         }
 
@@ -1077,7 +1077,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutPOReference = value;
+                (this._state as IInOutLineMvoStateProperties).InOutPOReference = value;
             }
         }
 
@@ -1108,7 +1108,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutFreightAmount = value;
+                (this._state as IInOutLineMvoStateProperties).InOutFreightAmount = value;
             }
         }
 
@@ -1136,7 +1136,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutShipperId = value;
+                (this._state as IInOutLineMvoStateProperties).InOutShipperId = value;
             }
         }
 
@@ -1167,7 +1167,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutChargeAmount = value;
+                (this._state as IInOutLineMvoStateProperties).InOutChargeAmount = value;
             }
         }
 
@@ -1195,7 +1195,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutDatePrinted = value;
+                (this._state as IInOutLineMvoStateProperties).InOutDatePrinted = value;
             }
         }
 
@@ -1223,7 +1223,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutSalesRepresentative = value;
+                (this._state as IInOutLineMvoStateProperties).InOutSalesRepresentative = value;
             }
         }
 
@@ -1254,7 +1254,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutNumberOfPackages = value;
+                (this._state as IInOutLineMvoStateProperties).InOutNumberOfPackages = value;
             }
         }
 
@@ -1282,7 +1282,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutPickDate = value;
+                (this._state as IInOutLineMvoStateProperties).InOutPickDate = value;
             }
         }
 
@@ -1310,7 +1310,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutShipDate = value;
+                (this._state as IInOutLineMvoStateProperties).InOutShipDate = value;
             }
         }
 
@@ -1338,7 +1338,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutTrackingNumber = value;
+                (this._state as IInOutLineMvoStateProperties).InOutTrackingNumber = value;
             }
         }
 
@@ -1366,7 +1366,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutDateReceived = value;
+                (this._state as IInOutLineMvoStateProperties).InOutDateReceived = value;
             }
         }
 
@@ -1397,7 +1397,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutIsInTransit = value;
+                (this._state as IInOutLineMvoStateProperties).InOutIsInTransit = value;
             }
         }
 
@@ -1428,7 +1428,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutIsApproved = value;
+                (this._state as IInOutLineMvoStateProperties).InOutIsApproved = value;
             }
         }
 
@@ -1459,7 +1459,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutIsInDispute = value;
+                (this._state as IInOutLineMvoStateProperties).InOutIsInDispute = value;
             }
         }
 
@@ -1490,7 +1490,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutVolume = value;
+                (this._state as IInOutLineMvoStateProperties).InOutVolume = value;
             }
         }
 
@@ -1521,7 +1521,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutWeight = value;
+                (this._state as IInOutLineMvoStateProperties).InOutWeight = value;
             }
         }
 
@@ -1549,7 +1549,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutRmaNumber = value;
+                (this._state as IInOutLineMvoStateProperties).InOutRmaNumber = value;
             }
         }
 
@@ -1577,7 +1577,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutReversalNumber = value;
+                (this._state as IInOutLineMvoStateProperties).InOutReversalNumber = value;
             }
         }
 
@@ -1608,7 +1608,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutIsDropShip = value;
+                (this._state as IInOutLineMvoStateProperties).InOutIsDropShip = value;
             }
         }
 
@@ -1636,7 +1636,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutDropShipBusinessPartnerId = value;
+                (this._state as IInOutLineMvoStateProperties).InOutDropShipBusinessPartnerId = value;
             }
         }
 
@@ -1664,7 +1664,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutCreatedBy = value;
+                (this._state as IInOutLineMvoStateProperties).InOutCreatedBy = value;
             }
         }
 
@@ -1695,7 +1695,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutCreatedAt = value;
+                (this._state as IInOutLineMvoStateProperties).InOutCreatedAt = value;
             }
         }
 
@@ -1723,7 +1723,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutUpdatedBy = value;
+                (this._state as IInOutLineMvoStateProperties).InOutUpdatedBy = value;
             }
         }
 
@@ -1754,7 +1754,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutUpdatedAt = value;
+                (this._state as IInOutLineMvoStateProperties).InOutUpdatedAt = value;
             }
         }
 
@@ -1785,7 +1785,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutActive = value;
+                (this._state as IInOutLineMvoStateProperties).InOutActive = value;
             }
         }
 
@@ -1816,7 +1816,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutDeleted = value;
+                (this._state as IInOutLineMvoStateProperties).InOutDeleted = value;
             }
         }
 
@@ -1847,7 +1847,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.InOutVersion = value;
+                (this._state as IInOutLineMvoStateProperties).InOutVersion = value;
             }
         }
 
@@ -1967,11 +1967,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IInOutLineMvoState).UpdatedBy; }
+            set { (_state as IInOutLineMvoState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IInOutLineMvoState).UpdatedAt; }
+            set { (_state as IInOutLineMvoState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -1980,7 +1982,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.InOutVersion; }
+            get { return (_state as IInOutLineMvoStateProperties).InOutVersion; }
 		}
 
 		#endregion

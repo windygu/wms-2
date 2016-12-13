@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private UserClaimState _state;
+		private IUserClaimState _state;
 
         public UserClaimStateDtoWrapper()
         {
             this._state = new UserClaimState();
         }
 
-		public UserClaimStateDtoWrapper(UserClaimState state)
+		public UserClaimStateDtoWrapper(IUserClaimState state)
 		{
             this._state = state;
 		}
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ClaimId = value;
+                (this._state as IUserClaimStateProperties).ClaimId = value;
             }
         }
 
@@ -93,7 +93,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ClaimType = value;
+                (this._state as IUserClaimStateProperties).ClaimType = value;
             }
         }
 
@@ -121,7 +121,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ClaimValue = value;
+                (this._state as IUserClaimStateProperties).ClaimValue = value;
             }
         }
 
@@ -131,7 +131,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IUserClaimStateProperties).Active;
                 }
                 return null;
             }
@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IUserClaimStateProperties).Active = value.Value;
                 }
             }
         }
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IUserClaimStateProperties).Active = value;
             }
         }
 
@@ -162,7 +162,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IUserClaimStateProperties).Version;
                 }
                 return null;
             }
@@ -170,7 +170,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IUserClaimStateProperties).Version = value.Value;
                 }
             }
         }
@@ -183,7 +183,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IUserClaimStateProperties).Version = value;
             }
         }
 
@@ -211,7 +211,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserId = value;
+                (this._state as IUserClaimStateProperties).UserId = value;
             }
         }
 
@@ -336,11 +336,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IUserClaimState).UpdatedBy; }
+            set { (_state as IUserClaimState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IUserClaimState).UpdatedAt; }
+            set { (_state as IUserClaimState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -349,7 +351,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as IUserClaimStateProperties).Version; }
 		}
 
 		#endregion

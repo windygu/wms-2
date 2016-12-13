@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private AudienceState _state;
+		private IAudienceState _state;
 
         public AudienceStateDtoWrapper()
         {
             this._state = new AudienceState();
         }
 
-		public AudienceStateDtoWrapper(AudienceState state)
+		public AudienceStateDtoWrapper(IAudienceState state)
 		{
             this._state = state;
 		}
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ClientId = value;
+                (this._state as IAudienceStateProperties).ClientId = value;
             }
         }
 
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Name = value;
+                (this._state as IAudienceStateProperties).Name = value;
             }
         }
 
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Base64Secret = value;
+                (this._state as IAudienceStateProperties).Base64Secret = value;
             }
         }
 
@@ -128,7 +128,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IAudienceStateProperties).Active;
                 }
                 return null;
             }
@@ -136,7 +136,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IAudienceStateProperties).Active = value.Value;
                 }
             }
         }
@@ -149,7 +149,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IAudienceStateProperties).Active = value;
             }
         }
 
@@ -159,7 +159,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IAudienceStateProperties).Version;
                 }
                 return null;
             }
@@ -167,7 +167,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IAudienceStateProperties).Version = value.Value;
                 }
             }
         }
@@ -180,7 +180,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IAudienceStateProperties).Version = value;
             }
         }
 
@@ -300,11 +300,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IAudienceState).UpdatedBy; }
+            set { (_state as IAudienceState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IAudienceState).UpdatedAt; }
+            set { (_state as IAudienceState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -313,7 +315,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as IAudienceStateProperties).Version; }
 		}
 
 		#endregion

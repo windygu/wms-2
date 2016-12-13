@@ -32,7 +32,7 @@ namespace Dddml.Wms.Domain
 		void Mutate(IEvent e);
 
 
-		IInOutLineStates InOutLines { get; }
+		IInOutLineStates InOutLines { get; set; }
 
 
         bool IsUnsaved { get; }

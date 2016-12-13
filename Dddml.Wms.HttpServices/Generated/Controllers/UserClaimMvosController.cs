@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IUserClaimMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is UserClaimMvoStateDtoWrapper ? (UserClaimMvoStateDtoWrapper)s : new UserClaimMvoStateDtoWrapper((UserClaimMvoState)s);
+                var dto = s is UserClaimMvoStateDtoWrapper ? (UserClaimMvoStateDtoWrapper)s : new UserClaimMvoStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = UserClaimMvosControllerUtils.ParseIdString(id);
-            var state = (UserClaimMvoState)_userClaimMvoApplicationService.Get(idObj);
+            var state = _userClaimMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new UserClaimMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = UserClaimMvosControllerUtils.ParseIdString(id);
-            var state = (UserClaimMvoState)_userClaimMvoApplicationService.GetHistoryState(idObj, version);
+            var state = _userClaimMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new UserClaimMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

@@ -97,18 +97,14 @@ namespace Dddml.Wms.Domain
 
 		string IUpdated<string>.UpdatedBy
 		{
-			get
-			{
-				return this.UpdatedBy;
-			}
+			get { return this.UpdatedBy; }
+			set { this.UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
-			get
-			{
-				return this.UpdatedAt;
-			}
+			get { return this.UpdatedAt; }
+			set { this.UpdatedAt = value; }
 		}
 
 		#endregion
@@ -148,11 +144,10 @@ namespace Dddml.Wms.Domain
             {
                 return this._inOutLines;
             }
-        }
-
-        protected internal virtual void SetInOutLines(IInOutLineStates value)
-        {
-            this._inOutLines = value;
+            set
+            {
+                this._inOutLines = value;
+            }
         }
 
 

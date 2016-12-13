@@ -31,16 +31,16 @@ namespace Dddml.Wms.Domain
 		void Mutate(IEvent e);
 
 
-		IUserRoleStates UserRoles { get; }
+		IUserRoleStates UserRoles { get; set; }
 
 
-		IUserClaimStates UserClaims { get; }
+		IUserClaimStates UserClaims { get; set; }
 
 
-		IUserPermissionStates UserPermissions { get; }
+		IUserPermissionStates UserPermissions { get; set; }
 
 
-		IUserLoginStates UserLogins { get; }
+		IUserLoginStates UserLogins { get; set; }
 
 
         bool IsUnsaved { get; }

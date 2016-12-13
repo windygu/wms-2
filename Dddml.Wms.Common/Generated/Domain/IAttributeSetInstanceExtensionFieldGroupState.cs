@@ -31,7 +31,7 @@ namespace Dddml.Wms.Domain
 		void Mutate(IEvent e);
 
 
-		IAttributeSetInstanceExtensionFieldStates Fields { get; }
+		IAttributeSetInstanceExtensionFieldStates Fields { get; set; }
 
 
         bool IsUnsaved { get; }

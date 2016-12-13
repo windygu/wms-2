@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private UserState _state;
+		private IUserState _state;
 
         public UserStateDtoWrapper()
         {
             this._state = new UserState();
         }
 
-		public UserStateDtoWrapper(UserState state)
+		public UserStateDtoWrapper(IUserState state)
 		{
             this._state = state;
 		}
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserId = value;
+                (this._state as IUserStateProperties).UserId = value;
             }
         }
 
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserName = value;
+                (this._state as IUserStateProperties).UserName = value;
             }
         }
 
@@ -121,7 +121,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AccessFailedCount = value;
+                (this._state as IUserStateProperties).AccessFailedCount = value;
             }
         }
 
@@ -149,7 +149,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Email = value;
+                (this._state as IUserStateProperties).Email = value;
             }
         }
 
@@ -180,7 +180,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.EmailConfirmed = value;
+                (this._state as IUserStateProperties).EmailConfirmed = value;
             }
         }
 
@@ -211,7 +211,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.LockoutEnabled = value;
+                (this._state as IUserStateProperties).LockoutEnabled = value;
             }
         }
 
@@ -239,7 +239,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.LockoutEndDateUtc = value;
+                (this._state as IUserStateProperties).LockoutEndDateUtc = value;
             }
         }
 
@@ -267,7 +267,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.PasswordHash = value;
+                (this._state as IUserStateProperties).PasswordHash = value;
             }
         }
 
@@ -295,7 +295,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.PhoneNumber = value;
+                (this._state as IUserStateProperties).PhoneNumber = value;
             }
         }
 
@@ -326,7 +326,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.PhoneNumberConfirmed = value;
+                (this._state as IUserStateProperties).PhoneNumberConfirmed = value;
             }
         }
 
@@ -357,7 +357,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.TwoFactorEnabled = value;
+                (this._state as IUserStateProperties).TwoFactorEnabled = value;
             }
         }
 
@@ -385,7 +385,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.SecurityStamp = value;
+                (this._state as IUserStateProperties).SecurityStamp = value;
             }
         }
 
@@ -395,7 +395,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IUserStateProperties).Active;
                 }
                 return null;
             }
@@ -403,7 +403,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IUserStateProperties).Active = value.Value;
                 }
             }
         }
@@ -416,7 +416,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IUserStateProperties).Active = value;
             }
         }
 
@@ -426,7 +426,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IUserStateProperties).Version;
                 }
                 return null;
             }
@@ -434,7 +434,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IUserStateProperties).Version = value.Value;
                 }
             }
         }
@@ -447,7 +447,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IUserStateProperties).Version = value;
             }
         }
 
@@ -567,11 +567,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IUserState).UpdatedBy; }
+            set { (_state as IUserState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IUserState).UpdatedAt; }
+            set { (_state as IUserState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -580,7 +582,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as IUserStateProperties).Version; }
 		}
 
 		#endregion
@@ -626,13 +628,14 @@ namespace Dddml.Wms.Domain
                 {
                     states.Add(s.ToUserRoleState());
                 }
-                this._state.SetUserRoles(new DtoUserRoleStates(this._state, states));
+                this._state.UserRoles = new DtoUserRoleStates(this._state, states);
             }
         }
 
         IUserRoleStates IUserState.UserRoles
         {
             get { return _state.UserRoles; }
+            set { _state.UserRoles = value; }
         }
 
         public virtual IUserClaimStateDto[] UserClaims
@@ -671,13 +674,14 @@ namespace Dddml.Wms.Domain
                 {
                     states.Add(s.ToUserClaimState());
                 }
-                this._state.SetUserClaims(new DtoUserClaimStates(this._state, states));
+                this._state.UserClaims = new DtoUserClaimStates(this._state, states);
             }
         }
 
         IUserClaimStates IUserState.UserClaims
         {
             get { return _state.UserClaims; }
+            set { _state.UserClaims = value; }
         }
 
         public virtual IUserPermissionStateDto[] UserPermissions
@@ -716,13 +720,14 @@ namespace Dddml.Wms.Domain
                 {
                     states.Add(s.ToUserPermissionState());
                 }
-                this._state.SetUserPermissions(new DtoUserPermissionStates(this._state, states));
+                this._state.UserPermissions = new DtoUserPermissionStates(this._state, states);
             }
         }
 
         IUserPermissionStates IUserState.UserPermissions
         {
             get { return _state.UserPermissions; }
+            set { _state.UserPermissions = value; }
         }
 
         public virtual IUserLoginStateDto[] UserLogins
@@ -761,13 +766,14 @@ namespace Dddml.Wms.Domain
                 {
                     states.Add(s.ToUserLoginState());
                 }
-                this._state.SetUserLogins(new DtoUserLoginStates(this._state, states));
+                this._state.UserLogins = new DtoUserLoginStates(this._state, states);
             }
         }
 
         IUserLoginStates IUserState.UserLogins
         {
             get { return _state.UserLogins; }
+            set { _state.UserLogins = value; }
         }
 
 

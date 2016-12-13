@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IUserRoleMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is UserRoleMvoStateDtoWrapper ? (UserRoleMvoStateDtoWrapper)s : new UserRoleMvoStateDtoWrapper((UserRoleMvoState)s);
+                var dto = s is UserRoleMvoStateDtoWrapper ? (UserRoleMvoStateDtoWrapper)s : new UserRoleMvoStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = UserRoleMvosControllerUtils.ParseIdString(id);
-            var state = (UserRoleMvoState)_userRoleMvoApplicationService.Get(idObj);
+            var state = _userRoleMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new UserRoleMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = UserRoleMvosControllerUtils.ParseIdString(id);
-            var state = (UserRoleMvoState)_userRoleMvoApplicationService.GetHistoryState(idObj, version);
+            var state = _userRoleMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new UserRoleMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

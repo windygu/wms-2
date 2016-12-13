@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private UserClaimMvoState _state;
+		private IUserClaimMvoState _state;
 
         public UserClaimMvoStateDtoWrapper()
         {
             this._state = new UserClaimMvoState();
         }
 
-		public UserClaimMvoStateDtoWrapper(UserClaimMvoState state)
+		public UserClaimMvoStateDtoWrapper(IUserClaimMvoState state)
 		{
             this._state = state;
 		}
@@ -64,7 +64,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserClaimId = value;
+                (this._state as IUserClaimMvoStateProperties).UserClaimId = value;
             }
         }
 
@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ClaimType = value;
+                (this._state as IUserClaimMvoStateProperties).ClaimType = value;
             }
         }
 
@@ -120,7 +120,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ClaimValue = value;
+                (this._state as IUserClaimMvoStateProperties).ClaimValue = value;
             }
         }
 
@@ -130,7 +130,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IUserClaimMvoStateProperties).Version;
                 }
                 return null;
             }
@@ -138,7 +138,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IUserClaimMvoStateProperties).Version = value.Value;
                 }
             }
         }
@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IUserClaimMvoStateProperties).Version = value;
             }
         }
 
@@ -161,7 +161,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IUserClaimMvoStateProperties).Active;
                 }
                 return null;
             }
@@ -169,7 +169,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IUserClaimMvoStateProperties).Active = value.Value;
                 }
             }
         }
@@ -182,7 +182,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IUserClaimMvoStateProperties).Active = value;
             }
         }
 
@@ -210,7 +210,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserUserName = value;
+                (this._state as IUserClaimMvoStateProperties).UserUserName = value;
             }
         }
 
@@ -241,7 +241,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserAccessFailedCount = value;
+                (this._state as IUserClaimMvoStateProperties).UserAccessFailedCount = value;
             }
         }
 
@@ -269,7 +269,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserEmail = value;
+                (this._state as IUserClaimMvoStateProperties).UserEmail = value;
             }
         }
 
@@ -300,7 +300,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserEmailConfirmed = value;
+                (this._state as IUserClaimMvoStateProperties).UserEmailConfirmed = value;
             }
         }
 
@@ -331,7 +331,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserLockoutEnabled = value;
+                (this._state as IUserClaimMvoStateProperties).UserLockoutEnabled = value;
             }
         }
 
@@ -359,7 +359,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserLockoutEndDateUtc = value;
+                (this._state as IUserClaimMvoStateProperties).UserLockoutEndDateUtc = value;
             }
         }
 
@@ -387,7 +387,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserPasswordHash = value;
+                (this._state as IUserClaimMvoStateProperties).UserPasswordHash = value;
             }
         }
 
@@ -415,7 +415,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserPhoneNumber = value;
+                (this._state as IUserClaimMvoStateProperties).UserPhoneNumber = value;
             }
         }
 
@@ -446,7 +446,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserPhoneNumberConfirmed = value;
+                (this._state as IUserClaimMvoStateProperties).UserPhoneNumberConfirmed = value;
             }
         }
 
@@ -477,7 +477,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserTwoFactorEnabled = value;
+                (this._state as IUserClaimMvoStateProperties).UserTwoFactorEnabled = value;
             }
         }
 
@@ -505,7 +505,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserSecurityStamp = value;
+                (this._state as IUserClaimMvoStateProperties).UserSecurityStamp = value;
             }
         }
 
@@ -533,7 +533,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserCreatedBy = value;
+                (this._state as IUserClaimMvoStateProperties).UserCreatedBy = value;
             }
         }
 
@@ -564,7 +564,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserCreatedAt = value;
+                (this._state as IUserClaimMvoStateProperties).UserCreatedAt = value;
             }
         }
 
@@ -592,7 +592,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserUpdatedBy = value;
+                (this._state as IUserClaimMvoStateProperties).UserUpdatedBy = value;
             }
         }
 
@@ -623,7 +623,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserUpdatedAt = value;
+                (this._state as IUserClaimMvoStateProperties).UserUpdatedAt = value;
             }
         }
 
@@ -654,7 +654,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserActive = value;
+                (this._state as IUserClaimMvoStateProperties).UserActive = value;
             }
         }
 
@@ -685,7 +685,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserDeleted = value;
+                (this._state as IUserClaimMvoStateProperties).UserDeleted = value;
             }
         }
 
@@ -716,7 +716,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserVersion = value;
+                (this._state as IUserClaimMvoStateProperties).UserVersion = value;
             }
         }
 
@@ -836,11 +836,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IUserClaimMvoState).UpdatedBy; }
+            set { (_state as IUserClaimMvoState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IUserClaimMvoState).UpdatedAt; }
+            set { (_state as IUserClaimMvoState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -849,7 +851,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.UserVersion; }
+            get { return (_state as IUserClaimMvoStateProperties).UserVersion; }
 		}
 
 		#endregion

@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private OrganizationState _state;
+		private IOrganizationState _state;
 
         public OrganizationStateDtoWrapper()
         {
             this._state = new OrganizationState();
         }
 
-		public OrganizationStateDtoWrapper(OrganizationState state)
+		public OrganizationStateDtoWrapper(IOrganizationState state)
 		{
             this._state = state;
 		}
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.OrganizationId = value;
+                (this._state as IOrganizationStateProperties).OrganizationId = value;
             }
         }
 
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Name = value;
+                (this._state as IOrganizationStateProperties).Name = value;
             }
         }
 
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Description = value;
+                (this._state as IOrganizationStateProperties).Description = value;
             }
         }
 
@@ -146,7 +146,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Type = value;
+                (this._state as IOrganizationStateProperties).Type = value;
             }
         }
 
@@ -177,7 +177,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsSummary = value;
+                (this._state as IOrganizationStateProperties).IsSummary = value;
             }
         }
 
@@ -187,7 +187,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IOrganizationStateProperties).Active;
                 }
                 return null;
             }
@@ -195,7 +195,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IOrganizationStateProperties).Active = value.Value;
                 }
             }
         }
@@ -208,7 +208,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IOrganizationStateProperties).Active = value;
             }
         }
 
@@ -218,7 +218,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IOrganizationStateProperties).Version;
                 }
                 return null;
             }
@@ -226,7 +226,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IOrganizationStateProperties).Version = value.Value;
                 }
             }
         }
@@ -239,7 +239,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IOrganizationStateProperties).Version = value;
             }
         }
 
@@ -359,11 +359,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IOrganizationState).UpdatedBy; }
+            set { (_state as IOrganizationState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IOrganizationState).UpdatedAt; }
+            set { (_state as IOrganizationState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -372,7 +374,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as IOrganizationStateProperties).Version; }
 		}
 
 		#endregion

@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<ILocatorStateDto>();
             foreach (var s in states)
             {
-                var dto = s is LocatorStateDtoWrapper ? (LocatorStateDtoWrapper)s : new LocatorStateDtoWrapper((LocatorState)s);
+                var dto = s is LocatorStateDtoWrapper ? (LocatorStateDtoWrapper)s : new LocatorStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (LocatorState)_locatorApplicationService.Get(idObj);
+            var state = _locatorApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new LocatorStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (LocatorState)_locatorApplicationService.GetHistoryState(idObj, version);
+            var state = _locatorApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new LocatorStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

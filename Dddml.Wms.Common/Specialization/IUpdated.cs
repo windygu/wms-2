@@ -4,10 +4,9 @@ namespace Dddml.Wms.Specialization
 {
 	public interface IUpdated<TUserId>
 	{
-		TUserId UpdatedBy { get; }
+        TUserId UpdatedBy { get; set; }
 
-		DateTime UpdatedAt { get; }
-
+        DateTime UpdatedAt { get; set; }
 	}
 }
 

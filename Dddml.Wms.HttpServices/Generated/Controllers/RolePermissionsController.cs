@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IRolePermissionStateDto>();
             foreach (var s in states)
             {
-                var dto = s is RolePermissionStateDtoWrapper ? (RolePermissionStateDtoWrapper)s : new RolePermissionStateDtoWrapper((RolePermissionState)s);
+                var dto = s is RolePermissionStateDtoWrapper ? (RolePermissionStateDtoWrapper)s : new RolePermissionStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = RolePermissionsControllerUtils.ParseIdString(id);
-            var state = (RolePermissionState)_rolePermissionApplicationService.Get(idObj);
+            var state = _rolePermissionApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new RolePermissionStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = RolePermissionsControllerUtils.ParseIdString(id);
-            var state = (RolePermissionState)_rolePermissionApplicationService.GetHistoryState(idObj, version);
+            var state = _rolePermissionApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new RolePermissionStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

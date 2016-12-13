@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private UserPermissionMvoState _state;
+		private IUserPermissionMvoState _state;
 
         public UserPermissionMvoStateDtoWrapper()
         {
             this._state = new UserPermissionMvoState();
         }
 
-		public UserPermissionMvoStateDtoWrapper(UserPermissionMvoState state)
+		public UserPermissionMvoStateDtoWrapper(IUserPermissionMvoState state)
 		{
             this._state = state;
 		}
@@ -64,7 +64,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserPermissionId = value;
+                (this._state as IUserPermissionMvoStateProperties).UserPermissionId = value;
             }
         }
 
@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IUserPermissionMvoStateProperties).Version;
                 }
                 return null;
             }
@@ -82,7 +82,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IUserPermissionMvoStateProperties).Version = value.Value;
                 }
             }
         }
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IUserPermissionMvoStateProperties).Version = value;
             }
         }
 
@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IUserPermissionMvoStateProperties).Active;
                 }
                 return null;
             }
@@ -113,7 +113,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IUserPermissionMvoStateProperties).Active = value.Value;
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IUserPermissionMvoStateProperties).Active = value;
             }
         }
 
@@ -154,7 +154,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserUserName = value;
+                (this._state as IUserPermissionMvoStateProperties).UserUserName = value;
             }
         }
 
@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserAccessFailedCount = value;
+                (this._state as IUserPermissionMvoStateProperties).UserAccessFailedCount = value;
             }
         }
 
@@ -213,7 +213,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserEmail = value;
+                (this._state as IUserPermissionMvoStateProperties).UserEmail = value;
             }
         }
 
@@ -244,7 +244,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserEmailConfirmed = value;
+                (this._state as IUserPermissionMvoStateProperties).UserEmailConfirmed = value;
             }
         }
 
@@ -275,7 +275,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserLockoutEnabled = value;
+                (this._state as IUserPermissionMvoStateProperties).UserLockoutEnabled = value;
             }
         }
 
@@ -303,7 +303,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserLockoutEndDateUtc = value;
+                (this._state as IUserPermissionMvoStateProperties).UserLockoutEndDateUtc = value;
             }
         }
 
@@ -331,7 +331,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserPasswordHash = value;
+                (this._state as IUserPermissionMvoStateProperties).UserPasswordHash = value;
             }
         }
 
@@ -359,7 +359,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserPhoneNumber = value;
+                (this._state as IUserPermissionMvoStateProperties).UserPhoneNumber = value;
             }
         }
 
@@ -390,7 +390,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserPhoneNumberConfirmed = value;
+                (this._state as IUserPermissionMvoStateProperties).UserPhoneNumberConfirmed = value;
             }
         }
 
@@ -421,7 +421,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserTwoFactorEnabled = value;
+                (this._state as IUserPermissionMvoStateProperties).UserTwoFactorEnabled = value;
             }
         }
 
@@ -449,7 +449,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserSecurityStamp = value;
+                (this._state as IUserPermissionMvoStateProperties).UserSecurityStamp = value;
             }
         }
 
@@ -477,7 +477,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserCreatedBy = value;
+                (this._state as IUserPermissionMvoStateProperties).UserCreatedBy = value;
             }
         }
 
@@ -508,7 +508,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserCreatedAt = value;
+                (this._state as IUserPermissionMvoStateProperties).UserCreatedAt = value;
             }
         }
 
@@ -536,7 +536,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserUpdatedBy = value;
+                (this._state as IUserPermissionMvoStateProperties).UserUpdatedBy = value;
             }
         }
 
@@ -567,7 +567,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserUpdatedAt = value;
+                (this._state as IUserPermissionMvoStateProperties).UserUpdatedAt = value;
             }
         }
 
@@ -598,7 +598,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserActive = value;
+                (this._state as IUserPermissionMvoStateProperties).UserActive = value;
             }
         }
 
@@ -629,7 +629,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserDeleted = value;
+                (this._state as IUserPermissionMvoStateProperties).UserDeleted = value;
             }
         }
 
@@ -660,7 +660,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserVersion = value;
+                (this._state as IUserPermissionMvoStateProperties).UserVersion = value;
             }
         }
 
@@ -780,11 +780,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IUserPermissionMvoState).UpdatedBy; }
+            set { (_state as IUserPermissionMvoState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IUserPermissionMvoState).UpdatedAt; }
+            set { (_state as IUserPermissionMvoState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -793,7 +795,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.UserVersion; }
+            get { return (_state as IUserPermissionMvoStateProperties).UserVersion; }
 		}
 
 		#endregion

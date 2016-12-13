@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAttributeSetInstanceExtensionFieldMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AttributeSetInstanceExtensionFieldMvoStateDtoWrapper ? (AttributeSetInstanceExtensionFieldMvoStateDtoWrapper)s : new AttributeSetInstanceExtensionFieldMvoStateDtoWrapper((AttributeSetInstanceExtensionFieldMvoState)s);
+                var dto = s is AttributeSetInstanceExtensionFieldMvoStateDtoWrapper ? (AttributeSetInstanceExtensionFieldMvoStateDtoWrapper)s : new AttributeSetInstanceExtensionFieldMvoStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = AttributeSetInstanceExtensionFieldMvosControllerUtils.ParseIdString(id);
-            var state = (AttributeSetInstanceExtensionFieldMvoState)_attributeSetInstanceExtensionFieldMvoApplicationService.Get(idObj);
+            var state = _attributeSetInstanceExtensionFieldMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new AttributeSetInstanceExtensionFieldMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = AttributeSetInstanceExtensionFieldMvosControllerUtils.ParseIdString(id);
-            var state = (AttributeSetInstanceExtensionFieldMvoState)_attributeSetInstanceExtensionFieldMvoApplicationService.GetHistoryState(idObj, version);
+            var state = _attributeSetInstanceExtensionFieldMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new AttributeSetInstanceExtensionFieldMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

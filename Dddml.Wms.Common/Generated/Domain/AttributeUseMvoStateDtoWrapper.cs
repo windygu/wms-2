@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private AttributeUseMvoState _state;
+		private IAttributeUseMvoState _state;
 
         public AttributeUseMvoStateDtoWrapper()
         {
             this._state = new AttributeUseMvoState();
         }
 
-		public AttributeUseMvoStateDtoWrapper(AttributeUseMvoState state)
+		public AttributeUseMvoStateDtoWrapper(IAttributeUseMvoState state)
 		{
             this._state = state;
 		}
@@ -64,7 +64,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetAttributeUseId = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetAttributeUseId = value;
             }
         }
 
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.SequenceNumber = value;
+                (this._state as IAttributeUseMvoStateProperties).SequenceNumber = value;
             }
         }
 
@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IAttributeUseMvoStateProperties).Version;
                 }
                 return null;
             }
@@ -113,7 +113,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IAttributeUseMvoStateProperties).Version = value.Value;
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IAttributeUseMvoStateProperties).Version = value;
             }
         }
 
@@ -136,7 +136,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IAttributeUseMvoStateProperties).Active;
                 }
                 return null;
             }
@@ -144,7 +144,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IAttributeUseMvoStateProperties).Active = value.Value;
                 }
             }
         }
@@ -157,7 +157,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IAttributeUseMvoStateProperties).Active = value;
             }
         }
 
@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetName = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetName = value;
             }
         }
 
@@ -213,7 +213,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetOrganizationId = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetOrganizationId = value;
             }
         }
 
@@ -241,7 +241,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetDescription = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetDescription = value;
             }
         }
 
@@ -269,7 +269,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetSerialNumberAttributeId = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetSerialNumberAttributeId = value;
             }
         }
 
@@ -297,7 +297,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetLotAttributeId = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetLotAttributeId = value;
             }
         }
 
@@ -325,7 +325,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetReferenceId = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetReferenceId = value;
             }
         }
 
@@ -353,7 +353,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetCreatedBy = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetCreatedBy = value;
             }
         }
 
@@ -384,7 +384,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetCreatedAt = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetCreatedAt = value;
             }
         }
 
@@ -412,7 +412,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetUpdatedBy = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetUpdatedBy = value;
             }
         }
 
@@ -443,7 +443,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetUpdatedAt = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetUpdatedAt = value;
             }
         }
 
@@ -474,7 +474,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetActive = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetActive = value;
             }
         }
 
@@ -505,7 +505,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetDeleted = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetDeleted = value;
             }
         }
 
@@ -536,7 +536,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.AttributeSetVersion = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetVersion = value;
             }
         }
 
@@ -656,11 +656,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IAttributeUseMvoState).UpdatedBy; }
+            set { (_state as IAttributeUseMvoState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IAttributeUseMvoState).UpdatedAt; }
+            set { (_state as IAttributeUseMvoState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -669,7 +671,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.AttributeSetVersion; }
+            get { return (_state as IAttributeUseMvoStateProperties).AttributeSetVersion; }
 		}
 
 		#endregion

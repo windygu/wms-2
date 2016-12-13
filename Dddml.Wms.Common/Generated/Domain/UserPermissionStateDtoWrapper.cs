@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private UserPermissionState _state;
+		private IUserPermissionState _state;
 
         public UserPermissionStateDtoWrapper()
         {
             this._state = new UserPermissionState();
         }
 
-		public UserPermissionStateDtoWrapper(UserPermissionState state)
+		public UserPermissionStateDtoWrapper(IUserPermissionState state)
 		{
             this._state = state;
 		}
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.PermissionId = value;
+                (this._state as IUserPermissionStateProperties).PermissionId = value;
             }
         }
 
@@ -72,7 +72,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IUserPermissionStateProperties).Active;
                 }
                 return null;
             }
@@ -80,7 +80,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IUserPermissionStateProperties).Active = value.Value;
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IUserPermissionStateProperties).Active = value;
             }
         }
 
@@ -103,7 +103,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IUserPermissionStateProperties).Version;
                 }
                 return null;
             }
@@ -111,7 +111,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IUserPermissionStateProperties).Version = value.Value;
                 }
             }
         }
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IUserPermissionStateProperties).Version = value;
             }
         }
 
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.UserId = value;
+                (this._state as IUserPermissionStateProperties).UserId = value;
             }
         }
 
@@ -277,11 +277,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IUserPermissionState).UpdatedBy; }
+            set { (_state as IUserPermissionState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IUserPermissionState).UpdatedAt; }
+            set { (_state as IUserPermissionState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -290,7 +292,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as IUserPermissionStateProperties).Version; }
 		}
 
 		#endregion

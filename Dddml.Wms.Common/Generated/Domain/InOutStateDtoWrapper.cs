@@ -22,14 +22,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private InOutState _state;
+		private IInOutState _state;
 
         public InOutStateDtoWrapper()
         {
             this._state = new InOutState();
         }
 
-		public InOutStateDtoWrapper(InOutState state)
+		public InOutStateDtoWrapper(IInOutState state)
 		{
             this._state = state;
 		}
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.DocumentNumber = value;
+                (this._state as IInOutStateProperties).DocumentNumber = value;
             }
         }
 
@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsSOTransaction = value;
+                (this._state as IInOutStateProperties).IsSOTransaction = value;
             }
         }
 
@@ -122,7 +122,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.DocumentStatus = value;
+                (this._state as IInOutStateProperties).DocumentStatus = value;
             }
         }
 
@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Posted = value;
+                (this._state as IInOutStateProperties).Posted = value;
             }
         }
 
@@ -184,7 +184,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Processing = value;
+                (this._state as IInOutStateProperties).Processing = value;
             }
         }
 
@@ -215,7 +215,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Processed = value;
+                (this._state as IInOutStateProperties).Processed = value;
             }
         }
 
@@ -246,7 +246,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.DocumentType = value;
+                (this._state as IInOutStateProperties).DocumentType = value;
             }
         }
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Description = value;
+                (this._state as IInOutStateProperties).Description = value;
             }
         }
 
@@ -302,7 +302,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.OrderNumber = value;
+                (this._state as IInOutStateProperties).OrderNumber = value;
             }
         }
 
@@ -330,7 +330,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.DateOrdered = value;
+                (this._state as IInOutStateProperties).DateOrdered = value;
             }
         }
 
@@ -361,7 +361,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsPrinted = value;
+                (this._state as IInOutStateProperties).IsPrinted = value;
             }
         }
 
@@ -389,7 +389,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.MovementType = value;
+                (this._state as IInOutStateProperties).MovementType = value;
             }
         }
 
@@ -417,7 +417,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.MovementDate = value;
+                (this._state as IInOutStateProperties).MovementDate = value;
             }
         }
 
@@ -445,7 +445,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.BusinessPartnerId = value;
+                (this._state as IInOutStateProperties).BusinessPartnerId = value;
             }
         }
 
@@ -473,7 +473,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.WarehouseId = value;
+                (this._state as IInOutStateProperties).WarehouseId = value;
             }
         }
 
@@ -501,7 +501,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.POReference = value;
+                (this._state as IInOutStateProperties).POReference = value;
             }
         }
 
@@ -532,7 +532,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.FreightAmount = value;
+                (this._state as IInOutStateProperties).FreightAmount = value;
             }
         }
 
@@ -560,7 +560,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ShipperId = value;
+                (this._state as IInOutStateProperties).ShipperId = value;
             }
         }
 
@@ -591,7 +591,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ChargeAmount = value;
+                (this._state as IInOutStateProperties).ChargeAmount = value;
             }
         }
 
@@ -619,7 +619,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.DatePrinted = value;
+                (this._state as IInOutStateProperties).DatePrinted = value;
             }
         }
 
@@ -647,7 +647,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.SalesRepresentative = value;
+                (this._state as IInOutStateProperties).SalesRepresentative = value;
             }
         }
 
@@ -678,7 +678,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.NumberOfPackages = value;
+                (this._state as IInOutStateProperties).NumberOfPackages = value;
             }
         }
 
@@ -706,7 +706,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.PickDate = value;
+                (this._state as IInOutStateProperties).PickDate = value;
             }
         }
 
@@ -734,7 +734,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ShipDate = value;
+                (this._state as IInOutStateProperties).ShipDate = value;
             }
         }
 
@@ -762,7 +762,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.TrackingNumber = value;
+                (this._state as IInOutStateProperties).TrackingNumber = value;
             }
         }
 
@@ -790,7 +790,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.DateReceived = value;
+                (this._state as IInOutStateProperties).DateReceived = value;
             }
         }
 
@@ -821,7 +821,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsInTransit = value;
+                (this._state as IInOutStateProperties).IsInTransit = value;
             }
         }
 
@@ -852,7 +852,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsApproved = value;
+                (this._state as IInOutStateProperties).IsApproved = value;
             }
         }
 
@@ -883,7 +883,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsInDispute = value;
+                (this._state as IInOutStateProperties).IsInDispute = value;
             }
         }
 
@@ -914,7 +914,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Volume = value;
+                (this._state as IInOutStateProperties).Volume = value;
             }
         }
 
@@ -945,7 +945,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Weight = value;
+                (this._state as IInOutStateProperties).Weight = value;
             }
         }
 
@@ -973,7 +973,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.RmaNumber = value;
+                (this._state as IInOutStateProperties).RmaNumber = value;
             }
         }
 
@@ -1001,7 +1001,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.ReversalNumber = value;
+                (this._state as IInOutStateProperties).ReversalNumber = value;
             }
         }
 
@@ -1032,7 +1032,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsDropShip = value;
+                (this._state as IInOutStateProperties).IsDropShip = value;
             }
         }
 
@@ -1060,7 +1060,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.DropShipBusinessPartnerId = value;
+                (this._state as IInOutStateProperties).DropShipBusinessPartnerId = value;
             }
         }
 
@@ -1070,7 +1070,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IInOutStateProperties).Active;
                 }
                 return null;
             }
@@ -1078,7 +1078,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IInOutStateProperties).Active = value.Value;
                 }
             }
         }
@@ -1091,7 +1091,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IInOutStateProperties).Active = value;
             }
         }
 
@@ -1101,7 +1101,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IInOutStateProperties).Version;
                 }
                 return null;
             }
@@ -1109,7 +1109,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IInOutStateProperties).Version = value.Value;
                 }
             }
         }
@@ -1122,7 +1122,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IInOutStateProperties).Version = value;
             }
         }
 
@@ -1242,11 +1242,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IInOutState).UpdatedBy; }
+            set { (_state as IInOutState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IInOutState).UpdatedAt; }
+            set { (_state as IInOutState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -1255,7 +1257,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as IInOutStateProperties).Version; }
 		}
 
 		#endregion
@@ -1301,13 +1303,14 @@ namespace Dddml.Wms.Domain
                 {
                     states.Add(s.ToInOutLineState());
                 }
-                this._state.SetInOutLines(new DtoInOutLineStates(this._state, states));
+                this._state.InOutLines = new DtoInOutLineStates(this._state, states);
             }
         }
 
         IInOutLineStates IInOutState.InOutLines
         {
             get { return _state.InOutLines; }
+            set { _state.InOutLines = value; }
         }
 
 

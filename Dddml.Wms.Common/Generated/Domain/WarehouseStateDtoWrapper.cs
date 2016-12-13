@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private WarehouseState _state;
+		private IWarehouseState _state;
 
         public WarehouseStateDtoWrapper()
         {
             this._state = new WarehouseState();
         }
 
-		public WarehouseStateDtoWrapper(WarehouseState state)
+		public WarehouseStateDtoWrapper(IWarehouseState state)
 		{
             this._state = state;
 		}
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.WarehouseId = value;
+                (this._state as IWarehouseStateProperties).WarehouseId = value;
             }
         }
 
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Name = value;
+                (this._state as IWarehouseStateProperties).Name = value;
             }
         }
 
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Description = value;
+                (this._state as IWarehouseStateProperties).Description = value;
             }
         }
 
@@ -149,7 +149,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.IsInTransit = value;
+                (this._state as IWarehouseStateProperties).IsInTransit = value;
             }
         }
 
@@ -159,7 +159,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
                 {
-                    return _state.Active;
+                    return (this._state as IWarehouseStateProperties).Active;
                 }
                 return null;
             }
@@ -167,7 +167,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Active = value.Value;
+                    (this._state as IWarehouseStateProperties).Active = value.Value;
                 }
             }
         }
@@ -180,7 +180,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Active = value;
+                (this._state as IWarehouseStateProperties).Active = value;
             }
         }
 
@@ -190,7 +190,7 @@ namespace Dddml.Wms.Domain
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Version"))
                 {
-                    return _state.Version;
+                    return (this._state as IWarehouseStateProperties).Version;
                 }
                 return null;
             }
@@ -198,7 +198,7 @@ namespace Dddml.Wms.Domain
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.Version = value.Value;
+                    (this._state as IWarehouseStateProperties).Version = value.Value;
                 }
             }
         }
@@ -211,7 +211,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this._state.Version = value;
+                (this._state as IWarehouseStateProperties).Version = value;
             }
         }
 
@@ -331,11 +331,13 @@ namespace Dddml.Wms.Domain
 		string IUpdated<string>.UpdatedBy
 		{
             get { return (_state as IWarehouseState).UpdatedBy; }
+            set { (_state as IWarehouseState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
             get { return (_state as IWarehouseState).UpdatedAt; }
+            set { (_state as IWarehouseState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -344,7 +346,7 @@ namespace Dddml.Wms.Domain
 
 		long IVersioned<long>.Version
 		{
-            get { return _state.Version; }
+            get { return (_state as IWarehouseStateProperties).Version; }
 		}
 
 		#endregion

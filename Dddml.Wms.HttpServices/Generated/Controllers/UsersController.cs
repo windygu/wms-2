@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IUserStateDto>();
             foreach (var s in states)
             {
-                var dto = s is UserStateDtoWrapper ? (UserStateDtoWrapper)s : new UserStateDtoWrapper((UserState)s);
+                var dto = s is UserStateDtoWrapper ? (UserStateDtoWrapper)s : new UserStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (UserState)_userApplicationService.Get(idObj);
+            var state = _userApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new UserStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (UserState)_userApplicationService.GetHistoryState(idObj, version);
+            var state = _userApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new UserStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

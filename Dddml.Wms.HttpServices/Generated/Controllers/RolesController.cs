@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IRoleStateDto>();
             foreach (var s in states)
             {
-                var dto = s is RoleStateDtoWrapper ? (RoleStateDtoWrapper)s : new RoleStateDtoWrapper((RoleState)s);
+                var dto = s is RoleStateDtoWrapper ? (RoleStateDtoWrapper)s : new RoleStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (RoleState)_roleApplicationService.Get(idObj);
+            var state = _roleApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new RoleStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (RoleState)_roleApplicationService.GetHistoryState(idObj, version);
+            var state = _roleApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new RoleStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

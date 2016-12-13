@@ -31,7 +31,7 @@ namespace Dddml.Wms.Domain
 		void Mutate(IEvent e);
 
 
-		IAttributeUseStates AttributeUses { get; }
+		IAttributeUseStates AttributeUses { get; set; }
 
 
         bool IsUnsaved { get; }

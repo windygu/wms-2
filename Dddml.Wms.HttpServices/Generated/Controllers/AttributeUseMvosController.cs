@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAttributeUseMvoStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AttributeUseMvoStateDtoWrapper ? (AttributeUseMvoStateDtoWrapper)s : new AttributeUseMvoStateDtoWrapper((AttributeUseMvoState)s);
+                var dto = s is AttributeUseMvoStateDtoWrapper ? (AttributeUseMvoStateDtoWrapper)s : new AttributeUseMvoStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = AttributeUseMvosControllerUtils.ParseIdString(id);
-            var state = (AttributeUseMvoState)_attributeUseMvoApplicationService.Get(idObj);
+            var state = _attributeUseMvoApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new AttributeUseMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = AttributeUseMvosControllerUtils.ParseIdString(id);
-            var state = (AttributeUseMvoState)_attributeUseMvoApplicationService.GetHistoryState(idObj, version);
+            var state = _attributeUseMvoApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new AttributeUseMvoStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

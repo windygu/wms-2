@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IWarehouseStateDto>();
             foreach (var s in states)
             {
-                var dto = s is WarehouseStateDtoWrapper ? (WarehouseStateDtoWrapper)s : new WarehouseStateDtoWrapper((WarehouseState)s);
+                var dto = s is WarehouseStateDtoWrapper ? (WarehouseStateDtoWrapper)s : new WarehouseStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (WarehouseState)_warehouseApplicationService.Get(idObj);
+            var state = _warehouseApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new WarehouseStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (WarehouseState)_warehouseApplicationService.GetHistoryState(idObj, version);
+            var state = _warehouseApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new WarehouseStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

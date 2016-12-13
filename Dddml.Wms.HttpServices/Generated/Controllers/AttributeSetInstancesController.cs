@@ -50,7 +50,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             JArray dynamicArray = new JArray(); 
             foreach (var s in states)
             {
-                var dto = s is AttributeSetInstanceStateDtoWrapper ? (AttributeSetInstanceStateDtoWrapper)s : new AttributeSetInstanceStateDtoWrapper((AttributeSetInstanceState)s);
+                var dto = s is AttributeSetInstanceStateDtoWrapper ? (AttributeSetInstanceStateDtoWrapper)s : new AttributeSetInstanceStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -70,7 +70,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (AttributeSetInstanceState)_attributeSetInstanceApplicationService.Get(idObj);
+            var state = _attributeSetInstanceApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new AttributeSetInstanceStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (AttributeSetInstanceState)_attributeSetInstanceApplicationService.GetHistoryState(idObj, version);
+            var state = _attributeSetInstanceApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new AttributeSetInstanceStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))

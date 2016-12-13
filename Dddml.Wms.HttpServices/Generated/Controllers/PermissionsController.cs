@@ -46,7 +46,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IPermissionStateDto>();
             foreach (var s in states)
             {
-                var dto = s is PermissionStateDtoWrapper ? (PermissionStateDtoWrapper)s : new PermissionStateDtoWrapper((PermissionState)s);
+                var dto = s is PermissionStateDtoWrapper ? (PermissionStateDtoWrapper)s : new PermissionStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (PermissionState)_permissionApplicationService.Get(idObj);
+            var state = _permissionApplicationService.Get(idObj);
             if (state == null) { return null; }
             var stateDto = new PermissionStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
@@ -167,7 +167,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var idObj = id;
-            var state = (PermissionState)_permissionApplicationService.GetHistoryState(idObj, version);
+            var state = _permissionApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
             var stateDto = new PermissionStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
