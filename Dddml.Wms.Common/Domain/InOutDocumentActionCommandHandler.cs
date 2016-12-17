@@ -9,11 +9,11 @@ namespace Dddml.Wms.Domain
 {
     public class InOutDocumentActionCommandHandler : IPropertyCommandHandler<string, string>
     {
+        // //////////////////////////////////
+        // 在异步处理模型下不能使用 ThreadStatic 来作为请求处理的上下文。
         //[ThreadStatic]
         //private static string _currentDocumentStatus;
-
         //private static StateMachine<string, string> _stateMachine;
-
         //static InOutDocumentActionCommandHandler()
         //{
         //    var tm = BuildStateMachine(() => _currentDocumentStatus, s => _currentDocumentStatus = s);
@@ -22,6 +22,8 @@ namespace Dddml.Wms.Domain
 
         private static StateMachine<string, string> BuildStateMachine(Func<String> stateAccessor, Action<String> stateMutator)
         {
+            // //////////////////////////////////
+            // TODO StateMachine 类库需要一个 StateMachineBuilder，避免重复配置。
             var tm = new StateMachine<string, string>(stateAccessor, stateMutator);
 
             tm.Configure(DocumentStatus.Initial)
@@ -50,12 +52,8 @@ namespace Dddml.Wms.Domain
                 { trigger = DocumentAction.Draft; }
             }
 
-            //TODO 这样才是线程安全的，但是效率不高，需要改进：
             var stateMachine = BuildStateMachine(() => currentState, command.SetState);
             stateMachine.Fire(trigger);
-            //_currentDocumentStatus = currentState;
-            //_stateMachine.Fire(trigger);
-            //command.SetState(_currentDocumentStatus);
         }
 
     }
