@@ -277,36 +277,42 @@ namespace Dddml.Wms.Domain
 			((dynamic)this).When((dynamic)e);
 		}
 
-		protected void ThrowOnWrongEvent(IUserClaimStateEvent stateEvent)
-		{
-				var stateEntityIdUserId = (this as IGlobalIdentity<UserClaimId>).GlobalId.UserId;
-				var eventEntityIdUserId = stateEvent.StateEventId.UserId;
-				if (stateEntityIdUserId != eventEntityIdUserId)
-				{
-					throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
-				}
+        protected void ThrowOnWrongEvent(IUserClaimStateEvent stateEvent)
+        {
+            var id = new System.Text.StringBuilder(); 
+            id.Append("[").Append("UserClaim|");
 
-				var stateEntityIdClaimId = (this as IGlobalIdentity<UserClaimId>).GlobalId.ClaimId;
-				var eventEntityIdClaimId = stateEvent.StateEventId.ClaimId;
-				if (stateEntityIdClaimId != eventEntityIdClaimId)
-				{
-					throw DomainError.Named("mutateWrongEntity", "Entity Id ClaimId {0} in state but entity id ClaimId {1} in event", stateEntityIdClaimId, eventEntityIdClaimId);
-				}
+            var stateEntityIdUserId = (this as IGlobalIdentity<UserClaimId>).GlobalId.UserId;
+            var eventEntityIdUserId = stateEvent.StateEventId.UserId;
+            if (stateEntityIdUserId != eventEntityIdUserId)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
+            }
+            id.Append(stateEntityIdUserId).Append(",");
 
-			if (ForReapplying) { return; }
-			var stateVersion = this.Version;
-			var eventVersion = stateEvent.Version;
-			if (UserClaimState.VersionZero == eventVersion)
-			{
-				eventVersion = stateEvent.Version = stateVersion;
-			}
-			if (stateVersion != eventVersion)
-			{
-				throw DomainError.Named("concurrencyConflict", "Conflict between state version {0} and event version {1}", stateVersion, eventVersion);
-			}
+            var stateEntityIdClaimId = (this as IGlobalIdentity<UserClaimId>).GlobalId.ClaimId;
+            var eventEntityIdClaimId = stateEvent.StateEventId.ClaimId;
+            if (stateEntityIdClaimId != eventEntityIdClaimId)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id ClaimId {0} in state but entity id ClaimId {1} in event", stateEntityIdClaimId, eventEntityIdClaimId);
+            }
+            id.Append(stateEntityIdClaimId).Append(",");
 
-		}
-	}
+            id.Append("]");
+
+            if (ForReapplying) { return; }
+            var stateVersion = this.Version;
+            var eventVersion = stateEvent.Version;
+            if (UserClaimState.VersionZero == eventVersion)
+            {
+                eventVersion = stateEvent.Version = stateVersion;
+            }
+            if (stateVersion != eventVersion)
+            {
+                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
+            }
+        }
+    }
 
 }
 

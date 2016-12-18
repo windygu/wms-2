@@ -509,24 +509,29 @@ namespace Dddml.Wms.Domain
 			((dynamic)this).When((dynamic)e);
 		}
 
-		protected void ThrowOnWrongEvent(IAttributeValueMvoStateEvent stateEvent)
-		{
-			var stateEntityId = this.AttributeValueId; // Aggregate Id
-			var eventEntityId = stateEvent.StateEventId.AttributeValueId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
-			if (stateEntityId != eventEntityId)
-			{
-				throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
-			}
+        protected void ThrowOnWrongEvent(IAttributeValueMvoStateEvent stateEvent)
+        {
+            var id = new System.Text.StringBuilder(); 
+            id.Append("[").Append("AttributeValueMvo|");
 
-			var stateVersion = this.AttributeVersion;
-			var eventVersion = stateEvent.StateEventId.AttributeVersion;
-			if (stateVersion != eventVersion)
-			{
-				throw DomainError.Named("concurrencyConflict", "Conflict between state version {0} and event version {1}", stateVersion, eventVersion);
-			}
+            var stateEntityId = this.AttributeValueId; // Aggregate Id
+            var eventEntityId = stateEvent.StateEventId.AttributeValueId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            if (stateEntityId != eventEntityId)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
+            }
+            id.Append(stateEntityId).Append(",");
 
-		}
-	}
+            id.Append("]");
+
+            var stateVersion = this.AttributeVersion;
+            var eventVersion = stateEvent.StateEventId.AttributeVersion;
+            if (stateVersion != eventVersion)
+            {
+                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
+            }
+        }
+    }
 
 }
 

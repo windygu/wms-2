@@ -271,24 +271,29 @@ namespace Dddml.Wms.Domain
 			((dynamic)this).When((dynamic)e);
 		}
 
-		protected void ThrowOnWrongEvent(IPermissionStateEvent stateEvent)
-		{
-			var stateEntityId = this.PermissionId; // Aggregate Id
-			var eventEntityId = stateEvent.StateEventId.PermissionId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
-			if (stateEntityId != eventEntityId)
-			{
-				throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
-			}
+        protected void ThrowOnWrongEvent(IPermissionStateEvent stateEvent)
+        {
+            var id = new System.Text.StringBuilder(); 
+            id.Append("[").Append("Permission|");
 
-			var stateVersion = this.Version;
-			var eventVersion = stateEvent.StateEventId.Version;
-			if (stateVersion != eventVersion)
-			{
-				throw DomainError.Named("concurrencyConflict", "Conflict between state version {0} and event version {1}", stateVersion, eventVersion);
-			}
+            var stateEntityId = this.PermissionId; // Aggregate Id
+            var eventEntityId = stateEvent.StateEventId.PermissionId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            if (stateEntityId != eventEntityId)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
+            }
+            id.Append(stateEntityId).Append(",");
 
-		}
-	}
+            id.Append("]");
+
+            var stateVersion = this.Version;
+            var eventVersion = stateEvent.StateEventId.Version;
+            if (stateVersion != eventVersion)
+            {
+                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
+            }
+        }
+    }
 
 }
 

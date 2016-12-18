@@ -249,36 +249,42 @@ namespace Dddml.Wms.Domain
 			((dynamic)this).When((dynamic)e);
 		}
 
-		protected void ThrowOnWrongEvent(IUserRoleStateEvent stateEvent)
-		{
-				var stateEntityIdUserId = (this as IGlobalIdentity<UserRoleId>).GlobalId.UserId;
-				var eventEntityIdUserId = stateEvent.StateEventId.UserId;
-				if (stateEntityIdUserId != eventEntityIdUserId)
-				{
-					throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
-				}
+        protected void ThrowOnWrongEvent(IUserRoleStateEvent stateEvent)
+        {
+            var id = new System.Text.StringBuilder(); 
+            id.Append("[").Append("UserRole|");
 
-				var stateEntityIdRoleId = (this as IGlobalIdentity<UserRoleId>).GlobalId.RoleId;
-				var eventEntityIdRoleId = stateEvent.StateEventId.RoleId;
-				if (stateEntityIdRoleId != eventEntityIdRoleId)
-				{
-					throw DomainError.Named("mutateWrongEntity", "Entity Id RoleId {0} in state but entity id RoleId {1} in event", stateEntityIdRoleId, eventEntityIdRoleId);
-				}
+            var stateEntityIdUserId = (this as IGlobalIdentity<UserRoleId>).GlobalId.UserId;
+            var eventEntityIdUserId = stateEvent.StateEventId.UserId;
+            if (stateEntityIdUserId != eventEntityIdUserId)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
+            }
+            id.Append(stateEntityIdUserId).Append(",");
 
-			if (ForReapplying) { return; }
-			var stateVersion = this.Version;
-			var eventVersion = stateEvent.Version;
-			if (UserRoleState.VersionZero == eventVersion)
-			{
-				eventVersion = stateEvent.Version = stateVersion;
-			}
-			if (stateVersion != eventVersion)
-			{
-				throw DomainError.Named("concurrencyConflict", "Conflict between state version {0} and event version {1}", stateVersion, eventVersion);
-			}
+            var stateEntityIdRoleId = (this as IGlobalIdentity<UserRoleId>).GlobalId.RoleId;
+            var eventEntityIdRoleId = stateEvent.StateEventId.RoleId;
+            if (stateEntityIdRoleId != eventEntityIdRoleId)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id RoleId {0} in state but entity id RoleId {1} in event", stateEntityIdRoleId, eventEntityIdRoleId);
+            }
+            id.Append(stateEntityIdRoleId).Append(",");
 
-		}
-	}
+            id.Append("]");
+
+            if (ForReapplying) { return; }
+            var stateVersion = this.Version;
+            var eventVersion = stateEvent.Version;
+            if (UserRoleState.VersionZero == eventVersion)
+            {
+                eventVersion = stateEvent.Version = stateVersion;
+            }
+            if (stateVersion != eventVersion)
+            {
+                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
+            }
+        }
+    }
 
 }
 

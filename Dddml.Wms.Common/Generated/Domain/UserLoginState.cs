@@ -249,36 +249,42 @@ namespace Dddml.Wms.Domain
 			((dynamic)this).When((dynamic)e);
 		}
 
-		protected void ThrowOnWrongEvent(IUserLoginStateEvent stateEvent)
-		{
-				var stateEntityIdUserId = (this as IGlobalIdentity<UserLoginId>).GlobalId.UserId;
-				var eventEntityIdUserId = stateEvent.StateEventId.UserId;
-				if (stateEntityIdUserId != eventEntityIdUserId)
-				{
-					throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
-				}
+        protected void ThrowOnWrongEvent(IUserLoginStateEvent stateEvent)
+        {
+            var id = new System.Text.StringBuilder(); 
+            id.Append("[").Append("UserLogin|");
 
-				var stateEntityIdLoginKey = (this as IGlobalIdentity<UserLoginId>).GlobalId.LoginKey;
-				var eventEntityIdLoginKey = stateEvent.StateEventId.LoginKey;
-				if (stateEntityIdLoginKey != eventEntityIdLoginKey)
-				{
-					throw DomainError.Named("mutateWrongEntity", "Entity Id LoginKey {0} in state but entity id LoginKey {1} in event", stateEntityIdLoginKey, eventEntityIdLoginKey);
-				}
+            var stateEntityIdUserId = (this as IGlobalIdentity<UserLoginId>).GlobalId.UserId;
+            var eventEntityIdUserId = stateEvent.StateEventId.UserId;
+            if (stateEntityIdUserId != eventEntityIdUserId)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
+            }
+            id.Append(stateEntityIdUserId).Append(",");
 
-			if (ForReapplying) { return; }
-			var stateVersion = this.Version;
-			var eventVersion = stateEvent.Version;
-			if (UserLoginState.VersionZero == eventVersion)
-			{
-				eventVersion = stateEvent.Version = stateVersion;
-			}
-			if (stateVersion != eventVersion)
-			{
-				throw DomainError.Named("concurrencyConflict", "Conflict between state version {0} and event version {1}", stateVersion, eventVersion);
-			}
+            var stateEntityIdLoginKey = (this as IGlobalIdentity<UserLoginId>).GlobalId.LoginKey;
+            var eventEntityIdLoginKey = stateEvent.StateEventId.LoginKey;
+            if (stateEntityIdLoginKey != eventEntityIdLoginKey)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id LoginKey {0} in state but entity id LoginKey {1} in event", stateEntityIdLoginKey, eventEntityIdLoginKey);
+            }
+            id.Append(stateEntityIdLoginKey).Append(",");
 
-		}
-	}
+            id.Append("]");
+
+            if (ForReapplying) { return; }
+            var stateVersion = this.Version;
+            var eventVersion = stateEvent.Version;
+            if (UserLoginState.VersionZero == eventVersion)
+            {
+                eventVersion = stateEvent.Version = stateVersion;
+            }
+            if (stateVersion != eventVersion)
+            {
+                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
+            }
+        }
+    }
 
 }
 

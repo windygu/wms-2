@@ -319,36 +319,42 @@ namespace Dddml.Wms.Domain
 			((dynamic)this).When((dynamic)e);
 		}
 
-		protected void ThrowOnWrongEvent(IAttributeSetInstanceExtensionFieldStateEvent stateEvent)
-		{
-				var stateEntityIdGroupId = (this as IGlobalIdentity<AttributeSetInstanceExtensionFieldId>).GlobalId.GroupId;
-				var eventEntityIdGroupId = stateEvent.StateEventId.GroupId;
-				if (stateEntityIdGroupId != eventEntityIdGroupId)
-				{
-					throw DomainError.Named("mutateWrongEntity", "Entity Id GroupId {0} in state but entity id GroupId {1} in event", stateEntityIdGroupId, eventEntityIdGroupId);
-				}
+        protected void ThrowOnWrongEvent(IAttributeSetInstanceExtensionFieldStateEvent stateEvent)
+        {
+            var id = new System.Text.StringBuilder(); 
+            id.Append("[").Append("AttributeSetInstanceExtensionField|");
 
-				var stateEntityIdIndex = (this as IGlobalIdentity<AttributeSetInstanceExtensionFieldId>).GlobalId.Index;
-				var eventEntityIdIndex = stateEvent.StateEventId.Index;
-				if (stateEntityIdIndex != eventEntityIdIndex)
-				{
-					throw DomainError.Named("mutateWrongEntity", "Entity Id Index {0} in state but entity id Index {1} in event", stateEntityIdIndex, eventEntityIdIndex);
-				}
+            var stateEntityIdGroupId = (this as IGlobalIdentity<AttributeSetInstanceExtensionFieldId>).GlobalId.GroupId;
+            var eventEntityIdGroupId = stateEvent.StateEventId.GroupId;
+            if (stateEntityIdGroupId != eventEntityIdGroupId)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id GroupId {0} in state but entity id GroupId {1} in event", stateEntityIdGroupId, eventEntityIdGroupId);
+            }
+            id.Append(stateEntityIdGroupId).Append(",");
 
-			if (ForReapplying) { return; }
-			var stateVersion = this.Version;
-			var eventVersion = stateEvent.Version;
-			if (AttributeSetInstanceExtensionFieldState.VersionZero == eventVersion)
-			{
-				eventVersion = stateEvent.Version = stateVersion;
-			}
-			if (stateVersion != eventVersion)
-			{
-				throw DomainError.Named("concurrencyConflict", "Conflict between state version {0} and event version {1}", stateVersion, eventVersion);
-			}
+            var stateEntityIdIndex = (this as IGlobalIdentity<AttributeSetInstanceExtensionFieldId>).GlobalId.Index;
+            var eventEntityIdIndex = stateEvent.StateEventId.Index;
+            if (stateEntityIdIndex != eventEntityIdIndex)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id Index {0} in state but entity id Index {1} in event", stateEntityIdIndex, eventEntityIdIndex);
+            }
+            id.Append(stateEntityIdIndex).Append(",");
 
-		}
-	}
+            id.Append("]");
+
+            if (ForReapplying) { return; }
+            var stateVersion = this.Version;
+            var eventVersion = stateEvent.Version;
+            if (AttributeSetInstanceExtensionFieldState.VersionZero == eventVersion)
+            {
+                eventVersion = stateEvent.Version = stateVersion;
+            }
+            if (stateVersion != eventVersion)
+            {
+                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
+            }
+        }
+    }
 
 }
 

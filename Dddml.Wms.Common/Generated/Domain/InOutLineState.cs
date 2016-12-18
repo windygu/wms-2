@@ -488,36 +488,42 @@ namespace Dddml.Wms.Domain
 			((dynamic)this).When((dynamic)e);
 		}
 
-		protected void ThrowOnWrongEvent(IInOutLineStateEvent stateEvent)
-		{
-				var stateEntityIdInOutDocumentNumber = (this as IGlobalIdentity<InOutLineId>).GlobalId.InOutDocumentNumber;
-				var eventEntityIdInOutDocumentNumber = stateEvent.StateEventId.InOutDocumentNumber;
-				if (stateEntityIdInOutDocumentNumber != eventEntityIdInOutDocumentNumber)
-				{
-					throw DomainError.Named("mutateWrongEntity", "Entity Id InOutDocumentNumber {0} in state but entity id InOutDocumentNumber {1} in event", stateEntityIdInOutDocumentNumber, eventEntityIdInOutDocumentNumber);
-				}
+        protected void ThrowOnWrongEvent(IInOutLineStateEvent stateEvent)
+        {
+            var id = new System.Text.StringBuilder(); 
+            id.Append("[").Append("InOutLine|");
 
-				var stateEntityIdSkuId = (this as IGlobalIdentity<InOutLineId>).GlobalId.SkuId;
-				var eventEntityIdSkuId = stateEvent.StateEventId.SkuId;
-				if (stateEntityIdSkuId != eventEntityIdSkuId)
-				{
-					throw DomainError.Named("mutateWrongEntity", "Entity Id SkuId {0} in state but entity id SkuId {1} in event", stateEntityIdSkuId, eventEntityIdSkuId);
-				}
+            var stateEntityIdInOutDocumentNumber = (this as IGlobalIdentity<InOutLineId>).GlobalId.InOutDocumentNumber;
+            var eventEntityIdInOutDocumentNumber = stateEvent.StateEventId.InOutDocumentNumber;
+            if (stateEntityIdInOutDocumentNumber != eventEntityIdInOutDocumentNumber)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id InOutDocumentNumber {0} in state but entity id InOutDocumentNumber {1} in event", stateEntityIdInOutDocumentNumber, eventEntityIdInOutDocumentNumber);
+            }
+            id.Append(stateEntityIdInOutDocumentNumber).Append(",");
 
-			if (ForReapplying) { return; }
-			var stateVersion = this.Version;
-			var eventVersion = stateEvent.Version;
-			if (InOutLineState.VersionZero == eventVersion)
-			{
-				eventVersion = stateEvent.Version = stateVersion;
-			}
-			if (stateVersion != eventVersion)
-			{
-				throw DomainError.Named("concurrencyConflict", "Conflict between state version {0} and event version {1}", stateVersion, eventVersion);
-			}
+            var stateEntityIdSkuId = (this as IGlobalIdentity<InOutLineId>).GlobalId.SkuId;
+            var eventEntityIdSkuId = stateEvent.StateEventId.SkuId;
+            if (stateEntityIdSkuId != eventEntityIdSkuId)
+            {
+                throw DomainError.Named("mutateWrongEntity", "Entity Id SkuId {0} in state but entity id SkuId {1} in event", stateEntityIdSkuId, eventEntityIdSkuId);
+            }
+            id.Append(stateEntityIdSkuId).Append(",");
 
-		}
-	}
+            id.Append("]");
+
+            if (ForReapplying) { return; }
+            var stateVersion = this.Version;
+            var eventVersion = stateEvent.Version;
+            if (InOutLineState.VersionZero == eventVersion)
+            {
+                eventVersion = stateEvent.Version = stateVersion;
+            }
+            if (stateVersion != eventVersion)
+            {
+                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
+            }
+        }
+    }
 
 }
 
