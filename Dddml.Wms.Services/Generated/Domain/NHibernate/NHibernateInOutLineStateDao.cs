@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.NHibernate
                 state = new InOutLineState();
                 (state as InOutLineState).InOutLineId = id;
             }
-            if (ReadOnlyProxyGenerator != null)
+            if (ReadOnlyProxyGenerator != null && state != null)
             {
                 return ReadOnlyProxyGenerator.CreateProxy<IInOutLineState>(state, new Type[] {  }, _readOnlyPropertyNames);
             }

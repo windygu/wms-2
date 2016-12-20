@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new PermissionState ();
 				(state as PermissionState).PermissionId = id;
 			}
-            if (ReadOnlyProxyGenerator != null)
+            if (ReadOnlyProxyGenerator != null && state != null)
             {
                 return ReadOnlyProxyGenerator.CreateProxy<IPermissionState>(state, new Type[] {  }, _readOnlyPropertyNames);
             }

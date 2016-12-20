@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.NHibernate
                 state = new UserRoleState();
                 (state as UserRoleState).UserRoleId = id;
             }
-            if (ReadOnlyProxyGenerator != null)
+            if (ReadOnlyProxyGenerator != null && state != null)
             {
                 return ReadOnlyProxyGenerator.CreateProxy<IUserRoleState>(state, new Type[] {  }, _readOnlyPropertyNames);
             }

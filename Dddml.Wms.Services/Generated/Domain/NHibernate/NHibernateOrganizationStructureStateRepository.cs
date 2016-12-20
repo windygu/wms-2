@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new OrganizationStructureState ();
 				(state as OrganizationStructureState).Id = id;
 			}
-            if (ReadOnlyProxyGenerator != null)
+            if (ReadOnlyProxyGenerator != null && state != null)
             {
                 return ReadOnlyProxyGenerator.CreateProxy<IOrganizationStructureState>(state, new Type[] {  }, _readOnlyPropertyNames);
             }

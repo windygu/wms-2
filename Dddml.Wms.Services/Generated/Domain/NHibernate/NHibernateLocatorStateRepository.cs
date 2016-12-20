@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new LocatorState ();
 				(state as LocatorState).LocatorId = id;
 			}
-            if (ReadOnlyProxyGenerator != null)
+            if (ReadOnlyProxyGenerator != null && state != null)
             {
                 return ReadOnlyProxyGenerator.CreateProxy<ILocatorState>(state, new Type[] {  }, _readOnlyPropertyNames);
             }

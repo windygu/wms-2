@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new AudienceState ();
 				(state as AudienceState).ClientId = id;
 			}
-            if (ReadOnlyProxyGenerator != null)
+            if (ReadOnlyProxyGenerator != null && state != null)
             {
                 return ReadOnlyProxyGenerator.CreateProxy<IAudienceState>(state, new Type[] {  }, _readOnlyPropertyNames);
             }

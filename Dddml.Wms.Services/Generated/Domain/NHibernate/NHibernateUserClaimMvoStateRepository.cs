@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new UserClaimMvoState ();
 				(state as UserClaimMvoState).UserClaimId = id;
 			}
-            if (ReadOnlyProxyGenerator != null)
+            if (ReadOnlyProxyGenerator != null && state != null)
             {
                 return ReadOnlyProxyGenerator.CreateProxy<IUserClaimMvoState>(state, new Type[] {  }, _readOnlyPropertyNames);
             }

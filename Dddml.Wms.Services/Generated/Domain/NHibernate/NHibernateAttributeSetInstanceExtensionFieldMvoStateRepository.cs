@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.NHibernate
 				state = new AttributeSetInstanceExtensionFieldMvoState ();
 				(state as AttributeSetInstanceExtensionFieldMvoState).AttributeSetInstanceExtensionFieldId = id;
 			}
-            if (ReadOnlyProxyGenerator != null)
+            if (ReadOnlyProxyGenerator != null && state != null)
             {
                 return ReadOnlyProxyGenerator.CreateProxy<IAttributeSetInstanceExtensionFieldMvoState>(state, new Type[] {  }, _readOnlyPropertyNames);
             }
