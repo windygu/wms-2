@@ -81,10 +81,15 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeSetInstanceExtensionFieldState Get(string index)
 		{
-			return Get(index, false);
+			return Get(index, false, false);
 		}
 
         public virtual IAttributeSetInstanceExtensionFieldState Get(string index, bool forCreation)
+        {
+			return Get(index, forCreation, false);
+        }
+
+        public virtual IAttributeSetInstanceExtensionFieldState Get(string index, bool forCreation, bool nullAllowed)
         {
             AttributeSetInstanceExtensionFieldId globalId = new AttributeSetInstanceExtensionFieldId(_attributeSetInstanceExtensionFieldGroupState.Id, index);
             if (_loadedAttributeSetInstanceExtensionFieldStates.ContainsKey(globalId)) {
@@ -99,8 +104,11 @@ namespace Dddml.Wms.Domain
             }
             else
             {
-                var state = AttributeSetInstanceExtensionFieldStateDao.Get(globalId);
-                _loadedAttributeSetInstanceExtensionFieldStates.Add(globalId, state);
+                var state = AttributeSetInstanceExtensionFieldStateDao.Get(globalId, nullAllowed);
+                if (state != null)
+                {
+                    _loadedAttributeSetInstanceExtensionFieldStates.Add(globalId, state);
+                }
                 return state;
             }
         }

@@ -11,11 +11,14 @@ using NodaMoney;
 
 namespace Dddml.Wms.Domain
 {
-	public interface IInOutLineStateDao
-	{	
-		IInOutLineState Get (InOutLineId id);
+    public interface IInOutLineStateDao
+    {
 
-		void Save (IInOutLineState state);
+        IInOutLineState Get(InOutLineId id);
+
+        IInOutLineState Get(InOutLineId id, bool nullAllowed);
+
+        void Save (IInOutLineState state);
 
         IEnumerable<IInOutLineState> FindByInOutDocumentNumber(string inOutDocumentNumber);
 

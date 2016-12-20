@@ -17,6 +17,8 @@ namespace Dddml.Wms.Domain
         IAttributeSetInstanceExtensionFieldState Get(string index);
 
         IAttributeSetInstanceExtensionFieldState Get(string index, bool forCreation);
+
+        IAttributeSetInstanceExtensionFieldState Get(string index, bool forCreation, bool nullAllowed);
         
         void Remove(IAttributeSetInstanceExtensionFieldState state);
 

@@ -81,10 +81,15 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserRoleState Get(string roleId)
 		{
-			return Get(roleId, false);
+			return Get(roleId, false, false);
 		}
 
         public virtual IUserRoleState Get(string roleId, bool forCreation)
+        {
+			return Get(roleId, forCreation, false);
+        }
+
+        public virtual IUserRoleState Get(string roleId, bool forCreation, bool nullAllowed)
         {
             UserRoleId globalId = new UserRoleId(_userState.UserId, roleId);
             if (_loadedUserRoleStates.ContainsKey(globalId)) {
@@ -99,8 +104,11 @@ namespace Dddml.Wms.Domain
             }
             else
             {
-                var state = UserRoleStateDao.Get(globalId);
-                _loadedUserRoleStates.Add(globalId, state);
+                var state = UserRoleStateDao.Get(globalId, nullAllowed);
+                if (state != null)
+                {
+                    _loadedUserRoleStates.Add(globalId, state);
+                }
                 return state;
             }
         }

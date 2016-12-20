@@ -81,10 +81,15 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserPermissionState Get(string permissionId)
 		{
-			return Get(permissionId, false);
+			return Get(permissionId, false, false);
 		}
 
         public virtual IUserPermissionState Get(string permissionId, bool forCreation)
+        {
+			return Get(permissionId, forCreation, false);
+        }
+
+        public virtual IUserPermissionState Get(string permissionId, bool forCreation, bool nullAllowed)
         {
             UserPermissionId globalId = new UserPermissionId(_userState.UserId, permissionId);
             if (_loadedUserPermissionStates.ContainsKey(globalId)) {
@@ -99,8 +104,11 @@ namespace Dddml.Wms.Domain
             }
             else
             {
-                var state = UserPermissionStateDao.Get(globalId);
-                _loadedUserPermissionStates.Add(globalId, state);
+                var state = UserPermissionStateDao.Get(globalId, nullAllowed);
+                if (state != null)
+                {
+                    _loadedUserPermissionStates.Add(globalId, state);
+                }
                 return state;
             }
         }

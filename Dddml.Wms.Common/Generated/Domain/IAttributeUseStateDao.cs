@@ -10,11 +10,14 @@ using Dddml.Wms.Domain;
 
 namespace Dddml.Wms.Domain
 {
-	public interface IAttributeUseStateDao
-	{	
-		IAttributeUseState Get (AttributeSetAttributeUseId id);
+    public interface IAttributeUseStateDao
+    {
 
-		void Save (IAttributeUseState state);
+        IAttributeUseState Get(AttributeSetAttributeUseId id);
+
+        IAttributeUseState Get(AttributeSetAttributeUseId id, bool nullAllowed);
+
+        void Save (IAttributeUseState state);
 
         IEnumerable<IAttributeUseState> FindByAttributeSetId(string attributeSetId);
 

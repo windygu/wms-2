@@ -324,9 +324,9 @@ namespace Dddml.Wms.Domain
 
 		#region IActive implementation
 
-		bool IActive.Active
+		bool IActive.IsActive()
 		{
-            get { return (_state as IActive).Active; }
+            return (_state as IActive).IsActive();
 		}
 
 		#endregion
@@ -374,7 +374,7 @@ namespace Dddml.Wms.Domain
 
 		#region IVersioned implementation
 
-		long IVersioned<long>.Version
+		long IEntityVersioned<long>.EntityVersion
 		{
             get { return (_state as IAttributeValueStateProperties).Version; }
 		}
@@ -383,7 +383,7 @@ namespace Dddml.Wms.Domain
 
         bool IAttributeValueState.IsUnsaved
         {
-            get { return ((IVersioned<long>)this).Version == AttributeValueState.VersionZero; }
+            get { return this.Version == AttributeValueState.VersionZero; }
         }
 
 

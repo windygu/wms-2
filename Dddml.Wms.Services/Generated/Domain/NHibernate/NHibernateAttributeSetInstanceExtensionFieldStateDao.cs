@@ -31,12 +31,17 @@ namespace Dddml.Wms.Domain.NHibernate
 		{
 		}
  
-
         [Transaction(ReadOnly = true)]
         public IAttributeSetInstanceExtensionFieldState Get(AttributeSetInstanceExtensionFieldId id)
         {
+            return Get(id, false);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IAttributeSetInstanceExtensionFieldState Get(AttributeSetInstanceExtensionFieldId id, bool nullAllowed)
+        {
             IAttributeSetInstanceExtensionFieldState state = CurrentSession.Get<AttributeSetInstanceExtensionFieldState>(id);
-            if (state == null)
+            if (!nullAllowed && state == null)
             {
                 state = new AttributeSetInstanceExtensionFieldState();
                 (state as AttributeSetInstanceExtensionFieldState).AttributeSetInstanceExtensionFieldId = id;

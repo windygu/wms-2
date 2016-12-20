@@ -496,9 +496,9 @@ namespace Dddml.Wms.Domain
 
 		#region IActive implementation
 
-		bool IActive.Active
+		bool IActive.IsActive()
 		{
-            get { return (_state as IActive).Active; }
+            return (_state as IActive).IsActive();
 		}
 
 		#endregion
@@ -546,7 +546,7 @@ namespace Dddml.Wms.Domain
 
 		#region IVersioned implementation
 
-		long IVersioned<long>.Version
+		long IAggregateVersioned<long>.AggregateVersion
 		{
             get { return (_state as IAttributeStateProperties).Version; }
 		}
@@ -555,7 +555,7 @@ namespace Dddml.Wms.Domain
 
         bool IAttributeState.IsUnsaved
         {
-            get { return ((IVersioned<long>)this).Version == AttributeState.VersionZero; }
+            get { return this.Version == AttributeState.VersionZero; }
         }
 
         public virtual IAttributeValueStateDto[] AttributeValues
@@ -678,6 +678,11 @@ namespace Dddml.Wms.Domain
             }
 
             public IAttributeValueState Get(string value, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IAttributeValueState Get(string value, bool forCreation, bool nullAllowed)
             {
                 throw new NotSupportedException();
             }

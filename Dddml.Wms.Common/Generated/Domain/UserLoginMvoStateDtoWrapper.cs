@@ -743,9 +743,9 @@ namespace Dddml.Wms.Domain
 
 		#region IActive implementation
 
-		bool IActive.Active
+		bool IActive.IsActive()
 		{
-            get { return (_state as IActive).Active; }
+            return (_state as IActive).IsActive();
 		}
 
 		#endregion
@@ -793,7 +793,7 @@ namespace Dddml.Wms.Domain
 
 		#region IVersioned implementation
 
-		long IVersioned<long>.Version
+		long IAggregateVersioned<long>.AggregateVersion
 		{
             get { return (_state as IUserLoginMvoStateProperties).UserVersion; }
 		}
@@ -802,7 +802,7 @@ namespace Dddml.Wms.Domain
 
         bool IUserLoginMvoState.IsUnsaved
         {
-            get { return ((IVersioned<long>)this).Version == UserLoginMvoState.VersionZero; }
+            get { return this.UserVersion == UserLoginMvoState.VersionZero; }
         }
 
 

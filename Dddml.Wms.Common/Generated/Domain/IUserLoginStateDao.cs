@@ -10,11 +10,14 @@ using Dddml.Wms.Domain;
 
 namespace Dddml.Wms.Domain
 {
-	public interface IUserLoginStateDao
-	{	
-		IUserLoginState Get (UserLoginId id);
+    public interface IUserLoginStateDao
+    {
 
-		void Save (IUserLoginState state);
+        IUserLoginState Get(UserLoginId id);
+
+        IUserLoginState Get(UserLoginId id, bool nullAllowed);
+
+        void Save (IUserLoginState state);
 
         IEnumerable<IUserLoginState> FindByUserId(string userId);
 

@@ -10,11 +10,14 @@ using Dddml.Wms.Domain;
 
 namespace Dddml.Wms.Domain
 {
-	public interface IAttributeSetInstanceExtensionFieldStateDao
-	{	
-		IAttributeSetInstanceExtensionFieldState Get (AttributeSetInstanceExtensionFieldId id);
+    public interface IAttributeSetInstanceExtensionFieldStateDao
+    {
 
-		void Save (IAttributeSetInstanceExtensionFieldState state);
+        IAttributeSetInstanceExtensionFieldState Get(AttributeSetInstanceExtensionFieldId id);
+
+        IAttributeSetInstanceExtensionFieldState Get(AttributeSetInstanceExtensionFieldId id, bool nullAllowed);
+
+        void Save (IAttributeSetInstanceExtensionFieldState state);
 
         IEnumerable<IAttributeSetInstanceExtensionFieldState> FindByGroupId(string groupId);
 

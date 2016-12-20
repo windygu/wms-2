@@ -17,6 +17,8 @@ namespace Dddml.Wms.Domain
         IUserPermissionState Get(string permissionId);
 
         IUserPermissionState Get(string permissionId, bool forCreation);
+
+        IUserPermissionState Get(string permissionId, bool forCreation, bool nullAllowed);
         
         void Remove(IUserPermissionState state);
 

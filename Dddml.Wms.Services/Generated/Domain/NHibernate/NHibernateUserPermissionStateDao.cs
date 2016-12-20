@@ -31,12 +31,17 @@ namespace Dddml.Wms.Domain.NHibernate
 		{
 		}
  
-
         [Transaction(ReadOnly = true)]
         public IUserPermissionState Get(UserPermissionId id)
         {
+            return Get(id, false);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IUserPermissionState Get(UserPermissionId id, bool nullAllowed)
+        {
             IUserPermissionState state = CurrentSession.Get<UserPermissionState>(id);
-            if (state == null)
+            if (!nullAllowed && state == null)
             {
                 state = new UserPermissionState();
                 (state as UserPermissionState).UserPermissionId = id;

@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain
 		IUpdated<string>, 
 		IDeleted, 
 		IActive, 
-		IVersioned<long>,
+		IEntityVersioned<long>,
 		IState
 	{
 

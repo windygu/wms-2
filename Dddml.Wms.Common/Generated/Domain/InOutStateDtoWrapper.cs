@@ -1205,9 +1205,9 @@ namespace Dddml.Wms.Domain
 
 		#region IActive implementation
 
-		bool IActive.Active
+		bool IActive.IsActive()
 		{
-            get { return (_state as IActive).Active; }
+            return (_state as IActive).IsActive();
 		}
 
 		#endregion
@@ -1255,7 +1255,7 @@ namespace Dddml.Wms.Domain
 
 		#region IVersioned implementation
 
-		long IVersioned<long>.Version
+		long IAggregateVersioned<long>.AggregateVersion
 		{
             get { return (_state as IInOutStateProperties).Version; }
 		}
@@ -1264,7 +1264,7 @@ namespace Dddml.Wms.Domain
 
         bool IInOutState.IsUnsaved
         {
-            get { return ((IVersioned<long>)this).Version == InOutState.VersionZero; }
+            get { return this.Version == InOutState.VersionZero; }
         }
 
         public virtual IInOutLineStateDto[] InOutLines
@@ -1387,6 +1387,11 @@ namespace Dddml.Wms.Domain
             }
 
             public IInOutLineState Get(SkuId skuId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IInOutLineState Get(SkuId skuId, bool forCreation, bool nullAllowed)
             {
                 throw new NotSupportedException();
             }

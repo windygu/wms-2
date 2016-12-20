@@ -530,9 +530,9 @@ namespace Dddml.Wms.Domain
 
 		#region IActive implementation
 
-		bool IActive.Active
+		bool IActive.IsActive()
 		{
-            get { return (_state as IActive).Active; }
+            return (_state as IActive).IsActive();
 		}
 
 		#endregion
@@ -580,7 +580,7 @@ namespace Dddml.Wms.Domain
 
 		#region IVersioned implementation
 
-		long IVersioned<long>.Version
+		long IAggregateVersioned<long>.AggregateVersion
 		{
             get { return (_state as IUserStateProperties).Version; }
 		}
@@ -589,7 +589,7 @@ namespace Dddml.Wms.Domain
 
         bool IUserState.IsUnsaved
         {
-            get { return ((IVersioned<long>)this).Version == UserState.VersionZero; }
+            get { return this.Version == UserState.VersionZero; }
         }
 
         public virtual IUserRoleStateDto[] UserRoles
@@ -854,6 +854,11 @@ namespace Dddml.Wms.Domain
                 throw new NotSupportedException();
             }
 
+            public IUserRoleState Get(string roleId, bool forCreation, bool nullAllowed)
+            {
+                throw new NotSupportedException();
+            }
+
             public void Remove(IUserRoleState state)
             {
                 throw new NotSupportedException();
@@ -906,6 +911,11 @@ namespace Dddml.Wms.Domain
             }
 
             public IUserClaimState Get(int claimId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IUserClaimState Get(int claimId, bool forCreation, bool nullAllowed)
             {
                 throw new NotSupportedException();
             }
@@ -966,6 +976,11 @@ namespace Dddml.Wms.Domain
                 throw new NotSupportedException();
             }
 
+            public IUserPermissionState Get(string permissionId, bool forCreation, bool nullAllowed)
+            {
+                throw new NotSupportedException();
+            }
+
             public void Remove(IUserPermissionState state)
             {
                 throw new NotSupportedException();
@@ -1018,6 +1033,11 @@ namespace Dddml.Wms.Domain
             }
 
             public IUserLoginState Get(LoginKey loginKey, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IUserLoginState Get(LoginKey loginKey, bool forCreation, bool nullAllowed)
             {
                 throw new NotSupportedException();
             }

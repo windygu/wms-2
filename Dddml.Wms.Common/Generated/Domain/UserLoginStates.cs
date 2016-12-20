@@ -81,10 +81,15 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserLoginState Get(LoginKey loginKey)
 		{
-			return Get(loginKey, false);
+			return Get(loginKey, false, false);
 		}
 
         public virtual IUserLoginState Get(LoginKey loginKey, bool forCreation)
+        {
+			return Get(loginKey, forCreation, false);
+        }
+
+        public virtual IUserLoginState Get(LoginKey loginKey, bool forCreation, bool nullAllowed)
         {
             UserLoginId globalId = new UserLoginId(_userState.UserId, loginKey);
             if (_loadedUserLoginStates.ContainsKey(globalId)) {
@@ -99,8 +104,11 @@ namespace Dddml.Wms.Domain
             }
             else
             {
-                var state = UserLoginStateDao.Get(globalId);
-                _loadedUserLoginStates.Add(globalId, state);
+                var state = UserLoginStateDao.Get(globalId, nullAllowed);
+                if (state != null)
+                {
+                    _loadedUserLoginStates.Add(globalId, state);
+                }
                 return state;
             }
         }

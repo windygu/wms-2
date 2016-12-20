@@ -10,11 +10,14 @@ using Dddml.Wms.Domain;
 
 namespace Dddml.Wms.Domain
 {
-	public interface IUserPermissionStateDao
-	{	
-		IUserPermissionState Get (UserPermissionId id);
+    public interface IUserPermissionStateDao
+    {
 
-		void Save (IUserPermissionState state);
+        IUserPermissionState Get(UserPermissionId id);
+
+        IUserPermissionState Get(UserPermissionId id, bool nullAllowed);
+
+        void Save (IUserPermissionState state);
 
         IEnumerable<IUserPermissionState> FindByUserId(string userId);
 

@@ -350,9 +350,9 @@ namespace Dddml.Wms.Domain
 
 		#region IActive implementation
 
-		bool IActive.Active
+		bool IActive.IsActive()
 		{
-            get { return (_state as IActive).Active; }
+            return (_state as IActive).IsActive();
 		}
 
 		#endregion
@@ -400,7 +400,7 @@ namespace Dddml.Wms.Domain
 
 		#region IVersioned implementation
 
-		long IVersioned<long>.Version
+		long IAggregateVersioned<long>.AggregateVersion
 		{
             get { return (_state as IAttributeSetInstanceExtensionFieldGroupStateProperties).Version; }
 		}
@@ -409,7 +409,7 @@ namespace Dddml.Wms.Domain
 
         bool IAttributeSetInstanceExtensionFieldGroupState.IsUnsaved
         {
-            get { return ((IVersioned<long>)this).Version == AttributeSetInstanceExtensionFieldGroupState.VersionZero; }
+            get { return this.Version == AttributeSetInstanceExtensionFieldGroupState.VersionZero; }
         }
 
         public virtual IAttributeSetInstanceExtensionFieldStateDto[] Fields
@@ -532,6 +532,11 @@ namespace Dddml.Wms.Domain
             }
 
             public IAttributeSetInstanceExtensionFieldState Get(string index, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IAttributeSetInstanceExtensionFieldState Get(string index, bool forCreation, bool nullAllowed)
             {
                 throw new NotSupportedException();
             }

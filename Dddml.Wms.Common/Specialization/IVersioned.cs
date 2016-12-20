@@ -2,11 +2,14 @@
 
 namespace Dddml.Wms.Specialization
 {
-	public interface IVersioned<T>
-	{
-		T Version { get; }
+    public interface IAggregateVersioned<T>
+    {
+        T AggregateVersion { get; }
+    }
 
-		//T VersionZero { get; }
-	}
+    public interface IEntityVersioned<T>
+    {
+        T EntityVersion { get; }
+    }
 }
 

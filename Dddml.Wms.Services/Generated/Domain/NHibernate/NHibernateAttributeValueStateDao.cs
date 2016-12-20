@@ -31,12 +31,17 @@ namespace Dddml.Wms.Domain.NHibernate
 		{
 		}
  
-
         [Transaction(ReadOnly = true)]
         public IAttributeValueState Get(AttributeValueId id)
         {
+            return Get(id, false);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IAttributeValueState Get(AttributeValueId id, bool nullAllowed)
+        {
             IAttributeValueState state = CurrentSession.Get<AttributeValueState>(id);
-            if (state == null)
+            if (!nullAllowed && state == null)
             {
                 state = new AttributeValueState();
                 (state as AttributeValueState).AttributeValueId = id;

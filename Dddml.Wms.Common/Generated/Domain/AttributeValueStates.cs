@@ -81,10 +81,15 @@ namespace Dddml.Wms.Domain
 
         public virtual IAttributeValueState Get(string value)
 		{
-			return Get(value, false);
+			return Get(value, false, false);
 		}
 
         public virtual IAttributeValueState Get(string value, bool forCreation)
+        {
+			return Get(value, forCreation, false);
+        }
+
+        public virtual IAttributeValueState Get(string value, bool forCreation, bool nullAllowed)
         {
             AttributeValueId globalId = new AttributeValueId(_attributeState.AttributeId, value);
             if (_loadedAttributeValueStates.ContainsKey(globalId)) {
@@ -99,8 +104,11 @@ namespace Dddml.Wms.Domain
             }
             else
             {
-                var state = AttributeValueStateDao.Get(globalId);
-                _loadedAttributeValueStates.Add(globalId, state);
+                var state = AttributeValueStateDao.Get(globalId, nullAllowed);
+                if (state != null)
+                {
+                    _loadedAttributeValueStates.Add(globalId, state);
+                }
                 return state;
             }
         }

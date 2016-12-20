@@ -31,12 +31,17 @@ namespace Dddml.Wms.Domain.NHibernate
 		{
 		}
  
-
         [Transaction(ReadOnly = true)]
         public IUserRoleState Get(UserRoleId id)
         {
+            return Get(id, false);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IUserRoleState Get(UserRoleId id, bool nullAllowed)
+        {
             IUserRoleState state = CurrentSession.Get<UserRoleState>(id);
-            if (state == null)
+            if (!nullAllowed && state == null)
             {
                 state = new UserRoleState();
                 (state as UserRoleState).UserRoleId = id;

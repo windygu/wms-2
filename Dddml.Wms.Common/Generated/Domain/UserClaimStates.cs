@@ -81,10 +81,15 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserClaimState Get(int claimId)
 		{
-			return Get(claimId, false);
+			return Get(claimId, false, false);
 		}
 
         public virtual IUserClaimState Get(int claimId, bool forCreation)
+        {
+			return Get(claimId, forCreation, false);
+        }
+
+        public virtual IUserClaimState Get(int claimId, bool forCreation, bool nullAllowed)
         {
             UserClaimId globalId = new UserClaimId(_userState.UserId, claimId);
             if (_loadedUserClaimStates.ContainsKey(globalId)) {
@@ -99,8 +104,11 @@ namespace Dddml.Wms.Domain
             }
             else
             {
-                var state = UserClaimStateDao.Get(globalId);
-                _loadedUserClaimStates.Add(globalId, state);
+                var state = UserClaimStateDao.Get(globalId, nullAllowed);
+                if (state != null)
+                {
+                    _loadedUserClaimStates.Add(globalId, state);
+                }
                 return state;
             }
         }
