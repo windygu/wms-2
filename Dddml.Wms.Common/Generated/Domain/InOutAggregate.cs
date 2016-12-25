@@ -142,7 +142,7 @@ namespace Dddml.Wms.Domain
             e.IsDropShip = c.IsDropShip;
             e.DropShipBusinessPartnerId = c.DropShipBusinessPartnerId;
             e.Active = c.Active;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -236,7 +236,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyDropShipBusinessPartnerIdRemoved = c.IsPropertyDropShipBusinessPartnerIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -261,7 +261,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new InOutStateEventId(c.DocumentNumber, c.Version);
             IInOutStateDeleted e = NewInOutStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

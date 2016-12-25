@@ -23,9 +23,15 @@ public class HibernateUserPermissionStateDao implements UserPermissionStateDao
     @Override
     public UserPermissionState get(UserPermissionId id)
     {
+        return get(id, false);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public UserPermissionState get(UserPermissionId id, boolean nullAllowed)
+    {
         UserPermissionState state = (UserPermissionState) getCurrentSession().get(AbstractUserPermissionState.SimpleUserPermissionState.class, id);
-        if (state == null)
-        {
+        if (!nullAllowed && state == null) {
             state = new AbstractUserPermissionState.SimpleUserPermissionState();
             state.setUserPermissionId(id);
         }

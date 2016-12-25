@@ -6,6 +6,8 @@ public interface AttributeValueStateDao
 {
     AttributeValueState get(AttributeValueId id);
 
+    AttributeValueState get(AttributeValueId id, boolean nullAllowed);
+
     void save(AttributeValueState state);
 
     Iterable<AttributeValueState> findByAttributeId(String attributeId);

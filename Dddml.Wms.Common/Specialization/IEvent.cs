@@ -4,7 +4,7 @@ namespace Dddml.Wms.Specialization
 {
 	public interface IEvent
 	{
-        string CommandId { get; }
+        string CommandId { get; set; }
     }
 }
 

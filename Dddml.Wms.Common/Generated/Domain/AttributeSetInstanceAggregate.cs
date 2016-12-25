@@ -557,7 +557,7 @@ namespace Dddml.Wms.Domain
             e._F_C20_49_ = c._F_C20_49_;
             e._F_C50_49_ = c._F_C50_49_;
             e.Active = c.Active;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

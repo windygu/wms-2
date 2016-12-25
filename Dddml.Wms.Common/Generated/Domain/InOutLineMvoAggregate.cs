@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain
             e.InOutUpdatedAt = c.InOutUpdatedAt;
             e.InOutActive = c.InOutActive;
             e.InOutDeleted = c.InOutDeleted;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -300,7 +300,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyInOutActiveRemoved = c.IsPropertyInOutActiveRemoved;
             e.IsPropertyInOutDeletedRemoved = c.IsPropertyInOutDeletedRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -317,7 +317,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new InOutLineMvoStateEventId(c.InOutLineId, c.InOutVersion);
             IInOutLineMvoStateDeleted e = NewInOutLineMvoStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

@@ -23,9 +23,15 @@ public class HibernateUserClaimStateDao implements UserClaimStateDao
     @Override
     public UserClaimState get(UserClaimId id)
     {
+        return get(id, false);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public UserClaimState get(UserClaimId id, boolean nullAllowed)
+    {
         UserClaimState state = (UserClaimState) getCurrentSession().get(AbstractUserClaimState.SimpleUserClaimState.class, id);
-        if (state == null)
-        {
+        if (!nullAllowed && state == null) {
             state = new AbstractUserClaimState.SimpleUserClaimState();
             state.setUserClaimId(id);
         }

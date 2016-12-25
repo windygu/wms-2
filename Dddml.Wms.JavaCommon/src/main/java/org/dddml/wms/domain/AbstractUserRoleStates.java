@@ -55,20 +55,29 @@ public abstract class AbstractUserRoleStates implements UserRoleStates
         return getInnerIterable().iterator();
     }
 
-    public UserRoleState get(String roleId)
-    {
+    public UserRoleState get(String roleId) {
+        return get(roleId, false, false);
+    }
+
+    public UserRoleState get(String roleId, boolean forCreation) {
+        return get(roleId, forCreation, false);
+    }
+
+    public UserRoleState get(String roleId, boolean forCreation, boolean nullAllowed) {
         UserRoleId globalId = new UserRoleId(userState.getUserId(), roleId);
         if (loadedUserRoleStates.containsKey(globalId)) {
             return loadedUserRoleStates.get(globalId);
         }
-        if (getForReapplying()) {
-            UserRoleState state = new AbstractUserRoleState.SimpleUserRoleState(true);
+        if (forCreation || getForReapplying()) {
+            UserRoleState state = new AbstractUserRoleState.SimpleUserRoleState(getForReapplying());
             state.setUserRoleId(globalId);
             loadedUserRoleStates.put(globalId, state);
             return state;
         } else {
-            UserRoleState state = getUserRoleStateDao().get(globalId);
-            loadedUserRoleStates.put(globalId, state);
+            UserRoleState state = getUserRoleStateDao().get(globalId, nullAllowed);
+            if (state != null) {
+                loadedUserRoleStates.put(globalId, state);
+            }
             return state;
         }
 

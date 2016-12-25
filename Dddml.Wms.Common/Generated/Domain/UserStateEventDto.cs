@@ -71,8 +71,11 @@ namespace Dddml.Wms.Domain
 
         public virtual string CommandId { get; set; }
 
+        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
+
 		UserStateEventId IGlobalIdentity<UserStateEventId>.GlobalId {
-			get {
+			get 
+			{
 				return this.StateEventId.ToUserStateEventId();
 			}
 		}

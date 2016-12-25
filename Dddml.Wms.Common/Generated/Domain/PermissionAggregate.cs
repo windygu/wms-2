@@ -110,7 +110,7 @@ namespace Dddml.Wms.Domain
             e.ParentPermissionId = c.ParentPermissionId;
             e.Description = c.Description;
             e.Active = c.Active;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -135,7 +135,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new PermissionStateEventId(c.PermissionId, c.Version);
             IPermissionStateDeleted e = NewPermissionStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

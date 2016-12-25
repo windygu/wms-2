@@ -23,9 +23,15 @@ public class HibernateAttributeValueStateDao implements AttributeValueStateDao
     @Override
     public AttributeValueState get(AttributeValueId id)
     {
+        return get(id, false);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public AttributeValueState get(AttributeValueId id, boolean nullAllowed)
+    {
         AttributeValueState state = (AttributeValueState) getCurrentSession().get(AbstractAttributeValueState.SimpleAttributeValueState.class, id);
-        if (state == null)
-        {
+        if (!nullAllowed && state == null) {
             state = new AbstractAttributeValueState.SimpleAttributeValueState();
             state.setAttributeValueId(id);
         }

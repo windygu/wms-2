@@ -110,7 +110,7 @@ namespace Dddml.Wms.Domain
             e.Description = c.Description;
             e.IsInTransit = c.IsInTransit;
             e.Active = c.Active;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -135,7 +135,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyIsInTransitRemoved = c.IsPropertyIsInTransitRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new WarehouseStateEventId(c.WarehouseId, c.Version);
             IWarehouseStateDeleted e = NewWarehouseStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

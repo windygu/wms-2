@@ -7,6 +7,8 @@ public interface InOutLineStateDao
 {
     InOutLineState get(InOutLineId id);
 
+    InOutLineState get(InOutLineId id, boolean nullAllowed);
+
     void save(InOutLineState state);
 
     Iterable<InOutLineState> findByInOutDocumentNumber(String inOutDocumentNumber);

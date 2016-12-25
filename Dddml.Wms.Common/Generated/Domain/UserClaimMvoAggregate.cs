@@ -127,7 +127,7 @@ namespace Dddml.Wms.Domain
             e.UserUpdatedAt = c.UserUpdatedAt;
             e.UserActive = c.UserActive;
             e.UserDeleted = c.UserDeleted;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyUserActiveRemoved = c.IsPropertyUserActiveRemoved;
             e.IsPropertyUserDeletedRemoved = c.IsPropertyUserDeletedRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -203,7 +203,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new UserClaimMvoStateEventId(c.UserClaimId, c.UserVersion);
             IUserClaimMvoStateDeleted e = NewUserClaimMvoStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

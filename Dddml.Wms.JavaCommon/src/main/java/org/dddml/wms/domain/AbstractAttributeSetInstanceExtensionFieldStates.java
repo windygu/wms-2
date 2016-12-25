@@ -55,20 +55,29 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStates implement
         return getInnerIterable().iterator();
     }
 
-    public AttributeSetInstanceExtensionFieldState get(String index)
-    {
+    public AttributeSetInstanceExtensionFieldState get(String index) {
+        return get(index, false, false);
+    }
+
+    public AttributeSetInstanceExtensionFieldState get(String index, boolean forCreation) {
+        return get(index, forCreation, false);
+    }
+
+    public AttributeSetInstanceExtensionFieldState get(String index, boolean forCreation, boolean nullAllowed) {
         AttributeSetInstanceExtensionFieldId globalId = new AttributeSetInstanceExtensionFieldId(attributeSetInstanceExtensionFieldGroupState.getId(), index);
         if (loadedAttributeSetInstanceExtensionFieldStates.containsKey(globalId)) {
             return loadedAttributeSetInstanceExtensionFieldStates.get(globalId);
         }
-        if (getForReapplying()) {
-            AttributeSetInstanceExtensionFieldState state = new AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState(true);
+        if (forCreation || getForReapplying()) {
+            AttributeSetInstanceExtensionFieldState state = new AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState(getForReapplying());
             state.setAttributeSetInstanceExtensionFieldId(globalId);
             loadedAttributeSetInstanceExtensionFieldStates.put(globalId, state);
             return state;
         } else {
-            AttributeSetInstanceExtensionFieldState state = getAttributeSetInstanceExtensionFieldStateDao().get(globalId);
-            loadedAttributeSetInstanceExtensionFieldStates.put(globalId, state);
+            AttributeSetInstanceExtensionFieldState state = getAttributeSetInstanceExtensionFieldStateDao().get(globalId, nullAllowed);
+            if (state != null) {
+                loadedAttributeSetInstanceExtensionFieldStates.put(globalId, state);
+            }
             return state;
         }
 

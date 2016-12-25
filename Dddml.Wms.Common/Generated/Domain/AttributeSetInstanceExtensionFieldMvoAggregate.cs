@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain
             e.AttrSetInstEFGroupUpdatedAt = c.AttrSetInstEFGroupUpdatedAt;
             e.AttrSetInstEFGroupActive = c.AttrSetInstEFGroupActive;
             e.AttrSetInstEFGroupDeleted = c.AttrSetInstEFGroupDeleted;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -177,7 +177,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyAttrSetInstEFGroupActiveRemoved = c.IsPropertyAttrSetInstEFGroupActiveRemoved;
             e.IsPropertyAttrSetInstEFGroupDeletedRemoved = c.IsPropertyAttrSetInstEFGroupDeletedRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -194,7 +194,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventId(c.AttributeSetInstanceExtensionFieldId, c.AttrSetInstEFGroupVersion);
             IAttributeSetInstanceExtensionFieldMvoStateDeleted e = NewAttributeSetInstanceExtensionFieldMvoStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

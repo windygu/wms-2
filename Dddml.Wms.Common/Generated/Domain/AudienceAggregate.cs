@@ -109,7 +109,7 @@ namespace Dddml.Wms.Domain
             e.Name = c.Name;
             e.Base64Secret = c.Base64Secret;
             e.Active = c.Active;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyBase64SecretRemoved = c.IsPropertyBase64SecretRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -149,7 +149,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new AudienceStateEventId(c.ClientId, c.Version);
             IAudienceStateDeleted e = NewAudienceStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

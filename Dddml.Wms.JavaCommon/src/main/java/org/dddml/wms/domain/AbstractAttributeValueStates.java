@@ -55,20 +55,29 @@ public abstract class AbstractAttributeValueStates implements AttributeValueStat
         return getInnerIterable().iterator();
     }
 
-    public AttributeValueState get(String value)
-    {
+    public AttributeValueState get(String value) {
+        return get(value, false, false);
+    }
+
+    public AttributeValueState get(String value, boolean forCreation) {
+        return get(value, forCreation, false);
+    }
+
+    public AttributeValueState get(String value, boolean forCreation, boolean nullAllowed) {
         AttributeValueId globalId = new AttributeValueId(attributeState.getAttributeId(), value);
         if (loadedAttributeValueStates.containsKey(globalId)) {
             return loadedAttributeValueStates.get(globalId);
         }
-        if (getForReapplying()) {
-            AttributeValueState state = new AbstractAttributeValueState.SimpleAttributeValueState(true);
+        if (forCreation || getForReapplying()) {
+            AttributeValueState state = new AbstractAttributeValueState.SimpleAttributeValueState(getForReapplying());
             state.setAttributeValueId(globalId);
             loadedAttributeValueStates.put(globalId, state);
             return state;
         } else {
-            AttributeValueState state = getAttributeValueStateDao().get(globalId);
-            loadedAttributeValueStates.put(globalId, state);
+            AttributeValueState state = getAttributeValueStateDao().get(globalId, nullAllowed);
+            if (state != null) {
+                loadedAttributeValueStates.put(globalId, state);
+            }
             return state;
         }
 

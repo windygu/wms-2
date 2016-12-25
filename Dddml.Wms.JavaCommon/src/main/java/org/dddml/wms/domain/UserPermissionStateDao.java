@@ -6,6 +6,8 @@ public interface UserPermissionStateDao
 {
     UserPermissionState get(UserPermissionId id);
 
+    UserPermissionState get(UserPermissionId id, boolean nullAllowed);
+
     void save(UserPermissionState state);
 
     Iterable<UserPermissionState> findByUserId(String userId);

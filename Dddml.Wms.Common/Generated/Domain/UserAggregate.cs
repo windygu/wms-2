@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain
             e.TwoFactorEnabled = c.TwoFactorEnabled;
             e.SecurityStamp = c.SecurityStamp;
             e.Active = c.Active;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -191,7 +191,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertySecurityStampRemoved = c.IsPropertySecurityStampRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -240,7 +240,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new UserStateEventId(c.UserId, c.Version);
             IUserStateDeleted e = NewUserStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

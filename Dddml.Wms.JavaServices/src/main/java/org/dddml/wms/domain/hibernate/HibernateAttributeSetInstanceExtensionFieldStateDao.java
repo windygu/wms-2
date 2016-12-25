@@ -23,9 +23,15 @@ public class HibernateAttributeSetInstanceExtensionFieldStateDao implements Attr
     @Override
     public AttributeSetInstanceExtensionFieldState get(AttributeSetInstanceExtensionFieldId id)
     {
+        return get(id, false);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public AttributeSetInstanceExtensionFieldState get(AttributeSetInstanceExtensionFieldId id, boolean nullAllowed)
+    {
         AttributeSetInstanceExtensionFieldState state = (AttributeSetInstanceExtensionFieldState) getCurrentSession().get(AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState.class, id);
-        if (state == null)
-        {
+        if (!nullAllowed && state == null) {
             state = new AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState();
             state.setAttributeSetInstanceExtensionFieldId(id);
         }

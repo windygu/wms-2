@@ -6,6 +6,8 @@ public interface UserClaimStateDao
 {
     UserClaimState get(UserClaimId id);
 
+    UserClaimState get(UserClaimId id, boolean nullAllowed);
+
     void save(UserClaimState state);
 
     Iterable<UserClaimState> findByUserId(String userId);

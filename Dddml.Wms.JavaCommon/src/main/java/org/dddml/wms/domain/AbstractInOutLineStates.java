@@ -56,20 +56,29 @@ public abstract class AbstractInOutLineStates implements InOutLineStates
         return getInnerIterable().iterator();
     }
 
-    public InOutLineState get(SkuId skuId)
-    {
+    public InOutLineState get(SkuId skuId) {
+        return get(skuId, false, false);
+    }
+
+    public InOutLineState get(SkuId skuId, boolean forCreation) {
+        return get(skuId, forCreation, false);
+    }
+
+    public InOutLineState get(SkuId skuId, boolean forCreation, boolean nullAllowed) {
         InOutLineId globalId = new InOutLineId(inOutState.getDocumentNumber(), skuId);
         if (loadedInOutLineStates.containsKey(globalId)) {
             return loadedInOutLineStates.get(globalId);
         }
-        if (getForReapplying()) {
-            InOutLineState state = new AbstractInOutLineState.SimpleInOutLineState(true);
+        if (forCreation || getForReapplying()) {
+            InOutLineState state = new AbstractInOutLineState.SimpleInOutLineState(getForReapplying());
             state.setInOutLineId(globalId);
             loadedInOutLineStates.put(globalId, state);
             return state;
         } else {
-            InOutLineState state = getInOutLineStateDao().get(globalId);
-            loadedInOutLineStates.put(globalId, state);
+            InOutLineState state = getInOutLineStateDao().get(globalId, nullAllowed);
+            if (state != null) {
+                loadedInOutLineStates.put(globalId, state);
+            }
             return state;
         }
 

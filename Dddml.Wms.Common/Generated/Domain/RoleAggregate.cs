@@ -109,7 +109,7 @@ namespace Dddml.Wms.Domain
             e.Name = c.Name;
             e.Description = c.Description;
             e.Active = c.Active;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -149,7 +149,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new RoleStateEventId(c.RoleId, c.Version);
             IRoleStateDeleted e = NewRoleStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

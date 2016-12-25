@@ -55,20 +55,29 @@ public abstract class AbstractUserPermissionStates implements UserPermissionStat
         return getInnerIterable().iterator();
     }
 
-    public UserPermissionState get(String permissionId)
-    {
+    public UserPermissionState get(String permissionId) {
+        return get(permissionId, false, false);
+    }
+
+    public UserPermissionState get(String permissionId, boolean forCreation) {
+        return get(permissionId, forCreation, false);
+    }
+
+    public UserPermissionState get(String permissionId, boolean forCreation, boolean nullAllowed) {
         UserPermissionId globalId = new UserPermissionId(userState.getUserId(), permissionId);
         if (loadedUserPermissionStates.containsKey(globalId)) {
             return loadedUserPermissionStates.get(globalId);
         }
-        if (getForReapplying()) {
-            UserPermissionState state = new AbstractUserPermissionState.SimpleUserPermissionState(true);
+        if (forCreation || getForReapplying()) {
+            UserPermissionState state = new AbstractUserPermissionState.SimpleUserPermissionState(getForReapplying());
             state.setUserPermissionId(globalId);
             loadedUserPermissionStates.put(globalId, state);
             return state;
         } else {
-            UserPermissionState state = getUserPermissionStateDao().get(globalId);
-            loadedUserPermissionStates.put(globalId, state);
+            UserPermissionState state = getUserPermissionStateDao().get(globalId, nullAllowed);
+            if (state != null) {
+                loadedUserPermissionStates.put(globalId, state);
+            }
             return state;
         }
 

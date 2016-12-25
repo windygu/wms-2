@@ -55,20 +55,29 @@ public abstract class AbstractUserClaimStates implements UserClaimStates
         return getInnerIterable().iterator();
     }
 
-    public UserClaimState get(Integer claimId)
-    {
+    public UserClaimState get(Integer claimId) {
+        return get(claimId, false, false);
+    }
+
+    public UserClaimState get(Integer claimId, boolean forCreation) {
+        return get(claimId, forCreation, false);
+    }
+
+    public UserClaimState get(Integer claimId, boolean forCreation, boolean nullAllowed) {
         UserClaimId globalId = new UserClaimId(userState.getUserId(), claimId);
         if (loadedUserClaimStates.containsKey(globalId)) {
             return loadedUserClaimStates.get(globalId);
         }
-        if (getForReapplying()) {
-            UserClaimState state = new AbstractUserClaimState.SimpleUserClaimState(true);
+        if (forCreation || getForReapplying()) {
+            UserClaimState state = new AbstractUserClaimState.SimpleUserClaimState(getForReapplying());
             state.setUserClaimId(globalId);
             loadedUserClaimStates.put(globalId, state);
             return state;
         } else {
-            UserClaimState state = getUserClaimStateDao().get(globalId);
-            loadedUserClaimStates.put(globalId, state);
+            UserClaimState state = getUserClaimStateDao().get(globalId, nullAllowed);
+            if (state != null) {
+                loadedUserClaimStates.put(globalId, state);
+            }
             return state;
         }
 

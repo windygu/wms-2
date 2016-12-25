@@ -23,9 +23,15 @@ public class HibernateUserRoleStateDao implements UserRoleStateDao
     @Override
     public UserRoleState get(UserRoleId id)
     {
+        return get(id, false);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public UserRoleState get(UserRoleId id, boolean nullAllowed)
+    {
         UserRoleState state = (UserRoleState) getCurrentSession().get(AbstractUserRoleState.SimpleUserRoleState.class, id);
-        if (state == null)
-        {
+        if (!nullAllowed && state == null) {
             state = new AbstractUserRoleState.SimpleUserRoleState();
             state.setUserRoleId(id);
         }

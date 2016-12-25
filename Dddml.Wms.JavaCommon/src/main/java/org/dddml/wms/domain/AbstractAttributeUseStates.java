@@ -55,20 +55,29 @@ public abstract class AbstractAttributeUseStates implements AttributeUseStates
         return getInnerIterable().iterator();
     }
 
-    public AttributeUseState get(String attributeId)
-    {
+    public AttributeUseState get(String attributeId) {
+        return get(attributeId, false, false);
+    }
+
+    public AttributeUseState get(String attributeId, boolean forCreation) {
+        return get(attributeId, forCreation, false);
+    }
+
+    public AttributeUseState get(String attributeId, boolean forCreation, boolean nullAllowed) {
         AttributeSetAttributeUseId globalId = new AttributeSetAttributeUseId(attributeSetState.getAttributeSetId(), attributeId);
         if (loadedAttributeUseStates.containsKey(globalId)) {
             return loadedAttributeUseStates.get(globalId);
         }
-        if (getForReapplying()) {
-            AttributeUseState state = new AbstractAttributeUseState.SimpleAttributeUseState(true);
+        if (forCreation || getForReapplying()) {
+            AttributeUseState state = new AbstractAttributeUseState.SimpleAttributeUseState(getForReapplying());
             state.setAttributeSetAttributeUseId(globalId);
             loadedAttributeUseStates.put(globalId, state);
             return state;
         } else {
-            AttributeUseState state = getAttributeUseStateDao().get(globalId);
-            loadedAttributeUseStates.put(globalId, state);
+            AttributeUseState state = getAttributeUseStateDao().get(globalId, nullAllowed);
+            if (state != null) {
+                loadedAttributeUseStates.put(globalId, state);
+            }
             return state;
         }
 

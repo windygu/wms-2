@@ -23,9 +23,15 @@ public class HibernateUserLoginStateDao implements UserLoginStateDao
     @Override
     public UserLoginState get(UserLoginId id)
     {
+        return get(id, false);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public UserLoginState get(UserLoginId id, boolean nullAllowed)
+    {
         UserLoginState state = (UserLoginState) getCurrentSession().get(AbstractUserLoginState.SimpleUserLoginState.class, id);
-        if (state == null)
-        {
+        if (!nullAllowed && state == null) {
             state = new AbstractUserLoginState.SimpleUserLoginState();
             state.setUserLoginId(id);
         }

@@ -115,7 +115,7 @@ namespace Dddml.Wms.Domain
             e.Y = c.Y;
             e.Z = c.Z;
             e.Active = c.Active;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyZRemoved = c.IsPropertyZRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -167,7 +167,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new LocatorStateEventId(c.LocatorId, c.Version);
             ILocatorStateDeleted e = NewLocatorStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

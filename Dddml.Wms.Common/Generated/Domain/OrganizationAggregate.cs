@@ -111,7 +111,7 @@ namespace Dddml.Wms.Domain
             e.Type = c.Type;
             e.IsSummary = c.IsSummary;
             e.Active = c.Active;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -138,7 +138,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyIsSummaryRemoved = c.IsPropertyIsSummaryRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -155,7 +155,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new OrganizationStateEventId(c.OrganizationId, c.Version);
             IOrganizationStateDeleted e = NewOrganizationStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

@@ -963,8 +963,11 @@ namespace Dddml.Wms.Domain
 
         public virtual string CommandId { get { return _state.CommandId; } set { _state.CommandId = value; } }
 
+        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
+
 		AttributeSetInstanceStateEventId IGlobalIdentity<AttributeSetInstanceStateEventId>.GlobalId {
-			get {
+			get
+			{
 				return this.StateEventId;
 			}
 		}

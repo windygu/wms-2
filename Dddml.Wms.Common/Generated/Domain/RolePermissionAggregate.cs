@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain
             IRolePermissionStateCreated e = NewRolePermissionStateCreated(stateEventId);
 		
             e.Active = c.Active;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -126,7 +126,7 @@ namespace Dddml.Wms.Domain
             e.Active = c.Active;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -143,7 +143,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new RolePermissionStateEventId(c.Id, c.Version);
             IRolePermissionStateDeleted e = NewRolePermissionStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

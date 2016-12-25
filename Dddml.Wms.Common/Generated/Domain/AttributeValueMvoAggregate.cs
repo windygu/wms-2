@@ -127,7 +127,7 @@ namespace Dddml.Wms.Domain
             e.AttributeUpdatedAt = c.AttributeUpdatedAt;
             e.AttributeActive = c.AttributeActive;
             e.AttributeDeleted = c.AttributeDeleted;
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain
             e.IsPropertyAttributeActiveRemoved = c.IsPropertyAttributeActiveRemoved;
             e.IsPropertyAttributeDeletedRemoved = c.IsPropertyAttributeDeletedRemoved;
 
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -203,7 +203,7 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new AttributeValueMvoStateEventId(c.AttributeValueId, c.AttributeVersion);
             IAttributeValueMvoStateDeleted e = NewAttributeValueMvoStateDeleted(stateEventId);
 			
-            ReflectUtils.CopyPropertyValue("CommandId", c, e);
+            e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;

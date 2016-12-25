@@ -55,20 +55,29 @@ public abstract class AbstractUserLoginStates implements UserLoginStates
         return getInnerIterable().iterator();
     }
 
-    public UserLoginState get(LoginKey loginKey)
-    {
+    public UserLoginState get(LoginKey loginKey) {
+        return get(loginKey, false, false);
+    }
+
+    public UserLoginState get(LoginKey loginKey, boolean forCreation) {
+        return get(loginKey, forCreation, false);
+    }
+
+    public UserLoginState get(LoginKey loginKey, boolean forCreation, boolean nullAllowed) {
         UserLoginId globalId = new UserLoginId(userState.getUserId(), loginKey);
         if (loadedUserLoginStates.containsKey(globalId)) {
             return loadedUserLoginStates.get(globalId);
         }
-        if (getForReapplying()) {
-            UserLoginState state = new AbstractUserLoginState.SimpleUserLoginState(true);
+        if (forCreation || getForReapplying()) {
+            UserLoginState state = new AbstractUserLoginState.SimpleUserLoginState(getForReapplying());
             state.setUserLoginId(globalId);
             loadedUserLoginStates.put(globalId, state);
             return state;
         } else {
-            UserLoginState state = getUserLoginStateDao().get(globalId);
-            loadedUserLoginStates.put(globalId, state);
+            UserLoginState state = getUserLoginStateDao().get(globalId, nullAllowed);
+            if (state != null) {
+                loadedUserLoginStates.put(globalId, state);
+            }
             return state;
         }
 
