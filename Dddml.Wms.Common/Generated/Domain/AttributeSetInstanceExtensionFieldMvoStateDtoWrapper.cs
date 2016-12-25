@@ -700,7 +700,6 @@ namespace Dddml.Wms.Domain
 
 		#endregion
 
-
 		#region IActive implementation
 
 		bool IActive.IsActive()

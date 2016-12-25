@@ -22,6 +22,8 @@ namespace Dddml.Wms.Domain
 
 		bool ForReapplying { get; }
 
+		string CommandId { get; set; }
+
 		void When(IAttributeSetInstanceStateCreated e);
 
 		void Mutate(IEvent e);
