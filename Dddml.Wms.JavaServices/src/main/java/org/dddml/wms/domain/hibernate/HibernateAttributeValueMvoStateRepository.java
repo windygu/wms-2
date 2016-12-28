@@ -25,19 +25,34 @@ public class HibernateAttributeValueMvoStateRepository implements AttributeValue
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeValueId", "Name", "Description", "ReferenceId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "AttributeName", "AttributeOrganizationId", "AttributeDescription", "AttributeIsMandatory", "AttributeIsInstanceAttribute", "AttributeAttributeValueType", "AttributeAttributeValueLength", "AttributeIsList", "AttributeFieldName", "AttributeReferenceId", "AttributeAttributeValues", "AttributeVersion", "AttributeCreatedBy", "AttributeCreatedAt", "AttributeUpdatedBy", "AttributeUpdatedAt", "AttributeActive", "AttributeDeleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public AttributeValueMvoState get(AttributeValueId id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public AttributeValueMvoState get(AttributeValueId id, boolean nullAllowed)
     {
         AttributeValueMvoState state = (AttributeValueMvoState)getCurrentSession().get(AbstractAttributeValueMvoState.SimpleAttributeValueMvoState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeValueMvoState.SimpleAttributeValueMvoState();
             state.setAttributeValueId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (AttributeValueMvoState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeValueMvoState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateAttributeValueMvoStateRepository implements AttributeValue
 
     public void save(AttributeValueMvoState state)
     {
-        if(state.getAttributeVersion() == null) {
-            getCurrentSession().save(state);
+        AttributeValueMvoState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (AttributeValueMvoState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getAttributeVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }

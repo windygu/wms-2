@@ -129,7 +129,7 @@ public abstract class AbstractUserApplicationService implements UserApplicationS
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(UserCommand command, EventStoreAggregateId eventStoreAggregateId, UserState state)

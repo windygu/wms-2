@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.hibernate;
 
 import java.util.Date;
+import java.util.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 import org.dddml.wms.domain.*;
@@ -19,6 +20,18 @@ public class HibernateUserRoleStateDao implements UserRoleStateDao
         return this.sessionFactory.getCurrentSession();
     }
 
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("RoleId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "UserId"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     @Override
     public UserRoleState get(UserRoleId id)
@@ -35,21 +48,28 @@ public class HibernateUserRoleStateDao implements UserRoleStateDao
             state = new AbstractUserRoleState.SimpleUserRoleState();
             state.setUserRoleId(id);
         }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (UserRoleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UserRoleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        }
         return state;
     }
 
     @Override
     public void save(UserRoleState state)
     {
-        if(state.getVersion() == null) {
-            getCurrentSession().save(state);
+        UserRoleState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (UserRoleState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }
@@ -68,12 +88,16 @@ public class HibernateUserRoleStateDao implements UserRoleStateDao
     @Override
     public void delete(UserRoleState state)
     {
-        if (state instanceof Saveable)
+        UserRoleState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (UserRoleState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
-        getCurrentSession().delete(state);
+        getCurrentSession().delete(s);
     }
 
 }

@@ -113,7 +113,7 @@ public abstract class AbstractAttributeUseMvoApplicationService implements Attri
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getAttributeSetVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(AttributeUseMvoCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeUseMvoState state)

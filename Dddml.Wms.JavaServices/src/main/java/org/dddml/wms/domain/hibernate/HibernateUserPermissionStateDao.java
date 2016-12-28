@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.hibernate;
 
 import java.util.Date;
+import java.util.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 import org.dddml.wms.domain.*;
@@ -19,6 +20,18 @@ public class HibernateUserPermissionStateDao implements UserPermissionStateDao
         return this.sessionFactory.getCurrentSession();
     }
 
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("PermissionId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "UserId"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     @Override
     public UserPermissionState get(UserPermissionId id)
@@ -35,21 +48,28 @@ public class HibernateUserPermissionStateDao implements UserPermissionStateDao
             state = new AbstractUserPermissionState.SimpleUserPermissionState();
             state.setUserPermissionId(id);
         }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (UserPermissionState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UserPermissionState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        }
         return state;
     }
 
     @Override
     public void save(UserPermissionState state)
     {
-        if(state.getVersion() == null) {
-            getCurrentSession().save(state);
+        UserPermissionState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (UserPermissionState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }
@@ -68,12 +88,16 @@ public class HibernateUserPermissionStateDao implements UserPermissionStateDao
     @Override
     public void delete(UserPermissionState state)
     {
-        if (state instanceof Saveable)
+        UserPermissionState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (UserPermissionState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
-        getCurrentSession().delete(state);
+        getCurrentSession().delete(s);
     }
 
 }

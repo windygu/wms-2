@@ -25,19 +25,34 @@ public class HibernateUserClaimMvoStateRepository implements UserClaimMvoStateRe
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("UserClaimId", "ClaimType", "ClaimValue", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "UserUserName", "UserAccessFailedCount", "UserEmail", "UserEmailConfirmed", "UserLockoutEnabled", "UserLockoutEndDateUtc", "UserPasswordHash", "UserPhoneNumber", "UserPhoneNumberConfirmed", "UserTwoFactorEnabled", "UserSecurityStamp", "UserUserRoles", "UserUserClaims", "UserUserPermissions", "UserUserLogins", "UserVersion", "UserCreatedBy", "UserCreatedAt", "UserUpdatedBy", "UserUpdatedAt", "UserActive", "UserDeleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public UserClaimMvoState get(UserClaimId id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public UserClaimMvoState get(UserClaimId id, boolean nullAllowed)
     {
         UserClaimMvoState state = (UserClaimMvoState)getCurrentSession().get(AbstractUserClaimMvoState.SimpleUserClaimMvoState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractUserClaimMvoState.SimpleUserClaimMvoState();
             state.setUserClaimId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (UserClaimMvoState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UserClaimMvoState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateUserClaimMvoStateRepository implements UserClaimMvoStateRe
 
     public void save(UserClaimMvoState state)
     {
-        if(state.getUserVersion() == null) {
-            getCurrentSession().save(state);
+        UserClaimMvoState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (UserClaimMvoState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getUserVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }

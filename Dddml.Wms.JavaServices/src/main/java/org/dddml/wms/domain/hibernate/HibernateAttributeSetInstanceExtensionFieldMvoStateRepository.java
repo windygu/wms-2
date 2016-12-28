@@ -25,19 +25,34 @@ public class HibernateAttributeSetInstanceExtensionFieldMvoStateRepository imple
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeSetInstanceExtensionFieldId", "Name", "Type", "Length", "Alias", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "AttrSetInstEFGroupFieldType", "AttrSetInstEFGroupFieldLength", "AttrSetInstEFGroupFieldCount", "AttrSetInstEFGroupNameFormat", "AttrSetInstEFGroupDescription", "AttrSetInstEFGroupFields", "AttrSetInstEFGroupVersion", "AttrSetInstEFGroupCreatedBy", "AttrSetInstEFGroupCreatedAt", "AttrSetInstEFGroupUpdatedBy", "AttrSetInstEFGroupUpdatedAt", "AttrSetInstEFGroupActive", "AttrSetInstEFGroupDeleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public AttributeSetInstanceExtensionFieldMvoState get(AttributeSetInstanceExtensionFieldId id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public AttributeSetInstanceExtensionFieldMvoState get(AttributeSetInstanceExtensionFieldId id, boolean nullAllowed)
     {
         AttributeSetInstanceExtensionFieldMvoState state = (AttributeSetInstanceExtensionFieldMvoState)getCurrentSession().get(AbstractAttributeSetInstanceExtensionFieldMvoState.SimpleAttributeSetInstanceExtensionFieldMvoState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeSetInstanceExtensionFieldMvoState.SimpleAttributeSetInstanceExtensionFieldMvoState();
             state.setAttributeSetInstanceExtensionFieldId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (AttributeSetInstanceExtensionFieldMvoState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceExtensionFieldMvoState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateAttributeSetInstanceExtensionFieldMvoStateRepository imple
 
     public void save(AttributeSetInstanceExtensionFieldMvoState state)
     {
-        if(state.getAttrSetInstEFGroupVersion() == null) {
-            getCurrentSession().save(state);
+        AttributeSetInstanceExtensionFieldMvoState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (AttributeSetInstanceExtensionFieldMvoState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getAttrSetInstEFGroupVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }

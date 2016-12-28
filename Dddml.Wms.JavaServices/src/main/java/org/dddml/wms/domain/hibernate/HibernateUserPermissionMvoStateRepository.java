@@ -25,19 +25,34 @@ public class HibernateUserPermissionMvoStateRepository implements UserPermission
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("UserPermissionId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "UserUserName", "UserAccessFailedCount", "UserEmail", "UserEmailConfirmed", "UserLockoutEnabled", "UserLockoutEndDateUtc", "UserPasswordHash", "UserPhoneNumber", "UserPhoneNumberConfirmed", "UserTwoFactorEnabled", "UserSecurityStamp", "UserUserRoles", "UserUserClaims", "UserUserPermissions", "UserUserLogins", "UserVersion", "UserCreatedBy", "UserCreatedAt", "UserUpdatedBy", "UserUpdatedAt", "UserActive", "UserDeleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public UserPermissionMvoState get(UserPermissionId id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public UserPermissionMvoState get(UserPermissionId id, boolean nullAllowed)
     {
         UserPermissionMvoState state = (UserPermissionMvoState)getCurrentSession().get(AbstractUserPermissionMvoState.SimpleUserPermissionMvoState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractUserPermissionMvoState.SimpleUserPermissionMvoState();
             state.setUserPermissionId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (UserPermissionMvoState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UserPermissionMvoState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateUserPermissionMvoStateRepository implements UserPermission
 
     public void save(UserPermissionMvoState state)
     {
-        if(state.getUserVersion() == null) {
-            getCurrentSession().save(state);
+        UserPermissionMvoState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (UserPermissionMvoState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getUserVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }

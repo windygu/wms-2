@@ -45,7 +45,7 @@ public abstract class AbstractUserRoleStates implements UserRoleStates
         }
     }
 
-    public AbstractUserRoleStates(AbstractUserState outerState) {
+    public AbstractUserRoleStates(UserState outerState) {
         this.userState = outerState;
         this.setForReapplying(outerState.getForReapplying());
     }

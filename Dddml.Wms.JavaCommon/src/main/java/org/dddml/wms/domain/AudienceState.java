@@ -54,6 +54,8 @@ public interface AudienceState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

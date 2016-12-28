@@ -54,6 +54,8 @@ public interface UserLoginState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

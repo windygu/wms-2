@@ -74,6 +74,8 @@ public interface AttributeSetInstanceExtensionFieldState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

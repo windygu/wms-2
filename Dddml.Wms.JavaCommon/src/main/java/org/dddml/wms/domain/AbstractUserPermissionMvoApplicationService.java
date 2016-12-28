@@ -113,7 +113,7 @@ public abstract class AbstractUserPermissionMvoApplicationService implements Use
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getUserVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(UserPermissionMvoCommand command, EventStoreAggregateId eventStoreAggregateId, UserPermissionMvoState state)

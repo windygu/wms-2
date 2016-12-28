@@ -113,7 +113,7 @@ public abstract class AbstractUserClaimMvoApplicationService implements UserClai
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getUserVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(UserClaimMvoCommand command, EventStoreAggregateId eventStoreAggregateId, UserClaimMvoState state)

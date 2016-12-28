@@ -143,7 +143,7 @@ namespace Dddml.Wms.Domain
 		}
 
 		private Dictionary<AttributeValueStateEventId, IAttributeValueStateCreated> _attributeValueEvents = new Dictionary<AttributeValueStateEventId, IAttributeValueStateCreated>();
-		
+        
         private IEnumerable<IAttributeValueStateCreated> _readOnlyAttributeValueEvents;
 
         public virtual IEnumerable<IAttributeValueStateCreated> AttributeValueEvents
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._attributeValueEvents.Values;
+                    return this._attributeValueEvents.Values;
                 }
                 else
                 {
@@ -179,7 +179,7 @@ namespace Dddml.Wms.Domain
                 else { this._attributeValueEvents.Clear(); }
             }
         }
-	
+    
 		public virtual void AddAttributeValueEvent(IAttributeValueStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
@@ -242,15 +242,15 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<AttributeValueStateEventId, IAttributeValueStateEvent> _attributeValueEvents = new Dictionary<AttributeValueStateEventId, IAttributeValueStateEvent>();
 
-	    private IEnumerable<IAttributeValueStateEvent> _readOnlyAttributeValueEvents;
-		
+        private IEnumerable<IAttributeValueStateEvent> _readOnlyAttributeValueEvents;
+        
         public virtual IEnumerable<IAttributeValueStateEvent> AttributeValueEvents
         {
             get
             {
                 if (!StateEventReadOnly)
                 {
-					return this._attributeValueEvents.Values;
+                    return this._attributeValueEvents.Values;
                 }
                 else
                 {
@@ -342,7 +342,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._attributeValueEvents.Values;
+                    return this._attributeValueEvents.Values;
                 }
                 else
                 {

@@ -25,19 +25,34 @@ public class HibernateUserRoleMvoStateRepository implements UserRoleMvoStateRepo
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("UserRoleId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "UserUserName", "UserAccessFailedCount", "UserEmail", "UserEmailConfirmed", "UserLockoutEnabled", "UserLockoutEndDateUtc", "UserPasswordHash", "UserPhoneNumber", "UserPhoneNumberConfirmed", "UserTwoFactorEnabled", "UserSecurityStamp", "UserUserRoles", "UserUserClaims", "UserUserPermissions", "UserUserLogins", "UserVersion", "UserCreatedBy", "UserCreatedAt", "UserUpdatedBy", "UserUpdatedAt", "UserActive", "UserDeleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public UserRoleMvoState get(UserRoleId id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public UserRoleMvoState get(UserRoleId id, boolean nullAllowed)
     {
         UserRoleMvoState state = (UserRoleMvoState)getCurrentSession().get(AbstractUserRoleMvoState.SimpleUserRoleMvoState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractUserRoleMvoState.SimpleUserRoleMvoState();
             state.setUserRoleId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (UserRoleMvoState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UserRoleMvoState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateUserRoleMvoStateRepository implements UserRoleMvoStateRepo
 
     public void save(UserRoleMvoState state)
     {
-        if(state.getUserVersion() == null) {
-            getCurrentSession().save(state);
+        UserRoleMvoState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (UserRoleMvoState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getUserVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }

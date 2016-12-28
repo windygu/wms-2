@@ -25,19 +25,34 @@ public class HibernateLocatorStateRepository implements LocatorStateRepository
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("LocatorId", "WarehouseId", "ParentLocatorId", "LocatorType", "PriorityNumber", "IsDefault", "X", "Y", "Z", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public LocatorState get(String id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public LocatorState get(String id, boolean nullAllowed)
     {
         LocatorState state = (LocatorState)getCurrentSession().get(AbstractLocatorState.SimpleLocatorState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractLocatorState.SimpleLocatorState();
             state.setLocatorId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (LocatorState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{LocatorState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateLocatorStateRepository implements LocatorStateRepository
 
     public void save(LocatorState state)
     {
-        if(state.getVersion() == null) {
-            getCurrentSession().save(state);
+        LocatorState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (LocatorState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }

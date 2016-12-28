@@ -113,7 +113,7 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(OrganizationStructureTypeCommand command, EventStoreAggregateId eventStoreAggregateId, OrganizationStructureTypeState state)

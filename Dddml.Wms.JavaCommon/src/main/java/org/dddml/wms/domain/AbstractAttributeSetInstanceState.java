@@ -5654,6 +5654,11 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
         return this.getVersion() == null;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -5663,6 +5668,16 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
 
     public void setForReapplying(boolean forReapplying) {
         this.forReapplying = forReapplying;
+    }
+
+    private String commandId;
+
+    public String getCommandId() {
+        return this.commandId;
+    }
+
+    public void setCommandId(String commandId) {
+        this.commandId = commandId;
     }
 
     public AbstractAttributeSetInstanceState(List<Event> events) {
@@ -5691,6 +5706,7 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof AttributeSetInstanceStateCreated) {
             when((AttributeSetInstanceStateCreated) e);
         } else if (e instanceof AttributeSetInstanceStateMergePatched) {

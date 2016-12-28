@@ -117,7 +117,7 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(AttributeCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeState state)

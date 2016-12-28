@@ -157,6 +157,11 @@ public abstract class AbstractOrganizationState implements OrganizationState
         return this.getVersion() == null;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -194,6 +199,7 @@ public abstract class AbstractOrganizationState implements OrganizationState
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof OrganizationStateCreated) {
             when((OrganizationStateCreated) e);
         } else if (e instanceof OrganizationStateMergePatched) {

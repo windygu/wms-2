@@ -313,6 +313,11 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoState impleme
         return this.getAttrSetInstEFGroupVersion() == null;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -350,6 +355,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoState impleme
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof AttributeSetInstanceExtensionFieldMvoStateCreated) {
             when((AttributeSetInstanceExtensionFieldMvoStateCreated) e);
         } else if (e instanceof AttributeSetInstanceExtensionFieldMvoStateMergePatched) {

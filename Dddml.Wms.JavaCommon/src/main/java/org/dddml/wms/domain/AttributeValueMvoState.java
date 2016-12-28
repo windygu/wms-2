@@ -126,6 +126,8 @@ public interface AttributeValueMvoState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

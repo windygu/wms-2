@@ -46,6 +46,8 @@ public interface RolePermissionState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

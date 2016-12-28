@@ -119,7 +119,7 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(InOutCommand command, EventStoreAggregateId eventStoreAggregateId, InOutState state)

@@ -45,7 +45,7 @@ public abstract class AbstractUserClaimStates implements UserClaimStates
         }
     }
 
-    public AbstractUserClaimStates(AbstractUserState outerState) {
+    public AbstractUserClaimStates(UserState outerState) {
         this.userState = outerState;
         this.setForReapplying(outerState.getForReapplying());
     }

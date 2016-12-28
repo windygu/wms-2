@@ -9,6 +9,7 @@
 
   <bean id="attributeSetInstanceStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="attributeSetInstanceEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceEventStore">
@@ -23,6 +24,7 @@
 
   <bean id="attributeSetInstanceExtensionFieldStateDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="attributeSetInstanceExtensionFieldStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldStateEventDao">
@@ -32,6 +34,7 @@
 
   <bean id="attributeSetInstanceExtensionFieldGroupStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="attributeSetInstanceExtensionFieldGroupEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupEventStore">
@@ -47,6 +50,7 @@
 
   <bean id="roleStateRepository" class="org.dddml.wms.domain.hibernate.HibernateRoleStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="roleEventStore" class="org.dddml.wms.domain.hibernate.HibernateRoleEventStore">
@@ -62,6 +66,7 @@
 
   <bean id="permissionStateRepository" class="org.dddml.wms.domain.hibernate.HibernatePermissionStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="permissionEventStore" class="org.dddml.wms.domain.hibernate.HibernatePermissionEventStore">
@@ -77,6 +82,7 @@
 
   <bean id="rolePermissionStateRepository" class="org.dddml.wms.domain.hibernate.HibernateRolePermissionStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="rolePermissionEventStore" class="org.dddml.wms.domain.hibernate.HibernateRolePermissionEventStore">
@@ -91,6 +97,7 @@
 
   <bean id="attributeValueStateDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeValueStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="attributeValueStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeValueStateEventDao">
@@ -100,6 +107,7 @@
 
   <bean id="attributeStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="attributeEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeEventStore">
@@ -114,6 +122,7 @@
 
   <bean id="attributeUseStateDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeUseStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="attributeUseStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeUseStateEventDao">
@@ -123,6 +132,7 @@
 
   <bean id="attributeSetStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="attributeSetEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetEventStore">
@@ -138,6 +148,7 @@
 
   <bean id="audienceStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAudienceStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="audienceEventStore" class="org.dddml.wms.domain.hibernate.HibernateAudienceEventStore">
@@ -152,6 +163,7 @@
 
   <bean id="userRoleStateDao" class="org.dddml.wms.domain.hibernate.HibernateUserRoleStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="userRoleStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateUserRoleStateEventDao">
@@ -160,6 +172,7 @@
 
   <bean id="userClaimStateDao" class="org.dddml.wms.domain.hibernate.HibernateUserClaimStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="userClaimStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateUserClaimStateEventDao">
@@ -168,6 +181,7 @@
 
   <bean id="userPermissionStateDao" class="org.dddml.wms.domain.hibernate.HibernateUserPermissionStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="userPermissionStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateUserPermissionStateEventDao">
@@ -176,6 +190,7 @@
 
   <bean id="userLoginStateDao" class="org.dddml.wms.domain.hibernate.HibernateUserLoginStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="userLoginStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateUserLoginStateEventDao">
@@ -185,6 +200,7 @@
 
   <bean id="userStateRepository" class="org.dddml.wms.domain.hibernate.HibernateUserStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="userEventStore" class="org.dddml.wms.domain.hibernate.HibernateUserEventStore">
@@ -199,6 +215,7 @@
 
   <bean id="inOutLineStateDao" class="org.dddml.wms.domain.hibernate.HibernateInOutLineStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="inOutLineStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateInOutLineStateEventDao">
@@ -208,6 +225,7 @@
 
   <bean id="inOutStateRepository" class="org.dddml.wms.domain.hibernate.HibernateInOutStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="inOutEventStore" class="org.dddml.wms.domain.hibernate.HibernateInOutEventStore">
@@ -223,6 +241,7 @@
 
   <bean id="organizationStateRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="organizationEventStore" class="org.dddml.wms.domain.hibernate.HibernateOrganizationEventStore">
@@ -238,6 +257,7 @@
 
   <bean id="organizationStructureTypeStateRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStructureTypeStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="organizationStructureTypeEventStore" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStructureTypeEventStore">
@@ -253,6 +273,7 @@
 
   <bean id="organizationStructureStateRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStructureStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="organizationStructureEventStore" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStructureEventStore">
@@ -268,6 +289,7 @@
 
   <bean id="warehouseStateRepository" class="org.dddml.wms.domain.hibernate.HibernateWarehouseStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="warehouseEventStore" class="org.dddml.wms.domain.hibernate.HibernateWarehouseEventStore">
@@ -283,6 +305,7 @@
 
   <bean id="locatorStateRepository" class="org.dddml.wms.domain.hibernate.HibernateLocatorStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="locatorEventStore" class="org.dddml.wms.domain.hibernate.HibernateLocatorEventStore">
@@ -298,6 +321,7 @@
 
   <bean id="attributeSetInstanceExtensionFieldMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="attributeSetInstanceExtensionFieldMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoEventStore">
@@ -313,6 +337,7 @@
 
   <bean id="attributeValueMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeValueMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="attributeValueMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeValueMvoEventStore">
@@ -328,6 +353,7 @@
 
   <bean id="attributeUseMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeUseMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="attributeUseMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeUseMvoEventStore">
@@ -343,6 +369,7 @@
 
   <bean id="userRoleMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateUserRoleMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="userRoleMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateUserRoleMvoEventStore">
@@ -358,6 +385,7 @@
 
   <bean id="userClaimMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateUserClaimMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="userClaimMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateUserClaimMvoEventStore">
@@ -373,6 +401,7 @@
 
   <bean id="userPermissionMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateUserPermissionMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="userPermissionMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateUserPermissionMvoEventStore">
@@ -388,6 +417,7 @@
 
   <bean id="userLoginMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateUserLoginMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="userLoginMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateUserLoginMvoEventStore">
@@ -403,6 +433,7 @@
 
   <bean id="inOutLineMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateInOutLineMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="inOutLineMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateInOutLineMvoEventStore">

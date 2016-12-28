@@ -25,19 +25,34 @@ public class HibernateAudienceStateRepository implements AudienceStateRepository
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ClientId", "Name", "Base64Secret", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public AudienceState get(String id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public AudienceState get(String id, boolean nullAllowed)
     {
         AudienceState state = (AudienceState)getCurrentSession().get(AbstractAudienceState.SimpleAudienceState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAudienceState.SimpleAudienceState();
             state.setClientId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (AudienceState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AudienceState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateAudienceStateRepository implements AudienceStateRepository
 
     public void save(AudienceState state)
     {
-        if(state.getVersion() == null) {
-            getCurrentSession().save(state);
+        AudienceState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (AudienceState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }

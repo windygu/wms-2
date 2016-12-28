@@ -280,6 +280,8 @@ public interface InOutLineMvoState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

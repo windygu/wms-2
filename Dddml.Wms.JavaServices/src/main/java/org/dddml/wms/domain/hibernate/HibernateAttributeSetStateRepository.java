@@ -25,19 +25,34 @@ public class HibernateAttributeSetStateRepository implements AttributeSetStateRe
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeSetId", "Name", "OrganizationId", "Description", "SerialNumberAttributeId", "LotAttributeId", "ReferenceId", "AttributeUses", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public AttributeSetState get(String id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public AttributeSetState get(String id, boolean nullAllowed)
     {
         AttributeSetState state = (AttributeSetState)getCurrentSession().get(AbstractAttributeSetState.SimpleAttributeSetState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeSetState.SimpleAttributeSetState();
             state.setAttributeSetId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (AttributeSetState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateAttributeSetStateRepository implements AttributeSetStateRe
 
     public void save(AttributeSetState state)
     {
-        if(state.getVersion() == null) {
-            getCurrentSession().save(state);
+        AttributeSetState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (AttributeSetState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }

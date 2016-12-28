@@ -192,7 +192,7 @@ namespace Dddml.Wms.Domain
 		}
 
 		private Dictionary<InOutLineStateEventId, IInOutLineStateCreated> _inOutLineEvents = new Dictionary<InOutLineStateEventId, IInOutLineStateCreated>();
-		
+        
         private IEnumerable<IInOutLineStateCreated> _readOnlyInOutLineEvents;
 
         public virtual IEnumerable<IInOutLineStateCreated> InOutLineEvents
@@ -201,7 +201,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._inOutLineEvents.Values;
+                    return this._inOutLineEvents.Values;
                 }
                 else
                 {
@@ -228,7 +228,7 @@ namespace Dddml.Wms.Domain
                 else { this._inOutLineEvents.Clear(); }
             }
         }
-	
+    
 		public virtual void AddInOutLineEvent(IInOutLineStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
@@ -339,15 +339,15 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<InOutLineStateEventId, IInOutLineStateEvent> _inOutLineEvents = new Dictionary<InOutLineStateEventId, IInOutLineStateEvent>();
 
-	    private IEnumerable<IInOutLineStateEvent> _readOnlyInOutLineEvents;
-		
+        private IEnumerable<IInOutLineStateEvent> _readOnlyInOutLineEvents;
+        
         public virtual IEnumerable<IInOutLineStateEvent> InOutLineEvents
         {
             get
             {
                 if (!StateEventReadOnly)
                 {
-					return this._inOutLineEvents.Values;
+                    return this._inOutLineEvents.Values;
                 }
                 else
                 {
@@ -439,7 +439,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._inOutLineEvents.Values;
+                    return this._inOutLineEvents.Values;
                 }
                 else
                 {

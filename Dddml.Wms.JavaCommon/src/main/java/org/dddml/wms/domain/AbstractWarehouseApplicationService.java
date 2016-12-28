@@ -113,7 +113,7 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(WarehouseCommand command, EventStoreAggregateId eventStoreAggregateId, WarehouseState state)

@@ -289,6 +289,11 @@ public abstract class AbstractUserState implements UserState, Saveable
         this.userLogins = userLogins;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -334,6 +339,7 @@ public abstract class AbstractUserState implements UserState, Saveable
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof UserStateCreated) {
             when((UserStateCreated) e);
         } else if (e instanceof UserStateMergePatched) {

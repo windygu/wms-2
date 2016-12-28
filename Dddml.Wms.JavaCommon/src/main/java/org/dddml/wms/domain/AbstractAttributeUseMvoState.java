@@ -277,6 +277,11 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
         return this.getAttributeSetVersion() == null;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -314,6 +319,7 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof AttributeUseMvoStateCreated) {
             when((AttributeUseMvoStateCreated) e);
         } else if (e instanceof AttributeUseMvoStateMergePatched) {

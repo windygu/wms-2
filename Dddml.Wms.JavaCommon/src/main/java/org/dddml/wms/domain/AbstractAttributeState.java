@@ -241,6 +241,11 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         this.attributeValues = attributeValues;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -280,6 +285,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof AttributeStateCreated) {
             when((AttributeStateCreated) e);
         } else if (e instanceof AttributeStateMergePatched) {

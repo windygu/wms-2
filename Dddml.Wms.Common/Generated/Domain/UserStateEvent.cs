@@ -226,7 +226,7 @@ namespace Dddml.Wms.Domain
 		}
 
 		private Dictionary<UserRoleStateEventId, IUserRoleStateCreated> _userRoleEvents = new Dictionary<UserRoleStateEventId, IUserRoleStateCreated>();
-		
+        
         private IEnumerable<IUserRoleStateCreated> _readOnlyUserRoleEvents;
 
         public virtual IEnumerable<IUserRoleStateCreated> UserRoleEvents
@@ -235,7 +235,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userRoleEvents.Values;
+                    return this._userRoleEvents.Values;
                 }
                 else
                 {
@@ -262,7 +262,7 @@ namespace Dddml.Wms.Domain
                 else { this._userRoleEvents.Clear(); }
             }
         }
-	
+    
 		public virtual void AddUserRoleEvent(IUserRoleStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
@@ -276,7 +276,7 @@ namespace Dddml.Wms.Domain
         }
 
 		private Dictionary<UserClaimStateEventId, IUserClaimStateCreated> _userClaimEvents = new Dictionary<UserClaimStateEventId, IUserClaimStateCreated>();
-		
+        
         private IEnumerable<IUserClaimStateCreated> _readOnlyUserClaimEvents;
 
         public virtual IEnumerable<IUserClaimStateCreated> UserClaimEvents
@@ -285,7 +285,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userClaimEvents.Values;
+                    return this._userClaimEvents.Values;
                 }
                 else
                 {
@@ -312,7 +312,7 @@ namespace Dddml.Wms.Domain
                 else { this._userClaimEvents.Clear(); }
             }
         }
-	
+    
 		public virtual void AddUserClaimEvent(IUserClaimStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
@@ -326,7 +326,7 @@ namespace Dddml.Wms.Domain
         }
 
 		private Dictionary<UserPermissionStateEventId, IUserPermissionStateCreated> _userPermissionEvents = new Dictionary<UserPermissionStateEventId, IUserPermissionStateCreated>();
-		
+        
         private IEnumerable<IUserPermissionStateCreated> _readOnlyUserPermissionEvents;
 
         public virtual IEnumerable<IUserPermissionStateCreated> UserPermissionEvents
@@ -335,7 +335,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userPermissionEvents.Values;
+                    return this._userPermissionEvents.Values;
                 }
                 else
                 {
@@ -362,7 +362,7 @@ namespace Dddml.Wms.Domain
                 else { this._userPermissionEvents.Clear(); }
             }
         }
-	
+    
 		public virtual void AddUserPermissionEvent(IUserPermissionStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
@@ -376,7 +376,7 @@ namespace Dddml.Wms.Domain
         }
 
 		private Dictionary<UserLoginStateEventId, IUserLoginStateCreated> _userLoginEvents = new Dictionary<UserLoginStateEventId, IUserLoginStateCreated>();
-		
+        
         private IEnumerable<IUserLoginStateCreated> _readOnlyUserLoginEvents;
 
         public virtual IEnumerable<IUserLoginStateCreated> UserLoginEvents
@@ -385,7 +385,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userLoginEvents.Values;
+                    return this._userLoginEvents.Values;
                 }
                 else
                 {
@@ -412,7 +412,7 @@ namespace Dddml.Wms.Domain
                 else { this._userLoginEvents.Clear(); }
             }
         }
-	
+    
 		public virtual void AddUserLoginEvent(IUserLoginStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
@@ -486,15 +486,15 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<UserRoleStateEventId, IUserRoleStateEvent> _userRoleEvents = new Dictionary<UserRoleStateEventId, IUserRoleStateEvent>();
 
-	    private IEnumerable<IUserRoleStateEvent> _readOnlyUserRoleEvents;
-		
+        private IEnumerable<IUserRoleStateEvent> _readOnlyUserRoleEvents;
+        
         public virtual IEnumerable<IUserRoleStateEvent> UserRoleEvents
         {
             get
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userRoleEvents.Values;
+                    return this._userRoleEvents.Values;
                 }
                 else
                 {
@@ -548,15 +548,15 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<UserClaimStateEventId, IUserClaimStateEvent> _userClaimEvents = new Dictionary<UserClaimStateEventId, IUserClaimStateEvent>();
 
-	    private IEnumerable<IUserClaimStateEvent> _readOnlyUserClaimEvents;
-		
+        private IEnumerable<IUserClaimStateEvent> _readOnlyUserClaimEvents;
+        
         public virtual IEnumerable<IUserClaimStateEvent> UserClaimEvents
         {
             get
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userClaimEvents.Values;
+                    return this._userClaimEvents.Values;
                 }
                 else
                 {
@@ -610,15 +610,15 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<UserPermissionStateEventId, IUserPermissionStateEvent> _userPermissionEvents = new Dictionary<UserPermissionStateEventId, IUserPermissionStateEvent>();
 
-	    private IEnumerable<IUserPermissionStateEvent> _readOnlyUserPermissionEvents;
-		
+        private IEnumerable<IUserPermissionStateEvent> _readOnlyUserPermissionEvents;
+        
         public virtual IEnumerable<IUserPermissionStateEvent> UserPermissionEvents
         {
             get
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userPermissionEvents.Values;
+                    return this._userPermissionEvents.Values;
                 }
                 else
                 {
@@ -672,15 +672,15 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<UserLoginStateEventId, IUserLoginStateEvent> _userLoginEvents = new Dictionary<UserLoginStateEventId, IUserLoginStateEvent>();
 
-	    private IEnumerable<IUserLoginStateEvent> _readOnlyUserLoginEvents;
-		
+        private IEnumerable<IUserLoginStateEvent> _readOnlyUserLoginEvents;
+        
         public virtual IEnumerable<IUserLoginStateEvent> UserLoginEvents
         {
             get
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userLoginEvents.Values;
+                    return this._userLoginEvents.Values;
                 }
                 else
                 {
@@ -781,7 +781,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userRoleEvents.Values;
+                    return this._userRoleEvents.Values;
                 }
                 else
                 {
@@ -831,7 +831,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userClaimEvents.Values;
+                    return this._userClaimEvents.Values;
                 }
                 else
                 {
@@ -881,7 +881,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userPermissionEvents.Values;
+                    return this._userPermissionEvents.Values;
                 }
                 else
                 {
@@ -931,7 +931,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._userLoginEvents.Values;
+                    return this._userLoginEvents.Values;
                 }
                 else
                 {

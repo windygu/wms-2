@@ -45,7 +45,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStates implement
         }
     }
 
-    public AbstractAttributeSetInstanceExtensionFieldStates(AbstractAttributeSetInstanceExtensionFieldGroupState outerState) {
+    public AbstractAttributeSetInstanceExtensionFieldStates(AttributeSetInstanceExtensionFieldGroupState outerState) {
         this.attributeSetInstanceExtensionFieldGroupState = outerState;
         this.setForReapplying(outerState.getForReapplying());
     }

@@ -58,6 +58,8 @@ public interface PermissionState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

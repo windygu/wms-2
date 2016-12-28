@@ -46,6 +46,8 @@ public interface OrganizationStructureState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

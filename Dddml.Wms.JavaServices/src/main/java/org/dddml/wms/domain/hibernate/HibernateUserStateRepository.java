@@ -25,19 +25,34 @@ public class HibernateUserStateRepository implements UserStateRepository
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("UserId", "UserName", "AccessFailedCount", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEndDateUtc", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "TwoFactorEnabled", "SecurityStamp", "UserRoles", "UserClaims", "UserPermissions", "UserLogins", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public UserState get(String id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public UserState get(String id, boolean nullAllowed)
     {
         UserState state = (UserState)getCurrentSession().get(AbstractUserState.SimpleUserState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractUserState.SimpleUserState();
             state.setUserId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (UserState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UserState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateUserStateRepository implements UserStateRepository
 
     public void save(UserState state)
     {
-        if(state.getVersion() == null) {
-            getCurrentSession().save(state);
+        UserState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (UserState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }

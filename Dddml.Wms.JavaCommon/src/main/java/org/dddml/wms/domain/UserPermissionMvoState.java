@@ -118,6 +118,8 @@ public interface UserPermissionMvoState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

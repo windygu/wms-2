@@ -951,6 +951,8 @@
 
 	<property name="deleted" ></property>
 
+    <property name="commandId" />
+
 
   </class>
   

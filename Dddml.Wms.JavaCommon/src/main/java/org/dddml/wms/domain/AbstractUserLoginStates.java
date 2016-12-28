@@ -45,7 +45,7 @@ public abstract class AbstractUserLoginStates implements UserLoginStates
         }
     }
 
-    public AbstractUserLoginStates(AbstractUserState outerState) {
+    public AbstractUserLoginStates(UserState outerState) {
         this.userState = outerState;
         this.setForReapplying(outerState.getForReapplying());
     }

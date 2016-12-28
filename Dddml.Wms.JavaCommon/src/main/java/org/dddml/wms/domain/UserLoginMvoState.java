@@ -118,6 +118,8 @@ public interface UserLoginMvoState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

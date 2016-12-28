@@ -70,6 +70,8 @@ public interface AttributeSetState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
     AttributeUseStates getAttributeUses();
 
 

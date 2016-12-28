@@ -147,6 +147,11 @@ public abstract class AbstractUserClaimState implements UserClaimState
         return this.getVersion() == null;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -173,6 +178,7 @@ public abstract class AbstractUserClaimState implements UserClaimState
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof UserClaimStateCreated) {
             when((UserClaimStateCreated) e);
         } else if (e instanceof UserClaimStateMergePatched) {

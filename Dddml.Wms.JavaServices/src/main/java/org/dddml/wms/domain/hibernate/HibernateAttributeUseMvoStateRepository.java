@@ -25,19 +25,34 @@ public class HibernateAttributeUseMvoStateRepository implements AttributeUseMvoS
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeSetAttributeUseId", "SequenceNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "AttributeSetName", "AttributeSetOrganizationId", "AttributeSetDescription", "AttributeSetSerialNumberAttributeId", "AttributeSetLotAttributeId", "AttributeSetReferenceId", "AttributeSetAttributeUses", "AttributeSetVersion", "AttributeSetCreatedBy", "AttributeSetCreatedAt", "AttributeSetUpdatedBy", "AttributeSetUpdatedAt", "AttributeSetActive", "AttributeSetDeleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public AttributeUseMvoState get(AttributeSetAttributeUseId id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public AttributeUseMvoState get(AttributeSetAttributeUseId id, boolean nullAllowed)
     {
         AttributeUseMvoState state = (AttributeUseMvoState)getCurrentSession().get(AbstractAttributeUseMvoState.SimpleAttributeUseMvoState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeUseMvoState.SimpleAttributeUseMvoState();
             state.setAttributeSetAttributeUseId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (AttributeUseMvoState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeUseMvoState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateAttributeUseMvoStateRepository implements AttributeUseMvoS
 
     public void save(AttributeUseMvoState state)
     {
-        if(state.getAttributeSetVersion() == null) {
-            getCurrentSession().save(state);
+        AttributeUseMvoState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (AttributeUseMvoState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getAttributeSetVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }

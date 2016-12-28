@@ -114,6 +114,8 @@ public interface AttributeSetInstanceExtensionFieldMvoState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

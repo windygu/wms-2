@@ -145,6 +145,11 @@ public abstract class AbstractWarehouseState implements WarehouseState
         return this.getVersion() == null;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -182,6 +187,7 @@ public abstract class AbstractWarehouseState implements WarehouseState
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof WarehouseStateCreated) {
             when((WarehouseStateCreated) e);
         } else if (e instanceof WarehouseStateMergePatched) {

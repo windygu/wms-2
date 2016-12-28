@@ -349,6 +349,11 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
         return this.getAttributeVersion() == null;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -386,6 +391,7 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof AttributeValueMvoStateCreated) {
             when((AttributeValueMvoStateCreated) e);
         } else if (e instanceof AttributeValueMvoStateMergePatched) {

@@ -45,7 +45,7 @@ public abstract class AbstractUserPermissionStates implements UserPermissionStat
         }
     }
 
-    public AbstractUserPermissionStates(AbstractUserState outerState) {
+    public AbstractUserPermissionStates(UserState outerState) {
         this.userState = outerState;
         this.setForReapplying(outerState.getForReapplying());
     }

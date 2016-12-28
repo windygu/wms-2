@@ -133,7 +133,7 @@ namespace Dddml.Wms.Domain
 		}
 
 		private Dictionary<AttributeSetInstanceExtensionFieldStateEventId, IAttributeSetInstanceExtensionFieldStateCreated> _attributeSetInstanceExtensionFieldEvents = new Dictionary<AttributeSetInstanceExtensionFieldStateEventId, IAttributeSetInstanceExtensionFieldStateCreated>();
-		
+        
         private IEnumerable<IAttributeSetInstanceExtensionFieldStateCreated> _readOnlyAttributeSetInstanceExtensionFieldEvents;
 
         public virtual IEnumerable<IAttributeSetInstanceExtensionFieldStateCreated> AttributeSetInstanceExtensionFieldEvents
@@ -142,7 +142,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._attributeSetInstanceExtensionFieldEvents.Values;
+                    return this._attributeSetInstanceExtensionFieldEvents.Values;
                 }
                 else
                 {
@@ -169,7 +169,7 @@ namespace Dddml.Wms.Domain
                 else { this._attributeSetInstanceExtensionFieldEvents.Clear(); }
             }
         }
-	
+    
 		public virtual void AddAttributeSetInstanceExtensionFieldEvent(IAttributeSetInstanceExtensionFieldStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
@@ -222,15 +222,15 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<AttributeSetInstanceExtensionFieldStateEventId, IAttributeSetInstanceExtensionFieldStateEvent> _attributeSetInstanceExtensionFieldEvents = new Dictionary<AttributeSetInstanceExtensionFieldStateEventId, IAttributeSetInstanceExtensionFieldStateEvent>();
 
-	    private IEnumerable<IAttributeSetInstanceExtensionFieldStateEvent> _readOnlyAttributeSetInstanceExtensionFieldEvents;
-		
+        private IEnumerable<IAttributeSetInstanceExtensionFieldStateEvent> _readOnlyAttributeSetInstanceExtensionFieldEvents;
+        
         public virtual IEnumerable<IAttributeSetInstanceExtensionFieldStateEvent> AttributeSetInstanceExtensionFieldEvents
         {
             get
             {
                 if (!StateEventReadOnly)
                 {
-					return this._attributeSetInstanceExtensionFieldEvents.Values;
+                    return this._attributeSetInstanceExtensionFieldEvents.Values;
                 }
                 else
                 {
@@ -322,7 +322,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._attributeSetInstanceExtensionFieldEvents.Values;
+                    return this._attributeSetInstanceExtensionFieldEvents.Values;
                 }
                 else
                 {

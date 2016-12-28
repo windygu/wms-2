@@ -58,6 +58,8 @@ public interface AttributeUseState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

@@ -184,6 +184,8 @@ public interface InOutState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
     InOutLineStates getInOutLines();
 
 

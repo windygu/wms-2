@@ -78,6 +78,8 @@ public interface LocatorState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

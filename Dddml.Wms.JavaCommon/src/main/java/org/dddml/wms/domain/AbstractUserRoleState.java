@@ -123,6 +123,11 @@ public abstract class AbstractUserRoleState implements UserRoleState
         return this.getVersion() == null;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -149,6 +154,7 @@ public abstract class AbstractUserRoleState implements UserRoleState
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof UserRoleStateCreated) {
             when((UserRoleStateCreated) e);
         } else if (e instanceof UserRoleStateMergePatched) {

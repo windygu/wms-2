@@ -113,7 +113,7 @@ public abstract class AbstractPermissionApplicationService implements Permission
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(PermissionCommand command, EventStoreAggregateId eventStoreAggregateId, PermissionState state)

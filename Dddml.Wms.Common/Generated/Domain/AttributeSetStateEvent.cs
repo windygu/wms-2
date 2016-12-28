@@ -135,7 +135,7 @@ namespace Dddml.Wms.Domain
 		}
 
 		private Dictionary<AttributeUseStateEventId, IAttributeUseStateCreated> _attributeUseEvents = new Dictionary<AttributeUseStateEventId, IAttributeUseStateCreated>();
-		
+        
         private IEnumerable<IAttributeUseStateCreated> _readOnlyAttributeUseEvents;
 
         public virtual IEnumerable<IAttributeUseStateCreated> AttributeUseEvents
@@ -144,7 +144,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._attributeUseEvents.Values;
+                    return this._attributeUseEvents.Values;
                 }
                 else
                 {
@@ -171,7 +171,7 @@ namespace Dddml.Wms.Domain
                 else { this._attributeUseEvents.Clear(); }
             }
         }
-	
+    
 		public virtual void AddAttributeUseEvent(IAttributeUseStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
@@ -226,15 +226,15 @@ namespace Dddml.Wms.Domain
 
 		private Dictionary<AttributeUseStateEventId, IAttributeUseStateEvent> _attributeUseEvents = new Dictionary<AttributeUseStateEventId, IAttributeUseStateEvent>();
 
-	    private IEnumerable<IAttributeUseStateEvent> _readOnlyAttributeUseEvents;
-		
+        private IEnumerable<IAttributeUseStateEvent> _readOnlyAttributeUseEvents;
+        
         public virtual IEnumerable<IAttributeUseStateEvent> AttributeUseEvents
         {
             get
             {
                 if (!StateEventReadOnly)
                 {
-					return this._attributeUseEvents.Values;
+                    return this._attributeUseEvents.Values;
                 }
                 else
                 {
@@ -326,7 +326,7 @@ namespace Dddml.Wms.Domain
             {
                 if (!StateEventReadOnly)
                 {
-					return this._attributeUseEvents.Values;
+                    return this._attributeUseEvents.Values;
                 }
                 else
                 {

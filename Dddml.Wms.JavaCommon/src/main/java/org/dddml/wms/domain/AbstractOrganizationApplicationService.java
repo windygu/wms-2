@@ -113,7 +113,7 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(OrganizationCommand command, EventStoreAggregateId eventStoreAggregateId, OrganizationState state)

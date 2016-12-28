@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.hibernate;
 
 import java.util.Date;
+import java.util.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 import org.dddml.wms.domain.*;
@@ -19,6 +20,18 @@ public class HibernateAttributeUseStateDao implements AttributeUseStateDao
         return this.sessionFactory.getCurrentSession();
     }
 
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeId", "SequenceNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "AttributeSetId"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     @Override
     public AttributeUseState get(AttributeSetAttributeUseId id)
@@ -35,21 +48,28 @@ public class HibernateAttributeUseStateDao implements AttributeUseStateDao
             state = new AbstractAttributeUseState.SimpleAttributeUseState();
             state.setAttributeSetAttributeUseId(id);
         }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (AttributeUseState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeUseState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        }
         return state;
     }
 
     @Override
     public void save(AttributeUseState state)
     {
-        if(state.getVersion() == null) {
-            getCurrentSession().save(state);
+        AttributeUseState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (AttributeUseState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }
@@ -68,12 +88,16 @@ public class HibernateAttributeUseStateDao implements AttributeUseStateDao
     @Override
     public void delete(AttributeUseState state)
     {
-        if (state instanceof Saveable)
+        AttributeUseState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (AttributeUseState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
-        getCurrentSession().delete(state);
+        getCurrentSession().delete(s);
     }
 
 }

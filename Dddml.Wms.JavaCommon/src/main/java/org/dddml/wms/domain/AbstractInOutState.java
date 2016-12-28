@@ -531,6 +531,11 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.inOutLines = inOutLines;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -570,6 +575,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof InOutStateCreated) {
             when((InOutStateCreated) e);
         } else if (e instanceof InOutStateMergePatched) {

@@ -325,6 +325,11 @@ public abstract class AbstractUserRoleMvoState implements UserRoleMvoState
         return this.getUserVersion() == null;
     }
 
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -362,6 +367,7 @@ public abstract class AbstractUserRoleMvoState implements UserRoleMvoState
 
 
     public void mutate(Event e) {
+        setStateReadOnly(false);
         if (e instanceof UserRoleMvoStateCreated) {
             when((UserRoleMvoStateCreated) e);
         } else if (e instanceof UserRoleMvoStateMergePatched) {

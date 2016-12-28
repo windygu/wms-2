@@ -58,6 +58,8 @@ public interface WarehouseState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

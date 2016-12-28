@@ -46,7 +46,7 @@ public abstract class AbstractInOutLineStates implements InOutLineStates
         }
     }
 
-    public AbstractInOutLineStates(AbstractInOutState outerState) {
+    public AbstractInOutLineStates(InOutState outerState) {
         this.inOutState = outerState;
         this.setForReapplying(outerState.getForReapplying());
     }

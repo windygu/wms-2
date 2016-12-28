@@ -90,6 +90,8 @@ public interface UserState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
     UserRoleStates getUserRoles();
 
     UserClaimStates getUserClaims();

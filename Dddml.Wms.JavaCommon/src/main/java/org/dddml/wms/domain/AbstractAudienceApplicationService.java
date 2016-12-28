@@ -113,7 +113,7 @@ public abstract class AbstractAudienceApplicationService implements AudienceAppl
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(AudienceCommand command, EventStoreAggregateId eventStoreAggregateId, AudienceState state)

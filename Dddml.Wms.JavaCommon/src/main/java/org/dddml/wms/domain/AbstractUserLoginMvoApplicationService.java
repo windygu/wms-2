@@ -113,7 +113,7 @@ public abstract class AbstractUserLoginMvoApplicationService implements UserLogi
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getUserVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(UserLoginMvoCommand command, EventStoreAggregateId eventStoreAggregateId, UserLoginMvoState state)

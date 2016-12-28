@@ -115,7 +115,7 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getInOutVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(InOutLineMvoCommand command, EventStoreAggregateId eventStoreAggregateId, InOutLineMvoState state)

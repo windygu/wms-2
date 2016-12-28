@@ -62,6 +62,8 @@ public interface UserClaimState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

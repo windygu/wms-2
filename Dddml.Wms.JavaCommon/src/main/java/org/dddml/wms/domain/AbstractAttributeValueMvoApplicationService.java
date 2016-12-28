@@ -113,7 +113,7 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getAttributeVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(AttributeValueMvoCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeValueMvoState state)

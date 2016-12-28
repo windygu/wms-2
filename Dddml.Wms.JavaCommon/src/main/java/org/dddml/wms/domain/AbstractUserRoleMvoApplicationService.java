@@ -113,7 +113,7 @@ public abstract class AbstractUserRoleMvoApplicationService implements UserRoleM
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getUserVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(UserRoleMvoCommand command, EventStoreAggregateId eventStoreAggregateId, UserRoleMvoState state)

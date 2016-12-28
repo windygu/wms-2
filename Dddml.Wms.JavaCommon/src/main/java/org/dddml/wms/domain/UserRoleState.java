@@ -54,6 +54,8 @@ public interface UserRoleState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
 
     void mutate(Event e);
 

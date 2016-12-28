@@ -2,6 +2,7 @@ package org.dddml.wms.domain.hibernate;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 import org.dddml.wms.domain.*;
@@ -20,6 +21,18 @@ public class HibernateInOutLineStateDao implements InOutLineStateDao
         return this.sessionFactory.getCurrentSession();
     }
 
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("SkuId", "LineNumber", "Description", "LocatorId", "Product", "UomId", "MovementQuantity", "ConfirmedQuantity", "ScrappedQuantity", "TargetQuantity", "PickedQuantity", "IsInvoiced", "AttributeSetInstanceId", "IsDescription", "Processed", "QuantityEntered", "RmaLineNumber", "ReversalLineNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InOutDocumentNumber"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     @Override
     public InOutLineState get(InOutLineId id)
@@ -36,21 +49,28 @@ public class HibernateInOutLineStateDao implements InOutLineStateDao
             state = new AbstractInOutLineState.SimpleInOutLineState();
             state.setInOutLineId(id);
         }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (InOutLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        }
         return state;
     }
 
     @Override
     public void save(InOutLineState state)
     {
-        if(state.getVersion() == null) {
-            getCurrentSession().save(state);
+        InOutLineState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (InOutLineState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }
@@ -69,12 +89,16 @@ public class HibernateInOutLineStateDao implements InOutLineStateDao
     @Override
     public void delete(InOutLineState state)
     {
-        if (state instanceof Saveable)
+        InOutLineState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (InOutLineState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
-        getCurrentSession().delete(state);
+        getCurrentSession().delete(s);
     }
 
 }

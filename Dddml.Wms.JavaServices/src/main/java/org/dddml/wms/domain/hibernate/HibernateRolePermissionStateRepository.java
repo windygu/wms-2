@@ -25,19 +25,34 @@ public class HibernateRolePermissionStateRepository implements RolePermissionSta
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("Id", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public RolePermissionState get(RolePermissionId id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public RolePermissionState get(RolePermissionId id, boolean nullAllowed)
     {
         RolePermissionState state = (RolePermissionState)getCurrentSession().get(AbstractRolePermissionState.SimpleRolePermissionState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractRolePermissionState.SimpleRolePermissionState();
             state.setId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (RolePermissionState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{RolePermissionState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateRolePermissionStateRepository implements RolePermissionSta
 
     public void save(RolePermissionState state)
     {
-        if(state.getVersion() == null) {
-            getCurrentSession().save(state);
+        RolePermissionState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (RolePermissionState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }

@@ -45,7 +45,7 @@ public abstract class AbstractAttributeValueStates implements AttributeValueStat
         }
     }
 
-    public AbstractAttributeValueStates(AbstractAttributeState outerState) {
+    public AbstractAttributeValueStates(AttributeState outerState) {
         this.attributeState = outerState;
         this.setForReapplying(outerState.getForReapplying());
     }

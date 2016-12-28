@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.hibernate;
 
 import java.util.Date;
+import java.util.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 import org.dddml.wms.domain.*;
@@ -19,6 +20,18 @@ public class HibernateAttributeSetInstanceExtensionFieldStateDao implements Attr
         return this.sessionFactory.getCurrentSession();
     }
 
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("Index", "Name", "Type", "Length", "Alias", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "GroupId"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     @Override
     public AttributeSetInstanceExtensionFieldState get(AttributeSetInstanceExtensionFieldId id)
@@ -35,21 +48,28 @@ public class HibernateAttributeSetInstanceExtensionFieldStateDao implements Attr
             state = new AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState();
             state.setAttributeSetInstanceExtensionFieldId(id);
         }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (AttributeSetInstanceExtensionFieldState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceExtensionFieldState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        }
         return state;
     }
 
     @Override
     public void save(AttributeSetInstanceExtensionFieldState state)
     {
-        if(state.getVersion() == null) {
-            getCurrentSession().save(state);
+        AttributeSetInstanceExtensionFieldState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (AttributeSetInstanceExtensionFieldState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }
@@ -68,12 +88,16 @@ public class HibernateAttributeSetInstanceExtensionFieldStateDao implements Attr
     @Override
     public void delete(AttributeSetInstanceExtensionFieldState state)
     {
-        if (state instanceof Saveable)
+        AttributeSetInstanceExtensionFieldState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (AttributeSetInstanceExtensionFieldState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
-        getCurrentSession().delete(state);
+        getCurrentSession().delete(s);
     }
 
 }

@@ -66,6 +66,8 @@ public interface AttributeSetInstanceExtensionFieldGroupState
 
     boolean isStateUnsaved();
 
+    boolean getForReapplying();
+
     AttributeSetInstanceExtensionFieldStates getFields();
 
 

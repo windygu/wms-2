@@ -113,7 +113,7 @@ public abstract class AbstractRolePermissionApplicationService implements RolePe
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(RolePermissionCommand command, EventStoreAggregateId eventStoreAggregateId, RolePermissionState state)

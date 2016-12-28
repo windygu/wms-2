@@ -113,7 +113,7 @@ public abstract class AbstractRoleApplicationService implements RoleApplicationS
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(RoleCommand command, EventStoreAggregateId eventStoreAggregateId, RoleState state)

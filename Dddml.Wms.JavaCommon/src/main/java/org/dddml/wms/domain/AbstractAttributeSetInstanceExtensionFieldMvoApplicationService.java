@@ -113,7 +113,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoApplicationSe
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getAttrSetInstEFGroupVersion(), // State version may be null!
             aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
-        
+
     }
 
     protected boolean isRepeatedCommand(AttributeSetInstanceExtensionFieldMvoCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeSetInstanceExtensionFieldMvoState state)

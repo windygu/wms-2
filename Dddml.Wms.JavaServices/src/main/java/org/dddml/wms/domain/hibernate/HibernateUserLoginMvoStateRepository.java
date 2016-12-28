@@ -25,19 +25,34 @@ public class HibernateUserLoginMvoStateRepository implements UserLoginMvoStateRe
         return this.sessionFactory.getCurrentSession();
     }
     
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("UserLoginId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "UserUserName", "UserAccessFailedCount", "UserEmail", "UserEmailConfirmed", "UserLockoutEnabled", "UserLockoutEndDateUtc", "UserPasswordHash", "UserPhoneNumber", "UserPhoneNumberConfirmed", "UserTwoFactorEnabled", "UserSecurityStamp", "UserUserRoles", "UserUserClaims", "UserUserPermissions", "UserUserLogins", "UserVersion", "UserCreatedBy", "UserCreatedAt", "UserUpdatedBy", "UserUpdatedAt", "UserActive", "UserDeleted"));
+    
+    private ReadOnlyProxyGenerator readOnlyProxyGenerator;
+    
+    public ReadOnlyProxyGenerator getReadOnlyProxyGenerator() {
+        return readOnlyProxyGenerator;
+    }
+
+    public void setReadOnlyProxyGenerator(ReadOnlyProxyGenerator readOnlyProxyGenerator) {
+        this.readOnlyProxyGenerator = readOnlyProxyGenerator;
+    }
+
     @Transactional(readOnly = true)
     public UserLoginMvoState get(UserLoginId id)
     {
         return get(id, false);
     }
 
-   @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public UserLoginMvoState get(UserLoginId id, boolean nullAllowed)
     {
         UserLoginMvoState state = (UserLoginMvoState)getCurrentSession().get(AbstractUserLoginMvoState.SimpleUserLoginMvoState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractUserLoginMvoState.SimpleUserLoginMvoState();
             state.setUserLoginId(id);
+        }
+        if (getReadOnlyProxyGenerator() != null && state != null) {
+            return (UserLoginMvoState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UserLoginMvoState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -54,15 +69,19 @@ public class HibernateUserLoginMvoStateRepository implements UserLoginMvoStateRe
 
     public void save(UserLoginMvoState state)
     {
-        if(state.getUserVersion() == null) {
-            getCurrentSession().save(state);
+        UserLoginMvoState s = state;
+        if (getReadOnlyProxyGenerator() != null) {
+            s = (UserLoginMvoState) getReadOnlyProxyGenerator().getTarget(state);
+        }
+        if(s.getUserVersion() == null) {
+            getCurrentSession().save(s);
         }else {
-            getCurrentSession().update(state);
+            getCurrentSession().update(s);
         }
 
-        if (state instanceof Saveable)
+        if (s instanceof Saveable)
         {
-            Saveable saveable = (Saveable) state;
+            Saveable saveable = (Saveable) s;
             saveable.save();
         }
     }
