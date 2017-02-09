@@ -15,7 +15,10 @@ namespace Dddml.Wms.HttpServices
     {
         public static void Register(HttpConfiguration config)
         {
-			
+
+            //去除 XML 输出，默认输出 JSON
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+
             // Web API 配置和服务
             // 将 Web API 配置为仅使用不记名令牌身份验证。
             config.SuppressDefaultHostAuthentication();
