@@ -17,6 +17,8 @@ namespace Dddml.Wms.Domain
 
 		protected abstract IAttributeSetInstanceExtensionFieldMvoStateRepository StateRepository { get; }
 
+		protected abstract IAttributeSetInstanceExtensionFieldMvoStateQueryRepository StateQueryRepository { get; }
+
 		protected AttributeSetInstanceExtensionFieldMvoApplicationServiceBase()
 		{
 		}
@@ -24,7 +26,7 @@ namespace Dddml.Wms.Domain
 		protected virtual void Update(IAttributeSetInstanceExtensionFieldMvoCommand c, Action<IAttributeSetInstanceExtensionFieldMvoAggregate> action)
 		{
 			var aggregateId = c.AggregateId;
-			var state = StateRepository.Get(aggregateId);
+			var state = StateRepository.Get(aggregateId, false);
 			var aggregate = GetAttributeSetInstanceExtensionFieldMvoAggregate(state);
 
 			var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
@@ -82,36 +84,36 @@ namespace Dddml.Wms.Domain
 
         public virtual IEnumerable<IAttributeSetInstanceExtensionFieldMvoState> GetAll(int firstResult, int maxResults)
 		{
-            var states = StateRepository.GetAll(firstResult, maxResults);
+            var states = StateQueryRepository.GetAll(firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<IAttributeSetInstanceExtensionFieldMvoState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
 		{
-            var states = StateRepository.Get(filter, orders, firstResult, maxResults);
+            var states = StateQueryRepository.Get(filter, orders, firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<IAttributeSetInstanceExtensionFieldMvoState> Get(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
 		{
-            var states = StateRepository.Get(filter, orders, firstResult, maxResults);
+            var states = StateQueryRepository.Get(filter, orders, firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<IAttributeSetInstanceExtensionFieldMvoState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = StateRepository.GetByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+            var states = StateQueryRepository.GetByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
 			return states;
         }
 
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
 		{
-            return StateRepository.GetCount(filter);
+            return StateQueryRepository.GetCount(filter);
 		}
 
         public virtual long GetCount(ICriterion filter)
 		{
-            return StateRepository.GetCount(filter);
+            return StateQueryRepository.GetCount(filter);
 		}
 
 	    public virtual IAttributeSetInstanceExtensionFieldMvoStateEvent GetStateEvent(AttributeSetInstanceExtensionFieldId attributeSetInstanceExtensionFieldId, long version)

@@ -37,10 +37,21 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-		public UserClaimMvoApplicationService(IEventStore eventStore, IUserClaimMvoStateRepository stateRepository)
+		private IUserClaimMvoStateQueryRepository _stateQueryRepository;
+
+		protected override IUserClaimMvoStateQueryRepository StateQueryRepository
+		{
+			get
+			{
+				return _stateQueryRepository;
+			}
+		}
+
+		public UserClaimMvoApplicationService(IEventStore eventStore, IUserClaimMvoStateRepository stateRepository, IUserClaimMvoStateQueryRepository stateQueryRepository)
 		{
 			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
+			this._stateQueryRepository = stateQueryRepository;
 		}
 
 		public override IEventStoreAggregateId ToEventStoreAggregateId(UserClaimId aggregateId)

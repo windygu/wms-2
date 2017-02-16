@@ -11,7 +11,7 @@ using Dddml.Support.Criterion;
 
 namespace Dddml.Wms.Domain
 {
-	public partial interface ILocatorStateRepository
+	public partial interface ILocatorStateQueryRepository
 	{
         IEnumerable<ILocatorState> GetLocatorTreeRoots(ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
 

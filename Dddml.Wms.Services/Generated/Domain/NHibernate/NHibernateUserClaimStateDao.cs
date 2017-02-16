@@ -30,12 +30,6 @@ namespace Dddml.Wms.Domain.NHibernate
 		public NHibernateUserClaimStateDao()
 		{
 		}
- 
-        [Transaction(ReadOnly = true)]
-        public IUserClaimState Get(UserClaimId id)
-        {
-            return Get(id, false);
-        }
 
         [Transaction(ReadOnly = true)]
         public IUserClaimState Get(UserClaimId id, bool nullAllowed)

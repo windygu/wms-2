@@ -13,30 +13,11 @@ namespace Dddml.Wms.Domain
 {
 	public partial interface IAttributeStateRepository
 	{
-        IAttributeState Get(string id);
 
         IAttributeState Get(string id, bool nullAllowed);
-
-        IEnumerable<IAttributeState> GetAll(int firstResult, int maxResults);
         
         void Save(IAttributeState state);
         
-        IEnumerable<IAttributeState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        IEnumerable<IAttributeState> Get(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        IAttributeState GetFirst(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null);
-
-        IAttributeState GetFirst(KeyValuePair<string, object> keyValue, IList<string> orders = null);
-
-        IEnumerable<IAttributeState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        long GetCount(IEnumerable<KeyValuePair<string, object>> filter);
-
-        long GetCount(ICriterion filter);
-
-        IAttributeValueState GetAttributeValue(string attributeId, string value);
-
 	}
 
 }

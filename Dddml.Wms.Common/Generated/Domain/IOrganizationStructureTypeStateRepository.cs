@@ -13,28 +13,11 @@ namespace Dddml.Wms.Domain
 {
 	public partial interface IOrganizationStructureTypeStateRepository
 	{
-        IOrganizationStructureTypeState Get(string id);
 
         IOrganizationStructureTypeState Get(string id, bool nullAllowed);
-
-        IEnumerable<IOrganizationStructureTypeState> GetAll(int firstResult, int maxResults);
         
         void Save(IOrganizationStructureTypeState state);
         
-        IEnumerable<IOrganizationStructureTypeState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        IEnumerable<IOrganizationStructureTypeState> Get(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        IOrganizationStructureTypeState GetFirst(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null);
-
-        IOrganizationStructureTypeState GetFirst(KeyValuePair<string, object> keyValue, IList<string> orders = null);
-
-        IEnumerable<IOrganizationStructureTypeState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        long GetCount(IEnumerable<KeyValuePair<string, object>> filter);
-
-        long GetCount(ICriterion filter);
-
 	}
 
 }

@@ -13,28 +13,11 @@ namespace Dddml.Wms.Domain
 {
 	public partial interface IAttributeSetInstanceExtensionFieldMvoStateRepository
 	{
-        IAttributeSetInstanceExtensionFieldMvoState Get(AttributeSetInstanceExtensionFieldId id);
 
         IAttributeSetInstanceExtensionFieldMvoState Get(AttributeSetInstanceExtensionFieldId id, bool nullAllowed);
-
-        IEnumerable<IAttributeSetInstanceExtensionFieldMvoState> GetAll(int firstResult, int maxResults);
         
         void Save(IAttributeSetInstanceExtensionFieldMvoState state);
         
-        IEnumerable<IAttributeSetInstanceExtensionFieldMvoState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        IEnumerable<IAttributeSetInstanceExtensionFieldMvoState> Get(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        IAttributeSetInstanceExtensionFieldMvoState GetFirst(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null);
-
-        IAttributeSetInstanceExtensionFieldMvoState GetFirst(KeyValuePair<string, object> keyValue, IList<string> orders = null);
-
-        IEnumerable<IAttributeSetInstanceExtensionFieldMvoState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        long GetCount(IEnumerable<KeyValuePair<string, object>> filter);
-
-        long GetCount(ICriterion filter);
-
 	}
 
 }

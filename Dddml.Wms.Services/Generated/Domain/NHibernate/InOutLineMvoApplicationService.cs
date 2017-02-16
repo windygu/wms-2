@@ -38,10 +38,21 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-		public InOutLineMvoApplicationService(IEventStore eventStore, IInOutLineMvoStateRepository stateRepository)
+		private IInOutLineMvoStateQueryRepository _stateQueryRepository;
+
+		protected override IInOutLineMvoStateQueryRepository StateQueryRepository
+		{
+			get
+			{
+				return _stateQueryRepository;
+			}
+		}
+
+		public InOutLineMvoApplicationService(IEventStore eventStore, IInOutLineMvoStateRepository stateRepository, IInOutLineMvoStateQueryRepository stateQueryRepository)
 		{
 			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
+			this._stateQueryRepository = stateQueryRepository;
 		}
 
 		public override IEventStoreAggregateId ToEventStoreAggregateId(InOutLineId aggregateId)

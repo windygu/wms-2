@@ -2,7 +2,7 @@
 <objects xmlns="http://www.springframework.net" xmlns:tx="http://www.springframework.net/tx">
   
   <object id="attributeSetInstanceIdGenerator" type="Dddml.Wms.Domain.AttributeSetInstanceIdGenerator, Dddml.Wms.Services">
-    <property name="AttributeSetInstanceStateRepository" ref="attributeSetInstanceStateRepository"/>
+    <property name="AttributeSetInstanceStateQueryRepository" ref="attributeSetInstanceStateQueryRepository"/>
   </object>
 
 </objects>

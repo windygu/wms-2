@@ -775,6 +775,9 @@
     <Compile Include="Generated\Domain\IAttributeSetInstanceExtensionFieldGroupStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IAttributeSetInstanceExtensionFieldGroupStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IAttributeSetInstanceExtensionFieldGroupStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -800,6 +803,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IAttributeSetInstanceExtensionFieldMvoStateProperties.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\IAttributeSetInstanceExtensionFieldMvoStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IAttributeSetInstanceExtensionFieldMvoStateRepository.cs">
@@ -838,6 +844,9 @@
     <Compile Include="Generated\Domain\IAttributeSetInstanceStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IAttributeSetInstanceStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IAttributeSetInstanceStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -853,6 +862,9 @@
     <Compile Include="Generated\Domain\IAttributeSetStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IAttributeSetStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IAttributeSetStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -866,6 +878,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IAttributeStateProperties.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\IAttributeStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IAttributeStateRepository.cs">
@@ -896,6 +911,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IAttributeUseMvoStateProperties.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\IAttributeUseMvoStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IAttributeUseMvoStateRepository.cs">
@@ -949,6 +967,9 @@
     <Compile Include="Generated\Domain\IAttributeValueMvoStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IAttributeValueMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IAttributeValueMvoStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -997,6 +1018,9 @@
     <Compile Include="Generated\Domain\IAudienceStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IAudienceStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IAudienceStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -1039,6 +1063,9 @@
     <Compile Include="Generated\Domain\IInOutLineMvoStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IInOutLineMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IInOutLineMvoStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -1075,6 +1102,9 @@
     <Compile Include="Generated\Domain\IInOutStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IInOutStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IInOutStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -1102,10 +1132,13 @@
     <Compile Include="Generated\Domain\ILocatorStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\ILocatorStateRepository.cs">
+    <Compile Include="Generated\Domain\ILocatorStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\ILocatorStateRepositoryLocatorTree.cs">
+    <Compile Include="Generated\Domain\ILocatorStateQueryRepositoryLocatorTree.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ILocatorStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\ILocatorTree.cs">
@@ -1315,6 +1348,9 @@
     <Compile Include="Generated\Domain\IOrganizationStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IOrganizationStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IOrganizationStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -1342,10 +1378,13 @@
     <Compile Include="Generated\Domain\IOrganizationStructureStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\IOrganizationStructureStateRepository.cs">
+    <Compile Include="Generated\Domain\IOrganizationStructureStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\IOrganizationStructureStateRepositoryOrganizationTreeStructure.cs">
+    <Compile Include="Generated\Domain\IOrganizationStructureStateQueryRepositoryOrganizationTreeStructure.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\IOrganizationStructureStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IOrganizationStructureTypeAggregate.cs">
@@ -1370,6 +1409,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IOrganizationStructureTypeStateProperties.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\IOrganizationStructureTypeStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IOrganizationStructureTypeStateRepository.cs">
@@ -1405,10 +1447,13 @@
     <Compile Include="Generated\Domain\IPermissionStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\IPermissionStateRepository.cs">
+    <Compile Include="Generated\Domain\IPermissionStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\IPermissionStateRepositoryPermissionTree.cs">
+    <Compile Include="Generated\Domain\IPermissionStateQueryRepositoryPermissionTree.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\IPermissionStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IPermissionTree.cs">
@@ -1453,6 +1498,9 @@
     <Compile Include="Generated\Domain\IRolePermissionStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IRolePermissionStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IRolePermissionStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -1466,6 +1514,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IRoleStateProperties.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\IRoleStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IRoleStateRepository.cs">
@@ -1505,6 +1556,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IUserClaimMvoStateProperties.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\IUserClaimMvoStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IUserClaimMvoStateRepository.cs">
@@ -1561,6 +1615,9 @@
     <Compile Include="Generated\Domain\IUserLoginMvoStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IUserLoginMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IUserLoginMvoStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -1610,6 +1667,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IUserPermissionMvoStateProperties.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\IUserPermissionMvoStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IUserPermissionMvoStateRepository.cs">
@@ -1663,6 +1723,9 @@
     <Compile Include="Generated\Domain\IUserRoleMvoStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IUserRoleMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IUserRoleMvoStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -1699,6 +1762,9 @@
     <Compile Include="Generated\Domain\IUserStateProperties.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\IUserStateQueryRepository.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\IUserStateRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -1724,6 +1790,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IWarehouseStateProperties.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\IWarehouseStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\IWarehouseStateRepository.cs">
@@ -3234,6 +3303,7 @@
 .\IAttributeSetInstanceExtensionFieldGroupStateDto.cs
 .\IAttributeSetInstanceExtensionFieldGroupStateEvent.cs
 .\IAttributeSetInstanceExtensionFieldGroupStateProperties.cs
+.\IAttributeSetInstanceExtensionFieldGroupStateQueryRepository.cs
 .\IAttributeSetInstanceExtensionFieldGroupStateRepository.cs
 .\IAttributeSetInstanceExtensionFieldMvoAggregate.cs
 .\IAttributeSetInstanceExtensionFieldMvoApplicationService.cs
@@ -3243,6 +3313,7 @@
 .\IAttributeSetInstanceExtensionFieldMvoStateDto.cs
 .\IAttributeSetInstanceExtensionFieldMvoStateEvent.cs
 .\IAttributeSetInstanceExtensionFieldMvoStateProperties.cs
+.\IAttributeSetInstanceExtensionFieldMvoStateQueryRepository.cs
 .\IAttributeSetInstanceExtensionFieldMvoStateRepository.cs
 .\IAttributeSetInstanceExtensionFieldState.cs
 .\IAttributeSetInstanceExtensionFieldStateDao.cs
@@ -3255,16 +3326,19 @@
 .\IAttributeSetInstanceStateDto.cs
 .\IAttributeSetInstanceStateEvent.cs
 .\IAttributeSetInstanceStateProperties.cs
+.\IAttributeSetInstanceStateQueryRepository.cs
 .\IAttributeSetInstanceStateRepository.cs
 .\IAttributeSetState.cs
 .\IAttributeSetStateDto.cs
 .\IAttributeSetStateEvent.cs
 .\IAttributeSetStateProperties.cs
+.\IAttributeSetStateQueryRepository.cs
 .\IAttributeSetStateRepository.cs
 .\IAttributeState.cs
 .\IAttributeStateDto.cs
 .\IAttributeStateEvent.cs
 .\IAttributeStateProperties.cs
+.\IAttributeStateQueryRepository.cs
 .\IAttributeStateRepository.cs
 .\IAttributeUseCommand.cs
 .\IAttributeUseMvoAggregate.cs
@@ -3275,6 +3349,7 @@
 .\IAttributeUseMvoStateDto.cs
 .\IAttributeUseMvoStateEvent.cs
 .\IAttributeUseMvoStateProperties.cs
+.\IAttributeUseMvoStateQueryRepository.cs
 .\IAttributeUseMvoStateRepository.cs
 .\IAttributeUseState.cs
 .\IAttributeUseStateDao.cs
@@ -3292,6 +3367,7 @@
 .\IAttributeValueMvoStateDto.cs
 .\IAttributeValueMvoStateEvent.cs
 .\IAttributeValueMvoStateProperties.cs
+.\IAttributeValueMvoStateQueryRepository.cs
 .\IAttributeValueMvoStateRepository.cs
 .\IAttributeValueState.cs
 .\IAttributeValueStateDao.cs
@@ -3308,6 +3384,7 @@
 .\IAudienceStateDto.cs
 .\IAudienceStateEvent.cs
 .\IAudienceStateProperties.cs
+.\IAudienceStateQueryRepository.cs
 .\IAudienceStateRepository.cs
 .\IInOutAggregate.cs
 .\IInOutApplicationService.cs
@@ -3322,6 +3399,7 @@
 .\IInOutLineMvoStateDto.cs
 .\IInOutLineMvoStateEvent.cs
 .\IInOutLineMvoStateProperties.cs
+.\IInOutLineMvoStateQueryRepository.cs
 .\IInOutLineMvoStateRepository.cs
 .\IInOutLineState.cs
 .\IInOutLineStateDao.cs
@@ -3334,6 +3412,7 @@
 .\IInOutStateDto.cs
 .\IInOutStateEvent.cs
 .\IInOutStateProperties.cs
+.\IInOutStateQueryRepository.cs
 .\IInOutStateRepository.cs
 .\ILocatorAggregate.cs
 .\ILocatorApplicationService.cs
@@ -3343,8 +3422,9 @@
 .\ILocatorStateDto.cs
 .\ILocatorStateEvent.cs
 .\ILocatorStateProperties.cs
+.\ILocatorStateQueryRepository.cs
+.\ILocatorStateQueryRepositoryLocatorTree.cs
 .\ILocatorStateRepository.cs
-.\ILocatorStateRepositoryLocatorTree.cs
 .\InOutAggregate.cs
 .\InOutApplicationServiceBase.cs
 .\InOutApplicationServiceFactory.cs
@@ -3412,6 +3492,7 @@
 .\IOrganizationStateDto.cs
 .\IOrganizationStateEvent.cs
 .\IOrganizationStateProperties.cs
+.\IOrganizationStateQueryRepository.cs
 .\IOrganizationStateRepository.cs
 .\IOrganizationStructureAggregate.cs
 .\IOrganizationStructureApplicationService.cs
@@ -3421,8 +3502,9 @@
 .\IOrganizationStructureStateDto.cs
 .\IOrganizationStructureStateEvent.cs
 .\IOrganizationStructureStateProperties.cs
+.\IOrganizationStructureStateQueryRepository.cs
+.\IOrganizationStructureStateQueryRepositoryOrganizationTreeStructure.cs
 .\IOrganizationStructureStateRepository.cs
-.\IOrganizationStructureStateRepositoryOrganizationTreeStructure.cs
 .\IOrganizationStructureTypeAggregate.cs
 .\IOrganizationStructureTypeApplicationService.cs
 .\IOrganizationStructureTypeApplicationServiceFactory.cs
@@ -3431,6 +3513,7 @@
 .\IOrganizationStructureTypeStateDto.cs
 .\IOrganizationStructureTypeStateEvent.cs
 .\IOrganizationStructureTypeStateProperties.cs
+.\IOrganizationStructureTypeStateQueryRepository.cs
 .\IOrganizationStructureTypeStateRepository.cs
 .\IPermissionAggregate.cs
 .\IPermissionApplicationService.cs
@@ -3440,8 +3523,9 @@
 .\IPermissionStateDto.cs
 .\IPermissionStateEvent.cs
 .\IPermissionStateProperties.cs
+.\IPermissionStateQueryRepository.cs
+.\IPermissionStateQueryRepositoryPermissionTree.cs
 .\IPermissionStateRepository.cs
-.\IPermissionStateRepositoryPermissionTree.cs
 .\IRoleAggregate.cs
 .\IRoleApplicationService.cs
 .\IRoleApplicationServiceFactory.cs
@@ -3454,11 +3538,13 @@
 .\IRolePermissionStateDto.cs
 .\IRolePermissionStateEvent.cs
 .\IRolePermissionStateProperties.cs
+.\IRolePermissionStateQueryRepository.cs
 .\IRolePermissionStateRepository.cs
 .\IRoleState.cs
 .\IRoleStateDto.cs
 .\IRoleStateEvent.cs
 .\IRoleStateProperties.cs
+.\IRoleStateQueryRepository.cs
 .\IRoleStateRepository.cs
 .\IUserAggregate.cs
 .\IUserApplicationService.cs
@@ -3472,6 +3558,7 @@
 .\IUserClaimMvoStateDto.cs
 .\IUserClaimMvoStateEvent.cs
 .\IUserClaimMvoStateProperties.cs
+.\IUserClaimMvoStateQueryRepository.cs
 .\IUserClaimMvoStateRepository.cs
 .\IUserClaimState.cs
 .\IUserClaimStateDao.cs
@@ -3490,6 +3577,7 @@
 .\IUserLoginMvoStateDto.cs
 .\IUserLoginMvoStateEvent.cs
 .\IUserLoginMvoStateProperties.cs
+.\IUserLoginMvoStateQueryRepository.cs
 .\IUserLoginMvoStateRepository.cs
 .\IUserLoginState.cs
 .\IUserLoginStateDao.cs
@@ -3507,6 +3595,7 @@
 .\IUserPermissionMvoStateDto.cs
 .\IUserPermissionMvoStateEvent.cs
 .\IUserPermissionMvoStateProperties.cs
+.\IUserPermissionMvoStateQueryRepository.cs
 .\IUserPermissionMvoStateRepository.cs
 .\IUserPermissionState.cs
 .\IUserPermissionStateDao.cs
@@ -3524,6 +3613,7 @@
 .\IUserRoleMvoStateDto.cs
 .\IUserRoleMvoStateEvent.cs
 .\IUserRoleMvoStateProperties.cs
+.\IUserRoleMvoStateQueryRepository.cs
 .\IUserRoleMvoStateRepository.cs
 .\IUserRoleState.cs
 .\IUserRoleStateDao.cs
@@ -3536,6 +3626,7 @@
 .\IUserStateDto.cs
 .\IUserStateEvent.cs
 .\IUserStateProperties.cs
+.\IUserStateQueryRepository.cs
 .\IUserStateRepository.cs
 .\IWarehouseAggregate.cs
 .\IWarehouseApplicationService.cs
@@ -3545,6 +3636,7 @@
 .\IWarehouseStateDto.cs
 .\IWarehouseStateEvent.cs
 .\IWarehouseStateProperties.cs
+.\IWarehouseStateQueryRepository.cs
 .\IWarehouseStateRepository.cs
 .\LocatorAggregate.cs
 .\LocatorApplicationServiceBase.cs

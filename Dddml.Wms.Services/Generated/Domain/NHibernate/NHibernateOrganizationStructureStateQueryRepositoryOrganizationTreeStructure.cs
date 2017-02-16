@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.NHibernate
 {
 
-	public partial class NHibernateOrganizationStructureStateRepository
+	public partial class NHibernateOrganizationStructureStateQueryRepository
 	{
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<IOrganizationStructureState> GetOrganizationTreeRoots(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)

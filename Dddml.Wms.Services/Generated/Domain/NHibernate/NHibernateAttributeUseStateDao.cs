@@ -30,12 +30,6 @@ namespace Dddml.Wms.Domain.NHibernate
 		public NHibernateAttributeUseStateDao()
 		{
 		}
- 
-        [Transaction(ReadOnly = true)]
-        public IAttributeUseState Get(AttributeSetAttributeUseId id)
-        {
-            return Get(id, false);
-        }
 
         [Transaction(ReadOnly = true)]
         public IAttributeUseState Get(AttributeSetAttributeUseId id, bool nullAllowed)

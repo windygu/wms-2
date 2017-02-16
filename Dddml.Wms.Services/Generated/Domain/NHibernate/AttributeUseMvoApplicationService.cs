@@ -37,10 +37,21 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-		public AttributeUseMvoApplicationService(IEventStore eventStore, IAttributeUseMvoStateRepository stateRepository)
+		private IAttributeUseMvoStateQueryRepository _stateQueryRepository;
+
+		protected override IAttributeUseMvoStateQueryRepository StateQueryRepository
+		{
+			get
+			{
+				return _stateQueryRepository;
+			}
+		}
+
+		public AttributeUseMvoApplicationService(IEventStore eventStore, IAttributeUseMvoStateRepository stateRepository, IAttributeUseMvoStateQueryRepository stateQueryRepository)
 		{
 			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
+			this._stateQueryRepository = stateQueryRepository;
 		}
 
 		public override IEventStoreAggregateId ToEventStoreAggregateId(AttributeSetAttributeUseId aggregateId)

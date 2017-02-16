@@ -17,6 +17,8 @@ namespace Dddml.Wms.Domain
 
 		protected abstract ILocatorStateRepository StateRepository { get; }
 
+		protected abstract ILocatorStateQueryRepository StateQueryRepository { get; }
+
 		protected LocatorApplicationServiceBase()
 		{
 		}
@@ -24,7 +26,7 @@ namespace Dddml.Wms.Domain
 		protected virtual void Update(ILocatorCommand c, Action<ILocatorAggregate> action)
 		{
 			var aggregateId = c.AggregateId;
-			var state = StateRepository.Get(aggregateId);
+			var state = StateRepository.Get(aggregateId, false);
 			var aggregate = GetLocatorAggregate(state);
 
 			var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
@@ -82,36 +84,36 @@ namespace Dddml.Wms.Domain
 
         public virtual IEnumerable<ILocatorState> GetAll(int firstResult, int maxResults)
 		{
-            var states = StateRepository.GetAll(firstResult, maxResults);
+            var states = StateQueryRepository.GetAll(firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<ILocatorState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
 		{
-            var states = StateRepository.Get(filter, orders, firstResult, maxResults);
+            var states = StateQueryRepository.Get(filter, orders, firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<ILocatorState> Get(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
 		{
-            var states = StateRepository.Get(filter, orders, firstResult, maxResults);
+            var states = StateQueryRepository.Get(filter, orders, firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<ILocatorState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = StateRepository.GetByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+            var states = StateQueryRepository.GetByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
 			return states;
         }
 
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
 		{
-            return StateRepository.GetCount(filter);
+            return StateQueryRepository.GetCount(filter);
 		}
 
         public virtual long GetCount(ICriterion filter)
 		{
-            return StateRepository.GetCount(filter);
+            return StateQueryRepository.GetCount(filter);
 		}
 
 	    public virtual ILocatorStateEvent GetStateEvent(string locatorId, long version)

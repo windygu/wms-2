@@ -37,10 +37,21 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-		public UserPermissionMvoApplicationService(IEventStore eventStore, IUserPermissionMvoStateRepository stateRepository)
+		private IUserPermissionMvoStateQueryRepository _stateQueryRepository;
+
+		protected override IUserPermissionMvoStateQueryRepository StateQueryRepository
+		{
+			get
+			{
+				return _stateQueryRepository;
+			}
+		}
+
+		public UserPermissionMvoApplicationService(IEventStore eventStore, IUserPermissionMvoStateRepository stateRepository, IUserPermissionMvoStateQueryRepository stateQueryRepository)
 		{
 			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
+			this._stateQueryRepository = stateQueryRepository;
 		}
 
 		public override IEventStoreAggregateId ToEventStoreAggregateId(UserPermissionId aggregateId)

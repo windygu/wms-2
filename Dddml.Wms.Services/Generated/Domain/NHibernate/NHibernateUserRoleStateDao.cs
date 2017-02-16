@@ -30,12 +30,6 @@ namespace Dddml.Wms.Domain.NHibernate
 		public NHibernateUserRoleStateDao()
 		{
 		}
- 
-        [Transaction(ReadOnly = true)]
-        public IUserRoleState Get(UserRoleId id)
-        {
-            return Get(id, false);
-        }
 
         [Transaction(ReadOnly = true)]
         public IUserRoleState Get(UserRoleId id, bool nullAllowed)

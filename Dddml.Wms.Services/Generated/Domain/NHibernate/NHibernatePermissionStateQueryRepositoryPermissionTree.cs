@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.NHibernate
 {
 
-	public partial class NHibernatePermissionStateRepository
+	public partial class NHibernatePermissionStateQueryRepository
 	{
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<IPermissionState> GetPermissionTreeRoots(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)

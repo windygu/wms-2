@@ -11,7 +11,7 @@ using Dddml.Support.Criterion;
 
 namespace Dddml.Wms.Domain
 {
-	public partial interface IOrganizationStructureStateRepository
+	public partial interface IOrganizationStructureStateQueryRepository
 	{
         IEnumerable<IOrganizationStructureState> GetOrganizationTreeRoots(ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
 

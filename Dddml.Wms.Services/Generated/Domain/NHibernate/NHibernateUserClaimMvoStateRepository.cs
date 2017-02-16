@@ -31,18 +31,12 @@ namespace Dddml.Wms.Domain.NHibernate
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
-		public NHibernateUserClaimMvoStateRepository ()
+		public NHibernateUserClaimMvoStateRepository()
 		{
 		}
 
 		[Transaction (ReadOnly = true)]
-		public IUserClaimMvoState Get (UserClaimId id)
-		{
-			return Get(id, false);
-		}
-
-		[Transaction (ReadOnly = true)]
-		public IUserClaimMvoState Get (UserClaimId id, bool nullAllowed)
+		public IUserClaimMvoState Get(UserClaimId id, bool nullAllowed)
 		{
 			IUserClaimMvoState state = CurrentSession.Get<UserClaimMvoState> (id);
 			if (!nullAllowed && state == null) {
@@ -56,18 +50,8 @@ namespace Dddml.Wms.Domain.NHibernate
 			return state;
 		}
 
-        [Transaction(ReadOnly = true)]
-        public IEnumerable<IUserClaimMvoState> GetAll(int firstResult, int maxResults)
-        {
-            var criteria = CurrentSession.CreateCriteria<UserClaimMvoState>();
-            criteria.SetFirstResult(firstResult);
-            criteria.SetMaxResults(maxResults);
-            AddNotDeletedRestriction(criteria);
-            return criteria.List<UserClaimMvoState>();
-        }
-
 		[Transaction]
-		public void Save (IUserClaimMvoState state)
+		public void Save(IUserClaimMvoState state)
 		{
             IUserClaimMvoState s = state;
             if (ReadOnlyProxyGenerator != null)
@@ -82,80 +66,10 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-        [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IUserClaimMvoState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
-        {
-            var criteria = CurrentSession.CreateCriteria<UserClaimMvoState>();
-
-            NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
-            AddNotDeletedRestriction(criteria);
-            return criteria.List<UserClaimMvoState>();
-        }
-
-        [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IUserClaimMvoState> Get(Dddml.Support.Criterion.ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
-        {
-            var criteria = CurrentSession.CreateCriteria<UserClaimMvoState>();
-
-            NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
-            AddNotDeletedRestriction(criteria);
-            return criteria.List<UserClaimMvoState>();
-        }
-
-
-        [Transaction(ReadOnly = true)]
-        public virtual IUserClaimMvoState GetFirst(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null)
-        {
-            var list = (IList<UserClaimMvoState>)Get(filter, orders, 0, 1);
-            if (list == null || list.Count <= 0)
-            {
-                return null;
-            }
-            return list[0];
-        }
-
-        [Transaction(ReadOnly = true)]
-        public virtual IUserClaimMvoState GetFirst(KeyValuePair<string, object> keyValue, IList<string> orders = null)
-        {
-            return GetFirst(new KeyValuePair<string, object>[] { keyValue }, orders);
-        }
-
-        [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IUserClaimMvoState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
-        {
-            var filter = new KeyValuePair<string, object>[] { new KeyValuePair<string, object>(propertyName, propertyValue) };
-            return Get(filter, orders, firstResult, maxResults);
-        }
-
-        [Transaction(ReadOnly = true)]
-        public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
-        {
-            var criteria = CurrentSession.CreateCriteria<UserClaimMvoState>();
-            criteria.SetProjection(Projections.RowCountInt64());
-            NHibernateUtils.CriteriaAddFilter(criteria, filter);
-            AddNotDeletedRestriction(criteria);
-            return criteria.UniqueResult<long>();
-        }
-
-        [Transaction(ReadOnly = true)]
-        public virtual long GetCount(Dddml.Support.Criterion.ICriterion filter)
-        {
-            var criteria = CurrentSession.CreateCriteria<UserClaimMvoState>();
-            criteria.SetProjection(Projections.RowCountInt64());
-            if (filter != null)
-            {
-                NHibernateICriterion hc = CriterionUtils.ToNHibernateCriterion(filter);
-                criteria.Add(hc);
-            }
-            AddNotDeletedRestriction(criteria);
-            return criteria.UniqueResult<long>();
-        }
-
-
-        protected static void AddNotDeletedRestriction(ICriteria criteria)
-        {
-            criteria.Add(NHibernateRestrictions.Eq("Deleted", false));
-        }
+        //protected static void AddNotDeletedRestriction(ICriteria criteria)
+        //{
+        //    criteria.Add(NHibernateRestrictions.Eq("Deleted", false));
+        //}
 
 	}
 }

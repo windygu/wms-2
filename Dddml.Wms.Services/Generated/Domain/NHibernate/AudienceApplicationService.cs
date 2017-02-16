@@ -37,10 +37,21 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-		public AudienceApplicationService(IEventStore eventStore, IAudienceStateRepository stateRepository)
+		private IAudienceStateQueryRepository _stateQueryRepository;
+
+		protected override IAudienceStateQueryRepository StateQueryRepository
+		{
+			get
+			{
+				return _stateQueryRepository;
+			}
+		}
+
+		public AudienceApplicationService(IEventStore eventStore, IAudienceStateRepository stateRepository, IAudienceStateQueryRepository stateQueryRepository)
 		{
 			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
+			this._stateQueryRepository = stateQueryRepository;
 		}
 
 		public override IEventStoreAggregateId ToEventStoreAggregateId(string aggregateId)

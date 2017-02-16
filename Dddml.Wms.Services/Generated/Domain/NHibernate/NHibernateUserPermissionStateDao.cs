@@ -30,12 +30,6 @@ namespace Dddml.Wms.Domain.NHibernate
 		public NHibernateUserPermissionStateDao()
 		{
 		}
- 
-        [Transaction(ReadOnly = true)]
-        public IUserPermissionState Get(UserPermissionId id)
-        {
-            return Get(id, false);
-        }
 
         [Transaction(ReadOnly = true)]
         public IUserPermissionState Get(UserPermissionId id, bool nullAllowed)

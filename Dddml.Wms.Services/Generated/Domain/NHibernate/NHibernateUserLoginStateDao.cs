@@ -30,12 +30,6 @@ namespace Dddml.Wms.Domain.NHibernate
 		public NHibernateUserLoginStateDao()
 		{
 		}
- 
-        [Transaction(ReadOnly = true)]
-        public IUserLoginState Get(UserLoginId id)
-        {
-            return Get(id, false);
-        }
 
         [Transaction(ReadOnly = true)]
         public IUserLoginState Get(UserLoginId id, bool nullAllowed)

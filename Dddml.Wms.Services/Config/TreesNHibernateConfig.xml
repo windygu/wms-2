@@ -2,16 +2,16 @@
 <objects xmlns="http://www.springframework.net">
 
   <object id="permissionTreeRepository" type="Dddml.Wms.Domain.NHibernate.NHibernatePermissionTreeRepository, Dddml.Wms.Services">
-    <property name="PermissionStateRepository" ref="permissionStateRepository"/>
+    <property name="PermissionStateQueryRepository" ref="permissionStateQueryRepository"/>
   </object>
 
   <object id="organizationTreeRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateOrganizationTreeRepository, Dddml.Wms.Services">
-    <property name="OrganizationStateRepository" ref="organizationStateRepository"/>
-    <property name="OrganizationStructureStateRepository" ref="organizationStructureStateRepository"/>
+    <property name="OrganizationStateQueryRepository" ref="organizationStateQueryRepository"/>
+    <property name="OrganizationStructureStateQueryRepository" ref="organizationStructureStateQueryRepository"/>
   </object>
 
   <object id="locatorTreeRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateLocatorTreeRepository, Dddml.Wms.Services">
-    <property name="LocatorStateRepository" ref="locatorStateRepository"/>
+    <property name="LocatorStateQueryRepository" ref="locatorStateQueryRepository"/>
   </object>
 
 

@@ -37,10 +37,21 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-		public RoleApplicationService(IEventStore eventStore, IRoleStateRepository stateRepository)
+		private IRoleStateQueryRepository _stateQueryRepository;
+
+		protected override IRoleStateQueryRepository StateQueryRepository
+		{
+			get
+			{
+				return _stateQueryRepository;
+			}
+		}
+
+		public RoleApplicationService(IEventStore eventStore, IRoleStateRepository stateRepository, IRoleStateQueryRepository stateQueryRepository)
 		{
 			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
+			this._stateQueryRepository = stateQueryRepository;
 		}
 
 		public override IEventStoreAggregateId ToEventStoreAggregateId(string aggregateId)

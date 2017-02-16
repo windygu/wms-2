@@ -30,12 +30,6 @@ namespace Dddml.Wms.Domain.NHibernate
 		public NHibernateAttributeSetInstanceExtensionFieldStateDao()
 		{
 		}
- 
-        [Transaction(ReadOnly = true)]
-        public IAttributeSetInstanceExtensionFieldState Get(AttributeSetInstanceExtensionFieldId id)
-        {
-            return Get(id, false);
-        }
 
         [Transaction(ReadOnly = true)]
         public IAttributeSetInstanceExtensionFieldState Get(AttributeSetInstanceExtensionFieldId id, bool nullAllowed)

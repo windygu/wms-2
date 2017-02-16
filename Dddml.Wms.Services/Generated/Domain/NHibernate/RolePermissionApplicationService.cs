@@ -37,10 +37,21 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-		public RolePermissionApplicationService(IEventStore eventStore, IRolePermissionStateRepository stateRepository)
+		private IRolePermissionStateQueryRepository _stateQueryRepository;
+
+		protected override IRolePermissionStateQueryRepository StateQueryRepository
+		{
+			get
+			{
+				return _stateQueryRepository;
+			}
+		}
+
+		public RolePermissionApplicationService(IEventStore eventStore, IRolePermissionStateRepository stateRepository, IRolePermissionStateQueryRepository stateQueryRepository)
 		{
 			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
+			this._stateQueryRepository = stateQueryRepository;
 		}
 
 		public override IEventStoreAggregateId ToEventStoreAggregateId(RolePermissionId aggregateId)

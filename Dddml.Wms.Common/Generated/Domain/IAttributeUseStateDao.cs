@@ -13,8 +13,6 @@ namespace Dddml.Wms.Domain
     public interface IAttributeUseStateDao
     {
 
-        IAttributeUseState Get(AttributeSetAttributeUseId id);
-
         IAttributeUseState Get(AttributeSetAttributeUseId id, bool nullAllowed);
 
         void Save (IAttributeUseState state);

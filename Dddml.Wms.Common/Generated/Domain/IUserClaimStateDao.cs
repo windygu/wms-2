@@ -13,8 +13,6 @@ namespace Dddml.Wms.Domain
     public interface IUserClaimStateDao
     {
 
-        IUserClaimState Get(UserClaimId id);
-
         IUserClaimState Get(UserClaimId id, bool nullAllowed);
 
         void Save (IUserClaimState state);

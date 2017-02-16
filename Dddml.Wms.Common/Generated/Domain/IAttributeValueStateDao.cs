@@ -13,8 +13,6 @@ namespace Dddml.Wms.Domain
     public interface IAttributeValueStateDao
     {
 
-        IAttributeValueState Get(AttributeValueId id);
-
         IAttributeValueState Get(AttributeValueId id, bool nullAllowed);
 
         void Save (IAttributeValueState state);

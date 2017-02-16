@@ -10,7 +10,7 @@ namespace Dddml.Wms.Domain
    
     public class AttributeSetInstanceIdGenerator : AttributeSetInstanceIdGeneratorBase
     {
-        public IAttributeSetInstanceStateRepository AttributeSetInstanceStateRepository { get; set; }
+        public IAttributeSetInstanceStateQueryRepository AttributeSetInstanceStateQueryRepository { get; set; }
 
         public override string GenerateId(ICreateAttributeSetInstance command)
         {
@@ -22,7 +22,7 @@ namespace Dddml.Wms.Domain
             string hash = AttributeSetInstancePropertyUtils.GetHash(command);
             command.Hash = hash;
 
-            IAttributeSetInstanceState old = AttributeSetInstanceStateRepository.GetFirst(new KeyValuePair<string, object>("Hash", hash));
+            IAttributeSetInstanceState old = AttributeSetInstanceStateQueryRepository.GetFirst(new KeyValuePair<string, object>("Hash", hash));
             if (old != null)
             {
                 if (AttributeSetInstancePropertyUtils.Equals((ICreateAttributeSetInstance)command, (IAttributeSetInstanceState)old))

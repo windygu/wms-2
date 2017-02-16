@@ -37,10 +37,21 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-		public LocatorApplicationService(IEventStore eventStore, ILocatorStateRepository stateRepository)
+		private ILocatorStateQueryRepository _stateQueryRepository;
+
+		protected override ILocatorStateQueryRepository StateQueryRepository
+		{
+			get
+			{
+				return _stateQueryRepository;
+			}
+		}
+
+		public LocatorApplicationService(IEventStore eventStore, ILocatorStateRepository stateRepository, ILocatorStateQueryRepository stateQueryRepository)
 		{
 			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
+			this._stateQueryRepository = stateQueryRepository;
 		}
 
 		public override IEventStoreAggregateId ToEventStoreAggregateId(string aggregateId)

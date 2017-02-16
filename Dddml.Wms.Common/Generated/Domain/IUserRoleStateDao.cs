@@ -13,8 +13,6 @@ namespace Dddml.Wms.Domain
     public interface IUserRoleStateDao
     {
 
-        IUserRoleState Get(UserRoleId id);
-
         IUserRoleState Get(UserRoleId id, bool nullAllowed);
 
         void Save (IUserRoleState state);

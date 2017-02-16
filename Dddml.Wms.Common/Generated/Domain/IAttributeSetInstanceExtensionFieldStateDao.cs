@@ -13,8 +13,6 @@ namespace Dddml.Wms.Domain
     public interface IAttributeSetInstanceExtensionFieldStateDao
     {
 
-        IAttributeSetInstanceExtensionFieldState Get(AttributeSetInstanceExtensionFieldId id);
-
         IAttributeSetInstanceExtensionFieldState Get(AttributeSetInstanceExtensionFieldId id, bool nullAllowed);
 
         void Save (IAttributeSetInstanceExtensionFieldState state);

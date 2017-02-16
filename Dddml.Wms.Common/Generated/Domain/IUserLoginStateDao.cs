@@ -13,8 +13,6 @@ namespace Dddml.Wms.Domain
     public interface IUserLoginStateDao
     {
 
-        IUserLoginState Get(UserLoginId id);
-
         IUserLoginState Get(UserLoginId id, bool nullAllowed);
 
         void Save (IUserLoginState state);

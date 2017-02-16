@@ -18,12 +18,12 @@ namespace Dddml.Wms.Domain.NHibernate
     public partial class NHibernateLocatorTreeRepository : ILocatorTreeRepository
     {
 
-        private ILocatorStateRepository _locatorStateRepository;
+        private ILocatorStateQueryRepository _locatorStateQueryRepository;
 
-        public ILocatorStateRepository LocatorStateRepository
+        public ILocatorStateQueryRepository LocatorStateQueryRepository
         {
-            get { return this._locatorStateRepository; }
-            set { this._locatorStateRepository = value; }
+            get { return this._locatorStateQueryRepository; }
+            set { this._locatorStateQueryRepository = value; }
         }
 
 
@@ -31,28 +31,28 @@ namespace Dddml.Wms.Domain.NHibernate
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<ILocatorTree> GetRoots(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = LocatorStateRepository.GetLocatorTreeRoots(filter, orders, firstResult, maxResults);
+            var states = LocatorStateQueryRepository.GetLocatorTreeRoots(filter, orders, firstResult, maxResults);
             return ToLocatorTreeCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<ILocatorTree> GetChildren(string parentId, IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = LocatorStateRepository.GetLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
+            var states = LocatorStateQueryRepository.GetLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
             return ToLocatorTreeCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<string> GetRootIds(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = LocatorStateRepository.GetLocatorTreeRoots(filter, orders, firstResult, maxResults);
+            var states = LocatorStateQueryRepository.GetLocatorTreeRoots(filter, orders, firstResult, maxResults);
             return ToIdCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<string> GetChildIds(string parentId, IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = LocatorStateRepository.GetLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
+            var states = LocatorStateQueryRepository.GetLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
             return ToIdCollection(states);
         }
 
@@ -61,28 +61,28 @@ namespace Dddml.Wms.Domain.NHibernate
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<ILocatorTree> GetRoots(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = LocatorStateRepository.GetLocatorTreeRoots(filter, orders, firstResult, maxResults);
+            var states = LocatorStateQueryRepository.GetLocatorTreeRoots(filter, orders, firstResult, maxResults);
             return ToLocatorTreeCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<ILocatorTree> GetChildren(string parentId, Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = LocatorStateRepository.GetLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
+            var states = LocatorStateQueryRepository.GetLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
             return ToLocatorTreeCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<string> GetRootIds(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = LocatorStateRepository.GetLocatorTreeRoots(filter, orders, firstResult, maxResults);
+            var states = LocatorStateQueryRepository.GetLocatorTreeRoots(filter, orders, firstResult, maxResults);
             return ToIdCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<string> GetChildIds(string parentId, Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = LocatorStateRepository.GetLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
+            var states = LocatorStateQueryRepository.GetLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
             return ToIdCollection(states);
         }
 

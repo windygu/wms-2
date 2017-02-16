@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.NHibernate
 {
 
-	public partial class NHibernateLocatorStateRepository
+	public partial class NHibernateLocatorStateQueryRepository
 	{
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<ILocatorState> GetLocatorTreeRoots(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)

@@ -31,18 +31,12 @@ namespace Dddml.Wms.Domain.NHibernate
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
-		public NHibernateOrganizationStructureTypeStateRepository ()
+		public NHibernateOrganizationStructureTypeStateRepository()
 		{
 		}
 
 		[Transaction (ReadOnly = true)]
-		public IOrganizationStructureTypeState Get (string id)
-		{
-			return Get(id, false);
-		}
-
-		[Transaction (ReadOnly = true)]
-		public IOrganizationStructureTypeState Get (string id, bool nullAllowed)
+		public IOrganizationStructureTypeState Get(string id, bool nullAllowed)
 		{
 			IOrganizationStructureTypeState state = CurrentSession.Get<OrganizationStructureTypeState> (id);
 			if (!nullAllowed && state == null) {
@@ -56,18 +50,8 @@ namespace Dddml.Wms.Domain.NHibernate
 			return state;
 		}
 
-        [Transaction(ReadOnly = true)]
-        public IEnumerable<IOrganizationStructureTypeState> GetAll(int firstResult, int maxResults)
-        {
-            var criteria = CurrentSession.CreateCriteria<OrganizationStructureTypeState>();
-            criteria.SetFirstResult(firstResult);
-            criteria.SetMaxResults(maxResults);
-            AddNotDeletedRestriction(criteria);
-            return criteria.List<OrganizationStructureTypeState>();
-        }
-
 		[Transaction]
-		public void Save (IOrganizationStructureTypeState state)
+		public void Save(IOrganizationStructureTypeState state)
 		{
             IOrganizationStructureTypeState s = state;
             if (ReadOnlyProxyGenerator != null)
@@ -82,80 +66,10 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-        [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationStructureTypeState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
-        {
-            var criteria = CurrentSession.CreateCriteria<OrganizationStructureTypeState>();
-
-            NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
-            AddNotDeletedRestriction(criteria);
-            return criteria.List<OrganizationStructureTypeState>();
-        }
-
-        [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationStructureTypeState> Get(Dddml.Support.Criterion.ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
-        {
-            var criteria = CurrentSession.CreateCriteria<OrganizationStructureTypeState>();
-
-            NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
-            AddNotDeletedRestriction(criteria);
-            return criteria.List<OrganizationStructureTypeState>();
-        }
-
-
-        [Transaction(ReadOnly = true)]
-        public virtual IOrganizationStructureTypeState GetFirst(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null)
-        {
-            var list = (IList<OrganizationStructureTypeState>)Get(filter, orders, 0, 1);
-            if (list == null || list.Count <= 0)
-            {
-                return null;
-            }
-            return list[0];
-        }
-
-        [Transaction(ReadOnly = true)]
-        public virtual IOrganizationStructureTypeState GetFirst(KeyValuePair<string, object> keyValue, IList<string> orders = null)
-        {
-            return GetFirst(new KeyValuePair<string, object>[] { keyValue }, orders);
-        }
-
-        [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationStructureTypeState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
-        {
-            var filter = new KeyValuePair<string, object>[] { new KeyValuePair<string, object>(propertyName, propertyValue) };
-            return Get(filter, orders, firstResult, maxResults);
-        }
-
-        [Transaction(ReadOnly = true)]
-        public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
-        {
-            var criteria = CurrentSession.CreateCriteria<OrganizationStructureTypeState>();
-            criteria.SetProjection(Projections.RowCountInt64());
-            NHibernateUtils.CriteriaAddFilter(criteria, filter);
-            AddNotDeletedRestriction(criteria);
-            return criteria.UniqueResult<long>();
-        }
-
-        [Transaction(ReadOnly = true)]
-        public virtual long GetCount(Dddml.Support.Criterion.ICriterion filter)
-        {
-            var criteria = CurrentSession.CreateCriteria<OrganizationStructureTypeState>();
-            criteria.SetProjection(Projections.RowCountInt64());
-            if (filter != null)
-            {
-                NHibernateICriterion hc = CriterionUtils.ToNHibernateCriterion(filter);
-                criteria.Add(hc);
-            }
-            AddNotDeletedRestriction(criteria);
-            return criteria.UniqueResult<long>();
-        }
-
-
-        protected static void AddNotDeletedRestriction(ICriteria criteria)
-        {
-            criteria.Add(NHibernateRestrictions.Eq("Deleted", false));
-        }
+        //protected static void AddNotDeletedRestriction(ICriteria criteria)
+        //{
+        //    criteria.Add(NHibernateRestrictions.Eq("Deleted", false));
+        //}
 
 	}
 }

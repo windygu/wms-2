@@ -14,30 +14,11 @@ namespace Dddml.Wms.Domain
 {
 	public partial interface IInOutStateRepository
 	{
-        IInOutState Get(string id);
 
         IInOutState Get(string id, bool nullAllowed);
-
-        IEnumerable<IInOutState> GetAll(int firstResult, int maxResults);
         
         void Save(IInOutState state);
         
-        IEnumerable<IInOutState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        IEnumerable<IInOutState> Get(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        IInOutState GetFirst(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null);
-
-        IInOutState GetFirst(KeyValuePair<string, object> keyValue, IList<string> orders = null);
-
-        IEnumerable<IInOutState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        long GetCount(IEnumerable<KeyValuePair<string, object>> filter);
-
-        long GetCount(ICriterion filter);
-
-        IInOutLineState GetInOutLine(string inOutDocumentNumber, SkuId skuId);
-
 	}
 
 }

@@ -13,8 +13,6 @@ namespace Dddml.Wms.Domain
     public interface IUserPermissionStateDao
     {
 
-        IUserPermissionState Get(UserPermissionId id);
-
         IUserPermissionState Get(UserPermissionId id, bool nullAllowed);
 
         void Save (IUserPermissionState state);

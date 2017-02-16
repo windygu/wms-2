@@ -18,6 +18,8 @@ namespace Dddml.Wms.Domain
 
 		protected abstract IInOutStateRepository StateRepository { get; }
 
+		protected abstract IInOutStateQueryRepository StateQueryRepository { get; }
+
 		protected InOutApplicationServiceBase()
 		{
 		}
@@ -25,7 +27,7 @@ namespace Dddml.Wms.Domain
 		protected virtual void Update(IInOutCommand c, Action<IInOutAggregate> action)
 		{
 			var aggregateId = c.AggregateId;
-			var state = StateRepository.Get(aggregateId);
+			var state = StateRepository.Get(aggregateId, false);
 			var aggregate = GetInOutAggregate(state);
 
 			var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
@@ -83,36 +85,36 @@ namespace Dddml.Wms.Domain
 
         public virtual IEnumerable<IInOutState> GetAll(int firstResult, int maxResults)
 		{
-            var states = StateRepository.GetAll(firstResult, maxResults);
+            var states = StateQueryRepository.GetAll(firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<IInOutState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
 		{
-            var states = StateRepository.Get(filter, orders, firstResult, maxResults);
+            var states = StateQueryRepository.Get(filter, orders, firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<IInOutState> Get(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
 		{
-            var states = StateRepository.Get(filter, orders, firstResult, maxResults);
+            var states = StateQueryRepository.Get(filter, orders, firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<IInOutState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = StateRepository.GetByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+            var states = StateQueryRepository.GetByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
 			return states;
         }
 
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
 		{
-            return StateRepository.GetCount(filter);
+            return StateQueryRepository.GetCount(filter);
 		}
 
         public virtual long GetCount(ICriterion filter)
 		{
-            return StateRepository.GetCount(filter);
+            return StateQueryRepository.GetCount(filter);
 		}
 
 	    public virtual IInOutStateEvent GetStateEvent(string documentNumber, long version)
@@ -137,7 +139,7 @@ namespace Dddml.Wms.Domain
 
         public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, SkuId skuId)
         {
-            return StateRepository.GetInOutLine(inOutDocumentNumber, skuId);
+            return StateQueryRepository.GetInOutLine(inOutDocumentNumber, skuId);
         }
 
 

@@ -17,6 +17,8 @@ namespace Dddml.Wms.Domain
 
 		protected abstract IUserStateRepository StateRepository { get; }
 
+		protected abstract IUserStateQueryRepository StateQueryRepository { get; }
+
 		protected UserApplicationServiceBase()
 		{
 		}
@@ -24,7 +26,7 @@ namespace Dddml.Wms.Domain
 		protected virtual void Update(IUserCommand c, Action<IUserAggregate> action)
 		{
 			var aggregateId = c.AggregateId;
-			var state = StateRepository.Get(aggregateId);
+			var state = StateRepository.Get(aggregateId, false);
 			var aggregate = GetUserAggregate(state);
 
 			var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
@@ -82,36 +84,36 @@ namespace Dddml.Wms.Domain
 
         public virtual IEnumerable<IUserState> GetAll(int firstResult, int maxResults)
 		{
-            var states = StateRepository.GetAll(firstResult, maxResults);
+            var states = StateQueryRepository.GetAll(firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<IUserState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
 		{
-            var states = StateRepository.Get(filter, orders, firstResult, maxResults);
+            var states = StateQueryRepository.Get(filter, orders, firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<IUserState> Get(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
 		{
-            var states = StateRepository.Get(filter, orders, firstResult, maxResults);
+            var states = StateQueryRepository.Get(filter, orders, firstResult, maxResults);
 			return states;
 		}
 
         public virtual IEnumerable<IUserState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var states = StateRepository.GetByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+            var states = StateQueryRepository.GetByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
 			return states;
         }
 
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
 		{
-            return StateRepository.GetCount(filter);
+            return StateQueryRepository.GetCount(filter);
 		}
 
         public virtual long GetCount(ICriterion filter)
 		{
-            return StateRepository.GetCount(filter);
+            return StateQueryRepository.GetCount(filter);
 		}
 
 	    public virtual IUserStateEvent GetStateEvent(string userId, long version)
@@ -136,22 +138,22 @@ namespace Dddml.Wms.Domain
 
         public virtual IUserRoleState GetUserRole(string userId, string roleId)
         {
-            return StateRepository.GetUserRole(userId, roleId);
+            return StateQueryRepository.GetUserRole(userId, roleId);
         }
 
         public virtual IUserClaimState GetUserClaim(string userId, int claimId)
         {
-            return StateRepository.GetUserClaim(userId, claimId);
+            return StateQueryRepository.GetUserClaim(userId, claimId);
         }
 
         public virtual IUserPermissionState GetUserPermission(string userId, string permissionId)
         {
-            return StateRepository.GetUserPermission(userId, permissionId);
+            return StateQueryRepository.GetUserPermission(userId, permissionId);
         }
 
         public virtual IUserLoginState GetUserLogin(string userId, LoginKey loginKey)
         {
-            return StateRepository.GetUserLogin(userId, loginKey);
+            return StateQueryRepository.GetUserLogin(userId, loginKey);
         }
 
 

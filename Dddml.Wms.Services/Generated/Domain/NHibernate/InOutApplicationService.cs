@@ -38,10 +38,21 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-		public InOutApplicationService(IEventStore eventStore, IInOutStateRepository stateRepository)
+		private IInOutStateQueryRepository _stateQueryRepository;
+
+		protected override IInOutStateQueryRepository StateQueryRepository
+		{
+			get
+			{
+				return _stateQueryRepository;
+			}
+		}
+
+		public InOutApplicationService(IEventStore eventStore, IInOutStateRepository stateRepository, IInOutStateQueryRepository stateQueryRepository)
 		{
 			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
+			this._stateQueryRepository = stateQueryRepository;
 		}
 
 		public override IEventStoreAggregateId ToEventStoreAggregateId(string aggregateId)

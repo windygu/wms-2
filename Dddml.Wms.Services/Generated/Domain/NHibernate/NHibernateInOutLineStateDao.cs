@@ -31,12 +31,6 @@ namespace Dddml.Wms.Domain.NHibernate
 		public NHibernateInOutLineStateDao()
 		{
 		}
- 
-        [Transaction(ReadOnly = true)]
-        public IInOutLineState Get(InOutLineId id)
-        {
-            return Get(id, false);
-        }
 
         [Transaction(ReadOnly = true)]
         public IInOutLineState Get(InOutLineId id, bool nullAllowed)

@@ -13,36 +13,11 @@ namespace Dddml.Wms.Domain
 {
 	public partial interface IUserStateRepository
 	{
-        IUserState Get(string id);
 
         IUserState Get(string id, bool nullAllowed);
-
-        IEnumerable<IUserState> GetAll(int firstResult, int maxResults);
         
         void Save(IUserState state);
         
-        IEnumerable<IUserState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        IEnumerable<IUserState> Get(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        IUserState GetFirst(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null);
-
-        IUserState GetFirst(KeyValuePair<string, object> keyValue, IList<string> orders = null);
-
-        IEnumerable<IUserState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue);
-
-        long GetCount(IEnumerable<KeyValuePair<string, object>> filter);
-
-        long GetCount(ICriterion filter);
-
-        IUserRoleState GetUserRole(string userId, string roleId);
-
-        IUserClaimState GetUserClaim(string userId, int claimId);
-
-        IUserPermissionState GetUserPermission(string userId, string permissionId);
-
-        IUserLoginState GetUserLogin(string userId, LoginKey loginKey);
-
 	}
 
 }

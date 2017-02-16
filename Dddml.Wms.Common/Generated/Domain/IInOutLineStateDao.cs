@@ -14,8 +14,6 @@ namespace Dddml.Wms.Domain
     public interface IInOutLineStateDao
     {
 
-        IInOutLineState Get(InOutLineId id);
-
         IInOutLineState Get(InOutLineId id, bool nullAllowed);
 
         void Save (IInOutLineState state);

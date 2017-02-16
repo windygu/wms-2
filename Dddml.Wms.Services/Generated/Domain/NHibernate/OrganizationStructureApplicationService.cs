@@ -37,10 +37,21 @@ namespace Dddml.Wms.Domain.NHibernate
 			}
 		}
 
-		public OrganizationStructureApplicationService(IEventStore eventStore, IOrganizationStructureStateRepository stateRepository)
+		private IOrganizationStructureStateQueryRepository _stateQueryRepository;
+
+		protected override IOrganizationStructureStateQueryRepository StateQueryRepository
+		{
+			get
+			{
+				return _stateQueryRepository;
+			}
+		}
+
+		public OrganizationStructureApplicationService(IEventStore eventStore, IOrganizationStructureStateRepository stateRepository, IOrganizationStructureStateQueryRepository stateQueryRepository)
 		{
 			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
+			this._stateQueryRepository = stateQueryRepository;
 		}
 
 		public override IEventStoreAggregateId ToEventStoreAggregateId(OrganizationStructureId aggregateId)
