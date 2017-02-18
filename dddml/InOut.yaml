@@ -52,7 +52,7 @@ aggregates:
 
         DocumentStatus:
           type: string
-          commandContentType: DocumentAction
+          commandType: DocumentAction
           commandName: DocumentAction
 
         Posted:
