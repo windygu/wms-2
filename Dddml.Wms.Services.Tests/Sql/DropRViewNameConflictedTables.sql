@@ -1,5 +1,6 @@
 ﻿
 
+
 DROP TABLE  if exists `AttributeSetInstanceExtensionField_RV`;
 DROP TABLE  if exists `AttributeValue_RV`;
 DROP TABLE  if exists `AttributeUse_RV`;

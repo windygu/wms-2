@@ -382,6 +382,7 @@
     <None Include="site\form\warehouse_form.php">
       <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
     </None>
+    <None Include="ts\DddmlSerializationForT4.tc" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="ts\Attribute.ts">

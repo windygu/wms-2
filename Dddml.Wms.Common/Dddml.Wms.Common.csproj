@@ -3060,6 +3060,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeSetInstancePropertyUtils.tt</DependentUpon>
     </Content>
+    <None Include="Generated\DddmlSerializationForT4.tc" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
