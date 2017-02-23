@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<objects xmlns="http://www.springframework.net" xmlns:tx="http://www.springframework.net/tx">
+  
+  <object id="DbProvider" type="Spring.Data.Common.DbProviderFactoryObject,Spring.Data">
+    <property name="Provider" value="MySql.Data.MySqlClient"/>
+    <property name="ConnectionString" value="${db.ConnectionString}"/>
+  </object>
+ 
+  <object id="RoutingConnectionProviderDictionary" type="System.Collections.Generic.Dictionary&lt;string,string&gt;">
+    <constructor-arg>
+      <dictionary key-type="string" value-type="string">
+        <!--<entry key="testtenant1" value="Database=test;Data Source=10.201.2.13;Charset=utf8;User Id=db_user;Password=z5J9OT0urtbfVuRuViK7"/>
+        <entry key="testtenant2" value="Database=test2;Data Source=10.201.2.13;Charset=utf8;User Id=db_user;Password=z5J9OT0urtbfVuRuViK7"/>-->
+        <entry key="testtenant1" value="Database=test;Data Source=localhost;Charset=utf8;User Id=root;Password=123456"/>
+        <entry key="testtenant2" value="Database=test2;Data Source=localhost;Charset=utf8;User Id=root;Password=123456"/>
+      </dictionary>
+    </constructor-arg>
+  </object>
+  
+  <object id="Initialize_Static_Routing_Dictionary_Of_ConnectionProvider" type="Dddml.Support.NHibernate.ContextualKeyRoutingConnectionProvider+Initializer, Dddml.Support.NHibernate">
+    <constructor-arg ref="RoutingConnectionProviderDictionary"/>
+    <constructor-arg ref="CurrentRoutingKeyContext"/>
+  </object>
+
+  <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate4">
+    <!--<property name="DbProvider" ref="DbProvider"/>-->
+    <property name="MappingAssemblies">
+      <list>
+        <value>Dddml.Wms.Iam</value>
+      </list>
+    </property>
+
+    <property name="HibernateProperties">
+      <dictionary>
+        <entry key="connection.provider" value="Dddml.Support.NHibernate.ContextualKeyRoutingConnectionProvider, Dddml.Support.NHibernate"/>
+        <entry key="connection.connection_string" value="Database=_ERROR_;Data Source=_CONNECTION_;user id=_STRING_"/>
+        <entry key="connection.driver_class" value="NHibernate.Driver.MySqlDataDriver"/>
+        <entry key="dialect" value="NHibernate.Dialect.MySQLDialect"/>
+        <entry key="use_outer_join" value="true"/>
+        <entry key="show_sql" value="true"/>
+        <!--<entry key="hbm2ddl.auto" value="none"/>-->
+        <entry key="hbm2ddl.keywords" value="none"/>
+        <entry key="hibernate.current_session_context_class"
+              value="Spring.Data.NHibernate.SpringSessionContext, Spring.Data.NHibernate4"/>
+        <!--
+        <entry key="proxyfactory.factory_class" value="NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu"/>
+        -->
+      </dictionary>
+    </property>
+    
+    <property name="ExposeTransactionAwareSessionFactory" value="true" />
+    
+  </object>
+
+  <object id="entityInterceptor" type="Dddml.Wms.Services.Specialization.NHibernate.LocalDateTimeInterceptor" />
+  <!-- Transaction Management Strategy - local database transactions -->
+  <object id="transactionManager"
+        type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate4">
+    <!--<property name="DbProvider" ref="DbProvider"/>-->
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+
+    <property name="EntityInterceptor" ref="entityInterceptor"/>
+  </object>
+  
+  <!-- Exception translation object post processor -->
+  <object type="Spring.Dao.Attributes.PersistenceExceptionTranslationPostProcessor, Spring.Data"/>
+
+
+  <tx:attribute-driven/>
+
+  <!--<object id="StateReadOnlyProxyGenerator" type="Dddml.T4.Templates.Tests.Specialization.Castle.CastleReadOnlyProxyGenerator, Dddml.Wms.Services"></object>-->
+  <object id="StateReadOnlyProxyGenerator" type=" Dddml.Wms.Specialization.NullReadOnlyProxyGenerator, Dddml.Wms.Specialization"></object>
+
+</objects>

@@ -56,7 +56,6 @@
 .\attributeUseMvo_form.php
 .\attributeValue_form.php
 .\attributeValueMvo_form.php
-.\audience_form.php
 .\GenerateAggregatesSymfonyForms.txt
 .\inOut_form.php
 .\inOutLine_form.php
@@ -65,18 +64,6 @@
 .\organization_form.php
 .\organizationStructure_form.php
 .\organizationStructureType_form.php
-.\permission_form.php
-.\role_form.php
-.\rolePermission_form.php
-.\user_form.php
-.\userClaim_form.php
-.\userClaimMvo_form.php
-.\userLogin_form.php
-.\userLoginMvo_form.php
-.\userPermission_form.php
-.\userPermissionMvo_form.php
-.\userRole_form.php
-.\userRoleMvo_form.php
 .\warehouse_form.php
 </LastOutputs>
     </Content>
@@ -91,7 +78,6 @@
       <LastOutputs>
 .\GenerateBoundedContextDomain.txt
 .\OrganizationStructureId.ts
-.\RolePermissionId.ts
 .\SkuId.ts
 </LastOutputs>
     </Content>
@@ -127,8 +113,6 @@
 .\AttributeValueMvo.ts
 .\AttributeValueMvoStateEventId.ts
 .\AttributeValueStateEventId.ts
-.\Audience.ts
-.\AudienceStateEventId.ts
 .\GenerateBoundedContextDomainAggregates.txt
 .\InOut.ts
 .\InOutLine.ts
@@ -139,41 +123,12 @@
 .\InOutStateEventId.ts
 .\Locator.ts
 .\LocatorStateEventId.ts
-.\LoginKey.ts
 .\Organization.ts
 .\OrganizationStateEventId.ts
 .\OrganizationStructure.ts
 .\OrganizationStructureStateEventId.ts
 .\OrganizationStructureType.ts
 .\OrganizationStructureTypeStateEventId.ts
-.\Permission.ts
-.\PermissionStateEventId.ts
-.\Role.ts
-.\RolePermission.ts
-.\RolePermissionStateEventId.ts
-.\RoleStateEventId.ts
-.\User.ts
-.\UserClaim.ts
-.\UserClaimId.ts
-.\UserClaimMvo.ts
-.\UserClaimMvoStateEventId.ts
-.\UserClaimStateEventId.ts
-.\UserLogin.ts
-.\UserLoginId.ts
-.\UserLoginMvo.ts
-.\UserLoginMvoStateEventId.ts
-.\UserLoginStateEventId.ts
-.\UserPermission.ts
-.\UserPermissionId.ts
-.\UserPermissionMvo.ts
-.\UserPermissionMvoStateEventId.ts
-.\UserPermissionStateEventId.ts
-.\UserRole.ts
-.\UserRoleId.ts
-.\UserRoleMvo.ts
-.\UserRoleMvoStateEventId.ts
-.\UserRoleStateEventId.ts
-.\UserStateEventId.ts
 .\Warehouse.ts
 .\WarehouseStateEventId.ts
 </LastOutputs>
@@ -319,9 +274,6 @@
     <None Include="site\form\attribute_form.php">
       <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
     </None>
-    <None Include="site\form\audience_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
     <None Include="site\form\inOutLineMvo_form.php">
       <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
     </None>
@@ -341,42 +293,6 @@
       <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
     </None>
     <None Include="site\form\organization_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\permission_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\rolePermission_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\role_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\userClaimMvo_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\userClaim_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\userLoginMvo_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\userLogin_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\userPermissionMvo_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\userPermission_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\userRoleMvo_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\userRole_form.php">
-      <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
-    </None>
-    <None Include="site\form\user_form.php">
       <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
     </None>
     <None Include="site\form\warehouse_form.php">
@@ -454,12 +370,6 @@
     <TypeScriptCompile Include="ts\AttributeValueStateEventId.ts">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\Audience.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\AudienceStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="ts\InOut.ts">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </TypeScriptCompile>
@@ -487,9 +397,6 @@
     <TypeScriptCompile Include="ts\LocatorStateEventId.ts">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\LoginKey.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="ts\Organization.ts">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </TypeScriptCompile>
@@ -511,95 +418,8 @@
     <TypeScriptCompile Include="ts\OrganizationStructureTypeStateEventId.ts">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\Permission.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\PermissionStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\Role.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\RolePermission.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\RolePermissionId.ts">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\RolePermissionStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\RoleStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="ts\SkuId.ts">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\User.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserClaim.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserClaimId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserClaimMvo.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserClaimMvoStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserClaimStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserLogin.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserLoginId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserLoginMvo.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserLoginMvoStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserLoginStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserPermission.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserPermissionId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserPermissionMvo.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserPermissionMvoStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserPermissionStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserRole.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserRoleId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserRoleMvo.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserRoleMvoStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserRoleStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\UserStateEventId.ts">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ts\Warehouse.ts">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>

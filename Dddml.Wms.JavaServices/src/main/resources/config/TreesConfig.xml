@@ -5,10 +5,6 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="permissionTreeApplicationService" class="org.dddml.wms.domain.AbstractPermissionTreeApplicationService$SimplePermissionTreeApplicationService">
-    <property name="permissionTreeRepository" ref="permissionTreeRepository"/>
-  </bean>
-
   <bean id="organizationTreeApplicationService" class="org.dddml.wms.domain.AbstractOrganizationTreeApplicationService$SimpleOrganizationTreeApplicationService">
     <property name="organizationTreeRepository" ref="organizationTreeRepository"/>
   </bean>

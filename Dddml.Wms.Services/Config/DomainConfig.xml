@@ -4,10 +4,12 @@
   <object id="inOutDocumentActionCommandHandler" type="Dddml.Wms.Domain.InOutDocumentActionCommandHandler, Dddml.Wms.Common">
   </object>
   
-  <object id="identityService" type="Dddml.Wms.Domain.Services.IdentityService, Dddml.Wms.Common">
+  <!--
+  <object id="identityService" type="Dddml.Wms.Domain.Services.IdentityService, Dddml.Wms.Iam">
     <property name="IsUsingPermissionsAsRoles" value="true"/>
     <property name="RolePermissionApplicationService" ref="rolePermissionApplicationService"/>
     <property name="UserApplicationService" ref="userApplicationService"/>
   </object>
+  -->
   
 </objects>

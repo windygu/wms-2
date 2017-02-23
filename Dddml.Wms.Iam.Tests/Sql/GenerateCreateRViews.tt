@@ -1,0 +1,19 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Dddml.Core.Domain" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\Sql\NHibernate\RViewsCreationTemplate.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.Iam\LoadBoundedContext.tt" #>
+<#
+
+	var aggregates = new List<Aggregate>();
+	foreach (var agg in mviewObjects)
+	{
+		aggregates.Add(agg);
+	} 
+	
+	var template = new RViewsCreationTemplate(aggregates);
+	template.RenderToFile(String.Format("CreateRViews.sql", ""));      
+	
+#>

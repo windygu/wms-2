@@ -127,6 +127,14 @@
       <Project>{26ba5188-b72d-4ece-9984-4f76a3eb74c3}</Project>
       <Name>Dddml.Wms.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dddml.Wms.Specialization.Services\Dddml.Wms.Specialization.Services.csproj">
+      <Project>{7baf838b-6297-47a3-bb76-920f5b90a3ec}</Project>
+      <Name>Dddml.Wms.Specialization.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dddml.Wms.Specialization\Dddml.Wms.Specialization.csproj">
+      <Project>{9a9b1e3b-f6aa-46bf-a879-cf58bee11f37}</Project>
+      <Name>Dddml.Wms.Specialization</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

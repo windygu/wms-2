@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Dddml.Wms.AspNet.Identity;
 
 namespace Dddml.Wms.AuthorizationServer.Models
 {
@@ -17,13 +18,23 @@ namespace Dddml.Wms.AuthorizationServer.Models
     //    }
     //}
 
+    public static class IdentityUserExtensions
+    {
+        public static async Task<ClaimsIdentity> GenerateUserIdentityAsync(this IdentityUser identityUser, UserManager<IdentityUser> manager, string authenticationType)
+        {
+            // 请注意，authenticationType 必须与 CookieAuthenticationOptions.AuthenticationType 中定义的相应项匹配
+            var userIdentity = await manager.CreateIdentityAsync(identityUser, authenticationType);
+            // 在此处添加自定义用户声明
+            return userIdentity;
+        }
+    }
+
     //public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     //{
     //    public ApplicationDbContext()
     //        : base("DefaultConnection", throwIfV1Schema: false)
     //    {
     //    }
-        
     //    public static ApplicationDbContext Create()
     //    {
     //        return new ApplicationDbContext();

@@ -61,9 +61,17 @@
       <Project>{5c91ecad-6c35-45aa-ace7-e8f156922658}</Project>
       <Name>Dddml.Support.Criterion</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Dddml.Wms.Common\Dddml.Wms.Common.csproj">
-      <Project>{31471bcf-d6c3-4bae-8ec5-2e9ac01edd5c}</Project>
-      <Name>Dddml.Wms.Common</Name>
+    <ProjectReference Include="..\Dddml.Wms.Iam\Dddml.Wms.Iam.csproj">
+      <Project>{eb95ae50-cd5a-48f6-9d52-fdbd5d6e53c2}</Project>
+      <Name>Dddml.Wms.Iam</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dddml.Wms.Specialization.Services\Dddml.Wms.Specialization.Services.csproj">
+      <Project>{7baf838b-6297-47a3-bb76-920f5b90a3ec}</Project>
+      <Name>Dddml.Wms.Specialization.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dddml.Wms.Specialization\Dddml.Wms.Specialization.csproj">
+      <Project>{9a9b1e3b-f6aa-46bf-a879-cf58bee11f37}</Project>
+      <Name>Dddml.Wms.Specialization</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

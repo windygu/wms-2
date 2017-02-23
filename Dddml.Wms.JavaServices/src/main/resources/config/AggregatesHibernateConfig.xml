@@ -6,95 +6,6 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-
-  <bean id="attributeSetInstanceStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="attributeSetInstanceEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="attributeSetInstanceApplicationService" class="org.dddml.wms.domain.AbstractAttributeSetInstanceApplicationService$SimpleAttributeSetInstanceApplicationService">
-    <constructor-arg ref="attributeSetInstanceEventStore"/>
-    <constructor-arg ref="attributeSetInstanceStateRepository"/>
-  </bean>
-
-
-  <bean id="attributeSetInstanceExtensionFieldStateDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldStateDao">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="attributeSetInstanceExtensionFieldStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldStateEventDao">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-
-  <bean id="attributeSetInstanceExtensionFieldGroupStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="attributeSetInstanceExtensionFieldGroupEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="attributeSetInstanceExtensionFieldGroupApplicationService" class="org.dddml.wms.domain.AbstractAttributeSetInstanceExtensionFieldGroupApplicationService$SimpleAttributeSetInstanceExtensionFieldGroupApplicationService">
-    <constructor-arg ref="attributeSetInstanceExtensionFieldGroupEventStore"/>
-    <constructor-arg ref="attributeSetInstanceExtensionFieldGroupStateRepository"/>
-  </bean>
-
-
-
-  <bean id="roleStateRepository" class="org.dddml.wms.domain.hibernate.HibernateRoleStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="roleEventStore" class="org.dddml.wms.domain.hibernate.HibernateRoleEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="roleApplicationService" class="org.dddml.wms.domain.AbstractRoleApplicationService$SimpleRoleApplicationService">
-    <constructor-arg ref="roleEventStore"/>
-    <constructor-arg ref="roleStateRepository"/>
-  </bean>
-
-
-
-  <bean id="permissionStateRepository" class="org.dddml.wms.domain.hibernate.HibernatePermissionStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="permissionEventStore" class="org.dddml.wms.domain.hibernate.HibernatePermissionEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="permissionApplicationService" class="org.dddml.wms.domain.AbstractPermissionApplicationService$SimplePermissionApplicationService">
-    <constructor-arg ref="permissionEventStore"/>
-    <constructor-arg ref="permissionStateRepository"/>
-  </bean>
-
-
-
-  <bean id="rolePermissionStateRepository" class="org.dddml.wms.domain.hibernate.HibernateRolePermissionStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="rolePermissionEventStore" class="org.dddml.wms.domain.hibernate.HibernateRolePermissionEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="rolePermissionApplicationService" class="org.dddml.wms.domain.AbstractRolePermissionApplicationService$SimpleRolePermissionApplicationService">
-    <constructor-arg ref="rolePermissionEventStore"/>
-    <constructor-arg ref="rolePermissionStateRepository"/>
-  </bean>
-
-
   <bean id="attributeValueStateDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeValueStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -142,74 +53,6 @@
   <bean id="attributeSetApplicationService" class="org.dddml.wms.domain.AbstractAttributeSetApplicationService$SimpleAttributeSetApplicationService">
     <constructor-arg ref="attributeSetEventStore"/>
     <constructor-arg ref="attributeSetStateRepository"/>
-  </bean>
-
-
-
-  <bean id="audienceStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAudienceStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="audienceEventStore" class="org.dddml.wms.domain.hibernate.HibernateAudienceEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="audienceApplicationService" class="org.dddml.wms.domain.AbstractAudienceApplicationService$SimpleAudienceApplicationService">
-    <constructor-arg ref="audienceEventStore"/>
-    <constructor-arg ref="audienceStateRepository"/>
-  </bean>
-
-
-  <bean id="userRoleStateDao" class="org.dddml.wms.domain.hibernate.HibernateUserRoleStateDao">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="userRoleStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateUserRoleStateEventDao">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="userClaimStateDao" class="org.dddml.wms.domain.hibernate.HibernateUserClaimStateDao">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="userClaimStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateUserClaimStateEventDao">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="userPermissionStateDao" class="org.dddml.wms.domain.hibernate.HibernateUserPermissionStateDao">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="userPermissionStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateUserPermissionStateEventDao">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="userLoginStateDao" class="org.dddml.wms.domain.hibernate.HibernateUserLoginStateDao">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="userLoginStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateUserLoginStateEventDao">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-
-  <bean id="userStateRepository" class="org.dddml.wms.domain.hibernate.HibernateUserStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="userEventStore" class="org.dddml.wms.domain.hibernate.HibernateUserEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="userApplicationService" class="org.dddml.wms.domain.AbstractUserApplicationService$SimpleUserApplicationService">
-    <constructor-arg ref="userEventStore"/>
-    <constructor-arg ref="userStateRepository"/>
   </bean>
 
 
@@ -319,18 +162,43 @@
 
 
 
-  <bean id="attributeSetInstanceExtensionFieldMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoStateRepository">
+  <bean id="attributeSetInstanceStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeSetInstanceExtensionFieldMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoEventStore">
+  <bean id="attributeSetInstanceEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="attributeSetInstanceExtensionFieldMvoApplicationService" class="org.dddml.wms.domain.AbstractAttributeSetInstanceExtensionFieldMvoApplicationService$SimpleAttributeSetInstanceExtensionFieldMvoApplicationService">
-    <constructor-arg ref="attributeSetInstanceExtensionFieldMvoEventStore"/>
-    <constructor-arg ref="attributeSetInstanceExtensionFieldMvoStateRepository"/>
+  <bean id="attributeSetInstanceApplicationService" class="org.dddml.wms.domain.AbstractAttributeSetInstanceApplicationService$SimpleAttributeSetInstanceApplicationService">
+    <constructor-arg ref="attributeSetInstanceEventStore"/>
+    <constructor-arg ref="attributeSetInstanceStateRepository"/>
+  </bean>
+
+
+  <bean id="attributeSetInstanceExtensionFieldStateDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="attributeSetInstanceExtensionFieldStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+
+  <bean id="attributeSetInstanceExtensionFieldGroupStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="attributeSetInstanceExtensionFieldGroupEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="attributeSetInstanceExtensionFieldGroupApplicationService" class="org.dddml.wms.domain.AbstractAttributeSetInstanceExtensionFieldGroupApplicationService$SimpleAttributeSetInstanceExtensionFieldGroupApplicationService">
+    <constructor-arg ref="attributeSetInstanceExtensionFieldGroupEventStore"/>
+    <constructor-arg ref="attributeSetInstanceExtensionFieldGroupStateRepository"/>
   </bean>
 
 
@@ -367,70 +235,6 @@
 
 
 
-  <bean id="userRoleMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateUserRoleMvoStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="userRoleMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateUserRoleMvoEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="userRoleMvoApplicationService" class="org.dddml.wms.domain.AbstractUserRoleMvoApplicationService$SimpleUserRoleMvoApplicationService">
-    <constructor-arg ref="userRoleMvoEventStore"/>
-    <constructor-arg ref="userRoleMvoStateRepository"/>
-  </bean>
-
-
-
-  <bean id="userClaimMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateUserClaimMvoStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="userClaimMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateUserClaimMvoEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="userClaimMvoApplicationService" class="org.dddml.wms.domain.AbstractUserClaimMvoApplicationService$SimpleUserClaimMvoApplicationService">
-    <constructor-arg ref="userClaimMvoEventStore"/>
-    <constructor-arg ref="userClaimMvoStateRepository"/>
-  </bean>
-
-
-
-  <bean id="userPermissionMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateUserPermissionMvoStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="userPermissionMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateUserPermissionMvoEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="userPermissionMvoApplicationService" class="org.dddml.wms.domain.AbstractUserPermissionMvoApplicationService$SimpleUserPermissionMvoApplicationService">
-    <constructor-arg ref="userPermissionMvoEventStore"/>
-    <constructor-arg ref="userPermissionMvoStateRepository"/>
-  </bean>
-
-
-
-  <bean id="userLoginMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateUserLoginMvoStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="userLoginMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateUserLoginMvoEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="userLoginMvoApplicationService" class="org.dddml.wms.domain.AbstractUserLoginMvoApplicationService$SimpleUserLoginMvoApplicationService">
-    <constructor-arg ref="userLoginMvoEventStore"/>
-    <constructor-arg ref="userLoginMvoStateRepository"/>
-  </bean>
-
-
-
   <bean id="inOutLineMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateInOutLineMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -443,6 +247,22 @@
   <bean id="inOutLineMvoApplicationService" class="org.dddml.wms.domain.AbstractInOutLineMvoApplicationService$SimpleInOutLineMvoApplicationService">
     <constructor-arg ref="inOutLineMvoEventStore"/>
     <constructor-arg ref="inOutLineMvoStateRepository"/>
+  </bean>
+
+
+
+  <bean id="attributeSetInstanceExtensionFieldMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="attributeSetInstanceExtensionFieldMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="attributeSetInstanceExtensionFieldMvoApplicationService" class="org.dddml.wms.domain.AbstractAttributeSetInstanceExtensionFieldMvoApplicationService$SimpleAttributeSetInstanceExtensionFieldMvoApplicationService">
+    <constructor-arg ref="attributeSetInstanceExtensionFieldMvoEventStore"/>
+    <constructor-arg ref="attributeSetInstanceExtensionFieldMvoStateRepository"/>
   </bean>
 
 </beans>

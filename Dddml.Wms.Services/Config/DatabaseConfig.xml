@@ -69,6 +69,6 @@
   <tx:attribute-driven/>
 
   <!--<object id="StateReadOnlyProxyGenerator" type="Dddml.T4.Templates.Tests.Specialization.Castle.CastleReadOnlyProxyGenerator, Dddml.Wms.Services"></object>-->
-  <object id="StateReadOnlyProxyGenerator" type=" Dddml.Wms.Specialization.NullReadOnlyProxyGenerator, Dddml.Wms.Common"></object>
+  <object id="StateReadOnlyProxyGenerator" type=" Dddml.Wms.Specialization.NullReadOnlyProxyGenerator, Dddml.Wms.Specialization"></object>
 
 </objects>

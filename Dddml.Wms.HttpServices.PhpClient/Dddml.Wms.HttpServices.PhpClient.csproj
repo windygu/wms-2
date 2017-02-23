@@ -51,8 +51,6 @@
 .\GenerateBoundedContextDomain.txt
 .\OrganizationStructureId.php
 .\OrganizationStructureIdFlattenedDto.php
-.\RolePermissionId.php
-.\RolePermissionIdFlattenedDto.php
 .\SkuId.php
 .\SkuIdFlattenedDto.php
 </LastOutputs>
@@ -76,7 +74,6 @@
 .\AbstractAttributeUseMvoCommand.php
 .\AbstractAttributeValueCommand.php
 .\AbstractAttributeValueMvoCommand.php
-.\AbstractAudienceCommand.php
 .\AbstractInOutCommand.php
 .\AbstractInOutLineCommand.php
 .\AbstractInOutLineMvoCommand.php
@@ -84,18 +81,6 @@
 .\AbstractOrganizationCommand.php
 .\AbstractOrganizationStructureCommand.php
 .\AbstractOrganizationStructureTypeCommand.php
-.\AbstractPermissionCommand.php
-.\AbstractRoleCommand.php
-.\AbstractRolePermissionCommand.php
-.\AbstractUserClaimCommand.php
-.\AbstractUserClaimMvoCommand.php
-.\AbstractUserCommand.php
-.\AbstractUserLoginCommand.php
-.\AbstractUserLoginMvoCommand.php
-.\AbstractUserPermissionCommand.php
-.\AbstractUserPermissionMvoCommand.php
-.\AbstractUserRoleCommand.php
-.\AbstractUserRoleMvoCommand.php
 .\AbstractWarehouseCommand.php
 .\Attribute.php
 .\AttributeIsPropertyRemovedTrait.php
@@ -153,11 +138,6 @@
 .\AttributeValueStateEventId.php
 .\AttributeValueStateEventIdFlattenedDto.php
 .\AttributeValueStatePropertiesTrait.php
-.\Audience.php
-.\AudienceIsPropertyRemovedTrait.php
-.\AudienceStateEventId.php
-.\AudienceStateEventIdFlattenedDto.php
-.\AudienceStatePropertiesTrait.php
 .\CreateOrMergePatchAttribute.php
 .\CreateOrMergePatchAttributeSet.php
 .\CreateOrMergePatchAttributeSetInstance.php
@@ -168,7 +148,6 @@
 .\CreateOrMergePatchAttributeUseMvo.php
 .\CreateOrMergePatchAttributeValue.php
 .\CreateOrMergePatchAttributeValueMvo.php
-.\CreateOrMergePatchAudience.php
 .\CreateOrMergePatchInOut.php
 .\CreateOrMergePatchInOutLine.php
 .\CreateOrMergePatchInOutLineMvo.php
@@ -176,18 +155,6 @@
 .\CreateOrMergePatchOrganization.php
 .\CreateOrMergePatchOrganizationStructure.php
 .\CreateOrMergePatchOrganizationStructureType.php
-.\CreateOrMergePatchPermission.php
-.\CreateOrMergePatchRole.php
-.\CreateOrMergePatchRolePermission.php
-.\CreateOrMergePatchUser.php
-.\CreateOrMergePatchUserClaim.php
-.\CreateOrMergePatchUserClaimMvo.php
-.\CreateOrMergePatchUserLogin.php
-.\CreateOrMergePatchUserLoginMvo.php
-.\CreateOrMergePatchUserPermission.php
-.\CreateOrMergePatchUserPermissionMvo.php
-.\CreateOrMergePatchUserRole.php
-.\CreateOrMergePatchUserRoleMvo.php
 .\CreateOrMergePatchWarehouse.php
 .\DeleteAttribute.php
 .\DeleteAttributeSet.php
@@ -196,21 +163,12 @@
 .\DeleteAttributeSetInstanceExtensionFieldMvo.php
 .\DeleteAttributeUseMvo.php
 .\DeleteAttributeValueMvo.php
-.\DeleteAudience.php
 .\DeleteInOut.php
 .\DeleteInOutLineMvo.php
 .\DeleteLocator.php
 .\DeleteOrganization.php
 .\DeleteOrganizationStructure.php
 .\DeleteOrganizationStructureType.php
-.\DeletePermission.php
-.\DeleteRole.php
-.\DeleteRolePermission.php
-.\DeleteUser.php
-.\DeleteUserClaimMvo.php
-.\DeleteUserLoginMvo.php
-.\DeleteUserPermissionMvo.php
-.\DeleteUserRoleMvo.php
 .\DeleteWarehouse.php
 .\GenerateBoundedContextDomainAggregates.txt
 .\InOut.php
@@ -235,8 +193,6 @@
 .\LocatorStateEventId.php
 .\LocatorStateEventIdFlattenedDto.php
 .\LocatorStatePropertiesTrait.php
-.\LoginKey.php
-.\LoginKeyFlattenedDto.php
 .\Organization.php
 .\OrganizationIsPropertyRemovedTrait.php
 .\OrganizationStateEventId.php
@@ -252,82 +208,10 @@
 .\OrganizationStructureTypeStateEventId.php
 .\OrganizationStructureTypeStateEventIdFlattenedDto.php
 .\OrganizationStructureTypeStatePropertiesTrait.php
-.\Permission.php
-.\PermissionIsPropertyRemovedTrait.php
-.\PermissionStateEventId.php
-.\PermissionStateEventIdFlattenedDto.php
-.\PermissionStatePropertiesTrait.php
 .\RemoveAttributeSetInstanceExtensionField.php
 .\RemoveAttributeUse.php
 .\RemoveAttributeValue.php
 .\RemoveInOutLine.php
-.\RemoveUserClaim.php
-.\RemoveUserLogin.php
-.\RemoveUserPermission.php
-.\RemoveUserRole.php
-.\Role.php
-.\RoleIsPropertyRemovedTrait.php
-.\RolePermission.php
-.\RolePermissionIsPropertyRemovedTrait.php
-.\RolePermissionStateEventId.php
-.\RolePermissionStateEventIdFlattenedDto.php
-.\RolePermissionStatePropertiesTrait.php
-.\RoleStateEventId.php
-.\RoleStateEventIdFlattenedDto.php
-.\RoleStatePropertiesTrait.php
-.\User.php
-.\UserClaim.php
-.\UserClaimId.php
-.\UserClaimIdFlattenedDto.php
-.\UserClaimIsPropertyRemovedTrait.php
-.\UserClaimMvo.php
-.\UserClaimMvoIsPropertyRemovedTrait.php
-.\UserClaimMvoStateEventId.php
-.\UserClaimMvoStateEventIdFlattenedDto.php
-.\UserClaimMvoStatePropertiesTrait.php
-.\UserClaimStateEventId.php
-.\UserClaimStateEventIdFlattenedDto.php
-.\UserClaimStatePropertiesTrait.php
-.\UserIsPropertyRemovedTrait.php
-.\UserLogin.php
-.\UserLoginId.php
-.\UserLoginIdFlattenedDto.php
-.\UserLoginIsPropertyRemovedTrait.php
-.\UserLoginMvo.php
-.\UserLoginMvoIsPropertyRemovedTrait.php
-.\UserLoginMvoStateEventId.php
-.\UserLoginMvoStateEventIdFlattenedDto.php
-.\UserLoginMvoStatePropertiesTrait.php
-.\UserLoginStateEventId.php
-.\UserLoginStateEventIdFlattenedDto.php
-.\UserLoginStatePropertiesTrait.php
-.\UserPermission.php
-.\UserPermissionId.php
-.\UserPermissionIdFlattenedDto.php
-.\UserPermissionIsPropertyRemovedTrait.php
-.\UserPermissionMvo.php
-.\UserPermissionMvoIsPropertyRemovedTrait.php
-.\UserPermissionMvoStateEventId.php
-.\UserPermissionMvoStateEventIdFlattenedDto.php
-.\UserPermissionMvoStatePropertiesTrait.php
-.\UserPermissionStateEventId.php
-.\UserPermissionStateEventIdFlattenedDto.php
-.\UserPermissionStatePropertiesTrait.php
-.\UserRole.php
-.\UserRoleId.php
-.\UserRoleIdFlattenedDto.php
-.\UserRoleIsPropertyRemovedTrait.php
-.\UserRoleMvo.php
-.\UserRoleMvoIsPropertyRemovedTrait.php
-.\UserRoleMvoStateEventId.php
-.\UserRoleMvoStateEventIdFlattenedDto.php
-.\UserRoleMvoStatePropertiesTrait.php
-.\UserRoleStateEventId.php
-.\UserRoleStateEventIdFlattenedDto.php
-.\UserRoleStatePropertiesTrait.php
-.\UserStateEventId.php
-.\UserStateEventIdFlattenedDto.php
-.\UserStatePropertiesTrait.php
 .\Warehouse.php
 .\WarehouseIsPropertyRemovedTrait.php
 .\WarehouseStateEventId.php
@@ -367,7 +251,6 @@
 .\AttributeUseMvoMetadata.php
 .\AttributeValueMetadata.php
 .\AttributeValueMvoMetadata.php
-.\AudienceMetadata.php
 .\GenerateBoundedContextDomainAggregatesMetadata.txt
 .\InOutLineMetadata.php
 .\InOutLineMvoMetadata.php
@@ -376,18 +259,6 @@
 .\OrganizationMetadata.php
 .\OrganizationStructureMetadata.php
 .\OrganizationStructureTypeMetadata.php
-.\PermissionMetadata.php
-.\RoleMetadata.php
-.\RolePermissionMetadata.php
-.\UserClaimMetadata.php
-.\UserClaimMvoMetadata.php
-.\UserLoginMetadata.php
-.\UserLoginMvoMetadata.php
-.\UserMetadata.php
-.\UserPermissionMetadata.php
-.\UserPermissionMvoMetadata.php
-.\UserRoleMetadata.php
-.\UserRoleMvoMetadata.php
 .\WarehouseMetadata.php
 </LastOutputs>
     </Content>
@@ -403,7 +274,6 @@
 .\GenerateTreesRequests.txt
 .\LocatorTreesQueryRequest.php
 .\OrganizationTreesQueryRequest.php
-.\PermissionTreesQueryRequest.php
 </LastOutputs>
     </Content>
     <Content Include="Dddml\Wms\HttpClient\GenerateAggregatesRequests.txt">
@@ -447,9 +317,6 @@
 .\AttributeValueMvoFilteringFieldsTrait.php
 .\AttributeValueMvoQueryRequest.php
 .\AttributeValueMvosQueryRequest.php
-.\AudienceFilteringFieldsTrait.php
-.\AudienceQueryRequest.php
-.\AudiencesQueryRequest.php
 .\CreateAttributeRequest.php
 .\CreateAttributeSetInstanceExtensionFieldGroupRequest.php
 .\CreateAttributeSetInstanceExtensionFieldMvoRequest.php
@@ -457,21 +324,12 @@
 .\CreateAttributeSetRequest.php
 .\CreateAttributeUseMvoRequest.php
 .\CreateAttributeValueMvoRequest.php
-.\CreateAudienceRequest.php
 .\CreateInOutLineMvoRequest.php
 .\CreateInOutRequest.php
 .\CreateLocatorRequest.php
 .\CreateOrganizationRequest.php
 .\CreateOrganizationStructureRequest.php
 .\CreateOrganizationStructureTypeRequest.php
-.\CreatePermissionRequest.php
-.\CreateRolePermissionRequest.php
-.\CreateRoleRequest.php
-.\CreateUserClaimMvoRequest.php
-.\CreateUserLoginMvoRequest.php
-.\CreateUserPermissionMvoRequest.php
-.\CreateUserRequest.php
-.\CreateUserRoleMvoRequest.php
 .\CreateWarehouseRequest.php
 .\DeleteAttributeRequest.php
 .\DeleteAttributeSetInstanceExtensionFieldGroupRequest.php
@@ -480,21 +338,12 @@
 .\DeleteAttributeSetRequest.php
 .\DeleteAttributeUseMvoRequest.php
 .\DeleteAttributeValueMvoRequest.php
-.\DeleteAudienceRequest.php
 .\DeleteInOutLineMvoRequest.php
 .\DeleteInOutRequest.php
 .\DeleteLocatorRequest.php
 .\DeleteOrganizationRequest.php
 .\DeleteOrganizationStructureRequest.php
 .\DeleteOrganizationStructureTypeRequest.php
-.\DeletePermissionRequest.php
-.\DeleteRolePermissionRequest.php
-.\DeleteRoleRequest.php
-.\DeleteUserClaimMvoRequest.php
-.\DeleteUserLoginMvoRequest.php
-.\DeleteUserPermissionMvoRequest.php
-.\DeleteUserRequest.php
-.\DeleteUserRoleMvoRequest.php
 .\DeleteWarehouseRequest.php
 .\GenerateAggregatesRequests.txt
 .\InOutFilteringFieldsTrait.php
@@ -514,21 +363,12 @@
 .\MergePatchAttributeSetRequest.php
 .\MergePatchAttributeUseMvoRequest.php
 .\MergePatchAttributeValueMvoRequest.php
-.\MergePatchAudienceRequest.php
 .\MergePatchInOutLineMvoRequest.php
 .\MergePatchInOutRequest.php
 .\MergePatchLocatorRequest.php
 .\MergePatchOrganizationRequest.php
 .\MergePatchOrganizationStructureRequest.php
 .\MergePatchOrganizationStructureTypeRequest.php
-.\MergePatchPermissionRequest.php
-.\MergePatchRolePermissionRequest.php
-.\MergePatchRoleRequest.php
-.\MergePatchUserClaimMvoRequest.php
-.\MergePatchUserLoginMvoRequest.php
-.\MergePatchUserPermissionMvoRequest.php
-.\MergePatchUserRequest.php
-.\MergePatchUserRoleMvoRequest.php
 .\MergePatchWarehouseRequest.php
 .\OrganizationFilteringFieldsTrait.php
 .\OrganizationQueryRequest.php
@@ -539,34 +379,6 @@
 .\OrganizationStructureTypeFilteringFieldsTrait.php
 .\OrganizationStructureTypeQueryRequest.php
 .\OrganizationStructureTypesQueryRequest.php
-.\PermissionFilteringFieldsTrait.php
-.\PermissionQueryRequest.php
-.\PermissionsQueryRequest.php
-.\RoleFilteringFieldsTrait.php
-.\RolePermissionFilteringFieldsTrait.php
-.\RolePermissionQueryRequest.php
-.\RolePermissionsQueryRequest.php
-.\RoleQueryRequest.php
-.\RolesQueryRequest.php
-.\UserClaimFilteringFieldsTrait.php
-.\UserClaimMvoFilteringFieldsTrait.php
-.\UserClaimMvoQueryRequest.php
-.\UserClaimMvosQueryRequest.php
-.\UserFilteringFieldsTrait.php
-.\UserLoginFilteringFieldsTrait.php
-.\UserLoginMvoFilteringFieldsTrait.php
-.\UserLoginMvoQueryRequest.php
-.\UserLoginMvosQueryRequest.php
-.\UserPermissionFilteringFieldsTrait.php
-.\UserPermissionMvoFilteringFieldsTrait.php
-.\UserPermissionMvoQueryRequest.php
-.\UserPermissionMvosQueryRequest.php
-.\UserQueryRequest.php
-.\UserRoleFilteringFieldsTrait.php
-.\UserRoleMvoFilteringFieldsTrait.php
-.\UserRoleMvoQueryRequest.php
-.\UserRoleMvosQueryRequest.php
-.\UsersQueryRequest.php
 .\WarehouseFilteringFieldsTrait.php
 .\WarehouseQueryRequest.php
 .\WarehousesQueryRequest.php
@@ -628,9 +440,6 @@
     <None Include="Dddml\Wms\Domain\AbstractAttributeValueMvoCommand.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\Domain\AbstractAudienceCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\Domain\AbstractInOutCommand.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
@@ -650,42 +459,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\AbstractOrganizationStructureTypeCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractPermissionCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractRoleCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractRolePermissionCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractUserClaimCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractUserClaimMvoCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractUserCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractUserLoginCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractUserLoginMvoCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractUserPermissionCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractUserPermissionMvoCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractUserRoleCommand.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AbstractUserRoleMvoCommand.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\AbstractWarehouseCommand.php">
@@ -859,21 +632,6 @@
     <None Include="Dddml\Wms\Domain\AttributeValueStatePropertiesTrait.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\Domain\Audience.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AudienceIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AudienceStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AudienceStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\AudienceStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\Domain\CommandTrait.php">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </None>
@@ -907,9 +665,6 @@
     <None Include="Dddml\Wms\Domain\CreateOrMergePatchAttributeValueMvo.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchAudience.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\Domain\CreateOrMergePatchInOut.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
@@ -929,42 +684,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\CreateOrMergePatchOrganizationStructureType.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchPermission.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchRole.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchRolePermission.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchUser.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchUserClaim.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchUserClaimMvo.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchUserLogin.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchUserLoginMvo.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchUserPermission.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchUserPermissionMvo.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchUserRole.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\CreateOrMergePatchUserRoleMvo.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\CreateOrMergePatchWarehouse.php">
@@ -991,9 +710,6 @@
     <None Include="Dddml\Wms\Domain\DeleteAttributeValueMvo.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\Domain\DeleteAudience.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\Domain\DeleteInOut.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
@@ -1010,30 +726,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\DeleteOrganizationStructureType.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\DeletePermission.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\DeleteRole.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\DeleteRolePermission.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\DeleteUser.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\DeleteUserClaimMvo.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\DeleteUserLoginMvo.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\DeleteUserPermissionMvo.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\DeleteUserRoleMvo.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\DeleteWarehouse.php">
@@ -1108,12 +800,6 @@
     <None Include="Dddml\Wms\Domain\LocatorStatePropertiesTrait.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\Domain\LoginKey.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\LoginKeyFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\Domain\Metadata\AttributeMetadata.php">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </None>
@@ -1144,9 +830,6 @@
     <None Include="Dddml\Wms\Domain\Metadata\AttributeValueMvoMetadata.php">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\Domain\Metadata\AudienceMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\Domain\Metadata\BoundedContextMetadata.php">
       <DependentUpon>GenerateBoundedContextMetadata.tt</DependentUpon>
     </None>
@@ -1169,42 +852,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\Metadata\OrganizationStructureTypeMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\PermissionMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\RoleMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\RolePermissionMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\UserClaimMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\UserClaimMvoMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\UserLoginMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\UserLoginMvoMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\UserMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\UserPermissionMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\UserPermissionMvoMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\UserRoleMetadata.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Metadata\UserRoleMvoMetadata.php">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\Metadata\WarehouseMetadata.php">
@@ -1261,21 +908,6 @@
     <None Include="Dddml\Wms\Domain\OrganizationStructureTypeStatePropertiesTrait.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\Domain\Permission.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\PermissionIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\PermissionStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\PermissionStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\PermissionStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\Domain\RemoveAttributeSetInstanceExtensionField.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
@@ -1288,218 +920,11 @@
     <None Include="Dddml\Wms\Domain\RemoveInOutLine.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\Domain\RemoveUserClaim.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RemoveUserLogin.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RemoveUserPermission.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RemoveUserRole.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\Role.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RoleIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RolePermission.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RolePermissionId.php">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RolePermissionIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RolePermissionIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RolePermissionStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RolePermissionStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RolePermissionStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RoleStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RoleStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\RoleStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\Domain\SkuId.php">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\SkuIdFlattenedDto.php">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\User.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaim.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaimId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaimIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaimIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaimMvo.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaimMvoIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaimMvoStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaimMvoStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaimMvoStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaimStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaimStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserClaimStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLogin.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLoginId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLoginIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLoginIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLoginMvo.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLoginMvoIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLoginMvoStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLoginMvoStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLoginMvoStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLoginStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLoginStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserLoginStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermission.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermissionId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermissionIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermissionIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermissionMvo.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermissionMvoIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermissionMvoStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermissionMvoStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermissionMvoStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermissionStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermissionStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserPermissionStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRole.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRoleId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRoleIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRoleIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRoleMvo.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRoleMvoIsPropertyRemovedTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRoleMvoStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRoleMvoStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRoleMvoStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRoleStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRoleStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserRoleStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserStateEventId.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserStateEventIdFlattenedDto.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\Domain\UserStatePropertiesTrait.php">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\Domain\Warehouse.php">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
@@ -1591,15 +1016,6 @@
     <None Include="Dddml\Wms\HttpClient\AttributeValueMvosQueryRequest.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\HttpClient\AudienceFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\AudienceQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\AudiencesQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\HttpClient\CreateAttributeRequest.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
@@ -1621,9 +1037,6 @@
     <None Include="Dddml\Wms\HttpClient\CreateAttributeValueMvoRequest.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\HttpClient\CreateAudienceRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\HttpClient\CreateInOutLineMvoRequest.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
@@ -1640,30 +1053,6 @@
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\HttpClient\CreateOrganizationStructureTypeRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\CreatePermissionRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\CreateRolePermissionRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\CreateRoleRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\CreateUserClaimMvoRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\CreateUserLoginMvoRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\CreateUserPermissionMvoRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\CreateUserRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\CreateUserRoleMvoRequest.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\HttpClient\CreateWarehouseRequest.php">
@@ -1690,9 +1079,6 @@
     <None Include="Dddml\Wms\HttpClient\DeleteAttributeValueMvoRequest.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\HttpClient\DeleteAudienceRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\HttpClient\DeleteInOutLineMvoRequest.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
@@ -1709,30 +1095,6 @@
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\HttpClient\DeleteOrganizationStructureTypeRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\DeletePermissionRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\DeleteRolePermissionRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\DeleteRoleRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\DeleteUserClaimMvoRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\DeleteUserLoginMvoRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\DeleteUserPermissionMvoRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\DeleteUserRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\DeleteUserRoleMvoRequest.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\HttpClient\DeleteWarehouseRequest.php">
@@ -1792,9 +1154,6 @@
     <None Include="Dddml\Wms\HttpClient\MergePatchAttributeValueMvoRequest.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
-    <None Include="Dddml\Wms\HttpClient\MergePatchAudienceRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
     <None Include="Dddml\Wms\HttpClient\MergePatchInOutLineMvoRequest.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
@@ -1811,30 +1170,6 @@
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\HttpClient\MergePatchOrganizationStructureTypeRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\MergePatchPermissionRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\MergePatchRolePermissionRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\MergePatchRoleRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\MergePatchUserClaimMvoRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\MergePatchUserLoginMvoRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\MergePatchUserPermissionMvoRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\MergePatchUserRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\MergePatchUserRoleMvoRequest.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\HttpClient\MergePatchWarehouseRequest.php">
@@ -1869,93 +1204,6 @@
     </None>
     <None Include="Dddml\Wms\HttpClient\OrganizationTreesQueryRequest.php">
       <DependentUpon>GenerateTreesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\PermissionFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\PermissionQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\PermissionsQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\PermissionTreesQueryRequest.php">
-      <DependentUpon>GenerateTreesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\RoleFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\RolePermissionFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\RolePermissionQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\RolePermissionsQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\RoleQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\RolesQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserClaimFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserClaimMvoFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserClaimMvoQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserClaimMvosQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserLoginFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserLoginMvoFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserLoginMvoQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserLoginMvosQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserPermissionFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserPermissionMvoFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserPermissionMvoQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserPermissionMvosQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserRoleFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserRoleMvoFilteringFieldsTrait.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserRoleMvoQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UserRoleMvosQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
-    </None>
-    <None Include="Dddml\Wms\HttpClient\UsersQueryRequest.php">
-      <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>
     </None>
     <None Include="Dddml\Wms\HttpClient\WarehouseFilteringFieldsTrait.php">
       <DependentUpon>GenerateAggregatesRequests.tt</DependentUpon>

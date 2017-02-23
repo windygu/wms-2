@@ -1,4 +1,156 @@
 export default {
+    Attribute: {
+      displayableFields: {
+            attributeId: {},
+            name: {},
+            organizationId: {},
+            description: {},
+            isMandatory: {},
+            isInstanceAttribute: {},
+            attributeValueType: {},
+            attributeValueLength: {},
+            isList: {},
+            fieldName: {},
+            referenceId: {},
+            active: {},
+      }
+    },
+    AttributeValue: {
+      displayableFields: {
+            value: {},
+            name: {},
+            description: {},
+            referenceId: {},
+            active: {},
+      }
+    },
+    AttributeSet: {
+      displayableFields: {
+            attributeSetId: {},
+            name: {},
+            organizationId: {},
+            description: {},
+            serialNumberAttributeId: {},
+            lotAttributeId: {},
+            referenceId: {},
+            active: {},
+      }
+    },
+    AttributeUse: {
+      displayableFields: {
+            attributeId: {},
+            sequenceNumber: {},
+            active: {},
+      }
+    },
+    InOut: {
+      displayableFields: {
+            documentNumber: {},
+            isSOTransaction: {},
+            documentStatus: {},
+            posted: {},
+            processing: {},
+            processed: {},
+            documentType: {},
+            description: {},
+            orderNumber: {},
+            dateOrdered: {},
+            isPrinted: {},
+            movementType: {},
+            movementDate: {},
+            businessPartnerId: {},
+            warehouseId: {},
+            poReference: {},
+            freightAmount: {},
+            shipperId: {},
+            chargeAmount: {},
+            datePrinted: {},
+            salesRepresentative: {},
+            numberOfPackages: {},
+            pickDate: {},
+            shipDate: {},
+            trackingNumber: {},
+            dateReceived: {},
+            isInTransit: {},
+            isApproved: {},
+            isInDispute: {},
+            volume: {},
+            weight: {},
+            rmaNumber: {},
+            reversalNumber: {},
+            isDropShip: {},
+            dropShipBusinessPartnerId: {},
+            active: {},
+      }
+    },
+    InOutLine: {
+      displayableFields: {
+            skuId: {},
+            lineNumber: {},
+            description: {},
+            locatorId: {},
+            product: {},
+            uomId: {},
+            movementQuantity: {},
+            confirmedQuantity: {},
+            scrappedQuantity: {},
+            targetQuantity: {},
+            pickedQuantity: {},
+            isInvoiced: {},
+            attributeSetInstanceId: {},
+            isDescription: {},
+            processed: {},
+            quantityEntered: {},
+            rmaLineNumber: {},
+            reversalLineNumber: {},
+            active: {},
+      }
+    },
+    Organization: {
+      displayableFields: {
+            organizationId: {},
+            name: {},
+            description: {},
+            type: {},
+            isSummary: {},
+            active: {},
+      }
+    },
+    OrganizationStructureType: {
+      displayableFields: {
+            id: {},
+            active: {},
+      }
+    },
+    OrganizationStructure: {
+      displayableFields: {
+            id: {},
+            active: {},
+      }
+    },
+    Warehouse: {
+      displayableFields: {
+            warehouseId: {},
+            name: {},
+            description: {},
+            isInTransit: {},
+            active: {},
+      }
+    },
+    Locator: {
+      displayableFields: {
+            locatorId: {},
+            warehouseId: {},
+            parentLocatorId: {},
+            locatorType: {},
+            priorityNumber: {},
+            isDefault: {},
+            x: {},
+            y: {},
+            z: {},
+            active: {},
+      }
+    },
     AttributeSetInstance: {
       displayableFields: {
             attributeSetInstanceId: {},
@@ -489,255 +641,6 @@ export default {
             active: {},
       }
     },
-    Role: {
-      displayableFields: {
-            roleId: {},
-            name: {},
-            description: {},
-            active: {},
-      }
-    },
-    Permission: {
-      displayableFields: {
-            permissionId: {},
-            name: {},
-            parentPermissionId: {},
-            description: {},
-            active: {},
-      }
-    },
-    RolePermission: {
-      displayableFields: {
-            id: {},
-            active: {},
-      }
-    },
-    Attribute: {
-      displayableFields: {
-            attributeId: {},
-            name: {},
-            organizationId: {},
-            description: {},
-            isMandatory: {},
-            isInstanceAttribute: {},
-            attributeValueType: {},
-            attributeValueLength: {},
-            isList: {},
-            fieldName: {},
-            referenceId: {},
-            active: {},
-      }
-    },
-    AttributeValue: {
-      displayableFields: {
-            value: {},
-            name: {},
-            description: {},
-            referenceId: {},
-            active: {},
-      }
-    },
-    AttributeSet: {
-      displayableFields: {
-            attributeSetId: {},
-            name: {},
-            organizationId: {},
-            description: {},
-            serialNumberAttributeId: {},
-            lotAttributeId: {},
-            referenceId: {},
-            active: {},
-      }
-    },
-    AttributeUse: {
-      displayableFields: {
-            attributeId: {},
-            sequenceNumber: {},
-            active: {},
-      }
-    },
-    Audience: {
-      displayableFields: {
-            clientId: {},
-            name: {},
-            base64Secret: {},
-            active: {},
-      }
-    },
-    User: {
-      displayableFields: {
-            userId: {},
-            userName: {},
-            accessFailedCount: {},
-            email: {},
-            emailConfirmed: {},
-            lockoutEnabled: {},
-            lockoutEndDateUtc: {},
-            passwordHash: {},
-            phoneNumber: {},
-            phoneNumberConfirmed: {},
-            twoFactorEnabled: {},
-            securityStamp: {},
-            active: {},
-      }
-    },
-    UserRole: {
-      displayableFields: {
-            roleId: {},
-            active: {},
-      }
-    },
-    UserClaim: {
-      displayableFields: {
-            claimId: {},
-            claimType: {},
-            claimValue: {},
-            active: {},
-      }
-    },
-    UserPermission: {
-      displayableFields: {
-            permissionId: {},
-            active: {},
-      }
-    },
-    UserLogin: {
-      displayableFields: {
-            loginKey: {},
-            active: {},
-      }
-    },
-    InOut: {
-      displayableFields: {
-            documentNumber: {},
-            isSOTransaction: {},
-            documentStatus: {},
-            posted: {},
-            processing: {},
-            processed: {},
-            documentType: {},
-            description: {},
-            orderNumber: {},
-            dateOrdered: {},
-            isPrinted: {},
-            movementType: {},
-            movementDate: {},
-            businessPartnerId: {},
-            warehouseId: {},
-            poReference: {},
-            freightAmount: {},
-            shipperId: {},
-            chargeAmount: {},
-            datePrinted: {},
-            salesRepresentative: {},
-            numberOfPackages: {},
-            pickDate: {},
-            shipDate: {},
-            trackingNumber: {},
-            dateReceived: {},
-            isInTransit: {},
-            isApproved: {},
-            isInDispute: {},
-            volume: {},
-            weight: {},
-            rmaNumber: {},
-            reversalNumber: {},
-            isDropShip: {},
-            dropShipBusinessPartnerId: {},
-            active: {},
-      }
-    },
-    InOutLine: {
-      displayableFields: {
-            skuId: {},
-            lineNumber: {},
-            description: {},
-            locatorId: {},
-            product: {},
-            uomId: {},
-            movementQuantity: {},
-            confirmedQuantity: {},
-            scrappedQuantity: {},
-            targetQuantity: {},
-            pickedQuantity: {},
-            isInvoiced: {},
-            attributeSetInstanceId: {},
-            isDescription: {},
-            processed: {},
-            quantityEntered: {},
-            rmaLineNumber: {},
-            reversalLineNumber: {},
-            active: {},
-      }
-    },
-    Organization: {
-      displayableFields: {
-            organizationId: {},
-            name: {},
-            description: {},
-            type: {},
-            isSummary: {},
-            active: {},
-      }
-    },
-    OrganizationStructureType: {
-      displayableFields: {
-            id: {},
-            active: {},
-      }
-    },
-    OrganizationStructure: {
-      displayableFields: {
-            id: {},
-            active: {},
-      }
-    },
-    Warehouse: {
-      displayableFields: {
-            warehouseId: {},
-            name: {},
-            description: {},
-            isInTransit: {},
-            active: {},
-      }
-    },
-    Locator: {
-      displayableFields: {
-            locatorId: {},
-            warehouseId: {},
-            parentLocatorId: {},
-            locatorType: {},
-            priorityNumber: {},
-            isDefault: {},
-            x: {},
-            y: {},
-            z: {},
-            active: {},
-      }
-    },
-    AttributeSetInstanceExtensionFieldMvo: {
-      displayableFields: {
-            attributeSetInstanceExtensionFieldId: {},
-            name: {},
-            type: {},
-            length: {},
-            alias: {},
-            description: {},
-            version: {},
-            active: {},
-            attrSetInstEFGroupFieldType: {},
-            attrSetInstEFGroupFieldLength: {},
-            attrSetInstEFGroupFieldCount: {},
-            attrSetInstEFGroupNameFormat: {},
-            attrSetInstEFGroupDescription: {},
-            attrSetInstEFGroupCreatedBy: {},
-            attrSetInstEFGroupCreatedAt: {},
-            attrSetInstEFGroupUpdatedBy: {},
-            attrSetInstEFGroupUpdatedAt: {},
-            attrSetInstEFGroupActive: {},
-            attrSetInstEFGroupDeleted: {},
-      }
-    },
     AttributeValueMvo: {
       displayableFields: {
             attributeValueId: {},
@@ -782,104 +685,6 @@ export default {
             attributeSetUpdatedAt: {},
             attributeSetActive: {},
             attributeSetDeleted: {},
-      }
-    },
-    UserRoleMvo: {
-      displayableFields: {
-            userRoleId: {},
-            version: {},
-            active: {},
-            userUserName: {},
-            userAccessFailedCount: {},
-            userEmail: {},
-            userEmailConfirmed: {},
-            userLockoutEnabled: {},
-            userLockoutEndDateUtc: {},
-            userPasswordHash: {},
-            userPhoneNumber: {},
-            userPhoneNumberConfirmed: {},
-            userTwoFactorEnabled: {},
-            userSecurityStamp: {},
-            userCreatedBy: {},
-            userCreatedAt: {},
-            userUpdatedBy: {},
-            userUpdatedAt: {},
-            userActive: {},
-            userDeleted: {},
-      }
-    },
-    UserClaimMvo: {
-      displayableFields: {
-            userClaimId: {},
-            claimType: {},
-            claimValue: {},
-            version: {},
-            active: {},
-            userUserName: {},
-            userAccessFailedCount: {},
-            userEmail: {},
-            userEmailConfirmed: {},
-            userLockoutEnabled: {},
-            userLockoutEndDateUtc: {},
-            userPasswordHash: {},
-            userPhoneNumber: {},
-            userPhoneNumberConfirmed: {},
-            userTwoFactorEnabled: {},
-            userSecurityStamp: {},
-            userCreatedBy: {},
-            userCreatedAt: {},
-            userUpdatedBy: {},
-            userUpdatedAt: {},
-            userActive: {},
-            userDeleted: {},
-      }
-    },
-    UserPermissionMvo: {
-      displayableFields: {
-            userPermissionId: {},
-            version: {},
-            active: {},
-            userUserName: {},
-            userAccessFailedCount: {},
-            userEmail: {},
-            userEmailConfirmed: {},
-            userLockoutEnabled: {},
-            userLockoutEndDateUtc: {},
-            userPasswordHash: {},
-            userPhoneNumber: {},
-            userPhoneNumberConfirmed: {},
-            userTwoFactorEnabled: {},
-            userSecurityStamp: {},
-            userCreatedBy: {},
-            userCreatedAt: {},
-            userUpdatedBy: {},
-            userUpdatedAt: {},
-            userActive: {},
-            userDeleted: {},
-      }
-    },
-    UserLoginMvo: {
-      displayableFields: {
-            userLoginId: {},
-            version: {},
-            active: {},
-            userUserName: {},
-            userAccessFailedCount: {},
-            userEmail: {},
-            userEmailConfirmed: {},
-            userLockoutEnabled: {},
-            userLockoutEndDateUtc: {},
-            userPasswordHash: {},
-            userPhoneNumber: {},
-            userPhoneNumberConfirmed: {},
-            userTwoFactorEnabled: {},
-            userSecurityStamp: {},
-            userCreatedBy: {},
-            userCreatedAt: {},
-            userUpdatedBy: {},
-            userUpdatedAt: {},
-            userActive: {},
-            userDeleted: {},
       }
     },
     InOutLineMvo: {
@@ -944,6 +749,29 @@ export default {
             inOutUpdatedAt: {},
             inOutActive: {},
             inOutDeleted: {},
+      }
+    },
+    AttributeSetInstanceExtensionFieldMvo: {
+      displayableFields: {
+            attributeSetInstanceExtensionFieldId: {},
+            name: {},
+            type: {},
+            length: {},
+            alias: {},
+            description: {},
+            version: {},
+            active: {},
+            attrSetInstEFGroupFieldType: {},
+            attrSetInstEFGroupFieldLength: {},
+            attrSetInstEFGroupFieldCount: {},
+            attrSetInstEFGroupNameFormat: {},
+            attrSetInstEFGroupDescription: {},
+            attrSetInstEFGroupCreatedBy: {},
+            attrSetInstEFGroupCreatedAt: {},
+            attrSetInstEFGroupUpdatedBy: {},
+            attrSetInstEFGroupUpdatedAt: {},
+            attrSetInstEFGroupActive: {},
+            attrSetInstEFGroupDeleted: {},
       }
     }
 }

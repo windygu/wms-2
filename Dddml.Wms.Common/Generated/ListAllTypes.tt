@@ -1,7 +1,7 @@
 <#@ template language="C#" debug="True" #>
 <#@ output extension="txt" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="LoadBoundedContext.tt" #>
+<#@ include file="..\LoadBoundedContext.tt" #>
 <#
 
 	var listedTypes = new SortedSet<string>();

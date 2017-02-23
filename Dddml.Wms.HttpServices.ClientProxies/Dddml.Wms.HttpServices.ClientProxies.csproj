@@ -92,9 +92,6 @@
     <Compile Include="Generated\AttributeValueMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\AudienceApplicationServiceProxy.cs">
-      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\DddmlWmsRamlClient.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -122,33 +119,6 @@
     <Compile Include="Generated\OrganizationTreeApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\PermissionApplicationServiceProxy.cs">
-      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\PermissionTreeApplicationServiceProxy.cs">
-      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\RoleApplicationServiceProxy.cs">
-      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\RolePermissionApplicationServiceProxy.cs">
-      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\UserApplicationServiceProxy.cs">
-      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\UserClaimMvoApplicationServiceProxy.cs">
-      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\UserLoginMvoApplicationServiceProxy.cs">
-      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\UserPermissionMvoApplicationServiceProxy.cs">
-      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\UserRoleMvoApplicationServiceProxy.cs">
-      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\WarehouseApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -166,7 +136,6 @@
 .\AttributeSetInstanceExtensionFieldMvoApplicationServiceProxy.cs
 .\AttributeUseMvoApplicationServiceProxy.cs
 .\AttributeValueMvoApplicationServiceProxy.cs
-.\AudienceApplicationServiceProxy.cs
 .\DddmlWmsRamlClient.cs
 .\GenerateRamlClientProxies.txt
 .\InOutApplicationServiceProxy.cs
@@ -177,15 +146,6 @@
 .\OrganizationStructureApplicationServiceProxy.cs
 .\OrganizationStructureTypeApplicationServiceProxy.cs
 .\OrganizationTreeApplicationServiceProxy.cs
-.\PermissionApplicationServiceProxy.cs
-.\PermissionTreeApplicationServiceProxy.cs
-.\RoleApplicationServiceProxy.cs
-.\RolePermissionApplicationServiceProxy.cs
-.\UserApplicationServiceProxy.cs
-.\UserClaimMvoApplicationServiceProxy.cs
-.\UserLoginMvoApplicationServiceProxy.cs
-.\UserPermissionMvoApplicationServiceProxy.cs
-.\UserRoleMvoApplicationServiceProxy.cs
 .\WarehouseApplicationServiceProxy.cs
 </LastOutputs>
     </Content>
@@ -210,6 +170,10 @@
     <ProjectReference Include="..\Dddml.Wms.HttpServices.JsonConverters\Dddml.Wms.HttpServices.JsonConverters.csproj">
       <Project>{e5e7c73a-5de3-4bc6-9a92-bf7a6d24ddf5}</Project>
       <Name>Dddml.Wms.HttpServices.JsonConverters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dddml.Wms.Specialization\Dddml.Wms.Specialization.csproj">
+      <Project>{9a9b1e3b-f6aa-46bf-a879-cf58bee11f37}</Project>
+      <Name>Dddml.Wms.Specialization</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

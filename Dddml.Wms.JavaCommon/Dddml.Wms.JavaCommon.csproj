@@ -243,27 +243,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\AbstractAttributeValueStates.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractAudienceAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractAudienceApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractAudienceCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractAudienceCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractAudienceState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractAudienceStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractAudienceStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AbstractCommand.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
@@ -417,251 +396,8 @@
     <Content Include="src\main\java\org\dddml\wms\domain\AbstractOrganizationTreeApplicationService.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractPermissionAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractPermissionApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractPermissionCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractPermissionCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractPermissionState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractPermissionStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractPermissionStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractPermissionTreeApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRoleAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRoleApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRoleCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRoleCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRolePermissionAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRolePermissionApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRolePermissionCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRolePermissionCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRolePermissionState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRolePermissionStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRolePermissionStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRoleState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRoleStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractRoleStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AbstractStateEvent.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimMvoAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimMvoApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimMvoCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimMvoCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimMvoState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimMvoStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimMvoStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserClaimStates.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginMvoAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginMvoApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginMvoCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginMvoCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginMvoState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginMvoStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginMvoStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserLoginStates.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionMvoAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionMvoApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionMvoCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionMvoCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionMvoState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionMvoStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionMvoStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserPermissionStates.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleMvoAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleMvoApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleMvoCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleMvoCommandDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleMvoState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleMvoStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleMvoStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserRoleStates.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserStateCommandConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AbstractUserStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AbstractWarehouseAggregate.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
@@ -1149,48 +885,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeValueStates.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\AudienceStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\Command.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
@@ -1224,9 +918,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchAttributeValueMvoDto.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchAudienceDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchInOutDto.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -1246,42 +937,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchOrganizationStructureTypeDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchPermissionDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchRoleDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchRolePermissionDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchUserClaimDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchUserClaimMvoDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchUserDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchUserLoginDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchUserLoginMvoDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchUserPermissionDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchUserPermissionMvoDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchUserRoleDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchUserRoleMvoDto.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\CreateOrMergePatchWarehouseDto.java">
@@ -1308,9 +963,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\DeleteAttributeValueMvoDto.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\DeleteAudienceDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\DeleteInOutDto.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -1329,30 +981,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\DeleteOrganizationStructureTypeDto.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\DeletePermissionDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\DeleteRoleDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\DeleteRolePermissionDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\DeleteUserClaimMvoDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\DeleteUserDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\DeleteUserLoginMvoDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\DeleteUserPermissionMvoDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\DeleteUserRoleMvoDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\DeleteWarehouseDto.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -1366,7 +994,6 @@
 .\AbstractCommand.java
 .\AbstractLocatorTreeApplicationService.java
 .\AbstractOrganizationTreeApplicationService.java
-.\AbstractPermissionTreeApplicationService.java
 .\AbstractStateEvent.java
 .\Command.java
 .\DocumentAction.java
@@ -1382,14 +1009,6 @@
 .\OrganizationTree.java
 .\OrganizationTreeApplicationService.java
 .\OrganizationTreeRepository.java
-.\PermissionTree.java
-.\PermissionTreeApplicationService.java
-.\PermissionTreeRepository.java
-.\RolePermissionId.java
-.\RolePermissionIdDto.java
-.\RolePermissionIdDtoWrapper.java
-.\RolePermissionIdFlattenedDto.java
-.\RolePermissionIdFlattenedDtoFormatter.java
 .\SkuId.java
 .\SkuIdDto.java
 .\SkuIdDtoWrapper.java
@@ -1473,13 +1092,6 @@
 .\AbstractAttributeValueStateCommandConverter.java
 .\AbstractAttributeValueStateEvent.java
 .\AbstractAttributeValueStates.java
-.\AbstractAudienceAggregate.java
-.\AbstractAudienceApplicationService.java
-.\AbstractAudienceCommand.java
-.\AbstractAudienceCommandDto.java
-.\AbstractAudienceState.java
-.\AbstractAudienceStateCommandConverter.java
-.\AbstractAudienceStateEvent.java
 .\AbstractInOutAggregate.java
 .\AbstractInOutApplicationService.java
 .\AbstractInOutCommand.java
@@ -1528,86 +1140,6 @@
 .\AbstractOrganizationStructureTypeState.java
 .\AbstractOrganizationStructureTypeStateCommandConverter.java
 .\AbstractOrganizationStructureTypeStateEvent.java
-.\AbstractPermissionAggregate.java
-.\AbstractPermissionApplicationService.java
-.\AbstractPermissionCommand.java
-.\AbstractPermissionCommandDto.java
-.\AbstractPermissionState.java
-.\AbstractPermissionStateCommandConverter.java
-.\AbstractPermissionStateEvent.java
-.\AbstractRoleAggregate.java
-.\AbstractRoleApplicationService.java
-.\AbstractRoleCommand.java
-.\AbstractRoleCommandDto.java
-.\AbstractRolePermissionAggregate.java
-.\AbstractRolePermissionApplicationService.java
-.\AbstractRolePermissionCommand.java
-.\AbstractRolePermissionCommandDto.java
-.\AbstractRolePermissionState.java
-.\AbstractRolePermissionStateCommandConverter.java
-.\AbstractRolePermissionStateEvent.java
-.\AbstractRoleState.java
-.\AbstractRoleStateCommandConverter.java
-.\AbstractRoleStateEvent.java
-.\AbstractUserAggregate.java
-.\AbstractUserApplicationService.java
-.\AbstractUserClaimCommand.java
-.\AbstractUserClaimCommandDto.java
-.\AbstractUserClaimMvoAggregate.java
-.\AbstractUserClaimMvoApplicationService.java
-.\AbstractUserClaimMvoCommand.java
-.\AbstractUserClaimMvoCommandDto.java
-.\AbstractUserClaimMvoState.java
-.\AbstractUserClaimMvoStateCommandConverter.java
-.\AbstractUserClaimMvoStateEvent.java
-.\AbstractUserClaimState.java
-.\AbstractUserClaimStateCommandConverter.java
-.\AbstractUserClaimStateEvent.java
-.\AbstractUserClaimStates.java
-.\AbstractUserCommand.java
-.\AbstractUserCommandDto.java
-.\AbstractUserLoginCommand.java
-.\AbstractUserLoginCommandDto.java
-.\AbstractUserLoginMvoAggregate.java
-.\AbstractUserLoginMvoApplicationService.java
-.\AbstractUserLoginMvoCommand.java
-.\AbstractUserLoginMvoCommandDto.java
-.\AbstractUserLoginMvoState.java
-.\AbstractUserLoginMvoStateCommandConverter.java
-.\AbstractUserLoginMvoStateEvent.java
-.\AbstractUserLoginState.java
-.\AbstractUserLoginStateCommandConverter.java
-.\AbstractUserLoginStateEvent.java
-.\AbstractUserLoginStates.java
-.\AbstractUserPermissionCommand.java
-.\AbstractUserPermissionCommandDto.java
-.\AbstractUserPermissionMvoAggregate.java
-.\AbstractUserPermissionMvoApplicationService.java
-.\AbstractUserPermissionMvoCommand.java
-.\AbstractUserPermissionMvoCommandDto.java
-.\AbstractUserPermissionMvoState.java
-.\AbstractUserPermissionMvoStateCommandConverter.java
-.\AbstractUserPermissionMvoStateEvent.java
-.\AbstractUserPermissionState.java
-.\AbstractUserPermissionStateCommandConverter.java
-.\AbstractUserPermissionStateEvent.java
-.\AbstractUserPermissionStates.java
-.\AbstractUserRoleCommand.java
-.\AbstractUserRoleCommandDto.java
-.\AbstractUserRoleMvoAggregate.java
-.\AbstractUserRoleMvoApplicationService.java
-.\AbstractUserRoleMvoCommand.java
-.\AbstractUserRoleMvoCommandDto.java
-.\AbstractUserRoleMvoState.java
-.\AbstractUserRoleMvoStateCommandConverter.java
-.\AbstractUserRoleMvoStateEvent.java
-.\AbstractUserRoleState.java
-.\AbstractUserRoleStateCommandConverter.java
-.\AbstractUserRoleStateEvent.java
-.\AbstractUserRoleStates.java
-.\AbstractUserState.java
-.\AbstractUserStateCommandConverter.java
-.\AbstractUserStateEvent.java
 .\AbstractWarehouseAggregate.java
 .\AbstractWarehouseApplicationService.java
 .\AbstractWarehouseCommand.java
@@ -1770,20 +1302,6 @@
 .\AttributeValueStateEventIdFlattenedDto.java
 .\AttributeValueStateEventIdFlattenedDtoFormatter.java
 .\AttributeValueStates.java
-.\AudienceAggregate.java
-.\AudienceApplicationService.java
-.\AudienceCommand.java
-.\AudienceState.java
-.\AudienceStateDto.java
-.\AudienceStateEvent.java
-.\AudienceStateEventDto.java
-.\AudienceStateEventDtoConverter.java
-.\AudienceStateEventId.java
-.\AudienceStateEventIdDto.java
-.\AudienceStateEventIdDtoWrapper.java
-.\AudienceStateEventIdFlattenedDto.java
-.\AudienceStateEventIdFlattenedDtoFormatter.java
-.\AudienceStateRepository.java
 .\CreateOrMergePatchAttributeDto.java
 .\CreateOrMergePatchAttributeSetDto.java
 .\CreateOrMergePatchAttributeSetInstanceDto.java
@@ -1794,7 +1312,6 @@
 .\CreateOrMergePatchAttributeUseMvoDto.java
 .\CreateOrMergePatchAttributeValueDto.java
 .\CreateOrMergePatchAttributeValueMvoDto.java
-.\CreateOrMergePatchAudienceDto.java
 .\CreateOrMergePatchInOutDto.java
 .\CreateOrMergePatchInOutLineDto.java
 .\CreateOrMergePatchInOutLineMvoDto.java
@@ -1802,18 +1319,6 @@
 .\CreateOrMergePatchOrganizationDto.java
 .\CreateOrMergePatchOrganizationStructureDto.java
 .\CreateOrMergePatchOrganizationStructureTypeDto.java
-.\CreateOrMergePatchPermissionDto.java
-.\CreateOrMergePatchRoleDto.java
-.\CreateOrMergePatchRolePermissionDto.java
-.\CreateOrMergePatchUserClaimDto.java
-.\CreateOrMergePatchUserClaimMvoDto.java
-.\CreateOrMergePatchUserDto.java
-.\CreateOrMergePatchUserLoginDto.java
-.\CreateOrMergePatchUserLoginMvoDto.java
-.\CreateOrMergePatchUserPermissionDto.java
-.\CreateOrMergePatchUserPermissionMvoDto.java
-.\CreateOrMergePatchUserRoleDto.java
-.\CreateOrMergePatchUserRoleMvoDto.java
 .\CreateOrMergePatchWarehouseDto.java
 .\DeleteAttributeDto.java
 .\DeleteAttributeSetDto.java
@@ -1822,21 +1327,12 @@
 .\DeleteAttributeSetInstanceExtensionFieldMvoDto.java
 .\DeleteAttributeUseMvoDto.java
 .\DeleteAttributeValueMvoDto.java
-.\DeleteAudienceDto.java
 .\DeleteInOutDto.java
 .\DeleteInOutLineMvoDto.java
 .\DeleteLocatorDto.java
 .\DeleteOrganizationDto.java
 .\DeleteOrganizationStructureDto.java
 .\DeleteOrganizationStructureTypeDto.java
-.\DeletePermissionDto.java
-.\DeleteRoleDto.java
-.\DeleteRolePermissionDto.java
-.\DeleteUserClaimMvoDto.java
-.\DeleteUserDto.java
-.\DeleteUserLoginMvoDto.java
-.\DeleteUserPermissionMvoDto.java
-.\DeleteUserRoleMvoDto.java
 .\DeleteWarehouseDto.java
 .\GenerateBoundedContextDomainAggregates.txt
 .\InOutAggregate.java
@@ -1900,11 +1396,6 @@
 .\LocatorStateEventIdFlattenedDto.java
 .\LocatorStateEventIdFlattenedDtoFormatter.java
 .\LocatorStateRepository.java
-.\LoginKey.java
-.\LoginKeyDto.java
-.\LoginKeyDtoWrapper.java
-.\LoginKeyFlattenedDto.java
-.\LoginKeyFlattenedDtoFormatter.java
 .\OrganizationAggregate.java
 .\OrganizationApplicationService.java
 .\OrganizationCommand.java
@@ -1947,207 +1438,12 @@
 .\OrganizationStructureTypeStateEventIdFlattenedDto.java
 .\OrganizationStructureTypeStateEventIdFlattenedDtoFormatter.java
 .\OrganizationStructureTypeStateRepository.java
-.\PermissionAggregate.java
-.\PermissionApplicationService.java
-.\PermissionCommand.java
-.\PermissionState.java
-.\PermissionStateDto.java
-.\PermissionStateEvent.java
-.\PermissionStateEventDto.java
-.\PermissionStateEventDtoConverter.java
-.\PermissionStateEventId.java
-.\PermissionStateEventIdDto.java
-.\PermissionStateEventIdDtoWrapper.java
-.\PermissionStateEventIdFlattenedDto.java
-.\PermissionStateEventIdFlattenedDtoFormatter.java
-.\PermissionStateRepository.java
 .\RemoveAttributeSetInstanceExtensionFieldDto.java
 .\RemoveAttributeUseDto.java
 .\RemoveAttributeValueDto.java
 .\RemoveInOutLineDto.java
-.\RemoveUserClaimDto.java
-.\RemoveUserLoginDto.java
-.\RemoveUserPermissionDto.java
-.\RemoveUserRoleDto.java
-.\RoleAggregate.java
-.\RoleApplicationService.java
-.\RoleCommand.java
-.\RolePermissionAggregate.java
-.\RolePermissionApplicationService.java
-.\RolePermissionCommand.java
-.\RolePermissionState.java
-.\RolePermissionStateDto.java
-.\RolePermissionStateEvent.java
-.\RolePermissionStateEventDto.java
-.\RolePermissionStateEventDtoConverter.java
-.\RolePermissionStateEventId.java
-.\RolePermissionStateEventIdDto.java
-.\RolePermissionStateEventIdDtoWrapper.java
-.\RolePermissionStateEventIdFlattenedDto.java
-.\RolePermissionStateEventIdFlattenedDtoFormatter.java
-.\RolePermissionStateRepository.java
-.\RoleState.java
-.\RoleStateDto.java
-.\RoleStateEvent.java
-.\RoleStateEventDto.java
-.\RoleStateEventDtoConverter.java
-.\RoleStateEventId.java
-.\RoleStateEventIdDto.java
-.\RoleStateEventIdDtoWrapper.java
-.\RoleStateEventIdFlattenedDto.java
-.\RoleStateEventIdFlattenedDtoFormatter.java
-.\RoleStateRepository.java
 .\TreeLocatorStateRepository.java
 .\TreeOrganizationStructureStateRepository.java
-.\TreePermissionStateRepository.java
-.\UserAggregate.java
-.\UserApplicationService.java
-.\UserClaimCommand.java
-.\UserClaimId.java
-.\UserClaimIdDto.java
-.\UserClaimIdDtoWrapper.java
-.\UserClaimIdFlattenedDto.java
-.\UserClaimIdFlattenedDtoFormatter.java
-.\UserClaimMvoAggregate.java
-.\UserClaimMvoApplicationService.java
-.\UserClaimMvoCommand.java
-.\UserClaimMvoState.java
-.\UserClaimMvoStateDto.java
-.\UserClaimMvoStateEvent.java
-.\UserClaimMvoStateEventDto.java
-.\UserClaimMvoStateEventDtoConverter.java
-.\UserClaimMvoStateEventId.java
-.\UserClaimMvoStateEventIdDto.java
-.\UserClaimMvoStateEventIdDtoWrapper.java
-.\UserClaimMvoStateEventIdFlattenedDto.java
-.\UserClaimMvoStateEventIdFlattenedDtoFormatter.java
-.\UserClaimMvoStateRepository.java
-.\UserClaimState.java
-.\UserClaimStateDao.java
-.\UserClaimStateDto.java
-.\UserClaimStateEvent.java
-.\UserClaimStateEventDao.java
-.\UserClaimStateEventDto.java
-.\UserClaimStateEventDtoConverter.java
-.\UserClaimStateEventId.java
-.\UserClaimStateEventIdDto.java
-.\UserClaimStateEventIdDtoWrapper.java
-.\UserClaimStateEventIdFlattenedDto.java
-.\UserClaimStateEventIdFlattenedDtoFormatter.java
-.\UserClaimStates.java
-.\UserCommand.java
-.\UserCommandDtos.java
-.\UserCommands.java
-.\UserLoginCommand.java
-.\UserLoginId.java
-.\UserLoginIdDto.java
-.\UserLoginIdDtoWrapper.java
-.\UserLoginIdFlattenedDto.java
-.\UserLoginIdFlattenedDtoFormatter.java
-.\UserLoginMvoAggregate.java
-.\UserLoginMvoApplicationService.java
-.\UserLoginMvoCommand.java
-.\UserLoginMvoState.java
-.\UserLoginMvoStateDto.java
-.\UserLoginMvoStateEvent.java
-.\UserLoginMvoStateEventDto.java
-.\UserLoginMvoStateEventDtoConverter.java
-.\UserLoginMvoStateEventId.java
-.\UserLoginMvoStateEventIdDto.java
-.\UserLoginMvoStateEventIdDtoWrapper.java
-.\UserLoginMvoStateEventIdFlattenedDto.java
-.\UserLoginMvoStateEventIdFlattenedDtoFormatter.java
-.\UserLoginMvoStateRepository.java
-.\UserLoginState.java
-.\UserLoginStateDao.java
-.\UserLoginStateDto.java
-.\UserLoginStateEvent.java
-.\UserLoginStateEventDao.java
-.\UserLoginStateEventDto.java
-.\UserLoginStateEventDtoConverter.java
-.\UserLoginStateEventId.java
-.\UserLoginStateEventIdDto.java
-.\UserLoginStateEventIdDtoWrapper.java
-.\UserLoginStateEventIdFlattenedDto.java
-.\UserLoginStateEventIdFlattenedDtoFormatter.java
-.\UserLoginStates.java
-.\UserPermissionCommand.java
-.\UserPermissionId.java
-.\UserPermissionIdDto.java
-.\UserPermissionIdDtoWrapper.java
-.\UserPermissionIdFlattenedDto.java
-.\UserPermissionIdFlattenedDtoFormatter.java
-.\UserPermissionMvoAggregate.java
-.\UserPermissionMvoApplicationService.java
-.\UserPermissionMvoCommand.java
-.\UserPermissionMvoState.java
-.\UserPermissionMvoStateDto.java
-.\UserPermissionMvoStateEvent.java
-.\UserPermissionMvoStateEventDto.java
-.\UserPermissionMvoStateEventDtoConverter.java
-.\UserPermissionMvoStateEventId.java
-.\UserPermissionMvoStateEventIdDto.java
-.\UserPermissionMvoStateEventIdDtoWrapper.java
-.\UserPermissionMvoStateEventIdFlattenedDto.java
-.\UserPermissionMvoStateEventIdFlattenedDtoFormatter.java
-.\UserPermissionMvoStateRepository.java
-.\UserPermissionState.java
-.\UserPermissionStateDao.java
-.\UserPermissionStateDto.java
-.\UserPermissionStateEvent.java
-.\UserPermissionStateEventDao.java
-.\UserPermissionStateEventDto.java
-.\UserPermissionStateEventDtoConverter.java
-.\UserPermissionStateEventId.java
-.\UserPermissionStateEventIdDto.java
-.\UserPermissionStateEventIdDtoWrapper.java
-.\UserPermissionStateEventIdFlattenedDto.java
-.\UserPermissionStateEventIdFlattenedDtoFormatter.java
-.\UserPermissionStates.java
-.\UserRoleCommand.java
-.\UserRoleId.java
-.\UserRoleIdDto.java
-.\UserRoleIdDtoWrapper.java
-.\UserRoleIdFlattenedDto.java
-.\UserRoleIdFlattenedDtoFormatter.java
-.\UserRoleMvoAggregate.java
-.\UserRoleMvoApplicationService.java
-.\UserRoleMvoCommand.java
-.\UserRoleMvoState.java
-.\UserRoleMvoStateDto.java
-.\UserRoleMvoStateEvent.java
-.\UserRoleMvoStateEventDto.java
-.\UserRoleMvoStateEventDtoConverter.java
-.\UserRoleMvoStateEventId.java
-.\UserRoleMvoStateEventIdDto.java
-.\UserRoleMvoStateEventIdDtoWrapper.java
-.\UserRoleMvoStateEventIdFlattenedDto.java
-.\UserRoleMvoStateEventIdFlattenedDtoFormatter.java
-.\UserRoleMvoStateRepository.java
-.\UserRoleState.java
-.\UserRoleStateDao.java
-.\UserRoleStateDto.java
-.\UserRoleStateEvent.java
-.\UserRoleStateEventDao.java
-.\UserRoleStateEventDto.java
-.\UserRoleStateEventDtoConverter.java
-.\UserRoleStateEventId.java
-.\UserRoleStateEventIdDto.java
-.\UserRoleStateEventIdDtoWrapper.java
-.\UserRoleStateEventIdFlattenedDto.java
-.\UserRoleStateEventIdFlattenedDtoFormatter.java
-.\UserRoleStates.java
-.\UserState.java
-.\UserStateDto.java
-.\UserStateEvent.java
-.\UserStateEventDto.java
-.\UserStateEventDtoConverter.java
-.\UserStateEventId.java
-.\UserStateEventIdDto.java
-.\UserStateEventIdDtoWrapper.java
-.\UserStateEventIdFlattenedDto.java
-.\UserStateEventIdFlattenedDtoFormatter.java
-.\UserStateRepository.java
 .\WarehouseAggregate.java
 .\WarehouseApplicationService.java
 .\WarehouseCommand.java
@@ -2361,21 +1657,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\LocatorTreeRepository.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\LoginKey.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\LoginKeyDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\LoginKeyDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\LoginKeyFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\LoginKeyFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
@@ -2436,12 +1717,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeValueMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\AudienceFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\AudienceMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\BoundedContextMetadata.java">
       <DependentUpon>GenerateBoundedContextMetadata.tt</DependentUpon>
     </Content>
@@ -2469,8 +1744,6 @@
 .\AttributeValueMetadata.java
 .\AttributeValueMvoFilteringProperties.java
 .\AttributeValueMvoMetadata.java
-.\AudienceFilteringProperties.java
-.\AudienceMetadata.java
 .\GenerateBoundedContextDomainAggregatesMetadata.txt
 .\InOutFilteringProperties.java
 .\InOutLineFilteringProperties.java
@@ -2486,30 +1759,6 @@
 .\OrganizationStructureMetadata.java
 .\OrganizationStructureTypeFilteringProperties.java
 .\OrganizationStructureTypeMetadata.java
-.\PermissionFilteringProperties.java
-.\PermissionMetadata.java
-.\RoleFilteringProperties.java
-.\RoleMetadata.java
-.\RolePermissionFilteringProperties.java
-.\RolePermissionMetadata.java
-.\UserClaimFilteringProperties.java
-.\UserClaimMetadata.java
-.\UserClaimMvoFilteringProperties.java
-.\UserClaimMvoMetadata.java
-.\UserFilteringProperties.java
-.\UserLoginFilteringProperties.java
-.\UserLoginMetadata.java
-.\UserLoginMvoFilteringProperties.java
-.\UserLoginMvoMetadata.java
-.\UserMetadata.java
-.\UserPermissionFilteringProperties.java
-.\UserPermissionMetadata.java
-.\UserPermissionMvoFilteringProperties.java
-.\UserPermissionMvoMetadata.java
-.\UserRoleFilteringProperties.java
-.\UserRoleMetadata.java
-.\UserRoleMvoFilteringProperties.java
-.\UserRoleMvoMetadata.java
 .\WarehouseFilteringProperties.java
 .\WarehouseMetadata.java
 </LastOutputs>
@@ -2572,78 +1821,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\OrganizationStructureTypeMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\PermissionFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\PermissionMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\RoleFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\RoleMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\RolePermissionFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\RolePermissionMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserClaimFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserClaimMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserClaimMvoFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserClaimMvoMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserLoginFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserLoginMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserLoginMvoFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserLoginMvoMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserPermissionFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserPermissionMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserPermissionMvoFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserPermissionMvoMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserRoleFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserRoleMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserRoleMvoFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\UserRoleMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\WarehouseFilteringProperties.java">
@@ -2802,57 +1979,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\OrganizationTreeRepository.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionTree.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionTreeApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\PermissionTreeRepository.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\RemoveAttributeSetInstanceExtensionFieldDto.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -2863,117 +1989,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\RemoveInOutLineDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RemoveUserClaimDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RemoveUserLoginDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RemoveUserPermissionDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RemoveUserRoleDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionId.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RolePermissionStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\RoleStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\SkuId.java">
@@ -2995,453 +2010,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\TreeOrganizationStructureStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\TreePermissionStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimMvoStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStateDao.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStateEventDao.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserClaimStates.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserCommandDtos.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserCommands.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginMvoStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStateDao.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStateEventDao.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserLoginStates.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionMvoStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStateDao.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStateEventDao.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserPermissionStates.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoAggregate.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoCommand.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleMvoStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStateDao.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStateEventDao.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserRoleStates.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserState.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserStateDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserStateEvent.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserStateEventDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserStateEventDtoConverter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserStateEventId.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserStateEventIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\UserStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\WarehouseAggregate.java">

@@ -23,6 +23,14 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
 
         //private string _endpointUrl = "http://testtenant1.wms.dddml.org:63078/api/"; 
 
+
+        private string GetRegisterUserUrl()
+        {
+
+            string endpointUrl = _authzServerEndpointUrl + "api/";
+            return endpointUrl;
+        }
+
         private string _oAuthBearerToken;
 
         public string OAuthBearerToken 
@@ -106,10 +114,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
             //}).done(function (data) {
             //    self.result("Done!");
             //}).fail(showError);
+            string regEndpointUrl = GetRegisterUserUrl();
 
-            string endpointUrl = _endpointUrl;
-
-            var client = new HttpClient { BaseAddress = new Uri(endpointUrl) };
+            var client = new HttpClient { BaseAddress = new Uri(regEndpointUrl) };
             var url = "Account/Register";
 
             var email = Guid.NewGuid().ToString() + "@tests.net";
@@ -135,6 +142,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
 
             return new Tuple<string, string>(email, password);
         }
+
 
     }
 }

@@ -1,0 +1,39 @@
+﻿<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ include file="..\Dddml.Wms.Common\DddmlSerializationForT4.tc" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Dddml.Core.Domain" #>
+<#@ import namespace="Dddml.Serialization" #>
+<#@ import namespace="Dddml.T4" #>
+<#@ import namespace="Dddml.T4.Extensions" #>
+<#@ include file="T4Toolbox.tt" #>
+<#
+
+    var boundedContext = LoadBoundedContextFiles();
+	boundedContext.Refresh();
+	ReplacePropertyTypesWithBaseTypes(boundedContext);
+#>
+<#+
+	private void ReplacePropertyTypesWithBaseTypes(BoundedContext boundedContext)
+	{
+		boundedContext.ReplacePropertyTypesWithBaseTypes();	
+	}
+
+    private BoundedContext LoadBoundedContextFiles()
+    {
+        string projectFile = TransformationContext.Current.GetPropertyValue("MSBuildProjectFullPath");
+		string projectDir = System.IO.Path.GetDirectoryName(projectFile);
+
+		var files = new List<string>();
+		files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\boundedContext.yaml"));
+
+		files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\Audience.yaml"));
+		files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\IdentityManagement.yaml"));
+		files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\AccessManagement.yaml"));
+		
+		BoundedContext boundedContext = BoundedContextUtils.LoadFromFiles(files);
+
+        return boundedContext; 
+    }
+#>

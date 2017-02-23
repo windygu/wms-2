@@ -58,15 +58,15 @@ namespace Dddml.Wms.Services.Tests
 
         ISessionFactory _sessionFactory;
 
-        IAudienceApplicationService _audienceApplicationService;
+        //IAudienceApplicationService _audienceApplicationService;
 
-        IUserApplicationService _userApplicationService;
+        //IUserApplicationService _userApplicationService;
 
-        IRoleApplicationService _roleApplicationService;
+        //IRoleApplicationService _roleApplicationService;
 
-        IPermissionApplicationService _permissionApplicationService;
+        //IPermissionApplicationService _permissionApplicationService;
 
-        IRolePermissionApplicationService _rolePermissionApplicationService;
+        //IRolePermissionApplicationService _rolePermissionApplicationService;
 
         PasswordHasher _passwordHasher = new PasswordHasher();
 
@@ -78,15 +78,15 @@ namespace Dddml.Wms.Services.Tests
 
             _sessionFactory = ApplicationContext.Current["NHibernateSessionFactory"] as ISessionFactory;
 
-            _audienceApplicationService = ApplicationContext.Current["AudienceApplicationService"] as IAudienceApplicationService;
+            //_audienceApplicationService = ApplicationContext.Current["AudienceApplicationService"] as IAudienceApplicationService;
 
-            _userApplicationService = ApplicationContext.Current["UserApplicationService"] as IUserApplicationService;
+            //_userApplicationService = ApplicationContext.Current["UserApplicationService"] as IUserApplicationService;
 
-            _roleApplicationService = ApplicationContext.Current["RoleApplicationService"] as IRoleApplicationService;
+            //_roleApplicationService = ApplicationContext.Current["RoleApplicationService"] as IRoleApplicationService;
 
-            _permissionApplicationService = ApplicationContext.Current["PermissionApplicationService"] as IPermissionApplicationService;
+            //_permissionApplicationService = ApplicationContext.Current["PermissionApplicationService"] as IPermissionApplicationService;
 
-            _rolePermissionApplicationService = ApplicationContext.Current["RolePermissionApplicationService"] as IRolePermissionApplicationService;
+            //_rolePermissionApplicationService = ApplicationContext.Current["RolePermissionApplicationService"] as IRolePermissionApplicationService;
 
         }
 
@@ -101,16 +101,18 @@ namespace Dddml.Wms.Services.Tests
 
                 DropCreateDatebase(connString);
 
-                CreateSelfClient();
+                //CreateSelfClient();
 
-                var roles = CreateRoles();
+                //var roles = CreateRoles();
 
-                var userIdAndPassword = CreateTestUser(roles);
+                //var userIdAndPassword = CreateTestUser(roles);
 
-                CreatePermissions();
+                //CreatePermissions();
             }
         }
 
+        /*
+         
         /// <summary>
         /// Create a user for test.
         /// </summary>
@@ -137,7 +139,7 @@ namespace Dddml.Wms.Services.Tests
 
             return new Tuple<string, string>(userId, password);
         }
-
+        
         /// <summary>
         /// Return Created Role Ids.
         /// </summary>
@@ -192,20 +194,22 @@ namespace Dddml.Wms.Services.Tests
                 CreatePermission(p);
             }
         }
+        */
 
-        private void CreatePermission(PermissionUtils.Permission p)
-        {
-            var c = p.ToCreatePermission();
-            _permissionApplicationService.When(c);
-            if (p.ChildPermissions != null)
-            {
-                foreach (var childP in p.ChildPermissions)
-                {
-                    CreatePermission(childP);
-                }
-            }
-        }
+        //private void CreatePermission(PermissionUtils.Permission p)
+        //{
+        //    var c = p.ToCreatePermission();
+        //    _permissionApplicationService.When(c);
+        //    if (p.ChildPermissions != null)
+        //    {
+        //        foreach (var childP in p.ChildPermissions)
+        //        {
+        //            CreatePermission(childP);
+        //        }
+        //    }
+        //}
 
+        /*
         private void CreateSelfClient()
         {
             CreateAudience audience = new CreateAudience();
@@ -227,6 +231,7 @@ namespace Dddml.Wms.Services.Tests
                 _audienceApplicationService.When(audience);
             }
         }
+        */
 
         private const string SqlDelimiter = ";";
 

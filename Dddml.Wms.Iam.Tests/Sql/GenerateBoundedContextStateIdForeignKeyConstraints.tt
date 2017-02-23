@@ -1,0 +1,22 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Dddml.Core.Domain" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\Sql\NHibernate\AggregatesStateIdForeignKeyConstraintsTemplate.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.Iam\LoadBoundedContext.tt" #>
+<#
+
+	var aggregates = new List<Aggregate>();
+	foreach (var agg in boundedContext.Aggregates.Values)
+	{
+		aggregates.Add(agg);
+	}
+	var templateAdd = new AggregatesStateIdForeignKeyConstraintsTemplate(aggregates);
+	templateAdd.RenderToFile(String.Format("AddStateIdForeignKeyConstraints.sql", "")); 
+
+	var templateDrop = new AggregatesStateIdForeignKeyConstraintsTemplate(aggregates, true);
+	templateDrop.RenderToFile(String.Format("DropStateIdForeignKeyConstraints.sql", "")); 
+
+
+#>

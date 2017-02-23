@@ -9,7 +9,7 @@
 <#@ import namespace="Dddml.T4.Extensions" #>
 <#@ import namespace="Dddml.T4.Extensions.TypeScript" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="$(SolutionDir)Dddml.Wms.Common\Generated\LoadBoundedContextFiles.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.Common\LoadBoundedContextFiles.tt" #>
 <#
 
 	var generationOptions = new GenerationOptions();

@@ -4,7 +4,7 @@
 <#@ import namespace="Dddml.Core.Domain" #>
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\Sql\NHibernate\AggregatesStateIdForeignKeyConstraintsTemplate.tt" #>
-<#@ include file="$(SolutionDir)Dddml.Wms.Common\Generated\LoadBoundedContext.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.Common\LoadBoundedContext.tt" #>
 <#
 
 	var aggregates = new List<Aggregate>();

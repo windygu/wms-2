@@ -3,7 +3,7 @@
 <#@ import namespace="Dddml.Core.Domain" #>
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\WebApi\RamlClient\RamlClientBoundedContextApplicationServicesProxiesGenerator.tt" #>
-<#@ include file="$(SolutionDir)Dddml.Wms.Common\Generated\LoadBoundedContext.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.Common\LoadBoundedContext.tt" #>
 <#
 
     var generator = new RamlClientBoundedContextApplicationServicesProxiesGenerator(boundedContext);

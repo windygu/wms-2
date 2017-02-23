@@ -1,0 +1,25 @@
+﻿<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Dddml.Core.Domain" #>
+<#@ import namespace="Dddml.Serialization" #>
+<#@ import namespace="Dddml.T4" #>
+<#@ import namespace="Dddml.T4.Extensions" #>
+<#@ import namespace="Dddml.T4.Extensions.Clr" #>
+<#@ import namespace="Dddml.T4.Extensions.NHibernate" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="LoadBoundedContextFiles.tt" #>
+<#
+
+	boundedContext.SetClrServiceAssembly("Dddml.Wms.Iam");
+	boundedContext.SetClrDomainAssembly("Dddml.Wms.Iam");
+
+	var generationOptions = new GenerationOptions();
+	generationOptions.CSharp = true;
+	generationOptions.NoMViewObjects = false;
+	boundedContext.PrepareGeneration(generationOptions);
+
+	var mviewObjects = boundedContext.GetMViewObjects();
+
+#>
