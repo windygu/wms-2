@@ -89,18 +89,19 @@ namespace Dddml.Wms.Support
 
         public static bool Equals(ICreateAttributeSetInstance state1, IAttributeSetInstanceStateProperties state2)
         {
-            if (!Object.Equals(state1.AttributeSetId, state2.AttributeSetId)
-                || !Object.Equals(state1.OrganizationId, state2.OrganizationId)
-                || !Object.Equals(state1.ReferenceId, state2.ReferenceId)
-                || !Object.Equals(state1.SerialNumber, state2.SerialNumber)
-                || !Object.Equals(state1.Lot, state2.Lot)
-                || !Object.Equals(state1.Description, state2.Description)
-                || !Object.Equals(state1.Active, state2.Active)
+            if (!SafeEquals<string>(state1.AttributeSetId, state2.AttributeSetId)
+                || !SafeEquals<string>(state1.OrganizationId, state2.OrganizationId)
+                || !SafeEquals<string>(state1.ReferenceId, state2.ReferenceId)
+                || !SafeEquals<string>(state1.SerialNumber, state2.SerialNumber)
+                || !SafeEquals<string>(state1.Lot, state2.Lot)
+                || !SafeEquals<string>(state1.Description, state2.Description)
+                || !SafeEquals<bool>(state1.Active, state2.Active)
 <#+ 
 		foreach (var fMeta in extensionFields)
 		{
+			var ft = fMeta.Type.EndsWith("?") ? fMeta.Type.Substring(0, fMeta.Type.Length - 1) : fMeta.Type;
 #>
-                || !Object.Equals(state1.<#= fMeta.Name #>, state2.<#= fMeta.Name #>)
+                || !SafeEquals<<#= ft #>>(state1.<#= fMeta.Name #>, state2.<#= fMeta.Name #>)
 <#+ 
 		}
 #>
@@ -111,6 +112,10 @@ namespace Dddml.Wms.Support
             return true;
         }
 
+        private static bool SafeEquals<T>(object obj1, object obj2)
+        {
+            return Object.Equals((obj1 == null ? default(T) : obj1), obj2 == null ? default(T) : obj2);
+        }
 
     }
 
