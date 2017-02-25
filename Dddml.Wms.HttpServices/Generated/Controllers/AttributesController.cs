@@ -25,7 +25,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
     public partial class AttributesController : ApiController
     {
 
-        IIdGenerator<string, ICreateAttribute> _attributeIdGenerator = ApplicationContext.Current["AttributeIdGenerator"] as IIdGenerator<string, ICreateAttribute>;
+        IIdGenerator<string, ICreateAttribute, IAttributeState> _attributeIdGenerator = ApplicationContext.Current["AttributeIdGenerator"] as IIdGenerator<string, ICreateAttribute, IAttributeState>;
 
         IAttributeApplicationService _attributeApplicationService = ApplicationContext.Current["AttributeApplicationService"] as IAttributeApplicationService;
 

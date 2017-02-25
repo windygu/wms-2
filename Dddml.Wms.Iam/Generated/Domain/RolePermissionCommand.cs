@@ -67,19 +67,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class RolePermissionIdGeneratorBase : IIdGenerator<RolePermissionId, ICreateRolePermission>
-    {
-        public abstract RolePermissionId GenerateId(ICreateRolePermission command);
-
-        public abstract RolePermissionId GetNextId();
-
-        public virtual RolePermissionId GetOrGenerateId(ICreateRolePermission command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateRolePermission : RolePermissionCommandBase, ICreateRolePermission
 	{
 		

@@ -56,19 +56,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class UserClaimIdGeneratorBase : IIdGenerator<int, ICreateUserClaim>
-    {
-        public abstract int GenerateId(ICreateUserClaim command);
-
-        public abstract int GetNextId();
-
-        public virtual int GetOrGenerateId(ICreateUserClaim command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateUserClaim : UserClaimCommandBase, ICreateUserClaim
 	{
 		

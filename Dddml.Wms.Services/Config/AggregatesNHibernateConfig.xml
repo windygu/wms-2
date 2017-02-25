@@ -224,6 +224,7 @@
     <constructor-arg ref="attributeSetInstanceEventStore"/>
     <constructor-arg ref="attributeSetInstanceStateRepository"/>
     <constructor-arg ref="attributeSetInstanceStateQueryRepository"/>
+    <constructor-arg ref="attributeSetInstanceIdGenerator"/>
   </object>
 
 

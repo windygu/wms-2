@@ -71,19 +71,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class AudienceIdGeneratorBase : IIdGenerator<string, ICreateAudience>
-    {
-        public abstract string GenerateId(ICreateAudience command);
-
-        public abstract string GetNextId();
-
-        public virtual string GetOrGenerateId(ICreateAudience command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateAudience : AudienceCommandBase, ICreateAudience
 	{
 		

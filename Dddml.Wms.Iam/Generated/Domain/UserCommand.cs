@@ -89,19 +89,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class UserIdGeneratorBase : IIdGenerator<string, ICreateUser>
-    {
-        public abstract string GenerateId(ICreateUser command);
-
-        public abstract string GetNextId();
-
-        public virtual string GetOrGenerateId(ICreateUser command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateUser : UserCommandBase, ICreateUser
 	{
 		

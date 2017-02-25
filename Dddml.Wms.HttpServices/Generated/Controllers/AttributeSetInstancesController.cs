@@ -25,8 +25,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
     public partial class AttributeSetInstancesController : ApiController
     {
 
-        IIdGenerator<string, ICreateAttributeSetInstance> _attributeSetInstanceIdGenerator = ApplicationContext.Current["AttributeSetInstanceIdGenerator"] as IIdGenerator<string, ICreateAttributeSetInstance>;
-
         DynamicObjectMapperBase<JObject, IAttributeSetInstanceStateDto, CreateAttributeSetInstanceDto, MergePatchAttributeSetInstanceDto> _attributeSetInstanceDtoJObjectMapper = ApplicationContext.Current["AttributeSetInstanceDtoJObjectMapper"] as DynamicObjectMapperBase<JObject, IAttributeSetInstanceStateDto, CreateAttributeSetInstanceDto, MergePatchAttributeSetInstanceDto>;
 
         IAttributeSetInstanceApplicationService _attributeSetInstanceApplicationService = ApplicationContext.Current["AttributeSetInstanceApplicationService"] as IAttributeSetInstanceApplicationService;
@@ -110,13 +108,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             CreateAttributeSetInstanceDto value = _attributeSetInstanceDtoJObjectMapper.ToCommandCreate(dynamicObject);
-            bool reused;
-            string idObj = _attributeSetInstanceIdGenerator.GetOrGenerateId(value, out reused);
-            if (!reused)
-            {
-                ((ICreateOrMergePatchOrDeleteAttributeSetInstance)value).AttributeSetInstanceId = idObj;
-                _attributeSetInstanceApplicationService.When(value as ICreateAttributeSetInstance);
-            }
+            var idObj = _attributeSetInstanceApplicationService.CreateWithoutId(value as ICreateAttributeSetInstance);
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
           } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

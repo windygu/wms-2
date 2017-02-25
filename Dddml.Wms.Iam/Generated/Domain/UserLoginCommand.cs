@@ -52,19 +52,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class UserLoginIdGeneratorBase : IIdGenerator<LoginKey, ICreateUserLogin>
-    {
-        public abstract LoginKey GenerateId(ICreateUserLogin command);
-
-        public abstract LoginKey GetNextId();
-
-        public virtual LoginKey GetOrGenerateId(ICreateUserLogin command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateUserLogin : UserLoginCommandBase, ICreateUserLogin
 	{
 		

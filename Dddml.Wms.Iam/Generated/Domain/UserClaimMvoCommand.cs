@@ -107,19 +107,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class UserClaimMvoIdGeneratorBase : IIdGenerator<UserClaimId, ICreateUserClaimMvo>
-    {
-        public abstract UserClaimId GenerateId(ICreateUserClaimMvo command);
-
-        public abstract UserClaimId GetNextId();
-
-        public virtual UserClaimId GetOrGenerateId(ICreateUserClaimMvo command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateUserClaimMvo : UserClaimMvoCommandBase, ICreateUserClaimMvo
 	{
 		

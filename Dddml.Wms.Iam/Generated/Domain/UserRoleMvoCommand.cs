@@ -103,19 +103,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class UserRoleMvoIdGeneratorBase : IIdGenerator<UserRoleId, ICreateUserRoleMvo>
-    {
-        public abstract UserRoleId GenerateId(ICreateUserRoleMvo command);
-
-        public abstract UserRoleId GetNextId();
-
-        public virtual UserRoleId GetOrGenerateId(ICreateUserRoleMvo command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateUserRoleMvo : UserRoleMvoCommandBase, ICreateUserRoleMvo
 	{
 		

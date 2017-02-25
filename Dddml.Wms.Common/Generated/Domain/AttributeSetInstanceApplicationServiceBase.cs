@@ -19,9 +19,37 @@ namespace Dddml.Wms.Domain
 
 		protected abstract IAttributeSetInstanceStateQueryRepository StateQueryRepository { get; }
 
+		protected abstract IIdGenerator<string, ICreateAttributeSetInstance, IAttributeSetInstanceState> IdGenerator { get; }
+		
 		protected AttributeSetInstanceApplicationServiceBase()
 		{
 		}
+
+        public virtual string CreateWithoutId(ICreateAttributeSetInstance c)
+        {
+            string idObj = IdGenerator.GenerateId(c);
+            var state = StateRepository.Get(idObj, true);
+            if (state != null)
+            {
+                if (IdGenerator.Equals((ICreateAttributeSetInstance)c, state))
+                {
+                    return state.AttributeSetInstanceId;
+                }
+
+                if (IdGenerator.IsSurrogateIdEnabled())
+                {
+                    idObj = IdGenerator.GetNextId();
+                }
+                else
+                {
+                    throw DomainError.Named("instanceExist", "the instance already exist, Id: {0}, aggreate name: {1}", idObj, "AttributeSetInstance");
+                }
+            }
+            ((ICreateOrMergePatchOrDeleteAttributeSetInstance)c).AttributeSetInstanceId = idObj;
+            When((ICreateAttributeSetInstance)c);
+            return idObj;
+
+        }
 
 		protected virtual void Update(IAttributeSetInstanceCommand c, Action<IAttributeSetInstanceAggregate> action)
 		{

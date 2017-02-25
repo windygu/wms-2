@@ -103,19 +103,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class UserLoginMvoIdGeneratorBase : IIdGenerator<UserLoginId, ICreateUserLoginMvo>
-    {
-        public abstract UserLoginId GenerateId(ICreateUserLoginMvo command);
-
-        public abstract UserLoginId GetNextId();
-
-        public virtual UserLoginId GetOrGenerateId(ICreateUserLoginMvo command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateUserLoginMvo : UserLoginMvoCommandBase, ICreateUserLoginMvo
 	{
 		

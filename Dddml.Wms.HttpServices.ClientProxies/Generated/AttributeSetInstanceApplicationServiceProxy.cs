@@ -68,6 +68,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((CreateAttributeSetInstanceDto)c);
         }
 
+        public virtual string CreateWithoutId(ICreateAttributeSetInstance c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async Task<IAttributeSetInstanceState> GetAsync(string attributeSetInstanceId)
         {
             IAttributeSetInstanceState state = null;

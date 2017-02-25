@@ -52,19 +52,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class UserPermissionIdGeneratorBase : IIdGenerator<string, ICreateUserPermission>
-    {
-        public abstract string GenerateId(ICreateUserPermission command);
-
-        public abstract string GetNextId();
-
-        public virtual string GetOrGenerateId(ICreateUserPermission command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateUserPermission : UserPermissionCommandBase, ICreateUserPermission
 	{
 		

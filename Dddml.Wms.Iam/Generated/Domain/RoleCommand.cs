@@ -71,19 +71,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class RoleIdGeneratorBase : IIdGenerator<string, ICreateRole>
-    {
-        public abstract string GenerateId(ICreateRole command);
-
-        public abstract string GetNextId();
-
-        public virtual string GetOrGenerateId(ICreateRole command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateRole : RoleCommandBase, ICreateRole
 	{
 		

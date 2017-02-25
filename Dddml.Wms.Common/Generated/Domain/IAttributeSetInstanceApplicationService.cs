@@ -14,6 +14,8 @@ namespace Dddml.Wms.Domain
 
 	public partial interface IAttributeSetInstanceApplicationService : IApplicationService
 	{
+		string CreateWithoutId(ICreateAttributeSetInstance c);
+
 		void When(ICreateAttributeSetInstance c);
 
  		IAttributeSetInstanceState Get(string attributeSetInstanceId);

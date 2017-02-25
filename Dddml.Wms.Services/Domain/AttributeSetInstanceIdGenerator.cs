@@ -14,30 +14,23 @@ namespace Dddml.Wms.Domain
 
         public override string GenerateId(ICreateAttributeSetInstance command)
         {
-            throw new NotSupportedException();
+            string hash = AttributeSetInstancePropertyUtils.GetHash(command);
+            return hash;
         }
 
-        public override string GetOrGenerateId(ICreateAttributeSetInstance command, out bool reused)
+        public override bool Equals(ICreateAttributeSetInstance command, IAttributeSetInstanceState state)
         {
-            string hash = AttributeSetInstancePropertyUtils.GetHash(command);
-            command.Hash = hash;
-
-            IAttributeSetInstanceState old = AttributeSetInstanceStateQueryRepository.GetFirst(new KeyValuePair<string, object>("Hash", hash));
-            if (old != null)
-            {
-                if (AttributeSetInstancePropertyUtils.Equals((ICreateAttributeSetInstance)command, (IAttributeSetInstanceState)old))
-                {
-                    reused = true;
-                    return old.AttributeSetInstanceId;
-                }
-            }
-            reused = false;
-            return GetNextId();
+            return AttributeSetInstancePropertyUtils.Equals(command, state);
         }
 
         public override string GetNextId()
         {
             return Guid.NewGuid().ToString();
+        }
+
+        public override bool IsSurrogateIdEnabled()
+        {
+            return true;
         }
     }
 }

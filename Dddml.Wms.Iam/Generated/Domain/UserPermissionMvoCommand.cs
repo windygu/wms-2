@@ -103,19 +103,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class UserPermissionMvoIdGeneratorBase : IIdGenerator<UserPermissionId, ICreateUserPermissionMvo>
-    {
-        public abstract UserPermissionId GenerateId(ICreateUserPermissionMvo command);
-
-        public abstract UserPermissionId GetNextId();
-
-        public virtual UserPermissionId GetOrGenerateId(ICreateUserPermissionMvo command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateUserPermissionMvo : UserPermissionMvoCommandBase, ICreateUserPermissionMvo
 	{
 		

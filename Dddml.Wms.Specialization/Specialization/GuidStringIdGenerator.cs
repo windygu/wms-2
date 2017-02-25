@@ -7,7 +7,7 @@ using System.Text;
 namespace Dddml.Wms.Specialization
 {
 
-    public class GuidStringIdGenerator<TCommand> : IIdGenerator<string, TCommand>
+    public class GuidStringIdGenerator<TCommand, TState> : IIdGenerator<string, TCommand, TState>
     {
 
         public string GenerateId(TCommand command)
@@ -20,10 +20,14 @@ namespace Dddml.Wms.Specialization
             return Guid.NewGuid().ToString();
         }
 
-        public string GetOrGenerateId(TCommand command, out bool reused)
+        public virtual bool Equals(TCommand command, TState state)
         {
-            reused = false;
-            return GetNextId();
+            throw new NotSupportedException();
+        }
+
+        public bool IsSurrogateIdEnabled()
+        {
+            return true;
         }
 
     }

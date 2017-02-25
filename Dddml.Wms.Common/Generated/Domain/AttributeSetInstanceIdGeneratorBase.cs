@@ -11,13 +11,18 @@ using Dddml.Wms.Domain;
 namespace Dddml.Wms.Domain
 {
 
-    public abstract class AttributeSetInstanceIdGeneratorBase : IIdGenerator<string, ICreateAttributeSetInstance>
+    public abstract class AttributeSetInstanceIdGeneratorBase : IIdGenerator<string, ICreateAttributeSetInstance, IAttributeSetInstanceState>
     {
         public abstract string GenerateId(ICreateAttributeSetInstance command);
 
         public abstract string GetNextId();
 
-        public abstract string GetOrGenerateId(ICreateAttributeSetInstance command, out bool reused);
+        public abstract bool Equals(ICreateAttributeSetInstance command, IAttributeSetInstanceState state);
+
+        public virtual bool IsSurrogateIdEnabled()
+        {
+            return true;
+        }
 
     }
 
