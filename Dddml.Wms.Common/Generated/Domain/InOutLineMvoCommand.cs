@@ -184,19 +184,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class InOutLineMvoIdGeneratorBase : IIdGenerator<InOutLineId, ICreateInOutLineMvo>
-    {
-        public abstract InOutLineId GenerateId(ICreateInOutLineMvo command);
-
-        public abstract InOutLineId GetNextId();
-
-        public virtual InOutLineId GetOrGenerateId(ICreateInOutLineMvo command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateInOutLineMvo : InOutLineMvoCommandBase, ICreateInOutLineMvo
 	{
 		

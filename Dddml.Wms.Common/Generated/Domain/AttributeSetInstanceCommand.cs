@@ -991,16 +991,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class AttributeSetInstanceIdGeneratorBase : IIdGenerator<string, ICreateAttributeSetInstance>
-    {
-        public abstract string GenerateId(ICreateAttributeSetInstance command);
-
-        public abstract string GetNextId();
-
-        public abstract string GetOrGenerateId(ICreateAttributeSetInstance command, out bool reused);
-
-    }
-
 	public class CreateAttributeSetInstance : AttributeSetInstanceCommandBase, ICreateAttributeSetInstance
 	{
 		

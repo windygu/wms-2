@@ -87,19 +87,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class InOutLineIdGeneratorBase : IIdGenerator<SkuId, ICreateInOutLine>
-    {
-        public abstract SkuId GenerateId(ICreateInOutLine command);
-
-        public abstract SkuId GetNextId();
-
-        public virtual SkuId GetOrGenerateId(ICreateInOutLine command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateInOutLine : InOutLineCommandBase, ICreateInOutLine
 	{
 		

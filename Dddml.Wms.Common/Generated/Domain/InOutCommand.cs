@@ -136,19 +136,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class InOutIdGeneratorBase : IIdGenerator<string, ICreateInOut>
-    {
-        public abstract string GenerateId(ICreateInOut command);
-
-        public abstract string GetNextId();
-
-        public virtual string GetOrGenerateId(ICreateInOut command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateInOut : InOutCommandBase, ICreateInOut
 	{
 		

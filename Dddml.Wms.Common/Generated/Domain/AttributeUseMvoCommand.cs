@@ -95,19 +95,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class AttributeUseMvoIdGeneratorBase : IIdGenerator<AttributeSetAttributeUseId, ICreateAttributeUseMvo>
-    {
-        public abstract AttributeSetAttributeUseId GenerateId(ICreateAttributeUseMvo command);
-
-        public abstract AttributeSetAttributeUseId GetNextId();
-
-        public virtual AttributeSetAttributeUseId GetOrGenerateId(ICreateAttributeUseMvo command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateAttributeUseMvo : AttributeUseMvoCommandBase, ICreateAttributeUseMvo
 	{
 		

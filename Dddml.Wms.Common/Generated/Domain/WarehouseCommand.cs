@@ -73,19 +73,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class WarehouseIdGeneratorBase : IIdGenerator<string, ICreateWarehouse>
-    {
-        public abstract string GenerateId(ICreateWarehouse command);
-
-        public abstract string GetNextId();
-
-        public virtual string GetOrGenerateId(ICreateWarehouse command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateWarehouse : WarehouseCommandBase, ICreateWarehouse
 	{
 		

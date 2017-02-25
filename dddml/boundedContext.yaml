@@ -185,6 +185,8 @@ configuration:
     AttributeSetInstance:
       metadata:
         PersistingStateEventRemovedPropertiesAsSet: true
+        CreationWithoutIdEnabled: true
         HttpPostCreationEnabled: true
+        GeneratingAbstractIdGenerator: true
 
         

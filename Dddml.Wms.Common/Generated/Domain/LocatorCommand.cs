@@ -83,19 +83,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class LocatorIdGeneratorBase : IIdGenerator<string, ICreateLocator>
-    {
-        public abstract string GenerateId(ICreateLocator command);
-
-        public abstract string GetNextId();
-
-        public virtual string GetOrGenerateId(ICreateLocator command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateLocator : LocatorCommandBase, ICreateLocator
 	{
 		

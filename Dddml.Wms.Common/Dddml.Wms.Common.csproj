@@ -296,6 +296,9 @@
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldStates.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstanceIdGeneratorBase.cs">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstanceState.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -1887,6 +1890,7 @@
 .\AttributeSetInstanceExtensionFieldStateInterfaceExtension.cs
 .\AttributeSetInstanceExtensionFieldStateProperties.cs
 .\AttributeSetInstanceExtensionFieldStates.cs
+.\AttributeSetInstanceIdGeneratorBase.cs
 .\AttributeSetInstanceState.cs
 .\AttributeSetInstanceStateDto.cs
 .\AttributeSetInstanceStateDtoExtension.cs

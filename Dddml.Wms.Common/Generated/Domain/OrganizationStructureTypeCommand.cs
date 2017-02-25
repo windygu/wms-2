@@ -67,19 +67,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class OrganizationStructureTypeIdGeneratorBase : IIdGenerator<string, ICreateOrganizationStructureType>
-    {
-        public abstract string GenerateId(ICreateOrganizationStructureType command);
-
-        public abstract string GetNextId();
-
-        public virtual string GetOrGenerateId(ICreateOrganizationStructureType command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateOrganizationStructureType : OrganizationStructureTypeCommandBase, ICreateOrganizationStructureType
 	{
 		

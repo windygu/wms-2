@@ -79,19 +79,6 @@ namespace Dddml.Wms.Domain
 	}
 
 
-    public abstract class AttributeSetIdGeneratorBase : IIdGenerator<string, ICreateAttributeSet>
-    {
-        public abstract string GenerateId(ICreateAttributeSet command);
-
-        public abstract string GetNextId();
-
-        public virtual string GetOrGenerateId(ICreateAttributeSet command, out bool reused)
-        {
-            throw new NotSupportedException();
-        }
-
-    }
-
 	public class CreateAttributeSet : AttributeSetCommandBase, ICreateAttributeSet
 	{
 		
