@@ -134,15 +134,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("_metadata/filteringFields")]
         [HttpGet]
-        public IEnumerable<PropertyMetadata> GetMetadataFilteringFields()
+        public IEnumerable<PropertyMetadataDto> GetMetadataFilteringFields()
         {
           try {
-            var filtering = new List<PropertyMetadata>();
+            var filtering = new List<PropertyMetadataDto>();
             foreach (var p in AttributeUseMvoMetadata.Instance.Properties)
             {
                 if (p.IsFilteringProperty)
                 {
-                    filtering.Add(p);
+                    var pdto = new PropertyMetadataDto(p.Name, p.TypeName, p.IsFilteringProperty,
+                       !String.IsNullOrWhiteSpace(p.SourceChainingName) ? p.SourceChainingName :
+                       (!String.IsNullOrWhiteSpace(p.DerivedFrom) ? p.DerivedFrom : p.Name));
+                    filtering.Add(pdto);
                 }
             }
             return filtering;

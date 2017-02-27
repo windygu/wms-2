@@ -7,7 +7,7 @@
     <ProjectGuid>{9A9B1E3B-F6AA-46BF-A879-CF58BEE11F37}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dddml.Wms.Specialization</RootNamespace>
+    <RootNamespace>Dddml.Wms</RootNamespace>
     <AssemblyName>Dddml.Wms.Specialization</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -85,6 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specialization\PropertyCommand.cs" />
     <Compile Include="Specialization\PropertyMetadata.cs" />
+    <Compile Include="Specialization\PropertyMetadataDto.cs" />
     <Compile Include="Specialization\ReflectUtils.cs" />
     <Compile Include="Specialization\StateDtoCollectionBase.cs" />
     <Compile Include="Specialization\StateDtoWrapperCollectionBase.cs" />
