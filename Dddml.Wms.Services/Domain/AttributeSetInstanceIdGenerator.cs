@@ -10,8 +10,6 @@ namespace Dddml.Wms.Domain
    
     public class AttributeSetInstanceIdGenerator : AttributeSetInstanceIdGeneratorBase
     {
-        public IAttributeSetInstanceStateQueryRepository AttributeSetInstanceStateQueryRepository { get; set; }
-
         public override string GenerateId(ICreateAttributeSetInstance command)
         {
             string hash = AttributeSetInstancePropertyUtils.GetHash(command);
