@@ -3889,6 +3889,39 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
                                             };
         }
 
+
+        		/// <param name="request">Models.AttributeSetInstancesPostRequest</param>
+        public virtual async Task<ApiResponse> Post(Models.AttributeSetInstancesPostRequest request)
+        {
+
+            var url = "AttributeSetInstances";
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Post, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(CreateAttributeSetInstanceDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
     }
 
     public partial class AttributeSetInstancesCount
@@ -9895,6 +9928,28 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// Request query string properties
         /// </summary>
         public AttributeSetInstancesGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Post of class AttributeSetInstances
+    /// </summary>
+    public partial class AttributeSetInstancesPostRequest : ApiRequest
+    {
+        public AttributeSetInstancesPostRequest(CreateAttributeSetInstanceDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public CreateAttributeSetInstanceDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
 
     } // end class
 

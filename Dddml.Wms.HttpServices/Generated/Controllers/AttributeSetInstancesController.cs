@@ -103,6 +103,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = AttributeSetInstancesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
         [HttpPost][SetRequesterId]
         public HttpResponseMessage Post([FromBody]JObject dynamicObject)
         {

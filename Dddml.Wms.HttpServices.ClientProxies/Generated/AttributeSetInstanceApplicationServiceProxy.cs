@@ -68,9 +68,20 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((CreateAttributeSetInstanceDto)c);
         }
 
+        public async Task<string> CreateWithoutIdAsync(CreateAttributeSetInstanceDto c)
+        {
+            var req = new AttributeSetInstancesPostRequest(c);
+                
+            var resp = await _ramlClient.AttributeSetInstances.Post(req);
+            AttributeSetInstanceProxyUtils.ThrowOnHttpResponseError(resp);
+
+            var result = await resp.RawContent.ReadAsAsync<string>();
+            return result;
+        }
+
         public virtual string CreateWithoutId(ICreateAttributeSetInstance c)
         {
-            throw new NotImplementedException();//todo
+             return CreateWithoutIdAsync((CreateAttributeSetInstanceDto)c).GetAwaiter().GetResult();
         }
 
         public async Task<IAttributeSetInstanceState> GetAsync(string attributeSetInstanceId)
