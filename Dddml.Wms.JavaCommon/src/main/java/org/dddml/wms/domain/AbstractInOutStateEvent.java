@@ -4,7 +4,9 @@ import java.util.*;
 import org.joda.money.Money;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInOutStateEvent extends AbstractStateEvent implements InOutStateEvent 
 {

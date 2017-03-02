@@ -2,6 +2,7 @@ package org.dddml.wms.domain.hibernate;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 import org.dddml.wms.domain.*;

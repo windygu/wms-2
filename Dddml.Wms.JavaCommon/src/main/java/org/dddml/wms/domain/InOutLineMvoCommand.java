@@ -4,6 +4,7 @@ import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.joda.money.Money;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
 
 public interface InOutLineMvoCommand extends Command

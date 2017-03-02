@@ -6,6 +6,7 @@ import org.dddml.support.criterion.Criterion;
 import org.joda.money.Money;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 import org.dddml.wms.domain.Command;
 

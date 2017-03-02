@@ -1,5 +1,6 @@
 package org.dddml.wms.domain;
 
+import org.dddml.wms.domain.*;
 
 public class AttributeSetInstanceStateEventIdDtoWrapper extends AttributeSetInstanceStateEventIdDto
 {

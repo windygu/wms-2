@@ -4,6 +4,7 @@ import java.util.*;
 import org.joda.money.Money;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 
 public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends InOutCommand.CreateInOut, TMergePatchInOut extends InOutCommand.MergePatchInOut, TDeleteInOut extends InOutCommand.DeleteInOut, TCreateInOutLine extends InOutLineCommand.CreateInOutLine, TMergePatchInOutLine extends InOutLineCommand.MergePatchInOutLine, TRemoveInOutLine extends InOutLineCommand.RemoveInOutLine>
 {

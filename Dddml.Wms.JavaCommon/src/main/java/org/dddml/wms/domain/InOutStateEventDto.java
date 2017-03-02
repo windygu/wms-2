@@ -3,6 +3,7 @@ package org.dddml.wms.domain;
 import org.joda.money.Money;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.AbstractStateEvent;
 
 public class InOutStateEventDto extends AbstractStateEvent

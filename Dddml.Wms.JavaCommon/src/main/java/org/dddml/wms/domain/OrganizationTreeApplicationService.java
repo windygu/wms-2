@@ -2,8 +2,10 @@ package org.dddml.wms.domain;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.support.criterion.Criterion;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.*;
 
 public interface OrganizationTreeApplicationService
 {

@@ -2,6 +2,7 @@ package org.dddml.wms.domain;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 
 public abstract class AbstractAttributeUseMvoStateCommandConverter<TCreateAttributeUseMvo extends AttributeUseMvoCommand.CreateAttributeUseMvo, TMergePatchAttributeUseMvo extends AttributeUseMvoCommand.MergePatchAttributeUseMvo, TDeleteAttributeUseMvo extends AttributeUseMvoCommand.DeleteAttributeUseMvo>
 {

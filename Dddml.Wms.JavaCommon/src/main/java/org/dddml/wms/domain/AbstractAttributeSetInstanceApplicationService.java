@@ -5,8 +5,8 @@ import java.util.function.Consumer;
 import org.dddml.support.criterion.Criterion;
 import java.math.BigDecimal;
 import java.util.Date;
-import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
 
 public abstract class AbstractAttributeSetInstanceApplicationService implements AttributeSetInstanceApplicationService
 {

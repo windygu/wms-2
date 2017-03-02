@@ -3,7 +3,9 @@ package org.dddml.wms.domain;
 import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent implements InOutLineStateEvent 
 {

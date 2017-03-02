@@ -8,8 +8,8 @@ import javax.ws.rs.core.*;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
-import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.meta.*;
 
 import com.alibaba.fastjson.*;

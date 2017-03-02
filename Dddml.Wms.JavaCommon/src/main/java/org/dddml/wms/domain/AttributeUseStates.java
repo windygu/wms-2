@@ -1,6 +1,7 @@
 package org.dddml.wms.domain;
 
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Saveable;
 
 public interface AttributeUseStates extends Iterable<AttributeUseState>, Saveable

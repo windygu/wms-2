@@ -2,6 +2,7 @@ package org.dddml.wms.domain;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 
 public abstract class AbstractWarehouseStateCommandConverter<TCreateWarehouse extends WarehouseCommand.CreateWarehouse, TMergePatchWarehouse extends WarehouseCommand.MergePatchWarehouse, TDeleteWarehouse extends WarehouseCommand.DeleteWarehouse>
 {

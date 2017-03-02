@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.hibernate;
 
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import java.util.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;

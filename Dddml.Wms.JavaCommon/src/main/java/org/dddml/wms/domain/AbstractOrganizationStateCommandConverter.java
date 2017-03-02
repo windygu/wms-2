@@ -2,6 +2,7 @@ package org.dddml.wms.domain;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 
 public abstract class AbstractOrganizationStateCommandConverter<TCreateOrganization extends OrganizationCommand.CreateOrganization, TMergePatchOrganization extends OrganizationCommand.MergePatchOrganization, TDeleteOrganization extends OrganizationCommand.DeleteOrganization>
 {

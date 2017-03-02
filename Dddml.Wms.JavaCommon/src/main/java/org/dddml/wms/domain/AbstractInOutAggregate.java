@@ -4,8 +4,8 @@ import java.util.*;
 import org.joda.money.Money;
 import java.math.BigDecimal;
 import java.util.Date;
-import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
 
 public abstract class AbstractInOutAggregate extends AbstractAggregate implements InOutAggregate
 {

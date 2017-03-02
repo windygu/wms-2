@@ -4,6 +4,7 @@ import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.joda.money.Money;
+import org.dddml.wms.domain.*;
 import org.hibernate.Session;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;

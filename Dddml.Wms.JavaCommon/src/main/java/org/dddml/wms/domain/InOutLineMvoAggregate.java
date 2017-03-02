@@ -4,6 +4,7 @@ import java.util.List;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.joda.money.Money;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 import org.dddml.wms.domain.Command;
 

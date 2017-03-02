@@ -3,6 +3,7 @@ package org.dddml.wms.domain;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.joda.money.Money;
+import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoCommandDto
 {

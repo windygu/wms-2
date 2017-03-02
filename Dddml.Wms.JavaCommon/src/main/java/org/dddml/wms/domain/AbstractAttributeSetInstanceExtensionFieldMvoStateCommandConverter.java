@@ -2,6 +2,7 @@ package org.dddml.wms.domain;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 
 public abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateCommandConverter<TCreateAttributeSetInstanceExtensionFieldMvo extends AttributeSetInstanceExtensionFieldMvoCommand.CreateAttributeSetInstanceExtensionFieldMvo, TMergePatchAttributeSetInstanceExtensionFieldMvo extends AttributeSetInstanceExtensionFieldMvoCommand.MergePatchAttributeSetInstanceExtensionFieldMvo, TDeleteAttributeSetInstanceExtensionFieldMvo extends AttributeSetInstanceExtensionFieldMvoCommand.DeleteAttributeSetInstanceExtensionFieldMvo>
 {

@@ -2,6 +2,7 @@ package org.dddml.wms.domain;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 
 public abstract class AbstractLocatorStateCommandConverter<TCreateLocator extends LocatorCommand.CreateLocator, TMergePatchLocator extends LocatorCommand.MergePatchLocator, TDeleteLocator extends LocatorCommand.DeleteLocator>
 {

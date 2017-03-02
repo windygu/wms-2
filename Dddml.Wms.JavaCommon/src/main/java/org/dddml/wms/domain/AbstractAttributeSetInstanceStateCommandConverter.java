@@ -3,6 +3,7 @@ package org.dddml.wms.domain;
 import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 
 public abstract class AbstractAttributeSetInstanceStateCommandConverter<TCreateAttributeSetInstance extends AttributeSetInstanceCommand.CreateAttributeSetInstance, TMergePatchAttributeSetInstance extends AttributeSetInstanceCommand.MergePatchAttributeSetInstance, TDeleteAttributeSetInstance extends AttributeSetInstanceCommand.DeleteAttributeSetInstance>
 {
