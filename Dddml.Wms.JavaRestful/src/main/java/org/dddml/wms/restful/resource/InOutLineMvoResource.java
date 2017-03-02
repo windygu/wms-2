@@ -12,6 +12,7 @@ import java.util.Date;
 import org.joda.money.Money;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.meta.*;
 
 import com.alibaba.fastjson.*;
