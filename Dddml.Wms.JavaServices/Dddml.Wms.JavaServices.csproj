@@ -95,14 +95,14 @@
 .\HibernateInOutStateRepository.java
 .\HibernateLocatorEventStore.java
 .\HibernateLocatorStateRepository.java
+.\HibernateLocatorTreeLocatorStateRepository.java
 .\HibernateOrganizationEventStore.java
 .\HibernateOrganizationStateRepository.java
 .\HibernateOrganizationStructureEventStore.java
 .\HibernateOrganizationStructureStateRepository.java
 .\HibernateOrganizationStructureTypeEventStore.java
 .\HibernateOrganizationStructureTypeStateRepository.java
-.\HibernateTreeLocatorStateRepository.java
-.\HibernateTreeOrganizationStructureStateRepository.java
+.\HibernateOrganizationTreeOrganizationStructureStateRepository.java
 .\HibernateWarehouseEventStore.java
 .\HibernateWarehouseStateRepository.java
 </LastOutputs>
@@ -191,6 +191,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorTreeLocatorStateRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorTreeRepository.java">
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
@@ -212,14 +215,11 @@
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureTypeStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationTreeOrganizationStructureStateRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationTreeRepository.java">
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateTreeLocatorStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateTreeOrganizationStructureStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateWarehouseEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>

@@ -256,7 +256,7 @@
     <Compile Include="Generated\Domain\NHibernate\NHibernateOrganizationStructureStateQueryRepository.cs">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\NHibernate\NHibernateOrganizationStructureStateQueryRepositoryOrganizationTreeStructure.cs">
+    <Compile Include="Generated\Domain\NHibernate\NHibernateOrganizationStructureStateQueryRepositoryOrganizationTree.cs">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\NHibernate\NHibernateOrganizationStructureStateRepository.cs">
@@ -601,7 +601,7 @@
 .\NHibernateOrganizationStateRepository.cs
 .\NHibernateOrganizationStructureEventStore.cs
 .\NHibernateOrganizationStructureStateQueryRepository.cs
-.\NHibernateOrganizationStructureStateQueryRepositoryOrganizationTreeStructure.cs
+.\NHibernateOrganizationStructureStateQueryRepositoryOrganizationTree.cs
 .\NHibernateOrganizationStructureStateRepository.cs
 .\NHibernateOrganizationStructureTypeEventStore.cs
 .\NHibernateOrganizationStructureTypeStateQueryRepository.cs

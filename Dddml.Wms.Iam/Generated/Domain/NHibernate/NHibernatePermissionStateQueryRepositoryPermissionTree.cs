@@ -22,7 +22,7 @@ namespace Dddml.Wms.Domain.NHibernate
         {
             var criteria = CurrentSession.CreateCriteria<PermissionState>();
 
-            CriteriaAddRootParentIdCriterion(criteria);
+            CriteriaAddPermissionTreeRootParentIdCriterion(criteria);
             NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
             return criteria.List<PermissionState>();
         }
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.NHibernate
         {
             var criteria = CurrentSession.CreateCriteria<PermissionState>();
 
-            CriteriaAddRootParentIdCriterion(criteria);
+            CriteriaAddPermissionTreeRootParentIdCriterion(criteria);
             NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
             return criteria.List<PermissionState>();
         }
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.NHibernate
             return criteria.List<PermissionState>();
         }
 
-        private void CriteriaAddRootParentIdCriterion(ICriteria criteria)
+        private void CriteriaAddPermissionTreeRootParentIdCriterion(ICriteria criteria)
         {
             IList<object> rootParentIdValues = new object[] { null, "" };
             if (rootParentIdValues.Count == 1)

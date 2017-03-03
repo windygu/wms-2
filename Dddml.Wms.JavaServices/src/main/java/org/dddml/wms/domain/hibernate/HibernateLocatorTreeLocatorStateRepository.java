@@ -16,12 +16,12 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.hibernate.*;
 import org.springframework.transaction.annotation.Transactional;
 
-public class HibernateTreeOrganizationStructureStateRepository extends HibernateOrganizationStructureStateRepository implements TreeOrganizationStructureStateRepository
+public class HibernateLocatorTreeLocatorStateRepository extends HibernateLocatorStateRepository implements TreeLocatorStateRepository
 {
     @Transactional(readOnly = true)
-    public Iterable<OrganizationStructureState> getOrganizationTreeRoots(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
+    public Iterable<LocatorState> getLocatorTreeRoots(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(OrganizationStructureState.class);
+        Criteria criteria = getCurrentSession().createCriteria(LocatorState.class);
 
         criteriaAddRootParentIdCriterion(criteria);
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
@@ -29,19 +29,19 @@ public class HibernateTreeOrganizationStructureStateRepository extends Hibernate
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrganizationStructureState> getOrganizationTreeChildren(String parentId, Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
+    public Iterable<LocatorState> getLocatorTreeChildren(String parentId, Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(OrganizationStructureState.class);
+        Criteria criteria = getCurrentSession().createCriteria(LocatorState.class);
 
-        HibernateUtils.criteriaAddCriterion(criteria, "id.parentId", parentId);
+        HibernateUtils.criteriaAddCriterion(criteria, "parentLocatorId", parentId);
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
         return criteria.list();
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrganizationStructureState> getOrganizationTreeRoots(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
+    public Iterable<LocatorState> getLocatorTreeRoots(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(OrganizationStructureState.class);
+        Criteria criteria = getCurrentSession().createCriteria(LocatorState.class);
 
         criteriaAddRootParentIdCriterion(criteria);
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
@@ -49,28 +49,28 @@ public class HibernateTreeOrganizationStructureStateRepository extends Hibernate
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrganizationStructureState> getOrganizationTreeChildren(String parentId, Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
+    public Iterable<LocatorState> getLocatorTreeChildren(String parentId, Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(OrganizationStructureState.class);
+        Criteria criteria = getCurrentSession().createCriteria(LocatorState.class);
 
-        HibernateUtils.criteriaAddCriterion(criteria, "id.parentId", parentId);
+        HibernateUtils.criteriaAddCriterion(criteria, "parentLocatorId", parentId);
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
         return criteria.list();
     }
 
     private void criteriaAddRootParentIdCriterion(Criteria criteria)
     {
-        Object[] rootParentIdValues = new Object[] { "" };
+        Object[] rootParentIdValues = new Object[] { null, "" };
         if (rootParentIdValues.length == 1)
         {
-            HibernateUtils.criteriaAddCriterion(criteria, "id.parentId", rootParentIdValues[0]);
+            HibernateUtils.criteriaAddCriterion(criteria, "parentLocatorId", rootParentIdValues[0]);
         }
         else
         {
             Disjunction j = Restrictions.disjunction();
             for (Object pIdValue : rootParentIdValues)
             {
-                HibernateUtils.disjunctionAddCriterion(j, "id.parentId", pIdValue);
+                HibernateUtils.disjunctionAddCriterion(j, "parentLocatorId", pIdValue);
             }
             criteria.add(j);
         }

@@ -22,7 +22,7 @@ namespace Dddml.Wms.Domain.NHibernate
         {
             var criteria = CurrentSession.CreateCriteria<OrganizationStructureState>();
 
-            CriteriaAddRootParentIdCriterion(criteria);
+            CriteriaAddOrganizationTreeRootParentIdCriterion(criteria);
             NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
             return criteria.List<OrganizationStructureState>();
         }
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.NHibernate
         {
             var criteria = CurrentSession.CreateCriteria<OrganizationStructureState>();
 
-            CriteriaAddRootParentIdCriterion(criteria);
+            CriteriaAddOrganizationTreeRootParentIdCriterion(criteria);
             NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
             return criteria.List<OrganizationStructureState>();
         }
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.NHibernate
             return criteria.List<OrganizationStructureState>();
         }
 
-        private void CriteriaAddRootParentIdCriterion(ICriteria criteria)
+        private void CriteriaAddOrganizationTreeRootParentIdCriterion(ICriteria criteria)
         {
             IList<object> rootParentIdValues = new object[] { "" };
             if (rootParentIdValues.Count == 1)
