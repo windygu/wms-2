@@ -8,12 +8,13 @@ using System.Linq;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Role;
 using Dddml.Wms.Specialization.NHibernate;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 
-namespace Dddml.Wms.Domain.NHibernate
+namespace Dddml.Wms.Domain.Role.NHibernate
 {
 
 	public class NHibernateRoleEventStore : NHibernateEventStoreBase

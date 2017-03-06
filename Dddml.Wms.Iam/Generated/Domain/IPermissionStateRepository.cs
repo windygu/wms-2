@@ -7,9 +7,10 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Permission;
 using Dddml.Support.Criterion;
 
-namespace Dddml.Wms.Domain
+namespace Dddml.Wms.Domain.Permission
 {
 	public partial interface IPermissionStateRepository
 	{

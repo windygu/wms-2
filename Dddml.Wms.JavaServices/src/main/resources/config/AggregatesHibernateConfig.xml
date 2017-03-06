@@ -6,216 +6,216 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-  <bean id="attributeValueStateDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeValueStateDao">
+  <bean id="attributeValueStateDao" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeValueStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeValueStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeValueStateEventDao">
+  <bean id="attributeValueStateEventDao" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeValueStateEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="attributeStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="attributeStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeStateQueryRepository">
+  <bean id="attributeStateRepository" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeEventStore">
+  <bean id="attributeStateQueryRepository" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="attributeEventStore" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="attributeApplicationService" class="org.dddml.wms.domain.AbstractAttributeApplicationService$SimpleAttributeApplicationService">
+  <bean id="attributeApplicationService" class="org.dddml.wms.domain.attribute.AbstractAttributeApplicationService$SimpleAttributeApplicationService">
     <constructor-arg ref="attributeEventStore"/>
     <constructor-arg ref="attributeStateRepository"/>
     <constructor-arg ref="attributeStateQueryRepository"/>
   </bean>
 
 
-  <bean id="attributeUseStateDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeUseStateDao">
+  <bean id="attributeUseStateDao" class="org.dddml.wms.domain.attributeset.hibernate.HibernateAttributeUseStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeUseStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeUseStateEventDao">
+  <bean id="attributeUseStateEventDao" class="org.dddml.wms.domain.attributeset.hibernate.HibernateAttributeUseStateEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="attributeSetStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="attributeSetStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetStateQueryRepository">
+  <bean id="attributeSetStateRepository" class="org.dddml.wms.domain.attributeset.hibernate.HibernateAttributeSetStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeSetEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetEventStore">
+  <bean id="attributeSetStateQueryRepository" class="org.dddml.wms.domain.attributeset.hibernate.HibernateAttributeSetStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="attributeSetEventStore" class="org.dddml.wms.domain.attributeset.hibernate.HibernateAttributeSetEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="attributeSetApplicationService" class="org.dddml.wms.domain.AbstractAttributeSetApplicationService$SimpleAttributeSetApplicationService">
+  <bean id="attributeSetApplicationService" class="org.dddml.wms.domain.attributeset.AbstractAttributeSetApplicationService$SimpleAttributeSetApplicationService">
     <constructor-arg ref="attributeSetEventStore"/>
     <constructor-arg ref="attributeSetStateRepository"/>
     <constructor-arg ref="attributeSetStateQueryRepository"/>
   </bean>
 
 
-  <bean id="inOutLineStateDao" class="org.dddml.wms.domain.hibernate.HibernateInOutLineStateDao">
+  <bean id="inOutLineStateDao" class="org.dddml.wms.domain.inout.hibernate.HibernateInOutLineStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="inOutLineStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateInOutLineStateEventDao">
+  <bean id="inOutLineStateEventDao" class="org.dddml.wms.domain.inout.hibernate.HibernateInOutLineStateEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="inOutStateRepository" class="org.dddml.wms.domain.hibernate.HibernateInOutStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="inOutStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateInOutStateQueryRepository">
+  <bean id="inOutStateRepository" class="org.dddml.wms.domain.inout.hibernate.HibernateInOutStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="inOutEventStore" class="org.dddml.wms.domain.hibernate.HibernateInOutEventStore">
+  <bean id="inOutStateQueryRepository" class="org.dddml.wms.domain.inout.hibernate.HibernateInOutStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="inOutEventStore" class="org.dddml.wms.domain.inout.hibernate.HibernateInOutEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="inOutApplicationService" class="org.dddml.wms.domain.AbstractInOutApplicationService$SimpleInOutApplicationService">
+  <bean id="inOutApplicationService" class="org.dddml.wms.domain.inout.AbstractInOutApplicationService$SimpleInOutApplicationService">
     <constructor-arg ref="inOutEventStore"/>
     <constructor-arg ref="inOutStateRepository"/>
     <constructor-arg ref="inOutStateQueryRepository"/>
   </bean>
 
 
-  <bean id="organizationStateRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStateRepository">
+  <bean id="organizationStateRepository" class="org.dddml.wms.domain.organization.hibernate.HibernateOrganizationStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="organizationStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStateQueryRepository">
+  <bean id="organizationStateQueryRepository" class="org.dddml.wms.domain.organization.hibernate.HibernateOrganizationStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="organizationEventStore" class="org.dddml.wms.domain.hibernate.HibernateOrganizationEventStore">
+  <bean id="organizationEventStore" class="org.dddml.wms.domain.organization.hibernate.HibernateOrganizationEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="organizationApplicationService" class="org.dddml.wms.domain.AbstractOrganizationApplicationService$SimpleOrganizationApplicationService">
+  <bean id="organizationApplicationService" class="org.dddml.wms.domain.organization.AbstractOrganizationApplicationService$SimpleOrganizationApplicationService">
     <constructor-arg ref="organizationEventStore"/>
     <constructor-arg ref="organizationStateRepository"/>
     <constructor-arg ref="organizationStateQueryRepository"/>
   </bean>
 
 
-  <bean id="organizationStructureTypeStateRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStructureTypeStateRepository">
+  <bean id="organizationStructureTypeStateRepository" class="org.dddml.wms.domain.organizationstructuretype.hibernate.HibernateOrganizationStructureTypeStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="organizationStructureTypeStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStructureTypeStateQueryRepository">
+  <bean id="organizationStructureTypeStateQueryRepository" class="org.dddml.wms.domain.organizationstructuretype.hibernate.HibernateOrganizationStructureTypeStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="organizationStructureTypeEventStore" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStructureTypeEventStore">
+  <bean id="organizationStructureTypeEventStore" class="org.dddml.wms.domain.organizationstructuretype.hibernate.HibernateOrganizationStructureTypeEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="organizationStructureTypeApplicationService" class="org.dddml.wms.domain.AbstractOrganizationStructureTypeApplicationService$SimpleOrganizationStructureTypeApplicationService">
+  <bean id="organizationStructureTypeApplicationService" class="org.dddml.wms.domain.organizationstructuretype.AbstractOrganizationStructureTypeApplicationService$SimpleOrganizationStructureTypeApplicationService">
     <constructor-arg ref="organizationStructureTypeEventStore"/>
     <constructor-arg ref="organizationStructureTypeStateRepository"/>
     <constructor-arg ref="organizationStructureTypeStateQueryRepository"/>
   </bean>
 
 
-  <bean id="organizationStructureStateRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStructureStateRepository">
+  <bean id="organizationStructureStateRepository" class="org.dddml.wms.domain.organizationstructure.hibernate.HibernateOrganizationStructureStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="organizationStructureStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStructureStateQueryRepository">
+  <bean id="organizationStructureStateQueryRepository" class="org.dddml.wms.domain.organizationstructure.hibernate.HibernateOrganizationStructureStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="organizationStructureEventStore" class="org.dddml.wms.domain.hibernate.HibernateOrganizationStructureEventStore">
+  <bean id="organizationStructureEventStore" class="org.dddml.wms.domain.organizationstructure.hibernate.HibernateOrganizationStructureEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="organizationStructureApplicationService" class="org.dddml.wms.domain.AbstractOrganizationStructureApplicationService$SimpleOrganizationStructureApplicationService">
+  <bean id="organizationStructureApplicationService" class="org.dddml.wms.domain.organizationstructure.AbstractOrganizationStructureApplicationService$SimpleOrganizationStructureApplicationService">
     <constructor-arg ref="organizationStructureEventStore"/>
     <constructor-arg ref="organizationStructureStateRepository"/>
     <constructor-arg ref="organizationStructureStateQueryRepository"/>
   </bean>
 
 
-  <bean id="warehouseStateRepository" class="org.dddml.wms.domain.hibernate.HibernateWarehouseStateRepository">
+  <bean id="warehouseStateRepository" class="org.dddml.wms.domain.warehouse.hibernate.HibernateWarehouseStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="warehouseStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateWarehouseStateQueryRepository">
+  <bean id="warehouseStateQueryRepository" class="org.dddml.wms.domain.warehouse.hibernate.HibernateWarehouseStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="warehouseEventStore" class="org.dddml.wms.domain.hibernate.HibernateWarehouseEventStore">
+  <bean id="warehouseEventStore" class="org.dddml.wms.domain.warehouse.hibernate.HibernateWarehouseEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="warehouseApplicationService" class="org.dddml.wms.domain.AbstractWarehouseApplicationService$SimpleWarehouseApplicationService">
+  <bean id="warehouseApplicationService" class="org.dddml.wms.domain.warehouse.AbstractWarehouseApplicationService$SimpleWarehouseApplicationService">
     <constructor-arg ref="warehouseEventStore"/>
     <constructor-arg ref="warehouseStateRepository"/>
     <constructor-arg ref="warehouseStateQueryRepository"/>
   </bean>
 
 
-  <bean id="locatorStateRepository" class="org.dddml.wms.domain.hibernate.HibernateLocatorStateRepository">
+  <bean id="locatorStateRepository" class="org.dddml.wms.domain.locator.hibernate.HibernateLocatorStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="locatorStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateLocatorStateQueryRepository">
+  <bean id="locatorStateQueryRepository" class="org.dddml.wms.domain.locator.hibernate.HibernateLocatorStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="locatorEventStore" class="org.dddml.wms.domain.hibernate.HibernateLocatorEventStore">
+  <bean id="locatorEventStore" class="org.dddml.wms.domain.locator.hibernate.HibernateLocatorEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="locatorApplicationService" class="org.dddml.wms.domain.AbstractLocatorApplicationService$SimpleLocatorApplicationService">
+  <bean id="locatorApplicationService" class="org.dddml.wms.domain.locator.AbstractLocatorApplicationService$SimpleLocatorApplicationService">
     <constructor-arg ref="locatorEventStore"/>
     <constructor-arg ref="locatorStateRepository"/>
     <constructor-arg ref="locatorStateQueryRepository"/>
   </bean>
 
 
-  <bean id="attributeSetInstanceStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceStateRepository">
+  <bean id="attributeSetInstanceStateRepository" class="org.dddml.wms.domain.attributesetinstance.hibernate.HibernateAttributeSetInstanceStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeSetInstanceStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceStateQueryRepository">
+  <bean id="attributeSetInstanceStateQueryRepository" class="org.dddml.wms.domain.attributesetinstance.hibernate.HibernateAttributeSetInstanceStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeSetInstanceEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceEventStore">
+  <bean id="attributeSetInstanceEventStore" class="org.dddml.wms.domain.attributesetinstance.hibernate.HibernateAttributeSetInstanceEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="attributeSetInstanceApplicationService" class="org.dddml.wms.domain.AbstractAttributeSetInstanceApplicationService$SimpleAttributeSetInstanceApplicationService">
+  <bean id="attributeSetInstanceApplicationService" class="org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceApplicationService$SimpleAttributeSetInstanceApplicationService">
     <constructor-arg ref="attributeSetInstanceEventStore"/>
     <constructor-arg ref="attributeSetInstanceStateRepository"/>
     <constructor-arg ref="attributeSetInstanceStateQueryRepository"/>
@@ -223,114 +223,114 @@
   </bean>
 
 
-  <bean id="attributeSetInstanceExtensionFieldStateDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldStateDao">
+  <bean id="attributeSetInstanceExtensionFieldStateDao" class="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.hibernate.HibernateAttributeSetInstanceExtensionFieldStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeSetInstanceExtensionFieldStateEventDao" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldStateEventDao">
+  <bean id="attributeSetInstanceExtensionFieldStateEventDao" class="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.hibernate.HibernateAttributeSetInstanceExtensionFieldStateEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="attributeSetInstanceExtensionFieldGroupStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="attributeSetInstanceExtensionFieldGroupStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository">
+  <bean id="attributeSetInstanceExtensionFieldGroupStateRepository" class="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeSetInstanceExtensionFieldGroupEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupEventStore">
+  <bean id="attributeSetInstanceExtensionFieldGroupStateQueryRepository" class="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="attributeSetInstanceExtensionFieldGroupEventStore" class="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.hibernate.HibernateAttributeSetInstanceExtensionFieldGroupEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="attributeSetInstanceExtensionFieldGroupApplicationService" class="org.dddml.wms.domain.AbstractAttributeSetInstanceExtensionFieldGroupApplicationService$SimpleAttributeSetInstanceExtensionFieldGroupApplicationService">
+  <bean id="attributeSetInstanceExtensionFieldGroupApplicationService" class="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AbstractAttributeSetInstanceExtensionFieldGroupApplicationService$SimpleAttributeSetInstanceExtensionFieldGroupApplicationService">
     <constructor-arg ref="attributeSetInstanceExtensionFieldGroupEventStore"/>
     <constructor-arg ref="attributeSetInstanceExtensionFieldGroupStateRepository"/>
     <constructor-arg ref="attributeSetInstanceExtensionFieldGroupStateQueryRepository"/>
   </bean>
 
 
-  <bean id="attributeValueMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeValueMvoStateRepository">
+  <bean id="attributeValueMvoStateRepository" class="org.dddml.wms.domain.attributevaluemvo.hibernate.HibernateAttributeValueMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeValueMvoStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeValueMvoStateQueryRepository">
+  <bean id="attributeValueMvoStateQueryRepository" class="org.dddml.wms.domain.attributevaluemvo.hibernate.HibernateAttributeValueMvoStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeValueMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeValueMvoEventStore">
+  <bean id="attributeValueMvoEventStore" class="org.dddml.wms.domain.attributevaluemvo.hibernate.HibernateAttributeValueMvoEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="attributeValueMvoApplicationService" class="org.dddml.wms.domain.AbstractAttributeValueMvoApplicationService$SimpleAttributeValueMvoApplicationService">
+  <bean id="attributeValueMvoApplicationService" class="org.dddml.wms.domain.attributevaluemvo.AbstractAttributeValueMvoApplicationService$SimpleAttributeValueMvoApplicationService">
     <constructor-arg ref="attributeValueMvoEventStore"/>
     <constructor-arg ref="attributeValueMvoStateRepository"/>
     <constructor-arg ref="attributeValueMvoStateQueryRepository"/>
   </bean>
 
 
-  <bean id="attributeUseMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeUseMvoStateRepository">
+  <bean id="attributeUseMvoStateRepository" class="org.dddml.wms.domain.attributeusemvo.hibernate.HibernateAttributeUseMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeUseMvoStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeUseMvoStateQueryRepository">
+  <bean id="attributeUseMvoStateQueryRepository" class="org.dddml.wms.domain.attributeusemvo.hibernate.HibernateAttributeUseMvoStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeUseMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeUseMvoEventStore">
+  <bean id="attributeUseMvoEventStore" class="org.dddml.wms.domain.attributeusemvo.hibernate.HibernateAttributeUseMvoEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="attributeUseMvoApplicationService" class="org.dddml.wms.domain.AbstractAttributeUseMvoApplicationService$SimpleAttributeUseMvoApplicationService">
+  <bean id="attributeUseMvoApplicationService" class="org.dddml.wms.domain.attributeusemvo.AbstractAttributeUseMvoApplicationService$SimpleAttributeUseMvoApplicationService">
     <constructor-arg ref="attributeUseMvoEventStore"/>
     <constructor-arg ref="attributeUseMvoStateRepository"/>
     <constructor-arg ref="attributeUseMvoStateQueryRepository"/>
   </bean>
 
 
-  <bean id="inOutLineMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateInOutLineMvoStateRepository">
+  <bean id="inOutLineMvoStateRepository" class="org.dddml.wms.domain.inoutlinemvo.hibernate.HibernateInOutLineMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="inOutLineMvoStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateInOutLineMvoStateQueryRepository">
+  <bean id="inOutLineMvoStateQueryRepository" class="org.dddml.wms.domain.inoutlinemvo.hibernate.HibernateInOutLineMvoStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="inOutLineMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateInOutLineMvoEventStore">
+  <bean id="inOutLineMvoEventStore" class="org.dddml.wms.domain.inoutlinemvo.hibernate.HibernateInOutLineMvoEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="inOutLineMvoApplicationService" class="org.dddml.wms.domain.AbstractInOutLineMvoApplicationService$SimpleInOutLineMvoApplicationService">
+  <bean id="inOutLineMvoApplicationService" class="org.dddml.wms.domain.inoutlinemvo.AbstractInOutLineMvoApplicationService$SimpleInOutLineMvoApplicationService">
     <constructor-arg ref="inOutLineMvoEventStore"/>
     <constructor-arg ref="inOutLineMvoStateRepository"/>
     <constructor-arg ref="inOutLineMvoStateQueryRepository"/>
   </bean>
 
 
-  <bean id="attributeSetInstanceExtensionFieldMvoStateRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoStateRepository">
+  <bean id="attributeSetInstanceExtensionFieldMvoStateRepository" class="org.dddml.wms.domain.attributesetinstanceextensionfieldmvo.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeSetInstanceExtensionFieldMvoStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository">
+  <bean id="attributeSetInstanceExtensionFieldMvoStateQueryRepository" class="org.dddml.wms.domain.attributesetinstanceextensionfieldmvo.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeSetInstanceExtensionFieldMvoEventStore" class="org.dddml.wms.domain.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoEventStore">
+  <bean id="attributeSetInstanceExtensionFieldMvoEventStore" class="org.dddml.wms.domain.attributesetinstanceextensionfieldmvo.hibernate.HibernateAttributeSetInstanceExtensionFieldMvoEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="attributeSetInstanceExtensionFieldMvoApplicationService" class="org.dddml.wms.domain.AbstractAttributeSetInstanceExtensionFieldMvoApplicationService$SimpleAttributeSetInstanceExtensionFieldMvoApplicationService">
+  <bean id="attributeSetInstanceExtensionFieldMvoApplicationService" class="org.dddml.wms.domain.attributesetinstanceextensionfieldmvo.AbstractAttributeSetInstanceExtensionFieldMvoApplicationService$SimpleAttributeSetInstanceExtensionFieldMvoApplicationService">
     <constructor-arg ref="attributeSetInstanceExtensionFieldMvoEventStore"/>
     <constructor-arg ref="attributeSetInstanceExtensionFieldMvoStateRepository"/>
     <constructor-arg ref="attributeSetInstanceExtensionFieldMvoStateQueryRepository"/>

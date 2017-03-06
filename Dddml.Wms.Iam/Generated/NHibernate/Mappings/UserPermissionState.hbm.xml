@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Iam" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.User">
   
-  <class name="Dddml.Wms.Domain.UserPermissionState" table="UserPermissions">
+  <class name="Dddml.Wms.Domain.User.UserPermissionState" table="UserPermissions">
 
-	<composite-id name="UserPermissionId" class="Dddml.Wms.Domain.UserPermissionId">
+	<composite-id name="UserPermissionId" class="Dddml.Wms.Domain.User.UserPermissionId">
 		<key-property name="UserId" column="UserPermissionIdUserId" length="50"/>
 		<key-property name="PermissionId" column="UserPermissionIdPermissionId" length="50"/>
 	</composite-id>

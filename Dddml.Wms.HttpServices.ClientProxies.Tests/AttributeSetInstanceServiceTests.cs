@@ -1,4 +1,7 @@
 ﻿using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Attribute;
+using Dddml.Wms.Domain.AttributeSet;
+using Dddml.Wms.Domain.AttributeSetInstance;
 using Dddml.Wms.Support;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;

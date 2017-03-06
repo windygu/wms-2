@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Common" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup">
   
-  <class name="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroupState" table="AttributeSetInstanceExtensionFieldGroups">
+  <class name="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldGroupState" table="AttributeSetInstanceExtensionFieldGroups">
 
 	<id name="Id" length="50">
 		<generator class="assigned"/>

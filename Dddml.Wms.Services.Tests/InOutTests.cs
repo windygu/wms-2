@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using NodaMoney;
 using Dddml.Support.NHibernate;
+using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.Services.Tests
 {

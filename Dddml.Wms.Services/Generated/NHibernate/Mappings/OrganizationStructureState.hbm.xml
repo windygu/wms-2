@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Common" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.OrganizationStructure">
   
-  <class name="Dddml.Wms.Domain.OrganizationStructureState" table="OrganizationStructures">
+  <class name="Dddml.Wms.Domain.OrganizationStructure.OrganizationStructureState" table="OrganizationStructures">
 
 	<composite-id name="Id" class="Dddml.Wms.Domain.OrganizationStructureId">
 		<key-property name="OrganizationStructureTypeId" column="IdOrganizationStructureTypeId" />

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Common" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.Locator">
   
-  <class name="Dddml.Wms.Domain.LocatorState" table="Locators">
+  <class name="Dddml.Wms.Domain.Locator.LocatorState" table="Locators">
 
 	<id name="LocatorId" length="50">
 		<generator class="assigned"/>

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Role;
 
 namespace Dddml.Wms.AspNet.Identity
 {

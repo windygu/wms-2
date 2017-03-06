@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.AttributeUseMvo;
+using Dddml.Wms.Domain.AttributeSet;
 using Dddml.Wms.Domain.Metadata;
 using Dddml.Wms.HttpServices.Filters;
 using System.Linq;

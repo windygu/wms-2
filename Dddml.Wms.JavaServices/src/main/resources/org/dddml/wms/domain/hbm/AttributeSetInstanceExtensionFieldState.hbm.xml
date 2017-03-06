@@ -4,11 +4,11 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain">
+<hibernate-mapping package="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup">
   
-  <class name="org.dddml.wms.domain.AbstractAttributeSetInstanceExtensionFieldState$SimpleAttributeSetInstanceExtensionFieldState" table="AttributeSetInstanceExtensionFields">
+  <class name="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AbstractAttributeSetInstanceExtensionFieldState$SimpleAttributeSetInstanceExtensionFieldState" table="AttributeSetInstanceExtensionFields">
 
-	<composite-id name="attributeSetInstanceExtensionFieldId" class="org.dddml.wms.domain.AttributeSetInstanceExtensionFieldId">
+	<composite-id name="attributeSetInstanceExtensionFieldId" class="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AttributeSetInstanceExtensionFieldId">
 		<key-property name="groupId" column="AttributeSetInstanceExtensionFieldIdGroupId" length="50"/>
 		<key-property name="index" column="AttributeSetInstanceExtensionFieldIdIndex" length="50"/>
 	</composite-id>

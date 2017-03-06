@@ -8,8 +8,9 @@ using System.Linq;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Role;
 
-namespace Dddml.Wms.Domain
+namespace Dddml.Wms.Domain.Role
 {
 
     public partial class RoleStateDto : IRoleStateDto

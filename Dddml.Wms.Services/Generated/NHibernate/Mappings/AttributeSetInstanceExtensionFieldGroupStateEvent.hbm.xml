@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
                    assembly="Dddml.Wms.Common" 
-                   namespace="Dddml.Wms.Domain">
+                   namespace="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup">
   
   <class name="AttributeSetInstanceExtensionFieldGroupStateEventBase" table="AttributeSetInstanceExtensionFieldGroupStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroupStateEventId">
+	<composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldGroupStateEventId">
 		<key-property name="Id" column="Id" length="50"/>
 		<key-property name="Version" column="Version" />
 	</composite-id>

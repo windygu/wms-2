@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Common" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.InOut">
   
-  <class name="Dddml.Wms.Domain.InOutLineState" table="InOutLines">
+  <class name="Dddml.Wms.Domain.InOut.InOutLineState" table="InOutLines">
 
-	<composite-id name="InOutLineId" class="Dddml.Wms.Domain.InOutLineId">
+	<composite-id name="InOutLineId" class="Dddml.Wms.Domain.InOut.InOutLineId">
 		<key-property name="InOutDocumentNumber" column="InOutLineIdInOutDocumentNumber" length="50"/>
 		<key-property name="LineNumber" column="InOutLineIdLineNumber" />
 	</composite-id>

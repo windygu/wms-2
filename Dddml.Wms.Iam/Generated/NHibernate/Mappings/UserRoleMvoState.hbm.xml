@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Iam" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.UserRoleMvo">
   
-  <class name="Dddml.Wms.Domain.UserRoleMvoState" table="UserRole_RV">
+  <class name="Dddml.Wms.Domain.UserRoleMvo.UserRoleMvoState" table="UserRole_RV">
 
-	<composite-id name="UserRoleId" class="Dddml.Wms.Domain.UserRoleId">
+	<composite-id name="UserRoleId" class="Dddml.Wms.Domain.User.UserRoleId">
 		<key-property name="UserId" column="UserRoleIdUserId" length="50"/>
 		<key-property name="RoleId" column="UserRoleIdRoleId" length="50"/>
 	</composite-id>

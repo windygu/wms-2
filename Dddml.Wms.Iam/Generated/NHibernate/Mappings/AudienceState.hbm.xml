@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Iam" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.Audience">
   
-  <class name="Dddml.Wms.Domain.AudienceState" table="Audiences">
+  <class name="Dddml.Wms.Domain.Audience.AudienceState" table="Audiences">
 
 	<id name="ClientId" length="50">
 		<generator class="assigned"/>

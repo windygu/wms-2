@@ -1,4 +1,6 @@
 ﻿using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Attribute;
+using Dddml.Wms.Domain.AttributeSet;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Specialization.Spring;
 using Dddml.Wms.Support;

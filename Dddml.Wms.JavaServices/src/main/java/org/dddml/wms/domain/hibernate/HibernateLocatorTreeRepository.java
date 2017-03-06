@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.*;
+import org.dddml.wms.domain.locator.*;
 import org.springframework.transaction.annotation.Transactional;
 
 public class HibernateLocatorTreeRepository implements LocatorTreeRepository

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Specialization;
+using Dddml.Wms.Domain.Role;
 
 namespace Dddml.Wms.AspNet.Identity
 {

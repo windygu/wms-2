@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
                    assembly="Dddml.Wms.Iam" 
-                   namespace="Dddml.Wms.Domain">
+                   namespace="Dddml.Wms.Domain.UserClaimMvo">
   
   <class name="UserClaimMvoStateEventBase" table="UserClaimMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.UserClaimMvoStateEventId">
+	<composite-id name="StateEventId" class="Dddml.Wms.Domain.UserClaimMvo.UserClaimMvoStateEventId">
 		<key-property name="UserClaimIdUserId" column="UserClaimIdUserId" length="50"/>
 		<key-property name="UserClaimIdClaimId" column="UserClaimIdClaimId" />
 		<key-property name="UserVersion" column="UserVersion" />

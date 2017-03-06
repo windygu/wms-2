@@ -4,11 +4,11 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain">
+<hibernate-mapping package="org.dddml.wms.domain.warehouse">
   
   <class name="AbstractWarehouseStateEvent" table="WarehouseStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.WarehouseStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.warehouse.WarehouseStateEventId">
 		<key-property name="warehouseId" column="WarehouseId" length="50"/>
 		<key-property name="version" column="Version" />
 	</composite-id>

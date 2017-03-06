@@ -1,5 +1,10 @@
 ﻿using Dddml.Support.NHibernate;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Audience;
+using Dddml.Wms.Domain.Permission;
+using Dddml.Wms.Domain.Role;
+using Dddml.Wms.Domain.RolePermission;
+using Dddml.Wms.Domain.User;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Specialization.Spring;
 using Microsoft.AspNet.Identity;

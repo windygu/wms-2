@@ -30,8 +30,8 @@ configuration:
     MvoUsingRViewAsMView: true
     MvoStateDatabaseTableNameFormat: "{0}s"
     MvoHttpServiceResourceCollectionNameFormat: "{0}s"
-    MvoClrAggregateDomainSubNamespaceName: "MViews"
-    MvoJavaAggregateDomainSubPackageName: "mviews"
+    #MvoClrAggregateDomainSubNamespaceName: "MViews"
+    #MvoJavaAggregateDomainSubPackageName: "mviews"
     
     ClrDomainServiceSubNamespaceName: "Services"
     ClrHttpServiceSetRequesterIdAttributeEnabled: true
@@ -50,7 +50,7 @@ configuration:
     
   clr:
     specializationNamespace: "Dddml.Wms.Specialization"
-    isUsingSeparatedDomainAggregateNamespace: false
+    isUsingSeparatedDomainAggregateNamespace: true
     domainAssembly: "Dddml.Wms.Common"
     serviceAssembly: "Dddml.Wms.Services"
     clrValueTypes: ["Money"]
@@ -64,7 +64,7 @@ configuration:
   
     boundedContextPackage: "org.dddml.wms"
     specializationPackage: "org.dddml.wms.specialization"
-    isUsingSeparatedDomainAggregatePackage: false
+    isUsingSeparatedDomainAggregatePackage: true
     defaultUserIdType: "string"
     #JavaSerializationAnnotationTypes: {}
     

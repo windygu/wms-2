@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Common" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.Attribute">
   
-  <class name="Dddml.Wms.Domain.AttributeState" table="Attributes">
+  <class name="Dddml.Wms.Domain.Attribute.AttributeState" table="Attributes">
 
 	<id name="AttributeId" length="50">
 		<generator class="assigned"/>

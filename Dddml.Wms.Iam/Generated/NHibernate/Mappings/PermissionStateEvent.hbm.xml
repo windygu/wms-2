@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
                    assembly="Dddml.Wms.Iam" 
-                   namespace="Dddml.Wms.Domain">
+                   namespace="Dddml.Wms.Domain.Permission">
   
   <class name="PermissionStateEventBase" table="PermissionStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.PermissionStateEventId">
+	<composite-id name="StateEventId" class="Dddml.Wms.Domain.Permission.PermissionStateEventId">
 		<key-property name="PermissionId" column="PermissionId" length="50"/>
 		<key-property name="Version" column="Version" />
 	</composite-id>

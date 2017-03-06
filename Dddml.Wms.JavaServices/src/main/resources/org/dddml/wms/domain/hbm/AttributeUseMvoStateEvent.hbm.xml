@@ -4,11 +4,11 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain">
+<hibernate-mapping package="org.dddml.wms.domain.attributeusemvo">
   
   <class name="AbstractAttributeUseMvoStateEvent" table="AttributeUseMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.AttributeUseMvoStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributeusemvo.AttributeUseMvoStateEventId">
 		<key-property name="attributeSetAttributeUseIdAttributeSetId" column="AttributeSetAttributeUseIdAttributeSetId" length="50"/>
 		<key-property name="attributeSetAttributeUseIdAttributeId" column="AttributeSetAttributeUseIdAttributeId" length="50"/>
 		<key-property name="attributeSetVersion" column="AttributeSetVersion" />

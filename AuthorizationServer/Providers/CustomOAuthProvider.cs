@@ -1,5 +1,7 @@
 ﻿using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Audience;
 using Dddml.Wms.Domain.Services;
+using Dddml.Wms.Domain.User;
 using Dddml.Wms.Specialization;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;

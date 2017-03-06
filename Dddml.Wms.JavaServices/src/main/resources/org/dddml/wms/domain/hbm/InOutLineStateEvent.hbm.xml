@@ -4,11 +4,11 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain">
+<hibernate-mapping package="org.dddml.wms.domain.inout">
   
   <class name="AbstractInOutLineStateEvent" table="InOutLineStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.InOutLineStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.inout.InOutLineStateEventId">
 		<key-property name="inOutDocumentNumber" column="InOutLineIdInOutDocumentNumber" length="50"/>
 		<key-property name="lineNumber" column="InOutLineIdLineNumber" />
 		<key-property name="inOutVersion" column="InOutVersion" />

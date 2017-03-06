@@ -3,79 +3,79 @@
 
 
 
-  <object id="audienceStateRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateAudienceStateRepository, Dddml.Wms.Iam">
+  <object id="audienceStateRepository" type="Dddml.Wms.Domain.Audience.NHibernate.NHibernateAudienceStateRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="audienceStateQueryRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateAudienceStateQueryRepository, Dddml.Wms.Iam">
+  <object id="audienceStateQueryRepository" type="Dddml.Wms.Domain.Audience.NHibernate.NHibernateAudienceStateQueryRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="audienceEventStore" type="Dddml.Wms.Domain.NHibernate.NHibernateAudienceEventStore, Dddml.Wms.Iam">
+  <object id="audienceEventStore" type="Dddml.Wms.Domain.Audience.NHibernate.NHibernateAudienceEventStore, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="audienceApplicationService" type="Dddml.Wms.Domain.NHibernate.AudienceApplicationService, Dddml.Wms.Iam">
+  <object id="audienceApplicationService" type="Dddml.Wms.Domain.Audience.NHibernate.AudienceApplicationService, Dddml.Wms.Iam">
     <constructor-arg ref="audienceEventStore"/>
     <constructor-arg ref="audienceStateRepository"/>
     <constructor-arg ref="audienceStateQueryRepository"/>
   </object>
 
 
-  <object id="userRoleStateDao" type="Dddml.Wms.Domain.NHibernate.NHibernateUserRoleStateDao, Dddml.Wms.Iam">
+  <object id="userRoleStateDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserRoleStateDao, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userRoleStateEventDao" type="Dddml.Wms.Domain.NHibernate.NHibernateUserRoleStateEventDao, Dddml.Wms.Iam">
+  <object id="userRoleStateEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserRoleStateEventDao, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="userClaimStateDao" type="Dddml.Wms.Domain.NHibernate.NHibernateUserClaimStateDao, Dddml.Wms.Iam">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
-  </object>
-
-  <object id="userClaimStateEventDao" type="Dddml.Wms.Domain.NHibernate.NHibernateUserClaimStateEventDao, Dddml.Wms.Iam">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-  </object>
-
-  <object id="userPermissionStateDao" type="Dddml.Wms.Domain.NHibernate.NHibernateUserPermissionStateDao, Dddml.Wms.Iam">
+  <object id="userClaimStateDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserClaimStateDao, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userPermissionStateEventDao" type="Dddml.Wms.Domain.NHibernate.NHibernateUserPermissionStateEventDao, Dddml.Wms.Iam">
+  <object id="userClaimStateEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserClaimStateEventDao, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="userLoginStateDao" type="Dddml.Wms.Domain.NHibernate.NHibernateUserLoginStateDao, Dddml.Wms.Iam">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
-  </object>
-
-  <object id="userLoginStateEventDao" type="Dddml.Wms.Domain.NHibernate.NHibernateUserLoginStateEventDao, Dddml.Wms.Iam">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-  </object>
-
-
-  <object id="userStateRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateUserStateRepository, Dddml.Wms.Iam">
+  <object id="userPermissionStateDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserPermissionStateDao, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userStateQueryRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateUserStateQueryRepository, Dddml.Wms.Iam">
+  <object id="userPermissionStateEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserPermissionStateEventDao, Dddml.Wms.Iam">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="userLoginStateDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserLoginStateDao, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userEventStore" type="Dddml.Wms.Domain.NHibernate.NHibernateUserEventStore, Dddml.Wms.Iam">
+  <object id="userLoginStateEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserLoginStateEventDao, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="userApplicationService" type="Dddml.Wms.Domain.NHibernate.UserApplicationService, Dddml.Wms.Iam">
+
+  <object id="userStateRepository" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserStateRepository, Dddml.Wms.Iam">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="userStateQueryRepository" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserStateQueryRepository, Dddml.Wms.Iam">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="userEventStore" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserEventStore, Dddml.Wms.Iam">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="userApplicationService" type="Dddml.Wms.Domain.User.NHibernate.UserApplicationService, Dddml.Wms.Iam">
     <constructor-arg ref="userEventStore"/>
     <constructor-arg ref="userStateRepository"/>
     <constructor-arg ref="userStateQueryRepository"/>
@@ -83,21 +83,21 @@
 
 
 
-  <object id="roleStateRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateRoleStateRepository, Dddml.Wms.Iam">
+  <object id="roleStateRepository" type="Dddml.Wms.Domain.Role.NHibernate.NHibernateRoleStateRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="roleStateQueryRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateRoleStateQueryRepository, Dddml.Wms.Iam">
+  <object id="roleStateQueryRepository" type="Dddml.Wms.Domain.Role.NHibernate.NHibernateRoleStateQueryRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="roleEventStore" type="Dddml.Wms.Domain.NHibernate.NHibernateRoleEventStore, Dddml.Wms.Iam">
+  <object id="roleEventStore" type="Dddml.Wms.Domain.Role.NHibernate.NHibernateRoleEventStore, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="roleApplicationService" type="Dddml.Wms.Domain.NHibernate.RoleApplicationService, Dddml.Wms.Iam">
+  <object id="roleApplicationService" type="Dddml.Wms.Domain.Role.NHibernate.RoleApplicationService, Dddml.Wms.Iam">
     <constructor-arg ref="roleEventStore"/>
     <constructor-arg ref="roleStateRepository"/>
     <constructor-arg ref="roleStateQueryRepository"/>
@@ -105,21 +105,21 @@
 
 
 
-  <object id="permissionStateRepository" type="Dddml.Wms.Domain.NHibernate.NHibernatePermissionStateRepository, Dddml.Wms.Iam">
+  <object id="permissionStateRepository" type="Dddml.Wms.Domain.Permission.NHibernate.NHibernatePermissionStateRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="permissionStateQueryRepository" type="Dddml.Wms.Domain.NHibernate.NHibernatePermissionStateQueryRepository, Dddml.Wms.Iam">
+  <object id="permissionStateQueryRepository" type="Dddml.Wms.Domain.Permission.NHibernate.NHibernatePermissionStateQueryRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="permissionEventStore" type="Dddml.Wms.Domain.NHibernate.NHibernatePermissionEventStore, Dddml.Wms.Iam">
+  <object id="permissionEventStore" type="Dddml.Wms.Domain.Permission.NHibernate.NHibernatePermissionEventStore, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="permissionApplicationService" type="Dddml.Wms.Domain.NHibernate.PermissionApplicationService, Dddml.Wms.Iam">
+  <object id="permissionApplicationService" type="Dddml.Wms.Domain.Permission.NHibernate.PermissionApplicationService, Dddml.Wms.Iam">
     <constructor-arg ref="permissionEventStore"/>
     <constructor-arg ref="permissionStateRepository"/>
     <constructor-arg ref="permissionStateQueryRepository"/>
@@ -127,21 +127,21 @@
 
 
 
-  <object id="rolePermissionStateRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateRolePermissionStateRepository, Dddml.Wms.Iam">
+  <object id="rolePermissionStateRepository" type="Dddml.Wms.Domain.RolePermission.NHibernate.NHibernateRolePermissionStateRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="rolePermissionStateQueryRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateRolePermissionStateQueryRepository, Dddml.Wms.Iam">
+  <object id="rolePermissionStateQueryRepository" type="Dddml.Wms.Domain.RolePermission.NHibernate.NHibernateRolePermissionStateQueryRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="rolePermissionEventStore" type="Dddml.Wms.Domain.NHibernate.NHibernateRolePermissionEventStore, Dddml.Wms.Iam">
+  <object id="rolePermissionEventStore" type="Dddml.Wms.Domain.RolePermission.NHibernate.NHibernateRolePermissionEventStore, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="rolePermissionApplicationService" type="Dddml.Wms.Domain.NHibernate.RolePermissionApplicationService, Dddml.Wms.Iam">
+  <object id="rolePermissionApplicationService" type="Dddml.Wms.Domain.RolePermission.NHibernate.RolePermissionApplicationService, Dddml.Wms.Iam">
     <constructor-arg ref="rolePermissionEventStore"/>
     <constructor-arg ref="rolePermissionStateRepository"/>
     <constructor-arg ref="rolePermissionStateQueryRepository"/>
@@ -149,21 +149,21 @@
 
 
 
-  <object id="userRoleMvoStateRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateUserRoleMvoStateRepository, Dddml.Wms.Iam">
+  <object id="userRoleMvoStateRepository" type="Dddml.Wms.Domain.UserRoleMvo.NHibernate.NHibernateUserRoleMvoStateRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userRoleMvoStateQueryRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateUserRoleMvoStateQueryRepository, Dddml.Wms.Iam">
+  <object id="userRoleMvoStateQueryRepository" type="Dddml.Wms.Domain.UserRoleMvo.NHibernate.NHibernateUserRoleMvoStateQueryRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userRoleMvoEventStore" type="Dddml.Wms.Domain.NHibernate.NHibernateUserRoleMvoEventStore, Dddml.Wms.Iam">
+  <object id="userRoleMvoEventStore" type="Dddml.Wms.Domain.UserRoleMvo.NHibernate.NHibernateUserRoleMvoEventStore, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="userRoleMvoApplicationService" type="Dddml.Wms.Domain.NHibernate.UserRoleMvoApplicationService, Dddml.Wms.Iam">
+  <object id="userRoleMvoApplicationService" type="Dddml.Wms.Domain.UserRoleMvo.NHibernate.UserRoleMvoApplicationService, Dddml.Wms.Iam">
     <constructor-arg ref="userRoleMvoEventStore"/>
     <constructor-arg ref="userRoleMvoStateRepository"/>
     <constructor-arg ref="userRoleMvoStateQueryRepository"/>
@@ -171,21 +171,21 @@
 
 
 
-  <object id="userClaimMvoStateRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateUserClaimMvoStateRepository, Dddml.Wms.Iam">
+  <object id="userClaimMvoStateRepository" type="Dddml.Wms.Domain.UserClaimMvo.NHibernate.NHibernateUserClaimMvoStateRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userClaimMvoStateQueryRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateUserClaimMvoStateQueryRepository, Dddml.Wms.Iam">
+  <object id="userClaimMvoStateQueryRepository" type="Dddml.Wms.Domain.UserClaimMvo.NHibernate.NHibernateUserClaimMvoStateQueryRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userClaimMvoEventStore" type="Dddml.Wms.Domain.NHibernate.NHibernateUserClaimMvoEventStore, Dddml.Wms.Iam">
+  <object id="userClaimMvoEventStore" type="Dddml.Wms.Domain.UserClaimMvo.NHibernate.NHibernateUserClaimMvoEventStore, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="userClaimMvoApplicationService" type="Dddml.Wms.Domain.NHibernate.UserClaimMvoApplicationService, Dddml.Wms.Iam">
+  <object id="userClaimMvoApplicationService" type="Dddml.Wms.Domain.UserClaimMvo.NHibernate.UserClaimMvoApplicationService, Dddml.Wms.Iam">
     <constructor-arg ref="userClaimMvoEventStore"/>
     <constructor-arg ref="userClaimMvoStateRepository"/>
     <constructor-arg ref="userClaimMvoStateQueryRepository"/>
@@ -193,21 +193,21 @@
 
 
 
-  <object id="userPermissionMvoStateRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateUserPermissionMvoStateRepository, Dddml.Wms.Iam">
+  <object id="userPermissionMvoStateRepository" type="Dddml.Wms.Domain.UserPermissionMvo.NHibernate.NHibernateUserPermissionMvoStateRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userPermissionMvoStateQueryRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateUserPermissionMvoStateQueryRepository, Dddml.Wms.Iam">
+  <object id="userPermissionMvoStateQueryRepository" type="Dddml.Wms.Domain.UserPermissionMvo.NHibernate.NHibernateUserPermissionMvoStateQueryRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userPermissionMvoEventStore" type="Dddml.Wms.Domain.NHibernate.NHibernateUserPermissionMvoEventStore, Dddml.Wms.Iam">
+  <object id="userPermissionMvoEventStore" type="Dddml.Wms.Domain.UserPermissionMvo.NHibernate.NHibernateUserPermissionMvoEventStore, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="userPermissionMvoApplicationService" type="Dddml.Wms.Domain.NHibernate.UserPermissionMvoApplicationService, Dddml.Wms.Iam">
+  <object id="userPermissionMvoApplicationService" type="Dddml.Wms.Domain.UserPermissionMvo.NHibernate.UserPermissionMvoApplicationService, Dddml.Wms.Iam">
     <constructor-arg ref="userPermissionMvoEventStore"/>
     <constructor-arg ref="userPermissionMvoStateRepository"/>
     <constructor-arg ref="userPermissionMvoStateQueryRepository"/>
@@ -215,21 +215,21 @@
 
 
 
-  <object id="userLoginMvoStateRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateUserLoginMvoStateRepository, Dddml.Wms.Iam">
+  <object id="userLoginMvoStateRepository" type="Dddml.Wms.Domain.UserLoginMvo.NHibernate.NHibernateUserLoginMvoStateRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userLoginMvoStateQueryRepository" type="Dddml.Wms.Domain.NHibernate.NHibernateUserLoginMvoStateQueryRepository, Dddml.Wms.Iam">
+  <object id="userLoginMvoStateQueryRepository" type="Dddml.Wms.Domain.UserLoginMvo.NHibernate.NHibernateUserLoginMvoStateQueryRepository, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userLoginMvoEventStore" type="Dddml.Wms.Domain.NHibernate.NHibernateUserLoginMvoEventStore, Dddml.Wms.Iam">
+  <object id="userLoginMvoEventStore" type="Dddml.Wms.Domain.UserLoginMvo.NHibernate.NHibernateUserLoginMvoEventStore, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="userLoginMvoApplicationService" type="Dddml.Wms.Domain.NHibernate.UserLoginMvoApplicationService, Dddml.Wms.Iam">
+  <object id="userLoginMvoApplicationService" type="Dddml.Wms.Domain.UserLoginMvo.NHibernate.UserLoginMvoApplicationService, Dddml.Wms.Iam">
     <constructor-arg ref="userLoginMvoEventStore"/>
     <constructor-arg ref="userLoginMvoStateRepository"/>
     <constructor-arg ref="userLoginMvoStateQueryRepository"/>

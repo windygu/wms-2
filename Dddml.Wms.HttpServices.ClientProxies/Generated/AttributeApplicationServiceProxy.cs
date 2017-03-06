@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Attribute;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;

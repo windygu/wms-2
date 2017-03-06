@@ -8,6 +8,7 @@ using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Services;
 using Dddml.Wms.Specialization;
 using Dynamitey;
+using Dddml.Wms.Domain.AttributeSetInstance;
 
 
 namespace Dddml.Wms.HttpServices.ApiControllers

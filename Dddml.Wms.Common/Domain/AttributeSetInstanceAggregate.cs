@@ -5,7 +5,7 @@ using System.Text;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Support;
 
-namespace Dddml.Wms.Domain
+namespace Dddml.Wms.Domain.AttributeSetInstance
 {
     public partial class AttributeSetInstanceAggregate
     {

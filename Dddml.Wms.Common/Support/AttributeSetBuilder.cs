@@ -1,4 +1,6 @@
 ﻿using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Attribute;
+using Dddml.Wms.Domain.AttributeSet;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Common" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.OrganizationStructureType">
   
-  <class name="Dddml.Wms.Domain.OrganizationStructureTypeState" table="OrganizationStructureTypes">
+  <class name="Dddml.Wms.Domain.OrganizationStructureType.OrganizationStructureTypeState" table="OrganizationStructureTypes">
 
 	<id name="Id" length="50">
 		<generator class="assigned"/>

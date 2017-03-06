@@ -1,4 +1,6 @@
 ﻿using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Attribute;
+using Dddml.Wms.Domain.AttributeSet;
 using Dddml.Wms.Domain.Services;
 using Dddml.Wms.Specialization;
 using Spring.Transaction.Interceptor;

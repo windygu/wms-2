@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.User;
 
 namespace Dddml.Wms.AspNet.Identity
 {

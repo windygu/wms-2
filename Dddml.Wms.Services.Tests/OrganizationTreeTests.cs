@@ -1,4 +1,7 @@
 ﻿using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Organization;
+using Dddml.Wms.Domain.OrganizationStructure;
+using Dddml.Wms.Domain.OrganizationStructureType;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Specialization.Spring;
 using Dddml.Wms.Support;

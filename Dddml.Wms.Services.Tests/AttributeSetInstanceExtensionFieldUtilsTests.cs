@@ -1,4 +1,5 @@
 ﻿using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Specialization.Spring;
 using Dddml.Wms.Support;

@@ -4,11 +4,11 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain">
+<hibernate-mapping package="org.dddml.wms.domain.organizationstructure">
   
   <class name="AbstractOrganizationStructureStateEvent" table="OrganizationStructureStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.OrganizationStructureStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.organizationstructure.OrganizationStructureStateEventId">
 		<key-property name="idOrganizationStructureTypeId" column="IdOrganizationStructureTypeId" />
 		<key-property name="idParentId" column="IdParentId" />
 		<key-property name="idSubsidiaryId" column="IdSubsidiaryId" />

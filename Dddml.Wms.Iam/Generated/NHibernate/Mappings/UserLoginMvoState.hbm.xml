@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Iam" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.UserLoginMvo">
   
-  <class name="Dddml.Wms.Domain.UserLoginMvoState" table="UserLogin_RV">
+  <class name="Dddml.Wms.Domain.UserLoginMvo.UserLoginMvoState" table="UserLogin_RV">
 
-	<composite-id name="UserLoginId" class="Dddml.Wms.Domain.UserLoginId">
+	<composite-id name="UserLoginId" class="Dddml.Wms.Domain.User.UserLoginId">
 		<key-property name="UserId" column="UserLoginIdUserId" length="50"/>
 		<key-property name="LoginKeyLoginProvider" column="UserLoginIdLoginKeyLoginProvider" />
 		<key-property name="LoginKeyProviderKey" column="UserLoginIdLoginKeyProviderKey" />

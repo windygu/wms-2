@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Iam" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.Permission">
   
-  <class name="Dddml.Wms.Domain.PermissionState" table="Permissions">
+  <class name="Dddml.Wms.Domain.Permission.PermissionState" table="Permissions">
 
 	<id name="PermissionId" length="50">
 		<generator class="assigned"/>

@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
                    assembly="Dddml.Wms.Iam" 
-                   namespace="Dddml.Wms.Domain">
+                   namespace="Dddml.Wms.Domain.RolePermission">
   
   <class name="RolePermissionStateEventBase" table="RolePermissionStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.RolePermissionStateEventId">
+	<composite-id name="StateEventId" class="Dddml.Wms.Domain.RolePermission.RolePermissionStateEventId">
 		<key-property name="IdRoleId" column="IdRoleId" />
 		<key-property name="IdPermissionId" column="IdPermissionId" />
 		<key-property name="Version" column="Version" />

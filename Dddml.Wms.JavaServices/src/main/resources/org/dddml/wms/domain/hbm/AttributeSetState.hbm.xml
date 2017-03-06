@@ -4,9 +4,9 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain">
+<hibernate-mapping package="org.dddml.wms.domain.attributeset">
   
-  <class name="org.dddml.wms.domain.AbstractAttributeSetState$SimpleAttributeSetState" table="AttributeSets">
+  <class name="org.dddml.wms.domain.attributeset.AbstractAttributeSetState$SimpleAttributeSetState" table="AttributeSets">
 
 	<id name="attributeSetId" length="50">
 		<generator class="assigned"/>

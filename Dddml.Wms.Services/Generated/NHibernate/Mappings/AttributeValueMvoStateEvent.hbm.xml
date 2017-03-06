@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
                    assembly="Dddml.Wms.Common" 
-                   namespace="Dddml.Wms.Domain">
+                   namespace="Dddml.Wms.Domain.AttributeValueMvo">
   
   <class name="AttributeValueMvoStateEventBase" table="AttributeValueMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeValueMvoStateEventId">
+	<composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeValueMvo.AttributeValueMvoStateEventId">
 		<key-property name="AttributeValueIdAttributeId" column="AttributeValueIdAttributeId" length="50"/>
 		<key-property name="AttributeValueIdValue" column="AttributeValueIdValue" length="50"/>
 		<key-property name="AttributeVersion" column="AttributeVersion" />

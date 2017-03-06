@@ -4,11 +4,11 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain">
+<hibernate-mapping package="org.dddml.wms.domain.attribute">
   
-  <class name="org.dddml.wms.domain.AbstractAttributeValueState$SimpleAttributeValueState" table="AttributeValues">
+  <class name="org.dddml.wms.domain.attribute.AbstractAttributeValueState$SimpleAttributeValueState" table="AttributeValues">
 
-	<composite-id name="attributeValueId" class="org.dddml.wms.domain.AttributeValueId">
+	<composite-id name="attributeValueId" class="org.dddml.wms.domain.attribute.AttributeValueId">
 		<key-property name="attributeId" column="AttributeValueIdAttributeId" length="50"/>
 		<key-property name="value" column="AttributeValueIdValue" length="50"/>
 	</composite-id>

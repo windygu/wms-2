@@ -4,9 +4,9 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain">
+<hibernate-mapping package="org.dddml.wms.domain.warehouse">
   
-  <class name="org.dddml.wms.domain.AbstractWarehouseState$SimpleWarehouseState" table="Warehouses">
+  <class name="org.dddml.wms.domain.warehouse.AbstractWarehouseState$SimpleWarehouseState" table="Warehouses">
 
 	<id name="warehouseId" length="50">
 		<generator class="assigned"/>

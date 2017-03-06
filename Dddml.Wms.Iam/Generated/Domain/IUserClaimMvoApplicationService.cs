@@ -7,9 +7,11 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.UserClaimMvo;
+using Dddml.Wms.Domain.User;
 using Dddml.Support.Criterion;
 
-namespace Dddml.Wms.Domain
+namespace Dddml.Wms.Domain.UserClaimMvo
 {
 
 	public partial interface IUserClaimMvoApplicationService : IApplicationService

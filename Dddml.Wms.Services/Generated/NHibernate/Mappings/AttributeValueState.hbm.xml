@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Common" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.Attribute">
   
-  <class name="Dddml.Wms.Domain.AttributeValueState" table="AttributeValues">
+  <class name="Dddml.Wms.Domain.Attribute.AttributeValueState" table="AttributeValues">
 
-	<composite-id name="AttributeValueId" class="Dddml.Wms.Domain.AttributeValueId">
+	<composite-id name="AttributeValueId" class="Dddml.Wms.Domain.Attribute.AttributeValueId">
 		<key-property name="AttributeId" column="AttributeValueIdAttributeId" length="50"/>
 		<key-property name="Value" column="AttributeValueIdValue" length="50"/>
 	</composite-id>

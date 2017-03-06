@@ -7,8 +7,10 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.UserRoleMvo;
+using Dddml.Wms.Domain.User;
 
-namespace Dddml.Wms.Domain
+namespace Dddml.Wms.Domain.UserRoleMvo
 {
     public partial class UserRoleMvoAggregate : AggregateBase, IUserRoleMvoAggregate
     {

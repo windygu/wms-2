@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo;
+using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup;
 
 namespace Dddml.Wms.Domain.Metadata
 {

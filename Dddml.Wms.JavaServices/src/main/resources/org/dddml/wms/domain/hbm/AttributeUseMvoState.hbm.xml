@@ -4,11 +4,11 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain">
+<hibernate-mapping package="org.dddml.wms.domain.attributeusemvo">
   
-  <class name="org.dddml.wms.domain.AbstractAttributeUseMvoState$SimpleAttributeUseMvoState" table="AttributeUse_RV">
+  <class name="org.dddml.wms.domain.attributeusemvo.AbstractAttributeUseMvoState$SimpleAttributeUseMvoState" table="AttributeUse_RV">
 
-	<composite-id name="attributeSetAttributeUseId" class="org.dddml.wms.domain.AttributeSetAttributeUseId">
+	<composite-id name="attributeSetAttributeUseId" class="org.dddml.wms.domain.attributeset.AttributeSetAttributeUseId">
 		<key-property name="attributeSetId" column="AttributeSetAttributeUseIdAttributeSetId" length="50"/>
 		<key-property name="attributeId" column="AttributeSetAttributeUseIdAttributeId" length="50"/>
 	</composite-id>

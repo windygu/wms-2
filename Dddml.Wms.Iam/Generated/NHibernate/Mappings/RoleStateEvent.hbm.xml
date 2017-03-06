@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
                    assembly="Dddml.Wms.Iam" 
-                   namespace="Dddml.Wms.Domain">
+                   namespace="Dddml.Wms.Domain.Role">
   
   <class name="RoleStateEventBase" table="RoleStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.RoleStateEventId">
+	<composite-id name="StateEventId" class="Dddml.Wms.Domain.Role.RoleStateEventId">
 		<key-property name="RoleId" column="RoleId" length="50"/>
 		<key-property name="Version" column="Version" />
 	</composite-id>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dddml.Wms.Domain.RolePermission;
+using Dddml.Wms.Domain.User;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

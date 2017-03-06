@@ -7,8 +7,9 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Permission;
 
-namespace Dddml.Wms.Domain
+namespace Dddml.Wms.Domain.Permission
 {
 
     public interface IPermissionStateDto

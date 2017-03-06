@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Iam" 
-				   namespace="Dddml.Wms.Domain">
+				   namespace="Dddml.Wms.Domain.RolePermission">
   
-  <class name="Dddml.Wms.Domain.RolePermissionState" table="RolePermissions">
+  <class name="Dddml.Wms.Domain.RolePermission.RolePermissionState" table="RolePermissions">
 
 	<composite-id name="Id" class="Dddml.Wms.Domain.RolePermissionId">
 		<key-property name="RoleId" column="IdRoleId" />

@@ -21,7 +21,20 @@ using Newtonsoft.Json.Converters;
 using RAML.Api.Core;
 using Raml.Common;
 using Dddml.Wms.HttpServices.ClientProxies.Raml.Models;
-using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Attribute;
+using Dddml.Wms.Domain.AttributeSet;
+using Dddml.Wms.Domain.AttributeSetInstance;
+using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup;
+using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo;
+using Dddml.Wms.Domain.AttributeUseMvo;
+using Dddml.Wms.Domain.AttributeValueMvo;
+using Dddml.Wms.Domain.InOut;
+using Dddml.Wms.Domain.InOutLineMvo;
+using Dddml.Wms.Domain.Locator;
+using Dddml.Wms.Domain.Organization;
+using Dddml.Wms.Domain.OrganizationStructure;
+using Dddml.Wms.Domain.OrganizationStructureType;
+using Dddml.Wms.Domain.Warehouse;
 
 namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 {

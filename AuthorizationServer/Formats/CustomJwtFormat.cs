@@ -1,4 +1,5 @@
 ﻿using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Audience;
 using Dddml.Wms.Specialization;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;

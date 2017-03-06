@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.RolePermission;
 using Dddml.Wms.Specialization.NHibernate;
 using NHibernate;
 using NHibernate.Criterion;
@@ -16,7 +17,7 @@ using NHibernateICriterion = NHibernate.Criterion.ICriterion;
 using NHibernateRestrictions = NHibernate.Criterion.Restrictions;
 using NHibernateDisjunction = NHibernate.Criterion.Disjunction;
 
-namespace Dddml.Wms.Domain.NHibernate
+namespace Dddml.Wms.Domain.RolePermission.NHibernate
 {
 
 	public partial class NHibernateRolePermissionStateRepository : IRolePermissionStateRepository

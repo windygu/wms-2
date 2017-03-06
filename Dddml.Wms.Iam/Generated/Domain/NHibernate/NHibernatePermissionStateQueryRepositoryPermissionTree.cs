@@ -7,12 +7,13 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Permission;
 using Dddml.Wms.Specialization.NHibernate;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 
-namespace Dddml.Wms.Domain.NHibernate
+namespace Dddml.Wms.Domain.Permission.NHibernate
 {
 
 	public partial class NHibernatePermissionStateQueryRepository

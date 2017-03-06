@@ -4,9 +4,9 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.*;
+import org.dddml.wms.domain.organization.*;
 import org.springframework.transaction.annotation.Transactional;
-import org.dddml.wms.domain.*;
+import org.dddml.wms.domain.organizationstructure.*;
 
 public class HibernateOrganizationTreeRepository implements OrganizationTreeRepository
 {

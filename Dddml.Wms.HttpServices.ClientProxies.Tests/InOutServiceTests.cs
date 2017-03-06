@@ -14,6 +14,7 @@ using NodaMoney;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using Dddml.Wms.Specialization;
+using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.HttpServices.ClientProxies.Tests
 {

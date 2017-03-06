@@ -7,9 +7,10 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.Audience;
 using Dddml.Support.Criterion;
 
-namespace Dddml.Wms.Domain
+namespace Dddml.Wms.Domain.Audience
 {
 	public abstract partial class AudienceApplicationServiceBase : IAudienceApplicationService, IApplicationService
 	{

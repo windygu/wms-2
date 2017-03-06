@@ -4,11 +4,11 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain">
+<hibernate-mapping package="org.dddml.wms.domain.attributesetinstance">
   
   <class name="AbstractAttributeSetInstanceStateEvent" table="AttributeSetInstanceStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.AttributeSetInstanceStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceStateEventId">
 		<key-property name="attributeSetInstanceId" column="AttributeSetInstanceId" length="50"/>
 		<key-property name="version" column="Version" />
 	</composite-id>
