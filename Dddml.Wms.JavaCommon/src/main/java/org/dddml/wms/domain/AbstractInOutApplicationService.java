@@ -21,15 +21,20 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
 
     private InOutStateRepository stateRepository;
 
-    protected InOutStateRepository getStateRepository()
-    {
+    protected InOutStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractInOutApplicationService(EventStore eventStore, InOutStateRepository stateRepository)
-    {
+    private InOutStateQueryRepository stateQueryRepository;
+
+    protected InOutStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractInOutApplicationService(EventStore eventStore, InOutStateRepository stateRepository, InOutStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(InOutCommand.CreateInOut c) {
@@ -50,27 +55,27 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
     }
 
     public Iterable<InOutState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<InOutState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<InOutState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<InOutState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public InOutStateEvent getStateEvent(String documentNumber, long version) {
@@ -90,7 +95,7 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
     }
 
     public InOutLineState getInOutLine(String inOutDocumentNumber, SkuId skuId) {
-        return getStateRepository().getInOutLine(inOutDocumentNumber, skuId);
+        return getStateQueryRepository().getInOutLine(inOutDocumentNumber, skuId);
     }
 
 
@@ -107,7 +112,7 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
     protected void update(InOutCommand c, Consumer<InOutAggregate> action)
     {
         String aggregateId = c.getDocumentNumber();
-        InOutState state = getStateRepository().get(aggregateId);
+        InOutState state = getStateRepository().get(aggregateId, false);
         InOutAggregate aggregate = getInOutAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -140,9 +145,9 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
 
     public static class SimpleInOutApplicationService extends AbstractInOutApplicationService 
     {
-        public SimpleInOutApplicationService(EventStore eventStore, InOutStateRepository stateRepository)
+        public SimpleInOutApplicationService(EventStore eventStore, InOutStateRepository stateRepository, InOutStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository);
         }
     }
 

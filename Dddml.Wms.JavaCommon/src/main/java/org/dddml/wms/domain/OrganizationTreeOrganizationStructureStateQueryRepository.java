@@ -11,7 +11,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.support.criterion.Criterion;
 import org.dddml.wms.specialization.*;
 
-public interface TreeOrganizationStructureStateRepository extends OrganizationStructureStateRepository
+public interface OrganizationTreeOrganizationStructureStateQueryRepository extends OrganizationStructureStateQueryRepository
 {
     Iterable<OrganizationStructureState> getOrganizationTreeRoots(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);
 

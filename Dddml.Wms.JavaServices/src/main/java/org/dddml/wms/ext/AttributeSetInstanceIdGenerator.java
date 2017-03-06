@@ -13,7 +13,7 @@ import java.util.UUID;
 /**
  * Created by Li Yongchun on 2016/9/9.
  */
-public class AttributeSetInstanceIdGenerator implements IdGenerator<String, AttributeSetInstanceCommand.CreateAttributeSetInstance> {
+public class AttributeSetInstanceIdGenerator implements IdGenerator<String, AttributeSetInstanceCommand.CreateAttributeSetInstance, AttributeSetInstanceState> {
 
     private AttributeSetInstanceStateRepository attributeSetInstanceStateRepository;
 
@@ -24,7 +24,8 @@ public class AttributeSetInstanceIdGenerator implements IdGenerator<String, Attr
 
     @Override
     public String generateId(AttributeSetInstanceCommand.CreateAttributeSetInstance createAttributeSetInstance) {
-        return null;
+        String hash = AttributeSetInstancePropertyUtils.getHash(createAttributeSetInstance);
+        return hash;
     }
 
     @Override
@@ -33,9 +34,18 @@ public class AttributeSetInstanceIdGenerator implements IdGenerator<String, Attr
     }
 
     @Override
+    public boolean equals(AttributeSetInstanceCommand.CreateAttributeSetInstance createAttributeSetInstance, AttributeSetInstanceState attributeSetInstanceState) {
+        return AttributeSetInstancePropertyUtils.equals(createAttributeSetInstance, attributeSetInstanceState);
+    }
+
+    @Override
+    public boolean isSurrogateIdEnabled() {
+        return true;
+    }
+
+    /*
     public GetOrGenerateIdResult<String> getOrGenerateId(AttributeSetInstanceCommand.CreateAttributeSetInstance createAttributeSetInstance) {
         GetOrGenerateIdResult<String> result = new GetOrGenerateIdResult<>();
-        String hash = AttributeSetInstancePropertyUtils.getHash(createAttributeSetInstance);
         createAttributeSetInstance.setHash(hash);
         Map<String, Object> hashMap = new HashMap<>();
         hashMap.put("hash", hash);
@@ -51,4 +61,5 @@ public class AttributeSetInstanceIdGenerator implements IdGenerator<String, Attr
         result.setId(getNextId());
         return result;
     }
+    */
 }

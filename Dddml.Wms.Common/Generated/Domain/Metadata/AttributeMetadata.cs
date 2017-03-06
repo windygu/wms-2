@@ -236,7 +236,7 @@ namespace Dddml.Wms.Domain.Metadata
                     Type = typeof(int),
                     TypeName = "int",
                     IsBasicType = true,
-                    IsNullableType = true,
+                    IsNullableType = false,
                     DeclaringObjectName = "Attribute",
                     DisplayName = "",
                     Description = "",

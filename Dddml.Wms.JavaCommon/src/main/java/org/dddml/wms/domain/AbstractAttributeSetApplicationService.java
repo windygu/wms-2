@@ -19,15 +19,20 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
 
     private AttributeSetStateRepository stateRepository;
 
-    protected AttributeSetStateRepository getStateRepository()
-    {
+    protected AttributeSetStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractAttributeSetApplicationService(EventStore eventStore, AttributeSetStateRepository stateRepository)
-    {
+    private AttributeSetStateQueryRepository stateQueryRepository;
+
+    protected AttributeSetStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractAttributeSetApplicationService(EventStore eventStore, AttributeSetStateRepository stateRepository, AttributeSetStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(AttributeSetCommand.CreateAttributeSet c) {
@@ -48,27 +53,27 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
     }
 
     public Iterable<AttributeSetState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<AttributeSetState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeSetState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeSetState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public AttributeSetStateEvent getStateEvent(String attributeSetId, long version) {
@@ -88,7 +93,7 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
     }
 
     public AttributeUseState getAttributeUse(String attributeSetId, String attributeId) {
-        return getStateRepository().getAttributeUse(attributeSetId, attributeId);
+        return getStateQueryRepository().getAttributeUse(attributeSetId, attributeId);
     }
 
 
@@ -105,7 +110,7 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
     protected void update(AttributeSetCommand c, Consumer<AttributeSetAggregate> action)
     {
         String aggregateId = c.getAttributeSetId();
-        AttributeSetState state = getStateRepository().get(aggregateId);
+        AttributeSetState state = getStateRepository().get(aggregateId, false);
         AttributeSetAggregate aggregate = getAttributeSetAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -138,9 +143,9 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
 
     public static class SimpleAttributeSetApplicationService extends AbstractAttributeSetApplicationService 
     {
-        public SimpleAttributeSetApplicationService(EventStore eventStore, AttributeSetStateRepository stateRepository)
+        public SimpleAttributeSetApplicationService(EventStore eventStore, AttributeSetStateRepository stateRepository, AttributeSetStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository);
         }
     }
 

@@ -11,7 +11,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.support.criterion.Criterion;
 import org.dddml.wms.specialization.*;
 
-public interface TreeLocatorStateRepository extends LocatorStateRepository
+public interface LocatorTreeLocatorStateQueryRepository extends LocatorStateQueryRepository
 {
     Iterable<LocatorState> getLocatorTreeRoots(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);
 

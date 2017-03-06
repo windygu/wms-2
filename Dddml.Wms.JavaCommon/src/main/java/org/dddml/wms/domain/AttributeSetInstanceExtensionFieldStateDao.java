@@ -5,8 +5,6 @@ import org.dddml.wms.domain.*;
 
 public interface AttributeSetInstanceExtensionFieldStateDao
 {
-    AttributeSetInstanceExtensionFieldState get(AttributeSetInstanceExtensionFieldId id);
-
     AttributeSetInstanceExtensionFieldState get(AttributeSetInstanceExtensionFieldId id, boolean nullAllowed);
 
     void save(AttributeSetInstanceExtensionFieldState state);

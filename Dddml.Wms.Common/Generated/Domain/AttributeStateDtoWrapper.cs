@@ -432,6 +432,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -450,6 +451,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -465,6 +467,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -603,7 +606,6 @@ namespace Dddml.Wms.Domain
             set { _state.AttributeValues = value; }
         }
 
-
 		void IAttributeState.When(IAttributeStateCreated e)
 		{
             throw new NotSupportedException();
@@ -632,14 +634,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IAttributeState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
         public class DtoAttributeValueStates : IAttributeValueStates
         {

@@ -23,7 +23,7 @@ import org.dddml.support.criterion.TypeConverter;
 public class AttributeResource {
 
     @Autowired
-    private IdGenerator<String, AttributeCommand.CreateAttribute> attributeIdGenerator;
+    private IdGenerator<String, AttributeCommand.CreateAttribute, AttributeState> attributeIdGenerator;
 
 
     @Autowired

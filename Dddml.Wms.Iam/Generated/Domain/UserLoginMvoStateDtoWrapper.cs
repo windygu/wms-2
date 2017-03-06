@@ -38,7 +38,6 @@ namespace Dddml.Wms.Domain
 			return this._state;
 		}
 
-
         public UserLoginIdDto UserLoginId
         {
             get
@@ -54,7 +53,6 @@ namespace Dddml.Wms.Domain
                 _state.UserLoginId = (value == null) ? null : value.ToUserLoginId();
             }
         }
-
 
         UserLoginId IUserLoginMvoStateProperties.UserLoginId
         {
@@ -679,6 +677,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -697,6 +696,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -712,6 +712,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -804,7 +805,6 @@ namespace Dddml.Wms.Domain
             get { return this.UserVersion == UserLoginMvoState.VersionZero; }
         }
 
-
 		void IUserLoginMvoState.When(IUserLoginMvoStateCreated e)
 		{
             throw new NotSupportedException();
@@ -833,14 +833,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IUserLoginMvoState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
 	}
 

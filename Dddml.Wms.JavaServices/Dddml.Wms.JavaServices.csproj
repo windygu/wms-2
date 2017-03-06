@@ -71,39 +71,53 @@
 .\HibernateAttributeSetEventStore.java
 .\HibernateAttributeSetInstanceEventStore.java
 .\HibernateAttributeSetInstanceExtensionFieldGroupEventStore.java
+.\HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository.java
 .\HibernateAttributeSetInstanceExtensionFieldGroupStateRepository.java
 .\HibernateAttributeSetInstanceExtensionFieldMvoEventStore.java
+.\HibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository.java
 .\HibernateAttributeSetInstanceExtensionFieldMvoStateRepository.java
 .\HibernateAttributeSetInstanceExtensionFieldStateDao.java
 .\HibernateAttributeSetInstanceExtensionFieldStateEventDao.java
+.\HibernateAttributeSetInstanceStateQueryRepository.java
 .\HibernateAttributeSetInstanceStateRepository.java
+.\HibernateAttributeSetStateQueryRepository.java
 .\HibernateAttributeSetStateRepository.java
+.\HibernateAttributeStateQueryRepository.java
 .\HibernateAttributeStateRepository.java
 .\HibernateAttributeUseMvoEventStore.java
+.\HibernateAttributeUseMvoStateQueryRepository.java
 .\HibernateAttributeUseMvoStateRepository.java
 .\HibernateAttributeUseStateDao.java
 .\HibernateAttributeUseStateEventDao.java
 .\HibernateAttributeValueMvoEventStore.java
+.\HibernateAttributeValueMvoStateQueryRepository.java
 .\HibernateAttributeValueMvoStateRepository.java
 .\HibernateAttributeValueStateDao.java
 .\HibernateAttributeValueStateEventDao.java
 .\HibernateInOutEventStore.java
 .\HibernateInOutLineMvoEventStore.java
+.\HibernateInOutLineMvoStateQueryRepository.java
 .\HibernateInOutLineMvoStateRepository.java
 .\HibernateInOutLineStateDao.java
 .\HibernateInOutLineStateEventDao.java
+.\HibernateInOutStateQueryRepository.java
 .\HibernateInOutStateRepository.java
 .\HibernateLocatorEventStore.java
+.\HibernateLocatorStateQueryRepository.java
 .\HibernateLocatorStateRepository.java
-.\HibernateLocatorTreeLocatorStateRepository.java
+.\HibernateLocatorTreeLocatorStateQueryRepository.java
 .\HibernateOrganizationEventStore.java
+.\HibernateOrganizationStateQueryRepository.java
 .\HibernateOrganizationStateRepository.java
 .\HibernateOrganizationStructureEventStore.java
+.\HibernateOrganizationStructureStateQueryRepository.java
 .\HibernateOrganizationStructureStateRepository.java
 .\HibernateOrganizationStructureTypeEventStore.java
+.\HibernateOrganizationStructureTypeStateQueryRepository.java
 .\HibernateOrganizationStructureTypeStateRepository.java
-.\HibernateOrganizationTreeOrganizationStructureStateRepository.java
+.\HibernateOrganizationTreeOrganizationStructureStateQueryRepository.java
 .\HibernateWarehouseEventStore.java
+.\HibernateWarehouseStateQueryRepository.java
 .\HibernateWarehouseStateRepository.java
 </LastOutputs>
     </Content>
@@ -119,10 +133,16 @@
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoEventStore.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoStateRepository.java">
@@ -134,16 +154,28 @@
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceExtensionFieldStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetInstanceStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeSetStateRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeUseMvoEventStore.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeUseMvoStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeUseMvoStateRepository.java">
@@ -156,6 +188,9 @@
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeValueMvoEventStore.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeValueMvoStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateAttributeValueMvoStateRepository.java">
@@ -173,6 +208,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutLineMvoEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutLineMvoStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutLineMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
@@ -182,16 +220,22 @@
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutLineStateEventDao.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateInOutStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorTreeLocatorStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorTreeLocatorStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorTreeRepository.java">
@@ -200,10 +244,16 @@
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureEventStore.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureStateRepository.java">
@@ -212,16 +262,22 @@
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureTypeEventStore.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureTypeStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationStructureTypeStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationTreeOrganizationStructureStateRepository.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationTreeOrganizationStructureStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationTreeRepository.java">
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateWarehouseEventStore.java">
+      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateWarehouseStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateWarehouseStateRepository.java">

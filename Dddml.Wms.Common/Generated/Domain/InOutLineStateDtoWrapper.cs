@@ -39,7 +39,6 @@ namespace Dddml.Wms.Domain
 			return this._state;
 		}
 
-
         public SkuIdDto SkuId
         {
             get
@@ -55,7 +54,6 @@ namespace Dddml.Wms.Domain
                 _state.SkuId = (value == null) ? null : value.ToSkuId();
             }
         }
-
 
         SkuId IInOutLineStateProperties.SkuId
         {
@@ -686,6 +684,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -704,6 +703,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -719,6 +719,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -816,7 +817,6 @@ namespace Dddml.Wms.Domain
             get { return this.Version == InOutLineState.VersionZero; }
         }
 
-
 		void IInOutLineState.When(IInOutLineStateCreated e)
 		{
             throw new NotSupportedException();
@@ -845,14 +845,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IInOutLineState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
 	}
 

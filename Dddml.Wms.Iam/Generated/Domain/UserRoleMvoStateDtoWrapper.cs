@@ -38,7 +38,6 @@ namespace Dddml.Wms.Domain
 			return this._state;
 		}
 
-
         public UserRoleIdDto UserRoleId
         {
             get
@@ -54,7 +53,6 @@ namespace Dddml.Wms.Domain
                 _state.UserRoleId = (value == null) ? null : value.ToUserRoleId();
             }
         }
-
 
         UserRoleId IUserRoleMvoStateProperties.UserRoleId
         {
@@ -679,6 +677,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -697,6 +696,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -712,6 +712,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -804,7 +805,6 @@ namespace Dddml.Wms.Domain
             get { return this.UserVersion == UserRoleMvoState.VersionZero; }
         }
 
-
 		void IUserRoleMvoState.When(IUserRoleMvoStateCreated e)
 		{
             throw new NotSupportedException();
@@ -833,14 +833,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IUserRoleMvoState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
 	}
 

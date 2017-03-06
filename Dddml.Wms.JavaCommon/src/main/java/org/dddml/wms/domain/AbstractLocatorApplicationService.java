@@ -19,15 +19,20 @@ public abstract class AbstractLocatorApplicationService implements LocatorApplic
 
     private LocatorStateRepository stateRepository;
 
-    protected LocatorStateRepository getStateRepository()
-    {
+    protected LocatorStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractLocatorApplicationService(EventStore eventStore, LocatorStateRepository stateRepository)
-    {
+    private LocatorStateQueryRepository stateQueryRepository;
+
+    protected LocatorStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractLocatorApplicationService(EventStore eventStore, LocatorStateRepository stateRepository, LocatorStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(LocatorCommand.CreateLocator c) {
@@ -48,27 +53,27 @@ public abstract class AbstractLocatorApplicationService implements LocatorApplic
     }
 
     public Iterable<LocatorState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<LocatorState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<LocatorState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<LocatorState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public LocatorStateEvent getStateEvent(String locatorId, long version) {
@@ -101,7 +106,7 @@ public abstract class AbstractLocatorApplicationService implements LocatorApplic
     protected void update(LocatorCommand c, Consumer<LocatorAggregate> action)
     {
         String aggregateId = c.getLocatorId();
-        LocatorState state = getStateRepository().get(aggregateId);
+        LocatorState state = getStateRepository().get(aggregateId, false);
         LocatorAggregate aggregate = getLocatorAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -134,9 +139,9 @@ public abstract class AbstractLocatorApplicationService implements LocatorApplic
 
     public static class SimpleLocatorApplicationService extends AbstractLocatorApplicationService 
     {
-        public SimpleLocatorApplicationService(EventStore eventStore, LocatorStateRepository stateRepository)
+        public SimpleLocatorApplicationService(EventStore eventStore, LocatorStateRepository stateRepository, LocatorStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository);
         }
     }
 

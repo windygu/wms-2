@@ -5,8 +5,6 @@ import org.dddml.wms.domain.*;
 
 public interface AttributeValueStateDao
 {
-    AttributeValueState get(AttributeValueId id);
-
     AttributeValueState get(AttributeValueId id, boolean nullAllowed);
 
     void save(AttributeValueState state);

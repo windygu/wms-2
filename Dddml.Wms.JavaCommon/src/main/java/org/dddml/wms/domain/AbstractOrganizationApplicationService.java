@@ -19,15 +19,20 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
 
     private OrganizationStateRepository stateRepository;
 
-    protected OrganizationStateRepository getStateRepository()
-    {
+    protected OrganizationStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractOrganizationApplicationService(EventStore eventStore, OrganizationStateRepository stateRepository)
-    {
+    private OrganizationStateQueryRepository stateQueryRepository;
+
+    protected OrganizationStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractOrganizationApplicationService(EventStore eventStore, OrganizationStateRepository stateRepository, OrganizationStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(OrganizationCommand.CreateOrganization c) {
@@ -48,27 +53,27 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
     }
 
     public Iterable<OrganizationState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<OrganizationState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<OrganizationState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<OrganizationState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public OrganizationStateEvent getStateEvent(String organizationId, long version) {
@@ -101,7 +106,7 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
     protected void update(OrganizationCommand c, Consumer<OrganizationAggregate> action)
     {
         String aggregateId = c.getOrganizationId();
-        OrganizationState state = getStateRepository().get(aggregateId);
+        OrganizationState state = getStateRepository().get(aggregateId, false);
         OrganizationAggregate aggregate = getOrganizationAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -134,9 +139,9 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
 
     public static class SimpleOrganizationApplicationService extends AbstractOrganizationApplicationService 
     {
-        public SimpleOrganizationApplicationService(EventStore eventStore, OrganizationStateRepository stateRepository)
+        public SimpleOrganizationApplicationService(EventStore eventStore, OrganizationStateRepository stateRepository, OrganizationStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository);
         }
     }
 

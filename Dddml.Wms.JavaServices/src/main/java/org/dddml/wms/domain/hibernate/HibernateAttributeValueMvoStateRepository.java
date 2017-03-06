@@ -39,12 +39,6 @@ public class HibernateAttributeValueMvoStateRepository implements AttributeValue
     }
 
     @Transactional(readOnly = true)
-    public AttributeValueMvoState get(AttributeValueId id)
-    {
-        return get(id, false);
-    }
-
-    @Transactional(readOnly = true)
     public AttributeValueMvoState get(AttributeValueId id, boolean nullAllowed)
     {
         AttributeValueMvoState state = (AttributeValueMvoState)getCurrentSession().get(AbstractAttributeValueMvoState.SimpleAttributeValueMvoState.class, id);
@@ -56,16 +50,6 @@ public class HibernateAttributeValueMvoStateRepository implements AttributeValue
             return (AttributeValueMvoState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeValueMvoState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
-    }
-
-    @Transactional(readOnly = true)
-    public Iterable<AttributeValueMvoState> getAll(Integer firstResult, Integer maxResults)
-    {
-        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeValueMvoState.SimpleAttributeValueMvoState.class);
-        if (firstResult != null) { criteria.setFirstResult(firstResult); }
-        if (maxResults != null) { criteria.setMaxResults(maxResults); }
-         addNotDeletedRestriction(criteria);
-        return criteria.list();
     }
 
     public void save(AttributeValueMvoState state)
@@ -87,85 +71,9 @@ public class HibernateAttributeValueMvoStateRepository implements AttributeValue
         }
     }
 
-    @Transactional(readOnly = true)
-    public Iterable<AttributeValueMvoState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
-    {
-        Criteria criteria = getCurrentSession().createCriteria(AttributeValueMvoState.class);
-
-        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
-        addNotDeletedRestriction(criteria);
-        return criteria.list();
-    }
-
-    @Transactional(readOnly = true)
-    public Iterable<AttributeValueMvoState> get(org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
-    {
-        Criteria criteria = getCurrentSession().createCriteria(AttributeValueMvoState.class);
-
-        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
-        addNotDeletedRestriction(criteria);
-        return criteria.list();
-    }
-
-    @Transactional(readOnly = true)
-    public AttributeValueMvoState getFirst(Iterable<Map.Entry<String, Object>> filter, List<String> orders)
-    {
-        List<AttributeValueMvoState> list = (List<AttributeValueMvoState>)get(filter, orders, 0, 1);
-        if (list == null || list.size() <= 0)
-        {
-            return null;
-        }
-        return list.get(0);
-    }
-
-    @Transactional(readOnly = true)
-    public AttributeValueMvoState getFirst(Map.Entry<String, Object> keyValue, List<String> orders)
-    {
-        List<Map.Entry<String, Object>> filter = new ArrayList<>();
-        filter.add(keyValue);
-        return getFirst(filter, orders);
-    }
-
-    @Transactional(readOnly = true)
-    public Iterable<AttributeValueMvoState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults)
-    {
-        Map.Entry<String, Object> keyValue = new java.util.AbstractMap.SimpleEntry<String, Object> (propertyName, propertyValue);
-        List<Map.Entry<String, Object>> filter = new ArrayList<Map.Entry<String, Object>>();
-        filter.add(keyValue);
-        return get(filter, orders, firstResult, maxResults);
-    }
-
-    @Transactional(readOnly = true)
-    public long getCount(Iterable<Map.Entry<String, Object>> filter)
-    {
-        Criteria criteria = getCurrentSession().createCriteria(AttributeValueMvoState.class);
-        criteria.setProjection(Projections.rowCount());
-        if (filter != null) {
-            HibernateUtils.criteriaAddFilter(criteria, filter);
-        }
-        addNotDeletedRestriction(criteria);
-        return (long)criteria.uniqueResult();
-    }
-
-    @Transactional(readOnly = true)
-    public long getCount(org.dddml.support.criterion.Criterion filter)
-    {
-        Criteria criteria = getCurrentSession().createCriteria(AttributeValueMvoState.class);
-        criteria.setProjection(Projections.rowCount());
-        if (filter != null)
-        {
-            org.hibernate.criterion.Criterion hc = CriterionUtils.toHibernateCriterion(filter);
-            criteria.add(hc);
-        }
-        addNotDeletedRestriction(criteria);
-        return (long)criteria.uniqueResult();
-    }
-
-
-    protected static void addNotDeletedRestriction(Criteria criteria)
-    {
-        criteria.add(org.hibernate.criterion.Restrictions.eq("deleted", false));
-    }
+    //protected static void addNotDeletedRestriction(Criteria criteria) {
+    //    criteria.add(org.hibernate.criterion.Restrictions.eq("deleted", false));
+    //}
 
 }
 

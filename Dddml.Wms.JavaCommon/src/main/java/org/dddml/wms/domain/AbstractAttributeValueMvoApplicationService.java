@@ -19,15 +19,20 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
 
     private AttributeValueMvoStateRepository stateRepository;
 
-    protected AttributeValueMvoStateRepository getStateRepository()
-    {
+    protected AttributeValueMvoStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractAttributeValueMvoApplicationService(EventStore eventStore, AttributeValueMvoStateRepository stateRepository)
-    {
+    private AttributeValueMvoStateQueryRepository stateQueryRepository;
+
+    protected AttributeValueMvoStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractAttributeValueMvoApplicationService(EventStore eventStore, AttributeValueMvoStateRepository stateRepository, AttributeValueMvoStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(AttributeValueMvoCommand.CreateAttributeValueMvo c) {
@@ -48,27 +53,27 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
     }
 
     public Iterable<AttributeValueMvoState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<AttributeValueMvoState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeValueMvoState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeValueMvoState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public AttributeValueMvoStateEvent getStateEvent(AttributeValueId attributeValueId, long version) {
@@ -101,7 +106,7 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
     protected void update(AttributeValueMvoCommand c, Consumer<AttributeValueMvoAggregate> action)
     {
         AttributeValueId aggregateId = c.getAttributeValueId();
-        AttributeValueMvoState state = getStateRepository().get(aggregateId);
+        AttributeValueMvoState state = getStateRepository().get(aggregateId, false);
         AttributeValueMvoAggregate aggregate = getAttributeValueMvoAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -134,9 +139,9 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
 
     public static class SimpleAttributeValueMvoApplicationService extends AbstractAttributeValueMvoApplicationService 
     {
-        public SimpleAttributeValueMvoApplicationService(EventStore eventStore, AttributeValueMvoStateRepository stateRepository)
+        public SimpleAttributeValueMvoApplicationService(EventStore eventStore, AttributeValueMvoStateRepository stateRepository, AttributeValueMvoStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository);
         }
     }
 

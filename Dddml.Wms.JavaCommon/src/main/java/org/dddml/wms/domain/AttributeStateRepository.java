@@ -1,36 +1,15 @@
 package org.dddml.wms.domain;
 
-import java.util.Map;
-import java.util.List;
+import java.util.*;
 import org.dddml.support.criterion.Criterion;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
 public interface AttributeStateRepository
 {
-    AttributeState get(String id);
-
     AttributeState get(String id, boolean nullAllowed);
-
-    Iterable<AttributeState> getAll(Integer firstResult, Integer maxResults);
     
     void save(AttributeState state);
-    
-    Iterable<AttributeState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults);
-
-    Iterable<AttributeState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);
-
-    AttributeState getFirst(Iterable<Map.Entry<String, Object>> filter, List<String> orders);
-
-    AttributeState getFirst(Map.Entry<String, Object> keyValue, List<String> orders);
-
-    Iterable<AttributeState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults);
-
-    long getCount(Iterable<Map.Entry<String, Object>> filter);
-
-    long getCount(Criterion filter);
-
-    AttributeValueState getAttributeValue(String attributeId, String value);
 
 }
 

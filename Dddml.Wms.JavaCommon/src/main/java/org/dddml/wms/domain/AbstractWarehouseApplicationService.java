@@ -19,15 +19,20 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
 
     private WarehouseStateRepository stateRepository;
 
-    protected WarehouseStateRepository getStateRepository()
-    {
+    protected WarehouseStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractWarehouseApplicationService(EventStore eventStore, WarehouseStateRepository stateRepository)
-    {
+    private WarehouseStateQueryRepository stateQueryRepository;
+
+    protected WarehouseStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractWarehouseApplicationService(EventStore eventStore, WarehouseStateRepository stateRepository, WarehouseStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(WarehouseCommand.CreateWarehouse c) {
@@ -48,27 +53,27 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
     }
 
     public Iterable<WarehouseState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<WarehouseState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<WarehouseState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<WarehouseState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public WarehouseStateEvent getStateEvent(String warehouseId, long version) {
@@ -101,7 +106,7 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
     protected void update(WarehouseCommand c, Consumer<WarehouseAggregate> action)
     {
         String aggregateId = c.getWarehouseId();
-        WarehouseState state = getStateRepository().get(aggregateId);
+        WarehouseState state = getStateRepository().get(aggregateId, false);
         WarehouseAggregate aggregate = getWarehouseAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -134,9 +139,9 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
 
     public static class SimpleWarehouseApplicationService extends AbstractWarehouseApplicationService 
     {
-        public SimpleWarehouseApplicationService(EventStore eventStore, WarehouseStateRepository stateRepository)
+        public SimpleWarehouseApplicationService(EventStore eventStore, WarehouseStateRepository stateRepository, WarehouseStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository);
         }
     }
 

@@ -504,6 +504,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetInstanceExtensionFieldGroupStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetInstanceExtensionFieldGroupStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetInstanceExtensionFieldGroupStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -559,6 +562,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetInstanceExtensionFieldMvoStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetInstanceExtensionFieldMvoStateRepository.java">
@@ -633,6 +639,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetInstanceStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetInstanceStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetInstanceStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -666,6 +675,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeSetStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -697,6 +709,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\AttributeStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeStateRepository.java">
@@ -742,6 +757,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeUseMvoStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\AttributeUseMvoStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeUseMvoStateRepository.java">
@@ -841,6 +859,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeValueMvoStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\AttributeValueMvoStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\AttributeValueMvoStateRepository.java">
@@ -1175,6 +1196,7 @@
 .\AttributeSetInstanceExtensionFieldGroupStateEventIdDtoWrapper.java
 .\AttributeSetInstanceExtensionFieldGroupStateEventIdFlattenedDto.java
 .\AttributeSetInstanceExtensionFieldGroupStateEventIdFlattenedDtoFormatter.java
+.\AttributeSetInstanceExtensionFieldGroupStateQueryRepository.java
 .\AttributeSetInstanceExtensionFieldGroupStateRepository.java
 .\AttributeSetInstanceExtensionFieldId.java
 .\AttributeSetInstanceExtensionFieldIdDto.java
@@ -1194,6 +1216,7 @@
 .\AttributeSetInstanceExtensionFieldMvoStateEventIdDtoWrapper.java
 .\AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDto.java
 .\AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDtoFormatter.java
+.\AttributeSetInstanceExtensionFieldMvoStateQueryRepository.java
 .\AttributeSetInstanceExtensionFieldMvoStateRepository.java
 .\AttributeSetInstanceExtensionFieldState.java
 .\AttributeSetInstanceExtensionFieldStateDao.java
@@ -1218,6 +1241,7 @@
 .\AttributeSetInstanceStateEventIdDtoWrapper.java
 .\AttributeSetInstanceStateEventIdFlattenedDto.java
 .\AttributeSetInstanceStateEventIdFlattenedDtoFormatter.java
+.\AttributeSetInstanceStateQueryRepository.java
 .\AttributeSetInstanceStateRepository.java
 .\AttributeSetState.java
 .\AttributeSetStateDto.java
@@ -1229,6 +1253,7 @@
 .\AttributeSetStateEventIdDtoWrapper.java
 .\AttributeSetStateEventIdFlattenedDto.java
 .\AttributeSetStateEventIdFlattenedDtoFormatter.java
+.\AttributeSetStateQueryRepository.java
 .\AttributeSetStateRepository.java
 .\AttributeState.java
 .\AttributeStateDto.java
@@ -1240,6 +1265,7 @@
 .\AttributeStateEventIdDtoWrapper.java
 .\AttributeStateEventIdFlattenedDto.java
 .\AttributeStateEventIdFlattenedDtoFormatter.java
+.\AttributeStateQueryRepository.java
 .\AttributeStateRepository.java
 .\AttributeUseCommand.java
 .\AttributeUseMvoAggregate.java
@@ -1255,6 +1281,7 @@
 .\AttributeUseMvoStateEventIdDtoWrapper.java
 .\AttributeUseMvoStateEventIdFlattenedDto.java
 .\AttributeUseMvoStateEventIdFlattenedDtoFormatter.java
+.\AttributeUseMvoStateQueryRepository.java
 .\AttributeUseMvoStateRepository.java
 .\AttributeUseState.java
 .\AttributeUseStateDao.java
@@ -1288,6 +1315,7 @@
 .\AttributeValueMvoStateEventIdDtoWrapper.java
 .\AttributeValueMvoStateEventIdFlattenedDto.java
 .\AttributeValueMvoStateEventIdFlattenedDtoFormatter.java
+.\AttributeValueMvoStateQueryRepository.java
 .\AttributeValueMvoStateRepository.java
 .\AttributeValueState.java
 .\AttributeValueStateDao.java
@@ -1357,6 +1385,7 @@
 .\InOutLineMvoStateEventIdDtoWrapper.java
 .\InOutLineMvoStateEventIdFlattenedDto.java
 .\InOutLineMvoStateEventIdFlattenedDtoFormatter.java
+.\InOutLineMvoStateQueryRepository.java
 .\InOutLineMvoStateRepository.java
 .\InOutLineState.java
 .\InOutLineStateDao.java
@@ -1381,6 +1410,7 @@
 .\InOutStateEventIdDtoWrapper.java
 .\InOutStateEventIdFlattenedDto.java
 .\InOutStateEventIdFlattenedDtoFormatter.java
+.\InOutStateQueryRepository.java
 .\InOutStateRepository.java
 .\LocatorAggregate.java
 .\LocatorApplicationService.java
@@ -1395,7 +1425,9 @@
 .\LocatorStateEventIdDtoWrapper.java
 .\LocatorStateEventIdFlattenedDto.java
 .\LocatorStateEventIdFlattenedDtoFormatter.java
+.\LocatorStateQueryRepository.java
 .\LocatorStateRepository.java
+.\LocatorTreeLocatorStateQueryRepository.java
 .\OrganizationAggregate.java
 .\OrganizationApplicationService.java
 .\OrganizationCommand.java
@@ -1409,6 +1441,7 @@
 .\OrganizationStateEventIdDtoWrapper.java
 .\OrganizationStateEventIdFlattenedDto.java
 .\OrganizationStateEventIdFlattenedDtoFormatter.java
+.\OrganizationStateQueryRepository.java
 .\OrganizationStateRepository.java
 .\OrganizationStructureAggregate.java
 .\OrganizationStructureApplicationService.java
@@ -1423,6 +1456,7 @@
 .\OrganizationStructureStateEventIdDtoWrapper.java
 .\OrganizationStructureStateEventIdFlattenedDto.java
 .\OrganizationStructureStateEventIdFlattenedDtoFormatter.java
+.\OrganizationStructureStateQueryRepository.java
 .\OrganizationStructureStateRepository.java
 .\OrganizationStructureTypeAggregate.java
 .\OrganizationStructureTypeApplicationService.java
@@ -1437,13 +1471,13 @@
 .\OrganizationStructureTypeStateEventIdDtoWrapper.java
 .\OrganizationStructureTypeStateEventIdFlattenedDto.java
 .\OrganizationStructureTypeStateEventIdFlattenedDtoFormatter.java
+.\OrganizationStructureTypeStateQueryRepository.java
 .\OrganizationStructureTypeStateRepository.java
+.\OrganizationTreeOrganizationStructureStateQueryRepository.java
 .\RemoveAttributeSetInstanceExtensionFieldDto.java
 .\RemoveAttributeUseDto.java
 .\RemoveAttributeValueDto.java
 .\RemoveInOutLineDto.java
-.\TreeLocatorStateRepository.java
-.\TreeOrganizationStructureStateRepository.java
 .\WarehouseAggregate.java
 .\WarehouseApplicationService.java
 .\WarehouseCommand.java
@@ -1457,6 +1491,7 @@
 .\WarehouseStateEventIdDtoWrapper.java
 .\WarehouseStateEventIdFlattenedDto.java
 .\WarehouseStateEventIdFlattenedDtoFormatter.java
+.\WarehouseStateQueryRepository.java
 .\WarehouseStateRepository.java
 </LastOutputs>
     </Content>
@@ -1531,6 +1566,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\InOutLineMvoStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\InOutLineMvoStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\InOutLineMvoStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -1603,6 +1641,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\InOutStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\InOutStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\InOutStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -1645,6 +1686,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\LocatorStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\LocatorStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\LocatorStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -1653,6 +1697,9 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\LocatorTreeApplicationService.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\LocatorTreeLocatorStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\LocatorTreeRepository.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
@@ -1868,6 +1915,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -1925,6 +1975,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStructureStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStructureStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStructureStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -1967,6 +2020,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStructureTypeStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStructureTypeStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStructureTypeStateRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
@@ -1975,6 +2031,9 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\OrganizationTreeApplicationService.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationTreeOrganizationStructureStateQueryRepository.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\OrganizationTreeRepository.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
@@ -2005,12 +2064,6 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\SkuIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\TreeLocatorStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\TreeOrganizationStructureStateRepository.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\WarehouseAggregate.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
@@ -2049,6 +2102,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\WarehouseStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\WarehouseStateQueryRepository.java">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\WarehouseStateRepository.java">

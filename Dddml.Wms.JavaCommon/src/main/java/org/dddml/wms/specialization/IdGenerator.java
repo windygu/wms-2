@@ -1,34 +1,18 @@
 package org.dddml.wms.specialization;
 
-public interface IdGenerator<TId, TCommand> {
+public interface IdGenerator<TId, TCommand, TState> {
 
+    /* Generate Id form command info. */
     TId generateId(TCommand command);
 
+    /* Get next (surrogate)Id. */
     TId getNextId();
 
-    GetOrGenerateIdResult<TId> getOrGenerateId(TCommand command);
+    /* Would the Id generated frorm command be equals the state? */
+    boolean equals(TCommand command, TState state);
 
-    public static class GetOrGenerateIdResult<TId> {
-        TId id;
+    /* Is surrogate Id enabled. */
+    boolean isSurrogateIdEnabled();
 
-        public TId getId() {
-            return id;
-        }
-
-        public void setId(TId id) {
-            this.id = id;
-        }
-
-        boolean reused;
-
-        public boolean isReused() {
-            return reused;
-        }
-
-        public void setReused(boolean reused) {
-            this.reused = reused;
-        }
-
-    }
 
 }

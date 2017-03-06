@@ -11,6 +11,8 @@ import org.dddml.wms.domain.Command;
 
 public interface AttributeSetInstanceApplicationService
 {
+    String createWithoutId(AttributeSetInstanceCommand.CreateAttributeSetInstance c);
+
     void when(AttributeSetInstanceCommand.CreateAttributeSetInstance c);
 
     void when(AttributeSetInstanceCommand.MergePatchAttributeSetInstance c);

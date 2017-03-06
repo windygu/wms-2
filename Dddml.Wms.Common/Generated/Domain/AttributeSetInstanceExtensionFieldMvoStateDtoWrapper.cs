@@ -38,7 +38,6 @@ namespace Dddml.Wms.Domain
 			return this._state;
 		}
 
-
         public AttributeSetInstanceExtensionFieldIdDto AttributeSetInstanceExtensionFieldId
         {
             get
@@ -54,7 +53,6 @@ namespace Dddml.Wms.Domain
                 _state.AttributeSetInstanceExtensionFieldId = (value == null) ? null : value.ToAttributeSetInstanceExtensionFieldId();
             }
         }
-
 
         AttributeSetInstanceExtensionFieldId IAttributeSetInstanceExtensionFieldMvoStateProperties.AttributeSetInstanceExtensionFieldId
         {
@@ -639,6 +637,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -657,6 +656,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -672,6 +672,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -764,7 +765,6 @@ namespace Dddml.Wms.Domain
             get { return this.AttrSetInstEFGroupVersion == AttributeSetInstanceExtensionFieldMvoState.VersionZero; }
         }
 
-
 		void IAttributeSetInstanceExtensionFieldMvoState.When(IAttributeSetInstanceExtensionFieldMvoStateCreated e)
 		{
             throw new NotSupportedException();
@@ -793,14 +793,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IAttributeSetInstanceExtensionFieldMvoState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
 	}
 

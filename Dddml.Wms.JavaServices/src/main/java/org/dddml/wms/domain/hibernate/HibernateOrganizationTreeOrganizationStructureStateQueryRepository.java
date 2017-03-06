@@ -16,14 +16,14 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.hibernate.*;
 import org.springframework.transaction.annotation.Transactional;
 
-public class HibernateOrganizationTreeOrganizationStructureStateRepository extends HibernateOrganizationStructureStateRepository implements TreeOrganizationStructureStateRepository
+public class HibernateOrganizationTreeOrganizationStructureStateQueryRepository extends HibernateOrganizationStructureStateQueryRepository implements OrganizationTreeOrganizationStructureStateQueryRepository
 {
     @Transactional(readOnly = true)
     public Iterable<OrganizationStructureState> getOrganizationTreeRoots(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
         Criteria criteria = getCurrentSession().createCriteria(OrganizationStructureState.class);
 
-        criteriaAddRootParentIdCriterion(criteria);
+        criteriaAddOrganizationTreeRootParentIdCriterion(criteria);
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
         return criteria.list();
     }
@@ -43,7 +43,7 @@ public class HibernateOrganizationTreeOrganizationStructureStateRepository exten
     {
         Criteria criteria = getCurrentSession().createCriteria(OrganizationStructureState.class);
 
-        criteriaAddRootParentIdCriterion(criteria);
+        criteriaAddOrganizationTreeRootParentIdCriterion(criteria);
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
         return criteria.list();
     }
@@ -58,7 +58,7 @@ public class HibernateOrganizationTreeOrganizationStructureStateRepository exten
         return criteria.list();
     }
 
-    private void criteriaAddRootParentIdCriterion(Criteria criteria)
+    private void criteriaAddOrganizationTreeRootParentIdCriterion(Criteria criteria)
     {
         Object[] rootParentIdValues = new Object[] { "" };
         if (rootParentIdValues.length == 1)

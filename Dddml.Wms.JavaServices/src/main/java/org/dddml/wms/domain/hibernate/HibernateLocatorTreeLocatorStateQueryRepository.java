@@ -16,14 +16,14 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.hibernate.*;
 import org.springframework.transaction.annotation.Transactional;
 
-public class HibernateLocatorTreeLocatorStateRepository extends HibernateLocatorStateRepository implements TreeLocatorStateRepository
+public class HibernateLocatorTreeLocatorStateQueryRepository extends HibernateLocatorStateQueryRepository implements LocatorTreeLocatorStateQueryRepository
 {
     @Transactional(readOnly = true)
     public Iterable<LocatorState> getLocatorTreeRoots(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
         Criteria criteria = getCurrentSession().createCriteria(LocatorState.class);
 
-        criteriaAddRootParentIdCriterion(criteria);
+        criteriaAddLocatorTreeRootParentIdCriterion(criteria);
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
         return criteria.list();
     }
@@ -43,7 +43,7 @@ public class HibernateLocatorTreeLocatorStateRepository extends HibernateLocator
     {
         Criteria criteria = getCurrentSession().createCriteria(LocatorState.class);
 
-        criteriaAddRootParentIdCriterion(criteria);
+        criteriaAddLocatorTreeRootParentIdCriterion(criteria);
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
         return criteria.list();
     }
@@ -58,7 +58,7 @@ public class HibernateLocatorTreeLocatorStateRepository extends HibernateLocator
         return criteria.list();
     }
 
-    private void criteriaAddRootParentIdCriterion(Criteria criteria)
+    private void criteriaAddLocatorTreeRootParentIdCriterion(Criteria criteria)
     {
         Object[] rootParentIdValues = new Object[] { null, "" };
         if (rootParentIdValues.length == 1)

@@ -19,15 +19,20 @@ public abstract class AbstractOrganizationStructureApplicationService implements
 
     private OrganizationStructureStateRepository stateRepository;
 
-    protected OrganizationStructureStateRepository getStateRepository()
-    {
+    protected OrganizationStructureStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractOrganizationStructureApplicationService(EventStore eventStore, OrganizationStructureStateRepository stateRepository)
-    {
+    private OrganizationStructureStateQueryRepository stateQueryRepository;
+
+    protected OrganizationStructureStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractOrganizationStructureApplicationService(EventStore eventStore, OrganizationStructureStateRepository stateRepository, OrganizationStructureStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(OrganizationStructureCommand.CreateOrganizationStructure c) {
@@ -48,27 +53,27 @@ public abstract class AbstractOrganizationStructureApplicationService implements
     }
 
     public Iterable<OrganizationStructureState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<OrganizationStructureState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<OrganizationStructureState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<OrganizationStructureState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public OrganizationStructureStateEvent getStateEvent(OrganizationStructureId id, long version) {
@@ -101,7 +106,7 @@ public abstract class AbstractOrganizationStructureApplicationService implements
     protected void update(OrganizationStructureCommand c, Consumer<OrganizationStructureAggregate> action)
     {
         OrganizationStructureId aggregateId = c.getId();
-        OrganizationStructureState state = getStateRepository().get(aggregateId);
+        OrganizationStructureState state = getStateRepository().get(aggregateId, false);
         OrganizationStructureAggregate aggregate = getOrganizationStructureAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -134,9 +139,9 @@ public abstract class AbstractOrganizationStructureApplicationService implements
 
     public static class SimpleOrganizationStructureApplicationService extends AbstractOrganizationStructureApplicationService 
     {
-        public SimpleOrganizationStructureApplicationService(EventStore eventStore, OrganizationStructureStateRepository stateRepository)
+        public SimpleOrganizationStructureApplicationService(EventStore eventStore, OrganizationStructureStateRepository stateRepository, OrganizationStructureStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository);
         }
     }
 

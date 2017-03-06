@@ -422,7 +422,7 @@ namespace Dddml.Wms.Domain.Metadata
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
                     IsBasicType = true,
-                    IsNullableType = true,
+                    IsNullableType = false,
                     DeclaringObjectName = "UserLoginMvo",
                     DisplayName = "",
                     Description = "",

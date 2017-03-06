@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 public class HibernateLocatorTreeRepository implements LocatorTreeRepository
 {
-    private TreeLocatorStateRepository locatorStateRepository;
+    private LocatorTreeLocatorStateQueryRepository locatorStateQueryRepository;
 
-    public TreeLocatorStateRepository getLocatorStateRepository() {
-        return this.locatorStateRepository; 
+    public LocatorTreeLocatorStateQueryRepository getLocatorStateQueryRepository() {
+        return this.locatorStateQueryRepository; 
     }
 
-    public void setLocatorStateRepository(TreeLocatorStateRepository repository) { 
-        this.locatorStateRepository = repository; 
+    public void setLocatorStateQueryRepository(LocatorTreeLocatorStateQueryRepository repository) { 
+        this.locatorStateQueryRepository = repository; 
     }
 
 
@@ -24,28 +24,28 @@ public class HibernateLocatorTreeRepository implements LocatorTreeRepository
     @Transactional(readOnly = true)
     public Iterable<LocatorTree> getRoots(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<LocatorState> states = getLocatorStateRepository().getLocatorTreeRoots(filter, orders, firstResult, maxResults);
+        Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeRoots(filter, orders, firstResult, maxResults);
         return contentStatesToLocatorTreeCollection(states);
     }
 
     @Transactional(readOnly = true)
     public Iterable<LocatorTree> getChildren(String parentId, Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<LocatorState> states = getLocatorStateRepository().getLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
+        Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
         return contentStatesToLocatorTreeCollection(states);
     }
 
     @Transactional(readOnly = true)
     public Iterable<String> getRootIds(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<LocatorState> states = getLocatorStateRepository().getLocatorTreeRoots(filter, orders, firstResult, maxResults);
+        Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeRoots(filter, orders, firstResult, maxResults);
         return contentStatesToIdCollection(states);
     }
 
     @Transactional(readOnly = true)
     public Iterable<String> getChildIds(String parentId, Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<LocatorState> states = getLocatorStateRepository().getLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
+        Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
         return contentStatesToIdCollection(states);
     }
 
@@ -54,28 +54,28 @@ public class HibernateLocatorTreeRepository implements LocatorTreeRepository
     @Transactional(readOnly = true)
     public Iterable<LocatorTree> getRoots(org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<LocatorState> states = getLocatorStateRepository().getLocatorTreeRoots(filter, orders, firstResult, maxResults);
+        Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeRoots(filter, orders, firstResult, maxResults);
         return contentStatesToLocatorTreeCollection(states);
     }
 
     @Transactional(readOnly = true)
     public Iterable<LocatorTree> getChildren(String parentId, org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<LocatorState> states = getLocatorStateRepository().getLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
+        Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
         return contentStatesToLocatorTreeCollection(states);
     }
 
     @Transactional(readOnly = true)
     public Iterable<String> getRootIds(org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<LocatorState> states = getLocatorStateRepository().getLocatorTreeRoots(filter, orders, firstResult, maxResults);
+        Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeRoots(filter, orders, firstResult, maxResults);
         return contentStatesToIdCollection(states);
     }
 
     @Transactional(readOnly = true)
     public Iterable<String> getChildIds(String parentId, org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<LocatorState> states = getLocatorStateRepository().getLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
+        Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
         return contentStatesToIdCollection(states);
     }
 

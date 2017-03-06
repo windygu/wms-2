@@ -143,6 +143,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -161,6 +162,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -176,6 +178,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -268,7 +271,6 @@ namespace Dddml.Wms.Domain
             get { return this.Version == OrganizationStructureTypeState.VersionZero; }
         }
 
-
 		void IOrganizationStructureTypeState.When(IOrganizationStructureTypeStateCreated e)
 		{
             throw new NotSupportedException();
@@ -297,14 +299,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IOrganizationStructureTypeState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
 	}
 

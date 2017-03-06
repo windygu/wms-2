@@ -38,7 +38,6 @@ namespace Dddml.Wms.Domain
 			return this._state;
 		}
 
-
         public OrganizationStructureIdDto Id
         {
             get
@@ -54,7 +53,6 @@ namespace Dddml.Wms.Domain
                 _state.Id = (value == null) ? null : value.ToOrganizationStructureId();
             }
         }
-
 
         OrganizationStructureId IOrganizationStructureStateProperties.Id
         {
@@ -145,6 +143,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -163,6 +162,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -178,6 +178,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -270,7 +271,6 @@ namespace Dddml.Wms.Domain
             get { return this.Version == OrganizationStructureState.VersionZero; }
         }
 
-
 		void IOrganizationStructureState.When(IOrganizationStructureStateCreated e)
 		{
             throw new NotSupportedException();
@@ -299,14 +299,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IOrganizationStructureState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
 	}
 

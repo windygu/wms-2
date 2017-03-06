@@ -38,7 +38,6 @@ namespace Dddml.Wms.Domain
 			return this._state;
 		}
 
-
         public UserClaimIdDto UserClaimId
         {
             get
@@ -54,7 +53,6 @@ namespace Dddml.Wms.Domain
                 _state.UserClaimId = (value == null) ? null : value.ToUserClaimId();
             }
         }
-
 
         UserClaimId IUserClaimMvoStateProperties.UserClaimId
         {
@@ -735,6 +733,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -753,6 +752,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -768,6 +768,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -860,7 +861,6 @@ namespace Dddml.Wms.Domain
             get { return this.UserVersion == UserClaimMvoState.VersionZero; }
         }
 
-
 		void IUserClaimMvoState.When(IUserClaimMvoStateCreated e)
 		{
             throw new NotSupportedException();
@@ -889,14 +889,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IUserClaimMvoState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
 	}
 

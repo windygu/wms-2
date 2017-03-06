@@ -19,15 +19,20 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
 
     private AttributeSetInstanceExtensionFieldGroupStateRepository stateRepository;
 
-    protected AttributeSetInstanceExtensionFieldGroupStateRepository getStateRepository()
-    {
+    protected AttributeSetInstanceExtensionFieldGroupStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractAttributeSetInstanceExtensionFieldGroupApplicationService(EventStore eventStore, AttributeSetInstanceExtensionFieldGroupStateRepository stateRepository)
-    {
+    private AttributeSetInstanceExtensionFieldGroupStateQueryRepository stateQueryRepository;
+
+    protected AttributeSetInstanceExtensionFieldGroupStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractAttributeSetInstanceExtensionFieldGroupApplicationService(EventStore eventStore, AttributeSetInstanceExtensionFieldGroupStateRepository stateRepository, AttributeSetInstanceExtensionFieldGroupStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup c) {
@@ -48,27 +53,27 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
     }
 
     public Iterable<AttributeSetInstanceExtensionFieldGroupState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<AttributeSetInstanceExtensionFieldGroupState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeSetInstanceExtensionFieldGroupState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeSetInstanceExtensionFieldGroupState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public AttributeSetInstanceExtensionFieldGroupStateEvent getStateEvent(String id, long version) {
@@ -88,7 +93,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
     }
 
     public AttributeSetInstanceExtensionFieldState getAttributeSetInstanceExtensionField(String groupId, String index) {
-        return getStateRepository().getAttributeSetInstanceExtensionField(groupId, index);
+        return getStateQueryRepository().getAttributeSetInstanceExtensionField(groupId, index);
     }
 
 
@@ -105,7 +110,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
     protected void update(AttributeSetInstanceExtensionFieldGroupCommand c, Consumer<AttributeSetInstanceExtensionFieldGroupAggregate> action)
     {
         String aggregateId = c.getId();
-        AttributeSetInstanceExtensionFieldGroupState state = getStateRepository().get(aggregateId);
+        AttributeSetInstanceExtensionFieldGroupState state = getStateRepository().get(aggregateId, false);
         AttributeSetInstanceExtensionFieldGroupAggregate aggregate = getAttributeSetInstanceExtensionFieldGroupAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -138,9 +143,9 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
 
     public static class SimpleAttributeSetInstanceExtensionFieldGroupApplicationService extends AbstractAttributeSetInstanceExtensionFieldGroupApplicationService 
     {
-        public SimpleAttributeSetInstanceExtensionFieldGroupApplicationService(EventStore eventStore, AttributeSetInstanceExtensionFieldGroupStateRepository stateRepository)
+        public SimpleAttributeSetInstanceExtensionFieldGroupApplicationService(EventStore eventStore, AttributeSetInstanceExtensionFieldGroupStateRepository stateRepository, AttributeSetInstanceExtensionFieldGroupStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository);
         }
     }
 

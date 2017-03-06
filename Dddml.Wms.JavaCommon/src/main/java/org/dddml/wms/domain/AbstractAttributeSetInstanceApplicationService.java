@@ -20,15 +20,46 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
 
     private AttributeSetInstanceStateRepository stateRepository;
 
-    protected AttributeSetInstanceStateRepository getStateRepository()
-    {
+    protected AttributeSetInstanceStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractAttributeSetInstanceApplicationService(EventStore eventStore, AttributeSetInstanceStateRepository stateRepository)
-    {
+    private AttributeSetInstanceStateQueryRepository stateQueryRepository;
+
+    private IdGenerator<String, AttributeSetInstanceCommand.CreateAttributeSetInstance, AttributeSetInstanceState> attributeSetInstanceIdGenerator;
+
+    protected IdGenerator<String, AttributeSetInstanceCommand.CreateAttributeSetInstance, AttributeSetInstanceState> getIdGenerator() {
+        return attributeSetInstanceIdGenerator;
+    }
+    protected AttributeSetInstanceStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractAttributeSetInstanceApplicationService(EventStore eventStore, AttributeSetInstanceStateRepository stateRepository, AttributeSetInstanceStateQueryRepository stateQueryRepository, IdGenerator<String, AttributeSetInstanceCommand.CreateAttributeSetInstance, AttributeSetInstanceState> idGenerator) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
+        this.attributeSetInstanceIdGenerator = idGenerator;
+    }
+
+    public String createWithoutId(AttributeSetInstanceCommand.CreateAttributeSetInstance c) {
+        String idObj = getIdGenerator().generateId(c);
+        AttributeSetInstanceState state = getStateRepository().get(idObj, true);
+        if (state != null) {
+            if (getIdGenerator().equals(c, state)) {
+                return state.AttributeSetInstanceId;
+            }
+
+            if (getIdGenerator().isSurrogateIdEnabled()) {
+                idObj = getIdGenerator().getNextId();
+            } else {
+                throw DomainError.named("instanceExist", "the instance already exist, Id: %1$s , aggreate name: %2$s ", idObj, "AttributeSetInstance");
+            }
+        }
+        c.setAttributeSetInstanceId(idObj);
+        when(c);
+        return idObj;
+   
     }
 
     public void when(AttributeSetInstanceCommand.CreateAttributeSetInstance c) {
@@ -49,27 +80,27 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
     }
 
     public Iterable<AttributeSetInstanceState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<AttributeSetInstanceState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeSetInstanceState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeSetInstanceState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public AttributeSetInstanceStateEvent getStateEvent(String attributeSetInstanceId, long version) {
@@ -102,7 +133,7 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
     protected void update(AttributeSetInstanceCommand c, Consumer<AttributeSetInstanceAggregate> action)
     {
         String aggregateId = c.getAttributeSetInstanceId();
-        AttributeSetInstanceState state = getStateRepository().get(aggregateId);
+        AttributeSetInstanceState state = getStateRepository().get(aggregateId, false);
         AttributeSetInstanceAggregate aggregate = getAttributeSetInstanceAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -135,9 +166,9 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
 
     public static class SimpleAttributeSetInstanceApplicationService extends AbstractAttributeSetInstanceApplicationService 
     {
-        public SimpleAttributeSetInstanceApplicationService(EventStore eventStore, AttributeSetInstanceStateRepository stateRepository)
+        public SimpleAttributeSetInstanceApplicationService(EventStore eventStore, AttributeSetInstanceStateRepository stateRepository, AttributeSetInstanceStateQueryRepository stateQueryRepository, IdGenerator<String, AttributeSetInstanceCommand.CreateAttributeSetInstance, AttributeSetInstanceState> idGenerator)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository, idGenerator);
         }
     }
 

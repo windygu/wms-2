@@ -38,7 +38,6 @@ namespace Dddml.Wms.Domain
 			return this._state;
 		}
 
-
         public UserPermissionIdDto UserPermissionId
         {
             get
@@ -54,7 +53,6 @@ namespace Dddml.Wms.Domain
                 _state.UserPermissionId = (value == null) ? null : value.ToUserPermissionId();
             }
         }
-
 
         UserPermissionId IUserPermissionMvoStateProperties.UserPermissionId
         {
@@ -679,6 +677,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -697,6 +696,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -712,6 +712,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -804,7 +805,6 @@ namespace Dddml.Wms.Domain
             get { return this.UserVersion == UserPermissionMvoState.VersionZero; }
         }
 
-
 		void IUserPermissionMvoState.When(IUserPermissionMvoStateCreated e)
 		{
             throw new NotSupportedException();
@@ -833,14 +833,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IUserPermissionMvoState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
 	}
 

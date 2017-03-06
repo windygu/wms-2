@@ -39,7 +39,6 @@ namespace Dddml.Wms.Domain
 			return this._state;
 		}
 
-
         public InOutLineIdDto InOutLineId
         {
             get
@@ -55,7 +54,6 @@ namespace Dddml.Wms.Domain
                 _state.InOutLineId = (value == null) ? null : value.ToInOutLineId();
             }
         }
-
 
         InOutLineId IInOutLineMvoStateProperties.InOutLineId
         {
@@ -1866,6 +1864,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -1884,6 +1883,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -1899,6 +1899,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -1991,7 +1992,6 @@ namespace Dddml.Wms.Domain
             get { return this.InOutVersion == InOutLineMvoState.VersionZero; }
         }
 
-
 		void IInOutLineMvoState.When(IInOutLineMvoStateCreated e)
 		{
             throw new NotSupportedException();
@@ -2020,14 +2020,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IInOutLineMvoState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
 	}
 

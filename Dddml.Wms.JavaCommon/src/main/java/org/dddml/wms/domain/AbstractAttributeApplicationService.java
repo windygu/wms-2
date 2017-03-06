@@ -19,15 +19,20 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
 
     private AttributeStateRepository stateRepository;
 
-    protected AttributeStateRepository getStateRepository()
-    {
+    protected AttributeStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractAttributeApplicationService(EventStore eventStore, AttributeStateRepository stateRepository)
-    {
+    private AttributeStateQueryRepository stateQueryRepository;
+
+    protected AttributeStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractAttributeApplicationService(EventStore eventStore, AttributeStateRepository stateRepository, AttributeStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(AttributeCommand.CreateAttribute c) {
@@ -48,27 +53,27 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
     }
 
     public Iterable<AttributeState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<AttributeState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public AttributeStateEvent getStateEvent(String attributeId, long version) {
@@ -88,7 +93,7 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
     }
 
     public AttributeValueState getAttributeValue(String attributeId, String value) {
-        return getStateRepository().getAttributeValue(attributeId, value);
+        return getStateQueryRepository().getAttributeValue(attributeId, value);
     }
 
 
@@ -105,7 +110,7 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
     protected void update(AttributeCommand c, Consumer<AttributeAggregate> action)
     {
         String aggregateId = c.getAttributeId();
-        AttributeState state = getStateRepository().get(aggregateId);
+        AttributeState state = getStateRepository().get(aggregateId, false);
         AttributeAggregate aggregate = getAttributeAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -138,9 +143,9 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
 
     public static class SimpleAttributeApplicationService extends AbstractAttributeApplicationService 
     {
-        public SimpleAttributeApplicationService(EventStore eventStore, AttributeStateRepository stateRepository)
+        public SimpleAttributeApplicationService(EventStore eventStore, AttributeStateRepository stateRepository, AttributeStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository);
         }
     }
 

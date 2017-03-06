@@ -19,15 +19,20 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoApplicationSe
 
     private AttributeSetInstanceExtensionFieldMvoStateRepository stateRepository;
 
-    protected AttributeSetInstanceExtensionFieldMvoStateRepository getStateRepository()
-    {
+    protected AttributeSetInstanceExtensionFieldMvoStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractAttributeSetInstanceExtensionFieldMvoApplicationService(EventStore eventStore, AttributeSetInstanceExtensionFieldMvoStateRepository stateRepository)
-    {
+    private AttributeSetInstanceExtensionFieldMvoStateQueryRepository stateQueryRepository;
+
+    protected AttributeSetInstanceExtensionFieldMvoStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractAttributeSetInstanceExtensionFieldMvoApplicationService(EventStore eventStore, AttributeSetInstanceExtensionFieldMvoStateRepository stateRepository, AttributeSetInstanceExtensionFieldMvoStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(AttributeSetInstanceExtensionFieldMvoCommand.CreateAttributeSetInstanceExtensionFieldMvo c) {
@@ -48,27 +53,27 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoApplicationSe
     }
 
     public Iterable<AttributeSetInstanceExtensionFieldMvoState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<AttributeSetInstanceExtensionFieldMvoState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeSetInstanceExtensionFieldMvoState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<AttributeSetInstanceExtensionFieldMvoState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public AttributeSetInstanceExtensionFieldMvoStateEvent getStateEvent(AttributeSetInstanceExtensionFieldId attributeSetInstanceExtensionFieldId, long version) {
@@ -101,7 +106,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoApplicationSe
     protected void update(AttributeSetInstanceExtensionFieldMvoCommand c, Consumer<AttributeSetInstanceExtensionFieldMvoAggregate> action)
     {
         AttributeSetInstanceExtensionFieldId aggregateId = c.getAttributeSetInstanceExtensionFieldId();
-        AttributeSetInstanceExtensionFieldMvoState state = getStateRepository().get(aggregateId);
+        AttributeSetInstanceExtensionFieldMvoState state = getStateRepository().get(aggregateId, false);
         AttributeSetInstanceExtensionFieldMvoAggregate aggregate = getAttributeSetInstanceExtensionFieldMvoAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -134,9 +139,9 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoApplicationSe
 
     public static class SimpleAttributeSetInstanceExtensionFieldMvoApplicationService extends AbstractAttributeSetInstanceExtensionFieldMvoApplicationService 
     {
-        public SimpleAttributeSetInstanceExtensionFieldMvoApplicationService(EventStore eventStore, AttributeSetInstanceExtensionFieldMvoStateRepository stateRepository)
+        public SimpleAttributeSetInstanceExtensionFieldMvoApplicationService(EventStore eventStore, AttributeSetInstanceExtensionFieldMvoStateRepository stateRepository, AttributeSetInstanceExtensionFieldMvoStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository);
         }
     }
 

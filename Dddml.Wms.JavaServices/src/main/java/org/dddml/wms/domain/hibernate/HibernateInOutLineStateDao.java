@@ -36,13 +36,6 @@ public class HibernateInOutLineStateDao implements InOutLineStateDao
 
     @Transactional(readOnly = true)
     @Override
-    public InOutLineState get(InOutLineId id)
-    {
-        return get(id, false);
-    }
-
-    @Transactional(readOnly = true)
-    @Override
     public InOutLineState get(InOutLineId id, boolean nullAllowed)
     {
         InOutLineState state = (InOutLineState) getCurrentSession().get(AbstractInOutLineState.SimpleInOutLineState.class, id);

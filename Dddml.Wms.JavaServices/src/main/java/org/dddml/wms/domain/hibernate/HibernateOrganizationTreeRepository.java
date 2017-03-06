@@ -10,24 +10,24 @@ import org.dddml.wms.domain.*;
 
 public class HibernateOrganizationTreeRepository implements OrganizationTreeRepository
 {
-    private OrganizationStateRepository organizationStateRepository;
+    private OrganizationStateQueryRepository organizationStateQueryRepository;
 
-    public OrganizationStateRepository getOrganizationStateRepository() {
-        return this.organizationStateRepository; 
+    public OrganizationStateQueryRepository getOrganizationStateQueryRepository() {
+        return this.organizationStateQueryRepository; 
     }
 
-    public void setOrganizationStateRepository(OrganizationStateRepository repository) { 
-        this.organizationStateRepository = repository; 
+    public void setOrganizationStateQueryRepository(OrganizationStateQueryRepository repository) { 
+        this.organizationStateQueryRepository = repository; 
     }
 
-    private TreeOrganizationStructureStateRepository organizationStructureStateRepository;
+    private OrganizationTreeOrganizationStructureStateQueryRepository organizationStructureStateQueryRepository;
 
-    public TreeOrganizationStructureStateRepository getOrganizationStructureStateRepository() {
-        return this.organizationStructureStateRepository; 
+    public OrganizationTreeOrganizationStructureStateQueryRepository getOrganizationStructureStateQueryRepository() {
+        return this.organizationStructureStateQueryRepository; 
     }
 
-    public void setOrganizationStructureStateRepository(TreeOrganizationStructureStateRepository repository) { 
-        this.organizationStructureStateRepository = repository; 
+    public void setOrganizationStructureStateQueryRepository(OrganizationTreeOrganizationStructureStateQueryRepository repository) { 
+        this.organizationStructureStateQueryRepository = repository; 
     }
 
 
@@ -35,28 +35,28 @@ public class HibernateOrganizationTreeRepository implements OrganizationTreeRepo
     @Transactional(readOnly = true)
     public Iterable<OrganizationTree> getRoots(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
+        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
         return structureStatesToOrganizationTreeCollection(structureStates);
     }
 
     @Transactional(readOnly = true)
     public Iterable<OrganizationTree> getChildren(String parentId, Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateRepository().getOrganizationTreeChildren(parentId, filter, orders, firstResult, maxResults);
+        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeChildren(parentId, filter, orders, firstResult, maxResults);
         return structureStatesToOrganizationTreeCollection(structureStates);
     }
 
     @Transactional(readOnly = true)
     public Iterable<String> getRootIds(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
+        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
         return structureStatesToIdCollection(structureStates);
     }
 
     @Transactional(readOnly = true)
     public Iterable<String> getChildIds(String parentId, Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateRepository().getOrganizationTreeChildren(parentId, filter, orders, firstResult, maxResults);
+        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeChildren(parentId, filter, orders, firstResult, maxResults);
         return structureStatesToIdCollection(structureStates);
     }
 
@@ -65,28 +65,28 @@ public class HibernateOrganizationTreeRepository implements OrganizationTreeRepo
     @Transactional(readOnly = true)
     public Iterable<OrganizationTree> getRoots(org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
+        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
         return structureStatesToOrganizationTreeCollection(structureStates);
     }
 
     @Transactional(readOnly = true)
     public Iterable<OrganizationTree> getChildren(String parentId, org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateRepository().getOrganizationTreeChildren(parentId, filter, orders, firstResult, maxResults);
+        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeChildren(parentId, filter, orders, firstResult, maxResults);
         return structureStatesToOrganizationTreeCollection(structureStates);
     }
 
     @Transactional(readOnly = true)
     public Iterable<String> getRootIds(org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
+        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
         return structureStatesToIdCollection(structureStates);
     }
 
     @Transactional(readOnly = true)
     public Iterable<String> getChildIds(String parentId, org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateRepository().getOrganizationTreeChildren(parentId, filter, orders, firstResult, maxResults);
+        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeChildren(parentId, filter, orders, firstResult, maxResults);
         return structureStatesToIdCollection(structureStates);
     }
 
@@ -116,7 +116,7 @@ public class HibernateOrganizationTreeRepository implements OrganizationTreeRepo
         List<OrganizationTree> trees = new ArrayList<OrganizationTree>();
         for (OrganizationStructureState ss : structureStates)
         {
-            OrganizationState state = getOrganizationStateRepository().get(ss.getId().getSubsidiaryId());
+            OrganizationState state = getOrganizationStateQueryRepository().get(ss.getId().getSubsidiaryId());
             trees.add(new AbstractOrganizationTreeApplicationService.SimpleOrganizationTree(state, this));
         }
         return trees;

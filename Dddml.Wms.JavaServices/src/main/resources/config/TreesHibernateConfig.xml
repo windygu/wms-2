@@ -5,21 +5,21 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="organizationTreeOrganizationStructureStateRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationTreeOrganizationStructureStateRepository">
+  <bean id="organizationTreeOrganizationStructureStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationTreeOrganizationStructureStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
   <bean id="organizationTreeRepository" class="org.dddml.wms.domain.hibernate.HibernateOrganizationTreeRepository">
-    <property name="organizationStateRepository" ref="organizationStateRepository"/>
-    <property name="organizationStructureStateRepository" ref="organizationTreeOrganizationStructureStateRepository"/>
+    <property name="organizationStateQueryRepository" ref="organizationStateQueryRepository"/>
+    <property name="organizationStructureStateQueryRepository" ref="organizationTreeOrganizationStructureStateQueryRepository"/>
   </bean>
 
-  <bean id="locatorTreeLocatorStateRepository" class="org.dddml.wms.domain.hibernate.HibernateLocatorTreeLocatorStateRepository">
+  <bean id="locatorTreeLocatorStateQueryRepository" class="org.dddml.wms.domain.hibernate.HibernateLocatorTreeLocatorStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
   <bean id="locatorTreeRepository" class="org.dddml.wms.domain.hibernate.HibernateLocatorTreeRepository">
-    <property name="locatorStateRepository" ref="locatorTreeLocatorStateRepository"/>
+    <property name="locatorStateQueryRepository" ref="locatorTreeLocatorStateQueryRepository"/>
   </bean>
 
 </beans>

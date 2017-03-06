@@ -13079,6 +13079,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -13097,6 +13098,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -13112,6 +13114,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -13204,7 +13207,6 @@ namespace Dddml.Wms.Domain
             get { return this.Version == AttributeSetInstanceState.VersionZero; }
         }
 
-
 		void IAttributeSetInstanceState.When(IAttributeSetInstanceStateCreated e)
 		{
             throw new NotSupportedException();
@@ -13236,14 +13238,12 @@ namespace Dddml.Wms.Domain
             set { _state.CommandId = value; }
         }
 
-
 		void IAttributeSetInstanceState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
 	}
 

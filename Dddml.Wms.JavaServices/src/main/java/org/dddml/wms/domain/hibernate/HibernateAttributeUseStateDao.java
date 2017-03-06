@@ -35,13 +35,6 @@ public class HibernateAttributeUseStateDao implements AttributeUseStateDao
 
     @Transactional(readOnly = true)
     @Override
-    public AttributeUseState get(AttributeSetAttributeUseId id)
-    {
-        return get(id, false);
-    }
-
-    @Transactional(readOnly = true)
-    @Override
     public AttributeUseState get(AttributeSetAttributeUseId id, boolean nullAllowed)
     {
         AttributeUseState state = (AttributeUseState) getCurrentSession().get(AbstractAttributeUseState.SimpleAttributeUseState.class, id);

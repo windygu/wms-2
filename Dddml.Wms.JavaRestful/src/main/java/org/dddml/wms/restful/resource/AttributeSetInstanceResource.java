@@ -24,7 +24,7 @@ import org.dddml.support.criterion.TypeConverter;
 public class AttributeSetInstanceResource {
 
     @Autowired
-    private IdGenerator<String, AttributeSetInstanceCommand.CreateAttributeSetInstance> attributeSetInstanceIdGenerator;
+    private IdGenerator<String, AttributeSetInstanceCommand.CreateAttributeSetInstance, AttributeSetInstanceState> attributeSetInstanceIdGenerator;
 
     @Autowired
     private AbstractDynamicObjectMapper<JSONObject,
@@ -108,16 +108,11 @@ public class AttributeSetInstanceResource {
     @POST
     public String post(JSONObject dynamicObject, @Context HttpServletResponse response) {
         try {
-
             AttributeSetInstanceCommand.CreateAttributeSetInstance cmd = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
-            IdGenerator.GetOrGenerateIdResult<String> idResult = attributeSetInstanceIdGenerator.getOrGenerateId(cmd);
-            if (!idResult.isReused()) {
-                cmd.setAttributeSetInstanceId(idResult.getId());
-                attributeSetInstanceApplicationService.when(cmd);
-            }
+            String idObj = attributeSetInstanceApplicationService.createWithoutId(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
-            return idResult.getId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

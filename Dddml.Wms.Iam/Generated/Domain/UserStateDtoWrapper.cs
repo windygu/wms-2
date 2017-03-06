@@ -466,6 +466,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -484,6 +485,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -499,6 +501,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -775,7 +778,6 @@ namespace Dddml.Wms.Domain
             set { _state.UserLogins = value; }
         }
 
-
 		void IUserState.When(IUserStateCreated e)
 		{
             throw new NotSupportedException();
@@ -804,14 +806,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IUserState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
         public class DtoUserRoleStates : IUserRoleStates
         {

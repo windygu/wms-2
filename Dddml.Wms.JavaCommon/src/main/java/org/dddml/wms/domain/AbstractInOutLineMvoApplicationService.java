@@ -21,15 +21,20 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
 
     private InOutLineMvoStateRepository stateRepository;
 
-    protected InOutLineMvoStateRepository getStateRepository()
-    {
+    protected InOutLineMvoStateRepository getStateRepository() {
         return stateRepository;
     }
 
-    public AbstractInOutLineMvoApplicationService(EventStore eventStore, InOutLineMvoStateRepository stateRepository)
-    {
+    private InOutLineMvoStateQueryRepository stateQueryRepository;
+
+    protected InOutLineMvoStateQueryRepository getStateQueryRepository() {
+        return stateQueryRepository;
+    }
+
+    public AbstractInOutLineMvoApplicationService(EventStore eventStore, InOutLineMvoStateRepository stateRepository, InOutLineMvoStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
+        this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(InOutLineMvoCommand.CreateInOutLineMvo c) {
@@ -50,27 +55,27 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
     }
 
     public Iterable<InOutLineMvoState> getAll(Integer firstResult, Integer maxResults) {
-        return getStateRepository().getAll(firstResult, maxResults);
+        return getStateQueryRepository().getAll(firstResult, maxResults);
     }
 
     public Iterable<InOutLineMvoState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<InOutLineMvoState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().get(filter, orders, firstResult, maxResults);
+        return getStateQueryRepository().get(filter, orders, firstResult, maxResults);
     }
 
     public Iterable<InOutLineMvoState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults) {
-        return getStateRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
+        return getStateQueryRepository().getByProperty(propertyName, propertyValue, orders, firstResult, maxResults);
     }
 
     public long getCount(Iterable<Map.Entry<String, Object>> filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public long getCount(Criterion filter) {
-        return getStateRepository().getCount(filter);
+        return getStateQueryRepository().getCount(filter);
     }
 
     public InOutLineMvoStateEvent getStateEvent(InOutLineId inOutLineId, long version) {
@@ -103,7 +108,7 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
     protected void update(InOutLineMvoCommand c, Consumer<InOutLineMvoAggregate> action)
     {
         InOutLineId aggregateId = c.getInOutLineId();
-        InOutLineMvoState state = getStateRepository().get(aggregateId);
+        InOutLineMvoState state = getStateRepository().get(aggregateId, false);
         InOutLineMvoAggregate aggregate = getInOutLineMvoAggregate(state);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
@@ -136,9 +141,9 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
 
     public static class SimpleInOutLineMvoApplicationService extends AbstractInOutLineMvoApplicationService 
     {
-        public SimpleInOutLineMvoApplicationService(EventStore eventStore, InOutLineMvoStateRepository stateRepository)
+        public SimpleInOutLineMvoApplicationService(EventStore eventStore, InOutLineMvoStateRepository stateRepository, InOutLineMvoStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository);
+            super(eventStore, stateRepository, stateQueryRepository);
         }
     }
 

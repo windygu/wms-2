@@ -38,7 +38,6 @@ namespace Dddml.Wms.Domain
 			return this._state;
 		}
 
-
         public AttributeSetAttributeUseIdDto AttributeSetAttributeUseId
         {
             get
@@ -54,7 +53,6 @@ namespace Dddml.Wms.Domain
                 _state.AttributeSetAttributeUseId = (value == null) ? null : value.ToAttributeSetAttributeUseId();
             }
         }
-
 
         AttributeSetAttributeUseId IAttributeUseMvoStateProperties.AttributeSetAttributeUseId
         {
@@ -555,6 +553,7 @@ namespace Dddml.Wms.Domain
                 _state.CreatedBy = value;
             }
         }
+
 		public virtual DateTime? CreatedAt
         {
             get
@@ -573,6 +572,7 @@ namespace Dddml.Wms.Domain
                 }
             }
         }
+
 		public virtual string UpdatedBy
 		{
             get
@@ -588,6 +588,7 @@ namespace Dddml.Wms.Domain
                 _state.UpdatedBy = value;
             }
         }
+
 		public virtual DateTime? UpdatedAt
         {
             get
@@ -680,7 +681,6 @@ namespace Dddml.Wms.Domain
             get { return this.AttributeSetVersion == AttributeUseMvoState.VersionZero; }
         }
 
-
 		void IAttributeUseMvoState.When(IAttributeUseMvoStateCreated e)
 		{
             throw new NotSupportedException();
@@ -709,14 +709,12 @@ namespace Dddml.Wms.Domain
             throw new NotSupportedException();
 		}
 
-
 		void IAttributeUseMvoState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
 		}
 
         // //////////////////////////////////////////////////////////////
-
 
 	}
 
