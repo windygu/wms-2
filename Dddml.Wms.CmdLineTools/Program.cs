@@ -13,7 +13,7 @@ namespace Dddml.Wms.CmdLineTools
     {
         static void Main(string[] args)
         {
-            var config = new ProjectConfiguration
+            var domainProjectConfig = new ProjectConfiguration
             {
                 DomainProjectFilePath = @"..\..\..\Dddml.Wms.Common\Dddml.Wms.Common.csproj",
 
@@ -28,12 +28,12 @@ namespace Dddml.Wms.CmdLineTools
                 T4GenerateAggregateDomainScriptTemplateIncludeFile = @"..\..\..\LoadBoundedContext.tt",
 
                 //T4GenerateAggregateDomainNHibernateScriptTemplateIncludeFile = @"..\..\..\..\LoadBoundedContext.tt",
-                DomainNHibernateEnabled = false,
+                DomainProjectNHibernateEnabled = false,
 
                 T4JavaGenerateAggregateDomainScriptTemplateIncludeFile = @"..\..\LoadBoundedContext.tt",
 
                 //T4JavaGenerateAggregateDomainHibernateScriptTemplateIncludeFile = @"..\..\..\LoadBoundedContext.tt",
-                JavaDomainHibernateEnabled = false,
+                JavaDomainProjectHibernateEnabled = false,
 
                 DomainSubDirectoryPath = @"Generated\Domain",
 
@@ -42,9 +42,9 @@ namespace Dddml.Wms.CmdLineTools
 
             };
 
-            var generator = new DomainAggregateT4ScriptGenerator(config);
+            var domainProjectGenerator = new DomainAggregateT4ScriptGenerator(domainProjectConfig);
             var aggregates = GetAggaregates();
-            generator.CreateAggregatesDirectoriesAndScripts(aggregates);
+            domainProjectGenerator.CreateAggregatesDirectoriesAndScripts(aggregates);
 
             Console.WriteLine("Ok!");
             Console.ReadKey();
