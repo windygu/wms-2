@@ -631,7 +631,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (InOutLineStateEvent.InOutLineStateCreated innerEvent : e.getInOutLineEvents()) {
-            InOutLineState innerState = this.getInOutLines().get(innerEvent.getStateEventId().getSkuId());
+            InOutLineState innerState = this.getInOutLines().get(innerEvent.getStateEventId().getLineNumber());
             innerState.mutate(innerEvent);
         }
     }
@@ -1030,7 +1030,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (InOutLineStateEvent innerEvent : e.getInOutLineEvents()) {
-            InOutLineState innerState = this.getInOutLines().get(innerEvent.getStateEventId().getSkuId());
+            InOutLineState innerState = this.getInOutLines().get(innerEvent.getStateEventId().getLineNumber());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof InOutLineStateEvent.InOutLineStateRemoved)
             {
@@ -1052,7 +1052,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         {
             this.getInOutLines().remove(innerState);
         
-            InOutLineStateEvent.InOutLineStateRemoved innerE = e.newInOutLineStateRemoved(innerState.getSkuId());
+            InOutLineStateEvent.InOutLineStateRemoved innerE = e.newInOutLineStateRemoved(innerState.getLineNumber());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
             innerState.when(innerE);

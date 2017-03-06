@@ -289,11 +289,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetHistoryStateAsync(documentNumber, version).GetAwaiter().GetResult();
         }
 
-        public async virtual Task<IInOutLineState> GetInOutLineAsync(string inOutDocumentNumber, SkuId skuId)
+        public async virtual Task<IInOutLineState> GetInOutLineAsync(string inOutDocumentNumber, long lineNumber)
         {
             var uriParameters = new InOutLineUriParameters();
             uriParameters.InOutDocumentNumber = inOutDocumentNumber;
-            uriParameters.SkuId = (new SkuIdFlattenedDtoFormatter()).ToString(new SkuIdFlattenedDto(skuId));
+            uriParameters.LineNumber = lineNumber;
 
             var req = new InOutLineGetRequest(uriParameters);
             var resp = await _ramlClient.InOutLine.Get(req);
@@ -301,9 +301,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return (resp.Content == null) ? null : resp.Content.ToInOutLineState();
         }
 
-        public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, SkuId skuId)
+        public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, long lineNumber)
         {
-            return GetInOutLineAsync(inOutDocumentNumber, skuId).GetAwaiter().GetResult();
+            return GetInOutLineAsync(inOutDocumentNumber, lineNumber).GetAwaiter().GetResult();
         }
 
 

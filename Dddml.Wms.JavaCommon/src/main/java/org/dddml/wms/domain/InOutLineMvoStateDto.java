@@ -23,18 +23,6 @@ public class InOutLineMvoStateDto
         this.inOutLineId = inOutLineId;
     }
 
-    private Long lineNumber;
-
-    public Long getLineNumber()
-    {
-        return this.lineNumber;
-    }
-
-    public void setLineNumber(Long lineNumber)
-    {
-        this.lineNumber = lineNumber;
-    }
-
     private String description;
 
     public String getDescription()
@@ -59,16 +47,16 @@ public class InOutLineMvoStateDto
         this.locatorId = locatorId;
     }
 
-    private String product;
+    private String productId;
 
-    public String getProduct()
+    public String getProductId()
     {
-        return this.product;
+        return this.productId;
     }
 
-    public void setProduct(String product)
+    public void setProductId(String productId)
     {
-        this.product = product;
+        this.productId = productId;
     }
 
     private String uomId;
@@ -817,17 +805,14 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("InOutLineId")) {
                 dto.setInOutLineId((state.getInOutLineId() == null) ? null : new InOutLineIdDtoWrapper(state.getInOutLineId()));
             }
-            if (returnedFieldsContains("LineNumber")) {
-                dto.setLineNumber(state.getLineNumber());
-            }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
             }
             if (returnedFieldsContains("LocatorId")) {
                 dto.setLocatorId(state.getLocatorId());
             }
-            if (returnedFieldsContains("Product")) {
-                dto.setProduct(state.getProduct());
+            if (returnedFieldsContains("ProductId")) {
+                dto.setProductId(state.getProductId());
             }
             if (returnedFieldsContains("UomId")) {
                 dto.setUomId(state.getUomId());

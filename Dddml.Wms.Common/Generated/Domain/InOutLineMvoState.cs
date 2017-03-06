@@ -174,13 +174,11 @@ namespace Dddml.Wms.Domain
 		public virtual void When(IInOutLineMvoStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-            this.LineNumber = (e.LineNumber != null && e.LineNumber.HasValue) ? e.LineNumber.Value : default(long);
-
 			this.Description = e.Description;
 
 			this.LocatorId = e.LocatorId;
 
-			this.Product = e.Product;
+			this.ProductId = e.ProductId;
 
 			this.UomId = e.UomId;
 
@@ -305,18 +303,6 @@ namespace Dddml.Wms.Domain
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.LineNumber == null)
-			{
-				if (e.IsPropertyLineNumberRemoved)
-				{
-					this.LineNumber = default(long);
-				}
-			}
-			else
-			{
-				this.LineNumber = (e.LineNumber != null && e.LineNumber.HasValue) ? e.LineNumber.Value : default(long);
-			}
-
 			if (e.Description == null)
 			{
 				if (e.IsPropertyDescriptionRemoved)
@@ -341,16 +327,16 @@ namespace Dddml.Wms.Domain
 				this.LocatorId = e.LocatorId;
 			}
 
-			if (e.Product == null)
+			if (e.ProductId == null)
 			{
-				if (e.IsPropertyProductRemoved)
+				if (e.IsPropertyProductIdRemoved)
 				{
-					this.Product = default(string);
+					this.ProductId = default(string);
 				}
 			}
 			else
 			{
-				this.Product = e.Product;
+				this.ProductId = e.ProductId;
 			}
 
 			if (e.UomId == null)

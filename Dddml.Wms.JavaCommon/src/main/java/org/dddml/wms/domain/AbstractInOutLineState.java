@@ -28,24 +28,12 @@ public abstract class AbstractInOutLineState implements InOutLineState
         this.getInOutLineId().setInOutDocumentNumber(inOutDocumentNumber);
     }
 
-    public SkuId getSkuId() {
-        return this.getInOutLineId().getSkuId();
+    public Long getLineNumber() {
+        return this.getInOutLineId().getLineNumber();
     }
         
-    public void setSkuId(SkuId skuId) {
-        this.getInOutLineId().setSkuId(skuId);
-    }
-
-    private Long lineNumber;
-
-    public Long getLineNumber()
-    {
-        return this.lineNumber;
-    }
-
-    public void setLineNumber(Long lineNumber)
-    {
-        this.lineNumber = lineNumber;
+    public void setLineNumber(Long lineNumber) {
+        this.getInOutLineId().setLineNumber(lineNumber);
     }
 
     private String description;
@@ -72,16 +60,16 @@ public abstract class AbstractInOutLineState implements InOutLineState
         this.locatorId = locatorId;
     }
 
-    private String product;
+    private String productId;
 
-    public String getProduct()
+    public String getProductId()
     {
-        return this.product;
+        return this.productId;
     }
 
-    public void setProduct(String product)
+    public void setProductId(String productId)
     {
-        this.product = product;
+        this.productId = productId;
     }
 
     private String uomId;
@@ -373,10 +361,9 @@ public abstract class AbstractInOutLineState implements InOutLineState
     public void when(InOutLineStateCreated e)
     {
         throwOnWrongEvent(e);
-        this.setLineNumber(e.getLineNumber());
         this.setDescription(e.getDescription());
         this.setLocatorId(e.getLocatorId());
-        this.setProduct(e.getProduct());
+        this.setProductId(e.getProductId());
         this.setUomId(e.getUomId());
         this.setMovementQuantity(e.getMovementQuantity());
         this.setConfirmedQuantity(e.getConfirmedQuantity());
@@ -403,17 +390,6 @@ public abstract class AbstractInOutLineState implements InOutLineState
     {
         throwOnWrongEvent(e);
 
-        if (e.getLineNumber() == null)
-        {
-            if (e.getIsPropertyLineNumberRemoved() != null && e.getIsPropertyLineNumberRemoved())
-            {
-                this.setLineNumber(null);
-            }
-        }
-        else
-        {
-            this.setLineNumber(e.getLineNumber());
-        }
         if (e.getDescription() == null)
         {
             if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
@@ -436,16 +412,16 @@ public abstract class AbstractInOutLineState implements InOutLineState
         {
             this.setLocatorId(e.getLocatorId());
         }
-        if (e.getProduct() == null)
+        if (e.getProductId() == null)
         {
-            if (e.getIsPropertyProductRemoved() != null && e.getIsPropertyProductRemoved())
+            if (e.getIsPropertyProductIdRemoved() != null && e.getIsPropertyProductIdRemoved())
             {
-                this.setProduct(null);
+                this.setProductId(null);
             }
         }
         else
         {
-            this.setProduct(e.getProduct());
+            this.setProductId(e.getProductId());
         }
         if (e.getUomId() == null)
         {
@@ -630,11 +606,11 @@ public abstract class AbstractInOutLineState implements InOutLineState
             throw DomainError.named("mutateWrongEntity", "Entity Id InOutDocumentNumber %1$s in state but entity id InOutDocumentNumber %2$s in event", stateEntityIdInOutDocumentNumber, eventEntityIdInOutDocumentNumber);
         }
 
-        SkuId stateEntityIdSkuId = this.getInOutLineId().getSkuId();
-        SkuId eventEntityIdSkuId = stateEvent.getStateEventId().getSkuId();
-        if (!stateEntityIdSkuId.equals(eventEntityIdSkuId))
+        Long stateEntityIdLineNumber = this.getInOutLineId().getLineNumber();
+        Long eventEntityIdLineNumber = stateEvent.getStateEventId().getLineNumber();
+        if (!stateEntityIdLineNumber.equals(eventEntityIdLineNumber))
         {
-            throw DomainError.named("mutateWrongEntity", "Entity Id SkuId %1$s in state but entity id SkuId %2$s in event", stateEntityIdSkuId, eventEntityIdSkuId);
+            throw DomainError.named("mutateWrongEntity", "Entity Id LineNumber %1$s in state but entity id LineNumber %2$s in event", stateEntityIdLineNumber, eventEntityIdLineNumber);
         }
 
         if (getForReapplying()) { return; }

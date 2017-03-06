@@ -8,9 +8,9 @@ import org.dddml.wms.domain.Command;
 
 public interface InOutLineCommand extends Command
 {
-    SkuId getSkuId();
+    Long getLineNumber();
 
-    void setSkuId(SkuId skuId);
+    void setLineNumber(Long lineNumber);
 
     String getInOutDocumentNumber();
 
@@ -19,10 +19,6 @@ public interface InOutLineCommand extends Command
 
     interface CreateOrMergePatchInOutLine extends InOutLineCommand
     {
-        Long getLineNumber();
-
-        void setLineNumber(Long lineNumber);
-
         String getDescription();
 
         void setDescription(String description);
@@ -31,9 +27,9 @@ public interface InOutLineCommand extends Command
 
         void setLocatorId(String locatorId);
 
-        String getProduct();
+        String getProductId();
 
-        void setProduct(String product);
+        void setProductId(String productId);
 
         String getUomId();
 
@@ -99,10 +95,6 @@ public interface InOutLineCommand extends Command
 
     interface MergePatchInOutLine extends CreateOrMergePatchInOutLine
     {
-        Boolean getIsPropertyLineNumberRemoved();
-
-        void setIsPropertyLineNumberRemoved(Boolean removed);
-
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);
@@ -111,9 +103,9 @@ public interface InOutLineCommand extends Command
 
         void setIsPropertyLocatorIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyProductRemoved();
+        Boolean getIsPropertyProductIdRemoved();
 
-        void setIsPropertyProductRemoved(Boolean removed);
+        void setIsPropertyProductIdRemoved(Boolean removed);
 
         Boolean getIsPropertyUomIdRemoved();
 

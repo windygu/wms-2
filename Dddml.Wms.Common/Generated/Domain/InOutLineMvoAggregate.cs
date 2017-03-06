@@ -107,10 +107,9 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new InOutLineMvoStateEventId(c.InOutLineId, c.InOutVersion);
             IInOutLineMvoStateCreated e = NewInOutLineMvoStateCreated(stateEventId);
 		
-            e.LineNumber = c.LineNumber;
             e.Description = c.Description;
             e.LocatorId = c.LocatorId;
-            e.Product = c.Product;
+            e.ProductId = c.ProductId;
             e.UomId = c.UomId;
             e.MovementQuantity = c.MovementQuantity;
             e.ConfirmedQuantity = c.ConfirmedQuantity;
@@ -182,10 +181,9 @@ namespace Dddml.Wms.Domain
 			var stateEventId = new InOutLineMvoStateEventId(c.InOutLineId, c.InOutVersion);
             IInOutLineMvoStateMergePatched e = NewInOutLineMvoStateMergePatched(stateEventId);
 
-            e.LineNumber = c.LineNumber;
             e.Description = c.Description;
             e.LocatorId = c.LocatorId;
-            e.Product = c.Product;
+            e.ProductId = c.ProductId;
             e.UomId = c.UomId;
             e.MovementQuantity = c.MovementQuantity;
             e.ConfirmedQuantity = c.ConfirmedQuantity;
@@ -241,10 +239,9 @@ namespace Dddml.Wms.Domain
             e.InOutUpdatedAt = c.InOutUpdatedAt;
             e.InOutActive = c.InOutActive;
             e.InOutDeleted = c.InOutDeleted;
-            e.IsPropertyLineNumberRemoved = c.IsPropertyLineNumberRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyLocatorIdRemoved = c.IsPropertyLocatorIdRemoved;
-            e.IsPropertyProductRemoved = c.IsPropertyProductRemoved;
+            e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
             e.IsPropertyUomIdRemoved = c.IsPropertyUomIdRemoved;
             e.IsPropertyMovementQuantityRemoved = c.IsPropertyMovementQuantityRemoved;
             e.IsPropertyConfirmedQuantityRemoved = c.IsPropertyConfirmedQuantityRemoved;

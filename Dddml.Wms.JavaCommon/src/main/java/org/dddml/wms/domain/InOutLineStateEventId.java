@@ -17,16 +17,16 @@ public class InOutLineStateEventId implements Serializable
         this.inOutDocumentNumber = inOutDocumentNumber;
     }
 
-    private SkuId skuId = new SkuId();
+    private Long lineNumber;
 
-    public SkuId getSkuId()
+    public Long getLineNumber()
     {
-        return this.skuId;
+        return this.lineNumber;
     }
 
-    public void setSkuId(SkuId skuId)
+    public void setLineNumber(Long lineNumber)
     {
-        this.skuId = skuId;
+        this.lineNumber = lineNumber;
     }
 
     private Long inOutVersion;
@@ -41,34 +41,14 @@ public class InOutLineStateEventId implements Serializable
         this.inOutVersion = inOutVersion;
     }
 
-    public String getSkuIdProductId()
-    {
-        return getSkuId().getProductId();
-    }
-
-    public void setSkuIdProductId(String skuIdProductId)
-    {
-        getSkuId().setProductId(skuIdProductId);
-    }
-
-    public String getSkuIdAttributeSetInstanceId()
-    {
-        return getSkuId().getAttributeSetInstanceId();
-    }
-
-    public void setSkuIdAttributeSetInstanceId(String skuIdAttributeSetInstanceId)
-    {
-        getSkuId().setAttributeSetInstanceId(skuIdAttributeSetInstanceId);
-    }
-
     public InOutLineStateEventId()
     {
     }
 
-    public InOutLineStateEventId(String inOutDocumentNumber, SkuId skuId, Long inOutVersion)
+    public InOutLineStateEventId(String inOutDocumentNumber, Long lineNumber, Long inOutVersion)
     {
         this.inOutDocumentNumber = inOutDocumentNumber;
-        this.skuId = skuId;
+        this.lineNumber = lineNumber;
         this.inOutVersion = inOutVersion;
     }
 
@@ -85,7 +65,7 @@ public class InOutLineStateEventId implements Serializable
         InOutLineStateEventId other = (InOutLineStateEventId)obj;
         return true 
             && (inOutDocumentNumber == other.inOutDocumentNumber || (inOutDocumentNumber != null && inOutDocumentNumber.equals(other.inOutDocumentNumber)))
-            && (skuId == other.skuId || (skuId != null && skuId.equals(other.skuId)))
+            && (lineNumber == other.lineNumber || (lineNumber != null && lineNumber.equals(other.lineNumber)))
             && (inOutVersion == other.inOutVersion || (inOutVersion != null && inOutVersion.equals(other.inOutVersion)))
             ;
     }
@@ -97,8 +77,8 @@ public class InOutLineStateEventId implements Serializable
         if (this.inOutDocumentNumber != null) {
             hash += 13 * this.inOutDocumentNumber.hashCode();
         }
-        if (this.skuId != null) {
-            hash += 13 * this.skuId.hashCode();
+        if (this.lineNumber != null) {
+            hash += 13 * this.lineNumber.hashCode();
         }
         if (this.inOutVersion != null) {
             hash += 13 * this.inOutVersion.hashCode();

@@ -30,10 +30,9 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setLineNumber(e.getLineNumber());
         dto.setDescription(e.getDescription());
         dto.setLocatorId(e.getLocatorId());
-        dto.setProduct(e.getProduct());
+        dto.setProductId(e.getProductId());
         dto.setUomId(e.getUomId());
         dto.setMovementQuantity(e.getMovementQuantity());
         dto.setConfirmedQuantity(e.getConfirmedQuantity());
@@ -98,10 +97,9 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setLineNumber(e.getLineNumber());
         dto.setDescription(e.getDescription());
         dto.setLocatorId(e.getLocatorId());
-        dto.setProduct(e.getProduct());
+        dto.setProductId(e.getProductId());
         dto.setUomId(e.getUomId());
         dto.setMovementQuantity(e.getMovementQuantity());
         dto.setConfirmedQuantity(e.getConfirmedQuantity());
@@ -157,10 +155,9 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setInOutUpdatedAt(e.getInOutUpdatedAt());
         dto.setInOutActive(e.getInOutActive());
         dto.setInOutDeleted(e.getInOutDeleted());
-        dto.setIsPropertyLineNumberRemoved(e.getIsPropertyLineNumberRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyLocatorIdRemoved(e.getIsPropertyLocatorIdRemoved());
-        dto.setIsPropertyProductRemoved(e.getIsPropertyProductRemoved());
+        dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
         dto.setIsPropertyUomIdRemoved(e.getIsPropertyUomIdRemoved());
         dto.setIsPropertyMovementQuantityRemoved(e.getIsPropertyMovementQuantityRemoved());
         dto.setIsPropertyConfirmedQuantityRemoved(e.getIsPropertyConfirmedQuantityRemoved());

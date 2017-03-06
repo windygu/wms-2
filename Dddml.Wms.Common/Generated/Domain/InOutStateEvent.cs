@@ -149,9 +149,9 @@ namespace Dddml.Wms.Domain
 			get { return ApplicationContext.Current["InOutLineStateEventDao"] as IInOutLineStateEventDao; }
 		}
 
-        protected InOutLineStateEventId NewInOutLineStateEventId(SkuId skuId)
+        protected InOutLineStateEventId NewInOutLineStateEventId(long lineNumber)
         {
-            var stateEventId = new InOutLineStateEventId(this.StateEventId.DocumentNumber, skuId, this.StateEventId.Version);
+            var stateEventId = new InOutLineStateEventId(this.StateEventId.DocumentNumber, lineNumber, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -235,9 +235,9 @@ namespace Dddml.Wms.Domain
 			this._inOutLineEvents[e.StateEventId] = e;
 		}
 
-        public virtual IInOutLineStateCreated NewInOutLineStateCreated(SkuId skuId)
+        public virtual IInOutLineStateCreated NewInOutLineStateCreated(long lineNumber)
         {
-            var stateEvent = new InOutLineStateCreated(NewInOutLineStateEventId(skuId));
+            var stateEvent = new InOutLineStateCreated(NewInOutLineStateEventId(lineNumber));
             return stateEvent;
         }
 
@@ -381,21 +381,21 @@ namespace Dddml.Wms.Domain
 			this._inOutLineEvents[e.StateEventId] = e;
 		}
 
-        public virtual IInOutLineStateCreated NewInOutLineStateCreated(SkuId skuId)
+        public virtual IInOutLineStateCreated NewInOutLineStateCreated(long lineNumber)
         {
-            var stateEvent = new InOutLineStateCreated(NewInOutLineStateEventId(skuId));
+            var stateEvent = new InOutLineStateCreated(NewInOutLineStateEventId(lineNumber));
             return stateEvent;
         }
 
-        public virtual IInOutLineStateMergePatched NewInOutLineStateMergePatched(SkuId skuId)
+        public virtual IInOutLineStateMergePatched NewInOutLineStateMergePatched(long lineNumber)
         {
-            var stateEvent = new InOutLineStateMergePatched(NewInOutLineStateEventId(skuId));
+            var stateEvent = new InOutLineStateMergePatched(NewInOutLineStateEventId(lineNumber));
             return stateEvent;
         }
 
-        public virtual IInOutLineStateRemoved NewInOutLineStateRemoved(SkuId skuId)
+        public virtual IInOutLineStateRemoved NewInOutLineStateRemoved(long lineNumber)
         {
-            var stateEvent = new InOutLineStateRemoved(NewInOutLineStateEventId(skuId));
+            var stateEvent = new InOutLineStateRemoved(NewInOutLineStateEventId(lineNumber));
             return stateEvent;
         }
 
@@ -473,9 +473,9 @@ namespace Dddml.Wms.Domain
 			this._inOutLineEvents[e.StateEventId] = e;
 		}
 
-        public virtual IInOutLineStateRemoved NewInOutLineStateRemoved(SkuId skuId)
+        public virtual IInOutLineStateRemoved NewInOutLineStateRemoved(long lineNumber)
         {
-            var stateEvent = new InOutLineStateRemoved(NewInOutLineStateEventId(skuId));
+            var stateEvent = new InOutLineStateRemoved(NewInOutLineStateEventId(lineNumber));
             return stateEvent;
         }
 

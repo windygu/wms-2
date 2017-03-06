@@ -4,15 +4,14 @@
 
 # ------------------------------
 
-valueObjects:
-    
-    SkuId:
-    
-      properties:
-        ProductId:
-          type: string
-        AttributeSetInstanceId:
-          type: string        
+#valueObjects:
+
+    #SkuId:
+    #  properties:
+    #    ProductId:
+    #      type: string
+    #    AttributeSetInstanceId:
+    #      type: string        
 
           
 # ------------------------------
@@ -200,13 +199,13 @@ aggregates:
         InOutLine:
           
           id: 
-            name: SkuId
-            type: SkuId
+            name: LineNumber
+            type: long
+              
+            #name: SkuId
+            #type: SkuId
               
           properties:  
-
-            LineNumber:
-              type: long
 
             Description:
               type: string
@@ -216,7 +215,7 @@ aggregates:
             LocatorId:
               type: string
 
-            Product:
+            ProductId:
               type: string
 
             UomId:

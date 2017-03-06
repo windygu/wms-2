@@ -32,7 +32,7 @@ namespace Dddml.Wms.Domain
 
         long GetCount(ICriterion filter);
 
-        IInOutLineState GetInOutLine(string inOutDocumentNumber, SkuId skuId);
+        IInOutLineState GetInOutLine(string inOutDocumentNumber, long lineNumber);
 
 	}
 

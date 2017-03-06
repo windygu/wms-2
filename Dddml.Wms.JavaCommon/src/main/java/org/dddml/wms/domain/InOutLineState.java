@@ -17,10 +17,6 @@ public interface InOutLineState
 
     void setInOutLineId(InOutLineId inOutLineId);
 
-    SkuId getSkuId();
-
-    void setSkuId(SkuId skuId);
-
     Long getLineNumber();
 
     void setLineNumber(Long lineNumber);
@@ -33,9 +29,9 @@ public interface InOutLineState
 
     void setLocatorId(String locatorId);
 
-    String getProduct();
+    String getProductId();
 
-    void setProduct(String product);
+    void setProductId(String productId);
 
     String getUomId();
 

@@ -6,18 +6,6 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
 {
-    private Long lineNumber;
-
-    public Long getLineNumber()
-    {
-        return this.lineNumber;
-    }
-
-    public void setLineNumber(Long lineNumber)
-    {
-        this.lineNumber = lineNumber;
-    }
-
     private String description;
 
     public String getDescription()
@@ -42,16 +30,16 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.locatorId = locatorId;
     }
 
-    private String product;
+    private String productId;
 
-    public String getProduct()
+    public String getProductId()
     {
-        return this.product;
+        return this.productId;
     }
 
-    public void setProduct(String product)
+    public void setProductId(String productId)
     {
-        this.product = product;
+        this.productId = productId;
     }
 
     private String uomId;
@@ -222,18 +210,6 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.active = active;
     }
 
-    private Boolean isPropertyLineNumberRemoved;
-
-    public Boolean getIsPropertyLineNumberRemoved()
-    {
-        return this.isPropertyLineNumberRemoved;
-    }
-
-    public void setIsPropertyLineNumberRemoved(Boolean removed)
-    {
-        this.isPropertyLineNumberRemoved = removed;
-    }
-
     private Boolean isPropertyDescriptionRemoved;
 
     public Boolean getIsPropertyDescriptionRemoved()
@@ -258,16 +234,16 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.isPropertyLocatorIdRemoved = removed;
     }
 
-    private Boolean isPropertyProductRemoved;
+    private Boolean isPropertyProductIdRemoved;
 
-    public Boolean getIsPropertyProductRemoved()
+    public Boolean getIsPropertyProductIdRemoved()
     {
-        return this.isPropertyProductRemoved;
+        return this.isPropertyProductIdRemoved;
     }
 
-    public void setIsPropertyProductRemoved(Boolean removed)
+    public void setIsPropertyProductIdRemoved(Boolean removed)
     {
-        this.isPropertyProductRemoved = removed;
+        this.isPropertyProductIdRemoved = removed;
     }
 
     private Boolean isPropertyUomIdRemoved;
@@ -441,10 +417,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
     public void copyTo(AbstractInOutLineCommand.AbstractCreateOrMergePatchInOutLine command)
     {
         ((AbstractInOutLineCommandDto) this).copyTo(command);
-        command.setLineNumber(this.getLineNumber());
         command.setDescription(this.getDescription());
         command.setLocatorId(this.getLocatorId());
-        command.setProduct(this.getProduct());
+        command.setProductId(this.getProductId());
         command.setUomId(this.getUomId());
         command.setMovementQuantity(this.getMovementQuantity());
         command.setConfirmedQuantity(this.getConfirmedQuantity());
@@ -488,10 +463,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
     public void copyTo(AbstractInOutLineCommand.AbstractMergePatchInOutLine command)
     {
         copyTo((AbstractInOutLineCommand.AbstractCreateOrMergePatchInOutLine) command);
-        command.setIsPropertyLineNumberRemoved(this.getIsPropertyLineNumberRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyLocatorIdRemoved(this.getIsPropertyLocatorIdRemoved());
-        command.setIsPropertyProductRemoved(this.getIsPropertyProductRemoved());
+        command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
         command.setIsPropertyUomIdRemoved(this.getIsPropertyUomIdRemoved());
         command.setIsPropertyMovementQuantityRemoved(this.getIsPropertyMovementQuantityRemoved());
         command.setIsPropertyConfirmedQuantityRemoved(this.getIsPropertyConfirmedQuantityRemoved());

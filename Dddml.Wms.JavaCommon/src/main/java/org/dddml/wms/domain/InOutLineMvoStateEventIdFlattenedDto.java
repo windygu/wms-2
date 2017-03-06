@@ -10,15 +10,13 @@ public class InOutLineMvoStateEventIdFlattenedDto
 
     public static final String[] propertyNames = new String[]{
             "inOutLineIdInOutDocumentNumber",
-            "inOutLineIdSkuIdProductId",
-            "inOutLineIdSkuIdAttributeSetInstanceId",
+            "inOutLineIdLineNumber",
             "inOutVersion",
         };
 
     public static final String[] propertyTypes = new String[]{
             "String",
-            "String",
-            "String",
+            "Long",
             "Long",
         };
 
@@ -63,24 +61,14 @@ public class InOutLineMvoStateEventIdFlattenedDto
         this.value.getInOutLineId().setInOutDocumentNumber(inOutLineIdInOutDocumentNumber);
     }
 
-    public String getInOutLineIdSkuIdProductId()
+    public Long getInOutLineIdLineNumber()
     {
-        return this.value.getInOutLineId().getSkuId().getProductId();
+        return this.value.getInOutLineId().getLineNumber();
     }
 
-    public void setInOutLineIdSkuIdProductId(String inOutLineIdSkuIdProductId)
+    public void setInOutLineIdLineNumber(Long inOutLineIdLineNumber)
     {
-        this.value.getInOutLineId().getSkuId().setProductId(inOutLineIdSkuIdProductId);
-    }
-
-    public String getInOutLineIdSkuIdAttributeSetInstanceId()
-    {
-        return this.value.getInOutLineId().getSkuId().getAttributeSetInstanceId();
-    }
-
-    public void setInOutLineIdSkuIdAttributeSetInstanceId(String inOutLineIdSkuIdAttributeSetInstanceId)
-    {
-        this.value.getInOutLineId().getSkuId().setAttributeSetInstanceId(inOutLineIdSkuIdAttributeSetInstanceId);
+        this.value.getInOutLineId().setLineNumber(inOutLineIdLineNumber);
     }
 
     public Long getInOutVersion()

@@ -39,10 +39,9 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setInOutVersion(state.getInOutVersion());
 
         cmd.setInOutLineId(state.getInOutLineId());
-        cmd.setLineNumber(state.getLineNumber());
         cmd.setDescription(state.getDescription());
         cmd.setLocatorId(state.getLocatorId());
-        cmd.setProduct(state.getProduct());
+        cmd.setProductId(state.getProductId());
         cmd.setUomId(state.getUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());
         cmd.setConfirmedQuantity(state.getConfirmedQuantity());
@@ -98,10 +97,9 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setInOutActive(state.getInOutActive());
         cmd.setInOutDeleted(state.getInOutDeleted());
             
-        if (state.getLineNumber() == null) { cmd.setIsPropertyLineNumberRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getLocatorId() == null) { cmd.setIsPropertyLocatorIdRemoved(true); }
-        if (state.getProduct() == null) { cmd.setIsPropertyProductRemoved(true); }
+        if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
         if (state.getUomId() == null) { cmd.setIsPropertyUomIdRemoved(true); }
         if (state.getMovementQuantity() == null) { cmd.setIsPropertyMovementQuantityRemoved(true); }
         if (state.getConfirmedQuantity() == null) { cmd.setIsPropertyConfirmedQuantityRemoved(true); }
@@ -165,10 +163,9 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
 
         cmd.setInOutVersion(state.getInOutVersion());
         cmd.setInOutLineId(state.getInOutLineId());
-        cmd.setLineNumber(state.getLineNumber());
         cmd.setDescription(state.getDescription());
         cmd.setLocatorId(state.getLocatorId());
-        cmd.setProduct(state.getProduct());
+        cmd.setProductId(state.getProductId());
         cmd.setUomId(state.getUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());
         cmd.setConfirmedQuantity(state.getConfirmedQuantity());

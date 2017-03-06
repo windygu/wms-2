@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain
 
         IInOutState GetHistoryState(string documentNumber, long version);
 
-        IInOutLineState GetInOutLine(string inOutDocumentNumber, SkuId skuId);
+        IInOutLineState GetInOutLine(string inOutDocumentNumber, long lineNumber);
 
 
 	}

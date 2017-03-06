@@ -842,35 +842,35 @@ namespace Dddml.Wms.Domain
 
 
 
-        private InOutLineStateEventIdDto NewInOutLineStateEventId(SkuId skuId)
+        private InOutLineStateEventIdDto NewInOutLineStateEventId(long lineNumber)
         {
             var eId = new InOutLineStateEventIdDto();
             eId.InOutDocumentNumber = this.StateEventId.DocumentNumber;
-            eId.SkuId = new SkuIdDtoWrapper(skuId);
+            eId.LineNumber = lineNumber;
             eId.InOutVersion = this.StateEventId.Version;
             return eId;
         }
 
-        public virtual InOutLineStateCreatedDto NewInOutLineStateCreated(SkuId skuId)
+        public virtual InOutLineStateCreatedDto NewInOutLineStateCreated(long lineNumber)
         {
             var e = new InOutLineStateCreatedDto();
-            var eId = NewInOutLineStateEventId(skuId);
+            var eId = NewInOutLineStateEventId(lineNumber);
             e.StateEventId = eId;
             return e;
         }
 
-        public virtual InOutLineStateMergePatchedDto NewInOutLineStateMergePatched(SkuId skuId)
+        public virtual InOutLineStateMergePatchedDto NewInOutLineStateMergePatched(long lineNumber)
         {
             var e = new InOutLineStateMergePatchedDto();
-            var eId = NewInOutLineStateEventId(skuId);
+            var eId = NewInOutLineStateEventId(lineNumber);
             e.StateEventId = eId;
             return e;
         }
 
-        public virtual InOutLineStateRemovedDto NewInOutLineStateRemoved(SkuId skuId)
+        public virtual InOutLineStateRemovedDto NewInOutLineStateRemoved(long lineNumber)
         {
             var e = new InOutLineStateRemovedDto();
-            var eId = NewInOutLineStateEventId(skuId);
+            var eId = NewInOutLineStateEventId(lineNumber);
             e.StateEventId = eId;
             return e;
         }
@@ -885,9 +885,9 @@ namespace Dddml.Wms.Domain
             this._inOutLineEvents.AddInOutLineEvent(e);
         }
 
-        IInOutLineStateCreated IInOutStateCreated.NewInOutLineStateCreated(SkuId skuId)
+        IInOutLineStateCreated IInOutStateCreated.NewInOutLineStateCreated(long lineNumber)
         {
-            return NewInOutLineStateCreated(skuId);
+            return NewInOutLineStateCreated(lineNumber);
         }
 
         IEnumerable<IInOutLineStateEvent> IInOutStateMergePatched.InOutLineEvents
@@ -900,19 +900,19 @@ namespace Dddml.Wms.Domain
             this._inOutLineEvents.AddInOutLineEvent(e);
         }
 
-        IInOutLineStateCreated IInOutStateMergePatched.NewInOutLineStateCreated(SkuId skuId)
+        IInOutLineStateCreated IInOutStateMergePatched.NewInOutLineStateCreated(long lineNumber)
         {
-            return NewInOutLineStateCreated(skuId);
+            return NewInOutLineStateCreated(lineNumber);
         }
 
-        IInOutLineStateMergePatched IInOutStateMergePatched.NewInOutLineStateMergePatched(SkuId skuId)
+        IInOutLineStateMergePatched IInOutStateMergePatched.NewInOutLineStateMergePatched(long lineNumber)
         {
-            return NewInOutLineStateMergePatched(skuId);
+            return NewInOutLineStateMergePatched(lineNumber);
         }
 
-        IInOutLineStateRemoved IInOutStateMergePatched.NewInOutLineStateRemoved(SkuId skuId)
+        IInOutLineStateRemoved IInOutStateMergePatched.NewInOutLineStateRemoved(long lineNumber)
         {
-            return NewInOutLineStateRemoved(skuId);
+            return NewInOutLineStateRemoved(lineNumber);
         }
 
 
@@ -926,9 +926,9 @@ namespace Dddml.Wms.Domain
             this._inOutLineEvents.AddInOutLineEvent(e);
         }
 
-        IInOutLineStateRemoved IInOutStateDeleted.NewInOutLineStateRemoved(SkuId skuId)
+        IInOutLineStateRemoved IInOutStateDeleted.NewInOutLineStateRemoved(long lineNumber)
         {
-            return NewInOutLineStateRemoved(skuId);
+            return NewInOutLineStateRemoved(lineNumber);
         }
 
 

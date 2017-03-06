@@ -10,19 +10,16 @@
 
 	<composite-id name="inOutLineId" class="org.dddml.wms.domain.InOutLineId">
 		<key-property name="inOutDocumentNumber" column="InOutLineIdInOutDocumentNumber" length="50"/>
-		<key-property name="skuIdProductId" column="InOutLineIdSkuIdProductId" />
-		<key-property name="skuIdAttributeSetInstanceId" column="InOutLineIdSkuIdAttributeSetInstanceId" />
+		<key-property name="lineNumber" column="InOutLineIdLineNumber" />
 	</composite-id>
 
 	<version name="version" type="long" />
-
-	<property name="lineNumber" ></property>
 
 	<property name="description" ></property>
 
 	<property name="locatorId" ></property>
 
-	<property name="product" ></property>
+	<property name="productId" ></property>
 
 	<property name="uomId" ></property>
 

@@ -23,18 +23,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutLineId = inOutLineId;
     }
 
-    private Long lineNumber;
-
-    public Long getLineNumber()
-    {
-        return this.lineNumber;
-    }
-
-    public void setLineNumber(Long lineNumber)
-    {
-        this.lineNumber = lineNumber;
-    }
-
     private String description;
 
     public String getDescription()
@@ -59,16 +47,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.locatorId = locatorId;
     }
 
-    private String product;
+    private String productId;
 
-    public String getProduct()
+    public String getProductId()
     {
-        return this.product;
+        return this.productId;
     }
 
-    public void setProduct(String product)
+    public void setProductId(String productId)
     {
-        this.product = product;
+        this.productId = productId;
     }
 
     private String uomId;
@@ -863,10 +851,9 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     public void when(InOutLineMvoStateCreated e)
     {
         throwOnWrongEvent(e);
-        this.setLineNumber(e.getLineNumber());
         this.setDescription(e.getDescription());
         this.setLocatorId(e.getLocatorId());
-        this.setProduct(e.getProduct());
+        this.setProductId(e.getProductId());
         this.setUomId(e.getUomId());
         this.setMovementQuantity(e.getMovementQuantity());
         this.setConfirmedQuantity(e.getConfirmedQuantity());
@@ -934,17 +921,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     {
         throwOnWrongEvent(e);
 
-        if (e.getLineNumber() == null)
-        {
-            if (e.getIsPropertyLineNumberRemoved() != null && e.getIsPropertyLineNumberRemoved())
-            {
-                this.setLineNumber(null);
-            }
-        }
-        else
-        {
-            this.setLineNumber(e.getLineNumber());
-        }
         if (e.getDescription() == null)
         {
             if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
@@ -967,16 +943,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setLocatorId(e.getLocatorId());
         }
-        if (e.getProduct() == null)
+        if (e.getProductId() == null)
         {
-            if (e.getIsPropertyProductRemoved() != null && e.getIsPropertyProductRemoved())
+            if (e.getIsPropertyProductIdRemoved() != null && e.getIsPropertyProductIdRemoved())
             {
-                this.setProduct(null);
+                this.setProductId(null);
             }
         }
         else
         {
-            this.setProduct(e.getProduct());
+            this.setProductId(e.getProductId());
         }
         if (e.getUomId() == null)
         {

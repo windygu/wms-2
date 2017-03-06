@@ -18,10 +18,6 @@ public interface InOutLineMvoState
 
     void setInOutLineId(InOutLineId inOutLineId);
 
-    Long getLineNumber();
-
-    void setLineNumber(Long lineNumber);
-
     String getDescription();
 
     void setDescription(String description);
@@ -30,9 +26,9 @@ public interface InOutLineMvoState
 
     void setLocatorId(String locatorId);
 
-    String getProduct();
+    String getProductId();
 
-    void setProduct(String product);
+    void setProductId(String productId);
 
     String getUomId();
 

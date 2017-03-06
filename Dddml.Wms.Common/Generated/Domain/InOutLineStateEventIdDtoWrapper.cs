@@ -37,9 +37,9 @@ namespace Dddml.Wms.Domain
 			set { _value.InOutDocumentNumber = value; } 
 		}
 
-		public override SkuIdDto SkuId { 
-			get { return new SkuIdDtoWrapper(_value.SkuId); } 
-			set { _value.SkuId = value.ToSkuId(); } 
+		public override long LineNumber { 
+			get { return _value.LineNumber; } 
+			set { _value.LineNumber = value; } 
 		}
 
 		public override long InOutVersion { 

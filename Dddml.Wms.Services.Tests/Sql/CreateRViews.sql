@@ -73,12 +73,10 @@ CREATE VIEW `AttributeUse_RV` AS
 CREATE VIEW `InOutLine_RV` AS
     SELECT 
         `InOutLines`.`InOutLineIdInOutDocumentNumber`,
-        `InOutLines`.`InOutLineIdSkuIdProductId`,
-        `InOutLines`.`InOutLineIdSkuIdAttributeSetInstanceId`,
-        `InOutLines`.`LineNumber`,
+        `InOutLines`.`InOutLineIdLineNumber`,
         `InOutLines`.`Description`,
         `InOutLines`.`LocatorId`,
-        `InOutLines`.`Product`,
+        `InOutLines`.`ProductId`,
         `InOutLines`.`UomId`,
         `InOutLines`.`MovementQuantity`,
         `InOutLines`.`ConfirmedQuantity`,

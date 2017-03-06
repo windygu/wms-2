@@ -11,10 +11,9 @@ public final class InOutLineMvoFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
-            "lineNumber",
             "description",
             "locatorId",
-            "product",
+            "productId",
             "uomId",
             "movementQuantity",
             "confirmedQuantity",
@@ -77,8 +76,7 @@ public final class InOutLineMvoFilteringProperties
             "inOutActive",
             "inOutDeleted",
             "inOutLineId.inOutDocumentNumber",
-            "inOutLineId.skuIdProductId",
-            "inOutLineId.skuIdAttributeSetInstanceId",
+            "inOutLineId.lineNumber",
             "inOutFreightAmount.amount",
             "inOutFreightAmount.currency",
             "inOutChargeAmount.amount",
@@ -86,7 +84,6 @@ public final class InOutLineMvoFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
-            "Long",
             "String",
             "String",
             "String",
@@ -152,8 +149,7 @@ public final class InOutLineMvoFilteringProperties
             "Boolean",
             "Boolean",
             "String",
-            "String",
-            "String",
+            "Long",
             "BigDecimal",
             "String",
             "BigDecimal",

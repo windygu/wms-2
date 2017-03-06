@@ -48,10 +48,9 @@ namespace Dddml.Wms.Domain
             cmd.InOutVersion = ((IInOutLineMvoStateProperties)state).InOutVersion;
 
             cmd.InOutLineId = state.InOutLineId;
-            cmd.LineNumber = state.LineNumber;
             cmd.Description = state.Description;
             cmd.LocatorId = state.LocatorId;
-            cmd.Product = state.Product;
+            cmd.ProductId = state.ProductId;
             cmd.UomId = state.UomId;
             cmd.MovementQuantity = state.MovementQuantity;
             cmd.ConfirmedQuantity = state.ConfirmedQuantity;
@@ -109,7 +108,7 @@ namespace Dddml.Wms.Domain
             
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.LocatorId == null) { cmd.IsPropertyLocatorIdRemoved = true; }
-            if (state.Product == null) { cmd.IsPropertyProductRemoved = true; }
+            if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
             if (state.UomId == null) { cmd.IsPropertyUomIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.InOutDescription == null) { cmd.IsPropertyInOutDescriptionRemoved = true; }
@@ -143,10 +142,9 @@ namespace Dddml.Wms.Domain
             cmd.InOutVersion = ((IInOutLineMvoStateProperties)state).InOutVersion;
 
             cmd.InOutLineId = state.InOutLineId;
-            cmd.LineNumber = state.LineNumber;
             cmd.Description = state.Description;
             cmd.LocatorId = state.LocatorId;
-            cmd.Product = state.Product;
+            cmd.ProductId = state.ProductId;
             cmd.UomId = state.UomId;
             cmd.MovementQuantity = state.MovementQuantity;
             cmd.ConfirmedQuantity = state.ConfirmedQuantity;

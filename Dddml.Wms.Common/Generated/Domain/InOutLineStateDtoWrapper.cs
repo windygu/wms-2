@@ -39,34 +39,6 @@ namespace Dddml.Wms.Domain
 			return this._state;
 		}
 
-        public SkuIdDto SkuId
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("SkuId"))
-                {
-					return (_state.SkuId == null) ? null : new SkuIdDtoWrapper(_state.SkuId);
-                }
-                return null;
-            }
-            set
-            {
-                _state.SkuId = (value == null) ? null : value.ToSkuId();
-            }
-        }
-
-        SkuId IInOutLineStateProperties.SkuId
-        {
-            get 
-            {
-                return (this._state as IInOutLineStateProperties).SkuId;
-            }
-            set 
-            {
-                (this._state as IInOutLineStateProperties).SkuId = value;
-            }
-        }
-
 		public virtual long? LineNumber
         {
             get
@@ -154,31 +126,31 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual string Product
+		public virtual string ProductId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Product"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ProductId"))
                 {
-                    return _state.Product;
+                    return _state.ProductId;
                 }
                 return null;
             }
             set
             {
-                _state.Product = value;
+                _state.ProductId = value;
             }
         }
 
-        string IInOutLineStateProperties.Product
+        string IInOutLineStateProperties.ProductId
         {
             get 
             {
-                return (this._state as IInOutLineStateProperties).Product;
+                return (this._state as IInOutLineStateProperties).ProductId;
             }
             set 
             {
-                (this._state as IInOutLineStateProperties).Product = value;
+                (this._state as IInOutLineStateProperties).ProductId = value;
             }
         }
 
@@ -746,7 +718,7 @@ namespace Dddml.Wms.Domain
 			get { return (_state as IInOutLineState).GlobalId; }
 		}
 
-        SkuId ILocalIdentity<SkuId>.LocalId
+        long ILocalIdentity<long>.LocalId
         {
 			get { return (_state as IInOutLineState).LocalId; }
         }

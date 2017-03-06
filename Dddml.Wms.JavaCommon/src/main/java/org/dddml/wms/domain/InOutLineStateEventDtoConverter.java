@@ -30,10 +30,9 @@ public class InOutLineStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
-        dto.setLineNumber(e.getLineNumber());
         dto.setDescription(e.getDescription());
         dto.setLocatorId(e.getLocatorId());
-        dto.setProduct(e.getProduct());
+        dto.setProductId(e.getProductId());
         dto.setUomId(e.getUomId());
         dto.setMovementQuantity(e.getMovementQuantity());
         dto.setConfirmedQuantity(e.getConfirmedQuantity());
@@ -58,10 +57,9 @@ public class InOutLineStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
-        dto.setLineNumber(e.getLineNumber());
         dto.setDescription(e.getDescription());
         dto.setLocatorId(e.getLocatorId());
-        dto.setProduct(e.getProduct());
+        dto.setProductId(e.getProductId());
         dto.setUomId(e.getUomId());
         dto.setMovementQuantity(e.getMovementQuantity());
         dto.setConfirmedQuantity(e.getConfirmedQuantity());
@@ -76,10 +74,9 @@ public class InOutLineStateEventDtoConverter {
         dto.setRmaLineNumber(e.getRmaLineNumber());
         dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setActive(e.getActive());
-        dto.setIsPropertyLineNumberRemoved(e.getIsPropertyLineNumberRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyLocatorIdRemoved(e.getIsPropertyLocatorIdRemoved());
-        dto.setIsPropertyProductRemoved(e.getIsPropertyProductRemoved());
+        dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
         dto.setIsPropertyUomIdRemoved(e.getIsPropertyUomIdRemoved());
         dto.setIsPropertyMovementQuantityRemoved(e.getIsPropertyMovementQuantityRemoved());
         dto.setIsPropertyConfirmedQuantityRemoved(e.getIsPropertyConfirmedQuantityRemoved());

@@ -67,37 +67,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual long? LineNumber
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LineNumber"))
-                {
-                    return _state.LineNumber;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.LineNumber = value.Value;
-                }
-            }
-        }
-
-        long IInOutLineMvoStateProperties.LineNumber
-        {
-            get 
-            {
-                return (this._state as IInOutLineMvoStateProperties).LineNumber;
-            }
-            set 
-            {
-                (this._state as IInOutLineMvoStateProperties).LineNumber = value;
-            }
-        }
-
 		public virtual string Description
 		{
             get
@@ -154,31 +123,31 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual string Product
+		public virtual string ProductId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Product"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ProductId"))
                 {
-                    return _state.Product;
+                    return _state.ProductId;
                 }
                 return null;
             }
             set
             {
-                _state.Product = value;
+                _state.ProductId = value;
             }
         }
 
-        string IInOutLineMvoStateProperties.Product
+        string IInOutLineMvoStateProperties.ProductId
         {
             get 
             {
-                return (this._state as IInOutLineMvoStateProperties).Product;
+                return (this._state as IInOutLineMvoStateProperties).ProductId;
             }
             set 
             {
-                (this._state as IInOutLineMvoStateProperties).Product = value;
+                (this._state as IInOutLineMvoStateProperties).ProductId = value;
             }
         }
 

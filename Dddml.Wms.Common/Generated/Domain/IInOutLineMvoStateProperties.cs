@@ -16,13 +16,11 @@ namespace Dddml.Wms.Domain
 	{
 		InOutLineId InOutLineId { get; set; }
 
-		long LineNumber { get; set; }
-
 		string Description { get; set; }
 
 		string LocatorId { get; set; }
 
-		string Product { get; set; }
+		string ProductId { get; set; }
 
 		string UomId { get; set; }
 

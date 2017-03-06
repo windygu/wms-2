@@ -137,9 +137,9 @@ namespace Dddml.Wms.Domain
             return new InOutState(eventStream.Events);
         }
 
-        public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, SkuId skuId)
+        public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, long lineNumber)
         {
-            return StateQueryRepository.GetInOutLine(inOutDocumentNumber, skuId);
+            return StateQueryRepository.GetInOutLine(inOutDocumentNumber, lineNumber);
         }
 
 

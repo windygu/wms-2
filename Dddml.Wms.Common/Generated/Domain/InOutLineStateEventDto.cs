@@ -30,19 +30,17 @@ namespace Dddml.Wms.Domain
             }
         }
 
-        public virtual SkuIdDto SkuId
+        public virtual long LineNumber
         {
-            get { return StateEventId.SkuId; }
-            set { StateEventId.SkuId = value; }
+            get { return StateEventId.LineNumber; }
+            set { StateEventId.LineNumber = value; }
         }
-
-		public virtual long? LineNumber { get; set; }
 
 		public virtual string Description { get; set; }
 
 		public virtual string LocatorId { get; set; }
 
-		public virtual string Product { get; set; }
+		public virtual string ProductId { get; set; }
 
 		public virtual string UomId { get; set; }
 
@@ -103,25 +101,6 @@ namespace Dddml.Wms.Domain
 
 		public virtual long Version { get; set; }
 
-		public virtual bool? IsPropertyLineNumberRemoved { get; set; }
-
-        bool IInOutLineStateMergePatched.IsPropertyLineNumberRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyLineNumberRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyLineNumberRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyDescriptionRemoved { get; set; }
 
         bool IInOutLineStateMergePatched.IsPropertyDescriptionRemoved
@@ -160,13 +139,13 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual bool? IsPropertyProductRemoved { get; set; }
+		public virtual bool? IsPropertyProductIdRemoved { get; set; }
 
-        bool IInOutLineStateMergePatched.IsPropertyProductRemoved
+        bool IInOutLineStateMergePatched.IsPropertyProductIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyProductRemoved;
+                var b = this.IsPropertyProductIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -175,7 +154,7 @@ namespace Dddml.Wms.Domain
             }
             set 
             {
-                this.IsPropertyProductRemoved = value;
+                this.IsPropertyProductIdRemoved = value;
             }
         }
 

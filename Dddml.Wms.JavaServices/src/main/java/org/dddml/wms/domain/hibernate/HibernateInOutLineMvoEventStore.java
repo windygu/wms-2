@@ -37,8 +37,7 @@ public class HibernateInOutLineMvoEventStore extends AbstractHibernateEventStore
         InOutLineId idObj = (InOutLineId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineMvoStateEvent.class);
         criteria.add(Restrictions.eq("stateEventId.inOutLineIdInOutDocumentNumber", idObj.getInOutDocumentNumber()));
-        criteria.add(Restrictions.eq("stateEventId.inOutLineIdSkuIdProductId", idObj.getSkuIdProductId()));
-        criteria.add(Restrictions.eq("stateEventId.inOutLineIdSkuIdAttributeSetInstanceId", idObj.getSkuIdAttributeSetInstanceId()));
+        criteria.add(Restrictions.eq("stateEventId.inOutLineIdLineNumber", idObj.getLineNumber()));
         criteria.add(Restrictions.le("stateEventId.inOutVersion", version));
         criteria.addOrder(Order.asc("stateEventId.inOutVersion"));
         List es = criteria.list();

@@ -36,16 +36,6 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
         getStateEventId().setInOutVersion(inOutVersion);
     }
 
-    private Long lineNumber;
-
-    public Long getLineNumber() {
-        return this.lineNumber;
-    }
-
-    public void setLineNumber(Long lineNumber) {
-        this.lineNumber = lineNumber;
-    }
-
     private String description;
 
     public String getDescription() {
@@ -66,14 +56,14 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
         this.locatorId = locatorId;
     }
 
-    private String product;
+    private String productId;
 
-    public String getProduct() {
-        return this.product;
+    public String getProductId() {
+        return this.productId;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     private String uomId;
@@ -646,16 +636,6 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
         this.createdAt = createdAt;
     }
 
-    private Boolean isPropertyLineNumberRemoved;
-
-    public Boolean getIsPropertyLineNumberRemoved() {
-        return this.isPropertyLineNumberRemoved;
-    }
-
-    public void setIsPropertyLineNumberRemoved(Boolean removed) {
-        this.isPropertyLineNumberRemoved = removed;
-    }
-
     private Boolean isPropertyDescriptionRemoved;
 
     public Boolean getIsPropertyDescriptionRemoved() {
@@ -676,14 +656,14 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
         this.isPropertyLocatorIdRemoved = removed;
     }
 
-    private Boolean isPropertyProductRemoved;
+    private Boolean isPropertyProductIdRemoved;
 
-    public Boolean getIsPropertyProductRemoved() {
-        return this.isPropertyProductRemoved;
+    public Boolean getIsPropertyProductIdRemoved() {
+        return this.isPropertyProductIdRemoved;
     }
 
-    public void setIsPropertyProductRemoved(Boolean removed) {
-        this.isPropertyProductRemoved = removed;
+    public void setIsPropertyProductIdRemoved(Boolean removed) {
+        this.isPropertyProductIdRemoved = removed;
     }
 
     private Boolean isPropertyUomIdRemoved;

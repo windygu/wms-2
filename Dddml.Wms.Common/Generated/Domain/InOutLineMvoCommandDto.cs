@@ -52,13 +52,11 @@ namespace Dddml.Wms.Domain
 
 		public virtual InOutLineIdDto InOutLineId { get; set; }
 
-		public virtual long? LineNumber { get; set; }
-
 		public virtual string Description { get; set; }
 
 		public virtual string LocatorId { get; set; }
 
-		public virtual string Product { get; set; }
+		public virtual string ProductId { get; set; }
 
 		public virtual string UomId { get; set; }
 
@@ -183,25 +181,6 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual bool? IsPropertyLineNumberRemoved { get; set; }
-
-        bool IMergePatchInOutLineMvo.IsPropertyLineNumberRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyLineNumberRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyLineNumberRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyDescriptionRemoved { get; set; }
 
         bool IMergePatchInOutLineMvo.IsPropertyDescriptionRemoved
@@ -240,13 +219,13 @@ namespace Dddml.Wms.Domain
             }
         }
 
-		public virtual bool? IsPropertyProductRemoved { get; set; }
+		public virtual bool? IsPropertyProductIdRemoved { get; set; }
 
-        bool IMergePatchInOutLineMvo.IsPropertyProductRemoved
+        bool IMergePatchInOutLineMvo.IsPropertyProductIdRemoved
         {
             get
             {
-                var b = this.IsPropertyProductRemoved;
+                var b = this.IsPropertyProductIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -255,7 +234,7 @@ namespace Dddml.Wms.Domain
             }
             set
             {
-                this.IsPropertyProductRemoved = value;
+                this.IsPropertyProductIdRemoved = value;
             }
         }
 

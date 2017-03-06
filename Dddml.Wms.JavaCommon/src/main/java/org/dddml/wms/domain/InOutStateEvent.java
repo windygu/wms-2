@@ -173,7 +173,7 @@ public interface InOutStateEvent extends Event
         
         void addInOutLineEvent(InOutLineStateEvent.InOutLineStateCreated e);
 
-        InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(SkuId skuId);
+        InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(Long lineNumber);
 
     
     }
@@ -325,11 +325,11 @@ public interface InOutStateEvent extends Event
         
         void addInOutLineEvent(InOutLineStateEvent e);
 
-        InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(SkuId skuId);
+        InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(Long lineNumber);
 
-        InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(SkuId skuId);
+        InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(Long lineNumber);
 
-        InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(SkuId skuId);
+        InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(Long lineNumber);
 
 
     }
@@ -340,7 +340,7 @@ public interface InOutStateEvent extends Event
         
         void addInOutLineEvent(InOutLineStateEvent.InOutLineStateRemoved e);
         
-        InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(SkuId skuId);
+        InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(Long lineNumber);
 
     }
 

@@ -14,15 +14,13 @@ namespace Dddml.Wms.Domain
 
 	public abstract class InOutLineStateProperties : IInOutLineStateProperties
 	{
-		public virtual SkuId SkuId { get; set; }
-
 		public virtual long LineNumber { get; set; }
 
 		public virtual string Description { get; set; }
 
 		public virtual string LocatorId { get; set; }
 
-		public virtual string Product { get; set; }
+		public virtual string ProductId { get; set; }
 
 		public virtual string UomId { get; set; }
 

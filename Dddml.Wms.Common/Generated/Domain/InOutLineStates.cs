@@ -80,19 +80,19 @@ namespace Dddml.Wms.Domain
             this._removedInOutLineStates.Add(state.GlobalId, state);
         }
 
-        public virtual IInOutLineState Get(SkuId skuId)
+        public virtual IInOutLineState Get(long lineNumber)
 		{
-			return Get(skuId, false, false);
+			return Get(lineNumber, false, false);
 		}
 
-        public virtual IInOutLineState Get(SkuId skuId, bool forCreation)
+        public virtual IInOutLineState Get(long lineNumber, bool forCreation)
         {
-			return Get(skuId, forCreation, false);
+			return Get(lineNumber, forCreation, false);
         }
 
-        public virtual IInOutLineState Get(SkuId skuId, bool forCreation, bool nullAllowed)
+        public virtual IInOutLineState Get(long lineNumber, bool forCreation, bool nullAllowed)
         {
-            InOutLineId globalId = new InOutLineId(_inOutState.DocumentNumber, skuId);
+            InOutLineId globalId = new InOutLineId(_inOutState.DocumentNumber, lineNumber);
             if (_loadedInOutLineStates.ContainsKey(globalId)) {
                 return _loadedInOutLineStates[globalId];
             }

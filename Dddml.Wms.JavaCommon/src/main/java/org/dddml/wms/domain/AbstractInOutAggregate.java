@@ -246,14 +246,13 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     protected InOutLineStateEvent.InOutLineStateCreated mapCreate(InOutLineCommand.CreateInOutLine c, InOutCommand outerCommand, Long version, InOutState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        InOutLineStateEventId stateEventId = new InOutLineStateEventId(c.getInOutDocumentNumber(), c.getSkuId(), version);
+        InOutLineStateEventId stateEventId = new InOutLineStateEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
         InOutLineStateEvent.InOutLineStateCreated e = newInOutLineStateCreated(stateEventId);
-        InOutLineState s = outerState.getInOutLines().get(c.getSkuId());
+        InOutLineState s = outerState.getInOutLines().get(c.getLineNumber());
 
-        e.setLineNumber(c.getLineNumber());
         e.setDescription(c.getDescription());
         e.setLocatorId(c.getLocatorId());
-        e.setProduct(c.getProduct());
+        e.setProductId(c.getProductId());
         e.setUomId(c.getUomId());
         e.setMovementQuantity(c.getMovementQuantity());
         e.setConfirmedQuantity(c.getConfirmedQuantity());
@@ -277,14 +276,13 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     protected InOutLineStateEvent.InOutLineStateMergePatched mapMergePatch(InOutLineCommand.MergePatchInOutLine c, InOutCommand outerCommand, Long version, InOutState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        InOutLineStateEventId stateEventId = new InOutLineStateEventId(c.getInOutDocumentNumber(), c.getSkuId(), version);
+        InOutLineStateEventId stateEventId = new InOutLineStateEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
         InOutLineStateEvent.InOutLineStateMergePatched e = newInOutLineStateMergePatched(stateEventId);
-        InOutLineState s = outerState.getInOutLines().get(c.getSkuId());
+        InOutLineState s = outerState.getInOutLines().get(c.getLineNumber());
 
-        e.setLineNumber(c.getLineNumber());
         e.setDescription(c.getDescription());
         e.setLocatorId(c.getLocatorId());
-        e.setProduct(c.getProduct());
+        e.setProductId(c.getProductId());
         e.setUomId(c.getUomId());
         e.setMovementQuantity(c.getMovementQuantity());
         e.setConfirmedQuantity(c.getConfirmedQuantity());
@@ -299,10 +297,9 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setRmaLineNumber(c.getRmaLineNumber());
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setActive(c.getActive());
-        e.setIsPropertyLineNumberRemoved(c.getIsPropertyLineNumberRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyLocatorIdRemoved(c.getIsPropertyLocatorIdRemoved());
-        e.setIsPropertyProductRemoved(c.getIsPropertyProductRemoved());
+        e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
         e.setIsPropertyUomIdRemoved(c.getIsPropertyUomIdRemoved());
         e.setIsPropertyMovementQuantityRemoved(c.getIsPropertyMovementQuantityRemoved());
         e.setIsPropertyConfirmedQuantityRemoved(c.getIsPropertyConfirmedQuantityRemoved());
@@ -326,7 +323,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     protected InOutLineStateEvent.InOutLineStateRemoved mapRemove(InOutLineCommand.RemoveInOutLine c, InOutCommand outerCommand, Long version)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        InOutLineStateEventId stateEventId = new InOutLineStateEventId(c.getInOutDocumentNumber(), c.getSkuId(), version);
+        InOutLineStateEventId stateEventId = new InOutLineStateEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
         InOutLineStateEvent.InOutLineStateRemoved e = newInOutLineStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());

@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain
 		
 		void AddInOutLineEvent(IInOutLineStateCreated e);
 
-		IInOutLineStateCreated NewInOutLineStateCreated(SkuId skuId);
+		IInOutLineStateCreated NewInOutLineStateCreated(long lineNumber);
 
 	
 	}
@@ -177,11 +177,11 @@ namespace Dddml.Wms.Domain
 		
 		void AddInOutLineEvent(IInOutLineStateEvent e);
 
-		IInOutLineStateCreated NewInOutLineStateCreated(SkuId skuId);
+		IInOutLineStateCreated NewInOutLineStateCreated(long lineNumber);
 
-		IInOutLineStateMergePatched NewInOutLineStateMergePatched(SkuId skuId);
+		IInOutLineStateMergePatched NewInOutLineStateMergePatched(long lineNumber);
 
-		IInOutLineStateRemoved NewInOutLineStateRemoved(SkuId skuId);
+		IInOutLineStateRemoved NewInOutLineStateRemoved(long lineNumber);
 
 
 	}
@@ -192,7 +192,7 @@ namespace Dddml.Wms.Domain
 		
 		void AddInOutLineEvent(IInOutLineStateRemoved e);
 		
-		IInOutLineStateRemoved NewInOutLineStateRemoved(SkuId skuId);
+		IInOutLineStateRemoved NewInOutLineStateRemoved(long lineNumber);
 
 	}
 

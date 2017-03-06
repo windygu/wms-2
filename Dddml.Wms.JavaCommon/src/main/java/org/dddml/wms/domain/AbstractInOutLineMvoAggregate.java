@@ -74,10 +74,9 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
     {
         InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(c.getInOutLineId(), c.getInOutVersion());
         InOutLineMvoStateEvent.InOutLineMvoStateCreated e = newInOutLineMvoStateCreated(stateEventId);
-        e.setLineNumber(c.getLineNumber());
         e.setDescription(c.getDescription());
         e.setLocatorId(c.getLocatorId());
-        e.setProduct(c.getProduct());
+        e.setProductId(c.getProductId());
         e.setUomId(c.getUomId());
         e.setMovementQuantity(c.getMovementQuantity());
         e.setConfirmedQuantity(c.getConfirmedQuantity());
@@ -144,10 +143,9 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
     {
         InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(c.getInOutLineId(), c.getInOutVersion());
         InOutLineMvoStateEvent.InOutLineMvoStateMergePatched e = newInOutLineMvoStateMergePatched(stateEventId);
-        e.setLineNumber(c.getLineNumber());
         e.setDescription(c.getDescription());
         e.setLocatorId(c.getLocatorId());
-        e.setProduct(c.getProduct());
+        e.setProductId(c.getProductId());
         e.setUomId(c.getUomId());
         e.setMovementQuantity(c.getMovementQuantity());
         e.setConfirmedQuantity(c.getConfirmedQuantity());
@@ -203,10 +201,9 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setInOutUpdatedAt(c.getInOutUpdatedAt());
         e.setInOutActive(c.getInOutActive());
         e.setInOutDeleted(c.getInOutDeleted());
-        e.setIsPropertyLineNumberRemoved(c.getIsPropertyLineNumberRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyLocatorIdRemoved(c.getIsPropertyLocatorIdRemoved());
-        e.setIsPropertyProductRemoved(c.getIsPropertyProductRemoved());
+        e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
         e.setIsPropertyUomIdRemoved(c.getIsPropertyUomIdRemoved());
         e.setIsPropertyMovementQuantityRemoved(c.getIsPropertyMovementQuantityRemoved());
         e.setIsPropertyConfirmedQuantityRemoved(c.getIsPropertyConfirmedQuantityRemoved());

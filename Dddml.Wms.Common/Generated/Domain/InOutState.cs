@@ -279,7 +279,7 @@ namespace Dddml.Wms.Domain
 			this.CreatedAt = e.CreatedAt;
 
 			foreach (IInOutLineStateCreated innerEvent in e.InOutLineEvents) {
-				IInOutLineState innerState = this.InOutLines.Get(innerEvent.GlobalId.SkuId, true);
+				IInOutLineState innerState = this.InOutLines.Get(innerEvent.GlobalId.LineNumber, true);
 				innerState.Mutate (innerEvent);
 			}
 
@@ -717,7 +717,7 @@ namespace Dddml.Wms.Domain
 
 			foreach (IInOutLineStateEvent innerEvent in e.InOutLineEvents)
             {
-                IInOutLineState innerState = this.InOutLines.Get(innerEvent.GlobalId.SkuId);
+                IInOutLineState innerState = this.InOutLines.Get(innerEvent.GlobalId.LineNumber);
 
                 innerState.Mutate(innerEvent);
                 var removed = innerEvent as IInOutLineStateRemoved;
@@ -742,7 +742,7 @@ namespace Dddml.Wms.Domain
             {
                 this.InOutLines.Remove(innerState);
                 
-                var innerE = e.NewInOutLineStateRemoved(innerState.SkuId);
+                var innerE = e.NewInOutLineStateRemoved(innerState.LineNumber);
                 ((InOutLineStateEventBase)innerE).CreatedAt = e.CreatedAt;
                 ((InOutLineStateEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);

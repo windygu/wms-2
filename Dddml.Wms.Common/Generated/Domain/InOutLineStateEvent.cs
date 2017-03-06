@@ -17,13 +17,11 @@ namespace Dddml.Wms.Domain
 
 		public virtual InOutLineStateEventId StateEventId { get; set; }
 
-		public virtual long? LineNumber { get; set; }
-
 		public virtual string Description { get; set; }
 
 		public virtual string LocatorId { get; set; }
 
-		public virtual string Product { get; set; }
+		public virtual string ProductId { get; set; }
 
 		public virtual string UomId { get; set; }
 
@@ -143,13 +141,11 @@ namespace Dddml.Wms.Domain
 
 	public class InOutLineStateMergePatched : InOutLineStateEventBase, IInOutLineStateMergePatched
 	{
-		public virtual bool IsPropertyLineNumberRemoved { get; set; }
-
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
 		public virtual bool IsPropertyLocatorIdRemoved { get; set; }
 
-		public virtual bool IsPropertyProductRemoved { get; set; }
+		public virtual bool IsPropertyProductIdRemoved { get; set; }
 
 		public virtual bool IsPropertyUomIdRemoved { get; set; }
 

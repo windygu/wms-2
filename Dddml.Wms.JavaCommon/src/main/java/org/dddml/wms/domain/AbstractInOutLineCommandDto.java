@@ -7,22 +7,22 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractInOutLineCommandDto extends AbstractCommand
 {
-    private SkuIdDto skuId;
+    private Long lineNumber;
 
-    public SkuIdDto getSkuId()
+    public Long getLineNumber()
     {
-        return this.skuId;
+        return this.lineNumber;
     }
 
-    public void setSkuId(SkuIdDto skuId)
+    public void setLineNumber(Long lineNumber)
     {
-        this.skuId = skuId;
+        this.lineNumber = lineNumber;
     }
 
 
     public void copyTo(AbstractInOutLineCommand command)
     {
-        command.setSkuId((this.getSkuId() == null) ? null : this.getSkuId().toSkuId());
+        command.setLineNumber(this.getLineNumber());
         
         command.setRequesterId(this.getRequesterId());
         command.setCommandId(this.getCommandId());

@@ -25,7 +25,7 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
     public TRemoveInOutLine toRemoveInOutLine(InOutLineState state) //where TRemoveInOutLine : IRemoveInOutLine, new()
     {
         TRemoveInOutLine cmd = newRemoveInOutLine();
-        cmd.setSkuId(state.getSkuId());
+        cmd.setLineNumber(state.getLineNumber());
         return cmd;
     }
 
@@ -33,11 +33,10 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
     {
         TMergePatchInOutLine cmd = newMergePatchInOutLine();
 
-        cmd.setSkuId(state.getSkuId());
         cmd.setLineNumber(state.getLineNumber());
         cmd.setDescription(state.getDescription());
         cmd.setLocatorId(state.getLocatorId());
-        cmd.setProduct(state.getProduct());
+        cmd.setProductId(state.getProductId());
         cmd.setUomId(state.getUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());
         cmd.setConfirmedQuantity(state.getConfirmedQuantity());
@@ -54,10 +53,9 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         cmd.setActive(state.getActive());
         cmd.setInOutDocumentNumber(state.getInOutDocumentNumber());
             
-        if (state.getLineNumber() == null) { cmd.setIsPropertyLineNumberRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getLocatorId() == null) { cmd.setIsPropertyLocatorIdRemoved(true); }
-        if (state.getProduct() == null) { cmd.setIsPropertyProductRemoved(true); }
+        if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
         if (state.getUomId() == null) { cmd.setIsPropertyUomIdRemoved(true); }
         if (state.getMovementQuantity() == null) { cmd.setIsPropertyMovementQuantityRemoved(true); }
         if (state.getConfirmedQuantity() == null) { cmd.setIsPropertyConfirmedQuantityRemoved(true); }
@@ -79,11 +77,10 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
     {
         TCreateInOutLine cmd = newCreateInOutLine();
 
-        cmd.setSkuId(state.getSkuId());
         cmd.setLineNumber(state.getLineNumber());
         cmd.setDescription(state.getDescription());
         cmd.setLocatorId(state.getLocatorId());
-        cmd.setProduct(state.getProduct());
+        cmd.setProductId(state.getProductId());
         cmd.setUomId(state.getUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());
         cmd.setConfirmedQuantity(state.getConfirmedQuantity());

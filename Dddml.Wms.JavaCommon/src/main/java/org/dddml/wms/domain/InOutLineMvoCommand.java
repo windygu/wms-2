@@ -20,10 +20,6 @@ public interface InOutLineMvoCommand extends Command
 
     interface CreateOrMergePatchInOutLineMvo extends InOutLineMvoCommand
     {
-        Long getLineNumber();
-
-        void setLineNumber(Long lineNumber);
-
         String getDescription();
 
         void setDescription(String description);
@@ -32,9 +28,9 @@ public interface InOutLineMvoCommand extends Command
 
         void setLocatorId(String locatorId);
 
-        String getProduct();
+        String getProductId();
 
-        void setProduct(String product);
+        void setProductId(String productId);
 
         String getUomId();
 
@@ -264,10 +260,6 @@ public interface InOutLineMvoCommand extends Command
 
     interface MergePatchInOutLineMvo extends CreateOrMergePatchInOutLineMvo
     {
-        Boolean getIsPropertyLineNumberRemoved();
-
-        void setIsPropertyLineNumberRemoved(Boolean removed);
-
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);
@@ -276,9 +268,9 @@ public interface InOutLineMvoCommand extends Command
 
         void setIsPropertyLocatorIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyProductRemoved();
+        Boolean getIsPropertyProductIdRemoved();
 
-        void setIsPropertyProductRemoved(Boolean removed);
+        void setIsPropertyProductIdRemoved(Boolean removed);
 
         Boolean getIsPropertyUomIdRemoved();
 

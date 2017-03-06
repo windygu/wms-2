@@ -40,8 +40,7 @@ namespace Dddml.Wms.Domain.NHibernate
             InOutLineId idObj = (InOutLineId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<InOutLineMvoStateEventBase>();
             criteria.Add(Restrictions.Eq("StateEventId.InOutLineIdInOutDocumentNumber", idObj.InOutDocumentNumber));
-            criteria.Add(Restrictions.Eq("StateEventId.InOutLineIdSkuIdProductId", idObj.SkuIdProductId));
-            criteria.Add(Restrictions.Eq("StateEventId.InOutLineIdSkuIdAttributeSetInstanceId", idObj.SkuIdAttributeSetInstanceId));
+            criteria.Add(Restrictions.Eq("StateEventId.InOutLineIdLineNumber", idObj.LineNumber));
             criteria.Add(Restrictions.Le("StateEventId.InOutVersion", version));
             criteria.AddOrder(Order.Asc("StateEventId.InOutVersion"));
             var es = criteria.List<IEvent>();

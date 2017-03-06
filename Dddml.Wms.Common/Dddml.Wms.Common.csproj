@@ -1667,18 +1667,6 @@
     <Compile Include="Generated\Domain\OrganizationTree.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\SkuId.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SkuIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SkuIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SkuIdFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\WarehouseAggregate.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -2357,10 +2345,6 @@
 .\OrganizationStructureIdDtoWrapper.cs
 .\OrganizationStructureIdFlattenedDto.cs
 .\OrganizationTree.cs
-.\SkuId.cs
-.\SkuIdDto.cs
-.\SkuIdDtoWrapper.cs
-.\SkuIdFlattenedDto.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\GenerateBoundedContextDomain.txt">

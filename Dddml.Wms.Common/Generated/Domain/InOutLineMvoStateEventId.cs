@@ -38,14 +38,9 @@ namespace Dddml.Wms.Domain
 			internal set { InOutLineId.InOutDocumentNumber = value; }
 		}
 
-		public virtual string InOutLineIdSkuIdProductId {
-			get { return InOutLineId.SkuId.ProductId; }
-			internal set { InOutLineId.SkuId.ProductId = value; }
-		}
-
-		public virtual string InOutLineIdSkuIdAttributeSetInstanceId {
-			get { return InOutLineId.SkuId.AttributeSetInstanceId; }
-			internal set { InOutLineId.SkuId.AttributeSetInstanceId = value; }
+		public virtual long InOutLineIdLineNumber {
+			get { return InOutLineId.LineNumber; }
+			internal set { InOutLineId.LineNumber = value; }
 		}
 
         #endregion

@@ -39,24 +39,14 @@ public class InOutLineMvoStateEventId implements Serializable
         getInOutLineId().setInOutDocumentNumber(inOutLineIdInOutDocumentNumber);
     }
 
-    public String getInOutLineIdSkuIdProductId()
+    public Long getInOutLineIdLineNumber()
     {
-        return getInOutLineId().getSkuId().getProductId();
+        return getInOutLineId().getLineNumber();
     }
 
-    public void setInOutLineIdSkuIdProductId(String inOutLineIdSkuIdProductId)
+    public void setInOutLineIdLineNumber(Long inOutLineIdLineNumber)
     {
-        getInOutLineId().getSkuId().setProductId(inOutLineIdSkuIdProductId);
-    }
-
-    public String getInOutLineIdSkuIdAttributeSetInstanceId()
-    {
-        return getInOutLineId().getSkuId().getAttributeSetInstanceId();
-    }
-
-    public void setInOutLineIdSkuIdAttributeSetInstanceId(String inOutLineIdSkuIdAttributeSetInstanceId)
-    {
-        getInOutLineId().getSkuId().setAttributeSetInstanceId(inOutLineIdSkuIdAttributeSetInstanceId);
+        getInOutLineId().setLineNumber(inOutLineIdLineNumber);
     }
 
     public InOutLineMvoStateEventId()

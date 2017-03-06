@@ -43,11 +43,11 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        SkuId ILocalIdentity<SkuId>.LocalId
+        long ILocalIdentity<long>.LocalId
         {
             get
             {
-                return this.SkuId;
+                return this.LineNumber;
             }
         }
 
@@ -61,12 +61,12 @@ namespace Dddml.Wms.Domain
 			}
 		}
 
-        public override SkuId SkuId {
+        public override long LineNumber {
 			get {
-				return this.InOutLineId.SkuId;
+				return this.InOutLineId.LineNumber;
 			}
 			set {
-				this.InOutLineId.SkuId = value;
+				this.InOutLineId.LineNumber = value;
 			}
 		}
 
@@ -194,13 +194,11 @@ namespace Dddml.Wms.Domain
 		public virtual void When(IInOutLineStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-            this.LineNumber = (e.LineNumber != null && e.LineNumber.HasValue) ? e.LineNumber.Value : default(long);
-
 			this.Description = e.Description;
 
 			this.LocatorId = e.LocatorId;
 
-			this.Product = e.Product;
+			this.ProductId = e.ProductId;
 
 			this.UomId = e.UomId;
 
@@ -243,18 +241,6 @@ namespace Dddml.Wms.Domain
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.LineNumber == null)
-			{
-				if (e.IsPropertyLineNumberRemoved)
-				{
-					this.LineNumber = default(long);
-				}
-			}
-			else
-			{
-				this.LineNumber = (e.LineNumber != null && e.LineNumber.HasValue) ? e.LineNumber.Value : default(long);
-			}
-
 			if (e.Description == null)
 			{
 				if (e.IsPropertyDescriptionRemoved)
@@ -279,16 +265,16 @@ namespace Dddml.Wms.Domain
 				this.LocatorId = e.LocatorId;
 			}
 
-			if (e.Product == null)
+			if (e.ProductId == null)
 			{
-				if (e.IsPropertyProductRemoved)
+				if (e.IsPropertyProductIdRemoved)
 				{
-					this.Product = default(string);
+					this.ProductId = default(string);
 				}
 			}
 			else
 			{
-				this.Product = e.Product;
+				this.ProductId = e.ProductId;
 			}
 
 			if (e.UomId == null)
@@ -496,13 +482,13 @@ namespace Dddml.Wms.Domain
             }
             id.Append(stateEntityIdInOutDocumentNumber).Append(",");
 
-            var stateEntityIdSkuId = (this as IGlobalIdentity<InOutLineId>).GlobalId.SkuId;
-            var eventEntityIdSkuId = stateEvent.StateEventId.SkuId;
-            if (stateEntityIdSkuId != eventEntityIdSkuId)
+            var stateEntityIdLineNumber = (this as IGlobalIdentity<InOutLineId>).GlobalId.LineNumber;
+            var eventEntityIdLineNumber = stateEvent.StateEventId.LineNumber;
+            if (stateEntityIdLineNumber != eventEntityIdLineNumber)
             {
-                throw DomainError.Named("mutateWrongEntity", "Entity Id SkuId {0} in state but entity id SkuId {1} in event", stateEntityIdSkuId, eventEntityIdSkuId);
+                throw DomainError.Named("mutateWrongEntity", "Entity Id LineNumber {0} in state but entity id LineNumber {1} in event", stateEntityIdLineNumber, eventEntityIdLineNumber);
             }
-            id.Append(stateEntityIdSkuId).Append(",");
+            id.Append(stateEntityIdLineNumber).Append(",");
 
             id.Append("]");
 

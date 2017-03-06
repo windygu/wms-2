@@ -21,12 +21,6 @@ namespace Dddml.Wms.Domain
             set;
         }
 
-        long? LineNumber
-        {
-            get;
-            set;
-        }
-
         string Description
         {
             get;
@@ -39,7 +33,7 @@ namespace Dddml.Wms.Domain
             set;
         }
 
-        string Product
+        string ProductId
         {
             get;
             set;

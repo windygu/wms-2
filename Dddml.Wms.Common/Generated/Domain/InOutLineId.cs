@@ -22,26 +22,16 @@ namespace Dddml.Wms.Domain
 			internal set { _inOutDocumentNumber = value; } 
 		}
 
-		private SkuId _skuId = new SkuId();
+		private long _lineNumber;
 
-		public virtual SkuId SkuId { 
-			get { return this._skuId; } 
-			internal set { _skuId = value; } 
+		public virtual long LineNumber { 
+			get { return this._lineNumber; } 
+			internal set { _lineNumber = value; } 
 		}
 
 
         #region  Flattened Properties
 
-
-		public virtual string SkuIdProductId {
-			get { return SkuId.ProductId; }
-			internal set { SkuId.ProductId = value; }
-		}
-
-		public virtual string SkuIdAttributeSetInstanceId {
-			get { return SkuId.AttributeSetInstanceId; }
-			internal set { SkuId.AttributeSetInstanceId = value; }
-		}
 
         #endregion
 
@@ -49,10 +39,10 @@ namespace Dddml.Wms.Domain
 		{
 		}
 
-		public InOutLineId (string inOutDocumentNumber, SkuId skuId)
+		public InOutLineId (string inOutDocumentNumber, long lineNumber)
 		{
 			this._inOutDocumentNumber = inOutDocumentNumber;
-			this._skuId = skuId;
+			this._lineNumber = lineNumber;
 
 		}
 
@@ -70,7 +60,7 @@ namespace Dddml.Wms.Domain
 
 			return true 
 				&& Object.Equals (this.InOutDocumentNumber, other.InOutDocumentNumber)
-				&& Object.Equals (this.SkuId, other.SkuId)
+				&& Object.Equals (this.LineNumber, other.LineNumber)
 				;
 		}
 
@@ -80,8 +70,8 @@ namespace Dddml.Wms.Domain
 			if (this.InOutDocumentNumber != null) {
 				hash += 13 * this.InOutDocumentNumber.GetHashCode ();
 			}
-			if (this.SkuId != null) {
-				hash += 13 * this.SkuId.GetHashCode ();
+			if (this.LineNumber != null) {
+				hash += 13 * this.LineNumber.GetHashCode ();
 			}
 			return hash;
 		}

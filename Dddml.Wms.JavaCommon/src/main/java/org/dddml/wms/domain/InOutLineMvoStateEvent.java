@@ -15,10 +15,6 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    Long getLineNumber();
-
-    void setLineNumber(Long lineNumber);
-
     String getDescription();
 
     void setDescription(String description);
@@ -27,9 +23,9 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setLocatorId(String locatorId);
 
-    String getProduct();
+    String getProductId();
 
-    void setProduct(String product);
+    void setProductId(String productId);
 
     String getUomId();
 
@@ -271,10 +267,6 @@ public interface InOutLineMvoStateEvent extends Event
 
     interface InOutLineMvoStateMergePatched extends InOutLineMvoStateEvent
     {
-        Boolean getIsPropertyLineNumberRemoved();
-
-        void setIsPropertyLineNumberRemoved(Boolean removed);
-
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);
@@ -283,9 +275,9 @@ public interface InOutLineMvoStateEvent extends Event
 
         void setIsPropertyLocatorIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyProductRemoved();
+        Boolean getIsPropertyProductIdRemoved();
 
-        void setIsPropertyProductRemoved(Boolean removed);
+        void setIsPropertyProductIdRemoved(Boolean removed);
 
         Boolean getIsPropertyUomIdRemoved();
 

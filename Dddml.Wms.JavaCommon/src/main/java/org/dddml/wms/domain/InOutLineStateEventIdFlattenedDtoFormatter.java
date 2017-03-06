@@ -26,12 +26,8 @@ public class InOutLineStateEventIdFlattenedDtoFormatter extends AbstractIdFlatte
             dto.setInOutDocumentNumber((String) objVal);
             return;
         }
-        if ("skuIdProductId".equals(fieldName)) {
-            dto.setSkuIdProductId((String) objVal);
-            return;
-        }
-        if ("skuIdAttributeSetInstanceId".equals(fieldName)) {
-            dto.setSkuIdAttributeSetInstanceId((String) objVal);
+        if ("lineNumber".equals(fieldName)) {
+            dto.setLineNumber((Long) objVal);
             return;
         }
         if ("inOutVersion".equals(fieldName)) {
@@ -48,13 +44,8 @@ public class InOutLineStateEventIdFlattenedDtoFormatter extends AbstractIdFlatte
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }
-        if ("skuIdProductId".equals(fieldName)) {
-            Object objVal = dto.getSkuIdProductId();
-            String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
-            return strVal;
-        }
-        if ("skuIdAttributeSetInstanceId".equals(fieldName)) {
-            Object objVal = dto.getSkuIdAttributeSetInstanceId();
+        if ("lineNumber".equals(fieldName)) {
+            Object objVal = dto.getLineNumber();
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }

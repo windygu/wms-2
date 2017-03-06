@@ -320,14 +320,13 @@ namespace Dddml.Wms.Domain
         protected virtual IInOutLineStateCreated MapCreate(ICreateInOutLine c, IInOutCommand outerCommand, long version, IInOutState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new InOutLineStateEventId(c.InOutDocumentNumber, c.SkuId, version);
+			var stateEventId = new InOutLineStateEventId(c.InOutDocumentNumber, c.LineNumber, version);
             IInOutLineStateCreated e = NewInOutLineStateCreated(stateEventId);
-            var s = outerState.InOutLines.Get(c.SkuId, true);
+            var s = outerState.InOutLines.Get(c.LineNumber, true);
 
-            e.LineNumber = c.LineNumber;
             e.Description = c.Description;
             e.LocatorId = c.LocatorId;
-            e.Product = c.Product;
+            e.ProductId = c.ProductId;
             e.UomId = c.UomId;
             e.MovementQuantity = c.MovementQuantity;
             e.ConfirmedQuantity = c.ConfirmedQuantity;
@@ -354,14 +353,13 @@ namespace Dddml.Wms.Domain
         protected virtual IInOutLineStateMergePatched MapMergePatch(IMergePatchInOutLine c, IInOutCommand outerCommand, long version, IInOutState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new InOutLineStateEventId(c.InOutDocumentNumber, c.SkuId, version);
+			var stateEventId = new InOutLineStateEventId(c.InOutDocumentNumber, c.LineNumber, version);
             IInOutLineStateMergePatched e = NewInOutLineStateMergePatched(stateEventId);
-            var s = outerState.InOutLines.Get(c.SkuId);
+            var s = outerState.InOutLines.Get(c.LineNumber);
 
-            e.LineNumber = c.LineNumber;
             e.Description = c.Description;
             e.LocatorId = c.LocatorId;
-            e.Product = c.Product;
+            e.ProductId = c.ProductId;
             e.UomId = c.UomId;
             e.MovementQuantity = c.MovementQuantity;
             e.ConfirmedQuantity = c.ConfirmedQuantity;
@@ -376,10 +374,9 @@ namespace Dddml.Wms.Domain
             e.RmaLineNumber = c.RmaLineNumber;
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Active = c.Active;
-            e.IsPropertyLineNumberRemoved = c.IsPropertyLineNumberRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyLocatorIdRemoved = c.IsPropertyLocatorIdRemoved;
-            e.IsPropertyProductRemoved = c.IsPropertyProductRemoved;
+            e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
             e.IsPropertyUomIdRemoved = c.IsPropertyUomIdRemoved;
             e.IsPropertyMovementQuantityRemoved = c.IsPropertyMovementQuantityRemoved;
             e.IsPropertyConfirmedQuantityRemoved = c.IsPropertyConfirmedQuantityRemoved;
@@ -405,7 +402,7 @@ namespace Dddml.Wms.Domain
         protected virtual IInOutLineStateRemoved MapRemove(IRemoveInOutLine c, IInOutCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new InOutLineStateEventId(c.InOutDocumentNumber, c.SkuId, version);
+			var stateEventId = new InOutLineStateEventId(c.InOutDocumentNumber, c.LineNumber, version);
             IInOutLineStateRemoved e = NewInOutLineStateRemoved(stateEventId);
 
 

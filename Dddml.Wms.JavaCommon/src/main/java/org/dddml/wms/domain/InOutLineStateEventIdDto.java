@@ -13,7 +13,7 @@ public class InOutLineStateEventIdDto
     {
         InOutLineStateEventId v = new InOutLineStateEventId();
         v.setInOutDocumentNumber(this.getInOutDocumentNumber());
-        v.setSkuId(this.getSkuId().toSkuId());
+        v.setLineNumber(this.getLineNumber());
         v.setInOutVersion(this.getInOutVersion());
         return v;
     }
@@ -30,16 +30,16 @@ public class InOutLineStateEventIdDto
         this.inOutDocumentNumber = inOutDocumentNumber;
     }
 
-    private SkuIdDto skuId = new SkuIdDto();
+    private Long lineNumber;
 
-    public SkuIdDto getSkuId()
+    public Long getLineNumber()
     {
-        return this.skuId;
+        return this.lineNumber;
     }
 
-    public void setSkuId(SkuIdDto skuId)
+    public void setLineNumber(Long lineNumber)
     {
-        this.skuId = skuId;
+        this.lineNumber = lineNumber;
     }
 
     private Long inOutVersion;
@@ -68,7 +68,7 @@ public class InOutLineStateEventIdDto
         InOutLineStateEventIdDto other = (InOutLineStateEventIdDto)obj;
         return true 
             && (getInOutDocumentNumber() == other.getInOutDocumentNumber() || (getInOutDocumentNumber() != null && getInOutDocumentNumber().equals(other.getInOutDocumentNumber())))
-            && (getSkuId() == other.getSkuId() || (getSkuId() != null && getSkuId().equals(other.getSkuId())))
+            && (getLineNumber() == other.getLineNumber() || (getLineNumber() != null && getLineNumber().equals(other.getLineNumber())))
             && (getInOutVersion() == other.getInOutVersion() || (getInOutVersion() != null && getInOutVersion().equals(other.getInOutVersion())))
             ;
 
@@ -81,8 +81,8 @@ public class InOutLineStateEventIdDto
         if (this.getInOutDocumentNumber() != null) {
             hash += 13 * this.getInOutDocumentNumber().hashCode();
         }
-        if (this.getSkuId() != null) {
-            hash += 13 * this.getSkuId().hashCode();
+        if (this.getLineNumber() != null) {
+            hash += 13 * this.getLineNumber().hashCode();
         }
         if (this.getInOutVersion() != null) {
             hash += 13 * this.getInOutVersion().hashCode();

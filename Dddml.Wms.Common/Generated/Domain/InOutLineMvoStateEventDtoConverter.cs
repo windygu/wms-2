@@ -43,10 +43,9 @@ namespace Dddml.Wms.Domain
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.LineNumber = e.LineNumber;
             dto.Description = e.Description;
             dto.LocatorId = e.LocatorId;
-            dto.Product = e.Product;
+            dto.ProductId = e.ProductId;
             dto.UomId = e.UomId;
             dto.MovementQuantity = e.MovementQuantity;
             dto.ConfirmedQuantity = e.ConfirmedQuantity;
@@ -112,10 +111,9 @@ namespace Dddml.Wms.Domain
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.LineNumber = e.LineNumber;
             dto.Description = e.Description;
             dto.LocatorId = e.LocatorId;
-            dto.Product = e.Product;
+            dto.ProductId = e.ProductId;
             dto.UomId = e.UomId;
             dto.MovementQuantity = e.MovementQuantity;
             dto.ConfirmedQuantity = e.ConfirmedQuantity;
@@ -171,10 +169,9 @@ namespace Dddml.Wms.Domain
             dto.InOutUpdatedAt = e.InOutUpdatedAt;
             dto.InOutActive = e.InOutActive;
             dto.InOutDeleted = e.InOutDeleted;
-            dto.IsPropertyLineNumberRemoved = e.IsPropertyLineNumberRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyLocatorIdRemoved = e.IsPropertyLocatorIdRemoved;
-            dto.IsPropertyProductRemoved = e.IsPropertyProductRemoved;
+            dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
             dto.IsPropertyUomIdRemoved = e.IsPropertyUomIdRemoved;
             dto.IsPropertyMovementQuantityRemoved = e.IsPropertyMovementQuantityRemoved;
             dto.IsPropertyConfirmedQuantityRemoved = e.IsPropertyConfirmedQuantityRemoved;

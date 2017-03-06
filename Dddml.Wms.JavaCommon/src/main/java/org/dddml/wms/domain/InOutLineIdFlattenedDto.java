@@ -10,14 +10,12 @@ public class InOutLineIdFlattenedDto
 
     public static final String[] propertyNames = new String[]{
             "inOutDocumentNumber",
-            "skuIdProductId",
-            "skuIdAttributeSetInstanceId",
+            "lineNumber",
         };
 
     public static final String[] propertyTypes = new String[]{
             "String",
-            "String",
-            "String",
+            "Long",
         };
 
     public static final Map<String, String> propertyTypeMap;
@@ -61,24 +59,14 @@ public class InOutLineIdFlattenedDto
         this.value.setInOutDocumentNumber(inOutDocumentNumber);
     }
 
-    public String getSkuIdProductId()
+    public Long getLineNumber()
     {
-        return this.value.getSkuId().getProductId();
+        return this.value.getLineNumber();
     }
 
-    public void setSkuIdProductId(String skuIdProductId)
+    public void setLineNumber(Long lineNumber)
     {
-        this.value.getSkuId().setProductId(skuIdProductId);
-    }
-
-    public String getSkuIdAttributeSetInstanceId()
-    {
-        return this.value.getSkuId().getAttributeSetInstanceId();
-    }
-
-    public void setSkuIdAttributeSetInstanceId(String skuIdAttributeSetInstanceId)
-    {
-        this.value.getSkuId().setAttributeSetInstanceId(skuIdAttributeSetInstanceId);
+        this.value.setLineNumber(lineNumber);
     }
 
 

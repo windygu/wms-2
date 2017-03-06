@@ -10,7 +10,6 @@
                 dict.Add("AttributeValueId", "_ATTRIBUTEVALUEID_");
                 dict.Add("InOutLineId", "_INOUTLINEID_");
                 dict.Add("OrganizationStructureId", "_ORGANIZATIONSTRUCTUREID_");
-                dict.Add("SkuId", "_SKUID_");
 // //////////////////////
                 dict.Add("bool", "_BOOL_");
                 dict.Add("bool?", "_BOOL__");

@@ -7,19 +7,16 @@
 
 	<composite-id name="InOutLineId" class="Dddml.Wms.Domain.InOutLineId">
 		<key-property name="InOutDocumentNumber" column="InOutLineIdInOutDocumentNumber" length="50"/>
-		<key-property name="SkuIdProductId" column="InOutLineIdSkuIdProductId" />
-		<key-property name="SkuIdAttributeSetInstanceId" column="InOutLineIdSkuIdAttributeSetInstanceId" />
+		<key-property name="LineNumber" column="InOutLineIdLineNumber" />
 	</composite-id>
 
 	<version name="Version" type="long" unsaved-value="0"/>
-
-	<property name="LineNumber" ></property>
 
 	<property name="Description" ></property>
 
 	<property name="LocatorId" ></property>
 
-	<property name="Product" ></property>
+	<property name="ProductId" ></property>
 
 	<property name="UomId" ></property>
 

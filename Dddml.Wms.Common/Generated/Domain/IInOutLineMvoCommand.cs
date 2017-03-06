@@ -23,13 +23,11 @@ namespace Dddml.Wms.Domain
 	public interface ICreateOrMergePatchOrDeleteInOutLineMvo : IInOutLineMvoCommand
 	{
 
-		long? LineNumber { get; set; }
-
 		string Description { get; set; }
 
 		string LocatorId { get; set; }
 
-		string Product { get; set; }
+		string ProductId { get; set; }
 
 		string UomId { get; set; }
 
@@ -151,13 +149,11 @@ namespace Dddml.Wms.Domain
 	public interface IMergePatchInOutLineMvo : ICreateOrMergePatchOrDeleteInOutLineMvo
 	{
 
-		bool IsPropertyLineNumberRemoved { get; set; }
-
 		bool IsPropertyDescriptionRemoved { get; set; }
 
 		bool IsPropertyLocatorIdRemoved { get; set; }
 
-		bool IsPropertyProductRemoved { get; set; }
+		bool IsPropertyProductIdRemoved { get; set; }
 
 		bool IsPropertyUomIdRemoved { get; set; }
 

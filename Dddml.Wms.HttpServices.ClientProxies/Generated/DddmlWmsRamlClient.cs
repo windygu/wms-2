@@ -1447,7 +1447,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual async Task<Models.InOutLineGetResponse> Get(Models.InOutLineGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "InOuts/{inOutDocumentNumber}/InOutLines/{skuId}";
+            var url = "InOuts/{inOutDocumentNumber}/InOutLines/{lineNumber}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -1456,10 +1456,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
             url = url.Replace("{inOutDocumentNumber}", request.UriParameters.InOutDocumentNumber.ToString());
 
-			if(request.UriParameters.SkuId == null)
-				throw new InvalidOperationException("Uri Parameter SkuId cannot be null");
+			if(request.UriParameters.LineNumber == null)
+				throw new InvalidOperationException("Uri Parameter LineNumber cannot be null");
 
-            url = url.Replace("{skuId}", request.UriParameters.SkuId.ToString());
+            url = url.Replace("{lineNumber}", request.UriParameters.LineNumber.ToString());
 
             url = url.Replace("?&", "?");
 
@@ -7981,15 +7981,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /InOuts/{inOutDocumentNumber}/InOutLines/{skuId}
+    /// Uri Parameters for resource /InOuts/{inOutDocumentNumber}/InOutLines/{lineNumber}
     /// </summary>
     public partial class  InOutLineUriParameters 
     {
 		[JsonProperty("inOutDocumentNumber")]
         public string InOutDocumentNumber { get; set; }
 
-		[JsonProperty("skuId")]
-        public string SkuId { get; set; }
+		[JsonProperty("lineNumber")]
+        public long? LineNumber { get; set; }
 
 
     } // end class

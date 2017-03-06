@@ -10,18 +10,6 @@ import org.dddml.wms.specialization.*;
 public class InOutLineStateDto
 {
 
-    private SkuIdDto skuId;
-
-    public SkuIdDto getSkuId()
-    {
-        return this.skuId;
-    }
-
-    public void setSkuId(SkuIdDto skuId)
-    {
-        this.skuId = skuId;
-    }
-
     private Long lineNumber;
 
     public Long getLineNumber()
@@ -58,16 +46,16 @@ public class InOutLineStateDto
         this.locatorId = locatorId;
     }
 
-    private String product;
+    private String productId;
 
-    public String getProduct()
+    public String getProductId()
     {
-        return this.product;
+        return this.productId;
     }
 
-    public void setProduct(String product)
+    public void setProductId(String productId)
     {
-        this.product = product;
+        this.productId = productId;
     }
 
     private String uomId;
@@ -333,9 +321,6 @@ public class InOutLineStateDto
         public InOutLineStateDto toInOutLineStateDto(InOutLineState state)
         {
             InOutLineStateDto dto = new InOutLineStateDto();
-            if (returnedFieldsContains("SkuId")) {
-                dto.setSkuId((state.getSkuId() == null) ? null : new SkuIdDtoWrapper(state.getSkuId()));
-            }
             if (returnedFieldsContains("LineNumber")) {
                 dto.setLineNumber(state.getLineNumber());
             }
@@ -345,8 +330,8 @@ public class InOutLineStateDto
             if (returnedFieldsContains("LocatorId")) {
                 dto.setLocatorId(state.getLocatorId());
             }
-            if (returnedFieldsContains("Product")) {
-                dto.setProduct(state.getProduct());
+            if (returnedFieldsContains("ProductId")) {
+                dto.setProductId(state.getProductId());
             }
             if (returnedFieldsContains("UomId")) {
                 dto.setUomId(state.getUomId());

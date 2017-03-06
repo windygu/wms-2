@@ -14,13 +14,6 @@ namespace Dddml.Wms.Domain
 
     public interface IInOutLineStateDto
     {
-
-        SkuIdDto SkuId
-        {
-            get;
-            set;
-        }
-
         long? LineNumber
         {
             get;
@@ -39,7 +32,7 @@ namespace Dddml.Wms.Domain
             set;
         }
 
-        string Product
+        string ProductId
         {
             get;
             set;

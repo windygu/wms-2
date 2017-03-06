@@ -186,12 +186,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [Route("{inOutDocumentNumber}/InOutLines/{skuId}")]
+        [Route("{inOutDocumentNumber}/InOutLines/{lineNumber}")]
         [HttpGet]
-        public IInOutLineStateDto GetInOutLine(string inOutDocumentNumber, string skuId)
+        public IInOutLineStateDto GetInOutLine(string inOutDocumentNumber, long lineNumber)
         {
           try {
-            var state = (InOutLineState)_inOutApplicationService.GetInOutLine(inOutDocumentNumber, (new SkuIdFlattenedDtoFormatter().Parse(skuId)).ToSkuId());
+            var state = (InOutLineState)_inOutApplicationService.GetInOutLine(inOutDocumentNumber, lineNumber);
             if (state == null) { return null; }
             var stateDto = new InOutLineStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;

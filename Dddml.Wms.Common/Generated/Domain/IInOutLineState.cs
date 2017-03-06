@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain
 {
 	public interface IInOutLineState : IInOutLineStateProperties, 
 		IGlobalIdentity<InOutLineId>, 
-		ILocalIdentity<SkuId>, 
+		ILocalIdentity<long>, 
 		ICreated<string>, 
 		IUpdated<string>, 
 		IDeleted, 

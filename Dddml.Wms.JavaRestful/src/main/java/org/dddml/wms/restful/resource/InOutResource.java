@@ -190,12 +190,12 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{inOutDocumentNumber}/InOutLines/{skuId}")
+    @Path("{inOutDocumentNumber}/InOutLines/{lineNumber}")
     @GET
-    public InOutLineStateDto getInOutLine(@PathParam("inOutDocumentNumber") String inOutDocumentNumber, @PathParam("skuId") String skuId) {
+    public InOutLineStateDto getInOutLine(@PathParam("inOutDocumentNumber") String inOutDocumentNumber, @PathParam("lineNumber") Long lineNumber) {
         try {
 
-            InOutLineState state = inOutApplicationService.getInOutLine(inOutDocumentNumber, (new SkuIdFlattenedDtoFormatter().parse(skuId)).toSkuId());
+            InOutLineState state = inOutApplicationService.getInOutLine(inOutDocumentNumber, lineNumber);
             if (state == null) { return null; }
             InOutLineStateDto.DtoConverter dtoConverter = new InOutLineStateDto.DtoConverter();
             InOutLineStateDto stateDto = dtoConverter.toInOutLineStateDto(state);

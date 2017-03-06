@@ -15,13 +15,6 @@ namespace Dddml.Wms.Domain
 
     public partial class InOutLineStateDto : IInOutLineStateDto
     {
-
-        public virtual SkuIdDto SkuId
-        {
-            get;
-            set;
-        }
-
         public virtual long? LineNumber
         {
             get;
@@ -40,7 +33,7 @@ namespace Dddml.Wms.Domain
             set;
         }
 
-        public virtual string Product
+        public virtual string ProductId
         {
             get;
             set;
@@ -169,11 +162,10 @@ namespace Dddml.Wms.Domain
         public virtual IInOutLineState ToInOutLineState()
         {
             var state = new InOutLineState(true);
-            state.SkuId = (this.SkuId == null) ? null : this.SkuId.ToSkuId();
             if (this.LineNumber != null && this.LineNumber.HasValue) { state.LineNumber = this.LineNumber.Value; }
             state.Description = this.Description;
             state.LocatorId = this.LocatorId;
-            state.Product = this.Product;
+            state.ProductId = this.ProductId;
             state.UomId = this.UomId;
             if (this.MovementQuantity != null && this.MovementQuantity.HasValue) { state.MovementQuantity = this.MovementQuantity.Value; }
             if (this.ConfirmedQuantity != null && this.ConfirmedQuantity.HasValue) { state.ConfirmedQuantity = this.ConfirmedQuantity.Value; }

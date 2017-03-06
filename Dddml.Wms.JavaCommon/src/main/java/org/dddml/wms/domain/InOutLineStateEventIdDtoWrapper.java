@@ -36,15 +36,15 @@ public class InOutLineStateEventIdDtoWrapper extends InOutLineStateEventIdDto
     }
 
     @Override
-    public SkuIdDto getSkuId()
+    public Long getLineNumber()
     {
-        return new SkuIdDtoWrapper(this.value.getSkuId());
+        return this.value.getLineNumber();
     }
 
     @Override
-    public void setSkuId(SkuIdDto skuId)
+    public void setLineNumber(Long lineNumber)
     {
-        this.value.setSkuId(skuId.toSkuId());
+        this.value.setLineNumber(lineNumber);
     }
 
     @Override

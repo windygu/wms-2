@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain
         {
             InOutLineStateEventId v = new InOutLineStateEventId();
             v.InOutDocumentNumber = this.InOutDocumentNumber;
-            v.SkuId = this.SkuId.ToSkuId();
+            v.LineNumber = this.LineNumber;
             v.InOutVersion = this.InOutVersion;
             return v;
         }
@@ -33,11 +33,9 @@ namespace Dddml.Wms.Domain
 			set;
 		}
 
-		private SkuIdDto _skuId = new SkuIdDto();
-
-		public virtual SkuIdDto SkuId { 
-			get { return this._skuId; } 
-			set { this._skuId = value; } 
+		public virtual long LineNumber { 
+			get;
+			set;
 		}
 
 		public virtual long InOutVersion { 
@@ -59,7 +57,7 @@ namespace Dddml.Wms.Domain
 
 			return true 
 				&& Object.Equals (this.InOutDocumentNumber, other.InOutDocumentNumber)
-				&& Object.Equals (this.SkuId, other.SkuId)
+				&& Object.Equals (this.LineNumber, other.LineNumber)
 				&& Object.Equals (this.InOutVersion, other.InOutVersion)
 				;
 		}
@@ -70,8 +68,8 @@ namespace Dddml.Wms.Domain
 			if (this.InOutDocumentNumber != null) {
 				hash += 13 * this.InOutDocumentNumber.GetHashCode ();
 			}
-			if (this.SkuId != null) {
-				hash += 13 * this.SkuId.GetHashCode ();
+			if (this.LineNumber != null) {
+				hash += 13 * this.LineNumber.GetHashCode ();
 			}
 			if (this.InOutVersion != null) {
 				hash += 13 * this.InOutVersion.GetHashCode ();

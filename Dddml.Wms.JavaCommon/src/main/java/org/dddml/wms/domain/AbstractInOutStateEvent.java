@@ -492,10 +492,10 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         return (InOutLineStateEventDao)ApplicationContext.current.get("InOutLineStateEventDao");
     }
 
-    protected InOutLineStateEventId newInOutLineStateEventId(SkuId skuId)
+    protected InOutLineStateEventId newInOutLineStateEventId(Long lineNumber)
     {
         InOutLineStateEventId stateEventId = new InOutLineStateEventId(this.getStateEventId().getDocumentNumber(), 
-            skuId, 
+            lineNumber, 
             this.getStateEventId().getVersion());
         return stateEventId;
     }
@@ -514,16 +514,16 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         }
     }
 
-    public InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(SkuId skuId) {
-        return new AbstractInOutLineStateEvent.SimpleInOutLineStateCreated(newInOutLineStateEventId(skuId));
+    public InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(Long lineNumber) {
+        return new AbstractInOutLineStateEvent.SimpleInOutLineStateCreated(newInOutLineStateEventId(lineNumber));
     }
 
-    public InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(SkuId skuId) {
-        return new AbstractInOutLineStateEvent.SimpleInOutLineStateMergePatched(newInOutLineStateEventId(skuId));
+    public InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(Long lineNumber) {
+        return new AbstractInOutLineStateEvent.SimpleInOutLineStateMergePatched(newInOutLineStateEventId(lineNumber));
     }
 
-    public InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(SkuId skuId) {
-        return new AbstractInOutLineStateEvent.SimpleInOutLineStateRemoved(newInOutLineStateEventId(skuId));
+    public InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(Long lineNumber) {
+        return new AbstractInOutLineStateEvent.SimpleInOutLineStateRemoved(newInOutLineStateEventId(lineNumber));
     }
 
 

@@ -17,13 +17,11 @@ namespace Dddml.Wms.Domain
 
         bool ReadOnly { get; set; }
 
-		long? LineNumber { get; set; }
-
 		string Description { get; set; }
 
 		string LocatorId { get; set; }
 
-		string Product { get; set; }
+		string ProductId { get; set; }
 
 		string UomId { get; set; }
 
@@ -145,13 +143,11 @@ namespace Dddml.Wms.Domain
 
 	public interface IInOutLineMvoStateMergePatched : IInOutLineMvoStateEvent//, IInOutLineMvoStateProperties
 	{
-		bool IsPropertyLineNumberRemoved { get; set; }
-
 		bool IsPropertyDescriptionRemoved { get; set; }
 
 		bool IsPropertyLocatorIdRemoved { get; set; }
 
-		bool IsPropertyProductRemoved { get; set; }
+		bool IsPropertyProductIdRemoved { get; set; }
 
 		bool IsPropertyUomIdRemoved { get; set; }
 

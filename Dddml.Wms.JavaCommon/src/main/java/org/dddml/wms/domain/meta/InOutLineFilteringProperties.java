@@ -11,10 +11,9 @@ public final class InOutLineFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
-            "lineNumber",
             "description",
             "locatorId",
-            "product",
+            "productId",
             "uomId",
             "movementQuantity",
             "confirmedQuantity",
@@ -36,15 +35,11 @@ public final class InOutLineFilteringProperties
             "active",
             "deleted",
             "inOutDocumentNumber",
-            "skuId.productId",
-            "skuId.attributeSetInstanceId",
             "inOutLineId.inOutDocumentNumber",
-            "inOutLineId.skuIdProductId",
-            "inOutLineId.skuIdAttributeSetInstanceId",
+            "inOutLineId.lineNumber",
     };
 
     public static final String[] propertyTypes = new String[] {
-            "Long",
             "String",
             "String",
             "String",
@@ -70,10 +65,7 @@ public final class InOutLineFilteringProperties
             "Boolean",
             "String",
             "String",
-            "String",
-            "String",
-            "String",
-            "String",
+            "Long",
     };
 
     public static final Map<String, String> propertyTypeMap;

@@ -10,20 +10,17 @@
 
 	<composite-id name="stateEventId" class="org.dddml.wms.domain.InOutLineMvoStateEventId">
 		<key-property name="inOutLineIdInOutDocumentNumber" column="InOutLineIdInOutDocumentNumber" length="50"/>
-		<key-property name="inOutLineIdSkuIdProductId" column="InOutLineIdSkuIdProductId" />
-		<key-property name="inOutLineIdSkuIdAttributeSetInstanceId" column="InOutLineIdSkuIdAttributeSetInstanceId" />
+		<key-property name="inOutLineIdLineNumber" column="InOutLineIdLineNumber" />
 		<key-property name="inOutVersion" column="InOutVersion" />
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="lineNumber" ></property>
-
 	<property name="description" ></property>
 
 	<property name="locatorId" ></property>
 
-	<property name="product" ></property>
+	<property name="productId" ></property>
 
 	<property name="uomId" ></property>
 
@@ -149,13 +146,11 @@
 
     <subclass name="AbstractInOutLineMvoStateEvent$SimpleInOutLineMvoStateMergePatched"  discriminator-value="MergePatched">
 
-        <property name="isPropertyLineNumberRemoved" />
-
         <property name="isPropertyDescriptionRemoved" />
 
         <property name="isPropertyLocatorIdRemoved" />
 
-        <property name="isPropertyProductRemoved" />
+        <property name="isPropertyProductIdRemoved" />
 
         <property name="isPropertyUomIdRemoved" />
 

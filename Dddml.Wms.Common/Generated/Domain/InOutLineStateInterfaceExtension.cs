@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain
             where TRemoveInOutLine : IRemoveInOutLine, new()
         {
             var cmd = new TRemoveInOutLine();
-            cmd.SkuId = state.SkuId;
+            cmd.LineNumber = state.LineNumber;
             return cmd;
         }
 
@@ -43,11 +43,10 @@ namespace Dddml.Wms.Domain
         {
             var cmd = new TMergePatchInOutLine();
 
-            cmd.SkuId = state.SkuId;
             cmd.LineNumber = state.LineNumber;
             cmd.Description = state.Description;
             cmd.LocatorId = state.LocatorId;
-            cmd.Product = state.Product;
+            cmd.ProductId = state.ProductId;
             cmd.UomId = state.UomId;
             cmd.MovementQuantity = state.MovementQuantity;
             cmd.ConfirmedQuantity = state.ConfirmedQuantity;
@@ -66,7 +65,7 @@ namespace Dddml.Wms.Domain
             
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.LocatorId == null) { cmd.IsPropertyLocatorIdRemoved = true; }
-            if (state.Product == null) { cmd.IsPropertyProductRemoved = true; }
+            if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
             if (state.UomId == null) { cmd.IsPropertyUomIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             return cmd;
@@ -77,11 +76,10 @@ namespace Dddml.Wms.Domain
         {
             var cmd = new TCreateInOutLine();
 
-            cmd.SkuId = state.SkuId;
             cmd.LineNumber = state.LineNumber;
             cmd.Description = state.Description;
             cmd.LocatorId = state.LocatorId;
-            cmd.Product = state.Product;
+            cmd.ProductId = state.ProductId;
             cmd.UomId = state.UomId;
             cmd.MovementQuantity = state.MovementQuantity;
             cmd.ConfirmedQuantity = state.ConfirmedQuantity;

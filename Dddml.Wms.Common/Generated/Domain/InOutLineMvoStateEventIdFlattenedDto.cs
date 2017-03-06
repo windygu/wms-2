@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain
 	public class InOutLineMvoStateEventIdFlattenedDto : IIdFlattenedDto
 	{
 
-        private static string[] _flattenedPropertyNames = new string[] { "InOutLineIdInOutDocumentNumber", "InOutLineIdSkuIdProductId", "InOutLineIdSkuIdAttributeSetInstanceId", "InOutVersion" };
+        private static string[] _flattenedPropertyNames = new string[] { "InOutLineIdInOutDocumentNumber", "InOutLineIdLineNumber", "InOutVersion" };
 
         string[] IIdFlattenedDto.FieldNames
         {
@@ -39,14 +39,9 @@ namespace Dddml.Wms.Domain
                 return typeof(string);
             }
 
-            if (fieldName.Equals("InOutLineIdSkuIdProductId", StringComparison.InvariantCultureIgnoreCase))
+            if (fieldName.Equals("InOutLineIdLineNumber", StringComparison.InvariantCultureIgnoreCase))
             {
-                return typeof(string);
-            }
-
-            if (fieldName.Equals("InOutLineIdSkuIdAttributeSetInstanceId", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return typeof(string);
+                return typeof(long);
             }
 
             if (fieldName.Equals("InOutVersion", StringComparison.InvariantCultureIgnoreCase))
@@ -89,14 +84,9 @@ namespace Dddml.Wms.Domain
 			set { _value.InOutLineId.InOutDocumentNumber = value; }
 		}
 
-		public virtual string InOutLineIdSkuIdProductId {
-			get { return _value.InOutLineId.SkuId.ProductId; }
-			set { _value.InOutLineId.SkuId.ProductId = value; }
-		}
-
-		public virtual string InOutLineIdSkuIdAttributeSetInstanceId {
-			get { return _value.InOutLineId.SkuId.AttributeSetInstanceId; }
-			set { _value.InOutLineId.SkuId.AttributeSetInstanceId = value; }
+		public virtual long InOutLineIdLineNumber {
+			get { return _value.InOutLineId.LineNumber; }
+			set { _value.InOutLineId.LineNumber = value; }
 		}
 
 		public virtual long InOutVersion { 

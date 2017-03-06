@@ -1380,17 +1380,17 @@ namespace Dddml.Wms.Domain
                 return _innerStates.GetEnumerator();
             }
 
-            public IInOutLineState Get(SkuId skuId)
+            public IInOutLineState Get(long lineNumber)
             {
                 throw new NotSupportedException();
             }
 
-            public IInOutLineState Get(SkuId skuId, bool forCreation)
+            public IInOutLineState Get(long lineNumber, bool forCreation)
             {
                 throw new NotSupportedException();
             }
 
-            public IInOutLineState Get(SkuId skuId, bool forCreation, bool nullAllowed)
+            public IInOutLineState Get(long lineNumber, bool forCreation, bool nullAllowed)
             {
                 throw new NotSupportedException();
             }

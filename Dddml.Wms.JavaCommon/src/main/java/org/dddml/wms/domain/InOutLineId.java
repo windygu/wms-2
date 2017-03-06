@@ -17,46 +17,26 @@ public class InOutLineId implements Serializable
         this.inOutDocumentNumber = inOutDocumentNumber;
     }
 
-    private SkuId skuId = new SkuId();
+    private Long lineNumber;
 
-    public SkuId getSkuId()
+    public Long getLineNumber()
     {
-        return this.skuId;
+        return this.lineNumber;
     }
 
-    public void setSkuId(SkuId skuId)
+    public void setLineNumber(Long lineNumber)
     {
-        this.skuId = skuId;
-    }
-
-    public String getSkuIdProductId()
-    {
-        return getSkuId().getProductId();
-    }
-
-    public void setSkuIdProductId(String skuIdProductId)
-    {
-        getSkuId().setProductId(skuIdProductId);
-    }
-
-    public String getSkuIdAttributeSetInstanceId()
-    {
-        return getSkuId().getAttributeSetInstanceId();
-    }
-
-    public void setSkuIdAttributeSetInstanceId(String skuIdAttributeSetInstanceId)
-    {
-        getSkuId().setAttributeSetInstanceId(skuIdAttributeSetInstanceId);
+        this.lineNumber = lineNumber;
     }
 
     public InOutLineId()
     {
     }
 
-    public InOutLineId(String inOutDocumentNumber, SkuId skuId)
+    public InOutLineId(String inOutDocumentNumber, Long lineNumber)
     {
         this.inOutDocumentNumber = inOutDocumentNumber;
-        this.skuId = skuId;
+        this.lineNumber = lineNumber;
     }
 
     @Override
@@ -72,7 +52,7 @@ public class InOutLineId implements Serializable
         InOutLineId other = (InOutLineId)obj;
         return true 
             && (inOutDocumentNumber == other.inOutDocumentNumber || (inOutDocumentNumber != null && inOutDocumentNumber.equals(other.inOutDocumentNumber)))
-            && (skuId == other.skuId || (skuId != null && skuId.equals(other.skuId)))
+            && (lineNumber == other.lineNumber || (lineNumber != null && lineNumber.equals(other.lineNumber)))
             ;
     }
 
@@ -83,8 +63,8 @@ public class InOutLineId implements Serializable
         if (this.inOutDocumentNumber != null) {
             hash += 13 * this.inOutDocumentNumber.hashCode();
         }
-        if (this.skuId != null) {
-            hash += 13 * this.skuId.hashCode();
+        if (this.lineNumber != null) {
+            hash += 13 * this.lineNumber.hashCode();
         }
         return hash;
     }
