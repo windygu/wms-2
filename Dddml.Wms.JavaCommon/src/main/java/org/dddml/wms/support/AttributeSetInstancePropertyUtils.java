@@ -10,6 +10,7 @@ import org.dddml.wms.domain.*;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import org.dddml.wms.domain.attributesetinstance.*;
 
 
 public class AttributeSetInstancePropertyUtils {

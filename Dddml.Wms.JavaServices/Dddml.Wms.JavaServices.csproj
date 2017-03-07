@@ -41,8 +41,123 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupEventStore.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupStateRepository.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldStateDao.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldStateEventDao.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\hibernate\GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoEventStore.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoStateRepository.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\hibernate\GenerateAttributeSetInstanceDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetInstanceDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\hibernate\HibernateAttributeSetInstanceEventStore.java">
+      <DependentUpon>GenerateAttributeSetInstanceDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\hibernate\HibernateAttributeSetInstanceStateQueryRepository.java">
+      <DependentUpon>GenerateAttributeSetInstanceDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\hibernate\HibernateAttributeSetInstanceStateRepository.java">
+      <DependentUpon>GenerateAttributeSetInstanceDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\GenerateAttributeSetDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeSetEventStore.java">
+      <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeSetStateQueryRepository.java">
+      <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeSetStateRepository.java">
+      <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeUseStateDao.java">
+      <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeUseStateEventDao.java">
+      <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeusemvo\hibernate\GenerateAttributeUseMvoDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeUseMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeusemvo\hibernate\HibernateAttributeUseMvoEventStore.java">
+      <DependentUpon>GenerateAttributeUseMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeusemvo\hibernate\HibernateAttributeUseMvoStateQueryRepository.java">
+      <DependentUpon>GenerateAttributeUseMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeusemvo\hibernate\HibernateAttributeUseMvoStateRepository.java">
+      <DependentUpon>GenerateAttributeUseMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributevaluemvo\hibernate\GenerateAttributeValueMvoDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeValueMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributevaluemvo\hibernate\HibernateAttributeValueMvoEventStore.java">
+      <DependentUpon>GenerateAttributeValueMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributevaluemvo\hibernate\HibernateAttributeValueMvoStateQueryRepository.java">
+      <DependentUpon>GenerateAttributeValueMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributevaluemvo\hibernate\HibernateAttributeValueMvoStateRepository.java">
+      <DependentUpon>GenerateAttributeValueMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\GenerateAttributeDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeEventStore.java">
+      <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeStateQueryRepository.java">
+      <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeStateRepository.java">
+      <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateDao.java">
+      <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateEventDao.java">
+      <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateHibernateTrees.txt</LastGenOutput>
@@ -124,6 +239,126 @@
     <EmbeddedResource Include="src\main\resources\config\AggregatesHibernateConfig.xml">
       <DependentUpon>GenerateAggregatesConfig.tt</DependentUpon>
     </EmbeddedResource>
+    <Content Include="src\main\java\org\dddml\wms\domain\inoutlinemvo\hibernate\GenerateInOutLineMvoDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInOutLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inoutlinemvo\hibernate\HibernateInOutLineMvoEventStore.java">
+      <DependentUpon>GenerateInOutLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inoutlinemvo\hibernate\HibernateInOutLineMvoStateQueryRepository.java">
+      <DependentUpon>GenerateInOutLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inoutlinemvo\hibernate\HibernateInOutLineMvoStateRepository.java">
+      <DependentUpon>GenerateInOutLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\GenerateInOutDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutEventStore.java">
+      <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutLineStateDao.java">
+      <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutLineStateEventDao.java">
+      <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutStateQueryRepository.java">
+      <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutStateRepository.java">
+      <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\GenerateLocatorDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorEventStore.java">
+      <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorStateQueryRepository.java">
+      <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorStateRepository.java">
+      <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorTreeLocatorStateQueryRepository.java">
+      <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrganizationStructureTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\hibernate\HibernateOrganizationStructureTypeEventStore.java">
+      <DependentUpon>GenerateOrganizationStructureTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\hibernate\HibernateOrganizationStructureTypeStateQueryRepository.java">
+      <DependentUpon>GenerateOrganizationStructureTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\hibernate\HibernateOrganizationStructureTypeStateRepository.java">
+      <DependentUpon>GenerateOrganizationStructureTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\GenerateOrganizationStructureDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrganizationStructureDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationStructureEventStore.java">
+      <DependentUpon>GenerateOrganizationStructureDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationStructureStateQueryRepository.java">
+      <DependentUpon>GenerateOrganizationStructureDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationStructureStateRepository.java">
+      <DependentUpon>GenerateOrganizationStructureDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationTreeOrganizationStructureStateQueryRepository.java">
+      <DependentUpon>GenerateOrganizationStructureDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\GenerateOrganizationDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrganizationDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\HibernateOrganizationEventStore.java">
+      <DependentUpon>GenerateOrganizationDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\HibernateOrganizationStateQueryRepository.java">
+      <DependentUpon>GenerateOrganizationDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\HibernateOrganizationStateRepository.java">
+      <DependentUpon>GenerateOrganizationDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\GenerateWarehouseDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateWarehouseDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\HibernateWarehouseEventStore.java">
+      <DependentUpon>GenerateWarehouseDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\HibernateWarehouseStateQueryRepository.java">
+      <DependentUpon>GenerateWarehouseDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\HibernateWarehouseStateRepository.java">
+      <DependentUpon>GenerateWarehouseDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\LoadBoundedContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LoadBoundedContext.txt</LastGenOutput>
+      <LastOutputs>.\LoadBoundedContext.txt</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\LoadBoundedContext.txt">
+      <DependentUpon>LoadBoundedContext.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Content>
     <Content Include="src\main\resources\config\DatabaseConfig.xml" />
     <Content Include="src\main\resources\config\DomainConfig.xml" />
     <Content Include="src\main\resources\config\GenerateAggregatesConfig.tt">
@@ -266,6 +501,156 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\GenerateAttributeDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateAttributeDomainHibernate.txt
+.\HibernateAttributeEventStore.java
+.\HibernateAttributeStateQueryRepository.java
+.\HibernateAttributeStateRepository.java
+.\HibernateAttributeValueStateDao.java
+.\HibernateAttributeValueStateEventDao.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\GenerateAttributeSetDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateAttributeSetDomainHibernate.txt
+.\HibernateAttributeSetEventStore.java
+.\HibernateAttributeSetStateQueryRepository.java
+.\HibernateAttributeSetStateRepository.java
+.\HibernateAttributeUseStateDao.java
+.\HibernateAttributeUseStateEventDao.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\GenerateInOutDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInOutDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateInOutDomainHibernate.txt
+.\HibernateInOutEventStore.java
+.\HibernateInOutLineStateDao.java
+.\HibernateInOutLineStateEventDao.java
+.\HibernateInOutStateQueryRepository.java
+.\HibernateInOutStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\GenerateOrganizationDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrganizationDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrganizationDomainHibernate.txt
+.\HibernateOrganizationEventStore.java
+.\HibernateOrganizationStateQueryRepository.java
+.\HibernateOrganizationStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrganizationStructureTypeDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrganizationStructureTypeDomainHibernate.txt
+.\HibernateOrganizationStructureTypeEventStore.java
+.\HibernateOrganizationStructureTypeStateQueryRepository.java
+.\HibernateOrganizationStructureTypeStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\GenerateOrganizationStructureDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrganizationStructureDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrganizationStructureDomainHibernate.txt
+.\HibernateOrganizationStructureEventStore.java
+.\HibernateOrganizationStructureStateQueryRepository.java
+.\HibernateOrganizationStructureStateRepository.java
+.\HibernateOrganizationTreeOrganizationStructureStateQueryRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\GenerateWarehouseDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateWarehouseDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateWarehouseDomainHibernate.txt
+.\HibernateWarehouseEventStore.java
+.\HibernateWarehouseStateQueryRepository.java
+.\HibernateWarehouseStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\GenerateLocatorDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateLocatorDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateLocatorDomainHibernate.txt
+.\HibernateLocatorEventStore.java
+.\HibernateLocatorStateQueryRepository.java
+.\HibernateLocatorStateRepository.java
+.\HibernateLocatorTreeLocatorStateQueryRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\hibernate\GenerateAttributeSetInstanceDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstanceDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateAttributeSetInstanceDomainHibernate.txt
+.\HibernateAttributeSetInstanceEventStore.java
+.\HibernateAttributeSetInstanceStateQueryRepository.java
+.\HibernateAttributeSetInstanceStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.txt
+.\HibernateAttributeSetInstanceExtensionFieldGroupEventStore.java
+.\HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository.java
+.\HibernateAttributeSetInstanceExtensionFieldGroupStateRepository.java
+.\HibernateAttributeSetInstanceExtensionFieldStateDao.java
+.\HibernateAttributeSetInstanceExtensionFieldStateEventDao.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributevaluemvo\hibernate\GenerateAttributeValueMvoDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeValueMvoDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateAttributeValueMvoDomainHibernate.txt
+.\HibernateAttributeValueMvoEventStore.java
+.\HibernateAttributeValueMvoStateQueryRepository.java
+.\HibernateAttributeValueMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributeusemvo\hibernate\GenerateAttributeUseMvoDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeUseMvoDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateAttributeUseMvoDomainHibernate.txt
+.\HibernateAttributeUseMvoEventStore.java
+.\HibernateAttributeUseMvoStateQueryRepository.java
+.\HibernateAttributeUseMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inoutlinemvo\hibernate\GenerateInOutLineMvoDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInOutLineMvoDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateInOutLineMvoDomainHibernate.txt
+.\HibernateInOutLineMvoEventStore.java
+.\HibernateInOutLineMvoStateQueryRepository.java
+.\HibernateInOutLineMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\hibernate\GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.txt
+.\HibernateAttributeSetInstanceExtensionFieldMvoEventStore.java
+.\HibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository.java
+.\HibernateAttributeSetInstanceExtensionFieldMvoStateRepository.java
+</LastOutputs>
     </Content>
   </ItemGroup>
   <ItemGroup>

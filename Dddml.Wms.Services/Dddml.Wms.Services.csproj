@@ -88,8 +88,155 @@
     <Compile Include="Domain\AttributeSetInstance\AttributeSetInstanceIdGenerator.cs" />
     <Compile Include="Domain\NHibernate\NodaMoneyType.cs" />
     <Compile Include="Domain\Services\NHibernate\AttributeSetService.cs" />
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\AttributeSetInstanceExtensionFieldGroupApplicationService.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\NHibernateAttributeSetInstanceExtensionFieldGroupEventStore.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\NHibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\NHibernateAttributeSetInstanceExtensionFieldGroupStateRepository.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\NHibernateAttributeSetInstanceExtensionFieldStateDao.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\NHibernateAttributeSetInstanceExtensionFieldStateEventDao.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\AttributeSetInstanceExtensionFieldMvoApplicationService.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\NHibernateAttributeSetInstanceExtensionFieldMvoEventStore.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\NHibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\NHibernateAttributeSetInstanceExtensionFieldMvoStateRepository.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstance\NHibernate\AttributeSetInstanceApplicationService.cs">
+      <DependentUpon>GenerateAttributeSetInstanceDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstance\NHibernate\NHibernateAttributeSetInstanceEventStore.cs">
+      <DependentUpon>GenerateAttributeSetInstanceDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstance\NHibernate\NHibernateAttributeSetInstanceStateQueryRepository.cs">
+      <DependentUpon>GenerateAttributeSetInstanceDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSetInstance\NHibernate\NHibernateAttributeSetInstanceStateRepository.cs">
+      <DependentUpon>GenerateAttributeSetInstanceDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSet\NHibernate\AttributeSetApplicationService.cs">
+      <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSet\NHibernate\NHibernateAttributeSetEventStore.cs">
+      <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSet\NHibernate\NHibernateAttributeSetStateQueryRepository.cs">
+      <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSet\NHibernate\NHibernateAttributeSetStateRepository.cs">
+      <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSet\NHibernate\NHibernateAttributeUseStateDao.cs">
+      <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeSet\NHibernate\NHibernateAttributeUseStateEventDao.cs">
+      <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeUseMvo\NHibernate\AttributeUseMvoApplicationService.cs">
+      <DependentUpon>GenerateAttributeUseMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeUseMvo\NHibernate\NHibernateAttributeUseMvoEventStore.cs">
+      <DependentUpon>GenerateAttributeUseMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeUseMvo\NHibernate\NHibernateAttributeUseMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateAttributeUseMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeUseMvo\NHibernate\NHibernateAttributeUseMvoStateRepository.cs">
+      <DependentUpon>GenerateAttributeUseMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeValueMvo\NHibernate\AttributeValueMvoApplicationService.cs">
+      <DependentUpon>GenerateAttributeValueMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeValueMvo\NHibernate\NHibernateAttributeValueMvoEventStore.cs">
+      <DependentUpon>GenerateAttributeValueMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeValueMvo\NHibernate\NHibernateAttributeValueMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateAttributeValueMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeValueMvo\NHibernate\NHibernateAttributeValueMvoStateRepository.cs">
+      <DependentUpon>GenerateAttributeValueMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\NHibernate\AttributeApplicationService.cs">
+      <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeEventStore.cs">
+      <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeStateQueryRepository.cs">
+      <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeStateRepository.cs">
+      <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeValueStateDao.cs">
+      <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeValueStateEventDao.cs">
+      <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutLineMvo\NHibernate\InOutLineMvoApplicationService.cs">
+      <DependentUpon>GenerateInOutLineMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutLineMvo\NHibernate\NHibernateInOutLineMvoEventStore.cs">
+      <DependentUpon>GenerateInOutLineMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutLineMvo\NHibernate\NHibernateInOutLineMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateInOutLineMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutLineMvo\NHibernate\NHibernateInOutLineMvoStateRepository.cs">
+      <DependentUpon>GenerateInOutLineMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOut\NHibernate\InOutApplicationService.cs">
+      <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutEventStore.cs">
+      <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutLineStateDao.cs">
+      <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutLineStateEventDao.cs">
+      <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutStateQueryRepository.cs">
+      <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutStateRepository.cs">
+      <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\LocatorTreeApplicationService.cs">
       <DependentUpon>GenerateBoundedContextTreeApplicationServices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Locator\NHibernate\LocatorApplicationService.cs">
+      <DependentUpon>GenerateLocatorDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Locator\NHibernate\NHibernateLocatorEventStore.cs">
+      <DependentUpon>GenerateLocatorDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Locator\NHibernate\NHibernateLocatorStateQueryRepository.cs">
+      <DependentUpon>GenerateLocatorDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Locator\NHibernate\NHibernateLocatorStateQueryRepositoryLocatorTree.cs">
+      <DependentUpon>GenerateLocatorDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Locator\NHibernate\NHibernateLocatorStateRepository.cs">
+      <DependentUpon>GenerateLocatorDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\NHibernate\NHibernateLocatorTreeRepository.cs">
       <DependentUpon>GenerateNHibernateTrees.tt</DependentUpon>
@@ -97,8 +244,59 @@
     <Compile Include="Generated\Domain\NHibernate\NHibernateOrganizationTreeRepository.cs">
       <DependentUpon>GenerateNHibernateTrees.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructureType\NHibernate\NHibernateOrganizationStructureTypeEventStore.cs">
+      <DependentUpon>GenerateOrganizationStructureTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructureType\NHibernate\NHibernateOrganizationStructureTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateOrganizationStructureTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructureType\NHibernate\NHibernateOrganizationStructureTypeStateRepository.cs">
+      <DependentUpon>GenerateOrganizationStructureTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructureType\NHibernate\OrganizationStructureTypeApplicationService.cs">
+      <DependentUpon>GenerateOrganizationStructureTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructure\NHibernate\NHibernateOrganizationStructureEventStore.cs">
+      <DependentUpon>GenerateOrganizationStructureDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructure\NHibernate\NHibernateOrganizationStructureStateQueryRepository.cs">
+      <DependentUpon>GenerateOrganizationStructureDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructure\NHibernate\NHibernateOrganizationStructureStateQueryRepositoryOrganizationTree.cs">
+      <DependentUpon>GenerateOrganizationStructureDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructure\NHibernate\NHibernateOrganizationStructureStateRepository.cs">
+      <DependentUpon>GenerateOrganizationStructureDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructure\NHibernate\OrganizationStructureApplicationService.cs">
+      <DependentUpon>GenerateOrganizationStructureDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\OrganizationTreeApplicationService.cs">
       <DependentUpon>GenerateBoundedContextTreeApplicationServices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Organization\NHibernate\NHibernateOrganizationEventStore.cs">
+      <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Organization\NHibernate\NHibernateOrganizationStateQueryRepository.cs">
+      <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Organization\NHibernate\NHibernateOrganizationStateRepository.cs">
+      <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Organization\NHibernate\OrganizationApplicationService.cs">
+      <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Warehouse\NHibernate\NHibernateWarehouseEventStore.cs">
+      <DependentUpon>GenerateWarehouseDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Warehouse\NHibernate\NHibernateWarehouseStateQueryRepository.cs">
+      <DependentUpon>GenerateWarehouseDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Warehouse\NHibernate\NHibernateWarehouseStateRepository.cs">
+      <DependentUpon>GenerateWarehouseDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Warehouse\NHibernate\WarehouseApplicationService.cs">
+      <DependentUpon>GenerateWarehouseDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -137,6 +335,41 @@
     <EmbeddedResource Include="Config\TreesConfig.xml">
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\AttributeSetInstance\NHibernate\GenerateAttributeSetInstanceDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetInstanceDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\AttributeSet\NHibernate\GenerateAttributeSetDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\AttributeUseMvo\NHibernate\GenerateAttributeUseMvoDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeUseMvoDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\AttributeValueMvo\NHibernate\GenerateAttributeValueMvoDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeValueMvoDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Attribute\NHibernate\GenerateAttributeDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\GenerateBoundedContextTreeApplicationServices.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextTreeApplicationServices.txt</LastGenOutput>
@@ -150,6 +383,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateBoundedContextTreeApplicationServices.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\InOutLineMvo\NHibernate\GenerateInOutLineMvoDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInOutLineMvoDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\InOut\NHibernate\GenerateInOutDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Locator\NHibernate\GenerateLocatorDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateLocatorDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\NHibernate\GenerateNHibernateTrees.txt">
       <AutoGen>True</AutoGen>
@@ -222,6 +470,26 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeSetInstanceExtensionFieldMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Generated\Domain\OrganizationStructureType\NHibernate\GenerateOrganizationStructureTypeDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrganizationStructureTypeDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\OrganizationStructure\NHibernate\GenerateOrganizationStructureDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrganizationStructureDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Organization\NHibernate\GenerateOrganizationDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Warehouse\NHibernate\GenerateWarehouseDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateWarehouseDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\NHibernate\Mappings\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
@@ -352,6 +620,170 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Attribute\NHibernate\GenerateAttributeDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeApplicationService.cs
+.\GenerateAttributeDomainNHibernate.txt
+.\NHibernateAttributeEventStore.cs
+.\NHibernateAttributeStateQueryRepository.cs
+.\NHibernateAttributeStateRepository.cs
+.\NHibernateAttributeValueStateDao.cs
+.\NHibernateAttributeValueStateEventDao.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\AttributeSet\NHibernate\GenerateAttributeSetDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeSetApplicationService.cs
+.\GenerateAttributeSetDomainNHibernate.txt
+.\NHibernateAttributeSetEventStore.cs
+.\NHibernateAttributeSetStateQueryRepository.cs
+.\NHibernateAttributeSetStateRepository.cs
+.\NHibernateAttributeUseStateDao.cs
+.\NHibernateAttributeUseStateEventDao.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\InOut\NHibernate\GenerateInOutDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInOutDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateInOutDomainNHibernate.txt
+.\InOutApplicationService.cs
+.\NHibernateInOutEventStore.cs
+.\NHibernateInOutLineStateDao.cs
+.\NHibernateInOutLineStateEventDao.cs
+.\NHibernateInOutStateQueryRepository.cs
+.\NHibernateInOutStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Organization\NHibernate\GenerateOrganizationDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrganizationDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrganizationDomainNHibernate.txt
+.\NHibernateOrganizationEventStore.cs
+.\NHibernateOrganizationStateQueryRepository.cs
+.\NHibernateOrganizationStateRepository.cs
+.\OrganizationApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\OrganizationStructureType\NHibernate\GenerateOrganizationStructureTypeDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrganizationStructureTypeDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrganizationStructureTypeDomainNHibernate.txt
+.\NHibernateOrganizationStructureTypeEventStore.cs
+.\NHibernateOrganizationStructureTypeStateQueryRepository.cs
+.\NHibernateOrganizationStructureTypeStateRepository.cs
+.\OrganizationStructureTypeApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\OrganizationStructure\NHibernate\GenerateOrganizationStructureDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrganizationStructureDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrganizationStructureDomainNHibernate.txt
+.\NHibernateOrganizationStructureEventStore.cs
+.\NHibernateOrganizationStructureStateQueryRepository.cs
+.\NHibernateOrganizationStructureStateQueryRepositoryOrganizationTree.cs
+.\NHibernateOrganizationStructureStateRepository.cs
+.\OrganizationStructureApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Warehouse\NHibernate\GenerateWarehouseDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateWarehouseDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateWarehouseDomainNHibernate.txt
+.\NHibernateWarehouseEventStore.cs
+.\NHibernateWarehouseStateQueryRepository.cs
+.\NHibernateWarehouseStateRepository.cs
+.\WarehouseApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Locator\NHibernate\GenerateLocatorDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateLocatorDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateLocatorDomainNHibernate.txt
+.\LocatorApplicationService.cs
+.\NHibernateLocatorEventStore.cs
+.\NHibernateLocatorStateQueryRepository.cs
+.\NHibernateLocatorStateQueryRepositoryLocatorTree.cs
+.\NHibernateLocatorStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\AttributeSetInstance\NHibernate\GenerateAttributeSetInstanceDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstanceDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeSetInstanceApplicationService.cs
+.\GenerateAttributeSetInstanceDomainNHibernate.txt
+.\NHibernateAttributeSetInstanceEventStore.cs
+.\NHibernateAttributeSetInstanceStateQueryRepository.cs
+.\NHibernateAttributeSetInstanceStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeSetInstanceExtensionFieldGroupApplicationService.cs
+.\GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.txt
+.\NHibernateAttributeSetInstanceExtensionFieldGroupEventStore.cs
+.\NHibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository.cs
+.\NHibernateAttributeSetInstanceExtensionFieldGroupStateRepository.cs
+.\NHibernateAttributeSetInstanceExtensionFieldStateDao.cs
+.\NHibernateAttributeSetInstanceExtensionFieldStateEventDao.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\AttributeValueMvo\NHibernate\GenerateAttributeValueMvoDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeValueMvoDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeValueMvoApplicationService.cs
+.\GenerateAttributeValueMvoDomainNHibernate.txt
+.\NHibernateAttributeValueMvoEventStore.cs
+.\NHibernateAttributeValueMvoStateQueryRepository.cs
+.\NHibernateAttributeValueMvoStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\AttributeUseMvo\NHibernate\GenerateAttributeUseMvoDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeUseMvoDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeUseMvoApplicationService.cs
+.\GenerateAttributeUseMvoDomainNHibernate.txt
+.\NHibernateAttributeUseMvoEventStore.cs
+.\NHibernateAttributeUseMvoStateQueryRepository.cs
+.\NHibernateAttributeUseMvoStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\InOutLineMvo\NHibernate\GenerateInOutLineMvoDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInOutLineMvoDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateInOutLineMvoDomainNHibernate.txt
+.\InOutLineMvoApplicationService.cs
+.\NHibernateInOutLineMvoEventStore.cs
+.\NHibernateInOutLineMvoStateQueryRepository.cs
+.\NHibernateInOutLineMvoStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeSetInstanceExtensionFieldMvoApplicationService.cs
+.\GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.txt
+.\NHibernateAttributeSetInstanceExtensionFieldMvoEventStore.cs
+.\NHibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository.cs
+.\NHibernateAttributeSetInstanceExtensionFieldMvoStateRepository.cs
+</LastOutputs>
     </Content>
   </ItemGroup>
   <ItemGroup>
