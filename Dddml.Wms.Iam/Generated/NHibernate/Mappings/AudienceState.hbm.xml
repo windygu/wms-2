@@ -5,9 +5,7 @@
   
   <class name="Dddml.Wms.Domain.Audience.AudienceState" table="Audiences">
 
-	<id name="ClientId" length="50">
-		<generator class="assigned"/>
-	</id>
+	<id name="ClientId" length="50"><generator class="assigned"/></id>
 
 	<version name="Version" type="long" unsaved-value="0"/>
 

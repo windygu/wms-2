@@ -5,13 +5,11 @@
   
   <class name="Dddml.Wms.Domain.Locator.LocatorState" table="Locators">
 
-	<id name="LocatorId" length="50">
-		<generator class="assigned"/>
-	</id>
+	<id name="LocatorId" length="50"><generator class="assigned"/></id>
 
 	<version name="Version" type="long" unsaved-value="0"/>
 
-	<property name="WarehouseId" not-null="true"></property>
+	<property name="WarehouseId" ><column name="WarehouseId" not-null="true" /></property>
 
 	<property name="ParentLocatorId" ></property>
 

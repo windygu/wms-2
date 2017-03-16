@@ -1,37 +1,4 @@
 
-    alter table AttributeSetInstances 
-        add column CommandId VARCHAR(255);
-    create table AttributeSetInstanceExtensionField_RV (
-        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
-       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
-       AttrSetInstEFGroupVersion BIGINT not null,
-       Name VARCHAR(255),
-       Type VARCHAR(255),
-       Length INTEGER,
-       Alias VARCHAR(255),
-       Description VARCHAR(255),
-       Version BIGINT,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       AttrSetInstEFGroupFieldType VARCHAR(255),
-       AttrSetInstEFGroupFieldLength INTEGER,
-       AttrSetInstEFGroupFieldCount INTEGER,
-       AttrSetInstEFGroupNameFormat VARCHAR(255),
-       AttrSetInstEFGroupDescription VARCHAR(255),
-       AttrSetInstEFGroupCreatedBy VARCHAR(255),
-       AttrSetInstEFGroupCreatedAt DATETIME,
-       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
-       AttrSetInstEFGroupUpdatedAt DATETIME,
-       AttrSetInstEFGroupActive TINYINT(1),
-       AttrSetInstEFGroupDeleted TINYINT(1),
-       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex),
-      unique (Name),
-      unique (Alias)
-    );
     create table AttributeValue_RV (
         AttributeValueIdAttributeId VARCHAR(50) not null,
        AttributeValueIdValue VARCHAR(50) not null,
@@ -90,15 +57,54 @@
        AttributeSetDeleted TINYINT(1),
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
     );
+    create table AttributeSetInstanceExtensionField_RV (
+        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
+       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
+       AttrSetInstEFGroupVersion BIGINT not null,
+       Name VARCHAR(255),
+       Type VARCHAR(255),
+       Length INTEGER,
+       Alias VARCHAR(255),
+       Description VARCHAR(255),
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       AttrSetInstEFGroupFieldType VARCHAR(255),
+       AttrSetInstEFGroupFieldLength INTEGER,
+       AttrSetInstEFGroupFieldCount INTEGER,
+       AttrSetInstEFGroupNameFormat VARCHAR(255),
+       AttrSetInstEFGroupDescription VARCHAR(255),
+       AttrSetInstEFGroupCreatedBy VARCHAR(255),
+       AttrSetInstEFGroupCreatedAt DATETIME,
+       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
+       AttrSetInstEFGroupUpdatedAt DATETIME,
+       AttrSetInstEFGroupActive TINYINT(1),
+       AttrSetInstEFGroupDeleted TINYINT(1),
+       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex),
+      unique (Name),
+      unique (Alias)
+    );
+    alter table InOutLines 
+        add column InOutLineIdLineNumber BIGINT;
+    alter table InOutLines 
+        add column ProductId VARCHAR(255);
+    alter table InOutLineStateEvents 
+        add column InOutLineIdLineNumber BIGINT;
+    alter table InOutLineStateEvents 
+        add column ProductId VARCHAR(255);
+    alter table InOutLineStateEvents 
+        add column IsPropertyProductIdRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
-       InOutLineIdSkuIdProductId VARCHAR(255) not null,
-       InOutLineIdSkuIdAttributeSetInstanceId VARCHAR(255) not null,
+       InOutLineIdLineNumber BIGINT not null,
        InOutVersion BIGINT not null,
-       LineNumber BIGINT,
        Description VARCHAR(255),
        LocatorId VARCHAR(255),
-       Product VARCHAR(255),
+       ProductId VARCHAR(255),
        UomId VARCHAR(255),
        MovementQuantity NUMERIC(19,5),
        ConfirmedQuantity NUMERIC(19,5),
@@ -161,5 +167,11 @@
        InOutUpdatedAt DATETIME,
        InOutActive TINYINT(1),
        InOutDeleted TINYINT(1),
-       primary key (InOutLineIdInOutDocumentNumber, InOutLineIdSkuIdProductId, InOutLineIdSkuIdAttributeSetInstanceId)
+       primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
+    alter table InOutLineMvoStateEvents 
+        add column InOutLineIdLineNumber BIGINT;
+    alter table InOutLineMvoStateEvents 
+        add column ProductId VARCHAR(255);
+    alter table InOutLineMvoStateEvents 
+        add column IsPropertyProductIdRemoved TINYINT(1);

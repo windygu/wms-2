@@ -5,9 +5,7 @@
   
   <class name="Dddml.Wms.Domain.Attribute.AttributeState" table="Attributes">
 
-	<id name="AttributeId" length="50">
-		<generator class="assigned"/>
-	</id>
+	<id name="AttributeId" length="50"><generator class="assigned"/></id>
 
 	<version name="Version" type="long" unsaved-value="0"/>
 
@@ -27,7 +25,7 @@
 
 	<property name="IsList" ></property>
 
-	<property name="FieldName" unique-key="UniqueFieldName"></property>
+	<property name="FieldName" ><column name="FieldName" unique-key="UniqueFieldName" /></property>
 
 	<property name="ReferenceId" ></property>
 

@@ -1,14 +1,4 @@
 
-    drop table if exists AttributeSetInstances;
-
-    drop table if exists AttributeSetInstanceExtensionFieldGroups;
-
-    drop table if exists AttributeSetInstanceExtensionFieldGroupStateEvents;
-
-    drop table if exists AttributeSetInstanceExtensionFields;
-
-    drop table if exists AttributeSetInstanceExtensionFieldStateEvents;
-
     drop table if exists Attributes;
 
     drop table if exists AttributeStateEvents;
@@ -25,9 +15,15 @@
 
     drop table if exists AttributeUseStateEvents;
 
-    drop table if exists AttributeSetInstanceExtensionField_RV;
+    drop table if exists AttributeSetInstances;
 
-    drop table if exists AttributeSetInstanceExtensionFieldMvoStateEvents;
+    drop table if exists AttributeSetInstanceExtensionFieldGroups;
+
+    drop table if exists AttributeSetInstanceExtensionFieldGroupStateEvents;
+
+    drop table if exists AttributeSetInstanceExtensionFields;
+
+    drop table if exists AttributeSetInstanceExtensionFieldStateEvents;
 
     drop table if exists AttributeValue_RV;
 
@@ -36,6 +32,10 @@
     drop table if exists AttributeUse_RV;
 
     drop table if exists AttributeUseMvoStateEvents;
+
+    drop table if exists AttributeSetInstanceExtensionField_RV;
+
+    drop table if exists AttributeSetInstanceExtensionFieldMvoStateEvents;
 
     drop table if exists InOuts;
 

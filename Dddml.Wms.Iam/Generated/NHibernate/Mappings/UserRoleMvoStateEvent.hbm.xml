@@ -6,9 +6,9 @@
   <class name="UserRoleMvoStateEventBase" table="UserRoleMvoStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.UserRoleMvo.UserRoleMvoStateEventId">
-		<key-property name="UserRoleIdUserId" column="UserRoleIdUserId" length="50"/>
-		<key-property name="UserRoleIdRoleId" column="UserRoleIdRoleId" length="50"/>
-		<key-property name="UserVersion" column="UserVersion" />
+		<key-property name="UserRoleIdUserId" ><column name="UserRoleIdUserId" length="50" /></key-property>
+		<key-property name="UserRoleIdRoleId" ><column name="UserRoleIdRoleId" length="50" /></key-property>
+		<key-property name="UserVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />

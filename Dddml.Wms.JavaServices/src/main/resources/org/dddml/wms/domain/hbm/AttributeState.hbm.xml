@@ -8,9 +8,7 @@
   
   <class name="org.dddml.wms.domain.attribute.AbstractAttributeState$SimpleAttributeState" table="Attributes">
 
-	<id name="attributeId" length="50">
-		<generator class="assigned"/>
-	</id>
+	<id name="AttributeId" length="50"><generator class="assigned"/></id>
 
 	<version name="version" type="long" />
 
@@ -30,7 +28,7 @@
 
 	<property name="isList" ></property>
 
-	<property name="fieldName" unique-key="UniqueFieldName"></property>
+	<property name="fieldName" ><column name="FieldName" unique-key="UniqueFieldName" /></property>
 
 	<property name="referenceId" ></property>
 

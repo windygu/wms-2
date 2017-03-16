@@ -9,8 +9,8 @@
   <class name="org.dddml.wms.domain.attributeset.AbstractAttributeUseState$SimpleAttributeUseState" table="AttributeUses">
 
 	<composite-id name="attributeSetAttributeUseId" class="org.dddml.wms.domain.attributeset.AttributeSetAttributeUseId">
-		<key-property name="attributeSetId" column="AttributeSetAttributeUseIdAttributeSetId" length="50"/>
-		<key-property name="attributeId" column="AttributeSetAttributeUseIdAttributeId" length="50"/>
+		<key-property name="AttributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>
+		<key-property name="AttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
 	</composite-id>
 
 	<version name="version" type="long" />

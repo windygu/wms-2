@@ -6,9 +6,9 @@
   <class name="InOutLineStateEventBase" table="InOutLineStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.InOut.InOutLineStateEventId">
-		<key-property name="InOutDocumentNumber" column="InOutLineIdInOutDocumentNumber" length="50"/>
-		<key-property name="LineNumber" column="InOutLineIdLineNumber" />
-		<key-property name="InOutVersion" column="InOutVersion" />
+		<key-property name="InOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
+		<key-property name="LineNumber" ><column name="InOutLineIdLineNumber" /></key-property>
+		<key-property name="InOutVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />

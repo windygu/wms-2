@@ -6,8 +6,8 @@
   <class name="PermissionStateEventBase" table="PermissionStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.Permission.PermissionStateEventId">
-		<key-property name="PermissionId" column="PermissionId" length="50"/>
-		<key-property name="Version" column="Version" />
+		<key-property name="PermissionId" ><column name="PermissionId" length="50" /></key-property>
+		<key-property name="Version" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />

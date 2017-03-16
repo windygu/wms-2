@@ -6,9 +6,9 @@
   <class name="AttributeUseMvoStateEventBase" table="AttributeUseMvoStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeUseMvo.AttributeUseMvoStateEventId">
-		<key-property name="AttributeSetAttributeUseIdAttributeSetId" column="AttributeSetAttributeUseIdAttributeSetId" length="50"/>
-		<key-property name="AttributeSetAttributeUseIdAttributeId" column="AttributeSetAttributeUseIdAttributeId" length="50"/>
-		<key-property name="AttributeSetVersion" column="AttributeSetVersion" />
+		<key-property name="AttributeSetAttributeUseIdAttributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>
+		<key-property name="AttributeSetAttributeUseIdAttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
+		<key-property name="AttributeSetVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />

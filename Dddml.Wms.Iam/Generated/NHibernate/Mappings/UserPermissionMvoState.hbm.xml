@@ -6,8 +6,8 @@
   <class name="Dddml.Wms.Domain.UserPermissionMvo.UserPermissionMvoState" table="UserPermission_RV">
 
 	<composite-id name="UserPermissionId" class="Dddml.Wms.Domain.User.UserPermissionId">
-		<key-property name="UserId" column="UserPermissionIdUserId" length="50"/>
-		<key-property name="PermissionId" column="UserPermissionIdPermissionId" length="50"/>
+		<key-property name="UserId" ><column name="UserPermissionIdUserId" length="50" /></key-property>
+		<key-property name="PermissionId" ><column name="UserPermissionIdPermissionId" length="50" /></key-property>
 	</composite-id>
 
 	<version name="UserVersion" type="long" unsaved-value="0"/>

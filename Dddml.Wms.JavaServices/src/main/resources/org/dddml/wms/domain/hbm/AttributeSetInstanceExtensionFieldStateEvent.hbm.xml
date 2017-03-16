@@ -9,20 +9,20 @@
   <class name="AbstractAttributeSetInstanceExtensionFieldStateEvent" table="AttributeSetInstanceExtensionFieldStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AttributeSetInstanceExtensionFieldStateEventId">
-		<key-property name="groupId" column="AttributeSetInstanceExtensionFieldIdGroupId" length="50"/>
-		<key-property name="index" column="AttributeSetInstanceExtensionFieldIdIndex" length="50"/>
-		<key-property name="attributeSetInstanceExtensionFieldGroupVersion" column="AttributeSetInstanceExtensionFieldGroupVersion" />
+		<key-property name="GroupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
+		<key-property name="Index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
+		<key-property name="AttributeSetInstanceExtensionFieldGroupVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="name" unique-key="UniqueName"></property>
+	<property name="name" ><column name="Name" unique-key="UniqueName" /></property>
 
 	<property name="type" ></property>
 
 	<property name="length" ></property>
 
-	<property name="alias" unique-key="UniqueAlias"></property>
+	<property name="alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
 
 	<property name="description" ></property>
 

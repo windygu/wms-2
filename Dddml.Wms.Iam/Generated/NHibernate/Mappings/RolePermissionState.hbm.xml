@@ -6,8 +6,8 @@
   <class name="Dddml.Wms.Domain.RolePermission.RolePermissionState" table="RolePermissions">
 
 	<composite-id name="Id" class="Dddml.Wms.Domain.RolePermissionId">
-		<key-property name="RoleId" column="IdRoleId" />
-		<key-property name="PermissionId" column="IdPermissionId" />
+		<key-property name="RoleId" ><column name="IdRoleId" /></key-property>
+		<key-property name="PermissionId" ><column name="IdPermissionId" /></key-property>
 	</composite-id>
 
 	<version name="Version" type="long" unsaved-value="0"/>

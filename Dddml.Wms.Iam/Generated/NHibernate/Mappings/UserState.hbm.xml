@@ -5,13 +5,11 @@
   
   <class name="Dddml.Wms.Domain.User.UserState" table="Users">
 
-	<id name="UserId" length="50">
-		<generator class="assigned"/>
-	</id>
+	<id name="UserId" length="50"><generator class="assigned"/></id>
 
 	<version name="Version" type="long" unsaved-value="0"/>
 
-	<property name="UserName" unique-key="UniqueUserName"></property>
+	<property name="UserName" ><column name="UserName" unique-key="UniqueUserName" /></property>
 
 	<property name="AccessFailedCount" ></property>
 

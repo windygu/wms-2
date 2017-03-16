@@ -6,8 +6,8 @@
   <class name="Dddml.Wms.Domain.AttributeUseMvo.AttributeUseMvoState" table="AttributeUse_RV">
 
 	<composite-id name="AttributeSetAttributeUseId" class="Dddml.Wms.Domain.AttributeSet.AttributeSetAttributeUseId">
-		<key-property name="AttributeSetId" column="AttributeSetAttributeUseIdAttributeSetId" length="50"/>
-		<key-property name="AttributeId" column="AttributeSetAttributeUseIdAttributeId" length="50"/>
+		<key-property name="AttributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>
+		<key-property name="AttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
 	</composite-id>
 
 	<version name="AttributeSetVersion" type="long" unsaved-value="0"/>

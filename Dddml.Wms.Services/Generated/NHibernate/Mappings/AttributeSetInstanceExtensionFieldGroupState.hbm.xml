@@ -5,9 +5,7 @@
   
   <class name="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldGroupState" table="AttributeSetInstanceExtensionFieldGroups">
 
-	<id name="Id" length="50">
-		<generator class="assigned"/>
-	</id>
+	<id name="Id" length="50"><generator class="assigned"/></id>
 
 	<version name="Version" type="long" unsaved-value="0"/>
 

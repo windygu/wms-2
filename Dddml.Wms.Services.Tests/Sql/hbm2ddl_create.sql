@@ -1,14 +1,4 @@
 
-    drop table if exists AttributeSetInstances;
-
-    drop table if exists AttributeSetInstanceExtensionFieldGroups;
-
-    drop table if exists AttributeSetInstanceExtensionFieldGroupStateEvents;
-
-    drop table if exists AttributeSetInstanceExtensionFields;
-
-    drop table if exists AttributeSetInstanceExtensionFieldStateEvents;
-
     drop table if exists Attributes;
 
     drop table if exists AttributeStateEvents;
@@ -25,9 +15,15 @@
 
     drop table if exists AttributeUseStateEvents;
 
-    drop table if exists AttributeSetInstanceExtensionField_RV;
+    drop table if exists AttributeSetInstances;
 
-    drop table if exists AttributeSetInstanceExtensionFieldMvoStateEvents;
+    drop table if exists AttributeSetInstanceExtensionFieldGroups;
+
+    drop table if exists AttributeSetInstanceExtensionFieldGroupStateEvents;
+
+    drop table if exists AttributeSetInstanceExtensionFields;
+
+    drop table if exists AttributeSetInstanceExtensionFieldStateEvents;
 
     drop table if exists AttributeValue_RV;
 
@@ -36,6 +32,10 @@
     drop table if exists AttributeUse_RV;
 
     drop table if exists AttributeUseMvoStateEvents;
+
+    drop table if exists AttributeSetInstanceExtensionField_RV;
+
+    drop table if exists AttributeSetInstanceExtensionFieldMvoStateEvents;
 
     drop table if exists InOuts;
 
@@ -68,6 +68,170 @@
     drop table if exists InOutLine_RV;
 
     drop table if exists InOutLineMvoStateEvents;
+
+    create table Attributes (
+        AttributeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       Name VARCHAR(255),
+       OrganizationId VARCHAR(255),
+       Description VARCHAR(255),
+       IsMandatory TINYINT(1),
+       IsInstanceAttribute TINYINT(1),
+       AttributeValueType VARCHAR(255),
+       AttributeValueLength INTEGER,
+       IsList TINYINT(1),
+       FieldName VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (AttributeId),
+      unique (FieldName)
+    );
+
+    create table AttributeStateEvents (
+        AttributeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       OrganizationId VARCHAR(255),
+       Description VARCHAR(255),
+       IsMandatory TINYINT(1),
+       IsInstanceAttribute TINYINT(1),
+       AttributeValueType VARCHAR(255),
+       AttributeValueLength INTEGER,
+       IsList TINYINT(1),
+       FieldName VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyOrganizationIdRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyIsMandatoryRemoved TINYINT(1),
+       IsPropertyIsInstanceAttributeRemoved TINYINT(1),
+       IsPropertyAttributeValueTypeRemoved TINYINT(1),
+       IsPropertyAttributeValueLengthRemoved TINYINT(1),
+       IsPropertyIsListRemoved TINYINT(1),
+       IsPropertyFieldNameRemoved TINYINT(1),
+       IsPropertyReferenceIdRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (AttributeId, Version),
+      unique (FieldName)
+    );
+
+    create table AttributeValues (
+        AttributeValueIdAttributeId VARCHAR(50) not null,
+       AttributeValueIdValue VARCHAR(50) not null,
+       Version BIGINT not null,
+       Name VARCHAR(255),
+       Description VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (AttributeValueIdAttributeId, AttributeValueIdValue)
+    );
+
+    create table AttributeValueStateEvents (
+        AttributeValueIdAttributeId VARCHAR(50) not null,
+       AttributeValueIdValue VARCHAR(50) not null,
+       AttributeVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       Description VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyReferenceIdRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (AttributeValueIdAttributeId, AttributeValueIdValue, AttributeVersion)
+    );
+
+    create table AttributeSets (
+        AttributeSetId VARCHAR(50) not null,
+       Version BIGINT not null,
+       Name VARCHAR(255),
+       OrganizationId VARCHAR(255),
+       Description VARCHAR(255),
+       SerialNumberAttributeId VARCHAR(255),
+       LotAttributeId VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (AttributeSetId)
+    );
+
+    create table AttributeSetStateEvents (
+        AttributeSetId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       OrganizationId VARCHAR(255),
+       Description VARCHAR(255),
+       SerialNumberAttributeId VARCHAR(255),
+       LotAttributeId VARCHAR(255),
+       ReferenceId VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyOrganizationIdRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertySerialNumberAttributeIdRemoved TINYINT(1),
+       IsPropertyLotAttributeIdRemoved TINYINT(1),
+       IsPropertyReferenceIdRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (AttributeSetId, Version)
+    );
+
+    create table AttributeUses (
+        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
+       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       SequenceNumber INTEGER,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
+    );
+
+    create table AttributeUseStateEvents (
+        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
+       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
+       AttributeSetVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       SequenceNumber INTEGER,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertySequenceNumberRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
+    );
 
     create table AttributeSetInstances (
         AttributeSetInstanceId VARCHAR(50) not null,
@@ -629,251 +793,6 @@
       unique (Alias)
     );
 
-    create table Attributes (
-        AttributeId VARCHAR(50) not null,
-       Version BIGINT not null,
-       Name VARCHAR(255),
-       OrganizationId VARCHAR(255),
-       Description VARCHAR(255),
-       IsMandatory TINYINT(1),
-       IsInstanceAttribute TINYINT(1),
-       AttributeValueType VARCHAR(255),
-       AttributeValueLength INTEGER,
-       IsList TINYINT(1),
-       FieldName VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (AttributeId),
-      unique (FieldName)
-    );
-
-    create table AttributeStateEvents (
-        AttributeId VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       OrganizationId VARCHAR(255),
-       Description VARCHAR(255),
-       IsMandatory TINYINT(1),
-       IsInstanceAttribute TINYINT(1),
-       AttributeValueType VARCHAR(255),
-       AttributeValueLength INTEGER,
-       IsList TINYINT(1),
-       FieldName VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyOrganizationIdRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyIsMandatoryRemoved TINYINT(1),
-       IsPropertyIsInstanceAttributeRemoved TINYINT(1),
-       IsPropertyAttributeValueTypeRemoved TINYINT(1),
-       IsPropertyAttributeValueLengthRemoved TINYINT(1),
-       IsPropertyIsListRemoved TINYINT(1),
-       IsPropertyFieldNameRemoved TINYINT(1),
-       IsPropertyReferenceIdRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (AttributeId, Version),
-      unique (FieldName)
-    );
-
-    create table AttributeValues (
-        AttributeValueIdAttributeId VARCHAR(50) not null,
-       AttributeValueIdValue VARCHAR(50) not null,
-       Version BIGINT not null,
-       Name VARCHAR(255),
-       Description VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (AttributeValueIdAttributeId, AttributeValueIdValue)
-    );
-
-    create table AttributeValueStateEvents (
-        AttributeValueIdAttributeId VARCHAR(50) not null,
-       AttributeValueIdValue VARCHAR(50) not null,
-       AttributeVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       Description VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyReferenceIdRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (AttributeValueIdAttributeId, AttributeValueIdValue, AttributeVersion)
-    );
-
-    create table AttributeSets (
-        AttributeSetId VARCHAR(50) not null,
-       Version BIGINT not null,
-       Name VARCHAR(255),
-       OrganizationId VARCHAR(255),
-       Description VARCHAR(255),
-       SerialNumberAttributeId VARCHAR(255),
-       LotAttributeId VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (AttributeSetId)
-    );
-
-    create table AttributeSetStateEvents (
-        AttributeSetId VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       OrganizationId VARCHAR(255),
-       Description VARCHAR(255),
-       SerialNumberAttributeId VARCHAR(255),
-       LotAttributeId VARCHAR(255),
-       ReferenceId VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyOrganizationIdRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertySerialNumberAttributeIdRemoved TINYINT(1),
-       IsPropertyLotAttributeIdRemoved TINYINT(1),
-       IsPropertyReferenceIdRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (AttributeSetId, Version)
-    );
-
-    create table AttributeUses (
-        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
-       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
-       Version BIGINT not null,
-       SequenceNumber INTEGER,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
-    );
-
-    create table AttributeUseStateEvents (
-        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
-       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
-       AttributeSetVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       SequenceNumber INTEGER,
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertySequenceNumberRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
-    );
-
-    create table AttributeSetInstanceExtensionField_RV (
-        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
-       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
-       AttrSetInstEFGroupVersion BIGINT not null,
-       Name VARCHAR(255),
-       Type VARCHAR(255),
-       Length INTEGER,
-       Alias VARCHAR(255),
-       Description VARCHAR(255),
-       Version BIGINT,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       AttrSetInstEFGroupFieldType VARCHAR(255),
-       AttrSetInstEFGroupFieldLength INTEGER,
-       AttrSetInstEFGroupFieldCount INTEGER,
-       AttrSetInstEFGroupNameFormat VARCHAR(255),
-       AttrSetInstEFGroupDescription VARCHAR(255),
-       AttrSetInstEFGroupCreatedBy VARCHAR(255),
-       AttrSetInstEFGroupCreatedAt DATETIME,
-       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
-       AttrSetInstEFGroupUpdatedAt DATETIME,
-       AttrSetInstEFGroupActive TINYINT(1),
-       AttrSetInstEFGroupDeleted TINYINT(1),
-       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex),
-      unique (Name),
-      unique (Alias)
-    );
-
-    create table AttributeSetInstanceExtensionFieldMvoStateEvents (
-        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
-       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
-       AttrSetInstEFGroupVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       Type VARCHAR(255),
-       Length INTEGER,
-       Alias VARCHAR(255),
-       Description VARCHAR(255),
-       Version BIGINT,
-       Active TINYINT(1),
-       AttrSetInstEFGroupFieldType VARCHAR(255),
-       AttrSetInstEFGroupFieldLength INTEGER,
-       AttrSetInstEFGroupFieldCount INTEGER,
-       AttrSetInstEFGroupNameFormat VARCHAR(255),
-       AttrSetInstEFGroupDescription VARCHAR(255),
-       AttrSetInstEFGroupCreatedBy VARCHAR(255),
-       AttrSetInstEFGroupCreatedAt DATETIME,
-       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
-       AttrSetInstEFGroupUpdatedAt DATETIME,
-       AttrSetInstEFGroupActive TINYINT(1),
-       AttrSetInstEFGroupDeleted TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyTypeRemoved TINYINT(1),
-       IsPropertyLengthRemoved TINYINT(1),
-       IsPropertyAliasRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyVersionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupFieldTypeRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupFieldLengthRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupFieldCountRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupNameFormatRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupDescriptionRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupCreatedByRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupCreatedAtRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupUpdatedByRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupUpdatedAtRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupActiveRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupDeletedRemoved TINYINT(1),
-       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex, AttrSetInstEFGroupVersion),
-      unique (Name),
-      unique (Alias)
-    );
-
     create table AttributeValue_RV (
         AttributeValueIdAttributeId VARCHAR(50) not null,
        AttributeValueIdValue VARCHAR(50) not null,
@@ -1028,6 +947,87 @@
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
     );
 
+    create table AttributeSetInstanceExtensionField_RV (
+        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
+       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
+       AttrSetInstEFGroupVersion BIGINT not null,
+       Name VARCHAR(255),
+       Type VARCHAR(255),
+       Length INTEGER,
+       Alias VARCHAR(255),
+       Description VARCHAR(255),
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedBy VARCHAR(255),
+       UpdatedAt DATETIME,
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       AttrSetInstEFGroupFieldType VARCHAR(255),
+       AttrSetInstEFGroupFieldLength INTEGER,
+       AttrSetInstEFGroupFieldCount INTEGER,
+       AttrSetInstEFGroupNameFormat VARCHAR(255),
+       AttrSetInstEFGroupDescription VARCHAR(255),
+       AttrSetInstEFGroupCreatedBy VARCHAR(255),
+       AttrSetInstEFGroupCreatedAt DATETIME,
+       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
+       AttrSetInstEFGroupUpdatedAt DATETIME,
+       AttrSetInstEFGroupActive TINYINT(1),
+       AttrSetInstEFGroupDeleted TINYINT(1),
+       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex),
+      unique (Name),
+      unique (Alias)
+    );
+
+    create table AttributeSetInstanceExtensionFieldMvoStateEvents (
+        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
+       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
+       AttrSetInstEFGroupVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       Type VARCHAR(255),
+       Length INTEGER,
+       Alias VARCHAR(255),
+       Description VARCHAR(255),
+       Version BIGINT,
+       Active TINYINT(1),
+       AttrSetInstEFGroupFieldType VARCHAR(255),
+       AttrSetInstEFGroupFieldLength INTEGER,
+       AttrSetInstEFGroupFieldCount INTEGER,
+       AttrSetInstEFGroupNameFormat VARCHAR(255),
+       AttrSetInstEFGroupDescription VARCHAR(255),
+       AttrSetInstEFGroupCreatedBy VARCHAR(255),
+       AttrSetInstEFGroupCreatedAt DATETIME,
+       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
+       AttrSetInstEFGroupUpdatedAt DATETIME,
+       AttrSetInstEFGroupActive TINYINT(1),
+       AttrSetInstEFGroupDeleted TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyTypeRemoved TINYINT(1),
+       IsPropertyLengthRemoved TINYINT(1),
+       IsPropertyAliasRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupFieldTypeRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupFieldLengthRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupFieldCountRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupNameFormatRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupDescriptionRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupCreatedByRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupCreatedAtRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupUpdatedByRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupUpdatedAtRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupActiveRemoved TINYINT(1),
+       IsPropertyAttrSetInstEFGroupDeletedRemoved TINYINT(1),
+       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex, AttrSetInstEFGroupVersion),
+      unique (Name),
+      unique (Alias)
+    );
+
     create table InOuts (
         DocumentNumber VARCHAR(50) not null,
        Version BIGINT not null,
@@ -1160,13 +1160,11 @@
 
     create table InOutLines (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
-       InOutLineIdSkuIdProductId VARCHAR(255) not null,
-       InOutLineIdSkuIdAttributeSetInstanceId VARCHAR(255) not null,
+       InOutLineIdLineNumber BIGINT not null,
        Version BIGINT not null,
-       LineNumber BIGINT,
        Description VARCHAR(255),
        LocatorId VARCHAR(255),
-       Product VARCHAR(255),
+       ProductId VARCHAR(255),
        UomId VARCHAR(255),
        MovementQuantity NUMERIC(19,5),
        ConfirmedQuantity NUMERIC(19,5),
@@ -1186,19 +1184,17 @@
        UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
-       primary key (InOutLineIdInOutDocumentNumber, InOutLineIdSkuIdProductId, InOutLineIdSkuIdAttributeSetInstanceId)
+       primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
 
     create table InOutLineStateEvents (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
-       InOutLineIdSkuIdProductId VARCHAR(255) not null,
-       InOutLineIdSkuIdAttributeSetInstanceId VARCHAR(255) not null,
+       InOutLineIdLineNumber BIGINT not null,
        InOutVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       LineNumber BIGINT,
        Description VARCHAR(255),
        LocatorId VARCHAR(255),
-       Product VARCHAR(255),
+       ProductId VARCHAR(255),
        UomId VARCHAR(255),
        MovementQuantity NUMERIC(19,5),
        ConfirmedQuantity NUMERIC(19,5),
@@ -1217,10 +1213,9 @@
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
        Version BIGINT not null,
-       IsPropertyLineNumberRemoved TINYINT(1),
        IsPropertyDescriptionRemoved TINYINT(1),
        IsPropertyLocatorIdRemoved TINYINT(1),
-       IsPropertyProductRemoved TINYINT(1),
+       IsPropertyProductIdRemoved TINYINT(1),
        IsPropertyUomIdRemoved TINYINT(1),
        IsPropertyMovementQuantityRemoved TINYINT(1),
        IsPropertyConfirmedQuantityRemoved TINYINT(1),
@@ -1235,7 +1230,7 @@
        IsPropertyRmaLineNumberRemoved TINYINT(1),
        IsPropertyReversalLineNumberRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (InOutLineIdInOutDocumentNumber, InOutLineIdSkuIdProductId, InOutLineIdSkuIdAttributeSetInstanceId, InOutVersion)
+       primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber, InOutVersion)
     );
 
     create table Organizations (
@@ -1409,13 +1404,11 @@
 
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
-       InOutLineIdSkuIdProductId VARCHAR(255) not null,
-       InOutLineIdSkuIdAttributeSetInstanceId VARCHAR(255) not null,
+       InOutLineIdLineNumber BIGINT not null,
        InOutVersion BIGINT not null,
-       LineNumber BIGINT,
        Description VARCHAR(255),
        LocatorId VARCHAR(255),
-       Product VARCHAR(255),
+       ProductId VARCHAR(255),
        UomId VARCHAR(255),
        MovementQuantity NUMERIC(19,5),
        ConfirmedQuantity NUMERIC(19,5),
@@ -1478,19 +1471,17 @@
        InOutUpdatedAt DATETIME,
        InOutActive TINYINT(1),
        InOutDeleted TINYINT(1),
-       primary key (InOutLineIdInOutDocumentNumber, InOutLineIdSkuIdProductId, InOutLineIdSkuIdAttributeSetInstanceId)
+       primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
 
     create table InOutLineMvoStateEvents (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
-       InOutLineIdSkuIdProductId VARCHAR(255) not null,
-       InOutLineIdSkuIdAttributeSetInstanceId VARCHAR(255) not null,
+       InOutLineIdLineNumber BIGINT not null,
        InOutVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       LineNumber BIGINT,
        Description VARCHAR(255),
        LocatorId VARCHAR(255),
-       Product VARCHAR(255),
+       ProductId VARCHAR(255),
        UomId VARCHAR(255),
        MovementQuantity NUMERIC(19,5),
        ConfirmedQuantity NUMERIC(19,5),
@@ -1551,10 +1542,9 @@
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyLineNumberRemoved TINYINT(1),
        IsPropertyDescriptionRemoved TINYINT(1),
        IsPropertyLocatorIdRemoved TINYINT(1),
-       IsPropertyProductRemoved TINYINT(1),
+       IsPropertyProductIdRemoved TINYINT(1),
        IsPropertyUomIdRemoved TINYINT(1),
        IsPropertyMovementQuantityRemoved TINYINT(1),
        IsPropertyConfirmedQuantityRemoved TINYINT(1),
@@ -1610,5 +1600,5 @@
        IsPropertyInOutUpdatedAtRemoved TINYINT(1),
        IsPropertyInOutActiveRemoved TINYINT(1),
        IsPropertyInOutDeletedRemoved TINYINT(1),
-       primary key (InOutLineIdInOutDocumentNumber, InOutLineIdSkuIdProductId, InOutLineIdSkuIdAttributeSetInstanceId, InOutVersion)
+       primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber, InOutVersion)
     );

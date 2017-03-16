@@ -6,8 +6,8 @@
   <class name="WarehouseStateEventBase" table="WarehouseStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.Warehouse.WarehouseStateEventId">
-		<key-property name="WarehouseId" column="WarehouseId" length="50"/>
-		<key-property name="Version" column="Version" />
+		<key-property name="WarehouseId" ><column name="WarehouseId" length="50" /></key-property>
+		<key-property name="Version" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />

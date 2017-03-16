@@ -6,9 +6,9 @@
   <class name="UserPermissionMvoStateEventBase" table="UserPermissionMvoStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.UserPermissionMvo.UserPermissionMvoStateEventId">
-		<key-property name="UserPermissionIdUserId" column="UserPermissionIdUserId" length="50"/>
-		<key-property name="UserPermissionIdPermissionId" column="UserPermissionIdPermissionId" length="50"/>
-		<key-property name="UserVersion" column="UserVersion" />
+		<key-property name="UserPermissionIdUserId" ><column name="UserPermissionIdUserId" length="50" /></key-property>
+		<key-property name="UserPermissionIdPermissionId" ><column name="UserPermissionIdPermissionId" length="50" /></key-property>
+		<key-property name="UserVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />

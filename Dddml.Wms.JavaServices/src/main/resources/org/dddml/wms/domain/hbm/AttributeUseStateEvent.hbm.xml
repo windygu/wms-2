@@ -9,9 +9,9 @@
   <class name="AbstractAttributeUseStateEvent" table="AttributeUseStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributeset.AttributeUseStateEventId">
-		<key-property name="attributeSetId" column="AttributeSetAttributeUseIdAttributeSetId" length="50"/>
-		<key-property name="attributeId" column="AttributeSetAttributeUseIdAttributeId" length="50"/>
-		<key-property name="attributeSetVersion" column="AttributeSetVersion" />
+		<key-property name="AttributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>
+		<key-property name="AttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
+		<key-property name="AttributeSetVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />

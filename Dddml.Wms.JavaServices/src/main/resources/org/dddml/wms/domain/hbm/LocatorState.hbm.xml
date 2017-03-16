@@ -8,13 +8,11 @@
   
   <class name="org.dddml.wms.domain.locator.AbstractLocatorState$SimpleLocatorState" table="Locators">
 
-	<id name="locatorId" length="50">
-		<generator class="assigned"/>
-	</id>
+	<id name="LocatorId" length="50"><generator class="assigned"/></id>
 
 	<version name="version" type="long" />
 
-	<property name="warehouseId" not-null="true"></property>
+	<property name="warehouseId" ><column name="WarehouseId" not-null="true" /></property>
 
 	<property name="parentLocatorId" ></property>
 

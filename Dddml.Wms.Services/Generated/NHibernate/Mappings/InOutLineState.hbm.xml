@@ -6,8 +6,8 @@
   <class name="Dddml.Wms.Domain.InOut.InOutLineState" table="InOutLines">
 
 	<composite-id name="InOutLineId" class="Dddml.Wms.Domain.InOut.InOutLineId">
-		<key-property name="InOutDocumentNumber" column="InOutLineIdInOutDocumentNumber" length="50"/>
-		<key-property name="LineNumber" column="InOutLineIdLineNumber" />
+		<key-property name="InOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
+		<key-property name="LineNumber" ><column name="InOutLineIdLineNumber" /></key-property>
 	</composite-id>
 
 	<version name="Version" type="long" unsaved-value="0"/>

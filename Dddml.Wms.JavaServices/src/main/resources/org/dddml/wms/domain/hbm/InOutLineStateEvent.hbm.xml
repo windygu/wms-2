@@ -9,9 +9,9 @@
   <class name="AbstractInOutLineStateEvent" table="InOutLineStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="stateEventId" class="org.dddml.wms.domain.inout.InOutLineStateEventId">
-		<key-property name="inOutDocumentNumber" column="InOutLineIdInOutDocumentNumber" length="50"/>
-		<key-property name="lineNumber" column="InOutLineIdLineNumber" />
-		<key-property name="inOutVersion" column="InOutVersion" />
+		<key-property name="InOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
+		<key-property name="LineNumber" ><column name="InOutLineIdLineNumber" /></key-property>
+		<key-property name="InOutVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />

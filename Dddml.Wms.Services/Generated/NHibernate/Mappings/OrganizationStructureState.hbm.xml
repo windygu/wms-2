@@ -6,9 +6,9 @@
   <class name="Dddml.Wms.Domain.OrganizationStructure.OrganizationStructureState" table="OrganizationStructures">
 
 	<composite-id name="Id" class="Dddml.Wms.Domain.OrganizationStructureId">
-		<key-property name="OrganizationStructureTypeId" column="IdOrganizationStructureTypeId" />
-		<key-property name="ParentId" column="IdParentId" />
-		<key-property name="SubsidiaryId" column="IdSubsidiaryId" />
+		<key-property name="OrganizationStructureTypeId" ><column name="IdOrganizationStructureTypeId" /></key-property>
+		<key-property name="ParentId" ><column name="IdParentId" /></key-property>
+		<key-property name="SubsidiaryId" ><column name="IdSubsidiaryId" /></key-property>
 	</composite-id>
 
 	<version name="Version" type="long" unsaved-value="0"/>

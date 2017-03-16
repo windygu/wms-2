@@ -6,13 +6,13 @@
   <class name="UserStateEventBase" table="UserStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserStateEventId">
-		<key-property name="UserId" column="UserId" length="50"/>
-		<key-property name="Version" column="Version" />
+		<key-property name="UserId" ><column name="UserId" length="50" /></key-property>
+		<key-property name="Version" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />
 
-	<property name="UserName" unique-key="UniqueUserName"></property>
+	<property name="UserName" ><column name="UserName" unique-key="UniqueUserName" /></property>
 
 	<property name="AccessFailedCount" ></property>
 

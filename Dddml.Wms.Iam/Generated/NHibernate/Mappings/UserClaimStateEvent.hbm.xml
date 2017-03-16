@@ -6,9 +6,9 @@
   <class name="UserClaimStateEventBase" table="UserClaimStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserClaimStateEventId">
-		<key-property name="UserId" column="UserClaimIdUserId" length="50"/>
-		<key-property name="ClaimId" column="UserClaimIdClaimId" />
-		<key-property name="UserVersion" column="UserVersion" />
+		<key-property name="UserId" ><column name="UserClaimIdUserId" length="50" /></key-property>
+		<key-property name="ClaimId" ><column name="UserClaimIdClaimId" /></key-property>
+		<key-property name="UserVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />

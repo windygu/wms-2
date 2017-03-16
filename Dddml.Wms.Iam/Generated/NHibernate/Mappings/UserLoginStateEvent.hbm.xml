@@ -6,10 +6,10 @@
   <class name="UserLoginStateEventBase" table="UserLoginStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserLoginStateEventId">
-		<key-property name="UserId" column="UserLoginIdUserId" length="50"/>
-		<key-property name="LoginKeyLoginProvider" column="UserLoginIdLoginKeyLoginProvider" />
-		<key-property name="LoginKeyProviderKey" column="UserLoginIdLoginKeyProviderKey" />
-		<key-property name="UserVersion" column="UserVersion" />
+		<key-property name="UserId" ><column name="UserLoginIdUserId" length="50" /></key-property>
+		<key-property name="LoginKeyLoginProvider" ><column name="UserLoginIdLoginKeyLoginProvider" /></key-property>
+		<key-property name="LoginKeyProviderKey" ><column name="UserLoginIdLoginKeyProviderKey" /></key-property>
+		<key-property name="UserVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />

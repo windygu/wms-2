@@ -9,8 +9,8 @@
   <class name="org.dddml.wms.domain.attribute.AbstractAttributeValueState$SimpleAttributeValueState" table="AttributeValues">
 
 	<composite-id name="attributeValueId" class="org.dddml.wms.domain.attribute.AttributeValueId">
-		<key-property name="attributeId" column="AttributeValueIdAttributeId" length="50"/>
-		<key-property name="value" column="AttributeValueIdValue" length="50"/>
+		<key-property name="AttributeId" ><column name="AttributeValueIdAttributeId" length="50" /></key-property>
+		<key-property name="Value" ><column name="AttributeValueIdValue" length="50" /></key-property>
 	</composite-id>
 
 	<version name="version" type="long" />

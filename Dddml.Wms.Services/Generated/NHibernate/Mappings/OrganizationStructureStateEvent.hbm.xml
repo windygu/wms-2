@@ -6,10 +6,10 @@
   <class name="OrganizationStructureStateEventBase" table="OrganizationStructureStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.OrganizationStructure.OrganizationStructureStateEventId">
-		<key-property name="IdOrganizationStructureTypeId" column="IdOrganizationStructureTypeId" />
-		<key-property name="IdParentId" column="IdParentId" />
-		<key-property name="IdSubsidiaryId" column="IdSubsidiaryId" />
-		<key-property name="Version" column="Version" />
+		<key-property name="IdOrganizationStructureTypeId" ></key-property>
+		<key-property name="IdParentId" ></key-property>
+		<key-property name="IdSubsidiaryId" ></key-property>
+		<key-property name="Version" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />

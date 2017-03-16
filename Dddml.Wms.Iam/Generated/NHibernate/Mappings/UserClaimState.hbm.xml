@@ -6,8 +6,8 @@
   <class name="Dddml.Wms.Domain.User.UserClaimState" table="UserClaims">
 
 	<composite-id name="UserClaimId" class="Dddml.Wms.Domain.User.UserClaimId">
-		<key-property name="UserId" column="UserClaimIdUserId" length="50"/>
-		<key-property name="ClaimId" column="UserClaimIdClaimId" />
+		<key-property name="UserId" ><column name="UserClaimIdUserId" length="50" /></key-property>
+		<key-property name="ClaimId" ><column name="UserClaimIdClaimId" /></key-property>
 	</composite-id>
 
 	<version name="Version" type="long" unsaved-value="0"/>

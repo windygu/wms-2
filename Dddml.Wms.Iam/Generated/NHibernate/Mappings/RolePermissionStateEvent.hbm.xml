@@ -6,9 +6,9 @@
   <class name="RolePermissionStateEventBase" table="RolePermissionStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.RolePermission.RolePermissionStateEventId">
-		<key-property name="IdRoleId" column="IdRoleId" />
-		<key-property name="IdPermissionId" column="IdPermissionId" />
-		<key-property name="Version" column="Version" />
+		<key-property name="IdRoleId" ></key-property>
+		<key-property name="IdPermissionId" ></key-property>
+		<key-property name="Version" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />

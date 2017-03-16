@@ -6,9 +6,9 @@
   <class name="AttributeValueMvoStateEventBase" table="AttributeValueMvoStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeValueMvo.AttributeValueMvoStateEventId">
-		<key-property name="AttributeValueIdAttributeId" column="AttributeValueIdAttributeId" length="50"/>
-		<key-property name="AttributeValueIdValue" column="AttributeValueIdValue" length="50"/>
-		<key-property name="AttributeVersion" column="AttributeVersion" />
+		<key-property name="AttributeValueIdAttributeId" ><column name="AttributeValueIdAttributeId" length="50" /></key-property>
+		<key-property name="AttributeValueIdValue" ><column name="AttributeValueIdValue" length="50" /></key-property>
+		<key-property name="AttributeVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="String" />

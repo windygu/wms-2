@@ -9,9 +9,9 @@
   <class name="AbstractAttributeValueMvoStateEvent" table="AttributeValueMvoStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributevaluemvo.AttributeValueMvoStateEventId">
-		<key-property name="attributeValueIdAttributeId" column="AttributeValueIdAttributeId" length="50"/>
-		<key-property name="attributeValueIdValue" column="AttributeValueIdValue" length="50"/>
-		<key-property name="attributeVersion" column="AttributeVersion" />
+		<key-property name="AttributeValueIdAttributeId" ><column name="AttributeValueIdAttributeId" length="50" /></key-property>
+		<key-property name="AttributeValueIdValue" ><column name="AttributeValueIdValue" length="50" /></key-property>
+		<key-property name="AttributeVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />
