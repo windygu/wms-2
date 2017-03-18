@@ -9,7 +9,7 @@
   <class name="org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceState$SimpleAttributeSetInstanceState" table="AttributeSetInstances">
 
     <cache usage="read-only"/>
-	<id name="AttributeSetInstanceId" length="50"><generator class="assigned"/></id>
+	<id name="attributeSetInstanceId" length="50"><generator class="assigned"/></id>
 
 	<version name="version" type="long" />
 

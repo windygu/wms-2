@@ -9,8 +9,8 @@
   <class name="AbstractWarehouseStateEvent" table="WarehouseStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="stateEventId" class="org.dddml.wms.domain.warehouse.WarehouseStateEventId">
-		<key-property name="WarehouseId" ><column name="WarehouseId" length="50" /></key-property>
-		<key-property name="Version" ></key-property>
+		<key-property name="warehouseId" ><column name="WarehouseId" length="50" /></key-property>
+		<key-property name="version" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />

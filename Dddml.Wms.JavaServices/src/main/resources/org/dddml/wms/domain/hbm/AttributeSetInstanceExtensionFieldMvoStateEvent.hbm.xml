@@ -9,9 +9,9 @@
   <class name="AbstractAttributeSetInstanceExtensionFieldMvoStateEvent" table="AttributeSetInstanceExtensionFieldMvoStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributesetinstanceextensionfieldmvo.AttributeSetInstanceExtensionFieldMvoStateEventId">
-		<key-property name="AttributeSetInstanceExtensionFieldIdGroupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
-		<key-property name="AttributeSetInstanceExtensionFieldIdIndex" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
-		<key-property name="AttrSetInstEFGroupVersion" ></key-property>
+		<key-property name="attributeSetInstanceExtensionFieldIdGroupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
+		<key-property name="attributeSetInstanceExtensionFieldIdIndex" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
+		<key-property name="attrSetInstEFGroupVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />

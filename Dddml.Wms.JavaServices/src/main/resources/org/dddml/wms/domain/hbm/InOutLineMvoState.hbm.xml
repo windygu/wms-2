@@ -9,8 +9,8 @@
   <class name="org.dddml.wms.domain.inoutlinemvo.AbstractInOutLineMvoState$SimpleInOutLineMvoState" table="InOutLine_RV">
 
 	<composite-id name="inOutLineId" class="org.dddml.wms.domain.inout.InOutLineId">
-		<key-property name="InOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
-		<key-property name="LineNumber" ><column name="InOutLineIdLineNumber" /></key-property>
+		<key-property name="inOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
+		<key-property name="lineNumber" ><column name="InOutLineIdLineNumber" /></key-property>
 	</composite-id>
 
 	<version name="inOutVersion" type="long" />

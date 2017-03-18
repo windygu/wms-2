@@ -9,10 +9,10 @@
   <class name="AbstractOrganizationStructureStateEvent" table="OrganizationStructureStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="stateEventId" class="org.dddml.wms.domain.organizationstructure.OrganizationStructureStateEventId">
-		<key-property name="IdOrganizationStructureTypeId" ></key-property>
-		<key-property name="IdParentId" ></key-property>
-		<key-property name="IdSubsidiaryId" ></key-property>
-		<key-property name="Version" ></key-property>
+		<key-property name="idOrganizationStructureTypeId" ></key-property>
+		<key-property name="idParentId" ></key-property>
+		<key-property name="idSubsidiaryId" ></key-property>
+		<key-property name="version" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />

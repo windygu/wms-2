@@ -8,7 +8,7 @@
   
   <class name="org.dddml.wms.domain.organizationstructuretype.AbstractOrganizationStructureTypeState$SimpleOrganizationStructureTypeState" table="OrganizationStructureTypes">
 
-	<id name="Id" length="50"><generator class="assigned"/></id>
+	<id name="id" length="50"><generator class="assigned"/></id>
 
 	<version name="version" type="long" />
 

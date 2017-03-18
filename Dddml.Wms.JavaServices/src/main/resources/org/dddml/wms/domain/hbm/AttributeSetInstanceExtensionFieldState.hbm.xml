@@ -9,8 +9,8 @@
   <class name="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AbstractAttributeSetInstanceExtensionFieldState$SimpleAttributeSetInstanceExtensionFieldState" table="AttributeSetInstanceExtensionFields">
 
 	<composite-id name="attributeSetInstanceExtensionFieldId" class="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AttributeSetInstanceExtensionFieldId">
-		<key-property name="GroupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
-		<key-property name="Index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
+		<key-property name="groupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
+		<key-property name="index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
 	</composite-id>
 
 	<version name="version" type="long" />

@@ -9,9 +9,9 @@
   <class name="org.dddml.wms.domain.organizationstructure.AbstractOrganizationStructureState$SimpleOrganizationStructureState" table="OrganizationStructures">
 
 	<composite-id name="id" class="org.dddml.wms.domain.OrganizationStructureId">
-		<key-property name="OrganizationStructureTypeId" ><column name="IdOrganizationStructureTypeId" /></key-property>
-		<key-property name="ParentId" ><column name="IdParentId" /></key-property>
-		<key-property name="SubsidiaryId" ><column name="IdSubsidiaryId" /></key-property>
+		<key-property name="organizationStructureTypeId" ><column name="IdOrganizationStructureTypeId" /></key-property>
+		<key-property name="parentId" ><column name="IdParentId" /></key-property>
+		<key-property name="subsidiaryId" ><column name="IdSubsidiaryId" /></key-property>
 	</composite-id>
 
 	<version name="version" type="long" />
