@@ -43,7 +43,7 @@ public class AttributeSetResource {
                 states = attributeSetApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver()),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetFilteringProperties.aliasMap.containsKey(n) ? AttributeSetFilteringProperties.aliasMap.get(n) : n)),
                         AttributeSetResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -91,7 +91,7 @@ public class AttributeSetResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = attributeSetApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver()));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetFilteringProperties.aliasMap.containsKey(n) ? AttributeSetFilteringProperties.aliasMap.get(n) : n)));
             } else {
                 count = attributeSetApplicationService.getCount(AttributeSetResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -264,8 +264,8 @@ public class AttributeSetResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeSetFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-                return fieldName;
+            if (AttributeSetFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return AttributeSetFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }

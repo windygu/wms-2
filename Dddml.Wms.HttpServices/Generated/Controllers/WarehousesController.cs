@@ -36,7 +36,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IWarehouseState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _warehouseApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                states = _warehouseApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (WarehouseMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? WarehouseMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , WarehousesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
             else 
@@ -92,7 +93,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _warehouseApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()));
+                count = _warehouseApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (WarehouseMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? WarehouseMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 
             {
@@ -289,18 +291,9 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 return null;
             }
-            if (WarehouseMetadata.Instance.PropertyMetadataDictionary.ContainsKey(fieldName))
+            if (WarehouseMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(fieldName))
             {
-                var p = WarehouseMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
+                return WarehouseMetadata.Instance.FilteringPropertyAliasDictionary[fieldName];
             }
             return null;
         }

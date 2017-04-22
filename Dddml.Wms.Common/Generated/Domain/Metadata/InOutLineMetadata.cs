@@ -20,9 +20,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "LineNumber",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -31,11 +30,12 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = true,
                     IsGlobalId = false,
-                    IsDerived = false,
+                    IsDerived = true,
+                    IsOuterId = true,
+                    DerivedFrom = "InOutLineId.LineNumber",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -45,15 +45,14 @@ namespace Dddml.Wms.Domain.Metadata
                     IsReservedPropertyCreatedAt = false,
                     IsReservedPropertyUpdatedBy = false,
                     IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = false,
+                    IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
                     Name = "Description",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -62,7 +61,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -82,9 +80,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "LocatorId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -93,7 +90,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -113,9 +109,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "ProductId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -124,7 +119,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -144,9 +138,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UomId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -155,7 +148,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -175,9 +167,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "MovementQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -186,7 +177,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -206,9 +196,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "ConfirmedQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -217,7 +206,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -237,9 +225,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "ScrappedQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -248,7 +235,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -268,9 +254,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "TargetQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -279,7 +264,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -299,9 +283,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "PickedQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -310,7 +293,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -330,9 +312,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "IsInvoiced",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -341,7 +322,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -361,9 +341,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetInstanceId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -372,7 +351,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -392,9 +370,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "IsDescription",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -403,7 +380,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -423,9 +399,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Processed",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -434,7 +409,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -454,9 +428,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "QuantityEntered",
                     Type = typeof(decimal),
                     TypeName = "decimal",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -465,7 +438,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -485,9 +457,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "RmaLineNumber",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -496,7 +467,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -516,9 +486,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "ReversalLineNumber",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -527,7 +496,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -547,9 +515,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Version",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -558,7 +525,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -578,9 +544,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -589,7 +554,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -609,9 +573,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -620,7 +583,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -640,9 +602,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -651,7 +612,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -671,9 +631,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -682,7 +641,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -702,9 +660,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Active",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -713,7 +670,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -733,9 +689,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Deleted",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -744,7 +699,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -764,9 +718,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "InOutLineId",
                     Type = typeof(InOutLineId),
                     TypeName = "InOutLineId",
-                    IsBasicType = false,
+                    IsSimpleValueObjectType = false,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -775,7 +728,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = true,
@@ -795,9 +747,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "InOutDocumentNumber",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLine",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -806,7 +757,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -828,9 +778,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "InOutLineId.InOutDocumentNumber",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLineId",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -839,7 +788,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -861,9 +809,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "InOutLineId.LineNumber",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "InOutLineId",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -872,7 +819,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -895,12 +841,88 @@ namespace Dddml.Wms.Domain.Metadata
 
         private static IDictionary<string, PropertyMetadata> _propertyMetadataDictionary;
 
+        private static IDictionary<string, string> _filteringPropertyAliasDictionary;
+
+        public IDictionary<string, string> FilteringPropertyAliasDictionary
+        {
+            get { return _filteringPropertyAliasDictionary; }
+        }
+
+        private static void InitFilteringPropertyAliasDictionary()
+        {
+            var d = new Dictionary<string, string>();
+            d.Add("LineNumber", "InOutLineId.LineNumber");
+            d.Add("lineNumber", "InOutLineId.LineNumber");
+            d.Add("Description", "Description");
+            d.Add("description", "Description");
+            d.Add("LocatorId", "LocatorId");
+            d.Add("locatorId", "LocatorId");
+            d.Add("ProductId", "ProductId");
+            d.Add("productId", "ProductId");
+            d.Add("UomId", "UomId");
+            d.Add("uomId", "UomId");
+            d.Add("MovementQuantity", "MovementQuantity");
+            d.Add("movementQuantity", "MovementQuantity");
+            d.Add("ConfirmedQuantity", "ConfirmedQuantity");
+            d.Add("confirmedQuantity", "ConfirmedQuantity");
+            d.Add("ScrappedQuantity", "ScrappedQuantity");
+            d.Add("scrappedQuantity", "ScrappedQuantity");
+            d.Add("TargetQuantity", "TargetQuantity");
+            d.Add("targetQuantity", "TargetQuantity");
+            d.Add("PickedQuantity", "PickedQuantity");
+            d.Add("pickedQuantity", "PickedQuantity");
+            d.Add("IsInvoiced", "IsInvoiced");
+            d.Add("isInvoiced", "IsInvoiced");
+            d.Add("AttributeSetInstanceId", "AttributeSetInstanceId");
+            d.Add("attributeSetInstanceId", "AttributeSetInstanceId");
+            d.Add("IsDescription", "IsDescription");
+            d.Add("isDescription", "IsDescription");
+            d.Add("Processed", "Processed");
+            d.Add("processed", "Processed");
+            d.Add("QuantityEntered", "QuantityEntered");
+            d.Add("quantityEntered", "QuantityEntered");
+            d.Add("RmaLineNumber", "RmaLineNumber");
+            d.Add("rmaLineNumber", "RmaLineNumber");
+            d.Add("ReversalLineNumber", "ReversalLineNumber");
+            d.Add("reversalLineNumber", "ReversalLineNumber");
+            d.Add("Version", "Version");
+            d.Add("version", "Version");
+            d.Add("CreatedBy", "CreatedBy");
+            d.Add("createdBy", "CreatedBy");
+            d.Add("CreatedAt", "CreatedAt");
+            d.Add("createdAt", "CreatedAt");
+            d.Add("UpdatedBy", "UpdatedBy");
+            d.Add("updatedBy", "UpdatedBy");
+            d.Add("UpdatedAt", "UpdatedAt");
+            d.Add("updatedAt", "UpdatedAt");
+            d.Add("Active", "Active");
+            d.Add("active", "Active");
+            d.Add("Deleted", "Deleted");
+            d.Add("deleted", "Deleted");
+            d.Add("InOutDocumentNumber", "InOutLineId.InOutDocumentNumber");
+            d.Add("inOutDocumentNumber", "InOutLineId.InOutDocumentNumber");
+            d.Add("InOutLineId.InOutDocumentNumber", "InOutLineId.InOutDocumentNumber");
+            d.Add("inOutLineId.inOutDocumentNumber", "InOutLineId.InOutDocumentNumber");
+            d.Add("InOutLineId.LineNumber", "InOutLineId.LineNumber");
+            d.Add("inOutLineId.lineNumber", "InOutLineId.LineNumber");
+            _filteringPropertyAliasDictionary = d;
+        }
+
         static InOutLineMetadata()
         {
+            InitFilteringPropertyAliasDictionary();
             _propertyMetadataDictionary = new Dictionary<string, PropertyMetadata>();
             foreach (var p in _properties)
             {
                 _propertyMetadataDictionary.Add(p.Name, p);
+            }
+            foreach (var kv in _filteringPropertyAliasDictionary)
+            {
+                if (_propertyMetadataDictionary.ContainsKey(kv.Value) && !_propertyMetadataDictionary.ContainsKey(kv.Key))
+                {
+                    var p = _propertyMetadataDictionary[kv.Value];
+                    _propertyMetadataDictionary.Add(kv.Key, p);
+                }
             }
         }
 

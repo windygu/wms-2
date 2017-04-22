@@ -43,7 +43,7 @@ public class OrganizationStructureTypeResource {
                 states = organizationStructureTypeApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver()),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureTypeFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureTypeFilteringProperties.aliasMap.get(n) : n)),
                         OrganizationStructureTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -91,7 +91,7 @@ public class OrganizationStructureTypeResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = organizationStructureTypeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver()));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureTypeFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureTypeFilteringProperties.aliasMap.get(n) : n)));
             } else {
                 count = organizationStructureTypeApplicationService.getCount(OrganizationStructureTypeResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -249,8 +249,8 @@ public class OrganizationStructureTypeResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (OrganizationStructureTypeFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-                return fieldName;
+            if (OrganizationStructureTypeFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return OrganizationStructureTypeFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }

@@ -19,9 +19,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "LoginKey",
                     Type = typeof(LoginKey),
                     TypeName = "LoginKey",
-                    IsBasicType = false,
+                    IsSimpleValueObjectType = false,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLogin",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -30,11 +29,12 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = true,
                     IsGlobalId = false,
-                    IsDerived = false,
+                    IsDerived = true,
+                    IsOuterId = true,
+                    DerivedFrom = "UserLoginId.LoginKey",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -50,9 +50,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Version",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLogin",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -61,7 +60,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -81,9 +79,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLogin",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -92,7 +89,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -112,9 +108,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLogin",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -123,7 +118,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -143,9 +137,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLogin",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -154,7 +147,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -174,9 +166,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLogin",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -185,7 +176,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -205,9 +195,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Active",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLogin",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -216,7 +205,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -236,9 +224,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Deleted",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLogin",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -247,7 +234,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -267,9 +253,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserLoginId",
                     Type = typeof(UserLoginId),
                     TypeName = "UserLoginId",
-                    IsBasicType = false,
+                    IsSimpleValueObjectType = false,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLogin",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -278,7 +263,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = true,
@@ -298,9 +282,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLogin",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -309,7 +292,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -331,9 +313,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "LoginKey.LoginProvider",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "LoginKey",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -342,7 +323,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -364,9 +344,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "LoginKey.ProviderKey",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "LoginKey",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -375,7 +354,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -397,9 +375,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserLoginId.UserId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLoginId",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -408,7 +385,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -430,9 +406,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserLoginId.LoginKeyLoginProvider",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLoginId",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -441,7 +416,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -463,9 +437,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserLoginId.LoginKeyProviderKey",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserLoginId",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -474,7 +447,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -497,12 +469,68 @@ namespace Dddml.Wms.Domain.Metadata
 
         private static IDictionary<string, PropertyMetadata> _propertyMetadataDictionary;
 
+        private static IDictionary<string, string> _filteringPropertyAliasDictionary;
+
+        public IDictionary<string, string> FilteringPropertyAliasDictionary
+        {
+            get { return _filteringPropertyAliasDictionary; }
+        }
+
+        private static void InitFilteringPropertyAliasDictionary()
+        {
+            var d = new Dictionary<string, string>();
+            d.Add("Version", "Version");
+            d.Add("version", "Version");
+            d.Add("CreatedBy", "CreatedBy");
+            d.Add("createdBy", "CreatedBy");
+            d.Add("CreatedAt", "CreatedAt");
+            d.Add("createdAt", "CreatedAt");
+            d.Add("UpdatedBy", "UpdatedBy");
+            d.Add("updatedBy", "UpdatedBy");
+            d.Add("UpdatedAt", "UpdatedAt");
+            d.Add("updatedAt", "UpdatedAt");
+            d.Add("Active", "Active");
+            d.Add("active", "Active");
+            d.Add("Deleted", "Deleted");
+            d.Add("deleted", "Deleted");
+            d.Add("UserId", "UserLoginId.UserId");
+            d.Add("userId", "UserLoginId.UserId");
+            d.Add("LoginKey.LoginProvider", "UserLoginId.LoginKeyLoginProvider");
+            d.Add("loginKey.loginProvider", "UserLoginId.LoginKeyLoginProvider");
+            d.Add("LoginKey.LoginProvider", "UserLoginId.LoginKeyLoginProvider");
+            d.Add("loginKey.loginProvider", "UserLoginId.LoginKeyLoginProvider");
+            d.Add("LoginKey.ProviderKey", "UserLoginId.LoginKeyProviderKey");
+            d.Add("loginKey.providerKey", "UserLoginId.LoginKeyProviderKey");
+            d.Add("LoginKey.ProviderKey", "UserLoginId.LoginKeyProviderKey");
+            d.Add("loginKey.providerKey", "UserLoginId.LoginKeyProviderKey");
+            d.Add("UserLoginId.UserId", "UserLoginId.UserId");
+            d.Add("userLoginId.userId", "UserLoginId.UserId");
+            d.Add("UserLoginId.LoginKeyLoginProvider", "UserLoginId.LoginKeyLoginProvider");
+            d.Add("userLoginId.loginKeyLoginProvider", "UserLoginId.LoginKeyLoginProvider");
+            d.Add("UserLoginId.LoginKey.LoginProvider", "UserLoginId.LoginKeyLoginProvider");
+            d.Add("userLoginId.loginKey.loginProvider", "UserLoginId.LoginKeyLoginProvider");
+            d.Add("UserLoginId.LoginKeyProviderKey", "UserLoginId.LoginKeyProviderKey");
+            d.Add("userLoginId.loginKeyProviderKey", "UserLoginId.LoginKeyProviderKey");
+            d.Add("UserLoginId.LoginKey.ProviderKey", "UserLoginId.LoginKeyProviderKey");
+            d.Add("userLoginId.loginKey.providerKey", "UserLoginId.LoginKeyProviderKey");
+            _filteringPropertyAliasDictionary = d;
+        }
+
         static UserLoginMetadata()
         {
+            InitFilteringPropertyAliasDictionary();
             _propertyMetadataDictionary = new Dictionary<string, PropertyMetadata>();
             foreach (var p in _properties)
             {
                 _propertyMetadataDictionary.Add(p.Name, p);
+            }
+            foreach (var kv in _filteringPropertyAliasDictionary)
+            {
+                if (_propertyMetadataDictionary.ContainsKey(kv.Value) && !_propertyMetadataDictionary.ContainsKey(kv.Key))
+                {
+                    var p = _propertyMetadataDictionary[kv.Value];
+                    _propertyMetadataDictionary.Add(kv.Key, p);
+                }
             }
         }
 

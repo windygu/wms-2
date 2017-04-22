@@ -53,7 +53,7 @@ public class AttributeSetInstanceResource {
                 states = attributeSetInstanceApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver()),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceFilteringProperties.aliasMap.containsKey(n) ? AttributeSetInstanceFilteringProperties.aliasMap.get(n) : n)),
                         AttributeSetInstanceResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -95,7 +95,7 @@ public class AttributeSetInstanceResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = attributeSetInstanceApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver()));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceFilteringProperties.aliasMap.containsKey(n) ? AttributeSetInstanceFilteringProperties.aliasMap.get(n) : n)));
             } else {
                 count = attributeSetInstanceApplicationService.getCount(AttributeSetInstanceResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -265,8 +265,8 @@ public class AttributeSetInstanceResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeSetInstanceFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-                return fieldName;
+            if (AttributeSetInstanceFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return AttributeSetInstanceFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }

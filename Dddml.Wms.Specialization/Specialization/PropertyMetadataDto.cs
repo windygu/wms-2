@@ -52,7 +52,7 @@ namespace Dddml.Wms.Specialization
 
         public bool? IsDerived { get; set; }
 
-        public bool? IsTransient { get; set; }
+        //public bool? IsTransient { get; set; }
 
         public bool? IsHoisted { get; set; }
 

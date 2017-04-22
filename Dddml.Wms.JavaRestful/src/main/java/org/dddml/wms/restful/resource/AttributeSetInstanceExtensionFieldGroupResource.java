@@ -43,7 +43,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                 states = attributeSetInstanceExtensionFieldGroupApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver()),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.get(n) : n)),
                         AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -91,7 +91,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver()));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.get(n) : n)));
             } else {
                 count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -264,8 +264,8 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeSetInstanceExtensionFieldGroupFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-                return fieldName;
+            if (AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }

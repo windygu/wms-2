@@ -12,16 +12,6 @@ namespace Dddml.Wms.Domain {
 			this.inOutLineId = inOutLineId;
 		}
 
-		private lineNumber: string;
-
-		getLineNumber(): string {
-			return this.lineNumber;
-		}
-
-		setLineNumber(lineNumber: string) {
-			this.lineNumber = lineNumber;
-		}
-
 		private description: string;
 
 		getDescription(): string {
@@ -42,14 +32,14 @@ namespace Dddml.Wms.Domain {
 			this.locatorId = locatorId;
 		}
 
-		private product: string;
+		private productId: string;
 
-		getProduct(): string {
-			return this.product;
+		getProductId(): string {
+			return this.productId;
 		}
 
-		setProduct(product: string) {
-			this.product = product;
+		setProductId(productId: string) {
+			this.productId = productId;
 		}
 
 		private uomId: string;

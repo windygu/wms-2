@@ -37,9 +37,25 @@ namespace Dddml.Wms.Domain.Permission
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((IPermissionStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, IPermissionAggregate aggregate, IPermissionState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((IPermissionStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(IPermissionStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.PermissionId;
+            var state = new PermissionState();
+            state.PermissionId = aggregateId;
+            var aggregate = (PermissionAggregate)GetPermissionAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(IPermissionCommand command, IEventStoreAggregateId eventStoreAggregateId, IPermissionState state)
 		{

@@ -5,7 +5,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 return $app['form.factory']->createBuilder(FormType::class, $data)
     ->add('lineNumber', IntegerType::class, [
-        'required' => false,
+        'required' => true,
         'label'    => 'Line Number',
     ])
     ->add('description', TextType::class, [
@@ -16,9 +16,9 @@ return $app['form.factory']->createBuilder(FormType::class, $data)
         'required' => false,
         'label'    => 'Locator Id',
     ])
-    ->add('product', TextType::class, [
+    ->add('productId', TextType::class, [
         'required' => false,
-        'label'    => 'Product',
+        'label'    => 'Product Id',
     ])
     ->add('uomId', TextType::class, [
         'required' => false,

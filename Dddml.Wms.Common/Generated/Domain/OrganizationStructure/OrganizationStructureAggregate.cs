@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
             return c.Version == OrganizationStructureState.VersionZero;
         }
 
-        protected virtual void Apply(IEvent e)
+        protected internal virtual void Apply(IEvent e)
         {
             OnApplying(e);
             _state.Mutate(e);

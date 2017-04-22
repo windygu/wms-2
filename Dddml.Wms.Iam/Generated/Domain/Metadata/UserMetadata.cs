@@ -19,9 +19,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -30,7 +29,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = true,
                     IsGlobalId = true,
@@ -50,9 +48,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserName",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -61,7 +58,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -81,9 +77,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AccessFailedCount",
                     Type = typeof(int),
                     TypeName = "int",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -92,7 +87,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -112,9 +106,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Email",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -123,7 +116,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -143,9 +135,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "EmailConfirmed",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -154,7 +145,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -174,9 +164,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "LockoutEnabled",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -185,7 +174,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -205,9 +193,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "LockoutEndDateUtc",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -216,7 +203,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -236,9 +222,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "PasswordHash",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -247,7 +232,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -267,9 +251,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "PhoneNumber",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -278,7 +261,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -298,9 +280,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "PhoneNumberConfirmed",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -309,7 +290,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -329,9 +309,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "TwoFactorEnabled",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -340,7 +319,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -360,9 +338,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "SecurityStamp",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -371,7 +348,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -389,7 +365,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "UserRoles",
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -398,7 +373,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "UserRole",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -416,7 +390,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "UserClaims",
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -425,7 +398,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "UserClaim",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -443,7 +415,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "UserPermissions",
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -452,7 +423,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "UserPermission",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -470,7 +440,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "UserLogins",
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -479,7 +448,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "UserLogin",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -499,9 +467,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Version",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -510,7 +477,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -530,9 +496,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -541,7 +506,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -561,9 +525,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -572,7 +535,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -592,9 +554,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -603,7 +564,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -623,9 +583,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -634,7 +593,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -654,9 +612,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Active",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -665,7 +622,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -685,9 +641,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Deleted",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "User",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -696,7 +651,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -717,12 +671,72 @@ namespace Dddml.Wms.Domain.Metadata
 
         private static IDictionary<string, PropertyMetadata> _propertyMetadataDictionary;
 
+        private static IDictionary<string, string> _filteringPropertyAliasDictionary;
+
+        public IDictionary<string, string> FilteringPropertyAliasDictionary
+        {
+            get { return _filteringPropertyAliasDictionary; }
+        }
+
+        private static void InitFilteringPropertyAliasDictionary()
+        {
+            var d = new Dictionary<string, string>();
+            d.Add("UserId", "UserId");
+            d.Add("userId", "UserId");
+            d.Add("UserName", "UserName");
+            d.Add("userName", "UserName");
+            d.Add("AccessFailedCount", "AccessFailedCount");
+            d.Add("accessFailedCount", "AccessFailedCount");
+            d.Add("Email", "Email");
+            d.Add("email", "Email");
+            d.Add("EmailConfirmed", "EmailConfirmed");
+            d.Add("emailConfirmed", "EmailConfirmed");
+            d.Add("LockoutEnabled", "LockoutEnabled");
+            d.Add("lockoutEnabled", "LockoutEnabled");
+            d.Add("LockoutEndDateUtc", "LockoutEndDateUtc");
+            d.Add("lockoutEndDateUtc", "LockoutEndDateUtc");
+            d.Add("PasswordHash", "PasswordHash");
+            d.Add("passwordHash", "PasswordHash");
+            d.Add("PhoneNumber", "PhoneNumber");
+            d.Add("phoneNumber", "PhoneNumber");
+            d.Add("PhoneNumberConfirmed", "PhoneNumberConfirmed");
+            d.Add("phoneNumberConfirmed", "PhoneNumberConfirmed");
+            d.Add("TwoFactorEnabled", "TwoFactorEnabled");
+            d.Add("twoFactorEnabled", "TwoFactorEnabled");
+            d.Add("SecurityStamp", "SecurityStamp");
+            d.Add("securityStamp", "SecurityStamp");
+            d.Add("Version", "Version");
+            d.Add("version", "Version");
+            d.Add("CreatedBy", "CreatedBy");
+            d.Add("createdBy", "CreatedBy");
+            d.Add("CreatedAt", "CreatedAt");
+            d.Add("createdAt", "CreatedAt");
+            d.Add("UpdatedBy", "UpdatedBy");
+            d.Add("updatedBy", "UpdatedBy");
+            d.Add("UpdatedAt", "UpdatedAt");
+            d.Add("updatedAt", "UpdatedAt");
+            d.Add("Active", "Active");
+            d.Add("active", "Active");
+            d.Add("Deleted", "Deleted");
+            d.Add("deleted", "Deleted");
+            _filteringPropertyAliasDictionary = d;
+        }
+
         static UserMetadata()
         {
+            InitFilteringPropertyAliasDictionary();
             _propertyMetadataDictionary = new Dictionary<string, PropertyMetadata>();
             foreach (var p in _properties)
             {
                 _propertyMetadataDictionary.Add(p.Name, p);
+            }
+            foreach (var kv in _filteringPropertyAliasDictionary)
+            {
+                if (_propertyMetadataDictionary.ContainsKey(kv.Value) && !_propertyMetadataDictionary.ContainsKey(kv.Key))
+                {
+                    var p = _propertyMetadataDictionary[kv.Value];
+                    _propertyMetadataDictionary.Add(kv.Key, p);
+                }
             }
         }
 

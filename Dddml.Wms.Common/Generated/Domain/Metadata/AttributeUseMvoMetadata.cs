@@ -20,9 +20,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetAttributeUseId",
                     Type = typeof(AttributeSetAttributeUseId),
                     TypeName = "AttributeSetAttributeUseId",
-                    IsBasicType = false,
+                    IsSimpleValueObjectType = false,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -31,7 +30,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = true,
                     IsGlobalId = true,
@@ -51,9 +49,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "SequenceNumber",
                     Type = typeof(int),
                     TypeName = "int",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -62,7 +59,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -82,9 +78,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Version",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -93,7 +88,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -113,9 +107,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -124,7 +117,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -144,9 +136,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -155,7 +146,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -175,9 +165,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -186,7 +175,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -206,9 +194,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -217,7 +204,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -237,9 +223,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Active",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -248,7 +233,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -268,9 +252,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Deleted",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -279,7 +262,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -299,9 +281,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetName",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -310,7 +291,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -330,9 +310,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetOrganizationId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -341,7 +320,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -361,9 +339,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetDescription",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -372,7 +349,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -392,9 +368,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetSerialNumberAttributeId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -403,7 +378,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -423,9 +397,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetLotAttributeId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -434,7 +407,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -454,9 +426,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetReferenceId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -465,7 +436,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -483,7 +453,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "AttributeSetAttributeUses",
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -492,7 +461,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "AttributeUse",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -512,9 +480,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetVersion",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -523,7 +490,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -543,9 +509,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetCreatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -554,7 +519,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -574,9 +538,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetCreatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -585,7 +548,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -605,9 +567,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetUpdatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -616,7 +577,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -636,9 +596,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetUpdatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -647,7 +606,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -667,9 +625,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetActive",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -678,7 +635,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -698,9 +654,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetDeleted",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeUseMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -709,7 +664,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -729,9 +683,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetAttributeUseId.AttributeSetId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetAttributeUseId",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -740,7 +693,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -762,9 +714,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetAttributeUseId.AttributeId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetAttributeUseId",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -773,7 +724,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -796,12 +746,80 @@ namespace Dddml.Wms.Domain.Metadata
 
         private static IDictionary<string, PropertyMetadata> _propertyMetadataDictionary;
 
+        private static IDictionary<string, string> _filteringPropertyAliasDictionary;
+
+        public IDictionary<string, string> FilteringPropertyAliasDictionary
+        {
+            get { return _filteringPropertyAliasDictionary; }
+        }
+
+        private static void InitFilteringPropertyAliasDictionary()
+        {
+            var d = new Dictionary<string, string>();
+            d.Add("SequenceNumber", "SequenceNumber");
+            d.Add("sequenceNumber", "SequenceNumber");
+            d.Add("Version", "Version");
+            d.Add("version", "Version");
+            d.Add("CreatedBy", "CreatedBy");
+            d.Add("createdBy", "CreatedBy");
+            d.Add("CreatedAt", "CreatedAt");
+            d.Add("createdAt", "CreatedAt");
+            d.Add("UpdatedBy", "UpdatedBy");
+            d.Add("updatedBy", "UpdatedBy");
+            d.Add("UpdatedAt", "UpdatedAt");
+            d.Add("updatedAt", "UpdatedAt");
+            d.Add("Active", "Active");
+            d.Add("active", "Active");
+            d.Add("Deleted", "Deleted");
+            d.Add("deleted", "Deleted");
+            d.Add("AttributeSetName", "AttributeSetName");
+            d.Add("attributeSetName", "AttributeSetName");
+            d.Add("AttributeSetOrganizationId", "AttributeSetOrganizationId");
+            d.Add("attributeSetOrganizationId", "AttributeSetOrganizationId");
+            d.Add("AttributeSetDescription", "AttributeSetDescription");
+            d.Add("attributeSetDescription", "AttributeSetDescription");
+            d.Add("AttributeSetSerialNumberAttributeId", "AttributeSetSerialNumberAttributeId");
+            d.Add("attributeSetSerialNumberAttributeId", "AttributeSetSerialNumberAttributeId");
+            d.Add("AttributeSetLotAttributeId", "AttributeSetLotAttributeId");
+            d.Add("attributeSetLotAttributeId", "AttributeSetLotAttributeId");
+            d.Add("AttributeSetReferenceId", "AttributeSetReferenceId");
+            d.Add("attributeSetReferenceId", "AttributeSetReferenceId");
+            d.Add("AttributeSetVersion", "AttributeSetVersion");
+            d.Add("attributeSetVersion", "AttributeSetVersion");
+            d.Add("AttributeSetCreatedBy", "AttributeSetCreatedBy");
+            d.Add("attributeSetCreatedBy", "AttributeSetCreatedBy");
+            d.Add("AttributeSetCreatedAt", "AttributeSetCreatedAt");
+            d.Add("attributeSetCreatedAt", "AttributeSetCreatedAt");
+            d.Add("AttributeSetUpdatedBy", "AttributeSetUpdatedBy");
+            d.Add("attributeSetUpdatedBy", "AttributeSetUpdatedBy");
+            d.Add("AttributeSetUpdatedAt", "AttributeSetUpdatedAt");
+            d.Add("attributeSetUpdatedAt", "AttributeSetUpdatedAt");
+            d.Add("AttributeSetActive", "AttributeSetActive");
+            d.Add("attributeSetActive", "AttributeSetActive");
+            d.Add("AttributeSetDeleted", "AttributeSetDeleted");
+            d.Add("attributeSetDeleted", "AttributeSetDeleted");
+            d.Add("AttributeSetAttributeUseId.AttributeSetId", "AttributeSetAttributeUseId.AttributeSetId");
+            d.Add("attributeSetAttributeUseId.attributeSetId", "AttributeSetAttributeUseId.AttributeSetId");
+            d.Add("AttributeSetAttributeUseId.AttributeId", "AttributeSetAttributeUseId.AttributeId");
+            d.Add("attributeSetAttributeUseId.attributeId", "AttributeSetAttributeUseId.AttributeId");
+            _filteringPropertyAliasDictionary = d;
+        }
+
         static AttributeUseMvoMetadata()
         {
+            InitFilteringPropertyAliasDictionary();
             _propertyMetadataDictionary = new Dictionary<string, PropertyMetadata>();
             foreach (var p in _properties)
             {
                 _propertyMetadataDictionary.Add(p.Name, p);
+            }
+            foreach (var kv in _filteringPropertyAliasDictionary)
+            {
+                if (_propertyMetadataDictionary.ContainsKey(kv.Value) && !_propertyMetadataDictionary.ContainsKey(kv.Key))
+                {
+                    var p = _propertyMetadataDictionary[kv.Value];
+                    _propertyMetadataDictionary.Add(kv.Key, p);
+                }
             }
         }
 

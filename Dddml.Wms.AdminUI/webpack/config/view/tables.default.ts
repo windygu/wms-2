@@ -85,11 +85,10 @@ export default {
     },
     InOutLine: {
       displayableFields: {
-            skuId: {},
             lineNumber: {},
             description: {},
             locatorId: {},
-            product: {},
+            productId: {},
             uomId: {},
             movementQuantity: {},
             confirmedQuantity: {},
@@ -690,10 +689,9 @@ export default {
     InOutLineMvo: {
       displayableFields: {
             inOutLineId: {},
-            lineNumber: {},
             description: {},
             locatorId: {},
-            product: {},
+            productId: {},
             uomId: {},
             movementQuantity: {},
             confirmedQuantity: {},

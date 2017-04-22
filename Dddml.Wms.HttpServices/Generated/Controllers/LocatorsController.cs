@@ -36,7 +36,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<ILocatorState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _locatorApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                states = _locatorApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (LocatorMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? LocatorMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
             else 
@@ -92,7 +93,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _locatorApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()));
+                count = _locatorApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (LocatorMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? LocatorMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 
             {
@@ -289,18 +291,9 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 return null;
             }
-            if (LocatorMetadata.Instance.PropertyMetadataDictionary.ContainsKey(fieldName))
+            if (LocatorMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(fieldName))
             {
-                var p = LocatorMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
+                return LocatorMetadata.Instance.FilteringPropertyAliasDictionary[fieldName];
             }
             return null;
         }

@@ -41,13 +41,15 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 {
                     if (IsOnlyIdReturned(fields))
                     {
-                        var ids = _organizationTreeApplicationService.GetRootIds(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                        var ids = _organizationTreeApplicationService.GetRootIds(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                            , n => (OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                             , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                         states = OrganizationsControllerUtils.ToOrganizationStateCollection(ids);
                     }
                     else
                     {
-                        states = _organizationTreeApplicationService.GetRoots(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                        states = _organizationTreeApplicationService.GetRoots(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                            , n => (OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                             , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                     }
                 }
@@ -55,13 +57,15 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 {
                     if (IsOnlyIdReturned(fields))
                     {
-                        var ids = _organizationTreeApplicationService.GetChildIds(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                        var ids = _organizationTreeApplicationService.GetChildIds(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                            , n => (OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                             , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                         states = OrganizationsControllerUtils.ToOrganizationStateCollection(ids);
                     }
                     else
                     {
-                        states = _organizationTreeApplicationService.GetChildren(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                        states = _organizationTreeApplicationService.GetChildren(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                            , n => (OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                             , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                     }
                 }

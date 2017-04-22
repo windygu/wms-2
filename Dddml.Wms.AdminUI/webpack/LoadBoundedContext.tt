@@ -1,0 +1,21 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ include file="DddmlSerializationForT4.tc" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Dddml.Core.Domain" #>
+<#@ import namespace="Dddml.Serialization" #>
+<#@ import namespace="Dddml.T4" #>
+<#@ import namespace="Dddml.T4.Extensions" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.Common\LoadBoundedContextFiles.tt" #>
+<#
+
+	var generationOptions = new GenerationOptions();
+	generationOptions.Php = true;
+	generationOptions.NoMViewObjects = false;
+	boundedContext.PrepareGeneration(generationOptions);
+
+	var mviewObjects = boundedContext.GetMViewObjects();
+
+#>

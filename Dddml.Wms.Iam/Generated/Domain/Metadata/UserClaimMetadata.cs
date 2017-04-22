@@ -19,9 +19,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "ClaimId",
                     Type = typeof(int),
                     TypeName = "int",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -30,11 +29,12 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = true,
                     IsGlobalId = false,
-                    IsDerived = false,
+                    IsDerived = true,
+                    IsOuterId = true,
+                    DerivedFrom = "UserClaimId.ClaimId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -44,15 +44,14 @@ namespace Dddml.Wms.Domain.Metadata
                     IsReservedPropertyCreatedAt = false,
                     IsReservedPropertyUpdatedBy = false,
                     IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = false,
+                    IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
                     Name = "ClaimType",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -61,7 +60,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -81,9 +79,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "ClaimValue",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -92,7 +89,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -112,9 +108,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Version",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -123,7 +118,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -143,9 +137,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -154,7 +147,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -174,9 +166,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -185,7 +176,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -205,9 +195,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -216,7 +205,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -236,9 +224,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -247,7 +234,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -267,9 +253,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Active",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -278,7 +263,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -298,9 +282,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Deleted",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -309,7 +292,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -329,9 +311,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserClaimId",
                     Type = typeof(UserClaimId),
                     TypeName = "UserClaimId",
-                    IsBasicType = false,
+                    IsSimpleValueObjectType = false,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -340,7 +321,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = true,
@@ -360,9 +340,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaim",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -371,7 +350,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -393,9 +371,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserClaimId.UserId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimId",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -404,7 +381,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -426,9 +402,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserClaimId.ClaimId",
                     Type = typeof(int),
                     TypeName = "int",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimId",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -437,7 +412,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -460,12 +434,60 @@ namespace Dddml.Wms.Domain.Metadata
 
         private static IDictionary<string, PropertyMetadata> _propertyMetadataDictionary;
 
+        private static IDictionary<string, string> _filteringPropertyAliasDictionary;
+
+        public IDictionary<string, string> FilteringPropertyAliasDictionary
+        {
+            get { return _filteringPropertyAliasDictionary; }
+        }
+
+        private static void InitFilteringPropertyAliasDictionary()
+        {
+            var d = new Dictionary<string, string>();
+            d.Add("ClaimId", "UserClaimId.ClaimId");
+            d.Add("claimId", "UserClaimId.ClaimId");
+            d.Add("ClaimType", "ClaimType");
+            d.Add("claimType", "ClaimType");
+            d.Add("ClaimValue", "ClaimValue");
+            d.Add("claimValue", "ClaimValue");
+            d.Add("Version", "Version");
+            d.Add("version", "Version");
+            d.Add("CreatedBy", "CreatedBy");
+            d.Add("createdBy", "CreatedBy");
+            d.Add("CreatedAt", "CreatedAt");
+            d.Add("createdAt", "CreatedAt");
+            d.Add("UpdatedBy", "UpdatedBy");
+            d.Add("updatedBy", "UpdatedBy");
+            d.Add("UpdatedAt", "UpdatedAt");
+            d.Add("updatedAt", "UpdatedAt");
+            d.Add("Active", "Active");
+            d.Add("active", "Active");
+            d.Add("Deleted", "Deleted");
+            d.Add("deleted", "Deleted");
+            d.Add("UserId", "UserClaimId.UserId");
+            d.Add("userId", "UserClaimId.UserId");
+            d.Add("UserClaimId.UserId", "UserClaimId.UserId");
+            d.Add("userClaimId.userId", "UserClaimId.UserId");
+            d.Add("UserClaimId.ClaimId", "UserClaimId.ClaimId");
+            d.Add("userClaimId.claimId", "UserClaimId.ClaimId");
+            _filteringPropertyAliasDictionary = d;
+        }
+
         static UserClaimMetadata()
         {
+            InitFilteringPropertyAliasDictionary();
             _propertyMetadataDictionary = new Dictionary<string, PropertyMetadata>();
             foreach (var p in _properties)
             {
                 _propertyMetadataDictionary.Add(p.Name, p);
+            }
+            foreach (var kv in _filteringPropertyAliasDictionary)
+            {
+                if (_propertyMetadataDictionary.ContainsKey(kv.Value) && !_propertyMetadataDictionary.ContainsKey(kv.Key))
+                {
+                    var p = _propertyMetadataDictionary[kv.Value];
+                    _propertyMetadataDictionary.Add(kv.Key, p);
+                }
             }
         }
 

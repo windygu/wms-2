@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.RolePermission
             return c.Version == RolePermissionState.VersionZero;
         }
 
-        protected virtual void Apply(IEvent e)
+        protected internal virtual void Apply(IEvent e)
         {
             OnApplying(e);
             _state.Mutate(e);

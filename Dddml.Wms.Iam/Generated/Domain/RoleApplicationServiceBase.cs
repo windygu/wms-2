@@ -37,9 +37,25 @@ namespace Dddml.Wms.Domain.Role
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((IRoleStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, IRoleAggregate aggregate, IRoleState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((IRoleStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(IRoleStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.RoleId;
+            var state = new RoleState();
+            state.RoleId = aggregateId;
+            var aggregate = (RoleAggregate)GetRoleAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(IRoleCommand command, IEventStoreAggregateId eventStoreAggregateId, IRoleState state)
 		{

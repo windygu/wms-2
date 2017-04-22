@@ -1,14 +1,5 @@
 export const VALUE_OBJECT_METADATA = [
   {
-    "name": "SkuId",
-    "plural": "SkuIds",
-    "label": "Sku Id",
-    "collectionLabel": "Sku Ids",
-    "properties": [
-      { name: "productId", label: "Product Id", type: "string" }, { name: "attributeSetInstanceId", label: "Attribute Set Instance Id", type: "string" }
-    ]
-  },
-  {
     "name": "OrganizationStructureId",
     "plural": "OrganizationStructureIds",
     "label": "Organization Structure Id",
@@ -77,7 +68,7 @@ export const VALUE_OBJECT_METADATA = [
     "label": "In Out Line Id",
     "collectionLabel": "In Out Line Ids",
     "properties": [
-      { name: "inOutDocumentNumber", label: "In Out Document Number", type: "string" }, { name: "skuId", label: "Sku Id", type: "SkuId" }
+      { name: "inOutDocumentNumber", label: "In Out Document Number", type: "string" }, { name: "lineNumber", label: "Line Number", type: "long" }
     ]
   },
   {
@@ -95,7 +86,7 @@ export const VALUE_OBJECT_METADATA = [
     "label": "In Out Line State Event Id",
     "collectionLabel": "In Out Line State Event Ids",
     "properties": [
-      { name: "inOutDocumentNumber", label: "In Out Document Number", type: "string" }, { name: "skuId", label: "Sku Id", type: "SkuId" }, { name: "inOutVersion", label: "In Out Version", type: "long" }
+      { name: "inOutDocumentNumber", label: "In Out Document Number", type: "string" }, { name: "lineNumber", label: "Line Number", type: "long" }, { name: "inOutVersion", label: "In Out Version", type: "long" }
     ]
   },
   {

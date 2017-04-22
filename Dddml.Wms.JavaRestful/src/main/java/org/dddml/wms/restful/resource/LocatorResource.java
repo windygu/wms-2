@@ -43,7 +43,7 @@ public class LocatorResource {
                 states = locatorApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver()),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LocatorFilteringProperties.aliasMap.containsKey(n) ? LocatorFilteringProperties.aliasMap.get(n) : n)),
                         LocatorResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -91,7 +91,7 @@ public class LocatorResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = locatorApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver()));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LocatorFilteringProperties.aliasMap.containsKey(n) ? LocatorFilteringProperties.aliasMap.get(n) : n)));
             } else {
                 count = locatorApplicationService.getCount(LocatorResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -249,8 +249,8 @@ public class LocatorResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (LocatorFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-                return fieldName;
+            if (LocatorFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return LocatorFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }

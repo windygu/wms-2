@@ -37,9 +37,25 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((IOrganizationStructureStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, IOrganizationStructureAggregate aggregate, IOrganizationStructureState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((IOrganizationStructureStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(IOrganizationStructureStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.Id;
+            var state = new OrganizationStructureState();
+            state.Id = aggregateId;
+            var aggregate = (OrganizationStructureAggregate)GetOrganizationStructureAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(IOrganizationStructureCommand command, IEventStoreAggregateId eventStoreAggregateId, IOrganizationStructureState state)
 		{

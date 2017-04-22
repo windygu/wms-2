@@ -18,6 +18,12 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		public virtual AttributeValueMvoStateEventId StateEventId { get; set; }
 
+        public virtual AttributeValueId AttributeValueId
+        {
+            get { return StateEventId.AttributeValueId; }
+            set { StateEventId.AttributeValueId = value; }
+        }
+
 		public virtual string Name { get; set; }
 
 		public virtual string Description { get; set; }
@@ -129,7 +135,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 	public class AttributeValueMvoStateCreated : AttributeValueMvoStateEventBase, IAttributeValueMvoStateCreated
 	{
-		public AttributeValueMvoStateCreated ()
+		public AttributeValueMvoStateCreated () : this(new AttributeValueMvoStateEventId())
 		{
 		}
 

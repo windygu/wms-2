@@ -37,7 +37,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IAttributeSetInstanceExtensionFieldMvoState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _attributeSetInstanceExtensionFieldMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                states = _attributeSetInstanceExtensionFieldMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (AttributeSetInstanceExtensionFieldMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? AttributeSetInstanceExtensionFieldMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , AttributeSetInstanceExtensionFieldMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
             else 
@@ -93,7 +94,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _attributeSetInstanceExtensionFieldMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()));
+                count = _attributeSetInstanceExtensionFieldMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (AttributeSetInstanceExtensionFieldMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? AttributeSetInstanceExtensionFieldMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 
             {
@@ -297,18 +299,9 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 return null;
             }
-            if (AttributeSetInstanceExtensionFieldMvoMetadata.Instance.PropertyMetadataDictionary.ContainsKey(fieldName))
+            if (AttributeSetInstanceExtensionFieldMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(fieldName))
             {
-                var p = AttributeSetInstanceExtensionFieldMvoMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
+                return AttributeSetInstanceExtensionFieldMvoMetadata.Instance.FilteringPropertyAliasDictionary[fieldName];
             }
             return null;
         }

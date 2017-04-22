@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
             return c.UserVersion == UserRoleMvoState.VersionZero;
         }
 
-        protected virtual void Apply(IEvent e)
+        protected internal virtual void Apply(IEvent e)
         {
             OnApplying(e);
             _state.Mutate(e);

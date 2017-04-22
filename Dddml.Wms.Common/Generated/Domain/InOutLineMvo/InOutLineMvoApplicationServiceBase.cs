@@ -39,9 +39,25 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((IInOutLineMvoStateProperties)state).InOutVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, IInOutLineMvoAggregate aggregate, IInOutLineMvoState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((IInOutLineMvoStateProperties)state).InOutVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(IInOutLineMvoStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.InOutLineId;
+            var state = new InOutLineMvoState();
+            state.InOutLineId = aggregateId;
+            var aggregate = (InOutLineMvoAggregate)GetInOutLineMvoAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(IInOutLineMvoCommand command, IEventStoreAggregateId eventStoreAggregateId, IInOutLineMvoState state)
 		{

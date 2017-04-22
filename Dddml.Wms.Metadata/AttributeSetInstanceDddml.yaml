@@ -44,7 +44,7 @@ aggregates:
         Hash:
           type: string
           isDerived: true
-          isTransient: false
+          #isTransient: false
         
         _F_B_0_:
           type: bool?

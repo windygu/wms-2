@@ -45,7 +45,7 @@ public class InOutResource {
                 states = inOutApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver()),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutFilteringProperties.aliasMap.containsKey(n) ? InOutFilteringProperties.aliasMap.get(n) : n)),
                         InOutResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -93,7 +93,7 @@ public class InOutResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = inOutApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver()));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutFilteringProperties.aliasMap.containsKey(n) ? InOutFilteringProperties.aliasMap.get(n) : n)));
             } else {
                 count = inOutApplicationService.getCount(InOutResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -266,8 +266,8 @@ public class InOutResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (InOutFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-                return fieldName;
+            if (InOutFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return InOutFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }

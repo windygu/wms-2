@@ -37,9 +37,25 @@ namespace Dddml.Wms.Domain.Locator
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((ILocatorStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, ILocatorAggregate aggregate, ILocatorState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((ILocatorStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(ILocatorStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.LocatorId;
+            var state = new LocatorState();
+            state.LocatorId = aggregateId;
+            var aggregate = (LocatorAggregate)GetLocatorAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(ILocatorCommand command, IEventStoreAggregateId eventStoreAggregateId, ILocatorState state)
 		{

@@ -12,17 +12,14 @@ namespace Dddml.Wms.Domain {
 			this.inOutDocumentNumber = inOutDocumentNumber;
 		}
 
-		private skuId: SkuId;
+		private lineNumber: string;
 
-		getSkuId(): SkuId {
-			if(!this.skuId) {
-				this.skuId = new SkuId(); 
-			}
-			return this.skuId;
+		getLineNumber(): string {
+			return this.lineNumber;
 		}
 
-		setSkuId(skuId: SkuId) {
-			this.skuId = skuId;
+		setLineNumber(lineNumber: string) {
+			this.lineNumber = lineNumber;
 		}
 
 		private inOutVersion: string;

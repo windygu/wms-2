@@ -38,9 +38,25 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((IUserPermissionMvoStateProperties)state).UserVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, IUserPermissionMvoAggregate aggregate, IUserPermissionMvoState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((IUserPermissionMvoStateProperties)state).UserVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(IUserPermissionMvoStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.UserPermissionId;
+            var state = new UserPermissionMvoState();
+            state.UserPermissionId = aggregateId;
+            var aggregate = (UserPermissionMvoAggregate)GetUserPermissionMvoAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(IUserPermissionMvoCommand command, IEventStoreAggregateId eventStoreAggregateId, IUserPermissionMvoState state)
 		{

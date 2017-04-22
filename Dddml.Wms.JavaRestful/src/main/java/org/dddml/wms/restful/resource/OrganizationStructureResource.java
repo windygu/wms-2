@@ -43,7 +43,7 @@ public class OrganizationStructureResource {
                 states = organizationStructureApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver()),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureFilteringProperties.aliasMap.get(n) : n)),
                         OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -91,7 +91,7 @@ public class OrganizationStructureResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = organizationStructureApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver()));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureFilteringProperties.aliasMap.get(n) : n)));
             } else {
                 count = organizationStructureApplicationService.getCount(OrganizationStructureResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -255,8 +255,8 @@ public class OrganizationStructureResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (OrganizationStructureFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-                return fieldName;
+            if (OrganizationStructureFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return OrganizationStructureFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }

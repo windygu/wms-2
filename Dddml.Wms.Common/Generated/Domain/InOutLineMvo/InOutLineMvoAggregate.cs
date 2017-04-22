@@ -78,7 +78,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             return c.InOutVersion == InOutLineMvoState.VersionZero;
         }
 
-        protected virtual void Apply(IEvent e)
+        protected internal virtual void Apply(IEvent e)
         {
             OnApplying(e);
             _state.Mutate(e);

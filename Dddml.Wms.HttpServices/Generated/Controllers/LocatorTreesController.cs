@@ -41,13 +41,15 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 {
                     if (IsOnlyIdReturned(fields))
                     {
-                        var ids = _locatorTreeApplicationService.GetRootIds(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                        var ids = _locatorTreeApplicationService.GetRootIds(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                            , n => (LocatorMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? LocatorMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                             , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                         states = LocatorsControllerUtils.ToLocatorStateCollection(ids);
                     }
                     else
                     {
-                        states = _locatorTreeApplicationService.GetRoots(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                        states = _locatorTreeApplicationService.GetRoots(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                            , n => (LocatorMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? LocatorMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                             , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                     }
                 }
@@ -55,13 +57,15 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 {
                     if (IsOnlyIdReturned(fields))
                     {
-                        var ids = _locatorTreeApplicationService.GetChildIds(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                        var ids = _locatorTreeApplicationService.GetChildIds(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                            , n => (LocatorMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? LocatorMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                             , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                         states = LocatorsControllerUtils.ToLocatorStateCollection(ids);
                     }
                     else
                     {
-                        states = _locatorTreeApplicationService.GetChildren(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                        states = _locatorTreeApplicationService.GetChildren(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                            , n => (LocatorMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? LocatorMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                             , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                     }
                 }

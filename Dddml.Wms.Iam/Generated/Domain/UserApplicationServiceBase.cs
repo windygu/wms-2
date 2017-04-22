@@ -37,9 +37,25 @@ namespace Dddml.Wms.Domain.User
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((IUserStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, IUserAggregate aggregate, IUserState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((IUserStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(IUserStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.UserId;
+            var state = new UserState();
+            state.UserId = aggregateId;
+            var aggregate = (UserAggregate)GetUserAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(IUserCommand command, IEventStoreAggregateId eventStoreAggregateId, IUserState state)
 		{

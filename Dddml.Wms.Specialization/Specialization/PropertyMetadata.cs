@@ -14,7 +14,7 @@ namespace Dddml.Wms.Specialization
 
         public virtual Type Type { get; set; }
 
-        public virtual bool IsBasicType { get; set; }
+        public virtual bool IsSimpleValueObjectType { get; set; }
 
         public virtual string DeclaringObjectName { get; set; }
 
@@ -36,7 +36,7 @@ namespace Dddml.Wms.Specialization
 
         public virtual bool IsDerived { get; set; }
 
-        public virtual bool IsTransient { get; set; }
+        //public virtual bool IsTransient { get; set; }
 
         public virtual bool IsHoisted { get; set; }
 

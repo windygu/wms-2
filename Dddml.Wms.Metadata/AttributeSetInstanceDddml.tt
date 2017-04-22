@@ -54,7 +54,7 @@ aggregates:
         Hash:
           type: string
           isDerived: true
-          isTransient: false
+          #isTransient: false
         
 <#
     foreach (var f in extensionFields)

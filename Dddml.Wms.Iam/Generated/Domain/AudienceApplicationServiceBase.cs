@@ -37,9 +37,25 @@ namespace Dddml.Wms.Domain.Audience
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((IAudienceStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, IAudienceAggregate aggregate, IAudienceState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((IAudienceStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(IAudienceStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.ClientId;
+            var state = new AudienceState();
+            state.ClientId = aggregateId;
+            var aggregate = (AudienceAggregate)GetAudienceAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(IAudienceCommand command, IEventStoreAggregateId eventStoreAggregateId, IAudienceState state)
 		{

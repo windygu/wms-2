@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 		public virtual AttributeSetInstanceExtensionFieldStateEventId StateEventId { get; set; }
 
+        public virtual string Index
+        {
+            get { return StateEventId.Index; }
+            set { StateEventId.Index = value; }
+        }
+
 		public virtual string Name { get; set; }
 
 		public virtual string Type { get; set; }
@@ -100,7 +106,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 	public class AttributeSetInstanceExtensionFieldStateCreated : AttributeSetInstanceExtensionFieldStateEventBase, IAttributeSetInstanceExtensionFieldStateCreated
 	{
-		public AttributeSetInstanceExtensionFieldStateCreated ()
+		public AttributeSetInstanceExtensionFieldStateCreated () : this(new AttributeSetInstanceExtensionFieldStateEventId())
 		{
 		}
 

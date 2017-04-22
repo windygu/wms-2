@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.User
 
 		public virtual UserStateEventId StateEventId { get; set; }
 
+        public virtual string UserId
+        {
+            get { return StateEventId.UserId; }
+            set { StateEventId.UserId = value; }
+        }
+
 		public virtual string UserName { get; set; }
 
 		public virtual int? AccessFailedCount { get; set; }
@@ -218,7 +224,7 @@ namespace Dddml.Wms.Domain.User
 
 	public class UserStateCreated : UserStateEventBase, IUserStateCreated, ISaveable
 	{
-		public UserStateCreated ()
+		public UserStateCreated () : this(new UserStateEventId())
 		{
 		}
 

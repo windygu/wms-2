@@ -43,7 +43,7 @@ public class WarehouseResource {
                 states = warehouseApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver()),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (WarehouseFilteringProperties.aliasMap.containsKey(n) ? WarehouseFilteringProperties.aliasMap.get(n) : n)),
                         WarehouseResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -91,7 +91,7 @@ public class WarehouseResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = warehouseApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver()));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (WarehouseFilteringProperties.aliasMap.containsKey(n) ? WarehouseFilteringProperties.aliasMap.get(n) : n)));
             } else {
                 count = warehouseApplicationService.getCount(WarehouseResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -249,8 +249,8 @@ public class WarehouseResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (WarehouseFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-                return fieldName;
+            if (WarehouseFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return WarehouseFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }

@@ -18,6 +18,12 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual InOutStateEventId StateEventId { get; set; }
 
+        public virtual string DocumentNumber
+        {
+            get { return StateEventId.DocumentNumber; }
+            set { StateEventId.DocumentNumber = value; }
+        }
+
 		public virtual bool? IsSOTransaction { get; set; }
 
 		public virtual string DocumentStatus { get; set; }
@@ -184,7 +190,7 @@ namespace Dddml.Wms.Domain.InOut
 
 	public class InOutStateCreated : InOutStateEventBase, IInOutStateCreated, ISaveable
 	{
-		public InOutStateCreated ()
+		public InOutStateCreated () : this(new InOutStateEventId())
 		{
 		}
 

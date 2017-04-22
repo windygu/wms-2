@@ -37,7 +37,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IAttributeValueMvoState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _attributeValueMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                states = _attributeValueMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (AttributeValueMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? AttributeValueMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , AttributeValueMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
             else 
@@ -93,7 +94,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _attributeValueMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()));
+                count = _attributeValueMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (AttributeValueMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? AttributeValueMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 
             {
@@ -297,18 +299,9 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 return null;
             }
-            if (AttributeValueMvoMetadata.Instance.PropertyMetadataDictionary.ContainsKey(fieldName))
+            if (AttributeValueMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(fieldName))
             {
-                var p = AttributeValueMvoMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
+                return AttributeValueMvoMetadata.Instance.FilteringPropertyAliasDictionary[fieldName];
             }
             return null;
         }

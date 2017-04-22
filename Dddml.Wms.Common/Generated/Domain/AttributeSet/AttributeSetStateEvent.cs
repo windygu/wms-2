@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		public virtual AttributeSetStateEventId StateEventId { get; set; }
 
+        public virtual string AttributeSetId
+        {
+            get { return StateEventId.AttributeSetId; }
+            set { StateEventId.AttributeSetId = value; }
+        }
+
 		public virtual string Name { get; set; }
 
 		public virtual string OrganizationId { get; set; }
@@ -127,7 +133,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 	public class AttributeSetStateCreated : AttributeSetStateEventBase, IAttributeSetStateCreated, ISaveable
 	{
-		public AttributeSetStateCreated ()
+		public AttributeSetStateCreated () : this(new AttributeSetStateEventId())
 		{
 		}
 

@@ -43,7 +43,7 @@ public class OrganizationResource {
                 states = organizationApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver()),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationFilteringProperties.aliasMap.containsKey(n) ? OrganizationFilteringProperties.aliasMap.get(n) : n)),
                         OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -91,7 +91,7 @@ public class OrganizationResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = organizationApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver()));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationFilteringProperties.aliasMap.containsKey(n) ? OrganizationFilteringProperties.aliasMap.get(n) : n)));
             } else {
                 count = organizationApplicationService.getCount(OrganizationResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -249,8 +249,8 @@ public class OrganizationResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (OrganizationFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-                return fieldName;
+            if (OrganizationFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return OrganizationFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }

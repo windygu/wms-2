@@ -20,9 +20,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserClaimId",
                     Type = typeof(UserClaimId),
                     TypeName = "UserClaimId",
-                    IsBasicType = false,
+                    IsSimpleValueObjectType = false,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -31,7 +30,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = true,
                     IsGlobalId = true,
@@ -51,9 +49,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "ClaimType",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -62,7 +59,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -82,9 +78,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "ClaimValue",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -93,7 +88,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -113,9 +107,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Version",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -124,7 +117,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -144,9 +136,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -155,7 +146,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -175,9 +165,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -186,7 +175,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -206,9 +194,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -217,7 +204,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -237,9 +223,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -248,7 +233,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -268,9 +252,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Active",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -279,7 +262,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -299,9 +281,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Deleted",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -310,7 +291,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -330,9 +310,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserUserName",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -341,7 +320,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -361,9 +339,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserAccessFailedCount",
                     Type = typeof(int),
                     TypeName = "int",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -372,7 +349,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -392,9 +368,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserEmail",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -403,7 +378,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -423,9 +397,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserEmailConfirmed",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -434,7 +407,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -454,9 +426,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserLockoutEnabled",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -465,7 +436,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -485,9 +455,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserLockoutEndDateUtc",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -496,7 +465,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -516,9 +484,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserPasswordHash",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -527,7 +494,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -547,9 +513,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserPhoneNumber",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -558,7 +523,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -578,9 +542,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserPhoneNumberConfirmed",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -589,7 +552,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -609,9 +571,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserTwoFactorEnabled",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -620,7 +581,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -640,9 +600,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserSecurityStamp",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -651,7 +610,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -669,7 +627,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "UserUserRoles",
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -678,7 +635,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "UserRole",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -696,7 +652,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "UserUserClaims",
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -705,7 +660,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "UserClaim",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -723,7 +677,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "UserUserPermissions",
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -732,7 +685,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "UserPermission",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -750,7 +702,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "UserUserLogins",
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -759,7 +710,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "UserLogin",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -779,9 +729,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserVersion",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -790,7 +739,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -810,9 +758,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserCreatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -821,7 +768,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -841,9 +787,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserCreatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -852,7 +797,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -872,9 +816,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserUpdatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -883,7 +826,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -903,9 +845,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserUpdatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -914,7 +855,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -934,9 +874,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserActive",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -945,7 +884,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -965,9 +903,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserDeleted",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -976,7 +913,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -996,9 +932,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserClaimId.UserId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimId",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -1007,7 +942,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -1029,9 +963,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UserClaimId.ClaimId",
                     Type = typeof(int),
                     TypeName = "int",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "UserClaimId",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -1040,7 +973,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -1063,12 +995,92 @@ namespace Dddml.Wms.Domain.Metadata
 
         private static IDictionary<string, PropertyMetadata> _propertyMetadataDictionary;
 
+        private static IDictionary<string, string> _filteringPropertyAliasDictionary;
+
+        public IDictionary<string, string> FilteringPropertyAliasDictionary
+        {
+            get { return _filteringPropertyAliasDictionary; }
+        }
+
+        private static void InitFilteringPropertyAliasDictionary()
+        {
+            var d = new Dictionary<string, string>();
+            d.Add("ClaimType", "ClaimType");
+            d.Add("claimType", "ClaimType");
+            d.Add("ClaimValue", "ClaimValue");
+            d.Add("claimValue", "ClaimValue");
+            d.Add("Version", "Version");
+            d.Add("version", "Version");
+            d.Add("CreatedBy", "CreatedBy");
+            d.Add("createdBy", "CreatedBy");
+            d.Add("CreatedAt", "CreatedAt");
+            d.Add("createdAt", "CreatedAt");
+            d.Add("UpdatedBy", "UpdatedBy");
+            d.Add("updatedBy", "UpdatedBy");
+            d.Add("UpdatedAt", "UpdatedAt");
+            d.Add("updatedAt", "UpdatedAt");
+            d.Add("Active", "Active");
+            d.Add("active", "Active");
+            d.Add("Deleted", "Deleted");
+            d.Add("deleted", "Deleted");
+            d.Add("UserUserName", "UserUserName");
+            d.Add("userUserName", "UserUserName");
+            d.Add("UserAccessFailedCount", "UserAccessFailedCount");
+            d.Add("userAccessFailedCount", "UserAccessFailedCount");
+            d.Add("UserEmail", "UserEmail");
+            d.Add("userEmail", "UserEmail");
+            d.Add("UserEmailConfirmed", "UserEmailConfirmed");
+            d.Add("userEmailConfirmed", "UserEmailConfirmed");
+            d.Add("UserLockoutEnabled", "UserLockoutEnabled");
+            d.Add("userLockoutEnabled", "UserLockoutEnabled");
+            d.Add("UserLockoutEndDateUtc", "UserLockoutEndDateUtc");
+            d.Add("userLockoutEndDateUtc", "UserLockoutEndDateUtc");
+            d.Add("UserPasswordHash", "UserPasswordHash");
+            d.Add("userPasswordHash", "UserPasswordHash");
+            d.Add("UserPhoneNumber", "UserPhoneNumber");
+            d.Add("userPhoneNumber", "UserPhoneNumber");
+            d.Add("UserPhoneNumberConfirmed", "UserPhoneNumberConfirmed");
+            d.Add("userPhoneNumberConfirmed", "UserPhoneNumberConfirmed");
+            d.Add("UserTwoFactorEnabled", "UserTwoFactorEnabled");
+            d.Add("userTwoFactorEnabled", "UserTwoFactorEnabled");
+            d.Add("UserSecurityStamp", "UserSecurityStamp");
+            d.Add("userSecurityStamp", "UserSecurityStamp");
+            d.Add("UserVersion", "UserVersion");
+            d.Add("userVersion", "UserVersion");
+            d.Add("UserCreatedBy", "UserCreatedBy");
+            d.Add("userCreatedBy", "UserCreatedBy");
+            d.Add("UserCreatedAt", "UserCreatedAt");
+            d.Add("userCreatedAt", "UserCreatedAt");
+            d.Add("UserUpdatedBy", "UserUpdatedBy");
+            d.Add("userUpdatedBy", "UserUpdatedBy");
+            d.Add("UserUpdatedAt", "UserUpdatedAt");
+            d.Add("userUpdatedAt", "UserUpdatedAt");
+            d.Add("UserActive", "UserActive");
+            d.Add("userActive", "UserActive");
+            d.Add("UserDeleted", "UserDeleted");
+            d.Add("userDeleted", "UserDeleted");
+            d.Add("UserClaimId.UserId", "UserClaimId.UserId");
+            d.Add("userClaimId.userId", "UserClaimId.UserId");
+            d.Add("UserClaimId.ClaimId", "UserClaimId.ClaimId");
+            d.Add("userClaimId.claimId", "UserClaimId.ClaimId");
+            _filteringPropertyAliasDictionary = d;
+        }
+
         static UserClaimMvoMetadata()
         {
+            InitFilteringPropertyAliasDictionary();
             _propertyMetadataDictionary = new Dictionary<string, PropertyMetadata>();
             foreach (var p in _properties)
             {
                 _propertyMetadataDictionary.Add(p.Name, p);
+            }
+            foreach (var kv in _filteringPropertyAliasDictionary)
+            {
+                if (_propertyMetadataDictionary.ContainsKey(kv.Value) && !_propertyMetadataDictionary.ContainsKey(kv.Key))
+                {
+                    var p = _propertyMetadataDictionary[kv.Value];
+                    _propertyMetadataDictionary.Add(kv.Key, p);
+                }
             }
         }
 

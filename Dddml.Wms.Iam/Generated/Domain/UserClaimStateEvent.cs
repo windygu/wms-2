@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.User
 
 		public virtual UserClaimStateEventId StateEventId { get; set; }
 
+        public virtual int ClaimId
+        {
+            get { return StateEventId.ClaimId; }
+            set { StateEventId.ClaimId = value; }
+        }
+
 		public virtual string ClaimType { get; set; }
 
 		public virtual string ClaimValue { get; set; }
@@ -94,7 +100,7 @@ namespace Dddml.Wms.Domain.User
 
 	public class UserClaimStateCreated : UserClaimStateEventBase, IUserClaimStateCreated
 	{
-		public UserClaimStateCreated ()
+		public UserClaimStateCreated () : this(new UserClaimStateEventId())
 		{
 		}
 

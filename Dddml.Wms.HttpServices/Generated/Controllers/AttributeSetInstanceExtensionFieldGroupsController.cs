@@ -36,7 +36,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IAttributeSetInstanceExtensionFieldGroupState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _attributeSetInstanceExtensionFieldGroupApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                states = _attributeSetInstanceExtensionFieldGroupApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (AttributeSetInstanceExtensionFieldGroupMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? AttributeSetInstanceExtensionFieldGroupMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , AttributeSetInstanceExtensionFieldGroupsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
             else 
@@ -92,7 +93,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _attributeSetInstanceExtensionFieldGroupApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()));
+                count = _attributeSetInstanceExtensionFieldGroupApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (AttributeSetInstanceExtensionFieldGroupMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? AttributeSetInstanceExtensionFieldGroupMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 
             {
@@ -302,18 +304,9 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 return null;
             }
-            if (AttributeSetInstanceExtensionFieldGroupMetadata.Instance.PropertyMetadataDictionary.ContainsKey(fieldName))
+            if (AttributeSetInstanceExtensionFieldGroupMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(fieldName))
             {
-                var p = AttributeSetInstanceExtensionFieldGroupMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
+                return AttributeSetInstanceExtensionFieldGroupMetadata.Instance.FilteringPropertyAliasDictionary[fieldName];
             }
             return null;
         }

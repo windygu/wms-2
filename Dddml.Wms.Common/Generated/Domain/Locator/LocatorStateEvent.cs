@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.Locator
 
 		public virtual LocatorStateEventId StateEventId { get; set; }
 
+        public virtual string LocatorId
+        {
+            get { return StateEventId.LocatorId; }
+            set { StateEventId.LocatorId = value; }
+        }
+
 		public virtual string WarehouseId { get; set; }
 
 		public virtual string ParentLocatorId { get; set; }
@@ -104,7 +110,7 @@ namespace Dddml.Wms.Domain.Locator
 
 	public class LocatorStateCreated : LocatorStateEventBase, ILocatorStateCreated
 	{
-		public LocatorStateCreated ()
+		public LocatorStateCreated () : this(new LocatorStateEventId())
 		{
 		}
 

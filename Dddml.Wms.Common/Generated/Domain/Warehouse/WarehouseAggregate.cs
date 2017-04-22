@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.Warehouse
             return c.Version == WarehouseState.VersionZero;
         }
 
-        protected virtual void Apply(IEvent e)
+        protected internal virtual void Apply(IEvent e)
         {
             OnApplying(e);
             _state.Mutate(e);

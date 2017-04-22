@@ -19,6 +19,12 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual InOutLineMvoStateEventId StateEventId { get; set; }
 
+        public virtual InOutLineId InOutLineId
+        {
+            get { return StateEventId.InOutLineId; }
+            set { StateEventId.InOutLineId = value; }
+        }
+
 		public virtual string Description { get; set; }
 
 		public virtual string LocatorId { get; set; }
@@ -204,7 +210,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 	public class InOutLineMvoStateCreated : InOutLineMvoStateEventBase, IInOutLineMvoStateCreated
 	{
-		public InOutLineMvoStateCreated ()
+		public InOutLineMvoStateCreated () : this(new InOutLineMvoStateEventId())
 		{
 		}
 

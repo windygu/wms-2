@@ -37,9 +37,25 @@ namespace Dddml.Wms.Domain.Attribute
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((IAttributeStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, IAttributeAggregate aggregate, IAttributeState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((IAttributeStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(IAttributeStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.AttributeId;
+            var state = new AttributeState();
+            state.AttributeId = aggregateId;
+            var aggregate = (AttributeAggregate)GetAttributeAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(IAttributeCommand command, IEventStoreAggregateId eventStoreAggregateId, IAttributeState state)
 		{

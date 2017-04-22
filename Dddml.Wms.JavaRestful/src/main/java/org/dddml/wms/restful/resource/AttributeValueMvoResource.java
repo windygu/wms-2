@@ -44,7 +44,7 @@ public class AttributeValueMvoResource {
                 states = attributeValueMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver()),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeValueMvoFilteringProperties.aliasMap.containsKey(n) ? AttributeValueMvoFilteringProperties.aliasMap.get(n) : n)),
                         AttributeValueMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -92,7 +92,7 @@ public class AttributeValueMvoResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = attributeValueMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver()));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeValueMvoFilteringProperties.aliasMap.containsKey(n) ? AttributeValueMvoFilteringProperties.aliasMap.get(n) : n)));
             } else {
                 count = attributeValueMvoApplicationService.getCount(AttributeValueMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -256,8 +256,8 @@ public class AttributeValueMvoResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeValueMvoFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-                return fieldName;
+            if (AttributeValueMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return AttributeValueMvoFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }

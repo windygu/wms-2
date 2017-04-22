@@ -188,57 +188,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationTreeRepository.java">
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\LocatorStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\LocatorState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\WarehouseStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\WarehouseState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\config\AggregatesHibernateConfig.xml">
-      <DependentUpon>GenerateAggregatesConfig.tt</DependentUpon>
-    </EmbeddedResource>
     <Content Include="src\main\java\org\dddml\wms\domain\inoutlinemvo\hibernate\GenerateInOutLineMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -359,6 +308,57 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\LocatorStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\LocatorState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\WarehouseStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\WarehouseState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\config\AggregatesHibernateConfig.xml">
+      <DependentUpon>GenerateAggregatesConfig.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="src\main\resources\config\DatabaseConfig.xml" />
     <Content Include="src\main\resources\config\DomainConfig.xml" />
     <Content Include="src\main\resources\config\GenerateAggregatesConfig.tt">

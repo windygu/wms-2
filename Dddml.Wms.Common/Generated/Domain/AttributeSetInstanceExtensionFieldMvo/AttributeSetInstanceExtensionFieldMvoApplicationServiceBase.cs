@@ -38,9 +38,25 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((IAttributeSetInstanceExtensionFieldMvoStateProperties)state).AttrSetInstEFGroupVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, IAttributeSetInstanceExtensionFieldMvoAggregate aggregate, IAttributeSetInstanceExtensionFieldMvoState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((IAttributeSetInstanceExtensionFieldMvoStateProperties)state).AttrSetInstEFGroupVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(IAttributeSetInstanceExtensionFieldMvoStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.AttributeSetInstanceExtensionFieldId;
+            var state = new AttributeSetInstanceExtensionFieldMvoState();
+            state.AttributeSetInstanceExtensionFieldId = aggregateId;
+            var aggregate = (AttributeSetInstanceExtensionFieldMvoAggregate)GetAttributeSetInstanceExtensionFieldMvoAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(IAttributeSetInstanceExtensionFieldMvoCommand command, IEventStoreAggregateId eventStoreAggregateId, IAttributeSetInstanceExtensionFieldMvoState state)
 		{

@@ -16,11 +16,7 @@
 
 	<property name="CreatedBy" ></property>
 
-	<property name="CreatedAt" ></property>
-
 	<property name="UpdatedBy" ></property>
-
-	<property name="UpdatedAt" ></property>
 
 	<property name="Active" ></property>
 
@@ -59,6 +55,10 @@
 	<property name="UserActive" ></property>
 
 	<property name="UserDeleted" ></property>
+
+
+    <property name="CreatedAt" />
+    <property name="UpdatedAt" />
 
 
   </class>

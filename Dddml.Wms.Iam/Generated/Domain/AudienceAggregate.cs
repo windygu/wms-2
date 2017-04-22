@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.Audience
             return c.Version == AudienceState.VersionZero;
         }
 
-        protected virtual void Apply(IEvent e)
+        protected internal virtual void Apply(IEvent e)
         {
             OnApplying(e);
             _state.Mutate(e);

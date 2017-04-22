@@ -32,6 +32,12 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             }
         }
 
+        public virtual string AttributeSetInstanceId
+        {
+            get { return StateEventId.AttributeSetInstanceId; }
+            set { StateEventId.AttributeSetInstanceId = value; }
+        }
+
         public virtual string AttributeSetId { get { return _state.AttributeSetId; } set { _state.AttributeSetId = value; } }
 
         public virtual string OrganizationId { get { return _state.OrganizationId; } set { _state.OrganizationId = value; } }
@@ -1033,7 +1039,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 	public class AttributeSetInstanceStateCreated : AttributeSetInstanceStateEventBase, IAttributeSetInstanceStateCreated
 	{
-		public AttributeSetInstanceStateCreated ()
+		public AttributeSetInstanceStateCreated () : this(new AttributeSetInstanceStateEventId())
 		{
 		}
 

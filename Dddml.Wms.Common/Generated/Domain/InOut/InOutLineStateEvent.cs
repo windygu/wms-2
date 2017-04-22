@@ -18,6 +18,12 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual InOutLineStateEventId StateEventId { get; set; }
 
+        public virtual long LineNumber
+        {
+            get { return StateEventId.LineNumber; }
+            set { StateEventId.LineNumber = value; }
+        }
+
 		public virtual string Description { get; set; }
 
 		public virtual string LocatorId { get; set; }
@@ -123,7 +129,7 @@ namespace Dddml.Wms.Domain.InOut
 
 	public class InOutLineStateCreated : InOutLineStateEventBase, IInOutLineStateCreated
 	{
-		public InOutLineStateCreated ()
+		public InOutLineStateCreated () : this(new InOutLineStateEventId())
 		{
 		}
 

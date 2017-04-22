@@ -37,7 +37,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IInOutState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _inOutApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver())
+                states = _inOutApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (InOutMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? InOutMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , InOutsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
             else 
@@ -93,7 +94,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _inOutApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()));
+                count = _inOutApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (InOutMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? InOutMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 
             {
@@ -303,18 +305,9 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 return null;
             }
-            if (InOutMetadata.Instance.PropertyMetadataDictionary.ContainsKey(fieldName))
+            if (InOutMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(fieldName))
             {
-                var p = InOutMetadata.Instance.PropertyMetadataDictionary[fieldName];
-                if (p.IsFilteringProperty)
-                {
-                    var propertyName = fieldName;
-                    if (p.IsDerived)
-                    {
-                        propertyName = p.DerivedFrom;
-                    }
-                    return propertyName;
-                }
+                return InOutMetadata.Instance.FilteringPropertyAliasDictionary[fieldName];
             }
             return null;
         }

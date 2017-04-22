@@ -20,9 +20,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetInstanceExtensionFieldId",
                     Type = typeof(AttributeSetInstanceExtensionFieldId),
                     TypeName = "AttributeSetInstanceExtensionFieldId",
-                    IsBasicType = false,
+                    IsSimpleValueObjectType = false,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -31,7 +30,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = true,
                     IsGlobalId = true,
@@ -51,9 +49,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Name",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -62,7 +59,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -82,9 +78,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Type",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -93,7 +88,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -113,9 +107,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Length",
                     Type = typeof(int),
                     TypeName = "int",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -124,7 +117,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -144,9 +136,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Alias",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -155,7 +146,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -175,9 +165,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Description",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -186,7 +175,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -206,9 +194,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Version",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -217,7 +204,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -237,9 +223,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -248,7 +233,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -268,9 +252,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "CreatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -279,7 +262,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -299,9 +281,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -310,7 +291,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -330,9 +310,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "UpdatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -341,7 +320,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -361,9 +339,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Active",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -372,7 +349,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -392,9 +368,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "Deleted",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -403,7 +378,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -423,9 +397,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupFieldType",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -434,7 +407,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -454,9 +426,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupFieldLength",
                     Type = typeof(int),
                     TypeName = "int",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -465,7 +436,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -485,9 +455,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupFieldCount",
                     Type = typeof(int),
                     TypeName = "int",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -496,7 +465,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -516,9 +484,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupNameFormat",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -527,7 +494,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -547,9 +513,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupDescription",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -558,7 +523,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -576,7 +540,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "AttrSetInstEFGroupFields",
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -585,7 +548,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "AttributeSetInstanceExtensionField",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -605,9 +567,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupVersion",
                     Type = typeof(long),
                     TypeName = "long",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -616,7 +577,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -636,9 +596,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupCreatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -647,7 +606,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -667,9 +625,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupCreatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -678,7 +635,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -698,9 +654,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupUpdatedBy",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -709,7 +664,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -729,9 +683,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupUpdatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -740,7 +693,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -760,9 +712,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupActive",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -771,7 +722,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -791,9 +741,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttrSetInstEFGroupDeleted",
                     Type = typeof(bool),
                     TypeName = "bool",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldMvo",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -802,7 +751,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -822,9 +770,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetInstanceExtensionFieldId.GroupId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldId",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -833,7 +780,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -855,9 +801,8 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "AttributeSetInstanceExtensionFieldId.Index",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsBasicType = true,
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
-                    DeclaringObjectName = "AttributeSetInstanceExtensionFieldId",
                     DisplayName = "",
                     Description = "",
                     Length = 50,
@@ -866,7 +811,6 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
-                    IsTransient = false,
                     IsHoisted = false,
                     IsId = false,
                     IsGlobalId = false,
@@ -889,12 +833,86 @@ namespace Dddml.Wms.Domain.Metadata
 
         private static IDictionary<string, PropertyMetadata> _propertyMetadataDictionary;
 
+        private static IDictionary<string, string> _filteringPropertyAliasDictionary;
+
+        public IDictionary<string, string> FilteringPropertyAliasDictionary
+        {
+            get { return _filteringPropertyAliasDictionary; }
+        }
+
+        private static void InitFilteringPropertyAliasDictionary()
+        {
+            var d = new Dictionary<string, string>();
+            d.Add("Name", "Name");
+            d.Add("name", "Name");
+            d.Add("Type", "Type");
+            d.Add("type", "Type");
+            d.Add("Length", "Length");
+            d.Add("length", "Length");
+            d.Add("Alias", "Alias");
+            d.Add("alias", "Alias");
+            d.Add("Description", "Description");
+            d.Add("description", "Description");
+            d.Add("Version", "Version");
+            d.Add("version", "Version");
+            d.Add("CreatedBy", "CreatedBy");
+            d.Add("createdBy", "CreatedBy");
+            d.Add("CreatedAt", "CreatedAt");
+            d.Add("createdAt", "CreatedAt");
+            d.Add("UpdatedBy", "UpdatedBy");
+            d.Add("updatedBy", "UpdatedBy");
+            d.Add("UpdatedAt", "UpdatedAt");
+            d.Add("updatedAt", "UpdatedAt");
+            d.Add("Active", "Active");
+            d.Add("active", "Active");
+            d.Add("Deleted", "Deleted");
+            d.Add("deleted", "Deleted");
+            d.Add("AttrSetInstEFGroupFieldType", "AttrSetInstEFGroupFieldType");
+            d.Add("attrSetInstEFGroupFieldType", "AttrSetInstEFGroupFieldType");
+            d.Add("AttrSetInstEFGroupFieldLength", "AttrSetInstEFGroupFieldLength");
+            d.Add("attrSetInstEFGroupFieldLength", "AttrSetInstEFGroupFieldLength");
+            d.Add("AttrSetInstEFGroupFieldCount", "AttrSetInstEFGroupFieldCount");
+            d.Add("attrSetInstEFGroupFieldCount", "AttrSetInstEFGroupFieldCount");
+            d.Add("AttrSetInstEFGroupNameFormat", "AttrSetInstEFGroupNameFormat");
+            d.Add("attrSetInstEFGroupNameFormat", "AttrSetInstEFGroupNameFormat");
+            d.Add("AttrSetInstEFGroupDescription", "AttrSetInstEFGroupDescription");
+            d.Add("attrSetInstEFGroupDescription", "AttrSetInstEFGroupDescription");
+            d.Add("AttrSetInstEFGroupVersion", "AttrSetInstEFGroupVersion");
+            d.Add("attrSetInstEFGroupVersion", "AttrSetInstEFGroupVersion");
+            d.Add("AttrSetInstEFGroupCreatedBy", "AttrSetInstEFGroupCreatedBy");
+            d.Add("attrSetInstEFGroupCreatedBy", "AttrSetInstEFGroupCreatedBy");
+            d.Add("AttrSetInstEFGroupCreatedAt", "AttrSetInstEFGroupCreatedAt");
+            d.Add("attrSetInstEFGroupCreatedAt", "AttrSetInstEFGroupCreatedAt");
+            d.Add("AttrSetInstEFGroupUpdatedBy", "AttrSetInstEFGroupUpdatedBy");
+            d.Add("attrSetInstEFGroupUpdatedBy", "AttrSetInstEFGroupUpdatedBy");
+            d.Add("AttrSetInstEFGroupUpdatedAt", "AttrSetInstEFGroupUpdatedAt");
+            d.Add("attrSetInstEFGroupUpdatedAt", "AttrSetInstEFGroupUpdatedAt");
+            d.Add("AttrSetInstEFGroupActive", "AttrSetInstEFGroupActive");
+            d.Add("attrSetInstEFGroupActive", "AttrSetInstEFGroupActive");
+            d.Add("AttrSetInstEFGroupDeleted", "AttrSetInstEFGroupDeleted");
+            d.Add("attrSetInstEFGroupDeleted", "AttrSetInstEFGroupDeleted");
+            d.Add("AttributeSetInstanceExtensionFieldId.GroupId", "AttributeSetInstanceExtensionFieldId.GroupId");
+            d.Add("attributeSetInstanceExtensionFieldId.groupId", "AttributeSetInstanceExtensionFieldId.GroupId");
+            d.Add("AttributeSetInstanceExtensionFieldId.Index", "AttributeSetInstanceExtensionFieldId.Index");
+            d.Add("attributeSetInstanceExtensionFieldId.index", "AttributeSetInstanceExtensionFieldId.Index");
+            _filteringPropertyAliasDictionary = d;
+        }
+
         static AttributeSetInstanceExtensionFieldMvoMetadata()
         {
+            InitFilteringPropertyAliasDictionary();
             _propertyMetadataDictionary = new Dictionary<string, PropertyMetadata>();
             foreach (var p in _properties)
             {
                 _propertyMetadataDictionary.Add(p.Name, p);
+            }
+            foreach (var kv in _filteringPropertyAliasDictionary)
+            {
+                if (_propertyMetadataDictionary.ContainsKey(kv.Value) && !_propertyMetadataDictionary.ContainsKey(kv.Key))
+                {
+                    var p = _propertyMetadataDictionary[kv.Value];
+                    _propertyMetadataDictionary.Add(kv.Key, p);
+                }
             }
         }
 

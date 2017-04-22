@@ -44,7 +44,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
                 states = attributeSetInstanceExtensionFieldMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver()),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldMvoFilteringProperties.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMvoFilteringProperties.aliasMap.get(n) : n)),
                         AttributeSetInstanceExtensionFieldMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -92,7 +92,7 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = attributeSetInstanceExtensionFieldMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver()));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldMvoFilteringProperties.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMvoFilteringProperties.aliasMap.get(n) : n)));
             } else {
                 count = attributeSetInstanceExtensionFieldMvoApplicationService.getCount(AttributeSetInstanceExtensionFieldMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -256,8 +256,8 @@ public class AttributeSetInstanceExtensionFieldMvoResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeSetInstanceExtensionFieldMvoFilteringProperties.propertyTypeMap.containsKey(fieldName)) {
-                return fieldName;
+            if (AttributeSetInstanceExtensionFieldMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return AttributeSetInstanceExtensionFieldMvoFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }

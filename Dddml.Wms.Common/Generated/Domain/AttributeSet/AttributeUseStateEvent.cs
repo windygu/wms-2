@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		public virtual AttributeUseStateEventId StateEventId { get; set; }
 
+        public virtual string AttributeId
+        {
+            get { return StateEventId.AttributeId; }
+            set { StateEventId.AttributeId = value; }
+        }
+
 		public virtual int? SequenceNumber { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -92,7 +98,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 	public class AttributeUseStateCreated : AttributeUseStateEventBase, IAttributeUseStateCreated
 	{
-		public AttributeUseStateCreated ()
+		public AttributeUseStateCreated () : this(new AttributeUseStateEventId())
 		{
 		}
 

@@ -38,9 +38,25 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((IUserRoleMvoStateProperties)state).UserVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, IUserRoleMvoAggregate aggregate, IUserRoleMvoState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((IUserRoleMvoStateProperties)state).UserVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(IUserRoleMvoStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.UserRoleId;
+            var state = new UserRoleMvoState();
+            state.UserRoleId = aggregateId;
+            var aggregate = (UserRoleMvoAggregate)GetUserRoleMvoAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(IUserRoleMvoCommand command, IEventStoreAggregateId eventStoreAggregateId, IUserRoleMvoState state)
 		{

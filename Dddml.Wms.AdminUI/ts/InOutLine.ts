@@ -2,16 +2,6 @@ namespace Dddml.Wms.Domain {
 
 	export class InOutLine {
 
-		private skuId: SkuId;
-
-		getSkuId(): SkuId {
-			return this.skuId;
-		}
-
-		setSkuId(skuId: SkuId) {
-			this.skuId = skuId;
-		}
-
 		private lineNumber: string;
 
 		getLineNumber(): string {
@@ -42,14 +32,14 @@ namespace Dddml.Wms.Domain {
 			this.locatorId = locatorId;
 		}
 
-		private product: string;
+		private productId: string;
 
-		getProduct(): string {
-			return this.product;
+		getProductId(): string {
+			return this.productId;
 		}
 
-		setProduct(product: string) {
-			this.product = product;
+		setProductId(productId: string) {
+			this.productId = productId;
 		}
 
 		private uomId: string;

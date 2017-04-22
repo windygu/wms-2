@@ -11,12 +11,16 @@
                 dict.Add("InOutLineId", "_INOUTLINEID_");
                 dict.Add("OrganizationStructureId", "_ORGANIZATIONSTRUCTUREID_");
 // //////////////////////
+                dict.Add("AttributeSetInstanceExtensionField", "_ATTRIBUTESETINSTANCEEXTENSIONFIELD_");
+                dict.Add("AttributeUse", "_ATTRIBUTEUSE_");
+                dict.Add("AttributeValue", "_ATTRIBUTEVALUE_");
                 dict.Add("bool", "_BOOL_");
                 dict.Add("bool?", "_BOOL__");
                 dict.Add("DateTime", "_DATETIME_");
                 dict.Add("DateTime?", "_DATETIME__");
                 dict.Add("decimal", "_DECIMAL_");
                 dict.Add("decimal?", "_DECIMAL__");
+                dict.Add("InOutLine", "_INOUTLINE_");
                 dict.Add("int", "_INT_");
                 dict.Add("int?", "_INT__");
                 dict.Add("long", "_LONG_");

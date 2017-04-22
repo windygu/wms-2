@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.Warehouse
 
 		public virtual WarehouseStateEventId StateEventId { get; set; }
 
+        public virtual string WarehouseId
+        {
+            get { return StateEventId.WarehouseId; }
+            set { StateEventId.WarehouseId = value; }
+        }
+
 		public virtual string Name { get; set; }
 
 		public virtual string Description { get; set; }
@@ -94,7 +100,7 @@ namespace Dddml.Wms.Domain.Warehouse
 
 	public class WarehouseStateCreated : WarehouseStateEventBase, IWarehouseStateCreated
 	{
-		public WarehouseStateCreated ()
+		public WarehouseStateCreated () : this(new WarehouseStateEventId())
 		{
 		}
 

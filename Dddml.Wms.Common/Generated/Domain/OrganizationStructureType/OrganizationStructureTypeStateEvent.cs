@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
 		public virtual OrganizationStructureTypeStateEventId StateEventId { get; set; }
 
+        public virtual string Id
+        {
+            get { return StateEventId.Id; }
+            set { StateEventId.Id = value; }
+        }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -88,7 +94,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
 	public class OrganizationStructureTypeStateCreated : OrganizationStructureTypeStateEventBase, IOrganizationStructureTypeStateCreated
 	{
-		public OrganizationStructureTypeStateCreated ()
+		public OrganizationStructureTypeStateCreated () : this(new OrganizationStructureTypeStateEventId())
 		{
 		}
 

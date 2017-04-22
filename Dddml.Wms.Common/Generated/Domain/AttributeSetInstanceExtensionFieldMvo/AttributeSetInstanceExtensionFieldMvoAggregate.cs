@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
             return c.AttrSetInstEFGroupVersion == AttributeSetInstanceExtensionFieldMvoState.VersionZero;
         }
 
-        protected virtual void Apply(IEvent e)
+        protected internal virtual void Apply(IEvent e)
         {
             OnApplying(e);
             _state.Mutate(e);

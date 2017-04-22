@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.Permission
 
 		public virtual PermissionStateEventId StateEventId { get; set; }
 
+        public virtual string PermissionId
+        {
+            get { return StateEventId.PermissionId; }
+            set { StateEventId.PermissionId = value; }
+        }
+
 		public virtual string Name { get; set; }
 
 		public virtual string ParentPermissionId { get; set; }
@@ -94,7 +100,7 @@ namespace Dddml.Wms.Domain.Permission
 
 	public class PermissionStateCreated : PermissionStateEventBase, IPermissionStateCreated
 	{
-		public PermissionStateCreated ()
+		public PermissionStateCreated () : this(new PermissionStateEventId())
 		{
 		}
 

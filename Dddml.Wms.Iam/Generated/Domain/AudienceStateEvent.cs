@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.Audience
 
 		public virtual AudienceStateEventId StateEventId { get; set; }
 
+        public virtual string ClientId
+        {
+            get { return StateEventId.ClientId; }
+            set { StateEventId.ClientId = value; }
+        }
+
 		public virtual string Name { get; set; }
 
 		public virtual string Base64Secret { get; set; }
@@ -92,7 +98,7 @@ namespace Dddml.Wms.Domain.Audience
 
 	public class AudienceStateCreated : AudienceStateEventBase, IAudienceStateCreated
 	{
-		public AudienceStateCreated ()
+		public AudienceStateCreated () : this(new AudienceStateEventId())
 		{
 		}
 

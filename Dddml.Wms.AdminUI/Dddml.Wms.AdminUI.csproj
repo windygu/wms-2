@@ -40,6 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="webpack\DddmlSerializationForT41.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DddmlSerializationForT4.tc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="site\form\GenerateAggregatesSymfonyForms.tt">
@@ -78,7 +83,6 @@
       <LastOutputs>
 .\GenerateBoundedContextDomain.txt
 .\OrganizationStructureId.ts
-.\SkuId.ts
 </LastOutputs>
     </Content>
     <Content Include="ts\GenerateBoundedContextDomain.txt">
@@ -186,6 +190,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesTableViewConfig.tt</DependentUpon>
+    </Content>
+    <Content Include="webpack\LoadBoundedContext.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoadBoundedContext.tt</DependentUpon>
     </Content>
     <Content Include="webpack\metadata\GenerateEnumValuesMap.txt">
       <AutoGen>True</AutoGen>
@@ -299,6 +308,16 @@
       <DependentUpon>GenerateAggregatesSymfonyForms.tt</DependentUpon>
     </None>
     <None Include="ts\DddmlSerializationForT4.tc" />
+    <None Include="webpack\DddmlSerializationForT4.tc">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DddmlSerializationForT41.cs</LastGenOutput>
+      <LastOutputs>.\DddmlSerializationForT4.cs</LastOutputs>
+    </None>
+    <None Include="webpack\LoadBoundedContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastOutputs>.\LoadBoundedContext.txt</LastOutputs>
+      <LastGenOutput>LoadBoundedContext.txt</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="ts\Attribute.ts">
@@ -417,9 +436,6 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="ts\OrganizationStructureTypeStateEventId.ts">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="ts\SkuId.ts">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ts\Warehouse.ts">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>

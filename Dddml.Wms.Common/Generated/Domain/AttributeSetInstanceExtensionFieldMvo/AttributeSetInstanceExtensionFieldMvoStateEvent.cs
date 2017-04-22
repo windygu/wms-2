@@ -18,6 +18,12 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
 
 		public virtual AttributeSetInstanceExtensionFieldMvoStateEventId StateEventId { get; set; }
 
+        public virtual AttributeSetInstanceExtensionFieldId AttributeSetInstanceExtensionFieldId
+        {
+            get { return StateEventId.AttributeSetInstanceExtensionFieldId; }
+            set { StateEventId.AttributeSetInstanceExtensionFieldId = value; }
+        }
+
 		public virtual string Name { get; set; }
 
 		public virtual string Type { get; set; }
@@ -123,7 +129,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
 
 	public class AttributeSetInstanceExtensionFieldMvoStateCreated : AttributeSetInstanceExtensionFieldMvoStateEventBase, IAttributeSetInstanceExtensionFieldMvoStateCreated
 	{
-		public AttributeSetInstanceExtensionFieldMvoStateCreated ()
+		public AttributeSetInstanceExtensionFieldMvoStateCreated () : this(new AttributeSetInstanceExtensionFieldMvoStateEventId())
 		{
 		}
 

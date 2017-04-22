@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.RolePermission
 
 		public virtual RolePermissionStateEventId StateEventId { get; set; }
 
+        public virtual RolePermissionId Id
+        {
+            get { return StateEventId.Id; }
+            set { StateEventId.Id = value; }
+        }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -88,7 +94,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
 	public class RolePermissionStateCreated : RolePermissionStateEventBase, IRolePermissionStateCreated
 	{
-		public RolePermissionStateCreated ()
+		public RolePermissionStateCreated () : this(new RolePermissionStateEventId())
 		{
 		}
 

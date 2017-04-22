@@ -18,6 +18,12 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 		public virtual UserPermissionMvoStateEventId StateEventId { get; set; }
 
+        public virtual UserPermissionId UserPermissionId
+        {
+            get { return StateEventId.UserPermissionId; }
+            set { StateEventId.UserPermissionId = value; }
+        }
+
 		public virtual long? Version { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -125,7 +131,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 	public class UserPermissionMvoStateCreated : UserPermissionMvoStateEventBase, IUserPermissionMvoStateCreated
 	{
-		public UserPermissionMvoStateCreated ()
+		public UserPermissionMvoStateCreated () : this(new UserPermissionMvoStateEventId())
 		{
 		}
 

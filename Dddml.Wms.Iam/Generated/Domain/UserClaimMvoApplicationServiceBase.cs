@@ -38,9 +38,25 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
 			aggregate.ThrowOnInvalidStateTransition(c);
 			action(aggregate);
-			EventStore.AppendEvents(eventStoreAggregateId, ((IUserClaimMvoStateProperties)state).UserVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+			Persist(eventStoreAggregateId, aggregate, state);
 		}
 
+        private void Persist(IEventStoreAggregateId eventStoreAggregateId, IUserClaimMvoAggregate aggregate, IUserClaimMvoState state)
+        {
+            EventStore.AppendEvents(eventStoreAggregateId, ((IUserClaimMvoStateProperties)state).UserVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+        }
+
+        public virtual void Initialize(IUserClaimMvoStateCreated stateCreated)
+        {
+            var aggregateId = stateCreated.StateEventId.UserClaimId;
+            var state = new UserClaimMvoState();
+            state.UserClaimId = aggregateId;
+            var aggregate = (UserClaimMvoAggregate)GetUserClaimMvoAggregate(state);
+
+            var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
+            aggregate.Apply(stateCreated);
+            Persist(eventStoreAggregateId, aggregate, state);
+        }
 
 		protected bool IsRepeatedCommand(IUserClaimMvoCommand command, IEventStoreAggregateId eventStoreAggregateId, IUserClaimMvoState state)
 		{

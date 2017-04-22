@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.User
 
 		public virtual UserRoleStateEventId StateEventId { get; set; }
 
+        public virtual string RoleId
+        {
+            get { return StateEventId.RoleId; }
+            set { StateEventId.RoleId = value; }
+        }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -90,7 +96,7 @@ namespace Dddml.Wms.Domain.User
 
 	public class UserRoleStateCreated : UserRoleStateEventBase, IUserRoleStateCreated
 	{
-		public UserRoleStateCreated ()
+		public UserRoleStateCreated () : this(new UserRoleStateEventId())
 		{
 		}
 
