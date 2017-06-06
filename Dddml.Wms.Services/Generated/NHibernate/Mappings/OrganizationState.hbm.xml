@@ -5,29 +5,29 @@
   
   <class name="Dddml.Wms.Domain.Organization.OrganizationState" table="Organizations">
 
-	<id name="OrganizationId" length="50"><generator class="assigned"/></id>
+	<id name="OrganizationId" length="50" column="OrganizationId"><generator class="assigned"/></id>
 
-	<version name="Version" type="long" unsaved-value="0"/>
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-	<property name="Name" ></property>
+    <property name="Name" ></property>
 
-	<property name="Description" ></property>
+    <property name="Description" ></property>
 
-	<property name="Type" ></property>
+    <property name="Type" ></property>
 
-	<property name="IsSummary" ></property>
+    <property name="IsSummary" ></property>
 
-	<property name="CreatedBy" ></property>
+    <property name="CreatedBy" ></property>
 
-	<property name="UpdatedBy" ></property>
+    <property name="UpdatedBy" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
-	<property name="Deleted" ></property>
+    <property name="Deleted" ></property>
 
 
-    <property name="CreatedAt" />
-    <property name="UpdatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="UpdatedAt" column="UpdatedAt" />
 
 
   </class>

@@ -5,22 +5,22 @@
   
   <class name="AttributeUseStateEventBase" table="AttributeUseStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSet.AttributeUseStateEventId">
-		<key-property name="AttributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>
-		<key-property name="AttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
-		<key-property name="AttributeSetVersion" ></key-property>
-	</composite-id>
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSet.AttributeUseStateEventId">
+        <key-property name="AttributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>
+        <key-property name="AttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
+        <key-property name="AttributeSetVersion" ></key-property>
+    </composite-id>
 
     <discriminator column="StateEventType" type="String" />
 
-	<property name="SequenceNumber" ></property>
+    <property name="SequenceNumber" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
 
-    <property name="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy" />
 
-    <property name="CreatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
 
     <property name="CommandId" />
 

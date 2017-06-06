@@ -5,41 +5,41 @@
   
   <class name="UserStateEventBase" table="UserStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserStateEventId">
-		<key-property name="UserId" ><column name="UserId" length="50" /></key-property>
-		<key-property name="Version" ></key-property>
-	</composite-id>
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserStateEventId">
+        <key-property name="UserId" ><column name="UserId" length="50" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
 
     <discriminator column="StateEventType" type="String" />
 
-	<property name="UserName" ><column name="UserName" unique-key="UniqueUserName" /></property>
+    <property name="UserName" ><column name="UserName" unique-key="UniqueUserName" /></property>
 
-	<property name="AccessFailedCount" ></property>
+    <property name="AccessFailedCount" ></property>
 
-	<property name="Email" ></property>
+    <property name="Email" ></property>
 
-	<property name="EmailConfirmed" ></property>
+    <property name="EmailConfirmed" ></property>
 
-	<property name="LockoutEnabled" ></property>
+    <property name="LockoutEnabled" ></property>
 
-	<property name="LockoutEndDateUtc" ></property>
+    <property name="LockoutEndDateUtc" ></property>
 
-	<property name="PasswordHash" ></property>
+    <property name="PasswordHash" ></property>
 
-	<property name="PhoneNumber" ></property>
+    <property name="PhoneNumber" ></property>
 
-	<property name="PhoneNumberConfirmed" ></property>
+    <property name="PhoneNumberConfirmed" ></property>
 
-	<property name="TwoFactorEnabled" ></property>
+    <property name="TwoFactorEnabled" ></property>
 
-	<property name="SecurityStamp" ></property>
+    <property name="SecurityStamp" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
 
-    <property name="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy" />
 
-    <property name="CreatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
 
     <property name="CommandId" />
 

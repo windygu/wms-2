@@ -5,54 +5,54 @@
   
   <class name="AttributeSetInstanceExtensionFieldMvoStateEventBase" table="AttributeSetInstanceExtensionFieldMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo.AttributeSetInstanceExtensionFieldMvoStateEventId">
-		<key-property name="AttributeSetInstanceExtensionFieldIdGroupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
-		<key-property name="AttributeSetInstanceExtensionFieldIdIndex" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
-		<key-property name="AttrSetInstEFGroupVersion" ></key-property>
-	</composite-id>
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo.AttributeSetInstanceExtensionFieldMvoStateEventId">
+        <key-property name="AttributeSetInstanceExtensionFieldIdGroupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
+        <key-property name="AttributeSetInstanceExtensionFieldIdIndex" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
+        <key-property name="AttrSetInstEFGroupVersion" ></key-property>
+    </composite-id>
 
     <discriminator column="StateEventType" type="String" />
 
-	<property name="Name" ><column name="Name" unique-key="UniqueName" /></property>
+    <property name="Name" ><column name="Name" unique-key="UniqueName" /></property>
 
-	<property name="Type" ></property>
+    <property name="Type" ></property>
 
-	<property name="Length" ></property>
+    <property name="Length" ></property>
 
-	<property name="Alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
+    <property name="Alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
 
-	<property name="Description" ></property>
+    <property name="Description" ></property>
 
-	<property name="Version" ></property>
+    <property name="Version" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
-	<property name="AttrSetInstEFGroupFieldType" ></property>
+    <property name="AttrSetInstEFGroupFieldType" ></property>
 
-	<property name="AttrSetInstEFGroupFieldLength" ></property>
+    <property name="AttrSetInstEFGroupFieldLength" ></property>
 
-	<property name="AttrSetInstEFGroupFieldCount" ></property>
+    <property name="AttrSetInstEFGroupFieldCount" ></property>
 
-	<property name="AttrSetInstEFGroupNameFormat" ></property>
+    <property name="AttrSetInstEFGroupNameFormat" ></property>
 
-	<property name="AttrSetInstEFGroupDescription" ></property>
+    <property name="AttrSetInstEFGroupDescription" ></property>
 
-	<property name="AttrSetInstEFGroupCreatedBy" ></property>
+    <property name="AttrSetInstEFGroupCreatedBy" ></property>
 
-	<property name="AttrSetInstEFGroupCreatedAt" ></property>
+    <property name="AttrSetInstEFGroupCreatedAt" ></property>
 
-	<property name="AttrSetInstEFGroupUpdatedBy" ></property>
+    <property name="AttrSetInstEFGroupUpdatedBy" ></property>
 
-	<property name="AttrSetInstEFGroupUpdatedAt" ></property>
+    <property name="AttrSetInstEFGroupUpdatedAt" ></property>
 
-	<property name="AttrSetInstEFGroupActive" ></property>
+    <property name="AttrSetInstEFGroupActive" ></property>
 
-	<property name="AttrSetInstEFGroupDeleted" ></property>
+    <property name="AttrSetInstEFGroupDeleted" ></property>
 
 
-    <property name="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy" />
 
-    <property name="CreatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
 
     <property name="CommandId" />
 

@@ -5,20 +5,20 @@
   
   <class name="RolePermissionStateEventBase" table="RolePermissionStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.RolePermission.RolePermissionStateEventId">
-		<key-property name="IdRoleId" ></key-property>
-		<key-property name="IdPermissionId" ></key-property>
-		<key-property name="Version" ></key-property>
-	</composite-id>
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.RolePermission.RolePermissionStateEventId">
+        <key-property name="IdRoleId" ></key-property>
+        <key-property name="IdPermissionId" ></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
 
     <discriminator column="StateEventType" type="String" />
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
 
-    <property name="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy" />
 
-    <property name="CreatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
 
     <property name="CommandId" />
 

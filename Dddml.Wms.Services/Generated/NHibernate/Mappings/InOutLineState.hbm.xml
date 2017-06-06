@@ -5,56 +5,56 @@
   
   <class name="Dddml.Wms.Domain.InOut.InOutLineState" table="InOutLines">
 
-	<composite-id name="InOutLineId" class="Dddml.Wms.Domain.InOut.InOutLineId">
-		<key-property name="InOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
-		<key-property name="LineNumber" ><column name="InOutLineIdLineNumber" /></key-property>
-	</composite-id>
+    <composite-id name="InOutLineId" class="Dddml.Wms.Domain.InOut.InOutLineId">
+        <key-property name="InOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
+        <key-property name="LineNumber" ><column name="InOutLineIdLineNumber" /></key-property>
+    </composite-id>
 
-	<version name="Version" type="long" unsaved-value="0"/>
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-	<property name="Description" ></property>
+    <property name="Description" ></property>
 
-	<property name="LocatorId" ></property>
+    <property name="LocatorId" ></property>
 
-	<property name="ProductId" ></property>
+    <property name="ProductId" ></property>
 
-	<property name="UomId" ></property>
+    <property name="UomId" ></property>
 
-	<property name="MovementQuantity" ></property>
+    <property name="MovementQuantity" ></property>
 
-	<property name="ConfirmedQuantity" ></property>
+    <property name="ConfirmedQuantity" ></property>
 
-	<property name="ScrappedQuantity" ></property>
+    <property name="ScrappedQuantity" ></property>
 
-	<property name="TargetQuantity" ></property>
+    <property name="TargetQuantity" ></property>
 
-	<property name="PickedQuantity" ></property>
+    <property name="PickedQuantity" ></property>
 
-	<property name="IsInvoiced" ></property>
+    <property name="IsInvoiced" ></property>
 
-	<property name="AttributeSetInstanceId" ></property>
+    <property name="AttributeSetInstanceId" ></property>
 
-	<property name="IsDescription" ></property>
+    <property name="IsDescription" ></property>
 
-	<property name="Processed" ></property>
+    <property name="Processed" ></property>
 
-	<property name="QuantityEntered" ></property>
+    <property name="QuantityEntered" ></property>
 
-	<property name="RmaLineNumber" ></property>
+    <property name="RmaLineNumber" ></property>
 
-	<property name="ReversalLineNumber" ></property>
+    <property name="ReversalLineNumber" ></property>
 
-	<property name="CreatedBy" ></property>
+    <property name="CreatedBy" ></property>
 
-	<property name="UpdatedBy" ></property>
+    <property name="UpdatedBy" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
-	<property name="Deleted" ></property>
+    <property name="Deleted" ></property>
 
 
-    <property name="CreatedAt" />
-    <property name="UpdatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="UpdatedAt" column="UpdatedAt" />
 
 
   </class>

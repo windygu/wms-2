@@ -32,7 +32,6 @@ namespace Dddml.Wms.Domain.Locator
                 var e = (ILocatorStateDeleted)stateEvent;
                 return ToLocatorStateDeletedDto(e);
             }
-
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 

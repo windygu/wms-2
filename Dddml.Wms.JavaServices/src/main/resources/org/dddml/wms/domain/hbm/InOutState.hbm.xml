@@ -8,7 +8,7 @@
   
   <class name="org.dddml.wms.domain.inout.AbstractInOutState$SimpleInOutState" table="InOuts">
 
-	<id name="documentNumber" length="50"><generator class="assigned"/></id>
+	<id name="documentNumber" length="50" column="DocumentNumber"><generator class="assigned"/></id>
 
 	<version name="version" type="long" />
 

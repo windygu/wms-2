@@ -5,35 +5,35 @@
   
   <class name="LocatorStateEventBase" table="LocatorStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.Locator.LocatorStateEventId">
-		<key-property name="LocatorId" ><column name="LocatorId" length="50" /></key-property>
-		<key-property name="Version" ></key-property>
-	</composite-id>
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Locator.LocatorStateEventId">
+        <key-property name="LocatorId" ><column name="LocatorId" length="50" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
 
     <discriminator column="StateEventType" type="String" />
 
-	<property name="WarehouseId" ></property>
+    <property name="WarehouseId" ></property>
 
-	<property name="ParentLocatorId" ></property>
+    <property name="ParentLocatorId" ></property>
 
-	<property name="LocatorType" ></property>
+    <property name="LocatorType" ></property>
 
-	<property name="PriorityNumber" ></property>
+    <property name="PriorityNumber" ></property>
 
-	<property name="IsDefault" ></property>
+    <property name="IsDefault" ></property>
 
-	<property name="X" ></property>
+    <property name="X" ></property>
 
-	<property name="Y" ></property>
+    <property name="Y" ></property>
 
-	<property name="Z" ></property>
+    <property name="Z" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
 
-    <property name="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy" />
 
-    <property name="CreatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
 
     <property name="CommandId" />
 

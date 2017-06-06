@@ -33,7 +33,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
                 var e = (IAttributeSetInstanceExtensionFieldMvoStateDeleted)stateEvent;
                 return ToAttributeSetInstanceExtensionFieldMvoStateDeletedDto(e);
             }
-
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 

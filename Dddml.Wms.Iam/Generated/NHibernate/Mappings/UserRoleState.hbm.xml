@@ -5,24 +5,24 @@
   
   <class name="Dddml.Wms.Domain.User.UserRoleState" table="UserRoles">
 
-	<composite-id name="UserRoleId" class="Dddml.Wms.Domain.User.UserRoleId">
-		<key-property name="UserId" ><column name="UserRoleIdUserId" length="50" /></key-property>
-		<key-property name="RoleId" ><column name="UserRoleIdRoleId" length="50" /></key-property>
-	</composite-id>
+    <composite-id name="UserRoleId" class="Dddml.Wms.Domain.User.UserRoleId">
+        <key-property name="UserId" ><column name="UserRoleIdUserId" length="50" /></key-property>
+        <key-property name="RoleId" ><column name="UserRoleIdRoleId" length="50" /></key-property>
+    </composite-id>
 
-	<version name="Version" type="long" unsaved-value="0"/>
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-	<property name="CreatedBy" ></property>
+    <property name="CreatedBy" ></property>
 
-	<property name="UpdatedBy" ></property>
+    <property name="UpdatedBy" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
-	<property name="Deleted" ></property>
+    <property name="Deleted" ></property>
 
 
-    <property name="CreatedAt" />
-    <property name="UpdatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="UpdatedAt" column="UpdatedAt" />
 
 
   </class>

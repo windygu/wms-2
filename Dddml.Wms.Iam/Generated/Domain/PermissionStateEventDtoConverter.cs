@@ -32,7 +32,6 @@ namespace Dddml.Wms.Domain.Permission
                 var e = (IPermissionStateDeleted)stateEvent;
                 return ToPermissionStateDeletedDto(e);
             }
-
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 

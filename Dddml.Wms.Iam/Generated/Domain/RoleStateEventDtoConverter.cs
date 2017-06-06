@@ -32,7 +32,6 @@ namespace Dddml.Wms.Domain.Role
                 var e = (IRoleStateDeleted)stateEvent;
                 return ToRoleStateDeletedDto(e);
             }
-
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 

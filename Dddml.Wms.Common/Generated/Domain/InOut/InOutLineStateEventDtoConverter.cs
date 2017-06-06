@@ -33,7 +33,6 @@ namespace Dddml.Wms.Domain.InOut
                 var e = (IInOutLineStateRemoved)stateEvent;
                 return ToInOutLineStateRemovedDto(e);
             }
-
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 

@@ -5,89 +5,89 @@
   
   <class name="Dddml.Wms.Domain.InOut.InOutState" table="InOuts">
 
-	<id name="DocumentNumber" length="50"><generator class="assigned"/></id>
+	<id name="DocumentNumber" length="50" column="DocumentNumber"><generator class="assigned"/></id>
 
-	<version name="Version" type="long" unsaved-value="0"/>
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-	<property name="IsSOTransaction" ></property>
+    <property name="IsSOTransaction" ></property>
 
-	<property name="DocumentStatus" ></property>
+    <property name="DocumentStatus" ></property>
 
-	<property name="Posted" ></property>
+    <property name="Posted" ></property>
 
-	<property name="Processing" ></property>
+    <property name="Processing" ></property>
 
-	<property name="Processed" ></property>
+    <property name="Processed" ></property>
 
-	<property name="DocumentType" ></property>
+    <property name="DocumentType" ></property>
 
-	<property name="Description" ></property>
+    <property name="Description" ></property>
 
-	<property name="OrderNumber" ></property>
+    <property name="OrderNumber" ></property>
 
-	<property name="DateOrdered" ></property>
+    <property name="DateOrdered" ></property>
 
-	<property name="IsPrinted" ></property>
+    <property name="IsPrinted" ></property>
 
-	<property name="MovementType" ></property>
+    <property name="MovementType" ></property>
 
-	<property name="MovementDate" ></property>
+    <property name="MovementDate" ></property>
 
-	<property name="BusinessPartnerId" ></property>
+    <property name="BusinessPartnerId" ></property>
 
-	<property name="WarehouseId" ></property>
+    <property name="WarehouseId" ></property>
 
-	<property name="POReference" ></property>
+    <property name="POReference" ></property>
 
-	<property name="FreightAmount" type="Dddml.Wms.Services.Domain.NHibernate.NodaMoneyType, Dddml.Wms.Services"><column name="FreightAmountAmount" /><column name="FreightAmountCurrency" /></property>
+    <property name="FreightAmount" type="Dddml.Wms.Services.Domain.NHibernate.NodaMoneyType, Dddml.Wms.Services"><column name="FreightAmountAmount" /><column name="FreightAmountCurrency" /></property>
 
-	<property name="ShipperId" ></property>
+    <property name="ShipperId" ></property>
 
-	<property name="ChargeAmount" type="Dddml.Wms.Services.Domain.NHibernate.NodaMoneyType, Dddml.Wms.Services"><column name="ChargeAmountAmount" /><column name="ChargeAmountCurrency" /></property>
+    <property name="ChargeAmount" type="Dddml.Wms.Services.Domain.NHibernate.NodaMoneyType, Dddml.Wms.Services"><column name="ChargeAmountAmount" /><column name="ChargeAmountCurrency" /></property>
 
-	<property name="DatePrinted" ></property>
+    <property name="DatePrinted" ></property>
 
-	<property name="SalesRepresentative" ></property>
+    <property name="SalesRepresentative" ></property>
 
-	<property name="NumberOfPackages" ></property>
+    <property name="NumberOfPackages" ></property>
 
-	<property name="PickDate" ></property>
+    <property name="PickDate" ></property>
 
-	<property name="ShipDate" ></property>
+    <property name="ShipDate" ></property>
 
-	<property name="TrackingNumber" ></property>
+    <property name="TrackingNumber" ></property>
 
-	<property name="DateReceived" ></property>
+    <property name="DateReceived" ></property>
 
-	<property name="IsInTransit" ></property>
+    <property name="IsInTransit" ></property>
 
-	<property name="IsApproved" ></property>
+    <property name="IsApproved" ></property>
 
-	<property name="IsInDispute" ></property>
+    <property name="IsInDispute" ></property>
 
-	<property name="Volume" ></property>
+    <property name="Volume" ></property>
 
-	<property name="Weight" ></property>
+    <property name="Weight" ></property>
 
-	<property name="RmaNumber" ></property>
+    <property name="RmaNumber" ></property>
 
-	<property name="ReversalNumber" ></property>
+    <property name="ReversalNumber" ></property>
 
-	<property name="IsDropShip" ></property>
+    <property name="IsDropShip" ></property>
 
-	<property name="DropShipBusinessPartnerId" ></property>
+    <property name="DropShipBusinessPartnerId" ></property>
 
-	<property name="CreatedBy" ></property>
+    <property name="CreatedBy" ></property>
 
-	<property name="UpdatedBy" ></property>
+    <property name="UpdatedBy" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
-	<property name="Deleted" ></property>
+    <property name="Deleted" ></property>
 
 
-    <property name="CreatedAt" />
-    <property name="UpdatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="UpdatedAt" column="UpdatedAt" />
 
 
   </class>

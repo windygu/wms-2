@@ -5,34 +5,34 @@
   
   <class name="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldState" table="AttributeSetInstanceExtensionFields">
 
-	<composite-id name="AttributeSetInstanceExtensionFieldId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldId">
-		<key-property name="GroupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
-		<key-property name="Index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
-	</composite-id>
+    <composite-id name="AttributeSetInstanceExtensionFieldId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldId">
+        <key-property name="GroupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
+        <key-property name="Index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
+    </composite-id>
 
-	<version name="Version" type="long" unsaved-value="0"/>
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-	<property name="Name" ><column name="Name" unique-key="UniqueName" /></property>
+    <property name="Name" ><column name="Name" unique-key="UniqueName" /></property>
 
-	<property name="Type" ></property>
+    <property name="Type" ></property>
 
-	<property name="Length" ></property>
+    <property name="Length" ></property>
 
-	<property name="Alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
+    <property name="Alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
 
-	<property name="Description" ></property>
+    <property name="Description" ></property>
 
-	<property name="CreatedBy" ></property>
+    <property name="CreatedBy" ></property>
 
-	<property name="UpdatedBy" ></property>
+    <property name="UpdatedBy" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
-	<property name="Deleted" ></property>
+    <property name="Deleted" ></property>
 
 
-    <property name="CreatedAt" />
-    <property name="UpdatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="UpdatedAt" column="UpdatedAt" />
 
 
   </class>

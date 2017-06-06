@@ -32,7 +32,6 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
                 var e = (IOrganizationStructureTypeStateDeleted)stateEvent;
                 return ToOrganizationStructureTypeStateDeletedDto(e);
             }
-
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 

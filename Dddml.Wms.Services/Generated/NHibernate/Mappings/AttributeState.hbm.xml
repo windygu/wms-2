@@ -5,41 +5,41 @@
   
   <class name="Dddml.Wms.Domain.Attribute.AttributeState" table="Attributes">
 
-	<id name="AttributeId" length="50"><generator class="assigned"/></id>
+	<id name="AttributeId" length="50" column="AttributeId"><generator class="assigned"/></id>
 
-	<version name="Version" type="long" unsaved-value="0"/>
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-	<property name="Name" ></property>
+    <property name="Name" ></property>
 
-	<property name="OrganizationId" ></property>
+    <property name="OrganizationId" ></property>
 
-	<property name="Description" ></property>
+    <property name="Description" ></property>
 
-	<property name="IsMandatory" ></property>
+    <property name="IsMandatory" ></property>
 
-	<property name="IsInstanceAttribute" ></property>
+    <property name="IsInstanceAttribute" ></property>
 
-	<property name="AttributeValueType" ></property>
+    <property name="AttributeValueType" ></property>
 
-	<property name="AttributeValueLength" ></property>
+    <property name="AttributeValueLength" ></property>
 
-	<property name="IsList" ></property>
+    <property name="IsList" ></property>
 
-	<property name="FieldName" ><column name="FieldName" unique-key="UniqueFieldName" /></property>
+    <property name="FieldName" ><column name="FieldName" unique-key="UniqueFieldName" /></property>
 
-	<property name="ReferenceId" ></property>
+    <property name="ReferenceId" ></property>
 
-	<property name="CreatedBy" ></property>
+    <property name="CreatedBy" ></property>
 
-	<property name="UpdatedBy" ></property>
+    <property name="UpdatedBy" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
-	<property name="Deleted" ></property>
+    <property name="Deleted" ></property>
 
 
-    <property name="CreatedAt" />
-    <property name="UpdatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="UpdatedAt" column="UpdatedAt" />
 
 
   </class>

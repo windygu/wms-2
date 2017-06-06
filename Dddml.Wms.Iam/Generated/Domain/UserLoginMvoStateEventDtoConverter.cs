@@ -33,7 +33,6 @@ namespace Dddml.Wms.Domain.UserLoginMvo
                 var e = (IUserLoginMvoStateDeleted)stateEvent;
                 return ToUserLoginMvoStateDeletedDto(e);
             }
-
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 

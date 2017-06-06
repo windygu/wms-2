@@ -5,24 +5,24 @@
   
   <class name="UserClaimStateEventBase" table="UserClaimStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserClaimStateEventId">
-		<key-property name="UserId" ><column name="UserClaimIdUserId" length="50" /></key-property>
-		<key-property name="ClaimId" ><column name="UserClaimIdClaimId" /></key-property>
-		<key-property name="UserVersion" ></key-property>
-	</composite-id>
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserClaimStateEventId">
+        <key-property name="UserId" ><column name="UserClaimIdUserId" length="50" /></key-property>
+        <key-property name="ClaimId" ><column name="UserClaimIdClaimId" /></key-property>
+        <key-property name="UserVersion" ></key-property>
+    </composite-id>
 
     <discriminator column="StateEventType" type="String" />
 
-	<property name="ClaimType" ></property>
+    <property name="ClaimType" ></property>
 
-	<property name="ClaimValue" ></property>
+    <property name="ClaimValue" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
 
-    <property name="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy" />
 
-    <property name="CreatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
 
     <property name="CommandId" />
 

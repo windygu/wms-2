@@ -32,7 +32,6 @@ namespace Dddml.Wms.Domain.Attribute
                 var e = (IAttributeStateDeleted)stateEvent;
                 return ToAttributeStateDeletedDto(e);
             }
-
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 

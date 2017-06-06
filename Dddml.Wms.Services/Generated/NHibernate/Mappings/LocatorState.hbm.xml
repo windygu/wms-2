@@ -5,37 +5,37 @@
   
   <class name="Dddml.Wms.Domain.Locator.LocatorState" table="Locators">
 
-	<id name="LocatorId" length="50"><generator class="assigned"/></id>
+	<id name="LocatorId" length="50" column="LocatorId"><generator class="assigned"/></id>
 
-	<version name="Version" type="long" unsaved-value="0"/>
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-	<property name="WarehouseId" ><column name="WarehouseId" not-null="true" /></property>
+    <property name="WarehouseId" ><column name="WarehouseId" not-null="true" /></property>
 
-	<property name="ParentLocatorId" ></property>
+    <property name="ParentLocatorId" ></property>
 
-	<property name="LocatorType" ></property>
+    <property name="LocatorType" ></property>
 
-	<property name="PriorityNumber" ></property>
+    <property name="PriorityNumber" ></property>
 
-	<property name="IsDefault" ></property>
+    <property name="IsDefault" ></property>
 
-	<property name="X" ></property>
+    <property name="X" ></property>
 
-	<property name="Y" ></property>
+    <property name="Y" ></property>
 
-	<property name="Z" ></property>
+    <property name="Z" ></property>
 
-	<property name="CreatedBy" ></property>
+    <property name="CreatedBy" ></property>
 
-	<property name="UpdatedBy" ></property>
+    <property name="UpdatedBy" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
-	<property name="Deleted" ></property>
+    <property name="Deleted" ></property>
 
 
-    <property name="CreatedAt" />
-    <property name="UpdatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="UpdatedAt" column="UpdatedAt" />
 
 
   </class>

@@ -5,30 +5,30 @@
   
   <class name="AttributeSetInstanceExtensionFieldStateEventBase" table="AttributeSetInstanceExtensionFieldStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldStateEventId">
-		<key-property name="GroupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
-		<key-property name="Index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
-		<key-property name="AttributeSetInstanceExtensionFieldGroupVersion" ></key-property>
-	</composite-id>
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldStateEventId">
+        <key-property name="GroupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
+        <key-property name="Index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
+        <key-property name="AttributeSetInstanceExtensionFieldGroupVersion" ></key-property>
+    </composite-id>
 
     <discriminator column="StateEventType" type="String" />
 
-	<property name="Name" ><column name="Name" unique-key="UniqueName" /></property>
+    <property name="Name" ><column name="Name" unique-key="UniqueName" /></property>
 
-	<property name="Type" ></property>
+    <property name="Type" ></property>
 
-	<property name="Length" ></property>
+    <property name="Length" ></property>
 
-	<property name="Alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
+    <property name="Alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
 
-	<property name="Description" ></property>
+    <property name="Description" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
 
-    <property name="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy" />
 
-    <property name="CreatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
 
     <property name="CommandId" />
 

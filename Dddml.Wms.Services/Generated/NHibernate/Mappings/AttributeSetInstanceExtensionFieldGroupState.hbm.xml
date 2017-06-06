@@ -5,31 +5,31 @@
   
   <class name="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldGroupState" table="AttributeSetInstanceExtensionFieldGroups">
 
-	<id name="Id" length="50"><generator class="assigned"/></id>
+	<id name="Id" length="50" column="Id"><generator class="assigned"/></id>
 
-	<version name="Version" type="long" unsaved-value="0"/>
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-	<property name="FieldType" ></property>
+    <property name="FieldType" ></property>
 
-	<property name="FieldLength" ></property>
+    <property name="FieldLength" ></property>
 
-	<property name="FieldCount" ></property>
+    <property name="FieldCount" ></property>
 
-	<property name="NameFormat" ></property>
+    <property name="NameFormat" ></property>
 
-	<property name="Description" ></property>
+    <property name="Description" ></property>
 
-	<property name="CreatedBy" ></property>
+    <property name="CreatedBy" ></property>
 
-	<property name="UpdatedBy" ></property>
+    <property name="UpdatedBy" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
-	<property name="Deleted" ></property>
+    <property name="Deleted" ></property>
 
 
-    <property name="CreatedAt" />
-    <property name="UpdatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="UpdatedAt" column="UpdatedAt" />
 
 
   </class>

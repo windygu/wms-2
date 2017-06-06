@@ -5,26 +5,26 @@
   
   <class name="Dddml.Wms.Domain.AttributeSet.AttributeUseState" table="AttributeUses">
 
-	<composite-id name="AttributeSetAttributeUseId" class="Dddml.Wms.Domain.AttributeSet.AttributeSetAttributeUseId">
-		<key-property name="AttributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>
-		<key-property name="AttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
-	</composite-id>
+    <composite-id name="AttributeSetAttributeUseId" class="Dddml.Wms.Domain.AttributeSet.AttributeSetAttributeUseId">
+        <key-property name="AttributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>
+        <key-property name="AttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
+    </composite-id>
 
-	<version name="Version" type="long" unsaved-value="0"/>
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-	<property name="SequenceNumber" ></property>
+    <property name="SequenceNumber" ></property>
 
-	<property name="CreatedBy" ></property>
+    <property name="CreatedBy" ></property>
 
-	<property name="UpdatedBy" ></property>
+    <property name="UpdatedBy" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
-	<property name="Deleted" ></property>
+    <property name="Deleted" ></property>
 
 
-    <property name="CreatedAt" />
-    <property name="UpdatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="UpdatedAt" column="UpdatedAt" />
 
 
   </class>

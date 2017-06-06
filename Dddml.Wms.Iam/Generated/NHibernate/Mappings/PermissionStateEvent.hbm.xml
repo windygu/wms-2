@@ -5,25 +5,25 @@
   
   <class name="PermissionStateEventBase" table="PermissionStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="StateEventId" class="Dddml.Wms.Domain.Permission.PermissionStateEventId">
-		<key-property name="PermissionId" ><column name="PermissionId" length="50" /></key-property>
-		<key-property name="Version" ></key-property>
-	</composite-id>
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Permission.PermissionStateEventId">
+        <key-property name="PermissionId" ><column name="PermissionId" length="50" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
 
     <discriminator column="StateEventType" type="String" />
 
-	<property name="Name" ></property>
+    <property name="Name" ></property>
 
-	<property name="ParentPermissionId" ></property>
+    <property name="ParentPermissionId" ></property>
 
-	<property name="Description" ></property>
+    <property name="Description" ></property>
 
-	<property name="Active" ></property>
+    <property name="Active" ></property>
 
 
-    <property name="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy" />
 
-    <property name="CreatedAt" />
+    <property name="CreatedAt" column="CreatedAt" />
 
     <property name="CommandId" />
 

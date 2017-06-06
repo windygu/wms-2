@@ -32,7 +32,6 @@ namespace Dddml.Wms.Domain.Audience
                 var e = (IAudienceStateDeleted)stateEvent;
                 return ToAudienceStateDeletedDto(e);
             }
-
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 
