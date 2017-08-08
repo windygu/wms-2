@@ -109,11 +109,11 @@ public interface AttributeUseMvoState
 
     void mutate(Event e);
 
-    void when(AttributeUseMvoStateCreated e);
+    void when(AttributeUseMvoStateEvent.AttributeUseMvoStateCreated e);
 
-    void when(AttributeUseMvoStateMergePatched e);
+    void when(AttributeUseMvoStateEvent.AttributeUseMvoStateMergePatched e);
 
-    void when(AttributeUseMvoStateDeleted e);
+    void when(AttributeUseMvoStateEvent.AttributeUseMvoStateDeleted e);
     
 }
 

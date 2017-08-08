@@ -28,19 +28,19 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
     public void create(AttributeSetInstanceExtensionFieldMvoCommand.CreateAttributeSetInstanceExtensionFieldMvo c)
     {
         if (c.getAttrSetInstEFGroupVersion() == null) { c.setAttrSetInstEFGroupVersion(AttributeSetInstanceExtensionFieldMvoState.VERSION_NULL); }
-        AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateCreated e = map(c);
+        AttributeSetInstanceExtensionFieldMvoStateEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(AttributeSetInstanceExtensionFieldMvoCommand.MergePatchAttributeSetInstanceExtensionFieldMvo c)
     {
-        AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateMergePatched e = map(c);
+        AttributeSetInstanceExtensionFieldMvoStateEvent e = map(c);
         apply(e);
     }
 
     public void delete(AttributeSetInstanceExtensionFieldMvoCommand.DeleteAttributeSetInstanceExtensionFieldMvo c)
     {
-        AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateDeleted e = map(c);
+        AttributeSetInstanceExtensionFieldMvoStateEvent e = map(c);
         apply(e);
     }
 
@@ -69,8 +69,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         changes.add(e);
     }
 
-    protected AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateCreated map(AttributeSetInstanceExtensionFieldMvoCommand.CreateAttributeSetInstanceExtensionFieldMvo c)
-    {
+    protected AttributeSetInstanceExtensionFieldMvoStateEvent map(AttributeSetInstanceExtensionFieldMvoCommand.CreateAttributeSetInstanceExtensionFieldMvo c) {
         AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventId(c.getAttributeSetInstanceExtensionFieldId(), c.getAttrSetInstEFGroupVersion());
         AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateCreated e = newAttributeSetInstanceExtensionFieldMvoStateCreated(stateEventId);
         e.setName(c.getName());
@@ -94,12 +93,10 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         ((AbstractAttributeSetInstanceExtensionFieldMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt(new Date());
-        Long attrSetInstEFGroupVersion = c.getAttrSetInstEFGroupVersion();
         return e;
     }
 
-    protected AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateMergePatched map(AttributeSetInstanceExtensionFieldMvoCommand.MergePatchAttributeSetInstanceExtensionFieldMvo c)
-    {
+    protected AttributeSetInstanceExtensionFieldMvoStateEvent map(AttributeSetInstanceExtensionFieldMvoCommand.MergePatchAttributeSetInstanceExtensionFieldMvo c) {
         AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventId(c.getAttributeSetInstanceExtensionFieldId(), c.getAttrSetInstEFGroupVersion());
         AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateMergePatched e = newAttributeSetInstanceExtensionFieldMvoStateMergePatched(stateEventId);
         e.setName(c.getName());
@@ -141,12 +138,10 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         ((AbstractAttributeSetInstanceExtensionFieldMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt(new Date());
-        Long attrSetInstEFGroupVersion = c.getAttrSetInstEFGroupVersion();
         return e;
     }
 
-    protected AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateDeleted map(AttributeSetInstanceExtensionFieldMvoCommand.DeleteAttributeSetInstanceExtensionFieldMvo c)
-    {
+    protected AttributeSetInstanceExtensionFieldMvoStateEvent map(AttributeSetInstanceExtensionFieldMvoCommand.DeleteAttributeSetInstanceExtensionFieldMvo c) {
         AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId = new AttributeSetInstanceExtensionFieldMvoStateEventId(c.getAttributeSetInstanceExtensionFieldId(), c.getAttrSetInstEFGroupVersion());
         AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateDeleted e = newAttributeSetInstanceExtensionFieldMvoStateDeleted(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldMvoStateEvent)e).setCommandId(c.getCommandId());

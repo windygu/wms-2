@@ -132,18 +132,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStateEvent exten
         this.active = active;
     }
 
-    private String groupId;
-
-    public String getGroupId()
-    {
-        return this.groupId;
-    }
-
-    public void setGroupId(String groupId)
-    {
-        this.groupId = groupId;
-    }
-
 
     private String commandId;
 
@@ -166,7 +154,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStateEvent exten
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateCreated extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldStateCreated
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateCreated extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated
     {
         public AbstractAttributeSetInstanceExtensionFieldStateCreated() {
         }
@@ -182,7 +170,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStateEvent exten
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldStateMergePatched
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched
     {
         public AbstractAttributeSetInstanceExtensionFieldStateMergePatched() {
         }
@@ -258,7 +246,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStateEvent exten
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateRemoved extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldStateRemoved
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateRemoved extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateRemoved
     {
         public AbstractAttributeSetInstanceExtensionFieldStateRemoved() {
         }
@@ -272,35 +260,35 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStateEvent exten
         }
 
     }
-        public static class SimpleAttributeSetInstanceExtensionFieldStateCreated extends AbstractAttributeSetInstanceExtensionFieldStateCreated
-        {
-			public SimpleAttributeSetInstanceExtensionFieldStateCreated() {
-			}
-
-			public SimpleAttributeSetInstanceExtensionFieldStateCreated(AttributeSetInstanceExtensionFieldStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeSetInstanceExtensionFieldStateCreated extends AbstractAttributeSetInstanceExtensionFieldStateCreated
+    {
+        public SimpleAttributeSetInstanceExtensionFieldStateCreated() {
         }
 
-        public static class SimpleAttributeSetInstanceExtensionFieldStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldStateMergePatched
-        {
-			public SimpleAttributeSetInstanceExtensionFieldStateMergePatched() {
-			}
+        public SimpleAttributeSetInstanceExtensionFieldStateCreated(AttributeSetInstanceExtensionFieldStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleAttributeSetInstanceExtensionFieldStateMergePatched(AttributeSetInstanceExtensionFieldStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeSetInstanceExtensionFieldStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldStateMergePatched
+    {
+        public SimpleAttributeSetInstanceExtensionFieldStateMergePatched() {
         }
 
-        public static class SimpleAttributeSetInstanceExtensionFieldStateRemoved extends AbstractAttributeSetInstanceExtensionFieldStateRemoved
-        {
-			public SimpleAttributeSetInstanceExtensionFieldStateRemoved() {
-			}
-
-			public SimpleAttributeSetInstanceExtensionFieldStateRemoved(AttributeSetInstanceExtensionFieldStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleAttributeSetInstanceExtensionFieldStateMergePatched(AttributeSetInstanceExtensionFieldStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleAttributeSetInstanceExtensionFieldStateRemoved extends AbstractAttributeSetInstanceExtensionFieldStateRemoved
+    {
+        public SimpleAttributeSetInstanceExtensionFieldStateRemoved() {
+        }
+
+        public SimpleAttributeSetInstanceExtensionFieldStateRemoved(AttributeSetInstanceExtensionFieldStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

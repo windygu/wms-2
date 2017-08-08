@@ -27,19 +27,19 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
     public void create(AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup c)
     {
         if (c.getVersion() == null) { c.setVersion(AttributeSetInstanceExtensionFieldGroupState.VERSION_NULL); }
-        AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated e = map(c);
+        AttributeSetInstanceExtensionFieldGroupStateEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(AttributeSetInstanceExtensionFieldGroupCommand.MergePatchAttributeSetInstanceExtensionFieldGroup c)
     {
-        AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched e = map(c);
+        AttributeSetInstanceExtensionFieldGroupStateEvent e = map(c);
         apply(e);
     }
 
     public void delete(AttributeSetInstanceExtensionFieldGroupCommand.DeleteAttributeSetInstanceExtensionFieldGroup c)
     {
-        AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted e = map(c);
+        AttributeSetInstanceExtensionFieldGroupStateEvent e = map(c);
         apply(e);
     }
 
@@ -68,8 +68,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         changes.add(e);
     }
 
-    protected AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated map(AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup c)
-    {
+    protected AttributeSetInstanceExtensionFieldGroupStateEvent map(AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup c) {
         AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventId(c.getId(), c.getVersion());
         AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated e = newAttributeSetInstanceExtensionFieldGroupStateCreated(stateEventId);
         e.setFieldType(c.getFieldType());
@@ -92,8 +91,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         return e;
     }
 
-    protected AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched map(AttributeSetInstanceExtensionFieldGroupCommand.MergePatchAttributeSetInstanceExtensionFieldGroup c)
-    {
+    protected AttributeSetInstanceExtensionFieldGroupStateEvent map(AttributeSetInstanceExtensionFieldGroupCommand.MergePatchAttributeSetInstanceExtensionFieldGroup c) {
         AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventId(c.getId(), c.getVersion());
         AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched e = newAttributeSetInstanceExtensionFieldGroupStateMergePatched(stateEventId);
         e.setFieldType(c.getFieldType());
@@ -122,8 +120,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         return e;
     }
 
-    protected AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted map(AttributeSetInstanceExtensionFieldGroupCommand.DeleteAttributeSetInstanceExtensionFieldGroup c)
-    {
+    protected AttributeSetInstanceExtensionFieldGroupStateEvent map(AttributeSetInstanceExtensionFieldGroupCommand.DeleteAttributeSetInstanceExtensionFieldGroup c) {
         AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventId(c.getId(), c.getVersion());
         AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted e = newAttributeSetInstanceExtensionFieldGroupStateDeleted(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldGroupStateEvent)e).setCommandId(c.getCommandId());

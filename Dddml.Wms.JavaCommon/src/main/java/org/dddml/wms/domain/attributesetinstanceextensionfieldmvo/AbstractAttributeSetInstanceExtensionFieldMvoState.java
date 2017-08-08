@@ -349,6 +349,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoState impleme
 
     public AbstractAttributeSetInstanceExtensionFieldMvoState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -364,12 +365,15 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoState impleme
             when((AttributeSetInstanceExtensionFieldMvoStateMergePatched) e);
         } else if (e instanceof AttributeSetInstanceExtensionFieldMvoStateDeleted) {
             when((AttributeSetInstanceExtensionFieldMvoStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(AttributeSetInstanceExtensionFieldMvoStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setName(e.getName());
         this.setType(e.getType());
         this.setLength(e.getLength());

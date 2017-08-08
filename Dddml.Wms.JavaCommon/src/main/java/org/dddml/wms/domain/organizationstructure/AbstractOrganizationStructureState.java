@@ -144,6 +144,7 @@ public abstract class AbstractOrganizationStructureState implements Organization
 
     public AbstractOrganizationStructureState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -159,12 +160,15 @@ public abstract class AbstractOrganizationStructureState implements Organization
             when((OrganizationStructureStateMergePatched) e);
         } else if (e instanceof OrganizationStructureStateDeleted) {
             when((OrganizationStructureStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(OrganizationStructureStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setActive(e.getActive());
 
         this.setDeleted(false);

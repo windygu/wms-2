@@ -9,35 +9,21 @@
   <class name="org.dddml.wms.domain.locator.AbstractLocatorState$SimpleLocatorState" table="Locators">
 
 	<id name="locatorId" length="50" column="LocatorId"><generator class="assigned"/></id>
-
 	<version name="version" type="long" />
 
 	<property name="warehouseId" ><column name="WarehouseId" not-null="true" /></property>
-
 	<property name="parentLocatorId" ></property>
-
 	<property name="locatorType" ></property>
-
 	<property name="priorityNumber" ></property>
-
 	<property name="isDefault" ></property>
-
 	<property name="x" ></property>
-
 	<property name="y" ></property>
-
 	<property name="z" ></property>
-
 	<property name="createdBy" ></property>
-
 	<property name="createdAt" ></property>
-
 	<property name="updatedBy" ></property>
-
 	<property name="updatedAt" ></property>
-
 	<property name="active" ></property>
-
 	<property name="deleted" ></property>
 
 

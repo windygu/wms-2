@@ -831,6 +831,7 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
 
     public AbstractInOutLineMvoState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -846,12 +847,15 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
             when((InOutLineMvoStateMergePatched) e);
         } else if (e instanceof InOutLineMvoStateDeleted) {
             when((InOutLineMvoStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(InOutLineMvoStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setDescription(e.getDescription());
         this.setLocatorId(e.getLocatorId());
         this.setProductId(e.getProductId());

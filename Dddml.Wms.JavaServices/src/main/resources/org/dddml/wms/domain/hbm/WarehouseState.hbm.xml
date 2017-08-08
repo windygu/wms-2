@@ -9,25 +9,16 @@
   <class name="org.dddml.wms.domain.warehouse.AbstractWarehouseState$SimpleWarehouseState" table="Warehouses">
 
 	<id name="warehouseId" length="50" column="WarehouseId"><generator class="assigned"/></id>
-
 	<version name="version" type="long" />
 
 	<property name="name" ></property>
-
 	<property name="description" ></property>
-
 	<property name="isInTransit" ></property>
-
 	<property name="createdBy" ></property>
-
 	<property name="createdAt" ></property>
-
 	<property name="updatedBy" ></property>
-
 	<property name="updatedAt" ></property>
-
 	<property name="active" ></property>
-
 	<property name="deleted" ></property>
 
 

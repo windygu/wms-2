@@ -8,7 +8,7 @@ import org.dddml.wms.domain.*;
 public interface WarehouseStateRepository
 {
     WarehouseState get(String id, boolean nullAllowed);
-    
+
     void save(WarehouseState state);
 
 }

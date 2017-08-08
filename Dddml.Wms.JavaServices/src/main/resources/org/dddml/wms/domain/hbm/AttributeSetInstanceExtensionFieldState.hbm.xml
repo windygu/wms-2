@@ -12,29 +12,18 @@
 		<key-property name="groupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
 		<key-property name="index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
 	</composite-id>
-
 	<version name="version" type="long" />
 
 	<property name="name" ><column name="Name" unique-key="UniqueName" /></property>
-
 	<property name="type" ></property>
-
 	<property name="length" ></property>
-
 	<property name="alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
-
 	<property name="description" ></property>
-
 	<property name="createdBy" ></property>
-
 	<property name="createdAt" ></property>
-
 	<property name="updatedBy" ></property>
-
 	<property name="updatedAt" ></property>
-
 	<property name="active" ></property>
-
 	<property name="deleted" ></property>
 
 

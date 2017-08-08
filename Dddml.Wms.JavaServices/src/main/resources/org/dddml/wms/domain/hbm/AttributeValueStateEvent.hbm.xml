@@ -17,13 +17,9 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="name" ></property>
-
 	<property name="description" ></property>
-
 	<property name="referenceId" ></property>
-
 	<property name="active" ></property>
-
 
     <property name="createdBy" />
 
@@ -32,7 +28,6 @@
     <property name="commandId" />
 
     <property name="version" not-null="true" />
-
 
     <subclass name="AbstractAttributeValueStateEvent$SimpleAttributeValueStateCreated" discriminator-value="Created">
     	
@@ -54,6 +49,8 @@
     <subclass name="AbstractAttributeValueStateEvent$SimpleAttributeValueStateRemoved"  discriminator-value="Removed">
 
     </subclass>
+
+
 
   </class>
   

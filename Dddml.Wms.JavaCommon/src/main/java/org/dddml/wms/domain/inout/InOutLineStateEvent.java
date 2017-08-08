@@ -94,10 +94,6 @@ public interface InOutLineStateEvent extends Event
 
     void setActive(Boolean active);
 
-    String getInOutDocumentNumber();
-
-    void setInOutDocumentNumber(String inOutDocumentNumber);
-
     String getCommandId();
 
     void setCommandId(String commandId);

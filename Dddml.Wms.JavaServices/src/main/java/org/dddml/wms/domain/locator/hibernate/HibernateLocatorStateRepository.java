@@ -39,8 +39,7 @@ public class HibernateLocatorStateRepository implements LocatorStateRepository
     }
 
     @Transactional(readOnly = true)
-    public LocatorState get(String id, boolean nullAllowed)
-    {
+    public LocatorState get(String id, boolean nullAllowed) {
         LocatorState state = (LocatorState)getCurrentSession().get(AbstractLocatorState.SimpleLocatorState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractLocatorState.SimpleLocatorState();

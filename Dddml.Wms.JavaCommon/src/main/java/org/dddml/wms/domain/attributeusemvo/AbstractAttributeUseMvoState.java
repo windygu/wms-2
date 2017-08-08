@@ -313,6 +313,7 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
 
     public AbstractAttributeUseMvoState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -328,12 +329,15 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
             when((AttributeUseMvoStateMergePatched) e);
         } else if (e instanceof AttributeUseMvoStateDeleted) {
             when((AttributeUseMvoStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(AttributeUseMvoStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setSequenceNumber(e.getSequenceNumber());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());

@@ -9,40 +9,28 @@
         <key-property name="LocatorId" ><column name="LocatorId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>
-
     <discriminator column="StateEventType" type="String" />
 
     <property name="WarehouseId" ></property>
-
     <property name="ParentLocatorId" ></property>
-
     <property name="LocatorType" ></property>
-
     <property name="PriorityNumber" ></property>
-
     <property name="IsDefault" ></property>
-
     <property name="X" ></property>
-
     <property name="Y" ></property>
-
     <property name="Z" ></property>
-
     <property name="Active" ></property>
 
-
-    <property name="CreatedBy" column="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-
     <property name="CommandId" />
-
-
     <subclass name="LocatorStateCreated" discriminator-value="Created">
     	
     </subclass>
 
     <subclass name="LocatorStateMergePatched"  discriminator-value="MergePatched">
+
 
         <property name="IsPropertyWarehouseIdRemoved" />
 
@@ -61,13 +49,13 @@
         <property name="IsPropertyZRemoved" />
 
         <property name="IsPropertyActiveRemoved" />
-
-
     </subclass>
 
     <subclass name="LocatorStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

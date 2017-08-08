@@ -121,11 +121,11 @@ public interface AttributeSetInstanceExtensionFieldMvoState
 
     void mutate(Event e);
 
-    void when(AttributeSetInstanceExtensionFieldMvoStateCreated e);
+    void when(AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateCreated e);
 
-    void when(AttributeSetInstanceExtensionFieldMvoStateMergePatched e);
+    void when(AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateMergePatched e);
 
-    void when(AttributeSetInstanceExtensionFieldMvoStateDeleted e);
+    void when(AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateDeleted e);
     
 }
 

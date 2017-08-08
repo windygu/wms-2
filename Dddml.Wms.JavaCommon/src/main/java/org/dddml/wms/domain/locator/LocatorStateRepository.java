@@ -8,7 +8,7 @@ import org.dddml.wms.domain.*;
 public interface LocatorStateRepository
 {
     LocatorState get(String id, boolean nullAllowed);
-    
+
     void save(LocatorState state);
 
 }

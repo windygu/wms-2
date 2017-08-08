@@ -10,37 +10,23 @@
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
     <property name="UserName" ><column name="UserName" unique-key="UniqueUserName" /></property>
-
     <property name="AccessFailedCount" ></property>
-
     <property name="Email" ></property>
-
     <property name="EmailConfirmed" ></property>
-
     <property name="LockoutEnabled" ></property>
-
     <property name="LockoutEndDateUtc" ></property>
-
     <property name="PasswordHash" ></property>
-
     <property name="PhoneNumber" ></property>
-
     <property name="PhoneNumberConfirmed" ></property>
-
     <property name="TwoFactorEnabled" ></property>
-
     <property name="SecurityStamp" ></property>
-
     <property name="CreatedBy" ></property>
-
     <property name="UpdatedBy" ></property>
-
     <property name="Active" ></property>
-
     <property name="Deleted" ></property>
 
-
     <property name="CreatedAt" column="CreatedAt" />
+
     <property name="UpdatedAt" column="UpdatedAt" />
 
 

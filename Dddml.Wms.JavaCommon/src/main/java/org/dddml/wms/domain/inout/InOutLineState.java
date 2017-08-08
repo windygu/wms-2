@@ -125,11 +125,11 @@ public interface InOutLineState
 
     void mutate(Event e);
 
-    void when(InOutLineStateCreated e);
+    void when(InOutLineStateEvent.InOutLineStateCreated e);
 
-    void when(InOutLineStateMergePatched e);
+    void when(InOutLineStateEvent.InOutLineStateMergePatched e);
 
-    void when(InOutLineStateRemoved e);
+    void when(InOutLineStateEvent.InOutLineStateRemoved e);
     
 }
 

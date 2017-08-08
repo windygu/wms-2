@@ -13,19 +13,13 @@
 		<key-property name="parentId" ><column name="IdParentId" /></key-property>
 		<key-property name="subsidiaryId" ><column name="IdSubsidiaryId" /></key-property>
 	</composite-id>
-
 	<version name="version" type="long" />
 
 	<property name="createdBy" ></property>
-
 	<property name="createdAt" ></property>
-
 	<property name="updatedBy" ></property>
-
 	<property name="updatedAt" ></property>
-
 	<property name="active" ></property>
-
 	<property name="deleted" ></property>
 
 

@@ -10,60 +10,38 @@
         <key-property name="UserPermissionIdPermissionId" ><column name="UserPermissionIdPermissionId" length="50" /></key-property>
         <key-property name="UserVersion" ></key-property>
     </composite-id>
-
     <discriminator column="StateEventType" type="String" />
 
     <property name="Version" ></property>
-
     <property name="Active" ></property>
-
     <property name="UserUserName" ></property>
-
     <property name="UserAccessFailedCount" ></property>
-
     <property name="UserEmail" ></property>
-
     <property name="UserEmailConfirmed" ></property>
-
     <property name="UserLockoutEnabled" ></property>
-
     <property name="UserLockoutEndDateUtc" ></property>
-
     <property name="UserPasswordHash" ></property>
-
     <property name="UserPhoneNumber" ></property>
-
     <property name="UserPhoneNumberConfirmed" ></property>
-
     <property name="UserTwoFactorEnabled" ></property>
-
     <property name="UserSecurityStamp" ></property>
-
     <property name="UserCreatedBy" ></property>
-
     <property name="UserCreatedAt" ></property>
-
     <property name="UserUpdatedBy" ></property>
-
     <property name="UserUpdatedAt" ></property>
-
     <property name="UserActive" ></property>
-
     <property name="UserDeleted" ></property>
 
-
-    <property name="CreatedBy" column="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-
     <property name="CommandId" />
-
-
     <subclass name="UserPermissionMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
 
     <subclass name="UserPermissionMvoStateMergePatched"  discriminator-value="MergePatched">
+
 
         <property name="IsPropertyVersionRemoved" />
 
@@ -102,13 +80,13 @@
         <property name="IsPropertyUserActiveRemoved" />
 
         <property name="IsPropertyUserDeletedRemoved" />
-
-
     </subclass>
 
     <subclass name="UserPermissionMvoStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

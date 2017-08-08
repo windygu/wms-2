@@ -40,8 +40,7 @@ public class HibernateAttributeUseMvoStateRepository implements AttributeUseMvoS
     }
 
     @Transactional(readOnly = true)
-    public AttributeUseMvoState get(AttributeSetAttributeUseId id, boolean nullAllowed)
-    {
+    public AttributeUseMvoState get(AttributeSetAttributeUseId id, boolean nullAllowed) {
         AttributeUseMvoState state = (AttributeUseMvoState)getCurrentSession().get(AbstractAttributeUseMvoState.SimpleAttributeUseMvoState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeUseMvoState.SimpleAttributeUseMvoState();

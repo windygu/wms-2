@@ -180,6 +180,7 @@ public abstract class AbstractWarehouseState implements WarehouseState
 
     public AbstractWarehouseState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -195,12 +196,15 @@ public abstract class AbstractWarehouseState implements WarehouseState
             when((WarehouseStateMergePatched) e);
         } else if (e instanceof WarehouseStateDeleted) {
             when((WarehouseStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(WarehouseStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setName(e.getName());
         this.setDescription(e.getDescription());
         this.setIsInTransit(e.getIsInTransit());

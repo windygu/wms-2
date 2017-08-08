@@ -9,7 +9,7 @@ import org.dddml.wms.domain.*;
 public interface AttributeValueMvoStateRepository
 {
     AttributeValueMvoState get(AttributeValueId id, boolean nullAllowed);
-    
+
     void save(AttributeValueMvoState state);
 
 }

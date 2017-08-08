@@ -10,22 +10,16 @@
         <key-property name="AttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
         <key-property name="AttributeSetVersion" ></key-property>
     </composite-id>
-
     <discriminator column="StateEventType" type="String" />
 
     <property name="SequenceNumber" ></property>
-
     <property name="Active" ></property>
 
-
-    <property name="CreatedBy" column="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-
     <property name="CommandId" />
-
     <property name="Version" not-null="true" />
-
 
     <subclass name="AttributeUseStateCreated" discriminator-value="Created">
     	
@@ -33,16 +27,17 @@
 
     <subclass name="AttributeUseStateMergePatched"  discriminator-value="MergePatched">
 
+
         <property name="IsPropertySequenceNumberRemoved" />
 
         <property name="IsPropertyActiveRemoved" />
-
-
     </subclass>
 
     <subclass name="AttributeUseStateRemoved"  discriminator-value="Removed">
 
     </subclass>
+
+
 
   </class>
   

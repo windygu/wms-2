@@ -82,7 +82,7 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractOrganizationStructureTypeStateCreated extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateCreated
+    public static abstract class AbstractOrganizationStructureTypeStateCreated extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated
     {
         public AbstractOrganizationStructureTypeStateCreated() {
         }
@@ -98,7 +98,7 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
     }
 
 
-    public static abstract class AbstractOrganizationStructureTypeStateMergePatched extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateMergePatched
+    public static abstract class AbstractOrganizationStructureTypeStateMergePatched extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched
     {
         public AbstractOrganizationStructureTypeStateMergePatched() {
         }
@@ -124,7 +124,7 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
     }
 
 
-    public static abstract class AbstractOrganizationStructureTypeStateDeleted extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateDeleted
+    public static abstract class AbstractOrganizationStructureTypeStateDeleted extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted
     {
         public AbstractOrganizationStructureTypeStateDeleted() {
         }
@@ -138,35 +138,35 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
         }
 
     }
-        public static class SimpleOrganizationStructureTypeStateCreated extends AbstractOrganizationStructureTypeStateCreated
-        {
-			public SimpleOrganizationStructureTypeStateCreated() {
-			}
-
-			public SimpleOrganizationStructureTypeStateCreated(OrganizationStructureTypeStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleOrganizationStructureTypeStateCreated extends AbstractOrganizationStructureTypeStateCreated
+    {
+        public SimpleOrganizationStructureTypeStateCreated() {
         }
 
-        public static class SimpleOrganizationStructureTypeStateMergePatched extends AbstractOrganizationStructureTypeStateMergePatched
-        {
-			public SimpleOrganizationStructureTypeStateMergePatched() {
-			}
+        public SimpleOrganizationStructureTypeStateCreated(OrganizationStructureTypeStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleOrganizationStructureTypeStateMergePatched(OrganizationStructureTypeStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleOrganizationStructureTypeStateMergePatched extends AbstractOrganizationStructureTypeStateMergePatched
+    {
+        public SimpleOrganizationStructureTypeStateMergePatched() {
         }
 
-        public static class SimpleOrganizationStructureTypeStateDeleted extends AbstractOrganizationStructureTypeStateDeleted
-        {
-			public SimpleOrganizationStructureTypeStateDeleted() {
-			}
-
-			public SimpleOrganizationStructureTypeStateDeleted(OrganizationStructureTypeStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleOrganizationStructureTypeStateMergePatched(OrganizationStructureTypeStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleOrganizationStructureTypeStateDeleted extends AbstractOrganizationStructureTypeStateDeleted
+    {
+        public SimpleOrganizationStructureTypeStateDeleted() {
+        }
+
+        public SimpleOrganizationStructureTypeStateDeleted(OrganizationStructureTypeStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

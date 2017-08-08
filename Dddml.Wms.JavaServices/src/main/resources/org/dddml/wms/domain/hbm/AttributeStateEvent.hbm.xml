@@ -16,34 +16,22 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="name" ></property>
-
 	<property name="organizationId" ></property>
-
 	<property name="description" ></property>
-
 	<property name="isMandatory" ></property>
-
 	<property name="isInstanceAttribute" ></property>
-
 	<property name="attributeValueType" ></property>
-
 	<property name="attributeValueLength" ></property>
-
 	<property name="isList" ></property>
-
 	<property name="fieldName" ><column name="FieldName" unique-key="UniqueFieldName" /></property>
-
 	<property name="referenceId" ></property>
-
 	<property name="active" ></property>
-
 
     <property name="createdBy" />
 
     <property name="createdAt" />
 
     <property name="commandId" />
-
 
     <subclass name="AbstractAttributeStateEvent$SimpleAttributeStateCreated" discriminator-value="Created">
     	
@@ -79,6 +67,8 @@
     <subclass name="AbstractAttributeStateEvent$SimpleAttributeStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

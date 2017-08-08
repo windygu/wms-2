@@ -12,59 +12,33 @@
 		<key-property name="attributeId" ><column name="AttributeValueIdAttributeId" length="50" /></key-property>
 		<key-property name="value" ><column name="AttributeValueIdValue" length="50" /></key-property>
 	</composite-id>
-
 	<version name="attributeVersion" type="long" />
 
 	<property name="name" ></property>
-
 	<property name="description" ></property>
-
 	<property name="referenceId" ></property>
-
 	<property name="version" ></property>
-
 	<property name="createdBy" ></property>
-
 	<property name="createdAt" ></property>
-
 	<property name="updatedBy" ></property>
-
 	<property name="updatedAt" ></property>
-
 	<property name="active" ></property>
-
 	<property name="deleted" ></property>
-
 	<property name="attributeName" ></property>
-
 	<property name="attributeOrganizationId" ></property>
-
 	<property name="attributeDescription" ></property>
-
 	<property name="attributeIsMandatory" ></property>
-
 	<property name="attributeIsInstanceAttribute" ></property>
-
 	<property name="attributeAttributeValueType" ></property>
-
 	<property name="attributeAttributeValueLength" ></property>
-
 	<property name="attributeIsList" ></property>
-
 	<property name="attributeFieldName" ></property>
-
 	<property name="attributeReferenceId" ></property>
-
 	<property name="attributeCreatedBy" ></property>
-
 	<property name="attributeCreatedAt" ></property>
-
 	<property name="attributeUpdatedBy" ></property>
-
 	<property name="attributeUpdatedAt" ></property>
-
 	<property name="attributeActive" ></property>
-
 	<property name="attributeDeleted" ></property>
 
 

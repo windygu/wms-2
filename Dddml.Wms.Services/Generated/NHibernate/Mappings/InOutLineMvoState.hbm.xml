@@ -13,129 +13,69 @@
 	<version name="InOutVersion" column="InOutVersion" type="long" unsaved-value="0"/>
 
     <property name="Description" ></property>
-
     <property name="LocatorId" ></property>
-
     <property name="ProductId" ></property>
-
     <property name="UomId" ></property>
-
     <property name="MovementQuantity" ></property>
-
     <property name="ConfirmedQuantity" ></property>
-
     <property name="ScrappedQuantity" ></property>
-
     <property name="TargetQuantity" ></property>
-
     <property name="PickedQuantity" ></property>
-
     <property name="IsInvoiced" ></property>
-
     <property name="AttributeSetInstanceId" ></property>
-
     <property name="IsDescription" ></property>
-
     <property name="Processed" ></property>
-
     <property name="QuantityEntered" ></property>
-
     <property name="RmaLineNumber" ></property>
-
     <property name="ReversalLineNumber" ></property>
-
     <property name="Version" ></property>
-
     <property name="CreatedBy" ></property>
-
     <property name="UpdatedBy" ></property>
-
     <property name="Active" ></property>
-
     <property name="Deleted" ></property>
-
     <property name="InOutIsSOTransaction" ></property>
-
     <property name="InOutDocumentStatus" ></property>
-
     <property name="InOutPosted" ></property>
-
     <property name="InOutProcessing" ></property>
-
     <property name="InOutProcessed" ></property>
-
     <property name="InOutDocumentType" ></property>
-
     <property name="InOutDescription" ></property>
-
     <property name="InOutOrderNumber" ></property>
-
     <property name="InOutDateOrdered" ></property>
-
     <property name="InOutIsPrinted" ></property>
-
     <property name="InOutMovementType" ></property>
-
     <property name="InOutMovementDate" ></property>
-
     <property name="InOutBusinessPartnerId" ></property>
-
     <property name="InOutWarehouseId" ></property>
-
     <property name="InOutPOReference" ></property>
-
     <property name="InOutFreightAmount" type="Dddml.Wms.Services.Domain.NHibernate.NodaMoneyType, Dddml.Wms.Services"><column name="InOutFreightAmountAmount" /><column name="InOutFreightAmountCurrency" /></property>
-
     <property name="InOutShipperId" ></property>
-
     <property name="InOutChargeAmount" type="Dddml.Wms.Services.Domain.NHibernate.NodaMoneyType, Dddml.Wms.Services"><column name="InOutChargeAmountAmount" /><column name="InOutChargeAmountCurrency" /></property>
-
     <property name="InOutDatePrinted" ></property>
-
     <property name="InOutSalesRepresentative" ></property>
-
     <property name="InOutNumberOfPackages" ></property>
-
     <property name="InOutPickDate" ></property>
-
     <property name="InOutShipDate" ></property>
-
     <property name="InOutTrackingNumber" ></property>
-
     <property name="InOutDateReceived" ></property>
-
     <property name="InOutIsInTransit" ></property>
-
     <property name="InOutIsApproved" ></property>
-
     <property name="InOutIsInDispute" ></property>
-
     <property name="InOutVolume" ></property>
-
     <property name="InOutWeight" ></property>
-
     <property name="InOutRmaNumber" ></property>
-
     <property name="InOutReversalNumber" ></property>
-
     <property name="InOutIsDropShip" ></property>
-
     <property name="InOutDropShipBusinessPartnerId" ></property>
-
     <property name="InOutCreatedBy" ></property>
-
     <property name="InOutCreatedAt" ></property>
-
     <property name="InOutUpdatedBy" ></property>
-
     <property name="InOutUpdatedAt" ></property>
-
     <property name="InOutActive" ></property>
-
     <property name="InOutDeleted" ></property>
 
-
     <property name="CreatedAt" column="CreatedAt" />
+
     <property name="UpdatedAt" column="UpdatedAt" />
 
 

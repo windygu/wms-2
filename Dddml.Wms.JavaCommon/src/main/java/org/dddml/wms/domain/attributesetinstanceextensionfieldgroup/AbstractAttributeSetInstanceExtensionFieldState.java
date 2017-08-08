@@ -207,6 +207,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
 
     public AbstractAttributeSetInstanceExtensionFieldState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -222,12 +223,15 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
             when((AttributeSetInstanceExtensionFieldStateMergePatched) e);
         } else if (e instanceof AttributeSetInstanceExtensionFieldStateRemoved) {
             when((AttributeSetInstanceExtensionFieldStateRemoved) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(AttributeSetInstanceExtensionFieldStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setName(e.getName());
         this.setType(e.getType());
         this.setLength(e.getLength());

@@ -10,20 +10,15 @@
         <key-property name="PermissionId" ><column name="UserPermissionIdPermissionId" length="50" /></key-property>
         <key-property name="UserVersion" ></key-property>
     </composite-id>
-
     <discriminator column="StateEventType" type="String" />
 
     <property name="Active" ></property>
 
-
-    <property name="CreatedBy" column="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-
     <property name="CommandId" />
-
     <property name="Version" not-null="true" />
-
 
     <subclass name="UserPermissionStateCreated" discriminator-value="Created">
     	
@@ -31,14 +26,15 @@
 
     <subclass name="UserPermissionStateMergePatched"  discriminator-value="MergePatched">
 
+
         <property name="IsPropertyActiveRemoved" />
-
-
     </subclass>
 
     <subclass name="UserPermissionStateRemoved"  discriminator-value="Removed">
 
     </subclass>
+
+
 
   </class>
   

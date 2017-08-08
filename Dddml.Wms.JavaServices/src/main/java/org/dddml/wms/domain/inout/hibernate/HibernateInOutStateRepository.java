@@ -41,8 +41,7 @@ public class HibernateInOutStateRepository implements InOutStateRepository
     }
 
     @Transactional(readOnly = true)
-    public InOutState get(String id, boolean nullAllowed)
-    {
+    public InOutState get(String id, boolean nullAllowed) {
         InOutState state = (InOutState)getCurrentSession().get(AbstractInOutState.SimpleInOutState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInOutState.SimpleInOutState();

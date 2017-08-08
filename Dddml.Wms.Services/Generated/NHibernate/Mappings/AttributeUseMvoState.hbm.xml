@@ -13,43 +13,26 @@
 	<version name="AttributeSetVersion" column="AttributeSetVersion" type="long" unsaved-value="0"/>
 
     <property name="SequenceNumber" ></property>
-
     <property name="Version" ></property>
-
     <property name="CreatedBy" ></property>
-
     <property name="UpdatedBy" ></property>
-
     <property name="Active" ></property>
-
     <property name="Deleted" ></property>
-
     <property name="AttributeSetName" ></property>
-
     <property name="AttributeSetOrganizationId" ></property>
-
     <property name="AttributeSetDescription" ></property>
-
     <property name="AttributeSetSerialNumberAttributeId" ></property>
-
     <property name="AttributeSetLotAttributeId" ></property>
-
     <property name="AttributeSetReferenceId" ></property>
-
     <property name="AttributeSetCreatedBy" ></property>
-
     <property name="AttributeSetCreatedAt" ></property>
-
     <property name="AttributeSetUpdatedBy" ></property>
-
     <property name="AttributeSetUpdatedAt" ></property>
-
     <property name="AttributeSetActive" ></property>
-
     <property name="AttributeSetDeleted" ></property>
 
-
     <property name="CreatedAt" column="CreatedAt" />
+
     <property name="UpdatedAt" column="UpdatedAt" />
 
 

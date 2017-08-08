@@ -27,19 +27,19 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
     public void create(LocatorCommand.CreateLocator c)
     {
         if (c.getVersion() == null) { c.setVersion(LocatorState.VERSION_NULL); }
-        LocatorStateEvent.LocatorStateCreated e = map(c);
+        LocatorStateEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(LocatorCommand.MergePatchLocator c)
     {
-        LocatorStateEvent.LocatorStateMergePatched e = map(c);
+        LocatorStateEvent e = map(c);
         apply(e);
     }
 
     public void delete(LocatorCommand.DeleteLocator c)
     {
-        LocatorStateEvent.LocatorStateDeleted e = map(c);
+        LocatorStateEvent e = map(c);
         apply(e);
     }
 
@@ -68,8 +68,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         changes.add(e);
     }
 
-    protected LocatorStateEvent.LocatorStateCreated map(LocatorCommand.CreateLocator c)
-    {
+    protected LocatorStateEvent map(LocatorCommand.CreateLocator c) {
         LocatorStateEventId stateEventId = new LocatorStateEventId(c.getLocatorId(), c.getVersion());
         LocatorStateEvent.LocatorStateCreated e = newLocatorStateCreated(stateEventId);
         e.setWarehouseId(c.getWarehouseId());
@@ -84,12 +83,10 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         ((AbstractLocatorStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt(new Date());
-        Long version = c.getVersion();
         return e;
     }
 
-    protected LocatorStateEvent.LocatorStateMergePatched map(LocatorCommand.MergePatchLocator c)
-    {
+    protected LocatorStateEvent map(LocatorCommand.MergePatchLocator c) {
         LocatorStateEventId stateEventId = new LocatorStateEventId(c.getLocatorId(), c.getVersion());
         LocatorStateEvent.LocatorStateMergePatched e = newLocatorStateMergePatched(stateEventId);
         e.setWarehouseId(c.getWarehouseId());
@@ -113,12 +110,10 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         ((AbstractLocatorStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt(new Date());
-        Long version = c.getVersion();
         return e;
     }
 
-    protected LocatorStateEvent.LocatorStateDeleted map(LocatorCommand.DeleteLocator c)
-    {
+    protected LocatorStateEvent map(LocatorCommand.DeleteLocator c) {
         LocatorStateEventId stateEventId = new LocatorStateEventId(c.getLocatorId(), c.getVersion());
         LocatorStateEvent.LocatorStateDeleted e = newLocatorStateDeleted(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(c.getCommandId());

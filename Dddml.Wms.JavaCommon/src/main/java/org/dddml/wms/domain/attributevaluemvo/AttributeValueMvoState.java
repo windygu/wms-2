@@ -133,11 +133,11 @@ public interface AttributeValueMvoState
 
     void mutate(Event e);
 
-    void when(AttributeValueMvoStateCreated e);
+    void when(AttributeValueMvoStateEvent.AttributeValueMvoStateCreated e);
 
-    void when(AttributeValueMvoStateMergePatched e);
+    void when(AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched e);
 
-    void when(AttributeValueMvoStateDeleted e);
+    void when(AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted e);
     
 }
 

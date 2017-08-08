@@ -769,7 +769,7 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractInOutLineMvoStateCreated extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateCreated
+    public static abstract class AbstractInOutLineMvoStateCreated extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateEvent.InOutLineMvoStateCreated
     {
         public AbstractInOutLineMvoStateCreated() {
         }
@@ -785,7 +785,7 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
     }
 
 
-    public static abstract class AbstractInOutLineMvoStateMergePatched extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateMergePatched
+    public static abstract class AbstractInOutLineMvoStateMergePatched extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateEvent.InOutLineMvoStateMergePatched
     {
         public AbstractInOutLineMvoStateMergePatched() {
         }
@@ -1381,7 +1381,7 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
     }
 
 
-    public static abstract class AbstractInOutLineMvoStateDeleted extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateDeleted
+    public static abstract class AbstractInOutLineMvoStateDeleted extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateEvent.InOutLineMvoStateDeleted
     {
         public AbstractInOutLineMvoStateDeleted() {
         }
@@ -1395,35 +1395,35 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
         }
 
     }
-        public static class SimpleInOutLineMvoStateCreated extends AbstractInOutLineMvoStateCreated
-        {
-			public SimpleInOutLineMvoStateCreated() {
-			}
-
-			public SimpleInOutLineMvoStateCreated(InOutLineMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleInOutLineMvoStateCreated extends AbstractInOutLineMvoStateCreated
+    {
+        public SimpleInOutLineMvoStateCreated() {
         }
 
-        public static class SimpleInOutLineMvoStateMergePatched extends AbstractInOutLineMvoStateMergePatched
-        {
-			public SimpleInOutLineMvoStateMergePatched() {
-			}
+        public SimpleInOutLineMvoStateCreated(InOutLineMvoStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleInOutLineMvoStateMergePatched(InOutLineMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleInOutLineMvoStateMergePatched extends AbstractInOutLineMvoStateMergePatched
+    {
+        public SimpleInOutLineMvoStateMergePatched() {
         }
 
-        public static class SimpleInOutLineMvoStateDeleted extends AbstractInOutLineMvoStateDeleted
-        {
-			public SimpleInOutLineMvoStateDeleted() {
-			}
-
-			public SimpleInOutLineMvoStateDeleted(InOutLineMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleInOutLineMvoStateMergePatched(InOutLineMvoStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleInOutLineMvoStateDeleted extends AbstractInOutLineMvoStateDeleted
+    {
+        public SimpleInOutLineMvoStateDeleted() {
+        }
+
+        public SimpleInOutLineMvoStateDeleted(InOutLineMvoStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

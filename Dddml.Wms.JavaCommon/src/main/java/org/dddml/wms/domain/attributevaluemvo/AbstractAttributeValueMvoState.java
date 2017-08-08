@@ -385,6 +385,7 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
 
     public AbstractAttributeValueMvoState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -400,12 +401,15 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
             when((AttributeValueMvoStateMergePatched) e);
         } else if (e instanceof AttributeValueMvoStateDeleted) {
             when((AttributeValueMvoStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(AttributeValueMvoStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setName(e.getName());
         this.setDescription(e.getDescription());
         this.setReferenceId(e.getReferenceId());

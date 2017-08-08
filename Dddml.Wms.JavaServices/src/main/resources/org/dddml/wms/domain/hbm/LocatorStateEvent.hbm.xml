@@ -16,30 +16,20 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="warehouseId" ></property>
-
 	<property name="parentLocatorId" ></property>
-
 	<property name="locatorType" ></property>
-
 	<property name="priorityNumber" ></property>
-
 	<property name="isDefault" ></property>
-
 	<property name="x" ></property>
-
 	<property name="y" ></property>
-
 	<property name="z" ></property>
-
 	<property name="active" ></property>
-
 
     <property name="createdBy" />
 
     <property name="createdAt" />
 
     <property name="commandId" />
-
 
     <subclass name="AbstractLocatorStateEvent$SimpleLocatorStateCreated" discriminator-value="Created">
     	
@@ -71,6 +61,8 @@
     <subclass name="AbstractLocatorStateEvent$SimpleLocatorStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

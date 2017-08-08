@@ -566,12 +566,12 @@ public abstract class AbstractInOutState implements InOutState, Saveable
 
     public AbstractInOutState(boolean forReapplying) {
         this.forReapplying = forReapplying;
-        inOutLines = new SimpleInOutLineStates(this);
 
         initializeProperties();
     }
     
     protected void initializeProperties() {
+        inOutLines = new SimpleInOutLineStates(this);
     }
 
 
@@ -583,12 +583,15 @@ public abstract class AbstractInOutState implements InOutState, Saveable
             when((InOutStateMergePatched) e);
         } else if (e instanceof InOutStateDeleted) {
             when((InOutStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(InOutStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setIsSOTransaction(e.getIsSOTransaction());
         this.setDocumentStatus(e.getDocumentStatus());
         this.setPosted(e.getPosted());

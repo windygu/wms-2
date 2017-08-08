@@ -33,10 +33,6 @@ public interface AttributeUseStateEvent extends Event
 
     void setActive(Boolean active);
 
-    String getAttributeSetId();
-
-    void setAttributeSetId(String attributeSetId);
-
     String getCommandId();
 
     void setCommandId(String commandId);

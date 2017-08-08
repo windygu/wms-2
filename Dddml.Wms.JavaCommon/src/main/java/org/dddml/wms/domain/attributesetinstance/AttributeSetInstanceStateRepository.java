@@ -9,7 +9,7 @@ import org.dddml.wms.domain.*;
 public interface AttributeSetInstanceStateRepository
 {
     AttributeSetInstanceState get(String id, boolean nullAllowed);
-    
+
     void save(AttributeSetInstanceState state);
 
 }

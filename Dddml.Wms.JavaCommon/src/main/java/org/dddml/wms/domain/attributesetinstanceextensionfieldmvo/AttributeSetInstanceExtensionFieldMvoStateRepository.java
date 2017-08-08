@@ -9,7 +9,7 @@ import org.dddml.wms.domain.*;
 public interface AttributeSetInstanceExtensionFieldMvoStateRepository
 {
     AttributeSetInstanceExtensionFieldMvoState get(AttributeSetInstanceExtensionFieldId id, boolean nullAllowed);
-    
+
     void save(AttributeSetInstanceExtensionFieldMvoState state);
 
 }

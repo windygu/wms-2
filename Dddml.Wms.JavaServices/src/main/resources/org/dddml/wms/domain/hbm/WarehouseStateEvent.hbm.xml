@@ -16,20 +16,15 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="name" ></property>
-
 	<property name="description" ></property>
-
 	<property name="isInTransit" ></property>
-
 	<property name="active" ></property>
-
 
     <property name="createdBy" />
 
     <property name="createdAt" />
 
     <property name="commandId" />
-
 
     <subclass name="AbstractWarehouseStateEvent$SimpleWarehouseStateCreated" discriminator-value="Created">
     	
@@ -51,6 +46,8 @@
     <subclass name="AbstractWarehouseStateEvent$SimpleWarehouseStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

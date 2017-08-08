@@ -40,8 +40,7 @@ public class HibernateAttributeSetInstanceExtensionFieldMvoStateRepository imple
     }
 
     @Transactional(readOnly = true)
-    public AttributeSetInstanceExtensionFieldMvoState get(AttributeSetInstanceExtensionFieldId id, boolean nullAllowed)
-    {
+    public AttributeSetInstanceExtensionFieldMvoState get(AttributeSetInstanceExtensionFieldId id, boolean nullAllowed) {
         AttributeSetInstanceExtensionFieldMvoState state = (AttributeSetInstanceExtensionFieldMvoState)getCurrentSession().get(AbstractAttributeSetInstanceExtensionFieldMvoState.SimpleAttributeSetInstanceExtensionFieldMvoState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeSetInstanceExtensionFieldMvoState.SimpleAttributeSetInstanceExtensionFieldMvoState();

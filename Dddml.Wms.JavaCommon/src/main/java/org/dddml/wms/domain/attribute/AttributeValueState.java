@@ -72,11 +72,11 @@ public interface AttributeValueState
 
     void mutate(Event e);
 
-    void when(AttributeValueStateCreated e);
+    void when(AttributeValueStateEvent.AttributeValueStateCreated e);
 
-    void when(AttributeValueStateMergePatched e);
+    void when(AttributeValueStateEvent.AttributeValueStateMergePatched e);
 
-    void when(AttributeValueStateRemoved e);
+    void when(AttributeValueStateEvent.AttributeValueStateRemoved e);
     
 }
 

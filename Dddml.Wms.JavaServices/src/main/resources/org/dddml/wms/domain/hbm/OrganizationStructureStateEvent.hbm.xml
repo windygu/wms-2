@@ -19,13 +19,11 @@
 
 	<property name="active" ></property>
 
-
     <property name="createdBy" />
 
     <property name="createdAt" />
 
     <property name="commandId" />
-
 
     <subclass name="AbstractOrganizationStructureStateEvent$SimpleOrganizationStructureStateCreated" discriminator-value="Created">
     	
@@ -41,6 +39,8 @@
     <subclass name="AbstractOrganizationStructureStateEvent$SimpleOrganizationStructureStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

@@ -183,6 +183,7 @@ public abstract class AbstractAttributeValueState implements AttributeValueState
 
     public AbstractAttributeValueState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -198,12 +199,15 @@ public abstract class AbstractAttributeValueState implements AttributeValueState
             when((AttributeValueStateMergePatched) e);
         } else if (e instanceof AttributeValueStateRemoved) {
             when((AttributeValueStateRemoved) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(AttributeValueStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setName(e.getName());
         this.setDescription(e.getDescription());
         this.setReferenceId(e.getReferenceId());

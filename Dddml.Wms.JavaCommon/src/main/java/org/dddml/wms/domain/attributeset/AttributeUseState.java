@@ -64,11 +64,11 @@ public interface AttributeUseState
 
     void mutate(Event e);
 
-    void when(AttributeUseStateCreated e);
+    void when(AttributeUseStateEvent.AttributeUseStateCreated e);
 
-    void when(AttributeUseStateMergePatched e);
+    void when(AttributeUseStateEvent.AttributeUseStateMergePatched e);
 
-    void when(AttributeUseStateRemoved e);
+    void when(AttributeUseStateEvent.AttributeUseStateRemoved e);
     
 }
 

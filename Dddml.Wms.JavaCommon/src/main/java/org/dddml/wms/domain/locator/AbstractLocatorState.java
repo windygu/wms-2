@@ -240,6 +240,7 @@ public abstract class AbstractLocatorState implements LocatorState
 
     public AbstractLocatorState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -255,12 +256,15 @@ public abstract class AbstractLocatorState implements LocatorState
             when((LocatorStateMergePatched) e);
         } else if (e instanceof LocatorStateDeleted) {
             when((LocatorStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(LocatorStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setWarehouseId(e.getWarehouseId());
         this.setParentLocatorId(e.getParentLocatorId());
         this.setLocatorType(e.getLocatorType());

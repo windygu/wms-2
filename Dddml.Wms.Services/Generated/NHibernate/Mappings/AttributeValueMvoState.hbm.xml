@@ -13,55 +13,32 @@
 	<version name="AttributeVersion" column="AttributeVersion" type="long" unsaved-value="0"/>
 
     <property name="Name" ></property>
-
     <property name="Description" ></property>
-
     <property name="ReferenceId" ></property>
-
     <property name="Version" ></property>
-
     <property name="CreatedBy" ></property>
-
     <property name="UpdatedBy" ></property>
-
     <property name="Active" ></property>
-
     <property name="Deleted" ></property>
-
     <property name="AttributeName" ></property>
-
     <property name="AttributeOrganizationId" ></property>
-
     <property name="AttributeDescription" ></property>
-
     <property name="AttributeIsMandatory" ></property>
-
     <property name="AttributeIsInstanceAttribute" ></property>
-
     <property name="AttributeAttributeValueType" ></property>
-
     <property name="AttributeAttributeValueLength" ></property>
-
     <property name="AttributeIsList" ></property>
-
     <property name="AttributeFieldName" ></property>
-
     <property name="AttributeReferenceId" ></property>
-
     <property name="AttributeCreatedBy" ></property>
-
     <property name="AttributeCreatedAt" ></property>
-
     <property name="AttributeUpdatedBy" ></property>
-
     <property name="AttributeUpdatedAt" ></property>
-
     <property name="AttributeActive" ></property>
-
     <property name="AttributeDeleted" ></property>
 
-
     <property name="CreatedAt" column="CreatedAt" />
+
     <property name="UpdatedAt" column="UpdatedAt" />
 
 

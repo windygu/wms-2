@@ -130,7 +130,7 @@ public abstract class AbstractOrganizationStateEvent extends AbstractStateEvent 
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractOrganizationStateCreated extends AbstractOrganizationStateEvent implements OrganizationStateCreated
+    public static abstract class AbstractOrganizationStateCreated extends AbstractOrganizationStateEvent implements OrganizationStateEvent.OrganizationStateCreated
     {
         public AbstractOrganizationStateCreated() {
         }
@@ -146,7 +146,7 @@ public abstract class AbstractOrganizationStateEvent extends AbstractStateEvent 
     }
 
 
-    public static abstract class AbstractOrganizationStateMergePatched extends AbstractOrganizationStateEvent implements OrganizationStateMergePatched
+    public static abstract class AbstractOrganizationStateMergePatched extends AbstractOrganizationStateEvent implements OrganizationStateEvent.OrganizationStateMergePatched
     {
         public AbstractOrganizationStateMergePatched() {
         }
@@ -212,7 +212,7 @@ public abstract class AbstractOrganizationStateEvent extends AbstractStateEvent 
     }
 
 
-    public static abstract class AbstractOrganizationStateDeleted extends AbstractOrganizationStateEvent implements OrganizationStateDeleted
+    public static abstract class AbstractOrganizationStateDeleted extends AbstractOrganizationStateEvent implements OrganizationStateEvent.OrganizationStateDeleted
     {
         public AbstractOrganizationStateDeleted() {
         }
@@ -226,35 +226,35 @@ public abstract class AbstractOrganizationStateEvent extends AbstractStateEvent 
         }
 
     }
-        public static class SimpleOrganizationStateCreated extends AbstractOrganizationStateCreated
-        {
-			public SimpleOrganizationStateCreated() {
-			}
-
-			public SimpleOrganizationStateCreated(OrganizationStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleOrganizationStateCreated extends AbstractOrganizationStateCreated
+    {
+        public SimpleOrganizationStateCreated() {
         }
 
-        public static class SimpleOrganizationStateMergePatched extends AbstractOrganizationStateMergePatched
-        {
-			public SimpleOrganizationStateMergePatched() {
-			}
+        public SimpleOrganizationStateCreated(OrganizationStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleOrganizationStateMergePatched(OrganizationStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleOrganizationStateMergePatched extends AbstractOrganizationStateMergePatched
+    {
+        public SimpleOrganizationStateMergePatched() {
         }
 
-        public static class SimpleOrganizationStateDeleted extends AbstractOrganizationStateDeleted
-        {
-			public SimpleOrganizationStateDeleted() {
-			}
-
-			public SimpleOrganizationStateDeleted(OrganizationStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleOrganizationStateMergePatched(OrganizationStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleOrganizationStateDeleted extends AbstractOrganizationStateDeleted
+    {
+        public SimpleOrganizationStateDeleted() {
+        }
+
+        public SimpleOrganizationStateDeleted(OrganizationStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

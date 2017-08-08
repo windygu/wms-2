@@ -29,19 +29,19 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     public void create(InOutCommand.CreateInOut c)
     {
         if (c.getVersion() == null) { c.setVersion(InOutState.VERSION_NULL); }
-        InOutStateEvent.InOutStateCreated e = map(c);
+        InOutStateEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(InOutCommand.MergePatchInOut c)
     {
-        InOutStateEvent.InOutStateMergePatched e = map(c);
+        InOutStateEvent e = map(c);
         apply(e);
     }
 
     public void delete(InOutCommand.DeleteInOut c)
     {
-        InOutStateEvent.InOutStateDeleted e = map(c);
+        InOutStateEvent e = map(c);
         apply(e);
     }
 
@@ -70,8 +70,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         changes.add(e);
     }
 
-    protected InOutStateEvent.InOutStateCreated map(InOutCommand.CreateInOut c)
-    {
+    protected InOutStateEvent map(InOutCommand.CreateInOut c) {
         InOutStateEventId stateEventId = new InOutStateEventId(c.getDocumentNumber(), c.getVersion());
         InOutStateEvent.InOutStateCreated e = newInOutStateCreated(stateEventId);
         e.setIsSOTransaction(c.getIsSOTransaction());
@@ -123,8 +122,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         return e;
     }
 
-    protected InOutStateEvent.InOutStateMergePatched map(InOutCommand.MergePatchInOut c)
-    {
+    protected InOutStateEvent map(InOutCommand.MergePatchInOut c) {
         InOutStateEventId stateEventId = new InOutStateEventId(c.getDocumentNumber(), c.getVersion());
         InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
         e.setIsSOTransaction(c.getIsSOTransaction());
@@ -210,8 +208,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         return e;
     }
 
-    protected InOutStateEvent.InOutStateDeleted map(InOutCommand.DeleteInOut c)
-    {
+    protected InOutStateEvent map(InOutCommand.DeleteInOut c) {
         InOutStateEventId stateEventId = new InOutStateEventId(c.getDocumentNumber(), c.getVersion());
         InOutStateEvent.InOutStateDeleted e = newInOutStateDeleted(stateEventId);
         ((AbstractInOutStateEvent)e).setCommandId(c.getCommandId());

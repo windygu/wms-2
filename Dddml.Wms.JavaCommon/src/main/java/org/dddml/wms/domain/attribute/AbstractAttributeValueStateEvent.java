@@ -108,18 +108,6 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
         this.active = active;
     }
 
-    private String attributeId;
-
-    public String getAttributeId()
-    {
-        return this.attributeId;
-    }
-
-    public void setAttributeId(String attributeId)
-    {
-        this.attributeId = attributeId;
-    }
-
 
     private String commandId;
 
@@ -142,7 +130,7 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractAttributeValueStateCreated extends AbstractAttributeValueStateEvent implements AttributeValueStateCreated
+    public static abstract class AbstractAttributeValueStateCreated extends AbstractAttributeValueStateEvent implements AttributeValueStateEvent.AttributeValueStateCreated
     {
         public AbstractAttributeValueStateCreated() {
         }
@@ -158,7 +146,7 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
     }
 
 
-    public static abstract class AbstractAttributeValueStateMergePatched extends AbstractAttributeValueStateEvent implements AttributeValueStateMergePatched
+    public static abstract class AbstractAttributeValueStateMergePatched extends AbstractAttributeValueStateEvent implements AttributeValueStateEvent.AttributeValueStateMergePatched
     {
         public AbstractAttributeValueStateMergePatched() {
         }
@@ -214,7 +202,7 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
     }
 
 
-    public static abstract class AbstractAttributeValueStateRemoved extends AbstractAttributeValueStateEvent implements AttributeValueStateRemoved
+    public static abstract class AbstractAttributeValueStateRemoved extends AbstractAttributeValueStateEvent implements AttributeValueStateEvent.AttributeValueStateRemoved
     {
         public AbstractAttributeValueStateRemoved() {
         }
@@ -228,35 +216,35 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
         }
 
     }
-        public static class SimpleAttributeValueStateCreated extends AbstractAttributeValueStateCreated
-        {
-			public SimpleAttributeValueStateCreated() {
-			}
-
-			public SimpleAttributeValueStateCreated(AttributeValueStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeValueStateCreated extends AbstractAttributeValueStateCreated
+    {
+        public SimpleAttributeValueStateCreated() {
         }
 
-        public static class SimpleAttributeValueStateMergePatched extends AbstractAttributeValueStateMergePatched
-        {
-			public SimpleAttributeValueStateMergePatched() {
-			}
+        public SimpleAttributeValueStateCreated(AttributeValueStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleAttributeValueStateMergePatched(AttributeValueStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeValueStateMergePatched extends AbstractAttributeValueStateMergePatched
+    {
+        public SimpleAttributeValueStateMergePatched() {
         }
 
-        public static class SimpleAttributeValueStateRemoved extends AbstractAttributeValueStateRemoved
-        {
-			public SimpleAttributeValueStateRemoved() {
-			}
-
-			public SimpleAttributeValueStateRemoved(AttributeValueStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleAttributeValueStateMergePatched(AttributeValueStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleAttributeValueStateRemoved extends AbstractAttributeValueStateRemoved
+    {
+        public SimpleAttributeValueStateRemoved() {
+        }
+
+        public SimpleAttributeValueStateRemoved(AttributeValueStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

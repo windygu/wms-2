@@ -42,8 +42,7 @@ public class HibernateInOutLineMvoStateRepository implements InOutLineMvoStateRe
     }
 
     @Transactional(readOnly = true)
-    public InOutLineMvoState get(InOutLineId id, boolean nullAllowed)
-    {
+    public InOutLineMvoState get(InOutLineId id, boolean nullAllowed) {
         InOutLineMvoState state = (InOutLineMvoState)getCurrentSession().get(AbstractInOutLineMvoState.SimpleInOutLineMvoState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInOutLineMvoState.SimpleInOutLineMvoState();

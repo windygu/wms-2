@@ -340,6 +340,7 @@ public abstract class AbstractInOutLineState implements InOutLineState
 
     public AbstractInOutLineState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -355,12 +356,15 @@ public abstract class AbstractInOutLineState implements InOutLineState
             when((InOutLineStateMergePatched) e);
         } else if (e instanceof InOutLineStateRemoved) {
             when((InOutLineStateRemoved) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(InOutLineStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setDescription(e.getDescription());
         this.setLocatorId(e.getLocatorId());
         this.setProductId(e.getProductId());

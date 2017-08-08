@@ -530,7 +530,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractInOutStateCreated extends AbstractInOutStateEvent implements InOutStateCreated, Saveable
+    public static abstract class AbstractInOutStateCreated extends AbstractInOutStateEvent implements InOutStateEvent.InOutStateCreated, Saveable
     {
         public AbstractInOutStateCreated() {
         }
@@ -594,7 +594,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     }
 
 
-    public static abstract class AbstractInOutStateMergePatched extends AbstractInOutStateEvent implements InOutStateMergePatched, Saveable
+    public static abstract class AbstractInOutStateMergePatched extends AbstractInOutStateEvent implements InOutStateEvent.InOutStateMergePatched, Saveable
     {
         public AbstractInOutStateMergePatched() {
         }
@@ -1008,7 +1008,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     }
 
 
-    public static abstract class AbstractInOutStateDeleted extends AbstractInOutStateEvent implements InOutStateDeleted, Saveable
+    public static abstract class AbstractInOutStateDeleted extends AbstractInOutStateEvent implements InOutStateEvent.InOutStateDeleted, Saveable
     {
         public AbstractInOutStateDeleted() {
         }
@@ -1071,35 +1071,35 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
             }
         }
     }
-        public static class SimpleInOutStateCreated extends AbstractInOutStateCreated
-        {
-			public SimpleInOutStateCreated() {
-			}
-
-			public SimpleInOutStateCreated(InOutStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleInOutStateCreated extends AbstractInOutStateCreated
+    {
+        public SimpleInOutStateCreated() {
         }
 
-        public static class SimpleInOutStateMergePatched extends AbstractInOutStateMergePatched
-        {
-			public SimpleInOutStateMergePatched() {
-			}
+        public SimpleInOutStateCreated(InOutStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleInOutStateMergePatched(InOutStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleInOutStateMergePatched extends AbstractInOutStateMergePatched
+    {
+        public SimpleInOutStateMergePatched() {
         }
 
-        public static class SimpleInOutStateDeleted extends AbstractInOutStateDeleted
-        {
-			public SimpleInOutStateDeleted() {
-			}
-
-			public SimpleInOutStateDeleted(InOutStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleInOutStateMergePatched(InOutStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleInOutStateDeleted extends AbstractInOutStateDeleted
+    {
+        public SimpleInOutStateDeleted() {
+        }
+
+        public SimpleInOutStateDeleted(InOutStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

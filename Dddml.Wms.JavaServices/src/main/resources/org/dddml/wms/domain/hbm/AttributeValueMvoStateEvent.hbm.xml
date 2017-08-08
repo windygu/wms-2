@@ -17,54 +17,32 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="name" ></property>
-
 	<property name="description" ></property>
-
 	<property name="referenceId" ></property>
-
 	<property name="version" ></property>
-
 	<property name="active" ></property>
-
 	<property name="attributeName" ></property>
-
 	<property name="attributeOrganizationId" ></property>
-
 	<property name="attributeDescription" ></property>
-
 	<property name="attributeIsMandatory" ></property>
-
 	<property name="attributeIsInstanceAttribute" ></property>
-
 	<property name="attributeAttributeValueType" ></property>
-
 	<property name="attributeAttributeValueLength" ></property>
-
 	<property name="attributeIsList" ></property>
-
 	<property name="attributeFieldName" ></property>
-
 	<property name="attributeReferenceId" ></property>
-
 	<property name="attributeCreatedBy" ></property>
-
 	<property name="attributeCreatedAt" ></property>
-
 	<property name="attributeUpdatedBy" ></property>
-
 	<property name="attributeUpdatedAt" ></property>
-
 	<property name="attributeActive" ></property>
-
 	<property name="attributeDeleted" ></property>
-
 
     <property name="createdBy" />
 
     <property name="createdAt" />
 
     <property name="commandId" />
-
 
     <subclass name="AbstractAttributeValueMvoStateEvent$SimpleAttributeValueMvoStateCreated" discriminator-value="Created">
     	
@@ -120,6 +98,8 @@
     <subclass name="AbstractAttributeValueMvoStateEvent$SimpleAttributeValueMvoStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

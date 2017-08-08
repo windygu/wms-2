@@ -8,7 +8,7 @@ import java.util.Date;
 public interface OrganizationStructureStateRepository
 {
     OrganizationStructureState get(OrganizationStructureId id, boolean nullAllowed);
-    
+
     void save(OrganizationStructureState state);
 
 }

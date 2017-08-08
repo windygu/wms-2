@@ -65,8 +65,8 @@ public class AttributeUseMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GET
     @Path("{id}")
+    @GET
     public AttributeUseMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
             AttributeSetAttributeUseId idObj = AttributeUseMvoResourceUtils.parseIdString(id);
@@ -102,8 +102,8 @@ public class AttributeUseMvoResource {
     }
 
 
-    @PUT
     @Path("/{id}")
+    @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeUseMvoDto.CreateAttributeUseMvoDto value) {
         try {
 
@@ -115,8 +115,8 @@ public class AttributeUseMvoResource {
     }
 
 
-    @PATCH
     @Path("/{id}")
+    @PATCH
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeUseMvoDto.MergePatchAttributeUseMvoDto value) {
         try {
 
@@ -127,8 +127,8 @@ public class AttributeUseMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DELETE
     @Path("/{id}")
+    @DELETE
     public void delete(@PathParam("id") String id,
                        @NotNull @QueryParam("commandId") String commandId,
                        @NotNull @QueryParam("version") @Min(value = -1) Long version,

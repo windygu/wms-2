@@ -27,19 +27,19 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
     public void create(OrganizationCommand.CreateOrganization c)
     {
         if (c.getVersion() == null) { c.setVersion(OrganizationState.VERSION_NULL); }
-        OrganizationStateEvent.OrganizationStateCreated e = map(c);
+        OrganizationStateEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(OrganizationCommand.MergePatchOrganization c)
     {
-        OrganizationStateEvent.OrganizationStateMergePatched e = map(c);
+        OrganizationStateEvent e = map(c);
         apply(e);
     }
 
     public void delete(OrganizationCommand.DeleteOrganization c)
     {
-        OrganizationStateEvent.OrganizationStateDeleted e = map(c);
+        OrganizationStateEvent e = map(c);
         apply(e);
     }
 
@@ -68,8 +68,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
         changes.add(e);
     }
 
-    protected OrganizationStateEvent.OrganizationStateCreated map(OrganizationCommand.CreateOrganization c)
-    {
+    protected OrganizationStateEvent map(OrganizationCommand.CreateOrganization c) {
         OrganizationStateEventId stateEventId = new OrganizationStateEventId(c.getOrganizationId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateCreated e = newOrganizationStateCreated(stateEventId);
         e.setName(c.getName());
@@ -80,12 +79,10 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
         ((AbstractOrganizationStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt(new Date());
-        Long version = c.getVersion();
         return e;
     }
 
-    protected OrganizationStateEvent.OrganizationStateMergePatched map(OrganizationCommand.MergePatchOrganization c)
-    {
+    protected OrganizationStateEvent map(OrganizationCommand.MergePatchOrganization c) {
         OrganizationStateEventId stateEventId = new OrganizationStateEventId(c.getOrganizationId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateMergePatched e = newOrganizationStateMergePatched(stateEventId);
         e.setName(c.getName());
@@ -101,12 +98,10 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
         ((AbstractOrganizationStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt(new Date());
-        Long version = c.getVersion();
         return e;
     }
 
-    protected OrganizationStateEvent.OrganizationStateDeleted map(OrganizationCommand.DeleteOrganization c)
-    {
+    protected OrganizationStateEvent map(OrganizationCommand.DeleteOrganization c) {
         OrganizationStateEventId stateEventId = new OrganizationStateEventId(c.getOrganizationId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateDeleted e = newOrganizationStateDeleted(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(c.getCommandId());

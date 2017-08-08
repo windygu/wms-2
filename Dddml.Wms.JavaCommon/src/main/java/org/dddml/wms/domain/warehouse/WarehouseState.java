@@ -64,11 +64,11 @@ public interface WarehouseState
 
     void mutate(Event e);
 
-    void when(WarehouseStateCreated e);
+    void when(WarehouseStateEvent.WarehouseStateCreated e);
 
-    void when(WarehouseStateMergePatched e);
+    void when(WarehouseStateEvent.WarehouseStateMergePatched e);
 
-    void when(WarehouseStateDeleted e);
+    void when(WarehouseStateEvent.WarehouseStateDeleted e);
     
 }
 

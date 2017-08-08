@@ -9,39 +9,23 @@
   <class name="org.dddml.wms.domain.attribute.AbstractAttributeState$SimpleAttributeState" table="Attributes">
 
 	<id name="attributeId" length="50" column="AttributeId"><generator class="assigned"/></id>
-
 	<version name="version" type="long" />
 
 	<property name="name" ></property>
-
 	<property name="organizationId" ></property>
-
 	<property name="description" ></property>
-
 	<property name="isMandatory" ></property>
-
 	<property name="isInstanceAttribute" ></property>
-
 	<property name="attributeValueType" ></property>
-
 	<property name="attributeValueLength" ></property>
-
 	<property name="isList" ></property>
-
 	<property name="fieldName" ><column name="FieldName" unique-key="UniqueFieldName" /></property>
-
 	<property name="referenceId" ></property>
-
 	<property name="createdBy" ></property>
-
 	<property name="createdAt" ></property>
-
 	<property name="updatedBy" ></property>
-
 	<property name="updatedAt" ></property>
-
 	<property name="active" ></property>
-
 	<property name="deleted" ></property>
 
 

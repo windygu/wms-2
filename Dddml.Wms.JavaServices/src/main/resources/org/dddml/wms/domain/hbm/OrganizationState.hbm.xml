@@ -9,27 +9,17 @@
   <class name="org.dddml.wms.domain.organization.AbstractOrganizationState$SimpleOrganizationState" table="Organizations">
 
 	<id name="organizationId" length="50" column="OrganizationId"><generator class="assigned"/></id>
-
 	<version name="version" type="long" />
 
 	<property name="name" ></property>
-
 	<property name="description" ></property>
-
 	<property name="type" ></property>
-
 	<property name="isSummary" ></property>
-
 	<property name="createdBy" ></property>
-
 	<property name="createdAt" ></property>
-
 	<property name="updatedBy" ></property>
-
 	<property name="updatedAt" ></property>
-
 	<property name="active" ></property>
-
 	<property name="deleted" ></property>
 
 

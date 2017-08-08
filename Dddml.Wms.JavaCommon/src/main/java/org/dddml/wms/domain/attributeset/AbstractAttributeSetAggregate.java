@@ -27,19 +27,19 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
     public void create(AttributeSetCommand.CreateAttributeSet c)
     {
         if (c.getVersion() == null) { c.setVersion(AttributeSetState.VERSION_NULL); }
-        AttributeSetStateEvent.AttributeSetStateCreated e = map(c);
+        AttributeSetStateEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(AttributeSetCommand.MergePatchAttributeSet c)
     {
-        AttributeSetStateEvent.AttributeSetStateMergePatched e = map(c);
+        AttributeSetStateEvent e = map(c);
         apply(e);
     }
 
     public void delete(AttributeSetCommand.DeleteAttributeSet c)
     {
-        AttributeSetStateEvent.AttributeSetStateDeleted e = map(c);
+        AttributeSetStateEvent e = map(c);
         apply(e);
     }
 
@@ -68,8 +68,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         changes.add(e);
     }
 
-    protected AttributeSetStateEvent.AttributeSetStateCreated map(AttributeSetCommand.CreateAttributeSet c)
-    {
+    protected AttributeSetStateEvent map(AttributeSetCommand.CreateAttributeSet c) {
         AttributeSetStateEventId stateEventId = new AttributeSetStateEventId(c.getAttributeSetId(), c.getVersion());
         AttributeSetStateEvent.AttributeSetStateCreated e = newAttributeSetStateCreated(stateEventId);
         e.setName(c.getName());
@@ -93,8 +92,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected AttributeSetStateEvent.AttributeSetStateMergePatched map(AttributeSetCommand.MergePatchAttributeSet c)
-    {
+    protected AttributeSetStateEvent map(AttributeSetCommand.MergePatchAttributeSet c) {
         AttributeSetStateEventId stateEventId = new AttributeSetStateEventId(c.getAttributeSetId(), c.getVersion());
         AttributeSetStateEvent.AttributeSetStateMergePatched e = newAttributeSetStateMergePatched(stateEventId);
         e.setName(c.getName());
@@ -125,8 +123,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected AttributeSetStateEvent.AttributeSetStateDeleted map(AttributeSetCommand.DeleteAttributeSet c)
-    {
+    protected AttributeSetStateEvent map(AttributeSetCommand.DeleteAttributeSet c) {
         AttributeSetStateEventId stateEventId = new AttributeSetStateEventId(c.getAttributeSetId(), c.getVersion());
         AttributeSetStateEvent.AttributeSetStateDeleted e = newAttributeSetStateDeleted(stateEventId);
         ((AbstractAttributeSetStateEvent)e).setCommandId(c.getCommandId());

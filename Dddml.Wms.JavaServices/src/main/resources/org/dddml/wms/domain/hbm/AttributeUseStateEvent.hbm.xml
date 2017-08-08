@@ -17,9 +17,7 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="sequenceNumber" ></property>
-
 	<property name="active" ></property>
-
 
     <property name="createdBy" />
 
@@ -28,7 +26,6 @@
     <property name="commandId" />
 
     <property name="version" not-null="true" />
-
 
     <subclass name="AbstractAttributeUseStateEvent$SimpleAttributeUseStateCreated" discriminator-value="Created">
     	
@@ -46,6 +43,8 @@
     <subclass name="AbstractAttributeUseStateEvent$SimpleAttributeUseStateRemoved"  discriminator-value="Removed">
 
     </subclass>
+
+
 
   </class>
   

@@ -216,12 +216,12 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
 
     public AbstractAttributeSetInstanceExtensionFieldGroupState(boolean forReapplying) {
         this.forReapplying = forReapplying;
-        fields = new SimpleAttributeSetInstanceExtensionFieldStates(this);
 
         initializeProperties();
     }
     
     protected void initializeProperties() {
+        fields = new SimpleAttributeSetInstanceExtensionFieldStates(this);
     }
 
 
@@ -233,12 +233,15 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
             when((AttributeSetInstanceExtensionFieldGroupStateMergePatched) e);
         } else if (e instanceof AttributeSetInstanceExtensionFieldGroupStateDeleted) {
             when((AttributeSetInstanceExtensionFieldGroupStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(AttributeSetInstanceExtensionFieldGroupStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setFieldType(e.getFieldType());
         this.setFieldLength(e.getFieldLength());
         this.setFieldCount(e.getFieldCount());

@@ -9,36 +9,26 @@
         <key-property name="AttributeSetId" ><column name="AttributeSetId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>
-
     <discriminator column="StateEventType" type="String" />
 
     <property name="Name" ></property>
-
     <property name="OrganizationId" ></property>
-
     <property name="Description" ></property>
-
     <property name="SerialNumberAttributeId" ></property>
-
     <property name="LotAttributeId" ></property>
-
     <property name="ReferenceId" ></property>
-
     <property name="Active" ></property>
 
-
-    <property name="CreatedBy" column="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-
     <property name="CommandId" />
-
-
     <subclass name="AttributeSetStateCreated" discriminator-value="Created">
     	
     </subclass>
 
     <subclass name="AttributeSetStateMergePatched"  discriminator-value="MergePatched">
+
 
         <property name="IsPropertyNameRemoved" />
 
@@ -53,13 +43,13 @@
         <property name="IsPropertyReferenceIdRemoved" />
 
         <property name="IsPropertyActiveRemoved" />
-
-
     </subclass>
 
     <subclass name="AttributeSetStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

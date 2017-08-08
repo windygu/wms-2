@@ -10,36 +10,27 @@
         <key-property name="Index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
         <key-property name="AttributeSetInstanceExtensionFieldGroupVersion" ></key-property>
     </composite-id>
-
     <discriminator column="StateEventType" type="String" />
 
     <property name="Name" ><column name="Name" unique-key="UniqueName" /></property>
-
     <property name="Type" ></property>
-
     <property name="Length" ></property>
-
     <property name="Alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
-
     <property name="Description" ></property>
-
     <property name="Active" ></property>
 
-
-    <property name="CreatedBy" column="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-
     <property name="CommandId" />
-
     <property name="Version" not-null="true" />
-
 
     <subclass name="AttributeSetInstanceExtensionFieldStateCreated" discriminator-value="Created">
     	
     </subclass>
 
     <subclass name="AttributeSetInstanceExtensionFieldStateMergePatched"  discriminator-value="MergePatched">
+
 
         <property name="IsPropertyNameRemoved" />
 
@@ -52,13 +43,13 @@
         <property name="IsPropertyDescriptionRemoved" />
 
         <property name="IsPropertyActiveRemoved" />
-
-
     </subclass>
 
     <subclass name="AttributeSetInstanceExtensionFieldStateRemoved"  discriminator-value="Removed">
 
     </subclass>
+
+
 
   </class>
   

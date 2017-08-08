@@ -8,7 +8,7 @@ import org.dddml.wms.domain.*;
 public interface OrganizationStateRepository
 {
     OrganizationState get(String id, boolean nullAllowed);
-    
+
     void save(OrganizationState state);
 
 }

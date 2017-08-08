@@ -228,12 +228,12 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
 
     public AbstractAttributeSetState(boolean forReapplying) {
         this.forReapplying = forReapplying;
-        attributeUses = new SimpleAttributeUseStates(this);
 
         initializeProperties();
     }
     
     protected void initializeProperties() {
+        attributeUses = new SimpleAttributeUseStates(this);
     }
 
 
@@ -245,12 +245,15 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
             when((AttributeSetStateMergePatched) e);
         } else if (e instanceof AttributeSetStateDeleted) {
             when((AttributeSetStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(AttributeSetStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setName(e.getName());
         this.setOrganizationId(e.getOrganizationId());
         this.setDescription(e.getDescription());

@@ -118,7 +118,7 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractWarehouseStateCreated extends AbstractWarehouseStateEvent implements WarehouseStateCreated
+    public static abstract class AbstractWarehouseStateCreated extends AbstractWarehouseStateEvent implements WarehouseStateEvent.WarehouseStateCreated
     {
         public AbstractWarehouseStateCreated() {
         }
@@ -134,7 +134,7 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
     }
 
 
-    public static abstract class AbstractWarehouseStateMergePatched extends AbstractWarehouseStateEvent implements WarehouseStateMergePatched
+    public static abstract class AbstractWarehouseStateMergePatched extends AbstractWarehouseStateEvent implements WarehouseStateEvent.WarehouseStateMergePatched
     {
         public AbstractWarehouseStateMergePatched() {
         }
@@ -190,7 +190,7 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
     }
 
 
-    public static abstract class AbstractWarehouseStateDeleted extends AbstractWarehouseStateEvent implements WarehouseStateDeleted
+    public static abstract class AbstractWarehouseStateDeleted extends AbstractWarehouseStateEvent implements WarehouseStateEvent.WarehouseStateDeleted
     {
         public AbstractWarehouseStateDeleted() {
         }
@@ -204,35 +204,35 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
         }
 
     }
-        public static class SimpleWarehouseStateCreated extends AbstractWarehouseStateCreated
-        {
-			public SimpleWarehouseStateCreated() {
-			}
-
-			public SimpleWarehouseStateCreated(WarehouseStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleWarehouseStateCreated extends AbstractWarehouseStateCreated
+    {
+        public SimpleWarehouseStateCreated() {
         }
 
-        public static class SimpleWarehouseStateMergePatched extends AbstractWarehouseStateMergePatched
-        {
-			public SimpleWarehouseStateMergePatched() {
-			}
+        public SimpleWarehouseStateCreated(WarehouseStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleWarehouseStateMergePatched(WarehouseStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleWarehouseStateMergePatched extends AbstractWarehouseStateMergePatched
+    {
+        public SimpleWarehouseStateMergePatched() {
         }
 
-        public static class SimpleWarehouseStateDeleted extends AbstractWarehouseStateDeleted
-        {
-			public SimpleWarehouseStateDeleted() {
-			}
-
-			public SimpleWarehouseStateDeleted(WarehouseStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleWarehouseStateMergePatched(WarehouseStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleWarehouseStateDeleted extends AbstractWarehouseStateDeleted
+    {
+        public SimpleWarehouseStateDeleted() {
+        }
+
+        public SimpleWarehouseStateDeleted(WarehouseStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

@@ -180,7 +180,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateCreated extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateCreated, Saveable
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateCreated extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated, Saveable
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateCreated() {
         }
@@ -244,7 +244,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateMergePatched, Saveable
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched, Saveable
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched() {
         }
@@ -368,7 +368,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateDeleted, Saveable
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted, Saveable
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted() {
         }
@@ -431,35 +431,35 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
             }
         }
     }
-        public static class SimpleAttributeSetInstanceExtensionFieldGroupStateCreated extends AbstractAttributeSetInstanceExtensionFieldGroupStateCreated
-        {
-			public SimpleAttributeSetInstanceExtensionFieldGroupStateCreated() {
-			}
-
-			public SimpleAttributeSetInstanceExtensionFieldGroupStateCreated(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeSetInstanceExtensionFieldGroupStateCreated extends AbstractAttributeSetInstanceExtensionFieldGroupStateCreated
+    {
+        public SimpleAttributeSetInstanceExtensionFieldGroupStateCreated() {
         }
 
-        public static class SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched
-        {
-			public SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched() {
-			}
+        public SimpleAttributeSetInstanceExtensionFieldGroupStateCreated(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched
+    {
+        public SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched() {
         }
 
-        public static class SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted extends AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted
-        {
-			public SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted() {
-			}
-
-			public SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted extends AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted
+    {
+        public SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted() {
+        }
+
+        public SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

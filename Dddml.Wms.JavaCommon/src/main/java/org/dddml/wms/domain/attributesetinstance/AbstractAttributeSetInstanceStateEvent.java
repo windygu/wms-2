@@ -5627,7 +5627,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractAttributeSetInstanceStateCreated extends AbstractAttributeSetInstanceStateEvent implements AttributeSetInstanceStateCreated
+    public static abstract class AbstractAttributeSetInstanceStateCreated extends AbstractAttributeSetInstanceStateEvent implements AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated
     {
         public AbstractAttributeSetInstanceStateCreated() {
         }
@@ -5643,7 +5643,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceStateMergePatched extends AbstractAttributeSetInstanceStateEvent implements AttributeSetInstanceStateMergePatched
+    public static abstract class AbstractAttributeSetInstanceStateMergePatched extends AbstractAttributeSetInstanceStateEvent implements AttributeSetInstanceStateEvent.AttributeSetInstanceStateMergePatched
     {
         public AbstractAttributeSetInstanceStateMergePatched() {
         }
@@ -9369,7 +9369,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceStateDeleted extends AbstractAttributeSetInstanceStateEvent implements AttributeSetInstanceStateDeleted
+    public static abstract class AbstractAttributeSetInstanceStateDeleted extends AbstractAttributeSetInstanceStateEvent implements AttributeSetInstanceStateEvent.AttributeSetInstanceStateDeleted
     {
         public AbstractAttributeSetInstanceStateDeleted() {
         }
@@ -9383,35 +9383,35 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         }
 
     }
-        public static class SimpleAttributeSetInstanceStateCreated extends AbstractAttributeSetInstanceStateCreated
-        {
-			public SimpleAttributeSetInstanceStateCreated() {
-			}
-
-			public SimpleAttributeSetInstanceStateCreated(AttributeSetInstanceStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeSetInstanceStateCreated extends AbstractAttributeSetInstanceStateCreated
+    {
+        public SimpleAttributeSetInstanceStateCreated() {
         }
 
-        public static class SimpleAttributeSetInstanceStateMergePatched extends AbstractAttributeSetInstanceStateMergePatched
-        {
-			public SimpleAttributeSetInstanceStateMergePatched() {
-			}
+        public SimpleAttributeSetInstanceStateCreated(AttributeSetInstanceStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleAttributeSetInstanceStateMergePatched(AttributeSetInstanceStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeSetInstanceStateMergePatched extends AbstractAttributeSetInstanceStateMergePatched
+    {
+        public SimpleAttributeSetInstanceStateMergePatched() {
         }
 
-        public static class SimpleAttributeSetInstanceStateDeleted extends AbstractAttributeSetInstanceStateDeleted
-        {
-			public SimpleAttributeSetInstanceStateDeleted() {
-			}
-
-			public SimpleAttributeSetInstanceStateDeleted(AttributeSetInstanceStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleAttributeSetInstanceStateMergePatched(AttributeSetInstanceStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleAttributeSetInstanceStateDeleted extends AbstractAttributeSetInstanceStateDeleted
+    {
+        public SimpleAttributeSetInstanceStateDeleted() {
+        }
+
+        public SimpleAttributeSetInstanceStateDeleted(AttributeSetInstanceStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

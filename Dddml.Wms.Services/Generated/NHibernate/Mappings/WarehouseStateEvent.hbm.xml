@@ -9,30 +9,23 @@
         <key-property name="WarehouseId" ><column name="WarehouseId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>
-
     <discriminator column="StateEventType" type="String" />
 
     <property name="Name" ></property>
-
     <property name="Description" ></property>
-
     <property name="IsInTransit" ></property>
-
     <property name="Active" ></property>
 
-
-    <property name="CreatedBy" column="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-
     <property name="CommandId" />
-
-
     <subclass name="WarehouseStateCreated" discriminator-value="Created">
     	
     </subclass>
 
     <subclass name="WarehouseStateMergePatched"  discriminator-value="MergePatched">
+
 
         <property name="IsPropertyNameRemoved" />
 
@@ -41,13 +34,13 @@
         <property name="IsPropertyIsInTransitRemoved" />
 
         <property name="IsPropertyActiveRemoved" />
-
-
     </subclass>
 
     <subclass name="WarehouseStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

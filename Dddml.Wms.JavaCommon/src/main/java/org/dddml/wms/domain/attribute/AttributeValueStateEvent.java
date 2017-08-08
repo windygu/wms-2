@@ -41,10 +41,6 @@ public interface AttributeValueStateEvent extends Event
 
     void setActive(Boolean active);
 
-    String getAttributeId();
-
-    void setAttributeId(String attributeId);
-
     String getCommandId();
 
     void setCommandId(String commandId);

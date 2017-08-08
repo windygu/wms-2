@@ -39,8 +39,7 @@ public class HibernateAttributeSetStateRepository implements AttributeSetStateRe
     }
 
     @Transactional(readOnly = true)
-    public AttributeSetState get(String id, boolean nullAllowed)
-    {
+    public AttributeSetState get(String id, boolean nullAllowed) {
         AttributeSetState state = (AttributeSetState)getCurrentSession().get(AbstractAttributeSetState.SimpleAttributeSetState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeSetState.SimpleAttributeSetState();

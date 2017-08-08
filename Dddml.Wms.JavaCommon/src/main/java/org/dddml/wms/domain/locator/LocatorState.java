@@ -84,11 +84,11 @@ public interface LocatorState
 
     void mutate(Event e);
 
-    void when(LocatorStateCreated e);
+    void when(LocatorStateEvent.LocatorStateCreated e);
 
-    void when(LocatorStateMergePatched e);
+    void when(LocatorStateEvent.LocatorStateMergePatched e);
 
-    void when(LocatorStateDeleted e);
+    void when(LocatorStateEvent.LocatorStateDeleted e);
     
 }
 

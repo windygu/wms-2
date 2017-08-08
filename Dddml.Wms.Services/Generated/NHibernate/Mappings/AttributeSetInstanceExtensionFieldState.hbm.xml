@@ -13,25 +13,17 @@
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
     <property name="Name" ><column name="Name" unique-key="UniqueName" /></property>
-
     <property name="Type" ></property>
-
     <property name="Length" ></property>
-
     <property name="Alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
-
     <property name="Description" ></property>
-
     <property name="CreatedBy" ></property>
-
     <property name="UpdatedBy" ></property>
-
     <property name="Active" ></property>
-
     <property name="Deleted" ></property>
 
-
     <property name="CreatedAt" column="CreatedAt" />
+
     <property name="UpdatedAt" column="UpdatedAt" />
 
 

@@ -192,7 +192,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractAttributeSetStateCreated extends AbstractAttributeSetStateEvent implements AttributeSetStateCreated, Saveable
+    public static abstract class AbstractAttributeSetStateCreated extends AbstractAttributeSetStateEvent implements AttributeSetStateEvent.AttributeSetStateCreated, Saveable
     {
         public AbstractAttributeSetStateCreated() {
         }
@@ -256,7 +256,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     }
 
 
-    public static abstract class AbstractAttributeSetStateMergePatched extends AbstractAttributeSetStateEvent implements AttributeSetStateMergePatched, Saveable
+    public static abstract class AbstractAttributeSetStateMergePatched extends AbstractAttributeSetStateEvent implements AttributeSetStateEvent.AttributeSetStateMergePatched, Saveable
     {
         public AbstractAttributeSetStateMergePatched() {
         }
@@ -390,7 +390,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     }
 
 
-    public static abstract class AbstractAttributeSetStateDeleted extends AbstractAttributeSetStateEvent implements AttributeSetStateDeleted, Saveable
+    public static abstract class AbstractAttributeSetStateDeleted extends AbstractAttributeSetStateEvent implements AttributeSetStateEvent.AttributeSetStateDeleted, Saveable
     {
         public AbstractAttributeSetStateDeleted() {
         }
@@ -453,35 +453,35 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
             }
         }
     }
-        public static class SimpleAttributeSetStateCreated extends AbstractAttributeSetStateCreated
-        {
-			public SimpleAttributeSetStateCreated() {
-			}
-
-			public SimpleAttributeSetStateCreated(AttributeSetStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeSetStateCreated extends AbstractAttributeSetStateCreated
+    {
+        public SimpleAttributeSetStateCreated() {
         }
 
-        public static class SimpleAttributeSetStateMergePatched extends AbstractAttributeSetStateMergePatched
-        {
-			public SimpleAttributeSetStateMergePatched() {
-			}
+        public SimpleAttributeSetStateCreated(AttributeSetStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleAttributeSetStateMergePatched(AttributeSetStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeSetStateMergePatched extends AbstractAttributeSetStateMergePatched
+    {
+        public SimpleAttributeSetStateMergePatched() {
         }
 
-        public static class SimpleAttributeSetStateDeleted extends AbstractAttributeSetStateDeleted
-        {
-			public SimpleAttributeSetStateDeleted() {
-			}
-
-			public SimpleAttributeSetStateDeleted(AttributeSetStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleAttributeSetStateMergePatched(AttributeSetStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleAttributeSetStateDeleted extends AbstractAttributeSetStateDeleted
+    {
+        public SimpleAttributeSetStateDeleted() {
+        }
+
+        public SimpleAttributeSetStateDeleted(AttributeSetStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

@@ -9,29 +9,18 @@
   <class name="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AbstractAttributeSetInstanceExtensionFieldGroupState$SimpleAttributeSetInstanceExtensionFieldGroupState" table="AttributeSetInstanceExtensionFieldGroups">
 
 	<id name="id" length="50" column="Id"><generator class="assigned"/></id>
-
 	<version name="version" type="long" />
 
 	<property name="fieldType" ></property>
-
 	<property name="fieldLength" ></property>
-
 	<property name="fieldCount" ></property>
-
 	<property name="nameFormat" ></property>
-
 	<property name="description" ></property>
-
 	<property name="createdBy" ></property>
-
 	<property name="createdAt" ></property>
-
 	<property name="updatedBy" ></property>
-
 	<property name="updatedAt" ></property>
-
 	<property name="active" ></property>
-
 	<property name="deleted" ></property>
 
 

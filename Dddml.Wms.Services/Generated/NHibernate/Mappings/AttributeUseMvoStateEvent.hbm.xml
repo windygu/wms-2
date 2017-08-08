@@ -10,52 +10,34 @@
         <key-property name="AttributeSetAttributeUseIdAttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
         <key-property name="AttributeSetVersion" ></key-property>
     </composite-id>
-
     <discriminator column="StateEventType" type="String" />
 
     <property name="SequenceNumber" ></property>
-
     <property name="Version" ></property>
-
     <property name="Active" ></property>
-
     <property name="AttributeSetName" ></property>
-
     <property name="AttributeSetOrganizationId" ></property>
-
     <property name="AttributeSetDescription" ></property>
-
     <property name="AttributeSetSerialNumberAttributeId" ></property>
-
     <property name="AttributeSetLotAttributeId" ></property>
-
     <property name="AttributeSetReferenceId" ></property>
-
     <property name="AttributeSetCreatedBy" ></property>
-
     <property name="AttributeSetCreatedAt" ></property>
-
     <property name="AttributeSetUpdatedBy" ></property>
-
     <property name="AttributeSetUpdatedAt" ></property>
-
     <property name="AttributeSetActive" ></property>
-
     <property name="AttributeSetDeleted" ></property>
 
-
-    <property name="CreatedBy" column="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-
     <property name="CommandId" />
-
-
     <subclass name="AttributeUseMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
 
     <subclass name="AttributeUseMvoStateMergePatched"  discriminator-value="MergePatched">
+
 
         <property name="IsPropertySequenceNumberRemoved" />
 
@@ -86,13 +68,13 @@
         <property name="IsPropertyAttributeSetActiveRemoved" />
 
         <property name="IsPropertyAttributeSetDeletedRemoved" />
-
-
     </subclass>
 
     <subclass name="AttributeUseMvoStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

@@ -78,11 +78,11 @@ public interface AttributeSetState
 
     void mutate(Event e);
 
-    void when(AttributeSetStateCreated e);
+    void when(AttributeSetStateEvent.AttributeSetStateCreated e);
 
-    void when(AttributeSetStateMergePatched e);
+    void when(AttributeSetStateEvent.AttributeSetStateMergePatched e);
 
-    void when(AttributeSetStateDeleted e);
+    void when(AttributeSetStateEvent.AttributeSetStateDeleted e);
     
 }
 

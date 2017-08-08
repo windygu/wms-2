@@ -192,6 +192,7 @@ public abstract class AbstractOrganizationState implements OrganizationState
 
     public AbstractOrganizationState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -207,12 +208,15 @@ public abstract class AbstractOrganizationState implements OrganizationState
             when((OrganizationStateMergePatched) e);
         } else if (e instanceof OrganizationStateDeleted) {
             when((OrganizationStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(OrganizationStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setName(e.getName());
         this.setDescription(e.getDescription());
         this.setType(e.getType());

@@ -74,11 +74,11 @@ public interface AttributeSetInstanceExtensionFieldGroupState
 
     void mutate(Event e);
 
-    void when(AttributeSetInstanceExtensionFieldGroupStateCreated e);
+    void when(AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated e);
 
-    void when(AttributeSetInstanceExtensionFieldGroupStateMergePatched e);
+    void when(AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched e);
 
-    void when(AttributeSetInstanceExtensionFieldGroupStateDeleted e);
+    void when(AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted e);
     
 }
 

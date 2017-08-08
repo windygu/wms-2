@@ -27,19 +27,19 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
     public void create(WarehouseCommand.CreateWarehouse c)
     {
         if (c.getVersion() == null) { c.setVersion(WarehouseState.VERSION_NULL); }
-        WarehouseStateEvent.WarehouseStateCreated e = map(c);
+        WarehouseStateEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(WarehouseCommand.MergePatchWarehouse c)
     {
-        WarehouseStateEvent.WarehouseStateMergePatched e = map(c);
+        WarehouseStateEvent e = map(c);
         apply(e);
     }
 
     public void delete(WarehouseCommand.DeleteWarehouse c)
     {
-        WarehouseStateEvent.WarehouseStateDeleted e = map(c);
+        WarehouseStateEvent e = map(c);
         apply(e);
     }
 
@@ -68,8 +68,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         changes.add(e);
     }
 
-    protected WarehouseStateEvent.WarehouseStateCreated map(WarehouseCommand.CreateWarehouse c)
-    {
+    protected WarehouseStateEvent map(WarehouseCommand.CreateWarehouse c) {
         WarehouseStateEventId stateEventId = new WarehouseStateEventId(c.getWarehouseId(), c.getVersion());
         WarehouseStateEvent.WarehouseStateCreated e = newWarehouseStateCreated(stateEventId);
         e.setName(c.getName());
@@ -79,12 +78,10 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         ((AbstractWarehouseStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt(new Date());
-        Long version = c.getVersion();
         return e;
     }
 
-    protected WarehouseStateEvent.WarehouseStateMergePatched map(WarehouseCommand.MergePatchWarehouse c)
-    {
+    protected WarehouseStateEvent map(WarehouseCommand.MergePatchWarehouse c) {
         WarehouseStateEventId stateEventId = new WarehouseStateEventId(c.getWarehouseId(), c.getVersion());
         WarehouseStateEvent.WarehouseStateMergePatched e = newWarehouseStateMergePatched(stateEventId);
         e.setName(c.getName());
@@ -98,12 +95,10 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         ((AbstractWarehouseStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt(new Date());
-        Long version = c.getVersion();
         return e;
     }
 
-    protected WarehouseStateEvent.WarehouseStateDeleted map(WarehouseCommand.DeleteWarehouse c)
-    {
+    protected WarehouseStateEvent map(WarehouseCommand.DeleteWarehouse c) {
         WarehouseStateEventId stateEventId = new WarehouseStateEventId(c.getWarehouseId(), c.getVersion());
         WarehouseStateEvent.WarehouseStateDeleted e = newWarehouseStateDeleted(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(c.getCommandId());

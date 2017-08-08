@@ -10,24 +10,17 @@
         <key-property name="ClaimId" ><column name="UserClaimIdClaimId" /></key-property>
         <key-property name="UserVersion" ></key-property>
     </composite-id>
-
     <discriminator column="StateEventType" type="String" />
 
     <property name="ClaimType" ></property>
-
     <property name="ClaimValue" ></property>
-
     <property name="Active" ></property>
 
-
-    <property name="CreatedBy" column="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-
     <property name="CommandId" />
-
     <property name="Version" not-null="true" />
-
 
     <subclass name="UserClaimStateCreated" discriminator-value="Created">
     	
@@ -35,18 +28,19 @@
 
     <subclass name="UserClaimStateMergePatched"  discriminator-value="MergePatched">
 
+
         <property name="IsPropertyClaimTypeRemoved" />
 
         <property name="IsPropertyClaimValueRemoved" />
 
         <property name="IsPropertyActiveRemoved" />
-
-
     </subclass>
 
     <subclass name="UserClaimStateRemoved"  discriminator-value="Removed">
 
     </subclass>
+
+
 
   </class>
   

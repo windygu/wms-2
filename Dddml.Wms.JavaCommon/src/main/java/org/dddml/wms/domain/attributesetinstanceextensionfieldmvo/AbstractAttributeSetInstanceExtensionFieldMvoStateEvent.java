@@ -287,7 +287,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateEvent ex
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateCreated extends AbstractAttributeSetInstanceExtensionFieldMvoStateEvent implements AttributeSetInstanceExtensionFieldMvoStateCreated
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateCreated extends AbstractAttributeSetInstanceExtensionFieldMvoStateEvent implements AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateCreated
     {
         public AbstractAttributeSetInstanceExtensionFieldMvoStateCreated() {
         }
@@ -303,7 +303,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateEvent ex
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldMvoStateEvent implements AttributeSetInstanceExtensionFieldMvoStateMergePatched
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldMvoStateEvent implements AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateMergePatched
     {
         public AbstractAttributeSetInstanceExtensionFieldMvoStateMergePatched() {
         }
@@ -499,7 +499,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateEvent ex
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateDeleted extends AbstractAttributeSetInstanceExtensionFieldMvoStateEvent implements AttributeSetInstanceExtensionFieldMvoStateDeleted
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateDeleted extends AbstractAttributeSetInstanceExtensionFieldMvoStateEvent implements AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateDeleted
     {
         public AbstractAttributeSetInstanceExtensionFieldMvoStateDeleted() {
         }
@@ -513,35 +513,35 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateEvent ex
         }
 
     }
-        public static class SimpleAttributeSetInstanceExtensionFieldMvoStateCreated extends AbstractAttributeSetInstanceExtensionFieldMvoStateCreated
-        {
-			public SimpleAttributeSetInstanceExtensionFieldMvoStateCreated() {
-			}
-
-			public SimpleAttributeSetInstanceExtensionFieldMvoStateCreated(AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeSetInstanceExtensionFieldMvoStateCreated extends AbstractAttributeSetInstanceExtensionFieldMvoStateCreated
+    {
+        public SimpleAttributeSetInstanceExtensionFieldMvoStateCreated() {
         }
 
-        public static class SimpleAttributeSetInstanceExtensionFieldMvoStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldMvoStateMergePatched
-        {
-			public SimpleAttributeSetInstanceExtensionFieldMvoStateMergePatched() {
-			}
+        public SimpleAttributeSetInstanceExtensionFieldMvoStateCreated(AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleAttributeSetInstanceExtensionFieldMvoStateMergePatched(AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeSetInstanceExtensionFieldMvoStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldMvoStateMergePatched
+    {
+        public SimpleAttributeSetInstanceExtensionFieldMvoStateMergePatched() {
         }
 
-        public static class SimpleAttributeSetInstanceExtensionFieldMvoStateDeleted extends AbstractAttributeSetInstanceExtensionFieldMvoStateDeleted
-        {
-			public SimpleAttributeSetInstanceExtensionFieldMvoStateDeleted() {
-			}
-
-			public SimpleAttributeSetInstanceExtensionFieldMvoStateDeleted(AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleAttributeSetInstanceExtensionFieldMvoStateMergePatched(AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleAttributeSetInstanceExtensionFieldMvoStateDeleted extends AbstractAttributeSetInstanceExtensionFieldMvoStateDeleted
+    {
+        public SimpleAttributeSetInstanceExtensionFieldMvoStateDeleted() {
+        }
+
+        public SimpleAttributeSetInstanceExtensionFieldMvoStateDeleted(AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

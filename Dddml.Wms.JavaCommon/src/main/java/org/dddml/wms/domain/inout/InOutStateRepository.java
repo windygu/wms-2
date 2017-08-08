@@ -10,7 +10,7 @@ import org.dddml.wms.domain.*;
 public interface InOutStateRepository
 {
     InOutState get(String id, boolean nullAllowed);
-    
+
     void save(InOutState state);
 
 }

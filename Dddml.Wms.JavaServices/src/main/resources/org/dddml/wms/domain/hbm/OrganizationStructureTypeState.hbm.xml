@@ -9,19 +9,13 @@
   <class name="org.dddml.wms.domain.organizationstructuretype.AbstractOrganizationStructureTypeState$SimpleOrganizationStructureTypeState" table="OrganizationStructureTypes">
 
 	<id name="id" length="50" column="Id"><generator class="assigned"/></id>
-
 	<version name="version" type="long" />
 
 	<property name="createdBy" ></property>
-
 	<property name="createdAt" ></property>
-
 	<property name="updatedBy" ></property>
-
 	<property name="updatedAt" ></property>
-
 	<property name="active" ></property>
-
 	<property name="deleted" ></property>
 
 

@@ -276,12 +276,12 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
 
     public AbstractAttributeState(boolean forReapplying) {
         this.forReapplying = forReapplying;
-        attributeValues = new SimpleAttributeValueStates(this);
 
         initializeProperties();
     }
     
     protected void initializeProperties() {
+        attributeValues = new SimpleAttributeValueStates(this);
     }
 
 
@@ -293,12 +293,15 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
             when((AttributeStateMergePatched) e);
         } else if (e instanceof AttributeStateDeleted) {
             when((AttributeStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(AttributeStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setName(e.getName());
         this.setOrganizationId(e.getOrganizationId());
         this.setDescription(e.getDescription());

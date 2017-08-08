@@ -11,7 +11,7 @@ import org.dddml.wms.domain.*;
 public interface InOutLineMvoStateRepository
 {
     InOutLineMvoState get(InOutLineId id, boolean nullAllowed);
-    
+
     void save(InOutLineMvoState state);
 
 }

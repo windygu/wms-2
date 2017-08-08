@@ -265,18 +265,6 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
         this.active = active;
     }
 
-    private String inOutDocumentNumber;
-
-    public String getInOutDocumentNumber()
-    {
-        return this.inOutDocumentNumber;
-    }
-
-    public void setInOutDocumentNumber(String inOutDocumentNumber)
-    {
-        this.inOutDocumentNumber = inOutDocumentNumber;
-    }
-
 
     private String commandId;
 
@@ -299,7 +287,7 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractInOutLineStateCreated extends AbstractInOutLineStateEvent implements InOutLineStateCreated
+    public static abstract class AbstractInOutLineStateCreated extends AbstractInOutLineStateEvent implements InOutLineStateEvent.InOutLineStateCreated
     {
         public AbstractInOutLineStateCreated() {
         }
@@ -315,7 +303,7 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     }
 
 
-    public static abstract class AbstractInOutLineStateMergePatched extends AbstractInOutLineStateEvent implements InOutLineStateMergePatched
+    public static abstract class AbstractInOutLineStateMergePatched extends AbstractInOutLineStateEvent implements InOutLineStateEvent.InOutLineStateMergePatched
     {
         public AbstractInOutLineStateMergePatched() {
         }
@@ -501,7 +489,7 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     }
 
 
-    public static abstract class AbstractInOutLineStateRemoved extends AbstractInOutLineStateEvent implements InOutLineStateRemoved
+    public static abstract class AbstractInOutLineStateRemoved extends AbstractInOutLineStateEvent implements InOutLineStateEvent.InOutLineStateRemoved
     {
         public AbstractInOutLineStateRemoved() {
         }
@@ -515,35 +503,35 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
         }
 
     }
-        public static class SimpleInOutLineStateCreated extends AbstractInOutLineStateCreated
-        {
-			public SimpleInOutLineStateCreated() {
-			}
-
-			public SimpleInOutLineStateCreated(InOutLineStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleInOutLineStateCreated extends AbstractInOutLineStateCreated
+    {
+        public SimpleInOutLineStateCreated() {
         }
 
-        public static class SimpleInOutLineStateMergePatched extends AbstractInOutLineStateMergePatched
-        {
-			public SimpleInOutLineStateMergePatched() {
-			}
+        public SimpleInOutLineStateCreated(InOutLineStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleInOutLineStateMergePatched(InOutLineStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleInOutLineStateMergePatched extends AbstractInOutLineStateMergePatched
+    {
+        public SimpleInOutLineStateMergePatched() {
         }
 
-        public static class SimpleInOutLineStateRemoved extends AbstractInOutLineStateRemoved
-        {
-			public SimpleInOutLineStateRemoved() {
-			}
-
-			public SimpleInOutLineStateRemoved(InOutLineStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleInOutLineStateMergePatched(InOutLineStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleInOutLineStateRemoved extends AbstractInOutLineStateRemoved
+    {
+        public SimpleInOutLineStateRemoved() {
+        }
+
+        public SimpleInOutLineStateRemoved(InOutLineStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

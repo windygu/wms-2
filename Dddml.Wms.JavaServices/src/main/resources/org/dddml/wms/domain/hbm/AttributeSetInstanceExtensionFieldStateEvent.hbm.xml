@@ -17,17 +17,11 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="name" ><column name="Name" unique-key="UniqueName" /></property>
-
 	<property name="type" ></property>
-
 	<property name="length" ></property>
-
 	<property name="alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
-
 	<property name="description" ></property>
-
 	<property name="active" ></property>
-
 
     <property name="createdBy" />
 
@@ -36,7 +30,6 @@
     <property name="commandId" />
 
     <property name="version" not-null="true" />
-
 
     <subclass name="AbstractAttributeSetInstanceExtensionFieldStateEvent$SimpleAttributeSetInstanceExtensionFieldStateCreated" discriminator-value="Created">
     	
@@ -62,6 +55,8 @@
     <subclass name="AbstractAttributeSetInstanceExtensionFieldStateEvent$SimpleAttributeSetInstanceExtensionFieldStateRemoved"  discriminator-value="Removed">
 
     </subclass>
+
+
 
   </class>
   

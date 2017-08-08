@@ -283,11 +283,11 @@ public interface InOutLineMvoState
 
     void mutate(Event e);
 
-    void when(InOutLineMvoStateCreated e);
+    void when(InOutLineMvoStateEvent.InOutLineMvoStateCreated e);
 
-    void when(InOutLineMvoStateMergePatched e);
+    void when(InOutLineMvoStateEvent.InOutLineMvoStateMergePatched e);
 
-    void when(InOutLineMvoStateDeleted e);
+    void when(InOutLineMvoStateEvent.InOutLineMvoStateDeleted e);
     
 }
 

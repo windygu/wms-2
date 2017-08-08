@@ -178,7 +178,7 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractLocatorStateCreated extends AbstractLocatorStateEvent implements LocatorStateCreated
+    public static abstract class AbstractLocatorStateCreated extends AbstractLocatorStateEvent implements LocatorStateEvent.LocatorStateCreated
     {
         public AbstractLocatorStateCreated() {
         }
@@ -194,7 +194,7 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
     }
 
 
-    public static abstract class AbstractLocatorStateMergePatched extends AbstractLocatorStateEvent implements LocatorStateMergePatched
+    public static abstract class AbstractLocatorStateMergePatched extends AbstractLocatorStateEvent implements LocatorStateEvent.LocatorStateMergePatched
     {
         public AbstractLocatorStateMergePatched() {
         }
@@ -300,7 +300,7 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
     }
 
 
-    public static abstract class AbstractLocatorStateDeleted extends AbstractLocatorStateEvent implements LocatorStateDeleted
+    public static abstract class AbstractLocatorStateDeleted extends AbstractLocatorStateEvent implements LocatorStateEvent.LocatorStateDeleted
     {
         public AbstractLocatorStateDeleted() {
         }
@@ -314,35 +314,35 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
         }
 
     }
-        public static class SimpleLocatorStateCreated extends AbstractLocatorStateCreated
-        {
-			public SimpleLocatorStateCreated() {
-			}
-
-			public SimpleLocatorStateCreated(LocatorStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleLocatorStateCreated extends AbstractLocatorStateCreated
+    {
+        public SimpleLocatorStateCreated() {
         }
 
-        public static class SimpleLocatorStateMergePatched extends AbstractLocatorStateMergePatched
-        {
-			public SimpleLocatorStateMergePatched() {
-			}
+        public SimpleLocatorStateCreated(LocatorStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleLocatorStateMergePatched(LocatorStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleLocatorStateMergePatched extends AbstractLocatorStateMergePatched
+    {
+        public SimpleLocatorStateMergePatched() {
         }
 
-        public static class SimpleLocatorStateDeleted extends AbstractLocatorStateDeleted
-        {
-			public SimpleLocatorStateDeleted() {
-			}
-
-			public SimpleLocatorStateDeleted(LocatorStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleLocatorStateMergePatched(LocatorStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleLocatorStateDeleted extends AbstractLocatorStateDeleted
+    {
+        public SimpleLocatorStateDeleted() {
+        }
+
+        public SimpleLocatorStateDeleted(LocatorStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

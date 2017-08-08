@@ -9,33 +9,29 @@
         <key-property name="Id" ><column name="Id" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>
-
     <discriminator column="StateEventType" type="String" />
 
     <property name="Active" ></property>
 
-
-    <property name="CreatedBy" column="CreatedBy" />
+    <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-
     <property name="CommandId" />
-
-
     <subclass name="OrganizationStructureTypeStateCreated" discriminator-value="Created">
     	
     </subclass>
 
     <subclass name="OrganizationStructureTypeStateMergePatched"  discriminator-value="MergePatched">
 
+
         <property name="IsPropertyActiveRemoved" />
-
-
     </subclass>
 
     <subclass name="OrganizationStructureTypeStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

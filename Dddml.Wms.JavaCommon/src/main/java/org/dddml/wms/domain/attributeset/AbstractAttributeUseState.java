@@ -159,6 +159,7 @@ public abstract class AbstractAttributeUseState implements AttributeUseState
 
     public AbstractAttributeUseState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -174,12 +175,15 @@ public abstract class AbstractAttributeUseState implements AttributeUseState
             when((AttributeUseStateMergePatched) e);
         } else if (e instanceof AttributeUseStateRemoved) {
             when((AttributeUseStateRemoved) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(AttributeUseStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setSequenceNumber(e.getSequenceNumber());
         this.setActive(e.getActive());
 

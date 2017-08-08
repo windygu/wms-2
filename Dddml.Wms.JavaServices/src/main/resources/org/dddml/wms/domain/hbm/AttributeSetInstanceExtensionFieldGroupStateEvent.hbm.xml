@@ -16,24 +16,17 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="fieldType" ></property>
-
 	<property name="fieldLength" ></property>
-
 	<property name="fieldCount" ></property>
-
 	<property name="nameFormat" ></property>
-
 	<property name="description" ></property>
-
 	<property name="active" ></property>
-
 
     <property name="createdBy" />
 
     <property name="createdAt" />
 
     <property name="commandId" />
-
 
     <subclass name="AbstractAttributeSetInstanceExtensionFieldGroupStateEvent$SimpleAttributeSetInstanceExtensionFieldGroupStateCreated" discriminator-value="Created">
     	
@@ -59,6 +52,8 @@
     <subclass name="AbstractAttributeSetInstanceExtensionFieldGroupStateEvent$SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

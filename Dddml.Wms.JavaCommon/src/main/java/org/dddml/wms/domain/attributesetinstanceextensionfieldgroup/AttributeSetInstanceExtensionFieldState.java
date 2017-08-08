@@ -80,11 +80,11 @@ public interface AttributeSetInstanceExtensionFieldState
 
     void mutate(Event e);
 
-    void when(AttributeSetInstanceExtensionFieldStateCreated e);
+    void when(AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated e);
 
-    void when(AttributeSetInstanceExtensionFieldStateMergePatched e);
+    void when(AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched e);
 
-    void when(AttributeSetInstanceExtensionFieldStateRemoved e);
+    void when(AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateRemoved e);
     
 }
 

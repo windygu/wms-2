@@ -66,8 +66,8 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GET
     @Path("{id}")
+    @GET
     public InOutStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
             String idObj = id;
@@ -103,8 +103,8 @@ public class InOutResource {
     }
 
 
-    @PUT
     @Path("/{id}")
+    @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchInOutDto.CreateInOutDto value) {
         try {
 
@@ -116,8 +116,8 @@ public class InOutResource {
     }
 
 
-    @PATCH
     @Path("/{id}")
+    @PATCH
     public void patch(@PathParam("id") String id, CreateOrMergePatchInOutDto.MergePatchInOutDto value) {
         try {
 
@@ -128,8 +128,8 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DELETE
     @Path("/{id}")
+    @DELETE
     public void delete(@PathParam("id") String id,
                        @NotNull @QueryParam("commandId") String commandId,
                        @NotNull @QueryParam("version") @Min(value = -1) Long version,

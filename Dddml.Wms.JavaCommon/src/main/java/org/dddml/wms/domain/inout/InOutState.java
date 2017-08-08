@@ -192,11 +192,11 @@ public interface InOutState
 
     void mutate(Event e);
 
-    void when(InOutStateCreated e);
+    void when(InOutStateEvent.InOutStateCreated e);
 
-    void when(InOutStateMergePatched e);
+    void when(InOutStateEvent.InOutStateMergePatched e);
 
-    void when(InOutStateDeleted e);
+    void when(InOutStateEvent.InOutStateDeleted e);
     
 }
 

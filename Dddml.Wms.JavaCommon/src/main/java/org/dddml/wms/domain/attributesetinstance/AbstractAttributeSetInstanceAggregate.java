@@ -28,19 +28,19 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
     public void create(AttributeSetInstanceCommand.CreateAttributeSetInstance c)
     {
         if (c.getVersion() == null) { c.setVersion(AttributeSetInstanceState.VERSION_NULL); }
-        AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e = map(c);
+        AttributeSetInstanceStateEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(AttributeSetInstanceCommand.MergePatchAttributeSetInstance c)
     {
-        AttributeSetInstanceStateEvent.AttributeSetInstanceStateMergePatched e = map(c);
+        AttributeSetInstanceStateEvent e = map(c);
         apply(e);
     }
 
     public void delete(AttributeSetInstanceCommand.DeleteAttributeSetInstance c)
     {
-        AttributeSetInstanceStateEvent.AttributeSetInstanceStateDeleted e = map(c);
+        AttributeSetInstanceStateEvent e = map(c);
         apply(e);
     }
 
@@ -69,8 +69,7 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         changes.add(e);
     }
 
-    protected AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated map(AttributeSetInstanceCommand.CreateAttributeSetInstance c)
-    {
+    protected AttributeSetInstanceStateEvent map(AttributeSetInstanceCommand.CreateAttributeSetInstance c) {
         AttributeSetInstanceStateEventId stateEventId = new AttributeSetInstanceStateEventId(c.getAttributeSetInstanceId(), c.getVersion());
         AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e = newAttributeSetInstanceStateCreated(stateEventId);
         e.setAttributeSetId(c.getAttributeSetId());
@@ -539,12 +538,10 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         ((AbstractAttributeSetInstanceStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt(new Date());
-        Long version = c.getVersion();
         return e;
     }
 
-    protected AttributeSetInstanceStateEvent.AttributeSetInstanceStateMergePatched map(AttributeSetInstanceCommand.MergePatchAttributeSetInstance c)
-    {
+    protected AttributeSetInstanceStateEvent map(AttributeSetInstanceCommand.MergePatchAttributeSetInstance c) {
         AttributeSetInstanceStateEventId stateEventId = new AttributeSetInstanceStateEventId(c.getAttributeSetInstanceId(), c.getVersion());
         AttributeSetInstanceStateEvent.AttributeSetInstanceStateMergePatched e = newAttributeSetInstanceStateMergePatched(stateEventId);
         e.setAttributeSetId(c.getAttributeSetId());
@@ -1476,12 +1473,10 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         ((AbstractAttributeSetInstanceStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt(new Date());
-        Long version = c.getVersion();
         return e;
     }
 
-    protected AttributeSetInstanceStateEvent.AttributeSetInstanceStateDeleted map(AttributeSetInstanceCommand.DeleteAttributeSetInstance c)
-    {
+    protected AttributeSetInstanceStateEvent map(AttributeSetInstanceCommand.DeleteAttributeSetInstance c) {
         AttributeSetInstanceStateEventId stateEventId = new AttributeSetInstanceStateEventId(c.getAttributeSetInstanceId(), c.getVersion());
         AttributeSetInstanceStateEvent.AttributeSetInstanceStateDeleted e = newAttributeSetInstanceStateDeleted(stateEventId);
         ((AbstractAttributeSetInstanceStateEvent)e).setCommandId(c.getCommandId());

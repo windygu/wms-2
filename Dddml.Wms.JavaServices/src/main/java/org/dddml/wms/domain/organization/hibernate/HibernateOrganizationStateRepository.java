@@ -39,8 +39,7 @@ public class HibernateOrganizationStateRepository implements OrganizationStateRe
     }
 
     @Transactional(readOnly = true)
-    public OrganizationState get(String id, boolean nullAllowed)
-    {
+    public OrganizationState get(String id, boolean nullAllowed) {
         OrganizationState state = (OrganizationState)getCurrentSession().get(AbstractOrganizationState.SimpleOrganizationState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractOrganizationState.SimpleOrganizationState();

@@ -251,7 +251,7 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractAttributeUseMvoStateCreated extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateCreated
+    public static abstract class AbstractAttributeUseMvoStateCreated extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateEvent.AttributeUseMvoStateCreated
     {
         public AbstractAttributeUseMvoStateCreated() {
         }
@@ -267,7 +267,7 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
     }
 
 
-    public static abstract class AbstractAttributeUseMvoStateMergePatched extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateMergePatched
+    public static abstract class AbstractAttributeUseMvoStateMergePatched extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateEvent.AttributeUseMvoStateMergePatched
     {
         public AbstractAttributeUseMvoStateMergePatched() {
         }
@@ -433,7 +433,7 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
     }
 
 
-    public static abstract class AbstractAttributeUseMvoStateDeleted extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateDeleted
+    public static abstract class AbstractAttributeUseMvoStateDeleted extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateEvent.AttributeUseMvoStateDeleted
     {
         public AbstractAttributeUseMvoStateDeleted() {
         }
@@ -447,35 +447,35 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
         }
 
     }
-        public static class SimpleAttributeUseMvoStateCreated extends AbstractAttributeUseMvoStateCreated
-        {
-			public SimpleAttributeUseMvoStateCreated() {
-			}
-
-			public SimpleAttributeUseMvoStateCreated(AttributeUseMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeUseMvoStateCreated extends AbstractAttributeUseMvoStateCreated
+    {
+        public SimpleAttributeUseMvoStateCreated() {
         }
 
-        public static class SimpleAttributeUseMvoStateMergePatched extends AbstractAttributeUseMvoStateMergePatched
-        {
-			public SimpleAttributeUseMvoStateMergePatched() {
-			}
+        public SimpleAttributeUseMvoStateCreated(AttributeUseMvoStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleAttributeUseMvoStateMergePatched(AttributeUseMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeUseMvoStateMergePatched extends AbstractAttributeUseMvoStateMergePatched
+    {
+        public SimpleAttributeUseMvoStateMergePatched() {
         }
 
-        public static class SimpleAttributeUseMvoStateDeleted extends AbstractAttributeUseMvoStateDeleted
-        {
-			public SimpleAttributeUseMvoStateDeleted() {
-			}
-
-			public SimpleAttributeUseMvoStateDeleted(AttributeUseMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleAttributeUseMvoStateMergePatched(AttributeUseMvoStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleAttributeUseMvoStateDeleted extends AbstractAttributeUseMvoStateDeleted
+    {
+        public SimpleAttributeUseMvoStateDeleted() {
+        }
+
+        public SimpleAttributeUseMvoStateDeleted(AttributeUseMvoStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 

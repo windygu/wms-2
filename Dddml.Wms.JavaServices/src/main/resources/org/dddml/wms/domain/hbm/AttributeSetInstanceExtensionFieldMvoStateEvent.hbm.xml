@@ -17,48 +17,29 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="name" ><column name="Name" unique-key="UniqueName" /></property>
-
 	<property name="type" ></property>
-
 	<property name="length" ></property>
-
 	<property name="alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
-
 	<property name="description" ></property>
-
 	<property name="version" ></property>
-
 	<property name="active" ></property>
-
 	<property name="attrSetInstEFGroupFieldType" ></property>
-
 	<property name="attrSetInstEFGroupFieldLength" ></property>
-
 	<property name="attrSetInstEFGroupFieldCount" ></property>
-
 	<property name="attrSetInstEFGroupNameFormat" ></property>
-
 	<property name="attrSetInstEFGroupDescription" ></property>
-
 	<property name="attrSetInstEFGroupCreatedBy" ></property>
-
 	<property name="attrSetInstEFGroupCreatedAt" ></property>
-
 	<property name="attrSetInstEFGroupUpdatedBy" ></property>
-
 	<property name="attrSetInstEFGroupUpdatedAt" ></property>
-
 	<property name="attrSetInstEFGroupActive" ></property>
-
 	<property name="attrSetInstEFGroupDeleted" ></property>
-
 
     <property name="createdBy" />
 
     <property name="createdAt" />
 
     <property name="commandId" />
-
 
     <subclass name="AbstractAttributeSetInstanceExtensionFieldMvoStateEvent$SimpleAttributeSetInstanceExtensionFieldMvoStateCreated" discriminator-value="Created">
     	
@@ -108,6 +89,8 @@
     <subclass name="AbstractAttributeSetInstanceExtensionFieldMvoStateEvent$SimpleAttributeSetInstanceExtensionFieldMvoStateDeleted"  discriminator-value="Deleted">
 
     </subclass>
+
+
 
   </class>
   

@@ -52,11 +52,11 @@ public interface OrganizationStructureTypeState
 
     void mutate(Event e);
 
-    void when(OrganizationStructureTypeStateCreated e);
+    void when(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated e);
 
-    void when(OrganizationStructureTypeStateMergePatched e);
+    void when(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched e);
 
-    void when(OrganizationStructureTypeStateDeleted e);
+    void when(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted e);
     
 }
 

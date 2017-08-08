@@ -40,8 +40,7 @@ public class HibernateAttributeValueMvoStateRepository implements AttributeValue
     }
 
     @Transactional(readOnly = true)
-    public AttributeValueMvoState get(AttributeValueId id, boolean nullAllowed)
-    {
+    public AttributeValueMvoState get(AttributeValueId id, boolean nullAllowed) {
         AttributeValueMvoState state = (AttributeValueMvoState)getCurrentSession().get(AbstractAttributeValueMvoState.SimpleAttributeValueMvoState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeValueMvoState.SimpleAttributeValueMvoState();

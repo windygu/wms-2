@@ -1905,11 +1905,11 @@ public interface AttributeSetInstanceState
 
     void mutate(Event e);
 
-    void when(AttributeSetInstanceStateCreated e);
+    void when(AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e);
 
-    void when(AttributeSetInstanceStateMergePatched e);
+    void when(AttributeSetInstanceStateEvent.AttributeSetInstanceStateMergePatched e);
 
-    void when(AttributeSetInstanceStateDeleted e);
+    void when(AttributeSetInstanceStateEvent.AttributeSetInstanceStateDeleted e);
     
 }
 

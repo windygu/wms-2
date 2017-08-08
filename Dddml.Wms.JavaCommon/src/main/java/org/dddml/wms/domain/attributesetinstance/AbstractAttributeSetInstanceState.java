@@ -5699,6 +5699,7 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
 
     public AbstractAttributeSetInstanceState(boolean forReapplying) {
         this.forReapplying = forReapplying;
+
         initializeProperties();
     }
     
@@ -5714,12 +5715,15 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
             when((AttributeSetInstanceStateMergePatched) e);
         } else if (e instanceof AttributeSetInstanceStateDeleted) {
             when((AttributeSetInstanceStateDeleted) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
     }
 
     public void when(AttributeSetInstanceStateCreated e)
     {
         throwOnWrongEvent(e);
+
         this.setAttributeSetId(e.getAttributeSetId());
         this.setOrganizationId(e.getOrganizationId());
         this.setReferenceId(e.getReferenceId());

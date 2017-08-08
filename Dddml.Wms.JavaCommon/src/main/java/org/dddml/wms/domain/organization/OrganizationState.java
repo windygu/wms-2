@@ -68,11 +68,11 @@ public interface OrganizationState
 
     void mutate(Event e);
 
-    void when(OrganizationStateCreated e);
+    void when(OrganizationStateEvent.OrganizationStateCreated e);
 
-    void when(OrganizationStateMergePatched e);
+    void when(OrganizationStateEvent.OrganizationStateMergePatched e);
 
-    void when(OrganizationStateDeleted e);
+    void when(OrganizationStateEvent.OrganizationStateDeleted e);
     
 }
 

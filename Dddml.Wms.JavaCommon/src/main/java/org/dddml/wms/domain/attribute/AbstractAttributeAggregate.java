@@ -27,19 +27,19 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
     public void create(AttributeCommand.CreateAttribute c)
     {
         if (c.getVersion() == null) { c.setVersion(AttributeState.VERSION_NULL); }
-        AttributeStateEvent.AttributeStateCreated e = map(c);
+        AttributeStateEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(AttributeCommand.MergePatchAttribute c)
     {
-        AttributeStateEvent.AttributeStateMergePatched e = map(c);
+        AttributeStateEvent e = map(c);
         apply(e);
     }
 
     public void delete(AttributeCommand.DeleteAttribute c)
     {
-        AttributeStateEvent.AttributeStateDeleted e = map(c);
+        AttributeStateEvent e = map(c);
         apply(e);
     }
 
@@ -68,8 +68,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         changes.add(e);
     }
 
-    protected AttributeStateEvent.AttributeStateCreated map(AttributeCommand.CreateAttribute c)
-    {
+    protected AttributeStateEvent map(AttributeCommand.CreateAttribute c) {
         AttributeStateEventId stateEventId = new AttributeStateEventId(c.getAttributeId(), c.getVersion());
         AttributeStateEvent.AttributeStateCreated e = newAttributeStateCreated(stateEventId);
         e.setName(c.getName());
@@ -97,8 +96,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         return e;
     }
 
-    protected AttributeStateEvent.AttributeStateMergePatched map(AttributeCommand.MergePatchAttribute c)
-    {
+    protected AttributeStateEvent map(AttributeCommand.MergePatchAttribute c) {
         AttributeStateEventId stateEventId = new AttributeStateEventId(c.getAttributeId(), c.getVersion());
         AttributeStateEvent.AttributeStateMergePatched e = newAttributeStateMergePatched(stateEventId);
         e.setName(c.getName());
@@ -137,8 +135,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         return e;
     }
 
-    protected AttributeStateEvent.AttributeStateDeleted map(AttributeCommand.DeleteAttribute c)
-    {
+    protected AttributeStateEvent map(AttributeCommand.DeleteAttribute c) {
         AttributeStateEventId stateEventId = new AttributeStateEventId(c.getAttributeId(), c.getVersion());
         AttributeStateEvent.AttributeStateDeleted e = newAttributeStateDeleted(stateEventId);
         ((AbstractAttributeStateEvent)e).setCommandId(c.getCommandId());

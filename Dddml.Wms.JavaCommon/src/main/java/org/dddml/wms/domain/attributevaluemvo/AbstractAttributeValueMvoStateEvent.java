@@ -323,7 +323,7 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractAttributeValueMvoStateCreated extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateCreated
+    public static abstract class AbstractAttributeValueMvoStateCreated extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateEvent.AttributeValueMvoStateCreated
     {
         public AbstractAttributeValueMvoStateCreated() {
         }
@@ -339,7 +339,7 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
     }
 
 
-    public static abstract class AbstractAttributeValueMvoStateMergePatched extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateMergePatched
+    public static abstract class AbstractAttributeValueMvoStateMergePatched extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched
     {
         public AbstractAttributeValueMvoStateMergePatched() {
         }
@@ -565,7 +565,7 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
     }
 
 
-    public static abstract class AbstractAttributeValueMvoStateDeleted extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateDeleted
+    public static abstract class AbstractAttributeValueMvoStateDeleted extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted
     {
         public AbstractAttributeValueMvoStateDeleted() {
         }
@@ -579,35 +579,35 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
         }
 
     }
-        public static class SimpleAttributeValueMvoStateCreated extends AbstractAttributeValueMvoStateCreated
-        {
-			public SimpleAttributeValueMvoStateCreated() {
-			}
-
-			public SimpleAttributeValueMvoStateCreated(AttributeValueMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeValueMvoStateCreated extends AbstractAttributeValueMvoStateCreated
+    {
+        public SimpleAttributeValueMvoStateCreated() {
         }
 
-        public static class SimpleAttributeValueMvoStateMergePatched extends AbstractAttributeValueMvoStateMergePatched
-        {
-			public SimpleAttributeValueMvoStateMergePatched() {
-			}
+        public SimpleAttributeValueMvoStateCreated(AttributeValueMvoStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
-			public SimpleAttributeValueMvoStateMergePatched(AttributeValueMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+    public static class SimpleAttributeValueMvoStateMergePatched extends AbstractAttributeValueMvoStateMergePatched
+    {
+        public SimpleAttributeValueMvoStateMergePatched() {
         }
 
-        public static class SimpleAttributeValueMvoStateDeleted extends AbstractAttributeValueMvoStateDeleted
-        {
-			public SimpleAttributeValueMvoStateDeleted() {
-			}
-
-			public SimpleAttributeValueMvoStateDeleted(AttributeValueMvoStateEventId stateEventId) {
-				super(stateEventId);
-			}
+        public SimpleAttributeValueMvoStateMergePatched(AttributeValueMvoStateEventId stateEventId) {
+            super(stateEventId);
         }
+    }
+
+    public static class SimpleAttributeValueMvoStateDeleted extends AbstractAttributeValueMvoStateDeleted
+    {
+        public SimpleAttributeValueMvoStateDeleted() {
+        }
+
+        public SimpleAttributeValueMvoStateDeleted(AttributeValueMvoStateEventId stateEventId) {
+            super(stateEventId);
+        }
+    }
 
 }
 
