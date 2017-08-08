@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="attributeSetInstanceIdGenerator" class="org.dddml.wms.ext.AttributeSetInstanceIdGenerator">
+  <bean id="attributeSetInstanceIdGenerator" class="org.dddml.wms.domain.service.AttributeSetInstanceIdGenerator">
     <property name="attributeSetInstanceStateRepository" ref="attributeSetInstanceStateRepository"/>
   </bean>
 

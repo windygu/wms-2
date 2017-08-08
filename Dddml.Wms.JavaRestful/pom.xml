@@ -6,10 +6,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.dddml.wms.restful</artifactId>
+    <artifactId>dddml-wms-restful</artifactId>
     <packaging>war</packaging>
-    <name>org.dddml.wms.restful Maven Webapp</name>
+	
+    <name>dddml-wms-restful</name>
     <url>http://maven.apache.org</url>
+	
     <properties>
         <cxf-version>3.1.7</cxf-version>
         <spring-version>4.3.2.RELEASE</spring-version>
@@ -17,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>org.dddml</groupId>
-            <artifactId>org.dddml.wms.services</artifactId>
+            <artifactId>dddml-wms-services</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -92,6 +94,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>org.dddml.wms.restful</finalName>
+        <finalName>dddml-wms-restful</finalName>
     </build>
 </project>

@@ -1,12 +1,12 @@
-package org.dddml.wms.ext;
+package org.dddml.wms.domain.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtilsBean;
-import org.dddml.wms.domain.AbstractAttributeSetInstanceCommand;
-import org.dddml.wms.domain.AttributeSetInstanceCommand;
-import org.dddml.wms.domain.AttributeSetInstanceState;
+import org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceCommand;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceCommand;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceState;
 import org.dddml.wms.specialization.AbstractDynamicObjectMapper;
 
 import java.util.Map;

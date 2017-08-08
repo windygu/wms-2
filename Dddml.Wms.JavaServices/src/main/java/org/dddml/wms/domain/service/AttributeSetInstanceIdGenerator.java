@@ -1,8 +1,8 @@
-package org.dddml.wms.ext;
+package org.dddml.wms.domain.service;
 
-import org.dddml.wms.domain.AttributeSetInstanceCommand;
-import org.dddml.wms.domain.AttributeSetInstanceState;
-import org.dddml.wms.domain.AttributeSetInstanceStateRepository;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceCommand;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceState;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceStateRepository;
 import org.dddml.wms.specialization.IdGenerator;
 import org.dddml.wms.support.AttributeSetInstancePropertyUtils;
 

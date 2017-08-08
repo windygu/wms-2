@@ -8,7 +8,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
-import org.dddml.wms.domain.AttributeSetInstanceStateDto;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceStateDto;
 import org.junit.Assert;
 import org.junit.Test;
 

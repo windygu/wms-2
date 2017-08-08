@@ -47,7 +47,7 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
         AttributeSetInstanceState state = getStateRepository().get(idObj, true);
         if (state != null) {
             if (getIdGenerator().equals(c, state)) {
-                return state.AttributeSetInstanceId;
+                return state.getAttributeSetInstanceId();
             }
 
             if (getIdGenerator().isSurrogateIdEnabled()) {

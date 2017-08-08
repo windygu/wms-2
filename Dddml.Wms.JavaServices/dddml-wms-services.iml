@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="FacetManager">
-    <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/config/DomainConfig.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/config/TreesHibernateConfig.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/config/IdGeneratorsConfig.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/config/AggregatesHibernateConfig.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/config/DatabaseConfig.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/config/TreesConfig.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/config/NHibernateServicesConfig.xml</file>
-        </fileset>
-      </configuration>
-    </facet>
-  </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -25,10 +10,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.16" level="project" />
-    <orderEntry type="module" module-name="org.dddml.wms.common" />
+    <orderEntry type="module" module-name="dddml-wms-common" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.17" level="project" />
-    <orderEntry type="module" module-name="org.dddml.support" />
+    <orderEntry type="library" name="Maven: org.dddml:dddml-criterion-support:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.github.drapostolos:type-parser:0.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.strategicgains:DateAdapterJ:1.1.4" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.3" level="project" />

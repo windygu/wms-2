@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="attributeSetService" class="org.dddml.wms.ext.AttributeSetServiceImpl">
+  <bean id="attributeSetService" class="org.dddml.wms.domain.service.AttributeSetServiceImpl">
     <property name="attributeSetStateRepository" ref="attributeSetStateRepository"/>
     <property name="attributeStateRepository" ref="attributeStateRepository"/>
   </bean>

@@ -35,7 +35,7 @@ public class PersonResourceTest extends AbstractResourceTest {
     public static final String LAST_NAME = "Liu";
     public static final String FULL_NAME = FIRST_NAME + "," + LAST_NAME;
 
-
+/*
     private CreateOrMergePatchPersonDto.CreatePersonDto createPerson() {
         CreateOrMergePatchPersonDto.CreatePersonDto dto = new CreateOrMergePatchPersonDto.CreatePersonDto();
         PersonalNameDto personalNameDto = new PersonalNameDto();
@@ -161,9 +161,9 @@ public class PersonResourceTest extends AbstractResourceTest {
         return dto;
     }
 
-    /**
+    *//**
      * 修改Person信息
-     */
+     *//*
     @Test
     public void ModifyPerson() {
         try {
@@ -196,9 +196,9 @@ public class PersonResourceTest extends AbstractResourceTest {
     }
 
 
-    /**
+    *//**
      * 使用Apache HttpClient 修改Person 信息
-     */
+     *//*
     @Test
     public void ModifyPersonByHttpClient() {
         try {
@@ -222,9 +222,9 @@ public class PersonResourceTest extends AbstractResourceTest {
         }
     }
 
-    /**
+    *//**
      * 使用 Apcache HttpClient 来查询 Person 信息
-     */
+     *//*
     @Test
     public void getPersonByHttpClient() {
         String url = RESOURCE_URL.concat(FULL_NAME);
@@ -241,9 +241,9 @@ public class PersonResourceTest extends AbstractResourceTest {
         }
     }
 
-    /**
+    *//**
      * 获取指定Person的详细信息
-     */
+     *//*
     @Test
     public void getPerson() {
         String url = RESOURCE_URL.concat(FULL_NAME);
@@ -279,11 +279,11 @@ public class PersonResourceTest extends AbstractResourceTest {
     public static final String BIRTH_DATE = "birthDate";
 
 
-    /**
+    *//**
      * 生成过滤条件
      *
      * @return
-     */
+     *//*
     private String createFilter() {
         try {
             Conjunction conjunctionAll = Restrictions.conjunction();
@@ -292,7 +292,7 @@ public class PersonResourceTest extends AbstractResourceTest {
             conjunctionAll.add(Restrictions.eq(ACTIVE, true));
             //conjunctionAll.add(Restrictions.gt(BIRTH_DATE, new Date()));
             CriterionDto dto = new CriterionDto(conjunctionAll, new DefaultTypeConverter());
-            /**DisableCircularReferenceDetect 去掉循环引用*/
+            *//**DisableCircularReferenceDetect 去掉循环引用*//*
             String filterJson = JSON.toJSONString(dto, UseISO8601DateFormat, DisableCircularReferenceDetect, PrettyFormat);
             System.out.println(filterJson);
             return URLEncoder.encode(filterJson, "UTF-8");
@@ -301,9 +301,9 @@ public class PersonResourceTest extends AbstractResourceTest {
         }
     }
 
-    /**
+    *//**
      * 获取符合条件的Person总数
-     */
+     *//*
     @Test
     public void getPersonCount() {
         try {
@@ -365,9 +365,9 @@ public class PersonResourceTest extends AbstractResourceTest {
         }
     }
 
-    /**
+    *//**
      * 删除
-     */
+     *//*
     @Test
     public void deletePerson() {
         String commandId = "770c7764-f63b-46a7-9659-0b5fa79e03f9";
@@ -389,9 +389,9 @@ public class PersonResourceTest extends AbstractResourceTest {
     }
 
 
-    /**
+    *//**
      * 获取可过滤的查询条件
-     */
+     *//*
     @Test
     public void getFilteringFields() {
         String url = RESOURCE_URL.concat("_metadata/filteringFields");
@@ -444,9 +444,9 @@ public class PersonResourceTest extends AbstractResourceTest {
         }
     }
 
-    /**
+    *//**
      * 获取年计划
-     */
+     *//*
     @Test
     public void getYearPlan() {
         String url = RESOURCE_URL.concat(FULL_NAME).concat("/YearPlans/").concat("2016");//{year}/MonthPlans/{month});
@@ -473,9 +473,9 @@ public class PersonResourceTest extends AbstractResourceTest {
     }
 
 
-    /**
+    *//**
      * 获取月计划
-     */
+     *//*
     @Test
     public void getMonthPlan() {
         String url = RESOURCE_URL.concat(FULL_NAME).concat("/YearPlans/").concat("2016").concat("/MonthPlans/").concat("7");
@@ -502,9 +502,9 @@ public class PersonResourceTest extends AbstractResourceTest {
     }
 
 
-    /**
+    *//**
      * 获取日计划
-     */
+     *//*
     @Test
     public void getDayPlan() {
         String url = RESOURCE_URL.concat(FULL_NAME).concat("/YearPlans/").concat("2016").concat("/MonthPlans/").concat("7").concat("/DayPlans/").concat("5");
@@ -528,7 +528,7 @@ public class PersonResourceTest extends AbstractResourceTest {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
+    }*/
 }
 
 

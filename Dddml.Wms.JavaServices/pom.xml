@@ -8,10 +8,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>org.dddml.wms.services</artifactId>
+    <artifactId>dddml-wms-services</artifactId>
     <packaging>jar</packaging>
 
-    <name>org.dddml.wms.services</name>
+    <name>dddml-wms-services</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -23,12 +23,12 @@
     <dependencies>
         <dependency>
             <groupId>org.dddml</groupId>
-            <artifactId>org.dddml.wms.common</artifactId>
+            <artifactId>dddml-wms-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.dddml</groupId>
-            <artifactId>org.dddml.support</artifactId>
+            <artifactId>dddml-criterion-support</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
