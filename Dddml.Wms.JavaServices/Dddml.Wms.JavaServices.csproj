@@ -167,20 +167,20 @@
 .\HibernateOrganizationTreeRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainNHibernateAggregates.txt">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainHibernateAggregates.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateBoundedContextDomainNHibernateAggregates.tt</DependentUpon>
+      <DependentUpon>GenerateBoundedContextDomainHibernateAggregates.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainNHibernateAggregates.tt">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainHibernateAggregates.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateBoundedContextDomainNHibernateAggregates.txt</LastGenOutput>
-      <LastOutputs>.\GenerateBoundedContextDomainNHibernateAggregates.txt</LastOutputs>
+      <LastGenOutput>GenerateBoundedContextDomainHibernateAggregates.txt</LastGenOutput>
+      <LastOutputs>.\GenerateBoundedContextDomainHibernateAggregates.txt</LastOutputs>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorTreeRepository.java">
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
