@@ -43,29 +43,29 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetInstanceExtensionFieldGroupResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetInstanceExtensionFieldMvoResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetInstanceResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeUseMvoResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeValueMvoResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\GenerateResources.tt">
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\GenerateAggregatesResources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateResources.txt</LastGenOutput>
+      <LastGenOutput>GenerateAggregatesResources.txt</LastGenOutput>
       <LastOutputs>
 .\AttributeResource.java
 .\AttributeSetInstanceExtensionFieldGroupResource.java
@@ -74,7 +74,7 @@
 .\AttributeSetResource.java
 .\AttributeUseMvoResource.java
 .\AttributeValueMvoResource.java
-.\GenerateResources.txt
+.\GenerateAggregatesResources.txt
 .\InOutLineMvoResource.java
 .\InOutResource.java
 .\LocatorResource.java
@@ -84,10 +84,15 @@
 .\WarehouseResource.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\GenerateResources.txt">
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\GenerateAggregatesResources.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\GenerateDomainServicesResources.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDomainServicesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\GenerateTreeResources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -105,35 +110,42 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\IndexResource.java" />
     <Content Include="src\main\java\org\dddml\wms\restful\resource\InOutLineMvoResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\InOutResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\LocatorResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\LocatorTreeResource.java">
       <DependentUpon>GenerateTreeResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationStructureResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationStructureTypeResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationTreeResource.java">
       <DependentUpon>GenerateTreeResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\WarehouseResource.java">
-      <DependentUpon>GenerateResources.tt</DependentUpon>
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\main\java\org\dddml\wms\restful\resource\GenerateDomainServicesResources.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDomainServicesResources.txt</LastGenOutput>
+      <LastOutputs>.\GenerateDomainServicesResources.txt</LastOutputs>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
