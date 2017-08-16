@@ -5,6 +5,7 @@ import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import org.apache.cxf.jaxrs.ext.PATCH;
 
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.attribute.*;
@@ -15,12 +16,10 @@ import org.dddml.wms.domain.attributevaluemvo.*;
 import org.dddml.wms.domain.meta.*;
 
 import com.alibaba.fastjson.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("AttributeValueMvos")
-@Produces(MediaType.APPLICATION_JSON)
+@Path("AttributeValueMvos") @Produces(MediaType.APPLICATION_JSON)
 public class AttributeValueMvoResource {
 
 
@@ -65,8 +64,7 @@ public class AttributeValueMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}")
-    @GET
+    @Path("{id}") @GET
     public AttributeValueMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
             AttributeValueId idObj = AttributeValueMvoResourceUtils.parseIdString(id);
@@ -84,8 +82,7 @@ public class AttributeValueMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count")
-    @GET
+    @Path("_count") @GET
     public long getCount(@Context HttpServletRequest request,
                          @QueryParam("filter") String filter) {
         try {
@@ -102,8 +99,7 @@ public class AttributeValueMvoResource {
     }
 
 
-    @Path("/{id}")
-    @PUT
+    @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeValueMvoDto.CreateAttributeValueMvoDto value) {
         try {
 
@@ -115,8 +111,7 @@ public class AttributeValueMvoResource {
     }
 
 
-    @Path("/{id}")
-    @PATCH
+    @Path("{id}") @PATCH
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeValueMvoDto.MergePatchAttributeValueMvoDto value) {
         try {
 
@@ -127,8 +122,7 @@ public class AttributeValueMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("/{id}")
-    @DELETE
+    @Path("{id}") @DELETE
     public void delete(@PathParam("id") String id,
                        @NotNull @QueryParam("commandId") String commandId,
                        @NotNull @QueryParam("version") @Min(value = -1) Long version,
@@ -146,8 +140,7 @@ public class AttributeValueMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields")
-    @GET
+    @Path("_metadata/filteringFields") @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -160,8 +153,7 @@ public class AttributeValueMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}")
-    @GET
+    @Path("{id}/_stateEvents/{version}") @GET
     public AttributeValueMvoStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
@@ -172,8 +164,7 @@ public class AttributeValueMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}")
-    @GET
+    @Path("{id}/_historyStates/{version}") @GET
     public AttributeValueMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 

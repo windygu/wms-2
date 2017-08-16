@@ -5,6 +5,7 @@ import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import org.apache.cxf.jaxrs.ext.PATCH;
 
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.inout.*;
@@ -17,12 +18,10 @@ import org.dddml.wms.domain.inoutlinemvo.*;
 import org.dddml.wms.domain.meta.*;
 
 import com.alibaba.fastjson.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("InOutLineMvos")
-@Produces(MediaType.APPLICATION_JSON)
+@Path("InOutLineMvos") @Produces(MediaType.APPLICATION_JSON)
 public class InOutLineMvoResource {
 
 
@@ -67,8 +66,7 @@ public class InOutLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}")
-    @GET
+    @Path("{id}") @GET
     public InOutLineMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
             InOutLineId idObj = InOutLineMvoResourceUtils.parseIdString(id);
@@ -86,8 +84,7 @@ public class InOutLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count")
-    @GET
+    @Path("_count") @GET
     public long getCount(@Context HttpServletRequest request,
                          @QueryParam("filter") String filter) {
         try {
@@ -104,8 +101,7 @@ public class InOutLineMvoResource {
     }
 
 
-    @Path("/{id}")
-    @PUT
+    @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchInOutLineMvoDto.CreateInOutLineMvoDto value) {
         try {
 
@@ -117,8 +113,7 @@ public class InOutLineMvoResource {
     }
 
 
-    @Path("/{id}")
-    @PATCH
+    @Path("{id}") @PATCH
     public void patch(@PathParam("id") String id, CreateOrMergePatchInOutLineMvoDto.MergePatchInOutLineMvoDto value) {
         try {
 
@@ -129,8 +124,7 @@ public class InOutLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("/{id}")
-    @DELETE
+    @Path("{id}") @DELETE
     public void delete(@PathParam("id") String id,
                        @NotNull @QueryParam("commandId") String commandId,
                        @NotNull @QueryParam("version") @Min(value = -1) Long version,
@@ -148,8 +142,7 @@ public class InOutLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields")
-    @GET
+    @Path("_metadata/filteringFields") @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -162,8 +155,7 @@ public class InOutLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}")
-    @GET
+    @Path("{id}/_stateEvents/{version}") @GET
     public InOutLineMvoStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
@@ -174,8 +166,7 @@ public class InOutLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}")
-    @GET
+    @Path("{id}/_historyStates/{version}") @GET
     public InOutLineMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 

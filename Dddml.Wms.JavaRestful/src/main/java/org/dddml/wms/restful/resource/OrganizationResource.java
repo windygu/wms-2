@@ -5,6 +5,7 @@ import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import org.apache.cxf.jaxrs.ext.PATCH;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
@@ -14,12 +15,10 @@ import org.dddml.wms.domain.organization.*;
 import org.dddml.wms.domain.meta.*;
 
 import com.alibaba.fastjson.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("Organizations")
-@Produces(MediaType.APPLICATION_JSON)
+@Path("Organizations") @Produces(MediaType.APPLICATION_JSON)
 public class OrganizationResource {
 
 
@@ -64,8 +63,7 @@ public class OrganizationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}")
-    @GET
+    @Path("{id}") @GET
     public OrganizationStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
             String idObj = id;
@@ -83,8 +81,7 @@ public class OrganizationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count")
-    @GET
+    @Path("_count") @GET
     public long getCount(@Context HttpServletRequest request,
                          @QueryParam("filter") String filter) {
         try {
@@ -101,8 +98,7 @@ public class OrganizationResource {
     }
 
 
-    @Path("/{id}")
-    @PUT
+    @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchOrganizationDto.CreateOrganizationDto value) {
         try {
 
@@ -114,8 +110,7 @@ public class OrganizationResource {
     }
 
 
-    @Path("/{id}")
-    @PATCH
+    @Path("{id}") @PATCH
     public void patch(@PathParam("id") String id, CreateOrMergePatchOrganizationDto.MergePatchOrganizationDto value) {
         try {
 
@@ -126,8 +121,7 @@ public class OrganizationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("/{id}")
-    @DELETE
+    @Path("{id}") @DELETE
     public void delete(@PathParam("id") String id,
                        @NotNull @QueryParam("commandId") String commandId,
                        @NotNull @QueryParam("version") @Min(value = -1) Long version,
@@ -145,8 +139,7 @@ public class OrganizationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields")
-    @GET
+    @Path("_metadata/filteringFields") @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -159,8 +152,7 @@ public class OrganizationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}")
-    @GET
+    @Path("{id}/_stateEvents/{version}") @GET
     public OrganizationStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
@@ -171,8 +163,7 @@ public class OrganizationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}")
-    @GET
+    @Path("{id}/_historyStates/{version}") @GET
     public OrganizationStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 

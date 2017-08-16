@@ -17,8 +17,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("LocatorTrees")
-@Produces(MediaType.APPLICATION_JSON)
+@Path("LocatorTrees") @Produces(MediaType.APPLICATION_JSON)
 public class LocatorTreeResource {
 
     @Autowired
@@ -131,8 +130,7 @@ public class LocatorTreeResource {
     }
 
 
-    @Path("_metadata/filteringFields")
-    @GET
+    @Path("_metadata/filteringFields") @GET
     public Iterable<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
