@@ -27,7 +27,7 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
+    <property name="CommandId" column="CommandId"/>
     <subclass name="UserStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -35,29 +35,29 @@
     <subclass name="UserStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyUserNameRemoved" />
+        <property name="IsPropertyUserNameRemoved" column="IsPropertyUserNameRemoved"/>
 
-        <property name="IsPropertyAccessFailedCountRemoved" />
+        <property name="IsPropertyAccessFailedCountRemoved" column="IsPropertyAccessFailedCountRemoved"/>
 
-        <property name="IsPropertyEmailRemoved" />
+        <property name="IsPropertyEmailRemoved" column="IsPropertyEmailRemoved"/>
 
-        <property name="IsPropertyEmailConfirmedRemoved" />
+        <property name="IsPropertyEmailConfirmedRemoved" column="IsPropertyEmailConfirmedRemoved"/>
 
-        <property name="IsPropertyLockoutEnabledRemoved" />
+        <property name="IsPropertyLockoutEnabledRemoved" column="IsPropertyLockoutEnabledRemoved"/>
 
-        <property name="IsPropertyLockoutEndDateUtcRemoved" />
+        <property name="IsPropertyLockoutEndDateUtcRemoved" column="IsPropertyLockoutEndDateUtcRemoved"/>
 
-        <property name="IsPropertyPasswordHashRemoved" />
+        <property name="IsPropertyPasswordHashRemoved" column="IsPropertyPasswordHashRemoved"/>
 
-        <property name="IsPropertyPhoneNumberRemoved" />
+        <property name="IsPropertyPhoneNumberRemoved" column="IsPropertyPhoneNumberRemoved"/>
 
-        <property name="IsPropertyPhoneNumberConfirmedRemoved" />
+        <property name="IsPropertyPhoneNumberConfirmedRemoved" column="IsPropertyPhoneNumberConfirmedRemoved"/>
 
-        <property name="IsPropertyTwoFactorEnabledRemoved" />
+        <property name="IsPropertyTwoFactorEnabledRemoved" column="IsPropertyTwoFactorEnabledRemoved"/>
 
-        <property name="IsPropertySecurityStampRemoved" />
+        <property name="IsPropertySecurityStampRemoved" column="IsPropertySecurityStampRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="UserStateDeleted"  discriminator-value="Deleted">

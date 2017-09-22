@@ -9,7 +9,7 @@
   <class name="org.dddml.wms.domain.organizationstructuretype.AbstractOrganizationStructureTypeState$SimpleOrganizationStructureTypeState" table="OrganizationStructureTypes">
 
 	<id name="id" length="50" column="Id"><generator class="assigned"/></id>
-	<version name="version" type="long" />
+	<version name="version" column="Version" type="long" />
 
 	<property name="createdBy" ></property>
 	<property name="createdAt" ></property>

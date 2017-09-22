@@ -52,7 +52,7 @@ public class HibernateAttributeUseMvoStateQueryRepository implements AttributeUs
     @Transactional(readOnly = true)
     public Iterable<AttributeUseMvoState> getAll(Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeUseMvoState.SimpleAttributeUseMvoState.class);
+        Criteria criteria = getCurrentSession().createCriteria(AttributeUseMvoState.class);
         if (firstResult != null) { criteria.setFirstResult(firstResult); }
         if (maxResults != null) { criteria.setMaxResults(maxResults); }
          addNotDeletedRestriction(criteria);

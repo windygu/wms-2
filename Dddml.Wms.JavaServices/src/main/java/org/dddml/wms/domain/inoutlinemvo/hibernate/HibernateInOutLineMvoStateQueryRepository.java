@@ -54,7 +54,7 @@ public class HibernateInOutLineMvoStateQueryRepository implements InOutLineMvoSt
     @Transactional(readOnly = true)
     public Iterable<InOutLineMvoState> getAll(Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineMvoState.SimpleInOutLineMvoState.class);
+        Criteria criteria = getCurrentSession().createCriteria(InOutLineMvoState.class);
         if (firstResult != null) { criteria.setFirstResult(firstResult); }
         if (maxResults != null) { criteria.setMaxResults(maxResults); }
          addNotDeletedRestriction(criteria);

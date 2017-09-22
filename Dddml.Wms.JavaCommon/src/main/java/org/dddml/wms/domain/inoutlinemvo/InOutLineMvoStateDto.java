@@ -802,6 +802,9 @@ public class InOutLineMvoStateDto
 
         public InOutLineMvoStateDto toInOutLineMvoStateDto(InOutLineMvoState state)
         {
+            if(state == null) {
+                return null;
+            }
             InOutLineMvoStateDto dto = new InOutLineMvoStateDto();
             if (returnedFieldsContains("InOutLineId")) {
                 dto.setInOutLineId((state.getInOutLineId() == null) ? null : new InOutLineIdDtoWrapper(state.getInOutLineId()));

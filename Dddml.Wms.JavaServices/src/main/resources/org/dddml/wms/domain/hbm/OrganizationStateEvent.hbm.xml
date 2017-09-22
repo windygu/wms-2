@@ -21,11 +21,11 @@
 	<property name="isSummary" ></property>
 	<property name="active" ></property>
 
-    <property name="createdBy" />
+    <property name="createdBy" column="CreatedBy"/>
 
-    <property name="createdAt" />
+    <property name="createdAt" column="CreatedAt" />
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractOrganizationStateEvent$SimpleOrganizationStateCreated" discriminator-value="Created">
     	
@@ -33,15 +33,15 @@
 
     <subclass name="AbstractOrganizationStateEvent$SimpleOrganizationStateMergePatched"  discriminator-value="MergePatched">
 
-        <property name="isPropertyNameRemoved" />
+        <property name="isPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
-        <property name="isPropertyDescriptionRemoved" />
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="isPropertyTypeRemoved" />
+        <property name="isPropertyTypeRemoved" column="IsPropertyTypeRemoved"/>
 
-        <property name="isPropertyIsSummaryRemoved" />
+        <property name="isPropertyIsSummaryRemoved" column="IsPropertyIsSummaryRemoved"/>
 
-        <property name="isPropertyActiveRemoved" />
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
 
     </subclass>

@@ -34,7 +34,7 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
+    <property name="CommandId" column="CommandId"/>
     <subclass name="AttributeSetInstanceExtensionFieldMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -42,41 +42,41 @@
     <subclass name="AttributeSetInstanceExtensionFieldMvoStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyNameRemoved" />
+        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
-        <property name="IsPropertyTypeRemoved" />
+        <property name="IsPropertyTypeRemoved" column="IsPropertyTypeRemoved"/>
 
-        <property name="IsPropertyLengthRemoved" />
+        <property name="IsPropertyLengthRemoved" column="IsPropertyLengthRemoved"/>
 
-        <property name="IsPropertyAliasRemoved" />
+        <property name="IsPropertyAliasRemoved" column="IsPropertyAliasRemoved"/>
 
-        <property name="IsPropertyDescriptionRemoved" />
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="IsPropertyVersionRemoved" />
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
-        <property name="IsPropertyAttrSetInstEFGroupFieldTypeRemoved" />
+        <property name="IsPropertyAttrSetInstEFGroupFieldTypeRemoved" column="IsPropertyAttrSetInstEFGroupFieldTypeRemoved"/>
 
-        <property name="IsPropertyAttrSetInstEFGroupFieldLengthRemoved" />
+        <property name="IsPropertyAttrSetInstEFGroupFieldLengthRemoved" column="IsPropertyAttrSetInstEFGroupFieldLengthRemoved"/>
 
-        <property name="IsPropertyAttrSetInstEFGroupFieldCountRemoved" />
+        <property name="IsPropertyAttrSetInstEFGroupFieldCountRemoved" column="IsPropertyAttrSetInstEFGroupFieldCountRemoved"/>
 
-        <property name="IsPropertyAttrSetInstEFGroupNameFormatRemoved" />
+        <property name="IsPropertyAttrSetInstEFGroupNameFormatRemoved" column="IsPropertyAttrSetInstEFGroupNameFormatRemoved"/>
 
-        <property name="IsPropertyAttrSetInstEFGroupDescriptionRemoved" />
+        <property name="IsPropertyAttrSetInstEFGroupDescriptionRemoved" column="IsPropertyAttrSetInstEFGroupDescriptionRemoved"/>
 
-        <property name="IsPropertyAttrSetInstEFGroupCreatedByRemoved" />
+        <property name="IsPropertyAttrSetInstEFGroupCreatedByRemoved" column="IsPropertyAttrSetInstEFGroupCreatedByRemoved"/>
 
-        <property name="IsPropertyAttrSetInstEFGroupCreatedAtRemoved" />
+        <property name="IsPropertyAttrSetInstEFGroupCreatedAtRemoved" column="IsPropertyAttrSetInstEFGroupCreatedAtRemoved"/>
 
-        <property name="IsPropertyAttrSetInstEFGroupUpdatedByRemoved" />
+        <property name="IsPropertyAttrSetInstEFGroupUpdatedByRemoved" column="IsPropertyAttrSetInstEFGroupUpdatedByRemoved"/>
 
-        <property name="IsPropertyAttrSetInstEFGroupUpdatedAtRemoved" />
+        <property name="IsPropertyAttrSetInstEFGroupUpdatedAtRemoved" column="IsPropertyAttrSetInstEFGroupUpdatedAtRemoved"/>
 
-        <property name="IsPropertyAttrSetInstEFGroupActiveRemoved" />
+        <property name="IsPropertyAttrSetInstEFGroupActiveRemoved" column="IsPropertyAttrSetInstEFGroupActiveRemoved"/>
 
-        <property name="IsPropertyAttrSetInstEFGroupDeletedRemoved" />
+        <property name="IsPropertyAttrSetInstEFGroupDeletedRemoved" column="IsPropertyAttrSetInstEFGroupDeletedRemoved"/>
     </subclass>
 
     <subclass name="AttributeSetInstanceExtensionFieldMvoStateDeleted"  discriminator-value="Deleted">

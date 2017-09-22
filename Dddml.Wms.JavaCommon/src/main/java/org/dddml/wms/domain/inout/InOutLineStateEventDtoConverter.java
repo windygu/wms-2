@@ -9,13 +9,13 @@ import org.dddml.wms.specialization.*;
 public class InOutLineStateEventDtoConverter {
 
     public InOutLineStateEventDto toInOutLineStateEventDto(AbstractInOutLineStateEvent stateEvent) {
-        if (StateEventType.CREATED.equals(stateEvent.getStateEventType())) {
+        if (stateEvent instanceof AbstractInOutLineStateEvent.AbstractInOutLineStateCreated) {
             InOutLineStateEvent.InOutLineStateCreated e = (InOutLineStateEvent.InOutLineStateCreated) stateEvent;
             return toInOutLineStateCreatedDto(e);
-        } else if (StateEventType.MERGE_PATCHED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractInOutLineStateEvent.AbstractInOutLineStateMergePatched) {
             InOutLineStateEvent.InOutLineStateMergePatched e = (InOutLineStateEvent.InOutLineStateMergePatched) stateEvent;
             return toInOutLineStateMergePatchedDto(e);
-        } else if (StateEventType.REMOVED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractInOutLineStateEvent.AbstractInOutLineStateRemoved) {
             InOutLineStateEvent.InOutLineStateRemoved e = (InOutLineStateEvent.InOutLineStateRemoved) stateEvent;
             return toInOutLineStateRemovedDto(e);
         }

@@ -18,7 +18,7 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
+    <property name="CommandId" column="CommandId"/>
     <subclass name="AudienceStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -26,11 +26,11 @@
     <subclass name="AudienceStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyNameRemoved" />
+        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
-        <property name="IsPropertyBase64SecretRemoved" />
+        <property name="IsPropertyBase64SecretRemoved" column="IsPropertyBase64SecretRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="AudienceStateDeleted"  discriminator-value="Deleted">

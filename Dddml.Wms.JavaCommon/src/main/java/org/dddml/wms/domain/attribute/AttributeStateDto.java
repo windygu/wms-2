@@ -247,6 +247,9 @@ public class AttributeStateDto
 
         public AttributeStateDto toAttributeStateDto(AttributeState state)
         {
+            if(state == null) {
+                return null;
+            }
             AttributeStateDto dto = new AttributeStateDto();
             if (returnedFieldsContains("AttributeId")) {
                 dto.setAttributeId(state.getAttributeId());

@@ -51,7 +51,7 @@ public class HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepositor
     @Transactional(readOnly = true)
     public Iterable<AttributeSetInstanceExtensionFieldGroupState> getAll(Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState.class);
+        Criteria criteria = getCurrentSession().createCriteria(AttributeSetInstanceExtensionFieldGroupState.class);
         if (firstResult != null) { criteria.setFirstResult(firstResult); }
         if (maxResults != null) { criteria.setMaxResults(maxResults); }
          addNotDeletedRestriction(criteria);

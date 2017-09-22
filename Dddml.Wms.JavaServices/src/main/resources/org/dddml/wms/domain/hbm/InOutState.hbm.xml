@@ -9,7 +9,7 @@
   <class name="org.dddml.wms.domain.inout.AbstractInOutState$SimpleInOutState" table="InOuts">
 
 	<id name="documentNumber" length="50" column="DocumentNumber"><generator class="assigned"/></id>
-	<version name="version" type="long" />
+	<version name="version" column="Version" type="long" />
 
 	<property name="isSOTransaction" ></property>
 	<property name="documentStatus" ></property>

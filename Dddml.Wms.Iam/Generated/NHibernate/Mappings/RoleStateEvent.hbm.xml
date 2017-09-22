@@ -18,7 +18,7 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
+    <property name="CommandId" column="CommandId"/>
     <subclass name="RoleStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -26,11 +26,11 @@
     <subclass name="RoleStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyNameRemoved" />
+        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
-        <property name="IsPropertyDescriptionRemoved" />
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="RoleStateDeleted"  discriminator-value="Deleted">

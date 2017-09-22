@@ -8,13 +8,13 @@ import org.dddml.wms.specialization.*;
 public class OrganizationStructureStateEventDtoConverter {
 
     public OrganizationStructureStateEventDto toOrganizationStructureStateEventDto(AbstractOrganizationStructureStateEvent stateEvent) {
-        if (StateEventType.CREATED.equals(stateEvent.getStateEventType())) {
+        if (stateEvent instanceof AbstractOrganizationStructureStateEvent.AbstractOrganizationStructureStateCreated) {
             OrganizationStructureStateEvent.OrganizationStructureStateCreated e = (OrganizationStructureStateEvent.OrganizationStructureStateCreated) stateEvent;
             return toOrganizationStructureStateCreatedDto(e);
-        } else if (StateEventType.MERGE_PATCHED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractOrganizationStructureStateEvent.AbstractOrganizationStructureStateMergePatched) {
             OrganizationStructureStateEvent.OrganizationStructureStateMergePatched e = (OrganizationStructureStateEvent.OrganizationStructureStateMergePatched) stateEvent;
             return toOrganizationStructureStateMergePatchedDto(e);
-        } else if (StateEventType.DELETED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractOrganizationStructureStateEvent.AbstractOrganizationStructureStateDeleted) {
             OrganizationStructureStateEvent.OrganizationStructureStateDeleted e = (OrganizationStructureStateEvent.OrganizationStructureStateDeleted) stateEvent;
             return toOrganizationStructureStateDeletedDto(e);
         }

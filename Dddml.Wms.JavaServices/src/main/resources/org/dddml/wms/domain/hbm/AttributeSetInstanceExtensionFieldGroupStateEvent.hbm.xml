@@ -22,11 +22,11 @@
 	<property name="description" ></property>
 	<property name="active" ></property>
 
-    <property name="createdBy" />
+    <property name="createdBy" column="CreatedBy"/>
 
-    <property name="createdAt" />
+    <property name="createdAt" column="CreatedAt" />
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractAttributeSetInstanceExtensionFieldGroupStateEvent$SimpleAttributeSetInstanceExtensionFieldGroupStateCreated" discriminator-value="Created">
     	
@@ -34,17 +34,17 @@
 
     <subclass name="AbstractAttributeSetInstanceExtensionFieldGroupStateEvent$SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched"  discriminator-value="MergePatched">
 
-        <property name="isPropertyFieldTypeRemoved" />
+        <property name="isPropertyFieldTypeRemoved" column="IsPropertyFieldTypeRemoved"/>
 
-        <property name="isPropertyFieldLengthRemoved" />
+        <property name="isPropertyFieldLengthRemoved" column="IsPropertyFieldLengthRemoved"/>
 
-        <property name="isPropertyFieldCountRemoved" />
+        <property name="isPropertyFieldCountRemoved" column="IsPropertyFieldCountRemoved"/>
 
-        <property name="isPropertyNameFormatRemoved" />
+        <property name="isPropertyNameFormatRemoved" column="IsPropertyNameFormatRemoved"/>
 
-        <property name="isPropertyDescriptionRemoved" />
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="isPropertyActiveRemoved" />
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
 
     </subclass>

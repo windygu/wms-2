@@ -51,7 +51,7 @@ public class HibernateAttributeStateQueryRepository implements AttributeStateQue
     @Transactional(readOnly = true)
     public Iterable<AttributeState> getAll(Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeState.SimpleAttributeState.class);
+        Criteria criteria = getCurrentSession().createCriteria(AttributeState.class);
         if (firstResult != null) { criteria.setFirstResult(firstResult); }
         if (maxResults != null) { criteria.setMaxResults(maxResults); }
          addNotDeletedRestriction(criteria);

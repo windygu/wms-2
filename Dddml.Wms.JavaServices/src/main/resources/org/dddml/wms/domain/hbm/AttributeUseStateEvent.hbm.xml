@@ -19,13 +19,13 @@
 	<property name="sequenceNumber" ></property>
 	<property name="active" ></property>
 
-    <property name="createdBy" />
+    <property name="createdBy" column="CreatedBy"/>
 
-    <property name="createdAt" />
+    <property name="createdAt" column="CreatedAt" />
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
-    <property name="version" not-null="true" />
+    <property name="version" column="Version" not-null="true" />
 
     <subclass name="AbstractAttributeUseStateEvent$SimpleAttributeUseStateCreated" discriminator-value="Created">
     	
@@ -33,9 +33,9 @@
 
     <subclass name="AbstractAttributeUseStateEvent$SimpleAttributeUseStateMergePatched"  discriminator-value="MergePatched">
 
-        <property name="isPropertySequenceNumberRemoved" />
+        <property name="isPropertySequenceNumberRemoved" column="IsPropertySequenceNumberRemoved"/>
 
-        <property name="isPropertyActiveRemoved" />
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
 
     </subclass>

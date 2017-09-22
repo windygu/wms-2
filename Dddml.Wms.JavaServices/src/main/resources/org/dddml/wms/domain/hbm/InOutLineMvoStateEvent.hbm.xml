@@ -75,11 +75,11 @@
 	<property name="inOutActive" ></property>
 	<property name="inOutDeleted" ></property>
 
-    <property name="createdBy" />
+    <property name="createdBy" column="CreatedBy"/>
 
-    <property name="createdAt" />
+    <property name="createdAt" column="CreatedAt" />
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractInOutLineMvoStateEvent$SimpleInOutLineMvoStateCreated" discriminator-value="Created">
     	
@@ -87,121 +87,121 @@
 
     <subclass name="AbstractInOutLineMvoStateEvent$SimpleInOutLineMvoStateMergePatched"  discriminator-value="MergePatched">
 
-        <property name="isPropertyDescriptionRemoved" />
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="isPropertyLocatorIdRemoved" />
+        <property name="isPropertyLocatorIdRemoved" column="IsPropertyLocatorIdRemoved"/>
 
-        <property name="isPropertyProductIdRemoved" />
+        <property name="isPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
 
-        <property name="isPropertyUomIdRemoved" />
+        <property name="isPropertyUomIdRemoved" column="IsPropertyUomIdRemoved"/>
 
-        <property name="isPropertyMovementQuantityRemoved" />
+        <property name="isPropertyMovementQuantityRemoved" column="IsPropertyMovementQuantityRemoved"/>
 
-        <property name="isPropertyConfirmedQuantityRemoved" />
+        <property name="isPropertyConfirmedQuantityRemoved" column="IsPropertyConfirmedQuantityRemoved"/>
 
-        <property name="isPropertyScrappedQuantityRemoved" />
+        <property name="isPropertyScrappedQuantityRemoved" column="IsPropertyScrappedQuantityRemoved"/>
 
-        <property name="isPropertyTargetQuantityRemoved" />
+        <property name="isPropertyTargetQuantityRemoved" column="IsPropertyTargetQuantityRemoved"/>
 
-        <property name="isPropertyPickedQuantityRemoved" />
+        <property name="isPropertyPickedQuantityRemoved" column="IsPropertyPickedQuantityRemoved"/>
 
-        <property name="isPropertyIsInvoicedRemoved" />
+        <property name="isPropertyIsInvoicedRemoved" column="IsPropertyIsInvoicedRemoved"/>
 
-        <property name="isPropertyAttributeSetInstanceIdRemoved" />
+        <property name="isPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
 
-        <property name="isPropertyIsDescriptionRemoved" />
+        <property name="isPropertyIsDescriptionRemoved" column="IsPropertyIsDescriptionRemoved"/>
 
-        <property name="isPropertyProcessedRemoved" />
+        <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
 
-        <property name="isPropertyQuantityEnteredRemoved" />
+        <property name="isPropertyQuantityEnteredRemoved" column="IsPropertyQuantityEnteredRemoved"/>
 
-        <property name="isPropertyRmaLineNumberRemoved" />
+        <property name="isPropertyRmaLineNumberRemoved" column="IsPropertyRmaLineNumberRemoved"/>
 
-        <property name="isPropertyReversalLineNumberRemoved" />
+        <property name="isPropertyReversalLineNumberRemoved" column="IsPropertyReversalLineNumberRemoved"/>
 
-        <property name="isPropertyVersionRemoved" />
+        <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 
-        <property name="isPropertyActiveRemoved" />
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
-        <property name="isPropertyInOutIsSOTransactionRemoved" />
+        <property name="isPropertyInOutIsSOTransactionRemoved" column="IsPropertyInOutIsSOTransactionRemoved"/>
 
-        <property name="isPropertyInOutDocumentStatusRemoved" />
+        <property name="isPropertyInOutDocumentStatusRemoved" column="IsPropertyInOutDocumentStatusRemoved"/>
 
-        <property name="isPropertyInOutPostedRemoved" />
+        <property name="isPropertyInOutPostedRemoved" column="IsPropertyInOutPostedRemoved"/>
 
-        <property name="isPropertyInOutProcessingRemoved" />
+        <property name="isPropertyInOutProcessingRemoved" column="IsPropertyInOutProcessingRemoved"/>
 
-        <property name="isPropertyInOutProcessedRemoved" />
+        <property name="isPropertyInOutProcessedRemoved" column="IsPropertyInOutProcessedRemoved"/>
 
-        <property name="isPropertyInOutDocumentTypeRemoved" />
+        <property name="isPropertyInOutDocumentTypeRemoved" column="IsPropertyInOutDocumentTypeRemoved"/>
 
-        <property name="isPropertyInOutDescriptionRemoved" />
+        <property name="isPropertyInOutDescriptionRemoved" column="IsPropertyInOutDescriptionRemoved"/>
 
-        <property name="isPropertyInOutOrderNumberRemoved" />
+        <property name="isPropertyInOutOrderNumberRemoved" column="IsPropertyInOutOrderNumberRemoved"/>
 
-        <property name="isPropertyInOutDateOrderedRemoved" />
+        <property name="isPropertyInOutDateOrderedRemoved" column="IsPropertyInOutDateOrderedRemoved"/>
 
-        <property name="isPropertyInOutIsPrintedRemoved" />
+        <property name="isPropertyInOutIsPrintedRemoved" column="IsPropertyInOutIsPrintedRemoved"/>
 
-        <property name="isPropertyInOutMovementTypeRemoved" />
+        <property name="isPropertyInOutMovementTypeRemoved" column="IsPropertyInOutMovementTypeRemoved"/>
 
-        <property name="isPropertyInOutMovementDateRemoved" />
+        <property name="isPropertyInOutMovementDateRemoved" column="IsPropertyInOutMovementDateRemoved"/>
 
-        <property name="isPropertyInOutBusinessPartnerIdRemoved" />
+        <property name="isPropertyInOutBusinessPartnerIdRemoved" column="IsPropertyInOutBusinessPartnerIdRemoved"/>
 
-        <property name="isPropertyInOutWarehouseIdRemoved" />
+        <property name="isPropertyInOutWarehouseIdRemoved" column="IsPropertyInOutWarehouseIdRemoved"/>
 
-        <property name="isPropertyInOutPOReferenceRemoved" />
+        <property name="isPropertyInOutPOReferenceRemoved" column="IsPropertyInOutPOReferenceRemoved"/>
 
-        <property name="isPropertyInOutFreightAmountRemoved" />
+        <property name="isPropertyInOutFreightAmountRemoved" column="IsPropertyInOutFreightAmountRemoved"/>
 
-        <property name="isPropertyInOutShipperIdRemoved" />
+        <property name="isPropertyInOutShipperIdRemoved" column="IsPropertyInOutShipperIdRemoved"/>
 
-        <property name="isPropertyInOutChargeAmountRemoved" />
+        <property name="isPropertyInOutChargeAmountRemoved" column="IsPropertyInOutChargeAmountRemoved"/>
 
-        <property name="isPropertyInOutDatePrintedRemoved" />
+        <property name="isPropertyInOutDatePrintedRemoved" column="IsPropertyInOutDatePrintedRemoved"/>
 
-        <property name="isPropertyInOutSalesRepresentativeRemoved" />
+        <property name="isPropertyInOutSalesRepresentativeRemoved" column="IsPropertyInOutSalesRepresentativeRemoved"/>
 
-        <property name="isPropertyInOutNumberOfPackagesRemoved" />
+        <property name="isPropertyInOutNumberOfPackagesRemoved" column="IsPropertyInOutNumberOfPackagesRemoved"/>
 
-        <property name="isPropertyInOutPickDateRemoved" />
+        <property name="isPropertyInOutPickDateRemoved" column="IsPropertyInOutPickDateRemoved"/>
 
-        <property name="isPropertyInOutShipDateRemoved" />
+        <property name="isPropertyInOutShipDateRemoved" column="IsPropertyInOutShipDateRemoved"/>
 
-        <property name="isPropertyInOutTrackingNumberRemoved" />
+        <property name="isPropertyInOutTrackingNumberRemoved" column="IsPropertyInOutTrackingNumberRemoved"/>
 
-        <property name="isPropertyInOutDateReceivedRemoved" />
+        <property name="isPropertyInOutDateReceivedRemoved" column="IsPropertyInOutDateReceivedRemoved"/>
 
-        <property name="isPropertyInOutIsInTransitRemoved" />
+        <property name="isPropertyInOutIsInTransitRemoved" column="IsPropertyInOutIsInTransitRemoved"/>
 
-        <property name="isPropertyInOutIsApprovedRemoved" />
+        <property name="isPropertyInOutIsApprovedRemoved" column="IsPropertyInOutIsApprovedRemoved"/>
 
-        <property name="isPropertyInOutIsInDisputeRemoved" />
+        <property name="isPropertyInOutIsInDisputeRemoved" column="IsPropertyInOutIsInDisputeRemoved"/>
 
-        <property name="isPropertyInOutVolumeRemoved" />
+        <property name="isPropertyInOutVolumeRemoved" column="IsPropertyInOutVolumeRemoved"/>
 
-        <property name="isPropertyInOutWeightRemoved" />
+        <property name="isPropertyInOutWeightRemoved" column="IsPropertyInOutWeightRemoved"/>
 
-        <property name="isPropertyInOutRmaNumberRemoved" />
+        <property name="isPropertyInOutRmaNumberRemoved" column="IsPropertyInOutRmaNumberRemoved"/>
 
-        <property name="isPropertyInOutReversalNumberRemoved" />
+        <property name="isPropertyInOutReversalNumberRemoved" column="IsPropertyInOutReversalNumberRemoved"/>
 
-        <property name="isPropertyInOutIsDropShipRemoved" />
+        <property name="isPropertyInOutIsDropShipRemoved" column="IsPropertyInOutIsDropShipRemoved"/>
 
-        <property name="isPropertyInOutDropShipBusinessPartnerIdRemoved" />
+        <property name="isPropertyInOutDropShipBusinessPartnerIdRemoved" column="IsPropertyInOutDropShipBusinessPartnerIdRemoved"/>
 
-        <property name="isPropertyInOutCreatedByRemoved" />
+        <property name="isPropertyInOutCreatedByRemoved" column="IsPropertyInOutCreatedByRemoved"/>
 
-        <property name="isPropertyInOutCreatedAtRemoved" />
+        <property name="isPropertyInOutCreatedAtRemoved" column="IsPropertyInOutCreatedAtRemoved"/>
 
-        <property name="isPropertyInOutUpdatedByRemoved" />
+        <property name="isPropertyInOutUpdatedByRemoved" column="IsPropertyInOutUpdatedByRemoved"/>
 
-        <property name="isPropertyInOutUpdatedAtRemoved" />
+        <property name="isPropertyInOutUpdatedAtRemoved" column="IsPropertyInOutUpdatedAtRemoved"/>
 
-        <property name="isPropertyInOutActiveRemoved" />
+        <property name="isPropertyInOutActiveRemoved" column="IsPropertyInOutActiveRemoved"/>
 
-        <property name="isPropertyInOutDeletedRemoved" />
+        <property name="isPropertyInOutDeletedRemoved" column="IsPropertyInOutDeletedRemoved"/>
 
 
     </subclass>

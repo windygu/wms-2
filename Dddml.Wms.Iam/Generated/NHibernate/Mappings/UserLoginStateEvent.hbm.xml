@@ -18,8 +18,8 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
-    <property name="Version" not-null="true" />
+    <property name="CommandId" column="CommandId"/>
+    <property name="Version" column="Version" not-null="true" />
 
     <subclass name="UserLoginStateCreated" discriminator-value="Created">
     	
@@ -28,7 +28,7 @@
     <subclass name="UserLoginStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="UserLoginStateRemoved"  discriminator-value="Removed">

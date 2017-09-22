@@ -10,7 +10,7 @@
 
     <cache usage="read-only"/>
 	<id name="attributeSetInstanceId" length="50" column="AttributeSetInstanceId"><generator class="assigned"/></id>
-	<version name="version" type="long" />
+	<version name="version" column="Version" type="long" />
 
 	<property name="attributeSetId" ></property>
 	<property name="organizationId" ></property>
@@ -481,7 +481,7 @@
 	<property name="active" ></property>
 	<property name="deleted" ></property>
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
 
 

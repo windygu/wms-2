@@ -12,7 +12,7 @@
 		<key-property name="inOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
 		<key-property name="lineNumber" ><column name="InOutLineIdLineNumber" /></key-property>
 	</composite-id>
-	<version name="version" type="long" />
+	<version name="version" column="Version" type="long" />
 
 	<property name="description" ></property>
 	<property name="locatorId" ></property>

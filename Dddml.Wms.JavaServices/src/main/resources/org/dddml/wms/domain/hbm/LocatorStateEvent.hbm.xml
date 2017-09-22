@@ -25,11 +25,11 @@
 	<property name="z" ></property>
 	<property name="active" ></property>
 
-    <property name="createdBy" />
+    <property name="createdBy" column="CreatedBy"/>
 
-    <property name="createdAt" />
+    <property name="createdAt" column="CreatedAt" />
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractLocatorStateEvent$SimpleLocatorStateCreated" discriminator-value="Created">
     	
@@ -37,23 +37,23 @@
 
     <subclass name="AbstractLocatorStateEvent$SimpleLocatorStateMergePatched"  discriminator-value="MergePatched">
 
-        <property name="isPropertyWarehouseIdRemoved" />
+        <property name="isPropertyWarehouseIdRemoved" column="IsPropertyWarehouseIdRemoved"/>
 
-        <property name="isPropertyParentLocatorIdRemoved" />
+        <property name="isPropertyParentLocatorIdRemoved" column="IsPropertyParentLocatorIdRemoved"/>
 
-        <property name="isPropertyLocatorTypeRemoved" />
+        <property name="isPropertyLocatorTypeRemoved" column="IsPropertyLocatorTypeRemoved"/>
 
-        <property name="isPropertyPriorityNumberRemoved" />
+        <property name="isPropertyPriorityNumberRemoved" column="IsPropertyPriorityNumberRemoved"/>
 
-        <property name="isPropertyIsDefaultRemoved" />
+        <property name="isPropertyIsDefaultRemoved" column="IsPropertyIsDefaultRemoved"/>
 
-        <property name="isPropertyXRemoved" />
+        <property name="isPropertyXRemoved" column="IsPropertyXRemoved"/>
 
-        <property name="isPropertyYRemoved" />
+        <property name="isPropertyYRemoved" column="IsPropertyYRemoved"/>
 
-        <property name="isPropertyZRemoved" />
+        <property name="isPropertyZRemoved" column="IsPropertyZRemoved"/>
 
-        <property name="isPropertyActiveRemoved" />
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
 
     </subclass>

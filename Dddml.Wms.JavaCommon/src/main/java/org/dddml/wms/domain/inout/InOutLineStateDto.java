@@ -320,6 +320,9 @@ public class InOutLineStateDto
 
         public InOutLineStateDto toInOutLineStateDto(InOutLineState state)
         {
+            if(state == null) {
+                return null;
+            }
             InOutLineStateDto dto = new InOutLineStateDto();
             if (returnedFieldsContains("LineNumber")) {
                 dto.setLineNumber(state.getLineNumber());

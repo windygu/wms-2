@@ -19,8 +19,8 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
-    <property name="Version" not-null="true" />
+    <property name="CommandId" column="CommandId"/>
+    <property name="Version" column="Version" not-null="true" />
 
     <subclass name="UserClaimStateCreated" discriminator-value="Created">
     	
@@ -29,11 +29,11 @@
     <subclass name="UserClaimStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyClaimTypeRemoved" />
+        <property name="IsPropertyClaimTypeRemoved" column="IsPropertyClaimTypeRemoved"/>
 
-        <property name="IsPropertyClaimValueRemoved" />
+        <property name="IsPropertyClaimValueRemoved" column="IsPropertyClaimValueRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="UserClaimStateRemoved"  discriminator-value="Removed">

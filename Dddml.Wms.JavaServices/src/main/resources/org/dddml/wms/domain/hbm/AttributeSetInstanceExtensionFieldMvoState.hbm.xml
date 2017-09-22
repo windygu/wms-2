@@ -12,7 +12,7 @@
 		<key-property name="groupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
 		<key-property name="index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
 	</composite-id>
-	<version name="attrSetInstEFGroupVersion" type="long" />
+	<version name="attrSetInstEFGroupVersion" column="AttrSetInstEFGroupVersion" type="long" />
 
 	<property name="name" ><column name="Name" unique-key="UniqueName" /></property>
 	<property name="type" ></property>

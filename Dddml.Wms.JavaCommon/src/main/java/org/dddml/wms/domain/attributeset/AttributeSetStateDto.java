@@ -199,6 +199,9 @@ public class AttributeSetStateDto
 
         public AttributeSetStateDto toAttributeSetStateDto(AttributeSetState state)
         {
+            if(state == null) {
+                return null;
+            }
             AttributeSetStateDto dto = new AttributeSetStateDto();
             if (returnedFieldsContains("AttributeSetId")) {
                 dto.setAttributeSetId(state.getAttributeSetId());

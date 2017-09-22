@@ -9,13 +9,13 @@ import org.dddml.wms.specialization.*;
 public class AttributeValueMvoStateEventDtoConverter {
 
     public AttributeValueMvoStateEventDto toAttributeValueMvoStateEventDto(AbstractAttributeValueMvoStateEvent stateEvent) {
-        if (StateEventType.CREATED.equals(stateEvent.getStateEventType())) {
+        if (stateEvent instanceof AbstractAttributeValueMvoStateEvent.AbstractAttributeValueMvoStateCreated) {
             AttributeValueMvoStateEvent.AttributeValueMvoStateCreated e = (AttributeValueMvoStateEvent.AttributeValueMvoStateCreated) stateEvent;
             return toAttributeValueMvoStateCreatedDto(e);
-        } else if (StateEventType.MERGE_PATCHED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractAttributeValueMvoStateEvent.AbstractAttributeValueMvoStateMergePatched) {
             AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched e = (AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched) stateEvent;
             return toAttributeValueMvoStateMergePatchedDto(e);
-        } else if (StateEventType.DELETED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractAttributeValueMvoStateEvent.AbstractAttributeValueMvoStateDeleted) {
             AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted e = (AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted) stateEvent;
             return toAttributeValueMvoStateDeletedDto(e);
         }

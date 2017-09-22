@@ -37,7 +37,7 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
+    <property name="CommandId" column="CommandId"/>
     <subclass name="AttributeValueMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -45,47 +45,47 @@
     <subclass name="AttributeValueMvoStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyNameRemoved" />
+        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
-        <property name="IsPropertyDescriptionRemoved" />
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="IsPropertyReferenceIdRemoved" />
+        <property name="IsPropertyReferenceIdRemoved" column="IsPropertyReferenceIdRemoved"/>
 
-        <property name="IsPropertyVersionRemoved" />
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
-        <property name="IsPropertyAttributeNameRemoved" />
+        <property name="IsPropertyAttributeNameRemoved" column="IsPropertyAttributeNameRemoved"/>
 
-        <property name="IsPropertyAttributeOrganizationIdRemoved" />
+        <property name="IsPropertyAttributeOrganizationIdRemoved" column="IsPropertyAttributeOrganizationIdRemoved"/>
 
-        <property name="IsPropertyAttributeDescriptionRemoved" />
+        <property name="IsPropertyAttributeDescriptionRemoved" column="IsPropertyAttributeDescriptionRemoved"/>
 
-        <property name="IsPropertyAttributeIsMandatoryRemoved" />
+        <property name="IsPropertyAttributeIsMandatoryRemoved" column="IsPropertyAttributeIsMandatoryRemoved"/>
 
-        <property name="IsPropertyAttributeIsInstanceAttributeRemoved" />
+        <property name="IsPropertyAttributeIsInstanceAttributeRemoved" column="IsPropertyAttributeIsInstanceAttributeRemoved"/>
 
-        <property name="IsPropertyAttributeAttributeValueTypeRemoved" />
+        <property name="IsPropertyAttributeAttributeValueTypeRemoved" column="IsPropertyAttributeAttributeValueTypeRemoved"/>
 
-        <property name="IsPropertyAttributeAttributeValueLengthRemoved" />
+        <property name="IsPropertyAttributeAttributeValueLengthRemoved" column="IsPropertyAttributeAttributeValueLengthRemoved"/>
 
-        <property name="IsPropertyAttributeIsListRemoved" />
+        <property name="IsPropertyAttributeIsListRemoved" column="IsPropertyAttributeIsListRemoved"/>
 
-        <property name="IsPropertyAttributeFieldNameRemoved" />
+        <property name="IsPropertyAttributeFieldNameRemoved" column="IsPropertyAttributeFieldNameRemoved"/>
 
-        <property name="IsPropertyAttributeReferenceIdRemoved" />
+        <property name="IsPropertyAttributeReferenceIdRemoved" column="IsPropertyAttributeReferenceIdRemoved"/>
 
-        <property name="IsPropertyAttributeCreatedByRemoved" />
+        <property name="IsPropertyAttributeCreatedByRemoved" column="IsPropertyAttributeCreatedByRemoved"/>
 
-        <property name="IsPropertyAttributeCreatedAtRemoved" />
+        <property name="IsPropertyAttributeCreatedAtRemoved" column="IsPropertyAttributeCreatedAtRemoved"/>
 
-        <property name="IsPropertyAttributeUpdatedByRemoved" />
+        <property name="IsPropertyAttributeUpdatedByRemoved" column="IsPropertyAttributeUpdatedByRemoved"/>
 
-        <property name="IsPropertyAttributeUpdatedAtRemoved" />
+        <property name="IsPropertyAttributeUpdatedAtRemoved" column="IsPropertyAttributeUpdatedAtRemoved"/>
 
-        <property name="IsPropertyAttributeActiveRemoved" />
+        <property name="IsPropertyAttributeActiveRemoved" column="IsPropertyAttributeActiveRemoved"/>
 
-        <property name="IsPropertyAttributeDeletedRemoved" />
+        <property name="IsPropertyAttributeDeletedRemoved" column="IsPropertyAttributeDeletedRemoved"/>
     </subclass>
 
     <subclass name="AttributeValueMvoStateDeleted"  discriminator-value="Deleted">

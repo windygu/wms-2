@@ -35,7 +35,7 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
+    <property name="CommandId" column="CommandId"/>
     <subclass name="UserPermissionMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -43,43 +43,43 @@
     <subclass name="UserPermissionMvoStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyVersionRemoved" />
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
-        <property name="IsPropertyUserUserNameRemoved" />
+        <property name="IsPropertyUserUserNameRemoved" column="IsPropertyUserUserNameRemoved"/>
 
-        <property name="IsPropertyUserAccessFailedCountRemoved" />
+        <property name="IsPropertyUserAccessFailedCountRemoved" column="IsPropertyUserAccessFailedCountRemoved"/>
 
-        <property name="IsPropertyUserEmailRemoved" />
+        <property name="IsPropertyUserEmailRemoved" column="IsPropertyUserEmailRemoved"/>
 
-        <property name="IsPropertyUserEmailConfirmedRemoved" />
+        <property name="IsPropertyUserEmailConfirmedRemoved" column="IsPropertyUserEmailConfirmedRemoved"/>
 
-        <property name="IsPropertyUserLockoutEnabledRemoved" />
+        <property name="IsPropertyUserLockoutEnabledRemoved" column="IsPropertyUserLockoutEnabledRemoved"/>
 
-        <property name="IsPropertyUserLockoutEndDateUtcRemoved" />
+        <property name="IsPropertyUserLockoutEndDateUtcRemoved" column="IsPropertyUserLockoutEndDateUtcRemoved"/>
 
-        <property name="IsPropertyUserPasswordHashRemoved" />
+        <property name="IsPropertyUserPasswordHashRemoved" column="IsPropertyUserPasswordHashRemoved"/>
 
-        <property name="IsPropertyUserPhoneNumberRemoved" />
+        <property name="IsPropertyUserPhoneNumberRemoved" column="IsPropertyUserPhoneNumberRemoved"/>
 
-        <property name="IsPropertyUserPhoneNumberConfirmedRemoved" />
+        <property name="IsPropertyUserPhoneNumberConfirmedRemoved" column="IsPropertyUserPhoneNumberConfirmedRemoved"/>
 
-        <property name="IsPropertyUserTwoFactorEnabledRemoved" />
+        <property name="IsPropertyUserTwoFactorEnabledRemoved" column="IsPropertyUserTwoFactorEnabledRemoved"/>
 
-        <property name="IsPropertyUserSecurityStampRemoved" />
+        <property name="IsPropertyUserSecurityStampRemoved" column="IsPropertyUserSecurityStampRemoved"/>
 
-        <property name="IsPropertyUserCreatedByRemoved" />
+        <property name="IsPropertyUserCreatedByRemoved" column="IsPropertyUserCreatedByRemoved"/>
 
-        <property name="IsPropertyUserCreatedAtRemoved" />
+        <property name="IsPropertyUserCreatedAtRemoved" column="IsPropertyUserCreatedAtRemoved"/>
 
-        <property name="IsPropertyUserUpdatedByRemoved" />
+        <property name="IsPropertyUserUpdatedByRemoved" column="IsPropertyUserUpdatedByRemoved"/>
 
-        <property name="IsPropertyUserUpdatedAtRemoved" />
+        <property name="IsPropertyUserUpdatedAtRemoved" column="IsPropertyUserUpdatedAtRemoved"/>
 
-        <property name="IsPropertyUserActiveRemoved" />
+        <property name="IsPropertyUserActiveRemoved" column="IsPropertyUserActiveRemoved"/>
 
-        <property name="IsPropertyUserDeletedRemoved" />
+        <property name="IsPropertyUserDeletedRemoved" column="IsPropertyUserDeletedRemoved"/>
     </subclass>
 
     <subclass name="UserPermissionMvoStateDeleted"  discriminator-value="Deleted">

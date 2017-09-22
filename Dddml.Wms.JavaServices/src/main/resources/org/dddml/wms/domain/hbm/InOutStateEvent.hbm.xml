@@ -51,11 +51,11 @@
 	<property name="dropShipBusinessPartnerId" ></property>
 	<property name="active" ></property>
 
-    <property name="createdBy" />
+    <property name="createdBy" column="CreatedBy"/>
 
-    <property name="createdAt" />
+    <property name="createdAt" column="CreatedAt" />
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractInOutStateEvent$SimpleInOutStateCreated" discriminator-value="Created">
     	
@@ -63,75 +63,75 @@
 
     <subclass name="AbstractInOutStateEvent$SimpleInOutStateMergePatched"  discriminator-value="MergePatched">
 
-        <property name="isPropertyIsSOTransactionRemoved" />
+        <property name="isPropertyIsSOTransactionRemoved" column="IsPropertyIsSOTransactionRemoved"/>
 
-        <property name="isPropertyDocumentStatusRemoved" />
+        <property name="isPropertyDocumentStatusRemoved" column="IsPropertyDocumentStatusRemoved"/>
 
-        <property name="isPropertyPostedRemoved" />
+        <property name="isPropertyPostedRemoved" column="IsPropertyPostedRemoved"/>
 
-        <property name="isPropertyProcessingRemoved" />
+        <property name="isPropertyProcessingRemoved" column="IsPropertyProcessingRemoved"/>
 
-        <property name="isPropertyProcessedRemoved" />
+        <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
 
-        <property name="isPropertyDocumentTypeRemoved" />
+        <property name="isPropertyDocumentTypeRemoved" column="IsPropertyDocumentTypeRemoved"/>
 
-        <property name="isPropertyDescriptionRemoved" />
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="isPropertyOrderNumberRemoved" />
+        <property name="isPropertyOrderNumberRemoved" column="IsPropertyOrderNumberRemoved"/>
 
-        <property name="isPropertyDateOrderedRemoved" />
+        <property name="isPropertyDateOrderedRemoved" column="IsPropertyDateOrderedRemoved"/>
 
-        <property name="isPropertyIsPrintedRemoved" />
+        <property name="isPropertyIsPrintedRemoved" column="IsPropertyIsPrintedRemoved"/>
 
-        <property name="isPropertyMovementTypeRemoved" />
+        <property name="isPropertyMovementTypeRemoved" column="IsPropertyMovementTypeRemoved"/>
 
-        <property name="isPropertyMovementDateRemoved" />
+        <property name="isPropertyMovementDateRemoved" column="IsPropertyMovementDateRemoved"/>
 
-        <property name="isPropertyBusinessPartnerIdRemoved" />
+        <property name="isPropertyBusinessPartnerIdRemoved" column="IsPropertyBusinessPartnerIdRemoved"/>
 
-        <property name="isPropertyWarehouseIdRemoved" />
+        <property name="isPropertyWarehouseIdRemoved" column="IsPropertyWarehouseIdRemoved"/>
 
-        <property name="isPropertyPOReferenceRemoved" />
+        <property name="isPropertyPOReferenceRemoved" column="IsPropertyPOReferenceRemoved"/>
 
-        <property name="isPropertyFreightAmountRemoved" />
+        <property name="isPropertyFreightAmountRemoved" column="IsPropertyFreightAmountRemoved"/>
 
-        <property name="isPropertyShipperIdRemoved" />
+        <property name="isPropertyShipperIdRemoved" column="IsPropertyShipperIdRemoved"/>
 
-        <property name="isPropertyChargeAmountRemoved" />
+        <property name="isPropertyChargeAmountRemoved" column="IsPropertyChargeAmountRemoved"/>
 
-        <property name="isPropertyDatePrintedRemoved" />
+        <property name="isPropertyDatePrintedRemoved" column="IsPropertyDatePrintedRemoved"/>
 
-        <property name="isPropertySalesRepresentativeRemoved" />
+        <property name="isPropertySalesRepresentativeRemoved" column="IsPropertySalesRepresentativeRemoved"/>
 
-        <property name="isPropertyNumberOfPackagesRemoved" />
+        <property name="isPropertyNumberOfPackagesRemoved" column="IsPropertyNumberOfPackagesRemoved"/>
 
-        <property name="isPropertyPickDateRemoved" />
+        <property name="isPropertyPickDateRemoved" column="IsPropertyPickDateRemoved"/>
 
-        <property name="isPropertyShipDateRemoved" />
+        <property name="isPropertyShipDateRemoved" column="IsPropertyShipDateRemoved"/>
 
-        <property name="isPropertyTrackingNumberRemoved" />
+        <property name="isPropertyTrackingNumberRemoved" column="IsPropertyTrackingNumberRemoved"/>
 
-        <property name="isPropertyDateReceivedRemoved" />
+        <property name="isPropertyDateReceivedRemoved" column="IsPropertyDateReceivedRemoved"/>
 
-        <property name="isPropertyIsInTransitRemoved" />
+        <property name="isPropertyIsInTransitRemoved" column="IsPropertyIsInTransitRemoved"/>
 
-        <property name="isPropertyIsApprovedRemoved" />
+        <property name="isPropertyIsApprovedRemoved" column="IsPropertyIsApprovedRemoved"/>
 
-        <property name="isPropertyIsInDisputeRemoved" />
+        <property name="isPropertyIsInDisputeRemoved" column="IsPropertyIsInDisputeRemoved"/>
 
-        <property name="isPropertyVolumeRemoved" />
+        <property name="isPropertyVolumeRemoved" column="IsPropertyVolumeRemoved"/>
 
-        <property name="isPropertyWeightRemoved" />
+        <property name="isPropertyWeightRemoved" column="IsPropertyWeightRemoved"/>
 
-        <property name="isPropertyRmaNumberRemoved" />
+        <property name="isPropertyRmaNumberRemoved" column="IsPropertyRmaNumberRemoved"/>
 
-        <property name="isPropertyReversalNumberRemoved" />
+        <property name="isPropertyReversalNumberRemoved" column="IsPropertyReversalNumberRemoved"/>
 
-        <property name="isPropertyIsDropShipRemoved" />
+        <property name="isPropertyIsDropShipRemoved" column="IsPropertyIsDropShipRemoved"/>
 
-        <property name="isPropertyDropShipBusinessPartnerIdRemoved" />
+        <property name="isPropertyDropShipBusinessPartnerIdRemoved" column="IsPropertyDropShipBusinessPartnerIdRemoved"/>
 
-        <property name="isPropertyActiveRemoved" />
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
 
     </subclass>

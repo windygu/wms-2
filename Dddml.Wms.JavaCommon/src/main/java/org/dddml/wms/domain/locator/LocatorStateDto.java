@@ -211,6 +211,9 @@ public class LocatorStateDto
 
         public LocatorStateDto toLocatorStateDto(LocatorState state)
         {
+            if(state == null) {
+                return null;
+            }
             LocatorStateDto dto = new LocatorStateDto();
             if (returnedFieldsContains("LocatorId")) {
                 dto.setLocatorId(state.getLocatorId());

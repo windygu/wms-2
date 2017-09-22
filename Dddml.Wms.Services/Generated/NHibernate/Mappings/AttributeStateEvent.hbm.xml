@@ -26,7 +26,7 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
+    <property name="CommandId" column="CommandId"/>
     <subclass name="AttributeStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -34,27 +34,27 @@
     <subclass name="AttributeStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyNameRemoved" />
+        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
-        <property name="IsPropertyOrganizationIdRemoved" />
+        <property name="IsPropertyOrganizationIdRemoved" column="IsPropertyOrganizationIdRemoved"/>
 
-        <property name="IsPropertyDescriptionRemoved" />
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="IsPropertyIsMandatoryRemoved" />
+        <property name="IsPropertyIsMandatoryRemoved" column="IsPropertyIsMandatoryRemoved"/>
 
-        <property name="IsPropertyIsInstanceAttributeRemoved" />
+        <property name="IsPropertyIsInstanceAttributeRemoved" column="IsPropertyIsInstanceAttributeRemoved"/>
 
-        <property name="IsPropertyAttributeValueTypeRemoved" />
+        <property name="IsPropertyAttributeValueTypeRemoved" column="IsPropertyAttributeValueTypeRemoved"/>
 
-        <property name="IsPropertyAttributeValueLengthRemoved" />
+        <property name="IsPropertyAttributeValueLengthRemoved" column="IsPropertyAttributeValueLengthRemoved"/>
 
-        <property name="IsPropertyIsListRemoved" />
+        <property name="IsPropertyIsListRemoved" column="IsPropertyIsListRemoved"/>
 
-        <property name="IsPropertyFieldNameRemoved" />
+        <property name="IsPropertyFieldNameRemoved" column="IsPropertyFieldNameRemoved"/>
 
-        <property name="IsPropertyReferenceIdRemoved" />
+        <property name="IsPropertyReferenceIdRemoved" column="IsPropertyReferenceIdRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="AttributeStateDeleted"  discriminator-value="Deleted">

@@ -52,7 +52,7 @@ public class HibernateAttributeSetInstanceStateQueryRepository implements Attrib
     @Transactional(readOnly = true)
     public Iterable<AttributeSetInstanceState> getAll(Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState.class);
+        Criteria criteria = getCurrentSession().createCriteria(AttributeSetInstanceState.class);
         if (firstResult != null) { criteria.setFirstResult(firstResult); }
         if (maxResults != null) { criteria.setMaxResults(maxResults); }
          addNotDeletedRestriction(criteria);

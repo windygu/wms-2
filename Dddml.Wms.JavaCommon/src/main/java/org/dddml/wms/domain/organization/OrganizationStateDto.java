@@ -163,6 +163,9 @@ public class OrganizationStateDto
 
         public OrganizationStateDto toOrganizationStateDto(OrganizationState state)
         {
+            if(state == null) {
+                return null;
+            }
             OrganizationStateDto dto = new OrganizationStateDto();
             if (returnedFieldsContains("OrganizationId")) {
                 dto.setOrganizationId(state.getOrganizationId());

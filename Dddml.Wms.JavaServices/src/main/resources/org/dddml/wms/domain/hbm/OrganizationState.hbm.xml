@@ -9,7 +9,7 @@
   <class name="org.dddml.wms.domain.organization.AbstractOrganizationState$SimpleOrganizationState" table="Organizations">
 
 	<id name="organizationId" length="50" column="OrganizationId"><generator class="assigned"/></id>
-	<version name="version" type="long" />
+	<version name="version" column="Version" type="long" />
 
 	<property name="name" ></property>
 	<property name="description" ></property>

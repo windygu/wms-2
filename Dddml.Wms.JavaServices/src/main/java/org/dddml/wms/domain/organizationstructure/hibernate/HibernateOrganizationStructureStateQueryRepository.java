@@ -51,7 +51,7 @@ public class HibernateOrganizationStructureStateQueryRepository implements Organ
     @Transactional(readOnly = true)
     public Iterable<OrganizationStructureState> getAll(Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(AbstractOrganizationStructureState.SimpleOrganizationStructureState.class);
+        Criteria criteria = getCurrentSession().createCriteria(OrganizationStructureState.class);
         if (firstResult != null) { criteria.setFirstResult(firstResult); }
         if (maxResults != null) { criteria.setMaxResults(maxResults); }
          addNotDeletedRestriction(criteria);

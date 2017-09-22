@@ -8,13 +8,13 @@ import org.dddml.wms.specialization.*;
 public class AttributeSetInstanceExtensionFieldStateEventDtoConverter {
 
     public AttributeSetInstanceExtensionFieldStateEventDto toAttributeSetInstanceExtensionFieldStateEventDto(AbstractAttributeSetInstanceExtensionFieldStateEvent stateEvent) {
-        if (StateEventType.CREATED.equals(stateEvent.getStateEventType())) {
+        if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldStateEvent.AbstractAttributeSetInstanceExtensionFieldStateCreated) {
             AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated e = (AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated) stateEvent;
             return toAttributeSetInstanceExtensionFieldStateCreatedDto(e);
-        } else if (StateEventType.MERGE_PATCHED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldStateEvent.AbstractAttributeSetInstanceExtensionFieldStateMergePatched) {
             AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched e = (AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched) stateEvent;
             return toAttributeSetInstanceExtensionFieldStateMergePatchedDto(e);
-        } else if (StateEventType.REMOVED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldStateEvent.AbstractAttributeSetInstanceExtensionFieldStateRemoved) {
             AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateRemoved e = (AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateRemoved) stateEvent;
             return toAttributeSetInstanceExtensionFieldStateRemovedDto(e);
         }

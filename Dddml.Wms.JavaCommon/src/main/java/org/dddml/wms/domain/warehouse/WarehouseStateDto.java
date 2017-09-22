@@ -151,6 +151,9 @@ public class WarehouseStateDto
 
         public WarehouseStateDto toWarehouseStateDto(WarehouseState state)
         {
+            if(state == null) {
+                return null;
+            }
             WarehouseStateDto dto = new WarehouseStateDto();
             if (returnedFieldsContains("WarehouseId")) {
                 dto.setWarehouseId(state.getWarehouseId());

@@ -27,11 +27,11 @@
 	<property name="referenceId" ></property>
 	<property name="active" ></property>
 
-    <property name="createdBy" />
+    <property name="createdBy" column="CreatedBy"/>
 
-    <property name="createdAt" />
+    <property name="createdAt" column="CreatedAt" />
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractAttributeStateEvent$SimpleAttributeStateCreated" discriminator-value="Created">
     	
@@ -39,27 +39,27 @@
 
     <subclass name="AbstractAttributeStateEvent$SimpleAttributeStateMergePatched"  discriminator-value="MergePatched">
 
-        <property name="isPropertyNameRemoved" />
+        <property name="isPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
-        <property name="isPropertyOrganizationIdRemoved" />
+        <property name="isPropertyOrganizationIdRemoved" column="IsPropertyOrganizationIdRemoved"/>
 
-        <property name="isPropertyDescriptionRemoved" />
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="isPropertyIsMandatoryRemoved" />
+        <property name="isPropertyIsMandatoryRemoved" column="IsPropertyIsMandatoryRemoved"/>
 
-        <property name="isPropertyIsInstanceAttributeRemoved" />
+        <property name="isPropertyIsInstanceAttributeRemoved" column="IsPropertyIsInstanceAttributeRemoved"/>
 
-        <property name="isPropertyAttributeValueTypeRemoved" />
+        <property name="isPropertyAttributeValueTypeRemoved" column="IsPropertyAttributeValueTypeRemoved"/>
 
-        <property name="isPropertyAttributeValueLengthRemoved" />
+        <property name="isPropertyAttributeValueLengthRemoved" column="IsPropertyAttributeValueLengthRemoved"/>
 
-        <property name="isPropertyIsListRemoved" />
+        <property name="isPropertyIsListRemoved" column="IsPropertyIsListRemoved"/>
 
-        <property name="isPropertyFieldNameRemoved" />
+        <property name="isPropertyFieldNameRemoved" column="IsPropertyFieldNameRemoved"/>
 
-        <property name="isPropertyReferenceIdRemoved" />
+        <property name="isPropertyReferenceIdRemoved" column="IsPropertyReferenceIdRemoved"/>
 
-        <property name="isPropertyActiveRemoved" />
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
 
     </subclass>

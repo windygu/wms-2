@@ -12,7 +12,7 @@
 		<key-property name="attributeId" ><column name="AttributeValueIdAttributeId" length="50" /></key-property>
 		<key-property name="value" ><column name="AttributeValueIdValue" length="50" /></key-property>
 	</composite-id>
-	<version name="attributeVersion" type="long" />
+	<version name="attributeVersion" column="AttributeVersion" type="long" />
 
 	<property name="name" ></property>
 	<property name="description" ></property>

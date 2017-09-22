@@ -20,8 +20,8 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
-    <property name="Version" not-null="true" />
+    <property name="CommandId" column="CommandId"/>
+    <property name="Version" column="Version" not-null="true" />
 
     <subclass name="AttributeValueStateCreated" discriminator-value="Created">
     	
@@ -30,13 +30,13 @@
     <subclass name="AttributeValueStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyNameRemoved" />
+        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
-        <property name="IsPropertyDescriptionRemoved" />
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="IsPropertyReferenceIdRemoved" />
+        <property name="IsPropertyReferenceIdRemoved" column="IsPropertyReferenceIdRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="AttributeValueStateRemoved"  discriminator-value="Removed">

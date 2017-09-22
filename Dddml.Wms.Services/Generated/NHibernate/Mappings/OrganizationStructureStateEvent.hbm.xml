@@ -18,7 +18,7 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
+    <property name="CommandId" column="CommandId"/>
     <subclass name="OrganizationStructureStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -26,7 +26,7 @@
     <subclass name="OrganizationStructureStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="OrganizationStructureStateDeleted"  discriminator-value="Deleted">

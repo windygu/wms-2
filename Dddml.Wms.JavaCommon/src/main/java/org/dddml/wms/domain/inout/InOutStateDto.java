@@ -537,6 +537,9 @@ public class InOutStateDto
 
         public InOutStateDto toInOutStateDto(InOutState state)
         {
+            if(state == null) {
+                return null;
+            }
             InOutStateDto dto = new InOutStateDto();
             if (returnedFieldsContains("DocumentNumber")) {
                 dto.setDocumentNumber(state.getDocumentNumber());

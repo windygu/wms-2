@@ -11,45 +11,74 @@ import org.hibernate.*;
 import org.hibernate.criterion.*;
 import org.springframework.transaction.annotation.Transactional;
 import org.dddml.wms.domain.attributesetinstance.*;
+import java.util.function.Consumer;
 
-public class HibernateAttributeSetInstanceEventStore extends AbstractHibernateEventStore
-{
-    @Override
-    protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
-    {
-        return new AttributeSetInstanceStateEventId((String) eventStoreAggregateId.getId(), version);
+public class HibernateAttributeSetInstanceEventStore implements EventStore {
+    private SessionFactory sessionFactory;
+
+    public SessionFactory getSessionFactory() { return this.sessionFactory; }
+
+    public void setSessionFactory(SessionFactory sessionFactory) { this.sessionFactory = sessionFactory; }
+
+    protected Session getCurrentSession() {
+        return this.sessionFactory.getCurrentSession();
     }
 
+    @Transactional(readOnly = true)
     @Override
-    protected Class getSupportedStateEventType()
-    {
-        return AbstractAttributeSetInstanceStateEvent.class;
+    public EventStream loadEventStream(EventStoreAggregateId aggregateId) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Transactional
+    @Override
+    public void appendEvents(EventStoreAggregateId aggregateId, long version, Collection<Event> events, Consumer<Collection<Event>> afterEventsAppended) {
+        for (Event e : events) {
+            if (e instanceof AbstractAttributeSetInstanceStateEvent.AbstractAttributeSetInstanceStateCreated) {
+                AttributeSetInstanceState s = ((AbstractAttributeSetInstanceStateEvent.AbstractAttributeSetInstanceStateCreated)e).getAttributeSetInstanceState();
+                getCurrentSession().save(s);
+            } else {
+                getCurrentSession().save(e);
+            }
+            if (e instanceof Saveable) {
+                Saveable saveable = (Saveable) e;
+                saveable.save();
+            }
+        }
+        //System.out.println("####################################################");
+        afterEventsAppended.accept(events);
+        //System.out.println("####################################################");
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Event findLastEvent(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
+        Class supportedEventType = AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated.class;
+        if (!eventType.isAssignableFrom(supportedEventType)) {
+            throw new UnsupportedOperationException();
+        }
+        return getStateEvent(eventStoreAggregateId, version);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Event getStateEvent(EventStoreAggregateId eventStoreAggregateId, long version) {
+        String idObj = (String) eventStoreAggregateId.getId();
+        AttributeSetInstanceState state = getCurrentSession().get(AbstractAttributeSetInstanceState.class, idObj);
+        return new AbstractAttributeSetInstanceStateEvent.SimpleAttributeSetInstanceStateCreated(state);
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractAttributeSetInstanceStateEvent.class;
+        Class supportedEventType = AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
-        String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeSetInstanceStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.attributeSetInstanceId", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
-        List es = criteria.list();
-        for (Object e : es) {
-            ((AbstractAttributeSetInstanceStateEvent) e).setStateEventReadOnly(true);
-        }
-        EventStream eventStream = new EventStream();
-        if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractAttributeSetInstanceStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
-        } else {
-            //todo?
-        }
-        eventStream.setEvents(es);
-        return eventStream;
+        Event e = getStateEvent(eventStoreAggregateId, version);
+        EventStream es = new EventStream();
+        es.setEvents(e != null ? Collections.singletonList(e) : Collections.EMPTY_LIST);
+        return es;
     }
 
 }

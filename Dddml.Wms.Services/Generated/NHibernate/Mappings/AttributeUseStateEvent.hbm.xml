@@ -18,8 +18,8 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
-    <property name="Version" not-null="true" />
+    <property name="CommandId" column="CommandId"/>
+    <property name="Version" column="Version" not-null="true" />
 
     <subclass name="AttributeUseStateCreated" discriminator-value="Created">
     	
@@ -28,9 +28,9 @@
     <subclass name="AttributeUseStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertySequenceNumberRemoved" />
+        <property name="IsPropertySequenceNumberRemoved" column="IsPropertySequenceNumberRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="AttributeUseStateRemoved"  discriminator-value="Removed">

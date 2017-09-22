@@ -187,6 +187,9 @@ public class AttributeSetInstanceExtensionFieldStateDto
 
         public AttributeSetInstanceExtensionFieldStateDto toAttributeSetInstanceExtensionFieldStateDto(AttributeSetInstanceExtensionFieldState state)
         {
+            if(state == null) {
+                return null;
+            }
             AttributeSetInstanceExtensionFieldStateDto dto = new AttributeSetInstanceExtensionFieldStateDto();
             if (returnedFieldsContains("Index")) {
                 dto.setIndex(state.getIndex());

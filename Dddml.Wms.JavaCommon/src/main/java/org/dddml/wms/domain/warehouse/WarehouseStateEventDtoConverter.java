@@ -8,13 +8,13 @@ import org.dddml.wms.specialization.*;
 public class WarehouseStateEventDtoConverter {
 
     public WarehouseStateEventDto toWarehouseStateEventDto(AbstractWarehouseStateEvent stateEvent) {
-        if (StateEventType.CREATED.equals(stateEvent.getStateEventType())) {
+        if (stateEvent instanceof AbstractWarehouseStateEvent.AbstractWarehouseStateCreated) {
             WarehouseStateEvent.WarehouseStateCreated e = (WarehouseStateEvent.WarehouseStateCreated) stateEvent;
             return toWarehouseStateCreatedDto(e);
-        } else if (StateEventType.MERGE_PATCHED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractWarehouseStateEvent.AbstractWarehouseStateMergePatched) {
             WarehouseStateEvent.WarehouseStateMergePatched e = (WarehouseStateEvent.WarehouseStateMergePatched) stateEvent;
             return toWarehouseStateMergePatchedDto(e);
-        } else if (StateEventType.DELETED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractWarehouseStateEvent.AbstractWarehouseStateDeleted) {
             WarehouseStateEvent.WarehouseStateDeleted e = (WarehouseStateEvent.WarehouseStateDeleted) stateEvent;
             return toWarehouseStateDeletedDto(e);
         }

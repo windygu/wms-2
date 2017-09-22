@@ -12,7 +12,7 @@
 		<key-property name="attributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>
 		<key-property name="attributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
 	</composite-id>
-	<version name="version" type="long" />
+	<version name="version" column="Version" type="long" />
 
 	<property name="sequenceNumber" ></property>
 	<property name="createdBy" ></property>

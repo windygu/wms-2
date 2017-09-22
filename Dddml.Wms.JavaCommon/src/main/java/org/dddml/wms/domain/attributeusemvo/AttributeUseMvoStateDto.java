@@ -284,6 +284,9 @@ public class AttributeUseMvoStateDto
 
         public AttributeUseMvoStateDto toAttributeUseMvoStateDto(AttributeUseMvoState state)
         {
+            if(state == null) {
+                return null;
+            }
             AttributeUseMvoStateDto dto = new AttributeUseMvoStateDto();
             if (returnedFieldsContains("AttributeSetAttributeUseId")) {
                 dto.setAttributeSetAttributeUseId((state.getAttributeSetAttributeUseId() == null) ? null : new AttributeSetAttributeUseIdDtoWrapper(state.getAttributeSetAttributeUseId()));

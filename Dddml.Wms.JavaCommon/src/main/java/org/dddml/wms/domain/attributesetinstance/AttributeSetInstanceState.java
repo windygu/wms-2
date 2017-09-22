@@ -1907,9 +1907,6 @@ public interface AttributeSetInstanceState
 
     void when(AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e);
 
-    void when(AttributeSetInstanceStateEvent.AttributeSetInstanceStateMergePatched e);
-
-    void when(AttributeSetInstanceStateEvent.AttributeSetInstanceStateDeleted e);
     
 }
 

@@ -5660,6 +5660,9 @@ public class AttributeSetInstanceStateDto
 
         public AttributeSetInstanceStateDto toAttributeSetInstanceStateDto(AttributeSetInstanceState state)
         {
+            if(state == null) {
+                return null;
+            }
             AttributeSetInstanceStateDto dto = new AttributeSetInstanceStateDto();
             if (returnedFieldsContains("AttributeSetInstanceId")) {
                 dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());

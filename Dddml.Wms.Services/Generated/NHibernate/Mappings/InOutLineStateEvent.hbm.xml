@@ -33,8 +33,8 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
-    <property name="Version" not-null="true" />
+    <property name="CommandId" column="CommandId"/>
+    <property name="Version" column="Version" not-null="true" />
 
     <subclass name="InOutLineStateCreated" discriminator-value="Created">
     	
@@ -43,39 +43,39 @@
     <subclass name="InOutLineStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyDescriptionRemoved" />
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="IsPropertyLocatorIdRemoved" />
+        <property name="IsPropertyLocatorIdRemoved" column="IsPropertyLocatorIdRemoved"/>
 
-        <property name="IsPropertyProductIdRemoved" />
+        <property name="IsPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
 
-        <property name="IsPropertyUomIdRemoved" />
+        <property name="IsPropertyUomIdRemoved" column="IsPropertyUomIdRemoved"/>
 
-        <property name="IsPropertyMovementQuantityRemoved" />
+        <property name="IsPropertyMovementQuantityRemoved" column="IsPropertyMovementQuantityRemoved"/>
 
-        <property name="IsPropertyConfirmedQuantityRemoved" />
+        <property name="IsPropertyConfirmedQuantityRemoved" column="IsPropertyConfirmedQuantityRemoved"/>
 
-        <property name="IsPropertyScrappedQuantityRemoved" />
+        <property name="IsPropertyScrappedQuantityRemoved" column="IsPropertyScrappedQuantityRemoved"/>
 
-        <property name="IsPropertyTargetQuantityRemoved" />
+        <property name="IsPropertyTargetQuantityRemoved" column="IsPropertyTargetQuantityRemoved"/>
 
-        <property name="IsPropertyPickedQuantityRemoved" />
+        <property name="IsPropertyPickedQuantityRemoved" column="IsPropertyPickedQuantityRemoved"/>
 
-        <property name="IsPropertyIsInvoicedRemoved" />
+        <property name="IsPropertyIsInvoicedRemoved" column="IsPropertyIsInvoicedRemoved"/>
 
-        <property name="IsPropertyAttributeSetInstanceIdRemoved" />
+        <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
 
-        <property name="IsPropertyIsDescriptionRemoved" />
+        <property name="IsPropertyIsDescriptionRemoved" column="IsPropertyIsDescriptionRemoved"/>
 
-        <property name="IsPropertyProcessedRemoved" />
+        <property name="IsPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
 
-        <property name="IsPropertyQuantityEnteredRemoved" />
+        <property name="IsPropertyQuantityEnteredRemoved" column="IsPropertyQuantityEnteredRemoved"/>
 
-        <property name="IsPropertyRmaLineNumberRemoved" />
+        <property name="IsPropertyRmaLineNumberRemoved" column="IsPropertyRmaLineNumberRemoved"/>
 
-        <property name="IsPropertyReversalLineNumberRemoved" />
+        <property name="IsPropertyReversalLineNumberRemoved" column="IsPropertyReversalLineNumberRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="InOutLineStateRemoved"  discriminator-value="Removed">

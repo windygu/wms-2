@@ -32,11 +32,11 @@
 	<property name="attributeSetActive" ></property>
 	<property name="attributeSetDeleted" ></property>
 
-    <property name="createdBy" />
+    <property name="createdBy" column="CreatedBy"/>
 
-    <property name="createdAt" />
+    <property name="createdAt" column="CreatedAt" />
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractAttributeUseMvoStateEvent$SimpleAttributeUseMvoStateCreated" discriminator-value="Created">
     	
@@ -44,35 +44,35 @@
 
     <subclass name="AbstractAttributeUseMvoStateEvent$SimpleAttributeUseMvoStateMergePatched"  discriminator-value="MergePatched">
 
-        <property name="isPropertySequenceNumberRemoved" />
+        <property name="isPropertySequenceNumberRemoved" column="IsPropertySequenceNumberRemoved"/>
 
-        <property name="isPropertyVersionRemoved" />
+        <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 
-        <property name="isPropertyActiveRemoved" />
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
-        <property name="isPropertyAttributeSetNameRemoved" />
+        <property name="isPropertyAttributeSetNameRemoved" column="IsPropertyAttributeSetNameRemoved"/>
 
-        <property name="isPropertyAttributeSetOrganizationIdRemoved" />
+        <property name="isPropertyAttributeSetOrganizationIdRemoved" column="IsPropertyAttributeSetOrganizationIdRemoved"/>
 
-        <property name="isPropertyAttributeSetDescriptionRemoved" />
+        <property name="isPropertyAttributeSetDescriptionRemoved" column="IsPropertyAttributeSetDescriptionRemoved"/>
 
-        <property name="isPropertyAttributeSetSerialNumberAttributeIdRemoved" />
+        <property name="isPropertyAttributeSetSerialNumberAttributeIdRemoved" column="IsPropertyAttributeSetSerialNumberAttributeIdRemoved"/>
 
-        <property name="isPropertyAttributeSetLotAttributeIdRemoved" />
+        <property name="isPropertyAttributeSetLotAttributeIdRemoved" column="IsPropertyAttributeSetLotAttributeIdRemoved"/>
 
-        <property name="isPropertyAttributeSetReferenceIdRemoved" />
+        <property name="isPropertyAttributeSetReferenceIdRemoved" column="IsPropertyAttributeSetReferenceIdRemoved"/>
 
-        <property name="isPropertyAttributeSetCreatedByRemoved" />
+        <property name="isPropertyAttributeSetCreatedByRemoved" column="IsPropertyAttributeSetCreatedByRemoved"/>
 
-        <property name="isPropertyAttributeSetCreatedAtRemoved" />
+        <property name="isPropertyAttributeSetCreatedAtRemoved" column="IsPropertyAttributeSetCreatedAtRemoved"/>
 
-        <property name="isPropertyAttributeSetUpdatedByRemoved" />
+        <property name="isPropertyAttributeSetUpdatedByRemoved" column="IsPropertyAttributeSetUpdatedByRemoved"/>
 
-        <property name="isPropertyAttributeSetUpdatedAtRemoved" />
+        <property name="isPropertyAttributeSetUpdatedAtRemoved" column="IsPropertyAttributeSetUpdatedAtRemoved"/>
 
-        <property name="isPropertyAttributeSetActiveRemoved" />
+        <property name="isPropertyAttributeSetActiveRemoved" column="IsPropertyAttributeSetActiveRemoved"/>
 
-        <property name="isPropertyAttributeSetDeletedRemoved" />
+        <property name="isPropertyAttributeSetDeletedRemoved" column="IsPropertyAttributeSetDeletedRemoved"/>
 
 
     </subclass>

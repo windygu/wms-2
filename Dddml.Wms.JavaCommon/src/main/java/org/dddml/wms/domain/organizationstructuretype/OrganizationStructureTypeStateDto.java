@@ -115,6 +115,9 @@ public class OrganizationStructureTypeStateDto
 
         public OrganizationStructureTypeStateDto toOrganizationStructureTypeStateDto(OrganizationStructureTypeState state)
         {
+            if(state == null) {
+                return null;
+            }
             OrganizationStructureTypeStateDto dto = new OrganizationStructureTypeStateDto();
             if (returnedFieldsContains("Id")) {
                 dto.setId(state.getId());

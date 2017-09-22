@@ -51,7 +51,7 @@ public class HibernateLocatorStateQueryRepository implements LocatorStateQueryRe
     @Transactional(readOnly = true)
     public Iterable<LocatorState> getAll(Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(AbstractLocatorState.SimpleLocatorState.class);
+        Criteria criteria = getCurrentSession().createCriteria(LocatorState.class);
         if (firstResult != null) { criteria.setFirstResult(firstResult); }
         if (maxResults != null) { criteria.setMaxResults(maxResults); }
          addNotDeletedRestriction(criteria);

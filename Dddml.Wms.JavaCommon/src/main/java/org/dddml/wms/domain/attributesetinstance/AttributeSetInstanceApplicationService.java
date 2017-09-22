@@ -15,10 +15,6 @@ public interface AttributeSetInstanceApplicationService
 
     void when(AttributeSetInstanceCommand.CreateAttributeSetInstance c);
 
-    void when(AttributeSetInstanceCommand.MergePatchAttributeSetInstance c);
-
-    void when(AttributeSetInstanceCommand.DeleteAttributeSetInstance c);
-
     AttributeSetInstanceState get(String id);
 
     Iterable<AttributeSetInstanceState> getAll(Integer firstResult, Integer maxResults);

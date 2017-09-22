@@ -17,7 +17,7 @@
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" />
-    <property name="CommandId" />
+    <property name="CommandId" column="CommandId"/>
     <subclass name="RolePermissionStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -25,7 +25,7 @@
     <subclass name="RolePermissionStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyActiveRemoved" />
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="RolePermissionStateDeleted"  discriminator-value="Deleted">

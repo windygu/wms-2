@@ -52,7 +52,7 @@ public class HibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository 
     @Transactional(readOnly = true)
     public Iterable<AttributeSetInstanceExtensionFieldMvoState> getAll(Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeSetInstanceExtensionFieldMvoState.SimpleAttributeSetInstanceExtensionFieldMvoState.class);
+        Criteria criteria = getCurrentSession().createCriteria(AttributeSetInstanceExtensionFieldMvoState.class);
         if (firstResult != null) { criteria.setFirstResult(firstResult); }
         if (maxResults != null) { criteria.setMaxResults(maxResults); }
          addNotDeletedRestriction(criteria);

@@ -479,31 +479,15 @@
 	<property name="_F_C50_49_" ><column name="_F_C50_49_" length="50" /></property>
 	<property name="active" ></property>
 
-    <property name="createdBy" />
+    <property name="createdBy" column="CreatedBy"/>
 
-    <property name="createdAt" />
+    <property name="createdAt" column="CreatedAt" />
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractAttributeSetInstanceStateEvent$SimpleAttributeSetInstanceStateCreated" discriminator-value="Created">
     	
     </subclass>
-
-    <subclass name="AbstractAttributeSetInstanceStateEvent$SimpleAttributeSetInstanceStateMergePatched"  discriminator-value="MergePatched">
-
-
-      <set name="removedPropertyNames" table="AttributeSetInstanceStateEventRemovedProperties">
-        <key><column name="AttributeSetInstanceId" /><column name="Version" /></key>
-        <element column="removedPropertyName" type="string" not-null="true" />
-      </set>
-
-
-    </subclass>
-
-    <subclass name="AbstractAttributeSetInstanceStateEvent$SimpleAttributeSetInstanceStateDeleted"  discriminator-value="Deleted">
-
-    </subclass>
-
 
 
   </class>

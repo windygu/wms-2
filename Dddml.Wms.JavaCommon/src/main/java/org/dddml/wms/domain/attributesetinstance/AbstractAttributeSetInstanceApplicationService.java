@@ -66,14 +66,6 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
         update(c, ar -> ar.create(c));
     }
 
-    public void when(AttributeSetInstanceCommand.MergePatchAttributeSetInstance c) {
-        update(c, ar -> ar.mergePatch(c));
-    }
-
-    public void when(AttributeSetInstanceCommand.DeleteAttributeSetInstance c) {
-        update(c, ar -> ar.delete(c));
-    }
-
     public AttributeSetInstanceState get(String id) {
         AttributeSetInstanceState state = getStateRepository().get(id, true);
         return state;
@@ -144,7 +136,7 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
-            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+            aggregate.getChanges(), (events) -> {});
 
     }
 

@@ -163,6 +163,9 @@ public class AttributeValueStateDto
 
         public AttributeValueStateDto toAttributeValueStateDto(AttributeValueState state)
         {
+            if(state == null) {
+                return null;
+            }
             AttributeValueStateDto dto = new AttributeValueStateDto();
             if (returnedFieldsContains("Value")) {
                 dto.setValue(state.getValue());

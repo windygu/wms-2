@@ -48,7 +48,7 @@
                     var group = extensionFieldGroups[iG];
                     if (i < group.FieldCount)
                     {
-                        fields.Add(group.CreateExtensionFieldMetaData(i));
+                        fields.Add(group.CreateExtensionFieldMetadata(i));
                     }
                 }
             }

@@ -23,11 +23,11 @@
 	<property name="referenceId" ></property>
 	<property name="active" ></property>
 
-    <property name="createdBy" />
+    <property name="createdBy" column="CreatedBy"/>
 
-    <property name="createdAt" />
+    <property name="createdAt" column="CreatedAt" />
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractAttributeSetStateEvent$SimpleAttributeSetStateCreated" discriminator-value="Created">
     	
@@ -35,19 +35,19 @@
 
     <subclass name="AbstractAttributeSetStateEvent$SimpleAttributeSetStateMergePatched"  discriminator-value="MergePatched">
 
-        <property name="isPropertyNameRemoved" />
+        <property name="isPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
-        <property name="isPropertyOrganizationIdRemoved" />
+        <property name="isPropertyOrganizationIdRemoved" column="IsPropertyOrganizationIdRemoved"/>
 
-        <property name="isPropertyDescriptionRemoved" />
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="isPropertySerialNumberAttributeIdRemoved" />
+        <property name="isPropertySerialNumberAttributeIdRemoved" column="IsPropertySerialNumberAttributeIdRemoved"/>
 
-        <property name="isPropertyLotAttributeIdRemoved" />
+        <property name="isPropertyLotAttributeIdRemoved" column="IsPropertyLotAttributeIdRemoved"/>
 
-        <property name="isPropertyReferenceIdRemoved" />
+        <property name="isPropertyReferenceIdRemoved" column="IsPropertyReferenceIdRemoved"/>
 
-        <property name="isPropertyActiveRemoved" />
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
 
     </subclass>

@@ -20,11 +20,11 @@
 	<property name="isInTransit" ></property>
 	<property name="active" ></property>
 
-    <property name="createdBy" />
+    <property name="createdBy" column="CreatedBy"/>
 
-    <property name="createdAt" />
+    <property name="createdAt" column="CreatedAt" />
 
-    <property name="commandId" />
+    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractWarehouseStateEvent$SimpleWarehouseStateCreated" discriminator-value="Created">
     	
@@ -32,13 +32,13 @@
 
     <subclass name="AbstractWarehouseStateEvent$SimpleWarehouseStateMergePatched"  discriminator-value="MergePatched">
 
-        <property name="isPropertyNameRemoved" />
+        <property name="isPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
-        <property name="isPropertyDescriptionRemoved" />
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="isPropertyIsInTransitRemoved" />
+        <property name="isPropertyIsInTransitRemoved" column="IsPropertyIsInTransitRemoved"/>
 
-        <property name="isPropertyActiveRemoved" />
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
 
     </subclass>

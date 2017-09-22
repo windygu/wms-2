@@ -8,13 +8,13 @@ import org.dddml.wms.specialization.*;
 public class LocatorStateEventDtoConverter {
 
     public LocatorStateEventDto toLocatorStateEventDto(AbstractLocatorStateEvent stateEvent) {
-        if (StateEventType.CREATED.equals(stateEvent.getStateEventType())) {
+        if (stateEvent instanceof AbstractLocatorStateEvent.AbstractLocatorStateCreated) {
             LocatorStateEvent.LocatorStateCreated e = (LocatorStateEvent.LocatorStateCreated) stateEvent;
             return toLocatorStateCreatedDto(e);
-        } else if (StateEventType.MERGE_PATCHED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractLocatorStateEvent.AbstractLocatorStateMergePatched) {
             LocatorStateEvent.LocatorStateMergePatched e = (LocatorStateEvent.LocatorStateMergePatched) stateEvent;
             return toLocatorStateMergePatchedDto(e);
-        } else if (StateEventType.DELETED.equals(stateEvent.getStateEventType())) {
+        } else if (stateEvent instanceof AbstractLocatorStateEvent.AbstractLocatorStateDeleted) {
             LocatorStateEvent.LocatorStateDeleted e = (LocatorStateEvent.LocatorStateDeleted) stateEvent;
             return toLocatorStateDeletedDto(e);
         }

@@ -9,11 +9,5 @@ public class DeleteAttributeSetInstanceDto extends AbstractAttributeSetInstanceC
         return COMMAND_TYPE_DELETE;
     }
 
-    public AttributeSetInstanceCommand.DeleteAttributeSetInstance toDeleteAttributeSetInstance()
-    {
-        AbstractAttributeSetInstanceCommand.SimpleDeleteAttributeSetInstance command = new AbstractAttributeSetInstanceCommand.SimpleDeleteAttributeSetInstance();
-        ((AbstractAttributeSetInstanceCommandDto)this).copyTo(command);
-        return command;
-    }
 }
 

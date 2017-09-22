@@ -187,6 +187,9 @@ public class AttributeSetInstanceExtensionFieldGroupStateDto
 
         public AttributeSetInstanceExtensionFieldGroupStateDto toAttributeSetInstanceExtensionFieldGroupStateDto(AttributeSetInstanceExtensionFieldGroupState state)
         {
+            if(state == null) {
+                return null;
+            }
             AttributeSetInstanceExtensionFieldGroupStateDto dto = new AttributeSetInstanceExtensionFieldGroupStateDto();
             if (returnedFieldsContains("Id")) {
                 dto.setId(state.getId());

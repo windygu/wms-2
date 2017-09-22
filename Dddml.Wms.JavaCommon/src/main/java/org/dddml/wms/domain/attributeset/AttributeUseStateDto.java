@@ -139,6 +139,9 @@ public class AttributeUseStateDto
 
         public AttributeUseStateDto toAttributeUseStateDto(AttributeUseState state)
         {
+            if(state == null) {
+                return null;
+            }
             AttributeUseStateDto dto = new AttributeUseStateDto();
             if (returnedFieldsContains("AttributeId")) {
                 dto.setAttributeId(state.getAttributeId());

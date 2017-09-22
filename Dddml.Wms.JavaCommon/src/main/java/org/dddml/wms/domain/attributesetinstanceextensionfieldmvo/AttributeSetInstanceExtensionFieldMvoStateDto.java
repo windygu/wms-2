@@ -320,6 +320,9 @@ public class AttributeSetInstanceExtensionFieldMvoStateDto
 
         public AttributeSetInstanceExtensionFieldMvoStateDto toAttributeSetInstanceExtensionFieldMvoStateDto(AttributeSetInstanceExtensionFieldMvoState state)
         {
+            if(state == null) {
+                return null;
+            }
             AttributeSetInstanceExtensionFieldMvoStateDto dto = new AttributeSetInstanceExtensionFieldMvoStateDto();
             if (returnedFieldsContains("AttributeSetInstanceExtensionFieldId")) {
                 dto.setAttributeSetInstanceExtensionFieldId((state.getAttributeSetInstanceExtensionFieldId() == null) ? null : new AttributeSetInstanceExtensionFieldIdDtoWrapper(state.getAttributeSetInstanceExtensionFieldId()));

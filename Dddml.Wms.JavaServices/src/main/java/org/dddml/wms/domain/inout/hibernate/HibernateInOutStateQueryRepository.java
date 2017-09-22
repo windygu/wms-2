@@ -53,7 +53,7 @@ public class HibernateInOutStateQueryRepository implements InOutStateQueryReposi
     @Transactional(readOnly = true)
     public Iterable<InOutState> getAll(Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(AbstractInOutState.SimpleInOutState.class);
+        Criteria criteria = getCurrentSession().createCriteria(InOutState.class);
         if (firstResult != null) { criteria.setFirstResult(firstResult); }
         if (maxResults != null) { criteria.setMaxResults(maxResults); }
          addNotDeletedRestriction(criteria);

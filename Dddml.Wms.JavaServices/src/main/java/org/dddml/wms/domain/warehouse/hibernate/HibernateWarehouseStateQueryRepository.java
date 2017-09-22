@@ -51,7 +51,7 @@ public class HibernateWarehouseStateQueryRepository implements WarehouseStateQue
     @Transactional(readOnly = true)
     public Iterable<WarehouseState> getAll(Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(AbstractWarehouseState.SimpleWarehouseState.class);
+        Criteria criteria = getCurrentSession().createCriteria(WarehouseState.class);
         if (firstResult != null) { criteria.setFirstResult(firstResult); }
         if (maxResults != null) { criteria.setMaxResults(maxResults); }
          addNotDeletedRestriction(criteria);
