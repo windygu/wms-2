@@ -45,7 +45,7 @@
     	
     </subclass>
 
-    <subclass name="AbstractAttributeSetInstanceExtensionFieldMvoStateEvent$SimpleAttributeSetInstanceExtensionFieldMvoStateMergePatched"  discriminator-value="MergePatched">
+    <subclass name="AbstractAttributeSetInstanceExtensionFieldMvoStateEvent$SimpleAttributeSetInstanceExtensionFieldMvoStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
@@ -86,7 +86,7 @@
 
     </subclass>
 
-    <subclass name="AbstractAttributeSetInstanceExtensionFieldMvoStateEvent$SimpleAttributeSetInstanceExtensionFieldMvoStateDeleted"  discriminator-value="Deleted">
+    <subclass name="AbstractAttributeSetInstanceExtensionFieldMvoStateEvent$SimpleAttributeSetInstanceExtensionFieldMvoStateDeleted" discriminator-value="Deleted">
 
     </subclass>
 

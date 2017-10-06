@@ -85,7 +85,7 @@
     	
     </subclass>
 
-    <subclass name="AbstractInOutLineMvoStateEvent$SimpleInOutLineMvoStateMergePatched"  discriminator-value="MergePatched">
+    <subclass name="AbstractInOutLineMvoStateEvent$SimpleInOutLineMvoStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
@@ -206,7 +206,7 @@
 
     </subclass>
 
-    <subclass name="AbstractInOutLineMvoStateEvent$SimpleInOutLineMvoStateDeleted"  discriminator-value="Deleted">
+    <subclass name="AbstractInOutLineMvoStateEvent$SimpleInOutLineMvoStateDeleted" discriminator-value="Deleted">
 
     </subclass>
 

@@ -1889,10 +1889,6 @@ public interface AttributeSetInstanceState
 
     void setActive(Boolean active);
 
-    Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
 
     boolean isStateUnsaved();
 

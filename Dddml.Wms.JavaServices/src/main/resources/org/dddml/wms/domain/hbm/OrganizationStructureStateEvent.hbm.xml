@@ -29,14 +29,14 @@
     	
     </subclass>
 
-    <subclass name="AbstractOrganizationStructureStateEvent$SimpleOrganizationStructureStateMergePatched"  discriminator-value="MergePatched">
+    <subclass name="AbstractOrganizationStructureStateEvent$SimpleOrganizationStructureStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
 
     </subclass>
 
-    <subclass name="AbstractOrganizationStructureStateEvent$SimpleOrganizationStructureStateDeleted"  discriminator-value="Deleted">
+    <subclass name="AbstractOrganizationStructureStateEvent$SimpleOrganizationStructureStateDeleted" discriminator-value="Deleted">
 
     </subclass>
 

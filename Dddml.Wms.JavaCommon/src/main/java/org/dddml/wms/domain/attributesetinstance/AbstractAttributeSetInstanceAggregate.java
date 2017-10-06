@@ -42,10 +42,6 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
             }
             throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
         }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
         if (isCommandCreate((AttributeSetInstanceCommand)c))
             throw DomainError.named("rebirth", "Can't create aggregate that already exists");
     }

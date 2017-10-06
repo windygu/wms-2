@@ -61,7 +61,7 @@
     	
     </subclass>
 
-    <subclass name="AbstractInOutStateEvent$SimpleInOutStateMergePatched"  discriminator-value="MergePatched">
+    <subclass name="AbstractInOutStateEvent$SimpleInOutStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertyIsSOTransactionRemoved" column="IsPropertyIsSOTransactionRemoved"/>
 
@@ -136,7 +136,7 @@
 
     </subclass>
 
-    <subclass name="AbstractInOutStateEvent$SimpleInOutStateDeleted"  discriminator-value="Deleted">
+    <subclass name="AbstractInOutStateEvent$SimpleInOutStateDeleted" discriminator-value="Deleted">
 
     </subclass>
 

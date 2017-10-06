@@ -46,7 +46,7 @@
     	
     </subclass>
 
-    <subclass name="AbstractInOutLineStateEvent$SimpleInOutLineStateMergePatched"  discriminator-value="MergePatched">
+    <subclass name="AbstractInOutLineStateEvent$SimpleInOutLineStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
@@ -85,7 +85,7 @@
 
     </subclass>
 
-    <subclass name="AbstractInOutLineStateEvent$SimpleInOutLineStateRemoved"  discriminator-value="Removed">
+    <subclass name="AbstractInOutLineStateEvent$SimpleInOutLineStateRemoved" discriminator-value="Removed">
 
     </subclass>
 

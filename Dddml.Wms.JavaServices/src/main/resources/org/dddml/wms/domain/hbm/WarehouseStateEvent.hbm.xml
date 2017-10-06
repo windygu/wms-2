@@ -30,7 +30,7 @@
     	
     </subclass>
 
-    <subclass name="AbstractWarehouseStateEvent$SimpleWarehouseStateMergePatched"  discriminator-value="MergePatched">
+    <subclass name="AbstractWarehouseStateEvent$SimpleWarehouseStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
@@ -43,7 +43,7 @@
 
     </subclass>
 
-    <subclass name="AbstractWarehouseStateEvent$SimpleWarehouseStateDeleted"  discriminator-value="Deleted">
+    <subclass name="AbstractWarehouseStateEvent$SimpleWarehouseStateDeleted" discriminator-value="Deleted">
 
     </subclass>
 

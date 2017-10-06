@@ -479,7 +479,6 @@
 	<property name="updatedBy" ></property>
 	<property name="updatedAt" ></property>
 	<property name="active" ></property>
-	<property name="deleted" ></property>
 
     <property name="commandId" column="CommandId"/>
 

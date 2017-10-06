@@ -37,7 +37,7 @@
     	
     </subclass>
 
-    <subclass name="AbstractAttributeStateEvent$SimpleAttributeStateMergePatched"  discriminator-value="MergePatched">
+    <subclass name="AbstractAttributeStateEvent$SimpleAttributeStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertyNameRemoved" column="IsPropertyNameRemoved"/>
 
@@ -64,7 +64,7 @@
 
     </subclass>
 
-    <subclass name="AbstractAttributeStateEvent$SimpleAttributeStateDeleted"  discriminator-value="Deleted">
+    <subclass name="AbstractAttributeStateEvent$SimpleAttributeStateDeleted" discriminator-value="Deleted">
 
     </subclass>
 

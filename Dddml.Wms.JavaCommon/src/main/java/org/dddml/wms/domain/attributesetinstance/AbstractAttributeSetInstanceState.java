@@ -5638,18 +5638,6 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
         this.active = active;
     }
 
-    private Boolean deleted;
-
-    public Boolean getDeleted()
-    {
-        return this.deleted;
-    }
-
-    public void setDeleted(Boolean deleted)
-    {
-        this.deleted = deleted;
-    }
-
     public boolean isStateUnsaved() 
     {
         return this.getVersion() == null;
@@ -6183,8 +6171,6 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
         this.set_F_C20_49_(e.get_F_C20_49_());
         this.set_F_C50_49_(e.get_F_C50_49_());
         this.setActive(e.getActive());
-
-        this.setDeleted(false);
 
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());

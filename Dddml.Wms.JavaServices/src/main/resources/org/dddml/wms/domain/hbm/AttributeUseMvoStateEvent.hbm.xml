@@ -42,7 +42,7 @@
     	
     </subclass>
 
-    <subclass name="AbstractAttributeUseMvoStateEvent$SimpleAttributeUseMvoStateMergePatched"  discriminator-value="MergePatched">
+    <subclass name="AbstractAttributeUseMvoStateEvent$SimpleAttributeUseMvoStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertySequenceNumberRemoved" column="IsPropertySequenceNumberRemoved"/>
 
@@ -77,7 +77,7 @@
 
     </subclass>
 
-    <subclass name="AbstractAttributeUseMvoStateEvent$SimpleAttributeUseMvoStateDeleted"  discriminator-value="Deleted">
+    <subclass name="AbstractAttributeUseMvoStateEvent$SimpleAttributeUseMvoStateDeleted" discriminator-value="Deleted">
 
     </subclass>
 

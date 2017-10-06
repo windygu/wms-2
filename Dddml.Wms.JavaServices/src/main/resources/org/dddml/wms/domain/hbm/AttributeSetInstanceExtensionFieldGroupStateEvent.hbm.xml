@@ -32,7 +32,7 @@
     	
     </subclass>
 
-    <subclass name="AbstractAttributeSetInstanceExtensionFieldGroupStateEvent$SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched"  discriminator-value="MergePatched">
+    <subclass name="AbstractAttributeSetInstanceExtensionFieldGroupStateEvent$SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertyFieldTypeRemoved" column="IsPropertyFieldTypeRemoved"/>
 
@@ -49,7 +49,7 @@
 
     </subclass>
 
-    <subclass name="AbstractAttributeSetInstanceExtensionFieldGroupStateEvent$SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted"  discriminator-value="Deleted">
+    <subclass name="AbstractAttributeSetInstanceExtensionFieldGroupStateEvent$SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted" discriminator-value="Deleted">
 
     </subclass>
 
