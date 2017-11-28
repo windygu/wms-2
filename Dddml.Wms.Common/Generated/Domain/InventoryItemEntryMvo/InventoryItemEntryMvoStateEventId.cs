@@ -44,9 +44,9 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			internal set { InventoryItemEntryId.InventoryItemId.LocatorId = value; }
 		}
 
-		public virtual string InventoryItemEntryIdInventoryItemIdAttributeSetInstance {
-			get { return InventoryItemEntryId.InventoryItemId.AttributeSetInstance; }
-			internal set { InventoryItemEntryId.InventoryItemId.AttributeSetInstance = value; }
+		public virtual string InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId {
+			get { return InventoryItemEntryId.InventoryItemId.AttributeSetInstanceId; }
+			internal set { InventoryItemEntryId.InventoryItemId.AttributeSetInstanceId = value; }
 		}
 
 		public virtual long InventoryItemEntryIdEntrySeqId {

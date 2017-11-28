@@ -9,9 +9,9 @@
   <class name="org.dddml.wms.domain.inventoryitementrymvo.AbstractInventoryItemEntryMvoState$SimpleInventoryItemEntryMvoState" table="InventoryItemEntry_RV">
 
 	<composite-id name="inventoryItemEntryId" class="org.dddml.wms.domain.inventoryitem.InventoryItemEntryId">
-		<key-property name="inventoryItemIdProductId" ><column name="InventoryItemEntryIdInventoryItemIdProductId" /></key-property>
-		<key-property name="inventoryItemIdLocatorId" ><column name="InventoryItemEntryIdInventoryItemIdLocatorId" /></key-property>
-		<key-property name="inventoryItemIdAttributeSetInstance" ><column name="InventoryItemEntryIdInventoryItemIdAttributeSetInstance" /></key-property>
+		<key-property name="inventoryItemIdProductId" ><column name="ProductId" /></key-property>
+		<key-property name="inventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
+		<key-property name="inventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
 		<key-property name="entrySeqId" ><column name="InventoryItemEntryIdEntrySeqId" /></key-property>
 	</composite-id>
 	<version name="inventoryItemVersion" column="InventoryItemVersion" type="long" />
@@ -21,8 +21,8 @@
 	<property name="quantityOccupiedVar" ></property>
 	<property name="quantityVirtualVar" ></property>
 	<component name="eventVO" class="org.dddml.wms.domain.inventoryitem.InventoryItemEventVO">
-		<property name="inventoryItemEventTypeId" ><column name="eventVOInventoryItemEventTypeId" /></property>
-		<property name="documentNumber" ><column name="eventVODocumentNumber" not-null="true" /></property>
+		<property name="inventoryItemEventTypeId" ></property>
+		<property name="documentNumber" ><column name="DocumentNumber" not-null="true" /></property>
 	</component>
 	<property name="version" ></property>
 	<property name="createdBy" ></property>

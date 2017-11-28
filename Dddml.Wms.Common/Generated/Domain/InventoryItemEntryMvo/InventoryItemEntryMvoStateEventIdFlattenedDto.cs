@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 	public class InventoryItemEntryMvoStateEventIdFlattenedDto : IIdFlattenedDto
 	{
 
-        private static string[] _flattenedPropertyNames = new string[] { "InventoryItemEntryIdInventoryItemIdProductId", "InventoryItemEntryIdInventoryItemIdLocatorId", "InventoryItemEntryIdInventoryItemIdAttributeSetInstance", "InventoryItemEntryIdEntrySeqId", "InventoryItemVersion" };
+        private static string[] _flattenedPropertyNames = new string[] { "InventoryItemEntryIdInventoryItemIdProductId", "InventoryItemEntryIdInventoryItemIdLocatorId", "InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId", "InventoryItemEntryIdEntrySeqId", "InventoryItemVersion" };
 
         string[] IIdFlattenedDto.FieldNames
         {
@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
                 return typeof(string);
             }
 
-            if (fieldName.Equals("InventoryItemEntryIdInventoryItemIdAttributeSetInstance", StringComparison.InvariantCultureIgnoreCase))
+            if (fieldName.Equals("InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId", StringComparison.InvariantCultureIgnoreCase))
             {
                 return typeof(string);
             }
@@ -100,9 +100,9 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			set { _value.InventoryItemEntryId.InventoryItemId.LocatorId = value; }
 		}
 
-		public virtual string InventoryItemEntryIdInventoryItemIdAttributeSetInstance {
-			get { return _value.InventoryItemEntryId.InventoryItemId.AttributeSetInstance; }
-			set { _value.InventoryItemEntryId.InventoryItemId.AttributeSetInstance = value; }
+		public virtual string InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId {
+			get { return _value.InventoryItemEntryId.InventoryItemId.AttributeSetInstanceId; }
+			set { _value.InventoryItemEntryId.InventoryItemId.AttributeSetInstanceId = value; }
 		}
 
 		public virtual long InventoryItemEntryIdEntrySeqId {

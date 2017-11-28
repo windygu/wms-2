@@ -43,9 +43,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 			internal set { InventoryItemId.LocatorId = value; }
 		}
 
-		public virtual string InventoryItemIdAttributeSetInstance {
-			get { return InventoryItemId.AttributeSetInstance; }
-			internal set { InventoryItemId.AttributeSetInstance = value; }
+		public virtual string InventoryItemIdAttributeSetInstanceId {
+			get { return InventoryItemId.AttributeSetInstanceId; }
+			internal set { InventoryItemId.AttributeSetInstanceId = value; }
 		}
 
         #endregion

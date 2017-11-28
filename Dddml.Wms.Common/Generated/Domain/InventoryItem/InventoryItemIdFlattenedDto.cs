@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 	public class InventoryItemIdFlattenedDto : IIdFlattenedDto
 	{
 
-        private static string[] _flattenedPropertyNames = new string[] { "ProductId", "LocatorId", "AttributeSetInstance" };
+        private static string[] _flattenedPropertyNames = new string[] { "ProductId", "LocatorId", "AttributeSetInstanceId" };
 
         string[] IIdFlattenedDto.FieldNames
         {
@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.InventoryItem
                 return typeof(string);
             }
 
-            if (fieldName.Equals("AttributeSetInstance", StringComparison.InvariantCultureIgnoreCase))
+            if (fieldName.Equals("AttributeSetInstanceId", StringComparison.InvariantCultureIgnoreCase))
             {
                 return typeof(string);
             }
@@ -89,9 +89,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 			set { _value.LocatorId = value; } 
 		}
 
-		public virtual string AttributeSetInstance { 
-			get { return _value.AttributeSetInstance; } 
-			set { _value.AttributeSetInstance = value; } 
+		public virtual string AttributeSetInstanceId { 
+			get { return _value.AttributeSetInstanceId; } 
+			set { _value.AttributeSetInstanceId = value; } 
 		}
 
 

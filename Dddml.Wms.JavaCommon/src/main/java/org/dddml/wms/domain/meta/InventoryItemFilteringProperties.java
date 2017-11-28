@@ -24,7 +24,7 @@ public final class InventoryItemFilteringProperties
             "deleted",
             "inventoryItemId.productId",
             "inventoryItemId.locatorId",
-            "inventoryItemId.attributeSetInstance",
+            "inventoryItemId.attributeSetInstanceId",
     };
 
     public static final String[] propertyTypes = new String[] {
@@ -82,8 +82,8 @@ public final class InventoryItemFilteringProperties
         aliasMap.put("InventoryItemId.ProductId", "inventoryItemId.productId");
         aliasMap.put("inventoryItemId.locatorId", "inventoryItemId.locatorId");
         aliasMap.put("InventoryItemId.LocatorId", "inventoryItemId.locatorId");
-        aliasMap.put("inventoryItemId.attributeSetInstance", "inventoryItemId.attributeSetInstance");
-        aliasMap.put("InventoryItemId.AttributeSetInstance", "inventoryItemId.attributeSetInstance");
+        aliasMap.put("inventoryItemId.attributeSetInstanceId", "inventoryItemId.attributeSetInstanceId");
+        aliasMap.put("InventoryItemId.AttributeSetInstanceId", "inventoryItemId.attributeSetInstanceId");
     }
 
     private static void initPropertyTypeMap() {

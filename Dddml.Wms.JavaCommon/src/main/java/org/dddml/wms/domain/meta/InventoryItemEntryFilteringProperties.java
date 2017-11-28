@@ -27,11 +27,11 @@ public final class InventoryItemEntryFilteringProperties
             "eventVO.documentNumber",
             "inventoryItemEntryId.inventoryItemIdProductId",
             "inventoryItemEntryId.inventoryItemIdLocatorId",
-            "inventoryItemEntryId.inventoryItemIdAttributeSetInstance",
+            "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId",
             "inventoryItemEntryId.entrySeqId",
             "inventoryItemId.productId",
             "inventoryItemId.locatorId",
-            "inventoryItemId.attributeSetInstance",
+            "inventoryItemId.attributeSetInstanceId",
     };
 
     public static final String[] propertyTypes = new String[] {
@@ -106,10 +106,10 @@ public final class InventoryItemEntryFilteringProperties
         aliasMap.put("InventoryItemEntryId.InventoryItemIdLocatorId", "inventoryItemEntryId.inventoryItemIdLocatorId");
         aliasMap.put("inventoryItemEntryId.inventoryItemId.locatorId", "inventoryItemEntryId.inventoryItemIdLocatorId");
         aliasMap.put("InventoryItemEntryId.InventoryItemId.LocatorId", "inventoryItemEntryId.inventoryItemIdLocatorId");
-        aliasMap.put("inventoryItemEntryId.inventoryItemIdAttributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
-        aliasMap.put("InventoryItemEntryId.InventoryItemIdAttributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
-        aliasMap.put("inventoryItemEntryId.inventoryItemId.attributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
-        aliasMap.put("InventoryItemEntryId.InventoryItemId.AttributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
+        aliasMap.put("inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("InventoryItemEntryId.InventoryItemIdAttributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("inventoryItemEntryId.inventoryItemId.attributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("InventoryItemEntryId.InventoryItemId.AttributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
         aliasMap.put("inventoryItemEntryId.entrySeqId", "inventoryItemEntryId.entrySeqId");
         aliasMap.put("InventoryItemEntryId.EntrySeqId", "inventoryItemEntryId.entrySeqId");
         aliasMap.put("inventoryItemId.productId", "inventoryItemEntryId.inventoryItemIdProductId");
@@ -120,10 +120,10 @@ public final class InventoryItemEntryFilteringProperties
         aliasMap.put("InventoryItemId.LocatorId", "inventoryItemEntryId.inventoryItemIdLocatorId");
         aliasMap.put("inventoryItemId.locatorId", "inventoryItemEntryId.inventoryItemIdLocatorId");
         aliasMap.put("InventoryItemId.LocatorId", "inventoryItemEntryId.inventoryItemIdLocatorId");
-        aliasMap.put("inventoryItemId.attributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
-        aliasMap.put("InventoryItemId.AttributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
-        aliasMap.put("inventoryItemId.attributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
-        aliasMap.put("InventoryItemId.AttributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
+        aliasMap.put("inventoryItemId.attributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("InventoryItemId.AttributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("inventoryItemId.attributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("InventoryItemId.AttributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
     }
 
     private static void initPropertyTypeMap() {

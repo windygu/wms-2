@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.InventoryItem.NHibernate
             var partIdCondition = Restrictions.Conjunction()
                 .Add(Restrictions.Eq("InventoryItemEntryId.InventoryItemIdProductId", inventoryItemStateEventId.InventoryItemId.ProductId))
                 .Add(Restrictions.Eq("InventoryItemEntryId.InventoryItemIdLocatorId", inventoryItemStateEventId.InventoryItemId.LocatorId))
-                .Add(Restrictions.Eq("InventoryItemEntryId.InventoryItemIdAttributeSetInstance", inventoryItemStateEventId.InventoryItemId.AttributeSetInstance))
+                .Add(Restrictions.Eq("InventoryItemEntryId.InventoryItemIdAttributeSetInstanceId", inventoryItemStateEventId.InventoryItemId.AttributeSetInstanceId))
                 ;
 
             return criteria.Add(partIdCondition).List<InventoryItemEntryState>().Select(s => new InventoryItemEntryStateCreated(s));

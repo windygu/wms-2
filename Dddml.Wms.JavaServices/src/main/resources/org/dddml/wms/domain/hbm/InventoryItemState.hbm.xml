@@ -9,9 +9,9 @@
   <class name="org.dddml.wms.domain.inventoryitem.AbstractInventoryItemState$SimpleInventoryItemState" table="InventoryItems">
 
 	<composite-id name="inventoryItemId" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
-		<key-property name="productId" ><column name="InventoryItemIdProductId" /></key-property>
-		<key-property name="locatorId" ><column name="InventoryItemIdLocatorId" /></key-property>
-		<key-property name="attributeSetInstance" ><column name="InventoryItemIdAttributeSetInstance" /></key-property>
+		<key-property name="productId" ></key-property>
+		<key-property name="locatorId" ></key-property>
+		<key-property name="attributeSetInstanceId" ></key-property>
 	</composite-id>
 	<version name="version" column="Version" type="long" />
 

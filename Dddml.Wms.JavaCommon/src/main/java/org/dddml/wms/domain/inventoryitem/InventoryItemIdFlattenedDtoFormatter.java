@@ -30,8 +30,8 @@ public class InventoryItemIdFlattenedDtoFormatter extends AbstractIdFlattenedDto
             dto.setLocatorId((String) objVal);
             return;
         }
-        if ("attributeSetInstance".equals(fieldName)) {
-            dto.setAttributeSetInstance((String) objVal);
+        if ("attributeSetInstanceId".equals(fieldName)) {
+            dto.setAttributeSetInstanceId((String) objVal);
             return;
         }
     }
@@ -49,8 +49,8 @@ public class InventoryItemIdFlattenedDtoFormatter extends AbstractIdFlattenedDto
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }
-        if ("attributeSetInstance".equals(fieldName)) {
-            Object objVal = dto.getAttributeSetInstance();
+        if ("attributeSetInstanceId".equals(fieldName)) {
+            Object objVal = dto.getAttributeSetInstanceId();
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }

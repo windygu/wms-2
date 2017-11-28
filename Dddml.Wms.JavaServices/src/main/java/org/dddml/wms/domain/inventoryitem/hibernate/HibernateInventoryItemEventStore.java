@@ -37,7 +37,7 @@ public class HibernateInventoryItemEventStore extends AbstractHibernateEventStor
         Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemStateEvent.class);
         criteria.add(Restrictions.eq("stateEventId.inventoryItemIdProductId", idObj.getProductId()));
         criteria.add(Restrictions.eq("stateEventId.inventoryItemIdLocatorId", idObj.getLocatorId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemIdAttributeSetInstance", idObj.getAttributeSetInstance()));
+        criteria.add(Restrictions.eq("stateEventId.inventoryItemIdAttributeSetInstanceId", idObj.getAttributeSetInstanceId()));
         criteria.add(Restrictions.le("stateEventId.version", version));
         criteria.addOrder(Order.asc("stateEventId.version"));
         List es = criteria.list();

@@ -11,7 +11,7 @@ public class InventoryItemEntryIdFlattenedDto
     public static final String[] propertyNames = new String[]{
             "inventoryItemIdProductId",
             "inventoryItemIdLocatorId",
-            "inventoryItemIdAttributeSetInstance",
+            "inventoryItemIdAttributeSetInstanceId",
             "entrySeqId",
         };
 
@@ -73,14 +73,14 @@ public class InventoryItemEntryIdFlattenedDto
         this.value.getInventoryItemId().setLocatorId(inventoryItemIdLocatorId);
     }
 
-    public String getInventoryItemIdAttributeSetInstance()
+    public String getInventoryItemIdAttributeSetInstanceId()
     {
-        return this.value.getInventoryItemId().getAttributeSetInstance();
+        return this.value.getInventoryItemId().getAttributeSetInstanceId();
     }
 
-    public void setInventoryItemIdAttributeSetInstance(String inventoryItemIdAttributeSetInstance)
+    public void setInventoryItemIdAttributeSetInstanceId(String inventoryItemIdAttributeSetInstanceId)
     {
-        this.value.getInventoryItemId().setAttributeSetInstance(inventoryItemIdAttributeSetInstance);
+        this.value.getInventoryItemId().setAttributeSetInstanceId(inventoryItemIdAttributeSetInstanceId);
     }
 
     public Long getEntrySeqId()

@@ -51,14 +51,14 @@ public class InventoryItemEntryMvoStateEventId implements Serializable
         getInventoryItemEntryId().getInventoryItemId().setLocatorId(inventoryItemEntryIdInventoryItemIdLocatorId);
     }
 
-    public String getInventoryItemEntryIdInventoryItemIdAttributeSetInstance()
+    public String getInventoryItemEntryIdInventoryItemIdAttributeSetInstanceId()
     {
-        return getInventoryItemEntryId().getInventoryItemId().getAttributeSetInstance();
+        return getInventoryItemEntryId().getInventoryItemId().getAttributeSetInstanceId();
     }
 
-    public void setInventoryItemEntryIdInventoryItemIdAttributeSetInstance(String inventoryItemEntryIdInventoryItemIdAttributeSetInstance)
+    public void setInventoryItemEntryIdInventoryItemIdAttributeSetInstanceId(String inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId)
     {
-        getInventoryItemEntryId().getInventoryItemId().setAttributeSetInstance(inventoryItemEntryIdInventoryItemIdAttributeSetInstance);
+        getInventoryItemEntryId().getInventoryItemId().setAttributeSetInstanceId(inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId);
     }
 
     public Long getInventoryItemEntryIdEntrySeqId()

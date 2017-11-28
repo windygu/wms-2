@@ -150,16 +150,16 @@ CREATE VIEW `InOutLine_RV` AS
 
 CREATE VIEW `InventoryItemEntry_RV` AS
     SELECT 
-        `InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdProductId`,
-        `InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdLocatorId`,
-        `InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdAttributeSetInstance`,
+        `InventoryItemEntries`.`ProductId`,
+        `InventoryItemEntries`.`LocatorId`,
+        `InventoryItemEntries`.`AttributeSetInstanceId`,
         `InventoryItemEntries`.`InventoryItemEntryIdEntrySeqId`,
         `InventoryItemEntries`.`QuantityOnHandVar`,
         `InventoryItemEntries`.`QuantityReservedVar`,
         `InventoryItemEntries`.`QuantityOccupiedVar`,
         `InventoryItemEntries`.`QuantityVirtualVar`,
-        `InventoryItemEntries`.`EventVOInventoryItemEventTypeId`,
-        `InventoryItemEntries`.`EventVODocumentNumber`,
+        `InventoryItemEntries`.`InventoryItemEventTypeId`,
+        `InventoryItemEntries`.`DocumentNumber`,
         `InventoryItemEntries`.`Version`,
         `InventoryItemEntries`.`CreatedBy`,
         `InventoryItemEntries`.`CreatedAt`,
@@ -178,9 +178,9 @@ CREATE VIEW `InventoryItemEntry_RV` AS
     FROM
         (`InventoryItemEntries`
             JOIN `InventoryItems` ON ( 1=1 
-                and (`InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdProductId` = `InventoryItems`.`InventoryItemIdProductId`)
-                and (`InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdLocatorId` = `InventoryItems`.`InventoryItemIdLocatorId`)
-                and (`InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdAttributeSetInstance` = `InventoryItems`.`InventoryItemIdAttributeSetInstance`)
+                and (`InventoryItemEntries`.`ProductId` = `InventoryItems`.`ProductId`)
+                and (`InventoryItemEntries`.`LocatorId` = `InventoryItems`.`LocatorId`)
+                and (`InventoryItemEntries`.`AttributeSetInstanceId` = `InventoryItems`.`AttributeSetInstanceId`)
             )
         );
 

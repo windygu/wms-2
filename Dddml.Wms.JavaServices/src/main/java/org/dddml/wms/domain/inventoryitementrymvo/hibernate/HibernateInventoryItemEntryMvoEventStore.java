@@ -38,7 +38,7 @@ public class HibernateInventoryItemEntryMvoEventStore extends AbstractHibernateE
         Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemEntryMvoStateEvent.class);
         criteria.add(Restrictions.eq("stateEventId.inventoryItemEntryIdInventoryItemIdProductId", idObj.getInventoryItemIdProductId()));
         criteria.add(Restrictions.eq("stateEventId.inventoryItemEntryIdInventoryItemIdLocatorId", idObj.getInventoryItemIdLocatorId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemEntryIdInventoryItemIdAttributeSetInstance", idObj.getInventoryItemIdAttributeSetInstance()));
+        criteria.add(Restrictions.eq("stateEventId.inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId", idObj.getInventoryItemIdAttributeSetInstanceId()));
         criteria.add(Restrictions.eq("stateEventId.inventoryItemEntryIdEntrySeqId", idObj.getEntrySeqId()));
         criteria.add(Restrictions.le("stateEventId.inventoryItemVersion", version));
         criteria.addOrder(Order.asc("stateEventId.inventoryItemVersion"));

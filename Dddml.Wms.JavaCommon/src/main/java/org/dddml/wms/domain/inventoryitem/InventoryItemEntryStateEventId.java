@@ -61,14 +61,14 @@ public class InventoryItemEntryStateEventId implements Serializable
         getInventoryItemId().setLocatorId(inventoryItemIdLocatorId);
     }
 
-    public String getInventoryItemIdAttributeSetInstance()
+    public String getInventoryItemIdAttributeSetInstanceId()
     {
-        return getInventoryItemId().getAttributeSetInstance();
+        return getInventoryItemId().getAttributeSetInstanceId();
     }
 
-    public void setInventoryItemIdAttributeSetInstance(String inventoryItemIdAttributeSetInstance)
+    public void setInventoryItemIdAttributeSetInstanceId(String inventoryItemIdAttributeSetInstanceId)
     {
-        getInventoryItemId().setAttributeSetInstance(inventoryItemIdAttributeSetInstance);
+        getInventoryItemId().setAttributeSetInstanceId(inventoryItemIdAttributeSetInstanceId);
     }
 
     public InventoryItemEntryStateEventId()

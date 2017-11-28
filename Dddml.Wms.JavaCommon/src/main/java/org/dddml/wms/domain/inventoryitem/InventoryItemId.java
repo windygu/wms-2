@@ -29,27 +29,27 @@ public class InventoryItemId implements Serializable
         this.locatorId = locatorId;
     }
 
-    private String attributeSetInstance;
+    private String attributeSetInstanceId;
 
-    public String getAttributeSetInstance()
+    public String getAttributeSetInstanceId()
     {
-        return this.attributeSetInstance;
+        return this.attributeSetInstanceId;
     }
 
-    public void setAttributeSetInstance(String attributeSetInstance)
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
     {
-        this.attributeSetInstance = attributeSetInstance;
+        this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
     public InventoryItemId()
     {
     }
 
-    public InventoryItemId(String productId, String locatorId, String attributeSetInstance)
+    public InventoryItemId(String productId, String locatorId, String attributeSetInstanceId)
     {
         this.productId = productId;
         this.locatorId = locatorId;
-        this.attributeSetInstance = attributeSetInstance;
+        this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class InventoryItemId implements Serializable
         return true 
             && (productId == other.productId || (productId != null && productId.equals(other.productId)))
             && (locatorId == other.locatorId || (locatorId != null && locatorId.equals(other.locatorId)))
-            && (attributeSetInstance == other.attributeSetInstance || (attributeSetInstance != null && attributeSetInstance.equals(other.attributeSetInstance)))
+            && (attributeSetInstanceId == other.attributeSetInstanceId || (attributeSetInstanceId != null && attributeSetInstanceId.equals(other.attributeSetInstanceId)))
             ;
     }
 
@@ -80,8 +80,8 @@ public class InventoryItemId implements Serializable
         if (this.locatorId != null) {
             hash += 13 * this.locatorId.hashCode();
         }
-        if (this.attributeSetInstance != null) {
-            hash += 13 * this.attributeSetInstance.hashCode();
+        if (this.attributeSetInstanceId != null) {
+            hash += 13 * this.attributeSetInstanceId.hashCode();
         }
         return hash;
     }

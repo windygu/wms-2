@@ -42,9 +42,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 			set { _value.LocatorId = value; } 
 		}
 
-		public override string AttributeSetInstance { 
-			get { return _value.AttributeSetInstance; } 
-			set { _value.AttributeSetInstance = value; } 
+		public override string AttributeSetInstanceId { 
+			get { return _value.AttributeSetInstanceId; } 
+			set { _value.AttributeSetInstanceId = value; } 
 		}
 
 

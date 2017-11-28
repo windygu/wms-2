@@ -25,9 +25,9 @@ alter TABLE `InOutLines` add
 alter TABLE `InventoryItemEntries` add
   CONSTRAINT `FK_InventoryItemEntry_InventoryItem_StateId` 
   FOREIGN KEY 
-    (`InventoryItemEntryIdInventoryItemIdProductId`, `InventoryItemEntryIdInventoryItemIdLocatorId`, `InventoryItemEntryIdInventoryItemIdAttributeSetInstance`) 
+    (`ProductId`, `LocatorId`, `AttributeSetInstanceId`) 
   REFERENCES `InventoryItems` 
-    (`InventoryItemIdProductId`, `InventoryItemIdLocatorId`, `InventoryItemIdAttributeSetInstance`) 
+    (`ProductId`, `LocatorId`, `AttributeSetInstanceId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 alter TABLE `AttributeSetInstanceExtensionFields` add

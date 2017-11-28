@@ -11,7 +11,7 @@ public class InventoryItemIdFlattenedDto
     public static final String[] propertyNames = new String[]{
             "productId",
             "locatorId",
-            "attributeSetInstance",
+            "attributeSetInstanceId",
         };
 
     public static final String[] propertyTypes = new String[]{
@@ -71,14 +71,14 @@ public class InventoryItemIdFlattenedDto
         this.value.setLocatorId(locatorId);
     }
 
-    public String getAttributeSetInstance()
+    public String getAttributeSetInstanceId()
     {
-        return this.value.getAttributeSetInstance();
+        return this.value.getAttributeSetInstanceId();
     }
 
-    public void setAttributeSetInstance(String attributeSetInstance)
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
     {
-        this.value.setAttributeSetInstance(attributeSetInstance);
+        this.value.setAttributeSetInstanceId(attributeSetInstanceId);
     }
 
 

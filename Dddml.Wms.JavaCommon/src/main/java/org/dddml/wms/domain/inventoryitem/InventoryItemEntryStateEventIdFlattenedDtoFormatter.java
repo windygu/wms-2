@@ -30,8 +30,8 @@ public class InventoryItemEntryStateEventIdFlattenedDtoFormatter extends Abstrac
             dto.setInventoryItemIdLocatorId((String) objVal);
             return;
         }
-        if ("inventoryItemIdAttributeSetInstance".equals(fieldName)) {
-            dto.setInventoryItemIdAttributeSetInstance((String) objVal);
+        if ("inventoryItemIdAttributeSetInstanceId".equals(fieldName)) {
+            dto.setInventoryItemIdAttributeSetInstanceId((String) objVal);
             return;
         }
         if ("entrySeqId".equals(fieldName)) {
@@ -57,8 +57,8 @@ public class InventoryItemEntryStateEventIdFlattenedDtoFormatter extends Abstrac
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }
-        if ("inventoryItemIdAttributeSetInstance".equals(fieldName)) {
-            Object objVal = dto.getInventoryItemIdAttributeSetInstance();
+        if ("inventoryItemIdAttributeSetInstanceId".equals(fieldName)) {
+            Object objVal = dto.getInventoryItemIdAttributeSetInstanceId();
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }

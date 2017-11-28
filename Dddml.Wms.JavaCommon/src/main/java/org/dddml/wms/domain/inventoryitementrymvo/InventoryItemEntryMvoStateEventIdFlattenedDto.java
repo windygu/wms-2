@@ -13,7 +13,7 @@ public class InventoryItemEntryMvoStateEventIdFlattenedDto
     public static final String[] propertyNames = new String[]{
             "inventoryItemEntryIdInventoryItemIdProductId",
             "inventoryItemEntryIdInventoryItemIdLocatorId",
-            "inventoryItemEntryIdInventoryItemIdAttributeSetInstance",
+            "inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId",
             "inventoryItemEntryIdEntrySeqId",
             "inventoryItemVersion",
         };
@@ -77,14 +77,14 @@ public class InventoryItemEntryMvoStateEventIdFlattenedDto
         this.value.getInventoryItemEntryId().getInventoryItemId().setLocatorId(inventoryItemEntryIdInventoryItemIdLocatorId);
     }
 
-    public String getInventoryItemEntryIdInventoryItemIdAttributeSetInstance()
+    public String getInventoryItemEntryIdInventoryItemIdAttributeSetInstanceId()
     {
-        return this.value.getInventoryItemEntryId().getInventoryItemId().getAttributeSetInstance();
+        return this.value.getInventoryItemEntryId().getInventoryItemId().getAttributeSetInstanceId();
     }
 
-    public void setInventoryItemEntryIdInventoryItemIdAttributeSetInstance(String inventoryItemEntryIdInventoryItemIdAttributeSetInstance)
+    public void setInventoryItemEntryIdInventoryItemIdAttributeSetInstanceId(String inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId)
     {
-        this.value.getInventoryItemEntryId().getInventoryItemId().setAttributeSetInstance(inventoryItemEntryIdInventoryItemIdAttributeSetInstance);
+        this.value.getInventoryItemEntryId().getInventoryItemId().setAttributeSetInstanceId(inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId);
     }
 
     public Long getInventoryItemEntryIdEntrySeqId()

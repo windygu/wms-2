@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo.NHibernate
             var criteria = CurrentSession.CreateCriteria<InventoryItemEntryMvoStateEventBase>();
             criteria.Add(Restrictions.Eq("StateEventId.InventoryItemEntryIdInventoryItemIdProductId", idObj.InventoryItemIdProductId));
             criteria.Add(Restrictions.Eq("StateEventId.InventoryItemEntryIdInventoryItemIdLocatorId", idObj.InventoryItemIdLocatorId));
-            criteria.Add(Restrictions.Eq("StateEventId.InventoryItemEntryIdInventoryItemIdAttributeSetInstance", idObj.InventoryItemIdAttributeSetInstance));
+            criteria.Add(Restrictions.Eq("StateEventId.InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId", idObj.InventoryItemIdAttributeSetInstanceId));
             criteria.Add(Restrictions.Eq("StateEventId.InventoryItemEntryIdEntrySeqId", idObj.EntrySeqId));
             criteria.Add(Restrictions.Le("StateEventId.InventoryItemVersion", version));
             criteria.AddOrder(Order.Asc("StateEventId.InventoryItemVersion"));

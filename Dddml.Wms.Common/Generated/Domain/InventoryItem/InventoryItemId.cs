@@ -29,11 +29,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 			internal set { _locatorId = value; } 
 		}
 
-		private string _attributeSetInstance;
+		private string _attributeSetInstanceId;
 
-		public virtual string AttributeSetInstance { 
-			get { return this._attributeSetInstance; } 
-			internal set { _attributeSetInstance = value; } 
+		public virtual string AttributeSetInstanceId { 
+			get { return this._attributeSetInstanceId; } 
+			internal set { _attributeSetInstanceId = value; } 
 		}
 
 
@@ -46,11 +46,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 		{
 		}
 
-		public InventoryItemId (string productId, string locatorId, string attributeSetInstance)
+		public InventoryItemId (string productId, string locatorId, string attributeSetInstanceId)
 		{
 			this._productId = productId;
 			this._locatorId = locatorId;
-			this._attributeSetInstance = attributeSetInstance;
+			this._attributeSetInstanceId = attributeSetInstanceId;
 
 		}
 
@@ -69,7 +69,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 			return true 
 				&& Object.Equals (this.ProductId, other.ProductId)
 				&& Object.Equals (this.LocatorId, other.LocatorId)
-				&& Object.Equals (this.AttributeSetInstance, other.AttributeSetInstance)
+				&& Object.Equals (this.AttributeSetInstanceId, other.AttributeSetInstanceId)
 				;
 		}
 
@@ -82,8 +82,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 			if (this.LocatorId != null) {
 				hash += 13 * this.LocatorId.GetHashCode ();
 			}
-			if (this.AttributeSetInstance != null) {
-				hash += 13 * this.AttributeSetInstance.GetHashCode ();
+			if (this.AttributeSetInstanceId != null) {
+				hash += 13 * this.AttributeSetInstanceId.GetHashCode ();
 			}
 			return hash;
 		}

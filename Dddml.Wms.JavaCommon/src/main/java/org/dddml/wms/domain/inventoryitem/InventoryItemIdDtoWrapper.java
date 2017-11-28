@@ -48,15 +48,15 @@ public class InventoryItemIdDtoWrapper extends InventoryItemIdDto
     }
 
     @Override
-    public String getAttributeSetInstance()
+    public String getAttributeSetInstanceId()
     {
-        return this.value.getAttributeSetInstance();
+        return this.value.getAttributeSetInstanceId();
     }
 
     @Override
-    public void setAttributeSetInstance(String attributeSetInstance)
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
     {
-        this.value.setAttributeSetInstance(attributeSetInstance);
+        this.value.setAttributeSetInstanceId(attributeSetInstanceId);
     }
 
 

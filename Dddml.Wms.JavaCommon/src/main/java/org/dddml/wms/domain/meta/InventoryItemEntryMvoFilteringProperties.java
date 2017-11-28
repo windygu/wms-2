@@ -33,7 +33,7 @@ public final class InventoryItemEntryMvoFilteringProperties
             "inventoryItemUpdatedAt",
             "inventoryItemEntryId.inventoryItemIdProductId",
             "inventoryItemEntryId.inventoryItemIdLocatorId",
-            "inventoryItemEntryId.inventoryItemIdAttributeSetInstance",
+            "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId",
             "inventoryItemEntryId.entrySeqId",
             "eventVO.inventoryItemEventTypeId",
             "eventVO.documentNumber",
@@ -128,10 +128,10 @@ public final class InventoryItemEntryMvoFilteringProperties
         aliasMap.put("InventoryItemEntryId.InventoryItemIdLocatorId", "inventoryItemEntryId.inventoryItemIdLocatorId");
         aliasMap.put("inventoryItemEntryId.inventoryItemId.locatorId", "inventoryItemEntryId.inventoryItemIdLocatorId");
         aliasMap.put("InventoryItemEntryId.InventoryItemId.LocatorId", "inventoryItemEntryId.inventoryItemIdLocatorId");
-        aliasMap.put("inventoryItemEntryId.inventoryItemIdAttributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
-        aliasMap.put("InventoryItemEntryId.InventoryItemIdAttributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
-        aliasMap.put("inventoryItemEntryId.inventoryItemId.attributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
-        aliasMap.put("InventoryItemEntryId.InventoryItemId.AttributeSetInstance", "inventoryItemEntryId.inventoryItemIdAttributeSetInstance");
+        aliasMap.put("inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("InventoryItemEntryId.InventoryItemIdAttributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("inventoryItemEntryId.inventoryItemId.attributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("InventoryItemEntryId.InventoryItemId.AttributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
         aliasMap.put("inventoryItemEntryId.entrySeqId", "inventoryItemEntryId.entrySeqId");
         aliasMap.put("InventoryItemEntryId.EntrySeqId", "inventoryItemEntryId.entrySeqId");
         aliasMap.put("eventVO.inventoryItemEventTypeId", "eventVO.inventoryItemEventTypeId");

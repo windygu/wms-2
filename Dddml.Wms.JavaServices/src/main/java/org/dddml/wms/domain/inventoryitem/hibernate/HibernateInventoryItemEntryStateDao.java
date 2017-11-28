@@ -77,7 +77,7 @@ public class HibernateInventoryItemEntryStateDao implements InventoryItemEntrySt
         Junction partIdCondition = Restrictions.conjunction()
             .add(Restrictions.eq("inventoryItemEntryId.inventoryItemIdProductId", inventoryItemId.getProductId()))
             .add(Restrictions.eq("inventoryItemEntryId.inventoryItemIdLocatorId", inventoryItemId.getLocatorId()))
-            .add(Restrictions.eq("inventoryItemEntryId.inventoryItemIdAttributeSetInstance", inventoryItemId.getAttributeSetInstance()))
+            .add(Restrictions.eq("inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId", inventoryItemId.getAttributeSetInstanceId()))
             ;
         return criteria.add(partIdCondition).list();
     }

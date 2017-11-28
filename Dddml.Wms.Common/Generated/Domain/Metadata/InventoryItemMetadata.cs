@@ -451,7 +451,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InventoryItemId.AttributeSetInstance",
+                    Name = "InventoryItemId.AttributeSetInstanceId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -469,7 +469,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "InventoryItemId.AttributeSetInstance",
+                    SourceChainingName = "InventoryItemId.AttributeSetInstanceId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -522,8 +522,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("inventoryItemId.productId", "InventoryItemId.ProductId");
             d.Add("InventoryItemId.LocatorId", "InventoryItemId.LocatorId");
             d.Add("inventoryItemId.locatorId", "InventoryItemId.LocatorId");
-            d.Add("InventoryItemId.AttributeSetInstance", "InventoryItemId.AttributeSetInstance");
-            d.Add("inventoryItemId.attributeSetInstance", "InventoryItemId.AttributeSetInstance");
+            d.Add("InventoryItemId.AttributeSetInstanceId", "InventoryItemId.AttributeSetInstanceId");
+            d.Add("inventoryItemId.attributeSetInstanceId", "InventoryItemId.AttributeSetInstanceId");
             _filteringPropertyAliasDictionary = d;
         }
 

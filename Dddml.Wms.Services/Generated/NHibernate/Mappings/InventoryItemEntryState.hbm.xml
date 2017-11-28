@@ -7,9 +7,9 @@
 
     <cache usage="read-only"/>
     <composite-id name="InventoryItemEntryId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemEntryId">
-        <key-property name="InventoryItemIdProductId" ><column name="InventoryItemEntryIdInventoryItemIdProductId" /></key-property>
-        <key-property name="InventoryItemIdLocatorId" ><column name="InventoryItemEntryIdInventoryItemIdLocatorId" /></key-property>
-        <key-property name="InventoryItemIdAttributeSetInstance" ><column name="InventoryItemEntryIdInventoryItemIdAttributeSetInstance" /></key-property>
+        <key-property name="InventoryItemIdProductId" ><column name="ProductId" /></key-property>
+        <key-property name="InventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
+        <key-property name="InventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
         <key-property name="EntrySeqId" ><column name="InventoryItemEntryIdEntrySeqId" /></key-property>
     </composite-id>
 
@@ -20,8 +20,8 @@
     <property name="QuantityOccupiedVar" ></property>
     <property name="QuantityVirtualVar" ></property>
     <component name="EventVO" class="Dddml.Wms.Domain.InventoryItem.InventoryItemEventVO">
-        <property name="InventoryItemEventTypeId" ><column name="EventVOInventoryItemEventTypeId" /></property>
-        <property name="DocumentNumber" ><column name="EventVODocumentNumber" not-null="true" /></property>
+        <property name="InventoryItemEventTypeId" ></property>
+        <property name="DocumentNumber" ><column name="DocumentNumber" not-null="true" /></property>
     </component>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
