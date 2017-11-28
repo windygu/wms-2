@@ -1,0 +1,51 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.inventoryitem">
+  
+  <class name="AbstractInventoryItemStateEvent" table="InventoryItemStateEvents" mutable="false" abstract="true">
+
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.inventoryitem.InventoryItemStateEventId">
+		<key-property name="inventoryItemIdProductId" ></key-property>
+		<key-property name="inventoryItemIdLocatorId" ></key-property>
+		<key-property name="inventoryItemIdAttributeSetInstance" ></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="StateEventType" type="string" />
+
+	<property name="quantityOnHand" ></property>
+	<property name="quantityReserved" ></property>
+	<property name="quantityOccupied" ></property>
+	<property name="quantityVirtual" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractInventoryItemStateEvent$SimpleInventoryItemStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractInventoryItemStateEvent$SimpleInventoryItemStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyQuantityOnHandRemoved" column="IsPropertyQuantityOnHandRemoved"/>
+
+        <property name="isPropertyQuantityReservedRemoved" column="IsPropertyQuantityReservedRemoved"/>
+
+        <property name="isPropertyQuantityOccupiedRemoved" column="IsPropertyQuantityOccupiedRemoved"/>
+
+        <property name="isPropertyQuantityVirtualRemoved" column="IsPropertyQuantityVirtualRemoved"/>
+
+
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

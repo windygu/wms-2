@@ -1,0 +1,94 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+    # --------------- aggregate ---------------
+    InventoryItem:
+      
+      id:
+        name: InventoryItemId
+        type: InventoryItemId
+
+      properties:
+      
+        QuantityOnHand:
+          type: decimal
+        QuantityReserved:
+          type: decimal
+        QuantityOccupied:
+          type: decimal
+        QuantityVirtual:
+          type: decimal
+        
+        Entries:
+          itemType: InventoryItemEntry
+      
+      reservedProperties:
+        noActive: true
+        noDeleted: true
+      
+      entities:
+      
+        # --------------- 库存事务 / 分录 ------------------
+        InventoryItemEntry:
+          immutable: True
+          
+          id:
+            name: EntrySeqId
+            type: long
+            
+          properties:
+          
+            QuantityOnHandVar:
+              type: decimal
+            QuantityReservedVar:
+              type: decimal
+            QuantityOccupiedVar:
+              type: decimal
+            QuantityVirtualVar:
+              type: decimal
+            
+            EventVO:
+              type: InventoryItemEventVO
+              notNull: true
+          
+          
+      # ---------------- Value Objects -------------------
+      valueObjects:
+      
+        # ----------------------------------
+        InventoryItemId:
+          properties:
+            ProductId:
+              type: string
+            LocatorId: 
+              type: string
+            AttributeSetInstance:
+              type: string
+        
+        # -----------------------------------
+        InventoryItemEventVO:
+          properties:
+            InventoryItemEventTypeId:
+              type: string
+              referenceType: InventoryItemEventType    
+            DocumentNumber:
+              type: string
+              notNull: true
+            
+            
+    # ----------------------- aggregate -------------------------
+    InventoryItemEventType:
+      id:
+        name: InventoryItemEventTypeId
+        type: string
+      properties:
+        Description:
+          type: string
+          notNull: true
+          
+          
+          

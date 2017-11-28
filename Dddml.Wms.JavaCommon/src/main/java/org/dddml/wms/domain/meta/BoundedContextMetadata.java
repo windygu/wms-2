@@ -26,6 +26,9 @@ public class BoundedContextMetadata {
         map.put("AttributeUse", "AttributeSet");
         map.put("InOut", "InOut");
         map.put("InOutLine", "InOut");
+        map.put("InventoryItem", "InventoryItem");
+        map.put("InventoryItemEntry", "InventoryItem");
+        map.put("InventoryItemEventType", "InventoryItemEventType");
         map.put("Organization", "Organization");
         map.put("OrganizationStructureType", "OrganizationStructureType");
         map.put("OrganizationStructure", "OrganizationStructure");
@@ -37,6 +40,7 @@ public class BoundedContextMetadata {
         map.put("AttributeValueMvo", "AttributeValueMvo");
         map.put("AttributeUseMvo", "AttributeUseMvo");
         map.put("InOutLineMvo", "InOutLineMvo");
+        map.put("InventoryItemEntryMvo", "InventoryItemEntryMvo");
         map.put("AttributeSetInstanceExtensionFieldMvo", "AttributeSetInstanceExtensionFieldMvo");
         
         TYPE_NAME_TO_AGGREGATE_NAME_MAP = map;

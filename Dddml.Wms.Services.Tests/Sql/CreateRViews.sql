@@ -148,6 +148,43 @@ CREATE VIEW `InOutLine_RV` AS
         );
 
 
+CREATE VIEW `InventoryItemEntry_RV` AS
+    SELECT 
+        `InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdProductId`,
+        `InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdLocatorId`,
+        `InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdAttributeSetInstance`,
+        `InventoryItemEntries`.`InventoryItemEntryIdEntrySeqId`,
+        `InventoryItemEntries`.`QuantityOnHandVar`,
+        `InventoryItemEntries`.`QuantityReservedVar`,
+        `InventoryItemEntries`.`QuantityOccupiedVar`,
+        `InventoryItemEntries`.`QuantityVirtualVar`,
+        `InventoryItemEntries`.`EventVOInventoryItemEventTypeId`,
+        `InventoryItemEntries`.`EventVODocumentNumber`,
+        `InventoryItemEntries`.`Version`,
+        `InventoryItemEntries`.`CreatedBy`,
+        `InventoryItemEntries`.`CreatedAt`,
+        `InventoryItemEntries`.`UpdatedBy`,
+        `InventoryItemEntries`.`UpdatedAt`,
+        `InventoryItemEntries`.`Active`,
+        `InventoryItems`.`QuantityOnHand` AS `InventoryItemQuantityOnHand`,
+        `InventoryItems`.`QuantityReserved` AS `InventoryItemQuantityReserved`,
+        `InventoryItems`.`QuantityOccupied` AS `InventoryItemQuantityOccupied`,
+        `InventoryItems`.`QuantityVirtual` AS `InventoryItemQuantityVirtual`,
+        `InventoryItems`.`Version` AS `InventoryItemVersion`,
+        `InventoryItems`.`CreatedBy` AS `InventoryItemCreatedBy`,
+        `InventoryItems`.`CreatedAt` AS `InventoryItemCreatedAt`,
+        `InventoryItems`.`UpdatedBy` AS `InventoryItemUpdatedBy`,
+        `InventoryItems`.`UpdatedAt` AS `InventoryItemUpdatedAt`
+    FROM
+        (`InventoryItemEntries`
+            JOIN `InventoryItems` ON ( 1=1 
+                and (`InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdProductId` = `InventoryItems`.`InventoryItemIdProductId`)
+                and (`InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdLocatorId` = `InventoryItems`.`InventoryItemIdLocatorId`)
+                and (`InventoryItemEntries`.`InventoryItemEntryIdInventoryItemIdAttributeSetInstance` = `InventoryItems`.`InventoryItemIdAttributeSetInstance`)
+            )
+        );
+
+
 CREATE VIEW `AttributeSetInstanceExtensionField_RV` AS
     SELECT 
         `AttributeSetInstanceExtensionFields`.`AttributeSetInstanceExtensionFieldIdGroupId`,

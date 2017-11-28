@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.InventoryItem">
+  
+  <class name="InventoryItemStateEventBase" table="InventoryItemStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemStateEventId">
+        <key-property name="InventoryItemIdProductId" ></key-property>
+        <key-property name="InventoryItemIdLocatorId" ></key-property>
+        <key-property name="InventoryItemIdAttributeSetInstance" ></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="QuantityOnHand" ></property>
+    <property name="QuantityReserved" ></property>
+    <property name="QuantityOccupied" ></property>
+    <property name="QuantityVirtual" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="InventoryItemStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="InventoryItemStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyQuantityOnHandRemoved" column="IsPropertyQuantityOnHandRemoved"/>
+
+        <property name="IsPropertyQuantityReservedRemoved" column="IsPropertyQuantityReservedRemoved"/>
+
+        <property name="IsPropertyQuantityOccupiedRemoved" column="IsPropertyQuantityOccupiedRemoved"/>
+
+        <property name="IsPropertyQuantityVirtualRemoved" column="IsPropertyQuantityVirtualRemoved"/>
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

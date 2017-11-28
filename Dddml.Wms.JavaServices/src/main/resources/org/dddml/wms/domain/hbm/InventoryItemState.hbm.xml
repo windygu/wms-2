@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.inventoryitem">
+  
+  <class name="org.dddml.wms.domain.inventoryitem.AbstractInventoryItemState$SimpleInventoryItemState" table="InventoryItems">
+
+	<composite-id name="inventoryItemId" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
+		<key-property name="productId" ><column name="InventoryItemIdProductId" /></key-property>
+		<key-property name="locatorId" ><column name="InventoryItemIdLocatorId" /></key-property>
+		<key-property name="attributeSetInstance" ><column name="InventoryItemIdAttributeSetInstance" /></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="quantityOnHand" ></property>
+	<property name="quantityReserved" ></property>
+	<property name="quantityOccupied" ></property>
+	<property name="quantityVirtual" ></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

@@ -35,6 +35,11 @@
         <mapping resource="org/dddml/wms/domain/hbm/InOutStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutLineState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutLineStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InventoryItemState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InventoryItemStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InventoryItemEntryState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InventoryItemEventTypeState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InventoryItemEventTypeStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationStructureTypeState.hbm.xml"/>
@@ -56,5 +61,7 @@
         <mapping resource="org/dddml/wms/domain/hbm/AttributeUseMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutLineMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutLineMvoStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InventoryItemEntryMvoState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InventoryItemEntryMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldMvoStateEvent.hbm.xml"/>

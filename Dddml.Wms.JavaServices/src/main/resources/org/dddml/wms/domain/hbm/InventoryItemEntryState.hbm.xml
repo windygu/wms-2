@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.inventoryitem">
+  
+  <class name="org.dddml.wms.domain.inventoryitem.AbstractInventoryItemEntryState$SimpleInventoryItemEntryState" table="InventoryItemEntries">
+
+    <cache usage="read-only"/>
+	<composite-id name="inventoryItemEntryId" class="org.dddml.wms.domain.inventoryitem.InventoryItemEntryId">
+		<key-property name="inventoryItemIdProductId" ><column name="InventoryItemEntryIdInventoryItemIdProductId" /></key-property>
+		<key-property name="inventoryItemIdLocatorId" ><column name="InventoryItemEntryIdInventoryItemIdLocatorId" /></key-property>
+		<key-property name="inventoryItemIdAttributeSetInstance" ><column name="InventoryItemEntryIdInventoryItemIdAttributeSetInstance" /></key-property>
+		<key-property name="entrySeqId" ><column name="InventoryItemEntryIdEntrySeqId" /></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="quantityOnHandVar" ></property>
+	<property name="quantityReservedVar" ></property>
+	<property name="quantityOccupiedVar" ></property>
+	<property name="quantityVirtualVar" ></property>
+	<component name="eventVO" class="org.dddml.wms.domain.inventoryitem.InventoryItemEventVO">
+		<property name="inventoryItemEventTypeId" ><column name="eventVOInventoryItemEventTypeId" /></property>
+		<property name="documentNumber" ><column name="eventVODocumentNumber" not-null="true" /></property>
+	</component>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+
+
+  </class>
+  
+</hibernate-mapping>
+
