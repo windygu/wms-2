@@ -32,6 +32,16 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
         return stateQueryRepository;
     }
 
+    private AggregateEventListener<InOutLineMvoAggregate, InOutLineMvoState> aggregateEventListener;
+
+    public AggregateEventListener<InOutLineMvoAggregate, InOutLineMvoState> getAggregateEventListener() {
+        return aggregateEventListener;
+    }
+
+    public void setAggregateEventListener(AggregateEventListener<InOutLineMvoAggregate, InOutLineMvoState> eventListener) {
+        this.aggregateEventListener = eventListener;
+    }
+
     public AbstractInOutLineMvoApplicationService(EventStore eventStore, InOutLineMvoStateRepository stateRepository, InOutLineMvoStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
@@ -119,9 +129,28 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
 
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
-        getEventStore().appendEvents(eventStoreAggregateId, c.getInOutVersion(), // State version may be null!
-            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        persist(eventStoreAggregateId, c.getInOutVersion(), aggregate, state); // State version may be null!
 
+    }
+
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, InOutLineMvoAggregate aggregate, InOutLineMvoState state) {
+        getEventStore().appendEvents(eventStoreAggregateId, version, 
+            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        if (aggregateEventListener != null) {
+            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
+        }
+    }
+
+    public void initialize(InOutLineMvoStateEvent.InOutLineMvoStateCreated stateCreated) {
+        InOutLineId aggregateId = stateCreated.getStateEventId().getInOutLineId();
+        InOutLineMvoState state = new AbstractInOutLineMvoState.SimpleInOutLineMvoState();
+        state.setInOutLineId(aggregateId);
+
+        InOutLineMvoAggregate aggregate = getInOutLineMvoAggregate(state);
+        ((AbstractInOutLineMvoAggregate) aggregate).apply(stateCreated);
+
+        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
+        persist(eventStoreAggregateId, stateCreated.getStateEventId().getInOutVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(InOutLineMvoCommand command, EventStoreAggregateId eventStoreAggregateId, InOutLineMvoState state)

@@ -18,6 +18,14 @@ public abstract class AbstractOrganizationStructureStateEvent extends AbstractSt
         this.stateEventId = stateEventId;
     }
     
+    public OrganizationStructureId getId() {
+        return getStateEventId().getId();
+    }
+
+    public void setId(OrganizationStructureId id) {
+        getStateEventId().setId(id);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -85,6 +93,7 @@ public abstract class AbstractOrganizationStructureStateEvent extends AbstractSt
     public static abstract class AbstractOrganizationStructureStateCreated extends AbstractOrganizationStructureStateEvent implements OrganizationStructureStateEvent.OrganizationStructureStateCreated
     {
         public AbstractOrganizationStructureStateCreated() {
+            this(new OrganizationStructureStateEventId());
         }
 
         public AbstractOrganizationStructureStateCreated(OrganizationStructureStateEventId stateEventId) {
@@ -101,6 +110,7 @@ public abstract class AbstractOrganizationStructureStateEvent extends AbstractSt
     public static abstract class AbstractOrganizationStructureStateMergePatched extends AbstractOrganizationStructureStateEvent implements OrganizationStructureStateEvent.OrganizationStructureStateMergePatched
     {
         public AbstractOrganizationStructureStateMergePatched() {
+            this(new OrganizationStructureStateEventId());
         }
 
         public AbstractOrganizationStructureStateMergePatched(OrganizationStructureStateEventId stateEventId) {
@@ -127,6 +137,7 @@ public abstract class AbstractOrganizationStructureStateEvent extends AbstractSt
     public static abstract class AbstractOrganizationStructureStateDeleted extends AbstractOrganizationStructureStateEvent implements OrganizationStructureStateEvent.OrganizationStructureStateDeleted
     {
         public AbstractOrganizationStructureStateDeleted() {
+            this(new OrganizationStructureStateEventId());
         }
 
         public AbstractOrganizationStructureStateDeleted(OrganizationStructureStateEventId stateEventId) {

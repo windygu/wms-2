@@ -1441,10 +1441,12 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
     {
     }
 
+    
     public static class SimpleMergePatchInOutLineMvo extends AbstractMergePatchInOutLineMvo
     {
     }
 
+    
 	public static class SimpleDeleteInOutLineMvo extends AbstractInOutLineMvoCommand implements DeleteInOutLineMvo
 	{
         @Override
@@ -1453,6 +1455,7 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
         }
 	}
 
+    
 
 }
 

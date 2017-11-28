@@ -491,10 +491,12 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoCommand exten
     {
     }
 
+    
     public static class SimpleMergePatchAttributeSetInstanceExtensionFieldMvo extends AbstractMergePatchAttributeSetInstanceExtensionFieldMvo
     {
     }
 
+    
 	public static class SimpleDeleteAttributeSetInstanceExtensionFieldMvo extends AbstractAttributeSetInstanceExtensionFieldMvoCommand implements DeleteAttributeSetInstanceExtensionFieldMvo
 	{
         @Override
@@ -503,6 +505,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoCommand exten
         }
 	}
 
+    
 
 }
 

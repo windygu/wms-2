@@ -29,6 +29,16 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
         return stateQueryRepository;
     }
 
+    private AggregateEventListener<AttributeAggregate, AttributeState> aggregateEventListener;
+
+    public AggregateEventListener<AttributeAggregate, AttributeState> getAggregateEventListener() {
+        return aggregateEventListener;
+    }
+
+    public void setAggregateEventListener(AggregateEventListener<AttributeAggregate, AttributeState> eventListener) {
+        this.aggregateEventListener = eventListener;
+    }
+
     public AbstractAttributeApplicationService(EventStore eventStore, AttributeStateRepository stateRepository, AttributeStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
@@ -120,9 +130,28 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
 
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
-        getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
-            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!
 
+    }
+
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, AttributeAggregate aggregate, AttributeState state) {
+        getEventStore().appendEvents(eventStoreAggregateId, version, 
+            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        if (aggregateEventListener != null) {
+            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
+        }
+    }
+
+    public void initialize(AttributeStateEvent.AttributeStateCreated stateCreated) {
+        String aggregateId = stateCreated.getStateEventId().getAttributeId();
+        AttributeState state = new AbstractAttributeState.SimpleAttributeState();
+        state.setAttributeId(aggregateId);
+
+        AttributeAggregate aggregate = getAttributeAggregate(state);
+        ((AbstractAttributeAggregate) aggregate).apply(stateCreated);
+
+        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
+        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(AttributeCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeState state)

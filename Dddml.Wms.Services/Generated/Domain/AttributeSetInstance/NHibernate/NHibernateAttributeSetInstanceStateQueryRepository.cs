@@ -129,7 +129,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstance.NHibernate
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {
-            criteria.Add(NHibernateRestrictions.Eq("Deleted", false));
         }
 
 	}

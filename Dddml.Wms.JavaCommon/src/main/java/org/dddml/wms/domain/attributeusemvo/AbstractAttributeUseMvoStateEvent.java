@@ -19,6 +19,14 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
         this.stateEventId = stateEventId;
     }
     
+    public AttributeSetAttributeUseId getAttributeSetAttributeUseId() {
+        return getStateEventId().getAttributeSetAttributeUseId();
+    }
+
+    public void setAttributeSetAttributeUseId(AttributeSetAttributeUseId attributeSetAttributeUseId) {
+        getStateEventId().setAttributeSetAttributeUseId(attributeSetAttributeUseId);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -254,6 +262,7 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
     public static abstract class AbstractAttributeUseMvoStateCreated extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateEvent.AttributeUseMvoStateCreated
     {
         public AbstractAttributeUseMvoStateCreated() {
+            this(new AttributeUseMvoStateEventId());
         }
 
         public AbstractAttributeUseMvoStateCreated(AttributeUseMvoStateEventId stateEventId) {
@@ -270,6 +279,7 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
     public static abstract class AbstractAttributeUseMvoStateMergePatched extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateEvent.AttributeUseMvoStateMergePatched
     {
         public AbstractAttributeUseMvoStateMergePatched() {
+            this(new AttributeUseMvoStateEventId());
         }
 
         public AbstractAttributeUseMvoStateMergePatched(AttributeUseMvoStateEventId stateEventId) {
@@ -436,6 +446,7 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
     public static abstract class AbstractAttributeUseMvoStateDeleted extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateEvent.AttributeUseMvoStateDeleted
     {
         public AbstractAttributeUseMvoStateDeleted() {
+            this(new AttributeUseMvoStateEventId());
         }
 
         public AbstractAttributeUseMvoStateDeleted(AttributeUseMvoStateEventId stateEventId) {

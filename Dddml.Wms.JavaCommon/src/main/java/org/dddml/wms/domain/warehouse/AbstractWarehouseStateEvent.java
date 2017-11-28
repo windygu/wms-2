@@ -18,6 +18,14 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
         this.stateEventId = stateEventId;
     }
     
+    public String getWarehouseId() {
+        return getStateEventId().getWarehouseId();
+    }
+
+    public void setWarehouseId(String warehouseId) {
+        getStateEventId().setWarehouseId(warehouseId);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -121,6 +129,7 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractWarehouseStateCreated extends AbstractWarehouseStateEvent implements WarehouseStateEvent.WarehouseStateCreated
     {
         public AbstractWarehouseStateCreated() {
+            this(new WarehouseStateEventId());
         }
 
         public AbstractWarehouseStateCreated(WarehouseStateEventId stateEventId) {
@@ -137,6 +146,7 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractWarehouseStateMergePatched extends AbstractWarehouseStateEvent implements WarehouseStateEvent.WarehouseStateMergePatched
     {
         public AbstractWarehouseStateMergePatched() {
+            this(new WarehouseStateEventId());
         }
 
         public AbstractWarehouseStateMergePatched(WarehouseStateEventId stateEventId) {
@@ -193,6 +203,7 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractWarehouseStateDeleted extends AbstractWarehouseStateEvent implements WarehouseStateEvent.WarehouseStateDeleted
     {
         public AbstractWarehouseStateDeleted() {
+            this(new WarehouseStateEventId());
         }
 
         public AbstractWarehouseStateDeleted(WarehouseStateEventId stateEventId) {

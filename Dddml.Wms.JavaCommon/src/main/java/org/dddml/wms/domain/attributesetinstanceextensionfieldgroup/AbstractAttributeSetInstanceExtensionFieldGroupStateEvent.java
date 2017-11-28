@@ -18,6 +18,14 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
         this.stateEventId = stateEventId;
     }
     
+    public String getId() {
+        return getStateEventId().getId();
+    }
+
+    public void setId(String id) {
+        getStateEventId().setId(id);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -183,6 +191,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
     public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateCreated extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated, Saveable
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateCreated() {
+            this(new AttributeSetInstanceExtensionFieldGroupStateEventId());
         }
 
         public AbstractAttributeSetInstanceExtensionFieldGroupStateCreated(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
@@ -247,6 +256,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
     public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched, Saveable
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched() {
+            this(new AttributeSetInstanceExtensionFieldGroupStateEventId());
         }
 
         public AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
@@ -371,6 +381,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
     public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted, Saveable
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted() {
+            this(new AttributeSetInstanceExtensionFieldGroupStateEventId());
         }
 
         public AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {

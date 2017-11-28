@@ -18,6 +18,14 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStateEvent exten
         this.stateEventId = stateEventId;
     }
     
+    public String getIndex() {
+        return getStateEventId().getIndex();
+    }
+
+    public void setIndex(String index) {
+        getStateEventId().setIndex(index);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -157,6 +165,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStateEvent exten
     public static abstract class AbstractAttributeSetInstanceExtensionFieldStateCreated extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated
     {
         public AbstractAttributeSetInstanceExtensionFieldStateCreated() {
+            this(new AttributeSetInstanceExtensionFieldStateEventId());
         }
 
         public AbstractAttributeSetInstanceExtensionFieldStateCreated(AttributeSetInstanceExtensionFieldStateEventId stateEventId) {
@@ -173,6 +182,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStateEvent exten
     public static abstract class AbstractAttributeSetInstanceExtensionFieldStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched
     {
         public AbstractAttributeSetInstanceExtensionFieldStateMergePatched() {
+            this(new AttributeSetInstanceExtensionFieldStateEventId());
         }
 
         public AbstractAttributeSetInstanceExtensionFieldStateMergePatched(AttributeSetInstanceExtensionFieldStateEventId stateEventId) {
@@ -249,6 +259,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldStateEvent exten
     public static abstract class AbstractAttributeSetInstanceExtensionFieldStateRemoved extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateRemoved
     {
         public AbstractAttributeSetInstanceExtensionFieldStateRemoved() {
+            this(new AttributeSetInstanceExtensionFieldStateEventId());
         }
 
         public AbstractAttributeSetInstanceExtensionFieldStateRemoved(AttributeSetInstanceExtensionFieldStateEventId stateEventId) {

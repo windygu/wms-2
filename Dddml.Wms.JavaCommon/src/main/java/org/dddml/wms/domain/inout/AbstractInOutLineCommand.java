@@ -467,10 +467,12 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
     {
     }
 
+    
     public static class SimpleMergePatchInOutLine extends AbstractMergePatchInOutLine
     {
     }
 
+    
 	public static class SimpleRemoveInOutLine extends AbstractInOutLineCommand implements RemoveInOutLine
 	{
         @Override
@@ -479,6 +481,7 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
         }
 	}
 
+    
 
 }
 

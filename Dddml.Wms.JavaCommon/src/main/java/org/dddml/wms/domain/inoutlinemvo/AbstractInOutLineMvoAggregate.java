@@ -134,7 +134,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setInOutDeleted(c.getInOutDeleted());
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -258,7 +258,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setIsPropertyInOutDeletedRemoved(c.getIsPropertyInOutDeletedRemoved());
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -267,7 +267,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         InOutLineMvoStateEvent.InOutLineMvoStateDeleted e = newInOutLineMvoStateDeleted(stateEventId);
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -315,7 +315,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         InOutLineMvoStateEvent.InOutLineMvoStateCreated e = newInOutLineMvoStateCreated(stateEventId);
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -324,7 +324,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         InOutLineMvoStateEvent.InOutLineMvoStateMergePatched e = newInOutLineMvoStateMergePatched(stateEventId);
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -333,7 +333,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         InOutLineMvoStateEvent.InOutLineMvoStateDeleted e = newInOutLineMvoStateDeleted(stateEventId);
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 

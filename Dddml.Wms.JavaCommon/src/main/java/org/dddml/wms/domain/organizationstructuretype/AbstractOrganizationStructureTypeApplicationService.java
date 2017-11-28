@@ -29,6 +29,16 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
         return stateQueryRepository;
     }
 
+    private AggregateEventListener<OrganizationStructureTypeAggregate, OrganizationStructureTypeState> aggregateEventListener;
+
+    public AggregateEventListener<OrganizationStructureTypeAggregate, OrganizationStructureTypeState> getAggregateEventListener() {
+        return aggregateEventListener;
+    }
+
+    public void setAggregateEventListener(AggregateEventListener<OrganizationStructureTypeAggregate, OrganizationStructureTypeState> eventListener) {
+        this.aggregateEventListener = eventListener;
+    }
+
     public AbstractOrganizationStructureTypeApplicationService(EventStore eventStore, OrganizationStructureTypeStateRepository stateRepository, OrganizationStructureTypeStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
@@ -116,9 +126,28 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
 
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
-        getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
-            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!
 
+    }
+
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, OrganizationStructureTypeAggregate aggregate, OrganizationStructureTypeState state) {
+        getEventStore().appendEvents(eventStoreAggregateId, version, 
+            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        if (aggregateEventListener != null) {
+            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
+        }
+    }
+
+    public void initialize(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated stateCreated) {
+        String aggregateId = stateCreated.getStateEventId().getId();
+        OrganizationStructureTypeState state = new AbstractOrganizationStructureTypeState.SimpleOrganizationStructureTypeState();
+        state.setId(aggregateId);
+
+        OrganizationStructureTypeAggregate aggregate = getOrganizationStructureTypeAggregate(state);
+        ((AbstractOrganizationStructureTypeAggregate) aggregate).apply(stateCreated);
+
+        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
+        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(OrganizationStructureTypeCommand command, EventStoreAggregateId eventStoreAggregateId, OrganizationStructureTypeState state)

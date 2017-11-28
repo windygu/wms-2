@@ -18,6 +18,14 @@ public abstract class AbstractOrganizationStateEvent extends AbstractStateEvent 
         this.stateEventId = stateEventId;
     }
     
+    public String getOrganizationId() {
+        return getStateEventId().getOrganizationId();
+    }
+
+    public void setOrganizationId(String organizationId) {
+        getStateEventId().setOrganizationId(organizationId);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -133,6 +141,7 @@ public abstract class AbstractOrganizationStateEvent extends AbstractStateEvent 
     public static abstract class AbstractOrganizationStateCreated extends AbstractOrganizationStateEvent implements OrganizationStateEvent.OrganizationStateCreated
     {
         public AbstractOrganizationStateCreated() {
+            this(new OrganizationStateEventId());
         }
 
         public AbstractOrganizationStateCreated(OrganizationStateEventId stateEventId) {
@@ -149,6 +158,7 @@ public abstract class AbstractOrganizationStateEvent extends AbstractStateEvent 
     public static abstract class AbstractOrganizationStateMergePatched extends AbstractOrganizationStateEvent implements OrganizationStateEvent.OrganizationStateMergePatched
     {
         public AbstractOrganizationStateMergePatched() {
+            this(new OrganizationStateEventId());
         }
 
         public AbstractOrganizationStateMergePatched(OrganizationStateEventId stateEventId) {
@@ -215,6 +225,7 @@ public abstract class AbstractOrganizationStateEvent extends AbstractStateEvent 
     public static abstract class AbstractOrganizationStateDeleted extends AbstractOrganizationStateEvent implements OrganizationStateEvent.OrganizationStateDeleted
     {
         public AbstractOrganizationStateDeleted() {
+            this(new OrganizationStateEventId());
         }
 
         public AbstractOrganizationStateDeleted(OrganizationStateEventId stateEventId) {

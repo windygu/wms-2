@@ -17,9 +17,7 @@
 	<property name="sequenceNumber" ></property>
 	<property name="version" ></property>
 	<property name="createdBy" ></property>
-	<property name="createdAt" ></property>
 	<property name="updatedBy" ></property>
-	<property name="updatedAt" ></property>
 	<property name="active" ></property>
 	<property name="deleted" ></property>
 	<property name="attributeSetName" ></property>
@@ -34,6 +32,10 @@
 	<property name="attributeSetUpdatedAt" ></property>
 	<property name="attributeSetActive" ></property>
 	<property name="attributeSetDeleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
 
 
   </class>

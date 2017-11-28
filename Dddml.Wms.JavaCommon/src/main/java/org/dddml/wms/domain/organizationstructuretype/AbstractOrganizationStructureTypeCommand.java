@@ -82,10 +82,12 @@ public abstract class AbstractOrganizationStructureTypeCommand extends AbstractC
     {
     }
 
+    
     public static class SimpleMergePatchOrganizationStructureType extends AbstractMergePatchOrganizationStructureType
     {
     }
 
+    
 	public static class SimpleDeleteOrganizationStructureType extends AbstractOrganizationStructureTypeCommand implements DeleteOrganizationStructureType
 	{
         @Override
@@ -94,6 +96,7 @@ public abstract class AbstractOrganizationStructureTypeCommand extends AbstractC
         }
 	}
 
+    
 
 }
 

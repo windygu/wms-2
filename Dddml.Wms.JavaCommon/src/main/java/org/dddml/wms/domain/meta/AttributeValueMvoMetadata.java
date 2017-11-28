@@ -1,4 +1,4 @@
-package org.dddml.wms.domain.attributevaluemvo.meta;
+package org.dddml.wms.domain.meta;
 
 
 public interface AttributeValueMvoMetadata

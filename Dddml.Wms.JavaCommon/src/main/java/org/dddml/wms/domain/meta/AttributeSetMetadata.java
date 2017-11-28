@@ -1,4 +1,4 @@
-package org.dddml.wms.domain.attributeset.meta;
+package org.dddml.wms.domain.meta;
 
 
 public interface AttributeSetMetadata

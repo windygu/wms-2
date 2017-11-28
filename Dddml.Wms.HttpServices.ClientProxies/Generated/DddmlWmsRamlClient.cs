@@ -19,7 +19,7 @@ using System.Xml.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using RAML.Api.Core;
-using Raml.Common;
+//using Raml.Common;
 using Dddml.Wms.HttpServices.ClientProxies.Raml.Models;
 using Dddml.Wms.Domain.Attribute;
 using Dddml.Wms.Domain.AttributeSet;

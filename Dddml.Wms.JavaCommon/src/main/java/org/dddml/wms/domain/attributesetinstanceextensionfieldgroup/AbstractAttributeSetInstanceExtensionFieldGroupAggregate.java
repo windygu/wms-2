@@ -79,7 +79,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         e.setActive(c.getActive());
         ((AbstractAttributeSetInstanceExtensionFieldGroupStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField innerCommand : c.getFields())
         {
@@ -108,7 +108,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractAttributeSetInstanceExtensionFieldGroupStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (AttributeSetInstanceExtensionFieldCommand innerCommand : c.getAttributeSetInstanceExtensionFieldCommands())
         {
@@ -125,7 +125,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted e = newAttributeSetInstanceExtensionFieldGroupStateDeleted(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldGroupStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -166,7 +166,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
 
     }// END map(ICreate... ////////////////////////////
@@ -191,7 +191,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
 
     }// END map(IMergePatch... ////////////////////////////
@@ -203,7 +203,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateRemoved e = newAttributeSetInstanceExtensionFieldStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
 
         return e;
 
@@ -243,7 +243,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated e = newAttributeSetInstanceExtensionFieldGroupStateCreated(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldGroupStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -252,7 +252,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched e = newAttributeSetInstanceExtensionFieldGroupStateMergePatched(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldGroupStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -261,7 +261,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted e = newAttributeSetInstanceExtensionFieldGroupStateDeleted(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldGroupStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 

@@ -240,10 +240,12 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupCommand ext
     {
     }
 
+    
     public static class SimpleMergePatchAttributeSetInstanceExtensionFieldGroup extends AbstractMergePatchAttributeSetInstanceExtensionFieldGroup
     {
     }
 
+    
 	public static class SimpleDeleteAttributeSetInstanceExtensionFieldGroup extends AbstractAttributeSetInstanceExtensionFieldGroupCommand implements DeleteAttributeSetInstanceExtensionFieldGroup
 	{
         @Override
@@ -252,6 +254,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupCommand ext
         }
 	}
 
+    
     public static class SimpleCreateAttributeSetInstanceExtensionFieldCommands implements CreateAttributeSetInstanceExtensionFieldCommands
     {
         private List<AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField> innerCommands = new ArrayList<AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField>();

@@ -475,10 +475,12 @@
 	<property name="_F_C20_49_" ><column name="_F_C20_49_" length="20" /></property>
 	<property name="_F_C50_49_" ><column name="_F_C50_49_" length="50" /></property>
 	<property name="createdBy" ></property>
-	<property name="createdAt" ></property>
 	<property name="updatedBy" ></property>
-	<property name="updatedAt" ></property>
 	<property name="active" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
 
     <property name="commandId" column="CommandId"/>
 

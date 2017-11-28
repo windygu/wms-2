@@ -1,4 +1,4 @@
-package org.dddml.wms.domain.organization.meta;
+package org.dddml.wms.domain.meta;
 
 
 public interface OrganizationMetadata

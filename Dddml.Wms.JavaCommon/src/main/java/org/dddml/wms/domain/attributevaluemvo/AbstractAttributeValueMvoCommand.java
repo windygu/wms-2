@@ -563,10 +563,12 @@ public abstract class AbstractAttributeValueMvoCommand extends AbstractCommand i
     {
     }
 
+    
     public static class SimpleMergePatchAttributeValueMvo extends AbstractMergePatchAttributeValueMvo
     {
     }
 
+    
 	public static class SimpleDeleteAttributeValueMvo extends AbstractAttributeValueMvoCommand implements DeleteAttributeValueMvo
 	{
         @Override
@@ -575,6 +577,7 @@ public abstract class AbstractAttributeValueMvoCommand extends AbstractCommand i
         }
 	}
 
+    
 
 }
 

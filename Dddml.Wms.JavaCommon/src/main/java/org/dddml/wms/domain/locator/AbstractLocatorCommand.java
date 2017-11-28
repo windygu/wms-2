@@ -274,10 +274,12 @@ public abstract class AbstractLocatorCommand extends AbstractCommand implements 
     {
     }
 
+    
     public static class SimpleMergePatchLocator extends AbstractMergePatchLocator
     {
     }
 
+    
 	public static class SimpleDeleteLocator extends AbstractLocatorCommand implements DeleteLocator
 	{
         @Override
@@ -286,6 +288,7 @@ public abstract class AbstractLocatorCommand extends AbstractCommand implements 
         }
 	}
 
+    
 
 }
 

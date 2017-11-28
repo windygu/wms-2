@@ -110,7 +110,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setActive(c.getActive());
         ((AbstractInOutStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (InOutLineCommand.CreateInOutLine innerCommand : c.getInOutLines())
         {
@@ -196,7 +196,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractInOutStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (InOutLineCommand innerCommand : c.getInOutLineCommands())
         {
@@ -213,7 +213,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         InOutStateEvent.InOutStateDeleted e = newInOutStateDeleted(stateEventId);
         ((AbstractInOutStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -265,7 +265,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
 
     }// END map(ICreate... ////////////////////////////
@@ -312,7 +312,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setIsPropertyReversalLineNumberRemoved(c.getIsPropertyReversalLineNumberRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
 
     }// END map(IMergePatch... ////////////////////////////
@@ -324,7 +324,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         InOutLineStateEvent.InOutLineStateRemoved e = newInOutLineStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
 
         return e;
 
@@ -393,7 +393,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         InOutStateEvent.InOutStateCreated e = newInOutStateCreated(stateEventId);
         ((AbstractInOutStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -402,7 +402,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
         ((AbstractInOutStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -411,7 +411,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         InOutStateEvent.InOutStateDeleted e = newInOutStateDeleted(stateEventId);
         ((AbstractInOutStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 

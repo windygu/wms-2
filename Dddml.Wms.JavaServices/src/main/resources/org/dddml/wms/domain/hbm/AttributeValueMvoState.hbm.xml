@@ -19,9 +19,7 @@
 	<property name="referenceId" ></property>
 	<property name="version" ></property>
 	<property name="createdBy" ></property>
-	<property name="createdAt" ></property>
 	<property name="updatedBy" ></property>
-	<property name="updatedAt" ></property>
 	<property name="active" ></property>
 	<property name="deleted" ></property>
 	<property name="attributeName" ></property>
@@ -40,6 +38,10 @@
 	<property name="attributeUpdatedAt" ></property>
 	<property name="attributeActive" ></property>
 	<property name="attributeDeleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
 
 
   </class>

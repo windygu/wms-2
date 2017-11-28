@@ -92,7 +92,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         e.setAttrSetInstEFGroupDeleted(c.getAttrSetInstEFGroupDeleted());
         ((AbstractAttributeSetInstanceExtensionFieldMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         e.setIsPropertyAttrSetInstEFGroupDeletedRemoved(c.getIsPropertyAttrSetInstEFGroupDeletedRemoved());
         ((AbstractAttributeSetInstanceExtensionFieldMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -146,7 +146,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateDeleted e = newAttributeSetInstanceExtensionFieldMvoStateDeleted(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -165,7 +165,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateCreated e = newAttributeSetInstanceExtensionFieldMvoStateCreated(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -174,7 +174,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateMergePatched e = newAttributeSetInstanceExtensionFieldMvoStateMergePatched(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -183,7 +183,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateDeleted e = newAttributeSetInstanceExtensionFieldMvoStateDeleted(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 

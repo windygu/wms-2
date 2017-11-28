@@ -17,7 +17,8 @@ import java.util.Map;
 public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicObjectMapper<JSONObject,
         AttributeSetInstanceState,
         AttributeSetInstanceCommand.CreateAttributeSetInstance,
-        AttributeSetInstanceCommand.MergePatchAttributeSetInstance> {
+        Object//AttributeSetInstanceCommand.MergePatchAttributeSetInstance
+        > {
 
     //需要注入
     private AttributeSetService attributeSetService;
@@ -104,6 +105,10 @@ public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicOb
     }
 
     @Override
+    public Object toCommandMergePatch(JSONObject jsonObject) {
+        throw new UnsupportedOperationException();
+    }
+    /*
     public AttributeSetInstanceCommand.MergePatchAttributeSetInstance toCommandMergePatch(JSONObject jsonObject) {
         //String jsonText = jsonObject.toJSONString();
         AbstractAttributeSetInstanceCommand.MergePatchAttributeSetInstance mergePatchAttributeSetInstance =
@@ -124,4 +129,5 @@ public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicOb
         });
         return mergePatchAttributeSetInstance;
     }
+    */
 }

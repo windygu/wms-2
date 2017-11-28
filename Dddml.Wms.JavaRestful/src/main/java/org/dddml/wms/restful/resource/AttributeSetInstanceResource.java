@@ -29,7 +29,7 @@ public class AttributeSetInstanceResource {
     private AbstractDynamicObjectMapper<JSONObject,
             AttributeSetInstanceState,
             AttributeSetInstanceCommand.CreateAttributeSetInstance,
-            AttributeSetInstanceCommand.MergePatchAttributeSetInstance> attributeSetInstanceDynamicObjectMapper;
+            Object> attributeSetInstanceDynamicObjectMapper;
 
 
     @Autowired

@@ -1,4 +1,4 @@
-package org.dddml.wms.domain.locator.meta;
+package org.dddml.wms.domain.meta;
 
 
 public interface LocatorMetadata

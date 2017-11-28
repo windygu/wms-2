@@ -24,6 +24,14 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         this.state.setAttributeSetInstanceId(stateEventId.getAttributeSetInstanceId());
     }
 
+    public String getAttributeSetInstanceId() {
+        return getStateEventId().getAttributeSetInstanceId();
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId) {
+        getStateEventId().setAttributeSetInstanceId(attributeSetInstanceId);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -4710,6 +4718,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
     public static abstract class AbstractAttributeSetInstanceStateCreated extends AbstractAttributeSetInstanceStateEvent implements AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated
     {
         public AbstractAttributeSetInstanceStateCreated() {
+            this(new AttributeSetInstanceStateEventId());
         }
 
         public AbstractAttributeSetInstanceStateCreated(AttributeSetInstanceStateEventId stateEventId) {

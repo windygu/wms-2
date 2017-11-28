@@ -21,6 +21,14 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
         this.stateEventId = stateEventId;
     }
     
+    public InOutLineId getInOutLineId() {
+        return getStateEventId().getInOutLineId();
+    }
+
+    public void setInOutLineId(InOutLineId inOutLineId) {
+        getStateEventId().setInOutLineId(inOutLineId);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -772,6 +780,7 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
     public static abstract class AbstractInOutLineMvoStateCreated extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateEvent.InOutLineMvoStateCreated
     {
         public AbstractInOutLineMvoStateCreated() {
+            this(new InOutLineMvoStateEventId());
         }
 
         public AbstractInOutLineMvoStateCreated(InOutLineMvoStateEventId stateEventId) {
@@ -788,6 +797,7 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
     public static abstract class AbstractInOutLineMvoStateMergePatched extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateEvent.InOutLineMvoStateMergePatched
     {
         public AbstractInOutLineMvoStateMergePatched() {
+            this(new InOutLineMvoStateEventId());
         }
 
         public AbstractInOutLineMvoStateMergePatched(InOutLineMvoStateEventId stateEventId) {
@@ -1384,6 +1394,7 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
     public static abstract class AbstractInOutLineMvoStateDeleted extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateEvent.InOutLineMvoStateDeleted
     {
         public AbstractInOutLineMvoStateDeleted() {
+            this(new InOutLineMvoStateEventId());
         }
 
         public AbstractInOutLineMvoStateDeleted(InOutLineMvoStateEventId stateEventId) {

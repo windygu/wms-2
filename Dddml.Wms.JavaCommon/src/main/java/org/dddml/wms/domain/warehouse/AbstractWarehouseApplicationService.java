@@ -29,6 +29,16 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
         return stateQueryRepository;
     }
 
+    private AggregateEventListener<WarehouseAggregate, WarehouseState> aggregateEventListener;
+
+    public AggregateEventListener<WarehouseAggregate, WarehouseState> getAggregateEventListener() {
+        return aggregateEventListener;
+    }
+
+    public void setAggregateEventListener(AggregateEventListener<WarehouseAggregate, WarehouseState> eventListener) {
+        this.aggregateEventListener = eventListener;
+    }
+
     public AbstractWarehouseApplicationService(EventStore eventStore, WarehouseStateRepository stateRepository, WarehouseStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
@@ -116,9 +126,28 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
 
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
-        getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
-            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!
 
+    }
+
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, WarehouseAggregate aggregate, WarehouseState state) {
+        getEventStore().appendEvents(eventStoreAggregateId, version, 
+            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        if (aggregateEventListener != null) {
+            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
+        }
+    }
+
+    public void initialize(WarehouseStateEvent.WarehouseStateCreated stateCreated) {
+        String aggregateId = stateCreated.getStateEventId().getWarehouseId();
+        WarehouseState state = new AbstractWarehouseState.SimpleWarehouseState();
+        state.setWarehouseId(aggregateId);
+
+        WarehouseAggregate aggregate = getWarehouseAggregate(state);
+        ((AbstractWarehouseAggregate) aggregate).apply(stateCreated);
+
+        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
+        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(WarehouseCommand command, EventStoreAggregateId eventStoreAggregateId, WarehouseState state)

@@ -18,6 +18,14 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
         this.stateEventId = stateEventId;
     }
     
+    public String getLocatorId() {
+        return getStateEventId().getLocatorId();
+    }
+
+    public void setLocatorId(String locatorId) {
+        getStateEventId().setLocatorId(locatorId);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -181,6 +189,7 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
     public static abstract class AbstractLocatorStateCreated extends AbstractLocatorStateEvent implements LocatorStateEvent.LocatorStateCreated
     {
         public AbstractLocatorStateCreated() {
+            this(new LocatorStateEventId());
         }
 
         public AbstractLocatorStateCreated(LocatorStateEventId stateEventId) {
@@ -197,6 +206,7 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
     public static abstract class AbstractLocatorStateMergePatched extends AbstractLocatorStateEvent implements LocatorStateEvent.LocatorStateMergePatched
     {
         public AbstractLocatorStateMergePatched() {
+            this(new LocatorStateEventId());
         }
 
         public AbstractLocatorStateMergePatched(LocatorStateEventId stateEventId) {
@@ -303,6 +313,7 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
     public static abstract class AbstractLocatorStateDeleted extends AbstractLocatorStateEvent implements LocatorStateEvent.LocatorStateDeleted
     {
         public AbstractLocatorStateDeleted() {
+            this(new LocatorStateEventId());
         }
 
         public AbstractLocatorStateDeleted(LocatorStateEventId stateEventId) {

@@ -19,6 +19,14 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
         this.stateEventId = stateEventId;
     }
     
+    public Long getLineNumber() {
+        return getStateEventId().getLineNumber();
+    }
+
+    public void setLineNumber(Long lineNumber) {
+        getStateEventId().setLineNumber(lineNumber);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -290,6 +298,7 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractInOutLineStateCreated extends AbstractInOutLineStateEvent implements InOutLineStateEvent.InOutLineStateCreated
     {
         public AbstractInOutLineStateCreated() {
+            this(new InOutLineStateEventId());
         }
 
         public AbstractInOutLineStateCreated(InOutLineStateEventId stateEventId) {
@@ -306,6 +315,7 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractInOutLineStateMergePatched extends AbstractInOutLineStateEvent implements InOutLineStateEvent.InOutLineStateMergePatched
     {
         public AbstractInOutLineStateMergePatched() {
+            this(new InOutLineStateEventId());
         }
 
         public AbstractInOutLineStateMergePatched(InOutLineStateEventId stateEventId) {
@@ -492,6 +502,7 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractInOutLineStateRemoved extends AbstractInOutLineStateEvent implements InOutLineStateEvent.InOutLineStateRemoved
     {
         public AbstractInOutLineStateRemoved() {
+            this(new InOutLineStateEventId());
         }
 
         public AbstractInOutLineStateRemoved(InOutLineStateEventId stateEventId) {

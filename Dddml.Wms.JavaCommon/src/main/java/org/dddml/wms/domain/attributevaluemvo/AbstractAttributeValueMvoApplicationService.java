@@ -30,6 +30,16 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
         return stateQueryRepository;
     }
 
+    private AggregateEventListener<AttributeValueMvoAggregate, AttributeValueMvoState> aggregateEventListener;
+
+    public AggregateEventListener<AttributeValueMvoAggregate, AttributeValueMvoState> getAggregateEventListener() {
+        return aggregateEventListener;
+    }
+
+    public void setAggregateEventListener(AggregateEventListener<AttributeValueMvoAggregate, AttributeValueMvoState> eventListener) {
+        this.aggregateEventListener = eventListener;
+    }
+
     public AbstractAttributeValueMvoApplicationService(EventStore eventStore, AttributeValueMvoStateRepository stateRepository, AttributeValueMvoStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
@@ -117,9 +127,28 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
 
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
-        getEventStore().appendEvents(eventStoreAggregateId, c.getAttributeVersion(), // State version may be null!
-            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        persist(eventStoreAggregateId, c.getAttributeVersion(), aggregate, state); // State version may be null!
 
+    }
+
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, AttributeValueMvoAggregate aggregate, AttributeValueMvoState state) {
+        getEventStore().appendEvents(eventStoreAggregateId, version, 
+            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        if (aggregateEventListener != null) {
+            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
+        }
+    }
+
+    public void initialize(AttributeValueMvoStateEvent.AttributeValueMvoStateCreated stateCreated) {
+        AttributeValueId aggregateId = stateCreated.getStateEventId().getAttributeValueId();
+        AttributeValueMvoState state = new AbstractAttributeValueMvoState.SimpleAttributeValueMvoState();
+        state.setAttributeValueId(aggregateId);
+
+        AttributeValueMvoAggregate aggregate = getAttributeValueMvoAggregate(state);
+        ((AbstractAttributeValueMvoAggregate) aggregate).apply(stateCreated);
+
+        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
+        persist(eventStoreAggregateId, stateCreated.getStateEventId().getAttributeVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(AttributeValueMvoCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeValueMvoState state)

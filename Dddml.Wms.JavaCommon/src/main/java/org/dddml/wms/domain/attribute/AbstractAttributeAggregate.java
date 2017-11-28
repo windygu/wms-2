@@ -84,7 +84,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         e.setActive(c.getActive());
         ((AbstractAttributeStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (AttributeValueCommand.CreateAttributeValue innerCommand : c.getAttributeValues())
         {
@@ -123,7 +123,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractAttributeStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (AttributeValueCommand innerCommand : c.getAttributeValueCommands())
         {
@@ -140,7 +140,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         AttributeStateEvent.AttributeStateDeleted e = newAttributeStateDeleted(stateEventId);
         ((AbstractAttributeStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -179,7 +179,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         e.setReferenceId(c.getReferenceId());
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
 
     }// END map(ICreate... ////////////////////////////
@@ -200,7 +200,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         e.setIsPropertyReferenceIdRemoved(c.getIsPropertyReferenceIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
 
     }// END map(IMergePatch... ////////////////////////////
@@ -212,7 +212,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         AttributeValueStateEvent.AttributeValueStateRemoved e = newAttributeValueStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
 
         return e;
 
@@ -252,7 +252,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         AttributeStateEvent.AttributeStateCreated e = newAttributeStateCreated(stateEventId);
         ((AbstractAttributeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -261,7 +261,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         AttributeStateEvent.AttributeStateMergePatched e = newAttributeStateMergePatched(stateEventId);
         ((AbstractAttributeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -270,7 +270,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         AttributeStateEvent.AttributeStateDeleted e = newAttributeStateDeleted(stateEventId);
         ((AbstractAttributeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 

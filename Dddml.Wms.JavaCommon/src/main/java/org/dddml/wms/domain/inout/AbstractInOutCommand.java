@@ -926,10 +926,12 @@ public abstract class AbstractInOutCommand extends AbstractCommand implements In
     {
     }
 
+    
     public static class SimpleMergePatchInOut extends AbstractMergePatchInOut
     {
     }
 
+    
 	public static class SimpleDeleteInOut extends AbstractInOutCommand implements DeleteInOut
 	{
         @Override
@@ -938,6 +940,7 @@ public abstract class AbstractInOutCommand extends AbstractCommand implements In
         }
 	}
 
+    
     public static class SimpleCreateInOutLineCommands implements CreateInOutLineCommands
     {
         private List<InOutLineCommand.CreateInOutLine> innerCommands = new ArrayList<InOutLineCommand.CreateInOutLine>();

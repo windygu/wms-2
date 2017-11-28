@@ -29,6 +29,16 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
         return stateQueryRepository;
     }
 
+    private AggregateEventListener<AttributeSetInstanceExtensionFieldGroupAggregate, AttributeSetInstanceExtensionFieldGroupState> aggregateEventListener;
+
+    public AggregateEventListener<AttributeSetInstanceExtensionFieldGroupAggregate, AttributeSetInstanceExtensionFieldGroupState> getAggregateEventListener() {
+        return aggregateEventListener;
+    }
+
+    public void setAggregateEventListener(AggregateEventListener<AttributeSetInstanceExtensionFieldGroupAggregate, AttributeSetInstanceExtensionFieldGroupState> eventListener) {
+        this.aggregateEventListener = eventListener;
+    }
+
     public AbstractAttributeSetInstanceExtensionFieldGroupApplicationService(EventStore eventStore, AttributeSetInstanceExtensionFieldGroupStateRepository stateRepository, AttributeSetInstanceExtensionFieldGroupStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
@@ -120,9 +130,28 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
 
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
-        getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
-            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!
 
+    }
+
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, AttributeSetInstanceExtensionFieldGroupAggregate aggregate, AttributeSetInstanceExtensionFieldGroupState state) {
+        getEventStore().appendEvents(eventStoreAggregateId, version, 
+            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        if (aggregateEventListener != null) {
+            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
+        }
+    }
+
+    public void initialize(AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated stateCreated) {
+        String aggregateId = stateCreated.getStateEventId().getId();
+        AttributeSetInstanceExtensionFieldGroupState state = new AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState();
+        state.setId(aggregateId);
+
+        AttributeSetInstanceExtensionFieldGroupAggregate aggregate = getAttributeSetInstanceExtensionFieldGroupAggregate(state);
+        ((AbstractAttributeSetInstanceExtensionFieldGroupAggregate) aggregate).apply(stateCreated);
+
+        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
+        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(AttributeSetInstanceExtensionFieldGroupCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeSetInstanceExtensionFieldGroupState state)

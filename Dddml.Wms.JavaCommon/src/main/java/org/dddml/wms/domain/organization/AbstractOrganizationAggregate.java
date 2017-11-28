@@ -78,7 +78,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
         e.setActive(c.getActive());
         ((AbstractOrganizationStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -97,7 +97,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractOrganizationStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -106,7 +106,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
         OrganizationStateEvent.OrganizationStateDeleted e = newOrganizationStateDeleted(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -125,7 +125,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
         OrganizationStateEvent.OrganizationStateCreated e = newOrganizationStateCreated(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -134,7 +134,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
         OrganizationStateEvent.OrganizationStateMergePatched e = newOrganizationStateMergePatched(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -143,7 +143,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
         OrganizationStateEvent.OrganizationStateDeleted e = newOrganizationStateDeleted(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 

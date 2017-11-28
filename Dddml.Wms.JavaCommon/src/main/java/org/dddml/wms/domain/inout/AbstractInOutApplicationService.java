@@ -31,6 +31,16 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         return stateQueryRepository;
     }
 
+    private AggregateEventListener<InOutAggregate, InOutState> aggregateEventListener;
+
+    public AggregateEventListener<InOutAggregate, InOutState> getAggregateEventListener() {
+        return aggregateEventListener;
+    }
+
+    public void setAggregateEventListener(AggregateEventListener<InOutAggregate, InOutState> eventListener) {
+        this.aggregateEventListener = eventListener;
+    }
+
     public AbstractInOutApplicationService(EventStore eventStore, InOutStateRepository stateRepository, InOutStateQueryRepository stateQueryRepository) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
@@ -122,9 +132,28 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
 
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
-        getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
-            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!
 
+    }
+
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, InOutAggregate aggregate, InOutState state) {
+        getEventStore().appendEvents(eventStoreAggregateId, version, 
+            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        if (aggregateEventListener != null) {
+            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
+        }
+    }
+
+    public void initialize(InOutStateEvent.InOutStateCreated stateCreated) {
+        String aggregateId = stateCreated.getStateEventId().getDocumentNumber();
+        InOutState state = new AbstractInOutState.SimpleInOutState();
+        state.setDocumentNumber(aggregateId);
+
+        InOutAggregate aggregate = getInOutAggregate(state);
+        ((AbstractInOutAggregate) aggregate).apply(stateCreated);
+
+        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
+        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(InOutCommand command, EventStoreAggregateId eventStoreAggregateId, InOutState state)

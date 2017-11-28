@@ -360,10 +360,12 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
     {
     }
 
+    
     public static class SimpleMergePatchAttribute extends AbstractMergePatchAttribute
     {
     }
 
+    
 	public static class SimpleDeleteAttribute extends AbstractAttributeCommand implements DeleteAttribute
 	{
         @Override
@@ -372,6 +374,7 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
         }
 	}
 
+    
     public static class SimpleCreateAttributeValueCommands implements CreateAttributeValueCommands
     {
         private List<AttributeValueCommand.CreateAttributeValue> innerCommands = new ArrayList<AttributeValueCommand.CreateAttributeValue>();

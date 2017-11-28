@@ -521,7 +521,7 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         e.setActive(c.getActive());
         ((AbstractAttributeSetInstanceStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -540,7 +540,7 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e = newAttributeSetInstanceStateCreated(stateEventId);
         ((AbstractAttributeSetInstanceStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 

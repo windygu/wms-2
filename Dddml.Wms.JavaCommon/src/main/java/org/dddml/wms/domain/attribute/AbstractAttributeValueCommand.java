@@ -154,10 +154,12 @@ public abstract class AbstractAttributeValueCommand extends AbstractCommand impl
     {
     }
 
+    
     public static class SimpleMergePatchAttributeValue extends AbstractMergePatchAttributeValue
     {
     }
 
+    
 	public static class SimpleRemoveAttributeValue extends AbstractAttributeValueCommand implements RemoveAttributeValue
 	{
         @Override
@@ -166,6 +168,7 @@ public abstract class AbstractAttributeValueCommand extends AbstractCommand impl
         }
 	}
 
+    
 
 }
 

@@ -82,10 +82,12 @@ public abstract class AbstractOrganizationStructureCommand extends AbstractComma
     {
     }
 
+    
     public static class SimpleMergePatchOrganizationStructure extends AbstractMergePatchOrganizationStructure
     {
     }
 
+    
 	public static class SimpleDeleteOrganizationStructure extends AbstractOrganizationStructureCommand implements DeleteOrganizationStructure
 	{
         @Override
@@ -94,6 +96,7 @@ public abstract class AbstractOrganizationStructureCommand extends AbstractComma
         }
 	}
 
+    
 
 }
 

@@ -19,6 +19,14 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
         this.stateEventId = stateEventId;
     }
     
+    public AttributeValueId getAttributeValueId() {
+        return getStateEventId().getAttributeValueId();
+    }
+
+    public void setAttributeValueId(AttributeValueId attributeValueId) {
+        getStateEventId().setAttributeValueId(attributeValueId);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -326,6 +334,7 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
     public static abstract class AbstractAttributeValueMvoStateCreated extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateEvent.AttributeValueMvoStateCreated
     {
         public AbstractAttributeValueMvoStateCreated() {
+            this(new AttributeValueMvoStateEventId());
         }
 
         public AbstractAttributeValueMvoStateCreated(AttributeValueMvoStateEventId stateEventId) {
@@ -342,6 +351,7 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
     public static abstract class AbstractAttributeValueMvoStateMergePatched extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched
     {
         public AbstractAttributeValueMvoStateMergePatched() {
+            this(new AttributeValueMvoStateEventId());
         }
 
         public AbstractAttributeValueMvoStateMergePatched(AttributeValueMvoStateEventId stateEventId) {
@@ -568,6 +578,7 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
     public static abstract class AbstractAttributeValueMvoStateDeleted extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted
     {
         public AbstractAttributeValueMvoStateDeleted() {
+            this(new AttributeValueMvoStateEventId());
         }
 
         public AbstractAttributeValueMvoStateDeleted(AttributeValueMvoStateEventId stateEventId) {

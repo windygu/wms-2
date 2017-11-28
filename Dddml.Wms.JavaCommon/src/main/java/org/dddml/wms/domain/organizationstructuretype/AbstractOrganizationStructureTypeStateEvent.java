@@ -18,6 +18,14 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
         this.stateEventId = stateEventId;
     }
     
+    public String getId() {
+        return getStateEventId().getId();
+    }
+
+    public void setId(String id) {
+        getStateEventId().setId(id);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -85,6 +93,7 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
     public static abstract class AbstractOrganizationStructureTypeStateCreated extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated
     {
         public AbstractOrganizationStructureTypeStateCreated() {
+            this(new OrganizationStructureTypeStateEventId());
         }
 
         public AbstractOrganizationStructureTypeStateCreated(OrganizationStructureTypeStateEventId stateEventId) {
@@ -101,6 +110,7 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
     public static abstract class AbstractOrganizationStructureTypeStateMergePatched extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched
     {
         public AbstractOrganizationStructureTypeStateMergePatched() {
+            this(new OrganizationStructureTypeStateEventId());
         }
 
         public AbstractOrganizationStructureTypeStateMergePatched(OrganizationStructureTypeStateEventId stateEventId) {
@@ -127,6 +137,7 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
     public static abstract class AbstractOrganizationStructureTypeStateDeleted extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted
     {
         public AbstractOrganizationStructureTypeStateDeleted() {
+            this(new OrganizationStructureTypeStateEventId());
         }
 
         public AbstractOrganizationStructureTypeStateDeleted(OrganizationStructureTypeStateEventId stateEventId) {

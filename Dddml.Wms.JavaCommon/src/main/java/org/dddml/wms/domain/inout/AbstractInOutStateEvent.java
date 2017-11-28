@@ -20,6 +20,14 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         this.stateEventId = stateEventId;
     }
     
+    public String getDocumentNumber() {
+        return getStateEventId().getDocumentNumber();
+    }
+
+    public void setDocumentNumber(String documentNumber) {
+        getStateEventId().setDocumentNumber(documentNumber);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -533,6 +541,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     public static abstract class AbstractInOutStateCreated extends AbstractInOutStateEvent implements InOutStateEvent.InOutStateCreated, Saveable
     {
         public AbstractInOutStateCreated() {
+            this(new InOutStateEventId());
         }
 
         public AbstractInOutStateCreated(InOutStateEventId stateEventId) {
@@ -597,6 +606,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     public static abstract class AbstractInOutStateMergePatched extends AbstractInOutStateEvent implements InOutStateEvent.InOutStateMergePatched, Saveable
     {
         public AbstractInOutStateMergePatched() {
+            this(new InOutStateEventId());
         }
 
         public AbstractInOutStateMergePatched(InOutStateEventId stateEventId) {
@@ -1011,6 +1021,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     public static abstract class AbstractInOutStateDeleted extends AbstractInOutStateEvent implements InOutStateEvent.InOutStateDeleted, Saveable
     {
         public AbstractInOutStateDeleted() {
+            this(new InOutStateEventId());
         }
 
         public AbstractInOutStateDeleted(InOutStateEventId stateEventId) {

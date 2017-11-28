@@ -21,6 +21,24 @@ public class ApplicationContext {
         return new DefaultTypeConverter();
     }
 
+
+    public TimestampService getTimestampService() {
+        return new TimestampService() {
+            @Override
+            public Object now(Class type) {
+                if (type.equals(java.sql.Timestamp.class)) {
+                    return new java.sql.Timestamp(new java.util.Date().getTime());
+                } else if (type.equals(java.util.Date.class)) {
+                    return new java.util.Date();
+                } else if (type.equals(Long.class)) {
+                    return System.currentTimeMillis();
+                } else {
+                    throw new IllegalArgumentException("Unknown type: " + type);
+                }
+            }
+        };
+    }
+
     public static class DefaultTypeConverter implements TypeConverter {
 
         private org.dddml.support.criterion.DefaultTypeConverter innerTypeConverter = new org.dddml.support.criterion.DefaultTypeConverter();

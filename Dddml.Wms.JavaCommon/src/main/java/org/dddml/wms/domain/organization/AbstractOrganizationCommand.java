@@ -178,10 +178,12 @@ public abstract class AbstractOrganizationCommand extends AbstractCommand implem
     {
     }
 
+    
     public static class SimpleMergePatchOrganization extends AbstractMergePatchOrganization
     {
     }
 
+    
 	public static class SimpleDeleteOrganization extends AbstractOrganizationCommand implements DeleteOrganization
 	{
         @Override
@@ -190,6 +192,7 @@ public abstract class AbstractOrganizationCommand extends AbstractCommand implem
         }
 	}
 
+    
 
 }
 

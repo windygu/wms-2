@@ -80,7 +80,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         e.setActive(c.getActive());
         ((AbstractAttributeSetStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (AttributeUseCommand.CreateAttributeUse innerCommand : c.getAttributeUses())
         {
@@ -111,7 +111,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractAttributeSetStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (AttributeUseCommand innerCommand : c.getAttributeUseCommands())
         {
@@ -128,7 +128,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         AttributeSetStateEvent.AttributeSetStateDeleted e = newAttributeSetStateDeleted(stateEventId);
         ((AbstractAttributeSetStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -165,7 +165,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         e.setSequenceNumber(c.getSequenceNumber());
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
 
     }// END map(ICreate... ////////////////////////////
@@ -182,7 +182,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         e.setIsPropertySequenceNumberRemoved(c.getIsPropertySequenceNumberRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
 
     }// END map(IMergePatch... ////////////////////////////
@@ -194,7 +194,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         AttributeUseStateEvent.AttributeUseStateRemoved e = newAttributeUseStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
 
         return e;
 
@@ -234,7 +234,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         AttributeSetStateEvent.AttributeSetStateCreated e = newAttributeSetStateCreated(stateEventId);
         ((AbstractAttributeSetStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -243,7 +243,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         AttributeSetStateEvent.AttributeSetStateMergePatched e = newAttributeSetStateMergePatched(stateEventId);
         ((AbstractAttributeSetStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -252,7 +252,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         AttributeSetStateEvent.AttributeSetStateDeleted e = newAttributeSetStateDeleted(stateEventId);
         ((AbstractAttributeSetStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 

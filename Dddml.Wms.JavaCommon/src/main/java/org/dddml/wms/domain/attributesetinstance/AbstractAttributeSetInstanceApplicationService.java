@@ -35,6 +35,16 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
         return stateQueryRepository;
     }
 
+    private AggregateEventListener<AttributeSetInstanceAggregate, AttributeSetInstanceState> aggregateEventListener;
+
+    public AggregateEventListener<AttributeSetInstanceAggregate, AttributeSetInstanceState> getAggregateEventListener() {
+        return aggregateEventListener;
+    }
+
+    public void setAggregateEventListener(AggregateEventListener<AttributeSetInstanceAggregate, AttributeSetInstanceState> eventListener) {
+        this.aggregateEventListener = eventListener;
+    }
+
     public AbstractAttributeSetInstanceApplicationService(EventStore eventStore, AttributeSetInstanceStateRepository stateRepository, AttributeSetInstanceStateQueryRepository stateQueryRepository, IdGenerator<String, AttributeSetInstanceCommand.CreateAttributeSetInstance, AttributeSetInstanceState> idGenerator) {
         this.eventStore = eventStore;
         this.stateRepository = stateRepository;
@@ -135,9 +145,28 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
 
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
-        getEventStore().appendEvents(eventStoreAggregateId, c.getVersion(), // State version may be null!
-            aggregate.getChanges(), (events) -> {});
+        persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!
 
+    }
+
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, AttributeSetInstanceAggregate aggregate, AttributeSetInstanceState state) {
+        getEventStore().appendEvents(eventStoreAggregateId, version, 
+            aggregate.getChanges(), (events) -> {});
+        if (aggregateEventListener != null) {
+            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
+        }
+    }
+
+    public void initialize(AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated stateCreated) {
+        String aggregateId = stateCreated.getStateEventId().getAttributeSetInstanceId();
+        AttributeSetInstanceState state = new AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState();
+        state.setAttributeSetInstanceId(aggregateId);
+
+        AttributeSetInstanceAggregate aggregate = getAttributeSetInstanceAggregate(state);
+        ((AbstractAttributeSetInstanceAggregate) aggregate).apply(stateCreated);
+
+        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
+        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(AttributeSetInstanceCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeSetInstanceState state)

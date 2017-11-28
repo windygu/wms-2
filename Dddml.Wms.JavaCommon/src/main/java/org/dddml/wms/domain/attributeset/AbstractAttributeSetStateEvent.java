@@ -18,6 +18,14 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
         this.stateEventId = stateEventId;
     }
     
+    public String getAttributeSetId() {
+        return getStateEventId().getAttributeSetId();
+    }
+
+    public void setAttributeSetId(String attributeSetId) {
+        getStateEventId().setAttributeSetId(attributeSetId);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -195,6 +203,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     public static abstract class AbstractAttributeSetStateCreated extends AbstractAttributeSetStateEvent implements AttributeSetStateEvent.AttributeSetStateCreated, Saveable
     {
         public AbstractAttributeSetStateCreated() {
+            this(new AttributeSetStateEventId());
         }
 
         public AbstractAttributeSetStateCreated(AttributeSetStateEventId stateEventId) {
@@ -259,6 +268,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     public static abstract class AbstractAttributeSetStateMergePatched extends AbstractAttributeSetStateEvent implements AttributeSetStateEvent.AttributeSetStateMergePatched, Saveable
     {
         public AbstractAttributeSetStateMergePatched() {
+            this(new AttributeSetStateEventId());
         }
 
         public AbstractAttributeSetStateMergePatched(AttributeSetStateEventId stateEventId) {
@@ -393,6 +403,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     public static abstract class AbstractAttributeSetStateDeleted extends AbstractAttributeSetStateEvent implements AttributeSetStateEvent.AttributeSetStateDeleted, Saveable
     {
         public AbstractAttributeSetStateDeleted() {
+            this(new AttributeSetStateEventId());
         }
 
         public AbstractAttributeSetStateDeleted(AttributeSetStateEventId stateEventId) {

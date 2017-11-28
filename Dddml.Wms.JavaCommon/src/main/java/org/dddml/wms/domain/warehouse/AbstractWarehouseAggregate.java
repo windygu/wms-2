@@ -77,7 +77,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         e.setActive(c.getActive());
         ((AbstractWarehouseStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -94,7 +94,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractWarehouseStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -103,7 +103,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         WarehouseStateEvent.WarehouseStateDeleted e = newWarehouseStateDeleted(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -122,7 +122,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         WarehouseStateEvent.WarehouseStateCreated e = newWarehouseStateCreated(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -131,7 +131,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         WarehouseStateEvent.WarehouseStateMergePatched e = newWarehouseStateMergePatched(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -140,7 +140,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         WarehouseStateEvent.WarehouseStateDeleted e = newWarehouseStateDeleted(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 

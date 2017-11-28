@@ -202,10 +202,12 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldCommand extends 
     {
     }
 
+    
     public static class SimpleMergePatchAttributeSetInstanceExtensionField extends AbstractMergePatchAttributeSetInstanceExtensionField
     {
     }
 
+    
 	public static class SimpleRemoveAttributeSetInstanceExtensionField extends AbstractAttributeSetInstanceExtensionFieldCommand implements RemoveAttributeSetInstanceExtensionField
 	{
         @Override
@@ -214,6 +216,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldCommand extends 
         }
 	}
 
+    
 
 }
 

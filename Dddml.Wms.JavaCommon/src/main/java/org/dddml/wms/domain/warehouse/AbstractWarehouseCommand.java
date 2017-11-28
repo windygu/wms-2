@@ -154,10 +154,12 @@ public abstract class AbstractWarehouseCommand extends AbstractCommand implement
     {
     }
 
+    
     public static class SimpleMergePatchWarehouse extends AbstractMergePatchWarehouse
     {
     }
 
+    
 	public static class SimpleDeleteWarehouse extends AbstractWarehouseCommand implements DeleteWarehouse
 	{
         @Override
@@ -166,6 +168,7 @@ public abstract class AbstractWarehouseCommand extends AbstractCommand implement
         }
 	}
 
+    
 
 }
 

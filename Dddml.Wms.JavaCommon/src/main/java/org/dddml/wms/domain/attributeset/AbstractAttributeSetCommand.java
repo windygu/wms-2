@@ -264,10 +264,12 @@ public abstract class AbstractAttributeSetCommand extends AbstractCommand implem
     {
     }
 
+    
     public static class SimpleMergePatchAttributeSet extends AbstractMergePatchAttributeSet
     {
     }
 
+    
 	public static class SimpleDeleteAttributeSet extends AbstractAttributeSetCommand implements DeleteAttributeSet
 	{
         @Override
@@ -276,6 +278,7 @@ public abstract class AbstractAttributeSetCommand extends AbstractCommand implem
         }
 	}
 
+    
     public static class SimpleCreateAttributeUseCommands implements CreateAttributeUseCommands
     {
         private List<AttributeUseCommand.CreateAttributeUse> innerCommands = new ArrayList<AttributeUseCommand.CreateAttributeUse>();

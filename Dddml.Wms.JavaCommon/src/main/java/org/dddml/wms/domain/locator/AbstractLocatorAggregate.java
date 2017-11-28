@@ -82,7 +82,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         e.setActive(c.getActive());
         ((AbstractLocatorStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -109,7 +109,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractLocatorStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -118,7 +118,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         LocatorStateEvent.LocatorStateDeleted e = newLocatorStateDeleted(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         LocatorStateEvent.LocatorStateCreated e = newLocatorStateCreated(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -146,7 +146,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         LocatorStateEvent.LocatorStateMergePatched e = newLocatorStateMergePatched(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -155,7 +155,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         LocatorStateEvent.LocatorStateDeleted e = newLocatorStateDeleted(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt(new Date());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 

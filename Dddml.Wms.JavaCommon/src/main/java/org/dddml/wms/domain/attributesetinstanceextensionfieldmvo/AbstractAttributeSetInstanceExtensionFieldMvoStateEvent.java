@@ -19,6 +19,14 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateEvent ex
         this.stateEventId = stateEventId;
     }
     
+    public AttributeSetInstanceExtensionFieldId getAttributeSetInstanceExtensionFieldId() {
+        return getStateEventId().getAttributeSetInstanceExtensionFieldId();
+    }
+
+    public void setAttributeSetInstanceExtensionFieldId(AttributeSetInstanceExtensionFieldId attributeSetInstanceExtensionFieldId) {
+        getStateEventId().setAttributeSetInstanceExtensionFieldId(attributeSetInstanceExtensionFieldId);
+    }
+
     private boolean stateEventReadOnly;
 
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
@@ -290,6 +298,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateEvent ex
     public static abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateCreated extends AbstractAttributeSetInstanceExtensionFieldMvoStateEvent implements AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateCreated
     {
         public AbstractAttributeSetInstanceExtensionFieldMvoStateCreated() {
+            this(new AttributeSetInstanceExtensionFieldMvoStateEventId());
         }
 
         public AbstractAttributeSetInstanceExtensionFieldMvoStateCreated(AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId) {
@@ -306,6 +315,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateEvent ex
     public static abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldMvoStateEvent implements AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateMergePatched
     {
         public AbstractAttributeSetInstanceExtensionFieldMvoStateMergePatched() {
+            this(new AttributeSetInstanceExtensionFieldMvoStateEventId());
         }
 
         public AbstractAttributeSetInstanceExtensionFieldMvoStateMergePatched(AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId) {
@@ -502,6 +512,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateEvent ex
     public static abstract class AbstractAttributeSetInstanceExtensionFieldMvoStateDeleted extends AbstractAttributeSetInstanceExtensionFieldMvoStateEvent implements AttributeSetInstanceExtensionFieldMvoStateEvent.AttributeSetInstanceExtensionFieldMvoStateDeleted
     {
         public AbstractAttributeSetInstanceExtensionFieldMvoStateDeleted() {
+            this(new AttributeSetInstanceExtensionFieldMvoStateEventId());
         }
 
         public AbstractAttributeSetInstanceExtensionFieldMvoStateDeleted(AttributeSetInstanceExtensionFieldMvoStateEventId stateEventId) {

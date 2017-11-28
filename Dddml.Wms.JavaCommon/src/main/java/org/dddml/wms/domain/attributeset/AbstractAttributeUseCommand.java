@@ -106,10 +106,12 @@ public abstract class AbstractAttributeUseCommand extends AbstractCommand implem
     {
     }
 
+    
     public static class SimpleMergePatchAttributeUse extends AbstractMergePatchAttributeUse
     {
     }
 
+    
 	public static class SimpleRemoveAttributeUse extends AbstractAttributeUseCommand implements RemoveAttributeUse
 	{
         @Override
@@ -118,6 +120,7 @@ public abstract class AbstractAttributeUseCommand extends AbstractCommand implem
         }
 	}
 
+    
 
 }
 
