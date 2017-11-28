@@ -133,24 +133,36 @@
       <DependentUpon>GenerateCreateRViews.tt</DependentUpon>
     </Content>
     <Content Include="Sql\DropRViewNameConflictedTables.sql">
-      <DependentUpon>DropRViewNameConflictedTables.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Content>
-    <Content Include="Sql\DropRViewNameConflictedTables.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DropRViewNameConflictedTables.sql</LastGenOutput>
-      <LastOutputs>.\DropRViewNameConflictedTables.sql</LastOutputs>
+      <DependentUpon>GenerateDropRViewNameConflictedTables.tt</DependentUpon>
     </Content>
     <Content Include="Sql\DropRViews.sql">
-      <DependentUpon>DropRViews.tt</DependentUpon>
+      <DependentUpon>GenerateDropRViews.tt</DependentUpon>
+    </Content>
+    <Content Include="Sql\GenerateDropRViews.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDropRViews.tt</DependentUpon>
     </Content>
-    <Content Include="Sql\DropRViews.tt">
+    <Content Include="Sql\GenerateDropRViewNameConflictedTables.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DropRViews.sql</LastGenOutput>
-      <LastOutputs>.\DropRViews.sql</LastOutputs>
+      <LastOutputs>
+.\DropRViewNameConflictedTables.sql
+.\GenerateDropRViewNameConflictedTables.txt
+</LastOutputs>
+      <LastGenOutput>GenerateDropRViewNameConflictedTables.txt</LastGenOutput>
+    </Content>
+    <Content Include="Sql\GenerateDropRViewNameConflictedTables.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDropRViewNameConflictedTables.tt</DependentUpon>
+    </Content>
+    <Content Include="Sql\GenerateDropRViews.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastOutputs>
+.\DropRViews.sql
+.\GenerateDropRViews.txt
+</LastOutputs>
+      <LastGenOutput>GenerateDropRViews.txt</LastGenOutput>
     </Content>
     <Content Include="Sql\DropStateIdForeignKeyConstraints.sql">
       <DependentUpon>GenerateBoundedContextStateIdForeignKeyConstraints.tt</DependentUpon>

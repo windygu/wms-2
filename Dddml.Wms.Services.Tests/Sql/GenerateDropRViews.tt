@@ -1,0 +1,15 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Dddml.Core.Domain" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\Sql\DropRViewsTemplate.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.Common\LoadBoundedContext.tt" #>
+<#
+
+    var template = new DropRViewsTemplate(mviewObjects);
+    template.Output.Encoding = new System.Text.UTF8Encoding(false);
+	template.RenderToFile(String.Format("DropRViews.sql", ""));      
+
+#>
+
