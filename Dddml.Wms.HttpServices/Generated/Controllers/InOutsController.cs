@@ -23,7 +23,7 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/InOuts")][Authorize]
+    [RoutePrefix("api/InOuts")]
     public partial class InOutsController : ApiController
     {
 

@@ -22,7 +22,7 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/LocatorTrees")][Authorize]
+    [RoutePrefix("api/LocatorTrees")]
     public partial class LocatorTreesController : ApiController
     {
 

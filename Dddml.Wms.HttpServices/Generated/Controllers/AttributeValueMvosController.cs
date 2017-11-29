@@ -23,7 +23,7 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/AttributeValueMvos")][Authorize]
+    [RoutePrefix("api/AttributeValueMvos")]
     public partial class AttributeValueMvosController : ApiController
     {
 

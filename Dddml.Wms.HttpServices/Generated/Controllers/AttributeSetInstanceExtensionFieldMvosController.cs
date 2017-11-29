@@ -23,7 +23,7 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/AttributeSetInstanceExtensionFieldMvos")][Authorize]
+    [RoutePrefix("api/AttributeSetInstanceExtensionFieldMvos")]
     public partial class AttributeSetInstanceExtensionFieldMvosController : ApiController
     {
 

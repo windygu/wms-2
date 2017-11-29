@@ -22,7 +22,7 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/OrganizationStructures")][Authorize]
+    [RoutePrefix("api/OrganizationStructures")]
     public partial class OrganizationStructuresController : ApiController
     {
 

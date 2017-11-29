@@ -22,7 +22,7 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/InventoryItems")][Authorize]
+    [RoutePrefix("api/InventoryItems")]
     public partial class InventoryItemsController : ApiController
     {
 

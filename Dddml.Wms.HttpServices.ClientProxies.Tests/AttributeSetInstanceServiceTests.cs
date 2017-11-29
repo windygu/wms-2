@@ -42,18 +42,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
         }
 
         [Test]
-        public void TestPutAttributeSetInstance()
+        public void TestPutThenPostAttributeSetInstance()
         {
             var endpointUrl = ProxyTemplate.GetEndpointUrl();
             var client = new HttpClient { BaseAddress = new Uri(endpointUrl) };
             var attrSetInstId = Guid.NewGuid().ToString();
 
-            var url = "AttributeSetInstances/{id}";
-            url = url.Replace("{id}", attrSetInstId);
+            var urlPut = "AttributeSetInstances/{id}";
+            urlPut = urlPut.Replace("{id}", attrSetInstId);
 
             dynamic jObject = GetTestColorAttributeSetInstance(attrSetInstId, _testColorAttributeSetId);
 
-            var req = new HttpRequestMessage(HttpMethod.Put, url);
+            var req = new HttpRequestMessage(HttpMethod.Put, urlPut);
             req.Content = new ObjectContent(typeof(JObject), jObject, new JsonMediaTypeFormatter());
             SetAuthenticationHeader(req);
             var response = client.SendAsync(req).GetAwaiter().GetResult();
@@ -67,8 +67,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
 
             Assert.AreEqual("R", resultObj.Color.ToString());
 
-            TestPostAttributeSetInstance(client, jObject, url);
-            TestPostAttributeSetInstance(client, jObject, url);
+            var urlPost = "AttributeSetInstances/";
+            TestPostAttributeSetInstance(client, jObject, urlPost);
+            TestPostAttributeSetInstance(client, jObject, urlPost);
 
             TestGetAttributeSetInstance(attrSetInstId);
 
@@ -220,23 +221,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
 
             public const string TestColorAttributeSetId = "TestColorAttributeSetId8c0fXA8idM6GE";
 
-            //[ThreadStatic]
-            //internal static string _lastAttributeSetId;
-
-            //static Regex IdRegex = new Regex("^[_A-Za-z][_A-Za-z0-9]*$");
-
             public string GenerateAttributeSetId(CreateAttributeSetDto attributeSet)
             {
-                //string id = null;
-                //if (IdRegex.IsMatch(attributeSet.Name))
-                //{
-                //    id = attributeSet.Name + System.DateTime.Now.Ticks;
-                //}
-                //else
-                //{
                 var id = TestColorAttributeSetId;//System.Guid.NewGuid().ToString();
-                //}
-                //_lastAttributeSetId = id;
                 return id;
             }
 

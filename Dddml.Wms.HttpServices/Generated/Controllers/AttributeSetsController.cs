@@ -22,7 +22,7 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/AttributeSets")][Authorize]
+    [RoutePrefix("api/AttributeSets")]
     public partial class AttributeSetsController : ApiController
     {
 

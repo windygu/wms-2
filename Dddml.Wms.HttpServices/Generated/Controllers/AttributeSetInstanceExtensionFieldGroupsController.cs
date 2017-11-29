@@ -22,7 +22,7 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/AttributeSetInstanceExtensionFieldGroups")][Authorize]
+    [RoutePrefix("api/AttributeSetInstanceExtensionFieldGroups")]
     public partial class AttributeSetInstanceExtensionFieldGroupsController : ApiController
     {
 

@@ -26,7 +26,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
         public void SetUp()
         {
             ApplicationContext.Current = new TestApplicationContext();
-
+#if DEBUG
+            return;
+#endif
             var oauthToken = ConfigurationManager.AppSettings["test.OAuthBearerToken"];
             if (oauthToken != null)
             {

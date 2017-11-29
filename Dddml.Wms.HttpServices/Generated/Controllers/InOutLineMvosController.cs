@@ -24,7 +24,7 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/InOutLineMvos")][Authorize]
+    [RoutePrefix("api/InOutLineMvos")]
     public partial class InOutLineMvosController : ApiController
     {
 
