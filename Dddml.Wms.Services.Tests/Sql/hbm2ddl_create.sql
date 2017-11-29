@@ -69,6 +69,20 @@
 
     drop table if exists InOutLineMvoStateEvents;
 
+    drop table if exists InventoryItems;
+
+    drop table if exists InventoryItemStateEvents;
+
+    drop table if exists InventoryItemEntries;
+
+    drop table if exists InventoryItemEventTypes;
+
+    drop table if exists InventoryItemEventTypeStateEvents;
+
+    drop table if exists InventoryItemEntry_RV;
+
+    drop table if exists InventoryItemEntryMvoStateEvents;
+
     create table Attributes (
         AttributeId VARCHAR(50) not null,
        Version BIGINT not null,
@@ -83,11 +97,11 @@
        FieldName VARCHAR(255),
        ReferenceId VARCHAR(255),
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (AttributeId),
       unique (FieldName)
     );
@@ -133,11 +147,11 @@
        Description VARCHAR(255),
        ReferenceId VARCHAR(255),
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (AttributeValueIdAttributeId, AttributeValueIdValue)
     );
 
@@ -171,11 +185,11 @@
        LotAttributeId VARCHAR(255),
        ReferenceId VARCHAR(255),
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (AttributeSetId)
     );
 
@@ -209,11 +223,11 @@
        Version BIGINT not null,
        SequenceNumber INTEGER,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
     );
 
@@ -699,11 +713,11 @@
        _F_C20_49_ VARCHAR(20),
        _F_C50_49_ VARCHAR(50),
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        CommandId VARCHAR(255),
        primary key (AttributeSetInstanceId)
     );
@@ -717,11 +731,11 @@
        NameFormat VARCHAR(255),
        Description VARCHAR(255),
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (Id)
     );
 
@@ -757,11 +771,11 @@
        Alias VARCHAR(255),
        Description VARCHAR(255),
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex),
       unique (Name),
       unique (Alias)
@@ -802,9 +816,7 @@
        ReferenceId VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
        AttributeName VARCHAR(255),
@@ -823,6 +835,8 @@
        AttributeUpdatedAt DATETIME,
        AttributeActive TINYINT(1),
        AttributeDeleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (AttributeValueIdAttributeId, AttributeValueIdValue)
     );
 
@@ -886,9 +900,7 @@
        SequenceNumber INTEGER,
        Version BIGINT,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
        AttributeSetName VARCHAR(255),
@@ -903,6 +915,8 @@
        AttributeSetUpdatedAt DATETIME,
        AttributeSetActive TINYINT(1),
        AttributeSetDeleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
     );
 
@@ -958,9 +972,7 @@
        Description VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
        AttrSetInstEFGroupFieldType VARCHAR(255),
@@ -974,6 +986,8 @@
        AttrSetInstEFGroupUpdatedAt DATETIME,
        AttrSetInstEFGroupActive TINYINT(1),
        AttrSetInstEFGroupDeleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex),
       unique (Name),
       unique (Alias)
@@ -1068,11 +1082,11 @@
        IsDropShip TINYINT(1),
        DropShipBusinessPartnerId VARCHAR(255),
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (DocumentNumber)
     );
 
@@ -1179,11 +1193,11 @@
        RmaLineNumber BIGINT,
        ReversalLineNumber BIGINT,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
 
@@ -1241,11 +1255,11 @@
        Type VARCHAR(255),
        IsSummary TINYINT(1),
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (OrganizationId)
     );
 
@@ -1273,11 +1287,11 @@
         Id VARCHAR(50) not null,
        Version BIGINT not null,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (Id)
     );
 
@@ -1299,11 +1313,11 @@
        IdSubsidiaryId VARCHAR(255) not null,
        Version BIGINT not null,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (IdOrganizationStructureTypeId, IdParentId, IdSubsidiaryId)
     );
 
@@ -1328,11 +1342,11 @@
        Description VARCHAR(255),
        IsInTransit TINYINT(1),
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (WarehouseId)
     );
 
@@ -1366,11 +1380,11 @@
        Y VARCHAR(255),
        Z VARCHAR(255),
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (LocatorId)
     );
 
@@ -1424,9 +1438,7 @@
        ReversalLineNumber BIGINT,
        Version BIGINT,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
        InOutIsSOTransaction TINYINT(1),
@@ -1471,6 +1483,8 @@
        InOutUpdatedAt DATETIME,
        InOutActive TINYINT(1),
        InOutDeleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
 
@@ -1601,4 +1615,165 @@
        IsPropertyInOutActiveRemoved TINYINT(1),
        IsPropertyInOutDeletedRemoved TINYINT(1),
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber, InOutVersion)
+    );
+
+    create table InventoryItems (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       Version BIGINT not null,
+       QuantityOnHand NUMERIC(19,5),
+       QuantityReserved NUMERIC(19,5),
+       QuantityOccupied NUMERIC(19,5),
+       QuantityVirtual NUMERIC(19,5),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (ProductId, LocatorId, AttributeSetInstanceId)
+    );
+
+    create table InventoryItemStateEvents (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       QuantityOnHand NUMERIC(19,5),
+       QuantityReserved NUMERIC(19,5),
+       QuantityOccupied NUMERIC(19,5),
+       QuantityVirtual NUMERIC(19,5),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyQuantityOnHandRemoved TINYINT(1),
+       IsPropertyQuantityReservedRemoved TINYINT(1),
+       IsPropertyQuantityOccupiedRemoved TINYINT(1),
+       IsPropertyQuantityVirtualRemoved TINYINT(1),
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, Version)
+    );
+
+    create table InventoryItemEntries (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       InventoryItemEntryIdEntrySeqId BIGINT not null,
+       Version BIGINT not null,
+       QuantityOnHand NUMERIC(19,5),
+       QuantityReserved NUMERIC(19,5),
+       QuantityOccupied NUMERIC(19,5),
+       QuantityVirtual NUMERIC(19,5),
+       InventoryItemEventTypeId VARCHAR(255) not null,
+       DocumentNumber VARCHAR(255) not null,
+       LineNumber VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       CommandId VARCHAR(255),
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, InventoryItemEntryIdEntrySeqId)
+    );
+
+    create table InventoryItemEventTypes (
+        InventoryItemEventTypeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255) not null,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (InventoryItemEventTypeId)
+    );
+
+    create table InventoryItemEventTypeStateEvents (
+        InventoryItemEventTypeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (InventoryItemEventTypeId, Version)
+    );
+
+    create table InventoryItemEntry_RV (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       InventoryItemEntryIdEntrySeqId BIGINT not null,
+       InventoryItemVersion BIGINT not null,
+       QuantityOnHand NUMERIC(19,5),
+       QuantityReserved NUMERIC(19,5),
+       QuantityOccupied NUMERIC(19,5),
+       QuantityVirtual NUMERIC(19,5),
+       InventoryItemEventTypeId VARCHAR(255) not null,
+       DocumentNumber VARCHAR(255) not null,
+       LineNumber VARCHAR(255),
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       InventoryItemQuantityOnHand NUMERIC(19,5),
+       InventoryItemQuantityReserved NUMERIC(19,5),
+       InventoryItemQuantityOccupied NUMERIC(19,5),
+       InventoryItemQuantityVirtual NUMERIC(19,5),
+       InventoryItemCreatedBy VARCHAR(255),
+       InventoryItemCreatedAt DATETIME,
+       InventoryItemUpdatedBy VARCHAR(255),
+       InventoryItemUpdatedAt DATETIME,
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, InventoryItemEntryIdEntrySeqId)
+    );
+
+    create table InventoryItemEntryMvoStateEvents (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       InventoryItemEntryIdEntrySeqId BIGINT not null,
+       InventoryItemVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       QuantityOnHand NUMERIC(19,5),
+       QuantityReserved NUMERIC(19,5),
+       QuantityOccupied NUMERIC(19,5),
+       QuantityVirtual NUMERIC(19,5),
+       InventoryItemEventTypeId VARCHAR(255),
+       DocumentNumber VARCHAR(255),
+       LineNumber VARCHAR(255),
+       Version BIGINT,
+       Active TINYINT(1),
+       InventoryItemQuantityOnHand NUMERIC(19,5),
+       InventoryItemQuantityReserved NUMERIC(19,5),
+       InventoryItemQuantityOccupied NUMERIC(19,5),
+       InventoryItemQuantityVirtual NUMERIC(19,5),
+       InventoryItemCreatedBy VARCHAR(255),
+       InventoryItemCreatedAt DATETIME,
+       InventoryItemUpdatedBy VARCHAR(255),
+       InventoryItemUpdatedAt DATETIME,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyQuantityOnHandRemoved TINYINT(1),
+       IsPropertyQuantityReservedRemoved TINYINT(1),
+       IsPropertyQuantityOccupiedRemoved TINYINT(1),
+       IsPropertyQuantityVirtualRemoved TINYINT(1),
+       IsPropertySourceRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       IsPropertyInventoryItemQuantityOnHandRemoved TINYINT(1),
+       IsPropertyInventoryItemQuantityReservedRemoved TINYINT(1),
+       IsPropertyInventoryItemQuantityOccupiedRemoved TINYINT(1),
+       IsPropertyInventoryItemQuantityVirtualRemoved TINYINT(1),
+       IsPropertyInventoryItemCreatedByRemoved TINYINT(1),
+       IsPropertyInventoryItemCreatedAtRemoved TINYINT(1),
+       IsPropertyInventoryItemUpdatedByRemoved TINYINT(1),
+       IsPropertyInventoryItemUpdatedAtRemoved TINYINT(1),
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, InventoryItemEntryIdEntrySeqId, InventoryItemVersion)
     );

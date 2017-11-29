@@ -11,10 +11,10 @@ public final class InventoryItemEntryMvoFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
-            "quantityOnHandVar",
-            "quantityReservedVar",
-            "quantityOccupiedVar",
-            "quantityVirtualVar",
+            "quantityOnHand",
+            "quantityReserved",
+            "quantityOccupied",
+            "quantityVirtual",
             "version",
             "createdBy",
             "createdAt",
@@ -35,8 +35,9 @@ public final class InventoryItemEntryMvoFilteringProperties
             "inventoryItemEntryId.inventoryItemIdLocatorId",
             "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId",
             "inventoryItemEntryId.entrySeqId",
-            "eventVO.inventoryItemEventTypeId",
-            "eventVO.documentNumber",
+            "source.inventoryItemEventTypeId",
+            "source.documentNumber",
+            "source.lineNumber",
     };
 
     public static final String[] propertyTypes = new String[] {
@@ -66,6 +67,7 @@ public final class InventoryItemEntryMvoFilteringProperties
             "Long",
             "String",
             "String",
+            "String",
     };
 
     public static final Map<String, String> propertyTypeMap;
@@ -80,14 +82,14 @@ public final class InventoryItemEntryMvoFilteringProperties
     }
 
     private static  void initAliasMap() {
-        aliasMap.put("quantityOnHandVar", "quantityOnHandVar");
-        aliasMap.put("QuantityOnHandVar", "quantityOnHandVar");
-        aliasMap.put("quantityReservedVar", "quantityReservedVar");
-        aliasMap.put("QuantityReservedVar", "quantityReservedVar");
-        aliasMap.put("quantityOccupiedVar", "quantityOccupiedVar");
-        aliasMap.put("QuantityOccupiedVar", "quantityOccupiedVar");
-        aliasMap.put("quantityVirtualVar", "quantityVirtualVar");
-        aliasMap.put("QuantityVirtualVar", "quantityVirtualVar");
+        aliasMap.put("quantityOnHand", "quantityOnHand");
+        aliasMap.put("QuantityOnHand", "quantityOnHand");
+        aliasMap.put("quantityReserved", "quantityReserved");
+        aliasMap.put("QuantityReserved", "quantityReserved");
+        aliasMap.put("quantityOccupied", "quantityOccupied");
+        aliasMap.put("QuantityOccupied", "quantityOccupied");
+        aliasMap.put("quantityVirtual", "quantityVirtual");
+        aliasMap.put("QuantityVirtual", "quantityVirtual");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");
@@ -134,10 +136,12 @@ public final class InventoryItemEntryMvoFilteringProperties
         aliasMap.put("InventoryItemEntryId.InventoryItemId.AttributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
         aliasMap.put("inventoryItemEntryId.entrySeqId", "inventoryItemEntryId.entrySeqId");
         aliasMap.put("InventoryItemEntryId.EntrySeqId", "inventoryItemEntryId.entrySeqId");
-        aliasMap.put("eventVO.inventoryItemEventTypeId", "eventVO.inventoryItemEventTypeId");
-        aliasMap.put("EventVO.InventoryItemEventTypeId", "eventVO.inventoryItemEventTypeId");
-        aliasMap.put("eventVO.documentNumber", "eventVO.documentNumber");
-        aliasMap.put("EventVO.DocumentNumber", "eventVO.documentNumber");
+        aliasMap.put("source.inventoryItemEventTypeId", "source.inventoryItemEventTypeId");
+        aliasMap.put("Source.InventoryItemEventTypeId", "source.inventoryItemEventTypeId");
+        aliasMap.put("source.documentNumber", "source.documentNumber");
+        aliasMap.put("Source.DocumentNumber", "source.documentNumber");
+        aliasMap.put("source.lineNumber", "source.lineNumber");
+        aliasMap.put("Source.LineNumber", "source.lineNumber");
     }
 
     private static void initPropertyTypeMap() {

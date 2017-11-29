@@ -17,13 +17,14 @@
 	</composite-id>
 	<version name="version" column="Version" type="long" />
 
-	<property name="quantityOnHandVar" ></property>
-	<property name="quantityReservedVar" ></property>
-	<property name="quantityOccupiedVar" ></property>
-	<property name="quantityVirtualVar" ></property>
-	<component name="eventVO" class="org.dddml.wms.domain.inventoryitem.InventoryItemEventVO">
-		<property name="inventoryItemEventTypeId" ></property>
+	<property name="quantityOnHand" ></property>
+	<property name="quantityReserved" ></property>
+	<property name="quantityOccupied" ></property>
+	<property name="quantityVirtual" ></property>
+	<component name="source" class="org.dddml.wms.domain.inventoryitem.InventoryItemSourceVO">
+		<property name="inventoryItemEventTypeId" ><column name="InventoryItemEventTypeId" not-null="true" /></property>
 		<property name="documentNumber" ><column name="DocumentNumber" not-null="true" /></property>
+		<property name="lineNumber" ></property>
 	</component>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>

@@ -196,11 +196,11 @@ namespace Dddml.Wms.Domain.InventoryItem
             IInventoryItemEntryStateCreated e = NewInventoryItemEntryStateCreated(stateEventId);
             var s = outerState.Entries.Get(c.EntrySeqId, true);
 
-            e.QuantityOnHandVar = c.QuantityOnHandVar;
-            e.QuantityReservedVar = c.QuantityReservedVar;
-            e.QuantityOccupiedVar = c.QuantityOccupiedVar;
-            e.QuantityVirtualVar = c.QuantityVirtualVar;
-            e.EventVO = c.EventVO;
+            e.QuantityOnHand = c.QuantityOnHand;
+            e.QuantityReserved = c.QuantityReserved;
+            e.QuantityOccupied = c.QuantityOccupied;
+            e.QuantityVirtual = c.QuantityVirtual;
+            e.Source = c.Source;
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;

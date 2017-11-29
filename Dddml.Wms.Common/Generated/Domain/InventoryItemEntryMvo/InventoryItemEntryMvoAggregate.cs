@@ -98,11 +98,11 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			var stateEventId = new InventoryItemEntryMvoStateEventId(c.InventoryItemEntryId, c.InventoryItemVersion);
             IInventoryItemEntryMvoStateCreated e = NewInventoryItemEntryMvoStateCreated(stateEventId);
 		
-            e.QuantityOnHandVar = c.QuantityOnHandVar;
-            e.QuantityReservedVar = c.QuantityReservedVar;
-            e.QuantityOccupiedVar = c.QuantityOccupiedVar;
-            e.QuantityVirtualVar = c.QuantityVirtualVar;
-            e.EventVO = c.EventVO;
+            e.QuantityOnHand = c.QuantityOnHand;
+            e.QuantityReserved = c.QuantityReserved;
+            e.QuantityOccupied = c.QuantityOccupied;
+            e.QuantityVirtual = c.QuantityVirtual;
+            e.Source = c.Source;
             e.Version = c.Version;
             e.Active = c.Active;
             e.InventoryItemQuantityOnHand = c.InventoryItemQuantityOnHand;
@@ -129,11 +129,11 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			var stateEventId = new InventoryItemEntryMvoStateEventId(c.InventoryItemEntryId, c.InventoryItemVersion);
             IInventoryItemEntryMvoStateMergePatched e = NewInventoryItemEntryMvoStateMergePatched(stateEventId);
 
-            e.QuantityOnHandVar = c.QuantityOnHandVar;
-            e.QuantityReservedVar = c.QuantityReservedVar;
-            e.QuantityOccupiedVar = c.QuantityOccupiedVar;
-            e.QuantityVirtualVar = c.QuantityVirtualVar;
-            e.EventVO = c.EventVO;
+            e.QuantityOnHand = c.QuantityOnHand;
+            e.QuantityReserved = c.QuantityReserved;
+            e.QuantityOccupied = c.QuantityOccupied;
+            e.QuantityVirtual = c.QuantityVirtual;
+            e.Source = c.Source;
             e.Version = c.Version;
             e.Active = c.Active;
             e.InventoryItemQuantityOnHand = c.InventoryItemQuantityOnHand;
@@ -144,11 +144,11 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             e.InventoryItemCreatedAt = c.InventoryItemCreatedAt;
             e.InventoryItemUpdatedBy = c.InventoryItemUpdatedBy;
             e.InventoryItemUpdatedAt = c.InventoryItemUpdatedAt;
-            e.IsPropertyQuantityOnHandVarRemoved = c.IsPropertyQuantityOnHandVarRemoved;
-            e.IsPropertyQuantityReservedVarRemoved = c.IsPropertyQuantityReservedVarRemoved;
-            e.IsPropertyQuantityOccupiedVarRemoved = c.IsPropertyQuantityOccupiedVarRemoved;
-            e.IsPropertyQuantityVirtualVarRemoved = c.IsPropertyQuantityVirtualVarRemoved;
-            e.IsPropertyEventVORemoved = c.IsPropertyEventVORemoved;
+            e.IsPropertyQuantityOnHandRemoved = c.IsPropertyQuantityOnHandRemoved;
+            e.IsPropertyQuantityReservedRemoved = c.IsPropertyQuantityReservedRemoved;
+            e.IsPropertyQuantityOccupiedRemoved = c.IsPropertyQuantityOccupiedRemoved;
+            e.IsPropertyQuantityVirtualRemoved = c.IsPropertyQuantityVirtualRemoved;
+            e.IsPropertySourceRemoved = c.IsPropertySourceRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
             e.IsPropertyInventoryItemQuantityOnHandRemoved = c.IsPropertyInventoryItemQuantityOnHandRemoved;

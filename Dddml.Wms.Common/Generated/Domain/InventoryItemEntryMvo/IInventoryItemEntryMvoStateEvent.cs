@@ -18,15 +18,15 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         bool ReadOnly { get; set; }
 
-		decimal? QuantityOnHandVar { get; set; }
+		decimal? QuantityOnHand { get; set; }
 
-		decimal? QuantityReservedVar { get; set; }
+		decimal? QuantityReserved { get; set; }
 
-		decimal? QuantityOccupiedVar { get; set; }
+		decimal? QuantityOccupied { get; set; }
 
-		decimal? QuantityVirtualVar { get; set; }
+		decimal? QuantityVirtual { get; set; }
 
-		InventoryItemEventVO EventVO { get; set; }
+		InventoryItemSourceVO Source { get; set; }
 
 		long? Version { get; set; }
 
@@ -58,15 +58,15 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 	public interface IInventoryItemEntryMvoStateMergePatched : IInventoryItemEntryMvoStateEvent//, IInventoryItemEntryMvoStateProperties
 	{
-		bool IsPropertyQuantityOnHandVarRemoved { get; set; }
+		bool IsPropertyQuantityOnHandRemoved { get; set; }
 
-		bool IsPropertyQuantityReservedVarRemoved { get; set; }
+		bool IsPropertyQuantityReservedRemoved { get; set; }
 
-		bool IsPropertyQuantityOccupiedVarRemoved { get; set; }
+		bool IsPropertyQuantityOccupiedRemoved { get; set; }
 
-		bool IsPropertyQuantityVirtualVarRemoved { get; set; }
+		bool IsPropertyQuantityVirtualRemoved { get; set; }
 
-		bool IsPropertyEventVORemoved { get; set; }
+		bool IsPropertySourceRemoved { get; set; }
 
 		bool IsPropertyVersionRemoved { get; set; }
 

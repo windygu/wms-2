@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "QuantityOnHandVar",
+                    Name = "QuantityOnHand",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "QuantityReservedVar",
+                    Name = "QuantityReserved",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "QuantityOccupiedVar",
+                    Name = "QuantityOccupied",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -134,7 +134,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "QuantityVirtualVar",
+                    Name = "QuantityVirtual",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -163,9 +163,9 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "EventVO",
-                    Type = typeof(InventoryItemEventVO),
-                    TypeName = "InventoryItemEventVO",
+                    Name = "Source",
+                    Type = typeof(InventoryItemSourceVO),
+                    TypeName = "InventoryItemSourceVO",
                     IsSimpleValueObjectType = false,
                     IsNullableType = false,
                     DisplayName = "",
@@ -455,7 +455,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
-                    Name = "EventVO.InventoryItemEventTypeId",
+                    Name = "Source.InventoryItemEventTypeId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -473,7 +473,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "EventVO.InventoryItemEventTypeId",
+                    SourceChainingName = "Source.InventoryItemEventTypeId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -486,7 +486,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "EventVO.DocumentNumber",
+                    Name = "Source.DocumentNumber",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -504,7 +504,38 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "EventVO.DocumentNumber",
+                    SourceChainingName = "Source.DocumentNumber",
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "Source.LineNumber",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsReallyFlattened = false,
+                    SourceChainingName = "Source.LineNumber",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -750,14 +781,14 @@ namespace Dddml.Wms.Domain.Metadata
             var d = new Dictionary<string, string>();
             d.Add("EntrySeqId", "InventoryItemEntryId.EntrySeqId");
             d.Add("entrySeqId", "InventoryItemEntryId.EntrySeqId");
-            d.Add("QuantityOnHandVar", "QuantityOnHandVar");
-            d.Add("quantityOnHandVar", "QuantityOnHandVar");
-            d.Add("QuantityReservedVar", "QuantityReservedVar");
-            d.Add("quantityReservedVar", "QuantityReservedVar");
-            d.Add("QuantityOccupiedVar", "QuantityOccupiedVar");
-            d.Add("quantityOccupiedVar", "QuantityOccupiedVar");
-            d.Add("QuantityVirtualVar", "QuantityVirtualVar");
-            d.Add("quantityVirtualVar", "QuantityVirtualVar");
+            d.Add("QuantityOnHand", "QuantityOnHand");
+            d.Add("quantityOnHand", "QuantityOnHand");
+            d.Add("QuantityReserved", "QuantityReserved");
+            d.Add("quantityReserved", "QuantityReserved");
+            d.Add("QuantityOccupied", "QuantityOccupied");
+            d.Add("quantityOccupied", "QuantityOccupied");
+            d.Add("QuantityVirtual", "QuantityVirtual");
+            d.Add("quantityVirtual", "QuantityVirtual");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");
@@ -772,10 +803,12 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
-            d.Add("EventVO.InventoryItemEventTypeId", "EventVO.InventoryItemEventTypeId");
-            d.Add("eventVO.inventoryItemEventTypeId", "EventVO.InventoryItemEventTypeId");
-            d.Add("EventVO.DocumentNumber", "EventVO.DocumentNumber");
-            d.Add("eventVO.documentNumber", "EventVO.DocumentNumber");
+            d.Add("Source.InventoryItemEventTypeId", "Source.InventoryItemEventTypeId");
+            d.Add("source.inventoryItemEventTypeId", "Source.InventoryItemEventTypeId");
+            d.Add("Source.DocumentNumber", "Source.DocumentNumber");
+            d.Add("source.documentNumber", "Source.DocumentNumber");
+            d.Add("Source.LineNumber", "Source.LineNumber");
+            d.Add("source.lineNumber", "Source.LineNumber");
             d.Add("InventoryItemEntryId.InventoryItemIdProductId", "InventoryItemEntryId.InventoryItemIdProductId");
             d.Add("inventoryItemEntryId.inventoryItemIdProductId", "InventoryItemEntryId.InventoryItemIdProductId");
             d.Add("InventoryItemEntryId.InventoryItemId.ProductId", "InventoryItemEntryId.InventoryItemIdProductId");

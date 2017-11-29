@@ -33,11 +33,11 @@ namespace Dddml.Wms.Domain.InventoryItem
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
-            dto.QuantityOnHandVar = e.QuantityOnHandVar;
-            dto.QuantityReservedVar = e.QuantityReservedVar;
-            dto.QuantityOccupiedVar = e.QuantityOccupiedVar;
-            dto.QuantityVirtualVar = e.QuantityVirtualVar;
-            dto.EventVO = (e.EventVO == null) ? null : new InventoryItemEventVODtoWrapper(e.EventVO);
+            dto.QuantityOnHand = e.QuantityOnHand;
+            dto.QuantityReserved = e.QuantityReserved;
+            dto.QuantityOccupied = e.QuantityOccupied;
+            dto.QuantityVirtual = e.QuantityVirtual;
+            dto.Source = (e.Source == null) ? null : new InventoryItemSourceVODtoWrapper(e.Source);
             dto.Active = e.Active;
             return dto;
         }

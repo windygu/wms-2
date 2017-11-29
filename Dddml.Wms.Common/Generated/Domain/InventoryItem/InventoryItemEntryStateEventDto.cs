@@ -36,27 +36,27 @@ namespace Dddml.Wms.Domain.InventoryItem
             set { StateEventId.EntrySeqId = value; }
         }
 
-		public virtual decimal? QuantityOnHandVar { get; set; }
+		public virtual decimal? QuantityOnHand { get; set; }
 
-		public virtual decimal? QuantityReservedVar { get; set; }
+		public virtual decimal? QuantityReserved { get; set; }
 
-		public virtual decimal? QuantityOccupiedVar { get; set; }
+		public virtual decimal? QuantityOccupied { get; set; }
 
-		public virtual decimal? QuantityVirtualVar { get; set; }
+		public virtual decimal? QuantityVirtual { get; set; }
 
-		private InventoryItemEventVODto _eventVO = new InventoryItemEventVODto();
+		private InventoryItemSourceVODto _source = new InventoryItemSourceVODto();
 
-		public virtual InventoryItemEventVODto EventVO { get { return _eventVO; } set { _eventVO = value; } }
+		public virtual InventoryItemSourceVODto Source { get { return _source; } set { _source = value; } }
 
-		InventoryItemEventVO IInventoryItemEntryStateEvent.EventVO
+		InventoryItemSourceVO IInventoryItemEntryStateEvent.Source
 		{ 
 			get 
 			{
-				return this.EventVO == null ? null : this.EventVO.ToInventoryItemEventVO(); 
+				return this.Source == null ? null : this.Source.ToInventoryItemSourceVO(); 
 			} 
 			set
 			{
-				if (value == null) { EventVO = null; } else { EventVO = new InventoryItemEventVODtoWrapper(value); }
+				if (value == null) { Source = null; } else { Source = new InventoryItemSourceVODtoWrapper(value); }
 			} 
 		}
 

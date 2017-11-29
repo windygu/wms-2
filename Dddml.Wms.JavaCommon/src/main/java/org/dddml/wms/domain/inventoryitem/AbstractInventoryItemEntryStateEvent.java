@@ -49,54 +49,54 @@ public abstract class AbstractInventoryItemEntryStateEvent extends AbstractState
         this.state.setVersion(version);
     }
 
-    public BigDecimal getQuantityOnHandVar()
+    public BigDecimal getQuantityOnHand()
     {
-        return this.state.getQuantityOnHandVar();
+        return this.state.getQuantityOnHand();
     }
 
-    public void setQuantityOnHandVar(BigDecimal quantityOnHandVar)
+    public void setQuantityOnHand(BigDecimal quantityOnHand)
     {
-        this.state.setQuantityOnHandVar(quantityOnHandVar);
+        this.state.setQuantityOnHand(quantityOnHand);
     }
 
-    public BigDecimal getQuantityReservedVar()
+    public BigDecimal getQuantityReserved()
     {
-        return this.state.getQuantityReservedVar();
+        return this.state.getQuantityReserved();
     }
 
-    public void setQuantityReservedVar(BigDecimal quantityReservedVar)
+    public void setQuantityReserved(BigDecimal quantityReserved)
     {
-        this.state.setQuantityReservedVar(quantityReservedVar);
+        this.state.setQuantityReserved(quantityReserved);
     }
 
-    public BigDecimal getQuantityOccupiedVar()
+    public BigDecimal getQuantityOccupied()
     {
-        return this.state.getQuantityOccupiedVar();
+        return this.state.getQuantityOccupied();
     }
 
-    public void setQuantityOccupiedVar(BigDecimal quantityOccupiedVar)
+    public void setQuantityOccupied(BigDecimal quantityOccupied)
     {
-        this.state.setQuantityOccupiedVar(quantityOccupiedVar);
+        this.state.setQuantityOccupied(quantityOccupied);
     }
 
-    public BigDecimal getQuantityVirtualVar()
+    public BigDecimal getQuantityVirtual()
     {
-        return this.state.getQuantityVirtualVar();
+        return this.state.getQuantityVirtual();
     }
 
-    public void setQuantityVirtualVar(BigDecimal quantityVirtualVar)
+    public void setQuantityVirtual(BigDecimal quantityVirtual)
     {
-        this.state.setQuantityVirtualVar(quantityVirtualVar);
+        this.state.setQuantityVirtual(quantityVirtual);
     }
 
-    public InventoryItemEventVO getEventVO()
+    public InventoryItemSourceVO getSource()
     {
-        return this.state.getEventVO();
+        return this.state.getSource();
     }
 
-    public void setEventVO(InventoryItemEventVO eventVO)
+    public void setSource(InventoryItemSourceVO source)
     {
-        this.state.setEventVO(eventVO);
+        this.state.setSource(source);
     }
 
     public String getCreatedBy()

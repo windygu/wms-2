@@ -19,15 +19,15 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		long Version { get; set; }
 
-		decimal? QuantityOnHandVar { get; set; }
+		decimal? QuantityOnHand { get; set; }
 
-		decimal? QuantityReservedVar { get; set; }
+		decimal? QuantityReserved { get; set; }
 
-		decimal? QuantityOccupiedVar { get; set; }
+		decimal? QuantityOccupied { get; set; }
 
-		decimal? QuantityVirtualVar { get; set; }
+		decimal? QuantityVirtual { get; set; }
 
-		InventoryItemEventVO EventVO { get; set; }
+		InventoryItemSourceVO Source { get; set; }
 
 		bool? Active { get; set; }
 

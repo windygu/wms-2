@@ -2,23 +2,23 @@ package org.dddml.wms.domain.inventoryitem;
 
 import org.dddml.wms.domain.*;
 
-public class InventoryItemEventVODtoWrapper extends InventoryItemEventVODto
+public class InventoryItemSourceVODtoWrapper extends InventoryItemSourceVODto
 {
 	
-    private InventoryItemEventVO value;
+    private InventoryItemSourceVO value;
 
-    public InventoryItemEventVODtoWrapper()
+    public InventoryItemSourceVODtoWrapper()
     {
-        this(new InventoryItemEventVO());
+        this(new InventoryItemSourceVO());
     }
 
-    public InventoryItemEventVODtoWrapper(InventoryItemEventVO value)
+    public InventoryItemSourceVODtoWrapper(InventoryItemSourceVO value)
     {
         if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 
-    public InventoryItemEventVO toInventoryItemEventVO()
+    public InventoryItemSourceVO toInventoryItemSourceVO()
     {
         return this.value;
     }
@@ -47,6 +47,18 @@ public class InventoryItemEventVODtoWrapper extends InventoryItemEventVODto
         this.value.setDocumentNumber(documentNumber);
     }
 
+    @Override
+    public String getLineNumber()
+    {
+        return this.value.getLineNumber();
+    }
+
+    @Override
+    public void setLineNumber(String lineNumber)
+    {
+        this.value.setLineNumber(lineNumber);
+    }
+
 
     @Override
     public boolean equals(Object obj)
@@ -57,14 +69,14 @@ public class InventoryItemEventVODtoWrapper extends InventoryItemEventVODto
         if (obj == null) {
             return false;
         }
-        if (obj.getClass() == InventoryItemEventVODto.class) {
+        if (obj.getClass() == InventoryItemSourceVODto.class) {
             return super.equals(obj);
         }
         if (obj.getClass() != this.getClass()) {
             return false;
         }
 
-        InventoryItemEventVODtoWrapper other = (InventoryItemEventVODtoWrapper)obj;
+        InventoryItemSourceVODtoWrapper other = (InventoryItemSourceVODtoWrapper)obj;
         return value.equals(other.value);
     }
 

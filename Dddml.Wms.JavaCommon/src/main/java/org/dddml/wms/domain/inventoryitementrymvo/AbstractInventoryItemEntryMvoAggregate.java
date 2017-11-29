@@ -63,11 +63,11 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
     protected InventoryItemEntryMvoStateEvent map(InventoryItemEntryMvoCommand.CreateInventoryItemEntryMvo c) {
         InventoryItemEntryMvoStateEventId stateEventId = new InventoryItemEntryMvoStateEventId(c.getInventoryItemEntryId(), c.getInventoryItemVersion());
         InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated e = newInventoryItemEntryMvoStateCreated(stateEventId);
-        e.setQuantityOnHandVar(c.getQuantityOnHandVar());
-        e.setQuantityReservedVar(c.getQuantityReservedVar());
-        e.setQuantityOccupiedVar(c.getQuantityOccupiedVar());
-        e.setQuantityVirtualVar(c.getQuantityVirtualVar());
-        e.setEventVO(c.getEventVO());
+        e.setQuantityOnHand(c.getQuantityOnHand());
+        e.setQuantityReserved(c.getQuantityReserved());
+        e.setQuantityOccupied(c.getQuantityOccupied());
+        e.setQuantityVirtual(c.getQuantityVirtual());
+        e.setSource(c.getSource());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
         e.setInventoryItemQuantityOnHand(c.getInventoryItemQuantityOnHand());
@@ -87,11 +87,11 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
     protected InventoryItemEntryMvoStateEvent map(InventoryItemEntryMvoCommand.MergePatchInventoryItemEntryMvo c) {
         InventoryItemEntryMvoStateEventId stateEventId = new InventoryItemEntryMvoStateEventId(c.getInventoryItemEntryId(), c.getInventoryItemVersion());
         InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched e = newInventoryItemEntryMvoStateMergePatched(stateEventId);
-        e.setQuantityOnHandVar(c.getQuantityOnHandVar());
-        e.setQuantityReservedVar(c.getQuantityReservedVar());
-        e.setQuantityOccupiedVar(c.getQuantityOccupiedVar());
-        e.setQuantityVirtualVar(c.getQuantityVirtualVar());
-        e.setEventVO(c.getEventVO());
+        e.setQuantityOnHand(c.getQuantityOnHand());
+        e.setQuantityReserved(c.getQuantityReserved());
+        e.setQuantityOccupied(c.getQuantityOccupied());
+        e.setQuantityVirtual(c.getQuantityVirtual());
+        e.setSource(c.getSource());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
         e.setInventoryItemQuantityOnHand(c.getInventoryItemQuantityOnHand());
@@ -102,11 +102,11 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         e.setInventoryItemCreatedAt(c.getInventoryItemCreatedAt());
         e.setInventoryItemUpdatedBy(c.getInventoryItemUpdatedBy());
         e.setInventoryItemUpdatedAt(c.getInventoryItemUpdatedAt());
-        e.setIsPropertyQuantityOnHandVarRemoved(c.getIsPropertyQuantityOnHandVarRemoved());
-        e.setIsPropertyQuantityReservedVarRemoved(c.getIsPropertyQuantityReservedVarRemoved());
-        e.setIsPropertyQuantityOccupiedVarRemoved(c.getIsPropertyQuantityOccupiedVarRemoved());
-        e.setIsPropertyQuantityVirtualVarRemoved(c.getIsPropertyQuantityVirtualVarRemoved());
-        e.setIsPropertyEventVORemoved(c.getIsPropertyEventVORemoved());
+        e.setIsPropertyQuantityOnHandRemoved(c.getIsPropertyQuantityOnHandRemoved());
+        e.setIsPropertyQuantityReservedRemoved(c.getIsPropertyQuantityReservedRemoved());
+        e.setIsPropertyQuantityOccupiedRemoved(c.getIsPropertyQuantityOccupiedRemoved());
+        e.setIsPropertyQuantityVirtualRemoved(c.getIsPropertyQuantityVirtualRemoved());
+        e.setIsPropertySourceRemoved(c.getIsPropertySourceRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setIsPropertyInventoryItemQuantityOnHandRemoved(c.getIsPropertyInventoryItemQuantityOnHandRemoved());

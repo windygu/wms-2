@@ -16,15 +16,15 @@ namespace Dddml.Wms.Domain.InventoryItem
 	{
 		public virtual long EntrySeqId { get; set; }
 
-		public virtual decimal QuantityOnHandVar { get; set; }
+		public virtual decimal QuantityOnHand { get; set; }
 
-		public virtual decimal QuantityReservedVar { get; set; }
+		public virtual decimal QuantityReserved { get; set; }
 
-		public virtual decimal QuantityOccupiedVar { get; set; }
+		public virtual decimal QuantityOccupied { get; set; }
 
-		public virtual decimal QuantityVirtualVar { get; set; }
+		public virtual decimal QuantityVirtual { get; set; }
 
-		public virtual InventoryItemEventVO EventVO { get; set; }
+		public virtual InventoryItemSourceVO Source { get; set; }
 
 		public virtual long Version { get; set; }
 

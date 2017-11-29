@@ -3,7 +3,7 @@ package org.dddml.wms.domain.inventoryitem;
 import java.io.Serializable;
 import org.dddml.wms.domain.*;
 
-public class InventoryItemEventVO implements Serializable
+public class InventoryItemSourceVO implements Serializable
 {
     private String inventoryItemEventTypeId;
 
@@ -29,14 +29,27 @@ public class InventoryItemEventVO implements Serializable
         this.documentNumber = documentNumber;
     }
 
-    public InventoryItemEventVO()
+    private String lineNumber;
+
+    public String getLineNumber()
+    {
+        return this.lineNumber;
+    }
+
+    public void setLineNumber(String lineNumber)
+    {
+        this.lineNumber = lineNumber;
+    }
+
+    public InventoryItemSourceVO()
     {
     }
 
-    public InventoryItemEventVO(String inventoryItemEventTypeId, String documentNumber)
+    public InventoryItemSourceVO(String inventoryItemEventTypeId, String documentNumber, String lineNumber)
     {
         this.inventoryItemEventTypeId = inventoryItemEventTypeId;
         this.documentNumber = documentNumber;
+        this.lineNumber = lineNumber;
     }
 
     @Override
@@ -49,10 +62,11 @@ public class InventoryItemEventVO implements Serializable
             return false;
         }
 
-        InventoryItemEventVO other = (InventoryItemEventVO)obj;
+        InventoryItemSourceVO other = (InventoryItemSourceVO)obj;
         return true 
             && (inventoryItemEventTypeId == other.inventoryItemEventTypeId || (inventoryItemEventTypeId != null && inventoryItemEventTypeId.equals(other.inventoryItemEventTypeId)))
             && (documentNumber == other.documentNumber || (documentNumber != null && documentNumber.equals(other.documentNumber)))
+            && (lineNumber == other.lineNumber || (lineNumber != null && lineNumber.equals(other.lineNumber)))
             ;
     }
 
@@ -65,6 +79,9 @@ public class InventoryItemEventVO implements Serializable
         }
         if (this.documentNumber != null) {
             hash += 13 * this.documentNumber.hashCode();
+        }
+        if (this.lineNumber != null) {
+            hash += 13 * this.lineNumber.hashCode();
         }
         return hash;
     }

@@ -8,9 +8,7 @@
        ReferenceId VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
        AttributeName VARCHAR(255),
@@ -29,6 +27,8 @@
        AttributeUpdatedAt DATETIME,
        AttributeActive TINYINT(1),
        AttributeDeleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (AttributeValueIdAttributeId, AttributeValueIdValue)
     );
     create table AttributeUse_RV (
@@ -38,9 +38,7 @@
        SequenceNumber INTEGER,
        Version BIGINT,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
        AttributeSetName VARCHAR(255),
@@ -55,6 +53,8 @@
        AttributeSetUpdatedAt DATETIME,
        AttributeSetActive TINYINT(1),
        AttributeSetDeleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
     );
     create table AttributeSetInstanceExtensionField_RV (
@@ -68,9 +68,7 @@
        Description VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
        AttrSetInstEFGroupFieldType VARCHAR(255),
@@ -84,20 +82,12 @@
        AttrSetInstEFGroupUpdatedAt DATETIME,
        AttrSetInstEFGroupActive TINYINT(1),
        AttrSetInstEFGroupDeleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex),
       unique (Name),
       unique (Alias)
     );
-    alter table InOutLines 
-        add column InOutLineIdLineNumber BIGINT;
-    alter table InOutLines 
-        add column ProductId VARCHAR(255);
-    alter table InOutLineStateEvents 
-        add column InOutLineIdLineNumber BIGINT;
-    alter table InOutLineStateEvents 
-        add column ProductId VARCHAR(255);
-    alter table InOutLineStateEvents 
-        add column IsPropertyProductIdRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber BIGINT not null,
@@ -120,9 +110,7 @@
        ReversalLineNumber BIGINT,
        Version BIGINT,
        CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        UpdatedBy VARCHAR(255),
-       UpdatedAt DATETIME,
        Active TINYINT(1),
        Deleted TINYINT(1),
        InOutIsSOTransaction TINYINT(1),
@@ -167,11 +155,36 @@
        InOutUpdatedAt DATETIME,
        InOutActive TINYINT(1),
        InOutDeleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
-    alter table InOutLineMvoStateEvents 
-        add column InOutLineIdLineNumber BIGINT;
-    alter table InOutLineMvoStateEvents 
-        add column ProductId VARCHAR(255);
-    alter table InOutLineMvoStateEvents 
-        add column IsPropertyProductIdRemoved TINYINT(1);
+    create table InventoryItemEntry_RV (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       InventoryItemEntryIdEntrySeqId BIGINT not null,
+       InventoryItemVersion BIGINT not null,
+       QuantityOnHand NUMERIC(19,5),
+       QuantityReserved NUMERIC(19,5),
+       QuantityOccupied NUMERIC(19,5),
+       QuantityVirtual NUMERIC(19,5),
+       InventoryItemEventTypeId VARCHAR(255) not null,
+       DocumentNumber VARCHAR(255) not null,
+       LineNumber VARCHAR(255),
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       InventoryItemQuantityOnHand NUMERIC(19,5),
+       InventoryItemQuantityReserved NUMERIC(19,5),
+       InventoryItemQuantityOccupied NUMERIC(19,5),
+       InventoryItemQuantityVirtual NUMERIC(19,5),
+       InventoryItemCreatedBy VARCHAR(255),
+       InventoryItemCreatedAt DATETIME,
+       InventoryItemUpdatedBy VARCHAR(255),
+       InventoryItemUpdatedAt DATETIME,
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, InventoryItemEntryIdEntrySeqId)
+    );

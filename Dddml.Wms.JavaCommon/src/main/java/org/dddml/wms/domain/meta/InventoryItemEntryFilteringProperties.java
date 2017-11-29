@@ -12,10 +12,10 @@ public final class InventoryItemEntryFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "entrySeqId",
-            "quantityOnHandVar",
-            "quantityReservedVar",
-            "quantityOccupiedVar",
-            "quantityVirtualVar",
+            "quantityOnHand",
+            "quantityReserved",
+            "quantityOccupied",
+            "quantityVirtual",
             "version",
             "createdBy",
             "createdAt",
@@ -23,8 +23,9 @@ public final class InventoryItemEntryFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "eventVO.inventoryItemEventTypeId",
-            "eventVO.documentNumber",
+            "source.inventoryItemEventTypeId",
+            "source.documentNumber",
+            "source.lineNumber",
             "inventoryItemEntryId.inventoryItemIdProductId",
             "inventoryItemEntryId.inventoryItemIdLocatorId",
             "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId",
@@ -52,6 +53,7 @@ public final class InventoryItemEntryFilteringProperties
             "String",
             "String",
             "String",
+            "String",
             "Long",
             "String",
             "String",
@@ -72,14 +74,14 @@ public final class InventoryItemEntryFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("entrySeqId", "inventoryItemEntryId.entrySeqId");
         aliasMap.put("EntrySeqId", "inventoryItemEntryId.entrySeqId");
-        aliasMap.put("quantityOnHandVar", "quantityOnHandVar");
-        aliasMap.put("QuantityOnHandVar", "quantityOnHandVar");
-        aliasMap.put("quantityReservedVar", "quantityReservedVar");
-        aliasMap.put("QuantityReservedVar", "quantityReservedVar");
-        aliasMap.put("quantityOccupiedVar", "quantityOccupiedVar");
-        aliasMap.put("QuantityOccupiedVar", "quantityOccupiedVar");
-        aliasMap.put("quantityVirtualVar", "quantityVirtualVar");
-        aliasMap.put("QuantityVirtualVar", "quantityVirtualVar");
+        aliasMap.put("quantityOnHand", "quantityOnHand");
+        aliasMap.put("QuantityOnHand", "quantityOnHand");
+        aliasMap.put("quantityReserved", "quantityReserved");
+        aliasMap.put("QuantityReserved", "quantityReserved");
+        aliasMap.put("quantityOccupied", "quantityOccupied");
+        aliasMap.put("QuantityOccupied", "quantityOccupied");
+        aliasMap.put("quantityVirtual", "quantityVirtual");
+        aliasMap.put("QuantityVirtual", "quantityVirtual");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");
@@ -94,10 +96,12 @@ public final class InventoryItemEntryFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("eventVO.inventoryItemEventTypeId", "eventVO.inventoryItemEventTypeId");
-        aliasMap.put("EventVO.InventoryItemEventTypeId", "eventVO.inventoryItemEventTypeId");
-        aliasMap.put("eventVO.documentNumber", "eventVO.documentNumber");
-        aliasMap.put("EventVO.DocumentNumber", "eventVO.documentNumber");
+        aliasMap.put("source.inventoryItemEventTypeId", "source.inventoryItemEventTypeId");
+        aliasMap.put("Source.InventoryItemEventTypeId", "source.inventoryItemEventTypeId");
+        aliasMap.put("source.documentNumber", "source.documentNumber");
+        aliasMap.put("Source.DocumentNumber", "source.documentNumber");
+        aliasMap.put("source.lineNumber", "source.lineNumber");
+        aliasMap.put("Source.LineNumber", "source.lineNumber");
         aliasMap.put("inventoryItemEntryId.inventoryItemIdProductId", "inventoryItemEntryId.inventoryItemIdProductId");
         aliasMap.put("InventoryItemEntryId.InventoryItemIdProductId", "inventoryItemEntryId.inventoryItemIdProductId");
         aliasMap.put("inventoryItemEntryId.inventoryItemId.productId", "inventoryItemEntryId.inventoryItemIdProductId");

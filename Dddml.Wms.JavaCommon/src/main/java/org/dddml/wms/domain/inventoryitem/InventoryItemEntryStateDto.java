@@ -22,64 +22,64 @@ public class InventoryItemEntryStateDto
         this.entrySeqId = entrySeqId;
     }
 
-    private BigDecimal quantityOnHandVar;
+    private BigDecimal quantityOnHand;
 
-    public BigDecimal getQuantityOnHandVar()
+    public BigDecimal getQuantityOnHand()
     {
-        return this.quantityOnHandVar;
+        return this.quantityOnHand;
     }
 
-    public void setQuantityOnHandVar(BigDecimal quantityOnHandVar)
+    public void setQuantityOnHand(BigDecimal quantityOnHand)
     {
-        this.quantityOnHandVar = quantityOnHandVar;
+        this.quantityOnHand = quantityOnHand;
     }
 
-    private BigDecimal quantityReservedVar;
+    private BigDecimal quantityReserved;
 
-    public BigDecimal getQuantityReservedVar()
+    public BigDecimal getQuantityReserved()
     {
-        return this.quantityReservedVar;
+        return this.quantityReserved;
     }
 
-    public void setQuantityReservedVar(BigDecimal quantityReservedVar)
+    public void setQuantityReserved(BigDecimal quantityReserved)
     {
-        this.quantityReservedVar = quantityReservedVar;
+        this.quantityReserved = quantityReserved;
     }
 
-    private BigDecimal quantityOccupiedVar;
+    private BigDecimal quantityOccupied;
 
-    public BigDecimal getQuantityOccupiedVar()
+    public BigDecimal getQuantityOccupied()
     {
-        return this.quantityOccupiedVar;
+        return this.quantityOccupied;
     }
 
-    public void setQuantityOccupiedVar(BigDecimal quantityOccupiedVar)
+    public void setQuantityOccupied(BigDecimal quantityOccupied)
     {
-        this.quantityOccupiedVar = quantityOccupiedVar;
+        this.quantityOccupied = quantityOccupied;
     }
 
-    private BigDecimal quantityVirtualVar;
+    private BigDecimal quantityVirtual;
 
-    public BigDecimal getQuantityVirtualVar()
+    public BigDecimal getQuantityVirtual()
     {
-        return this.quantityVirtualVar;
+        return this.quantityVirtual;
     }
 
-    public void setQuantityVirtualVar(BigDecimal quantityVirtualVar)
+    public void setQuantityVirtual(BigDecimal quantityVirtual)
     {
-        this.quantityVirtualVar = quantityVirtualVar;
+        this.quantityVirtual = quantityVirtual;
     }
 
-    private InventoryItemEventVODto eventVO;
+    private InventoryItemSourceVODto source;
 
-    public InventoryItemEventVODto getEventVO()
+    public InventoryItemSourceVODto getSource()
     {
-        return this.eventVO;
+        return this.source;
     }
 
-    public void setEventVO(InventoryItemEventVODto eventVO)
+    public void setSource(InventoryItemSourceVODto source)
     {
-        this.eventVO = eventVO;
+        this.source = source;
     }
 
     private Boolean active;
@@ -195,20 +195,20 @@ public class InventoryItemEntryStateDto
             if (returnedFieldsContains("EntrySeqId")) {
                 dto.setEntrySeqId(state.getEntrySeqId());
             }
-            if (returnedFieldsContains("QuantityOnHandVar")) {
-                dto.setQuantityOnHandVar(state.getQuantityOnHandVar());
+            if (returnedFieldsContains("QuantityOnHand")) {
+                dto.setQuantityOnHand(state.getQuantityOnHand());
             }
-            if (returnedFieldsContains("QuantityReservedVar")) {
-                dto.setQuantityReservedVar(state.getQuantityReservedVar());
+            if (returnedFieldsContains("QuantityReserved")) {
+                dto.setQuantityReserved(state.getQuantityReserved());
             }
-            if (returnedFieldsContains("QuantityOccupiedVar")) {
-                dto.setQuantityOccupiedVar(state.getQuantityOccupiedVar());
+            if (returnedFieldsContains("QuantityOccupied")) {
+                dto.setQuantityOccupied(state.getQuantityOccupied());
             }
-            if (returnedFieldsContains("QuantityVirtualVar")) {
-                dto.setQuantityVirtualVar(state.getQuantityVirtualVar());
+            if (returnedFieldsContains("QuantityVirtual")) {
+                dto.setQuantityVirtual(state.getQuantityVirtual());
             }
-            if (returnedFieldsContains("EventVO")) {
-                dto.setEventVO((state.getEventVO() == null) ? null : new InventoryItemEventVODtoWrapper(state.getEventVO()));
+            if (returnedFieldsContains("Source")) {
+                dto.setSource((state.getSource() == null) ? null : new InventoryItemSourceVODtoWrapper(state.getSource()));
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

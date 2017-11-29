@@ -23,64 +23,64 @@ public abstract class AbstractInventoryItemEntryMvoState implements InventoryIte
         this.inventoryItemEntryId = inventoryItemEntryId;
     }
 
-    private BigDecimal quantityOnHandVar;
+    private BigDecimal quantityOnHand;
 
-    public BigDecimal getQuantityOnHandVar()
+    public BigDecimal getQuantityOnHand()
     {
-        return this.quantityOnHandVar;
+        return this.quantityOnHand;
     }
 
-    public void setQuantityOnHandVar(BigDecimal quantityOnHandVar)
+    public void setQuantityOnHand(BigDecimal quantityOnHand)
     {
-        this.quantityOnHandVar = quantityOnHandVar;
+        this.quantityOnHand = quantityOnHand;
     }
 
-    private BigDecimal quantityReservedVar;
+    private BigDecimal quantityReserved;
 
-    public BigDecimal getQuantityReservedVar()
+    public BigDecimal getQuantityReserved()
     {
-        return this.quantityReservedVar;
+        return this.quantityReserved;
     }
 
-    public void setQuantityReservedVar(BigDecimal quantityReservedVar)
+    public void setQuantityReserved(BigDecimal quantityReserved)
     {
-        this.quantityReservedVar = quantityReservedVar;
+        this.quantityReserved = quantityReserved;
     }
 
-    private BigDecimal quantityOccupiedVar;
+    private BigDecimal quantityOccupied;
 
-    public BigDecimal getQuantityOccupiedVar()
+    public BigDecimal getQuantityOccupied()
     {
-        return this.quantityOccupiedVar;
+        return this.quantityOccupied;
     }
 
-    public void setQuantityOccupiedVar(BigDecimal quantityOccupiedVar)
+    public void setQuantityOccupied(BigDecimal quantityOccupied)
     {
-        this.quantityOccupiedVar = quantityOccupiedVar;
+        this.quantityOccupied = quantityOccupied;
     }
 
-    private BigDecimal quantityVirtualVar;
+    private BigDecimal quantityVirtual;
 
-    public BigDecimal getQuantityVirtualVar()
+    public BigDecimal getQuantityVirtual()
     {
-        return this.quantityVirtualVar;
+        return this.quantityVirtual;
     }
 
-    public void setQuantityVirtualVar(BigDecimal quantityVirtualVar)
+    public void setQuantityVirtual(BigDecimal quantityVirtual)
     {
-        this.quantityVirtualVar = quantityVirtualVar;
+        this.quantityVirtual = quantityVirtual;
     }
 
-    private InventoryItemEventVO eventVO;
+    private InventoryItemSourceVO source;
 
-    public InventoryItemEventVO getEventVO()
+    public InventoryItemSourceVO getSource()
     {
-        return this.eventVO;
+        return this.source;
     }
 
-    public void setEventVO(InventoryItemEventVO eventVO)
+    public void setSource(InventoryItemSourceVO source)
     {
-        this.eventVO = eventVO;
+        this.source = source;
     }
 
     private Long version;
@@ -325,11 +325,11 @@ public abstract class AbstractInventoryItemEntryMvoState implements InventoryIte
     {
         throwOnWrongEvent(e);
 
-        this.setQuantityOnHandVar(e.getQuantityOnHandVar());
-        this.setQuantityReservedVar(e.getQuantityReservedVar());
-        this.setQuantityOccupiedVar(e.getQuantityOccupiedVar());
-        this.setQuantityVirtualVar(e.getQuantityVirtualVar());
-        this.setEventVO(e.getEventVO());
+        this.setQuantityOnHand(e.getQuantityOnHand());
+        this.setQuantityReserved(e.getQuantityReserved());
+        this.setQuantityOccupied(e.getQuantityOccupied());
+        this.setQuantityVirtual(e.getQuantityVirtual());
+        this.setSource(e.getSource());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
         this.setInventoryItemQuantityOnHand(e.getInventoryItemQuantityOnHand());
@@ -350,60 +350,60 @@ public abstract class AbstractInventoryItemEntryMvoState implements InventoryIte
     {
         throwOnWrongEvent(e);
 
-        if (e.getQuantityOnHandVar() == null)
+        if (e.getQuantityOnHand() == null)
         {
-            if (e.getIsPropertyQuantityOnHandVarRemoved() != null && e.getIsPropertyQuantityOnHandVarRemoved())
+            if (e.getIsPropertyQuantityOnHandRemoved() != null && e.getIsPropertyQuantityOnHandRemoved())
             {
-                this.setQuantityOnHandVar(null);
+                this.setQuantityOnHand(null);
             }
         }
         else
         {
-            this.setQuantityOnHandVar(e.getQuantityOnHandVar());
+            this.setQuantityOnHand(e.getQuantityOnHand());
         }
-        if (e.getQuantityReservedVar() == null)
+        if (e.getQuantityReserved() == null)
         {
-            if (e.getIsPropertyQuantityReservedVarRemoved() != null && e.getIsPropertyQuantityReservedVarRemoved())
+            if (e.getIsPropertyQuantityReservedRemoved() != null && e.getIsPropertyQuantityReservedRemoved())
             {
-                this.setQuantityReservedVar(null);
+                this.setQuantityReserved(null);
             }
         }
         else
         {
-            this.setQuantityReservedVar(e.getQuantityReservedVar());
+            this.setQuantityReserved(e.getQuantityReserved());
         }
-        if (e.getQuantityOccupiedVar() == null)
+        if (e.getQuantityOccupied() == null)
         {
-            if (e.getIsPropertyQuantityOccupiedVarRemoved() != null && e.getIsPropertyQuantityOccupiedVarRemoved())
+            if (e.getIsPropertyQuantityOccupiedRemoved() != null && e.getIsPropertyQuantityOccupiedRemoved())
             {
-                this.setQuantityOccupiedVar(null);
+                this.setQuantityOccupied(null);
             }
         }
         else
         {
-            this.setQuantityOccupiedVar(e.getQuantityOccupiedVar());
+            this.setQuantityOccupied(e.getQuantityOccupied());
         }
-        if (e.getQuantityVirtualVar() == null)
+        if (e.getQuantityVirtual() == null)
         {
-            if (e.getIsPropertyQuantityVirtualVarRemoved() != null && e.getIsPropertyQuantityVirtualVarRemoved())
+            if (e.getIsPropertyQuantityVirtualRemoved() != null && e.getIsPropertyQuantityVirtualRemoved())
             {
-                this.setQuantityVirtualVar(null);
+                this.setQuantityVirtual(null);
             }
         }
         else
         {
-            this.setQuantityVirtualVar(e.getQuantityVirtualVar());
+            this.setQuantityVirtual(e.getQuantityVirtual());
         }
-        if (e.getEventVO() == null)
+        if (e.getSource() == null)
         {
-            if (e.getIsPropertyEventVORemoved() != null && e.getIsPropertyEventVORemoved())
+            if (e.getIsPropertySourceRemoved() != null && e.getIsPropertySourceRemoved())
             {
-                this.setEventVO(null);
+                this.setSource(null);
             }
         }
         else
         {
-            this.setEventVO(e.getEventVO());
+            this.setSource(e.getSource());
         }
         if (e.getVersion() == null)
         {

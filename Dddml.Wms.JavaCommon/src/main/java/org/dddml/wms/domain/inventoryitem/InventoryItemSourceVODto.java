@@ -2,18 +2,19 @@ package org.dddml.wms.domain.inventoryitem;
 
 import org.dddml.wms.domain.*;
 
-public class InventoryItemEventVODto
+public class InventoryItemSourceVODto
 {
 
-    public InventoryItemEventVODto()
+    public InventoryItemSourceVODto()
     {
     }
 
-    public InventoryItemEventVO toInventoryItemEventVO()
+    public InventoryItemSourceVO toInventoryItemSourceVO()
     {
-        InventoryItemEventVO v = new InventoryItemEventVO();
+        InventoryItemSourceVO v = new InventoryItemSourceVO();
         v.setInventoryItemEventTypeId(this.getInventoryItemEventTypeId());
         v.setDocumentNumber(this.getDocumentNumber());
+        v.setLineNumber(this.getLineNumber());
         return v;
     }
 
@@ -41,6 +42,18 @@ public class InventoryItemEventVODto
         this.documentNumber = documentNumber;
     }
 
+    private String lineNumber;
+
+    public String getLineNumber()
+    {
+        return this.lineNumber;
+    }
+
+    public void setLineNumber(String lineNumber)
+    {
+        this.lineNumber = lineNumber;
+    }
+
 
     @Override
     public boolean equals(Object obj)
@@ -48,14 +61,15 @@ public class InventoryItemEventVODto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != InventoryItemEventVODto.class) {
+        if (obj == null || obj.getClass() != InventoryItemSourceVODto.class) {
             return false;
         }
 
-        InventoryItemEventVODto other = (InventoryItemEventVODto)obj;
+        InventoryItemSourceVODto other = (InventoryItemSourceVODto)obj;
         return true 
             && (getInventoryItemEventTypeId() == other.getInventoryItemEventTypeId() || (getInventoryItemEventTypeId() != null && getInventoryItemEventTypeId().equals(other.getInventoryItemEventTypeId())))
             && (getDocumentNumber() == other.getDocumentNumber() || (getDocumentNumber() != null && getDocumentNumber().equals(other.getDocumentNumber())))
+            && (getLineNumber() == other.getLineNumber() || (getLineNumber() != null && getLineNumber().equals(other.getLineNumber())))
             ;
 
     }
@@ -69,6 +83,9 @@ public class InventoryItemEventVODto
         }
         if (this.getDocumentNumber() != null) {
             hash += 13 * this.getDocumentNumber().hashCode();
+        }
+        if (this.getLineNumber() != null) {
+            hash += 13 * this.getLineNumber().hashCode();
         }
         return hash;
     }

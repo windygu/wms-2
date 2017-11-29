@@ -124,11 +124,11 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         InventoryItemEntryStateEvent.InventoryItemEntryStateCreated e = newInventoryItemEntryStateCreated(stateEventId);
         InventoryItemEntryState s = outerState.getEntries().get(c.getEntrySeqId());
 
-        e.setQuantityOnHandVar(c.getQuantityOnHandVar());
-        e.setQuantityReservedVar(c.getQuantityReservedVar());
-        e.setQuantityOccupiedVar(c.getQuantityOccupiedVar());
-        e.setQuantityVirtualVar(c.getQuantityVirtualVar());
-        e.setEventVO(c.getEventVO());
+        e.setQuantityOnHand(c.getQuantityOnHand());
+        e.setQuantityReserved(c.getQuantityReserved());
+        e.setQuantityOccupied(c.getQuantityOccupied());
+        e.setQuantityVirtual(c.getQuantityVirtual());
+        e.setSource(c.getSource());
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));

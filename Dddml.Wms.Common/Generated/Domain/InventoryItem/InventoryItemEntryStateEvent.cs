@@ -39,15 +39,15 @@ namespace Dddml.Wms.Domain.InventoryItem
             set { StateEventId.EntrySeqId = value; }
         }
 
-        public virtual decimal? QuantityOnHandVar { get { return _state.QuantityOnHandVar; } set { _state.QuantityOnHandVar = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+        public virtual decimal? QuantityOnHand { get { return _state.QuantityOnHand; } set { _state.QuantityOnHand = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
-        public virtual decimal? QuantityReservedVar { get { return _state.QuantityReservedVar; } set { _state.QuantityReservedVar = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+        public virtual decimal? QuantityReserved { get { return _state.QuantityReserved; } set { _state.QuantityReserved = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
-        public virtual decimal? QuantityOccupiedVar { get { return _state.QuantityOccupiedVar; } set { _state.QuantityOccupiedVar = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+        public virtual decimal? QuantityOccupied { get { return _state.QuantityOccupied; } set { _state.QuantityOccupied = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
-        public virtual decimal? QuantityVirtualVar { get { return _state.QuantityVirtualVar; } set { _state.QuantityVirtualVar = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+        public virtual decimal? QuantityVirtual { get { return _state.QuantityVirtual; } set { _state.QuantityVirtual = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
-        public virtual InventoryItemEventVO EventVO { get { return _state.EventVO; } set { _state.EventVO = value; } }
+        public virtual InventoryItemSourceVO Source { get { return _state.Source; } set { _state.Source = value; } }
 
         public virtual bool? Active { get { return _state.Active; } set { _state.Active = (value != null && value.HasValue) ? value.Value : default(bool); } }
 

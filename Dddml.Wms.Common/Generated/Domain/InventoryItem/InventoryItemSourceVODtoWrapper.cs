@@ -12,22 +12,22 @@ using Dddml.Wms.Domain.InventoryItem;
 namespace Dddml.Wms.Domain.InventoryItem
 {
 
-	public class InventoryItemEventVODtoWrapper : InventoryItemEventVODto
+	public class InventoryItemSourceVODtoWrapper : InventoryItemSourceVODto
 	{
 
-        private InventoryItemEventVO _value = new InventoryItemEventVO();
+        private InventoryItemSourceVO _value = new InventoryItemSourceVO();
 
-		public InventoryItemEventVODtoWrapper()
+		public InventoryItemSourceVODtoWrapper()
 		{
 		}
 
-		public InventoryItemEventVODtoWrapper(InventoryItemEventVO val)
+		public InventoryItemSourceVODtoWrapper(InventoryItemSourceVO val)
 		{
 			if (val == null) { throw new ArgumentNullException("val"); }
 			this._value = val;
 		}
 
-        public override InventoryItemEventVO ToInventoryItemEventVO()
+        public override InventoryItemSourceVO ToInventoryItemSourceVO()
         {
             return this._value;
         }
@@ -40,6 +40,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 		public override string DocumentNumber { 
 			get { return _value.DocumentNumber; } 
 			set { _value.DocumentNumber = value; } 
+		}
+
+		public override string LineNumber { 
+			get { return _value.LineNumber; } 
+			set { _value.LineNumber = value; } 
 		}
 
 

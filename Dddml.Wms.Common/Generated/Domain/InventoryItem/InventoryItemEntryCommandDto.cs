@@ -34,26 +34,26 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual long EntrySeqId { get; set; }
 
-		public virtual decimal? QuantityOnHandVar { get; set; }
+		public virtual decimal? QuantityOnHand { get; set; }
 
-		public virtual decimal? QuantityReservedVar { get; set; }
+		public virtual decimal? QuantityReserved { get; set; }
 
-		public virtual decimal? QuantityOccupiedVar { get; set; }
+		public virtual decimal? QuantityOccupied { get; set; }
 
-		public virtual decimal? QuantityVirtualVar { get; set; }
+		public virtual decimal? QuantityVirtual { get; set; }
 
 
-		public virtual InventoryItemEventVODto EventVO { get; set; }
+		public virtual InventoryItemSourceVODto Source { get; set; }
 
-        InventoryItemEventVO ICreateOrMergePatchOrRemoveInventoryItemEntry.EventVO
+        InventoryItemSourceVO ICreateOrMergePatchOrRemoveInventoryItemEntry.Source
         {
             get 
             {
-                return (this.EventVO == null) ? null : this.EventVO.ToInventoryItemEventVO();
+                return (this.Source == null) ? null : this.Source.ToInventoryItemSourceVO();
             }
             set 
             {
-                this.EventVO = (value == null) ? null : new InventoryItemEventVODtoWrapper(value);
+                this.Source = (value == null) ? null : new InventoryItemSourceVODtoWrapper(value);
             }
         }
 

@@ -68,3 +68,17 @@
     drop table if exists InOutLine_RV;
 
     drop table if exists InOutLineMvoStateEvents;
+
+    drop table if exists InventoryItems;
+
+    drop table if exists InventoryItemStateEvents;
+
+    drop table if exists InventoryItemEntries;
+
+    drop table if exists InventoryItemEventTypes;
+
+    drop table if exists InventoryItemEventTypeStateEvents;
+
+    drop table if exists InventoryItemEntry_RV;
+
+    drop table if exists InventoryItemEntryMvoStateEvents;

@@ -28,7 +28,7 @@ public class HibernateInventoryItemEntryMvoStateRepository implements InventoryI
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("InventoryItemEntryId", "QuantityOnHandVar", "QuantityReservedVar", "QuantityOccupiedVar", "QuantityVirtualVar", "EventVO", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InventoryItemQuantityOnHand", "InventoryItemQuantityReserved", "InventoryItemQuantityOccupied", "InventoryItemQuantityVirtual", "InventoryItemEntries", "InventoryItemVersion", "InventoryItemCreatedBy", "InventoryItemCreatedAt", "InventoryItemUpdatedBy", "InventoryItemUpdatedAt"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("InventoryItemEntryId", "QuantityOnHand", "QuantityReserved", "QuantityOccupied", "QuantityVirtual", "Source", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InventoryItemQuantityOnHand", "InventoryItemQuantityReserved", "InventoryItemQuantityOccupied", "InventoryItemQuantityVirtual", "InventoryItemEntries", "InventoryItemVersion", "InventoryItemCreatedBy", "InventoryItemCreatedAt", "InventoryItemUpdatedBy", "InventoryItemUpdatedAt"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

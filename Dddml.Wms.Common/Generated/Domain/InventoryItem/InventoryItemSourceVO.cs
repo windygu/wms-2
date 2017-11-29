@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.InventoryItem;
 namespace Dddml.Wms.Domain.InventoryItem
 {
 
-	public class InventoryItemEventVO
+	public class InventoryItemSourceVO
 	{
 
 		private string _inventoryItemEventTypeId;
@@ -29,20 +29,28 @@ namespace Dddml.Wms.Domain.InventoryItem
 			internal set { _documentNumber = value; } 
 		}
 
+		private string _lineNumber;
+
+		public virtual string LineNumber { 
+			get { return this._lineNumber; } 
+			internal set { _lineNumber = value; } 
+		}
+
 
         #region  Flattened Properties
 
 
         #endregion
 
-		internal InventoryItemEventVO ()
+		internal InventoryItemSourceVO ()
 		{
 		}
 
-		public InventoryItemEventVO (string inventoryItemEventTypeId, string documentNumber)
+		public InventoryItemSourceVO (string inventoryItemEventTypeId, string documentNumber, string lineNumber)
 		{
 			this._inventoryItemEventTypeId = inventoryItemEventTypeId;
 			this._documentNumber = documentNumber;
+			this._lineNumber = lineNumber;
 
 		}
 
@@ -53,7 +61,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 				return true;
 			}
 
-			InventoryItemEventVO other = obj as InventoryItemEventVO;
+			InventoryItemSourceVO other = obj as InventoryItemSourceVO;
 			if (other == null) {
 				return false;
 			}
@@ -61,6 +69,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 			return true 
 				&& Object.Equals (this.InventoryItemEventTypeId, other.InventoryItemEventTypeId)
 				&& Object.Equals (this.DocumentNumber, other.DocumentNumber)
+				&& Object.Equals (this.LineNumber, other.LineNumber)
 				;
 		}
 
@@ -73,15 +82,18 @@ namespace Dddml.Wms.Domain.InventoryItem
 			if (this.DocumentNumber != null) {
 				hash += 13 * this.DocumentNumber.GetHashCode ();
 			}
+			if (this.LineNumber != null) {
+				hash += 13 * this.LineNumber.GetHashCode ();
+			}
 			return hash;
 		}
 
-        public static bool operator ==(InventoryItemEventVO obj1, InventoryItemEventVO obj2)
+        public static bool operator ==(InventoryItemSourceVO obj1, InventoryItemSourceVO obj2)
         {
             return Object.Equals(obj1, obj2);
         }
 
-        public static bool operator !=(InventoryItemEventVO obj1, InventoryItemEventVO obj2)
+        public static bool operator !=(InventoryItemSourceVO obj1, InventoryItemSourceVO obj2)
         {
             return !Object.Equals(obj1, obj2);
         }

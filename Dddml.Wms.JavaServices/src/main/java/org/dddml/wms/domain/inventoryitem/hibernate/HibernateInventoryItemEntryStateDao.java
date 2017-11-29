@@ -22,7 +22,7 @@ public class HibernateInventoryItemEntryStateDao implements InventoryItemEntrySt
         return this.sessionFactory.getCurrentSession();
     }
 
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("EntrySeqId", "QuantityOnHandVar", "QuantityReservedVar", "QuantityOccupiedVar", "QuantityVirtualVar", "EventVO", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InventoryItemId"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("EntrySeqId", "QuantityOnHand", "QuantityReserved", "QuantityOccupied", "QuantityVirtual", "Source", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InventoryItemId"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

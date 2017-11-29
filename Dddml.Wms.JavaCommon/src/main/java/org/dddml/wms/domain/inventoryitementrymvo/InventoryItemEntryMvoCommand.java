@@ -20,25 +20,25 @@ public interface InventoryItemEntryMvoCommand extends Command
 
     interface CreateOrMergePatchInventoryItemEntryMvo extends InventoryItemEntryMvoCommand
     {
-        BigDecimal getQuantityOnHandVar();
+        BigDecimal getQuantityOnHand();
 
-        void setQuantityOnHandVar(BigDecimal quantityOnHandVar);
+        void setQuantityOnHand(BigDecimal quantityOnHand);
 
-        BigDecimal getQuantityReservedVar();
+        BigDecimal getQuantityReserved();
 
-        void setQuantityReservedVar(BigDecimal quantityReservedVar);
+        void setQuantityReserved(BigDecimal quantityReserved);
 
-        BigDecimal getQuantityOccupiedVar();
+        BigDecimal getQuantityOccupied();
 
-        void setQuantityOccupiedVar(BigDecimal quantityOccupiedVar);
+        void setQuantityOccupied(BigDecimal quantityOccupied);
 
-        BigDecimal getQuantityVirtualVar();
+        BigDecimal getQuantityVirtual();
 
-        void setQuantityVirtualVar(BigDecimal quantityVirtualVar);
+        void setQuantityVirtual(BigDecimal quantityVirtual);
 
-        InventoryItemEventVO getEventVO();
+        InventoryItemSourceVO getSource();
 
-        void setEventVO(InventoryItemEventVO eventVO);
+        void setSource(InventoryItemSourceVO source);
 
         Long getVersion();
 
@@ -88,25 +88,25 @@ public interface InventoryItemEntryMvoCommand extends Command
 
     interface MergePatchInventoryItemEntryMvo extends CreateOrMergePatchInventoryItemEntryMvo
     {
-        Boolean getIsPropertyQuantityOnHandVarRemoved();
+        Boolean getIsPropertyQuantityOnHandRemoved();
 
-        void setIsPropertyQuantityOnHandVarRemoved(Boolean removed);
+        void setIsPropertyQuantityOnHandRemoved(Boolean removed);
 
-        Boolean getIsPropertyQuantityReservedVarRemoved();
+        Boolean getIsPropertyQuantityReservedRemoved();
 
-        void setIsPropertyQuantityReservedVarRemoved(Boolean removed);
+        void setIsPropertyQuantityReservedRemoved(Boolean removed);
 
-        Boolean getIsPropertyQuantityOccupiedVarRemoved();
+        Boolean getIsPropertyQuantityOccupiedRemoved();
 
-        void setIsPropertyQuantityOccupiedVarRemoved(Boolean removed);
+        void setIsPropertyQuantityOccupiedRemoved(Boolean removed);
 
-        Boolean getIsPropertyQuantityVirtualVarRemoved();
+        Boolean getIsPropertyQuantityVirtualRemoved();
 
-        void setIsPropertyQuantityVirtualVarRemoved(Boolean removed);
+        void setIsPropertyQuantityVirtualRemoved(Boolean removed);
 
-        Boolean getIsPropertyEventVORemoved();
+        Boolean getIsPropertySourceRemoved();
 
-        void setIsPropertyEventVORemoved(Boolean removed);
+        void setIsPropertySourceRemoved(Boolean removed);
 
         Boolean getIsPropertyVersionRemoved();
 

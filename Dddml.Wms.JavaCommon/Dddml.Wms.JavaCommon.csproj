@@ -1394,15 +1394,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemEntryStates.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemEventVO.java">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemEventVODto.java">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemEventVODtoWrapper.java">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemId.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
@@ -1416,6 +1407,15 @@
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemSourceVO.java">
+      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemSourceVODto.java">
+      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemSourceVODtoWrapper.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemState.java">
@@ -2698,14 +2698,14 @@
 .\InventoryItemEntryStateEventIdFlattenedDto.java
 .\InventoryItemEntryStateEventIdFlattenedDtoFormatter.java
 .\InventoryItemEntryStates.java
-.\InventoryItemEventVO.java
-.\InventoryItemEventVODto.java
-.\InventoryItemEventVODtoWrapper.java
 .\InventoryItemId.java
 .\InventoryItemIdDto.java
 .\InventoryItemIdDtoWrapper.java
 .\InventoryItemIdFlattenedDto.java
 .\InventoryItemIdFlattenedDtoFormatter.java
+.\InventoryItemSourceVO.java
+.\InventoryItemSourceVODto.java
+.\InventoryItemSourceVODtoWrapper.java
 .\InventoryItemState.java
 .\InventoryItemStateDto.java
 .\InventoryItemStateEvent.java

@@ -49,11 +49,11 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             cmd.InventoryItemVersion = ((IInventoryItemEntryMvoStateProperties)state).InventoryItemVersion;
 
             cmd.InventoryItemEntryId = state.InventoryItemEntryId;
-            cmd.QuantityOnHandVar = state.QuantityOnHandVar;
-            cmd.QuantityReservedVar = state.QuantityReservedVar;
-            cmd.QuantityOccupiedVar = state.QuantityOccupiedVar;
-            cmd.QuantityVirtualVar = state.QuantityVirtualVar;
-            cmd.EventVO = state.EventVO;
+            cmd.QuantityOnHand = state.QuantityOnHand;
+            cmd.QuantityReserved = state.QuantityReserved;
+            cmd.QuantityOccupied = state.QuantityOccupied;
+            cmd.QuantityVirtual = state.QuantityVirtual;
+            cmd.Source = state.Source;
             cmd.Version = ((IInventoryItemEntryMvoStateProperties)state).Version;
             cmd.Active = ((IInventoryItemEntryMvoStateProperties)state).Active;
             cmd.InventoryItemQuantityOnHand = state.InventoryItemQuantityOnHand;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             cmd.InventoryItemUpdatedBy = state.InventoryItemUpdatedBy;
             cmd.InventoryItemUpdatedAt = state.InventoryItemUpdatedAt;
             
-            if (state.EventVO == null) { cmd.IsPropertyEventVORemoved = true; }
+            if (state.Source == null) { cmd.IsPropertySourceRemoved = true; }
             if (state.InventoryItemCreatedBy == null) { cmd.IsPropertyInventoryItemCreatedByRemoved = true; }
             if (state.InventoryItemUpdatedBy == null) { cmd.IsPropertyInventoryItemUpdatedByRemoved = true; }
             return cmd;
@@ -79,11 +79,11 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             cmd.InventoryItemVersion = ((IInventoryItemEntryMvoStateProperties)state).InventoryItemVersion;
 
             cmd.InventoryItemEntryId = state.InventoryItemEntryId;
-            cmd.QuantityOnHandVar = state.QuantityOnHandVar;
-            cmd.QuantityReservedVar = state.QuantityReservedVar;
-            cmd.QuantityOccupiedVar = state.QuantityOccupiedVar;
-            cmd.QuantityVirtualVar = state.QuantityVirtualVar;
-            cmd.EventVO = state.EventVO;
+            cmd.QuantityOnHand = state.QuantityOnHand;
+            cmd.QuantityReserved = state.QuantityReserved;
+            cmd.QuantityOccupied = state.QuantityOccupied;
+            cmd.QuantityVirtual = state.QuantityVirtual;
+            cmd.Source = state.Source;
             cmd.Version = ((IInventoryItemEntryMvoStateProperties)state).Version;
             cmd.Active = ((IInventoryItemEntryMvoStateProperties)state).Active;
             cmd.InventoryItemQuantityOnHand = state.InventoryItemQuantityOnHand;

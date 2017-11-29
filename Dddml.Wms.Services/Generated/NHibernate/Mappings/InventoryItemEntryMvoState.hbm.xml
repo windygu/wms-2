@@ -14,13 +14,14 @@
 
 	<version name="InventoryItemVersion" column="InventoryItemVersion" type="long" unsaved-value="0"/>
 
-    <property name="QuantityOnHandVar" ></property>
-    <property name="QuantityReservedVar" ></property>
-    <property name="QuantityOccupiedVar" ></property>
-    <property name="QuantityVirtualVar" ></property>
-    <component name="EventVO" class="Dddml.Wms.Domain.InventoryItem.InventoryItemEventVO">
-        <property name="InventoryItemEventTypeId" ></property>
+    <property name="QuantityOnHand" ></property>
+    <property name="QuantityReserved" ></property>
+    <property name="QuantityOccupied" ></property>
+    <property name="QuantityVirtual" ></property>
+    <component name="Source" class="Dddml.Wms.Domain.InventoryItem.InventoryItemSourceVO">
+        <property name="InventoryItemEventTypeId" ><column name="InventoryItemEventTypeId" not-null="true" /></property>
         <property name="DocumentNumber" ><column name="DocumentNumber" not-null="true" /></property>
+        <property name="LineNumber" ></property>
     </component>
     <property name="Version" ></property>
     <property name="CreatedBy" ></property>

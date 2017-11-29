@@ -1511,15 +1511,6 @@
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemEntryStates.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEventVO.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEventVODto.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEventVODtoWrapper.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemId.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
@@ -1530,6 +1521,15 @@
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemIdFlattenedDto.cs">
+      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceVO.cs">
+      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceVODto.cs">
+      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceVODtoWrapper.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemState.cs">
@@ -2933,13 +2933,13 @@
 .\InventoryItemEntryStateInterfaceExtension.cs
 .\InventoryItemEntryStateProperties.cs
 .\InventoryItemEntryStates.cs
-.\InventoryItemEventVO.cs
-.\InventoryItemEventVODto.cs
-.\InventoryItemEventVODtoWrapper.cs
 .\InventoryItemId.cs
 .\InventoryItemIdDto.cs
 .\InventoryItemIdDtoWrapper.cs
 .\InventoryItemIdFlattenedDto.cs
+.\InventoryItemSourceVO.cs
+.\InventoryItemSourceVODto.cs
+.\InventoryItemSourceVODtoWrapper.cs
 .\InventoryItemState.cs
 .\InventoryItemStateDto.cs
 .\InventoryItemStateDtoExtension.cs

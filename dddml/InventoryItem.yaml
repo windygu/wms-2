@@ -42,17 +42,17 @@ aggregates:
             
           properties:
           
-            QuantityOnHandVar:
+            QuantityOnHand:
               type: decimal
-            QuantityReservedVar:
+            QuantityReserved:
               type: decimal
-            QuantityOccupiedVar:
+            QuantityOccupied:
               type: decimal
-            QuantityVirtualVar:
+            QuantityVirtual:
               type: decimal
             
-            EventVO:
-              type: InventoryItemEventVO
+            Source:
+              type: InventoryItemSourceVO
               notNull: true
           
           
@@ -73,17 +73,20 @@ aggregates:
               columnName: AttributeSetInstanceId
         
         # -----------------------------------
-        InventoryItemEventVO:
+        InventoryItemSourceVO:
           properties:
             InventoryItemEventTypeId:
               type: string
               referenceType: InventoryItemEventType
+              notNull: true
               columnName: InventoryItemEventTypeId
             DocumentNumber:
               type: string
               notNull: true
               columnName: DocumentNumber
-            
+            LineNumber:
+              type: string
+              columnName: LineNumber
             
     # ----------------------- aggregate -------------------------
     InventoryItemEventType:

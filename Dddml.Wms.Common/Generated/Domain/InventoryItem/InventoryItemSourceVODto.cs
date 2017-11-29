@@ -12,18 +12,19 @@ using Dddml.Wms.Domain.InventoryItem;
 namespace Dddml.Wms.Domain.InventoryItem
 {
 
-	public class InventoryItemEventVODto
+	public class InventoryItemSourceVODto
 	{
 
-		public InventoryItemEventVODto()
+		public InventoryItemSourceVODto()
 		{
 		}
 
-        public virtual InventoryItemEventVO ToInventoryItemEventVO()
+        public virtual InventoryItemSourceVO ToInventoryItemSourceVO()
         {
-            InventoryItemEventVO v = new InventoryItemEventVO();
+            InventoryItemSourceVO v = new InventoryItemSourceVO();
             v.InventoryItemEventTypeId = this.InventoryItemEventTypeId;
             v.DocumentNumber = this.DocumentNumber;
+            v.LineNumber = this.LineNumber;
             return v;
         }
 
@@ -37,6 +38,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 			set;
 		}
 
+		public virtual string LineNumber { 
+			get;
+			set;
+		}
+
 
 		public override bool Equals (object obj)
 		{
@@ -44,7 +50,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 				return true;
 			}
 
-			InventoryItemEventVODto other = obj as InventoryItemEventVODto;
+			InventoryItemSourceVODto other = obj as InventoryItemSourceVODto;
 			if (other == null) {
 				return false;
 			}
@@ -52,6 +58,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 			return true 
 				&& Object.Equals (this.InventoryItemEventTypeId, other.InventoryItemEventTypeId)
 				&& Object.Equals (this.DocumentNumber, other.DocumentNumber)
+				&& Object.Equals (this.LineNumber, other.LineNumber)
 				;
 		}
 
@@ -63,6 +70,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 			}
 			if (this.DocumentNumber != null) {
 				hash += 13 * this.DocumentNumber.GetHashCode ();
+			}
+			if (this.LineNumber != null) {
+				hash += 13 * this.LineNumber.GetHashCode ();
 			}
 			return hash;
 		}

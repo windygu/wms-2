@@ -196,15 +196,15 @@ namespace Dddml.Wms.Domain.InventoryItem
 		public virtual void When(IInventoryItemEntryStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-            this.QuantityOnHandVar = (e.QuantityOnHandVar != null && e.QuantityOnHandVar.HasValue) ? e.QuantityOnHandVar.Value : default(decimal);
+            this.QuantityOnHand = (e.QuantityOnHand != null && e.QuantityOnHand.HasValue) ? e.QuantityOnHand.Value : default(decimal);
 
-            this.QuantityReservedVar = (e.QuantityReservedVar != null && e.QuantityReservedVar.HasValue) ? e.QuantityReservedVar.Value : default(decimal);
+            this.QuantityReserved = (e.QuantityReserved != null && e.QuantityReserved.HasValue) ? e.QuantityReserved.Value : default(decimal);
 
-            this.QuantityOccupiedVar = (e.QuantityOccupiedVar != null && e.QuantityOccupiedVar.HasValue) ? e.QuantityOccupiedVar.Value : default(decimal);
+            this.QuantityOccupied = (e.QuantityOccupied != null && e.QuantityOccupied.HasValue) ? e.QuantityOccupied.Value : default(decimal);
 
-            this.QuantityVirtualVar = (e.QuantityVirtualVar != null && e.QuantityVirtualVar.HasValue) ? e.QuantityVirtualVar.Value : default(decimal);
+            this.QuantityVirtual = (e.QuantityVirtual != null && e.QuantityVirtual.HasValue) ? e.QuantityVirtual.Value : default(decimal);
 
-			this.EventVO = e.EventVO;
+			this.Source = e.Source;
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 

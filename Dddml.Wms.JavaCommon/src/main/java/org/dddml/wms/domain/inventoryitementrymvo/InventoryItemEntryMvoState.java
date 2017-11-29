@@ -18,25 +18,25 @@ public interface InventoryItemEntryMvoState
 
     void setInventoryItemEntryId(InventoryItemEntryId inventoryItemEntryId);
 
-    BigDecimal getQuantityOnHandVar();
+    BigDecimal getQuantityOnHand();
 
-    void setQuantityOnHandVar(BigDecimal quantityOnHandVar);
+    void setQuantityOnHand(BigDecimal quantityOnHand);
 
-    BigDecimal getQuantityReservedVar();
+    BigDecimal getQuantityReserved();
 
-    void setQuantityReservedVar(BigDecimal quantityReservedVar);
+    void setQuantityReserved(BigDecimal quantityReserved);
 
-    BigDecimal getQuantityOccupiedVar();
+    BigDecimal getQuantityOccupied();
 
-    void setQuantityOccupiedVar(BigDecimal quantityOccupiedVar);
+    void setQuantityOccupied(BigDecimal quantityOccupied);
 
-    BigDecimal getQuantityVirtualVar();
+    BigDecimal getQuantityVirtual();
 
-    void setQuantityVirtualVar(BigDecimal quantityVirtualVar);
+    void setQuantityVirtual(BigDecimal quantityVirtual);
 
-    InventoryItemEventVO getEventVO();
+    InventoryItemSourceVO getSource();
 
-    void setEventVO(InventoryItemEventVO eventVO);
+    void setSource(InventoryItemSourceVO source);
 
     Long getVersion();
 

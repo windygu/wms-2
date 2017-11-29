@@ -36,64 +36,64 @@ public abstract class AbstractInventoryItemEntryMvoCommand extends AbstractComma
 
     public static abstract class AbstractCreateOrMergePatchInventoryItemEntryMvo extends AbstractInventoryItemEntryMvoCommand implements CreateOrMergePatchInventoryItemEntryMvo
     {
-        private BigDecimal quantityOnHandVar;
+        private BigDecimal quantityOnHand;
 
-        public BigDecimal getQuantityOnHandVar()
+        public BigDecimal getQuantityOnHand()
         {
-            return this.quantityOnHandVar;
+            return this.quantityOnHand;
         }
 
-        public void setQuantityOnHandVar(BigDecimal quantityOnHandVar)
+        public void setQuantityOnHand(BigDecimal quantityOnHand)
         {
-            this.quantityOnHandVar = quantityOnHandVar;
+            this.quantityOnHand = quantityOnHand;
         }
 
-        private BigDecimal quantityReservedVar;
+        private BigDecimal quantityReserved;
 
-        public BigDecimal getQuantityReservedVar()
+        public BigDecimal getQuantityReserved()
         {
-            return this.quantityReservedVar;
+            return this.quantityReserved;
         }
 
-        public void setQuantityReservedVar(BigDecimal quantityReservedVar)
+        public void setQuantityReserved(BigDecimal quantityReserved)
         {
-            this.quantityReservedVar = quantityReservedVar;
+            this.quantityReserved = quantityReserved;
         }
 
-        private BigDecimal quantityOccupiedVar;
+        private BigDecimal quantityOccupied;
 
-        public BigDecimal getQuantityOccupiedVar()
+        public BigDecimal getQuantityOccupied()
         {
-            return this.quantityOccupiedVar;
+            return this.quantityOccupied;
         }
 
-        public void setQuantityOccupiedVar(BigDecimal quantityOccupiedVar)
+        public void setQuantityOccupied(BigDecimal quantityOccupied)
         {
-            this.quantityOccupiedVar = quantityOccupiedVar;
+            this.quantityOccupied = quantityOccupied;
         }
 
-        private BigDecimal quantityVirtualVar;
+        private BigDecimal quantityVirtual;
 
-        public BigDecimal getQuantityVirtualVar()
+        public BigDecimal getQuantityVirtual()
         {
-            return this.quantityVirtualVar;
+            return this.quantityVirtual;
         }
 
-        public void setQuantityVirtualVar(BigDecimal quantityVirtualVar)
+        public void setQuantityVirtual(BigDecimal quantityVirtual)
         {
-            this.quantityVirtualVar = quantityVirtualVar;
+            this.quantityVirtual = quantityVirtual;
         }
 
-        private InventoryItemEventVO eventVO;
+        private InventoryItemSourceVO source;
 
-        public InventoryItemEventVO getEventVO()
+        public InventoryItemSourceVO getSource()
         {
-            return this.eventVO;
+            return this.source;
         }
 
-        public void setEventVO(InventoryItemEventVO eventVO)
+        public void setSource(InventoryItemSourceVO source)
         {
-            this.eventVO = eventVO;
+            this.source = source;
         }
 
         private Long version;
@@ -234,64 +234,64 @@ public abstract class AbstractInventoryItemEntryMvoCommand extends AbstractComma
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
-        private Boolean isPropertyQuantityOnHandVarRemoved;
+        private Boolean isPropertyQuantityOnHandRemoved;
 
-        public Boolean getIsPropertyQuantityOnHandVarRemoved()
+        public Boolean getIsPropertyQuantityOnHandRemoved()
         {
-            return this.isPropertyQuantityOnHandVarRemoved;
+            return this.isPropertyQuantityOnHandRemoved;
         }
 
-        public void setIsPropertyQuantityOnHandVarRemoved(Boolean removed)
+        public void setIsPropertyQuantityOnHandRemoved(Boolean removed)
         {
-            this.isPropertyQuantityOnHandVarRemoved = removed;
+            this.isPropertyQuantityOnHandRemoved = removed;
         }
 
-        private Boolean isPropertyQuantityReservedVarRemoved;
+        private Boolean isPropertyQuantityReservedRemoved;
 
-        public Boolean getIsPropertyQuantityReservedVarRemoved()
+        public Boolean getIsPropertyQuantityReservedRemoved()
         {
-            return this.isPropertyQuantityReservedVarRemoved;
+            return this.isPropertyQuantityReservedRemoved;
         }
 
-        public void setIsPropertyQuantityReservedVarRemoved(Boolean removed)
+        public void setIsPropertyQuantityReservedRemoved(Boolean removed)
         {
-            this.isPropertyQuantityReservedVarRemoved = removed;
+            this.isPropertyQuantityReservedRemoved = removed;
         }
 
-        private Boolean isPropertyQuantityOccupiedVarRemoved;
+        private Boolean isPropertyQuantityOccupiedRemoved;
 
-        public Boolean getIsPropertyQuantityOccupiedVarRemoved()
+        public Boolean getIsPropertyQuantityOccupiedRemoved()
         {
-            return this.isPropertyQuantityOccupiedVarRemoved;
+            return this.isPropertyQuantityOccupiedRemoved;
         }
 
-        public void setIsPropertyQuantityOccupiedVarRemoved(Boolean removed)
+        public void setIsPropertyQuantityOccupiedRemoved(Boolean removed)
         {
-            this.isPropertyQuantityOccupiedVarRemoved = removed;
+            this.isPropertyQuantityOccupiedRemoved = removed;
         }
 
-        private Boolean isPropertyQuantityVirtualVarRemoved;
+        private Boolean isPropertyQuantityVirtualRemoved;
 
-        public Boolean getIsPropertyQuantityVirtualVarRemoved()
+        public Boolean getIsPropertyQuantityVirtualRemoved()
         {
-            return this.isPropertyQuantityVirtualVarRemoved;
+            return this.isPropertyQuantityVirtualRemoved;
         }
 
-        public void setIsPropertyQuantityVirtualVarRemoved(Boolean removed)
+        public void setIsPropertyQuantityVirtualRemoved(Boolean removed)
         {
-            this.isPropertyQuantityVirtualVarRemoved = removed;
+            this.isPropertyQuantityVirtualRemoved = removed;
         }
 
-        private Boolean isPropertyEventVORemoved;
+        private Boolean isPropertySourceRemoved;
 
-        public Boolean getIsPropertyEventVORemoved()
+        public Boolean getIsPropertySourceRemoved()
         {
-            return this.isPropertyEventVORemoved;
+            return this.isPropertySourceRemoved;
         }
 
-        public void setIsPropertyEventVORemoved(Boolean removed)
+        public void setIsPropertySourceRemoved(Boolean removed)
         {
-            this.isPropertyEventVORemoved = removed;
+            this.isPropertySourceRemoved = removed;
         }
 
         private Boolean isPropertyVersionRemoved;

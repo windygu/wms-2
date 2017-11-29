@@ -22,32 +22,32 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set;
         }
 
-        decimal? QuantityOnHandVar
+        decimal? QuantityOnHand
         {
             get;
             set;
         }
 
-        decimal? QuantityReservedVar
+        decimal? QuantityReserved
         {
             get;
             set;
         }
 
-        decimal? QuantityOccupiedVar
+        decimal? QuantityOccupied
         {
             get;
             set;
         }
 
-        decimal? QuantityVirtualVar
+        decimal? QuantityVirtual
         {
             get;
             set;
         }
 
 
-        InventoryItemEventVODto EventVO
+        InventoryItemSourceVODto Source
         {
             get;
             set;

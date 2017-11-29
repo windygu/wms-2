@@ -162,15 +162,15 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		public virtual void When(IInventoryItemEntryMvoStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-            this.QuantityOnHandVar = (e.QuantityOnHandVar != null && e.QuantityOnHandVar.HasValue) ? e.QuantityOnHandVar.Value : default(decimal);
+            this.QuantityOnHand = (e.QuantityOnHand != null && e.QuantityOnHand.HasValue) ? e.QuantityOnHand.Value : default(decimal);
 
-            this.QuantityReservedVar = (e.QuantityReservedVar != null && e.QuantityReservedVar.HasValue) ? e.QuantityReservedVar.Value : default(decimal);
+            this.QuantityReserved = (e.QuantityReserved != null && e.QuantityReserved.HasValue) ? e.QuantityReserved.Value : default(decimal);
 
-            this.QuantityOccupiedVar = (e.QuantityOccupiedVar != null && e.QuantityOccupiedVar.HasValue) ? e.QuantityOccupiedVar.Value : default(decimal);
+            this.QuantityOccupied = (e.QuantityOccupied != null && e.QuantityOccupied.HasValue) ? e.QuantityOccupied.Value : default(decimal);
 
-            this.QuantityVirtualVar = (e.QuantityVirtualVar != null && e.QuantityVirtualVar.HasValue) ? e.QuantityVirtualVar.Value : default(decimal);
+            this.QuantityVirtual = (e.QuantityVirtual != null && e.QuantityVirtual.HasValue) ? e.QuantityVirtual.Value : default(decimal);
 
-			this.EventVO = e.EventVO;
+			this.Source = e.Source;
 
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 
@@ -203,64 +203,64 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.QuantityOnHandVar == null)
+			if (e.QuantityOnHand == null)
 			{
-				if (e.IsPropertyQuantityOnHandVarRemoved)
+				if (e.IsPropertyQuantityOnHandRemoved)
 				{
-					this.QuantityOnHandVar = default(decimal);
+					this.QuantityOnHand = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityOnHandVar = (e.QuantityOnHandVar != null && e.QuantityOnHandVar.HasValue) ? e.QuantityOnHandVar.Value : default(decimal);
+				this.QuantityOnHand = (e.QuantityOnHand != null && e.QuantityOnHand.HasValue) ? e.QuantityOnHand.Value : default(decimal);
 			}
 
-			if (e.QuantityReservedVar == null)
+			if (e.QuantityReserved == null)
 			{
-				if (e.IsPropertyQuantityReservedVarRemoved)
+				if (e.IsPropertyQuantityReservedRemoved)
 				{
-					this.QuantityReservedVar = default(decimal);
+					this.QuantityReserved = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityReservedVar = (e.QuantityReservedVar != null && e.QuantityReservedVar.HasValue) ? e.QuantityReservedVar.Value : default(decimal);
+				this.QuantityReserved = (e.QuantityReserved != null && e.QuantityReserved.HasValue) ? e.QuantityReserved.Value : default(decimal);
 			}
 
-			if (e.QuantityOccupiedVar == null)
+			if (e.QuantityOccupied == null)
 			{
-				if (e.IsPropertyQuantityOccupiedVarRemoved)
+				if (e.IsPropertyQuantityOccupiedRemoved)
 				{
-					this.QuantityOccupiedVar = default(decimal);
+					this.QuantityOccupied = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityOccupiedVar = (e.QuantityOccupiedVar != null && e.QuantityOccupiedVar.HasValue) ? e.QuantityOccupiedVar.Value : default(decimal);
+				this.QuantityOccupied = (e.QuantityOccupied != null && e.QuantityOccupied.HasValue) ? e.QuantityOccupied.Value : default(decimal);
 			}
 
-			if (e.QuantityVirtualVar == null)
+			if (e.QuantityVirtual == null)
 			{
-				if (e.IsPropertyQuantityVirtualVarRemoved)
+				if (e.IsPropertyQuantityVirtualRemoved)
 				{
-					this.QuantityVirtualVar = default(decimal);
+					this.QuantityVirtual = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityVirtualVar = (e.QuantityVirtualVar != null && e.QuantityVirtualVar.HasValue) ? e.QuantityVirtualVar.Value : default(decimal);
+				this.QuantityVirtual = (e.QuantityVirtual != null && e.QuantityVirtual.HasValue) ? e.QuantityVirtual.Value : default(decimal);
 			}
 
-			if (e.EventVO == null)
+			if (e.Source == null)
 			{
-				if (e.IsPropertyEventVORemoved)
+				if (e.IsPropertySourceRemoved)
 				{
-					this.EventVO = default(InventoryItemEventVO);
+					this.Source = default(InventoryItemSourceVO);
 				}
 			}
 			else
 			{
-				this.EventVO = e.EventVO;
+				this.Source = e.Source;
 			}
 
 			if (e.Version == null)

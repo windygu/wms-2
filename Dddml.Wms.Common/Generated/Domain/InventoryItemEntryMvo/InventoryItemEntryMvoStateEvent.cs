@@ -24,15 +24,15 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set { StateEventId.InventoryItemEntryId = value; }
         }
 
-		public virtual decimal? QuantityOnHandVar { get; set; }
+		public virtual decimal? QuantityOnHand { get; set; }
 
-		public virtual decimal? QuantityReservedVar { get; set; }
+		public virtual decimal? QuantityReserved { get; set; }
 
-		public virtual decimal? QuantityOccupiedVar { get; set; }
+		public virtual decimal? QuantityOccupied { get; set; }
 
-		public virtual decimal? QuantityVirtualVar { get; set; }
+		public virtual decimal? QuantityVirtual { get; set; }
 
-		public virtual InventoryItemEventVO EventVO { get; set; }
+		public virtual InventoryItemSourceVO Source { get; set; }
 
 		public virtual long? Version { get; set; }
 
@@ -142,15 +142,15 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 	public class InventoryItemEntryMvoStateMergePatched : InventoryItemEntryMvoStateEventBase, IInventoryItemEntryMvoStateMergePatched
 	{
-		public virtual bool IsPropertyQuantityOnHandVarRemoved { get; set; }
+		public virtual bool IsPropertyQuantityOnHandRemoved { get; set; }
 
-		public virtual bool IsPropertyQuantityReservedVarRemoved { get; set; }
+		public virtual bool IsPropertyQuantityReservedRemoved { get; set; }
 
-		public virtual bool IsPropertyQuantityOccupiedVarRemoved { get; set; }
+		public virtual bool IsPropertyQuantityOccupiedRemoved { get; set; }
 
-		public virtual bool IsPropertyQuantityVirtualVarRemoved { get; set; }
+		public virtual bool IsPropertyQuantityVirtualRemoved { get; set; }
 
-		public virtual bool IsPropertyEventVORemoved { get; set; }
+		public virtual bool IsPropertySourceRemoved { get; set; }
 
 		public virtual bool IsPropertyVersionRemoved { get; set; }
 

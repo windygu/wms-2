@@ -18,13 +18,14 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="quantityOnHandVar" ></property>
-	<property name="quantityReservedVar" ></property>
-	<property name="quantityOccupiedVar" ></property>
-	<property name="quantityVirtualVar" ></property>
-	<component name="eventVO" class="org.dddml.wms.domain.inventoryitem.InventoryItemEventVO">
+	<property name="quantityOnHand" ></property>
+	<property name="quantityReserved" ></property>
+	<property name="quantityOccupied" ></property>
+	<property name="quantityVirtual" ></property>
+	<component name="source" class="org.dddml.wms.domain.inventoryitem.InventoryItemSourceVO">
 		<property name="inventoryItemEventTypeId" ></property>
 		<property name="documentNumber" ></property>
+		<property name="lineNumber" ></property>
 	</component>
 	<property name="version" ></property>
 	<property name="active" ></property>
@@ -49,15 +50,15 @@
 
     <subclass name="AbstractInventoryItemEntryMvoStateEvent$SimpleInventoryItemEntryMvoStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyQuantityOnHandVarRemoved" column="IsPropertyQuantityOnHandVarRemoved"/>
+        <property name="isPropertyQuantityOnHandRemoved" column="IsPropertyQuantityOnHandRemoved"/>
 
-        <property name="isPropertyQuantityReservedVarRemoved" column="IsPropertyQuantityReservedVarRemoved"/>
+        <property name="isPropertyQuantityReservedRemoved" column="IsPropertyQuantityReservedRemoved"/>
 
-        <property name="isPropertyQuantityOccupiedVarRemoved" column="IsPropertyQuantityOccupiedVarRemoved"/>
+        <property name="isPropertyQuantityOccupiedRemoved" column="IsPropertyQuantityOccupiedRemoved"/>
 
-        <property name="isPropertyQuantityVirtualVarRemoved" column="IsPropertyQuantityVirtualVarRemoved"/>
+        <property name="isPropertyQuantityVirtualRemoved" column="IsPropertyQuantityVirtualRemoved"/>
 
-        <property name="isPropertyEventVORemoved" column="IsPropertyEventVORemoved"/>
+        <property name="isPropertySourceRemoved" column="IsPropertySourceRemoved"/>
 
         <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 

@@ -29,7 +29,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "InventoryItemEntryId", "QuantityOnHandVar", "QuantityReservedVar", "QuantityOccupiedVar", "QuantityVirtualVar", "EventVO", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InventoryItemQuantityOnHand", "InventoryItemQuantityReserved", "InventoryItemQuantityOccupied", "InventoryItemQuantityVirtual", "InventoryItemEntries", "InventoryItemVersion", "InventoryItemCreatedBy", "InventoryItemCreatedAt", "InventoryItemUpdatedBy", "InventoryItemUpdatedAt" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "InventoryItemEntryId", "QuantityOnHand", "QuantityReserved", "QuantityOccupied", "QuantityVirtual", "Source", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InventoryItemQuantityOnHand", "InventoryItemQuantityReserved", "InventoryItemQuantityOccupied", "InventoryItemQuantityVirtual", "InventoryItemEntries", "InventoryItemVersion", "InventoryItemCreatedBy", "InventoryItemCreatedAt", "InventoryItemUpdatedBy", "InventoryItemUpdatedAt" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
