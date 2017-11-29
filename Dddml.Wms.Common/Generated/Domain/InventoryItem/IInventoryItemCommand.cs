@@ -23,14 +23,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 	public interface ICreateOrMergePatchOrDeleteInventoryItem : IInventoryItemCommand
 	{
 
-		decimal? QuantityOnHand { get; set; }
-
-		decimal? QuantityReserved { get; set; }
-
-		decimal? QuantityOccupied { get; set; }
-
-		decimal? QuantityVirtual { get; set; }
-
 		bool? Active { get; set; }
 
 
@@ -46,14 +38,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 	public interface IMergePatchInventoryItem : ICreateOrMergePatchOrDeleteInventoryItem
 	{
-
-		bool IsPropertyQuantityOnHandRemoved { get; set; }
-
-		bool IsPropertyQuantityReservedRemoved { get; set; }
-
-		bool IsPropertyQuantityOccupiedRemoved { get; set; }
-
-		bool IsPropertyQuantityVirtualRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

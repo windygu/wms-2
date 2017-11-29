@@ -97,10 +97,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 			var stateEventId = new InventoryItemStateEventId(c.InventoryItemId, c.Version);
             IInventoryItemStateCreated e = NewInventoryItemStateCreated(stateEventId);
 		
-            e.QuantityOnHand = c.QuantityOnHand;
-            e.QuantityReserved = c.QuantityReserved;
-            e.QuantityOccupied = c.QuantityOccupied;
-            e.QuantityVirtual = c.QuantityVirtual;
             e.CommandId = c.CommandId;
 
 
@@ -108,14 +104,21 @@ namespace Dddml.Wms.Domain.InventoryItem
             e.CreatedAt = DateTime.Now;
 			var version = c.Version;
 
+            // ////////////////////
+            decimal quantityOnHand = default(decimal);
+
             foreach (ICreateInventoryItemEntry innerCommand in c.Entries)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
                 IInventoryItemEntryStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
+                // ///////////////////////
+                quantityOnHand += innerEvent.QuantityOnHand.Value;
+                // ///////////////////////
                 e.AddInventoryItemEntryEvent(innerEvent);
             }
-
+            // ////////////
+            e.QuantityOnHand = quantityOnHand;
 
             return e;
         }
@@ -125,14 +128,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 			var stateEventId = new InventoryItemStateEventId(c.InventoryItemId, c.Version);
             IInventoryItemStateMergePatched e = NewInventoryItemStateMergePatched(stateEventId);
 
-            e.QuantityOnHand = c.QuantityOnHand;
-            e.QuantityReserved = c.QuantityReserved;
-            e.QuantityOccupied = c.QuantityOccupied;
-            e.QuantityVirtual = c.QuantityVirtual;
-            e.IsPropertyQuantityOnHandRemoved = c.IsPropertyQuantityOnHandRemoved;
-            e.IsPropertyQuantityReservedRemoved = c.IsPropertyQuantityReservedRemoved;
-            e.IsPropertyQuantityOccupiedRemoved = c.IsPropertyQuantityOccupiedRemoved;
-            e.IsPropertyQuantityVirtualRemoved = c.IsPropertyQuantityVirtualRemoved;
 
             e.CommandId = c.CommandId;
 

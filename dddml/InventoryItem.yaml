@@ -54,8 +54,23 @@ aggregates:
             Source:
               type: InventoryItemSourceVO
               notNull: true
-          
-          
+      
+      # --------------- Accouts -------------------
+      accounts:
+        QuantityOnHand:
+          entryEntityName: "InventoryItemEntry"
+          entryAmountPropertyName: "QuantityOnHand"
+        QuantityReserved:
+          entryEntityName: "InventoryItemEntry"
+          entryAmountPropertyName: "QuantityReserved"
+        QuantityOccupied:
+          entryEntityName: "InventoryItemEntry"
+          entryAmountPropertyName: "QuantityOccupied"
+        QuantityVirtual:
+          entryEntityName: "InventoryItemEntry"
+          entryAmountPropertyName: "QuantityVirtual"
+      
+      
       # ---------------- Value Objects -------------------
       valueObjects:
       

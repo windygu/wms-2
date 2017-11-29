@@ -52,14 +52,6 @@ namespace Dddml.Wms.Domain.InventoryItem
             set { this.CommandId = value; }
         }
 
-		public virtual decimal? QuantityOnHand { get; set; }
-
-		public virtual decimal? QuantityReserved { get; set; }
-
-		public virtual decimal? QuantityOccupied { get; set; }
-
-		public virtual decimal? QuantityVirtual { get; set; }
-
 		public virtual bool? Active { get; set; }
 
 
@@ -118,14 +110,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 	public class MergePatchInventoryItem :InventoryItemCommandBase, IMergePatchInventoryItem
 	{
-
-		public virtual bool IsPropertyQuantityOnHandRemoved { get; set; }
-
-		public virtual bool IsPropertyQuantityReservedRemoved { get; set; }
-
-		public virtual bool IsPropertyQuantityOccupiedRemoved { get; set; }
-
-		public virtual bool IsPropertyQuantityVirtualRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

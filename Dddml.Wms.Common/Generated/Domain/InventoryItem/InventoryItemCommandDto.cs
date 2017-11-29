@@ -53,14 +53,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual InventoryItemIdDto InventoryItemId { get; set; }
 
-		public virtual decimal? QuantityOnHand { get; set; }
-
-		public virtual decimal? QuantityReserved { get; set; }
-
-		public virtual decimal? QuantityOccupied { get; set; }
-
-		public virtual decimal? QuantityVirtual { get; set; }
-
 		public virtual bool? Active { get; set; }
 
 
@@ -73,82 +65,6 @@ namespace Dddml.Wms.Domain.InventoryItem
             set 
             {
                 this.InventoryItemId = new InventoryItemIdDtoWrapper(value);
-            }
-        }
-
-		public virtual bool? IsPropertyQuantityOnHandRemoved { get; set; }
-
-        bool IMergePatchInventoryItem.IsPropertyQuantityOnHandRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyQuantityOnHandRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyQuantityOnHandRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyQuantityReservedRemoved { get; set; }
-
-        bool IMergePatchInventoryItem.IsPropertyQuantityReservedRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyQuantityReservedRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyQuantityReservedRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyQuantityOccupiedRemoved { get; set; }
-
-        bool IMergePatchInventoryItem.IsPropertyQuantityOccupiedRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyQuantityOccupiedRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyQuantityOccupiedRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyQuantityVirtualRemoved { get; set; }
-
-        bool IMergePatchInventoryItem.IsPropertyQuantityVirtualRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyQuantityVirtualRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyQuantityVirtualRemoved = value;
             }
         }
 
