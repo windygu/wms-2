@@ -19,9 +19,9 @@
     <property name="QuantityOccupied" ></property>
     <property name="QuantityVirtual" ></property>
     <component name="Source" class="Dddml.Wms.Domain.InventoryItem.InventoryItemSourceVO">
-        <property name="InventoryItemEventTypeId" ><column name="InventoryItemEventTypeId" not-null="true" /></property>
-        <property name="DocumentNumber" ><column name="DocumentNumber" not-null="true" /></property>
-        <property name="LineNumber" ></property>
+        <property name="InventoryItemEventTypeId" ><column name="SourceInventoryItemEventTypeId" not-null="true" /></property>
+        <property name="DocumentNumber" ><column name="SourceDocumentNumber" not-null="true" /></property>
+        <property name="LineNumber" ><column name="SourceLineNumber" /></property>
     </component>
     <property name="Version" ></property>
     <property name="CreatedBy" ></property>
