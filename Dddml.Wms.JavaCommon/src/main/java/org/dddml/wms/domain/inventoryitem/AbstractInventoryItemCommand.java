@@ -35,54 +35,6 @@ public abstract class AbstractInventoryItemCommand extends AbstractCommand imple
 
     public static abstract class AbstractCreateOrMergePatchInventoryItem extends AbstractInventoryItemCommand implements CreateOrMergePatchInventoryItem
     {
-        private BigDecimal quantityOnHand;
-
-        public BigDecimal getQuantityOnHand()
-        {
-            return this.quantityOnHand;
-        }
-
-        public void setQuantityOnHand(BigDecimal quantityOnHand)
-        {
-            this.quantityOnHand = quantityOnHand;
-        }
-
-        private BigDecimal quantityReserved;
-
-        public BigDecimal getQuantityReserved()
-        {
-            return this.quantityReserved;
-        }
-
-        public void setQuantityReserved(BigDecimal quantityReserved)
-        {
-            this.quantityReserved = quantityReserved;
-        }
-
-        private BigDecimal quantityOccupied;
-
-        public BigDecimal getQuantityOccupied()
-        {
-            return this.quantityOccupied;
-        }
-
-        public void setQuantityOccupied(BigDecimal quantityOccupied)
-        {
-            this.quantityOccupied = quantityOccupied;
-        }
-
-        private BigDecimal quantityVirtual;
-
-        public BigDecimal getQuantityVirtual()
-        {
-            return this.quantityVirtual;
-        }
-
-        public void setQuantityVirtual(BigDecimal quantityVirtual)
-        {
-            this.quantityVirtual = quantityVirtual;
-        }
-
         private Boolean active;
 
         public Boolean getActive()
@@ -126,54 +78,6 @@ public abstract class AbstractInventoryItemCommand extends AbstractCommand imple
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
-        }
-
-        private Boolean isPropertyQuantityOnHandRemoved;
-
-        public Boolean getIsPropertyQuantityOnHandRemoved()
-        {
-            return this.isPropertyQuantityOnHandRemoved;
-        }
-
-        public void setIsPropertyQuantityOnHandRemoved(Boolean removed)
-        {
-            this.isPropertyQuantityOnHandRemoved = removed;
-        }
-
-        private Boolean isPropertyQuantityReservedRemoved;
-
-        public Boolean getIsPropertyQuantityReservedRemoved()
-        {
-            return this.isPropertyQuantityReservedRemoved;
-        }
-
-        public void setIsPropertyQuantityReservedRemoved(Boolean removed)
-        {
-            this.isPropertyQuantityReservedRemoved = removed;
-        }
-
-        private Boolean isPropertyQuantityOccupiedRemoved;
-
-        public Boolean getIsPropertyQuantityOccupiedRemoved()
-        {
-            return this.isPropertyQuantityOccupiedRemoved;
-        }
-
-        public void setIsPropertyQuantityOccupiedRemoved(Boolean removed)
-        {
-            this.isPropertyQuantityOccupiedRemoved = removed;
-        }
-
-        private Boolean isPropertyQuantityVirtualRemoved;
-
-        public Boolean getIsPropertyQuantityVirtualRemoved()
-        {
-            return this.isPropertyQuantityVirtualRemoved;
-        }
-
-        public void setIsPropertyQuantityVirtualRemoved(Boolean removed)
-        {
-            this.isPropertyQuantityVirtualRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

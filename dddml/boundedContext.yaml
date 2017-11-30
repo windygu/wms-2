@@ -22,6 +22,18 @@ configuration:
     updatedAt: UpdatedAt
     deleted: Deleted
     version: Version
+  
+  # -----------------------------------------
+  accountingQuantityTypes:
+    decimal:
+      zeroLogic:
+        Java: "BigDecimal.ZERO"
+      addLogic:
+        Java: "{0}.add({1})"
+      negateLogic:
+        Java: "{0}.negate()"
+        
+  # -----------------------------------------
     
   metadata:
     

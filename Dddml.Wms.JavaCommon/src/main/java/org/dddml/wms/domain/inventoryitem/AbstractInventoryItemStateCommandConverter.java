@@ -38,15 +38,7 @@ public abstract class AbstractInventoryItemStateCommandConverter<TCreateInventor
         cmd.setVersion(state.getVersion());
 
         cmd.setInventoryItemId(state.getInventoryItemId());
-        cmd.setQuantityOnHand(state.getQuantityOnHand());
-        cmd.setQuantityReserved(state.getQuantityReserved());
-        cmd.setQuantityOccupied(state.getQuantityOccupied());
-        cmd.setQuantityVirtual(state.getQuantityVirtual());
             
-        if (state.getQuantityOnHand() == null) { cmd.setIsPropertyQuantityOnHandRemoved(true); }
-        if (state.getQuantityReserved() == null) { cmd.setIsPropertyQuantityReservedRemoved(true); }
-        if (state.getQuantityOccupied() == null) { cmd.setIsPropertyQuantityOccupiedRemoved(true); }
-        if (state.getQuantityVirtual() == null) { cmd.setIsPropertyQuantityVirtualRemoved(true); }
         for (InventoryItemEntryState d : state.getEntries())
         {
             InventoryItemEntryCommand c = getInventoryItemEntryStateCommandConverter().toCreateOrMergePatchInventoryItemEntry(d);
@@ -61,10 +53,6 @@ public abstract class AbstractInventoryItemStateCommandConverter<TCreateInventor
 
         cmd.setVersion(state.getVersion());
         cmd.setInventoryItemId(state.getInventoryItemId());
-        cmd.setQuantityOnHand(state.getQuantityOnHand());
-        cmd.setQuantityReserved(state.getQuantityReserved());
-        cmd.setQuantityOccupied(state.getQuantityOccupied());
-        cmd.setQuantityVirtual(state.getQuantityVirtual());
         for (InventoryItemEntryState d : state.getEntries())
         {
             InventoryItemEntryCommand.CreateInventoryItemEntry c = getInventoryItemEntryStateCommandConverter().toCreateInventoryItemEntry(d);

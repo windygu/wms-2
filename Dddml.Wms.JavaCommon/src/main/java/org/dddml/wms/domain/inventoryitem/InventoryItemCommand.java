@@ -19,22 +19,6 @@ public interface InventoryItemCommand extends Command
 
     interface CreateOrMergePatchInventoryItem extends InventoryItemCommand
     {
-        BigDecimal getQuantityOnHand();
-
-        void setQuantityOnHand(BigDecimal quantityOnHand);
-
-        BigDecimal getQuantityReserved();
-
-        void setQuantityReserved(BigDecimal quantityReserved);
-
-        BigDecimal getQuantityOccupied();
-
-        void setQuantityOccupied(BigDecimal quantityOccupied);
-
-        BigDecimal getQuantityVirtual();
-
-        void setQuantityVirtual(BigDecimal quantityVirtual);
-
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -51,22 +35,6 @@ public interface InventoryItemCommand extends Command
 
     interface MergePatchInventoryItem extends CreateOrMergePatchInventoryItem
     {
-        Boolean getIsPropertyQuantityOnHandRemoved();
-
-        void setIsPropertyQuantityOnHandRemoved(Boolean removed);
-
-        Boolean getIsPropertyQuantityReservedRemoved();
-
-        void setIsPropertyQuantityReservedRemoved(Boolean removed);
-
-        Boolean getIsPropertyQuantityOccupiedRemoved();
-
-        void setIsPropertyQuantityOccupiedRemoved(Boolean removed);
-
-        Boolean getIsPropertyQuantityVirtualRemoved();
-
-        void setIsPropertyQuantityVirtualRemoved(Boolean removed);
-
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);

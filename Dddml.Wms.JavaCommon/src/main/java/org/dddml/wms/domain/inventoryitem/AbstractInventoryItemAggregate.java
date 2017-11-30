@@ -62,46 +62,62 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
     protected InventoryItemStateEvent map(InventoryItemCommand.CreateInventoryItem c) {
         InventoryItemStateEventId stateEventId = new InventoryItemStateEventId(c.getInventoryItemId(), c.getVersion());
         InventoryItemStateEvent.InventoryItemStateCreated e = newInventoryItemStateCreated(stateEventId);
-        e.setQuantityOnHand(c.getQuantityOnHand());
-        e.setQuantityReserved(c.getQuantityReserved());
-        e.setQuantityOccupied(c.getQuantityOccupied());
-        e.setQuantityVirtual(c.getQuantityVirtual());
         ((AbstractInventoryItemStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        BigDecimal quantityOnHand = BigDecimal.ZERO;
+        BigDecimal quantityReserved = BigDecimal.ZERO;
+        BigDecimal quantityOccupied = BigDecimal.ZERO;
+        BigDecimal quantityVirtual = BigDecimal.ZERO;
         Long version = c.getVersion();
         for (InventoryItemEntryCommand.CreateInventoryItemEntry innerCommand : c.getEntries())
         {
             throwOnInconsistentCommands(c, innerCommand);
             InventoryItemEntryStateEvent.InventoryItemEntryStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addInventoryItemEntryEvent(innerEvent);
+            quantityOnHand = quantityOnHand.add(innerEvent.getQuantityOnHand());
+            quantityReserved = quantityReserved.add(innerEvent.getQuantityReserved());
+            quantityOccupied = quantityOccupied.add(innerEvent.getQuantityOccupied());
+            quantityVirtual = quantityVirtual.add(innerEvent.getQuantityVirtual());
         }
 
+        e.setQuantityOnHand(quantityOnHand);
+        e.setQuantityReserved(quantityReserved);
+        e.setQuantityOccupied(quantityOccupied);
+        e.setQuantityVirtual(quantityVirtual);
         return e;
     }
 
     protected InventoryItemStateEvent map(InventoryItemCommand.MergePatchInventoryItem c) {
         InventoryItemStateEventId stateEventId = new InventoryItemStateEventId(c.getInventoryItemId(), c.getVersion());
         InventoryItemStateEvent.InventoryItemStateMergePatched e = newInventoryItemStateMergePatched(stateEventId);
-        e.setQuantityOnHand(c.getQuantityOnHand());
-        e.setQuantityReserved(c.getQuantityReserved());
-        e.setQuantityOccupied(c.getQuantityOccupied());
-        e.setQuantityVirtual(c.getQuantityVirtual());
-        e.setIsPropertyQuantityOnHandRemoved(c.getIsPropertyQuantityOnHandRemoved());
-        e.setIsPropertyQuantityReservedRemoved(c.getIsPropertyQuantityReservedRemoved());
-        e.setIsPropertyQuantityOccupiedRemoved(c.getIsPropertyQuantityOccupiedRemoved());
-        e.setIsPropertyQuantityVirtualRemoved(c.getIsPropertyQuantityVirtualRemoved());
         ((AbstractInventoryItemStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        BigDecimal quantityOnHand = this.state.getQuantityOnHand();
+        BigDecimal quantityReserved = this.state.getQuantityReserved();
+        BigDecimal quantityOccupied = this.state.getQuantityOccupied();
+        BigDecimal quantityVirtual = this.state.getQuantityVirtual();
         Long version = c.getVersion();
         for (InventoryItemEntryCommand innerCommand : c.getInventoryItemEntryCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             InventoryItemEntryStateEvent innerEvent = map(innerCommand, c, version, this.state);
             e.addInventoryItemEntryEvent(innerEvent);
+            // ////////////////
+            if (!(innerEvent instanceof InventoryItemEntryStateEvent.InventoryItemEntryStateCreated)) { continue; }
+            InventoryItemEntryStateEvent.InventoryItemEntryStateCreated entryCreated = (InventoryItemEntryStateEvent.InventoryItemEntryStateCreated)innerEvent;
+            quantityOnHand = quantityOnHand.add(entryCreated.getQuantityOnHand());
+            quantityReserved = quantityReserved.add(entryCreated.getQuantityReserved());
+            quantityOccupied = quantityOccupied.add(entryCreated.getQuantityOccupied());
+            quantityVirtual = quantityVirtual.add(entryCreated.getQuantityVirtual());
+            // ////////////////
         }
 
+        e.setQuantityOnHand(quantityOnHand);
+        e.setQuantityReserved(quantityReserved);
+        e.setQuantityOccupied(quantityOccupied);
+        e.setQuantityVirtual(quantityVirtual);
         return e;
     }
 
