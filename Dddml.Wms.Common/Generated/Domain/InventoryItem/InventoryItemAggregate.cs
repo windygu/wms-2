@@ -124,6 +124,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             e.QuantityReserved = quantityReserved;
             e.QuantityOccupied = quantityOccupied;
             e.QuantityVirtual = quantityVirtual;
+
             return e;
         }
 
@@ -141,14 +142,30 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 			var version = c.Version;
 
+            decimal quantityOnHand = _state.QuantityOnHand;
+            decimal quantityReserved = _state.QuantityReserved;
+            decimal quantityOccupied = _state.QuantityOccupied;
+            decimal quantityVirtual = _state.QuantityVirtual;
             foreach (IInventoryItemEntryCommand innerCommand in c.InventoryItemEntryCommands)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
                 IInventoryItemEntryStateEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddInventoryItemEntryEvent(innerEvent);
+                // ////////////////
+                if (!(innerEvent is IInventoryItemEntryStateCreated)) { continue; }
+                var entryCreated = (IInventoryItemEntryStateCreated)innerEvent;
+                quantityOnHand = quantityOnHand + entryCreated.QuantityOnHand.Value;
+                quantityReserved = quantityReserved + entryCreated.QuantityReserved.Value;
+                quantityOccupied = quantityOccupied + entryCreated.QuantityOccupied.Value;
+                quantityVirtual = quantityVirtual + entryCreated.QuantityVirtual.Value;
+                // ////////////////
             }
 
+            e.QuantityOnHand = quantityOnHand;
+            e.QuantityReserved = quantityReserved;
+            e.QuantityOccupied = quantityOccupied;
+            e.QuantityVirtual = quantityVirtual;
 
             return e;
         }
