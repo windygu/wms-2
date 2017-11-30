@@ -104,22 +104,26 @@ namespace Dddml.Wms.Domain.InventoryItem
             e.CreatedAt = DateTime.Now;
 			var version = c.Version;
 
-            // ////////////////////
             decimal quantityOnHand = default(decimal);
-
+            decimal quantityReserved = default(decimal);
+            decimal quantityOccupied = default(decimal);
+            decimal quantityVirtual = default(decimal);
             foreach (ICreateInventoryItemEntry innerCommand in c.Entries)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
                 IInventoryItemEntryStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
-                // ///////////////////////
-                quantityOnHand += innerEvent.QuantityOnHand.Value;
-                // ///////////////////////
                 e.AddInventoryItemEntryEvent(innerEvent);
+                quantityOnHand = quantityOnHand + innerEvent.QuantityOnHand.Value;
+                quantityReserved = quantityReserved + innerEvent.QuantityReserved.Value;
+                quantityOccupied = quantityOccupied + innerEvent.QuantityOccupied.Value;
+                quantityVirtual = quantityVirtual + innerEvent.QuantityVirtual.Value;
             }
-            // ////////////
-            e.QuantityOnHand = quantityOnHand;
 
+            e.QuantityOnHand = quantityOnHand;
+            e.QuantityReserved = quantityReserved;
+            e.QuantityOccupied = quantityOccupied;
+            e.QuantityVirtual = quantityVirtual;
             return e;
         }
 
