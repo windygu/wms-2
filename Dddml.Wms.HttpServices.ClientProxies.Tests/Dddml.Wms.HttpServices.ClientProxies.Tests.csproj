@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="ClientProxyTestsBase.cs" />
     <Compile Include="InOutServiceTests.cs" />
+    <Compile Include="InventoryItemServiceTests.cs" />
     <Compile Include="LocatorTreeServiceTests.cs" />
     <Compile Include="TestApplicationContext.cs" />
     <Compile Include="ValuesTests.cs" />

@@ -97,12 +97,6 @@ public abstract class AbstractInventoryItemEntryStates implements InventoryItemE
 
     public void save ()
     {
-        for (InventoryItemEntryState s : this.getLoadedInventoryItemEntryStates()) {
-            getInventoryItemEntryStateDao().save(s);
-        }
-        for (InventoryItemEntryState s : this.removedInventoryItemEntryStates.values()) {
-            getInventoryItemEntryStateDao().delete(s);
-        }
     }
 
     //endregion

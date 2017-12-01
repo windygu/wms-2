@@ -114,10 +114,10 @@ namespace Dddml.Wms.Domain.InventoryItem
 
                 IInventoryItemEntryStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
                 e.AddInventoryItemEntryEvent(innerEvent);
-                quantityOnHand = quantityOnHand + innerEvent.QuantityOnHand.Value;
-                quantityReserved = quantityReserved + innerEvent.QuantityReserved.Value;
-                quantityOccupied = quantityOccupied + innerEvent.QuantityOccupied.Value;
-                quantityVirtual = quantityVirtual + innerEvent.QuantityVirtual.Value;
+                quantityOnHand = quantityOnHand + (innerEvent.QuantityOnHand != null ? innerEvent.QuantityOnHand.GetValueOrDefault() : default(decimal));
+                quantityReserved = quantityReserved + (innerEvent.QuantityReserved != null ? innerEvent.QuantityReserved.GetValueOrDefault() : default(decimal));
+                quantityOccupied = quantityOccupied + (innerEvent.QuantityOccupied != null ? innerEvent.QuantityOccupied.GetValueOrDefault() : default(decimal));
+                quantityVirtual = quantityVirtual + (innerEvent.QuantityVirtual != null ? innerEvent.QuantityVirtual.GetValueOrDefault() : default(decimal));
             }
 
             e.QuantityOnHand = quantityOnHand;
@@ -155,10 +155,10 @@ namespace Dddml.Wms.Domain.InventoryItem
                 // ////////////////
                 if (!(innerEvent is IInventoryItemEntryStateCreated)) { continue; }
                 var entryCreated = (IInventoryItemEntryStateCreated)innerEvent;
-                quantityOnHand = quantityOnHand + entryCreated.QuantityOnHand.Value;
-                quantityReserved = quantityReserved + entryCreated.QuantityReserved.Value;
-                quantityOccupied = quantityOccupied + entryCreated.QuantityOccupied.Value;
-                quantityVirtual = quantityVirtual + entryCreated.QuantityVirtual.Value;
+                quantityOnHand = quantityOnHand + (entryCreated.QuantityOnHand != null ? entryCreated.QuantityOnHand.GetValueOrDefault() : default(decimal));
+                quantityReserved = quantityReserved + (entryCreated.QuantityReserved != null ? entryCreated.QuantityReserved.GetValueOrDefault() : default(decimal));
+                quantityOccupied = quantityOccupied + (entryCreated.QuantityOccupied != null ? entryCreated.QuantityOccupied.GetValueOrDefault() : default(decimal));
+                quantityVirtual = quantityVirtual + (entryCreated.QuantityVirtual != null ? entryCreated.QuantityVirtual.GetValueOrDefault() : default(decimal));
                 // ////////////////
             }
 

@@ -22,14 +22,6 @@ alter TABLE `InOutLines` add
     (`DocumentNumber`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter TABLE `InventoryItemEntries` add
-  CONSTRAINT `FK_InventoryItemEntry_InventoryItem_StateId` 
-  FOREIGN KEY 
-    (`ProductId`, `LocatorId`, `AttributeSetInstanceId`) 
-  REFERENCES `InventoryItems` 
-    (`ProductId`, `LocatorId`, `AttributeSetInstanceId`) 
-  ON DELETE NO ACTION ON UPDATE NO ACTION;
-
 alter TABLE `AttributeSetInstanceExtensionFields` add
   CONSTRAINT `FK_AttributeSetInstanceExtensionField_AttrSetInstEFGroup_StateId` 
   FOREIGN KEY 

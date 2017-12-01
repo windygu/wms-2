@@ -123,13 +123,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual void Save ()
 		{
-			foreach (IInventoryItemEntryState s in this.LoadedInventoryItemEntryStates) {
-                InventoryItemEntryStateDao.Save(s);
-			}
-            foreach(IInventoryItemEntryState s in this._removedInventoryItemEntryStates.Values)
-            {
-                InventoryItemEntryStateDao.Delete(s);
-            }
 		}
 
 		#endregion
