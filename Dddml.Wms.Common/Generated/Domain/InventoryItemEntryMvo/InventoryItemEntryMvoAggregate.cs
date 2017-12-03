@@ -104,7 +104,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             e.QuantityVirtual = c.QuantityVirtual;
             e.Source = c.Source;
             e.Version = c.Version;
-            e.Active = c.Active;
             e.InventoryItemQuantityOnHand = c.InventoryItemQuantityOnHand;
             e.InventoryItemQuantityReserved = c.InventoryItemQuantityReserved;
             e.InventoryItemQuantityOccupied = c.InventoryItemQuantityOccupied;
@@ -135,7 +134,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             e.QuantityVirtual = c.QuantityVirtual;
             e.Source = c.Source;
             e.Version = c.Version;
-            e.Active = c.Active;
             e.InventoryItemQuantityOnHand = c.InventoryItemQuantityOnHand;
             e.InventoryItemQuantityReserved = c.InventoryItemQuantityReserved;
             e.InventoryItemQuantityOccupied = c.InventoryItemQuantityOccupied;
@@ -150,7 +148,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             e.IsPropertyQuantityVirtualRemoved = c.IsPropertyQuantityVirtualRemoved;
             e.IsPropertySourceRemoved = c.IsPropertySourceRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
-            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
             e.IsPropertyInventoryItemQuantityOnHandRemoved = c.IsPropertyInventoryItemQuantityOnHandRemoved;
             e.IsPropertyInventoryItemQuantityReservedRemoved = c.IsPropertyInventoryItemQuantityReservedRemoved;
             e.IsPropertyInventoryItemQuantityOccupiedRemoved = c.IsPropertyInventoryItemQuantityOccupiedRemoved;

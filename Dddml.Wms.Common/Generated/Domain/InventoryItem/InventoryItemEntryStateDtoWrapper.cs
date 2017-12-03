@@ -222,37 +222,6 @@ namespace Dddml.Wms.Domain.InventoryItem
             }
         }
 
-		public virtual bool? Active
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
-                {
-                    return (this._state as IInventoryItemEntryStateProperties).Active;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    (this._state as IInventoryItemEntryStateProperties).Active = value.Value;
-                }
-            }
-        }
-
-        bool IInventoryItemEntryStateProperties.Active
-        {
-            get 
-            {
-                return (this._state as IInventoryItemEntryStateProperties).Active;
-            }
-            set 
-            {
-                (this._state as IInventoryItemEntryStateProperties).Active = value;
-            }
-        }
-
 		public virtual long? Version
         {
             get
@@ -393,15 +362,6 @@ namespace Dddml.Wms.Domain.InventoryItem
         {
 			get { return (_state as IInventoryItemEntryState).LocalId; }
         }
-
-		#endregion
-
-		#region IActive implementation
-
-		bool IActive.IsActive()
-		{
-            return (_state as IActive).IsActive();
-		}
 
 		#endregion
 

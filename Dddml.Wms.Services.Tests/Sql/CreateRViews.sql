@@ -153,12 +153,12 @@ CREATE VIEW `InventoryItemEntry_RV` AS
         `InventoryItemEntries`.`ProductId`,
         `InventoryItemEntries`.`LocatorId`,
         `InventoryItemEntries`.`AttributeSetInstanceId`,
-        `InventoryItemEntries`.`InventoryItemEntryIdEntrySeqId`,
+        `InventoryItemEntries`.`EntrySeqId`,
         `InventoryItemEntries`.`QuantityOnHand`,
         `InventoryItemEntries`.`QuantityReserved`,
         `InventoryItemEntries`.`QuantityOccupied`,
         `InventoryItemEntries`.`QuantityVirtual`,
-        `InventoryItemEntries`.`SourceInventoryItemEventTypeId`,
+        `InventoryItemEntries`.`SourceDocumentTypeId`,
         `InventoryItemEntries`.`SourceDocumentNumber`,
         `InventoryItemEntries`.`SourceLineNumber`,
         `InventoryItemEntries`.`Version`,
@@ -166,7 +166,6 @@ CREATE VIEW `InventoryItemEntry_RV` AS
         `InventoryItemEntries`.`CreatedAt`,
         `InventoryItemEntries`.`UpdatedBy`,
         `InventoryItemEntries`.`UpdatedAt`,
-        `InventoryItemEntries`.`Active`,
         `InventoryItems`.`QuantityOnHand` AS `InventoryItemQuantityOnHand`,
         `InventoryItems`.`QuantityReserved` AS `InventoryItemQuantityReserved`,
         `InventoryItems`.`QuantityOccupied` AS `InventoryItemQuantityOccupied`,
@@ -182,6 +181,39 @@ CREATE VIEW `InventoryItemEntry_RV` AS
                 and (`InventoryItemEntries`.`ProductId` = `InventoryItems`.`ProductId`)
                 and (`InventoryItemEntries`.`LocatorId` = `InventoryItems`.`LocatorId`)
                 and (`InventoryItemEntries`.`AttributeSetInstanceId` = `InventoryItems`.`AttributeSetInstanceId`)
+            )
+        );
+
+
+CREATE VIEW `SellableInventoryItemEntry_RV` AS
+    SELECT 
+        `SellableInventoryItemEntries`.`ProductId`,
+        `SellableInventoryItemEntries`.`LocatorId`,
+        `SellableInventoryItemEntries`.`AttributeSetInstanceId`,
+        `SellableInventoryItemEntries`.`EntrySeqId`,
+        `SellableInventoryItemEntries`.`QuantitySellable`,
+        `SellableInventoryItemEntries`.`SourceEventIdSourceEntryIdInventoryItemIdProductId`,
+        `SellableInventoryItemEntries`.`SourceEventIdSourceEntryIdInventoryItemIdLocatorId`,
+        `SellableInventoryItemEntries`.`SourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId`,
+        `SellableInventoryItemEntries`.`SourceEventIdSourceEntryIdEntrySeqId`,
+        `SellableInventoryItemEntries`.`SourceEventIdInventoryPostingRuleId`,
+        `SellableInventoryItemEntries`.`Version`,
+        `SellableInventoryItemEntries`.`CreatedBy`,
+        `SellableInventoryItemEntries`.`CreatedAt`,
+        `SellableInventoryItemEntries`.`UpdatedBy`,
+        `SellableInventoryItemEntries`.`UpdatedAt`,
+        `SellableInventoryItems`.`QuantitySellable` AS `SellableInventoryItemQuantitySellable`,
+        `SellableInventoryItems`.`Version` AS `SellableInventoryItemVersion`,
+        `SellableInventoryItems`.`CreatedBy` AS `SellableInventoryItemCreatedBy`,
+        `SellableInventoryItems`.`CreatedAt` AS `SellableInventoryItemCreatedAt`,
+        `SellableInventoryItems`.`UpdatedBy` AS `SellableInventoryItemUpdatedBy`,
+        `SellableInventoryItems`.`UpdatedAt` AS `SellableInventoryItemUpdatedAt`
+    FROM
+        (`SellableInventoryItemEntries`
+            JOIN `SellableInventoryItems` ON ( 1=1 
+                and (`SellableInventoryItemEntries`.`ProductId` = `SellableInventoryItems`.`ProductId`)
+                and (`SellableInventoryItemEntries`.`LocatorId` = `SellableInventoryItems`.`LocatorId`)
+                and (`SellableInventoryItemEntries`.`AttributeSetInstanceId` = `SellableInventoryItems`.`AttributeSetInstanceId`)
             )
         );
 

@@ -30,8 +30,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		long? Version { get; set; }
 
-		bool? Active { get; set; }
-
 		decimal? InventoryItemQuantityOnHand { get; set; }
 
 		decimal? InventoryItemQuantityReserved { get; set; }
@@ -69,8 +67,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		bool IsPropertySourceRemoved { get; set; }
 
 		bool IsPropertyVersionRemoved { get; set; }
-
-		bool IsPropertyActiveRemoved { get; set; }
 
 		bool IsPropertyInventoryItemQuantityOnHandRemoved { get; set; }
 

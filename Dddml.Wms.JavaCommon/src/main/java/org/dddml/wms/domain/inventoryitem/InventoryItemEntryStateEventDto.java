@@ -77,16 +77,6 @@ public class InventoryItemEntryStateEventDto extends AbstractStateEvent
         this.source = source;
     }
 
-    private Boolean active;
-
-    public Boolean getActive() {
-        return this.active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
     private String createdBy;
 
     public String getCreatedBy() {
@@ -165,16 +155,6 @@ public class InventoryItemEntryStateEventDto extends AbstractStateEvent
 
     public void setIsPropertySourceRemoved(Boolean removed) {
         this.isPropertySourceRemoved = removed;
-    }
-
-    private Boolean isPropertyActiveRemoved;
-
-    public Boolean getIsPropertyActiveRemoved() {
-        return this.isPropertyActiveRemoved;
-    }
-
-    public void setIsPropertyActiveRemoved(Boolean removed) {
-        this.isPropertyActiveRemoved = removed;
     }
 
 

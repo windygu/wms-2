@@ -49,8 +49,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public virtual InventoryItemSourceVO Source { get { return _state.Source; } set { _state.Source = value; } }
 
-        public virtual bool? Active { get { return _state.Active; } set { _state.Active = (value != null && value.HasValue) ? value.Value : default(bool); } }
-
 		public virtual string CreatedBy { get { return _state.CreatedBy; } set { _state.CreatedBy = value; } }
 
 		public virtual DateTime CreatedAt { get { return _state.CreatedAt; } set { _state.CreatedAt = value; } }

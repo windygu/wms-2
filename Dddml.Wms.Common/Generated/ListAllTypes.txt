@@ -12,7 +12,9 @@
                 dict.Add("InventoryItemEntryId", "_INVENTORYITEMENTRYID_");
                 dict.Add("InventoryItemId", "_INVENTORYITEMID_");
                 dict.Add("InventoryItemSourceVO", "_INVENTORYITEMSOURCEVO_");
+                dict.Add("InventoryPRTriggeredId", "_INVENTORYPRTRIGGEREDID_");
                 dict.Add("OrganizationStructureId", "_ORGANIZATIONSTRUCTUREID_");
+                dict.Add("SellableInventoryItemEntryId", "_SELLABLEINVENTORYITEMENTRYID_");
 // //////////////////////
                 dict.Add("AttributeSetInstanceExtensionField", "_ATTRIBUTESETINSTANCEEXTENSIONFIELD_");
                 dict.Add("AttributeUse", "_ATTRIBUTEUSE_");
@@ -30,6 +32,7 @@
                 dict.Add("long", "_LONG_");
                 dict.Add("long?", "_LONG__");
                 dict.Add("Money", "_MONEY_");
+                dict.Add("SellableInventoryItemEntry", "_SELLABLEINVENTORYITEMENTRY_");
                 dict.Add("string", "_STRING_");
             //}
 

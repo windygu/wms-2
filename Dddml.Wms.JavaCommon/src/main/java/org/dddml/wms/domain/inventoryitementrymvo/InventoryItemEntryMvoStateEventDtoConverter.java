@@ -33,7 +33,6 @@ public class InventoryItemEntryMvoStateEventDtoConverter {
         dto.setQuantityVirtual(e.getQuantityVirtual());
         dto.setSource((e.getSource() == null) ? null : new InventoryItemSourceVODtoWrapper(e.getSource()));
         dto.setVersion(e.getVersion());
-        dto.setActive(e.getActive());
         dto.setInventoryItemQuantityOnHand(e.getInventoryItemQuantityOnHand());
         dto.setInventoryItemQuantityReserved(e.getInventoryItemQuantityReserved());
         dto.setInventoryItemQuantityOccupied(e.getInventoryItemQuantityOccupied());
@@ -57,7 +56,6 @@ public class InventoryItemEntryMvoStateEventDtoConverter {
         dto.setQuantityVirtual(e.getQuantityVirtual());
         dto.setSource((e.getSource() == null) ? null : new InventoryItemSourceVODtoWrapper(e.getSource()));
         dto.setVersion(e.getVersion());
-        dto.setActive(e.getActive());
         dto.setInventoryItemQuantityOnHand(e.getInventoryItemQuantityOnHand());
         dto.setInventoryItemQuantityReserved(e.getInventoryItemQuantityReserved());
         dto.setInventoryItemQuantityOccupied(e.getInventoryItemQuantityOccupied());
@@ -72,7 +70,6 @@ public class InventoryItemEntryMvoStateEventDtoConverter {
         dto.setIsPropertyQuantityVirtualRemoved(e.getIsPropertyQuantityVirtualRemoved());
         dto.setIsPropertySourceRemoved(e.getIsPropertySourceRemoved());
         dto.setIsPropertyVersionRemoved(e.getIsPropertyVersionRemoved());
-        dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         dto.setIsPropertyInventoryItemQuantityOnHandRemoved(e.getIsPropertyInventoryItemQuantityOnHandRemoved());
         dto.setIsPropertyInventoryItemQuantityReservedRemoved(e.getIsPropertyInventoryItemQuantityReservedRemoved());
         dto.setIsPropertyInventoryItemQuantityOccupiedRemoved(e.getIsPropertyInventoryItemQuantityOccupiedRemoved());

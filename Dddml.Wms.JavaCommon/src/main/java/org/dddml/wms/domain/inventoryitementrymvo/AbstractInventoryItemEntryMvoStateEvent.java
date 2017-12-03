@@ -130,18 +130,6 @@ public abstract class AbstractInventoryItemEntryMvoStateEvent extends AbstractSt
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
     private BigDecimal inventoryItemQuantityOnHand;
 
     public BigDecimal getInventoryItemQuantityOnHand()
@@ -349,16 +337,6 @@ public abstract class AbstractInventoryItemEntryMvoStateEvent extends AbstractSt
 
         public void setIsPropertyVersionRemoved(Boolean removed) {
             this.isPropertyVersionRemoved = removed;
-        }
-
-        private Boolean isPropertyActiveRemoved;
-
-        public Boolean getIsPropertyActiveRemoved() {
-            return this.isPropertyActiveRemoved;
-        }
-
-        public void setIsPropertyActiveRemoved(Boolean removed) {
-            this.isPropertyActiveRemoved = removed;
         }
 
         private Boolean isPropertyInventoryItemQuantityOnHandRemoved;

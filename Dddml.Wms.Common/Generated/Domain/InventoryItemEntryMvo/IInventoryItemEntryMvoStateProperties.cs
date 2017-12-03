@@ -29,8 +29,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		long Version { get; set; }
 
-		bool Active { get; set; }
-
 		decimal InventoryItemQuantityOnHand { get; set; }
 
 		decimal InventoryItemQuantityReserved { get; set; }

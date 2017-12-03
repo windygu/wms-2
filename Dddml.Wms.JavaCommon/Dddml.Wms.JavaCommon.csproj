@@ -842,6 +842,83 @@
     <Content Include="src\main\java\org\dddml\wms\domain\DocumentAction.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeAggregate.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeApplicationService.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeCommand.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeCommandDto.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeState.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeStateCommandConverter.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeStateEvent.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\CreateOrMergePatchDocumentTypeDto.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DeleteDocumentTypeDto.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeAggregate.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeApplicationService.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeCommand.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeState.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateDto.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEvent.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventDto.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventDtoConverter.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventId.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventIdDto.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateQueryRepository.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateRepository.java">
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\GenerateDocumentTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\GenerateBoundedContextDomain.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomain.txt</LastGenOutput>
@@ -1198,83 +1275,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitementrymvo\InventoryItemEntryMvoStateRepository.java">
       <DependentUpon>GenerateInventoryItemEntryMvoDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\AbstractInventoryItemEventTypeAggregate.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\AbstractInventoryItemEventTypeApplicationService.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\AbstractInventoryItemEventTypeCommand.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\AbstractInventoryItemEventTypeCommandDto.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\AbstractInventoryItemEventTypeState.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\AbstractInventoryItemEventTypeStateCommandConverter.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\AbstractInventoryItemEventTypeStateEvent.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\CreateOrMergePatchInventoryItemEventTypeDto.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\DeleteInventoryItemEventTypeDto.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\GenerateInventoryItemEventTypeDomain.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeAggregate.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeApplicationService.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeCommand.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeState.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeStateDto.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeStateEvent.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeStateEventDto.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeStateEventDtoConverter.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeStateEventId.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeStateEventIdDto.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeStateQueryRepository.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\InventoryItemEventTypeStateRepository.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\AbstractInventoryItemAggregate.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
@@ -1457,6 +1457,175 @@
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\RemoveInventoryItemEntryDto.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\AbstractInventoryPostingRuleAggregate.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\AbstractInventoryPostingRuleApplicationService.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\AbstractInventoryPostingRuleCommand.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\AbstractInventoryPostingRuleCommandDto.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\AbstractInventoryPostingRuleState.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\AbstractInventoryPostingRuleStateCommandConverter.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\AbstractInventoryPostingRuleStateEvent.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\CreateOrMergePatchInventoryPostingRuleDto.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\DeleteInventoryPostingRuleDto.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\GenerateInventoryPostingRuleDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleAggregate.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleApplicationService.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleCommand.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleState.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateDto.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateEvent.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateEventDto.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateEventDtoConverter.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateEventId.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateEventIdDto.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateQueryRepository.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateRepository.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\AbstractInventoryPRTriggeredAggregate.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\AbstractInventoryPRTriggeredApplicationService.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\AbstractInventoryPRTriggeredCommand.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\AbstractInventoryPRTriggeredCommandDto.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\AbstractInventoryPRTriggeredState.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\AbstractInventoryPRTriggeredStateCommandConverter.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\AbstractInventoryPRTriggeredStateEvent.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\CreateOrMergePatchInventoryPRTriggeredDto.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\DeleteInventoryPRTriggeredDto.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\GenerateInventoryPRTriggeredDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredAggregate.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredApplicationService.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredCommand.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredId.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredIdDto.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredIdDtoWrapper.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredIdFlattenedDto.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredState.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateDto.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateEvent.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateEventDto.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateEventDtoConverter.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateEventId.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateEventIdDto.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateQueryRepository.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateRepository.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\LocatorTree.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
@@ -1609,6 +1778,12 @@
     <Content Include="src\main\java\org\dddml\wms\domain\meta\BoundedContextMetadata.java">
       <DependentUpon>GenerateBoundedContextMetadata.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\DocumentTypeFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\DocumentTypeMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\GenerateBoundedContextDomainAggregatesMetadata.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomainAggregatesMetadata.txt</LastGenOutput>
@@ -1633,6 +1808,8 @@
 .\AttributeValueMetadata.java
 .\AttributeValueMvoFilteringProperties.java
 .\AttributeValueMvoMetadata.java
+.\DocumentTypeFilteringProperties.java
+.\DocumentTypeMetadata.java
 .\GenerateBoundedContextDomainAggregatesMetadata.txt
 .\InOutFilteringProperties.java
 .\InOutLineFilteringProperties.java
@@ -1644,10 +1821,12 @@
 .\InventoryItemEntryMetadata.java
 .\InventoryItemEntryMvoFilteringProperties.java
 .\InventoryItemEntryMvoMetadata.java
-.\InventoryItemEventTypeFilteringProperties.java
-.\InventoryItemEventTypeMetadata.java
 .\InventoryItemFilteringProperties.java
 .\InventoryItemMetadata.java
+.\InventoryPostingRuleFilteringProperties.java
+.\InventoryPostingRuleMetadata.java
+.\InventoryPRTriggeredFilteringProperties.java
+.\InventoryPRTriggeredMetadata.java
 .\LocatorFilteringProperties.java
 .\LocatorMetadata.java
 .\OrganizationFilteringProperties.java
@@ -1656,6 +1835,12 @@
 .\OrganizationStructureMetadata.java
 .\OrganizationStructureTypeFilteringProperties.java
 .\OrganizationStructureTypeMetadata.java
+.\SellableInventoryItemEntryFilteringProperties.java
+.\SellableInventoryItemEntryMetadata.java
+.\SellableInventoryItemEntryMvoFilteringProperties.java
+.\SellableInventoryItemEntryMvoMetadata.java
+.\SellableInventoryItemFilteringProperties.java
+.\SellableInventoryItemMetadata.java
 .\WarehouseFilteringProperties.java
 .\WarehouseMetadata.java
 </LastOutputs>
@@ -1708,16 +1893,22 @@
     <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemEntryMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemEventTypeFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemEventTypeMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryPostingRuleFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryPostingRuleMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryPRTriggeredFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryPRTriggeredMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\LocatorFilteringProperties.java">
@@ -1742,6 +1933,24 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\OrganizationStructureTypeMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\SellableInventoryItemEntryFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\SellableInventoryItemEntryMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\SellableInventoryItemEntryMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\SellableInventoryItemEntryMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\SellableInventoryItemFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\SellableInventoryItemMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\WarehouseFilteringProperties.java">
@@ -2007,6 +2216,241 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateRepository.java">
       <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\AbstractSellableInventoryItemEntryMvoAggregate.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\AbstractSellableInventoryItemEntryMvoApplicationService.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\AbstractSellableInventoryItemEntryMvoCommand.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\AbstractSellableInventoryItemEntryMvoCommandDto.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\AbstractSellableInventoryItemEntryMvoState.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\AbstractSellableInventoryItemEntryMvoStateCommandConverter.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\AbstractSellableInventoryItemEntryMvoStateEvent.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\CreateOrMergePatchSellableInventoryItemEntryMvoDto.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\DeleteSellableInventoryItemEntryMvoDto.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\GenerateSellableInventoryItemEntryMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoAggregate.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoApplicationService.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoCommand.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoState.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoStateDto.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoStateEvent.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoStateEventDto.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoStateEventDtoConverter.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoStateEventId.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoStateEventIdDto.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoStateQueryRepository.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoStateRepository.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemAggregate.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemApplicationService.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemCommand.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemCommandDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemEntryCommand.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemEntryCommandDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemEntryState.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemEntryStateCommandConverter.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemEntryStateEvent.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemEntryStates.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemState.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemStateCommandConverter.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemStateEvent.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\CreateOrMergePatchSellableInventoryItemDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\CreateOrMergePatchSellableInventoryItemEntryDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\DeleteSellableInventoryItemDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\GenerateSellableInventoryItemDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\RemoveSellableInventoryItemEntryDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemAggregate.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemApplicationService.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemCommand.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryCommand.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryId.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryIdDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryIdDtoWrapper.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryIdFlattenedDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryState.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateDao.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateEvent.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateEventDao.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateEventDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateEventDtoConverter.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateEventId.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateEventIdDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStates.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemState.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateEvent.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateEventDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateEventDtoConverter.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateEventId.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateEventIdDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateQueryRepository.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateRepository.java">
+      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\warehouse\AbstractWarehouseAggregate.java">
       <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
@@ -2721,37 +3165,6 @@
 .\RemoveInventoryItemEntryDto.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\GenerateInventoryItemEventTypeDomain.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateInventoryItemEventTypeDomain.txt</LastGenOutput>
-      <LastOutputs>
-.\AbstractInventoryItemEventTypeAggregate.java
-.\AbstractInventoryItemEventTypeApplicationService.java
-.\AbstractInventoryItemEventTypeCommand.java
-.\AbstractInventoryItemEventTypeCommandDto.java
-.\AbstractInventoryItemEventTypeState.java
-.\AbstractInventoryItemEventTypeStateCommandConverter.java
-.\AbstractInventoryItemEventTypeStateEvent.java
-.\CreateOrMergePatchInventoryItemEventTypeDto.java
-.\DeleteInventoryItemEventTypeDto.java
-.\GenerateInventoryItemEventTypeDomain.txt
-.\InventoryItemEventTypeAggregate.java
-.\InventoryItemEventTypeApplicationService.java
-.\InventoryItemEventTypeCommand.java
-.\InventoryItemEventTypeState.java
-.\InventoryItemEventTypeStateDto.java
-.\InventoryItemEventTypeStateEvent.java
-.\InventoryItemEventTypeStateEventDto.java
-.\InventoryItemEventTypeStateEventDtoConverter.java
-.\InventoryItemEventTypeStateEventId.java
-.\InventoryItemEventTypeStateEventIdDto.java
-.\InventoryItemEventTypeStateEventIdDtoWrapper.java
-.\InventoryItemEventTypeStateEventIdFlattenedDto.java
-.\InventoryItemEventTypeStateEventIdFlattenedDtoFormatter.java
-.\InventoryItemEventTypeStateQueryRepository.java
-.\InventoryItemEventTypeStateRepository.java
-</LastOutputs>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitementrymvo\GenerateInventoryItemEntryMvoDomain.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInventoryItemEntryMvoDomain.txt</LastGenOutput>
@@ -2781,6 +3194,193 @@
 .\InventoryItemEntryMvoStateEventIdFlattenedDtoFormatter.java
 .\InventoryItemEntryMvoStateQueryRepository.java
 .\InventoryItemEntryMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\GenerateSellableInventoryItemDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateSellableInventoryItemDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractSellableInventoryItemAggregate.java
+.\AbstractSellableInventoryItemApplicationService.java
+.\AbstractSellableInventoryItemCommand.java
+.\AbstractSellableInventoryItemCommandDto.java
+.\AbstractSellableInventoryItemEntryCommand.java
+.\AbstractSellableInventoryItemEntryCommandDto.java
+.\AbstractSellableInventoryItemEntryState.java
+.\AbstractSellableInventoryItemEntryStateCommandConverter.java
+.\AbstractSellableInventoryItemEntryStateEvent.java
+.\AbstractSellableInventoryItemEntryStates.java
+.\AbstractSellableInventoryItemState.java
+.\AbstractSellableInventoryItemStateCommandConverter.java
+.\AbstractSellableInventoryItemStateEvent.java
+.\CreateOrMergePatchSellableInventoryItemDto.java
+.\CreateOrMergePatchSellableInventoryItemEntryDto.java
+.\DeleteSellableInventoryItemDto.java
+.\GenerateSellableInventoryItemDomain.txt
+.\RemoveSellableInventoryItemEntryDto.java
+.\SellableInventoryItemAggregate.java
+.\SellableInventoryItemApplicationService.java
+.\SellableInventoryItemCommand.java
+.\SellableInventoryItemEntryCommand.java
+.\SellableInventoryItemEntryId.java
+.\SellableInventoryItemEntryIdDto.java
+.\SellableInventoryItemEntryIdDtoWrapper.java
+.\SellableInventoryItemEntryIdFlattenedDto.java
+.\SellableInventoryItemEntryIdFlattenedDtoFormatter.java
+.\SellableInventoryItemEntryState.java
+.\SellableInventoryItemEntryStateDao.java
+.\SellableInventoryItemEntryStateDto.java
+.\SellableInventoryItemEntryStateEvent.java
+.\SellableInventoryItemEntryStateEventDao.java
+.\SellableInventoryItemEntryStateEventDto.java
+.\SellableInventoryItemEntryStateEventDtoConverter.java
+.\SellableInventoryItemEntryStateEventId.java
+.\SellableInventoryItemEntryStateEventIdDto.java
+.\SellableInventoryItemEntryStateEventIdDtoWrapper.java
+.\SellableInventoryItemEntryStateEventIdFlattenedDto.java
+.\SellableInventoryItemEntryStateEventIdFlattenedDtoFormatter.java
+.\SellableInventoryItemEntryStates.java
+.\SellableInventoryItemState.java
+.\SellableInventoryItemStateDto.java
+.\SellableInventoryItemStateEvent.java
+.\SellableInventoryItemStateEventDto.java
+.\SellableInventoryItemStateEventDtoConverter.java
+.\SellableInventoryItemStateEventId.java
+.\SellableInventoryItemStateEventIdDto.java
+.\SellableInventoryItemStateEventIdDtoWrapper.java
+.\SellableInventoryItemStateEventIdFlattenedDto.java
+.\SellableInventoryItemStateEventIdFlattenedDtoFormatter.java
+.\SellableInventoryItemStateQueryRepository.java
+.\SellableInventoryItemStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\GenerateInventoryPostingRuleDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInventoryPostingRuleDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractInventoryPostingRuleAggregate.java
+.\AbstractInventoryPostingRuleApplicationService.java
+.\AbstractInventoryPostingRuleCommand.java
+.\AbstractInventoryPostingRuleCommandDto.java
+.\AbstractInventoryPostingRuleState.java
+.\AbstractInventoryPostingRuleStateCommandConverter.java
+.\AbstractInventoryPostingRuleStateEvent.java
+.\CreateOrMergePatchInventoryPostingRuleDto.java
+.\DeleteInventoryPostingRuleDto.java
+.\GenerateInventoryPostingRuleDomain.txt
+.\InventoryPostingRuleAggregate.java
+.\InventoryPostingRuleApplicationService.java
+.\InventoryPostingRuleCommand.java
+.\InventoryPostingRuleState.java
+.\InventoryPostingRuleStateDto.java
+.\InventoryPostingRuleStateEvent.java
+.\InventoryPostingRuleStateEventDto.java
+.\InventoryPostingRuleStateEventDtoConverter.java
+.\InventoryPostingRuleStateEventId.java
+.\InventoryPostingRuleStateEventIdDto.java
+.\InventoryPostingRuleStateEventIdDtoWrapper.java
+.\InventoryPostingRuleStateEventIdFlattenedDto.java
+.\InventoryPostingRuleStateEventIdFlattenedDtoFormatter.java
+.\InventoryPostingRuleStateQueryRepository.java
+.\InventoryPostingRuleStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\GenerateInventoryPRTriggeredDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInventoryPRTriggeredDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractInventoryPRTriggeredAggregate.java
+.\AbstractInventoryPRTriggeredApplicationService.java
+.\AbstractInventoryPRTriggeredCommand.java
+.\AbstractInventoryPRTriggeredCommandDto.java
+.\AbstractInventoryPRTriggeredState.java
+.\AbstractInventoryPRTriggeredStateCommandConverter.java
+.\AbstractInventoryPRTriggeredStateEvent.java
+.\CreateOrMergePatchInventoryPRTriggeredDto.java
+.\DeleteInventoryPRTriggeredDto.java
+.\GenerateInventoryPRTriggeredDomain.txt
+.\InventoryPRTriggeredAggregate.java
+.\InventoryPRTriggeredApplicationService.java
+.\InventoryPRTriggeredCommand.java
+.\InventoryPRTriggeredId.java
+.\InventoryPRTriggeredIdDto.java
+.\InventoryPRTriggeredIdDtoWrapper.java
+.\InventoryPRTriggeredIdFlattenedDto.java
+.\InventoryPRTriggeredIdFlattenedDtoFormatter.java
+.\InventoryPRTriggeredState.java
+.\InventoryPRTriggeredStateDto.java
+.\InventoryPRTriggeredStateEvent.java
+.\InventoryPRTriggeredStateEventDto.java
+.\InventoryPRTriggeredStateEventDtoConverter.java
+.\InventoryPRTriggeredStateEventId.java
+.\InventoryPRTriggeredStateEventIdDto.java
+.\InventoryPRTriggeredStateEventIdDtoWrapper.java
+.\InventoryPRTriggeredStateEventIdFlattenedDto.java
+.\InventoryPRTriggeredStateEventIdFlattenedDtoFormatter.java
+.\InventoryPRTriggeredStateQueryRepository.java
+.\InventoryPRTriggeredStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\GenerateSellableInventoryItemEntryMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateSellableInventoryItemEntryMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractSellableInventoryItemEntryMvoAggregate.java
+.\AbstractSellableInventoryItemEntryMvoApplicationService.java
+.\AbstractSellableInventoryItemEntryMvoCommand.java
+.\AbstractSellableInventoryItemEntryMvoCommandDto.java
+.\AbstractSellableInventoryItemEntryMvoState.java
+.\AbstractSellableInventoryItemEntryMvoStateCommandConverter.java
+.\AbstractSellableInventoryItemEntryMvoStateEvent.java
+.\CreateOrMergePatchSellableInventoryItemEntryMvoDto.java
+.\DeleteSellableInventoryItemEntryMvoDto.java
+.\GenerateSellableInventoryItemEntryMvoDomain.txt
+.\SellableInventoryItemEntryMvoAggregate.java
+.\SellableInventoryItemEntryMvoApplicationService.java
+.\SellableInventoryItemEntryMvoCommand.java
+.\SellableInventoryItemEntryMvoState.java
+.\SellableInventoryItemEntryMvoStateDto.java
+.\SellableInventoryItemEntryMvoStateEvent.java
+.\SellableInventoryItemEntryMvoStateEventDto.java
+.\SellableInventoryItemEntryMvoStateEventDtoConverter.java
+.\SellableInventoryItemEntryMvoStateEventId.java
+.\SellableInventoryItemEntryMvoStateEventIdDto.java
+.\SellableInventoryItemEntryMvoStateEventIdDtoWrapper.java
+.\SellableInventoryItemEntryMvoStateEventIdFlattenedDto.java
+.\SellableInventoryItemEntryMvoStateEventIdFlattenedDtoFormatter.java
+.\SellableInventoryItemEntryMvoStateQueryRepository.java
+.\SellableInventoryItemEntryMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\GenerateDocumentTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDocumentTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractDocumentTypeAggregate.java
+.\AbstractDocumentTypeApplicationService.java
+.\AbstractDocumentTypeCommand.java
+.\AbstractDocumentTypeCommandDto.java
+.\AbstractDocumentTypeState.java
+.\AbstractDocumentTypeStateCommandConverter.java
+.\AbstractDocumentTypeStateEvent.java
+.\CreateOrMergePatchDocumentTypeDto.java
+.\DeleteDocumentTypeDto.java
+.\DocumentTypeAggregate.java
+.\DocumentTypeApplicationService.java
+.\DocumentTypeCommand.java
+.\DocumentTypeState.java
+.\DocumentTypeStateDto.java
+.\DocumentTypeStateEvent.java
+.\DocumentTypeStateEventDto.java
+.\DocumentTypeStateEventDtoConverter.java
+.\DocumentTypeStateEventId.java
+.\DocumentTypeStateEventIdDto.java
+.\DocumentTypeStateEventIdDtoWrapper.java
+.\DocumentTypeStateEventIdFlattenedDto.java
+.\DocumentTypeStateEventIdFlattenedDtoFormatter.java
+.\DocumentTypeStateQueryRepository.java
+.\DocumentTypeStateRepository.java
+.\GenerateDocumentTypeDomain.txt
 </LastOutputs>
     </Content>
   </ItemGroup>

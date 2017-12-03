@@ -1,0 +1,70 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.sellableinventoryitementrymvo">
+  
+  <class name="AbstractSellableInventoryItemEntryMvoStateEvent" table="SellableInventoryItemEntryMvoStateEvents" mutable="false" abstract="true">
+
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.sellableinventoryitementrymvo.SellableInventoryItemEntryMvoStateEventId">
+		<key-property name="sellableInventoryItemEntryIdSellableInventoryItemIdProductId" ><column name="ProductId" /></key-property>
+		<key-property name="sellableInventoryItemEntryIdSellableInventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
+		<key-property name="sellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+		<key-property name="sellableInventoryItemEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
+		<key-property name="sellableInventoryItemVersion" ></key-property>
+	</composite-id>
+
+    <discriminator column="StateEventType" type="string" />
+
+	<property name="quantitySellable" ></property>
+	<component name="sourceEventId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId">
+		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="sourceEventIdSourceEntryIdInventoryItemIdProductId" /></property>
+		<property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="sourceEventIdSourceEntryIdInventoryItemIdLocatorId" /></property>
+		<property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="sourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId" /></property>
+		<property name="sourceEntryIdEntrySeqId" ><column name="sourceEventIdSourceEntryIdEntrySeqId" /></property>
+		<property name="inventoryPostingRuleId" ><column name="sourceEventIdInventoryPostingRuleId" /></property>
+	</component>
+	<property name="version" ></property>
+	<property name="sellableInventoryItemQuantitySellable" ></property>
+	<property name="sellableInventoryItemCreatedBy" ></property>
+	<property name="sellableInventoryItemCreatedAt" ></property>
+	<property name="sellableInventoryItemUpdatedBy" ></property>
+	<property name="sellableInventoryItemUpdatedAt" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractSellableInventoryItemEntryMvoStateEvent$SimpleSellableInventoryItemEntryMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractSellableInventoryItemEntryMvoStateEvent$SimpleSellableInventoryItemEntryMvoStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyQuantitySellableRemoved" column="IsPropertyQuantitySellableRemoved"/>
+
+        <property name="isPropertySourceEventIdRemoved" column="IsPropertySourceEventIdRemoved"/>
+
+        <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="isPropertySellableInventoryItemQuantitySellableRemoved" column="IsPropertySellableInventoryItemQuantitySellableRemoved"/>
+
+        <property name="isPropertySellableInventoryItemCreatedByRemoved" column="IsPropertySellableInventoryItemCreatedByRemoved"/>
+
+        <property name="isPropertySellableInventoryItemCreatedAtRemoved" column="IsPropertySellableInventoryItemCreatedAtRemoved"/>
+
+        <property name="isPropertySellableInventoryItemUpdatedByRemoved" column="IsPropertySellableInventoryItemUpdatedByRemoved"/>
+
+        <property name="isPropertySellableInventoryItemUpdatedAtRemoved" column="IsPropertySellableInventoryItemUpdatedAtRemoved"/>
+
+
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

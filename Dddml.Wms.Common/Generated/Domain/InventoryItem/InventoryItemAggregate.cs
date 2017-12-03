@@ -217,7 +217,6 @@ namespace Dddml.Wms.Domain.InventoryItem
             e.QuantityOccupied = c.QuantityOccupied;
             e.QuantityVirtual = c.QuantityVirtual;
             e.Source = c.Source;
-            e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = DateTime.Now;

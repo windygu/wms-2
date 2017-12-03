@@ -127,24 +127,94 @@
 
 
 
-  <object id="inventoryItemEventTypeStateRepository" type="Dddml.Wms.Domain.InventoryItemEventType.NHibernate.NHibernateInventoryItemEventTypeStateRepository, Dddml.Wms.Services">
+  <object id="documentTypeStateRepository" type="Dddml.Wms.Domain.DocumentType.NHibernate.NHibernateDocumentTypeStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="inventoryItemEventTypeStateQueryRepository" type="Dddml.Wms.Domain.InventoryItemEventType.NHibernate.NHibernateInventoryItemEventTypeStateQueryRepository, Dddml.Wms.Services">
+  <object id="documentTypeStateQueryRepository" type="Dddml.Wms.Domain.DocumentType.NHibernate.NHibernateDocumentTypeStateQueryRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="inventoryItemEventTypeEventStore" type="Dddml.Wms.Domain.InventoryItemEventType.NHibernate.NHibernateInventoryItemEventTypeEventStore, Dddml.Wms.Services">
+  <object id="documentTypeEventStore" type="Dddml.Wms.Domain.DocumentType.NHibernate.NHibernateDocumentTypeEventStore, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="inventoryItemEventTypeApplicationService" type="Dddml.Wms.Domain.InventoryItemEventType.NHibernate.InventoryItemEventTypeApplicationService, Dddml.Wms.Services">
-    <constructor-arg ref="inventoryItemEventTypeEventStore"/>
-    <constructor-arg ref="inventoryItemEventTypeStateRepository"/>
-    <constructor-arg ref="inventoryItemEventTypeStateQueryRepository"/>
+  <object id="documentTypeApplicationService" type="Dddml.Wms.Domain.DocumentType.NHibernate.DocumentTypeApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="documentTypeEventStore"/>
+    <constructor-arg ref="documentTypeStateRepository"/>
+    <constructor-arg ref="documentTypeStateQueryRepository"/>
+  </object>
+
+
+  <object id="sellableInventoryItemEntryStateDao" type="Dddml.Wms.Domain.SellableInventoryItem.NHibernate.NHibernateSellableInventoryItemEntryStateDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="sellableInventoryItemEntryStateEventDao" type="Dddml.Wms.Domain.SellableInventoryItem.NHibernate.NHibernateSellableInventoryItemEntryStateEventDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+
+  <object id="sellableInventoryItemStateRepository" type="Dddml.Wms.Domain.SellableInventoryItem.NHibernate.NHibernateSellableInventoryItemStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="sellableInventoryItemStateQueryRepository" type="Dddml.Wms.Domain.SellableInventoryItem.NHibernate.NHibernateSellableInventoryItemStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="sellableInventoryItemEventStore" type="Dddml.Wms.Domain.SellableInventoryItem.NHibernate.NHibernateSellableInventoryItemEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="sellableInventoryItemApplicationService" type="Dddml.Wms.Domain.SellableInventoryItem.NHibernate.SellableInventoryItemApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="sellableInventoryItemEventStore"/>
+    <constructor-arg ref="sellableInventoryItemStateRepository"/>
+    <constructor-arg ref="sellableInventoryItemStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="inventoryPostingRuleStateRepository" type="Dddml.Wms.Domain.InventoryPostingRule.NHibernate.NHibernateInventoryPostingRuleStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="inventoryPostingRuleStateQueryRepository" type="Dddml.Wms.Domain.InventoryPostingRule.NHibernate.NHibernateInventoryPostingRuleStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="inventoryPostingRuleEventStore" type="Dddml.Wms.Domain.InventoryPostingRule.NHibernate.NHibernateInventoryPostingRuleEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="inventoryPostingRuleApplicationService" type="Dddml.Wms.Domain.InventoryPostingRule.NHibernate.InventoryPostingRuleApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="inventoryPostingRuleEventStore"/>
+    <constructor-arg ref="inventoryPostingRuleStateRepository"/>
+    <constructor-arg ref="inventoryPostingRuleStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="inventoryPRTriggeredStateRepository" type="Dddml.Wms.Domain.InventoryPRTriggered.NHibernate.NHibernateInventoryPRTriggeredStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="inventoryPRTriggeredStateQueryRepository" type="Dddml.Wms.Domain.InventoryPRTriggered.NHibernate.NHibernateInventoryPRTriggeredStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="inventoryPRTriggeredApplicationService" type="Dddml.Wms.Domain.InventoryPRTriggered.NHibernate.InventoryPRTriggeredApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="inventoryPRTriggeredStateRepository"/>
+    <constructor-arg ref="inventoryPRTriggeredStateQueryRepository"/>
   </object>
 
 
@@ -397,6 +467,28 @@
     <constructor-arg ref="inventoryItemEntryMvoEventStore"/>
     <constructor-arg ref="inventoryItemEntryMvoStateRepository"/>
     <constructor-arg ref="inventoryItemEntryMvoStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="sellableInventoryItemEntryMvoStateRepository" type="Dddml.Wms.Domain.SellableInventoryItemEntryMvo.NHibernate.NHibernateSellableInventoryItemEntryMvoStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="sellableInventoryItemEntryMvoStateQueryRepository" type="Dddml.Wms.Domain.SellableInventoryItemEntryMvo.NHibernate.NHibernateSellableInventoryItemEntryMvoStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="sellableInventoryItemEntryMvoEventStore" type="Dddml.Wms.Domain.SellableInventoryItemEntryMvo.NHibernate.NHibernateSellableInventoryItemEntryMvoEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="sellableInventoryItemEntryMvoApplicationService" type="Dddml.Wms.Domain.SellableInventoryItemEntryMvo.NHibernate.SellableInventoryItemEntryMvoApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="sellableInventoryItemEntryMvoEventStore"/>
+    <constructor-arg ref="sellableInventoryItemEntryMvoStateRepository"/>
+    <constructor-arg ref="sellableInventoryItemEntryMvoStateQueryRepository"/>
   </object>
 
 

@@ -12,7 +12,7 @@
 		<key-property name="inventoryItemEntryIdInventoryItemIdProductId" ><column name="ProductId" /></key-property>
 		<key-property name="inventoryItemEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
 		<key-property name="inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
-		<key-property name="inventoryItemEntryIdEntrySeqId" ></key-property>
+		<key-property name="inventoryItemEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
 		<key-property name="inventoryItemVersion" ></key-property>
 	</composite-id>
 
@@ -23,12 +23,11 @@
 	<property name="quantityOccupied" ></property>
 	<property name="quantityVirtual" ></property>
 	<component name="source" class="org.dddml.wms.domain.inventoryitem.InventoryItemSourceVO">
-		<property name="inventoryItemEventTypeId" ><column name="sourceInventoryItemEventTypeId" /></property>
+		<property name="documentTypeId" ><column name="sourceDocumentTypeId" /></property>
 		<property name="documentNumber" ><column name="sourceDocumentNumber" /></property>
 		<property name="lineNumber" ><column name="sourceLineNumber" /></property>
 	</component>
 	<property name="version" ></property>
-	<property name="active" ></property>
 	<property name="inventoryItemQuantityOnHand" ></property>
 	<property name="inventoryItemQuantityReserved" ></property>
 	<property name="inventoryItemQuantityOccupied" ></property>
@@ -61,8 +60,6 @@
         <property name="isPropertySourceRemoved" column="IsPropertySourceRemoved"/>
 
         <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
-
-        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
         <property name="isPropertyInventoryItemQuantityOnHandRemoved" column="IsPropertyInventoryItemQuantityOnHandRemoved"/>
 

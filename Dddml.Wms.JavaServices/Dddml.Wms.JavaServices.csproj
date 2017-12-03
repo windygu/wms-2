@@ -158,6 +158,20 @@
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateEventDao.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\hibernate\GenerateDocumentTypeDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDocumentTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\hibernate\HibernateDocumentTypeEventStore.java">
+      <DependentUpon>GenerateDocumentTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\hibernate\HibernateDocumentTypeStateQueryRepository.java">
+      <DependentUpon>GenerateDocumentTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\hibernate\HibernateDocumentTypeStateRepository.java">
+      <DependentUpon>GenerateDocumentTypeDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateHibernateTrees.txt</LastGenOutput>
@@ -236,20 +250,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\HibernateInventoryItemEntryMvoStateRepository.java">
       <DependentUpon>GenerateInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\hibernate\GenerateInventoryItemEventTypeDomainHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateInventoryItemEventTypeDomainHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\hibernate\HibernateInventoryItemEventTypeEventStore.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomainHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\hibernate\HibernateInventoryItemEventTypeStateQueryRepository.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomainHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\hibernate\HibernateInventoryItemEventTypeStateRepository.java">
-      <DependentUpon>GenerateInventoryItemEventTypeDomainHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\hibernate\GenerateInventoryItemDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -269,6 +269,31 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemStateRepository.java">
       <DependentUpon>GenerateInventoryItemDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\hibernate\GenerateInventoryPostingRuleDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInventoryPostingRuleDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\hibernate\HibernateInventoryPostingRuleEventStore.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\hibernate\HibernateInventoryPostingRuleStateQueryRepository.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\hibernate\HibernateInventoryPostingRuleStateRepository.java">
+      <DependentUpon>GenerateInventoryPostingRuleDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\GenerateInventoryPRTriggeredDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInventoryPRTriggeredDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\HibernateInventoryPRTriggeredStateQueryRepository.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\HibernateInventoryPRTriggeredStateRepository.java">
+      <DependentUpon>GenerateInventoryPRTriggeredDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\GenerateLocatorDomainHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -332,6 +357,40 @@
     <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\HibernateOrganizationStateRepository.java">
       <DependentUpon>GenerateOrganizationDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\GenerateSellableInventoryItemEntryMvoDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\HibernateSellableInventoryItemEntryMvoEventStore.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\HibernateSellableInventoryItemEntryMvoStateQueryRepository.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\HibernateSellableInventoryItemEntryMvoStateRepository.java">
+      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\GenerateSellableInventoryItemDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemEntryStateDao.java">
+      <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemEntryStateEventDao.java">
+      <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemEventStore.java">
+      <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemStateQueryRepository.java">
+      <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemStateRepository.java">
+      <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\GenerateWarehouseDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -356,16 +415,34 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryPRTriggeredState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemEventTypeStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemEventTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemEntryState.hbm.xml">
@@ -520,6 +597,12 @@
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DocumentTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DocumentTypeStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="src\main\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
@@ -543,6 +626,8 @@
 .\AttributeValueMvoStateEvent.hbm.xml
 .\AttributeValueState.hbm.xml
 .\AttributeValueStateEvent.hbm.xml
+.\DocumentTypeState.hbm.xml
+.\DocumentTypeStateEvent.hbm.xml
 .\GenerateAggregatesHbm.txt
 .\InOutLineMvoState.hbm.xml
 .\InOutLineMvoStateEvent.hbm.xml
@@ -553,10 +638,11 @@
 .\InventoryItemEntryMvoState.hbm.xml
 .\InventoryItemEntryMvoStateEvent.hbm.xml
 .\InventoryItemEntryState.hbm.xml
-.\InventoryItemEventTypeState.hbm.xml
-.\InventoryItemEventTypeStateEvent.hbm.xml
 .\InventoryItemState.hbm.xml
 .\InventoryItemStateEvent.hbm.xml
+.\InventoryPostingRuleState.hbm.xml
+.\InventoryPostingRuleStateEvent.hbm.xml
+.\InventoryPRTriggeredState.hbm.xml
 .\LocatorState.hbm.xml
 .\LocatorStateEvent.hbm.xml
 .\OrganizationState.hbm.xml
@@ -565,6 +651,11 @@
 .\OrganizationStructureStateEvent.hbm.xml
 .\OrganizationStructureTypeState.hbm.xml
 .\OrganizationStructureTypeStateEvent.hbm.xml
+.\SellableInventoryItemEntryMvoState.hbm.xml
+.\SellableInventoryItemEntryMvoStateEvent.hbm.xml
+.\SellableInventoryItemEntryState.hbm.xml
+.\SellableInventoryItemState.hbm.xml
+.\SellableInventoryItemStateEvent.hbm.xml
 .\WarehouseState.hbm.xml
 .\WarehouseStateEvent.hbm.xml
 </LastOutputs>
@@ -736,16 +827,6 @@
 .\HibernateInventoryItemStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemeventtype\hibernate\GenerateInventoryItemEventTypeDomainHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateInventoryItemEventTypeDomainHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateInventoryItemEventTypeDomainHibernate.txt
-.\HibernateInventoryItemEventTypeEventStore.java
-.\HibernateInventoryItemEventTypeStateQueryRepository.java
-.\HibernateInventoryItemEventTypeStateRepository.java
-</LastOutputs>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\GenerateInventoryItemEntryMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInventoryItemEntryMvoDomainHibernate.txt</LastGenOutput>
@@ -754,6 +835,57 @@
 .\HibernateInventoryItemEntryMvoEventStore.java
 .\HibernateInventoryItemEntryMvoStateQueryRepository.java
 .\HibernateInventoryItemEntryMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\GenerateSellableInventoryItemDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateSellableInventoryItemDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateSellableInventoryItemDomainHibernate.txt
+.\HibernateSellableInventoryItemEntryStateDao.java
+.\HibernateSellableInventoryItemEntryStateEventDao.java
+.\HibernateSellableInventoryItemEventStore.java
+.\HibernateSellableInventoryItemStateQueryRepository.java
+.\HibernateSellableInventoryItemStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\hibernate\GenerateInventoryPostingRuleDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInventoryPostingRuleDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateInventoryPostingRuleDomainHibernate.txt
+.\HibernateInventoryPostingRuleEventStore.java
+.\HibernateInventoryPostingRuleStateQueryRepository.java
+.\HibernateInventoryPostingRuleStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\GenerateInventoryPRTriggeredDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInventoryPRTriggeredDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateInventoryPRTriggeredDomainHibernate.txt
+.\HibernateInventoryPRTriggeredStateQueryRepository.java
+.\HibernateInventoryPRTriggeredStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\GenerateSellableInventoryItemEntryMvoDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateSellableInventoryItemEntryMvoDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateSellableInventoryItemEntryMvoDomainHibernate.txt
+.\HibernateSellableInventoryItemEntryMvoEventStore.java
+.\HibernateSellableInventoryItemEntryMvoStateQueryRepository.java
+.\HibernateSellableInventoryItemEntryMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\hibernate\GenerateDocumentTypeDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDocumentTypeDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateDocumentTypeDomainHibernate.txt
+.\HibernateDocumentTypeEventStore.java
+.\HibernateDocumentTypeStateQueryRepository.java
+.\HibernateDocumentTypeStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

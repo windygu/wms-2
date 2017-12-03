@@ -45,7 +45,6 @@ public abstract class AbstractInventoryItemEntryMvoStateCommandConverter<TCreate
         cmd.setQuantityVirtual(state.getQuantityVirtual());
         cmd.setSource(state.getSource());
         cmd.setVersion(state.getVersion());
-        cmd.setActive(state.getActive());
         cmd.setInventoryItemQuantityOnHand(state.getInventoryItemQuantityOnHand());
         cmd.setInventoryItemQuantityReserved(state.getInventoryItemQuantityReserved());
         cmd.setInventoryItemQuantityOccupied(state.getInventoryItemQuantityOccupied());
@@ -61,7 +60,6 @@ public abstract class AbstractInventoryItemEntryMvoStateCommandConverter<TCreate
         if (state.getQuantityVirtual() == null) { cmd.setIsPropertyQuantityVirtualRemoved(true); }
         if (state.getSource() == null) { cmd.setIsPropertySourceRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
-        if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         if (state.getInventoryItemQuantityOnHand() == null) { cmd.setIsPropertyInventoryItemQuantityOnHandRemoved(true); }
         if (state.getInventoryItemQuantityReserved() == null) { cmd.setIsPropertyInventoryItemQuantityReservedRemoved(true); }
         if (state.getInventoryItemQuantityOccupied() == null) { cmd.setIsPropertyInventoryItemQuantityOccupiedRemoved(true); }
@@ -85,7 +83,6 @@ public abstract class AbstractInventoryItemEntryMvoStateCommandConverter<TCreate
         cmd.setQuantityVirtual(state.getQuantityVirtual());
         cmd.setSource(state.getSource());
         cmd.setVersion(state.getVersion());
-        cmd.setActive(state.getActive());
         cmd.setInventoryItemQuantityOnHand(state.getInventoryItemQuantityOnHand());
         cmd.setInventoryItemQuantityReserved(state.getInventoryItemQuantityReserved());
         cmd.setInventoryItemQuantityOccupied(state.getInventoryItemQuantityOccupied());

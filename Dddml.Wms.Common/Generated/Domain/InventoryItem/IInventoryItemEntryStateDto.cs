@@ -51,12 +51,6 @@ namespace Dddml.Wms.Domain.InventoryItem
             set;
         }
 
-        bool? Active
-        {
-            get;
-            set;
-        }
-
         long? Version
         {
             get;

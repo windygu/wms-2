@@ -29,8 +29,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		InventoryItemSourceVO Source { get; set; }
 
-		bool? Active { get; set; }
-
 		// Outer Id:
 		//InventoryItemId InventoryItemId { get; set; }
 

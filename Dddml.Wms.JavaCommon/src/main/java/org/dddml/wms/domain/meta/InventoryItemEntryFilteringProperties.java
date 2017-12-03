@@ -23,7 +23,7 @@ public final class InventoryItemEntryFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "source.inventoryItemEventTypeId",
+            "source.documentTypeId",
             "source.documentNumber",
             "source.lineNumber",
             "inventoryItemEntryId.inventoryItemIdProductId",
@@ -96,8 +96,8 @@ public final class InventoryItemEntryFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("source.inventoryItemEventTypeId", "source.inventoryItemEventTypeId");
-        aliasMap.put("Source.InventoryItemEventTypeId", "source.inventoryItemEventTypeId");
+        aliasMap.put("source.documentTypeId", "source.documentTypeId");
+        aliasMap.put("Source.DocumentTypeId", "source.documentTypeId");
         aliasMap.put("source.documentNumber", "source.documentNumber");
         aliasMap.put("Source.DocumentNumber", "source.documentNumber");
         aliasMap.put("source.lineNumber", "source.lineNumber");

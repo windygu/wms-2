@@ -119,16 +119,6 @@ public abstract class AbstractInventoryItemEntryStateEvent extends AbstractState
         this.state.setCreatedAt(createdAt);
     }
 
-    public Boolean getActive()
-    {
-        return this.state.getActive();
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.state.setActive(active);
-    }
-
 
     public String getCommandId() {
         return this.state.getCommandId();

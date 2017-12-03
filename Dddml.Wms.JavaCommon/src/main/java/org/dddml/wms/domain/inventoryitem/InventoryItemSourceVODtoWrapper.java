@@ -24,15 +24,15 @@ public class InventoryItemSourceVODtoWrapper extends InventoryItemSourceVODto
     }
 
     @Override
-    public String getInventoryItemEventTypeId()
+    public String getDocumentTypeId()
     {
-        return this.value.getInventoryItemEventTypeId();
+        return this.value.getDocumentTypeId();
     }
 
     @Override
-    public void setInventoryItemEventTypeId(String inventoryItemEventTypeId)
+    public void setDocumentTypeId(String documentTypeId)
     {
-        this.value.setInventoryItemEventTypeId(inventoryItemEventTypeId);
+        this.value.setDocumentTypeId(documentTypeId);
     }
 
     @Override

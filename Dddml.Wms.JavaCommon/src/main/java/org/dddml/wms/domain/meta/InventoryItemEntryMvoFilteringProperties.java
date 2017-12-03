@@ -35,7 +35,7 @@ public final class InventoryItemEntryMvoFilteringProperties
             "inventoryItemEntryId.inventoryItemIdLocatorId",
             "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId",
             "inventoryItemEntryId.entrySeqId",
-            "source.inventoryItemEventTypeId",
+            "source.documentTypeId",
             "source.documentNumber",
             "source.lineNumber",
     };
@@ -136,8 +136,8 @@ public final class InventoryItemEntryMvoFilteringProperties
         aliasMap.put("InventoryItemEntryId.InventoryItemId.AttributeSetInstanceId", "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId");
         aliasMap.put("inventoryItemEntryId.entrySeqId", "inventoryItemEntryId.entrySeqId");
         aliasMap.put("InventoryItemEntryId.EntrySeqId", "inventoryItemEntryId.entrySeqId");
-        aliasMap.put("source.inventoryItemEventTypeId", "source.inventoryItemEventTypeId");
-        aliasMap.put("Source.InventoryItemEventTypeId", "source.inventoryItemEventTypeId");
+        aliasMap.put("source.documentTypeId", "source.documentTypeId");
+        aliasMap.put("Source.DocumentTypeId", "source.documentTypeId");
         aliasMap.put("source.documentNumber", "source.documentNumber");
         aliasMap.put("Source.DocumentNumber", "source.documentNumber");
         aliasMap.put("source.lineNumber", "source.lineNumber");

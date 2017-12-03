@@ -82,3 +82,19 @@
     drop table if exists InventoryItemEntry_RV;
 
     drop table if exists InventoryItemEntryMvoStateEvents;
+
+    drop table if exists SellableInventoryItems;
+
+    drop table if exists SellableInventoryItemStateEvents;
+
+    drop table if exists SellableInventoryItemEntries;
+
+    drop table if exists InventoryPostingRules;
+
+    drop table if exists InventoryPostingRuleStateEvents;
+
+    drop table if exists InventoryPRTriggereds;
+
+    drop table if exists SellableInventoryItemEntry_RV;
+
+    drop table if exists SellableInventoryItemEntryMvoStateEvents;

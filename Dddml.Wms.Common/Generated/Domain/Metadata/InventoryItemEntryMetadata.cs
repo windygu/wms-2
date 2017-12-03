@@ -455,7 +455,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
-                    Name = "Source.InventoryItemEventTypeId",
+                    Name = "Source.DocumentTypeId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -464,7 +464,7 @@ namespace Dddml.Wms.Domain.Metadata
                     Description = "",
                     Length = 0,
                     GenericTypeName = "",
-                    ReferenceTypeName = "InventoryItemEventType",
+                    ReferenceTypeName = "DocumentType",
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
@@ -473,7 +473,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "Source.InventoryItemEventTypeId",
+                    SourceChainingName = "Source.DocumentTypeId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -803,8 +803,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
-            d.Add("Source.InventoryItemEventTypeId", "Source.InventoryItemEventTypeId");
-            d.Add("source.inventoryItemEventTypeId", "Source.InventoryItemEventTypeId");
+            d.Add("Source.DocumentTypeId", "Source.DocumentTypeId");
+            d.Add("source.documentTypeId", "Source.DocumentTypeId");
             d.Add("Source.DocumentNumber", "Source.DocumentNumber");
             d.Add("source.documentNumber", "Source.DocumentNumber");
             d.Add("Source.LineNumber", "Source.LineNumber");

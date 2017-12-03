@@ -95,18 +95,6 @@ public class InventoryItemEntryMvoStateDto
         this.version = version;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
     private BigDecimal inventoryItemQuantityOnHand;
 
     public BigDecimal getInventoryItemQuantityOnHand()
@@ -309,9 +297,6 @@ public class InventoryItemEntryMvoStateDto
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());
-            }
-            if (returnedFieldsContains("Active")) {
-                dto.setActive(state.getActive());
             }
             if (returnedFieldsContains("InventoryItemQuantityOnHand")) {
                 dto.setInventoryItemQuantityOnHand(state.getInventoryItemQuantityOnHand());

@@ -47,10 +47,6 @@ public interface InventoryItemEntryMvoStateEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     BigDecimal getInventoryItemQuantityOnHand();
 
     void setInventoryItemQuantityOnHand(BigDecimal inventoryItemQuantityOnHand);
@@ -118,10 +114,6 @@ public interface InventoryItemEntryMvoStateEvent extends Event
         Boolean getIsPropertyVersionRemoved();
 
         void setIsPropertyVersionRemoved(Boolean removed);
-
-        Boolean getIsPropertyActiveRemoved();
-
-        void setIsPropertyActiveRemoved(Boolean removed);
 
         Boolean getIsPropertyInventoryItemQuantityOnHandRemoved();
 

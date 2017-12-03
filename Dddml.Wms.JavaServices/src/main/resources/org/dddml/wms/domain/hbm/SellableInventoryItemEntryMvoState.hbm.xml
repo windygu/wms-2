@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.sellableinventoryitementrymvo">
+  
+  <class name="org.dddml.wms.domain.sellableinventoryitementrymvo.AbstractSellableInventoryItemEntryMvoState$SimpleSellableInventoryItemEntryMvoState" table="SellableInventoryItemEntry_RV">
+
+	<composite-id name="sellableInventoryItemEntryId" class="org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemEntryId">
+		<key-property name="sellableInventoryItemIdProductId" ><column name="ProductId" /></key-property>
+		<key-property name="sellableInventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
+		<key-property name="sellableInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+		<key-property name="entrySeqId" ></key-property>
+	</composite-id>
+	<version name="sellableInventoryItemVersion" column="SellableInventoryItemVersion" type="long" />
+
+	<property name="quantitySellable" ></property>
+	<component name="sourceEventId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId">
+		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="sourceEventIdSourceEntryIdInventoryItemIdProductId" /></property>
+		<property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="sourceEventIdSourceEntryIdInventoryItemIdLocatorId" /></property>
+		<property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="sourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId" /></property>
+		<property name="sourceEntryIdEntrySeqId" ><column name="sourceEventIdSourceEntryIdEntrySeqId" /></property>
+		<property name="inventoryPostingRuleId" ><column name="sourceEventIdInventoryPostingRuleId" /></property>
+	</component>
+	<property name="version" ></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="sellableInventoryItemQuantitySellable" ></property>
+	<property name="sellableInventoryItemCreatedBy" ></property>
+	<property name="sellableInventoryItemCreatedAt" ></property>
+	<property name="sellableInventoryItemUpdatedBy" ></property>
+	<property name="sellableInventoryItemUpdatedAt" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

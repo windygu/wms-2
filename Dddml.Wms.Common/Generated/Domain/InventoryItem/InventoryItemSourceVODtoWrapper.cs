@@ -32,9 +32,9 @@ namespace Dddml.Wms.Domain.InventoryItem
             return this._value;
         }
 
-		public override string InventoryItemEventTypeId { 
-			get { return _value.InventoryItemEventTypeId; } 
-			set { _value.InventoryItemEventTypeId = value; } 
+		public override string DocumentTypeId { 
+			get { return _value.DocumentTypeId; } 
+			set { _value.DocumentTypeId = value; } 
 		}
 
 		public override string DocumentNumber { 

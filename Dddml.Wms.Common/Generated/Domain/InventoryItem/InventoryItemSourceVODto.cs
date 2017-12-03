@@ -22,13 +22,13 @@ namespace Dddml.Wms.Domain.InventoryItem
         public virtual InventoryItemSourceVO ToInventoryItemSourceVO()
         {
             InventoryItemSourceVO v = new InventoryItemSourceVO();
-            v.InventoryItemEventTypeId = this.InventoryItemEventTypeId;
+            v.DocumentTypeId = this.DocumentTypeId;
             v.DocumentNumber = this.DocumentNumber;
             v.LineNumber = this.LineNumber;
             return v;
         }
 
-		public virtual string InventoryItemEventTypeId { 
+		public virtual string DocumentTypeId { 
 			get;
 			set;
 		}
@@ -56,7 +56,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 			}
 
 			return true 
-				&& Object.Equals (this.InventoryItemEventTypeId, other.InventoryItemEventTypeId)
+				&& Object.Equals (this.DocumentTypeId, other.DocumentTypeId)
 				&& Object.Equals (this.DocumentNumber, other.DocumentNumber)
 				&& Object.Equals (this.LineNumber, other.LineNumber)
 				;
@@ -65,8 +65,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 		public override int GetHashCode ()
 		{
 			int hash = 0;
-			if (this.InventoryItemEventTypeId != null) {
-				hash += 13 * this.InventoryItemEventTypeId.GetHashCode ();
+			if (this.DocumentTypeId != null) {
+				hash += 13 * this.DocumentTypeId.GetHashCode ();
 			}
 			if (this.DocumentNumber != null) {
 				hash += 13 * this.DocumentNumber.GetHashCode ();

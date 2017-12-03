@@ -82,18 +82,6 @@ public class InventoryItemEntryStateDto
         this.source = source;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
     private Long version;
 
     public Long getVersion()
@@ -209,9 +197,6 @@ public class InventoryItemEntryStateDto
             }
             if (returnedFieldsContains("Source")) {
                 dto.setSource((state.getSource() == null) ? null : new InventoryItemSourceVODtoWrapper(state.getSource()));
-            }
-            if (returnedFieldsContains("Active")) {
-                dto.setActive(state.getActive());
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());

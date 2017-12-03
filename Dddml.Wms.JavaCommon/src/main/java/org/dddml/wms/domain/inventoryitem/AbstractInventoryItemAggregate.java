@@ -145,7 +145,6 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         e.setQuantityOccupied(c.getQuantityOccupied());
         e.setQuantityVirtual(c.getQuantityVirtual());
         e.setSource(c.getSource());
-        e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;

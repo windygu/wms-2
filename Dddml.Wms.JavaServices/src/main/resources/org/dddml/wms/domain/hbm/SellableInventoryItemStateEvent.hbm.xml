@@ -1,0 +1,42 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.sellableinventoryitem">
+  
+  <class name="AbstractSellableInventoryItemStateEvent" table="SellableInventoryItemStateEvents" mutable="false" abstract="true">
+
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemStateEventId">
+		<key-property name="sellableInventoryItemIdProductId" ><column name="ProductId" /></key-property>
+		<key-property name="sellableInventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
+		<key-property name="sellableInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="StateEventType" type="string" />
+
+	<property name="quantitySellable" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractSellableInventoryItemStateEvent$SimpleSellableInventoryItemStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractSellableInventoryItemStateEvent$SimpleSellableInventoryItemStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyQuantitySellableRemoved" column="IsPropertyQuantitySellableRemoved"/>
+
+
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

@@ -55,7 +55,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             cmd.QuantityVirtual = state.QuantityVirtual;
             cmd.Source = state.Source;
             cmd.Version = ((IInventoryItemEntryMvoStateProperties)state).Version;
-            cmd.Active = ((IInventoryItemEntryMvoStateProperties)state).Active;
             cmd.InventoryItemQuantityOnHand = state.InventoryItemQuantityOnHand;
             cmd.InventoryItemQuantityReserved = state.InventoryItemQuantityReserved;
             cmd.InventoryItemQuantityOccupied = state.InventoryItemQuantityOccupied;
@@ -85,7 +84,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             cmd.QuantityVirtual = state.QuantityVirtual;
             cmd.Source = state.Source;
             cmd.Version = ((IInventoryItemEntryMvoStateProperties)state).Version;
-            cmd.Active = ((IInventoryItemEntryMvoStateProperties)state).Active;
             cmd.InventoryItemQuantityOnHand = state.InventoryItemQuantityOnHand;
             cmd.InventoryItemQuantityReserved = state.InventoryItemQuantityReserved;
             cmd.InventoryItemQuantityOccupied = state.InventoryItemQuantityOccupied;

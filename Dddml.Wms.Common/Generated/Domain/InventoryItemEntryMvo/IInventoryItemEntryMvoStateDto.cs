@@ -59,12 +59,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set;
         }
 
-        bool? Active
-        {
-            get;
-            set;
-        }
-
         decimal? InventoryItemQuantityOnHand
         {
             get;

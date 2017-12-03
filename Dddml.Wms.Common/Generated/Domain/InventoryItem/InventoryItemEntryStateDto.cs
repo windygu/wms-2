@@ -52,12 +52,6 @@ namespace Dddml.Wms.Domain.InventoryItem
             set;
         }
 
-        public virtual bool? Active
-        {
-            get;
-            set;
-        }
-
         public virtual long? Version
         {
             get;
@@ -104,7 +98,6 @@ namespace Dddml.Wms.Domain.InventoryItem
             if (this.QuantityOccupied != null && this.QuantityOccupied.HasValue) { state.QuantityOccupied = this.QuantityOccupied.Value; }
             if (this.QuantityVirtual != null && this.QuantityVirtual.HasValue) { state.QuantityVirtual = this.QuantityVirtual.Value; }
             state.Source = (this.Source == null) ? null : this.Source.ToInventoryItemSourceVO();
-            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.InventoryItemId = (this.InventoryItemId == null) ? null : this.InventoryItemId.ToInventoryItemId();
             state.CreatedBy = this.CreatedBy;

@@ -5,16 +5,16 @@ import org.dddml.wms.domain.*;
 
 public class InventoryItemSourceVO implements Serializable
 {
-    private String inventoryItemEventTypeId;
+    private String documentTypeId;
 
-    public String getInventoryItemEventTypeId()
+    public String getDocumentTypeId()
     {
-        return this.inventoryItemEventTypeId;
+        return this.documentTypeId;
     }
 
-    public void setInventoryItemEventTypeId(String inventoryItemEventTypeId)
+    public void setDocumentTypeId(String documentTypeId)
     {
-        this.inventoryItemEventTypeId = inventoryItemEventTypeId;
+        this.documentTypeId = documentTypeId;
     }
 
     private String documentNumber;
@@ -45,9 +45,9 @@ public class InventoryItemSourceVO implements Serializable
     {
     }
 
-    public InventoryItemSourceVO(String inventoryItemEventTypeId, String documentNumber, String lineNumber)
+    public InventoryItemSourceVO(String documentTypeId, String documentNumber, String lineNumber)
     {
-        this.inventoryItemEventTypeId = inventoryItemEventTypeId;
+        this.documentTypeId = documentTypeId;
         this.documentNumber = documentNumber;
         this.lineNumber = lineNumber;
     }
@@ -64,7 +64,7 @@ public class InventoryItemSourceVO implements Serializable
 
         InventoryItemSourceVO other = (InventoryItemSourceVO)obj;
         return true 
-            && (inventoryItemEventTypeId == other.inventoryItemEventTypeId || (inventoryItemEventTypeId != null && inventoryItemEventTypeId.equals(other.inventoryItemEventTypeId)))
+            && (documentTypeId == other.documentTypeId || (documentTypeId != null && documentTypeId.equals(other.documentTypeId)))
             && (documentNumber == other.documentNumber || (documentNumber != null && documentNumber.equals(other.documentNumber)))
             && (lineNumber == other.lineNumber || (lineNumber != null && lineNumber.equals(other.lineNumber)))
             ;
@@ -74,8 +74,8 @@ public class InventoryItemSourceVO implements Serializable
     public int hashCode()
     {
         int hash = 0;
-        if (this.inventoryItemEventTypeId != null) {
-            hash += 13 * this.inventoryItemEventTypeId.hashCode();
+        if (this.documentTypeId != null) {
+            hash += 13 * this.documentTypeId.hashCode();
         }
         if (this.documentNumber != null) {
             hash += 13 * this.documentNumber.hashCode();

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.inventoryprtriggered">
+  
+  <class name="org.dddml.wms.domain.inventoryprtriggered.AbstractInventoryPRTriggeredState$SimpleInventoryPRTriggeredState" table="InventoryPRTriggereds">
+
+	<composite-id name="inventoryPRTriggeredId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId">
+		<key-property name="sourceEntryIdInventoryItemIdProductId" ><column name="ProductId" /></key-property>
+		<key-property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
+		<key-property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+		<key-property name="sourceEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
+		<key-property name="inventoryPostingRuleId" ></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="isProcessed" ><column name="IsProcessed" not-null="true" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+
+
+  </class>
+  
+</hibernate-mapping>
+

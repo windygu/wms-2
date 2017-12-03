@@ -293,6 +293,9 @@
     <Compile Include="Generated\Controllers\AttributeValueMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\DocumentTypesController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\InOutLineMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -302,10 +305,13 @@
     <Compile Include="Generated\Controllers\InventoryItemEntryMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\InventoryItemEventTypesController.cs">
+    <Compile Include="Generated\Controllers\InventoryItemsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\InventoryItemsController.cs">
+    <Compile Include="Generated\Controllers\InventoryPostingRulesController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\InventoryPRTriggeredsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\LocatorsController.cs">
@@ -325,6 +331,12 @@
     </Compile>
     <Compile Include="Generated\Controllers\OrganizationTreesController.cs">
       <DependentUpon>GenerateTreeControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\SellableInventoryItemEntryMvosController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\SellableInventoryItemsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\WarehousesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
@@ -390,16 +402,20 @@
 .\AttributeSetsController.cs
 .\AttributeUseMvosController.cs
 .\AttributeValueMvosController.cs
+.\DocumentTypesController.cs
 .\GenerateAggregatesControllers.txt
 .\InOutLineMvosController.cs
 .\InOutsController.cs
 .\InventoryItemEntryMvosController.cs
-.\InventoryItemEventTypesController.cs
 .\InventoryItemsController.cs
+.\InventoryPostingRulesController.cs
+.\InventoryPRTriggeredsController.cs
 .\LocatorsController.cs
 .\OrganizationsController.cs
 .\OrganizationStructuresController.cs
 .\OrganizationStructureTypesController.cs
+.\SellableInventoryItemEntryMvosController.cs
+.\SellableInventoryItemsController.cs
 .\WarehousesController.cs
 </LastOutputs>
     </Content>

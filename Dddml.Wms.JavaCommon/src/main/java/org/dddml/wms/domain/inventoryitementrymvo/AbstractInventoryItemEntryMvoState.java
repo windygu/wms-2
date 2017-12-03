@@ -143,18 +143,6 @@ public abstract class AbstractInventoryItemEntryMvoState implements InventoryIte
         this.updatedAt = updatedAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
     private BigDecimal inventoryItemQuantityOnHand;
 
     public BigDecimal getInventoryItemQuantityOnHand()
@@ -331,7 +319,6 @@ public abstract class AbstractInventoryItemEntryMvoState implements InventoryIte
         this.setQuantityVirtual(e.getQuantityVirtual());
         this.setSource(e.getSource());
         this.setVersion(e.getVersion());
-        this.setActive(e.getActive());
         this.setInventoryItemQuantityOnHand(e.getInventoryItemQuantityOnHand());
         this.setInventoryItemQuantityReserved(e.getInventoryItemQuantityReserved());
         this.setInventoryItemQuantityOccupied(e.getInventoryItemQuantityOccupied());
@@ -415,17 +402,6 @@ public abstract class AbstractInventoryItemEntryMvoState implements InventoryIte
         else
         {
             this.setVersion(e.getVersion());
-        }
-        if (e.getActive() == null)
-        {
-            if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved())
-            {
-                this.setActive(null);
-            }
-        }
-        else
-        {
-            this.setActive(e.getActive());
         }
         if (e.getInventoryItemQuantityOnHand() == null)
         {

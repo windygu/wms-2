@@ -83,6 +83,22 @@
 
     drop table if exists InventoryItemEntryMvoStateEvents;
 
+    drop table if exists SellableInventoryItems;
+
+    drop table if exists SellableInventoryItemStateEvents;
+
+    drop table if exists SellableInventoryItemEntries;
+
+    drop table if exists InventoryPostingRules;
+
+    drop table if exists InventoryPostingRuleStateEvents;
+
+    drop table if exists InventoryPRTriggereds;
+
+    drop table if exists SellableInventoryItemEntry_RV;
+
+    drop table if exists SellableInventoryItemEntryMvoStateEvents;
+
     create table Attributes (
         AttributeId VARCHAR(50) not null,
        Version BIGINT not null,
@@ -1657,7 +1673,7 @@
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
        AttributeSetInstanceId VARCHAR(255) not null,
-       InventoryItemEntryIdEntrySeqId BIGINT not null,
+       EntrySeqId BIGINT not null,
        Version BIGINT not null,
        QuantityOnHand NUMERIC(19,5),
        QuantityReserved NUMERIC(19,5),
@@ -1668,12 +1684,11 @@
        SourceLineNumber VARCHAR(255),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
        Deleted TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        CommandId VARCHAR(255),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, InventoryItemEntryIdEntrySeqId)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
     );
 
     create table InventoryItemEventTypes (
@@ -1707,7 +1722,7 @@
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
        AttributeSetInstanceId VARCHAR(255) not null,
-       InventoryItemEntryIdEntrySeqId BIGINT not null,
+       EntrySeqId BIGINT not null,
        InventoryItemVersion BIGINT not null,
        QuantityOnHand NUMERIC(19,5),
        QuantityReserved NUMERIC(19,5),
@@ -1719,7 +1734,6 @@
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
        InventoryItemQuantityOnHand NUMERIC(19,5),
        InventoryItemQuantityReserved NUMERIC(19,5),
        InventoryItemQuantityOccupied NUMERIC(19,5),
@@ -1730,14 +1744,14 @@
        InventoryItemUpdatedAt DATETIME,
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, InventoryItemEntryIdEntrySeqId)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
     );
 
     create table InventoryItemEntryMvoStateEvents (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
        AttributeSetInstanceId VARCHAR(255) not null,
-       InventoryItemEntryIdEntrySeqId BIGINT not null,
+       EntrySeqId BIGINT not null,
        InventoryItemVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
        QuantityOnHand NUMERIC(19,5),
@@ -1748,7 +1762,6 @@
        SourceDocumentNumber VARCHAR(255),
        SourceLineNumber VARCHAR(255),
        Version BIGINT,
-       Active TINYINT(1),
        InventoryItemQuantityOnHand NUMERIC(19,5),
        InventoryItemQuantityReserved NUMERIC(19,5),
        InventoryItemQuantityOccupied NUMERIC(19,5),
@@ -1766,7 +1779,6 @@
        IsPropertyQuantityVirtualRemoved TINYINT(1),
        IsPropertySourceRemoved TINYINT(1),
        IsPropertyVersionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
        IsPropertyInventoryItemQuantityOnHandRemoved TINYINT(1),
        IsPropertyInventoryItemQuantityReservedRemoved TINYINT(1),
        IsPropertyInventoryItemQuantityOccupiedRemoved TINYINT(1),
@@ -1775,5 +1787,165 @@
        IsPropertyInventoryItemCreatedAtRemoved TINYINT(1),
        IsPropertyInventoryItemUpdatedByRemoved TINYINT(1),
        IsPropertyInventoryItemUpdatedAtRemoved TINYINT(1),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, InventoryItemEntryIdEntrySeqId, InventoryItemVersion)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, InventoryItemVersion)
+    );
+
+    create table SellableInventoryItems (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       Version BIGINT not null,
+       QuantitySellable NUMERIC(19,5),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (ProductId, LocatorId, AttributeSetInstanceId)
+    );
+
+    create table SellableInventoryItemStateEvents (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       QuantitySellable NUMERIC(19,5),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyQuantitySellableRemoved TINYINT(1),
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, Version)
+    );
+
+    create table SellableInventoryItemEntries (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       EntrySeqId BIGINT not null,
+       Version BIGINT not null,
+       QuantitySellable NUMERIC(19,5),
+       SourceEventIdSourceEntryIdInventoryItemIdProductId VARCHAR(255),
+       SourceEventIdSourceEntryIdInventoryItemIdLocatorId VARCHAR(255),
+       SourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId VARCHAR(255),
+       SourceEventIdSourceEntryIdEntrySeqId BIGINT,
+       SourceEventIdInventoryPostingRuleId VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       CommandId VARCHAR(255),
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
+    );
+
+    create table InventoryPostingRules (
+        InventoryPostingRuleId VARCHAR(50) not null,
+       Version BIGINT not null,
+       TriggerProductId VARCHAR(255),
+       TriggerLocatorId VARCHAR(255),
+       TriggerAttributeSetInstanceId VARCHAR(255),
+       OutputProductId VARCHAR(255),
+       OutputLocatorId VARCHAR(255),
+       OutputAttributeSetInstanceId VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (InventoryPostingRuleId)
+    );
+
+    create table InventoryPostingRuleStateEvents (
+        InventoryPostingRuleId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       TriggerProductId VARCHAR(255),
+       TriggerLocatorId VARCHAR(255),
+       TriggerAttributeSetInstanceId VARCHAR(255),
+       OutputProductId VARCHAR(255),
+       OutputLocatorId VARCHAR(255),
+       OutputAttributeSetInstanceId VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyTriggerRemoved TINYINT(1),
+       IsPropertyOutputRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (InventoryPostingRuleId, Version)
+    );
+
+    create table InventoryPRTriggereds (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       EntrySeqId BIGINT not null,
+       InventoryPostingRuleId VARCHAR(255) not null,
+       Version BIGINT not null,
+       IsProcessed TINYINT(1) not null,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       CommandId VARCHAR(255),
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, InventoryPostingRuleId)
+    );
+
+    create table SellableInventoryItemEntry_RV (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       EntrySeqId BIGINT not null,
+       SellableInventoryItemVersion BIGINT not null,
+       QuantitySellable NUMERIC(19,5),
+       SourceEventIdSourceEntryIdInventoryItemIdProductId VARCHAR(255),
+       SourceEventIdSourceEntryIdInventoryItemIdLocatorId VARCHAR(255),
+       SourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId VARCHAR(255),
+       SourceEventIdSourceEntryIdEntrySeqId BIGINT,
+       SourceEventIdInventoryPostingRuleId VARCHAR(255),
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       SellableInventoryItemQuantitySellable NUMERIC(19,5),
+       SellableInventoryItemCreatedBy VARCHAR(255),
+       SellableInventoryItemCreatedAt DATETIME,
+       SellableInventoryItemUpdatedBy VARCHAR(255),
+       SellableInventoryItemUpdatedAt DATETIME,
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
+    );
+
+    create table SellableInventoryItemEntryMvoStateEvents (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       EntrySeqId BIGINT not null,
+       SellableInventoryItemVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       QuantitySellable NUMERIC(19,5),
+       SourceEventIdSourceEntryIdInventoryItemIdProductId VARCHAR(255),
+       SourceEventIdSourceEntryIdInventoryItemIdLocatorId VARCHAR(255),
+       SourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId VARCHAR(255),
+       SourceEventIdSourceEntryIdEntrySeqId BIGINT,
+       SourceEventIdInventoryPostingRuleId VARCHAR(255),
+       Version BIGINT,
+       SellableInventoryItemQuantitySellable NUMERIC(19,5),
+       SellableInventoryItemCreatedBy VARCHAR(255),
+       SellableInventoryItemCreatedAt DATETIME,
+       SellableInventoryItemUpdatedBy VARCHAR(255),
+       SellableInventoryItemUpdatedAt DATETIME,
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyQuantitySellableRemoved TINYINT(1),
+       IsPropertySourceEventIdRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertySellableInventoryItemQuantitySellableRemoved TINYINT(1),
+       IsPropertySellableInventoryItemCreatedByRemoved TINYINT(1),
+       IsPropertySellableInventoryItemCreatedAtRemoved TINYINT(1),
+       IsPropertySellableInventoryItemUpdatedByRemoved TINYINT(1),
+       IsPropertySellableInventoryItemUpdatedAtRemoved TINYINT(1),
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, SellableInventoryItemVersion)
     );

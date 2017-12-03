@@ -60,12 +60,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set;
         }
 
-        public virtual bool? Active
-        {
-            get;
-            set;
-        }
-
         public virtual decimal? InventoryItemQuantityOnHand
         {
             get;
@@ -154,7 +148,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             if (this.QuantityVirtual != null && this.QuantityVirtual.HasValue) { state.QuantityVirtual = this.QuantityVirtual.Value; }
             state.Source = (this.Source == null) ? null : this.Source.ToInventoryItemSourceVO();
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
-            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.InventoryItemQuantityOnHand != null && this.InventoryItemQuantityOnHand.HasValue) { state.InventoryItemQuantityOnHand = this.InventoryItemQuantityOnHand.Value; }
             if (this.InventoryItemQuantityReserved != null && this.InventoryItemQuantityReserved.HasValue) { state.InventoryItemQuantityReserved = this.InventoryItemQuantityReserved.Value; }
             if (this.InventoryItemQuantityOccupied != null && this.InventoryItemQuantityOccupied.HasValue) { state.InventoryItemQuantityOccupied = this.InventoryItemQuantityOccupied.Value; }

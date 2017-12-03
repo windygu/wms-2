@@ -38,7 +38,6 @@ namespace Dddml.Wms.Domain.InventoryItem
             dto.QuantityOccupied = e.QuantityOccupied;
             dto.QuantityVirtual = e.QuantityVirtual;
             dto.Source = (e.Source == null) ? null : new InventoryItemSourceVODtoWrapper(e.Source);
-            dto.Active = e.Active;
             return dto;
         }
 

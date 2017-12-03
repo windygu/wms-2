@@ -16,7 +16,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		IGlobalIdentity<InventoryItemEntryId>, 
 		ICreated<string>, 
 		IUpdated<string>, 
-		IActive, 
 		IAggregateVersioned<long>,
 		IState
 	{

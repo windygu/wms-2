@@ -69,7 +69,6 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         e.setQuantityVirtual(c.getQuantityVirtual());
         e.setSource(c.getSource());
         e.setVersion(c.getVersion());
-        e.setActive(c.getActive());
         e.setInventoryItemQuantityOnHand(c.getInventoryItemQuantityOnHand());
         e.setInventoryItemQuantityReserved(c.getInventoryItemQuantityReserved());
         e.setInventoryItemQuantityOccupied(c.getInventoryItemQuantityOccupied());
@@ -93,7 +92,6 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         e.setQuantityVirtual(c.getQuantityVirtual());
         e.setSource(c.getSource());
         e.setVersion(c.getVersion());
-        e.setActive(c.getActive());
         e.setInventoryItemQuantityOnHand(c.getInventoryItemQuantityOnHand());
         e.setInventoryItemQuantityReserved(c.getInventoryItemQuantityReserved());
         e.setInventoryItemQuantityOccupied(c.getInventoryItemQuantityOccupied());
@@ -108,7 +106,6 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         e.setIsPropertyQuantityVirtualRemoved(c.getIsPropertyQuantityVirtualRemoved());
         e.setIsPropertySourceRemoved(c.getIsPropertySourceRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
-        e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setIsPropertyInventoryItemQuantityOnHandRemoved(c.getIsPropertyInventoryItemQuantityOnHandRemoved());
         e.setIsPropertyInventoryItemQuantityReservedRemoved(c.getIsPropertyInventoryItemQuantityReservedRemoved());
         e.setIsPropertyInventoryItemQuantityOccupiedRemoved(c.getIsPropertyInventoryItemQuantityOccupiedRemoved());

@@ -4,7 +4,7 @@
 
 # ------------------------------
 aggregates:
-
+              
     # --------------- aggregate ---------------
     InventoryItem:
       
@@ -39,6 +39,7 @@ aggregates:
           id:
             name: EntrySeqId
             type: long
+            columnName: EntrySeqId
             
           properties:
           
@@ -54,6 +55,9 @@ aggregates:
             Source:
               type: InventoryItemSourceVO
               notNull: true
+              
+          reservedProperties:
+            noActive: true
       
       # --------------- Accouts -------------------
       accounts:
@@ -90,11 +94,11 @@ aggregates:
         # -----------------------------------
         InventoryItemSourceVO:
           properties:
-            InventoryItemEventTypeId:
+            DocumentTypeId:
               type: string
-              referenceType: InventoryItemEventType
+              referenceType: DocumentType
               notNull: true
-              columnName: InventoryItemEventTypeId
+              columnName: DocumentTypeId
             DocumentNumber:
               type: string
               notNull: true
@@ -104,9 +108,9 @@ aggregates:
               columnName: LineNumber
             
     # ----------------------- aggregate -------------------------
-    InventoryItemEventType:
+    DocumentType:
       id:
-        name: InventoryItemEventTypeId
+        name: DocumentTypeId
         type: string
       properties:
         Description:
@@ -114,4 +118,87 @@ aggregates:
           notNull: true
           
           
+    # --------------- aggregate ---------------
+    SellableInventoryItem:
+      id: 
+        name: SellableInventoryItemId
+        type: InventoryItemId
+        
+      properties:
+        QuantitySellable:
+          type: decimal
+        Entries:
+          itemType: SellableInventoryItemEntry
+          
+      reservedProperties:
+        noActive: true
+        noDeleted: true
+        
+      entities:
+        SellableInventoryItemEntry:
+          immutable: True
+          id:
+            name: EntrySeqId
+            type: long
+            columnName: EntrySeqId
+          properties:
+            QuantitySellable:
+              type: decimal
+            SourceEventId:
+              type: InventoryPRTriggeredId
+              referenceType: InventoryPRTriggered
+              notNull: true
+          reservedProperties:
+            noActive: true
+            
+      accounts:
+        QuantitySellable:
+          entryEntityName: "SellableInventoryItemEntry"
+          entryAmountPropertyName: "QuantitySellable"
+            
+    # --------------- aggregate ---------------
+    InventoryPostingRule:
+      id:
+        name: InventoryPostingRuleId
+        type: string
+      properties:
+        Trigger:
+          type: InventoryItemId
+        Output:
+          type: InventoryItemId
+          
+    # --------------- aggregate ---------------
+    InventoryPRTriggered:
+      id:
+        name: InventoryPRTriggeredId
+        type: InventoryPRTriggeredId
+      properties:
+        IsProcessed:
+          type: bool
+          notNull: true
+      reservedProperties:
+        noActive: true
+        noDeleted: true
+      valueObjects:
+        InventoryPRTriggeredId:
+          properties:
+            SourceEntryId:
+              type: InventoryItemEntryId
+              referenceType: InventoryItemEntry
+            InventoryPostingRuleId:
+              type: string
+              referenceType: InventoryPostingRule
+              columnName: InventoryPostingRuleId
+      metadata:
+        NoEventSourcing: true
+    
+    # --------------- aggregate ---------------
+    # InventoryPostingRuleType:
+      # id:
+        # name: InventoryPostingRuleTypeId
+        # type: string
+      # properties:
+        # Description:
+          # type: string
+          # notNull: true
           

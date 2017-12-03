@@ -32,7 +32,6 @@ public abstract class AbstractInventoryItemEntryStateCommandConverter<TCreateInv
         cmd.setQuantityOccupied(state.getQuantityOccupied());
         cmd.setQuantityVirtual(state.getQuantityVirtual());
         cmd.setSource(state.getSource());
-        cmd.setActive(state.getActive());
         cmd.setInventoryItemId(state.getInventoryItemId());
         return cmd;
     }

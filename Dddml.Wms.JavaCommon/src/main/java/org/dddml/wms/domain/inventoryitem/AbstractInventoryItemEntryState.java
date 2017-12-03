@@ -156,18 +156,6 @@ public abstract class AbstractInventoryItemEntryState implements InventoryItemEn
         this.updatedAt = updatedAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
     public boolean isStateUnsaved() 
     {
         return this.getVersion() == null;
@@ -232,7 +220,6 @@ public abstract class AbstractInventoryItemEntryState implements InventoryItemEn
         this.setQuantityOccupied(e.getQuantityOccupied());
         this.setQuantityVirtual(e.getQuantityVirtual());
         this.setSource(e.getSource());
-        this.setActive(e.getActive());
 
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());

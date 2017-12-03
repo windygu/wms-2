@@ -13,7 +13,7 @@
 		<key-property name="inventoryItemIdProductId" ><column name="ProductId" /></key-property>
 		<key-property name="inventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
 		<key-property name="inventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
-		<key-property name="entrySeqId" ><column name="InventoryItemEntryIdEntrySeqId" /></key-property>
+		<key-property name="entrySeqId" ></key-property>
 	</composite-id>
 	<version name="version" column="Version" type="long" />
 
@@ -22,13 +22,12 @@
 	<property name="quantityOccupied" ></property>
 	<property name="quantityVirtual" ></property>
 	<component name="source" class="org.dddml.wms.domain.inventoryitem.InventoryItemSourceVO">
-		<property name="inventoryItemEventTypeId" ><column name="sourceInventoryItemEventTypeId" not-null="true" /></property>
+		<property name="documentTypeId" ><column name="sourceDocumentTypeId" not-null="true" /></property>
 		<property name="documentNumber" ><column name="sourceDocumentNumber" not-null="true" /></property>
 		<property name="lineNumber" ><column name="sourceLineNumber" /></property>
 	</component>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
-	<property name="active" ></property>
 
     <property name="createdAt" column="CreatedAt" />
 

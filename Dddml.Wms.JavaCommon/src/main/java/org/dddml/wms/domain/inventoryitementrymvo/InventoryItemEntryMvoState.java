@@ -58,10 +58,6 @@ public interface InventoryItemEntryMvoState
 
     void setUpdatedAt(Date updatedAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     BigDecimal getInventoryItemQuantityOnHand();
 
     void setInventoryItemQuantityOnHand(BigDecimal inventoryItemQuantityOnHand);

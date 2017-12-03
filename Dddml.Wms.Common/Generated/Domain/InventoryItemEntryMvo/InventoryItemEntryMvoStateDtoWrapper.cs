@@ -251,37 +251,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             }
         }
 
-		public virtual bool? Active
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
-                {
-                    return (this._state as IInventoryItemEntryMvoStateProperties).Active;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    (this._state as IInventoryItemEntryMvoStateProperties).Active = value.Value;
-                }
-            }
-        }
-
-        bool IInventoryItemEntryMvoStateProperties.Active
-        {
-            get 
-            {
-                return (this._state as IInventoryItemEntryMvoStateProperties).Active;
-            }
-            set 
-            {
-                (this._state as IInventoryItemEntryMvoStateProperties).Active = value;
-            }
-        }
-
 		public virtual decimal? InventoryItemQuantityOnHand
         {
             get
@@ -630,15 +599,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		InventoryItemEntryId IGlobalIdentity<InventoryItemEntryId>.GlobalId
 		{
 			get { return (_state as IInventoryItemEntryMvoState).GlobalId; }
-		}
-
-		#endregion
-
-		#region IActive implementation
-
-		bool IActive.IsActive()
-		{
-            return (_state as IActive).IsActive();
 		}
 
 		#endregion

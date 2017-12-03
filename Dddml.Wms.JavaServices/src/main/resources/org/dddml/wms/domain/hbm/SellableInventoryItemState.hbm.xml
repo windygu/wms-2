@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.sellableinventoryitem">
+  
+  <class name="org.dddml.wms.domain.sellableinventoryitem.AbstractSellableInventoryItemState$SimpleSellableInventoryItemState" table="SellableInventoryItems">
+
+	<composite-id name="sellableInventoryItemId" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
+		<key-property name="productId" ></key-property>
+		<key-property name="locatorId" ></key-property>
+		<key-property name="attributeSetInstanceId" ></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="quantitySellable" ></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

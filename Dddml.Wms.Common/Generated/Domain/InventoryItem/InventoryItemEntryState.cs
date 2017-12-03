@@ -74,15 +74,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		#endregion
 
-		#region IActive implementation
-
-		bool IActive.IsActive()
-		{
-			return this.Active;
-		}
-
-		#endregion
-
 		#region IDeleted implementation
 
 		bool IDeleted.Deleted
@@ -205,8 +196,6 @@ namespace Dddml.Wms.Domain.InventoryItem
             this.QuantityVirtual = (e.QuantityVirtual != null && e.QuantityVirtual.HasValue) ? e.QuantityVirtual.Value : default(decimal);
 
 			this.Source = e.Source;
-
-            this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
 

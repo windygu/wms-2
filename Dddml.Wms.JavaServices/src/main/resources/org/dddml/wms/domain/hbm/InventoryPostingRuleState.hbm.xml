@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.inventorypostingrule">
+  
+  <class name="org.dddml.wms.domain.inventorypostingrule.AbstractInventoryPostingRuleState$SimpleInventoryPostingRuleState" table="InventoryPostingRules">
+
+	<id name="inventoryPostingRuleId" length="50" column="InventoryPostingRuleId"><generator class="assigned"/></id>
+	<version name="version" column="Version" type="long" />
+
+	<component name="trigger" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
+		<property name="productId" ><column name="triggerProductId" /></property>
+		<property name="locatorId" ><column name="triggerLocatorId" /></property>
+		<property name="attributeSetInstanceId" ><column name="triggerAttributeSetInstanceId" /></property>
+	</component>
+	<component name="output" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
+		<property name="productId" ><column name="outputProductId" /></property>
+		<property name="locatorId" ><column name="outputLocatorId" /></property>
+		<property name="attributeSetInstanceId" ><column name="outputAttributeSetInstanceId" /></property>
+	</component>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

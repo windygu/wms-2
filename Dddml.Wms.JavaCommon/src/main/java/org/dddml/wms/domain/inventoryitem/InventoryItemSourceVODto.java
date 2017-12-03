@@ -12,22 +12,22 @@ public class InventoryItemSourceVODto
     public InventoryItemSourceVO toInventoryItemSourceVO()
     {
         InventoryItemSourceVO v = new InventoryItemSourceVO();
-        v.setInventoryItemEventTypeId(this.getInventoryItemEventTypeId());
+        v.setDocumentTypeId(this.getDocumentTypeId());
         v.setDocumentNumber(this.getDocumentNumber());
         v.setLineNumber(this.getLineNumber());
         return v;
     }
 
-    private String inventoryItemEventTypeId;
+    private String documentTypeId;
 
-    public String getInventoryItemEventTypeId()
+    public String getDocumentTypeId()
     {
-        return this.inventoryItemEventTypeId;
+        return this.documentTypeId;
     }
 
-    public void setInventoryItemEventTypeId(String inventoryItemEventTypeId)
+    public void setDocumentTypeId(String documentTypeId)
     {
-        this.inventoryItemEventTypeId = inventoryItemEventTypeId;
+        this.documentTypeId = documentTypeId;
     }
 
     private String documentNumber;
@@ -67,7 +67,7 @@ public class InventoryItemSourceVODto
 
         InventoryItemSourceVODto other = (InventoryItemSourceVODto)obj;
         return true 
-            && (getInventoryItemEventTypeId() == other.getInventoryItemEventTypeId() || (getInventoryItemEventTypeId() != null && getInventoryItemEventTypeId().equals(other.getInventoryItemEventTypeId())))
+            && (getDocumentTypeId() == other.getDocumentTypeId() || (getDocumentTypeId() != null && getDocumentTypeId().equals(other.getDocumentTypeId())))
             && (getDocumentNumber() == other.getDocumentNumber() || (getDocumentNumber() != null && getDocumentNumber().equals(other.getDocumentNumber())))
             && (getLineNumber() == other.getLineNumber() || (getLineNumber() != null && getLineNumber().equals(other.getLineNumber())))
             ;
@@ -78,8 +78,8 @@ public class InventoryItemSourceVODto
     public int hashCode()
     {
         int hash = 0;
-        if (this.getInventoryItemEventTypeId() != null) {
-            hash += 13 * this.getInventoryItemEventTypeId().hashCode();
+        if (this.getDocumentTypeId() != null) {
+            hash += 13 * this.getDocumentTypeId().hashCode();
         }
         if (this.getDocumentNumber() != null) {
             hash += 13 * this.getDocumentNumber().hashCode();

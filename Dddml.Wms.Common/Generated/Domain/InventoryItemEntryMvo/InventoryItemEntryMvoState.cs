@@ -38,15 +38,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		#endregion
 
-		#region IActive implementation
-
-		bool IActive.IsActive()
-		{
-			return this.Active;
-		}
-
-		#endregion
-
 
 		#region ICreated implementation
 
@@ -174,8 +165,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 
-            this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
-
             this.InventoryItemQuantityOnHand = (e.InventoryItemQuantityOnHand != null && e.InventoryItemQuantityOnHand.HasValue) ? e.InventoryItemQuantityOnHand.Value : default(decimal);
 
             this.InventoryItemQuantityReserved = (e.InventoryItemQuantityReserved != null && e.InventoryItemQuantityReserved.HasValue) ? e.InventoryItemQuantityReserved.Value : default(decimal);
@@ -273,18 +262,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			else
 			{
 				this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
-			}
-
-			if (e.Active == null)
-			{
-				if (e.IsPropertyActiveRemoved)
-				{
-					this.Active = default(bool);
-				}
-			}
-			else
-			{
-				this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 			}
 
 			if (e.InventoryItemQuantityOnHand == null)

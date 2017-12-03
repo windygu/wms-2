@@ -61,10 +61,6 @@ public interface InventoryItemEntryState
 
     void setUpdatedAt(Date updatedAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     InventoryItemId getInventoryItemId();
 
     void setInventoryItemId(InventoryItemId inventoryItemId);

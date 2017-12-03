@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.InventoryPRTriggered">
+  
+  <class name="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredState" table="InventoryPRTriggereds">
+
+    <composite-id name="InventoryPRTriggeredId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId">
+        <key-property name="SourceEntryIdInventoryItemIdProductId" ><column name="ProductId" /></key-property>
+        <key-property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
+        <key-property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+        <key-property name="SourceEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
+        <key-property name="InventoryPostingRuleId" ></key-property>
+    </composite-id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="IsProcessed" ><column name="IsProcessed" not-null="true" /></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" />
+
+    <property name="UpdatedAt" column="UpdatedAt" />
+    <property name="CommandId" column="CommandId"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

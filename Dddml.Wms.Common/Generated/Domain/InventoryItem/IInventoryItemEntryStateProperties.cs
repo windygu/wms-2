@@ -28,8 +28,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		long Version { get; set; }
 
-		bool Active { get; set; }
-
 		// Outer Id:
 
 		InventoryItemId InventoryItemId { get; set; }

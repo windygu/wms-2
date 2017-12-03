@@ -17,7 +17,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 		ICreated<string>, 
 		IUpdated<string>, 
 		IDeleted, 
-		IActive, 
 		IEntityVersioned<long>,
 		IState
 	{

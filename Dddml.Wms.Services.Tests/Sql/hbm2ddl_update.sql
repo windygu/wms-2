@@ -159,11 +159,13 @@
        UpdatedAt DATETIME,
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
+    alter table InventoryItemEntries 
+        add column EntrySeqId BIGINT;
     create table InventoryItemEntry_RV (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
        AttributeSetInstanceId VARCHAR(255) not null,
-       InventoryItemEntryIdEntrySeqId BIGINT not null,
+       EntrySeqId BIGINT not null,
        InventoryItemVersion BIGINT not null,
        QuantityOnHand NUMERIC(19,5),
        QuantityReserved NUMERIC(19,5),
@@ -175,7 +177,6 @@
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
        InventoryItemQuantityOnHand NUMERIC(19,5),
        InventoryItemQuantityReserved NUMERIC(19,5),
        InventoryItemQuantityOccupied NUMERIC(19,5),
@@ -186,5 +187,39 @@
        InventoryItemUpdatedAt DATETIME,
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, InventoryItemEntryIdEntrySeqId)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
     );
+    alter table InventoryItemEntryMvoStateEvents 
+        add column EntrySeqId BIGINT;
+    alter table SellableInventoryItemEntries 
+        add column EntrySeqId BIGINT;
+    alter table InventoryPRTriggereds 
+        add column EntrySeqId BIGINT;
+    alter table InventoryPRTriggereds 
+        add column InventoryPostingRuleId VARCHAR(255);
+    create table SellableInventoryItemEntry_RV (
+        ProductId VARCHAR(255) not null,
+       LocatorId VARCHAR(255) not null,
+       AttributeSetInstanceId VARCHAR(255) not null,
+       EntrySeqId BIGINT not null,
+       SellableInventoryItemVersion BIGINT not null,
+       QuantitySellable NUMERIC(19,5),
+       SourceEventIdSourceEntryIdInventoryItemIdProductId VARCHAR(255),
+       SourceEventIdSourceEntryIdInventoryItemIdLocatorId VARCHAR(255),
+       SourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId VARCHAR(255),
+       SourceEventIdSourceEntryIdEntrySeqId BIGINT,
+       SourceEventIdInventoryPostingRuleId VARCHAR(255),
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       SellableInventoryItemQuantitySellable NUMERIC(19,5),
+       SellableInventoryItemCreatedBy VARCHAR(255),
+       SellableInventoryItemCreatedAt DATETIME,
+       SellableInventoryItemUpdatedBy VARCHAR(255),
+       SellableInventoryItemUpdatedAt DATETIME,
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
+    );
+    alter table SellableInventoryItemEntryMvoStateEvents 
+        add column EntrySeqId BIGINT;
