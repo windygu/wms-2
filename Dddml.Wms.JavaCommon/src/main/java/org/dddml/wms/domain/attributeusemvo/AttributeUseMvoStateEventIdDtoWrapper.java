@@ -1,6 +1,5 @@
 package org.dddml.wms.domain.attributeusemvo;
 
-import org.dddml.wms.domain.attributeset.AttributeSetAttributeUseIdDto;
 import org.dddml.wms.domain.attributeset.*;
 import org.dddml.wms.domain.*;
 

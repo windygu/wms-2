@@ -1,6 +1,5 @@
 package org.dddml.wms.domain.inventoryitementrymvo;
 
-import org.dddml.wms.domain.inventoryitem.InventoryItemEntryIdDto;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 

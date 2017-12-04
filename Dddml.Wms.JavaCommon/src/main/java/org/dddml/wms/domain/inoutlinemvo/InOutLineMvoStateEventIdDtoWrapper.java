@@ -1,6 +1,5 @@
 package org.dddml.wms.domain.inoutlinemvo;
 
-import org.dddml.wms.domain.inout.InOutLineIdDto;
 import org.dddml.wms.domain.inout.*;
 import org.dddml.wms.domain.*;
 

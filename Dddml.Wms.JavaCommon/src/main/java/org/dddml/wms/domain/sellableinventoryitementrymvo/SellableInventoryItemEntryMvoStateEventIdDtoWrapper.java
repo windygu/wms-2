@@ -1,6 +1,5 @@
 package org.dddml.wms.domain.sellableinventoryitementrymvo;
 
-import org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemEntryIdDto;
 import org.dddml.wms.domain.sellableinventoryitem.*;
 import org.dddml.wms.domain.*;
 

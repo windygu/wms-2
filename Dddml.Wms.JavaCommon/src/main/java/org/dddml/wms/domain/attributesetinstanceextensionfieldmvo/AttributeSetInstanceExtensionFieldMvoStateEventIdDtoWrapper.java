@@ -1,6 +1,5 @@
 package org.dddml.wms.domain.attributesetinstanceextensionfieldmvo;
 
-import org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AttributeSetInstanceExtensionFieldIdDto;
 import org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.*;
 import org.dddml.wms.domain.*;
 

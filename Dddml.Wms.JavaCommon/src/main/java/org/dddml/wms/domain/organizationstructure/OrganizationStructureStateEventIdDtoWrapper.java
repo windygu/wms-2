@@ -1,6 +1,5 @@
 package org.dddml.wms.domain.organizationstructure;
 
-import org.dddml.wms.domain.OrganizationStructureIdDto;
 import org.dddml.wms.domain.*;
 
 public class OrganizationStructureStateEventIdDtoWrapper extends OrganizationStructureStateEventIdDto
