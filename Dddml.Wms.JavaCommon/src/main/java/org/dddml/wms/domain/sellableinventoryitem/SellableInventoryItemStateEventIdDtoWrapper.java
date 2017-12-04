@@ -1,6 +1,6 @@
 package org.dddml.wms.domain.sellableinventoryitem;
 
-import org.dddml.wms.domain.inventoryitem.InventoryItemIdDto;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 
 public class SellableInventoryItemStateEventIdDtoWrapper extends SellableInventoryItemStateEventIdDto
