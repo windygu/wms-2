@@ -3,7 +3,7 @@
 <#@ include file="T4Toolbox.tt" #>
 <#
 
-	//@ import namespace="Dddml.Core.Domain" //
+	//@ import namespace="Dddml.Core.Dom" //
 	//@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Java\Domain\AggregateDomainGenerator.tt" //
 	//@ include file="..\LoadBoundedContext.tt" //
 

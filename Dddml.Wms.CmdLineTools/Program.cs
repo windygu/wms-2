@@ -1,4 +1,4 @@
-﻿using Dddml.Core.Domain;
+﻿using Dddml.Core.Dom;
 using Dddml.Serialization;
 using Dddml.T4.ProjectTools;
 using Dddml.T4.Extensions;

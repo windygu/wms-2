@@ -1,7 +1,7 @@
 <#@ template language="C#" debug="True" #>
 <#@ output extension="txt" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="Dddml.Core.Domain" #>
+<#@ import namespace="Dddml.Core.Dom" #>
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\Sql\AggregatesStateIdForeignKeyConstraintsTemplate.tt" #>
 <#@ include file="$(SolutionDir)Dddml.Wms.Common\LoadBoundedContext.tt" #>
