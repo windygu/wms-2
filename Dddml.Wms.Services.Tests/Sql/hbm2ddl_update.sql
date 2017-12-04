@@ -159,8 +159,6 @@
        UpdatedAt DATETIME,
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
-    alter table InventoryItemEntries 
-        add column EntrySeqId BIGINT;
     create table InventoryItemEntry_RV (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
@@ -171,7 +169,7 @@
        QuantityReserved NUMERIC(19,5),
        QuantityOccupied NUMERIC(19,5),
        QuantityVirtual NUMERIC(19,5),
-       SourceInventoryItemEventTypeId VARCHAR(255) not null,
+       SourceDocumentTypeId VARCHAR(255) not null,
        SourceDocumentNumber VARCHAR(255) not null,
        SourceLineNumber VARCHAR(255),
        Version BIGINT,
@@ -189,14 +187,6 @@
        UpdatedAt DATETIME,
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
     );
-    alter table InventoryItemEntryMvoStateEvents 
-        add column EntrySeqId BIGINT;
-    alter table SellableInventoryItemEntries 
-        add column EntrySeqId BIGINT;
-    alter table InventoryPRTriggereds 
-        add column EntrySeqId BIGINT;
-    alter table InventoryPRTriggereds 
-        add column InventoryPostingRuleId VARCHAR(255);
     create table SellableInventoryItemEntry_RV (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
@@ -204,10 +194,10 @@
        EntrySeqId BIGINT not null,
        SellableInventoryItemVersion BIGINT not null,
        QuantitySellable NUMERIC(19,5),
-       SourceEventIdSourceEntryIdInventoryItemIdProductId VARCHAR(255),
-       SourceEventIdSourceEntryIdInventoryItemIdLocatorId VARCHAR(255),
-       SourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId VARCHAR(255),
-       SourceEventIdSourceEntryIdEntrySeqId BIGINT,
+       SourceEventIdProductId VARCHAR(255),
+       SourceEventIdLocatorId VARCHAR(255),
+       SourceEventIdAttributeSetInstanceId VARCHAR(255),
+       SourceEventIdEntrySeqId BIGINT,
        SourceEventIdInventoryPostingRuleId VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
@@ -221,5 +211,3 @@
        UpdatedAt DATETIME,
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
     );
-    alter table SellableInventoryItemEntryMvoStateEvents 
-        add column EntrySeqId BIGINT;

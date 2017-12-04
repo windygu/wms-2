@@ -33,6 +33,10 @@
 
     drop table if exists AttributeUseMvoStateEvents;
 
+    drop table if exists DocumentTypes;
+
+    drop table if exists DocumentTypeStateEvents;
+
     drop table if exists AttributeSetInstanceExtensionField_RV;
 
     drop table if exists AttributeSetInstanceExtensionFieldMvoStateEvents;
@@ -74,10 +78,6 @@
     drop table if exists InventoryItemStateEvents;
 
     drop table if exists InventoryItemEntries;
-
-    drop table if exists InventoryItemEventTypes;
-
-    drop table if exists InventoryItemEventTypeStateEvents;
 
     drop table if exists InventoryItemEntry_RV;
 
@@ -977,6 +977,33 @@
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
     );
 
+    create table DocumentTypes (
+        DocumentTypeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255) not null,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (DocumentTypeId)
+    );
+
+    create table DocumentTypeStateEvents (
+        DocumentTypeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (DocumentTypeId, Version)
+    );
+
     create table AttributeSetInstanceExtensionField_RV (
         AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
        AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
@@ -1679,7 +1706,7 @@
        QuantityReserved NUMERIC(19,5),
        QuantityOccupied NUMERIC(19,5),
        QuantityVirtual NUMERIC(19,5),
-       SourceInventoryItemEventTypeId VARCHAR(255) not null,
+       SourceDocumentTypeId VARCHAR(255) not null,
        SourceDocumentNumber VARCHAR(255) not null,
        SourceLineNumber VARCHAR(255),
        CreatedBy VARCHAR(255),
@@ -1689,33 +1716,6 @@
        UpdatedAt DATETIME,
        CommandId VARCHAR(255),
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
-    );
-
-    create table InventoryItemEventTypes (
-        InventoryItemEventTypeId VARCHAR(50) not null,
-       Version BIGINT not null,
-       Description VARCHAR(255) not null,
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (InventoryItemEventTypeId)
-    );
-
-    create table InventoryItemEventTypeStateEvents (
-        InventoryItemEventTypeId VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Description VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (InventoryItemEventTypeId, Version)
     );
 
     create table InventoryItemEntry_RV (
@@ -1728,7 +1728,7 @@
        QuantityReserved NUMERIC(19,5),
        QuantityOccupied NUMERIC(19,5),
        QuantityVirtual NUMERIC(19,5),
-       SourceInventoryItemEventTypeId VARCHAR(255) not null,
+       SourceDocumentTypeId VARCHAR(255) not null,
        SourceDocumentNumber VARCHAR(255) not null,
        SourceLineNumber VARCHAR(255),
        Version BIGINT,
@@ -1758,7 +1758,7 @@
        QuantityReserved NUMERIC(19,5),
        QuantityOccupied NUMERIC(19,5),
        QuantityVirtual NUMERIC(19,5),
-       SourceInventoryItemEventTypeId VARCHAR(255),
+       SourceDocumentTypeId VARCHAR(255),
        SourceDocumentNumber VARCHAR(255),
        SourceLineNumber VARCHAR(255),
        Version BIGINT,
@@ -1824,11 +1824,11 @@
        EntrySeqId BIGINT not null,
        Version BIGINT not null,
        QuantitySellable NUMERIC(19,5),
-       SourceEventIdSourceEntryIdInventoryItemIdProductId VARCHAR(255),
-       SourceEventIdSourceEntryIdInventoryItemIdLocatorId VARCHAR(255),
-       SourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId VARCHAR(255),
-       SourceEventIdSourceEntryIdEntrySeqId BIGINT,
-       SourceEventIdInventoryPostingRuleId VARCHAR(255),
+       SrcEventProductId VARCHAR(255),
+       SrcEventLocatorId VARCHAR(255),
+       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventEntrySeqId BIGINT,
+       SrcEventInventoryPostingRuleId VARCHAR(255),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Deleted TINYINT(1),
@@ -1899,10 +1899,10 @@
        EntrySeqId BIGINT not null,
        SellableInventoryItemVersion BIGINT not null,
        QuantitySellable NUMERIC(19,5),
-       SourceEventIdSourceEntryIdInventoryItemIdProductId VARCHAR(255),
-       SourceEventIdSourceEntryIdInventoryItemIdLocatorId VARCHAR(255),
-       SourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId VARCHAR(255),
-       SourceEventIdSourceEntryIdEntrySeqId BIGINT,
+       SourceEventIdProductId VARCHAR(255),
+       SourceEventIdLocatorId VARCHAR(255),
+       SourceEventIdAttributeSetInstanceId VARCHAR(255),
+       SourceEventIdEntrySeqId BIGINT,
        SourceEventIdInventoryPostingRuleId VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
@@ -1925,10 +1925,10 @@
        SellableInventoryItemVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
        QuantitySellable NUMERIC(19,5),
-       SourceEventIdSourceEntryIdInventoryItemIdProductId VARCHAR(255),
-       SourceEventIdSourceEntryIdInventoryItemIdLocatorId VARCHAR(255),
-       SourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId VARCHAR(255),
-       SourceEventIdSourceEntryIdEntrySeqId BIGINT,
+       SourceEventIdProductId VARCHAR(255),
+       SourceEventIdLocatorId VARCHAR(255),
+       SourceEventIdAttributeSetInstanceId VARCHAR(255),
+       SourceEventIdEntrySeqId BIGINT,
        SourceEventIdInventoryPostingRuleId VARCHAR(255),
        Version BIGINT,
        SellableInventoryItemQuantitySellable NUMERIC(19,5),

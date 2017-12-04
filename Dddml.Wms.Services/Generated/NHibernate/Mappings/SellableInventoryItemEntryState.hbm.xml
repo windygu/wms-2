@@ -17,11 +17,11 @@
 
     <property name="QuantitySellable" ></property>
     <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId">
-        <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SourceEventIdSourceEntryIdInventoryItemIdProductId" /></property>
-        <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SourceEventIdSourceEntryIdInventoryItemIdLocatorId" /></property>
-        <property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId" /></property>
-        <property name="SourceEntryIdEntrySeqId" ><column name="SourceEventIdSourceEntryIdEntrySeqId" /></property>
-        <property name="InventoryPostingRuleId" ><column name="SourceEventIdInventoryPostingRuleId" /></property>
+        <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
+        <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
+        <property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" /></property>
+        <property name="SourceEntryIdEntrySeqId" ><column name="SrcEventEntrySeqId" /></property>
+        <property name="InventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" /></property>
     </component>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>

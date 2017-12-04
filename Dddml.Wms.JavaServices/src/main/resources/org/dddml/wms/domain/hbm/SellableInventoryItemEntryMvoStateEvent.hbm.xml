@@ -20,11 +20,11 @@
 
 	<property name="quantitySellable" ></property>
 	<component name="sourceEventId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId">
-		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="sourceEventIdSourceEntryIdInventoryItemIdProductId" /></property>
-		<property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="sourceEventIdSourceEntryIdInventoryItemIdLocatorId" /></property>
-		<property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="sourceEventIdSourceEntryIdInventoryItemIdAttributeSetInstanceId" /></property>
-		<property name="sourceEntryIdEntrySeqId" ><column name="sourceEventIdSourceEntryIdEntrySeqId" /></property>
-		<property name="inventoryPostingRuleId" ><column name="sourceEventIdInventoryPostingRuleId" /></property>
+		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
+		<property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
+		<property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" /></property>
+		<property name="sourceEntryIdEntrySeqId" ><column name="SrcEventEntrySeqId" /></property>
+		<property name="inventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" /></property>
 	</component>
 	<property name="version" ></property>
 	<property name="sellableInventoryItemQuantitySellable" ></property>

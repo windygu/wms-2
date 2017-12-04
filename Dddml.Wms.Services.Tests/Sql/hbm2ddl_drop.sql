@@ -33,6 +33,10 @@
 
     drop table if exists AttributeUseMvoStateEvents;
 
+    drop table if exists DocumentTypes;
+
+    drop table if exists DocumentTypeStateEvents;
+
     drop table if exists AttributeSetInstanceExtensionField_RV;
 
     drop table if exists AttributeSetInstanceExtensionFieldMvoStateEvents;
@@ -74,10 +78,6 @@
     drop table if exists InventoryItemStateEvents;
 
     drop table if exists InventoryItemEntries;
-
-    drop table if exists InventoryItemEventTypes;
-
-    drop table if exists InventoryItemEventTypeStateEvents;
 
     drop table if exists InventoryItemEntry_RV;
 
