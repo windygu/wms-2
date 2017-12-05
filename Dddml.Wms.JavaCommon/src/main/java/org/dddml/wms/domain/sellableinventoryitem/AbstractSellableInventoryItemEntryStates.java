@@ -99,6 +99,12 @@ public abstract class AbstractSellableInventoryItemEntryStates implements Sellab
 
     public void save ()
     {
+        for (SellableInventoryItemEntryState s : this.getLoadedSellableInventoryItemEntryStates()) {
+            getSellableInventoryItemEntryStateDao().save(s);
+        }
+        for (SellableInventoryItemEntryState s : this.removedSellableInventoryItemEntryStates.values()) {
+            getSellableInventoryItemEntryStateDao().delete(s);
+        }
     }
 
     //endregion

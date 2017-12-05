@@ -125,6 +125,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 		public virtual void Save ()
 		{
+			foreach (ISellableInventoryItemEntryState s in this.LoadedSellableInventoryItemEntryStates) {
+                SellableInventoryItemEntryStateDao.Save(s);
+			}
+            foreach(ISellableInventoryItemEntryState s in this._removedSellableInventoryItemEntryStates.Values)
+            {
+                SellableInventoryItemEntryStateDao.Delete(s);
+            }
 		}
 
 		#endregion
