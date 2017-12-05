@@ -28,8 +28,21 @@ public abstract class AbstractIdFlattenedDtoFormatter<TDto> {
         return sb.toString();
     }
 
+    private String fieldSeparator = ",";
+
     protected String getFieldSeparator() {
-        return ",";
+        return fieldSeparator;
+    }
+
+    protected void setFieldSeparator(String separator) {
+        this.fieldSeparator = separator;
+    }
+
+    public AbstractIdFlattenedDtoFormatter(){
+    }
+
+    public AbstractIdFlattenedDtoFormatter(String fieldSeparator){
+        this.fieldSeparator = fieldSeparator;
     }
 
     protected abstract TDto newDto();
