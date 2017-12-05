@@ -74,6 +74,9 @@ aggregates:
           entryEntityName: "InventoryItemEntry"
           entryAmountPropertyName: "QuantityVirtual"
       
+      metadata:
+        # NoEventSourcing: true
+        AggregateEventListenerName: inventoryItemEventListener
       
       # ---------------- Value Objects -------------------
       valueObjects:
@@ -156,6 +159,9 @@ aggregates:
         QuantitySellable:
           entryEntityName: "SellableInventoryItemEntry"
           entryAmountPropertyName: "QuantitySellable"
+          
+      metadata:
+        NoEventSourcing: true
             
     # --------------- aggregate ---------------
     InventoryPostingRule:

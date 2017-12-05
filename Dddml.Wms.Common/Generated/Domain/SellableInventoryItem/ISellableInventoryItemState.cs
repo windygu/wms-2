@@ -23,6 +23,8 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 		bool ForReapplying { get; }
 
+		string CommandId { get; set; }
+
 		void When(ISellableInventoryItemStateCreated e);
 
 		void When(ISellableInventoryItemStateMergePatched e);

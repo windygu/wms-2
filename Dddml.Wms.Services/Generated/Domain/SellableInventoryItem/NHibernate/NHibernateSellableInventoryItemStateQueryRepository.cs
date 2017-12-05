@@ -42,10 +42,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem.NHibernate
 		public ISellableInventoryItemState Get(InventoryItemId id)
 		{
 			ISellableInventoryItemState state = CurrentSession.Get<SellableInventoryItemState>(id);
-            if (ReadOnlyProxyGenerator != null && state != null)
-            {
-                return ReadOnlyProxyGenerator.CreateProxy<ISellableInventoryItemState>(state, new Type[] { typeof(ISaveable) }, _readOnlyPropertyNames);
-            }
 			return state;
 		}
 

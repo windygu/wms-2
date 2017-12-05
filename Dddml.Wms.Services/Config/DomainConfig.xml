@@ -11,5 +11,7 @@
     <property name="UserApplicationService" ref="userApplicationService"/>
   </object>
   -->
+  <object id="inventoryItemEventListener" type="Dddml.Wms.Domain.Listeners.InventoryItemEventListener, Dddml.Wms.Services">
+  </object>
   
 </objects>

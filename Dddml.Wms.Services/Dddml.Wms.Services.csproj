@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\AttributeSetInstance\AttributeSetInstanceIdGenerator.cs" />
+    <Compile Include="Domain\Listeners\InventoryItemEventListener.cs" />
     <Compile Include="Domain\NHibernate\NodaMoneyType.cs" />
     <Compile Include="Domain\Services\NHibernate\AttributeSetService.cs" />
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\AttributeSetInstanceExtensionFieldGroupApplicationService.cs">
@@ -362,12 +363,6 @@
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItem\NHibernate\NHibernateSellableInventoryItemEntryStateDao.cs">
-      <DependentUpon>GenerateSellableInventoryItemDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItem\NHibernate\NHibernateSellableInventoryItemEntryStateEventDao.cs">
-      <DependentUpon>GenerateSellableInventoryItemDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItem\NHibernate\NHibernateSellableInventoryItemEventStore.cs">
       <DependentUpon>GenerateSellableInventoryItemDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItem\NHibernate\NHibernateSellableInventoryItemStateQueryRepository.cs">
@@ -676,7 +671,6 @@
 .\SellableInventoryItemEntryMvoStateEvent.hbm.xml
 .\SellableInventoryItemEntryState.hbm.xml
 .\SellableInventoryItemState.hbm.xml
-.\SellableInventoryItemStateEvent.hbm.xml
 .\WarehouseState.hbm.xml
 .\WarehouseStateEvent.hbm.xml
 </LastOutputs>
@@ -753,9 +747,6 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\SellableInventoryItemState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\SellableInventoryItemStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\SellableInventoryItemEntryState.hbm.xml">
@@ -1003,8 +994,6 @@
       <LastOutputs>
 .\GenerateSellableInventoryItemDomainNHibernate.txt
 .\NHibernateSellableInventoryItemEntryStateDao.cs
-.\NHibernateSellableInventoryItemEntryStateEventDao.cs
-.\NHibernateSellableInventoryItemEventStore.cs
 .\NHibernateSellableInventoryItemStateQueryRepository.cs
 .\NHibernateSellableInventoryItemStateRepository.cs
 .\SellableInventoryItemApplicationService.cs

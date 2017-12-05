@@ -46,10 +46,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem.NHibernate
 				state = new SellableInventoryItemState ();
 				(state as SellableInventoryItemState).SellableInventoryItemId = id;
 			}
-            if (ReadOnlyProxyGenerator != null && state != null)
-            {
-                return ReadOnlyProxyGenerator.CreateProxy<ISellableInventoryItemState>(state, new Type[] { typeof(ISaveable) }, _readOnlyPropertyNames);
-            }
 			return state;
 		}
 
@@ -57,10 +53,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem.NHibernate
 		public void Save(ISellableInventoryItemState state)
 		{
             ISellableInventoryItemState s = state;
-            if (ReadOnlyProxyGenerator != null)
-            {
-                s = ReadOnlyProxyGenerator.GetTarget<ISellableInventoryItemState>(state);
-            }
 			CurrentSession.SaveOrUpdate (s);
 
 			var saveable = s as ISaveable;

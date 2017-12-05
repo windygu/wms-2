@@ -144,39 +144,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = SellableInventoryItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [Route("{id}/_stateEvents/{version}")]
-        [HttpGet]
-        public SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
-        {
-          try {
-            var idObj = SellableInventoryItemsControllerUtils.ParseIdString(id);
-            var conv = new SellableInventoryItemStateEventDtoConverter();
-            var se = _sellableInventoryItemApplicationService.GetStateEvent(idObj, version);
-            return se == null ? null : conv.ToSellableInventoryItemStateEventDto(se);
-          } catch (Exception ex) { var response = SellableInventoryItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
-        [Route("{id}/_historyStates/{version}")]
-        [HttpGet]
-        public ISellableInventoryItemStateDto GetHistoryState(string id, long version, string fields = null)
-        {
-          try {
-            var idObj = SellableInventoryItemsControllerUtils.ParseIdString(id);
-            var state = _sellableInventoryItemApplicationService.GetHistoryState(idObj, version);
-            if (state == null) { return null; }
-            var stateDto = new SellableInventoryItemStateDtoWrapper(state);
-            if (String.IsNullOrWhiteSpace(fields))
-            {
-                stateDto.AllFieldsReturned = true;
-            }
-            else
-            {
-                stateDto.ReturnedFieldsString = fields;
-            }
-            return stateDto;
-          } catch (Exception ex) { var response = SellableInventoryItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
         [Route("{sellableInventoryItemId}/SellableInventoryItemEntries/{entrySeqId}")]
         [HttpGet]
         public ISellableInventoryItemEntryStateDto GetSellableInventoryItemEntry(string sellableInventoryItemId, long entrySeqId)

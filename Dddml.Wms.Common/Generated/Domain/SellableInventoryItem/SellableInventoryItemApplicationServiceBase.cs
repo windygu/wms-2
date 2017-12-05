@@ -16,8 +16,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 {
 	public abstract partial class SellableInventoryItemApplicationServiceBase : ISellableInventoryItemApplicationService, IApplicationService
 	{
-		protected abstract IEventStore EventStore { get; }
-
 		protected abstract ISellableInventoryItemStateRepository StateRepository { get; }
 
 		protected abstract ISellableInventoryItemStateQueryRepository StateQueryRepository { get; }
@@ -52,7 +50,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, ISellableInventoryItemAggregate aggregate, ISellableInventoryItemState state)
         {
-            EventStore.AppendEvents(eventStoreAggregateId, ((ISellableInventoryItemStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            StateRepository.Save(state);
             if (AggregateEventListener != null) 
             {
                 AggregateEventListener.EventAppended(new AggregateEvent<ISellableInventoryItemAggregate, ISellableInventoryItemState>(aggregate, state, aggregate.Changes));
@@ -74,10 +72,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		protected bool IsRepeatedCommand(ISellableInventoryItemCommand command, IEventStoreAggregateId eventStoreAggregateId, ISellableInventoryItemState state)
 		{
 			bool repeated = false;
-			if (((ISellableInventoryItemStateProperties)state).Version > command.AggregateVersion)
+			if (((ISellableInventoryItemStateProperties)state).Version == command.AggregateVersion + 1)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(ISellableInventoryItemStateEvent), eventStoreAggregateId, command.AggregateVersion);
-				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
+				if (state.CommandId == command.CommandId)
 				{
 					repeated = true;
 				}
@@ -141,26 +138,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		{
             return StateQueryRepository.GetCount(filter);
 		}
-
-	    public virtual ISellableInventoryItemStateEvent GetStateEvent(InventoryItemId sellableInventoryItemId, long version)
-        {
-            var e = (ISellableInventoryItemStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(sellableInventoryItemId), version);
-            if (e != null)
-            {
-                e.ReadOnly = true;
-            }
-            else if (version == -1)
-            {
-                return GetStateEvent(sellableInventoryItemId, 0);
-            }
-            return e;
-        }
-
-        public virtual ISellableInventoryItemState GetHistoryState(InventoryItemId sellableInventoryItemId, long version)
-        {
-            var eventStream = EventStore.LoadEventStream(typeof(ISellableInventoryItemStateEvent), ToEventStoreAggregateId(sellableInventoryItemId), version - 1);
-            return new SellableInventoryItemState(eventStream.Events);
-        }
 
         public virtual ISellableInventoryItemEntryState GetSellableInventoryItemEntry(InventoryItemId sellableInventoryItemId, long entrySeqId)
         {

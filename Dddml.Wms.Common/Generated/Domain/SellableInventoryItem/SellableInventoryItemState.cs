@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 		public virtual DateTime UpdatedAt { get; set; }
 
+        public virtual string CommandId { get; set; }
+
 
 		#region IIdentity implementation
 

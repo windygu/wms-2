@@ -84,11 +84,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             this.StateEventId = stateEventId;
         }
 
-		protected ISellableInventoryItemEntryStateEventDao SellableInventoryItemEntryStateEventDao
-		{
-			get { return ApplicationContext.Current["SellableInventoryItemEntryStateEventDao"] as ISellableInventoryItemEntryStateEventDao; }
-		}
-
         protected SellableInventoryItemEntryStateEventId NewSellableInventoryItemEntryStateEventId(long entrySeqId)
         {
             var stateEventId = new SellableInventoryItemEntryStateEventId(this.StateEventId.SellableInventoryItemId, entrySeqId, this.StateEventId.Version);
@@ -121,7 +116,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 	}
 
-	public class SellableInventoryItemStateCreated : SellableInventoryItemStateEventBase, ISellableInventoryItemStateCreated, ISaveable
+	public class SellableInventoryItemStateCreated : SellableInventoryItemStateEventBase, ISellableInventoryItemStateCreated
 	{
 		public SellableInventoryItemStateCreated () : this(new SellableInventoryItemStateEventId())
 		{
@@ -139,22 +134,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         {
             get
             {
-                if (!StateEventReadOnly)
-                {
-                    return this._sellableInventoryItemEntryEvents.Values;
-                }
-                else
-                {
-                    if (_readOnlySellableInventoryItemEntryEvents != null) { return _readOnlySellableInventoryItemEntryEvents; }
-                    var eventDao = SellableInventoryItemEntryStateEventDao;
-                    var eL = new List<ISellableInventoryItemEntryStateCreated>();
-                    foreach (var e in eventDao.FindBySellableInventoryItemStateEventId(this.StateEventId))
-                    {
-                        e.ReadOnly = true;
-                        eL.Add((ISellableInventoryItemEntryStateCreated)e);
-                    }
-                    return (_readOnlySellableInventoryItemEntryEvents = eL);
-                }
+                return this._sellableInventoryItemEntryEvents.Values;
             }
             set 
             {
@@ -181,12 +161,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             return stateEvent;
         }
 
-		public virtual void Save ()
-		{
-			foreach (ISellableInventoryItemEntryStateCreated e in this.SellableInventoryItemEntryEvents) {
-				SellableInventoryItemEntryStateEventDao.Save(e);
-			}
-		}
 
         protected override string GetStateEventType()
         {
@@ -196,7 +170,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	}
 
 
-	public class SellableInventoryItemStateMergePatched : SellableInventoryItemStateEventBase, ISellableInventoryItemStateMergePatched, ISaveable
+	public class SellableInventoryItemStateMergePatched : SellableInventoryItemStateEventBase, ISellableInventoryItemStateMergePatched
 	{
 		public virtual bool IsPropertyQuantitySellableRemoved { get; set; }
 
@@ -217,22 +191,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         {
             get
             {
-                if (!StateEventReadOnly)
-                {
-                    return this._sellableInventoryItemEntryEvents.Values;
-                }
-                else
-                {
-                    if (_readOnlySellableInventoryItemEntryEvents != null) { return _readOnlySellableInventoryItemEntryEvents; }
-                    var eventDao = SellableInventoryItemEntryStateEventDao;
-                    var eL = new List<ISellableInventoryItemEntryStateEvent>();
-                    foreach (var e in eventDao.FindBySellableInventoryItemStateEventId(this.StateEventId))
-                    {
-                        e.ReadOnly = true;
-                        eL.Add((ISellableInventoryItemEntryStateEvent)e);
-                    }
-                    return (_readOnlySellableInventoryItemEntryEvents = eL);
-                }
+                return this._sellableInventoryItemEntryEvents.Values;
             }
             set 
             {
@@ -259,12 +218,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             return stateEvent;
         }
 
-		public virtual void Save ()
-		{
-			foreach (ISellableInventoryItemEntryStateEvent e in this.SellableInventoryItemEntryEvents) {
-				SellableInventoryItemEntryStateEventDao.Save(e);
-			}
-		}
 
         protected override string GetStateEventType()
         {

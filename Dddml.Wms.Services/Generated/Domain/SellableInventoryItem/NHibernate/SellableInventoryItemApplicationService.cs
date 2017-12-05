@@ -20,16 +20,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem.NHibernate
 	public class SellableInventoryItemApplicationService : SellableInventoryItemApplicationServiceBase
 	{
 
-		private IEventStore _eventStore;
-
-		protected override IEventStore EventStore
-		{
-			get
-			{
-				return _eventStore;
-			}
-		}
-
 		private ISellableInventoryItemStateRepository _stateRepository;
 
 		protected override ISellableInventoryItemStateRepository StateRepository
@@ -50,13 +40,11 @@ namespace Dddml.Wms.Domain.SellableInventoryItem.NHibernate
 			}
 		}
 
-		public SellableInventoryItemApplicationService(IEventStore eventStore, ISellableInventoryItemStateRepository stateRepository, ISellableInventoryItemStateQueryRepository stateQueryRepository)
+		public SellableInventoryItemApplicationService(ISellableInventoryItemStateRepository stateRepository, ISellableInventoryItemStateQueryRepository stateQueryRepository)
 		{
-			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
 			this._stateQueryRepository = stateQueryRepository;
 		}
-
 		public override IEventStoreAggregateId ToEventStoreAggregateId(InventoryItemId aggregateId)
 		{
 			return new EventStoreAggregateId(aggregateId);

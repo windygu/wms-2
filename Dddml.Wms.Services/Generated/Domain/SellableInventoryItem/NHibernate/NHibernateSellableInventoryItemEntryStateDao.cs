@@ -43,10 +43,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem.NHibernate
                 state = new SellableInventoryItemEntryState();
                 (state as SellableInventoryItemEntryState).SellableInventoryItemEntryId = id;
             }
-            if (ReadOnlyProxyGenerator != null && state != null)
-            {
-                return ReadOnlyProxyGenerator.CreateProxy<ISellableInventoryItemEntryState>(state, new Type[] {  }, _readOnlyPropertyNames);
-            }
             return state;
         }
 
@@ -54,10 +50,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem.NHibernate
         public void Save(ISellableInventoryItemEntryState state)
         {
             ISellableInventoryItemEntryState s = state;
-            if (ReadOnlyProxyGenerator != null)
-            {
-                s = ReadOnlyProxyGenerator.GetTarget<ISellableInventoryItemEntryState>(state);
-            }
             CurrentSession.SaveOrUpdate(s);
             var saveable = s as ISaveable;
             if (saveable != null)
@@ -70,10 +62,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem.NHibernate
         public void Delete(ISellableInventoryItemEntryState state)
         {
             ISellableInventoryItemEntryState s = state;
-            if (ReadOnlyProxyGenerator != null)
-            {
-                s = ReadOnlyProxyGenerator.GetTarget<ISellableInventoryItemEntryState>(state);
-            }
             var saveable = s as ISaveable;
             if (saveable != null)
             {

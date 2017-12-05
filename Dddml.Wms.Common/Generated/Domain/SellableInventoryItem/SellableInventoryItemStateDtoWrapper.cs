@@ -320,6 +320,19 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set { this.StateReadOnly = value; }
         }
 
+        public virtual string CommandId
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("CommandId"))
+                {
+                    return _state.CommandId; 
+                }
+                return null;
+            }
+            set { _state.CommandId = value; }
+        }
+
 		void ISellableInventoryItemState.When(ISellableInventoryItemStateMergePatched e)
 		{
             throw new NotSupportedException();
