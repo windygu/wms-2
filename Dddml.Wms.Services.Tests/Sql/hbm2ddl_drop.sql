@@ -85,8 +85,6 @@
 
     drop table if exists SellableInventoryItems;
 
-    drop table if exists SellableInventoryItemStateEvents;
-
     drop table if exists SellableInventoryItemEntries;
 
     drop table if exists InventoryPostingRules;

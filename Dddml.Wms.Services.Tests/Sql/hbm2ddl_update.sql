@@ -187,6 +187,20 @@
        UpdatedAt DATETIME,
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
     );
+    alter table SellableInventoryItems 
+        add column CommandId VARCHAR(255);
+    alter table InventoryPostingRules 
+        add column AccountName VARCHAR(255);
+    alter table InventoryPostingRules 
+        add column IsOutputNegated TINYINT(1);
+    alter table InventoryPostingRuleStateEvents 
+        add column AccountName VARCHAR(255);
+    alter table InventoryPostingRuleStateEvents 
+        add column IsOutputNegated TINYINT(1);
+    alter table InventoryPostingRuleStateEvents 
+        add column IsPropertyAccountNameRemoved TINYINT(1);
+    alter table InventoryPostingRuleStateEvents 
+        add column IsPropertyIsOutputNegatedRemoved TINYINT(1);
     create table SellableInventoryItemEntry_RV (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
@@ -194,11 +208,11 @@
        EntrySeqId BIGINT not null,
        SellableInventoryItemVersion BIGINT not null,
        QuantitySellable NUMERIC(19,5),
-       SourceEventIdProductId VARCHAR(255),
-       SourceEventIdLocatorId VARCHAR(255),
-       SourceEventIdAttributeSetInstanceId VARCHAR(255),
-       SourceEventIdEntrySeqId BIGINT,
-       SourceEventIdInventoryPostingRuleId VARCHAR(255),
+       SrcEventProductId VARCHAR(255),
+       SrcEventLocatorId VARCHAR(255),
+       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventEntrySeqId BIGINT,
+       SrcEventInventoryPostingRuleId VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -211,3 +225,13 @@
        UpdatedAt DATETIME,
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
     );
+    alter table SellableInventoryItemEntryMvoStateEvents 
+        add column SrcEventProductId VARCHAR(255);
+    alter table SellableInventoryItemEntryMvoStateEvents 
+        add column SrcEventLocatorId VARCHAR(255);
+    alter table SellableInventoryItemEntryMvoStateEvents 
+        add column SrcEventAttributeSetInstanceId VARCHAR(255);
+    alter table SellableInventoryItemEntryMvoStateEvents 
+        add column SrcEventEntrySeqId BIGINT;
+    alter table SellableInventoryItemEntryMvoStateEvents 
+        add column SrcEventInventoryPostingRuleId VARCHAR(255);

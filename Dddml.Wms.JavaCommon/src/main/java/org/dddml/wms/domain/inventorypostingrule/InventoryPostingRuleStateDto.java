@@ -46,6 +46,18 @@ public class InventoryPostingRuleStateDto
         this.output = output;
     }
 
+    private String accountName;
+
+    public String getAccountName()
+    {
+        return this.accountName;
+    }
+
+    public void setAccountName(String accountName)
+    {
+        this.accountName = accountName;
+    }
+
     private Boolean isOutputNegated;
 
     public Boolean getIsOutputNegated()
@@ -164,6 +176,9 @@ public class InventoryPostingRuleStateDto
             }
             if (returnedFieldsContains("Output")) {
                 dto.setOutput((state.getOutput() == null) ? null : new InventoryItemIdDtoWrapper(state.getOutput()));
+            }
+            if (returnedFieldsContains("AccountName")) {
+                dto.setAccountName(state.getAccountName());
             }
             if (returnedFieldsContains("IsOutputNegated")) {
                 dto.setIsOutputNegated(state.getIsOutputNegated());

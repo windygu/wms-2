@@ -57,6 +57,18 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
         this.output = output;
     }
 
+    private String accountName;
+
+    public String getAccountName()
+    {
+        return this.accountName;
+    }
+
+    public void setAccountName(String accountName)
+    {
+        this.accountName = accountName;
+    }
+
     private Boolean isOutputNegated;
 
     public Boolean getIsOutputNegated()
@@ -176,6 +188,16 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
 
         public void setIsPropertyOutputRemoved(Boolean removed) {
             this.isPropertyOutputRemoved = removed;
+        }
+
+        private Boolean isPropertyAccountNameRemoved;
+
+        public Boolean getIsPropertyAccountNameRemoved() {
+            return this.isPropertyAccountNameRemoved;
+        }
+
+        public void setIsPropertyAccountNameRemoved(Boolean removed) {
+            this.isPropertyAccountNameRemoved = removed;
         }
 
         private Boolean isPropertyIsOutputNegatedRemoved;

@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InitDatabase.cs" />
+    <Compile Include="InventoryPRTests.cs" />
     <Compile Include="OrganizationTreeTests.cs" />
     <Compile Include="LocatorTreeTests.cs" />
     <Compile Include="InOutTests.cs" />

@@ -30,6 +30,18 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         this.output = output;
     }
 
+    private String accountName;
+
+    public String getAccountName()
+    {
+        return this.accountName;
+    }
+
+    public void setAccountName(String accountName)
+    {
+        this.accountName = accountName;
+    }
+
     private Boolean isOutputNegated;
 
     public Boolean getIsOutputNegated()
@@ -78,6 +90,18 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         this.isPropertyOutputRemoved = removed;
     }
 
+    private Boolean isPropertyAccountNameRemoved;
+
+    public Boolean getIsPropertyAccountNameRemoved()
+    {
+        return this.isPropertyAccountNameRemoved;
+    }
+
+    public void setIsPropertyAccountNameRemoved(Boolean removed)
+    {
+        this.isPropertyAccountNameRemoved = removed;
+    }
+
     private Boolean isPropertyIsOutputNegatedRemoved;
 
     public Boolean getIsPropertyIsOutputNegatedRemoved()
@@ -107,6 +131,7 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         ((AbstractInventoryPostingRuleCommandDto) this).copyTo(command);
         command.setTrigger((this.getTrigger() == null) ? null : this.getTrigger().toInventoryItemId());
         command.setOutput((this.getOutput() == null) ? null : this.getOutput().toInventoryItemId());
+        command.setAccountName(this.getAccountName());
         command.setIsOutputNegated(this.getIsOutputNegated());
         command.setActive(this.getActive());
     }
@@ -135,6 +160,7 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         copyTo((AbstractInventoryPostingRuleCommand.AbstractCreateOrMergePatchInventoryPostingRule) command);
         command.setIsPropertyTriggerRemoved(this.getIsPropertyTriggerRemoved());
         command.setIsPropertyOutputRemoved(this.getIsPropertyOutputRemoved());
+        command.setIsPropertyAccountNameRemoved(this.getIsPropertyAccountNameRemoved());
         command.setIsPropertyIsOutputNegatedRemoved(this.getIsPropertyIsOutputNegatedRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }

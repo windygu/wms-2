@@ -124,6 +124,34 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             }
         }
 
+		public virtual string AccountName
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AccountName"))
+                {
+                    return _state.AccountName;
+                }
+                return null;
+            }
+            set
+            {
+                _state.AccountName = value;
+            }
+        }
+
+        string IInventoryPostingRuleStateProperties.AccountName
+        {
+            get 
+            {
+                return (this._state as IInventoryPostingRuleStateProperties).AccountName;
+            }
+            set 
+            {
+                (this._state as IInventoryPostingRuleStateProperties).AccountName = value;
+            }
+        }
+
 		public virtual bool? IsOutputNegated
         {
             get

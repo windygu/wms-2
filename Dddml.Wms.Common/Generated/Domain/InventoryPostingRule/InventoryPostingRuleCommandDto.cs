@@ -84,6 +84,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             }
         }
 
+		public virtual string AccountName { get; set; }
+
 		public virtual bool? IsOutputNegated { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -123,6 +125,25 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set
             {
                 this.IsPropertyOutputRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyAccountNameRemoved { get; set; }
+
+        bool IMergePatchInventoryPostingRule.IsPropertyAccountNameRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyAccountNameRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyAccountNameRemoved = value;
             }
         }
 

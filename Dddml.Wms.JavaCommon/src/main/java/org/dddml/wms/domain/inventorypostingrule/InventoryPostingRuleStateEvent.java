@@ -22,6 +22,10 @@ public interface InventoryPostingRuleStateEvent extends Event
 
     void setOutput(InventoryItemId output);
 
+    String getAccountName();
+
+    void setAccountName(String accountName);
+
     Boolean getIsOutputNegated();
 
     void setIsOutputNegated(Boolean isOutputNegated);
@@ -57,6 +61,10 @@ public interface InventoryPostingRuleStateEvent extends Event
         Boolean getIsPropertyOutputRemoved();
 
         void setIsPropertyOutputRemoved(Boolean removed);
+
+        Boolean getIsPropertyAccountNameRemoved();
+
+        void setIsPropertyAccountNameRemoved(Boolean removed);
 
         Boolean getIsPropertyIsOutputNegatedRemoved();
 

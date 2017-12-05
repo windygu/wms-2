@@ -35,6 +35,12 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set;
         }
 
+        string AccountName
+        {
+            get;
+            set;
+        }
+
         bool? IsOutputNegated
         {
             get;

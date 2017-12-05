@@ -46,6 +46,18 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
         this.output = output;
     }
 
+    private String accountName;
+
+    public String getAccountName()
+    {
+        return this.accountName;
+    }
+
+    public void setAccountName(String accountName)
+    {
+        this.accountName = accountName;
+    }
+
     private Boolean isOutputNegated;
 
     public Boolean getIsOutputNegated()
@@ -208,6 +220,7 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
 
         this.setTrigger(e.getTrigger());
         this.setOutput(e.getOutput());
+        this.setAccountName(e.getAccountName());
         this.setIsOutputNegated(e.getIsOutputNegated());
         this.setActive(e.getActive());
 
@@ -243,6 +256,17 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
         else
         {
             this.setOutput(e.getOutput());
+        }
+        if (e.getAccountName() == null)
+        {
+            if (e.getIsPropertyAccountNameRemoved() != null && e.getIsPropertyAccountNameRemoved())
+            {
+                this.setAccountName(null);
+            }
+        }
+        else
+        {
+            this.setAccountName(e.getAccountName());
         }
         if (e.getIsOutputNegated() == null)
         {

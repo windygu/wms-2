@@ -74,6 +74,7 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
         InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated e = newInventoryPostingRuleStateCreated(stateEventId);
         e.setTrigger(c.getTrigger());
         e.setOutput(c.getOutput());
+        e.setAccountName(c.getAccountName());
         e.setIsOutputNegated(c.getIsOutputNegated());
         e.setActive(c.getActive());
         ((AbstractInventoryPostingRuleStateEvent)e).setCommandId(c.getCommandId());
@@ -87,10 +88,12 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
         InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched e = newInventoryPostingRuleStateMergePatched(stateEventId);
         e.setTrigger(c.getTrigger());
         e.setOutput(c.getOutput());
+        e.setAccountName(c.getAccountName());
         e.setIsOutputNegated(c.getIsOutputNegated());
         e.setActive(c.getActive());
         e.setIsPropertyTriggerRemoved(c.getIsPropertyTriggerRemoved());
         e.setIsPropertyOutputRemoved(c.getIsPropertyOutputRemoved());
+        e.setIsPropertyAccountNameRemoved(c.getIsPropertyAccountNameRemoved());
         e.setIsPropertyIsOutputNegatedRemoved(c.getIsPropertyIsOutputNegatedRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractInventoryPostingRuleStateEvent)e).setCommandId(c.getCommandId());

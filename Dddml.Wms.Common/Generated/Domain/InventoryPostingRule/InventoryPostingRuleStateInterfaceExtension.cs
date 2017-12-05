@@ -51,11 +51,13 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             cmd.InventoryPostingRuleId = state.InventoryPostingRuleId;
             cmd.Trigger = state.Trigger;
             cmd.Output = state.Output;
+            cmd.AccountName = state.AccountName;
             cmd.IsOutputNegated = state.IsOutputNegated;
             cmd.Active = ((IInventoryPostingRuleStateProperties)state).Active;
             
             if (state.Trigger == null) { cmd.IsPropertyTriggerRemoved = true; }
             if (state.Output == null) { cmd.IsPropertyOutputRemoved = true; }
+            if (state.AccountName == null) { cmd.IsPropertyAccountNameRemoved = true; }
             return cmd;
         }
 
@@ -69,6 +71,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             cmd.InventoryPostingRuleId = state.InventoryPostingRuleId;
             cmd.Trigger = state.Trigger;
             cmd.Output = state.Output;
+            cmd.AccountName = state.AccountName;
             cmd.IsOutputNegated = state.IsOutputNegated;
             cmd.Active = ((IInventoryPostingRuleStateProperties)state).Active;
             return cmd;

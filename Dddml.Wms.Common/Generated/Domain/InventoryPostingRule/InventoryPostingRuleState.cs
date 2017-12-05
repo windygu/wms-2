@@ -179,6 +179,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 			this.Output = e.Output;
 
+			this.AccountName = e.AccountName;
+
             this.IsOutputNegated = (e.IsOutputNegated != null && e.IsOutputNegated.HasValue) ? e.IsOutputNegated.Value : default(bool);
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
@@ -218,6 +220,18 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 			else
 			{
 				this.Output = e.Output;
+			}
+
+			if (e.AccountName == null)
+			{
+				if (e.IsPropertyAccountNameRemoved)
+				{
+					this.AccountName = default(string);
+				}
+			}
+			else
+			{
+				this.AccountName = e.AccountName;
 			}
 
 			if (e.IsOutputNegated == null)

@@ -21,6 +21,14 @@ namespace Dddml.Wms.Services.Tests
             }
         }
 
+        protected string FirstConnectionRoutingKey
+        {
+            get
+            {
+                return RoutingConnectionProviderDictionary.Keys.First();
+            }
+        }
+
         private static Random _random = new Random();
 
         protected string RandomConnectionRoutingKey
@@ -31,6 +39,11 @@ namespace Dddml.Wms.Services.Tests
                 var idx = _random.Next(keys.Count);
                 return keys[idx];
             }
+        }
+
+        protected void ContextualKeyRoutingConnectionProviderFirstRoutingKey()
+        {
+            ContextualKeyRoutingConnectionProvider.CurrentRoutingKey = FirstConnectionRoutingKey;
         }
 
         protected void ContextualKeyRoutingConnectionProviderNextRandomRoutingKey()
@@ -52,7 +65,8 @@ namespace Dddml.Wms.Services.Tests
 
             RoutingConnectionProviderDictionary = ApplicationContext.Current["RoutingConnectionProviderDictionary"] as IDictionary<string, string>;
 
-            ContextualKeyRoutingConnectionProviderNextRandomRoutingKey();
+            //ContextualKeyRoutingConnectionProviderNextRandomRoutingKey();
+            ContextualKeyRoutingConnectionProviderFirstRoutingKey();
         }
 
 

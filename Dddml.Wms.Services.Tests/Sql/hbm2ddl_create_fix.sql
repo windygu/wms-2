@@ -85,8 +85,6 @@
 
     drop table if exists SellableInventoryItems;
 
-    drop table if exists SellableInventoryItemStateEvents;
-
     drop table if exists SellableInventoryItemEntries;
 
     drop table if exists InventoryPostingRules;
@@ -1800,21 +1798,8 @@
        UpdatedBy VARCHAR(255),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (ProductId, LocatorId, AttributeSetInstanceId)
-    );
-
-    create table SellableInventoryItemStateEvents (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       QuantitySellable NUMERIC(19,5),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyQuantitySellableRemoved TINYINT(1),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, Version)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId)
     );
 
     create table SellableInventoryItemEntries (
@@ -1847,6 +1832,8 @@
        OutputProductId VARCHAR(255),
        OutputLocatorId VARCHAR(255),
        OutputAttributeSetInstanceId VARCHAR(255),
+       AccountName VARCHAR(255),
+       IsOutputNegated TINYINT(1),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
@@ -1866,12 +1853,16 @@
        OutputProductId VARCHAR(255),
        OutputLocatorId VARCHAR(255),
        OutputAttributeSetInstanceId VARCHAR(255),
+       AccountName VARCHAR(255),
+       IsOutputNegated TINYINT(1),
        Active TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
        IsPropertyTriggerRemoved TINYINT(1),
        IsPropertyOutputRemoved TINYINT(1),
+       IsPropertyAccountNameRemoved TINYINT(1),
+       IsPropertyIsOutputNegatedRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (InventoryPostingRuleId, Version)
     );
@@ -1899,11 +1890,11 @@
        EntrySeqId BIGINT not null,
        SellableInventoryItemVersion BIGINT not null,
        QuantitySellable NUMERIC(19,5),
-       SourceEventIdProductId VARCHAR(255),
-       SourceEventIdLocatorId VARCHAR(255),
-       SourceEventIdAttributeSetInstanceId VARCHAR(255),
-       SourceEventIdEntrySeqId BIGINT,
-       SourceEventIdInventoryPostingRuleId VARCHAR(255),
+       SrcEventProductId VARCHAR(255),
+       SrcEventLocatorId VARCHAR(255),
+       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventEntrySeqId BIGINT,
+       SrcEventInventoryPostingRuleId VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -1925,11 +1916,11 @@
        SellableInventoryItemVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
        QuantitySellable NUMERIC(19,5),
-       SourceEventIdProductId VARCHAR(255),
-       SourceEventIdLocatorId VARCHAR(255),
-       SourceEventIdAttributeSetInstanceId VARCHAR(255),
-       SourceEventIdEntrySeqId BIGINT,
-       SourceEventIdInventoryPostingRuleId VARCHAR(255),
+       SrcEventProductId VARCHAR(255),
+       SrcEventLocatorId VARCHAR(255),
+       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventEntrySeqId BIGINT,
+       SrcEventInventoryPostingRuleId VARCHAR(255),
        Version BIGINT,
        SellableInventoryItemQuantitySellable NUMERIC(19,5),
        SellableInventoryItemCreatedBy VARCHAR(255),

@@ -19,6 +19,7 @@
         <property name="LocatorId" ><column name="OutputLocatorId" /></property>
         <property name="AttributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" /></property>
     </component>
+    <property name="AccountName" ></property>
     <property name="IsOutputNegated" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>

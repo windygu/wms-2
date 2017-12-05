@@ -59,7 +59,7 @@ aggregates:
           reservedProperties:
             noActive: true
       
-      # --------------- Accouts -------------------
+      # --------------- Accounts -------------------
       accounts:
         QuantityOnHand:
           entryEntityName: "InventoryItemEntry"
@@ -173,6 +173,8 @@ aggregates:
           type: InventoryItemId
         Output:
           type: InventoryItemId
+        AccountName:
+          type: string
         # 输出的数量是否需要“取反”  
         IsOutputNegated:
           type: bool
