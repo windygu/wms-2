@@ -12,6 +12,7 @@ public final class InventoryPostingRuleFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "inventoryPostingRuleId",
+            "isOutputNegated",
             "version",
             "createdBy",
             "createdAt",
@@ -29,6 +30,7 @@ public final class InventoryPostingRuleFilteringProperties
 
     public static final String[] propertyTypes = new String[] {
             "String",
+            "Boolean",
             "Long",
             "String",
             "Date",
@@ -58,6 +60,8 @@ public final class InventoryPostingRuleFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("inventoryPostingRuleId", "inventoryPostingRuleId");
         aliasMap.put("InventoryPostingRuleId", "inventoryPostingRuleId");
+        aliasMap.put("isOutputNegated", "isOutputNegated");
+        aliasMap.put("IsOutputNegated", "isOutputNegated");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

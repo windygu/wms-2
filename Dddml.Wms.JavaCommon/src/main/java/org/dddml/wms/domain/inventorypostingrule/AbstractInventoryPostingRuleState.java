@@ -46,6 +46,18 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
         this.output = output;
     }
 
+    private Boolean isOutputNegated;
+
+    public Boolean getIsOutputNegated()
+    {
+        return this.isOutputNegated;
+    }
+
+    public void setIsOutputNegated(Boolean isOutputNegated)
+    {
+        this.isOutputNegated = isOutputNegated;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -196,6 +208,7 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
 
         this.setTrigger(e.getTrigger());
         this.setOutput(e.getOutput());
+        this.setIsOutputNegated(e.getIsOutputNegated());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -230,6 +243,17 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
         else
         {
             this.setOutput(e.getOutput());
+        }
+        if (e.getIsOutputNegated() == null)
+        {
+            if (e.getIsPropertyIsOutputNegatedRemoved() != null && e.getIsPropertyIsOutputNegatedRemoved())
+            {
+                this.setIsOutputNegated(null);
+            }
+        }
+        else
+        {
+            this.setIsOutputNegated(e.getIsOutputNegated());
         }
         if (e.getActive() == null)
         {

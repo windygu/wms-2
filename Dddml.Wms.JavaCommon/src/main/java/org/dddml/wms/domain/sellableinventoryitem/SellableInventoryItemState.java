@@ -48,6 +48,10 @@ public interface SellableInventoryItemState
 
     boolean getForReapplying();
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
+
     SellableInventoryItemEntryStates getEntries();
 
 

@@ -173,6 +173,9 @@ aggregates:
           type: InventoryItemId
         Output:
           type: InventoryItemId
+        # 输出的数量是否需要“取反”  
+        IsOutputNegated:
+          type: bool
           
     # --------------- aggregate ---------------
     InventoryPRTriggered:

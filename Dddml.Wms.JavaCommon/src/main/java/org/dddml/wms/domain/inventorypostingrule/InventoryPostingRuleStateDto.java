@@ -46,6 +46,18 @@ public class InventoryPostingRuleStateDto
         this.output = output;
     }
 
+    private Boolean isOutputNegated;
+
+    public Boolean getIsOutputNegated()
+    {
+        return this.isOutputNegated;
+    }
+
+    public void setIsOutputNegated(Boolean isOutputNegated)
+    {
+        this.isOutputNegated = isOutputNegated;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -152,6 +164,9 @@ public class InventoryPostingRuleStateDto
             }
             if (returnedFieldsContains("Output")) {
                 dto.setOutput((state.getOutput() == null) ? null : new InventoryItemIdDtoWrapper(state.getOutput()));
+            }
+            if (returnedFieldsContains("IsOutputNegated")) {
+                dto.setIsOutputNegated(state.getIsOutputNegated());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

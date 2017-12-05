@@ -12,14 +12,6 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractSellableInventoryItemApplicationService implements SellableInventoryItemApplicationService
 {
-
-    private EventStore eventStore;
-
-    protected EventStore getEventStore()
-    {
-        return eventStore;
-    }
-
     private SellableInventoryItemStateRepository stateRepository;
 
     protected SellableInventoryItemStateRepository getStateRepository() {
@@ -42,8 +34,7 @@ public abstract class AbstractSellableInventoryItemApplicationService implements
         this.aggregateEventListener = eventListener;
     }
 
-    public AbstractSellableInventoryItemApplicationService(EventStore eventStore, SellableInventoryItemStateRepository stateRepository, SellableInventoryItemStateQueryRepository stateQueryRepository) {
-        this.eventStore = eventStore;
+    public AbstractSellableInventoryItemApplicationService(SellableInventoryItemStateRepository stateRepository, SellableInventoryItemStateQueryRepository stateQueryRepository) {
         this.stateRepository = stateRepository;
         this.stateQueryRepository = stateQueryRepository;
     }
@@ -85,22 +76,6 @@ public abstract class AbstractSellableInventoryItemApplicationService implements
         return getStateQueryRepository().getCount(filter);
     }
 
-    public SellableInventoryItemStateEvent getStateEvent(InventoryItemId sellableInventoryItemId, long version) {
-        SellableInventoryItemStateEvent e = (SellableInventoryItemStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(sellableInventoryItemId), version);
-        if (e != null)
-        { e.setStateEventReadOnly(true); }
-        else if (version == -1)
-        {
-            return getStateEvent(sellableInventoryItemId, 0);
-        }
-        return e;
-    }
-
-    public SellableInventoryItemState getHistoryState(InventoryItemId sellableInventoryItemId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractSellableInventoryItemStateEvent.class, toEventStoreAggregateId(sellableInventoryItemId), version - 1);
-        return new AbstractSellableInventoryItemState.SimpleSellableInventoryItemState(eventStream.getEvents());
-    }
-
     public SellableInventoryItemEntryState getSellableInventoryItemEntry(InventoryItemId sellableInventoryItemId, Long entrySeqId) {
         return getStateQueryRepository().getSellableInventoryItemEntry(sellableInventoryItemId, entrySeqId);
     }
@@ -134,8 +109,7 @@ public abstract class AbstractSellableInventoryItemApplicationService implements
     }
 
     private void persist(EventStoreAggregateId eventStoreAggregateId, long version, SellableInventoryItemAggregate aggregate, SellableInventoryItemState state) {
-        getEventStore().appendEvents(eventStoreAggregateId, version, 
-            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        getStateRepository().save(state);
         if (aggregateEventListener != null) {
             aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
         }
@@ -157,11 +131,9 @@ public abstract class AbstractSellableInventoryItemApplicationService implements
     {
         boolean repeated = false;
         if (command.getVersion() == null) { command.setVersion(SellableInventoryItemState.VERSION_NULL); }
-        if (state.getVersion() != null && state.getVersion() > command.getVersion())
+        if (state.getVersion() != null && state.getVersion() == command.getVersion() + 1)
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractSellableInventoryItemStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            if (command.getCommandId() != null && command.getCommandId().equals(state.getCommandId()))
             {
                 repeated = true;
             }
@@ -171,9 +143,9 @@ public abstract class AbstractSellableInventoryItemApplicationService implements
 
     public static class SimpleSellableInventoryItemApplicationService extends AbstractSellableInventoryItemApplicationService 
     {
-        public SimpleSellableInventoryItemApplicationService(EventStore eventStore, SellableInventoryItemStateRepository stateRepository, SellableInventoryItemStateQueryRepository stateQueryRepository)
+        public SimpleSellableInventoryItemApplicationService(SellableInventoryItemStateRepository stateRepository, SellableInventoryItemStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository, stateQueryRepository);
+            super(stateRepository, stateQueryRepository);
         }
     }
 

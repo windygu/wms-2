@@ -21,6 +21,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 		public virtual InventoryItemId Output { get; set; }
 
+		public virtual bool IsOutputNegated { get; set; }
+
 		public virtual long Version { get; set; }
 
 		public virtual bool Active { get; set; }

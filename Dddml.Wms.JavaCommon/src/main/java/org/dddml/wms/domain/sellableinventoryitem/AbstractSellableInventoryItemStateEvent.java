@@ -89,10 +89,6 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
         this.stateEventId = stateEventId;
     }
 
-    protected SellableInventoryItemEntryStateEventDao getSellableInventoryItemEntryStateEventDao() {
-        return (SellableInventoryItemEntryStateEventDao)ApplicationContext.current.get("SellableInventoryItemEntryStateEventDao");
-    }
-
     protected SellableInventoryItemEntryStateEventId newSellableInventoryItemEntryStateEventId(Long entrySeqId)
     {
         SellableInventoryItemEntryStateEventId stateEventId = new SellableInventoryItemEntryStateEventId(this.getStateEventId().getSellableInventoryItemId(), 
@@ -123,7 +119,7 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractSellableInventoryItemStateCreated extends AbstractSellableInventoryItemStateEvent implements SellableInventoryItemStateEvent.SellableInventoryItemStateCreated, Saveable
+    public static abstract class AbstractSellableInventoryItemStateCreated extends AbstractSellableInventoryItemStateEvent implements SellableInventoryItemStateEvent.SellableInventoryItemStateCreated
     {
         public AbstractSellableInventoryItemStateCreated() {
             this(new SellableInventoryItemStateEventId());
@@ -143,22 +139,7 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
 
         public Iterable<SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated> getSellableInventoryItemEntryEvents()
         {
-            if (!getStateEventReadOnly())
-            {
-                return this.sellableInventoryItemEntryEvents.values();
-            }
-            else
-            {
-                if (readOnlySellableInventoryItemEntryEvents != null) { return readOnlySellableInventoryItemEntryEvents; }
-                SellableInventoryItemEntryStateEventDao eventDao = getSellableInventoryItemEntryStateEventDao();
-                List<SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated> eL = new ArrayList<SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated>();
-                for (SellableInventoryItemEntryStateEvent e : eventDao.findBySellableInventoryItemStateEventId(this.getStateEventId()))
-                {
-                    e.setStateEventReadOnly(true);
-                    eL.add((SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated)e);
-                }
-                return (readOnlySellableInventoryItemEntryEvents = eL);
-            }
+            return this.sellableInventoryItemEntryEvents.values();
         }
 
         public void setSellableInventoryItemEntryEvents(Iterable<SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated> es)
@@ -179,16 +160,10 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
             this.sellableInventoryItemEntryEvents.put(e.getStateEventId(), e);
         }
 
-        public void save()
-        {
-            for (SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated e : this.getSellableInventoryItemEntryEvents()) {
-                getSellableInventoryItemEntryStateEventDao().save(e);
-            }
-        }
     }
 
 
-    public static abstract class AbstractSellableInventoryItemStateMergePatched extends AbstractSellableInventoryItemStateEvent implements SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched, Saveable
+    public static abstract class AbstractSellableInventoryItemStateMergePatched extends AbstractSellableInventoryItemStateEvent implements SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched
     {
         public AbstractSellableInventoryItemStateMergePatched() {
             this(new SellableInventoryItemStateEventId());
@@ -218,22 +193,7 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
 
         public Iterable<SellableInventoryItemEntryStateEvent> getSellableInventoryItemEntryEvents()
         {
-            if (!getStateEventReadOnly())
-            {
-                return this.sellableInventoryItemEntryEvents.values();
-            }
-            else
-            {
-                if (readOnlySellableInventoryItemEntryEvents != null) { return readOnlySellableInventoryItemEntryEvents; }
-                SellableInventoryItemEntryStateEventDao eventDao = getSellableInventoryItemEntryStateEventDao();
-                List<SellableInventoryItemEntryStateEvent> eL = new ArrayList<SellableInventoryItemEntryStateEvent>();
-                for (SellableInventoryItemEntryStateEvent e : eventDao.findBySellableInventoryItemStateEventId(this.getStateEventId()))
-                {
-                    e.setStateEventReadOnly(true);
-                    eL.add((SellableInventoryItemEntryStateEvent)e);
-                }
-                return (readOnlySellableInventoryItemEntryEvents = eL);
-            }
+            return this.sellableInventoryItemEntryEvents.values();
         }
 
         public void setSellableInventoryItemEntryEvents(Iterable<SellableInventoryItemEntryStateEvent> es)
@@ -254,12 +214,6 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
             this.sellableInventoryItemEntryEvents.put(e.getStateEventId(), e);
         }
 
-        public void save()
-        {
-            for (SellableInventoryItemEntryStateEvent e : this.getSellableInventoryItemEntryEvents()) {
-                getSellableInventoryItemEntryStateEventDao().save(e);
-            }
-        }
     }
 
 

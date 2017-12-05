@@ -179,6 +179,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 			this.Output = e.Output;
 
+            this.IsOutputNegated = (e.IsOutputNegated != null && e.IsOutputNegated.HasValue) ? e.IsOutputNegated.Value : default(bool);
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
@@ -216,6 +218,18 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 			else
 			{
 				this.Output = e.Output;
+			}
+
+			if (e.IsOutputNegated == null)
+			{
+				if (e.IsPropertyIsOutputNegatedRemoved)
+				{
+					this.IsOutputNegated = default(bool);
+				}
+			}
+			else
+			{
+				this.IsOutputNegated = (e.IsOutputNegated != null && e.IsOutputNegated.HasValue) ? e.IsOutputNegated.Value : default(bool);
 			}
 
 			if (e.Active == null)

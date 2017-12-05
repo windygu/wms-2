@@ -31,6 +31,7 @@ public class InventoryPostingRuleStateEventDtoConverter {
         dto.setCommandId(e.getCommandId());
         dto.setTrigger((e.getTrigger() == null) ? null : new InventoryItemIdDtoWrapper(e.getTrigger()));
         dto.setOutput((e.getOutput() == null) ? null : new InventoryItemIdDtoWrapper(e.getOutput()));
+        dto.setIsOutputNegated(e.getIsOutputNegated());
         dto.setActive(e.getActive());
         return dto;
     }
@@ -43,9 +44,11 @@ public class InventoryPostingRuleStateEventDtoConverter {
         dto.setCommandId(e.getCommandId());
         dto.setTrigger((e.getTrigger() == null) ? null : new InventoryItemIdDtoWrapper(e.getTrigger()));
         dto.setOutput((e.getOutput() == null) ? null : new InventoryItemIdDtoWrapper(e.getOutput()));
+        dto.setIsOutputNegated(e.getIsOutputNegated());
         dto.setActive(e.getActive());
         dto.setIsPropertyTriggerRemoved(e.getIsPropertyTriggerRemoved());
         dto.setIsPropertyOutputRemoved(e.getIsPropertyOutputRemoved());
+        dto.setIsPropertyIsOutputNegatedRemoved(e.getIsPropertyIsOutputNegatedRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         return dto;
     }

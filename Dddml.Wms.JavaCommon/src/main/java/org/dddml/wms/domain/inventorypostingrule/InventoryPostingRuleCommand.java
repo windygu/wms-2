@@ -27,6 +27,10 @@ public interface InventoryPostingRuleCommand extends Command
 
         void setOutput(InventoryItemId output);
 
+        Boolean getIsOutputNegated();
+
+        void setIsOutputNegated(Boolean isOutputNegated);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -46,6 +50,10 @@ public interface InventoryPostingRuleCommand extends Command
         Boolean getIsPropertyOutputRemoved();
 
         void setIsPropertyOutputRemoved(Boolean removed);
+
+        Boolean getIsPropertyIsOutputNegatedRemoved();
+
+        void setIsPropertyIsOutputNegatedRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

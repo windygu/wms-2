@@ -31,10 +31,6 @@ public interface SellableInventoryItemApplicationService
 
     long getCount(Criterion filter);
 
-    SellableInventoryItemStateEvent getStateEvent(InventoryItemId sellableInventoryItemId, long version);
-
-    SellableInventoryItemState getHistoryState(InventoryItemId sellableInventoryItemId, long version);
-
     SellableInventoryItemEntryState getSellableInventoryItemEntry(InventoryItemId sellableInventoryItemId, Long entrySeqId);
 
 }

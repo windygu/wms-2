@@ -41,7 +41,6 @@
         <mapping resource="org/dddml/wms/domain/hbm/DocumentTypeState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/DocumentTypeStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemState.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPostingRuleState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPostingRuleStateEvent.hbm.xml"/>

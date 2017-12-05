@@ -110,6 +110,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		
             e.Trigger = c.Trigger;
             e.Output = c.Output;
+            e.IsOutputNegated = c.IsOutputNegated;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -129,9 +130,11 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
             e.Trigger = c.Trigger;
             e.Output = c.Output;
+            e.IsOutputNegated = c.IsOutputNegated;
             e.Active = c.Active;
             e.IsPropertyTriggerRemoved = c.IsPropertyTriggerRemoved;
             e.IsPropertyOutputRemoved = c.IsPropertyOutputRemoved;
+            e.IsPropertyIsOutputNegatedRemoved = c.IsPropertyIsOutputNegatedRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

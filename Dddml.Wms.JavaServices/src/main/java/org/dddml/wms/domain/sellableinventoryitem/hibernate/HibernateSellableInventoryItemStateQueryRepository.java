@@ -45,9 +45,6 @@ public class HibernateSellableInventoryItemStateQueryRepository implements Sella
     public SellableInventoryItemState get(InventoryItemId id) {
 
         SellableInventoryItemState state = (SellableInventoryItemState)getCurrentSession().get(AbstractSellableInventoryItemState.SimpleSellableInventoryItemState.class, id);
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (SellableInventoryItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{SellableInventoryItemState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
         return state;
     }
 

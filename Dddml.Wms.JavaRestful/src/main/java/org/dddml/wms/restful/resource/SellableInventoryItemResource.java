@@ -137,33 +137,6 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public SellableInventoryItemStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
-        try {
-
-            InventoryItemId idObj = SellableInventoryItemResourceUtils.parseIdString(id);
-            SellableInventoryItemStateEventDtoConverter dtoConverter = getSellableInventoryItemStateEventDtoConverter();
-            return dtoConverter.toSellableInventoryItemStateEventDto((AbstractSellableInventoryItemStateEvent) sellableInventoryItemApplicationService.getStateEvent(idObj, version));
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
-    @Path("{id}/_historyStates/{version}") @GET
-    public SellableInventoryItemStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
-        try {
-
-            InventoryItemId idObj = SellableInventoryItemResourceUtils.parseIdString(id);
-            SellableInventoryItemStateDto.DtoConverter dtoConverter = new SellableInventoryItemStateDto.DtoConverter();
-            if (StringHelper.isNullOrEmpty(fields)) {
-                dtoConverter.setAllFieldsReturned(true);
-            } else {
-                dtoConverter.setReturnedFieldsString(fields);
-            }
-            return dtoConverter.toSellableInventoryItemStateDto(sellableInventoryItemApplicationService.getHistoryState(idObj, version));
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
     @Path("{sellableInventoryItemId}/SellableInventoryItemEntries/{entrySeqId}") @GET
     public SellableInventoryItemEntryStateDto getSellableInventoryItemEntry(@PathParam("sellableInventoryItemId") String sellableInventoryItemId, @PathParam("entrySeqId") Long entrySeqId) {
         try {

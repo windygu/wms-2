@@ -379,12 +379,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemEntryStateDao.java">
       <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemEntryStateEventDao.java">
-      <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemEventStore.java">
-      <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemStateQueryRepository.java">
       <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
@@ -431,9 +425,6 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemState.hbm.xml">
@@ -655,7 +646,6 @@
 .\SellableInventoryItemEntryMvoStateEvent.hbm.xml
 .\SellableInventoryItemEntryState.hbm.xml
 .\SellableInventoryItemState.hbm.xml
-.\SellableInventoryItemStateEvent.hbm.xml
 .\WarehouseState.hbm.xml
 .\WarehouseStateEvent.hbm.xml
 </LastOutputs>
@@ -843,8 +833,6 @@
       <LastOutputs>
 .\GenerateSellableInventoryItemDomainHibernate.txt
 .\HibernateSellableInventoryItemEntryStateDao.java
-.\HibernateSellableInventoryItemEntryStateEventDao.java
-.\HibernateSellableInventoryItemEventStore.java
 .\HibernateSellableInventoryItemStateQueryRepository.java
 .\HibernateSellableInventoryItemStateRepository.java
 </LastOutputs>

@@ -25,6 +25,10 @@ public interface InventoryPostingRuleState
 
     void setOutput(InventoryItemId output);
 
+    Boolean getIsOutputNegated();
+
+    void setIsOutputNegated(Boolean isOutputNegated);
+
     Long getVersion();
 
     void setVersion(Long version);

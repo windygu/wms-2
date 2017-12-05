@@ -124,6 +124,37 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             }
         }
 
+		public virtual bool? IsOutputNegated
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsOutputNegated"))
+                {
+                    return _state.IsOutputNegated;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.IsOutputNegated = value.Value;
+                }
+            }
+        }
+
+        bool IInventoryPostingRuleStateProperties.IsOutputNegated
+        {
+            get 
+            {
+                return (this._state as IInventoryPostingRuleStateProperties).IsOutputNegated;
+            }
+            set 
+            {
+                (this._state as IInventoryPostingRuleStateProperties).IsOutputNegated = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

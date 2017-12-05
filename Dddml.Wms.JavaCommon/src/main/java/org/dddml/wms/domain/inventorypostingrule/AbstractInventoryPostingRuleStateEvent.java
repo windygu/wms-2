@@ -57,6 +57,18 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
         this.output = output;
     }
 
+    private Boolean isOutputNegated;
+
+    public Boolean getIsOutputNegated()
+    {
+        return this.isOutputNegated;
+    }
+
+    public void setIsOutputNegated(Boolean isOutputNegated)
+    {
+        this.isOutputNegated = isOutputNegated;
+    }
+
     private String createdBy;
 
     public String getCreatedBy()
@@ -164,6 +176,16 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
 
         public void setIsPropertyOutputRemoved(Boolean removed) {
             this.isPropertyOutputRemoved = removed;
+        }
+
+        private Boolean isPropertyIsOutputNegatedRemoved;
+
+        public Boolean getIsPropertyIsOutputNegatedRemoved() {
+            return this.isPropertyIsOutputNegatedRemoved;
+        }
+
+        public void setIsPropertyIsOutputNegatedRemoved(Boolean removed) {
+            this.isPropertyIsOutputNegatedRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

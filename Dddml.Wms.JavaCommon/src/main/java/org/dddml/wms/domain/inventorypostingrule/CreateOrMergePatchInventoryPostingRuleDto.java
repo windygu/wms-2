@@ -30,6 +30,18 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         this.output = output;
     }
 
+    private Boolean isOutputNegated;
+
+    public Boolean getIsOutputNegated()
+    {
+        return this.isOutputNegated;
+    }
+
+    public void setIsOutputNegated(Boolean isOutputNegated)
+    {
+        this.isOutputNegated = isOutputNegated;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -66,6 +78,18 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         this.isPropertyOutputRemoved = removed;
     }
 
+    private Boolean isPropertyIsOutputNegatedRemoved;
+
+    public Boolean getIsPropertyIsOutputNegatedRemoved()
+    {
+        return this.isPropertyIsOutputNegatedRemoved;
+    }
+
+    public void setIsPropertyIsOutputNegatedRemoved(Boolean removed)
+    {
+        this.isPropertyIsOutputNegatedRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -83,6 +107,7 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         ((AbstractInventoryPostingRuleCommandDto) this).copyTo(command);
         command.setTrigger((this.getTrigger() == null) ? null : this.getTrigger().toInventoryItemId());
         command.setOutput((this.getOutput() == null) ? null : this.getOutput().toInventoryItemId());
+        command.setIsOutputNegated(this.getIsOutputNegated());
         command.setActive(this.getActive());
     }
 
@@ -110,6 +135,7 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         copyTo((AbstractInventoryPostingRuleCommand.AbstractCreateOrMergePatchInventoryPostingRule) command);
         command.setIsPropertyTriggerRemoved(this.getIsPropertyTriggerRemoved());
         command.setIsPropertyOutputRemoved(this.getIsPropertyOutputRemoved());
+        command.setIsPropertyIsOutputNegatedRemoved(this.getIsPropertyIsOutputNegatedRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

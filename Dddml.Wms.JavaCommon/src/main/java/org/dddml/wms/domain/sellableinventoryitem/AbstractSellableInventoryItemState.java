@@ -129,6 +129,16 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
         this.forReapplying = forReapplying;
     }
 
+    private String commandId;
+
+    public String getCommandId() {
+        return this.commandId;
+    }
+
+    public void setCommandId(String commandId) {
+        this.commandId = commandId;
+    }
+
     public AbstractSellableInventoryItemState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {

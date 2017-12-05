@@ -35,6 +35,12 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set;
         }
 
+        bool? IsOutputNegated
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

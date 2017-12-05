@@ -21,6 +21,7 @@
         <property name="LocatorId" ><column name="OutputLocatorId" /></property>
         <property name="AttributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" /></property>
     </component>
+    <property name="IsOutputNegated" ></property>
     <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
@@ -37,6 +38,8 @@
         <property name="IsPropertyTriggerRemoved" column="IsPropertyTriggerRemoved"/>
 
         <property name="IsPropertyOutputRemoved" column="IsPropertyOutputRemoved"/>
+
+        <property name="IsPropertyIsOutputNegatedRemoved" column="IsPropertyIsOutputNegatedRemoved"/>
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>

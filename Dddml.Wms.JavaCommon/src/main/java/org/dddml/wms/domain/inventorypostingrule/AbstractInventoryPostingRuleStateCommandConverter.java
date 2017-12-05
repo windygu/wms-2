@@ -40,10 +40,12 @@ public abstract class AbstractInventoryPostingRuleStateCommandConverter<TCreateI
         cmd.setInventoryPostingRuleId(state.getInventoryPostingRuleId());
         cmd.setTrigger(state.getTrigger());
         cmd.setOutput(state.getOutput());
+        cmd.setIsOutputNegated(state.getIsOutputNegated());
         cmd.setActive(state.getActive());
             
         if (state.getTrigger() == null) { cmd.setIsPropertyTriggerRemoved(true); }
         if (state.getOutput() == null) { cmd.setIsPropertyOutputRemoved(true); }
+        if (state.getIsOutputNegated() == null) { cmd.setIsPropertyIsOutputNegatedRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
     }
@@ -56,6 +58,7 @@ public abstract class AbstractInventoryPostingRuleStateCommandConverter<TCreateI
         cmd.setInventoryPostingRuleId(state.getInventoryPostingRuleId());
         cmd.setTrigger(state.getTrigger());
         cmd.setOutput(state.getOutput());
+        cmd.setIsOutputNegated(state.getIsOutputNegated());
         cmd.setActive(state.getActive());
         return cmd;
     }

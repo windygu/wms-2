@@ -57,6 +57,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 		public virtual InventoryItemId Output { get; set; }
 
+		public virtual bool? IsOutputNegated { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 
@@ -94,6 +96,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		public virtual bool IsPropertyTriggerRemoved { get; set; }
 
 		public virtual bool IsPropertyOutputRemoved { get; set; }
+
+		public virtual bool IsPropertyIsOutputNegatedRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

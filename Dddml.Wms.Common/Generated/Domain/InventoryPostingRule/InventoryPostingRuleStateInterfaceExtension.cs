@@ -51,6 +51,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             cmd.InventoryPostingRuleId = state.InventoryPostingRuleId;
             cmd.Trigger = state.Trigger;
             cmd.Output = state.Output;
+            cmd.IsOutputNegated = state.IsOutputNegated;
             cmd.Active = ((IInventoryPostingRuleStateProperties)state).Active;
             
             if (state.Trigger == null) { cmd.IsPropertyTriggerRemoved = true; }
@@ -68,6 +69,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             cmd.InventoryPostingRuleId = state.InventoryPostingRuleId;
             cmd.Trigger = state.Trigger;
             cmd.Output = state.Output;
+            cmd.IsOutputNegated = state.IsOutputNegated;
             cmd.Active = ((IInventoryPostingRuleStateProperties)state).Active;
             return cmd;
         }

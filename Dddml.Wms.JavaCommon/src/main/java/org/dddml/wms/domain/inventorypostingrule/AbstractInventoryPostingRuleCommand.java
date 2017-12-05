@@ -59,6 +59,18 @@ public abstract class AbstractInventoryPostingRuleCommand extends AbstractComman
             this.output = output;
         }
 
+        private Boolean isOutputNegated;
+
+        public Boolean getIsOutputNegated()
+        {
+            return this.isOutputNegated;
+        }
+
+        public void setIsOutputNegated(Boolean isOutputNegated)
+        {
+            this.isOutputNegated = isOutputNegated;
+        }
+
         private Boolean active;
 
         public Boolean getActive()
@@ -111,6 +123,18 @@ public abstract class AbstractInventoryPostingRuleCommand extends AbstractComman
         public void setIsPropertyOutputRemoved(Boolean removed)
         {
             this.isPropertyOutputRemoved = removed;
+        }
+
+        private Boolean isPropertyIsOutputNegatedRemoved;
+
+        public Boolean getIsPropertyIsOutputNegatedRemoved()
+        {
+            return this.isPropertyIsOutputNegatedRemoved;
+        }
+
+        public void setIsPropertyIsOutputNegatedRemoved(Boolean removed)
+        {
+            this.isPropertyIsOutputNegatedRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

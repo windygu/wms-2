@@ -45,9 +45,6 @@ public class HibernateSellableInventoryItemEntryStateDao implements SellableInve
             state = new AbstractSellableInventoryItemEntryState.SimpleSellableInventoryItemEntryState();
             state.setSellableInventoryItemEntryId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (SellableInventoryItemEntryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{SellableInventoryItemEntryState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
         return state;
     }
 
@@ -55,9 +52,6 @@ public class HibernateSellableInventoryItemEntryStateDao implements SellableInve
     public void save(SellableInventoryItemEntryState state)
     {
         SellableInventoryItemEntryState s = state;
-        if (getReadOnlyProxyGenerator() != null) {
-            s = (SellableInventoryItemEntryState) getReadOnlyProxyGenerator().getTarget(state);
-        }
         if(s.getVersion() == null) {
             getCurrentSession().save(s);
         }else {
@@ -88,9 +82,6 @@ public class HibernateSellableInventoryItemEntryStateDao implements SellableInve
     public void delete(SellableInventoryItemEntryState state)
     {
         SellableInventoryItemEntryState s = state;
-        if (getReadOnlyProxyGenerator() != null) {
-            s = (SellableInventoryItemEntryState) getReadOnlyProxyGenerator().getTarget(state);
-        }
         if (s instanceof Saveable)
         {
             Saveable saveable = (Saveable) s;

@@ -48,18 +48,13 @@ public class HibernateSellableInventoryItemStateRepository implements SellableIn
             state = new AbstractSellableInventoryItemState.SimpleSellableInventoryItemState();
             state.setSellableInventoryItemId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (SellableInventoryItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{SellableInventoryItemState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
         return state;
     }
 
+    @Transactional
     public void save(SellableInventoryItemState state)
     {
         SellableInventoryItemState s = state;
-        if (getReadOnlyProxyGenerator() != null) {
-            s = (SellableInventoryItemState) getReadOnlyProxyGenerator().getTarget(state);
-        }
         if(s.getVersion() == null) {
             getCurrentSession().save(s);
         }else {
