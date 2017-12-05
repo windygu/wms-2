@@ -20,6 +20,14 @@ namespace Dddml.Wms.Domain.Locator
 
 		protected abstract ILocatorStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<ILocatorAggregate, ILocatorState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<ILocatorAggregate, ILocatorState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected LocatorApplicationServiceBase()
 		{
 		}
@@ -43,6 +51,10 @@ namespace Dddml.Wms.Domain.Locator
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, ILocatorAggregate aggregate, ILocatorState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((ILocatorStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<ILocatorAggregate, ILocatorState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(ILocatorStateCreated stateCreated)

@@ -22,6 +22,14 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
 		protected abstract ISellableInventoryItemEntryMvoStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<ISellableInventoryItemEntryMvoAggregate, ISellableInventoryItemEntryMvoState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<ISellableInventoryItemEntryMvoAggregate, ISellableInventoryItemEntryMvoState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected SellableInventoryItemEntryMvoApplicationServiceBase()
 		{
 		}
@@ -45,6 +53,10 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, ISellableInventoryItemEntryMvoAggregate aggregate, ISellableInventoryItemEntryMvoState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((ISellableInventoryItemEntryMvoStateProperties)state).SellableInventoryItemVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<ISellableInventoryItemEntryMvoAggregate, ISellableInventoryItemEntryMvoState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(ISellableInventoryItemEntryMvoStateCreated stateCreated)

@@ -21,6 +21,14 @@ namespace Dddml.Wms.Domain.InOut
 
 		protected abstract IInOutStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IInOutAggregate, IInOutState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IInOutAggregate, IInOutState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected InOutApplicationServiceBase()
 		{
 		}
@@ -44,6 +52,10 @@ namespace Dddml.Wms.Domain.InOut
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IInOutAggregate aggregate, IInOutState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IInOutStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IInOutAggregate, IInOutState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IInOutStateCreated stateCreated)

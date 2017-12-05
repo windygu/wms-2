@@ -21,6 +21,14 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 		protected abstract IUserPermissionMvoStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IUserPermissionMvoAggregate, IUserPermissionMvoState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IUserPermissionMvoAggregate, IUserPermissionMvoState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected UserPermissionMvoApplicationServiceBase()
 		{
 		}
@@ -44,6 +52,10 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IUserPermissionMvoAggregate aggregate, IUserPermissionMvoState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IUserPermissionMvoStateProperties)state).UserVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IUserPermissionMvoAggregate, IUserPermissionMvoState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IUserPermissionMvoStateCreated stateCreated)

@@ -20,6 +20,14 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		protected abstract IAttributeSetStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IAttributeSetAggregate, IAttributeSetState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IAttributeSetAggregate, IAttributeSetState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected AttributeSetApplicationServiceBase()
 		{
 		}
@@ -43,6 +51,10 @@ namespace Dddml.Wms.Domain.AttributeSet
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IAttributeSetAggregate aggregate, IAttributeSetState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IAttributeSetStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IAttributeSetAggregate, IAttributeSetState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IAttributeSetStateCreated stateCreated)

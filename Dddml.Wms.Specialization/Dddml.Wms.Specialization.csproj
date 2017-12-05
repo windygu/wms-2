@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Specialization\AggregateBase.cs" />
+    <Compile Include="Specialization\AggregateEvent.cs" />
     <Compile Include="Specialization\ApplicationContext.cs" />
     <Compile Include="Specialization\CollectionUtils.cs" />
     <Compile Include="Specialization\CommandType.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Specialization\HttpServices\ClientProxies\ProxyTemplate.cs" />
     <Compile Include="Specialization\IActive.cs" />
     <Compile Include="Specialization\IAggregateCommand.cs" />
+    <Compile Include="Specialization\IAggregateEventListener.cs" />
     <Compile Include="Specialization\IApplicationContext.cs" />
     <Compile Include="Specialization\IApplicationService.cs" />
     <Compile Include="Specialization\ICommand.cs" />

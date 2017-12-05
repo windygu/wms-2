@@ -20,6 +20,14 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
 		protected abstract IOrganizationStructureTypeStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IOrganizationStructureTypeAggregate, IOrganizationStructureTypeState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IOrganizationStructureTypeAggregate, IOrganizationStructureTypeState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected OrganizationStructureTypeApplicationServiceBase()
 		{
 		}
@@ -43,6 +51,10 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IOrganizationStructureTypeAggregate aggregate, IOrganizationStructureTypeState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IOrganizationStructureTypeStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IOrganizationStructureTypeAggregate, IOrganizationStructureTypeState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IOrganizationStructureTypeStateCreated stateCreated)

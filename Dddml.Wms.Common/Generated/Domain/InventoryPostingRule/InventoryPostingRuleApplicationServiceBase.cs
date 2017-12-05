@@ -21,6 +21,14 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 		protected abstract IInventoryPostingRuleStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IInventoryPostingRuleAggregate, IInventoryPostingRuleState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IInventoryPostingRuleAggregate, IInventoryPostingRuleState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected InventoryPostingRuleApplicationServiceBase()
 		{
 		}
@@ -44,6 +52,10 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IInventoryPostingRuleAggregate aggregate, IInventoryPostingRuleState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IInventoryPostingRuleStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IInventoryPostingRuleAggregate, IInventoryPostingRuleState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IInventoryPostingRuleStateCreated stateCreated)

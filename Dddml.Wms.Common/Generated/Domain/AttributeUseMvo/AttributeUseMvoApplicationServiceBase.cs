@@ -21,6 +21,14 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		protected abstract IAttributeUseMvoStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IAttributeUseMvoAggregate, IAttributeUseMvoState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IAttributeUseMvoAggregate, IAttributeUseMvoState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected AttributeUseMvoApplicationServiceBase()
 		{
 		}
@@ -44,6 +52,10 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IAttributeUseMvoAggregate aggregate, IAttributeUseMvoState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IAttributeUseMvoStateProperties)state).AttributeSetVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IAttributeUseMvoAggregate, IAttributeUseMvoState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IAttributeUseMvoStateCreated stateCreated)

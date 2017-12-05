@@ -22,6 +22,14 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 		protected abstract IIdGenerator<string, ICreateAttributeSetInstance, IAttributeSetInstanceState> IdGenerator { get; }
 		
+        private IAggregateEventListener<IAttributeSetInstanceAggregate, IAttributeSetInstanceState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IAttributeSetInstanceAggregate, IAttributeSetInstanceState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected AttributeSetInstanceApplicationServiceBase()
 		{
 		}
@@ -71,6 +79,10 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IAttributeSetInstanceAggregate aggregate, IAttributeSetInstanceState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IAttributeSetInstanceStateProperties)state).Version, aggregate.Changes, () => {});
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IAttributeSetInstanceAggregate, IAttributeSetInstanceState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IAttributeSetInstanceStateCreated stateCreated)

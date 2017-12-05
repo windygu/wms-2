@@ -20,6 +20,14 @@ namespace Dddml.Wms.Domain.Permission
 
 		protected abstract IPermissionStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IPermissionAggregate, IPermissionState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IPermissionAggregate, IPermissionState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected PermissionApplicationServiceBase()
 		{
 		}
@@ -43,6 +51,10 @@ namespace Dddml.Wms.Domain.Permission
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IPermissionAggregate aggregate, IPermissionState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IPermissionStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IPermissionAggregate, IPermissionState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IPermissionStateCreated stateCreated)

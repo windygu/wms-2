@@ -21,6 +21,14 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		protected abstract IAttributeValueMvoStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IAttributeValueMvoAggregate, IAttributeValueMvoState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IAttributeValueMvoAggregate, IAttributeValueMvoState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected AttributeValueMvoApplicationServiceBase()
 		{
 		}
@@ -44,6 +52,10 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IAttributeValueMvoAggregate aggregate, IAttributeValueMvoState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IAttributeValueMvoStateProperties)state).AttributeVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IAttributeValueMvoAggregate, IAttributeValueMvoState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IAttributeValueMvoStateCreated stateCreated)

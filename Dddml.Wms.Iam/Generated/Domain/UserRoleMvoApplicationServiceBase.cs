@@ -21,6 +21,14 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
 		protected abstract IUserRoleMvoStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IUserRoleMvoAggregate, IUserRoleMvoState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IUserRoleMvoAggregate, IUserRoleMvoState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected UserRoleMvoApplicationServiceBase()
 		{
 		}
@@ -44,6 +52,10 @@ namespace Dddml.Wms.Domain.UserRoleMvo
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IUserRoleMvoAggregate aggregate, IUserRoleMvoState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IUserRoleMvoStateProperties)state).UserVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IUserRoleMvoAggregate, IUserRoleMvoState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IUserRoleMvoStateCreated stateCreated)

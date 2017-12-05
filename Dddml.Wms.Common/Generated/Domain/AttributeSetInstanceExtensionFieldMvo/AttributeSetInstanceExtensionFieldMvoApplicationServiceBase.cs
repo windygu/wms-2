@@ -21,6 +21,14 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
 
 		protected abstract IAttributeSetInstanceExtensionFieldMvoStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IAttributeSetInstanceExtensionFieldMvoAggregate, IAttributeSetInstanceExtensionFieldMvoState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IAttributeSetInstanceExtensionFieldMvoAggregate, IAttributeSetInstanceExtensionFieldMvoState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected AttributeSetInstanceExtensionFieldMvoApplicationServiceBase()
 		{
 		}
@@ -44,6 +52,10 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IAttributeSetInstanceExtensionFieldMvoAggregate aggregate, IAttributeSetInstanceExtensionFieldMvoState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IAttributeSetInstanceExtensionFieldMvoStateProperties)state).AttrSetInstEFGroupVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IAttributeSetInstanceExtensionFieldMvoAggregate, IAttributeSetInstanceExtensionFieldMvoState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IAttributeSetInstanceExtensionFieldMvoStateCreated stateCreated)

@@ -22,6 +22,14 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		protected abstract IInOutLineMvoStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IInOutLineMvoAggregate, IInOutLineMvoState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IInOutLineMvoAggregate, IInOutLineMvoState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected InOutLineMvoApplicationServiceBase()
 		{
 		}
@@ -45,6 +53,10 @@ namespace Dddml.Wms.Domain.InOutLineMvo
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IInOutLineMvoAggregate aggregate, IInOutLineMvoState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IInOutLineMvoStateProperties)state).InOutVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IInOutLineMvoAggregate, IInOutLineMvoState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IInOutLineMvoStateCreated stateCreated)

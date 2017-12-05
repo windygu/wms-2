@@ -20,6 +20,14 @@ namespace Dddml.Wms.Domain.Role
 
 		protected abstract IRoleStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IRoleAggregate, IRoleState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IRoleAggregate, IRoleState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected RoleApplicationServiceBase()
 		{
 		}
@@ -43,6 +51,10 @@ namespace Dddml.Wms.Domain.Role
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IRoleAggregate aggregate, IRoleState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IRoleStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IRoleAggregate, IRoleState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IRoleStateCreated stateCreated)

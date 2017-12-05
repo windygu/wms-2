@@ -20,6 +20,14 @@ namespace Dddml.Wms.Domain.Warehouse
 
 		protected abstract IWarehouseStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IWarehouseAggregate, IWarehouseState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IWarehouseAggregate, IWarehouseState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected WarehouseApplicationServiceBase()
 		{
 		}
@@ -43,6 +51,10 @@ namespace Dddml.Wms.Domain.Warehouse
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IWarehouseAggregate aggregate, IWarehouseState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IWarehouseStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IWarehouseAggregate, IWarehouseState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IWarehouseStateCreated stateCreated)

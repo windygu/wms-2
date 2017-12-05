@@ -21,6 +21,14 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
 		protected abstract IUserClaimMvoStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IUserClaimMvoAggregate, IUserClaimMvoState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IUserClaimMvoAggregate, IUserClaimMvoState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected UserClaimMvoApplicationServiceBase()
 		{
 		}
@@ -44,6 +52,10 @@ namespace Dddml.Wms.Domain.UserClaimMvo
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IUserClaimMvoAggregate aggregate, IUserClaimMvoState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IUserClaimMvoStateProperties)state).UserVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IUserClaimMvoAggregate, IUserClaimMvoState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IUserClaimMvoStateCreated stateCreated)

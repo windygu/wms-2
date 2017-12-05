@@ -19,6 +19,14 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
 		protected abstract IInventoryPRTriggeredStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IInventoryPRTriggeredAggregate, IInventoryPRTriggeredState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IInventoryPRTriggeredAggregate, IInventoryPRTriggeredState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected InventoryPRTriggeredApplicationServiceBase()
 		{
 		}
@@ -42,6 +50,10 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IInventoryPRTriggeredAggregate aggregate, IInventoryPRTriggeredState state)
         {
             StateRepository.Save(state);
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IInventoryPRTriggeredAggregate, IInventoryPRTriggeredState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IInventoryPRTriggeredStateCreated stateCreated)

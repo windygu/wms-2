@@ -20,6 +20,14 @@ namespace Dddml.Wms.Domain.RolePermission
 
 		protected abstract IRolePermissionStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IRolePermissionAggregate, IRolePermissionState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IRolePermissionAggregate, IRolePermissionState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected RolePermissionApplicationServiceBase()
 		{
 		}
@@ -43,6 +51,10 @@ namespace Dddml.Wms.Domain.RolePermission
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IRolePermissionAggregate aggregate, IRolePermissionState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IRolePermissionStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IRolePermissionAggregate, IRolePermissionState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IRolePermissionStateCreated stateCreated)

@@ -20,6 +20,14 @@ namespace Dddml.Wms.Domain.Audience
 
 		protected abstract IAudienceStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IAudienceAggregate, IAudienceState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IAudienceAggregate, IAudienceState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected AudienceApplicationServiceBase()
 		{
 		}
@@ -43,6 +51,10 @@ namespace Dddml.Wms.Domain.Audience
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IAudienceAggregate aggregate, IAudienceState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IAudienceStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IAudienceAggregate, IAudienceState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IAudienceStateCreated stateCreated)

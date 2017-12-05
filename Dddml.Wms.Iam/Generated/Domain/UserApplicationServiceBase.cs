@@ -20,6 +20,14 @@ namespace Dddml.Wms.Domain.User
 
 		protected abstract IUserStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IUserAggregate, IUserState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IUserAggregate, IUserState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected UserApplicationServiceBase()
 		{
 		}
@@ -43,6 +51,10 @@ namespace Dddml.Wms.Domain.User
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IUserAggregate aggregate, IUserState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IUserStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IUserAggregate, IUserState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IUserStateCreated stateCreated)

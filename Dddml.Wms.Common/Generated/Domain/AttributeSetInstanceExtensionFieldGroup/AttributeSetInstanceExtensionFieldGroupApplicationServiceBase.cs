@@ -20,6 +20,14 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 		protected abstract IAttributeSetInstanceExtensionFieldGroupStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IAttributeSetInstanceExtensionFieldGroupAggregate, IAttributeSetInstanceExtensionFieldGroupState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IAttributeSetInstanceExtensionFieldGroupAggregate, IAttributeSetInstanceExtensionFieldGroupState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected AttributeSetInstanceExtensionFieldGroupApplicationServiceBase()
 		{
 		}
@@ -43,6 +51,10 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IAttributeSetInstanceExtensionFieldGroupAggregate aggregate, IAttributeSetInstanceExtensionFieldGroupState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IAttributeSetInstanceExtensionFieldGroupStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IAttributeSetInstanceExtensionFieldGroupAggregate, IAttributeSetInstanceExtensionFieldGroupState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IAttributeSetInstanceExtensionFieldGroupStateCreated stateCreated)

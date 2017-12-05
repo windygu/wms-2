@@ -20,6 +20,14 @@ namespace Dddml.Wms.Domain.DocumentType
 
 		protected abstract IDocumentTypeStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IDocumentTypeAggregate, IDocumentTypeState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IDocumentTypeAggregate, IDocumentTypeState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected DocumentTypeApplicationServiceBase()
 		{
 		}
@@ -43,6 +51,10 @@ namespace Dddml.Wms.Domain.DocumentType
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IDocumentTypeAggregate aggregate, IDocumentTypeState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IDocumentTypeStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IDocumentTypeAggregate, IDocumentTypeState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IDocumentTypeStateCreated stateCreated)

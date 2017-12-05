@@ -21,6 +21,14 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
 		protected abstract IUserLoginMvoStateQueryRepository StateQueryRepository { get; }
 
+        private IAggregateEventListener<IUserLoginMvoAggregate, IUserLoginMvoState> _aggregateEventListener;
+
+        public virtual IAggregateEventListener<IUserLoginMvoAggregate, IUserLoginMvoState> AggregateEventListener
+        {
+            get { return _aggregateEventListener; }
+            set { _aggregateEventListener = value; }
+        }
+
 		protected UserLoginMvoApplicationServiceBase()
 		{
 		}
@@ -44,6 +52,10 @@ namespace Dddml.Wms.Domain.UserLoginMvo
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IUserLoginMvoAggregate aggregate, IUserLoginMvoState state)
         {
             EventStore.AppendEvents(eventStoreAggregateId, ((IUserLoginMvoStateProperties)state).UserVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+            if (AggregateEventListener != null) 
+            {
+                AggregateEventListener.EventAppended(new AggregateEvent<IUserLoginMvoAggregate, IUserLoginMvoState>(aggregate, state, aggregate.Changes));
+            }
         }
 
         public virtual void Initialize(IUserLoginMvoStateCreated stateCreated)
