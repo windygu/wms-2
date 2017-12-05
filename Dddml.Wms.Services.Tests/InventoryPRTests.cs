@@ -37,7 +37,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_1.InventoryPostingRuleId = "OH->PrdSellableTotal";
             inventoryPostingRule_1.Trigger = t;
             inventoryPostingRule_1.Output = o;
-            inventoryPostingRule_1.AccountName = "QuantityOnHand";
+            inventoryPostingRule_1.TriggerAccountName = "QuantityOnHand";
+            inventoryPostingRule_1.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_1.IsOutputNegated = false;
             inventoryPostingRule_1.Active = true;
             inventoryPostingRule_1.CommandId = Guid.NewGuid().ToString();
@@ -47,7 +48,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_2.InventoryPostingRuleId = "Oc->PrdSellableTotal";
             inventoryPostingRule_2.Trigger = t;
             inventoryPostingRule_2.Output = o;
-            inventoryPostingRule_2.AccountName = "QuantityOccupied";
+            inventoryPostingRule_2.TriggerAccountName = "QuantityOccupied";
+            inventoryPostingRule_2.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_2.IsOutputNegated = true;
             inventoryPostingRule_2.Active = true;
             inventoryPostingRule_2.CommandId = Guid.NewGuid().ToString();
@@ -57,7 +59,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_3.InventoryPostingRuleId = "R->PrdSellableTotal";
             inventoryPostingRule_3.Trigger = t;
             inventoryPostingRule_3.Output = o;
-            inventoryPostingRule_3.AccountName = "QuantityReserved";
+            inventoryPostingRule_3.TriggerAccountName = "QuantityReserved";
+            inventoryPostingRule_3.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_3.IsOutputNegated = true;
             inventoryPostingRule_3.Active = true;
             inventoryPostingRule_3.CommandId = Guid.NewGuid().ToString();
@@ -67,7 +70,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_4.InventoryPostingRuleId = "V->PrdSellableTotal";
             inventoryPostingRule_4.Trigger = t;
             inventoryPostingRule_4.Output = o;
-            inventoryPostingRule_4.AccountName = "QuantityVirtual";
+            inventoryPostingRule_4.TriggerAccountName = "QuantityVirtual";
+            inventoryPostingRule_4.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_4.IsOutputNegated = false;
             inventoryPostingRule_4.Active = true;
             inventoryPostingRule_4.CommandId = Guid.NewGuid().ToString();

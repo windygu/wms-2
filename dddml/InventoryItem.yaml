@@ -173,7 +173,9 @@ aggregates:
           type: InventoryItemId
         Output:
           type: InventoryItemId
-        AccountName:
+        TriggerAccountName:
+          type: string
+        OutputAccountName:
           type: string
         # 输出的数量是否需要“取反”  
         IsOutputNegated:

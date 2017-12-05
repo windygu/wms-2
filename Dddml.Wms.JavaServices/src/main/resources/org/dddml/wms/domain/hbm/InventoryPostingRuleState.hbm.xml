@@ -21,7 +21,8 @@
 		<property name="locatorId" ><column name="outputLocatorId" /></property>
 		<property name="attributeSetInstanceId" ><column name="outputAttributeSetInstanceId" /></property>
 	</component>
-	<property name="accountName" ></property>
+	<property name="triggerAccountName" ></property>
+	<property name="outputAccountName" ></property>
 	<property name="isOutputNegated" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>

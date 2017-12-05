@@ -84,7 +84,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             }
         }
 
-		public virtual string AccountName { get; set; }
+		public virtual string TriggerAccountName { get; set; }
+
+		public virtual string OutputAccountName { get; set; }
 
 		public virtual bool? IsOutputNegated { get; set; }
 
@@ -128,13 +130,13 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             }
         }
 
-		public virtual bool? IsPropertyAccountNameRemoved { get; set; }
+		public virtual bool? IsPropertyTriggerAccountNameRemoved { get; set; }
 
-        bool IMergePatchInventoryPostingRule.IsPropertyAccountNameRemoved
+        bool IMergePatchInventoryPostingRule.IsPropertyTriggerAccountNameRemoved
         {
             get
             {
-                var b = this.IsPropertyAccountNameRemoved;
+                var b = this.IsPropertyTriggerAccountNameRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -143,7 +145,26 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             }
             set
             {
-                this.IsPropertyAccountNameRemoved = value;
+                this.IsPropertyTriggerAccountNameRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyOutputAccountNameRemoved { get; set; }
+
+        bool IMergePatchInventoryPostingRule.IsPropertyOutputAccountNameRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyOutputAccountNameRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyOutputAccountNameRemoved = value;
             }
         }
 

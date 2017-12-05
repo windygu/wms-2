@@ -25,9 +25,13 @@ public interface InventoryPostingRuleState
 
     void setOutput(InventoryItemId output);
 
-    String getAccountName();
+    String getTriggerAccountName();
 
-    void setAccountName(String accountName);
+    void setTriggerAccountName(String triggerAccountName);
+
+    String getOutputAccountName();
+
+    void setOutputAccountName(String outputAccountName);
 
     Boolean getIsOutputNegated();
 

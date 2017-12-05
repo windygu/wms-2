@@ -110,7 +110,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		
             e.Trigger = c.Trigger;
             e.Output = c.Output;
-            e.AccountName = c.AccountName;
+            e.TriggerAccountName = c.TriggerAccountName;
+            e.OutputAccountName = c.OutputAccountName;
             e.IsOutputNegated = c.IsOutputNegated;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
@@ -131,12 +132,14 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
             e.Trigger = c.Trigger;
             e.Output = c.Output;
-            e.AccountName = c.AccountName;
+            e.TriggerAccountName = c.TriggerAccountName;
+            e.OutputAccountName = c.OutputAccountName;
             e.IsOutputNegated = c.IsOutputNegated;
             e.Active = c.Active;
             e.IsPropertyTriggerRemoved = c.IsPropertyTriggerRemoved;
             e.IsPropertyOutputRemoved = c.IsPropertyOutputRemoved;
-            e.IsPropertyAccountNameRemoved = c.IsPropertyAccountNameRemoved;
+            e.IsPropertyTriggerAccountNameRemoved = c.IsPropertyTriggerAccountNameRemoved;
+            e.IsPropertyOutputAccountNameRemoved = c.IsPropertyOutputAccountNameRemoved;
             e.IsPropertyIsOutputNegatedRemoved = c.IsPropertyIsOutputNegatedRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 

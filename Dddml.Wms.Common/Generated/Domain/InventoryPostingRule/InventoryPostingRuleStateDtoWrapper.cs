@@ -124,31 +124,59 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             }
         }
 
-		public virtual string AccountName
+		public virtual string TriggerAccountName
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AccountName"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("TriggerAccountName"))
                 {
-                    return _state.AccountName;
+                    return _state.TriggerAccountName;
                 }
                 return null;
             }
             set
             {
-                _state.AccountName = value;
+                _state.TriggerAccountName = value;
             }
         }
 
-        string IInventoryPostingRuleStateProperties.AccountName
+        string IInventoryPostingRuleStateProperties.TriggerAccountName
         {
             get 
             {
-                return (this._state as IInventoryPostingRuleStateProperties).AccountName;
+                return (this._state as IInventoryPostingRuleStateProperties).TriggerAccountName;
             }
             set 
             {
-                (this._state as IInventoryPostingRuleStateProperties).AccountName = value;
+                (this._state as IInventoryPostingRuleStateProperties).TriggerAccountName = value;
+            }
+        }
+
+		public virtual string OutputAccountName
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OutputAccountName"))
+                {
+                    return _state.OutputAccountName;
+                }
+                return null;
+            }
+            set
+            {
+                _state.OutputAccountName = value;
+            }
+        }
+
+        string IInventoryPostingRuleStateProperties.OutputAccountName
+        {
+            get 
+            {
+                return (this._state as IInventoryPostingRuleStateProperties).OutputAccountName;
+            }
+            set 
+            {
+                (this._state as IInventoryPostingRuleStateProperties).OutputAccountName = value;
             }
         }
 

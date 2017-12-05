@@ -179,7 +179,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 			this.Output = e.Output;
 
-			this.AccountName = e.AccountName;
+			this.TriggerAccountName = e.TriggerAccountName;
+
+			this.OutputAccountName = e.OutputAccountName;
 
             this.IsOutputNegated = (e.IsOutputNegated != null && e.IsOutputNegated.HasValue) ? e.IsOutputNegated.Value : default(bool);
 
@@ -222,16 +224,28 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 				this.Output = e.Output;
 			}
 
-			if (e.AccountName == null)
+			if (e.TriggerAccountName == null)
 			{
-				if (e.IsPropertyAccountNameRemoved)
+				if (e.IsPropertyTriggerAccountNameRemoved)
 				{
-					this.AccountName = default(string);
+					this.TriggerAccountName = default(string);
 				}
 			}
 			else
 			{
-				this.AccountName = e.AccountName;
+				this.TriggerAccountName = e.TriggerAccountName;
+			}
+
+			if (e.OutputAccountName == null)
+			{
+				if (e.IsPropertyOutputAccountNameRemoved)
+				{
+					this.OutputAccountName = default(string);
+				}
+			}
+			else
+			{
+				this.OutputAccountName = e.OutputAccountName;
 			}
 
 			if (e.IsOutputNegated == null)

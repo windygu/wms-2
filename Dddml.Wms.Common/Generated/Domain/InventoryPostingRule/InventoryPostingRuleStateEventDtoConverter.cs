@@ -45,7 +45,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             dto.CommandId = e.CommandId;
             dto.Trigger = (e.Trigger == null) ? null : new InventoryItemIdDtoWrapper(e.Trigger);
             dto.Output = (e.Output == null) ? null : new InventoryItemIdDtoWrapper(e.Output);
-            dto.AccountName = e.AccountName;
+            dto.TriggerAccountName = e.TriggerAccountName;
+            dto.OutputAccountName = e.OutputAccountName;
             dto.IsOutputNegated = e.IsOutputNegated;
             dto.Active = e.Active;
             return dto;
@@ -60,12 +61,14 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             dto.CommandId = e.CommandId;
             dto.Trigger = (e.Trigger == null) ? null : new InventoryItemIdDtoWrapper(e.Trigger);
             dto.Output = (e.Output == null) ? null : new InventoryItemIdDtoWrapper(e.Output);
-            dto.AccountName = e.AccountName;
+            dto.TriggerAccountName = e.TriggerAccountName;
+            dto.OutputAccountName = e.OutputAccountName;
             dto.IsOutputNegated = e.IsOutputNegated;
             dto.Active = e.Active;
             dto.IsPropertyTriggerRemoved = e.IsPropertyTriggerRemoved;
             dto.IsPropertyOutputRemoved = e.IsPropertyOutputRemoved;
-            dto.IsPropertyAccountNameRemoved = e.IsPropertyAccountNameRemoved;
+            dto.IsPropertyTriggerAccountNameRemoved = e.IsPropertyTriggerAccountNameRemoved;
+            dto.IsPropertyOutputAccountNameRemoved = e.IsPropertyOutputAccountNameRemoved;
             dto.IsPropertyIsOutputNegatedRemoved = e.IsPropertyIsOutputNegatedRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 

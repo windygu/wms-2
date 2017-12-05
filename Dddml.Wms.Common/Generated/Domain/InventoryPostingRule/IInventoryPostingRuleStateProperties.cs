@@ -21,7 +21,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 		InventoryItemId Output { get; set; }
 
-		string AccountName { get; set; }
+		string TriggerAccountName { get; set; }
+
+		string OutputAccountName { get; set; }
 
 		bool IsOutputNegated { get; set; }
 

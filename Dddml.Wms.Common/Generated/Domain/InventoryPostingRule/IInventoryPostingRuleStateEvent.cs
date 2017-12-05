@@ -22,7 +22,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 		InventoryItemId Output { get; set; }
 
-		string AccountName { get; set; }
+		string TriggerAccountName { get; set; }
+
+		string OutputAccountName { get; set; }
 
 		bool? IsOutputNegated { get; set; }
 
@@ -42,7 +44,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 		bool IsPropertyOutputRemoved { get; set; }
 
-		bool IsPropertyAccountNameRemoved { get; set; }
+		bool IsPropertyTriggerAccountNameRemoved { get; set; }
+
+		bool IsPropertyOutputAccountNameRemoved { get; set; }
 
 		bool IsPropertyIsOutputNegatedRemoved { get; set; }
 

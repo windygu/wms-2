@@ -104,7 +104,36 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
-                    Name = "AccountName",
+                    Name = "TriggerAccountName",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "OutputAccountName",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -567,8 +596,10 @@ namespace Dddml.Wms.Domain.Metadata
             var d = new Dictionary<string, string>();
             d.Add("InventoryPostingRuleId", "InventoryPostingRuleId");
             d.Add("inventoryPostingRuleId", "InventoryPostingRuleId");
-            d.Add("AccountName", "AccountName");
-            d.Add("accountName", "AccountName");
+            d.Add("TriggerAccountName", "TriggerAccountName");
+            d.Add("triggerAccountName", "TriggerAccountName");
+            d.Add("OutputAccountName", "OutputAccountName");
+            d.Add("outputAccountName", "OutputAccountName");
             d.Add("IsOutputNegated", "IsOutputNegated");
             d.Add("isOutputNegated", "IsOutputNegated");
             d.Add("Version", "Version");

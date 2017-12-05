@@ -35,7 +35,13 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set;
         }
 
-        string AccountName
+        string TriggerAccountName
+        {
+            get;
+            set;
+        }
+
+        string OutputAccountName
         {
             get;
             set;

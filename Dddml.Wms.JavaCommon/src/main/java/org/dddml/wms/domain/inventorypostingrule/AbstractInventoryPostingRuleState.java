@@ -46,16 +46,28 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
         this.output = output;
     }
 
-    private String accountName;
+    private String triggerAccountName;
 
-    public String getAccountName()
+    public String getTriggerAccountName()
     {
-        return this.accountName;
+        return this.triggerAccountName;
     }
 
-    public void setAccountName(String accountName)
+    public void setTriggerAccountName(String triggerAccountName)
     {
-        this.accountName = accountName;
+        this.triggerAccountName = triggerAccountName;
+    }
+
+    private String outputAccountName;
+
+    public String getOutputAccountName()
+    {
+        return this.outputAccountName;
+    }
+
+    public void setOutputAccountName(String outputAccountName)
+    {
+        this.outputAccountName = outputAccountName;
     }
 
     private Boolean isOutputNegated;
@@ -220,7 +232,8 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
 
         this.setTrigger(e.getTrigger());
         this.setOutput(e.getOutput());
-        this.setAccountName(e.getAccountName());
+        this.setTriggerAccountName(e.getTriggerAccountName());
+        this.setOutputAccountName(e.getOutputAccountName());
         this.setIsOutputNegated(e.getIsOutputNegated());
         this.setActive(e.getActive());
 
@@ -257,16 +270,27 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
         {
             this.setOutput(e.getOutput());
         }
-        if (e.getAccountName() == null)
+        if (e.getTriggerAccountName() == null)
         {
-            if (e.getIsPropertyAccountNameRemoved() != null && e.getIsPropertyAccountNameRemoved())
+            if (e.getIsPropertyTriggerAccountNameRemoved() != null && e.getIsPropertyTriggerAccountNameRemoved())
             {
-                this.setAccountName(null);
+                this.setTriggerAccountName(null);
             }
         }
         else
         {
-            this.setAccountName(e.getAccountName());
+            this.setTriggerAccountName(e.getTriggerAccountName());
+        }
+        if (e.getOutputAccountName() == null)
+        {
+            if (e.getIsPropertyOutputAccountNameRemoved() != null && e.getIsPropertyOutputAccountNameRemoved())
+            {
+                this.setOutputAccountName(null);
+            }
+        }
+        else
+        {
+            this.setOutputAccountName(e.getOutputAccountName());
         }
         if (e.getIsOutputNegated() == null)
         {

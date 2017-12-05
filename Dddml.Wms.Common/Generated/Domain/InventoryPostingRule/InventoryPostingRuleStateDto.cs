@@ -36,7 +36,13 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set;
         }
 
-        public virtual string AccountName
+        public virtual string TriggerAccountName
+        {
+            get;
+            set;
+        }
+
+        public virtual string OutputAccountName
         {
             get;
             set;
@@ -90,7 +96,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             state.InventoryPostingRuleId = this.InventoryPostingRuleId;
             state.Trigger = (this.Trigger == null) ? null : this.Trigger.ToInventoryItemId();
             state.Output = (this.Output == null) ? null : this.Output.ToInventoryItemId();
-            state.AccountName = this.AccountName;
+            state.TriggerAccountName = this.TriggerAccountName;
+            state.OutputAccountName = this.OutputAccountName;
             if (this.IsOutputNegated != null && this.IsOutputNegated.HasValue) { state.IsOutputNegated = this.IsOutputNegated.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }

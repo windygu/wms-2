@@ -27,9 +27,13 @@ public interface InventoryPostingRuleCommand extends Command
 
         void setOutput(InventoryItemId output);
 
-        String getAccountName();
+        String getTriggerAccountName();
 
-        void setAccountName(String accountName);
+        void setTriggerAccountName(String triggerAccountName);
+
+        String getOutputAccountName();
+
+        void setOutputAccountName(String outputAccountName);
 
         Boolean getIsOutputNegated();
 
@@ -55,9 +59,13 @@ public interface InventoryPostingRuleCommand extends Command
 
         void setIsPropertyOutputRemoved(Boolean removed);
 
-        Boolean getIsPropertyAccountNameRemoved();
+        Boolean getIsPropertyTriggerAccountNameRemoved();
 
-        void setIsPropertyAccountNameRemoved(Boolean removed);
+        void setIsPropertyTriggerAccountNameRemoved(Boolean removed);
+
+        Boolean getIsPropertyOutputAccountNameRemoved();
+
+        void setIsPropertyOutputAccountNameRemoved(Boolean removed);
 
         Boolean getIsPropertyIsOutputNegatedRemoved();
 

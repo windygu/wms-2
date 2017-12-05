@@ -21,7 +21,8 @@
         <property name="LocatorId" ><column name="OutputLocatorId" /></property>
         <property name="AttributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" /></property>
     </component>
-    <property name="AccountName" ></property>
+    <property name="TriggerAccountName" ></property>
+    <property name="OutputAccountName" ></property>
     <property name="IsOutputNegated" ></property>
     <property name="Active" ></property>
 
@@ -40,7 +41,9 @@
 
         <property name="IsPropertyOutputRemoved" column="IsPropertyOutputRemoved"/>
 
-        <property name="IsPropertyAccountNameRemoved" column="IsPropertyAccountNameRemoved"/>
+        <property name="IsPropertyTriggerAccountNameRemoved" column="IsPropertyTriggerAccountNameRemoved"/>
+
+        <property name="IsPropertyOutputAccountNameRemoved" column="IsPropertyOutputAccountNameRemoved"/>
 
         <property name="IsPropertyIsOutputNegatedRemoved" column="IsPropertyIsOutputNegatedRemoved"/>
 

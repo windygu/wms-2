@@ -59,16 +59,28 @@ public abstract class AbstractInventoryPostingRuleCommand extends AbstractComman
             this.output = output;
         }
 
-        private String accountName;
+        private String triggerAccountName;
 
-        public String getAccountName()
+        public String getTriggerAccountName()
         {
-            return this.accountName;
+            return this.triggerAccountName;
         }
 
-        public void setAccountName(String accountName)
+        public void setTriggerAccountName(String triggerAccountName)
         {
-            this.accountName = accountName;
+            this.triggerAccountName = triggerAccountName;
+        }
+
+        private String outputAccountName;
+
+        public String getOutputAccountName()
+        {
+            return this.outputAccountName;
+        }
+
+        public void setOutputAccountName(String outputAccountName)
+        {
+            this.outputAccountName = outputAccountName;
         }
 
         private Boolean isOutputNegated;
@@ -137,16 +149,28 @@ public abstract class AbstractInventoryPostingRuleCommand extends AbstractComman
             this.isPropertyOutputRemoved = removed;
         }
 
-        private Boolean isPropertyAccountNameRemoved;
+        private Boolean isPropertyTriggerAccountNameRemoved;
 
-        public Boolean getIsPropertyAccountNameRemoved()
+        public Boolean getIsPropertyTriggerAccountNameRemoved()
         {
-            return this.isPropertyAccountNameRemoved;
+            return this.isPropertyTriggerAccountNameRemoved;
         }
 
-        public void setIsPropertyAccountNameRemoved(Boolean removed)
+        public void setIsPropertyTriggerAccountNameRemoved(Boolean removed)
         {
-            this.isPropertyAccountNameRemoved = removed;
+            this.isPropertyTriggerAccountNameRemoved = removed;
+        }
+
+        private Boolean isPropertyOutputAccountNameRemoved;
+
+        public Boolean getIsPropertyOutputAccountNameRemoved()
+        {
+            return this.isPropertyOutputAccountNameRemoved;
+        }
+
+        public void setIsPropertyOutputAccountNameRemoved(Boolean removed)
+        {
+            this.isPropertyOutputAccountNameRemoved = removed;
         }
 
         private Boolean isPropertyIsOutputNegatedRemoved;
