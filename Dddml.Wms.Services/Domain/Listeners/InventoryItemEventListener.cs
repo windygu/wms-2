@@ -63,33 +63,46 @@ namespace Dddml.Wms.Domain.Listeners
                     {
                         continue;
                     }
-
-                    var createTriggered = new CreateInventoryPRTriggered();
-                    var sourceEntryId = new InventoryItemEntryId(iie.StateEventId.InventoryItemId, iie.StateEventId.EntrySeqId);
-                    string postingRuleId = pr.InventoryPostingRuleId;
-                    var tid = new InventoryPRTriggeredId(sourceEntryId, postingRuleId);
-                    createTriggered.InventoryPRTriggeredId = tid;
-                    createTriggered.CommandId = Guid.NewGuid().ToString();
-                    InventoryPRTriggeredApplicationService.When(createTriggered);
+                    var tid = GetOrCreateInventoryPRTriggered(pr, iie);
 
                     var outputItemId = GetOutputInventoryItemId(pr, iie.StateEventId.InventoryItemId);
                     //_log.Debug(outputItemId.ProductId + ", " + outputItemId.LocatorId + ", " + outputItemId.AttributeSetInstanceId);
+
                     var sellableItem = GetOrCreateSellableInventoryItem(outputItemId);
 
                     // //////////////////////////////
-                    var updateSellableItem = new MergePatchSellableInventoryItem();
-                    updateSellableItem.SellableInventoryItemId = outputItemId;
-                    updateSellableItem.Version = sellableItem.Version;
-                    updateSellableItem.CommandId = Guid.NewGuid().ToString();
-
-                    var createSellableEntry = updateSellableItem.NewCreateSellableInventoryItemEntry();
-                    createSellableEntry.EntrySeqId = DateTime.Now.Ticks;//todo 
-                    createSellableEntry.QuantitySellable = quantitySellable;
-                    createSellableEntry.SourceEventId = tid;
-                    updateSellableItem.SellableInventoryItemEntryCommands.Add(createSellableEntry);
-                    SellableInventoryItemApplicationService.When(updateSellableItem);
+                    UpdateSellableInventoryItem(quantitySellable, tid, sellableItem);
                 }
             }
+        }
+
+        private void UpdateSellableInventoryItem(decimal quantitySellable, InventoryPRTriggeredId tid, ISellableInventoryItemState sellableItem)
+        {
+            InventoryItemId outputItemId = sellableItem.SellableInventoryItemId;
+
+            var updateSellableItem = new MergePatchSellableInventoryItem();
+            updateSellableItem.SellableInventoryItemId = outputItemId;
+            updateSellableItem.Version = sellableItem.Version;
+            updateSellableItem.CommandId = Guid.NewGuid().ToString();
+
+            var createSellableEntry = updateSellableItem.NewCreateSellableInventoryItemEntry();
+            createSellableEntry.EntrySeqId = DateTime.Now.Ticks;//todo ??
+            createSellableEntry.QuantitySellable = quantitySellable;
+            createSellableEntry.SourceEventId = tid;
+            updateSellableItem.SellableInventoryItemEntryCommands.Add(createSellableEntry);
+            SellableInventoryItemApplicationService.When(updateSellableItem);
+        }
+
+        private InventoryPRTriggeredId GetOrCreateInventoryPRTriggered(IInventoryPostingRuleState pr, IInventoryItemEntryStateCreated iie)
+        {
+            var createTriggered = new CreateInventoryPRTriggered();
+            var sourceEntryId = new InventoryItemEntryId(iie.StateEventId.InventoryItemId, iie.StateEventId.EntrySeqId);
+            string postingRuleId = pr.InventoryPostingRuleId;
+            var tid = new InventoryPRTriggeredId(sourceEntryId, postingRuleId);
+            createTriggered.InventoryPRTriggeredId = tid;
+            createTriggered.CommandId = Guid.NewGuid().ToString();
+            InventoryPRTriggeredApplicationService.When(createTriggered);
+            return tid;//todo If existed??
         }
 
         private decimal GetOutputQuantitySellable(IInventoryPostingRuleState pr, IInventoryItemEntryStateCreated sourceEntry)
