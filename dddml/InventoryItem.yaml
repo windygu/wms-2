@@ -154,7 +154,11 @@ aggregates:
               columnNamePrefix: "SrcEvent"
           reservedProperties:
             noActive: true
-            
+          # ------------------------------
+          uniqueConstraints:
+            UniqueInventoryPRTriggeredId: [SourceEventId]
+          # ------------------------------
+      
       accounts:
         QuantitySellable:
           entryEntityName: "SellableInventoryItemEntry"

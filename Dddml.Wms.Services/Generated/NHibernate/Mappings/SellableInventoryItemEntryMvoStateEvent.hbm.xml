@@ -15,7 +15,7 @@
     <discriminator column="StateEventType" type="String" />
 
     <property name="QuantitySellable" ></property>
-    <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId">
+    <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId" unique="true">
         <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
         <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
         <property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" /></property>

@@ -1820,7 +1820,8 @@
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        CommandId VARCHAR(255),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
+      unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
     );
 
     create table InventoryPostingRules (
@@ -1908,7 +1909,8 @@
        SellableInventoryItemUpdatedAt DATETIME,
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
+      unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
     );
 
     create table SellableInventoryItemEntryMvoStateEvents (
@@ -1941,5 +1943,6 @@
        IsPropertySellableInventoryItemCreatedAtRemoved TINYINT(1),
        IsPropertySellableInventoryItemUpdatedByRemoved TINYINT(1),
        IsPropertySellableInventoryItemUpdatedAtRemoved TINYINT(1),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, SellableInventoryItemVersion)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, SellableInventoryItemVersion),
+      unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
     );
