@@ -28,15 +28,15 @@ namespace Dddml.Wms.Services.Tests
         }
 
         [Test]
-        public void TestCreateInventoryPostingRule()
+        public void TestCreateInventoryPostingRules()
         {
-            var t = new InventoryItemId("*", "*", "*");
-            var o = new InventoryItemId("_", "*", "*");
+            var triggerItemId = new InventoryItemId(InventoryItemIds.Wildcard, InventoryItemIds.Wildcard, InventoryItemIds.Wildcard);
+            var outputItemId = new InventoryItemId(InventoryItemIds.SameAsSource, InventoryItemIds.Empty, InventoryItemIds.Empty);
 
             CreateInventoryPostingRule inventoryPostingRule_1 = new CreateInventoryPostingRule();
-            inventoryPostingRule_1.InventoryPostingRuleId = "OH->PrdSellableTotal";
-            inventoryPostingRule_1.TriggerInventoryItemId = t;
-            inventoryPostingRule_1.OutputInventoryItemId = o;
+            inventoryPostingRule_1.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityOnHandUpdateProductSellableTotal;
+            inventoryPostingRule_1.TriggerInventoryItemId = triggerItemId;
+            inventoryPostingRule_1.OutputInventoryItemId = outputItemId;
             inventoryPostingRule_1.TriggerAccountName = "QuantityOnHand";
             inventoryPostingRule_1.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_1.IsOutputNegated = false;
@@ -45,9 +45,9 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRuleApplicationService.When(inventoryPostingRule_1);
 
             CreateInventoryPostingRule inventoryPostingRule_2 = new CreateInventoryPostingRule();
-            inventoryPostingRule_2.InventoryPostingRuleId = "Oc->PrdSellableTotal";
-            inventoryPostingRule_2.TriggerInventoryItemId = t;
-            inventoryPostingRule_2.OutputInventoryItemId = o;
+            inventoryPostingRule_2.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityOccupiedUpdateProductSellableTotal;
+            inventoryPostingRule_2.TriggerInventoryItemId = triggerItemId;
+            inventoryPostingRule_2.OutputInventoryItemId = outputItemId;
             inventoryPostingRule_2.TriggerAccountName = "QuantityOccupied";
             inventoryPostingRule_2.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_2.IsOutputNegated = true;
@@ -56,9 +56,9 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRuleApplicationService.When(inventoryPostingRule_2);
 
             CreateInventoryPostingRule inventoryPostingRule_3 = new CreateInventoryPostingRule();
-            inventoryPostingRule_3.InventoryPostingRuleId = "R->PrdSellableTotal";
-            inventoryPostingRule_3.TriggerInventoryItemId = t;
-            inventoryPostingRule_3.OutputInventoryItemId = o;
+            inventoryPostingRule_3.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityReservedUpdateProductSellableTotal;
+            inventoryPostingRule_3.TriggerInventoryItemId = triggerItemId;
+            inventoryPostingRule_3.OutputInventoryItemId = outputItemId;
             inventoryPostingRule_3.TriggerAccountName = "QuantityReserved";
             inventoryPostingRule_3.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_3.IsOutputNegated = true;
@@ -67,9 +67,9 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRuleApplicationService.When(inventoryPostingRule_3);
 
             CreateInventoryPostingRule inventoryPostingRule_4 = new CreateInventoryPostingRule();
-            inventoryPostingRule_4.InventoryPostingRuleId = "V->PrdSellableTotal";
-            inventoryPostingRule_4.TriggerInventoryItemId = t;
-            inventoryPostingRule_4.OutputInventoryItemId = o;
+            inventoryPostingRule_4.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityVirtualUpdateProductSellableTotal;
+            inventoryPostingRule_4.TriggerInventoryItemId = triggerItemId;
+            inventoryPostingRule_4.OutputInventoryItemId = outputItemId;
             inventoryPostingRule_4.TriggerAccountName = "QuantityVirtual";
             inventoryPostingRule_4.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_4.IsOutputNegated = false;

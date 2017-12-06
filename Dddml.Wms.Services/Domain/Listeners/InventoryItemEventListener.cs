@@ -56,7 +56,7 @@ namespace Dddml.Wms.Domain.Listeners
             }
             foreach (var iie in itemEntriesCreated)
             {
-                foreach (var pr in GetPostingRules())
+                foreach (var pr in GetPostingRules(iie.StateEventId.InventoryItemId))
                 {
                     var quantitySellable = GetOutputQuantitySellable(pr, iie);
                     if (quantitySellable.Equals(0))
@@ -115,16 +115,24 @@ namespace Dddml.Wms.Domain.Listeners
 
         private InventoryItemId GetOutputInventoryItemId(IInventoryPostingRuleState pr, InventoryItemId triggerItemId)
         {
-            var productId = pr.OutputInventoryItemId.ProductId == "_" ? triggerItemId.ProductId : pr.OutputInventoryItemId.ProductId;
-            var locatorId = pr.OutputInventoryItemId.LocatorId == "_" ? triggerItemId.LocatorId : pr.OutputInventoryItemId.LocatorId;
-            var attrInstSetId = pr.OutputInventoryItemId.AttributeSetInstanceId == "_" ? triggerItemId.AttributeSetInstanceId : pr.OutputInventoryItemId.AttributeSetInstanceId;
+            var productId = pr.OutputInventoryItemId.ProductId == InventoryItemIds.SameAsSource ?
+                triggerItemId.ProductId : pr.OutputInventoryItemId.ProductId;
+            var locatorId = pr.OutputInventoryItemId.LocatorId == InventoryItemIds.SameAsSource ? 
+                triggerItemId.LocatorId : pr.OutputInventoryItemId.LocatorId;
+            var attrInstSetId = pr.OutputInventoryItemId.AttributeSetInstanceId == InventoryItemIds.SameAsSource ? 
+                triggerItemId.AttributeSetInstanceId : pr.OutputInventoryItemId.AttributeSetInstanceId;
             var outputItemId = new InventoryItemId(productId, locatorId, attrInstSetId);
             return outputItemId;
         }
 
-        private IList<IInventoryPostingRuleState> GetPostingRules()
+        private IEnumerable<IInventoryPostingRuleState> GetPostingRules(InventoryItemId triggerItemId)
         {
-            return InventoryPostingRuleApplicationService.GetByProperty("OutputAccountName", "QuantitySellable").ToList();
+            return InventoryPostingRuleApplicationService.GetByProperty("OutputAccountName", "QuantitySellable")
+                .Where(pr =>
+                    (pr.TriggerInventoryItemId.ProductId == InventoryItemIds.Wildcard || pr.TriggerInventoryItemId.ProductId == triggerItemId.ProductId) &&
+                    (pr.TriggerInventoryItemId.LocatorId == InventoryItemIds.Wildcard || pr.TriggerInventoryItemId.LocatorId == triggerItemId.LocatorId) &&
+                    (pr.TriggerInventoryItemId.AttributeSetInstanceId == InventoryItemIds.Wildcard || pr.TriggerInventoryItemId.AttributeSetInstanceId == triggerItemId.AttributeSetInstanceId)
+                );
         }
 
     }

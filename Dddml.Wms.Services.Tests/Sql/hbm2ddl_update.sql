@@ -187,6 +187,10 @@
        UpdatedAt DATETIME,
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
     );
+    alter table InventoryPostingRuleStateEvents 
+        add column IsPropertyTriggerInventoryItemIdRemoved TINYINT(1);
+    alter table InventoryPostingRuleStateEvents 
+        add column IsPropertyOutputInventoryItemIdRemoved TINYINT(1);
     create table SellableInventoryItemEntry_RV (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,

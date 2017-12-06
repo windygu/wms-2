@@ -27,6 +27,9 @@ namespace Dddml.Wms.Services.Tests
             Console.WriteLine("Copy and fix hbm2ddl creation sql, ok.");
 
             initdb.CreateDatabaseAndSeed();
+            // ////////////////////////
+            TestMain.DoSomeTests();
+            // ////////////////////////
             Console.WriteLine("Create database and seed, ok.");
 
             Console.ReadKey();

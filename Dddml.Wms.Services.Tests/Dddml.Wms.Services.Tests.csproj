@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InitDatabase.cs" />
-    <Compile Include="InventoryPRTests.cs" />
+    <Compile Include="InventoryPostingRuleTests.cs" />
     <Compile Include="OrganizationTreeTests.cs" />
     <Compile Include="LocatorTreeTests.cs" />
     <Compile Include="InOutTests.cs" />
@@ -105,6 +105,7 @@
     <Compile Include="AttributeSetInstanceExtensionFieldUtilsTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestMain.cs" />
     <Compile Include="TestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
