@@ -17,9 +17,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	{
 		public virtual string InventoryPostingRuleId { get; set; }
 
-		public virtual InventoryItemId Trigger { get; set; }
+		public virtual InventoryItemId TriggerInventoryItemId { get; set; }
 
-		public virtual InventoryItemId Output { get; set; }
+		public virtual InventoryItemId OutputInventoryItemId { get; set; }
 
 		public virtual string TriggerAccountName { get; set; }
 

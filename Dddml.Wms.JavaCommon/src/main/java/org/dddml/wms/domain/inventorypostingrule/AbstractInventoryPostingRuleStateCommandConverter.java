@@ -38,15 +38,15 @@ public abstract class AbstractInventoryPostingRuleStateCommandConverter<TCreateI
         cmd.setVersion(state.getVersion());
 
         cmd.setInventoryPostingRuleId(state.getInventoryPostingRuleId());
-        cmd.setTrigger(state.getTrigger());
-        cmd.setOutput(state.getOutput());
+        cmd.setTriggerInventoryItemId(state.getTriggerInventoryItemId());
+        cmd.setOutputInventoryItemId(state.getOutputInventoryItemId());
         cmd.setTriggerAccountName(state.getTriggerAccountName());
         cmd.setOutputAccountName(state.getOutputAccountName());
         cmd.setIsOutputNegated(state.getIsOutputNegated());
         cmd.setActive(state.getActive());
             
-        if (state.getTrigger() == null) { cmd.setIsPropertyTriggerRemoved(true); }
-        if (state.getOutput() == null) { cmd.setIsPropertyOutputRemoved(true); }
+        if (state.getTriggerInventoryItemId() == null) { cmd.setIsPropertyTriggerInventoryItemIdRemoved(true); }
+        if (state.getOutputInventoryItemId() == null) { cmd.setIsPropertyOutputInventoryItemIdRemoved(true); }
         if (state.getTriggerAccountName() == null) { cmd.setIsPropertyTriggerAccountNameRemoved(true); }
         if (state.getOutputAccountName() == null) { cmd.setIsPropertyOutputAccountNameRemoved(true); }
         if (state.getIsOutputNegated() == null) { cmd.setIsPropertyIsOutputNegatedRemoved(true); }
@@ -60,8 +60,8 @@ public abstract class AbstractInventoryPostingRuleStateCommandConverter<TCreateI
 
         cmd.setVersion(state.getVersion());
         cmd.setInventoryPostingRuleId(state.getInventoryPostingRuleId());
-        cmd.setTrigger(state.getTrigger());
-        cmd.setOutput(state.getOutput());
+        cmd.setTriggerInventoryItemId(state.getTriggerInventoryItemId());
+        cmd.setOutputInventoryItemId(state.getOutputInventoryItemId());
         cmd.setTriggerAccountName(state.getTriggerAccountName());
         cmd.setOutputAccountName(state.getOutputAccountName());
         cmd.setIsOutputNegated(state.getIsOutputNegated());

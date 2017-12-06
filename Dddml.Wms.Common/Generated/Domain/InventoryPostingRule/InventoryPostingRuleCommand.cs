@@ -53,9 +53,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set { this.CommandId = value; }
         }
 
-		public virtual InventoryItemId Trigger { get; set; }
+		public virtual InventoryItemId TriggerInventoryItemId { get; set; }
 
-		public virtual InventoryItemId Output { get; set; }
+		public virtual InventoryItemId OutputInventoryItemId { get; set; }
 
 		public virtual string TriggerAccountName { get; set; }
 
@@ -97,9 +97,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	public class MergePatchInventoryPostingRule :InventoryPostingRuleCommandBase, IMergePatchInventoryPostingRule
 	{
 
-		public virtual bool IsPropertyTriggerRemoved { get; set; }
+		public virtual bool IsPropertyTriggerInventoryItemIdRemoved { get; set; }
 
-		public virtual bool IsPropertyOutputRemoved { get; set; }
+		public virtual bool IsPropertyOutputInventoryItemIdRemoved { get; set; }
 
 		public virtual bool IsPropertyTriggerAccountNameRemoved { get; set; }
 

@@ -72,8 +72,8 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
     protected InventoryPostingRuleStateEvent map(InventoryPostingRuleCommand.CreateInventoryPostingRule c) {
         InventoryPostingRuleStateEventId stateEventId = new InventoryPostingRuleStateEventId(c.getInventoryPostingRuleId(), c.getVersion());
         InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated e = newInventoryPostingRuleStateCreated(stateEventId);
-        e.setTrigger(c.getTrigger());
-        e.setOutput(c.getOutput());
+        e.setTriggerInventoryItemId(c.getTriggerInventoryItemId());
+        e.setOutputInventoryItemId(c.getOutputInventoryItemId());
         e.setTriggerAccountName(c.getTriggerAccountName());
         e.setOutputAccountName(c.getOutputAccountName());
         e.setIsOutputNegated(c.getIsOutputNegated());
@@ -87,14 +87,14 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
     protected InventoryPostingRuleStateEvent map(InventoryPostingRuleCommand.MergePatchInventoryPostingRule c) {
         InventoryPostingRuleStateEventId stateEventId = new InventoryPostingRuleStateEventId(c.getInventoryPostingRuleId(), c.getVersion());
         InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched e = newInventoryPostingRuleStateMergePatched(stateEventId);
-        e.setTrigger(c.getTrigger());
-        e.setOutput(c.getOutput());
+        e.setTriggerInventoryItemId(c.getTriggerInventoryItemId());
+        e.setOutputInventoryItemId(c.getOutputInventoryItemId());
         e.setTriggerAccountName(c.getTriggerAccountName());
         e.setOutputAccountName(c.getOutputAccountName());
         e.setIsOutputNegated(c.getIsOutputNegated());
         e.setActive(c.getActive());
-        e.setIsPropertyTriggerRemoved(c.getIsPropertyTriggerRemoved());
-        e.setIsPropertyOutputRemoved(c.getIsPropertyOutputRemoved());
+        e.setIsPropertyTriggerInventoryItemIdRemoved(c.getIsPropertyTriggerInventoryItemIdRemoved());
+        e.setIsPropertyOutputInventoryItemIdRemoved(c.getIsPropertyOutputInventoryItemIdRemoved());
         e.setIsPropertyTriggerAccountNameRemoved(c.getIsPropertyTriggerAccountNameRemoved());
         e.setIsPropertyOutputAccountNameRemoved(c.getIsPropertyOutputAccountNameRemoved());
         e.setIsPropertyIsOutputNegatedRemoved(c.getIsPropertyIsOutputNegatedRemoved());

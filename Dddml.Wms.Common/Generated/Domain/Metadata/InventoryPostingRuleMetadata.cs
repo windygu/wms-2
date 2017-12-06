@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Trigger",
+                    Name = "TriggerInventoryItemId",
                     Type = typeof(InventoryItemId),
                     TypeName = "InventoryItemId",
                     IsSimpleValueObjectType = false,
@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
-                    Name = "Output",
+                    Name = "OutputInventoryItemId",
                     Type = typeof(InventoryItemId),
                     TypeName = "InventoryItemId",
                     IsSimpleValueObjectType = false,
@@ -394,7 +394,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Trigger.ProductId",
+                    Name = "TriggerInventoryItemId.ProductId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -412,7 +412,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "Trigger.ProductId",
+                    SourceChainingName = "TriggerInventoryItemId.ProductId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -425,7 +425,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Trigger.LocatorId",
+                    Name = "TriggerInventoryItemId.LocatorId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -443,7 +443,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "Trigger.LocatorId",
+                    SourceChainingName = "TriggerInventoryItemId.LocatorId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -456,7 +456,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Trigger.AttributeSetInstanceId",
+                    Name = "TriggerInventoryItemId.AttributeSetInstanceId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -474,7 +474,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "Trigger.AttributeSetInstanceId",
+                    SourceChainingName = "TriggerInventoryItemId.AttributeSetInstanceId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -487,7 +487,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Output.ProductId",
+                    Name = "OutputInventoryItemId.ProductId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -505,7 +505,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "Output.ProductId",
+                    SourceChainingName = "OutputInventoryItemId.ProductId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -518,7 +518,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Output.LocatorId",
+                    Name = "OutputInventoryItemId.LocatorId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -536,7 +536,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "Output.LocatorId",
+                    SourceChainingName = "OutputInventoryItemId.LocatorId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -549,7 +549,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Output.AttributeSetInstanceId",
+                    Name = "OutputInventoryItemId.AttributeSetInstanceId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -567,7 +567,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "Output.AttributeSetInstanceId",
+                    SourceChainingName = "OutputInventoryItemId.AttributeSetInstanceId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -616,18 +616,18 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
-            d.Add("Trigger.ProductId", "Trigger.ProductId");
-            d.Add("trigger.productId", "Trigger.ProductId");
-            d.Add("Trigger.LocatorId", "Trigger.LocatorId");
-            d.Add("trigger.locatorId", "Trigger.LocatorId");
-            d.Add("Trigger.AttributeSetInstanceId", "Trigger.AttributeSetInstanceId");
-            d.Add("trigger.attributeSetInstanceId", "Trigger.AttributeSetInstanceId");
-            d.Add("Output.ProductId", "Output.ProductId");
-            d.Add("output.productId", "Output.ProductId");
-            d.Add("Output.LocatorId", "Output.LocatorId");
-            d.Add("output.locatorId", "Output.LocatorId");
-            d.Add("Output.AttributeSetInstanceId", "Output.AttributeSetInstanceId");
-            d.Add("output.attributeSetInstanceId", "Output.AttributeSetInstanceId");
+            d.Add("TriggerInventoryItemId.ProductId", "TriggerInventoryItemId.ProductId");
+            d.Add("triggerInventoryItemId.productId", "TriggerInventoryItemId.ProductId");
+            d.Add("TriggerInventoryItemId.LocatorId", "TriggerInventoryItemId.LocatorId");
+            d.Add("triggerInventoryItemId.locatorId", "TriggerInventoryItemId.LocatorId");
+            d.Add("TriggerInventoryItemId.AttributeSetInstanceId", "TriggerInventoryItemId.AttributeSetInstanceId");
+            d.Add("triggerInventoryItemId.attributeSetInstanceId", "TriggerInventoryItemId.AttributeSetInstanceId");
+            d.Add("OutputInventoryItemId.ProductId", "OutputInventoryItemId.ProductId");
+            d.Add("outputInventoryItemId.productId", "OutputInventoryItemId.ProductId");
+            d.Add("OutputInventoryItemId.LocatorId", "OutputInventoryItemId.LocatorId");
+            d.Add("outputInventoryItemId.locatorId", "OutputInventoryItemId.LocatorId");
+            d.Add("OutputInventoryItemId.AttributeSetInstanceId", "OutputInventoryItemId.AttributeSetInstanceId");
+            d.Add("outputInventoryItemId.attributeSetInstanceId", "OutputInventoryItemId.AttributeSetInstanceId");
             _filteringPropertyAliasDictionary = d;
         }
 

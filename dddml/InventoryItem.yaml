@@ -169,10 +169,12 @@ aggregates:
         name: InventoryPostingRuleId
         type: string
       properties:
-        Trigger:
+        TriggerInventoryItemId:
           type: InventoryItemId
-        Output:
+          columnNamePrefix: "Trigger"
+        OutputInventoryItemId:
           type: InventoryItemId
+          columnNamePrefix: "Output"
         TriggerAccountName:
           type: string
         OutputAccountName:

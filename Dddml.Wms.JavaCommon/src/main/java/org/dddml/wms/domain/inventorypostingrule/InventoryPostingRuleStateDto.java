@@ -22,28 +22,28 @@ public class InventoryPostingRuleStateDto
         this.inventoryPostingRuleId = inventoryPostingRuleId;
     }
 
-    private InventoryItemIdDto trigger;
+    private InventoryItemIdDto triggerInventoryItemId;
 
-    public InventoryItemIdDto getTrigger()
+    public InventoryItemIdDto getTriggerInventoryItemId()
     {
-        return this.trigger;
+        return this.triggerInventoryItemId;
     }
 
-    public void setTrigger(InventoryItemIdDto trigger)
+    public void setTriggerInventoryItemId(InventoryItemIdDto triggerInventoryItemId)
     {
-        this.trigger = trigger;
+        this.triggerInventoryItemId = triggerInventoryItemId;
     }
 
-    private InventoryItemIdDto output;
+    private InventoryItemIdDto outputInventoryItemId;
 
-    public InventoryItemIdDto getOutput()
+    public InventoryItemIdDto getOutputInventoryItemId()
     {
-        return this.output;
+        return this.outputInventoryItemId;
     }
 
-    public void setOutput(InventoryItemIdDto output)
+    public void setOutputInventoryItemId(InventoryItemIdDto outputInventoryItemId)
     {
-        this.output = output;
+        this.outputInventoryItemId = outputInventoryItemId;
     }
 
     private String triggerAccountName;
@@ -183,11 +183,11 @@ public class InventoryPostingRuleStateDto
             if (returnedFieldsContains("InventoryPostingRuleId")) {
                 dto.setInventoryPostingRuleId(state.getInventoryPostingRuleId());
             }
-            if (returnedFieldsContains("Trigger")) {
-                dto.setTrigger((state.getTrigger() == null) ? null : new InventoryItemIdDtoWrapper(state.getTrigger()));
+            if (returnedFieldsContains("TriggerInventoryItemId")) {
+                dto.setTriggerInventoryItemId((state.getTriggerInventoryItemId() == null) ? null : new InventoryItemIdDtoWrapper(state.getTriggerInventoryItemId()));
             }
-            if (returnedFieldsContains("Output")) {
-                dto.setOutput((state.getOutput() == null) ? null : new InventoryItemIdDtoWrapper(state.getOutput()));
+            if (returnedFieldsContains("OutputInventoryItemId")) {
+                dto.setOutputInventoryItemId((state.getOutputInventoryItemId() == null) ? null : new InventoryItemIdDtoWrapper(state.getOutputInventoryItemId()));
             }
             if (returnedFieldsContains("TriggerAccountName")) {
                 dto.setTriggerAccountName(state.getTriggerAccountName());

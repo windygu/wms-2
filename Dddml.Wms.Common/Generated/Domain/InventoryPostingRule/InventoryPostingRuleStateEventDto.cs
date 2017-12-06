@@ -43,35 +43,35 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set { StateEventId.Version = value; }
         }
 
-		private InventoryItemIdDto _trigger = new InventoryItemIdDto();
+		private InventoryItemIdDto _triggerInventoryItemId = new InventoryItemIdDto();
 
-		public virtual InventoryItemIdDto Trigger { get { return _trigger; } set { _trigger = value; } }
+		public virtual InventoryItemIdDto TriggerInventoryItemId { get { return _triggerInventoryItemId; } set { _triggerInventoryItemId = value; } }
 
-		InventoryItemId IInventoryPostingRuleStateEvent.Trigger
+		InventoryItemId IInventoryPostingRuleStateEvent.TriggerInventoryItemId
 		{ 
 			get 
 			{
-				return this.Trigger == null ? null : this.Trigger.ToInventoryItemId(); 
+				return this.TriggerInventoryItemId == null ? null : this.TriggerInventoryItemId.ToInventoryItemId(); 
 			} 
 			set
 			{
-				if (value == null) { Trigger = null; } else { Trigger = new InventoryItemIdDtoWrapper(value); }
+				if (value == null) { TriggerInventoryItemId = null; } else { TriggerInventoryItemId = new InventoryItemIdDtoWrapper(value); }
 			} 
 		}
 
-		private InventoryItemIdDto _output = new InventoryItemIdDto();
+		private InventoryItemIdDto _outputInventoryItemId = new InventoryItemIdDto();
 
-		public virtual InventoryItemIdDto Output { get { return _output; } set { _output = value; } }
+		public virtual InventoryItemIdDto OutputInventoryItemId { get { return _outputInventoryItemId; } set { _outputInventoryItemId = value; } }
 
-		InventoryItemId IInventoryPostingRuleStateEvent.Output
+		InventoryItemId IInventoryPostingRuleStateEvent.OutputInventoryItemId
 		{ 
 			get 
 			{
-				return this.Output == null ? null : this.Output.ToInventoryItemId(); 
+				return this.OutputInventoryItemId == null ? null : this.OutputInventoryItemId.ToInventoryItemId(); 
 			} 
 			set
 			{
-				if (value == null) { Output = null; } else { Output = new InventoryItemIdDtoWrapper(value); }
+				if (value == null) { OutputInventoryItemId = null; } else { OutputInventoryItemId = new InventoryItemIdDtoWrapper(value); }
 			} 
 		}
 
@@ -112,13 +112,13 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             }
         }
 
-		public virtual bool? IsPropertyTriggerRemoved { get; set; }
+		public virtual bool? IsPropertyTriggerInventoryItemIdRemoved { get; set; }
 
-        bool IInventoryPostingRuleStateMergePatched.IsPropertyTriggerRemoved
+        bool IInventoryPostingRuleStateMergePatched.IsPropertyTriggerInventoryItemIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyTriggerRemoved;
+                var b = this.IsPropertyTriggerInventoryItemIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -127,17 +127,17 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             }
             set 
             {
-                this.IsPropertyTriggerRemoved = value;
+                this.IsPropertyTriggerInventoryItemIdRemoved = value;
             }
         }
 
-		public virtual bool? IsPropertyOutputRemoved { get; set; }
+		public virtual bool? IsPropertyOutputInventoryItemIdRemoved { get; set; }
 
-        bool IInventoryPostingRuleStateMergePatched.IsPropertyOutputRemoved
+        bool IInventoryPostingRuleStateMergePatched.IsPropertyOutputInventoryItemIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyOutputRemoved;
+                var b = this.IsPropertyOutputInventoryItemIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -146,7 +146,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             }
             set 
             {
-                this.IsPropertyOutputRemoved = value;
+                this.IsPropertyOutputInventoryItemIdRemoved = value;
             }
         }
 

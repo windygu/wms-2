@@ -17,9 +17,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	{
 		string InventoryPostingRuleId { get; set; }
 
-		InventoryItemId Trigger { get; set; }
+		InventoryItemId TriggerInventoryItemId { get; set; }
 
-		InventoryItemId Output { get; set; }
+		InventoryItemId OutputInventoryItemId { get; set; }
 
 		string TriggerAccountName { get; set; }
 

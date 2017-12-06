@@ -108,8 +108,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 			var stateEventId = new InventoryPostingRuleStateEventId(c.InventoryPostingRuleId, c.Version);
             IInventoryPostingRuleStateCreated e = NewInventoryPostingRuleStateCreated(stateEventId);
 		
-            e.Trigger = c.Trigger;
-            e.Output = c.Output;
+            e.TriggerInventoryItemId = c.TriggerInventoryItemId;
+            e.OutputInventoryItemId = c.OutputInventoryItemId;
             e.TriggerAccountName = c.TriggerAccountName;
             e.OutputAccountName = c.OutputAccountName;
             e.IsOutputNegated = c.IsOutputNegated;
@@ -130,14 +130,14 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 			var stateEventId = new InventoryPostingRuleStateEventId(c.InventoryPostingRuleId, c.Version);
             IInventoryPostingRuleStateMergePatched e = NewInventoryPostingRuleStateMergePatched(stateEventId);
 
-            e.Trigger = c.Trigger;
-            e.Output = c.Output;
+            e.TriggerInventoryItemId = c.TriggerInventoryItemId;
+            e.OutputInventoryItemId = c.OutputInventoryItemId;
             e.TriggerAccountName = c.TriggerAccountName;
             e.OutputAccountName = c.OutputAccountName;
             e.IsOutputNegated = c.IsOutputNegated;
             e.Active = c.Active;
-            e.IsPropertyTriggerRemoved = c.IsPropertyTriggerRemoved;
-            e.IsPropertyOutputRemoved = c.IsPropertyOutputRemoved;
+            e.IsPropertyTriggerInventoryItemIdRemoved = c.IsPropertyTriggerInventoryItemIdRemoved;
+            e.IsPropertyOutputInventoryItemIdRemoved = c.IsPropertyOutputInventoryItemIdRemoved;
             e.IsPropertyTriggerAccountNameRemoved = c.IsPropertyTriggerAccountNameRemoved;
             e.IsPropertyOutputAccountNameRemoved = c.IsPropertyOutputAccountNameRemoved;
             e.IsPropertyIsOutputNegatedRemoved = c.IsPropertyIsOutputNegatedRemoved;

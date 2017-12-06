@@ -15,15 +15,15 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<component name="trigger" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
-		<property name="productId" ><column name="triggerProductId" /></property>
-		<property name="locatorId" ><column name="triggerLocatorId" /></property>
-		<property name="attributeSetInstanceId" ><column name="triggerAttributeSetInstanceId" /></property>
+	<component name="triggerInventoryItemId" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
+		<property name="productId" ><column name="TriggerProductId" /></property>
+		<property name="locatorId" ><column name="TriggerLocatorId" /></property>
+		<property name="attributeSetInstanceId" ><column name="TriggerAttributeSetInstanceId" /></property>
 	</component>
-	<component name="output" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
-		<property name="productId" ><column name="outputProductId" /></property>
-		<property name="locatorId" ><column name="outputLocatorId" /></property>
-		<property name="attributeSetInstanceId" ><column name="outputAttributeSetInstanceId" /></property>
+	<component name="outputInventoryItemId" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
+		<property name="productId" ><column name="OutputProductId" /></property>
+		<property name="locatorId" ><column name="OutputLocatorId" /></property>
+		<property name="attributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" /></property>
 	</component>
 	<property name="triggerAccountName" ></property>
 	<property name="outputAccountName" ></property>
@@ -42,9 +42,9 @@
 
     <subclass name="AbstractInventoryPostingRuleStateEvent$SimpleInventoryPostingRuleStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyTriggerRemoved" column="IsPropertyTriggerRemoved"/>
+        <property name="isPropertyTriggerInventoryItemIdRemoved" column="IsPropertyTriggerInventoryItemIdRemoved"/>
 
-        <property name="isPropertyOutputRemoved" column="IsPropertyOutputRemoved"/>
+        <property name="isPropertyOutputInventoryItemIdRemoved" column="IsPropertyOutputInventoryItemIdRemoved"/>
 
         <property name="isPropertyTriggerAccountNameRemoved" column="IsPropertyTriggerAccountNameRemoved"/>
 

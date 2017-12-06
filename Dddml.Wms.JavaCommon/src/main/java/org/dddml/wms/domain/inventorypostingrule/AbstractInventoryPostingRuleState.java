@@ -22,28 +22,28 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
         this.inventoryPostingRuleId = inventoryPostingRuleId;
     }
 
-    private InventoryItemId trigger;
+    private InventoryItemId triggerInventoryItemId;
 
-    public InventoryItemId getTrigger()
+    public InventoryItemId getTriggerInventoryItemId()
     {
-        return this.trigger;
+        return this.triggerInventoryItemId;
     }
 
-    public void setTrigger(InventoryItemId trigger)
+    public void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId)
     {
-        this.trigger = trigger;
+        this.triggerInventoryItemId = triggerInventoryItemId;
     }
 
-    private InventoryItemId output;
+    private InventoryItemId outputInventoryItemId;
 
-    public InventoryItemId getOutput()
+    public InventoryItemId getOutputInventoryItemId()
     {
-        return this.output;
+        return this.outputInventoryItemId;
     }
 
-    public void setOutput(InventoryItemId output)
+    public void setOutputInventoryItemId(InventoryItemId outputInventoryItemId)
     {
-        this.output = output;
+        this.outputInventoryItemId = outputInventoryItemId;
     }
 
     private String triggerAccountName;
@@ -230,8 +230,8 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
     {
         throwOnWrongEvent(e);
 
-        this.setTrigger(e.getTrigger());
-        this.setOutput(e.getOutput());
+        this.setTriggerInventoryItemId(e.getTriggerInventoryItemId());
+        this.setOutputInventoryItemId(e.getOutputInventoryItemId());
         this.setTriggerAccountName(e.getTriggerAccountName());
         this.setOutputAccountName(e.getOutputAccountName());
         this.setIsOutputNegated(e.getIsOutputNegated());
@@ -248,27 +248,27 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
     {
         throwOnWrongEvent(e);
 
-        if (e.getTrigger() == null)
+        if (e.getTriggerInventoryItemId() == null)
         {
-            if (e.getIsPropertyTriggerRemoved() != null && e.getIsPropertyTriggerRemoved())
+            if (e.getIsPropertyTriggerInventoryItemIdRemoved() != null && e.getIsPropertyTriggerInventoryItemIdRemoved())
             {
-                this.setTrigger(null);
+                this.setTriggerInventoryItemId(null);
             }
         }
         else
         {
-            this.setTrigger(e.getTrigger());
+            this.setTriggerInventoryItemId(e.getTriggerInventoryItemId());
         }
-        if (e.getOutput() == null)
+        if (e.getOutputInventoryItemId() == null)
         {
-            if (e.getIsPropertyOutputRemoved() != null && e.getIsPropertyOutputRemoved())
+            if (e.getIsPropertyOutputInventoryItemIdRemoved() != null && e.getIsPropertyOutputInventoryItemIdRemoved())
             {
-                this.setOutput(null);
+                this.setOutputInventoryItemId(null);
             }
         }
         else
         {
-            this.setOutput(e.getOutput());
+            this.setOutputInventoryItemId(e.getOutputInventoryItemId());
         }
         if (e.getTriggerAccountName() == null)
         {

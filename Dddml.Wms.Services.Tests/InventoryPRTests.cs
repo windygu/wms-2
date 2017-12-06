@@ -35,8 +35,8 @@ namespace Dddml.Wms.Services.Tests
 
             CreateInventoryPostingRule inventoryPostingRule_1 = new CreateInventoryPostingRule();
             inventoryPostingRule_1.InventoryPostingRuleId = "OH->PrdSellableTotal";
-            inventoryPostingRule_1.Trigger = t;
-            inventoryPostingRule_1.Output = o;
+            inventoryPostingRule_1.TriggerInventoryItemId = t;
+            inventoryPostingRule_1.OutputInventoryItemId = o;
             inventoryPostingRule_1.TriggerAccountName = "QuantityOnHand";
             inventoryPostingRule_1.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_1.IsOutputNegated = false;
@@ -46,8 +46,8 @@ namespace Dddml.Wms.Services.Tests
 
             CreateInventoryPostingRule inventoryPostingRule_2 = new CreateInventoryPostingRule();
             inventoryPostingRule_2.InventoryPostingRuleId = "Oc->PrdSellableTotal";
-            inventoryPostingRule_2.Trigger = t;
-            inventoryPostingRule_2.Output = o;
+            inventoryPostingRule_2.TriggerInventoryItemId = t;
+            inventoryPostingRule_2.OutputInventoryItemId = o;
             inventoryPostingRule_2.TriggerAccountName = "QuantityOccupied";
             inventoryPostingRule_2.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_2.IsOutputNegated = true;
@@ -57,8 +57,8 @@ namespace Dddml.Wms.Services.Tests
 
             CreateInventoryPostingRule inventoryPostingRule_3 = new CreateInventoryPostingRule();
             inventoryPostingRule_3.InventoryPostingRuleId = "R->PrdSellableTotal";
-            inventoryPostingRule_3.Trigger = t;
-            inventoryPostingRule_3.Output = o;
+            inventoryPostingRule_3.TriggerInventoryItemId = t;
+            inventoryPostingRule_3.OutputInventoryItemId = o;
             inventoryPostingRule_3.TriggerAccountName = "QuantityReserved";
             inventoryPostingRule_3.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_3.IsOutputNegated = true;
@@ -68,8 +68,8 @@ namespace Dddml.Wms.Services.Tests
 
             CreateInventoryPostingRule inventoryPostingRule_4 = new CreateInventoryPostingRule();
             inventoryPostingRule_4.InventoryPostingRuleId = "V->PrdSellableTotal";
-            inventoryPostingRule_4.Trigger = t;
-            inventoryPostingRule_4.Output = o;
+            inventoryPostingRule_4.TriggerInventoryItemId = t;
+            inventoryPostingRule_4.OutputInventoryItemId = o;
             inventoryPostingRule_4.TriggerAccountName = "QuantityVirtual";
             inventoryPostingRule_4.OutputAccountName = "QuantitySellable";
             inventoryPostingRule_4.IsOutputNegated = false;

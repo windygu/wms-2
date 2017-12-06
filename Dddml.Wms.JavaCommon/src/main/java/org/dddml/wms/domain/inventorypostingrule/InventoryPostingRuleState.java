@@ -17,13 +17,13 @@ public interface InventoryPostingRuleState
 
     void setInventoryPostingRuleId(String inventoryPostingRuleId);
 
-    InventoryItemId getTrigger();
+    InventoryItemId getTriggerInventoryItemId();
 
-    void setTrigger(InventoryItemId trigger);
+    void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId);
 
-    InventoryItemId getOutput();
+    InventoryItemId getOutputInventoryItemId();
 
-    void setOutput(InventoryItemId output);
+    void setOutputInventoryItemId(InventoryItemId outputInventoryItemId);
 
     String getTriggerAccountName();
 

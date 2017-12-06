@@ -175,9 +175,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		public virtual void When(IInventoryPostingRuleStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.Trigger = e.Trigger;
+			this.TriggerInventoryItemId = e.TriggerInventoryItemId;
 
-			this.Output = e.Output;
+			this.OutputInventoryItemId = e.OutputInventoryItemId;
 
 			this.TriggerAccountName = e.TriggerAccountName;
 
@@ -200,28 +200,28 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.Trigger == null)
+			if (e.TriggerInventoryItemId == null)
 			{
-				if (e.IsPropertyTriggerRemoved)
+				if (e.IsPropertyTriggerInventoryItemIdRemoved)
 				{
-					this.Trigger = default(InventoryItemId);
+					this.TriggerInventoryItemId = default(InventoryItemId);
 				}
 			}
 			else
 			{
-				this.Trigger = e.Trigger;
+				this.TriggerInventoryItemId = e.TriggerInventoryItemId;
 			}
 
-			if (e.Output == null)
+			if (e.OutputInventoryItemId == null)
 			{
-				if (e.IsPropertyOutputRemoved)
+				if (e.IsPropertyOutputInventoryItemIdRemoved)
 				{
-					this.Output = default(InventoryItemId);
+					this.OutputInventoryItemId = default(InventoryItemId);
 				}
 			}
 			else
 			{
-				this.Output = e.Output;
+				this.OutputInventoryItemId = e.OutputInventoryItemId;
 			}
 
 			if (e.TriggerAccountName == null)

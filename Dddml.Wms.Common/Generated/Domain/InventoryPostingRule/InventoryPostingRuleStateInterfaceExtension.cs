@@ -49,15 +49,15 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             cmd.Version = ((IInventoryPostingRuleStateProperties)state).Version;
 
             cmd.InventoryPostingRuleId = state.InventoryPostingRuleId;
-            cmd.Trigger = state.Trigger;
-            cmd.Output = state.Output;
+            cmd.TriggerInventoryItemId = state.TriggerInventoryItemId;
+            cmd.OutputInventoryItemId = state.OutputInventoryItemId;
             cmd.TriggerAccountName = state.TriggerAccountName;
             cmd.OutputAccountName = state.OutputAccountName;
             cmd.IsOutputNegated = state.IsOutputNegated;
             cmd.Active = ((IInventoryPostingRuleStateProperties)state).Active;
             
-            if (state.Trigger == null) { cmd.IsPropertyTriggerRemoved = true; }
-            if (state.Output == null) { cmd.IsPropertyOutputRemoved = true; }
+            if (state.TriggerInventoryItemId == null) { cmd.IsPropertyTriggerInventoryItemIdRemoved = true; }
+            if (state.OutputInventoryItemId == null) { cmd.IsPropertyOutputInventoryItemIdRemoved = true; }
             if (state.TriggerAccountName == null) { cmd.IsPropertyTriggerAccountNameRemoved = true; }
             if (state.OutputAccountName == null) { cmd.IsPropertyOutputAccountNameRemoved = true; }
             return cmd;
@@ -71,8 +71,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             cmd.Version = ((IInventoryPostingRuleStateProperties)state).Version;
 
             cmd.InventoryPostingRuleId = state.InventoryPostingRuleId;
-            cmd.Trigger = state.Trigger;
-            cmd.Output = state.Output;
+            cmd.TriggerInventoryItemId = state.TriggerInventoryItemId;
+            cmd.OutputInventoryItemId = state.OutputInventoryItemId;
             cmd.TriggerAccountName = state.TriggerAccountName;
             cmd.OutputAccountName = state.OutputAccountName;
             cmd.IsOutputNegated = state.IsOutputNegated;

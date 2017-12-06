@@ -11,12 +11,12 @@
     </composite-id>
     <discriminator column="StateEventType" type="String" />
 
-    <component name="Trigger" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
+    <component name="TriggerInventoryItemId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
         <property name="ProductId" ><column name="TriggerProductId" /></property>
         <property name="LocatorId" ><column name="TriggerLocatorId" /></property>
         <property name="AttributeSetInstanceId" ><column name="TriggerAttributeSetInstanceId" /></property>
     </component>
-    <component name="Output" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
+    <component name="OutputInventoryItemId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
         <property name="ProductId" ><column name="OutputProductId" /></property>
         <property name="LocatorId" ><column name="OutputLocatorId" /></property>
         <property name="AttributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" /></property>
@@ -37,9 +37,9 @@
     <subclass name="InventoryPostingRuleStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyTriggerRemoved" column="IsPropertyTriggerRemoved"/>
+        <property name="IsPropertyTriggerInventoryItemIdRemoved" column="IsPropertyTriggerInventoryItemIdRemoved"/>
 
-        <property name="IsPropertyOutputRemoved" column="IsPropertyOutputRemoved"/>
+        <property name="IsPropertyOutputInventoryItemIdRemoved" column="IsPropertyOutputInventoryItemIdRemoved"/>
 
         <property name="IsPropertyTriggerAccountNameRemoved" column="IsPropertyTriggerAccountNameRemoved"/>
 

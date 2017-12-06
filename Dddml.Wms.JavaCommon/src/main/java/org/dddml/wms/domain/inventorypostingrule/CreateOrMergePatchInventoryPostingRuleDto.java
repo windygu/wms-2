@@ -6,28 +6,28 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventoryPostingRuleCommandDto
 {
-    private InventoryItemIdDto trigger;
+    private InventoryItemIdDto triggerInventoryItemId;
 
-    public InventoryItemIdDto getTrigger()
+    public InventoryItemIdDto getTriggerInventoryItemId()
     {
-        return this.trigger;
+        return this.triggerInventoryItemId;
     }
 
-    public void setTrigger(InventoryItemIdDto trigger)
+    public void setTriggerInventoryItemId(InventoryItemIdDto triggerInventoryItemId)
     {
-        this.trigger = trigger;
+        this.triggerInventoryItemId = triggerInventoryItemId;
     }
 
-    private InventoryItemIdDto output;
+    private InventoryItemIdDto outputInventoryItemId;
 
-    public InventoryItemIdDto getOutput()
+    public InventoryItemIdDto getOutputInventoryItemId()
     {
-        return this.output;
+        return this.outputInventoryItemId;
     }
 
-    public void setOutput(InventoryItemIdDto output)
+    public void setOutputInventoryItemId(InventoryItemIdDto outputInventoryItemId)
     {
-        this.output = output;
+        this.outputInventoryItemId = outputInventoryItemId;
     }
 
     private String triggerAccountName;
@@ -78,28 +78,28 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         this.active = active;
     }
 
-    private Boolean isPropertyTriggerRemoved;
+    private Boolean isPropertyTriggerInventoryItemIdRemoved;
 
-    public Boolean getIsPropertyTriggerRemoved()
+    public Boolean getIsPropertyTriggerInventoryItemIdRemoved()
     {
-        return this.isPropertyTriggerRemoved;
+        return this.isPropertyTriggerInventoryItemIdRemoved;
     }
 
-    public void setIsPropertyTriggerRemoved(Boolean removed)
+    public void setIsPropertyTriggerInventoryItemIdRemoved(Boolean removed)
     {
-        this.isPropertyTriggerRemoved = removed;
+        this.isPropertyTriggerInventoryItemIdRemoved = removed;
     }
 
-    private Boolean isPropertyOutputRemoved;
+    private Boolean isPropertyOutputInventoryItemIdRemoved;
 
-    public Boolean getIsPropertyOutputRemoved()
+    public Boolean getIsPropertyOutputInventoryItemIdRemoved()
     {
-        return this.isPropertyOutputRemoved;
+        return this.isPropertyOutputInventoryItemIdRemoved;
     }
 
-    public void setIsPropertyOutputRemoved(Boolean removed)
+    public void setIsPropertyOutputInventoryItemIdRemoved(Boolean removed)
     {
-        this.isPropertyOutputRemoved = removed;
+        this.isPropertyOutputInventoryItemIdRemoved = removed;
     }
 
     private Boolean isPropertyTriggerAccountNameRemoved;
@@ -153,8 +153,8 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
     public void copyTo(AbstractInventoryPostingRuleCommand.AbstractCreateOrMergePatchInventoryPostingRule command)
     {
         ((AbstractInventoryPostingRuleCommandDto) this).copyTo(command);
-        command.setTrigger((this.getTrigger() == null) ? null : this.getTrigger().toInventoryItemId());
-        command.setOutput((this.getOutput() == null) ? null : this.getOutput().toInventoryItemId());
+        command.setTriggerInventoryItemId((this.getTriggerInventoryItemId() == null) ? null : this.getTriggerInventoryItemId().toInventoryItemId());
+        command.setOutputInventoryItemId((this.getOutputInventoryItemId() == null) ? null : this.getOutputInventoryItemId().toInventoryItemId());
         command.setTriggerAccountName(this.getTriggerAccountName());
         command.setOutputAccountName(this.getOutputAccountName());
         command.setIsOutputNegated(this.getIsOutputNegated());
@@ -183,8 +183,8 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
     public void copyTo(AbstractInventoryPostingRuleCommand.AbstractMergePatchInventoryPostingRule command)
     {
         copyTo((AbstractInventoryPostingRuleCommand.AbstractCreateOrMergePatchInventoryPostingRule) command);
-        command.setIsPropertyTriggerRemoved(this.getIsPropertyTriggerRemoved());
-        command.setIsPropertyOutputRemoved(this.getIsPropertyOutputRemoved());
+        command.setIsPropertyTriggerInventoryItemIdRemoved(this.getIsPropertyTriggerInventoryItemIdRemoved());
+        command.setIsPropertyOutputInventoryItemIdRemoved(this.getIsPropertyOutputInventoryItemIdRemoved());
         command.setIsPropertyTriggerAccountNameRemoved(this.getIsPropertyTriggerAccountNameRemoved());
         command.setIsPropertyOutputAccountNameRemoved(this.getIsPropertyOutputAccountNameRemoved());
         command.setIsPropertyIsOutputNegatedRemoved(this.getIsPropertyIsOutputNegatedRemoved());

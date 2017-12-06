@@ -9,12 +9,12 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <component name="Trigger" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
+    <component name="TriggerInventoryItemId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
         <property name="ProductId" ><column name="TriggerProductId" /></property>
         <property name="LocatorId" ><column name="TriggerLocatorId" /></property>
         <property name="AttributeSetInstanceId" ><column name="TriggerAttributeSetInstanceId" /></property>
     </component>
-    <component name="Output" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
+    <component name="OutputInventoryItemId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
         <property name="ProductId" ><column name="OutputProductId" /></property>
         <property name="LocatorId" ><column name="OutputLocatorId" /></property>
         <property name="AttributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" /></property>

@@ -115,9 +115,9 @@ namespace Dddml.Wms.Domain.Listeners
 
         private InventoryItemId GetOutputInventoryItemId(IInventoryPostingRuleState pr, InventoryItemId triggerItemId)
         {
-            var productId = pr.Output.ProductId == "_" ? triggerItemId.ProductId : pr.Output.ProductId;
-            var locatorId = pr.Output.LocatorId == "_" ? triggerItemId.LocatorId : pr.Output.LocatorId;
-            var attrInstSetId = pr.Output.AttributeSetInstanceId == "_" ? triggerItemId.AttributeSetInstanceId : pr.Output.AttributeSetInstanceId;
+            var productId = pr.OutputInventoryItemId.ProductId == "_" ? triggerItemId.ProductId : pr.OutputInventoryItemId.ProductId;
+            var locatorId = pr.OutputInventoryItemId.LocatorId == "_" ? triggerItemId.LocatorId : pr.OutputInventoryItemId.LocatorId;
+            var attrInstSetId = pr.OutputInventoryItemId.AttributeSetInstanceId == "_" ? triggerItemId.AttributeSetInstanceId : pr.OutputInventoryItemId.AttributeSetInstanceId;
             var outputItemId = new InventoryItemId(productId, locatorId, attrInstSetId);
             return outputItemId;
         }

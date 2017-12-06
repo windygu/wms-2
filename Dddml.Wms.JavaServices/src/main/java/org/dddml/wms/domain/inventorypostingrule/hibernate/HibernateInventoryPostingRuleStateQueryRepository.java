@@ -27,7 +27,7 @@ public class HibernateInventoryPostingRuleStateQueryRepository implements Invent
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("InventoryPostingRuleId", "Trigger", "Output", "TriggerAccountName", "OutputAccountName", "IsOutputNegated", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("InventoryPostingRuleId", "TriggerInventoryItemId", "OutputInventoryItemId", "TriggerAccountName", "OutputAccountName", "IsOutputNegated", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

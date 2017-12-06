@@ -14,13 +14,13 @@ public interface InventoryPostingRuleStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    InventoryItemId getTrigger();
+    InventoryItemId getTriggerInventoryItemId();
 
-    void setTrigger(InventoryItemId trigger);
+    void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId);
 
-    InventoryItemId getOutput();
+    InventoryItemId getOutputInventoryItemId();
 
-    void setOutput(InventoryItemId output);
+    void setOutputInventoryItemId(InventoryItemId outputInventoryItemId);
 
     String getTriggerAccountName();
 
@@ -58,13 +58,13 @@ public interface InventoryPostingRuleStateEvent extends Event
 
     interface InventoryPostingRuleStateMergePatched extends InventoryPostingRuleStateEvent
     {
-        Boolean getIsPropertyTriggerRemoved();
+        Boolean getIsPropertyTriggerInventoryItemIdRemoved();
 
-        void setIsPropertyTriggerRemoved(Boolean removed);
+        void setIsPropertyTriggerInventoryItemIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyOutputRemoved();
+        Boolean getIsPropertyOutputInventoryItemIdRemoved();
 
-        void setIsPropertyOutputRemoved(Boolean removed);
+        void setIsPropertyOutputInventoryItemIdRemoved(Boolean removed);
 
         Boolean getIsPropertyTriggerAccountNameRemoved();
 

@@ -22,12 +22,12 @@ public final class InventoryPostingRuleFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "trigger.productId",
-            "trigger.locatorId",
-            "trigger.attributeSetInstanceId",
-            "output.productId",
-            "output.locatorId",
-            "output.attributeSetInstanceId",
+            "triggerInventoryItemId.productId",
+            "triggerInventoryItemId.locatorId",
+            "triggerInventoryItemId.attributeSetInstanceId",
+            "outputInventoryItemId.productId",
+            "outputInventoryItemId.locatorId",
+            "outputInventoryItemId.attributeSetInstanceId",
     };
 
     public static final String[] propertyTypes = new String[] {
@@ -84,18 +84,18 @@ public final class InventoryPostingRuleFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("trigger.productId", "trigger.productId");
-        aliasMap.put("Trigger.ProductId", "trigger.productId");
-        aliasMap.put("trigger.locatorId", "trigger.locatorId");
-        aliasMap.put("Trigger.LocatorId", "trigger.locatorId");
-        aliasMap.put("trigger.attributeSetInstanceId", "trigger.attributeSetInstanceId");
-        aliasMap.put("Trigger.AttributeSetInstanceId", "trigger.attributeSetInstanceId");
-        aliasMap.put("output.productId", "output.productId");
-        aliasMap.put("Output.ProductId", "output.productId");
-        aliasMap.put("output.locatorId", "output.locatorId");
-        aliasMap.put("Output.LocatorId", "output.locatorId");
-        aliasMap.put("output.attributeSetInstanceId", "output.attributeSetInstanceId");
-        aliasMap.put("Output.AttributeSetInstanceId", "output.attributeSetInstanceId");
+        aliasMap.put("triggerInventoryItemId.productId", "triggerInventoryItemId.productId");
+        aliasMap.put("TriggerInventoryItemId.ProductId", "triggerInventoryItemId.productId");
+        aliasMap.put("triggerInventoryItemId.locatorId", "triggerInventoryItemId.locatorId");
+        aliasMap.put("TriggerInventoryItemId.LocatorId", "triggerInventoryItemId.locatorId");
+        aliasMap.put("triggerInventoryItemId.attributeSetInstanceId", "triggerInventoryItemId.attributeSetInstanceId");
+        aliasMap.put("TriggerInventoryItemId.AttributeSetInstanceId", "triggerInventoryItemId.attributeSetInstanceId");
+        aliasMap.put("outputInventoryItemId.productId", "outputInventoryItemId.productId");
+        aliasMap.put("OutputInventoryItemId.ProductId", "outputInventoryItemId.productId");
+        aliasMap.put("outputInventoryItemId.locatorId", "outputInventoryItemId.locatorId");
+        aliasMap.put("OutputInventoryItemId.LocatorId", "outputInventoryItemId.locatorId");
+        aliasMap.put("outputInventoryItemId.attributeSetInstanceId", "outputInventoryItemId.attributeSetInstanceId");
+        aliasMap.put("OutputInventoryItemId.AttributeSetInstanceId", "outputInventoryItemId.attributeSetInstanceId");
     }
 
     private static void initPropertyTypeMap() {

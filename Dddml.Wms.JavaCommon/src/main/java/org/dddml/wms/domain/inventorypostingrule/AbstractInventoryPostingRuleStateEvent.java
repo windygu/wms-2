@@ -33,28 +33,28 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private InventoryItemId trigger;
+    private InventoryItemId triggerInventoryItemId;
 
-    public InventoryItemId getTrigger()
+    public InventoryItemId getTriggerInventoryItemId()
     {
-        return this.trigger;
+        return this.triggerInventoryItemId;
     }
 
-    public void setTrigger(InventoryItemId trigger)
+    public void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId)
     {
-        this.trigger = trigger;
+        this.triggerInventoryItemId = triggerInventoryItemId;
     }
 
-    private InventoryItemId output;
+    private InventoryItemId outputInventoryItemId;
 
-    public InventoryItemId getOutput()
+    public InventoryItemId getOutputInventoryItemId()
     {
-        return this.output;
+        return this.outputInventoryItemId;
     }
 
-    public void setOutput(InventoryItemId output)
+    public void setOutputInventoryItemId(InventoryItemId outputInventoryItemId)
     {
-        this.output = output;
+        this.outputInventoryItemId = outputInventoryItemId;
     }
 
     private String triggerAccountName;
@@ -182,24 +182,24 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyTriggerRemoved;
+        private Boolean isPropertyTriggerInventoryItemIdRemoved;
 
-        public Boolean getIsPropertyTriggerRemoved() {
-            return this.isPropertyTriggerRemoved;
+        public Boolean getIsPropertyTriggerInventoryItemIdRemoved() {
+            return this.isPropertyTriggerInventoryItemIdRemoved;
         }
 
-        public void setIsPropertyTriggerRemoved(Boolean removed) {
-            this.isPropertyTriggerRemoved = removed;
+        public void setIsPropertyTriggerInventoryItemIdRemoved(Boolean removed) {
+            this.isPropertyTriggerInventoryItemIdRemoved = removed;
         }
 
-        private Boolean isPropertyOutputRemoved;
+        private Boolean isPropertyOutputInventoryItemIdRemoved;
 
-        public Boolean getIsPropertyOutputRemoved() {
-            return this.isPropertyOutputRemoved;
+        public Boolean getIsPropertyOutputInventoryItemIdRemoved() {
+            return this.isPropertyOutputInventoryItemIdRemoved;
         }
 
-        public void setIsPropertyOutputRemoved(Boolean removed) {
-            this.isPropertyOutputRemoved = removed;
+        public void setIsPropertyOutputInventoryItemIdRemoved(Boolean removed) {
+            this.isPropertyOutputInventoryItemIdRemoved = removed;
         }
 
         private Boolean isPropertyTriggerAccountNameRemoved;

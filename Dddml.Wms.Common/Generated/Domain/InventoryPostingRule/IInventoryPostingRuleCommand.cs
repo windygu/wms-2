@@ -24,9 +24,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	public interface ICreateOrMergePatchOrDeleteInventoryPostingRule : IInventoryPostingRuleCommand
 	{
 
-		InventoryItemId Trigger { get; set; }
+		InventoryItemId TriggerInventoryItemId { get; set; }
 
-		InventoryItemId Output { get; set; }
+		InventoryItemId OutputInventoryItemId { get; set; }
 
 		string TriggerAccountName { get; set; }
 
@@ -46,9 +46,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	public interface IMergePatchInventoryPostingRule : ICreateOrMergePatchOrDeleteInventoryPostingRule
 	{
 
-		bool IsPropertyTriggerRemoved { get; set; }
+		bool IsPropertyTriggerInventoryItemIdRemoved { get; set; }
 
-		bool IsPropertyOutputRemoved { get; set; }
+		bool IsPropertyOutputInventoryItemIdRemoved { get; set; }
 
 		bool IsPropertyTriggerAccountNameRemoved { get; set; }
 

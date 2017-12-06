@@ -19,13 +19,13 @@ public interface InventoryPostingRuleCommand extends Command
 
     interface CreateOrMergePatchInventoryPostingRule extends InventoryPostingRuleCommand
     {
-        InventoryItemId getTrigger();
+        InventoryItemId getTriggerInventoryItemId();
 
-        void setTrigger(InventoryItemId trigger);
+        void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId);
 
-        InventoryItemId getOutput();
+        InventoryItemId getOutputInventoryItemId();
 
-        void setOutput(InventoryItemId output);
+        void setOutputInventoryItemId(InventoryItemId outputInventoryItemId);
 
         String getTriggerAccountName();
 
@@ -51,13 +51,13 @@ public interface InventoryPostingRuleCommand extends Command
 
     interface MergePatchInventoryPostingRule extends CreateOrMergePatchInventoryPostingRule
     {
-        Boolean getIsPropertyTriggerRemoved();
+        Boolean getIsPropertyTriggerInventoryItemIdRemoved();
 
-        void setIsPropertyTriggerRemoved(Boolean removed);
+        void setIsPropertyTriggerInventoryItemIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyOutputRemoved();
+        Boolean getIsPropertyOutputInventoryItemIdRemoved();
 
-        void setIsPropertyOutputRemoved(Boolean removed);
+        void setIsPropertyOutputInventoryItemIdRemoved(Boolean removed);
 
         Boolean getIsPropertyTriggerAccountNameRemoved();
 
