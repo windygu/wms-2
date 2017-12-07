@@ -21,6 +21,8 @@ public class ReflectUtils {
         CLASS_MAP.put("Long", Long.class);
         CLASS_MAP.put("Money", Money.class);
         CLASS_MAP.put("String", String.class);
+        CLASS_MAP.put("java.sql.Timestamp", java.sql.Timestamp.class);
+        CLASS_MAP.put("java.sql.Date", java.sql.Date.class);
     }
 
 }
