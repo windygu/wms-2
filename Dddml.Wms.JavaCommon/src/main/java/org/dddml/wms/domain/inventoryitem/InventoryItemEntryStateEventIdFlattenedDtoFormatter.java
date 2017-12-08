@@ -81,6 +81,9 @@ public class InventoryItemEntryStateEventIdFlattenedDtoFormatter extends Abstrac
             throw new IllegalArgumentException(String.format("The field name \"%1$s\" is NOT right.", fieldName));
         }
         Class clazz = ReflectUtils.CLASS_MAP.get(type);
+        if (clazz == null) {
+            throw new RuntimeException("ERROR! ReflectUtils.CLASS_MAP.get(type) == null");
+        }
         return clazz;
     }
 
