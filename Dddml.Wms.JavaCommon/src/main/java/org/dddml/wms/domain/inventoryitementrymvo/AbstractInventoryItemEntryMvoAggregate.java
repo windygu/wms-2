@@ -39,18 +39,8 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getInventoryItemVersion() == null)
-        {
-            if (isCommandCreate((InventoryItemEntryMvoCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (isCommandCreate((InventoryItemEntryMvoCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        InventoryItemEntryMvoCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -118,13 +108,6 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-
-    private static boolean isCommandCreate(InventoryItemEntryMvoCommand c)
-    {
-        return ((c instanceof InventoryItemEntryMvoCommand.CreateInventoryItemEntryMvo) 
-            && c.getInventoryItemVersion().equals(InventoryItemEntryMvoState.VERSION_NULL));
     }
 
 

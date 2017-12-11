@@ -44,22 +44,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getAttrSetInstEFGroupVersion() == null)
-        {
-            if (isCommandCreate((AttributeSetInstanceExtensionFieldMvoCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
-        if (isCommandCreate((AttributeSetInstanceExtensionFieldMvoCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        AttributeSetInstanceExtensionFieldMvoCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -148,13 +134,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoAggregate ext
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-
-    private static boolean isCommandCreate(AttributeSetInstanceExtensionFieldMvoCommand c)
-    {
-        return ((c instanceof AttributeSetInstanceExtensionFieldMvoCommand.CreateAttributeSetInstanceExtensionFieldMvo) 
-            && c.getAttrSetInstEFGroupVersion().equals(AttributeSetInstanceExtensionFieldMvoState.VERSION_NULL));
     }
 
 

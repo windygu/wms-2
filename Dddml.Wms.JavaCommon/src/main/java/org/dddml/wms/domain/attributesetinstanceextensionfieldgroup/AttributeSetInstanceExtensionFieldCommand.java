@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface AttributeSetInstanceExtensionFieldCommand extends Command
 {
@@ -14,7 +15,6 @@ public interface AttributeSetInstanceExtensionFieldCommand extends Command
     String getGroupId();
 
     void setGroupId(String groupId);
-
 
     interface CreateOrMergePatchAttributeSetInstanceExtensionField extends AttributeSetInstanceExtensionFieldCommand
     {

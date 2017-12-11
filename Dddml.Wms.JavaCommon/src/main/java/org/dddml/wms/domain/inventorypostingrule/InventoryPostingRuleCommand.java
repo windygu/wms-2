@@ -5,6 +5,7 @@ import org.dddml.wms.domain.inventoryitem.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface InventoryPostingRuleCommand extends Command
 {
@@ -16,6 +17,27 @@ public interface InventoryPostingRuleCommand extends Command
 
     void setVersion(Long version);
 
+    static void throwOnInvalidStateTransition(InventoryPostingRuleState state, Command c) {
+        if (state.getVersion() == null)
+        {
+            if (isCommandCreate((InventoryPostingRuleCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (state.getDeleted())
+        {
+            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
+        }
+        if (isCommandCreate((InventoryPostingRuleCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(InventoryPostingRuleCommand c) {
+        return ((c instanceof InventoryPostingRuleCommand.CreateInventoryPostingRule) 
+            && c.getVersion().equals(InventoryPostingRuleState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchInventoryPostingRule extends InventoryPostingRuleCommand
     {

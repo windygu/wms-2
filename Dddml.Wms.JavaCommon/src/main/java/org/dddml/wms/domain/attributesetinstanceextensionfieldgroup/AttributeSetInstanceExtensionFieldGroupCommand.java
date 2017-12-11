@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface AttributeSetInstanceExtensionFieldGroupCommand extends Command
 {
@@ -15,6 +16,27 @@ public interface AttributeSetInstanceExtensionFieldGroupCommand extends Command
 
     void setVersion(Long version);
 
+    static void throwOnInvalidStateTransition(AttributeSetInstanceExtensionFieldGroupState state, Command c) {
+        if (state.getVersion() == null)
+        {
+            if (isCommandCreate((AttributeSetInstanceExtensionFieldGroupCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (state.getDeleted())
+        {
+            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
+        }
+        if (isCommandCreate((AttributeSetInstanceExtensionFieldGroupCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(AttributeSetInstanceExtensionFieldGroupCommand c) {
+        return ((c instanceof AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup) 
+            && c.getVersion().equals(AttributeSetInstanceExtensionFieldGroupState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchAttributeSetInstanceExtensionFieldGroup extends AttributeSetInstanceExtensionFieldGroupCommand
     {

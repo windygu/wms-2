@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface InventoryItemEntryMvoCommand extends Command
 {
@@ -17,6 +18,23 @@ public interface InventoryItemEntryMvoCommand extends Command
 
     void setInventoryItemVersion(Long inventoryItemVersion);
 
+    static void throwOnInvalidStateTransition(InventoryItemEntryMvoState state, Command c) {
+        if (state.getInventoryItemVersion() == null)
+        {
+            if (isCommandCreate((InventoryItemEntryMvoCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (isCommandCreate((InventoryItemEntryMvoCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(InventoryItemEntryMvoCommand c) {
+        return ((c instanceof InventoryItemEntryMvoCommand.CreateInventoryItemEntryMvo) 
+            && c.getInventoryItemVersion().equals(InventoryItemEntryMvoState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchInventoryItemEntryMvo extends InventoryItemEntryMvoCommand
     {

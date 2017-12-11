@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface AttributeUseCommand extends Command
 {
@@ -14,7 +15,6 @@ public interface AttributeUseCommand extends Command
     String getAttributeSetId();
 
     void setAttributeSetId(String attributeSetId);
-
 
     interface CreateOrMergePatchAttributeUse extends AttributeUseCommand
     {

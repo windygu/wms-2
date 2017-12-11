@@ -32,18 +32,8 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getVersion() == null)
-        {
-            if (isCommandCreate((AttributeSetInstanceCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (isCommandCreate((AttributeSetInstanceCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        AttributeSetInstanceCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -523,13 +513,6 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-
-    private static boolean isCommandCreate(AttributeSetInstanceCommand c)
-    {
-        return ((c instanceof AttributeSetInstanceCommand.CreateAttributeSetInstance) 
-            && c.getVersion().equals(AttributeSetInstanceState.VERSION_NULL));
     }
 
 

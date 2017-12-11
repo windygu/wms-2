@@ -7,6 +7,7 @@ import java.util.Date;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface SellableInventoryItemEntryCommand extends Command
 {
@@ -17,7 +18,6 @@ public interface SellableInventoryItemEntryCommand extends Command
     InventoryItemId getSellableInventoryItemId();
 
     void setSellableInventoryItemId(InventoryItemId sellableInventoryItemId);
-
 
     interface CreateOrMergePatchSellableInventoryItemEntry extends SellableInventoryItemEntryCommand
     {

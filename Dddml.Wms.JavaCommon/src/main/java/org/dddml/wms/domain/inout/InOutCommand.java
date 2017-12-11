@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface InOutCommand extends Command
 {
@@ -17,6 +18,27 @@ public interface InOutCommand extends Command
 
     void setVersion(Long version);
 
+    static void throwOnInvalidStateTransition(InOutState state, Command c) {
+        if (state.getVersion() == null)
+        {
+            if (isCommandCreate((InOutCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (state.getDeleted())
+        {
+            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
+        }
+        if (isCommandCreate((InOutCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(InOutCommand c) {
+        return ((c instanceof InOutCommand.CreateInOut) 
+            && c.getVersion().equals(InOutState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchInOut extends InOutCommand
     {

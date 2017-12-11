@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface InventoryItemEntryCommand extends Command
 {
@@ -15,7 +16,6 @@ public interface InventoryItemEntryCommand extends Command
     InventoryItemId getInventoryItemId();
 
     void setInventoryItemId(InventoryItemId inventoryItemId);
-
 
     interface CreateOrMergePatchInventoryItemEntry extends InventoryItemEntryCommand
     {

@@ -37,18 +37,8 @@ public abstract class AbstractInventoryPRTriggeredAggregate extends AbstractAggr
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getVersion() == null)
-        {
-            if (isCommandCreate((InventoryPRTriggeredCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (isCommandCreate((InventoryPRTriggeredCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        InventoryPRTriggeredCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -77,13 +67,6 @@ public abstract class AbstractInventoryPRTriggeredAggregate extends AbstractAggr
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-
-    private static boolean isCommandCreate(InventoryPRTriggeredCommand c)
-    {
-        return ((c instanceof InventoryPRTriggeredCommand.CreateInventoryPRTriggered) 
-            && c.getVersion().equals(InventoryPRTriggeredState.VERSION_NULL));
     }
 
 

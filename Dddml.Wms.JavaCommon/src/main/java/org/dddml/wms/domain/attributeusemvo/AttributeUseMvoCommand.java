@@ -5,6 +5,7 @@ import org.dddml.wms.domain.attributeset.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface AttributeUseMvoCommand extends Command
 {
@@ -16,6 +17,27 @@ public interface AttributeUseMvoCommand extends Command
 
     void setAttributeSetVersion(Long attributeSetVersion);
 
+    static void throwOnInvalidStateTransition(AttributeUseMvoState state, Command c) {
+        if (state.getAttributeSetVersion() == null)
+        {
+            if (isCommandCreate((AttributeUseMvoCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (state.getDeleted())
+        {
+            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
+        }
+        if (isCommandCreate((AttributeUseMvoCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(AttributeUseMvoCommand c) {
+        return ((c instanceof AttributeUseMvoCommand.CreateAttributeUseMvo) 
+            && c.getAttributeSetVersion().equals(AttributeUseMvoState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchAttributeUseMvo extends AttributeUseMvoCommand
     {

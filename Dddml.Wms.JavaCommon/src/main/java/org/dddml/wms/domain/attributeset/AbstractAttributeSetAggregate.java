@@ -43,22 +43,8 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getVersion() == null)
-        {
-            if (isCommandCreate((AttributeSetCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
-        if (isCommandCreate((AttributeSetCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        AttributeSetCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -218,13 +204,6 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
             throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerAttributeSetIdName, outerAttributeSetIdValue, innerAttributeSetIdName, innerAttributeSetIdValue);
         }
     }// END throwOnInconsistentCommands /////////////////////
-
-
-    private static boolean isCommandCreate(AttributeSetCommand c)
-    {
-        return ((c instanceof AttributeSetCommand.CreateAttributeSet) 
-            && c.getVersion().equals(AttributeSetState.VERSION_NULL));
-    }
 
 
     ////////////////////////

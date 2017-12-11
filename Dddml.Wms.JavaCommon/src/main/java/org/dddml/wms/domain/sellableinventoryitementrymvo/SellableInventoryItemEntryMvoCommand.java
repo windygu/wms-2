@@ -7,6 +7,7 @@ import org.dddml.wms.domain.inventoryprtriggered.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface SellableInventoryItemEntryMvoCommand extends Command
 {
@@ -18,6 +19,23 @@ public interface SellableInventoryItemEntryMvoCommand extends Command
 
     void setSellableInventoryItemVersion(Long sellableInventoryItemVersion);
 
+    static void throwOnInvalidStateTransition(SellableInventoryItemEntryMvoState state, Command c) {
+        if (state.getSellableInventoryItemVersion() == null)
+        {
+            if (isCommandCreate((SellableInventoryItemEntryMvoCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (isCommandCreate((SellableInventoryItemEntryMvoCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(SellableInventoryItemEntryMvoCommand c) {
+        return ((c instanceof SellableInventoryItemEntryMvoCommand.CreateSellableInventoryItemEntryMvo) 
+            && c.getSellableInventoryItemVersion().equals(SellableInventoryItemEntryMvoState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchSellableInventoryItemEntryMvo extends SellableInventoryItemEntryMvoCommand
     {

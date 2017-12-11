@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface AttributeValueCommand extends Command
 {
@@ -14,7 +15,6 @@ public interface AttributeValueCommand extends Command
     String getAttributeId();
 
     void setAttributeId(String attributeId);
-
 
     interface CreateOrMergePatchAttributeValue extends AttributeValueCommand
     {

@@ -46,22 +46,8 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getInOutVersion() == null)
-        {
-            if (isCommandCreate((InOutLineMvoCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
-        if (isCommandCreate((InOutLineMvoCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        InOutLineMvoCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -298,13 +284,6 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
     protected PropertyCommandHandler<String, String> getInOutLineMvoDocumentActionCommandHandler()
     {
         return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("InOutLineMvoDocumentActionCommandHandler");
-    }
-
-
-    private static boolean isCommandCreate(InOutLineMvoCommand c)
-    {
-        return ((c instanceof InOutLineMvoCommand.CreateInOutLineMvo) 
-            && c.getInOutVersion().equals(InOutLineMvoState.VERSION_NULL));
     }
 
 

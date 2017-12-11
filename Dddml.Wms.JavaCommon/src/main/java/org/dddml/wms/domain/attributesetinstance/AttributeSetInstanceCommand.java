@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface AttributeSetInstanceCommand extends Command
 {
@@ -16,6 +17,23 @@ public interface AttributeSetInstanceCommand extends Command
 
     void setVersion(Long version);
 
+    static void throwOnInvalidStateTransition(AttributeSetInstanceState state, Command c) {
+        if (state.getVersion() == null)
+        {
+            if (isCommandCreate((AttributeSetInstanceCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (isCommandCreate((AttributeSetInstanceCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(AttributeSetInstanceCommand c) {
+        return ((c instanceof AttributeSetInstanceCommand.CreateAttributeSetInstance) 
+            && c.getVersion().equals(AttributeSetInstanceState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchAttributeSetInstance extends AttributeSetInstanceCommand
     {

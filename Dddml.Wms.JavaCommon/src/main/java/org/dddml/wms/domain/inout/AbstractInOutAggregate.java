@@ -45,22 +45,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getVersion() == null)
-        {
-            if (isCommandCreate((InOutCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
-        if (isCommandCreate((InOutCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        InOutCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -376,13 +362,6 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     protected PropertyCommandHandler<String, String> getInOutDocumentActionCommandHandler()
     {
         return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("InOutDocumentActionCommandHandler");
-    }
-
-
-    private static boolean isCommandCreate(InOutCommand c)
-    {
-        return ((c instanceof InOutCommand.CreateInOut) 
-            && c.getVersion().equals(InOutState.VERSION_NULL));
     }
 
 

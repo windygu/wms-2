@@ -44,22 +44,8 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getAttributeVersion() == null)
-        {
-            if (isCommandCreate((AttributeValueMvoCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
-        if (isCommandCreate((AttributeValueMvoCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        AttributeValueMvoCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -157,13 +143,6 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-
-    private static boolean isCommandCreate(AttributeValueMvoCommand c)
-    {
-        return ((c instanceof AttributeValueMvoCommand.CreateAttributeValueMvo) 
-            && c.getAttributeVersion().equals(AttributeValueMvoState.VERSION_NULL));
     }
 
 

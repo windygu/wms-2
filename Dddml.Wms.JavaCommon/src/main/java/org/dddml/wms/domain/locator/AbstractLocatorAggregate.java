@@ -43,22 +43,8 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getVersion() == null)
-        {
-            if (isCommandCreate((LocatorCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
-        if (isCommandCreate((LocatorCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        LocatorCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -120,13 +106,6 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-
-    private static boolean isCommandCreate(LocatorCommand c)
-    {
-        return ((c instanceof LocatorCommand.CreateLocator) 
-            && c.getVersion().equals(LocatorState.VERSION_NULL));
     }
 
 

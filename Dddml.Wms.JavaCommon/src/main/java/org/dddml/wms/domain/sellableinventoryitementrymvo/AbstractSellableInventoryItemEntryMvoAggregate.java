@@ -40,18 +40,8 @@ public abstract class AbstractSellableInventoryItemEntryMvoAggregate extends Abs
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getSellableInventoryItemVersion() == null)
-        {
-            if (isCommandCreate((SellableInventoryItemEntryMvoCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (isCommandCreate((SellableInventoryItemEntryMvoCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        SellableInventoryItemEntryMvoCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -101,13 +91,6 @@ public abstract class AbstractSellableInventoryItemEntryMvoAggregate extends Abs
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-
-    private static boolean isCommandCreate(SellableInventoryItemEntryMvoCommand c)
-    {
-        return ((c instanceof SellableInventoryItemEntryMvoCommand.CreateSellableInventoryItemEntryMvo) 
-            && c.getSellableInventoryItemVersion().equals(SellableInventoryItemEntryMvoState.VERSION_NULL));
     }
 
 

@@ -7,6 +7,7 @@ import java.util.Date;
 import org.joda.money.Money;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface InOutLineMvoCommand extends Command
 {
@@ -18,6 +19,27 @@ public interface InOutLineMvoCommand extends Command
 
     void setInOutVersion(Long inOutVersion);
 
+    static void throwOnInvalidStateTransition(InOutLineMvoState state, Command c) {
+        if (state.getInOutVersion() == null)
+        {
+            if (isCommandCreate((InOutLineMvoCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (state.getDeleted())
+        {
+            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
+        }
+        if (isCommandCreate((InOutLineMvoCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(InOutLineMvoCommand c) {
+        return ((c instanceof InOutLineMvoCommand.CreateInOutLineMvo) 
+            && c.getInOutVersion().equals(InOutLineMvoState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchInOutLineMvo extends InOutLineMvoCommand
     {

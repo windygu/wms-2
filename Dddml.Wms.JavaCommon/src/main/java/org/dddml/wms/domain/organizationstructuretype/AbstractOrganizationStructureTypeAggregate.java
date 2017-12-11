@@ -43,22 +43,8 @@ public abstract class AbstractOrganizationStructureTypeAggregate extends Abstrac
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getVersion() == null)
-        {
-            if (isCommandCreate((OrganizationStructureTypeCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
-        if (isCommandCreate((OrganizationStructureTypeCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        OrganizationStructureTypeCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -96,13 +82,6 @@ public abstract class AbstractOrganizationStructureTypeAggregate extends Abstrac
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-
-    private static boolean isCommandCreate(OrganizationStructureTypeCommand c)
-    {
-        return ((c instanceof OrganizationStructureTypeCommand.CreateOrganizationStructureType) 
-            && c.getVersion().equals(OrganizationStructureTypeState.VERSION_NULL));
     }
 
 

@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface DocumentTypeCommand extends Command
 {
@@ -15,6 +16,27 @@ public interface DocumentTypeCommand extends Command
 
     void setVersion(Long version);
 
+    static void throwOnInvalidStateTransition(DocumentTypeState state, Command c) {
+        if (state.getVersion() == null)
+        {
+            if (isCommandCreate((DocumentTypeCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (state.getDeleted())
+        {
+            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
+        }
+        if (isCommandCreate((DocumentTypeCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(DocumentTypeCommand c) {
+        return ((c instanceof DocumentTypeCommand.CreateDocumentType) 
+            && c.getVersion().equals(DocumentTypeState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchDocumentType extends DocumentTypeCommand
     {

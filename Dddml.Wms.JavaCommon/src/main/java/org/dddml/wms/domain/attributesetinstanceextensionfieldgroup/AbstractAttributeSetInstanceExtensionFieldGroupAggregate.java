@@ -43,22 +43,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getVersion() == null)
-        {
-            if (isCommandCreate((AttributeSetInstanceExtensionFieldGroupCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
-        if (isCommandCreate((AttributeSetInstanceExtensionFieldGroupCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        AttributeSetInstanceExtensionFieldGroupCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -227,13 +213,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupAggregate e
             throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerIdName, outerIdValue, innerGroupIdName, innerGroupIdValue);
         }
     }// END throwOnInconsistentCommands /////////////////////
-
-
-    private static boolean isCommandCreate(AttributeSetInstanceExtensionFieldGroupCommand c)
-    {
-        return ((c instanceof AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup) 
-            && c.getVersion().equals(AttributeSetInstanceExtensionFieldGroupState.VERSION_NULL));
-    }
 
 
     ////////////////////////

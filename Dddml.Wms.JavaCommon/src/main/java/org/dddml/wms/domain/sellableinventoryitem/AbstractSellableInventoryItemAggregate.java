@@ -40,18 +40,8 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getVersion() == null)
-        {
-            if (isCommandCreate((SellableInventoryItemCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (isCommandCreate((SellableInventoryItemCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        SellableInventoryItemCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -150,13 +140,6 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
             throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerSellableInventoryItemIdName, outerSellableInventoryItemIdValue, innerSellableInventoryItemIdName, innerSellableInventoryItemIdValue);
         }
     }// END throwOnInconsistentCommands /////////////////////
-
-
-    private static boolean isCommandCreate(SellableInventoryItemCommand c)
-    {
-        return ((c instanceof SellableInventoryItemCommand.CreateSellableInventoryItem) 
-            && c.getVersion().equals(SellableInventoryItemState.VERSION_NULL));
-    }
 
 
     ////////////////////////

@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface WarehouseCommand extends Command
 {
@@ -15,6 +16,27 @@ public interface WarehouseCommand extends Command
 
     void setVersion(Long version);
 
+    static void throwOnInvalidStateTransition(WarehouseState state, Command c) {
+        if (state.getVersion() == null)
+        {
+            if (isCommandCreate((WarehouseCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (state.getDeleted())
+        {
+            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
+        }
+        if (isCommandCreate((WarehouseCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(WarehouseCommand c) {
+        return ((c instanceof WarehouseCommand.CreateWarehouse) 
+            && c.getVersion().equals(WarehouseState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchWarehouse extends WarehouseCommand
     {

@@ -43,22 +43,8 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getVersion() == null)
-        {
-            if (isCommandCreate((AttributeCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
-        if (isCommandCreate((AttributeCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        AttributeCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -236,13 +222,6 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
             throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerAttributeIdName, outerAttributeIdValue, innerAttributeIdName, innerAttributeIdValue);
         }
     }// END throwOnInconsistentCommands /////////////////////
-
-
-    private static boolean isCommandCreate(AttributeCommand c)
-    {
-        return ((c instanceof AttributeCommand.CreateAttribute) 
-            && c.getVersion().equals(AttributeState.VERSION_NULL));
-    }
 
 
     ////////////////////////

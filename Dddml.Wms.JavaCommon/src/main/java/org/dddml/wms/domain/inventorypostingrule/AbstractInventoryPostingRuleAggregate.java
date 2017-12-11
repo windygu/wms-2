@@ -44,22 +44,8 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getVersion() == null)
-        {
-            if (isCommandCreate((InventoryPostingRuleCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
-        if (isCommandCreate((InventoryPostingRuleCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        InventoryPostingRuleCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -112,13 +98,6 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-
-    private static boolean isCommandCreate(InventoryPostingRuleCommand c)
-    {
-        return ((c instanceof InventoryPostingRuleCommand.CreateInventoryPostingRule) 
-            && c.getVersion().equals(InventoryPostingRuleState.VERSION_NULL));
     }
 
 

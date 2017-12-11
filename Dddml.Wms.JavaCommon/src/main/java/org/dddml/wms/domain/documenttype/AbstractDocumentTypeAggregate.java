@@ -43,22 +43,8 @@ public abstract class AbstractDocumentTypeAggregate extends AbstractAggregate im
         apply(e);
     }
 
-    public void throwOnInvalidStateTransition(Command c)
-    {
-        if (this.state.getVersion() == null)
-        {
-            if (isCommandCreate((DocumentTypeCommand)c))
-            {
-                return;
-            }
-            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
-        }
-        if (this.state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
-        if (isCommandCreate((DocumentTypeCommand)c))
-            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    public void throwOnInvalidStateTransition(Command c) {
+        DocumentTypeCommand.throwOnInvalidStateTransition(this.state, c);
     }
 
     protected void apply(Event e)
@@ -99,13 +85,6 @@ public abstract class AbstractDocumentTypeAggregate extends AbstractAggregate im
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-
-    private static boolean isCommandCreate(DocumentTypeCommand c)
-    {
-        return ((c instanceof DocumentTypeCommand.CreateDocumentType) 
-            && c.getVersion().equals(DocumentTypeState.VERSION_NULL));
     }
 
 

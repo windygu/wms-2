@@ -5,6 +5,7 @@ import org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface AttributeSetInstanceExtensionFieldMvoCommand extends Command
 {
@@ -16,6 +17,27 @@ public interface AttributeSetInstanceExtensionFieldMvoCommand extends Command
 
     void setAttrSetInstEFGroupVersion(Long attrSetInstEFGroupVersion);
 
+    static void throwOnInvalidStateTransition(AttributeSetInstanceExtensionFieldMvoState state, Command c) {
+        if (state.getAttrSetInstEFGroupVersion() == null)
+        {
+            if (isCommandCreate((AttributeSetInstanceExtensionFieldMvoCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (state.getDeleted())
+        {
+            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
+        }
+        if (isCommandCreate((AttributeSetInstanceExtensionFieldMvoCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(AttributeSetInstanceExtensionFieldMvoCommand c) {
+        return ((c instanceof AttributeSetInstanceExtensionFieldMvoCommand.CreateAttributeSetInstanceExtensionFieldMvo) 
+            && c.getAttrSetInstEFGroupVersion().equals(AttributeSetInstanceExtensionFieldMvoState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchAttributeSetInstanceExtensionFieldMvo extends AttributeSetInstanceExtensionFieldMvoCommand
     {

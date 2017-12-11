@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.DomainError;
 
 public interface LocatorCommand extends Command
 {
@@ -15,6 +16,27 @@ public interface LocatorCommand extends Command
 
     void setVersion(Long version);
 
+    static void throwOnInvalidStateTransition(LocatorState state, Command c) {
+        if (state.getVersion() == null)
+        {
+            if (isCommandCreate((LocatorCommand)c))
+            {
+                return;
+            }
+            throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
+        }
+        if (state.getDeleted())
+        {
+            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
+        }
+        if (isCommandCreate((LocatorCommand)c))
+            throw DomainError.named("rebirth", "Can't create aggregate that already exists");
+    }
+
+    static boolean isCommandCreate(LocatorCommand c) {
+        return ((c instanceof LocatorCommand.CreateLocator) 
+            && c.getVersion().equals(LocatorState.VERSION_NULL));
+    }
 
     interface CreateOrMergePatchLocator extends LocatorCommand
     {
