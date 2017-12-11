@@ -95,13 +95,12 @@ public abstract class AbstractSellableInventoryItemApplicationService implements
     {
         InventoryItemId aggregateId = c.getSellableInventoryItemId();
         SellableInventoryItemState state = getStateRepository().get(aggregateId, false);
-        SellableInventoryItemAggregate aggregate = getSellableInventoryItemAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        SellableInventoryItemAggregate aggregate = getSellableInventoryItemAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!

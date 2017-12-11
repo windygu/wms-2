@@ -118,13 +118,12 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
     {
         AttributeValueId aggregateId = c.getAttributeValueId();
         AttributeValueMvoState state = getStateRepository().get(aggregateId, false);
-        AttributeValueMvoAggregate aggregate = getAttributeValueMvoAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        AttributeValueMvoAggregate aggregate = getAttributeValueMvoAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getAttributeVersion(), aggregate, state); // State version may be null!

@@ -115,13 +115,12 @@ public abstract class AbstractInventoryItemEntryMvoApplicationService implements
     {
         InventoryItemEntryId aggregateId = c.getInventoryItemEntryId();
         InventoryItemEntryMvoState state = getStateRepository().get(aggregateId, false);
-        InventoryItemEntryMvoAggregate aggregate = getInventoryItemEntryMvoAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        InventoryItemEntryMvoAggregate aggregate = getInventoryItemEntryMvoAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getInventoryItemVersion(), aggregate, state); // State version may be null!

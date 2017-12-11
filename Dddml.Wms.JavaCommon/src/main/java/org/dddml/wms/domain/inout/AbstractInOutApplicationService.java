@@ -123,13 +123,12 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
     {
         String aggregateId = c.getDocumentNumber();
         InOutState state = getStateRepository().get(aggregateId, false);
-        InOutAggregate aggregate = getInOutAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        InOutAggregate aggregate = getInOutAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!

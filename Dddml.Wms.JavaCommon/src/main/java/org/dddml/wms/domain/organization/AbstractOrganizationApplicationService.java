@@ -117,13 +117,12 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
     {
         String aggregateId = c.getOrganizationId();
         OrganizationState state = getStateRepository().get(aggregateId, false);
-        OrganizationAggregate aggregate = getOrganizationAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        OrganizationAggregate aggregate = getOrganizationAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!

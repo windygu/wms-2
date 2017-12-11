@@ -117,13 +117,12 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
     {
         String aggregateId = c.getDocumentTypeId();
         DocumentTypeState state = getStateRepository().get(aggregateId, false);
-        DocumentTypeAggregate aggregate = getDocumentTypeAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        DocumentTypeAggregate aggregate = getDocumentTypeAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!

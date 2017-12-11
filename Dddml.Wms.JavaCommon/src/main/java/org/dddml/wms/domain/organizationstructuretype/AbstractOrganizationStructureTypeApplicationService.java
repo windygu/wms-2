@@ -117,13 +117,12 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
     {
         String aggregateId = c.getId();
         OrganizationStructureTypeState state = getStateRepository().get(aggregateId, false);
-        OrganizationStructureTypeAggregate aggregate = getOrganizationStructureTypeAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        OrganizationStructureTypeAggregate aggregate = getOrganizationStructureTypeAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!

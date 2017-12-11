@@ -118,13 +118,12 @@ public abstract class AbstractInventoryPostingRuleApplicationService implements 
     {
         String aggregateId = c.getInventoryPostingRuleId();
         InventoryPostingRuleState state = getStateRepository().get(aggregateId, false);
-        InventoryPostingRuleAggregate aggregate = getInventoryPostingRuleAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        InventoryPostingRuleAggregate aggregate = getInventoryPostingRuleAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!

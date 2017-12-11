@@ -117,13 +117,12 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
     {
         String aggregateId = c.getWarehouseId();
         WarehouseState state = getStateRepository().get(aggregateId, false);
-        WarehouseAggregate aggregate = getWarehouseAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        WarehouseAggregate aggregate = getWarehouseAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!

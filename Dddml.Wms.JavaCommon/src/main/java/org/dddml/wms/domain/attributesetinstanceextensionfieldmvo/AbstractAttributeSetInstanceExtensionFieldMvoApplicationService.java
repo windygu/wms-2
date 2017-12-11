@@ -118,13 +118,12 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldMvoApplicationSe
     {
         AttributeSetInstanceExtensionFieldId aggregateId = c.getAttributeSetInstanceExtensionFieldId();
         AttributeSetInstanceExtensionFieldMvoState state = getStateRepository().get(aggregateId, false);
-        AttributeSetInstanceExtensionFieldMvoAggregate aggregate = getAttributeSetInstanceExtensionFieldMvoAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        AttributeSetInstanceExtensionFieldMvoAggregate aggregate = getAttributeSetInstanceExtensionFieldMvoAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getAttrSetInstEFGroupVersion(), aggregate, state); // State version may be null!

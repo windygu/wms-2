@@ -116,13 +116,12 @@ public abstract class AbstractSellableInventoryItemEntryMvoApplicationService im
     {
         SellableInventoryItemEntryId aggregateId = c.getSellableInventoryItemEntryId();
         SellableInventoryItemEntryMvoState state = getStateRepository().get(aggregateId, false);
-        SellableInventoryItemEntryMvoAggregate aggregate = getSellableInventoryItemEntryMvoAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        SellableInventoryItemEntryMvoAggregate aggregate = getSellableInventoryItemEntryMvoAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getSellableInventoryItemVersion(), aggregate, state); // State version may be null!

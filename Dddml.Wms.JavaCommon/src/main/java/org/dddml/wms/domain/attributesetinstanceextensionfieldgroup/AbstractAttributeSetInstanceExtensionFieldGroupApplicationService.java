@@ -121,13 +121,12 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
     {
         String aggregateId = c.getId();
         AttributeSetInstanceExtensionFieldGroupState state = getStateRepository().get(aggregateId, false);
-        AttributeSetInstanceExtensionFieldGroupAggregate aggregate = getAttributeSetInstanceExtensionFieldGroupAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        AttributeSetInstanceExtensionFieldGroupAggregate aggregate = getAttributeSetInstanceExtensionFieldGroupAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!

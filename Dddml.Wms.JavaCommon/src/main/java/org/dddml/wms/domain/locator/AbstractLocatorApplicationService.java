@@ -117,13 +117,12 @@ public abstract class AbstractLocatorApplicationService implements LocatorApplic
     {
         String aggregateId = c.getLocatorId();
         LocatorState state = getStateRepository().get(aggregateId, false);
-        LocatorAggregate aggregate = getLocatorAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        LocatorAggregate aggregate = getLocatorAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!

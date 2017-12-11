@@ -121,13 +121,12 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
     {
         String aggregateId = c.getAttributeId();
         AttributeState state = getStateRepository().get(aggregateId, false);
-        AttributeAggregate aggregate = getAttributeAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        AttributeAggregate aggregate = getAttributeAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!

@@ -118,13 +118,12 @@ public abstract class AbstractInventoryItemApplicationService implements Invento
     {
         InventoryItemId aggregateId = c.getInventoryItemId();
         InventoryItemState state = getStateRepository().get(aggregateId, false);
-        InventoryItemAggregate aggregate = getInventoryItemAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        InventoryItemAggregate aggregate = getInventoryItemAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!

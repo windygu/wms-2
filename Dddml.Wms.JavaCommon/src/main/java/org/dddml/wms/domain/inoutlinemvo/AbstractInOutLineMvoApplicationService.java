@@ -120,13 +120,12 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
     {
         InOutLineId aggregateId = c.getInOutLineId();
         InOutLineMvoState state = getStateRepository().get(aggregateId, false);
-        InOutLineMvoAggregate aggregate = getInOutLineMvoAggregate(state);
-
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
+        InOutLineMvoAggregate aggregate = getInOutLineMvoAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
         persist(eventStoreAggregateId, c.getInOutVersion(), aggregate, state); // State version may be null!
