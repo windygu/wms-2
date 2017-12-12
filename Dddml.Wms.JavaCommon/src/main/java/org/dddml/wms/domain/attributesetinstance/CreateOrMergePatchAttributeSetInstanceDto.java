@@ -11601,7 +11601,6 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         copyTo((AbstractAttributeSetInstanceCommand.AbstractCreateOrMergePatchAttributeSetInstance) command);
     }
 
-
     public static class CreateAttributeSetInstanceDto extends CreateOrMergePatchAttributeSetInstanceDto
     {
         @Override

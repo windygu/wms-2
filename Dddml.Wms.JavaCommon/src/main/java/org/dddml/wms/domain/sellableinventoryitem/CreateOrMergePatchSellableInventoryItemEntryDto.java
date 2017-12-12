@@ -103,7 +103,6 @@ public class CreateOrMergePatchSellableInventoryItemEntryDto extends AbstractSel
         copyTo((AbstractSellableInventoryItemEntryCommand.AbstractCreateOrMergePatchSellableInventoryItemEntry) command);
     }
 
-
     public static class CreateSellableInventoryItemEntryDto extends CreateOrMergePatchSellableInventoryItemEntryDto
     {
         @Override

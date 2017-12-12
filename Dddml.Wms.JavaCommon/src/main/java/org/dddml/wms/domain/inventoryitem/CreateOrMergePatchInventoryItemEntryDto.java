@@ -176,7 +176,6 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         copyTo((AbstractInventoryItemEntryCommand.AbstractCreateOrMergePatchInventoryItemEntry) command);
     }
 
-
     public static class CreateInventoryItemEntryDto extends CreateOrMergePatchInventoryItemEntryDto
     {
         @Override
