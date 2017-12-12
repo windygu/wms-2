@@ -84,7 +84,7 @@ public class CreateOrMergePatchSellableInventoryItemEntryDto extends AbstractSel
     {
         ((AbstractSellableInventoryItemEntryCommandDto) this).copyTo(command);
         command.setQuantitySellable(this.getQuantitySellable());
-        command.setSourceEventId((this.getSourceEventId() == null) ? null : this.getSourceEventId().toInventoryPRTriggeredId());
+        command.setSourceEventId(this.getSourceEventId() == null ? null : this.getSourceEventId().toInventoryPRTriggeredId());
         command.setActive(this.getActive());
     }
 

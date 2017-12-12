@@ -153,8 +153,8 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
     public void copyTo(AbstractInventoryPostingRuleCommand.AbstractCreateOrMergePatchInventoryPostingRule command)
     {
         ((AbstractInventoryPostingRuleCommandDto) this).copyTo(command);
-        command.setTriggerInventoryItemId((this.getTriggerInventoryItemId() == null) ? null : this.getTriggerInventoryItemId().toInventoryItemId());
-        command.setOutputInventoryItemId((this.getOutputInventoryItemId() == null) ? null : this.getOutputInventoryItemId().toInventoryItemId());
+        command.setTriggerInventoryItemId(this.getTriggerInventoryItemId() == null ? null : this.getTriggerInventoryItemId().toInventoryItemId());
+        command.setOutputInventoryItemId(this.getOutputInventoryItemId() == null ? null : this.getOutputInventoryItemId().toInventoryItemId());
         command.setTriggerAccountName(this.getTriggerAccountName());
         command.setOutputAccountName(this.getOutputAccountName());
         command.setIsOutputNegated(this.getIsOutputNegated());

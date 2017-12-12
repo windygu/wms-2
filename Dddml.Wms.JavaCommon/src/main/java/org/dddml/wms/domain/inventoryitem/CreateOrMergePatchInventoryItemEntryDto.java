@@ -157,7 +157,7 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         command.setQuantityReserved(this.getQuantityReserved());
         command.setQuantityOccupied(this.getQuantityOccupied());
         command.setQuantityVirtual(this.getQuantityVirtual());
-        command.setSource((this.getSource() == null) ? null : this.getSource().toInventoryItemSourceVO());
+        command.setSource(this.getSource() == null ? null : this.getSource().toInventoryItemSourceVO());
         command.setActive(this.getActive());
     }
 

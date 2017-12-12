@@ -228,7 +228,7 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
     {
         ((AbstractSellableInventoryItemEntryMvoCommandDto) this).copyTo(command);
         command.setQuantitySellable(this.getQuantitySellable());
-        command.setSourceEventId((this.getSourceEventId() == null) ? null : this.getSourceEventId().toInventoryPRTriggeredId());
+        command.setSourceEventId(this.getSourceEventId() == null ? null : this.getSourceEventId().toInventoryPRTriggeredId());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
         command.setSellableInventoryItemQuantitySellable(this.getSellableInventoryItemQuantitySellable());
