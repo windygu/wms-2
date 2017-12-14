@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Organization;
+using Dddml.Wms.Domain.OrganizationStructure;
 
 namespace Dddml.Wms.Domain
 {
@@ -40,6 +41,13 @@ namespace Dddml.Wms.Domain
         public IOrganizationState Content
         {
             get { return _state; }
+        }
+
+        public IOrganizationStructureState Structure { get; set; }
+
+        OrganizationStructure.IOrganizationStructureState IOrganizationTreeNode.Structure
+        {
+            get { return this.Structure; }
         }
 
     }

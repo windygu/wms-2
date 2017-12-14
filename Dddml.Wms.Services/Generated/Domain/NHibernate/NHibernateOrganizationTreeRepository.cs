@@ -125,7 +125,7 @@ namespace Dddml.Wms.Domain.NHibernate
                 var state = OrganizationStateQueryRepository.Get(ss.Id.SubsidiaryId);
                 if (state != null)
                 {
-                    trees.Add(new OrganizationTreeNode(state, this));
+                    trees.Add(new OrganizationTreeNode(state, this) { Structure = ss });
                 }
             }
             return trees;
