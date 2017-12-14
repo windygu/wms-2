@@ -6,6 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.support.criterion.Criterion;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.organization.*;
+import org.dddml.wms.domain.organizationstructure.*;
 
 public abstract class AbstractOrganizationTreeApplicationService implements OrganizationTreeApplicationService
 {
@@ -103,6 +104,16 @@ public abstract class AbstractOrganizationTreeApplicationService implements Orga
             return state;
         }
 
+        private OrganizationStructureState structure;
+
+        public void setStructure(OrganizationStructureState s) {
+            this.structure = s;
+        }
+
+        @Override
+        public OrganizationStructureState getStructure() {
+            return this.structure;
+        }
     }
 }
 

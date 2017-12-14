@@ -117,7 +117,9 @@ public class HibernateOrganizationTreeRepository implements OrganizationTreeRepo
         for (OrganizationStructureState ss : structureStates)
         {
             OrganizationState state = getOrganizationStateQueryRepository().get(ss.getId().getSubsidiaryId());
-            trees.add(new AbstractOrganizationTreeApplicationService.SimpleOrganizationTreeNode(state, this));
+            AbstractOrganizationTreeApplicationService.SimpleOrganizationTreeNode node = new AbstractOrganizationTreeApplicationService.SimpleOrganizationTreeNode(state, this);
+            node.setStructure(ss);
+            trees.add(node);
         }
         return trees;
     }
