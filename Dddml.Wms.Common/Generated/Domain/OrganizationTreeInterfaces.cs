@@ -7,16 +7,16 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
-using Dddml.Wms.Domain.Locator;
+using Dddml.Wms.Domain.Organization;
 
 namespace Dddml.Wms.Domain
 {
-    public partial interface ILocatorTree : ITree<ILocatorState>
+    public partial interface IOrganizationTreeNode : ITreeNode<IOrganizationState>
     {
-        new IEnumerable<ILocatorTree> Children { get; }
+        new IEnumerable<IOrganizationTreeNode> Children { get; }
     }
 
-    public partial interface ILocatorTreeRepository : ITreeRepository<ILocatorTree, string>
+    public partial interface IOrganizationTreeRepository : ITreeRepository<IOrganizationTreeNode, string>
     {
     }
 

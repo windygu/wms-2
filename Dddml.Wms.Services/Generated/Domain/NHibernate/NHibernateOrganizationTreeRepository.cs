@@ -39,17 +39,17 @@ namespace Dddml.Wms.Domain.NHibernate
 
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationTree> GetRoots(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<IOrganizationTreeNode> GetRoots(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
             var structureStates = OrganizationStructureStateQueryRepository.GetOrganizationTreeRoots(filter, orders, firstResult, maxResults);
-            return ToOrganizationTreeCollection(structureStates);
+            return ToOrganizationTreeNodeCollection(structureStates);
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationTree> GetChildren(string parentId, IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<IOrganizationTreeNode> GetChildren(string parentId, IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
             var structureStates = OrganizationStructureStateQueryRepository.GetOrganizationTreeChildren(parentId, filter, orders, firstResult, maxResults);
-            return ToOrganizationTreeCollection(structureStates);
+            return ToOrganizationTreeNodeCollection(structureStates);
         }
 
         [Transaction(ReadOnly = true)]
@@ -69,17 +69,17 @@ namespace Dddml.Wms.Domain.NHibernate
 
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationTree> GetRoots(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<IOrganizationTreeNode> GetRoots(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
             var structureStates = OrganizationStructureStateQueryRepository.GetOrganizationTreeRoots(filter, orders, firstResult, maxResults);
-            return ToOrganizationTreeCollection(structureStates);
+            return ToOrganizationTreeNodeCollection(structureStates);
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationTree> GetChildren(string parentId, Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<IOrganizationTreeNode> GetChildren(string parentId, Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
             var structureStates = OrganizationStructureStateQueryRepository.GetOrganizationTreeChildren(parentId, filter, orders, firstResult, maxResults);
-            return ToOrganizationTreeCollection(structureStates);
+            return ToOrganizationTreeNodeCollection(structureStates);
         }
 
         [Transaction(ReadOnly = true)]
@@ -97,12 +97,12 @@ namespace Dddml.Wms.Domain.NHibernate
         }
 
 
-        private IEnumerable<IOrganizationTree> ToOrganizationTreeCollection(IEnumerable<IOrganizationState> states)
+        private IEnumerable<IOrganizationTreeNode> ToOrganizationTreeNodeCollection(IEnumerable<IOrganizationState> states)
         {
-            var trees = new List<OrganizationTree>();
+            var trees = new List<OrganizationTreeNode>();
             foreach (var state in states)
             {
-                trees.Add(new OrganizationTree(state, this));
+                trees.Add(new OrganizationTreeNode(state, this));
             }
             return trees;
         }
@@ -117,15 +117,15 @@ namespace Dddml.Wms.Domain.NHibernate
             return ids;
         }
 
-        private IEnumerable<IOrganizationTree> ToOrganizationTreeCollection(IEnumerable<IOrganizationStructureState> structureStates)
+        private IEnumerable<IOrganizationTreeNode> ToOrganizationTreeNodeCollection(IEnumerable<IOrganizationStructureState> structureStates)
         {
-            var trees = new List<OrganizationTree>();
+            var trees = new List<OrganizationTreeNode>();
             foreach (var ss in structureStates)
             {
                 var state = OrganizationStateQueryRepository.Get(ss.Id.SubsidiaryId);
                 if (state != null)
                 {
-                    trees.Add(new OrganizationTree(state, this));
+                    trees.Add(new OrganizationTreeNode(state, this));
                 }
             }
             return trees;

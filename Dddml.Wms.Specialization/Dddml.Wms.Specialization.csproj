@@ -77,7 +77,7 @@
     <Compile Include="Specialization\IState.cs" />
     <Compile Include="Specialization\IStateDtoWrapper.cs" />
     <Compile Include="Specialization\IStateEventDto.cs" />
-    <Compile Include="Specialization\ITree.cs" />
+    <Compile Include="Specialization\ITreeNode.cs" />
     <Compile Include="Specialization\ITreeRepository.cs" />
     <Compile Include="Specialization\ITypeConverter.cs" />
     <Compile Include="Specialization\IUpdated.cs" />

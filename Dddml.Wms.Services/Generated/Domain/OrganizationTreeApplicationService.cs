@@ -66,7 +66,7 @@ namespace Dddml.Wms.Domain
             return ids;
         }
 
-        private static IEnumerable<IOrganizationState> ToContentCollection(IEnumerable<IOrganizationTree> trees)
+        private static IEnumerable<IOrganizationState> ToContentCollection(IEnumerable<IOrganizationTreeNode> trees)
         {
             var states = new List<IOrganizationState>();
             foreach (var t in trees)

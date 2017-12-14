@@ -7,37 +7,37 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
-using Dddml.Wms.Domain.Locator;
+using Dddml.Wms.Domain.Permission;
 
 namespace Dddml.Wms.Domain
 {
 
-    public partial class LocatorTree : ILocatorTree
+    public partial class PermissionTreeNode : IPermissionTreeNode
     {
-        private ILocatorState _state;
+        private IPermissionState _state;
 
-        private ILocatorTreeRepository _repository;
+        private IPermissionTreeRepository _repository;
 
-        public LocatorTree(ILocatorState state, ILocatorTreeRepository repository)
+        public PermissionTreeNode(IPermissionState state, IPermissionTreeRepository repository)
         {
             this._state = state;
             this._repository = repository;
         }
 
-        public IEnumerable<ILocatorTree> Children
+        public IEnumerable<IPermissionTreeNode> Children
         {
             get
             {
-                return _repository.GetChildren(this._state.LocatorId, (IEnumerable<KeyValuePair<string, object>>)null, null);
+                return _repository.GetChildren(this._state.PermissionId, (IEnumerable<KeyValuePair<string, object>>)null, null);
             }
         }
 
-        IEnumerable<ITree<ILocatorState>> ITree<ILocatorState>.Children
+        IEnumerable<ITreeNode<IPermissionState>> ITreeNode<IPermissionState>.Children
         {
             get { return this.Children; }
         }
 
-        public ILocatorState Content
+        public IPermissionState Content
         {
             get { return _state; }
         }

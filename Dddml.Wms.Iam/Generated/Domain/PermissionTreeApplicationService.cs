@@ -66,7 +66,7 @@ namespace Dddml.Wms.Domain
             return ids;
         }
 
-        private static IEnumerable<IPermissionState> ToContentCollection(IEnumerable<IPermissionTree> trees)
+        private static IEnumerable<IPermissionState> ToContentCollection(IEnumerable<IPermissionTreeNode> trees)
         {
             var states = new List<IPermissionState>();
             foreach (var t in trees)

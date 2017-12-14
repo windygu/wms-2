@@ -30,17 +30,17 @@ namespace Dddml.Wms.Domain.NHibernate
 
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IPermissionTree> GetRoots(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<IPermissionTreeNode> GetRoots(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
             var states = PermissionStateQueryRepository.GetPermissionTreeRoots(filter, orders, firstResult, maxResults);
-            return ToPermissionTreeCollection(states);
+            return ToPermissionTreeNodeCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IPermissionTree> GetChildren(string parentId, IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<IPermissionTreeNode> GetChildren(string parentId, IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
             var states = PermissionStateQueryRepository.GetPermissionTreeChildren(parentId, filter, orders, firstResult, maxResults);
-            return ToPermissionTreeCollection(states);
+            return ToPermissionTreeNodeCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
@@ -60,17 +60,17 @@ namespace Dddml.Wms.Domain.NHibernate
 
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IPermissionTree> GetRoots(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<IPermissionTreeNode> GetRoots(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
             var states = PermissionStateQueryRepository.GetPermissionTreeRoots(filter, orders, firstResult, maxResults);
-            return ToPermissionTreeCollection(states);
+            return ToPermissionTreeNodeCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IPermissionTree> GetChildren(string parentId, Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<IPermissionTreeNode> GetChildren(string parentId, Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
             var states = PermissionStateQueryRepository.GetPermissionTreeChildren(parentId, filter, orders, firstResult, maxResults);
-            return ToPermissionTreeCollection(states);
+            return ToPermissionTreeNodeCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
@@ -88,12 +88,12 @@ namespace Dddml.Wms.Domain.NHibernate
         }
 
 
-        private IEnumerable<IPermissionTree> ToPermissionTreeCollection(IEnumerable<IPermissionState> states)
+        private IEnumerable<IPermissionTreeNode> ToPermissionTreeNodeCollection(IEnumerable<IPermissionState> states)
         {
-            var trees = new List<PermissionTree>();
+            var trees = new List<PermissionTreeNode>();
             foreach (var state in states)
             {
-                trees.Add(new PermissionTree(state, this));
+                trees.Add(new PermissionTreeNode(state, this));
             }
             return trees;
         }

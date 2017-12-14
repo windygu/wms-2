@@ -66,7 +66,7 @@ namespace Dddml.Wms.Domain
             return ids;
         }
 
-        private static IEnumerable<ILocatorState> ToContentCollection(IEnumerable<ILocatorTree> trees)
+        private static IEnumerable<ILocatorState> ToContentCollection(IEnumerable<ILocatorTreeNode> trees)
         {
             var states = new List<ILocatorState>();
             foreach (var t in trees)

@@ -12,19 +12,19 @@ using Dddml.Wms.Domain.Organization;
 namespace Dddml.Wms.Domain
 {
 
-    public partial class OrganizationTree : IOrganizationTree
+    public partial class OrganizationTreeNode : IOrganizationTreeNode
     {
         private IOrganizationState _state;
 
         private IOrganizationTreeRepository _repository;
 
-        public OrganizationTree(IOrganizationState state, IOrganizationTreeRepository repository)
+        public OrganizationTreeNode(IOrganizationState state, IOrganizationTreeRepository repository)
         {
             this._state = state;
             this._repository = repository;
         }
 
-        public IEnumerable<IOrganizationTree> Children
+        public IEnumerable<IOrganizationTreeNode> Children
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Dddml.Wms.Domain
             }
         }
 
-        IEnumerable<ITree<IOrganizationState>> ITree<IOrganizationState>.Children
+        IEnumerable<ITreeNode<IOrganizationState>> ITreeNode<IOrganizationState>.Children
         {
             get { return this.Children; }
         }

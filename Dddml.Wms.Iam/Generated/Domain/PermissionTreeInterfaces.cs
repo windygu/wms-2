@@ -11,12 +11,12 @@ using Dddml.Wms.Domain.Permission;
 
 namespace Dddml.Wms.Domain
 {
-    public partial interface IPermissionTree : ITree<IPermissionState>
+    public partial interface IPermissionTreeNode : ITreeNode<IPermissionState>
     {
-        new IEnumerable<IPermissionTree> Children { get; }
+        new IEnumerable<IPermissionTreeNode> Children { get; }
     }
 
-    public partial interface IPermissionTreeRepository : ITreeRepository<IPermissionTree, string>
+    public partial interface IPermissionTreeRepository : ITreeRepository<IPermissionTreeNode, string>
     {
     }
 

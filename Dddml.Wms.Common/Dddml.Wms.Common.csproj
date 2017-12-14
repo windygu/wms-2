@@ -1027,9 +1027,6 @@
     <Compile Include="Generated\Domain\DocumentType\IDocumentTypeStateRepository.cs">
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\ILocatorTree.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\ILocatorTreeApplicationService.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
@@ -1762,13 +1759,13 @@
     <Compile Include="Generated\Domain\InventoryPRTriggered\InventoryPRTriggeredStateProperties.cs">
       <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\IOrganizationTree.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\IOrganizationTreeApplicationService.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\LocatorTree.cs">
+    <Compile Include="Generated\Domain\LocatorTreeInterfaces.cs">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorTreeNode.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Locator\ILocatorAggregate.cs">
@@ -2131,7 +2128,10 @@
     <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureStateProperties.cs">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\OrganizationTree.cs">
+    <Compile Include="Generated\Domain\OrganizationTreeInterfaces.cs">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationTreeNode.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Organization\IOrganizationAggregate.cs">
@@ -3702,16 +3702,16 @@
       <LastOutputs>
 .\DocumentAction.cs
 .\GenerateBoundedContextDomain.txt
-.\ILocatorTree.cs
 .\ILocatorTreeApplicationService.cs
-.\IOrganizationTree.cs
 .\IOrganizationTreeApplicationService.cs
-.\LocatorTree.cs
+.\LocatorTreeInterfaces.cs
+.\LocatorTreeNode.cs
 .\OrganizationStructureId.cs
 .\OrganizationStructureIdDto.cs
 .\OrganizationStructureIdDtoWrapper.cs
 .\OrganizationStructureIdFlattenedDto.cs
-.\OrganizationTree.cs
+.\OrganizationTreeInterfaces.cs
+.\OrganizationTreeNode.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\GenerateBoundedContextDomain.txt">

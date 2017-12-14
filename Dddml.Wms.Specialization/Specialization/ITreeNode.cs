@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Dddml.Wms.Specialization
 {
-    public interface ITree<T>
+    public interface ITreeNode<T>
     {
         T Content { get; }
 
-        IEnumerable<ITree<T>> Children { get; }
+        IEnumerable<ITreeNode<T>> Children { get; }
     }
 }
