@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.locator.*;
 
-public interface LocatorTree extends Tree<LocatorState>
+public interface LocatorTreeNode extends TreeNode<LocatorState>
 {
     //Iterable<LocatorTree> getLocatorTreeChildren();
 }

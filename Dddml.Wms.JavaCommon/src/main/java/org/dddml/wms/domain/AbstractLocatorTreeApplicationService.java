@@ -59,10 +59,10 @@ public abstract class AbstractLocatorTreeApplicationService implements LocatorTr
         return getLocatorTreeRepository().getChildIds(parentId, filter, orders, firstResult, maxResults);
     }
 
-    private static Iterable<LocatorState> toContentCollection(Iterable<LocatorTree> trees)
+    private static Iterable<LocatorState> toContentCollection(Iterable<LocatorTreeNode> trees)
     {
         List<LocatorState> states = new ArrayList<LocatorState>();
-        for (LocatorTree t : trees)
+        for (LocatorTreeNode t : trees)
         {
             states.add(t.getContent());
         }
@@ -74,25 +74,25 @@ public abstract class AbstractLocatorTreeApplicationService implements LocatorTr
     }
 
 
-    public static class SimpleLocatorTree implements LocatorTree
+    public static class SimpleLocatorTreeNode implements LocatorTreeNode
     {
         private LocatorState state;
 
         private LocatorTreeRepository repository;
 
-        public SimpleLocatorTree(LocatorState state, LocatorTreeRepository repository)
+        public SimpleLocatorTreeNode(LocatorState state, LocatorTreeRepository repository)
         {
             this.state = state;
             this.repository = repository;
         }
 
         //@Override
-        //public Iterable<LocatorTree> getLocatorTreeChildren()
+        //public Iterable<LocatorTreeNode> getLocatorTreeChildren()
         //{
         //}
 
         @Override
-        public Iterable<Tree<LocatorState>> getChildren()
+        public Iterable<TreeNode<LocatorState>> getChildren()
         {
             return (Iterable) repository.getChildren(this.state.getLocatorId(), (Iterable<Map.Entry<String, Object>>)null, null, null, null);
         }

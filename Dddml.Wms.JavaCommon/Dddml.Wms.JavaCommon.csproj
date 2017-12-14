@@ -930,16 +930,16 @@
 .\Command.java
 .\DocumentAction.java
 .\GenerateBoundedContextDomain.txt
-.\LocatorTree.java
 .\LocatorTreeApplicationService.java
+.\LocatorTreeNode.java
 .\LocatorTreeRepository.java
 .\OrganizationStructureId.java
 .\OrganizationStructureIdDto.java
 .\OrganizationStructureIdDtoWrapper.java
 .\OrganizationStructureIdFlattenedDto.java
 .\OrganizationStructureIdFlattenedDtoFormatter.java
-.\OrganizationTree.java
 .\OrganizationTreeApplicationService.java
+.\OrganizationTreeNode.java
 .\OrganizationTreeRepository.java
 </LastOutputs>
     </Content>
@@ -1626,10 +1626,10 @@
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateRepository.java">
       <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\LocatorTree.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\LocatorTreeApplicationService.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\LocatorTreeApplicationService.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\LocatorTreeNode.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\LocatorTreeRepository.java">
@@ -2131,10 +2131,10 @@
     <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\OrganizationTreeOrganizationStructureStateQueryRepository.java">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationTree.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationTreeApplicationService.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationTreeApplicationService.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationTreeNode.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\OrganizationTreeRepository.java">

@@ -22,17 +22,17 @@ public class HibernateLocatorTreeRepository implements LocatorTreeRepository
 
 
     @Transactional(readOnly = true)
-    public Iterable<LocatorTree> getRoots(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
+    public Iterable<LocatorTreeNode> getRoots(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
         Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeRoots(filter, orders, firstResult, maxResults);
-        return contentStatesToLocatorTreeCollection(states);
+        return contentStatesToLocatorTreeNodeCollection(states);
     }
 
     @Transactional(readOnly = true)
-    public Iterable<LocatorTree> getChildren(String parentId, Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
+    public Iterable<LocatorTreeNode> getChildren(String parentId, Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
         Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
-        return contentStatesToLocatorTreeCollection(states);
+        return contentStatesToLocatorTreeNodeCollection(states);
     }
 
     @Transactional(readOnly = true)
@@ -52,17 +52,17 @@ public class HibernateLocatorTreeRepository implements LocatorTreeRepository
 
 
     @Transactional(readOnly = true)
-    public Iterable<LocatorTree> getRoots(org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
+    public Iterable<LocatorTreeNode> getRoots(org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
         Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeRoots(filter, orders, firstResult, maxResults);
-        return contentStatesToLocatorTreeCollection(states);
+        return contentStatesToLocatorTreeNodeCollection(states);
     }
 
     @Transactional(readOnly = true)
-    public Iterable<LocatorTree> getChildren(String parentId, org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
+    public Iterable<LocatorTreeNode> getChildren(String parentId, org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
         Iterable<LocatorState> states = getLocatorStateQueryRepository().getLocatorTreeChildren(parentId, filter, orders, firstResult, maxResults);
-        return contentStatesToLocatorTreeCollection(states);
+        return contentStatesToLocatorTreeNodeCollection(states);
     }
 
     @Transactional(readOnly = true)
@@ -80,12 +80,12 @@ public class HibernateLocatorTreeRepository implements LocatorTreeRepository
     }
 
 
-    private Iterable<LocatorTree> contentStatesToLocatorTreeCollection(Iterable<LocatorState> states)
+    private Iterable<LocatorTreeNode> contentStatesToLocatorTreeNodeCollection(Iterable<LocatorState> states)
     {
-        List<LocatorTree> trees = new ArrayList<LocatorTree>();
+        List<LocatorTreeNode> trees = new ArrayList<LocatorTreeNode>();
         for (LocatorState state : states)
         {
-            trees.add(new AbstractLocatorTreeApplicationService.SimpleLocatorTree(state, this));
+            trees.add(new AbstractLocatorTreeApplicationService.SimpleLocatorTreeNode(state, this));
         }
         return trees;
     }

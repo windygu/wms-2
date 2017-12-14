@@ -5,7 +5,7 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
-public interface OrganizationTreeRepository extends TreeRepository<OrganizationTree, String>
+public interface OrganizationTreeRepository extends TreeRepository<OrganizationTreeNode, String>
 {
 }
 

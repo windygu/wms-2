@@ -59,10 +59,10 @@ public abstract class AbstractOrganizationTreeApplicationService implements Orga
         return getOrganizationTreeRepository().getChildIds(parentId, filter, orders, firstResult, maxResults);
     }
 
-    private static Iterable<OrganizationState> toContentCollection(Iterable<OrganizationTree> trees)
+    private static Iterable<OrganizationState> toContentCollection(Iterable<OrganizationTreeNode> trees)
     {
         List<OrganizationState> states = new ArrayList<OrganizationState>();
-        for (OrganizationTree t : trees)
+        for (OrganizationTreeNode t : trees)
         {
             states.add(t.getContent());
         }
@@ -74,25 +74,25 @@ public abstract class AbstractOrganizationTreeApplicationService implements Orga
     }
 
 
-    public static class SimpleOrganizationTree implements OrganizationTree
+    public static class SimpleOrganizationTreeNode implements OrganizationTreeNode
     {
         private OrganizationState state;
 
         private OrganizationTreeRepository repository;
 
-        public SimpleOrganizationTree(OrganizationState state, OrganizationTreeRepository repository)
+        public SimpleOrganizationTreeNode(OrganizationState state, OrganizationTreeRepository repository)
         {
             this.state = state;
             this.repository = repository;
         }
 
         //@Override
-        //public Iterable<OrganizationTree> getOrganizationTreeChildren()
+        //public Iterable<OrganizationTreeNode> getOrganizationTreeChildren()
         //{
         //}
 
         @Override
-        public Iterable<Tree<OrganizationState>> getChildren()
+        public Iterable<TreeNode<OrganizationState>> getChildren()
         {
             return (Iterable) repository.getChildren(this.state.getOrganizationId(), (Iterable<Map.Entry<String, Object>>)null, null, null, null);
         }
