@@ -80,7 +80,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
 
             var inOutResult = inOutApplicationService.Get(inOut.DocumentNumber);
             //Console.WriteLine(inOutResult.DocumentNumber);
-            Assert.AreEqual(DocumentStatus.Voided, inOutResult.DocumentStatus);
+            Assert.AreEqual(DocumentStatus.Voided, inOutResult.DocumentStatusId);
             //Console.WriteLine(inOutResult.FreightAmount);
             //Assert.AreEqual(inOut.FreightAmount, inOutResult.FreightAmount);
             //Console.WriteLine(inOutResult.ChargeAmount);

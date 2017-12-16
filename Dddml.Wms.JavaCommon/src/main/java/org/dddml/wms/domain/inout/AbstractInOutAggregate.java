@@ -316,8 +316,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         String pCmdContent = c.getDocumentAction();
         PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
         pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getDocumentStatus());
-        pCmd.setStateSetter(p -> e.setDocumentStatus(p));
+        pCmd.setStateGetter(() -> s.getDocumentStatusId());
+        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
         pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
         pCommandHandler.execute(pCmd);
     }
@@ -328,8 +328,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         String pCmdContent = c.getDocumentAction();
         PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
         pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getDocumentStatus());
-        pCmd.setStateSetter(p -> e.setDocumentStatus(p));
+        pCmd.setStateGetter(() -> s.getDocumentStatusId());
+        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
         pCmd.setOuterCommandType(CommandType.CREATE);
         pCommandHandler.execute(pCmd);
     }

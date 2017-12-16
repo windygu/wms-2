@@ -9,7 +9,7 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="DocumentStatus" ></property>
+    <property name="DocumentStatusId" ></property>
     <property name="Posted" ></property>
     <property name="Processing" ></property>
     <property name="Processed" ></property>

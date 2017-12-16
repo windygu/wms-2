@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool Active { get; set; }
 
-		public virtual string InOutDocumentStatus { get; set; }
+		public virtual string InOutDocumentStatusId { get; set; }
 
 		public virtual bool InOutPosted { get; set; }
 

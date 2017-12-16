@@ -125,7 +125,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        public virtual string InOutDocumentStatus
+        public virtual string InOutDocumentStatusId
         {
             get;
             set;
@@ -374,7 +374,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             if (this.ReversalLineNumber != null && this.ReversalLineNumber.HasValue) { state.ReversalLineNumber = this.ReversalLineNumber.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
-            state.InOutDocumentStatus = this.InOutDocumentStatus;
+            state.InOutDocumentStatusId = this.InOutDocumentStatusId;
             if (this.InOutPosted != null && this.InOutPosted.HasValue) { state.InOutPosted = this.InOutPosted.Value; }
             if (this.InOutProcessing != null && this.InOutProcessing.HasValue) { state.InOutProcessing = this.InOutProcessing.Value; }
             if (this.InOutProcessed != null && this.InOutProcessed.HasValue) { state.InOutProcessed = this.InOutProcessed.Value; }

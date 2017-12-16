@@ -18,16 +18,6 @@ namespace Dddml.Wms.Domain.StatusItem.NHibernate
 	public class StatusItemApplicationService : StatusItemApplicationServiceBase
 	{
 
-		private IEventStore _eventStore;
-
-		protected override IEventStore EventStore
-		{
-			get
-			{
-				return _eventStore;
-			}
-		}
-
 		private IStatusItemStateRepository _stateRepository;
 
 		protected override IStatusItemStateRepository StateRepository
@@ -48,13 +38,11 @@ namespace Dddml.Wms.Domain.StatusItem.NHibernate
 			}
 		}
 
-		public StatusItemApplicationService(IEventStore eventStore, IStatusItemStateRepository stateRepository, IStatusItemStateQueryRepository stateQueryRepository)
+		public StatusItemApplicationService(IStatusItemStateRepository stateRepository, IStatusItemStateQueryRepository stateQueryRepository)
 		{
-			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
 			this._stateQueryRepository = stateQueryRepository;
 		}
-
 		public override IEventStoreAggregateId ToEventStoreAggregateId(string aggregateId)
 		{
 			return new EventStoreAggregateId(aggregateId);

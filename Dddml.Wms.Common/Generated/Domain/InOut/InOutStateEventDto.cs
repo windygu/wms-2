@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.InOut
             set { StateEventId.Version = value; }
         }
 
-		public virtual string DocumentStatus { get; set; }
+		public virtual string DocumentStatusId { get; set; }
 
 		public virtual bool? Posted { get; set; }
 
@@ -127,13 +127,13 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? IsPropertyDocumentStatusRemoved { get; set; }
+		public virtual bool? IsPropertyDocumentStatusIdRemoved { get; set; }
 
-        bool IInOutStateMergePatched.IsPropertyDocumentStatusRemoved
+        bool IInOutStateMergePatched.IsPropertyDocumentStatusIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyDocumentStatusRemoved;
+                var b = this.IsPropertyDocumentStatusIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -142,7 +142,7 @@ namespace Dddml.Wms.Domain.InOut
             }
             set 
             {
-                this.IsPropertyDocumentStatusRemoved = value;
+                this.IsPropertyDocumentStatusIdRemoved = value;
             }
         }
 

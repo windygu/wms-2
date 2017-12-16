@@ -17,9 +17,9 @@ public interface InOutState
 
     void setDocumentNumber(String documentNumber);
 
-    String getDocumentStatus();
+    String getDocumentStatusId();
 
-    void setDocumentStatus(String documentStatus);
+    void setDocumentStatusId(String documentStatusId);
 
     Boolean getPosted();
 

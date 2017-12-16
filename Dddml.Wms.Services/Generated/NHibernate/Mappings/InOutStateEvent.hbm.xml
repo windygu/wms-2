@@ -11,7 +11,7 @@
     </composite-id>
     <discriminator column="StateEventType" type="String" />
 
-    <property name="DocumentStatus" ></property>
+    <property name="DocumentStatusId" ></property>
     <property name="Posted" ></property>
     <property name="Processing" ></property>
     <property name="Processed" ></property>
@@ -51,7 +51,7 @@
     <subclass name="InOutStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyDocumentStatusRemoved" column="IsPropertyDocumentStatusRemoved"/>
+        <property name="IsPropertyDocumentStatusIdRemoved" column="IsPropertyDocumentStatusIdRemoved"/>
 
         <property name="IsPropertyPostedRemoved" column="IsPropertyPostedRemoved"/>
 

@@ -9,14 +9,6 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractStatusItemApplicationService implements StatusItemApplicationService
 {
-
-    private EventStore eventStore;
-
-    protected EventStore getEventStore()
-    {
-        return eventStore;
-    }
-
     private StatusItemStateRepository stateRepository;
 
     protected StatusItemStateRepository getStateRepository() {
@@ -39,8 +31,7 @@ public abstract class AbstractStatusItemApplicationService implements StatusItem
         this.aggregateEventListener = eventListener;
     }
 
-    public AbstractStatusItemApplicationService(EventStore eventStore, StatusItemStateRepository stateRepository, StatusItemStateQueryRepository stateQueryRepository) {
-        this.eventStore = eventStore;
+    public AbstractStatusItemApplicationService(StatusItemStateRepository stateRepository, StatusItemStateQueryRepository stateQueryRepository) {
         this.stateRepository = stateRepository;
         this.stateQueryRepository = stateQueryRepository;
     }
@@ -82,22 +73,6 @@ public abstract class AbstractStatusItemApplicationService implements StatusItem
         return getStateQueryRepository().getCount(filter);
     }
 
-    public StatusItemStateEvent getStateEvent(String statusId, long version) {
-        StatusItemStateEvent e = (StatusItemStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(statusId), version);
-        if (e != null)
-        { e.setStateEventReadOnly(true); }
-        else if (version == -1)
-        {
-            return getStateEvent(statusId, 0);
-        }
-        return e;
-    }
-
-    public StatusItemState getHistoryState(String statusId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractStatusItemStateEvent.class, toEventStoreAggregateId(statusId), version - 1);
-        return new AbstractStatusItemState.SimpleStatusItemState(eventStream.getEvents());
-    }
-
 
     public StatusItemAggregate getStatusItemAggregate(StatusItemState state)
     {
@@ -126,8 +101,7 @@ public abstract class AbstractStatusItemApplicationService implements StatusItem
     }
 
     private void persist(EventStoreAggregateId eventStoreAggregateId, long version, StatusItemAggregate aggregate, StatusItemState state) {
-        getEventStore().appendEvents(eventStoreAggregateId, version, 
-            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        getStateRepository().save(state);
         if (aggregateEventListener != null) {
             aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
         }
@@ -149,11 +123,9 @@ public abstract class AbstractStatusItemApplicationService implements StatusItem
     {
         boolean repeated = false;
         if (command.getVersion() == null) { command.setVersion(StatusItemState.VERSION_NULL); }
-        if (state.getVersion() != null && state.getVersion() > command.getVersion())
+        if (state.getVersion() != null && state.getVersion() == command.getVersion() + 1)
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractStatusItemStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            if (command.getCommandId() != null && command.getCommandId().equals(state.getCommandId()))
             {
                 repeated = true;
             }
@@ -163,9 +135,9 @@ public abstract class AbstractStatusItemApplicationService implements StatusItem
 
     public static class SimpleStatusItemApplicationService extends AbstractStatusItemApplicationService 
     {
-        public SimpleStatusItemApplicationService(EventStore eventStore, StatusItemStateRepository stateRepository, StatusItemStateQueryRepository stateQueryRepository)
+        public SimpleStatusItemApplicationService(StatusItemStateRepository stateRepository, StatusItemStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository, stateQueryRepository);
+            super(stateRepository, stateQueryRepository);
         }
     }
 

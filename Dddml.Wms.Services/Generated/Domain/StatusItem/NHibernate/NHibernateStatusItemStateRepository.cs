@@ -44,10 +44,6 @@ namespace Dddml.Wms.Domain.StatusItem.NHibernate
 				state = new StatusItemState ();
 				(state as StatusItemState).StatusId = id;
 			}
-            if (ReadOnlyProxyGenerator != null && state != null)
-            {
-                return ReadOnlyProxyGenerator.CreateProxy<IStatusItemState>(state, new Type[] {  }, _readOnlyPropertyNames);
-            }
 			return state;
 		}
 
@@ -55,10 +51,6 @@ namespace Dddml.Wms.Domain.StatusItem.NHibernate
 		public void Save(IStatusItemState state)
 		{
             IStatusItemState s = state;
-            if (ReadOnlyProxyGenerator != null)
-            {
-                s = ReadOnlyProxyGenerator.GetTarget<IStatusItemState>(state);
-            }
 			CurrentSession.SaveOrUpdate (s);
 
 			var saveable = s as ISaveable;

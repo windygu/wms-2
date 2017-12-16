@@ -162,6 +162,16 @@ public abstract class AbstractStatusItemState implements StatusItemState
         this.forReapplying = forReapplying;
     }
 
+    private String commandId;
+
+    public String getCommandId() {
+        return this.commandId;
+    }
+
+    public void setCommandId(String commandId) {
+        this.commandId = commandId;
+    }
+
     public AbstractStatusItemState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {

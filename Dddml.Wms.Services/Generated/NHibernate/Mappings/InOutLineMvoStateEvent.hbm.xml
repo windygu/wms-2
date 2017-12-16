@@ -29,7 +29,7 @@
     <property name="ReversalLineNumber" ></property>
     <property name="Version" ></property>
     <property name="Active" ></property>
-    <property name="InOutDocumentStatus" ></property>
+    <property name="InOutDocumentStatusId" ></property>
     <property name="InOutPosted" ></property>
     <property name="InOutProcessing" ></property>
     <property name="InOutProcessed" ></property>
@@ -108,7 +108,7 @@
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
-        <property name="IsPropertyInOutDocumentStatusRemoved" column="IsPropertyInOutDocumentStatusRemoved"/>
+        <property name="IsPropertyInOutDocumentStatusIdRemoved" column="IsPropertyInOutDocumentStatusIdRemoved"/>
 
         <property name="IsPropertyInOutPostedRemoved" column="IsPropertyInOutPostedRemoved"/>
 

@@ -227,16 +227,16 @@ public class InOutLineMvoStateDto
         this.active = active;
     }
 
-    private String inOutDocumentStatus;
+    private String inOutDocumentStatusId;
 
-    public String getInOutDocumentStatus()
+    public String getInOutDocumentStatusId()
     {
-        return this.inOutDocumentStatus;
+        return this.inOutDocumentStatusId;
     }
 
-    public void setInOutDocumentStatus(String inOutDocumentStatus)
+    public void setInOutDocumentStatusId(String inOutDocumentStatusId)
     {
-        this.inOutDocumentStatus = inOutDocumentStatus;
+        this.inOutDocumentStatusId = inOutDocumentStatusId;
     }
 
     private Boolean inOutPosted;
@@ -763,8 +763,8 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());
             }
-            if (returnedFieldsContains("InOutDocumentStatus")) {
-                dto.setInOutDocumentStatus(state.getInOutDocumentStatus());
+            if (returnedFieldsContains("InOutDocumentStatusId")) {
+                dto.setInOutDocumentStatusId(state.getInOutDocumentStatusId());
             }
             if (returnedFieldsContains("InOutPosted")) {
                 dto.setInOutPosted(state.getInOutPosted());

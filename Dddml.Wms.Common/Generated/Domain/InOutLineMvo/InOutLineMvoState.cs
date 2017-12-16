@@ -209,7 +209,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
-			this.InOutDocumentStatus = e.InOutDocumentStatus;
+			this.InOutDocumentStatusId = e.InOutDocumentStatusId;
 
             this.InOutPosted = (e.InOutPosted != null && e.InOutPosted.HasValue) ? e.InOutPosted.Value : default(bool);
 
@@ -492,16 +492,16 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 			}
 
-			if (e.InOutDocumentStatus == null)
+			if (e.InOutDocumentStatusId == null)
 			{
-				if (e.IsPropertyInOutDocumentStatusRemoved)
+				if (e.IsPropertyInOutDocumentStatusIdRemoved)
 				{
-					this.InOutDocumentStatus = default(string);
+					this.InOutDocumentStatusId = default(string);
 				}
 			}
 			else
 			{
-				this.InOutDocumentStatus = e.InOutDocumentStatus;
+				this.InOutDocumentStatusId = e.InOutDocumentStatusId;
 			}
 
 			if (e.InOutPosted == null)

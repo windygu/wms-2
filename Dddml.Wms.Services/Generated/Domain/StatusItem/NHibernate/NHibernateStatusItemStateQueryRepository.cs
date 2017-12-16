@@ -40,10 +40,6 @@ namespace Dddml.Wms.Domain.StatusItem.NHibernate
 		public IStatusItemState Get(string id)
 		{
 			IStatusItemState state = CurrentSession.Get<StatusItemState>(id);
-            if (ReadOnlyProxyGenerator != null && state != null)
-            {
-                return ReadOnlyProxyGenerator.CreateProxy<IStatusItemState>(state, new Type[] {  }, _readOnlyPropertyNames);
-            }
 			return state;
 		}
 

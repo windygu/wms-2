@@ -15,7 +15,7 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="documentStatus" ></property>
+	<property name="documentStatusId" ></property>
 	<property name="posted" ></property>
 	<property name="processing" ></property>
 	<property name="processed" ></property>
@@ -56,7 +56,7 @@
 
     <subclass name="AbstractInOutStateEvent$SimpleInOutStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyDocumentStatusRemoved" column="IsPropertyDocumentStatusRemoved"/>
+        <property name="isPropertyDocumentStatusIdRemoved" column="IsPropertyDocumentStatusIdRemoved"/>
 
         <property name="isPropertyPostedRemoved" column="IsPropertyPostedRemoved"/>
 

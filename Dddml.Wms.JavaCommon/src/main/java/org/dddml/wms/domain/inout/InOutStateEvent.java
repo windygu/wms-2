@@ -14,9 +14,9 @@ public interface InOutStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    String getDocumentStatus();
+    String getDocumentStatusId();
 
-    void setDocumentStatus(String documentStatus);
+    void setDocumentStatusId(String documentStatusId);
 
     Boolean getPosted();
 
@@ -152,9 +152,9 @@ public interface InOutStateEvent extends Event
 
     interface InOutStateMergePatched extends InOutStateEvent
     {
-        Boolean getIsPropertyDocumentStatusRemoved();
+        Boolean getIsPropertyDocumentStatusIdRemoved();
 
-        void setIsPropertyDocumentStatusRemoved(Boolean removed);
+        void setIsPropertyDocumentStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyPostedRemoved();
 

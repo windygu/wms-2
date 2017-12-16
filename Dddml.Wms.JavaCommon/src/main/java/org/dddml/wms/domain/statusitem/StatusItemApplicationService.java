@@ -28,9 +28,5 @@ public interface StatusItemApplicationService
 
     long getCount(Criterion filter);
 
-    StatusItemStateEvent getStateEvent(String statusId, long version);
-
-    StatusItemState getHistoryState(String statusId, long version);
-
 }
 

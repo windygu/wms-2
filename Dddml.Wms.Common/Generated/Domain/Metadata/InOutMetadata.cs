@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "DocumentStatus",
+                    Name = "DocumentStatusId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1072,8 +1072,8 @@ namespace Dddml.Wms.Domain.Metadata
             var d = new Dictionary<string, string>();
             d.Add("DocumentNumber", "DocumentNumber");
             d.Add("documentNumber", "DocumentNumber");
-            d.Add("DocumentStatus", "DocumentStatus");
-            d.Add("documentStatus", "DocumentStatus");
+            d.Add("DocumentStatusId", "DocumentStatusId");
+            d.Add("documentStatusId", "DocumentStatusId");
             d.Add("Posted", "Posted");
             d.Add("posted", "Posted");
             d.Add("Processing", "Processing");

@@ -496,9 +496,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateStatusItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\statusitem\hibernate\HibernateStatusItemEventStore.java">
-      <DependentUpon>GenerateStatusItemDomainHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\statusitem\hibernate\HibernateStatusItemStateQueryRepository.java">
       <DependentUpon>GenerateStatusItemDomainHibernate.tt</DependentUpon>
     </Content>
@@ -543,9 +540,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\StatusItemStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\StatusItemState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -849,7 +843,6 @@
 .\ShipmentState.hbm.xml
 .\ShipmentStateEvent.hbm.xml
 .\StatusItemState.hbm.xml
-.\StatusItemStateEvent.hbm.xml
 .\SupplierProductState.hbm.xml
 .\SupplierProductStateEvent.hbm.xml
 .\WarehouseState.hbm.xml
@@ -1175,10 +1168,12 @@
       <LastGenOutput>GenerateStatusItemDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateStatusItemDomainHibernate.txt
-.\HibernateStatusItemEventStore.java
 .\HibernateStatusItemStateQueryRepository.java
 .\HibernateStatusItemStateRepository.java
 </LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\hibernate\GenerateShipmentTypeDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
     </Content>
   </ItemGroup>
   <ItemGroup>

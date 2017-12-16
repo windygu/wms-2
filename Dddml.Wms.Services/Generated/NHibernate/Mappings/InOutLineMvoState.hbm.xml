@@ -32,7 +32,7 @@
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>
     <property name="Deleted" ></property>
-    <property name="InOutDocumentStatus" ></property>
+    <property name="InOutDocumentStatusId" ></property>
     <property name="InOutPosted" ></property>
     <property name="InOutProcessing" ></property>
     <property name="InOutProcessed" ></property>

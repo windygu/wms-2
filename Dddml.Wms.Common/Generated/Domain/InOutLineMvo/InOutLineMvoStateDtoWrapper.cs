@@ -580,31 +580,31 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual string InOutDocumentStatus
+		public virtual string InOutDocumentStatusId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutDocumentStatus"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutDocumentStatusId"))
                 {
-                    return _state.InOutDocumentStatus;
+                    return _state.InOutDocumentStatusId;
                 }
                 return null;
             }
             set
             {
-                _state.InOutDocumentStatus = value;
+                _state.InOutDocumentStatusId = value;
             }
         }
 
-        string IInOutLineMvoStateProperties.InOutDocumentStatus
+        string IInOutLineMvoStateProperties.InOutDocumentStatusId
         {
             get 
             {
-                return (this._state as IInOutLineMvoStateProperties).InOutDocumentStatus;
+                return (this._state as IInOutLineMvoStateProperties).InOutDocumentStatusId;
             }
             set 
             {
-                (this._state as IInOutLineMvoStateProperties).InOutDocumentStatus = value;
+                (this._state as IInOutLineMvoStateProperties).InOutDocumentStatusId = value;
             }
         }
 

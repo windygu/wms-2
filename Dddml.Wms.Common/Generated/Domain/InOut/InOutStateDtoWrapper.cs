@@ -67,31 +67,31 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual string DocumentStatus
+		public virtual string DocumentStatusId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DocumentStatus"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DocumentStatusId"))
                 {
-                    return _state.DocumentStatus;
+                    return _state.DocumentStatusId;
                 }
                 return null;
             }
             set
             {
-                _state.DocumentStatus = value;
+                _state.DocumentStatusId = value;
             }
         }
 
-        string IInOutStateProperties.DocumentStatus
+        string IInOutStateProperties.DocumentStatusId
         {
             get 
             {
-                return (this._state as IInOutStateProperties).DocumentStatus;
+                return (this._state as IInOutStateProperties).DocumentStatusId;
             }
             set 
             {
-                (this._state as IInOutStateProperties).DocumentStatus = value;
+                (this._state as IInOutStateProperties).DocumentStatusId = value;
             }
         }
 

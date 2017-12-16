@@ -91,9 +91,9 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setActive(Boolean active);
 
-    String getInOutDocumentStatus();
+    String getInOutDocumentStatusId();
 
-    void setInOutDocumentStatus(String inOutDocumentStatus);
+    void setInOutDocumentStatusId(String inOutDocumentStatusId);
 
     Boolean getInOutPosted();
 
@@ -303,9 +303,9 @@ public interface InOutLineMvoStateEvent extends Event
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutDocumentStatusRemoved();
+        Boolean getIsPropertyInOutDocumentStatusIdRemoved();
 
-        void setIsPropertyInOutDocumentStatusRemoved(Boolean removed);
+        void setIsPropertyInOutDocumentStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutPostedRemoved();
 

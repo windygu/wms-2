@@ -33,10 +33,6 @@ namespace Dddml.Wms.Domain.StatusItem
 
         long GetCount(ICriterion filter);
 
-        IStatusItemStateEvent GetStateEvent(string statusId, long version);
-
-        IStatusItemState GetHistoryState(string statusId, long version);
-
 
 	}
 

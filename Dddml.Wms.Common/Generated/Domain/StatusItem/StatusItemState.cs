@@ -24,6 +24,8 @@ namespace Dddml.Wms.Domain.StatusItem
 
 		public virtual DateTime UpdatedAt { get; set; }
 
+        public virtual string CommandId { get; set; }
+
 
 		#region IIdentity implementation
 

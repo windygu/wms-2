@@ -33,7 +33,7 @@ public final class InOutLineMvoFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "inOutDocumentStatus",
+            "inOutDocumentStatusId",
             "inOutPosted",
             "inOutProcessing",
             "inOutProcessed",
@@ -188,8 +188,8 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("inOutDocumentStatus", "inOutDocumentStatus");
-        aliasMap.put("InOutDocumentStatus", "inOutDocumentStatus");
+        aliasMap.put("inOutDocumentStatusId", "inOutDocumentStatusId");
+        aliasMap.put("InOutDocumentStatusId", "inOutDocumentStatusId");
         aliasMap.put("inOutPosted", "inOutPosted");
         aliasMap.put("InOutPosted", "inOutPosted");
         aliasMap.put("inOutProcessing", "inOutProcessing");

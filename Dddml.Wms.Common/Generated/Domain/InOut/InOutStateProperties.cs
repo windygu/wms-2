@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.InOut
 	{
 		public virtual string DocumentNumber { get; set; }
 
-		public virtual string DocumentStatus { get; set; }
+		public virtual string DocumentStatusId { get; set; }
 
 		public virtual bool Posted { get; set; }
 

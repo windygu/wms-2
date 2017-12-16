@@ -684,7 +684,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutDocumentStatus",
+                    Name = "InOutDocumentStatusId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1815,8 +1815,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
-            d.Add("InOutDocumentStatus", "InOutDocumentStatus");
-            d.Add("inOutDocumentStatus", "InOutDocumentStatus");
+            d.Add("InOutDocumentStatusId", "InOutDocumentStatusId");
+            d.Add("inOutDocumentStatusId", "InOutDocumentStatusId");
             d.Add("InOutPosted", "InOutPosted");
             d.Add("inOutPosted", "InOutPosted");
             d.Add("InOutProcessing", "InOutProcessing");

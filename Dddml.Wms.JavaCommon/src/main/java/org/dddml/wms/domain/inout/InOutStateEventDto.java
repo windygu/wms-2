@@ -35,14 +35,14 @@ public class InOutStateEventDto extends AbstractStateEvent
         getStateEventId().setVersion(version);
     }
 
-    private String documentStatus;
+    private String documentStatusId;
 
-    public String getDocumentStatus() {
-        return this.documentStatus;
+    public String getDocumentStatusId() {
+        return this.documentStatusId;
     }
 
-    public void setDocumentStatus(String documentStatus) {
-        this.documentStatus = documentStatus;
+    public void setDocumentStatusId(String documentStatusId) {
+        this.documentStatusId = documentStatusId;
     }
 
     private Boolean posted;
@@ -335,14 +335,14 @@ public class InOutStateEventDto extends AbstractStateEvent
         this.createdAt = createdAt;
     }
 
-    private Boolean isPropertyDocumentStatusRemoved;
+    private Boolean isPropertyDocumentStatusIdRemoved;
 
-    public Boolean getIsPropertyDocumentStatusRemoved() {
-        return this.isPropertyDocumentStatusRemoved;
+    public Boolean getIsPropertyDocumentStatusIdRemoved() {
+        return this.isPropertyDocumentStatusIdRemoved;
     }
 
-    public void setIsPropertyDocumentStatusRemoved(Boolean removed) {
-        this.isPropertyDocumentStatusRemoved = removed;
+    public void setIsPropertyDocumentStatusIdRemoved(Boolean removed) {
+        this.isPropertyDocumentStatusIdRemoved = removed;
     }
 
     private Boolean isPropertyPostedRemoved;

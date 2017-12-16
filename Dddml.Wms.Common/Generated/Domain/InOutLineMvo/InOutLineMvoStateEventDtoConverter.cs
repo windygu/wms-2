@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Version = e.Version;
             dto.Active = e.Active;
-            dto.InOutDocumentStatus = e.InOutDocumentStatus;
+            dto.InOutDocumentStatusId = e.InOutDocumentStatusId;
             dto.InOutPosted = e.InOutPosted;
             dto.InOutProcessing = e.InOutProcessing;
             dto.InOutProcessed = e.InOutProcessed;
@@ -120,7 +120,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Version = e.Version;
             dto.Active = e.Active;
-            dto.InOutDocumentStatus = e.InOutDocumentStatus;
+            dto.InOutDocumentStatusId = e.InOutDocumentStatusId;
             dto.InOutPosted = e.InOutPosted;
             dto.InOutProcessing = e.InOutProcessing;
             dto.InOutProcessed = e.InOutProcessed;
@@ -170,7 +170,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.IsPropertyReversalLineNumberRemoved = e.IsPropertyReversalLineNumberRemoved;
             dto.IsPropertyVersionRemoved = e.IsPropertyVersionRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
-            dto.IsPropertyInOutDocumentStatusRemoved = e.IsPropertyInOutDocumentStatusRemoved;
+            dto.IsPropertyInOutDocumentStatusIdRemoved = e.IsPropertyInOutDocumentStatusIdRemoved;
             dto.IsPropertyInOutPostedRemoved = e.IsPropertyInOutPostedRemoved;
             dto.IsPropertyInOutProcessingRemoved = e.IsPropertyInOutProcessingRemoved;
             dto.IsPropertyInOutProcessedRemoved = e.IsPropertyInOutProcessedRemoved;

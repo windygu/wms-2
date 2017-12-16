@@ -453,12 +453,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="statusItemEventStore" type="Dddml.Wms.Domain.StatusItem.NHibernate.NHibernateStatusItemEventStore, Dddml.Wms.Services">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-  </object>
-
   <object id="statusItemApplicationService" type="Dddml.Wms.Domain.StatusItem.NHibernate.StatusItemApplicationService, Dddml.Wms.Services">
-    <constructor-arg ref="statusItemEventStore"/>
     <constructor-arg ref="statusItemStateRepository"/>
     <constructor-arg ref="statusItemStateQueryRepository"/>
   </object>

@@ -33,16 +33,16 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String documentStatus;
+    private String documentStatusId;
 
-    public String getDocumentStatus()
+    public String getDocumentStatusId()
     {
-        return this.documentStatus;
+        return this.documentStatusId;
     }
 
-    public void setDocumentStatus(String documentStatus)
+    public void setDocumentStatusId(String documentStatusId)
     {
-        this.documentStatus = documentStatus;
+        this.documentStatusId = documentStatusId;
     }
 
     private Boolean posted;
@@ -532,14 +532,14 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyDocumentStatusRemoved;
+        private Boolean isPropertyDocumentStatusIdRemoved;
 
-        public Boolean getIsPropertyDocumentStatusRemoved() {
-            return this.isPropertyDocumentStatusRemoved;
+        public Boolean getIsPropertyDocumentStatusIdRemoved() {
+            return this.isPropertyDocumentStatusIdRemoved;
         }
 
-        public void setIsPropertyDocumentStatusRemoved(Boolean removed) {
-            this.isPropertyDocumentStatusRemoved = removed;
+        public void setIsPropertyDocumentStatusIdRemoved(Boolean removed) {
+            this.isPropertyDocumentStatusIdRemoved = removed;
         }
 
         private Boolean isPropertyPostedRemoved;

@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.InOut
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.DocumentStatus = e.DocumentStatus;
+            dto.DocumentStatusId = e.DocumentStatusId;
             dto.Posted = e.Posted;
             dto.Processing = e.Processing;
             dto.Processed = e.Processed;
@@ -88,7 +88,7 @@ namespace Dddml.Wms.Domain.InOut
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.DocumentStatus = e.DocumentStatus;
+            dto.DocumentStatusId = e.DocumentStatusId;
             dto.Posted = e.Posted;
             dto.Processing = e.Processing;
             dto.Processed = e.Processed;
@@ -116,7 +116,7 @@ namespace Dddml.Wms.Domain.InOut
             dto.RmaNumber = e.RmaNumber;
             dto.ReversalNumber = e.ReversalNumber;
             dto.Active = e.Active;
-            dto.IsPropertyDocumentStatusRemoved = e.IsPropertyDocumentStatusRemoved;
+            dto.IsPropertyDocumentStatusIdRemoved = e.IsPropertyDocumentStatusIdRemoved;
             dto.IsPropertyPostedRemoved = e.IsPropertyPostedRemoved;
             dto.IsPropertyProcessingRemoved = e.IsPropertyProcessingRemoved;
             dto.IsPropertyProcessedRemoved = e.IsPropertyProcessedRemoved;

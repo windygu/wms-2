@@ -3157,6 +3157,93 @@
     <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateProperties.cs">
       <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\IShipmentTypeAggregate.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\IShipmentTypeApplicationService.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\IShipmentTypeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\IShipmentTypeCommand.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\IShipmentTypeState.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\IShipmentTypeStateDto.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\IShipmentTypeStateEvent.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\IShipmentTypeStateProperties.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\IShipmentTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\IShipmentTypeStateRepository.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeAggregate.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeApplicationServiceBase.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeCommand.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeCommandDto.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeState.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateDto.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateDtoExtension.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateEvent.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateEventDto.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateEventDtoConverter.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateEventId.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateEventIdDto.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateExtension.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateInterfaceExtension.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateProperties.cs">
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Shipment\IShipmentAggregate.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
@@ -3681,6 +3768,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\ShipmentType\GenerateShipmentTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\Shipment\GenerateShipmentDomain.txt">
       <AutoGen>True</AutoGen>
@@ -5061,6 +5153,42 @@
 .\StatusItemStateExtension.cs
 .\StatusItemStateInterfaceExtension.cs
 .\StatusItemStateProperties.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\ShipmentType\GenerateShipmentTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateShipmentTypeDomain.txt
+.\IShipmentTypeAggregate.cs
+.\IShipmentTypeApplicationService.cs
+.\IShipmentTypeApplicationServiceFactory.cs
+.\IShipmentTypeCommand.cs
+.\IShipmentTypeState.cs
+.\IShipmentTypeStateDto.cs
+.\IShipmentTypeStateEvent.cs
+.\IShipmentTypeStateProperties.cs
+.\IShipmentTypeStateQueryRepository.cs
+.\IShipmentTypeStateRepository.cs
+.\ShipmentTypeAggregate.cs
+.\ShipmentTypeApplicationServiceBase.cs
+.\ShipmentTypeApplicationServiceFactory.cs
+.\ShipmentTypeCommand.cs
+.\ShipmentTypeCommandDto.cs
+.\ShipmentTypeState.cs
+.\ShipmentTypeStateDto.cs
+.\ShipmentTypeStateDtoExtension.cs
+.\ShipmentTypeStateDtoWrapper.cs
+.\ShipmentTypeStateEvent.cs
+.\ShipmentTypeStateEventDto.cs
+.\ShipmentTypeStateEventDtoConverter.cs
+.\ShipmentTypeStateEventId.cs
+.\ShipmentTypeStateEventIdDto.cs
+.\ShipmentTypeStateEventIdDtoWrapper.cs
+.\ShipmentTypeStateEventIdFlattenedDto.cs
+.\ShipmentTypeStateExtension.cs
+.\ShipmentTypeStateInterfaceExtension.cs
+.\ShipmentTypeStateProperties.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

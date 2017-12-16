@@ -393,6 +393,19 @@ namespace Dddml.Wms.Domain.StatusItem
             set { this.StateReadOnly = value; }
         }
 
+        public virtual string CommandId
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("CommandId"))
+                {
+                    return _state.CommandId; 
+                }
+                return null;
+            }
+            set { _state.CommandId = value; }
+        }
+
 		void IStatusItemState.When(IStatusItemStateMergePatched e)
 		{
             throw new NotSupportedException();

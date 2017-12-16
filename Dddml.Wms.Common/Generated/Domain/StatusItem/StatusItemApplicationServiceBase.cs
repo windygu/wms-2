@@ -14,8 +14,6 @@ namespace Dddml.Wms.Domain.StatusItem
 {
 	public abstract partial class StatusItemApplicationServiceBase : IStatusItemApplicationService, IApplicationService
 	{
-		protected abstract IEventStore EventStore { get; }
-
 		protected abstract IStatusItemStateRepository StateRepository { get; }
 
 		protected abstract IStatusItemStateQueryRepository StateQueryRepository { get; }
@@ -50,7 +48,7 @@ namespace Dddml.Wms.Domain.StatusItem
 
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IStatusItemAggregate aggregate, IStatusItemState state)
         {
-            EventStore.AppendEvents(eventStoreAggregateId, ((IStatusItemStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            StateRepository.Save(state);
             if (AggregateEventListener != null) 
             {
                 AggregateEventListener.EventAppended(new AggregateEvent<IStatusItemAggregate, IStatusItemState>(aggregate, state, aggregate.Changes));
@@ -72,10 +70,9 @@ namespace Dddml.Wms.Domain.StatusItem
 		protected bool IsRepeatedCommand(IStatusItemCommand command, IEventStoreAggregateId eventStoreAggregateId, IStatusItemState state)
 		{
 			bool repeated = false;
-			if (((IStatusItemStateProperties)state).Version > command.AggregateVersion)
+			if (((IStatusItemStateProperties)state).Version == command.AggregateVersion + 1)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IStatusItemStateEvent), eventStoreAggregateId, command.AggregateVersion);
-				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
+				if (state.CommandId == command.CommandId)
 				{
 					repeated = true;
 				}
@@ -139,26 +136,6 @@ namespace Dddml.Wms.Domain.StatusItem
 		{
             return StateQueryRepository.GetCount(filter);
 		}
-
-	    public virtual IStatusItemStateEvent GetStateEvent(string statusId, long version)
-        {
-            var e = (IStatusItemStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(statusId), version);
-            if (e != null)
-            {
-                e.ReadOnly = true;
-            }
-            else if (version == -1)
-            {
-                return GetStateEvent(statusId, 0);
-            }
-            return e;
-        }
-
-        public virtual IStatusItemState GetHistoryState(string statusId, long version)
-        {
-            var eventStream = EventStore.LoadEventStream(typeof(IStatusItemStateEvent), ToEventStoreAggregateId(statusId), version - 1);
-            return new StatusItemState(eventStream.Events);
-        }
 
 
 		public abstract IStatusItemAggregate GetStatusItemAggregate(IStatusItemState state);

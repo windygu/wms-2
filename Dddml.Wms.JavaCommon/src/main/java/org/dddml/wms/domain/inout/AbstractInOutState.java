@@ -22,16 +22,16 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.documentNumber = documentNumber;
     }
 
-    private String documentStatus;
+    private String documentStatusId;
 
-    public String getDocumentStatus()
+    public String getDocumentStatusId()
     {
-        return this.documentStatus;
+        return this.documentStatusId;
     }
 
-    public void setDocumentStatus(String documentStatus)
+    public void setDocumentStatusId(String documentStatusId)
     {
-        this.documentStatus = documentStatus;
+        this.documentStatusId = documentStatusId;
     }
 
     private Boolean posted;
@@ -507,7 +507,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     {
         throwOnWrongEvent(e);
 
-        this.setDocumentStatus(e.getDocumentStatus());
+        this.setDocumentStatusId(e.getDocumentStatusId());
         this.setPosted(e.getPosted());
         this.setProcessing(e.getProcessing());
         this.setProcessed(e.getProcessed());
@@ -551,16 +551,16 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     {
         throwOnWrongEvent(e);
 
-        if (e.getDocumentStatus() == null)
+        if (e.getDocumentStatusId() == null)
         {
-            if (e.getIsPropertyDocumentStatusRemoved() != null && e.getIsPropertyDocumentStatusRemoved())
+            if (e.getIsPropertyDocumentStatusIdRemoved() != null && e.getIsPropertyDocumentStatusIdRemoved())
             {
-                this.setDocumentStatus(null);
+                this.setDocumentStatusId(null);
             }
         }
         else
         {
-            this.setDocumentStatus(e.getDocumentStatus());
+            this.setDocumentStatusId(e.getDocumentStatusId());
         }
         if (e.getPosted() == null)
         {

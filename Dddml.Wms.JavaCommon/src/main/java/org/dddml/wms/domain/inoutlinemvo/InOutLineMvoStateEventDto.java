@@ -206,14 +206,14 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
         this.active = active;
     }
 
-    private String inOutDocumentStatus;
+    private String inOutDocumentStatusId;
 
-    public String getInOutDocumentStatus() {
-        return this.inOutDocumentStatus;
+    public String getInOutDocumentStatusId() {
+        return this.inOutDocumentStatusId;
     }
 
-    public void setInOutDocumentStatus(String inOutDocumentStatus) {
-        this.inOutDocumentStatus = inOutDocumentStatus;
+    public void setInOutDocumentStatusId(String inOutDocumentStatusId) {
+        this.inOutDocumentStatusId = inOutDocumentStatusId;
     }
 
     private Boolean inOutPosted;
@@ -726,14 +726,14 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
         this.isPropertyActiveRemoved = removed;
     }
 
-    private Boolean isPropertyInOutDocumentStatusRemoved;
+    private Boolean isPropertyInOutDocumentStatusIdRemoved;
 
-    public Boolean getIsPropertyInOutDocumentStatusRemoved() {
-        return this.isPropertyInOutDocumentStatusRemoved;
+    public Boolean getIsPropertyInOutDocumentStatusIdRemoved() {
+        return this.isPropertyInOutDocumentStatusIdRemoved;
     }
 
-    public void setIsPropertyInOutDocumentStatusRemoved(Boolean removed) {
-        this.isPropertyInOutDocumentStatusRemoved = removed;
+    public void setIsPropertyInOutDocumentStatusIdRemoved(Boolean removed) {
+        this.isPropertyInOutDocumentStatusIdRemoved = removed;
     }
 
     private Boolean isPropertyInOutPostedRemoved;

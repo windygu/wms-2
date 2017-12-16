@@ -11,7 +11,7 @@
 	<id name="documentNumber" length="50" column="DocumentNumber"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
-	<property name="documentStatus" ></property>
+	<property name="documentStatusId" ></property>
 	<property name="posted" ></property>
 	<property name="processing" ></property>
 	<property name="processed" ></property>

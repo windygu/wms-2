@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.InOut
 	{
 		string DocumentNumber { get; set; }
 
-		string DocumentStatus { get; set; }
+		string DocumentStatusId { get; set; }
 
 		bool Posted { get; set; }
 

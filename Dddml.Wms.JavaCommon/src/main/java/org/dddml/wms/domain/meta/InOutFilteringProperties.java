@@ -12,7 +12,7 @@ public final class InOutFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "documentNumber",
-            "documentStatus",
+            "documentStatusId",
             "posted",
             "processing",
             "processed",
@@ -100,8 +100,8 @@ public final class InOutFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("documentNumber", "documentNumber");
         aliasMap.put("DocumentNumber", "documentNumber");
-        aliasMap.put("documentStatus", "documentStatus");
-        aliasMap.put("DocumentStatus", "documentStatus");
+        aliasMap.put("documentStatusId", "documentStatusId");
+        aliasMap.put("DocumentStatusId", "documentStatusId");
         aliasMap.put("posted", "posted");
         aliasMap.put("Posted", "posted");
         aliasMap.put("processing", "processing");

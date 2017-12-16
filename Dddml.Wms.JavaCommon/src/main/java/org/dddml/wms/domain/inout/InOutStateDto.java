@@ -22,16 +22,16 @@ public class InOutStateDto
         this.documentNumber = documentNumber;
     }
 
-    private String documentStatus;
+    private String documentStatusId;
 
-    public String getDocumentStatus()
+    public String getDocumentStatusId()
     {
-        return this.documentStatus;
+        return this.documentStatusId;
     }
 
-    public void setDocumentStatus(String documentStatus)
+    public void setDocumentStatusId(String documentStatusId)
     {
-        this.documentStatus = documentStatus;
+        this.documentStatusId = documentStatusId;
     }
 
     private Boolean posted;
@@ -459,8 +459,8 @@ public class InOutStateDto
             if (returnedFieldsContains("DocumentNumber")) {
                 dto.setDocumentNumber(state.getDocumentNumber());
             }
-            if (returnedFieldsContains("DocumentStatus")) {
-                dto.setDocumentStatus(state.getDocumentStatus());
+            if (returnedFieldsContains("DocumentStatusId")) {
+                dto.setDocumentStatusId(state.getDocumentStatusId());
             }
             if (returnedFieldsContains("Posted")) {
                 dto.setPosted(state.getPosted());

@@ -96,7 +96,7 @@ CREATE VIEW `InOutLine_RV` AS
         `InOutLines`.`UpdatedAt`,
         `InOutLines`.`Active`,
         `InOutLines`.`Deleted`,
-        `InOuts`.`DocumentStatus` AS `InOutDocumentStatus`,
+        `InOuts`.`DocumentStatusId` AS `InOutDocumentStatusId`,
         `InOuts`.`Posted` AS `InOutPosted`,
         `InOuts`.`Processing` AS `InOutProcessing`,
         `InOuts`.`Processed` AS `InOutProcessed`,

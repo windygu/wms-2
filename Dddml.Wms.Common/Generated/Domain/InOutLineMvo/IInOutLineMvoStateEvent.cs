@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? Active { get; set; }
 
-		string InOutDocumentStatus { get; set; }
+		string InOutDocumentStatusId { get; set; }
 
 		bool? InOutPosted { get; set; }
 
@@ -162,7 +162,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool IsPropertyActiveRemoved { get; set; }
 
-		bool IsPropertyInOutDocumentStatusRemoved { get; set; }
+		bool IsPropertyInOutDocumentStatusIdRemoved { get; set; }
 
 		bool IsPropertyInOutPostedRemoved { get; set; }
 

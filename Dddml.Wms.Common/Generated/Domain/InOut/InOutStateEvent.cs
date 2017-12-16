@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.InOut
             set { StateEventId.DocumentNumber = value; }
         }
 
-		public virtual string DocumentStatus { get; set; }
+		public virtual string DocumentStatusId { get; set; }
 
 		public virtual bool? Posted { get; set; }
 
@@ -250,7 +250,7 @@ namespace Dddml.Wms.Domain.InOut
 
 	public class InOutStateMergePatched : InOutStateEventBase, IInOutStateMergePatched, ISaveable
 	{
-		public virtual bool IsPropertyDocumentStatusRemoved { get; set; }
+		public virtual bool IsPropertyDocumentStatusIdRemoved { get; set; }
 
 		public virtual bool IsPropertyPostedRemoved { get; set; }
 

@@ -22,6 +22,8 @@ namespace Dddml.Wms.Domain.StatusItem
 
 		bool ForReapplying { get; }
 
+		string CommandId { get; set; }
+
 		void When(IStatusItemStateCreated e);
 
 		void When(IStatusItemStateMergePatched e);

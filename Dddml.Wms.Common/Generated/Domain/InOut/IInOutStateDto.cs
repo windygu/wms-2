@@ -20,7 +20,7 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        string DocumentStatus
+        string DocumentStatusId
         {
             get;
             set;

@@ -45,18 +45,13 @@ public class HibernateStatusItemStateRepository implements StatusItemStateReposi
             state = new AbstractStatusItemState.SimpleStatusItemState();
             state.setStatusId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (StatusItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{StatusItemState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
         return state;
     }
 
+    @Transactional
     public void save(StatusItemState state)
     {
         StatusItemState s = state;
-        if (getReadOnlyProxyGenerator() != null) {
-            s = (StatusItemState) getReadOnlyProxyGenerator().getTarget(state);
-        }
         if(s.getVersion() == null) {
             getCurrentSession().save(s);
         }else {

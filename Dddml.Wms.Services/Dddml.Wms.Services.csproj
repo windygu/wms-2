@@ -464,9 +464,6 @@
     <Compile Include="Generated\Domain\Shipment\NHibernate\ShipmentApplicationService.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\StatusItem\NHibernate\NHibernateStatusItemEventStore.cs">
-      <DependentUpon>GenerateStatusItemDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\StatusItem\NHibernate\NHibernateStatusItemStateQueryRepository.cs">
       <DependentUpon>GenerateStatusItemDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -847,7 +844,6 @@
 .\ShipmentState.hbm.xml
 .\ShipmentStateEvent.hbm.xml
 .\StatusItemState.hbm.xml
-.\StatusItemStateEvent.hbm.xml
 .\SupplierProductState.hbm.xml
 .\SupplierProductStateEvent.hbm.xml
 .\WarehouseState.hbm.xml
@@ -998,9 +994,6 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\StatusItemState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\StatusItemStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
@@ -1380,11 +1373,13 @@
       <LastGenOutput>GenerateStatusItemDomainNHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateStatusItemDomainNHibernate.txt
-.\NHibernateStatusItemEventStore.cs
 .\NHibernateStatusItemStateQueryRepository.cs
 .\NHibernateStatusItemStateRepository.cs
 .\StatusItemApplicationService.cs
 </LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\ShipmentType\NHibernate\GenerateShipmentTypeDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
     </Content>
   </ItemGroup>
   <ItemGroup>

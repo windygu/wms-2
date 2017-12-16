@@ -287,16 +287,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.deleted = deleted;
     }
 
-    private String inOutDocumentStatus;
+    private String inOutDocumentStatusId;
 
-    public String getInOutDocumentStatus()
+    public String getInOutDocumentStatusId()
     {
-        return this.inOutDocumentStatus;
+        return this.inOutDocumentStatusId;
     }
 
-    public void setInOutDocumentStatus(String inOutDocumentStatus)
+    public void setInOutDocumentStatusId(String inOutDocumentStatusId)
     {
-        this.inOutDocumentStatus = inOutDocumentStatus;
+        this.inOutDocumentStatusId = inOutDocumentStatusId;
     }
 
     private Boolean inOutPosted;
@@ -776,7 +776,7 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.setReversalLineNumber(e.getReversalLineNumber());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
-        this.setInOutDocumentStatus(e.getInOutDocumentStatus());
+        this.setInOutDocumentStatusId(e.getInOutDocumentStatusId());
         this.setInOutPosted(e.getInOutPosted());
         this.setInOutProcessing(e.getInOutProcessing());
         this.setInOutProcessed(e.getInOutProcessed());
@@ -1008,16 +1008,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setActive(e.getActive());
         }
-        if (e.getInOutDocumentStatus() == null)
+        if (e.getInOutDocumentStatusId() == null)
         {
-            if (e.getIsPropertyInOutDocumentStatusRemoved() != null && e.getIsPropertyInOutDocumentStatusRemoved())
+            if (e.getIsPropertyInOutDocumentStatusIdRemoved() != null && e.getIsPropertyInOutDocumentStatusIdRemoved())
             {
-                this.setInOutDocumentStatus(null);
+                this.setInOutDocumentStatusId(null);
             }
         }
         else
         {
-            this.setInOutDocumentStatus(e.getInOutDocumentStatus());
+            this.setInOutDocumentStatusId(e.getInOutDocumentStatusId());
         }
         if (e.getInOutPosted() == null)
         {

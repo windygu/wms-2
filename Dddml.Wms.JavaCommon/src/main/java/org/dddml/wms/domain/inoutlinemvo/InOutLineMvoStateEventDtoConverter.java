@@ -47,7 +47,7 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setVersion(e.getVersion());
         dto.setActive(e.getActive());
-        dto.setInOutDocumentStatus(e.getInOutDocumentStatus());
+        dto.setInOutDocumentStatusId(e.getInOutDocumentStatusId());
         dto.setInOutPosted(e.getInOutPosted());
         dto.setInOutProcessing(e.getInOutProcessing());
         dto.setInOutProcessed(e.getInOutProcessed());
@@ -106,7 +106,7 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setVersion(e.getVersion());
         dto.setActive(e.getActive());
-        dto.setInOutDocumentStatus(e.getInOutDocumentStatus());
+        dto.setInOutDocumentStatusId(e.getInOutDocumentStatusId());
         dto.setInOutPosted(e.getInOutPosted());
         dto.setInOutProcessing(e.getInOutProcessing());
         dto.setInOutProcessed(e.getInOutProcessed());
@@ -156,7 +156,7 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setIsPropertyReversalLineNumberRemoved(e.getIsPropertyReversalLineNumberRemoved());
         dto.setIsPropertyVersionRemoved(e.getIsPropertyVersionRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
-        dto.setIsPropertyInOutDocumentStatusRemoved(e.getIsPropertyInOutDocumentStatusRemoved());
+        dto.setIsPropertyInOutDocumentStatusIdRemoved(e.getIsPropertyInOutDocumentStatusIdRemoved());
         dto.setIsPropertyInOutPostedRemoved(e.getIsPropertyInOutPostedRemoved());
         dto.setIsPropertyInOutProcessingRemoved(e.getIsPropertyInOutProcessingRemoved());
         dto.setIsPropertyInOutProcessedRemoved(e.getIsPropertyInOutProcessedRemoved());

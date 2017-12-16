@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        string InOutDocumentStatus
+        string InOutDocumentStatusId
         {
             get;
             set;

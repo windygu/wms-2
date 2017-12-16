@@ -106,9 +106,9 @@ public interface InOutLineMvoState
 
     void setDeleted(Boolean deleted);
 
-    String getInOutDocumentStatus();
+    String getInOutDocumentStatusId();
 
-    void setInOutDocumentStatus(String inOutDocumentStatus);
+    void setInOutDocumentStatusId(String inOutDocumentStatusId);
 
     Boolean getInOutPosted();
 

@@ -34,7 +34,7 @@
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>
 	<property name="deleted" ></property>
-	<property name="inOutDocumentStatus" ></property>
+	<property name="inOutDocumentStatusId" ></property>
 	<property name="inOutPosted" ></property>
 	<property name="inOutProcessing" ></property>
 	<property name="inOutProcessed" ></property>

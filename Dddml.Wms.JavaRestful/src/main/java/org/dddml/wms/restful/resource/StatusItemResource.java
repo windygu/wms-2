@@ -134,33 +134,6 @@ public class StatusItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public StatusItemStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
-        try {
-
-            String idObj = id;
-            StatusItemStateEventDtoConverter dtoConverter = getStatusItemStateEventDtoConverter();
-            return dtoConverter.toStatusItemStateEventDto((AbstractStatusItemStateEvent) statusItemApplicationService.getStateEvent(idObj, version));
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
-    @Path("{id}/_historyStates/{version}") @GET
-    public StatusItemStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
-        try {
-
-            String idObj = id;
-            StatusItemStateDto.DtoConverter dtoConverter = new StatusItemStateDto.DtoConverter();
-            if (StringHelper.isNullOrEmpty(fields)) {
-                dtoConverter.setAllFieldsReturned(true);
-            } else {
-                dtoConverter.setReturnedFieldsString(fields);
-            }
-            return dtoConverter.toStatusItemStateDto(statusItemApplicationService.getHistoryState(idObj, version));
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
 
     protected  StatusItemStateEventDtoConverter getStatusItemStateEventDtoConverter() {
         return new StatusItemStateEventDtoConverter();

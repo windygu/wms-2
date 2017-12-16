@@ -42,9 +42,6 @@ public class HibernateStatusItemStateQueryRepository implements StatusItemStateQ
     public StatusItemState get(String id) {
 
         StatusItemState state = (StatusItemState)getCurrentSession().get(AbstractStatusItemState.SimpleStatusItemState.class, id);
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (StatusItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{StatusItemState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
         return state;
     }
 

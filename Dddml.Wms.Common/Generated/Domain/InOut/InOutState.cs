@@ -203,7 +203,7 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual void When(IInOutStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.DocumentStatus = e.DocumentStatus;
+			this.DocumentStatusId = e.DocumentStatusId;
 
             this.Posted = (e.Posted != null && e.Posted.HasValue) ? e.Posted.Value : default(bool);
 
@@ -276,16 +276,16 @@ namespace Dddml.Wms.Domain.InOut
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.DocumentStatus == null)
+			if (e.DocumentStatusId == null)
 			{
-				if (e.IsPropertyDocumentStatusRemoved)
+				if (e.IsPropertyDocumentStatusIdRemoved)
 				{
-					this.DocumentStatus = default(string);
+					this.DocumentStatusId = default(string);
 				}
 			}
 			else
 			{
-				this.DocumentStatus = e.DocumentStatus;
+				this.DocumentStatusId = e.DocumentStatusId;
 			}
 
 			if (e.Posted == null)

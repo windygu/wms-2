@@ -437,12 +437,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="statusItemEventStore" class="org.dddml.wms.domain.statusitem.hibernate.HibernateStatusItemEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
   <bean id="statusItemApplicationService" class="org.dddml.wms.domain.statusitem.AbstractStatusItemApplicationService$SimpleStatusItemApplicationService">
-    <constructor-arg ref="statusItemEventStore"/>
     <constructor-arg ref="statusItemStateRepository"/>
     <constructor-arg ref="statusItemStateQueryRepository"/>
   </bean>

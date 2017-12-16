@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.InOut
 
         bool ReadOnly { get; set; }
 
-		string DocumentStatus { get; set; }
+		string DocumentStatusId { get; set; }
 
 		bool? Posted { get; set; }
 
@@ -89,7 +89,7 @@ namespace Dddml.Wms.Domain.InOut
 
 	public interface IInOutStateMergePatched : IInOutStateEvent//, IInOutStateProperties
 	{
-		bool IsPropertyDocumentStatusRemoved { get; set; }
+		bool IsPropertyDocumentStatusIdRemoved { get; set; }
 
 		bool IsPropertyPostedRemoved { get; set; }
 

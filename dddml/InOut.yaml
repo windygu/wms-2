@@ -36,7 +36,7 @@ aggregates:
         # IsSOTransaction:
           # type: bool
 
-        DocumentStatus:
+        DocumentStatusId:
           type: string
           commandType: DocumentAction
           commandName: DocumentAction

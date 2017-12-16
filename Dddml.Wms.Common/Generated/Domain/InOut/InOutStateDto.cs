@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        public virtual string DocumentStatus
+        public virtual string DocumentStatusId
         {
             get;
             set;
@@ -235,7 +235,7 @@ namespace Dddml.Wms.Domain.InOut
         {
             var state = new InOutState(true);
             state.DocumentNumber = this.DocumentNumber;
-            state.DocumentStatus = this.DocumentStatus;
+            state.DocumentStatusId = this.DocumentStatusId;
             if (this.Posted != null && this.Posted.HasValue) { state.Posted = this.Posted.Value; }
             if (this.Processing != null && this.Processing.HasValue) { state.Processing = this.Processing.Value; }
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
