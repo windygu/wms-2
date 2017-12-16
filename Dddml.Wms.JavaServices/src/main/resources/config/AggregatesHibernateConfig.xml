@@ -427,6 +427,22 @@
   </bean>
 
 
+  <bean id="shipmentTypeStateRepository" class="org.dddml.wms.domain.shipmenttype.hibernate.HibernateShipmentTypeStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentTypeStateQueryRepository" class="org.dddml.wms.domain.shipmenttype.hibernate.HibernateShipmentTypeStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentTypeApplicationService" class="org.dddml.wms.domain.shipmenttype.AbstractShipmentTypeApplicationService$SimpleShipmentTypeApplicationService">
+    <constructor-arg ref="shipmentTypeStateRepository"/>
+    <constructor-arg ref="shipmentTypeStateQueryRepository"/>
+  </bean>
+
+
   <bean id="statusItemStateRepository" class="org.dddml.wms.domain.statusitem.hibernate.HibernateStatusItemStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>

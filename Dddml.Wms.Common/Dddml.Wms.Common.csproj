@@ -1960,6 +1960,9 @@
     <Compile Include="Generated\Domain\Metadata\ShipmentMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Metadata\ShipmentTypeMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\StatusItemMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -5265,6 +5268,7 @@
 .\SellableInventoryItemMetadata.cs
 .\ShipmentItemMetadata.cs
 .\ShipmentMetadata.cs
+.\ShipmentTypeMetadata.cs
 .\StatusItemMetadata.cs
 .\SupplierProductMetadata.cs
 .\WarehouseMetadata.cs

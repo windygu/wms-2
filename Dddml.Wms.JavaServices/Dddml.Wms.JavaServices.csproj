@@ -477,6 +477,17 @@
     <Content Include="src\main\java\org\dddml\wms\domain\shipmentitem\hibernate\HibernateShipmentItemStateRepository.java">
       <DependentUpon>GenerateShipmentItemDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\hibernate\GenerateShipmentTypeDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\hibernate\HibernateShipmentTypeStateQueryRepository.java">
+      <DependentUpon>GenerateShipmentTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\hibernate\HibernateShipmentTypeStateRepository.java">
+      <DependentUpon>GenerateShipmentTypeDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\GenerateShipmentDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -540,6 +551,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\StatusItemState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -842,6 +856,7 @@
 .\ShipmentItemStateEvent.hbm.xml
 .\ShipmentState.hbm.xml
 .\ShipmentStateEvent.hbm.xml
+.\ShipmentTypeState.hbm.xml
 .\StatusItemState.hbm.xml
 .\SupplierProductState.hbm.xml
 .\SupplierProductStateEvent.hbm.xml
@@ -1174,6 +1189,12 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\hibernate\GenerateShipmentTypeDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentTypeDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateShipmentTypeDomainHibernate.txt
+.\HibernateShipmentTypeStateQueryRepository.java
+.\HibernateShipmentTypeStateRepository.java
+</LastOutputs>
     </Content>
   </ItemGroup>
   <ItemGroup>

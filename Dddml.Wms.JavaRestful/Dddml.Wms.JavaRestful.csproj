@@ -99,6 +99,7 @@
 .\SellableInventoryItemResource.java
 .\ShipmentItemResource.java
 .\ShipmentResource.java
+.\ShipmentTypeResource.java
 .\StatusItemResource.java
 .\SupplierProductResource.java
 .\WarehouseResource.java
@@ -193,6 +194,9 @@
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\ShipmentResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\ShipmentTypeResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\StatusItemResource.java">

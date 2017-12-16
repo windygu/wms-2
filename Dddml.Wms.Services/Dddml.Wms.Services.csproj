@@ -452,6 +452,15 @@
     <Compile Include="Generated\Domain\ShipmentItem\NHibernate\ShipmentItemApplicationService.cs">
       <DependentUpon>GenerateShipmentItemDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\NHibernate\NHibernateShipmentTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateShipmentTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\NHibernate\NHibernateShipmentTypeStateRepository.cs">
+      <DependentUpon>GenerateShipmentTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentType\NHibernate\ShipmentTypeApplicationService.cs">
+      <DependentUpon>GenerateShipmentTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentEventStore.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -748,6 +757,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentItemDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\ShipmentType\NHibernate\GenerateShipmentTypeDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentTypeDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\Shipment\NHibernate\GenerateShipmentDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -843,6 +857,7 @@
 .\ShipmentItemStateEvent.hbm.xml
 .\ShipmentState.hbm.xml
 .\ShipmentStateEvent.hbm.xml
+.\ShipmentTypeState.hbm.xml
 .\StatusItemState.hbm.xml
 .\SupplierProductState.hbm.xml
 .\SupplierProductStateEvent.hbm.xml
@@ -994,6 +1009,9 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\StatusItemState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
@@ -1380,6 +1398,13 @@
     </Content>
     <Content Include="Generated\Domain\ShipmentType\NHibernate\GenerateShipmentTypeDomainNHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentTypeDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateShipmentTypeDomainNHibernate.txt
+.\NHibernateShipmentTypeStateQueryRepository.cs
+.\NHibernateShipmentTypeStateRepository.cs
+.\ShipmentTypeApplicationService.cs
+</LastOutputs>
     </Content>
   </ItemGroup>
   <ItemGroup>

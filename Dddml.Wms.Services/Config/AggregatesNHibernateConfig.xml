@@ -443,6 +443,23 @@
 
 
 
+  <object id="shipmentTypeStateRepository" type="Dddml.Wms.Domain.ShipmentType.NHibernate.NHibernateShipmentTypeStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="shipmentTypeStateQueryRepository" type="Dddml.Wms.Domain.ShipmentType.NHibernate.NHibernateShipmentTypeStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="shipmentTypeApplicationService" type="Dddml.Wms.Domain.ShipmentType.NHibernate.ShipmentTypeApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="shipmentTypeStateRepository"/>
+    <constructor-arg ref="shipmentTypeStateQueryRepository"/>
+  </object>
+
+
+
   <object id="statusItemStateRepository" type="Dddml.Wms.Domain.StatusItem.NHibernate.NHibernateStatusItemStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
