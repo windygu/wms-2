@@ -177,6 +177,8 @@ namespace Dddml.Wms.Domain.OrderHeader
 
 			this.PickSheetPrintedDate = e.PickSheetPrintedDate;
 
+			this.StatusId = e.StatusId;
+
 			this.CurrencyUom = e.CurrencyUom;
 
 			this.SyncStatusId = e.SyncStatusId;
@@ -314,6 +316,18 @@ namespace Dddml.Wms.Domain.OrderHeader
 			else
 			{
 				this.PickSheetPrintedDate = e.PickSheetPrintedDate;
+			}
+
+			if (e.StatusId == null)
+			{
+				if (e.IsPropertyStatusIdRemoved)
+				{
+					this.StatusId = default(string);
+				}
+			}
+			else
+			{
+				this.StatusId = e.StatusId;
 			}
 
 			if (e.CurrencyUom == null)

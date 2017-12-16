@@ -58,6 +58,8 @@ namespace Dddml.Wms.Domain.OrderHeader
 
 		public virtual DateTime? PickSheetPrintedDate { get; set; }
 
+		public virtual string StatusId { get; set; }
+
 		public virtual string CurrencyUom { get; set; }
 
 		public virtual string SyncStatusId { get; set; }
@@ -268,6 +270,25 @@ namespace Dddml.Wms.Domain.OrderHeader
             set 
             {
                 this.IsPropertyPickSheetPrintedDateRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyStatusIdRemoved { get; set; }
+
+        bool IOrderHeaderStateMergePatched.IsPropertyStatusIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyStatusIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyStatusIdRemoved = value;
             }
         }
 

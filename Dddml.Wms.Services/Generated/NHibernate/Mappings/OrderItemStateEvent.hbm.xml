@@ -36,6 +36,7 @@
     <property name="ItemDescription" ><column name="ItemDescription" sql-type="VARCHAR(255)" /></property>
     <property name="Comments" ><column name="Comments" sql-type="VARCHAR(255)" /></property>
     <property name="CorrespondingPoId" ><column name="CorrespondingPoId" sql-type="VARCHAR(20)" /></property>
+    <property name="StatusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
     <property name="SyncStatusId" ><column name="SyncStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="EstimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
     <property name="EstimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
@@ -106,6 +107,8 @@
         <property name="IsPropertyCommentsRemoved" column="IsPropertyCommentsRemoved"/>
 
         <property name="IsPropertyCorrespondingPoIdRemoved" column="IsPropertyCorrespondingPoIdRemoved"/>
+
+        <property name="IsPropertyStatusIdRemoved" column="IsPropertyStatusIdRemoved"/>
 
         <property name="IsPropertySyncStatusIdRemoved" column="IsPropertySyncStatusIdRemoved"/>
 

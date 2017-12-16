@@ -20,6 +20,7 @@ public final class OrderHeaderFilteringProperties
             "priority",
             "entryDate",
             "pickSheetPrintedDate",
+            "statusId",
             "currencyUom",
             "syncStatusId",
             "billingAccountId",
@@ -54,6 +55,7 @@ public final class OrderHeaderFilteringProperties
             "String",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
+            "String",
             "String",
             "String",
             "String",
@@ -108,6 +110,8 @@ public final class OrderHeaderFilteringProperties
         aliasMap.put("EntryDate", "entryDate");
         aliasMap.put("pickSheetPrintedDate", "pickSheetPrintedDate");
         aliasMap.put("PickSheetPrintedDate", "pickSheetPrintedDate");
+        aliasMap.put("statusId", "statusId");
+        aliasMap.put("StatusId", "statusId");
         aliasMap.put("currencyUom", "currencyUom");
         aliasMap.put("CurrencyUom", "currencyUom");
         aliasMap.put("syncStatusId", "syncStatusId");

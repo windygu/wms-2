@@ -32,6 +32,8 @@ namespace Dddml.Wms.Domain.OrderHeader
 
 		DateTime? PickSheetPrintedDate { get; set; }
 
+		string StatusId { get; set; }
+
 		string CurrencyUom { get; set; }
 
 		string SyncStatusId { get; set; }

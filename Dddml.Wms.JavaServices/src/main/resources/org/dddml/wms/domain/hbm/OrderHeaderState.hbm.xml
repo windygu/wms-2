@@ -19,6 +19,7 @@
 	<property name="priority" ><column name="Priority" sql-type="CHAR(1)" /></property>
 	<property name="entryDate" ><column name="EntryDate" sql-type="DATETIME" /></property>
 	<property name="pickSheetPrintedDate" ><column name="PickSheetPrintedDate" sql-type="DATETIME" /></property>
+	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="currencyUom" ><column name="CurrencyUom" sql-type="VARCHAR(20)" /></property>
 	<property name="syncStatusId" ><column name="SyncStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="billingAccountId" ><column name="BillingAccountId" sql-type="VARCHAR(20)" /></property>

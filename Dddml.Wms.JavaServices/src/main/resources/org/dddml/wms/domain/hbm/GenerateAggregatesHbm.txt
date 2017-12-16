@@ -49,6 +49,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/OrderHeaderStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/OrderShipmentState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/OrderShipmentStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationStructureTypeState.hbm.xml"/>
@@ -59,6 +61,12 @@
         <mapping resource="org/dddml/wms/domain/hbm/ProductStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/ShipmentState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/ShipmentStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/ShipmentItemState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/ShipmentItemStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/StatusItemState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/StatusItemStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/SupplierProductState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/SupplierProductStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/WarehouseState.hbm.xml"/>

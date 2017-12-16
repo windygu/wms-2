@@ -1,0 +1,58 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  OrderShipment:
+    id:
+      name: OrderShipmentId
+      type: OrderShipmentId
+      
+    properties:
+    
+      Quantity:
+        type: fixed-point
+        
+    references:
+      Shipment:
+        name: Shipment
+        displayName: Shipment
+        type: Shipment
+        properties:
+        - OrderShipmentId.ShipmentId
+        foreignKeyName: ORDER_SHPMT_SHPMT
+      ShipmentItem:
+        name: ShipmentItem
+        displayName: ShipmentItem
+        type: ShipmentItem
+        properties:
+        - OrderShipmentId.ShipmentId
+        - OrderShipmentId.ShipmentItemSeqId
+        
+    reservedProperties:
+      noDeleted: true
+    
+    # ------------------------------
+    valueObjects:
+    
+      # ------------------------------
+      OrderShipmentId:
+        name: OrderShipmentId
+        properties:
+          OrderId:
+            type: id-ne
+          OrderItemSeqId:
+            type: id-ne
+          # ShipGroupSeqId:
+            # type: id-ne
+          ShipmentId:
+            type: id-ne
+          ShipmentItemSeqId:
+            type: id-ne
+
+    # metadata:
+      # StateEventDatabaseTableName: ORDER_SHIPMENT_STATE_EVENT
+      
+      

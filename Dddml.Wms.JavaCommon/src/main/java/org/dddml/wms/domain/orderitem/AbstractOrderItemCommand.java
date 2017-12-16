@@ -322,6 +322,18 @@ public abstract class AbstractOrderItemCommand extends AbstractCommand implement
             this.correspondingPoId = correspondingPoId;
         }
 
+        private String statusId;
+
+        public String getStatusId()
+        {
+            return this.statusId;
+        }
+
+        public void setStatusId(String statusId)
+        {
+            this.statusId = statusId;
+        }
+
         private String syncStatusId;
 
         public String getSyncStatusId()
@@ -758,6 +770,18 @@ public abstract class AbstractOrderItemCommand extends AbstractCommand implement
         public void setIsPropertyCorrespondingPoIdRemoved(Boolean removed)
         {
             this.isPropertyCorrespondingPoIdRemoved = removed;
+        }
+
+        private Boolean isPropertyStatusIdRemoved;
+
+        public Boolean getIsPropertyStatusIdRemoved()
+        {
+            return this.isPropertyStatusIdRemoved;
+        }
+
+        public void setIsPropertyStatusIdRemoved(Boolean removed)
+        {
+            this.isPropertyStatusIdRemoved = removed;
         }
 
         private Boolean isPropertySyncStatusIdRemoved;

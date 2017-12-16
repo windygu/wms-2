@@ -117,6 +117,18 @@ public abstract class AbstractOrderHeaderState implements OrderHeaderState
         this.pickSheetPrintedDate = pickSheetPrintedDate;
     }
 
+    private String statusId;
+
+    public String getStatusId()
+    {
+        return this.statusId;
+    }
+
+    public void setStatusId(String statusId)
+    {
+        this.statusId = statusId;
+    }
+
     private String currencyUom;
 
     public String getCurrencyUom()
@@ -439,6 +451,7 @@ public abstract class AbstractOrderHeaderState implements OrderHeaderState
         this.setPriority(e.getPriority());
         this.setEntryDate(e.getEntryDate());
         this.setPickSheetPrintedDate(e.getPickSheetPrintedDate());
+        this.setStatusId(e.getStatusId());
         this.setCurrencyUom(e.getCurrencyUom());
         this.setSyncStatusId(e.getSyncStatusId());
         this.setBillingAccountId(e.getBillingAccountId());
@@ -552,6 +565,17 @@ public abstract class AbstractOrderHeaderState implements OrderHeaderState
         else
         {
             this.setPickSheetPrintedDate(e.getPickSheetPrintedDate());
+        }
+        if (e.getStatusId() == null)
+        {
+            if (e.getIsPropertyStatusIdRemoved() != null && e.getIsPropertyStatusIdRemoved())
+            {
+                this.setStatusId(null);
+            }
+        }
+        else
+        {
+            this.setStatusId(e.getStatusId());
         }
         if (e.getCurrencyUom() == null)
         {

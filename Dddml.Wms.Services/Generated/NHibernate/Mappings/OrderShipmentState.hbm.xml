@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.OrderShipment">
+  
+  <class name="Dddml.Wms.Domain.OrderShipment.OrderShipmentState" table="OrderShipments">
+
+    <composite-id name="OrderShipmentId" class="Dddml.Wms.Domain.OrderShipment.OrderShipmentId">
+        <key-property name="OrderId" ><column name="OrderShipmentIdOrderId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="OrderItemSeqId" ><column name="OrderShipmentIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ShipmentId" ><column name="OrderShipmentIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ShipmentItemSeqId" ><column name="OrderShipmentIdShipmentItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+    </composite-id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" />
+
+    <property name="UpdatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

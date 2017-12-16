@@ -267,6 +267,28 @@
 
 
 
+  <object id="orderShipmentStateRepository" type="Dddml.Wms.Domain.OrderShipment.NHibernate.NHibernateOrderShipmentStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="orderShipmentStateQueryRepository" type="Dddml.Wms.Domain.OrderShipment.NHibernate.NHibernateOrderShipmentStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="orderShipmentEventStore" type="Dddml.Wms.Domain.OrderShipment.NHibernate.NHibernateOrderShipmentEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="orderShipmentApplicationService" type="Dddml.Wms.Domain.OrderShipment.NHibernate.OrderShipmentApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="orderShipmentEventStore"/>
+    <constructor-arg ref="orderShipmentStateRepository"/>
+    <constructor-arg ref="orderShipmentStateQueryRepository"/>
+  </object>
+
+
+
   <object id="organizationStateRepository" type="Dddml.Wms.Domain.Organization.NHibernate.NHibernateOrganizationStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
@@ -373,6 +395,72 @@
     <constructor-arg ref="productCategoryEventStore"/>
     <constructor-arg ref="productCategoryStateRepository"/>
     <constructor-arg ref="productCategoryStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="shipmentStateRepository" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="shipmentStateQueryRepository" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="shipmentEventStore" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="shipmentApplicationService" type="Dddml.Wms.Domain.Shipment.NHibernate.ShipmentApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="shipmentEventStore"/>
+    <constructor-arg ref="shipmentStateRepository"/>
+    <constructor-arg ref="shipmentStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="shipmentItemStateRepository" type="Dddml.Wms.Domain.ShipmentItem.NHibernate.NHibernateShipmentItemStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="shipmentItemStateQueryRepository" type="Dddml.Wms.Domain.ShipmentItem.NHibernate.NHibernateShipmentItemStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="shipmentItemEventStore" type="Dddml.Wms.Domain.ShipmentItem.NHibernate.NHibernateShipmentItemEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="shipmentItemApplicationService" type="Dddml.Wms.Domain.ShipmentItem.NHibernate.ShipmentItemApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="shipmentItemEventStore"/>
+    <constructor-arg ref="shipmentItemStateRepository"/>
+    <constructor-arg ref="shipmentItemStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="statusItemStateRepository" type="Dddml.Wms.Domain.StatusItem.NHibernate.NHibernateStatusItemStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="statusItemStateQueryRepository" type="Dddml.Wms.Domain.StatusItem.NHibernate.NHibernateStatusItemStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="statusItemEventStore" type="Dddml.Wms.Domain.StatusItem.NHibernate.NHibernateStatusItemEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="statusItemApplicationService" type="Dddml.Wms.Domain.StatusItem.NHibernate.StatusItemApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="statusItemEventStore"/>
+    <constructor-arg ref="statusItemStateRepository"/>
+    <constructor-arg ref="statusItemStateQueryRepository"/>
   </object>
 
 

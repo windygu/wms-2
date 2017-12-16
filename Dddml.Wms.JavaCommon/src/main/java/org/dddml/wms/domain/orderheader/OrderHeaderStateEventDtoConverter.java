@@ -33,6 +33,7 @@ public class OrderHeaderStateEventDtoConverter {
         dto.setPriority(e.getPriority());
         dto.setEntryDate(e.getEntryDate());
         dto.setPickSheetPrintedDate(e.getPickSheetPrintedDate());
+        dto.setStatusId(e.getStatusId());
         dto.setCurrencyUom(e.getCurrencyUom());
         dto.setSyncStatusId(e.getSyncStatusId());
         dto.setBillingAccountId(e.getBillingAccountId());
@@ -66,6 +67,7 @@ public class OrderHeaderStateEventDtoConverter {
         dto.setPriority(e.getPriority());
         dto.setEntryDate(e.getEntryDate());
         dto.setPickSheetPrintedDate(e.getPickSheetPrintedDate());
+        dto.setStatusId(e.getStatusId());
         dto.setCurrencyUom(e.getCurrencyUom());
         dto.setSyncStatusId(e.getSyncStatusId());
         dto.setBillingAccountId(e.getBillingAccountId());
@@ -90,6 +92,7 @@ public class OrderHeaderStateEventDtoConverter {
         dto.setIsPropertyPriorityRemoved(e.getIsPropertyPriorityRemoved());
         dto.setIsPropertyEntryDateRemoved(e.getIsPropertyEntryDateRemoved());
         dto.setIsPropertyPickSheetPrintedDateRemoved(e.getIsPropertyPickSheetPrintedDateRemoved());
+        dto.setIsPropertyStatusIdRemoved(e.getIsPropertyStatusIdRemoved());
         dto.setIsPropertyCurrencyUomRemoved(e.getIsPropertyCurrencyUomRemoved());
         dto.setIsPropertySyncStatusIdRemoved(e.getIsPropertySyncStatusIdRemoved());
         dto.setIsPropertyBillingAccountIdRemoved(e.getIsPropertyBillingAccountIdRemoved());

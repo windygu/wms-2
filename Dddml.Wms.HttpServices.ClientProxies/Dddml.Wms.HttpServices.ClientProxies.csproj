@@ -131,6 +131,9 @@
     <Compile Include="Generated\OrderItemApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\OrderShipmentApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\OrganizationApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -153,6 +156,15 @@
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\SellableInventoryItemEntryMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\ShipmentApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\ShipmentItemApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\StatusItemApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\SupplierProductApplicationServiceProxy.cs">
@@ -189,6 +201,7 @@
 .\MovementTypeApplicationServiceProxy.cs
 .\OrderHeaderApplicationServiceProxy.cs
 .\OrderItemApplicationServiceProxy.cs
+.\OrderShipmentApplicationServiceProxy.cs
 .\OrganizationApplicationServiceProxy.cs
 .\OrganizationStructureApplicationServiceProxy.cs
 .\OrganizationStructureTypeApplicationServiceProxy.cs
@@ -197,6 +210,9 @@
 .\ProductCategoryApplicationServiceProxy.cs
 .\SellableInventoryItemApplicationServiceProxy.cs
 .\SellableInventoryItemEntryMvoApplicationServiceProxy.cs
+.\ShipmentApplicationServiceProxy.cs
+.\ShipmentItemApplicationServiceProxy.cs
+.\StatusItemApplicationServiceProxy.cs
 .\SupplierProductApplicationServiceProxy.cs
 .\WarehouseApplicationServiceProxy.cs
 </LastOutputs>

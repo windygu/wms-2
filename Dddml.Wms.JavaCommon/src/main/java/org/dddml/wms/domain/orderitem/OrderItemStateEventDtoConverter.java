@@ -49,6 +49,7 @@ public class OrderItemStateEventDtoConverter {
         dto.setItemDescription(e.getItemDescription());
         dto.setComments(e.getComments());
         dto.setCorrespondingPoId(e.getCorrespondingPoId());
+        dto.setStatusId(e.getStatusId());
         dto.setSyncStatusId(e.getSyncStatusId());
         dto.setEstimatedShipDate(e.getEstimatedShipDate());
         dto.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
@@ -93,6 +94,7 @@ public class OrderItemStateEventDtoConverter {
         dto.setItemDescription(e.getItemDescription());
         dto.setComments(e.getComments());
         dto.setCorrespondingPoId(e.getCorrespondingPoId());
+        dto.setStatusId(e.getStatusId());
         dto.setSyncStatusId(e.getSyncStatusId());
         dto.setEstimatedShipDate(e.getEstimatedShipDate());
         dto.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
@@ -128,6 +130,7 @@ public class OrderItemStateEventDtoConverter {
         dto.setIsPropertyItemDescriptionRemoved(e.getIsPropertyItemDescriptionRemoved());
         dto.setIsPropertyCommentsRemoved(e.getIsPropertyCommentsRemoved());
         dto.setIsPropertyCorrespondingPoIdRemoved(e.getIsPropertyCorrespondingPoIdRemoved());
+        dto.setIsPropertyStatusIdRemoved(e.getIsPropertyStatusIdRemoved());
         dto.setIsPropertySyncStatusIdRemoved(e.getIsPropertySyncStatusIdRemoved());
         dto.setIsPropertyEstimatedShipDateRemoved(e.getIsPropertyEstimatedShipDateRemoved());
         dto.setIsPropertyEstimatedDeliveryDateRemoved(e.getIsPropertyEstimatedDeliveryDateRemoved());

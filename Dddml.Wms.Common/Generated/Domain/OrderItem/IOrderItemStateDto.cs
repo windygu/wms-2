@@ -165,6 +165,12 @@ namespace Dddml.Wms.Domain.OrderItem
             set;
         }
 
+        string StatusId
+        {
+            get;
+            set;
+        }
+
         string SyncStatusId
         {
             get;

@@ -19,6 +19,7 @@
     <property name="Priority" ><column name="Priority" sql-type="CHAR(1)" /></property>
     <property name="EntryDate" ><column name="EntryDate" sql-type="DATETIME" /></property>
     <property name="PickSheetPrintedDate" ><column name="PickSheetPrintedDate" sql-type="DATETIME" /></property>
+    <property name="StatusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
     <property name="CurrencyUom" ><column name="CurrencyUom" sql-type="VARCHAR(20)" /></property>
     <property name="SyncStatusId" ><column name="SyncStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="BillingAccountId" ><column name="BillingAccountId" sql-type="VARCHAR(20)" /></property>
@@ -62,6 +63,8 @@
         <property name="IsPropertyEntryDateRemoved" column="IsPropertyEntryDateRemoved"/>
 
         <property name="IsPropertyPickSheetPrintedDateRemoved" column="IsPropertyPickSheetPrintedDateRemoved"/>
+
+        <property name="IsPropertyStatusIdRemoved" column="IsPropertyStatusIdRemoved"/>
 
         <property name="IsPropertyCurrencyUomRemoved" column="IsPropertyCurrencyUomRemoved"/>
 

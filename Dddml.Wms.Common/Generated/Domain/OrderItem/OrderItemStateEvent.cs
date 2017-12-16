@@ -71,6 +71,8 @@ namespace Dddml.Wms.Domain.OrderItem
 
 		public virtual string CorrespondingPoId { get; set; }
 
+		public virtual string StatusId { get; set; }
+
 		public virtual string SyncStatusId { get; set; }
 
 		public virtual DateTime? EstimatedShipDate { get; set; }
@@ -228,6 +230,8 @@ namespace Dddml.Wms.Domain.OrderItem
 		public virtual bool IsPropertyCommentsRemoved { get; set; }
 
 		public virtual bool IsPropertyCorrespondingPoIdRemoved { get; set; }
+
+		public virtual bool IsPropertyStatusIdRemoved { get; set; }
 
 		public virtual bool IsPropertySyncStatusIdRemoved { get; set; }
 

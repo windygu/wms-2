@@ -45,6 +45,10 @@ public interface OrderHeaderStateEvent extends Event
 
     void setPickSheetPrintedDate(java.sql.Timestamp pickSheetPrintedDate);
 
+    String getStatusId();
+
+    void setStatusId(String statusId);
+
     String getCurrencyUom();
 
     void setCurrencyUom(String currencyUom);
@@ -160,6 +164,10 @@ public interface OrderHeaderStateEvent extends Event
         Boolean getIsPropertyPickSheetPrintedDateRemoved();
 
         void setIsPropertyPickSheetPrintedDateRemoved(Boolean removed);
+
+        Boolean getIsPropertyStatusIdRemoved();
+
+        void setIsPropertyStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyCurrencyUomRemoved();
 

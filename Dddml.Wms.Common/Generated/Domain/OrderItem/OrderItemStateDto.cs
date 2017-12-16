@@ -166,6 +166,12 @@ namespace Dddml.Wms.Domain.OrderItem
             set;
         }
 
+        public virtual string StatusId
+        {
+            get;
+            set;
+        }
+
         public virtual string SyncStatusId
         {
             get;
@@ -290,6 +296,7 @@ namespace Dddml.Wms.Domain.OrderItem
             state.ItemDescription = this.ItemDescription;
             state.Comments = this.Comments;
             state.CorrespondingPoId = this.CorrespondingPoId;
+            state.StatusId = this.StatusId;
             state.SyncStatusId = this.SyncStatusId;
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedDeliveryDate = this.EstimatedDeliveryDate;

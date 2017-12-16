@@ -48,6 +48,10 @@ public interface OrderHeaderState
 
     void setPickSheetPrintedDate(java.sql.Timestamp pickSheetPrintedDate);
 
+    String getStatusId();
+
+    void setStatusId(String statusId);
+
     String getCurrencyUom();
 
     void setCurrencyUom(String currencyUom);

@@ -101,6 +101,8 @@ namespace Dddml.Wms.Domain.OrderItem
 
 		public virtual string CorrespondingPoId { get; set; }
 
+		public virtual string StatusId { get; set; }
+
 		public virtual string SyncStatusId { get; set; }
 
 		public virtual DateTime? EstimatedShipDate { get; set; }
@@ -589,6 +591,25 @@ namespace Dddml.Wms.Domain.OrderItem
             set
             {
                 this.IsPropertyCorrespondingPoIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyStatusIdRemoved { get; set; }
+
+        bool IMergePatchOrderItem.IsPropertyStatusIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyStatusIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyStatusIdRemoved = value;
             }
         }
 

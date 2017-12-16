@@ -329,6 +329,9 @@
     <Compile Include="Generated\Controllers\OrderItemsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\OrderShipmentsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\OrganizationsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -351,6 +354,15 @@
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\SellableInventoryItemsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\ShipmentItemsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\ShipmentsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\StatusItemsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\SupplierProductsController.cs">
@@ -432,6 +444,7 @@
 .\MovementTypesController.cs
 .\OrderHeadersController.cs
 .\OrderItemsController.cs
+.\OrderShipmentsController.cs
 .\OrganizationsController.cs
 .\OrganizationStructuresController.cs
 .\OrganizationStructureTypesController.cs
@@ -439,6 +452,9 @@
 .\ProductsController.cs
 .\SellableInventoryItemEntryMvosController.cs
 .\SellableInventoryItemsController.cs
+.\ShipmentItemsController.cs
+.\ShipmentsController.cs
+.\StatusItemsController.cs
 .\SupplierProductsController.cs
 .\WarehousesController.cs
 </LastOutputs>

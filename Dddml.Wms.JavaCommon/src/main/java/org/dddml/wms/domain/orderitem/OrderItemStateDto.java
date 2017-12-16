@@ -309,6 +309,18 @@ public class OrderItemStateDto
         this.correspondingPoId = correspondingPoId;
     }
 
+    private String statusId;
+
+    public String getStatusId()
+    {
+        return this.statusId;
+    }
+
+    public void setStatusId(String statusId)
+    {
+        this.statusId = statusId;
+    }
+
     private String syncStatusId;
 
     public String getSyncStatusId()
@@ -601,6 +613,9 @@ public class OrderItemStateDto
             }
             if (returnedFieldsContains("CorrespondingPoId")) {
                 dto.setCorrespondingPoId(state.getCorrespondingPoId());
+            }
+            if (returnedFieldsContains("StatusId")) {
+                dto.setStatusId(state.getStatusId());
             }
             if (returnedFieldsContains("SyncStatusId")) {
                 dto.setSyncStatusId(state.getSyncStatusId());

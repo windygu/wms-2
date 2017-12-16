@@ -291,6 +291,34 @@ namespace Dddml.Wms.Domain.OrderHeader
             }
         }
 
+		public virtual string StatusId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("StatusId"))
+                {
+                    return _state.StatusId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.StatusId = value;
+            }
+        }
+
+        string IOrderHeaderStateProperties.StatusId
+        {
+            get 
+            {
+                return (this._state as IOrderHeaderStateProperties).StatusId;
+            }
+            set 
+            {
+                (this._state as IOrderHeaderStateProperties).StatusId = value;
+            }
+        }
+
 		public virtual string CurrencyUom
 		{
             get

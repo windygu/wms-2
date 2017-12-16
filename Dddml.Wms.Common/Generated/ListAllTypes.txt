@@ -14,8 +14,10 @@
                 dict.Add("InventoryItemSourceVO", "_INVENTORYITEMSOURCEVO_");
                 dict.Add("InventoryPRTriggeredId", "_INVENTORYPRTRIGGEREDID_");
                 dict.Add("OrderItemId", "_ORDERITEMID_");
+                dict.Add("OrderShipmentId", "_ORDERSHIPMENTID_");
                 dict.Add("OrganizationStructureId", "_ORGANIZATIONSTRUCTUREID_");
                 dict.Add("SellableInventoryItemEntryId", "_SELLABLEINVENTORYITEMENTRYID_");
+                dict.Add("ShipmentItemId", "_SHIPMENTITEMID_");
                 dict.Add("SupplierProductId", "_SUPPLIERPRODUCTID_");
 // //////////////////////
                 dict.Add("AttributeSetInstanceExtensionField", "_ATTRIBUTESETINSTANCEEXTENSIONFIELD_");
@@ -49,6 +51,7 @@
                 dict.Add("numeric", "_NUMERIC_");
                 dict.Add("ProductCategory", "_PRODUCTCATEGORY_");
                 dict.Add("SellableInventoryItemEntry", "_SELLABLEINVENTORYITEMENTRY_");
+                dict.Add("short-varchar", "_SHORT-VARCHAR_");
                 dict.Add("string", "_STRING_");
                 dict.Add("url", "_URL_");
             //}

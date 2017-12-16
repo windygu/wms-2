@@ -105,6 +105,7 @@ namespace Dddml.Wms.Domain.OrderHeader
             e.Priority = c.Priority;
             e.EntryDate = c.EntryDate;
             e.PickSheetPrintedDate = c.PickSheetPrintedDate;
+            e.StatusId = c.StatusId;
             e.CurrencyUom = c.CurrencyUom;
             e.SyncStatusId = c.SyncStatusId;
             e.BillingAccountId = c.BillingAccountId;
@@ -145,6 +146,7 @@ namespace Dddml.Wms.Domain.OrderHeader
             e.Priority = c.Priority;
             e.EntryDate = c.EntryDate;
             e.PickSheetPrintedDate = c.PickSheetPrintedDate;
+            e.StatusId = c.StatusId;
             e.CurrencyUom = c.CurrencyUom;
             e.SyncStatusId = c.SyncStatusId;
             e.BillingAccountId = c.BillingAccountId;
@@ -169,6 +171,7 @@ namespace Dddml.Wms.Domain.OrderHeader
             e.IsPropertyPriorityRemoved = c.IsPropertyPriorityRemoved;
             e.IsPropertyEntryDateRemoved = c.IsPropertyEntryDateRemoved;
             e.IsPropertyPickSheetPrintedDateRemoved = c.IsPropertyPickSheetPrintedDateRemoved;
+            e.IsPropertyStatusIdRemoved = c.IsPropertyStatusIdRemoved;
             e.IsPropertyCurrencyUomRemoved = c.IsPropertyCurrencyUomRemoved;
             e.IsPropertySyncStatusIdRemoved = c.IsPropertySyncStatusIdRemoved;
             e.IsPropertyBillingAccountIdRemoved = c.IsPropertyBillingAccountIdRemoved;

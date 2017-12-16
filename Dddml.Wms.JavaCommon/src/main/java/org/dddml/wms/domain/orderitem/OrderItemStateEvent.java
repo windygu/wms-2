@@ -109,6 +109,10 @@ public interface OrderItemStateEvent extends Event
 
     void setCorrespondingPoId(String correspondingPoId);
 
+    String getStatusId();
+
+    void setStatusId(String statusId);
+
     String getSyncStatusId();
 
     void setSyncStatusId(String syncStatusId);
@@ -268,6 +272,10 @@ public interface OrderItemStateEvent extends Event
         Boolean getIsPropertyCorrespondingPoIdRemoved();
 
         void setIsPropertyCorrespondingPoIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyStatusIdRemoved();
+
+        void setIsPropertyStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertySyncStatusIdRemoved();
 

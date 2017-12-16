@@ -75,6 +75,7 @@ public abstract class AbstractOrderItemAggregate extends AbstractAggregate imple
         e.setItemDescription(c.getItemDescription());
         e.setComments(c.getComments());
         e.setCorrespondingPoId(c.getCorrespondingPoId());
+        e.setStatusId(c.getStatusId());
         e.setSyncStatusId(c.getSyncStatusId());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
@@ -119,6 +120,7 @@ public abstract class AbstractOrderItemAggregate extends AbstractAggregate imple
         e.setItemDescription(c.getItemDescription());
         e.setComments(c.getComments());
         e.setCorrespondingPoId(c.getCorrespondingPoId());
+        e.setStatusId(c.getStatusId());
         e.setSyncStatusId(c.getSyncStatusId());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
@@ -154,6 +156,7 @@ public abstract class AbstractOrderItemAggregate extends AbstractAggregate imple
         e.setIsPropertyItemDescriptionRemoved(c.getIsPropertyItemDescriptionRemoved());
         e.setIsPropertyCommentsRemoved(c.getIsPropertyCommentsRemoved());
         e.setIsPropertyCorrespondingPoIdRemoved(c.getIsPropertyCorrespondingPoIdRemoved());
+        e.setIsPropertyStatusIdRemoved(c.getIsPropertyStatusIdRemoved());
         e.setIsPropertySyncStatusIdRemoved(c.getIsPropertySyncStatusIdRemoved());
         e.setIsPropertyEstimatedShipDateRemoved(c.getIsPropertyEstimatedShipDateRemoved());
         e.setIsPropertyEstimatedDeliveryDateRemoved(c.getIsPropertyEstimatedDeliveryDateRemoved());

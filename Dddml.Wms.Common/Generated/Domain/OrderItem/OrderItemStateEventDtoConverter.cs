@@ -61,6 +61,7 @@ namespace Dddml.Wms.Domain.OrderItem
             dto.ItemDescription = e.ItemDescription;
             dto.Comments = e.Comments;
             dto.CorrespondingPoId = e.CorrespondingPoId;
+            dto.StatusId = e.StatusId;
             dto.SyncStatusId = e.SyncStatusId;
             dto.EstimatedShipDate = e.EstimatedShipDate;
             dto.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
@@ -106,6 +107,7 @@ namespace Dddml.Wms.Domain.OrderItem
             dto.ItemDescription = e.ItemDescription;
             dto.Comments = e.Comments;
             dto.CorrespondingPoId = e.CorrespondingPoId;
+            dto.StatusId = e.StatusId;
             dto.SyncStatusId = e.SyncStatusId;
             dto.EstimatedShipDate = e.EstimatedShipDate;
             dto.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
@@ -141,6 +143,7 @@ namespace Dddml.Wms.Domain.OrderItem
             dto.IsPropertyItemDescriptionRemoved = e.IsPropertyItemDescriptionRemoved;
             dto.IsPropertyCommentsRemoved = e.IsPropertyCommentsRemoved;
             dto.IsPropertyCorrespondingPoIdRemoved = e.IsPropertyCorrespondingPoIdRemoved;
+            dto.IsPropertyStatusIdRemoved = e.IsPropertyStatusIdRemoved;
             dto.IsPropertySyncStatusIdRemoved = e.IsPropertySyncStatusIdRemoved;
             dto.IsPropertyEstimatedShipDateRemoved = e.IsPropertyEstimatedShipDateRemoved;
             dto.IsPropertyEstimatedDeliveryDateRemoved = e.IsPropertyEstimatedDeliveryDateRemoved;

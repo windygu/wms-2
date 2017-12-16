@@ -132,6 +132,10 @@ public interface OrderItemCommand extends Command
 
         void setCorrespondingPoId(String correspondingPoId);
 
+        String getStatusId();
+
+        void setStatusId(String statusId);
+
         String getSyncStatusId();
 
         void setSyncStatusId(String syncStatusId);
@@ -279,6 +283,10 @@ public interface OrderItemCommand extends Command
         Boolean getIsPropertyCorrespondingPoIdRemoved();
 
         void setIsPropertyCorrespondingPoIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyStatusIdRemoved();
+
+        void setIsPropertyStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertySyncStatusIdRemoved();
 

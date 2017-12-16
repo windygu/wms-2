@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.shipment">
+  
+  <class name="org.dddml.wms.domain.shipment.AbstractShipmentState$SimpleShipmentState" table="Shipments">
+
+	<id name="shipmentId" length="20" column="ShipmentId"><generator class="assigned"/></id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="shipmentTypeId" ><column name="ShipmentTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="primaryOrderId" ><column name="PrimaryOrderId" sql-type="VARCHAR(20)" /></property>
+	<property name="primaryReturnId" ><column name="PrimaryReturnId" sql-type="VARCHAR(20)" /></property>
+	<property name="picklistBinId" ><column name="PicklistBinId" sql-type="VARCHAR(20)" /></property>
+	<property name="estimatedReadyDate" ><column name="EstimatedReadyDate" sql-type="DATETIME" /></property>
+	<property name="estimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
+	<property name="estimatedShipWorkEffId" ><column name="EstimatedShipWorkEffId" sql-type="VARCHAR(20)" /></property>
+	<property name="estimatedArrivalDate" ><column name="EstimatedArrivalDate" sql-type="DATETIME" /></property>
+	<property name="estimatedArrivalWorkEffId" ><column name="EstimatedArrivalWorkEffId" sql-type="VARCHAR(20)" /></property>
+	<property name="latestCancelDate" ><column name="LatestCancelDate" sql-type="DATETIME" /></property>
+	<property name="estimatedShipCost" ><column name="EstimatedShipCost" sql-type="DECIMAL(18,2)" /></property>
+	<property name="currencyUomId" ><column name="CurrencyUomId" sql-type="VARCHAR(20)" /></property>
+	<property name="handlingInstructions" ><column name="HandlingInstructions" sql-type="VARCHAR(255)" /></property>
+	<property name="originFacilityId" ><column name="OriginFacilityId" sql-type="VARCHAR(20)" /></property>
+	<property name="destinationFacilityId" ><column name="DestinationFacilityId" sql-type="VARCHAR(20)" /></property>
+	<property name="originContactMechId" ><column name="OriginContactMechId" sql-type="VARCHAR(20)" /></property>
+	<property name="originTelecomNumberId" ><column name="OriginTelecomNumberId" sql-type="VARCHAR(20)" /></property>
+	<property name="destinationContactMechId" ><column name="DestinationContactMechId" sql-type="VARCHAR(20)" /></property>
+	<property name="destinationTelecomNumberId" ><column name="DestinationTelecomNumberId" sql-type="VARCHAR(20)" /></property>
+	<property name="partyIdTo" ><column name="PartyIdTo" sql-type="VARCHAR(20)" /></property>
+	<property name="partyIdFrom" ><column name="PartyIdFrom" sql-type="VARCHAR(20)" /></property>
+	<property name="additionalShippingCharge" ><column name="AdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
+	<property name="addtlShippingChargeDesc" ><column name="AddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

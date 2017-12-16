@@ -309,6 +309,18 @@ public abstract class AbstractOrderItemState implements OrderItemState
         this.correspondingPoId = correspondingPoId;
     }
 
+    private String statusId;
+
+    public String getStatusId()
+    {
+        return this.statusId;
+    }
+
+    public void setStatusId(String statusId)
+    {
+        this.statusId = statusId;
+    }
+
     private String syncStatusId;
 
     public String getSyncStatusId()
@@ -587,6 +599,7 @@ public abstract class AbstractOrderItemState implements OrderItemState
         this.setItemDescription(e.getItemDescription());
         this.setComments(e.getComments());
         this.setCorrespondingPoId(e.getCorrespondingPoId());
+        this.setStatusId(e.getStatusId());
         this.setSyncStatusId(e.getSyncStatusId());
         this.setEstimatedShipDate(e.getEstimatedShipDate());
         this.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
@@ -871,6 +884,17 @@ public abstract class AbstractOrderItemState implements OrderItemState
         else
         {
             this.setCorrespondingPoId(e.getCorrespondingPoId());
+        }
+        if (e.getStatusId() == null)
+        {
+            if (e.getIsPropertyStatusIdRemoved() != null && e.getIsPropertyStatusIdRemoved())
+            {
+                this.setStatusId(null);
+            }
+        }
+        else
+        {
+            this.setStatusId(e.getStatusId());
         }
         if (e.getSyncStatusId() == null)
         {

@@ -64,6 +64,8 @@ namespace Dddml.Wms.Domain.OrderItem
 
 		string CorrespondingPoId { get; set; }
 
+		string StatusId { get; set; }
+
 		string SyncStatusId { get; set; }
 
 		DateTime? EstimatedShipDate { get; set; }

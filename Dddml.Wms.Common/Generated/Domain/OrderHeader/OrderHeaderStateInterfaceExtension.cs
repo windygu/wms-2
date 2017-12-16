@@ -56,6 +56,7 @@ namespace Dddml.Wms.Domain.OrderHeader
             cmd.Priority = state.Priority;
             cmd.EntryDate = state.EntryDate;
             cmd.PickSheetPrintedDate = state.PickSheetPrintedDate;
+            cmd.StatusId = state.StatusId;
             cmd.CurrencyUom = state.CurrencyUom;
             cmd.SyncStatusId = state.SyncStatusId;
             cmd.BillingAccountId = state.BillingAccountId;
@@ -81,6 +82,7 @@ namespace Dddml.Wms.Domain.OrderHeader
             if (state.Priority == null) { cmd.IsPropertyPriorityRemoved = true; }
             if (state.EntryDate == null) { cmd.IsPropertyEntryDateRemoved = true; }
             if (state.PickSheetPrintedDate == null) { cmd.IsPropertyPickSheetPrintedDateRemoved = true; }
+            if (state.StatusId == null) { cmd.IsPropertyStatusIdRemoved = true; }
             if (state.CurrencyUom == null) { cmd.IsPropertyCurrencyUomRemoved = true; }
             if (state.SyncStatusId == null) { cmd.IsPropertySyncStatusIdRemoved = true; }
             if (state.BillingAccountId == null) { cmd.IsPropertyBillingAccountIdRemoved = true; }
@@ -115,6 +117,7 @@ namespace Dddml.Wms.Domain.OrderHeader
             cmd.Priority = state.Priority;
             cmd.EntryDate = state.EntryDate;
             cmd.PickSheetPrintedDate = state.PickSheetPrintedDate;
+            cmd.StatusId = state.StatusId;
             cmd.CurrencyUom = state.CurrencyUom;
             cmd.SyncStatusId = state.SyncStatusId;
             cmd.BillingAccountId = state.BillingAccountId;

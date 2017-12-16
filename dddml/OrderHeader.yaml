@@ -28,14 +28,17 @@ aggregates:
         description: This will be set to a date when pick sheet of the order is printed
         type: date-time
         
+      StatusId:
+        type: id
+        referenceType: StatusItem
+        
       # VisitId:
-        # type: id
-      # StatusId:
         # type: id
       # CreatedBy:
         # type: id-vlong
       # FirstAttemptOrderId:
         # type: id
+        
       CurrencyUom:
         type: id
       SyncStatusId:

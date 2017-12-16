@@ -101,6 +101,18 @@ public class CreateOrMergePatchOrderHeaderDto extends AbstractOrderHeaderCommand
         this.pickSheetPrintedDate = pickSheetPrintedDate;
     }
 
+    private String statusId;
+
+    public String getStatusId()
+    {
+        return this.statusId;
+    }
+
+    public void setStatusId(String statusId)
+    {
+        this.statusId = statusId;
+    }
+
     private String currencyUom;
 
     public String getCurrencyUom()
@@ -389,6 +401,18 @@ public class CreateOrMergePatchOrderHeaderDto extends AbstractOrderHeaderCommand
         this.isPropertyPickSheetPrintedDateRemoved = removed;
     }
 
+    private Boolean isPropertyStatusIdRemoved;
+
+    public Boolean getIsPropertyStatusIdRemoved()
+    {
+        return this.isPropertyStatusIdRemoved;
+    }
+
+    public void setIsPropertyStatusIdRemoved(Boolean removed)
+    {
+        this.isPropertyStatusIdRemoved = removed;
+    }
+
     private Boolean isPropertyCurrencyUomRemoved;
 
     public Boolean getIsPropertyCurrencyUomRemoved()
@@ -592,6 +616,7 @@ public class CreateOrMergePatchOrderHeaderDto extends AbstractOrderHeaderCommand
         command.setPriority(this.getPriority());
         command.setEntryDate(this.getEntryDate());
         command.setPickSheetPrintedDate(this.getPickSheetPrintedDate());
+        command.setStatusId(this.getStatusId());
         command.setCurrencyUom(this.getCurrencyUom());
         command.setSyncStatusId(this.getSyncStatusId());
         command.setBillingAccountId(this.getBillingAccountId());
@@ -640,6 +665,7 @@ public class CreateOrMergePatchOrderHeaderDto extends AbstractOrderHeaderCommand
         command.setIsPropertyPriorityRemoved(this.getIsPropertyPriorityRemoved());
         command.setIsPropertyEntryDateRemoved(this.getIsPropertyEntryDateRemoved());
         command.setIsPropertyPickSheetPrintedDateRemoved(this.getIsPropertyPickSheetPrintedDateRemoved());
+        command.setIsPropertyStatusIdRemoved(this.getIsPropertyStatusIdRemoved());
         command.setIsPropertyCurrencyUomRemoved(this.getIsPropertyCurrencyUomRemoved());
         command.setIsPropertySyncStatusIdRemoved(this.getIsPropertySyncStatusIdRemoved());
         command.setIsPropertyBillingAccountIdRemoved(this.getIsPropertyBillingAccountIdRemoved());

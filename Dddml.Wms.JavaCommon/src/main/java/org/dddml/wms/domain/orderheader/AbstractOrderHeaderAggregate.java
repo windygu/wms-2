@@ -59,6 +59,7 @@ public abstract class AbstractOrderHeaderAggregate extends AbstractAggregate imp
         e.setPriority(c.getPriority());
         e.setEntryDate(c.getEntryDate());
         e.setPickSheetPrintedDate(c.getPickSheetPrintedDate());
+        e.setStatusId(c.getStatusId());
         e.setCurrencyUom(c.getCurrencyUom());
         e.setSyncStatusId(c.getSyncStatusId());
         e.setBillingAccountId(c.getBillingAccountId());
@@ -92,6 +93,7 @@ public abstract class AbstractOrderHeaderAggregate extends AbstractAggregate imp
         e.setPriority(c.getPriority());
         e.setEntryDate(c.getEntryDate());
         e.setPickSheetPrintedDate(c.getPickSheetPrintedDate());
+        e.setStatusId(c.getStatusId());
         e.setCurrencyUom(c.getCurrencyUom());
         e.setSyncStatusId(c.getSyncStatusId());
         e.setBillingAccountId(c.getBillingAccountId());
@@ -116,6 +118,7 @@ public abstract class AbstractOrderHeaderAggregate extends AbstractAggregate imp
         e.setIsPropertyPriorityRemoved(c.getIsPropertyPriorityRemoved());
         e.setIsPropertyEntryDateRemoved(c.getIsPropertyEntryDateRemoved());
         e.setIsPropertyPickSheetPrintedDateRemoved(c.getIsPropertyPickSheetPrintedDateRemoved());
+        e.setIsPropertyStatusIdRemoved(c.getIsPropertyStatusIdRemoved());
         e.setIsPropertyCurrencyUomRemoved(c.getIsPropertyCurrencyUomRemoved());
         e.setIsPropertySyncStatusIdRemoved(c.getIsPropertySyncStatusIdRemoved());
         e.setIsPropertyBillingAccountIdRemoved(c.getIsPropertyBillingAccountIdRemoved());

@@ -72,6 +72,7 @@ namespace Dddml.Wms.Domain.OrderItem
             cmd.ItemDescription = state.ItemDescription;
             cmd.Comments = state.Comments;
             cmd.CorrespondingPoId = state.CorrespondingPoId;
+            cmd.StatusId = state.StatusId;
             cmd.SyncStatusId = state.SyncStatusId;
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedDeliveryDate = state.EstimatedDeliveryDate;
@@ -108,6 +109,7 @@ namespace Dddml.Wms.Domain.OrderItem
             if (state.ItemDescription == null) { cmd.IsPropertyItemDescriptionRemoved = true; }
             if (state.Comments == null) { cmd.IsPropertyCommentsRemoved = true; }
             if (state.CorrespondingPoId == null) { cmd.IsPropertyCorrespondingPoIdRemoved = true; }
+            if (state.StatusId == null) { cmd.IsPropertyStatusIdRemoved = true; }
             if (state.SyncStatusId == null) { cmd.IsPropertySyncStatusIdRemoved = true; }
             if (state.EstimatedShipDate == null) { cmd.IsPropertyEstimatedShipDateRemoved = true; }
             if (state.EstimatedDeliveryDate == null) { cmd.IsPropertyEstimatedDeliveryDateRemoved = true; }
@@ -153,6 +155,7 @@ namespace Dddml.Wms.Domain.OrderItem
             cmd.ItemDescription = state.ItemDescription;
             cmd.Comments = state.Comments;
             cmd.CorrespondingPoId = state.CorrespondingPoId;
+            cmd.StatusId = state.StatusId;
             cmd.SyncStatusId = state.SyncStatusId;
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedDeliveryDate = state.EstimatedDeliveryDate;

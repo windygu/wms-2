@@ -38,6 +38,7 @@
 	<property name="itemDescription" ><column name="ItemDescription" sql-type="VARCHAR(255)" /></property>
 	<property name="comments" ><column name="Comments" sql-type="VARCHAR(255)" /></property>
 	<property name="correspondingPoId" ><column name="CorrespondingPoId" sql-type="VARCHAR(20)" /></property>
+	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="syncStatusId" ><column name="SyncStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="estimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
 	<property name="estimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>

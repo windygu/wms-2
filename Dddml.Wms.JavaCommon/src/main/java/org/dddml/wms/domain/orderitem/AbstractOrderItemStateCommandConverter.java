@@ -61,6 +61,7 @@ public abstract class AbstractOrderItemStateCommandConverter<TCreateOrderItem ex
         cmd.setItemDescription(state.getItemDescription());
         cmd.setComments(state.getComments());
         cmd.setCorrespondingPoId(state.getCorrespondingPoId());
+        cmd.setStatusId(state.getStatusId());
         cmd.setSyncStatusId(state.getSyncStatusId());
         cmd.setEstimatedShipDate(state.getEstimatedShipDate());
         cmd.setEstimatedDeliveryDate(state.getEstimatedDeliveryDate());
@@ -97,6 +98,7 @@ public abstract class AbstractOrderItemStateCommandConverter<TCreateOrderItem ex
         if (state.getItemDescription() == null) { cmd.setIsPropertyItemDescriptionRemoved(true); }
         if (state.getComments() == null) { cmd.setIsPropertyCommentsRemoved(true); }
         if (state.getCorrespondingPoId() == null) { cmd.setIsPropertyCorrespondingPoIdRemoved(true); }
+        if (state.getStatusId() == null) { cmd.setIsPropertyStatusIdRemoved(true); }
         if (state.getSyncStatusId() == null) { cmd.setIsPropertySyncStatusIdRemoved(true); }
         if (state.getEstimatedShipDate() == null) { cmd.setIsPropertyEstimatedShipDateRemoved(true); }
         if (state.getEstimatedDeliveryDate() == null) { cmd.setIsPropertyEstimatedDeliveryDateRemoved(true); }
@@ -141,6 +143,7 @@ public abstract class AbstractOrderItemStateCommandConverter<TCreateOrderItem ex
         cmd.setItemDescription(state.getItemDescription());
         cmd.setComments(state.getComments());
         cmd.setCorrespondingPoId(state.getCorrespondingPoId());
+        cmd.setStatusId(state.getStatusId());
         cmd.setSyncStatusId(state.getSyncStatusId());
         cmd.setEstimatedShipDate(state.getEstimatedShipDate());
         cmd.setEstimatedDeliveryDate(state.getEstimatedDeliveryDate());

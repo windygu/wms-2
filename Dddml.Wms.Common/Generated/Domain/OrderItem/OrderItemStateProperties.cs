@@ -64,6 +64,8 @@ namespace Dddml.Wms.Domain.OrderItem
 
 		public virtual string CorrespondingPoId { get; set; }
 
+		public virtual string StatusId { get; set; }
+
 		public virtual string SyncStatusId { get; set; }
 
 		public virtual DateTime? EstimatedShipDate { get; set; }

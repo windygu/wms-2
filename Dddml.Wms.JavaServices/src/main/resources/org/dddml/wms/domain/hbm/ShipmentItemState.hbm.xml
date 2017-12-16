@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.shipmentitem">
+  
+  <class name="org.dddml.wms.domain.shipmentitem.AbstractShipmentItemState$SimpleShipmentItemState" table="ShipmentItems">
+
+	<composite-id name="shipmentItemId" class="org.dddml.wms.domain.shipmentitem.ShipmentItemId">
+		<key-property name="shipmentId" ><column name="ShipmentItemIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="shipmentItemSeqId" ><column name="ShipmentItemIdShipmentItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(20)" /></property>
+	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="shipmentContentDescription" ><column name="ShipmentContentDescription" sql-type="VARCHAR(255)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

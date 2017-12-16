@@ -33,6 +33,8 @@ namespace Dddml.Wms.Domain.OrderHeader
 
 		DateTime? PickSheetPrintedDate { get; set; }
 
+		string StatusId { get; set; }
+
 		string CurrencyUom { get; set; }
 
 		string SyncStatusId { get; set; }
@@ -90,6 +92,8 @@ namespace Dddml.Wms.Domain.OrderHeader
 		bool IsPropertyEntryDateRemoved { get; set; }
 
 		bool IsPropertyPickSheetPrintedDateRemoved { get; set; }
+
+		bool IsPropertyStatusIdRemoved { get; set; }
 
 		bool IsPropertyCurrencyUomRemoved { get; set; }
 

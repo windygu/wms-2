@@ -112,6 +112,10 @@ public interface OrderItemState
 
     void setCorrespondingPoId(String correspondingPoId);
 
+    String getStatusId();
+
+    void setStatusId(String statusId);
+
     String getSyncStatusId();
 
     void setSyncStatusId(String syncStatusId);

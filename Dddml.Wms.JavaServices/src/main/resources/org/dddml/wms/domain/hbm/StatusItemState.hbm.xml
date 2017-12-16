@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.statusitem">
+  
+  <class name="org.dddml.wms.domain.statusitem.AbstractStatusItemState$SimpleStatusItemState" table="StatusItems">
+
+	<id name="statusId" length="20" column="StatusId"><generator class="assigned"/></id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="statusTypeId" ><column name="StatusTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="statusCode" ><column name="StatusCode" sql-type="VARCHAR(60)" /></property>
+	<property name="sequenceId" ><column name="SequenceId" sql-type="VARCHAR(20)" /></property>
+	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

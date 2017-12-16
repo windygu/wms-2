@@ -45,6 +45,7 @@ public abstract class AbstractOrderHeaderStateCommandConverter<TCreateOrderHeade
         cmd.setPriority(state.getPriority());
         cmd.setEntryDate(state.getEntryDate());
         cmd.setPickSheetPrintedDate(state.getPickSheetPrintedDate());
+        cmd.setStatusId(state.getStatusId());
         cmd.setCurrencyUom(state.getCurrencyUom());
         cmd.setSyncStatusId(state.getSyncStatusId());
         cmd.setBillingAccountId(state.getBillingAccountId());
@@ -70,6 +71,7 @@ public abstract class AbstractOrderHeaderStateCommandConverter<TCreateOrderHeade
         if (state.getPriority() == null) { cmd.setIsPropertyPriorityRemoved(true); }
         if (state.getEntryDate() == null) { cmd.setIsPropertyEntryDateRemoved(true); }
         if (state.getPickSheetPrintedDate() == null) { cmd.setIsPropertyPickSheetPrintedDateRemoved(true); }
+        if (state.getStatusId() == null) { cmd.setIsPropertyStatusIdRemoved(true); }
         if (state.getCurrencyUom() == null) { cmd.setIsPropertyCurrencyUomRemoved(true); }
         if (state.getSyncStatusId() == null) { cmd.setIsPropertySyncStatusIdRemoved(true); }
         if (state.getBillingAccountId() == null) { cmd.setIsPropertyBillingAccountIdRemoved(true); }
@@ -103,6 +105,7 @@ public abstract class AbstractOrderHeaderStateCommandConverter<TCreateOrderHeade
         cmd.setPriority(state.getPriority());
         cmd.setEntryDate(state.getEntryDate());
         cmd.setPickSheetPrintedDate(state.getPickSheetPrintedDate());
+        cmd.setStatusId(state.getStatusId());
         cmd.setCurrencyUom(state.getCurrencyUom());
         cmd.setSyncStatusId(state.getSyncStatusId());
         cmd.setBillingAccountId(state.getBillingAccountId());

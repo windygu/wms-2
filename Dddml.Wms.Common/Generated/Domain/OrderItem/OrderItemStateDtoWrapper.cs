@@ -739,6 +739,34 @@ namespace Dddml.Wms.Domain.OrderItem
             }
         }
 
+		public virtual string StatusId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("StatusId"))
+                {
+                    return _state.StatusId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.StatusId = value;
+            }
+        }
+
+        string IOrderItemStateProperties.StatusId
+        {
+            get 
+            {
+                return (this._state as IOrderItemStateProperties).StatusId;
+            }
+            set 
+            {
+                (this._state as IOrderItemStateProperties).StatusId = value;
+            }
+        }
+
 		public virtual string SyncStatusId
 		{
             get

@@ -39,6 +39,8 @@ namespace Dddml.Wms.Domain.OrderHeader
 
 		public virtual DateTime? PickSheetPrintedDate { get; set; }
 
+		public virtual string StatusId { get; set; }
+
 		public virtual string CurrencyUom { get; set; }
 
 		public virtual string SyncStatusId { get; set; }
@@ -174,6 +176,8 @@ namespace Dddml.Wms.Domain.OrderHeader
 		public virtual bool IsPropertyEntryDateRemoved { get; set; }
 
 		public virtual bool IsPropertyPickSheetPrintedDateRemoved { get; set; }
+
+		public virtual bool IsPropertyStatusIdRemoved { get; set; }
 
 		public virtual bool IsPropertyCurrencyUomRemoved { get; set; }
 

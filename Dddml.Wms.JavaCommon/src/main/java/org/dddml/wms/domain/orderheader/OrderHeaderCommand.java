@@ -68,6 +68,10 @@ public interface OrderHeaderCommand extends Command
 
         void setPickSheetPrintedDate(java.sql.Timestamp pickSheetPrintedDate);
 
+        String getStatusId();
+
+        void setStatusId(String statusId);
+
         String getCurrencyUom();
 
         void setCurrencyUom(String currencyUom);
@@ -171,6 +175,10 @@ public interface OrderHeaderCommand extends Command
         Boolean getIsPropertyPickSheetPrintedDateRemoved();
 
         void setIsPropertyPickSheetPrintedDateRemoved(Boolean removed);
+
+        Boolean getIsPropertyStatusIdRemoved();
+
+        void setIsPropertyStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyCurrencyUomRemoved();
 

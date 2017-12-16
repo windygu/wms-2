@@ -88,8 +88,9 @@ aggregates:
       CorrespondingPoId:
         type: id
         
-      # StatusId:
-        # type: id
+      StatusId:
+        type: id
+        referenceType: StatusItem
         
       SyncStatusId:
         type: id

@@ -68,6 +68,12 @@ namespace Dddml.Wms.Domain.OrderHeader
             set;
         }
 
+        string StatusId
+        {
+            get;
+            set;
+        }
+
         string CurrencyUom
         {
             get;

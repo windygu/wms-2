@@ -117,6 +117,18 @@ public class OrderHeaderStateDto
         this.pickSheetPrintedDate = pickSheetPrintedDate;
     }
 
+    private String statusId;
+
+    public String getStatusId()
+    {
+        return this.statusId;
+    }
+
+    public void setStatusId(String statusId)
+    {
+        this.statusId = statusId;
+    }
+
     private String currencyUom;
 
     public String getCurrencyUom()
@@ -421,6 +433,9 @@ public class OrderHeaderStateDto
             }
             if (returnedFieldsContains("PickSheetPrintedDate")) {
                 dto.setPickSheetPrintedDate(state.getPickSheetPrintedDate());
+            }
+            if (returnedFieldsContains("StatusId")) {
+                dto.setStatusId(state.getStatusId());
             }
             if (returnedFieldsContains("CurrencyUom")) {
                 dto.setCurrencyUom(state.getCurrencyUom());

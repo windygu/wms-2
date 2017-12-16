@@ -1,0 +1,32 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  StatusItem:
+    id:
+      name: StatusId
+      type: id-ne
+      
+    properties:
+      StatusTypeId:
+        type: id-ne
+      StatusCode:
+        type: short-varchar
+      SequenceId:
+        type: id
+      Description:
+        type: description
+        
+    references: {}
+    
+    reservedProperties:
+      noDeleted: true
+      
+    metadata: 
+      # StateEventDatabaseTableName: STATUS_ITEM_STATE_EVENT
+      NoEventSourcing: true
+      
+      

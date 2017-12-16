@@ -1,0 +1,90 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  Shipment:
+    id:
+      name: ShipmentId
+      type: id-ne
+      
+    properties:
+    
+      ShipmentTypeId:
+        type: id
+        
+      StatusId:
+        type: id
+        referenceType: StatusItem
+
+      PrimaryOrderId:
+        type: id
+      PrimaryReturnId:
+        type: id
+      # PrimaryShipGroupSeqId:
+        # type: id
+      PicklistBinId:
+        type: id
+      EstimatedReadyDate:
+        type: date-time
+      EstimatedShipDate:
+        type: date-time
+      EstimatedShipWorkEffId:
+        type: id
+      EstimatedArrivalDate:
+        type: date-time
+      EstimatedArrivalWorkEffId:
+        type: id
+      LatestCancelDate:
+        type: date-time
+      EstimatedShipCost:
+        type: currency-amount
+      CurrencyUomId:
+        type: id
+      HandlingInstructions:
+        type: long-varchar
+      OriginFacilityId:
+        type: id
+      DestinationFacilityId:
+        type: id
+      OriginContactMechId:
+        type: id
+      OriginTelecomNumberId:
+        type: id
+      DestinationContactMechId:
+        type: id
+      DestinationTelecomNumberId:
+        type: id
+      PartyIdTo:
+        type: id
+      PartyIdFrom:
+        type: id
+      AdditionalShippingCharge:
+        type: currency-amount
+      AddtlShippingChargeDesc:
+        type: long-varchar
+      # CreatedDate:
+        # type: date-time
+      # CreatedByUserLogin:
+        # type: id-vlong
+      # LastModifiedDate:
+        # type: date-time
+      # LastModifiedByUserLogin:
+        # type: id-vlong
+        
+    references: {}
+    
+    reservedProperties:
+      # createdAt: CreatedDate
+      # createdBy: CreatedByUserLogin
+      # updatedAt: LastModifiedDate
+      # updatedBy: LastModifiedByUserLogin
+      noDeleted: true
+      
+    discriminator: ShipmentTypeId
+    
+    # metadata: 
+      # StateEventDatabaseTableName: SHIPMENT_STATE_EVENT
+      

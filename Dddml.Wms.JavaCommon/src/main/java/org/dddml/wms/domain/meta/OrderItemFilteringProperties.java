@@ -35,6 +35,7 @@ public final class OrderItemFilteringProperties
             "itemDescription",
             "comments",
             "correspondingPoId",
+            "statusId",
             "syncStatusId",
             "estimatedShipDate",
             "estimatedDeliveryDate",
@@ -76,6 +77,7 @@ public final class OrderItemFilteringProperties
             "java.math.BigDecimal",
             "java.math.BigDecimal",
             "java.math.BigDecimal",
+            "String",
             "String",
             "String",
             "String",
@@ -162,6 +164,8 @@ public final class OrderItemFilteringProperties
         aliasMap.put("Comments", "comments");
         aliasMap.put("correspondingPoId", "correspondingPoId");
         aliasMap.put("CorrespondingPoId", "correspondingPoId");
+        aliasMap.put("statusId", "statusId");
+        aliasMap.put("StatusId", "statusId");
         aliasMap.put("syncStatusId", "syncStatusId");
         aliasMap.put("SyncStatusId", "syncStatusId");
         aliasMap.put("estimatedShipDate", "estimatedShipDate");

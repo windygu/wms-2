@@ -293,6 +293,18 @@ public class CreateOrMergePatchOrderItemDto extends AbstractOrderItemCommandDto
         this.correspondingPoId = correspondingPoId;
     }
 
+    private String statusId;
+
+    public String getStatusId()
+    {
+        return this.statusId;
+    }
+
+    public void setStatusId(String statusId)
+    {
+        this.statusId = statusId;
+    }
+
     private String syncStatusId;
 
     public String getSyncStatusId()
@@ -713,6 +725,18 @@ public class CreateOrMergePatchOrderItemDto extends AbstractOrderItemCommandDto
         this.isPropertyCorrespondingPoIdRemoved = removed;
     }
 
+    private Boolean isPropertyStatusIdRemoved;
+
+    public Boolean getIsPropertyStatusIdRemoved()
+    {
+        return this.isPropertyStatusIdRemoved;
+    }
+
+    public void setIsPropertyStatusIdRemoved(Boolean removed)
+    {
+        this.isPropertyStatusIdRemoved = removed;
+    }
+
     private Boolean isPropertySyncStatusIdRemoved;
 
     public Boolean getIsPropertySyncStatusIdRemoved()
@@ -872,6 +896,7 @@ public class CreateOrMergePatchOrderItemDto extends AbstractOrderItemCommandDto
         command.setItemDescription(this.getItemDescription());
         command.setComments(this.getComments());
         command.setCorrespondingPoId(this.getCorrespondingPoId());
+        command.setStatusId(this.getStatusId());
         command.setSyncStatusId(this.getSyncStatusId());
         command.setEstimatedShipDate(this.getEstimatedShipDate());
         command.setEstimatedDeliveryDate(this.getEstimatedDeliveryDate());
@@ -931,6 +956,7 @@ public class CreateOrMergePatchOrderItemDto extends AbstractOrderItemCommandDto
         command.setIsPropertyItemDescriptionRemoved(this.getIsPropertyItemDescriptionRemoved());
         command.setIsPropertyCommentsRemoved(this.getIsPropertyCommentsRemoved());
         command.setIsPropertyCorrespondingPoIdRemoved(this.getIsPropertyCorrespondingPoIdRemoved());
+        command.setIsPropertyStatusIdRemoved(this.getIsPropertyStatusIdRemoved());
         command.setIsPropertySyncStatusIdRemoved(this.getIsPropertySyncStatusIdRemoved());
         command.setIsPropertyEstimatedShipDateRemoved(this.getIsPropertyEstimatedShipDateRemoved());
         command.setIsPropertyEstimatedDeliveryDateRemoved(this.getIsPropertyEstimatedDeliveryDateRemoved());

@@ -741,6 +741,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "StatusId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "StatusItem",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "SyncStatusId",
                     Type = typeof(string),
                     TypeName = "string",
@@ -1358,6 +1387,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("comments", "Comments");
             d.Add("CorrespondingPoId", "CorrespondingPoId");
             d.Add("correspondingPoId", "CorrespondingPoId");
+            d.Add("StatusId", "StatusId");
+            d.Add("statusId", "StatusId");
             d.Add("SyncStatusId", "SyncStatusId");
             d.Add("syncStatusId", "SyncStatusId");
             d.Add("EstimatedShipDate", "EstimatedShipDate");

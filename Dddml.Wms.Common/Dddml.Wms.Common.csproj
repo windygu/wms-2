@@ -1927,6 +1927,9 @@
     <Compile Include="Generated\Domain\Metadata\OrderItemMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Metadata\OrderShipmentMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\OrganizationMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -1949,6 +1952,15 @@
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\SellableInventoryItemMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\ShipmentItemMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\ShipmentMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\StatusItemMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\SupplierProductMetadata.cs">
@@ -2229,6 +2241,105 @@
     </Compile>
     <Compile Include="Generated\Domain\OrderItem\OrderItemStateProperties.cs">
       <DependentUpon>GenerateOrderItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\IOrderShipmentAggregate.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\IOrderShipmentApplicationService.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\IOrderShipmentApplicationServiceFactory.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\IOrderShipmentCommand.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\IOrderShipmentState.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\IOrderShipmentStateDto.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\IOrderShipmentStateEvent.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\IOrderShipmentStateProperties.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\IOrderShipmentStateQueryRepository.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\IOrderShipmentStateRepository.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentAggregate.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentApplicationServiceBase.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentApplicationServiceFactory.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentCommand.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentCommandDto.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentId.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentIdDto.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentIdDtoWrapper.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentIdFlattenedDto.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentState.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateDto.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateDtoExtension.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateDtoWrapper.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateEvent.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateEventDto.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateEventDtoConverter.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateEventId.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateEventIdDto.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateExtension.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateInterfaceExtension.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentStateProperties.cs">
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\OrganizationStructureId.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
@@ -2947,6 +3058,279 @@
     <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemStateProperties.cs">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\IShipmentItemAggregate.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\IShipmentItemApplicationService.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\IShipmentItemApplicationServiceFactory.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\IShipmentItemCommand.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\IShipmentItemState.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\IShipmentItemStateDto.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\IShipmentItemStateEvent.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\IShipmentItemStateProperties.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\IShipmentItemStateQueryRepository.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\IShipmentItemStateRepository.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemAggregate.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemApplicationServiceBase.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemApplicationServiceFactory.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemCommand.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemCommandDto.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemId.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemIdDto.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemIdDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemIdFlattenedDto.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemState.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateDto.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateDtoExtension.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateEvent.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateEventDto.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateEventDtoConverter.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateEventId.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateEventIdDto.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateExtension.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateInterfaceExtension.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentItem\ShipmentItemStateProperties.cs">
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentAggregate.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentApplicationService.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentApplicationServiceFactory.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentCommand.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentState.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentStateDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentStateEvent.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentStateProperties.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentStateQueryRepository.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentStateRepository.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentAggregate.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentApplicationServiceBase.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentApplicationServiceFactory.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentCommand.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentCommandDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentState.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateDtoExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateEvent.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateEventDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateEventDtoConverter.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateEventId.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateEventIdDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateInterfaceExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentStateProperties.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\IStatusItemAggregate.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\IStatusItemApplicationService.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\IStatusItemApplicationServiceFactory.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\IStatusItemCommand.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\IStatusItemState.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\IStatusItemStateDto.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\IStatusItemStateEvent.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\IStatusItemStateProperties.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\IStatusItemStateQueryRepository.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\IStatusItemStateRepository.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemAggregate.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemApplicationServiceBase.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemApplicationServiceFactory.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemCommand.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemCommandDto.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemState.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateDto.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateDtoExtension.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateDtoWrapper.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateEvent.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateEventDto.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateEventDtoConverter.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateEventId.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateEventIdDto.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateExtension.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateInterfaceExtension.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemStateProperties.cs">
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\SupplierProduct\ISupplierProductAggregate.cs">
       <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
     </Compile>
@@ -3233,6 +3617,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrderItemDomain.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\OrderShipment\GenerateOrderShipmentDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\OrganizationStructureType\GenerateOrganizationStructureTypeDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3287,6 +3676,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDomainServicesDtos.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\ShipmentItem\GenerateShipmentItemDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Shipment\GenerateShipmentDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\StatusItem\GenerateStatusItemDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\SupplierProduct\GenerateSupplierProductDomain.txt">
       <AutoGen>True</AutoGen>
@@ -4507,6 +4911,158 @@
 .\SupplierProductStateProperties.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\OrderShipment\GenerateOrderShipmentDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrderShipmentDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrderShipmentDomain.txt
+.\IOrderShipmentAggregate.cs
+.\IOrderShipmentApplicationService.cs
+.\IOrderShipmentApplicationServiceFactory.cs
+.\IOrderShipmentCommand.cs
+.\IOrderShipmentState.cs
+.\IOrderShipmentStateDto.cs
+.\IOrderShipmentStateEvent.cs
+.\IOrderShipmentStateProperties.cs
+.\IOrderShipmentStateQueryRepository.cs
+.\IOrderShipmentStateRepository.cs
+.\OrderShipmentAggregate.cs
+.\OrderShipmentApplicationServiceBase.cs
+.\OrderShipmentApplicationServiceFactory.cs
+.\OrderShipmentCommand.cs
+.\OrderShipmentCommandDto.cs
+.\OrderShipmentId.cs
+.\OrderShipmentIdDto.cs
+.\OrderShipmentIdDtoWrapper.cs
+.\OrderShipmentIdFlattenedDto.cs
+.\OrderShipmentState.cs
+.\OrderShipmentStateDto.cs
+.\OrderShipmentStateDtoExtension.cs
+.\OrderShipmentStateDtoWrapper.cs
+.\OrderShipmentStateEvent.cs
+.\OrderShipmentStateEventDto.cs
+.\OrderShipmentStateEventDtoConverter.cs
+.\OrderShipmentStateEventId.cs
+.\OrderShipmentStateEventIdDto.cs
+.\OrderShipmentStateEventIdDtoWrapper.cs
+.\OrderShipmentStateEventIdFlattenedDto.cs
+.\OrderShipmentStateExtension.cs
+.\OrderShipmentStateInterfaceExtension.cs
+.\OrderShipmentStateProperties.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Shipment\GenerateShipmentDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateShipmentDomain.txt
+.\IShipmentAggregate.cs
+.\IShipmentApplicationService.cs
+.\IShipmentApplicationServiceFactory.cs
+.\IShipmentCommand.cs
+.\IShipmentState.cs
+.\IShipmentStateDto.cs
+.\IShipmentStateEvent.cs
+.\IShipmentStateProperties.cs
+.\IShipmentStateQueryRepository.cs
+.\IShipmentStateRepository.cs
+.\ShipmentAggregate.cs
+.\ShipmentApplicationServiceBase.cs
+.\ShipmentApplicationServiceFactory.cs
+.\ShipmentCommand.cs
+.\ShipmentCommandDto.cs
+.\ShipmentState.cs
+.\ShipmentStateDto.cs
+.\ShipmentStateDtoExtension.cs
+.\ShipmentStateDtoWrapper.cs
+.\ShipmentStateEvent.cs
+.\ShipmentStateEventDto.cs
+.\ShipmentStateEventDtoConverter.cs
+.\ShipmentStateEventId.cs
+.\ShipmentStateEventIdDto.cs
+.\ShipmentStateEventIdDtoWrapper.cs
+.\ShipmentStateEventIdFlattenedDto.cs
+.\ShipmentStateExtension.cs
+.\ShipmentStateInterfaceExtension.cs
+.\ShipmentStateProperties.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\ShipmentItem\GenerateShipmentItemDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentItemDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateShipmentItemDomain.txt
+.\IShipmentItemAggregate.cs
+.\IShipmentItemApplicationService.cs
+.\IShipmentItemApplicationServiceFactory.cs
+.\IShipmentItemCommand.cs
+.\IShipmentItemState.cs
+.\IShipmentItemStateDto.cs
+.\IShipmentItemStateEvent.cs
+.\IShipmentItemStateProperties.cs
+.\IShipmentItemStateQueryRepository.cs
+.\IShipmentItemStateRepository.cs
+.\ShipmentItemAggregate.cs
+.\ShipmentItemApplicationServiceBase.cs
+.\ShipmentItemApplicationServiceFactory.cs
+.\ShipmentItemCommand.cs
+.\ShipmentItemCommandDto.cs
+.\ShipmentItemId.cs
+.\ShipmentItemIdDto.cs
+.\ShipmentItemIdDtoWrapper.cs
+.\ShipmentItemIdFlattenedDto.cs
+.\ShipmentItemState.cs
+.\ShipmentItemStateDto.cs
+.\ShipmentItemStateDtoExtension.cs
+.\ShipmentItemStateDtoWrapper.cs
+.\ShipmentItemStateEvent.cs
+.\ShipmentItemStateEventDto.cs
+.\ShipmentItemStateEventDtoConverter.cs
+.\ShipmentItemStateEventId.cs
+.\ShipmentItemStateEventIdDto.cs
+.\ShipmentItemStateEventIdDtoWrapper.cs
+.\ShipmentItemStateEventIdFlattenedDto.cs
+.\ShipmentItemStateExtension.cs
+.\ShipmentItemStateInterfaceExtension.cs
+.\ShipmentItemStateProperties.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\StatusItem\GenerateStatusItemDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateStatusItemDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateStatusItemDomain.txt
+.\IStatusItemAggregate.cs
+.\IStatusItemApplicationService.cs
+.\IStatusItemApplicationServiceFactory.cs
+.\IStatusItemCommand.cs
+.\IStatusItemState.cs
+.\IStatusItemStateDto.cs
+.\IStatusItemStateEvent.cs
+.\IStatusItemStateProperties.cs
+.\IStatusItemStateQueryRepository.cs
+.\IStatusItemStateRepository.cs
+.\StatusItemAggregate.cs
+.\StatusItemApplicationServiceBase.cs
+.\StatusItemApplicationServiceFactory.cs
+.\StatusItemCommand.cs
+.\StatusItemCommandDto.cs
+.\StatusItemState.cs
+.\StatusItemStateDto.cs
+.\StatusItemStateDtoExtension.cs
+.\StatusItemStateDtoWrapper.cs
+.\StatusItemStateEvent.cs
+.\StatusItemStateEventDto.cs
+.\StatusItemStateEventDtoConverter.cs
+.\StatusItemStateEventId.cs
+.\StatusItemStateEventIdDto.cs
+.\StatusItemStateEventIdDtoWrapper.cs
+.\StatusItemStateEventIdFlattenedDto.cs
+.\StatusItemStateExtension.cs
+.\StatusItemStateInterfaceExtension.cs
+.\StatusItemStateProperties.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -4570,6 +5126,7 @@
 .\MovementTypeMetadata.cs
 .\OrderHeaderMetadata.cs
 .\OrderItemMetadata.cs
+.\OrderShipmentMetadata.cs
 .\OrganizationMetadata.cs
 .\OrganizationStructureMetadata.cs
 .\OrganizationStructureTypeMetadata.cs
@@ -4578,6 +5135,9 @@
 .\SellableInventoryItemEntryMetadata.cs
 .\SellableInventoryItemEntryMvoMetadata.cs
 .\SellableInventoryItemMetadata.cs
+.\ShipmentItemMetadata.cs
+.\ShipmentMetadata.cs
+.\StatusItemMetadata.cs
 .\SupplierProductMetadata.cs
 .\WarehouseMetadata.cs
 </LastOutputs>

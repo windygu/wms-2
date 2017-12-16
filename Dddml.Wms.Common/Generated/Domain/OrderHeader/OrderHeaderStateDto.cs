@@ -69,6 +69,12 @@ namespace Dddml.Wms.Domain.OrderHeader
             set;
         }
 
+        public virtual string StatusId
+        {
+            get;
+            set;
+        }
+
         public virtual string CurrencyUom
         {
             get;
@@ -207,6 +213,7 @@ namespace Dddml.Wms.Domain.OrderHeader
             state.Priority = this.Priority;
             state.EntryDate = this.EntryDate;
             state.PickSheetPrintedDate = this.PickSheetPrintedDate;
+            state.StatusId = this.StatusId;
             state.CurrencyUom = this.CurrencyUom;
             state.SyncStatusId = this.SyncStatusId;
             state.BillingAccountId = this.BillingAccountId;

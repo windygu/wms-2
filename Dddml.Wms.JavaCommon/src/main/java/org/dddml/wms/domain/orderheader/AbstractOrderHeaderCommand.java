@@ -130,6 +130,18 @@ public abstract class AbstractOrderHeaderCommand extends AbstractCommand impleme
             this.pickSheetPrintedDate = pickSheetPrintedDate;
         }
 
+        private String statusId;
+
+        public String getStatusId()
+        {
+            return this.statusId;
+        }
+
+        public void setStatusId(String statusId)
+        {
+            this.statusId = statusId;
+        }
+
         private String currencyUom;
 
         public String getCurrencyUom()
@@ -434,6 +446,18 @@ public abstract class AbstractOrderHeaderCommand extends AbstractCommand impleme
         public void setIsPropertyPickSheetPrintedDateRemoved(Boolean removed)
         {
             this.isPropertyPickSheetPrintedDateRemoved = removed;
+        }
+
+        private Boolean isPropertyStatusIdRemoved;
+
+        public Boolean getIsPropertyStatusIdRemoved()
+        {
+            return this.isPropertyStatusIdRemoved;
+        }
+
+        public void setIsPropertyStatusIdRemoved(Boolean removed)
+        {
+            this.isPropertyStatusIdRemoved = removed;
         }
 
         private Boolean isPropertyCurrencyUomRemoved;

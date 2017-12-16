@@ -209,6 +209,8 @@ namespace Dddml.Wms.Domain.OrderItem
 
 			this.CorrespondingPoId = e.CorrespondingPoId;
 
+			this.StatusId = e.StatusId;
+
 			this.SyncStatusId = e.SyncStatusId;
 
 			this.EstimatedShipDate = e.EstimatedShipDate;
@@ -528,6 +530,18 @@ namespace Dddml.Wms.Domain.OrderItem
 			else
 			{
 				this.CorrespondingPoId = e.CorrespondingPoId;
+			}
+
+			if (e.StatusId == null)
+			{
+				if (e.IsPropertyStatusIdRemoved)
+				{
+					this.StatusId = default(string);
+				}
+			}
+			else
+			{
+				this.StatusId = e.StatusId;
 			}
 
 			if (e.SyncStatusId == null)
