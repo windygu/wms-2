@@ -14,8 +14,6 @@ namespace Dddml.Wms.Domain.DocumentType
 {
 	public abstract partial class DocumentTypeApplicationServiceBase : IDocumentTypeApplicationService, IApplicationService
 	{
-		protected abstract IEventStore EventStore { get; }
-
 		protected abstract IDocumentTypeStateRepository StateRepository { get; }
 
 		protected abstract IDocumentTypeStateQueryRepository StateQueryRepository { get; }
@@ -50,7 +48,7 @@ namespace Dddml.Wms.Domain.DocumentType
 
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IDocumentTypeAggregate aggregate, IDocumentTypeState state)
         {
-            EventStore.AppendEvents(eventStoreAggregateId, ((IDocumentTypeStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            StateRepository.Save(state);
             if (AggregateEventListener != null) 
             {
                 AggregateEventListener.EventAppended(new AggregateEvent<IDocumentTypeAggregate, IDocumentTypeState>(aggregate, state, aggregate.Changes));
@@ -72,10 +70,9 @@ namespace Dddml.Wms.Domain.DocumentType
 		protected bool IsRepeatedCommand(IDocumentTypeCommand command, IEventStoreAggregateId eventStoreAggregateId, IDocumentTypeState state)
 		{
 			bool repeated = false;
-			if (((IDocumentTypeStateProperties)state).Version > command.AggregateVersion)
+			if (((IDocumentTypeStateProperties)state).Version == command.AggregateVersion + 1)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IDocumentTypeStateEvent), eventStoreAggregateId, command.AggregateVersion);
-				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
+				if (state.CommandId == command.CommandId)
 				{
 					repeated = true;
 				}
@@ -144,26 +141,6 @@ namespace Dddml.Wms.Domain.DocumentType
 		{
             return StateQueryRepository.GetCount(filter);
 		}
-
-	    public virtual IDocumentTypeStateEvent GetStateEvent(string documentTypeId, long version)
-        {
-            var e = (IDocumentTypeStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(documentTypeId), version);
-            if (e != null)
-            {
-                e.ReadOnly = true;
-            }
-            else if (version == -1)
-            {
-                return GetStateEvent(documentTypeId, 0);
-            }
-            return e;
-        }
-
-        public virtual IDocumentTypeState GetHistoryState(string documentTypeId, long version)
-        {
-            var eventStream = EventStore.LoadEventStream(typeof(IDocumentTypeStateEvent), ToEventStoreAggregateId(documentTypeId), version - 1);
-            return new DocumentTypeState(eventStream.Events);
-        }
 
 
 		public abstract IDocumentTypeAggregate GetDocumentTypeAggregate(IDocumentTypeState state);

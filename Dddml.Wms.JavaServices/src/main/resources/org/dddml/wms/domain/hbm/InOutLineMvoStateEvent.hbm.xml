@@ -16,9 +16,10 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="description" ></property>
 	<property name="locatorId" ></property>
 	<property name="productId" ></property>
+	<property name="attributeSetInstanceId" ></property>
+	<property name="description" ></property>
 	<property name="uomId" ></property>
 	<property name="movementQuantity" ></property>
 	<property name="confirmedQuantity" ></property>
@@ -26,32 +27,27 @@
 	<property name="targetQuantity" ></property>
 	<property name="pickedQuantity" ></property>
 	<property name="isInvoiced" ></property>
-	<property name="attributeSetInstanceId" ></property>
-	<property name="isDescription" ></property>
 	<property name="processed" ></property>
 	<property name="quantityEntered" ></property>
 	<property name="rmaLineNumber" ></property>
 	<property name="reversalLineNumber" ></property>
 	<property name="version" ></property>
 	<property name="active" ></property>
-	<property name="inOutIsSOTransaction" ></property>
 	<property name="inOutDocumentStatus" ></property>
 	<property name="inOutPosted" ></property>
 	<property name="inOutProcessing" ></property>
 	<property name="inOutProcessed" ></property>
-	<property name="inOutDocumentType" ></property>
+	<property name="inOutDocumentTypeId" ></property>
 	<property name="inOutDescription" ></property>
-	<property name="inOutOrderNumber" ></property>
+	<property name="inOutOrderId" ></property>
 	<property name="inOutDateOrdered" ></property>
 	<property name="inOutIsPrinted" ></property>
-	<property name="inOutMovementType" ></property>
+	<property name="inOutMovementTypeId" ></property>
 	<property name="inOutMovementDate" ></property>
 	<property name="inOutBusinessPartnerId" ></property>
 	<property name="inOutWarehouseId" ></property>
 	<property name="inOutPOReference" ></property>
-	<property name="inOutFreightAmount" type="org.dddml.wms.domain.hibernate.usertypes.MoneyType"><column name="inOutFreightAmountAmount" /><column name="inOutFreightAmountCurrency" /></property>
 	<property name="inOutShipperId" ></property>
-	<property name="inOutChargeAmount" type="org.dddml.wms.domain.hibernate.usertypes.MoneyType"><column name="inOutChargeAmountAmount" /><column name="inOutChargeAmountCurrency" /></property>
 	<property name="inOutDatePrinted" ></property>
 	<property name="inOutSalesRepresentative" ></property>
 	<property name="inOutNumberOfPackages" ></property>
@@ -62,12 +58,8 @@
 	<property name="inOutIsInTransit" ></property>
 	<property name="inOutIsApproved" ></property>
 	<property name="inOutIsInDispute" ></property>
-	<property name="inOutVolume" ></property>
-	<property name="inOutWeight" ></property>
 	<property name="inOutRmaNumber" ></property>
 	<property name="inOutReversalNumber" ></property>
-	<property name="inOutIsDropShip" ></property>
-	<property name="inOutDropShipBusinessPartnerId" ></property>
 	<property name="inOutCreatedBy" ></property>
 	<property name="inOutCreatedAt" ></property>
 	<property name="inOutUpdatedBy" ></property>
@@ -87,11 +79,13 @@
 
     <subclass name="AbstractInOutLineMvoStateEvent$SimpleInOutLineMvoStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
-
         <property name="isPropertyLocatorIdRemoved" column="IsPropertyLocatorIdRemoved"/>
 
         <property name="isPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="isPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
         <property name="isPropertyUomIdRemoved" column="IsPropertyUomIdRemoved"/>
 
@@ -107,10 +101,6 @@
 
         <property name="isPropertyIsInvoicedRemoved" column="IsPropertyIsInvoicedRemoved"/>
 
-        <property name="isPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
-
-        <property name="isPropertyIsDescriptionRemoved" column="IsPropertyIsDescriptionRemoved"/>
-
         <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
 
         <property name="isPropertyQuantityEnteredRemoved" column="IsPropertyQuantityEnteredRemoved"/>
@@ -123,8 +113,6 @@
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
-        <property name="isPropertyInOutIsSOTransactionRemoved" column="IsPropertyInOutIsSOTransactionRemoved"/>
-
         <property name="isPropertyInOutDocumentStatusRemoved" column="IsPropertyInOutDocumentStatusRemoved"/>
 
         <property name="isPropertyInOutPostedRemoved" column="IsPropertyInOutPostedRemoved"/>
@@ -133,17 +121,17 @@
 
         <property name="isPropertyInOutProcessedRemoved" column="IsPropertyInOutProcessedRemoved"/>
 
-        <property name="isPropertyInOutDocumentTypeRemoved" column="IsPropertyInOutDocumentTypeRemoved"/>
+        <property name="isPropertyInOutDocumentTypeIdRemoved" column="IsPropertyInOutDocumentTypeIdRemoved"/>
 
         <property name="isPropertyInOutDescriptionRemoved" column="IsPropertyInOutDescriptionRemoved"/>
 
-        <property name="isPropertyInOutOrderNumberRemoved" column="IsPropertyInOutOrderNumberRemoved"/>
+        <property name="isPropertyInOutOrderIdRemoved" column="IsPropertyInOutOrderIdRemoved"/>
 
         <property name="isPropertyInOutDateOrderedRemoved" column="IsPropertyInOutDateOrderedRemoved"/>
 
         <property name="isPropertyInOutIsPrintedRemoved" column="IsPropertyInOutIsPrintedRemoved"/>
 
-        <property name="isPropertyInOutMovementTypeRemoved" column="IsPropertyInOutMovementTypeRemoved"/>
+        <property name="isPropertyInOutMovementTypeIdRemoved" column="IsPropertyInOutMovementTypeIdRemoved"/>
 
         <property name="isPropertyInOutMovementDateRemoved" column="IsPropertyInOutMovementDateRemoved"/>
 
@@ -153,11 +141,7 @@
 
         <property name="isPropertyInOutPOReferenceRemoved" column="IsPropertyInOutPOReferenceRemoved"/>
 
-        <property name="isPropertyInOutFreightAmountRemoved" column="IsPropertyInOutFreightAmountRemoved"/>
-
         <property name="isPropertyInOutShipperIdRemoved" column="IsPropertyInOutShipperIdRemoved"/>
-
-        <property name="isPropertyInOutChargeAmountRemoved" column="IsPropertyInOutChargeAmountRemoved"/>
 
         <property name="isPropertyInOutDatePrintedRemoved" column="IsPropertyInOutDatePrintedRemoved"/>
 
@@ -179,17 +163,9 @@
 
         <property name="isPropertyInOutIsInDisputeRemoved" column="IsPropertyInOutIsInDisputeRemoved"/>
 
-        <property name="isPropertyInOutVolumeRemoved" column="IsPropertyInOutVolumeRemoved"/>
-
-        <property name="isPropertyInOutWeightRemoved" column="IsPropertyInOutWeightRemoved"/>
-
         <property name="isPropertyInOutRmaNumberRemoved" column="IsPropertyInOutRmaNumberRemoved"/>
 
         <property name="isPropertyInOutReversalNumberRemoved" column="IsPropertyInOutReversalNumberRemoved"/>
-
-        <property name="isPropertyInOutIsDropShipRemoved" column="IsPropertyInOutIsDropShipRemoved"/>
-
-        <property name="isPropertyInOutDropShipBusinessPartnerIdRemoved" column="IsPropertyInOutDropShipBusinessPartnerIdRemoved"/>
 
         <property name="isPropertyInOutCreatedByRemoved" column="IsPropertyInOutCreatedByRemoved"/>
 

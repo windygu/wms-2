@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOutLineMvo;
-using NodaMoney;
 using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.Domain.InOutLineMvo
@@ -50,9 +49,10 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutVersion = ((IInOutLineMvoStateProperties)state).InOutVersion;
 
             cmd.InOutLineId = state.InOutLineId;
-            cmd.Description = state.Description;
             cmd.LocatorId = state.LocatorId;
             cmd.ProductId = state.ProductId;
+            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.Description = state.Description;
             cmd.UomId = state.UomId;
             cmd.MovementQuantity = state.MovementQuantity;
             cmd.ConfirmedQuantity = state.ConfirmedQuantity;
@@ -60,31 +60,26 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.TargetQuantity = state.TargetQuantity;
             cmd.PickedQuantity = state.PickedQuantity;
             cmd.IsInvoiced = state.IsInvoiced;
-            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
-            cmd.IsDescription = state.IsDescription;
             cmd.Processed = state.Processed;
             cmd.QuantityEntered = state.QuantityEntered;
             cmd.RmaLineNumber = state.RmaLineNumber;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IInOutLineMvoStateProperties)state).Version;
             cmd.Active = ((IInOutLineMvoStateProperties)state).Active;
-            cmd.InOutIsSOTransaction = state.InOutIsSOTransaction;
             cmd.InOutPosted = state.InOutPosted;
             cmd.InOutProcessing = state.InOutProcessing;
             cmd.InOutProcessed = state.InOutProcessed;
-            cmd.InOutDocumentType = state.InOutDocumentType;
+            cmd.InOutDocumentTypeId = state.InOutDocumentTypeId;
             cmd.InOutDescription = state.InOutDescription;
-            cmd.InOutOrderNumber = state.InOutOrderNumber;
+            cmd.InOutOrderId = state.InOutOrderId;
             cmd.InOutDateOrdered = state.InOutDateOrdered;
             cmd.InOutIsPrinted = state.InOutIsPrinted;
-            cmd.InOutMovementType = state.InOutMovementType;
+            cmd.InOutMovementTypeId = state.InOutMovementTypeId;
             cmd.InOutMovementDate = state.InOutMovementDate;
             cmd.InOutBusinessPartnerId = state.InOutBusinessPartnerId;
             cmd.InOutWarehouseId = state.InOutWarehouseId;
             cmd.InOutPOReference = state.InOutPOReference;
-            cmd.InOutFreightAmount = state.InOutFreightAmount;
             cmd.InOutShipperId = state.InOutShipperId;
-            cmd.InOutChargeAmount = state.InOutChargeAmount;
             cmd.InOutDatePrinted = state.InOutDatePrinted;
             cmd.InOutSalesRepresentative = state.InOutSalesRepresentative;
             cmd.InOutNumberOfPackages = state.InOutNumberOfPackages;
@@ -95,12 +90,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutIsInTransit = state.InOutIsInTransit;
             cmd.InOutIsApproved = state.InOutIsApproved;
             cmd.InOutIsInDispute = state.InOutIsInDispute;
-            cmd.InOutVolume = state.InOutVolume;
-            cmd.InOutWeight = state.InOutWeight;
             cmd.InOutRmaNumber = state.InOutRmaNumber;
             cmd.InOutReversalNumber = state.InOutReversalNumber;
-            cmd.InOutIsDropShip = state.InOutIsDropShip;
-            cmd.InOutDropShipBusinessPartnerId = state.InOutDropShipBusinessPartnerId;
             cmd.InOutCreatedBy = state.InOutCreatedBy;
             cmd.InOutCreatedAt = state.InOutCreatedAt;
             cmd.InOutUpdatedBy = state.InOutUpdatedBy;
@@ -108,15 +99,16 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutActive = state.InOutActive;
             cmd.InOutDeleted = state.InOutDeleted;
             
-            if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.LocatorId == null) { cmd.IsPropertyLocatorIdRemoved = true; }
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
-            if (state.UomId == null) { cmd.IsPropertyUomIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
+            if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
+            if (state.UomId == null) { cmd.IsPropertyUomIdRemoved = true; }
+            if (state.InOutDocumentTypeId == null) { cmd.IsPropertyInOutDocumentTypeIdRemoved = true; }
             if (state.InOutDescription == null) { cmd.IsPropertyInOutDescriptionRemoved = true; }
-            if (state.InOutOrderNumber == null) { cmd.IsPropertyInOutOrderNumberRemoved = true; }
+            if (state.InOutOrderId == null) { cmd.IsPropertyInOutOrderIdRemoved = true; }
             if (state.InOutDateOrdered == null) { cmd.IsPropertyInOutDateOrderedRemoved = true; }
-            if (state.InOutMovementType == null) { cmd.IsPropertyInOutMovementTypeRemoved = true; }
+            if (state.InOutMovementTypeId == null) { cmd.IsPropertyInOutMovementTypeIdRemoved = true; }
             if (state.InOutMovementDate == null) { cmd.IsPropertyInOutMovementDateRemoved = true; }
             if (state.InOutBusinessPartnerId == null) { cmd.IsPropertyInOutBusinessPartnerIdRemoved = true; }
             if (state.InOutWarehouseId == null) { cmd.IsPropertyInOutWarehouseIdRemoved = true; }
@@ -130,7 +122,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             if (state.InOutDateReceived == null) { cmd.IsPropertyInOutDateReceivedRemoved = true; }
             if (state.InOutRmaNumber == null) { cmd.IsPropertyInOutRmaNumberRemoved = true; }
             if (state.InOutReversalNumber == null) { cmd.IsPropertyInOutReversalNumberRemoved = true; }
-            if (state.InOutDropShipBusinessPartnerId == null) { cmd.IsPropertyInOutDropShipBusinessPartnerIdRemoved = true; }
             if (state.InOutCreatedBy == null) { cmd.IsPropertyInOutCreatedByRemoved = true; }
             if (state.InOutUpdatedBy == null) { cmd.IsPropertyInOutUpdatedByRemoved = true; }
             return cmd;
@@ -144,9 +135,10 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutVersion = ((IInOutLineMvoStateProperties)state).InOutVersion;
 
             cmd.InOutLineId = state.InOutLineId;
-            cmd.Description = state.Description;
             cmd.LocatorId = state.LocatorId;
             cmd.ProductId = state.ProductId;
+            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.Description = state.Description;
             cmd.UomId = state.UomId;
             cmd.MovementQuantity = state.MovementQuantity;
             cmd.ConfirmedQuantity = state.ConfirmedQuantity;
@@ -154,31 +146,26 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.TargetQuantity = state.TargetQuantity;
             cmd.PickedQuantity = state.PickedQuantity;
             cmd.IsInvoiced = state.IsInvoiced;
-            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
-            cmd.IsDescription = state.IsDescription;
             cmd.Processed = state.Processed;
             cmd.QuantityEntered = state.QuantityEntered;
             cmd.RmaLineNumber = state.RmaLineNumber;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IInOutLineMvoStateProperties)state).Version;
             cmd.Active = ((IInOutLineMvoStateProperties)state).Active;
-            cmd.InOutIsSOTransaction = state.InOutIsSOTransaction;
             cmd.InOutPosted = state.InOutPosted;
             cmd.InOutProcessing = state.InOutProcessing;
             cmd.InOutProcessed = state.InOutProcessed;
-            cmd.InOutDocumentType = state.InOutDocumentType;
+            cmd.InOutDocumentTypeId = state.InOutDocumentTypeId;
             cmd.InOutDescription = state.InOutDescription;
-            cmd.InOutOrderNumber = state.InOutOrderNumber;
+            cmd.InOutOrderId = state.InOutOrderId;
             cmd.InOutDateOrdered = state.InOutDateOrdered;
             cmd.InOutIsPrinted = state.InOutIsPrinted;
-            cmd.InOutMovementType = state.InOutMovementType;
+            cmd.InOutMovementTypeId = state.InOutMovementTypeId;
             cmd.InOutMovementDate = state.InOutMovementDate;
             cmd.InOutBusinessPartnerId = state.InOutBusinessPartnerId;
             cmd.InOutWarehouseId = state.InOutWarehouseId;
             cmd.InOutPOReference = state.InOutPOReference;
-            cmd.InOutFreightAmount = state.InOutFreightAmount;
             cmd.InOutShipperId = state.InOutShipperId;
-            cmd.InOutChargeAmount = state.InOutChargeAmount;
             cmd.InOutDatePrinted = state.InOutDatePrinted;
             cmd.InOutSalesRepresentative = state.InOutSalesRepresentative;
             cmd.InOutNumberOfPackages = state.InOutNumberOfPackages;
@@ -189,12 +176,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutIsInTransit = state.InOutIsInTransit;
             cmd.InOutIsApproved = state.InOutIsApproved;
             cmd.InOutIsInDispute = state.InOutIsInDispute;
-            cmd.InOutVolume = state.InOutVolume;
-            cmd.InOutWeight = state.InOutWeight;
             cmd.InOutRmaNumber = state.InOutRmaNumber;
             cmd.InOutReversalNumber = state.InOutReversalNumber;
-            cmd.InOutIsDropShip = state.InOutIsDropShip;
-            cmd.InOutDropShipBusinessPartnerId = state.InOutDropShipBusinessPartnerId;
             cmd.InOutCreatedBy = state.InOutCreatedBy;
             cmd.InOutCreatedAt = state.InOutCreatedAt;
             cmd.InOutUpdatedBy = state.InOutUpdatedBy;

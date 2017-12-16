@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 			var stateEventId = new AttributeSetStateEventId(c.AttributeSetId, c.Version);
             IAttributeSetStateCreated e = NewAttributeSetStateCreated(stateEventId);
 		
-            e.Name = c.Name;
+            e.AttributeSetName = c.AttributeSetName;
             e.OrganizationId = c.OrganizationId;
             e.Description = c.Description;
             e.SerialNumberAttributeId = c.SerialNumberAttributeId;
@@ -138,14 +138,14 @@ namespace Dddml.Wms.Domain.AttributeSet
 			var stateEventId = new AttributeSetStateEventId(c.AttributeSetId, c.Version);
             IAttributeSetStateMergePatched e = NewAttributeSetStateMergePatched(stateEventId);
 
-            e.Name = c.Name;
+            e.AttributeSetName = c.AttributeSetName;
             e.OrganizationId = c.OrganizationId;
             e.Description = c.Description;
             e.SerialNumberAttributeId = c.SerialNumberAttributeId;
             e.LotAttributeId = c.LotAttributeId;
             e.ReferenceId = c.ReferenceId;
             e.Active = c.Active;
-            e.IsPropertyNameRemoved = c.IsPropertyNameRemoved;
+            e.IsPropertyAttributeSetNameRemoved = c.IsPropertyAttributeSetNameRemoved;
             e.IsPropertyOrganizationIdRemoved = c.IsPropertyOrganizationIdRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertySerialNumberAttributeIdRemoved = c.IsPropertySerialNumberAttributeIdRemoved;

@@ -4,7 +4,6 @@ import java.util.Set;
 import org.dddml.wms.domain.inout.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import org.joda.money.Money;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 import org.dddml.wms.domain.inoutlinemvo.InOutLineMvoStateEvent.*;
@@ -19,10 +18,6 @@ public interface InOutLineMvoState
 
     void setInOutLineId(InOutLineId inOutLineId);
 
-    String getDescription();
-
-    void setDescription(String description);
-
     String getLocatorId();
 
     void setLocatorId(String locatorId);
@@ -30,6 +25,14 @@ public interface InOutLineMvoState
     String getProductId();
 
     void setProductId(String productId);
+
+    String getAttributeSetInstanceId();
+
+    void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+    String getDescription();
+
+    void setDescription(String description);
 
     String getUomId();
 
@@ -58,14 +61,6 @@ public interface InOutLineMvoState
     Boolean getIsInvoiced();
 
     void setIsInvoiced(Boolean isInvoiced);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-    Boolean getIsDescription();
-
-    void setIsDescription(Boolean isDescription);
 
     Boolean getProcessed();
 
@@ -111,10 +106,6 @@ public interface InOutLineMvoState
 
     void setDeleted(Boolean deleted);
 
-    Boolean getInOutIsSOTransaction();
-
-    void setInOutIsSOTransaction(Boolean inOutIsSOTransaction);
-
     String getInOutDocumentStatus();
 
     void setInOutDocumentStatus(String inOutDocumentStatus);
@@ -131,17 +122,17 @@ public interface InOutLineMvoState
 
     void setInOutProcessed(Boolean inOutProcessed);
 
-    Integer getInOutDocumentType();
+    String getInOutDocumentTypeId();
 
-    void setInOutDocumentType(Integer inOutDocumentType);
+    void setInOutDocumentTypeId(String inOutDocumentTypeId);
 
     String getInOutDescription();
 
     void setInOutDescription(String inOutDescription);
 
-    String getInOutOrderNumber();
+    String getInOutOrderId();
 
-    void setInOutOrderNumber(String inOutOrderNumber);
+    void setInOutOrderId(String inOutOrderId);
 
     Date getInOutDateOrdered();
 
@@ -151,9 +142,9 @@ public interface InOutLineMvoState
 
     void setInOutIsPrinted(Boolean inOutIsPrinted);
 
-    String getInOutMovementType();
+    String getInOutMovementTypeId();
 
-    void setInOutMovementType(String inOutMovementType);
+    void setInOutMovementTypeId(String inOutMovementTypeId);
 
     Date getInOutMovementDate();
 
@@ -171,17 +162,9 @@ public interface InOutLineMvoState
 
     void setInOutPOReference(String inOutPOReference);
 
-    Money getInOutFreightAmount();
-
-    void setInOutFreightAmount(Money inOutFreightAmount);
-
     String getInOutShipperId();
 
     void setInOutShipperId(String inOutShipperId);
-
-    Money getInOutChargeAmount();
-
-    void setInOutChargeAmount(Money inOutChargeAmount);
 
     Date getInOutDatePrinted();
 
@@ -223,14 +206,6 @@ public interface InOutLineMvoState
 
     void setInOutIsInDispute(Boolean inOutIsInDispute);
 
-    BigDecimal getInOutVolume();
-
-    void setInOutVolume(BigDecimal inOutVolume);
-
-    BigDecimal getInOutWeight();
-
-    void setInOutWeight(BigDecimal inOutWeight);
-
     String getInOutRmaNumber();
 
     void setInOutRmaNumber(String inOutRmaNumber);
@@ -238,14 +213,6 @@ public interface InOutLineMvoState
     String getInOutReversalNumber();
 
     void setInOutReversalNumber(String inOutReversalNumber);
-
-    Boolean getInOutIsDropShip();
-
-    void setInOutIsDropShip(Boolean inOutIsDropShip);
-
-    String getInOutDropShipBusinessPartnerId();
-
-    void setInOutDropShipBusinessPartnerId(String inOutDropShipBusinessPartnerId);
 
     Long getInOutVersion();
 

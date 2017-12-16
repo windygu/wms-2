@@ -203,7 +203,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 		public virtual void When(IAttributeSetStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.Name = e.Name;
+			this.AttributeSetName = e.AttributeSetName;
 
 			this.OrganizationId = e.OrganizationId;
 
@@ -234,16 +234,16 @@ namespace Dddml.Wms.Domain.AttributeSet
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.Name == null)
+			if (e.AttributeSetName == null)
 			{
-				if (e.IsPropertyNameRemoved)
+				if (e.IsPropertyAttributeSetNameRemoved)
 				{
-					this.Name = default(string);
+					this.AttributeSetName = default(string);
 				}
 			}
 			else
 			{
-				this.Name = e.Name;
+				this.AttributeSetName = e.AttributeSetName;
 			}
 
 			if (e.OrganizationId == null)

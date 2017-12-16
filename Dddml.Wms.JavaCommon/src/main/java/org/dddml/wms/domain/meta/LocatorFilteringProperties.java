@@ -20,6 +20,7 @@ public final class LocatorFilteringProperties
             "x",
             "y",
             "z",
+            "description",
             "version",
             "createdBy",
             "createdAt",
@@ -36,6 +37,7 @@ public final class LocatorFilteringProperties
             "String",
             "String",
             "Boolean",
+            "String",
             "String",
             "String",
             "String",
@@ -78,6 +80,8 @@ public final class LocatorFilteringProperties
         aliasMap.put("Y", "y");
         aliasMap.put("z", "z");
         aliasMap.put("Z", "z");
+        aliasMap.put("description", "description");
+        aliasMap.put("Description", "description");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

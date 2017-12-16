@@ -50,6 +50,7 @@ namespace Dddml.Wms.Domain.Locator
             dto.X = e.X;
             dto.Y = e.Y;
             dto.Z = e.Z;
+            dto.Description = e.Description;
             dto.Active = e.Active;
             return dto;
         }
@@ -69,6 +70,7 @@ namespace Dddml.Wms.Domain.Locator
             dto.X = e.X;
             dto.Y = e.Y;
             dto.Z = e.Z;
+            dto.Description = e.Description;
             dto.Active = e.Active;
             dto.IsPropertyWarehouseIdRemoved = e.IsPropertyWarehouseIdRemoved;
             dto.IsPropertyParentLocatorIdRemoved = e.IsPropertyParentLocatorIdRemoved;
@@ -78,6 +80,7 @@ namespace Dddml.Wms.Domain.Locator
             dto.IsPropertyXRemoved = e.IsPropertyXRemoved;
             dto.IsPropertyYRemoved = e.IsPropertyYRemoved;
             dto.IsPropertyZRemoved = e.IsPropertyZRemoved;
+            dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 
             return dto;

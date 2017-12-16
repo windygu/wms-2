@@ -16,9 +16,9 @@ public interface WarehouseState
 
     void setWarehouseId(String warehouseId);
 
-    String getName();
+    String getWarehouseName();
 
-    void setName(String name);
+    void setWarehouseName(String warehouseName);
 
     String getDescription();
 

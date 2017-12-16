@@ -5,16 +5,16 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrganizationDto extends AbstractOrganizationCommandDto
 {
-    private String name;
+    private String organizationName;
 
-    public String getName()
+    public String getOrganizationName()
     {
-        return this.name;
+        return this.organizationName;
     }
 
-    public void setName(String name)
+    public void setOrganizationName(String organizationName)
     {
-        this.name = name;
+        this.organizationName = organizationName;
     }
 
     private String description;
@@ -65,16 +65,16 @@ public class CreateOrMergePatchOrganizationDto extends AbstractOrganizationComma
         this.active = active;
     }
 
-    private Boolean isPropertyNameRemoved;
+    private Boolean isPropertyOrganizationNameRemoved;
 
-    public Boolean getIsPropertyNameRemoved()
+    public Boolean getIsPropertyOrganizationNameRemoved()
     {
-        return this.isPropertyNameRemoved;
+        return this.isPropertyOrganizationNameRemoved;
     }
 
-    public void setIsPropertyNameRemoved(Boolean removed)
+    public void setIsPropertyOrganizationNameRemoved(Boolean removed)
     {
-        this.isPropertyNameRemoved = removed;
+        this.isPropertyOrganizationNameRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;
@@ -128,7 +128,7 @@ public class CreateOrMergePatchOrganizationDto extends AbstractOrganizationComma
     public void copyTo(AbstractOrganizationCommand.AbstractCreateOrMergePatchOrganization command)
     {
         ((AbstractOrganizationCommandDto) this).copyTo(command);
-        command.setName(this.getName());
+        command.setOrganizationName(this.getOrganizationName());
         command.setDescription(this.getDescription());
         command.setType(this.getType());
         command.setIsSummary(this.getIsSummary());
@@ -157,7 +157,7 @@ public class CreateOrMergePatchOrganizationDto extends AbstractOrganizationComma
     public void copyTo(AbstractOrganizationCommand.AbstractMergePatchOrganization command)
     {
         copyTo((AbstractOrganizationCommand.AbstractCreateOrMergePatchOrganization) command);
-        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyOrganizationNameRemoved(this.getIsPropertyOrganizationNameRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyTypeRemoved(this.getIsPropertyTypeRemoved());
         command.setIsPropertyIsSummaryRemoved(this.getIsPropertyIsSummaryRemoved());

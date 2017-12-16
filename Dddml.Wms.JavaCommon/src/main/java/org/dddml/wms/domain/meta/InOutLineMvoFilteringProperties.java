@@ -11,9 +11,10 @@ public final class InOutLineMvoFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
-            "description",
             "locatorId",
             "productId",
+            "attributeSetInstanceId",
+            "description",
             "uomId",
             "movementQuantity",
             "confirmedQuantity",
@@ -21,8 +22,6 @@ public final class InOutLineMvoFilteringProperties
             "targetQuantity",
             "pickedQuantity",
             "isInvoiced",
-            "attributeSetInstanceId",
-            "isDescription",
             "processed",
             "quantityEntered",
             "rmaLineNumber",
@@ -34,24 +33,21 @@ public final class InOutLineMvoFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "inOutIsSOTransaction",
             "inOutDocumentStatus",
             "inOutPosted",
             "inOutProcessing",
             "inOutProcessed",
-            "inOutDocumentType",
+            "inOutDocumentTypeId",
             "inOutDescription",
-            "inOutOrderNumber",
+            "inOutOrderId",
             "inOutDateOrdered",
             "inOutIsPrinted",
-            "inOutMovementType",
+            "inOutMovementTypeId",
             "inOutMovementDate",
             "inOutBusinessPartnerId",
             "inOutWarehouseId",
             "inOutPOReference",
-            "inOutFreightAmount",
             "inOutShipperId",
-            "inOutChargeAmount",
             "inOutDatePrinted",
             "inOutSalesRepresentative",
             "inOutNumberOfPackages",
@@ -62,12 +58,8 @@ public final class InOutLineMvoFilteringProperties
             "inOutIsInTransit",
             "inOutIsApproved",
             "inOutIsInDispute",
-            "inOutVolume",
-            "inOutWeight",
             "inOutRmaNumber",
             "inOutReversalNumber",
-            "inOutIsDropShip",
-            "inOutDropShipBusinessPartnerId",
             "inOutVersion",
             "inOutCreatedBy",
             "inOutCreatedAt",
@@ -77,10 +69,6 @@ public final class InOutLineMvoFilteringProperties
             "inOutDeleted",
             "inOutLineId.inOutDocumentNumber",
             "inOutLineId.lineNumber",
-            "inOutFreightAmount.amount",
-            "inOutFreightAmount.currency",
-            "inOutChargeAmount.amount",
-            "inOutChargeAmount.currency",
     };
 
     public static final String[] propertyTypes = new String[] {
@@ -88,13 +76,12 @@ public final class InOutLineMvoFilteringProperties
             "String",
             "String",
             "String",
-            "BigDecimal",
-            "BigDecimal",
-            "BigDecimal",
-            "BigDecimal",
-            "BigDecimal",
-            "Boolean",
             "String",
+            "BigDecimal",
+            "BigDecimal",
+            "BigDecimal",
+            "BigDecimal",
+            "BigDecimal",
             "Boolean",
             "Boolean",
             "BigDecimal",
@@ -107,12 +94,11 @@ public final class InOutLineMvoFilteringProperties
             "Date",
             "Boolean",
             "Boolean",
-            "Boolean",
             "String",
             "Boolean",
             "Boolean",
             "Boolean",
-            "Integer",
+            "String",
             "String",
             "String",
             "Date",
@@ -122,9 +108,7 @@ public final class InOutLineMvoFilteringProperties
             "String",
             "String",
             "String",
-            "Money",
             "String",
-            "Money",
             "Date",
             "String",
             "Integer",
@@ -135,11 +119,7 @@ public final class InOutLineMvoFilteringProperties
             "Boolean",
             "Boolean",
             "Boolean",
-            "BigDecimal",
-            "BigDecimal",
             "String",
-            "String",
-            "Boolean",
             "String",
             "Long",
             "String",
@@ -150,10 +130,6 @@ public final class InOutLineMvoFilteringProperties
             "Boolean",
             "String",
             "Long",
-            "BigDecimal",
-            "String",
-            "BigDecimal",
-            "String",
     };
 
     public static final Map<String, String> propertyTypeMap;
@@ -168,12 +144,14 @@ public final class InOutLineMvoFilteringProperties
     }
 
     private static  void initAliasMap() {
-        aliasMap.put("description", "description");
-        aliasMap.put("Description", "description");
         aliasMap.put("locatorId", "locatorId");
         aliasMap.put("LocatorId", "locatorId");
         aliasMap.put("productId", "productId");
         aliasMap.put("ProductId", "productId");
+        aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("description", "description");
+        aliasMap.put("Description", "description");
         aliasMap.put("uomId", "uomId");
         aliasMap.put("UomId", "uomId");
         aliasMap.put("movementQuantity", "movementQuantity");
@@ -188,10 +166,6 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("PickedQuantity", "pickedQuantity");
         aliasMap.put("isInvoiced", "isInvoiced");
         aliasMap.put("IsInvoiced", "isInvoiced");
-        aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
-        aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
-        aliasMap.put("isDescription", "isDescription");
-        aliasMap.put("IsDescription", "isDescription");
         aliasMap.put("processed", "processed");
         aliasMap.put("Processed", "processed");
         aliasMap.put("quantityEntered", "quantityEntered");
@@ -214,8 +188,6 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("inOutIsSOTransaction", "inOutIsSOTransaction");
-        aliasMap.put("InOutIsSOTransaction", "inOutIsSOTransaction");
         aliasMap.put("inOutDocumentStatus", "inOutDocumentStatus");
         aliasMap.put("InOutDocumentStatus", "inOutDocumentStatus");
         aliasMap.put("inOutPosted", "inOutPosted");
@@ -224,18 +196,18 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("InOutProcessing", "inOutProcessing");
         aliasMap.put("inOutProcessed", "inOutProcessed");
         aliasMap.put("InOutProcessed", "inOutProcessed");
-        aliasMap.put("inOutDocumentType", "inOutDocumentType");
-        aliasMap.put("InOutDocumentType", "inOutDocumentType");
+        aliasMap.put("inOutDocumentTypeId", "inOutDocumentTypeId");
+        aliasMap.put("InOutDocumentTypeId", "inOutDocumentTypeId");
         aliasMap.put("inOutDescription", "inOutDescription");
         aliasMap.put("InOutDescription", "inOutDescription");
-        aliasMap.put("inOutOrderNumber", "inOutOrderNumber");
-        aliasMap.put("InOutOrderNumber", "inOutOrderNumber");
+        aliasMap.put("inOutOrderId", "inOutOrderId");
+        aliasMap.put("InOutOrderId", "inOutOrderId");
         aliasMap.put("inOutDateOrdered", "inOutDateOrdered");
         aliasMap.put("InOutDateOrdered", "inOutDateOrdered");
         aliasMap.put("inOutIsPrinted", "inOutIsPrinted");
         aliasMap.put("InOutIsPrinted", "inOutIsPrinted");
-        aliasMap.put("inOutMovementType", "inOutMovementType");
-        aliasMap.put("InOutMovementType", "inOutMovementType");
+        aliasMap.put("inOutMovementTypeId", "inOutMovementTypeId");
+        aliasMap.put("InOutMovementTypeId", "inOutMovementTypeId");
         aliasMap.put("inOutMovementDate", "inOutMovementDate");
         aliasMap.put("InOutMovementDate", "inOutMovementDate");
         aliasMap.put("inOutBusinessPartnerId", "inOutBusinessPartnerId");
@@ -244,12 +216,8 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("InOutWarehouseId", "inOutWarehouseId");
         aliasMap.put("inOutPOReference", "inOutPOReference");
         aliasMap.put("InOutPOReference", "inOutPOReference");
-        aliasMap.put("inOutFreightAmount", "inOutFreightAmount");
-        aliasMap.put("InOutFreightAmount", "inOutFreightAmount");
         aliasMap.put("inOutShipperId", "inOutShipperId");
         aliasMap.put("InOutShipperId", "inOutShipperId");
-        aliasMap.put("inOutChargeAmount", "inOutChargeAmount");
-        aliasMap.put("InOutChargeAmount", "inOutChargeAmount");
         aliasMap.put("inOutDatePrinted", "inOutDatePrinted");
         aliasMap.put("InOutDatePrinted", "inOutDatePrinted");
         aliasMap.put("inOutSalesRepresentative", "inOutSalesRepresentative");
@@ -270,18 +238,10 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("InOutIsApproved", "inOutIsApproved");
         aliasMap.put("inOutIsInDispute", "inOutIsInDispute");
         aliasMap.put("InOutIsInDispute", "inOutIsInDispute");
-        aliasMap.put("inOutVolume", "inOutVolume");
-        aliasMap.put("InOutVolume", "inOutVolume");
-        aliasMap.put("inOutWeight", "inOutWeight");
-        aliasMap.put("InOutWeight", "inOutWeight");
         aliasMap.put("inOutRmaNumber", "inOutRmaNumber");
         aliasMap.put("InOutRmaNumber", "inOutRmaNumber");
         aliasMap.put("inOutReversalNumber", "inOutReversalNumber");
         aliasMap.put("InOutReversalNumber", "inOutReversalNumber");
-        aliasMap.put("inOutIsDropShip", "inOutIsDropShip");
-        aliasMap.put("InOutIsDropShip", "inOutIsDropShip");
-        aliasMap.put("inOutDropShipBusinessPartnerId", "inOutDropShipBusinessPartnerId");
-        aliasMap.put("InOutDropShipBusinessPartnerId", "inOutDropShipBusinessPartnerId");
         aliasMap.put("inOutVersion", "inOutVersion");
         aliasMap.put("InOutVersion", "inOutVersion");
         aliasMap.put("inOutCreatedBy", "inOutCreatedBy");
@@ -300,14 +260,6 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("InOutLineId.InOutDocumentNumber", "inOutLineId.inOutDocumentNumber");
         aliasMap.put("inOutLineId.lineNumber", "inOutLineId.lineNumber");
         aliasMap.put("InOutLineId.LineNumber", "inOutLineId.lineNumber");
-        aliasMap.put("inOutFreightAmount.amount", "inOutFreightAmount.amount");
-        aliasMap.put("InOutFreightAmount.Amount", "inOutFreightAmount.amount");
-        aliasMap.put("inOutFreightAmount.currency", "inOutFreightAmount.currency");
-        aliasMap.put("InOutFreightAmount.Currency", "inOutFreightAmount.currency");
-        aliasMap.put("inOutChargeAmount.amount", "inOutChargeAmount.amount");
-        aliasMap.put("InOutChargeAmount.Amount", "inOutChargeAmount.amount");
-        aliasMap.put("inOutChargeAmount.currency", "inOutChargeAmount.currency");
-        aliasMap.put("InOutChargeAmount.Currency", "inOutChargeAmount.currency");
     }
 
     private static void initPropertyTypeMap() {

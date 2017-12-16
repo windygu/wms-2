@@ -21,16 +21,16 @@ public class WarehouseStateDto
         this.warehouseId = warehouseId;
     }
 
-    private String name;
+    private String warehouseName;
 
-    public String getName()
+    public String getWarehouseName()
     {
-        return this.name;
+        return this.warehouseName;
     }
 
-    public void setName(String name)
+    public void setWarehouseName(String warehouseName)
     {
-        this.name = name;
+        this.warehouseName = warehouseName;
     }
 
     private String description;
@@ -158,8 +158,8 @@ public class WarehouseStateDto
             if (returnedFieldsContains("WarehouseId")) {
                 dto.setWarehouseId(state.getWarehouseId());
             }
-            if (returnedFieldsContains("Name")) {
-                dto.setName(state.getName());
+            if (returnedFieldsContains("WarehouseName")) {
+                dto.setWarehouseName(state.getWarehouseName());
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());

@@ -12,9 +12,10 @@ public final class InOutLineFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "lineNumber",
-            "description",
             "locatorId",
             "productId",
+            "attributeSetInstanceId",
+            "description",
             "uomId",
             "movementQuantity",
             "confirmedQuantity",
@@ -22,8 +23,6 @@ public final class InOutLineFilteringProperties
             "targetQuantity",
             "pickedQuantity",
             "isInvoiced",
-            "attributeSetInstanceId",
-            "isDescription",
             "processed",
             "quantityEntered",
             "rmaLineNumber",
@@ -46,13 +45,12 @@ public final class InOutLineFilteringProperties
             "String",
             "String",
             "String",
-            "BigDecimal",
-            "BigDecimal",
-            "BigDecimal",
-            "BigDecimal",
-            "BigDecimal",
-            "Boolean",
             "String",
+            "BigDecimal",
+            "BigDecimal",
+            "BigDecimal",
+            "BigDecimal",
+            "BigDecimal",
             "Boolean",
             "Boolean",
             "BigDecimal",
@@ -84,12 +82,14 @@ public final class InOutLineFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("lineNumber", "inOutLineId.lineNumber");
         aliasMap.put("LineNumber", "inOutLineId.lineNumber");
-        aliasMap.put("description", "description");
-        aliasMap.put("Description", "description");
         aliasMap.put("locatorId", "locatorId");
         aliasMap.put("LocatorId", "locatorId");
         aliasMap.put("productId", "productId");
         aliasMap.put("ProductId", "productId");
+        aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("description", "description");
+        aliasMap.put("Description", "description");
         aliasMap.put("uomId", "uomId");
         aliasMap.put("UomId", "uomId");
         aliasMap.put("movementQuantity", "movementQuantity");
@@ -104,10 +104,6 @@ public final class InOutLineFilteringProperties
         aliasMap.put("PickedQuantity", "pickedQuantity");
         aliasMap.put("isInvoiced", "isInvoiced");
         aliasMap.put("IsInvoiced", "isInvoiced");
-        aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
-        aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
-        aliasMap.put("isDescription", "isDescription");
-        aliasMap.put("IsDescription", "isDescription");
         aliasMap.put("processed", "processed");
         aliasMap.put("Processed", "processed");
         aliasMap.put("quantityEntered", "quantityEntered");

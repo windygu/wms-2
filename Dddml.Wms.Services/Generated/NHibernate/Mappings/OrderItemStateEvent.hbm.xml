@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.OrderItem">
+  
+  <class name="OrderItemStateEventBase" table="OrderItemStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.OrderItem.OrderItemStateEventId">
+        <key-property name="OrderItemIdOrderId" ><column name="OrderItemIdOrderId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="OrderItemIdOrderItemSeqId" ><column name="OrderItemIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(20)" /></property>
+    <property name="ExternalProductId" ><column name="ExternalProductId" sql-type="VARCHAR(60)" /></property>
+    <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="CancelQuantity" ><column name="CancelQuantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="SelectedAmount" ><column name="SelectedAmount" sql-type="DECIMAL(18,6)" /></property>
+    <property name="ExternalId" ><column name="ExternalId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderItemTypeId" ><column name="OrderItemTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderItemGroupSeqId" ><column name="OrderItemGroupSeqId" sql-type="VARCHAR(20)" /></property>
+    <property name="IsItemGroupPrimary" ><column name="IsItemGroupPrimary" sql-type="CHAR(1)" /></property>
+    <property name="FromInventoryItemId" ><column name="FromInventoryItemId" sql-type="VARCHAR(20)" /></property>
+    <property name="IsPromo" ><column name="IsPromo" sql-type="CHAR(1)" /></property>
+    <property name="QuoteId" ><column name="QuoteId" sql-type="VARCHAR(20)" /></property>
+    <property name="QuoteItemSeqId" ><column name="QuoteItemSeqId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShoppingListId" ><column name="ShoppingListId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShoppingListItemSeqId" ><column name="ShoppingListItemSeqId" sql-type="VARCHAR(20)" /></property>
+    <property name="UnitPrice" ><column name="UnitPrice" sql-type="DECIMAL(18,3)" /></property>
+    <property name="UnitListPrice" ><column name="UnitListPrice" sql-type="DECIMAL(18,3)" /></property>
+    <property name="UnitAverageCost" ><column name="UnitAverageCost" sql-type="DECIMAL(18,2)" /></property>
+    <property name="UnitRecurringPrice" ><column name="UnitRecurringPrice" sql-type="DECIMAL(18,2)" /></property>
+    <property name="IsModifiedPrice" ><column name="IsModifiedPrice" sql-type="CHAR(1)" /></property>
+    <property name="RecurringFreqUomId" ><column name="RecurringFreqUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ItemDescription" ><column name="ItemDescription" sql-type="VARCHAR(255)" /></property>
+    <property name="Comments" ><column name="Comments" sql-type="VARCHAR(255)" /></property>
+    <property name="CorrespondingPoId" ><column name="CorrespondingPoId" sql-type="VARCHAR(20)" /></property>
+    <property name="SyncStatusId" ><column name="SyncStatusId" sql-type="VARCHAR(20)" /></property>
+    <property name="EstimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
+    <property name="EstimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
+    <property name="AutoCancelDate" ><column name="AutoCancelDate" sql-type="DATETIME" /></property>
+    <property name="DontCancelSetDate" ><column name="DontCancelSetDate" sql-type="DATETIME" /></property>
+    <property name="DontCancelSetBy" ><column name="DontCancelSetBy" sql-type="VARCHAR(250)" /></property>
+    <property name="ShipBeforeDate" ><column name="ShipBeforeDate" sql-type="DATETIME" /></property>
+    <property name="ShipAfterDate" ><column name="ShipAfterDate" sql-type="DATETIME" /></property>
+    <property name="CancelBackOrderDate" ><column name="CancelBackOrderDate" sql-type="DATETIME" /></property>
+    <property name="OverrideGlAccountId" ><column name="OverrideGlAccountId" sql-type="VARCHAR(20)" /></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="OrderItemStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="OrderItemStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="IsPropertyExternalProductIdRemoved" column="IsPropertyExternalProductIdRemoved"/>
+
+        <property name="IsPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
+
+        <property name="IsPropertyCancelQuantityRemoved" column="IsPropertyCancelQuantityRemoved"/>
+
+        <property name="IsPropertySelectedAmountRemoved" column="IsPropertySelectedAmountRemoved"/>
+
+        <property name="IsPropertyExternalIdRemoved" column="IsPropertyExternalIdRemoved"/>
+
+        <property name="IsPropertyOrderItemTypeIdRemoved" column="IsPropertyOrderItemTypeIdRemoved"/>
+
+        <property name="IsPropertyOrderItemGroupSeqIdRemoved" column="IsPropertyOrderItemGroupSeqIdRemoved"/>
+
+        <property name="IsPropertyIsItemGroupPrimaryRemoved" column="IsPropertyIsItemGroupPrimaryRemoved"/>
+
+        <property name="IsPropertyFromInventoryItemIdRemoved" column="IsPropertyFromInventoryItemIdRemoved"/>
+
+        <property name="IsPropertyIsPromoRemoved" column="IsPropertyIsPromoRemoved"/>
+
+        <property name="IsPropertyQuoteIdRemoved" column="IsPropertyQuoteIdRemoved"/>
+
+        <property name="IsPropertyQuoteItemSeqIdRemoved" column="IsPropertyQuoteItemSeqIdRemoved"/>
+
+        <property name="IsPropertyShoppingListIdRemoved" column="IsPropertyShoppingListIdRemoved"/>
+
+        <property name="IsPropertyShoppingListItemSeqIdRemoved" column="IsPropertyShoppingListItemSeqIdRemoved"/>
+
+        <property name="IsPropertyUnitPriceRemoved" column="IsPropertyUnitPriceRemoved"/>
+
+        <property name="IsPropertyUnitListPriceRemoved" column="IsPropertyUnitListPriceRemoved"/>
+
+        <property name="IsPropertyUnitAverageCostRemoved" column="IsPropertyUnitAverageCostRemoved"/>
+
+        <property name="IsPropertyUnitRecurringPriceRemoved" column="IsPropertyUnitRecurringPriceRemoved"/>
+
+        <property name="IsPropertyIsModifiedPriceRemoved" column="IsPropertyIsModifiedPriceRemoved"/>
+
+        <property name="IsPropertyRecurringFreqUomIdRemoved" column="IsPropertyRecurringFreqUomIdRemoved"/>
+
+        <property name="IsPropertyItemDescriptionRemoved" column="IsPropertyItemDescriptionRemoved"/>
+
+        <property name="IsPropertyCommentsRemoved" column="IsPropertyCommentsRemoved"/>
+
+        <property name="IsPropertyCorrespondingPoIdRemoved" column="IsPropertyCorrespondingPoIdRemoved"/>
+
+        <property name="IsPropertySyncStatusIdRemoved" column="IsPropertySyncStatusIdRemoved"/>
+
+        <property name="IsPropertyEstimatedShipDateRemoved" column="IsPropertyEstimatedShipDateRemoved"/>
+
+        <property name="IsPropertyEstimatedDeliveryDateRemoved" column="IsPropertyEstimatedDeliveryDateRemoved"/>
+
+        <property name="IsPropertyAutoCancelDateRemoved" column="IsPropertyAutoCancelDateRemoved"/>
+
+        <property name="IsPropertyDontCancelSetDateRemoved" column="IsPropertyDontCancelSetDateRemoved"/>
+
+        <property name="IsPropertyDontCancelSetByRemoved" column="IsPropertyDontCancelSetByRemoved"/>
+
+        <property name="IsPropertyShipBeforeDateRemoved" column="IsPropertyShipBeforeDateRemoved"/>
+
+        <property name="IsPropertyShipAfterDateRemoved" column="IsPropertyShipAfterDateRemoved"/>
+
+        <property name="IsPropertyCancelBackOrderDateRemoved" column="IsPropertyCancelBackOrderDateRemoved"/>
+
+        <property name="IsPropertyOverrideGlAccountIdRemoved" column="IsPropertyOverrideGlAccountIdRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

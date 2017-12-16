@@ -152,33 +152,6 @@ public class DocumentTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public DocumentTypeStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
-        try {
-
-            String idObj = id;
-            DocumentTypeStateEventDtoConverter dtoConverter = getDocumentTypeStateEventDtoConverter();
-            return dtoConverter.toDocumentTypeStateEventDto((AbstractDocumentTypeStateEvent) documentTypeApplicationService.getStateEvent(idObj, version));
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
-    @Path("{id}/_historyStates/{version}") @GET
-    public DocumentTypeStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
-        try {
-
-            String idObj = id;
-            DocumentTypeStateDto.DtoConverter dtoConverter = new DocumentTypeStateDto.DtoConverter();
-            if (StringHelper.isNullOrEmpty(fields)) {
-                dtoConverter.setAllFieldsReturned(true);
-            } else {
-                dtoConverter.setReturnedFieldsString(fields);
-            }
-            return dtoConverter.toDocumentTypeStateDto(documentTypeApplicationService.getHistoryState(idObj, version));
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
 
     protected  DocumentTypeStateEventDtoConverter getDocumentTypeStateEventDtoConverter() {
         return new DocumentTypeStateEventDtoConverter();

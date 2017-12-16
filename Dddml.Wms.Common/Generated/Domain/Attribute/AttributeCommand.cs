@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.Attribute
             set { this.CommandId = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string AttributeName { get; set; }
 
 		public virtual string OrganizationId { get; set; }
 
@@ -131,7 +131,7 @@ namespace Dddml.Wms.Domain.Attribute
 	public class MergePatchAttribute :AttributeCommandBase, IMergePatchAttribute
 	{
 
-		public virtual bool IsPropertyNameRemoved { get; set; }
+		public virtual bool IsPropertyAttributeNameRemoved { get; set; }
 
 		public virtual bool IsPropertyOrganizationIdRemoved { get; set; }
 

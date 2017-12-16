@@ -15,7 +15,7 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="name" ></property>
+	<property name="warehouseName" ></property>
 	<property name="description" ></property>
 	<property name="isInTransit" ></property>
 	<property name="active" ></property>
@@ -32,7 +32,7 @@
 
     <subclass name="AbstractWarehouseStateEvent$SimpleWarehouseStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyNameRemoved" column="IsPropertyNameRemoved"/>
+        <property name="isPropertyWarehouseNameRemoved" column="IsPropertyWarehouseNameRemoved"/>
 
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 

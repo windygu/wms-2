@@ -1,9 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.Set;
-import org.joda.money.Money;
-import java.math.BigDecimal;
 import java.util.Date;
+import java.math.BigDecimal;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 import org.dddml.wms.domain.inout.InOutStateEvent.*;
@@ -17,10 +16,6 @@ public interface InOutState
     String getDocumentNumber();
 
     void setDocumentNumber(String documentNumber);
-
-    Boolean getIsSOTransaction();
-
-    void setIsSOTransaction(Boolean isSOTransaction);
 
     String getDocumentStatus();
 
@@ -38,17 +33,17 @@ public interface InOutState
 
     void setProcessed(Boolean processed);
 
-    Integer getDocumentType();
+    String getDocumentTypeId();
 
-    void setDocumentType(Integer documentType);
+    void setDocumentTypeId(String documentTypeId);
 
     String getDescription();
 
     void setDescription(String description);
 
-    String getOrderNumber();
+    String getOrderId();
 
-    void setOrderNumber(String orderNumber);
+    void setOrderId(String orderId);
 
     Date getDateOrdered();
 
@@ -58,9 +53,9 @@ public interface InOutState
 
     void setIsPrinted(Boolean isPrinted);
 
-    String getMovementType();
+    String getMovementTypeId();
 
-    void setMovementType(String movementType);
+    void setMovementTypeId(String movementTypeId);
 
     Date getMovementDate();
 
@@ -78,17 +73,9 @@ public interface InOutState
 
     void setPOReference(String poReference);
 
-    Money getFreightAmount();
-
-    void setFreightAmount(Money freightAmount);
-
     String getShipperId();
 
     void setShipperId(String shipperId);
-
-    Money getChargeAmount();
-
-    void setChargeAmount(Money chargeAmount);
 
     Date getDatePrinted();
 
@@ -130,14 +117,6 @@ public interface InOutState
 
     void setIsInDispute(Boolean isInDispute);
 
-    BigDecimal getVolume();
-
-    void setVolume(BigDecimal volume);
-
-    BigDecimal getWeight();
-
-    void setWeight(BigDecimal weight);
-
     String getRmaNumber();
 
     void setRmaNumber(String rmaNumber);
@@ -145,14 +124,6 @@ public interface InOutState
     String getReversalNumber();
 
     void setReversalNumber(String reversalNumber);
-
-    Boolean getIsDropShip();
-
-    void setIsDropShip(Boolean isDropShip);
-
-    String getDropShipBusinessPartnerId();
-
-    void setDropShipBusinessPartnerId(String dropShipBusinessPartnerId);
 
     Long getVersion();
 

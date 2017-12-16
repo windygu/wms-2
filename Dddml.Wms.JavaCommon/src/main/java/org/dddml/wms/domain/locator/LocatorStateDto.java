@@ -117,6 +117,18 @@ public class LocatorStateDto
         this.z = z;
     }
 
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -241,6 +253,9 @@ public class LocatorStateDto
             }
             if (returnedFieldsContains("Z")) {
                 dto.setZ(state.getZ());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

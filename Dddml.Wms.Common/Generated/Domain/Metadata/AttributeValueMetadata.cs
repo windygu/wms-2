@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Name",
+                    Name = "AttributeValueName",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -475,8 +475,8 @@ namespace Dddml.Wms.Domain.Metadata
             var d = new Dictionary<string, string>();
             d.Add("Value", "AttributeValueId.Value");
             d.Add("value", "AttributeValueId.Value");
-            d.Add("Name", "Name");
-            d.Add("name", "Name");
+            d.Add("AttributeValueName", "AttributeValueName");
+            d.Add("attributeValueName", "AttributeValueName");
             d.Add("Description", "Description");
             d.Add("description", "Description");
             d.Add("ReferenceId", "ReferenceId");

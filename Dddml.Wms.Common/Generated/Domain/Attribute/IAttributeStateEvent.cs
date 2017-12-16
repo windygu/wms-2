@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         bool ReadOnly { get; set; }
 
-		string Name { get; set; }
+		string AttributeName { get; set; }
 
 		string OrganizationId { get; set; }
 
@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain.Attribute
 
 	public interface IAttributeStateMergePatched : IAttributeStateEvent//, IAttributeStateProperties
 	{
-		bool IsPropertyNameRemoved { get; set; }
+		bool IsPropertyAttributeNameRemoved { get; set; }
 
 		bool IsPropertyOrganizationIdRemoved { get; set; }
 

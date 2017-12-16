@@ -35,16 +35,16 @@ public abstract class AbstractAttributeValueState implements AttributeValueState
         this.getAttributeValueId().setValue(value);
     }
 
-    private String name;
+    private String attributeValueName;
 
-    public String getName()
+    public String getAttributeValueName()
     {
-        return this.name;
+        return this.attributeValueName;
     }
 
-    public void setName(String name)
+    public void setAttributeValueName(String attributeValueName)
     {
-        this.name = name;
+        this.attributeValueName = attributeValueName;
     }
 
     private String description;
@@ -208,7 +208,7 @@ public abstract class AbstractAttributeValueState implements AttributeValueState
     {
         throwOnWrongEvent(e);
 
-        this.setName(e.getName());
+        this.setAttributeValueName(e.getAttributeValueName());
         this.setDescription(e.getDescription());
         this.setReferenceId(e.getReferenceId());
         this.setActive(e.getActive());
@@ -224,16 +224,16 @@ public abstract class AbstractAttributeValueState implements AttributeValueState
     {
         throwOnWrongEvent(e);
 
-        if (e.getName() == null)
+        if (e.getAttributeValueName() == null)
         {
-            if (e.getIsPropertyNameRemoved() != null && e.getIsPropertyNameRemoved())
+            if (e.getIsPropertyAttributeValueNameRemoved() != null && e.getIsPropertyAttributeValueNameRemoved())
             {
-                this.setName(null);
+                this.setAttributeValueName(null);
             }
         }
         else
         {
-            this.setName(e.getName());
+            this.setAttributeValueName(e.getAttributeValueName());
         }
         if (e.getDescription() == null)
         {

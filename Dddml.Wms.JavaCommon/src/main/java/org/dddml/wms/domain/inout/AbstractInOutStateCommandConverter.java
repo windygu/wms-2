@@ -1,9 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import org.joda.money.Money;
-import java.math.BigDecimal;
 import java.util.Date;
+import java.math.BigDecimal;
 import org.dddml.wms.domain.*;
 
 public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends InOutCommand.CreateInOut, TMergePatchInOut extends InOutCommand.MergePatchInOut, TDeleteInOut extends InOutCommand.DeleteInOut, TCreateInOutLine extends InOutLineCommand.CreateInOutLine, TMergePatchInOutLine extends InOutLineCommand.MergePatchInOutLine, TRemoveInOutLine extends InOutLineCommand.RemoveInOutLine>
@@ -39,23 +38,20 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setVersion(state.getVersion());
 
         cmd.setDocumentNumber(state.getDocumentNumber());
-        cmd.setIsSOTransaction(state.getIsSOTransaction());
         cmd.setPosted(state.getPosted());
         cmd.setProcessing(state.getProcessing());
         cmd.setProcessed(state.getProcessed());
-        cmd.setDocumentType(state.getDocumentType());
+        cmd.setDocumentTypeId(state.getDocumentTypeId());
         cmd.setDescription(state.getDescription());
-        cmd.setOrderNumber(state.getOrderNumber());
+        cmd.setOrderId(state.getOrderId());
         cmd.setDateOrdered(state.getDateOrdered());
         cmd.setIsPrinted(state.getIsPrinted());
-        cmd.setMovementType(state.getMovementType());
+        cmd.setMovementTypeId(state.getMovementTypeId());
         cmd.setMovementDate(state.getMovementDate());
         cmd.setBusinessPartnerId(state.getBusinessPartnerId());
         cmd.setWarehouseId(state.getWarehouseId());
         cmd.setPOReference(state.getPOReference());
-        cmd.setFreightAmount(state.getFreightAmount());
         cmd.setShipperId(state.getShipperId());
-        cmd.setChargeAmount(state.getChargeAmount());
         cmd.setDatePrinted(state.getDatePrinted());
         cmd.setSalesRepresentative(state.getSalesRepresentative());
         cmd.setNumberOfPackages(state.getNumberOfPackages());
@@ -66,31 +62,24 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setIsInTransit(state.getIsInTransit());
         cmd.setIsApproved(state.getIsApproved());
         cmd.setIsInDispute(state.getIsInDispute());
-        cmd.setVolume(state.getVolume());
-        cmd.setWeight(state.getWeight());
         cmd.setRmaNumber(state.getRmaNumber());
         cmd.setReversalNumber(state.getReversalNumber());
-        cmd.setIsDropShip(state.getIsDropShip());
-        cmd.setDropShipBusinessPartnerId(state.getDropShipBusinessPartnerId());
         cmd.setActive(state.getActive());
             
-        if (state.getIsSOTransaction() == null) { cmd.setIsPropertyIsSOTransactionRemoved(true); }
         if (state.getPosted() == null) { cmd.setIsPropertyPostedRemoved(true); }
         if (state.getProcessing() == null) { cmd.setIsPropertyProcessingRemoved(true); }
         if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
-        if (state.getDocumentType() == null) { cmd.setIsPropertyDocumentTypeRemoved(true); }
+        if (state.getDocumentTypeId() == null) { cmd.setIsPropertyDocumentTypeIdRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
-        if (state.getOrderNumber() == null) { cmd.setIsPropertyOrderNumberRemoved(true); }
+        if (state.getOrderId() == null) { cmd.setIsPropertyOrderIdRemoved(true); }
         if (state.getDateOrdered() == null) { cmd.setIsPropertyDateOrderedRemoved(true); }
         if (state.getIsPrinted() == null) { cmd.setIsPropertyIsPrintedRemoved(true); }
-        if (state.getMovementType() == null) { cmd.setIsPropertyMovementTypeRemoved(true); }
+        if (state.getMovementTypeId() == null) { cmd.setIsPropertyMovementTypeIdRemoved(true); }
         if (state.getMovementDate() == null) { cmd.setIsPropertyMovementDateRemoved(true); }
         if (state.getBusinessPartnerId() == null) { cmd.setIsPropertyBusinessPartnerIdRemoved(true); }
         if (state.getWarehouseId() == null) { cmd.setIsPropertyWarehouseIdRemoved(true); }
         if (state.getPOReference() == null) { cmd.setIsPropertyPOReferenceRemoved(true); }
-        if (state.getFreightAmount() == null) { cmd.setIsPropertyFreightAmountRemoved(true); }
         if (state.getShipperId() == null) { cmd.setIsPropertyShipperIdRemoved(true); }
-        if (state.getChargeAmount() == null) { cmd.setIsPropertyChargeAmountRemoved(true); }
         if (state.getDatePrinted() == null) { cmd.setIsPropertyDatePrintedRemoved(true); }
         if (state.getSalesRepresentative() == null) { cmd.setIsPropertySalesRepresentativeRemoved(true); }
         if (state.getNumberOfPackages() == null) { cmd.setIsPropertyNumberOfPackagesRemoved(true); }
@@ -101,12 +90,8 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         if (state.getIsInTransit() == null) { cmd.setIsPropertyIsInTransitRemoved(true); }
         if (state.getIsApproved() == null) { cmd.setIsPropertyIsApprovedRemoved(true); }
         if (state.getIsInDispute() == null) { cmd.setIsPropertyIsInDisputeRemoved(true); }
-        if (state.getVolume() == null) { cmd.setIsPropertyVolumeRemoved(true); }
-        if (state.getWeight() == null) { cmd.setIsPropertyWeightRemoved(true); }
         if (state.getRmaNumber() == null) { cmd.setIsPropertyRmaNumberRemoved(true); }
         if (state.getReversalNumber() == null) { cmd.setIsPropertyReversalNumberRemoved(true); }
-        if (state.getIsDropShip() == null) { cmd.setIsPropertyIsDropShipRemoved(true); }
-        if (state.getDropShipBusinessPartnerId() == null) { cmd.setIsPropertyDropShipBusinessPartnerIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         for (InOutLineState d : state.getInOutLines())
         {
@@ -122,23 +107,20 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
 
         cmd.setVersion(state.getVersion());
         cmd.setDocumentNumber(state.getDocumentNumber());
-        cmd.setIsSOTransaction(state.getIsSOTransaction());
         cmd.setPosted(state.getPosted());
         cmd.setProcessing(state.getProcessing());
         cmd.setProcessed(state.getProcessed());
-        cmd.setDocumentType(state.getDocumentType());
+        cmd.setDocumentTypeId(state.getDocumentTypeId());
         cmd.setDescription(state.getDescription());
-        cmd.setOrderNumber(state.getOrderNumber());
+        cmd.setOrderId(state.getOrderId());
         cmd.setDateOrdered(state.getDateOrdered());
         cmd.setIsPrinted(state.getIsPrinted());
-        cmd.setMovementType(state.getMovementType());
+        cmd.setMovementTypeId(state.getMovementTypeId());
         cmd.setMovementDate(state.getMovementDate());
         cmd.setBusinessPartnerId(state.getBusinessPartnerId());
         cmd.setWarehouseId(state.getWarehouseId());
         cmd.setPOReference(state.getPOReference());
-        cmd.setFreightAmount(state.getFreightAmount());
         cmd.setShipperId(state.getShipperId());
-        cmd.setChargeAmount(state.getChargeAmount());
         cmd.setDatePrinted(state.getDatePrinted());
         cmd.setSalesRepresentative(state.getSalesRepresentative());
         cmd.setNumberOfPackages(state.getNumberOfPackages());
@@ -149,12 +131,8 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setIsInTransit(state.getIsInTransit());
         cmd.setIsApproved(state.getIsApproved());
         cmd.setIsInDispute(state.getIsInDispute());
-        cmd.setVolume(state.getVolume());
-        cmd.setWeight(state.getWeight());
         cmd.setRmaNumber(state.getRmaNumber());
         cmd.setReversalNumber(state.getReversalNumber());
-        cmd.setIsDropShip(state.getIsDropShip());
-        cmd.setDropShipBusinessPartnerId(state.getDropShipBusinessPartnerId());
         cmd.setActive(state.getActive());
         for (InOutLineState d : state.getInOutLines())
         {

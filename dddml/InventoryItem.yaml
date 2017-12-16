@@ -110,16 +110,6 @@ aggregates:
               type: string
               columnName: LineNumber
             
-    # ----------------------- aggregate -------------------------
-    DocumentType:
-      id:
-        name: DocumentTypeId
-        type: string
-      properties:
-        Description:
-          type: string
-          notNull: true
-          
           
     # --------------- aggregate ---------------
     SellableInventoryItem:

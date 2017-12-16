@@ -27,7 +27,7 @@ public class HibernateAttributeUseMvoStateRepository implements AttributeUseMvoS
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeSetAttributeUseId", "SequenceNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "AttributeSetName", "AttributeSetOrganizationId", "AttributeSetDescription", "AttributeSetSerialNumberAttributeId", "AttributeSetLotAttributeId", "AttributeSetReferenceId", "AttributeSetAttributeUses", "AttributeSetVersion", "AttributeSetCreatedBy", "AttributeSetCreatedAt", "AttributeSetUpdatedBy", "AttributeSetUpdatedAt", "AttributeSetActive", "AttributeSetDeleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeSetAttributeUseId", "SequenceNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "AttributeSetAttributeSetName", "AttributeSetOrganizationId", "AttributeSetDescription", "AttributeSetSerialNumberAttributeId", "AttributeSetLotAttributeId", "AttributeSetReferenceId", "AttributeSetAttributeUses", "AttributeSetVersion", "AttributeSetCreatedBy", "AttributeSetCreatedAt", "AttributeSetUpdatedBy", "AttributeSetUpdatedAt", "AttributeSetActive", "AttributeSetDeleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

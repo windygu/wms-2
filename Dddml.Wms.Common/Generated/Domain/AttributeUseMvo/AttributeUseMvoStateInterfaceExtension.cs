@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             cmd.SequenceNumber = state.SequenceNumber;
             cmd.Version = ((IAttributeUseMvoStateProperties)state).Version;
             cmd.Active = ((IAttributeUseMvoStateProperties)state).Active;
-            cmd.AttributeSetName = state.AttributeSetName;
+            cmd.AttributeSetAttributeSetName = state.AttributeSetAttributeSetName;
             cmd.AttributeSetOrganizationId = state.AttributeSetOrganizationId;
             cmd.AttributeSetDescription = state.AttributeSetDescription;
             cmd.AttributeSetSerialNumberAttributeId = state.AttributeSetSerialNumberAttributeId;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             cmd.AttributeSetActive = state.AttributeSetActive;
             cmd.AttributeSetDeleted = state.AttributeSetDeleted;
             
-            if (state.AttributeSetName == null) { cmd.IsPropertyAttributeSetNameRemoved = true; }
+            if (state.AttributeSetAttributeSetName == null) { cmd.IsPropertyAttributeSetAttributeSetNameRemoved = true; }
             if (state.AttributeSetOrganizationId == null) { cmd.IsPropertyAttributeSetOrganizationIdRemoved = true; }
             if (state.AttributeSetDescription == null) { cmd.IsPropertyAttributeSetDescriptionRemoved = true; }
             if (state.AttributeSetSerialNumberAttributeId == null) { cmd.IsPropertyAttributeSetSerialNumberAttributeIdRemoved = true; }
@@ -87,7 +87,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             cmd.SequenceNumber = state.SequenceNumber;
             cmd.Version = ((IAttributeUseMvoStateProperties)state).Version;
             cmd.Active = ((IAttributeUseMvoStateProperties)state).Active;
-            cmd.AttributeSetName = state.AttributeSetName;
+            cmd.AttributeSetAttributeSetName = state.AttributeSetAttributeSetName;
             cmd.AttributeSetOrganizationId = state.AttributeSetOrganizationId;
             cmd.AttributeSetDescription = state.AttributeSetDescription;
             cmd.AttributeSetSerialNumberAttributeId = state.AttributeSetSerialNumberAttributeId;

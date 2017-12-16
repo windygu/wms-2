@@ -42,9 +42,6 @@ public class HibernateDocumentTypeStateQueryRepository implements DocumentTypeSt
     public DocumentTypeState get(String id) {
 
         DocumentTypeState state = (DocumentTypeState)getCurrentSession().get(AbstractDocumentTypeState.SimpleDocumentTypeState.class, id);
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (DocumentTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{DocumentTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
         return state;
     }
 

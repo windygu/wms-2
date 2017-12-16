@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -37,11 +36,13 @@ namespace Dddml.Wms.Domain.InOut
             set { StateEventId.LineNumber = value; }
         }
 
-		public virtual string Description { get; set; }
-
 		public virtual string LocatorId { get; set; }
 
 		public virtual string ProductId { get; set; }
+
+		public virtual string AttributeSetInstanceId { get; set; }
+
+		public virtual string Description { get; set; }
 
 		public virtual string UomId { get; set; }
 
@@ -56,10 +57,6 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual decimal? PickedQuantity { get; set; }
 
 		public virtual bool? IsInvoiced { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
-
-		public virtual bool? IsDescription { get; set; }
 
 		public virtual bool? Processed { get; set; }
 
@@ -102,25 +99,6 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual long Version { get; set; }
 
-		public virtual bool? IsPropertyDescriptionRemoved { get; set; }
-
-        bool IInOutLineStateMergePatched.IsPropertyDescriptionRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyDescriptionRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyDescriptionRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyLocatorIdRemoved { get; set; }
 
         bool IInOutLineStateMergePatched.IsPropertyLocatorIdRemoved
@@ -156,6 +134,44 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 this.IsPropertyProductIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyAttributeSetInstanceIdRemoved { get; set; }
+
+        bool IInOutLineStateMergePatched.IsPropertyAttributeSetInstanceIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyAttributeSetInstanceIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyAttributeSetInstanceIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDescriptionRemoved { get; set; }
+
+        bool IInOutLineStateMergePatched.IsPropertyDescriptionRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyDescriptionRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyDescriptionRemoved = value;
             }
         }
 
@@ -289,44 +305,6 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 this.IsPropertyIsInvoicedRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyAttributeSetInstanceIdRemoved { get; set; }
-
-        bool IInOutLineStateMergePatched.IsPropertyAttributeSetInstanceIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyAttributeSetInstanceIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyAttributeSetInstanceIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyIsDescriptionRemoved { get; set; }
-
-        bool IInOutLineStateMergePatched.IsPropertyIsDescriptionRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyIsDescriptionRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyIsDescriptionRemoved = value;
             }
         }
 

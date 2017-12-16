@@ -12,7 +12,7 @@ public final class AttributeSetFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "attributeSetId",
-            "name",
+            "attributeSetName",
             "organizationId",
             "description",
             "serialNumberAttributeId",
@@ -58,8 +58,8 @@ public final class AttributeSetFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("attributeSetId", "attributeSetId");
         aliasMap.put("AttributeSetId", "attributeSetId");
-        aliasMap.put("name", "name");
-        aliasMap.put("Name", "name");
+        aliasMap.put("attributeSetName", "attributeSetName");
+        aliasMap.put("AttributeSetName", "attributeSetName");
         aliasMap.put("organizationId", "organizationId");
         aliasMap.put("OrganizationId", "organizationId");
         aliasMap.put("description", "description");

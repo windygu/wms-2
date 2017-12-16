@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Attribute
             set { StateEventId.Version = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string AttributeName { get; set; }
 
 		public virtual string OrganizationId { get; set; }
 
@@ -93,13 +93,13 @@ namespace Dddml.Wms.Domain.Attribute
             }
         }
 
-		public virtual bool? IsPropertyNameRemoved { get; set; }
+		public virtual bool? IsPropertyAttributeNameRemoved { get; set; }
 
-        bool IAttributeStateMergePatched.IsPropertyNameRemoved
+        bool IAttributeStateMergePatched.IsPropertyAttributeNameRemoved
         {
             get 
             {
-                var b = this.IsPropertyNameRemoved;
+                var b = this.IsPropertyAttributeNameRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -108,7 +108,7 @@ namespace Dddml.Wms.Domain.Attribute
             }
             set 
             {
-                this.IsPropertyNameRemoved = value;
+                this.IsPropertyAttributeNameRemoved = value;
             }
         }
 

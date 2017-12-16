@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.Organization
 
 		public virtual string OrganizationId { get; set; }
 
-		public virtual string Name { get; set; }
+		public virtual string OrganizationName { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -63,13 +63,13 @@ namespace Dddml.Wms.Domain.Organization
 
 		public virtual bool? Active { get; set; }
 
-		public virtual bool? IsPropertyNameRemoved { get; set; }
+		public virtual bool? IsPropertyOrganizationNameRemoved { get; set; }
 
-        bool IMergePatchOrganization.IsPropertyNameRemoved
+        bool IMergePatchOrganization.IsPropertyOrganizationNameRemoved
         {
             get
             {
-                var b = this.IsPropertyNameRemoved;
+                var b = this.IsPropertyOrganizationNameRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -78,7 +78,7 @@ namespace Dddml.Wms.Domain.Organization
             }
             set
             {
-                this.IsPropertyNameRemoved = value;
+                this.IsPropertyOrganizationNameRemoved = value;
             }
         }
 

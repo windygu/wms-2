@@ -1,9 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import org.joda.money.Money;
-import java.math.BigDecimal;
 import java.util.Date;
+import java.math.BigDecimal;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
@@ -21,18 +20,6 @@ public class InOutStateDto
     public void setDocumentNumber(String documentNumber)
     {
         this.documentNumber = documentNumber;
-    }
-
-    private Boolean isSOTransaction;
-
-    public Boolean getIsSOTransaction()
-    {
-        return this.isSOTransaction;
-    }
-
-    public void setIsSOTransaction(Boolean isSOTransaction)
-    {
-        this.isSOTransaction = isSOTransaction;
     }
 
     private String documentStatus;
@@ -83,16 +70,16 @@ public class InOutStateDto
         this.processed = processed;
     }
 
-    private Integer documentType;
+    private String documentTypeId;
 
-    public Integer getDocumentType()
+    public String getDocumentTypeId()
     {
-        return this.documentType;
+        return this.documentTypeId;
     }
 
-    public void setDocumentType(Integer documentType)
+    public void setDocumentTypeId(String documentTypeId)
     {
-        this.documentType = documentType;
+        this.documentTypeId = documentTypeId;
     }
 
     private String description;
@@ -107,16 +94,16 @@ public class InOutStateDto
         this.description = description;
     }
 
-    private String orderNumber;
+    private String orderId;
 
-    public String getOrderNumber()
+    public String getOrderId()
     {
-        return this.orderNumber;
+        return this.orderId;
     }
 
-    public void setOrderNumber(String orderNumber)
+    public void setOrderId(String orderId)
     {
-        this.orderNumber = orderNumber;
+        this.orderId = orderId;
     }
 
     private Date dateOrdered;
@@ -143,16 +130,16 @@ public class InOutStateDto
         this.isPrinted = isPrinted;
     }
 
-    private String movementType;
+    private String movementTypeId;
 
-    public String getMovementType()
+    public String getMovementTypeId()
     {
-        return this.movementType;
+        return this.movementTypeId;
     }
 
-    public void setMovementType(String movementType)
+    public void setMovementTypeId(String movementTypeId)
     {
-        this.movementType = movementType;
+        this.movementTypeId = movementTypeId;
     }
 
     private Date movementDate;
@@ -203,18 +190,6 @@ public class InOutStateDto
         this.POReference = poReference;
     }
 
-    private Money freightAmount;
-
-    public Money getFreightAmount()
-    {
-        return this.freightAmount;
-    }
-
-    public void setFreightAmount(Money freightAmount)
-    {
-        this.freightAmount = freightAmount;
-    }
-
     private String shipperId;
 
     public String getShipperId()
@@ -225,18 +200,6 @@ public class InOutStateDto
     public void setShipperId(String shipperId)
     {
         this.shipperId = shipperId;
-    }
-
-    private Money chargeAmount;
-
-    public Money getChargeAmount()
-    {
-        return this.chargeAmount;
-    }
-
-    public void setChargeAmount(Money chargeAmount)
-    {
-        this.chargeAmount = chargeAmount;
     }
 
     private Date datePrinted;
@@ -359,30 +322,6 @@ public class InOutStateDto
         this.isInDispute = isInDispute;
     }
 
-    private BigDecimal volume;
-
-    public BigDecimal getVolume()
-    {
-        return this.volume;
-    }
-
-    public void setVolume(BigDecimal volume)
-    {
-        this.volume = volume;
-    }
-
-    private BigDecimal weight;
-
-    public BigDecimal getWeight()
-    {
-        return this.weight;
-    }
-
-    public void setWeight(BigDecimal weight)
-    {
-        this.weight = weight;
-    }
-
     private String rmaNumber;
 
     public String getRmaNumber()
@@ -405,30 +344,6 @@ public class InOutStateDto
     public void setReversalNumber(String reversalNumber)
     {
         this.reversalNumber = reversalNumber;
-    }
-
-    private Boolean isDropShip;
-
-    public Boolean getIsDropShip()
-    {
-        return this.isDropShip;
-    }
-
-    public void setIsDropShip(Boolean isDropShip)
-    {
-        this.isDropShip = isDropShip;
-    }
-
-    private String dropShipBusinessPartnerId;
-
-    public String getDropShipBusinessPartnerId()
-    {
-        return this.dropShipBusinessPartnerId;
-    }
-
-    public void setDropShipBusinessPartnerId(String dropShipBusinessPartnerId)
-    {
-        this.dropShipBusinessPartnerId = dropShipBusinessPartnerId;
     }
 
     private Boolean active;
@@ -544,9 +459,6 @@ public class InOutStateDto
             if (returnedFieldsContains("DocumentNumber")) {
                 dto.setDocumentNumber(state.getDocumentNumber());
             }
-            if (returnedFieldsContains("IsSOTransaction")) {
-                dto.setIsSOTransaction(state.getIsSOTransaction());
-            }
             if (returnedFieldsContains("DocumentStatus")) {
                 dto.setDocumentStatus(state.getDocumentStatus());
             }
@@ -559,14 +471,14 @@ public class InOutStateDto
             if (returnedFieldsContains("Processed")) {
                 dto.setProcessed(state.getProcessed());
             }
-            if (returnedFieldsContains("DocumentType")) {
-                dto.setDocumentType(state.getDocumentType());
+            if (returnedFieldsContains("DocumentTypeId")) {
+                dto.setDocumentTypeId(state.getDocumentTypeId());
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
             }
-            if (returnedFieldsContains("OrderNumber")) {
-                dto.setOrderNumber(state.getOrderNumber());
+            if (returnedFieldsContains("OrderId")) {
+                dto.setOrderId(state.getOrderId());
             }
             if (returnedFieldsContains("DateOrdered")) {
                 dto.setDateOrdered(state.getDateOrdered());
@@ -574,8 +486,8 @@ public class InOutStateDto
             if (returnedFieldsContains("IsPrinted")) {
                 dto.setIsPrinted(state.getIsPrinted());
             }
-            if (returnedFieldsContains("MovementType")) {
-                dto.setMovementType(state.getMovementType());
+            if (returnedFieldsContains("MovementTypeId")) {
+                dto.setMovementTypeId(state.getMovementTypeId());
             }
             if (returnedFieldsContains("MovementDate")) {
                 dto.setMovementDate(state.getMovementDate());
@@ -589,14 +501,8 @@ public class InOutStateDto
             if (returnedFieldsContains("POReference")) {
                 dto.setPOReference(state.getPOReference());
             }
-            if (returnedFieldsContains("FreightAmount")) {
-                dto.setFreightAmount(state.getFreightAmount());
-            }
             if (returnedFieldsContains("ShipperId")) {
                 dto.setShipperId(state.getShipperId());
-            }
-            if (returnedFieldsContains("ChargeAmount")) {
-                dto.setChargeAmount(state.getChargeAmount());
             }
             if (returnedFieldsContains("DatePrinted")) {
                 dto.setDatePrinted(state.getDatePrinted());
@@ -628,23 +534,11 @@ public class InOutStateDto
             if (returnedFieldsContains("IsInDispute")) {
                 dto.setIsInDispute(state.getIsInDispute());
             }
-            if (returnedFieldsContains("Volume")) {
-                dto.setVolume(state.getVolume());
-            }
-            if (returnedFieldsContains("Weight")) {
-                dto.setWeight(state.getWeight());
-            }
             if (returnedFieldsContains("RmaNumber")) {
                 dto.setRmaNumber(state.getRmaNumber());
             }
             if (returnedFieldsContains("ReversalNumber")) {
                 dto.setReversalNumber(state.getReversalNumber());
-            }
-            if (returnedFieldsContains("IsDropShip")) {
-                dto.setIsDropShip(state.getIsDropShip());
-            }
-            if (returnedFieldsContains("DropShipBusinessPartnerId")) {
-                dto.setDropShipBusinessPartnerId(state.getDropShipBusinessPartnerId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

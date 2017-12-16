@@ -28,7 +28,7 @@ public class WarehouseStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setName(e.getName());
+        dto.setWarehouseName(e.getWarehouseName());
         dto.setDescription(e.getDescription());
         dto.setIsInTransit(e.getIsInTransit());
         dto.setActive(e.getActive());
@@ -41,11 +41,11 @@ public class WarehouseStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setName(e.getName());
+        dto.setWarehouseName(e.getWarehouseName());
         dto.setDescription(e.getDescription());
         dto.setIsInTransit(e.getIsInTransit());
         dto.setActive(e.getActive());
-        dto.setIsPropertyNameRemoved(e.getIsPropertyNameRemoved());
+        dto.setIsPropertyWarehouseNameRemoved(e.getIsPropertyWarehouseNameRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyIsInTransitRemoved(e.getIsPropertyIsInTransitRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());

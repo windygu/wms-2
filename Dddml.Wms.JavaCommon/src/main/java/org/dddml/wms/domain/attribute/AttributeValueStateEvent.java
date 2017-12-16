@@ -17,9 +17,9 @@ public interface AttributeValueStateEvent extends Event
 
     void setVersion(Long version);
 
-    String getName();
+    String getAttributeValueName();
 
-    void setName(String name);
+    void setAttributeValueName(String attributeValueName);
 
     String getDescription();
 
@@ -53,9 +53,9 @@ public interface AttributeValueStateEvent extends Event
 
     interface AttributeValueStateMergePatched extends AttributeValueStateEvent
     {
-        Boolean getIsPropertyNameRemoved();
+        Boolean getIsPropertyAttributeValueNameRemoved();
 
-        void setIsPropertyNameRemoved(Boolean removed);
+        void setIsPropertyAttributeValueNameRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 

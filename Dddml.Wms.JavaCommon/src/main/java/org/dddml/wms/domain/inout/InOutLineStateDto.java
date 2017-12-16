@@ -22,18 +22,6 @@ public class InOutLineStateDto
         this.lineNumber = lineNumber;
     }
 
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String locatorId;
 
     public String getLocatorId()
@@ -56,6 +44,30 @@ public class InOutLineStateDto
     public void setProductId(String productId)
     {
         this.productId = productId;
+    }
+
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 
     private String uomId;
@@ -140,30 +152,6 @@ public class InOutLineStateDto
     public void setIsInvoiced(Boolean isInvoiced)
     {
         this.isInvoiced = isInvoiced;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
-    private Boolean isDescription;
-
-    public Boolean getIsDescription()
-    {
-        return this.isDescription;
-    }
-
-    public void setIsDescription(Boolean isDescription)
-    {
-        this.isDescription = isDescription;
     }
 
     private Boolean processed;
@@ -327,14 +315,17 @@ public class InOutLineStateDto
             if (returnedFieldsContains("LineNumber")) {
                 dto.setLineNumber(state.getLineNumber());
             }
-            if (returnedFieldsContains("Description")) {
-                dto.setDescription(state.getDescription());
-            }
             if (returnedFieldsContains("LocatorId")) {
                 dto.setLocatorId(state.getLocatorId());
             }
             if (returnedFieldsContains("ProductId")) {
                 dto.setProductId(state.getProductId());
+            }
+            if (returnedFieldsContains("AttributeSetInstanceId")) {
+                dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
             }
             if (returnedFieldsContains("UomId")) {
                 dto.setUomId(state.getUomId());
@@ -356,12 +347,6 @@ public class InOutLineStateDto
             }
             if (returnedFieldsContains("IsInvoiced")) {
                 dto.setIsInvoiced(state.getIsInvoiced());
-            }
-            if (returnedFieldsContains("AttributeSetInstanceId")) {
-                dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
-            }
-            if (returnedFieldsContains("IsDescription")) {
-                dto.setIsDescription(state.getIsDescription());
             }
             if (returnedFieldsContains("Processed")) {
                 dto.setProcessed(state.getProcessed());

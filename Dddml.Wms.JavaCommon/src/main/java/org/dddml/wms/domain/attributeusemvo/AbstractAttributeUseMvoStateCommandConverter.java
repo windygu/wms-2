@@ -41,7 +41,7 @@ public abstract class AbstractAttributeUseMvoStateCommandConverter<TCreateAttrib
         cmd.setSequenceNumber(state.getSequenceNumber());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
-        cmd.setAttributeSetName(state.getAttributeSetName());
+        cmd.setAttributeSetAttributeSetName(state.getAttributeSetAttributeSetName());
         cmd.setAttributeSetOrganizationId(state.getAttributeSetOrganizationId());
         cmd.setAttributeSetDescription(state.getAttributeSetDescription());
         cmd.setAttributeSetSerialNumberAttributeId(state.getAttributeSetSerialNumberAttributeId());
@@ -57,7 +57,7 @@ public abstract class AbstractAttributeUseMvoStateCommandConverter<TCreateAttrib
         if (state.getSequenceNumber() == null) { cmd.setIsPropertySequenceNumberRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
-        if (state.getAttributeSetName() == null) { cmd.setIsPropertyAttributeSetNameRemoved(true); }
+        if (state.getAttributeSetAttributeSetName() == null) { cmd.setIsPropertyAttributeSetAttributeSetNameRemoved(true); }
         if (state.getAttributeSetOrganizationId() == null) { cmd.setIsPropertyAttributeSetOrganizationIdRemoved(true); }
         if (state.getAttributeSetDescription() == null) { cmd.setIsPropertyAttributeSetDescriptionRemoved(true); }
         if (state.getAttributeSetSerialNumberAttributeId() == null) { cmd.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(true); }
@@ -81,7 +81,7 @@ public abstract class AbstractAttributeUseMvoStateCommandConverter<TCreateAttrib
         cmd.setSequenceNumber(state.getSequenceNumber());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
-        cmd.setAttributeSetName(state.getAttributeSetName());
+        cmd.setAttributeSetAttributeSetName(state.getAttributeSetAttributeSetName());
         cmd.setAttributeSetOrganizationId(state.getAttributeSetOrganizationId());
         cmd.setAttributeSetDescription(state.getAttributeSetDescription());
         cmd.setAttributeSetSerialNumberAttributeId(state.getAttributeSetSerialNumberAttributeId());

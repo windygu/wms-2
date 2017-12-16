@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -16,8 +15,6 @@ namespace Dddml.Wms.Domain.InOut
 	public abstract class InOutStateProperties : IInOutStateProperties
 	{
 		public virtual string DocumentNumber { get; set; }
-
-		public virtual bool IsSOTransaction { get; set; }
 
 		public virtual string DocumentStatus { get; set; }
 
@@ -27,17 +24,17 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool Processed { get; set; }
 
-		public virtual int DocumentType { get; set; }
+		public virtual string DocumentTypeId { get; set; }
 
 		public virtual string Description { get; set; }
 
-		public virtual string OrderNumber { get; set; }
+		public virtual string OrderId { get; set; }
 
 		public virtual DateTime? DateOrdered { get; set; }
 
 		public virtual bool IsPrinted { get; set; }
 
-		public virtual string MovementType { get; set; }
+		public virtual string MovementTypeId { get; set; }
 
 		public virtual DateTime? MovementDate { get; set; }
 
@@ -47,11 +44,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string POReference { get; set; }
 
-		public virtual Money FreightAmount { get; set; }
-
 		public virtual string ShipperId { get; set; }
-
-		public virtual Money ChargeAmount { get; set; }
 
 		public virtual DateTime? DatePrinted { get; set; }
 
@@ -73,17 +66,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool IsInDispute { get; set; }
 
-		public virtual decimal Volume { get; set; }
-
-		public virtual decimal Weight { get; set; }
-
 		public virtual string RmaNumber { get; set; }
 
 		public virtual string ReversalNumber { get; set; }
-
-		public virtual bool IsDropShip { get; set; }
-
-		public virtual string DropShipBusinessPartnerId { get; set; }
 
 		public virtual long Version { get; set; }
 

@@ -1,24 +1,11 @@
 package org.dddml.wms.domain.inout;
 
-import org.joda.money.Money;
-import java.math.BigDecimal;
 import java.util.Date;
+import java.math.BigDecimal;
 import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
 {
-    private Boolean isSOTransaction;
-
-    public Boolean getIsSOTransaction()
-    {
-        return this.isSOTransaction;
-    }
-
-    public void setIsSOTransaction(Boolean isSOTransaction)
-    {
-        this.isSOTransaction = isSOTransaction;
-    }
-
     private String documentAction;
 
     public String getDocumentAction()
@@ -67,16 +54,16 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.processed = processed;
     }
 
-    private Integer documentType;
+    private String documentTypeId;
 
-    public Integer getDocumentType()
+    public String getDocumentTypeId()
     {
-        return this.documentType;
+        return this.documentTypeId;
     }
 
-    public void setDocumentType(Integer documentType)
+    public void setDocumentTypeId(String documentTypeId)
     {
-        this.documentType = documentType;
+        this.documentTypeId = documentTypeId;
     }
 
     private String description;
@@ -91,16 +78,16 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.description = description;
     }
 
-    private String orderNumber;
+    private String orderId;
 
-    public String getOrderNumber()
+    public String getOrderId()
     {
-        return this.orderNumber;
+        return this.orderId;
     }
 
-    public void setOrderNumber(String orderNumber)
+    public void setOrderId(String orderId)
     {
-        this.orderNumber = orderNumber;
+        this.orderId = orderId;
     }
 
     private Date dateOrdered;
@@ -127,16 +114,16 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPrinted = isPrinted;
     }
 
-    private String movementType;
+    private String movementTypeId;
 
-    public String getMovementType()
+    public String getMovementTypeId()
     {
-        return this.movementType;
+        return this.movementTypeId;
     }
 
-    public void setMovementType(String movementType)
+    public void setMovementTypeId(String movementTypeId)
     {
-        this.movementType = movementType;
+        this.movementTypeId = movementTypeId;
     }
 
     private Date movementDate;
@@ -187,18 +174,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.POReference = poReference;
     }
 
-    private Money freightAmount;
-
-    public Money getFreightAmount()
-    {
-        return this.freightAmount;
-    }
-
-    public void setFreightAmount(Money freightAmount)
-    {
-        this.freightAmount = freightAmount;
-    }
-
     private String shipperId;
 
     public String getShipperId()
@@ -209,18 +184,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
     public void setShipperId(String shipperId)
     {
         this.shipperId = shipperId;
-    }
-
-    private Money chargeAmount;
-
-    public Money getChargeAmount()
-    {
-        return this.chargeAmount;
-    }
-
-    public void setChargeAmount(Money chargeAmount)
-    {
-        this.chargeAmount = chargeAmount;
     }
 
     private Date datePrinted;
@@ -343,30 +306,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isInDispute = isInDispute;
     }
 
-    private BigDecimal volume;
-
-    public BigDecimal getVolume()
-    {
-        return this.volume;
-    }
-
-    public void setVolume(BigDecimal volume)
-    {
-        this.volume = volume;
-    }
-
-    private BigDecimal weight;
-
-    public BigDecimal getWeight()
-    {
-        return this.weight;
-    }
-
-    public void setWeight(BigDecimal weight)
-    {
-        this.weight = weight;
-    }
-
     private String rmaNumber;
 
     public String getRmaNumber()
@@ -391,30 +330,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.reversalNumber = reversalNumber;
     }
 
-    private Boolean isDropShip;
-
-    public Boolean getIsDropShip()
-    {
-        return this.isDropShip;
-    }
-
-    public void setIsDropShip(Boolean isDropShip)
-    {
-        this.isDropShip = isDropShip;
-    }
-
-    private String dropShipBusinessPartnerId;
-
-    public String getDropShipBusinessPartnerId()
-    {
-        return this.dropShipBusinessPartnerId;
-    }
-
-    public void setDropShipBusinessPartnerId(String dropShipBusinessPartnerId)
-    {
-        this.dropShipBusinessPartnerId = dropShipBusinessPartnerId;
-    }
-
     private Boolean active;
 
     public Boolean getActive()
@@ -437,18 +352,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
     public void setInOutLines(CreateOrMergePatchInOutLineDto[] inOutLines)
     {
         this.inOutLines = inOutLines;
-    }
-
-    private Boolean isPropertyIsSOTransactionRemoved;
-
-    public Boolean getIsPropertyIsSOTransactionRemoved()
-    {
-        return this.isPropertyIsSOTransactionRemoved;
-    }
-
-    public void setIsPropertyIsSOTransactionRemoved(Boolean removed)
-    {
-        this.isPropertyIsSOTransactionRemoved = removed;
     }
 
     private Boolean isPropertyPostedRemoved;
@@ -487,16 +390,16 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPropertyProcessedRemoved = removed;
     }
 
-    private Boolean isPropertyDocumentTypeRemoved;
+    private Boolean isPropertyDocumentTypeIdRemoved;
 
-    public Boolean getIsPropertyDocumentTypeRemoved()
+    public Boolean getIsPropertyDocumentTypeIdRemoved()
     {
-        return this.isPropertyDocumentTypeRemoved;
+        return this.isPropertyDocumentTypeIdRemoved;
     }
 
-    public void setIsPropertyDocumentTypeRemoved(Boolean removed)
+    public void setIsPropertyDocumentTypeIdRemoved(Boolean removed)
     {
-        this.isPropertyDocumentTypeRemoved = removed;
+        this.isPropertyDocumentTypeIdRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;
@@ -511,16 +414,16 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPropertyDescriptionRemoved = removed;
     }
 
-    private Boolean isPropertyOrderNumberRemoved;
+    private Boolean isPropertyOrderIdRemoved;
 
-    public Boolean getIsPropertyOrderNumberRemoved()
+    public Boolean getIsPropertyOrderIdRemoved()
     {
-        return this.isPropertyOrderNumberRemoved;
+        return this.isPropertyOrderIdRemoved;
     }
 
-    public void setIsPropertyOrderNumberRemoved(Boolean removed)
+    public void setIsPropertyOrderIdRemoved(Boolean removed)
     {
-        this.isPropertyOrderNumberRemoved = removed;
+        this.isPropertyOrderIdRemoved = removed;
     }
 
     private Boolean isPropertyDateOrderedRemoved;
@@ -547,16 +450,16 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPropertyIsPrintedRemoved = removed;
     }
 
-    private Boolean isPropertyMovementTypeRemoved;
+    private Boolean isPropertyMovementTypeIdRemoved;
 
-    public Boolean getIsPropertyMovementTypeRemoved()
+    public Boolean getIsPropertyMovementTypeIdRemoved()
     {
-        return this.isPropertyMovementTypeRemoved;
+        return this.isPropertyMovementTypeIdRemoved;
     }
 
-    public void setIsPropertyMovementTypeRemoved(Boolean removed)
+    public void setIsPropertyMovementTypeIdRemoved(Boolean removed)
     {
-        this.isPropertyMovementTypeRemoved = removed;
+        this.isPropertyMovementTypeIdRemoved = removed;
     }
 
     private Boolean isPropertyMovementDateRemoved;
@@ -607,18 +510,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPropertyPOReferenceRemoved = removed;
     }
 
-    private Boolean isPropertyFreightAmountRemoved;
-
-    public Boolean getIsPropertyFreightAmountRemoved()
-    {
-        return this.isPropertyFreightAmountRemoved;
-    }
-
-    public void setIsPropertyFreightAmountRemoved(Boolean removed)
-    {
-        this.isPropertyFreightAmountRemoved = removed;
-    }
-
     private Boolean isPropertyShipperIdRemoved;
 
     public Boolean getIsPropertyShipperIdRemoved()
@@ -629,18 +520,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
     public void setIsPropertyShipperIdRemoved(Boolean removed)
     {
         this.isPropertyShipperIdRemoved = removed;
-    }
-
-    private Boolean isPropertyChargeAmountRemoved;
-
-    public Boolean getIsPropertyChargeAmountRemoved()
-    {
-        return this.isPropertyChargeAmountRemoved;
-    }
-
-    public void setIsPropertyChargeAmountRemoved(Boolean removed)
-    {
-        this.isPropertyChargeAmountRemoved = removed;
     }
 
     private Boolean isPropertyDatePrintedRemoved;
@@ -763,30 +642,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPropertyIsInDisputeRemoved = removed;
     }
 
-    private Boolean isPropertyVolumeRemoved;
-
-    public Boolean getIsPropertyVolumeRemoved()
-    {
-        return this.isPropertyVolumeRemoved;
-    }
-
-    public void setIsPropertyVolumeRemoved(Boolean removed)
-    {
-        this.isPropertyVolumeRemoved = removed;
-    }
-
-    private Boolean isPropertyWeightRemoved;
-
-    public Boolean getIsPropertyWeightRemoved()
-    {
-        return this.isPropertyWeightRemoved;
-    }
-
-    public void setIsPropertyWeightRemoved(Boolean removed)
-    {
-        this.isPropertyWeightRemoved = removed;
-    }
-
     private Boolean isPropertyRmaNumberRemoved;
 
     public Boolean getIsPropertyRmaNumberRemoved()
@@ -811,30 +666,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPropertyReversalNumberRemoved = removed;
     }
 
-    private Boolean isPropertyIsDropShipRemoved;
-
-    public Boolean getIsPropertyIsDropShipRemoved()
-    {
-        return this.isPropertyIsDropShipRemoved;
-    }
-
-    public void setIsPropertyIsDropShipRemoved(Boolean removed)
-    {
-        this.isPropertyIsDropShipRemoved = removed;
-    }
-
-    private Boolean isPropertyDropShipBusinessPartnerIdRemoved;
-
-    public Boolean getIsPropertyDropShipBusinessPartnerIdRemoved()
-    {
-        return this.isPropertyDropShipBusinessPartnerIdRemoved;
-    }
-
-    public void setIsPropertyDropShipBusinessPartnerIdRemoved(Boolean removed)
-    {
-        this.isPropertyDropShipBusinessPartnerIdRemoved = removed;
-    }
-
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -850,24 +681,21 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
     public void copyTo(AbstractInOutCommand.AbstractCreateOrMergePatchInOut command)
     {
         ((AbstractInOutCommandDto) this).copyTo(command);
-        command.setIsSOTransaction(this.getIsSOTransaction());
         command.setDocumentAction(this.getDocumentAction());
         command.setPosted(this.getPosted());
         command.setProcessing(this.getProcessing());
         command.setProcessed(this.getProcessed());
-        command.setDocumentType(this.getDocumentType());
+        command.setDocumentTypeId(this.getDocumentTypeId());
         command.setDescription(this.getDescription());
-        command.setOrderNumber(this.getOrderNumber());
+        command.setOrderId(this.getOrderId());
         command.setDateOrdered(this.getDateOrdered());
         command.setIsPrinted(this.getIsPrinted());
-        command.setMovementType(this.getMovementType());
+        command.setMovementTypeId(this.getMovementTypeId());
         command.setMovementDate(this.getMovementDate());
         command.setBusinessPartnerId(this.getBusinessPartnerId());
         command.setWarehouseId(this.getWarehouseId());
         command.setPOReference(this.getPOReference());
-        command.setFreightAmount(this.getFreightAmount());
         command.setShipperId(this.getShipperId());
-        command.setChargeAmount(this.getChargeAmount());
         command.setDatePrinted(this.getDatePrinted());
         command.setSalesRepresentative(this.getSalesRepresentative());
         command.setNumberOfPackages(this.getNumberOfPackages());
@@ -878,12 +706,8 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         command.setIsInTransit(this.getIsInTransit());
         command.setIsApproved(this.getIsApproved());
         command.setIsInDispute(this.getIsInDispute());
-        command.setVolume(this.getVolume());
-        command.setWeight(this.getWeight());
         command.setRmaNumber(this.getRmaNumber());
         command.setReversalNumber(this.getReversalNumber());
-        command.setIsDropShip(this.getIsDropShip());
-        command.setDropShipBusinessPartnerId(this.getDropShipBusinessPartnerId());
         command.setActive(this.getActive());
     }
 
@@ -919,23 +743,20 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
     public void copyTo(AbstractInOutCommand.AbstractMergePatchInOut command)
     {
         copyTo((AbstractInOutCommand.AbstractCreateOrMergePatchInOut) command);
-        command.setIsPropertyIsSOTransactionRemoved(this.getIsPropertyIsSOTransactionRemoved());
         command.setIsPropertyPostedRemoved(this.getIsPropertyPostedRemoved());
         command.setIsPropertyProcessingRemoved(this.getIsPropertyProcessingRemoved());
         command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());
-        command.setIsPropertyDocumentTypeRemoved(this.getIsPropertyDocumentTypeRemoved());
+        command.setIsPropertyDocumentTypeIdRemoved(this.getIsPropertyDocumentTypeIdRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
-        command.setIsPropertyOrderNumberRemoved(this.getIsPropertyOrderNumberRemoved());
+        command.setIsPropertyOrderIdRemoved(this.getIsPropertyOrderIdRemoved());
         command.setIsPropertyDateOrderedRemoved(this.getIsPropertyDateOrderedRemoved());
         command.setIsPropertyIsPrintedRemoved(this.getIsPropertyIsPrintedRemoved());
-        command.setIsPropertyMovementTypeRemoved(this.getIsPropertyMovementTypeRemoved());
+        command.setIsPropertyMovementTypeIdRemoved(this.getIsPropertyMovementTypeIdRemoved());
         command.setIsPropertyMovementDateRemoved(this.getIsPropertyMovementDateRemoved());
         command.setIsPropertyBusinessPartnerIdRemoved(this.getIsPropertyBusinessPartnerIdRemoved());
         command.setIsPropertyWarehouseIdRemoved(this.getIsPropertyWarehouseIdRemoved());
         command.setIsPropertyPOReferenceRemoved(this.getIsPropertyPOReferenceRemoved());
-        command.setIsPropertyFreightAmountRemoved(this.getIsPropertyFreightAmountRemoved());
         command.setIsPropertyShipperIdRemoved(this.getIsPropertyShipperIdRemoved());
-        command.setIsPropertyChargeAmountRemoved(this.getIsPropertyChargeAmountRemoved());
         command.setIsPropertyDatePrintedRemoved(this.getIsPropertyDatePrintedRemoved());
         command.setIsPropertySalesRepresentativeRemoved(this.getIsPropertySalesRepresentativeRemoved());
         command.setIsPropertyNumberOfPackagesRemoved(this.getIsPropertyNumberOfPackagesRemoved());
@@ -946,12 +767,8 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         command.setIsPropertyIsInTransitRemoved(this.getIsPropertyIsInTransitRemoved());
         command.setIsPropertyIsApprovedRemoved(this.getIsPropertyIsApprovedRemoved());
         command.setIsPropertyIsInDisputeRemoved(this.getIsPropertyIsInDisputeRemoved());
-        command.setIsPropertyVolumeRemoved(this.getIsPropertyVolumeRemoved());
-        command.setIsPropertyWeightRemoved(this.getIsPropertyWeightRemoved());
         command.setIsPropertyRmaNumberRemoved(this.getIsPropertyRmaNumberRemoved());
         command.setIsPropertyReversalNumberRemoved(this.getIsPropertyReversalNumberRemoved());
-        command.setIsPropertyIsDropShipRemoved(this.getIsPropertyIsDropShipRemoved());
-        command.setIsPropertyDropShipBusinessPartnerIdRemoved(this.getIsPropertyDropShipBusinessPartnerIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain.Organization
 			var stateEventId = new OrganizationStateEventId(c.OrganizationId, c.Version);
             IOrganizationStateCreated e = NewOrganizationStateCreated(stateEventId);
 		
-            e.Name = c.Name;
+            e.OrganizationName = c.OrganizationName;
             e.Description = c.Description;
             e.Type = c.Type;
             e.IsSummary = c.IsSummary;
@@ -128,12 +128,12 @@ namespace Dddml.Wms.Domain.Organization
 			var stateEventId = new OrganizationStateEventId(c.OrganizationId, c.Version);
             IOrganizationStateMergePatched e = NewOrganizationStateMergePatched(stateEventId);
 
-            e.Name = c.Name;
+            e.OrganizationName = c.OrganizationName;
             e.Description = c.Description;
             e.Type = c.Type;
             e.IsSummary = c.IsSummary;
             e.Active = c.Active;
-            e.IsPropertyNameRemoved = c.IsPropertyNameRemoved;
+            e.IsPropertyOrganizationNameRemoved = c.IsPropertyOrganizationNameRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyTypeRemoved = c.IsPropertyTypeRemoved;
             e.IsPropertyIsSummaryRemoved = c.IsPropertyIsSummaryRemoved;

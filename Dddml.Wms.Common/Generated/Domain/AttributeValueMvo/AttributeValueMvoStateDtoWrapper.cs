@@ -68,31 +68,31 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             }
         }
 
-		public virtual string Name
+		public virtual string AttributeValueName
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Name"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeValueName"))
                 {
-                    return _state.Name;
+                    return _state.AttributeValueName;
                 }
                 return null;
             }
             set
             {
-                _state.Name = value;
+                _state.AttributeValueName = value;
             }
         }
 
-        string IAttributeValueMvoStateProperties.Name
+        string IAttributeValueMvoStateProperties.AttributeValueName
         {
             get 
             {
-                return (this._state as IAttributeValueMvoStateProperties).Name;
+                return (this._state as IAttributeValueMvoStateProperties).AttributeValueName;
             }
             set 
             {
-                (this._state as IAttributeValueMvoStateProperties).Name = value;
+                (this._state as IAttributeValueMvoStateProperties).AttributeValueName = value;
             }
         }
 
@@ -214,31 +214,31 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             }
         }
 
-		public virtual string AttributeName
+		public virtual string AttributeAttributeName
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeName"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeAttributeName"))
                 {
-                    return _state.AttributeName;
+                    return _state.AttributeAttributeName;
                 }
                 return null;
             }
             set
             {
-                _state.AttributeName = value;
+                _state.AttributeAttributeName = value;
             }
         }
 
-        string IAttributeValueMvoStateProperties.AttributeName
+        string IAttributeValueMvoStateProperties.AttributeAttributeName
         {
             get 
             {
-                return (this._state as IAttributeValueMvoStateProperties).AttributeName;
+                return (this._state as IAttributeValueMvoStateProperties).AttributeAttributeName;
             }
             set 
             {
-                (this._state as IAttributeValueMvoStateProperties).AttributeName = value;
+                (this._state as IAttributeValueMvoStateProperties).AttributeAttributeName = value;
             }
         }
 

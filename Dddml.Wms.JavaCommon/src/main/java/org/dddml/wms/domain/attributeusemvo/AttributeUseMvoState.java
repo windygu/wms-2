@@ -49,9 +49,9 @@ public interface AttributeUseMvoState
 
     void setDeleted(Boolean deleted);
 
-    String getAttributeSetName();
+    String getAttributeSetAttributeSetName();
 
-    void setAttributeSetName(String attributeSetName);
+    void setAttributeSetAttributeSetName(String attributeSetAttributeSetName);
 
     String getAttributeSetOrganizationId();
 

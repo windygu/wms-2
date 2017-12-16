@@ -26,7 +26,7 @@ public class HibernateAttributeSetStateQueryRepository implements AttributeSetSt
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeSetId", "Name", "OrganizationId", "Description", "SerialNumberAttributeId", "LotAttributeId", "ReferenceId", "AttributeUses", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeSetId", "AttributeSetName", "OrganizationId", "Description", "SerialNumberAttributeId", "LotAttributeId", "ReferenceId", "AttributeUses", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

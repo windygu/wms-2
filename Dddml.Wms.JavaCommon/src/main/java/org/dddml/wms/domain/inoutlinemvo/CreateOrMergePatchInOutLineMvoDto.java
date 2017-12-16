@@ -3,23 +3,10 @@ package org.dddml.wms.domain.inoutlinemvo;
 import org.dddml.wms.domain.inout.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import org.joda.money.Money;
 import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoCommandDto
 {
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String locatorId;
 
     public String getLocatorId()
@@ -42,6 +29,30 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
     public void setProductId(String productId)
     {
         this.productId = productId;
+    }
+
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 
     private String uomId;
@@ -128,30 +139,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isInvoiced = isInvoiced;
     }
 
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
-    private Boolean isDescription;
-
-    public Boolean getIsDescription()
-    {
-        return this.isDescription;
-    }
-
-    public void setIsDescription(Boolean isDescription)
-    {
-        this.isDescription = isDescription;
-    }
-
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -224,18 +211,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.active = active;
     }
 
-    private Boolean inOutIsSOTransaction;
-
-    public Boolean getInOutIsSOTransaction()
-    {
-        return this.inOutIsSOTransaction;
-    }
-
-    public void setInOutIsSOTransaction(Boolean inOutIsSOTransaction)
-    {
-        this.inOutIsSOTransaction = inOutIsSOTransaction;
-    }
-
     private String documentAction;
 
     public String getDocumentAction()
@@ -284,16 +259,16 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutProcessed = inOutProcessed;
     }
 
-    private Integer inOutDocumentType;
+    private String inOutDocumentTypeId;
 
-    public Integer getInOutDocumentType()
+    public String getInOutDocumentTypeId()
     {
-        return this.inOutDocumentType;
+        return this.inOutDocumentTypeId;
     }
 
-    public void setInOutDocumentType(Integer inOutDocumentType)
+    public void setInOutDocumentTypeId(String inOutDocumentTypeId)
     {
-        this.inOutDocumentType = inOutDocumentType;
+        this.inOutDocumentTypeId = inOutDocumentTypeId;
     }
 
     private String inOutDescription;
@@ -308,16 +283,16 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutDescription = inOutDescription;
     }
 
-    private String inOutOrderNumber;
+    private String inOutOrderId;
 
-    public String getInOutOrderNumber()
+    public String getInOutOrderId()
     {
-        return this.inOutOrderNumber;
+        return this.inOutOrderId;
     }
 
-    public void setInOutOrderNumber(String inOutOrderNumber)
+    public void setInOutOrderId(String inOutOrderId)
     {
-        this.inOutOrderNumber = inOutOrderNumber;
+        this.inOutOrderId = inOutOrderId;
     }
 
     private Date inOutDateOrdered;
@@ -344,16 +319,16 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutIsPrinted = inOutIsPrinted;
     }
 
-    private String inOutMovementType;
+    private String inOutMovementTypeId;
 
-    public String getInOutMovementType()
+    public String getInOutMovementTypeId()
     {
-        return this.inOutMovementType;
+        return this.inOutMovementTypeId;
     }
 
-    public void setInOutMovementType(String inOutMovementType)
+    public void setInOutMovementTypeId(String inOutMovementTypeId)
     {
-        this.inOutMovementType = inOutMovementType;
+        this.inOutMovementTypeId = inOutMovementTypeId;
     }
 
     private Date inOutMovementDate;
@@ -404,18 +379,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutPOReference = inOutPOReference;
     }
 
-    private Money inOutFreightAmount;
-
-    public Money getInOutFreightAmount()
-    {
-        return this.inOutFreightAmount;
-    }
-
-    public void setInOutFreightAmount(Money inOutFreightAmount)
-    {
-        this.inOutFreightAmount = inOutFreightAmount;
-    }
-
     private String inOutShipperId;
 
     public String getInOutShipperId()
@@ -426,18 +389,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
     public void setInOutShipperId(String inOutShipperId)
     {
         this.inOutShipperId = inOutShipperId;
-    }
-
-    private Money inOutChargeAmount;
-
-    public Money getInOutChargeAmount()
-    {
-        return this.inOutChargeAmount;
-    }
-
-    public void setInOutChargeAmount(Money inOutChargeAmount)
-    {
-        this.inOutChargeAmount = inOutChargeAmount;
     }
 
     private Date inOutDatePrinted;
@@ -560,30 +511,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutIsInDispute = inOutIsInDispute;
     }
 
-    private BigDecimal inOutVolume;
-
-    public BigDecimal getInOutVolume()
-    {
-        return this.inOutVolume;
-    }
-
-    public void setInOutVolume(BigDecimal inOutVolume)
-    {
-        this.inOutVolume = inOutVolume;
-    }
-
-    private BigDecimal inOutWeight;
-
-    public BigDecimal getInOutWeight()
-    {
-        return this.inOutWeight;
-    }
-
-    public void setInOutWeight(BigDecimal inOutWeight)
-    {
-        this.inOutWeight = inOutWeight;
-    }
-
     private String inOutRmaNumber;
 
     public String getInOutRmaNumber()
@@ -606,30 +533,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
     public void setInOutReversalNumber(String inOutReversalNumber)
     {
         this.inOutReversalNumber = inOutReversalNumber;
-    }
-
-    private Boolean inOutIsDropShip;
-
-    public Boolean getInOutIsDropShip()
-    {
-        return this.inOutIsDropShip;
-    }
-
-    public void setInOutIsDropShip(Boolean inOutIsDropShip)
-    {
-        this.inOutIsDropShip = inOutIsDropShip;
-    }
-
-    private String inOutDropShipBusinessPartnerId;
-
-    public String getInOutDropShipBusinessPartnerId()
-    {
-        return this.inOutDropShipBusinessPartnerId;
-    }
-
-    public void setInOutDropShipBusinessPartnerId(String inOutDropShipBusinessPartnerId)
-    {
-        this.inOutDropShipBusinessPartnerId = inOutDropShipBusinessPartnerId;
     }
 
     private String inOutCreatedBy;
@@ -704,18 +607,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutDeleted = inOutDeleted;
     }
 
-    private Boolean isPropertyDescriptionRemoved;
-
-    public Boolean getIsPropertyDescriptionRemoved()
-    {
-        return this.isPropertyDescriptionRemoved;
-    }
-
-    public void setIsPropertyDescriptionRemoved(Boolean removed)
-    {
-        this.isPropertyDescriptionRemoved = removed;
-    }
-
     private Boolean isPropertyLocatorIdRemoved;
 
     public Boolean getIsPropertyLocatorIdRemoved()
@@ -738,6 +629,30 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
     public void setIsPropertyProductIdRemoved(Boolean removed)
     {
         this.isPropertyProductIdRemoved = removed;
+    }
+
+    private Boolean isPropertyAttributeSetInstanceIdRemoved;
+
+    public Boolean getIsPropertyAttributeSetInstanceIdRemoved()
+    {
+        return this.isPropertyAttributeSetInstanceIdRemoved;
+    }
+
+    public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
+    {
+        this.isPropertyAttributeSetInstanceIdRemoved = removed;
+    }
+
+    private Boolean isPropertyDescriptionRemoved;
+
+    public Boolean getIsPropertyDescriptionRemoved()
+    {
+        return this.isPropertyDescriptionRemoved;
+    }
+
+    public void setIsPropertyDescriptionRemoved(Boolean removed)
+    {
+        this.isPropertyDescriptionRemoved = removed;
     }
 
     private Boolean isPropertyUomIdRemoved;
@@ -824,30 +739,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyIsInvoicedRemoved = removed;
     }
 
-    private Boolean isPropertyAttributeSetInstanceIdRemoved;
-
-    public Boolean getIsPropertyAttributeSetInstanceIdRemoved()
-    {
-        return this.isPropertyAttributeSetInstanceIdRemoved;
-    }
-
-    public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
-    {
-        this.isPropertyAttributeSetInstanceIdRemoved = removed;
-    }
-
-    private Boolean isPropertyIsDescriptionRemoved;
-
-    public Boolean getIsPropertyIsDescriptionRemoved()
-    {
-        return this.isPropertyIsDescriptionRemoved;
-    }
-
-    public void setIsPropertyIsDescriptionRemoved(Boolean removed)
-    {
-        this.isPropertyIsDescriptionRemoved = removed;
-    }
-
     private Boolean isPropertyProcessedRemoved;
 
     public Boolean getIsPropertyProcessedRemoved()
@@ -920,18 +811,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyActiveRemoved = removed;
     }
 
-    private Boolean isPropertyInOutIsSOTransactionRemoved;
-
-    public Boolean getIsPropertyInOutIsSOTransactionRemoved()
-    {
-        return this.isPropertyInOutIsSOTransactionRemoved;
-    }
-
-    public void setIsPropertyInOutIsSOTransactionRemoved(Boolean removed)
-    {
-        this.isPropertyInOutIsSOTransactionRemoved = removed;
-    }
-
     private Boolean isPropertyInOutPostedRemoved;
 
     public Boolean getIsPropertyInOutPostedRemoved()
@@ -968,16 +847,16 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyInOutProcessedRemoved = removed;
     }
 
-    private Boolean isPropertyInOutDocumentTypeRemoved;
+    private Boolean isPropertyInOutDocumentTypeIdRemoved;
 
-    public Boolean getIsPropertyInOutDocumentTypeRemoved()
+    public Boolean getIsPropertyInOutDocumentTypeIdRemoved()
     {
-        return this.isPropertyInOutDocumentTypeRemoved;
+        return this.isPropertyInOutDocumentTypeIdRemoved;
     }
 
-    public void setIsPropertyInOutDocumentTypeRemoved(Boolean removed)
+    public void setIsPropertyInOutDocumentTypeIdRemoved(Boolean removed)
     {
-        this.isPropertyInOutDocumentTypeRemoved = removed;
+        this.isPropertyInOutDocumentTypeIdRemoved = removed;
     }
 
     private Boolean isPropertyInOutDescriptionRemoved;
@@ -992,16 +871,16 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyInOutDescriptionRemoved = removed;
     }
 
-    private Boolean isPropertyInOutOrderNumberRemoved;
+    private Boolean isPropertyInOutOrderIdRemoved;
 
-    public Boolean getIsPropertyInOutOrderNumberRemoved()
+    public Boolean getIsPropertyInOutOrderIdRemoved()
     {
-        return this.isPropertyInOutOrderNumberRemoved;
+        return this.isPropertyInOutOrderIdRemoved;
     }
 
-    public void setIsPropertyInOutOrderNumberRemoved(Boolean removed)
+    public void setIsPropertyInOutOrderIdRemoved(Boolean removed)
     {
-        this.isPropertyInOutOrderNumberRemoved = removed;
+        this.isPropertyInOutOrderIdRemoved = removed;
     }
 
     private Boolean isPropertyInOutDateOrderedRemoved;
@@ -1028,16 +907,16 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyInOutIsPrintedRemoved = removed;
     }
 
-    private Boolean isPropertyInOutMovementTypeRemoved;
+    private Boolean isPropertyInOutMovementTypeIdRemoved;
 
-    public Boolean getIsPropertyInOutMovementTypeRemoved()
+    public Boolean getIsPropertyInOutMovementTypeIdRemoved()
     {
-        return this.isPropertyInOutMovementTypeRemoved;
+        return this.isPropertyInOutMovementTypeIdRemoved;
     }
 
-    public void setIsPropertyInOutMovementTypeRemoved(Boolean removed)
+    public void setIsPropertyInOutMovementTypeIdRemoved(Boolean removed)
     {
-        this.isPropertyInOutMovementTypeRemoved = removed;
+        this.isPropertyInOutMovementTypeIdRemoved = removed;
     }
 
     private Boolean isPropertyInOutMovementDateRemoved;
@@ -1088,18 +967,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyInOutPOReferenceRemoved = removed;
     }
 
-    private Boolean isPropertyInOutFreightAmountRemoved;
-
-    public Boolean getIsPropertyInOutFreightAmountRemoved()
-    {
-        return this.isPropertyInOutFreightAmountRemoved;
-    }
-
-    public void setIsPropertyInOutFreightAmountRemoved(Boolean removed)
-    {
-        this.isPropertyInOutFreightAmountRemoved = removed;
-    }
-
     private Boolean isPropertyInOutShipperIdRemoved;
 
     public Boolean getIsPropertyInOutShipperIdRemoved()
@@ -1110,18 +977,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
     public void setIsPropertyInOutShipperIdRemoved(Boolean removed)
     {
         this.isPropertyInOutShipperIdRemoved = removed;
-    }
-
-    private Boolean isPropertyInOutChargeAmountRemoved;
-
-    public Boolean getIsPropertyInOutChargeAmountRemoved()
-    {
-        return this.isPropertyInOutChargeAmountRemoved;
-    }
-
-    public void setIsPropertyInOutChargeAmountRemoved(Boolean removed)
-    {
-        this.isPropertyInOutChargeAmountRemoved = removed;
     }
 
     private Boolean isPropertyInOutDatePrintedRemoved;
@@ -1244,30 +1099,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyInOutIsInDisputeRemoved = removed;
     }
 
-    private Boolean isPropertyInOutVolumeRemoved;
-
-    public Boolean getIsPropertyInOutVolumeRemoved()
-    {
-        return this.isPropertyInOutVolumeRemoved;
-    }
-
-    public void setIsPropertyInOutVolumeRemoved(Boolean removed)
-    {
-        this.isPropertyInOutVolumeRemoved = removed;
-    }
-
-    private Boolean isPropertyInOutWeightRemoved;
-
-    public Boolean getIsPropertyInOutWeightRemoved()
-    {
-        return this.isPropertyInOutWeightRemoved;
-    }
-
-    public void setIsPropertyInOutWeightRemoved(Boolean removed)
-    {
-        this.isPropertyInOutWeightRemoved = removed;
-    }
-
     private Boolean isPropertyInOutRmaNumberRemoved;
 
     public Boolean getIsPropertyInOutRmaNumberRemoved()
@@ -1290,30 +1121,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
     public void setIsPropertyInOutReversalNumberRemoved(Boolean removed)
     {
         this.isPropertyInOutReversalNumberRemoved = removed;
-    }
-
-    private Boolean isPropertyInOutIsDropShipRemoved;
-
-    public Boolean getIsPropertyInOutIsDropShipRemoved()
-    {
-        return this.isPropertyInOutIsDropShipRemoved;
-    }
-
-    public void setIsPropertyInOutIsDropShipRemoved(Boolean removed)
-    {
-        this.isPropertyInOutIsDropShipRemoved = removed;
-    }
-
-    private Boolean isPropertyInOutDropShipBusinessPartnerIdRemoved;
-
-    public Boolean getIsPropertyInOutDropShipBusinessPartnerIdRemoved()
-    {
-        return this.isPropertyInOutDropShipBusinessPartnerIdRemoved;
-    }
-
-    public void setIsPropertyInOutDropShipBusinessPartnerIdRemoved(Boolean removed)
-    {
-        this.isPropertyInOutDropShipBusinessPartnerIdRemoved = removed;
     }
 
     private Boolean isPropertyInOutCreatedByRemoved;
@@ -1391,9 +1198,10 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
     public void copyTo(AbstractInOutLineMvoCommand.AbstractCreateOrMergePatchInOutLineMvo command)
     {
         ((AbstractInOutLineMvoCommandDto) this).copyTo(command);
-        command.setDescription(this.getDescription());
         command.setLocatorId(this.getLocatorId());
         command.setProductId(this.getProductId());
+        command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
+        command.setDescription(this.getDescription());
         command.setUomId(this.getUomId());
         command.setMovementQuantity(this.getMovementQuantity());
         command.setConfirmedQuantity(this.getConfirmedQuantity());
@@ -1401,32 +1209,27 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setTargetQuantity(this.getTargetQuantity());
         command.setPickedQuantity(this.getPickedQuantity());
         command.setIsInvoiced(this.getIsInvoiced());
-        command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
-        command.setIsDescription(this.getIsDescription());
         command.setProcessed(this.getProcessed());
         command.setQuantityEntered(this.getQuantityEntered());
         command.setRmaLineNumber(this.getRmaLineNumber());
         command.setReversalLineNumber(this.getReversalLineNumber());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
-        command.setInOutIsSOTransaction(this.getInOutIsSOTransaction());
         command.setDocumentAction(this.getDocumentAction());
         command.setInOutPosted(this.getInOutPosted());
         command.setInOutProcessing(this.getInOutProcessing());
         command.setInOutProcessed(this.getInOutProcessed());
-        command.setInOutDocumentType(this.getInOutDocumentType());
+        command.setInOutDocumentTypeId(this.getInOutDocumentTypeId());
         command.setInOutDescription(this.getInOutDescription());
-        command.setInOutOrderNumber(this.getInOutOrderNumber());
+        command.setInOutOrderId(this.getInOutOrderId());
         command.setInOutDateOrdered(this.getInOutDateOrdered());
         command.setInOutIsPrinted(this.getInOutIsPrinted());
-        command.setInOutMovementType(this.getInOutMovementType());
+        command.setInOutMovementTypeId(this.getInOutMovementTypeId());
         command.setInOutMovementDate(this.getInOutMovementDate());
         command.setInOutBusinessPartnerId(this.getInOutBusinessPartnerId());
         command.setInOutWarehouseId(this.getInOutWarehouseId());
         command.setInOutPOReference(this.getInOutPOReference());
-        command.setInOutFreightAmount(this.getInOutFreightAmount());
         command.setInOutShipperId(this.getInOutShipperId());
-        command.setInOutChargeAmount(this.getInOutChargeAmount());
         command.setInOutDatePrinted(this.getInOutDatePrinted());
         command.setInOutSalesRepresentative(this.getInOutSalesRepresentative());
         command.setInOutNumberOfPackages(this.getInOutNumberOfPackages());
@@ -1437,12 +1240,8 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setInOutIsInTransit(this.getInOutIsInTransit());
         command.setInOutIsApproved(this.getInOutIsApproved());
         command.setInOutIsInDispute(this.getInOutIsInDispute());
-        command.setInOutVolume(this.getInOutVolume());
-        command.setInOutWeight(this.getInOutWeight());
         command.setInOutRmaNumber(this.getInOutRmaNumber());
         command.setInOutReversalNumber(this.getInOutReversalNumber());
-        command.setInOutIsDropShip(this.getInOutIsDropShip());
-        command.setInOutDropShipBusinessPartnerId(this.getInOutDropShipBusinessPartnerId());
         command.setInOutCreatedBy(this.getInOutCreatedBy());
         command.setInOutCreatedAt(this.getInOutCreatedAt());
         command.setInOutUpdatedBy(this.getInOutUpdatedBy());
@@ -1473,9 +1272,10 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
     public void copyTo(AbstractInOutLineMvoCommand.AbstractMergePatchInOutLineMvo command)
     {
         copyTo((AbstractInOutLineMvoCommand.AbstractCreateOrMergePatchInOutLineMvo) command);
-        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyLocatorIdRemoved(this.getIsPropertyLocatorIdRemoved());
         command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
+        command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyUomIdRemoved(this.getIsPropertyUomIdRemoved());
         command.setIsPropertyMovementQuantityRemoved(this.getIsPropertyMovementQuantityRemoved());
         command.setIsPropertyConfirmedQuantityRemoved(this.getIsPropertyConfirmedQuantityRemoved());
@@ -1483,31 +1283,26 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setIsPropertyTargetQuantityRemoved(this.getIsPropertyTargetQuantityRemoved());
         command.setIsPropertyPickedQuantityRemoved(this.getIsPropertyPickedQuantityRemoved());
         command.setIsPropertyIsInvoicedRemoved(this.getIsPropertyIsInvoicedRemoved());
-        command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
-        command.setIsPropertyIsDescriptionRemoved(this.getIsPropertyIsDescriptionRemoved());
         command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());
         command.setIsPropertyQuantityEnteredRemoved(this.getIsPropertyQuantityEnteredRemoved());
         command.setIsPropertyRmaLineNumberRemoved(this.getIsPropertyRmaLineNumberRemoved());
         command.setIsPropertyReversalLineNumberRemoved(this.getIsPropertyReversalLineNumberRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
-        command.setIsPropertyInOutIsSOTransactionRemoved(this.getIsPropertyInOutIsSOTransactionRemoved());
         command.setIsPropertyInOutPostedRemoved(this.getIsPropertyInOutPostedRemoved());
         command.setIsPropertyInOutProcessingRemoved(this.getIsPropertyInOutProcessingRemoved());
         command.setIsPropertyInOutProcessedRemoved(this.getIsPropertyInOutProcessedRemoved());
-        command.setIsPropertyInOutDocumentTypeRemoved(this.getIsPropertyInOutDocumentTypeRemoved());
+        command.setIsPropertyInOutDocumentTypeIdRemoved(this.getIsPropertyInOutDocumentTypeIdRemoved());
         command.setIsPropertyInOutDescriptionRemoved(this.getIsPropertyInOutDescriptionRemoved());
-        command.setIsPropertyInOutOrderNumberRemoved(this.getIsPropertyInOutOrderNumberRemoved());
+        command.setIsPropertyInOutOrderIdRemoved(this.getIsPropertyInOutOrderIdRemoved());
         command.setIsPropertyInOutDateOrderedRemoved(this.getIsPropertyInOutDateOrderedRemoved());
         command.setIsPropertyInOutIsPrintedRemoved(this.getIsPropertyInOutIsPrintedRemoved());
-        command.setIsPropertyInOutMovementTypeRemoved(this.getIsPropertyInOutMovementTypeRemoved());
+        command.setIsPropertyInOutMovementTypeIdRemoved(this.getIsPropertyInOutMovementTypeIdRemoved());
         command.setIsPropertyInOutMovementDateRemoved(this.getIsPropertyInOutMovementDateRemoved());
         command.setIsPropertyInOutBusinessPartnerIdRemoved(this.getIsPropertyInOutBusinessPartnerIdRemoved());
         command.setIsPropertyInOutWarehouseIdRemoved(this.getIsPropertyInOutWarehouseIdRemoved());
         command.setIsPropertyInOutPOReferenceRemoved(this.getIsPropertyInOutPOReferenceRemoved());
-        command.setIsPropertyInOutFreightAmountRemoved(this.getIsPropertyInOutFreightAmountRemoved());
         command.setIsPropertyInOutShipperIdRemoved(this.getIsPropertyInOutShipperIdRemoved());
-        command.setIsPropertyInOutChargeAmountRemoved(this.getIsPropertyInOutChargeAmountRemoved());
         command.setIsPropertyInOutDatePrintedRemoved(this.getIsPropertyInOutDatePrintedRemoved());
         command.setIsPropertyInOutSalesRepresentativeRemoved(this.getIsPropertyInOutSalesRepresentativeRemoved());
         command.setIsPropertyInOutNumberOfPackagesRemoved(this.getIsPropertyInOutNumberOfPackagesRemoved());
@@ -1518,12 +1313,8 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setIsPropertyInOutIsInTransitRemoved(this.getIsPropertyInOutIsInTransitRemoved());
         command.setIsPropertyInOutIsApprovedRemoved(this.getIsPropertyInOutIsApprovedRemoved());
         command.setIsPropertyInOutIsInDisputeRemoved(this.getIsPropertyInOutIsInDisputeRemoved());
-        command.setIsPropertyInOutVolumeRemoved(this.getIsPropertyInOutVolumeRemoved());
-        command.setIsPropertyInOutWeightRemoved(this.getIsPropertyInOutWeightRemoved());
         command.setIsPropertyInOutRmaNumberRemoved(this.getIsPropertyInOutRmaNumberRemoved());
         command.setIsPropertyInOutReversalNumberRemoved(this.getIsPropertyInOutReversalNumberRemoved());
-        command.setIsPropertyInOutIsDropShipRemoved(this.getIsPropertyInOutIsDropShipRemoved());
-        command.setIsPropertyInOutDropShipBusinessPartnerIdRemoved(this.getIsPropertyInOutDropShipBusinessPartnerIdRemoved());
         command.setIsPropertyInOutCreatedByRemoved(this.getIsPropertyInOutCreatedByRemoved());
         command.setIsPropertyInOutCreatedAtRemoved(this.getIsPropertyInOutCreatedAtRemoved());
         command.setIsPropertyInOutUpdatedByRemoved(this.getIsPropertyInOutUpdatedByRemoved());

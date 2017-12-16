@@ -67,31 +67,31 @@ namespace Dddml.Wms.Domain.Warehouse
             }
         }
 
-		public virtual string Name
+		public virtual string WarehouseName
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Name"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("WarehouseName"))
                 {
-                    return _state.Name;
+                    return _state.WarehouseName;
                 }
                 return null;
             }
             set
             {
-                _state.Name = value;
+                _state.WarehouseName = value;
             }
         }
 
-        string IWarehouseStateProperties.Name
+        string IWarehouseStateProperties.WarehouseName
         {
             get 
             {
-                return (this._state as IWarehouseStateProperties).Name;
+                return (this._state as IWarehouseStateProperties).WarehouseName;
             }
             set 
             {
-                (this._state as IWarehouseStateProperties).Name = value;
+                (this._state as IWarehouseStateProperties).WarehouseName = value;
             }
         }
 

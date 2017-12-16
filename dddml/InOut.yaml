@@ -3,18 +3,6 @@
 ---
 
 # ------------------------------
-
-#valueObjects:
-
-    #SkuId:
-    #  properties:
-    #    ProductId:
-    #      type: string
-    #    AttributeSetInstanceId:
-    #      type: string        
-
-          
-# ------------------------------
 enumObjects:
     
     DocumentAction:
@@ -36,7 +24,6 @@ enumObjects:
 # ------------------------------
 aggregates:
 
-
     # --------------- aggregate ---------------
     InOut:
 
@@ -46,8 +33,8 @@ aggregates:
 
       properties:
 
-        IsSOTransaction:
-          type: bool
+        # IsSOTransaction:
+          # type: bool
 
         DocumentStatus:
           type: string
@@ -63,13 +50,13 @@ aggregates:
         Processed:
           type: bool 
 
-        DocumentType:
-          type: int
+        DocumentTypeId:
+          referenceType: DocumentType
 
         Description:
           type: string
 
-        OrderNumber:
+        OrderId:
           type: string
 
         DateOrdered:
@@ -78,13 +65,13 @@ aggregates:
         IsPrinted:
           type: bool
         
-        MovementType:
+        # 出入库类型
+        MovementTypeId:
           type: string
+          referenceType: MovementType
 
         MovementDate:  
           type: DateTime?
-
-        #dateacct timestamp without time zone NOT NULL,
 
         BusinessPartnerId:
           type: string
@@ -95,37 +82,21 @@ aggregates:
         POReference:
           type: string
 
-        #deliveryrule character(1) NOT NULL,
-
-        #freightcostrule character(1) NOT NULL,
-
-        FreightAmount:
-          type: Money
-
-        #deliveryviarule character(1) NOT NULL,
+        # FreightAmount:
+          # type: Money
 
         ShipperId:
           type: string
           
-        ChargeAmount:
-          type: Money
+        # ChargeAmount:
+          # type: Money
 
-        #priorityrule character(1) NOT NULL,
-        
         DatePrinted:
           type: DateTime?
 
-        #c_invoice_id numeric(10,0),
-
-        #CreatedFrom:
-        #  type: string
-
-        #string GenerateTo
-
-        #sendemail character(1) NOT NULL DEFAULT 'N'::bpchar,
-
-        #ad_user_id numeric(10,0),
-
+        # CreatedFrom:
+          # type: string
+          
         SalesRepresentative:
           type: string
 
@@ -141,24 +112,11 @@ aggregates:
         TrackingNumber:
           type: string
 
-        #ad_orgtrx_id numeric(10,0),
-        #c_project_id numeric(10,0),
-        #c_campaign_id numeric(10,0),
-        #c_activity_id numeric(10,0),
-        #user1_id numeric(10,0),
-        #user2_id numeric(10,0),
-        
         DateReceived:
           type: DateTime?
           
         IsInTransit:
           type: bool
-
-        #ref_inout_id numeric(10,0),
-
-        #createconfirm character(1),
-
-        #createpackage character(1),
 
         IsApproved:
           type: bool 
@@ -166,29 +124,44 @@ aggregates:
         IsInDispute:
           type: bool
 
-        Volume:
-          type: decimal
+        # Volume:
+          # type: decimal
           
-        Weight:
-          type: decimal
+        # Weight:
+          # type: decimal
 
-        # m_rma_id numeric(10,0),
         RmaNumber: 
           type: string
 
         ReversalNumber:
           type: string
           
-        IsDropShip:
-          type: bool
+        # IsDropShip:
+          # type: bool
+        # DropShipBusinessPartnerId:
+          # type: string
           
-        DropShipBusinessPartnerId:
-          type: string
-
+        #dateacct timestamp without time zone NOT NULL,
+        #deliveryrule character(1) NOT NULL,
+        #freightcostrule character(1) NOT NULL,
+        #deliveryviarule character(1) NOT NULL,
+        #priorityrule character(1) NOT NULL,
+        #c_invoice_id numeric(10,0),
+        #string GenerateTo
+        #sendemail character(1) NOT NULL DEFAULT 'N'::bpchar,
+        #ad_user_id numeric(10,0),
+        #ad_orgtrx_id numeric(10,0),
+        #c_project_id numeric(10,0),
+        #c_campaign_id numeric(10,0),
+        #c_activity_id numeric(10,0),
+        #user1_id numeric(10,0),
+        #user2_id numeric(10,0),
+        #ref_inout_id numeric(10,0),
+        #createconfirm character(1),
+        #createpackage character(1),
         #dropship_location_id numeric(10,0),
         #dropship_user_id numeric(10,0),
         #processedon numeric,
-        
         #string TerminalReference:
         
         InOutLines:
@@ -201,16 +174,10 @@ aggregates:
           id: 
             name: LineNumber
             type: long
-              
             #name: SkuId
             #type: SkuId
               
           properties:  
-
-            Description:
-              type: string
-
-            #c_orderline_id numeric(10,0),
 
             LocatorId:
               type: string
@@ -218,46 +185,39 @@ aggregates:
             ProductId:
               type: string
 
+            AttributeSetInstanceId:
+              type: string
+
+            Description:
+              type: string
+
+            # IsDescription:
+              # type: bool
+
             UomId:
               type: string
 
-            #TQuantity 
-            
-            # numeric NOT NULL DEFAULT 0,
             MovementQuantity: 
               type: decimal
 
-            # numeric DEFAULT 0,
             ConfirmedQuantity: 
               type: decimal
 
-            # numeric DEFAULT 0,
             ScrappedQuantity: 
               type: decimal
 
-            # numeric DEFAULT 0,
             TargetQuantity: 
               type: decimal
 
-            # numeric DEFAULT 0,
             PickedQuantity: 
               type: decimal
 
             IsInvoiced: 
               type: bool
 
-            AttributeSetInstanceId:
-              type: string
-
-            IsDescription:
-              type: bool
-
-            #ref_inoutline_id numeric(10,0),
-
             Processed: 
               type: bool
 
-            # numeric NOT NULL,
             QuantityEntered: 
               type: decimal
 
@@ -270,12 +230,25 @@ aggregates:
             #user1_id numeric(10,0),
             #user2_id numeric(10,0),
             #ad_orgtrx_id numeric(10,0),
-
             #m_rmaline_id numeric(10,0),
+            
             RmaLineNumber: 
               type: long
 
             ReversalLineNumber:
               type: long
+                
+# ------------------------------
+
+#valueObjects:
+
+    #SkuId:
+    #  properties:
+    #    ProductId:
+    #      type: string
+    #    AttributeSetInstanceId:
+    #      type: string        
+
+                
                 
                 

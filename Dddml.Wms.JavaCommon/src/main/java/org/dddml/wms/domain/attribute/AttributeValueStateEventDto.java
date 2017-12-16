@@ -26,14 +26,14 @@ public class AttributeValueStateEventDto extends AbstractStateEvent
         getStateEventId().setValue(value);
     }
 
-    private String name;
+    private String attributeValueName;
 
-    public String getName() {
-        return this.name;
+    public String getAttributeValueName() {
+        return this.attributeValueName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAttributeValueName(String attributeValueName) {
+        this.attributeValueName = attributeValueName;
     }
 
     private String description;
@@ -96,14 +96,14 @@ public class AttributeValueStateEventDto extends AbstractStateEvent
         this.version = version;
     }
 
-    private Boolean isPropertyNameRemoved;
+    private Boolean isPropertyAttributeValueNameRemoved;
 
-    public Boolean getIsPropertyNameRemoved() {
-        return this.isPropertyNameRemoved;
+    public Boolean getIsPropertyAttributeValueNameRemoved() {
+        return this.isPropertyAttributeValueNameRemoved;
     }
 
-    public void setIsPropertyNameRemoved(Boolean removed) {
-        this.isPropertyNameRemoved = removed;
+    public void setIsPropertyAttributeValueNameRemoved(Boolean removed) {
+        this.isPropertyAttributeValueNameRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;

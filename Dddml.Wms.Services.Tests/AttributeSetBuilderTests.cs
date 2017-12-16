@@ -131,16 +131,16 @@ namespace Dddml.Wms.Services.Tests
 
             public string GenerateAttributeSetId(CreateAttributeSet attributeSet)
             {
-                if (IdRegex.IsMatch(attributeSet.Name))
+                if (IdRegex.IsMatch(attributeSet.AttributeSetName))
                 {
-                    return attributeSet.Name + System.DateTime.Now.Ticks;
+                    return attributeSet.AttributeSetName + System.DateTime.Now.Ticks;
                 }
                 return System.Guid.NewGuid().ToString();
             }
 
             public string GenerateAttributeId(CreateAttribute attribute)
             {
-                return attribute.Name + System.DateTime.Now.Ticks;
+                return attribute.AttributeName + System.DateTime.Now.Ticks;
             }
         }
 

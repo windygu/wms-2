@@ -86,11 +86,17 @@
 .\InventoryPostingRuleResource.java
 .\InventoryPRTriggeredResource.java
 .\LocatorResource.java
+.\MovementTypeResource.java
+.\OrderHeaderResource.java
+.\OrderItemResource.java
 .\OrganizationResource.java
 .\OrganizationStructureResource.java
 .\OrganizationStructureTypeResource.java
+.\ProductCategoryResource.java
+.\ProductResource.java
 .\SellableInventoryItemEntryMvoResource.java
 .\SellableInventoryItemResource.java
+.\SupplierProductResource.java
 .\WarehouseResource.java
 </LastOutputs>
     </Content>
@@ -143,6 +149,15 @@
     <Content Include="src\main\java\org\dddml\wms\restful\resource\LocatorTreeResource.java">
       <DependentUpon>GenerateTreeResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\MovementTypeResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\OrderHeaderResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\OrderItemResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
@@ -155,10 +170,19 @@
     <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationTreeResource.java">
       <DependentUpon>GenerateTreeResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\ProductCategoryResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\ProductResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\SellableInventoryItemEntryMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\SellableInventoryItemResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\SupplierProductResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\WarehouseResource.java">

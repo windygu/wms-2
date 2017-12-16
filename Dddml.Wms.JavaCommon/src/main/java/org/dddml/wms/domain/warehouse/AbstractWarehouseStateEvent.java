@@ -32,16 +32,16 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String name;
+    private String warehouseName;
 
-    public String getName()
+    public String getWarehouseName()
     {
-        return this.name;
+        return this.warehouseName;
     }
 
-    public void setName(String name)
+    public void setWarehouseName(String warehouseName)
     {
-        this.name = name;
+        this.warehouseName = warehouseName;
     }
 
     private String description;
@@ -157,14 +157,14 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyNameRemoved;
+        private Boolean isPropertyWarehouseNameRemoved;
 
-        public Boolean getIsPropertyNameRemoved() {
-            return this.isPropertyNameRemoved;
+        public Boolean getIsPropertyWarehouseNameRemoved() {
+            return this.isPropertyWarehouseNameRemoved;
         }
 
-        public void setIsPropertyNameRemoved(Boolean removed) {
-            this.isPropertyNameRemoved = removed;
+        public void setIsPropertyWarehouseNameRemoved(Boolean removed) {
+            this.isPropertyWarehouseNameRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;

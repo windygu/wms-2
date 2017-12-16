@@ -40,9 +40,9 @@ public interface AttributeSetCommand extends Command
 
     interface CreateOrMergePatchAttributeSet extends AttributeSetCommand
     {
-        String getName();
+        String getAttributeSetName();
 
-        void setName(String name);
+        void setAttributeSetName(String attributeSetName);
 
         String getOrganizationId();
 
@@ -80,9 +80,9 @@ public interface AttributeSetCommand extends Command
 
     interface MergePatchAttributeSet extends CreateOrMergePatchAttributeSet
     {
-        Boolean getIsPropertyNameRemoved();
+        Boolean getIsPropertyAttributeSetNameRemoved();
 
-        void setIsPropertyNameRemoved(Boolean removed);
+        void setIsPropertyAttributeSetNameRemoved(Boolean removed);
 
         Boolean getIsPropertyOrganizationIdRemoved();
 

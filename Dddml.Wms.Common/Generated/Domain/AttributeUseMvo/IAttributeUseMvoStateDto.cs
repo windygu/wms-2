@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             set;
         }
 
-        string AttributeSetName
+        string AttributeSetAttributeSetName
         {
             get;
             set;

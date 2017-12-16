@@ -15,7 +15,7 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="name" ></property>
+	<property name="attributeSetName" ></property>
 	<property name="organizationId" ></property>
 	<property name="description" ></property>
 	<property name="serialNumberAttributeId" ></property>
@@ -35,7 +35,7 @@
 
     <subclass name="AbstractAttributeSetStateEvent$SimpleAttributeSetStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyNameRemoved" column="IsPropertyNameRemoved"/>
+        <property name="isPropertyAttributeSetNameRemoved" column="IsPropertyAttributeSetNameRemoved"/>
 
         <property name="isPropertyOrganizationIdRemoved" column="IsPropertyOrganizationIdRemoved"/>
 

@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             set { StateEventId.AttributeVersion = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string AttributeValueName { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string AttributeName { get; set; }
+		public virtual string AttributeAttributeName { get; set; }
 
 		public virtual string AttributeOrganizationId { get; set; }
 
@@ -114,13 +114,13 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             }
         }
 
-		public virtual bool? IsPropertyNameRemoved { get; set; }
+		public virtual bool? IsPropertyAttributeValueNameRemoved { get; set; }
 
-        bool IAttributeValueMvoStateMergePatched.IsPropertyNameRemoved
+        bool IAttributeValueMvoStateMergePatched.IsPropertyAttributeValueNameRemoved
         {
             get 
             {
-                var b = this.IsPropertyNameRemoved;
+                var b = this.IsPropertyAttributeValueNameRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -129,7 +129,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             }
             set 
             {
-                this.IsPropertyNameRemoved = value;
+                this.IsPropertyAttributeValueNameRemoved = value;
             }
         }
 
@@ -209,13 +209,13 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             }
         }
 
-		public virtual bool? IsPropertyAttributeNameRemoved { get; set; }
+		public virtual bool? IsPropertyAttributeAttributeNameRemoved { get; set; }
 
-        bool IAttributeValueMvoStateMergePatched.IsPropertyAttributeNameRemoved
+        bool IAttributeValueMvoStateMergePatched.IsPropertyAttributeAttributeNameRemoved
         {
             get 
             {
-                var b = this.IsPropertyAttributeNameRemoved;
+                var b = this.IsPropertyAttributeAttributeNameRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -224,7 +224,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             }
             set 
             {
-                this.IsPropertyAttributeNameRemoved = value;
+                this.IsPropertyAttributeAttributeNameRemoved = value;
             }
         }
 

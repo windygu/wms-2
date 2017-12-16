@@ -11,7 +11,7 @@
 	<id name="attributeSetId" length="50" column="AttributeSetId"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
-	<property name="name" ></property>
+	<property name="attributeSetName" ></property>
 	<property name="organizationId" ></property>
 	<property name="description" ></property>
 	<property name="serialNumberAttributeId" ></property>

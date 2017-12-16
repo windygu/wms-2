@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.AttributeSet.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "AttributeSetId", "Name", "OrganizationId", "Description", "SerialNumberAttributeId", "LotAttributeId", "ReferenceId", "AttributeUses", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "AttributeSetId", "AttributeSetName", "OrganizationId", "Description", "SerialNumberAttributeId", "LotAttributeId", "ReferenceId", "AttributeUses", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

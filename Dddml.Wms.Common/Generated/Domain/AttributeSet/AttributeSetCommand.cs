@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             set { this.CommandId = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string AttributeSetName { get; set; }
 
 		public virtual string OrganizationId { get; set; }
 
@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 	public class MergePatchAttributeSet :AttributeSetCommandBase, IMergePatchAttributeSet
 	{
 
-		public virtual bool IsPropertyNameRemoved { get; set; }
+		public virtual bool IsPropertyAttributeSetNameRemoved { get; set; }
 
 		public virtual bool IsPropertyOrganizationIdRemoved { get; set; }
 

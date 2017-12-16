@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.Organization
 	{
 		public virtual string OrganizationId { get; set; }
 
-		public virtual string Name { get; set; }
+		public virtual string OrganizationName { get; set; }
 
 		public virtual string Description { get; set; }
 

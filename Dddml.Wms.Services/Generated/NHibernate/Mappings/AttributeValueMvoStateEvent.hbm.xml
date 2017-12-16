@@ -12,12 +12,12 @@
     </composite-id>
     <discriminator column="StateEventType" type="String" />
 
-    <property name="Name" ></property>
+    <property name="AttributeValueName" ></property>
     <property name="Description" ></property>
     <property name="ReferenceId" ></property>
     <property name="Version" ></property>
     <property name="Active" ></property>
-    <property name="AttributeName" ></property>
+    <property name="AttributeAttributeName" ></property>
     <property name="AttributeOrganizationId" ></property>
     <property name="AttributeDescription" ></property>
     <property name="AttributeIsMandatory" ></property>
@@ -45,7 +45,7 @@
     <subclass name="AttributeValueMvoStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
+        <property name="IsPropertyAttributeValueNameRemoved" column="IsPropertyAttributeValueNameRemoved"/>
 
         <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
@@ -55,7 +55,7 @@
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
-        <property name="IsPropertyAttributeNameRemoved" column="IsPropertyAttributeNameRemoved"/>
+        <property name="IsPropertyAttributeAttributeNameRemoved" column="IsPropertyAttributeAttributeNameRemoved"/>
 
         <property name="IsPropertyAttributeOrganizationIdRemoved" column="IsPropertyAttributeOrganizationIdRemoved"/>
 

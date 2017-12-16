@@ -9,7 +9,7 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="Name" ></property>
+    <property name="OrganizationName" ></property>
     <property name="Description" ></property>
     <property name="Type" ></property>
     <property name="IsSummary" ></property>

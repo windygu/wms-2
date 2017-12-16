@@ -34,16 +34,16 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
 
     public static abstract class AbstractCreateOrMergePatchAttribute extends AbstractAttributeCommand implements CreateOrMergePatchAttribute
     {
-        private String name;
+        private String attributeName;
 
-        public String getName()
+        public String getAttributeName()
         {
-            return this.name;
+            return this.attributeName;
         }
 
-        public void setName(String name)
+        public void setAttributeName(String attributeName)
         {
-            this.name = name;
+            this.attributeName = attributeName;
         }
 
         private String organizationId;
@@ -215,16 +215,16 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
-        private Boolean isPropertyNameRemoved;
+        private Boolean isPropertyAttributeNameRemoved;
 
-        public Boolean getIsPropertyNameRemoved()
+        public Boolean getIsPropertyAttributeNameRemoved()
         {
-            return this.isPropertyNameRemoved;
+            return this.isPropertyAttributeNameRemoved;
         }
 
-        public void setIsPropertyNameRemoved(Boolean removed)
+        public void setIsPropertyAttributeNameRemoved(Boolean removed)
         {
-            this.isPropertyNameRemoved = removed;
+            this.isPropertyAttributeNameRemoved = removed;
         }
 
         private Boolean isPropertyOrganizationIdRemoved;

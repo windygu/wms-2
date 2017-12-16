@@ -28,7 +28,7 @@ public class AttributeStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setName(e.getName());
+        dto.setAttributeName(e.getAttributeName());
         dto.setOrganizationId(e.getOrganizationId());
         dto.setDescription(e.getDescription());
         dto.setIsMandatory(e.getIsMandatory());
@@ -55,7 +55,7 @@ public class AttributeStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setName(e.getName());
+        dto.setAttributeName(e.getAttributeName());
         dto.setOrganizationId(e.getOrganizationId());
         dto.setDescription(e.getDescription());
         dto.setIsMandatory(e.getIsMandatory());
@@ -66,7 +66,7 @@ public class AttributeStateEventDtoConverter {
         dto.setFieldName(e.getFieldName());
         dto.setReferenceId(e.getReferenceId());
         dto.setActive(e.getActive());
-        dto.setIsPropertyNameRemoved(e.getIsPropertyNameRemoved());
+        dto.setIsPropertyAttributeNameRemoved(e.getIsPropertyAttributeNameRemoved());
         dto.setIsPropertyOrganizationIdRemoved(e.getIsPropertyOrganizationIdRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyIsMandatoryRemoved(e.getIsPropertyIsMandatoryRemoved());

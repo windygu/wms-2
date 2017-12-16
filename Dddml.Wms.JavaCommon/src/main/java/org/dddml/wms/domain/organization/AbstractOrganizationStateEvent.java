@@ -32,16 +32,16 @@ public abstract class AbstractOrganizationStateEvent extends AbstractStateEvent 
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String name;
+    private String organizationName;
 
-    public String getName()
+    public String getOrganizationName()
     {
-        return this.name;
+        return this.organizationName;
     }
 
-    public void setName(String name)
+    public void setOrganizationName(String organizationName)
     {
-        this.name = name;
+        this.organizationName = organizationName;
     }
 
     private String description;
@@ -169,14 +169,14 @@ public abstract class AbstractOrganizationStateEvent extends AbstractStateEvent 
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyNameRemoved;
+        private Boolean isPropertyOrganizationNameRemoved;
 
-        public Boolean getIsPropertyNameRemoved() {
-            return this.isPropertyNameRemoved;
+        public Boolean getIsPropertyOrganizationNameRemoved() {
+            return this.isPropertyOrganizationNameRemoved;
         }
 
-        public void setIsPropertyNameRemoved(Boolean removed) {
-            this.isPropertyNameRemoved = removed;
+        public void setIsPropertyOrganizationNameRemoved(Boolean removed) {
+            this.isPropertyOrganizationNameRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;

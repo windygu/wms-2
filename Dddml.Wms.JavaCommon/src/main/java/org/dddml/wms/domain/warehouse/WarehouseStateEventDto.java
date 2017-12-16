@@ -34,14 +34,14 @@ public class WarehouseStateEventDto extends AbstractStateEvent
         getStateEventId().setVersion(version);
     }
 
-    private String name;
+    private String warehouseName;
 
-    public String getName() {
-        return this.name;
+    public String getWarehouseName() {
+        return this.warehouseName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setWarehouseName(String warehouseName) {
+        this.warehouseName = warehouseName;
     }
 
     private String description;
@@ -94,14 +94,14 @@ public class WarehouseStateEventDto extends AbstractStateEvent
         this.createdAt = createdAt;
     }
 
-    private Boolean isPropertyNameRemoved;
+    private Boolean isPropertyWarehouseNameRemoved;
 
-    public Boolean getIsPropertyNameRemoved() {
-        return this.isPropertyNameRemoved;
+    public Boolean getIsPropertyWarehouseNameRemoved() {
+        return this.isPropertyWarehouseNameRemoved;
     }
 
-    public void setIsPropertyNameRemoved(Boolean removed) {
-        this.isPropertyNameRemoved = removed;
+    public void setIsPropertyWarehouseNameRemoved(Boolean removed) {
+        this.isPropertyWarehouseNameRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;

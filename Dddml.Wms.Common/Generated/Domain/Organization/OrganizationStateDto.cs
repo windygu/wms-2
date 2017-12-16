@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.Organization
             set;
         }
 
-        public virtual string Name
+        public virtual string OrganizationName
         {
             get;
             set;
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.Organization
         {
             var state = new OrganizationState(true);
             state.OrganizationId = this.OrganizationId;
-            state.Name = this.Name;
+            state.OrganizationName = this.OrganizationName;
             state.Description = this.Description;
             state.Type = this.Type;
             if (this.IsSummary != null && this.IsSummary.HasValue) { state.IsSummary = this.IsSummary.Value; }

@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.Warehouse
 	{
 		string WarehouseId { get; set; }
 
-		string Name { get; set; }
+		string WarehouseName { get; set; }
 
 		string Description { get; set; }
 

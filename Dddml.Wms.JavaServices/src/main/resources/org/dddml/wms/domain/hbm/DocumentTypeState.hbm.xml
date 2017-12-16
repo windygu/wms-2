@@ -21,6 +21,9 @@
 
     <property name="updatedAt" column="UpdatedAt" />
 
+    <property name="commandId" column="CommandId"/>
+
+
 
   </class>
   

@@ -4,7 +4,6 @@ import java.util.*;
 import org.dddml.wms.domain.inout.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import org.joda.money.Money;
 import org.dddml.wms.domain.*;
 import org.hibernate.Session;
 import org.hibernate.Criteria;
@@ -29,7 +28,7 @@ public class HibernateInOutLineMvoStateRepository implements InOutLineMvoStateRe
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("InOutLineId", "Description", "LocatorId", "ProductId", "UomId", "MovementQuantity", "ConfirmedQuantity", "ScrappedQuantity", "TargetQuantity", "PickedQuantity", "IsInvoiced", "AttributeSetInstanceId", "IsDescription", "Processed", "QuantityEntered", "RmaLineNumber", "ReversalLineNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InOutIsSOTransaction", "InOutDocumentStatus", "InOutPosted", "InOutProcessing", "InOutProcessed", "InOutDocumentType", "InOutDescription", "InOutOrderNumber", "InOutDateOrdered", "InOutIsPrinted", "InOutMovementType", "InOutMovementDate", "InOutBusinessPartnerId", "InOutWarehouseId", "InOutPOReference", "InOutFreightAmount", "InOutShipperId", "InOutChargeAmount", "InOutDatePrinted", "InOutSalesRepresentative", "InOutNumberOfPackages", "InOutPickDate", "InOutShipDate", "InOutTrackingNumber", "InOutDateReceived", "InOutIsInTransit", "InOutIsApproved", "InOutIsInDispute", "InOutVolume", "InOutWeight", "InOutRmaNumber", "InOutReversalNumber", "InOutIsDropShip", "InOutDropShipBusinessPartnerId", "InOutInOutLines", "InOutVersion", "InOutCreatedBy", "InOutCreatedAt", "InOutUpdatedBy", "InOutUpdatedAt", "InOutActive", "InOutDeleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("InOutLineId", "LocatorId", "ProductId", "AttributeSetInstanceId", "Description", "UomId", "MovementQuantity", "ConfirmedQuantity", "ScrappedQuantity", "TargetQuantity", "PickedQuantity", "IsInvoiced", "Processed", "QuantityEntered", "RmaLineNumber", "ReversalLineNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InOutDocumentStatus", "InOutPosted", "InOutProcessing", "InOutProcessed", "InOutDocumentTypeId", "InOutDescription", "InOutOrderId", "InOutDateOrdered", "InOutIsPrinted", "InOutMovementTypeId", "InOutMovementDate", "InOutBusinessPartnerId", "InOutWarehouseId", "InOutPOReference", "InOutShipperId", "InOutDatePrinted", "InOutSalesRepresentative", "InOutNumberOfPackages", "InOutPickDate", "InOutShipDate", "InOutTrackingNumber", "InOutDateReceived", "InOutIsInTransit", "InOutIsApproved", "InOutIsInDispute", "InOutRmaNumber", "InOutReversalNumber", "InOutInOutLines", "InOutVersion", "InOutCreatedBy", "InOutCreatedAt", "InOutUpdatedBy", "InOutUpdatedAt", "InOutActive", "InOutDeleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

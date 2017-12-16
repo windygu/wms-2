@@ -21,16 +21,16 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         this.attributeSetId = attributeSetId;
     }
 
-    private String name;
+    private String attributeSetName;
 
-    public String getName()
+    public String getAttributeSetName()
     {
-        return this.name;
+        return this.attributeSetName;
     }
 
-    public void setName(String name)
+    public void setAttributeSetName(String attributeSetName)
     {
-        this.name = name;
+        this.attributeSetName = attributeSetName;
     }
 
     private String organizationId;
@@ -254,7 +254,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
     {
         throwOnWrongEvent(e);
 
-        this.setName(e.getName());
+        this.setAttributeSetName(e.getAttributeSetName());
         this.setOrganizationId(e.getOrganizationId());
         this.setDescription(e.getDescription());
         this.setSerialNumberAttributeId(e.getSerialNumberAttributeId());
@@ -277,16 +277,16 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
     {
         throwOnWrongEvent(e);
 
-        if (e.getName() == null)
+        if (e.getAttributeSetName() == null)
         {
-            if (e.getIsPropertyNameRemoved() != null && e.getIsPropertyNameRemoved())
+            if (e.getIsPropertyAttributeSetNameRemoved() != null && e.getIsPropertyAttributeSetNameRemoved())
             {
-                this.setName(null);
+                this.setAttributeSetName(null);
             }
         }
         else
         {
-            this.setName(e.getName());
+            this.setAttributeSetName(e.getAttributeSetName());
         }
         if (e.getOrganizationId() == null)
         {

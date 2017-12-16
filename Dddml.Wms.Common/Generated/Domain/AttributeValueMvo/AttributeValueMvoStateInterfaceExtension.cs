@@ -49,12 +49,12 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             cmd.AttributeVersion = ((IAttributeValueMvoStateProperties)state).AttributeVersion;
 
             cmd.AttributeValueId = state.AttributeValueId;
-            cmd.Name = state.Name;
+            cmd.AttributeValueName = state.AttributeValueName;
             cmd.Description = state.Description;
             cmd.ReferenceId = state.ReferenceId;
             cmd.Version = ((IAttributeValueMvoStateProperties)state).Version;
             cmd.Active = ((IAttributeValueMvoStateProperties)state).Active;
-            cmd.AttributeName = state.AttributeName;
+            cmd.AttributeAttributeName = state.AttributeAttributeName;
             cmd.AttributeOrganizationId = state.AttributeOrganizationId;
             cmd.AttributeDescription = state.AttributeDescription;
             cmd.AttributeIsMandatory = state.AttributeIsMandatory;
@@ -71,10 +71,10 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             cmd.AttributeActive = state.AttributeActive;
             cmd.AttributeDeleted = state.AttributeDeleted;
             
-            if (state.Name == null) { cmd.IsPropertyNameRemoved = true; }
+            if (state.AttributeValueName == null) { cmd.IsPropertyAttributeValueNameRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.ReferenceId == null) { cmd.IsPropertyReferenceIdRemoved = true; }
-            if (state.AttributeName == null) { cmd.IsPropertyAttributeNameRemoved = true; }
+            if (state.AttributeAttributeName == null) { cmd.IsPropertyAttributeAttributeNameRemoved = true; }
             if (state.AttributeOrganizationId == null) { cmd.IsPropertyAttributeOrganizationIdRemoved = true; }
             if (state.AttributeDescription == null) { cmd.IsPropertyAttributeDescriptionRemoved = true; }
             if (state.AttributeAttributeValueType == null) { cmd.IsPropertyAttributeAttributeValueTypeRemoved = true; }
@@ -94,12 +94,12 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             cmd.AttributeVersion = ((IAttributeValueMvoStateProperties)state).AttributeVersion;
 
             cmd.AttributeValueId = state.AttributeValueId;
-            cmd.Name = state.Name;
+            cmd.AttributeValueName = state.AttributeValueName;
             cmd.Description = state.Description;
             cmd.ReferenceId = state.ReferenceId;
             cmd.Version = ((IAttributeValueMvoStateProperties)state).Version;
             cmd.Active = ((IAttributeValueMvoStateProperties)state).Active;
-            cmd.AttributeName = state.AttributeName;
+            cmd.AttributeAttributeName = state.AttributeAttributeName;
             cmd.AttributeOrganizationId = state.AttributeOrganizationId;
             cmd.AttributeDescription = state.AttributeDescription;
             cmd.AttributeIsMandatory = state.AttributeIsMandatory;

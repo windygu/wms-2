@@ -118,16 +118,16 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
         this.deleted = deleted;
     }
 
-    private String attributeSetName;
+    private String attributeSetAttributeSetName;
 
-    public String getAttributeSetName()
+    public String getAttributeSetAttributeSetName()
     {
-        return this.attributeSetName;
+        return this.attributeSetAttributeSetName;
     }
 
-    public void setAttributeSetName(String attributeSetName)
+    public void setAttributeSetAttributeSetName(String attributeSetAttributeSetName)
     {
-        this.attributeSetName = attributeSetName;
+        this.attributeSetAttributeSetName = attributeSetAttributeSetName;
     }
 
     private String attributeSetOrganizationId;
@@ -341,7 +341,7 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
         this.setSequenceNumber(e.getSequenceNumber());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
-        this.setAttributeSetName(e.getAttributeSetName());
+        this.setAttributeSetAttributeSetName(e.getAttributeSetAttributeSetName());
         this.setAttributeSetOrganizationId(e.getAttributeSetOrganizationId());
         this.setAttributeSetDescription(e.getAttributeSetDescription());
         this.setAttributeSetSerialNumberAttributeId(e.getAttributeSetSerialNumberAttributeId());
@@ -398,16 +398,16 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
         {
             this.setActive(e.getActive());
         }
-        if (e.getAttributeSetName() == null)
+        if (e.getAttributeSetAttributeSetName() == null)
         {
-            if (e.getIsPropertyAttributeSetNameRemoved() != null && e.getIsPropertyAttributeSetNameRemoved())
+            if (e.getIsPropertyAttributeSetAttributeSetNameRemoved() != null && e.getIsPropertyAttributeSetAttributeSetNameRemoved())
             {
-                this.setAttributeSetName(null);
+                this.setAttributeSetAttributeSetName(null);
             }
         }
         else
         {
-            this.setAttributeSetName(e.getAttributeSetName());
+            this.setAttributeSetAttributeSetName(e.getAttributeSetAttributeSetName());
         }
         if (e.getAttributeSetOrganizationId() == null)
         {

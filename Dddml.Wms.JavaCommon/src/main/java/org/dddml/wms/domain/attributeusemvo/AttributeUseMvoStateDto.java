@@ -58,16 +58,16 @@ public class AttributeUseMvoStateDto
         this.active = active;
     }
 
-    private String attributeSetName;
+    private String attributeSetAttributeSetName;
 
-    public String getAttributeSetName()
+    public String getAttributeSetAttributeSetName()
     {
-        return this.attributeSetName;
+        return this.attributeSetAttributeSetName;
     }
 
-    public void setAttributeSetName(String attributeSetName)
+    public void setAttributeSetAttributeSetName(String attributeSetAttributeSetName)
     {
-        this.attributeSetName = attributeSetName;
+        this.attributeSetAttributeSetName = attributeSetAttributeSetName;
     }
 
     private String attributeSetOrganizationId;
@@ -300,8 +300,8 @@ public class AttributeUseMvoStateDto
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());
             }
-            if (returnedFieldsContains("AttributeSetName")) {
-                dto.setAttributeSetName(state.getAttributeSetName());
+            if (returnedFieldsContains("AttributeSetAttributeSetName")) {
+                dto.setAttributeSetAttributeSetName(state.getAttributeSetAttributeSetName());
             }
             if (returnedFieldsContains("AttributeSetOrganizationId")) {
                 dto.setAttributeSetOrganizationId(state.getAttributeSetOrganizationId());

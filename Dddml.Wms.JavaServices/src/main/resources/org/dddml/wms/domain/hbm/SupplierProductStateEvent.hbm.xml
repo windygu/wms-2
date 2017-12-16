@@ -1,0 +1,82 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.supplierproduct">
+  
+  <class name="AbstractSupplierProductStateEvent" table="SupplierProductStateEvents" mutable="false" abstract="true">
+
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.supplierproduct.SupplierProductStateEventId">
+		<key-property name="supplierProductIdProductId" ><column name="SupplierProductIdProductId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="supplierProductIdPartyId" ><column name="SupplierProductIdPartyId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="supplierProductIdCurrencyUomId" ><column name="SupplierProductIdCurrencyUomId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="supplierProductIdMinimumOrderQuantity" ><column name="SupplierProductIdMinimumOrderQuantity" sql-type="DECIMAL(18,6)" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="StateEventType" type="string" />
+
+	<property name="availableThruDate" ><column name="AvailableThruDate" sql-type="DATETIME" /></property>
+	<property name="supplierPrefOrderId" ><column name="SupplierPrefOrderId" sql-type="VARCHAR(20)" /></property>
+	<property name="supplierRatingTypeId" ><column name="SupplierRatingTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="standardLeadTimeDays" ><column name="StandardLeadTimeDays" sql-type="DECIMAL(18,6)" /></property>
+	<property name="manufacturingLeadTimeDays" ><column name="ManufacturingLeadTimeDays" sql-type="DECIMAL(18,6)" /></property>
+	<property name="deliveryLeadTimeDays" ><column name="DeliveryLeadTimeDays" sql-type="DECIMAL(18,6)" /></property>
+	<property name="quantityUomId" ><column name="QuantityUomId" sql-type="VARCHAR(20)" /></property>
+	<property name="lastPrice" ><column name="LastPrice" sql-type="DECIMAL(18,3)" /></property>
+	<property name="shippingPrice" ><column name="ShippingPrice" sql-type="DECIMAL(18,3)" /></property>
+	<property name="externalProductName" ><column name="ExternalProductName" sql-type="VARCHAR(100)" /></property>
+	<property name="externalProductId" ><column name="ExternalProductId" sql-type="VARCHAR(60)" /></property>
+	<property name="canDropShip" ></property>
+	<property name="comments" ><column name="Comments" sql-type="VARCHAR(255)" /></property>
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractSupplierProductStateEvent$SimpleSupplierProductStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractSupplierProductStateEvent$SimpleSupplierProductStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyAvailableThruDateRemoved" column="IsPropertyAvailableThruDateRemoved"/>
+
+        <property name="isPropertySupplierPrefOrderIdRemoved" column="IsPropertySupplierPrefOrderIdRemoved"/>
+
+        <property name="isPropertySupplierRatingTypeIdRemoved" column="IsPropertySupplierRatingTypeIdRemoved"/>
+
+        <property name="isPropertyStandardLeadTimeDaysRemoved" column="IsPropertyStandardLeadTimeDaysRemoved"/>
+
+        <property name="isPropertyManufacturingLeadTimeDaysRemoved" column="IsPropertyManufacturingLeadTimeDaysRemoved"/>
+
+        <property name="isPropertyDeliveryLeadTimeDaysRemoved" column="IsPropertyDeliveryLeadTimeDaysRemoved"/>
+
+        <property name="isPropertyQuantityUomIdRemoved" column="IsPropertyQuantityUomIdRemoved"/>
+
+        <property name="isPropertyLastPriceRemoved" column="IsPropertyLastPriceRemoved"/>
+
+        <property name="isPropertyShippingPriceRemoved" column="IsPropertyShippingPriceRemoved"/>
+
+        <property name="isPropertyExternalProductNameRemoved" column="IsPropertyExternalProductNameRemoved"/>
+
+        <property name="isPropertyExternalProductIdRemoved" column="IsPropertyExternalProductIdRemoved"/>
+
+        <property name="isPropertyCanDropShipRemoved" column="IsPropertyCanDropShipRemoved"/>
+
+        <property name="isPropertyCommentsRemoved" column="IsPropertyCommentsRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

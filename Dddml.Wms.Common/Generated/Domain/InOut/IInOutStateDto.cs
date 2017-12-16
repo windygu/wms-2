@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -16,12 +15,6 @@ namespace Dddml.Wms.Domain.InOut
     public interface IInOutStateDto
     {
         string DocumentNumber
-        {
-            get;
-            set;
-        }
-
-        bool? IsSOTransaction
         {
             get;
             set;
@@ -51,7 +44,7 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        int? DocumentType
+        string DocumentTypeId
         {
             get;
             set;
@@ -63,7 +56,7 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        string OrderNumber
+        string OrderId
         {
             get;
             set;
@@ -81,7 +74,7 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        string MovementType
+        string MovementTypeId
         {
             get;
             set;
@@ -111,19 +104,7 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        Money? FreightAmount
-        {
-            get;
-            set;
-        }
-
         string ShipperId
-        {
-            get;
-            set;
-        }
-
-        Money? ChargeAmount
         {
             get;
             set;
@@ -189,18 +170,6 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        decimal? Volume
-        {
-            get;
-            set;
-        }
-
-        decimal? Weight
-        {
-            get;
-            set;
-        }
-
         string RmaNumber
         {
             get;
@@ -208,18 +177,6 @@ namespace Dddml.Wms.Domain.InOut
         }
 
         string ReversalNumber
-        {
-            get;
-            set;
-        }
-
-        bool? IsDropShip
-        {
-            get;
-            set;
-        }
-
-        string DropShipBusinessPartnerId
         {
             get;
             set;

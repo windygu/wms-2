@@ -13,26 +13,43 @@
                 dict.Add("InventoryItemId", "_INVENTORYITEMID_");
                 dict.Add("InventoryItemSourceVO", "_INVENTORYITEMSOURCEVO_");
                 dict.Add("InventoryPRTriggeredId", "_INVENTORYPRTRIGGEREDID_");
+                dict.Add("OrderItemId", "_ORDERITEMID_");
                 dict.Add("OrganizationStructureId", "_ORGANIZATIONSTRUCTUREID_");
                 dict.Add("SellableInventoryItemEntryId", "_SELLABLEINVENTORYITEMENTRYID_");
+                dict.Add("SupplierProductId", "_SUPPLIERPRODUCTID_");
 // //////////////////////
                 dict.Add("AttributeSetInstanceExtensionField", "_ATTRIBUTESETINSTANCEEXTENSIONFIELD_");
                 dict.Add("AttributeUse", "_ATTRIBUTEUSE_");
                 dict.Add("AttributeValue", "_ATTRIBUTEVALUE_");
                 dict.Add("bool", "_BOOL_");
                 dict.Add("bool?", "_BOOL__");
+                dict.Add("comment", "_COMMENT_");
+                dict.Add("currency-amount", "_CURRENCY-AMOUNT_");
+                dict.Add("currency-precise", "_CURRENCY-PRECISE_");
+                dict.Add("date-time", "_DATE-TIME_");
                 dict.Add("DateTime", "_DATETIME_");
                 dict.Add("DateTime?", "_DATETIME__");
                 dict.Add("decimal", "_DECIMAL_");
                 dict.Add("decimal?", "_DECIMAL__");
+                dict.Add("description", "_DESCRIPTION_");
+                dict.Add("fixed-point", "_FIXED-POINT_");
+                dict.Add("id", "_ID_");
+                dict.Add("id-long", "_ID-LONG_");
+                dict.Add("id-ne", "_ID-NE_");
+                dict.Add("id-vlong", "_ID-VLONG_");
+                dict.Add("indicator", "_INDICATOR_");
                 dict.Add("InOutLine", "_INOUTLINE_");
                 dict.Add("int", "_INT_");
                 dict.Add("int?", "_INT__");
                 dict.Add("InventoryItemEntry", "_INVENTORYITEMENTRY_");
                 dict.Add("long", "_LONG_");
                 dict.Add("long?", "_LONG__");
-                dict.Add("Money", "_MONEY_");
+                dict.Add("long-varchar", "_LONG-VARCHAR_");
+                dict.Add("name", "_NAME_");
+                dict.Add("numeric", "_NUMERIC_");
+                dict.Add("ProductCategory", "_PRODUCTCATEGORY_");
                 dict.Add("SellableInventoryItemEntry", "_SELLABLEINVENTORYITEMENTRY_");
                 dict.Add("string", "_STRING_");
+                dict.Add("url", "_URL_");
             //}
 

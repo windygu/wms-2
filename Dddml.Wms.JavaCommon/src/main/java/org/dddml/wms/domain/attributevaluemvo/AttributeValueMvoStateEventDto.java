@@ -35,14 +35,14 @@ public class AttributeValueMvoStateEventDto extends AbstractStateEvent
         getStateEventId().setAttributeVersion(attributeVersion);
     }
 
-    private String name;
+    private String attributeValueName;
 
-    public String getName() {
-        return this.name;
+    public String getAttributeValueName() {
+        return this.attributeValueName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAttributeValueName(String attributeValueName) {
+        this.attributeValueName = attributeValueName;
     }
 
     private String description;
@@ -85,14 +85,14 @@ public class AttributeValueMvoStateEventDto extends AbstractStateEvent
         this.active = active;
     }
 
-    private String attributeName;
+    private String attributeAttributeName;
 
-    public String getAttributeName() {
-        return this.attributeName;
+    public String getAttributeAttributeName() {
+        return this.attributeAttributeName;
     }
 
-    public void setAttributeName(String attributeName) {
-        this.attributeName = attributeName;
+    public void setAttributeAttributeName(String attributeAttributeName) {
+        this.attributeAttributeName = attributeAttributeName;
     }
 
     private String attributeOrganizationId;
@@ -265,14 +265,14 @@ public class AttributeValueMvoStateEventDto extends AbstractStateEvent
         this.createdAt = createdAt;
     }
 
-    private Boolean isPropertyNameRemoved;
+    private Boolean isPropertyAttributeValueNameRemoved;
 
-    public Boolean getIsPropertyNameRemoved() {
-        return this.isPropertyNameRemoved;
+    public Boolean getIsPropertyAttributeValueNameRemoved() {
+        return this.isPropertyAttributeValueNameRemoved;
     }
 
-    public void setIsPropertyNameRemoved(Boolean removed) {
-        this.isPropertyNameRemoved = removed;
+    public void setIsPropertyAttributeValueNameRemoved(Boolean removed) {
+        this.isPropertyAttributeValueNameRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;
@@ -315,14 +315,14 @@ public class AttributeValueMvoStateEventDto extends AbstractStateEvent
         this.isPropertyActiveRemoved = removed;
     }
 
-    private Boolean isPropertyAttributeNameRemoved;
+    private Boolean isPropertyAttributeAttributeNameRemoved;
 
-    public Boolean getIsPropertyAttributeNameRemoved() {
-        return this.isPropertyAttributeNameRemoved;
+    public Boolean getIsPropertyAttributeAttributeNameRemoved() {
+        return this.isPropertyAttributeAttributeNameRemoved;
     }
 
-    public void setIsPropertyAttributeNameRemoved(Boolean removed) {
-        this.isPropertyAttributeNameRemoved = removed;
+    public void setIsPropertyAttributeAttributeNameRemoved(Boolean removed) {
+        this.isPropertyAttributeAttributeNameRemoved = removed;
     }
 
     private Boolean isPropertyAttributeOrganizationIdRemoved;

@@ -12,7 +12,7 @@
     </composite-id>
     <discriminator column="StateEventType" type="String" />
 
-    <property name="Name" ></property>
+    <property name="AttributeValueName" ></property>
     <property name="Description" ></property>
     <property name="ReferenceId" ></property>
     <property name="Active" ></property>
@@ -30,7 +30,7 @@
     <subclass name="AttributeValueStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
+        <property name="IsPropertyAttributeValueNameRemoved" column="IsPropertyAttributeValueNameRemoved"/>
 
         <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 

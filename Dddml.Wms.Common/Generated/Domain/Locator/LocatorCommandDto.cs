@@ -69,6 +69,8 @@ namespace Dddml.Wms.Domain.Locator
 
 		public virtual string Z { get; set; }
 
+		public virtual string Description { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual bool? IsPropertyWarehouseIdRemoved { get; set; }
@@ -220,6 +222,25 @@ namespace Dddml.Wms.Domain.Locator
             set
             {
                 this.IsPropertyZRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDescriptionRemoved { get; set; }
+
+        bool IMergePatchLocator.IsPropertyDescriptionRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyDescriptionRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyDescriptionRemoved = value;
             }
         }
 

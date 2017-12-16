@@ -18,7 +18,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
         bool ReadOnly { get; set; }
 
-		string Name { get; set; }
+		string AttributeValueName { get; set; }
 
 		string Description { get; set; }
 
@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		bool? Active { get; set; }
 
-		string AttributeName { get; set; }
+		string AttributeAttributeName { get; set; }
 
 		string AttributeOrganizationId { get; set; }
 
@@ -70,7 +70,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 	public interface IAttributeValueMvoStateMergePatched : IAttributeValueMvoStateEvent//, IAttributeValueMvoStateProperties
 	{
-		bool IsPropertyNameRemoved { get; set; }
+		bool IsPropertyAttributeValueNameRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -80,7 +80,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		bool IsPropertyActiveRemoved { get; set; }
 
-		bool IsPropertyAttributeNameRemoved { get; set; }
+		bool IsPropertyAttributeAttributeNameRemoved { get; set; }
 
 		bool IsPropertyAttributeOrganizationIdRemoved { get; set; }
 

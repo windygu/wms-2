@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.Organization
 	public interface ICreateOrMergePatchOrDeleteOrganization : IOrganizationCommand
 	{
 
-		string Name { get; set; }
+		string OrganizationName { get; set; }
 
 		string Description { get; set; }
 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.Organization
 	public interface IMergePatchOrganization : ICreateOrMergePatchOrDeleteOrganization
 	{
 
-		bool IsPropertyNameRemoved { get; set; }
+		bool IsPropertyOrganizationNameRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 

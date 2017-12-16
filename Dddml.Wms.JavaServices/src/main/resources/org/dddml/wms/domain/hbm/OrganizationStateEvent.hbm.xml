@@ -15,7 +15,7 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="name" ></property>
+	<property name="organizationName" ></property>
 	<property name="description" ></property>
 	<property name="type" ></property>
 	<property name="isSummary" ></property>
@@ -33,7 +33,7 @@
 
     <subclass name="AbstractOrganizationStateEvent$SimpleOrganizationStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyNameRemoved" column="IsPropertyNameRemoved"/>
+        <property name="isPropertyOrganizationNameRemoved" column="IsPropertyOrganizationNameRemoved"/>
 
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 

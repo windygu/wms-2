@@ -67,31 +67,31 @@ namespace Dddml.Wms.Domain.AttributeSet
             }
         }
 
-		public virtual string Name
+		public virtual string AttributeSetName
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Name"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetName"))
                 {
-                    return _state.Name;
+                    return _state.AttributeSetName;
                 }
                 return null;
             }
             set
             {
-                _state.Name = value;
+                _state.AttributeSetName = value;
             }
         }
 
-        string IAttributeSetStateProperties.Name
+        string IAttributeSetStateProperties.AttributeSetName
         {
             get 
             {
-                return (this._state as IAttributeSetStateProperties).Name;
+                return (this._state as IAttributeSetStateProperties).AttributeSetName;
             }
             set 
             {
-                (this._state as IAttributeSetStateProperties).Name = value;
+                (this._state as IAttributeSetStateProperties).AttributeSetName = value;
             }
         }
 

@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.Attribute
             set;
         }
 
-        public virtual string Name
+        public virtual string AttributeName
         {
             get;
             set;
@@ -133,7 +133,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             var state = new AttributeState(true);
             state.AttributeId = this.AttributeId;
-            state.Name = this.Name;
+            state.AttributeName = this.AttributeName;
             state.OrganizationId = this.OrganizationId;
             state.Description = this.Description;
             if (this.IsMandatory != null && this.IsMandatory.HasValue) { state.IsMandatory = this.IsMandatory.Value; }

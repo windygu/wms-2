@@ -19,6 +19,7 @@
     <property name="X" ></property>
     <property name="Y" ></property>
     <property name="Z" ></property>
+    <property name="Description" ></property>
     <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
@@ -47,6 +48,8 @@
         <property name="IsPropertyYRemoved" column="IsPropertyYRemoved"/>
 
         <property name="IsPropertyZRemoved" column="IsPropertyZRemoved"/>
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>

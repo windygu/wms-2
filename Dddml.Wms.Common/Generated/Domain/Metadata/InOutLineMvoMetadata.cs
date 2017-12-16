@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOutLineMvo;
-using NodaMoney;
 using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.Domain.Metadata
@@ -47,35 +46,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
-                    Name = "Description",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "LocatorId",
                     Type = typeof(string),
                     TypeName = "string",
@@ -106,6 +76,64 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "ProductId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "AttributeSetInstanceId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "Description",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -309,64 +337,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "IsInvoiced",
-                    Type = typeof(bool),
-                    TypeName = "bool",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "AttributeSetInstanceId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "IsDescription",
                     Type = typeof(bool),
                     TypeName = "bool",
                     IsSimpleValueObjectType = true,
@@ -714,35 +684,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutIsSOTransaction",
-                    Type = typeof(bool),
-                    TypeName = "bool",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "InOutDocumentStatus",
                     Type = typeof(string),
                     TypeName = "string",
@@ -859,9 +800,9 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutDocumentType",
-                    Type = typeof(int),
-                    TypeName = "int",
+                    Name = "InOutDocumentTypeId",
+                    Type = typeof(string),
+                    TypeName = "string",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
@@ -917,7 +858,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutOrderNumber",
+                    Name = "InOutOrderId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1004,7 +945,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutMovementType",
+                    Name = "InOutMovementTypeId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1149,67 +1090,9 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutFreightAmount",
-                    Type = typeof(Money),
-                    TypeName = "Money",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "InOutShipperId",
                     Type = typeof(string),
                     TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "InOutChargeAmount",
-                    Type = typeof(Money),
-                    TypeName = "Money",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
@@ -1526,64 +1409,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutVolume",
-                    Type = typeof(decimal),
-                    TypeName = "decimal",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "InOutWeight",
-                    Type = typeof(decimal),
-                    TypeName = "decimal",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "InOutRmaNumber",
                     Type = typeof(string),
                     TypeName = "string",
@@ -1614,64 +1439,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "InOutReversalNumber",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "InOutIsDropShip",
-                    Type = typeof(bool),
-                    TypeName = "bool",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "InOutDropShipBusinessPartnerId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1989,122 +1756,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsReservedPropertyUpdatedAt = false,
                     IsFilteringProperty = true,
                 },
-                new PropertyMetadata {
-                    Name = "InOutFreightAmount.Amount",
-                    Type = typeof(decimal),
-                    TypeName = "decimal",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "InOutFreightAmount.Currency",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "InOutChargeAmount.Amount",
-                    Type = typeof(decimal),
-                    TypeName = "decimal",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "InOutChargeAmount.Currency",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
             };
 
 
@@ -2120,12 +1771,14 @@ namespace Dddml.Wms.Domain.Metadata
         private static void InitFilteringPropertyAliasDictionary()
         {
             var d = new Dictionary<string, string>();
-            d.Add("Description", "Description");
-            d.Add("description", "Description");
             d.Add("LocatorId", "LocatorId");
             d.Add("locatorId", "LocatorId");
             d.Add("ProductId", "ProductId");
             d.Add("productId", "ProductId");
+            d.Add("AttributeSetInstanceId", "AttributeSetInstanceId");
+            d.Add("attributeSetInstanceId", "AttributeSetInstanceId");
+            d.Add("Description", "Description");
+            d.Add("description", "Description");
             d.Add("UomId", "UomId");
             d.Add("uomId", "UomId");
             d.Add("MovementQuantity", "MovementQuantity");
@@ -2140,10 +1793,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("pickedQuantity", "PickedQuantity");
             d.Add("IsInvoiced", "IsInvoiced");
             d.Add("isInvoiced", "IsInvoiced");
-            d.Add("AttributeSetInstanceId", "AttributeSetInstanceId");
-            d.Add("attributeSetInstanceId", "AttributeSetInstanceId");
-            d.Add("IsDescription", "IsDescription");
-            d.Add("isDescription", "IsDescription");
             d.Add("Processed", "Processed");
             d.Add("processed", "Processed");
             d.Add("QuantityEntered", "QuantityEntered");
@@ -2166,8 +1815,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
-            d.Add("InOutIsSOTransaction", "InOutIsSOTransaction");
-            d.Add("inOutIsSOTransaction", "InOutIsSOTransaction");
             d.Add("InOutDocumentStatus", "InOutDocumentStatus");
             d.Add("inOutDocumentStatus", "InOutDocumentStatus");
             d.Add("InOutPosted", "InOutPosted");
@@ -2176,18 +1823,18 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("inOutProcessing", "InOutProcessing");
             d.Add("InOutProcessed", "InOutProcessed");
             d.Add("inOutProcessed", "InOutProcessed");
-            d.Add("InOutDocumentType", "InOutDocumentType");
-            d.Add("inOutDocumentType", "InOutDocumentType");
+            d.Add("InOutDocumentTypeId", "InOutDocumentTypeId");
+            d.Add("inOutDocumentTypeId", "InOutDocumentTypeId");
             d.Add("InOutDescription", "InOutDescription");
             d.Add("inOutDescription", "InOutDescription");
-            d.Add("InOutOrderNumber", "InOutOrderNumber");
-            d.Add("inOutOrderNumber", "InOutOrderNumber");
+            d.Add("InOutOrderId", "InOutOrderId");
+            d.Add("inOutOrderId", "InOutOrderId");
             d.Add("InOutDateOrdered", "InOutDateOrdered");
             d.Add("inOutDateOrdered", "InOutDateOrdered");
             d.Add("InOutIsPrinted", "InOutIsPrinted");
             d.Add("inOutIsPrinted", "InOutIsPrinted");
-            d.Add("InOutMovementType", "InOutMovementType");
-            d.Add("inOutMovementType", "InOutMovementType");
+            d.Add("InOutMovementTypeId", "InOutMovementTypeId");
+            d.Add("inOutMovementTypeId", "InOutMovementTypeId");
             d.Add("InOutMovementDate", "InOutMovementDate");
             d.Add("inOutMovementDate", "InOutMovementDate");
             d.Add("InOutBusinessPartnerId", "InOutBusinessPartnerId");
@@ -2196,12 +1843,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("inOutWarehouseId", "InOutWarehouseId");
             d.Add("InOutPOReference", "InOutPOReference");
             d.Add("inOutPOReference", "InOutPOReference");
-            d.Add("InOutFreightAmount", "InOutFreightAmount");
-            d.Add("inOutFreightAmount", "InOutFreightAmount");
             d.Add("InOutShipperId", "InOutShipperId");
             d.Add("inOutShipperId", "InOutShipperId");
-            d.Add("InOutChargeAmount", "InOutChargeAmount");
-            d.Add("inOutChargeAmount", "InOutChargeAmount");
             d.Add("InOutDatePrinted", "InOutDatePrinted");
             d.Add("inOutDatePrinted", "InOutDatePrinted");
             d.Add("InOutSalesRepresentative", "InOutSalesRepresentative");
@@ -2222,18 +1865,10 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("inOutIsApproved", "InOutIsApproved");
             d.Add("InOutIsInDispute", "InOutIsInDispute");
             d.Add("inOutIsInDispute", "InOutIsInDispute");
-            d.Add("InOutVolume", "InOutVolume");
-            d.Add("inOutVolume", "InOutVolume");
-            d.Add("InOutWeight", "InOutWeight");
-            d.Add("inOutWeight", "InOutWeight");
             d.Add("InOutRmaNumber", "InOutRmaNumber");
             d.Add("inOutRmaNumber", "InOutRmaNumber");
             d.Add("InOutReversalNumber", "InOutReversalNumber");
             d.Add("inOutReversalNumber", "InOutReversalNumber");
-            d.Add("InOutIsDropShip", "InOutIsDropShip");
-            d.Add("inOutIsDropShip", "InOutIsDropShip");
-            d.Add("InOutDropShipBusinessPartnerId", "InOutDropShipBusinessPartnerId");
-            d.Add("inOutDropShipBusinessPartnerId", "InOutDropShipBusinessPartnerId");
             d.Add("InOutVersion", "InOutVersion");
             d.Add("inOutVersion", "InOutVersion");
             d.Add("InOutCreatedBy", "InOutCreatedBy");
@@ -2252,14 +1887,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("inOutLineId.inOutDocumentNumber", "InOutLineId.InOutDocumentNumber");
             d.Add("InOutLineId.LineNumber", "InOutLineId.LineNumber");
             d.Add("inOutLineId.lineNumber", "InOutLineId.LineNumber");
-            d.Add("InOutFreightAmount.Amount", "InOutFreightAmount.Amount");
-            d.Add("inOutFreightAmount.amount", "InOutFreightAmount.Amount");
-            d.Add("InOutFreightAmount.Currency", "InOutFreightAmount.Currency");
-            d.Add("inOutFreightAmount.currency", "InOutFreightAmount.Currency");
-            d.Add("InOutChargeAmount.Amount", "InOutChargeAmount.Amount");
-            d.Add("inOutChargeAmount.amount", "InOutChargeAmount.Amount");
-            d.Add("InOutChargeAmount.Currency", "InOutChargeAmount.Currency");
-            d.Add("inOutChargeAmount.currency", "InOutChargeAmount.Currency");
             _filteringPropertyAliasDictionary = d;
         }
 

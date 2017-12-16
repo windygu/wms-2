@@ -21,16 +21,16 @@ public abstract class AbstractWarehouseState implements WarehouseState
         this.warehouseId = warehouseId;
     }
 
-    private String name;
+    private String warehouseName;
 
-    public String getName()
+    public String getWarehouseName()
     {
-        return this.name;
+        return this.warehouseName;
     }
 
-    public void setName(String name)
+    public void setWarehouseName(String warehouseName)
     {
-        this.name = name;
+        this.warehouseName = warehouseName;
     }
 
     private String description;
@@ -205,7 +205,7 @@ public abstract class AbstractWarehouseState implements WarehouseState
     {
         throwOnWrongEvent(e);
 
-        this.setName(e.getName());
+        this.setWarehouseName(e.getWarehouseName());
         this.setDescription(e.getDescription());
         this.setIsInTransit(e.getIsInTransit());
         this.setActive(e.getActive());
@@ -221,16 +221,16 @@ public abstract class AbstractWarehouseState implements WarehouseState
     {
         throwOnWrongEvent(e);
 
-        if (e.getName() == null)
+        if (e.getWarehouseName() == null)
         {
-            if (e.getIsPropertyNameRemoved() != null && e.getIsPropertyNameRemoved())
+            if (e.getIsPropertyWarehouseNameRemoved() != null && e.getIsPropertyWarehouseNameRemoved())
             {
-                this.setName(null);
+                this.setWarehouseName(null);
             }
         }
         else
         {
-            this.setName(e.getName());
+            this.setWarehouseName(e.getWarehouseName());
         }
         if (e.getDescription() == null)
         {

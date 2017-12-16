@@ -5,16 +5,16 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeValueDto extends AbstractAttributeValueCommandDto
 {
-    private String name;
+    private String attributeValueName;
 
-    public String getName()
+    public String getAttributeValueName()
     {
-        return this.name;
+        return this.attributeValueName;
     }
 
-    public void setName(String name)
+    public void setAttributeValueName(String attributeValueName)
     {
-        this.name = name;
+        this.attributeValueName = attributeValueName;
     }
 
     private String description;
@@ -53,16 +53,16 @@ public class CreateOrMergePatchAttributeValueDto extends AbstractAttributeValueC
         this.active = active;
     }
 
-    private Boolean isPropertyNameRemoved;
+    private Boolean isPropertyAttributeValueNameRemoved;
 
-    public Boolean getIsPropertyNameRemoved()
+    public Boolean getIsPropertyAttributeValueNameRemoved()
     {
-        return this.isPropertyNameRemoved;
+        return this.isPropertyAttributeValueNameRemoved;
     }
 
-    public void setIsPropertyNameRemoved(Boolean removed)
+    public void setIsPropertyAttributeValueNameRemoved(Boolean removed)
     {
-        this.isPropertyNameRemoved = removed;
+        this.isPropertyAttributeValueNameRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;
@@ -104,7 +104,7 @@ public class CreateOrMergePatchAttributeValueDto extends AbstractAttributeValueC
     public void copyTo(AbstractAttributeValueCommand.AbstractCreateOrMergePatchAttributeValue command)
     {
         ((AbstractAttributeValueCommandDto) this).copyTo(command);
-        command.setName(this.getName());
+        command.setAttributeValueName(this.getAttributeValueName());
         command.setDescription(this.getDescription());
         command.setReferenceId(this.getReferenceId());
         command.setActive(this.getActive());
@@ -137,7 +137,7 @@ public class CreateOrMergePatchAttributeValueDto extends AbstractAttributeValueC
     public void copyTo(AbstractAttributeValueCommand.AbstractMergePatchAttributeValue command)
     {
         copyTo((AbstractAttributeValueCommand.AbstractCreateOrMergePatchAttributeValue) command);
-        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyAttributeValueNameRemoved(this.getIsPropertyAttributeValueNameRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyReferenceIdRemoved(this.getIsPropertyReferenceIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());

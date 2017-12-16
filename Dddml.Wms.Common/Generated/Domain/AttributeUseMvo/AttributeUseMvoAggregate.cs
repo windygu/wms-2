@@ -111,7 +111,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             e.SequenceNumber = c.SequenceNumber;
             e.Version = c.Version;
             e.Active = c.Active;
-            e.AttributeSetName = c.AttributeSetName;
+            e.AttributeSetAttributeSetName = c.AttributeSetAttributeSetName;
             e.AttributeSetOrganizationId = c.AttributeSetOrganizationId;
             e.AttributeSetDescription = c.AttributeSetDescription;
             e.AttributeSetSerialNumberAttributeId = c.AttributeSetSerialNumberAttributeId;
@@ -142,7 +142,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             e.SequenceNumber = c.SequenceNumber;
             e.Version = c.Version;
             e.Active = c.Active;
-            e.AttributeSetName = c.AttributeSetName;
+            e.AttributeSetAttributeSetName = c.AttributeSetAttributeSetName;
             e.AttributeSetOrganizationId = c.AttributeSetOrganizationId;
             e.AttributeSetDescription = c.AttributeSetDescription;
             e.AttributeSetSerialNumberAttributeId = c.AttributeSetSerialNumberAttributeId;
@@ -157,7 +157,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             e.IsPropertySequenceNumberRemoved = c.IsPropertySequenceNumberRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
-            e.IsPropertyAttributeSetNameRemoved = c.IsPropertyAttributeSetNameRemoved;
+            e.IsPropertyAttributeSetAttributeSetNameRemoved = c.IsPropertyAttributeSetAttributeSetNameRemoved;
             e.IsPropertyAttributeSetOrganizationIdRemoved = c.IsPropertyAttributeSetOrganizationIdRemoved;
             e.IsPropertyAttributeSetDescriptionRemoved = c.IsPropertyAttributeSetDescriptionRemoved;
             e.IsPropertyAttributeSetSerialNumberAttributeIdRemoved = c.IsPropertyAttributeSetSerialNumberAttributeIdRemoved;

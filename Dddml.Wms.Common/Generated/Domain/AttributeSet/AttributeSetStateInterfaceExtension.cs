@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             cmd.Version = ((IAttributeSetStateProperties)state).Version;
 
             cmd.AttributeSetId = state.AttributeSetId;
-            cmd.Name = state.Name;
+            cmd.AttributeSetName = state.AttributeSetName;
             cmd.OrganizationId = state.OrganizationId;
             cmd.Description = state.Description;
             cmd.SerialNumberAttributeId = state.SerialNumberAttributeId;
@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             cmd.ReferenceId = state.ReferenceId;
             cmd.Active = ((IAttributeSetStateProperties)state).Active;
             
-            if (state.Name == null) { cmd.IsPropertyNameRemoved = true; }
+            if (state.AttributeSetName == null) { cmd.IsPropertyAttributeSetNameRemoved = true; }
             if (state.OrganizationId == null) { cmd.IsPropertyOrganizationIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.SerialNumberAttributeId == null) { cmd.IsPropertySerialNumberAttributeIdRemoved = true; }
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             cmd.Version = ((IAttributeSetStateProperties)state).Version;
 
             cmd.AttributeSetId = state.AttributeSetId;
-            cmd.Name = state.Name;
+            cmd.AttributeSetName = state.AttributeSetName;
             cmd.OrganizationId = state.OrganizationId;
             cmd.Description = state.Description;
             cmd.SerialNumberAttributeId = state.SerialNumberAttributeId;

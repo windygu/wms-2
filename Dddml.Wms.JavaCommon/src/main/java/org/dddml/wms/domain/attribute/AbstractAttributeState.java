@@ -21,16 +21,16 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         this.attributeId = attributeId;
     }
 
-    private String name;
+    private String attributeName;
 
-    public String getName()
+    public String getAttributeName()
     {
-        return this.name;
+        return this.attributeName;
     }
 
-    public void setName(String name)
+    public void setAttributeName(String attributeName)
     {
-        this.name = name;
+        this.attributeName = attributeName;
     }
 
     private String organizationId;
@@ -302,7 +302,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
     {
         throwOnWrongEvent(e);
 
-        this.setName(e.getName());
+        this.setAttributeName(e.getAttributeName());
         this.setOrganizationId(e.getOrganizationId());
         this.setDescription(e.getDescription());
         this.setIsMandatory(e.getIsMandatory());
@@ -329,16 +329,16 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
     {
         throwOnWrongEvent(e);
 
-        if (e.getName() == null)
+        if (e.getAttributeName() == null)
         {
-            if (e.getIsPropertyNameRemoved() != null && e.getIsPropertyNameRemoved())
+            if (e.getIsPropertyAttributeNameRemoved() != null && e.getIsPropertyAttributeNameRemoved())
             {
-                this.setName(null);
+                this.setAttributeName(null);
             }
         }
         else
         {
-            this.setName(e.getName());
+            this.setAttributeName(e.getAttributeName());
         }
         if (e.getOrganizationId() == null)
         {

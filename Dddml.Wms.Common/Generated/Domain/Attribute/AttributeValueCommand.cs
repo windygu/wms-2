@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.Attribute
             set { this.CommandId = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string AttributeValueName { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.Attribute
 	public class MergePatchAttributeValue :AttributeValueCommandBase, IMergePatchAttributeValue
 	{
 
-		public virtual bool IsPropertyNameRemoved { get; set; }
+		public virtual bool IsPropertyAttributeValueNameRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 

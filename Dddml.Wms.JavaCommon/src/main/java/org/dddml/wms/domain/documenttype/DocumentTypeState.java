@@ -53,6 +53,10 @@ public interface DocumentTypeState
 
     boolean getForReapplying();
 
+    String getCommandId();
+
+    void setCommandId(String commandId);
+
 
     void mutate(Event e);
 

@@ -294,6 +294,34 @@ namespace Dddml.Wms.Domain.Locator
             }
         }
 
+		public virtual string Description
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Description"))
+                {
+                    return _state.Description;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Description = value;
+            }
+        }
+
+        string ILocatorStateProperties.Description
+        {
+            get 
+            {
+                return (this._state as ILocatorStateProperties).Description;
+            }
+            set 
+            {
+                (this._state as ILocatorStateProperties).Description = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

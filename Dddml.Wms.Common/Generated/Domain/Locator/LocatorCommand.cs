@@ -68,6 +68,8 @@ namespace Dddml.Wms.Domain.Locator
 
 		public virtual string Z { get; set; }
 
+		public virtual string Description { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 
@@ -117,6 +119,8 @@ namespace Dddml.Wms.Domain.Locator
 		public virtual bool IsPropertyYRemoved { get; set; }
 
 		public virtual bool IsPropertyZRemoved { get; set; }
+
+		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

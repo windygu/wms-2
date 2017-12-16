@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.Name = e.Name;
+            dto.AttributeSetName = e.AttributeSetName;
             dto.OrganizationId = e.OrganizationId;
             dto.Description = e.Description;
             dto.SerialNumberAttributeId = e.SerialNumberAttributeId;
@@ -67,14 +67,14 @@ namespace Dddml.Wms.Domain.AttributeSet
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.Name = e.Name;
+            dto.AttributeSetName = e.AttributeSetName;
             dto.OrganizationId = e.OrganizationId;
             dto.Description = e.Description;
             dto.SerialNumberAttributeId = e.SerialNumberAttributeId;
             dto.LotAttributeId = e.LotAttributeId;
             dto.ReferenceId = e.ReferenceId;
             dto.Active = e.Active;
-            dto.IsPropertyNameRemoved = e.IsPropertyNameRemoved;
+            dto.IsPropertyAttributeSetNameRemoved = e.IsPropertyAttributeSetNameRemoved;
             dto.IsPropertyOrganizationIdRemoved = e.IsPropertyOrganizationIdRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertySerialNumberAttributeIdRemoved = e.IsPropertySerialNumberAttributeIdRemoved;

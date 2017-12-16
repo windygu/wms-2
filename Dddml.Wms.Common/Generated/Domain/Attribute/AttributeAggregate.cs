@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain.Attribute
 			var stateEventId = new AttributeStateEventId(c.AttributeId, c.Version);
             IAttributeStateCreated e = NewAttributeStateCreated(stateEventId);
 		
-            e.Name = c.Name;
+            e.AttributeName = c.AttributeName;
             e.OrganizationId = c.OrganizationId;
             e.Description = c.Description;
             e.IsMandatory = c.IsMandatory;
@@ -142,7 +142,7 @@ namespace Dddml.Wms.Domain.Attribute
 			var stateEventId = new AttributeStateEventId(c.AttributeId, c.Version);
             IAttributeStateMergePatched e = NewAttributeStateMergePatched(stateEventId);
 
-            e.Name = c.Name;
+            e.AttributeName = c.AttributeName;
             e.OrganizationId = c.OrganizationId;
             e.Description = c.Description;
             e.IsMandatory = c.IsMandatory;
@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.Attribute
             e.FieldName = c.FieldName;
             e.ReferenceId = c.ReferenceId;
             e.Active = c.Active;
-            e.IsPropertyNameRemoved = c.IsPropertyNameRemoved;
+            e.IsPropertyAttributeNameRemoved = c.IsPropertyAttributeNameRemoved;
             e.IsPropertyOrganizationIdRemoved = c.IsPropertyOrganizationIdRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyIsMandatoryRemoved = c.IsPropertyIsMandatoryRemoved;
@@ -253,7 +253,7 @@ namespace Dddml.Wms.Domain.Attribute
             IAttributeValueStateCreated e = NewAttributeValueStateCreated(stateEventId);
             var s = outerState.AttributeValues.Get(c.Value, true);
 
-            e.Name = c.Name;
+            e.AttributeValueName = c.AttributeValueName;
             e.Description = c.Description;
             e.ReferenceId = c.ReferenceId;
             e.Active = c.Active;
@@ -273,11 +273,11 @@ namespace Dddml.Wms.Domain.Attribute
             IAttributeValueStateMergePatched e = NewAttributeValueStateMergePatched(stateEventId);
             var s = outerState.AttributeValues.Get(c.Value);
 
-            e.Name = c.Name;
+            e.AttributeValueName = c.AttributeValueName;
             e.Description = c.Description;
             e.ReferenceId = c.ReferenceId;
             e.Active = c.Active;
-            e.IsPropertyNameRemoved = c.IsPropertyNameRemoved;
+            e.IsPropertyAttributeValueNameRemoved = c.IsPropertyAttributeValueNameRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyReferenceIdRemoved = c.IsPropertyReferenceIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;

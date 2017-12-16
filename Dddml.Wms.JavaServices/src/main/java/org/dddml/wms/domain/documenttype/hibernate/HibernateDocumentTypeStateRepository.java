@@ -45,18 +45,13 @@ public class HibernateDocumentTypeStateRepository implements DocumentTypeStateRe
             state = new AbstractDocumentTypeState.SimpleDocumentTypeState();
             state.setDocumentTypeId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (DocumentTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{DocumentTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
         return state;
     }
 
+    @Transactional
     public void save(DocumentTypeState state)
     {
         DocumentTypeState s = state;
-        if (getReadOnlyProxyGenerator() != null) {
-            s = (DocumentTypeState) getReadOnlyProxyGenerator().getTarget(state);
-        }
         if(s.getVersion() == null) {
             getCurrentSession().save(s);
         }else {

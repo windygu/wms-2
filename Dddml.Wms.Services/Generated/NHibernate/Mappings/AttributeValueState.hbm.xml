@@ -12,7 +12,7 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="Name" ></property>
+    <property name="AttributeValueName" ></property>
     <property name="Description" ></property>
     <property name="ReferenceId" ></property>
     <property name="CreatedBy" ></property>

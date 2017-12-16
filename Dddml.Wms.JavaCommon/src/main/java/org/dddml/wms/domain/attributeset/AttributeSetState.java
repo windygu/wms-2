@@ -16,9 +16,9 @@ public interface AttributeSetState
 
     void setAttributeSetId(String attributeSetId);
 
-    String getName();
+    String getAttributeSetName();
 
-    void setName(String name);
+    void setAttributeSetName(String attributeSetName);
 
     String getOrganizationId();
 

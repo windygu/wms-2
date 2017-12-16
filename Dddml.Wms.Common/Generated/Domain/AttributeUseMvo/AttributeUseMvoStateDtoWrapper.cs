@@ -161,31 +161,31 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             }
         }
 
-		public virtual string AttributeSetName
+		public virtual string AttributeSetAttributeSetName
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetName"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetAttributeSetName"))
                 {
-                    return _state.AttributeSetName;
+                    return _state.AttributeSetAttributeSetName;
                 }
                 return null;
             }
             set
             {
-                _state.AttributeSetName = value;
+                _state.AttributeSetAttributeSetName = value;
             }
         }
 
-        string IAttributeUseMvoStateProperties.AttributeSetName
+        string IAttributeUseMvoStateProperties.AttributeSetAttributeSetName
         {
             get 
             {
-                return (this._state as IAttributeUseMvoStateProperties).AttributeSetName;
+                return (this._state as IAttributeUseMvoStateProperties).AttributeSetAttributeSetName;
             }
             set 
             {
-                (this._state as IAttributeUseMvoStateProperties).AttributeSetName = value;
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetAttributeSetName = value;
             }
         }
 

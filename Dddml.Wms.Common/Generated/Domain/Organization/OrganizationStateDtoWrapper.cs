@@ -67,31 +67,31 @@ namespace Dddml.Wms.Domain.Organization
             }
         }
 
-		public virtual string Name
+		public virtual string OrganizationName
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Name"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OrganizationName"))
                 {
-                    return _state.Name;
+                    return _state.OrganizationName;
                 }
                 return null;
             }
             set
             {
-                _state.Name = value;
+                _state.OrganizationName = value;
             }
         }
 
-        string IOrganizationStateProperties.Name
+        string IOrganizationStateProperties.OrganizationName
         {
             get 
             {
-                return (this._state as IOrganizationStateProperties).Name;
+                return (this._state as IOrganizationStateProperties).OrganizationName;
             }
             set 
             {
-                (this._state as IOrganizationStateProperties).Name = value;
+                (this._state as IOrganizationStateProperties).OrganizationName = value;
             }
         }
 

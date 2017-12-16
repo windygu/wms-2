@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.Organization
             set { this.CommandId = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string OrganizationName { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.Organization
 	public class MergePatchOrganization :OrganizationCommandBase, IMergePatchOrganization
 	{
 
-		public virtual bool IsPropertyNameRemoved { get; set; }
+		public virtual bool IsPropertyOrganizationNameRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 

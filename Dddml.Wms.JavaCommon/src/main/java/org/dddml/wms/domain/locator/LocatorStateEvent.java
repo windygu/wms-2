@@ -45,6 +45,10 @@ public interface LocatorStateEvent extends Event
 
     void setZ(String z);
 
+    String getDescription();
+
+    void setDescription(String description);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -100,6 +104,10 @@ public interface LocatorStateEvent extends Event
         Boolean getIsPropertyZRemoved();
 
         void setIsPropertyZRemoved(Boolean removed);
+
+        Boolean getIsPropertyDescriptionRemoved();
+
+        void setIsPropertyDescriptionRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

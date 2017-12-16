@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 	{
 		string AttributeSetId { get; set; }
 
-		string Name { get; set; }
+		string AttributeSetName { get; set; }
 
 		string OrganizationId { get; set; }
 

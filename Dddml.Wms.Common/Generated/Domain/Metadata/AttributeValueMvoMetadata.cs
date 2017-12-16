@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
-                    Name = "Name",
+                    Name = "AttributeValueName",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -336,7 +336,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "AttributeName",
+                    Name = "AttributeAttributeName",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -930,8 +930,8 @@ namespace Dddml.Wms.Domain.Metadata
         private static void InitFilteringPropertyAliasDictionary()
         {
             var d = new Dictionary<string, string>();
-            d.Add("Name", "Name");
-            d.Add("name", "Name");
+            d.Add("AttributeValueName", "AttributeValueName");
+            d.Add("attributeValueName", "AttributeValueName");
             d.Add("Description", "Description");
             d.Add("description", "Description");
             d.Add("ReferenceId", "ReferenceId");
@@ -950,8 +950,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
-            d.Add("AttributeName", "AttributeName");
-            d.Add("attributeName", "AttributeName");
+            d.Add("AttributeAttributeName", "AttributeAttributeName");
+            d.Add("attributeAttributeName", "AttributeAttributeName");
             d.Add("AttributeOrganizationId", "AttributeOrganizationId");
             d.Add("attributeOrganizationId", "AttributeOrganizationId");
             d.Add("AttributeDescription", "AttributeDescription");

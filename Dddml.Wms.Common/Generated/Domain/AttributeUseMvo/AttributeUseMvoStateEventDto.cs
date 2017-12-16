@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string AttributeSetName { get; set; }
+		public virtual string AttributeSetAttributeSetName { get; set; }
 
 		public virtual string AttributeSetOrganizationId { get; set; }
 
@@ -159,13 +159,13 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             }
         }
 
-		public virtual bool? IsPropertyAttributeSetNameRemoved { get; set; }
+		public virtual bool? IsPropertyAttributeSetAttributeSetNameRemoved { get; set; }
 
-        bool IAttributeUseMvoStateMergePatched.IsPropertyAttributeSetNameRemoved
+        bool IAttributeUseMvoStateMergePatched.IsPropertyAttributeSetAttributeSetNameRemoved
         {
             get 
             {
-                var b = this.IsPropertyAttributeSetNameRemoved;
+                var b = this.IsPropertyAttributeSetAttributeSetNameRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -174,7 +174,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             }
             set 
             {
-                this.IsPropertyAttributeSetNameRemoved = value;
+                this.IsPropertyAttributeSetAttributeSetNameRemoved = value;
             }
         }
 

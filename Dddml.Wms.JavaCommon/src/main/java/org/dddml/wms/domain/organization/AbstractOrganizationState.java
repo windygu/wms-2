@@ -21,16 +21,16 @@ public abstract class AbstractOrganizationState implements OrganizationState
         this.organizationId = organizationId;
     }
 
-    private String name;
+    private String organizationName;
 
-    public String getName()
+    public String getOrganizationName()
     {
-        return this.name;
+        return this.organizationName;
     }
 
-    public void setName(String name)
+    public void setOrganizationName(String organizationName)
     {
-        this.name = name;
+        this.organizationName = organizationName;
     }
 
     private String description;
@@ -217,7 +217,7 @@ public abstract class AbstractOrganizationState implements OrganizationState
     {
         throwOnWrongEvent(e);
 
-        this.setName(e.getName());
+        this.setOrganizationName(e.getOrganizationName());
         this.setDescription(e.getDescription());
         this.setType(e.getType());
         this.setIsSummary(e.getIsSummary());
@@ -234,16 +234,16 @@ public abstract class AbstractOrganizationState implements OrganizationState
     {
         throwOnWrongEvent(e);
 
-        if (e.getName() == null)
+        if (e.getOrganizationName() == null)
         {
-            if (e.getIsPropertyNameRemoved() != null && e.getIsPropertyNameRemoved())
+            if (e.getIsPropertyOrganizationNameRemoved() != null && e.getIsPropertyOrganizationNameRemoved())
             {
-                this.setName(null);
+                this.setOrganizationName(null);
             }
         }
         else
         {
-            this.setName(e.getName());
+            this.setOrganizationName(e.getOrganizationName());
         }
         if (e.getDescription() == null)
         {

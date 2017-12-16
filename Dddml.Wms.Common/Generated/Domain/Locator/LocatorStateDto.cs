@@ -69,6 +69,12 @@ namespace Dddml.Wms.Domain.Locator
             set;
         }
 
+        public virtual string Description
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -117,6 +123,7 @@ namespace Dddml.Wms.Domain.Locator
             state.X = this.X;
             state.Y = this.Y;
             state.Z = this.Z;
+            state.Description = this.Description;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

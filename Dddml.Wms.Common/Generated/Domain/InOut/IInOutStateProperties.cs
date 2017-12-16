@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -16,8 +15,6 @@ namespace Dddml.Wms.Domain.InOut
 	public interface IInOutStateProperties
 	{
 		string DocumentNumber { get; set; }
-
-		bool IsSOTransaction { get; set; }
 
 		string DocumentStatus { get; set; }
 
@@ -27,17 +24,17 @@ namespace Dddml.Wms.Domain.InOut
 
 		bool Processed { get; set; }
 
-		int DocumentType { get; set; }
+		string DocumentTypeId { get; set; }
 
 		string Description { get; set; }
 
-		string OrderNumber { get; set; }
+		string OrderId { get; set; }
 
 		DateTime? DateOrdered { get; set; }
 
 		bool IsPrinted { get; set; }
 
-		string MovementType { get; set; }
+		string MovementTypeId { get; set; }
 
 		DateTime? MovementDate { get; set; }
 
@@ -47,11 +44,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		string POReference { get; set; }
 
-		Money FreightAmount { get; set; }
-
 		string ShipperId { get; set; }
-
-		Money ChargeAmount { get; set; }
 
 		DateTime? DatePrinted { get; set; }
 
@@ -73,17 +66,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		bool IsInDispute { get; set; }
 
-		decimal Volume { get; set; }
-
-		decimal Weight { get; set; }
-
 		string RmaNumber { get; set; }
 
 		string ReversalNumber { get; set; }
-
-		bool IsDropShip { get; set; }
-
-		string DropShipBusinessPartnerId { get; set; }
 
 		long Version { get; set; }
 

@@ -32,16 +32,16 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String name;
+    private String attributeName;
 
-    public String getName()
+    public String getAttributeName()
     {
-        return this.name;
+        return this.attributeName;
     }
 
-    public void setName(String name)
+    public void setAttributeName(String attributeName)
     {
-        this.name = name;
+        this.attributeName = attributeName;
     }
 
     private String organizationId;
@@ -327,14 +327,14 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyNameRemoved;
+        private Boolean isPropertyAttributeNameRemoved;
 
-        public Boolean getIsPropertyNameRemoved() {
-            return this.isPropertyNameRemoved;
+        public Boolean getIsPropertyAttributeNameRemoved() {
+            return this.isPropertyAttributeNameRemoved;
         }
 
-        public void setIsPropertyNameRemoved(Boolean removed) {
-            this.isPropertyNameRemoved = removed;
+        public void setIsPropertyAttributeNameRemoved(Boolean removed) {
+            this.isPropertyAttributeNameRemoved = removed;
         }
 
         private Boolean isPropertyOrganizationIdRemoved;

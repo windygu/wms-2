@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -65,37 +64,6 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 (this._state as IInOutStateProperties).DocumentNumber = value;
-            }
-        }
-
-		public virtual bool? IsSOTransaction
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsSOTransaction"))
-                {
-                    return _state.IsSOTransaction;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.IsSOTransaction = value.Value;
-                }
-            }
-        }
-
-        bool IInOutStateProperties.IsSOTransaction
-        {
-            get 
-            {
-                return (this._state as IInOutStateProperties).IsSOTransaction;
-            }
-            set 
-            {
-                (this._state as IInOutStateProperties).IsSOTransaction = value;
             }
         }
 
@@ -220,34 +188,31 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual int? DocumentType
-        {
+		public virtual string DocumentTypeId
+		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DocumentType"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DocumentTypeId"))
                 {
-                    return _state.DocumentType;
+                    return _state.DocumentTypeId;
                 }
                 return null;
             }
             set
             {
-                if (value != null && value.HasValue)
-                {
-                    _state.DocumentType = value.Value;
-                }
+                _state.DocumentTypeId = value;
             }
         }
 
-        int IInOutStateProperties.DocumentType
+        string IInOutStateProperties.DocumentTypeId
         {
             get 
             {
-                return (this._state as IInOutStateProperties).DocumentType;
+                return (this._state as IInOutStateProperties).DocumentTypeId;
             }
             set 
             {
-                (this._state as IInOutStateProperties).DocumentType = value;
+                (this._state as IInOutStateProperties).DocumentTypeId = value;
             }
         }
 
@@ -279,31 +244,31 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual string OrderNumber
+		public virtual string OrderId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OrderNumber"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OrderId"))
                 {
-                    return _state.OrderNumber;
+                    return _state.OrderId;
                 }
                 return null;
             }
             set
             {
-                _state.OrderNumber = value;
+                _state.OrderId = value;
             }
         }
 
-        string IInOutStateProperties.OrderNumber
+        string IInOutStateProperties.OrderId
         {
             get 
             {
-                return (this._state as IInOutStateProperties).OrderNumber;
+                return (this._state as IInOutStateProperties).OrderId;
             }
             set 
             {
-                (this._state as IInOutStateProperties).OrderNumber = value;
+                (this._state as IInOutStateProperties).OrderId = value;
             }
         }
 
@@ -366,31 +331,31 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual string MovementType
+		public virtual string MovementTypeId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementType"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementTypeId"))
                 {
-                    return _state.MovementType;
+                    return _state.MovementTypeId;
                 }
                 return null;
             }
             set
             {
-                _state.MovementType = value;
+                _state.MovementTypeId = value;
             }
         }
 
-        string IInOutStateProperties.MovementType
+        string IInOutStateProperties.MovementTypeId
         {
             get 
             {
-                return (this._state as IInOutStateProperties).MovementType;
+                return (this._state as IInOutStateProperties).MovementTypeId;
             }
             set 
             {
-                (this._state as IInOutStateProperties).MovementType = value;
+                (this._state as IInOutStateProperties).MovementTypeId = value;
             }
         }
 
@@ -506,37 +471,6 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual Money? FreightAmount
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("FreightAmount"))
-                {
-                    return _state.FreightAmount;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.FreightAmount = value.Value;
-                }
-            }
-        }
-
-        Money IInOutStateProperties.FreightAmount
-        {
-            get 
-            {
-                return (this._state as IInOutStateProperties).FreightAmount;
-            }
-            set 
-            {
-                (this._state as IInOutStateProperties).FreightAmount = value;
-            }
-        }
-
 		public virtual string ShipperId
 		{
             get
@@ -562,37 +496,6 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 (this._state as IInOutStateProperties).ShipperId = value;
-            }
-        }
-
-		public virtual Money? ChargeAmount
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ChargeAmount"))
-                {
-                    return _state.ChargeAmount;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.ChargeAmount = value.Value;
-                }
-            }
-        }
-
-        Money IInOutStateProperties.ChargeAmount
-        {
-            get 
-            {
-                return (this._state as IInOutStateProperties).ChargeAmount;
-            }
-            set 
-            {
-                (this._state as IInOutStateProperties).ChargeAmount = value;
             }
         }
 
@@ -888,68 +791,6 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual decimal? Volume
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Volume"))
-                {
-                    return _state.Volume;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.Volume = value.Value;
-                }
-            }
-        }
-
-        decimal IInOutStateProperties.Volume
-        {
-            get 
-            {
-                return (this._state as IInOutStateProperties).Volume;
-            }
-            set 
-            {
-                (this._state as IInOutStateProperties).Volume = value;
-            }
-        }
-
-		public virtual decimal? Weight
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Weight"))
-                {
-                    return _state.Weight;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.Weight = value.Value;
-                }
-            }
-        }
-
-        decimal IInOutStateProperties.Weight
-        {
-            get 
-            {
-                return (this._state as IInOutStateProperties).Weight;
-            }
-            set 
-            {
-                (this._state as IInOutStateProperties).Weight = value;
-            }
-        }
-
 		public virtual string RmaNumber
 		{
             get
@@ -1003,65 +844,6 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 (this._state as IInOutStateProperties).ReversalNumber = value;
-            }
-        }
-
-		public virtual bool? IsDropShip
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsDropShip"))
-                {
-                    return _state.IsDropShip;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.IsDropShip = value.Value;
-                }
-            }
-        }
-
-        bool IInOutStateProperties.IsDropShip
-        {
-            get 
-            {
-                return (this._state as IInOutStateProperties).IsDropShip;
-            }
-            set 
-            {
-                (this._state as IInOutStateProperties).IsDropShip = value;
-            }
-        }
-
-		public virtual string DropShipBusinessPartnerId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DropShipBusinessPartnerId"))
-                {
-                    return _state.DropShipBusinessPartnerId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.DropShipBusinessPartnerId = value;
-            }
-        }
-
-        string IInOutStateProperties.DropShipBusinessPartnerId
-        {
-            get 
-            {
-                return (this._state as IInOutStateProperties).DropShipBusinessPartnerId;
-            }
-            set 
-            {
-                (this._state as IInOutStateProperties).DropShipBusinessPartnerId = value;
             }
         }
 

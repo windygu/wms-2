@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.Locator.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "LocatorId", "WarehouseId", "ParentLocatorId", "LocatorType", "PriorityNumber", "IsDefault", "X", "Y", "Z", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "LocatorId", "WarehouseId", "ParentLocatorId", "LocatorType", "PriorityNumber", "IsDefault", "X", "Y", "Z", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

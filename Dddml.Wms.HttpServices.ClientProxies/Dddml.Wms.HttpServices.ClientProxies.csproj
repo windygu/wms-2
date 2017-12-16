@@ -122,6 +122,15 @@
     <Compile Include="Generated\LocatorTreeApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\MovementTypeApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\OrderHeaderApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\OrderItemApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\OrganizationApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -134,10 +143,19 @@
     <Compile Include="Generated\OrganizationTreeApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\ProductApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\ProductCategoryApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\SellableInventoryItemApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\SellableInventoryItemEntryMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\SupplierProductApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\WarehouseApplicationServiceProxy.cs">
@@ -168,12 +186,18 @@
 .\InventoryPRTriggeredApplicationServiceProxy.cs
 .\LocatorApplicationServiceProxy.cs
 .\LocatorTreeApplicationServiceProxy.cs
+.\MovementTypeApplicationServiceProxy.cs
+.\OrderHeaderApplicationServiceProxy.cs
+.\OrderItemApplicationServiceProxy.cs
 .\OrganizationApplicationServiceProxy.cs
 .\OrganizationStructureApplicationServiceProxy.cs
 .\OrganizationStructureTypeApplicationServiceProxy.cs
 .\OrganizationTreeApplicationServiceProxy.cs
+.\ProductApplicationServiceProxy.cs
+.\ProductCategoryApplicationServiceProxy.cs
 .\SellableInventoryItemApplicationServiceProxy.cs
 .\SellableInventoryItemEntryMvoApplicationServiceProxy.cs
+.\SupplierProductApplicationServiceProxy.cs
 .\WarehouseApplicationServiceProxy.cs
 </LastOutputs>
     </Content>

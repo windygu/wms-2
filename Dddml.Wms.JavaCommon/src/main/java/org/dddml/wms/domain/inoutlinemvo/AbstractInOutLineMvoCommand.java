@@ -4,7 +4,6 @@ import java.util.*;
 import org.dddml.wms.domain.inout.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import org.joda.money.Money;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.AbstractCommand;
 
@@ -37,18 +36,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
 
     public static abstract class AbstractCreateOrMergePatchInOutLineMvo extends AbstractInOutLineMvoCommand implements CreateOrMergePatchInOutLineMvo
     {
-        private String description;
-
-        public String getDescription()
-        {
-            return this.description;
-        }
-
-        public void setDescription(String description)
-        {
-            this.description = description;
-        }
-
         private String locatorId;
 
         public String getLocatorId()
@@ -71,6 +58,30 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
         public void setProductId(String productId)
         {
             this.productId = productId;
+        }
+
+        private String attributeSetInstanceId;
+
+        public String getAttributeSetInstanceId()
+        {
+            return this.attributeSetInstanceId;
+        }
+
+        public void setAttributeSetInstanceId(String attributeSetInstanceId)
+        {
+            this.attributeSetInstanceId = attributeSetInstanceId;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
         }
 
         private String uomId;
@@ -157,30 +168,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.isInvoiced = isInvoiced;
         }
 
-        private String attributeSetInstanceId;
-
-        public String getAttributeSetInstanceId()
-        {
-            return this.attributeSetInstanceId;
-        }
-
-        public void setAttributeSetInstanceId(String attributeSetInstanceId)
-        {
-            this.attributeSetInstanceId = attributeSetInstanceId;
-        }
-
-        private Boolean isDescription;
-
-        public Boolean getIsDescription()
-        {
-            return this.isDescription;
-        }
-
-        public void setIsDescription(Boolean isDescription)
-        {
-            this.isDescription = isDescription;
-        }
-
         private Boolean processed;
 
         public Boolean getProcessed()
@@ -253,18 +240,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.active = active;
         }
 
-        private Boolean inOutIsSOTransaction;
-
-        public Boolean getInOutIsSOTransaction()
-        {
-            return this.inOutIsSOTransaction;
-        }
-
-        public void setInOutIsSOTransaction(Boolean inOutIsSOTransaction)
-        {
-            this.inOutIsSOTransaction = inOutIsSOTransaction;
-        }
-
         private String documentAction;
 
         public String getDocumentAction()
@@ -313,16 +288,16 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.inOutProcessed = inOutProcessed;
         }
 
-        private Integer inOutDocumentType;
+        private String inOutDocumentTypeId;
 
-        public Integer getInOutDocumentType()
+        public String getInOutDocumentTypeId()
         {
-            return this.inOutDocumentType;
+            return this.inOutDocumentTypeId;
         }
 
-        public void setInOutDocumentType(Integer inOutDocumentType)
+        public void setInOutDocumentTypeId(String inOutDocumentTypeId)
         {
-            this.inOutDocumentType = inOutDocumentType;
+            this.inOutDocumentTypeId = inOutDocumentTypeId;
         }
 
         private String inOutDescription;
@@ -337,16 +312,16 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.inOutDescription = inOutDescription;
         }
 
-        private String inOutOrderNumber;
+        private String inOutOrderId;
 
-        public String getInOutOrderNumber()
+        public String getInOutOrderId()
         {
-            return this.inOutOrderNumber;
+            return this.inOutOrderId;
         }
 
-        public void setInOutOrderNumber(String inOutOrderNumber)
+        public void setInOutOrderId(String inOutOrderId)
         {
-            this.inOutOrderNumber = inOutOrderNumber;
+            this.inOutOrderId = inOutOrderId;
         }
 
         private Date inOutDateOrdered;
@@ -373,16 +348,16 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.inOutIsPrinted = inOutIsPrinted;
         }
 
-        private String inOutMovementType;
+        private String inOutMovementTypeId;
 
-        public String getInOutMovementType()
+        public String getInOutMovementTypeId()
         {
-            return this.inOutMovementType;
+            return this.inOutMovementTypeId;
         }
 
-        public void setInOutMovementType(String inOutMovementType)
+        public void setInOutMovementTypeId(String inOutMovementTypeId)
         {
-            this.inOutMovementType = inOutMovementType;
+            this.inOutMovementTypeId = inOutMovementTypeId;
         }
 
         private Date inOutMovementDate;
@@ -433,18 +408,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.inOutPOReference = inOutPOReference;
         }
 
-        private Money inOutFreightAmount;
-
-        public Money getInOutFreightAmount()
-        {
-            return this.inOutFreightAmount;
-        }
-
-        public void setInOutFreightAmount(Money inOutFreightAmount)
-        {
-            this.inOutFreightAmount = inOutFreightAmount;
-        }
-
         private String inOutShipperId;
 
         public String getInOutShipperId()
@@ -455,18 +418,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
         public void setInOutShipperId(String inOutShipperId)
         {
             this.inOutShipperId = inOutShipperId;
-        }
-
-        private Money inOutChargeAmount;
-
-        public Money getInOutChargeAmount()
-        {
-            return this.inOutChargeAmount;
-        }
-
-        public void setInOutChargeAmount(Money inOutChargeAmount)
-        {
-            this.inOutChargeAmount = inOutChargeAmount;
         }
 
         private Date inOutDatePrinted;
@@ -589,30 +540,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.inOutIsInDispute = inOutIsInDispute;
         }
 
-        private BigDecimal inOutVolume;
-
-        public BigDecimal getInOutVolume()
-        {
-            return this.inOutVolume;
-        }
-
-        public void setInOutVolume(BigDecimal inOutVolume)
-        {
-            this.inOutVolume = inOutVolume;
-        }
-
-        private BigDecimal inOutWeight;
-
-        public BigDecimal getInOutWeight()
-        {
-            return this.inOutWeight;
-        }
-
-        public void setInOutWeight(BigDecimal inOutWeight)
-        {
-            this.inOutWeight = inOutWeight;
-        }
-
         private String inOutRmaNumber;
 
         public String getInOutRmaNumber()
@@ -635,30 +562,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
         public void setInOutReversalNumber(String inOutReversalNumber)
         {
             this.inOutReversalNumber = inOutReversalNumber;
-        }
-
-        private Boolean inOutIsDropShip;
-
-        public Boolean getInOutIsDropShip()
-        {
-            return this.inOutIsDropShip;
-        }
-
-        public void setInOutIsDropShip(Boolean inOutIsDropShip)
-        {
-            this.inOutIsDropShip = inOutIsDropShip;
-        }
-
-        private String inOutDropShipBusinessPartnerId;
-
-        public String getInOutDropShipBusinessPartnerId()
-        {
-            return this.inOutDropShipBusinessPartnerId;
-        }
-
-        public void setInOutDropShipBusinessPartnerId(String inOutDropShipBusinessPartnerId)
-        {
-            this.inOutDropShipBusinessPartnerId = inOutDropShipBusinessPartnerId;
         }
 
         private String inOutCreatedBy;
@@ -751,18 +654,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
-        private Boolean isPropertyDescriptionRemoved;
-
-        public Boolean getIsPropertyDescriptionRemoved()
-        {
-            return this.isPropertyDescriptionRemoved;
-        }
-
-        public void setIsPropertyDescriptionRemoved(Boolean removed)
-        {
-            this.isPropertyDescriptionRemoved = removed;
-        }
-
         private Boolean isPropertyLocatorIdRemoved;
 
         public Boolean getIsPropertyLocatorIdRemoved()
@@ -785,6 +676,30 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
         public void setIsPropertyProductIdRemoved(Boolean removed)
         {
             this.isPropertyProductIdRemoved = removed;
+        }
+
+        private Boolean isPropertyAttributeSetInstanceIdRemoved;
+
+        public Boolean getIsPropertyAttributeSetInstanceIdRemoved()
+        {
+            return this.isPropertyAttributeSetInstanceIdRemoved;
+        }
+
+        public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
+        {
+            this.isPropertyAttributeSetInstanceIdRemoved = removed;
+        }
+
+        private Boolean isPropertyDescriptionRemoved;
+
+        public Boolean getIsPropertyDescriptionRemoved()
+        {
+            return this.isPropertyDescriptionRemoved;
+        }
+
+        public void setIsPropertyDescriptionRemoved(Boolean removed)
+        {
+            this.isPropertyDescriptionRemoved = removed;
         }
 
         private Boolean isPropertyUomIdRemoved;
@@ -871,30 +786,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.isPropertyIsInvoicedRemoved = removed;
         }
 
-        private Boolean isPropertyAttributeSetInstanceIdRemoved;
-
-        public Boolean getIsPropertyAttributeSetInstanceIdRemoved()
-        {
-            return this.isPropertyAttributeSetInstanceIdRemoved;
-        }
-
-        public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
-        {
-            this.isPropertyAttributeSetInstanceIdRemoved = removed;
-        }
-
-        private Boolean isPropertyIsDescriptionRemoved;
-
-        public Boolean getIsPropertyIsDescriptionRemoved()
-        {
-            return this.isPropertyIsDescriptionRemoved;
-        }
-
-        public void setIsPropertyIsDescriptionRemoved(Boolean removed)
-        {
-            this.isPropertyIsDescriptionRemoved = removed;
-        }
-
         private Boolean isPropertyProcessedRemoved;
 
         public Boolean getIsPropertyProcessedRemoved()
@@ -967,18 +858,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Boolean isPropertyInOutIsSOTransactionRemoved;
-
-        public Boolean getIsPropertyInOutIsSOTransactionRemoved()
-        {
-            return this.isPropertyInOutIsSOTransactionRemoved;
-        }
-
-        public void setIsPropertyInOutIsSOTransactionRemoved(Boolean removed)
-        {
-            this.isPropertyInOutIsSOTransactionRemoved = removed;
-        }
-
         private Boolean isPropertyInOutPostedRemoved;
 
         public Boolean getIsPropertyInOutPostedRemoved()
@@ -1015,16 +894,16 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.isPropertyInOutProcessedRemoved = removed;
         }
 
-        private Boolean isPropertyInOutDocumentTypeRemoved;
+        private Boolean isPropertyInOutDocumentTypeIdRemoved;
 
-        public Boolean getIsPropertyInOutDocumentTypeRemoved()
+        public Boolean getIsPropertyInOutDocumentTypeIdRemoved()
         {
-            return this.isPropertyInOutDocumentTypeRemoved;
+            return this.isPropertyInOutDocumentTypeIdRemoved;
         }
 
-        public void setIsPropertyInOutDocumentTypeRemoved(Boolean removed)
+        public void setIsPropertyInOutDocumentTypeIdRemoved(Boolean removed)
         {
-            this.isPropertyInOutDocumentTypeRemoved = removed;
+            this.isPropertyInOutDocumentTypeIdRemoved = removed;
         }
 
         private Boolean isPropertyInOutDescriptionRemoved;
@@ -1039,16 +918,16 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.isPropertyInOutDescriptionRemoved = removed;
         }
 
-        private Boolean isPropertyInOutOrderNumberRemoved;
+        private Boolean isPropertyInOutOrderIdRemoved;
 
-        public Boolean getIsPropertyInOutOrderNumberRemoved()
+        public Boolean getIsPropertyInOutOrderIdRemoved()
         {
-            return this.isPropertyInOutOrderNumberRemoved;
+            return this.isPropertyInOutOrderIdRemoved;
         }
 
-        public void setIsPropertyInOutOrderNumberRemoved(Boolean removed)
+        public void setIsPropertyInOutOrderIdRemoved(Boolean removed)
         {
-            this.isPropertyInOutOrderNumberRemoved = removed;
+            this.isPropertyInOutOrderIdRemoved = removed;
         }
 
         private Boolean isPropertyInOutDateOrderedRemoved;
@@ -1075,16 +954,16 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.isPropertyInOutIsPrintedRemoved = removed;
         }
 
-        private Boolean isPropertyInOutMovementTypeRemoved;
+        private Boolean isPropertyInOutMovementTypeIdRemoved;
 
-        public Boolean getIsPropertyInOutMovementTypeRemoved()
+        public Boolean getIsPropertyInOutMovementTypeIdRemoved()
         {
-            return this.isPropertyInOutMovementTypeRemoved;
+            return this.isPropertyInOutMovementTypeIdRemoved;
         }
 
-        public void setIsPropertyInOutMovementTypeRemoved(Boolean removed)
+        public void setIsPropertyInOutMovementTypeIdRemoved(Boolean removed)
         {
-            this.isPropertyInOutMovementTypeRemoved = removed;
+            this.isPropertyInOutMovementTypeIdRemoved = removed;
         }
 
         private Boolean isPropertyInOutMovementDateRemoved;
@@ -1135,18 +1014,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.isPropertyInOutPOReferenceRemoved = removed;
         }
 
-        private Boolean isPropertyInOutFreightAmountRemoved;
-
-        public Boolean getIsPropertyInOutFreightAmountRemoved()
-        {
-            return this.isPropertyInOutFreightAmountRemoved;
-        }
-
-        public void setIsPropertyInOutFreightAmountRemoved(Boolean removed)
-        {
-            this.isPropertyInOutFreightAmountRemoved = removed;
-        }
-
         private Boolean isPropertyInOutShipperIdRemoved;
 
         public Boolean getIsPropertyInOutShipperIdRemoved()
@@ -1157,18 +1024,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
         public void setIsPropertyInOutShipperIdRemoved(Boolean removed)
         {
             this.isPropertyInOutShipperIdRemoved = removed;
-        }
-
-        private Boolean isPropertyInOutChargeAmountRemoved;
-
-        public Boolean getIsPropertyInOutChargeAmountRemoved()
-        {
-            return this.isPropertyInOutChargeAmountRemoved;
-        }
-
-        public void setIsPropertyInOutChargeAmountRemoved(Boolean removed)
-        {
-            this.isPropertyInOutChargeAmountRemoved = removed;
         }
 
         private Boolean isPropertyInOutDatePrintedRemoved;
@@ -1291,30 +1146,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.isPropertyInOutIsInDisputeRemoved = removed;
         }
 
-        private Boolean isPropertyInOutVolumeRemoved;
-
-        public Boolean getIsPropertyInOutVolumeRemoved()
-        {
-            return this.isPropertyInOutVolumeRemoved;
-        }
-
-        public void setIsPropertyInOutVolumeRemoved(Boolean removed)
-        {
-            this.isPropertyInOutVolumeRemoved = removed;
-        }
-
-        private Boolean isPropertyInOutWeightRemoved;
-
-        public Boolean getIsPropertyInOutWeightRemoved()
-        {
-            return this.isPropertyInOutWeightRemoved;
-        }
-
-        public void setIsPropertyInOutWeightRemoved(Boolean removed)
-        {
-            this.isPropertyInOutWeightRemoved = removed;
-        }
-
         private Boolean isPropertyInOutRmaNumberRemoved;
 
         public Boolean getIsPropertyInOutRmaNumberRemoved()
@@ -1337,30 +1168,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
         public void setIsPropertyInOutReversalNumberRemoved(Boolean removed)
         {
             this.isPropertyInOutReversalNumberRemoved = removed;
-        }
-
-        private Boolean isPropertyInOutIsDropShipRemoved;
-
-        public Boolean getIsPropertyInOutIsDropShipRemoved()
-        {
-            return this.isPropertyInOutIsDropShipRemoved;
-        }
-
-        public void setIsPropertyInOutIsDropShipRemoved(Boolean removed)
-        {
-            this.isPropertyInOutIsDropShipRemoved = removed;
-        }
-
-        private Boolean isPropertyInOutDropShipBusinessPartnerIdRemoved;
-
-        public Boolean getIsPropertyInOutDropShipBusinessPartnerIdRemoved()
-        {
-            return this.isPropertyInOutDropShipBusinessPartnerIdRemoved;
-        }
-
-        public void setIsPropertyInOutDropShipBusinessPartnerIdRemoved(Boolean removed)
-        {
-            this.isPropertyInOutDropShipBusinessPartnerIdRemoved = removed;
         }
 
         private Boolean isPropertyInOutCreatedByRemoved;

@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 using Dddml.Wms.Specialization.NHibernate;
 using NHibernate;
 using NHibernate.Criterion;
@@ -29,7 +28,7 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentNumber", "IsSOTransaction", "DocumentStatus", "Posted", "Processing", "Processed", "DocumentType", "Description", "OrderNumber", "DateOrdered", "IsPrinted", "MovementType", "MovementDate", "BusinessPartnerId", "WarehouseId", "POReference", "FreightAmount", "ShipperId", "ChargeAmount", "DatePrinted", "SalesRepresentative", "NumberOfPackages", "PickDate", "ShipDate", "TrackingNumber", "DateReceived", "IsInTransit", "IsApproved", "IsInDispute", "Volume", "Weight", "RmaNumber", "ReversalNumber", "IsDropShip", "DropShipBusinessPartnerId", "InOutLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentNumber", "DocumentStatus", "Posted", "Processing", "Processed", "DocumentTypeId", "Description", "OrderId", "DateOrdered", "IsPrinted", "MovementTypeId", "MovementDate", "BusinessPartnerId", "WarehouseId", "POReference", "ShipperId", "DatePrinted", "SalesRepresentative", "NumberOfPackages", "PickDate", "ShipDate", "TrackingNumber", "DateReceived", "IsInTransit", "IsApproved", "IsInDispute", "RmaNumber", "ReversalNumber", "InOutLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

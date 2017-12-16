@@ -37,12 +37,12 @@ public abstract class AbstractWarehouseStateCommandConverter<TCreateWarehouse ex
         cmd.setVersion(state.getVersion());
 
         cmd.setWarehouseId(state.getWarehouseId());
-        cmd.setName(state.getName());
+        cmd.setWarehouseName(state.getWarehouseName());
         cmd.setDescription(state.getDescription());
         cmd.setIsInTransit(state.getIsInTransit());
         cmd.setActive(state.getActive());
             
-        if (state.getName() == null) { cmd.setIsPropertyNameRemoved(true); }
+        if (state.getWarehouseName() == null) { cmd.setIsPropertyWarehouseNameRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getIsInTransit() == null) { cmd.setIsPropertyIsInTransitRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
@@ -55,7 +55,7 @@ public abstract class AbstractWarehouseStateCommandConverter<TCreateWarehouse ex
 
         cmd.setVersion(state.getVersion());
         cmd.setWarehouseId(state.getWarehouseId());
-        cmd.setName(state.getName());
+        cmd.setWarehouseName(state.getWarehouseName());
         cmd.setDescription(state.getDescription());
         cmd.setIsInTransit(state.getIsInTransit());
         cmd.setActive(state.getActive());

@@ -11,7 +11,7 @@ public final class AttributeValueMvoFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
-            "name",
+            "attributeValueName",
             "description",
             "referenceId",
             "version",
@@ -21,7 +21,7 @@ public final class AttributeValueMvoFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "attributeName",
+            "attributeAttributeName",
             "attributeOrganizationId",
             "attributeDescription",
             "attributeIsMandatory",
@@ -86,8 +86,8 @@ public final class AttributeValueMvoFilteringProperties
     }
 
     private static  void initAliasMap() {
-        aliasMap.put("name", "name");
-        aliasMap.put("Name", "name");
+        aliasMap.put("attributeValueName", "attributeValueName");
+        aliasMap.put("AttributeValueName", "attributeValueName");
         aliasMap.put("description", "description");
         aliasMap.put("Description", "description");
         aliasMap.put("referenceId", "referenceId");
@@ -106,8 +106,8 @@ public final class AttributeValueMvoFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("attributeName", "attributeName");
-        aliasMap.put("AttributeName", "attributeName");
+        aliasMap.put("attributeAttributeName", "attributeAttributeName");
+        aliasMap.put("AttributeAttributeName", "attributeAttributeName");
         aliasMap.put("attributeOrganizationId", "attributeOrganizationId");
         aliasMap.put("AttributeOrganizationId", "attributeOrganizationId");
         aliasMap.put("attributeDescription", "attributeDescription");

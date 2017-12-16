@@ -278,7 +278,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "AttributeSetName",
+                    Name = "AttributeSetAttributeSetName",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -772,8 +772,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
-            d.Add("AttributeSetName", "AttributeSetName");
-            d.Add("attributeSetName", "AttributeSetName");
+            d.Add("AttributeSetAttributeSetName", "AttributeSetAttributeSetName");
+            d.Add("attributeSetAttributeSetName", "AttributeSetAttributeSetName");
             d.Add("AttributeSetOrganizationId", "AttributeSetOrganizationId");
             d.Add("attributeSetOrganizationId", "AttributeSetOrganizationId");
             d.Add("AttributeSetDescription", "AttributeSetDescription");

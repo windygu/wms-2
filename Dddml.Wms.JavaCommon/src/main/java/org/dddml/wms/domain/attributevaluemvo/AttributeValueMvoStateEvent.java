@@ -14,9 +14,9 @@ public interface AttributeValueMvoStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    String getName();
+    String getAttributeValueName();
 
-    void setName(String name);
+    void setAttributeValueName(String attributeValueName);
 
     String getDescription();
 
@@ -42,9 +42,9 @@ public interface AttributeValueMvoStateEvent extends Event
 
     void setActive(Boolean active);
 
-    String getAttributeName();
+    String getAttributeAttributeName();
 
-    void setAttributeName(String attributeName);
+    void setAttributeAttributeName(String attributeAttributeName);
 
     String getAttributeOrganizationId();
 
@@ -118,9 +118,9 @@ public interface AttributeValueMvoStateEvent extends Event
 
     interface AttributeValueMvoStateMergePatched extends AttributeValueMvoStateEvent
     {
-        Boolean getIsPropertyNameRemoved();
+        Boolean getIsPropertyAttributeValueNameRemoved();
 
-        void setIsPropertyNameRemoved(Boolean removed);
+        void setIsPropertyAttributeValueNameRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 
@@ -138,9 +138,9 @@ public interface AttributeValueMvoStateEvent extends Event
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        Boolean getIsPropertyAttributeNameRemoved();
+        Boolean getIsPropertyAttributeAttributeNameRemoved();
 
-        void setIsPropertyAttributeNameRemoved(Boolean removed);
+        void setIsPropertyAttributeAttributeNameRemoved(Boolean removed);
 
         Boolean getIsPropertyAttributeOrganizationIdRemoved();
 

@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -45,9 +44,10 @@ namespace Dddml.Wms.Domain.InOut
             var cmd = new TMergePatchInOutLine();
 
             cmd.LineNumber = state.LineNumber;
-            cmd.Description = state.Description;
             cmd.LocatorId = state.LocatorId;
             cmd.ProductId = state.ProductId;
+            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.Description = state.Description;
             cmd.UomId = state.UomId;
             cmd.MovementQuantity = state.MovementQuantity;
             cmd.ConfirmedQuantity = state.ConfirmedQuantity;
@@ -55,8 +55,6 @@ namespace Dddml.Wms.Domain.InOut
             cmd.TargetQuantity = state.TargetQuantity;
             cmd.PickedQuantity = state.PickedQuantity;
             cmd.IsInvoiced = state.IsInvoiced;
-            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
-            cmd.IsDescription = state.IsDescription;
             cmd.Processed = state.Processed;
             cmd.QuantityEntered = state.QuantityEntered;
             cmd.RmaLineNumber = state.RmaLineNumber;
@@ -64,11 +62,11 @@ namespace Dddml.Wms.Domain.InOut
             cmd.Active = ((IInOutLineStateProperties)state).Active;
             cmd.InOutDocumentNumber = state.InOutDocumentNumber;
             
-            if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.LocatorId == null) { cmd.IsPropertyLocatorIdRemoved = true; }
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
-            if (state.UomId == null) { cmd.IsPropertyUomIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
+            if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
+            if (state.UomId == null) { cmd.IsPropertyUomIdRemoved = true; }
             return cmd;
         }
 
@@ -78,9 +76,10 @@ namespace Dddml.Wms.Domain.InOut
             var cmd = new TCreateInOutLine();
 
             cmd.LineNumber = state.LineNumber;
-            cmd.Description = state.Description;
             cmd.LocatorId = state.LocatorId;
             cmd.ProductId = state.ProductId;
+            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.Description = state.Description;
             cmd.UomId = state.UomId;
             cmd.MovementQuantity = state.MovementQuantity;
             cmd.ConfirmedQuantity = state.ConfirmedQuantity;
@@ -88,8 +87,6 @@ namespace Dddml.Wms.Domain.InOut
             cmd.TargetQuantity = state.TargetQuantity;
             cmd.PickedQuantity = state.PickedQuantity;
             cmd.IsInvoiced = state.IsInvoiced;
-            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
-            cmd.IsDescription = state.IsDescription;
             cmd.Processed = state.Processed;
             cmd.QuantityEntered = state.QuantityEntered;
             cmd.RmaLineNumber = state.RmaLineNumber;

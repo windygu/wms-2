@@ -40,9 +40,9 @@ public interface OrganizationCommand extends Command
 
     interface CreateOrMergePatchOrganization extends OrganizationCommand
     {
-        String getName();
+        String getOrganizationName();
 
-        void setName(String name);
+        void setOrganizationName(String organizationName);
 
         String getDescription();
 
@@ -68,9 +68,9 @@ public interface OrganizationCommand extends Command
 
     interface MergePatchOrganization extends CreateOrMergePatchOrganization
     {
-        Boolean getIsPropertyNameRemoved();
+        Boolean getIsPropertyOrganizationNameRemoved();
 
-        void setIsPropertyNameRemoved(Boolean removed);
+        void setIsPropertyOrganizationNameRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 

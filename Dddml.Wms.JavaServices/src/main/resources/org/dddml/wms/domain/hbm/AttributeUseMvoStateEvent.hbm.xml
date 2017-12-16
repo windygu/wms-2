@@ -19,7 +19,7 @@
 	<property name="sequenceNumber" ></property>
 	<property name="version" ></property>
 	<property name="active" ></property>
-	<property name="attributeSetName" ></property>
+	<property name="attributeSetAttributeSetName" ></property>
 	<property name="attributeSetOrganizationId" ></property>
 	<property name="attributeSetDescription" ></property>
 	<property name="attributeSetSerialNumberAttributeId" ></property>
@@ -50,7 +50,7 @@
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
-        <property name="isPropertyAttributeSetNameRemoved" column="IsPropertyAttributeSetNameRemoved"/>
+        <property name="isPropertyAttributeSetAttributeSetNameRemoved" column="IsPropertyAttributeSetAttributeSetNameRemoved"/>
 
         <property name="isPropertyAttributeSetOrganizationIdRemoved" column="IsPropertyAttributeSetOrganizationIdRemoved"/>
 

@@ -30,9 +30,5 @@ public interface DocumentTypeApplicationService
 
     long getCount(Criterion filter);
 
-    DocumentTypeStateEvent getStateEvent(String documentTypeId, long version);
-
-    DocumentTypeState getHistoryState(String documentTypeId, long version);
-
 }
 

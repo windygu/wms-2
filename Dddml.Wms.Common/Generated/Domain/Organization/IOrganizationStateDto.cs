@@ -20,7 +20,7 @@ namespace Dddml.Wms.Domain.Organization
             set;
         }
 
-        string Name
+        string OrganizationName
         {
             get;
             set;

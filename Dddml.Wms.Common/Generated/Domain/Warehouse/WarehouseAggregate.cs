@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain.Warehouse
 			var stateEventId = new WarehouseStateEventId(c.WarehouseId, c.Version);
             IWarehouseStateCreated e = NewWarehouseStateCreated(stateEventId);
 		
-            e.Name = c.Name;
+            e.WarehouseName = c.WarehouseName;
             e.Description = c.Description;
             e.IsInTransit = c.IsInTransit;
             e.Active = c.Active;
@@ -127,11 +127,11 @@ namespace Dddml.Wms.Domain.Warehouse
 			var stateEventId = new WarehouseStateEventId(c.WarehouseId, c.Version);
             IWarehouseStateMergePatched e = NewWarehouseStateMergePatched(stateEventId);
 
-            e.Name = c.Name;
+            e.WarehouseName = c.WarehouseName;
             e.Description = c.Description;
             e.IsInTransit = c.IsInTransit;
             e.Active = c.Active;
-            e.IsPropertyNameRemoved = c.IsPropertyNameRemoved;
+            e.IsPropertyWarehouseNameRemoved = c.IsPropertyWarehouseNameRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyIsInTransitRemoved = c.IsPropertyIsInTransitRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;

@@ -37,7 +37,7 @@ public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute ex
         cmd.setVersion(state.getVersion());
 
         cmd.setAttributeId(state.getAttributeId());
-        cmd.setName(state.getName());
+        cmd.setAttributeName(state.getAttributeName());
         cmd.setOrganizationId(state.getOrganizationId());
         cmd.setDescription(state.getDescription());
         cmd.setIsMandatory(state.getIsMandatory());
@@ -49,7 +49,7 @@ public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute ex
         cmd.setReferenceId(state.getReferenceId());
         cmd.setActive(state.getActive());
             
-        if (state.getName() == null) { cmd.setIsPropertyNameRemoved(true); }
+        if (state.getAttributeName() == null) { cmd.setIsPropertyAttributeNameRemoved(true); }
         if (state.getOrganizationId() == null) { cmd.setIsPropertyOrganizationIdRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getIsMandatory() == null) { cmd.setIsPropertyIsMandatoryRemoved(true); }
@@ -74,7 +74,7 @@ public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute ex
 
         cmd.setVersion(state.getVersion());
         cmd.setAttributeId(state.getAttributeId());
-        cmd.setName(state.getName());
+        cmd.setAttributeName(state.getAttributeName());
         cmd.setOrganizationId(state.getOrganizationId());
         cmd.setDescription(state.getDescription());
         cmd.setIsMandatory(state.getIsMandatory());

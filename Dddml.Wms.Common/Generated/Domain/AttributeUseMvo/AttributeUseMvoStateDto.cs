@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             set;
         }
 
-        public virtual string AttributeSetName
+        public virtual string AttributeSetAttributeSetName
         {
             get;
             set;
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             if (this.SequenceNumber != null && this.SequenceNumber.HasValue) { state.SequenceNumber = this.SequenceNumber.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
-            state.AttributeSetName = this.AttributeSetName;
+            state.AttributeSetAttributeSetName = this.AttributeSetAttributeSetName;
             state.AttributeSetOrganizationId = this.AttributeSetOrganizationId;
             state.AttributeSetDescription = this.AttributeSetDescription;
             state.AttributeSetSerialNumberAttributeId = this.AttributeSetSerialNumberAttributeId;

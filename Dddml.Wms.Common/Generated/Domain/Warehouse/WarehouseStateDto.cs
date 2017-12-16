@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.Warehouse
             set;
         }
 
-        public virtual string Name
+        public virtual string WarehouseName
         {
             get;
             set;
@@ -79,7 +79,7 @@ namespace Dddml.Wms.Domain.Warehouse
         {
             var state = new WarehouseState(true);
             state.WarehouseId = this.WarehouseId;
-            state.Name = this.Name;
+            state.WarehouseName = this.WarehouseName;
             state.Description = this.Description;
             if (this.IsInTransit != null && this.IsInTransit.HasValue) { state.IsInTransit = this.IsInTransit.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }

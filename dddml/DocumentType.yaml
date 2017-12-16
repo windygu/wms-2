@@ -1,0 +1,21 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+              
+    # ----------------------- aggregate -------------------------
+    DocumentType:
+      id:
+        name: DocumentTypeId
+        type: string
+      properties:
+        Description:
+          type: string
+          notNull: true
+      metadata:
+        NoEventSourcing: true
+          
+
+          

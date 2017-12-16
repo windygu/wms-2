@@ -13,9 +13,9 @@ public interface OrganizationStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    String getName();
+    String getOrganizationName();
 
-    void setName(String name);
+    void setOrganizationName(String organizationName);
 
     String getDescription();
 
@@ -53,9 +53,9 @@ public interface OrganizationStateEvent extends Event
 
     interface OrganizationStateMergePatched extends OrganizationStateEvent
     {
-        Boolean getIsPropertyNameRemoved();
+        Boolean getIsPropertyOrganizationNameRemoved();
 
-        void setIsPropertyNameRemoved(Boolean removed);
+        void setIsPropertyOrganizationNameRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 

@@ -138,6 +138,16 @@ public abstract class AbstractDocumentTypeState implements DocumentTypeState
         this.forReapplying = forReapplying;
     }
 
+    private String commandId;
+
+    public String getCommandId() {
+        return this.commandId;
+    }
+
+    public void setCommandId(String commandId) {
+        this.commandId = commandId;
+    }
+
     public AbstractDocumentTypeState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {

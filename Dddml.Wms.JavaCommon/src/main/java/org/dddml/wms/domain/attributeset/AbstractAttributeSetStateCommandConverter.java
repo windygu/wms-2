@@ -37,7 +37,7 @@ public abstract class AbstractAttributeSetStateCommandConverter<TCreateAttribute
         cmd.setVersion(state.getVersion());
 
         cmd.setAttributeSetId(state.getAttributeSetId());
-        cmd.setName(state.getName());
+        cmd.setAttributeSetName(state.getAttributeSetName());
         cmd.setOrganizationId(state.getOrganizationId());
         cmd.setDescription(state.getDescription());
         cmd.setSerialNumberAttributeId(state.getSerialNumberAttributeId());
@@ -45,7 +45,7 @@ public abstract class AbstractAttributeSetStateCommandConverter<TCreateAttribute
         cmd.setReferenceId(state.getReferenceId());
         cmd.setActive(state.getActive());
             
-        if (state.getName() == null) { cmd.setIsPropertyNameRemoved(true); }
+        if (state.getAttributeSetName() == null) { cmd.setIsPropertyAttributeSetNameRemoved(true); }
         if (state.getOrganizationId() == null) { cmd.setIsPropertyOrganizationIdRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getSerialNumberAttributeId() == null) { cmd.setIsPropertySerialNumberAttributeIdRemoved(true); }
@@ -66,7 +66,7 @@ public abstract class AbstractAttributeSetStateCommandConverter<TCreateAttribute
 
         cmd.setVersion(state.getVersion());
         cmd.setAttributeSetId(state.getAttributeSetId());
-        cmd.setName(state.getName());
+        cmd.setAttributeSetName(state.getAttributeSetName());
         cmd.setOrganizationId(state.getOrganizationId());
         cmd.setDescription(state.getDescription());
         cmd.setSerialNumberAttributeId(state.getSerialNumberAttributeId());

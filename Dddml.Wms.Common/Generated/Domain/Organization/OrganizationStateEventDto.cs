@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Organization
             set { StateEventId.Version = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string OrganizationName { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -81,13 +81,13 @@ namespace Dddml.Wms.Domain.Organization
             }
         }
 
-		public virtual bool? IsPropertyNameRemoved { get; set; }
+		public virtual bool? IsPropertyOrganizationNameRemoved { get; set; }
 
-        bool IOrganizationStateMergePatched.IsPropertyNameRemoved
+        bool IOrganizationStateMergePatched.IsPropertyOrganizationNameRemoved
         {
             get 
             {
-                var b = this.IsPropertyNameRemoved;
+                var b = this.IsPropertyOrganizationNameRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -96,7 +96,7 @@ namespace Dddml.Wms.Domain.Organization
             }
             set 
             {
-                this.IsPropertyNameRemoved = value;
+                this.IsPropertyOrganizationNameRemoved = value;
             }
         }
 

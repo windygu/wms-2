@@ -57,7 +57,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
     protected OrganizationStateEvent map(OrganizationCommand.CreateOrganization c) {
         OrganizationStateEventId stateEventId = new OrganizationStateEventId(c.getOrganizationId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateCreated e = newOrganizationStateCreated(stateEventId);
-        e.setName(c.getName());
+        e.setOrganizationName(c.getOrganizationName());
         e.setDescription(c.getDescription());
         e.setType(c.getType());
         e.setIsSummary(c.getIsSummary());
@@ -71,12 +71,12 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
     protected OrganizationStateEvent map(OrganizationCommand.MergePatchOrganization c) {
         OrganizationStateEventId stateEventId = new OrganizationStateEventId(c.getOrganizationId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateMergePatched e = newOrganizationStateMergePatched(stateEventId);
-        e.setName(c.getName());
+        e.setOrganizationName(c.getOrganizationName());
         e.setDescription(c.getDescription());
         e.setType(c.getType());
         e.setIsSummary(c.getIsSummary());
         e.setActive(c.getActive());
-        e.setIsPropertyNameRemoved(c.getIsPropertyNameRemoved());
+        e.setIsPropertyOrganizationNameRemoved(c.getIsPropertyOrganizationNameRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyTypeRemoved(c.getIsPropertyTypeRemoved());
         e.setIsPropertyIsSummaryRemoved(c.getIsPropertyIsSummaryRemoved());

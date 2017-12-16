@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOutLineMvo;
-using NodaMoney;
 using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.Domain.InOutLineMvo
@@ -25,11 +24,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 	public interface ICreateOrMergePatchOrDeleteInOutLineMvo : IInOutLineMvoCommand
 	{
 
-		string Description { get; set; }
-
 		string LocatorId { get; set; }
 
 		string ProductId { get; set; }
+
+		string AttributeSetInstanceId { get; set; }
+
+		string Description { get; set; }
 
 		string UomId { get; set; }
 
@@ -45,10 +46,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? IsInvoiced { get; set; }
 
-		string AttributeSetInstanceId { get; set; }
-
-		bool? IsDescription { get; set; }
-
 		bool? Processed { get; set; }
 
 		decimal? QuantityEntered { get; set; }
@@ -61,8 +58,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? Active { get; set; }
 
-		bool? InOutIsSOTransaction { get; set; }
-
 		string DocumentAction { get; set; }
 
 		bool? InOutPosted { get; set; }
@@ -71,17 +66,17 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? InOutProcessed { get; set; }
 
-		int? InOutDocumentType { get; set; }
+		string InOutDocumentTypeId { get; set; }
 
 		string InOutDescription { get; set; }
 
-		string InOutOrderNumber { get; set; }
+		string InOutOrderId { get; set; }
 
 		DateTime? InOutDateOrdered { get; set; }
 
 		bool? InOutIsPrinted { get; set; }
 
-		string InOutMovementType { get; set; }
+		string InOutMovementTypeId { get; set; }
 
 		DateTime? InOutMovementDate { get; set; }
 
@@ -91,11 +86,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		string InOutPOReference { get; set; }
 
-		Money? InOutFreightAmount { get; set; }
-
 		string InOutShipperId { get; set; }
-
-		Money? InOutChargeAmount { get; set; }
 
 		DateTime? InOutDatePrinted { get; set; }
 
@@ -117,17 +108,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? InOutIsInDispute { get; set; }
 
-		decimal? InOutVolume { get; set; }
-
-		decimal? InOutWeight { get; set; }
-
 		string InOutRmaNumber { get; set; }
 
 		string InOutReversalNumber { get; set; }
-
-		bool? InOutIsDropShip { get; set; }
-
-		string InOutDropShipBusinessPartnerId { get; set; }
 
 		string InOutCreatedBy { get; set; }
 
@@ -151,11 +134,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 	public interface IMergePatchInOutLineMvo : ICreateOrMergePatchOrDeleteInOutLineMvo
 	{
 
-		bool IsPropertyDescriptionRemoved { get; set; }
-
 		bool IsPropertyLocatorIdRemoved { get; set; }
 
 		bool IsPropertyProductIdRemoved { get; set; }
+
+		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
+
+		bool IsPropertyDescriptionRemoved { get; set; }
 
 		bool IsPropertyUomIdRemoved { get; set; }
 
@@ -171,10 +156,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool IsPropertyIsInvoicedRemoved { get; set; }
 
-		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
-
-		bool IsPropertyIsDescriptionRemoved { get; set; }
-
 		bool IsPropertyProcessedRemoved { get; set; }
 
 		bool IsPropertyQuantityEnteredRemoved { get; set; }
@@ -187,25 +168,23 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool IsPropertyActiveRemoved { get; set; }
 
-		bool IsPropertyInOutIsSOTransactionRemoved { get; set; }
-
 		bool IsPropertyInOutPostedRemoved { get; set; }
 
 		bool IsPropertyInOutProcessingRemoved { get; set; }
 
 		bool IsPropertyInOutProcessedRemoved { get; set; }
 
-		bool IsPropertyInOutDocumentTypeRemoved { get; set; }
+		bool IsPropertyInOutDocumentTypeIdRemoved { get; set; }
 
 		bool IsPropertyInOutDescriptionRemoved { get; set; }
 
-		bool IsPropertyInOutOrderNumberRemoved { get; set; }
+		bool IsPropertyInOutOrderIdRemoved { get; set; }
 
 		bool IsPropertyInOutDateOrderedRemoved { get; set; }
 
 		bool IsPropertyInOutIsPrintedRemoved { get; set; }
 
-		bool IsPropertyInOutMovementTypeRemoved { get; set; }
+		bool IsPropertyInOutMovementTypeIdRemoved { get; set; }
 
 		bool IsPropertyInOutMovementDateRemoved { get; set; }
 
@@ -215,11 +194,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool IsPropertyInOutPOReferenceRemoved { get; set; }
 
-		bool IsPropertyInOutFreightAmountRemoved { get; set; }
-
 		bool IsPropertyInOutShipperIdRemoved { get; set; }
-
-		bool IsPropertyInOutChargeAmountRemoved { get; set; }
 
 		bool IsPropertyInOutDatePrintedRemoved { get; set; }
 
@@ -241,17 +216,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool IsPropertyInOutIsInDisputeRemoved { get; set; }
 
-		bool IsPropertyInOutVolumeRemoved { get; set; }
-
-		bool IsPropertyInOutWeightRemoved { get; set; }
-
 		bool IsPropertyInOutRmaNumberRemoved { get; set; }
 
 		bool IsPropertyInOutReversalNumberRemoved { get; set; }
-
-		bool IsPropertyInOutIsDropShipRemoved { get; set; }
-
-		bool IsPropertyInOutDropShipBusinessPartnerIdRemoved { get; set; }
 
 		bool IsPropertyInOutCreatedByRemoved { get; set; }
 

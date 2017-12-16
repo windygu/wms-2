@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.Attribute
             set { StateEventId.AttributeId = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string AttributeName { get; set; }
 
 		public virtual string OrganizationId { get; set; }
 
@@ -216,7 +216,7 @@ namespace Dddml.Wms.Domain.Attribute
 
 	public class AttributeStateMergePatched : AttributeStateEventBase, IAttributeStateMergePatched, ISaveable
 	{
-		public virtual bool IsPropertyNameRemoved { get; set; }
+		public virtual bool IsPropertyAttributeNameRemoved { get; set; }
 
 		public virtual bool IsPropertyOrganizationIdRemoved { get; set; }
 

@@ -11,7 +11,7 @@
 	<id name="warehouseId" length="50" column="WarehouseId"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
-	<property name="name" ></property>
+	<property name="warehouseName" ></property>
 	<property name="description" ></property>
 	<property name="isInTransit" ></property>
 	<property name="createdBy" ></property>

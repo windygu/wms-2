@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		bool Active { get; set; }
 
-		string AttributeSetName { get; set; }
+		string AttributeSetAttributeSetName { get; set; }
 
 		string AttributeSetOrganizationId { get; set; }
 

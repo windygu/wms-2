@@ -14,7 +14,7 @@
 	</composite-id>
 	<version name="attributeVersion" column="AttributeVersion" type="long" />
 
-	<property name="name" ></property>
+	<property name="attributeValueName" ></property>
 	<property name="description" ></property>
 	<property name="referenceId" ></property>
 	<property name="version" ></property>
@@ -22,7 +22,7 @@
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>
 	<property name="deleted" ></property>
-	<property name="attributeName" ></property>
+	<property name="attributeAttributeName" ></property>
 	<property name="attributeOrganizationId" ></property>
 	<property name="attributeDescription" ></property>
 	<property name="attributeIsMandatory" ></property>

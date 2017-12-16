@@ -34,16 +34,16 @@ public abstract class AbstractWarehouseCommand extends AbstractCommand implement
 
     public static abstract class AbstractCreateOrMergePatchWarehouse extends AbstractWarehouseCommand implements CreateOrMergePatchWarehouse
     {
-        private String name;
+        private String warehouseName;
 
-        public String getName()
+        public String getWarehouseName()
         {
-            return this.name;
+            return this.warehouseName;
         }
 
-        public void setName(String name)
+        public void setWarehouseName(String warehouseName)
         {
-            this.name = name;
+            this.warehouseName = warehouseName;
         }
 
         private String description;
@@ -100,16 +100,16 @@ public abstract class AbstractWarehouseCommand extends AbstractCommand implement
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
-        private Boolean isPropertyNameRemoved;
+        private Boolean isPropertyWarehouseNameRemoved;
 
-        public Boolean getIsPropertyNameRemoved()
+        public Boolean getIsPropertyWarehouseNameRemoved()
         {
-            return this.isPropertyNameRemoved;
+            return this.isPropertyWarehouseNameRemoved;
         }
 
-        public void setIsPropertyNameRemoved(Boolean removed)
+        public void setIsPropertyWarehouseNameRemoved(Boolean removed)
         {
-            this.isPropertyNameRemoved = removed;
+            this.isPropertyWarehouseNameRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;

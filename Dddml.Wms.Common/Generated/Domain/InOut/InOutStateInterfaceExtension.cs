@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -53,23 +52,20 @@ namespace Dddml.Wms.Domain.InOut
             cmd.Version = ((IInOutStateProperties)state).Version;
 
             cmd.DocumentNumber = state.DocumentNumber;
-            cmd.IsSOTransaction = state.IsSOTransaction;
             cmd.Posted = state.Posted;
             cmd.Processing = state.Processing;
             cmd.Processed = state.Processed;
-            cmd.DocumentType = state.DocumentType;
+            cmd.DocumentTypeId = state.DocumentTypeId;
             cmd.Description = state.Description;
-            cmd.OrderNumber = state.OrderNumber;
+            cmd.OrderId = state.OrderId;
             cmd.DateOrdered = state.DateOrdered;
             cmd.IsPrinted = state.IsPrinted;
-            cmd.MovementType = state.MovementType;
+            cmd.MovementTypeId = state.MovementTypeId;
             cmd.MovementDate = state.MovementDate;
             cmd.BusinessPartnerId = state.BusinessPartnerId;
             cmd.WarehouseId = state.WarehouseId;
             cmd.POReference = state.POReference;
-            cmd.FreightAmount = state.FreightAmount;
             cmd.ShipperId = state.ShipperId;
-            cmd.ChargeAmount = state.ChargeAmount;
             cmd.DatePrinted = state.DatePrinted;
             cmd.SalesRepresentative = state.SalesRepresentative;
             cmd.NumberOfPackages = state.NumberOfPackages;
@@ -80,18 +76,15 @@ namespace Dddml.Wms.Domain.InOut
             cmd.IsInTransit = state.IsInTransit;
             cmd.IsApproved = state.IsApproved;
             cmd.IsInDispute = state.IsInDispute;
-            cmd.Volume = state.Volume;
-            cmd.Weight = state.Weight;
             cmd.RmaNumber = state.RmaNumber;
             cmd.ReversalNumber = state.ReversalNumber;
-            cmd.IsDropShip = state.IsDropShip;
-            cmd.DropShipBusinessPartnerId = state.DropShipBusinessPartnerId;
             cmd.Active = ((IInOutStateProperties)state).Active;
             
+            if (state.DocumentTypeId == null) { cmd.IsPropertyDocumentTypeIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
-            if (state.OrderNumber == null) { cmd.IsPropertyOrderNumberRemoved = true; }
+            if (state.OrderId == null) { cmd.IsPropertyOrderIdRemoved = true; }
             if (state.DateOrdered == null) { cmd.IsPropertyDateOrderedRemoved = true; }
-            if (state.MovementType == null) { cmd.IsPropertyMovementTypeRemoved = true; }
+            if (state.MovementTypeId == null) { cmd.IsPropertyMovementTypeIdRemoved = true; }
             if (state.MovementDate == null) { cmd.IsPropertyMovementDateRemoved = true; }
             if (state.BusinessPartnerId == null) { cmd.IsPropertyBusinessPartnerIdRemoved = true; }
             if (state.WarehouseId == null) { cmd.IsPropertyWarehouseIdRemoved = true; }
@@ -105,7 +98,6 @@ namespace Dddml.Wms.Domain.InOut
             if (state.DateReceived == null) { cmd.IsPropertyDateReceivedRemoved = true; }
             if (state.RmaNumber == null) { cmd.IsPropertyRmaNumberRemoved = true; }
             if (state.ReversalNumber == null) { cmd.IsPropertyReversalNumberRemoved = true; }
-            if (state.DropShipBusinessPartnerId == null) { cmd.IsPropertyDropShipBusinessPartnerIdRemoved = true; }
             foreach (var d in state.InOutLines)
             {
                 var c = d.ToCreateOrMergePatchInOutLine<TCreateInOutLine, TMergePatchInOutLine>();
@@ -123,23 +115,20 @@ namespace Dddml.Wms.Domain.InOut
             cmd.Version = ((IInOutStateProperties)state).Version;
 
             cmd.DocumentNumber = state.DocumentNumber;
-            cmd.IsSOTransaction = state.IsSOTransaction;
             cmd.Posted = state.Posted;
             cmd.Processing = state.Processing;
             cmd.Processed = state.Processed;
-            cmd.DocumentType = state.DocumentType;
+            cmd.DocumentTypeId = state.DocumentTypeId;
             cmd.Description = state.Description;
-            cmd.OrderNumber = state.OrderNumber;
+            cmd.OrderId = state.OrderId;
             cmd.DateOrdered = state.DateOrdered;
             cmd.IsPrinted = state.IsPrinted;
-            cmd.MovementType = state.MovementType;
+            cmd.MovementTypeId = state.MovementTypeId;
             cmd.MovementDate = state.MovementDate;
             cmd.BusinessPartnerId = state.BusinessPartnerId;
             cmd.WarehouseId = state.WarehouseId;
             cmd.POReference = state.POReference;
-            cmd.FreightAmount = state.FreightAmount;
             cmd.ShipperId = state.ShipperId;
-            cmd.ChargeAmount = state.ChargeAmount;
             cmd.DatePrinted = state.DatePrinted;
             cmd.SalesRepresentative = state.SalesRepresentative;
             cmd.NumberOfPackages = state.NumberOfPackages;
@@ -150,12 +139,8 @@ namespace Dddml.Wms.Domain.InOut
             cmd.IsInTransit = state.IsInTransit;
             cmd.IsApproved = state.IsApproved;
             cmd.IsInDispute = state.IsInDispute;
-            cmd.Volume = state.Volume;
-            cmd.Weight = state.Weight;
             cmd.RmaNumber = state.RmaNumber;
             cmd.ReversalNumber = state.ReversalNumber;
-            cmd.IsDropShip = state.IsDropShip;
-            cmd.DropShipBusinessPartnerId = state.DropShipBusinessPartnerId;
             cmd.Active = ((IInOutStateProperties)state).Active;
             foreach (var d in state.InOutLines)
             {

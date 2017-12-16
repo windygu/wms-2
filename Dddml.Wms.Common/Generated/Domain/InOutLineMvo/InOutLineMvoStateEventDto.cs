@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOutLineMvo;
-using NodaMoney;
 using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.Domain.InOutLineMvo
@@ -44,11 +43,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set { StateEventId.InOutVersion = value; }
         }
 
-		public virtual string Description { get; set; }
-
 		public virtual string LocatorId { get; set; }
 
 		public virtual string ProductId { get; set; }
+
+		public virtual string AttributeSetInstanceId { get; set; }
+
+		public virtual string Description { get; set; }
 
 		public virtual string UomId { get; set; }
 
@@ -64,10 +65,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? IsInvoiced { get; set; }
 
-		public virtual string AttributeSetInstanceId { get; set; }
-
-		public virtual bool? IsDescription { get; set; }
-
 		public virtual bool? Processed { get; set; }
 
 		public virtual decimal? QuantityEntered { get; set; }
@@ -80,8 +77,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? Active { get; set; }
 
-		public virtual bool? InOutIsSOTransaction { get; set; }
-
 		public virtual string InOutDocumentStatus { get; set; }
 
 		public virtual bool? InOutPosted { get; set; }
@@ -90,17 +85,17 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? InOutProcessed { get; set; }
 
-		public virtual int? InOutDocumentType { get; set; }
+		public virtual string InOutDocumentTypeId { get; set; }
 
 		public virtual string InOutDescription { get; set; }
 
-		public virtual string InOutOrderNumber { get; set; }
+		public virtual string InOutOrderId { get; set; }
 
 		public virtual DateTime? InOutDateOrdered { get; set; }
 
 		public virtual bool? InOutIsPrinted { get; set; }
 
-		public virtual string InOutMovementType { get; set; }
+		public virtual string InOutMovementTypeId { get; set; }
 
 		public virtual DateTime? InOutMovementDate { get; set; }
 
@@ -110,11 +105,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual string InOutPOReference { get; set; }
 
-		public virtual Money? InOutFreightAmount { get; set; }
-
 		public virtual string InOutShipperId { get; set; }
-
-		public virtual Money? InOutChargeAmount { get; set; }
 
 		public virtual DateTime? InOutDatePrinted { get; set; }
 
@@ -136,17 +127,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? InOutIsInDispute { get; set; }
 
-		public virtual decimal? InOutVolume { get; set; }
-
-		public virtual decimal? InOutWeight { get; set; }
-
 		public virtual string InOutRmaNumber { get; set; }
 
 		public virtual string InOutReversalNumber { get; set; }
-
-		public virtual bool? InOutIsDropShip { get; set; }
-
-		public virtual string InOutDropShipBusinessPartnerId { get; set; }
 
 		public virtual string InOutCreatedBy { get; set; }
 
@@ -189,25 +172,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? IsPropertyDescriptionRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyDescriptionRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyDescriptionRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyDescriptionRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyLocatorIdRemoved { get; set; }
 
         bool IInOutLineMvoStateMergePatched.IsPropertyLocatorIdRemoved
@@ -243,6 +207,44 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set 
             {
                 this.IsPropertyProductIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyAttributeSetInstanceIdRemoved { get; set; }
+
+        bool IInOutLineMvoStateMergePatched.IsPropertyAttributeSetInstanceIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyAttributeSetInstanceIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyAttributeSetInstanceIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDescriptionRemoved { get; set; }
+
+        bool IInOutLineMvoStateMergePatched.IsPropertyDescriptionRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyDescriptionRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyDescriptionRemoved = value;
             }
         }
 
@@ -379,44 +381,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? IsPropertyAttributeSetInstanceIdRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyAttributeSetInstanceIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyAttributeSetInstanceIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyAttributeSetInstanceIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyIsDescriptionRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyIsDescriptionRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyIsDescriptionRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyIsDescriptionRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyProcessedRemoved { get; set; }
 
         bool IInOutLineMvoStateMergePatched.IsPropertyProcessedRemoved
@@ -531,25 +495,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? IsPropertyInOutIsSOTransactionRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyInOutIsSOTransactionRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyInOutIsSOTransactionRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyInOutIsSOTransactionRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyInOutDocumentStatusRemoved { get; set; }
 
         bool IInOutLineMvoStateMergePatched.IsPropertyInOutDocumentStatusRemoved
@@ -626,13 +571,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? IsPropertyInOutDocumentTypeRemoved { get; set; }
+		public virtual bool? IsPropertyInOutDocumentTypeIdRemoved { get; set; }
 
-        bool IInOutLineMvoStateMergePatched.IsPropertyInOutDocumentTypeRemoved
+        bool IInOutLineMvoStateMergePatched.IsPropertyInOutDocumentTypeIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyInOutDocumentTypeRemoved;
+                var b = this.IsPropertyInOutDocumentTypeIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -641,7 +586,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
             set 
             {
-                this.IsPropertyInOutDocumentTypeRemoved = value;
+                this.IsPropertyInOutDocumentTypeIdRemoved = value;
             }
         }
 
@@ -664,13 +609,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? IsPropertyInOutOrderNumberRemoved { get; set; }
+		public virtual bool? IsPropertyInOutOrderIdRemoved { get; set; }
 
-        bool IInOutLineMvoStateMergePatched.IsPropertyInOutOrderNumberRemoved
+        bool IInOutLineMvoStateMergePatched.IsPropertyInOutOrderIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyInOutOrderNumberRemoved;
+                var b = this.IsPropertyInOutOrderIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -679,7 +624,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
             set 
             {
-                this.IsPropertyInOutOrderNumberRemoved = value;
+                this.IsPropertyInOutOrderIdRemoved = value;
             }
         }
 
@@ -721,13 +666,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? IsPropertyInOutMovementTypeRemoved { get; set; }
+		public virtual bool? IsPropertyInOutMovementTypeIdRemoved { get; set; }
 
-        bool IInOutLineMvoStateMergePatched.IsPropertyInOutMovementTypeRemoved
+        bool IInOutLineMvoStateMergePatched.IsPropertyInOutMovementTypeIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyInOutMovementTypeRemoved;
+                var b = this.IsPropertyInOutMovementTypeIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -736,7 +681,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
             set 
             {
-                this.IsPropertyInOutMovementTypeRemoved = value;
+                this.IsPropertyInOutMovementTypeIdRemoved = value;
             }
         }
 
@@ -816,25 +761,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? IsPropertyInOutFreightAmountRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyInOutFreightAmountRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyInOutFreightAmountRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyInOutFreightAmountRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyInOutShipperIdRemoved { get; set; }
 
         bool IInOutLineMvoStateMergePatched.IsPropertyInOutShipperIdRemoved
@@ -851,25 +777,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set 
             {
                 this.IsPropertyInOutShipperIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyInOutChargeAmountRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyInOutChargeAmountRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyInOutChargeAmountRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyInOutChargeAmountRemoved = value;
             }
         }
 
@@ -1063,44 +970,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? IsPropertyInOutVolumeRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyInOutVolumeRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyInOutVolumeRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyInOutVolumeRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyInOutWeightRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyInOutWeightRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyInOutWeightRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyInOutWeightRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyInOutRmaNumberRemoved { get; set; }
 
         bool IInOutLineMvoStateMergePatched.IsPropertyInOutRmaNumberRemoved
@@ -1136,44 +1005,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set 
             {
                 this.IsPropertyInOutReversalNumberRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyInOutIsDropShipRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyInOutIsDropShipRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyInOutIsDropShipRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyInOutIsDropShipRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyInOutDropShipBusinessPartnerIdRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyInOutDropShipBusinessPartnerIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyInOutDropShipBusinessPartnerIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyInOutDropShipBusinessPartnerIdRemoved = value;
             }
         }
 

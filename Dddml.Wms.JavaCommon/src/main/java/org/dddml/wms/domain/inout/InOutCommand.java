@@ -1,9 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import org.joda.money.Money;
-import java.math.BigDecimal;
 import java.util.Date;
+import java.math.BigDecimal;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
 import org.dddml.wms.specialization.DomainError;
@@ -42,10 +41,6 @@ public interface InOutCommand extends Command
 
     interface CreateOrMergePatchInOut extends InOutCommand
     {
-        Boolean getIsSOTransaction();
-
-        void setIsSOTransaction(Boolean isSOTransaction);
-
         String getDocumentAction();
 
         void setDocumentAction(String documentAction);
@@ -62,17 +57,17 @@ public interface InOutCommand extends Command
 
         void setProcessed(Boolean processed);
 
-        Integer getDocumentType();
+        String getDocumentTypeId();
 
-        void setDocumentType(Integer documentType);
+        void setDocumentTypeId(String documentTypeId);
 
         String getDescription();
 
         void setDescription(String description);
 
-        String getOrderNumber();
+        String getOrderId();
 
-        void setOrderNumber(String orderNumber);
+        void setOrderId(String orderId);
 
         Date getDateOrdered();
 
@@ -82,9 +77,9 @@ public interface InOutCommand extends Command
 
         void setIsPrinted(Boolean isPrinted);
 
-        String getMovementType();
+        String getMovementTypeId();
 
-        void setMovementType(String movementType);
+        void setMovementTypeId(String movementTypeId);
 
         Date getMovementDate();
 
@@ -102,17 +97,9 @@ public interface InOutCommand extends Command
 
         void setPOReference(String poReference);
 
-        Money getFreightAmount();
-
-        void setFreightAmount(Money freightAmount);
-
         String getShipperId();
 
         void setShipperId(String shipperId);
-
-        Money getChargeAmount();
-
-        void setChargeAmount(Money chargeAmount);
 
         Date getDatePrinted();
 
@@ -154,14 +141,6 @@ public interface InOutCommand extends Command
 
         void setIsInDispute(Boolean isInDispute);
 
-        BigDecimal getVolume();
-
-        void setVolume(BigDecimal volume);
-
-        BigDecimal getWeight();
-
-        void setWeight(BigDecimal weight);
-
         String getRmaNumber();
 
         void setRmaNumber(String rmaNumber);
@@ -169,14 +148,6 @@ public interface InOutCommand extends Command
         String getReversalNumber();
 
         void setReversalNumber(String reversalNumber);
-
-        Boolean getIsDropShip();
-
-        void setIsDropShip(Boolean isDropShip);
-
-        String getDropShipBusinessPartnerId();
-
-        void setDropShipBusinessPartnerId(String dropShipBusinessPartnerId);
 
         Boolean getActive();
 
@@ -194,10 +165,6 @@ public interface InOutCommand extends Command
 
     interface MergePatchInOut extends CreateOrMergePatchInOut
     {
-        Boolean getIsPropertyIsSOTransactionRemoved();
-
-        void setIsPropertyIsSOTransactionRemoved(Boolean removed);
-
         Boolean getIsPropertyPostedRemoved();
 
         void setIsPropertyPostedRemoved(Boolean removed);
@@ -210,17 +177,17 @@ public interface InOutCommand extends Command
 
         void setIsPropertyProcessedRemoved(Boolean removed);
 
-        Boolean getIsPropertyDocumentTypeRemoved();
+        Boolean getIsPropertyDocumentTypeIdRemoved();
 
-        void setIsPropertyDocumentTypeRemoved(Boolean removed);
+        void setIsPropertyDocumentTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);
 
-        Boolean getIsPropertyOrderNumberRemoved();
+        Boolean getIsPropertyOrderIdRemoved();
 
-        void setIsPropertyOrderNumberRemoved(Boolean removed);
+        void setIsPropertyOrderIdRemoved(Boolean removed);
 
         Boolean getIsPropertyDateOrderedRemoved();
 
@@ -230,9 +197,9 @@ public interface InOutCommand extends Command
 
         void setIsPropertyIsPrintedRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementTypeRemoved();
+        Boolean getIsPropertyMovementTypeIdRemoved();
 
-        void setIsPropertyMovementTypeRemoved(Boolean removed);
+        void setIsPropertyMovementTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyMovementDateRemoved();
 
@@ -250,17 +217,9 @@ public interface InOutCommand extends Command
 
         void setIsPropertyPOReferenceRemoved(Boolean removed);
 
-        Boolean getIsPropertyFreightAmountRemoved();
-
-        void setIsPropertyFreightAmountRemoved(Boolean removed);
-
         Boolean getIsPropertyShipperIdRemoved();
 
         void setIsPropertyShipperIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyChargeAmountRemoved();
-
-        void setIsPropertyChargeAmountRemoved(Boolean removed);
 
         Boolean getIsPropertyDatePrintedRemoved();
 
@@ -302,14 +261,6 @@ public interface InOutCommand extends Command
 
         void setIsPropertyIsInDisputeRemoved(Boolean removed);
 
-        Boolean getIsPropertyVolumeRemoved();
-
-        void setIsPropertyVolumeRemoved(Boolean removed);
-
-        Boolean getIsPropertyWeightRemoved();
-
-        void setIsPropertyWeightRemoved(Boolean removed);
-
         Boolean getIsPropertyRmaNumberRemoved();
 
         void setIsPropertyRmaNumberRemoved(Boolean removed);
@@ -317,14 +268,6 @@ public interface InOutCommand extends Command
         Boolean getIsPropertyReversalNumberRemoved();
 
         void setIsPropertyReversalNumberRemoved(Boolean removed);
-
-        Boolean getIsPropertyIsDropShipRemoved();
-
-        void setIsPropertyIsDropShipRemoved(Boolean removed);
-
-        Boolean getIsPropertyDropShipBusinessPartnerIdRemoved();
-
-        void setIsPropertyDropShipBusinessPartnerIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

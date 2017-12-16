@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -71,34 +70,6 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual string Description
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Description"))
-                {
-                    return _state.Description;
-                }
-                return null;
-            }
-            set
-            {
-                _state.Description = value;
-            }
-        }
-
-        string IInOutLineStateProperties.Description
-        {
-            get 
-            {
-                return (this._state as IInOutLineStateProperties).Description;
-            }
-            set 
-            {
-                (this._state as IInOutLineStateProperties).Description = value;
-            }
-        }
-
 		public virtual string LocatorId
 		{
             get
@@ -152,6 +123,62 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 (this._state as IInOutLineStateProperties).ProductId = value;
+            }
+        }
+
+		public virtual string AttributeSetInstanceId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetInstanceId"))
+                {
+                    return _state.AttributeSetInstanceId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.AttributeSetInstanceId = value;
+            }
+        }
+
+        string IInOutLineStateProperties.AttributeSetInstanceId
+        {
+            get 
+            {
+                return (this._state as IInOutLineStateProperties).AttributeSetInstanceId;
+            }
+            set 
+            {
+                (this._state as IInOutLineStateProperties).AttributeSetInstanceId = value;
+            }
+        }
+
+		public virtual string Description
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Description"))
+                {
+                    return _state.Description;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Description = value;
+            }
+        }
+
+        string IInOutLineStateProperties.Description
+        {
+            get 
+            {
+                return (this._state as IInOutLineStateProperties).Description;
+            }
+            set 
+            {
+                (this._state as IInOutLineStateProperties).Description = value;
             }
         }
 
@@ -366,65 +393,6 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 (this._state as IInOutLineStateProperties).IsInvoiced = value;
-            }
-        }
-
-		public virtual string AttributeSetInstanceId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetInstanceId"))
-                {
-                    return _state.AttributeSetInstanceId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.AttributeSetInstanceId = value;
-            }
-        }
-
-        string IInOutLineStateProperties.AttributeSetInstanceId
-        {
-            get 
-            {
-                return (this._state as IInOutLineStateProperties).AttributeSetInstanceId;
-            }
-            set 
-            {
-                (this._state as IInOutLineStateProperties).AttributeSetInstanceId = value;
-            }
-        }
-
-		public virtual bool? IsDescription
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsDescription"))
-                {
-                    return _state.IsDescription;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.IsDescription = value.Value;
-                }
-            }
-        }
-
-        bool IInOutLineStateProperties.IsDescription
-        {
-            get 
-            {
-                return (this._state as IInOutLineStateProperties).IsDescription;
-            }
-            set 
-            {
-                (this._state as IInOutLineStateProperties).IsDescription = value;
             }
         }
 

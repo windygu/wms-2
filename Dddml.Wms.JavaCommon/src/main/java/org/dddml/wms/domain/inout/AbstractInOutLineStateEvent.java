@@ -45,18 +45,6 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
         this.version = version;
     }
 
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String locatorId;
 
     public String getLocatorId()
@@ -79,6 +67,30 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     public void setProductId(String productId)
     {
         this.productId = productId;
+    }
+
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 
     private String uomId;
@@ -163,30 +175,6 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     public void setIsInvoiced(Boolean isInvoiced)
     {
         this.isInvoiced = isInvoiced;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
-    private Boolean isDescription;
-
-    public Boolean getIsDescription()
-    {
-        return this.isDescription;
-    }
-
-    public void setIsDescription(Boolean isDescription)
-    {
-        this.isDescription = isDescription;
     }
 
     private Boolean processed;
@@ -326,16 +314,6 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyDescriptionRemoved;
-
-        public Boolean getIsPropertyDescriptionRemoved() {
-            return this.isPropertyDescriptionRemoved;
-        }
-
-        public void setIsPropertyDescriptionRemoved(Boolean removed) {
-            this.isPropertyDescriptionRemoved = removed;
-        }
-
         private Boolean isPropertyLocatorIdRemoved;
 
         public Boolean getIsPropertyLocatorIdRemoved() {
@@ -354,6 +332,26 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
 
         public void setIsPropertyProductIdRemoved(Boolean removed) {
             this.isPropertyProductIdRemoved = removed;
+        }
+
+        private Boolean isPropertyAttributeSetInstanceIdRemoved;
+
+        public Boolean getIsPropertyAttributeSetInstanceIdRemoved() {
+            return this.isPropertyAttributeSetInstanceIdRemoved;
+        }
+
+        public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed) {
+            this.isPropertyAttributeSetInstanceIdRemoved = removed;
+        }
+
+        private Boolean isPropertyDescriptionRemoved;
+
+        public Boolean getIsPropertyDescriptionRemoved() {
+            return this.isPropertyDescriptionRemoved;
+        }
+
+        public void setIsPropertyDescriptionRemoved(Boolean removed) {
+            this.isPropertyDescriptionRemoved = removed;
         }
 
         private Boolean isPropertyUomIdRemoved;
@@ -424,26 +422,6 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
 
         public void setIsPropertyIsInvoicedRemoved(Boolean removed) {
             this.isPropertyIsInvoicedRemoved = removed;
-        }
-
-        private Boolean isPropertyAttributeSetInstanceIdRemoved;
-
-        public Boolean getIsPropertyAttributeSetInstanceIdRemoved() {
-            return this.isPropertyAttributeSetInstanceIdRemoved;
-        }
-
-        public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed) {
-            this.isPropertyAttributeSetInstanceIdRemoved = removed;
-        }
-
-        private Boolean isPropertyIsDescriptionRemoved;
-
-        public Boolean getIsPropertyIsDescriptionRemoved() {
-            return this.isPropertyIsDescriptionRemoved;
-        }
-
-        public void setIsPropertyIsDescriptionRemoved(Boolean removed) {
-            this.isPropertyIsDescriptionRemoved = removed;
         }
 
         private Boolean isPropertyProcessedRemoved;

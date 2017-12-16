@@ -1,0 +1,163 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  OrderItem:
+    id:
+      name: OrderItemId
+      type: OrderItemId
+      
+    properties:
+    
+      ProductId:
+        type: id
+        
+      ExternalProductId:
+        type: id-long
+        
+      # ProductFeatureId:
+        # type: id
+      # ProdCatalogId:
+        # type: id
+      # ProductCategoryId:
+        # type: id
+        
+      Quantity:
+        type: fixed-point
+      CancelQuantity:
+        type: fixed-point
+        
+      SelectedAmount:
+        type: fixed-point
+    
+      ExternalId:
+        type: id
+        
+      OrderItemTypeId:
+        type: id-ne
+      OrderItemGroupSeqId:
+        type: id-ne
+      IsItemGroupPrimary:
+        type: indicator
+        
+      FromInventoryItemId:
+        type: id
+        
+      # BudgetId:
+        # type: id
+      # BudgetItemSeqId:
+        # type: id
+        
+      IsPromo:
+        type: indicator
+      QuoteId:
+        type: id
+      QuoteItemSeqId:
+        type: id
+      ShoppingListId:
+        type: id
+      ShoppingListItemSeqId:
+        type: id
+      # SubscriptionId:
+        # type: id
+      # DeploymentId:
+        # type: id
+        
+      UnitPrice:
+        type: currency-precise
+      UnitListPrice:
+        type: currency-precise
+      UnitAverageCost:
+        type: currency-amount
+      UnitRecurringPrice:
+        type: currency-amount
+        
+      IsModifiedPrice:
+        type: indicator
+      RecurringFreqUomId:
+        type: id
+      ItemDescription:
+        type: description
+        
+      Comments:
+        type: comment
+        
+      CorrespondingPoId:
+        type: id
+        
+      # StatusId:
+        # type: id
+        
+      SyncStatusId:
+        type: id
+        
+      EstimatedShipDate:
+        type: date-time
+      EstimatedDeliveryDate:
+        type: date-time
+        
+      AutoCancelDate:
+        type: date-time
+      DontCancelSetDate:
+        type: date-time
+      # DontCancelSetUserLogin:
+        # type: id-vlong
+      DontCancelSetBy:
+        type: id-vlong
+        
+      ShipBeforeDate:
+        type: date-time
+      ShipAfterDate:
+        type: date-time
+      CancelBackOrderDate:
+        description: Used to cancel all orders from suppliers when its in past
+        type: date-time
+      OverrideGlAccountId:
+        description: Used to specify the override or actual glAccountId used for the adjustment, avoids problems if configuration changes after initial posting, etc.
+        type: id
+        
+      # SalesOpportunityId:
+        # type: id-ne
+        
+      # ChangeByUserLoginId:
+        # type: id-vlong
+        
+    # references:
+      # OrderHeader:
+        # name: OrderHeader
+        # displayName: OrderHeader
+        # type: OrderHeader
+        # properties:
+        # - OrderItemId.OrderId
+        # foreignKeyName: ORDER_ITEM_HDR
+      # Product:
+        # name: Product
+        # displayName: Product
+        # type: Product
+        # properties:
+        # - ProductId
+        # foreignKeyName: ORDER_ITEM_PRODUCT
+        
+    reservedProperties:
+      noDeleted: true
+    
+    discriminator: OrderItemTypeId
+    
+    valueObjects:
+      OrderItemId:
+        properties:
+          OrderId:
+            type: id-ne
+          OrderItemSeqId:
+            type: id-ne
+            
+    # metadata: 
+      # StateEventDatabaseTableName: ORDER_ITEM_STATE_EVENT
+
+      
+      
+      
+      

@@ -16,9 +16,9 @@ public interface OrganizationState
 
     void setOrganizationId(String organizationId);
 
-    String getName();
+    String getOrganizationName();
 
-    void setName(String name);
+    void setOrganizationName(String organizationName);
 
     String getDescription();
 

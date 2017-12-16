@@ -48,13 +48,13 @@ namespace Dddml.Wms.Domain.Organization
             cmd.Version = ((IOrganizationStateProperties)state).Version;
 
             cmd.OrganizationId = state.OrganizationId;
-            cmd.Name = state.Name;
+            cmd.OrganizationName = state.OrganizationName;
             cmd.Description = state.Description;
             cmd.Type = state.Type;
             cmd.IsSummary = state.IsSummary;
             cmd.Active = ((IOrganizationStateProperties)state).Active;
             
-            if (state.Name == null) { cmd.IsPropertyNameRemoved = true; }
+            if (state.OrganizationName == null) { cmd.IsPropertyOrganizationNameRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.Type == null) { cmd.IsPropertyTypeRemoved = true; }
             return cmd;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.Domain.Organization
             cmd.Version = ((IOrganizationStateProperties)state).Version;
 
             cmd.OrganizationId = state.OrganizationId;
-            cmd.Name = state.Name;
+            cmd.OrganizationName = state.OrganizationName;
             cmd.Description = state.Description;
             cmd.Type = state.Type;
             cmd.IsSummary = state.IsSummary;

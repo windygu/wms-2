@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Attribute
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.Name = e.Name;
+            dto.AttributeName = e.AttributeName;
             dto.OrganizationId = e.OrganizationId;
             dto.Description = e.Description;
             dto.IsMandatory = e.IsMandatory;
@@ -71,7 +71,7 @@ namespace Dddml.Wms.Domain.Attribute
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.Name = e.Name;
+            dto.AttributeName = e.AttributeName;
             dto.OrganizationId = e.OrganizationId;
             dto.Description = e.Description;
             dto.IsMandatory = e.IsMandatory;
@@ -82,7 +82,7 @@ namespace Dddml.Wms.Domain.Attribute
             dto.FieldName = e.FieldName;
             dto.ReferenceId = e.ReferenceId;
             dto.Active = e.Active;
-            dto.IsPropertyNameRemoved = e.IsPropertyNameRemoved;
+            dto.IsPropertyAttributeNameRemoved = e.IsPropertyAttributeNameRemoved;
             dto.IsPropertyOrganizationIdRemoved = e.IsPropertyOrganizationIdRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyIsMandatoryRemoved = e.IsPropertyIsMandatoryRemoved;

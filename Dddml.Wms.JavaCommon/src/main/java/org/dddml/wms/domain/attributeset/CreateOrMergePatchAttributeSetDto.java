@@ -5,16 +5,16 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetCommandDto
 {
-    private String name;
+    private String attributeSetName;
 
-    public String getName()
+    public String getAttributeSetName()
     {
-        return this.name;
+        return this.attributeSetName;
     }
 
-    public void setName(String name)
+    public void setAttributeSetName(String attributeSetName)
     {
-        this.name = name;
+        this.attributeSetName = attributeSetName;
     }
 
     private String organizationId;
@@ -101,16 +101,16 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.attributeUses = attributeUses;
     }
 
-    private Boolean isPropertyNameRemoved;
+    private Boolean isPropertyAttributeSetNameRemoved;
 
-    public Boolean getIsPropertyNameRemoved()
+    public Boolean getIsPropertyAttributeSetNameRemoved()
     {
-        return this.isPropertyNameRemoved;
+        return this.isPropertyAttributeSetNameRemoved;
     }
 
-    public void setIsPropertyNameRemoved(Boolean removed)
+    public void setIsPropertyAttributeSetNameRemoved(Boolean removed)
     {
-        this.isPropertyNameRemoved = removed;
+        this.isPropertyAttributeSetNameRemoved = removed;
     }
 
     private Boolean isPropertyOrganizationIdRemoved;
@@ -188,7 +188,7 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
     public void copyTo(AbstractAttributeSetCommand.AbstractCreateOrMergePatchAttributeSet command)
     {
         ((AbstractAttributeSetCommandDto) this).copyTo(command);
-        command.setName(this.getName());
+        command.setAttributeSetName(this.getAttributeSetName());
         command.setOrganizationId(this.getOrganizationId());
         command.setDescription(this.getDescription());
         command.setSerialNumberAttributeId(this.getSerialNumberAttributeId());
@@ -229,7 +229,7 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
     public void copyTo(AbstractAttributeSetCommand.AbstractMergePatchAttributeSet command)
     {
         copyTo((AbstractAttributeSetCommand.AbstractCreateOrMergePatchAttributeSet) command);
-        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyAttributeSetNameRemoved(this.getIsPropertyAttributeSetNameRemoved());
         command.setIsPropertyOrganizationIdRemoved(this.getIsPropertyOrganizationIdRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertySerialNumberAttributeIdRemoved(this.getIsPropertySerialNumberAttributeIdRemoved());

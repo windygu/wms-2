@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -22,12 +21,6 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        public virtual string Description
-        {
-            get;
-            set;
-        }
-
         public virtual string LocatorId
         {
             get;
@@ -35,6 +28,18 @@ namespace Dddml.Wms.Domain.InOut
         }
 
         public virtual string ProductId
+        {
+            get;
+            set;
+        }
+
+        public virtual string AttributeSetInstanceId
+        {
+            get;
+            set;
+        }
+
+        public virtual string Description
         {
             get;
             set;
@@ -77,18 +82,6 @@ namespace Dddml.Wms.Domain.InOut
         }
 
         public virtual bool? IsInvoiced
-        {
-            get;
-            set;
-        }
-
-        public virtual string AttributeSetInstanceId
-        {
-            get;
-            set;
-        }
-
-        public virtual bool? IsDescription
         {
             get;
             set;
@@ -164,9 +157,10 @@ namespace Dddml.Wms.Domain.InOut
         {
             var state = new InOutLineState(true);
             if (this.LineNumber != null && this.LineNumber.HasValue) { state.LineNumber = this.LineNumber.Value; }
-            state.Description = this.Description;
             state.LocatorId = this.LocatorId;
             state.ProductId = this.ProductId;
+            state.AttributeSetInstanceId = this.AttributeSetInstanceId;
+            state.Description = this.Description;
             state.UomId = this.UomId;
             if (this.MovementQuantity != null && this.MovementQuantity.HasValue) { state.MovementQuantity = this.MovementQuantity.Value; }
             if (this.ConfirmedQuantity != null && this.ConfirmedQuantity.HasValue) { state.ConfirmedQuantity = this.ConfirmedQuantity.Value; }
@@ -174,8 +168,6 @@ namespace Dddml.Wms.Domain.InOut
             if (this.TargetQuantity != null && this.TargetQuantity.HasValue) { state.TargetQuantity = this.TargetQuantity.Value; }
             if (this.PickedQuantity != null && this.PickedQuantity.HasValue) { state.PickedQuantity = this.PickedQuantity.Value; }
             if (this.IsInvoiced != null && this.IsInvoiced.HasValue) { state.IsInvoiced = this.IsInvoiced.Value; }
-            state.AttributeSetInstanceId = this.AttributeSetInstanceId;
-            if (this.IsDescription != null && this.IsDescription.HasValue) { state.IsDescription = this.IsDescription.Value; }
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
             if (this.QuantityEntered != null && this.QuantityEntered.HasValue) { state.QuantityEntered = this.QuantityEntered.Value; }
             if (this.RmaLineNumber != null && this.RmaLineNumber.HasValue) { state.RmaLineNumber = this.RmaLineNumber.Value; }

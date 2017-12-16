@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOutLineMvo;
-using NodaMoney;
 using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.Domain.InOutLineMvo
@@ -23,12 +22,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        string Description
-        {
-            get;
-            set;
-        }
-
         string LocatorId
         {
             get;
@@ -36,6 +29,18 @@ namespace Dddml.Wms.Domain.InOutLineMvo
         }
 
         string ProductId
+        {
+            get;
+            set;
+        }
+
+        string AttributeSetInstanceId
+        {
+            get;
+            set;
+        }
+
+        string Description
         {
             get;
             set;
@@ -83,18 +88,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        string AttributeSetInstanceId
-        {
-            get;
-            set;
-        }
-
-        bool? IsDescription
-        {
-            get;
-            set;
-        }
-
         bool? Processed
         {
             get;
@@ -131,12 +124,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        bool? InOutIsSOTransaction
-        {
-            get;
-            set;
-        }
-
         string InOutDocumentStatus
         {
             get;
@@ -161,7 +148,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        int? InOutDocumentType
+        string InOutDocumentTypeId
         {
             get;
             set;
@@ -173,7 +160,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        string InOutOrderNumber
+        string InOutOrderId
         {
             get;
             set;
@@ -191,7 +178,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        string InOutMovementType
+        string InOutMovementTypeId
         {
             get;
             set;
@@ -221,19 +208,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        Money? InOutFreightAmount
-        {
-            get;
-            set;
-        }
-
         string InOutShipperId
-        {
-            get;
-            set;
-        }
-
-        Money? InOutChargeAmount
         {
             get;
             set;
@@ -299,18 +274,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        decimal? InOutVolume
-        {
-            get;
-            set;
-        }
-
-        decimal? InOutWeight
-        {
-            get;
-            set;
-        }
-
         string InOutRmaNumber
         {
             get;
@@ -318,18 +281,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
         }
 
         string InOutReversalNumber
-        {
-            get;
-            set;
-        }
-
-        bool? InOutIsDropShip
-        {
-            get;
-            set;
-        }
-
-        string InOutDropShipBusinessPartnerId
         {
             get;
             set;

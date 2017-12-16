@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Warehouse
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.Name = e.Name;
+            dto.WarehouseName = e.WarehouseName;
             dto.Description = e.Description;
             dto.IsInTransit = e.IsInTransit;
             dto.Active = e.Active;
@@ -56,11 +56,11 @@ namespace Dddml.Wms.Domain.Warehouse
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.Name = e.Name;
+            dto.WarehouseName = e.WarehouseName;
             dto.Description = e.Description;
             dto.IsInTransit = e.IsInTransit;
             dto.Active = e.Active;
-            dto.IsPropertyNameRemoved = e.IsPropertyNameRemoved;
+            dto.IsPropertyWarehouseNameRemoved = e.IsPropertyWarehouseNameRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyIsInTransitRemoved = e.IsPropertyIsInTransitRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;

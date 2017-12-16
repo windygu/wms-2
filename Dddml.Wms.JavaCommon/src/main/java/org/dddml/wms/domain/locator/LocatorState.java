@@ -48,6 +48,10 @@ public interface LocatorState
 
     void setZ(String z);
 
+    String getDescription();
+
+    void setDescription(String description);
+
     Long getVersion();
 
     void setVersion(Long version);

@@ -181,7 +181,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
-			this.AttributeSetName = e.AttributeSetName;
+			this.AttributeSetAttributeSetName = e.AttributeSetAttributeSetName;
 
 			this.AttributeSetOrganizationId = e.AttributeSetOrganizationId;
 
@@ -254,16 +254,16 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 				this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 			}
 
-			if (e.AttributeSetName == null)
+			if (e.AttributeSetAttributeSetName == null)
 			{
-				if (e.IsPropertyAttributeSetNameRemoved)
+				if (e.IsPropertyAttributeSetAttributeSetNameRemoved)
 				{
-					this.AttributeSetName = default(string);
+					this.AttributeSetAttributeSetName = default(string);
 				}
 			}
 			else
 			{
-				this.AttributeSetName = e.AttributeSetName;
+				this.AttributeSetAttributeSetName = e.AttributeSetAttributeSetName;
 			}
 
 			if (e.AttributeSetOrganizationId == null)

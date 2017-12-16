@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -108,24 +107,21 @@ namespace Dddml.Wms.Domain.InOut
 			var stateEventId = new InOutStateEventId(c.DocumentNumber, c.Version);
             IInOutStateCreated e = NewInOutStateCreated(stateEventId);
 		
-            e.IsSOTransaction = c.IsSOTransaction;
             NewInOutDocumentActionCommandAndExecute(c, _state, e);
             e.Posted = c.Posted;
             e.Processing = c.Processing;
             e.Processed = c.Processed;
-            e.DocumentType = c.DocumentType;
+            e.DocumentTypeId = c.DocumentTypeId;
             e.Description = c.Description;
-            e.OrderNumber = c.OrderNumber;
+            e.OrderId = c.OrderId;
             e.DateOrdered = c.DateOrdered;
             e.IsPrinted = c.IsPrinted;
-            e.MovementType = c.MovementType;
+            e.MovementTypeId = c.MovementTypeId;
             e.MovementDate = c.MovementDate;
             e.BusinessPartnerId = c.BusinessPartnerId;
             e.WarehouseId = c.WarehouseId;
             e.POReference = c.POReference;
-            e.FreightAmount = c.FreightAmount;
             e.ShipperId = c.ShipperId;
-            e.ChargeAmount = c.ChargeAmount;
             e.DatePrinted = c.DatePrinted;
             e.SalesRepresentative = c.SalesRepresentative;
             e.NumberOfPackages = c.NumberOfPackages;
@@ -136,12 +132,8 @@ namespace Dddml.Wms.Domain.InOut
             e.IsInTransit = c.IsInTransit;
             e.IsApproved = c.IsApproved;
             e.IsInDispute = c.IsInDispute;
-            e.Volume = c.Volume;
-            e.Weight = c.Weight;
             e.RmaNumber = c.RmaNumber;
             e.ReversalNumber = c.ReversalNumber;
-            e.IsDropShip = c.IsDropShip;
-            e.DropShipBusinessPartnerId = c.DropShipBusinessPartnerId;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -167,24 +159,21 @@ namespace Dddml.Wms.Domain.InOut
 			var stateEventId = new InOutStateEventId(c.DocumentNumber, c.Version);
             IInOutStateMergePatched e = NewInOutStateMergePatched(stateEventId);
 
-            e.IsSOTransaction = c.IsSOTransaction;
             NewInOutDocumentActionCommandAndExecute(c, _state, e);
             e.Posted = c.Posted;
             e.Processing = c.Processing;
             e.Processed = c.Processed;
-            e.DocumentType = c.DocumentType;
+            e.DocumentTypeId = c.DocumentTypeId;
             e.Description = c.Description;
-            e.OrderNumber = c.OrderNumber;
+            e.OrderId = c.OrderId;
             e.DateOrdered = c.DateOrdered;
             e.IsPrinted = c.IsPrinted;
-            e.MovementType = c.MovementType;
+            e.MovementTypeId = c.MovementTypeId;
             e.MovementDate = c.MovementDate;
             e.BusinessPartnerId = c.BusinessPartnerId;
             e.WarehouseId = c.WarehouseId;
             e.POReference = c.POReference;
-            e.FreightAmount = c.FreightAmount;
             e.ShipperId = c.ShipperId;
-            e.ChargeAmount = c.ChargeAmount;
             e.DatePrinted = c.DatePrinted;
             e.SalesRepresentative = c.SalesRepresentative;
             e.NumberOfPackages = c.NumberOfPackages;
@@ -195,30 +184,23 @@ namespace Dddml.Wms.Domain.InOut
             e.IsInTransit = c.IsInTransit;
             e.IsApproved = c.IsApproved;
             e.IsInDispute = c.IsInDispute;
-            e.Volume = c.Volume;
-            e.Weight = c.Weight;
             e.RmaNumber = c.RmaNumber;
             e.ReversalNumber = c.ReversalNumber;
-            e.IsDropShip = c.IsDropShip;
-            e.DropShipBusinessPartnerId = c.DropShipBusinessPartnerId;
             e.Active = c.Active;
-            e.IsPropertyIsSOTransactionRemoved = c.IsPropertyIsSOTransactionRemoved;
             e.IsPropertyPostedRemoved = c.IsPropertyPostedRemoved;
             e.IsPropertyProcessingRemoved = c.IsPropertyProcessingRemoved;
             e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
-            e.IsPropertyDocumentTypeRemoved = c.IsPropertyDocumentTypeRemoved;
+            e.IsPropertyDocumentTypeIdRemoved = c.IsPropertyDocumentTypeIdRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
-            e.IsPropertyOrderNumberRemoved = c.IsPropertyOrderNumberRemoved;
+            e.IsPropertyOrderIdRemoved = c.IsPropertyOrderIdRemoved;
             e.IsPropertyDateOrderedRemoved = c.IsPropertyDateOrderedRemoved;
             e.IsPropertyIsPrintedRemoved = c.IsPropertyIsPrintedRemoved;
-            e.IsPropertyMovementTypeRemoved = c.IsPropertyMovementTypeRemoved;
+            e.IsPropertyMovementTypeIdRemoved = c.IsPropertyMovementTypeIdRemoved;
             e.IsPropertyMovementDateRemoved = c.IsPropertyMovementDateRemoved;
             e.IsPropertyBusinessPartnerIdRemoved = c.IsPropertyBusinessPartnerIdRemoved;
             e.IsPropertyWarehouseIdRemoved = c.IsPropertyWarehouseIdRemoved;
             e.IsPropertyPOReferenceRemoved = c.IsPropertyPOReferenceRemoved;
-            e.IsPropertyFreightAmountRemoved = c.IsPropertyFreightAmountRemoved;
             e.IsPropertyShipperIdRemoved = c.IsPropertyShipperIdRemoved;
-            e.IsPropertyChargeAmountRemoved = c.IsPropertyChargeAmountRemoved;
             e.IsPropertyDatePrintedRemoved = c.IsPropertyDatePrintedRemoved;
             e.IsPropertySalesRepresentativeRemoved = c.IsPropertySalesRepresentativeRemoved;
             e.IsPropertyNumberOfPackagesRemoved = c.IsPropertyNumberOfPackagesRemoved;
@@ -229,12 +211,8 @@ namespace Dddml.Wms.Domain.InOut
             e.IsPropertyIsInTransitRemoved = c.IsPropertyIsInTransitRemoved;
             e.IsPropertyIsApprovedRemoved = c.IsPropertyIsApprovedRemoved;
             e.IsPropertyIsInDisputeRemoved = c.IsPropertyIsInDisputeRemoved;
-            e.IsPropertyVolumeRemoved = c.IsPropertyVolumeRemoved;
-            e.IsPropertyWeightRemoved = c.IsPropertyWeightRemoved;
             e.IsPropertyRmaNumberRemoved = c.IsPropertyRmaNumberRemoved;
             e.IsPropertyReversalNumberRemoved = c.IsPropertyReversalNumberRemoved;
-            e.IsPropertyIsDropShipRemoved = c.IsPropertyIsDropShipRemoved;
-            e.IsPropertyDropShipBusinessPartnerIdRemoved = c.IsPropertyDropShipBusinessPartnerIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;
@@ -325,9 +303,10 @@ namespace Dddml.Wms.Domain.InOut
             IInOutLineStateCreated e = NewInOutLineStateCreated(stateEventId);
             var s = outerState.InOutLines.Get(c.LineNumber, true);
 
-            e.Description = c.Description;
             e.LocatorId = c.LocatorId;
             e.ProductId = c.ProductId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
+            e.Description = c.Description;
             e.UomId = c.UomId;
             e.MovementQuantity = c.MovementQuantity;
             e.ConfirmedQuantity = c.ConfirmedQuantity;
@@ -335,8 +314,6 @@ namespace Dddml.Wms.Domain.InOut
             e.TargetQuantity = c.TargetQuantity;
             e.PickedQuantity = c.PickedQuantity;
             e.IsInvoiced = c.IsInvoiced;
-            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
-            e.IsDescription = c.IsDescription;
             e.Processed = c.Processed;
             e.QuantityEntered = c.QuantityEntered;
             e.RmaLineNumber = c.RmaLineNumber;
@@ -358,9 +335,10 @@ namespace Dddml.Wms.Domain.InOut
             IInOutLineStateMergePatched e = NewInOutLineStateMergePatched(stateEventId);
             var s = outerState.InOutLines.Get(c.LineNumber);
 
-            e.Description = c.Description;
             e.LocatorId = c.LocatorId;
             e.ProductId = c.ProductId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
+            e.Description = c.Description;
             e.UomId = c.UomId;
             e.MovementQuantity = c.MovementQuantity;
             e.ConfirmedQuantity = c.ConfirmedQuantity;
@@ -368,16 +346,15 @@ namespace Dddml.Wms.Domain.InOut
             e.TargetQuantity = c.TargetQuantity;
             e.PickedQuantity = c.PickedQuantity;
             e.IsInvoiced = c.IsInvoiced;
-            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
-            e.IsDescription = c.IsDescription;
             e.Processed = c.Processed;
             e.QuantityEntered = c.QuantityEntered;
             e.RmaLineNumber = c.RmaLineNumber;
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Active = c.Active;
-            e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyLocatorIdRemoved = c.IsPropertyLocatorIdRemoved;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
+            e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
+            e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyUomIdRemoved = c.IsPropertyUomIdRemoved;
             e.IsPropertyMovementQuantityRemoved = c.IsPropertyMovementQuantityRemoved;
             e.IsPropertyConfirmedQuantityRemoved = c.IsPropertyConfirmedQuantityRemoved;
@@ -385,8 +362,6 @@ namespace Dddml.Wms.Domain.InOut
             e.IsPropertyTargetQuantityRemoved = c.IsPropertyTargetQuantityRemoved;
             e.IsPropertyPickedQuantityRemoved = c.IsPropertyPickedQuantityRemoved;
             e.IsPropertyIsInvoicedRemoved = c.IsPropertyIsInvoicedRemoved;
-            e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
-            e.IsPropertyIsDescriptionRemoved = c.IsPropertyIsDescriptionRemoved;
             e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
             e.IsPropertyQuantityEnteredRemoved = c.IsPropertyQuantityEnteredRemoved;
             e.IsPropertyRmaLineNumberRemoved = c.IsPropertyRmaLineNumberRemoved;

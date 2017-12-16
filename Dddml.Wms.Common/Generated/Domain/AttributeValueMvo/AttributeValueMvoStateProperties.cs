@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 	{
 		public virtual AttributeValueId AttributeValueId { get; set; }
 
-		public virtual string Name { get; set; }
+		public virtual string AttributeValueName { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -27,7 +27,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		public virtual bool Active { get; set; }
 
-		public virtual string AttributeName { get; set; }
+		public virtual string AttributeAttributeName { get; set; }
 
 		public virtual string AttributeOrganizationId { get; set; }
 

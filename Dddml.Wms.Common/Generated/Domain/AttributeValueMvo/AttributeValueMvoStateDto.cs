@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             set;
         }
 
-        public virtual string Name
+        public virtual string AttributeValueName
         {
             get;
             set;
@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             set;
         }
 
-        public virtual string AttributeName
+        public virtual string AttributeAttributeName
         {
             get;
             set;
@@ -183,12 +183,12 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
         {
             var state = new AttributeValueMvoState(true);
             state.AttributeValueId = (this.AttributeValueId == null) ? null : this.AttributeValueId.ToAttributeValueId();
-            state.Name = this.Name;
+            state.AttributeValueName = this.AttributeValueName;
             state.Description = this.Description;
             state.ReferenceId = this.ReferenceId;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
-            state.AttributeName = this.AttributeName;
+            state.AttributeAttributeName = this.AttributeAttributeName;
             state.AttributeOrganizationId = this.AttributeOrganizationId;
             state.AttributeDescription = this.AttributeDescription;
             if (this.AttributeIsMandatory != null && this.AttributeIsMandatory.HasValue) { state.AttributeIsMandatory = this.AttributeIsMandatory.Value; }

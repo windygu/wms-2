@@ -22,16 +22,16 @@ public class AttributeValueMvoStateDto
         this.attributeValueId = attributeValueId;
     }
 
-    private String name;
+    private String attributeValueName;
 
-    public String getName()
+    public String getAttributeValueName()
     {
-        return this.name;
+        return this.attributeValueName;
     }
 
-    public void setName(String name)
+    public void setAttributeValueName(String attributeValueName)
     {
-        this.name = name;
+        this.attributeValueName = attributeValueName;
     }
 
     private String description;
@@ -82,16 +82,16 @@ public class AttributeValueMvoStateDto
         this.active = active;
     }
 
-    private String attributeName;
+    private String attributeAttributeName;
 
-    public String getAttributeName()
+    public String getAttributeAttributeName()
     {
-        return this.attributeName;
+        return this.attributeAttributeName;
     }
 
-    public void setAttributeName(String attributeName)
+    public void setAttributeAttributeName(String attributeAttributeName)
     {
-        this.attributeName = attributeName;
+        this.attributeAttributeName = attributeAttributeName;
     }
 
     private String attributeOrganizationId;
@@ -363,8 +363,8 @@ public class AttributeValueMvoStateDto
             if (returnedFieldsContains("AttributeValueId")) {
                 dto.setAttributeValueId((state.getAttributeValueId() == null) ? null : new AttributeValueIdDtoWrapper(state.getAttributeValueId()));
             }
-            if (returnedFieldsContains("Name")) {
-                dto.setName(state.getName());
+            if (returnedFieldsContains("AttributeValueName")) {
+                dto.setAttributeValueName(state.getAttributeValueName());
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
@@ -378,8 +378,8 @@ public class AttributeValueMvoStateDto
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());
             }
-            if (returnedFieldsContains("AttributeName")) {
-                dto.setAttributeName(state.getAttributeName());
+            if (returnedFieldsContains("AttributeAttributeName")) {
+                dto.setAttributeAttributeName(state.getAttributeAttributeName());
             }
             if (returnedFieldsContains("AttributeOrganizationId")) {
                 dto.setAttributeOrganizationId(state.getAttributeOrganizationId());

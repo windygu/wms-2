@@ -18,10 +18,6 @@ public interface InOutLineStateEvent extends Event
 
     void setVersion(Long version);
 
-    String getDescription();
-
-    void setDescription(String description);
-
     String getLocatorId();
 
     void setLocatorId(String locatorId);
@@ -29,6 +25,14 @@ public interface InOutLineStateEvent extends Event
     String getProductId();
 
     void setProductId(String productId);
+
+    String getAttributeSetInstanceId();
+
+    void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+    String getDescription();
+
+    void setDescription(String description);
 
     String getUomId();
 
@@ -57,14 +61,6 @@ public interface InOutLineStateEvent extends Event
     Boolean getIsInvoiced();
 
     void setIsInvoiced(Boolean isInvoiced);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-    Boolean getIsDescription();
-
-    void setIsDescription(Boolean isDescription);
 
     Boolean getProcessed();
 
@@ -106,10 +102,6 @@ public interface InOutLineStateEvent extends Event
 
     interface InOutLineStateMergePatched extends InOutLineStateEvent
     {
-        Boolean getIsPropertyDescriptionRemoved();
-
-        void setIsPropertyDescriptionRemoved(Boolean removed);
-
         Boolean getIsPropertyLocatorIdRemoved();
 
         void setIsPropertyLocatorIdRemoved(Boolean removed);
@@ -117,6 +109,14 @@ public interface InOutLineStateEvent extends Event
         Boolean getIsPropertyProductIdRemoved();
 
         void setIsPropertyProductIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
+
+        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDescriptionRemoved();
+
+        void setIsPropertyDescriptionRemoved(Boolean removed);
 
         Boolean getIsPropertyUomIdRemoved();
 
@@ -145,14 +145,6 @@ public interface InOutLineStateEvent extends Event
         Boolean getIsPropertyIsInvoicedRemoved();
 
         void setIsPropertyIsInvoicedRemoved(Boolean removed);
-
-        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
-
-        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyIsDescriptionRemoved();
-
-        void setIsPropertyIsDescriptionRemoved(Boolean removed);
 
         Boolean getIsPropertyProcessedRemoved();
 

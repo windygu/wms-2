@@ -16,7 +16,7 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="name" ></property>
+	<property name="attributeValueName" ></property>
 	<property name="description" ></property>
 	<property name="referenceId" ></property>
 	<property name="active" ></property>
@@ -35,7 +35,7 @@
 
     <subclass name="AbstractAttributeValueStateEvent$SimpleAttributeValueStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyNameRemoved" column="IsPropertyNameRemoved"/>
+        <property name="isPropertyAttributeValueNameRemoved" column="IsPropertyAttributeValueNameRemoved"/>
 
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 

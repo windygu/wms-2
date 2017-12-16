@@ -47,12 +47,12 @@ namespace Dddml.Wms.Services.Tests
 
             var organization1 = new CreateOrganization();
             organization1.OrganizationId = Guid.NewGuid().ToString();
-            organization1.Name = "Org_test_1" + organization1.OrganizationId;
+            organization1.OrganizationName = "Org_test_1" + organization1.OrganizationId;
             organizationApplicationService.When(organization1);
 
             var organization2 = new CreateOrganization();
             organization2.OrganizationId = Guid.NewGuid().ToString();
-            organization2.Name = "Org_test_2" + organization2.OrganizationId;
+            organization2.OrganizationName = "Org_test_2" + organization2.OrganizationId;
             organizationApplicationService.When(organization2);
 
             var orgStructure_0_1 = new CreateOrganizationStructure();

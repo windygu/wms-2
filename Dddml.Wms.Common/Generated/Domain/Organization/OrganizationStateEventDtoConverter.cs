@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Organization
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.Name = e.Name;
+            dto.OrganizationName = e.OrganizationName;
             dto.Description = e.Description;
             dto.Type = e.Type;
             dto.IsSummary = e.IsSummary;
@@ -57,12 +57,12 @@ namespace Dddml.Wms.Domain.Organization
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.Name = e.Name;
+            dto.OrganizationName = e.OrganizationName;
             dto.Description = e.Description;
             dto.Type = e.Type;
             dto.IsSummary = e.IsSummary;
             dto.Active = e.Active;
-            dto.IsPropertyNameRemoved = e.IsPropertyNameRemoved;
+            dto.IsPropertyOrganizationNameRemoved = e.IsPropertyOrganizationNameRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyTypeRemoved = e.IsPropertyTypeRemoved;
             dto.IsPropertyIsSummaryRemoved = e.IsPropertyIsSummaryRemoved;

@@ -40,9 +40,9 @@ public interface WarehouseCommand extends Command
 
     interface CreateOrMergePatchWarehouse extends WarehouseCommand
     {
-        String getName();
+        String getWarehouseName();
 
-        void setName(String name);
+        void setWarehouseName(String warehouseName);
 
         String getDescription();
 
@@ -64,9 +64,9 @@ public interface WarehouseCommand extends Command
 
     interface MergePatchWarehouse extends CreateOrMergePatchWarehouse
     {
-        Boolean getIsPropertyNameRemoved();
+        Boolean getIsPropertyWarehouseNameRemoved();
 
-        void setIsPropertyNameRemoved(Boolean removed);
+        void setIsPropertyWarehouseNameRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 

@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Warehouse
             set { StateEventId.Version = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string WarehouseName { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -79,13 +79,13 @@ namespace Dddml.Wms.Domain.Warehouse
             }
         }
 
-		public virtual bool? IsPropertyNameRemoved { get; set; }
+		public virtual bool? IsPropertyWarehouseNameRemoved { get; set; }
 
-        bool IWarehouseStateMergePatched.IsPropertyNameRemoved
+        bool IWarehouseStateMergePatched.IsPropertyWarehouseNameRemoved
         {
             get 
             {
-                var b = this.IsPropertyNameRemoved;
+                var b = this.IsPropertyWarehouseNameRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.Warehouse
             }
             set 
             {
-                this.IsPropertyNameRemoved = value;
+                this.IsPropertyWarehouseNameRemoved = value;
             }
         }
 

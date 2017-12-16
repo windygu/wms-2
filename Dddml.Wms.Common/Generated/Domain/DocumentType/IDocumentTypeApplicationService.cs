@@ -35,10 +35,6 @@ namespace Dddml.Wms.Domain.DocumentType
 
         long GetCount(ICriterion filter);
 
-        IDocumentTypeStateEvent GetStateEvent(string documentTypeId, long version);
-
-        IDocumentTypeState GetHistoryState(string documentTypeId, long version);
-
 
 	}
 

@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.Attribute
 
 		public virtual string Value { get; set; }
 
-		public virtual string Name { get; set; }
+		public virtual string AttributeValueName { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -44,13 +44,13 @@ namespace Dddml.Wms.Domain.Attribute
 
 		public virtual string AttributeId { get; set; }
 
-		public virtual bool? IsPropertyNameRemoved { get; set; }
+		public virtual bool? IsPropertyAttributeValueNameRemoved { get; set; }
 
-        bool IMergePatchAttributeValue.IsPropertyNameRemoved
+        bool IMergePatchAttributeValue.IsPropertyAttributeValueNameRemoved
         {
             get
             {
-                var b = this.IsPropertyNameRemoved;
+                var b = this.IsPropertyAttributeValueNameRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Attribute
             }
             set
             {
-                this.IsPropertyNameRemoved = value;
+                this.IsPropertyAttributeValueNameRemoved = value;
             }
         }
 

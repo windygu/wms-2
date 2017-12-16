@@ -57,7 +57,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
     protected WarehouseStateEvent map(WarehouseCommand.CreateWarehouse c) {
         WarehouseStateEventId stateEventId = new WarehouseStateEventId(c.getWarehouseId(), c.getVersion());
         WarehouseStateEvent.WarehouseStateCreated e = newWarehouseStateCreated(stateEventId);
-        e.setName(c.getName());
+        e.setWarehouseName(c.getWarehouseName());
         e.setDescription(c.getDescription());
         e.setIsInTransit(c.getIsInTransit());
         e.setActive(c.getActive());
@@ -70,11 +70,11 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
     protected WarehouseStateEvent map(WarehouseCommand.MergePatchWarehouse c) {
         WarehouseStateEventId stateEventId = new WarehouseStateEventId(c.getWarehouseId(), c.getVersion());
         WarehouseStateEvent.WarehouseStateMergePatched e = newWarehouseStateMergePatched(stateEventId);
-        e.setName(c.getName());
+        e.setWarehouseName(c.getWarehouseName());
         e.setDescription(c.getDescription());
         e.setIsInTransit(c.getIsInTransit());
         e.setActive(c.getActive());
-        e.setIsPropertyNameRemoved(c.getIsPropertyNameRemoved());
+        e.setIsPropertyWarehouseNameRemoved(c.getIsPropertyWarehouseNameRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyIsInTransitRemoved(c.getIsPropertyIsInTransitRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());

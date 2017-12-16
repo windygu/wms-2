@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.productcategory">
+  
+  <class name="org.dddml.wms.domain.productcategory.AbstractProductCategoryState$SimpleProductCategoryState" table="ProductCategories">
+
+	<id name="productCategoryId" length="20" column="ProductCategoryId"><generator class="assigned"/></id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="productCategoryTypeId" ><column name="ProductCategoryTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="primaryParentCategoryId" ><column name="PrimaryParentCategoryId" sql-type="VARCHAR(20)" /></property>
+	<property name="categoryName" ><column name="CategoryName" sql-type="VARCHAR(100)" /></property>
+	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+	<property name="categoryImageUrl" ><column name="CategoryImageUrl" sql-type="VARCHAR(2000)" /></property>
+	<property name="detailScreen" ><column name="DetailScreen" sql-type="VARCHAR(255)" /></property>
+	<property name="showInSelect" ></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

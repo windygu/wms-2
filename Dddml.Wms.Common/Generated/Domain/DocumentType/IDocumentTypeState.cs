@@ -23,6 +23,8 @@ namespace Dddml.Wms.Domain.DocumentType
 
 		bool ForReapplying { get; }
 
+		string CommandId { get; set; }
+
 		void When(IDocumentTypeStateCreated e);
 
 		void When(IDocumentTypeStateMergePatched e);

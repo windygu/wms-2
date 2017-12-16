@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.Warehouse
 
         bool ReadOnly { get; set; }
 
-		string Name { get; set; }
+		string WarehouseName { get; set; }
 
 		string Description { get; set; }
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Warehouse
 
 	public interface IWarehouseStateMergePatched : IWarehouseStateEvent//, IWarehouseStateProperties
 	{
-		bool IsPropertyNameRemoved { get; set; }
+		bool IsPropertyWarehouseNameRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 

@@ -28,7 +28,7 @@ public class OrganizationStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setName(e.getName());
+        dto.setOrganizationName(e.getOrganizationName());
         dto.setDescription(e.getDescription());
         dto.setType(e.getType());
         dto.setIsSummary(e.getIsSummary());
@@ -42,12 +42,12 @@ public class OrganizationStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setName(e.getName());
+        dto.setOrganizationName(e.getOrganizationName());
         dto.setDescription(e.getDescription());
         dto.setType(e.getType());
         dto.setIsSummary(e.getIsSummary());
         dto.setActive(e.getActive());
-        dto.setIsPropertyNameRemoved(e.getIsPropertyNameRemoved());
+        dto.setIsPropertyOrganizationNameRemoved(e.getIsPropertyOrganizationNameRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyTypeRemoved(e.getIsPropertyTypeRemoved());
         dto.setIsPropertyIsSummaryRemoved(e.getIsPropertyIsSummaryRemoved());

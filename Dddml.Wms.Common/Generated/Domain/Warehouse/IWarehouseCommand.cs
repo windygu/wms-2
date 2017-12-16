@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.Warehouse
 	public interface ICreateOrMergePatchOrDeleteWarehouse : IWarehouseCommand
 	{
 
-		string Name { get; set; }
+		string WarehouseName { get; set; }
 
 		string Description { get; set; }
 
@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.Warehouse
 	public interface IMergePatchWarehouse : ICreateOrMergePatchOrDeleteWarehouse
 	{
 
-		bool IsPropertyNameRemoved { get; set; }
+		bool IsPropertyWarehouseNameRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 

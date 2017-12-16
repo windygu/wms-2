@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -17,11 +16,13 @@ namespace Dddml.Wms.Domain.InOut
 	{
 		public virtual long LineNumber { get; set; }
 
-		public virtual string Description { get; set; }
-
 		public virtual string LocatorId { get; set; }
 
 		public virtual string ProductId { get; set; }
+
+		public virtual string AttributeSetInstanceId { get; set; }
+
+		public virtual string Description { get; set; }
 
 		public virtual string UomId { get; set; }
 
@@ -36,10 +37,6 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual decimal PickedQuantity { get; set; }
 
 		public virtual bool IsInvoiced { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
-
-		public virtual bool IsDescription { get; set; }
 
 		public virtual bool Processed { get; set; }
 

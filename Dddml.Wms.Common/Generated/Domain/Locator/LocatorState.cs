@@ -190,6 +190,8 @@ namespace Dddml.Wms.Domain.Locator
 
 			this.Z = e.Z;
 
+			this.Description = e.Description;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
@@ -299,6 +301,18 @@ namespace Dddml.Wms.Domain.Locator
 			else
 			{
 				this.Z = e.Z;
+			}
+
+			if (e.Description == null)
+			{
+				if (e.IsPropertyDescriptionRemoved)
+				{
+					this.Description = default(string);
+				}
+			}
+			else
+			{
+				this.Description = e.Description;
 			}
 
 			if (e.Active == null)

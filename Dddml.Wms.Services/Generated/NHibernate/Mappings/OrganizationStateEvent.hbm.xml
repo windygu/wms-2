@@ -11,7 +11,7 @@
     </composite-id>
     <discriminator column="StateEventType" type="String" />
 
-    <property name="Name" ></property>
+    <property name="OrganizationName" ></property>
     <property name="Description" ></property>
     <property name="Type" ></property>
     <property name="IsSummary" ></property>
@@ -28,7 +28,7 @@
     <subclass name="OrganizationStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
+        <property name="IsPropertyOrganizationNameRemoved" column="IsPropertyOrganizationNameRemoved"/>
 
         <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 

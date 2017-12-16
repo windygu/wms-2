@@ -34,14 +34,14 @@ public class OrganizationStateEventDto extends AbstractStateEvent
         getStateEventId().setVersion(version);
     }
 
-    private String name;
+    private String organizationName;
 
-    public String getName() {
-        return this.name;
+    public String getOrganizationName() {
+        return this.organizationName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOrganizationName(String organizationName) {
+        this.organizationName = organizationName;
     }
 
     private String description;
@@ -104,14 +104,14 @@ public class OrganizationStateEventDto extends AbstractStateEvent
         this.createdAt = createdAt;
     }
 
-    private Boolean isPropertyNameRemoved;
+    private Boolean isPropertyOrganizationNameRemoved;
 
-    public Boolean getIsPropertyNameRemoved() {
-        return this.isPropertyNameRemoved;
+    public Boolean getIsPropertyOrganizationNameRemoved() {
+        return this.isPropertyOrganizationNameRemoved;
     }
 
-    public void setIsPropertyNameRemoved(Boolean removed) {
-        this.isPropertyNameRemoved = removed;
+    public void setIsPropertyOrganizationNameRemoved(Boolean removed) {
+        this.isPropertyOrganizationNameRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;

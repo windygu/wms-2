@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -24,11 +23,13 @@ namespace Dddml.Wms.Domain.InOut
             set { StateEventId.LineNumber = value; }
         }
 
-		public virtual string Description { get; set; }
-
 		public virtual string LocatorId { get; set; }
 
 		public virtual string ProductId { get; set; }
+
+		public virtual string AttributeSetInstanceId { get; set; }
+
+		public virtual string Description { get; set; }
 
 		public virtual string UomId { get; set; }
 
@@ -43,10 +44,6 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual decimal? PickedQuantity { get; set; }
 
 		public virtual bool? IsInvoiced { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
-
-		public virtual bool? IsDescription { get; set; }
 
 		public virtual bool? Processed { get; set; }
 
@@ -148,11 +145,13 @@ namespace Dddml.Wms.Domain.InOut
 
 	public class InOutLineStateMergePatched : InOutLineStateEventBase, IInOutLineStateMergePatched
 	{
-		public virtual bool IsPropertyDescriptionRemoved { get; set; }
-
 		public virtual bool IsPropertyLocatorIdRemoved { get; set; }
 
 		public virtual bool IsPropertyProductIdRemoved { get; set; }
+
+		public virtual bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
+
+		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
 		public virtual bool IsPropertyUomIdRemoved { get; set; }
 
@@ -167,10 +166,6 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual bool IsPropertyPickedQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertyIsInvoicedRemoved { get; set; }
-
-		public virtual bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
-
-		public virtual bool IsPropertyIsDescriptionRemoved { get; set; }
 
 		public virtual bool IsPropertyProcessedRemoved { get; set; }
 

@@ -117,6 +117,18 @@ public abstract class AbstractLocatorState implements LocatorState
         this.z = z;
     }
 
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -273,6 +285,7 @@ public abstract class AbstractLocatorState implements LocatorState
         this.setX(e.getX());
         this.setY(e.getY());
         this.setZ(e.getZ());
+        this.setDescription(e.getDescription());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -373,6 +386,17 @@ public abstract class AbstractLocatorState implements LocatorState
         else
         {
             this.setZ(e.getZ());
+        }
+        if (e.getDescription() == null)
+        {
+            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
+            {
+                this.setDescription(null);
+            }
+        }
+        else
+        {
+            this.setDescription(e.getDescription());
         }
         if (e.getActive() == null)
         {

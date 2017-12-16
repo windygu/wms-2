@@ -194,9 +194,6 @@
     <Compile Include="Generated\Domain\DocumentType\NHibernate\DocumentTypeApplicationService.cs">
       <DependentUpon>GenerateDocumentTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\DocumentType\NHibernate\NHibernateDocumentTypeEventStore.cs">
-      <DependentUpon>GenerateDocumentTypeDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\DocumentType\NHibernate\NHibernateDocumentTypeStateQueryRepository.cs">
       <DependentUpon>GenerateDocumentTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -302,11 +299,44 @@
     <Compile Include="Generated\Domain\Locator\NHibernate\NHibernateLocatorStateRepository.cs">
       <DependentUpon>GenerateLocatorDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\MovementType\NHibernate\MovementTypeApplicationService.cs">
+      <DependentUpon>GenerateMovementTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementType\NHibernate\NHibernateMovementTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateMovementTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementType\NHibernate\NHibernateMovementTypeStateRepository.cs">
+      <DependentUpon>GenerateMovementTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\NHibernate\NHibernateLocatorTreeRepository.cs">
       <DependentUpon>GenerateNHibernateTrees.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\NHibernate\NHibernateOrganizationTreeRepository.cs">
       <DependentUpon>GenerateNHibernateTrees.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderHeader\NHibernate\NHibernateOrderHeaderEventStore.cs">
+      <DependentUpon>GenerateOrderHeaderDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderHeader\NHibernate\NHibernateOrderHeaderStateQueryRepository.cs">
+      <DependentUpon>GenerateOrderHeaderDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderHeader\NHibernate\NHibernateOrderHeaderStateRepository.cs">
+      <DependentUpon>GenerateOrderHeaderDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderHeader\NHibernate\OrderHeaderApplicationService.cs">
+      <DependentUpon>GenerateOrderHeaderDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItem\NHibernate\NHibernateOrderItemEventStore.cs">
+      <DependentUpon>GenerateOrderItemDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItem\NHibernate\NHibernateOrderItemStateQueryRepository.cs">
+      <DependentUpon>GenerateOrderItemDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItem\NHibernate\NHibernateOrderItemStateRepository.cs">
+      <DependentUpon>GenerateOrderItemDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItem\NHibernate\OrderItemApplicationService.cs">
+      <DependentUpon>GenerateOrderItemDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\OrganizationStructureType\NHibernate\NHibernateOrganizationStructureTypeEventStore.cs">
       <DependentUpon>GenerateOrganizationStructureTypeDomainNHibernate.tt</DependentUpon>
@@ -350,6 +380,30 @@
     <Compile Include="Generated\Domain\Organization\NHibernate\OrganizationApplicationService.cs">
       <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\ProductCategory\NHibernate\NHibernateProductCategoryEventStore.cs">
+      <DependentUpon>GenerateProductCategoryDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ProductCategory\NHibernate\NHibernateProductCategoryStateQueryRepository.cs">
+      <DependentUpon>GenerateProductCategoryDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ProductCategory\NHibernate\NHibernateProductCategoryStateRepository.cs">
+      <DependentUpon>GenerateProductCategoryDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ProductCategory\NHibernate\ProductCategoryApplicationService.cs">
+      <DependentUpon>GenerateProductCategoryDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\NHibernate\NHibernateProductEventStore.cs">
+      <DependentUpon>GenerateProductDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\NHibernate\NHibernateProductStateQueryRepository.cs">
+      <DependentUpon>GenerateProductDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\NHibernate\NHibernateProductStateRepository.cs">
+      <DependentUpon>GenerateProductDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\NHibernate\ProductApplicationService.cs">
+      <DependentUpon>GenerateProductDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\NHibernate\NHibernateSellableInventoryItemEntryMvoEventStore.cs">
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -373,6 +427,18 @@
     </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItem\NHibernate\SellableInventoryItemApplicationService.cs">
       <DependentUpon>GenerateSellableInventoryItemDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\SupplierProduct\NHibernate\NHibernateSupplierProductEventStore.cs">
+      <DependentUpon>GenerateSupplierProductDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\SupplierProduct\NHibernate\NHibernateSupplierProductStateQueryRepository.cs">
+      <DependentUpon>GenerateSupplierProductDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\SupplierProduct\NHibernate\NHibernateSupplierProductStateRepository.cs">
+      <DependentUpon>GenerateSupplierProductDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\SupplierProduct\NHibernate\SupplierProductApplicationService.cs">
+      <DependentUpon>GenerateSupplierProductDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Warehouse\NHibernate\NHibernateWarehouseEventStore.cs">
       <DependentUpon>GenerateWarehouseDomainNHibernate.tt</DependentUpon>
@@ -512,6 +578,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateLocatorDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\MovementType\NHibernate\GenerateMovementTypeDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateMovementTypeDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\NHibernate\GenerateNHibernateTrees.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -577,6 +648,16 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeUseMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Generated\Domain\OrderHeader\NHibernate\GenerateOrderHeaderDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrderHeaderDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\OrderItem\NHibernate\GenerateOrderItemDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrderItemDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\OrganizationStructureType\NHibernate\GenerateOrganizationStructureTypeDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -592,6 +673,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\ProductCategory\NHibernate\GenerateProductCategoryDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateProductCategoryDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Product\NHibernate\GenerateProductDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateProductDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\SellableInventoryItemEntryMvo\NHibernate\GenerateSellableInventoryItemEntryMvoDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -602,15 +693,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateSellableInventoryItemDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\SupplierProduct\NHibernate\GenerateSupplierProductDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateSupplierProductDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\Warehouse\NHibernate\GenerateWarehouseDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateWarehouseDomainNHibernate.tt</DependentUpon>
     </Content>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\DocumentTypeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\DocumentTypeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeSetInstanceExtensionFieldMvoState.hbm.xml">
@@ -643,7 +736,6 @@
 .\AttributeValueState.hbm.xml
 .\AttributeValueStateEvent.hbm.xml
 .\DocumentTypeState.hbm.xml
-.\DocumentTypeStateEvent.hbm.xml
 .\GenerateAggregatesHbm.txt
 .\InOutLineMvoState.hbm.xml
 .\InOutLineMvoStateEvent.hbm.xml
@@ -661,16 +753,27 @@
 .\InventoryPRTriggeredState.hbm.xml
 .\LocatorState.hbm.xml
 .\LocatorStateEvent.hbm.xml
+.\MovementTypeState.hbm.xml
+.\OrderHeaderState.hbm.xml
+.\OrderHeaderStateEvent.hbm.xml
+.\OrderItemState.hbm.xml
+.\OrderItemStateEvent.hbm.xml
 .\OrganizationState.hbm.xml
 .\OrganizationStateEvent.hbm.xml
 .\OrganizationStructureState.hbm.xml
 .\OrganizationStructureStateEvent.hbm.xml
 .\OrganizationStructureTypeState.hbm.xml
 .\OrganizationStructureTypeStateEvent.hbm.xml
+.\ProductCategoryState.hbm.xml
+.\ProductCategoryStateEvent.hbm.xml
+.\ProductState.hbm.xml
+.\ProductStateEvent.hbm.xml
 .\SellableInventoryItemEntryMvoState.hbm.xml
 .\SellableInventoryItemEntryMvoStateEvent.hbm.xml
 .\SellableInventoryItemEntryState.hbm.xml
 .\SellableInventoryItemState.hbm.xml
+.\SupplierProductState.hbm.xml
+.\SupplierProductStateEvent.hbm.xml
 .\WarehouseState.hbm.xml
 .\WarehouseStateEvent.hbm.xml
 </LastOutputs>
@@ -765,6 +868,39 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\SellableInventoryItemEntryMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\MovementTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderHeaderState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderHeaderStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ProductState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ProductStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ProductCategoryState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ProductCategoryStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\SupplierProductState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\SupplierProductStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
@@ -1037,9 +1173,73 @@
       <LastOutputs>
 .\DocumentTypeApplicationService.cs
 .\GenerateDocumentTypeDomainNHibernate.txt
-.\NHibernateDocumentTypeEventStore.cs
 .\NHibernateDocumentTypeStateQueryRepository.cs
 .\NHibernateDocumentTypeStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\MovementType\NHibernate\GenerateMovementTypeDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateMovementTypeDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateMovementTypeDomainNHibernate.txt
+.\MovementTypeApplicationService.cs
+.\NHibernateMovementTypeStateQueryRepository.cs
+.\NHibernateMovementTypeStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\OrderHeader\NHibernate\GenerateOrderHeaderDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrderHeaderDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrderHeaderDomainNHibernate.txt
+.\NHibernateOrderHeaderEventStore.cs
+.\NHibernateOrderHeaderStateQueryRepository.cs
+.\NHibernateOrderHeaderStateRepository.cs
+.\OrderHeaderApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\OrderItem\NHibernate\GenerateOrderItemDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrderItemDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrderItemDomainNHibernate.txt
+.\NHibernateOrderItemEventStore.cs
+.\NHibernateOrderItemStateQueryRepository.cs
+.\NHibernateOrderItemStateRepository.cs
+.\OrderItemApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Product\NHibernate\GenerateProductDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateProductDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateProductDomainNHibernate.txt
+.\NHibernateProductEventStore.cs
+.\NHibernateProductStateQueryRepository.cs
+.\NHibernateProductStateRepository.cs
+.\ProductApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\ProductCategory\NHibernate\GenerateProductCategoryDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateProductCategoryDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateProductCategoryDomainNHibernate.txt
+.\NHibernateProductCategoryEventStore.cs
+.\NHibernateProductCategoryStateQueryRepository.cs
+.\NHibernateProductCategoryStateRepository.cs
+.\ProductCategoryApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\SupplierProduct\NHibernate\GenerateSupplierProductDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateSupplierProductDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateSupplierProductDomainNHibernate.txt
+.\NHibernateSupplierProductEventStore.cs
+.\NHibernateSupplierProductStateQueryRepository.cs
+.\NHibernateSupplierProductStateRepository.cs
+.\SupplierProductApplicationService.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

@@ -17,9 +17,9 @@ public interface AttributeValueMvoState
 
     void setAttributeValueId(AttributeValueId attributeValueId);
 
-    String getName();
+    String getAttributeValueName();
 
-    void setName(String name);
+    void setAttributeValueName(String attributeValueName);
 
     String getDescription();
 
@@ -57,9 +57,9 @@ public interface AttributeValueMvoState
 
     void setDeleted(Boolean deleted);
 
-    String getAttributeName();
+    String getAttributeAttributeName();
 
-    void setAttributeName(String attributeName);
+    void setAttributeAttributeName(String attributeAttributeName);
 
     String getAttributeOrganizationId();
 

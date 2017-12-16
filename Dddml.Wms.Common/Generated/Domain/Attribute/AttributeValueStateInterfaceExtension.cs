@@ -44,13 +44,13 @@ namespace Dddml.Wms.Domain.Attribute
             var cmd = new TMergePatchAttributeValue();
 
             cmd.Value = state.Value;
-            cmd.Name = state.Name;
+            cmd.AttributeValueName = state.AttributeValueName;
             cmd.Description = state.Description;
             cmd.ReferenceId = state.ReferenceId;
             cmd.Active = ((IAttributeValueStateProperties)state).Active;
             cmd.AttributeId = state.AttributeId;
             
-            if (state.Name == null) { cmd.IsPropertyNameRemoved = true; }
+            if (state.AttributeValueName == null) { cmd.IsPropertyAttributeValueNameRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.ReferenceId == null) { cmd.IsPropertyReferenceIdRemoved = true; }
             return cmd;
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain.Attribute
             var cmd = new TCreateAttributeValue();
 
             cmd.Value = state.Value;
-            cmd.Name = state.Name;
+            cmd.AttributeValueName = state.AttributeValueName;
             cmd.Description = state.Description;
             cmd.ReferenceId = state.ReferenceId;
             cmd.Active = ((IAttributeValueStateProperties)state).Active;

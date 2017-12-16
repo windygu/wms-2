@@ -38,12 +38,12 @@ public abstract class AbstractAttributeValueMvoStateCommandConverter<TCreateAttr
         cmd.setAttributeVersion(state.getAttributeVersion());
 
         cmd.setAttributeValueId(state.getAttributeValueId());
-        cmd.setName(state.getName());
+        cmd.setAttributeValueName(state.getAttributeValueName());
         cmd.setDescription(state.getDescription());
         cmd.setReferenceId(state.getReferenceId());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
-        cmd.setAttributeName(state.getAttributeName());
+        cmd.setAttributeAttributeName(state.getAttributeAttributeName());
         cmd.setAttributeOrganizationId(state.getAttributeOrganizationId());
         cmd.setAttributeDescription(state.getAttributeDescription());
         cmd.setAttributeIsMandatory(state.getAttributeIsMandatory());
@@ -60,12 +60,12 @@ public abstract class AbstractAttributeValueMvoStateCommandConverter<TCreateAttr
         cmd.setAttributeActive(state.getAttributeActive());
         cmd.setAttributeDeleted(state.getAttributeDeleted());
             
-        if (state.getName() == null) { cmd.setIsPropertyNameRemoved(true); }
+        if (state.getAttributeValueName() == null) { cmd.setIsPropertyAttributeValueNameRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getReferenceId() == null) { cmd.setIsPropertyReferenceIdRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
-        if (state.getAttributeName() == null) { cmd.setIsPropertyAttributeNameRemoved(true); }
+        if (state.getAttributeAttributeName() == null) { cmd.setIsPropertyAttributeAttributeNameRemoved(true); }
         if (state.getAttributeOrganizationId() == null) { cmd.setIsPropertyAttributeOrganizationIdRemoved(true); }
         if (state.getAttributeDescription() == null) { cmd.setIsPropertyAttributeDescriptionRemoved(true); }
         if (state.getAttributeIsMandatory() == null) { cmd.setIsPropertyAttributeIsMandatoryRemoved(true); }
@@ -90,12 +90,12 @@ public abstract class AbstractAttributeValueMvoStateCommandConverter<TCreateAttr
 
         cmd.setAttributeVersion(state.getAttributeVersion());
         cmd.setAttributeValueId(state.getAttributeValueId());
-        cmd.setName(state.getName());
+        cmd.setAttributeValueName(state.getAttributeValueName());
         cmd.setDescription(state.getDescription());
         cmd.setReferenceId(state.getReferenceId());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
-        cmd.setAttributeName(state.getAttributeName());
+        cmd.setAttributeAttributeName(state.getAttributeAttributeName());
         cmd.setAttributeOrganizationId(state.getAttributeOrganizationId());
         cmd.setAttributeDescription(state.getAttributeDescription());
         cmd.setAttributeIsMandatory(state.getAttributeIsMandatory());

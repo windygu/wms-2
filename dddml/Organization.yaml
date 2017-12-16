@@ -32,7 +32,7 @@ aggregates:
 
       properties:
 
-        Name:
+        OrganizationName:
           type: string
           
         Description:

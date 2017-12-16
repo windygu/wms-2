@@ -174,7 +174,7 @@ namespace Dddml.Wms.Domain.Organization
 		public virtual void When(IOrganizationStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.Name = e.Name;
+			this.OrganizationName = e.OrganizationName;
 
 			this.Description = e.Description;
 
@@ -197,16 +197,16 @@ namespace Dddml.Wms.Domain.Organization
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.Name == null)
+			if (e.OrganizationName == null)
 			{
-				if (e.IsPropertyNameRemoved)
+				if (e.IsPropertyOrganizationNameRemoved)
 				{
-					this.Name = default(string);
+					this.OrganizationName = default(string);
 				}
 			}
 			else
 			{
-				this.Name = e.Name;
+				this.OrganizationName = e.OrganizationName;
 			}
 
 			if (e.Description == null)

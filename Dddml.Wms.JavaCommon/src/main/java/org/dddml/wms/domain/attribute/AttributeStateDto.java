@@ -21,16 +21,16 @@ public class AttributeStateDto
         this.attributeId = attributeId;
     }
 
-    private String name;
+    private String attributeName;
 
-    public String getName()
+    public String getAttributeName()
     {
-        return this.name;
+        return this.attributeName;
     }
 
-    public void setName(String name)
+    public void setAttributeName(String attributeName)
     {
-        this.name = name;
+        this.attributeName = attributeName;
     }
 
     private String organizationId;
@@ -254,8 +254,8 @@ public class AttributeStateDto
             if (returnedFieldsContains("AttributeId")) {
                 dto.setAttributeId(state.getAttributeId());
             }
-            if (returnedFieldsContains("Name")) {
-                dto.setName(state.getName());
+            if (returnedFieldsContains("AttributeName")) {
+                dto.setAttributeName(state.getAttributeName());
             }
             if (returnedFieldsContains("OrganizationId")) {
                 dto.setOrganizationId(state.getOrganizationId());

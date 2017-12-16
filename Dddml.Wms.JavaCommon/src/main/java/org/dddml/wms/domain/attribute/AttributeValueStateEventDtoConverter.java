@@ -29,7 +29,7 @@ public class AttributeValueStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
-        dto.setName(e.getName());
+        dto.setAttributeValueName(e.getAttributeValueName());
         dto.setDescription(e.getDescription());
         dto.setReferenceId(e.getReferenceId());
         dto.setActive(e.getActive());
@@ -43,11 +43,11 @@ public class AttributeValueStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
-        dto.setName(e.getName());
+        dto.setAttributeValueName(e.getAttributeValueName());
         dto.setDescription(e.getDescription());
         dto.setReferenceId(e.getReferenceId());
         dto.setActive(e.getActive());
-        dto.setIsPropertyNameRemoved(e.getIsPropertyNameRemoved());
+        dto.setIsPropertyAttributeValueNameRemoved(e.getIsPropertyAttributeValueNameRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyReferenceIdRemoved(e.getIsPropertyReferenceIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());

@@ -18,6 +18,7 @@
     <property name="CreatedAt" column="CreatedAt" />
 
     <property name="UpdatedAt" column="UpdatedAt" />
+    <property name="CommandId" column="CommandId"/>
 
 
   </class>

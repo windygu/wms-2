@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             set { this.CommandId = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string AttributeValueName { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string AttributeName { get; set; }
+		public virtual string AttributeAttributeName { get; set; }
 
 		public virtual string AttributeOrganizationId { get; set; }
 
@@ -127,7 +127,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 	public class MergePatchAttributeValueMvo :AttributeValueMvoCommandBase, IMergePatchAttributeValueMvo
 	{
 
-		public virtual bool IsPropertyNameRemoved { get; set; }
+		public virtual bool IsPropertyAttributeValueNameRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -137,7 +137,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
-		public virtual bool IsPropertyAttributeNameRemoved { get; set; }
+		public virtual bool IsPropertyAttributeAttributeNameRemoved { get; set; }
 
 		public virtual bool IsPropertyAttributeOrganizationIdRemoved { get; set; }
 

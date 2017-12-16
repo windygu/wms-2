@@ -12,9 +12,10 @@
     </composite-id>
     <discriminator column="StateEventType" type="String" />
 
-    <property name="Description" ></property>
     <property name="LocatorId" ></property>
     <property name="ProductId" ></property>
+    <property name="AttributeSetInstanceId" ></property>
+    <property name="Description" ></property>
     <property name="UomId" ></property>
     <property name="MovementQuantity" ></property>
     <property name="ConfirmedQuantity" ></property>
@@ -22,8 +23,6 @@
     <property name="TargetQuantity" ></property>
     <property name="PickedQuantity" ></property>
     <property name="IsInvoiced" ></property>
-    <property name="AttributeSetInstanceId" ></property>
-    <property name="IsDescription" ></property>
     <property name="Processed" ></property>
     <property name="QuantityEntered" ></property>
     <property name="RmaLineNumber" ></property>
@@ -43,11 +42,13 @@
     <subclass name="InOutLineStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
-
         <property name="IsPropertyLocatorIdRemoved" column="IsPropertyLocatorIdRemoved"/>
 
         <property name="IsPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
         <property name="IsPropertyUomIdRemoved" column="IsPropertyUomIdRemoved"/>
 
@@ -62,10 +63,6 @@
         <property name="IsPropertyPickedQuantityRemoved" column="IsPropertyPickedQuantityRemoved"/>
 
         <property name="IsPropertyIsInvoicedRemoved" column="IsPropertyIsInvoicedRemoved"/>
-
-        <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
-
-        <property name="IsPropertyIsDescriptionRemoved" column="IsPropertyIsDescriptionRemoved"/>
 
         <property name="IsPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
 

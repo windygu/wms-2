@@ -35,8 +35,6 @@
 
     drop table if exists DocumentTypes;
 
-    drop table if exists DocumentTypeStateEvents;
-
     drop table if exists AttributeSetInstanceExtensionField_RV;
 
     drop table if exists AttributeSetInstanceExtensionFieldMvoStateEvents;
@@ -96,3 +94,25 @@
     drop table if exists SellableInventoryItemEntry_RV;
 
     drop table if exists SellableInventoryItemEntryMvoStateEvents;
+
+    drop table if exists MovementTypes;
+
+    drop table if exists OrderHeaders;
+
+    drop table if exists OrderHeaderStateEvents;
+
+    drop table if exists OrderItems;
+
+    drop table if exists OrderItemStateEvents;
+
+    drop table if exists Products;
+
+    drop table if exists ProductStateEvents;
+
+    drop table if exists ProductCategories;
+
+    drop table if exists ProductCategoryStateEvents;
+
+    drop table if exists SupplierProducts;
+
+    drop table if exists SupplierProductStateEvents;

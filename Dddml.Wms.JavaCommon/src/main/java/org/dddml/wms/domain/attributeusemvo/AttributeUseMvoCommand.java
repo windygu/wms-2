@@ -53,9 +53,9 @@ public interface AttributeUseMvoCommand extends Command
 
         void setActive(Boolean active);
 
-        String getAttributeSetName();
+        String getAttributeSetAttributeSetName();
 
-        void setAttributeSetName(String attributeSetName);
+        void setAttributeSetAttributeSetName(String attributeSetAttributeSetName);
 
         String getAttributeSetOrganizationId();
 
@@ -121,9 +121,9 @@ public interface AttributeUseMvoCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        Boolean getIsPropertyAttributeSetNameRemoved();
+        Boolean getIsPropertyAttributeSetAttributeSetNameRemoved();
 
-        void setIsPropertyAttributeSetNameRemoved(Boolean removed);
+        void setIsPropertyAttributeSetAttributeSetNameRemoved(Boolean removed);
 
         Boolean getIsPropertyAttributeSetOrganizationIdRemoved();
 

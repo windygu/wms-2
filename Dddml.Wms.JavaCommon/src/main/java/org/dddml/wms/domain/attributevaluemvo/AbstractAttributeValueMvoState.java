@@ -22,16 +22,16 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
         this.attributeValueId = attributeValueId;
     }
 
-    private String name;
+    private String attributeValueName;
 
-    public String getName()
+    public String getAttributeValueName()
     {
-        return this.name;
+        return this.attributeValueName;
     }
 
-    public void setName(String name)
+    public void setAttributeValueName(String attributeValueName)
     {
-        this.name = name;
+        this.attributeValueName = attributeValueName;
     }
 
     private String description;
@@ -142,16 +142,16 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
         this.deleted = deleted;
     }
 
-    private String attributeName;
+    private String attributeAttributeName;
 
-    public String getAttributeName()
+    public String getAttributeAttributeName()
     {
-        return this.attributeName;
+        return this.attributeAttributeName;
     }
 
-    public void setAttributeName(String attributeName)
+    public void setAttributeAttributeName(String attributeAttributeName)
     {
-        this.attributeName = attributeName;
+        this.attributeAttributeName = attributeAttributeName;
     }
 
     private String attributeOrganizationId;
@@ -410,12 +410,12 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
     {
         throwOnWrongEvent(e);
 
-        this.setName(e.getName());
+        this.setAttributeValueName(e.getAttributeValueName());
         this.setDescription(e.getDescription());
         this.setReferenceId(e.getReferenceId());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
-        this.setAttributeName(e.getAttributeName());
+        this.setAttributeAttributeName(e.getAttributeAttributeName());
         this.setAttributeOrganizationId(e.getAttributeOrganizationId());
         this.setAttributeDescription(e.getAttributeDescription());
         this.setAttributeIsMandatory(e.getAttributeIsMandatory());
@@ -443,16 +443,16 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
     {
         throwOnWrongEvent(e);
 
-        if (e.getName() == null)
+        if (e.getAttributeValueName() == null)
         {
-            if (e.getIsPropertyNameRemoved() != null && e.getIsPropertyNameRemoved())
+            if (e.getIsPropertyAttributeValueNameRemoved() != null && e.getIsPropertyAttributeValueNameRemoved())
             {
-                this.setName(null);
+                this.setAttributeValueName(null);
             }
         }
         else
         {
-            this.setName(e.getName());
+            this.setAttributeValueName(e.getAttributeValueName());
         }
         if (e.getDescription() == null)
         {
@@ -498,16 +498,16 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
         {
             this.setActive(e.getActive());
         }
-        if (e.getAttributeName() == null)
+        if (e.getAttributeAttributeName() == null)
         {
-            if (e.getIsPropertyAttributeNameRemoved() != null && e.getIsPropertyAttributeNameRemoved())
+            if (e.getIsPropertyAttributeAttributeNameRemoved() != null && e.getIsPropertyAttributeAttributeNameRemoved())
             {
-                this.setAttributeName(null);
+                this.setAttributeAttributeName(null);
             }
         }
         else
         {
-            this.setAttributeName(e.getAttributeName());
+            this.setAttributeAttributeName(e.getAttributeAttributeName());
         }
         if (e.getAttributeOrganizationId() == null)
         {

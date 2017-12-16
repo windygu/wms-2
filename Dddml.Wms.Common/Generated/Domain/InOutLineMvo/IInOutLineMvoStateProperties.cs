@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOutLineMvo;
-using NodaMoney;
 using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.Domain.InOutLineMvo
@@ -18,11 +17,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 	{
 		InOutLineId InOutLineId { get; set; }
 
-		string Description { get; set; }
-
 		string LocatorId { get; set; }
 
 		string ProductId { get; set; }
+
+		string AttributeSetInstanceId { get; set; }
+
+		string Description { get; set; }
 
 		string UomId { get; set; }
 
@@ -38,10 +39,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool IsInvoiced { get; set; }
 
-		string AttributeSetInstanceId { get; set; }
-
-		bool IsDescription { get; set; }
-
 		bool Processed { get; set; }
 
 		decimal QuantityEntered { get; set; }
@@ -54,8 +51,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool Active { get; set; }
 
-		bool InOutIsSOTransaction { get; set; }
-
 		string InOutDocumentStatus { get; set; }
 
 		bool InOutPosted { get; set; }
@@ -64,17 +59,17 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool InOutProcessed { get; set; }
 
-		int InOutDocumentType { get; set; }
+		string InOutDocumentTypeId { get; set; }
 
 		string InOutDescription { get; set; }
 
-		string InOutOrderNumber { get; set; }
+		string InOutOrderId { get; set; }
 
 		DateTime? InOutDateOrdered { get; set; }
 
 		bool InOutIsPrinted { get; set; }
 
-		string InOutMovementType { get; set; }
+		string InOutMovementTypeId { get; set; }
 
 		DateTime? InOutMovementDate { get; set; }
 
@@ -84,11 +79,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		string InOutPOReference { get; set; }
 
-		Money InOutFreightAmount { get; set; }
-
 		string InOutShipperId { get; set; }
-
-		Money InOutChargeAmount { get; set; }
 
 		DateTime? InOutDatePrinted { get; set; }
 
@@ -110,17 +101,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool InOutIsInDispute { get; set; }
 
-		decimal InOutVolume { get; set; }
-
-		decimal InOutWeight { get; set; }
-
 		string InOutRmaNumber { get; set; }
 
 		string InOutReversalNumber { get; set; }
-
-		bool InOutIsDropShip { get; set; }
-
-		string InOutDropShipBusinessPartnerId { get; set; }
 
 		long InOutVersion { get; set; }
 

@@ -20,7 +20,7 @@
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>
 	<property name="deleted" ></property>
-	<property name="attributeSetName" ></property>
+	<property name="attributeSetAttributeSetName" ></property>
 	<property name="attributeSetOrganizationId" ></property>
 	<property name="attributeSetDescription" ></property>
 	<property name="attributeSetSerialNumberAttributeId" ></property>

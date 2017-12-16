@@ -19,7 +19,7 @@ namespace Dddml.Wms.Domain.Attribute
 
 		long Version { get; set; }
 
-		string Name { get; set; }
+		string AttributeValueName { get; set; }
 
 		string Description { get; set; }
 
@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.Attribute
 
 	public interface IAttributeValueStateMergePatched : IAttributeValueStateEvent//, IAttributeValueStateProperties
 	{
-		bool IsPropertyNameRemoved { get; set; }
+		bool IsPropertyAttributeValueNameRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 

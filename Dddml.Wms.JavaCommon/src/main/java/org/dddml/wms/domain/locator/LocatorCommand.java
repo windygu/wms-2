@@ -72,6 +72,10 @@ public interface LocatorCommand extends Command
 
         void setZ(String z);
 
+        String getDescription();
+
+        void setDescription(String description);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -115,6 +119,10 @@ public interface LocatorCommand extends Command
         Boolean getIsPropertyZRemoved();
 
         void setIsPropertyZRemoved(Boolean removed);
+
+        Boolean getIsPropertyDescriptionRemoved();
+
+        void setIsPropertyDescriptionRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

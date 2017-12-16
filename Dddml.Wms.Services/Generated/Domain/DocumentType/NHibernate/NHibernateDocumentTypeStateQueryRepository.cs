@@ -40,10 +40,6 @@ namespace Dddml.Wms.Domain.DocumentType.NHibernate
 		public IDocumentTypeState Get(string id)
 		{
 			IDocumentTypeState state = CurrentSession.Get<DocumentTypeState>(id);
-            if (ReadOnlyProxyGenerator != null && state != null)
-            {
-                return ReadOnlyProxyGenerator.CreateProxy<IDocumentTypeState>(state, new Type[] {  }, _readOnlyPropertyNames);
-            }
 			return state;
 		}
 

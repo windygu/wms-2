@@ -20,7 +20,7 @@ namespace Dddml.Wms.Domain.Attribute
             set;
         }
 
-        string Name
+        string AttributeValueName
         {
             get;
             set;

@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.Attribute
 	{
 		public virtual string Value { get; set; }
 
-		public virtual string Name { get; set; }
+		public virtual string AttributeValueName { get; set; }
 
 		public virtual string Description { get; set; }
 

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.Product">
+  
+  <class name="Dddml.Wms.Domain.Product.ProductState" table="Products">
+
+	<id name="ProductId" length="20" column="ProductId"><generator class="assigned"/></id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="ProductTypeId" ><column name="ProductTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="PrimaryProductCategoryId" ><column name="PrimaryProductCategoryId" sql-type="VARCHAR(20)" /></property>
+    <property name="ManufacturerPartyId" ><column name="ManufacturerPartyId" sql-type="VARCHAR(20)" /></property>
+    <property name="FacilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="IntroductionDate" ><column name="IntroductionDate" sql-type="DATETIME" /></property>
+    <property name="ReleaseDate" ><column name="ReleaseDate" sql-type="DATETIME" /></property>
+    <property name="SupportDiscontinuationDate" ><column name="SupportDiscontinuationDate" sql-type="DATETIME" /></property>
+    <property name="SalesDiscontinuationDate" ><column name="SalesDiscontinuationDate" sql-type="DATETIME" /></property>
+    <property name="SalesDiscWhenNotAvail" ><column name="SalesDiscWhenNotAvail" sql-type="CHAR(1)" /></property>
+    <property name="InternalName" ><column name="InternalName" sql-type="VARCHAR(255)" /></property>
+    <property name="BrandName" ><column name="BrandName" sql-type="VARCHAR(100)" /></property>
+    <property name="Comments" ><column name="Comments" sql-type="VARCHAR(255)" /></property>
+    <property name="ProductName" ><column name="ProductName" sql-type="VARCHAR(100)" /></property>
+    <property name="Description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+    <property name="PriceDetailText" ><column name="PriceDetailText" sql-type="VARCHAR(255)" /></property>
+    <property name="SmallImageUrl" ><column name="SmallImageUrl" sql-type="VARCHAR(2000)" /></property>
+    <property name="MediumImageUrl" ><column name="MediumImageUrl" sql-type="VARCHAR(2000)" /></property>
+    <property name="LargeImageUrl" ><column name="LargeImageUrl" sql-type="VARCHAR(2000)" /></property>
+    <property name="DetailImageUrl" ><column name="DetailImageUrl" sql-type="VARCHAR(2000)" /></property>
+    <property name="OriginalImageUrl" ><column name="OriginalImageUrl" sql-type="VARCHAR(2000)" /></property>
+    <property name="DetailScreen" ><column name="DetailScreen" sql-type="VARCHAR(255)" /></property>
+    <property name="InventoryMessage" ><column name="InventoryMessage" sql-type="VARCHAR(255)" /></property>
+    <property name="InventoryItemTypeId" ><column name="InventoryItemTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="RequireInventory" ><column name="RequireInventory" sql-type="CHAR(1)" /></property>
+    <property name="QuantityUomId" ><column name="QuantityUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="QuantityIncluded" ><column name="QuantityIncluded" sql-type="DECIMAL(18,6)" /></property>
+    <property name="PiecesIncluded" ><column name="PiecesIncluded" sql-type="DECIMAL(20,0)" /></property>
+    <property name="RequireAmount" ><column name="RequireAmount" sql-type="CHAR(1)" /></property>
+    <property name="FixedAmount" ><column name="FixedAmount" sql-type="DECIMAL(18,2)" /></property>
+    <property name="AmountUomTypeId" ><column name="AmountUomTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="WeightUomId" ><column name="WeightUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShippingWeight" ><column name="ShippingWeight" sql-type="DECIMAL(18,6)" /></property>
+    <property name="ProductWeight" ><column name="ProductWeight" sql-type="DECIMAL(18,6)" /></property>
+    <property name="HeightUomId" ><column name="HeightUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ProductHeight" ><column name="ProductHeight" sql-type="DECIMAL(18,6)" /></property>
+    <property name="ShippingHeight" ><column name="ShippingHeight" sql-type="DECIMAL(18,6)" /></property>
+    <property name="WidthUomId" ><column name="WidthUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ProductWidth" ><column name="ProductWidth" sql-type="DECIMAL(18,6)" /></property>
+    <property name="ShippingWidth" ><column name="ShippingWidth" sql-type="DECIMAL(18,6)" /></property>
+    <property name="DepthUomId" ><column name="DepthUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ProductDepth" ><column name="ProductDepth" sql-type="DECIMAL(18,6)" /></property>
+    <property name="ShippingDepth" ><column name="ShippingDepth" sql-type="DECIMAL(18,6)" /></property>
+    <property name="DiameterUomId" ><column name="DiameterUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ProductDiameter" ><column name="ProductDiameter" sql-type="DECIMAL(18,6)" /></property>
+    <property name="Returnable" ><column name="Returnable" sql-type="CHAR(1)" /></property>
+    <property name="Taxable" ><column name="Taxable" sql-type="CHAR(1)" /></property>
+    <property name="ChargeShipping" ><column name="ChargeShipping" sql-type="CHAR(1)" /></property>
+    <property name="AutoCreateKeywords" ><column name="AutoCreateKeywords" sql-type="CHAR(1)" /></property>
+    <property name="IncludeInPromotions" ><column name="IncludeInPromotions" sql-type="CHAR(1)" /></property>
+    <property name="IsVirtual" ><column name="IsVirtual" sql-type="CHAR(1)" /></property>
+    <property name="IsVariant" ><column name="IsVariant" sql-type="CHAR(1)" /></property>
+    <property name="VirtualVariantMethodEnum" ><column name="VirtualVariantMethodEnum" sql-type="VARCHAR(20)" /></property>
+    <property name="InShippingBox" ><column name="InShippingBox" sql-type="CHAR(1)" /></property>
+    <property name="DefaultShipmentBoxTypeId" ><column name="DefaultShipmentBoxTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="LotIdFilledIn" ><column name="LotIdFilledIn" sql-type="VARCHAR(255)" /></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" />
+
+    <property name="UpdatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

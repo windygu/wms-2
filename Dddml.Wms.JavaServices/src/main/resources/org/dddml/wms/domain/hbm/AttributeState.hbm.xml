@@ -11,7 +11,7 @@
 	<id name="attributeId" length="50" column="AttributeId"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
-	<property name="name" ></property>
+	<property name="attributeName" ></property>
 	<property name="organizationId" ></property>
 	<property name="description" ></property>
 	<property name="isMandatory" ></property>

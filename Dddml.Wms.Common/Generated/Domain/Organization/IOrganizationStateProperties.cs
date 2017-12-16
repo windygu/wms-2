@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.Organization
 	{
 		string OrganizationId { get; set; }
 
-		string Name { get; set; }
+		string OrganizationName { get; set; }
 
 		string Description { get; set; }
 

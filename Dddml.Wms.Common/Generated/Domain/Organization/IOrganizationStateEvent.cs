@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.Organization
 
         bool ReadOnly { get; set; }
 
-		string Name { get; set; }
+		string OrganizationName { get; set; }
 
 		string Description { get; set; }
 
@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain.Organization
 
 	public interface IOrganizationStateMergePatched : IOrganizationStateEvent//, IOrganizationStateProperties
 	{
-		bool IsPropertyNameRemoved { get; set; }
+		bool IsPropertyOrganizationNameRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 

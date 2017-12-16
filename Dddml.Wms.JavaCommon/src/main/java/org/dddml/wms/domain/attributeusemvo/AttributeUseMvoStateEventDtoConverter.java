@@ -32,7 +32,7 @@ public class AttributeUseMvoStateEventDtoConverter {
         dto.setSequenceNumber(e.getSequenceNumber());
         dto.setVersion(e.getVersion());
         dto.setActive(e.getActive());
-        dto.setAttributeSetName(e.getAttributeSetName());
+        dto.setAttributeSetAttributeSetName(e.getAttributeSetAttributeSetName());
         dto.setAttributeSetOrganizationId(e.getAttributeSetOrganizationId());
         dto.setAttributeSetDescription(e.getAttributeSetDescription());
         dto.setAttributeSetSerialNumberAttributeId(e.getAttributeSetSerialNumberAttributeId());
@@ -56,7 +56,7 @@ public class AttributeUseMvoStateEventDtoConverter {
         dto.setSequenceNumber(e.getSequenceNumber());
         dto.setVersion(e.getVersion());
         dto.setActive(e.getActive());
-        dto.setAttributeSetName(e.getAttributeSetName());
+        dto.setAttributeSetAttributeSetName(e.getAttributeSetAttributeSetName());
         dto.setAttributeSetOrganizationId(e.getAttributeSetOrganizationId());
         dto.setAttributeSetDescription(e.getAttributeSetDescription());
         dto.setAttributeSetSerialNumberAttributeId(e.getAttributeSetSerialNumberAttributeId());
@@ -71,7 +71,7 @@ public class AttributeUseMvoStateEventDtoConverter {
         dto.setIsPropertySequenceNumberRemoved(e.getIsPropertySequenceNumberRemoved());
         dto.setIsPropertyVersionRemoved(e.getIsPropertyVersionRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
-        dto.setIsPropertyAttributeSetNameRemoved(e.getIsPropertyAttributeSetNameRemoved());
+        dto.setIsPropertyAttributeSetAttributeSetNameRemoved(e.getIsPropertyAttributeSetAttributeSetNameRemoved());
         dto.setIsPropertyAttributeSetOrganizationIdRemoved(e.getIsPropertyAttributeSetOrganizationIdRemoved());
         dto.setIsPropertyAttributeSetDescriptionRemoved(e.getIsPropertyAttributeSetDescriptionRemoved());
         dto.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(e.getIsPropertyAttributeSetSerialNumberAttributeIdRemoved());

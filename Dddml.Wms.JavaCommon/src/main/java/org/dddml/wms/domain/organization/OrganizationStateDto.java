@@ -21,16 +21,16 @@ public class OrganizationStateDto
         this.organizationId = organizationId;
     }
 
-    private String name;
+    private String organizationName;
 
-    public String getName()
+    public String getOrganizationName()
     {
-        return this.name;
+        return this.organizationName;
     }
 
-    public void setName(String name)
+    public void setOrganizationName(String organizationName)
     {
-        this.name = name;
+        this.organizationName = organizationName;
     }
 
     private String description;
@@ -170,8 +170,8 @@ public class OrganizationStateDto
             if (returnedFieldsContains("OrganizationId")) {
                 dto.setOrganizationId(state.getOrganizationId());
             }
-            if (returnedFieldsContains("Name")) {
-                dto.setName(state.getName());
+            if (returnedFieldsContains("OrganizationName")) {
+                dto.setOrganizationName(state.getOrganizationName());
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());

@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.Attribute
             set;
         }
 
-        public virtual string Name
+        public virtual string AttributeValueName
         {
             get;
             set;
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             var state = new AttributeValueState(true);
             state.Value = this.Value;
-            state.Name = this.Name;
+            state.AttributeValueName = this.AttributeValueName;
             state.Description = this.Description;
             state.ReferenceId = this.ReferenceId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }

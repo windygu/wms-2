@@ -5,16 +5,16 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
 {
-    private String name;
+    private String attributeName;
 
-    public String getName()
+    public String getAttributeName()
     {
-        return this.name;
+        return this.attributeName;
     }
 
-    public void setName(String name)
+    public void setAttributeName(String attributeName)
     {
-        this.name = name;
+        this.attributeName = attributeName;
     }
 
     private String organizationId;
@@ -149,16 +149,16 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.attributeValues = attributeValues;
     }
 
-    private Boolean isPropertyNameRemoved;
+    private Boolean isPropertyAttributeNameRemoved;
 
-    public Boolean getIsPropertyNameRemoved()
+    public Boolean getIsPropertyAttributeNameRemoved()
     {
-        return this.isPropertyNameRemoved;
+        return this.isPropertyAttributeNameRemoved;
     }
 
-    public void setIsPropertyNameRemoved(Boolean removed)
+    public void setIsPropertyAttributeNameRemoved(Boolean removed)
     {
-        this.isPropertyNameRemoved = removed;
+        this.isPropertyAttributeNameRemoved = removed;
     }
 
     private Boolean isPropertyOrganizationIdRemoved;
@@ -284,7 +284,7 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
     public void copyTo(AbstractAttributeCommand.AbstractCreateOrMergePatchAttribute command)
     {
         ((AbstractAttributeCommandDto) this).copyTo(command);
-        command.setName(this.getName());
+        command.setAttributeName(this.getAttributeName());
         command.setOrganizationId(this.getOrganizationId());
         command.setDescription(this.getDescription());
         command.setIsMandatory(this.getIsMandatory());
@@ -329,7 +329,7 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
     public void copyTo(AbstractAttributeCommand.AbstractMergePatchAttribute command)
     {
         copyTo((AbstractAttributeCommand.AbstractCreateOrMergePatchAttribute) command);
-        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyAttributeNameRemoved(this.getIsPropertyAttributeNameRemoved());
         command.setIsPropertyOrganizationIdRemoved(this.getIsPropertyOrganizationIdRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyIsMandatoryRemoved(this.getIsPropertyIsMandatoryRemoved());

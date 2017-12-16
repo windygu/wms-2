@@ -203,7 +203,7 @@ namespace Dddml.Wms.Domain.Attribute
 		public virtual void When(IAttributeStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.Name = e.Name;
+			this.AttributeName = e.AttributeName;
 
 			this.OrganizationId = e.OrganizationId;
 
@@ -242,16 +242,16 @@ namespace Dddml.Wms.Domain.Attribute
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.Name == null)
+			if (e.AttributeName == null)
 			{
-				if (e.IsPropertyNameRemoved)
+				if (e.IsPropertyAttributeNameRemoved)
 				{
-					this.Name = default(string);
+					this.AttributeName = default(string);
 				}
 			}
 			else
 			{
-				this.Name = e.Name;
+				this.AttributeName = e.AttributeName;
 			}
 
 			if (e.OrganizationId == null)

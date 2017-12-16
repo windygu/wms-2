@@ -58,12 +58,12 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
     protected AttributeValueMvoStateEvent map(AttributeValueMvoCommand.CreateAttributeValueMvo c) {
         AttributeValueMvoStateEventId stateEventId = new AttributeValueMvoStateEventId(c.getAttributeValueId(), c.getAttributeVersion());
         AttributeValueMvoStateEvent.AttributeValueMvoStateCreated e = newAttributeValueMvoStateCreated(stateEventId);
-        e.setName(c.getName());
+        e.setAttributeValueName(c.getAttributeValueName());
         e.setDescription(c.getDescription());
         e.setReferenceId(c.getReferenceId());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        e.setAttributeName(c.getAttributeName());
+        e.setAttributeAttributeName(c.getAttributeAttributeName());
         e.setAttributeOrganizationId(c.getAttributeOrganizationId());
         e.setAttributeDescription(c.getAttributeDescription());
         e.setAttributeIsMandatory(c.getAttributeIsMandatory());
@@ -88,12 +88,12 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
     protected AttributeValueMvoStateEvent map(AttributeValueMvoCommand.MergePatchAttributeValueMvo c) {
         AttributeValueMvoStateEventId stateEventId = new AttributeValueMvoStateEventId(c.getAttributeValueId(), c.getAttributeVersion());
         AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched e = newAttributeValueMvoStateMergePatched(stateEventId);
-        e.setName(c.getName());
+        e.setAttributeValueName(c.getAttributeValueName());
         e.setDescription(c.getDescription());
         e.setReferenceId(c.getReferenceId());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        e.setAttributeName(c.getAttributeName());
+        e.setAttributeAttributeName(c.getAttributeAttributeName());
         e.setAttributeOrganizationId(c.getAttributeOrganizationId());
         e.setAttributeDescription(c.getAttributeDescription());
         e.setAttributeIsMandatory(c.getAttributeIsMandatory());
@@ -109,12 +109,12 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
         e.setAttributeUpdatedAt(c.getAttributeUpdatedAt());
         e.setAttributeActive(c.getAttributeActive());
         e.setAttributeDeleted(c.getAttributeDeleted());
-        e.setIsPropertyNameRemoved(c.getIsPropertyNameRemoved());
+        e.setIsPropertyAttributeValueNameRemoved(c.getIsPropertyAttributeValueNameRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyReferenceIdRemoved(c.getIsPropertyReferenceIdRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        e.setIsPropertyAttributeNameRemoved(c.getIsPropertyAttributeNameRemoved());
+        e.setIsPropertyAttributeAttributeNameRemoved(c.getIsPropertyAttributeAttributeNameRemoved());
         e.setIsPropertyAttributeOrganizationIdRemoved(c.getIsPropertyAttributeOrganizationIdRemoved());
         e.setIsPropertyAttributeDescriptionRemoved(c.getIsPropertyAttributeDescriptionRemoved());
         e.setIsPropertyAttributeIsMandatoryRemoved(c.getIsPropertyAttributeIsMandatoryRemoved());

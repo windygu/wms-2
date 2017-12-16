@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.Warehouse
             set { this.CommandId = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string WarehouseName { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain.Warehouse
 	public class MergePatchWarehouse :WarehouseCommandBase, IMergePatchWarehouse
 	{
 
-		public virtual bool IsPropertyNameRemoved { get; set; }
+		public virtual bool IsPropertyWarehouseNameRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 

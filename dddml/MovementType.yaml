@@ -1,0 +1,20 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+              
+    # ----------------------- aggregate -------------------------
+    MovementType:
+      id:
+        name: MovementTypeId
+        type: string
+      properties:
+        Description:
+          type: string
+          notNull: true
+      metadata:
+        NoEventSourcing: true
+
+          

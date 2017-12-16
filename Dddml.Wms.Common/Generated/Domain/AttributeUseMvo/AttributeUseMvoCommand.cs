@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string AttributeSetName { get; set; }
+		public virtual string AttributeSetAttributeSetName { get; set; }
 
 		public virtual string AttributeSetOrganizationId { get; set; }
 
@@ -121,7 +121,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
-		public virtual bool IsPropertyAttributeSetNameRemoved { get; set; }
+		public virtual bool IsPropertyAttributeSetAttributeSetNameRemoved { get; set; }
 
 		public virtual bool IsPropertyAttributeSetOrganizationIdRemoved { get; set; }
 

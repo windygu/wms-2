@@ -19,10 +19,6 @@ public interface InOutLineCommand extends Command
 
     interface CreateOrMergePatchInOutLine extends InOutLineCommand
     {
-        String getDescription();
-
-        void setDescription(String description);
-
         String getLocatorId();
 
         void setLocatorId(String locatorId);
@@ -30,6 +26,14 @@ public interface InOutLineCommand extends Command
         String getProductId();
 
         void setProductId(String productId);
+
+        String getAttributeSetInstanceId();
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        String getDescription();
+
+        void setDescription(String description);
 
         String getUomId();
 
@@ -59,14 +63,6 @@ public interface InOutLineCommand extends Command
 
         void setIsInvoiced(Boolean isInvoiced);
 
-        String getAttributeSetInstanceId();
-
-        void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-        Boolean getIsDescription();
-
-        void setIsDescription(Boolean isDescription);
-
         Boolean getProcessed();
 
         void setProcessed(Boolean processed);
@@ -95,10 +91,6 @@ public interface InOutLineCommand extends Command
 
     interface MergePatchInOutLine extends CreateOrMergePatchInOutLine
     {
-        Boolean getIsPropertyDescriptionRemoved();
-
-        void setIsPropertyDescriptionRemoved(Boolean removed);
-
         Boolean getIsPropertyLocatorIdRemoved();
 
         void setIsPropertyLocatorIdRemoved(Boolean removed);
@@ -106,6 +98,14 @@ public interface InOutLineCommand extends Command
         Boolean getIsPropertyProductIdRemoved();
 
         void setIsPropertyProductIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
+
+        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDescriptionRemoved();
+
+        void setIsPropertyDescriptionRemoved(Boolean removed);
 
         Boolean getIsPropertyUomIdRemoved();
 
@@ -134,14 +134,6 @@ public interface InOutLineCommand extends Command
         Boolean getIsPropertyIsInvoicedRemoved();
 
         void setIsPropertyIsInvoicedRemoved(Boolean removed);
-
-        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
-
-        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyIsDescriptionRemoved();
-
-        void setIsPropertyIsDescriptionRemoved(Boolean removed);
 
         Boolean getIsPropertyProcessedRemoved();
 

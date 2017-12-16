@@ -19,6 +19,7 @@
 	<property name="x" ></property>
 	<property name="y" ></property>
 	<property name="z" ></property>
+	<property name="description" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

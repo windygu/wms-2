@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOutLineMvo;
-using NodaMoney;
 using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.Domain.InOutLineMvo
@@ -18,11 +17,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 	{
 		public virtual InOutLineId InOutLineId { get; set; }
 
-		public virtual string Description { get; set; }
-
 		public virtual string LocatorId { get; set; }
 
 		public virtual string ProductId { get; set; }
+
+		public virtual string AttributeSetInstanceId { get; set; }
+
+		public virtual string Description { get; set; }
 
 		public virtual string UomId { get; set; }
 
@@ -38,10 +39,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool IsInvoiced { get; set; }
 
-		public virtual string AttributeSetInstanceId { get; set; }
-
-		public virtual bool IsDescription { get; set; }
-
 		public virtual bool Processed { get; set; }
 
 		public virtual decimal QuantityEntered { get; set; }
@@ -54,8 +51,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool Active { get; set; }
 
-		public virtual bool InOutIsSOTransaction { get; set; }
-
 		public virtual string InOutDocumentStatus { get; set; }
 
 		public virtual bool InOutPosted { get; set; }
@@ -64,17 +59,17 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool InOutProcessed { get; set; }
 
-		public virtual int InOutDocumentType { get; set; }
+		public virtual string InOutDocumentTypeId { get; set; }
 
 		public virtual string InOutDescription { get; set; }
 
-		public virtual string InOutOrderNumber { get; set; }
+		public virtual string InOutOrderId { get; set; }
 
 		public virtual DateTime? InOutDateOrdered { get; set; }
 
 		public virtual bool InOutIsPrinted { get; set; }
 
-		public virtual string InOutMovementType { get; set; }
+		public virtual string InOutMovementTypeId { get; set; }
 
 		public virtual DateTime? InOutMovementDate { get; set; }
 
@@ -84,11 +79,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual string InOutPOReference { get; set; }
 
-		public virtual Money InOutFreightAmount { get; set; }
-
 		public virtual string InOutShipperId { get; set; }
-
-		public virtual Money InOutChargeAmount { get; set; }
 
 		public virtual DateTime? InOutDatePrinted { get; set; }
 
@@ -110,17 +101,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool InOutIsInDispute { get; set; }
 
-		public virtual decimal InOutVolume { get; set; }
-
-		public virtual decimal InOutWeight { get; set; }
-
 		public virtual string InOutRmaNumber { get; set; }
 
 		public virtual string InOutReversalNumber { get; set; }
-
-		public virtual bool InOutIsDropShip { get; set; }
-
-		public virtual string InOutDropShipBusinessPartnerId { get; set; }
 
 		public virtual long InOutVersion { get; set; }
 

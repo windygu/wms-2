@@ -34,9 +34,10 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         TMergePatchInOutLine cmd = newMergePatchInOutLine();
 
         cmd.setLineNumber(state.getLineNumber());
-        cmd.setDescription(state.getDescription());
         cmd.setLocatorId(state.getLocatorId());
         cmd.setProductId(state.getProductId());
+        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setDescription(state.getDescription());
         cmd.setUomId(state.getUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());
         cmd.setConfirmedQuantity(state.getConfirmedQuantity());
@@ -44,8 +45,6 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         cmd.setTargetQuantity(state.getTargetQuantity());
         cmd.setPickedQuantity(state.getPickedQuantity());
         cmd.setIsInvoiced(state.getIsInvoiced());
-        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
-        cmd.setIsDescription(state.getIsDescription());
         cmd.setProcessed(state.getProcessed());
         cmd.setQuantityEntered(state.getQuantityEntered());
         cmd.setRmaLineNumber(state.getRmaLineNumber());
@@ -53,9 +52,10 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         cmd.setActive(state.getActive());
         cmd.setInOutDocumentNumber(state.getInOutDocumentNumber());
             
-        if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getLocatorId() == null) { cmd.setIsPropertyLocatorIdRemoved(true); }
         if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
+        if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
+        if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getUomId() == null) { cmd.setIsPropertyUomIdRemoved(true); }
         if (state.getMovementQuantity() == null) { cmd.setIsPropertyMovementQuantityRemoved(true); }
         if (state.getConfirmedQuantity() == null) { cmd.setIsPropertyConfirmedQuantityRemoved(true); }
@@ -63,8 +63,6 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         if (state.getTargetQuantity() == null) { cmd.setIsPropertyTargetQuantityRemoved(true); }
         if (state.getPickedQuantity() == null) { cmd.setIsPropertyPickedQuantityRemoved(true); }
         if (state.getIsInvoiced() == null) { cmd.setIsPropertyIsInvoicedRemoved(true); }
-        if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
-        if (state.getIsDescription() == null) { cmd.setIsPropertyIsDescriptionRemoved(true); }
         if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
         if (state.getQuantityEntered() == null) { cmd.setIsPropertyQuantityEnteredRemoved(true); }
         if (state.getRmaLineNumber() == null) { cmd.setIsPropertyRmaLineNumberRemoved(true); }
@@ -78,9 +76,10 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         TCreateInOutLine cmd = newCreateInOutLine();
 
         cmd.setLineNumber(state.getLineNumber());
-        cmd.setDescription(state.getDescription());
         cmd.setLocatorId(state.getLocatorId());
         cmd.setProductId(state.getProductId());
+        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setDescription(state.getDescription());
         cmd.setUomId(state.getUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());
         cmd.setConfirmedQuantity(state.getConfirmedQuantity());
@@ -88,8 +87,6 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         cmd.setTargetQuantity(state.getTargetQuantity());
         cmd.setPickedQuantity(state.getPickedQuantity());
         cmd.setIsInvoiced(state.getIsInvoiced());
-        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
-        cmd.setIsDescription(state.getIsDescription());
         cmd.setProcessed(state.getProcessed());
         cmd.setQuantityEntered(state.getQuantityEntered());
         cmd.setRmaLineNumber(state.getRmaLineNumber());

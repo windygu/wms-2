@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             set;
         }
 
-        public virtual string Name
+        public virtual string AttributeSetName
         {
             get;
             set;
@@ -109,7 +109,7 @@ namespace Dddml.Wms.Domain.AttributeSet
         {
             var state = new AttributeSetState(true);
             state.AttributeSetId = this.AttributeSetId;
-            state.Name = this.Name;
+            state.AttributeSetName = this.AttributeSetName;
             state.OrganizationId = this.OrganizationId;
             state.Description = this.Description;
             state.SerialNumberAttributeId = this.SerialNumberAttributeId;

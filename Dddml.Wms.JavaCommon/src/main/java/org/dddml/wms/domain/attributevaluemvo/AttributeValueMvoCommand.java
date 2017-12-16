@@ -41,9 +41,9 @@ public interface AttributeValueMvoCommand extends Command
 
     interface CreateOrMergePatchAttributeValueMvo extends AttributeValueMvoCommand
     {
-        String getName();
+        String getAttributeValueName();
 
-        void setName(String name);
+        void setAttributeValueName(String attributeValueName);
 
         String getDescription();
 
@@ -61,9 +61,9 @@ public interface AttributeValueMvoCommand extends Command
 
         void setActive(Boolean active);
 
-        String getAttributeName();
+        String getAttributeAttributeName();
 
-        void setAttributeName(String attributeName);
+        void setAttributeAttributeName(String attributeAttributeName);
 
         String getAttributeOrganizationId();
 
@@ -133,9 +133,9 @@ public interface AttributeValueMvoCommand extends Command
 
     interface MergePatchAttributeValueMvo extends CreateOrMergePatchAttributeValueMvo
     {
-        Boolean getIsPropertyNameRemoved();
+        Boolean getIsPropertyAttributeValueNameRemoved();
 
-        void setIsPropertyNameRemoved(Boolean removed);
+        void setIsPropertyAttributeValueNameRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 
@@ -153,9 +153,9 @@ public interface AttributeValueMvoCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        Boolean getIsPropertyAttributeNameRemoved();
+        Boolean getIsPropertyAttributeAttributeNameRemoved();
 
-        void setIsPropertyAttributeNameRemoved(Boolean removed);
+        void setIsPropertyAttributeAttributeNameRemoved(Boolean removed);
 
         Boolean getIsPropertyAttributeOrganizationIdRemoved();
 

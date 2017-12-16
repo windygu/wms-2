@@ -14,7 +14,7 @@ aggregates:
 
       properties:
 
-        Name:
+        WarehouseName:
           type: string
           
         Description:
@@ -66,6 +66,8 @@ aggregates:
         Z:
           type: string
 
+        Description:
+          type: string
 
 # -------------------------------------
 

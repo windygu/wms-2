@@ -71,16 +71,16 @@ public abstract class AbstractAttributeUseMvoCommand extends AbstractCommand imp
             this.active = active;
         }
 
-        private String attributeSetName;
+        private String attributeSetAttributeSetName;
 
-        public String getAttributeSetName()
+        public String getAttributeSetAttributeSetName()
         {
-            return this.attributeSetName;
+            return this.attributeSetAttributeSetName;
         }
 
-        public void setAttributeSetName(String attributeSetName)
+        public void setAttributeSetAttributeSetName(String attributeSetAttributeSetName)
         {
-            this.attributeSetName = attributeSetName;
+            this.attributeSetAttributeSetName = attributeSetAttributeSetName;
         }
 
         private String attributeSetOrganizationId;
@@ -269,16 +269,16 @@ public abstract class AbstractAttributeUseMvoCommand extends AbstractCommand imp
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Boolean isPropertyAttributeSetNameRemoved;
+        private Boolean isPropertyAttributeSetAttributeSetNameRemoved;
 
-        public Boolean getIsPropertyAttributeSetNameRemoved()
+        public Boolean getIsPropertyAttributeSetAttributeSetNameRemoved()
         {
-            return this.isPropertyAttributeSetNameRemoved;
+            return this.isPropertyAttributeSetAttributeSetNameRemoved;
         }
 
-        public void setIsPropertyAttributeSetNameRemoved(Boolean removed)
+        public void setIsPropertyAttributeSetAttributeSetNameRemoved(Boolean removed)
         {
-            this.isPropertyAttributeSetNameRemoved = removed;
+            this.isPropertyAttributeSetAttributeSetNameRemoved = removed;
         }
 
         private Boolean isPropertyAttributeSetOrganizationIdRemoved;

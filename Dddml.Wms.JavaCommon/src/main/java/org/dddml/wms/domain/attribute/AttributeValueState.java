@@ -20,9 +20,9 @@ public interface AttributeValueState
 
     void setValue(String value);
 
-    String getName();
+    String getAttributeValueName();
 
-    void setName(String name);
+    void setAttributeValueName(String attributeValueName);
 
     String getDescription();
 

@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -43,8 +42,6 @@ namespace Dddml.Wms.Domain.InOut
             set { StateEventId.Version = value; }
         }
 
-		public virtual bool? IsSOTransaction { get; set; }
-
 		public virtual string DocumentStatus { get; set; }
 
 		public virtual bool? Posted { get; set; }
@@ -53,17 +50,17 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool? Processed { get; set; }
 
-		public virtual int? DocumentType { get; set; }
+		public virtual string DocumentTypeId { get; set; }
 
 		public virtual string Description { get; set; }
 
-		public virtual string OrderNumber { get; set; }
+		public virtual string OrderId { get; set; }
 
 		public virtual DateTime? DateOrdered { get; set; }
 
 		public virtual bool? IsPrinted { get; set; }
 
-		public virtual string MovementType { get; set; }
+		public virtual string MovementTypeId { get; set; }
 
 		public virtual DateTime? MovementDate { get; set; }
 
@@ -73,11 +70,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string POReference { get; set; }
 
-		public virtual Money? FreightAmount { get; set; }
-
 		public virtual string ShipperId { get; set; }
-
-		public virtual Money? ChargeAmount { get; set; }
 
 		public virtual DateTime? DatePrinted { get; set; }
 
@@ -99,17 +92,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool? IsInDispute { get; set; }
 
-		public virtual decimal? Volume { get; set; }
-
-		public virtual decimal? Weight { get; set; }
-
 		public virtual string RmaNumber { get; set; }
 
 		public virtual string ReversalNumber { get; set; }
-
-		public virtual bool? IsDropShip { get; set; }
-
-		public virtual string DropShipBusinessPartnerId { get; set; }
 
 		public virtual bool? Active { get; set; }
 
@@ -139,25 +124,6 @@ namespace Dddml.Wms.Domain.InOut
             set
             {
                 this.StateEventReadOnly = value;
-            }
-        }
-
-		public virtual bool? IsPropertyIsSOTransactionRemoved { get; set; }
-
-        bool IInOutStateMergePatched.IsPropertyIsSOTransactionRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyIsSOTransactionRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyIsSOTransactionRemoved = value;
             }
         }
 
@@ -237,13 +203,13 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? IsPropertyDocumentTypeRemoved { get; set; }
+		public virtual bool? IsPropertyDocumentTypeIdRemoved { get; set; }
 
-        bool IInOutStateMergePatched.IsPropertyDocumentTypeRemoved
+        bool IInOutStateMergePatched.IsPropertyDocumentTypeIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyDocumentTypeRemoved;
+                var b = this.IsPropertyDocumentTypeIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -252,7 +218,7 @@ namespace Dddml.Wms.Domain.InOut
             }
             set 
             {
-                this.IsPropertyDocumentTypeRemoved = value;
+                this.IsPropertyDocumentTypeIdRemoved = value;
             }
         }
 
@@ -275,13 +241,13 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? IsPropertyOrderNumberRemoved { get; set; }
+		public virtual bool? IsPropertyOrderIdRemoved { get; set; }
 
-        bool IInOutStateMergePatched.IsPropertyOrderNumberRemoved
+        bool IInOutStateMergePatched.IsPropertyOrderIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyOrderNumberRemoved;
+                var b = this.IsPropertyOrderIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -290,7 +256,7 @@ namespace Dddml.Wms.Domain.InOut
             }
             set 
             {
-                this.IsPropertyOrderNumberRemoved = value;
+                this.IsPropertyOrderIdRemoved = value;
             }
         }
 
@@ -332,13 +298,13 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? IsPropertyMovementTypeRemoved { get; set; }
+		public virtual bool? IsPropertyMovementTypeIdRemoved { get; set; }
 
-        bool IInOutStateMergePatched.IsPropertyMovementTypeRemoved
+        bool IInOutStateMergePatched.IsPropertyMovementTypeIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyMovementTypeRemoved;
+                var b = this.IsPropertyMovementTypeIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -347,7 +313,7 @@ namespace Dddml.Wms.Domain.InOut
             }
             set 
             {
-                this.IsPropertyMovementTypeRemoved = value;
+                this.IsPropertyMovementTypeIdRemoved = value;
             }
         }
 
@@ -427,25 +393,6 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? IsPropertyFreightAmountRemoved { get; set; }
-
-        bool IInOutStateMergePatched.IsPropertyFreightAmountRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyFreightAmountRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyFreightAmountRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyShipperIdRemoved { get; set; }
 
         bool IInOutStateMergePatched.IsPropertyShipperIdRemoved
@@ -462,25 +409,6 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 this.IsPropertyShipperIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyChargeAmountRemoved { get; set; }
-
-        bool IInOutStateMergePatched.IsPropertyChargeAmountRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyChargeAmountRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyChargeAmountRemoved = value;
             }
         }
 
@@ -674,44 +602,6 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? IsPropertyVolumeRemoved { get; set; }
-
-        bool IInOutStateMergePatched.IsPropertyVolumeRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyVolumeRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyVolumeRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyWeightRemoved { get; set; }
-
-        bool IInOutStateMergePatched.IsPropertyWeightRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyWeightRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyWeightRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyRmaNumberRemoved { get; set; }
 
         bool IInOutStateMergePatched.IsPropertyRmaNumberRemoved
@@ -747,44 +637,6 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 this.IsPropertyReversalNumberRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyIsDropShipRemoved { get; set; }
-
-        bool IInOutStateMergePatched.IsPropertyIsDropShipRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyIsDropShipRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyIsDropShipRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyDropShipBusinessPartnerIdRemoved { get; set; }
-
-        bool IInOutStateMergePatched.IsPropertyDropShipBusinessPartnerIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyDropShipBusinessPartnerIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyDropShipBusinessPartnerIdRemoved = value;
             }
         }
 

@@ -34,7 +34,7 @@ public class AttributeSetServiceImpl implements AttributeSetService {
             attributeSetState.getAttributeUses().forEach(state -> {
                 AttributeState attributeState = attributeStateQueryRepository.get(state.getAttributeId());
                 if (attributeSetState != null) {
-                    map.put(attributeState.getName(), attributeState.getFieldName());
+                    map.put(attributeState.getAttributeName(), attributeState.getFieldName());
                 }
             });
         }

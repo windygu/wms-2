@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -204,8 +203,6 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual void When(IInOutStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-            this.IsSOTransaction = (e.IsSOTransaction != null && e.IsSOTransaction.HasValue) ? e.IsSOTransaction.Value : default(bool);
-
 			this.DocumentStatus = e.DocumentStatus;
 
             this.Posted = (e.Posted != null && e.Posted.HasValue) ? e.Posted.Value : default(bool);
@@ -214,17 +211,17 @@ namespace Dddml.Wms.Domain.InOut
 
             this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
 
-            this.DocumentType = (e.DocumentType != null && e.DocumentType.HasValue) ? e.DocumentType.Value : default(int);
+			this.DocumentTypeId = e.DocumentTypeId;
 
 			this.Description = e.Description;
 
-			this.OrderNumber = e.OrderNumber;
+			this.OrderId = e.OrderId;
 
 			this.DateOrdered = e.DateOrdered;
 
             this.IsPrinted = (e.IsPrinted != null && e.IsPrinted.HasValue) ? e.IsPrinted.Value : default(bool);
 
-			this.MovementType = e.MovementType;
+			this.MovementTypeId = e.MovementTypeId;
 
 			this.MovementDate = e.MovementDate;
 
@@ -234,11 +231,7 @@ namespace Dddml.Wms.Domain.InOut
 
 			this.POReference = e.POReference;
 
-            this.FreightAmount = (e.FreightAmount != null && e.FreightAmount.HasValue) ? e.FreightAmount.Value : default(Money);
-
 			this.ShipperId = e.ShipperId;
-
-            this.ChargeAmount = (e.ChargeAmount != null && e.ChargeAmount.HasValue) ? e.ChargeAmount.Value : default(Money);
 
 			this.DatePrinted = e.DatePrinted;
 
@@ -260,17 +253,9 @@ namespace Dddml.Wms.Domain.InOut
 
             this.IsInDispute = (e.IsInDispute != null && e.IsInDispute.HasValue) ? e.IsInDispute.Value : default(bool);
 
-            this.Volume = (e.Volume != null && e.Volume.HasValue) ? e.Volume.Value : default(decimal);
-
-            this.Weight = (e.Weight != null && e.Weight.HasValue) ? e.Weight.Value : default(decimal);
-
 			this.RmaNumber = e.RmaNumber;
 
 			this.ReversalNumber = e.ReversalNumber;
-
-            this.IsDropShip = (e.IsDropShip != null && e.IsDropShip.HasValue) ? e.IsDropShip.Value : default(bool);
-
-			this.DropShipBusinessPartnerId = e.DropShipBusinessPartnerId;
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
@@ -290,18 +275,6 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual void When(IInOutStateMergePatched e)
 		{
 			ThrowOnWrongEvent(e);
-
-			if (e.IsSOTransaction == null)
-			{
-				if (e.IsPropertyIsSOTransactionRemoved)
-				{
-					this.IsSOTransaction = default(bool);
-				}
-			}
-			else
-			{
-				this.IsSOTransaction = (e.IsSOTransaction != null && e.IsSOTransaction.HasValue) ? e.IsSOTransaction.Value : default(bool);
-			}
 
 			if (e.DocumentStatus == null)
 			{
@@ -351,16 +324,16 @@ namespace Dddml.Wms.Domain.InOut
 				this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
 			}
 
-			if (e.DocumentType == null)
+			if (e.DocumentTypeId == null)
 			{
-				if (e.IsPropertyDocumentTypeRemoved)
+				if (e.IsPropertyDocumentTypeIdRemoved)
 				{
-					this.DocumentType = default(int);
+					this.DocumentTypeId = default(string);
 				}
 			}
 			else
 			{
-				this.DocumentType = (e.DocumentType != null && e.DocumentType.HasValue) ? e.DocumentType.Value : default(int);
+				this.DocumentTypeId = e.DocumentTypeId;
 			}
 
 			if (e.Description == null)
@@ -375,16 +348,16 @@ namespace Dddml.Wms.Domain.InOut
 				this.Description = e.Description;
 			}
 
-			if (e.OrderNumber == null)
+			if (e.OrderId == null)
 			{
-				if (e.IsPropertyOrderNumberRemoved)
+				if (e.IsPropertyOrderIdRemoved)
 				{
-					this.OrderNumber = default(string);
+					this.OrderId = default(string);
 				}
 			}
 			else
 			{
-				this.OrderNumber = e.OrderNumber;
+				this.OrderId = e.OrderId;
 			}
 
 			if (e.DateOrdered == null)
@@ -411,16 +384,16 @@ namespace Dddml.Wms.Domain.InOut
 				this.IsPrinted = (e.IsPrinted != null && e.IsPrinted.HasValue) ? e.IsPrinted.Value : default(bool);
 			}
 
-			if (e.MovementType == null)
+			if (e.MovementTypeId == null)
 			{
-				if (e.IsPropertyMovementTypeRemoved)
+				if (e.IsPropertyMovementTypeIdRemoved)
 				{
-					this.MovementType = default(string);
+					this.MovementTypeId = default(string);
 				}
 			}
 			else
 			{
-				this.MovementType = e.MovementType;
+				this.MovementTypeId = e.MovementTypeId;
 			}
 
 			if (e.MovementDate == null)
@@ -471,18 +444,6 @@ namespace Dddml.Wms.Domain.InOut
 				this.POReference = e.POReference;
 			}
 
-			if (e.FreightAmount == null)
-			{
-				if (e.IsPropertyFreightAmountRemoved)
-				{
-					this.FreightAmount = default(Money);
-				}
-			}
-			else
-			{
-				this.FreightAmount = (e.FreightAmount != null && e.FreightAmount.HasValue) ? e.FreightAmount.Value : default(Money);
-			}
-
 			if (e.ShipperId == null)
 			{
 				if (e.IsPropertyShipperIdRemoved)
@@ -493,18 +454,6 @@ namespace Dddml.Wms.Domain.InOut
 			else
 			{
 				this.ShipperId = e.ShipperId;
-			}
-
-			if (e.ChargeAmount == null)
-			{
-				if (e.IsPropertyChargeAmountRemoved)
-				{
-					this.ChargeAmount = default(Money);
-				}
-			}
-			else
-			{
-				this.ChargeAmount = (e.ChargeAmount != null && e.ChargeAmount.HasValue) ? e.ChargeAmount.Value : default(Money);
 			}
 
 			if (e.DatePrinted == null)
@@ -627,30 +576,6 @@ namespace Dddml.Wms.Domain.InOut
 				this.IsInDispute = (e.IsInDispute != null && e.IsInDispute.HasValue) ? e.IsInDispute.Value : default(bool);
 			}
 
-			if (e.Volume == null)
-			{
-				if (e.IsPropertyVolumeRemoved)
-				{
-					this.Volume = default(decimal);
-				}
-			}
-			else
-			{
-				this.Volume = (e.Volume != null && e.Volume.HasValue) ? e.Volume.Value : default(decimal);
-			}
-
-			if (e.Weight == null)
-			{
-				if (e.IsPropertyWeightRemoved)
-				{
-					this.Weight = default(decimal);
-				}
-			}
-			else
-			{
-				this.Weight = (e.Weight != null && e.Weight.HasValue) ? e.Weight.Value : default(decimal);
-			}
-
 			if (e.RmaNumber == null)
 			{
 				if (e.IsPropertyRmaNumberRemoved)
@@ -673,30 +598,6 @@ namespace Dddml.Wms.Domain.InOut
 			else
 			{
 				this.ReversalNumber = e.ReversalNumber;
-			}
-
-			if (e.IsDropShip == null)
-			{
-				if (e.IsPropertyIsDropShipRemoved)
-				{
-					this.IsDropShip = default(bool);
-				}
-			}
-			else
-			{
-				this.IsDropShip = (e.IsDropShip != null && e.IsDropShip.HasValue) ? e.IsDropShip.Value : default(bool);
-			}
-
-			if (e.DropShipBusinessPartnerId == null)
-			{
-				if (e.IsPropertyDropShipBusinessPartnerIdRemoved)
-				{
-					this.DropShipBusinessPartnerId = default(string);
-				}
-			}
-			else
-			{
-				this.DropShipBusinessPartnerId = e.DropShipBusinessPartnerId;
 			}
 
 			if (e.Active == null)

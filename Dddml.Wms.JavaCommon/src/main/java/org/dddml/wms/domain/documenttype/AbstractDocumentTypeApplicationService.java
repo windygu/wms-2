@@ -9,14 +9,6 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractDocumentTypeApplicationService implements DocumentTypeApplicationService
 {
-
-    private EventStore eventStore;
-
-    protected EventStore getEventStore()
-    {
-        return eventStore;
-    }
-
     private DocumentTypeStateRepository stateRepository;
 
     protected DocumentTypeStateRepository getStateRepository() {
@@ -39,8 +31,7 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
         this.aggregateEventListener = eventListener;
     }
 
-    public AbstractDocumentTypeApplicationService(EventStore eventStore, DocumentTypeStateRepository stateRepository, DocumentTypeStateQueryRepository stateQueryRepository) {
-        this.eventStore = eventStore;
+    public AbstractDocumentTypeApplicationService(DocumentTypeStateRepository stateRepository, DocumentTypeStateQueryRepository stateQueryRepository) {
         this.stateRepository = stateRepository;
         this.stateQueryRepository = stateQueryRepository;
     }
@@ -86,22 +77,6 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
         return getStateQueryRepository().getCount(filter);
     }
 
-    public DocumentTypeStateEvent getStateEvent(String documentTypeId, long version) {
-        DocumentTypeStateEvent e = (DocumentTypeStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(documentTypeId), version);
-        if (e != null)
-        { e.setStateEventReadOnly(true); }
-        else if (version == -1)
-        {
-            return getStateEvent(documentTypeId, 0);
-        }
-        return e;
-    }
-
-    public DocumentTypeState getHistoryState(String documentTypeId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractDocumentTypeStateEvent.class, toEventStoreAggregateId(documentTypeId), version - 1);
-        return new AbstractDocumentTypeState.SimpleDocumentTypeState(eventStream.getEvents());
-    }
-
 
     public DocumentTypeAggregate getDocumentTypeAggregate(DocumentTypeState state)
     {
@@ -130,8 +105,7 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
     }
 
     private void persist(EventStoreAggregateId eventStoreAggregateId, long version, DocumentTypeAggregate aggregate, DocumentTypeState state) {
-        getEventStore().appendEvents(eventStoreAggregateId, version, 
-            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
+        getStateRepository().save(state);
         if (aggregateEventListener != null) {
             aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
         }
@@ -153,11 +127,9 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
     {
         boolean repeated = false;
         if (command.getVersion() == null) { command.setVersion(DocumentTypeState.VERSION_NULL); }
-        if (state.getVersion() != null && state.getVersion() > command.getVersion())
+        if (state.getVersion() != null && state.getVersion() == command.getVersion() + 1)
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractDocumentTypeStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            if (command.getCommandId() != null && command.getCommandId().equals(state.getCommandId()))
             {
                 repeated = true;
             }
@@ -167,9 +139,9 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
 
     public static class SimpleDocumentTypeApplicationService extends AbstractDocumentTypeApplicationService 
     {
-        public SimpleDocumentTypeApplicationService(EventStore eventStore, DocumentTypeStateRepository stateRepository, DocumentTypeStateQueryRepository stateQueryRepository)
+        public SimpleDocumentTypeApplicationService(DocumentTypeStateRepository stateRepository, DocumentTypeStateQueryRepository stateQueryRepository)
         {
-            super(eventStore, stateRepository, stateQueryRepository);
+            super(stateRepository, stateQueryRepository);
         }
     }
 

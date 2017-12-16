@@ -26,7 +26,7 @@ public class HibernateLocatorStateRepository implements LocatorStateRepository
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("LocatorId", "WarehouseId", "ParentLocatorId", "LocatorType", "PriorityNumber", "IsDefault", "X", "Y", "Z", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("LocatorId", "WarehouseId", "ParentLocatorId", "LocatorType", "PriorityNumber", "IsDefault", "X", "Y", "Z", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

@@ -11,7 +11,7 @@
     </composite-id>
     <discriminator column="StateEventType" type="String" />
 
-    <property name="Name" ></property>
+    <property name="WarehouseName" ></property>
     <property name="Description" ></property>
     <property name="IsInTransit" ></property>
     <property name="Active" ></property>
@@ -27,7 +27,7 @@
     <subclass name="WarehouseStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
+        <property name="IsPropertyWarehouseNameRemoved" column="IsPropertyWarehouseNameRemoved"/>
 
         <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 

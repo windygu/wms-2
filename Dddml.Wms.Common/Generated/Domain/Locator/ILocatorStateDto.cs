@@ -68,6 +68,12 @@ namespace Dddml.Wms.Domain.Locator
             set;
         }
 
+        string Description
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

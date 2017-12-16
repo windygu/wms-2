@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 	public interface ICreateOrMergePatchOrDeleteAttributeSet : IAttributeSetCommand
 	{
 
-		string Name { get; set; }
+		string AttributeSetName { get; set; }
 
 		string OrganizationId { get; set; }
 
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 	public interface IMergePatchAttributeSet : ICreateOrMergePatchOrDeleteAttributeSet
 	{
 
-		bool IsPropertyNameRemoved { get; set; }
+		bool IsPropertyAttributeSetNameRemoved { get; set; }
 
 		bool IsPropertyOrganizationIdRemoved { get; set; }
 

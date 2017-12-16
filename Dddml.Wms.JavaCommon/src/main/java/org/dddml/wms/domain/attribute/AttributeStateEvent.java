@@ -13,9 +13,9 @@ public interface AttributeStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    String getName();
+    String getAttributeName();
 
-    void setName(String name);
+    void setAttributeName(String attributeName);
 
     String getOrganizationId();
 
@@ -83,9 +83,9 @@ public interface AttributeStateEvent extends Event
 
     interface AttributeStateMergePatched extends AttributeStateEvent
     {
-        Boolean getIsPropertyNameRemoved();
+        Boolean getIsPropertyAttributeNameRemoved();
 
-        void setIsPropertyNameRemoved(Boolean removed);
+        void setIsPropertyAttributeNameRemoved(Boolean removed);
 
         Boolean getIsPropertyOrganizationIdRemoved();
 

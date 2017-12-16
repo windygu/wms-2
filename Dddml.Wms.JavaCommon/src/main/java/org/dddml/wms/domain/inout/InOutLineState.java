@@ -21,10 +21,6 @@ public interface InOutLineState
 
     void setLineNumber(Long lineNumber);
 
-    String getDescription();
-
-    void setDescription(String description);
-
     String getLocatorId();
 
     void setLocatorId(String locatorId);
@@ -32,6 +28,14 @@ public interface InOutLineState
     String getProductId();
 
     void setProductId(String productId);
+
+    String getAttributeSetInstanceId();
+
+    void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+    String getDescription();
+
+    void setDescription(String description);
 
     String getUomId();
 
@@ -60,14 +64,6 @@ public interface InOutLineState
     Boolean getIsInvoiced();
 
     void setIsInvoiced(Boolean isInvoiced);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-    Boolean getIsDescription();
-
-    void setIsDescription(Boolean isDescription);
 
     Boolean getProcessed();
 

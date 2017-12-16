@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.Services.NHibernate
                     var a = AttributeStateQueryRepository.Get(au.AttributeId);
                     if (a != null)
                     {
-                        pDic.Add(a.Name, a.FieldName);
+                        pDic.Add(a.AttributeName, a.FieldName);
                     }
                 }
             }

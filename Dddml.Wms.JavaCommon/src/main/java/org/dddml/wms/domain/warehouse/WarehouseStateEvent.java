@@ -13,9 +13,9 @@ public interface WarehouseStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    String getName();
+    String getWarehouseName();
 
-    void setName(String name);
+    void setWarehouseName(String warehouseName);
 
     String getDescription();
 
@@ -49,9 +49,9 @@ public interface WarehouseStateEvent extends Event
 
     interface WarehouseStateMergePatched extends WarehouseStateEvent
     {
-        Boolean getIsPropertyNameRemoved();
+        Boolean getIsPropertyWarehouseNameRemoved();
 
-        void setIsPropertyNameRemoved(Boolean removed);
+        void setIsPropertyWarehouseNameRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 

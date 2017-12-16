@@ -18,7 +18,7 @@
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>
     <property name="Deleted" ></property>
-    <property name="AttributeSetName" ></property>
+    <property name="AttributeSetAttributeSetName" ></property>
     <property name="AttributeSetOrganizationId" ></property>
     <property name="AttributeSetDescription" ></property>
     <property name="AttributeSetSerialNumberAttributeId" ></property>

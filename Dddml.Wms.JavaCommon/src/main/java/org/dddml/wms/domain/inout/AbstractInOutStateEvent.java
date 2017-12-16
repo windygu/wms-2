@@ -1,9 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import org.joda.money.Money;
-import java.math.BigDecimal;
 import java.util.Date;
+import java.math.BigDecimal;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractStateEvent;
@@ -33,18 +32,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
-
-    private Boolean isSOTransaction;
-
-    public Boolean getIsSOTransaction()
-    {
-        return this.isSOTransaction;
-    }
-
-    public void setIsSOTransaction(Boolean isSOTransaction)
-    {
-        this.isSOTransaction = isSOTransaction;
-    }
 
     private String documentStatus;
 
@@ -94,16 +81,16 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         this.processed = processed;
     }
 
-    private Integer documentType;
+    private String documentTypeId;
 
-    public Integer getDocumentType()
+    public String getDocumentTypeId()
     {
-        return this.documentType;
+        return this.documentTypeId;
     }
 
-    public void setDocumentType(Integer documentType)
+    public void setDocumentTypeId(String documentTypeId)
     {
-        this.documentType = documentType;
+        this.documentTypeId = documentTypeId;
     }
 
     private String description;
@@ -118,16 +105,16 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         this.description = description;
     }
 
-    private String orderNumber;
+    private String orderId;
 
-    public String getOrderNumber()
+    public String getOrderId()
     {
-        return this.orderNumber;
+        return this.orderId;
     }
 
-    public void setOrderNumber(String orderNumber)
+    public void setOrderId(String orderId)
     {
-        this.orderNumber = orderNumber;
+        this.orderId = orderId;
     }
 
     private Date dateOrdered;
@@ -154,16 +141,16 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         this.isPrinted = isPrinted;
     }
 
-    private String movementType;
+    private String movementTypeId;
 
-    public String getMovementType()
+    public String getMovementTypeId()
     {
-        return this.movementType;
+        return this.movementTypeId;
     }
 
-    public void setMovementType(String movementType)
+    public void setMovementTypeId(String movementTypeId)
     {
-        this.movementType = movementType;
+        this.movementTypeId = movementTypeId;
     }
 
     private Date movementDate;
@@ -214,18 +201,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         this.POReference = poReference;
     }
 
-    private Money freightAmount;
-
-    public Money getFreightAmount()
-    {
-        return this.freightAmount;
-    }
-
-    public void setFreightAmount(Money freightAmount)
-    {
-        this.freightAmount = freightAmount;
-    }
-
     private String shipperId;
 
     public String getShipperId()
@@ -236,18 +211,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     public void setShipperId(String shipperId)
     {
         this.shipperId = shipperId;
-    }
-
-    private Money chargeAmount;
-
-    public Money getChargeAmount()
-    {
-        return this.chargeAmount;
-    }
-
-    public void setChargeAmount(Money chargeAmount)
-    {
-        this.chargeAmount = chargeAmount;
     }
 
     private Date datePrinted;
@@ -370,30 +333,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         this.isInDispute = isInDispute;
     }
 
-    private BigDecimal volume;
-
-    public BigDecimal getVolume()
-    {
-        return this.volume;
-    }
-
-    public void setVolume(BigDecimal volume)
-    {
-        this.volume = volume;
-    }
-
-    private BigDecimal weight;
-
-    public BigDecimal getWeight()
-    {
-        return this.weight;
-    }
-
-    public void setWeight(BigDecimal weight)
-    {
-        this.weight = weight;
-    }
-
     private String rmaNumber;
 
     public String getRmaNumber()
@@ -416,30 +355,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     public void setReversalNumber(String reversalNumber)
     {
         this.reversalNumber = reversalNumber;
-    }
-
-    private Boolean isDropShip;
-
-    public Boolean getIsDropShip()
-    {
-        return this.isDropShip;
-    }
-
-    public void setIsDropShip(Boolean isDropShip)
-    {
-        this.isDropShip = isDropShip;
-    }
-
-    private String dropShipBusinessPartnerId;
-
-    public String getDropShipBusinessPartnerId()
-    {
-        return this.dropShipBusinessPartnerId;
-    }
-
-    public void setDropShipBusinessPartnerId(String dropShipBusinessPartnerId)
-    {
-        this.dropShipBusinessPartnerId = dropShipBusinessPartnerId;
     }
 
     private String createdBy;
@@ -617,16 +532,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyIsSOTransactionRemoved;
-
-        public Boolean getIsPropertyIsSOTransactionRemoved() {
-            return this.isPropertyIsSOTransactionRemoved;
-        }
-
-        public void setIsPropertyIsSOTransactionRemoved(Boolean removed) {
-            this.isPropertyIsSOTransactionRemoved = removed;
-        }
-
         private Boolean isPropertyDocumentStatusRemoved;
 
         public Boolean getIsPropertyDocumentStatusRemoved() {
@@ -667,14 +572,14 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
             this.isPropertyProcessedRemoved = removed;
         }
 
-        private Boolean isPropertyDocumentTypeRemoved;
+        private Boolean isPropertyDocumentTypeIdRemoved;
 
-        public Boolean getIsPropertyDocumentTypeRemoved() {
-            return this.isPropertyDocumentTypeRemoved;
+        public Boolean getIsPropertyDocumentTypeIdRemoved() {
+            return this.isPropertyDocumentTypeIdRemoved;
         }
 
-        public void setIsPropertyDocumentTypeRemoved(Boolean removed) {
-            this.isPropertyDocumentTypeRemoved = removed;
+        public void setIsPropertyDocumentTypeIdRemoved(Boolean removed) {
+            this.isPropertyDocumentTypeIdRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;
@@ -687,14 +592,14 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
             this.isPropertyDescriptionRemoved = removed;
         }
 
-        private Boolean isPropertyOrderNumberRemoved;
+        private Boolean isPropertyOrderIdRemoved;
 
-        public Boolean getIsPropertyOrderNumberRemoved() {
-            return this.isPropertyOrderNumberRemoved;
+        public Boolean getIsPropertyOrderIdRemoved() {
+            return this.isPropertyOrderIdRemoved;
         }
 
-        public void setIsPropertyOrderNumberRemoved(Boolean removed) {
-            this.isPropertyOrderNumberRemoved = removed;
+        public void setIsPropertyOrderIdRemoved(Boolean removed) {
+            this.isPropertyOrderIdRemoved = removed;
         }
 
         private Boolean isPropertyDateOrderedRemoved;
@@ -717,14 +622,14 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
             this.isPropertyIsPrintedRemoved = removed;
         }
 
-        private Boolean isPropertyMovementTypeRemoved;
+        private Boolean isPropertyMovementTypeIdRemoved;
 
-        public Boolean getIsPropertyMovementTypeRemoved() {
-            return this.isPropertyMovementTypeRemoved;
+        public Boolean getIsPropertyMovementTypeIdRemoved() {
+            return this.isPropertyMovementTypeIdRemoved;
         }
 
-        public void setIsPropertyMovementTypeRemoved(Boolean removed) {
-            this.isPropertyMovementTypeRemoved = removed;
+        public void setIsPropertyMovementTypeIdRemoved(Boolean removed) {
+            this.isPropertyMovementTypeIdRemoved = removed;
         }
 
         private Boolean isPropertyMovementDateRemoved;
@@ -767,16 +672,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
             this.isPropertyPOReferenceRemoved = removed;
         }
 
-        private Boolean isPropertyFreightAmountRemoved;
-
-        public Boolean getIsPropertyFreightAmountRemoved() {
-            return this.isPropertyFreightAmountRemoved;
-        }
-
-        public void setIsPropertyFreightAmountRemoved(Boolean removed) {
-            this.isPropertyFreightAmountRemoved = removed;
-        }
-
         private Boolean isPropertyShipperIdRemoved;
 
         public Boolean getIsPropertyShipperIdRemoved() {
@@ -785,16 +680,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
 
         public void setIsPropertyShipperIdRemoved(Boolean removed) {
             this.isPropertyShipperIdRemoved = removed;
-        }
-
-        private Boolean isPropertyChargeAmountRemoved;
-
-        public Boolean getIsPropertyChargeAmountRemoved() {
-            return this.isPropertyChargeAmountRemoved;
-        }
-
-        public void setIsPropertyChargeAmountRemoved(Boolean removed) {
-            this.isPropertyChargeAmountRemoved = removed;
         }
 
         private Boolean isPropertyDatePrintedRemoved;
@@ -897,26 +782,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
             this.isPropertyIsInDisputeRemoved = removed;
         }
 
-        private Boolean isPropertyVolumeRemoved;
-
-        public Boolean getIsPropertyVolumeRemoved() {
-            return this.isPropertyVolumeRemoved;
-        }
-
-        public void setIsPropertyVolumeRemoved(Boolean removed) {
-            this.isPropertyVolumeRemoved = removed;
-        }
-
-        private Boolean isPropertyWeightRemoved;
-
-        public Boolean getIsPropertyWeightRemoved() {
-            return this.isPropertyWeightRemoved;
-        }
-
-        public void setIsPropertyWeightRemoved(Boolean removed) {
-            this.isPropertyWeightRemoved = removed;
-        }
-
         private Boolean isPropertyRmaNumberRemoved;
 
         public Boolean getIsPropertyRmaNumberRemoved() {
@@ -935,26 +800,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
 
         public void setIsPropertyReversalNumberRemoved(Boolean removed) {
             this.isPropertyReversalNumberRemoved = removed;
-        }
-
-        private Boolean isPropertyIsDropShipRemoved;
-
-        public Boolean getIsPropertyIsDropShipRemoved() {
-            return this.isPropertyIsDropShipRemoved;
-        }
-
-        public void setIsPropertyIsDropShipRemoved(Boolean removed) {
-            this.isPropertyIsDropShipRemoved = removed;
-        }
-
-        private Boolean isPropertyDropShipBusinessPartnerIdRemoved;
-
-        public Boolean getIsPropertyDropShipBusinessPartnerIdRemoved() {
-            return this.isPropertyDropShipBusinessPartnerIdRemoved;
-        }
-
-        public void setIsPropertyDropShipBusinessPartnerIdRemoved(Boolean removed) {
-            this.isPropertyDropShipBusinessPartnerIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

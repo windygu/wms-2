@@ -42,16 +42,16 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.active = active;
     }
 
-    private String attributeSetName;
+    private String attributeSetAttributeSetName;
 
-    public String getAttributeSetName()
+    public String getAttributeSetAttributeSetName()
     {
-        return this.attributeSetName;
+        return this.attributeSetAttributeSetName;
     }
 
-    public void setAttributeSetName(String attributeSetName)
+    public void setAttributeSetAttributeSetName(String attributeSetAttributeSetName)
     {
-        this.attributeSetName = attributeSetName;
+        this.attributeSetAttributeSetName = attributeSetAttributeSetName;
     }
 
     private String attributeSetOrganizationId;
@@ -222,16 +222,16 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.isPropertyActiveRemoved = removed;
     }
 
-    private Boolean isPropertyAttributeSetNameRemoved;
+    private Boolean isPropertyAttributeSetAttributeSetNameRemoved;
 
-    public Boolean getIsPropertyAttributeSetNameRemoved()
+    public Boolean getIsPropertyAttributeSetAttributeSetNameRemoved()
     {
-        return this.isPropertyAttributeSetNameRemoved;
+        return this.isPropertyAttributeSetAttributeSetNameRemoved;
     }
 
-    public void setIsPropertyAttributeSetNameRemoved(Boolean removed)
+    public void setIsPropertyAttributeSetAttributeSetNameRemoved(Boolean removed)
     {
-        this.isPropertyAttributeSetNameRemoved = removed;
+        this.isPropertyAttributeSetAttributeSetNameRemoved = removed;
     }
 
     private Boolean isPropertyAttributeSetOrganizationIdRemoved;
@@ -372,7 +372,7 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         command.setSequenceNumber(this.getSequenceNumber());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
-        command.setAttributeSetName(this.getAttributeSetName());
+        command.setAttributeSetAttributeSetName(this.getAttributeSetAttributeSetName());
         command.setAttributeSetOrganizationId(this.getAttributeSetOrganizationId());
         command.setAttributeSetDescription(this.getAttributeSetDescription());
         command.setAttributeSetSerialNumberAttributeId(this.getAttributeSetSerialNumberAttributeId());
@@ -411,7 +411,7 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         command.setIsPropertySequenceNumberRemoved(this.getIsPropertySequenceNumberRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
-        command.setIsPropertyAttributeSetNameRemoved(this.getIsPropertyAttributeSetNameRemoved());
+        command.setIsPropertyAttributeSetAttributeSetNameRemoved(this.getIsPropertyAttributeSetAttributeSetNameRemoved());
         command.setIsPropertyAttributeSetOrganizationIdRemoved(this.getIsPropertyAttributeSetOrganizationIdRemoved());
         command.setIsPropertyAttributeSetDescriptionRemoved(this.getIsPropertyAttributeSetDescriptionRemoved());
         command.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(this.getIsPropertyAttributeSetSerialNumberAttributeIdRemoved());

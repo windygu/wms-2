@@ -12,7 +12,7 @@
 
 	<version name="AttributeVersion" column="AttributeVersion" type="long" unsaved-value="0"/>
 
-    <property name="Name" ></property>
+    <property name="AttributeValueName" ></property>
     <property name="Description" ></property>
     <property name="ReferenceId" ></property>
     <property name="Version" ></property>
@@ -20,7 +20,7 @@
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>
     <property name="Deleted" ></property>
-    <property name="AttributeName" ></property>
+    <property name="AttributeAttributeName" ></property>
     <property name="AttributeOrganizationId" ></property>
     <property name="AttributeDescription" ></property>
     <property name="AttributeIsMandatory" ></property>

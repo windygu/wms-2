@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -53,8 +52,6 @@ namespace Dddml.Wms.Domain.InOut
             set { this.CommandId = value; }
         }
 
-		public virtual bool? IsSOTransaction { get; set; }
-
 		public virtual string DocumentAction { get; set; }
 
 		public virtual bool? Posted { get; set; }
@@ -63,17 +60,17 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool? Processed { get; set; }
 
-		public virtual int? DocumentType { get; set; }
+		public virtual string DocumentTypeId { get; set; }
 
 		public virtual string Description { get; set; }
 
-		public virtual string OrderNumber { get; set; }
+		public virtual string OrderId { get; set; }
 
 		public virtual DateTime? DateOrdered { get; set; }
 
 		public virtual bool? IsPrinted { get; set; }
 
-		public virtual string MovementType { get; set; }
+		public virtual string MovementTypeId { get; set; }
 
 		public virtual DateTime? MovementDate { get; set; }
 
@@ -83,11 +80,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string POReference { get; set; }
 
-		public virtual Money? FreightAmount { get; set; }
-
 		public virtual string ShipperId { get; set; }
-
-		public virtual Money? ChargeAmount { get; set; }
 
 		public virtual DateTime? DatePrinted { get; set; }
 
@@ -109,17 +102,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool? IsInDispute { get; set; }
 
-		public virtual decimal? Volume { get; set; }
-
-		public virtual decimal? Weight { get; set; }
-
 		public virtual string RmaNumber { get; set; }
 
 		public virtual string ReversalNumber { get; set; }
-
-		public virtual bool? IsDropShip { get; set; }
-
-		public virtual string DropShipBusinessPartnerId { get; set; }
 
 		public virtual bool? Active { get; set; }
 
@@ -180,25 +165,23 @@ namespace Dddml.Wms.Domain.InOut
 	public class MergePatchInOut :InOutCommandBase, IMergePatchInOut
 	{
 
-		public virtual bool IsPropertyIsSOTransactionRemoved { get; set; }
-
 		public virtual bool IsPropertyPostedRemoved { get; set; }
 
 		public virtual bool IsPropertyProcessingRemoved { get; set; }
 
 		public virtual bool IsPropertyProcessedRemoved { get; set; }
 
-		public virtual bool IsPropertyDocumentTypeRemoved { get; set; }
+		public virtual bool IsPropertyDocumentTypeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
-		public virtual bool IsPropertyOrderNumberRemoved { get; set; }
+		public virtual bool IsPropertyOrderIdRemoved { get; set; }
 
 		public virtual bool IsPropertyDateOrderedRemoved { get; set; }
 
 		public virtual bool IsPropertyIsPrintedRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementTypeRemoved { get; set; }
+		public virtual bool IsPropertyMovementTypeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyMovementDateRemoved { get; set; }
 
@@ -208,11 +191,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool IsPropertyPOReferenceRemoved { get; set; }
 
-		public virtual bool IsPropertyFreightAmountRemoved { get; set; }
-
 		public virtual bool IsPropertyShipperIdRemoved { get; set; }
-
-		public virtual bool IsPropertyChargeAmountRemoved { get; set; }
 
 		public virtual bool IsPropertyDatePrintedRemoved { get; set; }
 
@@ -234,17 +213,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool IsPropertyIsInDisputeRemoved { get; set; }
 
-		public virtual bool IsPropertyVolumeRemoved { get; set; }
-
-		public virtual bool IsPropertyWeightRemoved { get; set; }
-
 		public virtual bool IsPropertyRmaNumberRemoved { get; set; }
 
 		public virtual bool IsPropertyReversalNumberRemoved { get; set; }
-
-		public virtual bool IsPropertyIsDropShipRemoved { get; set; }
-
-		public virtual bool IsPropertyDropShipBusinessPartnerIdRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

@@ -123,7 +123,7 @@ namespace Dddml.Wms.Support
         private TAttributeSet GetAttributeSet(string attributeSetName, IList<TAttribute> attributes, out IList<TAttributeUse> attributeUses)
         {
             TAttributeSet attrSet = new TAttributeSet();
-            attrSet.Name = attributeSetName;
+            attrSet.AttributeSetName = attributeSetName;
             attrSet.Description = attributeSetName;
             attrSet.Active = true;
             attrSet.AttributeSetId = this._theIdGenerator.GenerateAttributeSetId(attrSet);
@@ -326,7 +326,7 @@ namespace Dddml.Wms.Support
                 object val = p.GetValue(null);
                 string name = p.Name;
                 TAttributeValue aValue = (TAttributeValue)attribute.NewCreateAttributeValue();//new TAttributeValue();
-                aValue.Name = name;
+                aValue.AttributeValueName = name;
                 aValue.Value = Convert.ToString(val);
                 aValue.Active = true;
                 aValue.Description = name;
@@ -363,7 +363,7 @@ namespace Dddml.Wms.Support
                     continue;
                 }
                 TAttributeValue aValue = (TAttributeValue)attribute.NewCreateAttributeValue();// new TAttributeValue();
-                aValue.Name = name;
+                aValue.AttributeValueName = name;
                 aValue.Value = Convert.ToString(val);
                 aValue.Active = true;
                 aValue.Description = name;
@@ -392,7 +392,7 @@ namespace Dddml.Wms.Support
                 return false;
             }
             TAttribute a = new TAttribute();
-            a.Name = memberInfo.Name;
+            a.AttributeName = memberInfo.Name;
             a.Description = memberInfo.Name;
             a.AttributeValueType = aValueType;
             a.IsList = isList;
@@ -489,7 +489,7 @@ namespace Dddml.Wms.Support
         private TAttributeSet GetAttributeSet(Type entityType)
         {
             TAttributeSet attributeSet = new TAttributeSet();
-            attributeSet.Name = entityType.Name;
+            attributeSet.AttributeSetName = entityType.Name;
             attributeSet.Description = entityType.Name;
             attributeSet.Active = true;
             attributeSet.AttributeSetId = this._theIdGenerator.GenerateAttributeSetId(attributeSet);

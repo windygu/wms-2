@@ -5,16 +5,16 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
 {
-    private String name;
+    private String warehouseName;
 
-    public String getName()
+    public String getWarehouseName()
     {
-        return this.name;
+        return this.warehouseName;
     }
 
-    public void setName(String name)
+    public void setWarehouseName(String warehouseName)
     {
-        this.name = name;
+        this.warehouseName = warehouseName;
     }
 
     private String description;
@@ -53,16 +53,16 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
         this.active = active;
     }
 
-    private Boolean isPropertyNameRemoved;
+    private Boolean isPropertyWarehouseNameRemoved;
 
-    public Boolean getIsPropertyNameRemoved()
+    public Boolean getIsPropertyWarehouseNameRemoved()
     {
-        return this.isPropertyNameRemoved;
+        return this.isPropertyWarehouseNameRemoved;
     }
 
-    public void setIsPropertyNameRemoved(Boolean removed)
+    public void setIsPropertyWarehouseNameRemoved(Boolean removed)
     {
-        this.isPropertyNameRemoved = removed;
+        this.isPropertyWarehouseNameRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;
@@ -104,7 +104,7 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
     public void copyTo(AbstractWarehouseCommand.AbstractCreateOrMergePatchWarehouse command)
     {
         ((AbstractWarehouseCommandDto) this).copyTo(command);
-        command.setName(this.getName());
+        command.setWarehouseName(this.getWarehouseName());
         command.setDescription(this.getDescription());
         command.setIsInTransit(this.getIsInTransit());
         command.setActive(this.getActive());
@@ -132,7 +132,7 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
     public void copyTo(AbstractWarehouseCommand.AbstractMergePatchWarehouse command)
     {
         copyTo((AbstractWarehouseCommand.AbstractCreateOrMergePatchWarehouse) command);
-        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyWarehouseNameRemoved(this.getIsPropertyWarehouseNameRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyIsInTransitRemoved(this.getIsPropertyIsInTransitRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());

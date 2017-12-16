@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.Warehouse
             set { StateEventId.WarehouseId = value; }
         }
 
-		public virtual string Name { get; set; }
+		public virtual string WarehouseName { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -119,7 +119,7 @@ namespace Dddml.Wms.Domain.Warehouse
 
 	public class WarehouseStateMergePatched : WarehouseStateEventBase, IWarehouseStateMergePatched
 	{
-		public virtual bool IsPropertyNameRemoved { get; set; }
+		public virtual bool IsPropertyWarehouseNameRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 

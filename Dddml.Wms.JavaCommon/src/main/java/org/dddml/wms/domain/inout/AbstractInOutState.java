@@ -1,9 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import org.joda.money.Money;
-import java.math.BigDecimal;
 import java.util.Date;
+import java.math.BigDecimal;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inout.InOutStateEvent.*;
@@ -21,18 +20,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     public void setDocumentNumber(String documentNumber)
     {
         this.documentNumber = documentNumber;
-    }
-
-    private Boolean isSOTransaction;
-
-    public Boolean getIsSOTransaction()
-    {
-        return this.isSOTransaction;
-    }
-
-    public void setIsSOTransaction(Boolean isSOTransaction)
-    {
-        this.isSOTransaction = isSOTransaction;
     }
 
     private String documentStatus;
@@ -83,16 +70,16 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.processed = processed;
     }
 
-    private Integer documentType;
+    private String documentTypeId;
 
-    public Integer getDocumentType()
+    public String getDocumentTypeId()
     {
-        return this.documentType;
+        return this.documentTypeId;
     }
 
-    public void setDocumentType(Integer documentType)
+    public void setDocumentTypeId(String documentTypeId)
     {
-        this.documentType = documentType;
+        this.documentTypeId = documentTypeId;
     }
 
     private String description;
@@ -107,16 +94,16 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.description = description;
     }
 
-    private String orderNumber;
+    private String orderId;
 
-    public String getOrderNumber()
+    public String getOrderId()
     {
-        return this.orderNumber;
+        return this.orderId;
     }
 
-    public void setOrderNumber(String orderNumber)
+    public void setOrderId(String orderId)
     {
-        this.orderNumber = orderNumber;
+        this.orderId = orderId;
     }
 
     private Date dateOrdered;
@@ -143,16 +130,16 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.isPrinted = isPrinted;
     }
 
-    private String movementType;
+    private String movementTypeId;
 
-    public String getMovementType()
+    public String getMovementTypeId()
     {
-        return this.movementType;
+        return this.movementTypeId;
     }
 
-    public void setMovementType(String movementType)
+    public void setMovementTypeId(String movementTypeId)
     {
-        this.movementType = movementType;
+        this.movementTypeId = movementTypeId;
     }
 
     private Date movementDate;
@@ -203,18 +190,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.POReference = poReference;
     }
 
-    private Money freightAmount;
-
-    public Money getFreightAmount()
-    {
-        return this.freightAmount;
-    }
-
-    public void setFreightAmount(Money freightAmount)
-    {
-        this.freightAmount = freightAmount;
-    }
-
     private String shipperId;
 
     public String getShipperId()
@@ -225,18 +200,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     public void setShipperId(String shipperId)
     {
         this.shipperId = shipperId;
-    }
-
-    private Money chargeAmount;
-
-    public Money getChargeAmount()
-    {
-        return this.chargeAmount;
-    }
-
-    public void setChargeAmount(Money chargeAmount)
-    {
-        this.chargeAmount = chargeAmount;
     }
 
     private Date datePrinted;
@@ -359,30 +322,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.isInDispute = isInDispute;
     }
 
-    private BigDecimal volume;
-
-    public BigDecimal getVolume()
-    {
-        return this.volume;
-    }
-
-    public void setVolume(BigDecimal volume)
-    {
-        this.volume = volume;
-    }
-
-    private BigDecimal weight;
-
-    public BigDecimal getWeight()
-    {
-        return this.weight;
-    }
-
-    public void setWeight(BigDecimal weight)
-    {
-        this.weight = weight;
-    }
-
     private String rmaNumber;
 
     public String getRmaNumber()
@@ -405,30 +344,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     public void setReversalNumber(String reversalNumber)
     {
         this.reversalNumber = reversalNumber;
-    }
-
-    private Boolean isDropShip;
-
-    public Boolean getIsDropShip()
-    {
-        return this.isDropShip;
-    }
-
-    public void setIsDropShip(Boolean isDropShip)
-    {
-        this.isDropShip = isDropShip;
-    }
-
-    private String dropShipBusinessPartnerId;
-
-    public String getDropShipBusinessPartnerId()
-    {
-        return this.dropShipBusinessPartnerId;
-    }
-
-    public void setDropShipBusinessPartnerId(String dropShipBusinessPartnerId)
-    {
-        this.dropShipBusinessPartnerId = dropShipBusinessPartnerId;
     }
 
     private Long version;
@@ -592,24 +507,21 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     {
         throwOnWrongEvent(e);
 
-        this.setIsSOTransaction(e.getIsSOTransaction());
         this.setDocumentStatus(e.getDocumentStatus());
         this.setPosted(e.getPosted());
         this.setProcessing(e.getProcessing());
         this.setProcessed(e.getProcessed());
-        this.setDocumentType(e.getDocumentType());
+        this.setDocumentTypeId(e.getDocumentTypeId());
         this.setDescription(e.getDescription());
-        this.setOrderNumber(e.getOrderNumber());
+        this.setOrderId(e.getOrderId());
         this.setDateOrdered(e.getDateOrdered());
         this.setIsPrinted(e.getIsPrinted());
-        this.setMovementType(e.getMovementType());
+        this.setMovementTypeId(e.getMovementTypeId());
         this.setMovementDate(e.getMovementDate());
         this.setBusinessPartnerId(e.getBusinessPartnerId());
         this.setWarehouseId(e.getWarehouseId());
         this.setPOReference(e.getPOReference());
-        this.setFreightAmount(e.getFreightAmount());
         this.setShipperId(e.getShipperId());
-        this.setChargeAmount(e.getChargeAmount());
         this.setDatePrinted(e.getDatePrinted());
         this.setSalesRepresentative(e.getSalesRepresentative());
         this.setNumberOfPackages(e.getNumberOfPackages());
@@ -620,12 +532,8 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setIsInTransit(e.getIsInTransit());
         this.setIsApproved(e.getIsApproved());
         this.setIsInDispute(e.getIsInDispute());
-        this.setVolume(e.getVolume());
-        this.setWeight(e.getWeight());
         this.setRmaNumber(e.getRmaNumber());
         this.setReversalNumber(e.getReversalNumber());
-        this.setIsDropShip(e.getIsDropShip());
-        this.setDropShipBusinessPartnerId(e.getDropShipBusinessPartnerId());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -643,17 +551,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     {
         throwOnWrongEvent(e);
 
-        if (e.getIsSOTransaction() == null)
-        {
-            if (e.getIsPropertyIsSOTransactionRemoved() != null && e.getIsPropertyIsSOTransactionRemoved())
-            {
-                this.setIsSOTransaction(null);
-            }
-        }
-        else
-        {
-            this.setIsSOTransaction(e.getIsSOTransaction());
-        }
         if (e.getDocumentStatus() == null)
         {
             if (e.getIsPropertyDocumentStatusRemoved() != null && e.getIsPropertyDocumentStatusRemoved())
@@ -698,16 +595,16 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         {
             this.setProcessed(e.getProcessed());
         }
-        if (e.getDocumentType() == null)
+        if (e.getDocumentTypeId() == null)
         {
-            if (e.getIsPropertyDocumentTypeRemoved() != null && e.getIsPropertyDocumentTypeRemoved())
+            if (e.getIsPropertyDocumentTypeIdRemoved() != null && e.getIsPropertyDocumentTypeIdRemoved())
             {
-                this.setDocumentType(null);
+                this.setDocumentTypeId(null);
             }
         }
         else
         {
-            this.setDocumentType(e.getDocumentType());
+            this.setDocumentTypeId(e.getDocumentTypeId());
         }
         if (e.getDescription() == null)
         {
@@ -720,16 +617,16 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         {
             this.setDescription(e.getDescription());
         }
-        if (e.getOrderNumber() == null)
+        if (e.getOrderId() == null)
         {
-            if (e.getIsPropertyOrderNumberRemoved() != null && e.getIsPropertyOrderNumberRemoved())
+            if (e.getIsPropertyOrderIdRemoved() != null && e.getIsPropertyOrderIdRemoved())
             {
-                this.setOrderNumber(null);
+                this.setOrderId(null);
             }
         }
         else
         {
-            this.setOrderNumber(e.getOrderNumber());
+            this.setOrderId(e.getOrderId());
         }
         if (e.getDateOrdered() == null)
         {
@@ -753,16 +650,16 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         {
             this.setIsPrinted(e.getIsPrinted());
         }
-        if (e.getMovementType() == null)
+        if (e.getMovementTypeId() == null)
         {
-            if (e.getIsPropertyMovementTypeRemoved() != null && e.getIsPropertyMovementTypeRemoved())
+            if (e.getIsPropertyMovementTypeIdRemoved() != null && e.getIsPropertyMovementTypeIdRemoved())
             {
-                this.setMovementType(null);
+                this.setMovementTypeId(null);
             }
         }
         else
         {
-            this.setMovementType(e.getMovementType());
+            this.setMovementTypeId(e.getMovementTypeId());
         }
         if (e.getMovementDate() == null)
         {
@@ -808,17 +705,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         {
             this.setPOReference(e.getPOReference());
         }
-        if (e.getFreightAmount() == null)
-        {
-            if (e.getIsPropertyFreightAmountRemoved() != null && e.getIsPropertyFreightAmountRemoved())
-            {
-                this.setFreightAmount(null);
-            }
-        }
-        else
-        {
-            this.setFreightAmount(e.getFreightAmount());
-        }
         if (e.getShipperId() == null)
         {
             if (e.getIsPropertyShipperIdRemoved() != null && e.getIsPropertyShipperIdRemoved())
@@ -829,17 +715,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         else
         {
             this.setShipperId(e.getShipperId());
-        }
-        if (e.getChargeAmount() == null)
-        {
-            if (e.getIsPropertyChargeAmountRemoved() != null && e.getIsPropertyChargeAmountRemoved())
-            {
-                this.setChargeAmount(null);
-            }
-        }
-        else
-        {
-            this.setChargeAmount(e.getChargeAmount());
         }
         if (e.getDatePrinted() == null)
         {
@@ -951,28 +826,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         {
             this.setIsInDispute(e.getIsInDispute());
         }
-        if (e.getVolume() == null)
-        {
-            if (e.getIsPropertyVolumeRemoved() != null && e.getIsPropertyVolumeRemoved())
-            {
-                this.setVolume(null);
-            }
-        }
-        else
-        {
-            this.setVolume(e.getVolume());
-        }
-        if (e.getWeight() == null)
-        {
-            if (e.getIsPropertyWeightRemoved() != null && e.getIsPropertyWeightRemoved())
-            {
-                this.setWeight(null);
-            }
-        }
-        else
-        {
-            this.setWeight(e.getWeight());
-        }
         if (e.getRmaNumber() == null)
         {
             if (e.getIsPropertyRmaNumberRemoved() != null && e.getIsPropertyRmaNumberRemoved())
@@ -994,28 +847,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         else
         {
             this.setReversalNumber(e.getReversalNumber());
-        }
-        if (e.getIsDropShip() == null)
-        {
-            if (e.getIsPropertyIsDropShipRemoved() != null && e.getIsPropertyIsDropShipRemoved())
-            {
-                this.setIsDropShip(null);
-            }
-        }
-        else
-        {
-            this.setIsDropShip(e.getIsDropShip());
-        }
-        if (e.getDropShipBusinessPartnerId() == null)
-        {
-            if (e.getIsPropertyDropShipBusinessPartnerIdRemoved() != null && e.getIsPropertyDropShipBusinessPartnerIdRemoved())
-            {
-                this.setDropShipBusinessPartnerId(null);
-            }
-        }
-        else
-        {
-            this.setDropShipBusinessPartnerId(e.getDropShipBusinessPartnerId());
         }
         if (e.getActive() == null)
         {

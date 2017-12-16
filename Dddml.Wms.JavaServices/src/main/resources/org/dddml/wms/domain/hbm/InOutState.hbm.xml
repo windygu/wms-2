@@ -11,24 +11,21 @@
 	<id name="documentNumber" length="50" column="DocumentNumber"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
-	<property name="isSOTransaction" ></property>
 	<property name="documentStatus" ></property>
 	<property name="posted" ></property>
 	<property name="processing" ></property>
 	<property name="processed" ></property>
-	<property name="documentType" ></property>
+	<property name="documentTypeId" ></property>
 	<property name="description" ></property>
-	<property name="orderNumber" ></property>
+	<property name="orderId" ></property>
 	<property name="dateOrdered" ></property>
 	<property name="isPrinted" ></property>
-	<property name="movementType" ></property>
+	<property name="movementTypeId" ></property>
 	<property name="movementDate" ></property>
 	<property name="businessPartnerId" ></property>
 	<property name="warehouseId" ></property>
 	<property name="POReference" ></property>
-	<property name="freightAmount" type="org.dddml.wms.domain.hibernate.usertypes.MoneyType"><column name="freightAmountAmount" /><column name="freightAmountCurrency" /></property>
 	<property name="shipperId" ></property>
-	<property name="chargeAmount" type="org.dddml.wms.domain.hibernate.usertypes.MoneyType"><column name="chargeAmountAmount" /><column name="chargeAmountCurrency" /></property>
 	<property name="datePrinted" ></property>
 	<property name="salesRepresentative" ></property>
 	<property name="numberOfPackages" ></property>
@@ -39,12 +36,8 @@
 	<property name="isInTransit" ></property>
 	<property name="isApproved" ></property>
 	<property name="isInDispute" ></property>
-	<property name="volume" ></property>
-	<property name="weight" ></property>
 	<property name="rmaNumber" ></property>
 	<property name="reversalNumber" ></property>
-	<property name="isDropShip" ></property>
-	<property name="dropShipBusinessPartnerId" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

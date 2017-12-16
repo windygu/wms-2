@@ -4,7 +4,6 @@ import java.util.*;
 import org.dddml.wms.domain.inout.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import org.joda.money.Money;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
@@ -22,18 +21,6 @@ public class InOutLineMvoStateDto
     public void setInOutLineId(InOutLineIdDto inOutLineId)
     {
         this.inOutLineId = inOutLineId;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
     }
 
     private String locatorId;
@@ -58,6 +45,30 @@ public class InOutLineMvoStateDto
     public void setProductId(String productId)
     {
         this.productId = productId;
+    }
+
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 
     private String uomId;
@@ -144,30 +155,6 @@ public class InOutLineMvoStateDto
         this.isInvoiced = isInvoiced;
     }
 
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
-    private Boolean isDescription;
-
-    public Boolean getIsDescription()
-    {
-        return this.isDescription;
-    }
-
-    public void setIsDescription(Boolean isDescription)
-    {
-        this.isDescription = isDescription;
-    }
-
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -240,18 +227,6 @@ public class InOutLineMvoStateDto
         this.active = active;
     }
 
-    private Boolean inOutIsSOTransaction;
-
-    public Boolean getInOutIsSOTransaction()
-    {
-        return this.inOutIsSOTransaction;
-    }
-
-    public void setInOutIsSOTransaction(Boolean inOutIsSOTransaction)
-    {
-        this.inOutIsSOTransaction = inOutIsSOTransaction;
-    }
-
     private String inOutDocumentStatus;
 
     public String getInOutDocumentStatus()
@@ -300,16 +275,16 @@ public class InOutLineMvoStateDto
         this.inOutProcessed = inOutProcessed;
     }
 
-    private Integer inOutDocumentType;
+    private String inOutDocumentTypeId;
 
-    public Integer getInOutDocumentType()
+    public String getInOutDocumentTypeId()
     {
-        return this.inOutDocumentType;
+        return this.inOutDocumentTypeId;
     }
 
-    public void setInOutDocumentType(Integer inOutDocumentType)
+    public void setInOutDocumentTypeId(String inOutDocumentTypeId)
     {
-        this.inOutDocumentType = inOutDocumentType;
+        this.inOutDocumentTypeId = inOutDocumentTypeId;
     }
 
     private String inOutDescription;
@@ -324,16 +299,16 @@ public class InOutLineMvoStateDto
         this.inOutDescription = inOutDescription;
     }
 
-    private String inOutOrderNumber;
+    private String inOutOrderId;
 
-    public String getInOutOrderNumber()
+    public String getInOutOrderId()
     {
-        return this.inOutOrderNumber;
+        return this.inOutOrderId;
     }
 
-    public void setInOutOrderNumber(String inOutOrderNumber)
+    public void setInOutOrderId(String inOutOrderId)
     {
-        this.inOutOrderNumber = inOutOrderNumber;
+        this.inOutOrderId = inOutOrderId;
     }
 
     private Date inOutDateOrdered;
@@ -360,16 +335,16 @@ public class InOutLineMvoStateDto
         this.inOutIsPrinted = inOutIsPrinted;
     }
 
-    private String inOutMovementType;
+    private String inOutMovementTypeId;
 
-    public String getInOutMovementType()
+    public String getInOutMovementTypeId()
     {
-        return this.inOutMovementType;
+        return this.inOutMovementTypeId;
     }
 
-    public void setInOutMovementType(String inOutMovementType)
+    public void setInOutMovementTypeId(String inOutMovementTypeId)
     {
-        this.inOutMovementType = inOutMovementType;
+        this.inOutMovementTypeId = inOutMovementTypeId;
     }
 
     private Date inOutMovementDate;
@@ -420,18 +395,6 @@ public class InOutLineMvoStateDto
         this.inOutPOReference = inOutPOReference;
     }
 
-    private Money inOutFreightAmount;
-
-    public Money getInOutFreightAmount()
-    {
-        return this.inOutFreightAmount;
-    }
-
-    public void setInOutFreightAmount(Money inOutFreightAmount)
-    {
-        this.inOutFreightAmount = inOutFreightAmount;
-    }
-
     private String inOutShipperId;
 
     public String getInOutShipperId()
@@ -442,18 +405,6 @@ public class InOutLineMvoStateDto
     public void setInOutShipperId(String inOutShipperId)
     {
         this.inOutShipperId = inOutShipperId;
-    }
-
-    private Money inOutChargeAmount;
-
-    public Money getInOutChargeAmount()
-    {
-        return this.inOutChargeAmount;
-    }
-
-    public void setInOutChargeAmount(Money inOutChargeAmount)
-    {
-        this.inOutChargeAmount = inOutChargeAmount;
     }
 
     private Date inOutDatePrinted;
@@ -576,30 +527,6 @@ public class InOutLineMvoStateDto
         this.inOutIsInDispute = inOutIsInDispute;
     }
 
-    private BigDecimal inOutVolume;
-
-    public BigDecimal getInOutVolume()
-    {
-        return this.inOutVolume;
-    }
-
-    public void setInOutVolume(BigDecimal inOutVolume)
-    {
-        this.inOutVolume = inOutVolume;
-    }
-
-    private BigDecimal inOutWeight;
-
-    public BigDecimal getInOutWeight()
-    {
-        return this.inOutWeight;
-    }
-
-    public void setInOutWeight(BigDecimal inOutWeight)
-    {
-        this.inOutWeight = inOutWeight;
-    }
-
     private String inOutRmaNumber;
 
     public String getInOutRmaNumber()
@@ -622,30 +549,6 @@ public class InOutLineMvoStateDto
     public void setInOutReversalNumber(String inOutReversalNumber)
     {
         this.inOutReversalNumber = inOutReversalNumber;
-    }
-
-    private Boolean inOutIsDropShip;
-
-    public Boolean getInOutIsDropShip()
-    {
-        return this.inOutIsDropShip;
-    }
-
-    public void setInOutIsDropShip(Boolean inOutIsDropShip)
-    {
-        this.inOutIsDropShip = inOutIsDropShip;
-    }
-
-    private String inOutDropShipBusinessPartnerId;
-
-    public String getInOutDropShipBusinessPartnerId()
-    {
-        return this.inOutDropShipBusinessPartnerId;
-    }
-
-    public void setInOutDropShipBusinessPartnerId(String inOutDropShipBusinessPartnerId)
-    {
-        this.inOutDropShipBusinessPartnerId = inOutDropShipBusinessPartnerId;
     }
 
     private String inOutCreatedBy;
@@ -809,14 +712,17 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("InOutLineId")) {
                 dto.setInOutLineId((state.getInOutLineId() == null) ? null : new InOutLineIdDtoWrapper(state.getInOutLineId()));
             }
-            if (returnedFieldsContains("Description")) {
-                dto.setDescription(state.getDescription());
-            }
             if (returnedFieldsContains("LocatorId")) {
                 dto.setLocatorId(state.getLocatorId());
             }
             if (returnedFieldsContains("ProductId")) {
                 dto.setProductId(state.getProductId());
+            }
+            if (returnedFieldsContains("AttributeSetInstanceId")) {
+                dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
             }
             if (returnedFieldsContains("UomId")) {
                 dto.setUomId(state.getUomId());
@@ -839,12 +745,6 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("IsInvoiced")) {
                 dto.setIsInvoiced(state.getIsInvoiced());
             }
-            if (returnedFieldsContains("AttributeSetInstanceId")) {
-                dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
-            }
-            if (returnedFieldsContains("IsDescription")) {
-                dto.setIsDescription(state.getIsDescription());
-            }
             if (returnedFieldsContains("Processed")) {
                 dto.setProcessed(state.getProcessed());
             }
@@ -863,9 +763,6 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());
             }
-            if (returnedFieldsContains("InOutIsSOTransaction")) {
-                dto.setInOutIsSOTransaction(state.getInOutIsSOTransaction());
-            }
             if (returnedFieldsContains("InOutDocumentStatus")) {
                 dto.setInOutDocumentStatus(state.getInOutDocumentStatus());
             }
@@ -878,14 +775,14 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("InOutProcessed")) {
                 dto.setInOutProcessed(state.getInOutProcessed());
             }
-            if (returnedFieldsContains("InOutDocumentType")) {
-                dto.setInOutDocumentType(state.getInOutDocumentType());
+            if (returnedFieldsContains("InOutDocumentTypeId")) {
+                dto.setInOutDocumentTypeId(state.getInOutDocumentTypeId());
             }
             if (returnedFieldsContains("InOutDescription")) {
                 dto.setInOutDescription(state.getInOutDescription());
             }
-            if (returnedFieldsContains("InOutOrderNumber")) {
-                dto.setInOutOrderNumber(state.getInOutOrderNumber());
+            if (returnedFieldsContains("InOutOrderId")) {
+                dto.setInOutOrderId(state.getInOutOrderId());
             }
             if (returnedFieldsContains("InOutDateOrdered")) {
                 dto.setInOutDateOrdered(state.getInOutDateOrdered());
@@ -893,8 +790,8 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("InOutIsPrinted")) {
                 dto.setInOutIsPrinted(state.getInOutIsPrinted());
             }
-            if (returnedFieldsContains("InOutMovementType")) {
-                dto.setInOutMovementType(state.getInOutMovementType());
+            if (returnedFieldsContains("InOutMovementTypeId")) {
+                dto.setInOutMovementTypeId(state.getInOutMovementTypeId());
             }
             if (returnedFieldsContains("InOutMovementDate")) {
                 dto.setInOutMovementDate(state.getInOutMovementDate());
@@ -908,14 +805,8 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("InOutPOReference")) {
                 dto.setInOutPOReference(state.getInOutPOReference());
             }
-            if (returnedFieldsContains("InOutFreightAmount")) {
-                dto.setInOutFreightAmount(state.getInOutFreightAmount());
-            }
             if (returnedFieldsContains("InOutShipperId")) {
                 dto.setInOutShipperId(state.getInOutShipperId());
-            }
-            if (returnedFieldsContains("InOutChargeAmount")) {
-                dto.setInOutChargeAmount(state.getInOutChargeAmount());
             }
             if (returnedFieldsContains("InOutDatePrinted")) {
                 dto.setInOutDatePrinted(state.getInOutDatePrinted());
@@ -947,23 +838,11 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("InOutIsInDispute")) {
                 dto.setInOutIsInDispute(state.getInOutIsInDispute());
             }
-            if (returnedFieldsContains("InOutVolume")) {
-                dto.setInOutVolume(state.getInOutVolume());
-            }
-            if (returnedFieldsContains("InOutWeight")) {
-                dto.setInOutWeight(state.getInOutWeight());
-            }
             if (returnedFieldsContains("InOutRmaNumber")) {
                 dto.setInOutRmaNumber(state.getInOutRmaNumber());
             }
             if (returnedFieldsContains("InOutReversalNumber")) {
                 dto.setInOutReversalNumber(state.getInOutReversalNumber());
-            }
-            if (returnedFieldsContains("InOutIsDropShip")) {
-                dto.setInOutIsDropShip(state.getInOutIsDropShip());
-            }
-            if (returnedFieldsContains("InOutDropShipBusinessPartnerId")) {
-                dto.setInOutDropShipBusinessPartnerId(state.getInOutDropShipBusinessPartnerId());
             }
             if (returnedFieldsContains("InOutCreatedBy")) {
                 dto.setInOutCreatedBy(state.getInOutCreatedBy());

@@ -4,7 +4,6 @@ import java.util.*;
 import org.dddml.wms.domain.inout.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import org.joda.money.Money;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
@@ -16,10 +15,6 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    String getDescription();
-
-    void setDescription(String description);
-
     String getLocatorId();
 
     void setLocatorId(String locatorId);
@@ -27,6 +22,14 @@ public interface InOutLineMvoStateEvent extends Event
     String getProductId();
 
     void setProductId(String productId);
+
+    String getAttributeSetInstanceId();
+
+    void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+    String getDescription();
+
+    void setDescription(String description);
 
     String getUomId();
 
@@ -55,14 +58,6 @@ public interface InOutLineMvoStateEvent extends Event
     Boolean getIsInvoiced();
 
     void setIsInvoiced(Boolean isInvoiced);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-    Boolean getIsDescription();
-
-    void setIsDescription(Boolean isDescription);
 
     Boolean getProcessed();
 
@@ -96,10 +91,6 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setActive(Boolean active);
 
-    Boolean getInOutIsSOTransaction();
-
-    void setInOutIsSOTransaction(Boolean inOutIsSOTransaction);
-
     String getInOutDocumentStatus();
 
     void setInOutDocumentStatus(String inOutDocumentStatus);
@@ -116,17 +107,17 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setInOutProcessed(Boolean inOutProcessed);
 
-    Integer getInOutDocumentType();
+    String getInOutDocumentTypeId();
 
-    void setInOutDocumentType(Integer inOutDocumentType);
+    void setInOutDocumentTypeId(String inOutDocumentTypeId);
 
     String getInOutDescription();
 
     void setInOutDescription(String inOutDescription);
 
-    String getInOutOrderNumber();
+    String getInOutOrderId();
 
-    void setInOutOrderNumber(String inOutOrderNumber);
+    void setInOutOrderId(String inOutOrderId);
 
     Date getInOutDateOrdered();
 
@@ -136,9 +127,9 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setInOutIsPrinted(Boolean inOutIsPrinted);
 
-    String getInOutMovementType();
+    String getInOutMovementTypeId();
 
-    void setInOutMovementType(String inOutMovementType);
+    void setInOutMovementTypeId(String inOutMovementTypeId);
 
     Date getInOutMovementDate();
 
@@ -156,17 +147,9 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setInOutPOReference(String inOutPOReference);
 
-    Money getInOutFreightAmount();
-
-    void setInOutFreightAmount(Money inOutFreightAmount);
-
     String getInOutShipperId();
 
     void setInOutShipperId(String inOutShipperId);
-
-    Money getInOutChargeAmount();
-
-    void setInOutChargeAmount(Money inOutChargeAmount);
 
     Date getInOutDatePrinted();
 
@@ -208,14 +191,6 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setInOutIsInDispute(Boolean inOutIsInDispute);
 
-    BigDecimal getInOutVolume();
-
-    void setInOutVolume(BigDecimal inOutVolume);
-
-    BigDecimal getInOutWeight();
-
-    void setInOutWeight(BigDecimal inOutWeight);
-
     String getInOutRmaNumber();
 
     void setInOutRmaNumber(String inOutRmaNumber);
@@ -223,14 +198,6 @@ public interface InOutLineMvoStateEvent extends Event
     String getInOutReversalNumber();
 
     void setInOutReversalNumber(String inOutReversalNumber);
-
-    Boolean getInOutIsDropShip();
-
-    void setInOutIsDropShip(Boolean inOutIsDropShip);
-
-    String getInOutDropShipBusinessPartnerId();
-
-    void setInOutDropShipBusinessPartnerId(String inOutDropShipBusinessPartnerId);
 
     String getInOutCreatedBy();
 
@@ -268,10 +235,6 @@ public interface InOutLineMvoStateEvent extends Event
 
     interface InOutLineMvoStateMergePatched extends InOutLineMvoStateEvent
     {
-        Boolean getIsPropertyDescriptionRemoved();
-
-        void setIsPropertyDescriptionRemoved(Boolean removed);
-
         Boolean getIsPropertyLocatorIdRemoved();
 
         void setIsPropertyLocatorIdRemoved(Boolean removed);
@@ -279,6 +242,14 @@ public interface InOutLineMvoStateEvent extends Event
         Boolean getIsPropertyProductIdRemoved();
 
         void setIsPropertyProductIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
+
+        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDescriptionRemoved();
+
+        void setIsPropertyDescriptionRemoved(Boolean removed);
 
         Boolean getIsPropertyUomIdRemoved();
 
@@ -308,14 +279,6 @@ public interface InOutLineMvoStateEvent extends Event
 
         void setIsPropertyIsInvoicedRemoved(Boolean removed);
 
-        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
-
-        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyIsDescriptionRemoved();
-
-        void setIsPropertyIsDescriptionRemoved(Boolean removed);
-
         Boolean getIsPropertyProcessedRemoved();
 
         void setIsPropertyProcessedRemoved(Boolean removed);
@@ -340,10 +303,6 @@ public interface InOutLineMvoStateEvent extends Event
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutIsSOTransactionRemoved();
-
-        void setIsPropertyInOutIsSOTransactionRemoved(Boolean removed);
-
         Boolean getIsPropertyInOutDocumentStatusRemoved();
 
         void setIsPropertyInOutDocumentStatusRemoved(Boolean removed);
@@ -360,17 +319,17 @@ public interface InOutLineMvoStateEvent extends Event
 
         void setIsPropertyInOutProcessedRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutDocumentTypeRemoved();
+        Boolean getIsPropertyInOutDocumentTypeIdRemoved();
 
-        void setIsPropertyInOutDocumentTypeRemoved(Boolean removed);
+        void setIsPropertyInOutDocumentTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutDescriptionRemoved();
 
         void setIsPropertyInOutDescriptionRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutOrderNumberRemoved();
+        Boolean getIsPropertyInOutOrderIdRemoved();
 
-        void setIsPropertyInOutOrderNumberRemoved(Boolean removed);
+        void setIsPropertyInOutOrderIdRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutDateOrderedRemoved();
 
@@ -380,9 +339,9 @@ public interface InOutLineMvoStateEvent extends Event
 
         void setIsPropertyInOutIsPrintedRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutMovementTypeRemoved();
+        Boolean getIsPropertyInOutMovementTypeIdRemoved();
 
-        void setIsPropertyInOutMovementTypeRemoved(Boolean removed);
+        void setIsPropertyInOutMovementTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutMovementDateRemoved();
 
@@ -400,17 +359,9 @@ public interface InOutLineMvoStateEvent extends Event
 
         void setIsPropertyInOutPOReferenceRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutFreightAmountRemoved();
-
-        void setIsPropertyInOutFreightAmountRemoved(Boolean removed);
-
         Boolean getIsPropertyInOutShipperIdRemoved();
 
         void setIsPropertyInOutShipperIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyInOutChargeAmountRemoved();
-
-        void setIsPropertyInOutChargeAmountRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutDatePrintedRemoved();
 
@@ -452,14 +403,6 @@ public interface InOutLineMvoStateEvent extends Event
 
         void setIsPropertyInOutIsInDisputeRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutVolumeRemoved();
-
-        void setIsPropertyInOutVolumeRemoved(Boolean removed);
-
-        Boolean getIsPropertyInOutWeightRemoved();
-
-        void setIsPropertyInOutWeightRemoved(Boolean removed);
-
         Boolean getIsPropertyInOutRmaNumberRemoved();
 
         void setIsPropertyInOutRmaNumberRemoved(Boolean removed);
@@ -467,14 +410,6 @@ public interface InOutLineMvoStateEvent extends Event
         Boolean getIsPropertyInOutReversalNumberRemoved();
 
         void setIsPropertyInOutReversalNumberRemoved(Boolean removed);
-
-        Boolean getIsPropertyInOutIsDropShipRemoved();
-
-        void setIsPropertyInOutIsDropShipRemoved(Boolean removed);
-
-        Boolean getIsPropertyInOutDropShipBusinessPartnerIdRemoved();
-
-        void setIsPropertyInOutDropShipBusinessPartnerIdRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutCreatedByRemoved();
 

@@ -65,6 +65,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         e.setX(c.getX());
         e.setY(c.getY());
         e.setZ(c.getZ());
+        e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         ((AbstractLocatorStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -83,6 +84,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         e.setX(c.getX());
         e.setY(c.getY());
         e.setZ(c.getZ());
+        e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         e.setIsPropertyWarehouseIdRemoved(c.getIsPropertyWarehouseIdRemoved());
         e.setIsPropertyParentLocatorIdRemoved(c.getIsPropertyParentLocatorIdRemoved());
@@ -92,6 +94,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         e.setIsPropertyXRemoved(c.getIsPropertyXRemoved());
         e.setIsPropertyYRemoved(c.getIsPropertyYRemoved());
         e.setIsPropertyZRemoved(c.getIsPropertyZRemoved());
+        e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractLocatorStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

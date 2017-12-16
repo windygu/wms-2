@@ -4,7 +4,6 @@ import java.util.*;
 import org.dddml.wms.domain.inout.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import org.joda.money.Money;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inoutlinemvo.InOutLineMvoStateEvent.*;
@@ -22,18 +21,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     public void setInOutLineId(InOutLineId inOutLineId)
     {
         this.inOutLineId = inOutLineId;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
     }
 
     private String locatorId;
@@ -58,6 +45,30 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     public void setProductId(String productId)
     {
         this.productId = productId;
+    }
+
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 
     private String uomId;
@@ -142,30 +153,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     public void setIsInvoiced(Boolean isInvoiced)
     {
         this.isInvoiced = isInvoiced;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
-    private Boolean isDescription;
-
-    public Boolean getIsDescription()
-    {
-        return this.isDescription;
-    }
-
-    public void setIsDescription(Boolean isDescription)
-    {
-        this.isDescription = isDescription;
     }
 
     private Boolean processed;
@@ -300,18 +287,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.deleted = deleted;
     }
 
-    private Boolean inOutIsSOTransaction;
-
-    public Boolean getInOutIsSOTransaction()
-    {
-        return this.inOutIsSOTransaction;
-    }
-
-    public void setInOutIsSOTransaction(Boolean inOutIsSOTransaction)
-    {
-        this.inOutIsSOTransaction = inOutIsSOTransaction;
-    }
-
     private String inOutDocumentStatus;
 
     public String getInOutDocumentStatus()
@@ -360,16 +335,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutProcessed = inOutProcessed;
     }
 
-    private Integer inOutDocumentType;
+    private String inOutDocumentTypeId;
 
-    public Integer getInOutDocumentType()
+    public String getInOutDocumentTypeId()
     {
-        return this.inOutDocumentType;
+        return this.inOutDocumentTypeId;
     }
 
-    public void setInOutDocumentType(Integer inOutDocumentType)
+    public void setInOutDocumentTypeId(String inOutDocumentTypeId)
     {
-        this.inOutDocumentType = inOutDocumentType;
+        this.inOutDocumentTypeId = inOutDocumentTypeId;
     }
 
     private String inOutDescription;
@@ -384,16 +359,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutDescription = inOutDescription;
     }
 
-    private String inOutOrderNumber;
+    private String inOutOrderId;
 
-    public String getInOutOrderNumber()
+    public String getInOutOrderId()
     {
-        return this.inOutOrderNumber;
+        return this.inOutOrderId;
     }
 
-    public void setInOutOrderNumber(String inOutOrderNumber)
+    public void setInOutOrderId(String inOutOrderId)
     {
-        this.inOutOrderNumber = inOutOrderNumber;
+        this.inOutOrderId = inOutOrderId;
     }
 
     private Date inOutDateOrdered;
@@ -420,16 +395,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutIsPrinted = inOutIsPrinted;
     }
 
-    private String inOutMovementType;
+    private String inOutMovementTypeId;
 
-    public String getInOutMovementType()
+    public String getInOutMovementTypeId()
     {
-        return this.inOutMovementType;
+        return this.inOutMovementTypeId;
     }
 
-    public void setInOutMovementType(String inOutMovementType)
+    public void setInOutMovementTypeId(String inOutMovementTypeId)
     {
-        this.inOutMovementType = inOutMovementType;
+        this.inOutMovementTypeId = inOutMovementTypeId;
     }
 
     private Date inOutMovementDate;
@@ -480,18 +455,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutPOReference = inOutPOReference;
     }
 
-    private Money inOutFreightAmount;
-
-    public Money getInOutFreightAmount()
-    {
-        return this.inOutFreightAmount;
-    }
-
-    public void setInOutFreightAmount(Money inOutFreightAmount)
-    {
-        this.inOutFreightAmount = inOutFreightAmount;
-    }
-
     private String inOutShipperId;
 
     public String getInOutShipperId()
@@ -502,18 +465,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     public void setInOutShipperId(String inOutShipperId)
     {
         this.inOutShipperId = inOutShipperId;
-    }
-
-    private Money inOutChargeAmount;
-
-    public Money getInOutChargeAmount()
-    {
-        return this.inOutChargeAmount;
-    }
-
-    public void setInOutChargeAmount(Money inOutChargeAmount)
-    {
-        this.inOutChargeAmount = inOutChargeAmount;
     }
 
     private Date inOutDatePrinted;
@@ -636,30 +587,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutIsInDispute = inOutIsInDispute;
     }
 
-    private BigDecimal inOutVolume;
-
-    public BigDecimal getInOutVolume()
-    {
-        return this.inOutVolume;
-    }
-
-    public void setInOutVolume(BigDecimal inOutVolume)
-    {
-        this.inOutVolume = inOutVolume;
-    }
-
-    private BigDecimal inOutWeight;
-
-    public BigDecimal getInOutWeight()
-    {
-        return this.inOutWeight;
-    }
-
-    public void setInOutWeight(BigDecimal inOutWeight)
-    {
-        this.inOutWeight = inOutWeight;
-    }
-
     private String inOutRmaNumber;
 
     public String getInOutRmaNumber()
@@ -682,30 +609,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     public void setInOutReversalNumber(String inOutReversalNumber)
     {
         this.inOutReversalNumber = inOutReversalNumber;
-    }
-
-    private Boolean inOutIsDropShip;
-
-    public Boolean getInOutIsDropShip()
-    {
-        return this.inOutIsDropShip;
-    }
-
-    public void setInOutIsDropShip(Boolean inOutIsDropShip)
-    {
-        this.inOutIsDropShip = inOutIsDropShip;
-    }
-
-    private String inOutDropShipBusinessPartnerId;
-
-    public String getInOutDropShipBusinessPartnerId()
-    {
-        return this.inOutDropShipBusinessPartnerId;
-    }
-
-    public void setInOutDropShipBusinessPartnerId(String inOutDropShipBusinessPartnerId)
-    {
-        this.inOutDropShipBusinessPartnerId = inOutDropShipBusinessPartnerId;
     }
 
     private Long inOutVersion;
@@ -856,9 +759,10 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     {
         throwOnWrongEvent(e);
 
-        this.setDescription(e.getDescription());
         this.setLocatorId(e.getLocatorId());
         this.setProductId(e.getProductId());
+        this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        this.setDescription(e.getDescription());
         this.setUomId(e.getUomId());
         this.setMovementQuantity(e.getMovementQuantity());
         this.setConfirmedQuantity(e.getConfirmedQuantity());
@@ -866,32 +770,27 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.setTargetQuantity(e.getTargetQuantity());
         this.setPickedQuantity(e.getPickedQuantity());
         this.setIsInvoiced(e.getIsInvoiced());
-        this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
-        this.setIsDescription(e.getIsDescription());
         this.setProcessed(e.getProcessed());
         this.setQuantityEntered(e.getQuantityEntered());
         this.setRmaLineNumber(e.getRmaLineNumber());
         this.setReversalLineNumber(e.getReversalLineNumber());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
-        this.setInOutIsSOTransaction(e.getInOutIsSOTransaction());
         this.setInOutDocumentStatus(e.getInOutDocumentStatus());
         this.setInOutPosted(e.getInOutPosted());
         this.setInOutProcessing(e.getInOutProcessing());
         this.setInOutProcessed(e.getInOutProcessed());
-        this.setInOutDocumentType(e.getInOutDocumentType());
+        this.setInOutDocumentTypeId(e.getInOutDocumentTypeId());
         this.setInOutDescription(e.getInOutDescription());
-        this.setInOutOrderNumber(e.getInOutOrderNumber());
+        this.setInOutOrderId(e.getInOutOrderId());
         this.setInOutDateOrdered(e.getInOutDateOrdered());
         this.setInOutIsPrinted(e.getInOutIsPrinted());
-        this.setInOutMovementType(e.getInOutMovementType());
+        this.setInOutMovementTypeId(e.getInOutMovementTypeId());
         this.setInOutMovementDate(e.getInOutMovementDate());
         this.setInOutBusinessPartnerId(e.getInOutBusinessPartnerId());
         this.setInOutWarehouseId(e.getInOutWarehouseId());
         this.setInOutPOReference(e.getInOutPOReference());
-        this.setInOutFreightAmount(e.getInOutFreightAmount());
         this.setInOutShipperId(e.getInOutShipperId());
-        this.setInOutChargeAmount(e.getInOutChargeAmount());
         this.setInOutDatePrinted(e.getInOutDatePrinted());
         this.setInOutSalesRepresentative(e.getInOutSalesRepresentative());
         this.setInOutNumberOfPackages(e.getInOutNumberOfPackages());
@@ -902,12 +801,8 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.setInOutIsInTransit(e.getInOutIsInTransit());
         this.setInOutIsApproved(e.getInOutIsApproved());
         this.setInOutIsInDispute(e.getInOutIsInDispute());
-        this.setInOutVolume(e.getInOutVolume());
-        this.setInOutWeight(e.getInOutWeight());
         this.setInOutRmaNumber(e.getInOutRmaNumber());
         this.setInOutReversalNumber(e.getInOutReversalNumber());
-        this.setInOutIsDropShip(e.getInOutIsDropShip());
-        this.setInOutDropShipBusinessPartnerId(e.getInOutDropShipBusinessPartnerId());
         this.setInOutCreatedBy(e.getInOutCreatedBy());
         this.setInOutCreatedAt(e.getInOutCreatedAt());
         this.setInOutUpdatedBy(e.getInOutUpdatedBy());
@@ -926,17 +821,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     {
         throwOnWrongEvent(e);
 
-        if (e.getDescription() == null)
-        {
-            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
-            {
-                this.setDescription(null);
-            }
-        }
-        else
-        {
-            this.setDescription(e.getDescription());
-        }
         if (e.getLocatorId() == null)
         {
             if (e.getIsPropertyLocatorIdRemoved() != null && e.getIsPropertyLocatorIdRemoved())
@@ -958,6 +842,28 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         else
         {
             this.setProductId(e.getProductId());
+        }
+        if (e.getAttributeSetInstanceId() == null)
+        {
+            if (e.getIsPropertyAttributeSetInstanceIdRemoved() != null && e.getIsPropertyAttributeSetInstanceIdRemoved())
+            {
+                this.setAttributeSetInstanceId(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        }
+        if (e.getDescription() == null)
+        {
+            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
+            {
+                this.setDescription(null);
+            }
+        }
+        else
+        {
+            this.setDescription(e.getDescription());
         }
         if (e.getUomId() == null)
         {
@@ -1036,28 +942,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setIsInvoiced(e.getIsInvoiced());
         }
-        if (e.getAttributeSetInstanceId() == null)
-        {
-            if (e.getIsPropertyAttributeSetInstanceIdRemoved() != null && e.getIsPropertyAttributeSetInstanceIdRemoved())
-            {
-                this.setAttributeSetInstanceId(null);
-            }
-        }
-        else
-        {
-            this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
-        }
-        if (e.getIsDescription() == null)
-        {
-            if (e.getIsPropertyIsDescriptionRemoved() != null && e.getIsPropertyIsDescriptionRemoved())
-            {
-                this.setIsDescription(null);
-            }
-        }
-        else
-        {
-            this.setIsDescription(e.getIsDescription());
-        }
         if (e.getProcessed() == null)
         {
             if (e.getIsPropertyProcessedRemoved() != null && e.getIsPropertyProcessedRemoved())
@@ -1124,17 +1008,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setActive(e.getActive());
         }
-        if (e.getInOutIsSOTransaction() == null)
-        {
-            if (e.getIsPropertyInOutIsSOTransactionRemoved() != null && e.getIsPropertyInOutIsSOTransactionRemoved())
-            {
-                this.setInOutIsSOTransaction(null);
-            }
-        }
-        else
-        {
-            this.setInOutIsSOTransaction(e.getInOutIsSOTransaction());
-        }
         if (e.getInOutDocumentStatus() == null)
         {
             if (e.getIsPropertyInOutDocumentStatusRemoved() != null && e.getIsPropertyInOutDocumentStatusRemoved())
@@ -1179,16 +1052,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setInOutProcessed(e.getInOutProcessed());
         }
-        if (e.getInOutDocumentType() == null)
+        if (e.getInOutDocumentTypeId() == null)
         {
-            if (e.getIsPropertyInOutDocumentTypeRemoved() != null && e.getIsPropertyInOutDocumentTypeRemoved())
+            if (e.getIsPropertyInOutDocumentTypeIdRemoved() != null && e.getIsPropertyInOutDocumentTypeIdRemoved())
             {
-                this.setInOutDocumentType(null);
+                this.setInOutDocumentTypeId(null);
             }
         }
         else
         {
-            this.setInOutDocumentType(e.getInOutDocumentType());
+            this.setInOutDocumentTypeId(e.getInOutDocumentTypeId());
         }
         if (e.getInOutDescription() == null)
         {
@@ -1201,16 +1074,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setInOutDescription(e.getInOutDescription());
         }
-        if (e.getInOutOrderNumber() == null)
+        if (e.getInOutOrderId() == null)
         {
-            if (e.getIsPropertyInOutOrderNumberRemoved() != null && e.getIsPropertyInOutOrderNumberRemoved())
+            if (e.getIsPropertyInOutOrderIdRemoved() != null && e.getIsPropertyInOutOrderIdRemoved())
             {
-                this.setInOutOrderNumber(null);
+                this.setInOutOrderId(null);
             }
         }
         else
         {
-            this.setInOutOrderNumber(e.getInOutOrderNumber());
+            this.setInOutOrderId(e.getInOutOrderId());
         }
         if (e.getInOutDateOrdered() == null)
         {
@@ -1234,16 +1107,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setInOutIsPrinted(e.getInOutIsPrinted());
         }
-        if (e.getInOutMovementType() == null)
+        if (e.getInOutMovementTypeId() == null)
         {
-            if (e.getIsPropertyInOutMovementTypeRemoved() != null && e.getIsPropertyInOutMovementTypeRemoved())
+            if (e.getIsPropertyInOutMovementTypeIdRemoved() != null && e.getIsPropertyInOutMovementTypeIdRemoved())
             {
-                this.setInOutMovementType(null);
+                this.setInOutMovementTypeId(null);
             }
         }
         else
         {
-            this.setInOutMovementType(e.getInOutMovementType());
+            this.setInOutMovementTypeId(e.getInOutMovementTypeId());
         }
         if (e.getInOutMovementDate() == null)
         {
@@ -1289,17 +1162,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setInOutPOReference(e.getInOutPOReference());
         }
-        if (e.getInOutFreightAmount() == null)
-        {
-            if (e.getIsPropertyInOutFreightAmountRemoved() != null && e.getIsPropertyInOutFreightAmountRemoved())
-            {
-                this.setInOutFreightAmount(null);
-            }
-        }
-        else
-        {
-            this.setInOutFreightAmount(e.getInOutFreightAmount());
-        }
         if (e.getInOutShipperId() == null)
         {
             if (e.getIsPropertyInOutShipperIdRemoved() != null && e.getIsPropertyInOutShipperIdRemoved())
@@ -1310,17 +1172,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         else
         {
             this.setInOutShipperId(e.getInOutShipperId());
-        }
-        if (e.getInOutChargeAmount() == null)
-        {
-            if (e.getIsPropertyInOutChargeAmountRemoved() != null && e.getIsPropertyInOutChargeAmountRemoved())
-            {
-                this.setInOutChargeAmount(null);
-            }
-        }
-        else
-        {
-            this.setInOutChargeAmount(e.getInOutChargeAmount());
         }
         if (e.getInOutDatePrinted() == null)
         {
@@ -1432,28 +1283,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setInOutIsInDispute(e.getInOutIsInDispute());
         }
-        if (e.getInOutVolume() == null)
-        {
-            if (e.getIsPropertyInOutVolumeRemoved() != null && e.getIsPropertyInOutVolumeRemoved())
-            {
-                this.setInOutVolume(null);
-            }
-        }
-        else
-        {
-            this.setInOutVolume(e.getInOutVolume());
-        }
-        if (e.getInOutWeight() == null)
-        {
-            if (e.getIsPropertyInOutWeightRemoved() != null && e.getIsPropertyInOutWeightRemoved())
-            {
-                this.setInOutWeight(null);
-            }
-        }
-        else
-        {
-            this.setInOutWeight(e.getInOutWeight());
-        }
         if (e.getInOutRmaNumber() == null)
         {
             if (e.getIsPropertyInOutRmaNumberRemoved() != null && e.getIsPropertyInOutRmaNumberRemoved())
@@ -1475,28 +1304,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         else
         {
             this.setInOutReversalNumber(e.getInOutReversalNumber());
-        }
-        if (e.getInOutIsDropShip() == null)
-        {
-            if (e.getIsPropertyInOutIsDropShipRemoved() != null && e.getIsPropertyInOutIsDropShipRemoved())
-            {
-                this.setInOutIsDropShip(null);
-            }
-        }
-        else
-        {
-            this.setInOutIsDropShip(e.getInOutIsDropShip());
-        }
-        if (e.getInOutDropShipBusinessPartnerId() == null)
-        {
-            if (e.getIsPropertyInOutDropShipBusinessPartnerIdRemoved() != null && e.getIsPropertyInOutDropShipBusinessPartnerIdRemoved())
-            {
-                this.setInOutDropShipBusinessPartnerId(null);
-            }
-        }
-        else
-        {
-            this.setInOutDropShipBusinessPartnerId(e.getInOutDropShipBusinessPartnerId());
         }
         if (e.getInOutCreatedBy() == null)
         {

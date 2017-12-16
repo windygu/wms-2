@@ -1,0 +1,182 @@
+﻿!Dddml.Core.Dom.DocumentRoot,%20Dddml.Core,%20Version=1.0.6550.21269,%20Culture=neutral,%20PublicKeyToken=null
+aggregates:
+  Product: &o0
+    id:
+      name: ProductId
+      type: id-ne
+    properties:
+      ProductTypeId:
+        type: id
+      PrimaryProductCategoryId:
+        description: The primary category ; it should be one of the productCategoryId already setup in ProductCategoryMember
+        type: id
+      ManufacturerPartyId:
+        type: id
+      FacilityId:
+        type: id
+      IntroductionDate:
+        type: date-time
+      ReleaseDate:
+        type: date-time
+      SupportDiscontinuationDate:
+        type: date-time
+      SalesDiscontinuationDate:
+        type: date-time
+      SalesDiscWhenNotAvail:
+        type: indicator
+      InternalName:
+        type: description
+      BrandName:
+        type: name
+      Comments:
+        type: comment
+      ProductName:
+        type: name
+      Description:
+        type: description
+      PriceDetailText:
+        type: description
+        
+      SmallImageUrl:
+        type: url
+      MediumImageUrl:
+        type: url
+      LargeImageUrl:
+        type: url
+      DetailImageUrl:
+        type: url
+      OriginalImageUrl:
+        type: url
+        
+      DetailScreen:
+        type: long-varchar
+      InventoryMessage:
+        type: description
+        
+      InventoryItemTypeId:
+        type: id
+        
+      RequireInventory:
+        type: indicator
+        
+      QuantityUomId:
+        type: id
+      QuantityIncluded:
+        type: fixed-point
+      PiecesIncluded:
+        type: numeric
+        
+      RequireAmount:
+        type: indicator
+      FixedAmount:
+        type: currency-amount
+      AmountUomTypeId:
+        type: id
+        
+      WeightUomId:
+        type: id
+      ShippingWeight:
+        type: fixed-point
+      ProductWeight:
+        type: fixed-point
+      HeightUomId:
+        type: id
+      ProductHeight:
+        type: fixed-point
+      ShippingHeight:
+        type: fixed-point
+      WidthUomId:
+        type: id
+      ProductWidth:
+        type: fixed-point
+      ShippingWidth:
+        type: fixed-point
+      DepthUomId:
+        type: id
+      ProductDepth:
+        type: fixed-point
+      ShippingDepth:
+        type: fixed-point
+      DiameterUomId:
+        type: id
+      ProductDiameter:
+        type: fixed-point
+        
+      # ProductRating:
+        # type: fixed-point
+      # RatingTypeEnum:
+        # type: id
+        
+      Returnable:
+        type: indicator
+      Taxable:
+        type: indicator
+      ChargeShipping:
+        type: indicator
+      AutoCreateKeywords:
+        type: indicator
+      IncludeInPromotions:
+        type: indicator
+      IsVirtual:
+        type: indicator
+      IsVariant:
+        type: indicator
+      VirtualVariantMethodEnum:
+        description: This field defines the method of selecting a variant from the selectable features on the virtual product. Either as a variant explosion which will work to about 200 variants or as feature explosion which almost has no limits
+        type: id
+      # OriginGeoId:
+        # type: id
+      # RequirementMethodEnumId:
+        # type: id
+      # BillOfMaterialLevel:
+        # type: numeric
+      # ReservMaxPersons:
+        # type: fixed-point
+      # Reserv2ndPPPerc:
+        # description: percentage of the end price for the 2nd person renting this asset connected to this product
+        # type: fixed-point
+      # ReservNthPPPerc:
+        # description: percentage of the end price for the Nth person renting this asset connected to this product
+        # type: fixed-point
+      # ConfigId:
+        # description: Used to safe the persisted configuration Id for AGGREGATED products.
+        # type: id
+      # CreatedDate:
+        # type: date-time
+      # CreatedByUserLogin:
+        # type: id-vlong
+      # LastModifiedDate:
+        # type: date-time
+      # LastModifiedByUserLogin:
+        # type: id-vlong
+      InShippingBox:
+        type: indicator
+      DefaultShipmentBoxTypeId:
+        type: id
+      LotIdFilledIn:
+        description: Indicate if the lotId must be informed
+        type: long-varchar
+      # OrderDecimalQuantity:
+        # description: use to indicate if decimal quantity can be ordered for this product. Default value is Y
+        # type: indicator
+    references:
+      ProductCategory:
+        displayName: ProductCategory
+        description: Primary
+        type: ProductCategory
+        properties:
+        - PrimaryProductCategoryId
+        foreignKeyName: PROD_PRIMARY_CAT
+    reservedProperties:
+      # createdAt: CreatedDate
+      # createdBy: CreatedByUserLogin
+      # updatedAt: LastModifiedDate
+      # updatedBy: LastModifiedByUserLogin
+      noDeleted: true
+      
+    discriminator: ProductTypeId
+    
+    # metadata:
+      # StateEventDatabaseTableName: PRODUCT_STATE_EVENT
+
+      

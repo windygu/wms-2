@@ -25,7 +25,7 @@ namespace Dddml.Wms.Domain.Attribute
 	public interface ICreateOrMergePatchOrRemoveAttributeValue : IAttributeValueCommand
 	{
 
-		string Name { get; set; }
+		string AttributeValueName { get; set; }
 
 		string Description { get; set; }
 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.Attribute
 	public interface IMergePatchAttributeValue : ICreateOrMergePatchOrRemoveAttributeValue
 	{
 
-		bool IsPropertyNameRemoved { get; set; }
+		bool IsPropertyAttributeValueNameRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 

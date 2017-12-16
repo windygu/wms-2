@@ -19,7 +19,7 @@ public final class AttributeUseMvoFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "attributeSetName",
+            "attributeSetAttributeSetName",
             "attributeSetOrganizationId",
             "attributeSetDescription",
             "attributeSetSerialNumberAttributeId",
@@ -90,8 +90,8 @@ public final class AttributeUseMvoFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("attributeSetName", "attributeSetName");
-        aliasMap.put("AttributeSetName", "attributeSetName");
+        aliasMap.put("attributeSetAttributeSetName", "attributeSetAttributeSetName");
+        aliasMap.put("AttributeSetAttributeSetName", "attributeSetAttributeSetName");
         aliasMap.put("attributeSetOrganizationId", "attributeSetOrganizationId");
         aliasMap.put("AttributeSetOrganizationId", "attributeSetOrganizationId");
         aliasMap.put("attributeSetDescription", "attributeSetDescription");

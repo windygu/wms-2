@@ -12,7 +12,7 @@ public final class WarehouseFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "warehouseId",
-            "name",
+            "warehouseName",
             "description",
             "isInTransit",
             "version",
@@ -52,8 +52,8 @@ public final class WarehouseFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("warehouseId", "warehouseId");
         aliasMap.put("WarehouseId", "warehouseId");
-        aliasMap.put("name", "name");
-        aliasMap.put("Name", "name");
+        aliasMap.put("warehouseName", "warehouseName");
+        aliasMap.put("WarehouseName", "warehouseName");
         aliasMap.put("description", "description");
         aliasMap.put("Description", "description");
         aliasMap.put("isInTransit", "isInTransit");

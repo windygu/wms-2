@@ -1,0 +1,85 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  SupplierProduct:
+    id:
+      name: SupplierProductId
+      type: SupplierProductId
+      # columnNames: 
+      # - PRODUCT_ID
+      # - PARTY_ID
+      # - CURRENCY_UOM_ID
+      # - MINIMUM_ORDER_QUANTITY
+      # - AVAILABLE_FROM_DATE
+      
+    properties:
+    
+      AvailableThruDate:
+        type: date-time
+        
+      SupplierPrefOrderId:
+        type: id
+      SupplierRatingTypeId:
+        type: id
+        
+      StandardLeadTimeDays:
+        type: fixed-point
+      ManufacturingLeadTimeDays:
+        type: fixed-point
+      DeliveryLeadTimeDays:
+        type: fixed-point
+        
+      # OrderQtyIncrements:
+        # columnName: ORDER_QTY_INCREMENTS
+        # type: fixed-point
+      # UnitsIncluded:
+        # columnName: UNITS_INCLUDED
+        # type: fixed-point
+      QuantityUomId:
+        name: QuantityUomId
+        type: id
+      # AgreementId:
+        # columnName: AGREEMENT_ID
+        # type: id
+      # AgreementItemSeqId:
+        # columnName: AGREEMENT_ITEM_SEQ_ID
+        # type: id
+      LastPrice:
+        type: currency-precise
+      ShippingPrice:
+        type: currency-precise
+        
+      ExternalProductName:
+        type: name
+      ExternalProductId:
+        type: id-long
+        
+      CanDropShip:
+        type: bool
+      Comments:
+        type: comment
+        
+    reservedProperties:
+      noDeleted: true
+    
+    valueObjects:
+      SupplierProductId:
+        name: SupplierProductId
+        properties:
+          ProductId:
+            type: id-ne
+          PartyId:
+            type: id-ne
+          CurrencyUomId:
+            type: id
+          MinimumOrderQuantity:
+            type: fixed-point
+          # AvailableFromDate:
+            # type: date-time
+            
+    # metadata:
+      # StateEventDatabaseTableName: SUPPLIER_PRODUCT_STATE_EVENT

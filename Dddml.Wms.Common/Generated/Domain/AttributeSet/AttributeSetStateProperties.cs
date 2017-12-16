@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 	{
 		public virtual string AttributeSetId { get; set; }
 
-		public virtual string Name { get; set; }
+		public virtual string AttributeSetName { get; set; }
 
 		public virtual string OrganizationId { get; set; }
 

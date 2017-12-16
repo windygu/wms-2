@@ -44,8 +44,8 @@ namespace Dddml.Wms.Services.Tests
             inOut.DocumentNumber = documentNumber;
             inOut.CommandId = Guid.NewGuid().ToString();
             inOut.DocumentAction = DocumentAction.Draft;// 不能这样写：inOut.DocumentStatus = DocumentStatus.Drafted
-            inOut.ChargeAmount = new Money(10000, "CNY");
-            inOut.FreightAmount = new Money(400, "CNY");
+            //inOut.ChargeAmount = new Money(10000, "CNY");
+            //inOut.FreightAmount = new Money(400, "CNY");
             inOutApplicationService.When(inOut);
 
             MergePatchInOut patchInOut = new MergePatchInOut();
@@ -59,10 +59,10 @@ namespace Dddml.Wms.Services.Tests
             var inOutResult = inOutApplicationService.Get(inOut.DocumentNumber);
             //Console.WriteLine(inOutResult.DocumentNumber);
             Assert.AreEqual(DocumentStatus.Voided, inOutResult.DocumentStatus);
-            Console.WriteLine(inOutResult.FreightAmount);
-            Assert.AreEqual(inOut.FreightAmount, inOutResult.FreightAmount);
-            Console.WriteLine(inOutResult.ChargeAmount);
-            Assert.AreEqual(inOut.ChargeAmount, inOutResult.ChargeAmount);
+            //Console.WriteLine(inOutResult.FreightAmount);
+            //Assert.AreEqual(inOut.FreightAmount, inOutResult.FreightAmount);
+            //Console.WriteLine(inOutResult.ChargeAmount);
+            //Assert.AreEqual(inOut.ChargeAmount, inOutResult.ChargeAmount);
         }
 
 

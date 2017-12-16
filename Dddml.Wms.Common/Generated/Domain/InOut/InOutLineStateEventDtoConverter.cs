@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -44,9 +43,10 @@ namespace Dddml.Wms.Domain.InOut
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
-            dto.Description = e.Description;
             dto.LocatorId = e.LocatorId;
             dto.ProductId = e.ProductId;
+            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
+            dto.Description = e.Description;
             dto.UomId = e.UomId;
             dto.MovementQuantity = e.MovementQuantity;
             dto.ConfirmedQuantity = e.ConfirmedQuantity;
@@ -54,8 +54,6 @@ namespace Dddml.Wms.Domain.InOut
             dto.TargetQuantity = e.TargetQuantity;
             dto.PickedQuantity = e.PickedQuantity;
             dto.IsInvoiced = e.IsInvoiced;
-            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
-            dto.IsDescription = e.IsDescription;
             dto.Processed = e.Processed;
             dto.QuantityEntered = e.QuantityEntered;
             dto.RmaLineNumber = e.RmaLineNumber;
@@ -72,9 +70,10 @@ namespace Dddml.Wms.Domain.InOut
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
-            dto.Description = e.Description;
             dto.LocatorId = e.LocatorId;
             dto.ProductId = e.ProductId;
+            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
+            dto.Description = e.Description;
             dto.UomId = e.UomId;
             dto.MovementQuantity = e.MovementQuantity;
             dto.ConfirmedQuantity = e.ConfirmedQuantity;
@@ -82,16 +81,15 @@ namespace Dddml.Wms.Domain.InOut
             dto.TargetQuantity = e.TargetQuantity;
             dto.PickedQuantity = e.PickedQuantity;
             dto.IsInvoiced = e.IsInvoiced;
-            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
-            dto.IsDescription = e.IsDescription;
             dto.Processed = e.Processed;
             dto.QuantityEntered = e.QuantityEntered;
             dto.RmaLineNumber = e.RmaLineNumber;
             dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Active = e.Active;
-            dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyLocatorIdRemoved = e.IsPropertyLocatorIdRemoved;
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
+            dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
+            dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyUomIdRemoved = e.IsPropertyUomIdRemoved;
             dto.IsPropertyMovementQuantityRemoved = e.IsPropertyMovementQuantityRemoved;
             dto.IsPropertyConfirmedQuantityRemoved = e.IsPropertyConfirmedQuantityRemoved;
@@ -99,8 +97,6 @@ namespace Dddml.Wms.Domain.InOut
             dto.IsPropertyTargetQuantityRemoved = e.IsPropertyTargetQuantityRemoved;
             dto.IsPropertyPickedQuantityRemoved = e.IsPropertyPickedQuantityRemoved;
             dto.IsPropertyIsInvoicedRemoved = e.IsPropertyIsInvoicedRemoved;
-            dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
-            dto.IsPropertyIsDescriptionRemoved = e.IsPropertyIsDescriptionRemoved;
             dto.IsPropertyProcessedRemoved = e.IsPropertyProcessedRemoved;
             dto.IsPropertyQuantityEnteredRemoved = e.IsPropertyQuantityEnteredRemoved;
             dto.IsPropertyRmaLineNumberRemoved = e.IsPropertyRmaLineNumberRemoved;

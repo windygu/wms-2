@@ -175,7 +175,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 		public virtual void When(IAttributeValueMvoStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.Name = e.Name;
+			this.AttributeValueName = e.AttributeValueName;
 
 			this.Description = e.Description;
 
@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
-			this.AttributeName = e.AttributeName;
+			this.AttributeAttributeName = e.AttributeAttributeName;
 
 			this.AttributeOrganizationId = e.AttributeOrganizationId;
 
@@ -230,16 +230,16 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.Name == null)
+			if (e.AttributeValueName == null)
 			{
-				if (e.IsPropertyNameRemoved)
+				if (e.IsPropertyAttributeValueNameRemoved)
 				{
-					this.Name = default(string);
+					this.AttributeValueName = default(string);
 				}
 			}
 			else
 			{
-				this.Name = e.Name;
+				this.AttributeValueName = e.AttributeValueName;
 			}
 
 			if (e.Description == null)
@@ -290,16 +290,16 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 				this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 			}
 
-			if (e.AttributeName == null)
+			if (e.AttributeAttributeName == null)
 			{
-				if (e.IsPropertyAttributeNameRemoved)
+				if (e.IsPropertyAttributeAttributeNameRemoved)
 				{
-					this.AttributeName = default(string);
+					this.AttributeAttributeName = default(string);
 				}
 			}
 			else
 			{
-				this.AttributeName = e.AttributeName;
+				this.AttributeAttributeName = e.AttributeAttributeName;
 			}
 
 			if (e.AttributeOrganizationId == null)

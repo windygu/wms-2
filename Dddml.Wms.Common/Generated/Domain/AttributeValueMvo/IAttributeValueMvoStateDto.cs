@@ -22,7 +22,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             set;
         }
 
-        string Name
+        string AttributeValueName
         {
             get;
             set;
@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             set;
         }
 
-        string AttributeName
+        string AttributeAttributeName
         {
             get;
             set;

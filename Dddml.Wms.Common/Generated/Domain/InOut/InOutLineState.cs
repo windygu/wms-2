@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -195,11 +194,13 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual void When(IInOutLineStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.Description = e.Description;
-
 			this.LocatorId = e.LocatorId;
 
 			this.ProductId = e.ProductId;
+
+			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
+
+			this.Description = e.Description;
 
 			this.UomId = e.UomId;
 
@@ -214,10 +215,6 @@ namespace Dddml.Wms.Domain.InOut
             this.PickedQuantity = (e.PickedQuantity != null && e.PickedQuantity.HasValue) ? e.PickedQuantity.Value : default(decimal);
 
             this.IsInvoiced = (e.IsInvoiced != null && e.IsInvoiced.HasValue) ? e.IsInvoiced.Value : default(bool);
-
-			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
-
-            this.IsDescription = (e.IsDescription != null && e.IsDescription.HasValue) ? e.IsDescription.Value : default(bool);
 
             this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
 
@@ -242,18 +239,6 @@ namespace Dddml.Wms.Domain.InOut
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.Description == null)
-			{
-				if (e.IsPropertyDescriptionRemoved)
-				{
-					this.Description = default(string);
-				}
-			}
-			else
-			{
-				this.Description = e.Description;
-			}
-
 			if (e.LocatorId == null)
 			{
 				if (e.IsPropertyLocatorIdRemoved)
@@ -276,6 +261,30 @@ namespace Dddml.Wms.Domain.InOut
 			else
 			{
 				this.ProductId = e.ProductId;
+			}
+
+			if (e.AttributeSetInstanceId == null)
+			{
+				if (e.IsPropertyAttributeSetInstanceIdRemoved)
+				{
+					this.AttributeSetInstanceId = default(string);
+				}
+			}
+			else
+			{
+				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
+			}
+
+			if (e.Description == null)
+			{
+				if (e.IsPropertyDescriptionRemoved)
+				{
+					this.Description = default(string);
+				}
+			}
+			else
+			{
+				this.Description = e.Description;
 			}
 
 			if (e.UomId == null)
@@ -360,30 +369,6 @@ namespace Dddml.Wms.Domain.InOut
 			else
 			{
 				this.IsInvoiced = (e.IsInvoiced != null && e.IsInvoiced.HasValue) ? e.IsInvoiced.Value : default(bool);
-			}
-
-			if (e.AttributeSetInstanceId == null)
-			{
-				if (e.IsPropertyAttributeSetInstanceIdRemoved)
-				{
-					this.AttributeSetInstanceId = default(string);
-				}
-			}
-			else
-			{
-				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
-			}
-
-			if (e.IsDescription == null)
-			{
-				if (e.IsPropertyIsDescriptionRemoved)
-				{
-					this.IsDescription = default(bool);
-				}
-			}
-			else
-			{
-				this.IsDescription = (e.IsDescription != null && e.IsDescription.HasValue) ? e.IsDescription.Value : default(bool);
 			}
 
 			if (e.Processed == null)

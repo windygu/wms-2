@@ -44,10 +44,6 @@ namespace Dddml.Wms.Domain.DocumentType.NHibernate
 				state = new DocumentTypeState ();
 				(state as DocumentTypeState).DocumentTypeId = id;
 			}
-            if (ReadOnlyProxyGenerator != null && state != null)
-            {
-                return ReadOnlyProxyGenerator.CreateProxy<IDocumentTypeState>(state, new Type[] {  }, _readOnlyPropertyNames);
-            }
 			return state;
 		}
 
@@ -55,10 +51,6 @@ namespace Dddml.Wms.Domain.DocumentType.NHibernate
 		public void Save(IDocumentTypeState state)
 		{
             IDocumentTypeState s = state;
-            if (ReadOnlyProxyGenerator != null)
-            {
-                s = ReadOnlyProxyGenerator.GetTarget<IDocumentTypeState>(state);
-            }
 			CurrentSession.SaveOrUpdate (s);
 
 			var saveable = s as ISaveable;

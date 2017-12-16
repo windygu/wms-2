@@ -21,16 +21,16 @@ public class AttributeValueStateDto
         this.value = value;
     }
 
-    private String name;
+    private String attributeValueName;
 
-    public String getName()
+    public String getAttributeValueName()
     {
-        return this.name;
+        return this.attributeValueName;
     }
 
-    public void setName(String name)
+    public void setAttributeValueName(String attributeValueName)
     {
-        this.name = name;
+        this.attributeValueName = attributeValueName;
     }
 
     private String description;
@@ -170,8 +170,8 @@ public class AttributeValueStateDto
             if (returnedFieldsContains("Value")) {
                 dto.setValue(state.getValue());
             }
-            if (returnedFieldsContains("Name")) {
-                dto.setName(state.getName());
+            if (returnedFieldsContains("AttributeValueName")) {
+                dto.setAttributeValueName(state.getAttributeValueName());
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());

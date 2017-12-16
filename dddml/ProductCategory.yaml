@@ -1,0 +1,55 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+  ProductCategory: &o0
+    id:
+      name: ProductCategoryId
+      type: id-ne
+    properties:
+      ProductCategoryTypeId:
+        type: id
+      PrimaryParentCategoryId:
+        type: id
+      CategoryName:
+        type: name
+      Description:
+        type: description
+      # LongDescription:
+        # type: very-long
+      CategoryImageUrl:
+        type: url
+      # LinkOneImageUrl:
+        # type: url
+      # LinkTwoImageUrl:
+        # type: url
+      DetailScreen:
+        type: long-varchar
+      ShowInSelect:
+        type: bool
+      ProductCategoryIdToProductCategories:
+        description: PrimaryChild
+        itemType: ProductCategory
+        isDerived: true
+        itemPropertyMap:
+        - propertyName: ProductCategoryId
+          relatedPropertyName: PrimaryParentCategoryId
+    references:
+      PrimaryParentCategoryId:
+        displayName: PRIMARY-PARENT-CATEGORY-ID
+        description: PrimaryParent
+        type: ProductCategory
+        properties:
+        - PrimaryParentCategoryId
+        foreignKeyName: PROD_CTGRY_PARENT
+    
+    reservedProperties: {}
+    
+    discriminator: ProductCategoryTypeId
+    
+    # metadata:
+      # StateEventDatabaseTableName: PRODUCT_CATEGORY_STATE_EVENT
+
+      

@@ -12,9 +12,10 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="Description" ></property>
     <property name="LocatorId" ></property>
     <property name="ProductId" ></property>
+    <property name="AttributeSetInstanceId" ></property>
+    <property name="Description" ></property>
     <property name="UomId" ></property>
     <property name="MovementQuantity" ></property>
     <property name="ConfirmedQuantity" ></property>
@@ -22,8 +23,6 @@
     <property name="TargetQuantity" ></property>
     <property name="PickedQuantity" ></property>
     <property name="IsInvoiced" ></property>
-    <property name="AttributeSetInstanceId" ></property>
-    <property name="IsDescription" ></property>
     <property name="Processed" ></property>
     <property name="QuantityEntered" ></property>
     <property name="RmaLineNumber" ></property>

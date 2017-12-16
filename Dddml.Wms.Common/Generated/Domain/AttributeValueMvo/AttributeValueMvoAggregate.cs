@@ -108,12 +108,12 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 			var stateEventId = new AttributeValueMvoStateEventId(c.AttributeValueId, c.AttributeVersion);
             IAttributeValueMvoStateCreated e = NewAttributeValueMvoStateCreated(stateEventId);
 		
-            e.Name = c.Name;
+            e.AttributeValueName = c.AttributeValueName;
             e.Description = c.Description;
             e.ReferenceId = c.ReferenceId;
             e.Version = c.Version;
             e.Active = c.Active;
-            e.AttributeName = c.AttributeName;
+            e.AttributeAttributeName = c.AttributeAttributeName;
             e.AttributeOrganizationId = c.AttributeOrganizationId;
             e.AttributeDescription = c.AttributeDescription;
             e.AttributeIsMandatory = c.AttributeIsMandatory;
@@ -145,12 +145,12 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 			var stateEventId = new AttributeValueMvoStateEventId(c.AttributeValueId, c.AttributeVersion);
             IAttributeValueMvoStateMergePatched e = NewAttributeValueMvoStateMergePatched(stateEventId);
 
-            e.Name = c.Name;
+            e.AttributeValueName = c.AttributeValueName;
             e.Description = c.Description;
             e.ReferenceId = c.ReferenceId;
             e.Version = c.Version;
             e.Active = c.Active;
-            e.AttributeName = c.AttributeName;
+            e.AttributeAttributeName = c.AttributeAttributeName;
             e.AttributeOrganizationId = c.AttributeOrganizationId;
             e.AttributeDescription = c.AttributeDescription;
             e.AttributeIsMandatory = c.AttributeIsMandatory;
@@ -166,12 +166,12 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             e.AttributeUpdatedAt = c.AttributeUpdatedAt;
             e.AttributeActive = c.AttributeActive;
             e.AttributeDeleted = c.AttributeDeleted;
-            e.IsPropertyNameRemoved = c.IsPropertyNameRemoved;
+            e.IsPropertyAttributeValueNameRemoved = c.IsPropertyAttributeValueNameRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyReferenceIdRemoved = c.IsPropertyReferenceIdRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
-            e.IsPropertyAttributeNameRemoved = c.IsPropertyAttributeNameRemoved;
+            e.IsPropertyAttributeAttributeNameRemoved = c.IsPropertyAttributeAttributeNameRemoved;
             e.IsPropertyAttributeOrganizationIdRemoved = c.IsPropertyAttributeOrganizationIdRemoved;
             e.IsPropertyAttributeDescriptionRemoved = c.IsPropertyAttributeDescriptionRemoved;
             e.IsPropertyAttributeIsMandatoryRemoved = c.IsPropertyAttributeIsMandatoryRemoved;

@@ -174,7 +174,7 @@ namespace Dddml.Wms.Domain.Warehouse
 		public virtual void When(IWarehouseStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.Name = e.Name;
+			this.WarehouseName = e.WarehouseName;
 
 			this.Description = e.Description;
 
@@ -195,16 +195,16 @@ namespace Dddml.Wms.Domain.Warehouse
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.Name == null)
+			if (e.WarehouseName == null)
 			{
-				if (e.IsPropertyNameRemoved)
+				if (e.IsPropertyWarehouseNameRemoved)
 				{
-					this.Name = default(string);
+					this.WarehouseName = default(string);
 				}
 			}
 			else
 			{
-				this.Name = e.Name;
+				this.WarehouseName = e.WarehouseName;
 			}
 
 			if (e.Description == null)

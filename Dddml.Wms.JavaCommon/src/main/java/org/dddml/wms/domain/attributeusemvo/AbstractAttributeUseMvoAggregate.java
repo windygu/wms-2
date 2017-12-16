@@ -61,7 +61,7 @@ public abstract class AbstractAttributeUseMvoAggregate extends AbstractAggregate
         e.setSequenceNumber(c.getSequenceNumber());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        e.setAttributeSetName(c.getAttributeSetName());
+        e.setAttributeSetAttributeSetName(c.getAttributeSetAttributeSetName());
         e.setAttributeSetOrganizationId(c.getAttributeSetOrganizationId());
         e.setAttributeSetDescription(c.getAttributeSetDescription());
         e.setAttributeSetSerialNumberAttributeId(c.getAttributeSetSerialNumberAttributeId());
@@ -85,7 +85,7 @@ public abstract class AbstractAttributeUseMvoAggregate extends AbstractAggregate
         e.setSequenceNumber(c.getSequenceNumber());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        e.setAttributeSetName(c.getAttributeSetName());
+        e.setAttributeSetAttributeSetName(c.getAttributeSetAttributeSetName());
         e.setAttributeSetOrganizationId(c.getAttributeSetOrganizationId());
         e.setAttributeSetDescription(c.getAttributeSetDescription());
         e.setAttributeSetSerialNumberAttributeId(c.getAttributeSetSerialNumberAttributeId());
@@ -100,7 +100,7 @@ public abstract class AbstractAttributeUseMvoAggregate extends AbstractAggregate
         e.setIsPropertySequenceNumberRemoved(c.getIsPropertySequenceNumberRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        e.setIsPropertyAttributeSetNameRemoved(c.getIsPropertyAttributeSetNameRemoved());
+        e.setIsPropertyAttributeSetAttributeSetNameRemoved(c.getIsPropertyAttributeSetAttributeSetNameRemoved());
         e.setIsPropertyAttributeSetOrganizationIdRemoved(c.getIsPropertyAttributeSetOrganizationIdRemoved());
         e.setIsPropertyAttributeSetDescriptionRemoved(c.getIsPropertyAttributeSetDescriptionRemoved());
         e.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(c.getIsPropertyAttributeSetSerialNumberAttributeIdRemoved());

@@ -57,7 +57,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
     protected AttributeStateEvent map(AttributeCommand.CreateAttribute c) {
         AttributeStateEventId stateEventId = new AttributeStateEventId(c.getAttributeId(), c.getVersion());
         AttributeStateEvent.AttributeStateCreated e = newAttributeStateCreated(stateEventId);
-        e.setName(c.getName());
+        e.setAttributeName(c.getAttributeName());
         e.setOrganizationId(c.getOrganizationId());
         e.setDescription(c.getDescription());
         e.setIsMandatory(c.getIsMandatory());
@@ -85,7 +85,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
     protected AttributeStateEvent map(AttributeCommand.MergePatchAttribute c) {
         AttributeStateEventId stateEventId = new AttributeStateEventId(c.getAttributeId(), c.getVersion());
         AttributeStateEvent.AttributeStateMergePatched e = newAttributeStateMergePatched(stateEventId);
-        e.setName(c.getName());
+        e.setAttributeName(c.getAttributeName());
         e.setOrganizationId(c.getOrganizationId());
         e.setDescription(c.getDescription());
         e.setIsMandatory(c.getIsMandatory());
@@ -96,7 +96,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         e.setFieldName(c.getFieldName());
         e.setReferenceId(c.getReferenceId());
         e.setActive(c.getActive());
-        e.setIsPropertyNameRemoved(c.getIsPropertyNameRemoved());
+        e.setIsPropertyAttributeNameRemoved(c.getIsPropertyAttributeNameRemoved());
         e.setIsPropertyOrganizationIdRemoved(c.getIsPropertyOrganizationIdRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyIsMandatoryRemoved(c.getIsPropertyIsMandatoryRemoved());
@@ -160,7 +160,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         AttributeValueStateEvent.AttributeValueStateCreated e = newAttributeValueStateCreated(stateEventId);
         AttributeValueState s = outerState.getAttributeValues().get(c.getValue());
 
-        e.setName(c.getName());
+        e.setAttributeValueName(c.getAttributeValueName());
         e.setDescription(c.getDescription());
         e.setReferenceId(c.getReferenceId());
         e.setActive(c.getActive());
@@ -177,11 +177,11 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         AttributeValueStateEvent.AttributeValueStateMergePatched e = newAttributeValueStateMergePatched(stateEventId);
         AttributeValueState s = outerState.getAttributeValues().get(c.getValue());
 
-        e.setName(c.getName());
+        e.setAttributeValueName(c.getAttributeValueName());
         e.setDescription(c.getDescription());
         e.setReferenceId(c.getReferenceId());
         e.setActive(c.getActive());
-        e.setIsPropertyNameRemoved(c.getIsPropertyNameRemoved());
+        e.setIsPropertyAttributeValueNameRemoved(c.getIsPropertyAttributeValueNameRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyReferenceIdRemoved(c.getIsPropertyReferenceIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());

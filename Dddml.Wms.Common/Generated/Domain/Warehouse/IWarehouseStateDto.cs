@@ -20,7 +20,7 @@ namespace Dddml.Wms.Domain.Warehouse
             set;
         }
 
-        string Name
+        string WarehouseName
         {
             get;
             set;

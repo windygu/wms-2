@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.Attribute
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
-            dto.Name = e.Name;
+            dto.AttributeValueName = e.AttributeValueName;
             dto.Description = e.Description;
             dto.ReferenceId = e.ReferenceId;
             dto.Active = e.Active;
@@ -58,11 +58,11 @@ namespace Dddml.Wms.Domain.Attribute
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
-            dto.Name = e.Name;
+            dto.AttributeValueName = e.AttributeValueName;
             dto.Description = e.Description;
             dto.ReferenceId = e.ReferenceId;
             dto.Active = e.Active;
-            dto.IsPropertyNameRemoved = e.IsPropertyNameRemoved;
+            dto.IsPropertyAttributeValueNameRemoved = e.IsPropertyAttributeValueNameRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyReferenceIdRemoved = e.IsPropertyReferenceIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;

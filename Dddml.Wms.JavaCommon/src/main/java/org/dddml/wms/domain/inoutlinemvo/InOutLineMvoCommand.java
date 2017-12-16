@@ -4,7 +4,6 @@ import java.util.*;
 import org.dddml.wms.domain.inout.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import org.joda.money.Money;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
 import org.dddml.wms.specialization.DomainError;
@@ -43,10 +42,6 @@ public interface InOutLineMvoCommand extends Command
 
     interface CreateOrMergePatchInOutLineMvo extends InOutLineMvoCommand
     {
-        String getDescription();
-
-        void setDescription(String description);
-
         String getLocatorId();
 
         void setLocatorId(String locatorId);
@@ -54,6 +49,14 @@ public interface InOutLineMvoCommand extends Command
         String getProductId();
 
         void setProductId(String productId);
+
+        String getAttributeSetInstanceId();
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        String getDescription();
+
+        void setDescription(String description);
 
         String getUomId();
 
@@ -83,14 +86,6 @@ public interface InOutLineMvoCommand extends Command
 
         void setIsInvoiced(Boolean isInvoiced);
 
-        String getAttributeSetInstanceId();
-
-        void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-        Boolean getIsDescription();
-
-        void setIsDescription(Boolean isDescription);
-
         Boolean getProcessed();
 
         void setProcessed(Boolean processed);
@@ -115,10 +110,6 @@ public interface InOutLineMvoCommand extends Command
 
         void setActive(Boolean active);
 
-        Boolean getInOutIsSOTransaction();
-
-        void setInOutIsSOTransaction(Boolean inOutIsSOTransaction);
-
         String getDocumentAction();
 
         void setDocumentAction(String documentAction);
@@ -135,17 +126,17 @@ public interface InOutLineMvoCommand extends Command
 
         void setInOutProcessed(Boolean inOutProcessed);
 
-        Integer getInOutDocumentType();
+        String getInOutDocumentTypeId();
 
-        void setInOutDocumentType(Integer inOutDocumentType);
+        void setInOutDocumentTypeId(String inOutDocumentTypeId);
 
         String getInOutDescription();
 
         void setInOutDescription(String inOutDescription);
 
-        String getInOutOrderNumber();
+        String getInOutOrderId();
 
-        void setInOutOrderNumber(String inOutOrderNumber);
+        void setInOutOrderId(String inOutOrderId);
 
         Date getInOutDateOrdered();
 
@@ -155,9 +146,9 @@ public interface InOutLineMvoCommand extends Command
 
         void setInOutIsPrinted(Boolean inOutIsPrinted);
 
-        String getInOutMovementType();
+        String getInOutMovementTypeId();
 
-        void setInOutMovementType(String inOutMovementType);
+        void setInOutMovementTypeId(String inOutMovementTypeId);
 
         Date getInOutMovementDate();
 
@@ -175,17 +166,9 @@ public interface InOutLineMvoCommand extends Command
 
         void setInOutPOReference(String inOutPOReference);
 
-        Money getInOutFreightAmount();
-
-        void setInOutFreightAmount(Money inOutFreightAmount);
-
         String getInOutShipperId();
 
         void setInOutShipperId(String inOutShipperId);
-
-        Money getInOutChargeAmount();
-
-        void setInOutChargeAmount(Money inOutChargeAmount);
 
         Date getInOutDatePrinted();
 
@@ -227,14 +210,6 @@ public interface InOutLineMvoCommand extends Command
 
         void setInOutIsInDispute(Boolean inOutIsInDispute);
 
-        BigDecimal getInOutVolume();
-
-        void setInOutVolume(BigDecimal inOutVolume);
-
-        BigDecimal getInOutWeight();
-
-        void setInOutWeight(BigDecimal inOutWeight);
-
         String getInOutRmaNumber();
 
         void setInOutRmaNumber(String inOutRmaNumber);
@@ -242,14 +217,6 @@ public interface InOutLineMvoCommand extends Command
         String getInOutReversalNumber();
 
         void setInOutReversalNumber(String inOutReversalNumber);
-
-        Boolean getInOutIsDropShip();
-
-        void setInOutIsDropShip(Boolean inOutIsDropShip);
-
-        String getInOutDropShipBusinessPartnerId();
-
-        void setInOutDropShipBusinessPartnerId(String inOutDropShipBusinessPartnerId);
 
         String getInOutCreatedBy();
 
@@ -283,10 +250,6 @@ public interface InOutLineMvoCommand extends Command
 
     interface MergePatchInOutLineMvo extends CreateOrMergePatchInOutLineMvo
     {
-        Boolean getIsPropertyDescriptionRemoved();
-
-        void setIsPropertyDescriptionRemoved(Boolean removed);
-
         Boolean getIsPropertyLocatorIdRemoved();
 
         void setIsPropertyLocatorIdRemoved(Boolean removed);
@@ -294,6 +257,14 @@ public interface InOutLineMvoCommand extends Command
         Boolean getIsPropertyProductIdRemoved();
 
         void setIsPropertyProductIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
+
+        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDescriptionRemoved();
+
+        void setIsPropertyDescriptionRemoved(Boolean removed);
 
         Boolean getIsPropertyUomIdRemoved();
 
@@ -323,14 +294,6 @@ public interface InOutLineMvoCommand extends Command
 
         void setIsPropertyIsInvoicedRemoved(Boolean removed);
 
-        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
-
-        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyIsDescriptionRemoved();
-
-        void setIsPropertyIsDescriptionRemoved(Boolean removed);
-
         Boolean getIsPropertyProcessedRemoved();
 
         void setIsPropertyProcessedRemoved(Boolean removed);
@@ -355,10 +318,6 @@ public interface InOutLineMvoCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutIsSOTransactionRemoved();
-
-        void setIsPropertyInOutIsSOTransactionRemoved(Boolean removed);
-
         Boolean getIsPropertyInOutPostedRemoved();
 
         void setIsPropertyInOutPostedRemoved(Boolean removed);
@@ -371,17 +330,17 @@ public interface InOutLineMvoCommand extends Command
 
         void setIsPropertyInOutProcessedRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutDocumentTypeRemoved();
+        Boolean getIsPropertyInOutDocumentTypeIdRemoved();
 
-        void setIsPropertyInOutDocumentTypeRemoved(Boolean removed);
+        void setIsPropertyInOutDocumentTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutDescriptionRemoved();
 
         void setIsPropertyInOutDescriptionRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutOrderNumberRemoved();
+        Boolean getIsPropertyInOutOrderIdRemoved();
 
-        void setIsPropertyInOutOrderNumberRemoved(Boolean removed);
+        void setIsPropertyInOutOrderIdRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutDateOrderedRemoved();
 
@@ -391,9 +350,9 @@ public interface InOutLineMvoCommand extends Command
 
         void setIsPropertyInOutIsPrintedRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutMovementTypeRemoved();
+        Boolean getIsPropertyInOutMovementTypeIdRemoved();
 
-        void setIsPropertyInOutMovementTypeRemoved(Boolean removed);
+        void setIsPropertyInOutMovementTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutMovementDateRemoved();
 
@@ -411,17 +370,9 @@ public interface InOutLineMvoCommand extends Command
 
         void setIsPropertyInOutPOReferenceRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutFreightAmountRemoved();
-
-        void setIsPropertyInOutFreightAmountRemoved(Boolean removed);
-
         Boolean getIsPropertyInOutShipperIdRemoved();
 
         void setIsPropertyInOutShipperIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyInOutChargeAmountRemoved();
-
-        void setIsPropertyInOutChargeAmountRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutDatePrintedRemoved();
 
@@ -463,14 +414,6 @@ public interface InOutLineMvoCommand extends Command
 
         void setIsPropertyInOutIsInDisputeRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutVolumeRemoved();
-
-        void setIsPropertyInOutVolumeRemoved(Boolean removed);
-
-        Boolean getIsPropertyInOutWeightRemoved();
-
-        void setIsPropertyInOutWeightRemoved(Boolean removed);
-
         Boolean getIsPropertyInOutRmaNumberRemoved();
 
         void setIsPropertyInOutRmaNumberRemoved(Boolean removed);
@@ -478,14 +421,6 @@ public interface InOutLineMvoCommand extends Command
         Boolean getIsPropertyInOutReversalNumberRemoved();
 
         void setIsPropertyInOutReversalNumberRemoved(Boolean removed);
-
-        Boolean getIsPropertyInOutIsDropShipRemoved();
-
-        void setIsPropertyInOutIsDropShipRemoved(Boolean removed);
-
-        Boolean getIsPropertyInOutDropShipBusinessPartnerIdRemoved();
-
-        void setIsPropertyInOutDropShipBusinessPartnerIdRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutCreatedByRemoved();
 

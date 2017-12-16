@@ -6,16 +6,16 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeValueMvoCommandDto
 {
-    private String name;
+    private String attributeValueName;
 
-    public String getName()
+    public String getAttributeValueName()
     {
-        return this.name;
+        return this.attributeValueName;
     }
 
-    public void setName(String name)
+    public void setAttributeValueName(String attributeValueName)
     {
-        this.name = name;
+        this.attributeValueName = attributeValueName;
     }
 
     private String description;
@@ -66,16 +66,16 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.active = active;
     }
 
-    private String attributeName;
+    private String attributeAttributeName;
 
-    public String getAttributeName()
+    public String getAttributeAttributeName()
     {
-        return this.attributeName;
+        return this.attributeAttributeName;
     }
 
-    public void setAttributeName(String attributeName)
+    public void setAttributeAttributeName(String attributeAttributeName)
     {
-        this.attributeName = attributeName;
+        this.attributeAttributeName = attributeAttributeName;
     }
 
     private String attributeOrganizationId;
@@ -258,16 +258,16 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeDeleted = attributeDeleted;
     }
 
-    private Boolean isPropertyNameRemoved;
+    private Boolean isPropertyAttributeValueNameRemoved;
 
-    public Boolean getIsPropertyNameRemoved()
+    public Boolean getIsPropertyAttributeValueNameRemoved()
     {
-        return this.isPropertyNameRemoved;
+        return this.isPropertyAttributeValueNameRemoved;
     }
 
-    public void setIsPropertyNameRemoved(Boolean removed)
+    public void setIsPropertyAttributeValueNameRemoved(Boolean removed)
     {
-        this.isPropertyNameRemoved = removed;
+        this.isPropertyAttributeValueNameRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;
@@ -318,16 +318,16 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.isPropertyActiveRemoved = removed;
     }
 
-    private Boolean isPropertyAttributeNameRemoved;
+    private Boolean isPropertyAttributeAttributeNameRemoved;
 
-    public Boolean getIsPropertyAttributeNameRemoved()
+    public Boolean getIsPropertyAttributeAttributeNameRemoved()
     {
-        return this.isPropertyAttributeNameRemoved;
+        return this.isPropertyAttributeAttributeNameRemoved;
     }
 
-    public void setIsPropertyAttributeNameRemoved(Boolean removed)
+    public void setIsPropertyAttributeAttributeNameRemoved(Boolean removed)
     {
-        this.isPropertyAttributeNameRemoved = removed;
+        this.isPropertyAttributeAttributeNameRemoved = removed;
     }
 
     private Boolean isPropertyAttributeOrganizationIdRemoved;
@@ -513,12 +513,12 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
     public void copyTo(AbstractAttributeValueMvoCommand.AbstractCreateOrMergePatchAttributeValueMvo command)
     {
         ((AbstractAttributeValueMvoCommandDto) this).copyTo(command);
-        command.setName(this.getName());
+        command.setAttributeValueName(this.getAttributeValueName());
         command.setDescription(this.getDescription());
         command.setReferenceId(this.getReferenceId());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
-        command.setAttributeName(this.getAttributeName());
+        command.setAttributeAttributeName(this.getAttributeAttributeName());
         command.setAttributeOrganizationId(this.getAttributeOrganizationId());
         command.setAttributeDescription(this.getAttributeDescription());
         command.setAttributeIsMandatory(this.getAttributeIsMandatory());
@@ -558,12 +558,12 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
     public void copyTo(AbstractAttributeValueMvoCommand.AbstractMergePatchAttributeValueMvo command)
     {
         copyTo((AbstractAttributeValueMvoCommand.AbstractCreateOrMergePatchAttributeValueMvo) command);
-        command.setIsPropertyNameRemoved(this.getIsPropertyNameRemoved());
+        command.setIsPropertyAttributeValueNameRemoved(this.getIsPropertyAttributeValueNameRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyReferenceIdRemoved(this.getIsPropertyReferenceIdRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
-        command.setIsPropertyAttributeNameRemoved(this.getIsPropertyAttributeNameRemoved());
+        command.setIsPropertyAttributeAttributeNameRemoved(this.getIsPropertyAttributeAttributeNameRemoved());
         command.setIsPropertyAttributeOrganizationIdRemoved(this.getIsPropertyAttributeOrganizationIdRemoved());
         command.setIsPropertyAttributeDescriptionRemoved(this.getIsPropertyAttributeDescriptionRemoved());
         command.setIsPropertyAttributeIsMandatoryRemoved(this.getIsPropertyAttributeIsMandatoryRemoved());

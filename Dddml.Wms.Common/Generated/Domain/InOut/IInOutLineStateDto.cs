@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOut;
-using NodaMoney;
 
 namespace Dddml.Wms.Domain.InOut
 {
@@ -21,12 +20,6 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        string Description
-        {
-            get;
-            set;
-        }
-
         string LocatorId
         {
             get;
@@ -34,6 +27,18 @@ namespace Dddml.Wms.Domain.InOut
         }
 
         string ProductId
+        {
+            get;
+            set;
+        }
+
+        string AttributeSetInstanceId
+        {
+            get;
+            set;
+        }
+
+        string Description
         {
             get;
             set;
@@ -76,18 +81,6 @@ namespace Dddml.Wms.Domain.InOut
         }
 
         bool? IsInvoiced
-        {
-            get;
-            set;
-        }
-
-        string AttributeSetInstanceId
-        {
-            get;
-            set;
-        }
-
-        bool? IsDescription
         {
             get;
             set;

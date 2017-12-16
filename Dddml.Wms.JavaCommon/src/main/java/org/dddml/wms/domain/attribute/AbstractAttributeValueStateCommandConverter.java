@@ -33,13 +33,13 @@ public abstract class AbstractAttributeValueStateCommandConverter<TCreateAttribu
         TMergePatchAttributeValue cmd = newMergePatchAttributeValue();
 
         cmd.setValue(state.getValue());
-        cmd.setName(state.getName());
+        cmd.setAttributeValueName(state.getAttributeValueName());
         cmd.setDescription(state.getDescription());
         cmd.setReferenceId(state.getReferenceId());
         cmd.setActive(state.getActive());
         cmd.setAttributeId(state.getAttributeId());
             
-        if (state.getName() == null) { cmd.setIsPropertyNameRemoved(true); }
+        if (state.getAttributeValueName() == null) { cmd.setIsPropertyAttributeValueNameRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getReferenceId() == null) { cmd.setIsPropertyReferenceIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
@@ -51,7 +51,7 @@ public abstract class AbstractAttributeValueStateCommandConverter<TCreateAttribu
         TCreateAttributeValue cmd = newCreateAttributeValue();
 
         cmd.setValue(state.getValue());
-        cmd.setName(state.getName());
+        cmd.setAttributeValueName(state.getAttributeValueName());
         cmd.setDescription(state.getDescription());
         cmd.setReferenceId(state.getReferenceId());
         cmd.setActive(state.getActive());

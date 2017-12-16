@@ -37,13 +37,13 @@ public abstract class AbstractOrganizationStateCommandConverter<TCreateOrganizat
         cmd.setVersion(state.getVersion());
 
         cmd.setOrganizationId(state.getOrganizationId());
-        cmd.setName(state.getName());
+        cmd.setOrganizationName(state.getOrganizationName());
         cmd.setDescription(state.getDescription());
         cmd.setType(state.getType());
         cmd.setIsSummary(state.getIsSummary());
         cmd.setActive(state.getActive());
             
-        if (state.getName() == null) { cmd.setIsPropertyNameRemoved(true); }
+        if (state.getOrganizationName() == null) { cmd.setIsPropertyOrganizationNameRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getType() == null) { cmd.setIsPropertyTypeRemoved(true); }
         if (state.getIsSummary() == null) { cmd.setIsPropertyIsSummaryRemoved(true); }
@@ -57,7 +57,7 @@ public abstract class AbstractOrganizationStateCommandConverter<TCreateOrganizat
 
         cmd.setVersion(state.getVersion());
         cmd.setOrganizationId(state.getOrganizationId());
-        cmd.setName(state.getName());
+        cmd.setOrganizationName(state.getOrganizationName());
         cmd.setDescription(state.getDescription());
         cmd.setType(state.getType());
         cmd.setIsSummary(state.getIsSummary());

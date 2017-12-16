@@ -24,7 +24,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		bool? Active { get; set; }
 
-		string AttributeSetName { get; set; }
+		string AttributeSetAttributeSetName { get; set; }
 
 		string AttributeSetOrganizationId { get; set; }
 
@@ -64,7 +64,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		bool IsPropertyActiveRemoved { get; set; }
 
-		bool IsPropertyAttributeSetNameRemoved { get; set; }
+		bool IsPropertyAttributeSetAttributeSetNameRemoved { get; set; }
 
 		bool IsPropertyAttributeSetOrganizationIdRemoved { get; set; }
 

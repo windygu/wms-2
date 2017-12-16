@@ -44,16 +44,16 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
         this.version = version;
     }
 
-    private String name;
+    private String attributeValueName;
 
-    public String getName()
+    public String getAttributeValueName()
     {
-        return this.name;
+        return this.attributeValueName;
     }
 
-    public void setName(String name)
+    public void setAttributeValueName(String attributeValueName)
     {
-        this.name = name;
+        this.attributeValueName = attributeValueName;
     }
 
     private String description;
@@ -169,14 +169,14 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyNameRemoved;
+        private Boolean isPropertyAttributeValueNameRemoved;
 
-        public Boolean getIsPropertyNameRemoved() {
-            return this.isPropertyNameRemoved;
+        public Boolean getIsPropertyAttributeValueNameRemoved() {
+            return this.isPropertyAttributeValueNameRemoved;
         }
 
-        public void setIsPropertyNameRemoved(Boolean removed) {
-            this.isPropertyNameRemoved = removed;
+        public void setIsPropertyAttributeValueNameRemoved(Boolean removed) {
+            this.isPropertyAttributeValueNameRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;

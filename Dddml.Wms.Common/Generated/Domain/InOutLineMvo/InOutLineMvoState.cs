@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.InOutLineMvo;
-using NodaMoney;
 using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.Domain.InOutLineMvo
@@ -176,11 +175,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 		public virtual void When(IInOutLineMvoStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.Description = e.Description;
-
 			this.LocatorId = e.LocatorId;
 
 			this.ProductId = e.ProductId;
+
+			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
+
+			this.Description = e.Description;
 
 			this.UomId = e.UomId;
 
@@ -196,10 +197,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
             this.IsInvoiced = (e.IsInvoiced != null && e.IsInvoiced.HasValue) ? e.IsInvoiced.Value : default(bool);
 
-			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
-
-            this.IsDescription = (e.IsDescription != null && e.IsDescription.HasValue) ? e.IsDescription.Value : default(bool);
-
             this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
 
             this.QuantityEntered = (e.QuantityEntered != null && e.QuantityEntered.HasValue) ? e.QuantityEntered.Value : default(decimal);
@@ -212,8 +209,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
-            this.InOutIsSOTransaction = (e.InOutIsSOTransaction != null && e.InOutIsSOTransaction.HasValue) ? e.InOutIsSOTransaction.Value : default(bool);
-
 			this.InOutDocumentStatus = e.InOutDocumentStatus;
 
             this.InOutPosted = (e.InOutPosted != null && e.InOutPosted.HasValue) ? e.InOutPosted.Value : default(bool);
@@ -222,17 +217,17 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
             this.InOutProcessed = (e.InOutProcessed != null && e.InOutProcessed.HasValue) ? e.InOutProcessed.Value : default(bool);
 
-            this.InOutDocumentType = (e.InOutDocumentType != null && e.InOutDocumentType.HasValue) ? e.InOutDocumentType.Value : default(int);
+			this.InOutDocumentTypeId = e.InOutDocumentTypeId;
 
 			this.InOutDescription = e.InOutDescription;
 
-			this.InOutOrderNumber = e.InOutOrderNumber;
+			this.InOutOrderId = e.InOutOrderId;
 
 			this.InOutDateOrdered = e.InOutDateOrdered;
 
             this.InOutIsPrinted = (e.InOutIsPrinted != null && e.InOutIsPrinted.HasValue) ? e.InOutIsPrinted.Value : default(bool);
 
-			this.InOutMovementType = e.InOutMovementType;
+			this.InOutMovementTypeId = e.InOutMovementTypeId;
 
 			this.InOutMovementDate = e.InOutMovementDate;
 
@@ -242,11 +237,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 			this.InOutPOReference = e.InOutPOReference;
 
-            this.InOutFreightAmount = (e.InOutFreightAmount != null && e.InOutFreightAmount.HasValue) ? e.InOutFreightAmount.Value : default(Money);
-
 			this.InOutShipperId = e.InOutShipperId;
-
-            this.InOutChargeAmount = (e.InOutChargeAmount != null && e.InOutChargeAmount.HasValue) ? e.InOutChargeAmount.Value : default(Money);
 
 			this.InOutDatePrinted = e.InOutDatePrinted;
 
@@ -268,17 +259,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
             this.InOutIsInDispute = (e.InOutIsInDispute != null && e.InOutIsInDispute.HasValue) ? e.InOutIsInDispute.Value : default(bool);
 
-            this.InOutVolume = (e.InOutVolume != null && e.InOutVolume.HasValue) ? e.InOutVolume.Value : default(decimal);
-
-            this.InOutWeight = (e.InOutWeight != null && e.InOutWeight.HasValue) ? e.InOutWeight.Value : default(decimal);
-
 			this.InOutRmaNumber = e.InOutRmaNumber;
 
 			this.InOutReversalNumber = e.InOutReversalNumber;
-
-            this.InOutIsDropShip = (e.InOutIsDropShip != null && e.InOutIsDropShip.HasValue) ? e.InOutIsDropShip.Value : default(bool);
-
-			this.InOutDropShipBusinessPartnerId = e.InOutDropShipBusinessPartnerId;
 
 			this.InOutCreatedBy = e.InOutCreatedBy;
 
@@ -305,18 +288,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.Description == null)
-			{
-				if (e.IsPropertyDescriptionRemoved)
-				{
-					this.Description = default(string);
-				}
-			}
-			else
-			{
-				this.Description = e.Description;
-			}
-
 			if (e.LocatorId == null)
 			{
 				if (e.IsPropertyLocatorIdRemoved)
@@ -339,6 +310,30 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			else
 			{
 				this.ProductId = e.ProductId;
+			}
+
+			if (e.AttributeSetInstanceId == null)
+			{
+				if (e.IsPropertyAttributeSetInstanceIdRemoved)
+				{
+					this.AttributeSetInstanceId = default(string);
+				}
+			}
+			else
+			{
+				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
+			}
+
+			if (e.Description == null)
+			{
+				if (e.IsPropertyDescriptionRemoved)
+				{
+					this.Description = default(string);
+				}
+			}
+			else
+			{
+				this.Description = e.Description;
 			}
 
 			if (e.UomId == null)
@@ -425,30 +420,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.IsInvoiced = (e.IsInvoiced != null && e.IsInvoiced.HasValue) ? e.IsInvoiced.Value : default(bool);
 			}
 
-			if (e.AttributeSetInstanceId == null)
-			{
-				if (e.IsPropertyAttributeSetInstanceIdRemoved)
-				{
-					this.AttributeSetInstanceId = default(string);
-				}
-			}
-			else
-			{
-				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
-			}
-
-			if (e.IsDescription == null)
-			{
-				if (e.IsPropertyIsDescriptionRemoved)
-				{
-					this.IsDescription = default(bool);
-				}
-			}
-			else
-			{
-				this.IsDescription = (e.IsDescription != null && e.IsDescription.HasValue) ? e.IsDescription.Value : default(bool);
-			}
-
 			if (e.Processed == null)
 			{
 				if (e.IsPropertyProcessedRemoved)
@@ -521,18 +492,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 			}
 
-			if (e.InOutIsSOTransaction == null)
-			{
-				if (e.IsPropertyInOutIsSOTransactionRemoved)
-				{
-					this.InOutIsSOTransaction = default(bool);
-				}
-			}
-			else
-			{
-				this.InOutIsSOTransaction = (e.InOutIsSOTransaction != null && e.InOutIsSOTransaction.HasValue) ? e.InOutIsSOTransaction.Value : default(bool);
-			}
-
 			if (e.InOutDocumentStatus == null)
 			{
 				if (e.IsPropertyInOutDocumentStatusRemoved)
@@ -581,16 +540,16 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.InOutProcessed = (e.InOutProcessed != null && e.InOutProcessed.HasValue) ? e.InOutProcessed.Value : default(bool);
 			}
 
-			if (e.InOutDocumentType == null)
+			if (e.InOutDocumentTypeId == null)
 			{
-				if (e.IsPropertyInOutDocumentTypeRemoved)
+				if (e.IsPropertyInOutDocumentTypeIdRemoved)
 				{
-					this.InOutDocumentType = default(int);
+					this.InOutDocumentTypeId = default(string);
 				}
 			}
 			else
 			{
-				this.InOutDocumentType = (e.InOutDocumentType != null && e.InOutDocumentType.HasValue) ? e.InOutDocumentType.Value : default(int);
+				this.InOutDocumentTypeId = e.InOutDocumentTypeId;
 			}
 
 			if (e.InOutDescription == null)
@@ -605,16 +564,16 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.InOutDescription = e.InOutDescription;
 			}
 
-			if (e.InOutOrderNumber == null)
+			if (e.InOutOrderId == null)
 			{
-				if (e.IsPropertyInOutOrderNumberRemoved)
+				if (e.IsPropertyInOutOrderIdRemoved)
 				{
-					this.InOutOrderNumber = default(string);
+					this.InOutOrderId = default(string);
 				}
 			}
 			else
 			{
-				this.InOutOrderNumber = e.InOutOrderNumber;
+				this.InOutOrderId = e.InOutOrderId;
 			}
 
 			if (e.InOutDateOrdered == null)
@@ -641,16 +600,16 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.InOutIsPrinted = (e.InOutIsPrinted != null && e.InOutIsPrinted.HasValue) ? e.InOutIsPrinted.Value : default(bool);
 			}
 
-			if (e.InOutMovementType == null)
+			if (e.InOutMovementTypeId == null)
 			{
-				if (e.IsPropertyInOutMovementTypeRemoved)
+				if (e.IsPropertyInOutMovementTypeIdRemoved)
 				{
-					this.InOutMovementType = default(string);
+					this.InOutMovementTypeId = default(string);
 				}
 			}
 			else
 			{
-				this.InOutMovementType = e.InOutMovementType;
+				this.InOutMovementTypeId = e.InOutMovementTypeId;
 			}
 
 			if (e.InOutMovementDate == null)
@@ -701,18 +660,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.InOutPOReference = e.InOutPOReference;
 			}
 
-			if (e.InOutFreightAmount == null)
-			{
-				if (e.IsPropertyInOutFreightAmountRemoved)
-				{
-					this.InOutFreightAmount = default(Money);
-				}
-			}
-			else
-			{
-				this.InOutFreightAmount = (e.InOutFreightAmount != null && e.InOutFreightAmount.HasValue) ? e.InOutFreightAmount.Value : default(Money);
-			}
-
 			if (e.InOutShipperId == null)
 			{
 				if (e.IsPropertyInOutShipperIdRemoved)
@@ -723,18 +670,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			else
 			{
 				this.InOutShipperId = e.InOutShipperId;
-			}
-
-			if (e.InOutChargeAmount == null)
-			{
-				if (e.IsPropertyInOutChargeAmountRemoved)
-				{
-					this.InOutChargeAmount = default(Money);
-				}
-			}
-			else
-			{
-				this.InOutChargeAmount = (e.InOutChargeAmount != null && e.InOutChargeAmount.HasValue) ? e.InOutChargeAmount.Value : default(Money);
 			}
 
 			if (e.InOutDatePrinted == null)
@@ -857,30 +792,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.InOutIsInDispute = (e.InOutIsInDispute != null && e.InOutIsInDispute.HasValue) ? e.InOutIsInDispute.Value : default(bool);
 			}
 
-			if (e.InOutVolume == null)
-			{
-				if (e.IsPropertyInOutVolumeRemoved)
-				{
-					this.InOutVolume = default(decimal);
-				}
-			}
-			else
-			{
-				this.InOutVolume = (e.InOutVolume != null && e.InOutVolume.HasValue) ? e.InOutVolume.Value : default(decimal);
-			}
-
-			if (e.InOutWeight == null)
-			{
-				if (e.IsPropertyInOutWeightRemoved)
-				{
-					this.InOutWeight = default(decimal);
-				}
-			}
-			else
-			{
-				this.InOutWeight = (e.InOutWeight != null && e.InOutWeight.HasValue) ? e.InOutWeight.Value : default(decimal);
-			}
-
 			if (e.InOutRmaNumber == null)
 			{
 				if (e.IsPropertyInOutRmaNumberRemoved)
@@ -903,30 +814,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			else
 			{
 				this.InOutReversalNumber = e.InOutReversalNumber;
-			}
-
-			if (e.InOutIsDropShip == null)
-			{
-				if (e.IsPropertyInOutIsDropShipRemoved)
-				{
-					this.InOutIsDropShip = default(bool);
-				}
-			}
-			else
-			{
-				this.InOutIsDropShip = (e.InOutIsDropShip != null && e.InOutIsDropShip.HasValue) ? e.InOutIsDropShip.Value : default(bool);
-			}
-
-			if (e.InOutDropShipBusinessPartnerId == null)
-			{
-				if (e.IsPropertyInOutDropShipBusinessPartnerIdRemoved)
-				{
-					this.InOutDropShipBusinessPartnerId = default(string);
-				}
-			}
-			else
-			{
-				this.InOutDropShipBusinessPartnerId = e.InOutDropShipBusinessPartnerId;
 			}
 
 			if (e.InOutCreatedBy == null)

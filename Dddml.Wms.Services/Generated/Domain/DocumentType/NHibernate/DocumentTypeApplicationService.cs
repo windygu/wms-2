@@ -18,16 +18,6 @@ namespace Dddml.Wms.Domain.DocumentType.NHibernate
 	public class DocumentTypeApplicationService : DocumentTypeApplicationServiceBase
 	{
 
-		private IEventStore _eventStore;
-
-		protected override IEventStore EventStore
-		{
-			get
-			{
-				return _eventStore;
-			}
-		}
-
 		private IDocumentTypeStateRepository _stateRepository;
 
 		protected override IDocumentTypeStateRepository StateRepository
@@ -48,13 +38,11 @@ namespace Dddml.Wms.Domain.DocumentType.NHibernate
 			}
 		}
 
-		public DocumentTypeApplicationService(IEventStore eventStore, IDocumentTypeStateRepository stateRepository, IDocumentTypeStateQueryRepository stateQueryRepository)
+		public DocumentTypeApplicationService(IDocumentTypeStateRepository stateRepository, IDocumentTypeStateQueryRepository stateQueryRepository)
 		{
-			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
 			this._stateQueryRepository = stateQueryRepository;
 		}
-
 		public override IEventStoreAggregateId ToEventStoreAggregateId(string aggregateId)
 		{
 			return new EventStoreAggregateId(aggregateId);

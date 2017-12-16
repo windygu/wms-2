@@ -1,0 +1,66 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.productcategory">
+  
+  <class name="AbstractProductCategoryStateEvent" table="ProductCategoryStateEvents" mutable="false" abstract="true">
+
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.productcategory.ProductCategoryStateEventId">
+		<key-property name="productCategoryId" ><column name="ProductCategoryId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="StateEventType" type="string" />
+
+	<property name="productCategoryTypeId" ><column name="ProductCategoryTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="primaryParentCategoryId" ><column name="PrimaryParentCategoryId" sql-type="VARCHAR(20)" /></property>
+	<property name="categoryName" ><column name="CategoryName" sql-type="VARCHAR(100)" /></property>
+	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+	<property name="categoryImageUrl" ><column name="CategoryImageUrl" sql-type="VARCHAR(2000)" /></property>
+	<property name="detailScreen" ><column name="DetailScreen" sql-type="VARCHAR(255)" /></property>
+	<property name="showInSelect" ></property>
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractProductCategoryStateEvent$SimpleProductCategoryStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractProductCategoryStateEvent$SimpleProductCategoryStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyProductCategoryTypeIdRemoved" column="IsPropertyProductCategoryTypeIdRemoved"/>
+
+        <property name="isPropertyPrimaryParentCategoryIdRemoved" column="IsPropertyPrimaryParentCategoryIdRemoved"/>
+
+        <property name="isPropertyCategoryNameRemoved" column="IsPropertyCategoryNameRemoved"/>
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyCategoryImageUrlRemoved" column="IsPropertyCategoryImageUrlRemoved"/>
+
+        <property name="isPropertyDetailScreenRemoved" column="IsPropertyDetailScreenRemoved"/>
+
+        <property name="isPropertyShowInSelectRemoved" column="IsPropertyShowInSelectRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractProductCategoryStateEvent$SimpleProductCategoryStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

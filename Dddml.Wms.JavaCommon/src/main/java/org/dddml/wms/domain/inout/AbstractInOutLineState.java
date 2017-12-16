@@ -36,18 +36,6 @@ public abstract class AbstractInOutLineState implements InOutLineState
         this.getInOutLineId().setLineNumber(lineNumber);
     }
 
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String locatorId;
 
     public String getLocatorId()
@@ -70,6 +58,30 @@ public abstract class AbstractInOutLineState implements InOutLineState
     public void setProductId(String productId)
     {
         this.productId = productId;
+    }
+
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 
     private String uomId;
@@ -154,30 +166,6 @@ public abstract class AbstractInOutLineState implements InOutLineState
     public void setIsInvoiced(Boolean isInvoiced)
     {
         this.isInvoiced = isInvoiced;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
-    private Boolean isDescription;
-
-    public Boolean getIsDescription()
-    {
-        return this.isDescription;
-    }
-
-    public void setIsDescription(Boolean isDescription)
-    {
-        this.isDescription = isDescription;
     }
 
     private Boolean processed;
@@ -365,9 +353,10 @@ public abstract class AbstractInOutLineState implements InOutLineState
     {
         throwOnWrongEvent(e);
 
-        this.setDescription(e.getDescription());
         this.setLocatorId(e.getLocatorId());
         this.setProductId(e.getProductId());
+        this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        this.setDescription(e.getDescription());
         this.setUomId(e.getUomId());
         this.setMovementQuantity(e.getMovementQuantity());
         this.setConfirmedQuantity(e.getConfirmedQuantity());
@@ -375,8 +364,6 @@ public abstract class AbstractInOutLineState implements InOutLineState
         this.setTargetQuantity(e.getTargetQuantity());
         this.setPickedQuantity(e.getPickedQuantity());
         this.setIsInvoiced(e.getIsInvoiced());
-        this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
-        this.setIsDescription(e.getIsDescription());
         this.setProcessed(e.getProcessed());
         this.setQuantityEntered(e.getQuantityEntered());
         this.setRmaLineNumber(e.getRmaLineNumber());
@@ -394,17 +381,6 @@ public abstract class AbstractInOutLineState implements InOutLineState
     {
         throwOnWrongEvent(e);
 
-        if (e.getDescription() == null)
-        {
-            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
-            {
-                this.setDescription(null);
-            }
-        }
-        else
-        {
-            this.setDescription(e.getDescription());
-        }
         if (e.getLocatorId() == null)
         {
             if (e.getIsPropertyLocatorIdRemoved() != null && e.getIsPropertyLocatorIdRemoved())
@@ -426,6 +402,28 @@ public abstract class AbstractInOutLineState implements InOutLineState
         else
         {
             this.setProductId(e.getProductId());
+        }
+        if (e.getAttributeSetInstanceId() == null)
+        {
+            if (e.getIsPropertyAttributeSetInstanceIdRemoved() != null && e.getIsPropertyAttributeSetInstanceIdRemoved())
+            {
+                this.setAttributeSetInstanceId(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        }
+        if (e.getDescription() == null)
+        {
+            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
+            {
+                this.setDescription(null);
+            }
+        }
+        else
+        {
+            this.setDescription(e.getDescription());
         }
         if (e.getUomId() == null)
         {
@@ -503,28 +501,6 @@ public abstract class AbstractInOutLineState implements InOutLineState
         else
         {
             this.setIsInvoiced(e.getIsInvoiced());
-        }
-        if (e.getAttributeSetInstanceId() == null)
-        {
-            if (e.getIsPropertyAttributeSetInstanceIdRemoved() != null && e.getIsPropertyAttributeSetInstanceIdRemoved())
-            {
-                this.setAttributeSetInstanceId(null);
-            }
-        }
-        else
-        {
-            this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
-        }
-        if (e.getIsDescription() == null)
-        {
-            if (e.getIsPropertyIsDescriptionRemoved() != null && e.getIsPropertyIsDescriptionRemoved())
-            {
-                this.setIsDescription(null);
-            }
-        }
-        else
-        {
-            this.setIsDescription(e.getIsDescription());
         }
         if (e.getProcessed() == null)
         {

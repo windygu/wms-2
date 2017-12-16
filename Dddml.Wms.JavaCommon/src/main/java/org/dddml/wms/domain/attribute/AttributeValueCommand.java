@@ -18,9 +18,9 @@ public interface AttributeValueCommand extends Command
 
     interface CreateOrMergePatchAttributeValue extends AttributeValueCommand
     {
-        String getName();
+        String getAttributeValueName();
 
-        void setName(String name);
+        void setAttributeValueName(String attributeValueName);
 
         String getDescription();
 
@@ -42,9 +42,9 @@ public interface AttributeValueCommand extends Command
 
     interface MergePatchAttributeValue extends CreateOrMergePatchAttributeValue
     {
-        Boolean getIsPropertyNameRemoved();
+        Boolean getIsPropertyAttributeValueNameRemoved();
 
-        void setIsPropertyNameRemoved(Boolean removed);
+        void setIsPropertyAttributeValueNameRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 

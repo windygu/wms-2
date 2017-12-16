@@ -48,12 +48,12 @@ namespace Dddml.Wms.Domain.Warehouse
             cmd.Version = ((IWarehouseStateProperties)state).Version;
 
             cmd.WarehouseId = state.WarehouseId;
-            cmd.Name = state.Name;
+            cmd.WarehouseName = state.WarehouseName;
             cmd.Description = state.Description;
             cmd.IsInTransit = state.IsInTransit;
             cmd.Active = ((IWarehouseStateProperties)state).Active;
             
-            if (state.Name == null) { cmd.IsPropertyNameRemoved = true; }
+            if (state.WarehouseName == null) { cmd.IsPropertyWarehouseNameRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             return cmd;
         }
@@ -66,7 +66,7 @@ namespace Dddml.Wms.Domain.Warehouse
             cmd.Version = ((IWarehouseStateProperties)state).Version;
 
             cmd.WarehouseId = state.WarehouseId;
-            cmd.Name = state.Name;
+            cmd.WarehouseName = state.WarehouseName;
             cmd.Description = state.Description;
             cmd.IsInTransit = state.IsInTransit;
             cmd.Active = ((IWarehouseStateProperties)state).Active;

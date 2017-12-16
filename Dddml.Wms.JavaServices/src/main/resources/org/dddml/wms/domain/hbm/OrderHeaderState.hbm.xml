@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.orderheader">
+  
+  <class name="org.dddml.wms.domain.orderheader.AbstractOrderHeaderState$SimpleOrderHeaderState" table="OrderHeaders">
+
+	<id name="orderId" length="20" column="OrderId"><generator class="assigned"/></id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="orderTypeId" ><column name="OrderTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="orderName" ><column name="OrderName" sql-type="VARCHAR(100)" /></property>
+	<property name="externalId" ><column name="ExternalId" sql-type="VARCHAR(20)" /></property>
+	<property name="salesChannelEnumId" ><column name="SalesChannelEnumId" sql-type="VARCHAR(20)" /></property>
+	<property name="orderDate" ><column name="OrderDate" sql-type="DATETIME" /></property>
+	<property name="priority" ><column name="Priority" sql-type="CHAR(1)" /></property>
+	<property name="entryDate" ><column name="EntryDate" sql-type="DATETIME" /></property>
+	<property name="pickSheetPrintedDate" ><column name="PickSheetPrintedDate" sql-type="DATETIME" /></property>
+	<property name="currencyUom" ><column name="CurrencyUom" sql-type="VARCHAR(20)" /></property>
+	<property name="syncStatusId" ><column name="SyncStatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="billingAccountId" ><column name="BillingAccountId" sql-type="VARCHAR(20)" /></property>
+	<property name="originFacilityId" ><column name="OriginFacilityId" sql-type="VARCHAR(20)" /></property>
+	<property name="webSiteId" ><column name="WebSiteId" sql-type="VARCHAR(20)" /></property>
+	<property name="productStoreId" ><column name="ProductStoreId" sql-type="VARCHAR(20)" /></property>
+	<property name="terminalId" ><column name="TerminalId" sql-type="VARCHAR(60)" /></property>
+	<property name="transactionId" ><column name="TransactionId" sql-type="VARCHAR(60)" /></property>
+	<property name="autoOrderShoppingListId" ><column name="AutoOrderShoppingListId" sql-type="VARCHAR(20)" /></property>
+	<property name="needsInventoryIssuance" ><column name="NeedsInventoryIssuance" sql-type="CHAR(1)" /></property>
+	<property name="isRushOrder" ><column name="IsRushOrder" sql-type="CHAR(1)" /></property>
+	<property name="internalCode" ><column name="InternalCode" sql-type="VARCHAR(60)" /></property>
+	<property name="remainingSubTotal" ><column name="RemainingSubTotal" sql-type="DECIMAL(18,2)" /></property>
+	<property name="grandTotal" ><column name="GrandTotal" sql-type="DECIMAL(18,2)" /></property>
+	<property name="invoicePerShipment" ><column name="InvoicePerShipment" sql-type="CHAR(1)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

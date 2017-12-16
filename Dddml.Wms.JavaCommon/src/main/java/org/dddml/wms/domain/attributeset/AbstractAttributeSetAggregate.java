@@ -57,7 +57,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
     protected AttributeSetStateEvent map(AttributeSetCommand.CreateAttributeSet c) {
         AttributeSetStateEventId stateEventId = new AttributeSetStateEventId(c.getAttributeSetId(), c.getVersion());
         AttributeSetStateEvent.AttributeSetStateCreated e = newAttributeSetStateCreated(stateEventId);
-        e.setName(c.getName());
+        e.setAttributeSetName(c.getAttributeSetName());
         e.setOrganizationId(c.getOrganizationId());
         e.setDescription(c.getDescription());
         e.setSerialNumberAttributeId(c.getSerialNumberAttributeId());
@@ -81,14 +81,14 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
     protected AttributeSetStateEvent map(AttributeSetCommand.MergePatchAttributeSet c) {
         AttributeSetStateEventId stateEventId = new AttributeSetStateEventId(c.getAttributeSetId(), c.getVersion());
         AttributeSetStateEvent.AttributeSetStateMergePatched e = newAttributeSetStateMergePatched(stateEventId);
-        e.setName(c.getName());
+        e.setAttributeSetName(c.getAttributeSetName());
         e.setOrganizationId(c.getOrganizationId());
         e.setDescription(c.getDescription());
         e.setSerialNumberAttributeId(c.getSerialNumberAttributeId());
         e.setLotAttributeId(c.getLotAttributeId());
         e.setReferenceId(c.getReferenceId());
         e.setActive(c.getActive());
-        e.setIsPropertyNameRemoved(c.getIsPropertyNameRemoved());
+        e.setIsPropertyAttributeSetNameRemoved(c.getIsPropertyAttributeSetNameRemoved());
         e.setIsPropertyOrganizationIdRemoved(c.getIsPropertyOrganizationIdRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertySerialNumberAttributeIdRemoved(c.getIsPropertySerialNumberAttributeIdRemoved());

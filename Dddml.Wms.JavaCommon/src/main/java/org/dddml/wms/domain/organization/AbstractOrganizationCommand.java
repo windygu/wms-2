@@ -34,16 +34,16 @@ public abstract class AbstractOrganizationCommand extends AbstractCommand implem
 
     public static abstract class AbstractCreateOrMergePatchOrganization extends AbstractOrganizationCommand implements CreateOrMergePatchOrganization
     {
-        private String name;
+        private String organizationName;
 
-        public String getName()
+        public String getOrganizationName()
         {
-            return this.name;
+            return this.organizationName;
         }
 
-        public void setName(String name)
+        public void setOrganizationName(String organizationName)
         {
-            this.name = name;
+            this.organizationName = organizationName;
         }
 
         private String description;
@@ -112,16 +112,16 @@ public abstract class AbstractOrganizationCommand extends AbstractCommand implem
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
-        private Boolean isPropertyNameRemoved;
+        private Boolean isPropertyOrganizationNameRemoved;
 
-        public Boolean getIsPropertyNameRemoved()
+        public Boolean getIsPropertyOrganizationNameRemoved()
         {
-            return this.isPropertyNameRemoved;
+            return this.isPropertyOrganizationNameRemoved;
         }
 
-        public void setIsPropertyNameRemoved(Boolean removed)
+        public void setIsPropertyOrganizationNameRemoved(Boolean removed)
         {
-            this.isPropertyNameRemoved = removed;
+            this.isPropertyOrganizationNameRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;
