@@ -11,6 +11,15 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public const string SameAsSource = "_";
 
-        public const string Empty = "*";
+        // //////////////////////////////////
+
+        public const string EmptyProductId = "*";
+
+        public const string EmptyLocatorId = "*";
+
+        public const string EmptyAttributeSetInstanceId = "*";
+
+        // //////////////////////////////////
+
     }
 }

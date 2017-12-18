@@ -1,15 +1,8 @@
-﻿using Dddml.Wms.Domain;
+﻿using Dddml.Wms.Domain.InventoryItem;
+using Dddml.Wms.Domain.InventoryPostingRule;
 using Dddml.Wms.Specialization;
-using Dddml.Wms.Specialization.Spring;
-using Dddml.Wms.Support;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using NodaMoney;
-using Dddml.Support.NHibernate;
-using Dddml.Wms.Domain.InventoryPostingRule;
-using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Services.Tests
 {
@@ -31,7 +24,7 @@ namespace Dddml.Wms.Services.Tests
         public void TestCreateInventoryPostingRules()
         {
             var triggerItemId = new InventoryItemId(InventoryItemIds.Wildcard, InventoryItemIds.Wildcard, InventoryItemIds.Wildcard);
-            var outputItemId = new InventoryItemId(InventoryItemIds.SameAsSource, InventoryItemIds.Empty, InventoryItemIds.Empty);
+            var outputItemId = new InventoryItemId(InventoryItemIds.SameAsSource, InventoryItemIds.EmptyLocatorId, InventoryItemIds.EmptyAttributeSetInstanceId);
 
             // --------------------------------------------------------
             // S = OH - Oc + V - R + IT
@@ -47,9 +40,9 @@ namespace Dddml.Wms.Services.Tests
             // In-Transit
             CreatePRQuantityInTransitUpdateProductSellableTotal(triggerItemId, outputItemId);
 
-            // --------------------------------------------------------
+            // ---------------------------------------------------------------------------
             //需求数量 = 订单占用数量（Oc） - 在库数量（OH） + 保留数量（R） - 在途数量（IT）
-            // --------------------------------------------------------
+            // ---------------------------------------------------------------------------
             // Occupied
             CreatePRQuantityOccupiedUpdateProductRequiredTotal(triggerItemId, outputItemId);
             // On-Hand
@@ -61,6 +54,7 @@ namespace Dddml.Wms.Services.Tests
 
         }
 
+        #region 输出：需求数量
 
         private void CreatePRQuantityInTransitUpdateProductRequiredTotal(InventoryItemId triggerItemId, InventoryItemId outputItemId)
         {
@@ -118,11 +112,12 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRuleApplicationService.When(inventoryPostingRule_12);
         }
 
+        #endregion
+
+        #region Ouput: Sellable Quantity
         // ///////////////////////////////////////////////////////////
         // //////////////// Ouput: Sellable Quantity  ///////////////
         // ///////////////////////////////////////////////////////////
-        
-        #region Ouput: Sellable Quantity
 
         private void CreatePRQuantityVirtualUpdateProductSellableTotal(InventoryItemId triggerItemId, InventoryItemId outputItemId)
         {
