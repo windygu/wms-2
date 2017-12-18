@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Common" 
-				   namespace="Dddml.Wms.Domain.OrderItem">
+				   namespace="Dddml.Wms.Domain.Order">
   
-  <class name="Dddml.Wms.Domain.OrderItem.OrderItemState" table="OrderItems">
+  <class name="Dddml.Wms.Domain.Order.OrderItemState" table="OrderItems">
 
-    <composite-id name="OrderItemId" class="Dddml.Wms.Domain.OrderItem.OrderItemId">
+    <composite-id name="OrderItemId" class="Dddml.Wms.Domain.Order.OrderItemId">
         <key-property name="OrderId" ><column name="OrderItemIdOrderId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="OrderItemSeqId" ><column name="OrderItemIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
     </composite-id>
@@ -50,6 +50,7 @@
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>
+    <property name="Deleted" ></property>
 
     <property name="CreatedAt" column="CreatedAt" />
 

@@ -87,17 +87,18 @@
 .\InventoryPRTriggeredResource.java
 .\LocatorResource.java
 .\MovementTypeResource.java
-.\OrderHeaderResource.java
-.\OrderItemResource.java
+.\OrderItemMvoResource.java
+.\OrderResource.java
 .\OrderShipmentResource.java
 .\OrganizationResource.java
 .\OrganizationStructureResource.java
 .\OrganizationStructureTypeResource.java
+.\ProductCategoryMemberResource.java
 .\ProductCategoryResource.java
 .\ProductResource.java
 .\SellableInventoryItemEntryMvoResource.java
 .\SellableInventoryItemResource.java
-.\ShipmentItemResource.java
+.\ShipmentItemMvoResource.java
 .\ShipmentResource.java
 .\ShipmentTypeResource.java
 .\StatusItemResource.java
@@ -157,10 +158,10 @@
     <Content Include="src\main\java\org\dddml\wms\restful\resource\MovementTypeResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\OrderHeaderResource.java">
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\OrderItemMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\OrderItemResource.java">
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\OrderResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\OrderShipmentResource.java">
@@ -178,6 +179,9 @@
     <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationTreeResource.java">
       <DependentUpon>GenerateTreeResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\ProductCategoryMemberResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\ProductCategoryResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
@@ -190,7 +194,7 @@
     <Content Include="src\main\java\org\dddml\wms\restful\resource\SellableInventoryItemResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\ShipmentItemResource.java">
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\ShipmentItemMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\ShipmentResource.java">

@@ -15,18 +15,20 @@ namespace Dddml.Wms.Domain.Shipment
 	public static partial class ShipmentStateInterfaceExtension
 	{
 
-        public static IShipmentCommand ToCreateOrMergePatchShipment<TCreateShipment, TMergePatchShipment>(this IShipmentState state)
+        public static IShipmentCommand ToCreateOrMergePatchShipment<TCreateShipment, TMergePatchShipment, TCreateShipmentItem, TMergePatchShipmentItem>(this IShipmentState state)
             where TCreateShipment : ICreateShipment, new()
             where TMergePatchShipment : IMergePatchShipment, new()
+            where TCreateShipmentItem : ICreateShipmentItem, new()
+            where TMergePatchShipmentItem : IMergePatchShipmentItem, new()
         {
             bool bUnsaved = ((IShipmentState)state).IsUnsaved;
             if (bUnsaved)
             {
-                return state.ToCreateShipment<TCreateShipment>();
+                return state.ToCreateShipment<TCreateShipment, TCreateShipmentItem>();
             }
             else 
             {
-                return state.ToMergePatchShipment<TMergePatchShipment>();
+                return state.ToMergePatchShipment<TMergePatchShipment, TCreateShipmentItem, TMergePatchShipmentItem>();
             }
         }
 
@@ -40,8 +42,10 @@ namespace Dddml.Wms.Domain.Shipment
             return cmd;
         }
 
-        public static TMergePatchShipment ToMergePatchShipment<TMergePatchShipment>(this IShipmentState state)
+        public static TMergePatchShipment ToMergePatchShipment<TMergePatchShipment, TCreateShipmentItem, TMergePatchShipmentItem>(this IShipmentState state)
             where TMergePatchShipment : IMergePatchShipment, new()
+            where TCreateShipmentItem : ICreateShipmentItem, new()
+            where TMergePatchShipmentItem : IMergePatchShipmentItem, new()
         {
             var cmd = new TMergePatchShipment();
 
@@ -98,11 +102,17 @@ namespace Dddml.Wms.Domain.Shipment
             if (state.PartyIdFrom == null) { cmd.IsPropertyPartyIdFromRemoved = true; }
             if (state.AdditionalShippingCharge == null) { cmd.IsPropertyAdditionalShippingChargeRemoved = true; }
             if (state.AddtlShippingChargeDesc == null) { cmd.IsPropertyAddtlShippingChargeDescRemoved = true; }
+            foreach (var d in state.ShipmentItems)
+            {
+                var c = d.ToCreateOrMergePatchShipmentItem<TCreateShipmentItem, TMergePatchShipmentItem>();
+                cmd.ShipmentItemCommands.Add(c);
+            }
             return cmd;
         }
 
-        public static TCreateShipment ToCreateShipment<TCreateShipment>(this IShipmentState state)
+        public static TCreateShipment ToCreateShipment<TCreateShipment, TCreateShipmentItem>(this IShipmentState state)
             where TCreateShipment : ICreateShipment, new()
+            where TCreateShipmentItem : ICreateShipmentItem, new()
         {
             var cmd = new TCreateShipment();
 
@@ -134,6 +144,11 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.AdditionalShippingCharge = state.AdditionalShippingCharge;
             cmd.AddtlShippingChargeDesc = state.AddtlShippingChargeDesc;
             cmd.Active = ((IShipmentStateProperties)state).Active;
+            foreach (var d in state.ShipmentItems)
+            {
+                var c = d.ToCreateShipmentItem<TCreateShipmentItem>();
+                cmd.ShipmentItems.Add(c);
+            }
             return cmd;
         }
 		

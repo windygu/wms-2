@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.AttributeSet.NHibernate
             var criteria = CurrentSession.CreateCriteria<AttributeSetStateEventBase>();
             criteria.Add(Restrictions.Eq("StateEventId.AttributeSetId", idObj));
             criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(Order.Asc("StateEventId.Version"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (AttributeSetStateEventBase e in es)
             {

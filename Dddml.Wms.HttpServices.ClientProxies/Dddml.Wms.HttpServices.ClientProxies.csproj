@@ -125,10 +125,10 @@
     <Compile Include="Generated\MovementTypeApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\OrderHeaderApplicationServiceProxy.cs">
+    <Compile Include="Generated\OrderApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\OrderItemApplicationServiceProxy.cs">
+    <Compile Include="Generated\OrderItemMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\OrderShipmentApplicationServiceProxy.cs">
@@ -152,6 +152,9 @@
     <Compile Include="Generated\ProductCategoryApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\ProductCategoryMemberApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\SellableInventoryItemApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -161,7 +164,7 @@
     <Compile Include="Generated\ShipmentApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\ShipmentItemApplicationServiceProxy.cs">
+    <Compile Include="Generated\ShipmentItemMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\ShipmentTypeApplicationServiceProxy.cs">
@@ -202,8 +205,8 @@
 .\LocatorApplicationServiceProxy.cs
 .\LocatorTreeApplicationServiceProxy.cs
 .\MovementTypeApplicationServiceProxy.cs
-.\OrderHeaderApplicationServiceProxy.cs
-.\OrderItemApplicationServiceProxy.cs
+.\OrderApplicationServiceProxy.cs
+.\OrderItemMvoApplicationServiceProxy.cs
 .\OrderShipmentApplicationServiceProxy.cs
 .\OrganizationApplicationServiceProxy.cs
 .\OrganizationStructureApplicationServiceProxy.cs
@@ -211,10 +214,11 @@
 .\OrganizationTreeApplicationServiceProxy.cs
 .\ProductApplicationServiceProxy.cs
 .\ProductCategoryApplicationServiceProxy.cs
+.\ProductCategoryMemberApplicationServiceProxy.cs
 .\SellableInventoryItemApplicationServiceProxy.cs
 .\SellableInventoryItemEntryMvoApplicationServiceProxy.cs
 .\ShipmentApplicationServiceProxy.cs
-.\ShipmentItemApplicationServiceProxy.cs
+.\ShipmentItemMvoApplicationServiceProxy.cs
 .\ShipmentTypeApplicationServiceProxy.cs
 .\StatusItemApplicationServiceProxy.cs
 .\SupplierProductApplicationServiceProxy.cs

@@ -323,10 +323,10 @@
     <Compile Include="Generated\Controllers\MovementTypesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\OrderHeadersController.cs">
+    <Compile Include="Generated\Controllers\OrderItemMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\OrderItemsController.cs">
+    <Compile Include="Generated\Controllers\OrdersController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\OrderShipmentsController.cs">
@@ -347,6 +347,9 @@
     <Compile Include="Generated\Controllers\ProductCategoriesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\ProductCategoryMembersController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\ProductsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -356,7 +359,7 @@
     <Compile Include="Generated\Controllers\SellableInventoryItemsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\ShipmentItemsController.cs">
+    <Compile Include="Generated\Controllers\ShipmentItemMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\ShipmentsController.cs">
@@ -445,17 +448,18 @@
 .\InventoryPRTriggeredsController.cs
 .\LocatorsController.cs
 .\MovementTypesController.cs
-.\OrderHeadersController.cs
-.\OrderItemsController.cs
+.\OrderItemMvosController.cs
+.\OrdersController.cs
 .\OrderShipmentsController.cs
 .\OrganizationsController.cs
 .\OrganizationStructuresController.cs
 .\OrganizationStructureTypesController.cs
 .\ProductCategoriesController.cs
+.\ProductCategoryMembersController.cs
 .\ProductsController.cs
 .\SellableInventoryItemEntryMvosController.cs
 .\SellableInventoryItemsController.cs
-.\ShipmentItemsController.cs
+.\ShipmentItemMvosController.cs
 .\ShipmentsController.cs
 .\ShipmentTypesController.cs
 .\StatusItemsController.cs

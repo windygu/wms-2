@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo.NHibernate
             criteria.Add(Restrictions.Eq("StateEventId.AttributeSetInstanceExtensionFieldIdGroupId", idObj.GroupId));
             criteria.Add(Restrictions.Eq("StateEventId.AttributeSetInstanceExtensionFieldIdIndex", idObj.Index));
             criteria.Add(Restrictions.Le("StateEventId.AttrSetInstEFGroupVersion", version));
-            criteria.AddOrder(Order.Asc("StateEventId.AttrSetInstEFGroupVersion"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.AttrSetInstEFGroupVersion"));
             var es = criteria.List<IEvent>();
             foreach (AttributeSetInstanceExtensionFieldMvoStateEventBase e in es)
             {

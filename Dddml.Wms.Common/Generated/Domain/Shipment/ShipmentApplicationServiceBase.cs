@@ -160,6 +160,11 @@ namespace Dddml.Wms.Domain.Shipment
             return new ShipmentState(eventStream.Events);
         }
 
+        public virtual IShipmentItemState GetShipmentItem(string shipmentId, string shipmentItemSeqId)
+        {
+            return StateQueryRepository.GetShipmentItem(shipmentId, shipmentItemSeqId);
+        }
+
 
 		public abstract IShipmentAggregate GetShipmentAggregate(IShipmentState state);
 

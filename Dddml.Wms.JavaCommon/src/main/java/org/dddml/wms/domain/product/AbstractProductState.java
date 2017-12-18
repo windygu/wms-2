@@ -549,6 +549,30 @@ public abstract class AbstractProductState implements ProductState
         this.productDiameter = productDiameter;
     }
 
+    private java.math.BigDecimal productRating;
+
+    public java.math.BigDecimal getProductRating()
+    {
+        return this.productRating;
+    }
+
+    public void setProductRating(java.math.BigDecimal productRating)
+    {
+        this.productRating = productRating;
+    }
+
+    private String ratingTypeEnum;
+
+    public String getRatingTypeEnum()
+    {
+        return this.ratingTypeEnum;
+    }
+
+    public void setRatingTypeEnum(String ratingTypeEnum)
+    {
+        this.ratingTypeEnum = ratingTypeEnum;
+    }
+
     private String returnable;
 
     public String getReturnable()
@@ -859,6 +883,8 @@ public abstract class AbstractProductState implements ProductState
         this.setShippingDepth(e.getShippingDepth());
         this.setDiameterUomId(e.getDiameterUomId());
         this.setProductDiameter(e.getProductDiameter());
+        this.setProductRating(e.getProductRating());
+        this.setRatingTypeEnum(e.getRatingTypeEnum());
         this.setReturnable(e.getReturnable());
         this.setTaxable(e.getTaxable());
         this.setChargeShipping(e.getChargeShipping());
@@ -1364,6 +1390,28 @@ public abstract class AbstractProductState implements ProductState
         else
         {
             this.setProductDiameter(e.getProductDiameter());
+        }
+        if (e.getProductRating() == null)
+        {
+            if (e.getIsPropertyProductRatingRemoved() != null && e.getIsPropertyProductRatingRemoved())
+            {
+                this.setProductRating(null);
+            }
+        }
+        else
+        {
+            this.setProductRating(e.getProductRating());
+        }
+        if (e.getRatingTypeEnum() == null)
+        {
+            if (e.getIsPropertyRatingTypeEnumRemoved() != null && e.getIsPropertyRatingTypeEnumRemoved())
+            {
+                this.setRatingTypeEnum(null);
+            }
+        }
+        else
+        {
+            this.setRatingTypeEnum(e.getRatingTypeEnum());
         }
         if (e.getReturnable() == null)
         {

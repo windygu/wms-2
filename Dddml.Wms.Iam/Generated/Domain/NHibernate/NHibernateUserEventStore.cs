@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.User.NHibernate
             var criteria = CurrentSession.CreateCriteria<UserStateEventBase>();
             criteria.Add(Restrictions.Eq("StateEventId.UserId", idObj));
             criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(Order.Asc("StateEventId.Version"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (UserStateEventBase e in es)
             {

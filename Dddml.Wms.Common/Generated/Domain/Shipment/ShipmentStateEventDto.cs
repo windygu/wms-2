@@ -615,6 +615,97 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
+        private ShipmentItemStateCreatedOrMergePatchedOrRemovedDtos _shipmentItemEvents = new ShipmentItemStateCreatedOrMergePatchedOrRemovedDtos();
+
+        public virtual ShipmentItemStateCreatedOrMergePatchedOrRemovedDto[] ShipmentItemEvents
+        {
+            get
+            {
+                return _shipmentItemEvents.ToArray();
+            }
+            set
+            {
+                _shipmentItemEvents.Clear();
+                _shipmentItemEvents.AddRange(value);
+            }
+        }
+
+
+
+        private ShipmentItemStateEventIdDto NewShipmentItemStateEventId(string shipmentItemSeqId)
+        {
+            var eId = new ShipmentItemStateEventIdDto();
+            eId.ShipmentId = this.StateEventId.ShipmentId;
+            eId.ShipmentItemSeqId = shipmentItemSeqId;
+            eId.ShipmentVersion = this.StateEventId.Version;
+            return eId;
+        }
+
+        public virtual ShipmentItemStateCreatedDto NewShipmentItemStateCreated(string shipmentItemSeqId)
+        {
+            var e = new ShipmentItemStateCreatedDto();
+            var eId = NewShipmentItemStateEventId(shipmentItemSeqId);
+            e.StateEventId = eId;
+            return e;
+        }
+
+        public virtual ShipmentItemStateMergePatchedDto NewShipmentItemStateMergePatched(string shipmentItemSeqId)
+        {
+            var e = new ShipmentItemStateMergePatchedDto();
+            var eId = NewShipmentItemStateEventId(shipmentItemSeqId);
+            e.StateEventId = eId;
+            return e;
+        }
+
+        public virtual ShipmentItemStateRemovedDto NewShipmentItemStateRemoved(string shipmentItemSeqId)
+        {
+            var e = new ShipmentItemStateRemovedDto();
+            var eId = NewShipmentItemStateEventId(shipmentItemSeqId);
+            e.StateEventId = eId;
+            return e;
+        }
+
+        IEnumerable<IShipmentItemStateCreated> IShipmentStateCreated.ShipmentItemEvents
+        {
+            get { return this._shipmentItemEvents; }
+        }
+
+        void IShipmentStateCreated.AddShipmentItemEvent(IShipmentItemStateCreated e)
+        {
+            this._shipmentItemEvents.AddShipmentItemEvent(e);
+        }
+
+        IShipmentItemStateCreated IShipmentStateCreated.NewShipmentItemStateCreated(string shipmentItemSeqId)
+        {
+            return NewShipmentItemStateCreated(shipmentItemSeqId);
+        }
+
+        IEnumerable<IShipmentItemStateEvent> IShipmentStateMergePatched.ShipmentItemEvents
+        {
+            get { return this._shipmentItemEvents; }
+        }
+
+        void IShipmentStateMergePatched.AddShipmentItemEvent(IShipmentItemStateEvent e)
+        {
+            this._shipmentItemEvents.AddShipmentItemEvent(e);
+        }
+
+        IShipmentItemStateCreated IShipmentStateMergePatched.NewShipmentItemStateCreated(string shipmentItemSeqId)
+        {
+            return NewShipmentItemStateCreated(shipmentItemSeqId);
+        }
+
+        IShipmentItemStateMergePatched IShipmentStateMergePatched.NewShipmentItemStateMergePatched(string shipmentItemSeqId)
+        {
+            return NewShipmentItemStateMergePatched(shipmentItemSeqId);
+        }
+
+        IShipmentItemStateRemoved IShipmentStateMergePatched.NewShipmentItemStateRemoved(string shipmentItemSeqId)
+        {
+            return NewShipmentItemStateRemoved(shipmentItemSeqId);
+        }
+
+
         ShipmentStateEventId IShipmentStateEvent.StateEventId
         {
             get { return this.StateEventId.ToShipmentStateEventId(); }

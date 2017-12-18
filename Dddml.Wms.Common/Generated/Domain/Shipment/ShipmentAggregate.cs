@@ -129,6 +129,14 @@ namespace Dddml.Wms.Domain.Shipment
             e.CreatedAt = DateTime.Now;
 			var version = c.Version;
 
+            foreach (ICreateShipmentItem innerCommand in c.ShipmentItems)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IShipmentItemStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
+                e.AddShipmentItemEvent(innerEvent);
+            }
+
 
             return e;
         }
@@ -197,9 +205,120 @@ namespace Dddml.Wms.Domain.Shipment
 
 			var version = c.Version;
 
+            foreach (IShipmentItemCommand innerCommand in c.ShipmentItemCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IShipmentItemStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                e.AddShipmentItemEvent(innerEvent);
+            }
+
 
             return e;
         }
+
+
+        protected void ThrowOnInconsistentCommands(IShipmentCommand command, IShipmentItemCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrDeleteShipment;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveShipmentItem;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.ShipmentId == default(string))
+            {
+                innerProperties.ShipmentId = properties.ShipmentId;
+            }
+            else
+            {
+                var outerShipmentIdName = "ShipmentId";
+                var outerShipmentIdValue = properties.ShipmentId;
+                var innerShipmentIdName = "ShipmentId";
+                var innerShipmentIdValue = innerProperties.ShipmentId;
+                ThrowOnInconsistentIds(innerProperties, innerShipmentIdName, innerShipmentIdValue, outerShipmentIdName, outerShipmentIdValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
+
+
+        protected virtual IShipmentItemStateEvent Map(IShipmentItemCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateShipmentItem) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchShipmentItem) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveShipmentItem) : null;
+            if (remove != null)
+            {
+                return MapRemove(remove, outerCommand, version);
+            }
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IShipmentItemStateCreated MapCreate(ICreateShipmentItem c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ShipmentItemStateEventId(c.ShipmentId, c.ShipmentItemSeqId, version);
+            IShipmentItemStateCreated e = NewShipmentItemStateCreated(stateEventId);
+            var s = outerState.ShipmentItems.Get(c.ShipmentItemSeqId, true);
+
+            e.ProductId = c.ProductId;
+            e.Quantity = c.Quantity;
+            e.ShipmentContentDescription = c.ShipmentContentDescription;
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = DateTime.Now;
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IShipmentItemStateMergePatched MapMergePatch(IMergePatchShipmentItem c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ShipmentItemStateEventId(c.ShipmentId, c.ShipmentItemSeqId, version);
+            IShipmentItemStateMergePatched e = NewShipmentItemStateMergePatched(stateEventId);
+            var s = outerState.ShipmentItems.Get(c.ShipmentItemSeqId);
+
+            e.ProductId = c.ProductId;
+            e.Quantity = c.Quantity;
+            e.ShipmentContentDescription = c.ShipmentContentDescription;
+            e.Active = c.Active;
+            e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
+            e.IsPropertyQuantityRemoved = c.IsPropertyQuantityRemoved;
+            e.IsPropertyShipmentContentDescriptionRemoved = c.IsPropertyShipmentContentDescriptionRemoved;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = DateTime.Now;
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
+        protected virtual IShipmentItemStateRemoved MapRemove(IRemoveShipmentItem c, IShipmentCommand outerCommand, long version)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ShipmentItemStateEventId(c.ShipmentId, c.ShipmentItemSeqId, version);
+            IShipmentItemStateRemoved e = NewShipmentItemStateRemoved(stateEventId);
+
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = DateTime.Now;
+
+            return e;
+
+        }// END Map(IRemove... ////////////////////////////
 
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
@@ -252,6 +371,22 @@ namespace Dddml.Wms.Domain.Shipment
         private ShipmentStateMergePatched NewShipmentStateMergePatched(ShipmentStateEventId stateEventId)
 		{
 			return new ShipmentStateMergePatched(stateEventId);
+		}
+
+
+		private ShipmentItemStateCreated NewShipmentItemStateCreated(ShipmentItemStateEventId stateEventId)
+		{
+			return new ShipmentItemStateCreated(stateEventId);
+		}
+
+        private ShipmentItemStateMergePatched NewShipmentItemStateMergePatched(ShipmentItemStateEventId stateEventId)
+		{
+			return new ShipmentItemStateMergePatched(stateEventId);
+		}
+
+        private ShipmentItemStateRemoved NewShipmentItemStateRemoved(ShipmentItemStateEventId stateEventId)
+		{
+			return new ShipmentItemStateRemoved(stateEventId);
 		}
 
 

@@ -374,11 +374,49 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
         this.stateEventId = stateEventId;
     }
 
+    protected ShipmentItemStateEventDao getShipmentItemStateEventDao() {
+        return (ShipmentItemStateEventDao)ApplicationContext.current.get("ShipmentItemStateEventDao");
+    }
+
+    protected ShipmentItemStateEventId newShipmentItemStateEventId(String shipmentItemSeqId)
+    {
+        ShipmentItemStateEventId stateEventId = new ShipmentItemStateEventId(this.getStateEventId().getShipmentId(), 
+            shipmentItemSeqId, 
+            this.getStateEventId().getVersion());
+        return stateEventId;
+    }
+
+    protected void throwOnInconsistentEventIds(ShipmentItemStateEvent e)
+    {
+        throwOnInconsistentEventIds(this, e);
+    }
+
+    public static void throwOnInconsistentEventIds(ShipmentStateEvent oe, ShipmentItemStateEvent e)
+    {
+        if (!oe.getStateEventId().getShipmentId().equals(e.getStateEventId().getShipmentId()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id ShipmentId %1$s but inner id ShipmentId %2$s", 
+                oe.getStateEventId().getShipmentId(), e.getStateEventId().getShipmentId());
+        }
+    }
+
+    public ShipmentItemStateEvent.ShipmentItemStateCreated newShipmentItemStateCreated(String shipmentItemSeqId) {
+        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateCreated(newShipmentItemStateEventId(shipmentItemSeqId));
+    }
+
+    public ShipmentItemStateEvent.ShipmentItemStateMergePatched newShipmentItemStateMergePatched(String shipmentItemSeqId) {
+        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateMergePatched(newShipmentItemStateEventId(shipmentItemSeqId));
+    }
+
+    public ShipmentItemStateEvent.ShipmentItemStateRemoved newShipmentItemStateRemoved(String shipmentItemSeqId) {
+        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateRemoved(newShipmentItemStateEventId(shipmentItemSeqId));
+    }
+
 
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractShipmentStateCreated extends AbstractShipmentStateEvent implements ShipmentStateEvent.ShipmentStateCreated
+    public static abstract class AbstractShipmentStateCreated extends AbstractShipmentStateEvent implements ShipmentStateEvent.ShipmentStateCreated, Saveable
     {
         public AbstractShipmentStateCreated() {
             this(new ShipmentStateEventId());
@@ -392,10 +430,58 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
             return StateEventType.CREATED;
         }
 
+        private Map<ShipmentItemStateEventId, ShipmentItemStateEvent.ShipmentItemStateCreated> shipmentItemEvents = new HashMap<ShipmentItemStateEventId, ShipmentItemStateEvent.ShipmentItemStateCreated>();
+        
+        private Iterable<ShipmentItemStateEvent.ShipmentItemStateCreated> readOnlyShipmentItemEvents;
+
+        public Iterable<ShipmentItemStateEvent.ShipmentItemStateCreated> getShipmentItemEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
+                return this.shipmentItemEvents.values();
+            }
+            else
+            {
+                if (readOnlyShipmentItemEvents != null) { return readOnlyShipmentItemEvents; }
+                ShipmentItemStateEventDao eventDao = getShipmentItemStateEventDao();
+                List<ShipmentItemStateEvent.ShipmentItemStateCreated> eL = new ArrayList<ShipmentItemStateEvent.ShipmentItemStateCreated>();
+                for (ShipmentItemStateEvent e : eventDao.findByShipmentStateEventId(this.getStateEventId()))
+                {
+                    e.setStateEventReadOnly(true);
+                    eL.add((ShipmentItemStateEvent.ShipmentItemStateCreated)e);
+                }
+                return (readOnlyShipmentItemEvents = eL);
+            }
+        }
+
+        public void setShipmentItemEvents(Iterable<ShipmentItemStateEvent.ShipmentItemStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (ShipmentItemStateEvent.ShipmentItemStateCreated e : es)
+                {
+                    addShipmentItemEvent(e);
+                }
+            }
+            else { this.shipmentItemEvents.clear(); }
+        }
+        
+        public void addShipmentItemEvent(ShipmentItemStateEvent.ShipmentItemStateCreated e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.shipmentItemEvents.put(e.getStateEventId(), e);
+        }
+
+        public void save()
+        {
+            for (ShipmentItemStateEvent.ShipmentItemStateCreated e : this.getShipmentItemEvents()) {
+                getShipmentItemStateEventDao().save(e);
+            }
+        }
     }
 
 
-    public static abstract class AbstractShipmentStateMergePatched extends AbstractShipmentStateEvent implements ShipmentStateEvent.ShipmentStateMergePatched
+    public static abstract class AbstractShipmentStateMergePatched extends AbstractShipmentStateEvent implements ShipmentStateEvent.ShipmentStateMergePatched, Saveable
     {
         public AbstractShipmentStateMergePatched() {
             this(new ShipmentStateEventId());
@@ -659,6 +745,54 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
             this.isPropertyActiveRemoved = removed;
         }
 
+        private Map<ShipmentItemStateEventId, ShipmentItemStateEvent> shipmentItemEvents = new HashMap<ShipmentItemStateEventId, ShipmentItemStateEvent>();
+        
+        private Iterable<ShipmentItemStateEvent> readOnlyShipmentItemEvents;
+
+        public Iterable<ShipmentItemStateEvent> getShipmentItemEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
+                return this.shipmentItemEvents.values();
+            }
+            else
+            {
+                if (readOnlyShipmentItemEvents != null) { return readOnlyShipmentItemEvents; }
+                ShipmentItemStateEventDao eventDao = getShipmentItemStateEventDao();
+                List<ShipmentItemStateEvent> eL = new ArrayList<ShipmentItemStateEvent>();
+                for (ShipmentItemStateEvent e : eventDao.findByShipmentStateEventId(this.getStateEventId()))
+                {
+                    e.setStateEventReadOnly(true);
+                    eL.add((ShipmentItemStateEvent)e);
+                }
+                return (readOnlyShipmentItemEvents = eL);
+            }
+        }
+
+        public void setShipmentItemEvents(Iterable<ShipmentItemStateEvent> es)
+        {
+            if (es != null)
+            {
+                for (ShipmentItemStateEvent e : es)
+                {
+                    addShipmentItemEvent(e);
+                }
+            }
+            else { this.shipmentItemEvents.clear(); }
+        }
+        
+        public void addShipmentItemEvent(ShipmentItemStateEvent e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.shipmentItemEvents.put(e.getStateEventId(), e);
+        }
+
+        public void save()
+        {
+            for (ShipmentItemStateEvent e : this.getShipmentItemEvents()) {
+                getShipmentItemStateEventDao().save(e);
+            }
+        }
     }
 
 

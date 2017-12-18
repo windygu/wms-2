@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
-public abstract class AbstractShipmentStateCommandConverter<TCreateShipment extends ShipmentCommand.CreateShipment, TMergePatchShipment extends ShipmentCommand.MergePatchShipment, TDeleteShipment extends ShipmentCommand.DeleteShipment>
+public abstract class AbstractShipmentStateCommandConverter<TCreateShipment extends ShipmentCommand.CreateShipment, TMergePatchShipment extends ShipmentCommand.MergePatchShipment, TDeleteShipment extends ShipmentCommand.DeleteShipment, TCreateShipmentItem extends ShipmentItemCommand.CreateShipmentItem, TMergePatchShipmentItem extends ShipmentItemCommand.MergePatchShipmentItem, TRemoveShipmentItem extends ShipmentItemCommand.RemoveShipmentItem>
 {
     public ShipmentCommand toCreateOrMergePatchShipment(ShipmentState state)
     {
@@ -88,6 +88,11 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         if (state.getAdditionalShippingCharge() == null) { cmd.setIsPropertyAdditionalShippingChargeRemoved(true); }
         if (state.getAddtlShippingChargeDesc() == null) { cmd.setIsPropertyAddtlShippingChargeDescRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
+        for (ShipmentItemState d : state.getShipmentItems())
+        {
+            ShipmentItemCommand c = getShipmentItemStateCommandConverter().toCreateOrMergePatchShipmentItem(d);
+            cmd.getShipmentItemCommands().add(c);
+        }
         return cmd;
     }
 
@@ -122,8 +127,16 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         cmd.setAdditionalShippingCharge(state.getAdditionalShippingCharge());
         cmd.setAddtlShippingChargeDesc(state.getAddtlShippingChargeDesc());
         cmd.setActive(state.getActive());
+        for (ShipmentItemState d : state.getShipmentItems())
+        {
+            ShipmentItemCommand.CreateShipmentItem c = getShipmentItemStateCommandConverter().toCreateShipmentItem(d);
+            cmd.getShipmentItems().add(c);
+        }
         return cmd;
     }
+
+    protected abstract AbstractShipmentItemStateCommandConverter<TCreateShipmentItem, TMergePatchShipmentItem, TRemoveShipmentItem>
+        getShipmentItemStateCommandConverter();
 
     protected abstract TCreateShipment newCreateShipment();
 
@@ -131,7 +144,7 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
 
     protected abstract TDeleteShipment newDeleteShipment();
 
-    public static class SimpleShipmentStateCommandConverter extends AbstractShipmentStateCommandConverter<AbstractShipmentCommand.SimpleCreateShipment, AbstractShipmentCommand.SimpleMergePatchShipment, AbstractShipmentCommand.SimpleDeleteShipment>
+    public static class SimpleShipmentStateCommandConverter extends AbstractShipmentStateCommandConverter<AbstractShipmentCommand.SimpleCreateShipment, AbstractShipmentCommand.SimpleMergePatchShipment, AbstractShipmentCommand.SimpleDeleteShipment, AbstractShipmentItemCommand.SimpleCreateShipmentItem, AbstractShipmentItemCommand.SimpleMergePatchShipmentItem, AbstractShipmentItemCommand.SimpleRemoveShipmentItem>
     {
         @Override
         protected AbstractShipmentCommand.SimpleCreateShipment newCreateShipment() {
@@ -146,6 +159,12 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         @Override
         protected AbstractShipmentCommand.SimpleDeleteShipment newDeleteShipment() {
             return new AbstractShipmentCommand.SimpleDeleteShipment();
+        }
+
+        @Override
+        protected AbstractShipmentItemStateCommandConverter<AbstractShipmentItemCommand.SimpleCreateShipmentItem, AbstractShipmentItemCommand.SimpleMergePatchShipmentItem, AbstractShipmentItemCommand.SimpleRemoveShipmentItem> getShipmentItemStateCommandConverter()
+        {
+            return new AbstractShipmentItemStateCommandConverter.SimpleShipmentItemStateCommandConverter();
         }
 
 

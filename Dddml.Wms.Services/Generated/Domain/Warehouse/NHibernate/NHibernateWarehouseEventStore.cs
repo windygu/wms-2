@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.Warehouse.NHibernate
             var criteria = CurrentSession.CreateCriteria<WarehouseStateEventBase>();
             criteria.Add(Restrictions.Eq("StateEventId.WarehouseId", idObj));
             criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(Order.Asc("StateEventId.Version"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (WarehouseStateEventBase e in es)
             {

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.productcategorymember">
+  
+  <class name="org.dddml.wms.domain.productcategorymember.AbstractProductCategoryMemberState$SimpleProductCategoryMemberState" table="ProductCategoryMembers">
+
+	<composite-id name="productCategoryMemberId" class="org.dddml.wms.domain.productcategorymember.ProductCategoryMemberId">
+		<key-property name="productCategoryId" ><column name="ProductCategoryMemberIdProductCategoryId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="productId" ><column name="ProductCategoryMemberIdProductId" sql-type="VARCHAR(20)" /></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="thruDate" ><column name="ThruDate" sql-type="DATETIME" /></property>
+	<property name="comments" ><column name="Comments" sql-type="VARCHAR(255)" /></property>
+	<property name="sequenceNum" ><column name="SequenceNum" sql-type="DECIMAL(20,0)" /></property>
+	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

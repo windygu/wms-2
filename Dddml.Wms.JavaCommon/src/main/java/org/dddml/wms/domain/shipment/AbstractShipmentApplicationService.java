@@ -98,6 +98,10 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
         return new AbstractShipmentState.SimpleShipmentState(eventStream.getEvents());
     }
 
+    public ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId) {
+        return getStateQueryRepository().getShipmentItem(shipmentId, shipmentItemSeqId);
+    }
+
 
     public ShipmentAggregate getShipmentAggregate(ShipmentState state)
     {

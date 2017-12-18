@@ -95,6 +95,8 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setShippingDepth(c.getShippingDepth());
         e.setDiameterUomId(c.getDiameterUomId());
         e.setProductDiameter(c.getProductDiameter());
+        e.setProductRating(c.getProductRating());
+        e.setRatingTypeEnum(c.getRatingTypeEnum());
         e.setReturnable(c.getReturnable());
         e.setTaxable(c.getTaxable());
         e.setChargeShipping(c.getChargeShipping());
@@ -160,6 +162,8 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setShippingDepth(c.getShippingDepth());
         e.setDiameterUomId(c.getDiameterUomId());
         e.setProductDiameter(c.getProductDiameter());
+        e.setProductRating(c.getProductRating());
+        e.setRatingTypeEnum(c.getRatingTypeEnum());
         e.setReturnable(c.getReturnable());
         e.setTaxable(c.getTaxable());
         e.setChargeShipping(c.getChargeShipping());
@@ -216,6 +220,8 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setIsPropertyShippingDepthRemoved(c.getIsPropertyShippingDepthRemoved());
         e.setIsPropertyDiameterUomIdRemoved(c.getIsPropertyDiameterUomIdRemoved());
         e.setIsPropertyProductDiameterRemoved(c.getIsPropertyProductDiameterRemoved());
+        e.setIsPropertyProductRatingRemoved(c.getIsPropertyProductRatingRemoved());
+        e.setIsPropertyRatingTypeEnumRemoved(c.getIsPropertyRatingTypeEnumRemoved());
         e.setIsPropertyReturnableRemoved(c.getIsPropertyReturnableRemoved());
         e.setIsPropertyTaxableRemoved(c.getIsPropertyTaxableRemoved());
         e.setIsPropertyChargeShippingRemoved(c.getIsPropertyChargeShippingRemoved());

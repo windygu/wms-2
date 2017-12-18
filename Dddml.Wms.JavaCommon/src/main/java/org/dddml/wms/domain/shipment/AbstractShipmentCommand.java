@@ -334,6 +334,30 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.active = active;
         }
 
+        public ShipmentItemCommand.CreateShipmentItem newCreateShipmentItem()
+        {
+            AbstractShipmentItemCommand.SimpleCreateShipmentItem c = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
+        public ShipmentItemCommand.MergePatchShipmentItem newMergePatchShipmentItem()
+        {
+            AbstractShipmentItemCommand.SimpleMergePatchShipmentItem c = new AbstractShipmentItemCommand.SimpleMergePatchShipmentItem();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
+        public ShipmentItemCommand.RemoveShipmentItem newRemoveShipmentItem()
+        {
+            AbstractShipmentItemCommand.SimpleRemoveShipmentItem c = new AbstractShipmentItemCommand.SimpleRemoveShipmentItem();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
     }
 
     public static abstract class AbstractCreateShipment extends AbstractCreateOrMergePatchShipment implements CreateShipment
@@ -341,6 +365,13 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        private CreateShipmentItemCommands shipmentItems = new SimpleCreateShipmentItemCommands();
+
+        public CreateShipmentItemCommands getShipmentItems()
+        {
+            return this.shipmentItems;
         }
 
     }
@@ -652,6 +683,13 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.isPropertyActiveRemoved = removed;
         }
 
+        private ShipmentItemCommands shipmentItemCommands = new SimpleShipmentItemCommands();
+
+        public ShipmentItemCommands getShipmentItemCommands()
+        {
+            return this.shipmentItemCommands;
+        }
+
     }
 
     public static class SimpleCreateShipment extends AbstractCreateShipment
@@ -673,6 +711,58 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
 	}
 
     
+    public static class SimpleCreateShipmentItemCommands implements CreateShipmentItemCommands
+    {
+        private List<ShipmentItemCommand.CreateShipmentItem> innerCommands = new ArrayList<ShipmentItemCommand.CreateShipmentItem>();
+
+        public void add(ShipmentItemCommand.CreateShipmentItem c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(ShipmentItemCommand.CreateShipmentItem c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<ShipmentItemCommand.CreateShipmentItem> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleShipmentItemCommands implements ShipmentItemCommands
+    {
+        private List<ShipmentItemCommand> innerCommands = new ArrayList<ShipmentItemCommand>();
+
+        public void add(ShipmentItemCommand c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(ShipmentItemCommand c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<ShipmentItemCommand> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
 
 }
 

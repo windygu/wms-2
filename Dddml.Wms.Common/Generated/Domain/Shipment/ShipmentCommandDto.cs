@@ -578,6 +578,81 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+        ICreateShipmentItemCommands ICreateShipment.ShipmentItems
+        {
+            get
+            {
+                return this._shipmentItems;
+            }
+        }
+
+        IShipmentItemCommands IMergePatchShipment.ShipmentItemCommands
+        {
+            get
+            {
+                return this._shipmentItems;
+            }
+        }
+
+        public virtual CreateShipmentItemDto NewCreateShipmentItem()
+        {
+            var c = new CreateShipmentItemDto();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        ICreateShipmentItem ICreateShipment.NewCreateShipmentItem()
+        {
+            return this.NewCreateShipmentItem();
+        }
+
+        ICreateShipmentItem IMergePatchShipment.NewCreateShipmentItem()
+        {
+            return this.NewCreateShipmentItem();
+        }
+
+        public virtual MergePatchShipmentItemDto NewMergePatchShipmentItem()
+        {
+            var c = new MergePatchShipmentItemDto();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IMergePatchShipmentItem IMergePatchShipment.NewMergePatchShipmentItem()
+        {
+            return this.NewMergePatchShipmentItem();
+        }
+
+        public virtual RemoveShipmentItemDto NewRemoveShipmentItem()
+        {
+            var c = new RemoveShipmentItemDto();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IRemoveShipmentItem IMergePatchShipment.NewRemoveShipmentItem()
+        {
+            return this.NewRemoveShipmentItem();
+        }
+
+        private CreateOrMergePatchOrRemoveShipmentItemDtos _shipmentItems = new CreateOrMergePatchOrRemoveShipmentItemDtos();
+
+        public virtual CreateOrMergePatchOrRemoveShipmentItemDto[] ShipmentItems
+        {
+            get
+            {
+                return _shipmentItems.ToArray();
+            }
+            set
+            {
+                _shipmentItems.Clear();
+                _shipmentItems.AddRange(value);
+            }
+        }
+
 
         string ICommandDto.CommandType 
         {

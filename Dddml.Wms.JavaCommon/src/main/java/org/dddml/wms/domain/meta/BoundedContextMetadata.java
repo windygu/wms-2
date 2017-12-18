@@ -34,16 +34,17 @@ public class BoundedContextMetadata {
         map.put("InventoryPostingRule", "InventoryPostingRule");
         map.put("InventoryPRTriggered", "InventoryPRTriggered");
         map.put("MovementType", "MovementType");
-        map.put("OrderHeader", "OrderHeader");
-        map.put("OrderItem", "OrderItem");
+        map.put("Order", "Order");
+        map.put("OrderItem", "Order");
         map.put("OrderShipment", "OrderShipment");
         map.put("Organization", "Organization");
         map.put("OrganizationStructureType", "OrganizationStructureType");
         map.put("OrganizationStructure", "OrganizationStructure");
         map.put("Product", "Product");
         map.put("ProductCategory", "ProductCategory");
+        map.put("ProductCategoryMember", "ProductCategoryMember");
         map.put("Shipment", "Shipment");
-        map.put("ShipmentItem", "ShipmentItem");
+        map.put("ShipmentItem", "Shipment");
         map.put("ShipmentType", "ShipmentType");
         map.put("StatusItem", "StatusItem");
         map.put("SupplierProduct", "SupplierProduct");
@@ -57,6 +58,8 @@ public class BoundedContextMetadata {
         map.put("InOutLineMvo", "InOutLineMvo");
         map.put("InventoryItemEntryMvo", "InventoryItemEntryMvo");
         map.put("SellableInventoryItemEntryMvo", "SellableInventoryItemEntryMvo");
+        map.put("OrderItemMvo", "OrderItemMvo");
+        map.put("ShipmentItemMvo", "ShipmentItemMvo");
         map.put("AttributeSetInstanceExtensionFieldMvo", "AttributeSetInstanceExtensionFieldMvo");
         
         TYPE_NAME_TO_AGGREGATE_NAME_MAP = map;

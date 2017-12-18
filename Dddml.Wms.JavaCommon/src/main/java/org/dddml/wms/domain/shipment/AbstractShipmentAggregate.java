@@ -79,6 +79,14 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         ((AbstractShipmentStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        Long version = c.getVersion();
+        for (ShipmentItemCommand.CreateShipmentItem innerCommand : c.getShipmentItems())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+            ShipmentItemStateEvent.ShipmentItemStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            e.addShipmentItemEvent(innerEvent);
+        }
+
         return e;
     }
 
@@ -138,8 +146,109 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         ((AbstractShipmentStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        Long version = c.getVersion();
+        for (ShipmentItemCommand innerCommand : c.getShipmentItemCommands())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+            ShipmentItemStateEvent innerEvent = map(innerCommand, c, version, this.state);
+            e.addShipmentItemEvent(innerEvent);
+        }
+
         return e;
     }
+
+
+    protected ShipmentItemStateEvent map(ShipmentItemCommand c, ShipmentCommand outerCommand, long version, ShipmentState outerState)
+    {
+        ShipmentItemCommand.CreateShipmentItem create = (c.getCommandType().equals(CommandType.CREATE)) ? ((ShipmentItemCommand.CreateShipmentItem)c) : null;
+        if(create != null)
+        {
+            return mapCreate(create, outerCommand, version, outerState);
+        }
+
+        ShipmentItemCommand.MergePatchShipmentItem merge = (c.getCommandType().equals(CommandType.MERGE_PATCH)) ? ((ShipmentItemCommand.MergePatchShipmentItem)c) : null;
+        if(merge != null)
+        {
+            return mapMergePatch(merge, outerCommand, version, outerState);
+        }
+
+        ShipmentItemCommand.RemoveShipmentItem remove = (c.getCommandType().equals(CommandType.REMOVE)) ? ((ShipmentItemCommand.RemoveShipmentItem)c) : null;
+        if (remove != null)
+        {
+            return mapRemove(remove, outerCommand, version);
+        }
+        throw new UnsupportedOperationException();
+    }
+
+    protected ShipmentItemStateEvent.ShipmentItemStateCreated mapCreate(ShipmentItemCommand.CreateShipmentItem c, ShipmentCommand outerCommand, Long version, ShipmentState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        ShipmentItemStateEventId stateEventId = new ShipmentItemStateEventId(c.getShipmentId(), c.getShipmentItemSeqId(), version);
+        ShipmentItemStateEvent.ShipmentItemStateCreated e = newShipmentItemStateCreated(stateEventId);
+        ShipmentItemState s = outerState.getShipmentItems().get(c.getShipmentItemSeqId());
+
+        e.setProductId(c.getProductId());
+        e.setQuantity(c.getQuantity());
+        e.setShipmentContentDescription(c.getShipmentContentDescription());
+        e.setActive(c.getActive());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(ICreate... ////////////////////////////
+
+    protected ShipmentItemStateEvent.ShipmentItemStateMergePatched mapMergePatch(ShipmentItemCommand.MergePatchShipmentItem c, ShipmentCommand outerCommand, Long version, ShipmentState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        ShipmentItemStateEventId stateEventId = new ShipmentItemStateEventId(c.getShipmentId(), c.getShipmentItemSeqId(), version);
+        ShipmentItemStateEvent.ShipmentItemStateMergePatched e = newShipmentItemStateMergePatched(stateEventId);
+        ShipmentItemState s = outerState.getShipmentItems().get(c.getShipmentItemSeqId());
+
+        e.setProductId(c.getProductId());
+        e.setQuantity(c.getQuantity());
+        e.setShipmentContentDescription(c.getShipmentContentDescription());
+        e.setActive(c.getActive());
+        e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
+        e.setIsPropertyQuantityRemoved(c.getIsPropertyQuantityRemoved());
+        e.setIsPropertyShipmentContentDescriptionRemoved(c.getIsPropertyShipmentContentDescriptionRemoved());
+        e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(IMergePatch... ////////////////////////////
+
+    protected ShipmentItemStateEvent.ShipmentItemStateRemoved mapRemove(ShipmentItemCommand.RemoveShipmentItem c, ShipmentCommand outerCommand, Long version)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        ShipmentItemStateEventId stateEventId = new ShipmentItemStateEventId(c.getShipmentId(), c.getShipmentItemSeqId(), version);
+        ShipmentItemStateEvent.ShipmentItemStateRemoved e = newShipmentItemStateRemoved(stateEventId);
+
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+
+        return e;
+
+    }// END map(IRemove... ////////////////////////////
+
+    protected void throwOnInconsistentCommands(ShipmentCommand command, ShipmentItemCommand innerCommand)
+    {
+        AbstractShipmentCommand properties = command instanceof AbstractShipmentCommand ? (AbstractShipmentCommand) command : null;
+        AbstractShipmentItemCommand innerProperties = innerCommand instanceof AbstractShipmentItemCommand ? (AbstractShipmentItemCommand) innerCommand : null;
+        if (properties == null || innerProperties == null) { return; }
+        String outerShipmentIdName = "ShipmentId";
+        String outerShipmentIdValue = properties.getShipmentId();
+        String innerShipmentIdName = "ShipmentId";
+        String innerShipmentIdValue = innerProperties.getShipmentId();
+        if (innerShipmentIdValue == null) {
+            innerProperties.setShipmentId(outerShipmentIdValue);
+        }
+        else if (innerShipmentIdValue != outerShipmentIdValue 
+            && (innerShipmentIdValue == null || innerShipmentIdValue != null && !innerShipmentIdValue.equals(outerShipmentIdValue))) 
+        {
+            throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerShipmentIdName, outerShipmentIdValue, innerShipmentIdName, innerShipmentIdValue);
+        }
+    }// END throwOnInconsistentCommands /////////////////////
 
 
     ////////////////////////
@@ -168,6 +277,19 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
 
     protected ShipmentStateEvent.ShipmentStateMergePatched newShipmentStateMergePatched(ShipmentStateEventId stateEventId) {
         return new AbstractShipmentStateEvent.SimpleShipmentStateMergePatched(stateEventId);
+    }
+
+    protected ShipmentItemStateEvent.ShipmentItemStateCreated newShipmentItemStateCreated(ShipmentItemStateEventId stateEventId) {
+        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateCreated(stateEventId);
+    }
+
+    protected ShipmentItemStateEvent.ShipmentItemStateMergePatched newShipmentItemStateMergePatched(ShipmentItemStateEventId stateEventId) {
+        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateMergePatched(stateEventId);
+    }
+
+    protected ShipmentItemStateEvent.ShipmentItemStateRemoved newShipmentItemStateRemoved(ShipmentItemStateEventId stateEventId)
+    {
+        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateRemoved(stateEventId);
     }
 
 

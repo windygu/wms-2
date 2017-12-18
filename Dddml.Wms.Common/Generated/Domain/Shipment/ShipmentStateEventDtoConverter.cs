@@ -62,6 +62,14 @@ namespace Dddml.Wms.Domain.Shipment
             dto.AdditionalShippingCharge = e.AdditionalShippingCharge;
             dto.AddtlShippingChargeDesc = e.AddtlShippingChargeDesc;
             dto.Active = e.Active;
+            var shipmentItemEvents = new List<ShipmentItemStateCreatedDto>();
+            foreach (var ee in e.ShipmentItemEvents)
+            {
+                ShipmentItemStateCreatedDto eeDto = ShipmentItemStateEventDtoConverter.ToShipmentItemStateCreatedDto(ee);
+                shipmentItemEvents.Add(eeDto);
+            }
+            dto.ShipmentItemEvents = shipmentItemEvents.ToArray();
+
             return dto;
         }
 
@@ -122,10 +130,26 @@ namespace Dddml.Wms.Domain.Shipment
             dto.IsPropertyAdditionalShippingChargeRemoved = e.IsPropertyAdditionalShippingChargeRemoved;
             dto.IsPropertyAddtlShippingChargeDescRemoved = e.IsPropertyAddtlShippingChargeDescRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
+            var shipmentItemEvents = new List<ShipmentItemStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.ShipmentItemEvents)
+            {
+                ShipmentItemStateCreatedOrMergePatchedOrRemovedDto eeDto = ShipmentItemStateEventDtoConverter.ToShipmentItemStateEventDto(ee);
+                shipmentItemEvents.Add(eeDto);
+            }
+            dto.ShipmentItemEvents = shipmentItemEvents.ToArray();
+
 
             return dto;
         }
 
+
+        protected virtual ShipmentItemStateEventDtoConverter ShipmentItemStateEventDtoConverter
+        {
+            get
+            {
+                return new ShipmentItemStateEventDtoConverter();
+            }
+        }
 
 
     }

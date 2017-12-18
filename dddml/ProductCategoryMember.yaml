@@ -1,0 +1,41 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+  ProductCategoryMember:
+    id:
+      name: ProductCategoryMemberId
+      type: ProductCategoryMemberId
+      # columnNames:
+      # - PRODUCT_CATEGORY_ID
+      # - PRODUCT_ID
+      # - FROM_DATE
+    properties:
+      ThruDate:
+        type: date-time
+      Comments:
+        type: comment
+      SequenceNum:
+        type: numeric
+      Quantity:
+        type: fixed-point
+    references: {}
+    reservedProperties:
+      # noActive: true
+      noDeleted: true
+    valueObjects:
+      ProductCategoryMemberId:
+        properties:
+          ProductCategoryId:
+            type: id-ne
+          ProductId:
+            type: id-ne
+          # FromDate:
+            # type: date-time
+            
+    # metadata: 
+      # StateEventDatabaseTableName: PRODUCT_CATEGORY_MEMBER_STATE_EVENT
+
+      

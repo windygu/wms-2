@@ -78,6 +78,10 @@ namespace Dddml.Wms.Domain.Shipment
 
 	public interface ICreateShipment : ICreateOrMergePatchOrDeleteShipment
 	{
+        ICreateShipmentItemCommands ShipmentItems { get; }
+
+        ICreateShipmentItem NewCreateShipmentItem();
+
 	}
 
 	public interface IMergePatchShipment : ICreateOrMergePatchOrDeleteShipment
@@ -133,12 +137,40 @@ namespace Dddml.Wms.Domain.Shipment
 
 		bool IsPropertyActiveRemoved { get; set; }
 
+        IShipmentItemCommands ShipmentItemCommands { get; }
+
+        ICreateShipmentItem NewCreateShipmentItem();
+
+        IMergePatchShipmentItem NewMergePatchShipmentItem();
+
+        IRemoveShipmentItem NewRemoveShipmentItem();
+
 
 	}
 
 	public interface IDeleteShipment : ICreateOrMergePatchOrDeleteShipment
 	{
 	}
+
+    public interface ICreateShipmentItemCommands : IEnumerable<ICreateShipmentItem>
+    {
+        void Add(ICreateShipmentItem c);
+
+        void Remove(ICreateShipmentItem c);
+
+        void Clear();
+
+    }
+
+    public interface IShipmentItemCommands : IEnumerable<IShipmentItemCommand>
+    {
+        void Add(IShipmentItemCommand c);
+
+        void Remove(IShipmentItemCommand c);
+
+        void Clear();
+
+    }
 
 
 }

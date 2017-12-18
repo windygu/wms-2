@@ -201,6 +201,18 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual ShipmentItemStateDto[] ShipmentItems
+        {
+            get;
+            set;
+        }
+
+        IShipmentItemStateDto[] IShipmentStateDto.ShipmentItems
+        {
+            get { return this.ShipmentItems; }
+            set { this.ShipmentItems = value.Select(e => ((ShipmentItemStateDto)e)).ToArray(); }
+        }
+
         public virtual IShipmentState ToShipmentState()
         {
             var state = new ShipmentState(true);
@@ -235,6 +247,7 @@ namespace Dddml.Wms.Domain.Shipment
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.ShipmentItems != null) { foreach (var s in this.ShipmentItems) { state.ShipmentItems.AddToSave(s.ToShipmentItemState()); } };
 
             return state;
         }

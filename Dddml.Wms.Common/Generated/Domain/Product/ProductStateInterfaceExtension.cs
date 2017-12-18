@@ -92,6 +92,8 @@ namespace Dddml.Wms.Domain.Product
             cmd.ShippingDepth = state.ShippingDepth;
             cmd.DiameterUomId = state.DiameterUomId;
             cmd.ProductDiameter = state.ProductDiameter;
+            cmd.ProductRating = state.ProductRating;
+            cmd.RatingTypeEnum = state.RatingTypeEnum;
             cmd.Returnable = state.Returnable;
             cmd.Taxable = state.Taxable;
             cmd.ChargeShipping = state.ChargeShipping;
@@ -149,6 +151,8 @@ namespace Dddml.Wms.Domain.Product
             if (state.ShippingDepth == null) { cmd.IsPropertyShippingDepthRemoved = true; }
             if (state.DiameterUomId == null) { cmd.IsPropertyDiameterUomIdRemoved = true; }
             if (state.ProductDiameter == null) { cmd.IsPropertyProductDiameterRemoved = true; }
+            if (state.ProductRating == null) { cmd.IsPropertyProductRatingRemoved = true; }
+            if (state.RatingTypeEnum == null) { cmd.IsPropertyRatingTypeEnumRemoved = true; }
             if (state.Returnable == null) { cmd.IsPropertyReturnableRemoved = true; }
             if (state.Taxable == null) { cmd.IsPropertyTaxableRemoved = true; }
             if (state.ChargeShipping == null) { cmd.IsPropertyChargeShippingRemoved = true; }
@@ -215,6 +219,8 @@ namespace Dddml.Wms.Domain.Product
             cmd.ShippingDepth = state.ShippingDepth;
             cmd.DiameterUomId = state.DiameterUomId;
             cmd.ProductDiameter = state.ProductDiameter;
+            cmd.ProductRating = state.ProductRating;
+            cmd.RatingTypeEnum = state.RatingTypeEnum;
             cmd.Returnable = state.Returnable;
             cmd.Taxable = state.Taxable;
             cmd.ChargeShipping = state.ChargeShipping;

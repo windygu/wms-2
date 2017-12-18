@@ -81,6 +81,8 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         cmd.setShippingDepth(state.getShippingDepth());
         cmd.setDiameterUomId(state.getDiameterUomId());
         cmd.setProductDiameter(state.getProductDiameter());
+        cmd.setProductRating(state.getProductRating());
+        cmd.setRatingTypeEnum(state.getRatingTypeEnum());
         cmd.setReturnable(state.getReturnable());
         cmd.setTaxable(state.getTaxable());
         cmd.setChargeShipping(state.getChargeShipping());
@@ -138,6 +140,8 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         if (state.getShippingDepth() == null) { cmd.setIsPropertyShippingDepthRemoved(true); }
         if (state.getDiameterUomId() == null) { cmd.setIsPropertyDiameterUomIdRemoved(true); }
         if (state.getProductDiameter() == null) { cmd.setIsPropertyProductDiameterRemoved(true); }
+        if (state.getProductRating() == null) { cmd.setIsPropertyProductRatingRemoved(true); }
+        if (state.getRatingTypeEnum() == null) { cmd.setIsPropertyRatingTypeEnumRemoved(true); }
         if (state.getReturnable() == null) { cmd.setIsPropertyReturnableRemoved(true); }
         if (state.getTaxable() == null) { cmd.setIsPropertyTaxableRemoved(true); }
         if (state.getChargeShipping() == null) { cmd.setIsPropertyChargeShippingRemoved(true); }
@@ -203,6 +207,8 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         cmd.setShippingDepth(state.getShippingDepth());
         cmd.setDiameterUomId(state.getDiameterUomId());
         cmd.setProductDiameter(state.getProductDiameter());
+        cmd.setProductRating(state.getProductRating());
+        cmd.setRatingTypeEnum(state.getRatingTypeEnum());
         cmd.setReturnable(state.getReturnable());
         cmd.setTaxable(state.getTaxable());
         cmd.setChargeShipping(state.getChargeShipping());

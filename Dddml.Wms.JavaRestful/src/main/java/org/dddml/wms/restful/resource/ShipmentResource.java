@@ -161,6 +161,20 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{shipmentId}/ShipmentItems/{shipmentItemSeqId}") @GET
+    public ShipmentItemStateDto getShipmentItem(@PathParam("shipmentId") String shipmentId, @PathParam("shipmentItemSeqId") String shipmentItemSeqId) {
+        try {
+
+            ShipmentItemState state = shipmentApplicationService.getShipmentItem(shipmentId, shipmentItemSeqId);
+            if (state == null) { return null; }
+            ShipmentItemStateDto.DtoConverter dtoConverter = new ShipmentItemStateDto.DtoConverter();
+            ShipmentItemStateDto stateDto = dtoConverter.toShipmentItemStateDto(state);
+            dtoConverter.setAllFieldsReturned(true);
+            return stateDto;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  ShipmentStateEventDtoConverter getShipmentStateEventDtoConverter() {
         return new ShipmentStateEventDtoConverter();

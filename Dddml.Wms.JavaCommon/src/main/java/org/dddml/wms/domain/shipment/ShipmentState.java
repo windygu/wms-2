@@ -141,6 +141,8 @@ public interface ShipmentState
 
     boolean getForReapplying();
 
+    ShipmentItemStates getShipmentItems();
+
 
     void mutate(Event e);
 

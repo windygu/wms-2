@@ -549,6 +549,30 @@ public class ProductStateDto
         this.productDiameter = productDiameter;
     }
 
+    private java.math.BigDecimal productRating;
+
+    public java.math.BigDecimal getProductRating()
+    {
+        return this.productRating;
+    }
+
+    public void setProductRating(java.math.BigDecimal productRating)
+    {
+        this.productRating = productRating;
+    }
+
+    private String ratingTypeEnum;
+
+    public String getRatingTypeEnum()
+    {
+        return this.ratingTypeEnum;
+    }
+
+    public void setRatingTypeEnum(String ratingTypeEnum)
+    {
+        this.ratingTypeEnum = ratingTypeEnum;
+    }
+
     private String returnable;
 
     public String getReturnable()
@@ -913,6 +937,12 @@ public class ProductStateDto
             }
             if (returnedFieldsContains("ProductDiameter")) {
                 dto.setProductDiameter(state.getProductDiameter());
+            }
+            if (returnedFieldsContains("ProductRating")) {
+                dto.setProductRating(state.getProductRating());
+            }
+            if (returnedFieldsContains("RatingTypeEnum")) {
+                dto.setRatingTypeEnum(state.getRatingTypeEnum());
             }
             if (returnedFieldsContains("Returnable")) {
                 dto.setReturnable(state.getReturnable());

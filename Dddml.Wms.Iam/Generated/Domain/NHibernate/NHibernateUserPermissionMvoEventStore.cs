@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo.NHibernate
             criteria.Add(Restrictions.Eq("StateEventId.UserPermissionIdUserId", idObj.UserId));
             criteria.Add(Restrictions.Eq("StateEventId.UserPermissionIdPermissionId", idObj.PermissionId));
             criteria.Add(Restrictions.Le("StateEventId.UserVersion", version));
-            criteria.AddOrder(Order.Asc("StateEventId.UserVersion"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.UserVersion"));
             var es = criteria.List<IEvent>();
             foreach (UserPermissionMvoStateEventBase e in es)
             {

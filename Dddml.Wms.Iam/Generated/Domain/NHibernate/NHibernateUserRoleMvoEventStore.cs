@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo.NHibernate
             criteria.Add(Restrictions.Eq("StateEventId.UserRoleIdUserId", idObj.UserId));
             criteria.Add(Restrictions.Eq("StateEventId.UserRoleIdRoleId", idObj.RoleId));
             criteria.Add(Restrictions.Le("StateEventId.UserVersion", version));
-            criteria.AddOrder(Order.Asc("StateEventId.UserVersion"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.UserVersion"));
             var es = criteria.List<IEvent>();
             foreach (UserRoleMvoStateEventBase e in es)
             {

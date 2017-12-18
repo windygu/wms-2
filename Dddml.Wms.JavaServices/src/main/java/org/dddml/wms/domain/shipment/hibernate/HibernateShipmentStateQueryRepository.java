@@ -26,7 +26,7 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ShipmentId", "ShipmentTypeId", "StatusId", "PrimaryOrderId", "PrimaryReturnId", "PicklistBinId", "EstimatedReadyDate", "EstimatedShipDate", "EstimatedShipWorkEffId", "EstimatedArrivalDate", "EstimatedArrivalWorkEffId", "LatestCancelDate", "EstimatedShipCost", "CurrencyUomId", "HandlingInstructions", "OriginFacilityId", "DestinationFacilityId", "OriginContactMechId", "OriginTelecomNumberId", "DestinationContactMechId", "DestinationTelecomNumberId", "PartyIdTo", "PartyIdFrom", "AdditionalShippingCharge", "AddtlShippingChargeDesc", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ShipmentId", "ShipmentTypeId", "StatusId", "PrimaryOrderId", "PrimaryReturnId", "PicklistBinId", "EstimatedReadyDate", "EstimatedShipDate", "EstimatedShipWorkEffId", "EstimatedArrivalDate", "EstimatedArrivalWorkEffId", "LatestCancelDate", "EstimatedShipCost", "CurrencyUomId", "HandlingInstructions", "OriginFacilityId", "DestinationFacilityId", "OriginContactMechId", "OriginTelecomNumberId", "DestinationContactMechId", "DestinationTelecomNumberId", "PartyIdTo", "PartyIdFrom", "AdditionalShippingCharge", "AddtlShippingChargeDesc", "ShipmentItems", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -43,7 +43,7 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
 
         ShipmentState state = (ShipmentState)getCurrentSession().get(AbstractShipmentState.SimpleShipmentState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (ShipmentState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (ShipmentState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -130,6 +130,13 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
         }
         addNotDeletedRestriction(criteria);
         return (long)criteria.uniqueResult();
+    }
+
+    @Transactional(readOnly = true)
+    public ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId)
+    {
+        ShipmentItemId entityId = new ShipmentItemId(shipmentId, shipmentItemSeqId);
+        return (ShipmentItemState) getCurrentSession().get(AbstractShipmentItemState.SimpleShipmentItemState.class, entityId);
     }
 
 

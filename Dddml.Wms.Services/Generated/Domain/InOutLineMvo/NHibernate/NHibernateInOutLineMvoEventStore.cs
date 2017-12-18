@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo.NHibernate
             criteria.Add(Restrictions.Eq("StateEventId.InOutLineIdInOutDocumentNumber", idObj.InOutDocumentNumber));
             criteria.Add(Restrictions.Eq("StateEventId.InOutLineIdLineNumber", idObj.LineNumber));
             criteria.Add(Restrictions.Le("StateEventId.InOutVersion", version));
-            criteria.AddOrder(Order.Asc("StateEventId.InOutVersion"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.InOutVersion"));
             var es = criteria.List<IEvent>();
             foreach (InOutLineMvoStateEventBase e in es)
             {

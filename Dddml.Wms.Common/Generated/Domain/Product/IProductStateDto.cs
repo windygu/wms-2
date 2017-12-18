@@ -284,6 +284,18 @@ namespace Dddml.Wms.Domain.Product
             set;
         }
 
+        decimal? ProductRating
+        {
+            get;
+            set;
+        }
+
+        string RatingTypeEnum
+        {
+            get;
+            set;
+        }
+
         string Returnable
         {
             get;

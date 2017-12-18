@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.Shipment;
 namespace Dddml.Wms.Domain.Shipment
 {
 
-	public partial class ShipmentState : ShipmentStateProperties, IShipmentState
+	public partial class ShipmentState : ShipmentStateProperties, IShipmentState, ISaveable
 	{
 
 		public virtual string CreatedBy { get; set; }
@@ -118,6 +118,21 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
+        private IShipmentItemStates _shipmentItems;
+      
+        public virtual IShipmentItemStates ShipmentItems
+        {
+            get
+            {
+                return this._shipmentItems;
+            }
+            set
+            {
+                this._shipmentItems = value;
+            }
+        }
+
+
         public virtual bool StateReadOnly { get; set; }
 
         bool IState.ReadOnly
@@ -154,8 +169,22 @@ namespace Dddml.Wms.Domain.Shipment
         public ShipmentState(bool forReapplying)
         {
             this._forReapplying = forReapplying;
+            _shipmentItems = new ShipmentItemStates(this);
+
             InitializeProperties();
         }
+
+
+		#region Saveable Implements
+
+        public virtual void Save()
+        {
+            _shipmentItems.Save();
+
+        }
+
+
+		#endregion
 
 
 		public virtual void When(IShipmentStateCreated e)
@@ -214,6 +243,10 @@ namespace Dddml.Wms.Domain.Shipment
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
+			foreach (IShipmentItemStateCreated innerEvent in e.ShipmentItemEvents) {
+				IShipmentItemState innerState = this.ShipmentItems.Get(innerEvent.GlobalId.ShipmentItemSeqId, true);
+				innerState.Mutate (innerEvent);
+			}
 
 		}
 
@@ -526,6 +559,19 @@ namespace Dddml.Wms.Domain.Shipment
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
 
+
+			foreach (IShipmentItemStateEvent innerEvent in e.ShipmentItemEvents)
+            {
+                IShipmentItemState innerState = this.ShipmentItems.Get(innerEvent.GlobalId.ShipmentItemSeqId);
+
+                innerState.Mutate(innerEvent);
+                var removed = innerEvent as IShipmentItemStateRemoved;
+                if (removed != null)
+                {
+                    this.ShipmentItems.Remove(innerState);
+                }
+          
+            }
 
 		}
 

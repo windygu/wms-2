@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.OrderShipment.NHibernate
             criteria.Add(Restrictions.Eq("StateEventId.OrderShipmentIdShipmentId", idObj.ShipmentId));
             criteria.Add(Restrictions.Eq("StateEventId.OrderShipmentIdShipmentItemSeqId", idObj.ShipmentItemSeqId));
             criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(Order.Asc("StateEventId.Version"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (OrderShipmentStateEventBase e in es)
             {

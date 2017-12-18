@@ -50,6 +50,13 @@ public class ShipmentStateEventDtoConverter {
         dto.setAdditionalShippingCharge(e.getAdditionalShippingCharge());
         dto.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
         dto.setActive(e.getActive());
+        List<ShipmentItemStateEventDto.ShipmentItemStateCreatedDto> shipmentItemEvents = new ArrayList<>();
+        for (ShipmentItemStateEvent.ShipmentItemStateCreated ee : e.getShipmentItemEvents()) {
+            ShipmentItemStateEventDto.ShipmentItemStateCreatedDto eeDto = getShipmentItemStateEventDtoConverter().toShipmentItemStateCreatedDto(ee);
+            shipmentItemEvents.add(eeDto);
+        }
+        dto.setShipmentItemEvents(shipmentItemEvents.toArray(new ShipmentItemStateEventDto.ShipmentItemStateCreatedDto[0]));
+
         return dto;
     }
 
@@ -109,9 +116,20 @@ public class ShipmentStateEventDtoConverter {
         dto.setIsPropertyAdditionalShippingChargeRemoved(e.getIsPropertyAdditionalShippingChargeRemoved());
         dto.setIsPropertyAddtlShippingChargeDescRemoved(e.getIsPropertyAddtlShippingChargeDescRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
+        List<ShipmentItemStateEventDto> shipmentItemEvents = new ArrayList<>();
+        for (ShipmentItemStateEvent ee : e.getShipmentItemEvents()) {
+            ShipmentItemStateEventDto eeDto = getShipmentItemStateEventDtoConverter().toShipmentItemStateEventDto((AbstractShipmentItemStateEvent) ee);
+            shipmentItemEvents.add(eeDto);
+        }
+        dto.setShipmentItemEvents(shipmentItemEvents.toArray(new ShipmentItemStateEventDto[0]));
+
         return dto;
     }
 
+
+    protected ShipmentItemStateEventDtoConverter getShipmentItemStateEventDtoConverter() {
+        return new ShipmentItemStateEventDtoConverter();
+    }
 
 }
 

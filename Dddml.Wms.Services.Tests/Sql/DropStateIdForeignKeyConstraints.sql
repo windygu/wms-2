@@ -55,6 +55,28 @@ deallocate prepare stmt;
 
 set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
             CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'OrderItems' AND
+            CONSTRAINT_NAME   = 'FK_OrderItem_Order_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE OrderItems
+            drop foreign key FK_OrderItem_Order_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'ShipmentItems' AND
+            CONSTRAINT_NAME   = 'FK_ShipmentItem_Shipment_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE ShipmentItems
+            drop foreign key FK_ShipmentItem_Shipment_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
             TABLE_NAME        = 'AttributeSetInstanceExtensionFields' AND
             CONSTRAINT_NAME   = 'FK_AttributeSetInstanceExtensionField_AttrSetInstEFGroup_StateId' AND
             CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE AttributeSetInstanceExtensionFields

@@ -37,18 +37,19 @@ using Dddml.Wms.Domain.InventoryPostingRule;
 using Dddml.Wms.Domain.InventoryPRTriggered;
 using Dddml.Wms.Domain.Locator;
 using Dddml.Wms.Domain.MovementType;
-using Dddml.Wms.Domain.OrderHeader;
-using Dddml.Wms.Domain.OrderItem;
+using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.OrderItemMvo;
 using Dddml.Wms.Domain.OrderShipment;
 using Dddml.Wms.Domain.Organization;
 using Dddml.Wms.Domain.OrganizationStructure;
 using Dddml.Wms.Domain.OrganizationStructureType;
 using Dddml.Wms.Domain.Product;
 using Dddml.Wms.Domain.ProductCategory;
+using Dddml.Wms.Domain.ProductCategoryMember;
 using Dddml.Wms.Domain.SellableInventoryItem;
 using Dddml.Wms.Domain.SellableInventoryItemEntryMvo;
 using Dddml.Wms.Domain.Shipment;
-using Dddml.Wms.Domain.ShipmentItem;
+using Dddml.Wms.Domain.ShipmentItemMvo;
 using Dddml.Wms.Domain.ShipmentType;
 using Dddml.Wms.Domain.StatusItem;
 using Dddml.Wms.Domain.SupplierProduct;
@@ -4218,21 +4219,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class OrderHeader
+    public partial class Order
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal OrderHeader(DddmlWmsRamlClient proxy)
+        internal Order(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.OrderHeaderGetRequest</param>
+        		/// <param name="request">Models.OrderGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.OrderHeaderGetResponse> Get(Models.OrderHeaderGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.OrderGetResponse> Get(Models.OrderGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "OrderHeaders/{id}";
+            var url = "Orders/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -4268,7 +4269,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.OrderHeaderGetResponse  
+            return new Models.OrderGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -4280,11 +4281,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
 
 
-        		/// <param name="request">Models.OrderHeaderPutRequest</param>
-        public virtual async Task<ApiResponse> Put(Models.OrderHeaderPutRequest request)
+        		/// <param name="request">Models.OrderPutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.OrderPutRequest request)
         {
 
-            var url = "OrderHeaders/{id}";
+            var url = "Orders/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -4307,7 +4308,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
             }
             if(request.Formatter == null)
                 request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(CreateOrderHeaderDto), request.Content , request.Formatter);                           
+            req.Content = new ObjectContent(typeof(CreateOrderDto), request.Content , request.Formatter);                           
 	        var response = await proxy.Client.SendAsync(req);
             return new ApiResponse  
                                             {
@@ -4320,11 +4321,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
 
 
-        		/// <param name="request">Models.OrderHeaderPatchRequest</param>
-        public virtual async Task<ApiResponse> Patch(Models.OrderHeaderPatchRequest request)
+        		/// <param name="request">Models.OrderPatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.OrderPatchRequest request)
         {
 
-            var url = "OrderHeaders/{id}";
+            var url = "Orders/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -4347,7 +4348,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
             }
             if(request.Formatter == null)
                 request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(MergePatchOrderHeaderDto), request.Content , request.Formatter);                           
+            req.Content = new ObjectContent(typeof(MergePatchOrderDto), request.Content , request.Formatter);                           
 	        var response = await proxy.Client.SendAsync(req);
             return new ApiResponse  
                                             {
@@ -4360,11 +4361,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
 
 
-        		/// <param name="request">Models.OrderHeaderDeleteRequest</param>
-        public virtual async Task<ApiResponse> Delete(Models.OrderHeaderDeleteRequest request)
+        		/// <param name="request">Models.OrderDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.OrderDeleteRequest request)
         {
 
-            var url = "OrderHeaders/{id}";
+            var url = "Orders/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -4408,21 +4409,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class OrderHeaders
+    public partial class Orders
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal OrderHeaders(DddmlWmsRamlClient proxy)
+        internal Orders(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.OrderHeadersGetRequest</param>
+        		/// <param name="request">Models.OrdersGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.OrderHeadersGetResponse> Get(Models.OrderHeadersGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.OrdersGetResponse> Get(Models.OrdersGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "OrderHeaders";
+            var url = "Orders";
             if(request.Query != null)
             {
                 url += "?";
@@ -4461,7 +4462,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.OrderHeadersGetResponse  
+            return new Models.OrdersGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -4474,20 +4475,20 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class OrderHeadersCount
+    public partial class OrdersCount
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal OrderHeadersCount(DddmlWmsRamlClient proxy)
+        internal OrdersCount(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.OrderHeadersCountGetRequest</param>
-        public virtual async Task<ApiResponse> Get(Models.OrderHeadersCountGetRequest request)
+        		/// <param name="request">Models.OrdersCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.OrdersCountGetRequest request)
         {
 
-            var url = "OrderHeaders/_count";
+            var url = "Orders/_count";
             if(request.Query != null)
             {
                 url += "?";
@@ -4522,21 +4523,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class OrderHeaderStateEvent
+    public partial class OrderStateEvent
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal OrderHeaderStateEvent(DddmlWmsRamlClient proxy)
+        internal OrderStateEvent(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.OrderHeaderStateEventGetRequest</param>
+        		/// <param name="request">Models.OrderStateEventGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.OrderHeaderStateEventGetResponse> Get(Models.OrderHeaderStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.OrderStateEventGetResponse> Get(Models.OrderStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "OrderHeaders/{id}/_stateEvents/{version}";
+            var url = "Orders/{id}/_stateEvents/{version}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -4571,7 +4572,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.OrderHeaderStateEventGetResponse  
+            return new Models.OrderStateEventGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -4584,21 +4585,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class OrderHeaderHistoryState
+    public partial class OrderHistoryState
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal OrderHeaderHistoryState(DddmlWmsRamlClient proxy)
+        internal OrderHistoryState(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.OrderHeaderHistoryStateGetRequest</param>
+        		/// <param name="request">Models.OrderHistoryStateGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.OrderHeaderHistoryStateGetResponse> Get(Models.OrderHeaderHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.OrderHistoryStateGetResponse> Get(Models.OrderHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "OrderHeaders/{id}/_historyStates/{version}";
+            var url = "Orders/{id}/_historyStates/{version}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -4633,7 +4634,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.OrderHeaderHistoryStateGetResponse  
+            return new Models.OrderHistoryStateGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -4660,20 +4661,19 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual async Task<Models.OrderItemGetResponse> Get(Models.OrderItemGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "OrderItems/{id}";
+            var url = "Orders/{orderId}/OrderItems/{orderItemSeqId}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+			if(request.UriParameters.OrderId == null)
+				throw new InvalidOperationException("Uri Parameter OrderId cannot be null");
 
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.Fields != null)
-                    url += "&fields=" + request.Query.Fields;
-            }
+            url = url.Replace("{orderId}", request.UriParameters.OrderId.ToString());
+
+			if(request.UriParameters.OrderItemSeqId == null)
+				throw new InvalidOperationException("Uri Parameter OrderItemSeqId cannot be null");
+
+            url = url.Replace("{orderItemSeqId}", request.UriParameters.OrderItemSeqId.ToString());
 
             url = url.Replace("?&", "?");
 
@@ -4697,371 +4697,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				
             }
             return new Models.OrderItemGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.OrderItemPutRequest</param>
-        public virtual async Task<ApiResponse> Put(Models.OrderItemPutRequest request)
-        {
-
-            var url = "OrderItems/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Put, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-            if(request.Formatter == null)
-                request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(CreateOrderItemDto), request.Content , request.Formatter);                           
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.OrderItemPatchRequest</param>
-        public virtual async Task<ApiResponse> Patch(Models.OrderItemPatchRequest request)
-        {
-
-            var url = "OrderItems/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-            if(request.Formatter == null)
-                request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(MergePatchOrderItemDto), request.Content , request.Formatter);                           
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.OrderItemDeleteRequest</param>
-        public virtual async Task<ApiResponse> Delete(Models.OrderItemDeleteRequest request)
-        {
-
-            var url = "OrderItems/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.CommandId != null)
-                    url += "&commandId=" + request.Query.CommandId;
-                if(request.Query.Version != null)
-                    url += "&version=" + request.Query.Version;
-                if(request.Query.RequesterId != null)
-                    url += "&requesterId=" + request.Query.RequesterId;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Delete, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class OrderItems
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal OrderItems(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.OrderItemsGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.OrderItemsGetResponse> Get(Models.OrderItemsGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "OrderItems";
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.FirstResult != null)
-                    url += "&firstResult=" + request.Query.FirstResult;
-                if(request.Query.MaxResults != null)
-                    url += "&maxResults=" + request.Query.MaxResults;
-                if(request.Query.Sort != null)
-                    url += "&sort=" + request.Query.Sort;
-                if(request.Query.Fields != null)
-                    url += "&fields=" + request.Query.Fields;
-                if(request.Query.Filter != null)
-                    url += "&filter=" + request.Query.Filter;
-                if(request.Query.FilterTag != null)
-                    url += "&filterTag=" + request.Query.FilterTag;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.OrderItemsGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class OrderItemsCount
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal OrderItemsCount(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.OrderItemsCountGetRequest</param>
-        public virtual async Task<ApiResponse> Get(Models.OrderItemsCountGetRequest request)
-        {
-
-            var url = "OrderItems/_count";
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.Filter != null)
-                    url += "&filter=" + request.Query.Filter;
-                if(request.Query.FilterTag != null)
-                    url += "&filterTag=" + request.Query.FilterTag;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class OrderItemStateEvent
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal OrderItemStateEvent(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.OrderItemStateEventGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.OrderItemStateEventGetResponse> Get(Models.OrderItemStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "OrderItems/{id}/_stateEvents/{version}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-			if(request.UriParameters.Version == null)
-				throw new InvalidOperationException("Uri Parameter Version cannot be null");
-
-            url = url.Replace("{version}", request.UriParameters.Version.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.OrderItemStateEventGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class OrderItemHistoryState
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal OrderItemHistoryState(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.OrderItemHistoryStateGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.OrderItemHistoryStateGetResponse> Get(Models.OrderItemHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "OrderItems/{id}/_historyStates/{version}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-			if(request.UriParameters.Version == null)
-				throw new InvalidOperationException("Uri Parameter Version cannot be null");
-
-            url = url.Replace("{version}", request.UriParameters.Version.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.OrderItemHistoryStateGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -7642,6 +7277,434 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
+    public partial class ProductCategoryMember
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ProductCategoryMember(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ProductCategoryMemberGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.ProductCategoryMemberGetResponse> Get(Models.ProductCategoryMemberGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "ProductCategoryMembers/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.ProductCategoryMemberGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.ProductCategoryMemberPutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.ProductCategoryMemberPutRequest request)
+        {
+
+            var url = "ProductCategoryMembers/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Put, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(CreateProductCategoryMemberDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.ProductCategoryMemberPatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.ProductCategoryMemberPatchRequest request)
+        {
+
+            var url = "ProductCategoryMembers/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(MergePatchProductCategoryMemberDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.ProductCategoryMemberDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.ProductCategoryMemberDeleteRequest request)
+        {
+
+            var url = "ProductCategoryMembers/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.CommandId != null)
+                    url += "&commandId=" + request.Query.CommandId;
+                if(request.Query.Version != null)
+                    url += "&version=" + request.Query.Version;
+                if(request.Query.RequesterId != null)
+                    url += "&requesterId=" + request.Query.RequesterId;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Delete, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class ProductCategoryMembers
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ProductCategoryMembers(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ProductCategoryMembersGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.ProductCategoryMembersGetResponse> Get(Models.ProductCategoryMembersGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "ProductCategoryMembers";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.FirstResult != null)
+                    url += "&firstResult=" + request.Query.FirstResult;
+                if(request.Query.MaxResults != null)
+                    url += "&maxResults=" + request.Query.MaxResults;
+                if(request.Query.Sort != null)
+                    url += "&sort=" + request.Query.Sort;
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.ProductCategoryMembersGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class ProductCategoryMembersCount
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ProductCategoryMembersCount(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ProductCategoryMembersCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.ProductCategoryMembersCountGetRequest request)
+        {
+
+            var url = "ProductCategoryMembers/_count";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class ProductCategoryMemberStateEvent
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ProductCategoryMemberStateEvent(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ProductCategoryMemberStateEventGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.ProductCategoryMemberStateEventGetResponse> Get(Models.ProductCategoryMemberStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "ProductCategoryMembers/{id}/_stateEvents/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.ProductCategoryMemberStateEventGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class ProductCategoryMemberHistoryState
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ProductCategoryMemberHistoryState(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ProductCategoryMemberHistoryStateGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.ProductCategoryMemberHistoryStateGetResponse> Get(Models.ProductCategoryMemberHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "ProductCategoryMembers/{id}/_historyStates/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.ProductCategoryMemberHistoryStateGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
     public partial class Shipment
     {
         private readonly DddmlWmsRamlClient proxy;
@@ -8084,20 +8147,19 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual async Task<Models.ShipmentItemGetResponse> Get(Models.ShipmentItemGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "ShipmentItems/{id}";
+            var url = "Shipments/{shipmentId}/ShipmentItems/{shipmentItemSeqId}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+			if(request.UriParameters.ShipmentId == null)
+				throw new InvalidOperationException("Uri Parameter ShipmentId cannot be null");
 
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.Fields != null)
-                    url += "&fields=" + request.Query.Fields;
-            }
+            url = url.Replace("{shipmentId}", request.UriParameters.ShipmentId.ToString());
+
+			if(request.UriParameters.ShipmentItemSeqId == null)
+				throw new InvalidOperationException("Uri Parameter ShipmentItemSeqId cannot be null");
+
+            url = url.Replace("{shipmentItemSeqId}", request.UriParameters.ShipmentItemSeqId.ToString());
 
             url = url.Replace("?&", "?");
 
@@ -8121,371 +8183,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				
             }
             return new Models.ShipmentItemGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.ShipmentItemPutRequest</param>
-        public virtual async Task<ApiResponse> Put(Models.ShipmentItemPutRequest request)
-        {
-
-            var url = "ShipmentItems/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Put, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-            if(request.Formatter == null)
-                request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(CreateShipmentItemDto), request.Content , request.Formatter);                           
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.ShipmentItemPatchRequest</param>
-        public virtual async Task<ApiResponse> Patch(Models.ShipmentItemPatchRequest request)
-        {
-
-            var url = "ShipmentItems/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-            if(request.Formatter == null)
-                request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(MergePatchShipmentItemDto), request.Content , request.Formatter);                           
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.ShipmentItemDeleteRequest</param>
-        public virtual async Task<ApiResponse> Delete(Models.ShipmentItemDeleteRequest request)
-        {
-
-            var url = "ShipmentItems/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.CommandId != null)
-                    url += "&commandId=" + request.Query.CommandId;
-                if(request.Query.Version != null)
-                    url += "&version=" + request.Query.Version;
-                if(request.Query.RequesterId != null)
-                    url += "&requesterId=" + request.Query.RequesterId;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Delete, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class ShipmentItems
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal ShipmentItems(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.ShipmentItemsGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.ShipmentItemsGetResponse> Get(Models.ShipmentItemsGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "ShipmentItems";
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.FirstResult != null)
-                    url += "&firstResult=" + request.Query.FirstResult;
-                if(request.Query.MaxResults != null)
-                    url += "&maxResults=" + request.Query.MaxResults;
-                if(request.Query.Sort != null)
-                    url += "&sort=" + request.Query.Sort;
-                if(request.Query.Fields != null)
-                    url += "&fields=" + request.Query.Fields;
-                if(request.Query.Filter != null)
-                    url += "&filter=" + request.Query.Filter;
-                if(request.Query.FilterTag != null)
-                    url += "&filterTag=" + request.Query.FilterTag;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.ShipmentItemsGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class ShipmentItemsCount
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal ShipmentItemsCount(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.ShipmentItemsCountGetRequest</param>
-        public virtual async Task<ApiResponse> Get(Models.ShipmentItemsCountGetRequest request)
-        {
-
-            var url = "ShipmentItems/_count";
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.Filter != null)
-                    url += "&filter=" + request.Query.Filter;
-                if(request.Query.FilterTag != null)
-                    url += "&filterTag=" + request.Query.FilterTag;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class ShipmentItemStateEvent
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal ShipmentItemStateEvent(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.ShipmentItemStateEventGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.ShipmentItemStateEventGetResponse> Get(Models.ShipmentItemStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "ShipmentItems/{id}/_stateEvents/{version}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-			if(request.UriParameters.Version == null)
-				throw new InvalidOperationException("Uri Parameter Version cannot be null");
-
-            url = url.Replace("{version}", request.UriParameters.Version.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.ShipmentItemStateEventGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class ShipmentItemHistoryState
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal ShipmentItemHistoryState(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.ShipmentItemHistoryStateGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.ShipmentItemHistoryStateGetResponse> Get(Models.ShipmentItemHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "ShipmentItems/{id}/_historyStates/{version}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-			if(request.UriParameters.Version == null)
-				throw new InvalidOperationException("Uri Parameter Version cannot be null");
-
-            url = url.Replace("{version}", request.UriParameters.Version.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.ShipmentItemHistoryStateGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -13729,6 +13426,862 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
+    public partial class OrderItemMvo
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrderItemMvo(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrderItemMvoGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrderItemMvoGetResponse> Get(Models.OrderItemMvoGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrderItemMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrderItemMvoGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.OrderItemMvoPutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.OrderItemMvoPutRequest request)
+        {
+
+            var url = "OrderItemMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Put, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(CreateOrderItemMvoDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.OrderItemMvoPatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.OrderItemMvoPatchRequest request)
+        {
+
+            var url = "OrderItemMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(MergePatchOrderItemMvoDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.OrderItemMvoDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.OrderItemMvoDeleteRequest request)
+        {
+
+            var url = "OrderItemMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.CommandId != null)
+                    url += "&commandId=" + request.Query.CommandId;
+                if(request.Query.Version != null)
+                    url += "&version=" + request.Query.Version;
+                if(request.Query.RequesterId != null)
+                    url += "&requesterId=" + request.Query.RequesterId;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Delete, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrderItemMvos
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrderItemMvos(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrderItemMvosGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrderItemMvosGetResponse> Get(Models.OrderItemMvosGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrderItemMvos";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.FirstResult != null)
+                    url += "&firstResult=" + request.Query.FirstResult;
+                if(request.Query.MaxResults != null)
+                    url += "&maxResults=" + request.Query.MaxResults;
+                if(request.Query.Sort != null)
+                    url += "&sort=" + request.Query.Sort;
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrderItemMvosGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrderItemMvosCount
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrderItemMvosCount(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrderItemMvosCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.OrderItemMvosCountGetRequest request)
+        {
+
+            var url = "OrderItemMvos/_count";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrderItemMvoStateEvent
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrderItemMvoStateEvent(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrderItemMvoStateEventGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrderItemMvoStateEventGetResponse> Get(Models.OrderItemMvoStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrderItemMvos/{id}/_stateEvents/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrderItemMvoStateEventGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrderItemMvoHistoryState
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrderItemMvoHistoryState(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrderItemMvoHistoryStateGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrderItemMvoHistoryStateGetResponse> Get(Models.OrderItemMvoHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrderItemMvos/{id}/_historyStates/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrderItemMvoHistoryStateGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class ShipmentItemMvo
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ShipmentItemMvo(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ShipmentItemMvoGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.ShipmentItemMvoGetResponse> Get(Models.ShipmentItemMvoGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "ShipmentItemMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.ShipmentItemMvoGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.ShipmentItemMvoPutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.ShipmentItemMvoPutRequest request)
+        {
+
+            var url = "ShipmentItemMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Put, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(CreateShipmentItemMvoDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.ShipmentItemMvoPatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.ShipmentItemMvoPatchRequest request)
+        {
+
+            var url = "ShipmentItemMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(MergePatchShipmentItemMvoDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.ShipmentItemMvoDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.ShipmentItemMvoDeleteRequest request)
+        {
+
+            var url = "ShipmentItemMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.CommandId != null)
+                    url += "&commandId=" + request.Query.CommandId;
+                if(request.Query.Version != null)
+                    url += "&version=" + request.Query.Version;
+                if(request.Query.RequesterId != null)
+                    url += "&requesterId=" + request.Query.RequesterId;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Delete, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class ShipmentItemMvos
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ShipmentItemMvos(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ShipmentItemMvosGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.ShipmentItemMvosGetResponse> Get(Models.ShipmentItemMvosGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "ShipmentItemMvos";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.FirstResult != null)
+                    url += "&firstResult=" + request.Query.FirstResult;
+                if(request.Query.MaxResults != null)
+                    url += "&maxResults=" + request.Query.MaxResults;
+                if(request.Query.Sort != null)
+                    url += "&sort=" + request.Query.Sort;
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.ShipmentItemMvosGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class ShipmentItemMvosCount
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ShipmentItemMvosCount(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ShipmentItemMvosCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.ShipmentItemMvosCountGetRequest request)
+        {
+
+            var url = "ShipmentItemMvos/_count";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class ShipmentItemMvoStateEvent
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ShipmentItemMvoStateEvent(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ShipmentItemMvoStateEventGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.ShipmentItemMvoStateEventGetResponse> Get(Models.ShipmentItemMvoStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "ShipmentItemMvos/{id}/_stateEvents/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.ShipmentItemMvoStateEventGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class ShipmentItemMvoHistoryState
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ShipmentItemMvoHistoryState(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ShipmentItemMvoHistoryStateGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.ShipmentItemMvoHistoryStateGetResponse> Get(Models.ShipmentItemMvoHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "ShipmentItemMvos/{id}/_historyStates/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.ShipmentItemMvoHistoryStateGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
     public partial class AttributeSetInstanceExtensionFieldMvo
     {
         private readonly DddmlWmsRamlClient proxy;
@@ -14430,15 +14983,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual OrderHeader OrderHeader
+        public virtual Order Order
         {
-            get { return new OrderHeader(this); }
-        }
-                
-
-        public virtual OrderItem OrderItem
-        {
-            get { return new OrderItem(this); }
+            get { return new Order(this); }
         }
                 
 
@@ -14478,15 +15025,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual Shipment Shipment
+        public virtual ProductCategoryMember ProductCategoryMember
         {
-            get { return new Shipment(this); }
+            get { return new ProductCategoryMember(this); }
         }
                 
 
-        public virtual ShipmentItem ShipmentItem
+        public virtual Shipment Shipment
         {
-            get { return new ShipmentItem(this); }
+            get { return new Shipment(this); }
         }
                 
 
@@ -14562,6 +15109,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual OrderItemMvo OrderItemMvo
+        {
+            get { return new OrderItemMvo(this); }
+        }
+                
+
+        public virtual ShipmentItemMvo ShipmentItemMvo
+        {
+            get { return new ShipmentItemMvo(this); }
+        }
+                
+
         public virtual AttributeSetInstanceExtensionFieldMvo AttributeSetInstanceExtensionFieldMvo
         {
             get { return new AttributeSetInstanceExtensionFieldMvo(this); }
@@ -14622,15 +15181,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual OrderHeaders OrderHeaders
+        public virtual Orders Orders
         {
-            get { return new OrderHeaders(this); }
-        }
-                
-
-        public virtual OrderItems OrderItems
-        {
-            get { return new OrderItems(this); }
+            get { return new Orders(this); }
         }
                 
 
@@ -14670,15 +15223,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual Shipments Shipments
+        public virtual ProductCategoryMembers ProductCategoryMembers
         {
-            get { return new Shipments(this); }
+            get { return new ProductCategoryMembers(this); }
         }
                 
 
-        public virtual ShipmentItems ShipmentItems
+        public virtual Shipments Shipments
         {
-            get { return new ShipmentItems(this); }
+            get { return new Shipments(this); }
         }
                 
 
@@ -14754,6 +15307,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual OrderItemMvos OrderItemMvos
+        {
+            get { return new OrderItemMvos(this); }
+        }
+                
+
+        public virtual ShipmentItemMvos ShipmentItemMvos
+        {
+            get { return new ShipmentItemMvos(this); }
+        }
+                
+
         public virtual AttributeSetInstanceExtensionFieldMvos AttributeSetInstanceExtensionFieldMvos
         {
             get { return new AttributeSetInstanceExtensionFieldMvos(this); }
@@ -14814,15 +15379,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual OrderHeadersCount OrderHeadersCount
+        public virtual OrdersCount OrdersCount
         {
-            get { return new OrderHeadersCount(this); }
-        }
-                
-
-        public virtual OrderItemsCount OrderItemsCount
-        {
-            get { return new OrderItemsCount(this); }
+            get { return new OrdersCount(this); }
         }
                 
 
@@ -14862,15 +15421,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual ShipmentsCount ShipmentsCount
+        public virtual ProductCategoryMembersCount ProductCategoryMembersCount
         {
-            get { return new ShipmentsCount(this); }
+            get { return new ProductCategoryMembersCount(this); }
         }
                 
 
-        public virtual ShipmentItemsCount ShipmentItemsCount
+        public virtual ShipmentsCount ShipmentsCount
         {
-            get { return new ShipmentItemsCount(this); }
+            get { return new ShipmentsCount(this); }
         }
                 
 
@@ -14946,6 +15505,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual OrderItemMvosCount OrderItemMvosCount
+        {
+            get { return new OrderItemMvosCount(this); }
+        }
+                
+
+        public virtual ShipmentItemMvosCount ShipmentItemMvosCount
+        {
+            get { return new ShipmentItemMvosCount(this); }
+        }
+                
+
         public virtual AttributeSetInstanceExtensionFieldMvosCount AttributeSetInstanceExtensionFieldMvosCount
         {
             get { return new AttributeSetInstanceExtensionFieldMvosCount(this); }
@@ -15006,15 +15577,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual OrderHeaderStateEvent OrderHeaderStateEvent
+        public virtual OrderStateEvent OrderStateEvent
         {
-            get { return new OrderHeaderStateEvent(this); }
-        }
-                
-
-        public virtual OrderItemStateEvent OrderItemStateEvent
-        {
-            get { return new OrderItemStateEvent(this); }
+            get { return new OrderStateEvent(this); }
         }
                 
 
@@ -15054,15 +15619,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual ShipmentStateEvent ShipmentStateEvent
+        public virtual ProductCategoryMemberStateEvent ProductCategoryMemberStateEvent
         {
-            get { return new ShipmentStateEvent(this); }
+            get { return new ProductCategoryMemberStateEvent(this); }
         }
                 
 
-        public virtual ShipmentItemStateEvent ShipmentItemStateEvent
+        public virtual ShipmentStateEvent ShipmentStateEvent
         {
-            get { return new ShipmentItemStateEvent(this); }
+            get { return new ShipmentStateEvent(this); }
         }
                 
 
@@ -15138,6 +15703,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual OrderItemMvoStateEvent OrderItemMvoStateEvent
+        {
+            get { return new OrderItemMvoStateEvent(this); }
+        }
+                
+
+        public virtual ShipmentItemMvoStateEvent ShipmentItemMvoStateEvent
+        {
+            get { return new ShipmentItemMvoStateEvent(this); }
+        }
+                
+
         public virtual AttributeSetInstanceExtensionFieldMvoStateEvent AttributeSetInstanceExtensionFieldMvoStateEvent
         {
             get { return new AttributeSetInstanceExtensionFieldMvoStateEvent(this); }
@@ -15198,15 +15775,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual OrderHeaderHistoryState OrderHeaderHistoryState
+        public virtual OrderHistoryState OrderHistoryState
         {
-            get { return new OrderHeaderHistoryState(this); }
-        }
-                
-
-        public virtual OrderItemHistoryState OrderItemHistoryState
-        {
-            get { return new OrderItemHistoryState(this); }
+            get { return new OrderHistoryState(this); }
         }
                 
 
@@ -15246,15 +15817,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual ShipmentHistoryState ShipmentHistoryState
+        public virtual ProductCategoryMemberHistoryState ProductCategoryMemberHistoryState
         {
-            get { return new ShipmentHistoryState(this); }
+            get { return new ProductCategoryMemberHistoryState(this); }
         }
                 
 
-        public virtual ShipmentItemHistoryState ShipmentItemHistoryState
+        public virtual ShipmentHistoryState ShipmentHistoryState
         {
-            get { return new ShipmentItemHistoryState(this); }
+            get { return new ShipmentHistoryState(this); }
         }
                 
 
@@ -15330,6 +15901,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual OrderItemMvoHistoryState OrderItemMvoHistoryState
+        {
+            get { return new OrderItemMvoHistoryState(this); }
+        }
+                
+
+        public virtual ShipmentItemMvoHistoryState ShipmentItemMvoHistoryState
+        {
+            get { return new ShipmentItemMvoHistoryState(this); }
+        }
+                
+
         public virtual AttributeSetInstanceExtensionFieldMvoHistoryState AttributeSetInstanceExtensionFieldMvoHistoryState
         {
             get { return new AttributeSetInstanceExtensionFieldMvoHistoryState(this); }
@@ -15363,6 +15946,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual SellableInventoryItemEntry SellableInventoryItemEntry
         {
             get { return new SellableInventoryItemEntry(this); }
+        }
+                
+
+        public virtual OrderItem OrderItem
+        {
+            get { return new OrderItem(this); }
+        }
+                
+
+        public virtual ShipmentItem ShipmentItem
+        {
+            get { return new ShipmentItem(this); }
         }
                 
 
@@ -15914,7 +16509,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  OrderHeaderGetQuery 
+    public partial class  OrderGetQuery 
     {
 		[JsonProperty("fields")]
         public string Fields { get; set; }
@@ -15922,7 +16517,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  OrderHeaderDeleteQuery 
+    public partial class  OrderDeleteQuery 
     {
 		[JsonProperty("commandId")]
         public string CommandId { get; set; }
@@ -15936,7 +16531,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  OrderHeadersGetQuery 
+    public partial class  OrdersGetQuery 
     {
 		[JsonProperty("firstResult")]
         public int? FirstResult { get; set; }
@@ -15959,63 +16554,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  OrderHeadersCountGetQuery 
-    {
-		[JsonProperty("filter")]
-        public string Filter { get; set; }
-
-		[JsonProperty("filterTag")]
-        public string FilterTag { get; set; }
-
-
-    } // end class
-
-    public partial class  OrderItemGetQuery 
-    {
-		[JsonProperty("fields")]
-        public string Fields { get; set; }
-
-
-    } // end class
-
-    public partial class  OrderItemDeleteQuery 
-    {
-		[JsonProperty("commandId")]
-        public string CommandId { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-		[JsonProperty("requesterId")]
-        public string RequesterId { get; set; }
-
-
-    } // end class
-
-    public partial class  OrderItemsGetQuery 
-    {
-		[JsonProperty("firstResult")]
-        public int? FirstResult { get; set; }
-
-		[JsonProperty("maxResults")]
-        public int? MaxResults { get; set; }
-
-		[JsonProperty("sort")]
-        public string Sort { get; set; }
-
-		[JsonProperty("fields")]
-        public string Fields { get; set; }
-
-		[JsonProperty("filter")]
-        public string Filter { get; set; }
-
-		[JsonProperty("filterTag")]
-        public string FilterTag { get; set; }
-
-
-    } // end class
-
-    public partial class  OrderItemsCountGetQuery 
+    public partial class  OrdersCountGetQuery 
     {
 		[JsonProperty("filter")]
         public string Filter { get; set; }
@@ -16362,6 +16901,62 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
+    public partial class  ProductCategoryMemberGetQuery 
+    {
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+
+    } // end class
+
+    public partial class  ProductCategoryMemberDeleteQuery 
+    {
+		[JsonProperty("commandId")]
+        public string CommandId { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+		[JsonProperty("requesterId")]
+        public string RequesterId { get; set; }
+
+
+    } // end class
+
+    public partial class  ProductCategoryMembersGetQuery 
+    {
+		[JsonProperty("firstResult")]
+        public int? FirstResult { get; set; }
+
+		[JsonProperty("maxResults")]
+        public int? MaxResults { get; set; }
+
+		[JsonProperty("sort")]
+        public string Sort { get; set; }
+
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  ProductCategoryMembersCountGetQuery 
+    {
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
     public partial class  ShipmentGetQuery 
     {
 		[JsonProperty("fields")]
@@ -16408,62 +17003,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     public partial class  ShipmentsCountGetQuery 
-    {
-		[JsonProperty("filter")]
-        public string Filter { get; set; }
-
-		[JsonProperty("filterTag")]
-        public string FilterTag { get; set; }
-
-
-    } // end class
-
-    public partial class  ShipmentItemGetQuery 
-    {
-		[JsonProperty("fields")]
-        public string Fields { get; set; }
-
-
-    } // end class
-
-    public partial class  ShipmentItemDeleteQuery 
-    {
-		[JsonProperty("commandId")]
-        public string CommandId { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-		[JsonProperty("requesterId")]
-        public string RequesterId { get; set; }
-
-
-    } // end class
-
-    public partial class  ShipmentItemsGetQuery 
-    {
-		[JsonProperty("firstResult")]
-        public int? FirstResult { get; set; }
-
-		[JsonProperty("maxResults")]
-        public int? MaxResults { get; set; }
-
-		[JsonProperty("sort")]
-        public string Sort { get; set; }
-
-		[JsonProperty("fields")]
-        public string Fields { get; set; }
-
-		[JsonProperty("filter")]
-        public string Filter { get; set; }
-
-		[JsonProperty("filterTag")]
-        public string FilterTag { get; set; }
-
-
-    } // end class
-
-    public partial class  ShipmentItemsCountGetQuery 
     {
 		[JsonProperty("filter")]
         public string Filter { get; set; }
@@ -17146,6 +17685,118 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
+    public partial class  OrderItemMvoGetQuery 
+    {
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+
+    } // end class
+
+    public partial class  OrderItemMvoDeleteQuery 
+    {
+		[JsonProperty("commandId")]
+        public string CommandId { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+		[JsonProperty("requesterId")]
+        public string RequesterId { get; set; }
+
+
+    } // end class
+
+    public partial class  OrderItemMvosGetQuery 
+    {
+		[JsonProperty("firstResult")]
+        public int? FirstResult { get; set; }
+
+		[JsonProperty("maxResults")]
+        public int? MaxResults { get; set; }
+
+		[JsonProperty("sort")]
+        public string Sort { get; set; }
+
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  OrderItemMvosCountGetQuery 
+    {
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  ShipmentItemMvoGetQuery 
+    {
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+
+    } // end class
+
+    public partial class  ShipmentItemMvoDeleteQuery 
+    {
+		[JsonProperty("commandId")]
+        public string CommandId { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+		[JsonProperty("requesterId")]
+        public string RequesterId { get; set; }
+
+
+    } // end class
+
+    public partial class  ShipmentItemMvosGetQuery 
+    {
+		[JsonProperty("firstResult")]
+        public int? FirstResult { get; set; }
+
+		[JsonProperty("maxResults")]
+        public int? MaxResults { get; set; }
+
+		[JsonProperty("sort")]
+        public string Sort { get; set; }
+
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  ShipmentItemMvosCountGetQuery 
+    {
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
     public partial class  AttributeSetInstanceExtensionFieldMvoGetQuery 
     {
 		[JsonProperty("fields")]
@@ -17676,9 +18327,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /OrderHeaders/{id}
+    /// Uri Parameters for resource /Orders/{id}
     /// </summary>
-    public partial class  OrderHeaderUriParameters 
+    public partial class  OrderUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -17687,23 +18338,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /OrderHeaders/{id}/_stateEvents/{version}
+    /// Uri Parameters for resource /Orders/{id}/_stateEvents/{version}
     /// </summary>
-    public partial class  OrderHeaderStateEventUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /OrderHeaders/{id}/_historyStates/{version}
-    /// </summary>
-    public partial class  OrderHeaderHistoryStateUriParameters 
+    public partial class  OrderStateEventUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -17715,40 +18352,29 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /OrderItems/{id}
+    /// Uri Parameters for resource /Orders/{id}/_historyStates/{version}
+    /// </summary>
+    public partial class  OrderHistoryStateUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /Orders/{orderId}/OrderItems/{orderItemSeqId}
     /// </summary>
     public partial class  OrderItemUriParameters 
     {
-		[JsonProperty("id")]
-        public string Id { get; set; }
+		[JsonProperty("orderId")]
+        public string OrderId { get; set; }
 
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /OrderItems/{id}/_stateEvents/{version}
-    /// </summary>
-    public partial class  OrderItemStateEventUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /OrderItems/{id}/_historyStates/{version}
-    /// </summary>
-    public partial class  OrderItemHistoryStateUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
+		[JsonProperty("orderItemSeqId")]
+        public string OrderItemSeqId { get; set; }
 
 
     } // end class
@@ -17988,6 +18614,45 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Uri Parameters for resource /ProductCategoryMembers/{id}
+    /// </summary>
+    public partial class  ProductCategoryMemberUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /ProductCategoryMembers/{id}/_stateEvents/{version}
+    /// </summary>
+    public partial class  ProductCategoryMemberStateEventUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /ProductCategoryMembers/{id}/_historyStates/{version}
+    /// </summary>
+    public partial class  ProductCategoryMemberHistoryStateUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
     /// Uri Parameters for resource /Shipments/{id}
     /// </summary>
     public partial class  ShipmentUriParameters 
@@ -18027,40 +18692,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /ShipmentItems/{id}
+    /// Uri Parameters for resource /Shipments/{shipmentId}/ShipmentItems/{shipmentItemSeqId}
     /// </summary>
     public partial class  ShipmentItemUriParameters 
     {
-		[JsonProperty("id")]
-        public string Id { get; set; }
+		[JsonProperty("shipmentId")]
+        public string ShipmentId { get; set; }
 
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /ShipmentItems/{id}/_stateEvents/{version}
-    /// </summary>
-    public partial class  ShipmentItemStateEventUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /ShipmentItems/{id}/_historyStates/{version}
-    /// </summary>
-    public partial class  ShipmentItemHistoryStateUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
+		[JsonProperty("shipmentItemSeqId")]
+        public string ShipmentItemSeqId { get; set; }
 
 
     } // end class
@@ -18537,6 +19177,84 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     /// Uri Parameters for resource /SellableInventoryItemEntryMvos/{id}/_historyStates/{version}
     /// </summary>
     public partial class  SellableInventoryItemEntryMvoHistoryStateUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /OrderItemMvos/{id}
+    /// </summary>
+    public partial class  OrderItemMvoUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /OrderItemMvos/{id}/_stateEvents/{version}
+    /// </summary>
+    public partial class  OrderItemMvoStateEventUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /OrderItemMvos/{id}/_historyStates/{version}
+    /// </summary>
+    public partial class  OrderItemMvoHistoryStateUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /ShipmentItemMvos/{id}
+    /// </summary>
+    public partial class  ShipmentItemMvoUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /ShipmentItemMvos/{id}/_stateEvents/{version}
+    /// </summary>
+    public partial class  ShipmentItemMvoStateEventUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /ShipmentItemMvos/{id}/_historyStates/{version}
+    /// </summary>
+    public partial class  ShipmentItemMvoHistoryStateUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -20166,11 +20884,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class OrderHeader
+    /// Request object for method Get of class Order
     /// </summary>
-    public partial class OrderHeaderGetRequest : ApiRequest
+    public partial class OrderGetRequest : ApiRequest
     {
-        public OrderHeaderGetRequest(OrderHeaderUriParameters UriParameters, OrderHeaderGetQuery Query = null)
+        public OrderGetRequest(OrderUriParameters UriParameters, OrderGetQuery Query = null)
         {
             this.Query = Query;
             this.UriParameters = UriParameters;
@@ -20179,20 +20897,20 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public OrderHeaderGetQuery Query { get; set; }
+        public OrderGetQuery Query { get; set; }
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public OrderHeaderUriParameters UriParameters { get; set; }
+        public OrderUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Put of class OrderHeader
+    /// Request object for method Put of class Order
     /// </summary>
-    public partial class OrderHeaderPutRequest : ApiRequest
+    public partial class OrderPutRequest : ApiRequest
     {
-        public OrderHeaderPutRequest(OrderHeaderUriParameters UriParameters, CreateOrderHeaderDto Content = null, MediaTypeFormatter Formatter = null)
+        public OrderPutRequest(OrderUriParameters UriParameters, CreateOrderDto Content = null, MediaTypeFormatter Formatter = null)
         {
             this.Content = Content;
             this.Formatter = Formatter;
@@ -20202,7 +20920,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request content
         /// </summary>
-        public CreateOrderHeaderDto Content { get; set; }
+        public CreateOrderDto Content { get; set; }
         /// <summary>
         /// Request formatter
         /// </summary>
@@ -20210,16 +20928,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public OrderHeaderUriParameters UriParameters { get; set; }
+        public OrderUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Patch of class OrderHeader
+    /// Request object for method Patch of class Order
     /// </summary>
-    public partial class OrderHeaderPatchRequest : ApiRequest
+    public partial class OrderPatchRequest : ApiRequest
     {
-        public OrderHeaderPatchRequest(OrderHeaderUriParameters UriParameters, MergePatchOrderHeaderDto Content = null, MediaTypeFormatter Formatter = null)
+        public OrderPatchRequest(OrderUriParameters UriParameters, MergePatchOrderDto Content = null, MediaTypeFormatter Formatter = null)
         {
             this.Content = Content;
             this.Formatter = Formatter;
@@ -20229,7 +20947,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request content
         /// </summary>
-        public MergePatchOrderHeaderDto Content { get; set; }
+        public MergePatchOrderDto Content { get; set; }
         /// <summary>
         /// Request formatter
         /// </summary>
@@ -20237,16 +20955,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public OrderHeaderUriParameters UriParameters { get; set; }
+        public OrderUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Delete of class OrderHeader
+    /// Request object for method Delete of class Order
     /// </summary>
-    public partial class OrderHeaderDeleteRequest : ApiRequest
+    public partial class OrderDeleteRequest : ApiRequest
     {
-        public OrderHeaderDeleteRequest(OrderHeaderUriParameters UriParameters, OrderHeaderDeleteQuery Query = null)
+        public OrderDeleteRequest(OrderUriParameters UriParameters, OrderDeleteQuery Query = null)
         {
             this.Query = Query;
             this.UriParameters = UriParameters;
@@ -20255,20 +20973,20 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public OrderHeaderDeleteQuery Query { get; set; }
+        public OrderDeleteQuery Query { get; set; }
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public OrderHeaderUriParameters UriParameters { get; set; }
+        public OrderUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class OrderHeaders
+    /// Request object for method Get of class Orders
     /// </summary>
-    public partial class OrderHeadersGetRequest : ApiRequest
+    public partial class OrdersGetRequest : ApiRequest
     {
-        public OrderHeadersGetRequest(OrderHeadersGetQuery Query = null)
+        public OrdersGetRequest(OrdersGetQuery Query = null)
         {
             this.Query = Query;
         }
@@ -20276,16 +20994,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public OrderHeadersGetQuery Query { get; set; }
+        public OrdersGetQuery Query { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class OrderHeadersCount
+    /// Request object for method Get of class OrdersCount
     /// </summary>
-    public partial class OrderHeadersCountGetRequest : ApiRequest
+    public partial class OrdersCountGetRequest : ApiRequest
     {
-        public OrderHeadersCountGetRequest(OrderHeadersCountGetQuery Query = null)
+        public OrdersCountGetRequest(OrdersCountGetQuery Query = null)
         {
             this.Query = Query;
         }
@@ -20293,16 +21011,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public OrderHeadersCountGetQuery Query { get; set; }
+        public OrdersCountGetQuery Query { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class OrderHeaderStateEvent
+    /// Request object for method Get of class OrderStateEvent
     /// </summary>
-    public partial class OrderHeaderStateEventGetRequest : ApiRequest
+    public partial class OrderStateEventGetRequest : ApiRequest
     {
-        public OrderHeaderStateEventGetRequest(OrderHeaderStateEventUriParameters UriParameters)
+        public OrderStateEventGetRequest(OrderStateEventUriParameters UriParameters)
         {
             this.UriParameters = UriParameters;
         }
@@ -20310,16 +21028,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public OrderHeaderStateEventUriParameters UriParameters { get; set; }
+        public OrderStateEventUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class OrderHeaderHistoryState
+    /// Request object for method Get of class OrderHistoryState
     /// </summary>
-    public partial class OrderHeaderHistoryStateGetRequest : ApiRequest
+    public partial class OrderHistoryStateGetRequest : ApiRequest
     {
-        public OrderHeaderHistoryStateGetRequest(OrderHeaderHistoryStateUriParameters UriParameters)
+        public OrderHistoryStateGetRequest(OrderHistoryStateUriParameters UriParameters)
         {
             this.UriParameters = UriParameters;
         }
@@ -20327,7 +21045,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public OrderHeaderHistoryStateUriParameters UriParameters { get; set; }
+        public OrderHistoryStateUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -20336,164 +21054,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     /// </summary>
     public partial class OrderItemGetRequest : ApiRequest
     {
-        public OrderItemGetRequest(OrderItemUriParameters UriParameters, OrderItemGetQuery Query = null)
+        public OrderItemGetRequest(OrderItemUriParameters UriParameters)
         {
-            this.Query = Query;
             this.UriParameters = UriParameters;
         }
 
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public OrderItemGetQuery Query { get; set; }
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
         public OrderItemUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Put of class OrderItem
-    /// </summary>
-    public partial class OrderItemPutRequest : ApiRequest
-    {
-        public OrderItemPutRequest(OrderItemUriParameters UriParameters, CreateOrderItemDto Content = null, MediaTypeFormatter Formatter = null)
-        {
-            this.Content = Content;
-            this.Formatter = Formatter;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request content
-        /// </summary>
-        public CreateOrderItemDto Content { get; set; }
-        /// <summary>
-        /// Request formatter
-        /// </summary>
-        public MediaTypeFormatter Formatter { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public OrderItemUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Patch of class OrderItem
-    /// </summary>
-    public partial class OrderItemPatchRequest : ApiRequest
-    {
-        public OrderItemPatchRequest(OrderItemUriParameters UriParameters, MergePatchOrderItemDto Content = null, MediaTypeFormatter Formatter = null)
-        {
-            this.Content = Content;
-            this.Formatter = Formatter;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request content
-        /// </summary>
-        public MergePatchOrderItemDto Content { get; set; }
-        /// <summary>
-        /// Request formatter
-        /// </summary>
-        public MediaTypeFormatter Formatter { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public OrderItemUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Delete of class OrderItem
-    /// </summary>
-    public partial class OrderItemDeleteRequest : ApiRequest
-    {
-        public OrderItemDeleteRequest(OrderItemUriParameters UriParameters, OrderItemDeleteQuery Query = null)
-        {
-            this.Query = Query;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public OrderItemDeleteQuery Query { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public OrderItemUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class OrderItems
-    /// </summary>
-    public partial class OrderItemsGetRequest : ApiRequest
-    {
-        public OrderItemsGetRequest(OrderItemsGetQuery Query = null)
-        {
-            this.Query = Query;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public OrderItemsGetQuery Query { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class OrderItemsCount
-    /// </summary>
-    public partial class OrderItemsCountGetRequest : ApiRequest
-    {
-        public OrderItemsCountGetRequest(OrderItemsCountGetQuery Query = null)
-        {
-            this.Query = Query;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public OrderItemsCountGetQuery Query { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class OrderItemStateEvent
-    /// </summary>
-    public partial class OrderItemStateEventGetRequest : ApiRequest
-    {
-        public OrderItemStateEventGetRequest(OrderItemStateEventUriParameters UriParameters)
-        {
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public OrderItemStateEventUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class OrderItemHistoryState
-    /// </summary>
-    public partial class OrderItemHistoryStateGetRequest : ApiRequest
-    {
-        public OrderItemHistoryStateGetRequest(OrderItemHistoryStateUriParameters UriParameters)
-        {
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public OrderItemHistoryStateUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -21494,6 +22063,172 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Request object for method Get of class ProductCategoryMember
+    /// </summary>
+    public partial class ProductCategoryMemberGetRequest : ApiRequest
+    {
+        public ProductCategoryMemberGetRequest(ProductCategoryMemberUriParameters UriParameters, ProductCategoryMemberGetQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public ProductCategoryMemberGetQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ProductCategoryMemberUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Put of class ProductCategoryMember
+    /// </summary>
+    public partial class ProductCategoryMemberPutRequest : ApiRequest
+    {
+        public ProductCategoryMemberPutRequest(ProductCategoryMemberUriParameters UriParameters, CreateProductCategoryMemberDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public CreateProductCategoryMemberDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ProductCategoryMemberUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Patch of class ProductCategoryMember
+    /// </summary>
+    public partial class ProductCategoryMemberPatchRequest : ApiRequest
+    {
+        public ProductCategoryMemberPatchRequest(ProductCategoryMemberUriParameters UriParameters, MergePatchProductCategoryMemberDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public MergePatchProductCategoryMemberDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ProductCategoryMemberUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Delete of class ProductCategoryMember
+    /// </summary>
+    public partial class ProductCategoryMemberDeleteRequest : ApiRequest
+    {
+        public ProductCategoryMemberDeleteRequest(ProductCategoryMemberUriParameters UriParameters, ProductCategoryMemberDeleteQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public ProductCategoryMemberDeleteQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ProductCategoryMemberUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class ProductCategoryMembers
+    /// </summary>
+    public partial class ProductCategoryMembersGetRequest : ApiRequest
+    {
+        public ProductCategoryMembersGetRequest(ProductCategoryMembersGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public ProductCategoryMembersGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class ProductCategoryMembersCount
+    /// </summary>
+    public partial class ProductCategoryMembersCountGetRequest : ApiRequest
+    {
+        public ProductCategoryMembersCountGetRequest(ProductCategoryMembersCountGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public ProductCategoryMembersCountGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class ProductCategoryMemberStateEvent
+    /// </summary>
+    public partial class ProductCategoryMemberStateEventGetRequest : ApiRequest
+    {
+        public ProductCategoryMemberStateEventGetRequest(ProductCategoryMemberStateEventUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ProductCategoryMemberStateEventUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class ProductCategoryMemberHistoryState
+    /// </summary>
+    public partial class ProductCategoryMemberHistoryStateGetRequest : ApiRequest
+    {
+        public ProductCategoryMemberHistoryStateGetRequest(ProductCategoryMemberHistoryStateUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ProductCategoryMemberHistoryStateUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
     /// Request object for method Get of class Shipment
     /// </summary>
     public partial class ShipmentGetRequest : ApiRequest
@@ -21664,164 +22399,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     /// </summary>
     public partial class ShipmentItemGetRequest : ApiRequest
     {
-        public ShipmentItemGetRequest(ShipmentItemUriParameters UriParameters, ShipmentItemGetQuery Query = null)
+        public ShipmentItemGetRequest(ShipmentItemUriParameters UriParameters)
         {
-            this.Query = Query;
             this.UriParameters = UriParameters;
         }
 
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public ShipmentItemGetQuery Query { get; set; }
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
         public ShipmentItemUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Put of class ShipmentItem
-    /// </summary>
-    public partial class ShipmentItemPutRequest : ApiRequest
-    {
-        public ShipmentItemPutRequest(ShipmentItemUriParameters UriParameters, CreateShipmentItemDto Content = null, MediaTypeFormatter Formatter = null)
-        {
-            this.Content = Content;
-            this.Formatter = Formatter;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request content
-        /// </summary>
-        public CreateShipmentItemDto Content { get; set; }
-        /// <summary>
-        /// Request formatter
-        /// </summary>
-        public MediaTypeFormatter Formatter { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public ShipmentItemUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Patch of class ShipmentItem
-    /// </summary>
-    public partial class ShipmentItemPatchRequest : ApiRequest
-    {
-        public ShipmentItemPatchRequest(ShipmentItemUriParameters UriParameters, MergePatchShipmentItemDto Content = null, MediaTypeFormatter Formatter = null)
-        {
-            this.Content = Content;
-            this.Formatter = Formatter;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request content
-        /// </summary>
-        public MergePatchShipmentItemDto Content { get; set; }
-        /// <summary>
-        /// Request formatter
-        /// </summary>
-        public MediaTypeFormatter Formatter { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public ShipmentItemUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Delete of class ShipmentItem
-    /// </summary>
-    public partial class ShipmentItemDeleteRequest : ApiRequest
-    {
-        public ShipmentItemDeleteRequest(ShipmentItemUriParameters UriParameters, ShipmentItemDeleteQuery Query = null)
-        {
-            this.Query = Query;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public ShipmentItemDeleteQuery Query { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public ShipmentItemUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class ShipmentItems
-    /// </summary>
-    public partial class ShipmentItemsGetRequest : ApiRequest
-    {
-        public ShipmentItemsGetRequest(ShipmentItemsGetQuery Query = null)
-        {
-            this.Query = Query;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public ShipmentItemsGetQuery Query { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class ShipmentItemsCount
-    /// </summary>
-    public partial class ShipmentItemsCountGetRequest : ApiRequest
-    {
-        public ShipmentItemsCountGetRequest(ShipmentItemsCountGetQuery Query = null)
-        {
-            this.Query = Query;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public ShipmentItemsCountGetQuery Query { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class ShipmentItemStateEvent
-    /// </summary>
-    public partial class ShipmentItemStateEventGetRequest : ApiRequest
-    {
-        public ShipmentItemStateEventGetRequest(ShipmentItemStateEventUriParameters UriParameters)
-        {
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public ShipmentItemStateEventUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class ShipmentItemHistoryState
-    /// </summary>
-    public partial class ShipmentItemHistoryStateGetRequest : ApiRequest
-    {
-        public ShipmentItemHistoryStateGetRequest(ShipmentItemHistoryStateUriParameters UriParameters)
-        {
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public ShipmentItemHistoryStateUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -23853,6 +24439,338 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// Request Uri Parameters
         /// </summary>
         public SellableInventoryItemEntryMvoHistoryStateUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrderItemMvo
+    /// </summary>
+    public partial class OrderItemMvoGetRequest : ApiRequest
+    {
+        public OrderItemMvoGetRequest(OrderItemMvoUriParameters UriParameters, OrderItemMvoGetQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrderItemMvoGetQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Put of class OrderItemMvo
+    /// </summary>
+    public partial class OrderItemMvoPutRequest : ApiRequest
+    {
+        public OrderItemMvoPutRequest(OrderItemMvoUriParameters UriParameters, CreateOrderItemMvoDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public CreateOrderItemMvoDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Patch of class OrderItemMvo
+    /// </summary>
+    public partial class OrderItemMvoPatchRequest : ApiRequest
+    {
+        public OrderItemMvoPatchRequest(OrderItemMvoUriParameters UriParameters, MergePatchOrderItemMvoDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public MergePatchOrderItemMvoDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Delete of class OrderItemMvo
+    /// </summary>
+    public partial class OrderItemMvoDeleteRequest : ApiRequest
+    {
+        public OrderItemMvoDeleteRequest(OrderItemMvoUriParameters UriParameters, OrderItemMvoDeleteQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrderItemMvoDeleteQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrderItemMvos
+    /// </summary>
+    public partial class OrderItemMvosGetRequest : ApiRequest
+    {
+        public OrderItemMvosGetRequest(OrderItemMvosGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrderItemMvosGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrderItemMvosCount
+    /// </summary>
+    public partial class OrderItemMvosCountGetRequest : ApiRequest
+    {
+        public OrderItemMvosCountGetRequest(OrderItemMvosCountGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrderItemMvosCountGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrderItemMvoStateEvent
+    /// </summary>
+    public partial class OrderItemMvoStateEventGetRequest : ApiRequest
+    {
+        public OrderItemMvoStateEventGetRequest(OrderItemMvoStateEventUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemMvoStateEventUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrderItemMvoHistoryState
+    /// </summary>
+    public partial class OrderItemMvoHistoryStateGetRequest : ApiRequest
+    {
+        public OrderItemMvoHistoryStateGetRequest(OrderItemMvoHistoryStateUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemMvoHistoryStateUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class ShipmentItemMvo
+    /// </summary>
+    public partial class ShipmentItemMvoGetRequest : ApiRequest
+    {
+        public ShipmentItemMvoGetRequest(ShipmentItemMvoUriParameters UriParameters, ShipmentItemMvoGetQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public ShipmentItemMvoGetQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ShipmentItemMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Put of class ShipmentItemMvo
+    /// </summary>
+    public partial class ShipmentItemMvoPutRequest : ApiRequest
+    {
+        public ShipmentItemMvoPutRequest(ShipmentItemMvoUriParameters UriParameters, CreateShipmentItemMvoDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public CreateShipmentItemMvoDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ShipmentItemMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Patch of class ShipmentItemMvo
+    /// </summary>
+    public partial class ShipmentItemMvoPatchRequest : ApiRequest
+    {
+        public ShipmentItemMvoPatchRequest(ShipmentItemMvoUriParameters UriParameters, MergePatchShipmentItemMvoDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public MergePatchShipmentItemMvoDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ShipmentItemMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Delete of class ShipmentItemMvo
+    /// </summary>
+    public partial class ShipmentItemMvoDeleteRequest : ApiRequest
+    {
+        public ShipmentItemMvoDeleteRequest(ShipmentItemMvoUriParameters UriParameters, ShipmentItemMvoDeleteQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public ShipmentItemMvoDeleteQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ShipmentItemMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class ShipmentItemMvos
+    /// </summary>
+    public partial class ShipmentItemMvosGetRequest : ApiRequest
+    {
+        public ShipmentItemMvosGetRequest(ShipmentItemMvosGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public ShipmentItemMvosGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class ShipmentItemMvosCount
+    /// </summary>
+    public partial class ShipmentItemMvosCountGetRequest : ApiRequest
+    {
+        public ShipmentItemMvosCountGetRequest(ShipmentItemMvosCountGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public ShipmentItemMvosCountGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class ShipmentItemMvoStateEvent
+    /// </summary>
+    public partial class ShipmentItemMvoStateEventGetRequest : ApiRequest
+    {
+        public ShipmentItemMvoStateEventGetRequest(ShipmentItemMvoStateEventUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ShipmentItemMvoStateEventUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class ShipmentItemMvoHistoryState
+    /// </summary>
+    public partial class ShipmentItemMvoHistoryStateGetRequest : ApiRequest
+    {
+        public ShipmentItemMvoHistoryStateGetRequest(ShipmentItemMvoHistoryStateUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ShipmentItemMvoHistoryStateUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -26066,18 +26984,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class OrderHeader
+    /// Response object for method Get of class Order
     /// </summary>
 
-    public partial class OrderHeaderGetResponse : ApiResponse
+    public partial class OrderGetResponse : ApiResponse
     {
 
 
-	    private OrderHeaderStateDto typedContent;
+	    private OrderStateDto typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public OrderHeaderStateDto Content 
+        public OrderStateDto Content 
     	{
 	        get
 	        {
@@ -26094,13 +27012,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (OrderHeaderStateDto)new XmlSerializer(typeof(OrderHeaderStateDto)).Deserialize(xmlStream);
+                    typedContent = (OrderStateDto)new XmlSerializer(typeof(OrderStateDto)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<OrderHeaderStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<OrderHeaderStateDto>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<OrderStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrderStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -26115,18 +27033,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class OrderHeaders
+    /// Response object for method Get of class Orders
     /// </summary>
 
-    public partial class OrderHeadersGetResponse : ApiResponse
+    public partial class OrdersGetResponse : ApiResponse
     {
 
 
-	    private IList<OrderHeaderStateDto> typedContent;
+	    private IList<OrderStateDto> typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public IList<OrderHeaderStateDto> Content 
+        public IList<OrderStateDto> Content 
     	{
 	        get
 	        {
@@ -26143,13 +27061,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (IList<OrderHeaderStateDto>)new XmlSerializer(typeof(IList<OrderHeaderStateDto>)).Deserialize(xmlStream);
+                    typedContent = (IList<OrderStateDto>)new XmlSerializer(typeof(IList<OrderStateDto>)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<IList<OrderHeaderStateDto>>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<IList<OrderHeaderStateDto>>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<IList<OrderStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<OrderStateDto>>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -26164,18 +27082,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class OrderHeaderStateEvent
+    /// Response object for method Get of class OrderStateEvent
     /// </summary>
 
-    public partial class OrderHeaderStateEventGetResponse : ApiResponse
+    public partial class OrderStateEventGetResponse : ApiResponse
     {
 
 
-	    private OrderHeaderStateCreatedOrMergePatchedOrDeletedDto typedContent;
+	    private OrderStateCreatedOrMergePatchedOrDeletedDto typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public OrderHeaderStateCreatedOrMergePatchedOrDeletedDto Content 
+        public OrderStateCreatedOrMergePatchedOrDeletedDto Content 
     	{
 	        get
 	        {
@@ -26192,13 +27110,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (OrderHeaderStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(OrderHeaderStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                    typedContent = (OrderStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(OrderStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<OrderHeaderStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<OrderHeaderStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<OrderStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrderStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -26213,18 +27131,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class OrderHeaderHistoryState
+    /// Response object for method Get of class OrderHistoryState
     /// </summary>
 
-    public partial class OrderHeaderHistoryStateGetResponse : ApiResponse
+    public partial class OrderHistoryStateGetResponse : ApiResponse
     {
 
 
-	    private OrderHeaderStateDto typedContent;
+	    private OrderStateDto typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public OrderHeaderStateDto Content 
+        public OrderStateDto Content 
     	{
 	        get
 	        {
@@ -26241,13 +27159,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (OrderHeaderStateDto)new XmlSerializer(typeof(OrderHeaderStateDto)).Deserialize(xmlStream);
+                    typedContent = (OrderStateDto)new XmlSerializer(typeof(OrderStateDto)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<OrderHeaderStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<OrderHeaderStateDto>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<OrderStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrderStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -26266,153 +27184,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     /// </summary>
 
     public partial class OrderItemGetResponse : ApiResponse
-    {
-
-
-	    private OrderItemStateDto typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public OrderItemStateDto Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (OrderItemStateDto)new XmlSerializer(typeof(OrderItemStateDto)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<OrderItemStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<OrderItemStateDto>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class OrderItems
-    /// </summary>
-
-    public partial class OrderItemsGetResponse : ApiResponse
-    {
-
-
-	    private IList<OrderItemStateDto> typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public IList<OrderItemStateDto> Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (IList<OrderItemStateDto>)new XmlSerializer(typeof(IList<OrderItemStateDto>)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<IList<OrderItemStateDto>>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<IList<OrderItemStateDto>>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class OrderItemStateEvent
-    /// </summary>
-
-    public partial class OrderItemStateEventGetResponse : ApiResponse
-    {
-
-
-	    private OrderItemStateCreatedOrMergePatchedOrDeletedDto typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public OrderItemStateCreatedOrMergePatchedOrDeletedDto Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (OrderItemStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(OrderItemStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<OrderItemStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<OrderItemStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class OrderItemHistoryState
-    /// </summary>
-
-    public partial class OrderItemHistoryStateGetResponse : ApiResponse
     {
 
 
@@ -27634,6 +28405,202 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Response object for method Get of class ProductCategoryMember
+    /// </summary>
+
+    public partial class ProductCategoryMemberGetResponse : ApiResponse
+    {
+
+
+	    private ProductCategoryMemberStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public ProductCategoryMemberStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (ProductCategoryMemberStateDto)new XmlSerializer(typeof(ProductCategoryMemberStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<ProductCategoryMemberStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<ProductCategoryMemberStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class ProductCategoryMembers
+    /// </summary>
+
+    public partial class ProductCategoryMembersGetResponse : ApiResponse
+    {
+
+
+	    private IList<ProductCategoryMemberStateDto> typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public IList<ProductCategoryMemberStateDto> Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (IList<ProductCategoryMemberStateDto>)new XmlSerializer(typeof(IList<ProductCategoryMemberStateDto>)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<IList<ProductCategoryMemberStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<ProductCategoryMemberStateDto>>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class ProductCategoryMemberStateEvent
+    /// </summary>
+
+    public partial class ProductCategoryMemberStateEventGetResponse : ApiResponse
+    {
+
+
+	    private ProductCategoryMemberStateCreatedOrMergePatchedOrDeletedDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public ProductCategoryMemberStateCreatedOrMergePatchedOrDeletedDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (ProductCategoryMemberStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(ProductCategoryMemberStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<ProductCategoryMemberStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<ProductCategoryMemberStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class ProductCategoryMemberHistoryState
+    /// </summary>
+
+    public partial class ProductCategoryMemberHistoryStateGetResponse : ApiResponse
+    {
+
+
+	    private ProductCategoryMemberStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public ProductCategoryMemberStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (ProductCategoryMemberStateDto)new XmlSerializer(typeof(ProductCategoryMemberStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<ProductCategoryMemberStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<ProductCategoryMemberStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
     /// Response object for method Get of class Shipment
     /// </summary>
 
@@ -27834,153 +28801,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     /// </summary>
 
     public partial class ShipmentItemGetResponse : ApiResponse
-    {
-
-
-	    private ShipmentItemStateDto typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public ShipmentItemStateDto Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (ShipmentItemStateDto)new XmlSerializer(typeof(ShipmentItemStateDto)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<ShipmentItemStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<ShipmentItemStateDto>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class ShipmentItems
-    /// </summary>
-
-    public partial class ShipmentItemsGetResponse : ApiResponse
-    {
-
-
-	    private IList<ShipmentItemStateDto> typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public IList<ShipmentItemStateDto> Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (IList<ShipmentItemStateDto>)new XmlSerializer(typeof(IList<ShipmentItemStateDto>)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<IList<ShipmentItemStateDto>>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<IList<ShipmentItemStateDto>>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class ShipmentItemStateEvent
-    /// </summary>
-
-    public partial class ShipmentItemStateEventGetResponse : ApiResponse
-    {
-
-
-	    private ShipmentItemStateCreatedOrMergePatchedOrDeletedDto typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public ShipmentItemStateCreatedOrMergePatchedOrDeletedDto Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (ShipmentItemStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(ShipmentItemStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<ShipmentItemStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<ShipmentItemStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class ShipmentItemHistoryState
-    /// </summary>
-
-    public partial class ShipmentItemHistoryStateGetResponse : ApiResponse
     {
 
 
@@ -30413,6 +31233,398 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task =  Formatters != null && Formatters.Any() 
                                 ? RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateDto>(Formatters).ConfigureAwait(false)
                                 : RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrderItemMvo
+    /// </summary>
+
+    public partial class OrderItemMvoGetResponse : ApiResponse
+    {
+
+
+	    private OrderItemMvoStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public OrderItemMvoStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (OrderItemMvoStateDto)new XmlSerializer(typeof(OrderItemMvoStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<OrderItemMvoStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrderItemMvoStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrderItemMvos
+    /// </summary>
+
+    public partial class OrderItemMvosGetResponse : ApiResponse
+    {
+
+
+	    private IList<OrderItemMvoStateDto> typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public IList<OrderItemMvoStateDto> Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (IList<OrderItemMvoStateDto>)new XmlSerializer(typeof(IList<OrderItemMvoStateDto>)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<IList<OrderItemMvoStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<OrderItemMvoStateDto>>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrderItemMvoStateEvent
+    /// </summary>
+
+    public partial class OrderItemMvoStateEventGetResponse : ApiResponse
+    {
+
+
+	    private OrderItemMvoStateCreatedOrMergePatchedOrDeletedDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public OrderItemMvoStateCreatedOrMergePatchedOrDeletedDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (OrderItemMvoStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(OrderItemMvoStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<OrderItemMvoStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrderItemMvoStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrderItemMvoHistoryState
+    /// </summary>
+
+    public partial class OrderItemMvoHistoryStateGetResponse : ApiResponse
+    {
+
+
+	    private OrderItemMvoStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public OrderItemMvoStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (OrderItemMvoStateDto)new XmlSerializer(typeof(OrderItemMvoStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<OrderItemMvoStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrderItemMvoStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class ShipmentItemMvo
+    /// </summary>
+
+    public partial class ShipmentItemMvoGetResponse : ApiResponse
+    {
+
+
+	    private ShipmentItemMvoStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public ShipmentItemMvoStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (ShipmentItemMvoStateDto)new XmlSerializer(typeof(ShipmentItemMvoStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<ShipmentItemMvoStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<ShipmentItemMvoStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class ShipmentItemMvos
+    /// </summary>
+
+    public partial class ShipmentItemMvosGetResponse : ApiResponse
+    {
+
+
+	    private IList<ShipmentItemMvoStateDto> typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public IList<ShipmentItemMvoStateDto> Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (IList<ShipmentItemMvoStateDto>)new XmlSerializer(typeof(IList<ShipmentItemMvoStateDto>)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<IList<ShipmentItemMvoStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<ShipmentItemMvoStateDto>>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class ShipmentItemMvoStateEvent
+    /// </summary>
+
+    public partial class ShipmentItemMvoStateEventGetResponse : ApiResponse
+    {
+
+
+	    private ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class ShipmentItemMvoHistoryState
+    /// </summary>
+
+    public partial class ShipmentItemMvoHistoryStateGetResponse : ApiResponse
+    {
+
+
+	    private ShipmentItemMvoStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public ShipmentItemMvoStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (ShipmentItemMvoStateDto)new XmlSerializer(typeof(ShipmentItemMvoStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<ShipmentItemMvoStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<ShipmentItemMvoStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }

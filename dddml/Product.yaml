@@ -102,10 +102,10 @@ aggregates:
       ProductDiameter:
         type: fixed-point
         
-      # ProductRating:
-        # type: fixed-point
-      # RatingTypeEnum:
-        # type: id
+      ProductRating:
+        type: fixed-point
+      RatingTypeEnum:
+        type: id
         
       Returnable:
         type: indicator

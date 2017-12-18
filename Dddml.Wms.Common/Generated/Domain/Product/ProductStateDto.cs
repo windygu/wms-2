@@ -285,6 +285,18 @@ namespace Dddml.Wms.Domain.Product
             set;
         }
 
+        public virtual decimal? ProductRating
+        {
+            get;
+            set;
+        }
+
+        public virtual string RatingTypeEnum
+        {
+            get;
+            set;
+        }
+
         public virtual string Returnable
         {
             get;
@@ -435,6 +447,8 @@ namespace Dddml.Wms.Domain.Product
             state.ShippingDepth = this.ShippingDepth;
             state.DiameterUomId = this.DiameterUomId;
             state.ProductDiameter = this.ProductDiameter;
+            state.ProductRating = this.ProductRating;
+            state.RatingTypeEnum = this.RatingTypeEnum;
             state.Returnable = this.Returnable;
             state.Taxable = this.Taxable;
             state.ChargeShipping = this.ChargeShipping;

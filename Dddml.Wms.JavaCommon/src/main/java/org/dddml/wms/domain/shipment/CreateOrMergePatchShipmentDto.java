@@ -305,6 +305,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.active = active;
     }
 
+    private CreateOrMergePatchShipmentItemDto[] shipmentItems;
+
+    public CreateOrMergePatchShipmentItemDto[] getShipmentItems()
+    {
+        return this.shipmentItems;
+    }
+
+    public void setShipmentItems(CreateOrMergePatchShipmentItemDto[] shipmentItems)
+    {
+        this.shipmentItems = shipmentItems;
+    }
+
     private Boolean isPropertyShipmentTypeIdRemoved;
 
     public Boolean getIsPropertyShipmentTypeIdRemoved()
@@ -640,10 +652,20 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractShipmentCommand.SimpleCreateShipment command = new AbstractShipmentCommand.SimpleCreateShipment();
             copyTo((AbstractShipmentCommand.AbstractCreateShipment) command);
+            if (this.getShipmentItems() != null) {
+                for (CreateOrMergePatchShipmentItemDto cmd : this.getShipmentItems()) {
+                    command.getShipmentItems().add((ShipmentItemCommand.CreateShipmentItem) cmd.toCommand());
+                }
+            }
             return command;
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractShipmentCommand.SimpleMergePatchShipment command = new AbstractShipmentCommand.SimpleMergePatchShipment();
             copyTo((AbstractShipmentCommand.SimpleMergePatchShipment) command);
+            if (this.getShipmentItems() != null) {
+                for (CreateOrMergePatchShipmentItemDto cmd : this.getShipmentItems()) {
+                    command.getShipmentItemCommands().add(cmd.toCommand());
+                }
+            }
             return command;
         } 
         throw new IllegalStateException("Unknown command type:" + getCommandType());

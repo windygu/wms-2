@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.Role.NHibernate
             var criteria = CurrentSession.CreateCriteria<RoleStateEventBase>();
             criteria.Add(Restrictions.Eq("StateEventId.RoleId", idObj));
             criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(Order.Asc("StateEventId.Version"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (RoleStateEventBase e in es)
             {

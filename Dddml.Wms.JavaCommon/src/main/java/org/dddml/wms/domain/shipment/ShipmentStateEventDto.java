@@ -555,6 +555,17 @@ public class ShipmentStateEventDto extends AbstractStateEvent
     }
 
 
+    private ShipmentItemStateEventDto[] shipmentItemEvents;
+
+    public ShipmentItemStateEventDto[] getShipmentItemEvents() {
+        return this.shipmentItemEvents;
+    }
+
+    public void setShipmentItemEvents(ShipmentItemStateEventDto[] events) {
+        this.shipmentItemEvents = events;
+    }
+
+
 	public static class ShipmentStateCreatedDto extends ShipmentStateEventDto
 	{
         @Override

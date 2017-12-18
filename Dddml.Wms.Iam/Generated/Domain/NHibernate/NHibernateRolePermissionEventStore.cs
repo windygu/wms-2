@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.RolePermission.NHibernate
             criteria.Add(Restrictions.Eq("StateEventId.IdRoleId", idObj.RoleId));
             criteria.Add(Restrictions.Eq("StateEventId.IdPermissionId", idObj.PermissionId));
             criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(Order.Asc("StateEventId.Version"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (RolePermissionStateEventBase e in es)
             {

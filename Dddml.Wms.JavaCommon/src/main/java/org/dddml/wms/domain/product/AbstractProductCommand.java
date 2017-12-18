@@ -562,6 +562,30 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
             this.productDiameter = productDiameter;
         }
 
+        private java.math.BigDecimal productRating;
+
+        public java.math.BigDecimal getProductRating()
+        {
+            return this.productRating;
+        }
+
+        public void setProductRating(java.math.BigDecimal productRating)
+        {
+            this.productRating = productRating;
+        }
+
+        private String ratingTypeEnum;
+
+        public String getRatingTypeEnum()
+        {
+            return this.ratingTypeEnum;
+        }
+
+        public void setRatingTypeEnum(String ratingTypeEnum)
+        {
+            this.ratingTypeEnum = ratingTypeEnum;
+        }
+
         private String returnable;
 
         public String getReturnable()
@@ -1250,6 +1274,30 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
         public void setIsPropertyProductDiameterRemoved(Boolean removed)
         {
             this.isPropertyProductDiameterRemoved = removed;
+        }
+
+        private Boolean isPropertyProductRatingRemoved;
+
+        public Boolean getIsPropertyProductRatingRemoved()
+        {
+            return this.isPropertyProductRatingRemoved;
+        }
+
+        public void setIsPropertyProductRatingRemoved(Boolean removed)
+        {
+            this.isPropertyProductRatingRemoved = removed;
+        }
+
+        private Boolean isPropertyRatingTypeEnumRemoved;
+
+        public Boolean getIsPropertyRatingTypeEnumRemoved()
+        {
+            return this.isPropertyRatingTypeEnumRemoved;
+        }
+
+        public void setIsPropertyRatingTypeEnumRemoved(Boolean removed)
+        {
+            this.isPropertyRatingTypeEnumRemoved = removed;
         }
 
         private Boolean isPropertyReturnableRemoved;

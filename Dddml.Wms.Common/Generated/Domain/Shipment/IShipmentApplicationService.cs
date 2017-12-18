@@ -37,6 +37,8 @@ namespace Dddml.Wms.Domain.Shipment
 
         IShipmentState GetHistoryState(string shipmentId, long version);
 
+        IShipmentItemState GetShipmentItem(string shipmentId, string shipmentItemSeqId);
+
 
 	}
 

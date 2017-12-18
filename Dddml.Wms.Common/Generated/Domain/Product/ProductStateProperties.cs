@@ -104,6 +104,10 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual decimal? ProductDiameter { get; set; }
 
+		public virtual decimal? ProductRating { get; set; }
+
+		public virtual string RatingTypeEnum { get; set; }
+
 		public virtual string Returnable { get; set; }
 
 		public virtual string Taxable { get; set; }

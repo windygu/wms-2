@@ -29,6 +29,9 @@ namespace Dddml.Wms.Domain.Shipment
 		void Mutate(IEvent e);
 
 
+		IShipmentItemStates ShipmentItems { get; set; }
+
+
         bool IsUnsaved { get; }
 
 	}

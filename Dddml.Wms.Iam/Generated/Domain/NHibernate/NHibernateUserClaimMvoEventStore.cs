@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo.NHibernate
             criteria.Add(Restrictions.Eq("StateEventId.UserClaimIdUserId", idObj.UserId));
             criteria.Add(Restrictions.Eq("StateEventId.UserClaimIdClaimId", idObj.ClaimId));
             criteria.Add(Restrictions.Le("StateEventId.UserVersion", version));
-            criteria.AddOrder(Order.Asc("StateEventId.UserVersion"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.UserVersion"));
             var es = criteria.List<IEvent>();
             foreach (UserClaimMvoStateEventBase e in es)
             {

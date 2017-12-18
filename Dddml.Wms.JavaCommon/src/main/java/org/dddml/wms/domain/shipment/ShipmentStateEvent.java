@@ -127,6 +127,12 @@ public interface ShipmentStateEvent extends Event
 
     interface ShipmentStateCreated extends ShipmentStateEvent
     {
+        Iterable<ShipmentItemStateEvent.ShipmentItemStateCreated> getShipmentItemEvents();
+        
+        void addShipmentItemEvent(ShipmentItemStateEvent.ShipmentItemStateCreated e);
+
+        ShipmentItemStateEvent.ShipmentItemStateCreated newShipmentItemStateCreated(String shipmentItemSeqId);
+
     
     }
 
@@ -232,6 +238,16 @@ public interface ShipmentStateEvent extends Event
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);
+
+        Iterable<ShipmentItemStateEvent> getShipmentItemEvents();
+        
+        void addShipmentItemEvent(ShipmentItemStateEvent e);
+
+        ShipmentItemStateEvent.ShipmentItemStateCreated newShipmentItemStateCreated(String shipmentItemSeqId);
+
+        ShipmentItemStateEvent.ShipmentItemStateMergePatched newShipmentItemStateMergePatched(String shipmentItemSeqId);
+
+        ShipmentItemStateEvent.ShipmentItemStateRemoved newShipmentItemStateRemoved(String shipmentItemSeqId);
 
 
     }

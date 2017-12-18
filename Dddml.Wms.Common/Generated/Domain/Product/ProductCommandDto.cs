@@ -141,6 +141,10 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual decimal? ProductDiameter { get; set; }
 
+		public virtual decimal? ProductRating { get; set; }
+
+		public virtual string RatingTypeEnum { get; set; }
+
 		public virtual string Returnable { get; set; }
 
 		public virtual string Taxable { get; set; }
@@ -998,6 +1002,44 @@ namespace Dddml.Wms.Domain.Product
             set
             {
                 this.IsPropertyProductDiameterRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyProductRatingRemoved { get; set; }
+
+        bool IMergePatchProduct.IsPropertyProductRatingRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyProductRatingRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyProductRatingRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyRatingTypeEnumRemoved { get; set; }
+
+        bool IMergePatchProduct.IsPropertyRatingTypeEnumRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyRatingTypeEnumRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyRatingTypeEnumRemoved = value;
             }
         }
 

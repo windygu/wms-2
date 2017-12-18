@@ -111,6 +111,10 @@ namespace Dddml.Wms.Domain.Product
 
 		decimal? ProductDiameter { get; set; }
 
+		decimal? ProductRating { get; set; }
+
+		string RatingTypeEnum { get; set; }
+
 		string Returnable { get; set; }
 
 		string Taxable { get; set; }
@@ -232,6 +236,10 @@ namespace Dddml.Wms.Domain.Product
 		bool IsPropertyDiameterUomIdRemoved { get; set; }
 
 		bool IsPropertyProductDiameterRemoved { get; set; }
+
+		bool IsPropertyProductRatingRemoved { get; set; }
+
+		bool IsPropertyRatingTypeEnumRemoved { get; set; }
 
 		bool IsPropertyReturnableRemoved { get; set; }
 

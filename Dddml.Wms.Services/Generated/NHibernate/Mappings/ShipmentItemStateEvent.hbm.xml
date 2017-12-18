@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
                    assembly="Dddml.Wms.Common" 
-                   namespace="Dddml.Wms.Domain.ShipmentItem">
+                   namespace="Dddml.Wms.Domain.Shipment">
   
   <class name="ShipmentItemStateEventBase" table="ShipmentItemStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.ShipmentItem.ShipmentItemStateEventId">
-        <key-property name="ShipmentItemIdShipmentId" ><column name="ShipmentItemIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
-        <key-property name="ShipmentItemIdShipmentItemSeqId" ><column name="ShipmentItemIdShipmentItemSeqId" sql-type="VARCHAR(20)" /></key-property>
-        <key-property name="Version" ></key-property>
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Shipment.ShipmentItemStateEventId">
+        <key-property name="ShipmentId" ><column name="ShipmentItemIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ShipmentItemSeqId" ><column name="ShipmentItemIdShipmentItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ShipmentVersion" ></key-property>
     </composite-id>
     <discriminator column="StateEventType" type="String" />
 
@@ -21,6 +21,8 @@
 
     <property name="CreatedAt" column="CreatedAt" />
     <property name="CommandId" column="CommandId"/>
+    <property name="Version" column="Version" not-null="true" />
+
     <subclass name="ShipmentItemStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -36,6 +38,11 @@
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
+
+    <subclass name="ShipmentItemStateRemoved"  discriminator-value="Removed">
+
+    </subclass>
+
 
 
   </class>

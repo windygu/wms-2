@@ -32,5 +32,7 @@ public interface ShipmentApplicationService
 
     ShipmentState getHistoryState(String shipmentId, long version);
 
+    ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId);
+
 }
 

@@ -1,17 +1,17 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain.shipmentitem">
+<hibernate-mapping package="org.dddml.wms.domain.shipment">
   
   <class name="AbstractShipmentItemStateEvent" table="ShipmentItemStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.shipmentitem.ShipmentItemStateEventId">
-		<key-property name="shipmentItemIdShipmentId" ><column name="ShipmentItemIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
-		<key-property name="shipmentItemIdShipmentItemSeqId" ><column name="ShipmentItemIdShipmentItemSeqId" sql-type="VARCHAR(20)" /></key-property>
-		<key-property name="version" ></key-property>
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.shipment.ShipmentItemStateEventId">
+		<key-property name="shipmentId" ><column name="ShipmentItemIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="shipmentItemSeqId" ><column name="ShipmentItemIdShipmentItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="shipmentVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />
@@ -26,6 +26,8 @@
     <property name="createdAt" column="CreatedAt" />
 
     <property name="commandId" column="CommandId"/>
+
+    <property name="version" column="Version" not-null="true" />
 
     <subclass name="AbstractShipmentItemStateEvent$SimpleShipmentItemStateCreated" discriminator-value="Created">
     	
@@ -43,6 +45,11 @@
 
 
     </subclass>
+
+    <subclass name="AbstractShipmentItemStateEvent$SimpleShipmentItemStateRemoved" discriminator-value="Removed">
+
+    </subclass>
+
 
 
   </class>

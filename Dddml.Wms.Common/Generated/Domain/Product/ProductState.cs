@@ -249,6 +249,10 @@ namespace Dddml.Wms.Domain.Product
 
 			this.ProductDiameter = e.ProductDiameter;
 
+			this.ProductRating = e.ProductRating;
+
+			this.RatingTypeEnum = e.RatingTypeEnum;
+
 			this.Returnable = e.Returnable;
 
 			this.Taxable = e.Taxable;
@@ -810,6 +814,30 @@ namespace Dddml.Wms.Domain.Product
 			else
 			{
 				this.ProductDiameter = e.ProductDiameter;
+			}
+
+			if (e.ProductRating == null)
+			{
+				if (e.IsPropertyProductRatingRemoved)
+				{
+					this.ProductRating = default(decimal?);
+				}
+			}
+			else
+			{
+				this.ProductRating = e.ProductRating;
+			}
+
+			if (e.RatingTypeEnum == null)
+			{
+				if (e.IsPropertyRatingTypeEnumRemoved)
+				{
+					this.RatingTypeEnum = default(string);
+				}
+			}
+			else
+			{
+				this.RatingTypeEnum = e.RatingTypeEnum;
 			}
 
 			if (e.Returnable == null)

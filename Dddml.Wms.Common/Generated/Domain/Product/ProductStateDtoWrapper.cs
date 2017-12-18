@@ -1299,6 +1299,62 @@ namespace Dddml.Wms.Domain.Product
             }
         }
 
+		public virtual decimal? ProductRating
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ProductRating"))
+                {
+                    return _state.ProductRating;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ProductRating = value;
+            }
+        }
+
+        decimal? IProductStateProperties.ProductRating
+        {
+            get 
+            {
+                return (this._state as IProductStateProperties).ProductRating;
+            }
+            set 
+            {
+                (this._state as IProductStateProperties).ProductRating = value;
+            }
+        }
+
+		public virtual string RatingTypeEnum
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("RatingTypeEnum"))
+                {
+                    return _state.RatingTypeEnum;
+                }
+                return null;
+            }
+            set
+            {
+                _state.RatingTypeEnum = value;
+            }
+        }
+
+        string IProductStateProperties.RatingTypeEnum
+        {
+            get 
+            {
+                return (this._state as IProductStateProperties).RatingTypeEnum;
+            }
+            set 
+            {
+                (this._state as IProductStateProperties).RatingTypeEnum = value;
+            }
+        }
+
 		public virtual string Returnable
 		{
             get

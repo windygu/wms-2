@@ -74,6 +74,9 @@ aggregates:
       # LastModifiedByUserLogin:
         # type: id-vlong
         
+      ShipmentItems:
+        itemType: ShipmentItem
+        
     references: {}
     
     reservedProperties:
@@ -88,3 +91,47 @@ aggregates:
     # metadata: 
       # StateEventDatabaseTableName: SHIPMENT_STATE_EVENT
       
+    entities:
+    
+      # ------------------------------------------
+      ShipmentItem:
+        id:
+          # name: ShipmentItemId
+          # type: ShipmentItemId
+          name: ShipmentItemSeqId
+          type: id
+          
+        properties:
+        
+          ProductId:
+            type: id
+          Quantity:
+            type: fixed-point
+            
+          ShipmentContentDescription:
+            type: description
+            
+        # references:
+          # Shipment:
+            # name: Shipment
+            # displayName: Shipment
+            # type: Shipment
+            # properties:
+            # - ShipmentItemId.ShipmentId
+            # foreignKeyName: SHPMNT_ITM_SHPMT
+            
+        #reservedProperties: 
+          #noDeleted: true
+          
+        # valueObjects:        
+          # ShipmentItemId:
+            # properties:
+              # ShipmentId:
+                # type: id-ne
+              # ShipmentItemSeqId:
+                # type: id-ne
+        # metadata: 
+          # StateEventDatabaseTableName: SHIPMENT_ITEM_STATE_EVENT
+
+          
+    

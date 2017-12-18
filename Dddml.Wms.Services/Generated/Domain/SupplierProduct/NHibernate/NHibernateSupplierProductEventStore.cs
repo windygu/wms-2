@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.SupplierProduct.NHibernate
             criteria.Add(Restrictions.Eq("StateEventId.SupplierProductIdCurrencyUomId", idObj.CurrencyUomId));
             criteria.Add(Restrictions.Eq("StateEventId.SupplierProductIdMinimumOrderQuantity", idObj.MinimumOrderQuantity));
             criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(Order.Asc("StateEventId.Version"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (SupplierProductStateEventBase e in es)
             {

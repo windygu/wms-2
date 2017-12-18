@@ -22,6 +22,22 @@ alter TABLE `InOutLines` add
     (`DocumentNumber`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+alter TABLE `OrderItems` add
+  CONSTRAINT `FK_OrderItem_Order_StateId` 
+  FOREIGN KEY 
+    (`OrderItemIdOrderId`) 
+  REFERENCES `Orders` 
+    (`OrderId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter TABLE `ShipmentItems` add
+  CONSTRAINT `FK_ShipmentItem_Shipment_StateId` 
+  FOREIGN KEY 
+    (`ShipmentItemIdShipmentId`) 
+  REFERENCES `Shipments` 
+    (`ShipmentId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 alter TABLE `AttributeSetInstanceExtensionFields` add
   CONSTRAINT `FK_AttributeSetInstanceExtensionField_AttrSetInstEFGroup_StateId` 
   FOREIGN KEY 

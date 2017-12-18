@@ -11,6 +11,7 @@ public final class OrderItemFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
+            "orderItemSeqId",
             "productId",
             "externalProductId",
             "quantity",
@@ -53,11 +54,13 @@ public final class OrderItemFilteringProperties
             "updatedAt",
             "active",
             "deleted",
+            "orderId",
             "orderItemId.orderId",
             "orderItemId.orderItemSeqId",
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
             "String",
             "String",
             "java.math.BigDecimal",
@@ -102,6 +105,7 @@ public final class OrderItemFilteringProperties
             "Boolean",
             "String",
             "String",
+            "String",
     };
 
     public static final Map<String, String> propertyTypeMap;
@@ -116,6 +120,8 @@ public final class OrderItemFilteringProperties
     }
 
     private static  void initAliasMap() {
+        aliasMap.put("orderItemSeqId", "orderItemId.orderItemSeqId");
+        aliasMap.put("OrderItemSeqId", "orderItemId.orderItemSeqId");
         aliasMap.put("productId", "productId");
         aliasMap.put("ProductId", "productId");
         aliasMap.put("externalProductId", "externalProductId");
@@ -200,6 +206,8 @@ public final class OrderItemFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
+        aliasMap.put("orderId", "orderItemId.orderId");
+        aliasMap.put("OrderId", "orderItemId.orderId");
         aliasMap.put("orderItemId.orderId", "orderItemId.orderId");
         aliasMap.put("OrderItemId.OrderId", "orderItemId.orderId");
         aliasMap.put("orderItemId.orderItemSeqId", "orderItemId.orderItemSeqId");

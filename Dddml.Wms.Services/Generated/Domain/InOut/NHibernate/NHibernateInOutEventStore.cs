@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
             var criteria = CurrentSession.CreateCriteria<InOutStateEventBase>();
             criteria.Add(Restrictions.Eq("StateEventId.DocumentNumber", idObj));
             criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(Order.Asc("StateEventId.Version"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (InOutStateEventBase e in es)
             {

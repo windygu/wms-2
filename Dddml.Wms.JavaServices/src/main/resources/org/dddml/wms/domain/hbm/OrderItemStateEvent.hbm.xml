@@ -1,17 +1,17 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain.orderitem">
+<hibernate-mapping package="org.dddml.wms.domain.order">
   
   <class name="AbstractOrderItemStateEvent" table="OrderItemStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.orderitem.OrderItemStateEventId">
-		<key-property name="orderItemIdOrderId" ><column name="OrderItemIdOrderId" sql-type="VARCHAR(20)" /></key-property>
-		<key-property name="orderItemIdOrderItemSeqId" ><column name="OrderItemIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
-		<key-property name="version" ></key-property>
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.order.OrderItemStateEventId">
+		<key-property name="orderId" ><column name="OrderItemIdOrderId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="orderItemSeqId" ><column name="OrderItemIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="orderVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />
@@ -58,6 +58,8 @@
     <property name="createdAt" column="CreatedAt" />
 
     <property name="commandId" column="CommandId"/>
+
+    <property name="version" column="Version" not-null="true" />
 
     <subclass name="AbstractOrderItemStateEvent$SimpleOrderItemStateCreated" discriminator-value="Created">
     	
@@ -139,6 +141,11 @@
 
 
     </subclass>
+
+    <subclass name="AbstractOrderItemStateEvent$SimpleOrderItemStateRemoved" discriminator-value="Removed">
+
+    </subclass>
+
 
 
   </class>

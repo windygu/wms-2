@@ -4,11 +4,11 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain.orderitem">
+<hibernate-mapping package="org.dddml.wms.domain.order">
   
-  <class name="org.dddml.wms.domain.orderitem.AbstractOrderItemState$SimpleOrderItemState" table="OrderItems">
+  <class name="org.dddml.wms.domain.order.AbstractOrderItemState$SimpleOrderItemState" table="OrderItems">
 
-	<composite-id name="orderItemId" class="org.dddml.wms.domain.orderitem.OrderItemId">
+	<composite-id name="orderItemId" class="org.dddml.wms.domain.order.OrderItemId">
 		<key-property name="orderId" ><column name="OrderItemIdOrderId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="orderItemSeqId" ><column name="OrderItemIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
 	</composite-id>
@@ -52,6 +52,7 @@
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>
+	<property name="deleted" ></property>
 
     <property name="createdAt" column="CreatedAt" />
 

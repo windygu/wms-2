@@ -26,5 +26,7 @@ public interface ShipmentStateQueryRepository
 
     long getCount(Criterion filter);
 
+    ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId);
+
 }
 

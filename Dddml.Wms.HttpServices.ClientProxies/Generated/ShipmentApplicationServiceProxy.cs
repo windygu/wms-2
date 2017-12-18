@@ -284,6 +284,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetHistoryStateAsync(shipmentId, version).GetAwaiter().GetResult();
         }
 
+        public async virtual Task<IShipmentItemState> GetShipmentItemAsync(string shipmentId, string shipmentItemSeqId)
+        {
+            var uriParameters = new ShipmentItemUriParameters();
+            uriParameters.ShipmentId = shipmentId;
+            uriParameters.ShipmentItemSeqId = shipmentItemSeqId;
+
+            var req = new ShipmentItemGetRequest(uriParameters);
+            var resp = await _ramlClient.ShipmentItem.Get(req);
+            ShipmentProxyUtils.ThrowOnHttpResponseError(resp);
+            return (resp.Content == null) ? null : resp.Content.ToShipmentItemState();
+        }
+
+        public virtual IShipmentItemState GetShipmentItem(string shipmentId, string shipmentItemSeqId)
+        {
+            return GetShipmentItemAsync(shipmentId, shipmentItemSeqId).GetAwaiter().GetResult();
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

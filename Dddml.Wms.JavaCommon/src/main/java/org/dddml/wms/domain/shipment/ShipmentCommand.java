@@ -140,6 +140,10 @@ public interface ShipmentCommand extends Command
 
     interface CreateShipment extends CreateOrMergePatchShipment
     {
+        CreateShipmentItemCommands getShipmentItems();
+
+        ShipmentItemCommand.CreateShipmentItem newCreateShipmentItem();
+
     }
 
     interface MergePatchShipment extends CreateOrMergePatchShipment
@@ -244,11 +248,37 @@ public interface ShipmentCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
+        ShipmentItemCommands getShipmentItemCommands();
+
+        ShipmentItemCommand.CreateShipmentItem newCreateShipmentItem();
+
+        ShipmentItemCommand.MergePatchShipmentItem newMergePatchShipmentItem();
+
+        ShipmentItemCommand.RemoveShipmentItem newRemoveShipmentItem();
+
     }
 
 	interface DeleteShipment extends ShipmentCommand
 	{
 	}
+
+    interface CreateShipmentItemCommands extends Iterable<ShipmentItemCommand.CreateShipmentItem>
+    {
+        void add(ShipmentItemCommand.CreateShipmentItem c);
+
+        void remove(ShipmentItemCommand.CreateShipmentItem c);
+
+        void clear();
+    }
+
+    interface ShipmentItemCommands extends Iterable<ShipmentItemCommand>
+    {
+        void add(ShipmentItemCommand c);
+
+        void remove(ShipmentItemCommand c);
+
+        void clear();
+    }
 
 }
 

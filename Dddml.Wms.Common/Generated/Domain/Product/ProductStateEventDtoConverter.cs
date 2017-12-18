@@ -81,6 +81,8 @@ namespace Dddml.Wms.Domain.Product
             dto.ShippingDepth = e.ShippingDepth;
             dto.DiameterUomId = e.DiameterUomId;
             dto.ProductDiameter = e.ProductDiameter;
+            dto.ProductRating = e.ProductRating;
+            dto.RatingTypeEnum = e.RatingTypeEnum;
             dto.Returnable = e.Returnable;
             dto.Taxable = e.Taxable;
             dto.ChargeShipping = e.ChargeShipping;
@@ -147,6 +149,8 @@ namespace Dddml.Wms.Domain.Product
             dto.ShippingDepth = e.ShippingDepth;
             dto.DiameterUomId = e.DiameterUomId;
             dto.ProductDiameter = e.ProductDiameter;
+            dto.ProductRating = e.ProductRating;
+            dto.RatingTypeEnum = e.RatingTypeEnum;
             dto.Returnable = e.Returnable;
             dto.Taxable = e.Taxable;
             dto.ChargeShipping = e.ChargeShipping;
@@ -203,6 +207,8 @@ namespace Dddml.Wms.Domain.Product
             dto.IsPropertyShippingDepthRemoved = e.IsPropertyShippingDepthRemoved;
             dto.IsPropertyDiameterUomIdRemoved = e.IsPropertyDiameterUomIdRemoved;
             dto.IsPropertyProductDiameterRemoved = e.IsPropertyProductDiameterRemoved;
+            dto.IsPropertyProductRatingRemoved = e.IsPropertyProductRatingRemoved;
+            dto.IsPropertyRatingTypeEnumRemoved = e.IsPropertyRatingTypeEnumRemoved;
             dto.IsPropertyReturnableRemoved = e.IsPropertyReturnableRemoved;
             dto.IsPropertyTaxableRemoved = e.IsPropertyTaxableRemoved;
             dto.IsPropertyChargeShippingRemoved = e.IsPropertyChargeShippingRemoved;

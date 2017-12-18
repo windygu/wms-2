@@ -192,6 +192,14 @@ public interface ProductState
 
     void setProductDiameter(java.math.BigDecimal productDiameter);
 
+    java.math.BigDecimal getProductRating();
+
+    void setProductRating(java.math.BigDecimal productRating);
+
+    String getRatingTypeEnum();
+
+    void setRatingTypeEnum(String ratingTypeEnum);
+
     String getReturnable();
 
     void setReturnable(String returnable);

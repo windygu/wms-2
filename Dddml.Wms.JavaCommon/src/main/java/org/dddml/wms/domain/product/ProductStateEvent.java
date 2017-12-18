@@ -189,6 +189,14 @@ public interface ProductStateEvent extends Event
 
     void setProductDiameter(java.math.BigDecimal productDiameter);
 
+    java.math.BigDecimal getProductRating();
+
+    void setProductRating(java.math.BigDecimal productRating);
+
+    String getRatingTypeEnum();
+
+    void setRatingTypeEnum(String ratingTypeEnum);
+
     String getReturnable();
 
     void setReturnable(String returnable);
@@ -432,6 +440,14 @@ public interface ProductStateEvent extends Event
         Boolean getIsPropertyProductDiameterRemoved();
 
         void setIsPropertyProductDiameterRemoved(Boolean removed);
+
+        Boolean getIsPropertyProductRatingRemoved();
+
+        void setIsPropertyProductRatingRemoved(Boolean removed);
+
+        Boolean getIsPropertyRatingTypeEnumRemoved();
+
+        void setIsPropertyRatingTypeEnumRemoved(Boolean removed);
 
         Boolean getIsPropertyReturnableRemoved();
 

@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.Permission.NHibernate
             var criteria = CurrentSession.CreateCriteria<PermissionStateEventBase>();
             criteria.Add(Restrictions.Eq("StateEventId.PermissionId", idObj));
             criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(Order.Asc("StateEventId.Version"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (PermissionStateEventBase e in es)
             {

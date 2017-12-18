@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo.NHibernate
             criteria.Add(Restrictions.Eq("StateEventId.SellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId", idObj.SellableInventoryItemIdAttributeSetInstanceId));
             criteria.Add(Restrictions.Eq("StateEventId.SellableInventoryItemEntryIdEntrySeqId", idObj.EntrySeqId));
             criteria.Add(Restrictions.Le("StateEventId.SellableInventoryItemVersion", version));
-            criteria.AddOrder(Order.Asc("StateEventId.SellableInventoryItemVersion"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.SellableInventoryItemVersion"));
             var es = criteria.List<IEvent>();
             foreach (SellableInventoryItemEntryMvoStateEventBase e in es)
             {

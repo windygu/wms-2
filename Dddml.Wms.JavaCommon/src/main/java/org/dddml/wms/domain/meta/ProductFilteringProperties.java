@@ -56,6 +56,8 @@ public final class ProductFilteringProperties
             "shippingDepth",
             "diameterUomId",
             "productDiameter",
+            "productRating",
+            "ratingTypeEnum",
             "returnable",
             "taxable",
             "chargeShipping",
@@ -122,6 +124,8 @@ public final class ProductFilteringProperties
             "java.math.BigDecimal",
             "String",
             "java.math.BigDecimal",
+            "java.math.BigDecimal",
+            "String",
             "String",
             "String",
             "String",
@@ -244,6 +248,10 @@ public final class ProductFilteringProperties
         aliasMap.put("DiameterUomId", "diameterUomId");
         aliasMap.put("productDiameter", "productDiameter");
         aliasMap.put("ProductDiameter", "productDiameter");
+        aliasMap.put("productRating", "productRating");
+        aliasMap.put("ProductRating", "productRating");
+        aliasMap.put("ratingTypeEnum", "ratingTypeEnum");
+        aliasMap.put("RatingTypeEnum", "ratingTypeEnum");
         aliasMap.put("returnable", "returnable");
         aliasMap.put("Returnable", "returnable");
         aliasMap.put("taxable", "taxable");

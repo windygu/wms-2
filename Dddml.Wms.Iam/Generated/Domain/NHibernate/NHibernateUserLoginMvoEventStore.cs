@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo.NHibernate
             criteria.Add(Restrictions.Eq("StateEventId.UserLoginIdLoginKeyLoginProvider", idObj.LoginKeyLoginProvider));
             criteria.Add(Restrictions.Eq("StateEventId.UserLoginIdLoginKeyProviderKey", idObj.LoginKeyProviderKey));
             criteria.Add(Restrictions.Le("StateEventId.UserVersion", version));
-            criteria.AddOrder(Order.Asc("StateEventId.UserVersion"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.UserVersion"));
             var es = criteria.List<IEvent>();
             foreach (UserLoginMvoStateEventBase e in es)
             {

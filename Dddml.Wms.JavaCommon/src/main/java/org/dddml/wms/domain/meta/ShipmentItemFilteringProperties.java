@@ -11,6 +11,7 @@ public final class ShipmentItemFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
+            "shipmentItemSeqId",
             "productId",
             "quantity",
             "shipmentContentDescription",
@@ -21,11 +22,13 @@ public final class ShipmentItemFilteringProperties
             "updatedAt",
             "active",
             "deleted",
+            "shipmentId",
             "shipmentItemId.shipmentId",
             "shipmentItemId.shipmentItemSeqId",
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
             "String",
             "java.math.BigDecimal",
             "String",
@@ -36,6 +39,7 @@ public final class ShipmentItemFilteringProperties
             "Date",
             "Boolean",
             "Boolean",
+            "String",
             "String",
             "String",
     };
@@ -52,6 +56,8 @@ public final class ShipmentItemFilteringProperties
     }
 
     private static  void initAliasMap() {
+        aliasMap.put("shipmentItemSeqId", "shipmentItemId.shipmentItemSeqId");
+        aliasMap.put("ShipmentItemSeqId", "shipmentItemId.shipmentItemSeqId");
         aliasMap.put("productId", "productId");
         aliasMap.put("ProductId", "productId");
         aliasMap.put("quantity", "quantity");
@@ -72,6 +78,8 @@ public final class ShipmentItemFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
+        aliasMap.put("shipmentId", "shipmentItemId.shipmentId");
+        aliasMap.put("ShipmentId", "shipmentItemId.shipmentId");
         aliasMap.put("shipmentItemId.shipmentId", "shipmentItemId.shipmentId");
         aliasMap.put("ShipmentItemId.ShipmentId", "shipmentItemId.shipmentId");
         aliasMap.put("shipmentItemId.shipmentItemSeqId", "shipmentItemId.shipmentItemSeqId");

@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
-using Dddml.Wms.Domain.ShipmentItem;
+using Dddml.Wms.Domain.Shipment;
 
 namespace Dddml.Wms.Domain.Metadata
 {
@@ -16,10 +16,10 @@ namespace Dddml.Wms.Domain.Metadata
     {
         private static PropertyMetadata[] _properties = new PropertyMetadata[]{
                 new PropertyMetadata {
-                    Name = "ShipmentItemId",
-                    Type = typeof(ShipmentItemId),
-                    TypeName = "ShipmentItemId",
-                    IsSimpleValueObjectType = false,
+                    Name = "ShipmentItemSeqId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
                     Description = "",
@@ -31,8 +31,10 @@ namespace Dddml.Wms.Domain.Metadata
                     InverseOf = "",
                     IsHoisted = false,
                     IsId = true,
-                    IsGlobalId = true,
-                    IsDerived = false,
+                    IsGlobalId = false,
+                    IsDerived = true,
+                    IsOuterId = true,
+                    DerivedFrom = "ShipmentItemId.ShipmentItemSeqId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -42,7 +44,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsReservedPropertyCreatedAt = false,
                     IsReservedPropertyUpdatedBy = false,
                     IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = false,
+                    IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
                     Name = "ProductId",
@@ -335,6 +337,66 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "ShipmentItemId",
+                    Type = typeof(ShipmentItemId),
+                    TypeName = "ShipmentItemId",
+                    IsSimpleValueObjectType = false,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = true,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = false,
+                },
+                new PropertyMetadata {
+                    Name = "ShipmentId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = true,
+                    IsOuterId = true,
+                    DerivedFrom = "ShipmentItemId.ShipmentId",
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "ShipmentItemId.ShipmentId",
                     Type = typeof(string),
                     TypeName = "string",
@@ -411,6 +473,8 @@ namespace Dddml.Wms.Domain.Metadata
         private static void InitFilteringPropertyAliasDictionary()
         {
             var d = new Dictionary<string, string>();
+            d.Add("ShipmentItemSeqId", "ShipmentItemId.ShipmentItemSeqId");
+            d.Add("shipmentItemSeqId", "ShipmentItemId.ShipmentItemSeqId");
             d.Add("ProductId", "ProductId");
             d.Add("productId", "ProductId");
             d.Add("Quantity", "Quantity");
@@ -431,6 +495,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
+            d.Add("ShipmentId", "ShipmentItemId.ShipmentId");
+            d.Add("shipmentId", "ShipmentItemId.ShipmentId");
             d.Add("ShipmentItemId.ShipmentId", "ShipmentItemId.ShipmentId");
             d.Add("shipmentItemId.shipmentId", "ShipmentItemId.ShipmentId");
             d.Add("ShipmentItemId.ShipmentItemSeqId", "ShipmentItemId.ShipmentItemSeqId");

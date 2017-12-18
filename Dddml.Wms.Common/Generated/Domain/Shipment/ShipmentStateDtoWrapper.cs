@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Shipment
 	public partial class ShipmentStateDtoWrapper : StateDtoWrapperBase, IShipmentStateDto, IShipmentState
 	{
 
-        internal static IList<string> _collectionFieldNames = new string[] {  };
+        internal static IList<string> _collectionFieldNames = new string[] { "ShipmentItems" };
 
         protected override bool IsCollectionField(string fieldName)
         {
@@ -935,6 +935,52 @@ namespace Dddml.Wms.Domain.Shipment
             get { return this.Version == ShipmentState.VersionZero; }
         }
 
+        public virtual IShipmentItemStateDto[] ShipmentItems
+        {
+            get 
+            {
+                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("ShipmentItems"))
+                {
+                    return null;
+                }
+                var dtos = new List<IShipmentItemStateDto>();
+                if (this._state.ShipmentItems != null)
+                {
+                    foreach (var s in this._state.ShipmentItems)
+                    {
+                        var dto = new ShipmentItemStateDtoWrapper((ShipmentItemState)s);
+                        var returnFS = CollectionUtils.DictionaryGetValueIgnoringCase(ReturnedFields, "ShipmentItems");
+                        if (!String.IsNullOrWhiteSpace(returnFS))
+                        {
+                            (dto as IStateDtoWrapper).ReturnedFieldsString = returnFS;
+                        }
+                        else
+                        {
+                            (dto as IStateDtoWrapper).AllFieldsReturned = this.AllFieldsReturned;
+                        }
+                        dtos.Add(dto);
+                    }
+                }
+                return dtos.ToArray();
+            }
+            set 
+            {
+                if (value == null) { value = new ShipmentItemStateDtoWrapper[0]; }
+                var states = new List<IShipmentItemState>();
+                foreach (var s in value)
+                {
+                    states.Add(s.ToShipmentItemState());
+                }
+                this._state.ShipmentItems = new DtoShipmentItemStates(this._state, states);
+            }
+        }
+
+        IShipmentItemStates IShipmentState.ShipmentItems
+        {
+            get { return _state.ShipmentItems; }
+            set { _state.ShipmentItems = value; }
+        }
+
 		void IShipmentState.When(IShipmentStateCreated e)
 		{
             throw new NotSupportedException();
@@ -964,6 +1010,67 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
         // //////////////////////////////////////////////////////////////
+
+        public class DtoShipmentItemStates : IShipmentItemStates
+        {
+
+            private IShipmentState _outerState;
+
+            private IEnumerable<IShipmentItemState> _innerStates;
+
+            public DtoShipmentItemStates(IShipmentState outerState, IEnumerable<IShipmentItemState> innerStates)
+            {
+                this._outerState = outerState;
+                if (innerStates == null)
+                {
+                    this._innerStates = new IShipmentItemState[] { };
+                }
+                else
+                {
+                    this._innerStates = innerStates;
+                }
+            }
+
+            public IEnumerator<IShipmentItemState> GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            public IShipmentItemState Get(string shipmentItemSeqId)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IShipmentItemState Get(string shipmentItemSeqId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IShipmentItemState Get(string shipmentItemSeqId, bool forCreation, bool nullAllowed)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Remove(IShipmentItemState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void AddToSave(IShipmentItemState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Save()
+            {
+                throw new NotSupportedException();
+            }
+        }
 
 	}
 

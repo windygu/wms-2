@@ -130,6 +130,33 @@ namespace Dddml.Wms.Domain.Shipment
             this.StateEventId = stateEventId;
         }
 
+		protected IShipmentItemStateEventDao ShipmentItemStateEventDao
+		{
+			get { return ApplicationContext.Current["ShipmentItemStateEventDao"] as IShipmentItemStateEventDao; }
+		}
+
+        protected ShipmentItemStateEventId NewShipmentItemStateEventId(string shipmentItemSeqId)
+        {
+            var stateEventId = new ShipmentItemStateEventId(this.StateEventId.ShipmentId, shipmentItemSeqId, this.StateEventId.Version);
+            return stateEventId;
+        }
+
+
+        protected void ThrowOnInconsistentEventIds(IShipmentItemStateEvent e)
+        {
+            ThrowOnInconsistentEventIds(this, e);
+        }
+
+		public static void ThrowOnInconsistentEventIds(IShipmentStateEvent oe, IShipmentItemStateEvent e)
+		{
+			if (!oe.StateEventId.ShipmentId.Equals(e.StateEventId.ShipmentId))
+			{ 
+				throw DomainError.Named("inconsistentEventIds", "Outer Id ShipmentId {0} but inner id ShipmentId {1}", 
+					oe.StateEventId.ShipmentId, e.StateEventId.ShipmentId);
+			}
+		}
+
+
 
         string IStateEventDto.StateEventType
         {
@@ -140,7 +167,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 	}
 
-	public class ShipmentStateCreated : ShipmentStateEventBase, IShipmentStateCreated
+	public class ShipmentStateCreated : ShipmentStateEventBase, IShipmentStateCreated, ISaveable
 	{
 		public ShipmentStateCreated () : this(new ShipmentStateEventId())
 		{
@@ -150,6 +177,62 @@ namespace Dddml.Wms.Domain.Shipment
 		{
 		}
 
+		private Dictionary<ShipmentItemStateEventId, IShipmentItemStateCreated> _shipmentItemEvents = new Dictionary<ShipmentItemStateEventId, IShipmentItemStateCreated>();
+        
+        private IEnumerable<IShipmentItemStateCreated> _readOnlyShipmentItemEvents;
+
+        public virtual IEnumerable<IShipmentItemStateCreated> ShipmentItemEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._shipmentItemEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyShipmentItemEvents != null) { return _readOnlyShipmentItemEvents; }
+                    var eventDao = ShipmentItemStateEventDao;
+                    var eL = new List<IShipmentItemStateCreated>();
+                    foreach (var e in eventDao.FindByShipmentStateEventId(this.StateEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IShipmentItemStateCreated)e);
+                    }
+                    return (_readOnlyShipmentItemEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddShipmentItemEvent(e);
+                    }
+                }
+                else { this._shipmentItemEvents.Clear(); }
+            }
+        }
+    
+		public virtual void AddShipmentItemEvent(IShipmentItemStateCreated e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._shipmentItemEvents[e.StateEventId] = e;
+		}
+
+        public virtual IShipmentItemStateCreated NewShipmentItemStateCreated(string shipmentItemSeqId)
+        {
+            var stateEvent = new ShipmentItemStateCreated(NewShipmentItemStateEventId(shipmentItemSeqId));
+            return stateEvent;
+        }
+
+		public virtual void Save ()
+		{
+			foreach (IShipmentItemStateCreated e in this.ShipmentItemEvents) {
+				ShipmentItemStateEventDao.Save(e);
+			}
+		}
 
         protected override string GetStateEventType()
         {
@@ -159,7 +242,7 @@ namespace Dddml.Wms.Domain.Shipment
 	}
 
 
-	public class ShipmentStateMergePatched : ShipmentStateEventBase, IShipmentStateMergePatched
+	public class ShipmentStateMergePatched : ShipmentStateEventBase, IShipmentStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyShipmentTypeIdRemoved { get; set; }
 
@@ -220,6 +303,74 @@ namespace Dddml.Wms.Domain.Shipment
 		{
 		}
 
+		private Dictionary<ShipmentItemStateEventId, IShipmentItemStateEvent> _shipmentItemEvents = new Dictionary<ShipmentItemStateEventId, IShipmentItemStateEvent>();
+
+        private IEnumerable<IShipmentItemStateEvent> _readOnlyShipmentItemEvents;
+        
+        public virtual IEnumerable<IShipmentItemStateEvent> ShipmentItemEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._shipmentItemEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyShipmentItemEvents != null) { return _readOnlyShipmentItemEvents; }
+                    var eventDao = ShipmentItemStateEventDao;
+                    var eL = new List<IShipmentItemStateEvent>();
+                    foreach (var e in eventDao.FindByShipmentStateEventId(this.StateEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IShipmentItemStateEvent)e);
+                    }
+                    return (_readOnlyShipmentItemEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddShipmentItemEvent(e);
+                    }
+                }
+                else { this._shipmentItemEvents.Clear(); }
+            }
+        }
+
+		public virtual void AddShipmentItemEvent(IShipmentItemStateEvent e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._shipmentItemEvents[e.StateEventId] = e;
+		}
+
+        public virtual IShipmentItemStateCreated NewShipmentItemStateCreated(string shipmentItemSeqId)
+        {
+            var stateEvent = new ShipmentItemStateCreated(NewShipmentItemStateEventId(shipmentItemSeqId));
+            return stateEvent;
+        }
+
+        public virtual IShipmentItemStateMergePatched NewShipmentItemStateMergePatched(string shipmentItemSeqId)
+        {
+            var stateEvent = new ShipmentItemStateMergePatched(NewShipmentItemStateEventId(shipmentItemSeqId));
+            return stateEvent;
+        }
+
+        public virtual IShipmentItemStateRemoved NewShipmentItemStateRemoved(string shipmentItemSeqId)
+        {
+            var stateEvent = new ShipmentItemStateRemoved(NewShipmentItemStateEventId(shipmentItemSeqId));
+            return stateEvent;
+        }
+
+		public virtual void Save ()
+		{
+			foreach (IShipmentItemStateEvent e in this.ShipmentItemEvents) {
+				ShipmentItemStateEventDao.Save(e);
+			}
+		}
 
         protected override string GetStateEventType()
         {

@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         public static IShipmentCommand ToCreateOrMergePatchShipment(this ShipmentState state)
         {
-            return state.ToCreateOrMergePatchShipment<CreateShipment, MergePatchShipment>();
+            return state.ToCreateOrMergePatchShipment<CreateShipment, MergePatchShipment, CreateShipmentItem, MergePatchShipmentItem>();
         }
 
         public static DeleteShipment ToDeleteShipment(this ShipmentState state)
@@ -27,12 +27,12 @@ namespace Dddml.Wms.Domain.Shipment
 
         public static MergePatchShipment ToMergePatchShipment(this ShipmentState state)
         {
-            return state.ToMergePatchShipment<MergePatchShipment>();
+            return state.ToMergePatchShipment<MergePatchShipment, CreateShipmentItem, MergePatchShipmentItem>();
         }
 
         public static CreateShipment ToCreateShipment(this ShipmentState state)
         {
-            return state.ToCreateShipment<CreateShipment>();
+            return state.ToCreateShipment<CreateShipment, CreateShipmentItem>();
         }
 		
 

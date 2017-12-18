@@ -381,10 +381,22 @@ public class ShipmentStateDto
         this.updatedAt = updatedAt;
     }
 
+    private ShipmentItemStateDto[] shipmentItems;
+
+    public ShipmentItemStateDto[] getShipmentItems()
+    {
+        return this.shipmentItems;
+    }	
+
+    public void setShipmentItems(ShipmentItemStateDto[] shipmentItems)
+    {
+        this.shipmentItems = shipmentItems;
+    }
+
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"ShipmentItems"});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -499,6 +511,18 @@ public class ShipmentStateDto
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("ShipmentItems")) {
+                ArrayList<ShipmentItemStateDto> arrayList = new ArrayList();
+                if (state.getShipmentItems() != null) {
+                    ShipmentItemStateDto.DtoConverter conv = new ShipmentItemStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "ShipmentItems");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (ShipmentItemState s : state.getShipmentItems()) {
+                        arrayList.add(conv.toShipmentItemStateDto(s));
+                    }
+                }
+                dto.setShipmentItems(arrayList.toArray(new ShipmentItemStateDto[0]));
             }
             return dto;
         }

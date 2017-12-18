@@ -55,6 +55,8 @@
     <property name="ShippingDepth" ><column name="ShippingDepth" sql-type="DECIMAL(18,6)" /></property>
     <property name="DiameterUomId" ><column name="DiameterUomId" sql-type="VARCHAR(20)" /></property>
     <property name="ProductDiameter" ><column name="ProductDiameter" sql-type="DECIMAL(18,6)" /></property>
+    <property name="ProductRating" ><column name="ProductRating" sql-type="DECIMAL(18,6)" /></property>
+    <property name="RatingTypeEnum" ><column name="RatingTypeEnum" sql-type="VARCHAR(20)" /></property>
     <property name="Returnable" ><column name="Returnable" sql-type="CHAR(1)" /></property>
     <property name="Taxable" ><column name="Taxable" sql-type="CHAR(1)" /></property>
     <property name="ChargeShipping" ><column name="ChargeShipping" sql-type="CHAR(1)" /></property>
@@ -166,6 +168,10 @@
         <property name="IsPropertyDiameterUomIdRemoved" column="IsPropertyDiameterUomIdRemoved"/>
 
         <property name="IsPropertyProductDiameterRemoved" column="IsPropertyProductDiameterRemoved"/>
+
+        <property name="IsPropertyProductRatingRemoved" column="IsPropertyProductRatingRemoved"/>
+
+        <property name="IsPropertyRatingTypeEnumRemoved" column="IsPropertyRatingTypeEnumRemoved"/>
 
         <property name="IsPropertyReturnableRemoved" column="IsPropertyReturnableRemoved"/>
 

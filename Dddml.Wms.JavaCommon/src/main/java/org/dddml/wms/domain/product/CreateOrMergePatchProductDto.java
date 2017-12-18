@@ -533,6 +533,30 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.productDiameter = productDiameter;
     }
 
+    private java.math.BigDecimal productRating;
+
+    public java.math.BigDecimal getProductRating()
+    {
+        return this.productRating;
+    }
+
+    public void setProductRating(java.math.BigDecimal productRating)
+    {
+        this.productRating = productRating;
+    }
+
+    private String ratingTypeEnum;
+
+    public String getRatingTypeEnum()
+    {
+        return this.ratingTypeEnum;
+    }
+
+    public void setRatingTypeEnum(String ratingTypeEnum)
+    {
+        this.ratingTypeEnum = ratingTypeEnum;
+    }
+
     private String returnable;
 
     public String getReturnable()
@@ -1205,6 +1229,30 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.isPropertyProductDiameterRemoved = removed;
     }
 
+    private Boolean isPropertyProductRatingRemoved;
+
+    public Boolean getIsPropertyProductRatingRemoved()
+    {
+        return this.isPropertyProductRatingRemoved;
+    }
+
+    public void setIsPropertyProductRatingRemoved(Boolean removed)
+    {
+        this.isPropertyProductRatingRemoved = removed;
+    }
+
+    private Boolean isPropertyRatingTypeEnumRemoved;
+
+    public Boolean getIsPropertyRatingTypeEnumRemoved()
+    {
+        return this.isPropertyRatingTypeEnumRemoved;
+    }
+
+    public void setIsPropertyRatingTypeEnumRemoved(Boolean removed)
+    {
+        this.isPropertyRatingTypeEnumRemoved = removed;
+    }
+
     private Boolean isPropertyReturnableRemoved;
 
     public Boolean getIsPropertyReturnableRemoved()
@@ -1396,6 +1444,8 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         command.setShippingDepth(this.getShippingDepth());
         command.setDiameterUomId(this.getDiameterUomId());
         command.setProductDiameter(this.getProductDiameter());
+        command.setProductRating(this.getProductRating());
+        command.setRatingTypeEnum(this.getRatingTypeEnum());
         command.setReturnable(this.getReturnable());
         command.setTaxable(this.getTaxable());
         command.setChargeShipping(this.getChargeShipping());
@@ -1476,6 +1526,8 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         command.setIsPropertyShippingDepthRemoved(this.getIsPropertyShippingDepthRemoved());
         command.setIsPropertyDiameterUomIdRemoved(this.getIsPropertyDiameterUomIdRemoved());
         command.setIsPropertyProductDiameterRemoved(this.getIsPropertyProductDiameterRemoved());
+        command.setIsPropertyProductRatingRemoved(this.getIsPropertyProductRatingRemoved());
+        command.setIsPropertyRatingTypeEnumRemoved(this.getIsPropertyRatingTypeEnumRemoved());
         command.setIsPropertyReturnableRemoved(this.getIsPropertyReturnableRemoved());
         command.setIsPropertyTaxableRemoved(this.getIsPropertyTaxableRemoved());
         command.setIsPropertyChargeShippingRemoved(this.getIsPropertyChargeShippingRemoved());

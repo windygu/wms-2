@@ -69,6 +69,8 @@ public class ProductStateEventDtoConverter {
         dto.setShippingDepth(e.getShippingDepth());
         dto.setDiameterUomId(e.getDiameterUomId());
         dto.setProductDiameter(e.getProductDiameter());
+        dto.setProductRating(e.getProductRating());
+        dto.setRatingTypeEnum(e.getRatingTypeEnum());
         dto.setReturnable(e.getReturnable());
         dto.setTaxable(e.getTaxable());
         dto.setChargeShipping(e.getChargeShipping());
@@ -134,6 +136,8 @@ public class ProductStateEventDtoConverter {
         dto.setShippingDepth(e.getShippingDepth());
         dto.setDiameterUomId(e.getDiameterUomId());
         dto.setProductDiameter(e.getProductDiameter());
+        dto.setProductRating(e.getProductRating());
+        dto.setRatingTypeEnum(e.getRatingTypeEnum());
         dto.setReturnable(e.getReturnable());
         dto.setTaxable(e.getTaxable());
         dto.setChargeShipping(e.getChargeShipping());
@@ -190,6 +194,8 @@ public class ProductStateEventDtoConverter {
         dto.setIsPropertyShippingDepthRemoved(e.getIsPropertyShippingDepthRemoved());
         dto.setIsPropertyDiameterUomIdRemoved(e.getIsPropertyDiameterUomIdRemoved());
         dto.setIsPropertyProductDiameterRemoved(e.getIsPropertyProductDiameterRemoved());
+        dto.setIsPropertyProductRatingRemoved(e.getIsPropertyProductRatingRemoved());
+        dto.setIsPropertyRatingTypeEnumRemoved(e.getIsPropertyRatingTypeEnumRemoved());
         dto.setIsPropertyReturnableRemoved(e.getIsPropertyReturnableRemoved());
         dto.setIsPropertyTaxableRemoved(e.getIsPropertyTaxableRemoved());
         dto.setIsPropertyChargeShippingRemoved(e.getIsPropertyChargeShippingRemoved());

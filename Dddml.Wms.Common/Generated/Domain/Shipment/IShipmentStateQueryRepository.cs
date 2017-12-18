@@ -32,6 +32,8 @@ namespace Dddml.Wms.Domain.Shipment
 
         long GetCount(ICriterion filter);
 
+        IShipmentItemState GetShipmentItem(string shipmentId, string shipmentItemSeqId);
+
 	}
 
 }

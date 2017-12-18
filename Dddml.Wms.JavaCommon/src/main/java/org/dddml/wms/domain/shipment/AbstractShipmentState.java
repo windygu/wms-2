@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.shipment.ShipmentStateEvent.*;
 
-public abstract class AbstractShipmentState implements ShipmentState
+public abstract class AbstractShipmentState implements ShipmentState, Saveable
 {
 
     private String shipmentId;
@@ -386,6 +386,18 @@ public abstract class AbstractShipmentState implements ShipmentState
         return this.getVersion() == null;
     }
 
+    private ShipmentItemStates shipmentItems;
+
+    public ShipmentItemStates getShipmentItems()
+    {
+        return this.shipmentItems;
+    }
+
+    public void setShipmentItems(ShipmentItemStates shipmentItems)
+    {
+        this.shipmentItems = shipmentItems;
+    }
+
     private Boolean stateReadOnly;
 
     public Boolean getStateReadOnly() { return this.stateReadOnly; }
@@ -425,6 +437,7 @@ public abstract class AbstractShipmentState implements ShipmentState
     }
     
     protected void initializeProperties() {
+        shipmentItems = new SimpleShipmentItemStates(this);
     }
 
 
@@ -472,6 +485,10 @@ public abstract class AbstractShipmentState implements ShipmentState
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+        for (ShipmentItemStateEvent.ShipmentItemStateCreated innerEvent : e.getShipmentItemEvents()) {
+            ShipmentItemState innerState = this.getShipmentItems().get(innerEvent.getStateEventId().getShipmentItemSeqId());
+            innerState.mutate(innerEvent);
+        }
     }
 
     public void when(ShipmentStateMergePatched e)
@@ -757,10 +774,21 @@ public abstract class AbstractShipmentState implements ShipmentState
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
+        for (ShipmentItemStateEvent innerEvent : e.getShipmentItemEvents()) {
+            ShipmentItemState innerState = this.getShipmentItems().get(innerEvent.getStateEventId().getShipmentItemSeqId());
+            innerState.mutate(innerEvent);
+            if (innerEvent instanceof ShipmentItemStateEvent.ShipmentItemStateRemoved)
+            {
+                //ShipmentItemStateEvent.ShipmentItemStateRemoved removed = (ShipmentItemStateEvent.ShipmentItemStateRemoved)innerEvent;
+                this.getShipmentItems().remove(innerState);
+            }
+        }
     }
 
     public void save()
     {
+        shipmentItems.save();
+
     }
 
     protected void throwOnWrongEvent(ShipmentStateEvent stateEvent)
@@ -798,6 +826,14 @@ public abstract class AbstractShipmentState implements ShipmentState
             super(events);
         }
 
+    }
+
+    static class SimpleShipmentItemStates extends AbstractShipmentItemStates
+    {
+        public SimpleShipmentItemStates(AbstractShipmentState outerState)
+        {
+            super(outerState);
+        }
     }
 
 

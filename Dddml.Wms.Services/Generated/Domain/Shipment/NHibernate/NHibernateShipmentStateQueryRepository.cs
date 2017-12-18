@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "ShipmentId", "ShipmentTypeId", "StatusId", "PrimaryOrderId", "PrimaryReturnId", "PicklistBinId", "EstimatedReadyDate", "EstimatedShipDate", "EstimatedShipWorkEffId", "EstimatedArrivalDate", "EstimatedArrivalWorkEffId", "LatestCancelDate", "EstimatedShipCost", "CurrencyUomId", "HandlingInstructions", "OriginFacilityId", "DestinationFacilityId", "OriginContactMechId", "OriginTelecomNumberId", "DestinationContactMechId", "DestinationTelecomNumberId", "PartyIdTo", "PartyIdFrom", "AdditionalShippingCharge", "AddtlShippingChargeDesc", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "ShipmentId", "ShipmentTypeId", "StatusId", "PrimaryOrderId", "PrimaryReturnId", "PicklistBinId", "EstimatedReadyDate", "EstimatedShipDate", "EstimatedShipWorkEffId", "EstimatedArrivalDate", "EstimatedArrivalWorkEffId", "LatestCancelDate", "EstimatedShipCost", "CurrencyUomId", "HandlingInstructions", "OriginFacilityId", "DestinationFacilityId", "OriginContactMechId", "OriginTelecomNumberId", "DestinationContactMechId", "DestinationTelecomNumberId", "PartyIdTo", "PartyIdFrom", "AdditionalShippingCharge", "AddtlShippingChargeDesc", "ShipmentItems", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
 			IShipmentState state = CurrentSession.Get<ShipmentState>(id);
             if (ReadOnlyProxyGenerator != null && state != null)
             {
-                return ReadOnlyProxyGenerator.CreateProxy<IShipmentState>(state, new Type[] {  }, _readOnlyPropertyNames);
+                return ReadOnlyProxyGenerator.CreateProxy<IShipmentState>(state, new Type[] { typeof(ISaveable) }, _readOnlyPropertyNames);
             }
 			return state;
 		}
@@ -124,6 +124,13 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
             }
             AddNotDeletedRestriction(criteria);
             return criteria.UniqueResult<long>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual IShipmentItemState GetShipmentItem(string shipmentId, string shipmentItemSeqId)
+        {
+            var entityId = new ShipmentItemId(shipmentId, shipmentItemSeqId);
+            return CurrentSession.Get<ShipmentItemState>(entityId);
         }
 
 

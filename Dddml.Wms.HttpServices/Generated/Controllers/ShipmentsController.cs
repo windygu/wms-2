@@ -175,6 +175,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{shipmentId}/ShipmentItems/{shipmentItemSeqId}")]
+        [HttpGet]
+        public IShipmentItemStateDto GetShipmentItem(string shipmentId, string shipmentItemSeqId)
+        {
+          try {
+            var state = (ShipmentItemState)_shipmentApplicationService.GetShipmentItem(shipmentId, shipmentItemSeqId);
+            if (state == null) { return null; }
+            var stateDto = new ShipmentItemStateDtoWrapper(state);
+            stateDto.AllFieldsReturned = true;
+            return stateDto;
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

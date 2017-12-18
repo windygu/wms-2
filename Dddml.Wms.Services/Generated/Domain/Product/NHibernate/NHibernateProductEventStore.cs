@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.Product.NHibernate
             var criteria = CurrentSession.CreateCriteria<ProductStateEventBase>();
             criteria.Add(Restrictions.Eq("StateEventId.ProductId", idObj));
             criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(Order.Asc("StateEventId.Version"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (ProductStateEventBase e in es)
             {

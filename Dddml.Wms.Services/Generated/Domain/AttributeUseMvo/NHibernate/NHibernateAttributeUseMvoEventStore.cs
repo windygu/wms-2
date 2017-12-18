@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo.NHibernate
             criteria.Add(Restrictions.Eq("StateEventId.AttributeSetAttributeUseIdAttributeSetId", idObj.AttributeSetId));
             criteria.Add(Restrictions.Eq("StateEventId.AttributeSetAttributeUseIdAttributeId", idObj.AttributeId));
             criteria.Add(Restrictions.Le("StateEventId.AttributeSetVersion", version));
-            criteria.AddOrder(Order.Asc("StateEventId.AttributeSetVersion"));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.AttributeSetVersion"));
             var es = criteria.List<IEvent>();
             foreach (AttributeUseMvoStateEventBase e in es)
             {

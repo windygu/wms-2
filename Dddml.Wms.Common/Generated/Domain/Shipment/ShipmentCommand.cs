@@ -124,6 +124,31 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
+        private CreateShipmentItemCommands _shipmentItems = new CreateShipmentItemCommands();
+
+        public ICreateShipmentItemCommands ShipmentItems
+        {
+            get
+            {
+                return this._shipmentItems;
+            }
+        }
+
+        public CreateShipmentItem NewCreateShipmentItem()
+        {
+            var c = new CreateShipmentItem();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        ICreateShipmentItem ICreateShipment.NewCreateShipmentItem()
+        {
+            return this.NewCreateShipmentItem();
+        }
+
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.Create;
@@ -189,6 +214,58 @@ namespace Dddml.Wms.Domain.Shipment
 		{
 		}
 
+        private ShipmentItemCommands _shipmentItemCommands = new ShipmentItemCommands();
+
+        public IShipmentItemCommands ShipmentItemCommands
+        {
+            get
+            {
+                return this._shipmentItemCommands;
+            }
+        }
+
+
+        public CreateShipmentItem NewCreateShipmentItem()
+        {
+            var c = new CreateShipmentItem();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        ICreateShipmentItem IMergePatchShipment.NewCreateShipmentItem()
+        {
+            return this.NewCreateShipmentItem();
+        }
+
+        public MergePatchShipmentItem NewMergePatchShipmentItem()
+        {
+            var c = new MergePatchShipmentItem();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IMergePatchShipmentItem IMergePatchShipment.NewMergePatchShipmentItem()
+        {
+            return this.NewMergePatchShipmentItem();
+        }
+
+
+        public RemoveShipmentItem NewRemoveShipmentItem()
+        {
+            var c = new RemoveShipmentItem();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IRemoveShipmentItem IMergePatchShipment.NewRemoveShipmentItem()
+        {
+            return this.NewRemoveShipmentItem();
+        }
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.MergePatch;
@@ -208,6 +285,69 @@ namespace Dddml.Wms.Domain.Shipment
         }
 
 	}
+
+
+    public class CreateShipmentItemCommands : ICreateShipmentItemCommands
+    {
+        private List<ICreateShipmentItem> _innerCommands = new List<ICreateShipmentItem>();
+
+        public void Add(ICreateShipmentItem c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateShipmentItem c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateShipmentItem> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class ShipmentItemCommands : IShipmentItemCommands
+    {
+        private List<IShipmentItemCommand> _innerCommands = new List<IShipmentItemCommand>();
+
+        public void Add(IShipmentItemCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IShipmentItemCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IShipmentItemCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
 
     public static partial class ShipmentCommands
     {
