@@ -40,12 +40,14 @@ public abstract class AbstractInventoryItemEntryMvoStateCommandConverter<TCreate
 
         cmd.setInventoryItemEntryId(state.getInventoryItemEntryId());
         cmd.setQuantityOnHand(state.getQuantityOnHand());
+        cmd.setQuantityInTransit(state.getQuantityInTransit());
         cmd.setQuantityReserved(state.getQuantityReserved());
         cmd.setQuantityOccupied(state.getQuantityOccupied());
         cmd.setQuantityVirtual(state.getQuantityVirtual());
         cmd.setSource(state.getSource());
         cmd.setVersion(state.getVersion());
         cmd.setInventoryItemQuantityOnHand(state.getInventoryItemQuantityOnHand());
+        cmd.setInventoryItemQuantityInTransit(state.getInventoryItemQuantityInTransit());
         cmd.setInventoryItemQuantityReserved(state.getInventoryItemQuantityReserved());
         cmd.setInventoryItemQuantityOccupied(state.getInventoryItemQuantityOccupied());
         cmd.setInventoryItemQuantityVirtual(state.getInventoryItemQuantityVirtual());
@@ -55,12 +57,14 @@ public abstract class AbstractInventoryItemEntryMvoStateCommandConverter<TCreate
         cmd.setInventoryItemUpdatedAt(state.getInventoryItemUpdatedAt());
             
         if (state.getQuantityOnHand() == null) { cmd.setIsPropertyQuantityOnHandRemoved(true); }
+        if (state.getQuantityInTransit() == null) { cmd.setIsPropertyQuantityInTransitRemoved(true); }
         if (state.getQuantityReserved() == null) { cmd.setIsPropertyQuantityReservedRemoved(true); }
         if (state.getQuantityOccupied() == null) { cmd.setIsPropertyQuantityOccupiedRemoved(true); }
         if (state.getQuantityVirtual() == null) { cmd.setIsPropertyQuantityVirtualRemoved(true); }
         if (state.getSource() == null) { cmd.setIsPropertySourceRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getInventoryItemQuantityOnHand() == null) { cmd.setIsPropertyInventoryItemQuantityOnHandRemoved(true); }
+        if (state.getInventoryItemQuantityInTransit() == null) { cmd.setIsPropertyInventoryItemQuantityInTransitRemoved(true); }
         if (state.getInventoryItemQuantityReserved() == null) { cmd.setIsPropertyInventoryItemQuantityReservedRemoved(true); }
         if (state.getInventoryItemQuantityOccupied() == null) { cmd.setIsPropertyInventoryItemQuantityOccupiedRemoved(true); }
         if (state.getInventoryItemQuantityVirtual() == null) { cmd.setIsPropertyInventoryItemQuantityVirtualRemoved(true); }
@@ -78,12 +82,14 @@ public abstract class AbstractInventoryItemEntryMvoStateCommandConverter<TCreate
         cmd.setInventoryItemVersion(state.getInventoryItemVersion());
         cmd.setInventoryItemEntryId(state.getInventoryItemEntryId());
         cmd.setQuantityOnHand(state.getQuantityOnHand());
+        cmd.setQuantityInTransit(state.getQuantityInTransit());
         cmd.setQuantityReserved(state.getQuantityReserved());
         cmd.setQuantityOccupied(state.getQuantityOccupied());
         cmd.setQuantityVirtual(state.getQuantityVirtual());
         cmd.setSource(state.getSource());
         cmd.setVersion(state.getVersion());
         cmd.setInventoryItemQuantityOnHand(state.getInventoryItemQuantityOnHand());
+        cmd.setInventoryItemQuantityInTransit(state.getInventoryItemQuantityInTransit());
         cmd.setInventoryItemQuantityReserved(state.getInventoryItemQuantityReserved());
         cmd.setInventoryItemQuantityOccupied(state.getInventoryItemQuantityOccupied());
         cmd.setInventoryItemQuantityVirtual(state.getInventoryItemQuantityVirtual());

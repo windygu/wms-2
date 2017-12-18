@@ -17,6 +17,7 @@
 	<version name="inventoryItemVersion" column="InventoryItemVersion" type="long" />
 
 	<property name="quantityOnHand" ></property>
+	<property name="quantityInTransit" ></property>
 	<property name="quantityReserved" ></property>
 	<property name="quantityOccupied" ></property>
 	<property name="quantityVirtual" ></property>
@@ -29,6 +30,7 @@
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="inventoryItemQuantityOnHand" ></property>
+	<property name="inventoryItemQuantityInTransit" ></property>
 	<property name="inventoryItemQuantityReserved" ></property>
 	<property name="inventoryItemQuantityOccupied" ></property>
 	<property name="inventoryItemQuantityVirtual" ></property>

@@ -41,6 +41,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public virtual decimal? QuantityOnHand { get { return _state.QuantityOnHand; } set { _state.QuantityOnHand = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
+        public virtual decimal? QuantityInTransit { get { return _state.QuantityInTransit; } set { _state.QuantityInTransit = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+
         public virtual decimal? QuantityReserved { get { return _state.QuantityReserved; } set { _state.QuantityReserved = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
         public virtual decimal? QuantityOccupied { get { return _state.QuantityOccupied; } set { _state.QuantityOccupied = (value != null && value.HasValue) ? value.Value : default(decimal); } }

@@ -19,6 +19,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		decimal? QuantityOnHand { get; set; }
 
+		decimal? QuantityInTransit { get; set; }
+
 		decimal? QuantityReserved { get; set; }
 
 		decimal? QuantityOccupied { get; set; }
@@ -42,6 +44,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 	public interface IInventoryItemStateMergePatched : IInventoryItemStateEvent//, IInventoryItemStateProperties
 	{
 		bool IsPropertyQuantityOnHandRemoved { get; set; }
+
+		bool IsPropertyQuantityInTransitRemoved { get; set; }
 
 		bool IsPropertyQuantityReservedRemoved { get; set; }
 

@@ -18,6 +18,7 @@
 	<version name="version" column="Version" type="long" />
 
 	<property name="quantityOnHand" ></property>
+	<property name="quantityInTransit" ></property>
 	<property name="quantityReserved" ></property>
 	<property name="quantityOccupied" ></property>
 	<property name="quantityVirtual" ></property>

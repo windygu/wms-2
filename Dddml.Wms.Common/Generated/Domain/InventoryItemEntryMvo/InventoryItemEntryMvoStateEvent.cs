@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		public virtual decimal? QuantityOnHand { get; set; }
 
+		public virtual decimal? QuantityInTransit { get; set; }
+
 		public virtual decimal? QuantityReserved { get; set; }
 
 		public virtual decimal? QuantityOccupied { get; set; }
@@ -37,6 +39,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		public virtual long? Version { get; set; }
 
 		public virtual decimal? InventoryItemQuantityOnHand { get; set; }
+
+		public virtual decimal? InventoryItemQuantityInTransit { get; set; }
 
 		public virtual decimal? InventoryItemQuantityReserved { get; set; }
 
@@ -142,6 +146,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 	{
 		public virtual bool IsPropertyQuantityOnHandRemoved { get; set; }
 
+		public virtual bool IsPropertyQuantityInTransitRemoved { get; set; }
+
 		public virtual bool IsPropertyQuantityReservedRemoved { get; set; }
 
 		public virtual bool IsPropertyQuantityOccupiedRemoved { get; set; }
@@ -153,6 +159,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		public virtual bool IsPropertyVersionRemoved { get; set; }
 
 		public virtual bool IsPropertyInventoryItemQuantityOnHandRemoved { get; set; }
+
+		public virtual bool IsPropertyInventoryItemQuantityInTransitRemoved { get; set; }
 
 		public virtual bool IsPropertyInventoryItemQuantityReservedRemoved { get; set; }
 

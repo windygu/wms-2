@@ -18,6 +18,18 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.quantityOnHand = quantityOnHand;
     }
 
+    private BigDecimal quantityInTransit;
+
+    public BigDecimal getQuantityInTransit()
+    {
+        return this.quantityInTransit;
+    }
+
+    public void setQuantityInTransit(BigDecimal quantityInTransit)
+    {
+        this.quantityInTransit = quantityInTransit;
+    }
+
     private BigDecimal quantityReserved;
 
     public BigDecimal getQuantityReserved()
@@ -90,6 +102,18 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.isPropertyQuantityOnHandRemoved = removed;
     }
 
+    private Boolean isPropertyQuantityInTransitRemoved;
+
+    public Boolean getIsPropertyQuantityInTransitRemoved()
+    {
+        return this.isPropertyQuantityInTransitRemoved;
+    }
+
+    public void setIsPropertyQuantityInTransitRemoved(Boolean removed)
+    {
+        this.isPropertyQuantityInTransitRemoved = removed;
+    }
+
     private Boolean isPropertyQuantityReservedRemoved;
 
     public Boolean getIsPropertyQuantityReservedRemoved()
@@ -154,6 +178,7 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
     {
         ((AbstractInventoryItemEntryCommandDto) this).copyTo(command);
         command.setQuantityOnHand(this.getQuantityOnHand());
+        command.setQuantityInTransit(this.getQuantityInTransit());
         command.setQuantityReserved(this.getQuantityReserved());
         command.setQuantityOccupied(this.getQuantityOccupied());
         command.setQuantityVirtual(this.getQuantityVirtual());

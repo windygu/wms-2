@@ -50,12 +50,14 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
             cmd.InventoryItemEntryId = state.InventoryItemEntryId;
             cmd.QuantityOnHand = state.QuantityOnHand;
+            cmd.QuantityInTransit = state.QuantityInTransit;
             cmd.QuantityReserved = state.QuantityReserved;
             cmd.QuantityOccupied = state.QuantityOccupied;
             cmd.QuantityVirtual = state.QuantityVirtual;
             cmd.Source = state.Source;
             cmd.Version = ((IInventoryItemEntryMvoStateProperties)state).Version;
             cmd.InventoryItemQuantityOnHand = state.InventoryItemQuantityOnHand;
+            cmd.InventoryItemQuantityInTransit = state.InventoryItemQuantityInTransit;
             cmd.InventoryItemQuantityReserved = state.InventoryItemQuantityReserved;
             cmd.InventoryItemQuantityOccupied = state.InventoryItemQuantityOccupied;
             cmd.InventoryItemQuantityVirtual = state.InventoryItemQuantityVirtual;
@@ -79,12 +81,14 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
             cmd.InventoryItemEntryId = state.InventoryItemEntryId;
             cmd.QuantityOnHand = state.QuantityOnHand;
+            cmd.QuantityInTransit = state.QuantityInTransit;
             cmd.QuantityReserved = state.QuantityReserved;
             cmd.QuantityOccupied = state.QuantityOccupied;
             cmd.QuantityVirtual = state.QuantityVirtual;
             cmd.Source = state.Source;
             cmd.Version = ((IInventoryItemEntryMvoStateProperties)state).Version;
             cmd.InventoryItemQuantityOnHand = state.InventoryItemQuantityOnHand;
+            cmd.InventoryItemQuantityInTransit = state.InventoryItemQuantityInTransit;
             cmd.InventoryItemQuantityReserved = state.InventoryItemQuantityReserved;
             cmd.InventoryItemQuantityOccupied = state.InventoryItemQuantityOccupied;
             cmd.InventoryItemQuantityVirtual = state.InventoryItemQuantityVirtual;

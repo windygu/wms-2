@@ -34,6 +34,18 @@ public class InventoryItemEntryStateDto
         this.quantityOnHand = quantityOnHand;
     }
 
+    private BigDecimal quantityInTransit;
+
+    public BigDecimal getQuantityInTransit()
+    {
+        return this.quantityInTransit;
+    }
+
+    public void setQuantityInTransit(BigDecimal quantityInTransit)
+    {
+        this.quantityInTransit = quantityInTransit;
+    }
+
     private BigDecimal quantityReserved;
 
     public BigDecimal getQuantityReserved()
@@ -185,6 +197,9 @@ public class InventoryItemEntryStateDto
             }
             if (returnedFieldsContains("QuantityOnHand")) {
                 dto.setQuantityOnHand(state.getQuantityOnHand());
+            }
+            if (returnedFieldsContains("QuantityInTransit")) {
+                dto.setQuantityInTransit(state.getQuantityInTransit());
             }
             if (returnedFieldsContains("QuantityReserved")) {
                 dto.setQuantityReserved(state.getQuantityReserved());

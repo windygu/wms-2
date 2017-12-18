@@ -46,6 +46,16 @@ public class InventoryItemEntryMvoStateEventDto extends AbstractStateEvent
         this.quantityOnHand = quantityOnHand;
     }
 
+    private BigDecimal quantityInTransit;
+
+    public BigDecimal getQuantityInTransit() {
+        return this.quantityInTransit;
+    }
+
+    public void setQuantityInTransit(BigDecimal quantityInTransit) {
+        this.quantityInTransit = quantityInTransit;
+    }
+
     private BigDecimal quantityReserved;
 
     public BigDecimal getQuantityReserved() {
@@ -104,6 +114,16 @@ public class InventoryItemEntryMvoStateEventDto extends AbstractStateEvent
 
     public void setInventoryItemQuantityOnHand(BigDecimal inventoryItemQuantityOnHand) {
         this.inventoryItemQuantityOnHand = inventoryItemQuantityOnHand;
+    }
+
+    private BigDecimal inventoryItemQuantityInTransit;
+
+    public BigDecimal getInventoryItemQuantityInTransit() {
+        return this.inventoryItemQuantityInTransit;
+    }
+
+    public void setInventoryItemQuantityInTransit(BigDecimal inventoryItemQuantityInTransit) {
+        this.inventoryItemQuantityInTransit = inventoryItemQuantityInTransit;
     }
 
     private BigDecimal inventoryItemQuantityReserved;
@@ -206,6 +226,16 @@ public class InventoryItemEntryMvoStateEventDto extends AbstractStateEvent
         this.isPropertyQuantityOnHandRemoved = removed;
     }
 
+    private Boolean isPropertyQuantityInTransitRemoved;
+
+    public Boolean getIsPropertyQuantityInTransitRemoved() {
+        return this.isPropertyQuantityInTransitRemoved;
+    }
+
+    public void setIsPropertyQuantityInTransitRemoved(Boolean removed) {
+        this.isPropertyQuantityInTransitRemoved = removed;
+    }
+
     private Boolean isPropertyQuantityReservedRemoved;
 
     public Boolean getIsPropertyQuantityReservedRemoved() {
@@ -264,6 +294,16 @@ public class InventoryItemEntryMvoStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyInventoryItemQuantityOnHandRemoved(Boolean removed) {
         this.isPropertyInventoryItemQuantityOnHandRemoved = removed;
+    }
+
+    private Boolean isPropertyInventoryItemQuantityInTransitRemoved;
+
+    public Boolean getIsPropertyInventoryItemQuantityInTransitRemoved() {
+        return this.isPropertyInventoryItemQuantityInTransitRemoved;
+    }
+
+    public void setIsPropertyInventoryItemQuantityInTransitRemoved(Boolean removed) {
+        this.isPropertyInventoryItemQuantityInTransitRemoved = removed;
     }
 
     private Boolean isPropertyInventoryItemQuantityReservedRemoved;

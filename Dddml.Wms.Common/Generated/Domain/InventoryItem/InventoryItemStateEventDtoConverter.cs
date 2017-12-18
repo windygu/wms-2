@@ -38,6 +38,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.QuantityOnHand = e.QuantityOnHand;
+            dto.QuantityInTransit = e.QuantityInTransit;
             dto.QuantityReserved = e.QuantityReserved;
             dto.QuantityOccupied = e.QuantityOccupied;
             dto.QuantityVirtual = e.QuantityVirtual;
@@ -60,10 +61,12 @@ namespace Dddml.Wms.Domain.InventoryItem
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.QuantityOnHand = e.QuantityOnHand;
+            dto.QuantityInTransit = e.QuantityInTransit;
             dto.QuantityReserved = e.QuantityReserved;
             dto.QuantityOccupied = e.QuantityOccupied;
             dto.QuantityVirtual = e.QuantityVirtual;
             dto.IsPropertyQuantityOnHandRemoved = e.IsPropertyQuantityOnHandRemoved;
+            dto.IsPropertyQuantityInTransitRemoved = e.IsPropertyQuantityInTransitRemoved;
             dto.IsPropertyQuantityReservedRemoved = e.IsPropertyQuantityReservedRemoved;
             dto.IsPropertyQuantityOccupiedRemoved = e.IsPropertyQuantityOccupiedRemoved;
             dto.IsPropertyQuantityVirtualRemoved = e.IsPropertyQuantityVirtualRemoved;

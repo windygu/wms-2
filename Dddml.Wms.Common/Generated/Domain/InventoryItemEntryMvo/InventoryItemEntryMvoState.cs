@@ -155,6 +155,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			ThrowOnWrongEvent(e);
             this.QuantityOnHand = (e.QuantityOnHand != null && e.QuantityOnHand.HasValue) ? e.QuantityOnHand.Value : default(decimal);
 
+            this.QuantityInTransit = (e.QuantityInTransit != null && e.QuantityInTransit.HasValue) ? e.QuantityInTransit.Value : default(decimal);
+
             this.QuantityReserved = (e.QuantityReserved != null && e.QuantityReserved.HasValue) ? e.QuantityReserved.Value : default(decimal);
 
             this.QuantityOccupied = (e.QuantityOccupied != null && e.QuantityOccupied.HasValue) ? e.QuantityOccupied.Value : default(decimal);
@@ -166,6 +168,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 
             this.InventoryItemQuantityOnHand = (e.InventoryItemQuantityOnHand != null && e.InventoryItemQuantityOnHand.HasValue) ? e.InventoryItemQuantityOnHand.Value : default(decimal);
+
+            this.InventoryItemQuantityInTransit = (e.InventoryItemQuantityInTransit != null && e.InventoryItemQuantityInTransit.HasValue) ? e.InventoryItemQuantityInTransit.Value : default(decimal);
 
             this.InventoryItemQuantityReserved = (e.InventoryItemQuantityReserved != null && e.InventoryItemQuantityReserved.HasValue) ? e.InventoryItemQuantityReserved.Value : default(decimal);
 
@@ -202,6 +206,18 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			else
 			{
 				this.QuantityOnHand = (e.QuantityOnHand != null && e.QuantityOnHand.HasValue) ? e.QuantityOnHand.Value : default(decimal);
+			}
+
+			if (e.QuantityInTransit == null)
+			{
+				if (e.IsPropertyQuantityInTransitRemoved)
+				{
+					this.QuantityInTransit = default(decimal);
+				}
+			}
+			else
+			{
+				this.QuantityInTransit = (e.QuantityInTransit != null && e.QuantityInTransit.HasValue) ? e.QuantityInTransit.Value : default(decimal);
 			}
 
 			if (e.QuantityReserved == null)
@@ -274,6 +290,18 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			else
 			{
 				this.InventoryItemQuantityOnHand = (e.InventoryItemQuantityOnHand != null && e.InventoryItemQuantityOnHand.HasValue) ? e.InventoryItemQuantityOnHand.Value : default(decimal);
+			}
+
+			if (e.InventoryItemQuantityInTransit == null)
+			{
+				if (e.IsPropertyInventoryItemQuantityInTransitRemoved)
+				{
+					this.InventoryItemQuantityInTransit = default(decimal);
+				}
+			}
+			else
+			{
+				this.InventoryItemQuantityInTransit = (e.InventoryItemQuantityInTransit != null && e.InventoryItemQuantityInTransit.HasValue) ? e.InventoryItemQuantityInTransit.Value : default(decimal);
 			}
 
 			if (e.InventoryItemQuantityReserved == null)

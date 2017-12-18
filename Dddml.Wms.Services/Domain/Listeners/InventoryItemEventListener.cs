@@ -8,6 +8,7 @@ using Dddml.Wms.Domain.InventoryItem;
 using Dddml.Wms.Domain.InventoryPRTriggered;
 using Dddml.Wms.Domain.InventoryPostingRule;
 using Dddml.Wms.Domain.SellableInventoryItem;
+using Dddml.Wms.Domain.InventoryItemRequirement;
 
 namespace Dddml.Wms.Domain.Listeners
 {
@@ -28,6 +29,12 @@ namespace Dddml.Wms.Domain.Listeners
         }
 
         public virtual ISellableInventoryItemApplicationService SellableInventoryItemApplicationService
+        {
+            get;
+            set;
+        }
+
+        public virtual IInventoryItemRequirementApplicationService InventoryItemRequirementApplicationService
         {
             get;
             set;
@@ -58,8 +65,8 @@ namespace Dddml.Wms.Domain.Listeners
             {
                 foreach (var pr in GetPostingRules(iie.StateEventId.InventoryItemId))
                 {
-                    var quantitySellable = GetOutputQuantitySellable(pr, iie);
-                    if (quantitySellable.Equals(0))
+                    var outputQuantity = GetOutputQuantity(pr, iie);
+                    if (outputQuantity.Equals(0))
                     {
                         continue;
                     }
@@ -68,30 +75,103 @@ namespace Dddml.Wms.Domain.Listeners
                     var outputItemId = GetOutputInventoryItemId(pr, iie.StateEventId.InventoryItemId);
                     //_log.Debug(outputItemId.ProductId + ", " + outputItemId.LocatorId + ", " + outputItemId.AttributeSetInstanceId);
 
-                    var sellableItem = GetOrCreateSellableInventoryItem(outputItemId);
-
-                    // //////////////////////////////
-                    UpdateSellableInventoryItem(quantitySellable, tid, sellableItem);
+                    CreateOrUpdateOutputAccount(pr.OutputAccountName, outputQuantity, tid, outputItemId);
                 }
             }
         }
 
-        private void UpdateSellableInventoryItem(decimal quantitySellable, InventoryPRTriggeredId tid, ISellableInventoryItemState sellableItem)
+        private void CreateOrUpdateOutputAccount(string outputAccountName, decimal outputQuantity, InventoryPRTriggeredId tid, InventoryItemId outputItemId)
         {
-            InventoryItemId outputItemId = sellableItem.SellableInventoryItemId;
-
-            var updateSellableItem = new MergePatchSellableInventoryItem();
-            updateSellableItem.SellableInventoryItemId = outputItemId;
-            updateSellableItem.Version = sellableItem.Version;
-            updateSellableItem.CommandId = Guid.NewGuid().ToString();
-
-            var createSellableEntry = updateSellableItem.NewCreateSellableInventoryItemEntry();
-            createSellableEntry.EntrySeqId = DateTime.Now.Ticks;//todo ??
-            createSellableEntry.QuantitySellable = quantitySellable;
-            createSellableEntry.SourceEventId = tid;
-            updateSellableItem.SellableInventoryItemEntryCommands.Add(createSellableEntry);
-            SellableInventoryItemApplicationService.When(updateSellableItem);
+            if (InventoryPostingRuleIds.OutputAccountNameQuantitySellable == outputAccountName)
+            {
+                CreateOrUpdateSellableInventoryItem(outputQuantity, tid, outputItemId);
+            }
+            else if (InventoryPostingRuleIds.OutputAccountNameQuantityRequired == outputAccountName)
+            {
+                CreateOrUpdateInventoryItemRequirement(outputQuantity, tid, outputItemId);
+            }
+            else
+            {
+                throw new NotSupportedException(String.Format("outputAccountName = {0}", outputAccountName));
+            }
         }
+
+        private void CreateOrUpdateSellableInventoryItem(decimal outputQuantity, InventoryPRTriggeredId tid, InventoryItemId outputItemId)
+        {
+            var itemState = SellableInventoryItemApplicationService.Get(outputItemId);
+            if (itemState != null)
+            {
+                var updateItem = new MergePatchSellableInventoryItem();
+                updateItem.SellableInventoryItemId = outputItemId;
+                updateItem.Version = itemState.Version;
+                updateItem.CommandId = Guid.NewGuid().ToString();
+
+                var createEntry = updateItem.NewCreateSellableInventoryItemEntry();
+                SetCreateSellableInventoryItemEntry(outputQuantity, tid, createEntry);
+                updateItem.SellableInventoryItemEntryCommands.Add(createEntry);
+                SellableInventoryItemApplicationService.When(updateItem);
+            }
+            else // is null
+            {
+                var createItem = new CreateSellableInventoryItem();
+                createItem.SellableInventoryItemId = outputItemId;
+                createItem.CommandId = Guid.NewGuid().ToString();
+
+                var createEntry = createItem.NewCreateSellableInventoryItemEntry();
+                SetCreateSellableInventoryItemEntry(outputQuantity, tid, createEntry);
+                createItem.Entries.Add(createEntry);
+                SellableInventoryItemApplicationService.When(createItem);
+                //return SellableInventoryItemApplicationService.Get(outputItemId);
+            }
+        }
+
+        private static void SetCreateSellableInventoryItemEntry(decimal outputQuantity, InventoryPRTriggeredId tid, CreateSellableInventoryItemEntry createEntry)
+        {
+            createEntry.EntrySeqId = DateTime.Now.Ticks;//todo ??
+            createEntry.QuantitySellable = outputQuantity;
+            createEntry.SourceEventId = tid;
+        }
+
+        // ///////////////////////////////////
+
+
+        private void CreateOrUpdateInventoryItemRequirement(decimal outputQuantity, InventoryPRTriggeredId tid, InventoryItemId outputItemId)
+        {
+            var itemState = InventoryItemRequirementApplicationService.Get(outputItemId);
+            if (itemState != null)
+            {
+                var updateItem = new MergePatchInventoryItemRequirement();
+                updateItem.InventoryItemRequirementId = outputItemId;
+                updateItem.Version = itemState.Version;
+                updateItem.CommandId = Guid.NewGuid().ToString();
+
+                var createEntry = updateItem.NewCreateInventoryItemRequirementEntry();
+                SetCreateInventoryItemRequirementEntry(outputQuantity, tid, createEntry);
+                updateItem.InventoryItemRequirementEntryCommands.Add(createEntry);
+                InventoryItemRequirementApplicationService.When(updateItem);
+            }
+            else // is null
+            {
+                var createItem = new CreateInventoryItemRequirement();
+                createItem.InventoryItemRequirementId = outputItemId;
+                createItem.CommandId = Guid.NewGuid().ToString();
+
+                var createEntry = createItem.NewCreateInventoryItemRequirementEntry();
+                SetCreateInventoryItemRequirementEntry(outputQuantity, tid, createEntry);
+                createItem.Entries.Add(createEntry);
+                InventoryItemRequirementApplicationService.When(createItem);
+                //return InventoryItemRequirementApplicationService.Get(outputItemId);
+            }
+        }
+
+        private static void SetCreateInventoryItemRequirementEntry(decimal outputQuantity, InventoryPRTriggeredId tid, CreateInventoryItemRequirementEntry createEntry)
+        {
+            createEntry.EntrySeqId = DateTime.Now.Ticks;//todo ??
+            createEntry.Quantity = outputQuantity;
+            createEntry.SourceEventId = tid;
+        }
+
+        // ///////////////////////////////////
 
         private InventoryPRTriggeredId GetOrCreateInventoryPRTriggered(IInventoryPostingRuleState pr, IInventoryItemEntryStateCreated iie)
         {
@@ -105,26 +185,13 @@ namespace Dddml.Wms.Domain.Listeners
             return tid;//todo If existed??
         }
 
-        private decimal GetOutputQuantitySellable(IInventoryPostingRuleState pr, IInventoryItemEntryStateCreated sourceEntry)
+        private decimal GetOutputQuantity(IInventoryPostingRuleState pr, IInventoryItemEntryStateCreated sourceEntry)
         {
             var accountName = pr.TriggerAccountName;
             decimal srcAmount = Convert.ToDecimal(ReflectUtils.GetPropertyValue(accountName, sourceEntry));
             return pr.IsOutputNegated ? -srcAmount : srcAmount;
         }
 
-        private ISellableInventoryItemState GetOrCreateSellableInventoryItem(InventoryItemId inventoryItemId)
-        {
-            var s = SellableInventoryItemApplicationService.Get(inventoryItemId);
-            if (s != null)
-            {
-                return s;
-            }
-            var createItem = new CreateSellableInventoryItem();
-            createItem.SellableInventoryItemId = inventoryItemId;
-            createItem.CommandId = Guid.NewGuid().ToString();
-            SellableInventoryItemApplicationService.When(createItem);
-            return SellableInventoryItemApplicationService.Get(inventoryItemId);//todo 优化？
-        }
 
         private InventoryItemId GetOutputInventoryItemId(IInventoryPostingRuleState pr, InventoryItemId triggerItemId)
         {
@@ -140,8 +207,10 @@ namespace Dddml.Wms.Domain.Listeners
 
         private IEnumerable<IInventoryPostingRuleState> GetPostingRules(InventoryItemId triggerItemId)
         {
-            return InventoryPostingRuleApplicationService.GetByProperty("OutputAccountName", "QuantitySellable")
-                .Where(pr =>
+            return InventoryPostingRuleApplicationService.GetByProperty("OutputAccountName", InventoryPostingRuleIds.OutputAccountNameQuantitySellable)
+                .Union(
+                    InventoryPostingRuleApplicationService.GetByProperty("OutputAccountName", InventoryPostingRuleIds.OutputAccountNameQuantityRequired)
+                ).Where(pr =>
                     (pr.TriggerInventoryItemId.ProductId == InventoryItemIds.Wildcard || pr.TriggerInventoryItemId.ProductId == triggerItemId.ProductId) &&
                     (pr.TriggerInventoryItemId.LocatorId == InventoryItemIds.Wildcard || pr.TriggerInventoryItemId.LocatorId == triggerItemId.LocatorId) &&
                     (pr.TriggerInventoryItemId.AttributeSetInstanceId == InventoryItemIds.Wildcard || pr.TriggerInventoryItemId.AttributeSetInstanceId == triggerItemId.AttributeSetInstanceId)

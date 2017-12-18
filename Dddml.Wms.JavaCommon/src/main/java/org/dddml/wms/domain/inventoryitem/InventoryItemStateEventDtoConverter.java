@@ -27,6 +27,7 @@ public class InventoryItemStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setQuantityOnHand(e.getQuantityOnHand());
+        dto.setQuantityInTransit(e.getQuantityInTransit());
         dto.setQuantityReserved(e.getQuantityReserved());
         dto.setQuantityOccupied(e.getQuantityOccupied());
         dto.setQuantityVirtual(e.getQuantityVirtual());
@@ -47,10 +48,12 @@ public class InventoryItemStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setQuantityOnHand(e.getQuantityOnHand());
+        dto.setQuantityInTransit(e.getQuantityInTransit());
         dto.setQuantityReserved(e.getQuantityReserved());
         dto.setQuantityOccupied(e.getQuantityOccupied());
         dto.setQuantityVirtual(e.getQuantityVirtual());
         dto.setIsPropertyQuantityOnHandRemoved(e.getIsPropertyQuantityOnHandRemoved());
+        dto.setIsPropertyQuantityInTransitRemoved(e.getIsPropertyQuantityInTransitRemoved());
         dto.setIsPropertyQuantityReservedRemoved(e.getIsPropertyQuantityReservedRemoved());
         dto.setIsPropertyQuantityOccupiedRemoved(e.getIsPropertyQuantityOccupiedRemoved());
         dto.setIsPropertyQuantityVirtualRemoved(e.getIsPropertyQuantityVirtualRemoved());

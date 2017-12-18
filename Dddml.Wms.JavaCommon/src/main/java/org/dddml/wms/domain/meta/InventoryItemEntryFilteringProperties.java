@@ -13,6 +13,7 @@ public final class InventoryItemEntryFilteringProperties
     public static final String[] propertyNames = new String[] {
             "entrySeqId",
             "quantityOnHand",
+            "quantityInTransit",
             "quantityReserved",
             "quantityOccupied",
             "quantityVirtual",
@@ -37,6 +38,7 @@ public final class InventoryItemEntryFilteringProperties
 
     public static final String[] propertyTypes = new String[] {
             "Long",
+            "BigDecimal",
             "BigDecimal",
             "BigDecimal",
             "BigDecimal",
@@ -76,6 +78,8 @@ public final class InventoryItemEntryFilteringProperties
         aliasMap.put("EntrySeqId", "inventoryItemEntryId.entrySeqId");
         aliasMap.put("quantityOnHand", "quantityOnHand");
         aliasMap.put("QuantityOnHand", "quantityOnHand");
+        aliasMap.put("quantityInTransit", "quantityInTransit");
+        aliasMap.put("QuantityInTransit", "quantityInTransit");
         aliasMap.put("quantityReserved", "quantityReserved");
         aliasMap.put("QuantityReserved", "quantityReserved");
         aliasMap.put("quantityOccupied", "quantityOccupied");

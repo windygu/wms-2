@@ -44,6 +44,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual decimal? QuantityOnHand { get; set; }
 
+		public virtual decimal? QuantityInTransit { get; set; }
+
 		public virtual decimal? QuantityReserved { get; set; }
 
 		public virtual decimal? QuantityOccupied { get; set; }
@@ -95,6 +97,25 @@ namespace Dddml.Wms.Domain.InventoryItem
             set 
             {
                 this.IsPropertyQuantityOnHandRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyQuantityInTransitRemoved { get; set; }
+
+        bool IInventoryItemStateMergePatched.IsPropertyQuantityInTransitRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyQuantityInTransitRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyQuantityInTransitRemoved = value;
             }
         }
 

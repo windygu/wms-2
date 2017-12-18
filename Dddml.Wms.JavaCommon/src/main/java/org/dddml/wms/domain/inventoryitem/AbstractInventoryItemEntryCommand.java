@@ -47,6 +47,18 @@ public abstract class AbstractInventoryItemEntryCommand extends AbstractCommand 
             this.quantityOnHand = quantityOnHand;
         }
 
+        private BigDecimal quantityInTransit;
+
+        public BigDecimal getQuantityInTransit()
+        {
+            return this.quantityInTransit;
+        }
+
+        public void setQuantityInTransit(BigDecimal quantityInTransit)
+        {
+            this.quantityInTransit = quantityInTransit;
+        }
+
         private BigDecimal quantityReserved;
 
         public BigDecimal getQuantityReserved()

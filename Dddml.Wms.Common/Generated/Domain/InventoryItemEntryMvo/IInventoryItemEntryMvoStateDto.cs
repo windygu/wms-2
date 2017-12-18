@@ -28,6 +28,12 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set;
         }
 
+        decimal? QuantityInTransit
+        {
+            get;
+            set;
+        }
+
         decimal? QuantityReserved
         {
             get;
@@ -60,6 +66,12 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         }
 
         decimal? InventoryItemQuantityOnHand
+        {
+            get;
+            set;
+        }
+
+        decimal? InventoryItemQuantityInTransit
         {
             get;
             set;

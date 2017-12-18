@@ -19,6 +19,18 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.quantityOnHand = quantityOnHand;
     }
 
+    private BigDecimal quantityInTransit;
+
+    public BigDecimal getQuantityInTransit()
+    {
+        return this.quantityInTransit;
+    }
+
+    public void setQuantityInTransit(BigDecimal quantityInTransit)
+    {
+        this.quantityInTransit = quantityInTransit;
+    }
+
     private BigDecimal quantityReserved;
 
     public BigDecimal getQuantityReserved()
@@ -101,6 +113,18 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
     public void setInventoryItemQuantityOnHand(BigDecimal inventoryItemQuantityOnHand)
     {
         this.inventoryItemQuantityOnHand = inventoryItemQuantityOnHand;
+    }
+
+    private BigDecimal inventoryItemQuantityInTransit;
+
+    public BigDecimal getInventoryItemQuantityInTransit()
+    {
+        return this.inventoryItemQuantityInTransit;
+    }
+
+    public void setInventoryItemQuantityInTransit(BigDecimal inventoryItemQuantityInTransit)
+    {
+        this.inventoryItemQuantityInTransit = inventoryItemQuantityInTransit;
     }
 
     private BigDecimal inventoryItemQuantityReserved;
@@ -199,6 +223,18 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.isPropertyQuantityOnHandRemoved = removed;
     }
 
+    private Boolean isPropertyQuantityInTransitRemoved;
+
+    public Boolean getIsPropertyQuantityInTransitRemoved()
+    {
+        return this.isPropertyQuantityInTransitRemoved;
+    }
+
+    public void setIsPropertyQuantityInTransitRemoved(Boolean removed)
+    {
+        this.isPropertyQuantityInTransitRemoved = removed;
+    }
+
     private Boolean isPropertyQuantityReservedRemoved;
 
     public Boolean getIsPropertyQuantityReservedRemoved()
@@ -281,6 +317,18 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
     public void setIsPropertyInventoryItemQuantityOnHandRemoved(Boolean removed)
     {
         this.isPropertyInventoryItemQuantityOnHandRemoved = removed;
+    }
+
+    private Boolean isPropertyInventoryItemQuantityInTransitRemoved;
+
+    public Boolean getIsPropertyInventoryItemQuantityInTransitRemoved()
+    {
+        return this.isPropertyInventoryItemQuantityInTransitRemoved;
+    }
+
+    public void setIsPropertyInventoryItemQuantityInTransitRemoved(Boolean removed)
+    {
+        this.isPropertyInventoryItemQuantityInTransitRemoved = removed;
     }
 
     private Boolean isPropertyInventoryItemQuantityReservedRemoved;
@@ -371,6 +419,7 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
     {
         ((AbstractInventoryItemEntryMvoCommandDto) this).copyTo(command);
         command.setQuantityOnHand(this.getQuantityOnHand());
+        command.setQuantityInTransit(this.getQuantityInTransit());
         command.setQuantityReserved(this.getQuantityReserved());
         command.setQuantityOccupied(this.getQuantityOccupied());
         command.setQuantityVirtual(this.getQuantityVirtual());
@@ -378,6 +427,7 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
         command.setInventoryItemQuantityOnHand(this.getInventoryItemQuantityOnHand());
+        command.setInventoryItemQuantityInTransit(this.getInventoryItemQuantityInTransit());
         command.setInventoryItemQuantityReserved(this.getInventoryItemQuantityReserved());
         command.setInventoryItemQuantityOccupied(this.getInventoryItemQuantityOccupied());
         command.setInventoryItemQuantityVirtual(this.getInventoryItemQuantityVirtual());
@@ -410,6 +460,7 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
     {
         copyTo((AbstractInventoryItemEntryMvoCommand.AbstractCreateOrMergePatchInventoryItemEntryMvo) command);
         command.setIsPropertyQuantityOnHandRemoved(this.getIsPropertyQuantityOnHandRemoved());
+        command.setIsPropertyQuantityInTransitRemoved(this.getIsPropertyQuantityInTransitRemoved());
         command.setIsPropertyQuantityReservedRemoved(this.getIsPropertyQuantityReservedRemoved());
         command.setIsPropertyQuantityOccupiedRemoved(this.getIsPropertyQuantityOccupiedRemoved());
         command.setIsPropertyQuantityVirtualRemoved(this.getIsPropertyQuantityVirtualRemoved());
@@ -417,6 +468,7 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
         command.setIsPropertyInventoryItemQuantityOnHandRemoved(this.getIsPropertyInventoryItemQuantityOnHandRemoved());
+        command.setIsPropertyInventoryItemQuantityInTransitRemoved(this.getIsPropertyInventoryItemQuantityInTransitRemoved());
         command.setIsPropertyInventoryItemQuantityReservedRemoved(this.getIsPropertyInventoryItemQuantityReservedRemoved());
         command.setIsPropertyInventoryItemQuantityOccupiedRemoved(this.getIsPropertyInventoryItemQuantityOccupiedRemoved());
         command.setIsPropertyInventoryItemQuantityVirtualRemoved(this.getIsPropertyInventoryItemQuantityVirtualRemoved());

@@ -18,6 +18,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		decimal QuantityOnHand { get; set; }
 
+		decimal QuantityInTransit { get; set; }
+
 		decimal QuantityReserved { get; set; }
 
 		decimal QuantityOccupied { get; set; }

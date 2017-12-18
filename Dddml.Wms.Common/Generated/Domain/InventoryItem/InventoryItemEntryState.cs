@@ -189,6 +189,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 			ThrowOnWrongEvent(e);
             this.QuantityOnHand = (e.QuantityOnHand != null && e.QuantityOnHand.HasValue) ? e.QuantityOnHand.Value : default(decimal);
 
+            this.QuantityInTransit = (e.QuantityInTransit != null && e.QuantityInTransit.HasValue) ? e.QuantityInTransit.Value : default(decimal);
+
             this.QuantityReserved = (e.QuantityReserved != null && e.QuantityReserved.HasValue) ? e.QuantityReserved.Value : default(decimal);
 
             this.QuantityOccupied = (e.QuantityOccupied != null && e.QuantityOccupied.HasValue) ? e.QuantityOccupied.Value : default(decimal);

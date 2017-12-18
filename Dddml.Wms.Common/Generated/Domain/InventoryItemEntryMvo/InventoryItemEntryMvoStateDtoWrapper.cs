@@ -99,6 +99,37 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             }
         }
 
+		public virtual decimal? QuantityInTransit
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("QuantityInTransit"))
+                {
+                    return _state.QuantityInTransit;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.QuantityInTransit = value.Value;
+                }
+            }
+        }
+
+        decimal IInventoryItemEntryMvoStateProperties.QuantityInTransit
+        {
+            get 
+            {
+                return (this._state as IInventoryItemEntryMvoStateProperties).QuantityInTransit;
+            }
+            set 
+            {
+                (this._state as IInventoryItemEntryMvoStateProperties).QuantityInTransit = value;
+            }
+        }
+
 		public virtual decimal? QuantityReserved
         {
             get
@@ -279,6 +310,37 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set 
             {
                 (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityOnHand = value;
+            }
+        }
+
+		public virtual decimal? InventoryItemQuantityInTransit
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemQuantityInTransit"))
+                {
+                    return _state.InventoryItemQuantityInTransit;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.InventoryItemQuantityInTransit = value.Value;
+                }
+            }
+        }
+
+        decimal IInventoryItemEntryMvoStateProperties.InventoryItemQuantityInTransit
+        {
+            get 
+            {
+                return (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityInTransit;
+            }
+            set 
+            {
+                (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityInTransit = value;
             }
         }
 

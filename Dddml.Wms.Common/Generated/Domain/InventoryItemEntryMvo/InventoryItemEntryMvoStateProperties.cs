@@ -19,6 +19,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		public virtual decimal QuantityOnHand { get; set; }
 
+		public virtual decimal QuantityInTransit { get; set; }
+
 		public virtual decimal QuantityReserved { get; set; }
 
 		public virtual decimal QuantityOccupied { get; set; }
@@ -30,6 +32,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		public virtual long Version { get; set; }
 
 		public virtual decimal InventoryItemQuantityOnHand { get; set; }
+
+		public virtual decimal InventoryItemQuantityInTransit { get; set; }
 
 		public virtual decimal InventoryItemQuantityReserved { get; set; }
 

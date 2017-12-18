@@ -48,6 +48,18 @@ public abstract class AbstractInventoryItemEntryState implements InventoryItemEn
         this.quantityOnHand = quantityOnHand;
     }
 
+    private BigDecimal quantityInTransit;
+
+    public BigDecimal getQuantityInTransit()
+    {
+        return this.quantityInTransit;
+    }
+
+    public void setQuantityInTransit(BigDecimal quantityInTransit)
+    {
+        this.quantityInTransit = quantityInTransit;
+    }
+
     private BigDecimal quantityReserved;
 
     public BigDecimal getQuantityReserved()
@@ -216,6 +228,7 @@ public abstract class AbstractInventoryItemEntryState implements InventoryItemEn
         throwOnWrongEvent(e);
 
         this.setQuantityOnHand(e.getQuantityOnHand());
+        this.setQuantityInTransit(e.getQuantityInTransit());
         this.setQuantityReserved(e.getQuantityReserved());
         this.setQuantityOccupied(e.getQuantityOccupied());
         this.setQuantityVirtual(e.getQuantityVirtual());

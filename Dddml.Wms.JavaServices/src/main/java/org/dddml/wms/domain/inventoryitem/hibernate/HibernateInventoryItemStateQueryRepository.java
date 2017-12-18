@@ -27,7 +27,7 @@ public class HibernateInventoryItemStateQueryRepository implements InventoryItem
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("InventoryItemId", "QuantityOnHand", "QuantityReserved", "QuantityOccupied", "QuantityVirtual", "Entries", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("InventoryItemId", "QuantityOnHand", "QuantityInTransit", "QuantityReserved", "QuantityOccupied", "QuantityVirtual", "Entries", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

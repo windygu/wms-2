@@ -45,6 +45,16 @@ public class InventoryItemStateEventDto extends AbstractStateEvent
         this.quantityOnHand = quantityOnHand;
     }
 
+    private BigDecimal quantityInTransit;
+
+    public BigDecimal getQuantityInTransit() {
+        return this.quantityInTransit;
+    }
+
+    public void setQuantityInTransit(BigDecimal quantityInTransit) {
+        this.quantityInTransit = quantityInTransit;
+    }
+
     private BigDecimal quantityReserved;
 
     public BigDecimal getQuantityReserved() {
@@ -103,6 +113,16 @@ public class InventoryItemStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyQuantityOnHandRemoved(Boolean removed) {
         this.isPropertyQuantityOnHandRemoved = removed;
+    }
+
+    private Boolean isPropertyQuantityInTransitRemoved;
+
+    public Boolean getIsPropertyQuantityInTransitRemoved() {
+        return this.isPropertyQuantityInTransitRemoved;
+    }
+
+    public void setIsPropertyQuantityInTransitRemoved(Boolean removed) {
+        this.isPropertyQuantityInTransitRemoved = removed;
     }
 
     private Boolean isPropertyQuantityReservedRemoved;

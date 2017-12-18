@@ -19,6 +19,10 @@ public interface InventoryItemEntryMvoStateEvent extends Event
 
     void setQuantityOnHand(BigDecimal quantityOnHand);
 
+    BigDecimal getQuantityInTransit();
+
+    void setQuantityInTransit(BigDecimal quantityInTransit);
+
     BigDecimal getQuantityReserved();
 
     void setQuantityReserved(BigDecimal quantityReserved);
@@ -50,6 +54,10 @@ public interface InventoryItemEntryMvoStateEvent extends Event
     BigDecimal getInventoryItemQuantityOnHand();
 
     void setInventoryItemQuantityOnHand(BigDecimal inventoryItemQuantityOnHand);
+
+    BigDecimal getInventoryItemQuantityInTransit();
+
+    void setInventoryItemQuantityInTransit(BigDecimal inventoryItemQuantityInTransit);
 
     BigDecimal getInventoryItemQuantityReserved();
 
@@ -95,6 +103,10 @@ public interface InventoryItemEntryMvoStateEvent extends Event
 
         void setIsPropertyQuantityOnHandRemoved(Boolean removed);
 
+        Boolean getIsPropertyQuantityInTransitRemoved();
+
+        void setIsPropertyQuantityInTransitRemoved(Boolean removed);
+
         Boolean getIsPropertyQuantityReservedRemoved();
 
         void setIsPropertyQuantityReservedRemoved(Boolean removed);
@@ -118,6 +130,10 @@ public interface InventoryItemEntryMvoStateEvent extends Event
         Boolean getIsPropertyInventoryItemQuantityOnHandRemoved();
 
         void setIsPropertyInventoryItemQuantityOnHandRemoved(Boolean removed);
+
+        Boolean getIsPropertyInventoryItemQuantityInTransitRemoved();
+
+        void setIsPropertyInventoryItemQuantityInTransitRemoved(Boolean removed);
 
         Boolean getIsPropertyInventoryItemQuantityReservedRemoved();
 

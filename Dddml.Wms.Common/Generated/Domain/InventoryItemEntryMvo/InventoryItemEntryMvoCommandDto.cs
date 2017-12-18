@@ -56,6 +56,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		public virtual decimal? QuantityOnHand { get; set; }
 
+		public virtual decimal? QuantityInTransit { get; set; }
+
 		public virtual decimal? QuantityReserved { get; set; }
 
 		public virtual decimal? QuantityOccupied { get; set; }
@@ -82,6 +84,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		public virtual bool? Active { get; set; }
 
 		public virtual decimal? InventoryItemQuantityOnHand { get; set; }
+
+		public virtual decimal? InventoryItemQuantityInTransit { get; set; }
 
 		public virtual decimal? InventoryItemQuantityReserved { get; set; }
 
@@ -126,6 +130,25 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set
             {
                 this.IsPropertyQuantityOnHandRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyQuantityInTransitRemoved { get; set; }
+
+        bool IMergePatchInventoryItemEntryMvo.IsPropertyQuantityInTransitRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyQuantityInTransitRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyQuantityInTransitRemoved = value;
             }
         }
 
@@ -259,6 +282,25 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set
             {
                 this.IsPropertyInventoryItemQuantityOnHandRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyInventoryItemQuantityInTransitRemoved { get; set; }
+
+        bool IMergePatchInventoryItemEntryMvo.IsPropertyInventoryItemQuantityInTransitRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyInventoryItemQuantityInTransitRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyInventoryItemQuantityInTransitRemoved = value;
             }
         }
 

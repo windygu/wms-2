@@ -12,6 +12,7 @@ public final class InventoryItemEntryMvoFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "quantityOnHand",
+            "quantityInTransit",
             "quantityReserved",
             "quantityOccupied",
             "quantityVirtual",
@@ -23,6 +24,7 @@ public final class InventoryItemEntryMvoFilteringProperties
             "active",
             "deleted",
             "inventoryItemQuantityOnHand",
+            "inventoryItemQuantityInTransit",
             "inventoryItemQuantityReserved",
             "inventoryItemQuantityOccupied",
             "inventoryItemQuantityVirtual",
@@ -45,6 +47,7 @@ public final class InventoryItemEntryMvoFilteringProperties
             "BigDecimal",
             "BigDecimal",
             "BigDecimal",
+            "BigDecimal",
             "Long",
             "String",
             "Date",
@@ -52,6 +55,7 @@ public final class InventoryItemEntryMvoFilteringProperties
             "Date",
             "Boolean",
             "Boolean",
+            "BigDecimal",
             "BigDecimal",
             "BigDecimal",
             "BigDecimal",
@@ -84,6 +88,8 @@ public final class InventoryItemEntryMvoFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("quantityOnHand", "quantityOnHand");
         aliasMap.put("QuantityOnHand", "quantityOnHand");
+        aliasMap.put("quantityInTransit", "quantityInTransit");
+        aliasMap.put("QuantityInTransit", "quantityInTransit");
         aliasMap.put("quantityReserved", "quantityReserved");
         aliasMap.put("QuantityReserved", "quantityReserved");
         aliasMap.put("quantityOccupied", "quantityOccupied");
@@ -106,6 +112,8 @@ public final class InventoryItemEntryMvoFilteringProperties
         aliasMap.put("Deleted", "deleted");
         aliasMap.put("inventoryItemQuantityOnHand", "inventoryItemQuantityOnHand");
         aliasMap.put("InventoryItemQuantityOnHand", "inventoryItemQuantityOnHand");
+        aliasMap.put("inventoryItemQuantityInTransit", "inventoryItemQuantityInTransit");
+        aliasMap.put("InventoryItemQuantityInTransit", "inventoryItemQuantityInTransit");
         aliasMap.put("inventoryItemQuantityReserved", "inventoryItemQuantityReserved");
         aliasMap.put("InventoryItemQuantityReserved", "inventoryItemQuantityReserved");
         aliasMap.put("inventoryItemQuantityOccupied", "inventoryItemQuantityOccupied");

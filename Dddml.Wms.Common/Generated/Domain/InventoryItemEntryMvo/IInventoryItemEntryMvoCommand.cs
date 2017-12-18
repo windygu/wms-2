@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		decimal? QuantityOnHand { get; set; }
 
+		decimal? QuantityInTransit { get; set; }
+
 		decimal? QuantityReserved { get; set; }
 
 		decimal? QuantityOccupied { get; set; }
@@ -39,6 +41,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		bool? Active { get; set; }
 
 		decimal? InventoryItemQuantityOnHand { get; set; }
+
+		decimal? InventoryItemQuantityInTransit { get; set; }
 
 		decimal? InventoryItemQuantityReserved { get; set; }
 
@@ -66,6 +70,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		bool IsPropertyQuantityOnHandRemoved { get; set; }
 
+		bool IsPropertyQuantityInTransitRemoved { get; set; }
+
 		bool IsPropertyQuantityReservedRemoved { get; set; }
 
 		bool IsPropertyQuantityOccupiedRemoved { get; set; }
@@ -79,6 +85,8 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		bool IsPropertyActiveRemoved { get; set; }
 
 		bool IsPropertyInventoryItemQuantityOnHandRemoved { get; set; }
+
+		bool IsPropertyInventoryItemQuantityInTransitRemoved { get; set; }
 
 		bool IsPropertyInventoryItemQuantityReservedRemoved { get; set; }
 

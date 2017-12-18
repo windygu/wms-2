@@ -74,6 +74,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "QuantityInTransit",
+                    Type = typeof(decimal),
+                    TypeName = "decimal",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "QuantityReserved",
                     Type = typeof(decimal),
                     TypeName = "decimal",
@@ -498,6 +527,8 @@ namespace Dddml.Wms.Domain.Metadata
             var d = new Dictionary<string, string>();
             d.Add("QuantityOnHand", "QuantityOnHand");
             d.Add("quantityOnHand", "QuantityOnHand");
+            d.Add("QuantityInTransit", "QuantityInTransit");
+            d.Add("quantityInTransit", "QuantityInTransit");
             d.Add("QuantityReserved", "QuantityReserved");
             d.Add("quantityReserved", "QuantityReserved");
             d.Add("QuantityOccupied", "QuantityOccupied");

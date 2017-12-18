@@ -59,6 +59,16 @@ public abstract class AbstractInventoryItemEntryStateEvent extends AbstractState
         this.state.setQuantityOnHand(quantityOnHand);
     }
 
+    public BigDecimal getQuantityInTransit()
+    {
+        return this.state.getQuantityInTransit();
+    }
+
+    public void setQuantityInTransit(BigDecimal quantityInTransit)
+    {
+        this.state.setQuantityInTransit(quantityInTransit);
+    }
+
     public BigDecimal getQuantityReserved()
     {
         return this.state.getQuantityReserved();

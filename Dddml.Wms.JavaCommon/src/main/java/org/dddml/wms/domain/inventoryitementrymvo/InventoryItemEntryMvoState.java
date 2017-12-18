@@ -22,6 +22,10 @@ public interface InventoryItemEntryMvoState
 
     void setQuantityOnHand(BigDecimal quantityOnHand);
 
+    BigDecimal getQuantityInTransit();
+
+    void setQuantityInTransit(BigDecimal quantityInTransit);
+
     BigDecimal getQuantityReserved();
 
     void setQuantityReserved(BigDecimal quantityReserved);
@@ -61,6 +65,10 @@ public interface InventoryItemEntryMvoState
     BigDecimal getInventoryItemQuantityOnHand();
 
     void setInventoryItemQuantityOnHand(BigDecimal inventoryItemQuantityOnHand);
+
+    BigDecimal getInventoryItemQuantityInTransit();
+
+    void setInventoryItemQuantityInTransit(BigDecimal inventoryItemQuantityInTransit);
 
     BigDecimal getInventoryItemQuantityReserved();
 

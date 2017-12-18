@@ -25,6 +25,7 @@ public class InventoryItemEntryStateEventDtoConverter {
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
         dto.setQuantityOnHand(e.getQuantityOnHand());
+        dto.setQuantityInTransit(e.getQuantityInTransit());
         dto.setQuantityReserved(e.getQuantityReserved());
         dto.setQuantityOccupied(e.getQuantityOccupied());
         dto.setQuantityVirtual(e.getQuantityVirtual());

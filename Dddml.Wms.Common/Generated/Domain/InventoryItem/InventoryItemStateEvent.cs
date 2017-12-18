@@ -25,6 +25,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual decimal? QuantityOnHand { get; set; }
 
+		public virtual decimal? QuantityInTransit { get; set; }
+
 		public virtual decimal? QuantityReserved { get; set; }
 
 		public virtual decimal? QuantityOccupied { get; set; }
@@ -203,6 +205,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 	public class InventoryItemStateMergePatched : InventoryItemStateEventBase, IInventoryItemStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyQuantityOnHandRemoved { get; set; }
+
+		public virtual bool IsPropertyQuantityInTransitRemoved { get; set; }
 
 		public virtual bool IsPropertyQuantityReservedRemoved { get; set; }
 

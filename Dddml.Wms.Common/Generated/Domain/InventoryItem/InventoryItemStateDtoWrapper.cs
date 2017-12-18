@@ -98,6 +98,37 @@ namespace Dddml.Wms.Domain.InventoryItem
             }
         }
 
+		public virtual decimal? QuantityInTransit
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("QuantityInTransit"))
+                {
+                    return _state.QuantityInTransit;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.QuantityInTransit = value.Value;
+                }
+            }
+        }
+
+        decimal IInventoryItemStateProperties.QuantityInTransit
+        {
+            get 
+            {
+                return (this._state as IInventoryItemStateProperties).QuantityInTransit;
+            }
+            set 
+            {
+                (this._state as IInventoryItemStateProperties).QuantityInTransit = value;
+            }
+        }
+
 		public virtual decimal? QuantityReserved
         {
             get

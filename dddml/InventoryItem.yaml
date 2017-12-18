@@ -16,6 +16,8 @@ aggregates:
       
         QuantityOnHand:
           type: decimal
+        QuantityInTransit:
+          type: decimal
         QuantityReserved:
           type: decimal
         QuantityOccupied:
@@ -45,6 +47,8 @@ aggregates:
           
             QuantityOnHand:
               type: decimal
+            QuantityInTransit:
+              type: decimal
             QuantityReserved:
               type: decimal
             QuantityOccupied:
@@ -64,6 +68,9 @@ aggregates:
         QuantityOnHand:
           entryEntityName: "InventoryItemEntry"
           entryAmountPropertyName: "QuantityOnHand"
+        QuantityInTransit:
+          entryEntityName: "InventoryItemEntry"
+          entryAmountPropertyName: "QuantityInTransit"
         QuantityReserved:
           entryEntityName: "InventoryItemEntry"
           entryAmountPropertyName: "QuantityReserved"

@@ -18,6 +18,7 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="quantityOnHand" ></property>
+	<property name="quantityInTransit" ></property>
 	<property name="quantityReserved" ></property>
 	<property name="quantityOccupied" ></property>
 	<property name="quantityVirtual" ></property>
@@ -35,6 +36,8 @@
     <subclass name="AbstractInventoryItemStateEvent$SimpleInventoryItemStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertyQuantityOnHandRemoved" column="IsPropertyQuantityOnHandRemoved"/>
+
+        <property name="isPropertyQuantityInTransitRemoved" column="IsPropertyQuantityInTransitRemoved"/>
 
         <property name="isPropertyQuantityReservedRemoved" column="IsPropertyQuantityReservedRemoved"/>
 

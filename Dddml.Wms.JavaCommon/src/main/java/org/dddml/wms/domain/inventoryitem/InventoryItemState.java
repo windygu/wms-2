@@ -21,6 +21,10 @@ public interface InventoryItemState
 
     void setQuantityOnHand(BigDecimal quantityOnHand);
 
+    BigDecimal getQuantityInTransit();
+
+    void setQuantityInTransit(BigDecimal quantityInTransit);
+
     BigDecimal getQuantityReserved();
 
     void setQuantityReserved(BigDecimal quantityReserved);

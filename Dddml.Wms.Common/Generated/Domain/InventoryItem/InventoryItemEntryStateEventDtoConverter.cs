@@ -34,6 +34,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
             dto.QuantityOnHand = e.QuantityOnHand;
+            dto.QuantityInTransit = e.QuantityInTransit;
             dto.QuantityReserved = e.QuantityReserved;
             dto.QuantityOccupied = e.QuantityOccupied;
             dto.QuantityVirtual = e.QuantityVirtual;

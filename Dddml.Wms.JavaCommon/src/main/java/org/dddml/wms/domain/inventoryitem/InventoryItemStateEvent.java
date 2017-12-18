@@ -18,6 +18,10 @@ public interface InventoryItemStateEvent extends Event
 
     void setQuantityOnHand(BigDecimal quantityOnHand);
 
+    BigDecimal getQuantityInTransit();
+
+    void setQuantityInTransit(BigDecimal quantityInTransit);
+
     BigDecimal getQuantityReserved();
 
     void setQuantityReserved(BigDecimal quantityReserved);
@@ -59,6 +63,10 @@ public interface InventoryItemStateEvent extends Event
         Boolean getIsPropertyQuantityOnHandRemoved();
 
         void setIsPropertyQuantityOnHandRemoved(Boolean removed);
+
+        Boolean getIsPropertyQuantityInTransitRemoved();
+
+        void setIsPropertyQuantityInTransitRemoved(Boolean removed);
 
         Boolean getIsPropertyQuantityReservedRemoved();
 

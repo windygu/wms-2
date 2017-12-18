@@ -15,6 +15,7 @@
     <property name="InventoryPostingRuleApplicationService" ref="inventoryPostingRuleApplicationService"/>
     <property name="InventoryPRTriggeredApplicationService" ref="inventoryPRTriggeredApplicationService"/>
     <property name="SellableInventoryItemApplicationService" ref="sellableInventoryItemApplicationService"/>
+    <property name="InventoryItemRequirementApplicationService" ref="inventoryItemRequirementApplicationService"/>
   </object>
   
 </objects>

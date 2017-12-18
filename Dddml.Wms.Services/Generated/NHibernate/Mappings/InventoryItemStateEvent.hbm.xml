@@ -14,6 +14,7 @@
     <discriminator column="StateEventType" type="String" />
 
     <property name="QuantityOnHand" ></property>
+    <property name="QuantityInTransit" ></property>
     <property name="QuantityReserved" ></property>
     <property name="QuantityOccupied" ></property>
     <property name="QuantityVirtual" ></property>
@@ -30,6 +31,8 @@
 
 
         <property name="IsPropertyQuantityOnHandRemoved" column="IsPropertyQuantityOnHandRemoved"/>
+
+        <property name="IsPropertyQuantityInTransitRemoved" column="IsPropertyQuantityInTransitRemoved"/>
 
         <property name="IsPropertyQuantityReservedRemoved" column="IsPropertyQuantityReservedRemoved"/>
 

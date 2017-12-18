@@ -35,6 +35,18 @@ public class InventoryItemEntryMvoStateDto
         this.quantityOnHand = quantityOnHand;
     }
 
+    private BigDecimal quantityInTransit;
+
+    public BigDecimal getQuantityInTransit()
+    {
+        return this.quantityInTransit;
+    }
+
+    public void setQuantityInTransit(BigDecimal quantityInTransit)
+    {
+        this.quantityInTransit = quantityInTransit;
+    }
+
     private BigDecimal quantityReserved;
 
     public BigDecimal getQuantityReserved()
@@ -105,6 +117,18 @@ public class InventoryItemEntryMvoStateDto
     public void setInventoryItemQuantityOnHand(BigDecimal inventoryItemQuantityOnHand)
     {
         this.inventoryItemQuantityOnHand = inventoryItemQuantityOnHand;
+    }
+
+    private BigDecimal inventoryItemQuantityInTransit;
+
+    public BigDecimal getInventoryItemQuantityInTransit()
+    {
+        return this.inventoryItemQuantityInTransit;
+    }
+
+    public void setInventoryItemQuantityInTransit(BigDecimal inventoryItemQuantityInTransit)
+    {
+        this.inventoryItemQuantityInTransit = inventoryItemQuantityInTransit;
     }
 
     private BigDecimal inventoryItemQuantityReserved;
@@ -283,6 +307,9 @@ public class InventoryItemEntryMvoStateDto
             if (returnedFieldsContains("QuantityOnHand")) {
                 dto.setQuantityOnHand(state.getQuantityOnHand());
             }
+            if (returnedFieldsContains("QuantityInTransit")) {
+                dto.setQuantityInTransit(state.getQuantityInTransit());
+            }
             if (returnedFieldsContains("QuantityReserved")) {
                 dto.setQuantityReserved(state.getQuantityReserved());
             }
@@ -300,6 +327,9 @@ public class InventoryItemEntryMvoStateDto
             }
             if (returnedFieldsContains("InventoryItemQuantityOnHand")) {
                 dto.setInventoryItemQuantityOnHand(state.getInventoryItemQuantityOnHand());
+            }
+            if (returnedFieldsContains("InventoryItemQuantityInTransit")) {
+                dto.setInventoryItemQuantityInTransit(state.getInventoryItemQuantityInTransit());
             }
             if (returnedFieldsContains("InventoryItemQuantityReserved")) {
                 dto.setInventoryItemQuantityReserved(state.getInventoryItemQuantityReserved());

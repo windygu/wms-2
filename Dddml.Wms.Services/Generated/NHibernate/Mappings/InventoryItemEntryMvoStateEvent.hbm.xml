@@ -15,6 +15,7 @@
     <discriminator column="StateEventType" type="String" />
 
     <property name="QuantityOnHand" ></property>
+    <property name="QuantityInTransit" ></property>
     <property name="QuantityReserved" ></property>
     <property name="QuantityOccupied" ></property>
     <property name="QuantityVirtual" ></property>
@@ -25,6 +26,7 @@
     </component>
     <property name="Version" ></property>
     <property name="InventoryItemQuantityOnHand" ></property>
+    <property name="InventoryItemQuantityInTransit" ></property>
     <property name="InventoryItemQuantityReserved" ></property>
     <property name="InventoryItemQuantityOccupied" ></property>
     <property name="InventoryItemQuantityVirtual" ></property>
@@ -46,6 +48,8 @@
 
         <property name="IsPropertyQuantityOnHandRemoved" column="IsPropertyQuantityOnHandRemoved"/>
 
+        <property name="IsPropertyQuantityInTransitRemoved" column="IsPropertyQuantityInTransitRemoved"/>
+
         <property name="IsPropertyQuantityReservedRemoved" column="IsPropertyQuantityReservedRemoved"/>
 
         <property name="IsPropertyQuantityOccupiedRemoved" column="IsPropertyQuantityOccupiedRemoved"/>
@@ -57,6 +61,8 @@
         <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 
         <property name="IsPropertyInventoryItemQuantityOnHandRemoved" column="IsPropertyInventoryItemQuantityOnHandRemoved"/>
+
+        <property name="IsPropertyInventoryItemQuantityInTransitRemoved" column="IsPropertyInventoryItemQuantityInTransitRemoved"/>
 
         <property name="IsPropertyInventoryItemQuantityReservedRemoved" column="IsPropertyInventoryItemQuantityReservedRemoved"/>
 

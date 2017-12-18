@@ -26,6 +26,12 @@ namespace Dddml.Wms.Domain.InventoryItem
             set;
         }
 
+        decimal? QuantityInTransit
+        {
+            get;
+            set;
+        }
+
         decimal? QuantityReserved
         {
             get;
