@@ -26,16 +26,16 @@ namespace Dddml.Wms.Domain
             // TODO StateMachine 类库需要一个 StateMachineBuilder，避免重复配置。
             var tm = new StateMachine<string, string>(stateAccessor, stateMutator);
 
-            tm.Configure(DocumentStatus.Initial)
-                .Permit(DocumentAction.Draft, DocumentStatus.Drafted);
+            tm.Configure(DocumentStatusIds.Initial)
+                .Permit(DocumentAction.Draft, DocumentStatusIds.Drafted);
 
-            tm.Configure(DocumentStatus.Drafted)
-                .Permit(DocumentAction.Complete, DocumentStatus.Completed)
-                .Permit(DocumentAction.Void, DocumentStatus.Voided);
+            tm.Configure(DocumentStatusIds.Drafted)
+                .Permit(DocumentAction.Complete, DocumentStatusIds.Completed)
+                .Permit(DocumentAction.Void, DocumentStatusIds.Voided);
 
-            tm.Configure(DocumentStatus.Completed)
-                .Permit(DocumentAction.Close, DocumentStatus.Closed)
-                .Permit(DocumentAction.Reverse, DocumentStatus.Reversed);
+            tm.Configure(DocumentStatusIds.Completed)
+                .Permit(DocumentAction.Close, DocumentStatusIds.Closed)
+                .Permit(DocumentAction.Reverse, DocumentStatusIds.Reversed);
             return tm;
         }
 
@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain
             if (command.OuterCommandType == CommandType.Create)
             {
                 if (String.IsNullOrWhiteSpace(currentState))
-                { currentState = DocumentStatus.Initial; }
+                { currentState = DocumentStatusIds.Initial; }
                 if (trigger == null)
                 { trigger = DocumentAction.Draft; }
             }

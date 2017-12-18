@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dddml.Wms.Domain
 {
-    public static class DocumentStatus
+    public static class DocumentStatusIds
     {
 
         public const string Initial = "";

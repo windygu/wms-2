@@ -24,11 +24,11 @@ public class InOutDocumentActionCommandHandler implements PropertyCommandHandler
     {
         documentStatusStateMachineBuilder
                 = StateMachineBuilderFactory.create(DocumentStatusStateMachine.class, String.class,String.class, Object.class);
-        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatus.INITIAL).to(DocumentStatus.DRAFTED).on(DocumentActionName.DRAFT);
-        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatus.DRAFTED).to(DocumentStatus.COMPLETED).on(DocumentActionName.COMPLETE);
-        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatus.DRAFTED).to(DocumentStatus.VOIDED).on(DocumentActionName.VOID);
-        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatus.COMPLETED).to(DocumentStatus.CLOSED).on(DocumentActionName.CLOSE);
-        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatus.COMPLETED).to(DocumentStatus.REVERSED).on(DocumentActionName.REVERSE);
+        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.INITIAL).to(DocumentStatusIds.DRAFTED).on(DocumentActionName.DRAFT);
+        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.DRAFTED).to(DocumentStatusIds.COMPLETED).on(DocumentActionName.COMPLETE);
+        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.DRAFTED).to(DocumentStatusIds.VOIDED).on(DocumentActionName.VOID);
+        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.COMPLETED).to(DocumentStatusIds.CLOSED).on(DocumentActionName.CLOSE);
+        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.COMPLETED).to(DocumentStatusIds.REVERSED).on(DocumentActionName.REVERSE);
 
     }
 
@@ -40,7 +40,7 @@ public class InOutDocumentActionCommandHandler implements PropertyCommandHandler
 
         if (command.getOuterCommandType().equals(CommandType.CREATE)) {
             if (currentState == null || currentState.trim().equals("")) {
-                currentState = DocumentStatus.INITIAL;
+                currentState = DocumentStatusIds.INITIAL;
             }
             if (trigger == null) {
                 trigger = DocumentActionName.DRAFT;

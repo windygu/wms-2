@@ -1,8 +1,8 @@
 package org.dddml.wms.domain;
 
-public final class DocumentStatus
+public final class DocumentStatusIds
 {
-    private DocumentStatus() {}
+    private DocumentStatusIds() {}
 
     public static final String INITIAL = "INITIAL";
 
