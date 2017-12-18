@@ -39,8 +39,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/InventoryItemState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryItemStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryItemEntryState.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemState.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InventoryItemRequirementState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InventoryItemRequirementEntryState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPostingRuleState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPostingRuleStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPRTriggeredState.hbm.xml"/>
@@ -63,6 +63,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryMemberState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryMemberStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentItemState.hbm.xml"/>
@@ -88,10 +90,12 @@
         <mapping resource="org/dddml/wms/domain/hbm/InOutLineMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryItemEntryMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryItemEntryMvoStateEvent.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryMvoState.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryMvoStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InventoryItemRequirementEntryMvoState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InventoryItemRequirementEntryMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemMvoStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryMvoState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentItemMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentItemMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldMvoState.hbm.xml"/>

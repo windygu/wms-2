@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.InventoryItemRequirementEntryMvo">
+  
+  <class name="InventoryItemRequirementEntryMvoStateEventBase" table="InventoryItemRequirementEntryMvoStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.InventoryItemRequirementEntryMvo.InventoryItemRequirementEntryMvoStateEventId">
+        <key-property name="InventoryItemRequirementEntryIdInventoryItemRequirementIdProductId" ><column name="ProductId" /></key-property>
+        <key-property name="InventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId" ><column name="LocatorId" /></key-property>
+        <key-property name="InventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+        <key-property name="InventoryItemRequirementEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
+        <key-property name="InventoryItemRequirementVersion" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="Quantity" ></property>
+    <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId" unique="true">
+        <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
+        <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
+        <property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" /></property>
+        <property name="SourceEntryIdEntrySeqId" ><column name="SrcEventEntrySeqId" /></property>
+        <property name="InventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" /></property>
+    </component>
+    <property name="Version" ></property>
+    <property name="InventoryItemRequirementQuantity" ></property>
+    <property name="InventoryItemRequirementCreatedBy" ></property>
+    <property name="InventoryItemRequirementCreatedAt" ></property>
+    <property name="InventoryItemRequirementUpdatedBy" ></property>
+    <property name="InventoryItemRequirementUpdatedAt" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="InventoryItemRequirementEntryMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="InventoryItemRequirementEntryMvoStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
+
+        <property name="IsPropertySourceEventIdRemoved" column="IsPropertySourceEventIdRemoved"/>
+
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="IsPropertyInventoryItemRequirementQuantityRemoved" column="IsPropertyInventoryItemRequirementQuantityRemoved"/>
+
+        <property name="IsPropertyInventoryItemRequirementCreatedByRemoved" column="IsPropertyInventoryItemRequirementCreatedByRemoved"/>
+
+        <property name="IsPropertyInventoryItemRequirementCreatedAtRemoved" column="IsPropertyInventoryItemRequirementCreatedAtRemoved"/>
+
+        <property name="IsPropertyInventoryItemRequirementUpdatedByRemoved" column="IsPropertyInventoryItemRequirementUpdatedByRemoved"/>
+
+        <property name="IsPropertyInventoryItemRequirementUpdatedAtRemoved" column="IsPropertyInventoryItemRequirementUpdatedAtRemoved"/>
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

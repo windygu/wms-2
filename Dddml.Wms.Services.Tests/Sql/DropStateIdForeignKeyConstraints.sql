@@ -44,10 +44,10 @@ deallocate prepare stmt;
 
 set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
             CONSTRAINT_SCHEMA = DATABASE() AND
-            TABLE_NAME        = 'SellableInventoryItemEntries' AND
-            CONSTRAINT_NAME   = 'FK_SellableInventoryItemEntry_SellableInventoryItem_StateId' AND
-            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE SellableInventoryItemEntries
-            drop foreign key FK_SellableInventoryItemEntry_SellableInventoryItem_StateId','select 1');
+            TABLE_NAME        = 'InventoryItemRequirementEntries' AND
+            CONSTRAINT_NAME   = 'FK_InventoryItemRequirementEntry_InventoryItemRequirement_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE InventoryItemRequirementEntries
+            drop foreign key FK_InventoryItemRequirementEntry_InventoryItemRequirement_StateId','select 1');
 
 prepare stmt from @var;
 execute stmt;
@@ -59,6 +59,17 @@ set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
             CONSTRAINT_NAME   = 'FK_OrderItem_Order_StateId' AND
             CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE OrderItems
             drop foreign key FK_OrderItem_Order_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'SellableInventoryItemEntries' AND
+            CONSTRAINT_NAME   = 'FK_SellableInventoryItemEntry_SellableInventoryItem_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE SellableInventoryItemEntries
+            drop foreign key FK_SellableInventoryItemEntry_SellableInventoryItem_StateId','select 1');
 
 prepare stmt from @var;
 execute stmt;

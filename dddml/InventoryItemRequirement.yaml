@@ -1,0 +1,55 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+              
+    # --------------- aggregate ---------------
+    InventoryItemRequirement:
+      id: 
+        name: InventoryItemRequirementId
+        type: InventoryItemId
+        
+      properties:
+        Quantity:
+          type: decimal
+        Entries:
+          itemType: InventoryItemRequirementEntry
+          
+      reservedProperties:
+        noActive: true
+        noDeleted: true
+        
+      entities:
+        InventoryItemRequirementEntry:
+          immutable: True
+          id:
+            name: EntrySeqId
+            type: long
+            columnName: EntrySeqId
+          properties:
+            Quantity:
+              type: decimal
+            SourceEventId:
+              type: InventoryPRTriggeredId
+              referenceType: InventoryPRTriggered
+              notNull: true
+              columnNamePrefix: "SrcEvent"
+          reservedProperties:
+            noActive: true
+          # ------------------------------
+          uniqueConstraints:
+            UniqueInventoryPRTriggeredId: [SourceEventId]
+          # ------------------------------
+      
+      accounts:
+        Quantity:
+          entryEntityName: "InventoryItemRequirementEntry"
+          entryAmountPropertyName: "Quantity"
+          
+      metadata:
+        NoEventSourcing: true
+            
+
+            

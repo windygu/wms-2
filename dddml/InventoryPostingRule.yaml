@@ -1,0 +1,28 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+              
+    # --------------- aggregate ---------------
+    InventoryPostingRule:
+      id:
+        name: InventoryPostingRuleId
+        type: string
+      properties:
+        TriggerInventoryItemId:
+          type: InventoryItemId
+          columnNamePrefix: "Trigger"
+        OutputInventoryItemId:
+          type: InventoryItemId
+          columnNamePrefix: "Output"
+        TriggerAccountName:
+          type: string
+        OutputAccountName:
+          type: string
+        # 输出的数量是否需要“取反”  
+        IsOutputNegated:
+          type: bool
+          
+          

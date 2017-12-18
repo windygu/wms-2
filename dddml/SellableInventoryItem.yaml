@@ -1,0 +1,55 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+              
+    # --------------- aggregate ---------------
+    SellableInventoryItem:
+      id: 
+        name: SellableInventoryItemId
+        type: InventoryItemId
+        
+      properties:
+        QuantitySellable:
+          type: decimal
+        Entries:
+          itemType: SellableInventoryItemEntry
+          
+      reservedProperties:
+        noActive: true
+        noDeleted: true
+        
+      entities:
+        SellableInventoryItemEntry:
+          immutable: True
+          id:
+            name: EntrySeqId
+            type: long
+            columnName: EntrySeqId
+          properties:
+            QuantitySellable:
+              type: decimal
+            SourceEventId:
+              type: InventoryPRTriggeredId
+              referenceType: InventoryPRTriggered
+              notNull: true
+              columnNamePrefix: "SrcEvent"
+          reservedProperties:
+            noActive: true
+          # ------------------------------
+          uniqueConstraints:
+            UniqueInventoryPRTriggeredId: [SourceEventId]
+          # ------------------------------
+      
+      accounts:
+        QuantitySellable:
+          entryEntityName: "SellableInventoryItemEntry"
+          entryAmountPropertyName: "QuantitySellable"
+          
+      metadata:
+        NoEventSourcing: true
+            
+
+            

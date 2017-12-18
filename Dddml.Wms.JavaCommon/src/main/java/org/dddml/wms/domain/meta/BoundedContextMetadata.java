@@ -29,8 +29,8 @@ public class BoundedContextMetadata {
         map.put("InOutLine", "InOut");
         map.put("InventoryItem", "InventoryItem");
         map.put("InventoryItemEntry", "InventoryItem");
-        map.put("SellableInventoryItem", "SellableInventoryItem");
-        map.put("SellableInventoryItemEntry", "SellableInventoryItem");
+        map.put("InventoryItemRequirement", "InventoryItemRequirement");
+        map.put("InventoryItemRequirementEntry", "InventoryItemRequirement");
         map.put("InventoryPostingRule", "InventoryPostingRule");
         map.put("InventoryPRTriggered", "InventoryPRTriggered");
         map.put("MovementType", "MovementType");
@@ -43,6 +43,8 @@ public class BoundedContextMetadata {
         map.put("Product", "Product");
         map.put("ProductCategory", "ProductCategory");
         map.put("ProductCategoryMember", "ProductCategoryMember");
+        map.put("SellableInventoryItem", "SellableInventoryItem");
+        map.put("SellableInventoryItemEntry", "SellableInventoryItem");
         map.put("Shipment", "Shipment");
         map.put("ShipmentItem", "Shipment");
         map.put("ShipmentType", "ShipmentType");
@@ -57,8 +59,9 @@ public class BoundedContextMetadata {
         map.put("AttributeUseMvo", "AttributeUseMvo");
         map.put("InOutLineMvo", "InOutLineMvo");
         map.put("InventoryItemEntryMvo", "InventoryItemEntryMvo");
-        map.put("SellableInventoryItemEntryMvo", "SellableInventoryItemEntryMvo");
+        map.put("InventoryItemRequirementEntryMvo", "InventoryItemRequirementEntryMvo");
         map.put("OrderItemMvo", "OrderItemMvo");
+        map.put("SellableInventoryItemEntryMvo", "SellableInventoryItemEntryMvo");
         map.put("ShipmentItemMvo", "ShipmentItemMvo");
         map.put("AttributeSetInstanceExtensionFieldMvo", "AttributeSetInstanceExtensionFieldMvo");
         

@@ -1378,6 +1378,267 @@
     <Compile Include="Generated\Domain\InventoryItemEntryMvo\InventoryItemEntryMvoStateProperties.cs">
       <DependentUpon>GenerateInventoryItemEntryMvoDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\IInventoryItemRequirementEntryMvoAggregate.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\IInventoryItemRequirementEntryMvoApplicationService.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\IInventoryItemRequirementEntryMvoApplicationServiceFactory.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\IInventoryItemRequirementEntryMvoCommand.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\IInventoryItemRequirementEntryMvoState.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\IInventoryItemRequirementEntryMvoStateDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\IInventoryItemRequirementEntryMvoStateEvent.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\IInventoryItemRequirementEntryMvoStateProperties.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\IInventoryItemRequirementEntryMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\IInventoryItemRequirementEntryMvoStateRepository.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoAggregate.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoApplicationServiceBase.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoApplicationServiceFactory.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoCommand.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoCommandDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoState.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateDtoExtension.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateDtoWrapper.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateEvent.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateEventDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateEventDtoConverter.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateEventId.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateEventIdDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateExtension.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateInterfaceExtension.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoStateProperties.cs">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementAggregate.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementApplicationService.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementApplicationServiceFactory.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementCommand.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementEntryCommand.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementEntryState.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementEntryStateDao.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementEntryStateDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementEntryStateEvent.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementEntryStateEventDao.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementEntryStateProperties.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementEntryStates.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementState.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementStateDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementStateEvent.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementStateProperties.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementStateQueryRepository.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\IInventoryItemRequirementStateRepository.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementAggregate.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementApplicationServiceBase.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementApplicationServiceFactory.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementCommand.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementCommandDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryCommand.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryCommandDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryId.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryIdDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryIdDtoWrapper.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryIdFlattenedDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryState.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateDtoExtension.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateDtoWrapper.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateEvent.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateEventDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateEventDtoConverter.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateEventId.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateEventIdDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateExtension.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateInterfaceExtension.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStateProperties.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryStates.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementState.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateDtoExtension.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateDtoWrapper.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateEvent.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateEventDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateEventDtoConverter.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateEventId.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateEventIdDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateExtension.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateInterfaceExtension.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementStateProperties.cs">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\InventoryItem\IInventoryItemAggregate.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
@@ -1907,6 +2168,15 @@
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\InventoryItemMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\InventoryItemRequirementEntryMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\InventoryItemRequirementEntryMvoMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\InventoryItemRequirementMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\InventoryPostingRuleMetadata.cs">
@@ -3930,6 +4200,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInventoryItemEntryMvoDomain.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\InventoryItemRequirementEntryMvo\GenerateInventoryItemRequirementEntryMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\InventoryItemRequirement\GenerateInventoryItemRequirementDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\InventoryItem\GenerateInventoryItemDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -5547,6 +5827,107 @@
 .\ShipmentItemMvoStateProperties.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\InventoryItemRequirement\GenerateInventoryItemRequirementDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInventoryItemRequirementDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateInventoryItemRequirementDomain.txt
+.\IInventoryItemRequirementAggregate.cs
+.\IInventoryItemRequirementApplicationService.cs
+.\IInventoryItemRequirementApplicationServiceFactory.cs
+.\IInventoryItemRequirementCommand.cs
+.\IInventoryItemRequirementEntryCommand.cs
+.\IInventoryItemRequirementEntryState.cs
+.\IInventoryItemRequirementEntryStateDao.cs
+.\IInventoryItemRequirementEntryStateDto.cs
+.\IInventoryItemRequirementEntryStateEvent.cs
+.\IInventoryItemRequirementEntryStateEventDao.cs
+.\IInventoryItemRequirementEntryStateProperties.cs
+.\IInventoryItemRequirementEntryStates.cs
+.\IInventoryItemRequirementState.cs
+.\IInventoryItemRequirementStateDto.cs
+.\IInventoryItemRequirementStateEvent.cs
+.\IInventoryItemRequirementStateProperties.cs
+.\IInventoryItemRequirementStateQueryRepository.cs
+.\IInventoryItemRequirementStateRepository.cs
+.\InventoryItemRequirementAggregate.cs
+.\InventoryItemRequirementApplicationServiceBase.cs
+.\InventoryItemRequirementApplicationServiceFactory.cs
+.\InventoryItemRequirementCommand.cs
+.\InventoryItemRequirementCommandDto.cs
+.\InventoryItemRequirementEntryCommand.cs
+.\InventoryItemRequirementEntryCommandDto.cs
+.\InventoryItemRequirementEntryId.cs
+.\InventoryItemRequirementEntryIdDto.cs
+.\InventoryItemRequirementEntryIdDtoWrapper.cs
+.\InventoryItemRequirementEntryIdFlattenedDto.cs
+.\InventoryItemRequirementEntryState.cs
+.\InventoryItemRequirementEntryStateDto.cs
+.\InventoryItemRequirementEntryStateDtoExtension.cs
+.\InventoryItemRequirementEntryStateDtoWrapper.cs
+.\InventoryItemRequirementEntryStateEvent.cs
+.\InventoryItemRequirementEntryStateEventDto.cs
+.\InventoryItemRequirementEntryStateEventDtoConverter.cs
+.\InventoryItemRequirementEntryStateEventId.cs
+.\InventoryItemRequirementEntryStateEventIdDto.cs
+.\InventoryItemRequirementEntryStateEventIdDtoWrapper.cs
+.\InventoryItemRequirementEntryStateEventIdFlattenedDto.cs
+.\InventoryItemRequirementEntryStateExtension.cs
+.\InventoryItemRequirementEntryStateInterfaceExtension.cs
+.\InventoryItemRequirementEntryStateProperties.cs
+.\InventoryItemRequirementEntryStates.cs
+.\InventoryItemRequirementState.cs
+.\InventoryItemRequirementStateDto.cs
+.\InventoryItemRequirementStateDtoExtension.cs
+.\InventoryItemRequirementStateDtoWrapper.cs
+.\InventoryItemRequirementStateEvent.cs
+.\InventoryItemRequirementStateEventDto.cs
+.\InventoryItemRequirementStateEventDtoConverter.cs
+.\InventoryItemRequirementStateEventId.cs
+.\InventoryItemRequirementStateEventIdDto.cs
+.\InventoryItemRequirementStateEventIdDtoWrapper.cs
+.\InventoryItemRequirementStateEventIdFlattenedDto.cs
+.\InventoryItemRequirementStateExtension.cs
+.\InventoryItemRequirementStateInterfaceExtension.cs
+.\InventoryItemRequirementStateProperties.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\InventoryItemRequirementEntryMvo\GenerateInventoryItemRequirementEntryMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInventoryItemRequirementEntryMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateInventoryItemRequirementEntryMvoDomain.txt
+.\IInventoryItemRequirementEntryMvoAggregate.cs
+.\IInventoryItemRequirementEntryMvoApplicationService.cs
+.\IInventoryItemRequirementEntryMvoApplicationServiceFactory.cs
+.\IInventoryItemRequirementEntryMvoCommand.cs
+.\IInventoryItemRequirementEntryMvoState.cs
+.\IInventoryItemRequirementEntryMvoStateDto.cs
+.\IInventoryItemRequirementEntryMvoStateEvent.cs
+.\IInventoryItemRequirementEntryMvoStateProperties.cs
+.\IInventoryItemRequirementEntryMvoStateQueryRepository.cs
+.\IInventoryItemRequirementEntryMvoStateRepository.cs
+.\InventoryItemRequirementEntryMvoAggregate.cs
+.\InventoryItemRequirementEntryMvoApplicationServiceBase.cs
+.\InventoryItemRequirementEntryMvoApplicationServiceFactory.cs
+.\InventoryItemRequirementEntryMvoCommand.cs
+.\InventoryItemRequirementEntryMvoCommandDto.cs
+.\InventoryItemRequirementEntryMvoState.cs
+.\InventoryItemRequirementEntryMvoStateDto.cs
+.\InventoryItemRequirementEntryMvoStateDtoExtension.cs
+.\InventoryItemRequirementEntryMvoStateDtoWrapper.cs
+.\InventoryItemRequirementEntryMvoStateEvent.cs
+.\InventoryItemRequirementEntryMvoStateEventDto.cs
+.\InventoryItemRequirementEntryMvoStateEventDtoConverter.cs
+.\InventoryItemRequirementEntryMvoStateEventId.cs
+.\InventoryItemRequirementEntryMvoStateEventIdDto.cs
+.\InventoryItemRequirementEntryMvoStateEventIdDtoWrapper.cs
+.\InventoryItemRequirementEntryMvoStateEventIdFlattenedDto.cs
+.\InventoryItemRequirementEntryMvoStateExtension.cs
+.\InventoryItemRequirementEntryMvoStateInterfaceExtension.cs
+.\InventoryItemRequirementEntryMvoStateProperties.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -5604,6 +5985,9 @@
 .\InventoryItemEntryMetadata.cs
 .\InventoryItemEntryMvoMetadata.cs
 .\InventoryItemMetadata.cs
+.\InventoryItemRequirementEntryMetadata.cs
+.\InventoryItemRequirementEntryMvoMetadata.cs
+.\InventoryItemRequirementMetadata.cs
 .\InventoryPostingRuleMetadata.cs
 .\InventoryPRTriggeredMetadata.cs
 .\LocatorMetadata.cs

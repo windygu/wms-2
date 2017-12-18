@@ -1,0 +1,46 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+    # --------------- aggregate ---------------
+    InventoryPRTriggered:
+      id:
+        name: InventoryPRTriggeredId
+        type: InventoryPRTriggeredId
+        
+      properties:
+        IsProcessed:
+          type: bool
+          notNull: true
+          
+      reservedProperties:
+        noActive: true
+        noDeleted: true
+        
+      valueObjects:
+        InventoryPRTriggeredId:
+          properties:
+            SourceEntryId:
+              type: InventoryItemEntryId
+              referenceType: InventoryItemEntry
+            InventoryPostingRuleId:
+              type: string
+              referenceType: InventoryPostingRule
+              columnName: InventoryPostingRuleId
+              
+      metadata:
+        NoEventSourcing: true
+    
+    # --------------- aggregate ---------------
+    # InventoryPostingRuleType:
+      # id:
+        # name: InventoryPostingRuleTypeId
+        # type: string
+      # properties:
+        # Description:
+          # type: string
+          # notNull: true
+          

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.InventoryItemRequirement">
+  
+  <class name="Dddml.Wms.Domain.InventoryItemRequirement.InventoryItemRequirementState" table="InventoryItemRequirements">
+
+    <composite-id name="InventoryItemRequirementId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
+        <key-property name="ProductId" ></key-property>
+        <key-property name="LocatorId" ></key-property>
+        <key-property name="AttributeSetInstanceId" ></key-property>
+    </composite-id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="Quantity" ></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" />
+
+    <property name="UpdatedAt" column="UpdatedAt" />
+    <property name="CommandId" column="CommandId"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

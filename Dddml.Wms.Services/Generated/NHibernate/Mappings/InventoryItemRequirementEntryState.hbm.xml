@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.InventoryItemRequirement">
+  
+  <class name="Dddml.Wms.Domain.InventoryItemRequirement.InventoryItemRequirementEntryState" table="InventoryItemRequirementEntries">
+
+    <cache usage="read-only"/>
+    <composite-id name="InventoryItemRequirementEntryId" class="Dddml.Wms.Domain.InventoryItemRequirement.InventoryItemRequirementEntryId">
+        <key-property name="InventoryItemRequirementIdProductId" ><column name="ProductId" /></key-property>
+        <key-property name="InventoryItemRequirementIdLocatorId" ><column name="LocatorId" /></key-property>
+        <key-property name="InventoryItemRequirementIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+        <key-property name="EntrySeqId" ></key-property>
+    </composite-id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="Quantity" ></property>
+    <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId" unique="true">
+        <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
+        <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
+        <property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" /></property>
+        <property name="SourceEntryIdEntrySeqId" ><column name="SrcEventEntrySeqId" /></property>
+        <property name="InventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" /></property>
+    </component>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Deleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" />
+
+    <property name="UpdatedAt" column="UpdatedAt" />
+    <property name="CommandId" column="CommandId"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

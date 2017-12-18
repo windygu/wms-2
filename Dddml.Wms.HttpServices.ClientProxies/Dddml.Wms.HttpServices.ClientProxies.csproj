@@ -110,6 +110,12 @@
     <Compile Include="Generated\InventoryItemEntryMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\InventoryItemRequirementApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\InventoryItemRequirementEntryMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\InventoryPostingRuleApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -200,6 +206,8 @@
 .\InOutLineMvoApplicationServiceProxy.cs
 .\InventoryItemApplicationServiceProxy.cs
 .\InventoryItemEntryMvoApplicationServiceProxy.cs
+.\InventoryItemRequirementApplicationServiceProxy.cs
+.\InventoryItemRequirementEntryMvoApplicationServiceProxy.cs
 .\InventoryPostingRuleApplicationServiceProxy.cs
 .\InventoryPRTriggeredApplicationServiceProxy.cs
 .\LocatorApplicationServiceProxy.cs

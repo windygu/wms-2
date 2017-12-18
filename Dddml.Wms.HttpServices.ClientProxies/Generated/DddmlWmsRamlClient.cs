@@ -33,6 +33,8 @@ using Dddml.Wms.Domain.InOut;
 using Dddml.Wms.Domain.InOutLineMvo;
 using Dddml.Wms.Domain.InventoryItem;
 using Dddml.Wms.Domain.InventoryItemEntryMvo;
+using Dddml.Wms.Domain.InventoryItemRequirement;
+using Dddml.Wms.Domain.InventoryItemRequirementEntryMvo;
 using Dddml.Wms.Domain.InventoryPostingRule;
 using Dddml.Wms.Domain.InventoryPRTriggered;
 using Dddml.Wms.Domain.Locator;
@@ -2445,21 +2447,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class SellableInventoryItem
+    public partial class InventoryItemRequirement
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal SellableInventoryItem(DddmlWmsRamlClient proxy)
+        internal InventoryItemRequirement(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.SellableInventoryItemGetRequest</param>
+        		/// <param name="request">Models.InventoryItemRequirementGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.SellableInventoryItemGetResponse> Get(Models.SellableInventoryItemGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.InventoryItemRequirementGetResponse> Get(Models.InventoryItemRequirementGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "SellableInventoryItems/{id}";
+            var url = "InventoryItemRequirements/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -2495,7 +2497,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.SellableInventoryItemGetResponse  
+            return new Models.InventoryItemRequirementGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -2507,11 +2509,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
 
 
-        		/// <param name="request">Models.SellableInventoryItemPutRequest</param>
-        public virtual async Task<ApiResponse> Put(Models.SellableInventoryItemPutRequest request)
+        		/// <param name="request">Models.InventoryItemRequirementPutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.InventoryItemRequirementPutRequest request)
         {
 
-            var url = "SellableInventoryItems/{id}";
+            var url = "InventoryItemRequirements/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -2534,7 +2536,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
             }
             if(request.Formatter == null)
                 request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(CreateSellableInventoryItemDto), request.Content , request.Formatter);                           
+            req.Content = new ObjectContent(typeof(CreateInventoryItemRequirementDto), request.Content , request.Formatter);                           
 	        var response = await proxy.Client.SendAsync(req);
             return new ApiResponse  
                                             {
@@ -2547,11 +2549,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
 
 
-        		/// <param name="request">Models.SellableInventoryItemPatchRequest</param>
-        public virtual async Task<ApiResponse> Patch(Models.SellableInventoryItemPatchRequest request)
+        		/// <param name="request">Models.InventoryItemRequirementPatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.InventoryItemRequirementPatchRequest request)
         {
 
-            var url = "SellableInventoryItems/{id}";
+            var url = "InventoryItemRequirements/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -2574,7 +2576,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
             }
             if(request.Formatter == null)
                 request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(MergePatchSellableInventoryItemDto), request.Content , request.Formatter);                           
+            req.Content = new ObjectContent(typeof(MergePatchInventoryItemRequirementDto), request.Content , request.Formatter);                           
 	        var response = await proxy.Client.SendAsync(req);
             return new ApiResponse  
                                             {
@@ -2587,11 +2589,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
 
 
-        		/// <param name="request">Models.SellableInventoryItemDeleteRequest</param>
-        public virtual async Task<ApiResponse> Delete(Models.SellableInventoryItemDeleteRequest request)
+        		/// <param name="request">Models.InventoryItemRequirementDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.InventoryItemRequirementDeleteRequest request)
         {
 
-            var url = "SellableInventoryItems/{id}";
+            var url = "InventoryItemRequirements/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -2635,21 +2637,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class SellableInventoryItems
+    public partial class InventoryItemRequirements
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal SellableInventoryItems(DddmlWmsRamlClient proxy)
+        internal InventoryItemRequirements(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.SellableInventoryItemsGetRequest</param>
+        		/// <param name="request">Models.InventoryItemRequirementsGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.SellableInventoryItemsGetResponse> Get(Models.SellableInventoryItemsGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.InventoryItemRequirementsGetResponse> Get(Models.InventoryItemRequirementsGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "SellableInventoryItems";
+            var url = "InventoryItemRequirements";
             if(request.Query != null)
             {
                 url += "?";
@@ -2688,7 +2690,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.SellableInventoryItemsGetResponse  
+            return new Models.InventoryItemRequirementsGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -2701,20 +2703,20 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class SellableInventoryItemsCount
+    public partial class InventoryItemRequirementsCount
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal SellableInventoryItemsCount(DddmlWmsRamlClient proxy)
+        internal InventoryItemRequirementsCount(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.SellableInventoryItemsCountGetRequest</param>
-        public virtual async Task<ApiResponse> Get(Models.SellableInventoryItemsCountGetRequest request)
+        		/// <param name="request">Models.InventoryItemRequirementsCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.InventoryItemRequirementsCountGetRequest request)
         {
 
-            var url = "SellableInventoryItems/_count";
+            var url = "InventoryItemRequirements/_count";
             if(request.Query != null)
             {
                 url += "?";
@@ -2749,21 +2751,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class SellableInventoryItemStateEvent
+    public partial class InventoryItemRequirementStateEvent
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal SellableInventoryItemStateEvent(DddmlWmsRamlClient proxy)
+        internal InventoryItemRequirementStateEvent(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.SellableInventoryItemStateEventGetRequest</param>
+        		/// <param name="request">Models.InventoryItemRequirementStateEventGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.SellableInventoryItemStateEventGetResponse> Get(Models.SellableInventoryItemStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.InventoryItemRequirementStateEventGetResponse> Get(Models.InventoryItemRequirementStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "SellableInventoryItems/{id}/_stateEvents/{version}";
+            var url = "InventoryItemRequirements/{id}/_stateEvents/{version}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -2798,7 +2800,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.SellableInventoryItemStateEventGetResponse  
+            return new Models.InventoryItemRequirementStateEventGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -2811,21 +2813,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class SellableInventoryItemHistoryState
+    public partial class InventoryItemRequirementHistoryState
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal SellableInventoryItemHistoryState(DddmlWmsRamlClient proxy)
+        internal InventoryItemRequirementHistoryState(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.SellableInventoryItemHistoryStateGetRequest</param>
+        		/// <param name="request">Models.InventoryItemRequirementHistoryStateGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.SellableInventoryItemHistoryStateGetResponse> Get(Models.SellableInventoryItemHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.InventoryItemRequirementHistoryStateGetResponse> Get(Models.InventoryItemRequirementHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "SellableInventoryItems/{id}/_historyStates/{version}";
+            var url = "InventoryItemRequirements/{id}/_historyStates/{version}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -2860,7 +2862,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.SellableInventoryItemHistoryStateGetResponse  
+            return new Models.InventoryItemRequirementHistoryStateGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -2873,28 +2875,28 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class SellableInventoryItemEntry
+    public partial class InventoryItemRequirementEntry
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal SellableInventoryItemEntry(DddmlWmsRamlClient proxy)
+        internal InventoryItemRequirementEntry(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.SellableInventoryItemEntryGetRequest</param>
+        		/// <param name="request">Models.InventoryItemRequirementEntryGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.SellableInventoryItemEntryGetResponse> Get(Models.SellableInventoryItemEntryGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.InventoryItemRequirementEntryGetResponse> Get(Models.InventoryItemRequirementEntryGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "SellableInventoryItems/{sellableInventoryItemId}/SellableInventoryItemEntries/{entrySeqId}";
+            var url = "InventoryItemRequirements/{inventoryItemRequirementId}/InventoryItemRequirementEntries/{entrySeqId}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
-			if(request.UriParameters.SellableInventoryItemId == null)
-				throw new InvalidOperationException("Uri Parameter SellableInventoryItemId cannot be null");
+			if(request.UriParameters.InventoryItemRequirementId == null)
+				throw new InvalidOperationException("Uri Parameter InventoryItemRequirementId cannot be null");
 
-            url = url.Replace("{sellableInventoryItemId}", request.UriParameters.SellableInventoryItemId.ToString());
+            url = url.Replace("{inventoryItemRequirementId}", request.UriParameters.InventoryItemRequirementId.ToString());
 
 			if(request.UriParameters.EntrySeqId == null)
 				throw new InvalidOperationException("Uri Parameter EntrySeqId cannot be null");
@@ -2922,7 +2924,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.SellableInventoryItemEntryGetResponse  
+            return new Models.InventoryItemRequirementEntryGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -7693,6 +7695,496 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				
             }
             return new Models.ProductCategoryMemberHistoryStateGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class SellableInventoryItem
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal SellableInventoryItem(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.SellableInventoryItemGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.SellableInventoryItemGetResponse> Get(Models.SellableInventoryItemGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "SellableInventoryItems/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.SellableInventoryItemGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.SellableInventoryItemPutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.SellableInventoryItemPutRequest request)
+        {
+
+            var url = "SellableInventoryItems/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Put, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(CreateSellableInventoryItemDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.SellableInventoryItemPatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.SellableInventoryItemPatchRequest request)
+        {
+
+            var url = "SellableInventoryItems/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(MergePatchSellableInventoryItemDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.SellableInventoryItemDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.SellableInventoryItemDeleteRequest request)
+        {
+
+            var url = "SellableInventoryItems/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.CommandId != null)
+                    url += "&commandId=" + request.Query.CommandId;
+                if(request.Query.Version != null)
+                    url += "&version=" + request.Query.Version;
+                if(request.Query.RequesterId != null)
+                    url += "&requesterId=" + request.Query.RequesterId;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Delete, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class SellableInventoryItems
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal SellableInventoryItems(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.SellableInventoryItemsGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.SellableInventoryItemsGetResponse> Get(Models.SellableInventoryItemsGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "SellableInventoryItems";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.FirstResult != null)
+                    url += "&firstResult=" + request.Query.FirstResult;
+                if(request.Query.MaxResults != null)
+                    url += "&maxResults=" + request.Query.MaxResults;
+                if(request.Query.Sort != null)
+                    url += "&sort=" + request.Query.Sort;
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.SellableInventoryItemsGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class SellableInventoryItemsCount
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal SellableInventoryItemsCount(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.SellableInventoryItemsCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.SellableInventoryItemsCountGetRequest request)
+        {
+
+            var url = "SellableInventoryItems/_count";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class SellableInventoryItemStateEvent
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal SellableInventoryItemStateEvent(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.SellableInventoryItemStateEventGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.SellableInventoryItemStateEventGetResponse> Get(Models.SellableInventoryItemStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "SellableInventoryItems/{id}/_stateEvents/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.SellableInventoryItemStateEventGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class SellableInventoryItemHistoryState
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal SellableInventoryItemHistoryState(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.SellableInventoryItemHistoryStateGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.SellableInventoryItemHistoryStateGetResponse> Get(Models.SellableInventoryItemHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "SellableInventoryItems/{id}/_historyStates/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.SellableInventoryItemHistoryStateGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class SellableInventoryItemEntry
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal SellableInventoryItemEntry(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.SellableInventoryItemEntryGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.SellableInventoryItemEntryGetResponse> Get(Models.SellableInventoryItemEntryGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "SellableInventoryItems/{sellableInventoryItemId}/SellableInventoryItemEntries/{entrySeqId}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.SellableInventoryItemId == null)
+				throw new InvalidOperationException("Uri Parameter SellableInventoryItemId cannot be null");
+
+            url = url.Replace("{sellableInventoryItemId}", request.UriParameters.SellableInventoryItemId.ToString());
+
+			if(request.UriParameters.EntrySeqId == null)
+				throw new InvalidOperationException("Uri Parameter EntrySeqId cannot be null");
+
+            url = url.Replace("{entrySeqId}", request.UriParameters.EntrySeqId.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.SellableInventoryItemEntryGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -12998,21 +13490,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class SellableInventoryItemEntryMvo
+    public partial class InventoryItemRequirementEntryMvo
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal SellableInventoryItemEntryMvo(DddmlWmsRamlClient proxy)
+        internal InventoryItemRequirementEntryMvo(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.SellableInventoryItemEntryMvoGetRequest</param>
+        		/// <param name="request">Models.InventoryItemRequirementEntryMvoGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.SellableInventoryItemEntryMvoGetResponse> Get(Models.SellableInventoryItemEntryMvoGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.InventoryItemRequirementEntryMvoGetResponse> Get(Models.InventoryItemRequirementEntryMvoGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "SellableInventoryItemEntryMvos/{id}";
+            var url = "InventoryItemRequirementEntryMvos/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -13048,7 +13540,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.SellableInventoryItemEntryMvoGetResponse  
+            return new Models.InventoryItemRequirementEntryMvoGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -13060,11 +13552,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
 
 
-        		/// <param name="request">Models.SellableInventoryItemEntryMvoPutRequest</param>
-        public virtual async Task<ApiResponse> Put(Models.SellableInventoryItemEntryMvoPutRequest request)
+        		/// <param name="request">Models.InventoryItemRequirementEntryMvoPutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.InventoryItemRequirementEntryMvoPutRequest request)
         {
 
-            var url = "SellableInventoryItemEntryMvos/{id}";
+            var url = "InventoryItemRequirementEntryMvos/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -13087,7 +13579,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
             }
             if(request.Formatter == null)
                 request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(CreateSellableInventoryItemEntryMvoDto), request.Content , request.Formatter);                           
+            req.Content = new ObjectContent(typeof(CreateInventoryItemRequirementEntryMvoDto), request.Content , request.Formatter);                           
 	        var response = await proxy.Client.SendAsync(req);
             return new ApiResponse  
                                             {
@@ -13100,11 +13592,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
 
 
-        		/// <param name="request">Models.SellableInventoryItemEntryMvoPatchRequest</param>
-        public virtual async Task<ApiResponse> Patch(Models.SellableInventoryItemEntryMvoPatchRequest request)
+        		/// <param name="request">Models.InventoryItemRequirementEntryMvoPatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.InventoryItemRequirementEntryMvoPatchRequest request)
         {
 
-            var url = "SellableInventoryItemEntryMvos/{id}";
+            var url = "InventoryItemRequirementEntryMvos/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -13127,7 +13619,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
             }
             if(request.Formatter == null)
                 request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(MergePatchSellableInventoryItemEntryMvoDto), request.Content , request.Formatter);                           
+            req.Content = new ObjectContent(typeof(MergePatchInventoryItemRequirementEntryMvoDto), request.Content , request.Formatter);                           
 	        var response = await proxy.Client.SendAsync(req);
             return new ApiResponse  
                                             {
@@ -13140,11 +13632,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
 
 
-        		/// <param name="request">Models.SellableInventoryItemEntryMvoDeleteRequest</param>
-        public virtual async Task<ApiResponse> Delete(Models.SellableInventoryItemEntryMvoDeleteRequest request)
+        		/// <param name="request">Models.InventoryItemRequirementEntryMvoDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.InventoryItemRequirementEntryMvoDeleteRequest request)
         {
 
-            var url = "SellableInventoryItemEntryMvos/{id}";
+            var url = "InventoryItemRequirementEntryMvos/{id}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -13188,21 +13680,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class SellableInventoryItemEntryMvos
+    public partial class InventoryItemRequirementEntryMvos
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal SellableInventoryItemEntryMvos(DddmlWmsRamlClient proxy)
+        internal InventoryItemRequirementEntryMvos(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.SellableInventoryItemEntryMvosGetRequest</param>
+        		/// <param name="request">Models.InventoryItemRequirementEntryMvosGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.SellableInventoryItemEntryMvosGetResponse> Get(Models.SellableInventoryItemEntryMvosGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.InventoryItemRequirementEntryMvosGetResponse> Get(Models.InventoryItemRequirementEntryMvosGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "SellableInventoryItemEntryMvos";
+            var url = "InventoryItemRequirementEntryMvos";
             if(request.Query != null)
             {
                 url += "?";
@@ -13241,7 +13733,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.SellableInventoryItemEntryMvosGetResponse  
+            return new Models.InventoryItemRequirementEntryMvosGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -13254,20 +13746,20 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class SellableInventoryItemEntryMvosCount
+    public partial class InventoryItemRequirementEntryMvosCount
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal SellableInventoryItemEntryMvosCount(DddmlWmsRamlClient proxy)
+        internal InventoryItemRequirementEntryMvosCount(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.SellableInventoryItemEntryMvosCountGetRequest</param>
-        public virtual async Task<ApiResponse> Get(Models.SellableInventoryItemEntryMvosCountGetRequest request)
+        		/// <param name="request">Models.InventoryItemRequirementEntryMvosCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.InventoryItemRequirementEntryMvosCountGetRequest request)
         {
 
-            var url = "SellableInventoryItemEntryMvos/_count";
+            var url = "InventoryItemRequirementEntryMvos/_count";
             if(request.Query != null)
             {
                 url += "?";
@@ -13302,21 +13794,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class SellableInventoryItemEntryMvoStateEvent
+    public partial class InventoryItemRequirementEntryMvoStateEvent
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal SellableInventoryItemEntryMvoStateEvent(DddmlWmsRamlClient proxy)
+        internal InventoryItemRequirementEntryMvoStateEvent(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.SellableInventoryItemEntryMvoStateEventGetRequest</param>
+        		/// <param name="request">Models.InventoryItemRequirementEntryMvoStateEventGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.SellableInventoryItemEntryMvoStateEventGetResponse> Get(Models.SellableInventoryItemEntryMvoStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.InventoryItemRequirementEntryMvoStateEventGetResponse> Get(Models.InventoryItemRequirementEntryMvoStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "SellableInventoryItemEntryMvos/{id}/_stateEvents/{version}";
+            var url = "InventoryItemRequirementEntryMvos/{id}/_stateEvents/{version}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -13351,7 +13843,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.SellableInventoryItemEntryMvoStateEventGetResponse  
+            return new Models.InventoryItemRequirementEntryMvoStateEventGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -13364,21 +13856,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class SellableInventoryItemEntryMvoHistoryState
+    public partial class InventoryItemRequirementEntryMvoHistoryState
     {
         private readonly DddmlWmsRamlClient proxy;
 
-        internal SellableInventoryItemEntryMvoHistoryState(DddmlWmsRamlClient proxy)
+        internal InventoryItemRequirementEntryMvoHistoryState(DddmlWmsRamlClient proxy)
         {
             this.proxy = proxy;
         }
 
-        		/// <param name="request">Models.SellableInventoryItemEntryMvoHistoryStateGetRequest</param>
+        		/// <param name="request">Models.InventoryItemRequirementEntryMvoHistoryStateGetRequest</param>
 		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.SellableInventoryItemEntryMvoHistoryStateGetResponse> Get(Models.SellableInventoryItemEntryMvoHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        public virtual async Task<Models.InventoryItemRequirementEntryMvoHistoryStateGetResponse> Get(Models.InventoryItemRequirementEntryMvoHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "SellableInventoryItemEntryMvos/{id}/_historyStates/{version}";
+            var url = "InventoryItemRequirementEntryMvos/{id}/_historyStates/{version}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -13413,7 +13905,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				}
 				
             }
-            return new Models.SellableInventoryItemEntryMvoHistoryStateGetResponse  
+            return new Models.InventoryItemRequirementEntryMvoHistoryStateGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -13842,6 +14334,434 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				
             }
             return new Models.OrderItemMvoHistoryStateGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class SellableInventoryItemEntryMvo
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal SellableInventoryItemEntryMvo(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.SellableInventoryItemEntryMvoGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.SellableInventoryItemEntryMvoGetResponse> Get(Models.SellableInventoryItemEntryMvoGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "SellableInventoryItemEntryMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.SellableInventoryItemEntryMvoGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.SellableInventoryItemEntryMvoPutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.SellableInventoryItemEntryMvoPutRequest request)
+        {
+
+            var url = "SellableInventoryItemEntryMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Put, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(CreateSellableInventoryItemEntryMvoDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.SellableInventoryItemEntryMvoPatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.SellableInventoryItemEntryMvoPatchRequest request)
+        {
+
+            var url = "SellableInventoryItemEntryMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(MergePatchSellableInventoryItemEntryMvoDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.SellableInventoryItemEntryMvoDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.SellableInventoryItemEntryMvoDeleteRequest request)
+        {
+
+            var url = "SellableInventoryItemEntryMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.CommandId != null)
+                    url += "&commandId=" + request.Query.CommandId;
+                if(request.Query.Version != null)
+                    url += "&version=" + request.Query.Version;
+                if(request.Query.RequesterId != null)
+                    url += "&requesterId=" + request.Query.RequesterId;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Delete, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class SellableInventoryItemEntryMvos
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal SellableInventoryItemEntryMvos(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.SellableInventoryItemEntryMvosGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.SellableInventoryItemEntryMvosGetResponse> Get(Models.SellableInventoryItemEntryMvosGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "SellableInventoryItemEntryMvos";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.FirstResult != null)
+                    url += "&firstResult=" + request.Query.FirstResult;
+                if(request.Query.MaxResults != null)
+                    url += "&maxResults=" + request.Query.MaxResults;
+                if(request.Query.Sort != null)
+                    url += "&sort=" + request.Query.Sort;
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.SellableInventoryItemEntryMvosGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class SellableInventoryItemEntryMvosCount
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal SellableInventoryItemEntryMvosCount(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.SellableInventoryItemEntryMvosCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.SellableInventoryItemEntryMvosCountGetRequest request)
+        {
+
+            var url = "SellableInventoryItemEntryMvos/_count";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class SellableInventoryItemEntryMvoStateEvent
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal SellableInventoryItemEntryMvoStateEvent(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.SellableInventoryItemEntryMvoStateEventGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.SellableInventoryItemEntryMvoStateEventGetResponse> Get(Models.SellableInventoryItemEntryMvoStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "SellableInventoryItemEntryMvos/{id}/_stateEvents/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.SellableInventoryItemEntryMvoStateEventGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class SellableInventoryItemEntryMvoHistoryState
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal SellableInventoryItemEntryMvoHistoryState(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.SellableInventoryItemEntryMvoHistoryStateGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.SellableInventoryItemEntryMvoHistoryStateGetResponse> Get(Models.SellableInventoryItemEntryMvoHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "SellableInventoryItemEntryMvos/{id}/_historyStates/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.SellableInventoryItemEntryMvoHistoryStateGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -14959,9 +15879,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual SellableInventoryItem SellableInventoryItem
+        public virtual InventoryItemRequirement InventoryItemRequirement
         {
-            get { return new SellableInventoryItem(this); }
+            get { return new InventoryItemRequirement(this); }
         }
                 
 
@@ -15028,6 +15948,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual ProductCategoryMember ProductCategoryMember
         {
             get { return new ProductCategoryMember(this); }
+        }
+                
+
+        public virtual SellableInventoryItem SellableInventoryItem
+        {
+            get { return new SellableInventoryItem(this); }
         }
                 
 
@@ -15103,15 +16029,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual SellableInventoryItemEntryMvo SellableInventoryItemEntryMvo
+        public virtual InventoryItemRequirementEntryMvo InventoryItemRequirementEntryMvo
         {
-            get { return new SellableInventoryItemEntryMvo(this); }
+            get { return new InventoryItemRequirementEntryMvo(this); }
         }
                 
 
         public virtual OrderItemMvo OrderItemMvo
         {
             get { return new OrderItemMvo(this); }
+        }
+                
+
+        public virtual SellableInventoryItemEntryMvo SellableInventoryItemEntryMvo
+        {
+            get { return new SellableInventoryItemEntryMvo(this); }
         }
                 
 
@@ -15157,9 +16089,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual SellableInventoryItems SellableInventoryItems
+        public virtual InventoryItemRequirements InventoryItemRequirements
         {
-            get { return new SellableInventoryItems(this); }
+            get { return new InventoryItemRequirements(this); }
         }
                 
 
@@ -15226,6 +16158,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual ProductCategoryMembers ProductCategoryMembers
         {
             get { return new ProductCategoryMembers(this); }
+        }
+                
+
+        public virtual SellableInventoryItems SellableInventoryItems
+        {
+            get { return new SellableInventoryItems(this); }
         }
                 
 
@@ -15301,15 +16239,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual SellableInventoryItemEntryMvos SellableInventoryItemEntryMvos
+        public virtual InventoryItemRequirementEntryMvos InventoryItemRequirementEntryMvos
         {
-            get { return new SellableInventoryItemEntryMvos(this); }
+            get { return new InventoryItemRequirementEntryMvos(this); }
         }
                 
 
         public virtual OrderItemMvos OrderItemMvos
         {
             get { return new OrderItemMvos(this); }
+        }
+                
+
+        public virtual SellableInventoryItemEntryMvos SellableInventoryItemEntryMvos
+        {
+            get { return new SellableInventoryItemEntryMvos(this); }
         }
                 
 
@@ -15355,9 +16299,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual SellableInventoryItemsCount SellableInventoryItemsCount
+        public virtual InventoryItemRequirementsCount InventoryItemRequirementsCount
         {
-            get { return new SellableInventoryItemsCount(this); }
+            get { return new InventoryItemRequirementsCount(this); }
         }
                 
 
@@ -15424,6 +16368,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual ProductCategoryMembersCount ProductCategoryMembersCount
         {
             get { return new ProductCategoryMembersCount(this); }
+        }
+                
+
+        public virtual SellableInventoryItemsCount SellableInventoryItemsCount
+        {
+            get { return new SellableInventoryItemsCount(this); }
         }
                 
 
@@ -15499,15 +16449,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual SellableInventoryItemEntryMvosCount SellableInventoryItemEntryMvosCount
+        public virtual InventoryItemRequirementEntryMvosCount InventoryItemRequirementEntryMvosCount
         {
-            get { return new SellableInventoryItemEntryMvosCount(this); }
+            get { return new InventoryItemRequirementEntryMvosCount(this); }
         }
                 
 
         public virtual OrderItemMvosCount OrderItemMvosCount
         {
             get { return new OrderItemMvosCount(this); }
+        }
+                
+
+        public virtual SellableInventoryItemEntryMvosCount SellableInventoryItemEntryMvosCount
+        {
+            get { return new SellableInventoryItemEntryMvosCount(this); }
         }
                 
 
@@ -15553,9 +16509,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual SellableInventoryItemStateEvent SellableInventoryItemStateEvent
+        public virtual InventoryItemRequirementStateEvent InventoryItemRequirementStateEvent
         {
-            get { return new SellableInventoryItemStateEvent(this); }
+            get { return new InventoryItemRequirementStateEvent(this); }
         }
                 
 
@@ -15622,6 +16578,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual ProductCategoryMemberStateEvent ProductCategoryMemberStateEvent
         {
             get { return new ProductCategoryMemberStateEvent(this); }
+        }
+                
+
+        public virtual SellableInventoryItemStateEvent SellableInventoryItemStateEvent
+        {
+            get { return new SellableInventoryItemStateEvent(this); }
         }
                 
 
@@ -15697,15 +16659,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual SellableInventoryItemEntryMvoStateEvent SellableInventoryItemEntryMvoStateEvent
+        public virtual InventoryItemRequirementEntryMvoStateEvent InventoryItemRequirementEntryMvoStateEvent
         {
-            get { return new SellableInventoryItemEntryMvoStateEvent(this); }
+            get { return new InventoryItemRequirementEntryMvoStateEvent(this); }
         }
                 
 
         public virtual OrderItemMvoStateEvent OrderItemMvoStateEvent
         {
             get { return new OrderItemMvoStateEvent(this); }
+        }
+                
+
+        public virtual SellableInventoryItemEntryMvoStateEvent SellableInventoryItemEntryMvoStateEvent
+        {
+            get { return new SellableInventoryItemEntryMvoStateEvent(this); }
         }
                 
 
@@ -15751,9 +16719,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual SellableInventoryItemHistoryState SellableInventoryItemHistoryState
+        public virtual InventoryItemRequirementHistoryState InventoryItemRequirementHistoryState
         {
-            get { return new SellableInventoryItemHistoryState(this); }
+            get { return new InventoryItemRequirementHistoryState(this); }
         }
                 
 
@@ -15820,6 +16788,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual ProductCategoryMemberHistoryState ProductCategoryMemberHistoryState
         {
             get { return new ProductCategoryMemberHistoryState(this); }
+        }
+                
+
+        public virtual SellableInventoryItemHistoryState SellableInventoryItemHistoryState
+        {
+            get { return new SellableInventoryItemHistoryState(this); }
         }
                 
 
@@ -15895,15 +16869,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual SellableInventoryItemEntryMvoHistoryState SellableInventoryItemEntryMvoHistoryState
+        public virtual InventoryItemRequirementEntryMvoHistoryState InventoryItemRequirementEntryMvoHistoryState
         {
-            get { return new SellableInventoryItemEntryMvoHistoryState(this); }
+            get { return new InventoryItemRequirementEntryMvoHistoryState(this); }
         }
                 
 
         public virtual OrderItemMvoHistoryState OrderItemMvoHistoryState
         {
             get { return new OrderItemMvoHistoryState(this); }
+        }
+                
+
+        public virtual SellableInventoryItemEntryMvoHistoryState SellableInventoryItemEntryMvoHistoryState
+        {
+            get { return new SellableInventoryItemEntryMvoHistoryState(this); }
         }
                 
 
@@ -15943,15 +16923,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual SellableInventoryItemEntry SellableInventoryItemEntry
+        public virtual InventoryItemRequirementEntry InventoryItemRequirementEntry
         {
-            get { return new SellableInventoryItemEntry(this); }
+            get { return new InventoryItemRequirementEntry(this); }
         }
                 
 
         public virtual OrderItem OrderItem
         {
             get { return new OrderItem(this); }
+        }
+                
+
+        public virtual SellableInventoryItemEntry SellableInventoryItemEntry
+        {
+            get { return new SellableInventoryItemEntry(this); }
         }
                 
 
@@ -16285,7 +17271,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  SellableInventoryItemGetQuery 
+    public partial class  InventoryItemRequirementGetQuery 
     {
 		[JsonProperty("fields")]
         public string Fields { get; set; }
@@ -16293,7 +17279,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  SellableInventoryItemDeleteQuery 
+    public partial class  InventoryItemRequirementDeleteQuery 
     {
 		[JsonProperty("commandId")]
         public string CommandId { get; set; }
@@ -16307,7 +17293,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  SellableInventoryItemsGetQuery 
+    public partial class  InventoryItemRequirementsGetQuery 
     {
 		[JsonProperty("firstResult")]
         public int? FirstResult { get; set; }
@@ -16330,7 +17316,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  SellableInventoryItemsCountGetQuery 
+    public partial class  InventoryItemRequirementsCountGetQuery 
     {
 		[JsonProperty("filter")]
         public string Filter { get; set; }
@@ -16947,6 +17933,62 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     public partial class  ProductCategoryMembersCountGetQuery 
+    {
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  SellableInventoryItemGetQuery 
+    {
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+
+    } // end class
+
+    public partial class  SellableInventoryItemDeleteQuery 
+    {
+		[JsonProperty("commandId")]
+        public string CommandId { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+		[JsonProperty("requesterId")]
+        public string RequesterId { get; set; }
+
+
+    } // end class
+
+    public partial class  SellableInventoryItemsGetQuery 
+    {
+		[JsonProperty("firstResult")]
+        public int? FirstResult { get; set; }
+
+		[JsonProperty("maxResults")]
+        public int? MaxResults { get; set; }
+
+		[JsonProperty("sort")]
+        public string Sort { get; set; }
+
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  SellableInventoryItemsCountGetQuery 
     {
 		[JsonProperty("filter")]
         public string Filter { get; set; }
@@ -17629,7 +18671,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  SellableInventoryItemEntryMvoGetQuery 
+    public partial class  InventoryItemRequirementEntryMvoGetQuery 
     {
 		[JsonProperty("fields")]
         public string Fields { get; set; }
@@ -17637,7 +18679,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  SellableInventoryItemEntryMvoDeleteQuery 
+    public partial class  InventoryItemRequirementEntryMvoDeleteQuery 
     {
 		[JsonProperty("commandId")]
         public string CommandId { get; set; }
@@ -17651,7 +18693,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  SellableInventoryItemEntryMvosGetQuery 
+    public partial class  InventoryItemRequirementEntryMvosGetQuery 
     {
 		[JsonProperty("firstResult")]
         public int? FirstResult { get; set; }
@@ -17674,7 +18716,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  SellableInventoryItemEntryMvosCountGetQuery 
+    public partial class  InventoryItemRequirementEntryMvosCountGetQuery 
     {
 		[JsonProperty("filter")]
         public string Filter { get; set; }
@@ -17731,6 +18773,62 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     public partial class  OrderItemMvosCountGetQuery 
+    {
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  SellableInventoryItemEntryMvoGetQuery 
+    {
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+
+    } // end class
+
+    public partial class  SellableInventoryItemEntryMvoDeleteQuery 
+    {
+		[JsonProperty("commandId")]
+        public string CommandId { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+		[JsonProperty("requesterId")]
+        public string RequesterId { get; set; }
+
+
+    } // end class
+
+    public partial class  SellableInventoryItemEntryMvosGetQuery 
+    {
+		[JsonProperty("firstResult")]
+        public int? FirstResult { get; set; }
+
+		[JsonProperty("maxResults")]
+        public int? MaxResults { get; set; }
+
+		[JsonProperty("sort")]
+        public string Sort { get; set; }
+
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  SellableInventoryItemEntryMvosCountGetQuery 
     {
 		[JsonProperty("filter")]
         public string Filter { get; set; }
@@ -18157,9 +19255,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /SellableInventoryItems/{id}
+    /// Uri Parameters for resource /InventoryItemRequirements/{id}
     /// </summary>
-    public partial class  SellableInventoryItemUriParameters 
+    public partial class  InventoryItemRequirementUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -18168,23 +19266,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /SellableInventoryItems/{id}/_stateEvents/{version}
+    /// Uri Parameters for resource /InventoryItemRequirements/{id}/_stateEvents/{version}
     /// </summary>
-    public partial class  SellableInventoryItemStateEventUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /SellableInventoryItems/{id}/_historyStates/{version}
-    /// </summary>
-    public partial class  SellableInventoryItemHistoryStateUriParameters 
+    public partial class  InventoryItemRequirementStateEventUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -18196,12 +19280,26 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /SellableInventoryItems/{sellableInventoryItemId}/SellableInventoryItemEntries/{entrySeqId}
+    /// Uri Parameters for resource /InventoryItemRequirements/{id}/_historyStates/{version}
     /// </summary>
-    public partial class  SellableInventoryItemEntryUriParameters 
+    public partial class  InventoryItemRequirementHistoryStateUriParameters 
     {
-		[JsonProperty("sellableInventoryItemId")]
-        public string SellableInventoryItemId { get; set; }
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /InventoryItemRequirements/{inventoryItemRequirementId}/InventoryItemRequirementEntries/{entrySeqId}
+    /// </summary>
+    public partial class  InventoryItemRequirementEntryUriParameters 
+    {
+		[JsonProperty("inventoryItemRequirementId")]
+        public string InventoryItemRequirementId { get; set; }
 
 		[JsonProperty("entrySeqId")]
         public long? EntrySeqId { get; set; }
@@ -18648,6 +19746,59 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
 		[JsonProperty("version")]
         public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /SellableInventoryItems/{id}
+    /// </summary>
+    public partial class  SellableInventoryItemUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /SellableInventoryItems/{id}/_stateEvents/{version}
+    /// </summary>
+    public partial class  SellableInventoryItemStateEventUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /SellableInventoryItems/{id}/_historyStates/{version}
+    /// </summary>
+    public partial class  SellableInventoryItemHistoryStateUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /SellableInventoryItems/{sellableInventoryItemId}/SellableInventoryItemEntries/{entrySeqId}
+    /// </summary>
+    public partial class  SellableInventoryItemEntryUriParameters 
+    {
+		[JsonProperty("sellableInventoryItemId")]
+        public string SellableInventoryItemId { get; set; }
+
+		[JsonProperty("entrySeqId")]
+        public long? EntrySeqId { get; set; }
 
 
     } // end class
@@ -19149,9 +20300,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /SellableInventoryItemEntryMvos/{id}
+    /// Uri Parameters for resource /InventoryItemRequirementEntryMvos/{id}
     /// </summary>
-    public partial class  SellableInventoryItemEntryMvoUriParameters 
+    public partial class  InventoryItemRequirementEntryMvoUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -19160,9 +20311,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /SellableInventoryItemEntryMvos/{id}/_stateEvents/{version}
+    /// Uri Parameters for resource /InventoryItemRequirementEntryMvos/{id}/_stateEvents/{version}
     /// </summary>
-    public partial class  SellableInventoryItemEntryMvoStateEventUriParameters 
+    public partial class  InventoryItemRequirementEntryMvoStateEventUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -19174,9 +20325,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /SellableInventoryItemEntryMvos/{id}/_historyStates/{version}
+    /// Uri Parameters for resource /InventoryItemRequirementEntryMvos/{id}/_historyStates/{version}
     /// </summary>
-    public partial class  SellableInventoryItemEntryMvoHistoryStateUriParameters 
+    public partial class  InventoryItemRequirementEntryMvoHistoryStateUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -19216,6 +20367,45 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     /// Uri Parameters for resource /OrderItemMvos/{id}/_historyStates/{version}
     /// </summary>
     public partial class  OrderItemMvoHistoryStateUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /SellableInventoryItemEntryMvos/{id}
+    /// </summary>
+    public partial class  SellableInventoryItemEntryMvoUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /SellableInventoryItemEntryMvos/{id}/_stateEvents/{version}
+    /// </summary>
+    public partial class  SellableInventoryItemEntryMvoStateEventUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /SellableInventoryItemEntryMvos/{id}/_historyStates/{version}
+    /// </summary>
+    public partial class  SellableInventoryItemEntryMvoHistoryStateUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -20203,11 +21393,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class SellableInventoryItem
+    /// Request object for method Get of class InventoryItemRequirement
     /// </summary>
-    public partial class SellableInventoryItemGetRequest : ApiRequest
+    public partial class InventoryItemRequirementGetRequest : ApiRequest
     {
-        public SellableInventoryItemGetRequest(SellableInventoryItemUriParameters UriParameters, SellableInventoryItemGetQuery Query = null)
+        public InventoryItemRequirementGetRequest(InventoryItemRequirementUriParameters UriParameters, InventoryItemRequirementGetQuery Query = null)
         {
             this.Query = Query;
             this.UriParameters = UriParameters;
@@ -20216,20 +21406,20 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public SellableInventoryItemGetQuery Query { get; set; }
+        public InventoryItemRequirementGetQuery Query { get; set; }
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Put of class SellableInventoryItem
+    /// Request object for method Put of class InventoryItemRequirement
     /// </summary>
-    public partial class SellableInventoryItemPutRequest : ApiRequest
+    public partial class InventoryItemRequirementPutRequest : ApiRequest
     {
-        public SellableInventoryItemPutRequest(SellableInventoryItemUriParameters UriParameters, CreateSellableInventoryItemDto Content = null, MediaTypeFormatter Formatter = null)
+        public InventoryItemRequirementPutRequest(InventoryItemRequirementUriParameters UriParameters, CreateInventoryItemRequirementDto Content = null, MediaTypeFormatter Formatter = null)
         {
             this.Content = Content;
             this.Formatter = Formatter;
@@ -20239,7 +21429,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request content
         /// </summary>
-        public CreateSellableInventoryItemDto Content { get; set; }
+        public CreateInventoryItemRequirementDto Content { get; set; }
         /// <summary>
         /// Request formatter
         /// </summary>
@@ -20247,16 +21437,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Patch of class SellableInventoryItem
+    /// Request object for method Patch of class InventoryItemRequirement
     /// </summary>
-    public partial class SellableInventoryItemPatchRequest : ApiRequest
+    public partial class InventoryItemRequirementPatchRequest : ApiRequest
     {
-        public SellableInventoryItemPatchRequest(SellableInventoryItemUriParameters UriParameters, MergePatchSellableInventoryItemDto Content = null, MediaTypeFormatter Formatter = null)
+        public InventoryItemRequirementPatchRequest(InventoryItemRequirementUriParameters UriParameters, MergePatchInventoryItemRequirementDto Content = null, MediaTypeFormatter Formatter = null)
         {
             this.Content = Content;
             this.Formatter = Formatter;
@@ -20266,7 +21456,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request content
         /// </summary>
-        public MergePatchSellableInventoryItemDto Content { get; set; }
+        public MergePatchInventoryItemRequirementDto Content { get; set; }
         /// <summary>
         /// Request formatter
         /// </summary>
@@ -20274,16 +21464,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Delete of class SellableInventoryItem
+    /// Request object for method Delete of class InventoryItemRequirement
     /// </summary>
-    public partial class SellableInventoryItemDeleteRequest : ApiRequest
+    public partial class InventoryItemRequirementDeleteRequest : ApiRequest
     {
-        public SellableInventoryItemDeleteRequest(SellableInventoryItemUriParameters UriParameters, SellableInventoryItemDeleteQuery Query = null)
+        public InventoryItemRequirementDeleteRequest(InventoryItemRequirementUriParameters UriParameters, InventoryItemRequirementDeleteQuery Query = null)
         {
             this.Query = Query;
             this.UriParameters = UriParameters;
@@ -20292,20 +21482,20 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public SellableInventoryItemDeleteQuery Query { get; set; }
+        public InventoryItemRequirementDeleteQuery Query { get; set; }
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class SellableInventoryItems
+    /// Request object for method Get of class InventoryItemRequirements
     /// </summary>
-    public partial class SellableInventoryItemsGetRequest : ApiRequest
+    public partial class InventoryItemRequirementsGetRequest : ApiRequest
     {
-        public SellableInventoryItemsGetRequest(SellableInventoryItemsGetQuery Query = null)
+        public InventoryItemRequirementsGetRequest(InventoryItemRequirementsGetQuery Query = null)
         {
             this.Query = Query;
         }
@@ -20313,16 +21503,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public SellableInventoryItemsGetQuery Query { get; set; }
+        public InventoryItemRequirementsGetQuery Query { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class SellableInventoryItemsCount
+    /// Request object for method Get of class InventoryItemRequirementsCount
     /// </summary>
-    public partial class SellableInventoryItemsCountGetRequest : ApiRequest
+    public partial class InventoryItemRequirementsCountGetRequest : ApiRequest
     {
-        public SellableInventoryItemsCountGetRequest(SellableInventoryItemsCountGetQuery Query = null)
+        public InventoryItemRequirementsCountGetRequest(InventoryItemRequirementsCountGetQuery Query = null)
         {
             this.Query = Query;
         }
@@ -20330,16 +21520,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public SellableInventoryItemsCountGetQuery Query { get; set; }
+        public InventoryItemRequirementsCountGetQuery Query { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class SellableInventoryItemStateEvent
+    /// Request object for method Get of class InventoryItemRequirementStateEvent
     /// </summary>
-    public partial class SellableInventoryItemStateEventGetRequest : ApiRequest
+    public partial class InventoryItemRequirementStateEventGetRequest : ApiRequest
     {
-        public SellableInventoryItemStateEventGetRequest(SellableInventoryItemStateEventUriParameters UriParameters)
+        public InventoryItemRequirementStateEventGetRequest(InventoryItemRequirementStateEventUriParameters UriParameters)
         {
             this.UriParameters = UriParameters;
         }
@@ -20347,16 +21537,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemStateEventUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementStateEventUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class SellableInventoryItemHistoryState
+    /// Request object for method Get of class InventoryItemRequirementHistoryState
     /// </summary>
-    public partial class SellableInventoryItemHistoryStateGetRequest : ApiRequest
+    public partial class InventoryItemRequirementHistoryStateGetRequest : ApiRequest
     {
-        public SellableInventoryItemHistoryStateGetRequest(SellableInventoryItemHistoryStateUriParameters UriParameters)
+        public InventoryItemRequirementHistoryStateGetRequest(InventoryItemRequirementHistoryStateUriParameters UriParameters)
         {
             this.UriParameters = UriParameters;
         }
@@ -20364,16 +21554,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemHistoryStateUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementHistoryStateUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class SellableInventoryItemEntry
+    /// Request object for method Get of class InventoryItemRequirementEntry
     /// </summary>
-    public partial class SellableInventoryItemEntryGetRequest : ApiRequest
+    public partial class InventoryItemRequirementEntryGetRequest : ApiRequest
     {
-        public SellableInventoryItemEntryGetRequest(SellableInventoryItemEntryUriParameters UriParameters)
+        public InventoryItemRequirementEntryGetRequest(InventoryItemRequirementEntryUriParameters UriParameters)
         {
             this.UriParameters = UriParameters;
         }
@@ -20381,7 +21571,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemEntryUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementEntryUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -22225,6 +23415,189 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// Request Uri Parameters
         /// </summary>
         public ProductCategoryMemberHistoryStateUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class SellableInventoryItem
+    /// </summary>
+    public partial class SellableInventoryItemGetRequest : ApiRequest
+    {
+        public SellableInventoryItemGetRequest(SellableInventoryItemUriParameters UriParameters, SellableInventoryItemGetQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public SellableInventoryItemGetQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Put of class SellableInventoryItem
+    /// </summary>
+    public partial class SellableInventoryItemPutRequest : ApiRequest
+    {
+        public SellableInventoryItemPutRequest(SellableInventoryItemUriParameters UriParameters, CreateSellableInventoryItemDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public CreateSellableInventoryItemDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Patch of class SellableInventoryItem
+    /// </summary>
+    public partial class SellableInventoryItemPatchRequest : ApiRequest
+    {
+        public SellableInventoryItemPatchRequest(SellableInventoryItemUriParameters UriParameters, MergePatchSellableInventoryItemDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public MergePatchSellableInventoryItemDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Delete of class SellableInventoryItem
+    /// </summary>
+    public partial class SellableInventoryItemDeleteRequest : ApiRequest
+    {
+        public SellableInventoryItemDeleteRequest(SellableInventoryItemUriParameters UriParameters, SellableInventoryItemDeleteQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public SellableInventoryItemDeleteQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class SellableInventoryItems
+    /// </summary>
+    public partial class SellableInventoryItemsGetRequest : ApiRequest
+    {
+        public SellableInventoryItemsGetRequest(SellableInventoryItemsGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public SellableInventoryItemsGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class SellableInventoryItemsCount
+    /// </summary>
+    public partial class SellableInventoryItemsCountGetRequest : ApiRequest
+    {
+        public SellableInventoryItemsCountGetRequest(SellableInventoryItemsCountGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public SellableInventoryItemsCountGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class SellableInventoryItemStateEvent
+    /// </summary>
+    public partial class SellableInventoryItemStateEventGetRequest : ApiRequest
+    {
+        public SellableInventoryItemStateEventGetRequest(SellableInventoryItemStateEventUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemStateEventUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class SellableInventoryItemHistoryState
+    /// </summary>
+    public partial class SellableInventoryItemHistoryStateGetRequest : ApiRequest
+    {
+        public SellableInventoryItemHistoryStateGetRequest(SellableInventoryItemHistoryStateUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemHistoryStateUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class SellableInventoryItemEntry
+    /// </summary>
+    public partial class SellableInventoryItemEntryGetRequest : ApiRequest
+    {
+        public SellableInventoryItemEntryGetRequest(SellableInventoryItemEntryUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemEntryUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -24277,11 +25650,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class SellableInventoryItemEntryMvo
+    /// Request object for method Get of class InventoryItemRequirementEntryMvo
     /// </summary>
-    public partial class SellableInventoryItemEntryMvoGetRequest : ApiRequest
+    public partial class InventoryItemRequirementEntryMvoGetRequest : ApiRequest
     {
-        public SellableInventoryItemEntryMvoGetRequest(SellableInventoryItemEntryMvoUriParameters UriParameters, SellableInventoryItemEntryMvoGetQuery Query = null)
+        public InventoryItemRequirementEntryMvoGetRequest(InventoryItemRequirementEntryMvoUriParameters UriParameters, InventoryItemRequirementEntryMvoGetQuery Query = null)
         {
             this.Query = Query;
             this.UriParameters = UriParameters;
@@ -24290,20 +25663,20 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public SellableInventoryItemEntryMvoGetQuery Query { get; set; }
+        public InventoryItemRequirementEntryMvoGetQuery Query { get; set; }
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemEntryMvoUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementEntryMvoUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Put of class SellableInventoryItemEntryMvo
+    /// Request object for method Put of class InventoryItemRequirementEntryMvo
     /// </summary>
-    public partial class SellableInventoryItemEntryMvoPutRequest : ApiRequest
+    public partial class InventoryItemRequirementEntryMvoPutRequest : ApiRequest
     {
-        public SellableInventoryItemEntryMvoPutRequest(SellableInventoryItemEntryMvoUriParameters UriParameters, CreateSellableInventoryItemEntryMvoDto Content = null, MediaTypeFormatter Formatter = null)
+        public InventoryItemRequirementEntryMvoPutRequest(InventoryItemRequirementEntryMvoUriParameters UriParameters, CreateInventoryItemRequirementEntryMvoDto Content = null, MediaTypeFormatter Formatter = null)
         {
             this.Content = Content;
             this.Formatter = Formatter;
@@ -24313,7 +25686,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request content
         /// </summary>
-        public CreateSellableInventoryItemEntryMvoDto Content { get; set; }
+        public CreateInventoryItemRequirementEntryMvoDto Content { get; set; }
         /// <summary>
         /// Request formatter
         /// </summary>
@@ -24321,16 +25694,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemEntryMvoUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementEntryMvoUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Patch of class SellableInventoryItemEntryMvo
+    /// Request object for method Patch of class InventoryItemRequirementEntryMvo
     /// </summary>
-    public partial class SellableInventoryItemEntryMvoPatchRequest : ApiRequest
+    public partial class InventoryItemRequirementEntryMvoPatchRequest : ApiRequest
     {
-        public SellableInventoryItemEntryMvoPatchRequest(SellableInventoryItemEntryMvoUriParameters UriParameters, MergePatchSellableInventoryItemEntryMvoDto Content = null, MediaTypeFormatter Formatter = null)
+        public InventoryItemRequirementEntryMvoPatchRequest(InventoryItemRequirementEntryMvoUriParameters UriParameters, MergePatchInventoryItemRequirementEntryMvoDto Content = null, MediaTypeFormatter Formatter = null)
         {
             this.Content = Content;
             this.Formatter = Formatter;
@@ -24340,7 +25713,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request content
         /// </summary>
-        public MergePatchSellableInventoryItemEntryMvoDto Content { get; set; }
+        public MergePatchInventoryItemRequirementEntryMvoDto Content { get; set; }
         /// <summary>
         /// Request formatter
         /// </summary>
@@ -24348,16 +25721,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemEntryMvoUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementEntryMvoUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Delete of class SellableInventoryItemEntryMvo
+    /// Request object for method Delete of class InventoryItemRequirementEntryMvo
     /// </summary>
-    public partial class SellableInventoryItemEntryMvoDeleteRequest : ApiRequest
+    public partial class InventoryItemRequirementEntryMvoDeleteRequest : ApiRequest
     {
-        public SellableInventoryItemEntryMvoDeleteRequest(SellableInventoryItemEntryMvoUriParameters UriParameters, SellableInventoryItemEntryMvoDeleteQuery Query = null)
+        public InventoryItemRequirementEntryMvoDeleteRequest(InventoryItemRequirementEntryMvoUriParameters UriParameters, InventoryItemRequirementEntryMvoDeleteQuery Query = null)
         {
             this.Query = Query;
             this.UriParameters = UriParameters;
@@ -24366,20 +25739,20 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public SellableInventoryItemEntryMvoDeleteQuery Query { get; set; }
+        public InventoryItemRequirementEntryMvoDeleteQuery Query { get; set; }
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemEntryMvoUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementEntryMvoUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class SellableInventoryItemEntryMvos
+    /// Request object for method Get of class InventoryItemRequirementEntryMvos
     /// </summary>
-    public partial class SellableInventoryItemEntryMvosGetRequest : ApiRequest
+    public partial class InventoryItemRequirementEntryMvosGetRequest : ApiRequest
     {
-        public SellableInventoryItemEntryMvosGetRequest(SellableInventoryItemEntryMvosGetQuery Query = null)
+        public InventoryItemRequirementEntryMvosGetRequest(InventoryItemRequirementEntryMvosGetQuery Query = null)
         {
             this.Query = Query;
         }
@@ -24387,16 +25760,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public SellableInventoryItemEntryMvosGetQuery Query { get; set; }
+        public InventoryItemRequirementEntryMvosGetQuery Query { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class SellableInventoryItemEntryMvosCount
+    /// Request object for method Get of class InventoryItemRequirementEntryMvosCount
     /// </summary>
-    public partial class SellableInventoryItemEntryMvosCountGetRequest : ApiRequest
+    public partial class InventoryItemRequirementEntryMvosCountGetRequest : ApiRequest
     {
-        public SellableInventoryItemEntryMvosCountGetRequest(SellableInventoryItemEntryMvosCountGetQuery Query = null)
+        public InventoryItemRequirementEntryMvosCountGetRequest(InventoryItemRequirementEntryMvosCountGetQuery Query = null)
         {
             this.Query = Query;
         }
@@ -24404,16 +25777,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request query string properties
         /// </summary>
-        public SellableInventoryItemEntryMvosCountGetQuery Query { get; set; }
+        public InventoryItemRequirementEntryMvosCountGetQuery Query { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class SellableInventoryItemEntryMvoStateEvent
+    /// Request object for method Get of class InventoryItemRequirementEntryMvoStateEvent
     /// </summary>
-    public partial class SellableInventoryItemEntryMvoStateEventGetRequest : ApiRequest
+    public partial class InventoryItemRequirementEntryMvoStateEventGetRequest : ApiRequest
     {
-        public SellableInventoryItemEntryMvoStateEventGetRequest(SellableInventoryItemEntryMvoStateEventUriParameters UriParameters)
+        public InventoryItemRequirementEntryMvoStateEventGetRequest(InventoryItemRequirementEntryMvoStateEventUriParameters UriParameters)
         {
             this.UriParameters = UriParameters;
         }
@@ -24421,16 +25794,16 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemEntryMvoStateEventUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementEntryMvoStateEventUriParameters UriParameters { get; set; }
 
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class SellableInventoryItemEntryMvoHistoryState
+    /// Request object for method Get of class InventoryItemRequirementEntryMvoHistoryState
     /// </summary>
-    public partial class SellableInventoryItemEntryMvoHistoryStateGetRequest : ApiRequest
+    public partial class InventoryItemRequirementEntryMvoHistoryStateGetRequest : ApiRequest
     {
-        public SellableInventoryItemEntryMvoHistoryStateGetRequest(SellableInventoryItemEntryMvoHistoryStateUriParameters UriParameters)
+        public InventoryItemRequirementEntryMvoHistoryStateGetRequest(InventoryItemRequirementEntryMvoHistoryStateUriParameters UriParameters)
         {
             this.UriParameters = UriParameters;
         }
@@ -24438,7 +25811,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// <summary>
         /// Request Uri Parameters
         /// </summary>
-        public SellableInventoryItemEntryMvoHistoryStateUriParameters UriParameters { get; set; }
+        public InventoryItemRequirementEntryMvoHistoryStateUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -24605,6 +25978,172 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// Request Uri Parameters
         /// </summary>
         public OrderItemMvoHistoryStateUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class SellableInventoryItemEntryMvo
+    /// </summary>
+    public partial class SellableInventoryItemEntryMvoGetRequest : ApiRequest
+    {
+        public SellableInventoryItemEntryMvoGetRequest(SellableInventoryItemEntryMvoUriParameters UriParameters, SellableInventoryItemEntryMvoGetQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public SellableInventoryItemEntryMvoGetQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemEntryMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Put of class SellableInventoryItemEntryMvo
+    /// </summary>
+    public partial class SellableInventoryItemEntryMvoPutRequest : ApiRequest
+    {
+        public SellableInventoryItemEntryMvoPutRequest(SellableInventoryItemEntryMvoUriParameters UriParameters, CreateSellableInventoryItemEntryMvoDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public CreateSellableInventoryItemEntryMvoDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemEntryMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Patch of class SellableInventoryItemEntryMvo
+    /// </summary>
+    public partial class SellableInventoryItemEntryMvoPatchRequest : ApiRequest
+    {
+        public SellableInventoryItemEntryMvoPatchRequest(SellableInventoryItemEntryMvoUriParameters UriParameters, MergePatchSellableInventoryItemEntryMvoDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public MergePatchSellableInventoryItemEntryMvoDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemEntryMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Delete of class SellableInventoryItemEntryMvo
+    /// </summary>
+    public partial class SellableInventoryItemEntryMvoDeleteRequest : ApiRequest
+    {
+        public SellableInventoryItemEntryMvoDeleteRequest(SellableInventoryItemEntryMvoUriParameters UriParameters, SellableInventoryItemEntryMvoDeleteQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public SellableInventoryItemEntryMvoDeleteQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemEntryMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class SellableInventoryItemEntryMvos
+    /// </summary>
+    public partial class SellableInventoryItemEntryMvosGetRequest : ApiRequest
+    {
+        public SellableInventoryItemEntryMvosGetRequest(SellableInventoryItemEntryMvosGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public SellableInventoryItemEntryMvosGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class SellableInventoryItemEntryMvosCount
+    /// </summary>
+    public partial class SellableInventoryItemEntryMvosCountGetRequest : ApiRequest
+    {
+        public SellableInventoryItemEntryMvosCountGetRequest(SellableInventoryItemEntryMvosCountGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public SellableInventoryItemEntryMvosCountGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class SellableInventoryItemEntryMvoStateEvent
+    /// </summary>
+    public partial class SellableInventoryItemEntryMvoStateEventGetRequest : ApiRequest
+    {
+        public SellableInventoryItemEntryMvoStateEventGetRequest(SellableInventoryItemEntryMvoStateEventUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemEntryMvoStateEventUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class SellableInventoryItemEntryMvoHistoryState
+    /// </summary>
+    public partial class SellableInventoryItemEntryMvoHistoryStateGetRequest : ApiRequest
+    {
+        public SellableInventoryItemEntryMvoHistoryStateGetRequest(SellableInventoryItemEntryMvoHistoryStateUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public SellableInventoryItemEntryMvoHistoryStateUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -26151,18 +27690,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class SellableInventoryItem
+    /// Response object for method Get of class InventoryItemRequirement
     /// </summary>
 
-    public partial class SellableInventoryItemGetResponse : ApiResponse
+    public partial class InventoryItemRequirementGetResponse : ApiResponse
     {
 
 
-	    private SellableInventoryItemStateDto typedContent;
+	    private InventoryItemRequirementStateDto typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public SellableInventoryItemStateDto Content 
+        public InventoryItemRequirementStateDto Content 
     	{
 	        get
 	        {
@@ -26179,13 +27718,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (SellableInventoryItemStateDto)new XmlSerializer(typeof(SellableInventoryItemStateDto)).Deserialize(xmlStream);
+                    typedContent = (InventoryItemRequirementStateDto)new XmlSerializer(typeof(InventoryItemRequirementStateDto)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<SellableInventoryItemStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<SellableInventoryItemStateDto>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<InventoryItemRequirementStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<InventoryItemRequirementStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -26200,18 +27739,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class SellableInventoryItems
+    /// Response object for method Get of class InventoryItemRequirements
     /// </summary>
 
-    public partial class SellableInventoryItemsGetResponse : ApiResponse
+    public partial class InventoryItemRequirementsGetResponse : ApiResponse
     {
 
 
-	    private IList<SellableInventoryItemStateDto> typedContent;
+	    private IList<InventoryItemRequirementStateDto> typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public IList<SellableInventoryItemStateDto> Content 
+        public IList<InventoryItemRequirementStateDto> Content 
     	{
 	        get
 	        {
@@ -26228,13 +27767,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (IList<SellableInventoryItemStateDto>)new XmlSerializer(typeof(IList<SellableInventoryItemStateDto>)).Deserialize(xmlStream);
+                    typedContent = (IList<InventoryItemRequirementStateDto>)new XmlSerializer(typeof(IList<InventoryItemRequirementStateDto>)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<IList<SellableInventoryItemStateDto>>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<IList<SellableInventoryItemStateDto>>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<IList<InventoryItemRequirementStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<InventoryItemRequirementStateDto>>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -26249,18 +27788,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class SellableInventoryItemStateEvent
+    /// Response object for method Get of class InventoryItemRequirementStateEvent
     /// </summary>
 
-    public partial class SellableInventoryItemStateEventGetResponse : ApiResponse
+    public partial class InventoryItemRequirementStateEventGetResponse : ApiResponse
     {
 
 
-	    private SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto typedContent;
+	    private InventoryItemRequirementStateCreatedOrMergePatchedOrDeletedDto typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto Content 
+        public InventoryItemRequirementStateCreatedOrMergePatchedOrDeletedDto Content 
     	{
 	        get
 	        {
@@ -26277,13 +27816,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                    typedContent = (InventoryItemRequirementStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(InventoryItemRequirementStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<InventoryItemRequirementStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<InventoryItemRequirementStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -26298,18 +27837,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class SellableInventoryItemHistoryState
+    /// Response object for method Get of class InventoryItemRequirementHistoryState
     /// </summary>
 
-    public partial class SellableInventoryItemHistoryStateGetResponse : ApiResponse
+    public partial class InventoryItemRequirementHistoryStateGetResponse : ApiResponse
     {
 
 
-	    private SellableInventoryItemStateDto typedContent;
+	    private InventoryItemRequirementStateDto typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public SellableInventoryItemStateDto Content 
+        public InventoryItemRequirementStateDto Content 
     	{
 	        get
 	        {
@@ -26326,13 +27865,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (SellableInventoryItemStateDto)new XmlSerializer(typeof(SellableInventoryItemStateDto)).Deserialize(xmlStream);
+                    typedContent = (InventoryItemRequirementStateDto)new XmlSerializer(typeof(InventoryItemRequirementStateDto)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<SellableInventoryItemStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<SellableInventoryItemStateDto>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<InventoryItemRequirementStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<InventoryItemRequirementStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -26347,18 +27886,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class SellableInventoryItemEntry
+    /// Response object for method Get of class InventoryItemRequirementEntry
     /// </summary>
 
-    public partial class SellableInventoryItemEntryGetResponse : ApiResponse
+    public partial class InventoryItemRequirementEntryGetResponse : ApiResponse
     {
 
 
-	    private SellableInventoryItemEntryStateDto typedContent;
+	    private InventoryItemRequirementEntryStateDto typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public SellableInventoryItemEntryStateDto Content 
+        public InventoryItemRequirementEntryStateDto Content 
     	{
 	        get
 	        {
@@ -26375,13 +27914,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (SellableInventoryItemEntryStateDto)new XmlSerializer(typeof(SellableInventoryItemEntryStateDto)).Deserialize(xmlStream);
+                    typedContent = (InventoryItemRequirementEntryStateDto)new XmlSerializer(typeof(InventoryItemRequirementEntryStateDto)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<SellableInventoryItemEntryStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<SellableInventoryItemEntryStateDto>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<InventoryItemRequirementEntryStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<InventoryItemRequirementEntryStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -28587,6 +30126,251 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task =  Formatters != null && Formatters.Any() 
                                 ? RawContent.ReadAsAsync<ProductCategoryMemberStateDto>(Formatters).ConfigureAwait(false)
                                 : RawContent.ReadAsAsync<ProductCategoryMemberStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class SellableInventoryItem
+    /// </summary>
+
+    public partial class SellableInventoryItemGetResponse : ApiResponse
+    {
+
+
+	    private SellableInventoryItemStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public SellableInventoryItemStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (SellableInventoryItemStateDto)new XmlSerializer(typeof(SellableInventoryItemStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<SellableInventoryItemStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<SellableInventoryItemStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class SellableInventoryItems
+    /// </summary>
+
+    public partial class SellableInventoryItemsGetResponse : ApiResponse
+    {
+
+
+	    private IList<SellableInventoryItemStateDto> typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public IList<SellableInventoryItemStateDto> Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (IList<SellableInventoryItemStateDto>)new XmlSerializer(typeof(IList<SellableInventoryItemStateDto>)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<IList<SellableInventoryItemStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<SellableInventoryItemStateDto>>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class SellableInventoryItemStateEvent
+    /// </summary>
+
+    public partial class SellableInventoryItemStateEventGetResponse : ApiResponse
+    {
+
+
+	    private SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class SellableInventoryItemHistoryState
+    /// </summary>
+
+    public partial class SellableInventoryItemHistoryStateGetResponse : ApiResponse
+    {
+
+
+	    private SellableInventoryItemStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public SellableInventoryItemStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (SellableInventoryItemStateDto)new XmlSerializer(typeof(SellableInventoryItemStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<SellableInventoryItemStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<SellableInventoryItemStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class SellableInventoryItemEntry
+    /// </summary>
+
+    public partial class SellableInventoryItemEntryGetResponse : ApiResponse
+    {
+
+
+	    private SellableInventoryItemEntryStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public SellableInventoryItemEntryStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (SellableInventoryItemEntryStateDto)new XmlSerializer(typeof(SellableInventoryItemEntryStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<SellableInventoryItemEntryStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<SellableInventoryItemEntryStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -31051,18 +32835,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class SellableInventoryItemEntryMvo
+    /// Response object for method Get of class InventoryItemRequirementEntryMvo
     /// </summary>
 
-    public partial class SellableInventoryItemEntryMvoGetResponse : ApiResponse
+    public partial class InventoryItemRequirementEntryMvoGetResponse : ApiResponse
     {
 
 
-	    private SellableInventoryItemEntryMvoStateDto typedContent;
+	    private InventoryItemRequirementEntryMvoStateDto typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public SellableInventoryItemEntryMvoStateDto Content 
+        public InventoryItemRequirementEntryMvoStateDto Content 
     	{
 	        get
 	        {
@@ -31079,13 +32863,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (SellableInventoryItemEntryMvoStateDto)new XmlSerializer(typeof(SellableInventoryItemEntryMvoStateDto)).Deserialize(xmlStream);
+                    typedContent = (InventoryItemRequirementEntryMvoStateDto)new XmlSerializer(typeof(InventoryItemRequirementEntryMvoStateDto)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateDto>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<InventoryItemRequirementEntryMvoStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<InventoryItemRequirementEntryMvoStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -31100,18 +32884,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class SellableInventoryItemEntryMvos
+    /// Response object for method Get of class InventoryItemRequirementEntryMvos
     /// </summary>
 
-    public partial class SellableInventoryItemEntryMvosGetResponse : ApiResponse
+    public partial class InventoryItemRequirementEntryMvosGetResponse : ApiResponse
     {
 
 
-	    private IList<SellableInventoryItemEntryMvoStateDto> typedContent;
+	    private IList<InventoryItemRequirementEntryMvoStateDto> typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public IList<SellableInventoryItemEntryMvoStateDto> Content 
+        public IList<InventoryItemRequirementEntryMvoStateDto> Content 
     	{
 	        get
 	        {
@@ -31128,13 +32912,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (IList<SellableInventoryItemEntryMvoStateDto>)new XmlSerializer(typeof(IList<SellableInventoryItemEntryMvoStateDto>)).Deserialize(xmlStream);
+                    typedContent = (IList<InventoryItemRequirementEntryMvoStateDto>)new XmlSerializer(typeof(IList<InventoryItemRequirementEntryMvoStateDto>)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<IList<SellableInventoryItemEntryMvoStateDto>>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<IList<SellableInventoryItemEntryMvoStateDto>>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<IList<InventoryItemRequirementEntryMvoStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<InventoryItemRequirementEntryMvoStateDto>>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -31149,18 +32933,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class SellableInventoryItemEntryMvoStateEvent
+    /// Response object for method Get of class InventoryItemRequirementEntryMvoStateEvent
     /// </summary>
 
-    public partial class SellableInventoryItemEntryMvoStateEventGetResponse : ApiResponse
+    public partial class InventoryItemRequirementEntryMvoStateEventGetResponse : ApiResponse
     {
 
 
-	    private SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto typedContent;
+	    private InventoryItemRequirementEntryMvoStateCreatedOrMergePatchedOrDeletedDto typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto Content 
+        public InventoryItemRequirementEntryMvoStateCreatedOrMergePatchedOrDeletedDto Content 
     	{
 	        get
 	        {
@@ -31177,13 +32961,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                    typedContent = (InventoryItemRequirementEntryMvoStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(InventoryItemRequirementEntryMvoStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<InventoryItemRequirementEntryMvoStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<InventoryItemRequirementEntryMvoStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -31198,18 +32982,18 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class SellableInventoryItemEntryMvoHistoryState
+    /// Response object for method Get of class InventoryItemRequirementEntryMvoHistoryState
     /// </summary>
 
-    public partial class SellableInventoryItemEntryMvoHistoryStateGetResponse : ApiResponse
+    public partial class InventoryItemRequirementEntryMvoHistoryStateGetResponse : ApiResponse
     {
 
 
-	    private SellableInventoryItemEntryMvoStateDto typedContent;
+	    private InventoryItemRequirementEntryMvoStateDto typedContent;
         /// <summary>
         /// Typed Response content
         /// </summary>
-        public SellableInventoryItemEntryMvoStateDto Content 
+        public InventoryItemRequirementEntryMvoStateDto Content 
     	{
 	        get
 	        {
@@ -31226,13 +33010,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task = RawContent.ReadAsStreamAsync();
 
                     var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (SellableInventoryItemEntryMvoStateDto)new XmlSerializer(typeof(SellableInventoryItemEntryMvoStateDto)).Deserialize(xmlStream);
+                    typedContent = (InventoryItemRequirementEntryMvoStateDto)new XmlSerializer(typeof(InventoryItemRequirementEntryMvoStateDto)).Deserialize(xmlStream);
                 }
                 else
                 {
                     var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateDto>().ConfigureAwait(false);
+                                ? RawContent.ReadAsAsync<InventoryItemRequirementEntryMvoStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<InventoryItemRequirementEntryMvoStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -31429,6 +33213,202 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task =  Formatters != null && Formatters.Any() 
                                 ? RawContent.ReadAsAsync<OrderItemMvoStateDto>(Formatters).ConfigureAwait(false)
                                 : RawContent.ReadAsAsync<OrderItemMvoStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class SellableInventoryItemEntryMvo
+    /// </summary>
+
+    public partial class SellableInventoryItemEntryMvoGetResponse : ApiResponse
+    {
+
+
+	    private SellableInventoryItemEntryMvoStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public SellableInventoryItemEntryMvoStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (SellableInventoryItemEntryMvoStateDto)new XmlSerializer(typeof(SellableInventoryItemEntryMvoStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class SellableInventoryItemEntryMvos
+    /// </summary>
+
+    public partial class SellableInventoryItemEntryMvosGetResponse : ApiResponse
+    {
+
+
+	    private IList<SellableInventoryItemEntryMvoStateDto> typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public IList<SellableInventoryItemEntryMvoStateDto> Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (IList<SellableInventoryItemEntryMvoStateDto>)new XmlSerializer(typeof(IList<SellableInventoryItemEntryMvoStateDto>)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<IList<SellableInventoryItemEntryMvoStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<SellableInventoryItemEntryMvoStateDto>>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class SellableInventoryItemEntryMvoStateEvent
+    /// </summary>
+
+    public partial class SellableInventoryItemEntryMvoStateEventGetResponse : ApiResponse
+    {
+
+
+	    private SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class SellableInventoryItemEntryMvoHistoryState
+    /// </summary>
+
+    public partial class SellableInventoryItemEntryMvoHistoryStateGetResponse : ApiResponse
+    {
+
+
+	    private SellableInventoryItemEntryMvoStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public SellableInventoryItemEntryMvoStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (SellableInventoryItemEntryMvoStateDto)new XmlSerializer(typeof(SellableInventoryItemEntryMvoStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<SellableInventoryItemEntryMvoStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }

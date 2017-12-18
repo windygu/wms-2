@@ -82,6 +82,8 @@
 .\InOutLineMvoResource.java
 .\InOutResource.java
 .\InventoryItemEntryMvoResource.java
+.\InventoryItemRequirementEntryMvoResource.java
+.\InventoryItemRequirementResource.java
 .\InventoryItemResource.java
 .\InventoryPostingRuleResource.java
 .\InventoryPRTriggeredResource.java
@@ -138,6 +140,12 @@
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\InventoryItemEntryMvoResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\InventoryItemRequirementEntryMvoResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\InventoryItemRequirementResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\InventoryItemResource.java">

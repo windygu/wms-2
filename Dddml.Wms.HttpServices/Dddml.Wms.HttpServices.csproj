@@ -305,6 +305,12 @@
     <Compile Include="Generated\Controllers\InventoryItemEntryMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\InventoryItemRequirementEntryMvosController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\InventoryItemRequirementsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\InventoryItemsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -443,6 +449,8 @@
 .\InOutLineMvosController.cs
 .\InOutsController.cs
 .\InventoryItemEntryMvosController.cs
+.\InventoryItemRequirementEntryMvosController.cs
+.\InventoryItemRequirementsController.cs
 .\InventoryItemsController.cs
 .\InventoryPostingRulesController.cs
 .\InventoryPRTriggeredsController.cs

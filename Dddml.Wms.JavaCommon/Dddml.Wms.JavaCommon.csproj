@@ -1275,6 +1275,241 @@
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitementrymvo\InventoryItemEntryMvoStateRepository.java">
       <DependentUpon>GenerateInventoryItemEntryMvoDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\AbstractInventoryItemRequirementEntryMvoAggregate.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\AbstractInventoryItemRequirementEntryMvoApplicationService.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\AbstractInventoryItemRequirementEntryMvoCommand.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\AbstractInventoryItemRequirementEntryMvoCommandDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\AbstractInventoryItemRequirementEntryMvoState.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\AbstractInventoryItemRequirementEntryMvoStateCommandConverter.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\AbstractInventoryItemRequirementEntryMvoStateEvent.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\CreateOrMergePatchInventoryItemRequirementEntryMvoDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\DeleteInventoryItemRequirementEntryMvoDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\GenerateInventoryItemRequirementEntryMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoAggregate.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoApplicationService.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoCommand.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoState.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoStateDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoStateEvent.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoStateEventDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoStateEventDtoConverter.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoStateEventId.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoStateEventIdDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoStateQueryRepository.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\InventoryItemRequirementEntryMvoStateRepository.java">
+      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementAggregate.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementApplicationService.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementCommand.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementCommandDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementEntryCommand.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementEntryCommandDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementEntryState.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementEntryStateCommandConverter.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementEntryStateEvent.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementEntryStates.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementState.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementStateCommandConverter.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementStateEvent.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\CreateOrMergePatchInventoryItemRequirementDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\CreateOrMergePatchInventoryItemRequirementEntryDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\DeleteInventoryItemRequirementDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\GenerateInventoryItemRequirementDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementAggregate.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementApplicationService.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementCommand.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryCommand.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryId.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryIdDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryIdDtoWrapper.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryIdFlattenedDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryState.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateDao.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateEvent.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateEventDao.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateEventDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateEventDtoConverter.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateEventId.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateEventIdDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStates.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementState.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateEvent.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateEventDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateEventDtoConverter.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateEventId.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateEventIdDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateQueryRepository.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateRepository.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\RemoveInventoryItemRequirementEntryDto.java">
+      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\AbstractInventoryItemAggregate.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
@@ -1823,6 +2058,12 @@
 .\InventoryItemEntryMvoMetadata.java
 .\InventoryItemFilteringProperties.java
 .\InventoryItemMetadata.java
+.\InventoryItemRequirementEntryFilteringProperties.java
+.\InventoryItemRequirementEntryMetadata.java
+.\InventoryItemRequirementEntryMvoFilteringProperties.java
+.\InventoryItemRequirementEntryMvoMetadata.java
+.\InventoryItemRequirementFilteringProperties.java
+.\InventoryItemRequirementMetadata.java
 .\InventoryPostingRuleFilteringProperties.java
 .\InventoryPostingRuleMetadata.java
 .\InventoryPRTriggeredFilteringProperties.java
@@ -1925,6 +2166,24 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemRequirementEntryFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemRequirementEntryMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemRequirementEntryMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemRequirementEntryMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemRequirementFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryItemRequirementMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\InventoryPostingRuleFilteringProperties.java">
@@ -5065,6 +5324,95 @@
 .\ShipmentItemMvoStateEventIdFlattenedDtoFormatter.java
 .\ShipmentItemMvoStateQueryRepository.java
 .\ShipmentItemMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\GenerateInventoryItemRequirementDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInventoryItemRequirementDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractInventoryItemRequirementAggregate.java
+.\AbstractInventoryItemRequirementApplicationService.java
+.\AbstractInventoryItemRequirementCommand.java
+.\AbstractInventoryItemRequirementCommandDto.java
+.\AbstractInventoryItemRequirementEntryCommand.java
+.\AbstractInventoryItemRequirementEntryCommandDto.java
+.\AbstractInventoryItemRequirementEntryState.java
+.\AbstractInventoryItemRequirementEntryStateCommandConverter.java
+.\AbstractInventoryItemRequirementEntryStateEvent.java
+.\AbstractInventoryItemRequirementEntryStates.java
+.\AbstractInventoryItemRequirementState.java
+.\AbstractInventoryItemRequirementStateCommandConverter.java
+.\AbstractInventoryItemRequirementStateEvent.java
+.\CreateOrMergePatchInventoryItemRequirementDto.java
+.\CreateOrMergePatchInventoryItemRequirementEntryDto.java
+.\DeleteInventoryItemRequirementDto.java
+.\GenerateInventoryItemRequirementDomain.txt
+.\InventoryItemRequirementAggregate.java
+.\InventoryItemRequirementApplicationService.java
+.\InventoryItemRequirementCommand.java
+.\InventoryItemRequirementEntryCommand.java
+.\InventoryItemRequirementEntryId.java
+.\InventoryItemRequirementEntryIdDto.java
+.\InventoryItemRequirementEntryIdDtoWrapper.java
+.\InventoryItemRequirementEntryIdFlattenedDto.java
+.\InventoryItemRequirementEntryIdFlattenedDtoFormatter.java
+.\InventoryItemRequirementEntryState.java
+.\InventoryItemRequirementEntryStateDao.java
+.\InventoryItemRequirementEntryStateDto.java
+.\InventoryItemRequirementEntryStateEvent.java
+.\InventoryItemRequirementEntryStateEventDao.java
+.\InventoryItemRequirementEntryStateEventDto.java
+.\InventoryItemRequirementEntryStateEventDtoConverter.java
+.\InventoryItemRequirementEntryStateEventId.java
+.\InventoryItemRequirementEntryStateEventIdDto.java
+.\InventoryItemRequirementEntryStateEventIdDtoWrapper.java
+.\InventoryItemRequirementEntryStateEventIdFlattenedDto.java
+.\InventoryItemRequirementEntryStateEventIdFlattenedDtoFormatter.java
+.\InventoryItemRequirementEntryStates.java
+.\InventoryItemRequirementState.java
+.\InventoryItemRequirementStateDto.java
+.\InventoryItemRequirementStateEvent.java
+.\InventoryItemRequirementStateEventDto.java
+.\InventoryItemRequirementStateEventDtoConverter.java
+.\InventoryItemRequirementStateEventId.java
+.\InventoryItemRequirementStateEventIdDto.java
+.\InventoryItemRequirementStateEventIdDtoWrapper.java
+.\InventoryItemRequirementStateEventIdFlattenedDto.java
+.\InventoryItemRequirementStateEventIdFlattenedDtoFormatter.java
+.\InventoryItemRequirementStateQueryRepository.java
+.\InventoryItemRequirementStateRepository.java
+.\RemoveInventoryItemRequirementEntryDto.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\GenerateInventoryItemRequirementEntryMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInventoryItemRequirementEntryMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractInventoryItemRequirementEntryMvoAggregate.java
+.\AbstractInventoryItemRequirementEntryMvoApplicationService.java
+.\AbstractInventoryItemRequirementEntryMvoCommand.java
+.\AbstractInventoryItemRequirementEntryMvoCommandDto.java
+.\AbstractInventoryItemRequirementEntryMvoState.java
+.\AbstractInventoryItemRequirementEntryMvoStateCommandConverter.java
+.\AbstractInventoryItemRequirementEntryMvoStateEvent.java
+.\CreateOrMergePatchInventoryItemRequirementEntryMvoDto.java
+.\DeleteInventoryItemRequirementEntryMvoDto.java
+.\GenerateInventoryItemRequirementEntryMvoDomain.txt
+.\InventoryItemRequirementEntryMvoAggregate.java
+.\InventoryItemRequirementEntryMvoApplicationService.java
+.\InventoryItemRequirementEntryMvoCommand.java
+.\InventoryItemRequirementEntryMvoState.java
+.\InventoryItemRequirementEntryMvoStateDto.java
+.\InventoryItemRequirementEntryMvoStateEvent.java
+.\InventoryItemRequirementEntryMvoStateEventDto.java
+.\InventoryItemRequirementEntryMvoStateEventDtoConverter.java
+.\InventoryItemRequirementEntryMvoStateEventId.java
+.\InventoryItemRequirementEntryMvoStateEventIdDto.java
+.\InventoryItemRequirementEntryMvoStateEventIdDtoWrapper.java
+.\InventoryItemRequirementEntryMvoStateEventIdFlattenedDto.java
+.\InventoryItemRequirementEntryMvoStateEventIdFlattenedDtoFormatter.java
+.\InventoryItemRequirementEntryMvoStateQueryRepository.java
+.\InventoryItemRequirementEntryMvoStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

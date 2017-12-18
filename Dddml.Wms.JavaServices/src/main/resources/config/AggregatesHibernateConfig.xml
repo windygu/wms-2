@@ -143,24 +143,24 @@
   </bean>
 
 
-  <bean id="sellableInventoryItemEntryStateDao" class="org.dddml.wms.domain.sellableinventoryitem.hibernate.HibernateSellableInventoryItemEntryStateDao">
+  <bean id="inventoryItemRequirementEntryStateDao" class="org.dddml.wms.domain.inventoryitemrequirement.hibernate.HibernateInventoryItemRequirementEntryStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="sellableInventoryItemStateRepository" class="org.dddml.wms.domain.sellableinventoryitem.hibernate.HibernateSellableInventoryItemStateRepository">
+  <bean id="inventoryItemRequirementStateRepository" class="org.dddml.wms.domain.inventoryitemrequirement.hibernate.HibernateInventoryItemRequirementStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="sellableInventoryItemStateQueryRepository" class="org.dddml.wms.domain.sellableinventoryitem.hibernate.HibernateSellableInventoryItemStateQueryRepository">
+  <bean id="inventoryItemRequirementStateQueryRepository" class="org.dddml.wms.domain.inventoryitemrequirement.hibernate.HibernateInventoryItemRequirementStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="sellableInventoryItemApplicationService" class="org.dddml.wms.domain.sellableinventoryitem.AbstractSellableInventoryItemApplicationService$SimpleSellableInventoryItemApplicationService">
-    <constructor-arg ref="sellableInventoryItemStateRepository"/>
-    <constructor-arg ref="sellableInventoryItemStateQueryRepository"/>
+  <bean id="inventoryItemRequirementApplicationService" class="org.dddml.wms.domain.inventoryitemrequirement.AbstractInventoryItemRequirementApplicationService$SimpleInventoryItemRequirementApplicationService">
+    <constructor-arg ref="inventoryItemRequirementStateRepository"/>
+    <constructor-arg ref="inventoryItemRequirementStateQueryRepository"/>
   </bean>
 
 
@@ -391,6 +391,27 @@
     <constructor-arg ref="productCategoryMemberEventStore"/>
     <constructor-arg ref="productCategoryMemberStateRepository"/>
     <constructor-arg ref="productCategoryMemberStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="sellableInventoryItemEntryStateDao" class="org.dddml.wms.domain.sellableinventoryitem.hibernate.HibernateSellableInventoryItemEntryStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="sellableInventoryItemStateRepository" class="org.dddml.wms.domain.sellableinventoryitem.hibernate.HibernateSellableInventoryItemStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="sellableInventoryItemStateQueryRepository" class="org.dddml.wms.domain.sellableinventoryitem.hibernate.HibernateSellableInventoryItemStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="sellableInventoryItemApplicationService" class="org.dddml.wms.domain.sellableinventoryitem.AbstractSellableInventoryItemApplicationService$SimpleSellableInventoryItemApplicationService">
+    <constructor-arg ref="sellableInventoryItemStateRepository"/>
+    <constructor-arg ref="sellableInventoryItemStateQueryRepository"/>
   </bean>
 
 
@@ -655,24 +676,24 @@
   </bean>
 
 
-  <bean id="sellableInventoryItemEntryMvoStateRepository" class="org.dddml.wms.domain.sellableinventoryitementrymvo.hibernate.HibernateSellableInventoryItemEntryMvoStateRepository">
+  <bean id="inventoryItemRequirementEntryMvoStateRepository" class="org.dddml.wms.domain.inventoryitemrequiremententrymvo.hibernate.HibernateInventoryItemRequirementEntryMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="sellableInventoryItemEntryMvoStateQueryRepository" class="org.dddml.wms.domain.sellableinventoryitementrymvo.hibernate.HibernateSellableInventoryItemEntryMvoStateQueryRepository">
+  <bean id="inventoryItemRequirementEntryMvoStateQueryRepository" class="org.dddml.wms.domain.inventoryitemrequiremententrymvo.hibernate.HibernateInventoryItemRequirementEntryMvoStateQueryRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="sellableInventoryItemEntryMvoEventStore" class="org.dddml.wms.domain.sellableinventoryitementrymvo.hibernate.HibernateSellableInventoryItemEntryMvoEventStore">
+  <bean id="inventoryItemRequirementEntryMvoEventStore" class="org.dddml.wms.domain.inventoryitemrequiremententrymvo.hibernate.HibernateInventoryItemRequirementEntryMvoEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="sellableInventoryItemEntryMvoApplicationService" class="org.dddml.wms.domain.sellableinventoryitementrymvo.AbstractSellableInventoryItemEntryMvoApplicationService$SimpleSellableInventoryItemEntryMvoApplicationService">
-    <constructor-arg ref="sellableInventoryItemEntryMvoEventStore"/>
-    <constructor-arg ref="sellableInventoryItemEntryMvoStateRepository"/>
-    <constructor-arg ref="sellableInventoryItemEntryMvoStateQueryRepository"/>
+  <bean id="inventoryItemRequirementEntryMvoApplicationService" class="org.dddml.wms.domain.inventoryitemrequiremententrymvo.AbstractInventoryItemRequirementEntryMvoApplicationService$SimpleInventoryItemRequirementEntryMvoApplicationService">
+    <constructor-arg ref="inventoryItemRequirementEntryMvoEventStore"/>
+    <constructor-arg ref="inventoryItemRequirementEntryMvoStateRepository"/>
+    <constructor-arg ref="inventoryItemRequirementEntryMvoStateQueryRepository"/>
   </bean>
 
 
@@ -694,6 +715,27 @@
     <constructor-arg ref="orderItemMvoEventStore"/>
     <constructor-arg ref="orderItemMvoStateRepository"/>
     <constructor-arg ref="orderItemMvoStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="sellableInventoryItemEntryMvoStateRepository" class="org.dddml.wms.domain.sellableinventoryitementrymvo.hibernate.HibernateSellableInventoryItemEntryMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="sellableInventoryItemEntryMvoStateQueryRepository" class="org.dddml.wms.domain.sellableinventoryitementrymvo.hibernate.HibernateSellableInventoryItemEntryMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="sellableInventoryItemEntryMvoEventStore" class="org.dddml.wms.domain.sellableinventoryitementrymvo.hibernate.HibernateSellableInventoryItemEntryMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="sellableInventoryItemEntryMvoApplicationService" class="org.dddml.wms.domain.sellableinventoryitementrymvo.AbstractSellableInventoryItemEntryMvoApplicationService$SimpleSellableInventoryItemEntryMvoApplicationService">
+    <constructor-arg ref="sellableInventoryItemEntryMvoEventStore"/>
+    <constructor-arg ref="sellableInventoryItemEntryMvoStateRepository"/>
+    <constructor-arg ref="sellableInventoryItemEntryMvoStateQueryRepository"/>
   </bean>
 
 
