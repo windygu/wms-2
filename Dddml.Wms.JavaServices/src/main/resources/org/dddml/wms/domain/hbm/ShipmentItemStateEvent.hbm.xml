@@ -46,11 +46,6 @@
 
     </subclass>
 
-    <subclass name="AbstractShipmentItemStateEvent$SimpleShipmentItemStateRemoved" discriminator-value="Removed">
-
-    </subclass>
-
-
 
   </class>
   

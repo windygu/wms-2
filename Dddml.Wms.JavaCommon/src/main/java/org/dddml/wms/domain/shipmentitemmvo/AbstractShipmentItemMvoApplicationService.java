@@ -54,10 +54,6 @@ public abstract class AbstractShipmentItemMvoApplicationService implements Shipm
         update(c, ar -> ar.mergePatch(c));
     }
 
-    public void when(ShipmentItemMvoCommand.DeleteShipmentItemMvo c) {
-        update(c, ar -> ar.delete(c));
-    }
-
     public ShipmentItemMvoState get(ShipmentItemId id) {
         ShipmentItemMvoState state = getStateRepository().get(id, true);
         return state;

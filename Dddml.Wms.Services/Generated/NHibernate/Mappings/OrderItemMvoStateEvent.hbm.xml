@@ -223,11 +223,6 @@
         <property name="IsPropertyOrderActiveRemoved" column="IsPropertyOrderActiveRemoved"/>
     </subclass>
 
-    <subclass name="OrderItemMvoStateDeleted"  discriminator-value="Deleted">
-
-    </subclass>
-
-
 
   </class>
   

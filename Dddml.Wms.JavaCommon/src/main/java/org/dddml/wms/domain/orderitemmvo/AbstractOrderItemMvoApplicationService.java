@@ -54,10 +54,6 @@ public abstract class AbstractOrderItemMvoApplicationService implements OrderIte
         update(c, ar -> ar.mergePatch(c));
     }
 
-    public void when(OrderItemMvoCommand.DeleteOrderItemMvo c) {
-        update(c, ar -> ar.delete(c));
-    }
-
     public OrderItemMvoState get(OrderItemId id) {
         OrderItemMvoState state = getStateRepository().get(id, true);
         return state;

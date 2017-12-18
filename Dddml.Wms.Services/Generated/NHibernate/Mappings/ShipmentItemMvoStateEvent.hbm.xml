@@ -127,11 +127,6 @@
         <property name="IsPropertyShipmentActiveRemoved" column="IsPropertyShipmentActiveRemoved"/>
     </subclass>
 
-    <subclass name="ShipmentItemMvoStateDeleted"  discriminator-value="Deleted">
-
-    </subclass>
-
-
 
   </class>
   

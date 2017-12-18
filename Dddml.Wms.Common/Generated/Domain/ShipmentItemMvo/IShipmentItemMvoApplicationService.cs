@@ -20,8 +20,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		void When(IMergePatchShipmentItemMvo c);
 
-		void When(IDeleteShipmentItemMvo c);
-
  		IShipmentItemMvoState Get(ShipmentItemId shipmentItemId);
 
         IEnumerable<IShipmentItemMvoState> GetAll(int firstResult, int maxResults);

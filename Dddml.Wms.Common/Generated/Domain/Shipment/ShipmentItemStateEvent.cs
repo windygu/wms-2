@@ -147,25 +147,6 @@ namespace Dddml.Wms.Domain.Shipment
 	}
 
 
-	public class ShipmentItemStateRemoved : ShipmentItemStateEventBase, IShipmentItemStateRemoved
-	{
-		public ShipmentItemStateRemoved ()
-		{
-		}
-
-		public ShipmentItemStateRemoved (ShipmentItemStateEventId stateEventId) : base(stateEventId)
-		{
-		}
-
-        protected override string GetStateEventType()
-        {
-            return Dddml.Wms.Specialization.StateEventType.Removed;
-        }
-
-
-
-	}
-
 
 
 }

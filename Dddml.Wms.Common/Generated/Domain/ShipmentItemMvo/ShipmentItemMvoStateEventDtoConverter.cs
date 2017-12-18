@@ -28,11 +28,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
                 var e = (IShipmentItemMvoStateMergePatched)stateEvent;
                 return ToShipmentItemMvoStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
-            {
-                var e = (IShipmentItemMvoStateDeleted)stateEvent;
-                return ToShipmentItemMvoStateDeletedDto(e);
-            }
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 
@@ -159,17 +154,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             return dto;
         }
 
-
-        public virtual ShipmentItemMvoStateDeletedDto ToShipmentItemMvoStateDeletedDto(IShipmentItemMvoStateDeleted e)
-        {
-            var dto = new ShipmentItemMvoStateDeletedDto();
-            dto.StateEventId = new ShipmentItemMvoStateEventIdDtoWrapper(e.StateEventId);
-            dto.CreatedAt = e.CreatedAt;
-            dto.CreatedBy = e.CreatedBy;
-            dto.CommandId = e.CommandId;
-
-            return dto;
-        }
 
 
     }

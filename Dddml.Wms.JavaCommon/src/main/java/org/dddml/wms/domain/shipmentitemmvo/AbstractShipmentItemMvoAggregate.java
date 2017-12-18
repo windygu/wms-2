@@ -38,12 +38,6 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         apply(e);
     }
 
-    public void delete(ShipmentItemMvoCommand.DeleteShipmentItemMvo c)
-    {
-        ShipmentItemMvoStateEvent e = map(c);
-        apply(e);
-    }
-
     public void throwOnInvalidStateTransition(Command c) {
         ShipmentItemMvoCommand.throwOnInvalidStateTransition(this.state, c);
     }
@@ -175,15 +169,6 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         return e;
     }
 
-    protected ShipmentItemMvoStateEvent map(ShipmentItemMvoCommand.DeleteShipmentItemMvo c) {
-        ShipmentItemMvoStateEventId stateEventId = new ShipmentItemMvoStateEventId(c.getShipmentItemId(), c.getShipmentVersion());
-        ShipmentItemMvoStateEvent.ShipmentItemMvoStateDeleted e = newShipmentItemMvoStateDeleted(stateEventId);
-        ((AbstractShipmentItemMvoStateEvent)e).setCommandId(c.getCommandId());
-        e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        return e;
-    }
-
 
     ////////////////////////
 
@@ -205,26 +190,12 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         return e;
     }
 
-    protected ShipmentItemMvoStateEvent.ShipmentItemMvoStateDeleted newShipmentItemMvoStateDeleted(String commandId, String requesterId) {
-        ShipmentItemMvoStateEventId stateEventId = new ShipmentItemMvoStateEventId(this.state.getShipmentItemId(), this.state.getShipmentVersion());
-        ShipmentItemMvoStateEvent.ShipmentItemMvoStateDeleted e = newShipmentItemMvoStateDeleted(stateEventId);
-        ((AbstractShipmentItemMvoStateEvent)e).setCommandId(commandId);
-        e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        return e;
-    }
-
     protected ShipmentItemMvoStateEvent.ShipmentItemMvoStateCreated newShipmentItemMvoStateCreated(ShipmentItemMvoStateEventId stateEventId) {
         return new AbstractShipmentItemMvoStateEvent.SimpleShipmentItemMvoStateCreated(stateEventId);
     }
 
     protected ShipmentItemMvoStateEvent.ShipmentItemMvoStateMergePatched newShipmentItemMvoStateMergePatched(ShipmentItemMvoStateEventId stateEventId) {
         return new AbstractShipmentItemMvoStateEvent.SimpleShipmentItemMvoStateMergePatched(stateEventId);
-    }
-
-    protected ShipmentItemMvoStateEvent.ShipmentItemMvoStateDeleted newShipmentItemMvoStateDeleted(ShipmentItemMvoStateEventId stateEventId)
-    {
-        return new AbstractShipmentItemMvoStateEvent.SimpleShipmentItemMvoStateDeleted(stateEventId);
     }
 
 

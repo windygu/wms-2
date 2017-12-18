@@ -101,11 +101,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 			Update(c, ar => ar.MergePatch(c));
 		}
 
-		public virtual void When(IDeleteOrderItemMvo c)
-		{
-			Update(c, ar => ar.Delete(c));
-		}
-
         public virtual IOrderItemMvoState Get(OrderItemId orderItemId)
         {
             var state = StateRepository.Get(orderItemId, true);

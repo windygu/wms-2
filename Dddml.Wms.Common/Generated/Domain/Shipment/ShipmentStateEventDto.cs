@@ -657,14 +657,6 @@ namespace Dddml.Wms.Domain.Shipment
             return e;
         }
 
-        public virtual ShipmentItemStateRemovedDto NewShipmentItemStateRemoved(string shipmentItemSeqId)
-        {
-            var e = new ShipmentItemStateRemovedDto();
-            var eId = NewShipmentItemStateEventId(shipmentItemSeqId);
-            e.StateEventId = eId;
-            return e;
-        }
-
         IEnumerable<IShipmentItemStateCreated> IShipmentStateCreated.ShipmentItemEvents
         {
             get { return this._shipmentItemEvents; }
@@ -698,11 +690,6 @@ namespace Dddml.Wms.Domain.Shipment
         IShipmentItemStateMergePatched IShipmentStateMergePatched.NewShipmentItemStateMergePatched(string shipmentItemSeqId)
         {
             return NewShipmentItemStateMergePatched(shipmentItemSeqId);
-        }
-
-        IShipmentItemStateRemoved IShipmentStateMergePatched.NewShipmentItemStateRemoved(string shipmentItemSeqId)
-        {
-            return NewShipmentItemStateRemoved(shipmentItemSeqId);
         }
 
 

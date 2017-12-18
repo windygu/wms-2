@@ -1565,21 +1565,6 @@ public abstract class AbstractOrderItemMvoStateEvent extends AbstractStateEvent 
     }
 
 
-    public static abstract class AbstractOrderItemMvoStateDeleted extends AbstractOrderItemMvoStateEvent implements OrderItemMvoStateEvent.OrderItemMvoStateDeleted
-    {
-        public AbstractOrderItemMvoStateDeleted() {
-            this(new OrderItemMvoStateEventId());
-        }
-
-        public AbstractOrderItemMvoStateDeleted(OrderItemMvoStateEventId stateEventId) {
-            super(stateEventId);
-        }
-
-        public String getStateEventType() {
-            return StateEventType.DELETED;
-        }
-
-    }
     public static class SimpleOrderItemMvoStateCreated extends AbstractOrderItemMvoStateCreated
     {
         public SimpleOrderItemMvoStateCreated() {
@@ -1596,16 +1581,6 @@ public abstract class AbstractOrderItemMvoStateEvent extends AbstractStateEvent 
         }
 
         public SimpleOrderItemMvoStateMergePatched(OrderItemMvoStateEventId stateEventId) {
-            super(stateEventId);
-        }
-    }
-
-    public static class SimpleOrderItemMvoStateDeleted extends AbstractOrderItemMvoStateDeleted
-    {
-        public SimpleOrderItemMvoStateDeleted() {
-        }
-
-        public SimpleOrderItemMvoStateDeleted(OrderItemMvoStateEventId stateEventId) {
             super(stateEventId);
         }
     }

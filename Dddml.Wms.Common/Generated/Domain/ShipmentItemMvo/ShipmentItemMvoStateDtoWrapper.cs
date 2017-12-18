@@ -1154,15 +1154,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		#endregion
 
-		#region IDeleted implementation
-
-		bool IDeleted.Deleted
-		{
-            get { return (_state as IDeleted).Deleted; }
-		}
-
-		#endregion
-
 		#region ICreated implementation
 
 		string ICreated<string>.CreatedBy
@@ -1228,11 +1219,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
         }
 
 		void IShipmentItemMvoState.When(IShipmentItemMvoStateMergePatched e)
-		{
-            throw new NotSupportedException();
-		}
-
-		void IShipmentItemMvoState.When(IShipmentItemMvoStateDeleted e)
 		{
             throw new NotSupportedException();
 		}

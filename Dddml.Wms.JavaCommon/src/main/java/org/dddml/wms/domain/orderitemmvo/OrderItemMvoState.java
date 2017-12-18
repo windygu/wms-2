@@ -181,10 +181,6 @@ public interface OrderItemMvoState
 
     void setActive(Boolean active);
 
-    Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
     String getOrderOrderTypeId();
 
     void setOrderOrderTypeId(String orderOrderTypeId);
@@ -317,7 +313,6 @@ public interface OrderItemMvoState
 
     void when(OrderItemMvoStateEvent.OrderItemMvoStateMergePatched e);
 
-    void when(OrderItemMvoStateEvent.OrderItemMvoStateDeleted e);
     
 }
 

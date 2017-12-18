@@ -142,11 +142,6 @@
 
     </subclass>
 
-    <subclass name="AbstractOrderItemStateEvent$SimpleOrderItemStateRemoved" discriminator-value="Removed">
-
-    </subclass>
-
-
 
   </class>
   

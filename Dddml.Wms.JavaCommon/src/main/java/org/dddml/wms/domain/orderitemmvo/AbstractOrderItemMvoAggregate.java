@@ -38,12 +38,6 @@ public abstract class AbstractOrderItemMvoAggregate extends AbstractAggregate im
         apply(e);
     }
 
-    public void delete(OrderItemMvoCommand.DeleteOrderItemMvo c)
-    {
-        OrderItemMvoStateEvent e = map(c);
-        apply(e);
-    }
-
     public void throwOnInvalidStateTransition(Command c) {
         OrderItemMvoCommand.throwOnInvalidStateTransition(this.state, c);
     }
@@ -271,15 +265,6 @@ public abstract class AbstractOrderItemMvoAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected OrderItemMvoStateEvent map(OrderItemMvoCommand.DeleteOrderItemMvo c) {
-        OrderItemMvoStateEventId stateEventId = new OrderItemMvoStateEventId(c.getOrderItemId(), c.getOrderVersion());
-        OrderItemMvoStateEvent.OrderItemMvoStateDeleted e = newOrderItemMvoStateDeleted(stateEventId);
-        ((AbstractOrderItemMvoStateEvent)e).setCommandId(c.getCommandId());
-        e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        return e;
-    }
-
 
     ////////////////////////
 
@@ -301,26 +286,12 @@ public abstract class AbstractOrderItemMvoAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected OrderItemMvoStateEvent.OrderItemMvoStateDeleted newOrderItemMvoStateDeleted(String commandId, String requesterId) {
-        OrderItemMvoStateEventId stateEventId = new OrderItemMvoStateEventId(this.state.getOrderItemId(), this.state.getOrderVersion());
-        OrderItemMvoStateEvent.OrderItemMvoStateDeleted e = newOrderItemMvoStateDeleted(stateEventId);
-        ((AbstractOrderItemMvoStateEvent)e).setCommandId(commandId);
-        e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        return e;
-    }
-
     protected OrderItemMvoStateEvent.OrderItemMvoStateCreated newOrderItemMvoStateCreated(OrderItemMvoStateEventId stateEventId) {
         return new AbstractOrderItemMvoStateEvent.SimpleOrderItemMvoStateCreated(stateEventId);
     }
 
     protected OrderItemMvoStateEvent.OrderItemMvoStateMergePatched newOrderItemMvoStateMergePatched(OrderItemMvoStateEventId stateEventId) {
         return new AbstractOrderItemMvoStateEvent.SimpleOrderItemMvoStateMergePatched(stateEventId);
-    }
-
-    protected OrderItemMvoStateEvent.OrderItemMvoStateDeleted newOrderItemMvoStateDeleted(OrderItemMvoStateEventId stateEventId)
-    {
-        return new AbstractOrderItemMvoStateEvent.SimpleOrderItemMvoStateDeleted(stateEventId);
     }
 
 

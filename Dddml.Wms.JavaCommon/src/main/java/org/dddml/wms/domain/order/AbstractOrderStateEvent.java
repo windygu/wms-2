@@ -408,10 +408,6 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
         return new AbstractOrderItemStateEvent.SimpleOrderItemStateMergePatched(newOrderItemStateEventId(orderItemSeqId));
     }
 
-    public OrderItemStateEvent.OrderItemStateRemoved newOrderItemStateRemoved(String orderItemSeqId) {
-        return new AbstractOrderItemStateEvent.SimpleOrderItemStateRemoved(newOrderItemStateEventId(orderItemSeqId));
-    }
-
 
     public abstract String getStateEventType();
 

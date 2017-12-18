@@ -226,8 +226,8 @@ aggregates:
             # - ProductId
             # foreignKeyName: ORDER_ITEM_PRODUCT
             
-        #reservedProperties:
-          #noDeleted: true
+        reservedProperties:
+          noDeleted: true
         
         discriminator: OrderItemTypeId
         

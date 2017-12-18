@@ -565,10 +565,6 @@ public interface OrderItemMvoStateEvent extends Event
 
     }
 
-    interface OrderItemMvoStateDeleted extends OrderItemMvoStateEvent
-    {
-    }
-
 
 }
 

@@ -24,8 +24,6 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual DateTime UpdatedAt { get; set; }
 
-		public virtual bool Deleted { get; set; }
-
 
 		#region IIdentity implementation
 
@@ -81,17 +79,6 @@ namespace Dddml.Wms.Domain.Order
 
 		#endregion
 
-		#region IDeleted implementation
-
-		bool IDeleted.Deleted
-		{
-			get
-			{
-				return this.Deleted;
-			}
-		}
-
-		#endregion
 
 		#region ICreated implementation
 
@@ -265,8 +252,6 @@ namespace Dddml.Wms.Domain.Order
 			this.OverrideGlAccountId = e.OverrideGlAccountId;
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
-
-			this.Deleted = false;
 
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
@@ -715,16 +700,6 @@ namespace Dddml.Wms.Domain.Order
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
 
-
-		}
-
-		public virtual void When(IOrderItemStateRemoved e)
-		{
-			ThrowOnWrongEvent(e);
-
-			this.Deleted = true;
-			this.UpdatedBy = e.CreatedBy;
-			this.UpdatedAt = e.CreatedAt;
 
 		}
 

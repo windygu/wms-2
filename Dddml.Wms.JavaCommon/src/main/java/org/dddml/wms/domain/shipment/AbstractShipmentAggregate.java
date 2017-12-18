@@ -172,11 +172,6 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
             return mapMergePatch(merge, outerCommand, version, outerState);
         }
 
-        ShipmentItemCommand.RemoveShipmentItem remove = (c.getCommandType().equals(CommandType.REMOVE)) ? ((ShipmentItemCommand.RemoveShipmentItem)c) : null;
-        if (remove != null)
-        {
-            return mapRemove(remove, outerCommand, version);
-        }
         throw new UnsupportedOperationException();
     }
 
@@ -217,19 +212,6 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         return e;
 
     }// END map(IMergePatch... ////////////////////////////
-
-    protected ShipmentItemStateEvent.ShipmentItemStateRemoved mapRemove(ShipmentItemCommand.RemoveShipmentItem c, ShipmentCommand outerCommand, Long version)
-    {
-        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        ShipmentItemStateEventId stateEventId = new ShipmentItemStateEventId(c.getShipmentId(), c.getShipmentItemSeqId(), version);
-        ShipmentItemStateEvent.ShipmentItemStateRemoved e = newShipmentItemStateRemoved(stateEventId);
-
-        e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-
-        return e;
-
-    }// END map(IRemove... ////////////////////////////
 
     protected void throwOnInconsistentCommands(ShipmentCommand command, ShipmentItemCommand innerCommand)
     {
@@ -285,11 +267,6 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
 
     protected ShipmentItemStateEvent.ShipmentItemStateMergePatched newShipmentItemStateMergePatched(ShipmentItemStateEventId stateEventId) {
         return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateMergePatched(stateEventId);
-    }
-
-    protected ShipmentItemStateEvent.ShipmentItemStateRemoved newShipmentItemStateRemoved(ShipmentItemStateEventId stateEventId)
-    {
-        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateRemoved(stateEventId);
     }
 
 

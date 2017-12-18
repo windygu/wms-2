@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.Shipment;
 namespace Dddml.Wms.Domain.ShipmentItemMvo
 {
 
-	public abstract class ShipmentItemMvoStateEventDtoBase : IStateEventDto, IShipmentItemMvoStateCreated, IShipmentItemMvoStateMergePatched, IShipmentItemMvoStateDeleted
+	public abstract class ShipmentItemMvoStateEventDtoBase : IStateEventDto, IShipmentItemMvoStateCreated, IShipmentItemMvoStateMergePatched
 	{
 
         private ShipmentItemMvoStateEventIdDto _stateEventId;
@@ -919,7 +919,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 	}
 
 
-    public partial class ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDtos : IEnumerable<IShipmentItemMvoStateCreated>, IEnumerable<IShipmentItemMvoStateMergePatched>, IEnumerable<IShipmentItemMvoStateDeleted>
+    public partial class ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDtos : IEnumerable<IShipmentItemMvoStateCreated>, IEnumerable<IShipmentItemMvoStateMergePatched>
     {
         private List<ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDto> _innerStateEvents = new List<ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDto>();
 
@@ -953,10 +953,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             return _innerStateEvents.GetEnumerator();
         }
 
-        IEnumerator<IShipmentItemMvoStateDeleted> IEnumerable<IShipmentItemMvoStateDeleted>.GetEnumerator()
-        {
-            return _innerStateEvents.GetEnumerator();
-        }
 
         public void AddShipmentItemMvoEvent(IShipmentItemMvoStateCreated e)
         {
@@ -968,10 +964,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             _innerStateEvents.Add((ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDto)e);
         }
 
-        public void AddShipmentItemMvoEvent(IShipmentItemMvoStateDeleted e)
-        {
-            _innerStateEvents.Add((ShipmentItemMvoStateDeletedDto)e);
-        }
 
     }
 

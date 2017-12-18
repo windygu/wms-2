@@ -16,7 +16,6 @@ namespace Dddml.Wms.Domain.Order
 		ILocalIdentity<string>, 
 		ICreated<string>, 
 		IUpdated<string>, 
-		IDeleted, 
 		IActive, 
 		IEntityVersioned<long>,
 		IState
@@ -27,8 +26,6 @@ namespace Dddml.Wms.Domain.Order
 		void When(IOrderItemStateCreated e);
 
 		void When(IOrderItemStateMergePatched e);
-
-		void When(IOrderItemStateRemoved e);
 
 		void Mutate(IEvent e);
 

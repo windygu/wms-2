@@ -172,11 +172,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
             return mapMergePatch(merge, outerCommand, version, outerState);
         }
 
-        OrderItemCommand.RemoveOrderItem remove = (c.getCommandType().equals(CommandType.REMOVE)) ? ((OrderItemCommand.RemoveOrderItem)c) : null;
-        if (remove != null)
-        {
-            return mapRemove(remove, outerCommand, version);
-        }
         throw new UnsupportedOperationException();
     }
 
@@ -314,19 +309,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
     }// END map(IMergePatch... ////////////////////////////
 
-    protected OrderItemStateEvent.OrderItemStateRemoved mapRemove(OrderItemCommand.RemoveOrderItem c, OrderCommand outerCommand, Long version)
-    {
-        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        OrderItemStateEventId stateEventId = new OrderItemStateEventId(c.getOrderId(), c.getOrderItemSeqId(), version);
-        OrderItemStateEvent.OrderItemStateRemoved e = newOrderItemStateRemoved(stateEventId);
-
-        e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-
-        return e;
-
-    }// END map(IRemove... ////////////////////////////
-
     protected void throwOnInconsistentCommands(OrderCommand command, OrderItemCommand innerCommand)
     {
         AbstractOrderCommand properties = command instanceof AbstractOrderCommand ? (AbstractOrderCommand) command : null;
@@ -381,11 +363,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
     protected OrderItemStateEvent.OrderItemStateMergePatched newOrderItemStateMergePatched(OrderItemStateEventId stateEventId) {
         return new AbstractOrderItemStateEvent.SimpleOrderItemStateMergePatched(stateEventId);
-    }
-
-    protected OrderItemStateEvent.OrderItemStateRemoved newOrderItemStateRemoved(OrderItemStateEventId stateEventId)
-    {
-        return new AbstractOrderItemStateEvent.SimpleOrderItemStateRemoved(stateEventId);
     }
 
 

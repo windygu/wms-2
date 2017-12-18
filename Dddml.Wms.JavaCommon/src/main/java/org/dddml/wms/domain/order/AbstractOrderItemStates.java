@@ -38,7 +38,7 @@ public abstract class AbstractOrderItemStates implements OrderItemStates
         } else {
             List<OrderItemState> ss = new ArrayList<OrderItemState>();
             for (OrderItemState s : loadedOrderItemStates.values()) {
-                if (!(removedOrderItemStates.containsKey(s.getOrderItemId()) && s.getDeleted())) {
+                if (!(removedOrderItemStates.containsKey(s.getOrderItemId()))) {
                     ss.add(s);
                 }
             }

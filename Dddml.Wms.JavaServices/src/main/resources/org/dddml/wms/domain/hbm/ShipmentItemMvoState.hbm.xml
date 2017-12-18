@@ -21,7 +21,6 @@
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>
-	<property name="deleted" ></property>
 	<property name="shipmentShipmentTypeId" ><column name="ShipmentShipmentTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentStatusId" ><column name="ShipmentStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentPrimaryOrderId" ><column name="ShipmentPrimaryOrderId" sql-type="VARCHAR(20)" /></property>

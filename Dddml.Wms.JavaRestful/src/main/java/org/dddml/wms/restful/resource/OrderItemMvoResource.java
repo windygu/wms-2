@@ -122,24 +122,6 @@ public class OrderItemMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @DELETE
-    public void delete(@PathParam("id") String id,
-                       @NotNull @QueryParam("commandId") String commandId,
-                       @NotNull @QueryParam("version") @Min(value = -1) Long version,
-                       @QueryParam("requesterId") String requesterId) {
-        try {
-
-            OrderItemMvoCommand.DeleteOrderItemMvo deleteCmd = new AbstractOrderItemMvoCommand.SimpleDeleteOrderItemMvo();
-
-            deleteCmd.setCommandId(commandId);
-            deleteCmd.setRequesterId(requesterId);
-            deleteCmd.setOrderVersion(version);
-            OrderItemMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
-            orderItemMvoApplicationService.when(deleteCmd);
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
     @Path("_metadata/filteringFields") @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {

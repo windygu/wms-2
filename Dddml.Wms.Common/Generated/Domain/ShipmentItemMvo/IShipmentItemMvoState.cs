@@ -16,7 +16,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		IGlobalIdentity<ShipmentItemId>, 
 		ICreated<string>, 
 		IUpdated<string>, 
-		IDeleted, 
 		IActive, 
 		IAggregateVersioned<long>,
 		IState
@@ -27,8 +26,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		void When(IShipmentItemMvoStateCreated e);
 
 		void When(IShipmentItemMvoStateMergePatched e);
-
-		void When(IShipmentItemMvoStateDeleted e);
 
 		void Mutate(IEvent e);
 

@@ -97,10 +97,6 @@
 
     drop table if exists MovementTypes;
 
-    drop table if exists OrderHeaders;
-
-    drop table if exists OrderHeaderStateEvents;
-
     drop table if exists OrderItems;
 
     drop table if exists OrderItemStateEvents;
@@ -116,3 +112,35 @@
     drop table if exists SupplierProducts;
 
     drop table if exists SupplierProductStateEvents;
+
+    drop table if exists OrderShipments;
+
+    drop table if exists OrderShipmentStateEvents;
+
+    drop table if exists Shipments;
+
+    drop table if exists ShipmentStateEvents;
+
+    drop table if exists ShipmentItems;
+
+    drop table if exists ShipmentItemStateEvents;
+
+    drop table if exists StatusItems;
+
+    drop table if exists ShipmentTypes;
+
+    drop table if exists Orders;
+
+    drop table if exists OrderStateEvents;
+
+    drop table if exists ProductCategoryMembers;
+
+    drop table if exists ProductCategoryMemberStateEvents;
+
+    drop table if exists OrderItem_RV;
+
+    drop table if exists OrderItemMvoStateEvents;
+
+    drop table if exists ShipmentItem_RV;
+
+    drop table if exists ShipmentItemMvoStateEvents;

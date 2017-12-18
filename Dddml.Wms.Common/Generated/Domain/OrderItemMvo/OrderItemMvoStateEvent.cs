@@ -394,25 +394,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 	}
 
 
-	public class OrderItemMvoStateDeleted : OrderItemMvoStateEventBase, IOrderItemMvoStateDeleted
-	{
-		public OrderItemMvoStateDeleted ()
-		{
-		}
-
-		public OrderItemMvoStateDeleted (OrderItemMvoStateEventId stateEventId) : base(stateEventId)
-		{
-		}
-
-        protected override string GetStateEventType()
-        {
-            return Dddml.Wms.Specialization.StateEventType.Deleted;
-        }
-
-
-
-	}
-
 
 
 }

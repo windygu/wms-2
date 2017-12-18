@@ -101,11 +101,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 			Update(c, ar => ar.MergePatch(c));
 		}
 
-		public virtual void When(IDeleteShipmentItemMvo c)
-		{
-			Update(c, ar => ar.Delete(c));
-		}
-
         public virtual IShipmentItemMvoState Get(ShipmentItemId shipmentItemId)
         {
             var state = StateRepository.Get(shipmentItemId, true);

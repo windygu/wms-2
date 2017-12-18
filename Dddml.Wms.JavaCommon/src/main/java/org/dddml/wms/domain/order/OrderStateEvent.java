@@ -247,8 +247,6 @@ public interface OrderStateEvent extends Event
 
         OrderItemStateEvent.OrderItemStateMergePatched newOrderItemStateMergePatched(String orderItemSeqId);
 
-        OrderItemStateEvent.OrderItemStateRemoved newOrderItemStateRemoved(String orderItemSeqId);
-
 
     }
 

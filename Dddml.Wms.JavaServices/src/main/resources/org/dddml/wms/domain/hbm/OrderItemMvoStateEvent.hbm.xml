@@ -230,11 +230,6 @@
 
     </subclass>
 
-    <subclass name="AbstractOrderItemMvoStateEvent$SimpleOrderItemMvoStateDeleted" discriminator-value="Deleted">
-
-    </subclass>
-
-
 
   </class>
   

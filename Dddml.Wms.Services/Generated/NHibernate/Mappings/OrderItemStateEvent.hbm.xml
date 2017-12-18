@@ -135,11 +135,6 @@
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
-    <subclass name="OrderItemStateRemoved"  discriminator-value="Removed">
-
-    </subclass>
-
-
 
   </class>
   

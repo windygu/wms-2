@@ -2050,15 +2050,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 		#endregion
 
-		#region IDeleted implementation
-
-		bool IDeleted.Deleted
-		{
-            get { return (_state as IDeleted).Deleted; }
-		}
-
-		#endregion
-
 		#region ICreated implementation
 
 		string ICreated<string>.CreatedBy
@@ -2124,11 +2115,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
         }
 
 		void IOrderItemMvoState.When(IOrderItemMvoStateMergePatched e)
-		{
-            throw new NotSupportedException();
-		}
-
-		void IOrderItemMvoState.When(IOrderItemMvoStateDeleted e)
 		{
             throw new NotSupportedException();
 		}

@@ -141,8 +141,6 @@ namespace Dddml.Wms.Domain.Order
 
 		IOrderItemStateMergePatched NewOrderItemStateMergePatched(string orderItemSeqId);
 
-		IOrderItemStateRemoved NewOrderItemStateRemoved(string orderItemSeqId);
-
 
 	}
 

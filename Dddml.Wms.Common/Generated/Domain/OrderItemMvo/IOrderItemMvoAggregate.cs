@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 		void MergePatch (IMergePatchOrderItemMvo c);
 
-		void Delete (IDeleteOrderItemMvo c);
-
 
 	}
 

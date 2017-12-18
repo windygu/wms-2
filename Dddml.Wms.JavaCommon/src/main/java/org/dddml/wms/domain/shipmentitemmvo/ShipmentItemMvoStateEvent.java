@@ -309,10 +309,6 @@ public interface ShipmentItemMvoStateEvent extends Event
 
     }
 
-    interface ShipmentItemMvoStateDeleted extends ShipmentItemMvoStateEvent
-    {
-    }
-
 
 }
 

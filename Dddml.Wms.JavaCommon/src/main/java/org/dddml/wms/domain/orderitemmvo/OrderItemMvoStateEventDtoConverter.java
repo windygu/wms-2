@@ -15,9 +15,6 @@ public class OrderItemMvoStateEventDtoConverter {
         } else if (stateEvent instanceof AbstractOrderItemMvoStateEvent.AbstractOrderItemMvoStateMergePatched) {
             OrderItemMvoStateEvent.OrderItemMvoStateMergePatched e = (OrderItemMvoStateEvent.OrderItemMvoStateMergePatched) stateEvent;
             return toOrderItemMvoStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractOrderItemMvoStateEvent.AbstractOrderItemMvoStateDeleted) {
-            OrderItemMvoStateEvent.OrderItemMvoStateDeleted e = (OrderItemMvoStateEvent.OrderItemMvoStateDeleted) stateEvent;
-            return toOrderItemMvoStateDeletedDto(e);
         }
 
         throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
@@ -239,15 +236,6 @@ public class OrderItemMvoStateEventDtoConverter {
         return dto;
     }
 
-
-    public OrderItemMvoStateEventDto.OrderItemMvoStateDeletedDto toOrderItemMvoStateDeletedDto(OrderItemMvoStateEvent.OrderItemMvoStateDeleted e) {
-        OrderItemMvoStateEventDto.OrderItemMvoStateDeletedDto dto = new OrderItemMvoStateEventDto.OrderItemMvoStateDeletedDto();
-        dto.setStateEventId(new OrderItemMvoStateEventIdDtoWrapper(e.getStateEventId()));
-        dto.setCreatedAt(e.getCreatedAt());
-        dto.setCreatedBy(e.getCreatedBy());
-        dto.setCommandId(e.getCommandId());
-        return dto;
-    }
 
 }
 

@@ -275,25 +275,6 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-	public class OrderItemStateRemoved : OrderItemStateEventBase, IOrderItemStateRemoved
-	{
-		public OrderItemStateRemoved ()
-		{
-		}
-
-		public OrderItemStateRemoved (OrderItemStateEventId stateEventId) : base(stateEventId)
-		{
-		}
-
-        protected override string GetStateEventType()
-        {
-            return Dddml.Wms.Specialization.StateEventType.Removed;
-        }
-
-
-
-	}
-
 
 
 }

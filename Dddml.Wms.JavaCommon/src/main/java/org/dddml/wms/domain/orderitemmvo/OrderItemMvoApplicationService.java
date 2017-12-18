@@ -15,8 +15,6 @@ public interface OrderItemMvoApplicationService
 
     void when(OrderItemMvoCommand.MergePatchOrderItemMvo c);
 
-    void when(OrderItemMvoCommand.DeleteOrderItemMvo c);
-
     OrderItemMvoState get(OrderItemId id);
 
     Iterable<OrderItemMvoState> getAll(Integer firstResult, Integer maxResults);

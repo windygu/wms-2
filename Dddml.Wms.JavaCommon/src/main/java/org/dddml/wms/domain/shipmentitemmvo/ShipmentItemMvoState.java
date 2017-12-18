@@ -53,10 +53,6 @@ public interface ShipmentItemMvoState
 
     void setActive(Boolean active);
 
-    Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
     String getShipmentShipmentTypeId();
 
     void setShipmentShipmentTypeId(String shipmentShipmentTypeId);
@@ -189,7 +185,6 @@ public interface ShipmentItemMvoState
 
     void when(ShipmentItemMvoStateEvent.ShipmentItemMvoStateMergePatched e);
 
-    void when(ShipmentItemMvoStateEvent.ShipmentItemMvoStateDeleted e);
     
 }
 

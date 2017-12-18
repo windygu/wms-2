@@ -657,14 +657,6 @@ namespace Dddml.Wms.Domain.Order
             return e;
         }
 
-        public virtual OrderItemStateRemovedDto NewOrderItemStateRemoved(string orderItemSeqId)
-        {
-            var e = new OrderItemStateRemovedDto();
-            var eId = NewOrderItemStateEventId(orderItemSeqId);
-            e.StateEventId = eId;
-            return e;
-        }
-
         IEnumerable<IOrderItemStateCreated> IOrderStateCreated.OrderItemEvents
         {
             get { return this._orderItemEvents; }
@@ -698,11 +690,6 @@ namespace Dddml.Wms.Domain.Order
         IOrderItemStateMergePatched IOrderStateMergePatched.NewOrderItemStateMergePatched(string orderItemSeqId)
         {
             return NewOrderItemStateMergePatched(orderItemSeqId);
-        }
-
-        IOrderItemStateRemoved IOrderStateMergePatched.NewOrderItemStateRemoved(string orderItemSeqId)
-        {
-            return NewOrderItemStateRemoved(orderItemSeqId);
         }
 
 

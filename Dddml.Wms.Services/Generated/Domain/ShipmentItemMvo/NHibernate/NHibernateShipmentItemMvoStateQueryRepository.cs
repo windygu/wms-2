@@ -130,7 +130,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo.NHibernate
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {
-            criteria.Add(NHibernateRestrictions.Eq("Deleted", false));
         }
 
 	}

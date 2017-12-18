@@ -114,11 +114,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((MergePatchShipmentItemMvoDto)c);
         }
 
-        void IShipmentItemMvoApplicationService.When(IDeleteShipmentItemMvo c)
-        {
-            this.When((DeleteShipmentItemMvoDto)c);
-        }
-
         public async Task<IShipmentItemMvoState> GetAsync(ShipmentItemId shipmentItemId)
         {
             IShipmentItemMvoState state = null;

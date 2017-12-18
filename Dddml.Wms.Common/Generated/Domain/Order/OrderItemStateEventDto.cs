@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.Order;
 namespace Dddml.Wms.Domain.Order
 {
 
-	public abstract class OrderItemStateEventDtoBase : IStateEventDto, IOrderItemStateCreated, IOrderItemStateMergePatched, IOrderItemStateRemoved
+	public abstract class OrderItemStateEventDtoBase : IStateEventDto, IOrderItemStateCreated, IOrderItemStateMergePatched
 	{
 
         private OrderItemStateEventIdDto _stateEventId;
@@ -956,7 +956,7 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-    public partial class OrderItemStateCreatedOrMergePatchedOrRemovedDtos : IEnumerable<IOrderItemStateCreated>, IEnumerable<IOrderItemStateMergePatched>, IEnumerable<IOrderItemStateRemoved>
+    public partial class OrderItemStateCreatedOrMergePatchedOrRemovedDtos : IEnumerable<IOrderItemStateCreated>, IEnumerable<IOrderItemStateMergePatched>
     {
         private List<OrderItemStateCreatedOrMergePatchedOrRemovedDto> _innerStateEvents = new List<OrderItemStateCreatedOrMergePatchedOrRemovedDto>();
 
@@ -990,10 +990,6 @@ namespace Dddml.Wms.Domain.Order
             return _innerStateEvents.GetEnumerator();
         }
 
-        IEnumerator<IOrderItemStateRemoved> IEnumerable<IOrderItemStateRemoved>.GetEnumerator()
-        {
-            return _innerStateEvents.GetEnumerator();
-        }
 
         public void AddOrderItemEvent(IOrderItemStateCreated e)
         {
@@ -1005,10 +1001,6 @@ namespace Dddml.Wms.Domain.Order
             _innerStateEvents.Add((OrderItemStateCreatedOrMergePatchedOrRemovedDto)e);
         }
 
-        public void AddOrderItemEvent(IOrderItemStateRemoved e)
-        {
-            _innerStateEvents.Add((OrderItemStateRemovedDto)e);
-        }
 
     }
 

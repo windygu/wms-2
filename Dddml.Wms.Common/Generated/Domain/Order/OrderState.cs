@@ -565,11 +565,6 @@ namespace Dddml.Wms.Domain.Order
                 IOrderItemState innerState = this.OrderItems.Get(innerEvent.GlobalId.OrderItemSeqId);
 
                 innerState.Mutate(innerEvent);
-                var removed = innerEvent as IOrderItemStateRemoved;
-                if (removed != null)
-                {
-                    this.OrderItems.Remove(innerState);
-                }
           
             }
 

@@ -120,8 +120,8 @@ aggregates:
             # - ShipmentItemId.ShipmentId
             # foreignKeyName: SHPMNT_ITM_SHPMT
             
-        #reservedProperties: 
-          #noDeleted: true
+        reservedProperties: 
+          noDeleted: true
           
         # valueObjects:        
           # ShipmentItemId:

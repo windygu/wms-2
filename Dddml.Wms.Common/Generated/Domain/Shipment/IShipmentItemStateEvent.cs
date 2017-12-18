@@ -51,10 +51,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 	}
 
-	public interface IShipmentItemStateRemoved : IShipmentItemStateEvent
-	{
-	}
-
 
 }
 

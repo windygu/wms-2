@@ -359,12 +359,6 @@ namespace Dddml.Wms.Domain.Order
             return stateEvent;
         }
 
-        public virtual IOrderItemStateRemoved NewOrderItemStateRemoved(string orderItemSeqId)
-        {
-            var stateEvent = new OrderItemStateRemoved(NewOrderItemStateEventId(orderItemSeqId));
-            return stateEvent;
-        }
-
 		public virtual void Save ()
 		{
 			foreach (IOrderItemStateEvent e in this.OrderItemEvents) {

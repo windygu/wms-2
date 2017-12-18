@@ -565,11 +565,6 @@ namespace Dddml.Wms.Domain.Shipment
                 IShipmentItemState innerState = this.ShipmentItems.Get(innerEvent.GlobalId.ShipmentItemSeqId);
 
                 innerState.Mutate(innerEvent);
-                var removed = innerEvent as IShipmentItemStateRemoved;
-                if (removed != null)
-                {
-                    this.ShipmentItems.Remove(innerState);
-                }
           
             }
 

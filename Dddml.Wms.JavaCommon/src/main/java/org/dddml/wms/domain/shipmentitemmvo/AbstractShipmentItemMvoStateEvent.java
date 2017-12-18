@@ -861,21 +861,6 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
     }
 
 
-    public static abstract class AbstractShipmentItemMvoStateDeleted extends AbstractShipmentItemMvoStateEvent implements ShipmentItemMvoStateEvent.ShipmentItemMvoStateDeleted
-    {
-        public AbstractShipmentItemMvoStateDeleted() {
-            this(new ShipmentItemMvoStateEventId());
-        }
-
-        public AbstractShipmentItemMvoStateDeleted(ShipmentItemMvoStateEventId stateEventId) {
-            super(stateEventId);
-        }
-
-        public String getStateEventType() {
-            return StateEventType.DELETED;
-        }
-
-    }
     public static class SimpleShipmentItemMvoStateCreated extends AbstractShipmentItemMvoStateCreated
     {
         public SimpleShipmentItemMvoStateCreated() {
@@ -892,16 +877,6 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
         }
 
         public SimpleShipmentItemMvoStateMergePatched(ShipmentItemMvoStateEventId stateEventId) {
-            super(stateEventId);
-        }
-    }
-
-    public static class SimpleShipmentItemMvoStateDeleted extends AbstractShipmentItemMvoStateDeleted
-    {
-        public SimpleShipmentItemMvoStateDeleted() {
-        }
-
-        public SimpleShipmentItemMvoStateDeleted(ShipmentItemMvoStateEventId stateEventId) {
             super(stateEventId);
         }
     }

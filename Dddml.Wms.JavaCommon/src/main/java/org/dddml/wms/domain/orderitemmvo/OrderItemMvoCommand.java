@@ -26,10 +26,6 @@ public interface OrderItemMvoCommand extends Command
             }
             throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
         }
-        if (state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
         if (isCommandCreate((OrderItemMvoCommand)c))
             throw DomainError.named("rebirth", "Can't create aggregate that already exists");
     }

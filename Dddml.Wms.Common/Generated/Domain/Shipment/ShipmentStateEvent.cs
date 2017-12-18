@@ -359,12 +359,6 @@ namespace Dddml.Wms.Domain.Shipment
             return stateEvent;
         }
 
-        public virtual IShipmentItemStateRemoved NewShipmentItemStateRemoved(string shipmentItemSeqId)
-        {
-            var stateEvent = new ShipmentItemStateRemoved(NewShipmentItemStateEventId(shipmentItemSeqId));
-            return stateEvent;
-        }
-
 		public virtual void Save ()
 		{
 			foreach (IShipmentItemStateEvent e in this.ShipmentItemEvents) {

@@ -51,7 +51,6 @@
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>
-    <property name="Deleted" ></property>
     <property name="OrderOrderTypeId" ><column name="OrderOrderTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="OrderOrderName" ><column name="OrderOrderName" sql-type="VARCHAR(100)" /></property>
     <property name="OrderExternalId" ><column name="OrderExternalId" sql-type="VARCHAR(20)" /></property>

@@ -777,11 +777,6 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         for (OrderItemStateEvent innerEvent : e.getOrderItemEvents()) {
             OrderItemState innerState = this.getOrderItems().get(innerEvent.getStateEventId().getOrderItemSeqId());
             innerState.mutate(innerEvent);
-            if (innerEvent instanceof OrderItemStateEvent.OrderItemStateRemoved)
-            {
-                //OrderItemStateEvent.OrderItemStateRemoved removed = (OrderItemStateEvent.OrderItemStateRemoved)innerEvent;
-                this.getOrderItems().remove(innerState);
-            }
         }
     }
 

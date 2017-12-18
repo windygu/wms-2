@@ -141,8 +141,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		IShipmentItemStateMergePatched NewShipmentItemStateMergePatched(string shipmentItemSeqId);
 
-		IShipmentItemStateRemoved NewShipmentItemStateRemoved(string shipmentItemSeqId);
-
 
 	}
 

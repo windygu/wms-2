@@ -20,8 +20,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 		void When(IMergePatchOrderItemMvo c);
 
-		void When(IDeleteOrderItemMvo c);
-
  		IOrderItemMvoState Get(OrderItemId orderItemId);
 
         IEnumerable<IOrderItemMvoState> GetAll(int firstResult, int maxResults);

@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 		public virtual DateTime UpdatedAt { get; set; }
 
-		public virtual bool Deleted { get; set; }
-
 
 		#region IIdentity implementation
 
@@ -49,17 +47,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 		#endregion
 
-		#region IDeleted implementation
-
-		bool IDeleted.Deleted
-		{
-			get
-			{
-				return this.Deleted;
-			}
-		}
-
-		#endregion
 
 		#region ICreated implementation
 
@@ -306,8 +293,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
             this.OrderUpdatedAt = (e.OrderUpdatedAt != null && e.OrderUpdatedAt.HasValue) ? e.OrderUpdatedAt.Value : default(DateTime);
 
             this.OrderActive = (e.OrderActive != null && e.OrderActive.HasValue) ? e.OrderActive.Value : default(bool);
-
-			this.Deleted = false;
 
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
@@ -1116,16 +1101,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
 
-
-		}
-
-		public virtual void When(IOrderItemMvoStateDeleted e)
-		{
-			ThrowOnWrongEvent(e);
-
-			this.Deleted = true;
-			this.UpdatedBy = e.CreatedBy;
-			this.UpdatedAt = e.CreatedAt;
 
 		}
 

@@ -28,11 +28,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
                 var e = (IOrderItemMvoStateMergePatched)stateEvent;
                 return ToOrderItemMvoStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
-            {
-                var e = (IOrderItemMvoStateDeleted)stateEvent;
-                return ToOrderItemMvoStateDeletedDto(e);
-            }
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 
@@ -255,17 +250,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
             return dto;
         }
 
-
-        public virtual OrderItemMvoStateDeletedDto ToOrderItemMvoStateDeletedDto(IOrderItemMvoStateDeleted e)
-        {
-            var dto = new OrderItemMvoStateDeletedDto();
-            dto.StateEventId = new OrderItemMvoStateEventIdDtoWrapper(e.StateEventId);
-            dto.CreatedAt = e.CreatedAt;
-            dto.CreatedBy = e.CreatedBy;
-            dto.CommandId = e.CommandId;
-
-            return dto;
-        }
 
 
     }

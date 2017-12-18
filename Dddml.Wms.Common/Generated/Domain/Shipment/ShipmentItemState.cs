@@ -24,8 +24,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual DateTime UpdatedAt { get; set; }
 
-		public virtual bool Deleted { get; set; }
-
 
 		#region IIdentity implementation
 
@@ -81,17 +79,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		#endregion
 
-		#region IDeleted implementation
-
-		bool IDeleted.Deleted
-		{
-			get
-			{
-				return this.Deleted;
-			}
-		}
-
-		#endregion
 
 		#region ICreated implementation
 
@@ -202,8 +189,6 @@ namespace Dddml.Wms.Domain.Shipment
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
-			this.Deleted = false;
-
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
@@ -267,16 +252,6 @@ namespace Dddml.Wms.Domain.Shipment
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
 
-
-		}
-
-		public virtual void When(IShipmentItemStateRemoved e)
-		{
-			ThrowOnWrongEvent(e);
-
-			this.Deleted = true;
-			this.UpdatedBy = e.CreatedBy;
-			this.UpdatedAt = e.CreatedAt;
 
 		}
 

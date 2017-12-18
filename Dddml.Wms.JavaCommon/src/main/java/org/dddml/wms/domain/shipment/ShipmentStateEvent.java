@@ -247,8 +247,6 @@ public interface ShipmentStateEvent extends Event
 
         ShipmentItemStateEvent.ShipmentItemStateMergePatched newShipmentItemStateMergePatched(String shipmentItemSeqId);
 
-        ShipmentItemStateEvent.ShipmentItemStateRemoved newShipmentItemStateRemoved(String shipmentItemSeqId);
-
 
     }
 

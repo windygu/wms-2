@@ -295,10 +295,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 	}
 
-	public interface IOrderItemMvoStateDeleted : IOrderItemMvoStateEvent
-	{
-	}
-
 
 }
 

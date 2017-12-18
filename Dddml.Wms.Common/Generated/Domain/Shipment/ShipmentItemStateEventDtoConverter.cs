@@ -27,11 +27,6 @@ namespace Dddml.Wms.Domain.Shipment
                 var e = (IShipmentItemStateMergePatched)stateEvent;
                 return ToShipmentItemStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Removed)
-            {
-                var e = (IShipmentItemStateRemoved)stateEvent;
-                return ToShipmentItemStateRemovedDto(e);
-            }
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 
@@ -70,18 +65,6 @@ namespace Dddml.Wms.Domain.Shipment
             return dto;
         }
 
-
-        public virtual ShipmentItemStateRemovedDto ToShipmentItemStateRemovedDto(IShipmentItemStateRemoved e)
-        {
-            var dto = new ShipmentItemStateRemovedDto();
-            dto.StateEventId = new ShipmentItemStateEventIdDtoWrapper(e.StateEventId);
-            dto.CreatedAt = e.CreatedAt;
-            dto.CreatedBy = e.CreatedBy;
-            dto.Version = e.Version;
-            dto.CommandId = e.CommandId;
-
-            return dto;
-        }
 
 
     }

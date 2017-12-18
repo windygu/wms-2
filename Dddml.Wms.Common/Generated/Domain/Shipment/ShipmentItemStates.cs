@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.Shipment
                 }
                 else
                 {
-                    return _loadedShipmentItemStates.Values.Where(s => !(_removedShipmentItemStates.ContainsKey(s.GlobalId) && s.Deleted));
+                    return _loadedShipmentItemStates.Values.Where(s => !(_removedShipmentItemStates.ContainsKey(s.GlobalId)));
                 }
             }
         }

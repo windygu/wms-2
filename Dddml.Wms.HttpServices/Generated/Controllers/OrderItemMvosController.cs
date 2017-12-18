@@ -123,19 +123,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = OrderItemMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [HttpDelete][SetRequesterId]
-        public void Delete(string id, string commandId, string version, string requesterId = default(string))
-        {
-          try {
-            var value = new DeleteOrderItemMvoDto();
-            value.CommandId = commandId;
-            value.RequesterId = requesterId;
-            value.OrderVersion = (long)Convert.ChangeType(version, typeof(long));
-            OrderItemMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _orderItemMvoApplicationService.When(value as IDeleteOrderItemMvo);
-          } catch (Exception ex) { var response = OrderItemMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
         [Route("_metadata/filteringFields")]
         [HttpGet]
         public IEnumerable<PropertyMetadataDto> GetMetadataFilteringFields()

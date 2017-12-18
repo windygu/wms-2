@@ -16,7 +16,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 		IGlobalIdentity<OrderItemId>, 
 		ICreated<string>, 
 		IUpdated<string>, 
-		IDeleted, 
 		IActive, 
 		IAggregateVersioned<long>,
 		IState
@@ -27,8 +26,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 		void When(IOrderItemMvoStateCreated e);
 
 		void When(IOrderItemMvoStateMergePatched e);
-
-		void When(IOrderItemMvoStateDeleted e);
 
 		void Mutate(IEvent e);
 

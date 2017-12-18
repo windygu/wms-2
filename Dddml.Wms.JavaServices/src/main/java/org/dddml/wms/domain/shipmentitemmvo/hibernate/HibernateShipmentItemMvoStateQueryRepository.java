@@ -135,7 +135,6 @@ public class HibernateShipmentItemMvoStateQueryRepository implements ShipmentIte
 
 
     protected static void addNotDeletedRestriction(Criteria criteria) {
-        criteria.add(org.hibernate.criterion.Restrictions.eq("deleted", false));
     }
 
 }

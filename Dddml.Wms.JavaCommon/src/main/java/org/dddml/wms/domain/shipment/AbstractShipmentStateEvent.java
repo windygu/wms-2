@@ -408,10 +408,6 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
         return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateMergePatched(newShipmentItemStateEventId(shipmentItemSeqId));
     }
 
-    public ShipmentItemStateEvent.ShipmentItemStateRemoved newShipmentItemStateRemoved(String shipmentItemSeqId) {
-        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateRemoved(newShipmentItemStateEventId(shipmentItemSeqId));
-    }
-
 
     public abstract String getStateEventType();
 

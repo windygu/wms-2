@@ -254,11 +254,6 @@ namespace Dddml.Wms.Domain.Order
                 return MapMergePatch(merge, outerCommand, version, outerState);
             }
 
-            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveOrderItem) : null;
-            if (remove != null)
-            {
-                return MapRemove(remove, outerCommand, version);
-            }
             throw new NotSupportedException();
         }
 
@@ -402,20 +397,6 @@ namespace Dddml.Wms.Domain.Order
         }// END Map(IMergePatch... ////////////////////////////
 
 
-        protected virtual IOrderItemStateRemoved MapRemove(IRemoveOrderItem c, IOrderCommand outerCommand, long version)
-        {
-            c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new OrderItemStateEventId(c.OrderId, c.OrderItemSeqId, version);
-            IOrderItemStateRemoved e = NewOrderItemStateRemoved(stateEventId);
-
-
-            e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
-
-            return e;
-
-        }// END Map(IRemove... ////////////////////////////
-
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
             if (!Object.Equals(innerIdValue, outerIdValue))
@@ -478,11 +459,6 @@ namespace Dddml.Wms.Domain.Order
         private OrderItemStateMergePatched NewOrderItemStateMergePatched(OrderItemStateEventId stateEventId)
 		{
 			return new OrderItemStateMergePatched(stateEventId);
-		}
-
-        private OrderItemStateRemoved NewOrderItemStateRemoved(OrderItemStateEventId stateEventId)
-		{
-			return new OrderItemStateRemoved(stateEventId);
 		}
 
 

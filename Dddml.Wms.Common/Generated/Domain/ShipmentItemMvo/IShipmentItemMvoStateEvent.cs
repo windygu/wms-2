@@ -167,10 +167,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 	}
 
-	public interface IShipmentItemMvoStateDeleted : IShipmentItemMvoStateEvent
-	{
-	}
-
 
 }
 

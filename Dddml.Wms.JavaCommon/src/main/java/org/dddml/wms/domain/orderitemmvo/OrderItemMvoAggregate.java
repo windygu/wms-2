@@ -17,8 +17,6 @@ public interface OrderItemMvoAggregate
 
     void mergePatch(OrderItemMvoCommand.MergePatchOrderItemMvo c);
 
-    void delete(OrderItemMvoCommand.DeleteOrderItemMvo c);
-
     void throwOnInvalidStateTransition(Command c);
 }
 

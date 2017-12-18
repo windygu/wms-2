@@ -39,11 +39,6 @@
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
-    <subclass name="ShipmentItemStateRemoved"  discriminator-value="Removed">
-
-    </subclass>
-
-
 
   </class>
   

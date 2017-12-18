@@ -72,10 +72,6 @@ public interface ShipmentItemStateEvent extends Event
 
     }
 
-    interface ShipmentItemStateRemoved extends ShipmentItemStateEvent
-    {
-    }
-
 
 }
 

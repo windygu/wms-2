@@ -17,8 +17,6 @@ public interface ShipmentItemMvoAggregate
 
     void mergePatch(ShipmentItemMvoCommand.MergePatchShipmentItemMvo c);
 
-    void delete(ShipmentItemMvoCommand.DeleteShipmentItemMvo c);
-
     void throwOnInvalidStateTransition(Command c);
 }
 

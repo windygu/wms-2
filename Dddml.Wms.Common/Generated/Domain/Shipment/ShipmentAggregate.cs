@@ -254,11 +254,6 @@ namespace Dddml.Wms.Domain.Shipment
                 return MapMergePatch(merge, outerCommand, version, outerState);
             }
 
-            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveShipmentItem) : null;
-            if (remove != null)
-            {
-                return MapRemove(remove, outerCommand, version);
-            }
             throw new NotSupportedException();
         }
 
@@ -305,20 +300,6 @@ namespace Dddml.Wms.Domain.Shipment
 
         }// END Map(IMergePatch... ////////////////////////////
 
-
-        protected virtual IShipmentItemStateRemoved MapRemove(IRemoveShipmentItem c, IShipmentCommand outerCommand, long version)
-        {
-            c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new ShipmentItemStateEventId(c.ShipmentId, c.ShipmentItemSeqId, version);
-            IShipmentItemStateRemoved e = NewShipmentItemStateRemoved(stateEventId);
-
-
-            e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
-
-            return e;
-
-        }// END Map(IRemove... ////////////////////////////
 
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
@@ -382,11 +363,6 @@ namespace Dddml.Wms.Domain.Shipment
         private ShipmentItemStateMergePatched NewShipmentItemStateMergePatched(ShipmentItemStateEventId stateEventId)
 		{
 			return new ShipmentItemStateMergePatched(stateEventId);
-		}
-
-        private ShipmentItemStateRemoved NewShipmentItemStateRemoved(ShipmentItemStateEventId stateEventId)
-		{
-			return new ShipmentItemStateRemoved(stateEventId);
 		}
 
 

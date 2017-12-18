@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.Order
                 }
                 else
                 {
-                    return _loadedOrderItemStates.Values.Where(s => !(_removedOrderItemStates.ContainsKey(s.GlobalId) && s.Deleted));
+                    return _loadedOrderItemStates.Values.Where(s => !(_removedOrderItemStates.ContainsKey(s.GlobalId)));
                 }
             }
         }

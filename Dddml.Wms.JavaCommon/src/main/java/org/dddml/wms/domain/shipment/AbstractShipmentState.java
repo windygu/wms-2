@@ -777,11 +777,6 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         for (ShipmentItemStateEvent innerEvent : e.getShipmentItemEvents()) {
             ShipmentItemState innerState = this.getShipmentItems().get(innerEvent.getStateEventId().getShipmentItemSeqId());
             innerState.mutate(innerEvent);
-            if (innerEvent instanceof ShipmentItemStateEvent.ShipmentItemStateRemoved)
-            {
-                //ShipmentItemStateEvent.ShipmentItemStateRemoved removed = (ShipmentItemStateEvent.ShipmentItemStateRemoved)innerEvent;
-                this.getShipmentItems().remove(innerState);
-            }
         }
     }
 

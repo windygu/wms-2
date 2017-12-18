@@ -16,7 +16,6 @@ namespace Dddml.Wms.Domain.Shipment
 		ILocalIdentity<string>, 
 		ICreated<string>, 
 		IUpdated<string>, 
-		IDeleted, 
 		IActive, 
 		IEntityVersioned<long>,
 		IState
@@ -27,8 +26,6 @@ namespace Dddml.Wms.Domain.Shipment
 		void When(IShipmentItemStateCreated e);
 
 		void When(IShipmentItemStateMergePatched e);
-
-		void When(IShipmentItemStateRemoved e);
 
 		void Mutate(IEvent e);
 

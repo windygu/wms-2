@@ -64,10 +64,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
                 }
                 throw DomainError.Named("premature", "Can't do anything to unexistent aggregate");
             }
-            if (_state.Deleted)
-            {
-                throw DomainError.Named("zombie", "Can't do anything to deleted aggregate.");
-            }
             if (IsCommandCreate((IShipmentItemMvoCommand)c))
                 throw DomainError.Named("rebirth", "Can't create aggregate that already exists");
         }
@@ -93,12 +89,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
         public virtual void MergePatch(IMergePatchShipmentItemMvo c)
         {
             IShipmentItemMvoStateMergePatched e = Map(c);
-            Apply(e);
-        }
-
-        public virtual void Delete(IDeleteShipmentItemMvo c)
-        {
-            IShipmentItemMvoStateDeleted e = Map(c);
             Apply(e);
         }
 
@@ -239,21 +229,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             return e;
         }
 
-        protected virtual IShipmentItemMvoStateDeleted Map(IDeleteShipmentItemMvo c)
-        {
-			var stateEventId = new ShipmentItemMvoStateEventId(c.ShipmentItemId, c.ShipmentVersion);
-            IShipmentItemMvoStateDeleted e = NewShipmentItemMvoStateDeleted(stateEventId);
-			
-            e.CommandId = c.CommandId;
-
-
-            e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
-
-
-            return e;
-        }
-
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
             if (!Object.Equals(innerIdValue, outerIdValue))
@@ -295,19 +270,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
         }
 
 
-        protected ShipmentItemMvoStateDeleted NewShipmentItemMvoStateDeleted(string commandId, string requesterId)
-        {
-            var stateEventId = new ShipmentItemMvoStateEventId(_state.ShipmentItemId, ((IShipmentItemMvoStateProperties)_state).ShipmentVersion);
-            var e = NewShipmentItemMvoStateDeleted(stateEventId);
-
-            e.CommandId = commandId;
-
-            e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
-
-            return e;
-        }
-
 ////////////////////////
 
 		private ShipmentItemMvoStateCreated NewShipmentItemMvoStateCreated(ShipmentItemMvoStateEventId stateEventId)
@@ -320,10 +282,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 			return new ShipmentItemMvoStateMergePatched(stateEventId);
 		}
 
-        private ShipmentItemMvoStateDeleted NewShipmentItemMvoStateDeleted(ShipmentItemMvoStateEventId stateEventId)
-		{
-			return new ShipmentItemMvoStateDeleted(stateEventId);
-		}
 
     }
 

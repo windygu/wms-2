@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		void MergePatch (IMergePatchShipmentItemMvo c);
 
-		void Delete (IDeleteShipmentItemMvo c);
-
 
 	}
 

@@ -328,10 +328,6 @@ public interface OrderItemStateEvent extends Event
 
     }
 
-    interface OrderItemStateRemoved extends OrderItemStateEvent
-    {
-    }
-
 
 }
 

@@ -38,7 +38,7 @@ public abstract class AbstractShipmentItemStates implements ShipmentItemStates
         } else {
             List<ShipmentItemState> ss = new ArrayList<ShipmentItemState>();
             for (ShipmentItemState s : loadedShipmentItemStates.values()) {
-                if (!(removedShipmentItemStates.containsKey(s.getShipmentItemId()) && s.getDeleted())) {
+                if (!(removedShipmentItemStates.containsKey(s.getShipmentItemId()))) {
                     ss.add(s);
                 }
             }

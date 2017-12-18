@@ -184,10 +184,6 @@ public interface OrderItemState
 
     void setActive(Boolean active);
 
-    Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
     String getOrderId();
 
     void setOrderId(String orderId);
@@ -204,7 +200,6 @@ public interface OrderItemState
 
     void when(OrderItemStateEvent.OrderItemStateMergePatched e);
 
-    void when(OrderItemStateEvent.OrderItemStateRemoved e);
     
 }
 

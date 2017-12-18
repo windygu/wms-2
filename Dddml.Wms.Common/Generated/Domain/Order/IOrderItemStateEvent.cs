@@ -179,10 +179,6 @@ namespace Dddml.Wms.Domain.Order
 
 	}
 
-	public interface IOrderItemStateRemoved : IOrderItemStateEvent
-	{
-	}
-
 
 }
 

@@ -15,8 +15,6 @@ public interface ShipmentItemMvoApplicationService
 
     void when(ShipmentItemMvoCommand.MergePatchShipmentItemMvo c);
 
-    void when(ShipmentItemMvoCommand.DeleteShipmentItemMvo c);
-
     ShipmentItemMvoState get(ShipmentItemId id);
 
     Iterable<ShipmentItemMvoState> getAll(Integer firstResult, Integer maxResults);

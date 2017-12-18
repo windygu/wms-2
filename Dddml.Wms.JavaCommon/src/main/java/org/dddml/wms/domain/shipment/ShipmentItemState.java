@@ -56,10 +56,6 @@ public interface ShipmentItemState
 
     void setActive(Boolean active);
 
-    Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
     String getShipmentId();
 
     void setShipmentId(String shipmentId);
@@ -76,7 +72,6 @@ public interface ShipmentItemState
 
     void when(ShipmentItemStateEvent.ShipmentItemStateMergePatched e);
 
-    void when(ShipmentItemStateEvent.ShipmentItemStateRemoved e);
     
 }
 

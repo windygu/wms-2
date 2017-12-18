@@ -1,22 +1,4 @@
 
-    alter table Attributes 
-        add column AttributeName VARCHAR(255);
-    alter table AttributeStateEvents 
-        add column AttributeName VARCHAR(255);
-    alter table AttributeStateEvents 
-        add column IsPropertyAttributeNameRemoved TINYINT(1);
-    alter table AttributeValues 
-        add column AttributeValueName VARCHAR(255);
-    alter table AttributeValueStateEvents 
-        add column AttributeValueName VARCHAR(255);
-    alter table AttributeValueStateEvents 
-        add column IsPropertyAttributeValueNameRemoved TINYINT(1);
-    alter table AttributeSets 
-        add column AttributeSetName VARCHAR(255);
-    alter table AttributeSetStateEvents 
-        add column AttributeSetName VARCHAR(255);
-    alter table AttributeSetStateEvents 
-        add column IsPropertyAttributeSetNameRemoved TINYINT(1);
     create table AttributeValue_RV (
         AttributeValueIdAttributeId VARCHAR(50) not null,
        AttributeValueIdValue VARCHAR(50) not null,
@@ -49,14 +31,6 @@
        UpdatedAt DATETIME,
        primary key (AttributeValueIdAttributeId, AttributeValueIdValue)
     );
-    alter table AttributeValueMvoStateEvents 
-        add column AttributeValueName VARCHAR(255);
-    alter table AttributeValueMvoStateEvents 
-        add column AttributeAttributeName VARCHAR(255);
-    alter table AttributeValueMvoStateEvents 
-        add column IsPropertyAttributeValueNameRemoved TINYINT(1);
-    alter table AttributeValueMvoStateEvents 
-        add column IsPropertyAttributeAttributeNameRemoved TINYINT(1);
     create table AttributeUse_RV (
         AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
        AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
@@ -83,12 +57,6 @@
        UpdatedAt DATETIME,
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
     );
-    alter table AttributeUseMvoStateEvents 
-        add column AttributeSetAttributeSetName VARCHAR(255);
-    alter table AttributeUseMvoStateEvents 
-        add column IsPropertyAttributeSetAttributeSetNameRemoved TINYINT(1);
-    alter table DocumentTypes 
-        add column CommandId VARCHAR(255);
     create table AttributeSetInstanceExtensionField_RV (
         AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
        AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
@@ -121,41 +89,11 @@
       unique (Alias)
     );
     alter table InOuts 
-        add column DocumentTypeId VARCHAR(255);
-    alter table InOuts 
-        add column OrderId VARCHAR(255);
-    alter table InOuts 
-        add column MovementTypeId VARCHAR(255);
+        add column DocumentStatusId VARCHAR(255);
     alter table InOutStateEvents 
-        add column DocumentTypeId VARCHAR(255);
+        add column DocumentStatusId VARCHAR(255);
     alter table InOutStateEvents 
-        add column OrderId VARCHAR(255);
-    alter table InOutStateEvents 
-        add column MovementTypeId VARCHAR(255);
-    alter table InOutStateEvents 
-        add column IsPropertyDocumentTypeIdRemoved TINYINT(1);
-    alter table InOutStateEvents 
-        add column IsPropertyOrderIdRemoved TINYINT(1);
-    alter table InOutStateEvents 
-        add column IsPropertyMovementTypeIdRemoved TINYINT(1);
-    alter table Organizations 
-        add column OrganizationName VARCHAR(255);
-    alter table OrganizationStateEvents 
-        add column OrganizationName VARCHAR(255);
-    alter table OrganizationStateEvents 
-        add column IsPropertyOrganizationNameRemoved TINYINT(1);
-    alter table Warehouses 
-        add column WarehouseName VARCHAR(255);
-    alter table WarehouseStateEvents 
-        add column WarehouseName VARCHAR(255);
-    alter table WarehouseStateEvents 
-        add column IsPropertyWarehouseNameRemoved TINYINT(1);
-    alter table Locators 
-        add column Description VARCHAR(255);
-    alter table LocatorStateEvents 
-        add column Description VARCHAR(255);
-    alter table LocatorStateEvents 
-        add column IsPropertyDescriptionRemoved TINYINT(1);
+        add column IsPropertyDocumentStatusIdRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber BIGINT not null,
@@ -180,7 +118,7 @@
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
        Deleted TINYINT(1),
-       InOutDocumentStatus VARCHAR(255),
+       InOutDocumentStatusId VARCHAR(255),
        InOutPosted TINYINT(1),
        InOutProcessing TINYINT(1),
        InOutProcessed TINYINT(1),
@@ -218,17 +156,9 @@
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
     alter table InOutLineMvoStateEvents 
-        add column InOutDocumentTypeId VARCHAR(255);
+        add column InOutDocumentStatusId VARCHAR(255);
     alter table InOutLineMvoStateEvents 
-        add column InOutOrderId VARCHAR(255);
-    alter table InOutLineMvoStateEvents 
-        add column InOutMovementTypeId VARCHAR(255);
-    alter table InOutLineMvoStateEvents 
-        add column IsPropertyInOutDocumentTypeIdRemoved TINYINT(1);
-    alter table InOutLineMvoStateEvents 
-        add column IsPropertyInOutOrderIdRemoved TINYINT(1);
-    alter table InOutLineMvoStateEvents 
-        add column IsPropertyInOutMovementTypeIdRemoved TINYINT(1);
+        add column IsPropertyInOutDocumentStatusIdRemoved TINYINT(1);
     create table InventoryItemEntry_RV (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
@@ -282,20 +212,210 @@
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
       unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
     );
-    create table MovementTypes (
-        MovementTypeId VARCHAR(50) not null,
+    alter table OrderItems 
+        add column StatusId VARCHAR(20);
+    alter table OrderItemStateEvents 
+        add column OrderVersion BIGINT;
+    alter table OrderItemStateEvents 
+        add column StatusId VARCHAR(20);
+    alter table OrderItemStateEvents 
+        add column IsPropertyStatusIdRemoved TINYINT(1);
+    alter table Products 
+        add column ProductRating DECIMAL(18,6);
+    alter table Products 
+        add column RatingTypeEnum VARCHAR(20);
+    alter table ProductStateEvents 
+        add column ProductRating DECIMAL(18,6);
+    alter table ProductStateEvents 
+        add column RatingTypeEnum VARCHAR(20);
+    alter table ProductStateEvents 
+        add column IsPropertyProductRatingRemoved TINYINT(1);
+    alter table ProductStateEvents 
+        add column IsPropertyRatingTypeEnumRemoved TINYINT(1);
+    create table OrderShipments (
+        OrderShipmentIdOrderId VARCHAR(20) not null,
+       OrderShipmentIdOrderItemSeqId VARCHAR(20) not null,
+       OrderShipmentIdShipmentId VARCHAR(20) not null,
+       OrderShipmentIdShipmentItemSeqId VARCHAR(20) not null,
        Version BIGINT not null,
-       Description VARCHAR(255) not null,
+       Quantity DECIMAL(18,6),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
-       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (OrderShipmentIdOrderId, OrderShipmentIdOrderItemSeqId, OrderShipmentIdShipmentId, OrderShipmentIdShipmentItemSeqId)
+    );
+    create table OrderShipmentStateEvents (
+        OrderShipmentIdOrderId VARCHAR(20) not null,
+       OrderShipmentIdOrderItemSeqId VARCHAR(20) not null,
+       OrderShipmentIdShipmentId VARCHAR(20) not null,
+       OrderShipmentIdShipmentItemSeqId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Quantity DECIMAL(18,6),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyQuantityRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (OrderShipmentIdOrderId, OrderShipmentIdOrderItemSeqId, OrderShipmentIdShipmentId, OrderShipmentIdShipmentItemSeqId, Version)
+    );
+    create table Shipments (
+        ShipmentId VARCHAR(20) not null,
+       Version BIGINT not null,
+       ShipmentTypeId VARCHAR(20),
+       StatusId VARCHAR(20),
+       PrimaryOrderId VARCHAR(20),
+       PrimaryReturnId VARCHAR(20),
+       PicklistBinId VARCHAR(20),
+       EstimatedReadyDate DATETIME,
+       EstimatedShipDate DATETIME,
+       EstimatedShipWorkEffId VARCHAR(20),
+       EstimatedArrivalDate DATETIME,
+       EstimatedArrivalWorkEffId VARCHAR(20),
+       LatestCancelDate DATETIME,
+       EstimatedShipCost DECIMAL(18,2),
+       CurrencyUomId VARCHAR(20),
+       HandlingInstructions VARCHAR(255),
+       OriginFacilityId VARCHAR(20),
+       DestinationFacilityId VARCHAR(20),
+       OriginContactMechId VARCHAR(20),
+       OriginTelecomNumberId VARCHAR(20),
+       DestinationContactMechId VARCHAR(20),
+       DestinationTelecomNumberId VARCHAR(20),
+       PartyIdTo VARCHAR(20),
+       PartyIdFrom VARCHAR(20),
+       AdditionalShippingCharge DECIMAL(18,2),
+       AddtlShippingChargeDesc VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (ShipmentId)
+    );
+    create table ShipmentStateEvents (
+        ShipmentId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       ShipmentTypeId VARCHAR(20),
+       StatusId VARCHAR(20),
+       PrimaryOrderId VARCHAR(20),
+       PrimaryReturnId VARCHAR(20),
+       PicklistBinId VARCHAR(20),
+       EstimatedReadyDate DATETIME,
+       EstimatedShipDate DATETIME,
+       EstimatedShipWorkEffId VARCHAR(20),
+       EstimatedArrivalDate DATETIME,
+       EstimatedArrivalWorkEffId VARCHAR(20),
+       LatestCancelDate DATETIME,
+       EstimatedShipCost DECIMAL(18,2),
+       CurrencyUomId VARCHAR(20),
+       HandlingInstructions VARCHAR(255),
+       OriginFacilityId VARCHAR(20),
+       DestinationFacilityId VARCHAR(20),
+       OriginContactMechId VARCHAR(20),
+       OriginTelecomNumberId VARCHAR(20),
+       DestinationContactMechId VARCHAR(20),
+       DestinationTelecomNumberId VARCHAR(20),
+       PartyIdTo VARCHAR(20),
+       PartyIdFrom VARCHAR(20),
+       AdditionalShippingCharge DECIMAL(18,2),
+       AddtlShippingChargeDesc VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyShipmentTypeIdRemoved TINYINT(1),
+       IsPropertyStatusIdRemoved TINYINT(1),
+       IsPropertyPrimaryOrderIdRemoved TINYINT(1),
+       IsPropertyPrimaryReturnIdRemoved TINYINT(1),
+       IsPropertyPicklistBinIdRemoved TINYINT(1),
+       IsPropertyEstimatedReadyDateRemoved TINYINT(1),
+       IsPropertyEstimatedShipDateRemoved TINYINT(1),
+       IsPropertyEstimatedShipWorkEffIdRemoved TINYINT(1),
+       IsPropertyEstimatedArrivalDateRemoved TINYINT(1),
+       IsPropertyEstimatedArrivalWorkEffIdRemoved TINYINT(1),
+       IsPropertyLatestCancelDateRemoved TINYINT(1),
+       IsPropertyEstimatedShipCostRemoved TINYINT(1),
+       IsPropertyCurrencyUomIdRemoved TINYINT(1),
+       IsPropertyHandlingInstructionsRemoved TINYINT(1),
+       IsPropertyOriginFacilityIdRemoved TINYINT(1),
+       IsPropertyDestinationFacilityIdRemoved TINYINT(1),
+       IsPropertyOriginContactMechIdRemoved TINYINT(1),
+       IsPropertyOriginTelecomNumberIdRemoved TINYINT(1),
+       IsPropertyDestinationContactMechIdRemoved TINYINT(1),
+       IsPropertyDestinationTelecomNumberIdRemoved TINYINT(1),
+       IsPropertyPartyIdToRemoved TINYINT(1),
+       IsPropertyPartyIdFromRemoved TINYINT(1),
+       IsPropertyAdditionalShippingChargeRemoved TINYINT(1),
+       IsPropertyAddtlShippingChargeDescRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (ShipmentId, Version)
+    );
+    create table ShipmentItems (
+        ShipmentItemIdShipmentId VARCHAR(20) not null,
+       ShipmentItemIdShipmentItemSeqId VARCHAR(20) not null,
+       Version BIGINT not null,
+       ProductId VARCHAR(20),
+       Quantity DECIMAL(18,6),
+       ShipmentContentDescription VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId)
+    );
+    create table ShipmentItemStateEvents (
+        ShipmentItemIdShipmentId VARCHAR(20) not null,
+       ShipmentItemIdShipmentItemSeqId VARCHAR(20) not null,
+       ShipmentVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       ProductId VARCHAR(20),
+       Quantity DECIMAL(18,6),
+       ShipmentContentDescription VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyProductIdRemoved TINYINT(1),
+       IsPropertyQuantityRemoved TINYINT(1),
+       IsPropertyShipmentContentDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId, ShipmentVersion)
+    );
+    create table StatusItems (
+        StatusId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StatusTypeId VARCHAR(20),
+       StatusCode VARCHAR(60),
+       SequenceId VARCHAR(20),
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        CommandId VARCHAR(255),
-       primary key (MovementTypeId)
+       primary key (StatusId)
     );
-    create table OrderHeaders (
+    create table ShipmentTypes (
+        ShipmentTypeId VARCHAR(20) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       CommandId VARCHAR(255),
+       primary key (ShipmentTypeId)
+    );
+    create table Orders (
         OrderId VARCHAR(20) not null,
        Version BIGINT not null,
        OrderTypeId VARCHAR(20),
@@ -306,6 +426,7 @@
        Priority CHAR(1),
        EntryDate DATETIME,
        PickSheetPrintedDate DATETIME,
+       StatusId VARCHAR(20),
        CurrencyUom VARCHAR(20),
        SyncStatusId VARCHAR(20),
        BillingAccountId VARCHAR(20),
@@ -328,7 +449,7 @@
        UpdatedAt DATETIME,
        primary key (OrderId)
     );
-    create table OrderHeaderStateEvents (
+    create table OrderStateEvents (
         OrderId VARCHAR(20) not null,
        Version BIGINT not null,
        StateEventType VARCHAR(255) not null,
@@ -340,6 +461,7 @@
        Priority CHAR(1),
        EntryDate DATETIME,
        PickSheetPrintedDate DATETIME,
+       StatusId VARCHAR(20),
        CurrencyUom VARCHAR(20),
        SyncStatusId VARCHAR(20),
        BillingAccountId VARCHAR(20),
@@ -367,6 +489,7 @@
        IsPropertyPriorityRemoved TINYINT(1),
        IsPropertyEntryDateRemoved TINYINT(1),
        IsPropertyPickSheetPrintedDateRemoved TINYINT(1),
+       IsPropertyStatusIdRemoved TINYINT(1),
        IsPropertyCurrencyUomRemoved TINYINT(1),
        IsPropertySyncStatusIdRemoved TINYINT(1),
        IsPropertyBillingAccountIdRemoved TINYINT(1),
@@ -385,10 +508,45 @@
        IsPropertyActiveRemoved TINYINT(1),
        primary key (OrderId, Version)
     );
-    create table OrderItems (
+    create table ProductCategoryMembers (
+        ProductCategoryMemberIdProductCategoryId VARCHAR(20) not null,
+       ProductCategoryMemberIdProductId VARCHAR(20) not null,
+       Version BIGINT not null,
+       ThruDate DATETIME,
+       Comments VARCHAR(255),
+       SequenceNum DECIMAL(20,0),
+       Quantity DECIMAL(18,6),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (ProductCategoryMemberIdProductCategoryId, ProductCategoryMemberIdProductId)
+    );
+    create table ProductCategoryMemberStateEvents (
+        ProductCategoryMemberIdProductCategoryId VARCHAR(20) not null,
+       ProductCategoryMemberIdProductId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       ThruDate DATETIME,
+       Comments VARCHAR(255),
+       SequenceNum DECIMAL(20,0),
+       Quantity DECIMAL(18,6),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyThruDateRemoved TINYINT(1),
+       IsPropertyCommentsRemoved TINYINT(1),
+       IsPropertySequenceNumRemoved TINYINT(1),
+       IsPropertyQuantityRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (ProductCategoryMemberIdProductCategoryId, ProductCategoryMemberIdProductId, Version)
+    );
+    create table OrderItem_RV (
         OrderItemIdOrderId VARCHAR(20) not null,
        OrderItemIdOrderItemSeqId VARCHAR(20) not null,
-       Version BIGINT not null,
+       OrderVersion BIGINT not null,
        ProductId VARCHAR(20),
        ExternalProductId VARCHAR(60),
        Quantity DECIMAL(18,6),
@@ -413,6 +571,7 @@
        ItemDescription VARCHAR(255),
        Comments VARCHAR(255),
        CorrespondingPoId VARCHAR(20),
+       StatusId VARCHAR(20),
        SyncStatusId VARCHAR(20),
        EstimatedShipDate DATETIME,
        EstimatedDeliveryDate DATETIME,
@@ -423,17 +582,47 @@
        ShipAfterDate DATETIME,
        CancelBackOrderDate DATETIME,
        OverrideGlAccountId VARCHAR(20),
+       Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
+       OrderOrderTypeId VARCHAR(20),
+       OrderOrderName VARCHAR(100),
+       OrderExternalId VARCHAR(20),
+       OrderSalesChannelEnumId VARCHAR(20),
+       OrderOrderDate DATETIME,
+       OrderPriority CHAR(1),
+       OrderEntryDate DATETIME,
+       OrderPickSheetPrintedDate DATETIME,
+       OrderStatusId VARCHAR(20),
+       OrderCurrencyUom VARCHAR(20),
+       OrderSyncStatusId VARCHAR(20),
+       OrderBillingAccountId VARCHAR(20),
+       OrderOriginFacilityId VARCHAR(20),
+       OrderWebSiteId VARCHAR(20),
+       OrderProductStoreId VARCHAR(20),
+       OrderTerminalId VARCHAR(60),
+       OrderTransactionId VARCHAR(60),
+       OrderAutoOrderShoppingListId VARCHAR(20),
+       OrderNeedsInventoryIssuance CHAR(1),
+       OrderIsRushOrder CHAR(1),
+       OrderInternalCode VARCHAR(60),
+       OrderRemainingSubTotal DECIMAL(18,2),
+       OrderGrandTotal DECIMAL(18,2),
+       OrderInvoicePerShipment CHAR(1),
+       OrderCreatedBy VARCHAR(255),
+       OrderCreatedAt DATETIME,
+       OrderUpdatedBy VARCHAR(255),
+       OrderUpdatedAt DATETIME,
+       OrderActive TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (OrderItemIdOrderId, OrderItemIdOrderItemSeqId)
     );
-    create table OrderItemStateEvents (
+    create table OrderItemMvoStateEvents (
         OrderItemIdOrderId VARCHAR(20) not null,
        OrderItemIdOrderItemSeqId VARCHAR(20) not null,
-       Version BIGINT not null,
+       OrderVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
        ProductId VARCHAR(20),
        ExternalProductId VARCHAR(60),
@@ -459,6 +648,7 @@
        ItemDescription VARCHAR(255),
        Comments VARCHAR(255),
        CorrespondingPoId VARCHAR(20),
+       StatusId VARCHAR(20),
        SyncStatusId VARCHAR(20),
        EstimatedShipDate DATETIME,
        EstimatedDeliveryDate DATETIME,
@@ -469,7 +659,37 @@
        ShipAfterDate DATETIME,
        CancelBackOrderDate DATETIME,
        OverrideGlAccountId VARCHAR(20),
+       Version BIGINT,
        Active TINYINT(1),
+       OrderOrderTypeId VARCHAR(20),
+       OrderOrderName VARCHAR(100),
+       OrderExternalId VARCHAR(20),
+       OrderSalesChannelEnumId VARCHAR(20),
+       OrderOrderDate DATETIME,
+       OrderPriority CHAR(1),
+       OrderEntryDate DATETIME,
+       OrderPickSheetPrintedDate DATETIME,
+       OrderStatusId VARCHAR(20),
+       OrderCurrencyUom VARCHAR(20),
+       OrderSyncStatusId VARCHAR(20),
+       OrderBillingAccountId VARCHAR(20),
+       OrderOriginFacilityId VARCHAR(20),
+       OrderWebSiteId VARCHAR(20),
+       OrderProductStoreId VARCHAR(20),
+       OrderTerminalId VARCHAR(60),
+       OrderTransactionId VARCHAR(60),
+       OrderAutoOrderShoppingListId VARCHAR(20),
+       OrderNeedsInventoryIssuance CHAR(1),
+       OrderIsRushOrder CHAR(1),
+       OrderInternalCode VARCHAR(60),
+       OrderRemainingSubTotal DECIMAL(18,2),
+       OrderGrandTotal DECIMAL(18,2),
+       OrderInvoicePerShipment CHAR(1),
+       OrderCreatedBy VARCHAR(255),
+       OrderCreatedAt DATETIME,
+       OrderUpdatedBy VARCHAR(255),
+       OrderUpdatedAt DATETIME,
+       OrderActive TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
@@ -497,6 +717,7 @@
        IsPropertyItemDescriptionRemoved TINYINT(1),
        IsPropertyCommentsRemoved TINYINT(1),
        IsPropertyCorrespondingPoIdRemoved TINYINT(1),
+       IsPropertyStatusIdRemoved TINYINT(1),
        IsPropertySyncStatusIdRemoved TINYINT(1),
        IsPropertyEstimatedShipDateRemoved TINYINT(1),
        IsPropertyEstimatedDeliveryDateRemoved TINYINT(1),
@@ -507,301 +728,158 @@
        IsPropertyShipAfterDateRemoved TINYINT(1),
        IsPropertyCancelBackOrderDateRemoved TINYINT(1),
        IsPropertyOverrideGlAccountIdRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (OrderItemIdOrderId, OrderItemIdOrderItemSeqId, Version)
+       IsPropertyOrderOrderTypeIdRemoved TINYINT(1),
+       IsPropertyOrderOrderNameRemoved TINYINT(1),
+       IsPropertyOrderExternalIdRemoved TINYINT(1),
+       IsPropertyOrderSalesChannelEnumIdRemoved TINYINT(1),
+       IsPropertyOrderOrderDateRemoved TINYINT(1),
+       IsPropertyOrderPriorityRemoved TINYINT(1),
+       IsPropertyOrderEntryDateRemoved TINYINT(1),
+       IsPropertyOrderPickSheetPrintedDateRemoved TINYINT(1),
+       IsPropertyOrderStatusIdRemoved TINYINT(1),
+       IsPropertyOrderCurrencyUomRemoved TINYINT(1),
+       IsPropertyOrderSyncStatusIdRemoved TINYINT(1),
+       IsPropertyOrderBillingAccountIdRemoved TINYINT(1),
+       IsPropertyOrderOriginFacilityIdRemoved TINYINT(1),
+       IsPropertyOrderWebSiteIdRemoved TINYINT(1),
+       IsPropertyOrderProductStoreIdRemoved TINYINT(1),
+       IsPropertyOrderTerminalIdRemoved TINYINT(1),
+       IsPropertyOrderTransactionIdRemoved TINYINT(1),
+       IsPropertyOrderAutoOrderShoppingListIdRemoved TINYINT(1),
+       IsPropertyOrderNeedsInventoryIssuanceRemoved TINYINT(1),
+       IsPropertyOrderIsRushOrderRemoved TINYINT(1),
+       IsPropertyOrderInternalCodeRemoved TINYINT(1),
+       IsPropertyOrderRemainingSubTotalRemoved TINYINT(1),
+       IsPropertyOrderGrandTotalRemoved TINYINT(1),
+       IsPropertyOrderInvoicePerShipmentRemoved TINYINT(1),
+       IsPropertyOrderCreatedByRemoved TINYINT(1),
+       IsPropertyOrderCreatedAtRemoved TINYINT(1),
+       IsPropertyOrderUpdatedByRemoved TINYINT(1),
+       IsPropertyOrderUpdatedAtRemoved TINYINT(1),
+       IsPropertyOrderActiveRemoved TINYINT(1),
+       primary key (OrderItemIdOrderId, OrderItemIdOrderItemSeqId, OrderVersion)
     );
-    create table Products (
-        ProductId VARCHAR(20) not null,
-       Version BIGINT not null,
-       ProductTypeId VARCHAR(20),
-       PrimaryProductCategoryId VARCHAR(20),
-       ManufacturerPartyId VARCHAR(20),
-       FacilityId VARCHAR(20),
-       IntroductionDate DATETIME,
-       ReleaseDate DATETIME,
-       SupportDiscontinuationDate DATETIME,
-       SalesDiscontinuationDate DATETIME,
-       SalesDiscWhenNotAvail CHAR(1),
-       InternalName VARCHAR(255),
-       BrandName VARCHAR(100),
-       Comments VARCHAR(255),
-       ProductName VARCHAR(100),
-       Description VARCHAR(255),
-       PriceDetailText VARCHAR(255),
-       SmallImageUrl VARCHAR(2000),
-       MediumImageUrl VARCHAR(2000),
-       LargeImageUrl VARCHAR(2000),
-       DetailImageUrl VARCHAR(2000),
-       OriginalImageUrl VARCHAR(2000),
-       DetailScreen VARCHAR(255),
-       InventoryMessage VARCHAR(255),
-       InventoryItemTypeId VARCHAR(20),
-       RequireInventory CHAR(1),
-       QuantityUomId VARCHAR(20),
-       QuantityIncluded DECIMAL(18,6),
-       PiecesIncluded DECIMAL(20,0),
-       RequireAmount CHAR(1),
-       FixedAmount DECIMAL(18,2),
-       AmountUomTypeId VARCHAR(20),
-       WeightUomId VARCHAR(20),
-       ShippingWeight DECIMAL(18,6),
-       ProductWeight DECIMAL(18,6),
-       HeightUomId VARCHAR(20),
-       ProductHeight DECIMAL(18,6),
-       ShippingHeight DECIMAL(18,6),
-       WidthUomId VARCHAR(20),
-       ProductWidth DECIMAL(18,6),
-       ShippingWidth DECIMAL(18,6),
-       DepthUomId VARCHAR(20),
-       ProductDepth DECIMAL(18,6),
-       ShippingDepth DECIMAL(18,6),
-       DiameterUomId VARCHAR(20),
-       ProductDiameter DECIMAL(18,6),
-       Returnable CHAR(1),
-       Taxable CHAR(1),
-       ChargeShipping CHAR(1),
-       AutoCreateKeywords CHAR(1),
-       IncludeInPromotions CHAR(1),
-       IsVirtual CHAR(1),
-       IsVariant CHAR(1),
-       VirtualVariantMethodEnum VARCHAR(20),
-       InShippingBox CHAR(1),
-       DefaultShipmentBoxTypeId VARCHAR(20),
-       LotIdFilledIn VARCHAR(255),
+    create table ShipmentItem_RV (
+        ShipmentItemIdShipmentId VARCHAR(20) not null,
+       ShipmentItemIdShipmentItemSeqId VARCHAR(20) not null,
+       ShipmentVersion BIGINT not null,
+       ProductId VARCHAR(20),
+       Quantity DECIMAL(18,6),
+       ShipmentContentDescription VARCHAR(255),
+       Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
+       ShipmentShipmentTypeId VARCHAR(20),
+       ShipmentStatusId VARCHAR(20),
+       ShipmentPrimaryOrderId VARCHAR(20),
+       ShipmentPrimaryReturnId VARCHAR(20),
+       ShipmentPicklistBinId VARCHAR(20),
+       ShipmentEstimatedReadyDate DATETIME,
+       ShipmentEstimatedShipDate DATETIME,
+       ShipmentEstimatedShipWorkEffId VARCHAR(20),
+       ShipmentEstimatedArrivalDate DATETIME,
+       ShipmentEstimatedArrivalWorkEffId VARCHAR(20),
+       ShipmentLatestCancelDate DATETIME,
+       ShipmentEstimatedShipCost DECIMAL(18,2),
+       ShipmentCurrencyUomId VARCHAR(20),
+       ShipmentHandlingInstructions VARCHAR(255),
+       ShipmentOriginFacilityId VARCHAR(20),
+       ShipmentDestinationFacilityId VARCHAR(20),
+       ShipmentOriginContactMechId VARCHAR(20),
+       ShipmentOriginTelecomNumberId VARCHAR(20),
+       ShipmentDestinationContactMechId VARCHAR(20),
+       ShipmentDestinationTelecomNumberId VARCHAR(20),
+       ShipmentPartyIdTo VARCHAR(20),
+       ShipmentPartyIdFrom VARCHAR(20),
+       ShipmentAdditionalShippingCharge DECIMAL(18,2),
+       ShipmentAddtlShippingChargeDesc VARCHAR(255),
+       ShipmentCreatedBy VARCHAR(255),
+       ShipmentCreatedAt DATETIME,
+       ShipmentUpdatedBy VARCHAR(255),
+       ShipmentUpdatedAt DATETIME,
+       ShipmentActive TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (ProductId)
+       primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId)
     );
-    create table ProductStateEvents (
-        ProductId VARCHAR(20) not null,
-       Version BIGINT not null,
+    create table ShipmentItemMvoStateEvents (
+        ShipmentItemIdShipmentId VARCHAR(20) not null,
+       ShipmentItemIdShipmentItemSeqId VARCHAR(20) not null,
+       ShipmentVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       ProductTypeId VARCHAR(20),
-       PrimaryProductCategoryId VARCHAR(20),
-       ManufacturerPartyId VARCHAR(20),
-       FacilityId VARCHAR(20),
-       IntroductionDate DATETIME,
-       ReleaseDate DATETIME,
-       SupportDiscontinuationDate DATETIME,
-       SalesDiscontinuationDate DATETIME,
-       SalesDiscWhenNotAvail CHAR(1),
-       InternalName VARCHAR(255),
-       BrandName VARCHAR(100),
-       Comments VARCHAR(255),
-       ProductName VARCHAR(100),
-       Description VARCHAR(255),
-       PriceDetailText VARCHAR(255),
-       SmallImageUrl VARCHAR(2000),
-       MediumImageUrl VARCHAR(2000),
-       LargeImageUrl VARCHAR(2000),
-       DetailImageUrl VARCHAR(2000),
-       OriginalImageUrl VARCHAR(2000),
-       DetailScreen VARCHAR(255),
-       InventoryMessage VARCHAR(255),
-       InventoryItemTypeId VARCHAR(20),
-       RequireInventory CHAR(1),
-       QuantityUomId VARCHAR(20),
-       QuantityIncluded DECIMAL(18,6),
-       PiecesIncluded DECIMAL(20,0),
-       RequireAmount CHAR(1),
-       FixedAmount DECIMAL(18,2),
-       AmountUomTypeId VARCHAR(20),
-       WeightUomId VARCHAR(20),
-       ShippingWeight DECIMAL(18,6),
-       ProductWeight DECIMAL(18,6),
-       HeightUomId VARCHAR(20),
-       ProductHeight DECIMAL(18,6),
-       ShippingHeight DECIMAL(18,6),
-       WidthUomId VARCHAR(20),
-       ProductWidth DECIMAL(18,6),
-       ShippingWidth DECIMAL(18,6),
-       DepthUomId VARCHAR(20),
-       ProductDepth DECIMAL(18,6),
-       ShippingDepth DECIMAL(18,6),
-       DiameterUomId VARCHAR(20),
-       ProductDiameter DECIMAL(18,6),
-       Returnable CHAR(1),
-       Taxable CHAR(1),
-       ChargeShipping CHAR(1),
-       AutoCreateKeywords CHAR(1),
-       IncludeInPromotions CHAR(1),
-       IsVirtual CHAR(1),
-       IsVariant CHAR(1),
-       VirtualVariantMethodEnum VARCHAR(20),
-       InShippingBox CHAR(1),
-       DefaultShipmentBoxTypeId VARCHAR(20),
-       LotIdFilledIn VARCHAR(255),
+       ProductId VARCHAR(20),
+       Quantity DECIMAL(18,6),
+       ShipmentContentDescription VARCHAR(255),
+       Version BIGINT,
        Active TINYINT(1),
+       ShipmentShipmentTypeId VARCHAR(20),
+       ShipmentStatusId VARCHAR(20),
+       ShipmentPrimaryOrderId VARCHAR(20),
+       ShipmentPrimaryReturnId VARCHAR(20),
+       ShipmentPicklistBinId VARCHAR(20),
+       ShipmentEstimatedReadyDate DATETIME,
+       ShipmentEstimatedShipDate DATETIME,
+       ShipmentEstimatedShipWorkEffId VARCHAR(20),
+       ShipmentEstimatedArrivalDate DATETIME,
+       ShipmentEstimatedArrivalWorkEffId VARCHAR(20),
+       ShipmentLatestCancelDate DATETIME,
+       ShipmentEstimatedShipCost DECIMAL(18,2),
+       ShipmentCurrencyUomId VARCHAR(20),
+       ShipmentHandlingInstructions VARCHAR(255),
+       ShipmentOriginFacilityId VARCHAR(20),
+       ShipmentDestinationFacilityId VARCHAR(20),
+       ShipmentOriginContactMechId VARCHAR(20),
+       ShipmentOriginTelecomNumberId VARCHAR(20),
+       ShipmentDestinationContactMechId VARCHAR(20),
+       ShipmentDestinationTelecomNumberId VARCHAR(20),
+       ShipmentPartyIdTo VARCHAR(20),
+       ShipmentPartyIdFrom VARCHAR(20),
+       ShipmentAdditionalShippingCharge DECIMAL(18,2),
+       ShipmentAddtlShippingChargeDesc VARCHAR(255),
+       ShipmentCreatedBy VARCHAR(255),
+       ShipmentCreatedAt DATETIME,
+       ShipmentUpdatedBy VARCHAR(255),
+       ShipmentUpdatedAt DATETIME,
+       ShipmentActive TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyProductTypeIdRemoved TINYINT(1),
-       IsPropertyPrimaryProductCategoryIdRemoved TINYINT(1),
-       IsPropertyManufacturerPartyIdRemoved TINYINT(1),
-       IsPropertyFacilityIdRemoved TINYINT(1),
-       IsPropertyIntroductionDateRemoved TINYINT(1),
-       IsPropertyReleaseDateRemoved TINYINT(1),
-       IsPropertySupportDiscontinuationDateRemoved TINYINT(1),
-       IsPropertySalesDiscontinuationDateRemoved TINYINT(1),
-       IsPropertySalesDiscWhenNotAvailRemoved TINYINT(1),
-       IsPropertyInternalNameRemoved TINYINT(1),
-       IsPropertyBrandNameRemoved TINYINT(1),
-       IsPropertyCommentsRemoved TINYINT(1),
-       IsPropertyProductNameRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyPriceDetailTextRemoved TINYINT(1),
-       IsPropertySmallImageUrlRemoved TINYINT(1),
-       IsPropertyMediumImageUrlRemoved TINYINT(1),
-       IsPropertyLargeImageUrlRemoved TINYINT(1),
-       IsPropertyDetailImageUrlRemoved TINYINT(1),
-       IsPropertyOriginalImageUrlRemoved TINYINT(1),
-       IsPropertyDetailScreenRemoved TINYINT(1),
-       IsPropertyInventoryMessageRemoved TINYINT(1),
-       IsPropertyInventoryItemTypeIdRemoved TINYINT(1),
-       IsPropertyRequireInventoryRemoved TINYINT(1),
-       IsPropertyQuantityUomIdRemoved TINYINT(1),
-       IsPropertyQuantityIncludedRemoved TINYINT(1),
-       IsPropertyPiecesIncludedRemoved TINYINT(1),
-       IsPropertyRequireAmountRemoved TINYINT(1),
-       IsPropertyFixedAmountRemoved TINYINT(1),
-       IsPropertyAmountUomTypeIdRemoved TINYINT(1),
-       IsPropertyWeightUomIdRemoved TINYINT(1),
-       IsPropertyShippingWeightRemoved TINYINT(1),
-       IsPropertyProductWeightRemoved TINYINT(1),
-       IsPropertyHeightUomIdRemoved TINYINT(1),
-       IsPropertyProductHeightRemoved TINYINT(1),
-       IsPropertyShippingHeightRemoved TINYINT(1),
-       IsPropertyWidthUomIdRemoved TINYINT(1),
-       IsPropertyProductWidthRemoved TINYINT(1),
-       IsPropertyShippingWidthRemoved TINYINT(1),
-       IsPropertyDepthUomIdRemoved TINYINT(1),
-       IsPropertyProductDepthRemoved TINYINT(1),
-       IsPropertyShippingDepthRemoved TINYINT(1),
-       IsPropertyDiameterUomIdRemoved TINYINT(1),
-       IsPropertyProductDiameterRemoved TINYINT(1),
-       IsPropertyReturnableRemoved TINYINT(1),
-       IsPropertyTaxableRemoved TINYINT(1),
-       IsPropertyChargeShippingRemoved TINYINT(1),
-       IsPropertyAutoCreateKeywordsRemoved TINYINT(1),
-       IsPropertyIncludeInPromotionsRemoved TINYINT(1),
-       IsPropertyIsVirtualRemoved TINYINT(1),
-       IsPropertyIsVariantRemoved TINYINT(1),
-       IsPropertyVirtualVariantMethodEnumRemoved TINYINT(1),
-       IsPropertyInShippingBoxRemoved TINYINT(1),
-       IsPropertyDefaultShipmentBoxTypeIdRemoved TINYINT(1),
-       IsPropertyLotIdFilledInRemoved TINYINT(1),
+       IsPropertyProductIdRemoved TINYINT(1),
+       IsPropertyQuantityRemoved TINYINT(1),
+       IsPropertyShipmentContentDescriptionRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (ProductId, Version)
-    );
-    create table ProductCategories (
-        ProductCategoryId VARCHAR(20) not null,
-       Version BIGINT not null,
-       ProductCategoryTypeId VARCHAR(20),
-       PrimaryParentCategoryId VARCHAR(20),
-       CategoryName VARCHAR(100),
-       Description VARCHAR(255),
-       CategoryImageUrl VARCHAR(2000),
-       DetailScreen VARCHAR(255),
-       ShowInSelect TINYINT(1),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (ProductCategoryId)
-    );
-    create table ProductCategoryStateEvents (
-        ProductCategoryId VARCHAR(20) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       ProductCategoryTypeId VARCHAR(20),
-       PrimaryParentCategoryId VARCHAR(20),
-       CategoryName VARCHAR(100),
-       Description VARCHAR(255),
-       CategoryImageUrl VARCHAR(2000),
-       DetailScreen VARCHAR(255),
-       ShowInSelect TINYINT(1),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyProductCategoryTypeIdRemoved TINYINT(1),
-       IsPropertyPrimaryParentCategoryIdRemoved TINYINT(1),
-       IsPropertyCategoryNameRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyCategoryImageUrlRemoved TINYINT(1),
-       IsPropertyDetailScreenRemoved TINYINT(1),
-       IsPropertyShowInSelectRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (ProductCategoryId, Version)
-    );
-    create table SupplierProducts (
-        SupplierProductIdProductId VARCHAR(20) not null,
-       SupplierProductIdPartyId VARCHAR(20) not null,
-       SupplierProductIdCurrencyUomId VARCHAR(20) not null,
-       SupplierProductIdMinimumOrderQuantity DECIMAL(18,6) not null,
-       Version BIGINT not null,
-       AvailableThruDate DATETIME,
-       SupplierPrefOrderId VARCHAR(20),
-       SupplierRatingTypeId VARCHAR(20),
-       StandardLeadTimeDays DECIMAL(18,6),
-       ManufacturingLeadTimeDays DECIMAL(18,6),
-       DeliveryLeadTimeDays DECIMAL(18,6),
-       QuantityUomId VARCHAR(20),
-       LastPrice DECIMAL(18,3),
-       ShippingPrice DECIMAL(18,3),
-       ExternalProductName VARCHAR(100),
-       ExternalProductId VARCHAR(60),
-       CanDropShip TINYINT(1),
-       Comments VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (SupplierProductIdProductId, SupplierProductIdPartyId, SupplierProductIdCurrencyUomId, SupplierProductIdMinimumOrderQuantity)
-    );
-    create table SupplierProductStateEvents (
-        SupplierProductIdProductId VARCHAR(20) not null,
-       SupplierProductIdPartyId VARCHAR(20) not null,
-       SupplierProductIdCurrencyUomId VARCHAR(20) not null,
-       SupplierProductIdMinimumOrderQuantity DECIMAL(18,6) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       AvailableThruDate DATETIME,
-       SupplierPrefOrderId VARCHAR(20),
-       SupplierRatingTypeId VARCHAR(20),
-       StandardLeadTimeDays DECIMAL(18,6),
-       ManufacturingLeadTimeDays DECIMAL(18,6),
-       DeliveryLeadTimeDays DECIMAL(18,6),
-       QuantityUomId VARCHAR(20),
-       LastPrice DECIMAL(18,3),
-       ShippingPrice DECIMAL(18,3),
-       ExternalProductName VARCHAR(100),
-       ExternalProductId VARCHAR(60),
-       CanDropShip TINYINT(1),
-       Comments VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyAvailableThruDateRemoved TINYINT(1),
-       IsPropertySupplierPrefOrderIdRemoved TINYINT(1),
-       IsPropertySupplierRatingTypeIdRemoved TINYINT(1),
-       IsPropertyStandardLeadTimeDaysRemoved TINYINT(1),
-       IsPropertyManufacturingLeadTimeDaysRemoved TINYINT(1),
-       IsPropertyDeliveryLeadTimeDaysRemoved TINYINT(1),
-       IsPropertyQuantityUomIdRemoved TINYINT(1),
-       IsPropertyLastPriceRemoved TINYINT(1),
-       IsPropertyShippingPriceRemoved TINYINT(1),
-       IsPropertyExternalProductNameRemoved TINYINT(1),
-       IsPropertyExternalProductIdRemoved TINYINT(1),
-       IsPropertyCanDropShipRemoved TINYINT(1),
-       IsPropertyCommentsRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (SupplierProductIdProductId, SupplierProductIdPartyId, SupplierProductIdCurrencyUomId, SupplierProductIdMinimumOrderQuantity, Version)
+       IsPropertyShipmentShipmentTypeIdRemoved TINYINT(1),
+       IsPropertyShipmentStatusIdRemoved TINYINT(1),
+       IsPropertyShipmentPrimaryOrderIdRemoved TINYINT(1),
+       IsPropertyShipmentPrimaryReturnIdRemoved TINYINT(1),
+       IsPropertyShipmentPicklistBinIdRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedReadyDateRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedShipDateRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedShipWorkEffIdRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedArrivalDateRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedArrivalWorkEffIdRemoved TINYINT(1),
+       IsPropertyShipmentLatestCancelDateRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedShipCostRemoved TINYINT(1),
+       IsPropertyShipmentCurrencyUomIdRemoved TINYINT(1),
+       IsPropertyShipmentHandlingInstructionsRemoved TINYINT(1),
+       IsPropertyShipmentOriginFacilityIdRemoved TINYINT(1),
+       IsPropertyShipmentDestinationFacilityIdRemoved TINYINT(1),
+       IsPropertyShipmentOriginContactMechIdRemoved TINYINT(1),
+       IsPropertyShipmentOriginTelecomNumberIdRemoved TINYINT(1),
+       IsPropertyShipmentDestinationContactMechIdRemoved TINYINT(1),
+       IsPropertyShipmentDestinationTelecomNumberIdRemoved TINYINT(1),
+       IsPropertyShipmentPartyIdToRemoved TINYINT(1),
+       IsPropertyShipmentPartyIdFromRemoved TINYINT(1),
+       IsPropertyShipmentAdditionalShippingChargeRemoved TINYINT(1),
+       IsPropertyShipmentAddtlShippingChargeDescRemoved TINYINT(1),
+       IsPropertyShipmentCreatedByRemoved TINYINT(1),
+       IsPropertyShipmentCreatedAtRemoved TINYINT(1),
+       IsPropertyShipmentUpdatedByRemoved TINYINT(1),
+       IsPropertyShipmentUpdatedAtRemoved TINYINT(1),
+       IsPropertyShipmentActiveRemoved TINYINT(1),
+       primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId, ShipmentVersion)
     );
