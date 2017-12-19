@@ -71,14 +71,49 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
                     version, Guid.NewGuid().ToString(), itemDesc);
                 DoPatch(client, url, jsonRequstStr);
 
-                //// ///////////////////////////
+                ////// ///////////////////////////
                 //jsonRequstStr = String.Format(
                 //    "{{\"version\":{0},\"commandId\":\"{1}\",\"description\":null}}",
-                //    version, Guid.NewGuid().ToString(), itemDesc);
+                //    version + 1, Guid.NewGuid().ToString(), itemDesc);
                 //DoPatch(client, url, jsonRequstStr);
                 
             }
         }
+
+        // 
+        // 在原有代码模板基本不变的情况下……
+        //
+        // //////////////////// 服务端如何实现 JSON Merge Patch ///////////////////
+        //
+        // 设置服务端的 JsonFormatter 的序列化选项：
+        // config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Include;
+        //
+        // 修改命令模板，生成这样的代码： 
+        /*
+         * 
+        public class MergePatchStatusItemDto : CreateOrMergePatchOrDeleteStatusItemDto
+        {
+
+            public override string Description
+            {
+                get
+                {
+                    return base.Description;
+                }
+                set
+                {
+                    if (value == null)
+                    {
+                        IsPropertyDescriptionRemoved = true;
+                    }
+                    base.Description = value;
+                }
+            }
+            //...
+        }
+         * 
+         */
+        // ///////////////////////////////////////////////////////////
 
         private void DoPatch(HttpClient client, string url, string jsonRequstStr)
         {
