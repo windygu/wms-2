@@ -43,5 +43,22 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 	}
 
+    public static partial class UserPermissionMvoApplicationServiceExtension
+    {
+        public static IEnumerable<IUserPermissionMvoState> GetByProperty(this IUserPermissionMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IUserPermissionMvoState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IUserPermissionMvoState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IUserPermissionMvoState> GetByProperty<TPropertyType>(this IUserPermissionMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IUserPermissionMvoState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IUserPermissionMvoState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

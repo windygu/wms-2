@@ -42,5 +42,22 @@ namespace Dddml.Wms.Domain.Permission
 
 	}
 
+    public static partial class PermissionApplicationServiceExtension
+    {
+        public static IEnumerable<IPermissionState> GetByProperty(this IPermissionApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IPermissionState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IPermissionState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IPermissionState> GetByProperty<TPropertyType>(this IPermissionApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IPermissionState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IPermissionState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

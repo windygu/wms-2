@@ -41,5 +41,22 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 	}
 
+    public static partial class OrderItemMvoApplicationServiceExtension
+    {
+        public static IEnumerable<IOrderItemMvoState> GetByProperty(this IOrderItemMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IOrderItemMvoState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IOrderItemMvoState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IOrderItemMvoState> GetByProperty<TPropertyType>(this IOrderItemMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IOrderItemMvoState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IOrderItemMvoState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

@@ -44,5 +44,22 @@ namespace Dddml.Wms.Domain.InOut
 
 	}
 
+    public static partial class InOutApplicationServiceExtension
+    {
+        public static IEnumerable<IInOutState> GetByProperty(this IInOutApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInOutState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInOutState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IInOutState> GetByProperty<TPropertyType>(this IInOutApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInOutState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInOutState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

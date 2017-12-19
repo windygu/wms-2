@@ -43,5 +43,22 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
 	}
 
+    public static partial class UserRoleMvoApplicationServiceExtension
+    {
+        public static IEnumerable<IUserRoleMvoState> GetByProperty(this IUserRoleMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IUserRoleMvoState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IUserRoleMvoState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IUserRoleMvoState> GetByProperty<TPropertyType>(this IUserRoleMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IUserRoleMvoState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IUserRoleMvoState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

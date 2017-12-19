@@ -36,5 +36,22 @@ namespace Dddml.Wms.Domain.ShipmentType
 
 	}
 
+    public static partial class ShipmentTypeApplicationServiceExtension
+    {
+        public static IEnumerable<IShipmentTypeState> GetByProperty(this IShipmentTypeApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IShipmentTypeState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IShipmentTypeState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IShipmentTypeState> GetByProperty<TPropertyType>(this IShipmentTypeApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IShipmentTypeState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IShipmentTypeState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

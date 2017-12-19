@@ -50,5 +50,22 @@ namespace Dddml.Wms.Domain.User
 
 	}
 
+    public static partial class UserApplicationServiceExtension
+    {
+        public static IEnumerable<IUserState> GetByProperty(this IUserApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IUserState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IUserState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IUserState> GetByProperty<TPropertyType>(this IUserApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IUserState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IUserState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

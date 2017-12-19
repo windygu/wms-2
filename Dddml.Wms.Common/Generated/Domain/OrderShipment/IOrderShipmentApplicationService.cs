@@ -40,5 +40,22 @@ namespace Dddml.Wms.Domain.OrderShipment
 
 	}
 
+    public static partial class OrderShipmentApplicationServiceExtension
+    {
+        public static IEnumerable<IOrderShipmentState> GetByProperty(this IOrderShipmentApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IOrderShipmentState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IOrderShipmentState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IOrderShipmentState> GetByProperty<TPropertyType>(this IOrderShipmentApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IOrderShipmentState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IOrderShipmentState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

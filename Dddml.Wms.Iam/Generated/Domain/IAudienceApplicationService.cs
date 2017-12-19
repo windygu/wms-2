@@ -42,5 +42,22 @@ namespace Dddml.Wms.Domain.Audience
 
 	}
 
+    public static partial class AudienceApplicationServiceExtension
+    {
+        public static IEnumerable<IAudienceState> GetByProperty(this IAudienceApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IAudienceState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IAudienceState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IAudienceState> GetByProperty<TPropertyType>(this IAudienceApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IAudienceState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IAudienceState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

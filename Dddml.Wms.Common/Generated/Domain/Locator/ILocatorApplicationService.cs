@@ -42,5 +42,22 @@ namespace Dddml.Wms.Domain.Locator
 
 	}
 
+    public static partial class LocatorApplicationServiceExtension
+    {
+        public static IEnumerable<ILocatorState> GetByProperty(this ILocatorApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<ILocatorState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<ILocatorState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<ILocatorState> GetByProperty<TPropertyType>(this ILocatorApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<ILocatorState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<ILocatorState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

@@ -43,5 +43,22 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
 	}
 
+    public static partial class UserClaimMvoApplicationServiceExtension
+    {
+        public static IEnumerable<IUserClaimMvoState> GetByProperty(this IUserClaimMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IUserClaimMvoState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IUserClaimMvoState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IUserClaimMvoState> GetByProperty<TPropertyType>(this IUserClaimMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IUserClaimMvoState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IUserClaimMvoState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

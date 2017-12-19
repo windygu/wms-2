@@ -37,5 +37,22 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
 	}
 
+    public static partial class InventoryPRTriggeredApplicationServiceExtension
+    {
+        public static IEnumerable<IInventoryPRTriggeredState> GetByProperty(this IInventoryPRTriggeredApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInventoryPRTriggeredState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInventoryPRTriggeredState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IInventoryPRTriggeredState> GetByProperty<TPropertyType>(this IInventoryPRTriggeredApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInventoryPRTriggeredState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInventoryPRTriggeredState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

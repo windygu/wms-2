@@ -42,5 +42,22 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 	}
 
+    public static partial class InventoryItemApplicationServiceExtension
+    {
+        public static IEnumerable<IInventoryItemState> GetByProperty(this IInventoryItemApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInventoryItemState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInventoryItemState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IInventoryItemState> GetByProperty<TPropertyType>(this IInventoryItemApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInventoryItemState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInventoryItemState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

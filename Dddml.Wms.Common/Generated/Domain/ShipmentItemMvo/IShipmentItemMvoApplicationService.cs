@@ -41,5 +41,22 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 	}
 
+    public static partial class ShipmentItemMvoApplicationServiceExtension
+    {
+        public static IEnumerable<IShipmentItemMvoState> GetByProperty(this IShipmentItemMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IShipmentItemMvoState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IShipmentItemMvoState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IShipmentItemMvoState> GetByProperty<TPropertyType>(this IShipmentItemMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IShipmentItemMvoState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IShipmentItemMvoState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

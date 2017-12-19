@@ -42,5 +42,22 @@ namespace Dddml.Wms.Domain.RolePermission
 
 	}
 
+    public static partial class RolePermissionApplicationServiceExtension
+    {
+        public static IEnumerable<IRolePermissionState> GetByProperty(this IRolePermissionApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IRolePermissionState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IRolePermissionState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IRolePermissionState> GetByProperty<TPropertyType>(this IRolePermissionApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IRolePermissionState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IRolePermissionState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

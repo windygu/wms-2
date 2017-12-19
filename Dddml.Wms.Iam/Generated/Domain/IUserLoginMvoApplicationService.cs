@@ -43,5 +43,22 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
 	}
 
+    public static partial class UserLoginMvoApplicationServiceExtension
+    {
+        public static IEnumerable<IUserLoginMvoState> GetByProperty(this IUserLoginMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IUserLoginMvoState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IUserLoginMvoState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IUserLoginMvoState> GetByProperty<TPropertyType>(this IUserLoginMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IUserLoginMvoState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IUserLoginMvoState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

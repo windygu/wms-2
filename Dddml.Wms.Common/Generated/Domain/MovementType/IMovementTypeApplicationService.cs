@@ -38,5 +38,22 @@ namespace Dddml.Wms.Domain.MovementType
 
 	}
 
+    public static partial class MovementTypeApplicationServiceExtension
+    {
+        public static IEnumerable<IMovementTypeState> GetByProperty(this IMovementTypeApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IMovementTypeState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IMovementTypeState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IMovementTypeState> GetByProperty<TPropertyType>(this IMovementTypeApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IMovementTypeState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IMovementTypeState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

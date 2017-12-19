@@ -40,5 +40,22 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 	}
 
+    public static partial class SellableInventoryItemApplicationServiceExtension
+    {
+        public static IEnumerable<ISellableInventoryItemState> GetByProperty(this ISellableInventoryItemApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<ISellableInventoryItemState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<ISellableInventoryItemState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<ISellableInventoryItemState> GetByProperty<TPropertyType>(this ISellableInventoryItemApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<ISellableInventoryItemState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<ISellableInventoryItemState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

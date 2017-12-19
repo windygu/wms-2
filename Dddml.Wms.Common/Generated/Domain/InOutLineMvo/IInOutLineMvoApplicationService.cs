@@ -43,5 +43,22 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 	}
 
+    public static partial class InOutLineMvoApplicationServiceExtension
+    {
+        public static IEnumerable<IInOutLineMvoState> GetByProperty(this IInOutLineMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInOutLineMvoState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInOutLineMvoState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IInOutLineMvoState> GetByProperty<TPropertyType>(this IInOutLineMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInOutLineMvoState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInOutLineMvoState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

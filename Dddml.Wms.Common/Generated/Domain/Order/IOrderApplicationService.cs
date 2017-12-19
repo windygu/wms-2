@@ -42,5 +42,22 @@ namespace Dddml.Wms.Domain.Order
 
 	}
 
+    public static partial class OrderApplicationServiceExtension
+    {
+        public static IEnumerable<IOrderState> GetByProperty(this IOrderApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IOrderState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IOrderState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IOrderState> GetByProperty<TPropertyType>(this IOrderApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IOrderState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IOrderState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

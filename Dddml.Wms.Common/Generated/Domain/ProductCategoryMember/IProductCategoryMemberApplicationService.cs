@@ -40,5 +40,22 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
 	}
 
+    public static partial class ProductCategoryMemberApplicationServiceExtension
+    {
+        public static IEnumerable<IProductCategoryMemberState> GetByProperty(this IProductCategoryMemberApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IProductCategoryMemberState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IProductCategoryMemberState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IProductCategoryMemberState> GetByProperty<TPropertyType>(this IProductCategoryMemberApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IProductCategoryMemberState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IProductCategoryMemberState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

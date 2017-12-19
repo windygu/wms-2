@@ -43,5 +43,22 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 	}
 
+    public static partial class InventoryPostingRuleApplicationServiceExtension
+    {
+        public static IEnumerable<IInventoryPostingRuleState> GetByProperty(this IInventoryPostingRuleApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInventoryPostingRuleState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInventoryPostingRuleState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IInventoryPostingRuleState> GetByProperty<TPropertyType>(this IInventoryPostingRuleApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInventoryPostingRuleState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInventoryPostingRuleState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

@@ -43,5 +43,22 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 	}
 
+    public static partial class AttributeValueMvoApplicationServiceExtension
+    {
+        public static IEnumerable<IAttributeValueMvoState> GetByProperty(this IAttributeValueMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IAttributeValueMvoState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IAttributeValueMvoState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IAttributeValueMvoState> GetByProperty<TPropertyType>(this IAttributeValueMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IAttributeValueMvoState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IAttributeValueMvoState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

@@ -42,5 +42,22 @@ namespace Dddml.Wms.Domain.Role
 
 	}
 
+    public static partial class RoleApplicationServiceExtension
+    {
+        public static IEnumerable<IRoleState> GetByProperty(this IRoleApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IRoleState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IRoleState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IRoleState> GetByProperty<TPropertyType>(this IRoleApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IRoleState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IRoleState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

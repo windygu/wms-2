@@ -41,5 +41,22 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 	}
 
+    public static partial class InventoryItemEntryMvoApplicationServiceExtension
+    {
+        public static IEnumerable<IInventoryItemEntryMvoState> GetByProperty(this IInventoryItemEntryMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInventoryItemEntryMvoState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInventoryItemEntryMvoState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IInventoryItemEntryMvoState> GetByProperty<TPropertyType>(this IInventoryItemEntryMvoApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IInventoryItemEntryMvoState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IInventoryItemEntryMvoState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

@@ -12,12 +12,10 @@ using System.Security.Cryptography;
 
 namespace Dddml.Wms.Services.Tests
 {
-    
     class Program
     {
         static void Main(string[] args)
         {
-
             var initdb = new InitDatabase();
             initdb.SetUp();
 
@@ -48,6 +46,14 @@ namespace Dddml.Wms.Services.Tests
 
             Console.ReadKey();
         }
+
+
+        //class C1 { public int IF1 { get; set; } public string SF1 { get; set; } }
+        //private static void TestReflectUtils() 
+        //{
+        //    ReflectUtils.GetPropertyName<C1, int>(c => c.IF1);
+        //}
+
     }
 
 }

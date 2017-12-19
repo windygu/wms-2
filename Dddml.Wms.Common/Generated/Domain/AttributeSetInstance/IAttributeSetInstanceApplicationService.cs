@@ -40,5 +40,22 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 	}
 
+    public static partial class AttributeSetInstanceApplicationServiceExtension
+    {
+        public static IEnumerable<IAttributeSetInstanceState> GetByProperty(this IAttributeSetInstanceApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IAttributeSetInstanceState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IAttributeSetInstanceState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IAttributeSetInstanceState> GetByProperty<TPropertyType>(this IAttributeSetInstanceApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IAttributeSetInstanceState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IAttributeSetInstanceState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

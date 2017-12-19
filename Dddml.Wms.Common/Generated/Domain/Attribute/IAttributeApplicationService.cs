@@ -44,5 +44,22 @@ namespace Dddml.Wms.Domain.Attribute
 
 	}
 
+    public static partial class AttributeApplicationServiceExtension
+    {
+        public static IEnumerable<IAttributeState> GetByProperty(this IAttributeApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IAttributeState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IAttributeState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IAttributeState> GetByProperty<TPropertyType>(this IAttributeApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IAttributeState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IAttributeState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

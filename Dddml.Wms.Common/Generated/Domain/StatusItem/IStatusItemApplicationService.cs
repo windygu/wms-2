@@ -36,5 +36,22 @@ namespace Dddml.Wms.Domain.StatusItem
 
 	}
 
+    public static partial class StatusItemApplicationServiceExtension
+    {
+        public static IEnumerable<IStatusItemState> GetByProperty(this IStatusItemApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IStatusItemState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IStatusItemState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IStatusItemState> GetByProperty<TPropertyType>(this IStatusItemApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IStatusItemState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IStatusItemState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

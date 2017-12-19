@@ -42,5 +42,22 @@ namespace Dddml.Wms.Domain.Organization
 
 	}
 
+    public static partial class OrganizationApplicationServiceExtension
+    {
+        public static IEnumerable<IOrganizationState> GetByProperty(this IOrganizationApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IOrganizationState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IOrganizationState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IOrganizationState> GetByProperty<TPropertyType>(this IOrganizationApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IOrganizationState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IOrganizationState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

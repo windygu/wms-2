@@ -38,5 +38,22 @@ namespace Dddml.Wms.Domain.DocumentType
 
 	}
 
+    public static partial class DocumentTypeApplicationServiceExtension
+    {
+        public static IEnumerable<IDocumentTypeState> GetByProperty(this IDocumentTypeApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IDocumentTypeState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IDocumentTypeState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IDocumentTypeState> GetByProperty<TPropertyType>(this IDocumentTypeApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IDocumentTypeState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IDocumentTypeState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

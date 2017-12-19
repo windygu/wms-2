@@ -44,5 +44,22 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 	}
 
+    public static partial class AttributeSetInstanceExtensionFieldGroupApplicationServiceExtension
+    {
+        public static IEnumerable<IAttributeSetInstanceExtensionFieldGroupState> GetByProperty(this IAttributeSetInstanceExtensionFieldGroupApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IAttributeSetInstanceExtensionFieldGroupState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IAttributeSetInstanceExtensionFieldGroupState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IAttributeSetInstanceExtensionFieldGroupState> GetByProperty<TPropertyType>(this IAttributeSetInstanceExtensionFieldGroupApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IAttributeSetInstanceExtensionFieldGroupState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IAttributeSetInstanceExtensionFieldGroupState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

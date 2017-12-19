@@ -40,5 +40,22 @@ namespace Dddml.Wms.Domain.Product
 
 	}
 
+    public static partial class ProductApplicationServiceExtension
+    {
+        public static IEnumerable<IProductState> GetByProperty(this IProductApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IProductState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IProductState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<IProductState> GetByProperty<TPropertyType>(this IProductApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<IProductState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<IProductState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 

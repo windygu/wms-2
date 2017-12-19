@@ -40,5 +40,22 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
 	}
 
+    public static partial class SupplierProductApplicationServiceExtension
+    {
+        public static IEnumerable<ISupplierProductState> GetByProperty(this ISupplierProductApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<ISupplierProductState, object>> propertySelector, 
+            object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<ISupplierProductState>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+
+        public static IEnumerable<ISupplierProductState> GetByProperty<TPropertyType>(this ISupplierProductApplicationService applicationService,
+            System.Linq.Expressions.Expression<Func<ISupplierProductState, TPropertyType>> propertySelector,
+            TPropertyType propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        {
+            return applicationService.GetByProperty(ReflectUtils.GetPropertyName<ISupplierProductState, TPropertyType>(propertySelector), propertyValue, orders, firstResult, maxResults);
+        }
+    }
+
 }
 
