@@ -17,6 +17,7 @@ namespace Dddml.Wms.Services.Tests
     {
         static void Main(string[] args)
         {
+
             var initdb = new InitDatabase();
             initdb.SetUp();
 
@@ -27,10 +28,19 @@ namespace Dddml.Wms.Services.Tests
             Console.WriteLine("Copy and fix hbm2ddl creation sql, ok.");
 
             initdb.CreateDatabaseAndSeed();
+
+            // //////////////////////
+            //var xmlDataLoader = new XmlDataLoader();
+            //xmlDataLoader.Process(".\\");
+            //Console.ReadKey();
+            //return;
+            // ////////////////////
+
             // ////////////////////////
             TestMain.DoSomeTests();
             // ////////////////////////
-            Console.WriteLine("Create database and seed, ok.");
+            
+            Console.WriteLine("Create database and seed and test, ok.");
 
             Console.ReadKey();
         }

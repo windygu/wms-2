@@ -14,6 +14,9 @@ namespace Dddml.Wms.Services.Tests
             var inventoryPostingRuleTests = new InventoryPostingRuleTests();
             inventoryPostingRuleTests.SetUp();
             inventoryPostingRuleTests.TestCreateInventoryPostingRules();
+
+            //var xmlDataLoader = new XmlDataLoader();
+            //xmlDataLoader.Process(".\\");
         }
     }
 }

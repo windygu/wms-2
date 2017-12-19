@@ -3,6 +3,7 @@
 <#@ import namespace="Dddml.Core.Dom" #>
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\Domain\Metadata\AggregateMetadataGenerator.tt" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\Domain\Metadata\BoundedContextMetadataGenerator.tt" #>
 <#@ include file="..\..\..\LoadBoundedContext.tt" #>
 <#
 
@@ -13,4 +14,9 @@
 	    generator.Run();
 	}
 
+    var boundedContextMetadataGenerator = new BoundedContextMetadataGenerator(boundedContext);
+    boundedContextMetadataGenerator.Run();
+
 #>
+
+

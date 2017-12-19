@@ -64,6 +64,7 @@
     <Compile Include="Domain\InventoryItem\InventoryItemIds.cs" />
     <Compile Include="Domain\InventoryPostingRule\InventoryPostingRuleIds.cs" />
     <Compile Include="Domain\Services\IAttributeSetService.cs" />
+    <Compile Include="Domain\StatusItem\StatusTypeIds.cs" />
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldCommand.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Compile>
@@ -2147,6 +2148,9 @@
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\AttributeValueMvoMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\BoundedContextMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\DocumentTypeMetadata.cs">
@@ -5977,6 +5981,7 @@
 .\AttributeUseMvoMetadata.cs
 .\AttributeValueMetadata.cs
 .\AttributeValueMvoMetadata.cs
+.\BoundedContextMetadata.cs
 .\DocumentTypeMetadata.cs
 .\GenerateDomainMetadata.txt
 .\InOutLineMetadata.cs

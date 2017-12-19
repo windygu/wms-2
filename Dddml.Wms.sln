@@ -70,6 +70,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dddml.T4", "..\dddml-dotnet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dddml.T4.ProjectTools", "..\dddml-dotnet-tools\Dddml.T4.ProjectTools\Dddml.T4.ProjectTools.csproj", "{63C0B002-491B-49DC-844E-B80D92012645}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dddml.Ofbiz", "..\dddml-dotnet-tools\Dddml.Ofbiz\Dddml.Ofbiz.csproj", "{107E64CC-336C-4380-B7FD-16BC2AF8DE5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -176,6 +178,10 @@ Global
 		{63C0B002-491B-49DC-844E-B80D92012645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63C0B002-491B-49DC-844E-B80D92012645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63C0B002-491B-49DC-844E-B80D92012645}.Release|Any CPU.Build.0 = Release|Any CPU
+		{107E64CC-336C-4380-B7FD-16BC2AF8DE5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{107E64CC-336C-4380-B7FD-16BC2AF8DE5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{107E64CC-336C-4380-B7FD-16BC2AF8DE5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{107E64CC-336C-4380-B7FD-16BC2AF8DE5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -196,5 +202,6 @@ Global
 		{8ED4AC8C-9ADC-42B6-9D37-34CCA8B5F7D6} = {07D0E50B-5D97-404A-9D0F-6AD3D6846FCD}
 		{6DFE35BD-21B0-4A1B-9447-1CAC51E99737} = {07D0E50B-5D97-404A-9D0F-6AD3D6846FCD}
 		{63C0B002-491B-49DC-844E-B80D92012645} = {07D0E50B-5D97-404A-9D0F-6AD3D6846FCD}
+		{107E64CC-336C-4380-B7FD-16BC2AF8DE5B} = {07D0E50B-5D97-404A-9D0F-6AD3D6846FCD}
 	EndGlobalSection
 EndGlobal

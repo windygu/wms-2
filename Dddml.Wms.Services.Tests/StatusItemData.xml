@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+  <!-- C:\svn\ofbiz.15.12\applications\order\data\OrderTypeData.xml -->
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="ORDER_CREATED" statusTypeId="ORDER_STATUS" />
+  <StatusItem description="Processing" sequenceId="04" statusCode="PROCESSING" statusId="ORDER_PROCESSING" statusTypeId="ORDER_STATUS" />
+  <StatusItem description="Approved" sequenceId="05" statusCode="APPROVED" statusId="ORDER_APPROVED" statusTypeId="ORDER_STATUS" />
+  <StatusItem description="Sent" sequenceId="03" statusCode="SENT" statusId="ORDER_SENT" statusTypeId="ORDER_STATUS" />
+  <StatusItem description="Held" sequenceId="06" statusCode="HELD" statusId="ORDER_HOLD" statusTypeId="ORDER_STATUS" />
+  <StatusItem description="Completed" sequenceId="10" statusCode="COMPLETED" statusId="ORDER_COMPLETED" statusTypeId="ORDER_STATUS" />
+  <StatusItem description="Rejected" sequenceId="98" statusCode="REJECTED" statusId="ORDER_REJECTED" statusTypeId="ORDER_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="ORDER_CANCELLED" statusTypeId="ORDER_STATUS" />
+  
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="ITEM_CREATED" statusTypeId="ORDER_ITEM_STATUS" />
+  <StatusItem description="Approved" sequenceId="05" statusCode="APPROVED" statusId="ITEM_APPROVED" statusTypeId="ORDER_ITEM_STATUS" />
+  <StatusItem description="Completed" sequenceId="10" statusCode="COMPLETED" statusId="ITEM_COMPLETED" statusTypeId="ORDER_ITEM_STATUS" />
+  <StatusItem description="Rejected" sequenceId="98" statusCode="REJECTED" statusId="ITEM_REJECTED" statusTypeId="ORDER_ITEM_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="ITEM_CANCELLED" statusTypeId="ORDER_ITEM_STATUS" />
+  
+  <StatusItem description="Not-Received" sequenceId="01" statusCode="NOT_RECEIVED" statusId="PAYMENT_NOT_RECEIVED" statusTypeId="PAYMENT_PREF_STATUS" />
+  <StatusItem description="Received" sequenceId="02" statusCode="RECEIVED" statusId="PAYMENT_RECEIVED" statusTypeId="PAYMENT_PREF_STATUS" />
+  <StatusItem description="Not-Authorized" sequenceId="01" statusCode="NOT_AUTHORIZED" statusId="PAYMENT_NOT_AUTH" statusTypeId="PAYMENT_PREF_STATUS" />
+  <StatusItem description="Authorized" sequenceId="02" statusCode="AUTHORIZED" statusId="PAYMENT_AUTHORIZED" statusTypeId="PAYMENT_PREF_STATUS" />
+  <StatusItem description="Settled" sequenceId="03" statusCode="SETTLED" statusId="PAYMENT_SETTLED" statusTypeId="PAYMENT_PREF_STATUS" />
+  <StatusItem description="Declined" sequenceId="04" statusCode="DECLINED" statusId="PAYMENT_DECLINED" statusTypeId="PAYMENT_PREF_STATUS" />
+  <StatusItem description="Refunded" sequenceId="05" statusCode="REFUNDED" statusId="PAYMENT_REFUNDED" statusTypeId="PAYMENT_PREF_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="PAYMENT_CANCELLED" statusTypeId="PAYMENT_PREF_STATUS" />
+  <StatusItem description="Supplier Submitted" sequenceId="01" statusCode="SUBMITTED" statusId="ODS_SUBMITTED" statusTypeId="ORDER_DEL_SCH" />
+  <StatusItem description="Accepted" sequenceId="02" statusCode="ACCEPTED" statusId="ODS_ACCEPTED" statusTypeId="ORDER_DEL_SCH" />
+  <StatusItem description="Schedule Approved" sequenceId="03" statusCode="APPROVED" statusId="ODS_APPROVED" statusTypeId="ORDER_DEL_SCH" />
+  <StatusItem description="Delivery Arranged" sequenceId="04" statusCode="ARRANGED" statusId="ODS_ARRANGED" statusTypeId="ORDER_DEL_SCH" />
+  <StatusItem description="Delivery Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="ODS_CANCELLED" statusTypeId="ORDER_DEL_SCH" />
+  <StatusItem description="Requested" sequenceId="01" statusCode="REQUESTED" statusId="RETURN_REQUESTED" statusTypeId="ORDER_RETURN_STTS" />
+  <StatusItem description="Accepted" sequenceId="02" statusCode="ACCEPTED" statusId="RETURN_ACCEPTED" statusTypeId="ORDER_RETURN_STTS" />
+  <StatusItem description="Received" sequenceId="03" statusCode="RECEIVED" statusId="RETURN_RECEIVED" statusTypeId="ORDER_RETURN_STTS" />
+  <StatusItem description="Completed" sequenceId="10" statusCode="COMPLETED" statusId="RETURN_COMPLETED" statusTypeId="ORDER_RETURN_STTS" />
+  <StatusItem description="Manual Refund Required" sequenceId="11" statusCode="MANUAL_REFUND" statusId="RETURN_MAN_REFUND" statusTypeId="ORDER_RETURN_STTS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="RETURN_CANCELLED" statusTypeId="ORDER_RETURN_STTS" />
+  <StatusItem description="Requested" sequenceId="01" statusCode="REQUESTED" statusId="SUP_RETURN_REQUESTED" statusTypeId="PORDER_RETURN_STTS" />
+  <StatusItem description="Accepted" sequenceId="02" statusCode="ACCEPTED" statusId="SUP_RETURN_ACCEPTED" statusTypeId="PORDER_RETURN_STTS" />
+  <StatusItem description="Shipped" sequenceId="03" statusCode="SHIPPED" statusId="SUP_RETURN_SHIPPED" statusTypeId="PORDER_RETURN_STTS" />
+  <StatusItem description="Completed" sequenceId="10" statusCode="COMPLETED" statusId="SUP_RETURN_COMPLETED" statusTypeId="PORDER_RETURN_STTS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="SUP_RETURN_CANCELLED" statusTypeId="PORDER_RETURN_STTS" />
+  <StatusItem description="Draft" sequenceId="00" statusCode="DRAFT" statusId="CRQ_DRAFT" statusTypeId="CUSTREQ_STTS" />
+  <StatusItem description="Submitted" sequenceId="01" statusCode="SUBMITTED" statusId="CRQ_SUBMITTED" statusTypeId="CUSTREQ_STTS" />
+  <StatusItem description="Accepted" sequenceId="02" statusCode="ACCEPTED" statusId="CRQ_ACCEPTED" statusTypeId="CUSTREQ_STTS" />
+  <StatusItem description="Reviewed" sequenceId="03" statusCode="REVIEWED" statusId="CRQ_REVIEWED" statusTypeId="CUSTREQ_STTS" />
+  <StatusItem description="Pending Cust." sequenceId="09" statusCode="PENDING" statusId="CRQ_PENDING" statusTypeId="CUSTREQ_STTS" />
+  <StatusItem description="Completed" sequenceId="04" statusCode="COMPLETED" statusId="CRQ_COMPLETED" statusTypeId="CUSTREQ_STTS" />
+  <StatusItem description="Rejected" sequenceId="98" statusCode="REJECTED" statusId="CRQ_REJECTED" statusTypeId="CUSTREQ_STTS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="CRQ_CANCELLED" statusTypeId="CUSTREQ_STTS" />
+  <StatusItem description="Proposed" sequenceId="01" statusCode="PROPOSED" statusId="REQ_PROPOSED" statusTypeId="REQUIREMENT_STATUS" />
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="REQ_CREATED" statusTypeId="REQUIREMENT_STATUS" />
+  <StatusItem description="Approved" sequenceId="02" statusCode="APPROVED" statusId="REQ_APPROVED" statusTypeId="REQUIREMENT_STATUS" />
+  <StatusItem description="Ordered" sequenceId="03" statusCode="ORDERED" statusId="REQ_ORDERED" statusTypeId="REQUIREMENT_STATUS" />
+  <StatusItem description="Rejected" sequenceId="98" statusCode="REJECTED" statusId="REQ_REJECTED" statusTypeId="REQUIREMENT_STATUS" />
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="QUO_CREATED" statusTypeId="QUOTE_STATUS" />
+  <StatusItem description="Approved" sequenceId="02" statusCode="APPROVED" statusId="QUO_APPROVED" statusTypeId="QUOTE_STATUS" />
+  <StatusItem description="Ordered" sequenceId="03" statusCode="ORDERED" statusId="QUO_ORDERED" statusTypeId="QUOTE_STATUS" />
+  <StatusItem description="Rejected" sequenceId="98" statusCode="REJECTED" statusId="QUO_REJECTED" statusTypeId="QUOTE_STATUS" />
+
+  <!-- C:\svn\ofbiz.15.12\applications\product\data\ShipmentTypeData.xml -->
+  <StatusItem description="Input" sequenceId="01" statusCode="INPUT" statusId="SHIPMENT_INPUT" statusTypeId="SHIPMENT_STATUS" />
+  <StatusItem description="Scheduled" sequenceId="02" statusCode="SCHEDULED" statusId="SHIPMENT_SCHEDULED" statusTypeId="SHIPMENT_STATUS" />
+  <StatusItem description="Picked" sequenceId="03" statusCode="PICKED" statusId="SHIPMENT_PICKED" statusTypeId="SHIPMENT_STATUS" />
+  <StatusItem description="Packed" sequenceId="04" statusCode="PACKED" statusId="SHIPMENT_PACKED" statusTypeId="SHIPMENT_STATUS" />
+  <StatusItem description="Shipped" sequenceId="05" statusCode="SHIPPED" statusId="SHIPMENT_SHIPPED" statusTypeId="SHIPMENT_STATUS" />
+  <StatusItem description="Delivered" sequenceId="06" statusCode="DELIVERED" statusId="SHIPMENT_DELIVERED" statusTypeId="SHIPMENT_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="SHIPMENT_CANCELLED" statusTypeId="SHIPMENT_STATUS" />
+  
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="PURCH_SHIP_CREATED" statusTypeId="PURCH_SHIP_STATUS" />
+  <StatusItem description="Shipped" sequenceId="02" statusCode="SHIPPED" statusId="PURCH_SHIP_SHIPPED" statusTypeId="PURCH_SHIP_STATUS" />
+  <StatusItem description="Received" sequenceId="03" statusCode="RECEIVED" statusId="PURCH_SHIP_RECEIVED" statusTypeId="PURCH_SHIP_STATUS" />
+  
+  <StatusItem description="Not Started" sequenceId="01" statusCode="NOT_STARTED" statusId="SHRSCS_NOT_STARTED" statusTypeId="SHPRTSG_CS_STATUS" />
+  <StatusItem description="Confirmed" sequenceId="02" statusCode="CONFIRMED" statusId="SHRSCS_CONFIRMED" statusTypeId="SHPRTSG_CS_STATUS" />
+  <StatusItem description="Accepted" sequenceId="03" statusCode="ACCEPTED" statusId="SHRSCS_ACCEPTED" statusTypeId="SHPRTSG_CS_STATUS" />
+  <StatusItem description="Voided" sequenceId="08" statusCode="VOIDED" statusId="SHRSCS_VOIDED" statusTypeId="SHPRTSG_CS_STATUS" />
+  
+  <StatusItem description="Input" sequenceId="01" statusCode="INPUT" statusId="PICKLIST_INPUT" statusTypeId="PICKLIST_STATUS" />
+  <StatusItem description="Assigned" sequenceId="02" statusCode="ASSIGNED" statusId="PICKLIST_ASSIGNED" statusTypeId="PICKLIST_STATUS" />
+  <StatusItem description="Printed" sequenceId="03" statusCode="PRINTED" statusId="PICKLIST_PRINTED" statusTypeId="PICKLIST_STATUS" />
+  <StatusItem description="Picked" sequenceId="10" statusCode="PICKED" statusId="PICKLIST_PICKED" statusTypeId="PICKLIST_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="PICKLIST_CANCELLED" statusTypeId="PICKLIST_STATUS" />
+  
+  <StatusItem description="Pending" sequenceId="01" statusCode="PENDING" statusId="PICKITEM_PENDING" statusTypeId="PICKITEM_STATUS" />
+  <StatusItem description="Completed" sequenceId="50" statusCode="COMPLETED" statusId="PICKITEM_COMPLETED" statusTypeId="PICKITEM_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="PICKITEM_CANCELLED" statusTypeId="PICKITEM_STATUS" />
+
+  <!-- C:\svn\ofbiz.15.12\framework\common\data\CommonTypeData.xml -->
+  <!--<StatusItem statusId="_NA_" statusTypeId="_NA_" statusCode="_NA_" sequenceId="0" description="Not Applicable" />
+  <StatusItem description="Not-Synchronized" sequenceId="01" statusCode="NOT_SYNCHRONIZED" statusId="NOT_SYNCHRONIZED" statusTypeId="SYNCHRONIZE_STATUS" />
+  <StatusItem description="Synchronized" sequenceId="02" statusCode="SYNCHRONIZED" statusId="SYNCHRONIZED" statusTypeId="SYNCHRONIZE_STATUS" />
+  <StatusItem statusId="KW_APPROVED" statusTypeId="KEYWORD_STATUS" statusCode="APPROVED" sequenceId="01" description="Approved" />
+  <StatusItem statusId="KW_PENDING" statusTypeId="KEYWORD_STATUS" statusCode="PENDING" sequenceId="02" description="Pending" />
+  <StatusItem statusId="KW_DISAPPROVED" statusTypeId="KEYWORD_STATUS" statusCode="DISAPPROVED" sequenceId="03" description="Disapproved" />-->
+
+
+  <!-- C:\svn\ofbiz.15.12\applications\accounting\data\AccountingTypeData.xml -->
+  <!--<StatusItem description="Not Reconciled" sequenceId="01" statusCode="NOT_RECONCILED" statusId="AES_NOT_RECONCILED" statusTypeId="ACCTG_ENREC_STATUS" />
+  <StatusItem description="Partly Reconciled" sequenceId="02" statusCode="PARTLY_RECONCILED" statusId="AES_PARTLY_RECON" statusTypeId="ACCTG_ENREC_STATUS" />
+  <StatusItem description="Reconciled" sequenceId="03" statusCode="RECONCILED" statusId="AES_RECONCILED" statusTypeId="ACCTG_ENREC_STATUS" />
+  <StatusItem description="Active" sequenceId="01" statusCode="ACTIVE" statusId="FNACT_ACTIVE" statusTypeId="FINACCT_STATUS" />
+  <StatusItem description="Negative Pending Replenishment" sequenceId="02" statusCode="NEGPENDREPL" statusId="FNACT_NEGPENDREPL" statusTypeId="FINACCT_STATUS" />
+  <StatusItem description="Manually Frozen" sequenceId="03" statusCode="MANFROZEN" statusId="FNACT_MANFROZEN" statusTypeId="FINACCT_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="09" statusCode="CANCELLED" statusId="FNACT_CANCELLED" statusTypeId="FINACCT_STATUS" />
+  <StatusItem statusId="FINACT_TRNS_APPROVED" statusTypeId="FINACT_TRNS_STATUS" statusCode="APPROVED" sequenceId="11" description="Approved" />
+  <StatusItem statusId="FINACT_TRNS_CREATED" statusTypeId="FINACT_TRNS_STATUS" statusCode="CREATED" sequenceId="12" description="Created" />
+  <StatusItem statusId="FINACT_TRNS_CANCELED" statusTypeId="FINACT_TRNS_STATUS" statusCode="CANCELED" sequenceId="13" description="Canceled" />
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="FAM_CREATED" statusTypeId="FIXEDAST_MNT_STATUS" />
+  <StatusItem description="Scheduled" sequenceId="03" statusCode="SCHEDULED" statusId="FAM_SCHEDULED" statusTypeId="FIXEDAST_MNT_STATUS" />
+  <StatusItem description="In Process" sequenceId="05" statusCode="IN_PROCESS" statusId="FAM_IN_PROCESS" statusTypeId="FIXEDAST_MNT_STATUS" />
+  <StatusItem description="Completed" sequenceId="10" statusCode="COMPLETED" statusId="FAM_COMPLETED" statusTypeId="FIXEDAST_MNT_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="FAM_CANCELLED" statusTypeId="FIXEDAST_MNT_STATUS" />
+  <StatusItem description="In-Process" sequenceId="01" statusCode="IN_PROCESS" statusId="INVOICE_IN_PROCESS" statusTypeId="INVOICE_STATUS" />
+  <StatusItem description="Approved" sequenceId="02" statusCode="APPROVED" statusId="INVOICE_APPROVED" statusTypeId="INVOICE_STATUS" />
+  <StatusItem description="Sent" sequenceId="10" statusCode="SENT" statusId="INVOICE_SENT" statusTypeId="INVOICE_STATUS" />
+  <StatusItem description="Received" sequenceId="11" statusCode="RECEIVED" statusId="INVOICE_RECEIVED" statusTypeId="INVOICE_STATUS" />
+  <StatusItem description="Ready for Posting" sequenceId="20" statusCode="READY" statusId="INVOICE_READY" statusTypeId="INVOICE_STATUS" />
+  <StatusItem description="Paid" sequenceId="30" statusCode="PAID" statusId="INVOICE_PAID" statusTypeId="INVOICE_STATUS" />
+  <StatusItem description="Write Off" sequenceId="31" statusCode="WRITE OFF" statusId="INVOICE_WRITEOFF" statusTypeId="INVOICE_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="INVOICE_CANCELLED" statusTypeId="INVOICE_STATUS" />
+  <StatusItem description="Not Paid" sequenceId="01" statusCode="NOT_PAID" statusId="PMNT_NOT_PAID" statusTypeId="PMNT_STATUS" />
+  <StatusItem description="Sent" sequenceId="03" statusCode="SENT" statusId="PMNT_SENT" statusTypeId="PMNT_STATUS" />
+  <StatusItem description="Received" sequenceId="04" statusCode="RECEIVED" statusId="PMNT_RECEIVED" statusTypeId="PMNT_STATUS" />
+  <StatusItem description="Confirmed" sequenceId="05" statusCode="CONFIRMED" statusId="PMNT_CONFIRMED" statusTypeId="PMNT_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="10" statusCode="CANCELLED" statusId="PMNT_CANCELLED" statusTypeId="PMNT_STATUS" />
+  <StatusItem description="Voided" sequenceId="11" statusCode="VOID" statusId="PMNT_VOID" statusTypeId="PMNT_STATUS" />
+  <StatusItem statusId="GLREC_CREATED" statusTypeId="GLREC_STATUS" statusCode="CREATED" sequenceId="11" description="Created" />
+  <StatusItem statusId="GLREC_RECONCILED" statusTypeId="GLREC_STATUS" statusCode="RECONCILED" sequenceId="12" description="Reconciled" />
+  <StatusItem description="Created" sequenceId="00" statusCode="CREATED" statusId="BG_CREATED" statusTypeId="BUDGET_STATUS" />
+  <StatusItem description="Reviewed" sequenceId="01" statusCode="REVIEWED" statusId="BG_REVIEWED" statusTypeId="BUDGET_STATUS" />
+  <StatusItem description="Approved" sequenceId="02" statusCode="APPROVED" statusId="BG_APPROVED" statusTypeId="BUDGET_STATUS" />
+  <StatusItem description="Rejected" sequenceId="03" statusCode="REJECTED" statusId="BG_REJECTED" statusTypeId="BUDGET_STATUS" />-->
+
+  <!-- C:\svn\ofbiz.15.12\applications\content\data\ContentTypeData.xml -->
+  <!--<StatusItem description="Not Ready for Approval" sequenceId="01" statusCode="NOT_READY" statusId="CNTAP_NOT_READY" statusTypeId="CNTNTAPPR_STATUS" />
+  <StatusItem description="Ready for Approval" sequenceId="02" statusCode="READY" statusId="CNTAP_READY" statusTypeId="CNTNTAPPR_STATUS" />
+  <StatusItem description="Approval In Process" sequenceId="03" statusCode="IN_PROCESS" statusId="CNTAP_IN_PROCESS" statusTypeId="CNTNTAPPR_STATUS" />
+  <StatusItem description="Soft Rejected" sequenceId="11" statusCode="SOFT_REJ" statusId="CNTAP_SOFT_REJ" statusTypeId="CNTNTAPPR_STATUS" />
+  <StatusItem description="Rejected" sequenceId="12" statusCode="REJECTED" statusId="CNTAP_REJECTED" statusTypeId="CNTNTAPPR_STATUS" />
+  <StatusItem description="Approved" sequenceId="21" statusCode="APPROVED" statusId="CNTAP_APPROVED" statusTypeId="CNTNTAPPR_STATUS" />
+  <StatusItem description="In Progress" sequenceId="01" statusCode="IN_PROGRESS" statusId="CTNT_IN_PROGRESS" statusTypeId="CONTENT_STATUS" />
+  <StatusItem description="Initial Draft" sequenceId="02" statusCode="INITIAL_DRAFT" statusId="CTNT_INITIAL_DRAFT" statusTypeId="CONTENT_STATUS" />
+  <StatusItem description="Revised Draft" sequenceId="03" statusCode="REVISED_DRAFT" statusId="CTNT_REVISED_DRAFT" statusTypeId="CONTENT_STATUS" />
+  <StatusItem description="Final Draft" sequenceId="04" statusCode="FINAL_DRAFT" statusId="CTNT_FINAL_DRAFT" statusTypeId="CONTENT_STATUS" />
+  <StatusItem description="Published" sequenceId="05" statusCode="PUBLISHED" statusId="CTNT_PUBLISHED" statusTypeId="CONTENT_STATUS" />
+  <StatusItem description="Deactivated" sequenceId="99" statusCode="DEACTIVATED" statusId="CTNT_DEACTIVATED" statusTypeId="CONTENT_STATUS" />
+  <StatusItem description="Available" sequenceId="10" statusCode="AVAILABLE" statusId="CTNT_AVAILABLE" statusTypeId="CONTENT_STATUS" />-->
+
+  <!-- C:\svn\ofbiz.15.12\applications\humanres\data\HumanResTypeData.xml -->
+  <!--<StatusItem description="Planned For" sequenceId="01" statusCode="PLANNED_FOR" statusId="EMPL_POS_PLANNEDFOR" statusTypeId="EMPL_POSITION_STATUS" />
+  <StatusItem description="Active/Open" sequenceId="02" statusCode="ACTIVE" statusId="EMPL_POS_ACTIVE" statusTypeId="EMPL_POSITION_STATUS" />
+  <StatusItem description="Inactive/Closed" sequenceId="03" statusCode="INACTIVE" statusId="EMPL_POS_INACTIVE" statusTypeId="EMPL_POSITION_STATUS" />
+  <StatusItem description="Completed" sequenceId="01" statusCode="COMPLETE" statusId="HR_DS_COMPLETE" statusTypeId="HR_DEGREE_STATUS" />
+  <StatusItem description="Incomplete" sequenceId="02" statusCode="INCOMPLETE" statusId="HR_DS_INCOMPLETE" statusTypeId="HR_DEGREE_STATUS" />
+  <StatusItem description="Deferred" sequenceId="03" statusCode="DEFERRED" statusId="HR_DS_DEFERRED" statusTypeId="HR_DEGREE_STATUS" />
+  <StatusItem description="Full time" sequenceId="01" statusCode="FULLTIME" statusId="HR_JS_FULLTIME" statusTypeId="HR_JOB_STATUS" />
+  <StatusItem description="Part time" sequenceId="02" statusCode="PARTTIME" statusId="HR_JS_PARTTIME" statusTypeId="HR_JOB_STATUS" />
+  <StatusItem description="Contractor" sequenceId="03" statusCode="CONTRACTOR" statusId="HR_JS_CONTRACTOR" statusTypeId="HR_JOB_STATUS" />
+  <StatusItem description="Not verified" sequenceId="01" statusCode="NOT_VERIFIED" statusId="PQV_NOT_VERIFIED" statusTypeId="PARTYQUAL_VERIFY" />
+  <StatusItem description="Verified" sequenceId="02" statusCode="VERIFIED" statusId="PQV_VERIFIED" statusTypeId="PARTYQUAL_VERIFY" />
+  <StatusItem statusId="IJP_APPROVED" statusTypeId="IJP_STATUS" description="Approved" />
+  <StatusItem statusId="IJP_REJECTED" statusTypeId="IJP_STATUS" description="Rejected" />
+  <StatusItem statusId="STATUS_PENDING" statusTypeId="RELOCATION_STATUS" description="Pending" />
+  <StatusItem statusId="STATUS_RELOCATED" statusTypeId="RELOCATION_STATUS" description="Relocated" />
+  <StatusItem statusId="TRAINING_APPLIED" statusTypeId="TRAINING_STATUS" description="Applied" />
+  <StatusItem statusId="TRAINING_APPROVED" statusTypeId="TRAINING_STATUS" description="Approved" />
+  <StatusItem statusId="TRAINING_ASSIGNED" statusTypeId="TRAINING_STATUS" description="Assigned" />
+  <StatusItem statusId="TRAINING_PROPOSED" statusTypeId="TRAINING_STATUS" description="Proposed" />
+  <StatusItem statusId="TRAINING_REJECTED" statusTypeId="TRAINING_STATUS" description="Rejected" />
+  <StatusItem statusId="LEAVE_APPROVED" statusTypeId="LEAVE_STATUS" description="Approved" />
+  <StatusItem statusId="LEAVE_CREATED" statusTypeId="LEAVE_STATUS" description="Created" />
+  <StatusItem statusId="LEAVE_REJECTED" statusTypeId="LEAVE_STATUS" description="Rejected" />-->
+
+  <!-- C:\svn\ofbiz.15.12\applications\marketing\data\MarketingTypeData.xml -->
+  <!--<StatusItem description="Planned" sequenceId="01" statusCode="PLANNED" statusId="MKTG_CAMP_PLANNED" statusTypeId="MKTG_CAMP_STATUS" />
+  <StatusItem description="Approved" sequenceId="02" statusCode="APPROVED" statusId="MKTG_CAMP_APPROVED" statusTypeId="MKTG_CAMP_STATUS" />
+  <StatusItem description="In Progress" sequenceId="03" statusCode="INPROGRESS" statusId="MKTG_CAMP_INPROGRESS" statusTypeId="MKTG_CAMP_STATUS" />
+  <StatusItem description="Completed" sequenceId="04" statusCode="COMPLETED" statusId="MKTG_CAMP_COMPLETED" statusTypeId="MKTG_CAMP_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="05" statusCode="CANCELLED" statusId="MKTG_CAMP_CANCELLED" statusTypeId="MKTG_CAMP_STATUS" />
+  <StatusItem description="Pending Acceptance" sequenceId="01" statusCode="PENDING" statusId="CLPT_PENDING" statusTypeId="CONTACTLST_PARTY" />
+  <StatusItem description="Accepted" sequenceId="02" statusCode="ACCEPTED" statusId="CLPT_ACCEPTED" statusTypeId="CONTACTLST_PARTY" />
+  <StatusItem description="Rejected" sequenceId="03" statusCode="REJECTED" statusId="CLPT_REJECTED" statusTypeId="CONTACTLST_PARTY" />
+  <StatusItem description="In Use" sequenceId="04" statusCode="IN_USE" statusId="CLPT_IN_USE" statusTypeId="CONTACTLST_PARTY" />
+  <StatusItem description="Invalid" sequenceId="05" statusCode="INVALID" statusId="CLPT_INVALID" statusTypeId="CONTACTLST_PARTY" />
+  <StatusItem description="Unsubscription pending" sequenceId="06" statusCode="UNSUBS_PENDING" statusId="CLPT_UNSUBS_PENDING" statusTypeId="CONTACTLST_PARTY" />
+  <StatusItem description="Unsubscribed" sequenceId="07" statusCode="UNSUBSCRIBED" statusId="CLPT_UNSUBSCRIBED" statusTypeId="CONTACTLST_PARTY" />
+  <StatusItem description="Assigned" sequenceId="01" statusCode="ASSIGNED" statusId="LEAD_ASSIGNED" statusTypeId="LEAD_STATUS" />
+  <StatusItem description="Converted" sequenceId="02" statusCode="CONVERTED" statusId="LEAD_CONVERTED" statusTypeId="LEAD_STATUS" />
+  <StatusItem description="Qualified" sequenceId="03" statusCode="QUALIFIED" statusId="LEAD_QUALIFIED" statusTypeId="LEAD_STATUS" />-->
+
+  <!-- C:\svn\ofbiz.15.12\applications\party\data\PartyTypeData.xml -->
+  <!--<StatusItem description="Enabled" sequenceId="01" statusCode="ENABLED" statusId="PARTY_ENABLED" statusTypeId="PARTY_STATUS" />
+  <StatusItem description="Disabled" sequenceId="99" statusCode="DISABLED" statusId="PARTY_DISABLED" statusTypeId="PARTY_STATUS" />
+  <StatusItem description="Pending" sequenceId="01" statusCode="PENDING" statusId="COM_PENDING" statusTypeId="COM_EVENT_STATUS" />
+  <StatusItem description="Entered" sequenceId="02" statusCode="ENTERED" statusId="COM_ENTERED" statusTypeId="COM_EVENT_STATUS" />
+  <StatusItem description="In-Progress" sequenceId="05" statusCode="IN_PROGRESS" statusId="COM_IN_PROGRESS" statusTypeId="COM_EVENT_STATUS" />
+  <StatusItem description="Unknown Party" sequenceId="07" statusCode="UNKNOWN_PARTY" statusId="COM_UNKNOWN_PARTY" statusTypeId="COM_EVENT_STATUS" />
+  <StatusItem description="Closed" sequenceId="20" statusCode="COMPLETE" statusId="COM_COMPLETE" statusTypeId="COM_EVENT_STATUS" />
+  <StatusItem description="Resolved" sequenceId="21" statusCode="RESOLVED" statusId="COM_RESOLVED" statusTypeId="COM_EVENT_STATUS" />
+  <StatusItem description="Referred" sequenceId="22" statusCode="REFERRED" statusId="COM_REFERRED" statusTypeId="COM_EVENT_STATUS" />
+  <StatusItem description="Bounced" sequenceId="50" statusCode="BOUNCED" statusId="COM_BOUNCED" statusTypeId="COM_EVENT_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="COM_CANCELLED" statusTypeId="COM_EVENT_STATUS" />
+  <StatusItem description="Created" sequenceId="01" statusCode="ENTERED" statusId="COM_ROLE_CREATED" statusTypeId="COM_EVENT_ROL_STATUS" />
+  <StatusItem description="Read" sequenceId="02" statusCode="PENDING" statusId="COM_ROLE_READ" statusTypeId="COM_EVENT_ROL_STATUS" />
+  <StatusItem description="Closed" sequenceId="03" statusCode="READ" statusId="COM_ROLE_COMPLETED" statusTypeId="COM_EVENT_ROL_STATUS" />
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="PARTYREL_CREATED" statusTypeId="PARTY_REL_STATUS" />
+  <StatusItem description="Expired" sequenceId="02" statusCode="EXPIRED" statusId="PARTYREL_EXPIRED" statusTypeId="PARTY_REL_STATUS" />
+  <StatusItem description="Invitation Sent" sequenceId="01" statusCode="SENT" statusId="PARTYINV_SENT" statusTypeId="PARTY_INV_STATUS" />
+  <StatusItem description="Invitation Pending" sequenceId="02" statusCode="PENDING" statusId="PARTYINV_PENDING" statusTypeId="PARTY_INV_STATUS" />
+  <StatusItem description="Invitation Accepted" sequenceId="05" statusCode="ACCEPTED" statusId="PARTYINV_ACCEPTED" statusTypeId="PARTY_INV_STATUS" />
+  <StatusItem description="Invitation Declined" sequenceId="06" statusCode="DECLINED" statusId="PARTYINV_DECLINED" statusTypeId="PARTY_INV_STATUS" />
+  <StatusItem description="Invitation Cancelled" sequenceId="10" statusCode="CANCELLED" statusId="PARTYINV_CANCELLED" statusTypeId="PARTY_INV_STATUS" />-->
+
+  <!-- C:\svn\ofbiz.15.12\applications\product\data\ProductTypeData.xml -->
+  <!--<StatusItem description="On Order" sequenceId="01" statusCode="ON_ORDER" statusId="INV_ON_ORDER" statusTypeId="INV_SERIALIZED_STTS" />
+  <StatusItem description="Available" sequenceId="02" statusCode="AVAILABLE" statusId="INV_AVAILABLE" statusTypeId="INV_SERIALIZED_STTS" />
+  <StatusItem description="Promised" sequenceId="03" statusCode="PROMISED" statusId="INV_PROMISED" statusTypeId="INV_SERIALIZED_STTS" />
+  <StatusItem description="Delivered" sequenceId="04" statusCode="DELIVERED" statusId="INV_DELIVERED" statusTypeId="INV_SERIALIZED_STTS" />
+  <StatusItem description="Activated" sequenceId="05" statusCode="ACTIVATED" statusId="INV_ACTIVATED" statusTypeId="INV_SERIALIZED_STTS" />
+  <StatusItem description="Deactivated" sequenceId="06" statusCode="DEACTIVATED" statusId="INV_DEACTIVATED" statusTypeId="INV_SERIALIZED_STTS" />
+  <StatusItem description="On Hold" sequenceId="07" statusCode="ON_HOLD" statusId="INV_ON_HOLD" statusTypeId="INV_SERIALIZED_STTS" />
+  <StatusItem description="Being Transfered" sequenceId="10" statusCode="BEING_TRANSFERED" statusId="INV_BEING_TRANSFERED" statusTypeId="INV_SERIALIZED_STTS" />
+  <StatusItem description="Being Transfered (Promised)" sequenceId="11" statusCode="BEING_TRANS_PRM" statusId="INV_BEING_TRANS_PRM" statusTypeId="INV_SERIALIZED_STTS" />
+  <StatusItem description="Returned" sequenceId="20" statusCode="RETURNED" statusId="INV_RETURNED" statusTypeId="INV_SERIALIZED_STTS" />
+  <StatusItem description="Defective" sequenceId="21" statusCode="DEFECTIVE" statusId="INV_DEFECTIVE" statusTypeId="INV_SERIALIZED_STTS" />
+  <StatusItem description="On Hold (Non-Serialized)" sequenceId="01" statusCode="ON_HOLD_NS" statusId="INV_NS_ON_HOLD" statusTypeId="INV_NON_SER_STTS" />
+  <StatusItem description="Defective (Non-Serialized)" sequenceId="02" statusCode="DEFECTIVE_NS" statusId="INV_NS_DEFECTIVE" statusTypeId="INV_NON_SER_STTS" />
+  <StatusItem description="Returned (Non-Serialized)" sequenceId="02" statusCode="RETURNED_NS" statusId="INV_NS_RETURNED" statusTypeId="INV_NON_SER_STTS" />
+  <StatusItem description="Requested" sequenceId="01" statusCode="REQUESTED" statusId="IXF_REQUESTED" statusTypeId="INVENTORY_XFER_STTS" />
+  <StatusItem description="Scheduled" sequenceId="02" statusCode="SCHEDULED" statusId="IXF_SCHEDULED" statusTypeId="INVENTORY_XFER_STTS" />
+  <StatusItem description="En-Route" sequenceId="03" statusCode="EN_ROUTE" statusId="IXF_EN_ROUTE" statusTypeId="INVENTORY_XFER_STTS" />
+  <StatusItem description="Complete" sequenceId="04" statusCode="COMPLETE" statusId="IXF_COMPLETE" statusTypeId="INVENTORY_XFER_STTS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="IXF_CANCELLED" statusTypeId="INVENTORY_XFER_STTS" />
+  <StatusItem description="Pending" sequenceId="01" statusCode="PENDING" statusId="PRR_PENDING" statusTypeId="PRODUCT_REVIEW_STTS" />
+  <StatusItem description="Approved" sequenceId="02" statusCode="APPROVED" statusId="PRR_APPROVED" statusTypeId="PRODUCT_REVIEW_STTS" />
+  <StatusItem description="Deleted" sequenceId="99" statusCode="DELETED" statusId="PRR_DELETED" statusTypeId="PRODUCT_REVIEW_STTS" />
+  <StatusItem description="Pending" sequenceId="01" statusCode="PENDING" statusId="IM_PENDING" statusTypeId="IMAGE_MANAGEMENT_ST" />
+  <StatusItem description="Approved" sequenceId="02" statusCode="APPROVED" statusId="IM_APPROVED" statusTypeId="IMAGE_MANAGEMENT_ST" />
+  <StatusItem description="Rejected" sequenceId="03" statusCode="REJECTED" statusId="IM_REJECTED" statusTypeId="IMAGE_MANAGEMENT_ST" />
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="GO_CREATED" statusTypeId="GROUP_ORDER_STATUS" />
+  <StatusItem description="Success" sequenceId="02" statusCode="SUCCESS" statusId="GO_SUCCESS" statusTypeId="GROUP_ORDER_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="03" statusCode="CANCELLED" statusId="GO_CANCELLED" statusTypeId="GROUP_ORDER_STATUS" />-->
+
+  <!-- C:\svn\ofbiz.15.12\applications\workeffort\data\WorkEffortTypeData.xml -->
+  <!--<StatusItem description="In Planning" sequenceId="01" statusCode="IN_PLANNING" statusId="CAL_IN_PLANNING" statusTypeId="CALENDAR_STATUS" />
+  <StatusItem description="Planned" sequenceId="02" statusCode="PLANNED" statusId="CAL_PLANNED" statusTypeId="CALENDAR_STATUS" />
+  <StatusItem description="Needs Action (Approved)" sequenceId="03" statusCode="NEEDS_ACTION" statusId="CAL_NEEDS_ACTION" statusTypeId="CALENDAR_STATUS" />
+  <StatusItem description="Sent" sequenceId="04" statusCode="SENT" statusId="CAL_SENT" statusTypeId="CALENDAR_STATUS" />
+  <StatusItem description="Declined" sequenceId="10" statusCode="DECLINED" statusId="CAL_DECLINED" statusTypeId="CALENDAR_STATUS" />
+  <StatusItem description="Delegated" sequenceId="11" statusCode="DELEGATED" statusId="CAL_DELEGATED" statusTypeId="CALENDAR_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="CAL_CANCELLED" statusTypeId="CALENDAR_STATUS" />
+  <StatusItem description="Accepted" sequenceId="01" statusCode="ACCEPTED" statusId="CAL_ACCEPTED" statusTypeId="TASK_STATUS" />
+  <StatusItem description="Completed" sequenceId="02" statusCode="COMPLETED" statusId="CAL_COMPLETED" statusTypeId="TASK_STATUS" />
+  <StatusItem description="Tentative" sequenceId="01" statusCode="TENTATIVE" statusId="CAL_TENTATIVE" statusTypeId="EVENT_STATUS" />
+  <StatusItem description="Confirmed" sequenceId="02" statusCode="CONFIRMED" statusId="CAL_CONFIRMED" statusTypeId="EVENT_STATUS" />
+  <StatusItem description="In-Process" sequenceId="01" statusCode="IN_PROCESS" statusId="TIMESHEET_IN_PROCESS" statusTypeId="TIMESHEET_STATUS" />
+  <StatusItem description="Completed" sequenceId="02" statusCode="COMPLETED" statusId="TIMESHEET_COMPLETED" statusTypeId="TIMESHEET_STATUS" />
+  <StatusItem description="Approved" sequenceId="03" statusCode="APPROVED" statusId="TIMESHEET_APPROVED" statusTypeId="TIMESHEET_STATUS" />
+  <StatusItem description="Planning" sequenceId="01" statusCode="PLANNING" statusId="WEPR_PLANNING" statusTypeId="WE_PROJECT_STATUS" />
+  <StatusItem description="In Progress" sequenceId="02" statusCode="IN_PROGRESS" statusId="WEPR_IN_PROGRESS" statusTypeId="WE_PROJECT_STATUS" />
+  <StatusItem description="Complete" sequenceId="05" statusCode="COMPLETE" statusId="WEPR_COMPLETE" statusTypeId="WE_PROJECT_STATUS" />
+  <StatusItem description="On Hold" sequenceId="98" statusCode="ON_HOLD" statusId="WEPR_ON_HOLD" statusTypeId="WE_PROJECT_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="WEPR_CANCELLED" statusTypeId="WE_PROJECT_STATUS" />
+  <StatusItem description="Offered" sequenceId="01" statusCode="OFFERED" statusId="PRTYASGN_OFFERED" statusTypeId="PRTYASGN_STATUS" />
+  <StatusItem description="Assigned" sequenceId="02" statusCode="ASSIGNED" statusId="PRTYASGN_ASSIGNED" statusTypeId="PRTYASGN_STATUS" />
+  <StatusItem description="Unassigned" sequenceId="03" statusCode="UNASSIGNED" statusId="PRTYASGN_UNASSIGNED" statusTypeId="PRTYASGN_STATUS" />
+  <StatusItem description="Available" sequenceId="01" statusCode="AVAILABLE" statusId="WEPA_AV_AVAILABLE" statusTypeId="WEPA_AVAILABILITY" />
+  <StatusItem description="Busy" sequenceId="02" statusCode="BUSY" statusId="WEPA_AV_BUSY" statusTypeId="WEPA_AVAILABILITY" />
+  <StatusItem description="Away" sequenceId="03" statusCode="AWAY" statusId="WEPA_AV_AWAY" statusTypeId="WEPA_AVAILABILITY" />
+  <StatusItem description="Requested" sequenceId="01" statusCode="REQUESTED" statusId="FA_ASGN_REQUESTED" statusTypeId="FA_ASGN_STATUS" />
+  <StatusItem description="Assigned" sequenceId="02" statusCode="ASSIGNED" statusId="FA_ASGN_ASSIGNED" statusTypeId="FA_ASGN_STATUS" />
+  <StatusItem description="Request Denied" sequenceId="03" statusCode="DENIED" statusId="FA_ASGN_DENIED" statusTypeId="FA_ASGN_STATUS" />
+  <StatusItem description="Available" sequenceId="01" statusCode="AVAILABLE" statusId="WEFA_AVAILABLE" statusTypeId="WEFA_AVAILABILITY" />
+  <StatusItem description="In Use" sequenceId="02" statusCode="BUSY" statusId="WEFA_IN_USE" statusTypeId="WEFA_AVAILABILITY" />
+  <StatusItem description="Well defined and usable" sequenceId="01" statusCode="ACTIVE" statusId="ROU_ACTIVE" statusTypeId="ROUTING_STATUS" />
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="PRUN_CREATED" statusTypeId="PRODUCTION_RUN" />
+  <StatusItem description="Scheduled" sequenceId="02" statusCode="SCHEDULED" statusId="PRUN_SCHEDULED" statusTypeId="PRODUCTION_RUN" />
+  <StatusItem description="Confirmed" sequenceId="03" statusCode="DOC_PRINTED" statusId="PRUN_DOC_PRINTED" statusTypeId="PRODUCTION_RUN" />
+  <StatusItem description="Running" sequenceId="04" statusCode="RUNNING" statusId="PRUN_RUNNING" statusTypeId="PRODUCTION_RUN" />
+  <StatusItem description="Completed" sequenceId="05" statusCode="COMPLETED" statusId="PRUN_COMPLETED" statusTypeId="PRODUCTION_RUN" />
+  <StatusItem description="Closed" sequenceId="06" statusCode="CLOSED" statusId="PRUN_CLOSED" statusTypeId="PRODUCTION_RUN" />
+  <StatusItem description="Cancelled" sequenceId="10" statusCode="CANCELLED" statusId="PRUN_CANCELLED" statusTypeId="PRODUCTION_RUN" />
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="WEGS_CREATED" statusTypeId="WEFG_STATUS" />
+  <StatusItem description="Completed" sequenceId="02" statusCode="COMPLETED" statusId="WEGS_COMPLETED" statusTypeId="WEFG_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="03" statusCode="CANCELLED" statusId="WEGS_CANCELLED" statusTypeId="WEFG_STATUS" />
+  <StatusItem description="Pending" sequenceId="01" statusCode="PENDING" statusId="WERV_PENDING" statusTypeId="WEFF_REVIEW_STTS" />
+  <StatusItem description="Approved" sequenceId="02" statusCode="APPROVED" statusId="WERV_APPROVED" statusTypeId="WEFF_REVIEW_STTS" />
+  <StatusItem description="Deleted" sequenceId="99" statusCode="DELETED" statusId="WERV_DELETED" statusTypeId="WEFF_REVIEW_STTS" />-->
+
+  <!-- C:\svn\ofbiz.15.12\framework\entityext\data\EntityExtTypeData.xml -->
+  <!--<StatusItem description="Not Started" sequenceId="01" statusCode="NOT_STARTED" statusId="ESR_NOT_STARTED" statusTypeId="ENTSYNC_RUN" />
+  <StatusItem description="Running" sequenceId="02" statusCode="RUNNING" statusId="ESR_RUNNING" statusTypeId="ENTSYNC_RUN" />
+  <StatusItem description="Offline Pending" sequenceId="03" statusCode="PENDING" statusId="ESR_PENDING" statusTypeId="ENTSYNC_RUN" />
+  <StatusItem description="Complete" sequenceId="04" statusCode="COMPLETE" statusId="ESR_COMPLETE" statusTypeId="ENTSYNC_RUN" />
+  <StatusItem description="Other Error" sequenceId="97" statusCode="OTHER_ERROR" statusId="ESR_OTHER_ERROR" statusTypeId="ENTSYNC_RUN" />
+  <StatusItem description="Service Call Error" sequenceId="98" statusCode="SERVICE_ERROR" statusId="ESR_SERVICE_ERROR" statusTypeId="ENTSYNC_RUN" />
+  <StatusItem description="Data Error" sequenceId="99" statusCode="DATA_ERROR" statusId="ESR_DATA_ERROR" statusTypeId="ENTSYNC_RUN" />-->
+
+  <!-- C:\svn\ofbiz.15.12\framework\service\data\ScheduledServiceData.xml -->
+  <!--<StatusItem description="Pending" sequenceId="01" statusCode="PENDING" statusId="SERVICE_PENDING" statusTypeId="SERVICE_STATUS" />
+  <StatusItem description="Queued" sequenceId="02" statusCode="QUEUED" statusId="SERVICE_QUEUED" statusTypeId="SERVICE_STATUS" />
+  <StatusItem description="Running" sequenceId="05" statusCode="RUNNING" statusId="SERVICE_RUNNING" statusTypeId="SERVICE_STATUS" />
+  <StatusItem description="Finished" sequenceId="10" statusCode="FINISHED" statusId="SERVICE_FINISHED" statusTypeId="SERVICE_STATUS" />
+  <StatusItem description="Failed" sequenceId="20" statusCode="FAILED" statusId="SERVICE_FAILED" statusTypeId="SERVICE_STATUS" />
+  <StatusItem description="Crashed" sequenceId="40" statusCode="CRASHED" statusId="SERVICE_CRASHED" statusTypeId="SERVICE_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="SERVICE_CANCELLED" statusTypeId="SERVICE_STATUS" />-->
+
+  <!-- C:\svn\ofbiz.15.12\specialpurpose\example\data\ExampleDemoData.xml -->
+  <StatusItem description="In Design" sequenceId="01" statusCode="IN_DESIGN" statusId="EXST_IN_DESIGN" statusTypeId="EXAMPLE_STATUS" />
+  <StatusItem description="Defined" sequenceId="02" statusCode="DEFINED" statusId="EXST_DEFINED" statusTypeId="EXAMPLE_STATUS" />
+  <StatusItem description="Approved" sequenceId="03" statusCode="APPROVED" statusId="EXST_APPROVED" statusTypeId="EXAMPLE_STATUS" />
+  <StatusItem description="Implemented" sequenceId="04" statusCode="IMPLEMENTED" statusId="EXST_IMPLEMENTED" statusTypeId="EXAMPLE_STATUS" />
+  <StatusItem description="Tested" sequenceId="05" statusCode="TESTED" statusId="EXST_TESTED" statusTypeId="EXAMPLE_STATUS" />
+  <StatusItem description="Complete" sequenceId="06" statusCode="COMPLETE" statusId="EXST_COMPLETE" statusTypeId="EXAMPLE_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="99" statusCode="CANCELLED" statusId="EXST_CANCELLED" statusTypeId="EXAMPLE_STATUS" />
+
+  <!-- C:\svn\ofbiz.15.12\specialpurpose\oagis\data\OagisTypeData.xml -->
+  <!--<StatusItem description="System Error" sequenceId="99" statusCode="SYS_ERROR" statusId="OAGMP_SYS_ERROR" statusTypeId="OAGIS_MP_STATUS" />
+  <StatusItem description="In Message Received" sequenceId="01" statusCode="RECEIVED" statusId="OAGMP_RECEIVED" statusTypeId="OAGIS_MP_STATUS" />
+  <StatusItem description="In Processed - Success" sequenceId="05" statusCode="PROC_SUCCESS" statusId="OAGMP_PROC_SUCCESS" statusTypeId="OAGIS_MP_STATUS" />
+  <StatusItem description="In Processed - Error" sequenceId="06" statusCode="PROC_ERROR" statusId="OAGMP_PROC_ERROR" statusTypeId="OAGIS_MP_STATUS" />
+  <StatusItem description="Error Confirm Sent" sequenceId="09" statusCode="ERRCONFSENT" statusId="OAGMP_ERRCONFSENT" statusTypeId="OAGIS_MP_STATUS" />
+  <StatusItem description="Out Message Triggered" sequenceId="11" statusCode="TRIGGERED" statusId="OAGMP_TRIGGERED" statusTypeId="OAGIS_MP_STATUS" />
+  <StatusItem description="Out Generated - Success" sequenceId="14" statusCode="OGEN_SUCCESS" statusId="OAGMP_OGEN_SUCCESS" statusTypeId="OAGIS_MP_STATUS" />
+  <StatusItem description="Out Generated - Error" sequenceId="15" statusCode="OGEN_ERROR" statusId="OAGMP_OGEN_ERROR" statusTypeId="OAGIS_MP_STATUS" />
+  <StatusItem description="Out Message Sent" sequenceId="18" statusCode="SENT" statusId="OAGMP_SENT" statusTypeId="OAGIS_MP_STATUS" />
+  <StatusItem description="Out Message Send Error" sequenceId="19" statusCode="SEND_ERROR" statusId="OAGMP_SEND_ERROR" statusTypeId="OAGIS_MP_STATUS" />
+  <StatusItem description="Received Success Confirm" sequenceId="28" statusCode="REC_SUC_CON" statusId="OAGMP_REC_SUC_CON" statusTypeId="OAGIS_MP_STATUS" />
+  <StatusItem description="Received Error Confirm" sequenceId="29" statusCode="REC_ERR_CON" statusId="OAGMP_REC_ERR_CON" statusTypeId="OAGIS_MP_STATUS" />-->
+
+  <!-- C:\svn\ofbiz.15.12\specialpurpose\pos\data\PosTypeData.xml -->
+  <!--<StatusItem description="Active" sequenceId="01" statusCode="ACTIVE" statusId="POSTX_ACTIVE" statusTypeId="POSTX_STATUS" />
+  <StatusItem description="Sold" sequenceId="10" statusCode="SOLD" statusId="POSTX_SOLD" statusTypeId="POSTX_STATUS" />
+  <StatusItem description="Returned" sequenceId="15" statusCode="RETURNED" statusId="POSTX_RETURNED" statusTypeId="POSTX_STATUS" />
+  <StatusItem description="Voided" sequenceId="20" statusCode="VOIDED" statusId="POSTX_VOIDED" statusTypeId="POSTX_STATUS" />
+  <StatusItem description="PaidIn" sequenceId="30" statusCode="PAID_IN" statusId="POSTX_PAID_IN" statusTypeId="POSTX_STATUS" />
+  <StatusItem description="PaidOut" sequenceId="40" statusCode="PAID_OUT" statusId="POSTX_PAID_OUT" statusTypeId="POSTX_STATUS" />
+  <StatusItem description="Closed" sequenceId="50" statusCode="CLOSED" statusId="POSTX_CLOSED" statusTypeId="POSTX_STATUS" />-->
+
+  <!-- C:\svn\ofbiz.15.12\specialpurpose\projectmgr\data\ProjectMgrTypeData.xml -->
+  <!--<StatusItem description="Assigned" sequenceId="01" statusCode="ASSIGNED" statusId="PAS_ASSIGNED" statusTypeId="PROJECT_ASSGN_STATUS" />
+  <StatusItem description="Completed" sequenceId="02" statusCode="COMPLETED" statusId="PAS_COMPLETED" statusTypeId="PROJECT_ASSGN_STATUS" />
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="PTS_CREATED" statusTypeId="PROJECT_TASK_STATUS" />
+  <StatusItem description="Unassigned" sequenceId="02" statusCode="CREATED" statusId="PTS_CREATED_UA" statusTypeId="PROJECT_TASK_STATUS" />
+  <StatusItem description="Assigned" sequenceId="03" statusCode="CREATED" statusId="PTS_CREATED_AS" statusTypeId="PROJECT_TASK_STATUS" />
+  <StatusItem description="In Progress" sequenceId="04" statusCode="CREATED" statusId="PTS_CREATED_IP" statusTypeId="PROJECT_TASK_STATUS" />
+  <StatusItem description="Completed" sequenceId="05" statusCode="COMPLETED" statusId="PTS_COMPLETED" statusTypeId="PROJECT_TASK_STATUS" />
+  <StatusItem description="On Hold" sequenceId="07" statusCode="ON_HOLD" statusId="PTS_ON_HOLD" statusTypeId="PROJECT_TASK_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="09" statusCode="CANCELLED" statusId="PTS_CANCELLED" statusTypeId="PROJECT_TASK_STATUS" />
+  <StatusItem description="Active" sequenceId="01" statusCode="ACTIVE" statusId="PRJ_ACTIVE" statusTypeId="PROJECT_STATUS" />
+  <StatusItem description="Closed" sequenceId="09" statusCode="CLOSED" statusId="PRJ_CLOSED" statusTypeId="PROJECT_STATUS" />-->
+
+  <!-- C:\svn\ofbiz.15.12\specialpurpose\scrum\data\scrumTypeData.xml -->
+  <!--<StatusItem description="Active" sequenceId="01" statusCode="ACTIVE" statusId="SPJ_ACTIVE" statusTypeId="SCRUM_PROJECT_STATUS" />
+  <StatusItem description="Closed" sequenceId="09" statusCode="CLOSED" statusId="SPJ_CLOSED" statusTypeId="SCRUM_PROJECT_STATUS" />
+  <StatusItem statusId="SPRINT_ACTIVE" statusTypeId="SPRINT_STATUS" description="Active" sequenceId="01" statusCode="ACTIVE" />
+  <StatusItem statusId="SPRINT_CLOSED" statusTypeId="SPRINT_STATUS" description="Closed" sequenceId="02" statusCode="CLOSED" />
+  <StatusItem statusId="PRODUCT_ACTIVE" statusTypeId="PRODUCT_STATUS" description="Active" sequenceId="01" statusCode="ACTIVE" />
+  <StatusItem statusId="PRODUCT_CLOSED" statusTypeId="PRODUCT_STATUS" description="Closed" sequenceId="02" statusCode="CLOSED" />
+  <StatusItem description="Assigned" sequenceId="01" statusCode="ASSIGNED" statusId="SCAS_ASSIGNED" statusTypeId="SCRUM_ASSGN_STATUS" />
+  <StatusItem description="Completed" sequenceId="02" statusCode="COMPLETED" statusId="SCAS_COMPLETED" statusTypeId="SCRUM_ASSGN_STATUS" />
+  <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="STS_CREATED" statusTypeId="SCRUM_TASK_STATUS" />
+  <StatusItem description="Unassigned" sequenceId="02" statusCode="CREATED" statusId="STS_CREATED_UA" statusTypeId="SCRUM_TASK_STATUS" />
+  <StatusItem description="Assigned" sequenceId="03" statusCode="CREATED" statusId="STS_CREATED_AS" statusTypeId="SCRUM_TASK_STATUS" />
+  <StatusItem description="In Progress" sequenceId="04" statusCode="CREATED" statusId="STS_CREATED_IP" statusTypeId="SCRUM_TASK_STATUS" />
+  <StatusItem description="Completed" sequenceId="05" statusCode="COMPLETED" statusId="STS_COMPLETED" statusTypeId="SCRUM_TASK_STATUS" />
+  <StatusItem description="On Hold" sequenceId="07" statusCode="ON_HOLD" statusId="STS_ON_HOLD" statusTypeId="SCRUM_TASK_STATUS" />
+  <StatusItem description="Cancelled" sequenceId="09" statusCode="CANCELLED" statusId="STS_CANCELLED" statusTypeId="SCRUM_TASK_STATUS" />
+  <StatusItem description="Open" sequenceId="02" statusCode="ACCEPTED" statusId="CRQ_ACCEPTED" statusTypeId="CUSTREQ_STTS" />
+  <StatusItem description="Being implemented" sequenceId="03" statusCode="REVIEWED" statusId="CRQ_REVIEWED" statusTypeId="CUSTREQ_STTS" />
+  <StatusItem description="Reopened" sequenceId="05" statusCode="REOPENED" statusId="CRQ_REOPENED" statusTypeId="CUSTREQ_STTS" />-->
+
+</entity-engine-xml>

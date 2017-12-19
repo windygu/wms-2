@@ -78,6 +78,7 @@
     <Compile Include="InOutServiceTests.cs" />
     <Compile Include="InventoryItemServiceTests.cs" />
     <Compile Include="LocatorTreeServiceTests.cs" />
+    <Compile Include="StatusItemTests.cs" />
     <Compile Include="TestApplicationContext.cs" />
     <Compile Include="ValuesTests.cs" />
     <Compile Include="AttributeSetInstanceServiceTests.cs" />

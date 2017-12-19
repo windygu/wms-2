@@ -21,6 +21,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+[Ll]ogs/
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -252,3 +253,4 @@ Dddml.Wms.JavaServices.Tests/lib/
 Dddml.Wms.JavaServices.Tests/out/
 Dddml.Wms.AdminUI/site/var/
 *.1
+Dddml.Wms.HttpServices/Logs/Log.log.2
