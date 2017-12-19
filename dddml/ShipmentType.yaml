@@ -12,10 +12,11 @@ aggregates:
       
     properties:
     
-      # ParentTypeId:
-        # type: id-ne
-      # HasTable:
-        # type: indicator
+      ParentTypeId:
+        type: id-ne
+        
+      HasTable:
+        type: indicator
         
       Description:
         type: description

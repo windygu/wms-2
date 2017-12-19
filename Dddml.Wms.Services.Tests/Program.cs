@@ -29,15 +29,19 @@ namespace Dddml.Wms.Services.Tests
 
             initdb.CreateDatabaseAndSeed();
 
-            // //////////////////////
-            //var xmlDataLoader = new XmlDataLoader();
-            //xmlDataLoader.Process(".\\");
+            // ////////////////////////
+            var xmlDataLoader = new XmlDataLoader();
+            xmlDataLoader.Process(".\\");
             //Console.ReadKey();
             //return;
-            // ////////////////////
+            // ////////////////////////
+
+            // /////////////////////////
+            InitInventoryPostingRules.CreateDefaultInventoryPostingRules();
+            // /////////////////////////
 
             // ////////////////////////
-            TestMain.DoSomeTests();
+            // TestMain.DoSomeTests();
             // ////////////////////////
             
             Console.WriteLine("Create database and seed and test, ok.");

@@ -2269,6 +2269,8 @@
     create table ShipmentTypes (
         ShipmentTypeId VARCHAR(20) not null,
        Version BIGINT not null,
+       ParentTypeId VARCHAR(20),
+       HasTable CHAR(1),
        Description VARCHAR(255),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),

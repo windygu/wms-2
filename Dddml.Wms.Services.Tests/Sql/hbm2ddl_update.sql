@@ -88,48 +88,10 @@
       unique (Name),
       unique (Alias)
     );
-    alter table InventoryItems 
-        add column QuantityInTransit NUMERIC(19,5);
-    alter table InventoryItemStateEvents 
-        add column QuantityInTransit NUMERIC(19,5);
-    alter table InventoryItemStateEvents 
-        add column IsPropertyQuantityInTransitRemoved TINYINT(1);
-    alter table InventoryItemEntries 
-        add column QuantityInTransit NUMERIC(19,5);
-    create table InventoryItemRequirements (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
-       Version BIGINT not null,
-       Quantity NUMERIC(19,5),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       CommandId VARCHAR(255),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId)
-    );
-    create table InventoryItemRequirementEntries (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
-       EntrySeqId BIGINT not null,
-       Version BIGINT not null,
-       Quantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(255),
-       SrcEventLocatorId VARCHAR(255),
-       SrcEventAttributeSetInstanceId VARCHAR(255),
-       SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       CommandId VARCHAR(255),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
-      unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
-    );
+    alter table ShipmentTypes 
+        add column ParentTypeId VARCHAR(20);
+    alter table ShipmentTypes 
+        add column HasTable CHAR(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber BIGINT not null,
@@ -221,14 +183,6 @@
        UpdatedAt DATETIME,
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
     );
-    alter table InventoryItemEntryMvoStateEvents 
-        add column QuantityInTransit NUMERIC(19,5);
-    alter table InventoryItemEntryMvoStateEvents 
-        add column InventoryItemQuantityInTransit NUMERIC(19,5);
-    alter table InventoryItemEntryMvoStateEvents 
-        add column IsPropertyQuantityInTransitRemoved TINYINT(1);
-    alter table InventoryItemEntryMvoStateEvents 
-        add column IsPropertyInventoryItemQuantityInTransitRemoved TINYINT(1);
     create table InventoryItemRequirementEntry_RV (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
@@ -252,39 +206,6 @@
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
-      unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
-    );
-    create table InventoryItemRequirementEntryMvoStateEvents (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
-       EntrySeqId BIGINT not null,
-       InventoryItemRequirementVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Quantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(255),
-       SrcEventLocatorId VARCHAR(255),
-       SrcEventAttributeSetInstanceId VARCHAR(255),
-       SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(255),
-       Version BIGINT,
-       InventoryItemRequirementQuantity NUMERIC(19,5),
-       InventoryItemRequirementCreatedBy VARCHAR(255),
-       InventoryItemRequirementCreatedAt DATETIME,
-       InventoryItemRequirementUpdatedBy VARCHAR(255),
-       InventoryItemRequirementUpdatedAt DATETIME,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyQuantityRemoved TINYINT(1),
-       IsPropertySourceEventIdRemoved TINYINT(1),
-       IsPropertyVersionRemoved TINYINT(1),
-       IsPropertyInventoryItemRequirementQuantityRemoved TINYINT(1),
-       IsPropertyInventoryItemRequirementCreatedByRemoved TINYINT(1),
-       IsPropertyInventoryItemRequirementCreatedAtRemoved TINYINT(1),
-       IsPropertyInventoryItemRequirementUpdatedByRemoved TINYINT(1),
-       IsPropertyInventoryItemRequirementUpdatedAtRemoved TINYINT(1),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, InventoryItemRequirementVersion),
       unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
     );
     create table OrderItem_RV (

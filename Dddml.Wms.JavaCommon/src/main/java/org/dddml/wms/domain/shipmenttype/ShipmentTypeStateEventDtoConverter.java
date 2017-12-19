@@ -25,6 +25,8 @@ public class ShipmentTypeStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
+        dto.setParentTypeId(e.getParentTypeId());
+        dto.setHasTable(e.getHasTable());
         dto.setDescription(e.getDescription());
         dto.setActive(e.getActive());
         return dto;
@@ -36,8 +38,12 @@ public class ShipmentTypeStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
+        dto.setParentTypeId(e.getParentTypeId());
+        dto.setHasTable(e.getHasTable());
         dto.setDescription(e.getDescription());
         dto.setActive(e.getActive());
+        dto.setIsPropertyParentTypeIdRemoved(e.getIsPropertyParentTypeIdRemoved());
+        dto.setIsPropertyHasTableRemoved(e.getIsPropertyHasTableRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         return dto;

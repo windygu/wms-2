@@ -21,6 +21,30 @@ public abstract class AbstractShipmentTypeState implements ShipmentTypeState
         this.shipmentTypeId = shipmentTypeId;
     }
 
+    private String parentTypeId;
+
+    public String getParentTypeId()
+    {
+        return this.parentTypeId;
+    }
+
+    public void setParentTypeId(String parentTypeId)
+    {
+        this.parentTypeId = parentTypeId;
+    }
+
+    private String hasTable;
+
+    public String getHasTable()
+    {
+        return this.hasTable;
+    }
+
+    public void setHasTable(String hasTable)
+    {
+        this.hasTable = hasTable;
+    }
+
     private String description;
 
     public String getDescription()
@@ -177,6 +201,8 @@ public abstract class AbstractShipmentTypeState implements ShipmentTypeState
     {
         throwOnWrongEvent(e);
 
+        this.setParentTypeId(e.getParentTypeId());
+        this.setHasTable(e.getHasTable());
         this.setDescription(e.getDescription());
         this.setActive(e.getActive());
 
@@ -189,6 +215,28 @@ public abstract class AbstractShipmentTypeState implements ShipmentTypeState
     {
         throwOnWrongEvent(e);
 
+        if (e.getParentTypeId() == null)
+        {
+            if (e.getIsPropertyParentTypeIdRemoved() != null && e.getIsPropertyParentTypeIdRemoved())
+            {
+                this.setParentTypeId(null);
+            }
+        }
+        else
+        {
+            this.setParentTypeId(e.getParentTypeId());
+        }
+        if (e.getHasTable() == null)
+        {
+            if (e.getIsPropertyHasTableRemoved() != null && e.getIsPropertyHasTableRemoved())
+            {
+                this.setHasTable(null);
+            }
+        }
+        else
+        {
+            this.setHasTable(e.getHasTable());
+        }
         if (e.getDescription() == null)
         {
             if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())

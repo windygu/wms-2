@@ -37,9 +37,13 @@ public abstract class AbstractShipmentTypeStateCommandConverter<TCreateShipmentT
         cmd.setVersion(state.getVersion());
 
         cmd.setShipmentTypeId(state.getShipmentTypeId());
+        cmd.setParentTypeId(state.getParentTypeId());
+        cmd.setHasTable(state.getHasTable());
         cmd.setDescription(state.getDescription());
         cmd.setActive(state.getActive());
             
+        if (state.getParentTypeId() == null) { cmd.setIsPropertyParentTypeIdRemoved(true); }
+        if (state.getHasTable() == null) { cmd.setIsPropertyHasTableRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
@@ -51,6 +55,8 @@ public abstract class AbstractShipmentTypeStateCommandConverter<TCreateShipmentT
 
         cmd.setVersion(state.getVersion());
         cmd.setShipmentTypeId(state.getShipmentTypeId());
+        cmd.setParentTypeId(state.getParentTypeId());
+        cmd.setHasTable(state.getHasTable());
         cmd.setDescription(state.getDescription());
         cmd.setActive(state.getActive());
         return cmd;

@@ -21,6 +21,30 @@ public class ShipmentTypeStateDto
         this.shipmentTypeId = shipmentTypeId;
     }
 
+    private String parentTypeId;
+
+    public String getParentTypeId()
+    {
+        return this.parentTypeId;
+    }
+
+    public void setParentTypeId(String parentTypeId)
+    {
+        this.parentTypeId = parentTypeId;
+    }
+
+    private String hasTable;
+
+    public String getHasTable()
+    {
+        return this.hasTable;
+    }
+
+    public void setHasTable(String hasTable)
+    {
+        this.hasTable = hasTable;
+    }
+
     private String description;
 
     public String getDescription()
@@ -133,6 +157,12 @@ public class ShipmentTypeStateDto
             ShipmentTypeStateDto dto = new ShipmentTypeStateDto();
             if (returnedFieldsContains("ShipmentTypeId")) {
                 dto.setShipmentTypeId(state.getShipmentTypeId());
+            }
+            if (returnedFieldsContains("ParentTypeId")) {
+                dto.setParentTypeId(state.getParentTypeId());
+            }
+            if (returnedFieldsContains("HasTable")) {
+                dto.setHasTable(state.getHasTable());
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());

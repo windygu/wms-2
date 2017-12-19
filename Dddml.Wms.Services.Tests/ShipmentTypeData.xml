@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+  <!-- C:\svn\ofbiz.15.12\applications\product\data\ShipmentTypeData.xml -->
+  <ShipmentType description="Incoming" hasTable="N" parentTypeId="" shipmentTypeId="INCOMING_SHIPMENT" />
+  <ShipmentType description="Outgoing" hasTable="N" parentTypeId="" shipmentTypeId="OUTGOING_SHIPMENT" />
+  <ShipmentType description="Sales Return" hasTable="N" parentTypeId="INCOMING_SHIPMENT" shipmentTypeId="SALES_RETURN" />
+  <ShipmentType description="Sales Shipment" hasTable="N" parentTypeId="OUTGOING_SHIPMENT" shipmentTypeId="SALES_SHIPMENT" />
+  <ShipmentType description="Purchase Shipment" hasTable="N" parentTypeId="INCOMING_SHIPMENT" shipmentTypeId="PURCHASE_SHIPMENT" />
+  <ShipmentType description="Purchase Return" hasTable="N" parentTypeId="OUTGOING_SHIPMENT" shipmentTypeId="PURCHASE_RETURN" />
+  <ShipmentType description="Drop Shipment" hasTable="N" parentTypeId="" shipmentTypeId="DROP_SHIPMENT" />
+  <ShipmentType description="Transfer" hasTable="N" parentTypeId="" shipmentTypeId="TRANSFER" />
+
+</entity-engine-xml>

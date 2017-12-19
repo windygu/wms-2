@@ -52,6 +52,10 @@ namespace Dddml.Wms.Domain.ShipmentType
             set { this.CommandId = value; }
         }
 
+		public virtual string ParentTypeId { get; set; }
+
+		public virtual string HasTable { get; set; }
+
 		public virtual string Description { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -87,6 +91,10 @@ namespace Dddml.Wms.Domain.ShipmentType
 
 	public class MergePatchShipmentType :ShipmentTypeCommandBase, IMergePatchShipmentType
 	{
+
+		public virtual bool IsPropertyParentTypeIdRemoved { get; set; }
+
+		public virtual bool IsPropertyHasTableRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 

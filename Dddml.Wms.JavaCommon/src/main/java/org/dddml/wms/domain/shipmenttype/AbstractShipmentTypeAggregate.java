@@ -51,6 +51,8 @@ public abstract class AbstractShipmentTypeAggregate extends AbstractAggregate im
     protected ShipmentTypeStateEvent map(ShipmentTypeCommand.CreateShipmentType c) {
         ShipmentTypeStateEventId stateEventId = new ShipmentTypeStateEventId(c.getShipmentTypeId(), c.getVersion());
         ShipmentTypeStateEvent.ShipmentTypeStateCreated e = newShipmentTypeStateCreated(stateEventId);
+        e.setParentTypeId(c.getParentTypeId());
+        e.setHasTable(c.getHasTable());
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         ((AbstractShipmentTypeStateEvent)e).setCommandId(c.getCommandId());
@@ -62,8 +64,12 @@ public abstract class AbstractShipmentTypeAggregate extends AbstractAggregate im
     protected ShipmentTypeStateEvent map(ShipmentTypeCommand.MergePatchShipmentType c) {
         ShipmentTypeStateEventId stateEventId = new ShipmentTypeStateEventId(c.getShipmentTypeId(), c.getVersion());
         ShipmentTypeStateEvent.ShipmentTypeStateMergePatched e = newShipmentTypeStateMergePatched(stateEventId);
+        e.setParentTypeId(c.getParentTypeId());
+        e.setHasTable(c.getHasTable());
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
+        e.setIsPropertyParentTypeIdRemoved(c.getIsPropertyParentTypeIdRemoved());
+        e.setIsPropertyHasTableRemoved(c.getIsPropertyHasTableRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractShipmentTypeStateEvent)e).setCommandId(c.getCommandId());

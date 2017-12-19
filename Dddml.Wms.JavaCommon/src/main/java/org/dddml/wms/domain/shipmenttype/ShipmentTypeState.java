@@ -16,6 +16,14 @@ public interface ShipmentTypeState
 
     void setShipmentTypeId(String shipmentTypeId);
 
+    String getParentTypeId();
+
+    void setParentTypeId(String parentTypeId);
+
+    String getHasTable();
+
+    void setHasTable(String hasTable);
+
     String getDescription();
 
     void setDescription(String description);

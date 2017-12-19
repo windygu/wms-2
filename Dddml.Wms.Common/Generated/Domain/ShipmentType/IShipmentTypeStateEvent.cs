@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.ShipmentType
 
         bool ReadOnly { get; set; }
 
+		string ParentTypeId { get; set; }
+
+		string HasTable { get; set; }
+
 		string Description { get; set; }
 
 		bool? Active { get; set; }
@@ -31,6 +35,10 @@ namespace Dddml.Wms.Domain.ShipmentType
 
 	public interface IShipmentTypeStateMergePatched : IShipmentTypeStateEvent//, IShipmentTypeStateProperties
 	{
+		bool IsPropertyParentTypeIdRemoved { get; set; }
+
+		bool IsPropertyHasTableRemoved { get; set; }
+
 		bool IsPropertyDescriptionRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }

@@ -67,6 +67,62 @@ namespace Dddml.Wms.Domain.ShipmentType
             }
         }
 
+		public virtual string ParentTypeId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ParentTypeId"))
+                {
+                    return _state.ParentTypeId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ParentTypeId = value;
+            }
+        }
+
+        string IShipmentTypeStateProperties.ParentTypeId
+        {
+            get 
+            {
+                return (this._state as IShipmentTypeStateProperties).ParentTypeId;
+            }
+            set 
+            {
+                (this._state as IShipmentTypeStateProperties).ParentTypeId = value;
+            }
+        }
+
+		public virtual string HasTable
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("HasTable"))
+                {
+                    return _state.HasTable;
+                }
+                return null;
+            }
+            set
+            {
+                _state.HasTable = value;
+            }
+        }
+
+        string IShipmentTypeStateProperties.HasTable
+        {
+            get 
+            {
+                return (this._state as IShipmentTypeStateProperties).HasTable;
+            }
+            set 
+            {
+                (this._state as IShipmentTypeStateProperties).HasTable = value;
+            }
+        }
+
 		public virtual string Description
 		{
             get

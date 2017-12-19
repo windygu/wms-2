@@ -34,6 +34,26 @@ public class ShipmentTypeStateEventDto extends AbstractStateEvent
         getStateEventId().setVersion(version);
     }
 
+    private String parentTypeId;
+
+    public String getParentTypeId() {
+        return this.parentTypeId;
+    }
+
+    public void setParentTypeId(String parentTypeId) {
+        this.parentTypeId = parentTypeId;
+    }
+
+    private String hasTable;
+
+    public String getHasTable() {
+        return this.hasTable;
+    }
+
+    public void setHasTable(String hasTable) {
+        this.hasTable = hasTable;
+    }
+
     private String description;
 
     public String getDescription() {
@@ -72,6 +92,26 @@ public class ShipmentTypeStateEventDto extends AbstractStateEvent
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    private Boolean isPropertyParentTypeIdRemoved;
+
+    public Boolean getIsPropertyParentTypeIdRemoved() {
+        return this.isPropertyParentTypeIdRemoved;
+    }
+
+    public void setIsPropertyParentTypeIdRemoved(Boolean removed) {
+        this.isPropertyParentTypeIdRemoved = removed;
+    }
+
+    private Boolean isPropertyHasTableRemoved;
+
+    public Boolean getIsPropertyHasTableRemoved() {
+        return this.isPropertyHasTableRemoved;
+    }
+
+    public void setIsPropertyHasTableRemoved(Boolean removed) {
+        this.isPropertyHasTableRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;

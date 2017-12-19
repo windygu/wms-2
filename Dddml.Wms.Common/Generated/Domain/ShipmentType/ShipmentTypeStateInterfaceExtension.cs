@@ -48,9 +48,13 @@ namespace Dddml.Wms.Domain.ShipmentType
             cmd.Version = ((IShipmentTypeStateProperties)state).Version;
 
             cmd.ShipmentTypeId = state.ShipmentTypeId;
+            cmd.ParentTypeId = state.ParentTypeId;
+            cmd.HasTable = state.HasTable;
             cmd.Description = state.Description;
             cmd.Active = ((IShipmentTypeStateProperties)state).Active;
             
+            if (state.ParentTypeId == null) { cmd.IsPropertyParentTypeIdRemoved = true; }
+            if (state.HasTable == null) { cmd.IsPropertyHasTableRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             return cmd;
         }
@@ -63,6 +67,8 @@ namespace Dddml.Wms.Domain.ShipmentType
             cmd.Version = ((IShipmentTypeStateProperties)state).Version;
 
             cmd.ShipmentTypeId = state.ShipmentTypeId;
+            cmd.ParentTypeId = state.ParentTypeId;
+            cmd.HasTable = state.HasTable;
             cmd.Description = state.Description;
             cmd.Active = ((IShipmentTypeStateProperties)state).Active;
             return cmd;

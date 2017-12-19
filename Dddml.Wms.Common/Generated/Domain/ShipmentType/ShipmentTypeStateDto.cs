@@ -21,6 +21,18 @@ namespace Dddml.Wms.Domain.ShipmentType
             set;
         }
 
+        public virtual string ParentTypeId
+        {
+            get;
+            set;
+        }
+
+        public virtual string HasTable
+        {
+            get;
+            set;
+        }
+
         public virtual string Description
         {
             get;
@@ -67,6 +79,8 @@ namespace Dddml.Wms.Domain.ShipmentType
         {
             var state = new ShipmentTypeState(true);
             state.ShipmentTypeId = this.ShipmentTypeId;
+            state.ParentTypeId = this.ParentTypeId;
+            state.HasTable = this.HasTable;
             state.Description = this.Description;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }

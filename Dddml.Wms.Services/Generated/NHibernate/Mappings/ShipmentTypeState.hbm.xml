@@ -9,6 +9,8 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
+    <property name="ParentTypeId" ><column name="ParentTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="HasTable" ><column name="HasTable" sql-type="CHAR(1)" /></property>
     <property name="Description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>

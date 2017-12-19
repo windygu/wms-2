@@ -12,6 +12,8 @@ public final class ShipmentTypeFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "shipmentTypeId",
+            "parentTypeId",
+            "hasTable",
             "description",
             "version",
             "createdBy",
@@ -23,6 +25,8 @@ public final class ShipmentTypeFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
+            "String",
             "String",
             "String",
             "Long",
@@ -48,6 +52,10 @@ public final class ShipmentTypeFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("shipmentTypeId", "shipmentTypeId");
         aliasMap.put("ShipmentTypeId", "shipmentTypeId");
+        aliasMap.put("parentTypeId", "parentTypeId");
+        aliasMap.put("ParentTypeId", "parentTypeId");
+        aliasMap.put("hasTable", "hasTable");
+        aliasMap.put("HasTable", "hasTable");
         aliasMap.put("description", "description");
         aliasMap.put("Description", "description");
         aliasMap.put("version", "version");

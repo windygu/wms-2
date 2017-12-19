@@ -97,6 +97,8 @@ namespace Dddml.Wms.Domain.ShipmentType
 			var stateEventId = new ShipmentTypeStateEventId(c.ShipmentTypeId, c.Version);
             IShipmentTypeStateCreated e = NewShipmentTypeStateCreated(stateEventId);
 		
+            e.ParentTypeId = c.ParentTypeId;
+            e.HasTable = c.HasTable;
             e.Description = c.Description;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
@@ -115,8 +117,12 @@ namespace Dddml.Wms.Domain.ShipmentType
 			var stateEventId = new ShipmentTypeStateEventId(c.ShipmentTypeId, c.Version);
             IShipmentTypeStateMergePatched e = NewShipmentTypeStateMergePatched(stateEventId);
 
+            e.ParentTypeId = c.ParentTypeId;
+            e.HasTable = c.HasTable;
             e.Description = c.Description;
             e.Active = c.Active;
+            e.IsPropertyParentTypeIdRemoved = c.IsPropertyParentTypeIdRemoved;
+            e.IsPropertyHasTableRemoved = c.IsPropertyHasTableRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 

@@ -36,6 +36,14 @@ public interface ShipmentTypeCommand extends Command
 
     interface CreateOrMergePatchShipmentType extends ShipmentTypeCommand
     {
+        String getParentTypeId();
+
+        void setParentTypeId(String parentTypeId);
+
+        String getHasTable();
+
+        void setHasTable(String hasTable);
+
         String getDescription();
 
         void setDescription(String description);
@@ -52,6 +60,14 @@ public interface ShipmentTypeCommand extends Command
 
     interface MergePatchShipmentType extends CreateOrMergePatchShipmentType
     {
+        Boolean getIsPropertyParentTypeIdRemoved();
+
+        void setIsPropertyParentTypeIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyHasTableRemoved();
+
+        void setIsPropertyHasTableRemoved(Boolean removed);
+
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);

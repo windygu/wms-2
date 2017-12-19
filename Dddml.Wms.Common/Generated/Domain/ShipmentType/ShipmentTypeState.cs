@@ -163,6 +163,10 @@ namespace Dddml.Wms.Domain.ShipmentType
 		public virtual void When(IShipmentTypeStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
+			this.ParentTypeId = e.ParentTypeId;
+
+			this.HasTable = e.HasTable;
+
 			this.Description = e.Description;
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
@@ -177,6 +181,30 @@ namespace Dddml.Wms.Domain.ShipmentType
 		public virtual void When(IShipmentTypeStateMergePatched e)
 		{
 			ThrowOnWrongEvent(e);
+
+			if (e.ParentTypeId == null)
+			{
+				if (e.IsPropertyParentTypeIdRemoved)
+				{
+					this.ParentTypeId = default(string);
+				}
+			}
+			else
+			{
+				this.ParentTypeId = e.ParentTypeId;
+			}
+
+			if (e.HasTable == null)
+			{
+				if (e.IsPropertyHasTableRemoved)
+				{
+					this.HasTable = default(string);
+				}
+			}
+			else
+			{
+				this.HasTable = e.HasTable;
+			}
 
 			if (e.Description == null)
 			{

@@ -53,9 +53,51 @@ namespace Dddml.Wms.Domain.ShipmentType
 
 		public virtual string ShipmentTypeId { get; set; }
 
+		public virtual string ParentTypeId { get; set; }
+
+		public virtual string HasTable { get; set; }
+
 		public virtual string Description { get; set; }
 
 		public virtual bool? Active { get; set; }
+
+		public virtual bool? IsPropertyParentTypeIdRemoved { get; set; }
+
+        bool IMergePatchShipmentType.IsPropertyParentTypeIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyParentTypeIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyParentTypeIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyHasTableRemoved { get; set; }
+
+        bool IMergePatchShipmentType.IsPropertyHasTableRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyHasTableRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyHasTableRemoved = value;
+            }
+        }
 
 		public virtual bool? IsPropertyDescriptionRemoved { get; set; }
 

@@ -20,6 +20,18 @@ namespace Dddml.Wms.Domain.ShipmentType
             set;
         }
 
+        string ParentTypeId
+        {
+            get;
+            set;
+        }
+
+        string HasTable
+        {
+            get;
+            set;
+        }
+
         string Description
         {
             get;

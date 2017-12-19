@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InitDatabase.cs" />
+    <Compile Include="InitInventoryPostingRules.cs" />
     <Compile Include="InventoryPostingRuleTests.cs" />
     <Compile Include="OrganizationTreeTests.cs" />
     <Compile Include="LocatorTreeTests.cs" />
@@ -151,6 +152,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ShipmentTypeData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sql\AddStateIdForeignKeyConstraints.sql">
       <DependentUpon>GenerateBoundedContextStateIdForeignKeyConstraints.tt</DependentUpon>
     </Content>

@@ -13,6 +13,14 @@ public interface ShipmentTypeStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
+    String getParentTypeId();
+
+    void setParentTypeId(String parentTypeId);
+
+    String getHasTable();
+
+    void setHasTable(String hasTable);
+
     String getDescription();
 
     void setDescription(String description);
@@ -41,6 +49,14 @@ public interface ShipmentTypeStateEvent extends Event
 
     interface ShipmentTypeStateMergePatched extends ShipmentTypeStateEvent
     {
+        Boolean getIsPropertyParentTypeIdRemoved();
+
+        void setIsPropertyParentTypeIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyHasTableRemoved();
+
+        void setIsPropertyHasTableRemoved(Boolean removed);
+
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);

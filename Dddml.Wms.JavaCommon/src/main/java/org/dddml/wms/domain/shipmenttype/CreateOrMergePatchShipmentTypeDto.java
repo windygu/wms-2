@@ -5,6 +5,30 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchShipmentTypeDto extends AbstractShipmentTypeCommandDto
 {
+    private String parentTypeId;
+
+    public String getParentTypeId()
+    {
+        return this.parentTypeId;
+    }
+
+    public void setParentTypeId(String parentTypeId)
+    {
+        this.parentTypeId = parentTypeId;
+    }
+
+    private String hasTable;
+
+    public String getHasTable()
+    {
+        return this.hasTable;
+    }
+
+    public void setHasTable(String hasTable)
+    {
+        this.hasTable = hasTable;
+    }
+
     private String description;
 
     public String getDescription()
@@ -27,6 +51,30 @@ public class CreateOrMergePatchShipmentTypeDto extends AbstractShipmentTypeComma
     public void setActive(Boolean active)
     {
         this.active = active;
+    }
+
+    private Boolean isPropertyParentTypeIdRemoved;
+
+    public Boolean getIsPropertyParentTypeIdRemoved()
+    {
+        return this.isPropertyParentTypeIdRemoved;
+    }
+
+    public void setIsPropertyParentTypeIdRemoved(Boolean removed)
+    {
+        this.isPropertyParentTypeIdRemoved = removed;
+    }
+
+    private Boolean isPropertyHasTableRemoved;
+
+    public Boolean getIsPropertyHasTableRemoved()
+    {
+        return this.isPropertyHasTableRemoved;
+    }
+
+    public void setIsPropertyHasTableRemoved(Boolean removed)
+    {
+        this.isPropertyHasTableRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;
@@ -56,6 +104,8 @@ public class CreateOrMergePatchShipmentTypeDto extends AbstractShipmentTypeComma
     public void copyTo(AbstractShipmentTypeCommand.AbstractCreateOrMergePatchShipmentType command)
     {
         ((AbstractShipmentTypeCommandDto) this).copyTo(command);
+        command.setParentTypeId(this.getParentTypeId());
+        command.setHasTable(this.getHasTable());
         command.setDescription(this.getDescription());
         command.setActive(this.getActive());
     }
@@ -82,6 +132,8 @@ public class CreateOrMergePatchShipmentTypeDto extends AbstractShipmentTypeComma
     public void copyTo(AbstractShipmentTypeCommand.AbstractMergePatchShipmentType command)
     {
         copyTo((AbstractShipmentTypeCommand.AbstractCreateOrMergePatchShipmentType) command);
+        command.setIsPropertyParentTypeIdRemoved(this.getIsPropertyParentTypeIdRemoved());
+        command.setIsPropertyHasTableRemoved(this.getIsPropertyHasTableRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }

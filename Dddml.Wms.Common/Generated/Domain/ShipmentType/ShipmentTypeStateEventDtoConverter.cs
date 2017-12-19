@@ -37,6 +37,8 @@ namespace Dddml.Wms.Domain.ShipmentType
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
+            dto.ParentTypeId = e.ParentTypeId;
+            dto.HasTable = e.HasTable;
             dto.Description = e.Description;
             dto.Active = e.Active;
             return dto;
@@ -49,8 +51,12 @@ namespace Dddml.Wms.Domain.ShipmentType
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
+            dto.ParentTypeId = e.ParentTypeId;
+            dto.HasTable = e.HasTable;
             dto.Description = e.Description;
             dto.Active = e.Active;
+            dto.IsPropertyParentTypeIdRemoved = e.IsPropertyParentTypeIdRemoved;
+            dto.IsPropertyHasTableRemoved = e.IsPropertyHasTableRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 

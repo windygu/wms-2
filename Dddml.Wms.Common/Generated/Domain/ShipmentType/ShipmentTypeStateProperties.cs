@@ -16,6 +16,10 @@ namespace Dddml.Wms.Domain.ShipmentType
 	{
 		public virtual string ShipmentTypeId { get; set; }
 
+		public virtual string ParentTypeId { get; set; }
+
+		public virtual string HasTable { get; set; }
+
 		public virtual string Description { get; set; }
 
 		public virtual long Version { get; set; }

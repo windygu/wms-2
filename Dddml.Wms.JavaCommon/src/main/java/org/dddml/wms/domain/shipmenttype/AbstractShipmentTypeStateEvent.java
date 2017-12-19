@@ -32,6 +32,30 @@ public abstract class AbstractShipmentTypeStateEvent extends AbstractStateEvent 
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
+    private String parentTypeId;
+
+    public String getParentTypeId()
+    {
+        return this.parentTypeId;
+    }
+
+    public void setParentTypeId(String parentTypeId)
+    {
+        this.parentTypeId = parentTypeId;
+    }
+
+    private String hasTable;
+
+    public String getHasTable()
+    {
+        return this.hasTable;
+    }
+
+    public void setHasTable(String hasTable)
+    {
+        this.hasTable = hasTable;
+    }
+
     private String description;
 
     public String getDescription()
@@ -131,6 +155,26 @@ public abstract class AbstractShipmentTypeStateEvent extends AbstractStateEvent 
 
         public String getStateEventType() {
             return StateEventType.MERGE_PATCHED;
+        }
+
+        private Boolean isPropertyParentTypeIdRemoved;
+
+        public Boolean getIsPropertyParentTypeIdRemoved() {
+            return this.isPropertyParentTypeIdRemoved;
+        }
+
+        public void setIsPropertyParentTypeIdRemoved(Boolean removed) {
+            this.isPropertyParentTypeIdRemoved = removed;
+        }
+
+        private Boolean isPropertyHasTableRemoved;
+
+        public Boolean getIsPropertyHasTableRemoved() {
+            return this.isPropertyHasTableRemoved;
+        }
+
+        public void setIsPropertyHasTableRemoved(Boolean removed) {
+            this.isPropertyHasTableRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;

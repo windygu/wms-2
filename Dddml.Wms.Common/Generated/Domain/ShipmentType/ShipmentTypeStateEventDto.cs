@@ -42,6 +42,10 @@ namespace Dddml.Wms.Domain.ShipmentType
             set { StateEventId.Version = value; }
         }
 
+		public virtual string ParentTypeId { get; set; }
+
+		public virtual string HasTable { get; set; }
+
 		public virtual string Description { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -72,6 +76,44 @@ namespace Dddml.Wms.Domain.ShipmentType
             set
             {
                 this.StateEventReadOnly = value;
+            }
+        }
+
+		public virtual bool? IsPropertyParentTypeIdRemoved { get; set; }
+
+        bool IShipmentTypeStateMergePatched.IsPropertyParentTypeIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyParentTypeIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyParentTypeIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyHasTableRemoved { get; set; }
+
+        bool IShipmentTypeStateMergePatched.IsPropertyHasTableRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyHasTableRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyHasTableRemoved = value;
             }
         }
 

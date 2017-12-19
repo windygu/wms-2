@@ -34,6 +34,30 @@ public abstract class AbstractShipmentTypeCommand extends AbstractCommand implem
 
     public static abstract class AbstractCreateOrMergePatchShipmentType extends AbstractShipmentTypeCommand implements CreateOrMergePatchShipmentType
     {
+        private String parentTypeId;
+
+        public String getParentTypeId()
+        {
+            return this.parentTypeId;
+        }
+
+        public void setParentTypeId(String parentTypeId)
+        {
+            this.parentTypeId = parentTypeId;
+        }
+
+        private String hasTable;
+
+        public String getHasTable()
+        {
+            return this.hasTable;
+        }
+
+        public void setHasTable(String hasTable)
+        {
+            this.hasTable = hasTable;
+        }
+
         private String description;
 
         public String getDescription()
@@ -74,6 +98,30 @@ public abstract class AbstractShipmentTypeCommand extends AbstractCommand implem
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
+        }
+
+        private Boolean isPropertyParentTypeIdRemoved;
+
+        public Boolean getIsPropertyParentTypeIdRemoved()
+        {
+            return this.isPropertyParentTypeIdRemoved;
+        }
+
+        public void setIsPropertyParentTypeIdRemoved(Boolean removed)
+        {
+            this.isPropertyParentTypeIdRemoved = removed;
+        }
+
+        private Boolean isPropertyHasTableRemoved;
+
+        public Boolean getIsPropertyHasTableRemoved()
+        {
+            return this.isPropertyHasTableRemoved;
+        }
+
+        public void setIsPropertyHasTableRemoved(Boolean removed)
+        {
+            this.isPropertyHasTableRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;
