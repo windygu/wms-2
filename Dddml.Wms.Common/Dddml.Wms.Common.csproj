@@ -65,6 +65,7 @@
     <Compile Include="Domain\InventoryPostingRule\InventoryPostingRuleIds.cs" />
     <Compile Include="Domain\Order\OrderTypeIds.cs" />
     <Compile Include="Domain\Services\IAttributeSetService.cs" />
+    <Compile Include="Domain\ShipmentType\ShipmentTypeIds.cs" />
     <Compile Include="Domain\StatusItem\StatusTypeIds.cs" />
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldCommand.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
