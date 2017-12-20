@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.InOut
 			}
 		}
 
-        long ILocalIdentity<long>.LocalId
+        string ILocalIdentity<string>.LocalId
         {
             get
             {
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.InOut
 			}
 		}
 
-        public override long LineNumber {
+        public override string LineNumber {
 			get {
 				return this.InOutLineId.LineNumber;
 			}

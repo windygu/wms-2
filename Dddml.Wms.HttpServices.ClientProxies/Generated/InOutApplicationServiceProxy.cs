@@ -289,7 +289,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetHistoryStateAsync(documentNumber, version).GetAwaiter().GetResult();
         }
 
-        public async virtual Task<IInOutLineState> GetInOutLineAsync(string inOutDocumentNumber, long lineNumber)
+        public async virtual Task<IInOutLineState> GetInOutLineAsync(string inOutDocumentNumber, string lineNumber)
         {
             var uriParameters = new InOutLineUriParameters();
             uriParameters.InOutDocumentNumber = inOutDocumentNumber;
@@ -301,7 +301,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return (resp.Content == null) ? null : resp.Content.ToInOutLineState();
         }
 
-        public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, long lineNumber)
+        public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, string lineNumber)
         {
             return GetInOutLineAsync(inOutDocumentNumber, lineNumber).GetAwaiter().GetResult();
         }

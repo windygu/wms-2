@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
             if (fieldName.Equals("InOutLineIdLineNumber", StringComparison.InvariantCultureIgnoreCase))
             {
-                return typeof(long);
+                return typeof(string);
             }
 
             if (fieldName.Equals("InOutVersion", StringComparison.InvariantCultureIgnoreCase))
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			set { _value.InOutLineId.InOutDocumentNumber = value; }
 		}
 
-		public virtual long InOutLineIdLineNumber {
+		public virtual string InOutLineIdLineNumber {
 			get { return _value.InOutLineId.LineNumber; }
 			set { _value.InOutLineId.LineNumber = value; }
 		}

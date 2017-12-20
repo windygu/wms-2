@@ -27,7 +27,7 @@ public class InOutLineIdFlattenedDtoFormatter extends AbstractIdFlattenedDtoForm
             return;
         }
         if ("lineNumber".equals(fieldName)) {
-            dto.setLineNumber((Long) objVal);
+            dto.setLineNumber((String) objVal);
             return;
         }
     }

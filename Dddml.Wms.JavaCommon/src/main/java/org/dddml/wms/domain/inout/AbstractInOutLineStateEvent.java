@@ -19,11 +19,11 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
         this.stateEventId = stateEventId;
     }
     
-    public Long getLineNumber() {
+    public String getLineNumber() {
         return getStateEventId().getLineNumber();
     }
 
-    public void setLineNumber(Long lineNumber) {
+    public void setLineNumber(String lineNumber) {
         getStateEventId().setLineNumber(lineNumber);
     }
 

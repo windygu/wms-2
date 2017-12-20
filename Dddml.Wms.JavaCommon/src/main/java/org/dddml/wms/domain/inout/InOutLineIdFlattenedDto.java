@@ -15,7 +15,7 @@ public class InOutLineIdFlattenedDto
 
     public static final String[] propertyTypes = new String[]{
             "String",
-            "Long",
+            "String",
         };
 
     public static final Map<String, String> propertyTypeMap;
@@ -59,12 +59,12 @@ public class InOutLineIdFlattenedDto
         this.value.setInOutDocumentNumber(inOutDocumentNumber);
     }
 
-    public Long getLineNumber()
+    public String getLineNumber()
     {
         return this.value.getLineNumber();
     }
 
-    public void setLineNumber(Long lineNumber)
+    public void setLineNumber(String lineNumber)
     {
         this.value.setLineNumber(lineNumber);
     }

@@ -103,7 +103,7 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         return new AbstractInOutState.SimpleInOutState(eventStream.getEvents());
     }
 
-    public InOutLineState getInOutLine(String inOutDocumentNumber, Long lineNumber) {
+    public InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber) {
         return getStateQueryRepository().getInOutLine(inOutDocumentNumber, lineNumber);
     }
 

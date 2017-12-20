@@ -80,17 +80,17 @@ namespace Dddml.Wms.Domain.InOut
             this._removedInOutLineStates.Add(state.GlobalId, state);
         }
 
-        public virtual IInOutLineState Get(long lineNumber)
+        public virtual IInOutLineState Get(string lineNumber)
 		{
 			return Get(lineNumber, false, false);
 		}
 
-        public virtual IInOutLineState Get(long lineNumber, bool forCreation)
+        public virtual IInOutLineState Get(string lineNumber, bool forCreation)
         {
 			return Get(lineNumber, forCreation, false);
         }
 
-        public virtual IInOutLineState Get(long lineNumber, bool forCreation, bool nullAllowed)
+        public virtual IInOutLineState Get(string lineNumber, bool forCreation, bool nullAllowed)
         {
             InOutLineId globalId = new InOutLineId(_inOutState.DocumentNumber, lineNumber);
             if (_loadedInOutLineStates.ContainsKey(globalId)) {

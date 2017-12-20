@@ -134,7 +134,7 @@ public class HibernateInOutStateQueryRepository implements InOutStateQueryReposi
     }
 
     @Transactional(readOnly = true)
-    public InOutLineState getInOutLine(String inOutDocumentNumber, Long lineNumber)
+    public InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber)
     {
         InOutLineId entityId = new InOutLineId(inOutDocumentNumber, lineNumber);
         return (InOutLineState) getCurrentSession().get(AbstractInOutLineState.SimpleInOutLineState.class, entityId);

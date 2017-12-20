@@ -33,6 +33,9 @@ public class BoundedContextMetadata {
         map.put("InventoryItemRequirementEntry", "InventoryItemRequirement");
         map.put("InventoryPostingRule", "InventoryPostingRule");
         map.put("InventoryPRTriggered", "InventoryPRTriggered");
+        map.put("Movement", "Movement");
+        map.put("MovementLine", "Movement");
+        map.put("MovementConfirmationLine", "Movement");
         map.put("MovementType", "MovementType");
         map.put("Order", "Order");
         map.put("OrderItem", "Order");
@@ -60,6 +63,8 @@ public class BoundedContextMetadata {
         map.put("InOutLineMvo", "InOutLineMvo");
         map.put("InventoryItemEntryMvo", "InventoryItemEntryMvo");
         map.put("InventoryItemRequirementEntryMvo", "InventoryItemRequirementEntryMvo");
+        map.put("MovementLineMvo", "MovementLineMvo");
+        map.put("MovementConfirmationLineMvo", "MovementConfirmationLineMvo");
         map.put("OrderItemMvo", "OrderItemMvo");
         map.put("SellableInventoryItemEntryMvo", "SellableInventoryItemEntryMvo");
         map.put("ShipmentItemMvo", "ShipmentItemMvo");

@@ -36,13 +36,13 @@ public class InOutLineStateEventIdDtoWrapper extends InOutLineStateEventIdDto
     }
 
     @Override
-    public Long getLineNumber()
+    public String getLineNumber()
     {
         return this.value.getLineNumber();
     }
 
     @Override
-    public void setLineNumber(Long lineNumber)
+    public void setLineNumber(String lineNumber)
     {
         this.value.setLineNumber(lineNumber);
     }

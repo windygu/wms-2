@@ -210,6 +210,71 @@ CREATE VIEW `InventoryItemRequirementEntry_RV` AS
         );
 
 
+CREATE VIEW `MovementLine_RV` AS
+    SELECT 
+        `MovementLines`.`MovementLineIdMovementDocumentNumber`,
+        `MovementLines`.`MovementLineIdLineNumber`,
+        `MovementLines`.`MovementQuantity`,
+        `MovementLines`.`Version`,
+        `MovementLines`.`CreatedBy`,
+        `MovementLines`.`CreatedAt`,
+        `MovementLines`.`UpdatedBy`,
+        `MovementLines`.`UpdatedAt`,
+        `MovementLines`.`Active`,
+        `MovementLines`.`Deleted`,
+        `Movements`.`DocumentTypeId` AS `MovementDocumentTypeId`,
+        `Movements`.`DocumentStatusId` AS `MovementDocumentStatusId`,
+        `Movements`.`MovementTypeId` AS `MovementMovementTypeId`,
+        `Movements`.`Description` AS `MovementDescription`,
+        `Movements`.`Version` AS `MovementVersion`,
+        `Movements`.`CreatedBy` AS `MovementCreatedBy`,
+        `Movements`.`CreatedAt` AS `MovementCreatedAt`,
+        `Movements`.`UpdatedBy` AS `MovementUpdatedBy`,
+        `Movements`.`UpdatedAt` AS `MovementUpdatedAt`,
+        `Movements`.`Active` AS `MovementActive`,
+        `Movements`.`Deleted` AS `MovementDeleted`
+    FROM
+        (`MovementLines`
+            JOIN `Movements` ON ( 1=1 
+                and (`MovementLines`.`MovementLineIdMovementDocumentNumber` = `Movements`.`DocumentNumber`)
+            )
+        );
+
+
+CREATE VIEW `MovementConfirmationLine_RV` AS
+    SELECT 
+        `MovementConfirmationLines`.`MovementConfirmationLineIdMovementDocumentNumber`,
+        `MovementConfirmationLines`.`MovementConfirmationLineIdLineNumber`,
+        `MovementConfirmationLines`.`TargetQuantity`,
+        `MovementConfirmationLines`.`ConfirmedQuantity`,
+        `MovementConfirmationLines`.`DifferenceQuantity`,
+        `MovementConfirmationLines`.`ScrappedQuantity`,
+        `MovementConfirmationLines`.`Version`,
+        `MovementConfirmationLines`.`CreatedBy`,
+        `MovementConfirmationLines`.`CreatedAt`,
+        `MovementConfirmationLines`.`UpdatedBy`,
+        `MovementConfirmationLines`.`UpdatedAt`,
+        `MovementConfirmationLines`.`Active`,
+        `MovementConfirmationLines`.`Deleted`,
+        `Movements`.`DocumentTypeId` AS `MovementDocumentTypeId`,
+        `Movements`.`DocumentStatusId` AS `MovementDocumentStatusId`,
+        `Movements`.`MovementTypeId` AS `MovementMovementTypeId`,
+        `Movements`.`Description` AS `MovementDescription`,
+        `Movements`.`Version` AS `MovementVersion`,
+        `Movements`.`CreatedBy` AS `MovementCreatedBy`,
+        `Movements`.`CreatedAt` AS `MovementCreatedAt`,
+        `Movements`.`UpdatedBy` AS `MovementUpdatedBy`,
+        `Movements`.`UpdatedAt` AS `MovementUpdatedAt`,
+        `Movements`.`Active` AS `MovementActive`,
+        `Movements`.`Deleted` AS `MovementDeleted`
+    FROM
+        (`MovementConfirmationLines`
+            JOIN `Movements` ON ( 1=1 
+                and (`MovementConfirmationLines`.`MovementConfirmationLineIdMovementDocumentNumber` = `Movements`.`DocumentNumber`)
+            )
+        );
+
+
 CREATE VIEW `OrderItem_RV` AS
     SELECT 
         `OrderItems`.`OrderItemIdOrderId`,

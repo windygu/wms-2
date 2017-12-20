@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractInOutLineCommand extends AbstractCommand implements InOutLineCommand
 {
-    private Long lineNumber;
+    private String lineNumber;
 
-    public Long getLineNumber()
+    public String getLineNumber()
     {
         return this.lineNumber;
     }
 
-    public void setLineNumber(Long lineNumber)
+    public void setLineNumber(String lineNumber)
     {
         this.lineNumber = lineNumber;
     }

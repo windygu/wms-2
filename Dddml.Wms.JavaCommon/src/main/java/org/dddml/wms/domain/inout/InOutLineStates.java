@@ -7,11 +7,11 @@ import org.dddml.wms.specialization.Saveable;
 
 public interface InOutLineStates extends Iterable<InOutLineState>, Saveable
 {
-    InOutLineState get(Long lineNumber);
+    InOutLineState get(String lineNumber);
 
-    InOutLineState get(Long lineNumber, boolean forCreation);
+    InOutLineState get(String lineNumber, boolean forCreation);
 
-    InOutLineState get(Long lineNumber, boolean forCreation, boolean nullAllowed);
+    InOutLineState get(String lineNumber, boolean forCreation, boolean nullAllowed);
 
     void remove(InOutLineState state);
 

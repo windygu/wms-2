@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain.InOut
 			set { _value.InOutDocumentNumber = value; } 
 		}
 
-		public override long LineNumber { 
+		public override string LineNumber { 
 			get { return _value.LineNumber; } 
 			set { _value.LineNumber = value; } 
 		}

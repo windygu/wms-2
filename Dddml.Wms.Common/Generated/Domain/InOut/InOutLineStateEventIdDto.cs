@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.InOut
 			set;
 		}
 
-		public virtual long LineNumber { 
+		public virtual string LineNumber { 
 			get;
 			set;
 		}

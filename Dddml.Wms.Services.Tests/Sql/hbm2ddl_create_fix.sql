@@ -153,6 +153,26 @@
 
     drop table if exists ShipmentItemMvoStateEvents;
 
+    drop table if exists Movements;
+
+    drop table if exists MovementStateEvents;
+
+    drop table if exists MovementLines;
+
+    drop table if exists MovementLineStateEvents;
+
+    drop table if exists MovementConfirmationLines;
+
+    drop table if exists MovementConfirmationLineStateEvents;
+
+    drop table if exists MovementLine_RV;
+
+    drop table if exists MovementLineMvoStateEvents;
+
+    drop table if exists MovementConfirmationLine_RV;
+
+    drop table if exists MovementConfirmationLineMvoStateEvents;
+
     create table Attributes (
         AttributeId VARCHAR(50) not null,
        Version BIGINT not null,
@@ -1234,7 +1254,7 @@
 
     create table InOutLines (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
-       InOutLineIdLineNumber BIGINT not null,
+       InOutLineIdLineNumber VARCHAR(50) not null,
        Version BIGINT not null,
        LocatorId VARCHAR(255),
        ProductId VARCHAR(255),
@@ -1262,7 +1282,7 @@
 
     create table InOutLineStateEvents (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
-       InOutLineIdLineNumber BIGINT not null,
+       InOutLineIdLineNumber VARCHAR(50) not null,
        InOutVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
        LocatorId VARCHAR(255),
@@ -2452,7 +2472,7 @@
 
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
-       InOutLineIdLineNumber BIGINT not null,
+       InOutLineIdLineNumber VARCHAR(50) not null,
        InOutVersion BIGINT not null,
        LocatorId VARCHAR(255),
        ProductId VARCHAR(255),
@@ -2514,7 +2534,7 @@
 
     create table InOutLineMvoStateEvents (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
-       InOutLineIdLineNumber BIGINT not null,
+       InOutLineIdLineNumber VARCHAR(50) not null,
        InOutVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
        LocatorId VARCHAR(255),
@@ -3163,4 +3183,242 @@
        IsPropertyShipmentUpdatedAtRemoved TINYINT(1),
        IsPropertyShipmentActiveRemoved TINYINT(1),
        primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId, ShipmentVersion)
+    );
+
+    create table Movements (
+        DocumentNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       DocumentTypeId VARCHAR(255),
+       DocumentStatusId VARCHAR(255),
+       MovementTypeId VARCHAR(255),
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (DocumentNumber)
+    );
+
+    create table MovementStateEvents (
+        DocumentNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       DocumentTypeId VARCHAR(255),
+       DocumentStatusId VARCHAR(255),
+       MovementTypeId VARCHAR(255),
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDocumentTypeIdRemoved TINYINT(1),
+       IsPropertyDocumentStatusIdRemoved TINYINT(1),
+       IsPropertyMovementTypeIdRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (DocumentNumber, Version)
+    );
+
+    create table MovementLines (
+        MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
+       MovementLineIdLineNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       MovementQuantity NUMERIC(19,5),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (MovementLineIdMovementDocumentNumber, MovementLineIdLineNumber)
+    );
+
+    create table MovementLineStateEvents (
+        MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
+       MovementLineIdLineNumber VARCHAR(50) not null,
+       MovementVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       MovementQuantity NUMERIC(19,5),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyMovementQuantityRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (MovementLineIdMovementDocumentNumber, MovementLineIdLineNumber, MovementVersion)
+    );
+
+    create table MovementConfirmationLines (
+        MovementConfirmationLineIdMovementDocumentNumber VARCHAR(50) not null,
+       MovementConfirmationLineIdLineNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       TargetQuantity NUMERIC(19,5),
+       ConfirmedQuantity NUMERIC(19,5),
+       DifferenceQuantity NUMERIC(19,5),
+       ScrappedQuantity NUMERIC(19,5),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (MovementConfirmationLineIdMovementDocumentNumber, MovementConfirmationLineIdLineNumber)
+    );
+
+    create table MovementConfirmationLineStateEvents (
+        MovementConfirmationLineIdMovementDocumentNumber VARCHAR(50) not null,
+       MovementConfirmationLineIdLineNumber VARCHAR(50) not null,
+       MovementVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       TargetQuantity NUMERIC(19,5),
+       ConfirmedQuantity NUMERIC(19,5),
+       DifferenceQuantity NUMERIC(19,5),
+       ScrappedQuantity NUMERIC(19,5),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyTargetQuantityRemoved TINYINT(1),
+       IsPropertyConfirmedQuantityRemoved TINYINT(1),
+       IsPropertyDifferenceQuantityRemoved TINYINT(1),
+       IsPropertyScrappedQuantityRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (MovementConfirmationLineIdMovementDocumentNumber, MovementConfirmationLineIdLineNumber, MovementVersion)
+    );
+
+    create table MovementLine_RV (
+        MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
+       MovementLineIdLineNumber VARCHAR(50) not null,
+       MovementVersion BIGINT not null,
+       MovementQuantity NUMERIC(19,5),
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       MovementDocumentTypeId VARCHAR(255),
+       MovementDocumentStatusId VARCHAR(255),
+       MovementMovementTypeId VARCHAR(255),
+       MovementDescription VARCHAR(255),
+       MovementCreatedBy VARCHAR(255),
+       MovementCreatedAt DATETIME,
+       MovementUpdatedBy VARCHAR(255),
+       MovementUpdatedAt DATETIME,
+       MovementActive TINYINT(1),
+       MovementDeleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (MovementLineIdMovementDocumentNumber, MovementLineIdLineNumber)
+    );
+
+    create table MovementLineMvoStateEvents (
+        MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
+       MovementLineIdLineNumber VARCHAR(50) not null,
+       MovementVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       MovementQuantity NUMERIC(19,5),
+       Version BIGINT,
+       Active TINYINT(1),
+       MovementDocumentTypeId VARCHAR(255),
+       MovementDocumentStatusId VARCHAR(255),
+       MovementMovementTypeId VARCHAR(255),
+       MovementDescription VARCHAR(255),
+       MovementCreatedBy VARCHAR(255),
+       MovementCreatedAt DATETIME,
+       MovementUpdatedBy VARCHAR(255),
+       MovementUpdatedAt DATETIME,
+       MovementActive TINYINT(1),
+       MovementDeleted TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyMovementQuantityRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       IsPropertyMovementDocumentTypeIdRemoved TINYINT(1),
+       IsPropertyMovementDocumentStatusIdRemoved TINYINT(1),
+       IsPropertyMovementMovementTypeIdRemoved TINYINT(1),
+       IsPropertyMovementDescriptionRemoved TINYINT(1),
+       IsPropertyMovementCreatedByRemoved TINYINT(1),
+       IsPropertyMovementCreatedAtRemoved TINYINT(1),
+       IsPropertyMovementUpdatedByRemoved TINYINT(1),
+       IsPropertyMovementUpdatedAtRemoved TINYINT(1),
+       IsPropertyMovementActiveRemoved TINYINT(1),
+       IsPropertyMovementDeletedRemoved TINYINT(1),
+       primary key (MovementLineIdMovementDocumentNumber, MovementLineIdLineNumber, MovementVersion)
+    );
+
+    create table MovementConfirmationLine_RV (
+        MovementConfirmationLineIdMovementDocumentNumber VARCHAR(50) not null,
+       MovementConfirmationLineIdLineNumber VARCHAR(50) not null,
+       MovementVersion BIGINT not null,
+       TargetQuantity NUMERIC(19,5),
+       ConfirmedQuantity NUMERIC(19,5),
+       DifferenceQuantity NUMERIC(19,5),
+       ScrappedQuantity NUMERIC(19,5),
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       MovementDocumentTypeId VARCHAR(255),
+       MovementDocumentStatusId VARCHAR(255),
+       MovementMovementTypeId VARCHAR(255),
+       MovementDescription VARCHAR(255),
+       MovementCreatedBy VARCHAR(255),
+       MovementCreatedAt DATETIME,
+       MovementUpdatedBy VARCHAR(255),
+       MovementUpdatedAt DATETIME,
+       MovementActive TINYINT(1),
+       MovementDeleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (MovementConfirmationLineIdMovementDocumentNumber, MovementConfirmationLineIdLineNumber)
+    );
+
+    create table MovementConfirmationLineMvoStateEvents (
+        MovementConfirmationLineIdMovementDocumentNumber VARCHAR(50) not null,
+       MovementConfirmationLineIdLineNumber VARCHAR(50) not null,
+       MovementVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       TargetQuantity NUMERIC(19,5),
+       ConfirmedQuantity NUMERIC(19,5),
+       DifferenceQuantity NUMERIC(19,5),
+       ScrappedQuantity NUMERIC(19,5),
+       Version BIGINT,
+       Active TINYINT(1),
+       MovementDocumentTypeId VARCHAR(255),
+       MovementDocumentStatusId VARCHAR(255),
+       MovementMovementTypeId VARCHAR(255),
+       MovementDescription VARCHAR(255),
+       MovementCreatedBy VARCHAR(255),
+       MovementCreatedAt DATETIME,
+       MovementUpdatedBy VARCHAR(255),
+       MovementUpdatedAt DATETIME,
+       MovementActive TINYINT(1),
+       MovementDeleted TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyTargetQuantityRemoved TINYINT(1),
+       IsPropertyConfirmedQuantityRemoved TINYINT(1),
+       IsPropertyDifferenceQuantityRemoved TINYINT(1),
+       IsPropertyScrappedQuantityRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       IsPropertyMovementDocumentTypeIdRemoved TINYINT(1),
+       IsPropertyMovementDocumentStatusIdRemoved TINYINT(1),
+       IsPropertyMovementMovementTypeIdRemoved TINYINT(1),
+       IsPropertyMovementDescriptionRemoved TINYINT(1),
+       IsPropertyMovementCreatedByRemoved TINYINT(1),
+       IsPropertyMovementCreatedAtRemoved TINYINT(1),
+       IsPropertyMovementUpdatedByRemoved TINYINT(1),
+       IsPropertyMovementUpdatedAtRemoved TINYINT(1),
+       IsPropertyMovementActiveRemoved TINYINT(1),
+       IsPropertyMovementDeletedRemoved TINYINT(1),
+       primary key (MovementConfirmationLineIdMovementDocumentNumber, MovementConfirmationLineIdLineNumber, MovementVersion)
     );

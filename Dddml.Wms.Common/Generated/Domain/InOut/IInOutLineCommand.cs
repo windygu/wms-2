@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		string InOutDocumentNumber { get; set; }
 
-		long LineNumber { get; set; }
+		string LineNumber { get; set; }
 
 	}
 

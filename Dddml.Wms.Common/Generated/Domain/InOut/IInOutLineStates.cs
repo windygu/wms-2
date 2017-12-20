@@ -15,11 +15,11 @@ namespace Dddml.Wms.Domain.InOut
     public interface IInOutLineStates : IEnumerable<IInOutLineState>, ISaveable
     {
         
-        IInOutLineState Get(long lineNumber);
+        IInOutLineState Get(string lineNumber);
 
-        IInOutLineState Get(long lineNumber, bool forCreation);
+        IInOutLineState Get(string lineNumber, bool forCreation);
 
-        IInOutLineState Get(long lineNumber, bool forCreation, bool nullAllowed);
+        IInOutLineState Get(string lineNumber, bool forCreation, bool nullAllowed);
         
         void Remove(IInOutLineState state);
 

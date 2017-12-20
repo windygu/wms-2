@@ -22,9 +22,9 @@ namespace Dddml.Wms.Domain.InOut
 			internal set { _inOutDocumentNumber = value; } 
 		}
 
-		private long _lineNumber;
+		private string _lineNumber;
 
-		public virtual long LineNumber { 
+		public virtual string LineNumber { 
 			get { return this._lineNumber; } 
 			internal set { _lineNumber = value; } 
 		}
@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.InOut
 		{
 		}
 
-		public InOutLineId (string inOutDocumentNumber, long lineNumber)
+		public InOutLineId (string inOutDocumentNumber, string lineNumber)
 		{
 			this._inOutDocumentNumber = inOutDocumentNumber;
 			this._lineNumber = lineNumber;

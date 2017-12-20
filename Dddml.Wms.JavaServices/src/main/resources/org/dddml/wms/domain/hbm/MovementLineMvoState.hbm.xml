@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.movementlinemvo">
+  
+  <class name="org.dddml.wms.domain.movementlinemvo.AbstractMovementLineMvoState$SimpleMovementLineMvoState" table="MovementLine_RV">
+
+	<composite-id name="movementLineId" class="org.dddml.wms.domain.movement.MovementLineId">
+		<key-property name="movementDocumentNumber" ><column name="MovementLineIdMovementDocumentNumber" length="50" /></key-property>
+		<key-property name="lineNumber" ><column name="MovementLineIdLineNumber" length="50" /></key-property>
+	</composite-id>
+	<version name="movementVersion" column="MovementVersion" type="long" />
+
+	<property name="movementQuantity" ></property>
+	<property name="version" ></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+	<property name="movementDocumentTypeId" ></property>
+	<property name="movementDocumentStatusId" ></property>
+	<property name="movementMovementTypeId" ></property>
+	<property name="movementDescription" ></property>
+	<property name="movementCreatedBy" ></property>
+	<property name="movementCreatedAt" ></property>
+	<property name="movementUpdatedBy" ></property>
+	<property name="movementUpdatedAt" ></property>
+	<property name="movementActive" ></property>
+	<property name="movementDeleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

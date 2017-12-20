@@ -17,14 +17,14 @@ public class InOutLineId implements Serializable
         this.inOutDocumentNumber = inOutDocumentNumber;
     }
 
-    private Long lineNumber;
+    private String lineNumber;
 
-    public Long getLineNumber()
+    public String getLineNumber()
     {
         return this.lineNumber;
     }
 
-    public void setLineNumber(Long lineNumber)
+    public void setLineNumber(String lineNumber)
     {
         this.lineNumber = lineNumber;
     }
@@ -33,7 +33,7 @@ public class InOutLineId implements Serializable
     {
     }
 
-    public InOutLineId(String inOutDocumentNumber, Long lineNumber)
+    public InOutLineId(String inOutDocumentNumber, String lineNumber)
     {
         this.inOutDocumentNumber = inOutDocumentNumber;
         this.lineNumber = lineNumber;

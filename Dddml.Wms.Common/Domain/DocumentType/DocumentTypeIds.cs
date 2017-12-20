@@ -20,14 +20,21 @@ namespace Dddml.Wms.Domain.DocumentType
         /// </summary>
         public const string Shipment = "Shipment";
 
-        // //////////////////// 以上是“父”类型 //////////////////////////
-
-        #region Child Document Types
+        /// <summary>
+        /// 盘点单。
+        /// </summary>
+        public const string PhysicalInventory = "PhysicalInventory";
 
         /// <summary>
         /// 移库。
         /// </summary>
         public const string Movement = "Movement";
+
+
+        // //////////////////// 以上是“父”类型 //////////////////////////
+
+        #region Child Document Types
+
 
         /// <summary>
         /// 在途移库。
@@ -73,11 +80,6 @@ namespace Dddml.Wms.Domain.DocumentType
         /// 发货（给客户）。
         /// </summary>
         public const string CustomerShipment = "CustomerShipment";
-
-        /// <summary>
-        /// 盘点单。
-        /// </summary>
-        public const string PhysicalInventory = "PhysicalInventory";
 
         #endregion
 

@@ -22,6 +22,22 @@ alter TABLE `InOutLines` add
     (`DocumentNumber`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+alter TABLE `MovementLines` add
+  CONSTRAINT `FK_MovementLine_Movement_StateId` 
+  FOREIGN KEY 
+    (`MovementLineIdMovementDocumentNumber`) 
+  REFERENCES `Movements` 
+    (`DocumentNumber`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter TABLE `MovementConfirmationLines` add
+  CONSTRAINT `FK_MovementConfirmationLine_Movement_StateId` 
+  FOREIGN KEY 
+    (`MovementConfirmationLineIdMovementDocumentNumber`) 
+  REFERENCES `Movements` 
+    (`DocumentNumber`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 alter TABLE `OrderItems` add
   CONSTRAINT `FK_OrderItem_Order_StateId` 
   FOREIGN KEY 

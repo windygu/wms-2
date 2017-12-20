@@ -173,7 +173,7 @@ aggregates:
           
           id: 
             name: LineNumber
-            type: long
+            type: string
             #name: SkuId
             #type: SkuId
               

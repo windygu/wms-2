@@ -17,14 +17,14 @@ public class InOutLineStateEventId implements Serializable
         this.inOutDocumentNumber = inOutDocumentNumber;
     }
 
-    private Long lineNumber;
+    private String lineNumber;
 
-    public Long getLineNumber()
+    public String getLineNumber()
     {
         return this.lineNumber;
     }
 
-    public void setLineNumber(Long lineNumber)
+    public void setLineNumber(String lineNumber)
     {
         this.lineNumber = lineNumber;
     }
@@ -45,7 +45,7 @@ public class InOutLineStateEventId implements Serializable
     {
     }
 
-    public InOutLineStateEventId(String inOutDocumentNumber, Long lineNumber, Long inOutVersion)
+    public InOutLineStateEventId(String inOutDocumentNumber, String lineNumber, Long inOutVersion)
     {
         this.inOutDocumentNumber = inOutDocumentNumber;
         this.lineNumber = lineNumber;

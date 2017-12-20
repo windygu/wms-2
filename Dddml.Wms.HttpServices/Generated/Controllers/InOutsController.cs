@@ -190,7 +190,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{inOutDocumentNumber}/InOutLines/{lineNumber}")]
         [HttpGet]
-        public IInOutLineStateDto GetInOutLine(string inOutDocumentNumber, long lineNumber)
+        public IInOutLineStateDto GetInOutLine(string inOutDocumentNumber, string lineNumber)
         {
           try {
             var state = (InOutLineState)_inOutApplicationService.GetInOutLine(inOutDocumentNumber, lineNumber);

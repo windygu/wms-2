@@ -44,6 +44,12 @@
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPostingRuleState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPostingRuleStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPRTriggeredState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementLineState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementLineStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementConfirmationLineState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementConfirmationLineStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/MovementTypeState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderStateEvent.hbm.xml"/>
@@ -92,6 +98,10 @@
         <mapping resource="org/dddml/wms/domain/hbm/InventoryItemEntryMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryItemRequirementEntryMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryItemRequirementEntryMvoStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementLineMvoState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementLineMvoStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementConfirmationLineMvoState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementConfirmationLineMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryMvoState.hbm.xml"/>

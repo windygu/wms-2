@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.InOut
 
 	public abstract class InOutLineCommandBase : IInOutLineCommand
 	{
-		public virtual long LineNumber { get; set; }
+		public virtual string LineNumber { get; set; }
 
 
 		public virtual string RequesterId { get; set; }

@@ -415,7 +415,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         return (InOutLineStateEventDao)ApplicationContext.current.get("InOutLineStateEventDao");
     }
 
-    protected InOutLineStateEventId newInOutLineStateEventId(Long lineNumber)
+    protected InOutLineStateEventId newInOutLineStateEventId(String lineNumber)
     {
         InOutLineStateEventId stateEventId = new InOutLineStateEventId(this.getStateEventId().getDocumentNumber(), 
             lineNumber, 
@@ -437,15 +437,15 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         }
     }
 
-    public InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(Long lineNumber) {
+    public InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(String lineNumber) {
         return new AbstractInOutLineStateEvent.SimpleInOutLineStateCreated(newInOutLineStateEventId(lineNumber));
     }
 
-    public InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(Long lineNumber) {
+    public InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(String lineNumber) {
         return new AbstractInOutLineStateEvent.SimpleInOutLineStateMergePatched(newInOutLineStateEventId(lineNumber));
     }
 
-    public InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(Long lineNumber) {
+    public InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(String lineNumber) {
         return new AbstractInOutLineStateEvent.SimpleInOutLineStateRemoved(newInOutLineStateEventId(lineNumber));
     }
 

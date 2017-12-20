@@ -152,3 +152,23 @@
     drop table if exists ShipmentItem_RV;
 
     drop table if exists ShipmentItemMvoStateEvents;
+
+    drop table if exists Movements;
+
+    drop table if exists MovementStateEvents;
+
+    drop table if exists MovementLines;
+
+    drop table if exists MovementLineStateEvents;
+
+    drop table if exists MovementConfirmationLines;
+
+    drop table if exists MovementConfirmationLineStateEvents;
+
+    drop table if exists MovementLine_RV;
+
+    drop table if exists MovementLineMvoStateEvents;
+
+    drop table if exists MovementConfirmationLine_RV;
+
+    drop table if exists MovementConfirmationLineMvoStateEvents;

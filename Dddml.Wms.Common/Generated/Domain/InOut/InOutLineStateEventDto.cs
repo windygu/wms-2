@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-        public virtual long LineNumber
+        public virtual string LineNumber
         {
             get { return StateEventId.LineNumber; }
             set { StateEventId.LineNumber = value; }

@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.InOut
 
     public partial class InOutLineStateDto : IInOutLineStateDto
     {
-        public virtual long? LineNumber
+        public virtual string LineNumber
         {
             get;
             set;
@@ -156,7 +156,7 @@ namespace Dddml.Wms.Domain.InOut
         public virtual IInOutLineState ToInOutLineState()
         {
             var state = new InOutLineState(true);
-            if (this.LineNumber != null && this.LineNumber.HasValue) { state.LineNumber = this.LineNumber.Value; }
+            state.LineNumber = this.LineNumber;
             state.LocatorId = this.LocatorId;
             state.ProductId = this.ProductId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;

@@ -201,6 +201,45 @@
   </bean>
 
 
+  <bean id="movementLineStateDao" class="org.dddml.wms.domain.movement.hibernate.HibernateMovementLineStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="movementLineStateEventDao" class="org.dddml.wms.domain.movement.hibernate.HibernateMovementLineStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="movementConfirmationLineStateDao" class="org.dddml.wms.domain.movement.hibernate.HibernateMovementConfirmationLineStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="movementConfirmationLineStateEventDao" class="org.dddml.wms.domain.movement.hibernate.HibernateMovementConfirmationLineStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="movementStateRepository" class="org.dddml.wms.domain.movement.hibernate.HibernateMovementStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="movementStateQueryRepository" class="org.dddml.wms.domain.movement.hibernate.HibernateMovementStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="movementEventStore" class="org.dddml.wms.domain.movement.hibernate.HibernateMovementEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="movementApplicationService" class="org.dddml.wms.domain.movement.AbstractMovementApplicationService$SimpleMovementApplicationService">
+    <constructor-arg ref="movementEventStore"/>
+    <constructor-arg ref="movementStateRepository"/>
+    <constructor-arg ref="movementStateQueryRepository"/>
+  </bean>
+
+
   <bean id="movementTypeStateRepository" class="org.dddml.wms.domain.movementtype.hibernate.HibernateMovementTypeStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -694,6 +733,48 @@
     <constructor-arg ref="inventoryItemRequirementEntryMvoEventStore"/>
     <constructor-arg ref="inventoryItemRequirementEntryMvoStateRepository"/>
     <constructor-arg ref="inventoryItemRequirementEntryMvoStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="movementLineMvoStateRepository" class="org.dddml.wms.domain.movementlinemvo.hibernate.HibernateMovementLineMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="movementLineMvoStateQueryRepository" class="org.dddml.wms.domain.movementlinemvo.hibernate.HibernateMovementLineMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="movementLineMvoEventStore" class="org.dddml.wms.domain.movementlinemvo.hibernate.HibernateMovementLineMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="movementLineMvoApplicationService" class="org.dddml.wms.domain.movementlinemvo.AbstractMovementLineMvoApplicationService$SimpleMovementLineMvoApplicationService">
+    <constructor-arg ref="movementLineMvoEventStore"/>
+    <constructor-arg ref="movementLineMvoStateRepository"/>
+    <constructor-arg ref="movementLineMvoStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="movementConfirmationLineMvoStateRepository" class="org.dddml.wms.domain.movementconfirmationlinemvo.hibernate.HibernateMovementConfirmationLineMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="movementConfirmationLineMvoStateQueryRepository" class="org.dddml.wms.domain.movementconfirmationlinemvo.hibernate.HibernateMovementConfirmationLineMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="movementConfirmationLineMvoEventStore" class="org.dddml.wms.domain.movementconfirmationlinemvo.hibernate.HibernateMovementConfirmationLineMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="movementConfirmationLineMvoApplicationService" class="org.dddml.wms.domain.movementconfirmationlinemvo.AbstractMovementConfirmationLineMvoApplicationService$SimpleMovementConfirmationLineMvoApplicationService">
+    <constructor-arg ref="movementConfirmationLineMvoEventStore"/>
+    <constructor-arg ref="movementConfirmationLineMvoStateRepository"/>
+    <constructor-arg ref="movementConfirmationLineMvoStateQueryRepository"/>
   </bean>
 
 

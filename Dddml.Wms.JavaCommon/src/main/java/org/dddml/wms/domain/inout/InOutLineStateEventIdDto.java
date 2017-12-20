@@ -30,14 +30,14 @@ public class InOutLineStateEventIdDto
         this.inOutDocumentNumber = inOutDocumentNumber;
     }
 
-    private Long lineNumber;
+    private String lineNumber;
 
-    public Long getLineNumber()
+    public String getLineNumber()
     {
         return this.lineNumber;
     }
 
-    public void setLineNumber(Long lineNumber)
+    public void setLineNumber(String lineNumber)
     {
         this.lineNumber = lineNumber;
     }

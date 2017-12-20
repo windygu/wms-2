@@ -41,12 +41,12 @@ public class InOutLineMvoStateEventId implements Serializable
         getInOutLineId().setInOutDocumentNumber(inOutLineIdInOutDocumentNumber);
     }
 
-    public Long getInOutLineIdLineNumber()
+    public String getInOutLineIdLineNumber()
     {
         return getInOutLineId().getLineNumber();
     }
 
-    public void setInOutLineIdLineNumber(Long inOutLineIdLineNumber)
+    public void setInOutLineIdLineNumber(String inOutLineIdLineNumber)
     {
         getInOutLineId().setLineNumber(inOutLineIdLineNumber);
     }

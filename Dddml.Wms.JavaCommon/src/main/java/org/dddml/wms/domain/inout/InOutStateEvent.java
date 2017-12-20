@@ -144,7 +144,7 @@ public interface InOutStateEvent extends Event
         
         void addInOutLineEvent(InOutLineStateEvent.InOutLineStateCreated e);
 
-        InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(Long lineNumber);
+        InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(String lineNumber);
 
     
     }
@@ -268,11 +268,11 @@ public interface InOutStateEvent extends Event
         
         void addInOutLineEvent(InOutLineStateEvent e);
 
-        InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(Long lineNumber);
+        InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(String lineNumber);
 
-        InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(Long lineNumber);
+        InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(String lineNumber);
 
-        InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(Long lineNumber);
+        InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(String lineNumber);
 
 
     }
@@ -283,7 +283,7 @@ public interface InOutStateEvent extends Event
         
         void addInOutLineEvent(InOutLineStateEvent.InOutLineStateRemoved e);
         
-        InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(Long lineNumber);
+        InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(String lineNumber);
 
     }
 

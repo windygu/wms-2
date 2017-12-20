@@ -28,11 +28,11 @@ public abstract class AbstractInOutLineState implements InOutLineState
         this.getInOutLineId().setInOutDocumentNumber(inOutDocumentNumber);
     }
 
-    public Long getLineNumber() {
+    public String getLineNumber() {
         return this.getInOutLineId().getLineNumber();
     }
         
-    public void setLineNumber(Long lineNumber) {
+    public void setLineNumber(String lineNumber) {
         this.getInOutLineId().setLineNumber(lineNumber);
     }
 
@@ -586,8 +586,8 @@ public abstract class AbstractInOutLineState implements InOutLineState
             throw DomainError.named("mutateWrongEntity", "Entity Id InOutDocumentNumber %1$s in state but entity id InOutDocumentNumber %2$s in event", stateEntityIdInOutDocumentNumber, eventEntityIdInOutDocumentNumber);
         }
 
-        Long stateEntityIdLineNumber = this.getInOutLineId().getLineNumber();
-        Long eventEntityIdLineNumber = stateEvent.getStateEventId().getLineNumber();
+        String stateEntityIdLineNumber = this.getInOutLineId().getLineNumber();
+        String eventEntityIdLineNumber = stateEvent.getStateEventId().getLineNumber();
         if (!stateEntityIdLineNumber.equals(eventEntityIdLineNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id LineNumber %1$s in state but entity id LineNumber %2$s in event", stateEntityIdLineNumber, eventEntityIdLineNumber);

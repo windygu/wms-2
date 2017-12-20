@@ -17,14 +17,12 @@ aggregates:
         
     references:
       Shipment:
-        name: Shipment
         displayName: Shipment
         type: Shipment
         properties:
         - OrderShipmentId.ShipmentId
         foreignKeyName: ORDER_SHPMT_SHPMT
       ShipmentItem:
-        name: ShipmentItem
         displayName: ShipmentItem
         type: ShipmentItem
         properties:

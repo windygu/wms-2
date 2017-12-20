@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.InOut
 
 	public abstract class InOutLineStateProperties : IInOutLineStateProperties
 	{
-		public virtual long LineNumber { get; set; }
+		public virtual string LineNumber { get; set; }
 
 		public virtual string LocatorId { get; set; }
 

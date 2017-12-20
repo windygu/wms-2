@@ -129,7 +129,7 @@ public final class InOutLineMvoFilteringProperties
             "Boolean",
             "Boolean",
             "String",
-            "Long",
+            "String",
     };
 
     public static final Map<String, String> propertyTypeMap;

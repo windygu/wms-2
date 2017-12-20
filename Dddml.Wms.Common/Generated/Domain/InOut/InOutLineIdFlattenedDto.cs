@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.InOut
 
             if (fieldName.Equals("LineNumber", StringComparison.InvariantCultureIgnoreCase))
             {
-                return typeof(long);
+                return typeof(string);
             }
 
             throw new ArgumentException(String.Format("Unknown fileName: {0}", fieldName));
@@ -79,7 +79,7 @@ namespace Dddml.Wms.Domain.InOut
 			set { _value.InOutDocumentNumber = value; } 
 		}
 
-		public virtual long LineNumber { 
+		public virtual string LineNumber { 
 			get { return _value.LineNumber; } 
 			set { _value.LineNumber = value; } 
 		}

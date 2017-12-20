@@ -32,7 +32,7 @@ namespace Dddml.Wms.Domain.InOut
             set { this.CommandId = value; }
         }
 
-		public virtual long LineNumber { get; set; }
+		public virtual string LineNumber { get; set; }
 
 		public virtual string LocatorId { get; set; }
 

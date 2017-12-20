@@ -1163,17 +1163,17 @@ namespace Dddml.Wms.Domain.InOut
                 return _innerStates.GetEnumerator();
             }
 
-            public IInOutLineState Get(long lineNumber)
+            public IInOutLineState Get(string lineNumber)
             {
                 throw new NotSupportedException();
             }
 
-            public IInOutLineState Get(long lineNumber, bool forCreation)
+            public IInOutLineState Get(string lineNumber, bool forCreation)
             {
                 throw new NotSupportedException();
             }
 
-            public IInOutLineState Get(long lineNumber, bool forCreation, bool nullAllowed)
+            public IInOutLineState Get(string lineNumber, bool forCreation, bool nullAllowed)
             {
                 throw new NotSupportedException();
             }

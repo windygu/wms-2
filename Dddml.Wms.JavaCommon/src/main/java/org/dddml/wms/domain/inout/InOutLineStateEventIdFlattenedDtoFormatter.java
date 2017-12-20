@@ -27,7 +27,7 @@ public class InOutLineStateEventIdFlattenedDtoFormatter extends AbstractIdFlatte
             return;
         }
         if ("lineNumber".equals(fieldName)) {
-            dto.setLineNumber((Long) objVal);
+            dto.setLineNumber((String) objVal);
             return;
         }
         if ("inOutVersion".equals(fieldName)) {

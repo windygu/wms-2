@@ -18,7 +18,7 @@ public class InOutLineMvoStateEventIdFlattenedDto
 
     public static final String[] propertyTypes = new String[]{
             "String",
-            "Long",
+            "String",
             "Long",
         };
 
@@ -63,12 +63,12 @@ public class InOutLineMvoStateEventIdFlattenedDto
         this.value.getInOutLineId().setInOutDocumentNumber(inOutLineIdInOutDocumentNumber);
     }
 
-    public Long getInOutLineIdLineNumber()
+    public String getInOutLineIdLineNumber()
     {
         return this.value.getInOutLineId().getLineNumber();
     }
 
-    public void setInOutLineIdLineNumber(Long inOutLineIdLineNumber)
+    public void setInOutLineIdLineNumber(String inOutLineIdLineNumber)
     {
         this.value.getInOutLineId().setLineNumber(inOutLineIdLineNumber);
     }

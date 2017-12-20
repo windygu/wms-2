@@ -40,7 +40,7 @@ public final class InOutLineFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
-            "Long",
+            "String",
             "String",
             "String",
             "String",
@@ -65,7 +65,7 @@ public final class InOutLineFilteringProperties
             "Boolean",
             "String",
             "String",
-            "Long",
+            "String",
     };
 
     public static final Map<String, String> propertyTypeMap;

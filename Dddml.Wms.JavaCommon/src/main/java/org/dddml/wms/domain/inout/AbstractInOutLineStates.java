@@ -57,15 +57,15 @@ public abstract class AbstractInOutLineStates implements InOutLineStates
         return getInnerIterable().iterator();
     }
 
-    public InOutLineState get(Long lineNumber) {
+    public InOutLineState get(String lineNumber) {
         return get(lineNumber, false, false);
     }
 
-    public InOutLineState get(Long lineNumber, boolean forCreation) {
+    public InOutLineState get(String lineNumber, boolean forCreation) {
         return get(lineNumber, forCreation, false);
     }
 
-    public InOutLineState get(Long lineNumber, boolean forCreation, boolean nullAllowed) {
+    public InOutLineState get(String lineNumber, boolean forCreation, boolean nullAllowed) {
         InOutLineId globalId = new InOutLineId(inOutState.getDocumentNumber(), lineNumber);
         if (loadedInOutLineStates.containsKey(globalId)) {
             return loadedInOutLineStates.get(globalId);

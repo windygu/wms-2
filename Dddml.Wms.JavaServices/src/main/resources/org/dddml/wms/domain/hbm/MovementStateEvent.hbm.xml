@@ -1,0 +1,57 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.movement">
+  
+  <class name="AbstractMovementStateEvent" table="MovementStateEvents" mutable="false" abstract="true">
+
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.movement.MovementStateEventId">
+		<key-property name="documentNumber" ><column name="DocumentNumber" length="50" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="StateEventType" type="string" />
+
+	<property name="documentTypeId" ></property>
+	<property name="documentStatusId" ></property>
+	<property name="movementTypeId" ></property>
+	<property name="description" ></property>
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractMovementStateEvent$SimpleMovementStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractMovementStateEvent$SimpleMovementStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyDocumentTypeIdRemoved" column="IsPropertyDocumentTypeIdRemoved"/>
+
+        <property name="isPropertyDocumentStatusIdRemoved" column="IsPropertyDocumentStatusIdRemoved"/>
+
+        <property name="isPropertyMovementTypeIdRemoved" column="IsPropertyMovementTypeIdRemoved"/>
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractMovementStateEvent$SimpleMovementStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

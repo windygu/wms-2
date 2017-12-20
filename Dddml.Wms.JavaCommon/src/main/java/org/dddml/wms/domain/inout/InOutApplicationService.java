@@ -35,7 +35,7 @@ public interface InOutApplicationService
 
     InOutState getHistoryState(String documentNumber, long version);
 
-    InOutLineState getInOutLine(String inOutDocumentNumber, Long lineNumber);
+    InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber);
 
 }
 

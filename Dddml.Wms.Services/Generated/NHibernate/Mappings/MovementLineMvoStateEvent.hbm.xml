@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.MovementLineMvo">
+  
+  <class name="MovementLineMvoStateEventBase" table="MovementLineMvoStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.MovementLineMvo.MovementLineMvoStateEventId">
+        <key-property name="MovementLineIdMovementDocumentNumber" ><column name="MovementLineIdMovementDocumentNumber" length="50" /></key-property>
+        <key-property name="MovementLineIdLineNumber" ><column name="MovementLineIdLineNumber" length="50" /></key-property>
+        <key-property name="MovementVersion" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="MovementQuantity" ></property>
+    <property name="Version" ></property>
+    <property name="Active" ></property>
+    <property name="MovementDocumentTypeId" ></property>
+    <property name="MovementDocumentStatusId" ></property>
+    <property name="MovementMovementTypeId" ></property>
+    <property name="MovementDescription" ></property>
+    <property name="MovementCreatedBy" ></property>
+    <property name="MovementCreatedAt" ></property>
+    <property name="MovementUpdatedBy" ></property>
+    <property name="MovementUpdatedAt" ></property>
+    <property name="MovementActive" ></property>
+    <property name="MovementDeleted" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="MovementLineMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="MovementLineMvoStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyMovementQuantityRemoved" column="IsPropertyMovementQuantityRemoved"/>
+
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+        <property name="IsPropertyMovementDocumentTypeIdRemoved" column="IsPropertyMovementDocumentTypeIdRemoved"/>
+
+        <property name="IsPropertyMovementDocumentStatusIdRemoved" column="IsPropertyMovementDocumentStatusIdRemoved"/>
+
+        <property name="IsPropertyMovementMovementTypeIdRemoved" column="IsPropertyMovementMovementTypeIdRemoved"/>
+
+        <property name="IsPropertyMovementDescriptionRemoved" column="IsPropertyMovementDescriptionRemoved"/>
+
+        <property name="IsPropertyMovementCreatedByRemoved" column="IsPropertyMovementCreatedByRemoved"/>
+
+        <property name="IsPropertyMovementCreatedAtRemoved" column="IsPropertyMovementCreatedAtRemoved"/>
+
+        <property name="IsPropertyMovementUpdatedByRemoved" column="IsPropertyMovementUpdatedByRemoved"/>
+
+        <property name="IsPropertyMovementUpdatedAtRemoved" column="IsPropertyMovementUpdatedAtRemoved"/>
+
+        <property name="IsPropertyMovementActiveRemoved" column="IsPropertyMovementActiveRemoved"/>
+
+        <property name="IsPropertyMovementDeletedRemoved" column="IsPropertyMovementDeletedRemoved"/>
+    </subclass>
+
+    <subclass name="MovementLineMvoStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

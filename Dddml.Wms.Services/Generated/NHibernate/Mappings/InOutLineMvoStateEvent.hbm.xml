@@ -7,7 +7,7 @@
 
     <composite-id name="StateEventId" class="Dddml.Wms.Domain.InOutLineMvo.InOutLineMvoStateEventId">
         <key-property name="InOutLineIdInOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
-        <key-property name="InOutLineIdLineNumber" ></key-property>
+        <key-property name="InOutLineIdLineNumber" ><column name="InOutLineIdLineNumber" length="50" /></key-property>
         <key-property name="InOutVersion" ></key-property>
     </composite-id>
     <discriminator column="StateEventType" type="String" />

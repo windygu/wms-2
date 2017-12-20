@@ -14,6 +14,8 @@
                 dict.Add("InventoryItemRequirementEntryId", "_INVENTORYITEMREQUIREMENTENTRYID_");
                 dict.Add("InventoryItemSourceInfo", "_INVENTORYITEMSOURCEINFO_");
                 dict.Add("InventoryPRTriggeredId", "_INVENTORYPRTRIGGEREDID_");
+                dict.Add("MovementConfirmationLineId", "_MOVEMENTCONFIRMATIONLINEID_");
+                dict.Add("MovementLineId", "_MOVEMENTLINEID_");
                 dict.Add("OrderItemId", "_ORDERITEMID_");
                 dict.Add("OrderShipmentId", "_ORDERSHIPMENTID_");
                 dict.Add("OrganizationStructureId", "_ORGANIZATIONSTRUCTUREID_");
@@ -50,6 +52,8 @@
                 dict.Add("long", "_LONG_");
                 dict.Add("long?", "_LONG__");
                 dict.Add("long-varchar", "_LONG-VARCHAR_");
+                dict.Add("MovementConfirmationLine", "_MOVEMENTCONFIRMATIONLINE_");
+                dict.Add("MovementLine", "_MOVEMENTLINE_");
                 dict.Add("name", "_NAME_");
                 dict.Add("numeric", "_NUMERIC_");
                 dict.Add("OrderItem", "_ORDERITEM_");

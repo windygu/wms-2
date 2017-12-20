@@ -141,7 +141,7 @@ namespace Dddml.Wms.Domain.InOut
 			get { return ApplicationContext.Current["InOutLineStateEventDao"] as IInOutLineStateEventDao; }
 		}
 
-        protected InOutLineStateEventId NewInOutLineStateEventId(long lineNumber)
+        protected InOutLineStateEventId NewInOutLineStateEventId(string lineNumber)
         {
             var stateEventId = new InOutLineStateEventId(this.StateEventId.DocumentNumber, lineNumber, this.StateEventId.Version);
             return stateEventId;
@@ -227,7 +227,7 @@ namespace Dddml.Wms.Domain.InOut
 			this._inOutLineEvents[e.StateEventId] = e;
 		}
 
-        public virtual IInOutLineStateCreated NewInOutLineStateCreated(long lineNumber)
+        public virtual IInOutLineStateCreated NewInOutLineStateCreated(string lineNumber)
         {
             var stateEvent = new InOutLineStateCreated(NewInOutLineStateEventId(lineNumber));
             return stateEvent;
@@ -359,19 +359,19 @@ namespace Dddml.Wms.Domain.InOut
 			this._inOutLineEvents[e.StateEventId] = e;
 		}
 
-        public virtual IInOutLineStateCreated NewInOutLineStateCreated(long lineNumber)
+        public virtual IInOutLineStateCreated NewInOutLineStateCreated(string lineNumber)
         {
             var stateEvent = new InOutLineStateCreated(NewInOutLineStateEventId(lineNumber));
             return stateEvent;
         }
 
-        public virtual IInOutLineStateMergePatched NewInOutLineStateMergePatched(long lineNumber)
+        public virtual IInOutLineStateMergePatched NewInOutLineStateMergePatched(string lineNumber)
         {
             var stateEvent = new InOutLineStateMergePatched(NewInOutLineStateEventId(lineNumber));
             return stateEvent;
         }
 
-        public virtual IInOutLineStateRemoved NewInOutLineStateRemoved(long lineNumber)
+        public virtual IInOutLineStateRemoved NewInOutLineStateRemoved(string lineNumber)
         {
             var stateEvent = new InOutLineStateRemoved(NewInOutLineStateEventId(lineNumber));
             return stateEvent;
@@ -451,7 +451,7 @@ namespace Dddml.Wms.Domain.InOut
 			this._inOutLineEvents[e.StateEventId] = e;
 		}
 
-        public virtual IInOutLineStateRemoved NewInOutLineStateRemoved(long lineNumber)
+        public virtual IInOutLineStateRemoved NewInOutLineStateRemoved(string lineNumber)
         {
             var stateEvent = new InOutLineStateRemoved(NewInOutLineStateEventId(lineNumber));
             return stateEvent;

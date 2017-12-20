@@ -695,7 +695,7 @@ namespace Dddml.Wms.Domain.InOut
 
 
 
-        private InOutLineStateEventIdDto NewInOutLineStateEventId(long lineNumber)
+        private InOutLineStateEventIdDto NewInOutLineStateEventId(string lineNumber)
         {
             var eId = new InOutLineStateEventIdDto();
             eId.InOutDocumentNumber = this.StateEventId.DocumentNumber;
@@ -704,7 +704,7 @@ namespace Dddml.Wms.Domain.InOut
             return eId;
         }
 
-        public virtual InOutLineStateCreatedDto NewInOutLineStateCreated(long lineNumber)
+        public virtual InOutLineStateCreatedDto NewInOutLineStateCreated(string lineNumber)
         {
             var e = new InOutLineStateCreatedDto();
             var eId = NewInOutLineStateEventId(lineNumber);
@@ -712,7 +712,7 @@ namespace Dddml.Wms.Domain.InOut
             return e;
         }
 
-        public virtual InOutLineStateMergePatchedDto NewInOutLineStateMergePatched(long lineNumber)
+        public virtual InOutLineStateMergePatchedDto NewInOutLineStateMergePatched(string lineNumber)
         {
             var e = new InOutLineStateMergePatchedDto();
             var eId = NewInOutLineStateEventId(lineNumber);
@@ -720,7 +720,7 @@ namespace Dddml.Wms.Domain.InOut
             return e;
         }
 
-        public virtual InOutLineStateRemovedDto NewInOutLineStateRemoved(long lineNumber)
+        public virtual InOutLineStateRemovedDto NewInOutLineStateRemoved(string lineNumber)
         {
             var e = new InOutLineStateRemovedDto();
             var eId = NewInOutLineStateEventId(lineNumber);
@@ -738,7 +738,7 @@ namespace Dddml.Wms.Domain.InOut
             this._inOutLineEvents.AddInOutLineEvent(e);
         }
 
-        IInOutLineStateCreated IInOutStateCreated.NewInOutLineStateCreated(long lineNumber)
+        IInOutLineStateCreated IInOutStateCreated.NewInOutLineStateCreated(string lineNumber)
         {
             return NewInOutLineStateCreated(lineNumber);
         }
@@ -753,17 +753,17 @@ namespace Dddml.Wms.Domain.InOut
             this._inOutLineEvents.AddInOutLineEvent(e);
         }
 
-        IInOutLineStateCreated IInOutStateMergePatched.NewInOutLineStateCreated(long lineNumber)
+        IInOutLineStateCreated IInOutStateMergePatched.NewInOutLineStateCreated(string lineNumber)
         {
             return NewInOutLineStateCreated(lineNumber);
         }
 
-        IInOutLineStateMergePatched IInOutStateMergePatched.NewInOutLineStateMergePatched(long lineNumber)
+        IInOutLineStateMergePatched IInOutStateMergePatched.NewInOutLineStateMergePatched(string lineNumber)
         {
             return NewInOutLineStateMergePatched(lineNumber);
         }
 
-        IInOutLineStateRemoved IInOutStateMergePatched.NewInOutLineStateRemoved(long lineNumber)
+        IInOutLineStateRemoved IInOutStateMergePatched.NewInOutLineStateRemoved(string lineNumber)
         {
             return NewInOutLineStateRemoved(lineNumber);
         }
@@ -779,7 +779,7 @@ namespace Dddml.Wms.Domain.InOut
             this._inOutLineEvents.AddInOutLineEvent(e);
         }
 
-        IInOutLineStateRemoved IInOutStateDeleted.NewInOutLineStateRemoved(long lineNumber)
+        IInOutLineStateRemoved IInOutStateDeleted.NewInOutLineStateRemoved(string lineNumber)
         {
             return NewInOutLineStateRemoved(lineNumber);
         }

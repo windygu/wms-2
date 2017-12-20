@@ -337,6 +337,34 @@
     <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorTreeLocatorStateQueryRepository.java">
       <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\GenerateMovementConfirmationLineMvoDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\HibernateMovementConfirmationLineMvoEventStore.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\HibernateMovementConfirmationLineMvoStateQueryRepository.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\HibernateMovementConfirmationLineMvoStateRepository.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\hibernate\GenerateMovementLineMvoDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateMovementLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\hibernate\HibernateMovementLineMvoEventStore.java">
+      <DependentUpon>GenerateMovementLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\hibernate\HibernateMovementLineMvoStateQueryRepository.java">
+      <DependentUpon>GenerateMovementLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\hibernate\HibernateMovementLineMvoStateRepository.java">
+      <DependentUpon>GenerateMovementLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementtype\hibernate\GenerateMovementTypeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -347,6 +375,32 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementtype\hibernate\HibernateMovementTypeStateRepository.java">
       <DependentUpon>GenerateMovementTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\GenerateMovementDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementConfirmationLineStateDao.java">
+      <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementConfirmationLineStateEventDao.java">
+      <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementEventStore.java">
+      <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementLineStateDao.java">
+      <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementLineStateEventDao.java">
+      <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementStateQueryRepository.java">
+      <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementStateRepository.java">
+      <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\orderitemmvo\hibernate\GenerateOrderItemMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -605,6 +659,36 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementLineMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementLineMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementLineStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementLineState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -919,6 +1003,16 @@
 .\InventoryPRTriggeredState.hbm.xml
 .\LocatorState.hbm.xml
 .\LocatorStateEvent.hbm.xml
+.\MovementConfirmationLineMvoState.hbm.xml
+.\MovementConfirmationLineMvoStateEvent.hbm.xml
+.\MovementConfirmationLineState.hbm.xml
+.\MovementConfirmationLineStateEvent.hbm.xml
+.\MovementLineMvoState.hbm.xml
+.\MovementLineMvoStateEvent.hbm.xml
+.\MovementLineState.hbm.xml
+.\MovementLineStateEvent.hbm.xml
+.\MovementState.hbm.xml
+.\MovementStateEvent.hbm.xml
 .\MovementTypeState.hbm.xml
 .\OrderItemMvoState.hbm.xml
 .\OrderItemMvoStateEvent.hbm.xml
@@ -1322,6 +1416,40 @@
 .\HibernateInventoryItemRequirementEntryMvoEventStore.java
 .\HibernateInventoryItemRequirementEntryMvoStateQueryRepository.java
 .\HibernateInventoryItemRequirementEntryMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\GenerateMovementDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateMovementDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateMovementDomainHibernate.txt
+.\HibernateMovementConfirmationLineStateDao.java
+.\HibernateMovementConfirmationLineStateEventDao.java
+.\HibernateMovementEventStore.java
+.\HibernateMovementLineStateDao.java
+.\HibernateMovementLineStateEventDao.java
+.\HibernateMovementStateQueryRepository.java
+.\HibernateMovementStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\hibernate\GenerateMovementLineMvoDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateMovementLineMvoDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateMovementLineMvoDomainHibernate.txt
+.\HibernateMovementLineMvoEventStore.java
+.\HibernateMovementLineMvoStateQueryRepository.java
+.\HibernateMovementLineMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\GenerateMovementConfirmationLineMvoDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateMovementConfirmationLineMvoDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateMovementConfirmationLineMvoDomainHibernate.txt
+.\HibernateMovementConfirmationLineMvoEventStore.java
+.\HibernateMovementConfirmationLineMvoStateQueryRepository.java
+.\HibernateMovementConfirmationLineMvoStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

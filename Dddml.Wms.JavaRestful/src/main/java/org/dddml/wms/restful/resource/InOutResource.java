@@ -181,7 +181,7 @@ public class InOutResource {
     }
 
     @Path("{inOutDocumentNumber}/InOutLines/{lineNumber}") @GET
-    public InOutLineStateDto getInOutLine(@PathParam("inOutDocumentNumber") String inOutDocumentNumber, @PathParam("lineNumber") Long lineNumber) {
+    public InOutLineStateDto getInOutLine(@PathParam("inOutDocumentNumber") String inOutDocumentNumber, @PathParam("lineNumber") String lineNumber) {
         try {
 
             InOutLineState state = inOutApplicationService.getInOutLine(inOutDocumentNumber, lineNumber);

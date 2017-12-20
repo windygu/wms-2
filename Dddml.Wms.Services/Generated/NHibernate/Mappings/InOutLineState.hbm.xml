@@ -7,7 +7,7 @@
 
     <composite-id name="InOutLineId" class="Dddml.Wms.Domain.InOut.InOutLineId">
         <key-property name="InOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
-        <key-property name="LineNumber" ><column name="InOutLineIdLineNumber" /></key-property>
+        <key-property name="LineNumber" ><column name="InOutLineIdLineNumber" length="50" /></key-property>
     </composite-id>
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>

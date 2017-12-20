@@ -2070,6 +2070,16 @@
 .\InventoryPRTriggeredMetadata.java
 .\LocatorFilteringProperties.java
 .\LocatorMetadata.java
+.\MovementConfirmationLineFilteringProperties.java
+.\MovementConfirmationLineMetadata.java
+.\MovementConfirmationLineMvoFilteringProperties.java
+.\MovementConfirmationLineMvoMetadata.java
+.\MovementFilteringProperties.java
+.\MovementLineFilteringProperties.java
+.\MovementLineMetadata.java
+.\MovementLineMvoFilteringProperties.java
+.\MovementLineMvoMetadata.java
+.\MovementMetadata.java
 .\MovementTypeFilteringProperties.java
 .\MovementTypeMetadata.java
 .\OrderFilteringProperties.java
@@ -2204,6 +2214,36 @@
     <Content Include="src\main\java\org\dddml\wms\domain\meta\LocatorMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementConfirmationLineFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementConfirmationLineMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementConfirmationLineMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementConfirmationLineMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementLineFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementLineMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementLineMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementLineMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementTypeFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
@@ -2330,6 +2370,160 @@
     <Content Include="src\main\java\org\dddml\wms\domain\meta\WarehouseMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\AbstractMovementConfirmationLineMvoAggregate.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\AbstractMovementConfirmationLineMvoApplicationService.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\AbstractMovementConfirmationLineMvoCommand.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\AbstractMovementConfirmationLineMvoCommandDto.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\AbstractMovementConfirmationLineMvoState.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\AbstractMovementConfirmationLineMvoStateCommandConverter.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\AbstractMovementConfirmationLineMvoStateEvent.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\CreateOrMergePatchMovementConfirmationLineMvoDto.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\DeleteMovementConfirmationLineMvoDto.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\GenerateMovementConfirmationLineMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoAggregate.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoApplicationService.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoCommand.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoState.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoStateDto.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoStateEvent.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoStateEventDto.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoStateEventDtoConverter.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoStateEventId.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoStateEventIdDto.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoStateQueryRepository.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoStateRepository.java">
+      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\AbstractMovementLineMvoAggregate.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\AbstractMovementLineMvoApplicationService.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\AbstractMovementLineMvoCommand.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\AbstractMovementLineMvoCommandDto.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\AbstractMovementLineMvoState.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\AbstractMovementLineMvoStateCommandConverter.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\AbstractMovementLineMvoStateEvent.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\CreateOrMergePatchMovementLineMvoDto.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\DeleteMovementLineMvoDto.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\GenerateMovementLineMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoAggregate.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoApplicationService.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoCommand.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoState.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateDto.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateEvent.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateEventDto.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateEventDtoConverter.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateEventId.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateEventIdDto.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateQueryRepository.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateRepository.java">
+      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementtype\AbstractMovementTypeAggregate.java">
       <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
     </Content>
@@ -2406,6 +2600,245 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeStateRepository.java">
       <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementAggregate.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementApplicationService.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementCommand.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementCommandDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementConfirmationLineCommand.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementConfirmationLineCommandDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementConfirmationLineState.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementConfirmationLineStateCommandConverter.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementConfirmationLineStateEvent.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementConfirmationLineStates.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementLineCommand.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementLineCommandDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementLineState.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementLineStateCommandConverter.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementLineStateEvent.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementLineStates.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementState.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementStateCommandConverter.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\AbstractMovementStateEvent.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\CreateOrMergePatchMovementConfirmationLineDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\CreateOrMergePatchMovementDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\CreateOrMergePatchMovementLineDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\DeleteMovementDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\GenerateMovementDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementAggregate.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementApplicationService.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementCommand.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineCommand.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineId.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineIdDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineIdDtoWrapper.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineIdFlattenedDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineState.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStateDao.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStateDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStateEvent.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStateEventDao.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStateEventDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStateEventDtoConverter.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStateEventId.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStateEventIdDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementConfirmationLineStates.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineCommand.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineId.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineIdDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineIdDtoWrapper.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineIdFlattenedDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineState.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStateDao.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStateDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStateEvent.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStateEventDao.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStateEventDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStateEventDtoConverter.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStateEventId.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStateEventIdDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineStates.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementState.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementStateDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementStateEvent.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementStateEventDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementStateEventDtoConverter.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementStateEventId.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementStateEventIdDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementStateQueryRepository.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementStateRepository.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\RemoveMovementConfirmationLineDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\RemoveMovementLineDto.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\orderitemmvo\AbstractOrderItemMvoAggregate.java">
       <DependentUpon>GenerateOrderItemMvoDomain.tt</DependentUpon>
@@ -5413,6 +5846,153 @@
 .\InventoryItemRequirementEntryMvoStateEventIdFlattenedDtoFormatter.java
 .\InventoryItemRequirementEntryMvoStateQueryRepository.java
 .\InventoryItemRequirementEntryMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\GenerateMovementDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateMovementDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractMovementAggregate.java
+.\AbstractMovementApplicationService.java
+.\AbstractMovementCommand.java
+.\AbstractMovementCommandDto.java
+.\AbstractMovementConfirmationLineCommand.java
+.\AbstractMovementConfirmationLineCommandDto.java
+.\AbstractMovementConfirmationLineState.java
+.\AbstractMovementConfirmationLineStateCommandConverter.java
+.\AbstractMovementConfirmationLineStateEvent.java
+.\AbstractMovementConfirmationLineStates.java
+.\AbstractMovementLineCommand.java
+.\AbstractMovementLineCommandDto.java
+.\AbstractMovementLineState.java
+.\AbstractMovementLineStateCommandConverter.java
+.\AbstractMovementLineStateEvent.java
+.\AbstractMovementLineStates.java
+.\AbstractMovementState.java
+.\AbstractMovementStateCommandConverter.java
+.\AbstractMovementStateEvent.java
+.\CreateOrMergePatchMovementConfirmationLineDto.java
+.\CreateOrMergePatchMovementDto.java
+.\CreateOrMergePatchMovementLineDto.java
+.\DeleteMovementDto.java
+.\GenerateMovementDomain.txt
+.\MovementAggregate.java
+.\MovementApplicationService.java
+.\MovementCommand.java
+.\MovementConfirmationLineCommand.java
+.\MovementConfirmationLineId.java
+.\MovementConfirmationLineIdDto.java
+.\MovementConfirmationLineIdDtoWrapper.java
+.\MovementConfirmationLineIdFlattenedDto.java
+.\MovementConfirmationLineIdFlattenedDtoFormatter.java
+.\MovementConfirmationLineState.java
+.\MovementConfirmationLineStateDao.java
+.\MovementConfirmationLineStateDto.java
+.\MovementConfirmationLineStateEvent.java
+.\MovementConfirmationLineStateEventDao.java
+.\MovementConfirmationLineStateEventDto.java
+.\MovementConfirmationLineStateEventDtoConverter.java
+.\MovementConfirmationLineStateEventId.java
+.\MovementConfirmationLineStateEventIdDto.java
+.\MovementConfirmationLineStateEventIdDtoWrapper.java
+.\MovementConfirmationLineStateEventIdFlattenedDto.java
+.\MovementConfirmationLineStateEventIdFlattenedDtoFormatter.java
+.\MovementConfirmationLineStates.java
+.\MovementLineCommand.java
+.\MovementLineId.java
+.\MovementLineIdDto.java
+.\MovementLineIdDtoWrapper.java
+.\MovementLineIdFlattenedDto.java
+.\MovementLineIdFlattenedDtoFormatter.java
+.\MovementLineState.java
+.\MovementLineStateDao.java
+.\MovementLineStateDto.java
+.\MovementLineStateEvent.java
+.\MovementLineStateEventDao.java
+.\MovementLineStateEventDto.java
+.\MovementLineStateEventDtoConverter.java
+.\MovementLineStateEventId.java
+.\MovementLineStateEventIdDto.java
+.\MovementLineStateEventIdDtoWrapper.java
+.\MovementLineStateEventIdFlattenedDto.java
+.\MovementLineStateEventIdFlattenedDtoFormatter.java
+.\MovementLineStates.java
+.\MovementState.java
+.\MovementStateDto.java
+.\MovementStateEvent.java
+.\MovementStateEventDto.java
+.\MovementStateEventDtoConverter.java
+.\MovementStateEventId.java
+.\MovementStateEventIdDto.java
+.\MovementStateEventIdDtoWrapper.java
+.\MovementStateEventIdFlattenedDto.java
+.\MovementStateEventIdFlattenedDtoFormatter.java
+.\MovementStateQueryRepository.java
+.\MovementStateRepository.java
+.\RemoveMovementConfirmationLineDto.java
+.\RemoveMovementLineDto.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\GenerateMovementLineMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateMovementLineMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractMovementLineMvoAggregate.java
+.\AbstractMovementLineMvoApplicationService.java
+.\AbstractMovementLineMvoCommand.java
+.\AbstractMovementLineMvoCommandDto.java
+.\AbstractMovementLineMvoState.java
+.\AbstractMovementLineMvoStateCommandConverter.java
+.\AbstractMovementLineMvoStateEvent.java
+.\CreateOrMergePatchMovementLineMvoDto.java
+.\DeleteMovementLineMvoDto.java
+.\GenerateMovementLineMvoDomain.txt
+.\MovementLineMvoAggregate.java
+.\MovementLineMvoApplicationService.java
+.\MovementLineMvoCommand.java
+.\MovementLineMvoState.java
+.\MovementLineMvoStateDto.java
+.\MovementLineMvoStateEvent.java
+.\MovementLineMvoStateEventDto.java
+.\MovementLineMvoStateEventDtoConverter.java
+.\MovementLineMvoStateEventId.java
+.\MovementLineMvoStateEventIdDto.java
+.\MovementLineMvoStateEventIdDtoWrapper.java
+.\MovementLineMvoStateEventIdFlattenedDto.java
+.\MovementLineMvoStateEventIdFlattenedDtoFormatter.java
+.\MovementLineMvoStateQueryRepository.java
+.\MovementLineMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\GenerateMovementConfirmationLineMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateMovementConfirmationLineMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractMovementConfirmationLineMvoAggregate.java
+.\AbstractMovementConfirmationLineMvoApplicationService.java
+.\AbstractMovementConfirmationLineMvoCommand.java
+.\AbstractMovementConfirmationLineMvoCommandDto.java
+.\AbstractMovementConfirmationLineMvoState.java
+.\AbstractMovementConfirmationLineMvoStateCommandConverter.java
+.\AbstractMovementConfirmationLineMvoStateEvent.java
+.\CreateOrMergePatchMovementConfirmationLineMvoDto.java
+.\DeleteMovementConfirmationLineMvoDto.java
+.\GenerateMovementConfirmationLineMvoDomain.txt
+.\MovementConfirmationLineMvoAggregate.java
+.\MovementConfirmationLineMvoApplicationService.java
+.\MovementConfirmationLineMvoCommand.java
+.\MovementConfirmationLineMvoState.java
+.\MovementConfirmationLineMvoStateDto.java
+.\MovementConfirmationLineMvoStateEvent.java
+.\MovementConfirmationLineMvoStateEventDto.java
+.\MovementConfirmationLineMvoStateEventDtoConverter.java
+.\MovementConfirmationLineMvoStateEventId.java
+.\MovementConfirmationLineMvoStateEventIdDto.java
+.\MovementConfirmationLineMvoStateEventIdDtoWrapper.java
+.\MovementConfirmationLineMvoStateEventIdFlattenedDto.java
+.\MovementConfirmationLineMvoStateEventIdFlattenedDtoFormatter.java
+.\MovementConfirmationLineMvoStateQueryRepository.java
+.\MovementConfirmationLineMvoStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

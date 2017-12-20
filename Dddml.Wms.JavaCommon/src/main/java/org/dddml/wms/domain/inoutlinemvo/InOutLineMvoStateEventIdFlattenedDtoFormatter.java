@@ -29,7 +29,7 @@ public class InOutLineMvoStateEventIdFlattenedDtoFormatter extends AbstractIdFla
             return;
         }
         if ("inOutLineIdLineNumber".equals(fieldName)) {
-            dto.setInOutLineIdLineNumber((Long) objVal);
+            dto.setInOutLineIdLineNumber((String) objVal);
             return;
         }
         if ("inOutVersion".equals(fieldName)) {

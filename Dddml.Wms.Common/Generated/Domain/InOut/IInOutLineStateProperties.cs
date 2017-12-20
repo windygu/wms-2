@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.InOut
 
 	public interface IInOutLineStateProperties
 	{
-		long LineNumber { get; set; }
+		string LineNumber { get; set; }
 
 		string LocatorId { get; set; }
 

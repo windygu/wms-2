@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			internal set { InOutLineId.InOutDocumentNumber = value; }
 		}
 
-		public virtual long InOutLineIdLineNumber {
+		public virtual string InOutLineIdLineNumber {
 			get { return InOutLineId.LineNumber; }
 			internal set { InOutLineId.LineNumber = value; }
 		}

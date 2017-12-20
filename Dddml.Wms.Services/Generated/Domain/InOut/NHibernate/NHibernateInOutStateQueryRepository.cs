@@ -127,7 +127,7 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, long lineNumber)
+        public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, string lineNumber)
         {
             var entityId = new InOutLineId(inOutDocumentNumber, lineNumber);
             return CurrentSession.Get<InOutLineState>(entityId);

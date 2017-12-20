@@ -39,8 +39,8 @@ namespace Dddml.Wms.Domain.InOut
 			return this._state;
 		}
 
-		public virtual long? LineNumber
-        {
+		public virtual string LineNumber
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("LineNumber"))
@@ -51,14 +51,11 @@ namespace Dddml.Wms.Domain.InOut
             }
             set
             {
-                if (value != null && value.HasValue)
-                {
-                    _state.LineNumber = value.Value;
-                }
+                _state.LineNumber = value;
             }
         }
 
-        long IInOutLineStateProperties.LineNumber
+        string IInOutLineStateProperties.LineNumber
         {
             get 
             {
@@ -687,7 +684,7 @@ namespace Dddml.Wms.Domain.InOut
 			get { return (_state as IInOutLineState).GlobalId; }
 		}
 
-        long ILocalIdentity<long>.LocalId
+        string ILocalIdentity<string>.LocalId
         {
 			get { return (_state as IInOutLineState).LocalId; }
         }

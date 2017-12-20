@@ -38,6 +38,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("InventoryItemRequirement");
             _aggregateNames.Add("InventoryPostingRule");
             _aggregateNames.Add("InventoryPRTriggered");
+            _aggregateNames.Add("Movement");
             _aggregateNames.Add("MovementType");
             _aggregateNames.Add("Order");
             _aggregateNames.Add("OrderShipment");
@@ -61,6 +62,8 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("InOutLineMvo");
             _aggregateNames.Add("InventoryItemEntryMvo");
             _aggregateNames.Add("InventoryItemRequirementEntryMvo");
+            _aggregateNames.Add("MovementLineMvo");
+            _aggregateNames.Add("MovementConfirmationLineMvo");
             _aggregateNames.Add("OrderItemMvo");
             _aggregateNames.Add("SellableInventoryItemEntryMvo");
             _aggregateNames.Add("ShipmentItemMvo");
@@ -75,6 +78,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("InventoryItemRequirement", "Dddml.Wms.Domain.InventoryItemRequirement");
             _aggregateNamespaces.Add("InventoryPostingRule", "Dddml.Wms.Domain.InventoryPostingRule");
             _aggregateNamespaces.Add("InventoryPRTriggered", "Dddml.Wms.Domain.InventoryPRTriggered");
+            _aggregateNamespaces.Add("Movement", "Dddml.Wms.Domain.Movement");
             _aggregateNamespaces.Add("MovementType", "Dddml.Wms.Domain.MovementType");
             _aggregateNamespaces.Add("Order", "Dddml.Wms.Domain.Order");
             _aggregateNamespaces.Add("OrderShipment", "Dddml.Wms.Domain.OrderShipment");
@@ -98,6 +102,8 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("InOutLineMvo", "Dddml.Wms.Domain.InOutLineMvo");
             _aggregateNamespaces.Add("InventoryItemEntryMvo", "Dddml.Wms.Domain.InventoryItemEntryMvo");
             _aggregateNamespaces.Add("InventoryItemRequirementEntryMvo", "Dddml.Wms.Domain.InventoryItemRequirementEntryMvo");
+            _aggregateNamespaces.Add("MovementLineMvo", "Dddml.Wms.Domain.MovementLineMvo");
+            _aggregateNamespaces.Add("MovementConfirmationLineMvo", "Dddml.Wms.Domain.MovementConfirmationLineMvo");
             _aggregateNamespaces.Add("OrderItemMvo", "Dddml.Wms.Domain.OrderItemMvo");
             _aggregateNamespaces.Add("SellableInventoryItemEntryMvo", "Dddml.Wms.Domain.SellableInventoryItemEntryMvo");
             _aggregateNamespaces.Add("ShipmentItemMvo", "Dddml.Wms.Domain.ShipmentItemMvo");

@@ -27,7 +27,7 @@ public interface InOutStateQueryRepository
 
     long getCount(Criterion filter);
 
-    InOutLineState getInOutLine(String inOutDocumentNumber, Long lineNumber);
+    InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber);
 
 }
 

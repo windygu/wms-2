@@ -16,7 +16,7 @@ public class InOutLineStateEventIdFlattenedDto
 
     public static final String[] propertyTypes = new String[]{
             "String",
-            "Long",
+            "String",
             "Long",
         };
 
@@ -61,12 +61,12 @@ public class InOutLineStateEventIdFlattenedDto
         this.value.setInOutDocumentNumber(inOutDocumentNumber);
     }
 
-    public Long getLineNumber()
+    public String getLineNumber()
     {
         return this.value.getLineNumber();
     }
 
-    public void setLineNumber(Long lineNumber)
+    public void setLineNumber(String lineNumber)
     {
         this.value.setLineNumber(lineNumber);
     }

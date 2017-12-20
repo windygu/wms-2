@@ -17,9 +17,9 @@ public interface InOutLineState
 
     void setInOutLineId(InOutLineId inOutLineId);
 
-    Long getLineNumber();
+    String getLineNumber();
 
-    void setLineNumber(Long lineNumber);
+    void setLineNumber(String lineNumber);
 
     String getLocatorId();
 

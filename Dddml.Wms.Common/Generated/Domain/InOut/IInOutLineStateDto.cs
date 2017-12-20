@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.InOut
 
     public interface IInOutLineStateDto
     {
-        long? LineNumber
+        string LineNumber
         {
             get;
             set;

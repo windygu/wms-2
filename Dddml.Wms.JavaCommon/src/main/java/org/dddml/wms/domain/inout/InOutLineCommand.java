@@ -9,9 +9,9 @@ import org.dddml.wms.specialization.DomainError;
 
 public interface InOutLineCommand extends Command
 {
-    Long getLineNumber();
+    String getLineNumber();
 
-    void setLineNumber(Long lineNumber);
+    void setLineNumber(String lineNumber);
 
     String getInOutDocumentNumber();
 
