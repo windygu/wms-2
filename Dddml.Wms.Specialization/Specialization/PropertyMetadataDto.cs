@@ -60,7 +60,7 @@ namespace Dddml.Wms.Specialization
 
         public string SourceChainingName { get; set; }
 
-        public string OriginPropertyName { get; set; }
+        public string OriginalPropertyName { get; set; }
 
         public bool? IsNullableType { get; set; }
 

@@ -192,14 +192,14 @@ public class PropertyMetadataDto {
         sourceChainingName = value;
     }
 
-    private String originPropertyName;
+    private String originalPropertyName;
 
-    public String getOriginPropertyName() {
-        return originPropertyName;
+    public String getOriginalPropertyName() {
+        return originalPropertyName;
     }
 
-    public void setOriginPropertyName(String value) {
-        originPropertyName = value;
+    public void setOriginalPropertyName(String value) {
+        originalPropertyName = value;
     }
 
     private boolean isNullableType;

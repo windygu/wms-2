@@ -44,7 +44,7 @@ namespace Dddml.Wms.Specialization
 
         public virtual string SourceChainingName { get; set; }
 
-        public virtual string OriginPropertyName { get; set; }
+        public virtual string OriginalPropertyName { get; set; }
 
         public virtual bool IsNullableType { get; set; }
 
