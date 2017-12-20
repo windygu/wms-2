@@ -26,6 +26,12 @@ namespace Dddml.Wms.Domain.DocumentType
             set;
         }
 
+        string ParentDocumentTypeId
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

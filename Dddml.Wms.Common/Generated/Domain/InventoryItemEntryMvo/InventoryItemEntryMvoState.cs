@@ -260,7 +260,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			{
 				if (e.IsPropertySourceRemoved)
 				{
-					this.Source = default(InventoryItemSourceVO);
+					this.Source = default(InventoryItemSourceInfo);
 				}
 			}
 			else

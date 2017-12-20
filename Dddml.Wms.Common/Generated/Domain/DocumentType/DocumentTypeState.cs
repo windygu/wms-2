@@ -178,6 +178,8 @@ namespace Dddml.Wms.Domain.DocumentType
 			ThrowOnWrongEvent(e);
 			this.Description = e.Description;
 
+			this.ParentDocumentTypeId = e.ParentDocumentTypeId;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
@@ -203,6 +205,18 @@ namespace Dddml.Wms.Domain.DocumentType
 			else
 			{
 				this.Description = e.Description;
+			}
+
+			if (e.ParentDocumentTypeId == null)
+			{
+				if (e.IsPropertyParentDocumentTypeIdRemoved)
+				{
+					this.ParentDocumentTypeId = default(string);
+				}
+			}
+			else
+			{
+				this.ParentDocumentTypeId = e.ParentDocumentTypeId;
 			}
 
 			if (e.Active == null)

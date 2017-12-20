@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.DocumentType.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentTypeId", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentTypeId", "Description", "ParentDocumentTypeId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

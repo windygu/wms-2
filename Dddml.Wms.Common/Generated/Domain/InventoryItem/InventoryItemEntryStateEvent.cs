@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public virtual decimal? QuantityVirtual { get { return _state.QuantityVirtual; } set { _state.QuantityVirtual = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
-        public virtual InventoryItemSourceVO Source { get { return _state.Source; } set { _state.Source = value; } }
+        public virtual InventoryItemSourceInfo Source { get { return _state.Source; } set { _state.Source = value; } }
 
 		public virtual string CreatedBy { get { return _state.CreatedBy; } set { _state.CreatedBy = value; } }
 

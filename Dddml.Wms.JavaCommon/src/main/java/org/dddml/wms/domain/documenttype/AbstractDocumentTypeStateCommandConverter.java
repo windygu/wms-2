@@ -38,9 +38,11 @@ public abstract class AbstractDocumentTypeStateCommandConverter<TCreateDocumentT
 
         cmd.setDocumentTypeId(state.getDocumentTypeId());
         cmd.setDescription(state.getDescription());
+        cmd.setParentDocumentTypeId(state.getParentDocumentTypeId());
         cmd.setActive(state.getActive());
             
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
+        if (state.getParentDocumentTypeId() == null) { cmd.setIsPropertyParentDocumentTypeIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
     }
@@ -52,6 +54,7 @@ public abstract class AbstractDocumentTypeStateCommandConverter<TCreateDocumentT
         cmd.setVersion(state.getVersion());
         cmd.setDocumentTypeId(state.getDocumentTypeId());
         cmd.setDescription(state.getDescription());
+        cmd.setParentDocumentTypeId(state.getParentDocumentTypeId());
         cmd.setActive(state.getActive());
         return cmd;
     }

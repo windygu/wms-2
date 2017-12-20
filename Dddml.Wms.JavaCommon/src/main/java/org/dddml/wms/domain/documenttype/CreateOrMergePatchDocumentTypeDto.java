@@ -17,6 +17,18 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
         this.description = description;
     }
 
+    private String parentDocumentTypeId;
+
+    public String getParentDocumentTypeId()
+    {
+        return this.parentDocumentTypeId;
+    }
+
+    public void setParentDocumentTypeId(String parentDocumentTypeId)
+    {
+        this.parentDocumentTypeId = parentDocumentTypeId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -41,6 +53,18 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
         this.isPropertyDescriptionRemoved = removed;
     }
 
+    private Boolean isPropertyParentDocumentTypeIdRemoved;
+
+    public Boolean getIsPropertyParentDocumentTypeIdRemoved()
+    {
+        return this.isPropertyParentDocumentTypeIdRemoved;
+    }
+
+    public void setIsPropertyParentDocumentTypeIdRemoved(Boolean removed)
+    {
+        this.isPropertyParentDocumentTypeIdRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -57,6 +81,7 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
     {
         ((AbstractDocumentTypeCommandDto) this).copyTo(command);
         command.setDescription(this.getDescription());
+        command.setParentDocumentTypeId(this.getParentDocumentTypeId());
         command.setActive(this.getActive());
     }
 
@@ -83,6 +108,7 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
     {
         copyTo((AbstractDocumentTypeCommand.AbstractCreateOrMergePatchDocumentType) command);
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyParentDocumentTypeIdRemoved(this.getIsPropertyParentDocumentTypeIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

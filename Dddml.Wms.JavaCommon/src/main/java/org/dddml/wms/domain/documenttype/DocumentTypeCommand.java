@@ -44,6 +44,10 @@ public interface DocumentTypeCommand extends Command
 
         void setDescription(String description);
 
+        String getParentDocumentTypeId();
+
+        void setParentDocumentTypeId(String parentDocumentTypeId);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -59,6 +63,10 @@ public interface DocumentTypeCommand extends Command
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);
+
+        Boolean getIsPropertyParentDocumentTypeIdRemoved();
+
+        void setIsPropertyParentDocumentTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

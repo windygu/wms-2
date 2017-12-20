@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             dto.QuantityReserved = e.QuantityReserved;
             dto.QuantityOccupied = e.QuantityOccupied;
             dto.QuantityVirtual = e.QuantityVirtual;
-            dto.Source = (e.Source == null) ? null : new InventoryItemSourceVODtoWrapper(e.Source);
+            dto.Source = (e.Source == null) ? null : new InventoryItemSourceInfoDtoWrapper(e.Source);
             return dto;
         }
 

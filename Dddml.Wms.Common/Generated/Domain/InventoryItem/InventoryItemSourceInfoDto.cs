@@ -12,16 +12,16 @@ using Dddml.Wms.Domain.InventoryItem;
 namespace Dddml.Wms.Domain.InventoryItem
 {
 
-	public class InventoryItemSourceVODto
+	public class InventoryItemSourceInfoDto
 	{
 
-		public InventoryItemSourceVODto()
+		public InventoryItemSourceInfoDto()
 		{
 		}
 
-        public virtual InventoryItemSourceVO ToInventoryItemSourceVO()
+        public virtual InventoryItemSourceInfo ToInventoryItemSourceInfo()
         {
-            InventoryItemSourceVO v = new InventoryItemSourceVO();
+            InventoryItemSourceInfo v = new InventoryItemSourceInfo();
             v.DocumentTypeId = this.DocumentTypeId;
             v.DocumentNumber = this.DocumentNumber;
             v.LineNumber = this.LineNumber;
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 				return true;
 			}
 
-			InventoryItemSourceVODto other = obj as InventoryItemSourceVODto;
+			InventoryItemSourceInfoDto other = obj as InventoryItemSourceInfoDto;
 			if (other == null) {
 				return false;
 			}

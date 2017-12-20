@@ -225,23 +225,23 @@ namespace Dddml.Wms.Domain.InventoryItem
             }
         }
 
-        public InventoryItemSourceVODto Source
+        public InventoryItemSourceInfoDto Source
         {
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Source"))
                 {
-					return (_state.Source == null) ? null : new InventoryItemSourceVODtoWrapper(_state.Source);
+					return (_state.Source == null) ? null : new InventoryItemSourceInfoDtoWrapper(_state.Source);
                 }
                 return null;
             }
             set
             {
-                _state.Source = (value == null) ? null : value.ToInventoryItemSourceVO();
+                _state.Source = (value == null) ? null : value.ToInventoryItemSourceInfo();
             }
         }
 
-        InventoryItemSourceVO IInventoryItemEntryStateProperties.Source
+        InventoryItemSourceInfo IInventoryItemEntryStateProperties.Source
         {
             get 
             {

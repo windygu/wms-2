@@ -1644,13 +1644,13 @@
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemSourceVO.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemSourceInfo.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemSourceVODto.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemSourceInfoDto.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemSourceVODtoWrapper.java">
+    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemSourceInfoDtoWrapper.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\InventoryItemState.java">
@@ -4649,9 +4649,9 @@
 .\InventoryItemIdDtoWrapper.java
 .\InventoryItemIdFlattenedDto.java
 .\InventoryItemIdFlattenedDtoFormatter.java
-.\InventoryItemSourceVO.java
-.\InventoryItemSourceVODto.java
-.\InventoryItemSourceVODtoWrapper.java
+.\InventoryItemSourceInfo.java
+.\InventoryItemSourceInfoDto.java
+.\InventoryItemSourceInfoDtoWrapper.java
 .\InventoryItemState.java
 .\InventoryItemStateDto.java
 .\InventoryItemStateEvent.java

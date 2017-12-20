@@ -65,17 +65,17 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		public virtual decimal? QuantityVirtual { get; set; }
 
 
-		public virtual InventoryItemSourceVODto Source { get; set; }
+		public virtual InventoryItemSourceInfoDto Source { get; set; }
 
-        InventoryItemSourceVO ICreateOrMergePatchOrDeleteInventoryItemEntryMvo.Source
+        InventoryItemSourceInfo ICreateOrMergePatchOrDeleteInventoryItemEntryMvo.Source
         {
             get 
             {
-                return (this.Source == null) ? null : this.Source.ToInventoryItemSourceVO();
+                return (this.Source == null) ? null : this.Source.ToInventoryItemSourceInfo();
             }
             set 
             {
-                this.Source = (value == null) ? null : new InventoryItemSourceVODtoWrapper(value);
+                this.Source = (value == null) ? null : new InventoryItemSourceInfoDtoWrapper(value);
             }
         }
 

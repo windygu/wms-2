@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         }
 
 
-        public virtual InventoryItemSourceVODto Source
+        public virtual InventoryItemSourceInfoDto Source
         {
             get;
             set;
@@ -159,7 +159,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             if (this.QuantityReserved != null && this.QuantityReserved.HasValue) { state.QuantityReserved = this.QuantityReserved.Value; }
             if (this.QuantityOccupied != null && this.QuantityOccupied.HasValue) { state.QuantityOccupied = this.QuantityOccupied.Value; }
             if (this.QuantityVirtual != null && this.QuantityVirtual.HasValue) { state.QuantityVirtual = this.QuantityVirtual.Value; }
-            state.Source = (this.Source == null) ? null : this.Source.ToInventoryItemSourceVO();
+            state.Source = (this.Source == null) ? null : this.Source.ToInventoryItemSourceInfo();
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.InventoryItemQuantityOnHand != null && this.InventoryItemQuantityOnHand.HasValue) { state.InventoryItemQuantityOnHand = this.InventoryItemQuantityOnHand.Value; }
             if (this.InventoryItemQuantityInTransit != null && this.InventoryItemQuantityInTransit.HasValue) { state.InventoryItemQuantityInTransit = this.InventoryItemQuantityInTransit.Value; }

@@ -13,6 +13,7 @@ public final class DocumentTypeFilteringProperties
     public static final String[] propertyNames = new String[] {
             "documentTypeId",
             "description",
+            "parentDocumentTypeId",
             "version",
             "createdBy",
             "createdAt",
@@ -23,6 +24,7 @@ public final class DocumentTypeFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
             "String",
             "String",
             "Long",
@@ -50,6 +52,8 @@ public final class DocumentTypeFilteringProperties
         aliasMap.put("DocumentTypeId", "documentTypeId");
         aliasMap.put("description", "description");
         aliasMap.put("Description", "description");
+        aliasMap.put("parentDocumentTypeId", "parentDocumentTypeId");
+        aliasMap.put("ParentDocumentTypeId", "parentDocumentTypeId");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

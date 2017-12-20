@@ -99,12 +99,12 @@ public abstract class AbstractInventoryItemEntryStateEvent extends AbstractState
         this.state.setQuantityVirtual(quantityVirtual);
     }
 
-    public InventoryItemSourceVO getSource()
+    public InventoryItemSourceInfo getSource()
     {
         return this.state.getSource();
     }
 
-    public void setSource(InventoryItemSourceVO source)
+    public void setSource(InventoryItemSourceInfo source)
     {
         this.state.setSource(source);
     }

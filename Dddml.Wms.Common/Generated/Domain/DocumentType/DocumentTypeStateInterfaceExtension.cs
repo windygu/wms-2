@@ -49,9 +49,11 @@ namespace Dddml.Wms.Domain.DocumentType
 
             cmd.DocumentTypeId = state.DocumentTypeId;
             cmd.Description = state.Description;
+            cmd.ParentDocumentTypeId = state.ParentDocumentTypeId;
             cmd.Active = ((IDocumentTypeStateProperties)state).Active;
             
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
+            if (state.ParentDocumentTypeId == null) { cmd.IsPropertyParentDocumentTypeIdRemoved = true; }
             return cmd;
         }
 
@@ -64,6 +66,7 @@ namespace Dddml.Wms.Domain.DocumentType
 
             cmd.DocumentTypeId = state.DocumentTypeId;
             cmd.Description = state.Description;
+            cmd.ParentDocumentTypeId = state.ParentDocumentTypeId;
             cmd.Active = ((IDocumentTypeStateProperties)state).Active;
             return cmd;
         }

@@ -10,10 +10,17 @@ aggregates:
       id:
         name: DocumentTypeId
         type: string
+        
       properties:
+      
         Description:
           type: string
           notNull: true
+          
+        ParentDocumentTypeId:
+          type: string
+          referenceType: DocumentType
+          
       metadata:
         NoEventSourcing: true
           

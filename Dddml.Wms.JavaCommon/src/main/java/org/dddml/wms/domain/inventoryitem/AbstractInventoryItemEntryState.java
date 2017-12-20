@@ -96,14 +96,14 @@ public abstract class AbstractInventoryItemEntryState implements InventoryItemEn
         this.quantityVirtual = quantityVirtual;
     }
 
-    private InventoryItemSourceVO source;
+    private InventoryItemSourceInfo source;
 
-    public InventoryItemSourceVO getSource()
+    public InventoryItemSourceInfo getSource()
     {
         return this.source;
     }
 
-    public void setSource(InventoryItemSourceVO source)
+    public void setSource(InventoryItemSourceInfo source)
     {
         this.source = source;
     }

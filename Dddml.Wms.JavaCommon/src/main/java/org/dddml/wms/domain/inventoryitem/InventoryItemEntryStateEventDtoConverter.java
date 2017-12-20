@@ -29,7 +29,7 @@ public class InventoryItemEntryStateEventDtoConverter {
         dto.setQuantityReserved(e.getQuantityReserved());
         dto.setQuantityOccupied(e.getQuantityOccupied());
         dto.setQuantityVirtual(e.getQuantityVirtual());
-        dto.setSource((e.getSource() == null) ? null : new InventoryItemSourceVODtoWrapper(e.getSource()));
+        dto.setSource((e.getSource() == null) ? null : new InventoryItemSourceInfoDtoWrapper(e.getSource()));
         return dto;
     }
 

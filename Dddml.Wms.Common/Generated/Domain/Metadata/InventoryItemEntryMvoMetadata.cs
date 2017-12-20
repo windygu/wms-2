@@ -192,8 +192,8 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "Source",
-                    Type = typeof(InventoryItemSourceVO),
-                    TypeName = "InventoryItemSourceVO",
+                    Type = typeof(InventoryItemSourceInfo),
+                    TypeName = "InventoryItemSourceInfo",
                     IsSimpleValueObjectType = false,
                     IsNullableType = false,
                     DisplayName = "",

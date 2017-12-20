@@ -58,6 +58,7 @@ public abstract class AbstractDocumentTypeAggregate extends AbstractAggregate im
         DocumentTypeStateEventId stateEventId = new DocumentTypeStateEventId(c.getDocumentTypeId(), c.getVersion());
         DocumentTypeStateEvent.DocumentTypeStateCreated e = newDocumentTypeStateCreated(stateEventId);
         e.setDescription(c.getDescription());
+        e.setParentDocumentTypeId(c.getParentDocumentTypeId());
         e.setActive(c.getActive());
         ((AbstractDocumentTypeStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -69,8 +70,10 @@ public abstract class AbstractDocumentTypeAggregate extends AbstractAggregate im
         DocumentTypeStateEventId stateEventId = new DocumentTypeStateEventId(c.getDocumentTypeId(), c.getVersion());
         DocumentTypeStateEvent.DocumentTypeStateMergePatched e = newDocumentTypeStateMergePatched(stateEventId);
         e.setDescription(c.getDescription());
+        e.setParentDocumentTypeId(c.getParentDocumentTypeId());
         e.setActive(c.getActive());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
+        e.setIsPropertyParentDocumentTypeIdRemoved(c.getIsPropertyParentDocumentTypeIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractDocumentTypeStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

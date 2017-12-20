@@ -32,7 +32,7 @@ public class InventoryItemEntryMvoStateEventDtoConverter {
         dto.setQuantityReserved(e.getQuantityReserved());
         dto.setQuantityOccupied(e.getQuantityOccupied());
         dto.setQuantityVirtual(e.getQuantityVirtual());
-        dto.setSource((e.getSource() == null) ? null : new InventoryItemSourceVODtoWrapper(e.getSource()));
+        dto.setSource((e.getSource() == null) ? null : new InventoryItemSourceInfoDtoWrapper(e.getSource()));
         dto.setVersion(e.getVersion());
         dto.setInventoryItemQuantityOnHand(e.getInventoryItemQuantityOnHand());
         dto.setInventoryItemQuantityInTransit(e.getInventoryItemQuantityInTransit());
@@ -57,7 +57,7 @@ public class InventoryItemEntryMvoStateEventDtoConverter {
         dto.setQuantityReserved(e.getQuantityReserved());
         dto.setQuantityOccupied(e.getQuantityOccupied());
         dto.setQuantityVirtual(e.getQuantityVirtual());
-        dto.setSource((e.getSource() == null) ? null : new InventoryItemSourceVODtoWrapper(e.getSource()));
+        dto.setSource((e.getSource() == null) ? null : new InventoryItemSourceInfoDtoWrapper(e.getSource()));
         dto.setVersion(e.getVersion());
         dto.setInventoryItemQuantityOnHand(e.getInventoryItemQuantityOnHand());
         dto.setInventoryItemQuantityInTransit(e.getInventoryItemQuantityInTransit());

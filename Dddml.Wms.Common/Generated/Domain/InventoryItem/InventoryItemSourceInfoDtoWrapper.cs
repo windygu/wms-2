@@ -12,22 +12,22 @@ using Dddml.Wms.Domain.InventoryItem;
 namespace Dddml.Wms.Domain.InventoryItem
 {
 
-	public class InventoryItemSourceVODtoWrapper : InventoryItemSourceVODto
+	public class InventoryItemSourceInfoDtoWrapper : InventoryItemSourceInfoDto
 	{
 
-        private InventoryItemSourceVO _value = new InventoryItemSourceVO();
+        private InventoryItemSourceInfo _value = new InventoryItemSourceInfo();
 
-		public InventoryItemSourceVODtoWrapper()
+		public InventoryItemSourceInfoDtoWrapper()
 		{
 		}
 
-		public InventoryItemSourceVODtoWrapper(InventoryItemSourceVO val)
+		public InventoryItemSourceInfoDtoWrapper(InventoryItemSourceInfo val)
 		{
 			if (val == null) { throw new ArgumentNullException("val"); }
 			this._value = val;
 		}
 
-        public override InventoryItemSourceVO ToInventoryItemSourceVO()
+        public override InventoryItemSourceInfo ToInventoryItemSourceInfo()
         {
             return this._value;
         }

@@ -17,6 +17,10 @@ public interface DocumentTypeStateEvent extends Event
 
     void setDescription(String description);
 
+    String getParentDocumentTypeId();
+
+    void setParentDocumentTypeId(String parentDocumentTypeId);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -44,6 +48,10 @@ public interface DocumentTypeStateEvent extends Event
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);
+
+        Boolean getIsPropertyParentDocumentTypeIdRemoved();
+
+        void setIsPropertyParentDocumentTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

@@ -2,16 +2,16 @@ package org.dddml.wms.domain.inventoryitem;
 
 import org.dddml.wms.domain.*;
 
-public class InventoryItemSourceVODto
+public class InventoryItemSourceInfoDto
 {
 
-    public InventoryItemSourceVODto()
+    public InventoryItemSourceInfoDto()
     {
     }
 
-    public InventoryItemSourceVO toInventoryItemSourceVO()
+    public InventoryItemSourceInfo toInventoryItemSourceInfo()
     {
-        InventoryItemSourceVO v = new InventoryItemSourceVO();
+        InventoryItemSourceInfo v = new InventoryItemSourceInfo();
         v.setDocumentTypeId(this.getDocumentTypeId());
         v.setDocumentNumber(this.getDocumentNumber());
         v.setLineNumber(this.getLineNumber());
@@ -61,11 +61,11 @@ public class InventoryItemSourceVODto
         if (obj == this) {
             return true;
         }
-        if (obj == null || obj.getClass() != InventoryItemSourceVODto.class) {
+        if (obj == null || obj.getClass() != InventoryItemSourceInfoDto.class) {
             return false;
         }
 
-        InventoryItemSourceVODto other = (InventoryItemSourceVODto)obj;
+        InventoryItemSourceInfoDto other = (InventoryItemSourceInfoDto)obj;
         return true 
             && (getDocumentTypeId() == other.getDocumentTypeId() || (getDocumentTypeId() != null && getDocumentTypeId().equals(other.getDocumentTypeId())))
             && (getDocumentNumber() == other.getDocumentNumber() || (getDocumentNumber() != null && getDocumentNumber().equals(other.getDocumentNumber())))

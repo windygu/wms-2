@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         }
 
 
-        InventoryItemSourceVODto Source
+        InventoryItemSourceInfoDto Source
         {
             get;
             set;

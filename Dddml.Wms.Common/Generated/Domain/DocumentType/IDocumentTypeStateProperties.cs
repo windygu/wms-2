@@ -18,6 +18,8 @@ namespace Dddml.Wms.Domain.DocumentType
 
 		string Description { get; set; }
 
+		string ParentDocumentTypeId { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

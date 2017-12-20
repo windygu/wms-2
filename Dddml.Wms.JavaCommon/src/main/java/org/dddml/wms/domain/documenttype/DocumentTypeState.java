@@ -20,6 +20,10 @@ public interface DocumentTypeState
 
     void setDescription(String description);
 
+    String getParentDocumentTypeId();
+
+    void setParentDocumentTypeId(String parentDocumentTypeId);
+
     Long getVersion();
 
     void setVersion(Long version);

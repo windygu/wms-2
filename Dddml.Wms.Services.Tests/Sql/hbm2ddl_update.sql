@@ -1,4 +1,6 @@
 
+    alter table DocumentTypes 
+        add column ParentDocumentTypeId VARCHAR(255);
     create table AttributeValue_RV (
         AttributeValueIdAttributeId VARCHAR(50) not null,
        AttributeValueIdValue VARCHAR(50) not null,
@@ -88,10 +90,6 @@
       unique (Name),
       unique (Alias)
     );
-    alter table ShipmentTypes 
-        add column ParentTypeId VARCHAR(20);
-    alter table ShipmentTypes 
-        add column HasTable CHAR(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber BIGINT not null,

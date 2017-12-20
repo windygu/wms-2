@@ -10,6 +10,7 @@
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
     <property name="Description" ><column name="Description" not-null="true" /></property>
+    <property name="ParentDocumentTypeId" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>

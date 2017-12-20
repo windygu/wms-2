@@ -66,14 +66,14 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.quantityVirtual = quantityVirtual;
     }
 
-    private InventoryItemSourceVODto source;
+    private InventoryItemSourceInfoDto source;
 
-    public InventoryItemSourceVODto getSource()
+    public InventoryItemSourceInfoDto getSource()
     {
         return this.source;
     }
 
-    public void setSource(InventoryItemSourceVODto source)
+    public void setSource(InventoryItemSourceInfoDto source)
     {
         this.source = source;
     }
@@ -182,7 +182,7 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         command.setQuantityReserved(this.getQuantityReserved());
         command.setQuantityOccupied(this.getQuantityOccupied());
         command.setQuantityVirtual(this.getQuantityVirtual());
-        command.setSource(this.getSource() == null ? null : this.getSource().toInventoryItemSourceVO());
+        command.setSource(this.getSource() == null ? null : this.getSource().toInventoryItemSourceInfo());
         command.setActive(this.getActive());
     }
 

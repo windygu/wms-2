@@ -33,6 +33,18 @@ public class DocumentTypeStateDto
         this.description = description;
     }
 
+    private String parentDocumentTypeId;
+
+    public String getParentDocumentTypeId()
+    {
+        return this.parentDocumentTypeId;
+    }
+
+    public void setParentDocumentTypeId(String parentDocumentTypeId)
+    {
+        this.parentDocumentTypeId = parentDocumentTypeId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -136,6 +148,9 @@ public class DocumentTypeStateDto
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("ParentDocumentTypeId")) {
+                dto.setParentDocumentTypeId(state.getParentDocumentTypeId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

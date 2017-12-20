@@ -12,7 +12,7 @@
                 dict.Add("InventoryItemEntryId", "_INVENTORYITEMENTRYID_");
                 dict.Add("InventoryItemId", "_INVENTORYITEMID_");
                 dict.Add("InventoryItemRequirementEntryId", "_INVENTORYITEMREQUIREMENTENTRYID_");
-                dict.Add("InventoryItemSourceVO", "_INVENTORYITEMSOURCEVO_");
+                dict.Add("InventoryItemSourceInfo", "_INVENTORYITEMSOURCEINFO_");
                 dict.Add("InventoryPRTriggeredId", "_INVENTORYPRTRIGGEREDID_");
                 dict.Add("OrderItemId", "_ORDERITEMID_");
                 dict.Add("OrderShipmentId", "_ORDERSHIPMENTID_");

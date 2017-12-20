@@ -108,6 +108,7 @@ namespace Dddml.Wms.Domain.DocumentType
             IDocumentTypeStateCreated e = NewDocumentTypeStateCreated(stateEventId);
 		
             e.Description = c.Description;
+            e.ParentDocumentTypeId = c.ParentDocumentTypeId;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -126,8 +127,10 @@ namespace Dddml.Wms.Domain.DocumentType
             IDocumentTypeStateMergePatched e = NewDocumentTypeStateMergePatched(stateEventId);
 
             e.Description = c.Description;
+            e.ParentDocumentTypeId = c.ParentDocumentTypeId;
             e.Active = c.Active;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
+            e.IsPropertyParentDocumentTypeIdRemoved = c.IsPropertyParentDocumentTypeIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

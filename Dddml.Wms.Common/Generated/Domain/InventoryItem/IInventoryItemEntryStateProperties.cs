@@ -26,7 +26,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		decimal QuantityVirtual { get; set; }
 
-		InventoryItemSourceVO Source { get; set; }
+		InventoryItemSourceInfo Source { get; set; }
 
 		long Version { get; set; }
 

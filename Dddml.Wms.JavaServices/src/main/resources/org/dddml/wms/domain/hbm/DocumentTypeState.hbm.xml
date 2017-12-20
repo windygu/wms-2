@@ -12,6 +12,7 @@
 	<version name="version" column="Version" type="long" />
 
 	<property name="description" ><column name="Description" not-null="true" /></property>
+	<property name="parentDocumentTypeId" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

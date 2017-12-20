@@ -39,9 +39,9 @@ public interface InventoryItemEntryCommand extends Command
 
         void setQuantityVirtual(BigDecimal quantityVirtual);
 
-        InventoryItemSourceVO getSource();
+        InventoryItemSourceInfo getSource();
 
-        void setSource(InventoryItemSourceVO source);
+        void setSource(InventoryItemSourceInfo source);
 
         Boolean getActive();
 

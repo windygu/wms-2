@@ -2,23 +2,23 @@ package org.dddml.wms.domain.inventoryitem;
 
 import org.dddml.wms.domain.*;
 
-public class InventoryItemSourceVODtoWrapper extends InventoryItemSourceVODto
+public class InventoryItemSourceInfoDtoWrapper extends InventoryItemSourceInfoDto
 {
 	
-    private InventoryItemSourceVO value;
+    private InventoryItemSourceInfo value;
 
-    public InventoryItemSourceVODtoWrapper()
+    public InventoryItemSourceInfoDtoWrapper()
     {
-        this(new InventoryItemSourceVO());
+        this(new InventoryItemSourceInfo());
     }
 
-    public InventoryItemSourceVODtoWrapper(InventoryItemSourceVO value)
+    public InventoryItemSourceInfoDtoWrapper(InventoryItemSourceInfo value)
     {
         if (value == null) { throw new IllegalArgumentException("value == null"); }
         this.value = value;
     }
 
-    public InventoryItemSourceVO toInventoryItemSourceVO()
+    public InventoryItemSourceInfo toInventoryItemSourceInfo()
     {
         return this.value;
     }
@@ -69,14 +69,14 @@ public class InventoryItemSourceVODtoWrapper extends InventoryItemSourceVODto
         if (obj == null) {
             return false;
         }
-        if (obj.getClass() == InventoryItemSourceVODto.class) {
+        if (obj.getClass() == InventoryItemSourceInfoDto.class) {
             return super.equals(obj);
         }
         if (obj.getClass() != this.getClass()) {
             return false;
         }
 
-        InventoryItemSourceVODtoWrapper other = (InventoryItemSourceVODtoWrapper)obj;
+        InventoryItemSourceInfoDtoWrapper other = (InventoryItemSourceInfoDtoWrapper)obj;
         return value.equals(other.value);
     }
 

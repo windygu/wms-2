@@ -25,6 +25,8 @@ namespace Dddml.Wms.Domain.DocumentType
 
 		public virtual string Description { get; set; }
 
+		public virtual string ParentDocumentTypeId { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -116,6 +118,8 @@ namespace Dddml.Wms.Domain.DocumentType
 	public class DocumentTypeStateMergePatched : DocumentTypeStateEventBase, IDocumentTypeStateMergePatched
 	{
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
+
+		public virtual bool IsPropertyParentDocumentTypeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

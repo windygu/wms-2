@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.InventoryItem;
 namespace Dddml.Wms.Domain.InventoryItem
 {
 
-	public class InventoryItemSourceVO
+	public class InventoryItemSourceInfo
 	{
 
 		private string _documentTypeId;
@@ -42,11 +42,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         #endregion
 
-		internal InventoryItemSourceVO ()
+		internal InventoryItemSourceInfo ()
 		{
 		}
 
-		public InventoryItemSourceVO (string documentTypeId, string documentNumber, string lineNumber)
+		public InventoryItemSourceInfo (string documentTypeId, string documentNumber, string lineNumber)
 		{
 			this._documentTypeId = documentTypeId;
 			this._documentNumber = documentNumber;
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 				return true;
 			}
 
-			InventoryItemSourceVO other = obj as InventoryItemSourceVO;
+			InventoryItemSourceInfo other = obj as InventoryItemSourceInfo;
 			if (other == null) {
 				return false;
 			}
@@ -88,12 +88,12 @@ namespace Dddml.Wms.Domain.InventoryItem
 			return hash;
 		}
 
-        public static bool operator ==(InventoryItemSourceVO obj1, InventoryItemSourceVO obj2)
+        public static bool operator ==(InventoryItemSourceInfo obj1, InventoryItemSourceInfo obj2)
         {
             return Object.Equals(obj1, obj2);
         }
 
-        public static bool operator !=(InventoryItemSourceVO obj1, InventoryItemSourceVO obj2)
+        public static bool operator !=(InventoryItemSourceInfo obj1, InventoryItemSourceInfo obj2)
         {
             return !Object.Equals(obj1, obj2);
         }

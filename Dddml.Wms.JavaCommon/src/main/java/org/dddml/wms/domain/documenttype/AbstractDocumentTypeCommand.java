@@ -46,6 +46,18 @@ public abstract class AbstractDocumentTypeCommand extends AbstractCommand implem
             this.description = description;
         }
 
+        private String parentDocumentTypeId;
+
+        public String getParentDocumentTypeId()
+        {
+            return this.parentDocumentTypeId;
+        }
+
+        public void setParentDocumentTypeId(String parentDocumentTypeId)
+        {
+            this.parentDocumentTypeId = parentDocumentTypeId;
+        }
+
         private Boolean active;
 
         public Boolean getActive()
@@ -86,6 +98,18 @@ public abstract class AbstractDocumentTypeCommand extends AbstractCommand implem
         public void setIsPropertyDescriptionRemoved(Boolean removed)
         {
             this.isPropertyDescriptionRemoved = removed;
+        }
+
+        private Boolean isPropertyParentDocumentTypeIdRemoved;
+
+        public Boolean getIsPropertyParentDocumentTypeIdRemoved()
+        {
+            return this.isPropertyParentDocumentTypeIdRemoved;
+        }
+
+        public void setIsPropertyParentDocumentTypeIdRemoved(Boolean removed)
+        {
+            this.isPropertyParentDocumentTypeIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

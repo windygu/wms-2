@@ -74,6 +74,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "ParentDocumentTypeId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "DocumentType",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "Version",
                     Type = typeof(long),
                     TypeName = "long",
@@ -295,6 +324,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("documentTypeId", "DocumentTypeId");
             d.Add("Description", "Description");
             d.Add("description", "Description");
+            d.Add("ParentDocumentTypeId", "ParentDocumentTypeId");
+            d.Add("parentDocumentTypeId", "ParentDocumentTypeId");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");

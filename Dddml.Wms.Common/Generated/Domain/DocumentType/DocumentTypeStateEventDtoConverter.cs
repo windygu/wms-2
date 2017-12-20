@@ -43,6 +43,7 @@ namespace Dddml.Wms.Domain.DocumentType
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.Description = e.Description;
+            dto.ParentDocumentTypeId = e.ParentDocumentTypeId;
             dto.Active = e.Active;
             return dto;
         }
@@ -55,8 +56,10 @@ namespace Dddml.Wms.Domain.DocumentType
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.Description = e.Description;
+            dto.ParentDocumentTypeId = e.ParentDocumentTypeId;
             dto.Active = e.Active;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
+            dto.IsPropertyParentDocumentTypeIdRemoved = e.IsPropertyParentDocumentTypeIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 
             return dto;

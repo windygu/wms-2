@@ -95,6 +95,34 @@ namespace Dddml.Wms.Domain.DocumentType
             }
         }
 
+		public virtual string ParentDocumentTypeId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ParentDocumentTypeId"))
+                {
+                    return _state.ParentDocumentTypeId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ParentDocumentTypeId = value;
+            }
+        }
+
+        string IDocumentTypeStateProperties.ParentDocumentTypeId
+        {
+            get 
+            {
+                return (this._state as IDocumentTypeStateProperties).ParentDocumentTypeId;
+            }
+            set 
+            {
+                (this._state as IDocumentTypeStateProperties).ParentDocumentTypeId = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

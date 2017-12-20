@@ -29,6 +29,7 @@ public class DocumentTypeStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setDescription(e.getDescription());
+        dto.setParentDocumentTypeId(e.getParentDocumentTypeId());
         dto.setActive(e.getActive());
         return dto;
     }
@@ -40,8 +41,10 @@ public class DocumentTypeStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setDescription(e.getDescription());
+        dto.setParentDocumentTypeId(e.getParentDocumentTypeId());
         dto.setActive(e.getActive());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
+        dto.setIsPropertyParentDocumentTypeIdRemoved(e.getIsPropertyParentDocumentTypeIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         return dto;
     }

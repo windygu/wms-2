@@ -321,6 +321,7 @@
         DocumentTypeId VARCHAR(50) not null,
        Version BIGINT not null,
        Description VARCHAR(255) not null,
+       ParentDocumentTypeId VARCHAR(255),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),

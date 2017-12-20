@@ -77,13 +77,13 @@ public class InventoryItemEntryStateEventDto extends AbstractStateEvent
         this.quantityVirtual = quantityVirtual;
     }
 
-    private InventoryItemSourceVODto source = new InventoryItemSourceVODto();
+    private InventoryItemSourceInfoDto source = new InventoryItemSourceInfoDto();
 
-    public InventoryItemSourceVODto getSource() {
+    public InventoryItemSourceInfoDto getSource() {
         return this.source;
     }
 
-    public void setSource(InventoryItemSourceVODto source) {
+    public void setSource(InventoryItemSourceInfoDto source) {
         this.source = source;
     }
 

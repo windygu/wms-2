@@ -57,7 +57,7 @@ aggregates:
               type: decimal
             
             Source:
-              type: InventoryItemSourceVO
+              type: InventoryItemSourceInfo
               notNull: true
               
           reservedProperties:
@@ -102,7 +102,7 @@ aggregates:
               columnName: AttributeSetInstanceId
         
         # -----------------------------------
-        InventoryItemSourceVO:
+        InventoryItemSourceInfo:
           properties:
             DocumentTypeId:
               type: string

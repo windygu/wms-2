@@ -83,14 +83,14 @@ public class InventoryItemEntryMvoStateDto
         this.quantityVirtual = quantityVirtual;
     }
 
-    private InventoryItemSourceVODto source;
+    private InventoryItemSourceInfoDto source;
 
-    public InventoryItemSourceVODto getSource()
+    public InventoryItemSourceInfoDto getSource()
     {
         return this.source;
     }
 
-    public void setSource(InventoryItemSourceVODto source)
+    public void setSource(InventoryItemSourceInfoDto source)
     {
         this.source = source;
     }
@@ -320,7 +320,7 @@ public class InventoryItemEntryMvoStateDto
                 dto.setQuantityVirtual(state.getQuantityVirtual());
             }
             if (returnedFieldsContains("Source")) {
-                dto.setSource((state.getSource() == null) ? null : new InventoryItemSourceVODtoWrapper(state.getSource()));
+                dto.setSource((state.getSource() == null) ? null : new InventoryItemSourceInfoDtoWrapper(state.getSource()));
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());

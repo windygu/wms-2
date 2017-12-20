@@ -60,9 +60,11 @@
   <ItemGroup>
     <Compile Include="Domain\AttributeSetInstanceAggregate.cs" />
     <Compile Include="Domain\DocumentStatusIds.cs" />
+    <Compile Include="Domain\DocumentType\DocumentTypeIds.cs" />
     <Compile Include="Domain\InOutDocumentActionCommandHandler.cs" />
     <Compile Include="Domain\InventoryItem\InventoryItemIds.cs" />
     <Compile Include="Domain\InventoryPostingRule\InventoryPostingRuleIds.cs" />
+    <Compile Include="Domain\MovementType\MovementTypeIds.cs" />
     <Compile Include="Domain\Order\OrderTypeIds.cs" />
     <Compile Include="Domain\Services\IAttributeSetService.cs" />
     <Compile Include="Domain\ShipmentType\ShipmentTypeIds.cs" />
@@ -1786,13 +1788,13 @@
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemIdFlattenedDto.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceVO.cs">
+    <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceInfo.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceVODto.cs">
+    <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceInfoDto.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceVODtoWrapper.cs">
+    <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceInfoDtoWrapper.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemState.cs">
@@ -5063,9 +5065,9 @@
 .\InventoryItemIdDto.cs
 .\InventoryItemIdDtoWrapper.cs
 .\InventoryItemIdFlattenedDto.cs
-.\InventoryItemSourceVO.cs
-.\InventoryItemSourceVODto.cs
-.\InventoryItemSourceVODtoWrapper.cs
+.\InventoryItemSourceInfo.cs
+.\InventoryItemSourceInfoDto.cs
+.\InventoryItemSourceInfoDtoWrapper.cs
 .\InventoryItemState.cs
 .\InventoryItemStateDto.cs
 .\InventoryItemStateDtoExtension.cs

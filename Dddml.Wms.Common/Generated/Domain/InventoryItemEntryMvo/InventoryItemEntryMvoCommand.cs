@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		public virtual decimal? QuantityVirtual { get; set; }
 
-		public virtual InventoryItemSourceVO Source { get; set; }
+		public virtual InventoryItemSourceInfo Source { get; set; }
 
 		public virtual long? Version { get; set; }
 

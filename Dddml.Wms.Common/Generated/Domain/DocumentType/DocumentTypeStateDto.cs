@@ -27,6 +27,12 @@ namespace Dddml.Wms.Domain.DocumentType
             set;
         }
 
+        public virtual string ParentDocumentTypeId
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -68,6 +74,7 @@ namespace Dddml.Wms.Domain.DocumentType
             var state = new DocumentTypeState(true);
             state.DocumentTypeId = this.DocumentTypeId;
             state.Description = this.Description;
+            state.ParentDocumentTypeId = this.ParentDocumentTypeId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

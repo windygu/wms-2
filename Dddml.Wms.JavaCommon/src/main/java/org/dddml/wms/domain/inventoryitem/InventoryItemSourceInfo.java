@@ -3,7 +3,7 @@ package org.dddml.wms.domain.inventoryitem;
 import java.io.Serializable;
 import org.dddml.wms.domain.*;
 
-public class InventoryItemSourceVO implements Serializable
+public class InventoryItemSourceInfo implements Serializable
 {
     private String documentTypeId;
 
@@ -41,11 +41,11 @@ public class InventoryItemSourceVO implements Serializable
         this.lineNumber = lineNumber;
     }
 
-    public InventoryItemSourceVO()
+    public InventoryItemSourceInfo()
     {
     }
 
-    public InventoryItemSourceVO(String documentTypeId, String documentNumber, String lineNumber)
+    public InventoryItemSourceInfo(String documentTypeId, String documentNumber, String lineNumber)
     {
         this.documentTypeId = documentTypeId;
         this.documentNumber = documentNumber;
@@ -62,7 +62,7 @@ public class InventoryItemSourceVO implements Serializable
             return false;
         }
 
-        InventoryItemSourceVO other = (InventoryItemSourceVO)obj;
+        InventoryItemSourceInfo other = (InventoryItemSourceInfo)obj;
         return true 
             && (documentTypeId == other.documentTypeId || (documentTypeId != null && documentTypeId.equals(other.documentTypeId)))
             && (documentNumber == other.documentNumber || (documentNumber != null && documentNumber.equals(other.documentNumber)))

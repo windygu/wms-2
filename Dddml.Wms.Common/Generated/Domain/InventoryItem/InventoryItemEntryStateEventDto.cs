@@ -46,19 +46,19 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual decimal? QuantityVirtual { get; set; }
 
-		private InventoryItemSourceVODto _source = new InventoryItemSourceVODto();
+		private InventoryItemSourceInfoDto _source = new InventoryItemSourceInfoDto();
 
-		public virtual InventoryItemSourceVODto Source { get { return _source; } set { _source = value; } }
+		public virtual InventoryItemSourceInfoDto Source { get { return _source; } set { _source = value; } }
 
-		InventoryItemSourceVO IInventoryItemEntryStateEvent.Source
+		InventoryItemSourceInfo IInventoryItemEntryStateEvent.Source
 		{ 
 			get 
 			{
-				return this.Source == null ? null : this.Source.ToInventoryItemSourceVO(); 
+				return this.Source == null ? null : this.Source.ToInventoryItemSourceInfo(); 
 			} 
 			set
 			{
-				if (value == null) { Source = null; } else { Source = new InventoryItemSourceVODtoWrapper(value); }
+				if (value == null) { Source = null; } else { Source = new InventoryItemSourceInfoDtoWrapper(value); }
 			} 
 		}
 

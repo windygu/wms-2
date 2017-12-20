@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             dto.QuantityReserved = e.QuantityReserved;
             dto.QuantityOccupied = e.QuantityOccupied;
             dto.QuantityVirtual = e.QuantityVirtual;
-            dto.Source = (e.Source == null) ? null : new InventoryItemSourceVODtoWrapper(e.Source);
+            dto.Source = (e.Source == null) ? null : new InventoryItemSourceInfoDtoWrapper(e.Source);
             dto.Version = e.Version;
             dto.InventoryItemQuantityOnHand = e.InventoryItemQuantityOnHand;
             dto.InventoryItemQuantityInTransit = e.InventoryItemQuantityInTransit;
@@ -69,7 +69,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             dto.QuantityReserved = e.QuantityReserved;
             dto.QuantityOccupied = e.QuantityOccupied;
             dto.QuantityVirtual = e.QuantityVirtual;
-            dto.Source = (e.Source == null) ? null : new InventoryItemSourceVODtoWrapper(e.Source);
+            dto.Source = (e.Source == null) ? null : new InventoryItemSourceInfoDtoWrapper(e.Source);
             dto.Version = e.Version;
             dto.InventoryItemQuantityOnHand = e.InventoryItemQuantityOnHand;
             dto.InventoryItemQuantityInTransit = e.InventoryItemQuantityInTransit;

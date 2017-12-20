@@ -19,6 +19,8 @@ namespace Dddml.Wms.Domain.DocumentType
 
 		string Description { get; set; }
 
+		string ParentDocumentTypeId { get; set; }
+
 		bool? Active { get; set; }
 
 	}
@@ -32,6 +34,8 @@ namespace Dddml.Wms.Domain.DocumentType
 	public interface IDocumentTypeStateMergePatched : IDocumentTypeStateEvent//, IDocumentTypeStateProperties
 	{
 		bool IsPropertyDescriptionRemoved { get; set; }
+
+		bool IsPropertyParentDocumentTypeIdRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

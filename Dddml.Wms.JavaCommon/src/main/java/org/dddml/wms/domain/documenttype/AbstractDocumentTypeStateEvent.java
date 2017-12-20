@@ -44,6 +44,18 @@ public abstract class AbstractDocumentTypeStateEvent extends AbstractStateEvent 
         this.description = description;
     }
 
+    private String parentDocumentTypeId;
+
+    public String getParentDocumentTypeId()
+    {
+        return this.parentDocumentTypeId;
+    }
+
+    public void setParentDocumentTypeId(String parentDocumentTypeId)
+    {
+        this.parentDocumentTypeId = parentDocumentTypeId;
+    }
+
     private String createdBy;
 
     public String getCreatedBy()
@@ -141,6 +153,16 @@ public abstract class AbstractDocumentTypeStateEvent extends AbstractStateEvent 
 
         public void setIsPropertyDescriptionRemoved(Boolean removed) {
             this.isPropertyDescriptionRemoved = removed;
+        }
+
+        private Boolean isPropertyParentDocumentTypeIdRemoved;
+
+        public Boolean getIsPropertyParentDocumentTypeIdRemoved() {
+            return this.isPropertyParentDocumentTypeIdRemoved;
+        }
+
+        public void setIsPropertyParentDocumentTypeIdRemoved(Boolean removed) {
+            this.isPropertyParentDocumentTypeIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

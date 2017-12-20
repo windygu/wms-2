@@ -33,6 +33,18 @@ public abstract class AbstractDocumentTypeState implements DocumentTypeState
         this.description = description;
     }
 
+    private String parentDocumentTypeId;
+
+    public String getParentDocumentTypeId()
+    {
+        return this.parentDocumentTypeId;
+    }
+
+    public void setParentDocumentTypeId(String parentDocumentTypeId)
+    {
+        this.parentDocumentTypeId = parentDocumentTypeId;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -192,6 +204,7 @@ public abstract class AbstractDocumentTypeState implements DocumentTypeState
         throwOnWrongEvent(e);
 
         this.setDescription(e.getDescription());
+        this.setParentDocumentTypeId(e.getParentDocumentTypeId());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -215,6 +228,17 @@ public abstract class AbstractDocumentTypeState implements DocumentTypeState
         else
         {
             this.setDescription(e.getDescription());
+        }
+        if (e.getParentDocumentTypeId() == null)
+        {
+            if (e.getIsPropertyParentDocumentTypeIdRemoved() != null && e.getIsPropertyParentDocumentTypeIdRemoved())
+            {
+                this.setParentDocumentTypeId(null);
+            }
+        }
+        else
+        {
+            this.setParentDocumentTypeId(e.getParentDocumentTypeId());
         }
         if (e.getActive() == null)
         {
