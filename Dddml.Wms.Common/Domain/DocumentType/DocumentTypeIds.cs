@@ -26,10 +26,14 @@ namespace Dddml.Wms.Domain.DocumentType
         public const string PhysicalInventory = "PhysicalInventory";
 
         /// <summary>
-        /// 移库。
+        /// 移库 / 调拨单。
         /// </summary>
         public const string Movement = "Movement";
 
+        /// <summary>
+        /// 移库 / 调拨确认单。
+        /// </summary>
+        public const string MovementConfirmation = "MovementConfirmation";
 
         // //////////////////// 以上是“父”类型 //////////////////////////
 
