@@ -14,7 +14,6 @@ public final class MovementFilteringProperties
             "documentNumber",
             "documentTypeId",
             "documentStatusId",
-            "movementTypeId",
             "description",
             "version",
             "createdBy",
@@ -26,7 +25,6 @@ public final class MovementFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
-            "String",
             "String",
             "String",
             "String",
@@ -58,8 +56,6 @@ public final class MovementFilteringProperties
         aliasMap.put("DocumentTypeId", "documentTypeId");
         aliasMap.put("documentStatusId", "documentStatusId");
         aliasMap.put("DocumentStatusId", "documentStatusId");
-        aliasMap.put("movementTypeId", "movementTypeId");
-        aliasMap.put("MovementTypeId", "movementTypeId");
         aliasMap.put("description", "description");
         aliasMap.put("Description", "description");
         aliasMap.put("version", "version");

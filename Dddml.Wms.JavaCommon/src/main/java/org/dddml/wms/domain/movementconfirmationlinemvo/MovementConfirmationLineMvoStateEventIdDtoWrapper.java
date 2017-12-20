@@ -1,6 +1,6 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo;
 
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.*;
 import org.dddml.wms.domain.*;
 
 public class MovementConfirmationLineMvoStateEventIdDtoWrapper extends MovementConfirmationLineMvoStateEventIdDto
@@ -37,15 +37,15 @@ public class MovementConfirmationLineMvoStateEventIdDtoWrapper extends MovementC
     }
 
     @Override
-    public Long getMovementVersion()
+    public Long getMovementConfirmationVersion()
     {
-        return this.value.getMovementVersion();
+        return this.value.getMovementConfirmationVersion();
     }
 
     @Override
-    public void setMovementVersion(Long movementVersion)
+    public void setMovementConfirmationVersion(Long movementConfirmationVersion)
     {
-        this.value.setMovementVersion(movementVersion);
+        this.value.setMovementConfirmationVersion(movementConfirmationVersion);
     }
 
 

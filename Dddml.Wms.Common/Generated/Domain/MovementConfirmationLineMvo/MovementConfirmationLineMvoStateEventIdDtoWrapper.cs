@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -38,9 +38,9 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 			set { _value.MovementConfirmationLineId = value.ToMovementConfirmationLineId(); } 
 		}
 
-		public override long MovementVersion { 
-			get { return _value.MovementVersion; } 
-			set { _value.MovementVersion = value; } 
+		public override long MovementConfirmationVersion { 
+			get { return _value.MovementConfirmationVersion; } 
+			set { _value.MovementConfirmationVersion = value; } 
 		}
 
 

@@ -4,22 +4,25 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain.movement">
+<hibernate-mapping package="org.dddml.wms.domain.movementconfirmation">
   
   <class name="AbstractMovementConfirmationLineStateEvent" table="MovementConfirmationLineStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.movement.MovementConfirmationLineStateEventId">
-		<key-property name="movementDocumentNumber" ><column name="MovementConfirmationLineIdMovementDocumentNumber" length="50" /></key-property>
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.movementconfirmation.MovementConfirmationLineStateEventId">
+		<key-property name="movementConfirmationDocumentNumber" ><column name="MovementConfirmationLineIdMovementConfirmationDocumentNumber" length="50" /></key-property>
 		<key-property name="lineNumber" ><column name="MovementConfirmationLineIdLineNumber" length="50" /></key-property>
-		<key-property name="movementVersion" ></key-property>
+		<key-property name="movementConfirmationVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />
 
+	<property name="movementLineNumber" ></property>
 	<property name="targetQuantity" ></property>
 	<property name="confirmedQuantity" ></property>
 	<property name="differenceQuantity" ></property>
 	<property name="scrappedQuantity" ></property>
+	<property name="description" ></property>
+	<property name="processed" ></property>
 	<property name="active" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
@@ -36,6 +39,8 @@
 
     <subclass name="AbstractMovementConfirmationLineStateEvent$SimpleMovementConfirmationLineStateMergePatched" discriminator-value="MergePatched">
 
+        <property name="isPropertyMovementLineNumberRemoved" column="IsPropertyMovementLineNumberRemoved"/>
+
         <property name="isPropertyTargetQuantityRemoved" column="IsPropertyTargetQuantityRemoved"/>
 
         <property name="isPropertyConfirmedQuantityRemoved" column="IsPropertyConfirmedQuantityRemoved"/>
@@ -43,6 +48,10 @@
         <property name="isPropertyDifferenceQuantityRemoved" column="IsPropertyDifferenceQuantityRemoved"/>
 
         <property name="isPropertyScrappedQuantityRemoved" column="IsPropertyScrappedQuantityRemoved"/>
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

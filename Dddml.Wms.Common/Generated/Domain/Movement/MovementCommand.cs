@@ -56,8 +56,6 @@ namespace Dddml.Wms.Domain.Movement
 
 		public virtual string DocumentAction { get; set; }
 
-		public virtual string MovementTypeId { get; set; }
-
 		public virtual string Description { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -109,31 +107,6 @@ namespace Dddml.Wms.Domain.Movement
 
 
 
-        private CreateMovementConfirmationLineCommands _movementConfirmationLines = new CreateMovementConfirmationLineCommands();
-
-        public ICreateMovementConfirmationLineCommands MovementConfirmationLines
-        {
-            get
-            {
-                return this._movementConfirmationLines;
-            }
-        }
-
-        public CreateMovementConfirmationLine NewCreateMovementConfirmationLine()
-        {
-            var c = new CreateMovementConfirmationLine();
-            c.MovementDocumentNumber = this.DocumentNumber;
-
-            return c;
-        }
-
-        ICreateMovementConfirmationLine ICreateMovement.NewCreateMovementConfirmationLine()
-        {
-            return this.NewCreateMovementConfirmationLine();
-        }
-
-
-
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.Create;
@@ -145,8 +118,6 @@ namespace Dddml.Wms.Domain.Movement
 	{
 
 		public virtual bool IsPropertyDocumentTypeIdRemoved { get; set; }
-
-		public virtual bool IsPropertyMovementTypeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -206,58 +177,6 @@ namespace Dddml.Wms.Domain.Movement
         IRemoveMovementLine IMergePatchMovement.NewRemoveMovementLine()
         {
             return this.NewRemoveMovementLine();
-        }
-
-
-        private MovementConfirmationLineCommands _movementConfirmationLineCommands = new MovementConfirmationLineCommands();
-
-        public IMovementConfirmationLineCommands MovementConfirmationLineCommands
-        {
-            get
-            {
-                return this._movementConfirmationLineCommands;
-            }
-        }
-
-
-        public CreateMovementConfirmationLine NewCreateMovementConfirmationLine()
-        {
-            var c = new CreateMovementConfirmationLine();
-            c.MovementDocumentNumber = this.DocumentNumber;
-
-            return c;
-        }
-
-        ICreateMovementConfirmationLine IMergePatchMovement.NewCreateMovementConfirmationLine()
-        {
-            return this.NewCreateMovementConfirmationLine();
-        }
-
-        public MergePatchMovementConfirmationLine NewMergePatchMovementConfirmationLine()
-        {
-            var c = new MergePatchMovementConfirmationLine();
-            c.MovementDocumentNumber = this.DocumentNumber;
-
-            return c;
-        }
-
-        IMergePatchMovementConfirmationLine IMergePatchMovement.NewMergePatchMovementConfirmationLine()
-        {
-            return this.NewMergePatchMovementConfirmationLine();
-        }
-
-
-        public RemoveMovementConfirmationLine NewRemoveMovementConfirmationLine()
-        {
-            var c = new RemoveMovementConfirmationLine();
-            c.MovementDocumentNumber = this.DocumentNumber;
-
-            return c;
-        }
-
-        IRemoveMovementConfirmationLine IMergePatchMovement.NewRemoveMovementConfirmationLine()
-        {
-            return this.NewRemoveMovementConfirmationLine();
         }
 
 
@@ -333,69 +252,6 @@ namespace Dddml.Wms.Domain.Movement
         }
 
         public IEnumerator<IMovementLineCommand> GetEnumerator()
-        {
-            return _innerCommands.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return _innerCommands.GetEnumerator();
-        }
-
-    }
-
-
-    public class CreateMovementConfirmationLineCommands : ICreateMovementConfirmationLineCommands
-    {
-        private List<ICreateMovementConfirmationLine> _innerCommands = new List<ICreateMovementConfirmationLine>();
-
-        public void Add(ICreateMovementConfirmationLine c)
-        {
-            _innerCommands.Add(c);
-        }
-
-        public void Remove(ICreateMovementConfirmationLine c)
-        {
-            _innerCommands.Remove(c);
-        }
-
-        public void Clear()
-        {
-            _innerCommands.Clear();
-        }
-
-        public IEnumerator<ICreateMovementConfirmationLine> GetEnumerator()
-        {
-            return _innerCommands.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return _innerCommands.GetEnumerator();
-        }
-
-    }
-
-    public class MovementConfirmationLineCommands : IMovementConfirmationLineCommands
-    {
-        private List<IMovementConfirmationLineCommand> _innerCommands = new List<IMovementConfirmationLineCommand>();
-
-        public void Add(IMovementConfirmationLineCommand c)
-        {
-            _innerCommands.Add(c);
-        }
-
-        public void Remove(IMovementConfirmationLineCommand c)
-        {
-            _innerCommands.Remove(c);
-        }
-
-        public void Clear()
-        {
-            _innerCommands.Clear();
-        }
-
-        public IEnumerator<IMovementConfirmationLineCommand> GetEnumerator()
         {
             return _innerCommands.GetEnumerator();
         }

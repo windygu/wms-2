@@ -13,6 +13,13 @@ public final class MovementLineFilteringProperties
     public static final String[] propertyNames = new String[] {
             "lineNumber",
             "movementQuantity",
+            "productId",
+            "locatorIdFrom",
+            "locatorIdTo",
+            "attributeSetInstanceIdFrom",
+            "attributeSetInstanceIdTo",
+            "processed",
+            "reversalLineNumber",
             "version",
             "createdBy",
             "createdAt",
@@ -28,6 +35,13 @@ public final class MovementLineFilteringProperties
     public static final String[] propertyTypes = new String[] {
             "String",
             "BigDecimal",
+            "String",
+            "String",
+            "String",
+            "String",
+            "String",
+            "Boolean",
+            "String",
             "Long",
             "String",
             "Date",
@@ -56,6 +70,20 @@ public final class MovementLineFilteringProperties
         aliasMap.put("LineNumber", "movementLineId.lineNumber");
         aliasMap.put("movementQuantity", "movementQuantity");
         aliasMap.put("MovementQuantity", "movementQuantity");
+        aliasMap.put("productId", "productId");
+        aliasMap.put("ProductId", "productId");
+        aliasMap.put("locatorIdFrom", "locatorIdFrom");
+        aliasMap.put("LocatorIdFrom", "locatorIdFrom");
+        aliasMap.put("locatorIdTo", "locatorIdTo");
+        aliasMap.put("LocatorIdTo", "locatorIdTo");
+        aliasMap.put("attributeSetInstanceIdFrom", "attributeSetInstanceIdFrom");
+        aliasMap.put("AttributeSetInstanceIdFrom", "attributeSetInstanceIdFrom");
+        aliasMap.put("attributeSetInstanceIdTo", "attributeSetInstanceIdTo");
+        aliasMap.put("AttributeSetInstanceIdTo", "attributeSetInstanceIdTo");
+        aliasMap.put("processed", "processed");
+        aliasMap.put("Processed", "processed");
+        aliasMap.put("reversalLineNumber", "reversalLineNumber");
+        aliasMap.put("ReversalLineNumber", "reversalLineNumber");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

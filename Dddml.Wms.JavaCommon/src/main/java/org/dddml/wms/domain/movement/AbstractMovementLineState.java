@@ -48,6 +48,90 @@ public abstract class AbstractMovementLineState implements MovementLineState
         this.movementQuantity = movementQuantity;
     }
 
+    private String productId;
+
+    public String getProductId()
+    {
+        return this.productId;
+    }
+
+    public void setProductId(String productId)
+    {
+        this.productId = productId;
+    }
+
+    private String locatorIdFrom;
+
+    public String getLocatorIdFrom()
+    {
+        return this.locatorIdFrom;
+    }
+
+    public void setLocatorIdFrom(String locatorIdFrom)
+    {
+        this.locatorIdFrom = locatorIdFrom;
+    }
+
+    private String locatorIdTo;
+
+    public String getLocatorIdTo()
+    {
+        return this.locatorIdTo;
+    }
+
+    public void setLocatorIdTo(String locatorIdTo)
+    {
+        this.locatorIdTo = locatorIdTo;
+    }
+
+    private String attributeSetInstanceIdFrom;
+
+    public String getAttributeSetInstanceIdFrom()
+    {
+        return this.attributeSetInstanceIdFrom;
+    }
+
+    public void setAttributeSetInstanceIdFrom(String attributeSetInstanceIdFrom)
+    {
+        this.attributeSetInstanceIdFrom = attributeSetInstanceIdFrom;
+    }
+
+    private String attributeSetInstanceIdTo;
+
+    public String getAttributeSetInstanceIdTo()
+    {
+        return this.attributeSetInstanceIdTo;
+    }
+
+    public void setAttributeSetInstanceIdTo(String attributeSetInstanceIdTo)
+    {
+        this.attributeSetInstanceIdTo = attributeSetInstanceIdTo;
+    }
+
+    private Boolean processed;
+
+    public Boolean getProcessed()
+    {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed)
+    {
+        this.processed = processed;
+    }
+
+    private String reversalLineNumber;
+
+    public String getReversalLineNumber()
+    {
+        return this.reversalLineNumber;
+    }
+
+    public void setReversalLineNumber(String reversalLineNumber)
+    {
+        this.reversalLineNumber = reversalLineNumber;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -186,6 +270,13 @@ public abstract class AbstractMovementLineState implements MovementLineState
         throwOnWrongEvent(e);
 
         this.setMovementQuantity(e.getMovementQuantity());
+        this.setProductId(e.getProductId());
+        this.setLocatorIdFrom(e.getLocatorIdFrom());
+        this.setLocatorIdTo(e.getLocatorIdTo());
+        this.setAttributeSetInstanceIdFrom(e.getAttributeSetInstanceIdFrom());
+        this.setAttributeSetInstanceIdTo(e.getAttributeSetInstanceIdTo());
+        this.setProcessed(e.getProcessed());
+        this.setReversalLineNumber(e.getReversalLineNumber());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -209,6 +300,83 @@ public abstract class AbstractMovementLineState implements MovementLineState
         else
         {
             this.setMovementQuantity(e.getMovementQuantity());
+        }
+        if (e.getProductId() == null)
+        {
+            if (e.getIsPropertyProductIdRemoved() != null && e.getIsPropertyProductIdRemoved())
+            {
+                this.setProductId(null);
+            }
+        }
+        else
+        {
+            this.setProductId(e.getProductId());
+        }
+        if (e.getLocatorIdFrom() == null)
+        {
+            if (e.getIsPropertyLocatorIdFromRemoved() != null && e.getIsPropertyLocatorIdFromRemoved())
+            {
+                this.setLocatorIdFrom(null);
+            }
+        }
+        else
+        {
+            this.setLocatorIdFrom(e.getLocatorIdFrom());
+        }
+        if (e.getLocatorIdTo() == null)
+        {
+            if (e.getIsPropertyLocatorIdToRemoved() != null && e.getIsPropertyLocatorIdToRemoved())
+            {
+                this.setLocatorIdTo(null);
+            }
+        }
+        else
+        {
+            this.setLocatorIdTo(e.getLocatorIdTo());
+        }
+        if (e.getAttributeSetInstanceIdFrom() == null)
+        {
+            if (e.getIsPropertyAttributeSetInstanceIdFromRemoved() != null && e.getIsPropertyAttributeSetInstanceIdFromRemoved())
+            {
+                this.setAttributeSetInstanceIdFrom(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetInstanceIdFrom(e.getAttributeSetInstanceIdFrom());
+        }
+        if (e.getAttributeSetInstanceIdTo() == null)
+        {
+            if (e.getIsPropertyAttributeSetInstanceIdToRemoved() != null && e.getIsPropertyAttributeSetInstanceIdToRemoved())
+            {
+                this.setAttributeSetInstanceIdTo(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetInstanceIdTo(e.getAttributeSetInstanceIdTo());
+        }
+        if (e.getProcessed() == null)
+        {
+            if (e.getIsPropertyProcessedRemoved() != null && e.getIsPropertyProcessedRemoved())
+            {
+                this.setProcessed(null);
+            }
+        }
+        else
+        {
+            this.setProcessed(e.getProcessed());
+        }
+        if (e.getReversalLineNumber() == null)
+        {
+            if (e.getIsPropertyReversalLineNumberRemoved() != null && e.getIsPropertyReversalLineNumberRemoved())
+            {
+                this.setReversalLineNumber(null);
+            }
+        }
+        else
+        {
+            this.setReversalLineNumber(e.getReversalLineNumber());
         }
         if (e.getActive() == null)
         {

@@ -35,6 +35,90 @@ public class MovementLineMvoStateDto
         this.movementQuantity = movementQuantity;
     }
 
+    private String productId;
+
+    public String getProductId()
+    {
+        return this.productId;
+    }
+
+    public void setProductId(String productId)
+    {
+        this.productId = productId;
+    }
+
+    private String locatorIdFrom;
+
+    public String getLocatorIdFrom()
+    {
+        return this.locatorIdFrom;
+    }
+
+    public void setLocatorIdFrom(String locatorIdFrom)
+    {
+        this.locatorIdFrom = locatorIdFrom;
+    }
+
+    private String locatorIdTo;
+
+    public String getLocatorIdTo()
+    {
+        return this.locatorIdTo;
+    }
+
+    public void setLocatorIdTo(String locatorIdTo)
+    {
+        this.locatorIdTo = locatorIdTo;
+    }
+
+    private String attributeSetInstanceIdFrom;
+
+    public String getAttributeSetInstanceIdFrom()
+    {
+        return this.attributeSetInstanceIdFrom;
+    }
+
+    public void setAttributeSetInstanceIdFrom(String attributeSetInstanceIdFrom)
+    {
+        this.attributeSetInstanceIdFrom = attributeSetInstanceIdFrom;
+    }
+
+    private String attributeSetInstanceIdTo;
+
+    public String getAttributeSetInstanceIdTo()
+    {
+        return this.attributeSetInstanceIdTo;
+    }
+
+    public void setAttributeSetInstanceIdTo(String attributeSetInstanceIdTo)
+    {
+        this.attributeSetInstanceIdTo = attributeSetInstanceIdTo;
+    }
+
+    private Boolean processed;
+
+    public Boolean getProcessed()
+    {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed)
+    {
+        this.processed = processed;
+    }
+
+    private String reversalLineNumber;
+
+    public String getReversalLineNumber()
+    {
+        return this.reversalLineNumber;
+    }
+
+    public void setReversalLineNumber(String reversalLineNumber)
+    {
+        this.reversalLineNumber = reversalLineNumber;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -81,18 +165,6 @@ public class MovementLineMvoStateDto
     public void setMovementDocumentStatusId(String movementDocumentStatusId)
     {
         this.movementDocumentStatusId = movementDocumentStatusId;
-    }
-
-    private String movementMovementTypeId;
-
-    public String getMovementMovementTypeId()
-    {
-        return this.movementMovementTypeId;
-    }
-
-    public void setMovementMovementTypeId(String movementMovementTypeId)
-    {
-        this.movementMovementTypeId = movementMovementTypeId;
     }
 
     private String movementDescription;
@@ -271,6 +343,27 @@ public class MovementLineMvoStateDto
             if (returnedFieldsContains("MovementQuantity")) {
                 dto.setMovementQuantity(state.getMovementQuantity());
             }
+            if (returnedFieldsContains("ProductId")) {
+                dto.setProductId(state.getProductId());
+            }
+            if (returnedFieldsContains("LocatorIdFrom")) {
+                dto.setLocatorIdFrom(state.getLocatorIdFrom());
+            }
+            if (returnedFieldsContains("LocatorIdTo")) {
+                dto.setLocatorIdTo(state.getLocatorIdTo());
+            }
+            if (returnedFieldsContains("AttributeSetInstanceIdFrom")) {
+                dto.setAttributeSetInstanceIdFrom(state.getAttributeSetInstanceIdFrom());
+            }
+            if (returnedFieldsContains("AttributeSetInstanceIdTo")) {
+                dto.setAttributeSetInstanceIdTo(state.getAttributeSetInstanceIdTo());
+            }
+            if (returnedFieldsContains("Processed")) {
+                dto.setProcessed(state.getProcessed());
+            }
+            if (returnedFieldsContains("ReversalLineNumber")) {
+                dto.setReversalLineNumber(state.getReversalLineNumber());
+            }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());
             }
@@ -282,9 +375,6 @@ public class MovementLineMvoStateDto
             }
             if (returnedFieldsContains("MovementDocumentStatusId")) {
                 dto.setMovementDocumentStatusId(state.getMovementDocumentStatusId());
-            }
-            if (returnedFieldsContains("MovementMovementTypeId")) {
-                dto.setMovementMovementTypeId(state.getMovementMovementTypeId());
             }
             if (returnedFieldsContains("MovementDescription")) {
                 dto.setMovementDescription(state.getMovementDescription());

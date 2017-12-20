@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
 	public interface IMovementConfirmationLineMvoCommand : IAggregateCommand<MovementConfirmationLineId, long>, ICommandDto
 	{
-		long MovementVersion { get; set; }
+		long MovementConfirmationVersion { get; set; }
 
 		MovementConfirmationLineId MovementConfirmationLineId { get; set; }
 
@@ -24,6 +24,8 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 	public interface ICreateOrMergePatchOrDeleteMovementConfirmationLineMvo : IMovementConfirmationLineMvoCommand
 	{
 
+		string MovementLineNumber { get; set; }
+
 		decimal? TargetQuantity { get; set; }
 
 		decimal? ConfirmedQuantity { get; set; }
@@ -32,29 +34,41 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		decimal? ScrappedQuantity { get; set; }
 
+		string Description { get; set; }
+
+		bool? Processed { get; set; }
+
 		long? Version { get; set; }
 
 		bool? Active { get; set; }
 
-		string MovementDocumentTypeId { get; set; }
+		string MovementConfirmationDocumentTypeId { get; set; }
 
 		string DocumentAction { get; set; }
 
-		string MovementMovementTypeId { get; set; }
+		string MovementConfirmationMovementDocumentNumber { get; set; }
 
-		string MovementDescription { get; set; }
+		bool? MovementConfirmationIsApproved { get; set; }
 
-		string MovementCreatedBy { get; set; }
+		decimal? MovementConfirmationApprovalAmount { get; set; }
 
-		DateTime? MovementCreatedAt { get; set; }
+		string MovementConfirmationProcessing { get; set; }
 
-		string MovementUpdatedBy { get; set; }
+		bool? MovementConfirmationProcessed { get; set; }
 
-		DateTime? MovementUpdatedAt { get; set; }
+		string MovementConfirmationDescription { get; set; }
 
-		bool? MovementActive { get; set; }
+		string MovementConfirmationCreatedBy { get; set; }
 
-		bool? MovementDeleted { get; set; }
+		DateTime? MovementConfirmationCreatedAt { get; set; }
+
+		string MovementConfirmationUpdatedBy { get; set; }
+
+		DateTime? MovementConfirmationUpdatedAt { get; set; }
+
+		bool? MovementConfirmationActive { get; set; }
+
+		bool? MovementConfirmationDeleted { get; set; }
 
 
 	}
@@ -66,6 +80,8 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 	public interface IMergePatchMovementConfirmationLineMvo : ICreateOrMergePatchOrDeleteMovementConfirmationLineMvo
 	{
 
+		bool IsPropertyMovementLineNumberRemoved { get; set; }
+
 		bool IsPropertyTargetQuantityRemoved { get; set; }
 
 		bool IsPropertyConfirmedQuantityRemoved { get; set; }
@@ -74,27 +90,39 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		bool IsPropertyScrappedQuantityRemoved { get; set; }
 
+		bool IsPropertyDescriptionRemoved { get; set; }
+
+		bool IsPropertyProcessedRemoved { get; set; }
+
 		bool IsPropertyVersionRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 
-		bool IsPropertyMovementDocumentTypeIdRemoved { get; set; }
+		bool IsPropertyMovementConfirmationDocumentTypeIdRemoved { get; set; }
 
-		bool IsPropertyMovementMovementTypeIdRemoved { get; set; }
+		bool IsPropertyMovementConfirmationMovementDocumentNumberRemoved { get; set; }
 
-		bool IsPropertyMovementDescriptionRemoved { get; set; }
+		bool IsPropertyMovementConfirmationIsApprovedRemoved { get; set; }
 
-		bool IsPropertyMovementCreatedByRemoved { get; set; }
+		bool IsPropertyMovementConfirmationApprovalAmountRemoved { get; set; }
 
-		bool IsPropertyMovementCreatedAtRemoved { get; set; }
+		bool IsPropertyMovementConfirmationProcessingRemoved { get; set; }
 
-		bool IsPropertyMovementUpdatedByRemoved { get; set; }
+		bool IsPropertyMovementConfirmationProcessedRemoved { get; set; }
 
-		bool IsPropertyMovementUpdatedAtRemoved { get; set; }
+		bool IsPropertyMovementConfirmationDescriptionRemoved { get; set; }
 
-		bool IsPropertyMovementActiveRemoved { get; set; }
+		bool IsPropertyMovementConfirmationCreatedByRemoved { get; set; }
 
-		bool IsPropertyMovementDeletedRemoved { get; set; }
+		bool IsPropertyMovementConfirmationCreatedAtRemoved { get; set; }
+
+		bool IsPropertyMovementConfirmationUpdatedByRemoved { get; set; }
+
+		bool IsPropertyMovementConfirmationUpdatedAtRemoved { get; set; }
+
+		bool IsPropertyMovementConfirmationActiveRemoved { get; set; }
+
+		bool IsPropertyMovementConfirmationDeletedRemoved { get; set; }
 
 
 	}

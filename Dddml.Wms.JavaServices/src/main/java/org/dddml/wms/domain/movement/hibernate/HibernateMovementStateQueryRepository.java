@@ -27,7 +27,7 @@ public class HibernateMovementStateQueryRepository implements MovementStateQuery
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("DocumentNumber", "DocumentTypeId", "DocumentStatusId", "MovementTypeId", "Description", "MovementLines", "MovementConfirmationLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("DocumentNumber", "DocumentTypeId", "DocumentStatusId", "Description", "MovementLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -138,13 +138,6 @@ public class HibernateMovementStateQueryRepository implements MovementStateQuery
     {
         MovementLineId entityId = new MovementLineId(movementDocumentNumber, lineNumber);
         return (MovementLineState) getCurrentSession().get(AbstractMovementLineState.SimpleMovementLineState.class, entityId);
-    }
-
-    @Transactional(readOnly = true)
-    public MovementConfirmationLineState getMovementConfirmationLine(String movementDocumentNumber, String lineNumber)
-    {
-        MovementConfirmationLineId entityId = new MovementConfirmationLineId(movementDocumentNumber, lineNumber);
-        return (MovementConfirmationLineState) getCurrentSession().get(AbstractMovementConfirmationLineState.SimpleMovementConfirmationLineState.class, entityId);
     }
 
 

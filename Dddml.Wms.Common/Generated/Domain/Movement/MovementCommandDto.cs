@@ -57,8 +57,6 @@ namespace Dddml.Wms.Domain.Movement
 
 		public virtual string DocumentAction { get; set; }
 
-		public virtual string MovementTypeId { get; set; }
-
 		public virtual string Description { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -79,25 +77,6 @@ namespace Dddml.Wms.Domain.Movement
             set
             {
                 this.IsPropertyDocumentTypeIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyMovementTypeIdRemoved { get; set; }
-
-        bool IMergePatchMovement.IsPropertyMovementTypeIdRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyMovementTypeIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyMovementTypeIdRemoved = value;
             }
         }
 
@@ -211,81 +190,6 @@ namespace Dddml.Wms.Domain.Movement
             {
                 _movementLines.Clear();
                 _movementLines.AddRange(value);
-            }
-        }
-
-        ICreateMovementConfirmationLineCommands ICreateMovement.MovementConfirmationLines
-        {
-            get
-            {
-                return this._movementConfirmationLines;
-            }
-        }
-
-        IMovementConfirmationLineCommands IMergePatchMovement.MovementConfirmationLineCommands
-        {
-            get
-            {
-                return this._movementConfirmationLines;
-            }
-        }
-
-        public virtual CreateMovementConfirmationLineDto NewCreateMovementConfirmationLine()
-        {
-            var c = new CreateMovementConfirmationLineDto();
-            c.MovementDocumentNumber = this.DocumentNumber;
-
-            return c;
-        }
-
-        ICreateMovementConfirmationLine ICreateMovement.NewCreateMovementConfirmationLine()
-        {
-            return this.NewCreateMovementConfirmationLine();
-        }
-
-        ICreateMovementConfirmationLine IMergePatchMovement.NewCreateMovementConfirmationLine()
-        {
-            return this.NewCreateMovementConfirmationLine();
-        }
-
-        public virtual MergePatchMovementConfirmationLineDto NewMergePatchMovementConfirmationLine()
-        {
-            var c = new MergePatchMovementConfirmationLineDto();
-            c.MovementDocumentNumber = this.DocumentNumber;
-
-            return c;
-        }
-
-        IMergePatchMovementConfirmationLine IMergePatchMovement.NewMergePatchMovementConfirmationLine()
-        {
-            return this.NewMergePatchMovementConfirmationLine();
-        }
-
-        public virtual RemoveMovementConfirmationLineDto NewRemoveMovementConfirmationLine()
-        {
-            var c = new RemoveMovementConfirmationLineDto();
-            c.MovementDocumentNumber = this.DocumentNumber;
-
-            return c;
-        }
-
-        IRemoveMovementConfirmationLine IMergePatchMovement.NewRemoveMovementConfirmationLine()
-        {
-            return this.NewRemoveMovementConfirmationLine();
-        }
-
-        private CreateOrMergePatchOrRemoveMovementConfirmationLineDtos _movementConfirmationLines = new CreateOrMergePatchOrRemoveMovementConfirmationLineDtos();
-
-        public virtual CreateOrMergePatchOrRemoveMovementConfirmationLineDto[] MovementConfirmationLines
-        {
-            get
-            {
-                return _movementConfirmationLines.ToArray();
-            }
-            set
-            {
-                _movementConfirmationLines.Clear();
-                _movementConfirmationLines.AddRange(value);
             }
         }
 

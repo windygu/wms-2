@@ -170,11 +170,6 @@ namespace Dddml.Wms.Domain.Movement
             return StateQueryRepository.GetMovementLine(movementDocumentNumber, lineNumber);
         }
 
-        public virtual IMovementConfirmationLineState GetMovementConfirmationLine(string movementDocumentNumber, string lineNumber)
-        {
-            return StateQueryRepository.GetMovementConfirmationLine(movementDocumentNumber, lineNumber);
-        }
-
 
 		public abstract IMovementAggregate GetMovementAggregate(IMovementState state);
 

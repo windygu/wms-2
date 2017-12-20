@@ -20,6 +20,20 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		decimal? MovementQuantity { get; set; }
 
+		string ProductId { get; set; }
+
+		string LocatorIdFrom { get; set; }
+
+		string LocatorIdTo { get; set; }
+
+		string AttributeSetInstanceIdFrom { get; set; }
+
+		string AttributeSetInstanceIdTo { get; set; }
+
+		bool? Processed { get; set; }
+
+		string ReversalLineNumber { get; set; }
+
 		long? Version { get; set; }
 
 		bool? Active { get; set; }
@@ -27,8 +41,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		string MovementDocumentTypeId { get; set; }
 
 		string MovementDocumentStatusId { get; set; }
-
-		string MovementMovementTypeId { get; set; }
 
 		string MovementDescription { get; set; }
 
@@ -56,6 +68,20 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 	{
 		bool IsPropertyMovementQuantityRemoved { get; set; }
 
+		bool IsPropertyProductIdRemoved { get; set; }
+
+		bool IsPropertyLocatorIdFromRemoved { get; set; }
+
+		bool IsPropertyLocatorIdToRemoved { get; set; }
+
+		bool IsPropertyAttributeSetInstanceIdFromRemoved { get; set; }
+
+		bool IsPropertyAttributeSetInstanceIdToRemoved { get; set; }
+
+		bool IsPropertyProcessedRemoved { get; set; }
+
+		bool IsPropertyReversalLineNumberRemoved { get; set; }
+
 		bool IsPropertyVersionRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
@@ -63,8 +89,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		bool IsPropertyMovementDocumentTypeIdRemoved { get; set; }
 
 		bool IsPropertyMovementDocumentStatusIdRemoved { get; set; }
-
-		bool IsPropertyMovementMovementTypeIdRemoved { get; set; }
 
 		bool IsPropertyMovementDescriptionRemoved { get; set; }
 

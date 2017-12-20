@@ -57,18 +57,6 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
         this.documentStatusId = documentStatusId;
     }
 
-    private String movementTypeId;
-
-    public String getMovementTypeId()
-    {
-        return this.movementTypeId;
-    }
-
-    public void setMovementTypeId(String movementTypeId)
-    {
-        this.movementTypeId = movementTypeId;
-    }
-
     private String description;
 
     public String getDescription()
@@ -161,32 +149,6 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
         }
     }
 
-    protected MovementConfirmationLineStateEventDao getMovementConfirmationLineStateEventDao() {
-        return (MovementConfirmationLineStateEventDao)ApplicationContext.current.get("MovementConfirmationLineStateEventDao");
-    }
-
-    protected MovementConfirmationLineStateEventId newMovementConfirmationLineStateEventId(String lineNumber)
-    {
-        MovementConfirmationLineStateEventId stateEventId = new MovementConfirmationLineStateEventId(this.getStateEventId().getDocumentNumber(), 
-            lineNumber, 
-            this.getStateEventId().getVersion());
-        return stateEventId;
-    }
-
-    protected void throwOnInconsistentEventIds(MovementConfirmationLineStateEvent e)
-    {
-        throwOnInconsistentEventIds(this, e);
-    }
-
-    public static void throwOnInconsistentEventIds(MovementStateEvent oe, MovementConfirmationLineStateEvent e)
-    {
-        if (!oe.getStateEventId().getDocumentNumber().equals(e.getStateEventId().getMovementDocumentNumber()))
-        { 
-            throw DomainError.named("inconsistentEventIds", "Outer Id DocumentNumber %1$s but inner id MovementDocumentNumber %2$s", 
-                oe.getStateEventId().getDocumentNumber(), e.getStateEventId().getMovementDocumentNumber());
-        }
-    }
-
     public MovementLineStateEvent.MovementLineStateCreated newMovementLineStateCreated(String lineNumber) {
         return new AbstractMovementLineStateEvent.SimpleMovementLineStateCreated(newMovementLineStateEventId(lineNumber));
     }
@@ -197,18 +159,6 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
 
     public MovementLineStateEvent.MovementLineStateRemoved newMovementLineStateRemoved(String lineNumber) {
         return new AbstractMovementLineStateEvent.SimpleMovementLineStateRemoved(newMovementLineStateEventId(lineNumber));
-    }
-
-    public MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated newMovementConfirmationLineStateCreated(String lineNumber) {
-        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateCreated(newMovementConfirmationLineStateEventId(lineNumber));
-    }
-
-    public MovementConfirmationLineStateEvent.MovementConfirmationLineStateMergePatched newMovementConfirmationLineStateMergePatched(String lineNumber) {
-        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateMergePatched(newMovementConfirmationLineStateEventId(lineNumber));
-    }
-
-    public MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved newMovementConfirmationLineStateRemoved(String lineNumber) {
-        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateRemoved(newMovementConfirmationLineStateEventId(lineNumber));
     }
 
 
@@ -271,55 +221,10 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
             this.movementLineEvents.put(e.getStateEventId(), e);
         }
 
-        private Map<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated> movementConfirmationLineEvents = new HashMap<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated>();
-        
-        private Iterable<MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated> readOnlyMovementConfirmationLineEvents;
-
-        public Iterable<MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated> getMovementConfirmationLineEvents()
-        {
-            if (!getStateEventReadOnly())
-            {
-                return this.movementConfirmationLineEvents.values();
-            }
-            else
-            {
-                if (readOnlyMovementConfirmationLineEvents != null) { return readOnlyMovementConfirmationLineEvents; }
-                MovementConfirmationLineStateEventDao eventDao = getMovementConfirmationLineStateEventDao();
-                List<MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated> eL = new ArrayList<MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated>();
-                for (MovementConfirmationLineStateEvent e : eventDao.findByMovementStateEventId(this.getStateEventId()))
-                {
-                    e.setStateEventReadOnly(true);
-                    eL.add((MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated)e);
-                }
-                return (readOnlyMovementConfirmationLineEvents = eL);
-            }
-        }
-
-        public void setMovementConfirmationLineEvents(Iterable<MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated> es)
-        {
-            if (es != null)
-            {
-                for (MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated e : es)
-                {
-                    addMovementConfirmationLineEvent(e);
-                }
-            }
-            else { this.movementConfirmationLineEvents.clear(); }
-        }
-        
-        public void addMovementConfirmationLineEvent(MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated e)
-        {
-            throwOnInconsistentEventIds(e);
-            this.movementConfirmationLineEvents.put(e.getStateEventId(), e);
-        }
-
         public void save()
         {
             for (MovementLineStateEvent.MovementLineStateCreated e : this.getMovementLineEvents()) {
                 getMovementLineStateEventDao().save(e);
-            }
-            for (MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated e : this.getMovementConfirmationLineEvents()) {
-                getMovementConfirmationLineStateEventDao().save(e);
             }
         }
     }
@@ -357,16 +262,6 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
 
         public void setIsPropertyDocumentStatusIdRemoved(Boolean removed) {
             this.isPropertyDocumentStatusIdRemoved = removed;
-        }
-
-        private Boolean isPropertyMovementTypeIdRemoved;
-
-        public Boolean getIsPropertyMovementTypeIdRemoved() {
-            return this.isPropertyMovementTypeIdRemoved;
-        }
-
-        public void setIsPropertyMovementTypeIdRemoved(Boolean removed) {
-            this.isPropertyMovementTypeIdRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;
@@ -431,55 +326,10 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
             this.movementLineEvents.put(e.getStateEventId(), e);
         }
 
-        private Map<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent> movementConfirmationLineEvents = new HashMap<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent>();
-        
-        private Iterable<MovementConfirmationLineStateEvent> readOnlyMovementConfirmationLineEvents;
-
-        public Iterable<MovementConfirmationLineStateEvent> getMovementConfirmationLineEvents()
-        {
-            if (!getStateEventReadOnly())
-            {
-                return this.movementConfirmationLineEvents.values();
-            }
-            else
-            {
-                if (readOnlyMovementConfirmationLineEvents != null) { return readOnlyMovementConfirmationLineEvents; }
-                MovementConfirmationLineStateEventDao eventDao = getMovementConfirmationLineStateEventDao();
-                List<MovementConfirmationLineStateEvent> eL = new ArrayList<MovementConfirmationLineStateEvent>();
-                for (MovementConfirmationLineStateEvent e : eventDao.findByMovementStateEventId(this.getStateEventId()))
-                {
-                    e.setStateEventReadOnly(true);
-                    eL.add((MovementConfirmationLineStateEvent)e);
-                }
-                return (readOnlyMovementConfirmationLineEvents = eL);
-            }
-        }
-
-        public void setMovementConfirmationLineEvents(Iterable<MovementConfirmationLineStateEvent> es)
-        {
-            if (es != null)
-            {
-                for (MovementConfirmationLineStateEvent e : es)
-                {
-                    addMovementConfirmationLineEvent(e);
-                }
-            }
-            else { this.movementConfirmationLineEvents.clear(); }
-        }
-        
-        public void addMovementConfirmationLineEvent(MovementConfirmationLineStateEvent e)
-        {
-            throwOnInconsistentEventIds(e);
-            this.movementConfirmationLineEvents.put(e.getStateEventId(), e);
-        }
-
         public void save()
         {
             for (MovementLineStateEvent e : this.getMovementLineEvents()) {
                 getMovementLineStateEventDao().save(e);
-            }
-            for (MovementConfirmationLineStateEvent e : this.getMovementConfirmationLineEvents()) {
-                getMovementConfirmationLineStateEventDao().save(e);
             }
         }
     }
@@ -542,56 +392,10 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
             this.movementLineEvents.put(e.getStateEventId(), e);
         }
 
-		
-        private Map<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved> movementConfirmationLineEvents = new HashMap<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved>();
-        
-        private Iterable<MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved> readOnlyMovementConfirmationLineEvents;
-
-        public Iterable<MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved> getMovementConfirmationLineEvents()
-        {
-            if (!getStateEventReadOnly())
-            {
-                return this.movementConfirmationLineEvents.values();
-            }
-            else
-            {
-                if (readOnlyMovementConfirmationLineEvents != null) { return readOnlyMovementConfirmationLineEvents; }
-                MovementConfirmationLineStateEventDao eventDao = getMovementConfirmationLineStateEventDao();
-                List<MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved> eL = new ArrayList<MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved>();
-                for (MovementConfirmationLineStateEvent e : eventDao.findByMovementStateEventId(this.getStateEventId()))
-                {
-                    e.setStateEventReadOnly(true);
-                    eL.add((MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved)e);
-                }
-                return (readOnlyMovementConfirmationLineEvents = eL);
-            }
-        }
-
-        public void setMovementConfirmationLineEvents(Iterable<MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved> es)
-        {
-            if (es != null)
-            {
-                for (MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved e : es)
-                {
-                    addMovementConfirmationLineEvent(e);
-                }
-            }
-            else { this.movementConfirmationLineEvents.clear(); }
-        }
-        
-        public void addMovementConfirmationLineEvent(MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved e)
-        {
-            throwOnInconsistentEventIds(e);
-            this.movementConfirmationLineEvents.put(e.getStateEventId(), e);
-        }
-
         public void save()
         {
             for (MovementLineStateEvent.MovementLineStateRemoved e : this.getMovementLineEvents()) {
                 getMovementLineStateEventDao().save(e);
-            }
-            for (MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved e : this.getMovementConfirmationLineEvents()) {
-                getMovementConfirmationLineStateEventDao().save(e);
             }
         }
     }

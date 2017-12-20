@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo;
 
 import java.util.*;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -21,6 +21,18 @@ public class MovementConfirmationLineMvoStateDto
     public void setMovementConfirmationLineId(MovementConfirmationLineIdDto movementConfirmationLineId)
     {
         this.movementConfirmationLineId = movementConfirmationLineId;
+    }
+
+    private String movementLineNumber;
+
+    public String getMovementLineNumber()
+    {
+        return this.movementLineNumber;
+    }
+
+    public void setMovementLineNumber(String movementLineNumber)
+    {
+        this.movementLineNumber = movementLineNumber;
     }
 
     private BigDecimal targetQuantity;
@@ -71,6 +83,30 @@ public class MovementConfirmationLineMvoStateDto
         this.scrappedQuantity = scrappedQuantity;
     }
 
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
+
+    private Boolean processed;
+
+    public Boolean getProcessed()
+    {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed)
+    {
+        this.processed = processed;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -95,136 +131,184 @@ public class MovementConfirmationLineMvoStateDto
         this.active = active;
     }
 
-    private String movementDocumentTypeId;
+    private String movementConfirmationDocumentTypeId;
 
-    public String getMovementDocumentTypeId()
+    public String getMovementConfirmationDocumentTypeId()
     {
-        return this.movementDocumentTypeId;
+        return this.movementConfirmationDocumentTypeId;
     }
 
-    public void setMovementDocumentTypeId(String movementDocumentTypeId)
+    public void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId)
     {
-        this.movementDocumentTypeId = movementDocumentTypeId;
+        this.movementConfirmationDocumentTypeId = movementConfirmationDocumentTypeId;
     }
 
-    private String movementDocumentStatusId;
+    private String movementConfirmationDocumentStatusId;
 
-    public String getMovementDocumentStatusId()
+    public String getMovementConfirmationDocumentStatusId()
     {
-        return this.movementDocumentStatusId;
+        return this.movementConfirmationDocumentStatusId;
     }
 
-    public void setMovementDocumentStatusId(String movementDocumentStatusId)
+    public void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId)
     {
-        this.movementDocumentStatusId = movementDocumentStatusId;
+        this.movementConfirmationDocumentStatusId = movementConfirmationDocumentStatusId;
     }
 
-    private String movementMovementTypeId;
+    private String movementConfirmationMovementDocumentNumber;
 
-    public String getMovementMovementTypeId()
+    public String getMovementConfirmationMovementDocumentNumber()
     {
-        return this.movementMovementTypeId;
+        return this.movementConfirmationMovementDocumentNumber;
     }
 
-    public void setMovementMovementTypeId(String movementMovementTypeId)
+    public void setMovementConfirmationMovementDocumentNumber(String movementConfirmationMovementDocumentNumber)
     {
-        this.movementMovementTypeId = movementMovementTypeId;
+        this.movementConfirmationMovementDocumentNumber = movementConfirmationMovementDocumentNumber;
     }
 
-    private String movementDescription;
+    private Boolean movementConfirmationIsApproved;
 
-    public String getMovementDescription()
+    public Boolean getMovementConfirmationIsApproved()
     {
-        return this.movementDescription;
+        return this.movementConfirmationIsApproved;
     }
 
-    public void setMovementDescription(String movementDescription)
+    public void setMovementConfirmationIsApproved(Boolean movementConfirmationIsApproved)
     {
-        this.movementDescription = movementDescription;
+        this.movementConfirmationIsApproved = movementConfirmationIsApproved;
     }
 
-    private String movementCreatedBy;
+    private BigDecimal movementConfirmationApprovalAmount;
 
-    public String getMovementCreatedBy()
+    public BigDecimal getMovementConfirmationApprovalAmount()
     {
-        return this.movementCreatedBy;
+        return this.movementConfirmationApprovalAmount;
     }
 
-    public void setMovementCreatedBy(String movementCreatedBy)
+    public void setMovementConfirmationApprovalAmount(BigDecimal movementConfirmationApprovalAmount)
     {
-        this.movementCreatedBy = movementCreatedBy;
+        this.movementConfirmationApprovalAmount = movementConfirmationApprovalAmount;
     }
 
-    private Date movementCreatedAt;
+    private String movementConfirmationProcessing;
 
-    public Date getMovementCreatedAt()
+    public String getMovementConfirmationProcessing()
     {
-        return this.movementCreatedAt;
+        return this.movementConfirmationProcessing;
     }
 
-    public void setMovementCreatedAt(Date movementCreatedAt)
+    public void setMovementConfirmationProcessing(String movementConfirmationProcessing)
     {
-        this.movementCreatedAt = movementCreatedAt;
+        this.movementConfirmationProcessing = movementConfirmationProcessing;
     }
 
-    private String movementUpdatedBy;
+    private Boolean movementConfirmationProcessed;
 
-    public String getMovementUpdatedBy()
+    public Boolean getMovementConfirmationProcessed()
     {
-        return this.movementUpdatedBy;
+        return this.movementConfirmationProcessed;
     }
 
-    public void setMovementUpdatedBy(String movementUpdatedBy)
+    public void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed)
     {
-        this.movementUpdatedBy = movementUpdatedBy;
+        this.movementConfirmationProcessed = movementConfirmationProcessed;
     }
 
-    private Date movementUpdatedAt;
+    private String movementConfirmationDescription;
 
-    public Date getMovementUpdatedAt()
+    public String getMovementConfirmationDescription()
     {
-        return this.movementUpdatedAt;
+        return this.movementConfirmationDescription;
     }
 
-    public void setMovementUpdatedAt(Date movementUpdatedAt)
+    public void setMovementConfirmationDescription(String movementConfirmationDescription)
     {
-        this.movementUpdatedAt = movementUpdatedAt;
+        this.movementConfirmationDescription = movementConfirmationDescription;
     }
 
-    private Boolean movementActive;
+    private String movementConfirmationCreatedBy;
 
-    public Boolean getMovementActive()
+    public String getMovementConfirmationCreatedBy()
     {
-        return this.movementActive;
+        return this.movementConfirmationCreatedBy;
     }
 
-    public void setMovementActive(Boolean movementActive)
+    public void setMovementConfirmationCreatedBy(String movementConfirmationCreatedBy)
     {
-        this.movementActive = movementActive;
+        this.movementConfirmationCreatedBy = movementConfirmationCreatedBy;
     }
 
-    private Boolean movementDeleted;
+    private Date movementConfirmationCreatedAt;
 
-    public Boolean getMovementDeleted()
+    public Date getMovementConfirmationCreatedAt()
     {
-        return this.movementDeleted;
+        return this.movementConfirmationCreatedAt;
     }
 
-    public void setMovementDeleted(Boolean movementDeleted)
+    public void setMovementConfirmationCreatedAt(Date movementConfirmationCreatedAt)
     {
-        this.movementDeleted = movementDeleted;
+        this.movementConfirmationCreatedAt = movementConfirmationCreatedAt;
     }
 
-    private Long movementVersion;
+    private String movementConfirmationUpdatedBy;
 
-    public Long getMovementVersion()
+    public String getMovementConfirmationUpdatedBy()
     {
-        return this.movementVersion;
+        return this.movementConfirmationUpdatedBy;
     }
 
-    public void setMovementVersion(Long movementVersion)
+    public void setMovementConfirmationUpdatedBy(String movementConfirmationUpdatedBy)
     {
-        this.movementVersion = movementVersion;
+        this.movementConfirmationUpdatedBy = movementConfirmationUpdatedBy;
+    }
+
+    private Date movementConfirmationUpdatedAt;
+
+    public Date getMovementConfirmationUpdatedAt()
+    {
+        return this.movementConfirmationUpdatedAt;
+    }
+
+    public void setMovementConfirmationUpdatedAt(Date movementConfirmationUpdatedAt)
+    {
+        this.movementConfirmationUpdatedAt = movementConfirmationUpdatedAt;
+    }
+
+    private Boolean movementConfirmationActive;
+
+    public Boolean getMovementConfirmationActive()
+    {
+        return this.movementConfirmationActive;
+    }
+
+    public void setMovementConfirmationActive(Boolean movementConfirmationActive)
+    {
+        this.movementConfirmationActive = movementConfirmationActive;
+    }
+
+    private Boolean movementConfirmationDeleted;
+
+    public Boolean getMovementConfirmationDeleted()
+    {
+        return this.movementConfirmationDeleted;
+    }
+
+    public void setMovementConfirmationDeleted(Boolean movementConfirmationDeleted)
+    {
+        this.movementConfirmationDeleted = movementConfirmationDeleted;
+    }
+
+    private Long movementConfirmationVersion;
+
+    public Long getMovementConfirmationVersion()
+    {
+        return this.movementConfirmationVersion;
+    }
+
+    public void setMovementConfirmationVersion(Long movementConfirmationVersion)
+    {
+        this.movementConfirmationVersion = movementConfirmationVersion;
     }
 
     private String createdBy;
@@ -304,6 +388,9 @@ public class MovementConfirmationLineMvoStateDto
             if (returnedFieldsContains("MovementConfirmationLineId")) {
                 dto.setMovementConfirmationLineId((state.getMovementConfirmationLineId() == null) ? null : new MovementConfirmationLineIdDtoWrapper(state.getMovementConfirmationLineId()));
             }
+            if (returnedFieldsContains("MovementLineNumber")) {
+                dto.setMovementLineNumber(state.getMovementLineNumber());
+            }
             if (returnedFieldsContains("TargetQuantity")) {
                 dto.setTargetQuantity(state.getTargetQuantity());
             }
@@ -316,44 +403,62 @@ public class MovementConfirmationLineMvoStateDto
             if (returnedFieldsContains("ScrappedQuantity")) {
                 dto.setScrappedQuantity(state.getScrappedQuantity());
             }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("Processed")) {
+                dto.setProcessed(state.getProcessed());
+            }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());
             }
-            if (returnedFieldsContains("MovementDocumentTypeId")) {
-                dto.setMovementDocumentTypeId(state.getMovementDocumentTypeId());
+            if (returnedFieldsContains("MovementConfirmationDocumentTypeId")) {
+                dto.setMovementConfirmationDocumentTypeId(state.getMovementConfirmationDocumentTypeId());
             }
-            if (returnedFieldsContains("MovementDocumentStatusId")) {
-                dto.setMovementDocumentStatusId(state.getMovementDocumentStatusId());
+            if (returnedFieldsContains("MovementConfirmationDocumentStatusId")) {
+                dto.setMovementConfirmationDocumentStatusId(state.getMovementConfirmationDocumentStatusId());
             }
-            if (returnedFieldsContains("MovementMovementTypeId")) {
-                dto.setMovementMovementTypeId(state.getMovementMovementTypeId());
+            if (returnedFieldsContains("MovementConfirmationMovementDocumentNumber")) {
+                dto.setMovementConfirmationMovementDocumentNumber(state.getMovementConfirmationMovementDocumentNumber());
             }
-            if (returnedFieldsContains("MovementDescription")) {
-                dto.setMovementDescription(state.getMovementDescription());
+            if (returnedFieldsContains("MovementConfirmationIsApproved")) {
+                dto.setMovementConfirmationIsApproved(state.getMovementConfirmationIsApproved());
             }
-            if (returnedFieldsContains("MovementCreatedBy")) {
-                dto.setMovementCreatedBy(state.getMovementCreatedBy());
+            if (returnedFieldsContains("MovementConfirmationApprovalAmount")) {
+                dto.setMovementConfirmationApprovalAmount(state.getMovementConfirmationApprovalAmount());
             }
-            if (returnedFieldsContains("MovementCreatedAt")) {
-                dto.setMovementCreatedAt(state.getMovementCreatedAt());
+            if (returnedFieldsContains("MovementConfirmationProcessing")) {
+                dto.setMovementConfirmationProcessing(state.getMovementConfirmationProcessing());
             }
-            if (returnedFieldsContains("MovementUpdatedBy")) {
-                dto.setMovementUpdatedBy(state.getMovementUpdatedBy());
+            if (returnedFieldsContains("MovementConfirmationProcessed")) {
+                dto.setMovementConfirmationProcessed(state.getMovementConfirmationProcessed());
             }
-            if (returnedFieldsContains("MovementUpdatedAt")) {
-                dto.setMovementUpdatedAt(state.getMovementUpdatedAt());
+            if (returnedFieldsContains("MovementConfirmationDescription")) {
+                dto.setMovementConfirmationDescription(state.getMovementConfirmationDescription());
             }
-            if (returnedFieldsContains("MovementActive")) {
-                dto.setMovementActive(state.getMovementActive());
+            if (returnedFieldsContains("MovementConfirmationCreatedBy")) {
+                dto.setMovementConfirmationCreatedBy(state.getMovementConfirmationCreatedBy());
             }
-            if (returnedFieldsContains("MovementDeleted")) {
-                dto.setMovementDeleted(state.getMovementDeleted());
+            if (returnedFieldsContains("MovementConfirmationCreatedAt")) {
+                dto.setMovementConfirmationCreatedAt(state.getMovementConfirmationCreatedAt());
             }
-            if (returnedFieldsContains("MovementVersion")) {
-                dto.setMovementVersion(state.getMovementVersion());
+            if (returnedFieldsContains("MovementConfirmationUpdatedBy")) {
+                dto.setMovementConfirmationUpdatedBy(state.getMovementConfirmationUpdatedBy());
+            }
+            if (returnedFieldsContains("MovementConfirmationUpdatedAt")) {
+                dto.setMovementConfirmationUpdatedAt(state.getMovementConfirmationUpdatedAt());
+            }
+            if (returnedFieldsContains("MovementConfirmationActive")) {
+                dto.setMovementConfirmationActive(state.getMovementConfirmationActive());
+            }
+            if (returnedFieldsContains("MovementConfirmationDeleted")) {
+                dto.setMovementConfirmationDeleted(state.getMovementConfirmationDeleted());
+            }
+            if (returnedFieldsContains("MovementConfirmationVersion")) {
+                dto.setMovementConfirmationVersion(state.getMovementConfirmationVersion());
             }
             if (returnedFieldsContains("CreatedBy")) {
                 dto.setCreatedBy(state.getCreatedBy());

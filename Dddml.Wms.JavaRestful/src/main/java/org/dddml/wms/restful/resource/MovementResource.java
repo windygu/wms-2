@@ -194,20 +194,6 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{movementDocumentNumber}/MovementConfirmationLines/{lineNumber}") @GET
-    public MovementConfirmationLineStateDto getMovementConfirmationLine(@PathParam("movementDocumentNumber") String movementDocumentNumber, @PathParam("lineNumber") String lineNumber) {
-        try {
-
-            MovementConfirmationLineState state = movementApplicationService.getMovementConfirmationLine(movementDocumentNumber, lineNumber);
-            if (state == null) { return null; }
-            MovementConfirmationLineStateDto.DtoConverter dtoConverter = new MovementConfirmationLineStateDto.DtoConverter();
-            MovementConfirmationLineStateDto stateDto = dtoConverter.toMovementConfirmationLineStateDto(state);
-            dtoConverter.setAllFieldsReturned(true);
-            return stateDto;
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
 
     protected  MovementStateEventDtoConverter getMovementStateEventDtoConverter() {
         return new MovementStateEventDtoConverter();

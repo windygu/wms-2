@@ -13,7 +13,6 @@
 
 	<property name="documentTypeId" ></property>
 	<property name="documentStatusId" ></property>
-	<property name="movementTypeId" ></property>
 	<property name="description" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>

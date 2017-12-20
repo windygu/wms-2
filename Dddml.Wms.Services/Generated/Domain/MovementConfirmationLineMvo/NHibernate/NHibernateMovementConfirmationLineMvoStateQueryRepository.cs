@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 using Dddml.Wms.Specialization.NHibernate;
 using NHibernate;
 using NHibernate.Criterion;
@@ -29,7 +29,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "MovementConfirmationLineId", "TargetQuantity", "ConfirmedQuantity", "DifferenceQuantity", "ScrappedQuantity", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "MovementDocumentTypeId", "MovementDocumentStatusId", "MovementMovementTypeId", "MovementDescription", "MovementMovementLines", "MovementMovementConfirmationLines", "MovementVersion", "MovementCreatedBy", "MovementCreatedAt", "MovementUpdatedBy", "MovementUpdatedAt", "MovementActive", "MovementDeleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "MovementConfirmationLineId", "MovementLineNumber", "TargetQuantity", "ConfirmedQuantity", "DifferenceQuantity", "ScrappedQuantity", "Description", "Processed", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "MovementConfirmationDocumentTypeId", "MovementConfirmationDocumentStatusId", "MovementConfirmationMovementDocumentNumber", "MovementConfirmationIsApproved", "MovementConfirmationApprovalAmount", "MovementConfirmationProcessing", "MovementConfirmationProcessed", "MovementConfirmationDescription", "MovementConfirmationMovementConfirmationLines", "MovementConfirmationVersion", "MovementConfirmationCreatedBy", "MovementConfirmationCreatedAt", "MovementConfirmationUpdatedBy", "MovementConfirmationUpdatedAt", "MovementConfirmationActive", "MovementConfirmationDeleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

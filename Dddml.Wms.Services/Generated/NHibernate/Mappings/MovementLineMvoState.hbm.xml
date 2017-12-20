@@ -13,6 +13,13 @@
 	<version name="MovementVersion" column="MovementVersion" type="long" unsaved-value="0"/>
 
     <property name="MovementQuantity" ></property>
+    <property name="ProductId" ></property>
+    <property name="LocatorIdFrom" ></property>
+    <property name="LocatorIdTo" ></property>
+    <property name="AttributeSetInstanceIdFrom" ></property>
+    <property name="AttributeSetInstanceIdTo" ></property>
+    <property name="Processed" ></property>
+    <property name="ReversalLineNumber" ></property>
     <property name="Version" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
@@ -20,7 +27,6 @@
     <property name="Deleted" ></property>
     <property name="MovementDocumentTypeId" ></property>
     <property name="MovementDocumentStatusId" ></property>
-    <property name="MovementMovementTypeId" ></property>
     <property name="MovementDescription" ></property>
     <property name="MovementCreatedBy" ></property>
     <property name="MovementCreatedAt" ></property>

@@ -44,6 +44,13 @@ namespace Dddml.Wms.Domain.Movement
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
             dto.MovementQuantity = e.MovementQuantity;
+            dto.ProductId = e.ProductId;
+            dto.LocatorIdFrom = e.LocatorIdFrom;
+            dto.LocatorIdTo = e.LocatorIdTo;
+            dto.AttributeSetInstanceIdFrom = e.AttributeSetInstanceIdFrom;
+            dto.AttributeSetInstanceIdTo = e.AttributeSetInstanceIdTo;
+            dto.Processed = e.Processed;
+            dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Active = e.Active;
             return dto;
         }
@@ -57,8 +64,22 @@ namespace Dddml.Wms.Domain.Movement
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
             dto.MovementQuantity = e.MovementQuantity;
+            dto.ProductId = e.ProductId;
+            dto.LocatorIdFrom = e.LocatorIdFrom;
+            dto.LocatorIdTo = e.LocatorIdTo;
+            dto.AttributeSetInstanceIdFrom = e.AttributeSetInstanceIdFrom;
+            dto.AttributeSetInstanceIdTo = e.AttributeSetInstanceIdTo;
+            dto.Processed = e.Processed;
+            dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Active = e.Active;
             dto.IsPropertyMovementQuantityRemoved = e.IsPropertyMovementQuantityRemoved;
+            dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
+            dto.IsPropertyLocatorIdFromRemoved = e.IsPropertyLocatorIdFromRemoved;
+            dto.IsPropertyLocatorIdToRemoved = e.IsPropertyLocatorIdToRemoved;
+            dto.IsPropertyAttributeSetInstanceIdFromRemoved = e.IsPropertyAttributeSetInstanceIdFromRemoved;
+            dto.IsPropertyAttributeSetInstanceIdToRemoved = e.IsPropertyAttributeSetInstanceIdToRemoved;
+            dto.IsPropertyProcessedRemoved = e.IsPropertyProcessedRemoved;
+            dto.IsPropertyReversalLineNumberRemoved = e.IsPropertyReversalLineNumberRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 
             return dto;

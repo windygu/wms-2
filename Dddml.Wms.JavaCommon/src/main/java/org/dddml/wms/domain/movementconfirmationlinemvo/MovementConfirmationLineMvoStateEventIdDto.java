@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo;
 
-import org.dddml.wms.domain.movement.MovementConfirmationLineIdDto;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.MovementConfirmationLineIdDto;
+import org.dddml.wms.domain.movementconfirmation.*;
 import org.dddml.wms.domain.*;
 
 public class MovementConfirmationLineMvoStateEventIdDto
@@ -15,7 +15,7 @@ public class MovementConfirmationLineMvoStateEventIdDto
     {
         MovementConfirmationLineMvoStateEventId v = new MovementConfirmationLineMvoStateEventId();
         v.setMovementConfirmationLineId(this.getMovementConfirmationLineId().toMovementConfirmationLineId());
-        v.setMovementVersion(this.getMovementVersion());
+        v.setMovementConfirmationVersion(this.getMovementConfirmationVersion());
         return v;
     }
 
@@ -31,16 +31,16 @@ public class MovementConfirmationLineMvoStateEventIdDto
         this.movementConfirmationLineId = movementConfirmationLineId;
     }
 
-    private Long movementVersion;
+    private Long movementConfirmationVersion;
 
-    public Long getMovementVersion()
+    public Long getMovementConfirmationVersion()
     {
-        return this.movementVersion;
+        return this.movementConfirmationVersion;
     }
 
-    public void setMovementVersion(Long movementVersion)
+    public void setMovementConfirmationVersion(Long movementConfirmationVersion)
     {
-        this.movementVersion = movementVersion;
+        this.movementConfirmationVersion = movementConfirmationVersion;
     }
 
 
@@ -57,7 +57,7 @@ public class MovementConfirmationLineMvoStateEventIdDto
         MovementConfirmationLineMvoStateEventIdDto other = (MovementConfirmationLineMvoStateEventIdDto)obj;
         return true 
             && (getMovementConfirmationLineId() == other.getMovementConfirmationLineId() || (getMovementConfirmationLineId() != null && getMovementConfirmationLineId().equals(other.getMovementConfirmationLineId())))
-            && (getMovementVersion() == other.getMovementVersion() || (getMovementVersion() != null && getMovementVersion().equals(other.getMovementVersion())))
+            && (getMovementConfirmationVersion() == other.getMovementConfirmationVersion() || (getMovementConfirmationVersion() != null && getMovementConfirmationVersion().equals(other.getMovementConfirmationVersion())))
             ;
 
     }
@@ -69,8 +69,8 @@ public class MovementConfirmationLineMvoStateEventIdDto
         if (this.getMovementConfirmationLineId() != null) {
             hash += 13 * this.getMovementConfirmationLineId().hashCode();
         }
-        if (this.getMovementVersion() != null) {
-            hash += 13 * this.getMovementVersion().hashCode();
+        if (this.getMovementConfirmationVersion() != null) {
+            hash += 13 * this.getMovementConfirmationVersion().hashCode();
         }
         return hash;
     }

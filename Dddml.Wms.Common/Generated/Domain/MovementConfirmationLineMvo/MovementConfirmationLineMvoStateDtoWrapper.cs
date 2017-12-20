@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -65,6 +65,34 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set 
             {
                 (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationLineId = value;
+            }
+        }
+
+		public virtual string MovementLineNumber
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementLineNumber"))
+                {
+                    return _state.MovementLineNumber;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementLineNumber = value;
+            }
+        }
+
+        string IMovementConfirmationLineMvoStateProperties.MovementLineNumber
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementLineNumber;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementLineNumber = value;
             }
         }
 
@@ -192,6 +220,65 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             }
         }
 
+		public virtual string Description
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Description"))
+                {
+                    return _state.Description;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Description = value;
+            }
+        }
+
+        string IMovementConfirmationLineMvoStateProperties.Description
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationLineMvoStateProperties).Description;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationLineMvoStateProperties).Description = value;
+            }
+        }
+
+		public virtual bool? Processed
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Processed"))
+                {
+                    return _state.Processed;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.Processed = value.Value;
+                }
+            }
+        }
+
+        bool IMovementConfirmationLineMvoStateProperties.Processed
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationLineMvoStateProperties).Processed;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationLineMvoStateProperties).Processed = value;
+            }
+        }
+
 		public virtual long? Version
         {
             get
@@ -254,153 +341,97 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             }
         }
 
-		public virtual string MovementDocumentTypeId
+		public virtual string MovementConfirmationDocumentTypeId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementDocumentTypeId"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationDocumentTypeId"))
                 {
-                    return _state.MovementDocumentTypeId;
+                    return _state.MovementConfirmationDocumentTypeId;
                 }
                 return null;
             }
             set
             {
-                _state.MovementDocumentTypeId = value;
+                _state.MovementConfirmationDocumentTypeId = value;
             }
         }
 
-        string IMovementConfirmationLineMvoStateProperties.MovementDocumentTypeId
+        string IMovementConfirmationLineMvoStateProperties.MovementConfirmationDocumentTypeId
         {
             get 
             {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementDocumentTypeId;
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDocumentTypeId;
             }
             set 
             {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementDocumentTypeId = value;
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDocumentTypeId = value;
             }
         }
 
-		public virtual string MovementDocumentStatusId
+		public virtual string MovementConfirmationDocumentStatusId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementDocumentStatusId"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationDocumentStatusId"))
                 {
-                    return _state.MovementDocumentStatusId;
+                    return _state.MovementConfirmationDocumentStatusId;
                 }
                 return null;
             }
             set
             {
-                _state.MovementDocumentStatusId = value;
+                _state.MovementConfirmationDocumentStatusId = value;
             }
         }
 
-        string IMovementConfirmationLineMvoStateProperties.MovementDocumentStatusId
+        string IMovementConfirmationLineMvoStateProperties.MovementConfirmationDocumentStatusId
         {
             get 
             {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementDocumentStatusId;
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDocumentStatusId;
             }
             set 
             {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementDocumentStatusId = value;
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDocumentStatusId = value;
             }
         }
 
-		public virtual string MovementMovementTypeId
+		public virtual string MovementConfirmationMovementDocumentNumber
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementMovementTypeId"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationMovementDocumentNumber"))
                 {
-                    return _state.MovementMovementTypeId;
+                    return _state.MovementConfirmationMovementDocumentNumber;
                 }
                 return null;
             }
             set
             {
-                _state.MovementMovementTypeId = value;
+                _state.MovementConfirmationMovementDocumentNumber = value;
             }
         }
 
-        string IMovementConfirmationLineMvoStateProperties.MovementMovementTypeId
+        string IMovementConfirmationLineMvoStateProperties.MovementConfirmationMovementDocumentNumber
         {
             get 
             {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementMovementTypeId;
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationMovementDocumentNumber;
             }
             set 
             {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementMovementTypeId = value;
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationMovementDocumentNumber = value;
             }
         }
 
-		public virtual string MovementDescription
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementDescription"))
-                {
-                    return _state.MovementDescription;
-                }
-                return null;
-            }
-            set
-            {
-                _state.MovementDescription = value;
-            }
-        }
-
-        string IMovementConfirmationLineMvoStateProperties.MovementDescription
-        {
-            get 
-            {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementDescription;
-            }
-            set 
-            {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementDescription = value;
-            }
-        }
-
-		public virtual string MovementCreatedBy
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementCreatedBy"))
-                {
-                    return _state.MovementCreatedBy;
-                }
-                return null;
-            }
-            set
-            {
-                _state.MovementCreatedBy = value;
-            }
-        }
-
-        string IMovementConfirmationLineMvoStateProperties.MovementCreatedBy
-        {
-            get 
-            {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementCreatedBy;
-            }
-            set 
-            {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementCreatedBy = value;
-            }
-        }
-
-		public virtual DateTime? MovementCreatedAt
+		public virtual bool? MovementConfirmationIsApproved
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementCreatedAt"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationIsApproved"))
                 {
-                    return _state.MovementCreatedAt.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.MovementCreatedAt;
+                    return _state.MovementConfirmationIsApproved;
                 }
                 return null;
             }
@@ -408,58 +439,89 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.MovementCreatedAt = value.Value;
+                    _state.MovementConfirmationIsApproved = value.Value;
                 }
             }
         }
 
-        DateTime IMovementConfirmationLineMvoStateProperties.MovementCreatedAt
+        bool IMovementConfirmationLineMvoStateProperties.MovementConfirmationIsApproved
         {
             get 
             {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementCreatedAt;
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationIsApproved;
             }
             set 
             {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementCreatedAt = value;
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationIsApproved = value;
             }
         }
 
-		public virtual string MovementUpdatedBy
+		public virtual decimal? MovementConfirmationApprovalAmount
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationApprovalAmount"))
+                {
+                    return _state.MovementConfirmationApprovalAmount;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementConfirmationApprovalAmount = value.Value;
+                }
+            }
+        }
+
+        decimal IMovementConfirmationLineMvoStateProperties.MovementConfirmationApprovalAmount
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationApprovalAmount;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationApprovalAmount = value;
+            }
+        }
+
+		public virtual string MovementConfirmationProcessing
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementUpdatedBy"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationProcessing"))
                 {
-                    return _state.MovementUpdatedBy;
+                    return _state.MovementConfirmationProcessing;
                 }
                 return null;
             }
             set
             {
-                _state.MovementUpdatedBy = value;
+                _state.MovementConfirmationProcessing = value;
             }
         }
 
-        string IMovementConfirmationLineMvoStateProperties.MovementUpdatedBy
+        string IMovementConfirmationLineMvoStateProperties.MovementConfirmationProcessing
         {
             get 
             {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementUpdatedBy;
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationProcessing;
             }
             set 
             {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementUpdatedBy = value;
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationProcessing = value;
             }
         }
 
-		public virtual DateTime? MovementUpdatedAt
+		public virtual bool? MovementConfirmationProcessed
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementUpdatedAt"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationProcessed"))
                 {
-                    return _state.MovementUpdatedAt.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.MovementUpdatedAt;
+                    return _state.MovementConfirmationProcessed;
                 }
                 return null;
             }
@@ -467,30 +529,86 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.MovementUpdatedAt = value.Value;
+                    _state.MovementConfirmationProcessed = value.Value;
                 }
             }
         }
 
-        DateTime IMovementConfirmationLineMvoStateProperties.MovementUpdatedAt
+        bool IMovementConfirmationLineMvoStateProperties.MovementConfirmationProcessed
         {
             get 
             {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementUpdatedAt;
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationProcessed;
             }
             set 
             {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementUpdatedAt = value;
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationProcessed = value;
             }
         }
 
-		public virtual bool? MovementActive
+		public virtual string MovementConfirmationDescription
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationDescription"))
+                {
+                    return _state.MovementConfirmationDescription;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementConfirmationDescription = value;
+            }
+        }
+
+        string IMovementConfirmationLineMvoStateProperties.MovementConfirmationDescription
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDescription;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDescription = value;
+            }
+        }
+
+		public virtual string MovementConfirmationCreatedBy
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationCreatedBy"))
+                {
+                    return _state.MovementConfirmationCreatedBy;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementConfirmationCreatedBy = value;
+            }
+        }
+
+        string IMovementConfirmationLineMvoStateProperties.MovementConfirmationCreatedBy
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationCreatedBy;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationCreatedBy = value;
+            }
+        }
+
+		public virtual DateTime? MovementConfirmationCreatedAt
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementActive"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationCreatedAt"))
                 {
-                    return _state.MovementActive;
+                    return _state.MovementConfirmationCreatedAt.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.MovementConfirmationCreatedAt;
                 }
                 return null;
             }
@@ -498,30 +616,58 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.MovementActive = value.Value;
+                    _state.MovementConfirmationCreatedAt = value.Value;
                 }
             }
         }
 
-        bool IMovementConfirmationLineMvoStateProperties.MovementActive
+        DateTime IMovementConfirmationLineMvoStateProperties.MovementConfirmationCreatedAt
         {
             get 
             {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementActive;
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationCreatedAt;
             }
             set 
             {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementActive = value;
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationCreatedAt = value;
             }
         }
 
-		public virtual bool? MovementDeleted
+		public virtual string MovementConfirmationUpdatedBy
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationUpdatedBy"))
+                {
+                    return _state.MovementConfirmationUpdatedBy;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementConfirmationUpdatedBy = value;
+            }
+        }
+
+        string IMovementConfirmationLineMvoStateProperties.MovementConfirmationUpdatedBy
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationUpdatedBy;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationUpdatedBy = value;
+            }
+        }
+
+		public virtual DateTime? MovementConfirmationUpdatedAt
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementDeleted"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationUpdatedAt"))
                 {
-                    return _state.MovementDeleted;
+                    return _state.MovementConfirmationUpdatedAt.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.MovementConfirmationUpdatedAt;
                 }
                 return null;
             }
@@ -529,30 +675,30 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.MovementDeleted = value.Value;
+                    _state.MovementConfirmationUpdatedAt = value.Value;
                 }
             }
         }
 
-        bool IMovementConfirmationLineMvoStateProperties.MovementDeleted
+        DateTime IMovementConfirmationLineMvoStateProperties.MovementConfirmationUpdatedAt
         {
             get 
             {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementDeleted;
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationUpdatedAt;
             }
             set 
             {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementDeleted = value;
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationUpdatedAt = value;
             }
         }
 
-		public virtual long? MovementVersion
+		public virtual bool? MovementConfirmationActive
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementVersion"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationActive"))
                 {
-                    return _state.MovementVersion;
+                    return _state.MovementConfirmationActive;
                 }
                 return null;
             }
@@ -560,20 +706,82 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.MovementVersion = value.Value;
+                    _state.MovementConfirmationActive = value.Value;
                 }
             }
         }
 
-        long IMovementConfirmationLineMvoStateProperties.MovementVersion
+        bool IMovementConfirmationLineMvoStateProperties.MovementConfirmationActive
         {
             get 
             {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementVersion;
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationActive;
             }
             set 
             {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementVersion = value;
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationActive = value;
+            }
+        }
+
+		public virtual bool? MovementConfirmationDeleted
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationDeleted"))
+                {
+                    return _state.MovementConfirmationDeleted;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementConfirmationDeleted = value.Value;
+                }
+            }
+        }
+
+        bool IMovementConfirmationLineMvoStateProperties.MovementConfirmationDeleted
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDeleted;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDeleted = value;
+            }
+        }
+
+		public virtual long? MovementConfirmationVersion
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationVersion"))
+                {
+                    return _state.MovementConfirmationVersion;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementConfirmationVersion = value.Value;
+                }
+            }
+        }
+
+        long IMovementConfirmationLineMvoStateProperties.MovementConfirmationVersion
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationVersion;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationVersion = value;
             }
         }
 
@@ -710,14 +918,14 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		long IAggregateVersioned<long>.AggregateVersion
 		{
-            get { return (_state as IMovementConfirmationLineMvoStateProperties).MovementVersion; }
+            get { return (_state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationVersion; }
 		}
 
 		#endregion
 
         bool IMovementConfirmationLineMvoState.IsUnsaved
         {
-            get { return this.MovementVersion == MovementConfirmationLineMvoState.VersionZero; }
+            get { return this.MovementConfirmationVersion == MovementConfirmationLineMvoState.VersionZero; }
         }
 
 		void IMovementConfirmationLineMvoState.When(IMovementConfirmationLineMvoStateCreated e)

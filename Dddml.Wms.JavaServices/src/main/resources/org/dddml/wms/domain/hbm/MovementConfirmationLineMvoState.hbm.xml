@@ -8,31 +8,38 @@
   
   <class name="org.dddml.wms.domain.movementconfirmationlinemvo.AbstractMovementConfirmationLineMvoState$SimpleMovementConfirmationLineMvoState" table="MovementConfirmationLine_RV">
 
-	<composite-id name="movementConfirmationLineId" class="org.dddml.wms.domain.movement.MovementConfirmationLineId">
-		<key-property name="movementDocumentNumber" ><column name="MovementConfirmationLineIdMovementDocumentNumber" length="50" /></key-property>
+	<composite-id name="movementConfirmationLineId" class="org.dddml.wms.domain.movementconfirmation.MovementConfirmationLineId">
+		<key-property name="movementConfirmationDocumentNumber" ><column name="MovementConfirmationLineIdMovementConfirmationDocumentNumber" length="50" /></key-property>
 		<key-property name="lineNumber" ><column name="MovementConfirmationLineIdLineNumber" length="50" /></key-property>
 	</composite-id>
-	<version name="movementVersion" column="MovementVersion" type="long" />
+	<version name="movementConfirmationVersion" column="MovementConfirmationVersion" type="long" />
 
+	<property name="movementLineNumber" ></property>
 	<property name="targetQuantity" ></property>
 	<property name="confirmedQuantity" ></property>
 	<property name="differenceQuantity" ></property>
 	<property name="scrappedQuantity" ></property>
+	<property name="description" ></property>
+	<property name="processed" ></property>
 	<property name="version" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>
 	<property name="deleted" ></property>
-	<property name="movementDocumentTypeId" ></property>
-	<property name="movementDocumentStatusId" ></property>
-	<property name="movementMovementTypeId" ></property>
-	<property name="movementDescription" ></property>
-	<property name="movementCreatedBy" ></property>
-	<property name="movementCreatedAt" ></property>
-	<property name="movementUpdatedBy" ></property>
-	<property name="movementUpdatedAt" ></property>
-	<property name="movementActive" ></property>
-	<property name="movementDeleted" ></property>
+	<property name="movementConfirmationDocumentTypeId" ></property>
+	<property name="movementConfirmationDocumentStatusId" ></property>
+	<property name="movementConfirmationMovementDocumentNumber" ></property>
+	<property name="movementConfirmationIsApproved" ></property>
+	<property name="movementConfirmationApprovalAmount" ></property>
+	<property name="movementConfirmationProcessing" ></property>
+	<property name="movementConfirmationProcessed" ></property>
+	<property name="movementConfirmationDescription" ></property>
+	<property name="movementConfirmationCreatedBy" ></property>
+	<property name="movementConfirmationCreatedAt" ></property>
+	<property name="movementConfirmationUpdatedBy" ></property>
+	<property name="movementConfirmationUpdatedAt" ></property>
+	<property name="movementConfirmationActive" ></property>
+	<property name="movementConfirmationDeleted" ></property>
 
     <property name="createdAt" column="CreatedAt" />
 

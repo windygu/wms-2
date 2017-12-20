@@ -35,7 +35,8 @@ public class BoundedContextMetadata {
         map.put("InventoryPRTriggered", "InventoryPRTriggered");
         map.put("Movement", "Movement");
         map.put("MovementLine", "Movement");
-        map.put("MovementConfirmationLine", "Movement");
+        map.put("MovementConfirmation", "MovementConfirmation");
+        map.put("MovementConfirmationLine", "MovementConfirmation");
         map.put("MovementType", "MovementType");
         map.put("Order", "Order");
         map.put("OrderItem", "Order");

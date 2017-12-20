@@ -2202,6 +2202,9 @@
     <Compile Include="Generated\Domain\Metadata\MovementConfirmationLineMvoMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Metadata\MovementConfirmationMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\MovementLineMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -2360,6 +2363,180 @@
     </Compile>
     <Compile Include="Generated\Domain\MovementConfirmationLineMvo\MovementConfirmationLineMvoStateProperties.cs">
       <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationAggregate.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationApplicationService.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationApplicationServiceFactory.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationCommand.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationLineCommand.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationLineState.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationLineStateDao.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationLineStateDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationLineStateEvent.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationLineStateEventDao.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationLineStateProperties.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationLineStates.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationState.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationStateDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationStateEvent.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationStateProperties.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationStateQueryRepository.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\IMovementConfirmationStateRepository.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationAggregate.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationApplicationServiceBase.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationApplicationServiceFactory.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationCommand.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationCommandDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineCommand.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineCommandDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineId.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineIdDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineIdDtoWrapper.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineIdFlattenedDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineState.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateDtoExtension.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateDtoWrapper.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateEvent.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateEventDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateEventDtoConverter.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateEventId.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateEventIdDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateExtension.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateInterfaceExtension.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStateProperties.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineStates.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationState.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateDtoExtension.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateDtoWrapper.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateEvent.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateEventDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateEventDtoConverter.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateEventId.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateEventIdDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateExtension.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateInterfaceExtension.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationStateProperties.cs">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\MovementLineMvo\IMovementLineMvoAggregate.cs">
       <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
@@ -2547,30 +2724,6 @@
     <Compile Include="Generated\Domain\Movement\IMovementCommand.cs">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Movement\IMovementConfirmationLineCommand.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\IMovementConfirmationLineState.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\IMovementConfirmationLineStateDao.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\IMovementConfirmationLineStateDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\IMovementConfirmationLineStateEvent.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\IMovementConfirmationLineStateEventDao.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\IMovementConfirmationLineStateProperties.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\IMovementConfirmationLineStates.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Movement\IMovementLineCommand.cs">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Compile>
@@ -2626,69 +2779,6 @@
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Movement\MovementCommandDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineCommand.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineCommandDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineId.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineIdDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineIdDtoWrapper.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineIdFlattenedDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineState.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateDtoExtension.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateDtoWrapper.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateEvent.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateEventDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateEventDtoConverter.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateEventId.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateEventIdDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateExtension.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateInterfaceExtension.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStateProperties.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementConfirmationLineStates.cs">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Movement\MovementLineCommand.cs">
@@ -4693,6 +4783,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\MovementConfirmation\GenerateMovementConfirmationDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\MovementLineMvo\GenerateMovementLineMvoDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -6410,14 +6505,6 @@
 .\IMovementApplicationService.cs
 .\IMovementApplicationServiceFactory.cs
 .\IMovementCommand.cs
-.\IMovementConfirmationLineCommand.cs
-.\IMovementConfirmationLineState.cs
-.\IMovementConfirmationLineStateDao.cs
-.\IMovementConfirmationLineStateDto.cs
-.\IMovementConfirmationLineStateEvent.cs
-.\IMovementConfirmationLineStateEventDao.cs
-.\IMovementConfirmationLineStateProperties.cs
-.\IMovementConfirmationLineStates.cs
 .\IMovementLineCommand.cs
 .\IMovementLineState.cs
 .\IMovementLineStateDao.cs
@@ -6437,27 +6524,6 @@
 .\MovementApplicationServiceFactory.cs
 .\MovementCommand.cs
 .\MovementCommandDto.cs
-.\MovementConfirmationLineCommand.cs
-.\MovementConfirmationLineCommandDto.cs
-.\MovementConfirmationLineId.cs
-.\MovementConfirmationLineIdDto.cs
-.\MovementConfirmationLineIdDtoWrapper.cs
-.\MovementConfirmationLineIdFlattenedDto.cs
-.\MovementConfirmationLineState.cs
-.\MovementConfirmationLineStateDto.cs
-.\MovementConfirmationLineStateDtoExtension.cs
-.\MovementConfirmationLineStateDtoWrapper.cs
-.\MovementConfirmationLineStateEvent.cs
-.\MovementConfirmationLineStateEventDto.cs
-.\MovementConfirmationLineStateEventDtoConverter.cs
-.\MovementConfirmationLineStateEventId.cs
-.\MovementConfirmationLineStateEventIdDto.cs
-.\MovementConfirmationLineStateEventIdDtoWrapper.cs
-.\MovementConfirmationLineStateEventIdFlattenedDto.cs
-.\MovementConfirmationLineStateExtension.cs
-.\MovementConfirmationLineStateInterfaceExtension.cs
-.\MovementConfirmationLineStateProperties.cs
-.\MovementConfirmationLineStates.cs
 .\MovementLineCommand.cs
 .\MovementLineCommandDto.cs
 .\MovementLineId.cs
@@ -6567,6 +6633,71 @@
 .\MovementConfirmationLineMvoStateProperties.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\MovementConfirmation\GenerateMovementConfirmationDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateMovementConfirmationDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateMovementConfirmationDomain.txt
+.\IMovementConfirmationAggregate.cs
+.\IMovementConfirmationApplicationService.cs
+.\IMovementConfirmationApplicationServiceFactory.cs
+.\IMovementConfirmationCommand.cs
+.\IMovementConfirmationLineCommand.cs
+.\IMovementConfirmationLineState.cs
+.\IMovementConfirmationLineStateDao.cs
+.\IMovementConfirmationLineStateDto.cs
+.\IMovementConfirmationLineStateEvent.cs
+.\IMovementConfirmationLineStateEventDao.cs
+.\IMovementConfirmationLineStateProperties.cs
+.\IMovementConfirmationLineStates.cs
+.\IMovementConfirmationState.cs
+.\IMovementConfirmationStateDto.cs
+.\IMovementConfirmationStateEvent.cs
+.\IMovementConfirmationStateProperties.cs
+.\IMovementConfirmationStateQueryRepository.cs
+.\IMovementConfirmationStateRepository.cs
+.\MovementConfirmationAggregate.cs
+.\MovementConfirmationApplicationServiceBase.cs
+.\MovementConfirmationApplicationServiceFactory.cs
+.\MovementConfirmationCommand.cs
+.\MovementConfirmationCommandDto.cs
+.\MovementConfirmationLineCommand.cs
+.\MovementConfirmationLineCommandDto.cs
+.\MovementConfirmationLineId.cs
+.\MovementConfirmationLineIdDto.cs
+.\MovementConfirmationLineIdDtoWrapper.cs
+.\MovementConfirmationLineIdFlattenedDto.cs
+.\MovementConfirmationLineState.cs
+.\MovementConfirmationLineStateDto.cs
+.\MovementConfirmationLineStateDtoExtension.cs
+.\MovementConfirmationLineStateDtoWrapper.cs
+.\MovementConfirmationLineStateEvent.cs
+.\MovementConfirmationLineStateEventDto.cs
+.\MovementConfirmationLineStateEventDtoConverter.cs
+.\MovementConfirmationLineStateEventId.cs
+.\MovementConfirmationLineStateEventIdDto.cs
+.\MovementConfirmationLineStateEventIdDtoWrapper.cs
+.\MovementConfirmationLineStateEventIdFlattenedDto.cs
+.\MovementConfirmationLineStateExtension.cs
+.\MovementConfirmationLineStateInterfaceExtension.cs
+.\MovementConfirmationLineStateProperties.cs
+.\MovementConfirmationLineStates.cs
+.\MovementConfirmationState.cs
+.\MovementConfirmationStateDto.cs
+.\MovementConfirmationStateDtoExtension.cs
+.\MovementConfirmationStateDtoWrapper.cs
+.\MovementConfirmationStateEvent.cs
+.\MovementConfirmationStateEventDto.cs
+.\MovementConfirmationStateEventDtoConverter.cs
+.\MovementConfirmationStateEventId.cs
+.\MovementConfirmationStateEventIdDto.cs
+.\MovementConfirmationStateEventIdDtoWrapper.cs
+.\MovementConfirmationStateEventIdFlattenedDto.cs
+.\MovementConfirmationStateExtension.cs
+.\MovementConfirmationStateInterfaceExtension.cs
+.\MovementConfirmationStateProperties.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -6633,6 +6764,7 @@
 .\LocatorMetadata.cs
 .\MovementConfirmationLineMetadata.cs
 .\MovementConfirmationLineMvoMetadata.cs
+.\MovementConfirmationMetadata.cs
 .\MovementLineMetadata.cs
 .\MovementLineMvoMetadata.cs
 .\MovementMetadata.cs

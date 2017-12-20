@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
         {
             var cmd = new TDeleteMovementConfirmationLineMvo();
             cmd.MovementConfirmationLineId = state.MovementConfirmationLineId;
-            cmd.MovementVersion = ((IMovementConfirmationLineMvoStateProperties)state).MovementVersion;
+            cmd.MovementConfirmationVersion = ((IMovementConfirmationLineMvoStateProperties)state).MovementConfirmationVersion;
 
             return cmd;
         }
@@ -46,30 +46,40 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
         {
             var cmd = new TMergePatchMovementConfirmationLineMvo();
 
-            cmd.MovementVersion = ((IMovementConfirmationLineMvoStateProperties)state).MovementVersion;
+            cmd.MovementConfirmationVersion = ((IMovementConfirmationLineMvoStateProperties)state).MovementConfirmationVersion;
 
             cmd.MovementConfirmationLineId = state.MovementConfirmationLineId;
+            cmd.MovementLineNumber = state.MovementLineNumber;
             cmd.TargetQuantity = state.TargetQuantity;
             cmd.ConfirmedQuantity = state.ConfirmedQuantity;
             cmd.DifferenceQuantity = state.DifferenceQuantity;
             cmd.ScrappedQuantity = state.ScrappedQuantity;
+            cmd.Description = state.Description;
+            cmd.Processed = state.Processed;
             cmd.Version = ((IMovementConfirmationLineMvoStateProperties)state).Version;
             cmd.Active = ((IMovementConfirmationLineMvoStateProperties)state).Active;
-            cmd.MovementDocumentTypeId = state.MovementDocumentTypeId;
-            cmd.MovementMovementTypeId = state.MovementMovementTypeId;
-            cmd.MovementDescription = state.MovementDescription;
-            cmd.MovementCreatedBy = state.MovementCreatedBy;
-            cmd.MovementCreatedAt = state.MovementCreatedAt;
-            cmd.MovementUpdatedBy = state.MovementUpdatedBy;
-            cmd.MovementUpdatedAt = state.MovementUpdatedAt;
-            cmd.MovementActive = state.MovementActive;
-            cmd.MovementDeleted = state.MovementDeleted;
+            cmd.MovementConfirmationDocumentTypeId = state.MovementConfirmationDocumentTypeId;
+            cmd.MovementConfirmationMovementDocumentNumber = state.MovementConfirmationMovementDocumentNumber;
+            cmd.MovementConfirmationIsApproved = state.MovementConfirmationIsApproved;
+            cmd.MovementConfirmationApprovalAmount = state.MovementConfirmationApprovalAmount;
+            cmd.MovementConfirmationProcessing = state.MovementConfirmationProcessing;
+            cmd.MovementConfirmationProcessed = state.MovementConfirmationProcessed;
+            cmd.MovementConfirmationDescription = state.MovementConfirmationDescription;
+            cmd.MovementConfirmationCreatedBy = state.MovementConfirmationCreatedBy;
+            cmd.MovementConfirmationCreatedAt = state.MovementConfirmationCreatedAt;
+            cmd.MovementConfirmationUpdatedBy = state.MovementConfirmationUpdatedBy;
+            cmd.MovementConfirmationUpdatedAt = state.MovementConfirmationUpdatedAt;
+            cmd.MovementConfirmationActive = state.MovementConfirmationActive;
+            cmd.MovementConfirmationDeleted = state.MovementConfirmationDeleted;
             
-            if (state.MovementDocumentTypeId == null) { cmd.IsPropertyMovementDocumentTypeIdRemoved = true; }
-            if (state.MovementMovementTypeId == null) { cmd.IsPropertyMovementMovementTypeIdRemoved = true; }
-            if (state.MovementDescription == null) { cmd.IsPropertyMovementDescriptionRemoved = true; }
-            if (state.MovementCreatedBy == null) { cmd.IsPropertyMovementCreatedByRemoved = true; }
-            if (state.MovementUpdatedBy == null) { cmd.IsPropertyMovementUpdatedByRemoved = true; }
+            if (state.MovementLineNumber == null) { cmd.IsPropertyMovementLineNumberRemoved = true; }
+            if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
+            if (state.MovementConfirmationDocumentTypeId == null) { cmd.IsPropertyMovementConfirmationDocumentTypeIdRemoved = true; }
+            if (state.MovementConfirmationMovementDocumentNumber == null) { cmd.IsPropertyMovementConfirmationMovementDocumentNumberRemoved = true; }
+            if (state.MovementConfirmationProcessing == null) { cmd.IsPropertyMovementConfirmationProcessingRemoved = true; }
+            if (state.MovementConfirmationDescription == null) { cmd.IsPropertyMovementConfirmationDescriptionRemoved = true; }
+            if (state.MovementConfirmationCreatedBy == null) { cmd.IsPropertyMovementConfirmationCreatedByRemoved = true; }
+            if (state.MovementConfirmationUpdatedBy == null) { cmd.IsPropertyMovementConfirmationUpdatedByRemoved = true; }
             return cmd;
         }
 
@@ -78,24 +88,31 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
         {
             var cmd = new TCreateMovementConfirmationLineMvo();
 
-            cmd.MovementVersion = ((IMovementConfirmationLineMvoStateProperties)state).MovementVersion;
+            cmd.MovementConfirmationVersion = ((IMovementConfirmationLineMvoStateProperties)state).MovementConfirmationVersion;
 
             cmd.MovementConfirmationLineId = state.MovementConfirmationLineId;
+            cmd.MovementLineNumber = state.MovementLineNumber;
             cmd.TargetQuantity = state.TargetQuantity;
             cmd.ConfirmedQuantity = state.ConfirmedQuantity;
             cmd.DifferenceQuantity = state.DifferenceQuantity;
             cmd.ScrappedQuantity = state.ScrappedQuantity;
+            cmd.Description = state.Description;
+            cmd.Processed = state.Processed;
             cmd.Version = ((IMovementConfirmationLineMvoStateProperties)state).Version;
             cmd.Active = ((IMovementConfirmationLineMvoStateProperties)state).Active;
-            cmd.MovementDocumentTypeId = state.MovementDocumentTypeId;
-            cmd.MovementMovementTypeId = state.MovementMovementTypeId;
-            cmd.MovementDescription = state.MovementDescription;
-            cmd.MovementCreatedBy = state.MovementCreatedBy;
-            cmd.MovementCreatedAt = state.MovementCreatedAt;
-            cmd.MovementUpdatedBy = state.MovementUpdatedBy;
-            cmd.MovementUpdatedAt = state.MovementUpdatedAt;
-            cmd.MovementActive = state.MovementActive;
-            cmd.MovementDeleted = state.MovementDeleted;
+            cmd.MovementConfirmationDocumentTypeId = state.MovementConfirmationDocumentTypeId;
+            cmd.MovementConfirmationMovementDocumentNumber = state.MovementConfirmationMovementDocumentNumber;
+            cmd.MovementConfirmationIsApproved = state.MovementConfirmationIsApproved;
+            cmd.MovementConfirmationApprovalAmount = state.MovementConfirmationApprovalAmount;
+            cmd.MovementConfirmationProcessing = state.MovementConfirmationProcessing;
+            cmd.MovementConfirmationProcessed = state.MovementConfirmationProcessed;
+            cmd.MovementConfirmationDescription = state.MovementConfirmationDescription;
+            cmd.MovementConfirmationCreatedBy = state.MovementConfirmationCreatedBy;
+            cmd.MovementConfirmationCreatedAt = state.MovementConfirmationCreatedAt;
+            cmd.MovementConfirmationUpdatedBy = state.MovementConfirmationUpdatedBy;
+            cmd.MovementConfirmationUpdatedAt = state.MovementConfirmationUpdatedAt;
+            cmd.MovementConfirmationActive = state.MovementConfirmationActive;
+            cmd.MovementConfirmationDeleted = state.MovementConfirmationDeleted;
             return cmd;
         }
 		

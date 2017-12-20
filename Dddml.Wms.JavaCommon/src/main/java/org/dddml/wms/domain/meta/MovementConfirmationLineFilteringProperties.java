@@ -12,10 +12,13 @@ public final class MovementConfirmationLineFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "lineNumber",
+            "movementLineNumber",
             "targetQuantity",
             "confirmedQuantity",
             "differenceQuantity",
             "scrappedQuantity",
+            "description",
+            "processed",
             "version",
             "createdBy",
             "createdAt",
@@ -23,17 +26,20 @@ public final class MovementConfirmationLineFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "movementDocumentNumber",
-            "movementConfirmationLineId.movementDocumentNumber",
+            "movementConfirmationDocumentNumber",
+            "movementConfirmationLineId.movementConfirmationDocumentNumber",
             "movementConfirmationLineId.lineNumber",
     };
 
     public static final String[] propertyTypes = new String[] {
             "String",
+            "String",
             "BigDecimal",
             "BigDecimal",
             "BigDecimal",
             "BigDecimal",
+            "String",
+            "Boolean",
             "Long",
             "String",
             "Date",
@@ -60,6 +66,8 @@ public final class MovementConfirmationLineFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("lineNumber", "movementConfirmationLineId.lineNumber");
         aliasMap.put("LineNumber", "movementConfirmationLineId.lineNumber");
+        aliasMap.put("movementLineNumber", "movementLineNumber");
+        aliasMap.put("MovementLineNumber", "movementLineNumber");
         aliasMap.put("targetQuantity", "targetQuantity");
         aliasMap.put("TargetQuantity", "targetQuantity");
         aliasMap.put("confirmedQuantity", "confirmedQuantity");
@@ -68,6 +76,10 @@ public final class MovementConfirmationLineFilteringProperties
         aliasMap.put("DifferenceQuantity", "differenceQuantity");
         aliasMap.put("scrappedQuantity", "scrappedQuantity");
         aliasMap.put("ScrappedQuantity", "scrappedQuantity");
+        aliasMap.put("description", "description");
+        aliasMap.put("Description", "description");
+        aliasMap.put("processed", "processed");
+        aliasMap.put("Processed", "processed");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");
@@ -82,10 +94,10 @@ public final class MovementConfirmationLineFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("movementDocumentNumber", "movementConfirmationLineId.movementDocumentNumber");
-        aliasMap.put("MovementDocumentNumber", "movementConfirmationLineId.movementDocumentNumber");
-        aliasMap.put("movementConfirmationLineId.movementDocumentNumber", "movementConfirmationLineId.movementDocumentNumber");
-        aliasMap.put("MovementConfirmationLineId.MovementDocumentNumber", "movementConfirmationLineId.movementDocumentNumber");
+        aliasMap.put("movementConfirmationDocumentNumber", "movementConfirmationLineId.movementConfirmationDocumentNumber");
+        aliasMap.put("MovementConfirmationDocumentNumber", "movementConfirmationLineId.movementConfirmationDocumentNumber");
+        aliasMap.put("movementConfirmationLineId.movementConfirmationDocumentNumber", "movementConfirmationLineId.movementConfirmationDocumentNumber");
+        aliasMap.put("MovementConfirmationLineId.MovementConfirmationDocumentNumber", "movementConfirmationLineId.movementConfirmationDocumentNumber");
         aliasMap.put("movementConfirmationLineId.lineNumber", "movementConfirmationLineId.lineNumber");
         aliasMap.put("MovementConfirmationLineId.LineNumber", "movementConfirmationLineId.lineNumber");
     }

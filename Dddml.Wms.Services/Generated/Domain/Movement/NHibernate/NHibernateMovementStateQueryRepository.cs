@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.Movement.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentNumber", "DocumentTypeId", "DocumentStatusId", "MovementTypeId", "Description", "MovementLines", "MovementConfirmationLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentNumber", "DocumentTypeId", "DocumentStatusId", "Description", "MovementLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
@@ -131,13 +131,6 @@ namespace Dddml.Wms.Domain.Movement.NHibernate
         {
             var entityId = new MovementLineId(movementDocumentNumber, lineNumber);
             return CurrentSession.Get<MovementLineState>(entityId);
-        }
-
-        [Transaction(ReadOnly = true)]
-        public virtual IMovementConfirmationLineState GetMovementConfirmationLine(string movementDocumentNumber, string lineNumber)
-        {
-            var entityId = new MovementConfirmationLineId(movementDocumentNumber, lineNumber);
-            return CurrentSession.Get<MovementConfirmationLineState>(entityId);
         }
 
 

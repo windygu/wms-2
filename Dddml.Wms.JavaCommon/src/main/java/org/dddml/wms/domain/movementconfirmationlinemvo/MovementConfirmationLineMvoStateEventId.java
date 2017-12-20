@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo;
 
 import java.io.Serializable;
-import org.dddml.wms.domain.movement.MovementConfirmationLineId;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.MovementConfirmationLineId;
+import org.dddml.wms.domain.movementconfirmation.*;
 import org.dddml.wms.domain.*;
 
 public class MovementConfirmationLineMvoStateEventId implements Serializable
@@ -19,26 +19,26 @@ public class MovementConfirmationLineMvoStateEventId implements Serializable
         this.movementConfirmationLineId = movementConfirmationLineId;
     }
 
-    private Long movementVersion;
+    private Long movementConfirmationVersion;
 
-    public Long getMovementVersion()
+    public Long getMovementConfirmationVersion()
     {
-        return this.movementVersion;
+        return this.movementConfirmationVersion;
     }
 
-    public void setMovementVersion(Long movementVersion)
+    public void setMovementConfirmationVersion(Long movementConfirmationVersion)
     {
-        this.movementVersion = movementVersion;
+        this.movementConfirmationVersion = movementConfirmationVersion;
     }
 
-    public String getMovementConfirmationLineIdMovementDocumentNumber()
+    public String getMovementConfirmationLineIdMovementConfirmationDocumentNumber()
     {
-        return getMovementConfirmationLineId().getMovementDocumentNumber();
+        return getMovementConfirmationLineId().getMovementConfirmationDocumentNumber();
     }
 
-    public void setMovementConfirmationLineIdMovementDocumentNumber(String movementConfirmationLineIdMovementDocumentNumber)
+    public void setMovementConfirmationLineIdMovementConfirmationDocumentNumber(String movementConfirmationLineIdMovementConfirmationDocumentNumber)
     {
-        getMovementConfirmationLineId().setMovementDocumentNumber(movementConfirmationLineIdMovementDocumentNumber);
+        getMovementConfirmationLineId().setMovementConfirmationDocumentNumber(movementConfirmationLineIdMovementConfirmationDocumentNumber);
     }
 
     public String getMovementConfirmationLineIdLineNumber()
@@ -55,10 +55,10 @@ public class MovementConfirmationLineMvoStateEventId implements Serializable
     {
     }
 
-    public MovementConfirmationLineMvoStateEventId(MovementConfirmationLineId movementConfirmationLineId, Long movementVersion)
+    public MovementConfirmationLineMvoStateEventId(MovementConfirmationLineId movementConfirmationLineId, Long movementConfirmationVersion)
     {
         this.movementConfirmationLineId = movementConfirmationLineId;
-        this.movementVersion = movementVersion;
+        this.movementConfirmationVersion = movementConfirmationVersion;
     }
 
     @Override
@@ -74,7 +74,7 @@ public class MovementConfirmationLineMvoStateEventId implements Serializable
         MovementConfirmationLineMvoStateEventId other = (MovementConfirmationLineMvoStateEventId)obj;
         return true 
             && (movementConfirmationLineId == other.movementConfirmationLineId || (movementConfirmationLineId != null && movementConfirmationLineId.equals(other.movementConfirmationLineId)))
-            && (movementVersion == other.movementVersion || (movementVersion != null && movementVersion.equals(other.movementVersion)))
+            && (movementConfirmationVersion == other.movementConfirmationVersion || (movementConfirmationVersion != null && movementConfirmationVersion.equals(other.movementConfirmationVersion)))
             ;
     }
 
@@ -85,8 +85,8 @@ public class MovementConfirmationLineMvoStateEventId implements Serializable
         if (this.movementConfirmationLineId != null) {
             hash += 13 * this.movementConfirmationLineId.hashCode();
         }
-        if (this.movementVersion != null) {
-            hash += 13 * this.movementVersion.hashCode();
+        if (this.movementConfirmationVersion != null) {
+            hash += 13 * this.movementConfirmationVersion.hashCode();
         }
         return hash;
     }

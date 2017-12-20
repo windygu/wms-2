@@ -48,6 +48,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/MovementStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/MovementLineState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/MovementLineStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementConfirmationState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/MovementConfirmationStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/MovementConfirmationLineState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/MovementConfirmationLineStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/MovementTypeState.hbm.xml"/>

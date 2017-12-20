@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -16,6 +16,8 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 	public interface IMovementConfirmationLineMvoStateProperties
 	{
 		MovementConfirmationLineId MovementConfirmationLineId { get; set; }
+
+		string MovementLineNumber { get; set; }
 
 		decimal TargetQuantity { get; set; }
 
@@ -25,31 +27,43 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		decimal ScrappedQuantity { get; set; }
 
+		string Description { get; set; }
+
+		bool Processed { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }
 
-		string MovementDocumentTypeId { get; set; }
+		string MovementConfirmationDocumentTypeId { get; set; }
 
-		string MovementDocumentStatusId { get; set; }
+		string MovementConfirmationDocumentStatusId { get; set; }
 
-		string MovementMovementTypeId { get; set; }
+		string MovementConfirmationMovementDocumentNumber { get; set; }
 
-		string MovementDescription { get; set; }
+		bool MovementConfirmationIsApproved { get; set; }
 
-		long MovementVersion { get; set; }
+		decimal MovementConfirmationApprovalAmount { get; set; }
 
-		string MovementCreatedBy { get; set; }
+		string MovementConfirmationProcessing { get; set; }
 
-		DateTime MovementCreatedAt { get; set; }
+		bool MovementConfirmationProcessed { get; set; }
 
-		string MovementUpdatedBy { get; set; }
+		string MovementConfirmationDescription { get; set; }
 
-		DateTime MovementUpdatedAt { get; set; }
+		long MovementConfirmationVersion { get; set; }
 
-		bool MovementActive { get; set; }
+		string MovementConfirmationCreatedBy { get; set; }
 
-		bool MovementDeleted { get; set; }
+		DateTime MovementConfirmationCreatedAt { get; set; }
+
+		string MovementConfirmationUpdatedBy { get; set; }
+
+		DateTime MovementConfirmationUpdatedAt { get; set; }
+
+		bool MovementConfirmationActive { get; set; }
+
+		bool MovementConfirmationDeleted { get; set; }
 
 	}
 

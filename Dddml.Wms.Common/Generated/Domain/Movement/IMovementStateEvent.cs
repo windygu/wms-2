@@ -21,8 +21,6 @@ namespace Dddml.Wms.Domain.Movement
 
 		string DocumentStatusId { get; set; }
 
-		string MovementTypeId { get; set; }
-
 		string Description { get; set; }
 
 		bool? Active { get; set; }
@@ -37,12 +35,6 @@ namespace Dddml.Wms.Domain.Movement
 
 		IMovementLineStateCreated NewMovementLineStateCreated(string lineNumber);
 
-		IEnumerable<IMovementConfirmationLineStateCreated> MovementConfirmationLineEvents { get; }
-		
-		void AddMovementConfirmationLineEvent(IMovementConfirmationLineStateCreated e);
-
-		IMovementConfirmationLineStateCreated NewMovementConfirmationLineStateCreated(string lineNumber);
-
 	
 	}
 
@@ -52,8 +44,6 @@ namespace Dddml.Wms.Domain.Movement
 		bool IsPropertyDocumentTypeIdRemoved { get; set; }
 
 		bool IsPropertyDocumentStatusIdRemoved { get; set; }
-
-		bool IsPropertyMovementTypeIdRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -69,16 +59,6 @@ namespace Dddml.Wms.Domain.Movement
 
 		IMovementLineStateRemoved NewMovementLineStateRemoved(string lineNumber);
 
-		IEnumerable<IMovementConfirmationLineStateEvent> MovementConfirmationLineEvents { get; }
-		
-		void AddMovementConfirmationLineEvent(IMovementConfirmationLineStateEvent e);
-
-		IMovementConfirmationLineStateCreated NewMovementConfirmationLineStateCreated(string lineNumber);
-
-		IMovementConfirmationLineStateMergePatched NewMovementConfirmationLineStateMergePatched(string lineNumber);
-
-		IMovementConfirmationLineStateRemoved NewMovementConfirmationLineStateRemoved(string lineNumber);
-
 
 	}
 
@@ -89,12 +69,6 @@ namespace Dddml.Wms.Domain.Movement
 		void AddMovementLineEvent(IMovementLineStateRemoved e);
 		
 		IMovementLineStateRemoved NewMovementLineStateRemoved(string lineNumber);
-
-		IEnumerable<IMovementConfirmationLineStateRemoved> MovementConfirmationLineEvents { get; }
-		
-		void AddMovementConfirmationLineEvent(IMovementConfirmationLineStateRemoved e);
-		
-		IMovementConfirmationLineStateRemoved NewMovementConfirmationLineStateRemoved(string lineNumber);
 
 	}
 

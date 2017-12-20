@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Movement
 	public partial class MovementStateDtoWrapper : StateDtoWrapperBase, IMovementStateDto, IMovementState
 	{
 
-        internal static IList<string> _collectionFieldNames = new string[] { "MovementLines", "MovementConfirmationLines" };
+        internal static IList<string> _collectionFieldNames = new string[] { "MovementLines" };
 
         protected override bool IsCollectionField(string fieldName)
         {
@@ -120,34 +120,6 @@ namespace Dddml.Wms.Domain.Movement
             set 
             {
                 (this._state as IMovementStateProperties).DocumentStatusId = value;
-            }
-        }
-
-		public virtual string MovementTypeId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementTypeId"))
-                {
-                    return _state.MovementTypeId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.MovementTypeId = value;
-            }
-        }
-
-        string IMovementStateProperties.MovementTypeId
-        {
-            get 
-            {
-                return (this._state as IMovementStateProperties).MovementTypeId;
-            }
-            set 
-            {
-                (this._state as IMovementStateProperties).MovementTypeId = value;
             }
         }
 
@@ -430,52 +402,6 @@ namespace Dddml.Wms.Domain.Movement
             set { _state.MovementLines = value; }
         }
 
-        public virtual IMovementConfirmationLineStateDto[] MovementConfirmationLines
-        {
-            get 
-            {
-                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationLines"))
-                {
-                    return null;
-                }
-                var dtos = new List<IMovementConfirmationLineStateDto>();
-                if (this._state.MovementConfirmationLines != null)
-                {
-                    foreach (var s in this._state.MovementConfirmationLines)
-                    {
-                        var dto = new MovementConfirmationLineStateDtoWrapper((MovementConfirmationLineState)s);
-                        var returnFS = CollectionUtils.DictionaryGetValueIgnoringCase(ReturnedFields, "MovementConfirmationLines");
-                        if (!String.IsNullOrWhiteSpace(returnFS))
-                        {
-                            (dto as IStateDtoWrapper).ReturnedFieldsString = returnFS;
-                        }
-                        else
-                        {
-                            (dto as IStateDtoWrapper).AllFieldsReturned = this.AllFieldsReturned;
-                        }
-                        dtos.Add(dto);
-                    }
-                }
-                return dtos.ToArray();
-            }
-            set 
-            {
-                if (value == null) { value = new MovementConfirmationLineStateDtoWrapper[0]; }
-                var states = new List<IMovementConfirmationLineState>();
-                foreach (var s in value)
-                {
-                    states.Add(s.ToMovementConfirmationLineState());
-                }
-                this._state.MovementConfirmationLines = new DtoMovementConfirmationLineStates(this._state, states);
-            }
-        }
-
-        IMovementConfirmationLineStates IMovementState.MovementConfirmationLines
-        {
-            get { return _state.MovementConfirmationLines; }
-            set { _state.MovementConfirmationLines = value; }
-        }
-
 		void IMovementState.When(IMovementStateCreated e)
 		{
             throw new NotSupportedException();
@@ -562,67 +488,6 @@ namespace Dddml.Wms.Domain.Movement
             }
 
             public void AddToSave(IMovementLineState state)
-            {
-                throw new NotSupportedException();
-            }
-
-            public void Save()
-            {
-                throw new NotSupportedException();
-            }
-        }
-
-        public class DtoMovementConfirmationLineStates : IMovementConfirmationLineStates
-        {
-
-            private IMovementState _outerState;
-
-            private IEnumerable<IMovementConfirmationLineState> _innerStates;
-
-            public DtoMovementConfirmationLineStates(IMovementState outerState, IEnumerable<IMovementConfirmationLineState> innerStates)
-            {
-                this._outerState = outerState;
-                if (innerStates == null)
-                {
-                    this._innerStates = new IMovementConfirmationLineState[] { };
-                }
-                else
-                {
-                    this._innerStates = innerStates;
-                }
-            }
-
-            public IEnumerator<IMovementConfirmationLineState> GetEnumerator()
-            {
-                return _innerStates.GetEnumerator();
-            }
-
-            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-            {
-                return _innerStates.GetEnumerator();
-            }
-
-            public IMovementConfirmationLineState Get(string lineNumber)
-            {
-                throw new NotSupportedException();
-            }
-
-            public IMovementConfirmationLineState Get(string lineNumber, bool forCreation)
-            {
-                throw new NotSupportedException();
-            }
-
-            public IMovementConfirmationLineState Get(string lineNumber, bool forCreation, bool nullAllowed)
-            {
-                throw new NotSupportedException();
-            }
-
-            public void Remove(IMovementConfirmationLineState state)
-            {
-                throw new NotSupportedException();
-            }
-
-            public void AddToSave(IMovementConfirmationLineState state)
             {
                 throw new NotSupportedException();
             }

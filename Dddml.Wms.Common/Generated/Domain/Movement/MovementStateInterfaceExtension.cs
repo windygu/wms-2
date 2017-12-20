@@ -15,22 +15,20 @@ namespace Dddml.Wms.Domain.Movement
 	public static partial class MovementStateInterfaceExtension
 	{
 
-        public static IMovementCommand ToCreateOrMergePatchMovement<TCreateMovement, TMergePatchMovement, TCreateMovementLine, TMergePatchMovementLine, TCreateMovementConfirmationLine, TMergePatchMovementConfirmationLine>(this IMovementState state)
+        public static IMovementCommand ToCreateOrMergePatchMovement<TCreateMovement, TMergePatchMovement, TCreateMovementLine, TMergePatchMovementLine>(this IMovementState state)
             where TCreateMovement : ICreateMovement, new()
             where TMergePatchMovement : IMergePatchMovement, new()
             where TCreateMovementLine : ICreateMovementLine, new()
             where TMergePatchMovementLine : IMergePatchMovementLine, new()
-            where TCreateMovementConfirmationLine : ICreateMovementConfirmationLine, new()
-            where TMergePatchMovementConfirmationLine : IMergePatchMovementConfirmationLine, new()
         {
             bool bUnsaved = ((IMovementState)state).IsUnsaved;
             if (bUnsaved)
             {
-                return state.ToCreateMovement<TCreateMovement, TCreateMovementLine, TCreateMovementConfirmationLine>();
+                return state.ToCreateMovement<TCreateMovement, TCreateMovementLine>();
             }
             else 
             {
-                return state.ToMergePatchMovement<TMergePatchMovement, TCreateMovementLine, TMergePatchMovementLine, TCreateMovementConfirmationLine, TMergePatchMovementConfirmationLine>();
+                return state.ToMergePatchMovement<TMergePatchMovement, TCreateMovementLine, TMergePatchMovementLine>();
             }
         }
 
@@ -44,12 +42,10 @@ namespace Dddml.Wms.Domain.Movement
             return cmd;
         }
 
-        public static TMergePatchMovement ToMergePatchMovement<TMergePatchMovement, TCreateMovementLine, TMergePatchMovementLine, TCreateMovementConfirmationLine, TMergePatchMovementConfirmationLine>(this IMovementState state)
+        public static TMergePatchMovement ToMergePatchMovement<TMergePatchMovement, TCreateMovementLine, TMergePatchMovementLine>(this IMovementState state)
             where TMergePatchMovement : IMergePatchMovement, new()
             where TCreateMovementLine : ICreateMovementLine, new()
             where TMergePatchMovementLine : IMergePatchMovementLine, new()
-            where TCreateMovementConfirmationLine : ICreateMovementConfirmationLine, new()
-            where TMergePatchMovementConfirmationLine : IMergePatchMovementConfirmationLine, new()
         {
             var cmd = new TMergePatchMovement();
 
@@ -57,30 +53,22 @@ namespace Dddml.Wms.Domain.Movement
 
             cmd.DocumentNumber = state.DocumentNumber;
             cmd.DocumentTypeId = state.DocumentTypeId;
-            cmd.MovementTypeId = state.MovementTypeId;
             cmd.Description = state.Description;
             cmd.Active = ((IMovementStateProperties)state).Active;
             
             if (state.DocumentTypeId == null) { cmd.IsPropertyDocumentTypeIdRemoved = true; }
-            if (state.MovementTypeId == null) { cmd.IsPropertyMovementTypeIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             foreach (var d in state.MovementLines)
             {
                 var c = d.ToCreateOrMergePatchMovementLine<TCreateMovementLine, TMergePatchMovementLine>();
                 cmd.MovementLineCommands.Add(c);
             }
-            foreach (var d in state.MovementConfirmationLines)
-            {
-                var c = d.ToCreateOrMergePatchMovementConfirmationLine<TCreateMovementConfirmationLine, TMergePatchMovementConfirmationLine>();
-                cmd.MovementConfirmationLineCommands.Add(c);
-            }
             return cmd;
         }
 
-        public static TCreateMovement ToCreateMovement<TCreateMovement, TCreateMovementLine, TCreateMovementConfirmationLine>(this IMovementState state)
+        public static TCreateMovement ToCreateMovement<TCreateMovement, TCreateMovementLine>(this IMovementState state)
             where TCreateMovement : ICreateMovement, new()
             where TCreateMovementLine : ICreateMovementLine, new()
-            where TCreateMovementConfirmationLine : ICreateMovementConfirmationLine, new()
         {
             var cmd = new TCreateMovement();
 
@@ -88,18 +76,12 @@ namespace Dddml.Wms.Domain.Movement
 
             cmd.DocumentNumber = state.DocumentNumber;
             cmd.DocumentTypeId = state.DocumentTypeId;
-            cmd.MovementTypeId = state.MovementTypeId;
             cmd.Description = state.Description;
             cmd.Active = ((IMovementStateProperties)state).Active;
             foreach (var d in state.MovementLines)
             {
                 var c = d.ToCreateMovementLine<TCreateMovementLine>();
                 cmd.MovementLines.Add(c);
-            }
-            foreach (var d in state.MovementConfirmationLines)
-            {
-                var c = d.ToCreateMovementConfirmationLine<TCreateMovementConfirmationLine>();
-                cmd.MovementConfirmationLines.Add(c);
             }
             return cmd;
         }

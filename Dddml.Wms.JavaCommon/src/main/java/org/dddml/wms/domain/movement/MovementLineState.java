@@ -25,6 +25,34 @@ public interface MovementLineState
 
     void setMovementQuantity(BigDecimal movementQuantity);
 
+    String getProductId();
+
+    void setProductId(String productId);
+
+    String getLocatorIdFrom();
+
+    void setLocatorIdFrom(String locatorIdFrom);
+
+    String getLocatorIdTo();
+
+    void setLocatorIdTo(String locatorIdTo);
+
+    String getAttributeSetInstanceIdFrom();
+
+    void setAttributeSetInstanceIdFrom(String attributeSetInstanceIdFrom);
+
+    String getAttributeSetInstanceIdTo();
+
+    void setAttributeSetInstanceIdTo(String attributeSetInstanceIdTo);
+
+    Boolean getProcessed();
+
+    void setProcessed(Boolean processed);
+
+    String getReversalLineNumber();
+
+    void setReversalLineNumber(String reversalLineNumber);
+
     Long getVersion();
 
     void setVersion(Long version);

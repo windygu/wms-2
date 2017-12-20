@@ -22,10 +22,6 @@ public interface MovementStateEvent extends Event
 
     void setDocumentStatusId(String documentStatusId);
 
-    String getMovementTypeId();
-
-    void setMovementTypeId(String movementTypeId);
-
     String getDescription();
 
     void setDescription(String description);
@@ -54,12 +50,6 @@ public interface MovementStateEvent extends Event
 
         MovementLineStateEvent.MovementLineStateCreated newMovementLineStateCreated(String lineNumber);
 
-        Iterable<MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated> getMovementConfirmationLineEvents();
-        
-        void addMovementConfirmationLineEvent(MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated e);
-
-        MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated newMovementConfirmationLineStateCreated(String lineNumber);
-
     
     }
 
@@ -73,10 +63,6 @@ public interface MovementStateEvent extends Event
         Boolean getIsPropertyDocumentStatusIdRemoved();
 
         void setIsPropertyDocumentStatusIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyMovementTypeIdRemoved();
-
-        void setIsPropertyMovementTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 
@@ -96,16 +82,6 @@ public interface MovementStateEvent extends Event
 
         MovementLineStateEvent.MovementLineStateRemoved newMovementLineStateRemoved(String lineNumber);
 
-        Iterable<MovementConfirmationLineStateEvent> getMovementConfirmationLineEvents();
-        
-        void addMovementConfirmationLineEvent(MovementConfirmationLineStateEvent e);
-
-        MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated newMovementConfirmationLineStateCreated(String lineNumber);
-
-        MovementConfirmationLineStateEvent.MovementConfirmationLineStateMergePatched newMovementConfirmationLineStateMergePatched(String lineNumber);
-
-        MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved newMovementConfirmationLineStateRemoved(String lineNumber);
-
 
     }
 
@@ -116,12 +92,6 @@ public interface MovementStateEvent extends Event
         void addMovementLineEvent(MovementLineStateEvent.MovementLineStateRemoved e);
         
         MovementLineStateEvent.MovementLineStateRemoved newMovementLineStateRemoved(String lineNumber);
-
-        Iterable<MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved> getMovementConfirmationLineEvents();
-        
-        void addMovementConfirmationLineEvent(MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved e);
-        
-        MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved newMovementConfirmationLineStateRemoved(String lineNumber);
 
     }
 

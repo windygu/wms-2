@@ -177,6 +177,20 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 			ThrowOnWrongEvent(e);
             this.MovementQuantity = (e.MovementQuantity != null && e.MovementQuantity.HasValue) ? e.MovementQuantity.Value : default(decimal);
 
+			this.ProductId = e.ProductId;
+
+			this.LocatorIdFrom = e.LocatorIdFrom;
+
+			this.LocatorIdTo = e.LocatorIdTo;
+
+			this.AttributeSetInstanceIdFrom = e.AttributeSetInstanceIdFrom;
+
+			this.AttributeSetInstanceIdTo = e.AttributeSetInstanceIdTo;
+
+            this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+
+			this.ReversalLineNumber = e.ReversalLineNumber;
+
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
@@ -184,8 +198,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 			this.MovementDocumentTypeId = e.MovementDocumentTypeId;
 
 			this.MovementDocumentStatusId = e.MovementDocumentStatusId;
-
-			this.MovementMovementTypeId = e.MovementMovementTypeId;
 
 			this.MovementDescription = e.MovementDescription;
 
@@ -224,6 +236,90 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 			else
 			{
 				this.MovementQuantity = (e.MovementQuantity != null && e.MovementQuantity.HasValue) ? e.MovementQuantity.Value : default(decimal);
+			}
+
+			if (e.ProductId == null)
+			{
+				if (e.IsPropertyProductIdRemoved)
+				{
+					this.ProductId = default(string);
+				}
+			}
+			else
+			{
+				this.ProductId = e.ProductId;
+			}
+
+			if (e.LocatorIdFrom == null)
+			{
+				if (e.IsPropertyLocatorIdFromRemoved)
+				{
+					this.LocatorIdFrom = default(string);
+				}
+			}
+			else
+			{
+				this.LocatorIdFrom = e.LocatorIdFrom;
+			}
+
+			if (e.LocatorIdTo == null)
+			{
+				if (e.IsPropertyLocatorIdToRemoved)
+				{
+					this.LocatorIdTo = default(string);
+				}
+			}
+			else
+			{
+				this.LocatorIdTo = e.LocatorIdTo;
+			}
+
+			if (e.AttributeSetInstanceIdFrom == null)
+			{
+				if (e.IsPropertyAttributeSetInstanceIdFromRemoved)
+				{
+					this.AttributeSetInstanceIdFrom = default(string);
+				}
+			}
+			else
+			{
+				this.AttributeSetInstanceIdFrom = e.AttributeSetInstanceIdFrom;
+			}
+
+			if (e.AttributeSetInstanceIdTo == null)
+			{
+				if (e.IsPropertyAttributeSetInstanceIdToRemoved)
+				{
+					this.AttributeSetInstanceIdTo = default(string);
+				}
+			}
+			else
+			{
+				this.AttributeSetInstanceIdTo = e.AttributeSetInstanceIdTo;
+			}
+
+			if (e.Processed == null)
+			{
+				if (e.IsPropertyProcessedRemoved)
+				{
+					this.Processed = default(bool);
+				}
+			}
+			else
+			{
+				this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+			}
+
+			if (e.ReversalLineNumber == null)
+			{
+				if (e.IsPropertyReversalLineNumberRemoved)
+				{
+					this.ReversalLineNumber = default(string);
+				}
+			}
+			else
+			{
+				this.ReversalLineNumber = e.ReversalLineNumber;
 			}
 
 			if (e.Version == null)
@@ -272,18 +368,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 			else
 			{
 				this.MovementDocumentStatusId = e.MovementDocumentStatusId;
-			}
-
-			if (e.MovementMovementTypeId == null)
-			{
-				if (e.IsPropertyMovementMovementTypeIdRemoved)
-				{
-					this.MovementMovementTypeId = default(string);
-				}
-			}
-			else
-			{
-				this.MovementMovementTypeId = e.MovementMovementTypeId;
 			}
 
 			if (e.MovementDescription == null)

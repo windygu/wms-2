@@ -329,6 +329,9 @@
     <Compile Include="Generated\Controllers\MovementConfirmationLineMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\MovementConfirmationsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\MovementLineMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -465,6 +468,7 @@
 .\InventoryPRTriggeredsController.cs
 .\LocatorsController.cs
 .\MovementConfirmationLineMvosController.cs
+.\MovementConfirmationsController.cs
 .\MovementLineMvosController.cs
 .\MovementsController.cs
 .\MovementTypesController.cs

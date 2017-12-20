@@ -50,10 +50,16 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
             cmd.MovementLineId = state.MovementLineId;
             cmd.MovementQuantity = state.MovementQuantity;
+            cmd.ProductId = state.ProductId;
+            cmd.LocatorIdFrom = state.LocatorIdFrom;
+            cmd.LocatorIdTo = state.LocatorIdTo;
+            cmd.AttributeSetInstanceIdFrom = state.AttributeSetInstanceIdFrom;
+            cmd.AttributeSetInstanceIdTo = state.AttributeSetInstanceIdTo;
+            cmd.Processed = state.Processed;
+            cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IMovementLineMvoStateProperties)state).Version;
             cmd.Active = ((IMovementLineMvoStateProperties)state).Active;
             cmd.MovementDocumentTypeId = state.MovementDocumentTypeId;
-            cmd.MovementMovementTypeId = state.MovementMovementTypeId;
             cmd.MovementDescription = state.MovementDescription;
             cmd.MovementCreatedBy = state.MovementCreatedBy;
             cmd.MovementCreatedAt = state.MovementCreatedAt;
@@ -62,8 +68,13 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             cmd.MovementActive = state.MovementActive;
             cmd.MovementDeleted = state.MovementDeleted;
             
+            if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
+            if (state.LocatorIdFrom == null) { cmd.IsPropertyLocatorIdFromRemoved = true; }
+            if (state.LocatorIdTo == null) { cmd.IsPropertyLocatorIdToRemoved = true; }
+            if (state.AttributeSetInstanceIdFrom == null) { cmd.IsPropertyAttributeSetInstanceIdFromRemoved = true; }
+            if (state.AttributeSetInstanceIdTo == null) { cmd.IsPropertyAttributeSetInstanceIdToRemoved = true; }
+            if (state.ReversalLineNumber == null) { cmd.IsPropertyReversalLineNumberRemoved = true; }
             if (state.MovementDocumentTypeId == null) { cmd.IsPropertyMovementDocumentTypeIdRemoved = true; }
-            if (state.MovementMovementTypeId == null) { cmd.IsPropertyMovementMovementTypeIdRemoved = true; }
             if (state.MovementDescription == null) { cmd.IsPropertyMovementDescriptionRemoved = true; }
             if (state.MovementCreatedBy == null) { cmd.IsPropertyMovementCreatedByRemoved = true; }
             if (state.MovementUpdatedBy == null) { cmd.IsPropertyMovementUpdatedByRemoved = true; }
@@ -79,10 +90,16 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
             cmd.MovementLineId = state.MovementLineId;
             cmd.MovementQuantity = state.MovementQuantity;
+            cmd.ProductId = state.ProductId;
+            cmd.LocatorIdFrom = state.LocatorIdFrom;
+            cmd.LocatorIdTo = state.LocatorIdTo;
+            cmd.AttributeSetInstanceIdFrom = state.AttributeSetInstanceIdFrom;
+            cmd.AttributeSetInstanceIdTo = state.AttributeSetInstanceIdTo;
+            cmd.Processed = state.Processed;
+            cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IMovementLineMvoStateProperties)state).Version;
             cmd.Active = ((IMovementLineMvoStateProperties)state).Active;
             cmd.MovementDocumentTypeId = state.MovementDocumentTypeId;
-            cmd.MovementMovementTypeId = state.MovementMovementTypeId;
             cmd.MovementDescription = state.MovementDescription;
             cmd.MovementCreatedBy = state.MovementCreatedBy;
             cmd.MovementCreatedAt = state.MovementCreatedAt;

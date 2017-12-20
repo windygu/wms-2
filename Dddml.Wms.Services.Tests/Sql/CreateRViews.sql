@@ -215,6 +215,13 @@ CREATE VIEW `MovementLine_RV` AS
         `MovementLines`.`MovementLineIdMovementDocumentNumber`,
         `MovementLines`.`MovementLineIdLineNumber`,
         `MovementLines`.`MovementQuantity`,
+        `MovementLines`.`ProductId`,
+        `MovementLines`.`LocatorIdFrom`,
+        `MovementLines`.`LocatorIdTo`,
+        `MovementLines`.`AttributeSetInstanceIdFrom`,
+        `MovementLines`.`AttributeSetInstanceIdTo`,
+        `MovementLines`.`Processed`,
+        `MovementLines`.`ReversalLineNumber`,
         `MovementLines`.`Version`,
         `MovementLines`.`CreatedBy`,
         `MovementLines`.`CreatedAt`,
@@ -224,7 +231,6 @@ CREATE VIEW `MovementLine_RV` AS
         `MovementLines`.`Deleted`,
         `Movements`.`DocumentTypeId` AS `MovementDocumentTypeId`,
         `Movements`.`DocumentStatusId` AS `MovementDocumentStatusId`,
-        `Movements`.`MovementTypeId` AS `MovementMovementTypeId`,
         `Movements`.`Description` AS `MovementDescription`,
         `Movements`.`Version` AS `MovementVersion`,
         `Movements`.`CreatedBy` AS `MovementCreatedBy`,
@@ -243,12 +249,15 @@ CREATE VIEW `MovementLine_RV` AS
 
 CREATE VIEW `MovementConfirmationLine_RV` AS
     SELECT 
-        `MovementConfirmationLines`.`MovementConfirmationLineIdMovementDocumentNumber`,
+        `MovementConfirmationLines`.`MovementConfirmationLineIdMovementConfirmationDocumentNumber`,
         `MovementConfirmationLines`.`MovementConfirmationLineIdLineNumber`,
+        `MovementConfirmationLines`.`MovementLineNumber`,
         `MovementConfirmationLines`.`TargetQuantity`,
         `MovementConfirmationLines`.`ConfirmedQuantity`,
         `MovementConfirmationLines`.`DifferenceQuantity`,
         `MovementConfirmationLines`.`ScrappedQuantity`,
+        `MovementConfirmationLines`.`Description`,
+        `MovementConfirmationLines`.`Processed`,
         `MovementConfirmationLines`.`Version`,
         `MovementConfirmationLines`.`CreatedBy`,
         `MovementConfirmationLines`.`CreatedAt`,
@@ -256,21 +265,25 @@ CREATE VIEW `MovementConfirmationLine_RV` AS
         `MovementConfirmationLines`.`UpdatedAt`,
         `MovementConfirmationLines`.`Active`,
         `MovementConfirmationLines`.`Deleted`,
-        `Movements`.`DocumentTypeId` AS `MovementDocumentTypeId`,
-        `Movements`.`DocumentStatusId` AS `MovementDocumentStatusId`,
-        `Movements`.`MovementTypeId` AS `MovementMovementTypeId`,
-        `Movements`.`Description` AS `MovementDescription`,
-        `Movements`.`Version` AS `MovementVersion`,
-        `Movements`.`CreatedBy` AS `MovementCreatedBy`,
-        `Movements`.`CreatedAt` AS `MovementCreatedAt`,
-        `Movements`.`UpdatedBy` AS `MovementUpdatedBy`,
-        `Movements`.`UpdatedAt` AS `MovementUpdatedAt`,
-        `Movements`.`Active` AS `MovementActive`,
-        `Movements`.`Deleted` AS `MovementDeleted`
+        `MovementConfirmations`.`DocumentTypeId` AS `MovementConfirmationDocumentTypeId`,
+        `MovementConfirmations`.`DocumentStatusId` AS `MovementConfirmationDocumentStatusId`,
+        `MovementConfirmations`.`MovementDocumentNumber` AS `MovementConfirmationMovementDocumentNumber`,
+        `MovementConfirmations`.`IsApproved` AS `MovementConfirmationIsApproved`,
+        `MovementConfirmations`.`ApprovalAmount` AS `MovementConfirmationApprovalAmount`,
+        `MovementConfirmations`.`Processing` AS `MovementConfirmationProcessing`,
+        `MovementConfirmations`.`Processed` AS `MovementConfirmationProcessed`,
+        `MovementConfirmations`.`Description` AS `MovementConfirmationDescription`,
+        `MovementConfirmations`.`Version` AS `MovementConfirmationVersion`,
+        `MovementConfirmations`.`CreatedBy` AS `MovementConfirmationCreatedBy`,
+        `MovementConfirmations`.`CreatedAt` AS `MovementConfirmationCreatedAt`,
+        `MovementConfirmations`.`UpdatedBy` AS `MovementConfirmationUpdatedBy`,
+        `MovementConfirmations`.`UpdatedAt` AS `MovementConfirmationUpdatedAt`,
+        `MovementConfirmations`.`Active` AS `MovementConfirmationActive`,
+        `MovementConfirmations`.`Deleted` AS `MovementConfirmationDeleted`
     FROM
         (`MovementConfirmationLines`
-            JOIN `Movements` ON ( 1=1 
-                and (`MovementConfirmationLines`.`MovementConfirmationLineIdMovementDocumentNumber` = `Movements`.`DocumentNumber`)
+            JOIN `MovementConfirmations` ON ( 1=1 
+                and (`MovementConfirmationLines`.`MovementConfirmationLineIdMovementConfirmationDocumentNumber` = `MovementConfirmations`.`DocumentNumber`)
             )
         );
 

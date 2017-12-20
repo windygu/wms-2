@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -16,6 +16,8 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 	public abstract class MovementConfirmationLineMvoStateProperties : IMovementConfirmationLineMvoStateProperties
 	{
 		public virtual MovementConfirmationLineId MovementConfirmationLineId { get; set; }
+
+		public virtual string MovementLineNumber { get; set; }
 
 		public virtual decimal TargetQuantity { get; set; }
 
@@ -25,31 +27,43 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual decimal ScrappedQuantity { get; set; }
 
+		public virtual string Description { get; set; }
+
+		public virtual bool Processed { get; set; }
+
 		public virtual long Version { get; set; }
 
 		public virtual bool Active { get; set; }
 
-		public virtual string MovementDocumentTypeId { get; set; }
+		public virtual string MovementConfirmationDocumentTypeId { get; set; }
 
-		public virtual string MovementDocumentStatusId { get; set; }
+		public virtual string MovementConfirmationDocumentStatusId { get; set; }
 
-		public virtual string MovementMovementTypeId { get; set; }
+		public virtual string MovementConfirmationMovementDocumentNumber { get; set; }
 
-		public virtual string MovementDescription { get; set; }
+		public virtual bool MovementConfirmationIsApproved { get; set; }
 
-		public virtual long MovementVersion { get; set; }
+		public virtual decimal MovementConfirmationApprovalAmount { get; set; }
 
-		public virtual string MovementCreatedBy { get; set; }
+		public virtual string MovementConfirmationProcessing { get; set; }
 
-		public virtual DateTime MovementCreatedAt { get; set; }
+		public virtual bool MovementConfirmationProcessed { get; set; }
 
-		public virtual string MovementUpdatedBy { get; set; }
+		public virtual string MovementConfirmationDescription { get; set; }
 
-		public virtual DateTime MovementUpdatedAt { get; set; }
+		public virtual long MovementConfirmationVersion { get; set; }
 
-		public virtual bool MovementActive { get; set; }
+		public virtual string MovementConfirmationCreatedBy { get; set; }
 
-		public virtual bool MovementDeleted { get; set; }
+		public virtual DateTime MovementConfirmationCreatedAt { get; set; }
+
+		public virtual string MovementConfirmationUpdatedBy { get; set; }
+
+		public virtual DateTime MovementConfirmationUpdatedAt { get; set; }
+
+		public virtual bool MovementConfirmationActive { get; set; }
+
+		public virtual bool MovementConfirmationDeleted { get; set; }
 
         protected virtual void InitializeProperties()
         { 

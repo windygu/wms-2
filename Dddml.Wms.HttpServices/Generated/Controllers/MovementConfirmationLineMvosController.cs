@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 using Dddml.Wms.Domain.Metadata;
 using Dddml.Wms.HttpServices.Filters;
 using System.Linq;
@@ -130,7 +130,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var value = new DeleteMovementConfirmationLineMvoDto();
             value.CommandId = commandId;
             value.RequesterId = requesterId;
-            value.MovementVersion = (long)Convert.ChangeType(version, typeof(long));
+            value.MovementConfirmationVersion = (long)Convert.ChangeType(version, typeof(long));
             MovementConfirmationLineMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _movementConfirmationLineMvoApplicationService.When(value as IDeleteMovementConfirmationLineMvo);
           } catch (Exception ex) { var response = MovementConfirmationLineMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

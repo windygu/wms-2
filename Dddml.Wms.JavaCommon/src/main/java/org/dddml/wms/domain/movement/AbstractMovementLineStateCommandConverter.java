@@ -35,10 +35,24 @@ public abstract class AbstractMovementLineStateCommandConverter<TCreateMovementL
 
         cmd.setLineNumber(state.getLineNumber());
         cmd.setMovementQuantity(state.getMovementQuantity());
+        cmd.setProductId(state.getProductId());
+        cmd.setLocatorIdFrom(state.getLocatorIdFrom());
+        cmd.setLocatorIdTo(state.getLocatorIdTo());
+        cmd.setAttributeSetInstanceIdFrom(state.getAttributeSetInstanceIdFrom());
+        cmd.setAttributeSetInstanceIdTo(state.getAttributeSetInstanceIdTo());
+        cmd.setProcessed(state.getProcessed());
+        cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setActive(state.getActive());
         cmd.setMovementDocumentNumber(state.getMovementDocumentNumber());
             
         if (state.getMovementQuantity() == null) { cmd.setIsPropertyMovementQuantityRemoved(true); }
+        if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
+        if (state.getLocatorIdFrom() == null) { cmd.setIsPropertyLocatorIdFromRemoved(true); }
+        if (state.getLocatorIdTo() == null) { cmd.setIsPropertyLocatorIdToRemoved(true); }
+        if (state.getAttributeSetInstanceIdFrom() == null) { cmd.setIsPropertyAttributeSetInstanceIdFromRemoved(true); }
+        if (state.getAttributeSetInstanceIdTo() == null) { cmd.setIsPropertyAttributeSetInstanceIdToRemoved(true); }
+        if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
+        if (state.getReversalLineNumber() == null) { cmd.setIsPropertyReversalLineNumberRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
     }
@@ -49,6 +63,13 @@ public abstract class AbstractMovementLineStateCommandConverter<TCreateMovementL
 
         cmd.setLineNumber(state.getLineNumber());
         cmd.setMovementQuantity(state.getMovementQuantity());
+        cmd.setProductId(state.getProductId());
+        cmd.setLocatorIdFrom(state.getLocatorIdFrom());
+        cmd.setLocatorIdTo(state.getLocatorIdTo());
+        cmd.setAttributeSetInstanceIdFrom(state.getAttributeSetInstanceIdFrom());
+        cmd.setAttributeSetInstanceIdTo(state.getAttributeSetInstanceIdTo());
+        cmd.setProcessed(state.getProcessed());
+        cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setActive(state.getActive());
         cmd.setMovementDocumentNumber(state.getMovementDocumentNumber());
         return cmd;

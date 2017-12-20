@@ -28,7 +28,7 @@ public class HibernateMovementLineMvoStateQueryRepository implements MovementLin
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("MovementLineId", "MovementQuantity", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "MovementDocumentTypeId", "MovementDocumentStatusId", "MovementMovementTypeId", "MovementDescription", "MovementMovementLines", "MovementMovementConfirmationLines", "MovementVersion", "MovementCreatedBy", "MovementCreatedAt", "MovementUpdatedBy", "MovementUpdatedAt", "MovementActive", "MovementDeleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("MovementLineId", "MovementQuantity", "ProductId", "LocatorIdFrom", "LocatorIdTo", "AttributeSetInstanceIdFrom", "AttributeSetInstanceIdTo", "Processed", "ReversalLineNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "MovementDocumentTypeId", "MovementDocumentStatusId", "MovementDescription", "MovementMovementLines", "MovementVersion", "MovementCreatedBy", "MovementCreatedAt", "MovementUpdatedBy", "MovementUpdatedAt", "MovementActive", "MovementDeleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

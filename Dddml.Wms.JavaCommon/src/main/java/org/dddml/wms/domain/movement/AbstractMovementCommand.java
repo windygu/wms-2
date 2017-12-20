@@ -59,18 +59,6 @@ public abstract class AbstractMovementCommand extends AbstractCommand implements
             this.documentAction = documentAction;
         }
 
-        private String movementTypeId;
-
-        public String getMovementTypeId()
-        {
-            return this.movementTypeId;
-        }
-
-        public void setMovementTypeId(String movementTypeId)
-        {
-            this.movementTypeId = movementTypeId;
-        }
-
         private String description;
 
         public String getDescription()
@@ -119,30 +107,6 @@ public abstract class AbstractMovementCommand extends AbstractCommand implements
             return c;
         }
 
-        public MovementConfirmationLineCommand.CreateMovementConfirmationLine newCreateMovementConfirmationLine()
-        {
-            AbstractMovementConfirmationLineCommand.SimpleCreateMovementConfirmationLine c = new AbstractMovementConfirmationLineCommand.SimpleCreateMovementConfirmationLine();
-            c.setMovementDocumentNumber(this.getDocumentNumber());
-
-            return c;
-        }
-
-        public MovementConfirmationLineCommand.MergePatchMovementConfirmationLine newMergePatchMovementConfirmationLine()
-        {
-            AbstractMovementConfirmationLineCommand.SimpleMergePatchMovementConfirmationLine c = new AbstractMovementConfirmationLineCommand.SimpleMergePatchMovementConfirmationLine();
-            c.setMovementDocumentNumber(this.getDocumentNumber());
-
-            return c;
-        }
-
-        public MovementConfirmationLineCommand.RemoveMovementConfirmationLine newRemoveMovementConfirmationLine()
-        {
-            AbstractMovementConfirmationLineCommand.SimpleRemoveMovementConfirmationLine c = new AbstractMovementConfirmationLineCommand.SimpleRemoveMovementConfirmationLine();
-            c.setMovementDocumentNumber(this.getDocumentNumber());
-
-            return c;
-        }
-
     }
 
     public static abstract class AbstractCreateMovement extends AbstractCreateOrMergePatchMovement implements CreateMovement
@@ -157,13 +121,6 @@ public abstract class AbstractMovementCommand extends AbstractCommand implements
         public CreateMovementLineCommands getMovementLines()
         {
             return this.movementLines;
-        }
-
-        private CreateMovementConfirmationLineCommands movementConfirmationLines = new SimpleCreateMovementConfirmationLineCommands();
-
-        public CreateMovementConfirmationLineCommands getMovementConfirmationLines()
-        {
-            return this.movementConfirmationLines;
         }
 
     }
@@ -185,18 +142,6 @@ public abstract class AbstractMovementCommand extends AbstractCommand implements
         public void setIsPropertyDocumentTypeIdRemoved(Boolean removed)
         {
             this.isPropertyDocumentTypeIdRemoved = removed;
-        }
-
-        private Boolean isPropertyMovementTypeIdRemoved;
-
-        public Boolean getIsPropertyMovementTypeIdRemoved()
-        {
-            return this.isPropertyMovementTypeIdRemoved;
-        }
-
-        public void setIsPropertyMovementTypeIdRemoved(Boolean removed)
-        {
-            this.isPropertyMovementTypeIdRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;
@@ -228,13 +173,6 @@ public abstract class AbstractMovementCommand extends AbstractCommand implements
         public MovementLineCommands getMovementLineCommands()
         {
             return this.movementLineCommands;
-        }
-
-        private MovementConfirmationLineCommands movementConfirmationLineCommands = new SimpleMovementConfirmationLineCommands();
-
-        public MovementConfirmationLineCommands getMovementConfirmationLineCommands()
-        {
-            return this.movementConfirmationLineCommands;
         }
 
     }
@@ -305,58 +243,6 @@ public abstract class AbstractMovementCommand extends AbstractCommand implements
 
         @Override
         public Iterator<MovementLineCommand> iterator()
-        {
-            return innerCommands.iterator();
-        }
-    }
-
-    public static class SimpleCreateMovementConfirmationLineCommands implements CreateMovementConfirmationLineCommands
-    {
-        private List<MovementConfirmationLineCommand.CreateMovementConfirmationLine> innerCommands = new ArrayList<MovementConfirmationLineCommand.CreateMovementConfirmationLine>();
-
-        public void add(MovementConfirmationLineCommand.CreateMovementConfirmationLine c)
-        {
-            innerCommands.add(c);
-        }
-
-        public void remove(MovementConfirmationLineCommand.CreateMovementConfirmationLine c)
-        {
-            innerCommands.remove(c);
-        }
-
-        public void clear()
-        {
-            innerCommands.clear();
-        }
-
-        @Override
-        public Iterator<MovementConfirmationLineCommand.CreateMovementConfirmationLine> iterator()
-        {
-            return innerCommands.iterator();
-        }
-    }
-
-    public static class SimpleMovementConfirmationLineCommands implements MovementConfirmationLineCommands
-    {
-        private List<MovementConfirmationLineCommand> innerCommands = new ArrayList<MovementConfirmationLineCommand>();
-
-        public void add(MovementConfirmationLineCommand c)
-        {
-            innerCommands.add(c);
-        }
-
-        public void remove(MovementConfirmationLineCommand c)
-        {
-            innerCommands.remove(c);
-        }
-
-        public void clear()
-        {
-            innerCommands.clear();
-        }
-
-        @Override
-        public Iterator<MovementConfirmationLineCommand> iterator()
         {
             return innerCommands.iterator();
         }

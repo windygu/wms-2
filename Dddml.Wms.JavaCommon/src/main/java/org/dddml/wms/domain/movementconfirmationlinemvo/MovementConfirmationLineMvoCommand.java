@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo;
 
 import java.util.*;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -14,12 +14,12 @@ public interface MovementConfirmationLineMvoCommand extends Command
 
     void setMovementConfirmationLineId(MovementConfirmationLineId movementConfirmationLineId);
 
-    Long getMovementVersion();
+    Long getMovementConfirmationVersion();
 
-    void setMovementVersion(Long movementVersion);
+    void setMovementConfirmationVersion(Long movementConfirmationVersion);
 
     static void throwOnInvalidStateTransition(MovementConfirmationLineMvoState state, Command c) {
-        if (state.getMovementVersion() == null)
+        if (state.getMovementConfirmationVersion() == null)
         {
             if (isCommandCreate((MovementConfirmationLineMvoCommand)c))
             {
@@ -37,11 +37,15 @@ public interface MovementConfirmationLineMvoCommand extends Command
 
     static boolean isCommandCreate(MovementConfirmationLineMvoCommand c) {
         return ((c instanceof MovementConfirmationLineMvoCommand.CreateMovementConfirmationLineMvo) 
-            && c.getMovementVersion().equals(MovementConfirmationLineMvoState.VERSION_NULL));
+            && c.getMovementConfirmationVersion().equals(MovementConfirmationLineMvoState.VERSION_NULL));
     }
 
     interface CreateOrMergePatchMovementConfirmationLineMvo extends MovementConfirmationLineMvoCommand
     {
+        String getMovementLineNumber();
+
+        void setMovementLineNumber(String movementLineNumber);
+
         BigDecimal getTargetQuantity();
 
         void setTargetQuantity(BigDecimal targetQuantity);
@@ -58,6 +62,14 @@ public interface MovementConfirmationLineMvoCommand extends Command
 
         void setScrappedQuantity(BigDecimal scrappedQuantity);
 
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
         Long getVersion();
 
         void setVersion(Long version);
@@ -66,45 +78,61 @@ public interface MovementConfirmationLineMvoCommand extends Command
 
         void setActive(Boolean active);
 
-        String getMovementDocumentTypeId();
+        String getMovementConfirmationDocumentTypeId();
 
-        void setMovementDocumentTypeId(String movementDocumentTypeId);
+        void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId);
 
         String getDocumentAction();
 
         void setDocumentAction(String documentAction);
 
-        String getMovementMovementTypeId();
+        String getMovementConfirmationMovementDocumentNumber();
 
-        void setMovementMovementTypeId(String movementMovementTypeId);
+        void setMovementConfirmationMovementDocumentNumber(String movementConfirmationMovementDocumentNumber);
 
-        String getMovementDescription();
+        Boolean getMovementConfirmationIsApproved();
 
-        void setMovementDescription(String movementDescription);
+        void setMovementConfirmationIsApproved(Boolean movementConfirmationIsApproved);
 
-        String getMovementCreatedBy();
+        BigDecimal getMovementConfirmationApprovalAmount();
 
-        void setMovementCreatedBy(String movementCreatedBy);
+        void setMovementConfirmationApprovalAmount(BigDecimal movementConfirmationApprovalAmount);
 
-        Date getMovementCreatedAt();
+        String getMovementConfirmationProcessing();
 
-        void setMovementCreatedAt(Date movementCreatedAt);
+        void setMovementConfirmationProcessing(String movementConfirmationProcessing);
 
-        String getMovementUpdatedBy();
+        Boolean getMovementConfirmationProcessed();
 
-        void setMovementUpdatedBy(String movementUpdatedBy);
+        void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed);
 
-        Date getMovementUpdatedAt();
+        String getMovementConfirmationDescription();
 
-        void setMovementUpdatedAt(Date movementUpdatedAt);
+        void setMovementConfirmationDescription(String movementConfirmationDescription);
 
-        Boolean getMovementActive();
+        String getMovementConfirmationCreatedBy();
 
-        void setMovementActive(Boolean movementActive);
+        void setMovementConfirmationCreatedBy(String movementConfirmationCreatedBy);
 
-        Boolean getMovementDeleted();
+        Date getMovementConfirmationCreatedAt();
 
-        void setMovementDeleted(Boolean movementDeleted);
+        void setMovementConfirmationCreatedAt(Date movementConfirmationCreatedAt);
+
+        String getMovementConfirmationUpdatedBy();
+
+        void setMovementConfirmationUpdatedBy(String movementConfirmationUpdatedBy);
+
+        Date getMovementConfirmationUpdatedAt();
+
+        void setMovementConfirmationUpdatedAt(Date movementConfirmationUpdatedAt);
+
+        Boolean getMovementConfirmationActive();
+
+        void setMovementConfirmationActive(Boolean movementConfirmationActive);
+
+        Boolean getMovementConfirmationDeleted();
+
+        void setMovementConfirmationDeleted(Boolean movementConfirmationDeleted);
 
     }
 
@@ -114,6 +142,10 @@ public interface MovementConfirmationLineMvoCommand extends Command
 
     interface MergePatchMovementConfirmationLineMvo extends CreateOrMergePatchMovementConfirmationLineMvo
     {
+        Boolean getIsPropertyMovementLineNumberRemoved();
+
+        void setIsPropertyMovementLineNumberRemoved(Boolean removed);
+
         Boolean getIsPropertyTargetQuantityRemoved();
 
         void setIsPropertyTargetQuantityRemoved(Boolean removed);
@@ -130,6 +162,14 @@ public interface MovementConfirmationLineMvoCommand extends Command
 
         void setIsPropertyScrappedQuantityRemoved(Boolean removed);
 
+        Boolean getIsPropertyDescriptionRemoved();
+
+        void setIsPropertyDescriptionRemoved(Boolean removed);
+
+        Boolean getIsPropertyProcessedRemoved();
+
+        void setIsPropertyProcessedRemoved(Boolean removed);
+
         Boolean getIsPropertyVersionRemoved();
 
         void setIsPropertyVersionRemoved(Boolean removed);
@@ -138,41 +178,57 @@ public interface MovementConfirmationLineMvoCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementDocumentTypeIdRemoved();
+        Boolean getIsPropertyMovementConfirmationDocumentTypeIdRemoved();
 
-        void setIsPropertyMovementDocumentTypeIdRemoved(Boolean removed);
+        void setIsPropertyMovementConfirmationDocumentTypeIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementMovementTypeIdRemoved();
+        Boolean getIsPropertyMovementConfirmationMovementDocumentNumberRemoved();
 
-        void setIsPropertyMovementMovementTypeIdRemoved(Boolean removed);
+        void setIsPropertyMovementConfirmationMovementDocumentNumberRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementDescriptionRemoved();
+        Boolean getIsPropertyMovementConfirmationIsApprovedRemoved();
 
-        void setIsPropertyMovementDescriptionRemoved(Boolean removed);
+        void setIsPropertyMovementConfirmationIsApprovedRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementCreatedByRemoved();
+        Boolean getIsPropertyMovementConfirmationApprovalAmountRemoved();
 
-        void setIsPropertyMovementCreatedByRemoved(Boolean removed);
+        void setIsPropertyMovementConfirmationApprovalAmountRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementCreatedAtRemoved();
+        Boolean getIsPropertyMovementConfirmationProcessingRemoved();
 
-        void setIsPropertyMovementCreatedAtRemoved(Boolean removed);
+        void setIsPropertyMovementConfirmationProcessingRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementUpdatedByRemoved();
+        Boolean getIsPropertyMovementConfirmationProcessedRemoved();
 
-        void setIsPropertyMovementUpdatedByRemoved(Boolean removed);
+        void setIsPropertyMovementConfirmationProcessedRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementUpdatedAtRemoved();
+        Boolean getIsPropertyMovementConfirmationDescriptionRemoved();
 
-        void setIsPropertyMovementUpdatedAtRemoved(Boolean removed);
+        void setIsPropertyMovementConfirmationDescriptionRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementActiveRemoved();
+        Boolean getIsPropertyMovementConfirmationCreatedByRemoved();
 
-        void setIsPropertyMovementActiveRemoved(Boolean removed);
+        void setIsPropertyMovementConfirmationCreatedByRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementDeletedRemoved();
+        Boolean getIsPropertyMovementConfirmationCreatedAtRemoved();
 
-        void setIsPropertyMovementDeletedRemoved(Boolean removed);
+        void setIsPropertyMovementConfirmationCreatedAtRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementConfirmationUpdatedByRemoved();
+
+        void setIsPropertyMovementConfirmationUpdatedByRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementConfirmationUpdatedAtRemoved();
+
+        void setIsPropertyMovementConfirmationUpdatedAtRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementConfirmationActiveRemoved();
+
+        void setIsPropertyMovementConfirmationActiveRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementConfirmationDeletedRemoved();
+
+        void setIsPropertyMovementConfirmationDeletedRemoved(Boolean removed);
 
     }
 

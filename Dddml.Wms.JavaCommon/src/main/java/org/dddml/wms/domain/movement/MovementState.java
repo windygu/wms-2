@@ -25,10 +25,6 @@ public interface MovementState
 
     void setDocumentStatusId(String documentStatusId);
 
-    String getMovementTypeId();
-
-    void setMovementTypeId(String movementTypeId);
-
     String getDescription();
 
     void setDescription(String description);
@@ -67,8 +63,6 @@ public interface MovementState
     boolean getForReapplying();
 
     MovementLineStates getMovementLines();
-
-    MovementConfirmationLineStates getMovementConfirmationLines();
 
 
     void mutate(Event e);

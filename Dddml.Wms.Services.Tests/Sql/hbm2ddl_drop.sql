@@ -172,3 +172,7 @@
     drop table if exists MovementConfirmationLine_RV;
 
     drop table if exists MovementConfirmationLineMvoStateEvents;
+
+    drop table if exists MovementConfirmations;
+
+    drop table if exists MovementConfirmationStateEvents;

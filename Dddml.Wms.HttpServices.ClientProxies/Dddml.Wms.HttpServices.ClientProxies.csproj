@@ -131,6 +131,9 @@
     <Compile Include="Generated\MovementApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\MovementConfirmationApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\MovementConfirmationLineMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -222,6 +225,7 @@
 .\LocatorApplicationServiceProxy.cs
 .\LocatorTreeApplicationServiceProxy.cs
 .\MovementApplicationServiceProxy.cs
+.\MovementConfirmationApplicationServiceProxy.cs
 .\MovementConfirmationLineMvoApplicationServiceProxy.cs
 .\MovementLineMvoApplicationServiceProxy.cs
 .\MovementTypeApplicationServiceProxy.cs

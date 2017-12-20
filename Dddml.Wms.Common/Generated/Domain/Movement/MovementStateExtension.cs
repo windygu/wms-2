@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.Movement
 
         public static IMovementCommand ToCreateOrMergePatchMovement(this MovementState state)
         {
-            return state.ToCreateOrMergePatchMovement<CreateMovement, MergePatchMovement, CreateMovementLine, MergePatchMovementLine, CreateMovementConfirmationLine, MergePatchMovementConfirmationLine>();
+            return state.ToCreateOrMergePatchMovement<CreateMovement, MergePatchMovement, CreateMovementLine, MergePatchMovementLine>();
         }
 
         public static DeleteMovement ToDeleteMovement(this MovementState state)
@@ -27,12 +27,12 @@ namespace Dddml.Wms.Domain.Movement
 
         public static MergePatchMovement ToMergePatchMovement(this MovementState state)
         {
-            return state.ToMergePatchMovement<MergePatchMovement, CreateMovementLine, MergePatchMovementLine, CreateMovementConfirmationLine, MergePatchMovementConfirmationLine>();
+            return state.ToMergePatchMovement<MergePatchMovement, CreateMovementLine, MergePatchMovementLine>();
         }
 
         public static CreateMovement ToCreateMovement(this MovementState state)
         {
-            return state.ToCreateMovement<CreateMovement, CreateMovementLine, CreateMovementConfirmationLine>();
+            return state.ToCreateMovement<CreateMovement, CreateMovementLine>();
         }
 		
 

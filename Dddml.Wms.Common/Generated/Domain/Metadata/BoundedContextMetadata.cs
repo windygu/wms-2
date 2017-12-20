@@ -39,6 +39,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("InventoryPostingRule");
             _aggregateNames.Add("InventoryPRTriggered");
             _aggregateNames.Add("Movement");
+            _aggregateNames.Add("MovementConfirmation");
             _aggregateNames.Add("MovementType");
             _aggregateNames.Add("Order");
             _aggregateNames.Add("OrderShipment");
@@ -79,6 +80,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("InventoryPostingRule", "Dddml.Wms.Domain.InventoryPostingRule");
             _aggregateNamespaces.Add("InventoryPRTriggered", "Dddml.Wms.Domain.InventoryPRTriggered");
             _aggregateNamespaces.Add("Movement", "Dddml.Wms.Domain.Movement");
+            _aggregateNamespaces.Add("MovementConfirmation", "Dddml.Wms.Domain.MovementConfirmation");
             _aggregateNamespaces.Add("MovementType", "Dddml.Wms.Domain.MovementType");
             _aggregateNamespaces.Add("Order", "Dddml.Wms.Domain.Order");
             _aggregateNamespaces.Add("OrderShipment", "Dddml.Wms.Domain.OrderShipment");

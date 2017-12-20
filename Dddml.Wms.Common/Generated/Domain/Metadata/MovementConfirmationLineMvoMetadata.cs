@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.Metadata
 {
@@ -44,6 +44,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsReservedPropertyUpdatedBy = false,
                     IsReservedPropertyUpdatedAt = false,
                     IsFilteringProperty = false,
+                },
+                new PropertyMetadata {
+                    Name = "MovementLineNumber",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
                     Name = "TargetQuantity",
@@ -140,6 +169,64 @@ namespace Dddml.Wms.Domain.Metadata
                     IsNullableType = false,
                     DisplayName = "",
                     Description = "The Quantity scrapped due to QA issues. If there is a scrapped quantity, a Physical Inventory is created for the target (to) warehouse.",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "Description",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "Processed",
+                    Type = typeof(bool),
+                    TypeName = "bool",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
                     Length = 0,
                     GenericTypeName = "",
                     ReferenceTypeName = "",
@@ -365,7 +452,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementDocumentTypeId",
+                    Name = "MovementConfirmationDocumentTypeId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -394,7 +481,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementDocumentStatusId",
+                    Name = "MovementConfirmationDocumentStatusId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -423,7 +510,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementMovementTypeId",
+                    Name = "MovementConfirmationMovementDocumentNumber",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -452,7 +539,65 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementDescription",
+                    Name = "MovementConfirmationIsApproved",
+                    Type = typeof(bool),
+                    TypeName = "bool",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "MovementConfirmationApprovalAmount",
+                    Type = typeof(decimal),
+                    TypeName = "decimal",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "MovementConfirmationProcessing",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -481,14 +626,18 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementMovementLines",
+                    Name = "MovementConfirmationProcessed",
+                    Type = typeof(bool),
+                    TypeName = "bool",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
                     DisplayName = "",
                     Description = "",
                     Length = 0,
                     GenericTypeName = "",
                     ReferenceTypeName = "",
                     ReferenceName = "",
-                    ItemTypeName = "MovementLine",
+                    ItemTypeName = "",
                     InverseOf = "",
                     IsHoisted = false,
                     IsId = false,
@@ -503,10 +652,39 @@ namespace Dddml.Wms.Domain.Metadata
                     IsReservedPropertyCreatedAt = false,
                     IsReservedPropertyUpdatedBy = false,
                     IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = false,
+                    IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementMovementConfirmationLines",
+                    Name = "MovementConfirmationDescription",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "MovementConfirmationMovementConfirmationLines",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
@@ -531,7 +709,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
-                    Name = "MovementVersion",
+                    Name = "MovementConfirmationVersion",
                     Type = typeof(long),
                     TypeName = "long",
                     IsSimpleValueObjectType = true,
@@ -560,7 +738,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementCreatedBy",
+                    Name = "MovementConfirmationCreatedBy",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -589,7 +767,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementCreatedAt",
+                    Name = "MovementConfirmationCreatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
                     IsSimpleValueObjectType = true,
@@ -618,7 +796,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementUpdatedBy",
+                    Name = "MovementConfirmationUpdatedBy",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -647,7 +825,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementUpdatedAt",
+                    Name = "MovementConfirmationUpdatedAt",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
                     IsSimpleValueObjectType = true,
@@ -676,7 +854,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementActive",
+                    Name = "MovementConfirmationActive",
                     Type = typeof(bool),
                     TypeName = "bool",
                     IsSimpleValueObjectType = true,
@@ -705,7 +883,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementDeleted",
+                    Name = "MovementConfirmationDeleted",
                     Type = typeof(bool),
                     TypeName = "bool",
                     IsSimpleValueObjectType = true,
@@ -734,7 +912,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementConfirmationLineId.MovementDocumentNumber",
+                    Name = "MovementConfirmationLineId.MovementConfirmationDocumentNumber",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -752,7 +930,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "MovementConfirmationLineId.MovementDocumentNumber",
+                    SourceChainingName = "MovementConfirmationLineId.MovementConfirmationDocumentNumber",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -810,6 +988,8 @@ namespace Dddml.Wms.Domain.Metadata
         private static void InitFilteringPropertyAliasDictionary()
         {
             var d = new Dictionary<string, string>();
+            d.Add("MovementLineNumber", "MovementLineNumber");
+            d.Add("movementLineNumber", "MovementLineNumber");
             d.Add("TargetQuantity", "TargetQuantity");
             d.Add("targetQuantity", "TargetQuantity");
             d.Add("ConfirmedQuantity", "ConfirmedQuantity");
@@ -818,6 +998,10 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("differenceQuantity", "DifferenceQuantity");
             d.Add("ScrappedQuantity", "ScrappedQuantity");
             d.Add("scrappedQuantity", "ScrappedQuantity");
+            d.Add("Description", "Description");
+            d.Add("description", "Description");
+            d.Add("Processed", "Processed");
+            d.Add("processed", "Processed");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");
@@ -832,30 +1016,38 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
-            d.Add("MovementDocumentTypeId", "MovementDocumentTypeId");
-            d.Add("movementDocumentTypeId", "MovementDocumentTypeId");
-            d.Add("MovementDocumentStatusId", "MovementDocumentStatusId");
-            d.Add("movementDocumentStatusId", "MovementDocumentStatusId");
-            d.Add("MovementMovementTypeId", "MovementMovementTypeId");
-            d.Add("movementMovementTypeId", "MovementMovementTypeId");
-            d.Add("MovementDescription", "MovementDescription");
-            d.Add("movementDescription", "MovementDescription");
-            d.Add("MovementVersion", "MovementVersion");
-            d.Add("movementVersion", "MovementVersion");
-            d.Add("MovementCreatedBy", "MovementCreatedBy");
-            d.Add("movementCreatedBy", "MovementCreatedBy");
-            d.Add("MovementCreatedAt", "MovementCreatedAt");
-            d.Add("movementCreatedAt", "MovementCreatedAt");
-            d.Add("MovementUpdatedBy", "MovementUpdatedBy");
-            d.Add("movementUpdatedBy", "MovementUpdatedBy");
-            d.Add("MovementUpdatedAt", "MovementUpdatedAt");
-            d.Add("movementUpdatedAt", "MovementUpdatedAt");
-            d.Add("MovementActive", "MovementActive");
-            d.Add("movementActive", "MovementActive");
-            d.Add("MovementDeleted", "MovementDeleted");
-            d.Add("movementDeleted", "MovementDeleted");
-            d.Add("MovementConfirmationLineId.MovementDocumentNumber", "MovementConfirmationLineId.MovementDocumentNumber");
-            d.Add("movementConfirmationLineId.movementDocumentNumber", "MovementConfirmationLineId.MovementDocumentNumber");
+            d.Add("MovementConfirmationDocumentTypeId", "MovementConfirmationDocumentTypeId");
+            d.Add("movementConfirmationDocumentTypeId", "MovementConfirmationDocumentTypeId");
+            d.Add("MovementConfirmationDocumentStatusId", "MovementConfirmationDocumentStatusId");
+            d.Add("movementConfirmationDocumentStatusId", "MovementConfirmationDocumentStatusId");
+            d.Add("MovementConfirmationMovementDocumentNumber", "MovementConfirmationMovementDocumentNumber");
+            d.Add("movementConfirmationMovementDocumentNumber", "MovementConfirmationMovementDocumentNumber");
+            d.Add("MovementConfirmationIsApproved", "MovementConfirmationIsApproved");
+            d.Add("movementConfirmationIsApproved", "MovementConfirmationIsApproved");
+            d.Add("MovementConfirmationApprovalAmount", "MovementConfirmationApprovalAmount");
+            d.Add("movementConfirmationApprovalAmount", "MovementConfirmationApprovalAmount");
+            d.Add("MovementConfirmationProcessing", "MovementConfirmationProcessing");
+            d.Add("movementConfirmationProcessing", "MovementConfirmationProcessing");
+            d.Add("MovementConfirmationProcessed", "MovementConfirmationProcessed");
+            d.Add("movementConfirmationProcessed", "MovementConfirmationProcessed");
+            d.Add("MovementConfirmationDescription", "MovementConfirmationDescription");
+            d.Add("movementConfirmationDescription", "MovementConfirmationDescription");
+            d.Add("MovementConfirmationVersion", "MovementConfirmationVersion");
+            d.Add("movementConfirmationVersion", "MovementConfirmationVersion");
+            d.Add("MovementConfirmationCreatedBy", "MovementConfirmationCreatedBy");
+            d.Add("movementConfirmationCreatedBy", "MovementConfirmationCreatedBy");
+            d.Add("MovementConfirmationCreatedAt", "MovementConfirmationCreatedAt");
+            d.Add("movementConfirmationCreatedAt", "MovementConfirmationCreatedAt");
+            d.Add("MovementConfirmationUpdatedBy", "MovementConfirmationUpdatedBy");
+            d.Add("movementConfirmationUpdatedBy", "MovementConfirmationUpdatedBy");
+            d.Add("MovementConfirmationUpdatedAt", "MovementConfirmationUpdatedAt");
+            d.Add("movementConfirmationUpdatedAt", "MovementConfirmationUpdatedAt");
+            d.Add("MovementConfirmationActive", "MovementConfirmationActive");
+            d.Add("movementConfirmationActive", "MovementConfirmationActive");
+            d.Add("MovementConfirmationDeleted", "MovementConfirmationDeleted");
+            d.Add("movementConfirmationDeleted", "MovementConfirmationDeleted");
+            d.Add("MovementConfirmationLineId.MovementConfirmationDocumentNumber", "MovementConfirmationLineId.MovementConfirmationDocumentNumber");
+            d.Add("movementConfirmationLineId.movementConfirmationDocumentNumber", "MovementConfirmationLineId.MovementConfirmationDocumentNumber");
             d.Add("MovementConfirmationLineId.LineNumber", "MovementConfirmationLineId.LineNumber");
             d.Add("movementConfirmationLineId.lineNumber", "MovementConfirmationLineId.LineNumber");
             _filteringPropertyAliasDictionary = d;

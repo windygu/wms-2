@@ -27,6 +27,48 @@ namespace Dddml.Wms.Domain.Movement
             set;
         }
 
+        public virtual string ProductId
+        {
+            get;
+            set;
+        }
+
+        public virtual string LocatorIdFrom
+        {
+            get;
+            set;
+        }
+
+        public virtual string LocatorIdTo
+        {
+            get;
+            set;
+        }
+
+        public virtual string AttributeSetInstanceIdFrom
+        {
+            get;
+            set;
+        }
+
+        public virtual string AttributeSetInstanceIdTo
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? Processed
+        {
+            get;
+            set;
+        }
+
+        public virtual string ReversalLineNumber
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -74,6 +116,13 @@ namespace Dddml.Wms.Domain.Movement
             var state = new MovementLineState(true);
             state.LineNumber = this.LineNumber;
             if (this.MovementQuantity != null && this.MovementQuantity.HasValue) { state.MovementQuantity = this.MovementQuantity.Value; }
+            state.ProductId = this.ProductId;
+            state.LocatorIdFrom = this.LocatorIdFrom;
+            state.LocatorIdTo = this.LocatorIdTo;
+            state.AttributeSetInstanceIdFrom = this.AttributeSetInstanceIdFrom;
+            state.AttributeSetInstanceIdTo = this.AttributeSetInstanceIdTo;
+            if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
+            state.ReversalLineNumber = this.ReversalLineNumber;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.MovementDocumentNumber = this.MovementDocumentNumber;

@@ -17,7 +17,6 @@
 
 	<property name="documentTypeId" ></property>
 	<property name="documentStatusId" ></property>
-	<property name="movementTypeId" ></property>
 	<property name="description" ></property>
 	<property name="active" ></property>
 
@@ -36,8 +35,6 @@
         <property name="isPropertyDocumentTypeIdRemoved" column="IsPropertyDocumentTypeIdRemoved"/>
 
         <property name="isPropertyDocumentStatusIdRemoved" column="IsPropertyDocumentStatusIdRemoved"/>
-
-        <property name="isPropertyMovementTypeIdRemoved" column="IsPropertyMovementTypeIdRemoved"/>
 
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 

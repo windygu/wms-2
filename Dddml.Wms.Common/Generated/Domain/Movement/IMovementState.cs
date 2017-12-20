@@ -35,9 +35,6 @@ namespace Dddml.Wms.Domain.Movement
 		IMovementLineStates MovementLines { get; set; }
 
 
-		IMovementConfirmationLineStates MovementConfirmationLines { get; set; }
-
-
         bool IsUnsaved { get; }
 
 	}

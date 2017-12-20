@@ -46,18 +46,6 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         this.documentStatusId = documentStatusId;
     }
 
-    private String movementTypeId;
-
-    public String getMovementTypeId()
-    {
-        return this.movementTypeId;
-    }
-
-    public void setMovementTypeId(String movementTypeId)
-    {
-        this.movementTypeId = movementTypeId;
-    }
-
     private String description;
 
     public String getDescription()
@@ -171,18 +159,6 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         this.movementLines = movementLines;
     }
 
-    private MovementConfirmationLineStates movementConfirmationLines;
-
-    public MovementConfirmationLineStates getMovementConfirmationLines()
-    {
-        return this.movementConfirmationLines;
-    }
-
-    public void setMovementConfirmationLines(MovementConfirmationLineStates movementConfirmationLines)
-    {
-        this.movementConfirmationLines = movementConfirmationLines;
-    }
-
     private Boolean stateReadOnly;
 
     public Boolean getStateReadOnly() { return this.stateReadOnly; }
@@ -223,7 +199,6 @@ public abstract class AbstractMovementState implements MovementState, Saveable
     
     protected void initializeProperties() {
         movementLines = new SimpleMovementLineStates(this);
-        movementConfirmationLines = new SimpleMovementConfirmationLineStates(this);
     }
 
 
@@ -246,7 +221,6 @@ public abstract class AbstractMovementState implements MovementState, Saveable
 
         this.setDocumentTypeId(e.getDocumentTypeId());
         this.setDocumentStatusId(e.getDocumentStatusId());
-        this.setMovementTypeId(e.getMovementTypeId());
         this.setDescription(e.getDescription());
         this.setActive(e.getActive());
 
@@ -257,10 +231,6 @@ public abstract class AbstractMovementState implements MovementState, Saveable
 
         for (MovementLineStateEvent.MovementLineStateCreated innerEvent : e.getMovementLineEvents()) {
             MovementLineState innerState = this.getMovementLines().get(innerEvent.getStateEventId().getLineNumber());
-            innerState.mutate(innerEvent);
-        }
-        for (MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated innerEvent : e.getMovementConfirmationLineEvents()) {
-            MovementConfirmationLineState innerState = this.getMovementConfirmationLines().get(innerEvent.getStateEventId().getLineNumber());
             innerState.mutate(innerEvent);
         }
     }
@@ -290,17 +260,6 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         else
         {
             this.setDocumentStatusId(e.getDocumentStatusId());
-        }
-        if (e.getMovementTypeId() == null)
-        {
-            if (e.getIsPropertyMovementTypeIdRemoved() != null && e.getIsPropertyMovementTypeIdRemoved())
-            {
-                this.setMovementTypeId(null);
-            }
-        }
-        else
-        {
-            this.setMovementTypeId(e.getMovementTypeId());
         }
         if (e.getDescription() == null)
         {
@@ -337,15 +296,6 @@ public abstract class AbstractMovementState implements MovementState, Saveable
                 this.getMovementLines().remove(innerState);
             }
         }
-        for (MovementConfirmationLineStateEvent innerEvent : e.getMovementConfirmationLineEvents()) {
-            MovementConfirmationLineState innerState = this.getMovementConfirmationLines().get(innerEvent.getStateEventId().getLineNumber());
-            innerState.mutate(innerEvent);
-            if (innerEvent instanceof MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved)
-            {
-                //MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved removed = (MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved)innerEvent;
-                this.getMovementConfirmationLines().remove(innerState);
-            }
-        }
     }
 
     public void when(MovementStateDeleted e)
@@ -366,23 +316,11 @@ public abstract class AbstractMovementState implements MovementState, Saveable
             innerState.when(innerE);
             //e.addMovementLineEvent(innerE);
         }
-        for (MovementConfirmationLineState innerState : this.getMovementConfirmationLines())
-        {
-            this.getMovementConfirmationLines().remove(innerState);
-        
-            MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved innerE = e.newMovementConfirmationLineStateRemoved(innerState.getLineNumber());
-            innerE.setCreatedAt(e.getCreatedAt());
-            innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
-            //e.addMovementConfirmationLineEvent(innerE);
-        }
     }
 
     public void save()
     {
         movementLines.save();
-
-        movementConfirmationLines.save();
 
     }
 
@@ -426,14 +364,6 @@ public abstract class AbstractMovementState implements MovementState, Saveable
     static class SimpleMovementLineStates extends AbstractMovementLineStates
     {
         public SimpleMovementLineStates(AbstractMovementState outerState)
-        {
-            super(outerState);
-        }
-    }
-
-    static class SimpleMovementConfirmationLineStates extends AbstractMovementConfirmationLineStates
-    {
-        public SimpleMovementConfirmationLineStates(AbstractMovementState outerState)
         {
             super(outerState);
         }

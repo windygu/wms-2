@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -31,11 +31,11 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		{
 			get
 			{
-				return this.MovementVersion;
+				return this.MovementConfirmationVersion;
 			}
 		}
 
-		public virtual long MovementVersion { get; set; }
+		public virtual long MovementConfirmationVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 
@@ -53,6 +53,8 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set { this.CommandId = value; }
         }
 
+		public virtual string MovementLineNumber { get; set; }
+
 		public virtual decimal? TargetQuantity { get; set; }
 
 		public virtual decimal? ConfirmedQuantity { get; set; }
@@ -61,29 +63,41 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual decimal? ScrappedQuantity { get; set; }
 
+		public virtual string Description { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
 		public virtual long? Version { get; set; }
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string MovementDocumentTypeId { get; set; }
+		public virtual string MovementConfirmationDocumentTypeId { get; set; }
 
 		public virtual string DocumentAction { get; set; }
 
-		public virtual string MovementMovementTypeId { get; set; }
+		public virtual string MovementConfirmationMovementDocumentNumber { get; set; }
 
-		public virtual string MovementDescription { get; set; }
+		public virtual bool? MovementConfirmationIsApproved { get; set; }
 
-		public virtual string MovementCreatedBy { get; set; }
+		public virtual decimal? MovementConfirmationApprovalAmount { get; set; }
 
-		public virtual DateTime? MovementCreatedAt { get; set; }
+		public virtual string MovementConfirmationProcessing { get; set; }
 
-		public virtual string MovementUpdatedBy { get; set; }
+		public virtual bool? MovementConfirmationProcessed { get; set; }
 
-		public virtual DateTime? MovementUpdatedAt { get; set; }
+		public virtual string MovementConfirmationDescription { get; set; }
 
-		public virtual bool? MovementActive { get; set; }
+		public virtual string MovementConfirmationCreatedBy { get; set; }
 
-		public virtual bool? MovementDeleted { get; set; }
+		public virtual DateTime? MovementConfirmationCreatedAt { get; set; }
+
+		public virtual string MovementConfirmationUpdatedBy { get; set; }
+
+		public virtual DateTime? MovementConfirmationUpdatedAt { get; set; }
+
+		public virtual bool? MovementConfirmationActive { get; set; }
+
+		public virtual bool? MovementConfirmationDeleted { get; set; }
 
 
 		// //////////////////////////////////////////////////
@@ -117,6 +131,8 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 	public class MergePatchMovementConfirmationLineMvo :MovementConfirmationLineMvoCommandBase, IMergePatchMovementConfirmationLineMvo
 	{
 
+		public virtual bool IsPropertyMovementLineNumberRemoved { get; set; }
+
 		public virtual bool IsPropertyTargetQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertyConfirmedQuantityRemoved { get; set; }
@@ -125,27 +141,39 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual bool IsPropertyScrappedQuantityRemoved { get; set; }
 
+		public virtual bool IsPropertyDescriptionRemoved { get; set; }
+
+		public virtual bool IsPropertyProcessedRemoved { get; set; }
+
 		public virtual bool IsPropertyVersionRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementDocumentTypeIdRemoved { get; set; }
+		public virtual bool IsPropertyMovementConfirmationDocumentTypeIdRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementMovementTypeIdRemoved { get; set; }
+		public virtual bool IsPropertyMovementConfirmationMovementDocumentNumberRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementDescriptionRemoved { get; set; }
+		public virtual bool IsPropertyMovementConfirmationIsApprovedRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementCreatedByRemoved { get; set; }
+		public virtual bool IsPropertyMovementConfirmationApprovalAmountRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementCreatedAtRemoved { get; set; }
+		public virtual bool IsPropertyMovementConfirmationProcessingRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementUpdatedByRemoved { get; set; }
+		public virtual bool IsPropertyMovementConfirmationProcessedRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementUpdatedAtRemoved { get; set; }
+		public virtual bool IsPropertyMovementConfirmationDescriptionRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementActiveRemoved { get; set; }
+		public virtual bool IsPropertyMovementConfirmationCreatedByRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementDeletedRemoved { get; set; }
+		public virtual bool IsPropertyMovementConfirmationCreatedAtRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementConfirmationUpdatedByRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementConfirmationUpdatedAtRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementConfirmationActiveRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementConfirmationDeletedRemoved { get; set; }
 
 
 		public MergePatchMovementConfirmationLineMvo ()

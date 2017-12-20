@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo;
 
 import java.util.List;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;

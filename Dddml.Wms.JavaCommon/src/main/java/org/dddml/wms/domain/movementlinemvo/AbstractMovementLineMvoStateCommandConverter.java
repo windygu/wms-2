@@ -40,10 +40,16 @@ public abstract class AbstractMovementLineMvoStateCommandConverter<TCreateMoveme
 
         cmd.setMovementLineId(state.getMovementLineId());
         cmd.setMovementQuantity(state.getMovementQuantity());
+        cmd.setProductId(state.getProductId());
+        cmd.setLocatorIdFrom(state.getLocatorIdFrom());
+        cmd.setLocatorIdTo(state.getLocatorIdTo());
+        cmd.setAttributeSetInstanceIdFrom(state.getAttributeSetInstanceIdFrom());
+        cmd.setAttributeSetInstanceIdTo(state.getAttributeSetInstanceIdTo());
+        cmd.setProcessed(state.getProcessed());
+        cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
         cmd.setMovementDocumentTypeId(state.getMovementDocumentTypeId());
-        cmd.setMovementMovementTypeId(state.getMovementMovementTypeId());
         cmd.setMovementDescription(state.getMovementDescription());
         cmd.setMovementCreatedBy(state.getMovementCreatedBy());
         cmd.setMovementCreatedAt(state.getMovementCreatedAt());
@@ -53,10 +59,16 @@ public abstract class AbstractMovementLineMvoStateCommandConverter<TCreateMoveme
         cmd.setMovementDeleted(state.getMovementDeleted());
             
         if (state.getMovementQuantity() == null) { cmd.setIsPropertyMovementQuantityRemoved(true); }
+        if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
+        if (state.getLocatorIdFrom() == null) { cmd.setIsPropertyLocatorIdFromRemoved(true); }
+        if (state.getLocatorIdTo() == null) { cmd.setIsPropertyLocatorIdToRemoved(true); }
+        if (state.getAttributeSetInstanceIdFrom() == null) { cmd.setIsPropertyAttributeSetInstanceIdFromRemoved(true); }
+        if (state.getAttributeSetInstanceIdTo() == null) { cmd.setIsPropertyAttributeSetInstanceIdToRemoved(true); }
+        if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
+        if (state.getReversalLineNumber() == null) { cmd.setIsPropertyReversalLineNumberRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         if (state.getMovementDocumentTypeId() == null) { cmd.setIsPropertyMovementDocumentTypeIdRemoved(true); }
-        if (state.getMovementMovementTypeId() == null) { cmd.setIsPropertyMovementMovementTypeIdRemoved(true); }
         if (state.getMovementDescription() == null) { cmd.setIsPropertyMovementDescriptionRemoved(true); }
         if (state.getMovementCreatedBy() == null) { cmd.setIsPropertyMovementCreatedByRemoved(true); }
         if (state.getMovementCreatedAt() == null) { cmd.setIsPropertyMovementCreatedAtRemoved(true); }
@@ -74,10 +86,16 @@ public abstract class AbstractMovementLineMvoStateCommandConverter<TCreateMoveme
         cmd.setMovementVersion(state.getMovementVersion());
         cmd.setMovementLineId(state.getMovementLineId());
         cmd.setMovementQuantity(state.getMovementQuantity());
+        cmd.setProductId(state.getProductId());
+        cmd.setLocatorIdFrom(state.getLocatorIdFrom());
+        cmd.setLocatorIdTo(state.getLocatorIdTo());
+        cmd.setAttributeSetInstanceIdFrom(state.getAttributeSetInstanceIdFrom());
+        cmd.setAttributeSetInstanceIdTo(state.getAttributeSetInstanceIdTo());
+        cmd.setProcessed(state.getProcessed());
+        cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
         cmd.setMovementDocumentTypeId(state.getMovementDocumentTypeId());
-        cmd.setMovementMovementTypeId(state.getMovementMovementTypeId());
         cmd.setMovementDescription(state.getMovementDescription());
         cmd.setMovementCreatedBy(state.getMovementCreatedBy());
         cmd.setMovementCreatedAt(state.getMovementCreatedAt());

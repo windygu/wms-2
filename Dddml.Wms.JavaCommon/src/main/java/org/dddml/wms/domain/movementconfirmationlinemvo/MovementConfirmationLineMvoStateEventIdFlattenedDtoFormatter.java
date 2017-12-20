@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo;
 
-import org.dddml.wms.domain.movement.MovementConfirmationLineIdDto;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.MovementConfirmationLineIdDto;
+import org.dddml.wms.domain.movementconfirmation.*;
 import org.dddml.wms.domain.*;
 import java.util.*;
 import org.dddml.wms.specialization.*;
@@ -24,16 +24,16 @@ public class MovementConfirmationLineMvoStateEventIdFlattenedDtoFormatter extend
     protected void setFieldStringValue(MovementConfirmationLineMvoStateEventIdFlattenedDto dto, String fieldName, String fieldValue) {
         Class clazz = getFieldClass(fieldName);
         Object objVal = ApplicationContext.current.getTypeConverter().convertFromString(clazz, fieldValue);
-        if ("movementConfirmationLineIdMovementDocumentNumber".equals(fieldName)) {
-            dto.setMovementConfirmationLineIdMovementDocumentNumber((String) objVal);
+        if ("movementConfirmationLineIdMovementConfirmationDocumentNumber".equals(fieldName)) {
+            dto.setMovementConfirmationLineIdMovementConfirmationDocumentNumber((String) objVal);
             return;
         }
         if ("movementConfirmationLineIdLineNumber".equals(fieldName)) {
             dto.setMovementConfirmationLineIdLineNumber((String) objVal);
             return;
         }
-        if ("movementVersion".equals(fieldName)) {
-            dto.setMovementVersion((Long) objVal);
+        if ("movementConfirmationVersion".equals(fieldName)) {
+            dto.setMovementConfirmationVersion((Long) objVal);
             return;
         }
     }
@@ -41,8 +41,8 @@ public class MovementConfirmationLineMvoStateEventIdFlattenedDtoFormatter extend
     @Override
     protected String getFieldStringValue(MovementConfirmationLineMvoStateEventIdFlattenedDto dto, String fieldName) {
         Class clazz = getFieldClass(fieldName);
-        if ("movementConfirmationLineIdMovementDocumentNumber".equals(fieldName)) {
-            Object objVal = dto.getMovementConfirmationLineIdMovementDocumentNumber();
+        if ("movementConfirmationLineIdMovementConfirmationDocumentNumber".equals(fieldName)) {
+            Object objVal = dto.getMovementConfirmationLineIdMovementConfirmationDocumentNumber();
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }
@@ -51,8 +51,8 @@ public class MovementConfirmationLineMvoStateEventIdFlattenedDtoFormatter extend
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }
-        if ("movementVersion".equals(fieldName)) {
-            Object objVal = dto.getMovementVersion();
+        if ("movementConfirmationVersion".equals(fieldName)) {
+            Object objVal = dto.getMovementConfirmationVersion();
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }

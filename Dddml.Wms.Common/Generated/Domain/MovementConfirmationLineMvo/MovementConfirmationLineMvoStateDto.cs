@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -18,6 +18,12 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
     {
 
         public virtual MovementConfirmationLineIdDto MovementConfirmationLineId
+        {
+            get;
+            set;
+        }
+
+        public virtual string MovementLineNumber
         {
             get;
             set;
@@ -47,6 +53,18 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set;
         }
 
+        public virtual string Description
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? Processed
+        {
+            get;
+            set;
+        }
+
         public virtual long? Version
         {
             get;
@@ -59,67 +77,91 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set;
         }
 
-        public virtual string MovementDocumentTypeId
+        public virtual string MovementConfirmationDocumentTypeId
         {
             get;
             set;
         }
 
-        public virtual string MovementDocumentStatusId
+        public virtual string MovementConfirmationDocumentStatusId
         {
             get;
             set;
         }
 
-        public virtual string MovementMovementTypeId
+        public virtual string MovementConfirmationMovementDocumentNumber
         {
             get;
             set;
         }
 
-        public virtual string MovementDescription
+        public virtual bool? MovementConfirmationIsApproved
         {
             get;
             set;
         }
 
-        public virtual string MovementCreatedBy
+        public virtual decimal? MovementConfirmationApprovalAmount
         {
             get;
             set;
         }
 
-        public virtual DateTime? MovementCreatedAt
+        public virtual string MovementConfirmationProcessing
         {
             get;
             set;
         }
 
-        public virtual string MovementUpdatedBy
+        public virtual bool? MovementConfirmationProcessed
         {
             get;
             set;
         }
 
-        public virtual DateTime? MovementUpdatedAt
+        public virtual string MovementConfirmationDescription
         {
             get;
             set;
         }
 
-        public virtual bool? MovementActive
+        public virtual string MovementConfirmationCreatedBy
         {
             get;
             set;
         }
 
-        public virtual bool? MovementDeleted
+        public virtual DateTime? MovementConfirmationCreatedAt
         {
             get;
             set;
         }
 
-        public virtual long? MovementVersion
+        public virtual string MovementConfirmationUpdatedBy
+        {
+            get;
+            set;
+        }
+
+        public virtual DateTime? MovementConfirmationUpdatedAt
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? MovementConfirmationActive
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? MovementConfirmationDeleted
+        {
+            get;
+            set;
+        }
+
+        public virtual long? MovementConfirmationVersion
         {
             get;
             set;
@@ -153,23 +195,30 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
         {
             var state = new MovementConfirmationLineMvoState(true);
             state.MovementConfirmationLineId = (this.MovementConfirmationLineId == null) ? null : this.MovementConfirmationLineId.ToMovementConfirmationLineId();
+            state.MovementLineNumber = this.MovementLineNumber;
             if (this.TargetQuantity != null && this.TargetQuantity.HasValue) { state.TargetQuantity = this.TargetQuantity.Value; }
             if (this.ConfirmedQuantity != null && this.ConfirmedQuantity.HasValue) { state.ConfirmedQuantity = this.ConfirmedQuantity.Value; }
             if (this.DifferenceQuantity != null && this.DifferenceQuantity.HasValue) { state.DifferenceQuantity = this.DifferenceQuantity.Value; }
             if (this.ScrappedQuantity != null && this.ScrappedQuantity.HasValue) { state.ScrappedQuantity = this.ScrappedQuantity.Value; }
+            state.Description = this.Description;
+            if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
-            state.MovementDocumentTypeId = this.MovementDocumentTypeId;
-            state.MovementDocumentStatusId = this.MovementDocumentStatusId;
-            state.MovementMovementTypeId = this.MovementMovementTypeId;
-            state.MovementDescription = this.MovementDescription;
-            state.MovementCreatedBy = this.MovementCreatedBy;
-            if (this.MovementCreatedAt != null && this.MovementCreatedAt.HasValue) { state.MovementCreatedAt = this.MovementCreatedAt.Value; }
-            state.MovementUpdatedBy = this.MovementUpdatedBy;
-            if (this.MovementUpdatedAt != null && this.MovementUpdatedAt.HasValue) { state.MovementUpdatedAt = this.MovementUpdatedAt.Value; }
-            if (this.MovementActive != null && this.MovementActive.HasValue) { state.MovementActive = this.MovementActive.Value; }
-            if (this.MovementDeleted != null && this.MovementDeleted.HasValue) { state.MovementDeleted = this.MovementDeleted.Value; }
-            if (this.MovementVersion != null && this.MovementVersion.HasValue) { state.MovementVersion = this.MovementVersion.Value; }
+            state.MovementConfirmationDocumentTypeId = this.MovementConfirmationDocumentTypeId;
+            state.MovementConfirmationDocumentStatusId = this.MovementConfirmationDocumentStatusId;
+            state.MovementConfirmationMovementDocumentNumber = this.MovementConfirmationMovementDocumentNumber;
+            if (this.MovementConfirmationIsApproved != null && this.MovementConfirmationIsApproved.HasValue) { state.MovementConfirmationIsApproved = this.MovementConfirmationIsApproved.Value; }
+            if (this.MovementConfirmationApprovalAmount != null && this.MovementConfirmationApprovalAmount.HasValue) { state.MovementConfirmationApprovalAmount = this.MovementConfirmationApprovalAmount.Value; }
+            state.MovementConfirmationProcessing = this.MovementConfirmationProcessing;
+            if (this.MovementConfirmationProcessed != null && this.MovementConfirmationProcessed.HasValue) { state.MovementConfirmationProcessed = this.MovementConfirmationProcessed.Value; }
+            state.MovementConfirmationDescription = this.MovementConfirmationDescription;
+            state.MovementConfirmationCreatedBy = this.MovementConfirmationCreatedBy;
+            if (this.MovementConfirmationCreatedAt != null && this.MovementConfirmationCreatedAt.HasValue) { state.MovementConfirmationCreatedAt = this.MovementConfirmationCreatedAt.Value; }
+            state.MovementConfirmationUpdatedBy = this.MovementConfirmationUpdatedBy;
+            if (this.MovementConfirmationUpdatedAt != null && this.MovementConfirmationUpdatedAt.HasValue) { state.MovementConfirmationUpdatedAt = this.MovementConfirmationUpdatedAt.Value; }
+            if (this.MovementConfirmationActive != null && this.MovementConfirmationActive.HasValue) { state.MovementConfirmationActive = this.MovementConfirmationActive.Value; }
+            if (this.MovementConfirmationDeleted != null && this.MovementConfirmationDeleted.HasValue) { state.MovementConfirmationDeleted = this.MovementConfirmationDeleted.Value; }
+            if (this.MovementConfirmationVersion != null && this.MovementConfirmationVersion.HasValue) { state.MovementConfirmationVersion = this.MovementConfirmationVersion.Value; }
             state.CreatedBy = this.CreatedBy;
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;

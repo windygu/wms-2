@@ -201,19 +201,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = MovementsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [Route("{movementDocumentNumber}/MovementConfirmationLines/{lineNumber}")]
-        [HttpGet]
-        public IMovementConfirmationLineStateDto GetMovementConfirmationLine(string movementDocumentNumber, string lineNumber)
-        {
-          try {
-            var state = (MovementConfirmationLineState)_movementApplicationService.GetMovementConfirmationLine(movementDocumentNumber, lineNumber);
-            if (state == null) { return null; }
-            var stateDto = new MovementConfirmationLineStateDtoWrapper(state);
-            stateDto.AllFieldsReturned = true;
-            return stateDto;
-          } catch (Exception ex) { var response = MovementsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
 
 		// /////////////////////////////////////////////////
 

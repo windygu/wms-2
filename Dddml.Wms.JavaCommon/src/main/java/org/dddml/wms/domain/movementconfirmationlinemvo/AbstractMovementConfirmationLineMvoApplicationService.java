@@ -3,7 +3,7 @@ package org.dddml.wms.domain.movementconfirmationlinemvo;
 import java.util.*;
 import java.util.function.Consumer;
 import org.dddml.support.criterion.Criterion;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -127,7 +127,7 @@ public abstract class AbstractMovementConfirmationLineMvoApplicationService impl
         MovementConfirmationLineMvoAggregate aggregate = getMovementConfirmationLineMvoAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
         action.accept(aggregate);
-        persist(eventStoreAggregateId, c.getMovementVersion(), aggregate, state); // State version may be null!
+        persist(eventStoreAggregateId, c.getMovementConfirmationVersion(), aggregate, state); // State version may be null!
 
     }
 
@@ -148,16 +148,16 @@ public abstract class AbstractMovementConfirmationLineMvoApplicationService impl
         ((AbstractMovementConfirmationLineMvoAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getMovementVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getStateEventId().getMovementConfirmationVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(MovementConfirmationLineMvoCommand command, EventStoreAggregateId eventStoreAggregateId, MovementConfirmationLineMvoState state)
     {
         boolean repeated = false;
-        if (command.getMovementVersion() == null) { command.setMovementVersion(MovementConfirmationLineMvoState.VERSION_NULL); }
-        if (state.getMovementVersion() != null && state.getMovementVersion() > command.getMovementVersion())
+        if (command.getMovementConfirmationVersion() == null) { command.setMovementConfirmationVersion(MovementConfirmationLineMvoState.VERSION_NULL); }
+        if (state.getMovementConfirmationVersion() != null && state.getMovementConfirmationVersion() > command.getMovementConfirmationVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractMovementConfirmationLineMvoStateEvent.class, eventStoreAggregateId, command.getMovementVersion());
+            Event lastEvent = getEventStore().findLastEvent(AbstractMovementConfirmationLineMvoStateEvent.class, eventStoreAggregateId, command.getMovementConfirmationVersion());
             if (lastEvent != null && lastEvent instanceof AbstractStateEvent
                && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
             {

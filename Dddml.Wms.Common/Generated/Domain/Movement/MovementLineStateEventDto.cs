@@ -38,6 +38,20 @@ namespace Dddml.Wms.Domain.Movement
 
 		public virtual decimal? MovementQuantity { get; set; }
 
+		public virtual string ProductId { get; set; }
+
+		public virtual string LocatorIdFrom { get; set; }
+
+		public virtual string LocatorIdTo { get; set; }
+
+		public virtual string AttributeSetInstanceIdFrom { get; set; }
+
+		public virtual string AttributeSetInstanceIdTo { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual string ReversalLineNumber { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -87,6 +101,139 @@ namespace Dddml.Wms.Domain.Movement
             set 
             {
                 this.IsPropertyMovementQuantityRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyProductIdRemoved { get; set; }
+
+        bool IMovementLineStateMergePatched.IsPropertyProductIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyProductIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyProductIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyLocatorIdFromRemoved { get; set; }
+
+        bool IMovementLineStateMergePatched.IsPropertyLocatorIdFromRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyLocatorIdFromRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyLocatorIdFromRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyLocatorIdToRemoved { get; set; }
+
+        bool IMovementLineStateMergePatched.IsPropertyLocatorIdToRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyLocatorIdToRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyLocatorIdToRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyAttributeSetInstanceIdFromRemoved { get; set; }
+
+        bool IMovementLineStateMergePatched.IsPropertyAttributeSetInstanceIdFromRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyAttributeSetInstanceIdFromRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyAttributeSetInstanceIdFromRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyAttributeSetInstanceIdToRemoved { get; set; }
+
+        bool IMovementLineStateMergePatched.IsPropertyAttributeSetInstanceIdToRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyAttributeSetInstanceIdToRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyAttributeSetInstanceIdToRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyProcessedRemoved { get; set; }
+
+        bool IMovementLineStateMergePatched.IsPropertyProcessedRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyProcessedRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyProcessedRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyReversalLineNumberRemoved { get; set; }
+
+        bool IMovementLineStateMergePatched.IsPropertyReversalLineNumberRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyReversalLineNumberRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyReversalLineNumberRemoved = value;
             }
         }
 

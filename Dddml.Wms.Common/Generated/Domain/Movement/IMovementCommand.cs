@@ -27,8 +27,6 @@ namespace Dddml.Wms.Domain.Movement
 
 		string DocumentAction { get; set; }
 
-		string MovementTypeId { get; set; }
-
 		string Description { get; set; }
 
 		bool? Active { get; set; }
@@ -42,18 +40,12 @@ namespace Dddml.Wms.Domain.Movement
 
         ICreateMovementLine NewCreateMovementLine();
 
-        ICreateMovementConfirmationLineCommands MovementConfirmationLines { get; }
-
-        ICreateMovementConfirmationLine NewCreateMovementConfirmationLine();
-
 	}
 
 	public interface IMergePatchMovement : ICreateOrMergePatchOrDeleteMovement
 	{
 
 		bool IsPropertyDocumentTypeIdRemoved { get; set; }
-
-		bool IsPropertyMovementTypeIdRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -66,14 +58,6 @@ namespace Dddml.Wms.Domain.Movement
         IMergePatchMovementLine NewMergePatchMovementLine();
 
         IRemoveMovementLine NewRemoveMovementLine();
-
-        IMovementConfirmationLineCommands MovementConfirmationLineCommands { get; }
-
-        ICreateMovementConfirmationLine NewCreateMovementConfirmationLine();
-
-        IMergePatchMovementConfirmationLine NewMergePatchMovementConfirmationLine();
-
-        IRemoveMovementConfirmationLine NewRemoveMovementConfirmationLine();
 
 
 	}
@@ -97,26 +81,6 @@ namespace Dddml.Wms.Domain.Movement
         void Add(IMovementLineCommand c);
 
         void Remove(IMovementLineCommand c);
-
-        void Clear();
-
-    }
-
-    public interface ICreateMovementConfirmationLineCommands : IEnumerable<ICreateMovementConfirmationLine>
-    {
-        void Add(ICreateMovementConfirmationLine c);
-
-        void Remove(ICreateMovementConfirmationLine c);
-
-        void Clear();
-
-    }
-
-    public interface IMovementConfirmationLineCommands : IEnumerable<IMovementConfirmationLineCommand>
-    {
-        void Add(IMovementConfirmationLineCommand c);
-
-        void Remove(IMovementConfirmationLineCommand c);
 
         void Clear();
 

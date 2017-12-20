@@ -146,21 +146,6 @@ namespace Dddml.Wms.Domain.Movement
         }
 
 
-        private IMovementConfirmationLineStates _movementConfirmationLines;
-      
-        public virtual IMovementConfirmationLineStates MovementConfirmationLines
-        {
-            get
-            {
-                return this._movementConfirmationLines;
-            }
-            set
-            {
-                this._movementConfirmationLines = value;
-            }
-        }
-
-
         public virtual bool StateReadOnly { get; set; }
 
         bool IState.ReadOnly
@@ -199,8 +184,6 @@ namespace Dddml.Wms.Domain.Movement
             this._forReapplying = forReapplying;
             _movementLines = new MovementLineStates(this);
 
-            _movementConfirmationLines = new MovementConfirmationLineStates(this);
-
             InitializeProperties();
         }
 
@@ -210,8 +193,6 @@ namespace Dddml.Wms.Domain.Movement
         public virtual void Save()
         {
             _movementLines.Save();
-
-            _movementConfirmationLines.Save();
 
         }
 
@@ -226,8 +207,6 @@ namespace Dddml.Wms.Domain.Movement
 
 			this.DocumentStatusId = e.DocumentStatusId;
 
-			this.MovementTypeId = e.MovementTypeId;
-
 			this.Description = e.Description;
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
@@ -239,10 +218,6 @@ namespace Dddml.Wms.Domain.Movement
 
 			foreach (IMovementLineStateCreated innerEvent in e.MovementLineEvents) {
 				IMovementLineState innerState = this.MovementLines.Get(innerEvent.GlobalId.LineNumber, true);
-				innerState.Mutate (innerEvent);
-			}
-			foreach (IMovementConfirmationLineStateCreated innerEvent in e.MovementConfirmationLineEvents) {
-				IMovementConfirmationLineState innerState = this.MovementConfirmationLines.Get(innerEvent.GlobalId.LineNumber, true);
 				innerState.Mutate (innerEvent);
 			}
 
@@ -275,18 +250,6 @@ namespace Dddml.Wms.Domain.Movement
 			else
 			{
 				this.DocumentStatusId = e.DocumentStatusId;
-			}
-
-			if (e.MovementTypeId == null)
-			{
-				if (e.IsPropertyMovementTypeIdRemoved)
-				{
-					this.MovementTypeId = default(string);
-				}
-			}
-			else
-			{
-				this.MovementTypeId = e.MovementTypeId;
 			}
 
 			if (e.Description == null)
@@ -331,19 +294,6 @@ namespace Dddml.Wms.Domain.Movement
           
             }
 
-			foreach (IMovementConfirmationLineStateEvent innerEvent in e.MovementConfirmationLineEvents)
-            {
-                IMovementConfirmationLineState innerState = this.MovementConfirmationLines.Get(innerEvent.GlobalId.LineNumber);
-
-                innerState.Mutate(innerEvent);
-                var removed = innerEvent as IMovementConfirmationLineStateRemoved;
-                if (removed != null)
-                {
-                    this.MovementConfirmationLines.Remove(innerState);
-                }
-          
-            }
-
 		}
 
 		public virtual void When(IMovementStateDeleted e)
@@ -363,18 +313,6 @@ namespace Dddml.Wms.Domain.Movement
                 ((MovementLineStateEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddMovementLineEvent(innerE);
-
-            }
-
-            foreach (var innerState in this.MovementConfirmationLines)
-            {
-                this.MovementConfirmationLines.Remove(innerState);
-                
-                var innerE = e.NewMovementConfirmationLineStateRemoved(innerState.LineNumber);
-                ((MovementConfirmationLineStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((MovementConfirmationLineStateEventBase)innerE).CreatedBy = e.CreatedBy;
-                innerState.When(innerE);
-                //e.AddMovementConfirmationLineEvent(innerE);
 
             }
 

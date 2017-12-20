@@ -13,11 +13,17 @@
     <discriminator column="StateEventType" type="String" />
 
     <property name="MovementQuantity" ></property>
+    <property name="ProductId" ></property>
+    <property name="LocatorIdFrom" ></property>
+    <property name="LocatorIdTo" ></property>
+    <property name="AttributeSetInstanceIdFrom" ></property>
+    <property name="AttributeSetInstanceIdTo" ></property>
+    <property name="Processed" ></property>
+    <property name="ReversalLineNumber" ></property>
     <property name="Version" ></property>
     <property name="Active" ></property>
     <property name="MovementDocumentTypeId" ></property>
     <property name="MovementDocumentStatusId" ></property>
-    <property name="MovementMovementTypeId" ></property>
     <property name="MovementDescription" ></property>
     <property name="MovementCreatedBy" ></property>
     <property name="MovementCreatedAt" ></property>
@@ -39,6 +45,20 @@
 
         <property name="IsPropertyMovementQuantityRemoved" column="IsPropertyMovementQuantityRemoved"/>
 
+        <property name="IsPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="IsPropertyLocatorIdFromRemoved" column="IsPropertyLocatorIdFromRemoved"/>
+
+        <property name="IsPropertyLocatorIdToRemoved" column="IsPropertyLocatorIdToRemoved"/>
+
+        <property name="IsPropertyAttributeSetInstanceIdFromRemoved" column="IsPropertyAttributeSetInstanceIdFromRemoved"/>
+
+        <property name="IsPropertyAttributeSetInstanceIdToRemoved" column="IsPropertyAttributeSetInstanceIdToRemoved"/>
+
+        <property name="IsPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
+        <property name="IsPropertyReversalLineNumberRemoved" column="IsPropertyReversalLineNumberRemoved"/>
+
         <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
@@ -46,8 +66,6 @@
         <property name="IsPropertyMovementDocumentTypeIdRemoved" column="IsPropertyMovementDocumentTypeIdRemoved"/>
 
         <property name="IsPropertyMovementDocumentStatusIdRemoved" column="IsPropertyMovementDocumentStatusIdRemoved"/>
-
-        <property name="IsPropertyMovementMovementTypeIdRemoved" column="IsPropertyMovementMovementTypeIdRemoved"/>
 
         <property name="IsPropertyMovementDescriptionRemoved" column="IsPropertyMovementDescriptionRemoved"/>
 

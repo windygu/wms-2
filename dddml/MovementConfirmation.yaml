@@ -1,0 +1,92 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+              
+    # ----------------------- aggregate -------------------------
+    MovementConfirmation:
+      id:
+        name: DocumentNumber
+        type: string
+        
+      properties:
+      
+        DocumentTypeId:
+          referenceType: DocumentType
+
+        DocumentStatusId:
+          type: string
+          commandType: DocumentAction
+          commandName: DocumentAction
+          
+        MovementDocumentNumber:
+          type: string
+
+        IsApproved:
+          type: bool
+
+        ApprovalAmount:
+          type: decimal
+
+        Processing:
+          type: string
+
+        Processed:
+          type: bool
+
+        # PhysicalInventoryDocumentNumber:
+          # type: string
+          # referenceType: PhysicalInventory
+          
+        Description:
+          type: string
+
+        # ------------------------------------
+        MovementConfirmationLines:
+          itemType: MovementConfirmationLine
+        
+      entities:
+      
+        MovementConfirmationLine:
+          id: 
+            name: LineNumber
+            type: string
+        
+          properties:
+
+            MovementLineNumber:
+              type: string
+              # referenceType: MovementLine
+
+            TargetQuantity:
+              description: The Quantity which should have been received.
+              type: decimal
+              
+            ConfirmedQuantity:
+              description: Confirmation of a received quantity.
+              type: decimal
+              
+            DifferenceQuantity:
+              description: If there is a difference quantity, a Physical Inventory is created for the source (from) warehouse. 
+              type: decimal
+
+            ScrappedQuantity:
+              description: "The Quantity scrapped due to QA issues. If there is a scrapped quantity, a Physical Inventory is created for the target (to) warehouse."
+              type: decimal
+          
+            Description:
+              type: string
+            
+            Processed:
+              type: bool
+
+            # PhysicalInventoryLineNumber:
+              # type: string
+
+
+      # metadata:
+        # NoEventSourcing: true
+
+          

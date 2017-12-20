@@ -109,11 +109,17 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             IMovementLineMvoStateCreated e = NewMovementLineMvoStateCreated(stateEventId);
 		
             e.MovementQuantity = c.MovementQuantity;
+            e.ProductId = c.ProductId;
+            e.LocatorIdFrom = c.LocatorIdFrom;
+            e.LocatorIdTo = c.LocatorIdTo;
+            e.AttributeSetInstanceIdFrom = c.AttributeSetInstanceIdFrom;
+            e.AttributeSetInstanceIdTo = c.AttributeSetInstanceIdTo;
+            e.Processed = c.Processed;
+            e.ReversalLineNumber = c.ReversalLineNumber;
             e.Version = c.Version;
             e.Active = c.Active;
             e.MovementDocumentTypeId = c.MovementDocumentTypeId;
             NewMovementLineMvoDocumentActionCommandAndExecute(c, _state, e);
-            e.MovementMovementTypeId = c.MovementMovementTypeId;
             e.MovementDescription = c.MovementDescription;
             e.MovementCreatedBy = c.MovementCreatedBy;
             e.MovementCreatedAt = c.MovementCreatedAt;
@@ -138,11 +144,17 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             IMovementLineMvoStateMergePatched e = NewMovementLineMvoStateMergePatched(stateEventId);
 
             e.MovementQuantity = c.MovementQuantity;
+            e.ProductId = c.ProductId;
+            e.LocatorIdFrom = c.LocatorIdFrom;
+            e.LocatorIdTo = c.LocatorIdTo;
+            e.AttributeSetInstanceIdFrom = c.AttributeSetInstanceIdFrom;
+            e.AttributeSetInstanceIdTo = c.AttributeSetInstanceIdTo;
+            e.Processed = c.Processed;
+            e.ReversalLineNumber = c.ReversalLineNumber;
             e.Version = c.Version;
             e.Active = c.Active;
             e.MovementDocumentTypeId = c.MovementDocumentTypeId;
             NewMovementLineMvoDocumentActionCommandAndExecute(c, _state, e);
-            e.MovementMovementTypeId = c.MovementMovementTypeId;
             e.MovementDescription = c.MovementDescription;
             e.MovementCreatedBy = c.MovementCreatedBy;
             e.MovementCreatedAt = c.MovementCreatedAt;
@@ -151,10 +163,16 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             e.MovementActive = c.MovementActive;
             e.MovementDeleted = c.MovementDeleted;
             e.IsPropertyMovementQuantityRemoved = c.IsPropertyMovementQuantityRemoved;
+            e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
+            e.IsPropertyLocatorIdFromRemoved = c.IsPropertyLocatorIdFromRemoved;
+            e.IsPropertyLocatorIdToRemoved = c.IsPropertyLocatorIdToRemoved;
+            e.IsPropertyAttributeSetInstanceIdFromRemoved = c.IsPropertyAttributeSetInstanceIdFromRemoved;
+            e.IsPropertyAttributeSetInstanceIdToRemoved = c.IsPropertyAttributeSetInstanceIdToRemoved;
+            e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
+            e.IsPropertyReversalLineNumberRemoved = c.IsPropertyReversalLineNumberRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
             e.IsPropertyMovementDocumentTypeIdRemoved = c.IsPropertyMovementDocumentTypeIdRemoved;
-            e.IsPropertyMovementMovementTypeIdRemoved = c.IsPropertyMovementMovementTypeIdRemoved;
             e.IsPropertyMovementDescriptionRemoved = c.IsPropertyMovementDescriptionRemoved;
             e.IsPropertyMovementCreatedByRemoved = c.IsPropertyMovementCreatedByRemoved;
             e.IsPropertyMovementCreatedAtRemoved = c.IsPropertyMovementCreatedAtRemoved;

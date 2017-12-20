@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 using Dddml.Support.Criterion;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IMovementConfirmationLineMvoAggregate aggregate, IMovementConfirmationLineMvoState state)
         {
-            EventStore.AppendEvents(eventStoreAggregateId, ((IMovementConfirmationLineMvoStateProperties)state).MovementVersion, aggregate.Changes, () => { StateRepository.Save(state); });
+            EventStore.AppendEvents(eventStoreAggregateId, ((IMovementConfirmationLineMvoStateProperties)state).MovementConfirmationVersion, aggregate.Changes, () => { StateRepository.Save(state); });
             if (AggregateEventListener != null) 
             {
                 AggregateEventListener.EventAppended(new AggregateEvent<IMovementConfirmationLineMvoAggregate, IMovementConfirmationLineMvoState>(aggregate, state, aggregate.Changes));
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		protected bool IsRepeatedCommand(IMovementConfirmationLineMvoCommand command, IEventStoreAggregateId eventStoreAggregateId, IMovementConfirmationLineMvoState state)
 		{
 			bool repeated = false;
-			if (((IMovementConfirmationLineMvoStateProperties)state).MovementVersion > command.AggregateVersion)
+			if (((IMovementConfirmationLineMvoStateProperties)state).MovementConfirmationVersion > command.AggregateVersion)
 			{
 				var lastEvent = EventStore.FindLastEvent(typeof(IMovementConfirmationLineMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)

@@ -11,10 +11,13 @@ public final class MovementConfirmationLineMvoFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
+            "movementLineNumber",
             "targetQuantity",
             "confirmedQuantity",
             "differenceQuantity",
             "scrappedQuantity",
+            "description",
+            "processed",
             "version",
             "createdBy",
             "createdAt",
@@ -22,26 +25,33 @@ public final class MovementConfirmationLineMvoFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "movementDocumentTypeId",
-            "movementDocumentStatusId",
-            "movementMovementTypeId",
-            "movementDescription",
-            "movementVersion",
-            "movementCreatedBy",
-            "movementCreatedAt",
-            "movementUpdatedBy",
-            "movementUpdatedAt",
-            "movementActive",
-            "movementDeleted",
-            "movementConfirmationLineId.movementDocumentNumber",
+            "movementConfirmationDocumentTypeId",
+            "movementConfirmationDocumentStatusId",
+            "movementConfirmationMovementDocumentNumber",
+            "movementConfirmationIsApproved",
+            "movementConfirmationApprovalAmount",
+            "movementConfirmationProcessing",
+            "movementConfirmationProcessed",
+            "movementConfirmationDescription",
+            "movementConfirmationVersion",
+            "movementConfirmationCreatedBy",
+            "movementConfirmationCreatedAt",
+            "movementConfirmationUpdatedBy",
+            "movementConfirmationUpdatedAt",
+            "movementConfirmationActive",
+            "movementConfirmationDeleted",
+            "movementConfirmationLineId.movementConfirmationDocumentNumber",
             "movementConfirmationLineId.lineNumber",
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
             "BigDecimal",
             "BigDecimal",
             "BigDecimal",
             "BigDecimal",
+            "String",
+            "Boolean",
             "Long",
             "String",
             "Date",
@@ -52,6 +62,10 @@ public final class MovementConfirmationLineMvoFilteringProperties
             "String",
             "String",
             "String",
+            "Boolean",
+            "BigDecimal",
+            "String",
+            "Boolean",
             "String",
             "Long",
             "String",
@@ -76,6 +90,8 @@ public final class MovementConfirmationLineMvoFilteringProperties
     }
 
     private static  void initAliasMap() {
+        aliasMap.put("movementLineNumber", "movementLineNumber");
+        aliasMap.put("MovementLineNumber", "movementLineNumber");
         aliasMap.put("targetQuantity", "targetQuantity");
         aliasMap.put("TargetQuantity", "targetQuantity");
         aliasMap.put("confirmedQuantity", "confirmedQuantity");
@@ -84,6 +100,10 @@ public final class MovementConfirmationLineMvoFilteringProperties
         aliasMap.put("DifferenceQuantity", "differenceQuantity");
         aliasMap.put("scrappedQuantity", "scrappedQuantity");
         aliasMap.put("ScrappedQuantity", "scrappedQuantity");
+        aliasMap.put("description", "description");
+        aliasMap.put("Description", "description");
+        aliasMap.put("processed", "processed");
+        aliasMap.put("Processed", "processed");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");
@@ -98,30 +118,38 @@ public final class MovementConfirmationLineMvoFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("movementDocumentTypeId", "movementDocumentTypeId");
-        aliasMap.put("MovementDocumentTypeId", "movementDocumentTypeId");
-        aliasMap.put("movementDocumentStatusId", "movementDocumentStatusId");
-        aliasMap.put("MovementDocumentStatusId", "movementDocumentStatusId");
-        aliasMap.put("movementMovementTypeId", "movementMovementTypeId");
-        aliasMap.put("MovementMovementTypeId", "movementMovementTypeId");
-        aliasMap.put("movementDescription", "movementDescription");
-        aliasMap.put("MovementDescription", "movementDescription");
-        aliasMap.put("movementVersion", "movementVersion");
-        aliasMap.put("MovementVersion", "movementVersion");
-        aliasMap.put("movementCreatedBy", "movementCreatedBy");
-        aliasMap.put("MovementCreatedBy", "movementCreatedBy");
-        aliasMap.put("movementCreatedAt", "movementCreatedAt");
-        aliasMap.put("MovementCreatedAt", "movementCreatedAt");
-        aliasMap.put("movementUpdatedBy", "movementUpdatedBy");
-        aliasMap.put("MovementUpdatedBy", "movementUpdatedBy");
-        aliasMap.put("movementUpdatedAt", "movementUpdatedAt");
-        aliasMap.put("MovementUpdatedAt", "movementUpdatedAt");
-        aliasMap.put("movementActive", "movementActive");
-        aliasMap.put("MovementActive", "movementActive");
-        aliasMap.put("movementDeleted", "movementDeleted");
-        aliasMap.put("MovementDeleted", "movementDeleted");
-        aliasMap.put("movementConfirmationLineId.movementDocumentNumber", "movementConfirmationLineId.movementDocumentNumber");
-        aliasMap.put("MovementConfirmationLineId.MovementDocumentNumber", "movementConfirmationLineId.movementDocumentNumber");
+        aliasMap.put("movementConfirmationDocumentTypeId", "movementConfirmationDocumentTypeId");
+        aliasMap.put("MovementConfirmationDocumentTypeId", "movementConfirmationDocumentTypeId");
+        aliasMap.put("movementConfirmationDocumentStatusId", "movementConfirmationDocumentStatusId");
+        aliasMap.put("MovementConfirmationDocumentStatusId", "movementConfirmationDocumentStatusId");
+        aliasMap.put("movementConfirmationMovementDocumentNumber", "movementConfirmationMovementDocumentNumber");
+        aliasMap.put("MovementConfirmationMovementDocumentNumber", "movementConfirmationMovementDocumentNumber");
+        aliasMap.put("movementConfirmationIsApproved", "movementConfirmationIsApproved");
+        aliasMap.put("MovementConfirmationIsApproved", "movementConfirmationIsApproved");
+        aliasMap.put("movementConfirmationApprovalAmount", "movementConfirmationApprovalAmount");
+        aliasMap.put("MovementConfirmationApprovalAmount", "movementConfirmationApprovalAmount");
+        aliasMap.put("movementConfirmationProcessing", "movementConfirmationProcessing");
+        aliasMap.put("MovementConfirmationProcessing", "movementConfirmationProcessing");
+        aliasMap.put("movementConfirmationProcessed", "movementConfirmationProcessed");
+        aliasMap.put("MovementConfirmationProcessed", "movementConfirmationProcessed");
+        aliasMap.put("movementConfirmationDescription", "movementConfirmationDescription");
+        aliasMap.put("MovementConfirmationDescription", "movementConfirmationDescription");
+        aliasMap.put("movementConfirmationVersion", "movementConfirmationVersion");
+        aliasMap.put("MovementConfirmationVersion", "movementConfirmationVersion");
+        aliasMap.put("movementConfirmationCreatedBy", "movementConfirmationCreatedBy");
+        aliasMap.put("MovementConfirmationCreatedBy", "movementConfirmationCreatedBy");
+        aliasMap.put("movementConfirmationCreatedAt", "movementConfirmationCreatedAt");
+        aliasMap.put("MovementConfirmationCreatedAt", "movementConfirmationCreatedAt");
+        aliasMap.put("movementConfirmationUpdatedBy", "movementConfirmationUpdatedBy");
+        aliasMap.put("MovementConfirmationUpdatedBy", "movementConfirmationUpdatedBy");
+        aliasMap.put("movementConfirmationUpdatedAt", "movementConfirmationUpdatedAt");
+        aliasMap.put("MovementConfirmationUpdatedAt", "movementConfirmationUpdatedAt");
+        aliasMap.put("movementConfirmationActive", "movementConfirmationActive");
+        aliasMap.put("MovementConfirmationActive", "movementConfirmationActive");
+        aliasMap.put("movementConfirmationDeleted", "movementConfirmationDeleted");
+        aliasMap.put("MovementConfirmationDeleted", "movementConfirmationDeleted");
+        aliasMap.put("movementConfirmationLineId.movementConfirmationDocumentNumber", "movementConfirmationLineId.movementConfirmationDocumentNumber");
+        aliasMap.put("MovementConfirmationLineId.MovementConfirmationDocumentNumber", "movementConfirmationLineId.movementConfirmationDocumentNumber");
         aliasMap.put("movementConfirmationLineId.lineNumber", "movementConfirmationLineId.lineNumber");
         aliasMap.put("MovementConfirmationLineId.LineNumber", "movementConfirmationLineId.lineNumber");
     }

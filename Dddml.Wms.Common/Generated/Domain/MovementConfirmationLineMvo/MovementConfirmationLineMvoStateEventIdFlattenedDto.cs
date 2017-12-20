@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 	public class MovementConfirmationLineMvoStateEventIdFlattenedDto : IIdFlattenedDto
 	{
 
-        private static string[] _flattenedPropertyNames = new string[] { "MovementConfirmationLineIdMovementDocumentNumber", "MovementConfirmationLineIdLineNumber", "MovementVersion" };
+        private static string[] _flattenedPropertyNames = new string[] { "MovementConfirmationLineIdMovementConfirmationDocumentNumber", "MovementConfirmationLineIdLineNumber", "MovementConfirmationVersion" };
 
         string[] IIdFlattenedDto.FieldNames
         {
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         Type IIdFlattenedDto.GetFieldType(string fieldName)
         {
-            if (fieldName.Equals("MovementConfirmationLineIdMovementDocumentNumber", StringComparison.InvariantCultureIgnoreCase))
+            if (fieldName.Equals("MovementConfirmationLineIdMovementConfirmationDocumentNumber", StringComparison.InvariantCultureIgnoreCase))
             {
                 return typeof(string);
             }
@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
                 return typeof(string);
             }
 
-            if (fieldName.Equals("MovementVersion", StringComparison.InvariantCultureIgnoreCase))
+            if (fieldName.Equals("MovementConfirmationVersion", StringComparison.InvariantCultureIgnoreCase))
             {
                 return typeof(long);
             }
@@ -80,9 +80,9 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             return this._value.ToMovementConfirmationLineMvoStateEventId();
         }
 
-		public virtual string MovementConfirmationLineIdMovementDocumentNumber {
-			get { return _value.MovementConfirmationLineId.MovementDocumentNumber; }
-			set { _value.MovementConfirmationLineId.MovementDocumentNumber = value; }
+		public virtual string MovementConfirmationLineIdMovementConfirmationDocumentNumber {
+			get { return _value.MovementConfirmationLineId.MovementConfirmationDocumentNumber; }
+			set { _value.MovementConfirmationLineId.MovementConfirmationDocumentNumber = value; }
 		}
 
 		public virtual string MovementConfirmationLineIdLineNumber {
@@ -90,9 +90,9 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 			set { _value.MovementConfirmationLineId.LineNumber = value; }
 		}
 
-		public virtual long MovementVersion { 
-			get { return _value.MovementVersion; } 
-			set { _value.MovementVersion = value; } 
+		public virtual long MovementConfirmationVersion { 
+			get { return _value.MovementConfirmationVersion; } 
+			set { _value.MovementConfirmationVersion = value; } 
 		}
 
 

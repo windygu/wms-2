@@ -19,6 +19,20 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		decimal MovementQuantity { get; set; }
 
+		string ProductId { get; set; }
+
+		string LocatorIdFrom { get; set; }
+
+		string LocatorIdTo { get; set; }
+
+		string AttributeSetInstanceIdFrom { get; set; }
+
+		string AttributeSetInstanceIdTo { get; set; }
+
+		bool Processed { get; set; }
+
+		string ReversalLineNumber { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }
@@ -26,8 +40,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		string MovementDocumentTypeId { get; set; }
 
 		string MovementDocumentStatusId { get; set; }
-
-		string MovementMovementTypeId { get; set; }
 
 		string MovementDescription { get; set; }
 

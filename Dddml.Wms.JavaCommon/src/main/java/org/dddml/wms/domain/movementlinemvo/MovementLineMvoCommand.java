@@ -46,6 +46,34 @@ public interface MovementLineMvoCommand extends Command
 
         void setMovementQuantity(BigDecimal movementQuantity);
 
+        String getProductId();
+
+        void setProductId(String productId);
+
+        String getLocatorIdFrom();
+
+        void setLocatorIdFrom(String locatorIdFrom);
+
+        String getLocatorIdTo();
+
+        void setLocatorIdTo(String locatorIdTo);
+
+        String getAttributeSetInstanceIdFrom();
+
+        void setAttributeSetInstanceIdFrom(String attributeSetInstanceIdFrom);
+
+        String getAttributeSetInstanceIdTo();
+
+        void setAttributeSetInstanceIdTo(String attributeSetInstanceIdTo);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        String getReversalLineNumber();
+
+        void setReversalLineNumber(String reversalLineNumber);
+
         Long getVersion();
 
         void setVersion(Long version);
@@ -61,10 +89,6 @@ public interface MovementLineMvoCommand extends Command
         String getDocumentAction();
 
         void setDocumentAction(String documentAction);
-
-        String getMovementMovementTypeId();
-
-        void setMovementMovementTypeId(String movementMovementTypeId);
 
         String getMovementDescription();
 
@@ -106,6 +130,34 @@ public interface MovementLineMvoCommand extends Command
 
         void setIsPropertyMovementQuantityRemoved(Boolean removed);
 
+        Boolean getIsPropertyProductIdRemoved();
+
+        void setIsPropertyProductIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyLocatorIdFromRemoved();
+
+        void setIsPropertyLocatorIdFromRemoved(Boolean removed);
+
+        Boolean getIsPropertyLocatorIdToRemoved();
+
+        void setIsPropertyLocatorIdToRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetInstanceIdFromRemoved();
+
+        void setIsPropertyAttributeSetInstanceIdFromRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetInstanceIdToRemoved();
+
+        void setIsPropertyAttributeSetInstanceIdToRemoved(Boolean removed);
+
+        Boolean getIsPropertyProcessedRemoved();
+
+        void setIsPropertyProcessedRemoved(Boolean removed);
+
+        Boolean getIsPropertyReversalLineNumberRemoved();
+
+        void setIsPropertyReversalLineNumberRemoved(Boolean removed);
+
         Boolean getIsPropertyVersionRemoved();
 
         void setIsPropertyVersionRemoved(Boolean removed);
@@ -117,10 +169,6 @@ public interface MovementLineMvoCommand extends Command
         Boolean getIsPropertyMovementDocumentTypeIdRemoved();
 
         void setIsPropertyMovementDocumentTypeIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyMovementMovementTypeIdRemoved();
-
-        void setIsPropertyMovementMovementTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyMovementDescriptionRemoved();
 

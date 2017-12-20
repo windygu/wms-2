@@ -15,6 +15,13 @@
 	<version name="version" column="Version" type="long" />
 
 	<property name="movementQuantity" ></property>
+	<property name="productId" ></property>
+	<property name="locatorIdFrom" ></property>
+	<property name="locatorIdTo" ></property>
+	<property name="attributeSetInstanceIdFrom" ></property>
+	<property name="attributeSetInstanceIdTo" ></property>
+	<property name="processed" ></property>
+	<property name="reversalLineNumber" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

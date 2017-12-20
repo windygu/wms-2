@@ -18,6 +18,90 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
         this.movementQuantity = movementQuantity;
     }
 
+    private String productId;
+
+    public String getProductId()
+    {
+        return this.productId;
+    }
+
+    public void setProductId(String productId)
+    {
+        this.productId = productId;
+    }
+
+    private String locatorIdFrom;
+
+    public String getLocatorIdFrom()
+    {
+        return this.locatorIdFrom;
+    }
+
+    public void setLocatorIdFrom(String locatorIdFrom)
+    {
+        this.locatorIdFrom = locatorIdFrom;
+    }
+
+    private String locatorIdTo;
+
+    public String getLocatorIdTo()
+    {
+        return this.locatorIdTo;
+    }
+
+    public void setLocatorIdTo(String locatorIdTo)
+    {
+        this.locatorIdTo = locatorIdTo;
+    }
+
+    private String attributeSetInstanceIdFrom;
+
+    public String getAttributeSetInstanceIdFrom()
+    {
+        return this.attributeSetInstanceIdFrom;
+    }
+
+    public void setAttributeSetInstanceIdFrom(String attributeSetInstanceIdFrom)
+    {
+        this.attributeSetInstanceIdFrom = attributeSetInstanceIdFrom;
+    }
+
+    private String attributeSetInstanceIdTo;
+
+    public String getAttributeSetInstanceIdTo()
+    {
+        return this.attributeSetInstanceIdTo;
+    }
+
+    public void setAttributeSetInstanceIdTo(String attributeSetInstanceIdTo)
+    {
+        this.attributeSetInstanceIdTo = attributeSetInstanceIdTo;
+    }
+
+    private Boolean processed;
+
+    public Boolean getProcessed()
+    {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed)
+    {
+        this.processed = processed;
+    }
+
+    private String reversalLineNumber;
+
+    public String getReversalLineNumber()
+    {
+        return this.reversalLineNumber;
+    }
+
+    public void setReversalLineNumber(String reversalLineNumber)
+    {
+        this.reversalLineNumber = reversalLineNumber;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -42,6 +126,90 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
         this.isPropertyMovementQuantityRemoved = removed;
     }
 
+    private Boolean isPropertyProductIdRemoved;
+
+    public Boolean getIsPropertyProductIdRemoved()
+    {
+        return this.isPropertyProductIdRemoved;
+    }
+
+    public void setIsPropertyProductIdRemoved(Boolean removed)
+    {
+        this.isPropertyProductIdRemoved = removed;
+    }
+
+    private Boolean isPropertyLocatorIdFromRemoved;
+
+    public Boolean getIsPropertyLocatorIdFromRemoved()
+    {
+        return this.isPropertyLocatorIdFromRemoved;
+    }
+
+    public void setIsPropertyLocatorIdFromRemoved(Boolean removed)
+    {
+        this.isPropertyLocatorIdFromRemoved = removed;
+    }
+
+    private Boolean isPropertyLocatorIdToRemoved;
+
+    public Boolean getIsPropertyLocatorIdToRemoved()
+    {
+        return this.isPropertyLocatorIdToRemoved;
+    }
+
+    public void setIsPropertyLocatorIdToRemoved(Boolean removed)
+    {
+        this.isPropertyLocatorIdToRemoved = removed;
+    }
+
+    private Boolean isPropertyAttributeSetInstanceIdFromRemoved;
+
+    public Boolean getIsPropertyAttributeSetInstanceIdFromRemoved()
+    {
+        return this.isPropertyAttributeSetInstanceIdFromRemoved;
+    }
+
+    public void setIsPropertyAttributeSetInstanceIdFromRemoved(Boolean removed)
+    {
+        this.isPropertyAttributeSetInstanceIdFromRemoved = removed;
+    }
+
+    private Boolean isPropertyAttributeSetInstanceIdToRemoved;
+
+    public Boolean getIsPropertyAttributeSetInstanceIdToRemoved()
+    {
+        return this.isPropertyAttributeSetInstanceIdToRemoved;
+    }
+
+    public void setIsPropertyAttributeSetInstanceIdToRemoved(Boolean removed)
+    {
+        this.isPropertyAttributeSetInstanceIdToRemoved = removed;
+    }
+
+    private Boolean isPropertyProcessedRemoved;
+
+    public Boolean getIsPropertyProcessedRemoved()
+    {
+        return this.isPropertyProcessedRemoved;
+    }
+
+    public void setIsPropertyProcessedRemoved(Boolean removed)
+    {
+        this.isPropertyProcessedRemoved = removed;
+    }
+
+    private Boolean isPropertyReversalLineNumberRemoved;
+
+    public Boolean getIsPropertyReversalLineNumberRemoved()
+    {
+        return this.isPropertyReversalLineNumberRemoved;
+    }
+
+    public void setIsPropertyReversalLineNumberRemoved(Boolean removed)
+    {
+        this.isPropertyReversalLineNumberRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -58,6 +226,13 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
     {
         ((AbstractMovementLineCommandDto) this).copyTo(command);
         command.setMovementQuantity(this.getMovementQuantity());
+        command.setProductId(this.getProductId());
+        command.setLocatorIdFrom(this.getLocatorIdFrom());
+        command.setLocatorIdTo(this.getLocatorIdTo());
+        command.setAttributeSetInstanceIdFrom(this.getAttributeSetInstanceIdFrom());
+        command.setAttributeSetInstanceIdTo(this.getAttributeSetInstanceIdTo());
+        command.setProcessed(this.getProcessed());
+        command.setReversalLineNumber(this.getReversalLineNumber());
         command.setActive(this.getActive());
     }
 
@@ -89,6 +264,13 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
     {
         copyTo((AbstractMovementLineCommand.AbstractCreateOrMergePatchMovementLine) command);
         command.setIsPropertyMovementQuantityRemoved(this.getIsPropertyMovementQuantityRemoved());
+        command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
+        command.setIsPropertyLocatorIdFromRemoved(this.getIsPropertyLocatorIdFromRemoved());
+        command.setIsPropertyLocatorIdToRemoved(this.getIsPropertyLocatorIdToRemoved());
+        command.setIsPropertyAttributeSetInstanceIdFromRemoved(this.getIsPropertyAttributeSetInstanceIdFromRemoved());
+        command.setIsPropertyAttributeSetInstanceIdToRemoved(this.getIsPropertyAttributeSetInstanceIdToRemoved());
+        command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());
+        command.setIsPropertyReversalLineNumberRemoved(this.getIsPropertyReversalLineNumberRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

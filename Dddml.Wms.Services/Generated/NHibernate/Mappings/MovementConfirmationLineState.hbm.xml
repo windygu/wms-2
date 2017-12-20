@@ -1,21 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Common" 
-				   namespace="Dddml.Wms.Domain.Movement">
+				   namespace="Dddml.Wms.Domain.MovementConfirmation">
   
-  <class name="Dddml.Wms.Domain.Movement.MovementConfirmationLineState" table="MovementConfirmationLines">
+  <class name="Dddml.Wms.Domain.MovementConfirmation.MovementConfirmationLineState" table="MovementConfirmationLines">
 
-    <composite-id name="MovementConfirmationLineId" class="Dddml.Wms.Domain.Movement.MovementConfirmationLineId">
-        <key-property name="MovementDocumentNumber" ><column name="MovementConfirmationLineIdMovementDocumentNumber" length="50" /></key-property>
+    <composite-id name="MovementConfirmationLineId" class="Dddml.Wms.Domain.MovementConfirmation.MovementConfirmationLineId">
+        <key-property name="MovementConfirmationDocumentNumber" ><column name="MovementConfirmationLineIdMovementConfirmationDocumentNumber" length="50" /></key-property>
         <key-property name="LineNumber" ><column name="MovementConfirmationLineIdLineNumber" length="50" /></key-property>
     </composite-id>
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
+    <property name="MovementLineNumber" ></property>
     <property name="TargetQuantity" ></property>
     <property name="ConfirmedQuantity" ></property>
     <property name="DifferenceQuantity" ></property>
     <property name="ScrappedQuantity" ></property>
+    <property name="Description" ></property>
+    <property name="Processed" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>

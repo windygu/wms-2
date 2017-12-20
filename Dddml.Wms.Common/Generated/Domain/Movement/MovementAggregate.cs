@@ -109,7 +109,6 @@ namespace Dddml.Wms.Domain.Movement
 		
             e.DocumentTypeId = c.DocumentTypeId;
             NewMovementDocumentActionCommandAndExecute(c, _state, e);
-            e.MovementTypeId = c.MovementTypeId;
             e.Description = c.Description;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
@@ -127,14 +126,6 @@ namespace Dddml.Wms.Domain.Movement
                 e.AddMovementLineEvent(innerEvent);
             }
 
-            foreach (ICreateMovementConfirmationLine innerCommand in c.MovementConfirmationLines)
-            {
-                ThrowOnInconsistentCommands(c, innerCommand);
-
-                IMovementConfirmationLineStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
-                e.AddMovementConfirmationLineEvent(innerEvent);
-            }
-
 
             return e;
         }
@@ -146,11 +137,9 @@ namespace Dddml.Wms.Domain.Movement
 
             e.DocumentTypeId = c.DocumentTypeId;
             NewMovementDocumentActionCommandAndExecute(c, _state, e);
-            e.MovementTypeId = c.MovementTypeId;
             e.Description = c.Description;
             e.Active = c.Active;
             e.IsPropertyDocumentTypeIdRemoved = c.IsPropertyDocumentTypeIdRemoved;
-            e.IsPropertyMovementTypeIdRemoved = c.IsPropertyMovementTypeIdRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
@@ -168,14 +157,6 @@ namespace Dddml.Wms.Domain.Movement
 
                 IMovementLineStateEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddMovementLineEvent(innerEvent);
-            }
-
-            foreach (IMovementConfirmationLineCommand innerCommand in c.MovementConfirmationLineCommands)
-            {
-                ThrowOnInconsistentCommands(c, innerCommand);
-
-                IMovementConfirmationLineStateEvent innerEvent = Map(innerCommand, c, version, _state);
-                e.AddMovementConfirmationLineEvent(innerEvent);
             }
 
 
@@ -203,28 +184,6 @@ namespace Dddml.Wms.Domain.Movement
 
             var properties =  command as ICreateOrMergePatchOrDeleteMovement;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveMovementLine;
-            if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.MovementDocumentNumber == default(string))
-            {
-                innerProperties.MovementDocumentNumber = properties.DocumentNumber;
-            }
-            else
-            {
-                var outerDocumentNumberName = "DocumentNumber";
-                var outerDocumentNumberValue = properties.DocumentNumber;
-                var innerMovementDocumentNumberName = "MovementDocumentNumber";
-                var innerMovementDocumentNumberValue = innerProperties.MovementDocumentNumber;
-                ThrowOnInconsistentIds(innerProperties, innerMovementDocumentNumberName, innerMovementDocumentNumberValue, outerDocumentNumberName, outerDocumentNumberValue);
-            }
-
-        }// END ThrowOnInconsistentCommands /////////////////////
-
-
-        protected void ThrowOnInconsistentCommands(IMovementCommand command, IMovementConfirmationLineCommand innerCommand)
-        {
-
-            var properties =  command as ICreateOrMergePatchOrDeleteMovement;
-            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveMovementConfirmationLine;
             if (properties == null || innerProperties == null) { return; }
             if (innerProperties.MovementDocumentNumber == default(string))
             {
@@ -273,6 +232,13 @@ namespace Dddml.Wms.Domain.Movement
             var s = outerState.MovementLines.Get(c.LineNumber, true);
 
             e.MovementQuantity = c.MovementQuantity;
+            e.ProductId = c.ProductId;
+            e.LocatorIdFrom = c.LocatorIdFrom;
+            e.LocatorIdTo = c.LocatorIdTo;
+            e.AttributeSetInstanceIdFrom = c.AttributeSetInstanceIdFrom;
+            e.AttributeSetInstanceIdTo = c.AttributeSetInstanceIdTo;
+            e.Processed = c.Processed;
+            e.ReversalLineNumber = c.ReversalLineNumber;
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
@@ -291,8 +257,22 @@ namespace Dddml.Wms.Domain.Movement
             var s = outerState.MovementLines.Get(c.LineNumber);
 
             e.MovementQuantity = c.MovementQuantity;
+            e.ProductId = c.ProductId;
+            e.LocatorIdFrom = c.LocatorIdFrom;
+            e.LocatorIdTo = c.LocatorIdTo;
+            e.AttributeSetInstanceIdFrom = c.AttributeSetInstanceIdFrom;
+            e.AttributeSetInstanceIdTo = c.AttributeSetInstanceIdTo;
+            e.Processed = c.Processed;
+            e.ReversalLineNumber = c.ReversalLineNumber;
             e.Active = c.Active;
             e.IsPropertyMovementQuantityRemoved = c.IsPropertyMovementQuantityRemoved;
+            e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
+            e.IsPropertyLocatorIdFromRemoved = c.IsPropertyLocatorIdFromRemoved;
+            e.IsPropertyLocatorIdToRemoved = c.IsPropertyLocatorIdToRemoved;
+            e.IsPropertyAttributeSetInstanceIdFromRemoved = c.IsPropertyAttributeSetInstanceIdFromRemoved;
+            e.IsPropertyAttributeSetInstanceIdToRemoved = c.IsPropertyAttributeSetInstanceIdToRemoved;
+            e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
+            e.IsPropertyReversalLineNumberRemoved = c.IsPropertyReversalLineNumberRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;
@@ -307,90 +287,6 @@ namespace Dddml.Wms.Domain.Movement
             c.RequesterId = outerCommand.RequesterId;
 			var stateEventId = new MovementLineStateEventId(c.MovementDocumentNumber, c.LineNumber, version);
             IMovementLineStateRemoved e = NewMovementLineStateRemoved(stateEventId);
-
-
-            e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
-
-            return e;
-
-        }// END Map(IRemove... ////////////////////////////
-
-
-        protected virtual IMovementConfirmationLineStateEvent Map(IMovementConfirmationLineCommand c, IMovementCommand outerCommand, long version, IMovementState outerState)
-        {
-            var create = (c.CommandType == CommandType.Create) ? (c as ICreateMovementConfirmationLine) : null;
-            if(create != null)
-            {
-                return MapCreate(create, outerCommand, version, outerState);
-            }
-
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchMovementConfirmationLine) : null;
-            if(merge != null)
-            {
-                return MapMergePatch(merge, outerCommand, version, outerState);
-            }
-
-            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveMovementConfirmationLine) : null;
-            if (remove != null)
-            {
-                return MapRemove(remove, outerCommand, version);
-            }
-            throw new NotSupportedException();
-        }
-
-
-        protected virtual IMovementConfirmationLineStateCreated MapCreate(ICreateMovementConfirmationLine c, IMovementCommand outerCommand, long version, IMovementState outerState)
-        {
-            c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new MovementConfirmationLineStateEventId(c.MovementDocumentNumber, c.LineNumber, version);
-            IMovementConfirmationLineStateCreated e = NewMovementConfirmationLineStateCreated(stateEventId);
-            var s = outerState.MovementConfirmationLines.Get(c.LineNumber, true);
-
-            e.TargetQuantity = c.TargetQuantity;
-            e.ConfirmedQuantity = c.ConfirmedQuantity;
-            e.DifferenceQuantity = c.DifferenceQuantity;
-            e.ScrappedQuantity = c.ScrappedQuantity;
-            e.Active = c.Active;
-
-            e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
-            return e;
-
-        }// END Map(ICreate... ////////////////////////////
-
-
-
-        protected virtual IMovementConfirmationLineStateMergePatched MapMergePatch(IMergePatchMovementConfirmationLine c, IMovementCommand outerCommand, long version, IMovementState outerState)
-        {
-            c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new MovementConfirmationLineStateEventId(c.MovementDocumentNumber, c.LineNumber, version);
-            IMovementConfirmationLineStateMergePatched e = NewMovementConfirmationLineStateMergePatched(stateEventId);
-            var s = outerState.MovementConfirmationLines.Get(c.LineNumber);
-
-            e.TargetQuantity = c.TargetQuantity;
-            e.ConfirmedQuantity = c.ConfirmedQuantity;
-            e.DifferenceQuantity = c.DifferenceQuantity;
-            e.ScrappedQuantity = c.ScrappedQuantity;
-            e.Active = c.Active;
-            e.IsPropertyTargetQuantityRemoved = c.IsPropertyTargetQuantityRemoved;
-            e.IsPropertyConfirmedQuantityRemoved = c.IsPropertyConfirmedQuantityRemoved;
-            e.IsPropertyDifferenceQuantityRemoved = c.IsPropertyDifferenceQuantityRemoved;
-            e.IsPropertyScrappedQuantityRemoved = c.IsPropertyScrappedQuantityRemoved;
-            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
-
-            e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
-            return e;
-
-        }// END Map(IMergePatch... ////////////////////////////
-
-
-        protected virtual IMovementConfirmationLineStateRemoved MapRemove(IRemoveMovementConfirmationLine c, IMovementCommand outerCommand, long version)
-        {
-            c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new MovementConfirmationLineStateEventId(c.MovementDocumentNumber, c.LineNumber, version);
-            IMovementConfirmationLineStateRemoved e = NewMovementConfirmationLineStateRemoved(stateEventId);
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -508,22 +404,6 @@ namespace Dddml.Wms.Domain.Movement
         private MovementLineStateRemoved NewMovementLineStateRemoved(MovementLineStateEventId stateEventId)
 		{
 			return new MovementLineStateRemoved(stateEventId);
-		}
-
-
-		private MovementConfirmationLineStateCreated NewMovementConfirmationLineStateCreated(MovementConfirmationLineStateEventId stateEventId)
-		{
-			return new MovementConfirmationLineStateCreated(stateEventId);
-		}
-
-        private MovementConfirmationLineStateMergePatched NewMovementConfirmationLineStateMergePatched(MovementConfirmationLineStateEventId stateEventId)
-		{
-			return new MovementConfirmationLineStateMergePatched(stateEventId);
-		}
-
-        private MovementConfirmationLineStateRemoved NewMovementConfirmationLineStateRemoved(MovementConfirmationLineStateEventId stateEventId)
-		{
-			return new MovementConfirmationLineStateRemoved(stateEventId);
 		}
 
 

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -111,7 +111,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		{
 			get
 			{
-				return this.MovementVersion;
+				return this.MovementConfirmationVersion;
 			}
 		}
 
@@ -120,7 +120,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         bool IMovementConfirmationLineMvoState.IsUnsaved
         {
-            get { return this.MovementVersion == VersionZero; }
+            get { return this.MovementConfirmationVersion == VersionZero; }
         }
 
 		public static long VersionZero
@@ -156,7 +156,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
                 foreach (var e in events)
                 {
                     Mutate(e);
-                    this.MovementVersion += 1;
+                    this.MovementConfirmationVersion += 1;
                 }
             }
         }
@@ -175,6 +175,8 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		public virtual void When(IMovementConfirmationLineMvoStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
+			this.MovementLineNumber = e.MovementLineNumber;
+
             this.TargetQuantity = (e.TargetQuantity != null && e.TargetQuantity.HasValue) ? e.TargetQuantity.Value : default(decimal);
 
             this.ConfirmedQuantity = (e.ConfirmedQuantity != null && e.ConfirmedQuantity.HasValue) ? e.ConfirmedQuantity.Value : default(decimal);
@@ -183,29 +185,41 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
             this.ScrappedQuantity = (e.ScrappedQuantity != null && e.ScrappedQuantity.HasValue) ? e.ScrappedQuantity.Value : default(decimal);
 
+			this.Description = e.Description;
+
+            this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
-			this.MovementDocumentTypeId = e.MovementDocumentTypeId;
+			this.MovementConfirmationDocumentTypeId = e.MovementConfirmationDocumentTypeId;
 
-			this.MovementDocumentStatusId = e.MovementDocumentStatusId;
+			this.MovementConfirmationDocumentStatusId = e.MovementConfirmationDocumentStatusId;
 
-			this.MovementMovementTypeId = e.MovementMovementTypeId;
+			this.MovementConfirmationMovementDocumentNumber = e.MovementConfirmationMovementDocumentNumber;
 
-			this.MovementDescription = e.MovementDescription;
+            this.MovementConfirmationIsApproved = (e.MovementConfirmationIsApproved != null && e.MovementConfirmationIsApproved.HasValue) ? e.MovementConfirmationIsApproved.Value : default(bool);
 
-			this.MovementCreatedBy = e.MovementCreatedBy;
+            this.MovementConfirmationApprovalAmount = (e.MovementConfirmationApprovalAmount != null && e.MovementConfirmationApprovalAmount.HasValue) ? e.MovementConfirmationApprovalAmount.Value : default(decimal);
 
-            this.MovementCreatedAt = (e.MovementCreatedAt != null && e.MovementCreatedAt.HasValue) ? e.MovementCreatedAt.Value : default(DateTime);
+			this.MovementConfirmationProcessing = e.MovementConfirmationProcessing;
 
-			this.MovementUpdatedBy = e.MovementUpdatedBy;
+            this.MovementConfirmationProcessed = (e.MovementConfirmationProcessed != null && e.MovementConfirmationProcessed.HasValue) ? e.MovementConfirmationProcessed.Value : default(bool);
 
-            this.MovementUpdatedAt = (e.MovementUpdatedAt != null && e.MovementUpdatedAt.HasValue) ? e.MovementUpdatedAt.Value : default(DateTime);
+			this.MovementConfirmationDescription = e.MovementConfirmationDescription;
 
-            this.MovementActive = (e.MovementActive != null && e.MovementActive.HasValue) ? e.MovementActive.Value : default(bool);
+			this.MovementConfirmationCreatedBy = e.MovementConfirmationCreatedBy;
 
-            this.MovementDeleted = (e.MovementDeleted != null && e.MovementDeleted.HasValue) ? e.MovementDeleted.Value : default(bool);
+            this.MovementConfirmationCreatedAt = (e.MovementConfirmationCreatedAt != null && e.MovementConfirmationCreatedAt.HasValue) ? e.MovementConfirmationCreatedAt.Value : default(DateTime);
+
+			this.MovementConfirmationUpdatedBy = e.MovementConfirmationUpdatedBy;
+
+            this.MovementConfirmationUpdatedAt = (e.MovementConfirmationUpdatedAt != null && e.MovementConfirmationUpdatedAt.HasValue) ? e.MovementConfirmationUpdatedAt.Value : default(DateTime);
+
+            this.MovementConfirmationActive = (e.MovementConfirmationActive != null && e.MovementConfirmationActive.HasValue) ? e.MovementConfirmationActive.Value : default(bool);
+
+            this.MovementConfirmationDeleted = (e.MovementConfirmationDeleted != null && e.MovementConfirmationDeleted.HasValue) ? e.MovementConfirmationDeleted.Value : default(bool);
 
 			this.Deleted = false;
 
@@ -219,6 +233,18 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		public virtual void When(IMovementConfirmationLineMvoStateMergePatched e)
 		{
 			ThrowOnWrongEvent(e);
+
+			if (e.MovementLineNumber == null)
+			{
+				if (e.IsPropertyMovementLineNumberRemoved)
+				{
+					this.MovementLineNumber = default(string);
+				}
+			}
+			else
+			{
+				this.MovementLineNumber = e.MovementLineNumber;
+			}
 
 			if (e.TargetQuantity == null)
 			{
@@ -268,6 +294,30 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 				this.ScrappedQuantity = (e.ScrappedQuantity != null && e.ScrappedQuantity.HasValue) ? e.ScrappedQuantity.Value : default(decimal);
 			}
 
+			if (e.Description == null)
+			{
+				if (e.IsPropertyDescriptionRemoved)
+				{
+					this.Description = default(string);
+				}
+			}
+			else
+			{
+				this.Description = e.Description;
+			}
+
+			if (e.Processed == null)
+			{
+				if (e.IsPropertyProcessedRemoved)
+				{
+					this.Processed = default(bool);
+				}
+			}
+			else
+			{
+				this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+			}
+
 			if (e.Version == null)
 			{
 				if (e.IsPropertyVersionRemoved)
@@ -292,124 +342,172 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 				this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 			}
 
-			if (e.MovementDocumentTypeId == null)
+			if (e.MovementConfirmationDocumentTypeId == null)
 			{
-				if (e.IsPropertyMovementDocumentTypeIdRemoved)
+				if (e.IsPropertyMovementConfirmationDocumentTypeIdRemoved)
 				{
-					this.MovementDocumentTypeId = default(string);
+					this.MovementConfirmationDocumentTypeId = default(string);
 				}
 			}
 			else
 			{
-				this.MovementDocumentTypeId = e.MovementDocumentTypeId;
+				this.MovementConfirmationDocumentTypeId = e.MovementConfirmationDocumentTypeId;
 			}
 
-			if (e.MovementDocumentStatusId == null)
+			if (e.MovementConfirmationDocumentStatusId == null)
 			{
-				if (e.IsPropertyMovementDocumentStatusIdRemoved)
+				if (e.IsPropertyMovementConfirmationDocumentStatusIdRemoved)
 				{
-					this.MovementDocumentStatusId = default(string);
+					this.MovementConfirmationDocumentStatusId = default(string);
 				}
 			}
 			else
 			{
-				this.MovementDocumentStatusId = e.MovementDocumentStatusId;
+				this.MovementConfirmationDocumentStatusId = e.MovementConfirmationDocumentStatusId;
 			}
 
-			if (e.MovementMovementTypeId == null)
+			if (e.MovementConfirmationMovementDocumentNumber == null)
 			{
-				if (e.IsPropertyMovementMovementTypeIdRemoved)
+				if (e.IsPropertyMovementConfirmationMovementDocumentNumberRemoved)
 				{
-					this.MovementMovementTypeId = default(string);
+					this.MovementConfirmationMovementDocumentNumber = default(string);
 				}
 			}
 			else
 			{
-				this.MovementMovementTypeId = e.MovementMovementTypeId;
+				this.MovementConfirmationMovementDocumentNumber = e.MovementConfirmationMovementDocumentNumber;
 			}
 
-			if (e.MovementDescription == null)
+			if (e.MovementConfirmationIsApproved == null)
 			{
-				if (e.IsPropertyMovementDescriptionRemoved)
+				if (e.IsPropertyMovementConfirmationIsApprovedRemoved)
 				{
-					this.MovementDescription = default(string);
+					this.MovementConfirmationIsApproved = default(bool);
 				}
 			}
 			else
 			{
-				this.MovementDescription = e.MovementDescription;
+				this.MovementConfirmationIsApproved = (e.MovementConfirmationIsApproved != null && e.MovementConfirmationIsApproved.HasValue) ? e.MovementConfirmationIsApproved.Value : default(bool);
 			}
 
-			if (e.MovementCreatedBy == null)
+			if (e.MovementConfirmationApprovalAmount == null)
 			{
-				if (e.IsPropertyMovementCreatedByRemoved)
+				if (e.IsPropertyMovementConfirmationApprovalAmountRemoved)
 				{
-					this.MovementCreatedBy = default(string);
+					this.MovementConfirmationApprovalAmount = default(decimal);
 				}
 			}
 			else
 			{
-				this.MovementCreatedBy = e.MovementCreatedBy;
+				this.MovementConfirmationApprovalAmount = (e.MovementConfirmationApprovalAmount != null && e.MovementConfirmationApprovalAmount.HasValue) ? e.MovementConfirmationApprovalAmount.Value : default(decimal);
 			}
 
-			if (e.MovementCreatedAt == null)
+			if (e.MovementConfirmationProcessing == null)
 			{
-				if (e.IsPropertyMovementCreatedAtRemoved)
+				if (e.IsPropertyMovementConfirmationProcessingRemoved)
 				{
-					this.MovementCreatedAt = default(DateTime);
+					this.MovementConfirmationProcessing = default(string);
 				}
 			}
 			else
 			{
-				this.MovementCreatedAt = (e.MovementCreatedAt != null && e.MovementCreatedAt.HasValue) ? e.MovementCreatedAt.Value : default(DateTime);
+				this.MovementConfirmationProcessing = e.MovementConfirmationProcessing;
 			}
 
-			if (e.MovementUpdatedBy == null)
+			if (e.MovementConfirmationProcessed == null)
 			{
-				if (e.IsPropertyMovementUpdatedByRemoved)
+				if (e.IsPropertyMovementConfirmationProcessedRemoved)
 				{
-					this.MovementUpdatedBy = default(string);
+					this.MovementConfirmationProcessed = default(bool);
 				}
 			}
 			else
 			{
-				this.MovementUpdatedBy = e.MovementUpdatedBy;
+				this.MovementConfirmationProcessed = (e.MovementConfirmationProcessed != null && e.MovementConfirmationProcessed.HasValue) ? e.MovementConfirmationProcessed.Value : default(bool);
 			}
 
-			if (e.MovementUpdatedAt == null)
+			if (e.MovementConfirmationDescription == null)
 			{
-				if (e.IsPropertyMovementUpdatedAtRemoved)
+				if (e.IsPropertyMovementConfirmationDescriptionRemoved)
 				{
-					this.MovementUpdatedAt = default(DateTime);
+					this.MovementConfirmationDescription = default(string);
 				}
 			}
 			else
 			{
-				this.MovementUpdatedAt = (e.MovementUpdatedAt != null && e.MovementUpdatedAt.HasValue) ? e.MovementUpdatedAt.Value : default(DateTime);
+				this.MovementConfirmationDescription = e.MovementConfirmationDescription;
 			}
 
-			if (e.MovementActive == null)
+			if (e.MovementConfirmationCreatedBy == null)
 			{
-				if (e.IsPropertyMovementActiveRemoved)
+				if (e.IsPropertyMovementConfirmationCreatedByRemoved)
 				{
-					this.MovementActive = default(bool);
+					this.MovementConfirmationCreatedBy = default(string);
 				}
 			}
 			else
 			{
-				this.MovementActive = (e.MovementActive != null && e.MovementActive.HasValue) ? e.MovementActive.Value : default(bool);
+				this.MovementConfirmationCreatedBy = e.MovementConfirmationCreatedBy;
 			}
 
-			if (e.MovementDeleted == null)
+			if (e.MovementConfirmationCreatedAt == null)
 			{
-				if (e.IsPropertyMovementDeletedRemoved)
+				if (e.IsPropertyMovementConfirmationCreatedAtRemoved)
 				{
-					this.MovementDeleted = default(bool);
+					this.MovementConfirmationCreatedAt = default(DateTime);
 				}
 			}
 			else
 			{
-				this.MovementDeleted = (e.MovementDeleted != null && e.MovementDeleted.HasValue) ? e.MovementDeleted.Value : default(bool);
+				this.MovementConfirmationCreatedAt = (e.MovementConfirmationCreatedAt != null && e.MovementConfirmationCreatedAt.HasValue) ? e.MovementConfirmationCreatedAt.Value : default(DateTime);
+			}
+
+			if (e.MovementConfirmationUpdatedBy == null)
+			{
+				if (e.IsPropertyMovementConfirmationUpdatedByRemoved)
+				{
+					this.MovementConfirmationUpdatedBy = default(string);
+				}
+			}
+			else
+			{
+				this.MovementConfirmationUpdatedBy = e.MovementConfirmationUpdatedBy;
+			}
+
+			if (e.MovementConfirmationUpdatedAt == null)
+			{
+				if (e.IsPropertyMovementConfirmationUpdatedAtRemoved)
+				{
+					this.MovementConfirmationUpdatedAt = default(DateTime);
+				}
+			}
+			else
+			{
+				this.MovementConfirmationUpdatedAt = (e.MovementConfirmationUpdatedAt != null && e.MovementConfirmationUpdatedAt.HasValue) ? e.MovementConfirmationUpdatedAt.Value : default(DateTime);
+			}
+
+			if (e.MovementConfirmationActive == null)
+			{
+				if (e.IsPropertyMovementConfirmationActiveRemoved)
+				{
+					this.MovementConfirmationActive = default(bool);
+				}
+			}
+			else
+			{
+				this.MovementConfirmationActive = (e.MovementConfirmationActive != null && e.MovementConfirmationActive.HasValue) ? e.MovementConfirmationActive.Value : default(bool);
+			}
+
+			if (e.MovementConfirmationDeleted == null)
+			{
+				if (e.IsPropertyMovementConfirmationDeletedRemoved)
+				{
+					this.MovementConfirmationDeleted = default(bool);
+				}
+			}
+			else
+			{
+				this.MovementConfirmationDeleted = (e.MovementConfirmationDeleted != null && e.MovementConfirmationDeleted.HasValue) ? e.MovementConfirmationDeleted.Value : default(bool);
 			}
 
 
@@ -451,8 +549,8 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
             id.Append("]");
 
-            var stateVersion = this.MovementVersion;
-            var eventVersion = stateEvent.StateEventId.MovementVersion;
+            var stateVersion = this.MovementConfirmationVersion;
+            var eventVersion = stateEvent.StateEventId.MovementConfirmationVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

@@ -351,6 +351,26 @@
     <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\HibernateMovementConfirmationLineMvoStateRepository.java">
       <DependentUpon>GenerateMovementConfirmationLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\GenerateMovementConfirmationDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationEventStore.java">
+      <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationLineStateDao.java">
+      <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationLineStateEventDao.java">
+      <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationStateQueryRepository.java">
+      <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationStateRepository.java">
+      <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\hibernate\GenerateMovementLineMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -379,12 +399,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\GenerateMovementDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementConfirmationLineStateDao.java">
-      <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementConfirmationLineStateEventDao.java">
       <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementEventStore.java">
@@ -659,6 +673,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -1007,6 +1027,8 @@
 .\MovementConfirmationLineMvoStateEvent.hbm.xml
 .\MovementConfirmationLineState.hbm.xml
 .\MovementConfirmationLineStateEvent.hbm.xml
+.\MovementConfirmationState.hbm.xml
+.\MovementConfirmationStateEvent.hbm.xml
 .\MovementLineMvoState.hbm.xml
 .\MovementLineMvoStateEvent.hbm.xml
 .\MovementLineState.hbm.xml
@@ -1423,8 +1445,6 @@
       <LastGenOutput>GenerateMovementDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateMovementDomainHibernate.txt
-.\HibernateMovementConfirmationLineStateDao.java
-.\HibernateMovementConfirmationLineStateEventDao.java
 .\HibernateMovementEventStore.java
 .\HibernateMovementLineStateDao.java
 .\HibernateMovementLineStateEventDao.java
@@ -1450,6 +1470,18 @@
 .\HibernateMovementConfirmationLineMvoEventStore.java
 .\HibernateMovementConfirmationLineMvoStateQueryRepository.java
 .\HibernateMovementConfirmationLineMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\GenerateMovementConfirmationDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateMovementConfirmationDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateMovementConfirmationDomainHibernate.txt
+.\HibernateMovementConfirmationEventStore.java
+.\HibernateMovementConfirmationLineStateDao.java
+.\HibernateMovementConfirmationLineStateEventDao.java
+.\HibernateMovementConfirmationStateQueryRepository.java
+.\HibernateMovementConfirmationStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

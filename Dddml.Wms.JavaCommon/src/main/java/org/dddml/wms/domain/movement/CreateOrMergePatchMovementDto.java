@@ -30,18 +30,6 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.documentAction = documentAction;
     }
 
-    private String movementTypeId;
-
-    public String getMovementTypeId()
-    {
-        return this.movementTypeId;
-    }
-
-    public void setMovementTypeId(String movementTypeId)
-    {
-        this.movementTypeId = movementTypeId;
-    }
-
     private String description;
 
     public String getDescription()
@@ -78,18 +66,6 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.movementLines = movementLines;
     }
 
-    private CreateOrMergePatchMovementConfirmationLineDto[] movementConfirmationLines;
-
-    public CreateOrMergePatchMovementConfirmationLineDto[] getMovementConfirmationLines()
-    {
-        return this.movementConfirmationLines;
-    }
-
-    public void setMovementConfirmationLines(CreateOrMergePatchMovementConfirmationLineDto[] movementConfirmationLines)
-    {
-        this.movementConfirmationLines = movementConfirmationLines;
-    }
-
     private Boolean isPropertyDocumentTypeIdRemoved;
 
     public Boolean getIsPropertyDocumentTypeIdRemoved()
@@ -100,18 +76,6 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
     public void setIsPropertyDocumentTypeIdRemoved(Boolean removed)
     {
         this.isPropertyDocumentTypeIdRemoved = removed;
-    }
-
-    private Boolean isPropertyMovementTypeIdRemoved;
-
-    public Boolean getIsPropertyMovementTypeIdRemoved()
-    {
-        return this.isPropertyMovementTypeIdRemoved;
-    }
-
-    public void setIsPropertyMovementTypeIdRemoved(Boolean removed)
-    {
-        this.isPropertyMovementTypeIdRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;
@@ -143,7 +107,6 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         ((AbstractMovementCommandDto) this).copyTo(command);
         command.setDocumentTypeId(this.getDocumentTypeId());
         command.setDocumentAction(this.getDocumentAction());
-        command.setMovementTypeId(this.getMovementTypeId());
         command.setDescription(this.getDescription());
         command.setActive(this.getActive());
     }
@@ -158,11 +121,6 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
                     command.getMovementLines().add((MovementLineCommand.CreateMovementLine) cmd.toCommand());
                 }
             }
-            if (this.getMovementConfirmationLines() != null) {
-                for (CreateOrMergePatchMovementConfirmationLineDto cmd : this.getMovementConfirmationLines()) {
-                    command.getMovementConfirmationLines().add((MovementConfirmationLineCommand.CreateMovementConfirmationLine) cmd.toCommand());
-                }
-            }
             return command;
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractMovementCommand.SimpleMergePatchMovement command = new AbstractMovementCommand.SimpleMergePatchMovement();
@@ -170,11 +128,6 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
             if (this.getMovementLines() != null) {
                 for (CreateOrMergePatchMovementLineDto cmd : this.getMovementLines()) {
                     command.getMovementLineCommands().add(cmd.toCommand());
-                }
-            }
-            if (this.getMovementConfirmationLines() != null) {
-                for (CreateOrMergePatchMovementConfirmationLineDto cmd : this.getMovementConfirmationLines()) {
-                    command.getMovementConfirmationLineCommands().add(cmd.toCommand());
                 }
             }
             return command;
@@ -191,7 +144,6 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
     {
         copyTo((AbstractMovementCommand.AbstractCreateOrMergePatchMovement) command);
         command.setIsPropertyDocumentTypeIdRemoved(this.getIsPropertyDocumentTypeIdRemoved());
-        command.setIsPropertyMovementTypeIdRemoved(this.getIsPropertyMovementTypeIdRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }

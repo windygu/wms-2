@@ -4,20 +4,23 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain.movement">
+<hibernate-mapping package="org.dddml.wms.domain.movementconfirmation">
   
-  <class name="org.dddml.wms.domain.movement.AbstractMovementConfirmationLineState$SimpleMovementConfirmationLineState" table="MovementConfirmationLines">
+  <class name="org.dddml.wms.domain.movementconfirmation.AbstractMovementConfirmationLineState$SimpleMovementConfirmationLineState" table="MovementConfirmationLines">
 
-	<composite-id name="movementConfirmationLineId" class="org.dddml.wms.domain.movement.MovementConfirmationLineId">
-		<key-property name="movementDocumentNumber" ><column name="MovementConfirmationLineIdMovementDocumentNumber" length="50" /></key-property>
+	<composite-id name="movementConfirmationLineId" class="org.dddml.wms.domain.movementconfirmation.MovementConfirmationLineId">
+		<key-property name="movementConfirmationDocumentNumber" ><column name="MovementConfirmationLineIdMovementConfirmationDocumentNumber" length="50" /></key-property>
 		<key-property name="lineNumber" ><column name="MovementConfirmationLineIdLineNumber" length="50" /></key-property>
 	</composite-id>
 	<version name="version" column="Version" type="long" />
 
+	<property name="movementLineNumber" ></property>
 	<property name="targetQuantity" ></property>
 	<property name="confirmedQuantity" ></property>
 	<property name="differenceQuantity" ></property>
 	<property name="scrappedQuantity" ></property>
+	<property name="description" ></property>
+	<property name="processed" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

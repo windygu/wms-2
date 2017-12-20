@@ -25,6 +25,20 @@ namespace Dddml.Wms.Domain.Movement
 
 		public virtual decimal? MovementQuantity { get; set; }
 
+		public virtual string ProductId { get; set; }
+
+		public virtual string LocatorIdFrom { get; set; }
+
+		public virtual string LocatorIdTo { get; set; }
+
+		public virtual string AttributeSetInstanceIdFrom { get; set; }
+
+		public virtual string AttributeSetInstanceIdTo { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual string ReversalLineNumber { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -118,6 +132,20 @@ namespace Dddml.Wms.Domain.Movement
 	public class MovementLineStateMergePatched : MovementLineStateEventBase, IMovementLineStateMergePatched
 	{
 		public virtual bool IsPropertyMovementQuantityRemoved { get; set; }
+
+		public virtual bool IsPropertyProductIdRemoved { get; set; }
+
+		public virtual bool IsPropertyLocatorIdFromRemoved { get; set; }
+
+		public virtual bool IsPropertyLocatorIdToRemoved { get; set; }
+
+		public virtual bool IsPropertyAttributeSetInstanceIdFromRemoved { get; set; }
+
+		public virtual bool IsPropertyAttributeSetInstanceIdToRemoved { get; set; }
+
+		public virtual bool IsPropertyProcessedRemoved { get; set; }
+
+		public virtual bool IsPropertyReversalLineNumberRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

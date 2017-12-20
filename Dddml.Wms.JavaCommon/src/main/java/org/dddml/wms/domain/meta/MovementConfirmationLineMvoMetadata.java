@@ -3,7 +3,7 @@ package org.dddml.wms.domain.meta;
 
 public interface MovementConfirmationLineMvoMetadata
 {
-    String PROPERTY_NAME_VERSION      = "movementVersion";
+    String PROPERTY_NAME_VERSION      = "movementConfirmationVersion";
     String PROPERTY_NAME_ACTIVE       = "active";
     String PROPERTY_NAME_DELETED      = "deleted";
     String PROPERTY_NAME_CREATED_BY   = "createdBy";

@@ -306,23 +306,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetMovementLineAsync(movementDocumentNumber, lineNumber).GetAwaiter().GetResult();
         }
 
-        public async virtual Task<IMovementConfirmationLineState> GetMovementConfirmationLineAsync(string movementDocumentNumber, string lineNumber)
-        {
-            var uriParameters = new MovementConfirmationLineUriParameters();
-            uriParameters.MovementDocumentNumber = movementDocumentNumber;
-            uriParameters.LineNumber = lineNumber;
-
-            var req = new MovementConfirmationLineGetRequest(uriParameters);
-            var resp = await _ramlClient.MovementConfirmationLine.Get(req);
-            MovementProxyUtils.ThrowOnHttpResponseError(resp);
-            return (resp.Content == null) ? null : resp.Content.ToMovementConfirmationLineState();
-        }
-
-        public virtual IMovementConfirmationLineState GetMovementConfirmationLine(string movementDocumentNumber, string lineNumber)
-        {
-            return GetMovementConfirmationLineAsync(movementDocumentNumber, lineNumber).GetAwaiter().GetResult();
-        }
-
 
         protected virtual string QueryFieldValueSeparator
         {

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -90,7 +90,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var q = new MovementConfirmationLineMvoDeleteQuery();
             q.CommandId = c.CommandId;
             q.RequesterId = c.RequesterId;
-            q.Version = Convert.ToString(c.MovementVersion);
+            q.Version = Convert.ToString(c.MovementConfirmationVersion);
                 
             var req = new MovementConfirmationLineMvoDeleteRequest(uriParameters);
             req.Query = q;

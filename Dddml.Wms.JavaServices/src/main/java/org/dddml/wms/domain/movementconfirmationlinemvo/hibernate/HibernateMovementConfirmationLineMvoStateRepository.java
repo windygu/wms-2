@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo.hibernate;
 
 import java.util.*;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -28,7 +28,7 @@ public class HibernateMovementConfirmationLineMvoStateRepository implements Move
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("MovementConfirmationLineId", "TargetQuantity", "ConfirmedQuantity", "DifferenceQuantity", "ScrappedQuantity", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "MovementDocumentTypeId", "MovementDocumentStatusId", "MovementMovementTypeId", "MovementDescription", "MovementMovementLines", "MovementMovementConfirmationLines", "MovementVersion", "MovementCreatedBy", "MovementCreatedAt", "MovementUpdatedBy", "MovementUpdatedAt", "MovementActive", "MovementDeleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("MovementConfirmationLineId", "MovementLineNumber", "TargetQuantity", "ConfirmedQuantity", "DifferenceQuantity", "ScrappedQuantity", "Description", "Processed", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "MovementConfirmationDocumentTypeId", "MovementConfirmationDocumentStatusId", "MovementConfirmationMovementDocumentNumber", "MovementConfirmationIsApproved", "MovementConfirmationApprovalAmount", "MovementConfirmationProcessing", "MovementConfirmationProcessed", "MovementConfirmationDescription", "MovementConfirmationMovementConfirmationLines", "MovementConfirmationVersion", "MovementConfirmationCreatedBy", "MovementConfirmationCreatedAt", "MovementConfirmationUpdatedBy", "MovementConfirmationUpdatedAt", "MovementConfirmationActive", "MovementConfirmationDeleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -59,7 +59,7 @@ public class HibernateMovementConfirmationLineMvoStateRepository implements Move
         if (getReadOnlyProxyGenerator() != null) {
             s = (MovementConfirmationLineMvoState) getReadOnlyProxyGenerator().getTarget(state);
         }
-        if(s.getMovementVersion() == null) {
+        if(s.getMovementConfirmationVersion() == null) {
             getCurrentSession().save(s);
         }else {
             getCurrentSession().update(s);

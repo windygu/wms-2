@@ -49,10 +49,6 @@ public interface MovementCommand extends Command
 
         void setDocumentAction(String documentAction);
 
-        String getMovementTypeId();
-
-        void setMovementTypeId(String movementTypeId);
-
         String getDescription();
 
         void setDescription(String description);
@@ -69,10 +65,6 @@ public interface MovementCommand extends Command
 
         MovementLineCommand.CreateMovementLine newCreateMovementLine();
 
-        CreateMovementConfirmationLineCommands getMovementConfirmationLines();
-
-        MovementConfirmationLineCommand.CreateMovementConfirmationLine newCreateMovementConfirmationLine();
-
     }
 
     interface MergePatchMovement extends CreateOrMergePatchMovement
@@ -80,10 +72,6 @@ public interface MovementCommand extends Command
         Boolean getIsPropertyDocumentTypeIdRemoved();
 
         void setIsPropertyDocumentTypeIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyMovementTypeIdRemoved();
-
-        void setIsPropertyMovementTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 
@@ -100,14 +88,6 @@ public interface MovementCommand extends Command
         MovementLineCommand.MergePatchMovementLine newMergePatchMovementLine();
 
         MovementLineCommand.RemoveMovementLine newRemoveMovementLine();
-
-        MovementConfirmationLineCommands getMovementConfirmationLineCommands();
-
-        MovementConfirmationLineCommand.CreateMovementConfirmationLine newCreateMovementConfirmationLine();
-
-        MovementConfirmationLineCommand.MergePatchMovementConfirmationLine newMergePatchMovementConfirmationLine();
-
-        MovementConfirmationLineCommand.RemoveMovementConfirmationLine newRemoveMovementConfirmationLine();
 
     }
 
@@ -129,24 +109,6 @@ public interface MovementCommand extends Command
         void add(MovementLineCommand c);
 
         void remove(MovementLineCommand c);
-
-        void clear();
-    }
-
-    interface CreateMovementConfirmationLineCommands extends Iterable<MovementConfirmationLineCommand.CreateMovementConfirmationLine>
-    {
-        void add(MovementConfirmationLineCommand.CreateMovementConfirmationLine c);
-
-        void remove(MovementConfirmationLineCommand.CreateMovementConfirmationLine c);
-
-        void clear();
-    }
-
-    interface MovementConfirmationLineCommands extends Iterable<MovementConfirmationLineCommand>
-    {
-        void add(MovementConfirmationLineCommand c);
-
-        void remove(MovementConfirmationLineCommand c);
 
         void clear();
     }

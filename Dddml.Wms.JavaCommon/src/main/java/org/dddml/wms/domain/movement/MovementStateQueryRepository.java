@@ -29,7 +29,5 @@ public interface MovementStateQueryRepository
 
     MovementLineState getMovementLine(String movementDocumentNumber, String lineNumber);
 
-    MovementConfirmationLineState getMovementConfirmationLine(String movementDocumentNumber, String lineNumber);
-
 }
 

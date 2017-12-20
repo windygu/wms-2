@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -23,20 +23,20 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 			internal set { _movementConfirmationLineId = value; } 
 		}
 
-		private long _movementVersion;
+		private long _movementConfirmationVersion;
 
-		public virtual long MovementVersion { 
-			get { return this._movementVersion; } 
-			internal set { _movementVersion = value; } 
+		public virtual long MovementConfirmationVersion { 
+			get { return this._movementConfirmationVersion; } 
+			internal set { _movementConfirmationVersion = value; } 
 		}
 
 
         #region  Flattened Properties
 
 
-		public virtual string MovementConfirmationLineIdMovementDocumentNumber {
-			get { return MovementConfirmationLineId.MovementDocumentNumber; }
-			internal set { MovementConfirmationLineId.MovementDocumentNumber = value; }
+		public virtual string MovementConfirmationLineIdMovementConfirmationDocumentNumber {
+			get { return MovementConfirmationLineId.MovementConfirmationDocumentNumber; }
+			internal set { MovementConfirmationLineId.MovementConfirmationDocumentNumber = value; }
 		}
 
 		public virtual string MovementConfirmationLineIdLineNumber {
@@ -50,10 +50,10 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		{
 		}
 
-		public MovementConfirmationLineMvoStateEventId (MovementConfirmationLineId movementConfirmationLineId, long movementVersion)
+		public MovementConfirmationLineMvoStateEventId (MovementConfirmationLineId movementConfirmationLineId, long movementConfirmationVersion)
 		{
 			this._movementConfirmationLineId = movementConfirmationLineId;
-			this._movementVersion = movementVersion;
+			this._movementConfirmationVersion = movementConfirmationVersion;
 
 		}
 
@@ -71,7 +71,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 			return true 
 				&& Object.Equals (this.MovementConfirmationLineId, other.MovementConfirmationLineId)
-				&& Object.Equals (this.MovementVersion, other.MovementVersion)
+				&& Object.Equals (this.MovementConfirmationVersion, other.MovementConfirmationVersion)
 				;
 		}
 
@@ -81,8 +81,8 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 			if (this.MovementConfirmationLineId != null) {
 				hash += 13 * this.MovementConfirmationLineId.GetHashCode ();
 			}
-			if (this.MovementVersion != null) {
-				hash += 13 * this.MovementVersion.GetHashCode ();
+			if (this.MovementConfirmationVersion != null) {
+				hash += 13 * this.MovementConfirmationVersion.GetHashCode ();
 			}
 			return hash;
 		}

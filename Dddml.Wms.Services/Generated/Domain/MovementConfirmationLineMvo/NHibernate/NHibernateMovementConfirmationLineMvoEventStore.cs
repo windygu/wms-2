@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 using Dddml.Wms.Specialization.NHibernate;
 using NHibernate;
 using NHibernate.Criterion;
@@ -40,10 +40,10 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo.NHibernate
             }
             MovementConfirmationLineId idObj = (MovementConfirmationLineId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<MovementConfirmationLineMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.MovementConfirmationLineIdMovementDocumentNumber", idObj.MovementDocumentNumber));
+            criteria.Add(Restrictions.Eq("StateEventId.MovementConfirmationLineIdMovementConfirmationDocumentNumber", idObj.MovementConfirmationDocumentNumber));
             criteria.Add(Restrictions.Eq("StateEventId.MovementConfirmationLineIdLineNumber", idObj.LineNumber));
-            criteria.Add(Restrictions.Le("StateEventId.MovementVersion", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.MovementVersion"));
+            criteria.Add(Restrictions.Le("StateEventId.MovementConfirmationVersion", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.MovementConfirmationVersion"));
             var es = criteria.List<IEvent>();
             foreach (MovementConfirmationLineMvoStateEventBase e in es)
             {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((MovementConfirmationLineMvoStateEventBase)es.Last()).StateEventId.MovementVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((MovementConfirmationLineMvoStateEventBase)es.Last()).StateEventId.MovementConfirmationVersion : default(long),
                 Events = es
             };
         }

@@ -9,29 +9,36 @@
   <class name="AbstractMovementConfirmationLineMvoStateEvent" table="MovementConfirmationLineMvoStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="stateEventId" class="org.dddml.wms.domain.movementconfirmationlinemvo.MovementConfirmationLineMvoStateEventId">
-		<key-property name="movementConfirmationLineIdMovementDocumentNumber" ><column name="MovementConfirmationLineIdMovementDocumentNumber" length="50" /></key-property>
+		<key-property name="movementConfirmationLineIdMovementConfirmationDocumentNumber" ><column name="MovementConfirmationLineIdMovementConfirmationDocumentNumber" length="50" /></key-property>
 		<key-property name="movementConfirmationLineIdLineNumber" ><column name="MovementConfirmationLineIdLineNumber" length="50" /></key-property>
-		<key-property name="movementVersion" ></key-property>
+		<key-property name="movementConfirmationVersion" ></key-property>
 	</composite-id>
 
     <discriminator column="StateEventType" type="string" />
 
+	<property name="movementLineNumber" ></property>
 	<property name="targetQuantity" ></property>
 	<property name="confirmedQuantity" ></property>
 	<property name="differenceQuantity" ></property>
 	<property name="scrappedQuantity" ></property>
+	<property name="description" ></property>
+	<property name="processed" ></property>
 	<property name="version" ></property>
 	<property name="active" ></property>
-	<property name="movementDocumentTypeId" ></property>
-	<property name="movementDocumentStatusId" ></property>
-	<property name="movementMovementTypeId" ></property>
-	<property name="movementDescription" ></property>
-	<property name="movementCreatedBy" ></property>
-	<property name="movementCreatedAt" ></property>
-	<property name="movementUpdatedBy" ></property>
-	<property name="movementUpdatedAt" ></property>
-	<property name="movementActive" ></property>
-	<property name="movementDeleted" ></property>
+	<property name="movementConfirmationDocumentTypeId" ></property>
+	<property name="movementConfirmationDocumentStatusId" ></property>
+	<property name="movementConfirmationMovementDocumentNumber" ></property>
+	<property name="movementConfirmationIsApproved" ></property>
+	<property name="movementConfirmationApprovalAmount" ></property>
+	<property name="movementConfirmationProcessing" ></property>
+	<property name="movementConfirmationProcessed" ></property>
+	<property name="movementConfirmationDescription" ></property>
+	<property name="movementConfirmationCreatedBy" ></property>
+	<property name="movementConfirmationCreatedAt" ></property>
+	<property name="movementConfirmationUpdatedBy" ></property>
+	<property name="movementConfirmationUpdatedAt" ></property>
+	<property name="movementConfirmationActive" ></property>
+	<property name="movementConfirmationDeleted" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
 
@@ -45,6 +52,8 @@
 
     <subclass name="AbstractMovementConfirmationLineMvoStateEvent$SimpleMovementConfirmationLineMvoStateMergePatched" discriminator-value="MergePatched">
 
+        <property name="isPropertyMovementLineNumberRemoved" column="IsPropertyMovementLineNumberRemoved"/>
+
         <property name="isPropertyTargetQuantityRemoved" column="IsPropertyTargetQuantityRemoved"/>
 
         <property name="isPropertyConfirmedQuantityRemoved" column="IsPropertyConfirmedQuantityRemoved"/>
@@ -53,29 +62,41 @@
 
         <property name="isPropertyScrappedQuantityRemoved" column="IsPropertyScrappedQuantityRemoved"/>
 
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
         <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
-        <property name="isPropertyMovementDocumentTypeIdRemoved" column="IsPropertyMovementDocumentTypeIdRemoved"/>
+        <property name="isPropertyMovementConfirmationDocumentTypeIdRemoved" column="IsPropertyMovementConfirmationDocumentTypeIdRemoved"/>
 
-        <property name="isPropertyMovementDocumentStatusIdRemoved" column="IsPropertyMovementDocumentStatusIdRemoved"/>
+        <property name="isPropertyMovementConfirmationDocumentStatusIdRemoved" column="IsPropertyMovementConfirmationDocumentStatusIdRemoved"/>
 
-        <property name="isPropertyMovementMovementTypeIdRemoved" column="IsPropertyMovementMovementTypeIdRemoved"/>
+        <property name="isPropertyMovementConfirmationMovementDocumentNumberRemoved" column="IsPropertyMovementConfirmationMovementDocumentNumberRemoved"/>
 
-        <property name="isPropertyMovementDescriptionRemoved" column="IsPropertyMovementDescriptionRemoved"/>
+        <property name="isPropertyMovementConfirmationIsApprovedRemoved" column="IsPropertyMovementConfirmationIsApprovedRemoved"/>
 
-        <property name="isPropertyMovementCreatedByRemoved" column="IsPropertyMovementCreatedByRemoved"/>
+        <property name="isPropertyMovementConfirmationApprovalAmountRemoved" column="IsPropertyMovementConfirmationApprovalAmountRemoved"/>
 
-        <property name="isPropertyMovementCreatedAtRemoved" column="IsPropertyMovementCreatedAtRemoved"/>
+        <property name="isPropertyMovementConfirmationProcessingRemoved" column="IsPropertyMovementConfirmationProcessingRemoved"/>
 
-        <property name="isPropertyMovementUpdatedByRemoved" column="IsPropertyMovementUpdatedByRemoved"/>
+        <property name="isPropertyMovementConfirmationProcessedRemoved" column="IsPropertyMovementConfirmationProcessedRemoved"/>
 
-        <property name="isPropertyMovementUpdatedAtRemoved" column="IsPropertyMovementUpdatedAtRemoved"/>
+        <property name="isPropertyMovementConfirmationDescriptionRemoved" column="IsPropertyMovementConfirmationDescriptionRemoved"/>
 
-        <property name="isPropertyMovementActiveRemoved" column="IsPropertyMovementActiveRemoved"/>
+        <property name="isPropertyMovementConfirmationCreatedByRemoved" column="IsPropertyMovementConfirmationCreatedByRemoved"/>
 
-        <property name="isPropertyMovementDeletedRemoved" column="IsPropertyMovementDeletedRemoved"/>
+        <property name="isPropertyMovementConfirmationCreatedAtRemoved" column="IsPropertyMovementConfirmationCreatedAtRemoved"/>
+
+        <property name="isPropertyMovementConfirmationUpdatedByRemoved" column="IsPropertyMovementConfirmationUpdatedByRemoved"/>
+
+        <property name="isPropertyMovementConfirmationUpdatedAtRemoved" column="IsPropertyMovementConfirmationUpdatedAtRemoved"/>
+
+        <property name="isPropertyMovementConfirmationActiveRemoved" column="IsPropertyMovementConfirmationActiveRemoved"/>
+
+        <property name="isPropertyMovementConfirmationDeletedRemoved" column="IsPropertyMovementConfirmationDeletedRemoved"/>
 
 
     </subclass>

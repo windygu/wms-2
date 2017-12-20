@@ -28,6 +28,48 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             set;
         }
 
+        string ProductId
+        {
+            get;
+            set;
+        }
+
+        string LocatorIdFrom
+        {
+            get;
+            set;
+        }
+
+        string LocatorIdTo
+        {
+            get;
+            set;
+        }
+
+        string AttributeSetInstanceIdFrom
+        {
+            get;
+            set;
+        }
+
+        string AttributeSetInstanceIdTo
+        {
+            get;
+            set;
+        }
+
+        bool? Processed
+        {
+            get;
+            set;
+        }
+
+        string ReversalLineNumber
+        {
+            get;
+            set;
+        }
+
         long? Version
         {
             get;
@@ -47,12 +89,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
         }
 
         string MovementDocumentStatusId
-        {
-            get;
-            set;
-        }
-
-        string MovementMovementTypeId
         {
             get;
             set;

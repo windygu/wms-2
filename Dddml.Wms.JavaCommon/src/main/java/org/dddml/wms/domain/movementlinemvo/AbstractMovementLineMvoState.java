@@ -35,6 +35,90 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
         this.movementQuantity = movementQuantity;
     }
 
+    private String productId;
+
+    public String getProductId()
+    {
+        return this.productId;
+    }
+
+    public void setProductId(String productId)
+    {
+        this.productId = productId;
+    }
+
+    private String locatorIdFrom;
+
+    public String getLocatorIdFrom()
+    {
+        return this.locatorIdFrom;
+    }
+
+    public void setLocatorIdFrom(String locatorIdFrom)
+    {
+        this.locatorIdFrom = locatorIdFrom;
+    }
+
+    private String locatorIdTo;
+
+    public String getLocatorIdTo()
+    {
+        return this.locatorIdTo;
+    }
+
+    public void setLocatorIdTo(String locatorIdTo)
+    {
+        this.locatorIdTo = locatorIdTo;
+    }
+
+    private String attributeSetInstanceIdFrom;
+
+    public String getAttributeSetInstanceIdFrom()
+    {
+        return this.attributeSetInstanceIdFrom;
+    }
+
+    public void setAttributeSetInstanceIdFrom(String attributeSetInstanceIdFrom)
+    {
+        this.attributeSetInstanceIdFrom = attributeSetInstanceIdFrom;
+    }
+
+    private String attributeSetInstanceIdTo;
+
+    public String getAttributeSetInstanceIdTo()
+    {
+        return this.attributeSetInstanceIdTo;
+    }
+
+    public void setAttributeSetInstanceIdTo(String attributeSetInstanceIdTo)
+    {
+        this.attributeSetInstanceIdTo = attributeSetInstanceIdTo;
+    }
+
+    private Boolean processed;
+
+    public Boolean getProcessed()
+    {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed)
+    {
+        this.processed = processed;
+    }
+
+    private String reversalLineNumber;
+
+    public String getReversalLineNumber()
+    {
+        return this.reversalLineNumber;
+    }
+
+    public void setReversalLineNumber(String reversalLineNumber)
+    {
+        this.reversalLineNumber = reversalLineNumber;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -141,18 +225,6 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
     public void setMovementDocumentStatusId(String movementDocumentStatusId)
     {
         this.movementDocumentStatusId = movementDocumentStatusId;
-    }
-
-    private String movementMovementTypeId;
-
-    public String getMovementMovementTypeId()
-    {
-        return this.movementMovementTypeId;
-    }
-
-    public void setMovementMovementTypeId(String movementMovementTypeId)
-    {
-        this.movementMovementTypeId = movementMovementTypeId;
     }
 
     private String movementDescription;
@@ -316,11 +388,17 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
         throwOnWrongEvent(e);
 
         this.setMovementQuantity(e.getMovementQuantity());
+        this.setProductId(e.getProductId());
+        this.setLocatorIdFrom(e.getLocatorIdFrom());
+        this.setLocatorIdTo(e.getLocatorIdTo());
+        this.setAttributeSetInstanceIdFrom(e.getAttributeSetInstanceIdFrom());
+        this.setAttributeSetInstanceIdTo(e.getAttributeSetInstanceIdTo());
+        this.setProcessed(e.getProcessed());
+        this.setReversalLineNumber(e.getReversalLineNumber());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
         this.setMovementDocumentTypeId(e.getMovementDocumentTypeId());
         this.setMovementDocumentStatusId(e.getMovementDocumentStatusId());
-        this.setMovementMovementTypeId(e.getMovementMovementTypeId());
         this.setMovementDescription(e.getMovementDescription());
         this.setMovementCreatedBy(e.getMovementCreatedBy());
         this.setMovementCreatedAt(e.getMovementCreatedAt());
@@ -350,6 +428,83 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
         else
         {
             this.setMovementQuantity(e.getMovementQuantity());
+        }
+        if (e.getProductId() == null)
+        {
+            if (e.getIsPropertyProductIdRemoved() != null && e.getIsPropertyProductIdRemoved())
+            {
+                this.setProductId(null);
+            }
+        }
+        else
+        {
+            this.setProductId(e.getProductId());
+        }
+        if (e.getLocatorIdFrom() == null)
+        {
+            if (e.getIsPropertyLocatorIdFromRemoved() != null && e.getIsPropertyLocatorIdFromRemoved())
+            {
+                this.setLocatorIdFrom(null);
+            }
+        }
+        else
+        {
+            this.setLocatorIdFrom(e.getLocatorIdFrom());
+        }
+        if (e.getLocatorIdTo() == null)
+        {
+            if (e.getIsPropertyLocatorIdToRemoved() != null && e.getIsPropertyLocatorIdToRemoved())
+            {
+                this.setLocatorIdTo(null);
+            }
+        }
+        else
+        {
+            this.setLocatorIdTo(e.getLocatorIdTo());
+        }
+        if (e.getAttributeSetInstanceIdFrom() == null)
+        {
+            if (e.getIsPropertyAttributeSetInstanceIdFromRemoved() != null && e.getIsPropertyAttributeSetInstanceIdFromRemoved())
+            {
+                this.setAttributeSetInstanceIdFrom(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetInstanceIdFrom(e.getAttributeSetInstanceIdFrom());
+        }
+        if (e.getAttributeSetInstanceIdTo() == null)
+        {
+            if (e.getIsPropertyAttributeSetInstanceIdToRemoved() != null && e.getIsPropertyAttributeSetInstanceIdToRemoved())
+            {
+                this.setAttributeSetInstanceIdTo(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetInstanceIdTo(e.getAttributeSetInstanceIdTo());
+        }
+        if (e.getProcessed() == null)
+        {
+            if (e.getIsPropertyProcessedRemoved() != null && e.getIsPropertyProcessedRemoved())
+            {
+                this.setProcessed(null);
+            }
+        }
+        else
+        {
+            this.setProcessed(e.getProcessed());
+        }
+        if (e.getReversalLineNumber() == null)
+        {
+            if (e.getIsPropertyReversalLineNumberRemoved() != null && e.getIsPropertyReversalLineNumberRemoved())
+            {
+                this.setReversalLineNumber(null);
+            }
+        }
+        else
+        {
+            this.setReversalLineNumber(e.getReversalLineNumber());
         }
         if (e.getVersion() == null)
         {
@@ -394,17 +549,6 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
         else
         {
             this.setMovementDocumentStatusId(e.getMovementDocumentStatusId());
-        }
-        if (e.getMovementMovementTypeId() == null)
-        {
-            if (e.getIsPropertyMovementMovementTypeIdRemoved() != null && e.getIsPropertyMovementMovementTypeIdRemoved())
-            {
-                this.setMovementMovementTypeId(null);
-            }
-        }
-        else
-        {
-            this.setMovementMovementTypeId(e.getMovementMovementTypeId());
         }
         if (e.getMovementDescription() == null)
         {

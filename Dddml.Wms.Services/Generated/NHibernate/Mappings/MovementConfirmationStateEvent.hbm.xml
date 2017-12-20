@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.MovementConfirmation">
+  
+  <class name="MovementConfirmationStateEventBase" table="MovementConfirmationStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.MovementConfirmation.MovementConfirmationStateEventId">
+        <key-property name="DocumentNumber" ><column name="DocumentNumber" length="50" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="DocumentTypeId" ></property>
+    <property name="DocumentStatusId" ></property>
+    <property name="MovementDocumentNumber" ></property>
+    <property name="IsApproved" ></property>
+    <property name="ApprovalAmount" ></property>
+    <property name="Processing" ></property>
+    <property name="Processed" ></property>
+    <property name="Description" ></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="MovementConfirmationStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="MovementConfirmationStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyDocumentTypeIdRemoved" column="IsPropertyDocumentTypeIdRemoved"/>
+
+        <property name="IsPropertyDocumentStatusIdRemoved" column="IsPropertyDocumentStatusIdRemoved"/>
+
+        <property name="IsPropertyMovementDocumentNumberRemoved" column="IsPropertyMovementDocumentNumberRemoved"/>
+
+        <property name="IsPropertyIsApprovedRemoved" column="IsPropertyIsApprovedRemoved"/>
+
+        <property name="IsPropertyApprovalAmountRemoved" column="IsPropertyApprovalAmountRemoved"/>
+
+        <property name="IsPropertyProcessingRemoved" column="IsPropertyProcessingRemoved"/>
+
+        <property name="IsPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="MovementConfirmationStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

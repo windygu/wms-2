@@ -21,10 +21,6 @@ aggregates:
           commandType: DocumentAction
           commandName: DocumentAction
           
-        MovementTypeId:
-          type: string
-          referenceType: MovementType
-          
         Description:
           type: string
 
@@ -32,9 +28,6 @@ aggregates:
         MovementLines:
           itemType: MovementLine
           
-        MovementConfirmationLines:
-          itemType: MovementConfirmationLine
-        
       entities:
       
         MovementLine:
@@ -43,35 +36,36 @@ aggregates:
             type: string
         
           properties:
+          
             MovementQuantity:
               type: decimal
               displayName: Quantity of a product moved.
               description: The Movement Quantity indicates the quantity of a product that has been moved. 
 
-        MovementConfirmationLine:
-          id: 
-            name: LineNumber
-            type: string
+            ProductId:
+              type: string
+              
+            LocatorIdFrom:
+              type: string
+              
+            LocatorIdTo:
+              type: string
+              
+            AttributeSetInstanceIdFrom:
+              type: string
+              
+            AttributeSetInstanceIdTo:
+              type: string
+              
+            Processed:
+              type: bool
+
+            # dd_orderline_id numeric(10,0),
+
+            ReversalLineNumber:
+              type: string
         
-          properties:
-          
-            TargetQuantity:
-              description: The Quantity which should have been received.
-              type: decimal
-              
-            ConfirmedQuantity:
-              description: Confirmation of a received quantity.
-              type: decimal
-              
-            DifferenceQuantity:
-              description: If there is a difference quantity, a Physical Inventory is created for the source (from) warehouse. 
-              type: decimal
-
-            ScrappedQuantity:
-              description: "The Quantity scrapped due to QA issues. If there is a scrapped quantity, a Physical Inventory is created for the target (to) warehouse."
-              type: decimal
-          
-
+        
       # metadata:
         # NoEventSourcing: true
 

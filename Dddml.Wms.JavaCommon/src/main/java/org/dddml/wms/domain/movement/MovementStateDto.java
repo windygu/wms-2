@@ -46,18 +46,6 @@ public class MovementStateDto
         this.documentStatusId = documentStatusId;
     }
 
-    private String movementTypeId;
-
-    public String getMovementTypeId()
-    {
-        return this.movementTypeId;
-    }
-
-    public void setMovementTypeId(String movementTypeId)
-    {
-        this.movementTypeId = movementTypeId;
-    }
-
     private String description;
 
     public String getDescription()
@@ -154,22 +142,10 @@ public class MovementStateDto
         this.movementLines = movementLines;
     }
 
-    private MovementConfirmationLineStateDto[] movementConfirmationLines;
-
-    public MovementConfirmationLineStateDto[] getMovementConfirmationLines()
-    {
-        return this.movementConfirmationLines;
-    }	
-
-    public void setMovementConfirmationLines(MovementConfirmationLineStateDto[] movementConfirmationLines)
-    {
-        this.movementConfirmationLines = movementConfirmationLines;
-    }
-
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"MovementLines", "MovementConfirmationLines"});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"MovementLines"});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -200,9 +176,6 @@ public class MovementStateDto
             }
             if (returnedFieldsContains("DocumentStatusId")) {
                 dto.setDocumentStatusId(state.getDocumentStatusId());
-            }
-            if (returnedFieldsContains("MovementTypeId")) {
-                dto.setMovementTypeId(state.getMovementTypeId());
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
@@ -236,18 +209,6 @@ public class MovementStateDto
                     }
                 }
                 dto.setMovementLines(arrayList.toArray(new MovementLineStateDto[0]));
-            }
-            if (returnedFieldsContains("MovementConfirmationLines")) {
-                ArrayList<MovementConfirmationLineStateDto> arrayList = new ArrayList();
-                if (state.getMovementConfirmationLines() != null) {
-                    MovementConfirmationLineStateDto.DtoConverter conv = new MovementConfirmationLineStateDto.DtoConverter();
-                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "MovementConfirmationLines");
-                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
-                    for (MovementConfirmationLineState s : state.getMovementConfirmationLines()) {
-                        arrayList.add(conv.toMovementConfirmationLineStateDto(s));
-                    }
-                }
-                dto.setMovementConfirmationLines(arrayList.toArray(new MovementConfirmationLineStateDto[0]));
             }
             return dto;
         }

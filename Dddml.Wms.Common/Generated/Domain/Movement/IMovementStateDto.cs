@@ -32,12 +32,6 @@ namespace Dddml.Wms.Domain.Movement
             set;
         }
 
-        string MovementTypeId
-        {
-            get;
-            set;
-        }
-
         string Description
         {
             get;
@@ -81,12 +75,6 @@ namespace Dddml.Wms.Domain.Movement
         }
 
         IMovementLineStateDto[] MovementLines
-        {
-            get;
-            set;
-        }
-
-        IMovementConfirmationLineStateDto[] MovementConfirmationLines
         {
             get;
             set;

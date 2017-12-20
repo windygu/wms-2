@@ -67,9 +67,9 @@ deallocate prepare stmt;
 set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
             CONSTRAINT_SCHEMA = DATABASE() AND
             TABLE_NAME        = 'MovementConfirmationLines' AND
-            CONSTRAINT_NAME   = 'FK_MovementConfirmationLine_Movement_StateId' AND
+            CONSTRAINT_NAME   = 'FK_MovementConfirmationLine_MovementConfirmation_StateId' AND
             CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE MovementConfirmationLines
-            drop foreign key FK_MovementConfirmationLine_Movement_StateId','select 1');
+            drop foreign key FK_MovementConfirmationLine_MovementConfirmation_StateId','select 1');
 
 prepare stmt from @var;
 execute stmt;

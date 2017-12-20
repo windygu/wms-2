@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -56,7 +56,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         public virtual void ThrowOnInvalidStateTransition(ICommand c)
         {
-            if (((IMovementConfirmationLineMvoStateProperties)_state).MovementVersion == MovementConfirmationLineMvoState.VersionZero)
+            if (((IMovementConfirmationLineMvoStateProperties)_state).MovementConfirmationVersion == MovementConfirmationLineMvoState.VersionZero)
             {
                 if (IsCommandCreate((IMovementConfirmationLineMvoCommand)c))
                 {
@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         private static bool IsCommandCreate(IMovementConfirmationLineMvoCommand c)
         {
-            return c.MovementVersion == MovementConfirmationLineMvoState.VersionZero;
+            return c.MovementConfirmationVersion == MovementConfirmationLineMvoState.VersionZero;
         }
 
         protected internal virtual void Apply(IEvent e)
@@ -105,31 +105,38 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected virtual IMovementConfirmationLineMvoStateCreated Map(ICreateMovementConfirmationLineMvo c)
         {
-			var stateEventId = new MovementConfirmationLineMvoStateEventId(c.MovementConfirmationLineId, c.MovementVersion);
+			var stateEventId = new MovementConfirmationLineMvoStateEventId(c.MovementConfirmationLineId, c.MovementConfirmationVersion);
             IMovementConfirmationLineMvoStateCreated e = NewMovementConfirmationLineMvoStateCreated(stateEventId);
 		
+            e.MovementLineNumber = c.MovementLineNumber;
             e.TargetQuantity = c.TargetQuantity;
             e.ConfirmedQuantity = c.ConfirmedQuantity;
             e.DifferenceQuantity = c.DifferenceQuantity;
             e.ScrappedQuantity = c.ScrappedQuantity;
+            e.Description = c.Description;
+            e.Processed = c.Processed;
             e.Version = c.Version;
             e.Active = c.Active;
-            e.MovementDocumentTypeId = c.MovementDocumentTypeId;
+            e.MovementConfirmationDocumentTypeId = c.MovementConfirmationDocumentTypeId;
             NewMovementConfirmationLineMvoDocumentActionCommandAndExecute(c, _state, e);
-            e.MovementMovementTypeId = c.MovementMovementTypeId;
-            e.MovementDescription = c.MovementDescription;
-            e.MovementCreatedBy = c.MovementCreatedBy;
-            e.MovementCreatedAt = c.MovementCreatedAt;
-            e.MovementUpdatedBy = c.MovementUpdatedBy;
-            e.MovementUpdatedAt = c.MovementUpdatedAt;
-            e.MovementActive = c.MovementActive;
-            e.MovementDeleted = c.MovementDeleted;
+            e.MovementConfirmationMovementDocumentNumber = c.MovementConfirmationMovementDocumentNumber;
+            e.MovementConfirmationIsApproved = c.MovementConfirmationIsApproved;
+            e.MovementConfirmationApprovalAmount = c.MovementConfirmationApprovalAmount;
+            e.MovementConfirmationProcessing = c.MovementConfirmationProcessing;
+            e.MovementConfirmationProcessed = c.MovementConfirmationProcessed;
+            e.MovementConfirmationDescription = c.MovementConfirmationDescription;
+            e.MovementConfirmationCreatedBy = c.MovementConfirmationCreatedBy;
+            e.MovementConfirmationCreatedAt = c.MovementConfirmationCreatedAt;
+            e.MovementConfirmationUpdatedBy = c.MovementConfirmationUpdatedBy;
+            e.MovementConfirmationUpdatedAt = c.MovementConfirmationUpdatedAt;
+            e.MovementConfirmationActive = c.MovementConfirmationActive;
+            e.MovementConfirmationDeleted = c.MovementConfirmationDeleted;
             e.CommandId = c.CommandId;
 
 
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = DateTime.Now;
-			var movementVersion = c.MovementVersion;
+			var movementConfirmationVersion = c.MovementConfirmationVersion;
 
 
             return e;
@@ -137,40 +144,54 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected virtual IMovementConfirmationLineMvoStateMergePatched Map(IMergePatchMovementConfirmationLineMvo c)
         {
-			var stateEventId = new MovementConfirmationLineMvoStateEventId(c.MovementConfirmationLineId, c.MovementVersion);
+			var stateEventId = new MovementConfirmationLineMvoStateEventId(c.MovementConfirmationLineId, c.MovementConfirmationVersion);
             IMovementConfirmationLineMvoStateMergePatched e = NewMovementConfirmationLineMvoStateMergePatched(stateEventId);
 
+            e.MovementLineNumber = c.MovementLineNumber;
             e.TargetQuantity = c.TargetQuantity;
             e.ConfirmedQuantity = c.ConfirmedQuantity;
             e.DifferenceQuantity = c.DifferenceQuantity;
             e.ScrappedQuantity = c.ScrappedQuantity;
+            e.Description = c.Description;
+            e.Processed = c.Processed;
             e.Version = c.Version;
             e.Active = c.Active;
-            e.MovementDocumentTypeId = c.MovementDocumentTypeId;
+            e.MovementConfirmationDocumentTypeId = c.MovementConfirmationDocumentTypeId;
             NewMovementConfirmationLineMvoDocumentActionCommandAndExecute(c, _state, e);
-            e.MovementMovementTypeId = c.MovementMovementTypeId;
-            e.MovementDescription = c.MovementDescription;
-            e.MovementCreatedBy = c.MovementCreatedBy;
-            e.MovementCreatedAt = c.MovementCreatedAt;
-            e.MovementUpdatedBy = c.MovementUpdatedBy;
-            e.MovementUpdatedAt = c.MovementUpdatedAt;
-            e.MovementActive = c.MovementActive;
-            e.MovementDeleted = c.MovementDeleted;
+            e.MovementConfirmationMovementDocumentNumber = c.MovementConfirmationMovementDocumentNumber;
+            e.MovementConfirmationIsApproved = c.MovementConfirmationIsApproved;
+            e.MovementConfirmationApprovalAmount = c.MovementConfirmationApprovalAmount;
+            e.MovementConfirmationProcessing = c.MovementConfirmationProcessing;
+            e.MovementConfirmationProcessed = c.MovementConfirmationProcessed;
+            e.MovementConfirmationDescription = c.MovementConfirmationDescription;
+            e.MovementConfirmationCreatedBy = c.MovementConfirmationCreatedBy;
+            e.MovementConfirmationCreatedAt = c.MovementConfirmationCreatedAt;
+            e.MovementConfirmationUpdatedBy = c.MovementConfirmationUpdatedBy;
+            e.MovementConfirmationUpdatedAt = c.MovementConfirmationUpdatedAt;
+            e.MovementConfirmationActive = c.MovementConfirmationActive;
+            e.MovementConfirmationDeleted = c.MovementConfirmationDeleted;
+            e.IsPropertyMovementLineNumberRemoved = c.IsPropertyMovementLineNumberRemoved;
             e.IsPropertyTargetQuantityRemoved = c.IsPropertyTargetQuantityRemoved;
             e.IsPropertyConfirmedQuantityRemoved = c.IsPropertyConfirmedQuantityRemoved;
             e.IsPropertyDifferenceQuantityRemoved = c.IsPropertyDifferenceQuantityRemoved;
             e.IsPropertyScrappedQuantityRemoved = c.IsPropertyScrappedQuantityRemoved;
+            e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
+            e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
-            e.IsPropertyMovementDocumentTypeIdRemoved = c.IsPropertyMovementDocumentTypeIdRemoved;
-            e.IsPropertyMovementMovementTypeIdRemoved = c.IsPropertyMovementMovementTypeIdRemoved;
-            e.IsPropertyMovementDescriptionRemoved = c.IsPropertyMovementDescriptionRemoved;
-            e.IsPropertyMovementCreatedByRemoved = c.IsPropertyMovementCreatedByRemoved;
-            e.IsPropertyMovementCreatedAtRemoved = c.IsPropertyMovementCreatedAtRemoved;
-            e.IsPropertyMovementUpdatedByRemoved = c.IsPropertyMovementUpdatedByRemoved;
-            e.IsPropertyMovementUpdatedAtRemoved = c.IsPropertyMovementUpdatedAtRemoved;
-            e.IsPropertyMovementActiveRemoved = c.IsPropertyMovementActiveRemoved;
-            e.IsPropertyMovementDeletedRemoved = c.IsPropertyMovementDeletedRemoved;
+            e.IsPropertyMovementConfirmationDocumentTypeIdRemoved = c.IsPropertyMovementConfirmationDocumentTypeIdRemoved;
+            e.IsPropertyMovementConfirmationMovementDocumentNumberRemoved = c.IsPropertyMovementConfirmationMovementDocumentNumberRemoved;
+            e.IsPropertyMovementConfirmationIsApprovedRemoved = c.IsPropertyMovementConfirmationIsApprovedRemoved;
+            e.IsPropertyMovementConfirmationApprovalAmountRemoved = c.IsPropertyMovementConfirmationApprovalAmountRemoved;
+            e.IsPropertyMovementConfirmationProcessingRemoved = c.IsPropertyMovementConfirmationProcessingRemoved;
+            e.IsPropertyMovementConfirmationProcessedRemoved = c.IsPropertyMovementConfirmationProcessedRemoved;
+            e.IsPropertyMovementConfirmationDescriptionRemoved = c.IsPropertyMovementConfirmationDescriptionRemoved;
+            e.IsPropertyMovementConfirmationCreatedByRemoved = c.IsPropertyMovementConfirmationCreatedByRemoved;
+            e.IsPropertyMovementConfirmationCreatedAtRemoved = c.IsPropertyMovementConfirmationCreatedAtRemoved;
+            e.IsPropertyMovementConfirmationUpdatedByRemoved = c.IsPropertyMovementConfirmationUpdatedByRemoved;
+            e.IsPropertyMovementConfirmationUpdatedAtRemoved = c.IsPropertyMovementConfirmationUpdatedAtRemoved;
+            e.IsPropertyMovementConfirmationActiveRemoved = c.IsPropertyMovementConfirmationActiveRemoved;
+            e.IsPropertyMovementConfirmationDeletedRemoved = c.IsPropertyMovementConfirmationDeletedRemoved;
 
             e.CommandId = c.CommandId;
 
@@ -178,7 +199,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = DateTime.Now;
 
-			var movementVersion = c.MovementVersion;
+			var movementConfirmationVersion = c.MovementConfirmationVersion;
 
 
             return e;
@@ -186,7 +207,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected virtual IMovementConfirmationLineMvoStateDeleted Map(IDeleteMovementConfirmationLineMvo c)
         {
-			var stateEventId = new MovementConfirmationLineMvoStateEventId(c.MovementConfirmationLineId, c.MovementVersion);
+			var stateEventId = new MovementConfirmationLineMvoStateEventId(c.MovementConfirmationLineId, c.MovementConfirmationVersion);
             IMovementConfirmationLineMvoStateDeleted e = NewMovementConfirmationLineMvoStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -203,7 +224,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
         {
             var pCommandHandler = this.MovementConfirmationLineMvoDocumentActionCommandHandler;
             var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.MovementDocumentStatusId, SetState = p => e.MovementDocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.MovementConfirmationDocumentStatusId, SetState = p => e.MovementConfirmationDocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
             pCommandHandler.Execute(pCmd);
         }
 
@@ -211,7 +232,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
         {
             var pCommandHandler = this.MovementConfirmationLineMvoDocumentActionCommandHandler;
             var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.MovementDocumentStatusId, SetState = p => e.MovementDocumentStatusId = p, OuterCommandType = CommandType.Create };
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.MovementConfirmationDocumentStatusId, SetState = p => e.MovementConfirmationDocumentStatusId = p, OuterCommandType = CommandType.Create };
             pCommandHandler.Execute(pCmd);
         }
 
@@ -239,7 +260,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected MovementConfirmationLineMvoStateCreated NewMovementConfirmationLineMvoStateCreated(string commandId, string requesterId)
         {
-            var stateEventId = new MovementConfirmationLineMvoStateEventId(_state.MovementConfirmationLineId, ((IMovementConfirmationLineMvoStateProperties)_state).MovementVersion);
+            var stateEventId = new MovementConfirmationLineMvoStateEventId(_state.MovementConfirmationLineId, ((IMovementConfirmationLineMvoStateProperties)_state).MovementConfirmationVersion);
             var e = NewMovementConfirmationLineMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -252,7 +273,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected MovementConfirmationLineMvoStateMergePatched NewMovementConfirmationLineMvoStateMergePatched(string commandId, string requesterId)
         {
-            var stateEventId = new MovementConfirmationLineMvoStateEventId(_state.MovementConfirmationLineId, ((IMovementConfirmationLineMvoStateProperties)_state).MovementVersion);
+            var stateEventId = new MovementConfirmationLineMvoStateEventId(_state.MovementConfirmationLineId, ((IMovementConfirmationLineMvoStateProperties)_state).MovementConfirmationVersion);
             var e = NewMovementConfirmationLineMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -266,7 +287,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected MovementConfirmationLineMvoStateDeleted NewMovementConfirmationLineMvoStateDeleted(string commandId, string requesterId)
         {
-            var stateEventId = new MovementConfirmationLineMvoStateEventId(_state.MovementConfirmationLineId, ((IMovementConfirmationLineMvoStateProperties)_state).MovementVersion);
+            var stateEventId = new MovementConfirmationLineMvoStateEventId(_state.MovementConfirmationLineId, ((IMovementConfirmationLineMvoStateProperties)_state).MovementConfirmationVersion);
             var e = NewMovementConfirmationLineMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;

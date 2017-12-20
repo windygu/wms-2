@@ -214,15 +214,6 @@
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="movementConfirmationLineStateDao" type="Dddml.Wms.Domain.Movement.NHibernate.NHibernateMovementConfirmationLineStateDao, Dddml.Wms.Services">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
-  </object>
-
-  <object id="movementConfirmationLineStateEventDao" type="Dddml.Wms.Domain.Movement.NHibernate.NHibernateMovementConfirmationLineStateEventDao, Dddml.Wms.Services">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-  </object>
-
 
   <object id="movementStateRepository" type="Dddml.Wms.Domain.Movement.NHibernate.NHibernateMovementStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -242,6 +233,37 @@
     <constructor-arg ref="movementEventStore"/>
     <constructor-arg ref="movementStateRepository"/>
     <constructor-arg ref="movementStateQueryRepository"/>
+  </object>
+
+
+  <object id="movementConfirmationLineStateDao" type="Dddml.Wms.Domain.MovementConfirmation.NHibernate.NHibernateMovementConfirmationLineStateDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="movementConfirmationLineStateEventDao" type="Dddml.Wms.Domain.MovementConfirmation.NHibernate.NHibernateMovementConfirmationLineStateEventDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+
+  <object id="movementConfirmationStateRepository" type="Dddml.Wms.Domain.MovementConfirmation.NHibernate.NHibernateMovementConfirmationStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="movementConfirmationStateQueryRepository" type="Dddml.Wms.Domain.MovementConfirmation.NHibernate.NHibernateMovementConfirmationStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="movementConfirmationEventStore" type="Dddml.Wms.Domain.MovementConfirmation.NHibernate.NHibernateMovementConfirmationEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="movementConfirmationApplicationService" type="Dddml.Wms.Domain.MovementConfirmation.NHibernate.MovementConfirmationApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="movementConfirmationEventStore"/>
+    <constructor-arg ref="movementConfirmationStateRepository"/>
+    <constructor-arg ref="movementConfirmationStateQueryRepository"/>
   </object>
 
 

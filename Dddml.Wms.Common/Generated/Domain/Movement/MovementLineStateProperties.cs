@@ -18,6 +18,20 @@ namespace Dddml.Wms.Domain.Movement
 
 		public virtual decimal MovementQuantity { get; set; }
 
+		public virtual string ProductId { get; set; }
+
+		public virtual string LocatorIdFrom { get; set; }
+
+		public virtual string LocatorIdTo { get; set; }
+
+		public virtual string AttributeSetInstanceIdFrom { get; set; }
+
+		public virtual string AttributeSetInstanceIdTo { get; set; }
+
+		public virtual bool Processed { get; set; }
+
+		public virtual string ReversalLineNumber { get; set; }
+
 		public virtual long Version { get; set; }
 
 		public virtual bool Active { get; set; }

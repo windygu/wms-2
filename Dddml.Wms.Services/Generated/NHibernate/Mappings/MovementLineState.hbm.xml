@@ -13,6 +13,13 @@
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
     <property name="MovementQuantity" ></property>
+    <property name="ProductId" ></property>
+    <property name="LocatorIdFrom" ></property>
+    <property name="LocatorIdTo" ></property>
+    <property name="AttributeSetInstanceIdFrom" ></property>
+    <property name="AttributeSetInstanceIdTo" ></property>
+    <property name="Processed" ></property>
+    <property name="ReversalLineNumber" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>

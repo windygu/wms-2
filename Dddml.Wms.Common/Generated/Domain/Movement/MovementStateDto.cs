@@ -33,12 +33,6 @@ namespace Dddml.Wms.Domain.Movement
             set;
         }
 
-        public virtual string MovementTypeId
-        {
-            get;
-            set;
-        }
-
         public virtual string Description
         {
             get;
@@ -93,25 +87,12 @@ namespace Dddml.Wms.Domain.Movement
             set { this.MovementLines = value.Select(e => ((MovementLineStateDto)e)).ToArray(); }
         }
 
-        public virtual MovementConfirmationLineStateDto[] MovementConfirmationLines
-        {
-            get;
-            set;
-        }
-
-        IMovementConfirmationLineStateDto[] IMovementStateDto.MovementConfirmationLines
-        {
-            get { return this.MovementConfirmationLines; }
-            set { this.MovementConfirmationLines = value.Select(e => ((MovementConfirmationLineStateDto)e)).ToArray(); }
-        }
-
         public virtual IMovementState ToMovementState()
         {
             var state = new MovementState(true);
             state.DocumentNumber = this.DocumentNumber;
             state.DocumentTypeId = this.DocumentTypeId;
             state.DocumentStatusId = this.DocumentStatusId;
-            state.MovementTypeId = this.MovementTypeId;
             state.Description = this.Description;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
@@ -120,7 +101,6 @@ namespace Dddml.Wms.Domain.Movement
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
             if (this.MovementLines != null) { foreach (var s in this.MovementLines) { state.MovementLines.AddToSave(s.ToMovementLineState()); } };
-            if (this.MovementConfirmationLines != null) { foreach (var s in this.MovementConfirmationLines) { state.MovementConfirmationLines.AddToSave(s.ToMovementConfirmationLineState()); } };
 
             return state;
         }

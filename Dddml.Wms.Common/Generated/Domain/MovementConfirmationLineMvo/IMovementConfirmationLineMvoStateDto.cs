@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.MovementConfirmationLineMvo;
-using Dddml.Wms.Domain.Movement;
+using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
@@ -17,6 +17,12 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
     {
 
         MovementConfirmationLineIdDto MovementConfirmationLineId
+        {
+            get;
+            set;
+        }
+
+        string MovementLineNumber
         {
             get;
             set;
@@ -46,6 +52,18 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set;
         }
 
+        string Description
+        {
+            get;
+            set;
+        }
+
+        bool? Processed
+        {
+            get;
+            set;
+        }
+
         long? Version
         {
             get;
@@ -58,67 +76,91 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set;
         }
 
-        string MovementDocumentTypeId
+        string MovementConfirmationDocumentTypeId
         {
             get;
             set;
         }
 
-        string MovementDocumentStatusId
+        string MovementConfirmationDocumentStatusId
         {
             get;
             set;
         }
 
-        string MovementMovementTypeId
+        string MovementConfirmationMovementDocumentNumber
         {
             get;
             set;
         }
 
-        string MovementDescription
+        bool? MovementConfirmationIsApproved
         {
             get;
             set;
         }
 
-        string MovementCreatedBy
+        decimal? MovementConfirmationApprovalAmount
         {
             get;
             set;
         }
 
-        DateTime? MovementCreatedAt
+        string MovementConfirmationProcessing
         {
             get;
             set;
         }
 
-        string MovementUpdatedBy
+        bool? MovementConfirmationProcessed
         {
             get;
             set;
         }
 
-        DateTime? MovementUpdatedAt
+        string MovementConfirmationDescription
         {
             get;
             set;
         }
 
-        bool? MovementActive
+        string MovementConfirmationCreatedBy
         {
             get;
             set;
         }
 
-        bool? MovementDeleted
+        DateTime? MovementConfirmationCreatedAt
         {
             get;
             set;
         }
 
-        long? MovementVersion
+        string MovementConfirmationUpdatedBy
+        {
+            get;
+            set;
+        }
+
+        DateTime? MovementConfirmationUpdatedAt
+        {
+            get;
+            set;
+        }
+
+        bool? MovementConfirmationActive
+        {
+            get;
+            set;
+        }
+
+        bool? MovementConfirmationDeleted
+        {
+            get;
+            set;
+        }
+
+        long? MovementConfirmationVersion
         {
             get;
             set;

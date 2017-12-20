@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo;
 
-import org.dddml.wms.domain.movement.MovementConfirmationLineIdDto;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.MovementConfirmationLineIdDto;
+import org.dddml.wms.domain.movementconfirmation.*;
 import org.dddml.wms.domain.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,9 +11,9 @@ public class MovementConfirmationLineMvoStateEventIdFlattenedDto
 
 
     public static final String[] propertyNames = new String[]{
-            "movementConfirmationLineIdMovementDocumentNumber",
+            "movementConfirmationLineIdMovementConfirmationDocumentNumber",
             "movementConfirmationLineIdLineNumber",
-            "movementVersion",
+            "movementConfirmationVersion",
         };
 
     public static final String[] propertyTypes = new String[]{
@@ -53,14 +53,14 @@ public class MovementConfirmationLineMvoStateEventIdFlattenedDto
         return this.value.toMovementConfirmationLineMvoStateEventId();
     }
 
-    public String getMovementConfirmationLineIdMovementDocumentNumber()
+    public String getMovementConfirmationLineIdMovementConfirmationDocumentNumber()
     {
-        return this.value.getMovementConfirmationLineId().getMovementDocumentNumber();
+        return this.value.getMovementConfirmationLineId().getMovementConfirmationDocumentNumber();
     }
 
-    public void setMovementConfirmationLineIdMovementDocumentNumber(String movementConfirmationLineIdMovementDocumentNumber)
+    public void setMovementConfirmationLineIdMovementConfirmationDocumentNumber(String movementConfirmationLineIdMovementConfirmationDocumentNumber)
     {
-        this.value.getMovementConfirmationLineId().setMovementDocumentNumber(movementConfirmationLineIdMovementDocumentNumber);
+        this.value.getMovementConfirmationLineId().setMovementConfirmationDocumentNumber(movementConfirmationLineIdMovementConfirmationDocumentNumber);
     }
 
     public String getMovementConfirmationLineIdLineNumber()
@@ -73,14 +73,14 @@ public class MovementConfirmationLineMvoStateEventIdFlattenedDto
         this.value.getMovementConfirmationLineId().setLineNumber(movementConfirmationLineIdLineNumber);
     }
 
-    public Long getMovementVersion()
+    public Long getMovementConfirmationVersion()
     {
-        return this.value.getMovementVersion();
+        return this.value.getMovementConfirmationVersion();
     }
 
-    public void setMovementVersion(Long movementVersion)
+    public void setMovementConfirmationVersion(Long movementConfirmationVersion)
     {
-        this.value.setMovementVersion(movementVersion);
+        this.value.setMovementConfirmationVersion(movementConfirmationVersion);
     }
 
 

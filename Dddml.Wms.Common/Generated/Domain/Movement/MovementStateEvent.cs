@@ -27,8 +27,6 @@ namespace Dddml.Wms.Domain.Movement
 
 		public virtual string DocumentStatusId { get; set; }
 
-		public virtual string MovementTypeId { get; set; }
-
 		public virtual string Description { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -117,33 +115,6 @@ namespace Dddml.Wms.Domain.Movement
 		}
 
 
-		protected IMovementConfirmationLineStateEventDao MovementConfirmationLineStateEventDao
-		{
-			get { return ApplicationContext.Current["MovementConfirmationLineStateEventDao"] as IMovementConfirmationLineStateEventDao; }
-		}
-
-        protected MovementConfirmationLineStateEventId NewMovementConfirmationLineStateEventId(string lineNumber)
-        {
-            var stateEventId = new MovementConfirmationLineStateEventId(this.StateEventId.DocumentNumber, lineNumber, this.StateEventId.Version);
-            return stateEventId;
-        }
-
-
-        protected void ThrowOnInconsistentEventIds(IMovementConfirmationLineStateEvent e)
-        {
-            ThrowOnInconsistentEventIds(this, e);
-        }
-
-		public static void ThrowOnInconsistentEventIds(IMovementStateEvent oe, IMovementConfirmationLineStateEvent e)
-		{
-			if (!oe.StateEventId.DocumentNumber.Equals(e.StateEventId.MovementDocumentNumber))
-			{ 
-				throw DomainError.Named("inconsistentEventIds", "Outer Id DocumentNumber {0} but inner id MovementDocumentNumber {1}", 
-					oe.StateEventId.DocumentNumber, e.StateEventId.MovementDocumentNumber);
-			}
-		}
-
-
 
         string IStateEventDto.StateEventType
         {
@@ -214,63 +185,10 @@ namespace Dddml.Wms.Domain.Movement
             return stateEvent;
         }
 
-		private Dictionary<MovementConfirmationLineStateEventId, IMovementConfirmationLineStateCreated> _movementConfirmationLineEvents = new Dictionary<MovementConfirmationLineStateEventId, IMovementConfirmationLineStateCreated>();
-        
-        private IEnumerable<IMovementConfirmationLineStateCreated> _readOnlyMovementConfirmationLineEvents;
-
-        public virtual IEnumerable<IMovementConfirmationLineStateCreated> MovementConfirmationLineEvents
-        {
-            get
-            {
-                if (!StateEventReadOnly)
-                {
-                    return this._movementConfirmationLineEvents.Values;
-                }
-                else
-                {
-                    if (_readOnlyMovementConfirmationLineEvents != null) { return _readOnlyMovementConfirmationLineEvents; }
-                    var eventDao = MovementConfirmationLineStateEventDao;
-                    var eL = new List<IMovementConfirmationLineStateCreated>();
-                    foreach (var e in eventDao.FindByMovementStateEventId(this.StateEventId))
-                    {
-                        e.ReadOnly = true;
-                        eL.Add((IMovementConfirmationLineStateCreated)e);
-                    }
-                    return (_readOnlyMovementConfirmationLineEvents = eL);
-                }
-            }
-            set 
-            {
-                if (value != null)
-                {
-                    foreach (var e in value)
-                    {
-                        AddMovementConfirmationLineEvent(e);
-                    }
-                }
-                else { this._movementConfirmationLineEvents.Clear(); }
-            }
-        }
-    
-		public virtual void AddMovementConfirmationLineEvent(IMovementConfirmationLineStateCreated e)
-		{
-			ThrowOnInconsistentEventIds(e);
-			this._movementConfirmationLineEvents[e.StateEventId] = e;
-		}
-
-        public virtual IMovementConfirmationLineStateCreated NewMovementConfirmationLineStateCreated(string lineNumber)
-        {
-            var stateEvent = new MovementConfirmationLineStateCreated(NewMovementConfirmationLineStateEventId(lineNumber));
-            return stateEvent;
-        }
-
 		public virtual void Save ()
 		{
 			foreach (IMovementLineStateCreated e in this.MovementLineEvents) {
 				MovementLineStateEventDao.Save(e);
-			}
-			foreach (IMovementConfirmationLineStateCreated e in this.MovementConfirmationLineEvents) {
-				MovementConfirmationLineStateEventDao.Save(e);
 			}
 		}
 
@@ -287,8 +205,6 @@ namespace Dddml.Wms.Domain.Movement
 		public virtual bool IsPropertyDocumentTypeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyDocumentStatusIdRemoved { get; set; }
-
-		public virtual bool IsPropertyMovementTypeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -365,75 +281,10 @@ namespace Dddml.Wms.Domain.Movement
             return stateEvent;
         }
 
-		private Dictionary<MovementConfirmationLineStateEventId, IMovementConfirmationLineStateEvent> _movementConfirmationLineEvents = new Dictionary<MovementConfirmationLineStateEventId, IMovementConfirmationLineStateEvent>();
-
-        private IEnumerable<IMovementConfirmationLineStateEvent> _readOnlyMovementConfirmationLineEvents;
-        
-        public virtual IEnumerable<IMovementConfirmationLineStateEvent> MovementConfirmationLineEvents
-        {
-            get
-            {
-                if (!StateEventReadOnly)
-                {
-                    return this._movementConfirmationLineEvents.Values;
-                }
-                else
-                {
-                    if (_readOnlyMovementConfirmationLineEvents != null) { return _readOnlyMovementConfirmationLineEvents; }
-                    var eventDao = MovementConfirmationLineStateEventDao;
-                    var eL = new List<IMovementConfirmationLineStateEvent>();
-                    foreach (var e in eventDao.FindByMovementStateEventId(this.StateEventId))
-                    {
-                        e.ReadOnly = true;
-                        eL.Add((IMovementConfirmationLineStateEvent)e);
-                    }
-                    return (_readOnlyMovementConfirmationLineEvents = eL);
-                }
-            }
-            set 
-            {
-                if (value != null)
-                {
-                    foreach (var e in value)
-                    {
-                        AddMovementConfirmationLineEvent(e);
-                    }
-                }
-                else { this._movementConfirmationLineEvents.Clear(); }
-            }
-        }
-
-		public virtual void AddMovementConfirmationLineEvent(IMovementConfirmationLineStateEvent e)
-		{
-			ThrowOnInconsistentEventIds(e);
-			this._movementConfirmationLineEvents[e.StateEventId] = e;
-		}
-
-        public virtual IMovementConfirmationLineStateCreated NewMovementConfirmationLineStateCreated(string lineNumber)
-        {
-            var stateEvent = new MovementConfirmationLineStateCreated(NewMovementConfirmationLineStateEventId(lineNumber));
-            return stateEvent;
-        }
-
-        public virtual IMovementConfirmationLineStateMergePatched NewMovementConfirmationLineStateMergePatched(string lineNumber)
-        {
-            var stateEvent = new MovementConfirmationLineStateMergePatched(NewMovementConfirmationLineStateEventId(lineNumber));
-            return stateEvent;
-        }
-
-        public virtual IMovementConfirmationLineStateRemoved NewMovementConfirmationLineStateRemoved(string lineNumber)
-        {
-            var stateEvent = new MovementConfirmationLineStateRemoved(NewMovementConfirmationLineStateEventId(lineNumber));
-            return stateEvent;
-        }
-
 		public virtual void Save ()
 		{
 			foreach (IMovementLineStateEvent e in this.MovementLineEvents) {
 				MovementLineStateEventDao.Save(e);
-			}
-			foreach (IMovementConfirmationLineStateEvent e in this.MovementConfirmationLineEvents) {
-				MovementConfirmationLineStateEventDao.Save(e);
 			}
 		}
 
@@ -510,63 +361,10 @@ namespace Dddml.Wms.Domain.Movement
             return stateEvent;
         }
 
-		private Dictionary<MovementConfirmationLineStateEventId, IMovementConfirmationLineStateRemoved> _movementConfirmationLineEvents = new Dictionary<MovementConfirmationLineStateEventId, IMovementConfirmationLineStateRemoved>();
-		
-        private IEnumerable<IMovementConfirmationLineStateRemoved> _readOnlyMovementConfirmationLineEvents;
-
-        public virtual IEnumerable<IMovementConfirmationLineStateRemoved> MovementConfirmationLineEvents
-        {
-            get
-            {
-                if (!StateEventReadOnly)
-                {
-                    return this._movementConfirmationLineEvents.Values;
-                }
-                else
-                {
-                    if (_readOnlyMovementConfirmationLineEvents != null) { return _readOnlyMovementConfirmationLineEvents; }
-                    var eventDao = MovementConfirmationLineStateEventDao;
-                    var eL = new List<IMovementConfirmationLineStateRemoved>();
-                    foreach (var e in eventDao.FindByMovementStateEventId(this.StateEventId))
-                    {
-                        e.ReadOnly = true;
-                        eL.Add((IMovementConfirmationLineStateRemoved)e);
-                    }
-                    return (_readOnlyMovementConfirmationLineEvents = eL);
-                }
-            }
-            set 
-            {
-                if (value != null)
-                {
-                    foreach (var e in value)
-                    {
-                        AddMovementConfirmationLineEvent(e);
-                    }
-                }
-                else { this._movementConfirmationLineEvents.Clear(); }
-            }
-        }
-	
-		public virtual void AddMovementConfirmationLineEvent(IMovementConfirmationLineStateRemoved e)
-		{
-			ThrowOnInconsistentEventIds(e);
-			this._movementConfirmationLineEvents[e.StateEventId] = e;
-		}
-
-        public virtual IMovementConfirmationLineStateRemoved NewMovementConfirmationLineStateRemoved(string lineNumber)
-        {
-            var stateEvent = new MovementConfirmationLineStateRemoved(NewMovementConfirmationLineStateEventId(lineNumber));
-            return stateEvent;
-        }
-
 		public virtual void Save ()
 		{
 			foreach (IMovementLineStateRemoved e in this.MovementLineEvents) {
 				MovementLineStateEventDao.Save(e);
-			}
-			foreach (IMovementConfirmationLineStateRemoved e in this.MovementConfirmationLineEvents) {
-				MovementConfirmationLineStateEventDao.Save(e);
 			}
 		}
 

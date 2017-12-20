@@ -46,8 +46,6 @@ namespace Dddml.Wms.Domain.Movement
 
 		public virtual string DocumentStatusId { get; set; }
 
-		public virtual string MovementTypeId { get; set; }
-
 		public virtual string Description { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -116,25 +114,6 @@ namespace Dddml.Wms.Domain.Movement
             set 
             {
                 this.IsPropertyDocumentStatusIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyMovementTypeIdRemoved { get; set; }
-
-        bool IMovementStateMergePatched.IsPropertyMovementTypeIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyMovementTypeIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyMovementTypeIdRemoved = value;
             }
         }
 
@@ -299,114 +278,6 @@ namespace Dddml.Wms.Domain.Movement
         IMovementLineStateRemoved IMovementStateDeleted.NewMovementLineStateRemoved(string lineNumber)
         {
             return NewMovementLineStateRemoved(lineNumber);
-        }
-
-
-
-        private MovementConfirmationLineStateCreatedOrMergePatchedOrRemovedDtos _movementConfirmationLineEvents = new MovementConfirmationLineStateCreatedOrMergePatchedOrRemovedDtos();
-
-        public virtual MovementConfirmationLineStateCreatedOrMergePatchedOrRemovedDto[] MovementConfirmationLineEvents
-        {
-            get
-            {
-                return _movementConfirmationLineEvents.ToArray();
-            }
-            set
-            {
-                _movementConfirmationLineEvents.Clear();
-                _movementConfirmationLineEvents.AddRange(value);
-            }
-        }
-
-
-
-        private MovementConfirmationLineStateEventIdDto NewMovementConfirmationLineStateEventId(string lineNumber)
-        {
-            var eId = new MovementConfirmationLineStateEventIdDto();
-            eId.MovementDocumentNumber = this.StateEventId.DocumentNumber;
-            eId.LineNumber = lineNumber;
-            eId.MovementVersion = this.StateEventId.Version;
-            return eId;
-        }
-
-        public virtual MovementConfirmationLineStateCreatedDto NewMovementConfirmationLineStateCreated(string lineNumber)
-        {
-            var e = new MovementConfirmationLineStateCreatedDto();
-            var eId = NewMovementConfirmationLineStateEventId(lineNumber);
-            e.StateEventId = eId;
-            return e;
-        }
-
-        public virtual MovementConfirmationLineStateMergePatchedDto NewMovementConfirmationLineStateMergePatched(string lineNumber)
-        {
-            var e = new MovementConfirmationLineStateMergePatchedDto();
-            var eId = NewMovementConfirmationLineStateEventId(lineNumber);
-            e.StateEventId = eId;
-            return e;
-        }
-
-        public virtual MovementConfirmationLineStateRemovedDto NewMovementConfirmationLineStateRemoved(string lineNumber)
-        {
-            var e = new MovementConfirmationLineStateRemovedDto();
-            var eId = NewMovementConfirmationLineStateEventId(lineNumber);
-            e.StateEventId = eId;
-            return e;
-        }
-
-        IEnumerable<IMovementConfirmationLineStateCreated> IMovementStateCreated.MovementConfirmationLineEvents
-        {
-            get { return this._movementConfirmationLineEvents; }
-        }
-
-        void IMovementStateCreated.AddMovementConfirmationLineEvent(IMovementConfirmationLineStateCreated e)
-        {
-            this._movementConfirmationLineEvents.AddMovementConfirmationLineEvent(e);
-        }
-
-        IMovementConfirmationLineStateCreated IMovementStateCreated.NewMovementConfirmationLineStateCreated(string lineNumber)
-        {
-            return NewMovementConfirmationLineStateCreated(lineNumber);
-        }
-
-        IEnumerable<IMovementConfirmationLineStateEvent> IMovementStateMergePatched.MovementConfirmationLineEvents
-        {
-            get { return this._movementConfirmationLineEvents; }
-        }
-
-        void IMovementStateMergePatched.AddMovementConfirmationLineEvent(IMovementConfirmationLineStateEvent e)
-        {
-            this._movementConfirmationLineEvents.AddMovementConfirmationLineEvent(e);
-        }
-
-        IMovementConfirmationLineStateCreated IMovementStateMergePatched.NewMovementConfirmationLineStateCreated(string lineNumber)
-        {
-            return NewMovementConfirmationLineStateCreated(lineNumber);
-        }
-
-        IMovementConfirmationLineStateMergePatched IMovementStateMergePatched.NewMovementConfirmationLineStateMergePatched(string lineNumber)
-        {
-            return NewMovementConfirmationLineStateMergePatched(lineNumber);
-        }
-
-        IMovementConfirmationLineStateRemoved IMovementStateMergePatched.NewMovementConfirmationLineStateRemoved(string lineNumber)
-        {
-            return NewMovementConfirmationLineStateRemoved(lineNumber);
-        }
-
-
-        IEnumerable<IMovementConfirmationLineStateRemoved> IMovementStateDeleted.MovementConfirmationLineEvents
-        {
-            get { return this._movementConfirmationLineEvents; }
-        }
-
-        void IMovementStateDeleted.AddMovementConfirmationLineEvent(IMovementConfirmationLineStateRemoved e)
-        {
-            this._movementConfirmationLineEvents.AddMovementConfirmationLineEvent(e);
-        }
-
-        IMovementConfirmationLineStateRemoved IMovementStateDeleted.NewMovementConfirmationLineStateRemoved(string lineNumber)
-        {
-            return NewMovementConfirmationLineStateRemoved(lineNumber);
         }
 
 

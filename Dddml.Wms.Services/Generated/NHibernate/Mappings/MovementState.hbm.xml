@@ -11,7 +11,6 @@
 
     <property name="DocumentTypeId" ></property>
     <property name="DocumentStatusId" ></property>
-    <property name="MovementTypeId" ></property>
     <property name="Description" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>

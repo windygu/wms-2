@@ -55,16 +55,6 @@ public class MovementStateEventDto extends AbstractStateEvent
         this.documentStatusId = documentStatusId;
     }
 
-    private String movementTypeId;
-
-    public String getMovementTypeId() {
-        return this.movementTypeId;
-    }
-
-    public void setMovementTypeId(String movementTypeId) {
-        this.movementTypeId = movementTypeId;
-    }
-
     private String description;
 
     public String getDescription() {
@@ -125,16 +115,6 @@ public class MovementStateEventDto extends AbstractStateEvent
         this.isPropertyDocumentStatusIdRemoved = removed;
     }
 
-    private Boolean isPropertyMovementTypeIdRemoved;
-
-    public Boolean getIsPropertyMovementTypeIdRemoved() {
-        return this.isPropertyMovementTypeIdRemoved;
-    }
-
-    public void setIsPropertyMovementTypeIdRemoved(Boolean removed) {
-        this.isPropertyMovementTypeIdRemoved = removed;
-    }
-
     private Boolean isPropertyDescriptionRemoved;
 
     public Boolean getIsPropertyDescriptionRemoved() {
@@ -164,17 +144,6 @@ public class MovementStateEventDto extends AbstractStateEvent
 
     public void setMovementLineEvents(MovementLineStateEventDto[] events) {
         this.movementLineEvents = events;
-    }
-
-
-    private MovementConfirmationLineStateEventDto[] movementConfirmationLineEvents;
-
-    public MovementConfirmationLineStateEventDto[] getMovementConfirmationLineEvents() {
-        return this.movementConfirmationLineEvents;
-    }
-
-    public void setMovementConfirmationLineEvents(MovementConfirmationLineStateEventDto[] events) {
-        this.movementConfirmationLineEvents = events;
     }
 
 

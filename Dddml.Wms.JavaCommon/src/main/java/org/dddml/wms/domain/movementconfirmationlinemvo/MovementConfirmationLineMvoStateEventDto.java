@@ -1,6 +1,6 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo;
 
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -28,12 +28,22 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
         getStateEventId().setMovementConfirmationLineId(movementConfirmationLineId);
     }
 
-    public Long getMovementVersion() {
-        return getStateEventId().getMovementVersion();
+    public Long getMovementConfirmationVersion() {
+        return getStateEventId().getMovementConfirmationVersion();
     }
     
-    public void getMovementVersion(Long movementVersion) {
-        getStateEventId().setMovementVersion(movementVersion);
+    public void getMovementConfirmationVersion(Long movementConfirmationVersion) {
+        getStateEventId().setMovementConfirmationVersion(movementConfirmationVersion);
+    }
+
+    private String movementLineNumber;
+
+    public String getMovementLineNumber() {
+        return this.movementLineNumber;
+    }
+
+    public void setMovementLineNumber(String movementLineNumber) {
+        this.movementLineNumber = movementLineNumber;
     }
 
     private BigDecimal targetQuantity;
@@ -76,6 +86,26 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
         this.scrappedQuantity = scrappedQuantity;
     }
 
+    private String description;
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    private Boolean processed;
+
+    public Boolean getProcessed() {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed) {
+        this.processed = processed;
+    }
+
     private Long version;
 
     public Long getVersion() {
@@ -96,104 +126,144 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
         this.active = active;
     }
 
-    private String movementDocumentTypeId;
+    private String movementConfirmationDocumentTypeId;
 
-    public String getMovementDocumentTypeId() {
-        return this.movementDocumentTypeId;
+    public String getMovementConfirmationDocumentTypeId() {
+        return this.movementConfirmationDocumentTypeId;
     }
 
-    public void setMovementDocumentTypeId(String movementDocumentTypeId) {
-        this.movementDocumentTypeId = movementDocumentTypeId;
+    public void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId) {
+        this.movementConfirmationDocumentTypeId = movementConfirmationDocumentTypeId;
     }
 
-    private String movementDocumentStatusId;
+    private String movementConfirmationDocumentStatusId;
 
-    public String getMovementDocumentStatusId() {
-        return this.movementDocumentStatusId;
+    public String getMovementConfirmationDocumentStatusId() {
+        return this.movementConfirmationDocumentStatusId;
     }
 
-    public void setMovementDocumentStatusId(String movementDocumentStatusId) {
-        this.movementDocumentStatusId = movementDocumentStatusId;
+    public void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId) {
+        this.movementConfirmationDocumentStatusId = movementConfirmationDocumentStatusId;
     }
 
-    private String movementMovementTypeId;
+    private String movementConfirmationMovementDocumentNumber;
 
-    public String getMovementMovementTypeId() {
-        return this.movementMovementTypeId;
+    public String getMovementConfirmationMovementDocumentNumber() {
+        return this.movementConfirmationMovementDocumentNumber;
     }
 
-    public void setMovementMovementTypeId(String movementMovementTypeId) {
-        this.movementMovementTypeId = movementMovementTypeId;
+    public void setMovementConfirmationMovementDocumentNumber(String movementConfirmationMovementDocumentNumber) {
+        this.movementConfirmationMovementDocumentNumber = movementConfirmationMovementDocumentNumber;
     }
 
-    private String movementDescription;
+    private Boolean movementConfirmationIsApproved;
 
-    public String getMovementDescription() {
-        return this.movementDescription;
+    public Boolean getMovementConfirmationIsApproved() {
+        return this.movementConfirmationIsApproved;
     }
 
-    public void setMovementDescription(String movementDescription) {
-        this.movementDescription = movementDescription;
+    public void setMovementConfirmationIsApproved(Boolean movementConfirmationIsApproved) {
+        this.movementConfirmationIsApproved = movementConfirmationIsApproved;
     }
 
-    private String movementCreatedBy;
+    private BigDecimal movementConfirmationApprovalAmount;
 
-    public String getMovementCreatedBy() {
-        return this.movementCreatedBy;
+    public BigDecimal getMovementConfirmationApprovalAmount() {
+        return this.movementConfirmationApprovalAmount;
     }
 
-    public void setMovementCreatedBy(String movementCreatedBy) {
-        this.movementCreatedBy = movementCreatedBy;
+    public void setMovementConfirmationApprovalAmount(BigDecimal movementConfirmationApprovalAmount) {
+        this.movementConfirmationApprovalAmount = movementConfirmationApprovalAmount;
     }
 
-    private Date movementCreatedAt;
+    private String movementConfirmationProcessing;
 
-    public Date getMovementCreatedAt() {
-        return this.movementCreatedAt;
+    public String getMovementConfirmationProcessing() {
+        return this.movementConfirmationProcessing;
     }
 
-    public void setMovementCreatedAt(Date movementCreatedAt) {
-        this.movementCreatedAt = movementCreatedAt;
+    public void setMovementConfirmationProcessing(String movementConfirmationProcessing) {
+        this.movementConfirmationProcessing = movementConfirmationProcessing;
     }
 
-    private String movementUpdatedBy;
+    private Boolean movementConfirmationProcessed;
 
-    public String getMovementUpdatedBy() {
-        return this.movementUpdatedBy;
+    public Boolean getMovementConfirmationProcessed() {
+        return this.movementConfirmationProcessed;
     }
 
-    public void setMovementUpdatedBy(String movementUpdatedBy) {
-        this.movementUpdatedBy = movementUpdatedBy;
+    public void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed) {
+        this.movementConfirmationProcessed = movementConfirmationProcessed;
     }
 
-    private Date movementUpdatedAt;
+    private String movementConfirmationDescription;
 
-    public Date getMovementUpdatedAt() {
-        return this.movementUpdatedAt;
+    public String getMovementConfirmationDescription() {
+        return this.movementConfirmationDescription;
     }
 
-    public void setMovementUpdatedAt(Date movementUpdatedAt) {
-        this.movementUpdatedAt = movementUpdatedAt;
+    public void setMovementConfirmationDescription(String movementConfirmationDescription) {
+        this.movementConfirmationDescription = movementConfirmationDescription;
     }
 
-    private Boolean movementActive;
+    private String movementConfirmationCreatedBy;
 
-    public Boolean getMovementActive() {
-        return this.movementActive;
+    public String getMovementConfirmationCreatedBy() {
+        return this.movementConfirmationCreatedBy;
     }
 
-    public void setMovementActive(Boolean movementActive) {
-        this.movementActive = movementActive;
+    public void setMovementConfirmationCreatedBy(String movementConfirmationCreatedBy) {
+        this.movementConfirmationCreatedBy = movementConfirmationCreatedBy;
     }
 
-    private Boolean movementDeleted;
+    private Date movementConfirmationCreatedAt;
 
-    public Boolean getMovementDeleted() {
-        return this.movementDeleted;
+    public Date getMovementConfirmationCreatedAt() {
+        return this.movementConfirmationCreatedAt;
     }
 
-    public void setMovementDeleted(Boolean movementDeleted) {
-        this.movementDeleted = movementDeleted;
+    public void setMovementConfirmationCreatedAt(Date movementConfirmationCreatedAt) {
+        this.movementConfirmationCreatedAt = movementConfirmationCreatedAt;
+    }
+
+    private String movementConfirmationUpdatedBy;
+
+    public String getMovementConfirmationUpdatedBy() {
+        return this.movementConfirmationUpdatedBy;
+    }
+
+    public void setMovementConfirmationUpdatedBy(String movementConfirmationUpdatedBy) {
+        this.movementConfirmationUpdatedBy = movementConfirmationUpdatedBy;
+    }
+
+    private Date movementConfirmationUpdatedAt;
+
+    public Date getMovementConfirmationUpdatedAt() {
+        return this.movementConfirmationUpdatedAt;
+    }
+
+    public void setMovementConfirmationUpdatedAt(Date movementConfirmationUpdatedAt) {
+        this.movementConfirmationUpdatedAt = movementConfirmationUpdatedAt;
+    }
+
+    private Boolean movementConfirmationActive;
+
+    public Boolean getMovementConfirmationActive() {
+        return this.movementConfirmationActive;
+    }
+
+    public void setMovementConfirmationActive(Boolean movementConfirmationActive) {
+        this.movementConfirmationActive = movementConfirmationActive;
+    }
+
+    private Boolean movementConfirmationDeleted;
+
+    public Boolean getMovementConfirmationDeleted() {
+        return this.movementConfirmationDeleted;
+    }
+
+    public void setMovementConfirmationDeleted(Boolean movementConfirmationDeleted) {
+        this.movementConfirmationDeleted = movementConfirmationDeleted;
     }
 
     private String createdBy;
@@ -214,6 +284,16 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    private Boolean isPropertyMovementLineNumberRemoved;
+
+    public Boolean getIsPropertyMovementLineNumberRemoved() {
+        return this.isPropertyMovementLineNumberRemoved;
+    }
+
+    public void setIsPropertyMovementLineNumberRemoved(Boolean removed) {
+        this.isPropertyMovementLineNumberRemoved = removed;
     }
 
     private Boolean isPropertyTargetQuantityRemoved;
@@ -256,6 +336,26 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
         this.isPropertyScrappedQuantityRemoved = removed;
     }
 
+    private Boolean isPropertyDescriptionRemoved;
+
+    public Boolean getIsPropertyDescriptionRemoved() {
+        return this.isPropertyDescriptionRemoved;
+    }
+
+    public void setIsPropertyDescriptionRemoved(Boolean removed) {
+        this.isPropertyDescriptionRemoved = removed;
+    }
+
+    private Boolean isPropertyProcessedRemoved;
+
+    public Boolean getIsPropertyProcessedRemoved() {
+        return this.isPropertyProcessedRemoved;
+    }
+
+    public void setIsPropertyProcessedRemoved(Boolean removed) {
+        this.isPropertyProcessedRemoved = removed;
+    }
+
     private Boolean isPropertyVersionRemoved;
 
     public Boolean getIsPropertyVersionRemoved() {
@@ -276,104 +376,144 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
         this.isPropertyActiveRemoved = removed;
     }
 
-    private Boolean isPropertyMovementDocumentTypeIdRemoved;
+    private Boolean isPropertyMovementConfirmationDocumentTypeIdRemoved;
 
-    public Boolean getIsPropertyMovementDocumentTypeIdRemoved() {
-        return this.isPropertyMovementDocumentTypeIdRemoved;
+    public Boolean getIsPropertyMovementConfirmationDocumentTypeIdRemoved() {
+        return this.isPropertyMovementConfirmationDocumentTypeIdRemoved;
     }
 
-    public void setIsPropertyMovementDocumentTypeIdRemoved(Boolean removed) {
-        this.isPropertyMovementDocumentTypeIdRemoved = removed;
+    public void setIsPropertyMovementConfirmationDocumentTypeIdRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationDocumentTypeIdRemoved = removed;
     }
 
-    private Boolean isPropertyMovementDocumentStatusIdRemoved;
+    private Boolean isPropertyMovementConfirmationDocumentStatusIdRemoved;
 
-    public Boolean getIsPropertyMovementDocumentStatusIdRemoved() {
-        return this.isPropertyMovementDocumentStatusIdRemoved;
+    public Boolean getIsPropertyMovementConfirmationDocumentStatusIdRemoved() {
+        return this.isPropertyMovementConfirmationDocumentStatusIdRemoved;
     }
 
-    public void setIsPropertyMovementDocumentStatusIdRemoved(Boolean removed) {
-        this.isPropertyMovementDocumentStatusIdRemoved = removed;
+    public void setIsPropertyMovementConfirmationDocumentStatusIdRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationDocumentStatusIdRemoved = removed;
     }
 
-    private Boolean isPropertyMovementMovementTypeIdRemoved;
+    private Boolean isPropertyMovementConfirmationMovementDocumentNumberRemoved;
 
-    public Boolean getIsPropertyMovementMovementTypeIdRemoved() {
-        return this.isPropertyMovementMovementTypeIdRemoved;
+    public Boolean getIsPropertyMovementConfirmationMovementDocumentNumberRemoved() {
+        return this.isPropertyMovementConfirmationMovementDocumentNumberRemoved;
     }
 
-    public void setIsPropertyMovementMovementTypeIdRemoved(Boolean removed) {
-        this.isPropertyMovementMovementTypeIdRemoved = removed;
+    public void setIsPropertyMovementConfirmationMovementDocumentNumberRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationMovementDocumentNumberRemoved = removed;
     }
 
-    private Boolean isPropertyMovementDescriptionRemoved;
+    private Boolean isPropertyMovementConfirmationIsApprovedRemoved;
 
-    public Boolean getIsPropertyMovementDescriptionRemoved() {
-        return this.isPropertyMovementDescriptionRemoved;
+    public Boolean getIsPropertyMovementConfirmationIsApprovedRemoved() {
+        return this.isPropertyMovementConfirmationIsApprovedRemoved;
     }
 
-    public void setIsPropertyMovementDescriptionRemoved(Boolean removed) {
-        this.isPropertyMovementDescriptionRemoved = removed;
+    public void setIsPropertyMovementConfirmationIsApprovedRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationIsApprovedRemoved = removed;
     }
 
-    private Boolean isPropertyMovementCreatedByRemoved;
+    private Boolean isPropertyMovementConfirmationApprovalAmountRemoved;
 
-    public Boolean getIsPropertyMovementCreatedByRemoved() {
-        return this.isPropertyMovementCreatedByRemoved;
+    public Boolean getIsPropertyMovementConfirmationApprovalAmountRemoved() {
+        return this.isPropertyMovementConfirmationApprovalAmountRemoved;
     }
 
-    public void setIsPropertyMovementCreatedByRemoved(Boolean removed) {
-        this.isPropertyMovementCreatedByRemoved = removed;
+    public void setIsPropertyMovementConfirmationApprovalAmountRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationApprovalAmountRemoved = removed;
     }
 
-    private Boolean isPropertyMovementCreatedAtRemoved;
+    private Boolean isPropertyMovementConfirmationProcessingRemoved;
 
-    public Boolean getIsPropertyMovementCreatedAtRemoved() {
-        return this.isPropertyMovementCreatedAtRemoved;
+    public Boolean getIsPropertyMovementConfirmationProcessingRemoved() {
+        return this.isPropertyMovementConfirmationProcessingRemoved;
     }
 
-    public void setIsPropertyMovementCreatedAtRemoved(Boolean removed) {
-        this.isPropertyMovementCreatedAtRemoved = removed;
+    public void setIsPropertyMovementConfirmationProcessingRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationProcessingRemoved = removed;
     }
 
-    private Boolean isPropertyMovementUpdatedByRemoved;
+    private Boolean isPropertyMovementConfirmationProcessedRemoved;
 
-    public Boolean getIsPropertyMovementUpdatedByRemoved() {
-        return this.isPropertyMovementUpdatedByRemoved;
+    public Boolean getIsPropertyMovementConfirmationProcessedRemoved() {
+        return this.isPropertyMovementConfirmationProcessedRemoved;
     }
 
-    public void setIsPropertyMovementUpdatedByRemoved(Boolean removed) {
-        this.isPropertyMovementUpdatedByRemoved = removed;
+    public void setIsPropertyMovementConfirmationProcessedRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationProcessedRemoved = removed;
     }
 
-    private Boolean isPropertyMovementUpdatedAtRemoved;
+    private Boolean isPropertyMovementConfirmationDescriptionRemoved;
 
-    public Boolean getIsPropertyMovementUpdatedAtRemoved() {
-        return this.isPropertyMovementUpdatedAtRemoved;
+    public Boolean getIsPropertyMovementConfirmationDescriptionRemoved() {
+        return this.isPropertyMovementConfirmationDescriptionRemoved;
     }
 
-    public void setIsPropertyMovementUpdatedAtRemoved(Boolean removed) {
-        this.isPropertyMovementUpdatedAtRemoved = removed;
+    public void setIsPropertyMovementConfirmationDescriptionRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationDescriptionRemoved = removed;
     }
 
-    private Boolean isPropertyMovementActiveRemoved;
+    private Boolean isPropertyMovementConfirmationCreatedByRemoved;
 
-    public Boolean getIsPropertyMovementActiveRemoved() {
-        return this.isPropertyMovementActiveRemoved;
+    public Boolean getIsPropertyMovementConfirmationCreatedByRemoved() {
+        return this.isPropertyMovementConfirmationCreatedByRemoved;
     }
 
-    public void setIsPropertyMovementActiveRemoved(Boolean removed) {
-        this.isPropertyMovementActiveRemoved = removed;
+    public void setIsPropertyMovementConfirmationCreatedByRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationCreatedByRemoved = removed;
     }
 
-    private Boolean isPropertyMovementDeletedRemoved;
+    private Boolean isPropertyMovementConfirmationCreatedAtRemoved;
 
-    public Boolean getIsPropertyMovementDeletedRemoved() {
-        return this.isPropertyMovementDeletedRemoved;
+    public Boolean getIsPropertyMovementConfirmationCreatedAtRemoved() {
+        return this.isPropertyMovementConfirmationCreatedAtRemoved;
     }
 
-    public void setIsPropertyMovementDeletedRemoved(Boolean removed) {
-        this.isPropertyMovementDeletedRemoved = removed;
+    public void setIsPropertyMovementConfirmationCreatedAtRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationCreatedAtRemoved = removed;
+    }
+
+    private Boolean isPropertyMovementConfirmationUpdatedByRemoved;
+
+    public Boolean getIsPropertyMovementConfirmationUpdatedByRemoved() {
+        return this.isPropertyMovementConfirmationUpdatedByRemoved;
+    }
+
+    public void setIsPropertyMovementConfirmationUpdatedByRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationUpdatedByRemoved = removed;
+    }
+
+    private Boolean isPropertyMovementConfirmationUpdatedAtRemoved;
+
+    public Boolean getIsPropertyMovementConfirmationUpdatedAtRemoved() {
+        return this.isPropertyMovementConfirmationUpdatedAtRemoved;
+    }
+
+    public void setIsPropertyMovementConfirmationUpdatedAtRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationUpdatedAtRemoved = removed;
+    }
+
+    private Boolean isPropertyMovementConfirmationActiveRemoved;
+
+    public Boolean getIsPropertyMovementConfirmationActiveRemoved() {
+        return this.isPropertyMovementConfirmationActiveRemoved;
+    }
+
+    public void setIsPropertyMovementConfirmationActiveRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationActiveRemoved = removed;
+    }
+
+    private Boolean isPropertyMovementConfirmationDeletedRemoved;
+
+    public Boolean getIsPropertyMovementConfirmationDeletedRemoved() {
+        return this.isPropertyMovementConfirmationDeletedRemoved;
+    }
+
+    public void setIsPropertyMovementConfirmationDeletedRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationDeletedRemoved = removed;
     }
 
 

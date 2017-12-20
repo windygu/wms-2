@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo;
 
 import java.util.Set;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -18,6 +18,10 @@ public interface MovementConfirmationLineMvoState
 
     void setMovementConfirmationLineId(MovementConfirmationLineId movementConfirmationLineId);
 
+    String getMovementLineNumber();
+
+    void setMovementLineNumber(String movementLineNumber);
+
     BigDecimal getTargetQuantity();
 
     void setTargetQuantity(BigDecimal targetQuantity);
@@ -33,6 +37,14 @@ public interface MovementConfirmationLineMvoState
     BigDecimal getScrappedQuantity();
 
     void setScrappedQuantity(BigDecimal scrappedQuantity);
+
+    String getDescription();
+
+    void setDescription(String description);
+
+    Boolean getProcessed();
+
+    void setProcessed(Boolean processed);
 
     Long getVersion();
 
@@ -62,49 +74,65 @@ public interface MovementConfirmationLineMvoState
 
     void setDeleted(Boolean deleted);
 
-    String getMovementDocumentTypeId();
+    String getMovementConfirmationDocumentTypeId();
 
-    void setMovementDocumentTypeId(String movementDocumentTypeId);
+    void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId);
 
-    String getMovementDocumentStatusId();
+    String getMovementConfirmationDocumentStatusId();
 
-    void setMovementDocumentStatusId(String movementDocumentStatusId);
+    void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId);
 
-    String getMovementMovementTypeId();
+    String getMovementConfirmationMovementDocumentNumber();
 
-    void setMovementMovementTypeId(String movementMovementTypeId);
+    void setMovementConfirmationMovementDocumentNumber(String movementConfirmationMovementDocumentNumber);
 
-    String getMovementDescription();
+    Boolean getMovementConfirmationIsApproved();
 
-    void setMovementDescription(String movementDescription);
+    void setMovementConfirmationIsApproved(Boolean movementConfirmationIsApproved);
 
-    Long getMovementVersion();
+    BigDecimal getMovementConfirmationApprovalAmount();
 
-    void setMovementVersion(Long movementVersion);
+    void setMovementConfirmationApprovalAmount(BigDecimal movementConfirmationApprovalAmount);
 
-    String getMovementCreatedBy();
+    String getMovementConfirmationProcessing();
 
-    void setMovementCreatedBy(String movementCreatedBy);
+    void setMovementConfirmationProcessing(String movementConfirmationProcessing);
 
-    Date getMovementCreatedAt();
+    Boolean getMovementConfirmationProcessed();
 
-    void setMovementCreatedAt(Date movementCreatedAt);
+    void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed);
 
-    String getMovementUpdatedBy();
+    String getMovementConfirmationDescription();
 
-    void setMovementUpdatedBy(String movementUpdatedBy);
+    void setMovementConfirmationDescription(String movementConfirmationDescription);
 
-    Date getMovementUpdatedAt();
+    Long getMovementConfirmationVersion();
 
-    void setMovementUpdatedAt(Date movementUpdatedAt);
+    void setMovementConfirmationVersion(Long movementConfirmationVersion);
 
-    Boolean getMovementActive();
+    String getMovementConfirmationCreatedBy();
 
-    void setMovementActive(Boolean movementActive);
+    void setMovementConfirmationCreatedBy(String movementConfirmationCreatedBy);
 
-    Boolean getMovementDeleted();
+    Date getMovementConfirmationCreatedAt();
 
-    void setMovementDeleted(Boolean movementDeleted);
+    void setMovementConfirmationCreatedAt(Date movementConfirmationCreatedAt);
+
+    String getMovementConfirmationUpdatedBy();
+
+    void setMovementConfirmationUpdatedBy(String movementConfirmationUpdatedBy);
+
+    Date getMovementConfirmationUpdatedAt();
+
+    void setMovementConfirmationUpdatedAt(Date movementConfirmationUpdatedAt);
+
+    Boolean getMovementConfirmationActive();
+
+    void setMovementConfirmationActive(Boolean movementConfirmationActive);
+
+    Boolean getMovementConfirmationDeleted();
+
+    void setMovementConfirmationDeleted(Boolean movementConfirmationDeleted);
 
 
     boolean isStateUnsaved();

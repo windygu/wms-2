@@ -31,6 +31,13 @@ public class MovementLineStateEventDtoConverter {
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
         dto.setMovementQuantity(e.getMovementQuantity());
+        dto.setProductId(e.getProductId());
+        dto.setLocatorIdFrom(e.getLocatorIdFrom());
+        dto.setLocatorIdTo(e.getLocatorIdTo());
+        dto.setAttributeSetInstanceIdFrom(e.getAttributeSetInstanceIdFrom());
+        dto.setAttributeSetInstanceIdTo(e.getAttributeSetInstanceIdTo());
+        dto.setProcessed(e.getProcessed());
+        dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setActive(e.getActive());
         return dto;
     }
@@ -43,8 +50,22 @@ public class MovementLineStateEventDtoConverter {
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
         dto.setMovementQuantity(e.getMovementQuantity());
+        dto.setProductId(e.getProductId());
+        dto.setLocatorIdFrom(e.getLocatorIdFrom());
+        dto.setLocatorIdTo(e.getLocatorIdTo());
+        dto.setAttributeSetInstanceIdFrom(e.getAttributeSetInstanceIdFrom());
+        dto.setAttributeSetInstanceIdTo(e.getAttributeSetInstanceIdTo());
+        dto.setProcessed(e.getProcessed());
+        dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setActive(e.getActive());
         dto.setIsPropertyMovementQuantityRemoved(e.getIsPropertyMovementQuantityRemoved());
+        dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
+        dto.setIsPropertyLocatorIdFromRemoved(e.getIsPropertyLocatorIdFromRemoved());
+        dto.setIsPropertyLocatorIdToRemoved(e.getIsPropertyLocatorIdToRemoved());
+        dto.setIsPropertyAttributeSetInstanceIdFromRemoved(e.getIsPropertyAttributeSetInstanceIdFromRemoved());
+        dto.setIsPropertyAttributeSetInstanceIdToRemoved(e.getIsPropertyAttributeSetInstanceIdToRemoved());
+        dto.setIsPropertyProcessedRemoved(e.getIsPropertyProcessedRemoved());
+        dto.setIsPropertyReversalLineNumberRemoved(e.getIsPropertyReversalLineNumberRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         return dto;
     }

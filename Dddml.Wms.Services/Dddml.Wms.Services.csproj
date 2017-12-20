@@ -335,6 +335,24 @@
     <Compile Include="Generated\Domain\MovementConfirmationLineMvo\NHibernate\NHibernateMovementConfirmationLineMvoStateRepository.cs">
       <DependentUpon>GenerateMovementConfirmationLineMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\MovementConfirmationApplicationService.cs">
+      <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationEventStore.cs">
+      <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationLineStateDao.cs">
+      <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationLineStateEventDao.cs">
+      <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationStateQueryRepository.cs">
+      <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationStateRepository.cs">
+      <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\MovementLineMvo\NHibernate\MovementLineMvoApplicationService.cs">
       <DependentUpon>GenerateMovementLineMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -357,12 +375,6 @@
       <DependentUpon>GenerateMovementTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Movement\NHibernate\MovementApplicationService.cs">
-      <DependentUpon>GenerateMovementDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\NHibernate\NHibernateMovementConfirmationLineStateDao.cs">
-      <DependentUpon>GenerateMovementDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\NHibernate\NHibernateMovementConfirmationLineStateEventDao.cs">
       <DependentUpon>GenerateMovementDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Movement\NHibernate\NHibernateMovementEventStore.cs">
@@ -743,6 +755,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateMovementConfirmationLineMvoDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\MovementConfirmation\NHibernate\GenerateMovementConfirmationDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\MovementLineMvo\NHibernate\GenerateMovementLineMvoDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -966,6 +983,8 @@
 .\MovementConfirmationLineMvoStateEvent.hbm.xml
 .\MovementConfirmationLineState.hbm.xml
 .\MovementConfirmationLineStateEvent.hbm.xml
+.\MovementConfirmationState.hbm.xml
+.\MovementConfirmationStateEvent.hbm.xml
 .\MovementLineMvoState.hbm.xml
 .\MovementLineMvoStateEvent.hbm.xml
 .\MovementLineState.hbm.xml
@@ -1218,6 +1237,12 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\MovementConfirmationLineMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\MovementConfirmationState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\MovementConfirmationStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
@@ -1655,8 +1680,6 @@
       <LastOutputs>
 .\GenerateMovementDomainNHibernate.txt
 .\MovementApplicationService.cs
-.\NHibernateMovementConfirmationLineStateDao.cs
-.\NHibernateMovementConfirmationLineStateEventDao.cs
 .\NHibernateMovementEventStore.cs
 .\NHibernateMovementLineStateDao.cs
 .\NHibernateMovementLineStateEventDao.cs
@@ -1684,6 +1707,19 @@
 .\NHibernateMovementConfirmationLineMvoEventStore.cs
 .\NHibernateMovementConfirmationLineMvoStateQueryRepository.cs
 .\NHibernateMovementConfirmationLineMvoStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\MovementConfirmation\NHibernate\GenerateMovementConfirmationDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateMovementConfirmationDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateMovementConfirmationDomainNHibernate.txt
+.\MovementConfirmationApplicationService.cs
+.\NHibernateMovementConfirmationEventStore.cs
+.\NHibernateMovementConfirmationLineStateDao.cs
+.\NHibernateMovementConfirmationLineStateEventDao.cs
+.\NHibernateMovementConfirmationStateQueryRepository.cs
+.\NHibernateMovementConfirmationStateRepository.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

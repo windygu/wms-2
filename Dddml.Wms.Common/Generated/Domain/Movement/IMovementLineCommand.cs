@@ -27,6 +27,20 @@ namespace Dddml.Wms.Domain.Movement
 
 		decimal? MovementQuantity { get; set; }
 
+		string ProductId { get; set; }
+
+		string LocatorIdFrom { get; set; }
+
+		string LocatorIdTo { get; set; }
+
+		string AttributeSetInstanceIdFrom { get; set; }
+
+		string AttributeSetInstanceIdTo { get; set; }
+
+		bool? Processed { get; set; }
+
+		string ReversalLineNumber { get; set; }
+
 		bool? Active { get; set; }
 
 
@@ -40,6 +54,20 @@ namespace Dddml.Wms.Domain.Movement
 	{
 
 		bool IsPropertyMovementQuantityRemoved { get; set; }
+
+		bool IsPropertyProductIdRemoved { get; set; }
+
+		bool IsPropertyLocatorIdFromRemoved { get; set; }
+
+		bool IsPropertyLocatorIdToRemoved { get; set; }
+
+		bool IsPropertyAttributeSetInstanceIdFromRemoved { get; set; }
+
+		bool IsPropertyAttributeSetInstanceIdToRemoved { get; set; }
+
+		bool IsPropertyProcessedRemoved { get; set; }
+
+		bool IsPropertyReversalLineNumberRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

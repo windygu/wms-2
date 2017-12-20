@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.movementconfirmationlinemvo;
 
 import java.util.*;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -27,7 +27,7 @@ public abstract class AbstractMovementConfirmationLineMvoStateCommandConverter<T
     {
         TDeleteMovementConfirmationLineMvo cmd = newDeleteMovementConfirmationLineMvo();
         cmd.setMovementConfirmationLineId(state.getMovementConfirmationLineId());
-        cmd.setMovementVersion(state.getMovementVersion());
+        cmd.setMovementConfirmationVersion(state.getMovementConfirmationVersion());
 
         return cmd;
     }
@@ -36,40 +36,54 @@ public abstract class AbstractMovementConfirmationLineMvoStateCommandConverter<T
     {
         TMergePatchMovementConfirmationLineMvo cmd = newMergePatchMovementConfirmationLineMvo();
 
-        cmd.setMovementVersion(state.getMovementVersion());
+        cmd.setMovementConfirmationVersion(state.getMovementConfirmationVersion());
 
         cmd.setMovementConfirmationLineId(state.getMovementConfirmationLineId());
+        cmd.setMovementLineNumber(state.getMovementLineNumber());
         cmd.setTargetQuantity(state.getTargetQuantity());
         cmd.setConfirmedQuantity(state.getConfirmedQuantity());
         cmd.setDifferenceQuantity(state.getDifferenceQuantity());
         cmd.setScrappedQuantity(state.getScrappedQuantity());
+        cmd.setDescription(state.getDescription());
+        cmd.setProcessed(state.getProcessed());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
-        cmd.setMovementDocumentTypeId(state.getMovementDocumentTypeId());
-        cmd.setMovementMovementTypeId(state.getMovementMovementTypeId());
-        cmd.setMovementDescription(state.getMovementDescription());
-        cmd.setMovementCreatedBy(state.getMovementCreatedBy());
-        cmd.setMovementCreatedAt(state.getMovementCreatedAt());
-        cmd.setMovementUpdatedBy(state.getMovementUpdatedBy());
-        cmd.setMovementUpdatedAt(state.getMovementUpdatedAt());
-        cmd.setMovementActive(state.getMovementActive());
-        cmd.setMovementDeleted(state.getMovementDeleted());
+        cmd.setMovementConfirmationDocumentTypeId(state.getMovementConfirmationDocumentTypeId());
+        cmd.setMovementConfirmationMovementDocumentNumber(state.getMovementConfirmationMovementDocumentNumber());
+        cmd.setMovementConfirmationIsApproved(state.getMovementConfirmationIsApproved());
+        cmd.setMovementConfirmationApprovalAmount(state.getMovementConfirmationApprovalAmount());
+        cmd.setMovementConfirmationProcessing(state.getMovementConfirmationProcessing());
+        cmd.setMovementConfirmationProcessed(state.getMovementConfirmationProcessed());
+        cmd.setMovementConfirmationDescription(state.getMovementConfirmationDescription());
+        cmd.setMovementConfirmationCreatedBy(state.getMovementConfirmationCreatedBy());
+        cmd.setMovementConfirmationCreatedAt(state.getMovementConfirmationCreatedAt());
+        cmd.setMovementConfirmationUpdatedBy(state.getMovementConfirmationUpdatedBy());
+        cmd.setMovementConfirmationUpdatedAt(state.getMovementConfirmationUpdatedAt());
+        cmd.setMovementConfirmationActive(state.getMovementConfirmationActive());
+        cmd.setMovementConfirmationDeleted(state.getMovementConfirmationDeleted());
             
+        if (state.getMovementLineNumber() == null) { cmd.setIsPropertyMovementLineNumberRemoved(true); }
         if (state.getTargetQuantity() == null) { cmd.setIsPropertyTargetQuantityRemoved(true); }
         if (state.getConfirmedQuantity() == null) { cmd.setIsPropertyConfirmedQuantityRemoved(true); }
         if (state.getDifferenceQuantity() == null) { cmd.setIsPropertyDifferenceQuantityRemoved(true); }
         if (state.getScrappedQuantity() == null) { cmd.setIsPropertyScrappedQuantityRemoved(true); }
+        if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
+        if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
-        if (state.getMovementDocumentTypeId() == null) { cmd.setIsPropertyMovementDocumentTypeIdRemoved(true); }
-        if (state.getMovementMovementTypeId() == null) { cmd.setIsPropertyMovementMovementTypeIdRemoved(true); }
-        if (state.getMovementDescription() == null) { cmd.setIsPropertyMovementDescriptionRemoved(true); }
-        if (state.getMovementCreatedBy() == null) { cmd.setIsPropertyMovementCreatedByRemoved(true); }
-        if (state.getMovementCreatedAt() == null) { cmd.setIsPropertyMovementCreatedAtRemoved(true); }
-        if (state.getMovementUpdatedBy() == null) { cmd.setIsPropertyMovementUpdatedByRemoved(true); }
-        if (state.getMovementUpdatedAt() == null) { cmd.setIsPropertyMovementUpdatedAtRemoved(true); }
-        if (state.getMovementActive() == null) { cmd.setIsPropertyMovementActiveRemoved(true); }
-        if (state.getMovementDeleted() == null) { cmd.setIsPropertyMovementDeletedRemoved(true); }
+        if (state.getMovementConfirmationDocumentTypeId() == null) { cmd.setIsPropertyMovementConfirmationDocumentTypeIdRemoved(true); }
+        if (state.getMovementConfirmationMovementDocumentNumber() == null) { cmd.setIsPropertyMovementConfirmationMovementDocumentNumberRemoved(true); }
+        if (state.getMovementConfirmationIsApproved() == null) { cmd.setIsPropertyMovementConfirmationIsApprovedRemoved(true); }
+        if (state.getMovementConfirmationApprovalAmount() == null) { cmd.setIsPropertyMovementConfirmationApprovalAmountRemoved(true); }
+        if (state.getMovementConfirmationProcessing() == null) { cmd.setIsPropertyMovementConfirmationProcessingRemoved(true); }
+        if (state.getMovementConfirmationProcessed() == null) { cmd.setIsPropertyMovementConfirmationProcessedRemoved(true); }
+        if (state.getMovementConfirmationDescription() == null) { cmd.setIsPropertyMovementConfirmationDescriptionRemoved(true); }
+        if (state.getMovementConfirmationCreatedBy() == null) { cmd.setIsPropertyMovementConfirmationCreatedByRemoved(true); }
+        if (state.getMovementConfirmationCreatedAt() == null) { cmd.setIsPropertyMovementConfirmationCreatedAtRemoved(true); }
+        if (state.getMovementConfirmationUpdatedBy() == null) { cmd.setIsPropertyMovementConfirmationUpdatedByRemoved(true); }
+        if (state.getMovementConfirmationUpdatedAt() == null) { cmd.setIsPropertyMovementConfirmationUpdatedAtRemoved(true); }
+        if (state.getMovementConfirmationActive() == null) { cmd.setIsPropertyMovementConfirmationActiveRemoved(true); }
+        if (state.getMovementConfirmationDeleted() == null) { cmd.setIsPropertyMovementConfirmationDeletedRemoved(true); }
         return cmd;
     }
 
@@ -77,23 +91,30 @@ public abstract class AbstractMovementConfirmationLineMvoStateCommandConverter<T
     {
         TCreateMovementConfirmationLineMvo cmd = newCreateMovementConfirmationLineMvo();
 
-        cmd.setMovementVersion(state.getMovementVersion());
+        cmd.setMovementConfirmationVersion(state.getMovementConfirmationVersion());
         cmd.setMovementConfirmationLineId(state.getMovementConfirmationLineId());
+        cmd.setMovementLineNumber(state.getMovementLineNumber());
         cmd.setTargetQuantity(state.getTargetQuantity());
         cmd.setConfirmedQuantity(state.getConfirmedQuantity());
         cmd.setDifferenceQuantity(state.getDifferenceQuantity());
         cmd.setScrappedQuantity(state.getScrappedQuantity());
+        cmd.setDescription(state.getDescription());
+        cmd.setProcessed(state.getProcessed());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
-        cmd.setMovementDocumentTypeId(state.getMovementDocumentTypeId());
-        cmd.setMovementMovementTypeId(state.getMovementMovementTypeId());
-        cmd.setMovementDescription(state.getMovementDescription());
-        cmd.setMovementCreatedBy(state.getMovementCreatedBy());
-        cmd.setMovementCreatedAt(state.getMovementCreatedAt());
-        cmd.setMovementUpdatedBy(state.getMovementUpdatedBy());
-        cmd.setMovementUpdatedAt(state.getMovementUpdatedAt());
-        cmd.setMovementActive(state.getMovementActive());
-        cmd.setMovementDeleted(state.getMovementDeleted());
+        cmd.setMovementConfirmationDocumentTypeId(state.getMovementConfirmationDocumentTypeId());
+        cmd.setMovementConfirmationMovementDocumentNumber(state.getMovementConfirmationMovementDocumentNumber());
+        cmd.setMovementConfirmationIsApproved(state.getMovementConfirmationIsApproved());
+        cmd.setMovementConfirmationApprovalAmount(state.getMovementConfirmationApprovalAmount());
+        cmd.setMovementConfirmationProcessing(state.getMovementConfirmationProcessing());
+        cmd.setMovementConfirmationProcessed(state.getMovementConfirmationProcessed());
+        cmd.setMovementConfirmationDescription(state.getMovementConfirmationDescription());
+        cmd.setMovementConfirmationCreatedBy(state.getMovementConfirmationCreatedBy());
+        cmd.setMovementConfirmationCreatedAt(state.getMovementConfirmationCreatedAt());
+        cmd.setMovementConfirmationUpdatedBy(state.getMovementConfirmationUpdatedBy());
+        cmd.setMovementConfirmationUpdatedAt(state.getMovementConfirmationUpdatedAt());
+        cmd.setMovementConfirmationActive(state.getMovementConfirmationActive());
+        cmd.setMovementConfirmationDeleted(state.getMovementConfirmationDeleted());
         return cmd;
     }
 

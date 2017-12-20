@@ -31,10 +31,10 @@ alter TABLE `MovementLines` add
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 alter TABLE `MovementConfirmationLines` add
-  CONSTRAINT `FK_MovementConfirmationLine_Movement_StateId` 
+  CONSTRAINT `FK_MovementConfirmationLine_MovementConfirmation_StateId` 
   FOREIGN KEY 
-    (`MovementConfirmationLineIdMovementDocumentNumber`) 
-  REFERENCES `Movements` 
+    (`MovementConfirmationLineIdMovementConfirmationDocumentNumber`) 
+  REFERENCES `MovementConfirmations` 
     (`DocumentNumber`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 

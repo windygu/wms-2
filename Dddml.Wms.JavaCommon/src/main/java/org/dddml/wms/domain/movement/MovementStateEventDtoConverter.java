@@ -31,7 +31,6 @@ public class MovementStateEventDtoConverter {
         dto.setCommandId(e.getCommandId());
         dto.setDocumentTypeId(e.getDocumentTypeId());
         dto.setDocumentStatusId(e.getDocumentStatusId());
-        dto.setMovementTypeId(e.getMovementTypeId());
         dto.setDescription(e.getDescription());
         dto.setActive(e.getActive());
         List<MovementLineStateEventDto.MovementLineStateCreatedDto> movementLineEvents = new ArrayList<>();
@@ -40,13 +39,6 @@ public class MovementStateEventDtoConverter {
             movementLineEvents.add(eeDto);
         }
         dto.setMovementLineEvents(movementLineEvents.toArray(new MovementLineStateEventDto.MovementLineStateCreatedDto[0]));
-
-        List<MovementConfirmationLineStateEventDto.MovementConfirmationLineStateCreatedDto> movementConfirmationLineEvents = new ArrayList<>();
-        for (MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated ee : e.getMovementConfirmationLineEvents()) {
-            MovementConfirmationLineStateEventDto.MovementConfirmationLineStateCreatedDto eeDto = getMovementConfirmationLineStateEventDtoConverter().toMovementConfirmationLineStateCreatedDto(ee);
-            movementConfirmationLineEvents.add(eeDto);
-        }
-        dto.setMovementConfirmationLineEvents(movementConfirmationLineEvents.toArray(new MovementConfirmationLineStateEventDto.MovementConfirmationLineStateCreatedDto[0]));
 
         return dto;
     }
@@ -59,12 +51,10 @@ public class MovementStateEventDtoConverter {
         dto.setCommandId(e.getCommandId());
         dto.setDocumentTypeId(e.getDocumentTypeId());
         dto.setDocumentStatusId(e.getDocumentStatusId());
-        dto.setMovementTypeId(e.getMovementTypeId());
         dto.setDescription(e.getDescription());
         dto.setActive(e.getActive());
         dto.setIsPropertyDocumentTypeIdRemoved(e.getIsPropertyDocumentTypeIdRemoved());
         dto.setIsPropertyDocumentStatusIdRemoved(e.getIsPropertyDocumentStatusIdRemoved());
-        dto.setIsPropertyMovementTypeIdRemoved(e.getIsPropertyMovementTypeIdRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<MovementLineStateEventDto> movementLineEvents = new ArrayList<>();
@@ -73,13 +63,6 @@ public class MovementStateEventDtoConverter {
             movementLineEvents.add(eeDto);
         }
         dto.setMovementLineEvents(movementLineEvents.toArray(new MovementLineStateEventDto[0]));
-
-        List<MovementConfirmationLineStateEventDto> movementConfirmationLineEvents = new ArrayList<>();
-        for (MovementConfirmationLineStateEvent ee : e.getMovementConfirmationLineEvents()) {
-            MovementConfirmationLineStateEventDto eeDto = getMovementConfirmationLineStateEventDtoConverter().toMovementConfirmationLineStateEventDto((AbstractMovementConfirmationLineStateEvent) ee);
-            movementConfirmationLineEvents.add(eeDto);
-        }
-        dto.setMovementConfirmationLineEvents(movementConfirmationLineEvents.toArray(new MovementConfirmationLineStateEventDto[0]));
 
         return dto;
     }
@@ -98,22 +81,11 @@ public class MovementStateEventDtoConverter {
         }
         dto.setMovementLineEvents(movementLineEvents.toArray(new MovementLineStateEventDto.MovementLineStateRemovedDto[0]));
 
-        List<MovementConfirmationLineStateEventDto.MovementConfirmationLineStateRemovedDto> movementConfirmationLineEvents = new ArrayList<>();
-        for (MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved ee : e.getMovementConfirmationLineEvents()) {
-            MovementConfirmationLineStateEventDto.MovementConfirmationLineStateRemovedDto eeDto = getMovementConfirmationLineStateEventDtoConverter().toMovementConfirmationLineStateRemovedDto(ee);
-            movementConfirmationLineEvents.add(eeDto);
-        }
-        dto.setMovementConfirmationLineEvents(movementConfirmationLineEvents.toArray(new MovementConfirmationLineStateEventDto.MovementConfirmationLineStateRemovedDto[0]));
-
         return dto;
     }
 
     protected MovementLineStateEventDtoConverter getMovementLineStateEventDtoConverter() {
         return new MovementLineStateEventDtoConverter();
-    }
-
-    protected MovementConfirmationLineStateEventDtoConverter getMovementConfirmationLineStateEventDtoConverter() {
-        return new MovementConfirmationLineStateEventDtoConverter();
     }
 
 }

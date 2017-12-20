@@ -60,7 +60,6 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         MovementStateEvent.MovementStateCreated e = newMovementStateCreated(stateEventId);
         e.setDocumentTypeId(c.getDocumentTypeId());
         newMovementDocumentActionCommandAndExecute(c, state, e);
-        e.setMovementTypeId(c.getMovementTypeId());
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         ((AbstractMovementStateEvent)e).setCommandId(c.getCommandId());
@@ -74,13 +73,6 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
             e.addMovementLineEvent(innerEvent);
         }
 
-        for (MovementConfirmationLineCommand.CreateMovementConfirmationLine innerCommand : c.getMovementConfirmationLines())
-        {
-            throwOnInconsistentCommands(c, innerCommand);
-            MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
-            e.addMovementConfirmationLineEvent(innerEvent);
-        }
-
         return e;
     }
 
@@ -89,11 +81,9 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         MovementStateEvent.MovementStateMergePatched e = newMovementStateMergePatched(stateEventId);
         e.setDocumentTypeId(c.getDocumentTypeId());
         newMovementDocumentActionCommandAndExecute(c, state, e);
-        e.setMovementTypeId(c.getMovementTypeId());
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         e.setIsPropertyDocumentTypeIdRemoved(c.getIsPropertyDocumentTypeIdRemoved());
-        e.setIsPropertyMovementTypeIdRemoved(c.getIsPropertyMovementTypeIdRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractMovementStateEvent)e).setCommandId(c.getCommandId());
@@ -105,13 +95,6 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
             throwOnInconsistentCommands(c, innerCommand);
             MovementLineStateEvent innerEvent = map(innerCommand, c, version, this.state);
             e.addMovementLineEvent(innerEvent);
-        }
-
-        for (MovementConfirmationLineCommand innerCommand : c.getMovementConfirmationLineCommands())
-        {
-            throwOnInconsistentCommands(c, innerCommand);
-            MovementConfirmationLineStateEvent innerEvent = map(innerCommand, c, version, this.state);
-            e.addMovementConfirmationLineEvent(innerEvent);
         }
 
         return e;
@@ -157,6 +140,13 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         MovementLineState s = outerState.getMovementLines().get(c.getLineNumber());
 
         e.setMovementQuantity(c.getMovementQuantity());
+        e.setProductId(c.getProductId());
+        e.setLocatorIdFrom(c.getLocatorIdFrom());
+        e.setLocatorIdTo(c.getLocatorIdTo());
+        e.setAttributeSetInstanceIdFrom(c.getAttributeSetInstanceIdFrom());
+        e.setAttributeSetInstanceIdTo(c.getAttributeSetInstanceIdTo());
+        e.setProcessed(c.getProcessed());
+        e.setReversalLineNumber(c.getReversalLineNumber());
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -172,8 +162,22 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         MovementLineState s = outerState.getMovementLines().get(c.getLineNumber());
 
         e.setMovementQuantity(c.getMovementQuantity());
+        e.setProductId(c.getProductId());
+        e.setLocatorIdFrom(c.getLocatorIdFrom());
+        e.setLocatorIdTo(c.getLocatorIdTo());
+        e.setAttributeSetInstanceIdFrom(c.getAttributeSetInstanceIdFrom());
+        e.setAttributeSetInstanceIdTo(c.getAttributeSetInstanceIdTo());
+        e.setProcessed(c.getProcessed());
+        e.setReversalLineNumber(c.getReversalLineNumber());
         e.setActive(c.getActive());
         e.setIsPropertyMovementQuantityRemoved(c.getIsPropertyMovementQuantityRemoved());
+        e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
+        e.setIsPropertyLocatorIdFromRemoved(c.getIsPropertyLocatorIdFromRemoved());
+        e.setIsPropertyLocatorIdToRemoved(c.getIsPropertyLocatorIdToRemoved());
+        e.setIsPropertyAttributeSetInstanceIdFromRemoved(c.getIsPropertyAttributeSetInstanceIdFromRemoved());
+        e.setIsPropertyAttributeSetInstanceIdToRemoved(c.getIsPropertyAttributeSetInstanceIdToRemoved());
+        e.setIsPropertyProcessedRemoved(c.getIsPropertyProcessedRemoved());
+        e.setIsPropertyReversalLineNumberRemoved(c.getIsPropertyReversalLineNumberRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -194,106 +198,10 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
 
     }// END map(IRemove... ////////////////////////////
 
-
-    protected MovementConfirmationLineStateEvent map(MovementConfirmationLineCommand c, MovementCommand outerCommand, long version, MovementState outerState)
-    {
-        MovementConfirmationLineCommand.CreateMovementConfirmationLine create = (c.getCommandType().equals(CommandType.CREATE)) ? ((MovementConfirmationLineCommand.CreateMovementConfirmationLine)c) : null;
-        if(create != null)
-        {
-            return mapCreate(create, outerCommand, version, outerState);
-        }
-
-        MovementConfirmationLineCommand.MergePatchMovementConfirmationLine merge = (c.getCommandType().equals(CommandType.MERGE_PATCH)) ? ((MovementConfirmationLineCommand.MergePatchMovementConfirmationLine)c) : null;
-        if(merge != null)
-        {
-            return mapMergePatch(merge, outerCommand, version, outerState);
-        }
-
-        MovementConfirmationLineCommand.RemoveMovementConfirmationLine remove = (c.getCommandType().equals(CommandType.REMOVE)) ? ((MovementConfirmationLineCommand.RemoveMovementConfirmationLine)c) : null;
-        if (remove != null)
-        {
-            return mapRemove(remove, outerCommand, version);
-        }
-        throw new UnsupportedOperationException();
-    }
-
-    protected MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated mapCreate(MovementConfirmationLineCommand.CreateMovementConfirmationLine c, MovementCommand outerCommand, Long version, MovementState outerState)
-    {
-        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        MovementConfirmationLineStateEventId stateEventId = new MovementConfirmationLineStateEventId(c.getMovementDocumentNumber(), c.getLineNumber(), version);
-        MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated e = newMovementConfirmationLineStateCreated(stateEventId);
-        MovementConfirmationLineState s = outerState.getMovementConfirmationLines().get(c.getLineNumber());
-
-        e.setTargetQuantity(c.getTargetQuantity());
-        e.setConfirmedQuantity(c.getConfirmedQuantity());
-        e.setDifferenceQuantity(c.getDifferenceQuantity());
-        e.setScrappedQuantity(c.getScrappedQuantity());
-        e.setActive(c.getActive());
-        e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        return e;
-
-    }// END map(ICreate... ////////////////////////////
-
-    protected MovementConfirmationLineStateEvent.MovementConfirmationLineStateMergePatched mapMergePatch(MovementConfirmationLineCommand.MergePatchMovementConfirmationLine c, MovementCommand outerCommand, Long version, MovementState outerState)
-    {
-        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        MovementConfirmationLineStateEventId stateEventId = new MovementConfirmationLineStateEventId(c.getMovementDocumentNumber(), c.getLineNumber(), version);
-        MovementConfirmationLineStateEvent.MovementConfirmationLineStateMergePatched e = newMovementConfirmationLineStateMergePatched(stateEventId);
-        MovementConfirmationLineState s = outerState.getMovementConfirmationLines().get(c.getLineNumber());
-
-        e.setTargetQuantity(c.getTargetQuantity());
-        e.setConfirmedQuantity(c.getConfirmedQuantity());
-        e.setDifferenceQuantity(c.getDifferenceQuantity());
-        e.setScrappedQuantity(c.getScrappedQuantity());
-        e.setActive(c.getActive());
-        e.setIsPropertyTargetQuantityRemoved(c.getIsPropertyTargetQuantityRemoved());
-        e.setIsPropertyConfirmedQuantityRemoved(c.getIsPropertyConfirmedQuantityRemoved());
-        e.setIsPropertyDifferenceQuantityRemoved(c.getIsPropertyDifferenceQuantityRemoved());
-        e.setIsPropertyScrappedQuantityRemoved(c.getIsPropertyScrappedQuantityRemoved());
-        e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        return e;
-
-    }// END map(IMergePatch... ////////////////////////////
-
-    protected MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved mapRemove(MovementConfirmationLineCommand.RemoveMovementConfirmationLine c, MovementCommand outerCommand, Long version)
-    {
-        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        MovementConfirmationLineStateEventId stateEventId = new MovementConfirmationLineStateEventId(c.getMovementDocumentNumber(), c.getLineNumber(), version);
-        MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved e = newMovementConfirmationLineStateRemoved(stateEventId);
-
-        e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-
-        return e;
-
-    }// END map(IRemove... ////////////////////////////
-
     protected void throwOnInconsistentCommands(MovementCommand command, MovementLineCommand innerCommand)
     {
         AbstractMovementCommand properties = command instanceof AbstractMovementCommand ? (AbstractMovementCommand) command : null;
         AbstractMovementLineCommand innerProperties = innerCommand instanceof AbstractMovementLineCommand ? (AbstractMovementLineCommand) innerCommand : null;
-        if (properties == null || innerProperties == null) { return; }
-        String outerDocumentNumberName = "DocumentNumber";
-        String outerDocumentNumberValue = properties.getDocumentNumber();
-        String innerMovementDocumentNumberName = "MovementDocumentNumber";
-        String innerMovementDocumentNumberValue = innerProperties.getMovementDocumentNumber();
-        if (innerMovementDocumentNumberValue == null) {
-            innerProperties.setMovementDocumentNumber(outerDocumentNumberValue);
-        }
-        else if (innerMovementDocumentNumberValue != outerDocumentNumberValue 
-            && (innerMovementDocumentNumberValue == null || innerMovementDocumentNumberValue != null && !innerMovementDocumentNumberValue.equals(outerDocumentNumberValue))) 
-        {
-            throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerDocumentNumberName, outerDocumentNumberValue, innerMovementDocumentNumberName, innerMovementDocumentNumberValue);
-        }
-    }// END throwOnInconsistentCommands /////////////////////
-
-    protected void throwOnInconsistentCommands(MovementCommand command, MovementConfirmationLineCommand innerCommand)
-    {
-        AbstractMovementCommand properties = command instanceof AbstractMovementCommand ? (AbstractMovementCommand) command : null;
-        AbstractMovementConfirmationLineCommand innerProperties = innerCommand instanceof AbstractMovementConfirmationLineCommand ? (AbstractMovementConfirmationLineCommand) innerCommand : null;
         if (properties == null || innerProperties == null) { return; }
         String outerDocumentNumberName = "DocumentNumber";
         String outerDocumentNumberValue = properties.getDocumentNumber();
@@ -392,19 +300,6 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     protected MovementLineStateEvent.MovementLineStateRemoved newMovementLineStateRemoved(MovementLineStateEventId stateEventId)
     {
         return new AbstractMovementLineStateEvent.SimpleMovementLineStateRemoved(stateEventId);
-    }
-
-    protected MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated newMovementConfirmationLineStateCreated(MovementConfirmationLineStateEventId stateEventId) {
-        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateCreated(stateEventId);
-    }
-
-    protected MovementConfirmationLineStateEvent.MovementConfirmationLineStateMergePatched newMovementConfirmationLineStateMergePatched(MovementConfirmationLineStateEventId stateEventId) {
-        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateMergePatched(stateEventId);
-    }
-
-    protected MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved newMovementConfirmationLineStateRemoved(MovementConfirmationLineStateEventId stateEventId)
-    {
-        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateRemoved(stateEventId);
     }
 
 

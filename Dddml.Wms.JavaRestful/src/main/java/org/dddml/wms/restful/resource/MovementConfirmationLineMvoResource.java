@@ -8,7 +8,7 @@ import javax.ws.rs.core.*;
 import org.apache.cxf.jaxrs.ext.PATCH;
 
 import org.dddml.support.criterion.*;
-import org.dddml.wms.domain.movement.*;
+import org.dddml.wms.domain.movementconfirmation.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -134,7 +134,7 @@ public class MovementConfirmationLineMvoResource {
 
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
-            deleteCmd.setMovementVersion(version);
+            deleteCmd.setMovementConfirmationVersion(version);
             MovementConfirmationLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             movementConfirmationLineMvoApplicationService.when(deleteCmd);
 

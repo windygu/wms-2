@@ -12,6 +12,13 @@ public final class MovementLineMvoFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "movementQuantity",
+            "productId",
+            "locatorIdFrom",
+            "locatorIdTo",
+            "attributeSetInstanceIdFrom",
+            "attributeSetInstanceIdTo",
+            "processed",
+            "reversalLineNumber",
             "version",
             "createdBy",
             "createdAt",
@@ -21,7 +28,6 @@ public final class MovementLineMvoFilteringProperties
             "deleted",
             "movementDocumentTypeId",
             "movementDocumentStatusId",
-            "movementMovementTypeId",
             "movementDescription",
             "movementVersion",
             "movementCreatedBy",
@@ -36,6 +42,13 @@ public final class MovementLineMvoFilteringProperties
 
     public static final String[] propertyTypes = new String[] {
             "BigDecimal",
+            "String",
+            "String",
+            "String",
+            "String",
+            "String",
+            "Boolean",
+            "String",
             "Long",
             "String",
             "Date",
@@ -43,7 +56,6 @@ public final class MovementLineMvoFilteringProperties
             "Date",
             "Boolean",
             "Boolean",
-            "String",
             "String",
             "String",
             "String",
@@ -72,6 +84,20 @@ public final class MovementLineMvoFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("movementQuantity", "movementQuantity");
         aliasMap.put("MovementQuantity", "movementQuantity");
+        aliasMap.put("productId", "productId");
+        aliasMap.put("ProductId", "productId");
+        aliasMap.put("locatorIdFrom", "locatorIdFrom");
+        aliasMap.put("LocatorIdFrom", "locatorIdFrom");
+        aliasMap.put("locatorIdTo", "locatorIdTo");
+        aliasMap.put("LocatorIdTo", "locatorIdTo");
+        aliasMap.put("attributeSetInstanceIdFrom", "attributeSetInstanceIdFrom");
+        aliasMap.put("AttributeSetInstanceIdFrom", "attributeSetInstanceIdFrom");
+        aliasMap.put("attributeSetInstanceIdTo", "attributeSetInstanceIdTo");
+        aliasMap.put("AttributeSetInstanceIdTo", "attributeSetInstanceIdTo");
+        aliasMap.put("processed", "processed");
+        aliasMap.put("Processed", "processed");
+        aliasMap.put("reversalLineNumber", "reversalLineNumber");
+        aliasMap.put("ReversalLineNumber", "reversalLineNumber");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");
@@ -90,8 +116,6 @@ public final class MovementLineMvoFilteringProperties
         aliasMap.put("MovementDocumentTypeId", "movementDocumentTypeId");
         aliasMap.put("movementDocumentStatusId", "movementDocumentStatusId");
         aliasMap.put("MovementDocumentStatusId", "movementDocumentStatusId");
-        aliasMap.put("movementMovementTypeId", "movementMovementTypeId");
-        aliasMap.put("MovementMovementTypeId", "movementMovementTypeId");
         aliasMap.put("movementDescription", "movementDescription");
         aliasMap.put("MovementDescription", "movementDescription");
         aliasMap.put("movementVersion", "movementVersion");

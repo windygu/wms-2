@@ -44,7 +44,6 @@ namespace Dddml.Wms.Domain.Movement
             dto.CommandId = e.CommandId;
             dto.DocumentTypeId = e.DocumentTypeId;
             dto.DocumentStatusId = e.DocumentStatusId;
-            dto.MovementTypeId = e.MovementTypeId;
             dto.Description = e.Description;
             dto.Active = e.Active;
             var movementLineEvents = new List<MovementLineStateCreatedDto>();
@@ -54,14 +53,6 @@ namespace Dddml.Wms.Domain.Movement
                 movementLineEvents.Add(eeDto);
             }
             dto.MovementLineEvents = movementLineEvents.ToArray();
-
-            var movementConfirmationLineEvents = new List<MovementConfirmationLineStateCreatedDto>();
-            foreach (var ee in e.MovementConfirmationLineEvents)
-            {
-                MovementConfirmationLineStateCreatedDto eeDto = MovementConfirmationLineStateEventDtoConverter.ToMovementConfirmationLineStateCreatedDto(ee);
-                movementConfirmationLineEvents.Add(eeDto);
-            }
-            dto.MovementConfirmationLineEvents = movementConfirmationLineEvents.ToArray();
 
             return dto;
         }
@@ -75,12 +66,10 @@ namespace Dddml.Wms.Domain.Movement
             dto.CommandId = e.CommandId;
             dto.DocumentTypeId = e.DocumentTypeId;
             dto.DocumentStatusId = e.DocumentStatusId;
-            dto.MovementTypeId = e.MovementTypeId;
             dto.Description = e.Description;
             dto.Active = e.Active;
             dto.IsPropertyDocumentTypeIdRemoved = e.IsPropertyDocumentTypeIdRemoved;
             dto.IsPropertyDocumentStatusIdRemoved = e.IsPropertyDocumentStatusIdRemoved;
-            dto.IsPropertyMovementTypeIdRemoved = e.IsPropertyMovementTypeIdRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
             var movementLineEvents = new List<MovementLineStateCreatedOrMergePatchedOrRemovedDto>();
@@ -90,14 +79,6 @@ namespace Dddml.Wms.Domain.Movement
                 movementLineEvents.Add(eeDto);
             }
             dto.MovementLineEvents = movementLineEvents.ToArray();
-
-            var movementConfirmationLineEvents = new List<MovementConfirmationLineStateCreatedOrMergePatchedOrRemovedDto>();
-            foreach (var ee in e.MovementConfirmationLineEvents)
-            {
-                MovementConfirmationLineStateCreatedOrMergePatchedOrRemovedDto eeDto = MovementConfirmationLineStateEventDtoConverter.ToMovementConfirmationLineStateEventDto(ee);
-                movementConfirmationLineEvents.Add(eeDto);
-            }
-            dto.MovementConfirmationLineEvents = movementConfirmationLineEvents.ToArray();
 
 
             return dto;
@@ -119,14 +100,6 @@ namespace Dddml.Wms.Domain.Movement
             }
             dto.MovementLineEvents = movementLineEvents.ToArray();
 
-            var movementConfirmationLineEvents = new List<MovementConfirmationLineStateRemovedDto>();
-            foreach (var ee in e.MovementConfirmationLineEvents)
-            {
-                MovementConfirmationLineStateRemovedDto eeDto = MovementConfirmationLineStateEventDtoConverter.ToMovementConfirmationLineStateRemovedDto(ee);
-                movementConfirmationLineEvents.Add(eeDto);
-            }
-            dto.MovementConfirmationLineEvents = movementConfirmationLineEvents.ToArray();
-
 
             return dto;
         }
@@ -136,14 +109,6 @@ namespace Dddml.Wms.Domain.Movement
             get
             {
                 return new MovementLineStateEventDtoConverter();
-            }
-        }
-
-        protected virtual MovementConfirmationLineStateEventDtoConverter MovementConfirmationLineStateEventDtoConverter
-        {
-            get
-            {
-                return new MovementConfirmationLineStateEventDtoConverter();
             }
         }
 

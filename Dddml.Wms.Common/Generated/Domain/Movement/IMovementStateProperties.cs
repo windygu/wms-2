@@ -20,8 +20,6 @@ namespace Dddml.Wms.Domain.Movement
 
 		string DocumentStatusId { get; set; }
 
-		string MovementTypeId { get; set; }
-
 		string Description { get; set; }
 
 		long Version { get; set; }
