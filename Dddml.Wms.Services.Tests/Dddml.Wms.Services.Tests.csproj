@@ -103,6 +103,7 @@
     <Compile Include="InitDatabase.cs" />
     <Compile Include="InitInventoryPostingRules.cs" />
     <Compile Include="InventoryPostingRuleTests.cs" />
+    <Compile Include="MovementConfirmationTests.cs" />
     <Compile Include="OrganizationTreeTests.cs" />
     <Compile Include="LocatorTreeTests.cs" />
     <Compile Include="InOutTests.cs" />
