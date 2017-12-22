@@ -5,21 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Dddml.Wms.Domain
+namespace Dddml.Wms.Domain.MovementConfirmation
 {
-    public class InOutDocumentActionCommandHandler : IPropertyCommandHandler<string, string>
+    public class MovementConfirmationDocumentActionCommandHandler : IPropertyCommandHandler<string, string>
     {
-        // //////////////////////////////////
-        // 在异步处理模型下不能使用 ThreadStatic 来作为请求处理的上下文。
-        //[ThreadStatic]
-        //private static string _currentDocumentStatus;
-        //private static StateMachine<string, string> _stateMachine;
-        //static InOutDocumentActionCommandHandler()
-        //{
-        //    var tm = BuildStateMachine(() => _currentDocumentStatus, s => _currentDocumentStatus = s);
-        //    _stateMachine = tm;
-        //}
-
+        //
+        //todo
+        //
         private static StateMachine<string, string> BuildStateMachine(Func<String> stateAccessor, Action<String> stateMutator)
         {
             // //////////////////////////////////
