@@ -84,6 +84,12 @@ aggregates:
 
             # PhysicalInventoryLineNumber:
               # type: string
+          
+          constraints:
+            #--------- 数量之间的约束 ---------------
+            QuantitiesConstraint:
+             validationLogic:
+               CSharp: "TargetQuantity + DifferenceQuantity == ConfirmedQuantity + ScrappedQuantity"
 
 
       # metadata:
