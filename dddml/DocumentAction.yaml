@@ -1,0 +1,37 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+enumObjects:
+    
+    DocumentAction:
+      baseType: string
+      
+      values:
+        Draft:
+          description: Draft
+        Complete:
+          description: Complete
+        Void:
+          description: Void
+        Close: 
+          description: Close
+        Reverse:
+          description: Reverse
+
+            
+# ------------------------------
+
+#valueObjects:
+
+    #SkuId:
+    #  properties:
+    #    ProductId:
+    #      type: string
+    #    AttributeSetInstanceId:
+    #      type: string        
+
+                
+                
+                 

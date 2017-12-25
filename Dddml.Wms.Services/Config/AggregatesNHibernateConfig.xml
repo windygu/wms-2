@@ -403,6 +403,37 @@
   </object>
 
 
+  <object id="physicalInventoryLineStateDao" type="Dddml.Wms.Domain.PhysicalInventory.NHibernate.NHibernatePhysicalInventoryLineStateDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="physicalInventoryLineStateEventDao" type="Dddml.Wms.Domain.PhysicalInventory.NHibernate.NHibernatePhysicalInventoryLineStateEventDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+
+  <object id="physicalInventoryStateRepository" type="Dddml.Wms.Domain.PhysicalInventory.NHibernate.NHibernatePhysicalInventoryStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="physicalInventoryStateQueryRepository" type="Dddml.Wms.Domain.PhysicalInventory.NHibernate.NHibernatePhysicalInventoryStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="physicalInventoryEventStore" type="Dddml.Wms.Domain.PhysicalInventory.NHibernate.NHibernatePhysicalInventoryEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="physicalInventoryApplicationService" type="Dddml.Wms.Domain.PhysicalInventory.NHibernate.PhysicalInventoryApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="physicalInventoryEventStore"/>
+    <constructor-arg ref="physicalInventoryStateRepository"/>
+    <constructor-arg ref="physicalInventoryStateQueryRepository"/>
+  </object>
+
+
 
   <object id="productStateRepository" type="Dddml.Wms.Domain.Product.NHibernate.NHibernateProductStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -849,6 +880,28 @@
     <constructor-arg ref="orderItemMvoEventStore"/>
     <constructor-arg ref="orderItemMvoStateRepository"/>
     <constructor-arg ref="orderItemMvoStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="physicalInventoryLineMvoStateRepository" type="Dddml.Wms.Domain.PhysicalInventoryLineMvo.NHibernate.NHibernatePhysicalInventoryLineMvoStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="physicalInventoryLineMvoStateQueryRepository" type="Dddml.Wms.Domain.PhysicalInventoryLineMvo.NHibernate.NHibernatePhysicalInventoryLineMvoStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="physicalInventoryLineMvoEventStore" type="Dddml.Wms.Domain.PhysicalInventoryLineMvo.NHibernate.NHibernatePhysicalInventoryLineMvoEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="physicalInventoryLineMvoApplicationService" type="Dddml.Wms.Domain.PhysicalInventoryLineMvo.NHibernate.PhysicalInventoryLineMvoApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="physicalInventoryLineMvoEventStore"/>
+    <constructor-arg ref="physicalInventoryLineMvoStateRepository"/>
+    <constructor-arg ref="physicalInventoryLineMvoStateQueryRepository"/>
   </object>
 
 

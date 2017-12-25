@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inout.InOutStateEvent.*;
@@ -190,6 +190,18 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.POReference = poReference;
     }
 
+    private BigDecimal freightAmount;
+
+    public BigDecimal getFreightAmount()
+    {
+        return this.freightAmount;
+    }
+
+    public void setFreightAmount(BigDecimal freightAmount)
+    {
+        this.freightAmount = freightAmount;
+    }
+
     private String shipperId;
 
     public String getShipperId()
@@ -202,6 +214,18 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.shipperId = shipperId;
     }
 
+    private BigDecimal chargeAmount;
+
+    public BigDecimal getChargeAmount()
+    {
+        return this.chargeAmount;
+    }
+
+    public void setChargeAmount(BigDecimal chargeAmount)
+    {
+        this.chargeAmount = chargeAmount;
+    }
+
     private Date datePrinted;
 
     public Date getDatePrinted()
@@ -212,6 +236,18 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     public void setDatePrinted(Date datePrinted)
     {
         this.datePrinted = datePrinted;
+    }
+
+    private String createdFrom;
+
+    public String getCreatedFrom()
+    {
+        return this.createdFrom;
+    }
+
+    public void setCreatedFrom(String createdFrom)
+    {
+        this.createdFrom = createdFrom;
     }
 
     private String salesRepresentativeId;
@@ -521,8 +557,11 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setBusinessPartnerId(e.getBusinessPartnerId());
         this.setWarehouseId(e.getWarehouseId());
         this.setPOReference(e.getPOReference());
+        this.setFreightAmount(e.getFreightAmount());
         this.setShipperId(e.getShipperId());
+        this.setChargeAmount(e.getChargeAmount());
         this.setDatePrinted(e.getDatePrinted());
+        this.setCreatedFrom(e.getCreatedFrom());
         this.setSalesRepresentativeId(e.getSalesRepresentativeId());
         this.setNumberOfPackages(e.getNumberOfPackages());
         this.setPickDate(e.getPickDate());
@@ -705,6 +744,17 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         {
             this.setPOReference(e.getPOReference());
         }
+        if (e.getFreightAmount() == null)
+        {
+            if (e.getIsPropertyFreightAmountRemoved() != null && e.getIsPropertyFreightAmountRemoved())
+            {
+                this.setFreightAmount(null);
+            }
+        }
+        else
+        {
+            this.setFreightAmount(e.getFreightAmount());
+        }
         if (e.getShipperId() == null)
         {
             if (e.getIsPropertyShipperIdRemoved() != null && e.getIsPropertyShipperIdRemoved())
@@ -716,6 +766,17 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         {
             this.setShipperId(e.getShipperId());
         }
+        if (e.getChargeAmount() == null)
+        {
+            if (e.getIsPropertyChargeAmountRemoved() != null && e.getIsPropertyChargeAmountRemoved())
+            {
+                this.setChargeAmount(null);
+            }
+        }
+        else
+        {
+            this.setChargeAmount(e.getChargeAmount());
+        }
         if (e.getDatePrinted() == null)
         {
             if (e.getIsPropertyDatePrintedRemoved() != null && e.getIsPropertyDatePrintedRemoved())
@@ -726,6 +787,17 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         else
         {
             this.setDatePrinted(e.getDatePrinted());
+        }
+        if (e.getCreatedFrom() == null)
+        {
+            if (e.getIsPropertyCreatedFromRemoved() != null && e.getIsPropertyCreatedFromRemoved())
+            {
+                this.setCreatedFrom(null);
+            }
+        }
+        else
+        {
+            this.setCreatedFrom(e.getCreatedFrom());
         }
         if (e.getSalesRepresentativeId() == null)
         {

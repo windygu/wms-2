@@ -2239,6 +2239,15 @@
     <Compile Include="Generated\Domain\Metadata\OrganizationStructureTypeMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Metadata\PhysicalInventoryLineMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\PhysicalInventoryLineMvoMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\PhysicalInventoryMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\ProductCategoryMemberMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -3528,6 +3537,267 @@
     </Compile>
     <Compile Include="Generated\Domain\Organization\OrganizationStateProperties.cs">
       <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoAggregate.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoApplicationService.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoApplicationServiceFactory.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoCommand.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoState.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoStateDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoStateEvent.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoStateProperties.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoStateQueryRepository.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoStateRepository.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoAggregate.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoApplicationServiceBase.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoApplicationServiceFactory.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoCommand.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoCommandDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoState.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateDtoExtension.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateDtoWrapper.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateEvent.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateEventDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateEventDtoConverter.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateEventId.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateEventIdDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateEventIdDtoWrapper.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateEventIdFlattenedDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateExtension.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateInterfaceExtension.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoStateProperties.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryAggregate.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryApplicationService.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryApplicationServiceFactory.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryCommand.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryLineCommand.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryLineState.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryLineStateDao.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryLineStateDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryLineStateEvent.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryLineStateEventDao.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryLineStateProperties.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryLineStates.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryState.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryStateDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryStateEvent.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryStateProperties.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryStateQueryRepository.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryStateRepository.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryAggregate.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryApplicationServiceBase.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryApplicationServiceFactory.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryCommand.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryCommandDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineCommand.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineCommandDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineId.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineIdDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineIdDtoWrapper.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineIdFlattenedDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineState.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateDtoExtension.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateDtoWrapper.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateEvent.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateEventDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateEventDtoConverter.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateEventId.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateEventIdDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateEventIdDtoWrapper.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateEventIdFlattenedDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateExtension.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateInterfaceExtension.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStateProperties.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineStates.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryState.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateDtoExtension.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateDtoWrapper.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateEvent.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateEventDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateEventDtoConverter.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateEventId.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateEventIdDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateEventIdDtoWrapper.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateEventIdFlattenedDto.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateExtension.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateInterfaceExtension.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryStateProperties.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\ProductCategoryMember\IProductCategoryMemberAggregate.cs">
       <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
@@ -4833,6 +5103,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\PhysicalInventoryLineMvo\GeneratePhysicalInventoryLineMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\PhysicalInventory\GeneratePhysicalInventoryDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\ProductCategoryMember\GenerateProductCategoryMemberDomain.txt">
       <AutoGen>True</AutoGen>
@@ -6699,6 +6979,107 @@
 .\MovementConfirmationStateProperties.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\PhysicalInventory\GeneratePhysicalInventoryDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePhysicalInventoryDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePhysicalInventoryDomain.txt
+.\IPhysicalInventoryAggregate.cs
+.\IPhysicalInventoryApplicationService.cs
+.\IPhysicalInventoryApplicationServiceFactory.cs
+.\IPhysicalInventoryCommand.cs
+.\IPhysicalInventoryLineCommand.cs
+.\IPhysicalInventoryLineState.cs
+.\IPhysicalInventoryLineStateDao.cs
+.\IPhysicalInventoryLineStateDto.cs
+.\IPhysicalInventoryLineStateEvent.cs
+.\IPhysicalInventoryLineStateEventDao.cs
+.\IPhysicalInventoryLineStateProperties.cs
+.\IPhysicalInventoryLineStates.cs
+.\IPhysicalInventoryState.cs
+.\IPhysicalInventoryStateDto.cs
+.\IPhysicalInventoryStateEvent.cs
+.\IPhysicalInventoryStateProperties.cs
+.\IPhysicalInventoryStateQueryRepository.cs
+.\IPhysicalInventoryStateRepository.cs
+.\PhysicalInventoryAggregate.cs
+.\PhysicalInventoryApplicationServiceBase.cs
+.\PhysicalInventoryApplicationServiceFactory.cs
+.\PhysicalInventoryCommand.cs
+.\PhysicalInventoryCommandDto.cs
+.\PhysicalInventoryLineCommand.cs
+.\PhysicalInventoryLineCommandDto.cs
+.\PhysicalInventoryLineId.cs
+.\PhysicalInventoryLineIdDto.cs
+.\PhysicalInventoryLineIdDtoWrapper.cs
+.\PhysicalInventoryLineIdFlattenedDto.cs
+.\PhysicalInventoryLineState.cs
+.\PhysicalInventoryLineStateDto.cs
+.\PhysicalInventoryLineStateDtoExtension.cs
+.\PhysicalInventoryLineStateDtoWrapper.cs
+.\PhysicalInventoryLineStateEvent.cs
+.\PhysicalInventoryLineStateEventDto.cs
+.\PhysicalInventoryLineStateEventDtoConverter.cs
+.\PhysicalInventoryLineStateEventId.cs
+.\PhysicalInventoryLineStateEventIdDto.cs
+.\PhysicalInventoryLineStateEventIdDtoWrapper.cs
+.\PhysicalInventoryLineStateEventIdFlattenedDto.cs
+.\PhysicalInventoryLineStateExtension.cs
+.\PhysicalInventoryLineStateInterfaceExtension.cs
+.\PhysicalInventoryLineStateProperties.cs
+.\PhysicalInventoryLineStates.cs
+.\PhysicalInventoryState.cs
+.\PhysicalInventoryStateDto.cs
+.\PhysicalInventoryStateDtoExtension.cs
+.\PhysicalInventoryStateDtoWrapper.cs
+.\PhysicalInventoryStateEvent.cs
+.\PhysicalInventoryStateEventDto.cs
+.\PhysicalInventoryStateEventDtoConverter.cs
+.\PhysicalInventoryStateEventId.cs
+.\PhysicalInventoryStateEventIdDto.cs
+.\PhysicalInventoryStateEventIdDtoWrapper.cs
+.\PhysicalInventoryStateEventIdFlattenedDto.cs
+.\PhysicalInventoryStateExtension.cs
+.\PhysicalInventoryStateInterfaceExtension.cs
+.\PhysicalInventoryStateProperties.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\PhysicalInventoryLineMvo\GeneratePhysicalInventoryLineMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePhysicalInventoryLineMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePhysicalInventoryLineMvoDomain.txt
+.\IPhysicalInventoryLineMvoAggregate.cs
+.\IPhysicalInventoryLineMvoApplicationService.cs
+.\IPhysicalInventoryLineMvoApplicationServiceFactory.cs
+.\IPhysicalInventoryLineMvoCommand.cs
+.\IPhysicalInventoryLineMvoState.cs
+.\IPhysicalInventoryLineMvoStateDto.cs
+.\IPhysicalInventoryLineMvoStateEvent.cs
+.\IPhysicalInventoryLineMvoStateProperties.cs
+.\IPhysicalInventoryLineMvoStateQueryRepository.cs
+.\IPhysicalInventoryLineMvoStateRepository.cs
+.\PhysicalInventoryLineMvoAggregate.cs
+.\PhysicalInventoryLineMvoApplicationServiceBase.cs
+.\PhysicalInventoryLineMvoApplicationServiceFactory.cs
+.\PhysicalInventoryLineMvoCommand.cs
+.\PhysicalInventoryLineMvoCommandDto.cs
+.\PhysicalInventoryLineMvoState.cs
+.\PhysicalInventoryLineMvoStateDto.cs
+.\PhysicalInventoryLineMvoStateDtoExtension.cs
+.\PhysicalInventoryLineMvoStateDtoWrapper.cs
+.\PhysicalInventoryLineMvoStateEvent.cs
+.\PhysicalInventoryLineMvoStateEventDto.cs
+.\PhysicalInventoryLineMvoStateEventDtoConverter.cs
+.\PhysicalInventoryLineMvoStateEventId.cs
+.\PhysicalInventoryLineMvoStateEventIdDto.cs
+.\PhysicalInventoryLineMvoStateEventIdDtoWrapper.cs
+.\PhysicalInventoryLineMvoStateEventIdFlattenedDto.cs
+.\PhysicalInventoryLineMvoStateExtension.cs
+.\PhysicalInventoryLineMvoStateInterfaceExtension.cs
+.\PhysicalInventoryLineMvoStateProperties.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -6777,6 +7158,9 @@
 .\OrganizationMetadata.cs
 .\OrganizationStructureMetadata.cs
 .\OrganizationStructureTypeMetadata.cs
+.\PhysicalInventoryLineMetadata.cs
+.\PhysicalInventoryLineMvoMetadata.cs
+.\PhysicalInventoryMetadata.cs
 .\ProductCategoryMemberMetadata.cs
 .\ProductCategoryMetadata.cs
 .\ProductMetadata.cs

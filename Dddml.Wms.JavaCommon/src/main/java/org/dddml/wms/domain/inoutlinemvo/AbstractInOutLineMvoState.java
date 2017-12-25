@@ -455,6 +455,18 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutPOReference = inOutPOReference;
     }
 
+    private BigDecimal inOutFreightAmount;
+
+    public BigDecimal getInOutFreightAmount()
+    {
+        return this.inOutFreightAmount;
+    }
+
+    public void setInOutFreightAmount(BigDecimal inOutFreightAmount)
+    {
+        this.inOutFreightAmount = inOutFreightAmount;
+    }
+
     private String inOutShipperId;
 
     public String getInOutShipperId()
@@ -467,6 +479,18 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutShipperId = inOutShipperId;
     }
 
+    private BigDecimal inOutChargeAmount;
+
+    public BigDecimal getInOutChargeAmount()
+    {
+        return this.inOutChargeAmount;
+    }
+
+    public void setInOutChargeAmount(BigDecimal inOutChargeAmount)
+    {
+        this.inOutChargeAmount = inOutChargeAmount;
+    }
+
     private Date inOutDatePrinted;
 
     public Date getInOutDatePrinted()
@@ -477,6 +501,18 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     public void setInOutDatePrinted(Date inOutDatePrinted)
     {
         this.inOutDatePrinted = inOutDatePrinted;
+    }
+
+    private String inOutCreatedFrom;
+
+    public String getInOutCreatedFrom()
+    {
+        return this.inOutCreatedFrom;
+    }
+
+    public void setInOutCreatedFrom(String inOutCreatedFrom)
+    {
+        this.inOutCreatedFrom = inOutCreatedFrom;
     }
 
     private String inOutSalesRepresentativeId;
@@ -790,8 +826,11 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.setInOutBusinessPartnerId(e.getInOutBusinessPartnerId());
         this.setInOutWarehouseId(e.getInOutWarehouseId());
         this.setInOutPOReference(e.getInOutPOReference());
+        this.setInOutFreightAmount(e.getInOutFreightAmount());
         this.setInOutShipperId(e.getInOutShipperId());
+        this.setInOutChargeAmount(e.getInOutChargeAmount());
         this.setInOutDatePrinted(e.getInOutDatePrinted());
+        this.setInOutCreatedFrom(e.getInOutCreatedFrom());
         this.setInOutSalesRepresentativeId(e.getInOutSalesRepresentativeId());
         this.setInOutNumberOfPackages(e.getInOutNumberOfPackages());
         this.setInOutPickDate(e.getInOutPickDate());
@@ -1162,6 +1201,17 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setInOutPOReference(e.getInOutPOReference());
         }
+        if (e.getInOutFreightAmount() == null)
+        {
+            if (e.getIsPropertyInOutFreightAmountRemoved() != null && e.getIsPropertyInOutFreightAmountRemoved())
+            {
+                this.setInOutFreightAmount(null);
+            }
+        }
+        else
+        {
+            this.setInOutFreightAmount(e.getInOutFreightAmount());
+        }
         if (e.getInOutShipperId() == null)
         {
             if (e.getIsPropertyInOutShipperIdRemoved() != null && e.getIsPropertyInOutShipperIdRemoved())
@@ -1173,6 +1223,17 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setInOutShipperId(e.getInOutShipperId());
         }
+        if (e.getInOutChargeAmount() == null)
+        {
+            if (e.getIsPropertyInOutChargeAmountRemoved() != null && e.getIsPropertyInOutChargeAmountRemoved())
+            {
+                this.setInOutChargeAmount(null);
+            }
+        }
+        else
+        {
+            this.setInOutChargeAmount(e.getInOutChargeAmount());
+        }
         if (e.getInOutDatePrinted() == null)
         {
             if (e.getIsPropertyInOutDatePrintedRemoved() != null && e.getIsPropertyInOutDatePrintedRemoved())
@@ -1183,6 +1244,17 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         else
         {
             this.setInOutDatePrinted(e.getInOutDatePrinted());
+        }
+        if (e.getInOutCreatedFrom() == null)
+        {
+            if (e.getIsPropertyInOutCreatedFromRemoved() != null && e.getIsPropertyInOutCreatedFromRemoved())
+            {
+                this.setInOutCreatedFrom(null);
+            }
+        }
+        else
+        {
+            this.setInOutCreatedFrom(e.getInOutCreatedFrom());
         }
         if (e.getInOutSalesRepresentativeId() == null)
         {

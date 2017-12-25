@@ -209,13 +209,31 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
+        public virtual decimal? InOutFreightAmount
+        {
+            get;
+            set;
+        }
+
         public virtual string InOutShipperId
         {
             get;
             set;
         }
 
+        public virtual decimal? InOutChargeAmount
+        {
+            get;
+            set;
+        }
+
         public virtual DateTime? InOutDatePrinted
+        {
+            get;
+            set;
+        }
+
+        public virtual string InOutCreatedFrom
         {
             get;
             set;
@@ -388,8 +406,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             state.InOutBusinessPartnerId = this.InOutBusinessPartnerId;
             state.InOutWarehouseId = this.InOutWarehouseId;
             state.InOutPOReference = this.InOutPOReference;
+            if (this.InOutFreightAmount != null && this.InOutFreightAmount.HasValue) { state.InOutFreightAmount = this.InOutFreightAmount.Value; }
             state.InOutShipperId = this.InOutShipperId;
+            if (this.InOutChargeAmount != null && this.InOutChargeAmount.HasValue) { state.InOutChargeAmount = this.InOutChargeAmount.Value; }
             state.InOutDatePrinted = this.InOutDatePrinted;
+            state.InOutCreatedFrom = this.InOutCreatedFrom;
             state.InOutSalesRepresentativeId = this.InOutSalesRepresentativeId;
             if (this.InOutNumberOfPackages != null && this.InOutNumberOfPackages.HasValue) { state.InOutNumberOfPackages = this.InOutNumberOfPackages.Value; }
             state.InOutPickDate = this.InOutPickDate;

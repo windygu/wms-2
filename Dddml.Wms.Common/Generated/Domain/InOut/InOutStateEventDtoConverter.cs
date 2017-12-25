@@ -56,8 +56,11 @@ namespace Dddml.Wms.Domain.InOut
             dto.BusinessPartnerId = e.BusinessPartnerId;
             dto.WarehouseId = e.WarehouseId;
             dto.POReference = e.POReference;
+            dto.FreightAmount = e.FreightAmount;
             dto.ShipperId = e.ShipperId;
+            dto.ChargeAmount = e.ChargeAmount;
             dto.DatePrinted = e.DatePrinted;
+            dto.CreatedFrom = e.CreatedFrom;
             dto.SalesRepresentativeId = e.SalesRepresentativeId;
             dto.NumberOfPackages = e.NumberOfPackages;
             dto.PickDate = e.PickDate;
@@ -102,8 +105,11 @@ namespace Dddml.Wms.Domain.InOut
             dto.BusinessPartnerId = e.BusinessPartnerId;
             dto.WarehouseId = e.WarehouseId;
             dto.POReference = e.POReference;
+            dto.FreightAmount = e.FreightAmount;
             dto.ShipperId = e.ShipperId;
+            dto.ChargeAmount = e.ChargeAmount;
             dto.DatePrinted = e.DatePrinted;
+            dto.CreatedFrom = e.CreatedFrom;
             dto.SalesRepresentativeId = e.SalesRepresentativeId;
             dto.NumberOfPackages = e.NumberOfPackages;
             dto.PickDate = e.PickDate;
@@ -130,8 +136,11 @@ namespace Dddml.Wms.Domain.InOut
             dto.IsPropertyBusinessPartnerIdRemoved = e.IsPropertyBusinessPartnerIdRemoved;
             dto.IsPropertyWarehouseIdRemoved = e.IsPropertyWarehouseIdRemoved;
             dto.IsPropertyPOReferenceRemoved = e.IsPropertyPOReferenceRemoved;
+            dto.IsPropertyFreightAmountRemoved = e.IsPropertyFreightAmountRemoved;
             dto.IsPropertyShipperIdRemoved = e.IsPropertyShipperIdRemoved;
+            dto.IsPropertyChargeAmountRemoved = e.IsPropertyChargeAmountRemoved;
             dto.IsPropertyDatePrintedRemoved = e.IsPropertyDatePrintedRemoved;
+            dto.IsPropertyCreatedFromRemoved = e.IsPropertyCreatedFromRemoved;
             dto.IsPropertySalesRepresentativeIdRemoved = e.IsPropertySalesRepresentativeIdRemoved;
             dto.IsPropertyNumberOfPackagesRemoved = e.IsPropertyNumberOfPackagesRemoved;
             dto.IsPropertyPickDateRemoved = e.IsPropertyPickDateRemoved;

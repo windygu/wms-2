@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.inout.hibernate;
 
 import java.util.*;
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.hibernate.Session;
 import org.hibernate.Criteria;
@@ -27,7 +27,7 @@ public class HibernateInOutStateQueryRepository implements InOutStateQueryReposi
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("DocumentNumber", "DocumentStatusId", "Posted", "Processed", "Processing", "DocumentTypeId", "Description", "OrderId", "DateOrdered", "IsPrinted", "MovementTypeId", "MovementDate", "BusinessPartnerId", "WarehouseId", "POReference", "ShipperId", "DatePrinted", "SalesRepresentativeId", "NumberOfPackages", "PickDate", "ShipDate", "TrackingNumber", "DateReceived", "IsInTransit", "IsApproved", "IsInDispute", "RmaDocumentNumber", "ReversalDocumentNumber", "InOutLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("DocumentNumber", "DocumentStatusId", "Posted", "Processed", "Processing", "DocumentTypeId", "Description", "OrderId", "DateOrdered", "IsPrinted", "MovementTypeId", "MovementDate", "BusinessPartnerId", "WarehouseId", "POReference", "FreightAmount", "ShipperId", "ChargeAmount", "DatePrinted", "CreatedFrom", "SalesRepresentativeId", "NumberOfPackages", "PickDate", "ShipDate", "TrackingNumber", "DateReceived", "IsInTransit", "IsApproved", "IsInDispute", "RmaDocumentNumber", "ReversalDocumentNumber", "InOutLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

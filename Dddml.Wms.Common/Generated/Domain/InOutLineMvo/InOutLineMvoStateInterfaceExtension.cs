@@ -79,8 +79,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutBusinessPartnerId = state.InOutBusinessPartnerId;
             cmd.InOutWarehouseId = state.InOutWarehouseId;
             cmd.InOutPOReference = state.InOutPOReference;
+            cmd.InOutFreightAmount = state.InOutFreightAmount;
             cmd.InOutShipperId = state.InOutShipperId;
+            cmd.InOutChargeAmount = state.InOutChargeAmount;
             cmd.InOutDatePrinted = state.InOutDatePrinted;
+            cmd.InOutCreatedFrom = state.InOutCreatedFrom;
             cmd.InOutSalesRepresentativeId = state.InOutSalesRepresentativeId;
             cmd.InOutNumberOfPackages = state.InOutNumberOfPackages;
             cmd.InOutPickDate = state.InOutPickDate;
@@ -116,6 +119,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             if (state.InOutPOReference == null) { cmd.IsPropertyInOutPOReferenceRemoved = true; }
             if (state.InOutShipperId == null) { cmd.IsPropertyInOutShipperIdRemoved = true; }
             if (state.InOutDatePrinted == null) { cmd.IsPropertyInOutDatePrintedRemoved = true; }
+            if (state.InOutCreatedFrom == null) { cmd.IsPropertyInOutCreatedFromRemoved = true; }
             if (state.InOutSalesRepresentativeId == null) { cmd.IsPropertyInOutSalesRepresentativeIdRemoved = true; }
             if (state.InOutPickDate == null) { cmd.IsPropertyInOutPickDateRemoved = true; }
             if (state.InOutShipDate == null) { cmd.IsPropertyInOutShipDateRemoved = true; }
@@ -166,8 +170,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutBusinessPartnerId = state.InOutBusinessPartnerId;
             cmd.InOutWarehouseId = state.InOutWarehouseId;
             cmd.InOutPOReference = state.InOutPOReference;
+            cmd.InOutFreightAmount = state.InOutFreightAmount;
             cmd.InOutShipperId = state.InOutShipperId;
+            cmd.InOutChargeAmount = state.InOutChargeAmount;
             cmd.InOutDatePrinted = state.InOutDatePrinted;
+            cmd.InOutCreatedFrom = state.InOutCreatedFrom;
             cmd.InOutSalesRepresentativeId = state.InOutSalesRepresentativeId;
             cmd.InOutNumberOfPackages = state.InOutNumberOfPackages;
             cmd.InOutPickDate = state.InOutPickDate;

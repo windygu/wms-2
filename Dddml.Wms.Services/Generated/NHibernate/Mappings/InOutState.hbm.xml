@@ -23,8 +23,11 @@
     <property name="BusinessPartnerId" ></property>
     <property name="WarehouseId" ></property>
     <property name="POReference" ></property>
+    <property name="FreightAmount" ></property>
     <property name="ShipperId" ></property>
+    <property name="ChargeAmount" ></property>
     <property name="DatePrinted" ></property>
+    <property name="CreatedFrom" ></property>
     <property name="SalesRepresentativeId" ></property>
     <property name="NumberOfPackages" ></property>
     <property name="PickDate" ></property>

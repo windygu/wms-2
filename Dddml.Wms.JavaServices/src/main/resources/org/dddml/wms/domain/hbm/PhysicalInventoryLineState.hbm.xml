@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.physicalinventory">
+  
+  <class name="org.dddml.wms.domain.physicalinventory.AbstractPhysicalInventoryLineState$SimplePhysicalInventoryLineState" table="PhysicalInventoryLines">
+
+	<composite-id name="physicalInventoryLineId" class="org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineId">
+		<key-property name="physicalInventoryDocumentNumber" ><column name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" length="50" /></key-property>
+		<key-property name="lineNumber" ><column name="PhysicalInventoryLineIdLineNumber" length="50" /></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="locatorId" ></property>
+	<property name="productId" ></property>
+	<property name="attributeSetInstanceId" ></property>
+	<property name="bookQuantity" ></property>
+	<property name="countedQuantity" ></property>
+	<property name="processed" ></property>
+	<property name="reversalLineNumber" ></property>
+	<property name="description" ></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

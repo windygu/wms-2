@@ -74,8 +74,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.InOutBusinessPartnerId = e.InOutBusinessPartnerId;
             dto.InOutWarehouseId = e.InOutWarehouseId;
             dto.InOutPOReference = e.InOutPOReference;
+            dto.InOutFreightAmount = e.InOutFreightAmount;
             dto.InOutShipperId = e.InOutShipperId;
+            dto.InOutChargeAmount = e.InOutChargeAmount;
             dto.InOutDatePrinted = e.InOutDatePrinted;
+            dto.InOutCreatedFrom = e.InOutCreatedFrom;
             dto.InOutSalesRepresentativeId = e.InOutSalesRepresentativeId;
             dto.InOutNumberOfPackages = e.InOutNumberOfPackages;
             dto.InOutPickDate = e.InOutPickDate;
@@ -134,8 +137,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.InOutBusinessPartnerId = e.InOutBusinessPartnerId;
             dto.InOutWarehouseId = e.InOutWarehouseId;
             dto.InOutPOReference = e.InOutPOReference;
+            dto.InOutFreightAmount = e.InOutFreightAmount;
             dto.InOutShipperId = e.InOutShipperId;
+            dto.InOutChargeAmount = e.InOutChargeAmount;
             dto.InOutDatePrinted = e.InOutDatePrinted;
+            dto.InOutCreatedFrom = e.InOutCreatedFrom;
             dto.InOutSalesRepresentativeId = e.InOutSalesRepresentativeId;
             dto.InOutNumberOfPackages = e.InOutNumberOfPackages;
             dto.InOutPickDate = e.InOutPickDate;
@@ -184,8 +190,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.IsPropertyInOutBusinessPartnerIdRemoved = e.IsPropertyInOutBusinessPartnerIdRemoved;
             dto.IsPropertyInOutWarehouseIdRemoved = e.IsPropertyInOutWarehouseIdRemoved;
             dto.IsPropertyInOutPOReferenceRemoved = e.IsPropertyInOutPOReferenceRemoved;
+            dto.IsPropertyInOutFreightAmountRemoved = e.IsPropertyInOutFreightAmountRemoved;
             dto.IsPropertyInOutShipperIdRemoved = e.IsPropertyInOutShipperIdRemoved;
+            dto.IsPropertyInOutChargeAmountRemoved = e.IsPropertyInOutChargeAmountRemoved;
             dto.IsPropertyInOutDatePrintedRemoved = e.IsPropertyInOutDatePrintedRemoved;
+            dto.IsPropertyInOutCreatedFromRemoved = e.IsPropertyInOutCreatedFromRemoved;
             dto.IsPropertyInOutSalesRepresentativeIdRemoved = e.IsPropertyInOutSalesRepresentativeIdRemoved;
             dto.IsPropertyInOutNumberOfPackagesRemoved = e.IsPropertyInOutNumberOfPackagesRemoved;
             dto.IsPropertyInOutPickDateRemoved = e.IsPropertyInOutPickDateRemoved;

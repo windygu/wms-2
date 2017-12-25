@@ -509,6 +509,40 @@
     <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\HibernateOrganizationStateRepository.java">
       <DependentUpon>GenerateOrganizationDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\GeneratePhysicalInventoryLineMvoDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\HibernatePhysicalInventoryLineMvoEventStore.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\HibernatePhysicalInventoryLineMvoStateQueryRepository.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\HibernatePhysicalInventoryLineMvoStateRepository.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\GeneratePhysicalInventoryDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryEventStore.java">
+      <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryLineStateDao.java">
+      <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryLineStateEventDao.java">
+      <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryStateQueryRepository.java">
+      <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryStateRepository.java">
+      <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\productcategorymember\hibernate\GenerateProductCategoryMemberDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -673,6 +707,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -1050,6 +1102,12 @@
 .\OrganizationStructureStateEvent.hbm.xml
 .\OrganizationStructureTypeState.hbm.xml
 .\OrganizationStructureTypeStateEvent.hbm.xml
+.\PhysicalInventoryLineMvoState.hbm.xml
+.\PhysicalInventoryLineMvoStateEvent.hbm.xml
+.\PhysicalInventoryLineState.hbm.xml
+.\PhysicalInventoryLineStateEvent.hbm.xml
+.\PhysicalInventoryState.hbm.xml
+.\PhysicalInventoryStateEvent.hbm.xml
 .\ProductCategoryMemberState.hbm.xml
 .\ProductCategoryMemberStateEvent.hbm.xml
 .\ProductCategoryState.hbm.xml
@@ -1482,6 +1540,28 @@
 .\HibernateMovementConfirmationLineStateEventDao.java
 .\HibernateMovementConfirmationStateQueryRepository.java
 .\HibernateMovementConfirmationStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\GeneratePhysicalInventoryDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePhysicalInventoryDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePhysicalInventoryDomainHibernate.txt
+.\HibernatePhysicalInventoryEventStore.java
+.\HibernatePhysicalInventoryLineStateDao.java
+.\HibernatePhysicalInventoryLineStateEventDao.java
+.\HibernatePhysicalInventoryStateQueryRepository.java
+.\HibernatePhysicalInventoryStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\GeneratePhysicalInventoryLineMvoDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePhysicalInventoryLineMvoDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePhysicalInventoryLineMvoDomainHibernate.txt
+.\HibernatePhysicalInventoryLineMvoEventStore.java
+.\HibernatePhysicalInventoryLineMvoStateQueryRepository.java
+.\HibernatePhysicalInventoryLineMvoStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

@@ -104,13 +104,31 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
+        decimal? FreightAmount
+        {
+            get;
+            set;
+        }
+
         string ShipperId
         {
             get;
             set;
         }
 
+        decimal? ChargeAmount
+        {
+            get;
+            set;
+        }
+
         DateTime? DatePrinted
+        {
+            get;
+            set;
+        }
+
+        string CreatedFrom
         {
             get;
             set;

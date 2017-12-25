@@ -81,9 +81,15 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string POReference { get; set; }
 
+		public virtual decimal? FreightAmount { get; set; }
+
 		public virtual string ShipperId { get; set; }
 
+		public virtual decimal? ChargeAmount { get; set; }
+
 		public virtual DateTime? DatePrinted { get; set; }
+
+		public virtual string CreatedFrom { get; set; }
 
 		public virtual string SalesRepresentativeId { get; set; }
 
@@ -356,6 +362,25 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
+		public virtual bool? IsPropertyFreightAmountRemoved { get; set; }
+
+        bool IMergePatchInOut.IsPropertyFreightAmountRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyFreightAmountRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyFreightAmountRemoved = value;
+            }
+        }
+
 		public virtual bool? IsPropertyShipperIdRemoved { get; set; }
 
         bool IMergePatchInOut.IsPropertyShipperIdRemoved
@@ -375,6 +400,25 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
+		public virtual bool? IsPropertyChargeAmountRemoved { get; set; }
+
+        bool IMergePatchInOut.IsPropertyChargeAmountRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyChargeAmountRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyChargeAmountRemoved = value;
+            }
+        }
+
 		public virtual bool? IsPropertyDatePrintedRemoved { get; set; }
 
         bool IMergePatchInOut.IsPropertyDatePrintedRemoved
@@ -391,6 +435,25 @@ namespace Dddml.Wms.Domain.InOut
             set
             {
                 this.IsPropertyDatePrintedRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyCreatedFromRemoved { get; set; }
+
+        bool IMergePatchInOut.IsPropertyCreatedFromRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyCreatedFromRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyCreatedFromRemoved = value;
             }
         }
 

@@ -86,9 +86,15 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		string InOutPOReference { get; set; }
 
+		decimal? InOutFreightAmount { get; set; }
+
 		string InOutShipperId { get; set; }
 
+		decimal? InOutChargeAmount { get; set; }
+
 		DateTime? InOutDatePrinted { get; set; }
+
+		string InOutCreatedFrom { get; set; }
 
 		string InOutSalesRepresentativeId { get; set; }
 
@@ -194,9 +200,15 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool IsPropertyInOutPOReferenceRemoved { get; set; }
 
+		bool IsPropertyInOutFreightAmountRemoved { get; set; }
+
 		bool IsPropertyInOutShipperIdRemoved { get; set; }
 
+		bool IsPropertyInOutChargeAmountRemoved { get; set; }
+
 		bool IsPropertyInOutDatePrintedRemoved { get; set; }
+
+		bool IsPropertyInOutCreatedFromRemoved { get; set; }
 
 		bool IsPropertyInOutSalesRepresentativeIdRemoved { get; set; }
 

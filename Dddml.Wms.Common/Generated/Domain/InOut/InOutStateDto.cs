@@ -105,13 +105,31 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
+        public virtual decimal? FreightAmount
+        {
+            get;
+            set;
+        }
+
         public virtual string ShipperId
         {
             get;
             set;
         }
 
+        public virtual decimal? ChargeAmount
+        {
+            get;
+            set;
+        }
+
         public virtual DateTime? DatePrinted
+        {
+            get;
+            set;
+        }
+
+        public virtual string CreatedFrom
         {
             get;
             set;
@@ -249,8 +267,11 @@ namespace Dddml.Wms.Domain.InOut
             state.BusinessPartnerId = this.BusinessPartnerId;
             state.WarehouseId = this.WarehouseId;
             state.POReference = this.POReference;
+            if (this.FreightAmount != null && this.FreightAmount.HasValue) { state.FreightAmount = this.FreightAmount.Value; }
             state.ShipperId = this.ShipperId;
+            if (this.ChargeAmount != null && this.ChargeAmount.HasValue) { state.ChargeAmount = this.ChargeAmount.Value; }
             state.DatePrinted = this.DatePrinted;
+            state.CreatedFrom = this.CreatedFrom;
             state.SalesRepresentativeId = this.SalesRepresentativeId;
             if (this.NumberOfPackages != null && this.NumberOfPackages.HasValue) { state.NumberOfPackages = this.NumberOfPackages.Value; }
             state.PickDate = this.PickDate;

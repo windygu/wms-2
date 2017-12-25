@@ -164,6 +164,12 @@
     <Compile Include="Generated\OrganizationTreeApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\PhysicalInventoryApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\PhysicalInventoryLineMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\ProductApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -236,6 +242,8 @@
 .\OrganizationStructureApplicationServiceProxy.cs
 .\OrganizationStructureTypeApplicationServiceProxy.cs
 .\OrganizationTreeApplicationServiceProxy.cs
+.\PhysicalInventoryApplicationServiceProxy.cs
+.\PhysicalInventoryLineMvoApplicationServiceProxy.cs
 .\ProductApplicationServiceProxy.cs
 .\ProductCategoryApplicationServiceProxy.cs
 .\ProductCategoryMemberApplicationServiceProxy.cs

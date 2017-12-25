@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.PhysicalInventory">
+  
+  <class name="Dddml.Wms.Domain.PhysicalInventory.PhysicalInventoryState" table="PhysicalInventories">
+
+	<id name="DocumentNumber" length="50" column="DocumentNumber"><generator class="assigned"/></id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="DocumentStatusId" ></property>
+    <property name="WarehouseId" ></property>
+    <property name="Posted" ></property>
+    <property name="Processed" ></property>
+    <property name="Processing" ></property>
+    <property name="DocumentTypeId" ></property>
+    <property name="MovementDate" ></property>
+    <property name="Description" ></property>
+    <property name="IsApproved" ></property>
+    <property name="ApprovalAmount" ></property>
+    <property name="IsQuantityUpdated" ></property>
+    <property name="ReversalDocumentNumber" ></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="Deleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" />
+
+    <property name="UpdatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

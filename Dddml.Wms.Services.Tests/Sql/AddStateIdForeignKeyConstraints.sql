@@ -46,6 +46,14 @@ alter TABLE `OrderItems` add
     (`OrderId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+alter TABLE `PhysicalInventoryLines` add
+  CONSTRAINT `FK_PhysicalInventoryLine_PhysicalInventory_StateId` 
+  FOREIGN KEY 
+    (`PhysicalInventoryLineIdPhysicalInventoryDocumentNumber`) 
+  REFERENCES `PhysicalInventories` 
+    (`DocumentNumber`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 alter TABLE `ShipmentItems` add
   CONSTRAINT `FK_ShipmentItem_Shipment_StateId` 
   FOREIGN KEY 

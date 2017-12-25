@@ -65,6 +65,10 @@
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationStructureTypeStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationStructureState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationStructureStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/PhysicalInventoryState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/PhysicalInventoryStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/PhysicalInventoryLineState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/PhysicalInventoryLineStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryState.hbm.xml"/>
@@ -106,6 +110,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/MovementConfirmationLineMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemMvoStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/PhysicalInventoryLineMvoState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/PhysicalInventoryLineMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentItemMvoState.hbm.xml"/>

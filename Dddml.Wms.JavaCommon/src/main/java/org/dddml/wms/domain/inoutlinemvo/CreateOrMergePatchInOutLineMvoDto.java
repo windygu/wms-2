@@ -379,6 +379,18 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutPOReference = inOutPOReference;
     }
 
+    private BigDecimal inOutFreightAmount;
+
+    public BigDecimal getInOutFreightAmount()
+    {
+        return this.inOutFreightAmount;
+    }
+
+    public void setInOutFreightAmount(BigDecimal inOutFreightAmount)
+    {
+        this.inOutFreightAmount = inOutFreightAmount;
+    }
+
     private String inOutShipperId;
 
     public String getInOutShipperId()
@@ -391,6 +403,18 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutShipperId = inOutShipperId;
     }
 
+    private BigDecimal inOutChargeAmount;
+
+    public BigDecimal getInOutChargeAmount()
+    {
+        return this.inOutChargeAmount;
+    }
+
+    public void setInOutChargeAmount(BigDecimal inOutChargeAmount)
+    {
+        this.inOutChargeAmount = inOutChargeAmount;
+    }
+
     private Date inOutDatePrinted;
 
     public Date getInOutDatePrinted()
@@ -401,6 +425,18 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
     public void setInOutDatePrinted(Date inOutDatePrinted)
     {
         this.inOutDatePrinted = inOutDatePrinted;
+    }
+
+    private String inOutCreatedFrom;
+
+    public String getInOutCreatedFrom()
+    {
+        return this.inOutCreatedFrom;
+    }
+
+    public void setInOutCreatedFrom(String inOutCreatedFrom)
+    {
+        this.inOutCreatedFrom = inOutCreatedFrom;
     }
 
     private String inOutSalesRepresentativeId;
@@ -967,6 +1003,18 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyInOutPOReferenceRemoved = removed;
     }
 
+    private Boolean isPropertyInOutFreightAmountRemoved;
+
+    public Boolean getIsPropertyInOutFreightAmountRemoved()
+    {
+        return this.isPropertyInOutFreightAmountRemoved;
+    }
+
+    public void setIsPropertyInOutFreightAmountRemoved(Boolean removed)
+    {
+        this.isPropertyInOutFreightAmountRemoved = removed;
+    }
+
     private Boolean isPropertyInOutShipperIdRemoved;
 
     public Boolean getIsPropertyInOutShipperIdRemoved()
@@ -979,6 +1027,18 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyInOutShipperIdRemoved = removed;
     }
 
+    private Boolean isPropertyInOutChargeAmountRemoved;
+
+    public Boolean getIsPropertyInOutChargeAmountRemoved()
+    {
+        return this.isPropertyInOutChargeAmountRemoved;
+    }
+
+    public void setIsPropertyInOutChargeAmountRemoved(Boolean removed)
+    {
+        this.isPropertyInOutChargeAmountRemoved = removed;
+    }
+
     private Boolean isPropertyInOutDatePrintedRemoved;
 
     public Boolean getIsPropertyInOutDatePrintedRemoved()
@@ -989,6 +1049,18 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
     public void setIsPropertyInOutDatePrintedRemoved(Boolean removed)
     {
         this.isPropertyInOutDatePrintedRemoved = removed;
+    }
+
+    private Boolean isPropertyInOutCreatedFromRemoved;
+
+    public Boolean getIsPropertyInOutCreatedFromRemoved()
+    {
+        return this.isPropertyInOutCreatedFromRemoved;
+    }
+
+    public void setIsPropertyInOutCreatedFromRemoved(Boolean removed)
+    {
+        this.isPropertyInOutCreatedFromRemoved = removed;
     }
 
     private Boolean isPropertyInOutSalesRepresentativeIdRemoved;
@@ -1229,8 +1301,11 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setInOutBusinessPartnerId(this.getInOutBusinessPartnerId());
         command.setInOutWarehouseId(this.getInOutWarehouseId());
         command.setInOutPOReference(this.getInOutPOReference());
+        command.setInOutFreightAmount(this.getInOutFreightAmount());
         command.setInOutShipperId(this.getInOutShipperId());
+        command.setInOutChargeAmount(this.getInOutChargeAmount());
         command.setInOutDatePrinted(this.getInOutDatePrinted());
+        command.setInOutCreatedFrom(this.getInOutCreatedFrom());
         command.setInOutSalesRepresentativeId(this.getInOutSalesRepresentativeId());
         command.setInOutNumberOfPackages(this.getInOutNumberOfPackages());
         command.setInOutPickDate(this.getInOutPickDate());
@@ -1302,8 +1377,11 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setIsPropertyInOutBusinessPartnerIdRemoved(this.getIsPropertyInOutBusinessPartnerIdRemoved());
         command.setIsPropertyInOutWarehouseIdRemoved(this.getIsPropertyInOutWarehouseIdRemoved());
         command.setIsPropertyInOutPOReferenceRemoved(this.getIsPropertyInOutPOReferenceRemoved());
+        command.setIsPropertyInOutFreightAmountRemoved(this.getIsPropertyInOutFreightAmountRemoved());
         command.setIsPropertyInOutShipperIdRemoved(this.getIsPropertyInOutShipperIdRemoved());
+        command.setIsPropertyInOutChargeAmountRemoved(this.getIsPropertyInOutChargeAmountRemoved());
         command.setIsPropertyInOutDatePrintedRemoved(this.getIsPropertyInOutDatePrintedRemoved());
+        command.setIsPropertyInOutCreatedFromRemoved(this.getIsPropertyInOutCreatedFromRemoved());
         command.setIsPropertyInOutSalesRepresentativeIdRemoved(this.getIsPropertyInOutSalesRepresentativeIdRemoved());
         command.setIsPropertyInOutNumberOfPackagesRemoved(this.getIsPropertyInOutNumberOfPackagesRemoved());
         command.setIsPropertyInOutPickDateRemoved(this.getIsPropertyInOutPickDateRemoved());

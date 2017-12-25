@@ -237,9 +237,15 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 			this.InOutPOReference = e.InOutPOReference;
 
+            this.InOutFreightAmount = (e.InOutFreightAmount != null && e.InOutFreightAmount.HasValue) ? e.InOutFreightAmount.Value : default(decimal);
+
 			this.InOutShipperId = e.InOutShipperId;
 
+            this.InOutChargeAmount = (e.InOutChargeAmount != null && e.InOutChargeAmount.HasValue) ? e.InOutChargeAmount.Value : default(decimal);
+
 			this.InOutDatePrinted = e.InOutDatePrinted;
+
+			this.InOutCreatedFrom = e.InOutCreatedFrom;
 
 			this.InOutSalesRepresentativeId = e.InOutSalesRepresentativeId;
 
@@ -660,6 +666,18 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.InOutPOReference = e.InOutPOReference;
 			}
 
+			if (e.InOutFreightAmount == null)
+			{
+				if (e.IsPropertyInOutFreightAmountRemoved)
+				{
+					this.InOutFreightAmount = default(decimal);
+				}
+			}
+			else
+			{
+				this.InOutFreightAmount = (e.InOutFreightAmount != null && e.InOutFreightAmount.HasValue) ? e.InOutFreightAmount.Value : default(decimal);
+			}
+
 			if (e.InOutShipperId == null)
 			{
 				if (e.IsPropertyInOutShipperIdRemoved)
@@ -672,6 +690,18 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.InOutShipperId = e.InOutShipperId;
 			}
 
+			if (e.InOutChargeAmount == null)
+			{
+				if (e.IsPropertyInOutChargeAmountRemoved)
+				{
+					this.InOutChargeAmount = default(decimal);
+				}
+			}
+			else
+			{
+				this.InOutChargeAmount = (e.InOutChargeAmount != null && e.InOutChargeAmount.HasValue) ? e.InOutChargeAmount.Value : default(decimal);
+			}
+
 			if (e.InOutDatePrinted == null)
 			{
 				if (e.IsPropertyInOutDatePrintedRemoved)
@@ -682,6 +712,18 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			else
 			{
 				this.InOutDatePrinted = e.InOutDatePrinted;
+			}
+
+			if (e.InOutCreatedFrom == null)
+			{
+				if (e.IsPropertyInOutCreatedFromRemoved)
+				{
+					this.InOutCreatedFrom = default(string);
+				}
+			}
+			else
+			{
+				this.InOutCreatedFrom = e.InOutCreatedFrom;
 			}
 
 			if (e.InOutSalesRepresentativeId == null)

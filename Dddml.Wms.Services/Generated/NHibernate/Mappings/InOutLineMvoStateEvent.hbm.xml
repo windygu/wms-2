@@ -43,8 +43,11 @@
     <property name="InOutBusinessPartnerId" ></property>
     <property name="InOutWarehouseId" ></property>
     <property name="InOutPOReference" ></property>
+    <property name="InOutFreightAmount" ></property>
     <property name="InOutShipperId" ></property>
+    <property name="InOutChargeAmount" ></property>
     <property name="InOutDatePrinted" ></property>
+    <property name="InOutCreatedFrom" ></property>
     <property name="InOutSalesRepresentativeId" ></property>
     <property name="InOutNumberOfPackages" ></property>
     <property name="InOutPickDate" ></property>
@@ -136,9 +139,15 @@
 
         <property name="IsPropertyInOutPOReferenceRemoved" column="IsPropertyInOutPOReferenceRemoved"/>
 
+        <property name="IsPropertyInOutFreightAmountRemoved" column="IsPropertyInOutFreightAmountRemoved"/>
+
         <property name="IsPropertyInOutShipperIdRemoved" column="IsPropertyInOutShipperIdRemoved"/>
 
+        <property name="IsPropertyInOutChargeAmountRemoved" column="IsPropertyInOutChargeAmountRemoved"/>
+
         <property name="IsPropertyInOutDatePrintedRemoved" column="IsPropertyInOutDatePrintedRemoved"/>
+
+        <property name="IsPropertyInOutCreatedFromRemoved" column="IsPropertyInOutCreatedFromRemoved"/>
 
         <property name="IsPropertyInOutSalesRepresentativeIdRemoved" column="IsPropertyInOutSalesRepresentativeIdRemoved"/>
 

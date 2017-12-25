@@ -176,3 +176,15 @@
     drop table if exists MovementConfirmations;
 
     drop table if exists MovementConfirmationStateEvents;
+
+    drop table if exists PhysicalInventories;
+
+    drop table if exists PhysicalInventoryStateEvents;
+
+    drop table if exists PhysicalInventoryLines;
+
+    drop table if exists PhysicalInventoryLineStateEvents;
+
+    drop table if exists PhysicalInventoryLine_RV;
+
+    drop table if exists PhysicalInventoryLineMvoStateEvents;

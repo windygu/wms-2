@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.physicalinventory">
+  
+  <class name="org.dddml.wms.domain.physicalinventory.AbstractPhysicalInventoryState$SimplePhysicalInventoryState" table="PhysicalInventories">
+
+	<id name="documentNumber" length="50" column="DocumentNumber"><generator class="assigned"/></id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="documentStatusId" ></property>
+	<property name="warehouseId" ></property>
+	<property name="posted" ></property>
+	<property name="processed" ></property>
+	<property name="processing" ></property>
+	<property name="documentTypeId" ></property>
+	<property name="movementDate" ></property>
+	<property name="description" ></property>
+	<property name="isApproved" ></property>
+	<property name="approvalAmount" ></property>
+	<property name="isQuantityUpdated" ></property>
+	<property name="reversalDocumentNumber" ></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

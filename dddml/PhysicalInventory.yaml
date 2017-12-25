@@ -1,0 +1,99 @@
+#%DDDML 0.1
+
+---
+          
+# ------------------------------
+aggregates:
+
+    # --------------- aggregate ---------------
+    PhysicalInventory:
+
+      id:
+        name: DocumentNumber
+        type: string
+
+      properties:
+
+        DocumentStatusId:
+          type: string
+          commandType: DocumentAction
+          commandName: DocumentAction
+
+        WarehouseId:
+          type: string
+          
+        Posted:
+          type: bool
+
+        Processed:
+          type: bool 
+
+        Processing:
+          type: string
+
+        DocumentTypeId:
+          referenceType: DocumentType
+          
+        MovementDate:  
+          type: DateTime?
+
+        Description:
+          type: string
+      
+        IsApproved:
+          type: bool 
+        
+        ApprovalAmount:
+          type: decimal
+          
+        IsQuantityUpdated:
+          type: bool
+        
+        # IsGeneratedList
+          # type: bool
+        
+        ReversalDocumentNumber:
+          type: string
+
+        PhysicalInventoryLines:
+          itemType: PhysicalInventoryLine
+        
+      entities:
+          
+        PhysicalInventoryLine:
+          
+          id: 
+            name: LineNumber
+            type: string
+              
+          properties:  
+
+            LocatorId:
+              type: string
+
+            ProductId:
+              type: string
+
+            AttributeSetInstanceId:
+              type: string
+
+            BookQuantity: 
+              type: decimal
+
+            CountedQuantity: 
+              type: decimal
+
+            Processed: 
+              type: bool
+
+            # QuantityInternalUse: 
+              # type: decimal
+
+            ReversalLineNumber:
+              type: long
+                
+            Description:
+              type: string
+
+                
+                

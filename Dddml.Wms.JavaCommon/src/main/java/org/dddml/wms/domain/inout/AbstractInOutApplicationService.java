@@ -3,8 +3,8 @@ package org.dddml.wms.domain.inout;
 import java.util.*;
 import java.util.function.Consumer;
 import org.dddml.support.criterion.Criterion;
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 

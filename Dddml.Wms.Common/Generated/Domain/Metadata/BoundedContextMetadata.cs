@@ -46,6 +46,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("Organization");
             _aggregateNames.Add("OrganizationStructureType");
             _aggregateNames.Add("OrganizationStructure");
+            _aggregateNames.Add("PhysicalInventory");
             _aggregateNames.Add("Product");
             _aggregateNames.Add("ProductCategory");
             _aggregateNames.Add("ProductCategoryMember");
@@ -66,6 +67,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("MovementLineMvo");
             _aggregateNames.Add("MovementConfirmationLineMvo");
             _aggregateNames.Add("OrderItemMvo");
+            _aggregateNames.Add("PhysicalInventoryLineMvo");
             _aggregateNames.Add("SellableInventoryItemEntryMvo");
             _aggregateNames.Add("ShipmentItemMvo");
             _aggregateNames.Add("AttributeSetInstanceExtensionFieldMvo");
@@ -87,6 +89,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("Organization", "Dddml.Wms.Domain.Organization");
             _aggregateNamespaces.Add("OrganizationStructureType", "Dddml.Wms.Domain.OrganizationStructureType");
             _aggregateNamespaces.Add("OrganizationStructure", "Dddml.Wms.Domain.OrganizationStructure");
+            _aggregateNamespaces.Add("PhysicalInventory", "Dddml.Wms.Domain.PhysicalInventory");
             _aggregateNamespaces.Add("Product", "Dddml.Wms.Domain.Product");
             _aggregateNamespaces.Add("ProductCategory", "Dddml.Wms.Domain.ProductCategory");
             _aggregateNamespaces.Add("ProductCategoryMember", "Dddml.Wms.Domain.ProductCategoryMember");
@@ -107,6 +110,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("MovementLineMvo", "Dddml.Wms.Domain.MovementLineMvo");
             _aggregateNamespaces.Add("MovementConfirmationLineMvo", "Dddml.Wms.Domain.MovementConfirmationLineMvo");
             _aggregateNamespaces.Add("OrderItemMvo", "Dddml.Wms.Domain.OrderItemMvo");
+            _aggregateNamespaces.Add("PhysicalInventoryLineMvo", "Dddml.Wms.Domain.PhysicalInventoryLineMvo");
             _aggregateNamespaces.Add("SellableInventoryItemEntryMvo", "Dddml.Wms.Domain.SellableInventoryItemEntryMvo");
             _aggregateNamespaces.Add("ShipmentItemMvo", "Dddml.Wms.Domain.ShipmentItemMvo");
             _aggregateNamespaces.Add("AttributeSetInstanceExtensionFieldMvo", "Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo");

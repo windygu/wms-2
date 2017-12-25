@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
@@ -43,8 +43,11 @@ public class InOutStateEventDtoConverter {
         dto.setBusinessPartnerId(e.getBusinessPartnerId());
         dto.setWarehouseId(e.getWarehouseId());
         dto.setPOReference(e.getPOReference());
+        dto.setFreightAmount(e.getFreightAmount());
         dto.setShipperId(e.getShipperId());
+        dto.setChargeAmount(e.getChargeAmount());
         dto.setDatePrinted(e.getDatePrinted());
+        dto.setCreatedFrom(e.getCreatedFrom());
         dto.setSalesRepresentativeId(e.getSalesRepresentativeId());
         dto.setNumberOfPackages(e.getNumberOfPackages());
         dto.setPickDate(e.getPickDate());
@@ -87,8 +90,11 @@ public class InOutStateEventDtoConverter {
         dto.setBusinessPartnerId(e.getBusinessPartnerId());
         dto.setWarehouseId(e.getWarehouseId());
         dto.setPOReference(e.getPOReference());
+        dto.setFreightAmount(e.getFreightAmount());
         dto.setShipperId(e.getShipperId());
+        dto.setChargeAmount(e.getChargeAmount());
         dto.setDatePrinted(e.getDatePrinted());
+        dto.setCreatedFrom(e.getCreatedFrom());
         dto.setSalesRepresentativeId(e.getSalesRepresentativeId());
         dto.setNumberOfPackages(e.getNumberOfPackages());
         dto.setPickDate(e.getPickDate());
@@ -115,8 +121,11 @@ public class InOutStateEventDtoConverter {
         dto.setIsPropertyBusinessPartnerIdRemoved(e.getIsPropertyBusinessPartnerIdRemoved());
         dto.setIsPropertyWarehouseIdRemoved(e.getIsPropertyWarehouseIdRemoved());
         dto.setIsPropertyPOReferenceRemoved(e.getIsPropertyPOReferenceRemoved());
+        dto.setIsPropertyFreightAmountRemoved(e.getIsPropertyFreightAmountRemoved());
         dto.setIsPropertyShipperIdRemoved(e.getIsPropertyShipperIdRemoved());
+        dto.setIsPropertyChargeAmountRemoved(e.getIsPropertyChargeAmountRemoved());
         dto.setIsPropertyDatePrintedRemoved(e.getIsPropertyDatePrintedRemoved());
+        dto.setIsPropertyCreatedFromRemoved(e.getIsPropertyCreatedFromRemoved());
         dto.setIsPropertySalesRepresentativeIdRemoved(e.getIsPropertySalesRepresentativeIdRemoved());
         dto.setIsPropertyNumberOfPackagesRemoved(e.getIsPropertyNumberOfPackagesRemoved());
         dto.setIsPropertyPickDateRemoved(e.getIsPropertyPickDateRemoved());

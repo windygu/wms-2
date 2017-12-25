@@ -19,6 +19,7 @@
                 dict.Add("OrderItemId", "_ORDERITEMID_");
                 dict.Add("OrderShipmentId", "_ORDERSHIPMENTID_");
                 dict.Add("OrganizationStructureId", "_ORGANIZATIONSTRUCTUREID_");
+                dict.Add("PhysicalInventoryLineId", "_PHYSICALINVENTORYLINEID_");
                 dict.Add("ProductCategoryMemberId", "_PRODUCTCATEGORYMEMBERID_");
                 dict.Add("SellableInventoryItemEntryId", "_SELLABLEINVENTORYITEMENTRYID_");
                 dict.Add("ShipmentItemId", "_SHIPMENTITEMID_");
@@ -57,6 +58,7 @@
                 dict.Add("name", "_NAME_");
                 dict.Add("numeric", "_NUMERIC_");
                 dict.Add("OrderItem", "_ORDERITEM_");
+                dict.Add("PhysicalInventoryLine", "_PHYSICALINVENTORYLINE_");
                 dict.Add("ProductCategory", "_PRODUCTCATEGORY_");
                 dict.Add("SellableInventoryItemEntry", "_SELLABLEINVENTORYITEMENTRY_");
                 dict.Add("ShipmentItem", "_SHIPMENTITEM_");

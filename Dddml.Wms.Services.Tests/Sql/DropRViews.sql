@@ -6,6 +6,7 @@ DROP view if exists `InventoryItemRequirementEntry_RV` ;
 DROP view if exists `MovementLine_RV` ;
 DROP view if exists `MovementConfirmationLine_RV` ;
 DROP view if exists `OrderItem_RV` ;
+DROP view if exists `PhysicalInventoryLine_RV` ;
 DROP view if exists `SellableInventoryItemEntry_RV` ;
 DROP view if exists `ShipmentItem_RV` ;
 DROP view if exists `AttributeSetInstanceExtensionField_RV` ;

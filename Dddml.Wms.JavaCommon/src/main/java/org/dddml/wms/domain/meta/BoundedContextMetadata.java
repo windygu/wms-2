@@ -44,6 +44,8 @@ public class BoundedContextMetadata {
         map.put("Organization", "Organization");
         map.put("OrganizationStructureType", "OrganizationStructureType");
         map.put("OrganizationStructure", "OrganizationStructure");
+        map.put("PhysicalInventory", "PhysicalInventory");
+        map.put("PhysicalInventoryLine", "PhysicalInventory");
         map.put("Product", "Product");
         map.put("ProductCategory", "ProductCategory");
         map.put("ProductCategoryMember", "ProductCategoryMember");
@@ -67,6 +69,7 @@ public class BoundedContextMetadata {
         map.put("MovementLineMvo", "MovementLineMvo");
         map.put("MovementConfirmationLineMvo", "MovementConfirmationLineMvo");
         map.put("OrderItemMvo", "OrderItemMvo");
+        map.put("PhysicalInventoryLineMvo", "PhysicalInventoryLineMvo");
         map.put("SellableInventoryItemEntryMvo", "SellableInventoryItemEntryMvo");
         map.put("ShipmentItemMvo", "ShipmentItemMvo");
         map.put("AttributeSetInstanceExtensionFieldMvo", "AttributeSetInstanceExtensionFieldMvo");

@@ -90,8 +90,11 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setInOutBusinessPartnerId(c.getInOutBusinessPartnerId());
         e.setInOutWarehouseId(c.getInOutWarehouseId());
         e.setInOutPOReference(c.getInOutPOReference());
+        e.setInOutFreightAmount(c.getInOutFreightAmount());
         e.setInOutShipperId(c.getInOutShipperId());
+        e.setInOutChargeAmount(c.getInOutChargeAmount());
         e.setInOutDatePrinted(c.getInOutDatePrinted());
+        e.setInOutCreatedFrom(c.getInOutCreatedFrom());
         e.setInOutSalesRepresentativeId(c.getInOutSalesRepresentativeId());
         e.setInOutNumberOfPackages(c.getInOutNumberOfPackages());
         e.setInOutPickDate(c.getInOutPickDate());
@@ -149,8 +152,11 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setInOutBusinessPartnerId(c.getInOutBusinessPartnerId());
         e.setInOutWarehouseId(c.getInOutWarehouseId());
         e.setInOutPOReference(c.getInOutPOReference());
+        e.setInOutFreightAmount(c.getInOutFreightAmount());
         e.setInOutShipperId(c.getInOutShipperId());
+        e.setInOutChargeAmount(c.getInOutChargeAmount());
         e.setInOutDatePrinted(c.getInOutDatePrinted());
+        e.setInOutCreatedFrom(c.getInOutCreatedFrom());
         e.setInOutSalesRepresentativeId(c.getInOutSalesRepresentativeId());
         e.setInOutNumberOfPackages(c.getInOutNumberOfPackages());
         e.setInOutPickDate(c.getInOutPickDate());
@@ -198,8 +204,11 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setIsPropertyInOutBusinessPartnerIdRemoved(c.getIsPropertyInOutBusinessPartnerIdRemoved());
         e.setIsPropertyInOutWarehouseIdRemoved(c.getIsPropertyInOutWarehouseIdRemoved());
         e.setIsPropertyInOutPOReferenceRemoved(c.getIsPropertyInOutPOReferenceRemoved());
+        e.setIsPropertyInOutFreightAmountRemoved(c.getIsPropertyInOutFreightAmountRemoved());
         e.setIsPropertyInOutShipperIdRemoved(c.getIsPropertyInOutShipperIdRemoved());
+        e.setIsPropertyInOutChargeAmountRemoved(c.getIsPropertyInOutChargeAmountRemoved());
         e.setIsPropertyInOutDatePrintedRemoved(c.getIsPropertyInOutDatePrintedRemoved());
+        e.setIsPropertyInOutCreatedFromRemoved(c.getIsPropertyInOutCreatedFromRemoved());
         e.setIsPropertyInOutSalesRepresentativeIdRemoved(c.getIsPropertyInOutSalesRepresentativeIdRemoved());
         e.setIsPropertyInOutNumberOfPackagesRemoved(c.getIsPropertyInOutNumberOfPackagesRemoved());
         e.setIsPropertyInOutPickDateRemoved(c.getIsPropertyInOutPickDateRemoved());

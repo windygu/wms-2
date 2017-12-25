@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractStateEvent;
@@ -201,6 +201,18 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         this.POReference = poReference;
     }
 
+    private BigDecimal freightAmount;
+
+    public BigDecimal getFreightAmount()
+    {
+        return this.freightAmount;
+    }
+
+    public void setFreightAmount(BigDecimal freightAmount)
+    {
+        this.freightAmount = freightAmount;
+    }
+
     private String shipperId;
 
     public String getShipperId()
@@ -213,6 +225,18 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         this.shipperId = shipperId;
     }
 
+    private BigDecimal chargeAmount;
+
+    public BigDecimal getChargeAmount()
+    {
+        return this.chargeAmount;
+    }
+
+    public void setChargeAmount(BigDecimal chargeAmount)
+    {
+        this.chargeAmount = chargeAmount;
+    }
+
     private Date datePrinted;
 
     public Date getDatePrinted()
@@ -223,6 +247,18 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     public void setDatePrinted(Date datePrinted)
     {
         this.datePrinted = datePrinted;
+    }
+
+    private String createdFrom;
+
+    public String getCreatedFrom()
+    {
+        return this.createdFrom;
+    }
+
+    public void setCreatedFrom(String createdFrom)
+    {
+        this.createdFrom = createdFrom;
     }
 
     private String salesRepresentativeId;
@@ -672,6 +708,16 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
             this.isPropertyPOReferenceRemoved = removed;
         }
 
+        private Boolean isPropertyFreightAmountRemoved;
+
+        public Boolean getIsPropertyFreightAmountRemoved() {
+            return this.isPropertyFreightAmountRemoved;
+        }
+
+        public void setIsPropertyFreightAmountRemoved(Boolean removed) {
+            this.isPropertyFreightAmountRemoved = removed;
+        }
+
         private Boolean isPropertyShipperIdRemoved;
 
         public Boolean getIsPropertyShipperIdRemoved() {
@@ -682,6 +728,16 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
             this.isPropertyShipperIdRemoved = removed;
         }
 
+        private Boolean isPropertyChargeAmountRemoved;
+
+        public Boolean getIsPropertyChargeAmountRemoved() {
+            return this.isPropertyChargeAmountRemoved;
+        }
+
+        public void setIsPropertyChargeAmountRemoved(Boolean removed) {
+            this.isPropertyChargeAmountRemoved = removed;
+        }
+
         private Boolean isPropertyDatePrintedRemoved;
 
         public Boolean getIsPropertyDatePrintedRemoved() {
@@ -690,6 +746,16 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
 
         public void setIsPropertyDatePrintedRemoved(Boolean removed) {
             this.isPropertyDatePrintedRemoved = removed;
+        }
+
+        private Boolean isPropertyCreatedFromRemoved;
+
+        public Boolean getIsPropertyCreatedFromRemoved() {
+            return this.isPropertyCreatedFromRemoved;
+        }
+
+        public void setIsPropertyCreatedFromRemoved(Boolean removed) {
+            this.isPropertyCreatedFromRemoved = removed;
         }
 
         private Boolean isPropertySalesRepresentativeIdRemoved;

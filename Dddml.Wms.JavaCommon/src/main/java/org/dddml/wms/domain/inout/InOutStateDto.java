@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
@@ -190,6 +190,18 @@ public class InOutStateDto
         this.POReference = poReference;
     }
 
+    private BigDecimal freightAmount;
+
+    public BigDecimal getFreightAmount()
+    {
+        return this.freightAmount;
+    }
+
+    public void setFreightAmount(BigDecimal freightAmount)
+    {
+        this.freightAmount = freightAmount;
+    }
+
     private String shipperId;
 
     public String getShipperId()
@@ -202,6 +214,18 @@ public class InOutStateDto
         this.shipperId = shipperId;
     }
 
+    private BigDecimal chargeAmount;
+
+    public BigDecimal getChargeAmount()
+    {
+        return this.chargeAmount;
+    }
+
+    public void setChargeAmount(BigDecimal chargeAmount)
+    {
+        this.chargeAmount = chargeAmount;
+    }
+
     private Date datePrinted;
 
     public Date getDatePrinted()
@@ -212,6 +236,18 @@ public class InOutStateDto
     public void setDatePrinted(Date datePrinted)
     {
         this.datePrinted = datePrinted;
+    }
+
+    private String createdFrom;
+
+    public String getCreatedFrom()
+    {
+        return this.createdFrom;
+    }
+
+    public void setCreatedFrom(String createdFrom)
+    {
+        this.createdFrom = createdFrom;
     }
 
     private String salesRepresentativeId;
@@ -501,11 +537,20 @@ public class InOutStateDto
             if (returnedFieldsContains("POReference")) {
                 dto.setPOReference(state.getPOReference());
             }
+            if (returnedFieldsContains("FreightAmount")) {
+                dto.setFreightAmount(state.getFreightAmount());
+            }
             if (returnedFieldsContains("ShipperId")) {
                 dto.setShipperId(state.getShipperId());
             }
+            if (returnedFieldsContains("ChargeAmount")) {
+                dto.setChargeAmount(state.getChargeAmount());
+            }
             if (returnedFieldsContains("DatePrinted")) {
                 dto.setDatePrinted(state.getDatePrinted());
+            }
+            if (returnedFieldsContains("CreatedFrom")) {
+                dto.setCreatedFrom(state.getCreatedFrom());
             }
             if (returnedFieldsContains("SalesRepresentativeId")) {
                 dto.setSalesRepresentativeId(state.getSalesRepresentativeId());

@@ -1,25 +1,6 @@
 #%DDDML 0.1
 
 ---
-
-# ------------------------------
-enumObjects:
-    
-    DocumentAction:
-      baseType: string
-      
-      values:
-        Draft:
-          description: Draft
-        Complete:
-          description: Complete
-        Void:
-          description: Void
-        Close: 
-          description: Close
-        Reverse:
-          description: Reverse
-
           
 # ------------------------------
 aggregates:
@@ -82,20 +63,22 @@ aggregates:
         POReference:
           type: string
 
-        # FreightAmount:
+        FreightAmount:
           # type: Money
+          type: decimal
 
         ShipperId:
           type: string
           
-        # ChargeAmount:
+        ChargeAmount:
           # type: Money
+          type: decimal
 
         DatePrinted:
           type: DateTime?
 
-        # CreatedFrom:
-          # type: string
+        CreatedFrom:
+          type: string
           
         SalesRepresentativeId:
           type: string
@@ -130,16 +113,16 @@ aggregates:
         # Weight:
           # type: decimal
 
+        # IsDropShip:
+          # type: bool
+        # DropShipBusinessPartnerId:
+          # type: string
+          
         RmaDocumentNumber: 
           type: string
 
         ReversalDocumentNumber:
           type: string
-          
-        # IsDropShip:
-          # type: bool
-        # DropShipBusinessPartnerId:
-          # type: string
           
         #dateacct timestamp without time zone NOT NULL,
         #deliveryrule character(1) NOT NULL,
@@ -164,6 +147,7 @@ aggregates:
         #processedon numeric,
         #string TerminalReference:
         
+
         InOutLines:
           itemType: InOutLine
         
@@ -221,6 +205,12 @@ aggregates:
             QuantityEntered: 
               type: decimal
 
+            RmaLineNumber: 
+              type: long
+
+            ReversalLineNumber:
+              type: long
+                
             #c_charge_id numeric(10,0),
             #c_project_id numeric(10,0),
             #c_projectphase_id numeric(10,0),
@@ -231,24 +221,4 @@ aggregates:
             #user2_id numeric(10,0),
             #ad_orgtrx_id numeric(10,0),
             #m_rmaline_id numeric(10,0),
-            
-            RmaLineNumber: 
-              type: long
-
-            ReversalLineNumber:
-              type: long
-                
-# ------------------------------
-
-#valueObjects:
-
-    #SkuId:
-    #  properties:
-    #    ProductId:
-    #      type: string
-    #    AttributeSetInstanceId:
-    #      type: string        
-
-                
-                
-                
+    

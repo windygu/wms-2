@@ -121,8 +121,11 @@ namespace Dddml.Wms.Domain.InOut
             e.BusinessPartnerId = c.BusinessPartnerId;
             e.WarehouseId = c.WarehouseId;
             e.POReference = c.POReference;
+            e.FreightAmount = c.FreightAmount;
             e.ShipperId = c.ShipperId;
+            e.ChargeAmount = c.ChargeAmount;
             e.DatePrinted = c.DatePrinted;
+            e.CreatedFrom = c.CreatedFrom;
             e.SalesRepresentativeId = c.SalesRepresentativeId;
             e.NumberOfPackages = c.NumberOfPackages;
             e.PickDate = c.PickDate;
@@ -173,8 +176,11 @@ namespace Dddml.Wms.Domain.InOut
             e.BusinessPartnerId = c.BusinessPartnerId;
             e.WarehouseId = c.WarehouseId;
             e.POReference = c.POReference;
+            e.FreightAmount = c.FreightAmount;
             e.ShipperId = c.ShipperId;
+            e.ChargeAmount = c.ChargeAmount;
             e.DatePrinted = c.DatePrinted;
+            e.CreatedFrom = c.CreatedFrom;
             e.SalesRepresentativeId = c.SalesRepresentativeId;
             e.NumberOfPackages = c.NumberOfPackages;
             e.PickDate = c.PickDate;
@@ -200,8 +206,11 @@ namespace Dddml.Wms.Domain.InOut
             e.IsPropertyBusinessPartnerIdRemoved = c.IsPropertyBusinessPartnerIdRemoved;
             e.IsPropertyWarehouseIdRemoved = c.IsPropertyWarehouseIdRemoved;
             e.IsPropertyPOReferenceRemoved = c.IsPropertyPOReferenceRemoved;
+            e.IsPropertyFreightAmountRemoved = c.IsPropertyFreightAmountRemoved;
             e.IsPropertyShipperIdRemoved = c.IsPropertyShipperIdRemoved;
+            e.IsPropertyChargeAmountRemoved = c.IsPropertyChargeAmountRemoved;
             e.IsPropertyDatePrintedRemoved = c.IsPropertyDatePrintedRemoved;
+            e.IsPropertyCreatedFromRemoved = c.IsPropertyCreatedFromRemoved;
             e.IsPropertySalesRepresentativeIdRemoved = c.IsPropertySalesRepresentativeIdRemoved;
             e.IsPropertyNumberOfPackagesRemoved = c.IsPropertyNumberOfPackagesRemoved;
             e.IsPropertyPickDateRemoved = c.IsPropertyPickDateRemoved;

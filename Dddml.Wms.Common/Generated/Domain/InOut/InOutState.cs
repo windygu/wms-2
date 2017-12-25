@@ -231,9 +231,15 @@ namespace Dddml.Wms.Domain.InOut
 
 			this.POReference = e.POReference;
 
+            this.FreightAmount = (e.FreightAmount != null && e.FreightAmount.HasValue) ? e.FreightAmount.Value : default(decimal);
+
 			this.ShipperId = e.ShipperId;
 
+            this.ChargeAmount = (e.ChargeAmount != null && e.ChargeAmount.HasValue) ? e.ChargeAmount.Value : default(decimal);
+
 			this.DatePrinted = e.DatePrinted;
+
+			this.CreatedFrom = e.CreatedFrom;
 
 			this.SalesRepresentativeId = e.SalesRepresentativeId;
 
@@ -444,6 +450,18 @@ namespace Dddml.Wms.Domain.InOut
 				this.POReference = e.POReference;
 			}
 
+			if (e.FreightAmount == null)
+			{
+				if (e.IsPropertyFreightAmountRemoved)
+				{
+					this.FreightAmount = default(decimal);
+				}
+			}
+			else
+			{
+				this.FreightAmount = (e.FreightAmount != null && e.FreightAmount.HasValue) ? e.FreightAmount.Value : default(decimal);
+			}
+
 			if (e.ShipperId == null)
 			{
 				if (e.IsPropertyShipperIdRemoved)
@@ -456,6 +474,18 @@ namespace Dddml.Wms.Domain.InOut
 				this.ShipperId = e.ShipperId;
 			}
 
+			if (e.ChargeAmount == null)
+			{
+				if (e.IsPropertyChargeAmountRemoved)
+				{
+					this.ChargeAmount = default(decimal);
+				}
+			}
+			else
+			{
+				this.ChargeAmount = (e.ChargeAmount != null && e.ChargeAmount.HasValue) ? e.ChargeAmount.Value : default(decimal);
+			}
+
 			if (e.DatePrinted == null)
 			{
 				if (e.IsPropertyDatePrintedRemoved)
@@ -466,6 +496,18 @@ namespace Dddml.Wms.Domain.InOut
 			else
 			{
 				this.DatePrinted = e.DatePrinted;
+			}
+
+			if (e.CreatedFrom == null)
+			{
+				if (e.IsPropertyCreatedFromRemoved)
+				{
+					this.CreatedFrom = default(string);
+				}
+			}
+			else
+			{
+				this.CreatedFrom = e.CreatedFrom;
 			}
 
 			if (e.SalesRepresentativeId == null)

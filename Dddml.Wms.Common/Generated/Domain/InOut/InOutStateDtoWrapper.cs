@@ -468,6 +468,37 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
+		public virtual decimal? FreightAmount
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("FreightAmount"))
+                {
+                    return _state.FreightAmount;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.FreightAmount = value.Value;
+                }
+            }
+        }
+
+        decimal IInOutStateProperties.FreightAmount
+        {
+            get 
+            {
+                return (this._state as IInOutStateProperties).FreightAmount;
+            }
+            set 
+            {
+                (this._state as IInOutStateProperties).FreightAmount = value;
+            }
+        }
+
 		public virtual string ShipperId
 		{
             get
@@ -496,6 +527,37 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
+		public virtual decimal? ChargeAmount
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ChargeAmount"))
+                {
+                    return _state.ChargeAmount;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.ChargeAmount = value.Value;
+                }
+            }
+        }
+
+        decimal IInOutStateProperties.ChargeAmount
+        {
+            get 
+            {
+                return (this._state as IInOutStateProperties).ChargeAmount;
+            }
+            set 
+            {
+                (this._state as IInOutStateProperties).ChargeAmount = value;
+            }
+        }
+
 		public virtual DateTime? DatePrinted
 		{
             get
@@ -521,6 +583,34 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 (this._state as IInOutStateProperties).DatePrinted = value;
+            }
+        }
+
+		public virtual string CreatedFrom
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("CreatedFrom"))
+                {
+                    return _state.CreatedFrom;
+                }
+                return null;
+            }
+            set
+            {
+                _state.CreatedFrom = value;
+            }
+        }
+
+        string IInOutStateProperties.CreatedFrom
+        {
+            get 
+            {
+                return (this._state as IInOutStateProperties).CreatedFrom;
+            }
+            set 
+            {
+                (this._state as IInOutStateProperties).CreatedFrom = value;
             }
         }
 

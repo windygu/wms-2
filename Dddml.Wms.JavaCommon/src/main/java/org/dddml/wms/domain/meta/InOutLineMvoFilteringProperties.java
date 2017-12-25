@@ -47,8 +47,11 @@ public final class InOutLineMvoFilteringProperties
             "inOutBusinessPartnerId",
             "inOutWarehouseId",
             "inOutPOReference",
+            "inOutFreightAmount",
             "inOutShipperId",
+            "inOutChargeAmount",
             "inOutDatePrinted",
+            "inOutCreatedFrom",
             "inOutSalesRepresentativeId",
             "inOutNumberOfPackages",
             "inOutPickDate",
@@ -108,8 +111,11 @@ public final class InOutLineMvoFilteringProperties
             "String",
             "String",
             "String",
+            "BigDecimal",
             "String",
+            "BigDecimal",
             "Date",
+            "String",
             "String",
             "Integer",
             "Date",
@@ -216,10 +222,16 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("InOutWarehouseId", "inOutWarehouseId");
         aliasMap.put("inOutPOReference", "inOutPOReference");
         aliasMap.put("InOutPOReference", "inOutPOReference");
+        aliasMap.put("inOutFreightAmount", "inOutFreightAmount");
+        aliasMap.put("InOutFreightAmount", "inOutFreightAmount");
         aliasMap.put("inOutShipperId", "inOutShipperId");
         aliasMap.put("InOutShipperId", "inOutShipperId");
+        aliasMap.put("inOutChargeAmount", "inOutChargeAmount");
+        aliasMap.put("InOutChargeAmount", "inOutChargeAmount");
         aliasMap.put("inOutDatePrinted", "inOutDatePrinted");
         aliasMap.put("InOutDatePrinted", "inOutDatePrinted");
+        aliasMap.put("inOutCreatedFrom", "inOutCreatedFrom");
+        aliasMap.put("InOutCreatedFrom", "inOutCreatedFrom");
         aliasMap.put("inOutSalesRepresentativeId", "inOutSalesRepresentativeId");
         aliasMap.put("InOutSalesRepresentativeId", "inOutSalesRepresentativeId");
         aliasMap.put("inOutNumberOfPackages", "inOutNumberOfPackages");

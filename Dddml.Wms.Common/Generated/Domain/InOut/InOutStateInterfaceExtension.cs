@@ -65,8 +65,11 @@ namespace Dddml.Wms.Domain.InOut
             cmd.BusinessPartnerId = state.BusinessPartnerId;
             cmd.WarehouseId = state.WarehouseId;
             cmd.POReference = state.POReference;
+            cmd.FreightAmount = state.FreightAmount;
             cmd.ShipperId = state.ShipperId;
+            cmd.ChargeAmount = state.ChargeAmount;
             cmd.DatePrinted = state.DatePrinted;
+            cmd.CreatedFrom = state.CreatedFrom;
             cmd.SalesRepresentativeId = state.SalesRepresentativeId;
             cmd.NumberOfPackages = state.NumberOfPackages;
             cmd.PickDate = state.PickDate;
@@ -92,6 +95,7 @@ namespace Dddml.Wms.Domain.InOut
             if (state.POReference == null) { cmd.IsPropertyPOReferenceRemoved = true; }
             if (state.ShipperId == null) { cmd.IsPropertyShipperIdRemoved = true; }
             if (state.DatePrinted == null) { cmd.IsPropertyDatePrintedRemoved = true; }
+            if (state.CreatedFrom == null) { cmd.IsPropertyCreatedFromRemoved = true; }
             if (state.SalesRepresentativeId == null) { cmd.IsPropertySalesRepresentativeIdRemoved = true; }
             if (state.PickDate == null) { cmd.IsPropertyPickDateRemoved = true; }
             if (state.ShipDate == null) { cmd.IsPropertyShipDateRemoved = true; }
@@ -129,8 +133,11 @@ namespace Dddml.Wms.Domain.InOut
             cmd.BusinessPartnerId = state.BusinessPartnerId;
             cmd.WarehouseId = state.WarehouseId;
             cmd.POReference = state.POReference;
+            cmd.FreightAmount = state.FreightAmount;
             cmd.ShipperId = state.ShipperId;
+            cmd.ChargeAmount = state.ChargeAmount;
             cmd.DatePrinted = state.DatePrinted;
+            cmd.CreatedFrom = state.CreatedFrom;
             cmd.SalesRepresentativeId = state.SalesRepresentativeId;
             cmd.NumberOfPackages = state.NumberOfPackages;
             cmd.PickDate = state.PickDate;

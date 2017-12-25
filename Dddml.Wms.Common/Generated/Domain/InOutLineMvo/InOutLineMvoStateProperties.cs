@@ -79,9 +79,15 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual string InOutPOReference { get; set; }
 
+		public virtual decimal InOutFreightAmount { get; set; }
+
 		public virtual string InOutShipperId { get; set; }
 
+		public virtual decimal InOutChargeAmount { get; set; }
+
 		public virtual DateTime? InOutDatePrinted { get; set; }
+
+		public virtual string InOutCreatedFrom { get; set; }
 
 		public virtual string InOutSalesRepresentativeId { get; set; }
 

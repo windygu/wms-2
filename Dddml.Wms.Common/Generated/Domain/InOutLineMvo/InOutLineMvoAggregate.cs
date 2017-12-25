@@ -139,8 +139,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.InOutBusinessPartnerId = c.InOutBusinessPartnerId;
             e.InOutWarehouseId = c.InOutWarehouseId;
             e.InOutPOReference = c.InOutPOReference;
+            e.InOutFreightAmount = c.InOutFreightAmount;
             e.InOutShipperId = c.InOutShipperId;
+            e.InOutChargeAmount = c.InOutChargeAmount;
             e.InOutDatePrinted = c.InOutDatePrinted;
+            e.InOutCreatedFrom = c.InOutCreatedFrom;
             e.InOutSalesRepresentativeId = c.InOutSalesRepresentativeId;
             e.InOutNumberOfPackages = c.InOutNumberOfPackages;
             e.InOutPickDate = c.InOutPickDate;
@@ -205,8 +208,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.InOutBusinessPartnerId = c.InOutBusinessPartnerId;
             e.InOutWarehouseId = c.InOutWarehouseId;
             e.InOutPOReference = c.InOutPOReference;
+            e.InOutFreightAmount = c.InOutFreightAmount;
             e.InOutShipperId = c.InOutShipperId;
+            e.InOutChargeAmount = c.InOutChargeAmount;
             e.InOutDatePrinted = c.InOutDatePrinted;
+            e.InOutCreatedFrom = c.InOutCreatedFrom;
             e.InOutSalesRepresentativeId = c.InOutSalesRepresentativeId;
             e.InOutNumberOfPackages = c.InOutNumberOfPackages;
             e.InOutPickDate = c.InOutPickDate;
@@ -254,8 +260,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.IsPropertyInOutBusinessPartnerIdRemoved = c.IsPropertyInOutBusinessPartnerIdRemoved;
             e.IsPropertyInOutWarehouseIdRemoved = c.IsPropertyInOutWarehouseIdRemoved;
             e.IsPropertyInOutPOReferenceRemoved = c.IsPropertyInOutPOReferenceRemoved;
+            e.IsPropertyInOutFreightAmountRemoved = c.IsPropertyInOutFreightAmountRemoved;
             e.IsPropertyInOutShipperIdRemoved = c.IsPropertyInOutShipperIdRemoved;
+            e.IsPropertyInOutChargeAmountRemoved = c.IsPropertyInOutChargeAmountRemoved;
             e.IsPropertyInOutDatePrintedRemoved = c.IsPropertyInOutDatePrintedRemoved;
+            e.IsPropertyInOutCreatedFromRemoved = c.IsPropertyInOutCreatedFromRemoved;
             e.IsPropertyInOutSalesRepresentativeIdRemoved = c.IsPropertyInOutSalesRepresentativeIdRemoved;
             e.IsPropertyInOutNumberOfPackagesRemoved = c.IsPropertyInOutNumberOfPackagesRemoved;
             e.IsPropertyInOutPickDateRemoved = c.IsPropertyInOutPickDateRemoved;

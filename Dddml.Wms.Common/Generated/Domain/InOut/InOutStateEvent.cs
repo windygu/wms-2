@@ -51,9 +51,15 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string POReference { get; set; }
 
+		public virtual decimal? FreightAmount { get; set; }
+
 		public virtual string ShipperId { get; set; }
 
+		public virtual decimal? ChargeAmount { get; set; }
+
 		public virtual DateTime? DatePrinted { get; set; }
+
+		public virtual string CreatedFrom { get; set; }
 
 		public virtual string SalesRepresentativeId { get; set; }
 
@@ -278,9 +284,15 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool IsPropertyPOReferenceRemoved { get; set; }
 
+		public virtual bool IsPropertyFreightAmountRemoved { get; set; }
+
 		public virtual bool IsPropertyShipperIdRemoved { get; set; }
 
+		public virtual bool IsPropertyChargeAmountRemoved { get; set; }
+
 		public virtual bool IsPropertyDatePrintedRemoved { get; set; }
+
+		public virtual bool IsPropertyCreatedFromRemoved { get; set; }
 
 		public virtual bool IsPropertySalesRepresentativeIdRemoved { get; set; }
 

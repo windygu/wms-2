@@ -981,6 +981,37 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
+		public virtual decimal? InOutFreightAmount
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutFreightAmount"))
+                {
+                    return _state.InOutFreightAmount;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.InOutFreightAmount = value.Value;
+                }
+            }
+        }
+
+        decimal IInOutLineMvoStateProperties.InOutFreightAmount
+        {
+            get 
+            {
+                return (this._state as IInOutLineMvoStateProperties).InOutFreightAmount;
+            }
+            set 
+            {
+                (this._state as IInOutLineMvoStateProperties).InOutFreightAmount = value;
+            }
+        }
+
 		public virtual string InOutShipperId
 		{
             get
@@ -1009,6 +1040,37 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
+		public virtual decimal? InOutChargeAmount
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutChargeAmount"))
+                {
+                    return _state.InOutChargeAmount;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.InOutChargeAmount = value.Value;
+                }
+            }
+        }
+
+        decimal IInOutLineMvoStateProperties.InOutChargeAmount
+        {
+            get 
+            {
+                return (this._state as IInOutLineMvoStateProperties).InOutChargeAmount;
+            }
+            set 
+            {
+                (this._state as IInOutLineMvoStateProperties).InOutChargeAmount = value;
+            }
+        }
+
 		public virtual DateTime? InOutDatePrinted
 		{
             get
@@ -1034,6 +1096,34 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set 
             {
                 (this._state as IInOutLineMvoStateProperties).InOutDatePrinted = value;
+            }
+        }
+
+		public virtual string InOutCreatedFrom
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutCreatedFrom"))
+                {
+                    return _state.InOutCreatedFrom;
+                }
+                return null;
+            }
+            set
+            {
+                _state.InOutCreatedFrom = value;
+            }
+        }
+
+        string IInOutLineMvoStateProperties.InOutCreatedFrom
+        {
+            get 
+            {
+                return (this._state as IInOutLineMvoStateProperties).InOutCreatedFrom;
+            }
+            set 
+            {
+                (this._state as IInOutLineMvoStateProperties).InOutCreatedFrom = value;
             }
         }
 

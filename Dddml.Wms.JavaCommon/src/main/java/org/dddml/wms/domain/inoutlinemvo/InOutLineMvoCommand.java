@@ -166,13 +166,25 @@ public interface InOutLineMvoCommand extends Command
 
         void setInOutPOReference(String inOutPOReference);
 
+        BigDecimal getInOutFreightAmount();
+
+        void setInOutFreightAmount(BigDecimal inOutFreightAmount);
+
         String getInOutShipperId();
 
         void setInOutShipperId(String inOutShipperId);
 
+        BigDecimal getInOutChargeAmount();
+
+        void setInOutChargeAmount(BigDecimal inOutChargeAmount);
+
         Date getInOutDatePrinted();
 
         void setInOutDatePrinted(Date inOutDatePrinted);
+
+        String getInOutCreatedFrom();
+
+        void setInOutCreatedFrom(String inOutCreatedFrom);
 
         String getInOutSalesRepresentativeId();
 
@@ -370,13 +382,25 @@ public interface InOutLineMvoCommand extends Command
 
         void setIsPropertyInOutPOReferenceRemoved(Boolean removed);
 
+        Boolean getIsPropertyInOutFreightAmountRemoved();
+
+        void setIsPropertyInOutFreightAmountRemoved(Boolean removed);
+
         Boolean getIsPropertyInOutShipperIdRemoved();
 
         void setIsPropertyInOutShipperIdRemoved(Boolean removed);
 
+        Boolean getIsPropertyInOutChargeAmountRemoved();
+
+        void setIsPropertyInOutChargeAmountRemoved(Boolean removed);
+
         Boolean getIsPropertyInOutDatePrintedRemoved();
 
         void setIsPropertyInOutDatePrintedRemoved(Boolean removed);
+
+        Boolean getIsPropertyInOutCreatedFromRemoved();
+
+        void setIsPropertyInOutCreatedFromRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutSalesRepresentativeIdRemoved();
 

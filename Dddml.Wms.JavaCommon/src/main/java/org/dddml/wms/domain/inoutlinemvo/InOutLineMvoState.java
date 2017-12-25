@@ -162,13 +162,25 @@ public interface InOutLineMvoState
 
     void setInOutPOReference(String inOutPOReference);
 
+    BigDecimal getInOutFreightAmount();
+
+    void setInOutFreightAmount(BigDecimal inOutFreightAmount);
+
     String getInOutShipperId();
 
     void setInOutShipperId(String inOutShipperId);
 
+    BigDecimal getInOutChargeAmount();
+
+    void setInOutChargeAmount(BigDecimal inOutChargeAmount);
+
     Date getInOutDatePrinted();
 
     void setInOutDatePrinted(Date inOutDatePrinted);
+
+    String getInOutCreatedFrom();
+
+    void setInOutCreatedFrom(String inOutCreatedFrom);
 
     String getInOutSalesRepresentativeId();
 

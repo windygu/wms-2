@@ -116,9 +116,15 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual string InOutPOReference { get; set; }
 
+		public virtual decimal? InOutFreightAmount { get; set; }
+
 		public virtual string InOutShipperId { get; set; }
 
+		public virtual decimal? InOutChargeAmount { get; set; }
+
 		public virtual DateTime? InOutDatePrinted { get; set; }
+
+		public virtual string InOutCreatedFrom { get; set; }
 
 		public virtual string InOutSalesRepresentativeId { get; set; }
 
@@ -737,6 +743,25 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
+		public virtual bool? IsPropertyInOutFreightAmountRemoved { get; set; }
+
+        bool IMergePatchInOutLineMvo.IsPropertyInOutFreightAmountRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyInOutFreightAmountRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyInOutFreightAmountRemoved = value;
+            }
+        }
+
 		public virtual bool? IsPropertyInOutShipperIdRemoved { get; set; }
 
         bool IMergePatchInOutLineMvo.IsPropertyInOutShipperIdRemoved
@@ -756,6 +781,25 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
+		public virtual bool? IsPropertyInOutChargeAmountRemoved { get; set; }
+
+        bool IMergePatchInOutLineMvo.IsPropertyInOutChargeAmountRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyInOutChargeAmountRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyInOutChargeAmountRemoved = value;
+            }
+        }
+
 		public virtual bool? IsPropertyInOutDatePrintedRemoved { get; set; }
 
         bool IMergePatchInOutLineMvo.IsPropertyInOutDatePrintedRemoved
@@ -772,6 +816,25 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set
             {
                 this.IsPropertyInOutDatePrintedRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyInOutCreatedFromRemoved { get; set; }
+
+        bool IMergePatchInOutLineMvo.IsPropertyInOutCreatedFromRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyInOutCreatedFromRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyInOutCreatedFromRemoved = value;
             }
         }
 

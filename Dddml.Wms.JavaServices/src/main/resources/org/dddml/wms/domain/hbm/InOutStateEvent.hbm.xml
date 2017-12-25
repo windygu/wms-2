@@ -29,8 +29,11 @@
 	<property name="businessPartnerId" ></property>
 	<property name="warehouseId" ></property>
 	<property name="POReference" ></property>
+	<property name="freightAmount" ></property>
 	<property name="shipperId" ></property>
+	<property name="chargeAmount" ></property>
 	<property name="datePrinted" ></property>
+	<property name="createdFrom" ></property>
 	<property name="salesRepresentativeId" ></property>
 	<property name="numberOfPackages" ></property>
 	<property name="pickDate" ></property>
@@ -84,9 +87,15 @@
 
         <property name="isPropertyPOReferenceRemoved" column="IsPropertyPOReferenceRemoved"/>
 
+        <property name="isPropertyFreightAmountRemoved" column="IsPropertyFreightAmountRemoved"/>
+
         <property name="isPropertyShipperIdRemoved" column="IsPropertyShipperIdRemoved"/>
 
+        <property name="isPropertyChargeAmountRemoved" column="IsPropertyChargeAmountRemoved"/>
+
         <property name="isPropertyDatePrintedRemoved" column="IsPropertyDatePrintedRemoved"/>
+
+        <property name="isPropertyCreatedFromRemoved" column="IsPropertyCreatedFromRemoved"/>
 
         <property name="isPropertySalesRepresentativeIdRemoved" column="IsPropertySalesRepresentativeIdRemoved"/>
 

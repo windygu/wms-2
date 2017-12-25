@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
 import org.dddml.wms.domain.*;
 
 public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends InOutCommand.CreateInOut, TMergePatchInOut extends InOutCommand.MergePatchInOut, TDeleteInOut extends InOutCommand.DeleteInOut, TCreateInOutLine extends InOutLineCommand.CreateInOutLine, TMergePatchInOutLine extends InOutLineCommand.MergePatchInOutLine, TRemoveInOutLine extends InOutLineCommand.RemoveInOutLine>
@@ -51,8 +51,11 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setBusinessPartnerId(state.getBusinessPartnerId());
         cmd.setWarehouseId(state.getWarehouseId());
         cmd.setPOReference(state.getPOReference());
+        cmd.setFreightAmount(state.getFreightAmount());
         cmd.setShipperId(state.getShipperId());
+        cmd.setChargeAmount(state.getChargeAmount());
         cmd.setDatePrinted(state.getDatePrinted());
+        cmd.setCreatedFrom(state.getCreatedFrom());
         cmd.setSalesRepresentativeId(state.getSalesRepresentativeId());
         cmd.setNumberOfPackages(state.getNumberOfPackages());
         cmd.setPickDate(state.getPickDate());
@@ -79,8 +82,11 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         if (state.getBusinessPartnerId() == null) { cmd.setIsPropertyBusinessPartnerIdRemoved(true); }
         if (state.getWarehouseId() == null) { cmd.setIsPropertyWarehouseIdRemoved(true); }
         if (state.getPOReference() == null) { cmd.setIsPropertyPOReferenceRemoved(true); }
+        if (state.getFreightAmount() == null) { cmd.setIsPropertyFreightAmountRemoved(true); }
         if (state.getShipperId() == null) { cmd.setIsPropertyShipperIdRemoved(true); }
+        if (state.getChargeAmount() == null) { cmd.setIsPropertyChargeAmountRemoved(true); }
         if (state.getDatePrinted() == null) { cmd.setIsPropertyDatePrintedRemoved(true); }
+        if (state.getCreatedFrom() == null) { cmd.setIsPropertyCreatedFromRemoved(true); }
         if (state.getSalesRepresentativeId() == null) { cmd.setIsPropertySalesRepresentativeIdRemoved(true); }
         if (state.getNumberOfPackages() == null) { cmd.setIsPropertyNumberOfPackagesRemoved(true); }
         if (state.getPickDate() == null) { cmd.setIsPropertyPickDateRemoved(true); }
@@ -120,8 +126,11 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setBusinessPartnerId(state.getBusinessPartnerId());
         cmd.setWarehouseId(state.getWarehouseId());
         cmd.setPOReference(state.getPOReference());
+        cmd.setFreightAmount(state.getFreightAmount());
         cmd.setShipperId(state.getShipperId());
+        cmd.setChargeAmount(state.getChargeAmount());
         cmd.setDatePrinted(state.getDatePrinted());
+        cmd.setCreatedFrom(state.getCreatedFrom());
         cmd.setSalesRepresentativeId(state.getSalesRepresentativeId());
         cmd.setNumberOfPackages(state.getNumberOfPackages());
         cmd.setPickDate(state.getPickDate());

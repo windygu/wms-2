@@ -44,9 +44,15 @@ namespace Dddml.Wms.Domain.InOut
 
 		string POReference { get; set; }
 
+		decimal FreightAmount { get; set; }
+
 		string ShipperId { get; set; }
 
+		decimal ChargeAmount { get; set; }
+
 		DateTime? DatePrinted { get; set; }
+
+		string CreatedFrom { get; set; }
 
 		string SalesRepresentativeId { get; set; }
 

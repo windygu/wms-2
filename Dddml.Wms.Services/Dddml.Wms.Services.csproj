@@ -482,6 +482,36 @@
     <Compile Include="Generated\Domain\Organization\NHibernate\OrganizationApplicationService.cs">
       <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\NHibernatePhysicalInventoryLineMvoEventStore.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\NHibernatePhysicalInventoryLineMvoStateQueryRepository.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\NHibernatePhysicalInventoryLineMvoStateRepository.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\PhysicalInventoryLineMvoApplicationService.cs">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryEventStore.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryLineStateDao.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryLineStateEventDao.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryStateQueryRepository.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryStateRepository.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\PhysicalInventoryApplicationService.cs">
+      <DependentUpon>GeneratePhysicalInventoryDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\ProductCategoryMember\NHibernate\NHibernateProductCategoryMemberEventStore.cs">
       <DependentUpon>GenerateProductCategoryMemberDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -843,6 +873,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\GeneratePhysicalInventoryLineMvoDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\PhysicalInventory\NHibernate\GeneratePhysicalInventoryDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePhysicalInventoryDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\ProductCategoryMember\NHibernate\GenerateProductCategoryMemberDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1006,6 +1046,12 @@
 .\OrganizationStructureStateEvent.hbm.xml
 .\OrganizationStructureTypeState.hbm.xml
 .\OrganizationStructureTypeStateEvent.hbm.xml
+.\PhysicalInventoryLineMvoState.hbm.xml
+.\PhysicalInventoryLineMvoStateEvent.hbm.xml
+.\PhysicalInventoryLineState.hbm.xml
+.\PhysicalInventoryLineStateEvent.hbm.xml
+.\PhysicalInventoryState.hbm.xml
+.\PhysicalInventoryStateEvent.hbm.xml
 .\ProductCategoryMemberState.hbm.xml
 .\ProductCategoryMemberStateEvent.hbm.xml
 .\ProductCategoryState.hbm.xml
@@ -1243,6 +1289,24 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\MovementConfirmationStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\PhysicalInventoryState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\PhysicalInventoryStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\PhysicalInventoryLineState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\PhysicalInventoryLineStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\PhysicalInventoryLineMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\PhysicalInventoryLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
@@ -1720,6 +1784,30 @@
 .\NHibernateMovementConfirmationLineStateEventDao.cs
 .\NHibernateMovementConfirmationStateQueryRepository.cs
 .\NHibernateMovementConfirmationStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\PhysicalInventory\NHibernate\GeneratePhysicalInventoryDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePhysicalInventoryDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePhysicalInventoryDomainNHibernate.txt
+.\NHibernatePhysicalInventoryEventStore.cs
+.\NHibernatePhysicalInventoryLineStateDao.cs
+.\NHibernatePhysicalInventoryLineStateEventDao.cs
+.\NHibernatePhysicalInventoryStateQueryRepository.cs
+.\NHibernatePhysicalInventoryStateRepository.cs
+.\PhysicalInventoryApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\GeneratePhysicalInventoryLineMvoDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePhysicalInventoryLineMvoDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePhysicalInventoryLineMvoDomainNHibernate.txt
+.\NHibernatePhysicalInventoryLineMvoEventStore.cs
+.\NHibernatePhysicalInventoryLineMvoStateQueryRepository.cs
+.\NHibernatePhysicalInventoryLineMvoStateRepository.cs
+.\PhysicalInventoryLineMvoApplicationService.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

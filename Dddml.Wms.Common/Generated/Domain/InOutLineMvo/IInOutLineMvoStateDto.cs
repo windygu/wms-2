@@ -208,13 +208,31 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
+        decimal? InOutFreightAmount
+        {
+            get;
+            set;
+        }
+
         string InOutShipperId
         {
             get;
             set;
         }
 
+        decimal? InOutChargeAmount
+        {
+            get;
+            set;
+        }
+
         DateTime? InOutDatePrinted
+        {
+            get;
+            set;
+        }
+
+        string InOutCreatedFrom
         {
             get;
             set;

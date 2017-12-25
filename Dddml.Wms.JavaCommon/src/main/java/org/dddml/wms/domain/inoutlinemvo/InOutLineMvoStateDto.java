@@ -395,6 +395,18 @@ public class InOutLineMvoStateDto
         this.inOutPOReference = inOutPOReference;
     }
 
+    private BigDecimal inOutFreightAmount;
+
+    public BigDecimal getInOutFreightAmount()
+    {
+        return this.inOutFreightAmount;
+    }
+
+    public void setInOutFreightAmount(BigDecimal inOutFreightAmount)
+    {
+        this.inOutFreightAmount = inOutFreightAmount;
+    }
+
     private String inOutShipperId;
 
     public String getInOutShipperId()
@@ -407,6 +419,18 @@ public class InOutLineMvoStateDto
         this.inOutShipperId = inOutShipperId;
     }
 
+    private BigDecimal inOutChargeAmount;
+
+    public BigDecimal getInOutChargeAmount()
+    {
+        return this.inOutChargeAmount;
+    }
+
+    public void setInOutChargeAmount(BigDecimal inOutChargeAmount)
+    {
+        this.inOutChargeAmount = inOutChargeAmount;
+    }
+
     private Date inOutDatePrinted;
 
     public Date getInOutDatePrinted()
@@ -417,6 +441,18 @@ public class InOutLineMvoStateDto
     public void setInOutDatePrinted(Date inOutDatePrinted)
     {
         this.inOutDatePrinted = inOutDatePrinted;
+    }
+
+    private String inOutCreatedFrom;
+
+    public String getInOutCreatedFrom()
+    {
+        return this.inOutCreatedFrom;
+    }
+
+    public void setInOutCreatedFrom(String inOutCreatedFrom)
+    {
+        this.inOutCreatedFrom = inOutCreatedFrom;
     }
 
     private String inOutSalesRepresentativeId;
@@ -805,11 +841,20 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("InOutPOReference")) {
                 dto.setInOutPOReference(state.getInOutPOReference());
             }
+            if (returnedFieldsContains("InOutFreightAmount")) {
+                dto.setInOutFreightAmount(state.getInOutFreightAmount());
+            }
             if (returnedFieldsContains("InOutShipperId")) {
                 dto.setInOutShipperId(state.getInOutShipperId());
             }
+            if (returnedFieldsContains("InOutChargeAmount")) {
+                dto.setInOutChargeAmount(state.getInOutChargeAmount());
+            }
             if (returnedFieldsContains("InOutDatePrinted")) {
                 dto.setInOutDatePrinted(state.getInOutDatePrinted());
+            }
+            if (returnedFieldsContains("InOutCreatedFrom")) {
+                dto.setInOutCreatedFrom(state.getInOutCreatedFrom());
             }
             if (returnedFieldsContains("InOutSalesRepresentativeId")) {
                 dto.setInOutSalesRepresentativeId(state.getInOutSalesRepresentativeId());

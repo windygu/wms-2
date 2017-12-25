@@ -1,0 +1,127 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.physicalinventorylinemvo">
+  
+  <class name="AbstractPhysicalInventoryLineMvoStateEvent" table="PhysicalInventoryLineMvoStateEvents" mutable="false" abstract="true">
+
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.physicalinventorylinemvo.PhysicalInventoryLineMvoStateEventId">
+		<key-property name="physicalInventoryLineIdPhysicalInventoryDocumentNumber" ><column name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" length="50" /></key-property>
+		<key-property name="physicalInventoryLineIdLineNumber" ><column name="PhysicalInventoryLineIdLineNumber" length="50" /></key-property>
+		<key-property name="physicalInventoryVersion" ></key-property>
+	</composite-id>
+
+    <discriminator column="StateEventType" type="string" />
+
+	<property name="locatorId" ></property>
+	<property name="productId" ></property>
+	<property name="attributeSetInstanceId" ></property>
+	<property name="bookQuantity" ></property>
+	<property name="countedQuantity" ></property>
+	<property name="processed" ></property>
+	<property name="reversalLineNumber" ></property>
+	<property name="description" ></property>
+	<property name="version" ></property>
+	<property name="active" ></property>
+	<property name="physicalInventoryDocumentStatusId" ></property>
+	<property name="physicalInventoryWarehouseId" ></property>
+	<property name="physicalInventoryPosted" ></property>
+	<property name="physicalInventoryProcessed" ></property>
+	<property name="physicalInventoryProcessing" ></property>
+	<property name="physicalInventoryDocumentTypeId" ></property>
+	<property name="physicalInventoryMovementDate" ></property>
+	<property name="physicalInventoryDescription" ></property>
+	<property name="physicalInventoryIsApproved" ></property>
+	<property name="physicalInventoryApprovalAmount" ></property>
+	<property name="physicalInventoryIsQuantityUpdated" ></property>
+	<property name="physicalInventoryReversalDocumentNumber" ></property>
+	<property name="physicalInventoryCreatedBy" ></property>
+	<property name="physicalInventoryCreatedAt" ></property>
+	<property name="physicalInventoryUpdatedBy" ></property>
+	<property name="physicalInventoryUpdatedAt" ></property>
+	<property name="physicalInventoryActive" ></property>
+	<property name="physicalInventoryDeleted" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractPhysicalInventoryLineMvoStateEvent$SimplePhysicalInventoryLineMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractPhysicalInventoryLineMvoStateEvent$SimplePhysicalInventoryLineMvoStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyLocatorIdRemoved" column="IsPropertyLocatorIdRemoved"/>
+
+        <property name="isPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="isPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
+
+        <property name="isPropertyBookQuantityRemoved" column="IsPropertyBookQuantityRemoved"/>
+
+        <property name="isPropertyCountedQuantityRemoved" column="IsPropertyCountedQuantityRemoved"/>
+
+        <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
+        <property name="isPropertyReversalLineNumberRemoved" column="IsPropertyReversalLineNumberRemoved"/>
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryDocumentStatusIdRemoved" column="IsPropertyPhysicalInventoryDocumentStatusIdRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryWarehouseIdRemoved" column="IsPropertyPhysicalInventoryWarehouseIdRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryPostedRemoved" column="IsPropertyPhysicalInventoryPostedRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryProcessedRemoved" column="IsPropertyPhysicalInventoryProcessedRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryProcessingRemoved" column="IsPropertyPhysicalInventoryProcessingRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryDocumentTypeIdRemoved" column="IsPropertyPhysicalInventoryDocumentTypeIdRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryMovementDateRemoved" column="IsPropertyPhysicalInventoryMovementDateRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryDescriptionRemoved" column="IsPropertyPhysicalInventoryDescriptionRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryIsApprovedRemoved" column="IsPropertyPhysicalInventoryIsApprovedRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryApprovalAmountRemoved" column="IsPropertyPhysicalInventoryApprovalAmountRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryIsQuantityUpdatedRemoved" column="IsPropertyPhysicalInventoryIsQuantityUpdatedRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryReversalDocumentNumberRemoved" column="IsPropertyPhysicalInventoryReversalDocumentNumberRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryCreatedByRemoved" column="IsPropertyPhysicalInventoryCreatedByRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryCreatedAtRemoved" column="IsPropertyPhysicalInventoryCreatedAtRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryUpdatedByRemoved" column="IsPropertyPhysicalInventoryUpdatedByRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryUpdatedAtRemoved" column="IsPropertyPhysicalInventoryUpdatedAtRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryActiveRemoved" column="IsPropertyPhysicalInventoryActiveRemoved"/>
+
+        <property name="isPropertyPhysicalInventoryDeletedRemoved" column="IsPropertyPhysicalInventoryDeletedRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractPhysicalInventoryLineMvoStateEvent$SimplePhysicalInventoryLineMvoStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.PhysicalInventory">
+  
+  <class name="PhysicalInventoryLineStateEventBase" table="PhysicalInventoryLineStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.PhysicalInventory.PhysicalInventoryLineStateEventId">
+        <key-property name="PhysicalInventoryDocumentNumber" ><column name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" length="50" /></key-property>
+        <key-property name="LineNumber" ><column name="PhysicalInventoryLineIdLineNumber" length="50" /></key-property>
+        <key-property name="PhysicalInventoryVersion" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="LocatorId" ></property>
+    <property name="ProductId" ></property>
+    <property name="AttributeSetInstanceId" ></property>
+    <property name="BookQuantity" ></property>
+    <property name="CountedQuantity" ></property>
+    <property name="Processed" ></property>
+    <property name="ReversalLineNumber" ></property>
+    <property name="Description" ></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" />
+    <property name="CommandId" column="CommandId"/>
+    <property name="Version" column="Version" not-null="true" />
+
+    <subclass name="PhysicalInventoryLineStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="PhysicalInventoryLineStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyLocatorIdRemoved" column="IsPropertyLocatorIdRemoved"/>
+
+        <property name="IsPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
+
+        <property name="IsPropertyBookQuantityRemoved" column="IsPropertyBookQuantityRemoved"/>
+
+        <property name="IsPropertyCountedQuantityRemoved" column="IsPropertyCountedQuantityRemoved"/>
+
+        <property name="IsPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
+        <property name="IsPropertyReversalLineNumberRemoved" column="IsPropertyReversalLineNumberRemoved"/>
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="PhysicalInventoryLineStateRemoved"  discriminator-value="Removed">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

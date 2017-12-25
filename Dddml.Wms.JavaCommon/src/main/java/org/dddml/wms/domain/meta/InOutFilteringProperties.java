@@ -26,8 +26,11 @@ public final class InOutFilteringProperties
             "businessPartnerId",
             "warehouseId",
             "POReference",
+            "freightAmount",
             "shipperId",
+            "chargeAmount",
             "datePrinted",
+            "createdFrom",
             "salesRepresentativeId",
             "numberOfPackages",
             "pickDate",
@@ -64,8 +67,11 @@ public final class InOutFilteringProperties
             "String",
             "String",
             "String",
+            "BigDecimal",
             "String",
+            "BigDecimal",
             "Date",
+            "String",
             "String",
             "Integer",
             "Date",
@@ -128,10 +134,16 @@ public final class InOutFilteringProperties
         aliasMap.put("WarehouseId", "warehouseId");
         aliasMap.put("poReference", "poReference");
         aliasMap.put("POReference", "poReference");
+        aliasMap.put("freightAmount", "freightAmount");
+        aliasMap.put("FreightAmount", "freightAmount");
         aliasMap.put("shipperId", "shipperId");
         aliasMap.put("ShipperId", "shipperId");
+        aliasMap.put("chargeAmount", "chargeAmount");
+        aliasMap.put("ChargeAmount", "chargeAmount");
         aliasMap.put("datePrinted", "datePrinted");
         aliasMap.put("DatePrinted", "datePrinted");
+        aliasMap.put("createdFrom", "createdFrom");
+        aliasMap.put("CreatedFrom", "createdFrom");
         aliasMap.put("salesRepresentativeId", "salesRepresentativeId");
         aliasMap.put("SalesRepresentativeId", "salesRepresentativeId");
         aliasMap.put("numberOfPackages", "numberOfPackages");

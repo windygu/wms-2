@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.Set;
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 import org.dddml.wms.domain.inout.InOutStateEvent.*;
@@ -73,13 +73,25 @@ public interface InOutState
 
     void setPOReference(String poReference);
 
+    BigDecimal getFreightAmount();
+
+    void setFreightAmount(BigDecimal freightAmount);
+
     String getShipperId();
 
     void setShipperId(String shipperId);
 
+    BigDecimal getChargeAmount();
+
+    void setChargeAmount(BigDecimal chargeAmount);
+
     Date getDatePrinted();
 
     void setDatePrinted(Date datePrinted);
+
+    String getCreatedFrom();
+
+    void setCreatedFrom(String createdFrom);
 
     String getSalesRepresentativeId();
 

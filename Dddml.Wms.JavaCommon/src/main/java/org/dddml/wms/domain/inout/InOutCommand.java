@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
 import org.dddml.wms.specialization.DomainError;
@@ -97,13 +97,25 @@ public interface InOutCommand extends Command
 
         void setPOReference(String poReference);
 
+        BigDecimal getFreightAmount();
+
+        void setFreightAmount(BigDecimal freightAmount);
+
         String getShipperId();
 
         void setShipperId(String shipperId);
 
+        BigDecimal getChargeAmount();
+
+        void setChargeAmount(BigDecimal chargeAmount);
+
         Date getDatePrinted();
 
         void setDatePrinted(Date datePrinted);
+
+        String getCreatedFrom();
+
+        void setCreatedFrom(String createdFrom);
 
         String getSalesRepresentativeId();
 
@@ -217,13 +229,25 @@ public interface InOutCommand extends Command
 
         void setIsPropertyPOReferenceRemoved(Boolean removed);
 
+        Boolean getIsPropertyFreightAmountRemoved();
+
+        void setIsPropertyFreightAmountRemoved(Boolean removed);
+
         Boolean getIsPropertyShipperIdRemoved();
 
         void setIsPropertyShipperIdRemoved(Boolean removed);
 
+        Boolean getIsPropertyChargeAmountRemoved();
+
+        void setIsPropertyChargeAmountRemoved(Boolean removed);
+
         Boolean getIsPropertyDatePrintedRemoved();
 
         void setIsPropertyDatePrintedRemoved(Boolean removed);
+
+        Boolean getIsPropertyCreatedFromRemoved();
+
+        void setIsPropertyCreatedFromRemoved(Boolean removed);
 
         Boolean getIsPropertySalesRepresentativeIdRemoved();
 

@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.inout;
 
 import java.util.*;
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
@@ -72,8 +72,11 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setBusinessPartnerId(c.getBusinessPartnerId());
         e.setWarehouseId(c.getWarehouseId());
         e.setPOReference(c.getPOReference());
+        e.setFreightAmount(c.getFreightAmount());
         e.setShipperId(c.getShipperId());
+        e.setChargeAmount(c.getChargeAmount());
         e.setDatePrinted(c.getDatePrinted());
+        e.setCreatedFrom(c.getCreatedFrom());
         e.setSalesRepresentativeId(c.getSalesRepresentativeId());
         e.setNumberOfPackages(c.getNumberOfPackages());
         e.setPickDate(c.getPickDate());
@@ -117,8 +120,11 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setBusinessPartnerId(c.getBusinessPartnerId());
         e.setWarehouseId(c.getWarehouseId());
         e.setPOReference(c.getPOReference());
+        e.setFreightAmount(c.getFreightAmount());
         e.setShipperId(c.getShipperId());
+        e.setChargeAmount(c.getChargeAmount());
         e.setDatePrinted(c.getDatePrinted());
+        e.setCreatedFrom(c.getCreatedFrom());
         e.setSalesRepresentativeId(c.getSalesRepresentativeId());
         e.setNumberOfPackages(c.getNumberOfPackages());
         e.setPickDate(c.getPickDate());
@@ -144,8 +150,11 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setIsPropertyBusinessPartnerIdRemoved(c.getIsPropertyBusinessPartnerIdRemoved());
         e.setIsPropertyWarehouseIdRemoved(c.getIsPropertyWarehouseIdRemoved());
         e.setIsPropertyPOReferenceRemoved(c.getIsPropertyPOReferenceRemoved());
+        e.setIsPropertyFreightAmountRemoved(c.getIsPropertyFreightAmountRemoved());
         e.setIsPropertyShipperIdRemoved(c.getIsPropertyShipperIdRemoved());
+        e.setIsPropertyChargeAmountRemoved(c.getIsPropertyChargeAmountRemoved());
         e.setIsPropertyDatePrintedRemoved(c.getIsPropertyDatePrintedRemoved());
+        e.setIsPropertyCreatedFromRemoved(c.getIsPropertyCreatedFromRemoved());
         e.setIsPropertySalesRepresentativeIdRemoved(c.getIsPropertySalesRepresentativeIdRemoved());
         e.setIsPropertyNumberOfPackagesRemoved(c.getIsPropertyNumberOfPackagesRemoved());
         e.setIsPropertyPickDateRemoved(c.getIsPropertyPickDateRemoved());

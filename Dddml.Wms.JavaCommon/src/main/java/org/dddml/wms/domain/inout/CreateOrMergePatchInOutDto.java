@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.inout;
 
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
 import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
@@ -174,6 +174,18 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.POReference = poReference;
     }
 
+    private BigDecimal freightAmount;
+
+    public BigDecimal getFreightAmount()
+    {
+        return this.freightAmount;
+    }
+
+    public void setFreightAmount(BigDecimal freightAmount)
+    {
+        this.freightAmount = freightAmount;
+    }
+
     private String shipperId;
 
     public String getShipperId()
@@ -186,6 +198,18 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.shipperId = shipperId;
     }
 
+    private BigDecimal chargeAmount;
+
+    public BigDecimal getChargeAmount()
+    {
+        return this.chargeAmount;
+    }
+
+    public void setChargeAmount(BigDecimal chargeAmount)
+    {
+        this.chargeAmount = chargeAmount;
+    }
+
     private Date datePrinted;
 
     public Date getDatePrinted()
@@ -196,6 +220,18 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
     public void setDatePrinted(Date datePrinted)
     {
         this.datePrinted = datePrinted;
+    }
+
+    private String createdFrom;
+
+    public String getCreatedFrom()
+    {
+        return this.createdFrom;
+    }
+
+    public void setCreatedFrom(String createdFrom)
+    {
+        this.createdFrom = createdFrom;
     }
 
     private String salesRepresentativeId;
@@ -510,6 +546,18 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPropertyPOReferenceRemoved = removed;
     }
 
+    private Boolean isPropertyFreightAmountRemoved;
+
+    public Boolean getIsPropertyFreightAmountRemoved()
+    {
+        return this.isPropertyFreightAmountRemoved;
+    }
+
+    public void setIsPropertyFreightAmountRemoved(Boolean removed)
+    {
+        this.isPropertyFreightAmountRemoved = removed;
+    }
+
     private Boolean isPropertyShipperIdRemoved;
 
     public Boolean getIsPropertyShipperIdRemoved()
@@ -522,6 +570,18 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPropertyShipperIdRemoved = removed;
     }
 
+    private Boolean isPropertyChargeAmountRemoved;
+
+    public Boolean getIsPropertyChargeAmountRemoved()
+    {
+        return this.isPropertyChargeAmountRemoved;
+    }
+
+    public void setIsPropertyChargeAmountRemoved(Boolean removed)
+    {
+        this.isPropertyChargeAmountRemoved = removed;
+    }
+
     private Boolean isPropertyDatePrintedRemoved;
 
     public Boolean getIsPropertyDatePrintedRemoved()
@@ -532,6 +592,18 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
     public void setIsPropertyDatePrintedRemoved(Boolean removed)
     {
         this.isPropertyDatePrintedRemoved = removed;
+    }
+
+    private Boolean isPropertyCreatedFromRemoved;
+
+    public Boolean getIsPropertyCreatedFromRemoved()
+    {
+        return this.isPropertyCreatedFromRemoved;
+    }
+
+    public void setIsPropertyCreatedFromRemoved(Boolean removed)
+    {
+        this.isPropertyCreatedFromRemoved = removed;
     }
 
     private Boolean isPropertySalesRepresentativeIdRemoved;
@@ -695,8 +767,11 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         command.setBusinessPartnerId(this.getBusinessPartnerId());
         command.setWarehouseId(this.getWarehouseId());
         command.setPOReference(this.getPOReference());
+        command.setFreightAmount(this.getFreightAmount());
         command.setShipperId(this.getShipperId());
+        command.setChargeAmount(this.getChargeAmount());
         command.setDatePrinted(this.getDatePrinted());
+        command.setCreatedFrom(this.getCreatedFrom());
         command.setSalesRepresentativeId(this.getSalesRepresentativeId());
         command.setNumberOfPackages(this.getNumberOfPackages());
         command.setPickDate(this.getPickDate());
@@ -756,8 +831,11 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         command.setIsPropertyBusinessPartnerIdRemoved(this.getIsPropertyBusinessPartnerIdRemoved());
         command.setIsPropertyWarehouseIdRemoved(this.getIsPropertyWarehouseIdRemoved());
         command.setIsPropertyPOReferenceRemoved(this.getIsPropertyPOReferenceRemoved());
+        command.setIsPropertyFreightAmountRemoved(this.getIsPropertyFreightAmountRemoved());
         command.setIsPropertyShipperIdRemoved(this.getIsPropertyShipperIdRemoved());
+        command.setIsPropertyChargeAmountRemoved(this.getIsPropertyChargeAmountRemoved());
         command.setIsPropertyDatePrintedRemoved(this.getIsPropertyDatePrintedRemoved());
+        command.setIsPropertyCreatedFromRemoved(this.getIsPropertyCreatedFromRemoved());
         command.setIsPropertySalesRepresentativeIdRemoved(this.getIsPropertySalesRepresentativeIdRemoved());
         command.setIsPropertyNumberOfPackagesRemoved(this.getIsPropertyNumberOfPackagesRemoved());
         command.setIsPropertyPickDateRemoved(this.getIsPropertyPickDateRemoved());

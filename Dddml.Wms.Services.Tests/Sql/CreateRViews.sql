@@ -110,8 +110,11 @@ CREATE VIEW `InOutLine_RV` AS
         `InOuts`.`BusinessPartnerId` AS `InOutBusinessPartnerId`,
         `InOuts`.`WarehouseId` AS `InOutWarehouseId`,
         `InOuts`.`POReference` AS `InOutPOReference`,
+        `InOuts`.`FreightAmount` AS `InOutFreightAmount`,
         `InOuts`.`ShipperId` AS `InOutShipperId`,
+        `InOuts`.`ChargeAmount` AS `InOutChargeAmount`,
         `InOuts`.`DatePrinted` AS `InOutDatePrinted`,
+        `InOuts`.`CreatedFrom` AS `InOutCreatedFrom`,
         `InOuts`.`SalesRepresentativeId` AS `InOutSalesRepresentativeId`,
         `InOuts`.`NumberOfPackages` AS `InOutNumberOfPackages`,
         `InOuts`.`PickDate` AS `InOutPickDate`,
@@ -384,6 +387,52 @@ CREATE VIEW `OrderItem_RV` AS
         (`OrderItems`
             JOIN `Orders` ON ( 1=1 
                 and (`OrderItems`.`OrderItemIdOrderId` = `Orders`.`OrderId`)
+            )
+        );
+
+
+CREATE VIEW `PhysicalInventoryLine_RV` AS
+    SELECT 
+        `PhysicalInventoryLines`.`PhysicalInventoryLineIdPhysicalInventoryDocumentNumber`,
+        `PhysicalInventoryLines`.`PhysicalInventoryLineIdLineNumber`,
+        `PhysicalInventoryLines`.`LocatorId`,
+        `PhysicalInventoryLines`.`ProductId`,
+        `PhysicalInventoryLines`.`AttributeSetInstanceId`,
+        `PhysicalInventoryLines`.`BookQuantity`,
+        `PhysicalInventoryLines`.`CountedQuantity`,
+        `PhysicalInventoryLines`.`Processed`,
+        `PhysicalInventoryLines`.`ReversalLineNumber`,
+        `PhysicalInventoryLines`.`Description`,
+        `PhysicalInventoryLines`.`Version`,
+        `PhysicalInventoryLines`.`CreatedBy`,
+        `PhysicalInventoryLines`.`CreatedAt`,
+        `PhysicalInventoryLines`.`UpdatedBy`,
+        `PhysicalInventoryLines`.`UpdatedAt`,
+        `PhysicalInventoryLines`.`Active`,
+        `PhysicalInventoryLines`.`Deleted`,
+        `PhysicalInventories`.`DocumentStatusId` AS `PhysicalInventoryDocumentStatusId`,
+        `PhysicalInventories`.`WarehouseId` AS `PhysicalInventoryWarehouseId`,
+        `PhysicalInventories`.`Posted` AS `PhysicalInventoryPosted`,
+        `PhysicalInventories`.`Processed` AS `PhysicalInventoryProcessed`,
+        `PhysicalInventories`.`Processing` AS `PhysicalInventoryProcessing`,
+        `PhysicalInventories`.`DocumentTypeId` AS `PhysicalInventoryDocumentTypeId`,
+        `PhysicalInventories`.`MovementDate` AS `PhysicalInventoryMovementDate`,
+        `PhysicalInventories`.`Description` AS `PhysicalInventoryDescription`,
+        `PhysicalInventories`.`IsApproved` AS `PhysicalInventoryIsApproved`,
+        `PhysicalInventories`.`ApprovalAmount` AS `PhysicalInventoryApprovalAmount`,
+        `PhysicalInventories`.`IsQuantityUpdated` AS `PhysicalInventoryIsQuantityUpdated`,
+        `PhysicalInventories`.`ReversalDocumentNumber` AS `PhysicalInventoryReversalDocumentNumber`,
+        `PhysicalInventories`.`Version` AS `PhysicalInventoryVersion`,
+        `PhysicalInventories`.`CreatedBy` AS `PhysicalInventoryCreatedBy`,
+        `PhysicalInventories`.`CreatedAt` AS `PhysicalInventoryCreatedAt`,
+        `PhysicalInventories`.`UpdatedBy` AS `PhysicalInventoryUpdatedBy`,
+        `PhysicalInventories`.`UpdatedAt` AS `PhysicalInventoryUpdatedAt`,
+        `PhysicalInventories`.`Active` AS `PhysicalInventoryActive`,
+        `PhysicalInventories`.`Deleted` AS `PhysicalInventoryDeleted`
+    FROM
+        (`PhysicalInventoryLines`
+            JOIN `PhysicalInventories` ON ( 1=1 
+                and (`PhysicalInventoryLines`.`PhysicalInventoryLineIdPhysicalInventoryDocumentNumber` = `PhysicalInventories`.`DocumentNumber`)
             )
         );
 

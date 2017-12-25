@@ -2098,6 +2098,12 @@
 .\OrganizationStructureMetadata.java
 .\OrganizationStructureTypeFilteringProperties.java
 .\OrganizationStructureTypeMetadata.java
+.\PhysicalInventoryFilteringProperties.java
+.\PhysicalInventoryLineFilteringProperties.java
+.\PhysicalInventoryLineMetadata.java
+.\PhysicalInventoryLineMvoFilteringProperties.java
+.\PhysicalInventoryLineMvoMetadata.java
+.\PhysicalInventoryMetadata.java
 .\ProductCategoryFilteringProperties.java
 .\ProductCategoryMemberFilteringProperties.java
 .\ProductCategoryMemberMetadata.java
@@ -2298,6 +2304,24 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\OrganizationStructureTypeMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\PhysicalInventoryFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\PhysicalInventoryLineFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\PhysicalInventoryLineMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\PhysicalInventoryLineMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\PhysicalInventoryLineMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\PhysicalInventoryMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\ProductCategoryFilteringProperties.java">
@@ -3509,6 +3533,241 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateRepository.java">
       <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\AbstractPhysicalInventoryLineMvoAggregate.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\AbstractPhysicalInventoryLineMvoApplicationService.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\AbstractPhysicalInventoryLineMvoCommand.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\AbstractPhysicalInventoryLineMvoCommandDto.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\AbstractPhysicalInventoryLineMvoState.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\AbstractPhysicalInventoryLineMvoStateCommandConverter.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\AbstractPhysicalInventoryLineMvoStateEvent.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\CreateOrMergePatchPhysicalInventoryLineMvoDto.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\DeletePhysicalInventoryLineMvoDto.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\GeneratePhysicalInventoryLineMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoAggregate.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoApplicationService.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoCommand.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoState.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoStateDto.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoStateEvent.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoStateEventDto.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoStateEventDtoConverter.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoStateEventId.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoStateEventIdDto.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoStateEventIdDtoWrapper.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoStateEventIdFlattenedDto.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoStateQueryRepository.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\PhysicalInventoryLineMvoStateRepository.java">
+      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryAggregate.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryApplicationService.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryCommand.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryCommandDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryLineCommand.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryLineCommandDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryLineState.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryLineStateCommandConverter.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryLineStateEvent.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryLineStates.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryState.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryStateCommandConverter.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryStateEvent.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\CreateOrMergePatchPhysicalInventoryDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\CreateOrMergePatchPhysicalInventoryLineDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\DeletePhysicalInventoryDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\GeneratePhysicalInventoryDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryAggregate.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryApplicationService.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryCommand.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineCommand.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineId.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineIdDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineIdDtoWrapper.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineIdFlattenedDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineIdFlattenedDtoFormatter.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineState.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateDao.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateEvent.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateEventDao.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateEventDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateEventDtoConverter.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateEventId.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateEventIdDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateEventIdDtoWrapper.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateEventIdFlattenedDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStates.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryState.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateEvent.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateEventDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateEventDtoConverter.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateEventId.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateEventIdDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateEventIdDtoWrapper.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateEventIdFlattenedDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateQueryRepository.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateRepository.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\RemovePhysicalInventoryLineDto.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\productcategorymember\AbstractProductCategoryMemberAggregate.java">
       <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
@@ -6109,6 +6368,95 @@
 .\MovementConfirmationStateQueryRepository.java
 .\MovementConfirmationStateRepository.java
 .\RemoveMovementConfirmationLineDto.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\GeneratePhysicalInventoryDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePhysicalInventoryDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractPhysicalInventoryAggregate.java
+.\AbstractPhysicalInventoryApplicationService.java
+.\AbstractPhysicalInventoryCommand.java
+.\AbstractPhysicalInventoryCommandDto.java
+.\AbstractPhysicalInventoryLineCommand.java
+.\AbstractPhysicalInventoryLineCommandDto.java
+.\AbstractPhysicalInventoryLineState.java
+.\AbstractPhysicalInventoryLineStateCommandConverter.java
+.\AbstractPhysicalInventoryLineStateEvent.java
+.\AbstractPhysicalInventoryLineStates.java
+.\AbstractPhysicalInventoryState.java
+.\AbstractPhysicalInventoryStateCommandConverter.java
+.\AbstractPhysicalInventoryStateEvent.java
+.\CreateOrMergePatchPhysicalInventoryDto.java
+.\CreateOrMergePatchPhysicalInventoryLineDto.java
+.\DeletePhysicalInventoryDto.java
+.\GeneratePhysicalInventoryDomain.txt
+.\PhysicalInventoryAggregate.java
+.\PhysicalInventoryApplicationService.java
+.\PhysicalInventoryCommand.java
+.\PhysicalInventoryLineCommand.java
+.\PhysicalInventoryLineId.java
+.\PhysicalInventoryLineIdDto.java
+.\PhysicalInventoryLineIdDtoWrapper.java
+.\PhysicalInventoryLineIdFlattenedDto.java
+.\PhysicalInventoryLineIdFlattenedDtoFormatter.java
+.\PhysicalInventoryLineState.java
+.\PhysicalInventoryLineStateDao.java
+.\PhysicalInventoryLineStateDto.java
+.\PhysicalInventoryLineStateEvent.java
+.\PhysicalInventoryLineStateEventDao.java
+.\PhysicalInventoryLineStateEventDto.java
+.\PhysicalInventoryLineStateEventDtoConverter.java
+.\PhysicalInventoryLineStateEventId.java
+.\PhysicalInventoryLineStateEventIdDto.java
+.\PhysicalInventoryLineStateEventIdDtoWrapper.java
+.\PhysicalInventoryLineStateEventIdFlattenedDto.java
+.\PhysicalInventoryLineStateEventIdFlattenedDtoFormatter.java
+.\PhysicalInventoryLineStates.java
+.\PhysicalInventoryState.java
+.\PhysicalInventoryStateDto.java
+.\PhysicalInventoryStateEvent.java
+.\PhysicalInventoryStateEventDto.java
+.\PhysicalInventoryStateEventDtoConverter.java
+.\PhysicalInventoryStateEventId.java
+.\PhysicalInventoryStateEventIdDto.java
+.\PhysicalInventoryStateEventIdDtoWrapper.java
+.\PhysicalInventoryStateEventIdFlattenedDto.java
+.\PhysicalInventoryStateEventIdFlattenedDtoFormatter.java
+.\PhysicalInventoryStateQueryRepository.java
+.\PhysicalInventoryStateRepository.java
+.\RemovePhysicalInventoryLineDto.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\GeneratePhysicalInventoryLineMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePhysicalInventoryLineMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractPhysicalInventoryLineMvoAggregate.java
+.\AbstractPhysicalInventoryLineMvoApplicationService.java
+.\AbstractPhysicalInventoryLineMvoCommand.java
+.\AbstractPhysicalInventoryLineMvoCommandDto.java
+.\AbstractPhysicalInventoryLineMvoState.java
+.\AbstractPhysicalInventoryLineMvoStateCommandConverter.java
+.\AbstractPhysicalInventoryLineMvoStateEvent.java
+.\CreateOrMergePatchPhysicalInventoryLineMvoDto.java
+.\DeletePhysicalInventoryLineMvoDto.java
+.\GeneratePhysicalInventoryLineMvoDomain.txt
+.\PhysicalInventoryLineMvoAggregate.java
+.\PhysicalInventoryLineMvoApplicationService.java
+.\PhysicalInventoryLineMvoCommand.java
+.\PhysicalInventoryLineMvoState.java
+.\PhysicalInventoryLineMvoStateDto.java
+.\PhysicalInventoryLineMvoStateEvent.java
+.\PhysicalInventoryLineMvoStateEventDto.java
+.\PhysicalInventoryLineMvoStateEventDtoConverter.java
+.\PhysicalInventoryLineMvoStateEventId.java
+.\PhysicalInventoryLineMvoStateEventIdDto.java
+.\PhysicalInventoryLineMvoStateEventIdDtoWrapper.java
+.\PhysicalInventoryLineMvoStateEventIdFlattenedDto.java
+.\PhysicalInventoryLineMvoStateEventIdFlattenedDtoFormatter.java
+.\PhysicalInventoryLineMvoStateQueryRepository.java
+.\PhysicalInventoryLineMvoStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

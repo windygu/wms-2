@@ -61,8 +61,11 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setInOutBusinessPartnerId(e.getInOutBusinessPartnerId());
         dto.setInOutWarehouseId(e.getInOutWarehouseId());
         dto.setInOutPOReference(e.getInOutPOReference());
+        dto.setInOutFreightAmount(e.getInOutFreightAmount());
         dto.setInOutShipperId(e.getInOutShipperId());
+        dto.setInOutChargeAmount(e.getInOutChargeAmount());
         dto.setInOutDatePrinted(e.getInOutDatePrinted());
+        dto.setInOutCreatedFrom(e.getInOutCreatedFrom());
         dto.setInOutSalesRepresentativeId(e.getInOutSalesRepresentativeId());
         dto.setInOutNumberOfPackages(e.getInOutNumberOfPackages());
         dto.setInOutPickDate(e.getInOutPickDate());
@@ -120,8 +123,11 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setInOutBusinessPartnerId(e.getInOutBusinessPartnerId());
         dto.setInOutWarehouseId(e.getInOutWarehouseId());
         dto.setInOutPOReference(e.getInOutPOReference());
+        dto.setInOutFreightAmount(e.getInOutFreightAmount());
         dto.setInOutShipperId(e.getInOutShipperId());
+        dto.setInOutChargeAmount(e.getInOutChargeAmount());
         dto.setInOutDatePrinted(e.getInOutDatePrinted());
+        dto.setInOutCreatedFrom(e.getInOutCreatedFrom());
         dto.setInOutSalesRepresentativeId(e.getInOutSalesRepresentativeId());
         dto.setInOutNumberOfPackages(e.getInOutNumberOfPackages());
         dto.setInOutPickDate(e.getInOutPickDate());
@@ -170,8 +176,11 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setIsPropertyInOutBusinessPartnerIdRemoved(e.getIsPropertyInOutBusinessPartnerIdRemoved());
         dto.setIsPropertyInOutWarehouseIdRemoved(e.getIsPropertyInOutWarehouseIdRemoved());
         dto.setIsPropertyInOutPOReferenceRemoved(e.getIsPropertyInOutPOReferenceRemoved());
+        dto.setIsPropertyInOutFreightAmountRemoved(e.getIsPropertyInOutFreightAmountRemoved());
         dto.setIsPropertyInOutShipperIdRemoved(e.getIsPropertyInOutShipperIdRemoved());
+        dto.setIsPropertyInOutChargeAmountRemoved(e.getIsPropertyInOutChargeAmountRemoved());
         dto.setIsPropertyInOutDatePrintedRemoved(e.getIsPropertyInOutDatePrintedRemoved());
+        dto.setIsPropertyInOutCreatedFromRemoved(e.getIsPropertyInOutCreatedFromRemoved());
         dto.setIsPropertyInOutSalesRepresentativeIdRemoved(e.getIsPropertyInOutSalesRepresentativeIdRemoved());
         dto.setIsPropertyInOutNumberOfPackagesRemoved(e.getIsPropertyInOutNumberOfPackagesRemoved());
         dto.setIsPropertyInOutPickDateRemoved(e.getIsPropertyInOutPickDateRemoved());

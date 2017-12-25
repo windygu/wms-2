@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.PhysicalInventory">
+  
+  <class name="Dddml.Wms.Domain.PhysicalInventory.PhysicalInventoryLineState" table="PhysicalInventoryLines">
+
+    <composite-id name="PhysicalInventoryLineId" class="Dddml.Wms.Domain.PhysicalInventory.PhysicalInventoryLineId">
+        <key-property name="PhysicalInventoryDocumentNumber" ><column name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" length="50" /></key-property>
+        <key-property name="LineNumber" ><column name="PhysicalInventoryLineIdLineNumber" length="50" /></key-property>
+    </composite-id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="LocatorId" ></property>
+    <property name="ProductId" ></property>
+    <property name="AttributeSetInstanceId" ></property>
+    <property name="BookQuantity" ></property>
+    <property name="CountedQuantity" ></property>
+    <property name="Processed" ></property>
+    <property name="ReversalLineNumber" ></property>
+    <property name="Description" ></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="Deleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" />
+
+    <property name="UpdatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+
