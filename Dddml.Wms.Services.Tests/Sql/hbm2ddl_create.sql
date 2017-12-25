@@ -1396,7 +1396,8 @@
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        CommandId VARCHAR(255),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
+      unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber)
     );
 
     create table InventoryPostingRules (
@@ -2681,7 +2682,8 @@
        InventoryItemUpdatedAt DATETIME,
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
+      unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber)
     );
 
     create table InventoryItemEntryMvoStateEvents (
@@ -2787,8 +2789,7 @@
        IsPropertyInventoryItemRequirementCreatedAtRemoved TINYINT(1),
        IsPropertyInventoryItemRequirementUpdatedByRemoved TINYINT(1),
        IsPropertyInventoryItemRequirementUpdatedAtRemoved TINYINT(1),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, InventoryItemRequirementVersion),
-      unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, InventoryItemRequirementVersion)
     );
 
     create table OrderItem_RV (
@@ -3067,8 +3068,7 @@
        IsPropertySellableInventoryItemCreatedAtRemoved TINYINT(1),
        IsPropertySellableInventoryItemUpdatedByRemoved TINYINT(1),
        IsPropertySellableInventoryItemUpdatedAtRemoved TINYINT(1),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, SellableInventoryItemVersion),
-      unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, SellableInventoryItemVersion)
     );
 
     create table ShipmentItem_RV (

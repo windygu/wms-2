@@ -19,7 +19,7 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="quantity" ></property>
-	<component name="sourceEventId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId" unique="true">
+	<component name="sourceEventId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId">
 		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
 		<property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
 		<property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" /></property>

@@ -19,7 +19,7 @@
     <property name="QuantityReserved" ></property>
     <property name="QuantityOccupied" ></property>
     <property name="QuantityVirtual" ></property>
-    <component name="Source" class="Dddml.Wms.Domain.InventoryItem.InventoryItemSourceInfo">
+    <component name="Source" class="Dddml.Wms.Domain.InventoryItem.InventoryItemSourceInfo" unique="true">
         <property name="DocumentTypeId" ><column name="SourceDocumentTypeId" not-null="true" /></property>
         <property name="DocumentNumber" ><column name="SourceDocumentNumber" not-null="true" /></property>
         <property name="LineNumber" ><column name="SourceLineNumber" /></property>

@@ -176,7 +176,8 @@
        InventoryItemUpdatedAt DATETIME,
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
+      unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber)
     );
     create table InventoryItemRequirementEntry_RV (
         ProductId VARCHAR(255) not null,

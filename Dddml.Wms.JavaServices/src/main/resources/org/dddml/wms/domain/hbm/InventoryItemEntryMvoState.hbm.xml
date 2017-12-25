@@ -21,7 +21,7 @@
 	<property name="quantityReserved" ></property>
 	<property name="quantityOccupied" ></property>
 	<property name="quantityVirtual" ></property>
-	<component name="source" class="org.dddml.wms.domain.inventoryitem.InventoryItemSourceInfo">
+	<component name="source" class="org.dddml.wms.domain.inventoryitem.InventoryItemSourceInfo" unique="true">
 		<property name="documentTypeId" ><column name="sourceDocumentTypeId" not-null="true" /></property>
 		<property name="documentNumber" ><column name="sourceDocumentNumber" not-null="true" /></property>
 		<property name="lineNumber" ><column name="sourceLineNumber" /></property>
