@@ -66,18 +66,6 @@ public interface InOutLineMvoCommand extends Command
 
         void setMovementQuantity(BigDecimal movementQuantity);
 
-        BigDecimal getConfirmedQuantity();
-
-        void setConfirmedQuantity(BigDecimal confirmedQuantity);
-
-        BigDecimal getScrappedQuantity();
-
-        void setScrappedQuantity(BigDecimal scrappedQuantity);
-
-        BigDecimal getTargetQuantity();
-
-        void setTargetQuantity(BigDecimal targetQuantity);
-
         BigDecimal getPickedQuantity();
 
         void setPickedQuantity(BigDecimal pickedQuantity);
@@ -89,10 +77,6 @@ public interface InOutLineMvoCommand extends Command
         Boolean getProcessed();
 
         void setProcessed(Boolean processed);
-
-        BigDecimal getQuantityEntered();
-
-        void setQuantityEntered(BigDecimal quantityEntered);
 
         Long getRmaLineNumber();
 
@@ -286,18 +270,6 @@ public interface InOutLineMvoCommand extends Command
 
         void setIsPropertyMovementQuantityRemoved(Boolean removed);
 
-        Boolean getIsPropertyConfirmedQuantityRemoved();
-
-        void setIsPropertyConfirmedQuantityRemoved(Boolean removed);
-
-        Boolean getIsPropertyScrappedQuantityRemoved();
-
-        void setIsPropertyScrappedQuantityRemoved(Boolean removed);
-
-        Boolean getIsPropertyTargetQuantityRemoved();
-
-        void setIsPropertyTargetQuantityRemoved(Boolean removed);
-
         Boolean getIsPropertyPickedQuantityRemoved();
 
         void setIsPropertyPickedQuantityRemoved(Boolean removed);
@@ -309,10 +281,6 @@ public interface InOutLineMvoCommand extends Command
         Boolean getIsPropertyProcessedRemoved();
 
         void setIsPropertyProcessedRemoved(Boolean removed);
-
-        Boolean getIsPropertyQuantityEnteredRemoved();
-
-        void setIsPropertyQuantityEnteredRemoved(Boolean removed);
 
         Boolean getIsPropertyRmaLineNumberRemoved();
 

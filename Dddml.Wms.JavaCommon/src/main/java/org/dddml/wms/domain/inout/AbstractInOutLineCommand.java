@@ -107,42 +107,6 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
             this.movementQuantity = movementQuantity;
         }
 
-        private BigDecimal confirmedQuantity;
-
-        public BigDecimal getConfirmedQuantity()
-        {
-            return this.confirmedQuantity;
-        }
-
-        public void setConfirmedQuantity(BigDecimal confirmedQuantity)
-        {
-            this.confirmedQuantity = confirmedQuantity;
-        }
-
-        private BigDecimal scrappedQuantity;
-
-        public BigDecimal getScrappedQuantity()
-        {
-            return this.scrappedQuantity;
-        }
-
-        public void setScrappedQuantity(BigDecimal scrappedQuantity)
-        {
-            this.scrappedQuantity = scrappedQuantity;
-        }
-
-        private BigDecimal targetQuantity;
-
-        public BigDecimal getTargetQuantity()
-        {
-            return this.targetQuantity;
-        }
-
-        public void setTargetQuantity(BigDecimal targetQuantity)
-        {
-            this.targetQuantity = targetQuantity;
-        }
-
         private BigDecimal pickedQuantity;
 
         public BigDecimal getPickedQuantity()
@@ -177,18 +141,6 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
         public void setProcessed(Boolean processed)
         {
             this.processed = processed;
-        }
-
-        private BigDecimal quantityEntered;
-
-        public BigDecimal getQuantityEntered()
-        {
-            return this.quantityEntered;
-        }
-
-        public void setQuantityEntered(BigDecimal quantityEntered)
-        {
-            this.quantityEntered = quantityEntered;
         }
 
         private Long rmaLineNumber;
@@ -317,42 +269,6 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
             this.isPropertyMovementQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyConfirmedQuantityRemoved;
-
-        public Boolean getIsPropertyConfirmedQuantityRemoved()
-        {
-            return this.isPropertyConfirmedQuantityRemoved;
-        }
-
-        public void setIsPropertyConfirmedQuantityRemoved(Boolean removed)
-        {
-            this.isPropertyConfirmedQuantityRemoved = removed;
-        }
-
-        private Boolean isPropertyScrappedQuantityRemoved;
-
-        public Boolean getIsPropertyScrappedQuantityRemoved()
-        {
-            return this.isPropertyScrappedQuantityRemoved;
-        }
-
-        public void setIsPropertyScrappedQuantityRemoved(Boolean removed)
-        {
-            this.isPropertyScrappedQuantityRemoved = removed;
-        }
-
-        private Boolean isPropertyTargetQuantityRemoved;
-
-        public Boolean getIsPropertyTargetQuantityRemoved()
-        {
-            return this.isPropertyTargetQuantityRemoved;
-        }
-
-        public void setIsPropertyTargetQuantityRemoved(Boolean removed)
-        {
-            this.isPropertyTargetQuantityRemoved = removed;
-        }
-
         private Boolean isPropertyPickedQuantityRemoved;
 
         public Boolean getIsPropertyPickedQuantityRemoved()
@@ -387,18 +303,6 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
         public void setIsPropertyProcessedRemoved(Boolean removed)
         {
             this.isPropertyProcessedRemoved = removed;
-        }
-
-        private Boolean isPropertyQuantityEnteredRemoved;
-
-        public Boolean getIsPropertyQuantityEnteredRemoved()
-        {
-            return this.isPropertyQuantityEnteredRemoved;
-        }
-
-        public void setIsPropertyQuantityEnteredRemoved(Boolean removed)
-        {
-            this.isPropertyQuantityEnteredRemoved = removed;
         }
 
         private Boolean isPropertyRmaLineNumberRemoved;

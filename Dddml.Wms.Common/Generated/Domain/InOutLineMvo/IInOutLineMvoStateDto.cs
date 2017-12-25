@@ -58,24 +58,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        decimal? ConfirmedQuantity
-        {
-            get;
-            set;
-        }
-
-        decimal? ScrappedQuantity
-        {
-            get;
-            set;
-        }
-
-        decimal? TargetQuantity
-        {
-            get;
-            set;
-        }
-
         decimal? PickedQuantity
         {
             get;
@@ -89,12 +71,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
         }
 
         bool? Processed
-        {
-            get;
-            set;
-        }
-
-        decimal? QuantityEntered
         {
             get;
             set;

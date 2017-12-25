@@ -36,19 +36,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		decimal? MovementQuantity { get; set; }
 
-		decimal? ConfirmedQuantity { get; set; }
-
-		decimal? ScrappedQuantity { get; set; }
-
-		decimal? TargetQuantity { get; set; }
-
 		decimal? PickedQuantity { get; set; }
 
 		bool? IsInvoiced { get; set; }
 
 		bool? Processed { get; set; }
-
-		decimal? QuantityEntered { get; set; }
 
 		long? RmaLineNumber { get; set; }
 
@@ -152,19 +144,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool IsPropertyMovementQuantityRemoved { get; set; }
 
-		bool IsPropertyConfirmedQuantityRemoved { get; set; }
-
-		bool IsPropertyScrappedQuantityRemoved { get; set; }
-
-		bool IsPropertyTargetQuantityRemoved { get; set; }
-
 		bool IsPropertyPickedQuantityRemoved { get; set; }
 
 		bool IsPropertyIsInvoicedRemoved { get; set; }
 
 		bool IsPropertyProcessedRemoved { get; set; }
-
-		bool IsPropertyQuantityEnteredRemoved { get; set; }
 
 		bool IsPropertyRmaLineNumberRemoved { get; set; }
 

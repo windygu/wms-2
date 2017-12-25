@@ -206,19 +206,11 @@ namespace Dddml.Wms.Domain.InOut
 
             this.MovementQuantity = (e.MovementQuantity != null && e.MovementQuantity.HasValue) ? e.MovementQuantity.Value : default(decimal);
 
-            this.ConfirmedQuantity = (e.ConfirmedQuantity != null && e.ConfirmedQuantity.HasValue) ? e.ConfirmedQuantity.Value : default(decimal);
-
-            this.ScrappedQuantity = (e.ScrappedQuantity != null && e.ScrappedQuantity.HasValue) ? e.ScrappedQuantity.Value : default(decimal);
-
-            this.TargetQuantity = (e.TargetQuantity != null && e.TargetQuantity.HasValue) ? e.TargetQuantity.Value : default(decimal);
-
             this.PickedQuantity = (e.PickedQuantity != null && e.PickedQuantity.HasValue) ? e.PickedQuantity.Value : default(decimal);
 
             this.IsInvoiced = (e.IsInvoiced != null && e.IsInvoiced.HasValue) ? e.IsInvoiced.Value : default(bool);
 
             this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
-
-            this.QuantityEntered = (e.QuantityEntered != null && e.QuantityEntered.HasValue) ? e.QuantityEntered.Value : default(decimal);
 
             this.RmaLineNumber = (e.RmaLineNumber != null && e.RmaLineNumber.HasValue) ? e.RmaLineNumber.Value : default(long);
 
@@ -311,42 +303,6 @@ namespace Dddml.Wms.Domain.InOut
 				this.MovementQuantity = (e.MovementQuantity != null && e.MovementQuantity.HasValue) ? e.MovementQuantity.Value : default(decimal);
 			}
 
-			if (e.ConfirmedQuantity == null)
-			{
-				if (e.IsPropertyConfirmedQuantityRemoved)
-				{
-					this.ConfirmedQuantity = default(decimal);
-				}
-			}
-			else
-			{
-				this.ConfirmedQuantity = (e.ConfirmedQuantity != null && e.ConfirmedQuantity.HasValue) ? e.ConfirmedQuantity.Value : default(decimal);
-			}
-
-			if (e.ScrappedQuantity == null)
-			{
-				if (e.IsPropertyScrappedQuantityRemoved)
-				{
-					this.ScrappedQuantity = default(decimal);
-				}
-			}
-			else
-			{
-				this.ScrappedQuantity = (e.ScrappedQuantity != null && e.ScrappedQuantity.HasValue) ? e.ScrappedQuantity.Value : default(decimal);
-			}
-
-			if (e.TargetQuantity == null)
-			{
-				if (e.IsPropertyTargetQuantityRemoved)
-				{
-					this.TargetQuantity = default(decimal);
-				}
-			}
-			else
-			{
-				this.TargetQuantity = (e.TargetQuantity != null && e.TargetQuantity.HasValue) ? e.TargetQuantity.Value : default(decimal);
-			}
-
 			if (e.PickedQuantity == null)
 			{
 				if (e.IsPropertyPickedQuantityRemoved)
@@ -381,18 +337,6 @@ namespace Dddml.Wms.Domain.InOut
 			else
 			{
 				this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
-			}
-
-			if (e.QuantityEntered == null)
-			{
-				if (e.IsPropertyQuantityEnteredRemoved)
-				{
-					this.QuantityEntered = default(decimal);
-				}
-			}
-			else
-			{
-				this.QuantityEntered = (e.QuantityEntered != null && e.QuantityEntered.HasValue) ? e.QuantityEntered.Value : default(decimal);
 			}
 
 			if (e.RmaLineNumber == null)

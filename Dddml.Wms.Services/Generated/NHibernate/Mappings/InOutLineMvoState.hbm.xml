@@ -18,13 +18,9 @@
     <property name="Description" ></property>
     <property name="UomId" ></property>
     <property name="MovementQuantity" ></property>
-    <property name="ConfirmedQuantity" ></property>
-    <property name="ScrappedQuantity" ></property>
-    <property name="TargetQuantity" ></property>
     <property name="PickedQuantity" ></property>
     <property name="IsInvoiced" ></property>
     <property name="Processed" ></property>
-    <property name="QuantityEntered" ></property>
     <property name="RmaLineNumber" ></property>
     <property name="ReversalLineNumber" ></property>
     <property name="Version" ></property>

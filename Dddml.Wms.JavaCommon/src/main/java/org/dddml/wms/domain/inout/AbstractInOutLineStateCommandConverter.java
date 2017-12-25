@@ -40,13 +40,9 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         cmd.setDescription(state.getDescription());
         cmd.setUomId(state.getUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());
-        cmd.setConfirmedQuantity(state.getConfirmedQuantity());
-        cmd.setScrappedQuantity(state.getScrappedQuantity());
-        cmd.setTargetQuantity(state.getTargetQuantity());
         cmd.setPickedQuantity(state.getPickedQuantity());
         cmd.setIsInvoiced(state.getIsInvoiced());
         cmd.setProcessed(state.getProcessed());
-        cmd.setQuantityEntered(state.getQuantityEntered());
         cmd.setRmaLineNumber(state.getRmaLineNumber());
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setActive(state.getActive());
@@ -58,13 +54,9 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getUomId() == null) { cmd.setIsPropertyUomIdRemoved(true); }
         if (state.getMovementQuantity() == null) { cmd.setIsPropertyMovementQuantityRemoved(true); }
-        if (state.getConfirmedQuantity() == null) { cmd.setIsPropertyConfirmedQuantityRemoved(true); }
-        if (state.getScrappedQuantity() == null) { cmd.setIsPropertyScrappedQuantityRemoved(true); }
-        if (state.getTargetQuantity() == null) { cmd.setIsPropertyTargetQuantityRemoved(true); }
         if (state.getPickedQuantity() == null) { cmd.setIsPropertyPickedQuantityRemoved(true); }
         if (state.getIsInvoiced() == null) { cmd.setIsPropertyIsInvoicedRemoved(true); }
         if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
-        if (state.getQuantityEntered() == null) { cmd.setIsPropertyQuantityEnteredRemoved(true); }
         if (state.getRmaLineNumber() == null) { cmd.setIsPropertyRmaLineNumberRemoved(true); }
         if (state.getReversalLineNumber() == null) { cmd.setIsPropertyReversalLineNumberRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
@@ -82,13 +74,9 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         cmd.setDescription(state.getDescription());
         cmd.setUomId(state.getUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());
-        cmd.setConfirmedQuantity(state.getConfirmedQuantity());
-        cmd.setScrappedQuantity(state.getScrappedQuantity());
-        cmd.setTargetQuantity(state.getTargetQuantity());
         cmd.setPickedQuantity(state.getPickedQuantity());
         cmd.setIsInvoiced(state.getIsInvoiced());
         cmd.setProcessed(state.getProcessed());
-        cmd.setQuantityEntered(state.getQuantityEntered());
         cmd.setRmaLineNumber(state.getRmaLineNumber());
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setActive(state.getActive());

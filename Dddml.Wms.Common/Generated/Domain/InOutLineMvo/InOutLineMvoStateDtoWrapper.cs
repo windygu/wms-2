@@ -239,99 +239,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual decimal? ConfirmedQuantity
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ConfirmedQuantity"))
-                {
-                    return _state.ConfirmedQuantity;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.ConfirmedQuantity = value.Value;
-                }
-            }
-        }
-
-        decimal IInOutLineMvoStateProperties.ConfirmedQuantity
-        {
-            get 
-            {
-                return (this._state as IInOutLineMvoStateProperties).ConfirmedQuantity;
-            }
-            set 
-            {
-                (this._state as IInOutLineMvoStateProperties).ConfirmedQuantity = value;
-            }
-        }
-
-		public virtual decimal? ScrappedQuantity
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ScrappedQuantity"))
-                {
-                    return _state.ScrappedQuantity;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.ScrappedQuantity = value.Value;
-                }
-            }
-        }
-
-        decimal IInOutLineMvoStateProperties.ScrappedQuantity
-        {
-            get 
-            {
-                return (this._state as IInOutLineMvoStateProperties).ScrappedQuantity;
-            }
-            set 
-            {
-                (this._state as IInOutLineMvoStateProperties).ScrappedQuantity = value;
-            }
-        }
-
-		public virtual decimal? TargetQuantity
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("TargetQuantity"))
-                {
-                    return _state.TargetQuantity;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.TargetQuantity = value.Value;
-                }
-            }
-        }
-
-        decimal IInOutLineMvoStateProperties.TargetQuantity
-        {
-            get 
-            {
-                return (this._state as IInOutLineMvoStateProperties).TargetQuantity;
-            }
-            set 
-            {
-                (this._state as IInOutLineMvoStateProperties).TargetQuantity = value;
-            }
-        }
-
 		public virtual decimal? PickedQuantity
         {
             get
@@ -422,37 +329,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set 
             {
                 (this._state as IInOutLineMvoStateProperties).Processed = value;
-            }
-        }
-
-		public virtual decimal? QuantityEntered
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("QuantityEntered"))
-                {
-                    return _state.QuantityEntered;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.QuantityEntered = value.Value;
-                }
-            }
-        }
-
-        decimal IInOutLineMvoStateProperties.QuantityEntered
-        {
-            get 
-            {
-                return (this._state as IInOutLineMvoStateProperties).QuantityEntered;
-            }
-            set 
-            {
-                (this._state as IInOutLineMvoStateProperties).QuantityEntered = value;
             }
         }
 

@@ -55,19 +55,11 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual decimal? MovementQuantity { get; set; }
 
-		public virtual decimal? ConfirmedQuantity { get; set; }
-
-		public virtual decimal? ScrappedQuantity { get; set; }
-
-		public virtual decimal? TargetQuantity { get; set; }
-
 		public virtual decimal? PickedQuantity { get; set; }
 
 		public virtual bool? IsInvoiced { get; set; }
 
 		public virtual bool? Processed { get; set; }
-
-		public virtual decimal? QuantityEntered { get; set; }
 
 		public virtual long? RmaLineNumber { get; set; }
 
@@ -292,63 +284,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? IsPropertyConfirmedQuantityRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyConfirmedQuantityRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyConfirmedQuantityRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyConfirmedQuantityRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyScrappedQuantityRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyScrappedQuantityRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyScrappedQuantityRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyScrappedQuantityRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyTargetQuantityRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyTargetQuantityRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyTargetQuantityRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyTargetQuantityRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyPickedQuantityRemoved { get; set; }
 
         bool IInOutLineMvoStateMergePatched.IsPropertyPickedQuantityRemoved
@@ -403,25 +338,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set 
             {
                 this.IsPropertyProcessedRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyQuantityEnteredRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyQuantityEnteredRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyQuantityEnteredRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyQuantityEnteredRemoved = value;
             }
         }
 

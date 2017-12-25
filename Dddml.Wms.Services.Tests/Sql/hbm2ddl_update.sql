@@ -88,42 +88,6 @@
       unique (Name),
       unique (Alias)
     );
-    alter table InOuts 
-        add column FreightAmount NUMERIC(19,5);
-    alter table InOuts 
-        add column ChargeAmount NUMERIC(19,5);
-    alter table InOuts 
-        add column CreatedFrom VARCHAR(255);
-    alter table InOuts 
-        add column SalesRepresentativeId VARCHAR(255);
-    alter table InOuts 
-        add column RmaDocumentNumber VARCHAR(255);
-    alter table InOuts 
-        add column ReversalDocumentNumber VARCHAR(255);
-    alter table InOutStateEvents 
-        add column FreightAmount NUMERIC(19,5);
-    alter table InOutStateEvents 
-        add column ChargeAmount NUMERIC(19,5);
-    alter table InOutStateEvents 
-        add column CreatedFrom VARCHAR(255);
-    alter table InOutStateEvents 
-        add column SalesRepresentativeId VARCHAR(255);
-    alter table InOutStateEvents 
-        add column RmaDocumentNumber VARCHAR(255);
-    alter table InOutStateEvents 
-        add column ReversalDocumentNumber VARCHAR(255);
-    alter table InOutStateEvents 
-        add column IsPropertyFreightAmountRemoved TINYINT(1);
-    alter table InOutStateEvents 
-        add column IsPropertyChargeAmountRemoved TINYINT(1);
-    alter table InOutStateEvents 
-        add column IsPropertyCreatedFromRemoved TINYINT(1);
-    alter table InOutStateEvents 
-        add column IsPropertySalesRepresentativeIdRemoved TINYINT(1);
-    alter table InOutStateEvents 
-        add column IsPropertyRmaDocumentNumberRemoved TINYINT(1);
-    alter table InOutStateEvents 
-        add column IsPropertyReversalDocumentNumberRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,
@@ -134,13 +98,9 @@
        Description VARCHAR(255),
        UomId VARCHAR(255),
        MovementQuantity NUMERIC(19,5),
-       ConfirmedQuantity NUMERIC(19,5),
-       ScrappedQuantity NUMERIC(19,5),
-       TargetQuantity NUMERIC(19,5),
        PickedQuantity NUMERIC(19,5),
        IsInvoiced TINYINT(1),
        Processed TINYINT(1),
-       QuantityEntered NUMERIC(19,5),
        RmaLineNumber BIGINT,
        ReversalLineNumber BIGINT,
        Version BIGINT,
@@ -188,30 +148,6 @@
        UpdatedAt DATETIME,
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
-    alter table InOutLineMvoStateEvents 
-        add column InOutFreightAmount NUMERIC(19,5);
-    alter table InOutLineMvoStateEvents 
-        add column InOutChargeAmount NUMERIC(19,5);
-    alter table InOutLineMvoStateEvents 
-        add column InOutCreatedFrom VARCHAR(255);
-    alter table InOutLineMvoStateEvents 
-        add column InOutSalesRepresentativeId VARCHAR(255);
-    alter table InOutLineMvoStateEvents 
-        add column InOutRmaDocumentNumber VARCHAR(255);
-    alter table InOutLineMvoStateEvents 
-        add column InOutReversalDocumentNumber VARCHAR(255);
-    alter table InOutLineMvoStateEvents 
-        add column IsPropertyInOutFreightAmountRemoved TINYINT(1);
-    alter table InOutLineMvoStateEvents 
-        add column IsPropertyInOutChargeAmountRemoved TINYINT(1);
-    alter table InOutLineMvoStateEvents 
-        add column IsPropertyInOutCreatedFromRemoved TINYINT(1);
-    alter table InOutLineMvoStateEvents 
-        add column IsPropertyInOutSalesRepresentativeIdRemoved TINYINT(1);
-    alter table InOutLineMvoStateEvents 
-        add column IsPropertyInOutRmaDocumentNumberRemoved TINYINT(1);
-    alter table InOutLineMvoStateEvents 
-        add column IsPropertyInOutReversalDocumentNumberRemoved TINYINT(1);
     create table InventoryItemEntry_RV (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
@@ -412,108 +348,6 @@
        UpdatedAt DATETIME,
        primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId)
     );
-    alter table Movements 
-        add column MovementDate DATETIME;
-    alter table Movements 
-        add column Posted TINYINT(1);
-    alter table Movements 
-        add column Processed TINYINT(1);
-    alter table Movements 
-        add column Processing VARCHAR(255);
-    alter table Movements 
-        add column DateReceived DATETIME;
-    alter table Movements 
-        add column IsInTransit TINYINT(1);
-    alter table Movements 
-        add column IsApproved TINYINT(1);
-    alter table Movements 
-        add column ApprovalAmount NUMERIC(19,5);
-    alter table Movements 
-        add column ShipperId VARCHAR(255);
-    alter table Movements 
-        add column SalesRepresentativeId VARCHAR(255);
-    alter table Movements 
-        add column BusinessPartnerId VARCHAR(255);
-    alter table Movements 
-        add column ChargeAmount NUMERIC(19,5);
-    alter table Movements 
-        add column CreateFrom VARCHAR(255);
-    alter table Movements 
-        add column FreightAmount NUMERIC(19,5);
-    alter table Movements 
-        add column ReversalDocumentNumber VARCHAR(255);
-    alter table Movements 
-        add column WarehouseIdFrom VARCHAR(255);
-    alter table Movements 
-        add column WarehouseIdTo VARCHAR(255);
-    alter table MovementStateEvents 
-        add column MovementDate DATETIME;
-    alter table MovementStateEvents 
-        add column Posted TINYINT(1);
-    alter table MovementStateEvents 
-        add column Processed TINYINT(1);
-    alter table MovementStateEvents 
-        add column Processing VARCHAR(255);
-    alter table MovementStateEvents 
-        add column DateReceived DATETIME;
-    alter table MovementStateEvents 
-        add column IsInTransit TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsApproved TINYINT(1);
-    alter table MovementStateEvents 
-        add column ApprovalAmount NUMERIC(19,5);
-    alter table MovementStateEvents 
-        add column ShipperId VARCHAR(255);
-    alter table MovementStateEvents 
-        add column SalesRepresentativeId VARCHAR(255);
-    alter table MovementStateEvents 
-        add column BusinessPartnerId VARCHAR(255);
-    alter table MovementStateEvents 
-        add column ChargeAmount NUMERIC(19,5);
-    alter table MovementStateEvents 
-        add column CreateFrom VARCHAR(255);
-    alter table MovementStateEvents 
-        add column FreightAmount NUMERIC(19,5);
-    alter table MovementStateEvents 
-        add column ReversalDocumentNumber VARCHAR(255);
-    alter table MovementStateEvents 
-        add column WarehouseIdFrom VARCHAR(255);
-    alter table MovementStateEvents 
-        add column WarehouseIdTo VARCHAR(255);
-    alter table MovementStateEvents 
-        add column IsPropertyMovementDateRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyPostedRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyProcessedRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyProcessingRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyDateReceivedRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyIsInTransitRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyIsApprovedRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyApprovalAmountRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyShipperIdRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertySalesRepresentativeIdRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyBusinessPartnerIdRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyChargeAmountRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyCreateFromRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyFreightAmountRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyReversalDocumentNumberRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyWarehouseIdFromRemoved TINYINT(1);
-    alter table MovementStateEvents 
-        add column IsPropertyWarehouseIdToRemoved TINYINT(1);
     create table MovementLine_RV (
         MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
        MovementLineIdLineNumber VARCHAR(50) not null,
@@ -561,74 +395,6 @@
        UpdatedAt DATETIME,
        primary key (MovementLineIdMovementDocumentNumber, MovementLineIdLineNumber)
     );
-    alter table MovementLineMvoStateEvents 
-        add column MovementMovementDate DATETIME;
-    alter table MovementLineMvoStateEvents 
-        add column MovementPosted TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column MovementProcessed TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column MovementProcessing VARCHAR(255);
-    alter table MovementLineMvoStateEvents 
-        add column MovementDateReceived DATETIME;
-    alter table MovementLineMvoStateEvents 
-        add column MovementIsInTransit TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column MovementIsApproved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column MovementApprovalAmount NUMERIC(19,5);
-    alter table MovementLineMvoStateEvents 
-        add column MovementShipperId VARCHAR(255);
-    alter table MovementLineMvoStateEvents 
-        add column MovementSalesRepresentativeId VARCHAR(255);
-    alter table MovementLineMvoStateEvents 
-        add column MovementBusinessPartnerId VARCHAR(255);
-    alter table MovementLineMvoStateEvents 
-        add column MovementChargeAmount NUMERIC(19,5);
-    alter table MovementLineMvoStateEvents 
-        add column MovementCreateFrom VARCHAR(255);
-    alter table MovementLineMvoStateEvents 
-        add column MovementFreightAmount NUMERIC(19,5);
-    alter table MovementLineMvoStateEvents 
-        add column MovementReversalDocumentNumber VARCHAR(255);
-    alter table MovementLineMvoStateEvents 
-        add column MovementWarehouseIdFrom VARCHAR(255);
-    alter table MovementLineMvoStateEvents 
-        add column MovementWarehouseIdTo VARCHAR(255);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementMovementDateRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementPostedRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementProcessedRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementProcessingRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementDateReceivedRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementIsInTransitRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementIsApprovedRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementApprovalAmountRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementShipperIdRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementSalesRepresentativeIdRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementBusinessPartnerIdRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementChargeAmountRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementCreateFromRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementFreightAmountRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementReversalDocumentNumberRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementWarehouseIdFromRemoved TINYINT(1);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyMovementWarehouseIdToRemoved TINYINT(1);
     create table MovementConfirmationLine_RV (
         MovementConfirmationLineIdMovementConfirmationDocumentNumber VARCHAR(50) not null,
        MovementConfirmationLineIdLineNumber VARCHAR(50) not null,
@@ -662,113 +428,6 @@
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (MovementConfirmationLineIdMovementConfirmationDocumentNumber, MovementConfirmationLineIdLineNumber)
-    );
-    create table PhysicalInventories (
-        DocumentNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       DocumentStatusId VARCHAR(255),
-       WarehouseId VARCHAR(255),
-       Posted TINYINT(1),
-       Processed TINYINT(1),
-       Processing VARCHAR(255),
-       DocumentTypeId VARCHAR(255),
-       MovementDate DATETIME,
-       Description VARCHAR(255),
-       IsApproved TINYINT(1),
-       ApprovalAmount NUMERIC(19,5),
-       IsQuantityUpdated TINYINT(1),
-       ReversalDocumentNumber VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (DocumentNumber)
-    );
-    create table PhysicalInventoryStateEvents (
-        DocumentNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       DocumentStatusId VARCHAR(255),
-       WarehouseId VARCHAR(255),
-       Posted TINYINT(1),
-       Processed TINYINT(1),
-       Processing VARCHAR(255),
-       DocumentTypeId VARCHAR(255),
-       MovementDate DATETIME,
-       Description VARCHAR(255),
-       IsApproved TINYINT(1),
-       ApprovalAmount NUMERIC(19,5),
-       IsQuantityUpdated TINYINT(1),
-       ReversalDocumentNumber VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyDocumentStatusIdRemoved TINYINT(1),
-       IsPropertyWarehouseIdRemoved TINYINT(1),
-       IsPropertyPostedRemoved TINYINT(1),
-       IsPropertyProcessedRemoved TINYINT(1),
-       IsPropertyProcessingRemoved TINYINT(1),
-       IsPropertyDocumentTypeIdRemoved TINYINT(1),
-       IsPropertyMovementDateRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyIsApprovedRemoved TINYINT(1),
-       IsPropertyApprovalAmountRemoved TINYINT(1),
-       IsPropertyIsQuantityUpdatedRemoved TINYINT(1),
-       IsPropertyReversalDocumentNumberRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (DocumentNumber, Version)
-    );
-    create table PhysicalInventoryLines (
-        PhysicalInventoryLineIdPhysicalInventoryDocumentNumber VARCHAR(50) not null,
-       PhysicalInventoryLineIdLineNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       LocatorId VARCHAR(255),
-       ProductId VARCHAR(255),
-       AttributeSetInstanceId VARCHAR(255),
-       BookQuantity NUMERIC(19,5),
-       CountedQuantity NUMERIC(19,5),
-       Processed TINYINT(1),
-       ReversalLineNumber BIGINT,
-       Description VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber)
-    );
-    create table PhysicalInventoryLineStateEvents (
-        PhysicalInventoryLineIdPhysicalInventoryDocumentNumber VARCHAR(50) not null,
-       PhysicalInventoryLineIdLineNumber VARCHAR(50) not null,
-       PhysicalInventoryVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       LocatorId VARCHAR(255),
-       ProductId VARCHAR(255),
-       AttributeSetInstanceId VARCHAR(255),
-       BookQuantity NUMERIC(19,5),
-       CountedQuantity NUMERIC(19,5),
-       Processed TINYINT(1),
-       ReversalLineNumber BIGINT,
-       Description VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyLocatorIdRemoved TINYINT(1),
-       IsPropertyProductIdRemoved TINYINT(1),
-       IsPropertyAttributeSetInstanceIdRemoved TINYINT(1),
-       IsPropertyBookQuantityRemoved TINYINT(1),
-       IsPropertyCountedQuantityRemoved TINYINT(1),
-       IsPropertyProcessedRemoved TINYINT(1),
-       IsPropertyReversalLineNumberRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber, PhysicalInventoryVersion)
     );
     create table PhysicalInventoryLine_RV (
         PhysicalInventoryLineIdPhysicalInventoryDocumentNumber VARCHAR(50) not null,
@@ -808,70 +467,4 @@
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber)
-    );
-    create table PhysicalInventoryLineMvoStateEvents (
-        PhysicalInventoryLineIdPhysicalInventoryDocumentNumber VARCHAR(50) not null,
-       PhysicalInventoryLineIdLineNumber VARCHAR(50) not null,
-       PhysicalInventoryVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       LocatorId VARCHAR(255),
-       ProductId VARCHAR(255),
-       AttributeSetInstanceId VARCHAR(255),
-       BookQuantity NUMERIC(19,5),
-       CountedQuantity NUMERIC(19,5),
-       Processed TINYINT(1),
-       ReversalLineNumber BIGINT,
-       Description VARCHAR(255),
-       Version BIGINT,
-       Active TINYINT(1),
-       PhysicalInventoryDocumentStatusId VARCHAR(255),
-       PhysicalInventoryWarehouseId VARCHAR(255),
-       PhysicalInventoryPosted TINYINT(1),
-       PhysicalInventoryProcessed TINYINT(1),
-       PhysicalInventoryProcessing VARCHAR(255),
-       PhysicalInventoryDocumentTypeId VARCHAR(255),
-       PhysicalInventoryMovementDate DATETIME,
-       PhysicalInventoryDescription VARCHAR(255),
-       PhysicalInventoryIsApproved TINYINT(1),
-       PhysicalInventoryApprovalAmount NUMERIC(19,5),
-       PhysicalInventoryIsQuantityUpdated TINYINT(1),
-       PhysicalInventoryReversalDocumentNumber VARCHAR(255),
-       PhysicalInventoryCreatedBy VARCHAR(255),
-       PhysicalInventoryCreatedAt DATETIME,
-       PhysicalInventoryUpdatedBy VARCHAR(255),
-       PhysicalInventoryUpdatedAt DATETIME,
-       PhysicalInventoryActive TINYINT(1),
-       PhysicalInventoryDeleted TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyLocatorIdRemoved TINYINT(1),
-       IsPropertyProductIdRemoved TINYINT(1),
-       IsPropertyAttributeSetInstanceIdRemoved TINYINT(1),
-       IsPropertyBookQuantityRemoved TINYINT(1),
-       IsPropertyCountedQuantityRemoved TINYINT(1),
-       IsPropertyProcessedRemoved TINYINT(1),
-       IsPropertyReversalLineNumberRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyVersionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryDocumentStatusIdRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryWarehouseIdRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryPostedRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryProcessedRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryProcessingRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryDocumentTypeIdRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryMovementDateRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryDescriptionRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryIsApprovedRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryApprovalAmountRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryIsQuantityUpdatedRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryReversalDocumentNumberRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryCreatedByRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryCreatedAtRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryUpdatedByRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryUpdatedAtRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryActiveRemoved TINYINT(1),
-       IsPropertyPhysicalInventoryDeletedRemoved TINYINT(1),
-       primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber, PhysicalInventoryVersion)
     );

@@ -17,13 +17,9 @@ public final class InOutLineMvoFilteringProperties
             "description",
             "uomId",
             "movementQuantity",
-            "confirmedQuantity",
-            "scrappedQuantity",
-            "targetQuantity",
             "pickedQuantity",
             "isInvoiced",
             "processed",
-            "quantityEntered",
             "rmaLineNumber",
             "reversalLineNumber",
             "version",
@@ -82,12 +78,8 @@ public final class InOutLineMvoFilteringProperties
             "String",
             "BigDecimal",
             "BigDecimal",
-            "BigDecimal",
-            "BigDecimal",
-            "BigDecimal",
             "Boolean",
             "Boolean",
-            "BigDecimal",
             "Long",
             "Long",
             "Long",
@@ -162,20 +154,12 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("UomId", "uomId");
         aliasMap.put("movementQuantity", "movementQuantity");
         aliasMap.put("MovementQuantity", "movementQuantity");
-        aliasMap.put("confirmedQuantity", "confirmedQuantity");
-        aliasMap.put("ConfirmedQuantity", "confirmedQuantity");
-        aliasMap.put("scrappedQuantity", "scrappedQuantity");
-        aliasMap.put("ScrappedQuantity", "scrappedQuantity");
-        aliasMap.put("targetQuantity", "targetQuantity");
-        aliasMap.put("TargetQuantity", "targetQuantity");
         aliasMap.put("pickedQuantity", "pickedQuantity");
         aliasMap.put("PickedQuantity", "pickedQuantity");
         aliasMap.put("isInvoiced", "isInvoiced");
         aliasMap.put("IsInvoiced", "isInvoiced");
         aliasMap.put("processed", "processed");
         aliasMap.put("Processed", "processed");
-        aliasMap.put("quantityEntered", "quantityEntered");
-        aliasMap.put("QuantityEntered", "quantityEntered");
         aliasMap.put("rmaLineNumber", "rmaLineNumber");
         aliasMap.put("RmaLineNumber", "rmaLineNumber");
         aliasMap.put("reversalLineNumber", "reversalLineNumber");

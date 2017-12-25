@@ -55,13 +55,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.Description = state.Description;
             cmd.UomId = state.UomId;
             cmd.MovementQuantity = state.MovementQuantity;
-            cmd.ConfirmedQuantity = state.ConfirmedQuantity;
-            cmd.ScrappedQuantity = state.ScrappedQuantity;
-            cmd.TargetQuantity = state.TargetQuantity;
             cmd.PickedQuantity = state.PickedQuantity;
             cmd.IsInvoiced = state.IsInvoiced;
             cmd.Processed = state.Processed;
-            cmd.QuantityEntered = state.QuantityEntered;
             cmd.RmaLineNumber = state.RmaLineNumber;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IInOutLineMvoStateProperties)state).Version;
@@ -146,13 +142,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.Description = state.Description;
             cmd.UomId = state.UomId;
             cmd.MovementQuantity = state.MovementQuantity;
-            cmd.ConfirmedQuantity = state.ConfirmedQuantity;
-            cmd.ScrappedQuantity = state.ScrappedQuantity;
-            cmd.TargetQuantity = state.TargetQuantity;
             cmd.PickedQuantity = state.PickedQuantity;
             cmd.IsInvoiced = state.IsInvoiced;
             cmd.Processed = state.Processed;
-            cmd.QuantityEntered = state.QuantityEntered;
             cmd.RmaLineNumber = state.RmaLineNumber;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IInOutLineMvoStateProperties)state).Version;

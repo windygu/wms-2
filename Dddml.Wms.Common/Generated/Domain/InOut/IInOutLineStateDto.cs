@@ -56,24 +56,6 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        decimal? ConfirmedQuantity
-        {
-            get;
-            set;
-        }
-
-        decimal? ScrappedQuantity
-        {
-            get;
-            set;
-        }
-
-        decimal? TargetQuantity
-        {
-            get;
-            set;
-        }
-
         decimal? PickedQuantity
         {
             get;
@@ -87,12 +69,6 @@ namespace Dddml.Wms.Domain.InOut
         }
 
         bool? Processed
-        {
-            get;
-            set;
-        }
-
-        decimal? QuantityEntered
         {
             get;
             set;

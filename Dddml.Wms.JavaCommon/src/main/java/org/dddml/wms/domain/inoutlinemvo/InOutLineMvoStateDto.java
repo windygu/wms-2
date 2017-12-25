@@ -95,42 +95,6 @@ public class InOutLineMvoStateDto
         this.movementQuantity = movementQuantity;
     }
 
-    private BigDecimal confirmedQuantity;
-
-    public BigDecimal getConfirmedQuantity()
-    {
-        return this.confirmedQuantity;
-    }
-
-    public void setConfirmedQuantity(BigDecimal confirmedQuantity)
-    {
-        this.confirmedQuantity = confirmedQuantity;
-    }
-
-    private BigDecimal scrappedQuantity;
-
-    public BigDecimal getScrappedQuantity()
-    {
-        return this.scrappedQuantity;
-    }
-
-    public void setScrappedQuantity(BigDecimal scrappedQuantity)
-    {
-        this.scrappedQuantity = scrappedQuantity;
-    }
-
-    private BigDecimal targetQuantity;
-
-    public BigDecimal getTargetQuantity()
-    {
-        return this.targetQuantity;
-    }
-
-    public void setTargetQuantity(BigDecimal targetQuantity)
-    {
-        this.targetQuantity = targetQuantity;
-    }
-
     private BigDecimal pickedQuantity;
 
     public BigDecimal getPickedQuantity()
@@ -165,18 +129,6 @@ public class InOutLineMvoStateDto
     public void setProcessed(Boolean processed)
     {
         this.processed = processed;
-    }
-
-    private BigDecimal quantityEntered;
-
-    public BigDecimal getQuantityEntered()
-    {
-        return this.quantityEntered;
-    }
-
-    public void setQuantityEntered(BigDecimal quantityEntered)
-    {
-        this.quantityEntered = quantityEntered;
     }
 
     private Long rmaLineNumber;
@@ -766,15 +718,6 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("MovementQuantity")) {
                 dto.setMovementQuantity(state.getMovementQuantity());
             }
-            if (returnedFieldsContains("ConfirmedQuantity")) {
-                dto.setConfirmedQuantity(state.getConfirmedQuantity());
-            }
-            if (returnedFieldsContains("ScrappedQuantity")) {
-                dto.setScrappedQuantity(state.getScrappedQuantity());
-            }
-            if (returnedFieldsContains("TargetQuantity")) {
-                dto.setTargetQuantity(state.getTargetQuantity());
-            }
             if (returnedFieldsContains("PickedQuantity")) {
                 dto.setPickedQuantity(state.getPickedQuantity());
             }
@@ -783,9 +726,6 @@ public class InOutLineMvoStateDto
             }
             if (returnedFieldsContains("Processed")) {
                 dto.setProcessed(state.getProcessed());
-            }
-            if (returnedFieldsContains("QuantityEntered")) {
-                dto.setQuantityEntered(state.getQuantityEntered());
             }
             if (returnedFieldsContains("RmaLineNumber")) {
                 dto.setRmaLineNumber(state.getRmaLineNumber());

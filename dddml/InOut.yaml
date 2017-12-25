@@ -184,14 +184,14 @@ aggregates:
             MovementQuantity: 
               type: decimal
 
-            ConfirmedQuantity: 
-              type: decimal
+            # ConfirmedQuantity: 
+              # type: decimal
 
-            ScrappedQuantity: 
-              type: decimal
+            # ScrappedQuantity: 
+              # type: decimal
 
-            TargetQuantity: 
-              type: decimal
+            # TargetQuantity: 
+              # type: decimal
 
             PickedQuantity: 
               type: decimal
@@ -202,8 +202,8 @@ aggregates:
             Processed: 
               type: bool
 
-            QuantityEntered: 
-              type: decimal
+            # QuantityEntered: 
+              # type: decimal
 
             RmaLineNumber: 
               type: long

@@ -95,42 +95,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.movementQuantity = movementQuantity;
     }
 
-    private BigDecimal confirmedQuantity;
-
-    public BigDecimal getConfirmedQuantity()
-    {
-        return this.confirmedQuantity;
-    }
-
-    public void setConfirmedQuantity(BigDecimal confirmedQuantity)
-    {
-        this.confirmedQuantity = confirmedQuantity;
-    }
-
-    private BigDecimal scrappedQuantity;
-
-    public BigDecimal getScrappedQuantity()
-    {
-        return this.scrappedQuantity;
-    }
-
-    public void setScrappedQuantity(BigDecimal scrappedQuantity)
-    {
-        this.scrappedQuantity = scrappedQuantity;
-    }
-
-    private BigDecimal targetQuantity;
-
-    public BigDecimal getTargetQuantity()
-    {
-        return this.targetQuantity;
-    }
-
-    public void setTargetQuantity(BigDecimal targetQuantity)
-    {
-        this.targetQuantity = targetQuantity;
-    }
-
     private BigDecimal pickedQuantity;
 
     public BigDecimal getPickedQuantity()
@@ -165,18 +129,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     public void setProcessed(Boolean processed)
     {
         this.processed = processed;
-    }
-
-    private BigDecimal quantityEntered;
-
-    public BigDecimal getQuantityEntered()
-    {
-        return this.quantityEntered;
-    }
-
-    public void setQuantityEntered(BigDecimal quantityEntered)
-    {
-        this.quantityEntered = quantityEntered;
     }
 
     private Long rmaLineNumber;
@@ -801,13 +753,9 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.setDescription(e.getDescription());
         this.setUomId(e.getUomId());
         this.setMovementQuantity(e.getMovementQuantity());
-        this.setConfirmedQuantity(e.getConfirmedQuantity());
-        this.setScrappedQuantity(e.getScrappedQuantity());
-        this.setTargetQuantity(e.getTargetQuantity());
         this.setPickedQuantity(e.getPickedQuantity());
         this.setIsInvoiced(e.getIsInvoiced());
         this.setProcessed(e.getProcessed());
-        this.setQuantityEntered(e.getQuantityEntered());
         this.setRmaLineNumber(e.getRmaLineNumber());
         this.setReversalLineNumber(e.getReversalLineNumber());
         this.setVersion(e.getVersion());
@@ -926,39 +874,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setMovementQuantity(e.getMovementQuantity());
         }
-        if (e.getConfirmedQuantity() == null)
-        {
-            if (e.getIsPropertyConfirmedQuantityRemoved() != null && e.getIsPropertyConfirmedQuantityRemoved())
-            {
-                this.setConfirmedQuantity(null);
-            }
-        }
-        else
-        {
-            this.setConfirmedQuantity(e.getConfirmedQuantity());
-        }
-        if (e.getScrappedQuantity() == null)
-        {
-            if (e.getIsPropertyScrappedQuantityRemoved() != null && e.getIsPropertyScrappedQuantityRemoved())
-            {
-                this.setScrappedQuantity(null);
-            }
-        }
-        else
-        {
-            this.setScrappedQuantity(e.getScrappedQuantity());
-        }
-        if (e.getTargetQuantity() == null)
-        {
-            if (e.getIsPropertyTargetQuantityRemoved() != null && e.getIsPropertyTargetQuantityRemoved())
-            {
-                this.setTargetQuantity(null);
-            }
-        }
-        else
-        {
-            this.setTargetQuantity(e.getTargetQuantity());
-        }
         if (e.getPickedQuantity() == null)
         {
             if (e.getIsPropertyPickedQuantityRemoved() != null && e.getIsPropertyPickedQuantityRemoved())
@@ -991,17 +906,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         else
         {
             this.setProcessed(e.getProcessed());
-        }
-        if (e.getQuantityEntered() == null)
-        {
-            if (e.getIsPropertyQuantityEnteredRemoved() != null && e.getIsPropertyQuantityEnteredRemoved())
-            {
-                this.setQuantityEntered(null);
-            }
-        }
-        else
-        {
-            this.setQuantityEntered(e.getQuantityEntered());
         }
         if (e.getRmaLineNumber() == null)
         {

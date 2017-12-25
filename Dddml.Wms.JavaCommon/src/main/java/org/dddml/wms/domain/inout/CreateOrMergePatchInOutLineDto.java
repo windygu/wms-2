@@ -78,42 +78,6 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.movementQuantity = movementQuantity;
     }
 
-    private BigDecimal confirmedQuantity;
-
-    public BigDecimal getConfirmedQuantity()
-    {
-        return this.confirmedQuantity;
-    }
-
-    public void setConfirmedQuantity(BigDecimal confirmedQuantity)
-    {
-        this.confirmedQuantity = confirmedQuantity;
-    }
-
-    private BigDecimal scrappedQuantity;
-
-    public BigDecimal getScrappedQuantity()
-    {
-        return this.scrappedQuantity;
-    }
-
-    public void setScrappedQuantity(BigDecimal scrappedQuantity)
-    {
-        this.scrappedQuantity = scrappedQuantity;
-    }
-
-    private BigDecimal targetQuantity;
-
-    public BigDecimal getTargetQuantity()
-    {
-        return this.targetQuantity;
-    }
-
-    public void setTargetQuantity(BigDecimal targetQuantity)
-    {
-        this.targetQuantity = targetQuantity;
-    }
-
     private BigDecimal pickedQuantity;
 
     public BigDecimal getPickedQuantity()
@@ -148,18 +112,6 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
     public void setProcessed(Boolean processed)
     {
         this.processed = processed;
-    }
-
-    private BigDecimal quantityEntered;
-
-    public BigDecimal getQuantityEntered()
-    {
-        return this.quantityEntered;
-    }
-
-    public void setQuantityEntered(BigDecimal quantityEntered)
-    {
-        this.quantityEntered = quantityEntered;
     }
 
     private Long rmaLineNumber;
@@ -270,42 +222,6 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.isPropertyMovementQuantityRemoved = removed;
     }
 
-    private Boolean isPropertyConfirmedQuantityRemoved;
-
-    public Boolean getIsPropertyConfirmedQuantityRemoved()
-    {
-        return this.isPropertyConfirmedQuantityRemoved;
-    }
-
-    public void setIsPropertyConfirmedQuantityRemoved(Boolean removed)
-    {
-        this.isPropertyConfirmedQuantityRemoved = removed;
-    }
-
-    private Boolean isPropertyScrappedQuantityRemoved;
-
-    public Boolean getIsPropertyScrappedQuantityRemoved()
-    {
-        return this.isPropertyScrappedQuantityRemoved;
-    }
-
-    public void setIsPropertyScrappedQuantityRemoved(Boolean removed)
-    {
-        this.isPropertyScrappedQuantityRemoved = removed;
-    }
-
-    private Boolean isPropertyTargetQuantityRemoved;
-
-    public Boolean getIsPropertyTargetQuantityRemoved()
-    {
-        return this.isPropertyTargetQuantityRemoved;
-    }
-
-    public void setIsPropertyTargetQuantityRemoved(Boolean removed)
-    {
-        this.isPropertyTargetQuantityRemoved = removed;
-    }
-
     private Boolean isPropertyPickedQuantityRemoved;
 
     public Boolean getIsPropertyPickedQuantityRemoved()
@@ -340,18 +256,6 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
     public void setIsPropertyProcessedRemoved(Boolean removed)
     {
         this.isPropertyProcessedRemoved = removed;
-    }
-
-    private Boolean isPropertyQuantityEnteredRemoved;
-
-    public Boolean getIsPropertyQuantityEnteredRemoved()
-    {
-        return this.isPropertyQuantityEnteredRemoved;
-    }
-
-    public void setIsPropertyQuantityEnteredRemoved(Boolean removed)
-    {
-        this.isPropertyQuantityEnteredRemoved = removed;
     }
 
     private Boolean isPropertyRmaLineNumberRemoved;
@@ -399,13 +303,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         command.setDescription(this.getDescription());
         command.setUomId(this.getUomId());
         command.setMovementQuantity(this.getMovementQuantity());
-        command.setConfirmedQuantity(this.getConfirmedQuantity());
-        command.setScrappedQuantity(this.getScrappedQuantity());
-        command.setTargetQuantity(this.getTargetQuantity());
         command.setPickedQuantity(this.getPickedQuantity());
         command.setIsInvoiced(this.getIsInvoiced());
         command.setProcessed(this.getProcessed());
-        command.setQuantityEntered(this.getQuantityEntered());
         command.setRmaLineNumber(this.getRmaLineNumber());
         command.setReversalLineNumber(this.getReversalLineNumber());
         command.setActive(this.getActive());
@@ -444,13 +344,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyUomIdRemoved(this.getIsPropertyUomIdRemoved());
         command.setIsPropertyMovementQuantityRemoved(this.getIsPropertyMovementQuantityRemoved());
-        command.setIsPropertyConfirmedQuantityRemoved(this.getIsPropertyConfirmedQuantityRemoved());
-        command.setIsPropertyScrappedQuantityRemoved(this.getIsPropertyScrappedQuantityRemoved());
-        command.setIsPropertyTargetQuantityRemoved(this.getIsPropertyTargetQuantityRemoved());
         command.setIsPropertyPickedQuantityRemoved(this.getIsPropertyPickedQuantityRemoved());
         command.setIsPropertyIsInvoicedRemoved(this.getIsPropertyIsInvoicedRemoved());
         command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());
-        command.setIsPropertyQuantityEnteredRemoved(this.getIsPropertyQuantityEnteredRemoved());
         command.setIsPropertyRmaLineNumberRemoved(this.getIsPropertyRmaLineNumberRemoved());
         command.setIsPropertyReversalLineNumberRemoved(this.getIsPropertyReversalLineNumberRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());

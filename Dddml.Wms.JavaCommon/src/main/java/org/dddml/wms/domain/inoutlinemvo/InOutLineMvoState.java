@@ -42,18 +42,6 @@ public interface InOutLineMvoState
 
     void setMovementQuantity(BigDecimal movementQuantity);
 
-    BigDecimal getConfirmedQuantity();
-
-    void setConfirmedQuantity(BigDecimal confirmedQuantity);
-
-    BigDecimal getScrappedQuantity();
-
-    void setScrappedQuantity(BigDecimal scrappedQuantity);
-
-    BigDecimal getTargetQuantity();
-
-    void setTargetQuantity(BigDecimal targetQuantity);
-
     BigDecimal getPickedQuantity();
 
     void setPickedQuantity(BigDecimal pickedQuantity);
@@ -65,10 +53,6 @@ public interface InOutLineMvoState
     Boolean getProcessed();
 
     void setProcessed(Boolean processed);
-
-    BigDecimal getQuantityEntered();
-
-    void setQuantityEntered(BigDecimal quantityEntered);
 
     Long getRmaLineNumber();
 

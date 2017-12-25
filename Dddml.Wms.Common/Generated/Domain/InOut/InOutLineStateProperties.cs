@@ -28,19 +28,11 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual decimal MovementQuantity { get; set; }
 
-		public virtual decimal ConfirmedQuantity { get; set; }
-
-		public virtual decimal ScrappedQuantity { get; set; }
-
-		public virtual decimal TargetQuantity { get; set; }
-
 		public virtual decimal PickedQuantity { get; set; }
 
 		public virtual bool IsInvoiced { get; set; }
 
 		public virtual bool Processed { get; set; }
-
-		public virtual decimal QuantityEntered { get; set; }
 
 		public virtual long RmaLineNumber { get; set; }
 
