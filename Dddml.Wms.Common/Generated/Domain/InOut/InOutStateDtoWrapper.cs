@@ -524,31 +524,31 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual string SalesRepresentative
+		public virtual string SalesRepresentativeId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("SalesRepresentative"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("SalesRepresentativeId"))
                 {
-                    return _state.SalesRepresentative;
+                    return _state.SalesRepresentativeId;
                 }
                 return null;
             }
             set
             {
-                _state.SalesRepresentative = value;
+                _state.SalesRepresentativeId = value;
             }
         }
 
-        string IInOutStateProperties.SalesRepresentative
+        string IInOutStateProperties.SalesRepresentativeId
         {
             get 
             {
-                return (this._state as IInOutStateProperties).SalesRepresentative;
+                return (this._state as IInOutStateProperties).SalesRepresentativeId;
             }
             set 
             {
-                (this._state as IInOutStateProperties).SalesRepresentative = value;
+                (this._state as IInOutStateProperties).SalesRepresentativeId = value;
             }
         }
 
@@ -788,59 +788,59 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual string RmaNumber
+		public virtual string RmaDocumentNumber
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("RmaNumber"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("RmaDocumentNumber"))
                 {
-                    return _state.RmaNumber;
+                    return _state.RmaDocumentNumber;
                 }
                 return null;
             }
             set
             {
-                _state.RmaNumber = value;
+                _state.RmaDocumentNumber = value;
             }
         }
 
-        string IInOutStateProperties.RmaNumber
+        string IInOutStateProperties.RmaDocumentNumber
         {
             get 
             {
-                return (this._state as IInOutStateProperties).RmaNumber;
+                return (this._state as IInOutStateProperties).RmaDocumentNumber;
             }
             set 
             {
-                (this._state as IInOutStateProperties).RmaNumber = value;
+                (this._state as IInOutStateProperties).RmaDocumentNumber = value;
             }
         }
 
-		public virtual string ReversalNumber
+		public virtual string ReversalDocumentNumber
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ReversalNumber"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ReversalDocumentNumber"))
                 {
-                    return _state.ReversalNumber;
+                    return _state.ReversalDocumentNumber;
                 }
                 return null;
             }
             set
             {
-                _state.ReversalNumber = value;
+                _state.ReversalDocumentNumber = value;
             }
         }
 
-        string IInOutStateProperties.ReversalNumber
+        string IInOutStateProperties.ReversalDocumentNumber
         {
             get 
             {
-                return (this._state as IInOutStateProperties).ReversalNumber;
+                return (this._state as IInOutStateProperties).ReversalDocumentNumber;
             }
             set 
             {
-                (this._state as IInOutStateProperties).ReversalNumber = value;
+                (this._state as IInOutStateProperties).ReversalDocumentNumber = value;
             }
         }
 

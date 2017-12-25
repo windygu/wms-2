@@ -141,7 +141,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.InOutPOReference = c.InOutPOReference;
             e.InOutShipperId = c.InOutShipperId;
             e.InOutDatePrinted = c.InOutDatePrinted;
-            e.InOutSalesRepresentative = c.InOutSalesRepresentative;
+            e.InOutSalesRepresentativeId = c.InOutSalesRepresentativeId;
             e.InOutNumberOfPackages = c.InOutNumberOfPackages;
             e.InOutPickDate = c.InOutPickDate;
             e.InOutShipDate = c.InOutShipDate;
@@ -150,8 +150,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.InOutIsInTransit = c.InOutIsInTransit;
             e.InOutIsApproved = c.InOutIsApproved;
             e.InOutIsInDispute = c.InOutIsInDispute;
-            e.InOutRmaNumber = c.InOutRmaNumber;
-            e.InOutReversalNumber = c.InOutReversalNumber;
+            e.InOutRmaDocumentNumber = c.InOutRmaDocumentNumber;
+            e.InOutReversalDocumentNumber = c.InOutReversalDocumentNumber;
             e.InOutCreatedBy = c.InOutCreatedBy;
             e.InOutCreatedAt = c.InOutCreatedAt;
             e.InOutUpdatedBy = c.InOutUpdatedBy;
@@ -207,7 +207,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.InOutPOReference = c.InOutPOReference;
             e.InOutShipperId = c.InOutShipperId;
             e.InOutDatePrinted = c.InOutDatePrinted;
-            e.InOutSalesRepresentative = c.InOutSalesRepresentative;
+            e.InOutSalesRepresentativeId = c.InOutSalesRepresentativeId;
             e.InOutNumberOfPackages = c.InOutNumberOfPackages;
             e.InOutPickDate = c.InOutPickDate;
             e.InOutShipDate = c.InOutShipDate;
@@ -216,8 +216,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.InOutIsInTransit = c.InOutIsInTransit;
             e.InOutIsApproved = c.InOutIsApproved;
             e.InOutIsInDispute = c.InOutIsInDispute;
-            e.InOutRmaNumber = c.InOutRmaNumber;
-            e.InOutReversalNumber = c.InOutReversalNumber;
+            e.InOutRmaDocumentNumber = c.InOutRmaDocumentNumber;
+            e.InOutReversalDocumentNumber = c.InOutReversalDocumentNumber;
             e.InOutCreatedBy = c.InOutCreatedBy;
             e.InOutCreatedAt = c.InOutCreatedAt;
             e.InOutUpdatedBy = c.InOutUpdatedBy;
@@ -256,7 +256,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.IsPropertyInOutPOReferenceRemoved = c.IsPropertyInOutPOReferenceRemoved;
             e.IsPropertyInOutShipperIdRemoved = c.IsPropertyInOutShipperIdRemoved;
             e.IsPropertyInOutDatePrintedRemoved = c.IsPropertyInOutDatePrintedRemoved;
-            e.IsPropertyInOutSalesRepresentativeRemoved = c.IsPropertyInOutSalesRepresentativeRemoved;
+            e.IsPropertyInOutSalesRepresentativeIdRemoved = c.IsPropertyInOutSalesRepresentativeIdRemoved;
             e.IsPropertyInOutNumberOfPackagesRemoved = c.IsPropertyInOutNumberOfPackagesRemoved;
             e.IsPropertyInOutPickDateRemoved = c.IsPropertyInOutPickDateRemoved;
             e.IsPropertyInOutShipDateRemoved = c.IsPropertyInOutShipDateRemoved;
@@ -265,8 +265,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.IsPropertyInOutIsInTransitRemoved = c.IsPropertyInOutIsInTransitRemoved;
             e.IsPropertyInOutIsApprovedRemoved = c.IsPropertyInOutIsApprovedRemoved;
             e.IsPropertyInOutIsInDisputeRemoved = c.IsPropertyInOutIsInDisputeRemoved;
-            e.IsPropertyInOutRmaNumberRemoved = c.IsPropertyInOutRmaNumberRemoved;
-            e.IsPropertyInOutReversalNumberRemoved = c.IsPropertyInOutReversalNumberRemoved;
+            e.IsPropertyInOutRmaDocumentNumberRemoved = c.IsPropertyInOutRmaDocumentNumberRemoved;
+            e.IsPropertyInOutReversalDocumentNumberRemoved = c.IsPropertyInOutReversalDocumentNumberRemoved;
             e.IsPropertyInOutCreatedByRemoved = c.IsPropertyInOutCreatedByRemoved;
             e.IsPropertyInOutCreatedAtRemoved = c.IsPropertyInOutCreatedAtRemoved;
             e.IsPropertyInOutUpdatedByRemoved = c.IsPropertyInOutUpdatedByRemoved;

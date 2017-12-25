@@ -49,7 +49,7 @@ public final class InOutLineMvoFilteringProperties
             "inOutPOReference",
             "inOutShipperId",
             "inOutDatePrinted",
-            "inOutSalesRepresentative",
+            "inOutSalesRepresentativeId",
             "inOutNumberOfPackages",
             "inOutPickDate",
             "inOutShipDate",
@@ -58,8 +58,8 @@ public final class InOutLineMvoFilteringProperties
             "inOutIsInTransit",
             "inOutIsApproved",
             "inOutIsInDispute",
-            "inOutRmaNumber",
-            "inOutReversalNumber",
+            "inOutRmaDocumentNumber",
+            "inOutReversalDocumentNumber",
             "inOutVersion",
             "inOutCreatedBy",
             "inOutCreatedAt",
@@ -220,8 +220,8 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("InOutShipperId", "inOutShipperId");
         aliasMap.put("inOutDatePrinted", "inOutDatePrinted");
         aliasMap.put("InOutDatePrinted", "inOutDatePrinted");
-        aliasMap.put("inOutSalesRepresentative", "inOutSalesRepresentative");
-        aliasMap.put("InOutSalesRepresentative", "inOutSalesRepresentative");
+        aliasMap.put("inOutSalesRepresentativeId", "inOutSalesRepresentativeId");
+        aliasMap.put("InOutSalesRepresentativeId", "inOutSalesRepresentativeId");
         aliasMap.put("inOutNumberOfPackages", "inOutNumberOfPackages");
         aliasMap.put("InOutNumberOfPackages", "inOutNumberOfPackages");
         aliasMap.put("inOutPickDate", "inOutPickDate");
@@ -238,10 +238,10 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("InOutIsApproved", "inOutIsApproved");
         aliasMap.put("inOutIsInDispute", "inOutIsInDispute");
         aliasMap.put("InOutIsInDispute", "inOutIsInDispute");
-        aliasMap.put("inOutRmaNumber", "inOutRmaNumber");
-        aliasMap.put("InOutRmaNumber", "inOutRmaNumber");
-        aliasMap.put("inOutReversalNumber", "inOutReversalNumber");
-        aliasMap.put("InOutReversalNumber", "inOutReversalNumber");
+        aliasMap.put("inOutRmaDocumentNumber", "inOutRmaDocumentNumber");
+        aliasMap.put("InOutRmaDocumentNumber", "inOutRmaDocumentNumber");
+        aliasMap.put("inOutReversalDocumentNumber", "inOutReversalDocumentNumber");
+        aliasMap.put("InOutReversalDocumentNumber", "inOutReversalDocumentNumber");
         aliasMap.put("inOutVersion", "inOutVersion");
         aliasMap.put("InOutVersion", "inOutVersion");
         aliasMap.put("inOutCreatedBy", "inOutCreatedBy");

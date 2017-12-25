@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutPOReference = state.InOutPOReference;
             cmd.InOutShipperId = state.InOutShipperId;
             cmd.InOutDatePrinted = state.InOutDatePrinted;
-            cmd.InOutSalesRepresentative = state.InOutSalesRepresentative;
+            cmd.InOutSalesRepresentativeId = state.InOutSalesRepresentativeId;
             cmd.InOutNumberOfPackages = state.InOutNumberOfPackages;
             cmd.InOutPickDate = state.InOutPickDate;
             cmd.InOutShipDate = state.InOutShipDate;
@@ -90,8 +90,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutIsInTransit = state.InOutIsInTransit;
             cmd.InOutIsApproved = state.InOutIsApproved;
             cmd.InOutIsInDispute = state.InOutIsInDispute;
-            cmd.InOutRmaNumber = state.InOutRmaNumber;
-            cmd.InOutReversalNumber = state.InOutReversalNumber;
+            cmd.InOutRmaDocumentNumber = state.InOutRmaDocumentNumber;
+            cmd.InOutReversalDocumentNumber = state.InOutReversalDocumentNumber;
             cmd.InOutCreatedBy = state.InOutCreatedBy;
             cmd.InOutCreatedAt = state.InOutCreatedAt;
             cmd.InOutUpdatedBy = state.InOutUpdatedBy;
@@ -116,13 +116,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             if (state.InOutPOReference == null) { cmd.IsPropertyInOutPOReferenceRemoved = true; }
             if (state.InOutShipperId == null) { cmd.IsPropertyInOutShipperIdRemoved = true; }
             if (state.InOutDatePrinted == null) { cmd.IsPropertyInOutDatePrintedRemoved = true; }
-            if (state.InOutSalesRepresentative == null) { cmd.IsPropertyInOutSalesRepresentativeRemoved = true; }
+            if (state.InOutSalesRepresentativeId == null) { cmd.IsPropertyInOutSalesRepresentativeIdRemoved = true; }
             if (state.InOutPickDate == null) { cmd.IsPropertyInOutPickDateRemoved = true; }
             if (state.InOutShipDate == null) { cmd.IsPropertyInOutShipDateRemoved = true; }
             if (state.InOutTrackingNumber == null) { cmd.IsPropertyInOutTrackingNumberRemoved = true; }
             if (state.InOutDateReceived == null) { cmd.IsPropertyInOutDateReceivedRemoved = true; }
-            if (state.InOutRmaNumber == null) { cmd.IsPropertyInOutRmaNumberRemoved = true; }
-            if (state.InOutReversalNumber == null) { cmd.IsPropertyInOutReversalNumberRemoved = true; }
+            if (state.InOutRmaDocumentNumber == null) { cmd.IsPropertyInOutRmaDocumentNumberRemoved = true; }
+            if (state.InOutReversalDocumentNumber == null) { cmd.IsPropertyInOutReversalDocumentNumberRemoved = true; }
             if (state.InOutCreatedBy == null) { cmd.IsPropertyInOutCreatedByRemoved = true; }
             if (state.InOutUpdatedBy == null) { cmd.IsPropertyInOutUpdatedByRemoved = true; }
             return cmd;
@@ -168,7 +168,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutPOReference = state.InOutPOReference;
             cmd.InOutShipperId = state.InOutShipperId;
             cmd.InOutDatePrinted = state.InOutDatePrinted;
-            cmd.InOutSalesRepresentative = state.InOutSalesRepresentative;
+            cmd.InOutSalesRepresentativeId = state.InOutSalesRepresentativeId;
             cmd.InOutNumberOfPackages = state.InOutNumberOfPackages;
             cmd.InOutPickDate = state.InOutPickDate;
             cmd.InOutShipDate = state.InOutShipDate;
@@ -177,8 +177,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutIsInTransit = state.InOutIsInTransit;
             cmd.InOutIsApproved = state.InOutIsApproved;
             cmd.InOutIsInDispute = state.InOutIsInDispute;
-            cmd.InOutRmaNumber = state.InOutRmaNumber;
-            cmd.InOutReversalNumber = state.InOutReversalNumber;
+            cmd.InOutRmaDocumentNumber = state.InOutRmaDocumentNumber;
+            cmd.InOutReversalDocumentNumber = state.InOutReversalDocumentNumber;
             cmd.InOutCreatedBy = state.InOutCreatedBy;
             cmd.InOutCreatedAt = state.InOutCreatedAt;
             cmd.InOutUpdatedBy = state.InOutUpdatedBy;

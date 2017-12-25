@@ -235,7 +235,7 @@ namespace Dddml.Wms.Domain.InOut
 
 			this.DatePrinted = e.DatePrinted;
 
-			this.SalesRepresentative = e.SalesRepresentative;
+			this.SalesRepresentativeId = e.SalesRepresentativeId;
 
             this.NumberOfPackages = (e.NumberOfPackages != null && e.NumberOfPackages.HasValue) ? e.NumberOfPackages.Value : default(int);
 
@@ -253,9 +253,9 @@ namespace Dddml.Wms.Domain.InOut
 
             this.IsInDispute = (e.IsInDispute != null && e.IsInDispute.HasValue) ? e.IsInDispute.Value : default(bool);
 
-			this.RmaNumber = e.RmaNumber;
+			this.RmaDocumentNumber = e.RmaDocumentNumber;
 
-			this.ReversalNumber = e.ReversalNumber;
+			this.ReversalDocumentNumber = e.ReversalDocumentNumber;
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
@@ -468,16 +468,16 @@ namespace Dddml.Wms.Domain.InOut
 				this.DatePrinted = e.DatePrinted;
 			}
 
-			if (e.SalesRepresentative == null)
+			if (e.SalesRepresentativeId == null)
 			{
-				if (e.IsPropertySalesRepresentativeRemoved)
+				if (e.IsPropertySalesRepresentativeIdRemoved)
 				{
-					this.SalesRepresentative = default(string);
+					this.SalesRepresentativeId = default(string);
 				}
 			}
 			else
 			{
-				this.SalesRepresentative = e.SalesRepresentative;
+				this.SalesRepresentativeId = e.SalesRepresentativeId;
 			}
 
 			if (e.NumberOfPackages == null)
@@ -576,28 +576,28 @@ namespace Dddml.Wms.Domain.InOut
 				this.IsInDispute = (e.IsInDispute != null && e.IsInDispute.HasValue) ? e.IsInDispute.Value : default(bool);
 			}
 
-			if (e.RmaNumber == null)
+			if (e.RmaDocumentNumber == null)
 			{
-				if (e.IsPropertyRmaNumberRemoved)
+				if (e.IsPropertyRmaDocumentNumberRemoved)
 				{
-					this.RmaNumber = default(string);
+					this.RmaDocumentNumber = default(string);
 				}
 			}
 			else
 			{
-				this.RmaNumber = e.RmaNumber;
+				this.RmaDocumentNumber = e.RmaDocumentNumber;
 			}
 
-			if (e.ReversalNumber == null)
+			if (e.ReversalDocumentNumber == null)
 			{
-				if (e.IsPropertyReversalNumberRemoved)
+				if (e.IsPropertyReversalDocumentNumberRemoved)
 				{
-					this.ReversalNumber = default(string);
+					this.ReversalDocumentNumber = default(string);
 				}
 			}
 			else
 			{
-				this.ReversalNumber = e.ReversalNumber;
+				this.ReversalDocumentNumber = e.ReversalDocumentNumber;
 			}
 
 			if (e.Active == null)

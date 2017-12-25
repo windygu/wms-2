@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.InOutPOReference = e.InOutPOReference;
             dto.InOutShipperId = e.InOutShipperId;
             dto.InOutDatePrinted = e.InOutDatePrinted;
-            dto.InOutSalesRepresentative = e.InOutSalesRepresentative;
+            dto.InOutSalesRepresentativeId = e.InOutSalesRepresentativeId;
             dto.InOutNumberOfPackages = e.InOutNumberOfPackages;
             dto.InOutPickDate = e.InOutPickDate;
             dto.InOutShipDate = e.InOutShipDate;
@@ -85,8 +85,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.InOutIsInTransit = e.InOutIsInTransit;
             dto.InOutIsApproved = e.InOutIsApproved;
             dto.InOutIsInDispute = e.InOutIsInDispute;
-            dto.InOutRmaNumber = e.InOutRmaNumber;
-            dto.InOutReversalNumber = e.InOutReversalNumber;
+            dto.InOutRmaDocumentNumber = e.InOutRmaDocumentNumber;
+            dto.InOutReversalDocumentNumber = e.InOutReversalDocumentNumber;
             dto.InOutCreatedBy = e.InOutCreatedBy;
             dto.InOutCreatedAt = e.InOutCreatedAt;
             dto.InOutUpdatedBy = e.InOutUpdatedBy;
@@ -136,7 +136,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.InOutPOReference = e.InOutPOReference;
             dto.InOutShipperId = e.InOutShipperId;
             dto.InOutDatePrinted = e.InOutDatePrinted;
-            dto.InOutSalesRepresentative = e.InOutSalesRepresentative;
+            dto.InOutSalesRepresentativeId = e.InOutSalesRepresentativeId;
             dto.InOutNumberOfPackages = e.InOutNumberOfPackages;
             dto.InOutPickDate = e.InOutPickDate;
             dto.InOutShipDate = e.InOutShipDate;
@@ -145,8 +145,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.InOutIsInTransit = e.InOutIsInTransit;
             dto.InOutIsApproved = e.InOutIsApproved;
             dto.InOutIsInDispute = e.InOutIsInDispute;
-            dto.InOutRmaNumber = e.InOutRmaNumber;
-            dto.InOutReversalNumber = e.InOutReversalNumber;
+            dto.InOutRmaDocumentNumber = e.InOutRmaDocumentNumber;
+            dto.InOutReversalDocumentNumber = e.InOutReversalDocumentNumber;
             dto.InOutCreatedBy = e.InOutCreatedBy;
             dto.InOutCreatedAt = e.InOutCreatedAt;
             dto.InOutUpdatedBy = e.InOutUpdatedBy;
@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.IsPropertyInOutPOReferenceRemoved = e.IsPropertyInOutPOReferenceRemoved;
             dto.IsPropertyInOutShipperIdRemoved = e.IsPropertyInOutShipperIdRemoved;
             dto.IsPropertyInOutDatePrintedRemoved = e.IsPropertyInOutDatePrintedRemoved;
-            dto.IsPropertyInOutSalesRepresentativeRemoved = e.IsPropertyInOutSalesRepresentativeRemoved;
+            dto.IsPropertyInOutSalesRepresentativeIdRemoved = e.IsPropertyInOutSalesRepresentativeIdRemoved;
             dto.IsPropertyInOutNumberOfPackagesRemoved = e.IsPropertyInOutNumberOfPackagesRemoved;
             dto.IsPropertyInOutPickDateRemoved = e.IsPropertyInOutPickDateRemoved;
             dto.IsPropertyInOutShipDateRemoved = e.IsPropertyInOutShipDateRemoved;
@@ -195,8 +195,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.IsPropertyInOutIsInTransitRemoved = e.IsPropertyInOutIsInTransitRemoved;
             dto.IsPropertyInOutIsApprovedRemoved = e.IsPropertyInOutIsApprovedRemoved;
             dto.IsPropertyInOutIsInDisputeRemoved = e.IsPropertyInOutIsInDisputeRemoved;
-            dto.IsPropertyInOutRmaNumberRemoved = e.IsPropertyInOutRmaNumberRemoved;
-            dto.IsPropertyInOutReversalNumberRemoved = e.IsPropertyInOutReversalNumberRemoved;
+            dto.IsPropertyInOutRmaDocumentNumberRemoved = e.IsPropertyInOutRmaDocumentNumberRemoved;
+            dto.IsPropertyInOutReversalDocumentNumberRemoved = e.IsPropertyInOutReversalDocumentNumberRemoved;
             dto.IsPropertyInOutCreatedByRemoved = e.IsPropertyInOutCreatedByRemoved;
             dto.IsPropertyInOutCreatedAtRemoved = e.IsPropertyInOutCreatedAtRemoved;
             dto.IsPropertyInOutUpdatedByRemoved = e.IsPropertyInOutUpdatedByRemoved;

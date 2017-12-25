@@ -48,7 +48,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		DateTime? DatePrinted { get; set; }
 
-		string SalesRepresentative { get; set; }
+		string SalesRepresentativeId { get; set; }
 
 		int NumberOfPackages { get; set; }
 
@@ -66,9 +66,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		bool IsInDispute { get; set; }
 
-		string RmaNumber { get; set; }
+		string RmaDocumentNumber { get; set; }
 
-		string ReversalNumber { get; set; }
+		string ReversalDocumentNumber { get; set; }
 
 		long Version { get; set; }
 

@@ -78,9 +78,9 @@ public interface InOutStateEvent extends Event
 
     void setDatePrinted(Date datePrinted);
 
-    String getSalesRepresentative();
+    String getSalesRepresentativeId();
 
-    void setSalesRepresentative(String salesRepresentative);
+    void setSalesRepresentativeId(String salesRepresentativeId);
 
     Integer getNumberOfPackages();
 
@@ -114,13 +114,13 @@ public interface InOutStateEvent extends Event
 
     void setIsInDispute(Boolean isInDispute);
 
-    String getRmaNumber();
+    String getRmaDocumentNumber();
 
-    void setRmaNumber(String rmaNumber);
+    void setRmaDocumentNumber(String rmaDocumentNumber);
 
-    String getReversalNumber();
+    String getReversalDocumentNumber();
 
-    void setReversalNumber(String reversalNumber);
+    void setReversalDocumentNumber(String reversalDocumentNumber);
 
     String getCreatedBy();
 
@@ -216,9 +216,9 @@ public interface InOutStateEvent extends Event
 
         void setIsPropertyDatePrintedRemoved(Boolean removed);
 
-        Boolean getIsPropertySalesRepresentativeRemoved();
+        Boolean getIsPropertySalesRepresentativeIdRemoved();
 
-        void setIsPropertySalesRepresentativeRemoved(Boolean removed);
+        void setIsPropertySalesRepresentativeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyNumberOfPackagesRemoved();
 
@@ -252,13 +252,13 @@ public interface InOutStateEvent extends Event
 
         void setIsPropertyIsInDisputeRemoved(Boolean removed);
 
-        Boolean getIsPropertyRmaNumberRemoved();
+        Boolean getIsPropertyRmaDocumentNumberRemoved();
 
-        void setIsPropertyRmaNumberRemoved(Boolean removed);
+        void setIsPropertyRmaDocumentNumberRemoved(Boolean removed);
 
-        Boolean getIsPropertyReversalNumberRemoved();
+        Boolean getIsPropertyReversalDocumentNumberRemoved();
 
-        void setIsPropertyReversalNumberRemoved(Boolean removed);
+        void setIsPropertyReversalDocumentNumberRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

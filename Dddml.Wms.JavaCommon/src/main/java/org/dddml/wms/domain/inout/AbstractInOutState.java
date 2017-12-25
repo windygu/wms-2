@@ -214,16 +214,16 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.datePrinted = datePrinted;
     }
 
-    private String salesRepresentative;
+    private String salesRepresentativeId;
 
-    public String getSalesRepresentative()
+    public String getSalesRepresentativeId()
     {
-        return this.salesRepresentative;
+        return this.salesRepresentativeId;
     }
 
-    public void setSalesRepresentative(String salesRepresentative)
+    public void setSalesRepresentativeId(String salesRepresentativeId)
     {
-        this.salesRepresentative = salesRepresentative;
+        this.salesRepresentativeId = salesRepresentativeId;
     }
 
     private Integer numberOfPackages;
@@ -322,28 +322,28 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.isInDispute = isInDispute;
     }
 
-    private String rmaNumber;
+    private String rmaDocumentNumber;
 
-    public String getRmaNumber()
+    public String getRmaDocumentNumber()
     {
-        return this.rmaNumber;
+        return this.rmaDocumentNumber;
     }
 
-    public void setRmaNumber(String rmaNumber)
+    public void setRmaDocumentNumber(String rmaDocumentNumber)
     {
-        this.rmaNumber = rmaNumber;
+        this.rmaDocumentNumber = rmaDocumentNumber;
     }
 
-    private String reversalNumber;
+    private String reversalDocumentNumber;
 
-    public String getReversalNumber()
+    public String getReversalDocumentNumber()
     {
-        return this.reversalNumber;
+        return this.reversalDocumentNumber;
     }
 
-    public void setReversalNumber(String reversalNumber)
+    public void setReversalDocumentNumber(String reversalDocumentNumber)
     {
-        this.reversalNumber = reversalNumber;
+        this.reversalDocumentNumber = reversalDocumentNumber;
     }
 
     private Long version;
@@ -523,7 +523,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setPOReference(e.getPOReference());
         this.setShipperId(e.getShipperId());
         this.setDatePrinted(e.getDatePrinted());
-        this.setSalesRepresentative(e.getSalesRepresentative());
+        this.setSalesRepresentativeId(e.getSalesRepresentativeId());
         this.setNumberOfPackages(e.getNumberOfPackages());
         this.setPickDate(e.getPickDate());
         this.setShipDate(e.getShipDate());
@@ -532,8 +532,8 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setIsInTransit(e.getIsInTransit());
         this.setIsApproved(e.getIsApproved());
         this.setIsInDispute(e.getIsInDispute());
-        this.setRmaNumber(e.getRmaNumber());
-        this.setReversalNumber(e.getReversalNumber());
+        this.setRmaDocumentNumber(e.getRmaDocumentNumber());
+        this.setReversalDocumentNumber(e.getReversalDocumentNumber());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -727,16 +727,16 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         {
             this.setDatePrinted(e.getDatePrinted());
         }
-        if (e.getSalesRepresentative() == null)
+        if (e.getSalesRepresentativeId() == null)
         {
-            if (e.getIsPropertySalesRepresentativeRemoved() != null && e.getIsPropertySalesRepresentativeRemoved())
+            if (e.getIsPropertySalesRepresentativeIdRemoved() != null && e.getIsPropertySalesRepresentativeIdRemoved())
             {
-                this.setSalesRepresentative(null);
+                this.setSalesRepresentativeId(null);
             }
         }
         else
         {
-            this.setSalesRepresentative(e.getSalesRepresentative());
+            this.setSalesRepresentativeId(e.getSalesRepresentativeId());
         }
         if (e.getNumberOfPackages() == null)
         {
@@ -826,27 +826,27 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         {
             this.setIsInDispute(e.getIsInDispute());
         }
-        if (e.getRmaNumber() == null)
+        if (e.getRmaDocumentNumber() == null)
         {
-            if (e.getIsPropertyRmaNumberRemoved() != null && e.getIsPropertyRmaNumberRemoved())
+            if (e.getIsPropertyRmaDocumentNumberRemoved() != null && e.getIsPropertyRmaDocumentNumberRemoved())
             {
-                this.setRmaNumber(null);
+                this.setRmaDocumentNumber(null);
             }
         }
         else
         {
-            this.setRmaNumber(e.getRmaNumber());
+            this.setRmaDocumentNumber(e.getRmaDocumentNumber());
         }
-        if (e.getReversalNumber() == null)
+        if (e.getReversalDocumentNumber() == null)
         {
-            if (e.getIsPropertyReversalNumberRemoved() != null && e.getIsPropertyReversalNumberRemoved())
+            if (e.getIsPropertyReversalDocumentNumberRemoved() != null && e.getIsPropertyReversalDocumentNumberRemoved())
             {
-                this.setReversalNumber(null);
+                this.setReversalDocumentNumber(null);
             }
         }
         else
         {
-            this.setReversalNumber(e.getReversalNumber());
+            this.setReversalDocumentNumber(e.getReversalDocumentNumber());
         }
         if (e.getActive() == null)
         {

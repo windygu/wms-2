@@ -71,7 +71,7 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setInOutPOReference(state.getInOutPOReference());
         cmd.setInOutShipperId(state.getInOutShipperId());
         cmd.setInOutDatePrinted(state.getInOutDatePrinted());
-        cmd.setInOutSalesRepresentative(state.getInOutSalesRepresentative());
+        cmd.setInOutSalesRepresentativeId(state.getInOutSalesRepresentativeId());
         cmd.setInOutNumberOfPackages(state.getInOutNumberOfPackages());
         cmd.setInOutPickDate(state.getInOutPickDate());
         cmd.setInOutShipDate(state.getInOutShipDate());
@@ -80,8 +80,8 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setInOutIsInTransit(state.getInOutIsInTransit());
         cmd.setInOutIsApproved(state.getInOutIsApproved());
         cmd.setInOutIsInDispute(state.getInOutIsInDispute());
-        cmd.setInOutRmaNumber(state.getInOutRmaNumber());
-        cmd.setInOutReversalNumber(state.getInOutReversalNumber());
+        cmd.setInOutRmaDocumentNumber(state.getInOutRmaDocumentNumber());
+        cmd.setInOutReversalDocumentNumber(state.getInOutReversalDocumentNumber());
         cmd.setInOutCreatedBy(state.getInOutCreatedBy());
         cmd.setInOutCreatedAt(state.getInOutCreatedAt());
         cmd.setInOutUpdatedBy(state.getInOutUpdatedBy());
@@ -121,7 +121,7 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         if (state.getInOutPOReference() == null) { cmd.setIsPropertyInOutPOReferenceRemoved(true); }
         if (state.getInOutShipperId() == null) { cmd.setIsPropertyInOutShipperIdRemoved(true); }
         if (state.getInOutDatePrinted() == null) { cmd.setIsPropertyInOutDatePrintedRemoved(true); }
-        if (state.getInOutSalesRepresentative() == null) { cmd.setIsPropertyInOutSalesRepresentativeRemoved(true); }
+        if (state.getInOutSalesRepresentativeId() == null) { cmd.setIsPropertyInOutSalesRepresentativeIdRemoved(true); }
         if (state.getInOutNumberOfPackages() == null) { cmd.setIsPropertyInOutNumberOfPackagesRemoved(true); }
         if (state.getInOutPickDate() == null) { cmd.setIsPropertyInOutPickDateRemoved(true); }
         if (state.getInOutShipDate() == null) { cmd.setIsPropertyInOutShipDateRemoved(true); }
@@ -130,8 +130,8 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         if (state.getInOutIsInTransit() == null) { cmd.setIsPropertyInOutIsInTransitRemoved(true); }
         if (state.getInOutIsApproved() == null) { cmd.setIsPropertyInOutIsApprovedRemoved(true); }
         if (state.getInOutIsInDispute() == null) { cmd.setIsPropertyInOutIsInDisputeRemoved(true); }
-        if (state.getInOutRmaNumber() == null) { cmd.setIsPropertyInOutRmaNumberRemoved(true); }
-        if (state.getInOutReversalNumber() == null) { cmd.setIsPropertyInOutReversalNumberRemoved(true); }
+        if (state.getInOutRmaDocumentNumber() == null) { cmd.setIsPropertyInOutRmaDocumentNumberRemoved(true); }
+        if (state.getInOutReversalDocumentNumber() == null) { cmd.setIsPropertyInOutReversalDocumentNumberRemoved(true); }
         if (state.getInOutCreatedBy() == null) { cmd.setIsPropertyInOutCreatedByRemoved(true); }
         if (state.getInOutCreatedAt() == null) { cmd.setIsPropertyInOutCreatedAtRemoved(true); }
         if (state.getInOutUpdatedBy() == null) { cmd.setIsPropertyInOutUpdatedByRemoved(true); }
@@ -179,7 +179,7 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setInOutPOReference(state.getInOutPOReference());
         cmd.setInOutShipperId(state.getInOutShipperId());
         cmd.setInOutDatePrinted(state.getInOutDatePrinted());
-        cmd.setInOutSalesRepresentative(state.getInOutSalesRepresentative());
+        cmd.setInOutSalesRepresentativeId(state.getInOutSalesRepresentativeId());
         cmd.setInOutNumberOfPackages(state.getInOutNumberOfPackages());
         cmd.setInOutPickDate(state.getInOutPickDate());
         cmd.setInOutShipDate(state.getInOutShipDate());
@@ -188,8 +188,8 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setInOutIsInTransit(state.getInOutIsInTransit());
         cmd.setInOutIsApproved(state.getInOutIsApproved());
         cmd.setInOutIsInDispute(state.getInOutIsInDispute());
-        cmd.setInOutRmaNumber(state.getInOutRmaNumber());
-        cmd.setInOutReversalNumber(state.getInOutReversalNumber());
+        cmd.setInOutRmaDocumentNumber(state.getInOutRmaDocumentNumber());
+        cmd.setInOutReversalDocumentNumber(state.getInOutReversalDocumentNumber());
         cmd.setInOutCreatedBy(state.getInOutCreatedBy());
         cmd.setInOutCreatedAt(state.getInOutCreatedAt());
         cmd.setInOutUpdatedBy(state.getInOutUpdatedBy());

@@ -155,9 +155,9 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setInOutDatePrinted(Date inOutDatePrinted);
 
-    String getInOutSalesRepresentative();
+    String getInOutSalesRepresentativeId();
 
-    void setInOutSalesRepresentative(String inOutSalesRepresentative);
+    void setInOutSalesRepresentativeId(String inOutSalesRepresentativeId);
 
     Integer getInOutNumberOfPackages();
 
@@ -191,13 +191,13 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setInOutIsInDispute(Boolean inOutIsInDispute);
 
-    String getInOutRmaNumber();
+    String getInOutRmaDocumentNumber();
 
-    void setInOutRmaNumber(String inOutRmaNumber);
+    void setInOutRmaDocumentNumber(String inOutRmaDocumentNumber);
 
-    String getInOutReversalNumber();
+    String getInOutReversalDocumentNumber();
 
-    void setInOutReversalNumber(String inOutReversalNumber);
+    void setInOutReversalDocumentNumber(String inOutReversalDocumentNumber);
 
     String getInOutCreatedBy();
 
@@ -367,9 +367,9 @@ public interface InOutLineMvoStateEvent extends Event
 
         void setIsPropertyInOutDatePrintedRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutSalesRepresentativeRemoved();
+        Boolean getIsPropertyInOutSalesRepresentativeIdRemoved();
 
-        void setIsPropertyInOutSalesRepresentativeRemoved(Boolean removed);
+        void setIsPropertyInOutSalesRepresentativeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutNumberOfPackagesRemoved();
 
@@ -403,13 +403,13 @@ public interface InOutLineMvoStateEvent extends Event
 
         void setIsPropertyInOutIsInDisputeRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutRmaNumberRemoved();
+        Boolean getIsPropertyInOutRmaDocumentNumberRemoved();
 
-        void setIsPropertyInOutRmaNumberRemoved(Boolean removed);
+        void setIsPropertyInOutRmaDocumentNumberRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutReversalNumberRemoved();
+        Boolean getIsPropertyInOutReversalDocumentNumberRemoved();
 
-        void setIsPropertyInOutReversalNumberRemoved(Boolean removed);
+        void setIsPropertyInOutReversalDocumentNumberRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutCreatedByRemoved();
 

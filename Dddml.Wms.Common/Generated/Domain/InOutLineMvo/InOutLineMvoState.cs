@@ -241,7 +241,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 			this.InOutDatePrinted = e.InOutDatePrinted;
 
-			this.InOutSalesRepresentative = e.InOutSalesRepresentative;
+			this.InOutSalesRepresentativeId = e.InOutSalesRepresentativeId;
 
             this.InOutNumberOfPackages = (e.InOutNumberOfPackages != null && e.InOutNumberOfPackages.HasValue) ? e.InOutNumberOfPackages.Value : default(int);
 
@@ -259,9 +259,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
             this.InOutIsInDispute = (e.InOutIsInDispute != null && e.InOutIsInDispute.HasValue) ? e.InOutIsInDispute.Value : default(bool);
 
-			this.InOutRmaNumber = e.InOutRmaNumber;
+			this.InOutRmaDocumentNumber = e.InOutRmaDocumentNumber;
 
-			this.InOutReversalNumber = e.InOutReversalNumber;
+			this.InOutReversalDocumentNumber = e.InOutReversalDocumentNumber;
 
 			this.InOutCreatedBy = e.InOutCreatedBy;
 
@@ -684,16 +684,16 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.InOutDatePrinted = e.InOutDatePrinted;
 			}
 
-			if (e.InOutSalesRepresentative == null)
+			if (e.InOutSalesRepresentativeId == null)
 			{
-				if (e.IsPropertyInOutSalesRepresentativeRemoved)
+				if (e.IsPropertyInOutSalesRepresentativeIdRemoved)
 				{
-					this.InOutSalesRepresentative = default(string);
+					this.InOutSalesRepresentativeId = default(string);
 				}
 			}
 			else
 			{
-				this.InOutSalesRepresentative = e.InOutSalesRepresentative;
+				this.InOutSalesRepresentativeId = e.InOutSalesRepresentativeId;
 			}
 
 			if (e.InOutNumberOfPackages == null)
@@ -792,28 +792,28 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.InOutIsInDispute = (e.InOutIsInDispute != null && e.InOutIsInDispute.HasValue) ? e.InOutIsInDispute.Value : default(bool);
 			}
 
-			if (e.InOutRmaNumber == null)
+			if (e.InOutRmaDocumentNumber == null)
 			{
-				if (e.IsPropertyInOutRmaNumberRemoved)
+				if (e.IsPropertyInOutRmaDocumentNumberRemoved)
 				{
-					this.InOutRmaNumber = default(string);
+					this.InOutRmaDocumentNumber = default(string);
 				}
 			}
 			else
 			{
-				this.InOutRmaNumber = e.InOutRmaNumber;
+				this.InOutRmaDocumentNumber = e.InOutRmaDocumentNumber;
 			}
 
-			if (e.InOutReversalNumber == null)
+			if (e.InOutReversalDocumentNumber == null)
 			{
-				if (e.IsPropertyInOutReversalNumberRemoved)
+				if (e.IsPropertyInOutReversalDocumentNumberRemoved)
 				{
-					this.InOutReversalNumber = default(string);
+					this.InOutReversalDocumentNumber = default(string);
 				}
 			}
 			else
 			{
-				this.InOutReversalNumber = e.InOutReversalNumber;
+				this.InOutReversalDocumentNumber = e.InOutReversalDocumentNumber;
 			}
 
 			if (e.InOutCreatedBy == null)

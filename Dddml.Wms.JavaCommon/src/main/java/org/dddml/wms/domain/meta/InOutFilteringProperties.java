@@ -28,7 +28,7 @@ public final class InOutFilteringProperties
             "POReference",
             "shipperId",
             "datePrinted",
-            "salesRepresentative",
+            "salesRepresentativeId",
             "numberOfPackages",
             "pickDate",
             "shipDate",
@@ -37,8 +37,8 @@ public final class InOutFilteringProperties
             "isInTransit",
             "isApproved",
             "isInDispute",
-            "rmaNumber",
-            "reversalNumber",
+            "rmaDocumentNumber",
+            "reversalDocumentNumber",
             "version",
             "createdBy",
             "createdAt",
@@ -132,8 +132,8 @@ public final class InOutFilteringProperties
         aliasMap.put("ShipperId", "shipperId");
         aliasMap.put("datePrinted", "datePrinted");
         aliasMap.put("DatePrinted", "datePrinted");
-        aliasMap.put("salesRepresentative", "salesRepresentative");
-        aliasMap.put("SalesRepresentative", "salesRepresentative");
+        aliasMap.put("salesRepresentativeId", "salesRepresentativeId");
+        aliasMap.put("SalesRepresentativeId", "salesRepresentativeId");
         aliasMap.put("numberOfPackages", "numberOfPackages");
         aliasMap.put("NumberOfPackages", "numberOfPackages");
         aliasMap.put("pickDate", "pickDate");
@@ -150,10 +150,10 @@ public final class InOutFilteringProperties
         aliasMap.put("IsApproved", "isApproved");
         aliasMap.put("isInDispute", "isInDispute");
         aliasMap.put("IsInDispute", "isInDispute");
-        aliasMap.put("rmaNumber", "rmaNumber");
-        aliasMap.put("RmaNumber", "rmaNumber");
-        aliasMap.put("reversalNumber", "reversalNumber");
-        aliasMap.put("ReversalNumber", "reversalNumber");
+        aliasMap.put("rmaDocumentNumber", "rmaDocumentNumber");
+        aliasMap.put("RmaDocumentNumber", "rmaDocumentNumber");
+        aliasMap.put("reversalDocumentNumber", "reversalDocumentNumber");
+        aliasMap.put("ReversalDocumentNumber", "reversalDocumentNumber");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

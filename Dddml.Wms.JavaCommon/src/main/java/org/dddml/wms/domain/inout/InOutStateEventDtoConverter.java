@@ -45,7 +45,7 @@ public class InOutStateEventDtoConverter {
         dto.setPOReference(e.getPOReference());
         dto.setShipperId(e.getShipperId());
         dto.setDatePrinted(e.getDatePrinted());
-        dto.setSalesRepresentative(e.getSalesRepresentative());
+        dto.setSalesRepresentativeId(e.getSalesRepresentativeId());
         dto.setNumberOfPackages(e.getNumberOfPackages());
         dto.setPickDate(e.getPickDate());
         dto.setShipDate(e.getShipDate());
@@ -54,8 +54,8 @@ public class InOutStateEventDtoConverter {
         dto.setIsInTransit(e.getIsInTransit());
         dto.setIsApproved(e.getIsApproved());
         dto.setIsInDispute(e.getIsInDispute());
-        dto.setRmaNumber(e.getRmaNumber());
-        dto.setReversalNumber(e.getReversalNumber());
+        dto.setRmaDocumentNumber(e.getRmaDocumentNumber());
+        dto.setReversalDocumentNumber(e.getReversalDocumentNumber());
         dto.setActive(e.getActive());
         List<InOutLineStateEventDto.InOutLineStateCreatedDto> inOutLineEvents = new ArrayList<>();
         for (InOutLineStateEvent.InOutLineStateCreated ee : e.getInOutLineEvents()) {
@@ -89,7 +89,7 @@ public class InOutStateEventDtoConverter {
         dto.setPOReference(e.getPOReference());
         dto.setShipperId(e.getShipperId());
         dto.setDatePrinted(e.getDatePrinted());
-        dto.setSalesRepresentative(e.getSalesRepresentative());
+        dto.setSalesRepresentativeId(e.getSalesRepresentativeId());
         dto.setNumberOfPackages(e.getNumberOfPackages());
         dto.setPickDate(e.getPickDate());
         dto.setShipDate(e.getShipDate());
@@ -98,8 +98,8 @@ public class InOutStateEventDtoConverter {
         dto.setIsInTransit(e.getIsInTransit());
         dto.setIsApproved(e.getIsApproved());
         dto.setIsInDispute(e.getIsInDispute());
-        dto.setRmaNumber(e.getRmaNumber());
-        dto.setReversalNumber(e.getReversalNumber());
+        dto.setRmaDocumentNumber(e.getRmaDocumentNumber());
+        dto.setReversalDocumentNumber(e.getReversalDocumentNumber());
         dto.setActive(e.getActive());
         dto.setIsPropertyDocumentStatusIdRemoved(e.getIsPropertyDocumentStatusIdRemoved());
         dto.setIsPropertyPostedRemoved(e.getIsPropertyPostedRemoved());
@@ -117,7 +117,7 @@ public class InOutStateEventDtoConverter {
         dto.setIsPropertyPOReferenceRemoved(e.getIsPropertyPOReferenceRemoved());
         dto.setIsPropertyShipperIdRemoved(e.getIsPropertyShipperIdRemoved());
         dto.setIsPropertyDatePrintedRemoved(e.getIsPropertyDatePrintedRemoved());
-        dto.setIsPropertySalesRepresentativeRemoved(e.getIsPropertySalesRepresentativeRemoved());
+        dto.setIsPropertySalesRepresentativeIdRemoved(e.getIsPropertySalesRepresentativeIdRemoved());
         dto.setIsPropertyNumberOfPackagesRemoved(e.getIsPropertyNumberOfPackagesRemoved());
         dto.setIsPropertyPickDateRemoved(e.getIsPropertyPickDateRemoved());
         dto.setIsPropertyShipDateRemoved(e.getIsPropertyShipDateRemoved());
@@ -126,8 +126,8 @@ public class InOutStateEventDtoConverter {
         dto.setIsPropertyIsInTransitRemoved(e.getIsPropertyIsInTransitRemoved());
         dto.setIsPropertyIsApprovedRemoved(e.getIsPropertyIsApprovedRemoved());
         dto.setIsPropertyIsInDisputeRemoved(e.getIsPropertyIsInDisputeRemoved());
-        dto.setIsPropertyRmaNumberRemoved(e.getIsPropertyRmaNumberRemoved());
-        dto.setIsPropertyReversalNumberRemoved(e.getIsPropertyReversalNumberRemoved());
+        dto.setIsPropertyRmaDocumentNumberRemoved(e.getIsPropertyRmaDocumentNumberRemoved());
+        dto.setIsPropertyReversalDocumentNumberRemoved(e.getIsPropertyReversalDocumentNumberRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<InOutLineStateEventDto> inOutLineEvents = new ArrayList<>();
         for (InOutLineStateEvent ee : e.getInOutLineEvents()) {

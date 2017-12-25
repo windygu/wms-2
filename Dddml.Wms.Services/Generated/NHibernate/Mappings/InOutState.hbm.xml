@@ -25,7 +25,7 @@
     <property name="POReference" ></property>
     <property name="ShipperId" ></property>
     <property name="DatePrinted" ></property>
-    <property name="SalesRepresentative" ></property>
+    <property name="SalesRepresentativeId" ></property>
     <property name="NumberOfPackages" ></property>
     <property name="PickDate" ></property>
     <property name="ShipDate" ></property>
@@ -34,8 +34,8 @@
     <property name="IsInTransit" ></property>
     <property name="IsApproved" ></property>
     <property name="IsInDispute" ></property>
-    <property name="RmaNumber" ></property>
-    <property name="ReversalNumber" ></property>
+    <property name="RmaDocumentNumber" ></property>
+    <property name="ReversalDocumentNumber" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>

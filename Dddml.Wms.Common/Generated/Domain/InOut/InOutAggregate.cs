@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.InOut
             e.POReference = c.POReference;
             e.ShipperId = c.ShipperId;
             e.DatePrinted = c.DatePrinted;
-            e.SalesRepresentative = c.SalesRepresentative;
+            e.SalesRepresentativeId = c.SalesRepresentativeId;
             e.NumberOfPackages = c.NumberOfPackages;
             e.PickDate = c.PickDate;
             e.ShipDate = c.ShipDate;
@@ -132,8 +132,8 @@ namespace Dddml.Wms.Domain.InOut
             e.IsInTransit = c.IsInTransit;
             e.IsApproved = c.IsApproved;
             e.IsInDispute = c.IsInDispute;
-            e.RmaNumber = c.RmaNumber;
-            e.ReversalNumber = c.ReversalNumber;
+            e.RmaDocumentNumber = c.RmaDocumentNumber;
+            e.ReversalDocumentNumber = c.ReversalDocumentNumber;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -175,7 +175,7 @@ namespace Dddml.Wms.Domain.InOut
             e.POReference = c.POReference;
             e.ShipperId = c.ShipperId;
             e.DatePrinted = c.DatePrinted;
-            e.SalesRepresentative = c.SalesRepresentative;
+            e.SalesRepresentativeId = c.SalesRepresentativeId;
             e.NumberOfPackages = c.NumberOfPackages;
             e.PickDate = c.PickDate;
             e.ShipDate = c.ShipDate;
@@ -184,8 +184,8 @@ namespace Dddml.Wms.Domain.InOut
             e.IsInTransit = c.IsInTransit;
             e.IsApproved = c.IsApproved;
             e.IsInDispute = c.IsInDispute;
-            e.RmaNumber = c.RmaNumber;
-            e.ReversalNumber = c.ReversalNumber;
+            e.RmaDocumentNumber = c.RmaDocumentNumber;
+            e.ReversalDocumentNumber = c.ReversalDocumentNumber;
             e.Active = c.Active;
             e.IsPropertyPostedRemoved = c.IsPropertyPostedRemoved;
             e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
@@ -202,7 +202,7 @@ namespace Dddml.Wms.Domain.InOut
             e.IsPropertyPOReferenceRemoved = c.IsPropertyPOReferenceRemoved;
             e.IsPropertyShipperIdRemoved = c.IsPropertyShipperIdRemoved;
             e.IsPropertyDatePrintedRemoved = c.IsPropertyDatePrintedRemoved;
-            e.IsPropertySalesRepresentativeRemoved = c.IsPropertySalesRepresentativeRemoved;
+            e.IsPropertySalesRepresentativeIdRemoved = c.IsPropertySalesRepresentativeIdRemoved;
             e.IsPropertyNumberOfPackagesRemoved = c.IsPropertyNumberOfPackagesRemoved;
             e.IsPropertyPickDateRemoved = c.IsPropertyPickDateRemoved;
             e.IsPropertyShipDateRemoved = c.IsPropertyShipDateRemoved;
@@ -211,8 +211,8 @@ namespace Dddml.Wms.Domain.InOut
             e.IsPropertyIsInTransitRemoved = c.IsPropertyIsInTransitRemoved;
             e.IsPropertyIsApprovedRemoved = c.IsPropertyIsApprovedRemoved;
             e.IsPropertyIsInDisputeRemoved = c.IsPropertyIsInDisputeRemoved;
-            e.IsPropertyRmaNumberRemoved = c.IsPropertyRmaNumberRemoved;
-            e.IsPropertyReversalNumberRemoved = c.IsPropertyReversalNumberRemoved;
+            e.IsPropertyRmaDocumentNumberRemoved = c.IsPropertyRmaDocumentNumberRemoved;
+            e.IsPropertyReversalDocumentNumberRemoved = c.IsPropertyReversalDocumentNumberRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

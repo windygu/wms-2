@@ -27,7 +27,7 @@
     <property name="POReference" ></property>
     <property name="ShipperId" ></property>
     <property name="DatePrinted" ></property>
-    <property name="SalesRepresentative" ></property>
+    <property name="SalesRepresentativeId" ></property>
     <property name="NumberOfPackages" ></property>
     <property name="PickDate" ></property>
     <property name="ShipDate" ></property>
@@ -36,8 +36,8 @@
     <property name="IsInTransit" ></property>
     <property name="IsApproved" ></property>
     <property name="IsInDispute" ></property>
-    <property name="RmaNumber" ></property>
-    <property name="ReversalNumber" ></property>
+    <property name="RmaDocumentNumber" ></property>
+    <property name="ReversalDocumentNumber" ></property>
     <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
@@ -83,7 +83,7 @@
 
         <property name="IsPropertyDatePrintedRemoved" column="IsPropertyDatePrintedRemoved"/>
 
-        <property name="IsPropertySalesRepresentativeRemoved" column="IsPropertySalesRepresentativeRemoved"/>
+        <property name="IsPropertySalesRepresentativeIdRemoved" column="IsPropertySalesRepresentativeIdRemoved"/>
 
         <property name="IsPropertyNumberOfPackagesRemoved" column="IsPropertyNumberOfPackagesRemoved"/>
 
@@ -101,9 +101,9 @@
 
         <property name="IsPropertyIsInDisputeRemoved" column="IsPropertyIsInDisputeRemoved"/>
 
-        <property name="IsPropertyRmaNumberRemoved" column="IsPropertyRmaNumberRemoved"/>
+        <property name="IsPropertyRmaDocumentNumberRemoved" column="IsPropertyRmaDocumentNumberRemoved"/>
 
-        <property name="IsPropertyReversalNumberRemoved" column="IsPropertyReversalNumberRemoved"/>
+        <property name="IsPropertyReversalDocumentNumberRemoved" column="IsPropertyReversalDocumentNumberRemoved"/>
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>

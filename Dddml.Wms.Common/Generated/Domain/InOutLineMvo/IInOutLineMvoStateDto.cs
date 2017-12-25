@@ -220,7 +220,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        string InOutSalesRepresentative
+        string InOutSalesRepresentativeId
         {
             get;
             set;
@@ -274,13 +274,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        string InOutRmaNumber
+        string InOutRmaDocumentNumber
         {
             get;
             set;
         }
 
-        string InOutReversalNumber
+        string InOutReversalDocumentNumber
         {
             get;
             set;

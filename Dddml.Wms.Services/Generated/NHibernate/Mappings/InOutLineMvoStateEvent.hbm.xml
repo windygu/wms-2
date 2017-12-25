@@ -45,7 +45,7 @@
     <property name="InOutPOReference" ></property>
     <property name="InOutShipperId" ></property>
     <property name="InOutDatePrinted" ></property>
-    <property name="InOutSalesRepresentative" ></property>
+    <property name="InOutSalesRepresentativeId" ></property>
     <property name="InOutNumberOfPackages" ></property>
     <property name="InOutPickDate" ></property>
     <property name="InOutShipDate" ></property>
@@ -54,8 +54,8 @@
     <property name="InOutIsInTransit" ></property>
     <property name="InOutIsApproved" ></property>
     <property name="InOutIsInDispute" ></property>
-    <property name="InOutRmaNumber" ></property>
-    <property name="InOutReversalNumber" ></property>
+    <property name="InOutRmaDocumentNumber" ></property>
+    <property name="InOutReversalDocumentNumber" ></property>
     <property name="InOutCreatedBy" ></property>
     <property name="InOutCreatedAt" ></property>
     <property name="InOutUpdatedBy" ></property>
@@ -140,7 +140,7 @@
 
         <property name="IsPropertyInOutDatePrintedRemoved" column="IsPropertyInOutDatePrintedRemoved"/>
 
-        <property name="IsPropertyInOutSalesRepresentativeRemoved" column="IsPropertyInOutSalesRepresentativeRemoved"/>
+        <property name="IsPropertyInOutSalesRepresentativeIdRemoved" column="IsPropertyInOutSalesRepresentativeIdRemoved"/>
 
         <property name="IsPropertyInOutNumberOfPackagesRemoved" column="IsPropertyInOutNumberOfPackagesRemoved"/>
 
@@ -158,9 +158,9 @@
 
         <property name="IsPropertyInOutIsInDisputeRemoved" column="IsPropertyInOutIsInDisputeRemoved"/>
 
-        <property name="IsPropertyInOutRmaNumberRemoved" column="IsPropertyInOutRmaNumberRemoved"/>
+        <property name="IsPropertyInOutRmaDocumentNumberRemoved" column="IsPropertyInOutRmaDocumentNumberRemoved"/>
 
-        <property name="IsPropertyInOutReversalNumberRemoved" column="IsPropertyInOutReversalNumberRemoved"/>
+        <property name="IsPropertyInOutReversalDocumentNumberRemoved" column="IsPropertyInOutReversalDocumentNumberRemoved"/>
 
         <property name="IsPropertyInOutCreatedByRemoved" column="IsPropertyInOutCreatedByRemoved"/>
 

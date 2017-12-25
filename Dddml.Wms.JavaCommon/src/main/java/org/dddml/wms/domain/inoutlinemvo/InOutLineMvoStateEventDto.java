@@ -366,14 +366,14 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
         this.inOutDatePrinted = inOutDatePrinted;
     }
 
-    private String inOutSalesRepresentative;
+    private String inOutSalesRepresentativeId;
 
-    public String getInOutSalesRepresentative() {
-        return this.inOutSalesRepresentative;
+    public String getInOutSalesRepresentativeId() {
+        return this.inOutSalesRepresentativeId;
     }
 
-    public void setInOutSalesRepresentative(String inOutSalesRepresentative) {
-        this.inOutSalesRepresentative = inOutSalesRepresentative;
+    public void setInOutSalesRepresentativeId(String inOutSalesRepresentativeId) {
+        this.inOutSalesRepresentativeId = inOutSalesRepresentativeId;
     }
 
     private Integer inOutNumberOfPackages;
@@ -456,24 +456,24 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
         this.inOutIsInDispute = inOutIsInDispute;
     }
 
-    private String inOutRmaNumber;
+    private String inOutRmaDocumentNumber;
 
-    public String getInOutRmaNumber() {
-        return this.inOutRmaNumber;
+    public String getInOutRmaDocumentNumber() {
+        return this.inOutRmaDocumentNumber;
     }
 
-    public void setInOutRmaNumber(String inOutRmaNumber) {
-        this.inOutRmaNumber = inOutRmaNumber;
+    public void setInOutRmaDocumentNumber(String inOutRmaDocumentNumber) {
+        this.inOutRmaDocumentNumber = inOutRmaDocumentNumber;
     }
 
-    private String inOutReversalNumber;
+    private String inOutReversalDocumentNumber;
 
-    public String getInOutReversalNumber() {
-        return this.inOutReversalNumber;
+    public String getInOutReversalDocumentNumber() {
+        return this.inOutReversalDocumentNumber;
     }
 
-    public void setInOutReversalNumber(String inOutReversalNumber) {
-        this.inOutReversalNumber = inOutReversalNumber;
+    public void setInOutReversalDocumentNumber(String inOutReversalDocumentNumber) {
+        this.inOutReversalDocumentNumber = inOutReversalDocumentNumber;
     }
 
     private String inOutCreatedBy;
@@ -886,14 +886,14 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
         this.isPropertyInOutDatePrintedRemoved = removed;
     }
 
-    private Boolean isPropertyInOutSalesRepresentativeRemoved;
+    private Boolean isPropertyInOutSalesRepresentativeIdRemoved;
 
-    public Boolean getIsPropertyInOutSalesRepresentativeRemoved() {
-        return this.isPropertyInOutSalesRepresentativeRemoved;
+    public Boolean getIsPropertyInOutSalesRepresentativeIdRemoved() {
+        return this.isPropertyInOutSalesRepresentativeIdRemoved;
     }
 
-    public void setIsPropertyInOutSalesRepresentativeRemoved(Boolean removed) {
-        this.isPropertyInOutSalesRepresentativeRemoved = removed;
+    public void setIsPropertyInOutSalesRepresentativeIdRemoved(Boolean removed) {
+        this.isPropertyInOutSalesRepresentativeIdRemoved = removed;
     }
 
     private Boolean isPropertyInOutNumberOfPackagesRemoved;
@@ -976,24 +976,24 @@ public class InOutLineMvoStateEventDto extends AbstractStateEvent
         this.isPropertyInOutIsInDisputeRemoved = removed;
     }
 
-    private Boolean isPropertyInOutRmaNumberRemoved;
+    private Boolean isPropertyInOutRmaDocumentNumberRemoved;
 
-    public Boolean getIsPropertyInOutRmaNumberRemoved() {
-        return this.isPropertyInOutRmaNumberRemoved;
+    public Boolean getIsPropertyInOutRmaDocumentNumberRemoved() {
+        return this.isPropertyInOutRmaDocumentNumberRemoved;
     }
 
-    public void setIsPropertyInOutRmaNumberRemoved(Boolean removed) {
-        this.isPropertyInOutRmaNumberRemoved = removed;
+    public void setIsPropertyInOutRmaDocumentNumberRemoved(Boolean removed) {
+        this.isPropertyInOutRmaDocumentNumberRemoved = removed;
     }
 
-    private Boolean isPropertyInOutReversalNumberRemoved;
+    private Boolean isPropertyInOutReversalDocumentNumberRemoved;
 
-    public Boolean getIsPropertyInOutReversalNumberRemoved() {
-        return this.isPropertyInOutReversalNumberRemoved;
+    public Boolean getIsPropertyInOutReversalDocumentNumberRemoved() {
+        return this.isPropertyInOutReversalDocumentNumberRemoved;
     }
 
-    public void setIsPropertyInOutReversalNumberRemoved(Boolean removed) {
-        this.isPropertyInOutReversalNumberRemoved = removed;
+    public void setIsPropertyInOutReversalDocumentNumberRemoved(Boolean removed) {
+        this.isPropertyInOutReversalDocumentNumberRemoved = removed;
     }
 
     private Boolean isPropertyInOutCreatedByRemoved;

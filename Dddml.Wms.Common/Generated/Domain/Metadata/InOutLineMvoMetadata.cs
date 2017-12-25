@@ -1148,7 +1148,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutSalesRepresentative",
+                    Name = "InOutSalesRepresentativeId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1409,7 +1409,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutRmaNumber",
+                    Name = "InOutRmaDocumentNumber",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1438,7 +1438,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutReversalNumber",
+                    Name = "InOutReversalDocumentNumber",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1847,8 +1847,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("inOutShipperId", "InOutShipperId");
             d.Add("InOutDatePrinted", "InOutDatePrinted");
             d.Add("inOutDatePrinted", "InOutDatePrinted");
-            d.Add("InOutSalesRepresentative", "InOutSalesRepresentative");
-            d.Add("inOutSalesRepresentative", "InOutSalesRepresentative");
+            d.Add("InOutSalesRepresentativeId", "InOutSalesRepresentativeId");
+            d.Add("inOutSalesRepresentativeId", "InOutSalesRepresentativeId");
             d.Add("InOutNumberOfPackages", "InOutNumberOfPackages");
             d.Add("inOutNumberOfPackages", "InOutNumberOfPackages");
             d.Add("InOutPickDate", "InOutPickDate");
@@ -1865,10 +1865,10 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("inOutIsApproved", "InOutIsApproved");
             d.Add("InOutIsInDispute", "InOutIsInDispute");
             d.Add("inOutIsInDispute", "InOutIsInDispute");
-            d.Add("InOutRmaNumber", "InOutRmaNumber");
-            d.Add("inOutRmaNumber", "InOutRmaNumber");
-            d.Add("InOutReversalNumber", "InOutReversalNumber");
-            d.Add("inOutReversalNumber", "InOutReversalNumber");
+            d.Add("InOutRmaDocumentNumber", "InOutRmaDocumentNumber");
+            d.Add("inOutRmaDocumentNumber", "InOutRmaDocumentNumber");
+            d.Add("InOutReversalDocumentNumber", "InOutReversalDocumentNumber");
+            d.Add("inOutReversalDocumentNumber", "InOutReversalDocumentNumber");
             d.Add("InOutVersion", "InOutVersion");
             d.Add("inOutVersion", "InOutVersion");
             d.Add("InOutCreatedBy", "InOutCreatedBy");

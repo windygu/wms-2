@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		DateTime? DatePrinted { get; set; }
 
-		string SalesRepresentative { get; set; }
+		string SalesRepresentativeId { get; set; }
 
 		int? NumberOfPackages { get; set; }
 
@@ -67,9 +67,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		bool? IsInDispute { get; set; }
 
-		string RmaNumber { get; set; }
+		string RmaDocumentNumber { get; set; }
 
-		string ReversalNumber { get; set; }
+		string ReversalDocumentNumber { get; set; }
 
 		bool? Active { get; set; }
 
@@ -121,7 +121,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		bool IsPropertyDatePrintedRemoved { get; set; }
 
-		bool IsPropertySalesRepresentativeRemoved { get; set; }
+		bool IsPropertySalesRepresentativeIdRemoved { get; set; }
 
 		bool IsPropertyNumberOfPackagesRemoved { get; set; }
 
@@ -139,9 +139,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		bool IsPropertyIsInDisputeRemoved { get; set; }
 
-		bool IsPropertyRmaNumberRemoved { get; set; }
+		bool IsPropertyRmaDocumentNumberRemoved { get; set; }
 
-		bool IsPropertyReversalNumberRemoved { get; set; }
+		bool IsPropertyReversalDocumentNumberRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

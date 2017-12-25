@@ -58,7 +58,7 @@ namespace Dddml.Wms.Domain.InOut
             dto.POReference = e.POReference;
             dto.ShipperId = e.ShipperId;
             dto.DatePrinted = e.DatePrinted;
-            dto.SalesRepresentative = e.SalesRepresentative;
+            dto.SalesRepresentativeId = e.SalesRepresentativeId;
             dto.NumberOfPackages = e.NumberOfPackages;
             dto.PickDate = e.PickDate;
             dto.ShipDate = e.ShipDate;
@@ -67,8 +67,8 @@ namespace Dddml.Wms.Domain.InOut
             dto.IsInTransit = e.IsInTransit;
             dto.IsApproved = e.IsApproved;
             dto.IsInDispute = e.IsInDispute;
-            dto.RmaNumber = e.RmaNumber;
-            dto.ReversalNumber = e.ReversalNumber;
+            dto.RmaDocumentNumber = e.RmaDocumentNumber;
+            dto.ReversalDocumentNumber = e.ReversalDocumentNumber;
             dto.Active = e.Active;
             var inOutLineEvents = new List<InOutLineStateCreatedDto>();
             foreach (var ee in e.InOutLineEvents)
@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.InOut
             dto.POReference = e.POReference;
             dto.ShipperId = e.ShipperId;
             dto.DatePrinted = e.DatePrinted;
-            dto.SalesRepresentative = e.SalesRepresentative;
+            dto.SalesRepresentativeId = e.SalesRepresentativeId;
             dto.NumberOfPackages = e.NumberOfPackages;
             dto.PickDate = e.PickDate;
             dto.ShipDate = e.ShipDate;
@@ -113,8 +113,8 @@ namespace Dddml.Wms.Domain.InOut
             dto.IsInTransit = e.IsInTransit;
             dto.IsApproved = e.IsApproved;
             dto.IsInDispute = e.IsInDispute;
-            dto.RmaNumber = e.RmaNumber;
-            dto.ReversalNumber = e.ReversalNumber;
+            dto.RmaDocumentNumber = e.RmaDocumentNumber;
+            dto.ReversalDocumentNumber = e.ReversalDocumentNumber;
             dto.Active = e.Active;
             dto.IsPropertyDocumentStatusIdRemoved = e.IsPropertyDocumentStatusIdRemoved;
             dto.IsPropertyPostedRemoved = e.IsPropertyPostedRemoved;
@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain.InOut
             dto.IsPropertyPOReferenceRemoved = e.IsPropertyPOReferenceRemoved;
             dto.IsPropertyShipperIdRemoved = e.IsPropertyShipperIdRemoved;
             dto.IsPropertyDatePrintedRemoved = e.IsPropertyDatePrintedRemoved;
-            dto.IsPropertySalesRepresentativeRemoved = e.IsPropertySalesRepresentativeRemoved;
+            dto.IsPropertySalesRepresentativeIdRemoved = e.IsPropertySalesRepresentativeIdRemoved;
             dto.IsPropertyNumberOfPackagesRemoved = e.IsPropertyNumberOfPackagesRemoved;
             dto.IsPropertyPickDateRemoved = e.IsPropertyPickDateRemoved;
             dto.IsPropertyShipDateRemoved = e.IsPropertyShipDateRemoved;
@@ -141,8 +141,8 @@ namespace Dddml.Wms.Domain.InOut
             dto.IsPropertyIsInTransitRemoved = e.IsPropertyIsInTransitRemoved;
             dto.IsPropertyIsApprovedRemoved = e.IsPropertyIsApprovedRemoved;
             dto.IsPropertyIsInDisputeRemoved = e.IsPropertyIsInDisputeRemoved;
-            dto.IsPropertyRmaNumberRemoved = e.IsPropertyRmaNumberRemoved;
-            dto.IsPropertyReversalNumberRemoved = e.IsPropertyReversalNumberRemoved;
+            dto.IsPropertyRmaDocumentNumberRemoved = e.IsPropertyRmaDocumentNumberRemoved;
+            dto.IsPropertyReversalDocumentNumberRemoved = e.IsPropertyReversalDocumentNumberRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
             var inOutLineEvents = new List<InOutLineStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.InOutLineEvents)

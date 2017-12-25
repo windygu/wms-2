@@ -419,16 +419,16 @@ public class InOutLineMvoStateDto
         this.inOutDatePrinted = inOutDatePrinted;
     }
 
-    private String inOutSalesRepresentative;
+    private String inOutSalesRepresentativeId;
 
-    public String getInOutSalesRepresentative()
+    public String getInOutSalesRepresentativeId()
     {
-        return this.inOutSalesRepresentative;
+        return this.inOutSalesRepresentativeId;
     }
 
-    public void setInOutSalesRepresentative(String inOutSalesRepresentative)
+    public void setInOutSalesRepresentativeId(String inOutSalesRepresentativeId)
     {
-        this.inOutSalesRepresentative = inOutSalesRepresentative;
+        this.inOutSalesRepresentativeId = inOutSalesRepresentativeId;
     }
 
     private Integer inOutNumberOfPackages;
@@ -527,28 +527,28 @@ public class InOutLineMvoStateDto
         this.inOutIsInDispute = inOutIsInDispute;
     }
 
-    private String inOutRmaNumber;
+    private String inOutRmaDocumentNumber;
 
-    public String getInOutRmaNumber()
+    public String getInOutRmaDocumentNumber()
     {
-        return this.inOutRmaNumber;
+        return this.inOutRmaDocumentNumber;
     }
 
-    public void setInOutRmaNumber(String inOutRmaNumber)
+    public void setInOutRmaDocumentNumber(String inOutRmaDocumentNumber)
     {
-        this.inOutRmaNumber = inOutRmaNumber;
+        this.inOutRmaDocumentNumber = inOutRmaDocumentNumber;
     }
 
-    private String inOutReversalNumber;
+    private String inOutReversalDocumentNumber;
 
-    public String getInOutReversalNumber()
+    public String getInOutReversalDocumentNumber()
     {
-        return this.inOutReversalNumber;
+        return this.inOutReversalDocumentNumber;
     }
 
-    public void setInOutReversalNumber(String inOutReversalNumber)
+    public void setInOutReversalDocumentNumber(String inOutReversalDocumentNumber)
     {
-        this.inOutReversalNumber = inOutReversalNumber;
+        this.inOutReversalDocumentNumber = inOutReversalDocumentNumber;
     }
 
     private String inOutCreatedBy;
@@ -811,8 +811,8 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("InOutDatePrinted")) {
                 dto.setInOutDatePrinted(state.getInOutDatePrinted());
             }
-            if (returnedFieldsContains("InOutSalesRepresentative")) {
-                dto.setInOutSalesRepresentative(state.getInOutSalesRepresentative());
+            if (returnedFieldsContains("InOutSalesRepresentativeId")) {
+                dto.setInOutSalesRepresentativeId(state.getInOutSalesRepresentativeId());
             }
             if (returnedFieldsContains("InOutNumberOfPackages")) {
                 dto.setInOutNumberOfPackages(state.getInOutNumberOfPackages());
@@ -838,11 +838,11 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("InOutIsInDispute")) {
                 dto.setInOutIsInDispute(state.getInOutIsInDispute());
             }
-            if (returnedFieldsContains("InOutRmaNumber")) {
-                dto.setInOutRmaNumber(state.getInOutRmaNumber());
+            if (returnedFieldsContains("InOutRmaDocumentNumber")) {
+                dto.setInOutRmaDocumentNumber(state.getInOutRmaDocumentNumber());
             }
-            if (returnedFieldsContains("InOutReversalNumber")) {
-                dto.setInOutReversalNumber(state.getInOutReversalNumber());
+            if (returnedFieldsContains("InOutReversalDocumentNumber")) {
+                dto.setInOutReversalDocumentNumber(state.getInOutReversalDocumentNumber());
             }
             if (returnedFieldsContains("InOutCreatedBy")) {
                 dto.setInOutCreatedBy(state.getInOutCreatedBy());

@@ -97,7 +97,7 @@ aggregates:
         # CreatedFrom:
           # type: string
           
-        SalesRepresentative:
+        SalesRepresentativeId:
           type: string
 
         NumberOfPackages:
@@ -130,10 +130,10 @@ aggregates:
         # Weight:
           # type: decimal
 
-        RmaNumber: 
+        RmaDocumentNumber: 
           type: string
 
-        ReversalNumber:
+        ReversalDocumentNumber:
           type: string
           
         # IsDropShip:

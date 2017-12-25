@@ -403,16 +403,16 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutDatePrinted = inOutDatePrinted;
     }
 
-    private String inOutSalesRepresentative;
+    private String inOutSalesRepresentativeId;
 
-    public String getInOutSalesRepresentative()
+    public String getInOutSalesRepresentativeId()
     {
-        return this.inOutSalesRepresentative;
+        return this.inOutSalesRepresentativeId;
     }
 
-    public void setInOutSalesRepresentative(String inOutSalesRepresentative)
+    public void setInOutSalesRepresentativeId(String inOutSalesRepresentativeId)
     {
-        this.inOutSalesRepresentative = inOutSalesRepresentative;
+        this.inOutSalesRepresentativeId = inOutSalesRepresentativeId;
     }
 
     private Integer inOutNumberOfPackages;
@@ -511,28 +511,28 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutIsInDispute = inOutIsInDispute;
     }
 
-    private String inOutRmaNumber;
+    private String inOutRmaDocumentNumber;
 
-    public String getInOutRmaNumber()
+    public String getInOutRmaDocumentNumber()
     {
-        return this.inOutRmaNumber;
+        return this.inOutRmaDocumentNumber;
     }
 
-    public void setInOutRmaNumber(String inOutRmaNumber)
+    public void setInOutRmaDocumentNumber(String inOutRmaDocumentNumber)
     {
-        this.inOutRmaNumber = inOutRmaNumber;
+        this.inOutRmaDocumentNumber = inOutRmaDocumentNumber;
     }
 
-    private String inOutReversalNumber;
+    private String inOutReversalDocumentNumber;
 
-    public String getInOutReversalNumber()
+    public String getInOutReversalDocumentNumber()
     {
-        return this.inOutReversalNumber;
+        return this.inOutReversalDocumentNumber;
     }
 
-    public void setInOutReversalNumber(String inOutReversalNumber)
+    public void setInOutReversalDocumentNumber(String inOutReversalDocumentNumber)
     {
-        this.inOutReversalNumber = inOutReversalNumber;
+        this.inOutReversalDocumentNumber = inOutReversalDocumentNumber;
     }
 
     private String inOutCreatedBy;
@@ -991,16 +991,16 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyInOutDatePrintedRemoved = removed;
     }
 
-    private Boolean isPropertyInOutSalesRepresentativeRemoved;
+    private Boolean isPropertyInOutSalesRepresentativeIdRemoved;
 
-    public Boolean getIsPropertyInOutSalesRepresentativeRemoved()
+    public Boolean getIsPropertyInOutSalesRepresentativeIdRemoved()
     {
-        return this.isPropertyInOutSalesRepresentativeRemoved;
+        return this.isPropertyInOutSalesRepresentativeIdRemoved;
     }
 
-    public void setIsPropertyInOutSalesRepresentativeRemoved(Boolean removed)
+    public void setIsPropertyInOutSalesRepresentativeIdRemoved(Boolean removed)
     {
-        this.isPropertyInOutSalesRepresentativeRemoved = removed;
+        this.isPropertyInOutSalesRepresentativeIdRemoved = removed;
     }
 
     private Boolean isPropertyInOutNumberOfPackagesRemoved;
@@ -1099,28 +1099,28 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyInOutIsInDisputeRemoved = removed;
     }
 
-    private Boolean isPropertyInOutRmaNumberRemoved;
+    private Boolean isPropertyInOutRmaDocumentNumberRemoved;
 
-    public Boolean getIsPropertyInOutRmaNumberRemoved()
+    public Boolean getIsPropertyInOutRmaDocumentNumberRemoved()
     {
-        return this.isPropertyInOutRmaNumberRemoved;
+        return this.isPropertyInOutRmaDocumentNumberRemoved;
     }
 
-    public void setIsPropertyInOutRmaNumberRemoved(Boolean removed)
+    public void setIsPropertyInOutRmaDocumentNumberRemoved(Boolean removed)
     {
-        this.isPropertyInOutRmaNumberRemoved = removed;
+        this.isPropertyInOutRmaDocumentNumberRemoved = removed;
     }
 
-    private Boolean isPropertyInOutReversalNumberRemoved;
+    private Boolean isPropertyInOutReversalDocumentNumberRemoved;
 
-    public Boolean getIsPropertyInOutReversalNumberRemoved()
+    public Boolean getIsPropertyInOutReversalDocumentNumberRemoved()
     {
-        return this.isPropertyInOutReversalNumberRemoved;
+        return this.isPropertyInOutReversalDocumentNumberRemoved;
     }
 
-    public void setIsPropertyInOutReversalNumberRemoved(Boolean removed)
+    public void setIsPropertyInOutReversalDocumentNumberRemoved(Boolean removed)
     {
-        this.isPropertyInOutReversalNumberRemoved = removed;
+        this.isPropertyInOutReversalDocumentNumberRemoved = removed;
     }
 
     private Boolean isPropertyInOutCreatedByRemoved;
@@ -1231,7 +1231,7 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setInOutPOReference(this.getInOutPOReference());
         command.setInOutShipperId(this.getInOutShipperId());
         command.setInOutDatePrinted(this.getInOutDatePrinted());
-        command.setInOutSalesRepresentative(this.getInOutSalesRepresentative());
+        command.setInOutSalesRepresentativeId(this.getInOutSalesRepresentativeId());
         command.setInOutNumberOfPackages(this.getInOutNumberOfPackages());
         command.setInOutPickDate(this.getInOutPickDate());
         command.setInOutShipDate(this.getInOutShipDate());
@@ -1240,8 +1240,8 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setInOutIsInTransit(this.getInOutIsInTransit());
         command.setInOutIsApproved(this.getInOutIsApproved());
         command.setInOutIsInDispute(this.getInOutIsInDispute());
-        command.setInOutRmaNumber(this.getInOutRmaNumber());
-        command.setInOutReversalNumber(this.getInOutReversalNumber());
+        command.setInOutRmaDocumentNumber(this.getInOutRmaDocumentNumber());
+        command.setInOutReversalDocumentNumber(this.getInOutReversalDocumentNumber());
         command.setInOutCreatedBy(this.getInOutCreatedBy());
         command.setInOutCreatedAt(this.getInOutCreatedAt());
         command.setInOutUpdatedBy(this.getInOutUpdatedBy());
@@ -1304,7 +1304,7 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setIsPropertyInOutPOReferenceRemoved(this.getIsPropertyInOutPOReferenceRemoved());
         command.setIsPropertyInOutShipperIdRemoved(this.getIsPropertyInOutShipperIdRemoved());
         command.setIsPropertyInOutDatePrintedRemoved(this.getIsPropertyInOutDatePrintedRemoved());
-        command.setIsPropertyInOutSalesRepresentativeRemoved(this.getIsPropertyInOutSalesRepresentativeRemoved());
+        command.setIsPropertyInOutSalesRepresentativeIdRemoved(this.getIsPropertyInOutSalesRepresentativeIdRemoved());
         command.setIsPropertyInOutNumberOfPackagesRemoved(this.getIsPropertyInOutNumberOfPackagesRemoved());
         command.setIsPropertyInOutPickDateRemoved(this.getIsPropertyInOutPickDateRemoved());
         command.setIsPropertyInOutShipDateRemoved(this.getIsPropertyInOutShipDateRemoved());
@@ -1313,8 +1313,8 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setIsPropertyInOutIsInTransitRemoved(this.getIsPropertyInOutIsInTransitRemoved());
         command.setIsPropertyInOutIsApprovedRemoved(this.getIsPropertyInOutIsApprovedRemoved());
         command.setIsPropertyInOutIsInDisputeRemoved(this.getIsPropertyInOutIsInDisputeRemoved());
-        command.setIsPropertyInOutRmaNumberRemoved(this.getIsPropertyInOutRmaNumberRemoved());
-        command.setIsPropertyInOutReversalNumberRemoved(this.getIsPropertyInOutReversalNumberRemoved());
+        command.setIsPropertyInOutRmaDocumentNumberRemoved(this.getIsPropertyInOutRmaDocumentNumberRemoved());
+        command.setIsPropertyInOutReversalDocumentNumberRemoved(this.getIsPropertyInOutReversalDocumentNumberRemoved());
         command.setIsPropertyInOutCreatedByRemoved(this.getIsPropertyInOutCreatedByRemoved());
         command.setIsPropertyInOutCreatedAtRemoved(this.getIsPropertyInOutCreatedAtRemoved());
         command.setIsPropertyInOutUpdatedByRemoved(this.getIsPropertyInOutUpdatedByRemoved());

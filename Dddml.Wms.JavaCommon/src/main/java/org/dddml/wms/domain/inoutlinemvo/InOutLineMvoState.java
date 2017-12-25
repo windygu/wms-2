@@ -170,9 +170,9 @@ public interface InOutLineMvoState
 
     void setInOutDatePrinted(Date inOutDatePrinted);
 
-    String getInOutSalesRepresentative();
+    String getInOutSalesRepresentativeId();
 
-    void setInOutSalesRepresentative(String inOutSalesRepresentative);
+    void setInOutSalesRepresentativeId(String inOutSalesRepresentativeId);
 
     Integer getInOutNumberOfPackages();
 
@@ -206,13 +206,13 @@ public interface InOutLineMvoState
 
     void setInOutIsInDispute(Boolean inOutIsInDispute);
 
-    String getInOutRmaNumber();
+    String getInOutRmaDocumentNumber();
 
-    void setInOutRmaNumber(String inOutRmaNumber);
+    void setInOutRmaDocumentNumber(String inOutRmaDocumentNumber);
 
-    String getInOutReversalNumber();
+    String getInOutReversalDocumentNumber();
 
-    void setInOutReversalNumber(String inOutReversalNumber);
+    void setInOutReversalDocumentNumber(String inOutReversalDocumentNumber);
 
     Long getInOutVersion();
 

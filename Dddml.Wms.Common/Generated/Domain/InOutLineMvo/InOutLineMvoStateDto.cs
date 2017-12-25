@@ -221,7 +221,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        public virtual string InOutSalesRepresentative
+        public virtual string InOutSalesRepresentativeId
         {
             get;
             set;
@@ -275,13 +275,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        public virtual string InOutRmaNumber
+        public virtual string InOutRmaDocumentNumber
         {
             get;
             set;
         }
 
-        public virtual string InOutReversalNumber
+        public virtual string InOutReversalDocumentNumber
         {
             get;
             set;
@@ -390,7 +390,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             state.InOutPOReference = this.InOutPOReference;
             state.InOutShipperId = this.InOutShipperId;
             state.InOutDatePrinted = this.InOutDatePrinted;
-            state.InOutSalesRepresentative = this.InOutSalesRepresentative;
+            state.InOutSalesRepresentativeId = this.InOutSalesRepresentativeId;
             if (this.InOutNumberOfPackages != null && this.InOutNumberOfPackages.HasValue) { state.InOutNumberOfPackages = this.InOutNumberOfPackages.Value; }
             state.InOutPickDate = this.InOutPickDate;
             state.InOutShipDate = this.InOutShipDate;
@@ -399,8 +399,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             if (this.InOutIsInTransit != null && this.InOutIsInTransit.HasValue) { state.InOutIsInTransit = this.InOutIsInTransit.Value; }
             if (this.InOutIsApproved != null && this.InOutIsApproved.HasValue) { state.InOutIsApproved = this.InOutIsApproved.Value; }
             if (this.InOutIsInDispute != null && this.InOutIsInDispute.HasValue) { state.InOutIsInDispute = this.InOutIsInDispute.Value; }
-            state.InOutRmaNumber = this.InOutRmaNumber;
-            state.InOutReversalNumber = this.InOutReversalNumber;
+            state.InOutRmaDocumentNumber = this.InOutRmaDocumentNumber;
+            state.InOutReversalDocumentNumber = this.InOutReversalDocumentNumber;
             state.InOutCreatedBy = this.InOutCreatedBy;
             if (this.InOutCreatedAt != null && this.InOutCreatedAt.HasValue) { state.InOutCreatedAt = this.InOutCreatedAt.Value; }
             state.InOutUpdatedBy = this.InOutUpdatedBy;

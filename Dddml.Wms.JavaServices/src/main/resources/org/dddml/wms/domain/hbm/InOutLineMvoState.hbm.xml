@@ -50,7 +50,7 @@
 	<property name="inOutPOReference" ></property>
 	<property name="inOutShipperId" ></property>
 	<property name="inOutDatePrinted" ></property>
-	<property name="inOutSalesRepresentative" ></property>
+	<property name="inOutSalesRepresentativeId" ></property>
 	<property name="inOutNumberOfPackages" ></property>
 	<property name="inOutPickDate" ></property>
 	<property name="inOutShipDate" ></property>
@@ -59,8 +59,8 @@
 	<property name="inOutIsInTransit" ></property>
 	<property name="inOutIsApproved" ></property>
 	<property name="inOutIsInDispute" ></property>
-	<property name="inOutRmaNumber" ></property>
-	<property name="inOutReversalNumber" ></property>
+	<property name="inOutRmaDocumentNumber" ></property>
+	<property name="inOutReversalDocumentNumber" ></property>
 	<property name="inOutCreatedBy" ></property>
 	<property name="inOutCreatedAt" ></property>
 	<property name="inOutUpdatedBy" ></property>

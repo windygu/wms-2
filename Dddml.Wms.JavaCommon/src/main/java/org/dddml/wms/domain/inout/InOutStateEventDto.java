@@ -195,14 +195,14 @@ public class InOutStateEventDto extends AbstractStateEvent
         this.datePrinted = datePrinted;
     }
 
-    private String salesRepresentative;
+    private String salesRepresentativeId;
 
-    public String getSalesRepresentative() {
-        return this.salesRepresentative;
+    public String getSalesRepresentativeId() {
+        return this.salesRepresentativeId;
     }
 
-    public void setSalesRepresentative(String salesRepresentative) {
-        this.salesRepresentative = salesRepresentative;
+    public void setSalesRepresentativeId(String salesRepresentativeId) {
+        this.salesRepresentativeId = salesRepresentativeId;
     }
 
     private Integer numberOfPackages;
@@ -285,24 +285,24 @@ public class InOutStateEventDto extends AbstractStateEvent
         this.isInDispute = isInDispute;
     }
 
-    private String rmaNumber;
+    private String rmaDocumentNumber;
 
-    public String getRmaNumber() {
-        return this.rmaNumber;
+    public String getRmaDocumentNumber() {
+        return this.rmaDocumentNumber;
     }
 
-    public void setRmaNumber(String rmaNumber) {
-        this.rmaNumber = rmaNumber;
+    public void setRmaDocumentNumber(String rmaDocumentNumber) {
+        this.rmaDocumentNumber = rmaDocumentNumber;
     }
 
-    private String reversalNumber;
+    private String reversalDocumentNumber;
 
-    public String getReversalNumber() {
-        return this.reversalNumber;
+    public String getReversalDocumentNumber() {
+        return this.reversalDocumentNumber;
     }
 
-    public void setReversalNumber(String reversalNumber) {
-        this.reversalNumber = reversalNumber;
+    public void setReversalDocumentNumber(String reversalDocumentNumber) {
+        this.reversalDocumentNumber = reversalDocumentNumber;
     }
 
     private Boolean active;
@@ -495,14 +495,14 @@ public class InOutStateEventDto extends AbstractStateEvent
         this.isPropertyDatePrintedRemoved = removed;
     }
 
-    private Boolean isPropertySalesRepresentativeRemoved;
+    private Boolean isPropertySalesRepresentativeIdRemoved;
 
-    public Boolean getIsPropertySalesRepresentativeRemoved() {
-        return this.isPropertySalesRepresentativeRemoved;
+    public Boolean getIsPropertySalesRepresentativeIdRemoved() {
+        return this.isPropertySalesRepresentativeIdRemoved;
     }
 
-    public void setIsPropertySalesRepresentativeRemoved(Boolean removed) {
-        this.isPropertySalesRepresentativeRemoved = removed;
+    public void setIsPropertySalesRepresentativeIdRemoved(Boolean removed) {
+        this.isPropertySalesRepresentativeIdRemoved = removed;
     }
 
     private Boolean isPropertyNumberOfPackagesRemoved;
@@ -585,24 +585,24 @@ public class InOutStateEventDto extends AbstractStateEvent
         this.isPropertyIsInDisputeRemoved = removed;
     }
 
-    private Boolean isPropertyRmaNumberRemoved;
+    private Boolean isPropertyRmaDocumentNumberRemoved;
 
-    public Boolean getIsPropertyRmaNumberRemoved() {
-        return this.isPropertyRmaNumberRemoved;
+    public Boolean getIsPropertyRmaDocumentNumberRemoved() {
+        return this.isPropertyRmaDocumentNumberRemoved;
     }
 
-    public void setIsPropertyRmaNumberRemoved(Boolean removed) {
-        this.isPropertyRmaNumberRemoved = removed;
+    public void setIsPropertyRmaDocumentNumberRemoved(Boolean removed) {
+        this.isPropertyRmaDocumentNumberRemoved = removed;
     }
 
-    private Boolean isPropertyReversalNumberRemoved;
+    private Boolean isPropertyReversalDocumentNumberRemoved;
 
-    public Boolean getIsPropertyReversalNumberRemoved() {
-        return this.isPropertyReversalNumberRemoved;
+    public Boolean getIsPropertyReversalDocumentNumberRemoved() {
+        return this.isPropertyReversalDocumentNumberRemoved;
     }
 
-    public void setIsPropertyReversalNumberRemoved(Boolean removed) {
-        this.isPropertyReversalNumberRemoved = removed;
+    public void setIsPropertyReversalDocumentNumberRemoved(Boolean removed) {
+        this.isPropertyReversalDocumentNumberRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

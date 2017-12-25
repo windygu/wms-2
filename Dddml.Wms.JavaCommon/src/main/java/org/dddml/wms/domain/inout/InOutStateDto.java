@@ -214,16 +214,16 @@ public class InOutStateDto
         this.datePrinted = datePrinted;
     }
 
-    private String salesRepresentative;
+    private String salesRepresentativeId;
 
-    public String getSalesRepresentative()
+    public String getSalesRepresentativeId()
     {
-        return this.salesRepresentative;
+        return this.salesRepresentativeId;
     }
 
-    public void setSalesRepresentative(String salesRepresentative)
+    public void setSalesRepresentativeId(String salesRepresentativeId)
     {
-        this.salesRepresentative = salesRepresentative;
+        this.salesRepresentativeId = salesRepresentativeId;
     }
 
     private Integer numberOfPackages;
@@ -322,28 +322,28 @@ public class InOutStateDto
         this.isInDispute = isInDispute;
     }
 
-    private String rmaNumber;
+    private String rmaDocumentNumber;
 
-    public String getRmaNumber()
+    public String getRmaDocumentNumber()
     {
-        return this.rmaNumber;
+        return this.rmaDocumentNumber;
     }
 
-    public void setRmaNumber(String rmaNumber)
+    public void setRmaDocumentNumber(String rmaDocumentNumber)
     {
-        this.rmaNumber = rmaNumber;
+        this.rmaDocumentNumber = rmaDocumentNumber;
     }
 
-    private String reversalNumber;
+    private String reversalDocumentNumber;
 
-    public String getReversalNumber()
+    public String getReversalDocumentNumber()
     {
-        return this.reversalNumber;
+        return this.reversalDocumentNumber;
     }
 
-    public void setReversalNumber(String reversalNumber)
+    public void setReversalDocumentNumber(String reversalDocumentNumber)
     {
-        this.reversalNumber = reversalNumber;
+        this.reversalDocumentNumber = reversalDocumentNumber;
     }
 
     private Boolean active;
@@ -507,8 +507,8 @@ public class InOutStateDto
             if (returnedFieldsContains("DatePrinted")) {
                 dto.setDatePrinted(state.getDatePrinted());
             }
-            if (returnedFieldsContains("SalesRepresentative")) {
-                dto.setSalesRepresentative(state.getSalesRepresentative());
+            if (returnedFieldsContains("SalesRepresentativeId")) {
+                dto.setSalesRepresentativeId(state.getSalesRepresentativeId());
             }
             if (returnedFieldsContains("NumberOfPackages")) {
                 dto.setNumberOfPackages(state.getNumberOfPackages());
@@ -534,11 +534,11 @@ public class InOutStateDto
             if (returnedFieldsContains("IsInDispute")) {
                 dto.setIsInDispute(state.getIsInDispute());
             }
-            if (returnedFieldsContains("RmaNumber")) {
-                dto.setRmaNumber(state.getRmaNumber());
+            if (returnedFieldsContains("RmaDocumentNumber")) {
+                dto.setRmaDocumentNumber(state.getRmaDocumentNumber());
             }
-            if (returnedFieldsContains("ReversalNumber")) {
-                dto.setReversalNumber(state.getReversalNumber());
+            if (returnedFieldsContains("ReversalDocumentNumber")) {
+                dto.setReversalDocumentNumber(state.getReversalDocumentNumber());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

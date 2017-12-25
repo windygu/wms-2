@@ -509,7 +509,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "SalesRepresentative",
+                    Name = "SalesRepresentativeId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -770,7 +770,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "RmaNumber",
+                    Name = "RmaDocumentNumber",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -799,7 +799,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "ReversalNumber",
+                    Name = "ReversalDocumentNumber",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1104,8 +1104,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("shipperId", "ShipperId");
             d.Add("DatePrinted", "DatePrinted");
             d.Add("datePrinted", "DatePrinted");
-            d.Add("SalesRepresentative", "SalesRepresentative");
-            d.Add("salesRepresentative", "SalesRepresentative");
+            d.Add("SalesRepresentativeId", "SalesRepresentativeId");
+            d.Add("salesRepresentativeId", "SalesRepresentativeId");
             d.Add("NumberOfPackages", "NumberOfPackages");
             d.Add("numberOfPackages", "NumberOfPackages");
             d.Add("PickDate", "PickDate");
@@ -1122,10 +1122,10 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("isApproved", "IsApproved");
             d.Add("IsInDispute", "IsInDispute");
             d.Add("isInDispute", "IsInDispute");
-            d.Add("RmaNumber", "RmaNumber");
-            d.Add("rmaNumber", "RmaNumber");
-            d.Add("ReversalNumber", "ReversalNumber");
-            d.Add("reversalNumber", "ReversalNumber");
+            d.Add("RmaDocumentNumber", "RmaDocumentNumber");
+            d.Add("rmaDocumentNumber", "RmaDocumentNumber");
+            d.Add("ReversalDocumentNumber", "ReversalDocumentNumber");
+            d.Add("reversalDocumentNumber", "ReversalDocumentNumber");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");

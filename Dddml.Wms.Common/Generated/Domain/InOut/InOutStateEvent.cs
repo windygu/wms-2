@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual DateTime? DatePrinted { get; set; }
 
-		public virtual string SalesRepresentative { get; set; }
+		public virtual string SalesRepresentativeId { get; set; }
 
 		public virtual int? NumberOfPackages { get; set; }
 
@@ -73,9 +73,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool? IsInDispute { get; set; }
 
-		public virtual string RmaNumber { get; set; }
+		public virtual string RmaDocumentNumber { get; set; }
 
-		public virtual string ReversalNumber { get; set; }
+		public virtual string ReversalDocumentNumber { get; set; }
 
 		public virtual bool? Active { get; set; }
 
@@ -282,7 +282,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool IsPropertyDatePrintedRemoved { get; set; }
 
-		public virtual bool IsPropertySalesRepresentativeRemoved { get; set; }
+		public virtual bool IsPropertySalesRepresentativeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyNumberOfPackagesRemoved { get; set; }
 
@@ -300,9 +300,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool IsPropertyIsInDisputeRemoved { get; set; }
 
-		public virtual bool IsPropertyRmaNumberRemoved { get; set; }
+		public virtual bool IsPropertyRmaDocumentNumberRemoved { get; set; }
 
-		public virtual bool IsPropertyReversalNumberRemoved { get; set; }
+		public virtual bool IsPropertyReversalDocumentNumberRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

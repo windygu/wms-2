@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		DateTime? InOutDatePrinted { get; set; }
 
-		string InOutSalesRepresentative { get; set; }
+		string InOutSalesRepresentativeId { get; set; }
 
 		int? InOutNumberOfPackages { get; set; }
 
@@ -108,9 +108,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? InOutIsInDispute { get; set; }
 
-		string InOutRmaNumber { get; set; }
+		string InOutRmaDocumentNumber { get; set; }
 
-		string InOutReversalNumber { get; set; }
+		string InOutReversalDocumentNumber { get; set; }
 
 		string InOutCreatedBy { get; set; }
 
@@ -198,7 +198,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool IsPropertyInOutDatePrintedRemoved { get; set; }
 
-		bool IsPropertyInOutSalesRepresentativeRemoved { get; set; }
+		bool IsPropertyInOutSalesRepresentativeIdRemoved { get; set; }
 
 		bool IsPropertyInOutNumberOfPackagesRemoved { get; set; }
 
@@ -216,9 +216,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool IsPropertyInOutIsInDisputeRemoved { get; set; }
 
-		bool IsPropertyInOutRmaNumberRemoved { get; set; }
+		bool IsPropertyInOutRmaDocumentNumberRemoved { get; set; }
 
-		bool IsPropertyInOutReversalNumberRemoved { get; set; }
+		bool IsPropertyInOutReversalDocumentNumberRemoved { get; set; }
 
 		bool IsPropertyInOutCreatedByRemoved { get; set; }
 

@@ -53,7 +53,7 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setPOReference(state.getPOReference());
         cmd.setShipperId(state.getShipperId());
         cmd.setDatePrinted(state.getDatePrinted());
-        cmd.setSalesRepresentative(state.getSalesRepresentative());
+        cmd.setSalesRepresentativeId(state.getSalesRepresentativeId());
         cmd.setNumberOfPackages(state.getNumberOfPackages());
         cmd.setPickDate(state.getPickDate());
         cmd.setShipDate(state.getShipDate());
@@ -62,8 +62,8 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setIsInTransit(state.getIsInTransit());
         cmd.setIsApproved(state.getIsApproved());
         cmd.setIsInDispute(state.getIsInDispute());
-        cmd.setRmaNumber(state.getRmaNumber());
-        cmd.setReversalNumber(state.getReversalNumber());
+        cmd.setRmaDocumentNumber(state.getRmaDocumentNumber());
+        cmd.setReversalDocumentNumber(state.getReversalDocumentNumber());
         cmd.setActive(state.getActive());
             
         if (state.getPosted() == null) { cmd.setIsPropertyPostedRemoved(true); }
@@ -81,7 +81,7 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         if (state.getPOReference() == null) { cmd.setIsPropertyPOReferenceRemoved(true); }
         if (state.getShipperId() == null) { cmd.setIsPropertyShipperIdRemoved(true); }
         if (state.getDatePrinted() == null) { cmd.setIsPropertyDatePrintedRemoved(true); }
-        if (state.getSalesRepresentative() == null) { cmd.setIsPropertySalesRepresentativeRemoved(true); }
+        if (state.getSalesRepresentativeId() == null) { cmd.setIsPropertySalesRepresentativeIdRemoved(true); }
         if (state.getNumberOfPackages() == null) { cmd.setIsPropertyNumberOfPackagesRemoved(true); }
         if (state.getPickDate() == null) { cmd.setIsPropertyPickDateRemoved(true); }
         if (state.getShipDate() == null) { cmd.setIsPropertyShipDateRemoved(true); }
@@ -90,8 +90,8 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         if (state.getIsInTransit() == null) { cmd.setIsPropertyIsInTransitRemoved(true); }
         if (state.getIsApproved() == null) { cmd.setIsPropertyIsApprovedRemoved(true); }
         if (state.getIsInDispute() == null) { cmd.setIsPropertyIsInDisputeRemoved(true); }
-        if (state.getRmaNumber() == null) { cmd.setIsPropertyRmaNumberRemoved(true); }
-        if (state.getReversalNumber() == null) { cmd.setIsPropertyReversalNumberRemoved(true); }
+        if (state.getRmaDocumentNumber() == null) { cmd.setIsPropertyRmaDocumentNumberRemoved(true); }
+        if (state.getReversalDocumentNumber() == null) { cmd.setIsPropertyReversalDocumentNumberRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         for (InOutLineState d : state.getInOutLines())
         {
@@ -122,7 +122,7 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setPOReference(state.getPOReference());
         cmd.setShipperId(state.getShipperId());
         cmd.setDatePrinted(state.getDatePrinted());
-        cmd.setSalesRepresentative(state.getSalesRepresentative());
+        cmd.setSalesRepresentativeId(state.getSalesRepresentativeId());
         cmd.setNumberOfPackages(state.getNumberOfPackages());
         cmd.setPickDate(state.getPickDate());
         cmd.setShipDate(state.getShipDate());
@@ -131,8 +131,8 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setIsInTransit(state.getIsInTransit());
         cmd.setIsApproved(state.getIsApproved());
         cmd.setIsInDispute(state.getIsInDispute());
-        cmd.setRmaNumber(state.getRmaNumber());
-        cmd.setReversalNumber(state.getReversalNumber());
+        cmd.setRmaDocumentNumber(state.getRmaDocumentNumber());
+        cmd.setReversalDocumentNumber(state.getReversalDocumentNumber());
         cmd.setActive(state.getActive());
         for (InOutLineState d : state.getInOutLines())
         {

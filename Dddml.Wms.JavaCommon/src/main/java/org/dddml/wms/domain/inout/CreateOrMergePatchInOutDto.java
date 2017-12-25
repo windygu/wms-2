@@ -198,16 +198,16 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.datePrinted = datePrinted;
     }
 
-    private String salesRepresentative;
+    private String salesRepresentativeId;
 
-    public String getSalesRepresentative()
+    public String getSalesRepresentativeId()
     {
-        return this.salesRepresentative;
+        return this.salesRepresentativeId;
     }
 
-    public void setSalesRepresentative(String salesRepresentative)
+    public void setSalesRepresentativeId(String salesRepresentativeId)
     {
-        this.salesRepresentative = salesRepresentative;
+        this.salesRepresentativeId = salesRepresentativeId;
     }
 
     private Integer numberOfPackages;
@@ -306,28 +306,28 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isInDispute = isInDispute;
     }
 
-    private String rmaNumber;
+    private String rmaDocumentNumber;
 
-    public String getRmaNumber()
+    public String getRmaDocumentNumber()
     {
-        return this.rmaNumber;
+        return this.rmaDocumentNumber;
     }
 
-    public void setRmaNumber(String rmaNumber)
+    public void setRmaDocumentNumber(String rmaDocumentNumber)
     {
-        this.rmaNumber = rmaNumber;
+        this.rmaDocumentNumber = rmaDocumentNumber;
     }
 
-    private String reversalNumber;
+    private String reversalDocumentNumber;
 
-    public String getReversalNumber()
+    public String getReversalDocumentNumber()
     {
-        return this.reversalNumber;
+        return this.reversalDocumentNumber;
     }
 
-    public void setReversalNumber(String reversalNumber)
+    public void setReversalDocumentNumber(String reversalDocumentNumber)
     {
-        this.reversalNumber = reversalNumber;
+        this.reversalDocumentNumber = reversalDocumentNumber;
     }
 
     private Boolean active;
@@ -534,16 +534,16 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPropertyDatePrintedRemoved = removed;
     }
 
-    private Boolean isPropertySalesRepresentativeRemoved;
+    private Boolean isPropertySalesRepresentativeIdRemoved;
 
-    public Boolean getIsPropertySalesRepresentativeRemoved()
+    public Boolean getIsPropertySalesRepresentativeIdRemoved()
     {
-        return this.isPropertySalesRepresentativeRemoved;
+        return this.isPropertySalesRepresentativeIdRemoved;
     }
 
-    public void setIsPropertySalesRepresentativeRemoved(Boolean removed)
+    public void setIsPropertySalesRepresentativeIdRemoved(Boolean removed)
     {
-        this.isPropertySalesRepresentativeRemoved = removed;
+        this.isPropertySalesRepresentativeIdRemoved = removed;
     }
 
     private Boolean isPropertyNumberOfPackagesRemoved;
@@ -642,28 +642,28 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPropertyIsInDisputeRemoved = removed;
     }
 
-    private Boolean isPropertyRmaNumberRemoved;
+    private Boolean isPropertyRmaDocumentNumberRemoved;
 
-    public Boolean getIsPropertyRmaNumberRemoved()
+    public Boolean getIsPropertyRmaDocumentNumberRemoved()
     {
-        return this.isPropertyRmaNumberRemoved;
+        return this.isPropertyRmaDocumentNumberRemoved;
     }
 
-    public void setIsPropertyRmaNumberRemoved(Boolean removed)
+    public void setIsPropertyRmaDocumentNumberRemoved(Boolean removed)
     {
-        this.isPropertyRmaNumberRemoved = removed;
+        this.isPropertyRmaDocumentNumberRemoved = removed;
     }
 
-    private Boolean isPropertyReversalNumberRemoved;
+    private Boolean isPropertyReversalDocumentNumberRemoved;
 
-    public Boolean getIsPropertyReversalNumberRemoved()
+    public Boolean getIsPropertyReversalDocumentNumberRemoved()
     {
-        return this.isPropertyReversalNumberRemoved;
+        return this.isPropertyReversalDocumentNumberRemoved;
     }
 
-    public void setIsPropertyReversalNumberRemoved(Boolean removed)
+    public void setIsPropertyReversalDocumentNumberRemoved(Boolean removed)
     {
-        this.isPropertyReversalNumberRemoved = removed;
+        this.isPropertyReversalDocumentNumberRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;
@@ -697,7 +697,7 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         command.setPOReference(this.getPOReference());
         command.setShipperId(this.getShipperId());
         command.setDatePrinted(this.getDatePrinted());
-        command.setSalesRepresentative(this.getSalesRepresentative());
+        command.setSalesRepresentativeId(this.getSalesRepresentativeId());
         command.setNumberOfPackages(this.getNumberOfPackages());
         command.setPickDate(this.getPickDate());
         command.setShipDate(this.getShipDate());
@@ -706,8 +706,8 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         command.setIsInTransit(this.getIsInTransit());
         command.setIsApproved(this.getIsApproved());
         command.setIsInDispute(this.getIsInDispute());
-        command.setRmaNumber(this.getRmaNumber());
-        command.setReversalNumber(this.getReversalNumber());
+        command.setRmaDocumentNumber(this.getRmaDocumentNumber());
+        command.setReversalDocumentNumber(this.getReversalDocumentNumber());
         command.setActive(this.getActive());
     }
 
@@ -758,7 +758,7 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         command.setIsPropertyPOReferenceRemoved(this.getIsPropertyPOReferenceRemoved());
         command.setIsPropertyShipperIdRemoved(this.getIsPropertyShipperIdRemoved());
         command.setIsPropertyDatePrintedRemoved(this.getIsPropertyDatePrintedRemoved());
-        command.setIsPropertySalesRepresentativeRemoved(this.getIsPropertySalesRepresentativeRemoved());
+        command.setIsPropertySalesRepresentativeIdRemoved(this.getIsPropertySalesRepresentativeIdRemoved());
         command.setIsPropertyNumberOfPackagesRemoved(this.getIsPropertyNumberOfPackagesRemoved());
         command.setIsPropertyPickDateRemoved(this.getIsPropertyPickDateRemoved());
         command.setIsPropertyShipDateRemoved(this.getIsPropertyShipDateRemoved());
@@ -767,8 +767,8 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         command.setIsPropertyIsInTransitRemoved(this.getIsPropertyIsInTransitRemoved());
         command.setIsPropertyIsApprovedRemoved(this.getIsPropertyIsApprovedRemoved());
         command.setIsPropertyIsInDisputeRemoved(this.getIsPropertyIsInDisputeRemoved());
-        command.setIsPropertyRmaNumberRemoved(this.getIsPropertyRmaNumberRemoved());
-        command.setIsPropertyReversalNumberRemoved(this.getIsPropertyReversalNumberRemoved());
+        command.setIsPropertyRmaDocumentNumberRemoved(this.getIsPropertyRmaDocumentNumberRemoved());
+        command.setIsPropertyReversalDocumentNumberRemoved(this.getIsPropertyReversalDocumentNumberRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

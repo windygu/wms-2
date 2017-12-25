@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual DateTime? DatePrinted { get; set; }
 
-		public virtual string SalesRepresentative { get; set; }
+		public virtual string SalesRepresentativeId { get; set; }
 
 		public virtual int? NumberOfPackages { get; set; }
 
@@ -92,9 +92,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool? IsInDispute { get; set; }
 
-		public virtual string RmaNumber { get; set; }
+		public virtual string RmaDocumentNumber { get; set; }
 
-		public virtual string ReversalNumber { get; set; }
+		public virtual string ReversalDocumentNumber { get; set; }
 
 		public virtual bool? Active { get; set; }
 
@@ -431,13 +431,13 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? IsPropertySalesRepresentativeRemoved { get; set; }
+		public virtual bool? IsPropertySalesRepresentativeIdRemoved { get; set; }
 
-        bool IInOutStateMergePatched.IsPropertySalesRepresentativeRemoved
+        bool IInOutStateMergePatched.IsPropertySalesRepresentativeIdRemoved
         {
             get 
             {
-                var b = this.IsPropertySalesRepresentativeRemoved;
+                var b = this.IsPropertySalesRepresentativeIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -446,7 +446,7 @@ namespace Dddml.Wms.Domain.InOut
             }
             set 
             {
-                this.IsPropertySalesRepresentativeRemoved = value;
+                this.IsPropertySalesRepresentativeIdRemoved = value;
             }
         }
 
@@ -602,13 +602,13 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? IsPropertyRmaNumberRemoved { get; set; }
+		public virtual bool? IsPropertyRmaDocumentNumberRemoved { get; set; }
 
-        bool IInOutStateMergePatched.IsPropertyRmaNumberRemoved
+        bool IInOutStateMergePatched.IsPropertyRmaDocumentNumberRemoved
         {
             get 
             {
-                var b = this.IsPropertyRmaNumberRemoved;
+                var b = this.IsPropertyRmaDocumentNumberRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -617,17 +617,17 @@ namespace Dddml.Wms.Domain.InOut
             }
             set 
             {
-                this.IsPropertyRmaNumberRemoved = value;
+                this.IsPropertyRmaDocumentNumberRemoved = value;
             }
         }
 
-		public virtual bool? IsPropertyReversalNumberRemoved { get; set; }
+		public virtual bool? IsPropertyReversalDocumentNumberRemoved { get; set; }
 
-        bool IInOutStateMergePatched.IsPropertyReversalNumberRemoved
+        bool IInOutStateMergePatched.IsPropertyReversalDocumentNumberRemoved
         {
             get 
             {
-                var b = this.IsPropertyReversalNumberRemoved;
+                var b = this.IsPropertyReversalDocumentNumberRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -636,7 +636,7 @@ namespace Dddml.Wms.Domain.InOut
             }
             set 
             {
-                this.IsPropertyReversalNumberRemoved = value;
+                this.IsPropertyReversalDocumentNumberRemoved = value;
             }
         }
 

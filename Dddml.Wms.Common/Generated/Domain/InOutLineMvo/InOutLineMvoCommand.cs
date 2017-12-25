@@ -119,7 +119,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual DateTime? InOutDatePrinted { get; set; }
 
-		public virtual string InOutSalesRepresentative { get; set; }
+		public virtual string InOutSalesRepresentativeId { get; set; }
 
 		public virtual int? InOutNumberOfPackages { get; set; }
 
@@ -137,9 +137,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? InOutIsInDispute { get; set; }
 
-		public virtual string InOutRmaNumber { get; set; }
+		public virtual string InOutRmaDocumentNumber { get; set; }
 
-		public virtual string InOutReversalNumber { get; set; }
+		public virtual string InOutReversalDocumentNumber { get; set; }
 
 		public virtual string InOutCreatedBy { get; set; }
 
@@ -249,7 +249,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool IsPropertyInOutDatePrintedRemoved { get; set; }
 
-		public virtual bool IsPropertyInOutSalesRepresentativeRemoved { get; set; }
+		public virtual bool IsPropertyInOutSalesRepresentativeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyInOutNumberOfPackagesRemoved { get; set; }
 
@@ -267,9 +267,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool IsPropertyInOutIsInDisputeRemoved { get; set; }
 
-		public virtual bool IsPropertyInOutRmaNumberRemoved { get; set; }
+		public virtual bool IsPropertyInOutRmaDocumentNumberRemoved { get; set; }
 
-		public virtual bool IsPropertyInOutReversalNumberRemoved { get; set; }
+		public virtual bool IsPropertyInOutReversalDocumentNumberRemoved { get; set; }
 
 		public virtual bool IsPropertyInOutCreatedByRemoved { get; set; }
 

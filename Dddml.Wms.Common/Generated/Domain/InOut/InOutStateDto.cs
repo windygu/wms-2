@@ -117,7 +117,7 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        public virtual string SalesRepresentative
+        public virtual string SalesRepresentativeId
         {
             get;
             set;
@@ -171,13 +171,13 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        public virtual string RmaNumber
+        public virtual string RmaDocumentNumber
         {
             get;
             set;
         }
 
-        public virtual string ReversalNumber
+        public virtual string ReversalDocumentNumber
         {
             get;
             set;
@@ -251,7 +251,7 @@ namespace Dddml.Wms.Domain.InOut
             state.POReference = this.POReference;
             state.ShipperId = this.ShipperId;
             state.DatePrinted = this.DatePrinted;
-            state.SalesRepresentative = this.SalesRepresentative;
+            state.SalesRepresentativeId = this.SalesRepresentativeId;
             if (this.NumberOfPackages != null && this.NumberOfPackages.HasValue) { state.NumberOfPackages = this.NumberOfPackages.Value; }
             state.PickDate = this.PickDate;
             state.ShipDate = this.ShipDate;
@@ -260,8 +260,8 @@ namespace Dddml.Wms.Domain.InOut
             if (this.IsInTransit != null && this.IsInTransit.HasValue) { state.IsInTransit = this.IsInTransit.Value; }
             if (this.IsApproved != null && this.IsApproved.HasValue) { state.IsApproved = this.IsApproved.Value; }
             if (this.IsInDispute != null && this.IsInDispute.HasValue) { state.IsInDispute = this.IsInDispute.Value; }
-            state.RmaNumber = this.RmaNumber;
-            state.ReversalNumber = this.ReversalNumber;
+            state.RmaDocumentNumber = this.RmaDocumentNumber;
+            state.ReversalDocumentNumber = this.ReversalDocumentNumber;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

@@ -116,7 +116,7 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        string SalesRepresentative
+        string SalesRepresentativeId
         {
             get;
             set;
@@ -170,13 +170,13 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        string RmaNumber
+        string RmaDocumentNumber
         {
             get;
             set;
         }
 
-        string ReversalNumber
+        string ReversalDocumentNumber
         {
             get;
             set;

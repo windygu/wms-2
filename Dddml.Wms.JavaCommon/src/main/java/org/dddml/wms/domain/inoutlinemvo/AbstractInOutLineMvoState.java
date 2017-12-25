@@ -479,16 +479,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutDatePrinted = inOutDatePrinted;
     }
 
-    private String inOutSalesRepresentative;
+    private String inOutSalesRepresentativeId;
 
-    public String getInOutSalesRepresentative()
+    public String getInOutSalesRepresentativeId()
     {
-        return this.inOutSalesRepresentative;
+        return this.inOutSalesRepresentativeId;
     }
 
-    public void setInOutSalesRepresentative(String inOutSalesRepresentative)
+    public void setInOutSalesRepresentativeId(String inOutSalesRepresentativeId)
     {
-        this.inOutSalesRepresentative = inOutSalesRepresentative;
+        this.inOutSalesRepresentativeId = inOutSalesRepresentativeId;
     }
 
     private Integer inOutNumberOfPackages;
@@ -587,28 +587,28 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutIsInDispute = inOutIsInDispute;
     }
 
-    private String inOutRmaNumber;
+    private String inOutRmaDocumentNumber;
 
-    public String getInOutRmaNumber()
+    public String getInOutRmaDocumentNumber()
     {
-        return this.inOutRmaNumber;
+        return this.inOutRmaDocumentNumber;
     }
 
-    public void setInOutRmaNumber(String inOutRmaNumber)
+    public void setInOutRmaDocumentNumber(String inOutRmaDocumentNumber)
     {
-        this.inOutRmaNumber = inOutRmaNumber;
+        this.inOutRmaDocumentNumber = inOutRmaDocumentNumber;
     }
 
-    private String inOutReversalNumber;
+    private String inOutReversalDocumentNumber;
 
-    public String getInOutReversalNumber()
+    public String getInOutReversalDocumentNumber()
     {
-        return this.inOutReversalNumber;
+        return this.inOutReversalDocumentNumber;
     }
 
-    public void setInOutReversalNumber(String inOutReversalNumber)
+    public void setInOutReversalDocumentNumber(String inOutReversalDocumentNumber)
     {
-        this.inOutReversalNumber = inOutReversalNumber;
+        this.inOutReversalDocumentNumber = inOutReversalDocumentNumber;
     }
 
     private Long inOutVersion;
@@ -792,7 +792,7 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.setInOutPOReference(e.getInOutPOReference());
         this.setInOutShipperId(e.getInOutShipperId());
         this.setInOutDatePrinted(e.getInOutDatePrinted());
-        this.setInOutSalesRepresentative(e.getInOutSalesRepresentative());
+        this.setInOutSalesRepresentativeId(e.getInOutSalesRepresentativeId());
         this.setInOutNumberOfPackages(e.getInOutNumberOfPackages());
         this.setInOutPickDate(e.getInOutPickDate());
         this.setInOutShipDate(e.getInOutShipDate());
@@ -801,8 +801,8 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.setInOutIsInTransit(e.getInOutIsInTransit());
         this.setInOutIsApproved(e.getInOutIsApproved());
         this.setInOutIsInDispute(e.getInOutIsInDispute());
-        this.setInOutRmaNumber(e.getInOutRmaNumber());
-        this.setInOutReversalNumber(e.getInOutReversalNumber());
+        this.setInOutRmaDocumentNumber(e.getInOutRmaDocumentNumber());
+        this.setInOutReversalDocumentNumber(e.getInOutReversalDocumentNumber());
         this.setInOutCreatedBy(e.getInOutCreatedBy());
         this.setInOutCreatedAt(e.getInOutCreatedAt());
         this.setInOutUpdatedBy(e.getInOutUpdatedBy());
@@ -1184,16 +1184,16 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setInOutDatePrinted(e.getInOutDatePrinted());
         }
-        if (e.getInOutSalesRepresentative() == null)
+        if (e.getInOutSalesRepresentativeId() == null)
         {
-            if (e.getIsPropertyInOutSalesRepresentativeRemoved() != null && e.getIsPropertyInOutSalesRepresentativeRemoved())
+            if (e.getIsPropertyInOutSalesRepresentativeIdRemoved() != null && e.getIsPropertyInOutSalesRepresentativeIdRemoved())
             {
-                this.setInOutSalesRepresentative(null);
+                this.setInOutSalesRepresentativeId(null);
             }
         }
         else
         {
-            this.setInOutSalesRepresentative(e.getInOutSalesRepresentative());
+            this.setInOutSalesRepresentativeId(e.getInOutSalesRepresentativeId());
         }
         if (e.getInOutNumberOfPackages() == null)
         {
@@ -1283,27 +1283,27 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setInOutIsInDispute(e.getInOutIsInDispute());
         }
-        if (e.getInOutRmaNumber() == null)
+        if (e.getInOutRmaDocumentNumber() == null)
         {
-            if (e.getIsPropertyInOutRmaNumberRemoved() != null && e.getIsPropertyInOutRmaNumberRemoved())
+            if (e.getIsPropertyInOutRmaDocumentNumberRemoved() != null && e.getIsPropertyInOutRmaDocumentNumberRemoved())
             {
-                this.setInOutRmaNumber(null);
+                this.setInOutRmaDocumentNumber(null);
             }
         }
         else
         {
-            this.setInOutRmaNumber(e.getInOutRmaNumber());
+            this.setInOutRmaDocumentNumber(e.getInOutRmaDocumentNumber());
         }
-        if (e.getInOutReversalNumber() == null)
+        if (e.getInOutReversalDocumentNumber() == null)
         {
-            if (e.getIsPropertyInOutReversalNumberRemoved() != null && e.getIsPropertyInOutReversalNumberRemoved())
+            if (e.getIsPropertyInOutReversalDocumentNumberRemoved() != null && e.getIsPropertyInOutReversalDocumentNumberRemoved())
             {
-                this.setInOutReversalNumber(null);
+                this.setInOutReversalDocumentNumber(null);
             }
         }
         else
         {
-            this.setInOutReversalNumber(e.getInOutReversalNumber());
+            this.setInOutReversalDocumentNumber(e.getInOutReversalDocumentNumber());
         }
         if (e.getInOutCreatedBy() == null)
         {

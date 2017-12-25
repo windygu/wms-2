@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain.InOut
             cmd.POReference = state.POReference;
             cmd.ShipperId = state.ShipperId;
             cmd.DatePrinted = state.DatePrinted;
-            cmd.SalesRepresentative = state.SalesRepresentative;
+            cmd.SalesRepresentativeId = state.SalesRepresentativeId;
             cmd.NumberOfPackages = state.NumberOfPackages;
             cmd.PickDate = state.PickDate;
             cmd.ShipDate = state.ShipDate;
@@ -76,8 +76,8 @@ namespace Dddml.Wms.Domain.InOut
             cmd.IsInTransit = state.IsInTransit;
             cmd.IsApproved = state.IsApproved;
             cmd.IsInDispute = state.IsInDispute;
-            cmd.RmaNumber = state.RmaNumber;
-            cmd.ReversalNumber = state.ReversalNumber;
+            cmd.RmaDocumentNumber = state.RmaDocumentNumber;
+            cmd.ReversalDocumentNumber = state.ReversalDocumentNumber;
             cmd.Active = ((IInOutStateProperties)state).Active;
             
             if (state.Processing == null) { cmd.IsPropertyProcessingRemoved = true; }
@@ -92,13 +92,13 @@ namespace Dddml.Wms.Domain.InOut
             if (state.POReference == null) { cmd.IsPropertyPOReferenceRemoved = true; }
             if (state.ShipperId == null) { cmd.IsPropertyShipperIdRemoved = true; }
             if (state.DatePrinted == null) { cmd.IsPropertyDatePrintedRemoved = true; }
-            if (state.SalesRepresentative == null) { cmd.IsPropertySalesRepresentativeRemoved = true; }
+            if (state.SalesRepresentativeId == null) { cmd.IsPropertySalesRepresentativeIdRemoved = true; }
             if (state.PickDate == null) { cmd.IsPropertyPickDateRemoved = true; }
             if (state.ShipDate == null) { cmd.IsPropertyShipDateRemoved = true; }
             if (state.TrackingNumber == null) { cmd.IsPropertyTrackingNumberRemoved = true; }
             if (state.DateReceived == null) { cmd.IsPropertyDateReceivedRemoved = true; }
-            if (state.RmaNumber == null) { cmd.IsPropertyRmaNumberRemoved = true; }
-            if (state.ReversalNumber == null) { cmd.IsPropertyReversalNumberRemoved = true; }
+            if (state.RmaDocumentNumber == null) { cmd.IsPropertyRmaDocumentNumberRemoved = true; }
+            if (state.ReversalDocumentNumber == null) { cmd.IsPropertyReversalDocumentNumberRemoved = true; }
             foreach (var d in state.InOutLines)
             {
                 var c = d.ToCreateOrMergePatchInOutLine<TCreateInOutLine, TMergePatchInOutLine>();
@@ -131,7 +131,7 @@ namespace Dddml.Wms.Domain.InOut
             cmd.POReference = state.POReference;
             cmd.ShipperId = state.ShipperId;
             cmd.DatePrinted = state.DatePrinted;
-            cmd.SalesRepresentative = state.SalesRepresentative;
+            cmd.SalesRepresentativeId = state.SalesRepresentativeId;
             cmd.NumberOfPackages = state.NumberOfPackages;
             cmd.PickDate = state.PickDate;
             cmd.ShipDate = state.ShipDate;
@@ -140,8 +140,8 @@ namespace Dddml.Wms.Domain.InOut
             cmd.IsInTransit = state.IsInTransit;
             cmd.IsApproved = state.IsApproved;
             cmd.IsInDispute = state.IsInDispute;
-            cmd.RmaNumber = state.RmaNumber;
-            cmd.ReversalNumber = state.ReversalNumber;
+            cmd.RmaDocumentNumber = state.RmaDocumentNumber;
+            cmd.ReversalDocumentNumber = state.ReversalDocumentNumber;
             cmd.Active = ((IInOutStateProperties)state).Active;
             foreach (var d in state.InOutLines)
             {

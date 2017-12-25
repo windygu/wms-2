@@ -120,7 +120,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual DateTime? InOutDatePrinted { get; set; }
 
-		public virtual string InOutSalesRepresentative { get; set; }
+		public virtual string InOutSalesRepresentativeId { get; set; }
 
 		public virtual int? InOutNumberOfPackages { get; set; }
 
@@ -138,9 +138,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? InOutIsInDispute { get; set; }
 
-		public virtual string InOutRmaNumber { get; set; }
+		public virtual string InOutRmaDocumentNumber { get; set; }
 
-		public virtual string InOutReversalNumber { get; set; }
+		public virtual string InOutReversalDocumentNumber { get; set; }
 
 		public virtual string InOutCreatedBy { get; set; }
 
@@ -775,13 +775,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? IsPropertyInOutSalesRepresentativeRemoved { get; set; }
+		public virtual bool? IsPropertyInOutSalesRepresentativeIdRemoved { get; set; }
 
-        bool IMergePatchInOutLineMvo.IsPropertyInOutSalesRepresentativeRemoved
+        bool IMergePatchInOutLineMvo.IsPropertyInOutSalesRepresentativeIdRemoved
         {
             get
             {
-                var b = this.IsPropertyInOutSalesRepresentativeRemoved;
+                var b = this.IsPropertyInOutSalesRepresentativeIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -790,7 +790,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
             set
             {
-                this.IsPropertyInOutSalesRepresentativeRemoved = value;
+                this.IsPropertyInOutSalesRepresentativeIdRemoved = value;
             }
         }
 
@@ -946,13 +946,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? IsPropertyInOutRmaNumberRemoved { get; set; }
+		public virtual bool? IsPropertyInOutRmaDocumentNumberRemoved { get; set; }
 
-        bool IMergePatchInOutLineMvo.IsPropertyInOutRmaNumberRemoved
+        bool IMergePatchInOutLineMvo.IsPropertyInOutRmaDocumentNumberRemoved
         {
             get
             {
-                var b = this.IsPropertyInOutRmaNumberRemoved;
+                var b = this.IsPropertyInOutRmaDocumentNumberRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -961,17 +961,17 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
             set
             {
-                this.IsPropertyInOutRmaNumberRemoved = value;
+                this.IsPropertyInOutRmaDocumentNumberRemoved = value;
             }
         }
 
-		public virtual bool? IsPropertyInOutReversalNumberRemoved { get; set; }
+		public virtual bool? IsPropertyInOutReversalDocumentNumberRemoved { get; set; }
 
-        bool IMergePatchInOutLineMvo.IsPropertyInOutReversalNumberRemoved
+        bool IMergePatchInOutLineMvo.IsPropertyInOutReversalDocumentNumberRemoved
         {
             get
             {
-                var b = this.IsPropertyInOutReversalNumberRemoved;
+                var b = this.IsPropertyInOutReversalDocumentNumberRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -980,7 +980,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
             set
             {
-                this.IsPropertyInOutReversalNumberRemoved = value;
+                this.IsPropertyInOutReversalDocumentNumberRemoved = value;
             }
         }
 

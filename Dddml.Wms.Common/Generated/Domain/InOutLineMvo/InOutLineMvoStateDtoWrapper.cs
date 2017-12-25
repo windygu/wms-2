@@ -1037,31 +1037,31 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual string InOutSalesRepresentative
+		public virtual string InOutSalesRepresentativeId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutSalesRepresentative"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutSalesRepresentativeId"))
                 {
-                    return _state.InOutSalesRepresentative;
+                    return _state.InOutSalesRepresentativeId;
                 }
                 return null;
             }
             set
             {
-                _state.InOutSalesRepresentative = value;
+                _state.InOutSalesRepresentativeId = value;
             }
         }
 
-        string IInOutLineMvoStateProperties.InOutSalesRepresentative
+        string IInOutLineMvoStateProperties.InOutSalesRepresentativeId
         {
             get 
             {
-                return (this._state as IInOutLineMvoStateProperties).InOutSalesRepresentative;
+                return (this._state as IInOutLineMvoStateProperties).InOutSalesRepresentativeId;
             }
             set 
             {
-                (this._state as IInOutLineMvoStateProperties).InOutSalesRepresentative = value;
+                (this._state as IInOutLineMvoStateProperties).InOutSalesRepresentativeId = value;
             }
         }
 
@@ -1301,59 +1301,59 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual string InOutRmaNumber
+		public virtual string InOutRmaDocumentNumber
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutRmaNumber"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutRmaDocumentNumber"))
                 {
-                    return _state.InOutRmaNumber;
+                    return _state.InOutRmaDocumentNumber;
                 }
                 return null;
             }
             set
             {
-                _state.InOutRmaNumber = value;
+                _state.InOutRmaDocumentNumber = value;
             }
         }
 
-        string IInOutLineMvoStateProperties.InOutRmaNumber
+        string IInOutLineMvoStateProperties.InOutRmaDocumentNumber
         {
             get 
             {
-                return (this._state as IInOutLineMvoStateProperties).InOutRmaNumber;
+                return (this._state as IInOutLineMvoStateProperties).InOutRmaDocumentNumber;
             }
             set 
             {
-                (this._state as IInOutLineMvoStateProperties).InOutRmaNumber = value;
+                (this._state as IInOutLineMvoStateProperties).InOutRmaDocumentNumber = value;
             }
         }
 
-		public virtual string InOutReversalNumber
+		public virtual string InOutReversalDocumentNumber
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutReversalNumber"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutReversalDocumentNumber"))
                 {
-                    return _state.InOutReversalNumber;
+                    return _state.InOutReversalDocumentNumber;
                 }
                 return null;
             }
             set
             {
-                _state.InOutReversalNumber = value;
+                _state.InOutReversalDocumentNumber = value;
             }
         }
 
-        string IInOutLineMvoStateProperties.InOutReversalNumber
+        string IInOutLineMvoStateProperties.InOutReversalDocumentNumber
         {
             get 
             {
-                return (this._state as IInOutLineMvoStateProperties).InOutReversalNumber;
+                return (this._state as IInOutLineMvoStateProperties).InOutReversalDocumentNumber;
             }
             set 
             {
-                (this._state as IInOutLineMvoStateProperties).InOutReversalNumber = value;
+                (this._state as IInOutLineMvoStateProperties).InOutReversalDocumentNumber = value;
             }
         }
 

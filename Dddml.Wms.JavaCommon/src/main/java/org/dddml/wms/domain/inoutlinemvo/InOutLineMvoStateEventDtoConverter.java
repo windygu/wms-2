@@ -63,7 +63,7 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setInOutPOReference(e.getInOutPOReference());
         dto.setInOutShipperId(e.getInOutShipperId());
         dto.setInOutDatePrinted(e.getInOutDatePrinted());
-        dto.setInOutSalesRepresentative(e.getInOutSalesRepresentative());
+        dto.setInOutSalesRepresentativeId(e.getInOutSalesRepresentativeId());
         dto.setInOutNumberOfPackages(e.getInOutNumberOfPackages());
         dto.setInOutPickDate(e.getInOutPickDate());
         dto.setInOutShipDate(e.getInOutShipDate());
@@ -72,8 +72,8 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setInOutIsInTransit(e.getInOutIsInTransit());
         dto.setInOutIsApproved(e.getInOutIsApproved());
         dto.setInOutIsInDispute(e.getInOutIsInDispute());
-        dto.setInOutRmaNumber(e.getInOutRmaNumber());
-        dto.setInOutReversalNumber(e.getInOutReversalNumber());
+        dto.setInOutRmaDocumentNumber(e.getInOutRmaDocumentNumber());
+        dto.setInOutReversalDocumentNumber(e.getInOutReversalDocumentNumber());
         dto.setInOutCreatedBy(e.getInOutCreatedBy());
         dto.setInOutCreatedAt(e.getInOutCreatedAt());
         dto.setInOutUpdatedBy(e.getInOutUpdatedBy());
@@ -122,7 +122,7 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setInOutPOReference(e.getInOutPOReference());
         dto.setInOutShipperId(e.getInOutShipperId());
         dto.setInOutDatePrinted(e.getInOutDatePrinted());
-        dto.setInOutSalesRepresentative(e.getInOutSalesRepresentative());
+        dto.setInOutSalesRepresentativeId(e.getInOutSalesRepresentativeId());
         dto.setInOutNumberOfPackages(e.getInOutNumberOfPackages());
         dto.setInOutPickDate(e.getInOutPickDate());
         dto.setInOutShipDate(e.getInOutShipDate());
@@ -131,8 +131,8 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setInOutIsInTransit(e.getInOutIsInTransit());
         dto.setInOutIsApproved(e.getInOutIsApproved());
         dto.setInOutIsInDispute(e.getInOutIsInDispute());
-        dto.setInOutRmaNumber(e.getInOutRmaNumber());
-        dto.setInOutReversalNumber(e.getInOutReversalNumber());
+        dto.setInOutRmaDocumentNumber(e.getInOutRmaDocumentNumber());
+        dto.setInOutReversalDocumentNumber(e.getInOutReversalDocumentNumber());
         dto.setInOutCreatedBy(e.getInOutCreatedBy());
         dto.setInOutCreatedAt(e.getInOutCreatedAt());
         dto.setInOutUpdatedBy(e.getInOutUpdatedBy());
@@ -172,7 +172,7 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setIsPropertyInOutPOReferenceRemoved(e.getIsPropertyInOutPOReferenceRemoved());
         dto.setIsPropertyInOutShipperIdRemoved(e.getIsPropertyInOutShipperIdRemoved());
         dto.setIsPropertyInOutDatePrintedRemoved(e.getIsPropertyInOutDatePrintedRemoved());
-        dto.setIsPropertyInOutSalesRepresentativeRemoved(e.getIsPropertyInOutSalesRepresentativeRemoved());
+        dto.setIsPropertyInOutSalesRepresentativeIdRemoved(e.getIsPropertyInOutSalesRepresentativeIdRemoved());
         dto.setIsPropertyInOutNumberOfPackagesRemoved(e.getIsPropertyInOutNumberOfPackagesRemoved());
         dto.setIsPropertyInOutPickDateRemoved(e.getIsPropertyInOutPickDateRemoved());
         dto.setIsPropertyInOutShipDateRemoved(e.getIsPropertyInOutShipDateRemoved());
@@ -181,8 +181,8 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setIsPropertyInOutIsInTransitRemoved(e.getIsPropertyInOutIsInTransitRemoved());
         dto.setIsPropertyInOutIsApprovedRemoved(e.getIsPropertyInOutIsApprovedRemoved());
         dto.setIsPropertyInOutIsInDisputeRemoved(e.getIsPropertyInOutIsInDisputeRemoved());
-        dto.setIsPropertyInOutRmaNumberRemoved(e.getIsPropertyInOutRmaNumberRemoved());
-        dto.setIsPropertyInOutReversalNumberRemoved(e.getIsPropertyInOutReversalNumberRemoved());
+        dto.setIsPropertyInOutRmaDocumentNumberRemoved(e.getIsPropertyInOutRmaDocumentNumberRemoved());
+        dto.setIsPropertyInOutReversalDocumentNumberRemoved(e.getIsPropertyInOutReversalDocumentNumberRemoved());
         dto.setIsPropertyInOutCreatedByRemoved(e.getIsPropertyInOutCreatedByRemoved());
         dto.setIsPropertyInOutCreatedAtRemoved(e.getIsPropertyInOutCreatedAtRemoved());
         dto.setIsPropertyInOutUpdatedByRemoved(e.getIsPropertyInOutUpdatedByRemoved());

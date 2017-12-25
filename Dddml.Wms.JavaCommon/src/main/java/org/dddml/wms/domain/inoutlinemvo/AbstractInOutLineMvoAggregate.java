@@ -92,7 +92,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setInOutPOReference(c.getInOutPOReference());
         e.setInOutShipperId(c.getInOutShipperId());
         e.setInOutDatePrinted(c.getInOutDatePrinted());
-        e.setInOutSalesRepresentative(c.getInOutSalesRepresentative());
+        e.setInOutSalesRepresentativeId(c.getInOutSalesRepresentativeId());
         e.setInOutNumberOfPackages(c.getInOutNumberOfPackages());
         e.setInOutPickDate(c.getInOutPickDate());
         e.setInOutShipDate(c.getInOutShipDate());
@@ -101,8 +101,8 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setInOutIsInTransit(c.getInOutIsInTransit());
         e.setInOutIsApproved(c.getInOutIsApproved());
         e.setInOutIsInDispute(c.getInOutIsInDispute());
-        e.setInOutRmaNumber(c.getInOutRmaNumber());
-        e.setInOutReversalNumber(c.getInOutReversalNumber());
+        e.setInOutRmaDocumentNumber(c.getInOutRmaDocumentNumber());
+        e.setInOutReversalDocumentNumber(c.getInOutReversalDocumentNumber());
         e.setInOutCreatedBy(c.getInOutCreatedBy());
         e.setInOutCreatedAt(c.getInOutCreatedAt());
         e.setInOutUpdatedBy(c.getInOutUpdatedBy());
@@ -151,7 +151,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setInOutPOReference(c.getInOutPOReference());
         e.setInOutShipperId(c.getInOutShipperId());
         e.setInOutDatePrinted(c.getInOutDatePrinted());
-        e.setInOutSalesRepresentative(c.getInOutSalesRepresentative());
+        e.setInOutSalesRepresentativeId(c.getInOutSalesRepresentativeId());
         e.setInOutNumberOfPackages(c.getInOutNumberOfPackages());
         e.setInOutPickDate(c.getInOutPickDate());
         e.setInOutShipDate(c.getInOutShipDate());
@@ -160,8 +160,8 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setInOutIsInTransit(c.getInOutIsInTransit());
         e.setInOutIsApproved(c.getInOutIsApproved());
         e.setInOutIsInDispute(c.getInOutIsInDispute());
-        e.setInOutRmaNumber(c.getInOutRmaNumber());
-        e.setInOutReversalNumber(c.getInOutReversalNumber());
+        e.setInOutRmaDocumentNumber(c.getInOutRmaDocumentNumber());
+        e.setInOutReversalDocumentNumber(c.getInOutReversalDocumentNumber());
         e.setInOutCreatedBy(c.getInOutCreatedBy());
         e.setInOutCreatedAt(c.getInOutCreatedAt());
         e.setInOutUpdatedBy(c.getInOutUpdatedBy());
@@ -200,7 +200,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setIsPropertyInOutPOReferenceRemoved(c.getIsPropertyInOutPOReferenceRemoved());
         e.setIsPropertyInOutShipperIdRemoved(c.getIsPropertyInOutShipperIdRemoved());
         e.setIsPropertyInOutDatePrintedRemoved(c.getIsPropertyInOutDatePrintedRemoved());
-        e.setIsPropertyInOutSalesRepresentativeRemoved(c.getIsPropertyInOutSalesRepresentativeRemoved());
+        e.setIsPropertyInOutSalesRepresentativeIdRemoved(c.getIsPropertyInOutSalesRepresentativeIdRemoved());
         e.setIsPropertyInOutNumberOfPackagesRemoved(c.getIsPropertyInOutNumberOfPackagesRemoved());
         e.setIsPropertyInOutPickDateRemoved(c.getIsPropertyInOutPickDateRemoved());
         e.setIsPropertyInOutShipDateRemoved(c.getIsPropertyInOutShipDateRemoved());
@@ -209,8 +209,8 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setIsPropertyInOutIsInTransitRemoved(c.getIsPropertyInOutIsInTransitRemoved());
         e.setIsPropertyInOutIsApprovedRemoved(c.getIsPropertyInOutIsApprovedRemoved());
         e.setIsPropertyInOutIsInDisputeRemoved(c.getIsPropertyInOutIsInDisputeRemoved());
-        e.setIsPropertyInOutRmaNumberRemoved(c.getIsPropertyInOutRmaNumberRemoved());
-        e.setIsPropertyInOutReversalNumberRemoved(c.getIsPropertyInOutReversalNumberRemoved());
+        e.setIsPropertyInOutRmaDocumentNumberRemoved(c.getIsPropertyInOutRmaDocumentNumberRemoved());
+        e.setIsPropertyInOutReversalDocumentNumberRemoved(c.getIsPropertyInOutReversalDocumentNumberRemoved());
         e.setIsPropertyInOutCreatedByRemoved(c.getIsPropertyInOutCreatedByRemoved());
         e.setIsPropertyInOutCreatedAtRemoved(c.getIsPropertyInOutCreatedAtRemoved());
         e.setIsPropertyInOutUpdatedByRemoved(c.getIsPropertyInOutUpdatedByRemoved());

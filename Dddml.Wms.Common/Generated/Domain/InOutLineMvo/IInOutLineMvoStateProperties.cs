@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		DateTime? InOutDatePrinted { get; set; }
 
-		string InOutSalesRepresentative { get; set; }
+		string InOutSalesRepresentativeId { get; set; }
 
 		int InOutNumberOfPackages { get; set; }
 
@@ -101,9 +101,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool InOutIsInDispute { get; set; }
 
-		string InOutRmaNumber { get; set; }
+		string InOutRmaDocumentNumber { get; set; }
 
-		string InOutReversalNumber { get; set; }
+		string InOutReversalDocumentNumber { get; set; }
 
 		long InOutVersion { get; set; }
 

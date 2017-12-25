@@ -81,9 +81,9 @@ public interface InOutState
 
     void setDatePrinted(Date datePrinted);
 
-    String getSalesRepresentative();
+    String getSalesRepresentativeId();
 
-    void setSalesRepresentative(String salesRepresentative);
+    void setSalesRepresentativeId(String salesRepresentativeId);
 
     Integer getNumberOfPackages();
 
@@ -117,13 +117,13 @@ public interface InOutState
 
     void setIsInDispute(Boolean isInDispute);
 
-    String getRmaNumber();
+    String getRmaDocumentNumber();
 
-    void setRmaNumber(String rmaNumber);
+    void setRmaDocumentNumber(String rmaDocumentNumber);
 
-    String getReversalNumber();
+    String getReversalDocumentNumber();
 
-    void setReversalNumber(String reversalNumber);
+    void setReversalDocumentNumber(String reversalDocumentNumber);
 
     Long getVersion();
 

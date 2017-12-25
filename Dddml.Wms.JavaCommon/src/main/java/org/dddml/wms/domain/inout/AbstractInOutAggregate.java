@@ -74,7 +74,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setPOReference(c.getPOReference());
         e.setShipperId(c.getShipperId());
         e.setDatePrinted(c.getDatePrinted());
-        e.setSalesRepresentative(c.getSalesRepresentative());
+        e.setSalesRepresentativeId(c.getSalesRepresentativeId());
         e.setNumberOfPackages(c.getNumberOfPackages());
         e.setPickDate(c.getPickDate());
         e.setShipDate(c.getShipDate());
@@ -83,8 +83,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setIsInTransit(c.getIsInTransit());
         e.setIsApproved(c.getIsApproved());
         e.setIsInDispute(c.getIsInDispute());
-        e.setRmaNumber(c.getRmaNumber());
-        e.setReversalNumber(c.getReversalNumber());
+        e.setRmaDocumentNumber(c.getRmaDocumentNumber());
+        e.setReversalDocumentNumber(c.getReversalDocumentNumber());
         e.setActive(c.getActive());
         ((AbstractInOutStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -119,7 +119,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setPOReference(c.getPOReference());
         e.setShipperId(c.getShipperId());
         e.setDatePrinted(c.getDatePrinted());
-        e.setSalesRepresentative(c.getSalesRepresentative());
+        e.setSalesRepresentativeId(c.getSalesRepresentativeId());
         e.setNumberOfPackages(c.getNumberOfPackages());
         e.setPickDate(c.getPickDate());
         e.setShipDate(c.getShipDate());
@@ -128,8 +128,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setIsInTransit(c.getIsInTransit());
         e.setIsApproved(c.getIsApproved());
         e.setIsInDispute(c.getIsInDispute());
-        e.setRmaNumber(c.getRmaNumber());
-        e.setReversalNumber(c.getReversalNumber());
+        e.setRmaDocumentNumber(c.getRmaDocumentNumber());
+        e.setReversalDocumentNumber(c.getReversalDocumentNumber());
         e.setActive(c.getActive());
         e.setIsPropertyPostedRemoved(c.getIsPropertyPostedRemoved());
         e.setIsPropertyProcessedRemoved(c.getIsPropertyProcessedRemoved());
@@ -146,7 +146,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setIsPropertyPOReferenceRemoved(c.getIsPropertyPOReferenceRemoved());
         e.setIsPropertyShipperIdRemoved(c.getIsPropertyShipperIdRemoved());
         e.setIsPropertyDatePrintedRemoved(c.getIsPropertyDatePrintedRemoved());
-        e.setIsPropertySalesRepresentativeRemoved(c.getIsPropertySalesRepresentativeRemoved());
+        e.setIsPropertySalesRepresentativeIdRemoved(c.getIsPropertySalesRepresentativeIdRemoved());
         e.setIsPropertyNumberOfPackagesRemoved(c.getIsPropertyNumberOfPackagesRemoved());
         e.setIsPropertyPickDateRemoved(c.getIsPropertyPickDateRemoved());
         e.setIsPropertyShipDateRemoved(c.getIsPropertyShipDateRemoved());
@@ -155,8 +155,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setIsPropertyIsInTransitRemoved(c.getIsPropertyIsInTransitRemoved());
         e.setIsPropertyIsApprovedRemoved(c.getIsPropertyIsApprovedRemoved());
         e.setIsPropertyIsInDisputeRemoved(c.getIsPropertyIsInDisputeRemoved());
-        e.setIsPropertyRmaNumberRemoved(c.getIsPropertyRmaNumberRemoved());
-        e.setIsPropertyReversalNumberRemoved(c.getIsPropertyReversalNumberRemoved());
+        e.setIsPropertyRmaDocumentNumberRemoved(c.getIsPropertyRmaDocumentNumberRemoved());
+        e.setIsPropertyReversalDocumentNumberRemoved(c.getIsPropertyReversalDocumentNumberRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractInOutStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
