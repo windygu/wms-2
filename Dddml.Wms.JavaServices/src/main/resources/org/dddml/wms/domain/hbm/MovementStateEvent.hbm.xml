@@ -15,8 +15,25 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="documentTypeId" ></property>
 	<property name="documentStatusId" ></property>
+	<property name="movementDate" ></property>
+	<property name="posted" ></property>
+	<property name="processed" ></property>
+	<property name="processing" ></property>
+	<property name="dateReceived" ></property>
+	<property name="documentTypeId" ></property>
+	<property name="isInTransit" ></property>
+	<property name="isApproved" ></property>
+	<property name="approvalAmount" ></property>
+	<property name="shipperId" ></property>
+	<property name="salesRepresentativeId" ></property>
+	<property name="businessPartnerId" ></property>
+	<property name="chargeAmount" ></property>
+	<property name="createFrom" ></property>
+	<property name="freightAmount" ></property>
+	<property name="reversalDocumentNumber" ></property>
+	<property name="warehouseIdFrom" ></property>
+	<property name="warehouseIdTo" ></property>
 	<property name="description" ></property>
 	<property name="active" ></property>
 
@@ -32,9 +49,43 @@
 
     <subclass name="AbstractMovementStateEvent$SimpleMovementStateMergePatched" discriminator-value="MergePatched">
 
+        <property name="isPropertyDocumentStatusIdRemoved" column="IsPropertyDocumentStatusIdRemoved"/>
+
+        <property name="isPropertyMovementDateRemoved" column="IsPropertyMovementDateRemoved"/>
+
+        <property name="isPropertyPostedRemoved" column="IsPropertyPostedRemoved"/>
+
+        <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
+        <property name="isPropertyProcessingRemoved" column="IsPropertyProcessingRemoved"/>
+
+        <property name="isPropertyDateReceivedRemoved" column="IsPropertyDateReceivedRemoved"/>
+
         <property name="isPropertyDocumentTypeIdRemoved" column="IsPropertyDocumentTypeIdRemoved"/>
 
-        <property name="isPropertyDocumentStatusIdRemoved" column="IsPropertyDocumentStatusIdRemoved"/>
+        <property name="isPropertyIsInTransitRemoved" column="IsPropertyIsInTransitRemoved"/>
+
+        <property name="isPropertyIsApprovedRemoved" column="IsPropertyIsApprovedRemoved"/>
+
+        <property name="isPropertyApprovalAmountRemoved" column="IsPropertyApprovalAmountRemoved"/>
+
+        <property name="isPropertyShipperIdRemoved" column="IsPropertyShipperIdRemoved"/>
+
+        <property name="isPropertySalesRepresentativeIdRemoved" column="IsPropertySalesRepresentativeIdRemoved"/>
+
+        <property name="isPropertyBusinessPartnerIdRemoved" column="IsPropertyBusinessPartnerIdRemoved"/>
+
+        <property name="isPropertyChargeAmountRemoved" column="IsPropertyChargeAmountRemoved"/>
+
+        <property name="isPropertyCreateFromRemoved" column="IsPropertyCreateFromRemoved"/>
+
+        <property name="isPropertyFreightAmountRemoved" column="IsPropertyFreightAmountRemoved"/>
+
+        <property name="isPropertyReversalDocumentNumberRemoved" column="IsPropertyReversalDocumentNumberRemoved"/>
+
+        <property name="isPropertyWarehouseIdFromRemoved" column="IsPropertyWarehouseIdFromRemoved"/>
+
+        <property name="isPropertyWarehouseIdToRemoved" column="IsPropertyWarehouseIdToRemoved"/>
 
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 

@@ -63,13 +63,81 @@ public interface MovementLineMvoStateEvent extends Event
 
     void setActive(Boolean active);
 
+    String getMovementDocumentStatusId();
+
+    void setMovementDocumentStatusId(String movementDocumentStatusId);
+
+    Date getMovementMovementDate();
+
+    void setMovementMovementDate(Date movementMovementDate);
+
+    Boolean getMovementPosted();
+
+    void setMovementPosted(Boolean movementPosted);
+
+    Boolean getMovementProcessed();
+
+    void setMovementProcessed(Boolean movementProcessed);
+
+    String getMovementProcessing();
+
+    void setMovementProcessing(String movementProcessing);
+
+    Date getMovementDateReceived();
+
+    void setMovementDateReceived(Date movementDateReceived);
+
     String getMovementDocumentTypeId();
 
     void setMovementDocumentTypeId(String movementDocumentTypeId);
 
-    String getMovementDocumentStatusId();
+    Boolean getMovementIsInTransit();
 
-    void setMovementDocumentStatusId(String movementDocumentStatusId);
+    void setMovementIsInTransit(Boolean movementIsInTransit);
+
+    Boolean getMovementIsApproved();
+
+    void setMovementIsApproved(Boolean movementIsApproved);
+
+    BigDecimal getMovementApprovalAmount();
+
+    void setMovementApprovalAmount(BigDecimal movementApprovalAmount);
+
+    String getMovementShipperId();
+
+    void setMovementShipperId(String movementShipperId);
+
+    String getMovementSalesRepresentativeId();
+
+    void setMovementSalesRepresentativeId(String movementSalesRepresentativeId);
+
+    String getMovementBusinessPartnerId();
+
+    void setMovementBusinessPartnerId(String movementBusinessPartnerId);
+
+    BigDecimal getMovementChargeAmount();
+
+    void setMovementChargeAmount(BigDecimal movementChargeAmount);
+
+    String getMovementCreateFrom();
+
+    void setMovementCreateFrom(String movementCreateFrom);
+
+    BigDecimal getMovementFreightAmount();
+
+    void setMovementFreightAmount(BigDecimal movementFreightAmount);
+
+    String getMovementReversalDocumentNumber();
+
+    void setMovementReversalDocumentNumber(String movementReversalDocumentNumber);
+
+    String getMovementWarehouseIdFrom();
+
+    void setMovementWarehouseIdFrom(String movementWarehouseIdFrom);
+
+    String getMovementWarehouseIdTo();
+
+    void setMovementWarehouseIdTo(String movementWarehouseIdTo);
 
     String getMovementDescription();
 
@@ -151,13 +219,81 @@ public interface MovementLineMvoStateEvent extends Event
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
+        Boolean getIsPropertyMovementDocumentStatusIdRemoved();
+
+        void setIsPropertyMovementDocumentStatusIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementMovementDateRemoved();
+
+        void setIsPropertyMovementMovementDateRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementPostedRemoved();
+
+        void setIsPropertyMovementPostedRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementProcessedRemoved();
+
+        void setIsPropertyMovementProcessedRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementProcessingRemoved();
+
+        void setIsPropertyMovementProcessingRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementDateReceivedRemoved();
+
+        void setIsPropertyMovementDateReceivedRemoved(Boolean removed);
+
         Boolean getIsPropertyMovementDocumentTypeIdRemoved();
 
         void setIsPropertyMovementDocumentTypeIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementDocumentStatusIdRemoved();
+        Boolean getIsPropertyMovementIsInTransitRemoved();
 
-        void setIsPropertyMovementDocumentStatusIdRemoved(Boolean removed);
+        void setIsPropertyMovementIsInTransitRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementIsApprovedRemoved();
+
+        void setIsPropertyMovementIsApprovedRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementApprovalAmountRemoved();
+
+        void setIsPropertyMovementApprovalAmountRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementShipperIdRemoved();
+
+        void setIsPropertyMovementShipperIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementSalesRepresentativeIdRemoved();
+
+        void setIsPropertyMovementSalesRepresentativeIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementBusinessPartnerIdRemoved();
+
+        void setIsPropertyMovementBusinessPartnerIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementChargeAmountRemoved();
+
+        void setIsPropertyMovementChargeAmountRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementCreateFromRemoved();
+
+        void setIsPropertyMovementCreateFromRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementFreightAmountRemoved();
+
+        void setIsPropertyMovementFreightAmountRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementReversalDocumentNumberRemoved();
+
+        void setIsPropertyMovementReversalDocumentNumberRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementWarehouseIdFromRemoved();
+
+        void setIsPropertyMovementWarehouseIdFromRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementWarehouseIdToRemoved();
+
+        void setIsPropertyMovementWarehouseIdToRemoved(Boolean removed);
 
         Boolean getIsPropertyMovementDescriptionRemoved();
 

@@ -31,8 +31,8 @@ public class InOutStateEventDtoConverter {
         dto.setCommandId(e.getCommandId());
         dto.setDocumentStatusId(e.getDocumentStatusId());
         dto.setPosted(e.getPosted());
-        dto.setProcessing(e.getProcessing());
         dto.setProcessed(e.getProcessed());
+        dto.setProcessing(e.getProcessing());
         dto.setDocumentTypeId(e.getDocumentTypeId());
         dto.setDescription(e.getDescription());
         dto.setOrderId(e.getOrderId());
@@ -75,8 +75,8 @@ public class InOutStateEventDtoConverter {
         dto.setCommandId(e.getCommandId());
         dto.setDocumentStatusId(e.getDocumentStatusId());
         dto.setPosted(e.getPosted());
-        dto.setProcessing(e.getProcessing());
         dto.setProcessed(e.getProcessed());
+        dto.setProcessing(e.getProcessing());
         dto.setDocumentTypeId(e.getDocumentTypeId());
         dto.setDescription(e.getDescription());
         dto.setOrderId(e.getOrderId());
@@ -103,8 +103,8 @@ public class InOutStateEventDtoConverter {
         dto.setActive(e.getActive());
         dto.setIsPropertyDocumentStatusIdRemoved(e.getIsPropertyDocumentStatusIdRemoved());
         dto.setIsPropertyPostedRemoved(e.getIsPropertyPostedRemoved());
-        dto.setIsPropertyProcessingRemoved(e.getIsPropertyProcessingRemoved());
         dto.setIsPropertyProcessedRemoved(e.getIsPropertyProcessedRemoved());
+        dto.setIsPropertyProcessingRemoved(e.getIsPropertyProcessingRemoved());
         dto.setIsPropertyDocumentTypeIdRemoved(e.getIsPropertyDocumentTypeIdRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyOrderIdRemoved(e.getIsPropertyOrderIdRemoved());

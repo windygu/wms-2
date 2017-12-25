@@ -74,10 +74,6 @@ public interface MovementConfirmationLineMvoState
 
     void setDeleted(Boolean deleted);
 
-    String getMovementConfirmationDocumentTypeId();
-
-    void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId);
-
     String getMovementConfirmationDocumentStatusId();
 
     void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId);
@@ -94,13 +90,17 @@ public interface MovementConfirmationLineMvoState
 
     void setMovementConfirmationApprovalAmount(BigDecimal movementConfirmationApprovalAmount);
 
+    Boolean getMovementConfirmationProcessed();
+
+    void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed);
+
     String getMovementConfirmationProcessing();
 
     void setMovementConfirmationProcessing(String movementConfirmationProcessing);
 
-    Boolean getMovementConfirmationProcessed();
+    String getMovementConfirmationDocumentTypeId();
 
-    void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed);
+    void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId);
 
     String getMovementConfirmationDescription();
 

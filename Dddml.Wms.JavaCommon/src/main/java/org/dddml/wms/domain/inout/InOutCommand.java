@@ -49,13 +49,13 @@ public interface InOutCommand extends Command
 
         void setPosted(Boolean posted);
 
-        Boolean getProcessing();
-
-        void setProcessing(Boolean processing);
-
         Boolean getProcessed();
 
         void setProcessed(Boolean processed);
+
+        String getProcessing();
+
+        void setProcessing(String processing);
 
         String getDocumentTypeId();
 
@@ -169,13 +169,13 @@ public interface InOutCommand extends Command
 
         void setIsPropertyPostedRemoved(Boolean removed);
 
-        Boolean getIsPropertyProcessingRemoved();
-
-        void setIsPropertyProcessingRemoved(Boolean removed);
-
         Boolean getIsPropertyProcessedRemoved();
 
         void setIsPropertyProcessedRemoved(Boolean removed);
+
+        Boolean getIsPropertyProcessingRemoved();
+
+        void setIsPropertyProcessingRemoved(Boolean removed);
 
         Boolean getIsPropertyDocumentTypeIdRemoved();
 

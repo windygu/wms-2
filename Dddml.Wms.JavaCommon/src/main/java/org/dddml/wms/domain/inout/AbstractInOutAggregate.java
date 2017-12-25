@@ -60,8 +60,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         InOutStateEvent.InOutStateCreated e = newInOutStateCreated(stateEventId);
         newInOutDocumentActionCommandAndExecute(c, state, e);
         e.setPosted(c.getPosted());
-        e.setProcessing(c.getProcessing());
         e.setProcessed(c.getProcessed());
+        e.setProcessing(c.getProcessing());
         e.setDocumentTypeId(c.getDocumentTypeId());
         e.setDescription(c.getDescription());
         e.setOrderId(c.getOrderId());
@@ -105,8 +105,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
         newInOutDocumentActionCommandAndExecute(c, state, e);
         e.setPosted(c.getPosted());
-        e.setProcessing(c.getProcessing());
         e.setProcessed(c.getProcessed());
+        e.setProcessing(c.getProcessing());
         e.setDocumentTypeId(c.getDocumentTypeId());
         e.setDescription(c.getDescription());
         e.setOrderId(c.getOrderId());
@@ -132,8 +132,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setReversalNumber(c.getReversalNumber());
         e.setActive(c.getActive());
         e.setIsPropertyPostedRemoved(c.getIsPropertyPostedRemoved());
-        e.setIsPropertyProcessingRemoved(c.getIsPropertyProcessingRemoved());
         e.setIsPropertyProcessedRemoved(c.getIsPropertyProcessedRemoved());
+        e.setIsPropertyProcessingRemoved(c.getIsPropertyProcessingRemoved());
         e.setIsPropertyDocumentTypeIdRemoved(c.getIsPropertyDocumentTypeIdRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyOrderIdRemoved(c.getIsPropertyOrderIdRemoved());

@@ -103,7 +103,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Processing",
+                    Name = "Processed",
                     Type = typeof(bool),
                     TypeName = "bool",
                     IsSimpleValueObjectType = true,
@@ -132,9 +132,9 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Processed",
-                    Type = typeof(bool),
-                    TypeName = "bool",
+                    Name = "Processing",
+                    Type = typeof(string),
+                    TypeName = "string",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
@@ -1076,10 +1076,10 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("documentStatusId", "DocumentStatusId");
             d.Add("Posted", "Posted");
             d.Add("posted", "Posted");
-            d.Add("Processing", "Processing");
-            d.Add("processing", "Processing");
             d.Add("Processed", "Processed");
             d.Add("processed", "Processed");
+            d.Add("Processing", "Processing");
+            d.Add("processing", "Processing");
             d.Add("DocumentTypeId", "DocumentTypeId");
             d.Add("documentTypeId", "DocumentTypeId");
             d.Add("Description", "Description");

@@ -31,8 +31,8 @@
     <property name="Active" ></property>
     <property name="InOutDocumentStatusId" ></property>
     <property name="InOutPosted" ></property>
-    <property name="InOutProcessing" ></property>
     <property name="InOutProcessed" ></property>
+    <property name="InOutProcessing" ></property>
     <property name="InOutDocumentTypeId" ></property>
     <property name="InOutDescription" ></property>
     <property name="InOutOrderId" ></property>
@@ -112,9 +112,9 @@
 
         <property name="IsPropertyInOutPostedRemoved" column="IsPropertyInOutPostedRemoved"/>
 
-        <property name="IsPropertyInOutProcessingRemoved" column="IsPropertyInOutProcessingRemoved"/>
-
         <property name="IsPropertyInOutProcessedRemoved" column="IsPropertyInOutProcessedRemoved"/>
+
+        <property name="IsPropertyInOutProcessingRemoved" column="IsPropertyInOutProcessingRemoved"/>
 
         <property name="IsPropertyInOutDocumentTypeIdRemoved" column="IsPropertyInOutDocumentTypeIdRemoved"/>
 

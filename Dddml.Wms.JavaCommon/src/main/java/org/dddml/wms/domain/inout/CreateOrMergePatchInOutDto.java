@@ -30,18 +30,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.posted = posted;
     }
 
-    private Boolean processing;
-
-    public Boolean getProcessing()
-    {
-        return this.processing;
-    }
-
-    public void setProcessing(Boolean processing)
-    {
-        this.processing = processing;
-    }
-
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -52,6 +40,18 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
     public void setProcessed(Boolean processed)
     {
         this.processed = processed;
+    }
+
+    private String processing;
+
+    public String getProcessing()
+    {
+        return this.processing;
+    }
+
+    public void setProcessing(String processing)
+    {
+        this.processing = processing;
     }
 
     private String documentTypeId;
@@ -366,18 +366,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPropertyPostedRemoved = removed;
     }
 
-    private Boolean isPropertyProcessingRemoved;
-
-    public Boolean getIsPropertyProcessingRemoved()
-    {
-        return this.isPropertyProcessingRemoved;
-    }
-
-    public void setIsPropertyProcessingRemoved(Boolean removed)
-    {
-        this.isPropertyProcessingRemoved = removed;
-    }
-
     private Boolean isPropertyProcessedRemoved;
 
     public Boolean getIsPropertyProcessedRemoved()
@@ -388,6 +376,18 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
     public void setIsPropertyProcessedRemoved(Boolean removed)
     {
         this.isPropertyProcessedRemoved = removed;
+    }
+
+    private Boolean isPropertyProcessingRemoved;
+
+    public Boolean getIsPropertyProcessingRemoved()
+    {
+        return this.isPropertyProcessingRemoved;
+    }
+
+    public void setIsPropertyProcessingRemoved(Boolean removed)
+    {
+        this.isPropertyProcessingRemoved = removed;
     }
 
     private Boolean isPropertyDocumentTypeIdRemoved;
@@ -683,8 +683,8 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         ((AbstractInOutCommandDto) this).copyTo(command);
         command.setDocumentAction(this.getDocumentAction());
         command.setPosted(this.getPosted());
-        command.setProcessing(this.getProcessing());
         command.setProcessed(this.getProcessed());
+        command.setProcessing(this.getProcessing());
         command.setDocumentTypeId(this.getDocumentTypeId());
         command.setDescription(this.getDescription());
         command.setOrderId(this.getOrderId());
@@ -744,8 +744,8 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
     {
         copyTo((AbstractInOutCommand.AbstractCreateOrMergePatchInOut) command);
         command.setIsPropertyPostedRemoved(this.getIsPropertyPostedRemoved());
-        command.setIsPropertyProcessingRemoved(this.getIsPropertyProcessingRemoved());
         command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());
+        command.setIsPropertyProcessingRemoved(this.getIsPropertyProcessingRemoved());
         command.setIsPropertyDocumentTypeIdRemoved(this.getIsPropertyDocumentTypeIdRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyOrderIdRemoved(this.getIsPropertyOrderIdRemoved());

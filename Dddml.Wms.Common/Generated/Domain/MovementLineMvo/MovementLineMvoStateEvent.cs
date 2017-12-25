@@ -44,9 +44,43 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		public virtual bool? Active { get; set; }
 
+		public virtual string MovementDocumentStatusId { get; set; }
+
+		public virtual DateTime? MovementMovementDate { get; set; }
+
+		public virtual bool? MovementPosted { get; set; }
+
+		public virtual bool? MovementProcessed { get; set; }
+
+		public virtual string MovementProcessing { get; set; }
+
+		public virtual DateTime? MovementDateReceived { get; set; }
+
 		public virtual string MovementDocumentTypeId { get; set; }
 
-		public virtual string MovementDocumentStatusId { get; set; }
+		public virtual bool? MovementIsInTransit { get; set; }
+
+		public virtual bool? MovementIsApproved { get; set; }
+
+		public virtual decimal? MovementApprovalAmount { get; set; }
+
+		public virtual string MovementShipperId { get; set; }
+
+		public virtual string MovementSalesRepresentativeId { get; set; }
+
+		public virtual string MovementBusinessPartnerId { get; set; }
+
+		public virtual decimal? MovementChargeAmount { get; set; }
+
+		public virtual string MovementCreateFrom { get; set; }
+
+		public virtual decimal? MovementFreightAmount { get; set; }
+
+		public virtual string MovementReversalDocumentNumber { get; set; }
+
+		public virtual string MovementWarehouseIdFrom { get; set; }
+
+		public virtual string MovementWarehouseIdTo { get; set; }
 
 		public virtual string MovementDescription { get; set; }
 
@@ -170,9 +204,43 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
+		public virtual bool IsPropertyMovementDocumentStatusIdRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementMovementDateRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementPostedRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementProcessedRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementProcessingRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementDateReceivedRemoved { get; set; }
+
 		public virtual bool IsPropertyMovementDocumentTypeIdRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementDocumentStatusIdRemoved { get; set; }
+		public virtual bool IsPropertyMovementIsInTransitRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementIsApprovedRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementApprovalAmountRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementShipperIdRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementSalesRepresentativeIdRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementBusinessPartnerIdRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementChargeAmountRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementCreateFromRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementFreightAmountRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementReversalDocumentNumberRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementWarehouseIdFromRemoved { get; set; }
+
+		public virtual bool IsPropertyMovementWarehouseIdToRemoved { get; set; }
 
 		public virtual bool IsPropertyMovementDescriptionRemoved { get; set; }
 

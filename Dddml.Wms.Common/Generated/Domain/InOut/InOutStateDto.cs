@@ -33,13 +33,13 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        public virtual bool? Processing
+        public virtual bool? Processed
         {
             get;
             set;
         }
 
-        public virtual bool? Processed
+        public virtual string Processing
         {
             get;
             set;
@@ -237,8 +237,8 @@ namespace Dddml.Wms.Domain.InOut
             state.DocumentNumber = this.DocumentNumber;
             state.DocumentStatusId = this.DocumentStatusId;
             if (this.Posted != null && this.Posted.HasValue) { state.Posted = this.Posted.Value; }
-            if (this.Processing != null && this.Processing.HasValue) { state.Processing = this.Processing.Value; }
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
+            state.Processing = this.Processing;
             state.DocumentTypeId = this.DocumentTypeId;
             state.Description = this.Description;
             state.OrderId = this.OrderId;

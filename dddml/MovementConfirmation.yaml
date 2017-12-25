@@ -13,9 +13,6 @@ aggregates:
         
       properties:
       
-        DocumentTypeId:
-          referenceType: DocumentType
-
         DocumentStatusId:
           type: string
           commandType: DocumentAction
@@ -30,11 +27,14 @@ aggregates:
         ApprovalAmount:
           type: decimal
 
+        Processed:
+          type: bool
+
         Processing:
           type: string
 
-        Processed:
-          type: bool
+        DocumentTypeId:
+          referenceType: DocumentType
 
         # PhysicalInventoryDocumentNumber:
           # type: string

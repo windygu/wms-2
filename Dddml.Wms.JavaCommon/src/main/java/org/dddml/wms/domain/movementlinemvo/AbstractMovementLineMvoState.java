@@ -203,6 +203,78 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
         this.deleted = deleted;
     }
 
+    private String movementDocumentStatusId;
+
+    public String getMovementDocumentStatusId()
+    {
+        return this.movementDocumentStatusId;
+    }
+
+    public void setMovementDocumentStatusId(String movementDocumentStatusId)
+    {
+        this.movementDocumentStatusId = movementDocumentStatusId;
+    }
+
+    private Date movementMovementDate;
+
+    public Date getMovementMovementDate()
+    {
+        return this.movementMovementDate;
+    }
+
+    public void setMovementMovementDate(Date movementMovementDate)
+    {
+        this.movementMovementDate = movementMovementDate;
+    }
+
+    private Boolean movementPosted;
+
+    public Boolean getMovementPosted()
+    {
+        return this.movementPosted;
+    }
+
+    public void setMovementPosted(Boolean movementPosted)
+    {
+        this.movementPosted = movementPosted;
+    }
+
+    private Boolean movementProcessed;
+
+    public Boolean getMovementProcessed()
+    {
+        return this.movementProcessed;
+    }
+
+    public void setMovementProcessed(Boolean movementProcessed)
+    {
+        this.movementProcessed = movementProcessed;
+    }
+
+    private String movementProcessing;
+
+    public String getMovementProcessing()
+    {
+        return this.movementProcessing;
+    }
+
+    public void setMovementProcessing(String movementProcessing)
+    {
+        this.movementProcessing = movementProcessing;
+    }
+
+    private Date movementDateReceived;
+
+    public Date getMovementDateReceived()
+    {
+        return this.movementDateReceived;
+    }
+
+    public void setMovementDateReceived(Date movementDateReceived)
+    {
+        this.movementDateReceived = movementDateReceived;
+    }
+
     private String movementDocumentTypeId;
 
     public String getMovementDocumentTypeId()
@@ -215,16 +287,148 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
         this.movementDocumentTypeId = movementDocumentTypeId;
     }
 
-    private String movementDocumentStatusId;
+    private Boolean movementIsInTransit;
 
-    public String getMovementDocumentStatusId()
+    public Boolean getMovementIsInTransit()
     {
-        return this.movementDocumentStatusId;
+        return this.movementIsInTransit;
     }
 
-    public void setMovementDocumentStatusId(String movementDocumentStatusId)
+    public void setMovementIsInTransit(Boolean movementIsInTransit)
     {
-        this.movementDocumentStatusId = movementDocumentStatusId;
+        this.movementIsInTransit = movementIsInTransit;
+    }
+
+    private Boolean movementIsApproved;
+
+    public Boolean getMovementIsApproved()
+    {
+        return this.movementIsApproved;
+    }
+
+    public void setMovementIsApproved(Boolean movementIsApproved)
+    {
+        this.movementIsApproved = movementIsApproved;
+    }
+
+    private BigDecimal movementApprovalAmount;
+
+    public BigDecimal getMovementApprovalAmount()
+    {
+        return this.movementApprovalAmount;
+    }
+
+    public void setMovementApprovalAmount(BigDecimal movementApprovalAmount)
+    {
+        this.movementApprovalAmount = movementApprovalAmount;
+    }
+
+    private String movementShipperId;
+
+    public String getMovementShipperId()
+    {
+        return this.movementShipperId;
+    }
+
+    public void setMovementShipperId(String movementShipperId)
+    {
+        this.movementShipperId = movementShipperId;
+    }
+
+    private String movementSalesRepresentativeId;
+
+    public String getMovementSalesRepresentativeId()
+    {
+        return this.movementSalesRepresentativeId;
+    }
+
+    public void setMovementSalesRepresentativeId(String movementSalesRepresentativeId)
+    {
+        this.movementSalesRepresentativeId = movementSalesRepresentativeId;
+    }
+
+    private String movementBusinessPartnerId;
+
+    public String getMovementBusinessPartnerId()
+    {
+        return this.movementBusinessPartnerId;
+    }
+
+    public void setMovementBusinessPartnerId(String movementBusinessPartnerId)
+    {
+        this.movementBusinessPartnerId = movementBusinessPartnerId;
+    }
+
+    private BigDecimal movementChargeAmount;
+
+    public BigDecimal getMovementChargeAmount()
+    {
+        return this.movementChargeAmount;
+    }
+
+    public void setMovementChargeAmount(BigDecimal movementChargeAmount)
+    {
+        this.movementChargeAmount = movementChargeAmount;
+    }
+
+    private String movementCreateFrom;
+
+    public String getMovementCreateFrom()
+    {
+        return this.movementCreateFrom;
+    }
+
+    public void setMovementCreateFrom(String movementCreateFrom)
+    {
+        this.movementCreateFrom = movementCreateFrom;
+    }
+
+    private BigDecimal movementFreightAmount;
+
+    public BigDecimal getMovementFreightAmount()
+    {
+        return this.movementFreightAmount;
+    }
+
+    public void setMovementFreightAmount(BigDecimal movementFreightAmount)
+    {
+        this.movementFreightAmount = movementFreightAmount;
+    }
+
+    private String movementReversalDocumentNumber;
+
+    public String getMovementReversalDocumentNumber()
+    {
+        return this.movementReversalDocumentNumber;
+    }
+
+    public void setMovementReversalDocumentNumber(String movementReversalDocumentNumber)
+    {
+        this.movementReversalDocumentNumber = movementReversalDocumentNumber;
+    }
+
+    private String movementWarehouseIdFrom;
+
+    public String getMovementWarehouseIdFrom()
+    {
+        return this.movementWarehouseIdFrom;
+    }
+
+    public void setMovementWarehouseIdFrom(String movementWarehouseIdFrom)
+    {
+        this.movementWarehouseIdFrom = movementWarehouseIdFrom;
+    }
+
+    private String movementWarehouseIdTo;
+
+    public String getMovementWarehouseIdTo()
+    {
+        return this.movementWarehouseIdTo;
+    }
+
+    public void setMovementWarehouseIdTo(String movementWarehouseIdTo)
+    {
+        this.movementWarehouseIdTo = movementWarehouseIdTo;
     }
 
     private String movementDescription;
@@ -397,8 +601,25 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
         this.setReversalLineNumber(e.getReversalLineNumber());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
-        this.setMovementDocumentTypeId(e.getMovementDocumentTypeId());
         this.setMovementDocumentStatusId(e.getMovementDocumentStatusId());
+        this.setMovementMovementDate(e.getMovementMovementDate());
+        this.setMovementPosted(e.getMovementPosted());
+        this.setMovementProcessed(e.getMovementProcessed());
+        this.setMovementProcessing(e.getMovementProcessing());
+        this.setMovementDateReceived(e.getMovementDateReceived());
+        this.setMovementDocumentTypeId(e.getMovementDocumentTypeId());
+        this.setMovementIsInTransit(e.getMovementIsInTransit());
+        this.setMovementIsApproved(e.getMovementIsApproved());
+        this.setMovementApprovalAmount(e.getMovementApprovalAmount());
+        this.setMovementShipperId(e.getMovementShipperId());
+        this.setMovementSalesRepresentativeId(e.getMovementSalesRepresentativeId());
+        this.setMovementBusinessPartnerId(e.getMovementBusinessPartnerId());
+        this.setMovementChargeAmount(e.getMovementChargeAmount());
+        this.setMovementCreateFrom(e.getMovementCreateFrom());
+        this.setMovementFreightAmount(e.getMovementFreightAmount());
+        this.setMovementReversalDocumentNumber(e.getMovementReversalDocumentNumber());
+        this.setMovementWarehouseIdFrom(e.getMovementWarehouseIdFrom());
+        this.setMovementWarehouseIdTo(e.getMovementWarehouseIdTo());
         this.setMovementDescription(e.getMovementDescription());
         this.setMovementCreatedBy(e.getMovementCreatedBy());
         this.setMovementCreatedAt(e.getMovementCreatedAt());
@@ -528,6 +749,72 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
         {
             this.setActive(e.getActive());
         }
+        if (e.getMovementDocumentStatusId() == null)
+        {
+            if (e.getIsPropertyMovementDocumentStatusIdRemoved() != null && e.getIsPropertyMovementDocumentStatusIdRemoved())
+            {
+                this.setMovementDocumentStatusId(null);
+            }
+        }
+        else
+        {
+            this.setMovementDocumentStatusId(e.getMovementDocumentStatusId());
+        }
+        if (e.getMovementMovementDate() == null)
+        {
+            if (e.getIsPropertyMovementMovementDateRemoved() != null && e.getIsPropertyMovementMovementDateRemoved())
+            {
+                this.setMovementMovementDate(null);
+            }
+        }
+        else
+        {
+            this.setMovementMovementDate(e.getMovementMovementDate());
+        }
+        if (e.getMovementPosted() == null)
+        {
+            if (e.getIsPropertyMovementPostedRemoved() != null && e.getIsPropertyMovementPostedRemoved())
+            {
+                this.setMovementPosted(null);
+            }
+        }
+        else
+        {
+            this.setMovementPosted(e.getMovementPosted());
+        }
+        if (e.getMovementProcessed() == null)
+        {
+            if (e.getIsPropertyMovementProcessedRemoved() != null && e.getIsPropertyMovementProcessedRemoved())
+            {
+                this.setMovementProcessed(null);
+            }
+        }
+        else
+        {
+            this.setMovementProcessed(e.getMovementProcessed());
+        }
+        if (e.getMovementProcessing() == null)
+        {
+            if (e.getIsPropertyMovementProcessingRemoved() != null && e.getIsPropertyMovementProcessingRemoved())
+            {
+                this.setMovementProcessing(null);
+            }
+        }
+        else
+        {
+            this.setMovementProcessing(e.getMovementProcessing());
+        }
+        if (e.getMovementDateReceived() == null)
+        {
+            if (e.getIsPropertyMovementDateReceivedRemoved() != null && e.getIsPropertyMovementDateReceivedRemoved())
+            {
+                this.setMovementDateReceived(null);
+            }
+        }
+        else
+        {
+            this.setMovementDateReceived(e.getMovementDateReceived());
+        }
         if (e.getMovementDocumentTypeId() == null)
         {
             if (e.getIsPropertyMovementDocumentTypeIdRemoved() != null && e.getIsPropertyMovementDocumentTypeIdRemoved())
@@ -539,16 +826,137 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
         {
             this.setMovementDocumentTypeId(e.getMovementDocumentTypeId());
         }
-        if (e.getMovementDocumentStatusId() == null)
+        if (e.getMovementIsInTransit() == null)
         {
-            if (e.getIsPropertyMovementDocumentStatusIdRemoved() != null && e.getIsPropertyMovementDocumentStatusIdRemoved())
+            if (e.getIsPropertyMovementIsInTransitRemoved() != null && e.getIsPropertyMovementIsInTransitRemoved())
             {
-                this.setMovementDocumentStatusId(null);
+                this.setMovementIsInTransit(null);
             }
         }
         else
         {
-            this.setMovementDocumentStatusId(e.getMovementDocumentStatusId());
+            this.setMovementIsInTransit(e.getMovementIsInTransit());
+        }
+        if (e.getMovementIsApproved() == null)
+        {
+            if (e.getIsPropertyMovementIsApprovedRemoved() != null && e.getIsPropertyMovementIsApprovedRemoved())
+            {
+                this.setMovementIsApproved(null);
+            }
+        }
+        else
+        {
+            this.setMovementIsApproved(e.getMovementIsApproved());
+        }
+        if (e.getMovementApprovalAmount() == null)
+        {
+            if (e.getIsPropertyMovementApprovalAmountRemoved() != null && e.getIsPropertyMovementApprovalAmountRemoved())
+            {
+                this.setMovementApprovalAmount(null);
+            }
+        }
+        else
+        {
+            this.setMovementApprovalAmount(e.getMovementApprovalAmount());
+        }
+        if (e.getMovementShipperId() == null)
+        {
+            if (e.getIsPropertyMovementShipperIdRemoved() != null && e.getIsPropertyMovementShipperIdRemoved())
+            {
+                this.setMovementShipperId(null);
+            }
+        }
+        else
+        {
+            this.setMovementShipperId(e.getMovementShipperId());
+        }
+        if (e.getMovementSalesRepresentativeId() == null)
+        {
+            if (e.getIsPropertyMovementSalesRepresentativeIdRemoved() != null && e.getIsPropertyMovementSalesRepresentativeIdRemoved())
+            {
+                this.setMovementSalesRepresentativeId(null);
+            }
+        }
+        else
+        {
+            this.setMovementSalesRepresentativeId(e.getMovementSalesRepresentativeId());
+        }
+        if (e.getMovementBusinessPartnerId() == null)
+        {
+            if (e.getIsPropertyMovementBusinessPartnerIdRemoved() != null && e.getIsPropertyMovementBusinessPartnerIdRemoved())
+            {
+                this.setMovementBusinessPartnerId(null);
+            }
+        }
+        else
+        {
+            this.setMovementBusinessPartnerId(e.getMovementBusinessPartnerId());
+        }
+        if (e.getMovementChargeAmount() == null)
+        {
+            if (e.getIsPropertyMovementChargeAmountRemoved() != null && e.getIsPropertyMovementChargeAmountRemoved())
+            {
+                this.setMovementChargeAmount(null);
+            }
+        }
+        else
+        {
+            this.setMovementChargeAmount(e.getMovementChargeAmount());
+        }
+        if (e.getMovementCreateFrom() == null)
+        {
+            if (e.getIsPropertyMovementCreateFromRemoved() != null && e.getIsPropertyMovementCreateFromRemoved())
+            {
+                this.setMovementCreateFrom(null);
+            }
+        }
+        else
+        {
+            this.setMovementCreateFrom(e.getMovementCreateFrom());
+        }
+        if (e.getMovementFreightAmount() == null)
+        {
+            if (e.getIsPropertyMovementFreightAmountRemoved() != null && e.getIsPropertyMovementFreightAmountRemoved())
+            {
+                this.setMovementFreightAmount(null);
+            }
+        }
+        else
+        {
+            this.setMovementFreightAmount(e.getMovementFreightAmount());
+        }
+        if (e.getMovementReversalDocumentNumber() == null)
+        {
+            if (e.getIsPropertyMovementReversalDocumentNumberRemoved() != null && e.getIsPropertyMovementReversalDocumentNumberRemoved())
+            {
+                this.setMovementReversalDocumentNumber(null);
+            }
+        }
+        else
+        {
+            this.setMovementReversalDocumentNumber(e.getMovementReversalDocumentNumber());
+        }
+        if (e.getMovementWarehouseIdFrom() == null)
+        {
+            if (e.getIsPropertyMovementWarehouseIdFromRemoved() != null && e.getIsPropertyMovementWarehouseIdFromRemoved())
+            {
+                this.setMovementWarehouseIdFrom(null);
+            }
+        }
+        else
+        {
+            this.setMovementWarehouseIdFrom(e.getMovementWarehouseIdFrom());
+        }
+        if (e.getMovementWarehouseIdTo() == null)
+        {
+            if (e.getIsPropertyMovementWarehouseIdToRemoved() != null && e.getIsPropertyMovementWarehouseIdToRemoved())
+            {
+                this.setMovementWarehouseIdTo(null);
+            }
+        }
+        else
+        {
+            this.setMovementWarehouseIdTo(e.getMovementWarehouseIdTo());
         }
         if (e.getMovementDescription() == null)
         {

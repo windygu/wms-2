@@ -127,8 +127,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.Active = c.Active;
             NewInOutLineMvoDocumentActionCommandAndExecute(c, _state, e);
             e.InOutPosted = c.InOutPosted;
-            e.InOutProcessing = c.InOutProcessing;
             e.InOutProcessed = c.InOutProcessed;
+            e.InOutProcessing = c.InOutProcessing;
             e.InOutDocumentTypeId = c.InOutDocumentTypeId;
             e.InOutDescription = c.InOutDescription;
             e.InOutOrderId = c.InOutOrderId;
@@ -193,8 +193,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.Active = c.Active;
             NewInOutLineMvoDocumentActionCommandAndExecute(c, _state, e);
             e.InOutPosted = c.InOutPosted;
-            e.InOutProcessing = c.InOutProcessing;
             e.InOutProcessed = c.InOutProcessed;
+            e.InOutProcessing = c.InOutProcessing;
             e.InOutDocumentTypeId = c.InOutDocumentTypeId;
             e.InOutDescription = c.InOutDescription;
             e.InOutOrderId = c.InOutOrderId;
@@ -242,8 +242,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
             e.IsPropertyInOutPostedRemoved = c.IsPropertyInOutPostedRemoved;
-            e.IsPropertyInOutProcessingRemoved = c.IsPropertyInOutProcessingRemoved;
             e.IsPropertyInOutProcessedRemoved = c.IsPropertyInOutProcessedRemoved;
+            e.IsPropertyInOutProcessingRemoved = c.IsPropertyInOutProcessingRemoved;
             e.IsPropertyInOutDocumentTypeIdRemoved = c.IsPropertyInOutDocumentTypeIdRemoved;
             e.IsPropertyInOutDescriptionRemoved = c.IsPropertyInOutDescriptionRemoved;
             e.IsPropertyInOutOrderIdRemoved = c.IsPropertyInOutOrderIdRemoved;

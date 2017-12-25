@@ -58,13 +58,13 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
     protected MovementConfirmationStateEvent map(MovementConfirmationCommand.CreateMovementConfirmation c) {
         MovementConfirmationStateEventId stateEventId = new MovementConfirmationStateEventId(c.getDocumentNumber(), c.getVersion());
         MovementConfirmationStateEvent.MovementConfirmationStateCreated e = newMovementConfirmationStateCreated(stateEventId);
-        e.setDocumentTypeId(c.getDocumentTypeId());
         newMovementConfirmationDocumentActionCommandAndExecute(c, state, e);
         e.setMovementDocumentNumber(c.getMovementDocumentNumber());
         e.setIsApproved(c.getIsApproved());
         e.setApprovalAmount(c.getApprovalAmount());
-        e.setProcessing(c.getProcessing());
         e.setProcessed(c.getProcessed());
+        e.setProcessing(c.getProcessing());
+        e.setDocumentTypeId(c.getDocumentTypeId());
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         ((AbstractMovementConfirmationStateEvent)e).setCommandId(c.getCommandId());
@@ -84,21 +84,21 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
     protected MovementConfirmationStateEvent map(MovementConfirmationCommand.MergePatchMovementConfirmation c) {
         MovementConfirmationStateEventId stateEventId = new MovementConfirmationStateEventId(c.getDocumentNumber(), c.getVersion());
         MovementConfirmationStateEvent.MovementConfirmationStateMergePatched e = newMovementConfirmationStateMergePatched(stateEventId);
-        e.setDocumentTypeId(c.getDocumentTypeId());
         newMovementConfirmationDocumentActionCommandAndExecute(c, state, e);
         e.setMovementDocumentNumber(c.getMovementDocumentNumber());
         e.setIsApproved(c.getIsApproved());
         e.setApprovalAmount(c.getApprovalAmount());
-        e.setProcessing(c.getProcessing());
         e.setProcessed(c.getProcessed());
+        e.setProcessing(c.getProcessing());
+        e.setDocumentTypeId(c.getDocumentTypeId());
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
-        e.setIsPropertyDocumentTypeIdRemoved(c.getIsPropertyDocumentTypeIdRemoved());
         e.setIsPropertyMovementDocumentNumberRemoved(c.getIsPropertyMovementDocumentNumberRemoved());
         e.setIsPropertyIsApprovedRemoved(c.getIsPropertyIsApprovedRemoved());
         e.setIsPropertyApprovalAmountRemoved(c.getIsPropertyApprovalAmountRemoved());
-        e.setIsPropertyProcessingRemoved(c.getIsPropertyProcessingRemoved());
         e.setIsPropertyProcessedRemoved(c.getIsPropertyProcessedRemoved());
+        e.setIsPropertyProcessingRemoved(c.getIsPropertyProcessingRemoved());
+        e.setIsPropertyDocumentTypeIdRemoved(c.getIsPropertyDocumentTypeIdRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractMovementConfirmationStateEvent)e).setCommandId(c.getCommandId());

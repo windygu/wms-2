@@ -35,8 +35,8 @@ public final class InOutLineMvoFilteringProperties
             "deleted",
             "inOutDocumentStatusId",
             "inOutPosted",
-            "inOutProcessing",
             "inOutProcessed",
+            "inOutProcessing",
             "inOutDocumentTypeId",
             "inOutDescription",
             "inOutOrderId",
@@ -97,7 +97,7 @@ public final class InOutLineMvoFilteringProperties
             "String",
             "Boolean",
             "Boolean",
-            "Boolean",
+            "String",
             "String",
             "String",
             "String",
@@ -192,10 +192,10 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("InOutDocumentStatusId", "inOutDocumentStatusId");
         aliasMap.put("inOutPosted", "inOutPosted");
         aliasMap.put("InOutPosted", "inOutPosted");
-        aliasMap.put("inOutProcessing", "inOutProcessing");
-        aliasMap.put("InOutProcessing", "inOutProcessing");
         aliasMap.put("inOutProcessed", "inOutProcessed");
         aliasMap.put("InOutProcessed", "inOutProcessed");
+        aliasMap.put("inOutProcessing", "inOutProcessing");
+        aliasMap.put("InOutProcessing", "inOutProcessing");
         aliasMap.put("inOutDocumentTypeId", "inOutDocumentTypeId");
         aliasMap.put("InOutDocumentTypeId", "inOutDocumentTypeId");
         aliasMap.put("inOutDescription", "inOutDescription");

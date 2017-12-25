@@ -14,8 +14,8 @@ public final class InOutFilteringProperties
             "documentNumber",
             "documentStatusId",
             "posted",
-            "processing",
             "processed",
+            "processing",
             "documentTypeId",
             "description",
             "orderId",
@@ -53,7 +53,7 @@ public final class InOutFilteringProperties
             "String",
             "Boolean",
             "Boolean",
-            "Boolean",
+            "String",
             "String",
             "String",
             "String",
@@ -104,10 +104,10 @@ public final class InOutFilteringProperties
         aliasMap.put("DocumentStatusId", "documentStatusId");
         aliasMap.put("posted", "posted");
         aliasMap.put("Posted", "posted");
-        aliasMap.put("processing", "processing");
-        aliasMap.put("Processing", "processing");
         aliasMap.put("processed", "processed");
         aliasMap.put("Processed", "processed");
+        aliasMap.put("processing", "processing");
+        aliasMap.put("Processing", "processing");
         aliasMap.put("documentTypeId", "documentTypeId");
         aliasMap.put("DocumentTypeId", "documentTypeId");
         aliasMap.put("description", "description");

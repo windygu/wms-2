@@ -11,13 +11,13 @@
 	<id name="documentNumber" length="50" column="DocumentNumber"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
-	<property name="documentTypeId" ></property>
 	<property name="documentStatusId" ></property>
 	<property name="movementDocumentNumber" ></property>
 	<property name="isApproved" ></property>
 	<property name="approvalAmount" ></property>
-	<property name="processing" ></property>
 	<property name="processed" ></property>
+	<property name="processing" ></property>
+	<property name="documentTypeId" ></property>
 	<property name="description" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>

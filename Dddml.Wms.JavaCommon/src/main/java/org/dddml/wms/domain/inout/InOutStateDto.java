@@ -46,18 +46,6 @@ public class InOutStateDto
         this.posted = posted;
     }
 
-    private Boolean processing;
-
-    public Boolean getProcessing()
-    {
-        return this.processing;
-    }
-
-    public void setProcessing(Boolean processing)
-    {
-        this.processing = processing;
-    }
-
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -68,6 +56,18 @@ public class InOutStateDto
     public void setProcessed(Boolean processed)
     {
         this.processed = processed;
+    }
+
+    private String processing;
+
+    public String getProcessing()
+    {
+        return this.processing;
+    }
+
+    public void setProcessing(String processing)
+    {
+        this.processing = processing;
     }
 
     private String documentTypeId;
@@ -465,11 +465,11 @@ public class InOutStateDto
             if (returnedFieldsContains("Posted")) {
                 dto.setPosted(state.getPosted());
             }
-            if (returnedFieldsContains("Processing")) {
-                dto.setProcessing(state.getProcessing());
-            }
             if (returnedFieldsContains("Processed")) {
                 dto.setProcessed(state.getProcessed());
+            }
+            if (returnedFieldsContains("Processing")) {
+                dto.setProcessing(state.getProcessing());
             }
             if (returnedFieldsContains("DocumentTypeId")) {
                 dto.setDocumentTypeId(state.getDocumentTypeId());

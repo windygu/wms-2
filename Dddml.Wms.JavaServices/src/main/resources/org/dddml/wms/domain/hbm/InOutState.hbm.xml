@@ -13,8 +13,8 @@
 
 	<property name="documentStatusId" ></property>
 	<property name="posted" ></property>
-	<property name="processing" ></property>
 	<property name="processed" ></property>
+	<property name="processing" ></property>
 	<property name="documentTypeId" ></property>
 	<property name="description" ></property>
 	<property name="orderId" ></property>

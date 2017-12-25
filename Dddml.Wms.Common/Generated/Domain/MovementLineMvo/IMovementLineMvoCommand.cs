@@ -44,9 +44,43 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		bool? Active { get; set; }
 
+		string DocumentAction { get; set; }
+
+		DateTime? MovementMovementDate { get; set; }
+
+		bool? MovementPosted { get; set; }
+
+		bool? MovementProcessed { get; set; }
+
+		string MovementProcessing { get; set; }
+
+		DateTime? MovementDateReceived { get; set; }
+
 		string MovementDocumentTypeId { get; set; }
 
-		string DocumentAction { get; set; }
+		bool? MovementIsInTransit { get; set; }
+
+		bool? MovementIsApproved { get; set; }
+
+		decimal? MovementApprovalAmount { get; set; }
+
+		string MovementShipperId { get; set; }
+
+		string MovementSalesRepresentativeId { get; set; }
+
+		string MovementBusinessPartnerId { get; set; }
+
+		decimal? MovementChargeAmount { get; set; }
+
+		string MovementCreateFrom { get; set; }
+
+		decimal? MovementFreightAmount { get; set; }
+
+		string MovementReversalDocumentNumber { get; set; }
+
+		string MovementWarehouseIdFrom { get; set; }
+
+		string MovementWarehouseIdTo { get; set; }
 
 		string MovementDescription { get; set; }
 
@@ -92,7 +126,41 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		bool IsPropertyActiveRemoved { get; set; }
 
+		bool IsPropertyMovementMovementDateRemoved { get; set; }
+
+		bool IsPropertyMovementPostedRemoved { get; set; }
+
+		bool IsPropertyMovementProcessedRemoved { get; set; }
+
+		bool IsPropertyMovementProcessingRemoved { get; set; }
+
+		bool IsPropertyMovementDateReceivedRemoved { get; set; }
+
 		bool IsPropertyMovementDocumentTypeIdRemoved { get; set; }
+
+		bool IsPropertyMovementIsInTransitRemoved { get; set; }
+
+		bool IsPropertyMovementIsApprovedRemoved { get; set; }
+
+		bool IsPropertyMovementApprovalAmountRemoved { get; set; }
+
+		bool IsPropertyMovementShipperIdRemoved { get; set; }
+
+		bool IsPropertyMovementSalesRepresentativeIdRemoved { get; set; }
+
+		bool IsPropertyMovementBusinessPartnerIdRemoved { get; set; }
+
+		bool IsPropertyMovementChargeAmountRemoved { get; set; }
+
+		bool IsPropertyMovementCreateFromRemoved { get; set; }
+
+		bool IsPropertyMovementFreightAmountRemoved { get; set; }
+
+		bool IsPropertyMovementReversalDocumentNumberRemoved { get; set; }
+
+		bool IsPropertyMovementWarehouseIdFromRemoved { get; set; }
+
+		bool IsPropertyMovementWarehouseIdToRemoved { get; set; }
 
 		bool IsPropertyMovementDescriptionRemoved { get; set; }
 

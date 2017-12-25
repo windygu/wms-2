@@ -27,7 +27,7 @@ public class HibernateMovementConfirmationStateQueryRepository implements Moveme
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("DocumentNumber", "DocumentTypeId", "DocumentStatusId", "MovementDocumentNumber", "IsApproved", "ApprovalAmount", "Processing", "Processed", "Description", "MovementConfirmationLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("DocumentNumber", "DocumentStatusId", "MovementDocumentNumber", "IsApproved", "ApprovalAmount", "Processed", "Processing", "DocumentTypeId", "Description", "MovementConfirmationLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

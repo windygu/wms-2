@@ -16,8 +16,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	{
 		public virtual string DocumentNumber { get; set; }
 
-		public virtual string DocumentTypeId { get; set; }
-
 		public virtual string DocumentStatusId { get; set; }
 
 		public virtual string MovementDocumentNumber { get; set; }
@@ -26,9 +24,11 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		public virtual decimal ApprovalAmount { get; set; }
 
+		public virtual bool Processed { get; set; }
+
 		public virtual string Processing { get; set; }
 
-		public virtual bool Processed { get; set; }
+		public virtual string DocumentTypeId { get; set; }
 
 		public virtual string Description { get; set; }
 

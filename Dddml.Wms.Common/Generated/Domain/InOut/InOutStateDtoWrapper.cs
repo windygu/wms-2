@@ -126,37 +126,6 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? Processing
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Processing"))
-                {
-                    return _state.Processing;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.Processing = value.Value;
-                }
-            }
-        }
-
-        bool IInOutStateProperties.Processing
-        {
-            get 
-            {
-                return (this._state as IInOutStateProperties).Processing;
-            }
-            set 
-            {
-                (this._state as IInOutStateProperties).Processing = value;
-            }
-        }
-
 		public virtual bool? Processed
         {
             get
@@ -185,6 +154,34 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 (this._state as IInOutStateProperties).Processed = value;
+            }
+        }
+
+		public virtual string Processing
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Processing"))
+                {
+                    return _state.Processing;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Processing = value;
+            }
+        }
+
+        string IInOutStateProperties.Processing
+        {
+            get 
+            {
+                return (this._state as IInOutStateProperties).Processing;
+            }
+            set 
+            {
+                (this._state as IInOutStateProperties).Processing = value;
             }
         }
 

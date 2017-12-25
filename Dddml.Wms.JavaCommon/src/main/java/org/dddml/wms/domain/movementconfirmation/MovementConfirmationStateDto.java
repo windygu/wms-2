@@ -22,18 +22,6 @@ public class MovementConfirmationStateDto
         this.documentNumber = documentNumber;
     }
 
-    private String documentTypeId;
-
-    public String getDocumentTypeId()
-    {
-        return this.documentTypeId;
-    }
-
-    public void setDocumentTypeId(String documentTypeId)
-    {
-        this.documentTypeId = documentTypeId;
-    }
-
     private String documentStatusId;
 
     public String getDocumentStatusId()
@@ -82,6 +70,18 @@ public class MovementConfirmationStateDto
         this.approvalAmount = approvalAmount;
     }
 
+    private Boolean processed;
+
+    public Boolean getProcessed()
+    {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed)
+    {
+        this.processed = processed;
+    }
+
     private String processing;
 
     public String getProcessing()
@@ -94,16 +94,16 @@ public class MovementConfirmationStateDto
         this.processing = processing;
     }
 
-    private Boolean processed;
+    private String documentTypeId;
 
-    public Boolean getProcessed()
+    public String getDocumentTypeId()
     {
-        return this.processed;
+        return this.documentTypeId;
     }
 
-    public void setProcessed(Boolean processed)
+    public void setDocumentTypeId(String documentTypeId)
     {
-        this.processed = processed;
+        this.documentTypeId = documentTypeId;
     }
 
     private String description;
@@ -231,9 +231,6 @@ public class MovementConfirmationStateDto
             if (returnedFieldsContains("DocumentNumber")) {
                 dto.setDocumentNumber(state.getDocumentNumber());
             }
-            if (returnedFieldsContains("DocumentTypeId")) {
-                dto.setDocumentTypeId(state.getDocumentTypeId());
-            }
             if (returnedFieldsContains("DocumentStatusId")) {
                 dto.setDocumentStatusId(state.getDocumentStatusId());
             }
@@ -246,11 +243,14 @@ public class MovementConfirmationStateDto
             if (returnedFieldsContains("ApprovalAmount")) {
                 dto.setApprovalAmount(state.getApprovalAmount());
             }
+            if (returnedFieldsContains("Processed")) {
+                dto.setProcessed(state.getProcessed());
+            }
             if (returnedFieldsContains("Processing")) {
                 dto.setProcessing(state.getProcessing());
             }
-            if (returnedFieldsContains("Processed")) {
-                dto.setProcessed(state.getProcessed());
+            if (returnedFieldsContains("DocumentTypeId")) {
+                dto.setDocumentTypeId(state.getDocumentTypeId());
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());

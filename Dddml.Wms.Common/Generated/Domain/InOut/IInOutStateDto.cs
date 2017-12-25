@@ -32,13 +32,13 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        bool? Processing
+        bool? Processed
         {
             get;
             set;
         }
 
-        bool? Processed
+        string Processing
         {
             get;
             set;

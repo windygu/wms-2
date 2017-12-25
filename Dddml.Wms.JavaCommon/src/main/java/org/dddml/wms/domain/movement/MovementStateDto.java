@@ -22,6 +22,78 @@ public class MovementStateDto
         this.documentNumber = documentNumber;
     }
 
+    private String documentStatusId;
+
+    public String getDocumentStatusId()
+    {
+        return this.documentStatusId;
+    }
+
+    public void setDocumentStatusId(String documentStatusId)
+    {
+        this.documentStatusId = documentStatusId;
+    }
+
+    private Date movementDate;
+
+    public Date getMovementDate()
+    {
+        return this.movementDate;
+    }
+
+    public void setMovementDate(Date movementDate)
+    {
+        this.movementDate = movementDate;
+    }
+
+    private Boolean posted;
+
+    public Boolean getPosted()
+    {
+        return this.posted;
+    }
+
+    public void setPosted(Boolean posted)
+    {
+        this.posted = posted;
+    }
+
+    private Boolean processed;
+
+    public Boolean getProcessed()
+    {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed)
+    {
+        this.processed = processed;
+    }
+
+    private String processing;
+
+    public String getProcessing()
+    {
+        return this.processing;
+    }
+
+    public void setProcessing(String processing)
+    {
+        this.processing = processing;
+    }
+
+    private Date dateReceived;
+
+    public Date getDateReceived()
+    {
+        return this.dateReceived;
+    }
+
+    public void setDateReceived(Date dateReceived)
+    {
+        this.dateReceived = dateReceived;
+    }
+
     private String documentTypeId;
 
     public String getDocumentTypeId()
@@ -34,16 +106,148 @@ public class MovementStateDto
         this.documentTypeId = documentTypeId;
     }
 
-    private String documentStatusId;
+    private Boolean isInTransit;
 
-    public String getDocumentStatusId()
+    public Boolean getIsInTransit()
     {
-        return this.documentStatusId;
+        return this.isInTransit;
     }
 
-    public void setDocumentStatusId(String documentStatusId)
+    public void setIsInTransit(Boolean isInTransit)
     {
-        this.documentStatusId = documentStatusId;
+        this.isInTransit = isInTransit;
+    }
+
+    private Boolean isApproved;
+
+    public Boolean getIsApproved()
+    {
+        return this.isApproved;
+    }
+
+    public void setIsApproved(Boolean isApproved)
+    {
+        this.isApproved = isApproved;
+    }
+
+    private BigDecimal approvalAmount;
+
+    public BigDecimal getApprovalAmount()
+    {
+        return this.approvalAmount;
+    }
+
+    public void setApprovalAmount(BigDecimal approvalAmount)
+    {
+        this.approvalAmount = approvalAmount;
+    }
+
+    private String shipperId;
+
+    public String getShipperId()
+    {
+        return this.shipperId;
+    }
+
+    public void setShipperId(String shipperId)
+    {
+        this.shipperId = shipperId;
+    }
+
+    private String salesRepresentativeId;
+
+    public String getSalesRepresentativeId()
+    {
+        return this.salesRepresentativeId;
+    }
+
+    public void setSalesRepresentativeId(String salesRepresentativeId)
+    {
+        this.salesRepresentativeId = salesRepresentativeId;
+    }
+
+    private String businessPartnerId;
+
+    public String getBusinessPartnerId()
+    {
+        return this.businessPartnerId;
+    }
+
+    public void setBusinessPartnerId(String businessPartnerId)
+    {
+        this.businessPartnerId = businessPartnerId;
+    }
+
+    private BigDecimal chargeAmount;
+
+    public BigDecimal getChargeAmount()
+    {
+        return this.chargeAmount;
+    }
+
+    public void setChargeAmount(BigDecimal chargeAmount)
+    {
+        this.chargeAmount = chargeAmount;
+    }
+
+    private String createFrom;
+
+    public String getCreateFrom()
+    {
+        return this.createFrom;
+    }
+
+    public void setCreateFrom(String createFrom)
+    {
+        this.createFrom = createFrom;
+    }
+
+    private BigDecimal freightAmount;
+
+    public BigDecimal getFreightAmount()
+    {
+        return this.freightAmount;
+    }
+
+    public void setFreightAmount(BigDecimal freightAmount)
+    {
+        this.freightAmount = freightAmount;
+    }
+
+    private String reversalDocumentNumber;
+
+    public String getReversalDocumentNumber()
+    {
+        return this.reversalDocumentNumber;
+    }
+
+    public void setReversalDocumentNumber(String reversalDocumentNumber)
+    {
+        this.reversalDocumentNumber = reversalDocumentNumber;
+    }
+
+    private String warehouseIdFrom;
+
+    public String getWarehouseIdFrom()
+    {
+        return this.warehouseIdFrom;
+    }
+
+    public void setWarehouseIdFrom(String warehouseIdFrom)
+    {
+        this.warehouseIdFrom = warehouseIdFrom;
+    }
+
+    private String warehouseIdTo;
+
+    public String getWarehouseIdTo()
+    {
+        return this.warehouseIdTo;
+    }
+
+    public void setWarehouseIdTo(String warehouseIdTo)
+    {
+        this.warehouseIdTo = warehouseIdTo;
     }
 
     private String description;
@@ -171,11 +375,62 @@ public class MovementStateDto
             if (returnedFieldsContains("DocumentNumber")) {
                 dto.setDocumentNumber(state.getDocumentNumber());
             }
+            if (returnedFieldsContains("DocumentStatusId")) {
+                dto.setDocumentStatusId(state.getDocumentStatusId());
+            }
+            if (returnedFieldsContains("MovementDate")) {
+                dto.setMovementDate(state.getMovementDate());
+            }
+            if (returnedFieldsContains("Posted")) {
+                dto.setPosted(state.getPosted());
+            }
+            if (returnedFieldsContains("Processed")) {
+                dto.setProcessed(state.getProcessed());
+            }
+            if (returnedFieldsContains("Processing")) {
+                dto.setProcessing(state.getProcessing());
+            }
+            if (returnedFieldsContains("DateReceived")) {
+                dto.setDateReceived(state.getDateReceived());
+            }
             if (returnedFieldsContains("DocumentTypeId")) {
                 dto.setDocumentTypeId(state.getDocumentTypeId());
             }
-            if (returnedFieldsContains("DocumentStatusId")) {
-                dto.setDocumentStatusId(state.getDocumentStatusId());
+            if (returnedFieldsContains("IsInTransit")) {
+                dto.setIsInTransit(state.getIsInTransit());
+            }
+            if (returnedFieldsContains("IsApproved")) {
+                dto.setIsApproved(state.getIsApproved());
+            }
+            if (returnedFieldsContains("ApprovalAmount")) {
+                dto.setApprovalAmount(state.getApprovalAmount());
+            }
+            if (returnedFieldsContains("ShipperId")) {
+                dto.setShipperId(state.getShipperId());
+            }
+            if (returnedFieldsContains("SalesRepresentativeId")) {
+                dto.setSalesRepresentativeId(state.getSalesRepresentativeId());
+            }
+            if (returnedFieldsContains("BusinessPartnerId")) {
+                dto.setBusinessPartnerId(state.getBusinessPartnerId());
+            }
+            if (returnedFieldsContains("ChargeAmount")) {
+                dto.setChargeAmount(state.getChargeAmount());
+            }
+            if (returnedFieldsContains("CreateFrom")) {
+                dto.setCreateFrom(state.getCreateFrom());
+            }
+            if (returnedFieldsContains("FreightAmount")) {
+                dto.setFreightAmount(state.getFreightAmount());
+            }
+            if (returnedFieldsContains("ReversalDocumentNumber")) {
+                dto.setReversalDocumentNumber(state.getReversalDocumentNumber());
+            }
+            if (returnedFieldsContains("WarehouseIdFrom")) {
+                dto.setWarehouseIdFrom(state.getWarehouseIdFrom());
+            }
+            if (returnedFieldsContains("WarehouseIdTo")) {
+                dto.setWarehouseIdTo(state.getWarehouseIdTo());
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());

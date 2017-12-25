@@ -22,8 +22,25 @@
     <property name="ReversalLineNumber" ></property>
     <property name="Version" ></property>
     <property name="Active" ></property>
-    <property name="MovementDocumentTypeId" ></property>
     <property name="MovementDocumentStatusId" ></property>
+    <property name="MovementMovementDate" ></property>
+    <property name="MovementPosted" ></property>
+    <property name="MovementProcessed" ></property>
+    <property name="MovementProcessing" ></property>
+    <property name="MovementDateReceived" ></property>
+    <property name="MovementDocumentTypeId" ></property>
+    <property name="MovementIsInTransit" ></property>
+    <property name="MovementIsApproved" ></property>
+    <property name="MovementApprovalAmount" ></property>
+    <property name="MovementShipperId" ></property>
+    <property name="MovementSalesRepresentativeId" ></property>
+    <property name="MovementBusinessPartnerId" ></property>
+    <property name="MovementChargeAmount" ></property>
+    <property name="MovementCreateFrom" ></property>
+    <property name="MovementFreightAmount" ></property>
+    <property name="MovementReversalDocumentNumber" ></property>
+    <property name="MovementWarehouseIdFrom" ></property>
+    <property name="MovementWarehouseIdTo" ></property>
     <property name="MovementDescription" ></property>
     <property name="MovementCreatedBy" ></property>
     <property name="MovementCreatedAt" ></property>
@@ -63,9 +80,43 @@
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
+        <property name="IsPropertyMovementDocumentStatusIdRemoved" column="IsPropertyMovementDocumentStatusIdRemoved"/>
+
+        <property name="IsPropertyMovementMovementDateRemoved" column="IsPropertyMovementMovementDateRemoved"/>
+
+        <property name="IsPropertyMovementPostedRemoved" column="IsPropertyMovementPostedRemoved"/>
+
+        <property name="IsPropertyMovementProcessedRemoved" column="IsPropertyMovementProcessedRemoved"/>
+
+        <property name="IsPropertyMovementProcessingRemoved" column="IsPropertyMovementProcessingRemoved"/>
+
+        <property name="IsPropertyMovementDateReceivedRemoved" column="IsPropertyMovementDateReceivedRemoved"/>
+
         <property name="IsPropertyMovementDocumentTypeIdRemoved" column="IsPropertyMovementDocumentTypeIdRemoved"/>
 
-        <property name="IsPropertyMovementDocumentStatusIdRemoved" column="IsPropertyMovementDocumentStatusIdRemoved"/>
+        <property name="IsPropertyMovementIsInTransitRemoved" column="IsPropertyMovementIsInTransitRemoved"/>
+
+        <property name="IsPropertyMovementIsApprovedRemoved" column="IsPropertyMovementIsApprovedRemoved"/>
+
+        <property name="IsPropertyMovementApprovalAmountRemoved" column="IsPropertyMovementApprovalAmountRemoved"/>
+
+        <property name="IsPropertyMovementShipperIdRemoved" column="IsPropertyMovementShipperIdRemoved"/>
+
+        <property name="IsPropertyMovementSalesRepresentativeIdRemoved" column="IsPropertyMovementSalesRepresentativeIdRemoved"/>
+
+        <property name="IsPropertyMovementBusinessPartnerIdRemoved" column="IsPropertyMovementBusinessPartnerIdRemoved"/>
+
+        <property name="IsPropertyMovementChargeAmountRemoved" column="IsPropertyMovementChargeAmountRemoved"/>
+
+        <property name="IsPropertyMovementCreateFromRemoved" column="IsPropertyMovementCreateFromRemoved"/>
+
+        <property name="IsPropertyMovementFreightAmountRemoved" column="IsPropertyMovementFreightAmountRemoved"/>
+
+        <property name="IsPropertyMovementReversalDocumentNumberRemoved" column="IsPropertyMovementReversalDocumentNumberRemoved"/>
+
+        <property name="IsPropertyMovementWarehouseIdFromRemoved" column="IsPropertyMovementWarehouseIdFromRemoved"/>
+
+        <property name="IsPropertyMovementWarehouseIdToRemoved" column="IsPropertyMovementWarehouseIdToRemoved"/>
 
         <property name="IsPropertyMovementDescriptionRemoved" column="IsPropertyMovementDescriptionRemoved"/>
 

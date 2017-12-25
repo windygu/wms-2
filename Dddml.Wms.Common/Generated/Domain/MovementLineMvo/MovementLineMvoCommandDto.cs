@@ -74,9 +74,43 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		public virtual bool? Active { get; set; }
 
+		public virtual string DocumentAction { get; set; }
+
+		public virtual DateTime? MovementMovementDate { get; set; }
+
+		public virtual bool? MovementPosted { get; set; }
+
+		public virtual bool? MovementProcessed { get; set; }
+
+		public virtual string MovementProcessing { get; set; }
+
+		public virtual DateTime? MovementDateReceived { get; set; }
+
 		public virtual string MovementDocumentTypeId { get; set; }
 
-		public virtual string DocumentAction { get; set; }
+		public virtual bool? MovementIsInTransit { get; set; }
+
+		public virtual bool? MovementIsApproved { get; set; }
+
+		public virtual decimal? MovementApprovalAmount { get; set; }
+
+		public virtual string MovementShipperId { get; set; }
+
+		public virtual string MovementSalesRepresentativeId { get; set; }
+
+		public virtual string MovementBusinessPartnerId { get; set; }
+
+		public virtual decimal? MovementChargeAmount { get; set; }
+
+		public virtual string MovementCreateFrom { get; set; }
+
+		public virtual decimal? MovementFreightAmount { get; set; }
+
+		public virtual string MovementReversalDocumentNumber { get; set; }
+
+		public virtual string MovementWarehouseIdFrom { get; set; }
+
+		public virtual string MovementWarehouseIdTo { get; set; }
 
 		public virtual string MovementDescription { get; set; }
 
@@ -295,6 +329,101 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             }
         }
 
+		public virtual bool? IsPropertyMovementMovementDateRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementMovementDateRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementMovementDateRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementMovementDateRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementPostedRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementPostedRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementPostedRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementPostedRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementProcessedRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementProcessedRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementProcessedRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementProcessedRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementProcessingRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementProcessingRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementProcessingRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementProcessingRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementDateReceivedRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementDateReceivedRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementDateReceivedRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementDateReceivedRemoved = value;
+            }
+        }
+
 		public virtual bool? IsPropertyMovementDocumentTypeIdRemoved { get; set; }
 
         bool IMergePatchMovementLineMvo.IsPropertyMovementDocumentTypeIdRemoved
@@ -311,6 +440,234 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             set
             {
                 this.IsPropertyMovementDocumentTypeIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementIsInTransitRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementIsInTransitRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementIsInTransitRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementIsInTransitRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementIsApprovedRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementIsApprovedRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementIsApprovedRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementIsApprovedRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementApprovalAmountRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementApprovalAmountRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementApprovalAmountRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementApprovalAmountRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementShipperIdRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementShipperIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementShipperIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementShipperIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementSalesRepresentativeIdRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementSalesRepresentativeIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementSalesRepresentativeIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementSalesRepresentativeIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementBusinessPartnerIdRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementBusinessPartnerIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementBusinessPartnerIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementBusinessPartnerIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementChargeAmountRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementChargeAmountRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementChargeAmountRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementChargeAmountRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementCreateFromRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementCreateFromRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementCreateFromRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementCreateFromRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementFreightAmountRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementFreightAmountRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementFreightAmountRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementFreightAmountRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementReversalDocumentNumberRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementReversalDocumentNumberRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementReversalDocumentNumberRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementReversalDocumentNumberRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementWarehouseIdFromRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementWarehouseIdFromRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementWarehouseIdFromRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementWarehouseIdFromRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementWarehouseIdToRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementWarehouseIdToRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementWarehouseIdToRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementWarehouseIdToRemoved = value;
             }
         }
 

@@ -49,7 +49,24 @@ public abstract class AbstractMovementLineMvoStateCommandConverter<TCreateMoveme
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
+        cmd.setMovementMovementDate(state.getMovementMovementDate());
+        cmd.setMovementPosted(state.getMovementPosted());
+        cmd.setMovementProcessed(state.getMovementProcessed());
+        cmd.setMovementProcessing(state.getMovementProcessing());
+        cmd.setMovementDateReceived(state.getMovementDateReceived());
         cmd.setMovementDocumentTypeId(state.getMovementDocumentTypeId());
+        cmd.setMovementIsInTransit(state.getMovementIsInTransit());
+        cmd.setMovementIsApproved(state.getMovementIsApproved());
+        cmd.setMovementApprovalAmount(state.getMovementApprovalAmount());
+        cmd.setMovementShipperId(state.getMovementShipperId());
+        cmd.setMovementSalesRepresentativeId(state.getMovementSalesRepresentativeId());
+        cmd.setMovementBusinessPartnerId(state.getMovementBusinessPartnerId());
+        cmd.setMovementChargeAmount(state.getMovementChargeAmount());
+        cmd.setMovementCreateFrom(state.getMovementCreateFrom());
+        cmd.setMovementFreightAmount(state.getMovementFreightAmount());
+        cmd.setMovementReversalDocumentNumber(state.getMovementReversalDocumentNumber());
+        cmd.setMovementWarehouseIdFrom(state.getMovementWarehouseIdFrom());
+        cmd.setMovementWarehouseIdTo(state.getMovementWarehouseIdTo());
         cmd.setMovementDescription(state.getMovementDescription());
         cmd.setMovementCreatedBy(state.getMovementCreatedBy());
         cmd.setMovementCreatedAt(state.getMovementCreatedAt());
@@ -68,7 +85,24 @@ public abstract class AbstractMovementLineMvoStateCommandConverter<TCreateMoveme
         if (state.getReversalLineNumber() == null) { cmd.setIsPropertyReversalLineNumberRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
+        if (state.getMovementMovementDate() == null) { cmd.setIsPropertyMovementMovementDateRemoved(true); }
+        if (state.getMovementPosted() == null) { cmd.setIsPropertyMovementPostedRemoved(true); }
+        if (state.getMovementProcessed() == null) { cmd.setIsPropertyMovementProcessedRemoved(true); }
+        if (state.getMovementProcessing() == null) { cmd.setIsPropertyMovementProcessingRemoved(true); }
+        if (state.getMovementDateReceived() == null) { cmd.setIsPropertyMovementDateReceivedRemoved(true); }
         if (state.getMovementDocumentTypeId() == null) { cmd.setIsPropertyMovementDocumentTypeIdRemoved(true); }
+        if (state.getMovementIsInTransit() == null) { cmd.setIsPropertyMovementIsInTransitRemoved(true); }
+        if (state.getMovementIsApproved() == null) { cmd.setIsPropertyMovementIsApprovedRemoved(true); }
+        if (state.getMovementApprovalAmount() == null) { cmd.setIsPropertyMovementApprovalAmountRemoved(true); }
+        if (state.getMovementShipperId() == null) { cmd.setIsPropertyMovementShipperIdRemoved(true); }
+        if (state.getMovementSalesRepresentativeId() == null) { cmd.setIsPropertyMovementSalesRepresentativeIdRemoved(true); }
+        if (state.getMovementBusinessPartnerId() == null) { cmd.setIsPropertyMovementBusinessPartnerIdRemoved(true); }
+        if (state.getMovementChargeAmount() == null) { cmd.setIsPropertyMovementChargeAmountRemoved(true); }
+        if (state.getMovementCreateFrom() == null) { cmd.setIsPropertyMovementCreateFromRemoved(true); }
+        if (state.getMovementFreightAmount() == null) { cmd.setIsPropertyMovementFreightAmountRemoved(true); }
+        if (state.getMovementReversalDocumentNumber() == null) { cmd.setIsPropertyMovementReversalDocumentNumberRemoved(true); }
+        if (state.getMovementWarehouseIdFrom() == null) { cmd.setIsPropertyMovementWarehouseIdFromRemoved(true); }
+        if (state.getMovementWarehouseIdTo() == null) { cmd.setIsPropertyMovementWarehouseIdToRemoved(true); }
         if (state.getMovementDescription() == null) { cmd.setIsPropertyMovementDescriptionRemoved(true); }
         if (state.getMovementCreatedBy() == null) { cmd.setIsPropertyMovementCreatedByRemoved(true); }
         if (state.getMovementCreatedAt() == null) { cmd.setIsPropertyMovementCreatedAtRemoved(true); }
@@ -95,7 +129,24 @@ public abstract class AbstractMovementLineMvoStateCommandConverter<TCreateMoveme
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
+        cmd.setMovementMovementDate(state.getMovementMovementDate());
+        cmd.setMovementPosted(state.getMovementPosted());
+        cmd.setMovementProcessed(state.getMovementProcessed());
+        cmd.setMovementProcessing(state.getMovementProcessing());
+        cmd.setMovementDateReceived(state.getMovementDateReceived());
         cmd.setMovementDocumentTypeId(state.getMovementDocumentTypeId());
+        cmd.setMovementIsInTransit(state.getMovementIsInTransit());
+        cmd.setMovementIsApproved(state.getMovementIsApproved());
+        cmd.setMovementApprovalAmount(state.getMovementApprovalAmount());
+        cmd.setMovementShipperId(state.getMovementShipperId());
+        cmd.setMovementSalesRepresentativeId(state.getMovementSalesRepresentativeId());
+        cmd.setMovementBusinessPartnerId(state.getMovementBusinessPartnerId());
+        cmd.setMovementChargeAmount(state.getMovementChargeAmount());
+        cmd.setMovementCreateFrom(state.getMovementCreateFrom());
+        cmd.setMovementFreightAmount(state.getMovementFreightAmount());
+        cmd.setMovementReversalDocumentNumber(state.getMovementReversalDocumentNumber());
+        cmd.setMovementWarehouseIdFrom(state.getMovementWarehouseIdFrom());
+        cmd.setMovementWarehouseIdTo(state.getMovementWarehouseIdTo());
         cmd.setMovementDescription(state.getMovementDescription());
         cmd.setMovementCreatedBy(state.getMovementCreatedBy());
         cmd.setMovementCreatedAt(state.getMovementCreatedAt());

@@ -61,8 +61,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string MovementConfirmationDocumentTypeId { get; set; }
-
 		public virtual string MovementConfirmationDocumentStatusId { get; set; }
 
 		public virtual string MovementConfirmationMovementDocumentNumber { get; set; }
@@ -71,9 +69,11 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual decimal? MovementConfirmationApprovalAmount { get; set; }
 
+		public virtual bool? MovementConfirmationProcessed { get; set; }
+
 		public virtual string MovementConfirmationProcessing { get; set; }
 
-		public virtual bool? MovementConfirmationProcessed { get; set; }
+		public virtual string MovementConfirmationDocumentTypeId { get; set; }
 
 		public virtual string MovementConfirmationDescription { get; set; }
 
@@ -289,25 +289,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             }
         }
 
-		public virtual bool? IsPropertyMovementConfirmationDocumentTypeIdRemoved { get; set; }
-
-        bool IMovementConfirmationLineMvoStateMergePatched.IsPropertyMovementConfirmationDocumentTypeIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyMovementConfirmationDocumentTypeIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyMovementConfirmationDocumentTypeIdRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyMovementConfirmationDocumentStatusIdRemoved { get; set; }
 
         bool IMovementConfirmationLineMvoStateMergePatched.IsPropertyMovementConfirmationDocumentStatusIdRemoved
@@ -384,6 +365,25 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             }
         }
 
+		public virtual bool? IsPropertyMovementConfirmationProcessedRemoved { get; set; }
+
+        bool IMovementConfirmationLineMvoStateMergePatched.IsPropertyMovementConfirmationProcessedRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyMovementConfirmationProcessedRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyMovementConfirmationProcessedRemoved = value;
+            }
+        }
+
 		public virtual bool? IsPropertyMovementConfirmationProcessingRemoved { get; set; }
 
         bool IMovementConfirmationLineMvoStateMergePatched.IsPropertyMovementConfirmationProcessingRemoved
@@ -403,13 +403,13 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             }
         }
 
-		public virtual bool? IsPropertyMovementConfirmationProcessedRemoved { get; set; }
+		public virtual bool? IsPropertyMovementConfirmationDocumentTypeIdRemoved { get; set; }
 
-        bool IMovementConfirmationLineMvoStateMergePatched.IsPropertyMovementConfirmationProcessedRemoved
+        bool IMovementConfirmationLineMvoStateMergePatched.IsPropertyMovementConfirmationDocumentTypeIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyMovementConfirmationProcessedRemoved;
+                var b = this.IsPropertyMovementConfirmationDocumentTypeIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -418,7 +418,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             }
             set 
             {
-                this.IsPropertyMovementConfirmationProcessedRemoved = value;
+                this.IsPropertyMovementConfirmationDocumentTypeIdRemoved = value;
             }
         }
 

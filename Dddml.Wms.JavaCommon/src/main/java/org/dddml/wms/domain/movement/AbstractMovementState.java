@@ -22,6 +22,78 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         this.documentNumber = documentNumber;
     }
 
+    private String documentStatusId;
+
+    public String getDocumentStatusId()
+    {
+        return this.documentStatusId;
+    }
+
+    public void setDocumentStatusId(String documentStatusId)
+    {
+        this.documentStatusId = documentStatusId;
+    }
+
+    private Date movementDate;
+
+    public Date getMovementDate()
+    {
+        return this.movementDate;
+    }
+
+    public void setMovementDate(Date movementDate)
+    {
+        this.movementDate = movementDate;
+    }
+
+    private Boolean posted;
+
+    public Boolean getPosted()
+    {
+        return this.posted;
+    }
+
+    public void setPosted(Boolean posted)
+    {
+        this.posted = posted;
+    }
+
+    private Boolean processed;
+
+    public Boolean getProcessed()
+    {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed)
+    {
+        this.processed = processed;
+    }
+
+    private String processing;
+
+    public String getProcessing()
+    {
+        return this.processing;
+    }
+
+    public void setProcessing(String processing)
+    {
+        this.processing = processing;
+    }
+
+    private Date dateReceived;
+
+    public Date getDateReceived()
+    {
+        return this.dateReceived;
+    }
+
+    public void setDateReceived(Date dateReceived)
+    {
+        this.dateReceived = dateReceived;
+    }
+
     private String documentTypeId;
 
     public String getDocumentTypeId()
@@ -34,16 +106,148 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         this.documentTypeId = documentTypeId;
     }
 
-    private String documentStatusId;
+    private Boolean isInTransit;
 
-    public String getDocumentStatusId()
+    public Boolean getIsInTransit()
     {
-        return this.documentStatusId;
+        return this.isInTransit;
     }
 
-    public void setDocumentStatusId(String documentStatusId)
+    public void setIsInTransit(Boolean isInTransit)
     {
-        this.documentStatusId = documentStatusId;
+        this.isInTransit = isInTransit;
+    }
+
+    private Boolean isApproved;
+
+    public Boolean getIsApproved()
+    {
+        return this.isApproved;
+    }
+
+    public void setIsApproved(Boolean isApproved)
+    {
+        this.isApproved = isApproved;
+    }
+
+    private BigDecimal approvalAmount;
+
+    public BigDecimal getApprovalAmount()
+    {
+        return this.approvalAmount;
+    }
+
+    public void setApprovalAmount(BigDecimal approvalAmount)
+    {
+        this.approvalAmount = approvalAmount;
+    }
+
+    private String shipperId;
+
+    public String getShipperId()
+    {
+        return this.shipperId;
+    }
+
+    public void setShipperId(String shipperId)
+    {
+        this.shipperId = shipperId;
+    }
+
+    private String salesRepresentativeId;
+
+    public String getSalesRepresentativeId()
+    {
+        return this.salesRepresentativeId;
+    }
+
+    public void setSalesRepresentativeId(String salesRepresentativeId)
+    {
+        this.salesRepresentativeId = salesRepresentativeId;
+    }
+
+    private String businessPartnerId;
+
+    public String getBusinessPartnerId()
+    {
+        return this.businessPartnerId;
+    }
+
+    public void setBusinessPartnerId(String businessPartnerId)
+    {
+        this.businessPartnerId = businessPartnerId;
+    }
+
+    private BigDecimal chargeAmount;
+
+    public BigDecimal getChargeAmount()
+    {
+        return this.chargeAmount;
+    }
+
+    public void setChargeAmount(BigDecimal chargeAmount)
+    {
+        this.chargeAmount = chargeAmount;
+    }
+
+    private String createFrom;
+
+    public String getCreateFrom()
+    {
+        return this.createFrom;
+    }
+
+    public void setCreateFrom(String createFrom)
+    {
+        this.createFrom = createFrom;
+    }
+
+    private BigDecimal freightAmount;
+
+    public BigDecimal getFreightAmount()
+    {
+        return this.freightAmount;
+    }
+
+    public void setFreightAmount(BigDecimal freightAmount)
+    {
+        this.freightAmount = freightAmount;
+    }
+
+    private String reversalDocumentNumber;
+
+    public String getReversalDocumentNumber()
+    {
+        return this.reversalDocumentNumber;
+    }
+
+    public void setReversalDocumentNumber(String reversalDocumentNumber)
+    {
+        this.reversalDocumentNumber = reversalDocumentNumber;
+    }
+
+    private String warehouseIdFrom;
+
+    public String getWarehouseIdFrom()
+    {
+        return this.warehouseIdFrom;
+    }
+
+    public void setWarehouseIdFrom(String warehouseIdFrom)
+    {
+        this.warehouseIdFrom = warehouseIdFrom;
+    }
+
+    private String warehouseIdTo;
+
+    public String getWarehouseIdTo()
+    {
+        return this.warehouseIdTo;
+    }
+
+    public void setWarehouseIdTo(String warehouseIdTo)
+    {
+        this.warehouseIdTo = warehouseIdTo;
     }
 
     private String description;
@@ -219,8 +423,25 @@ public abstract class AbstractMovementState implements MovementState, Saveable
     {
         throwOnWrongEvent(e);
 
-        this.setDocumentTypeId(e.getDocumentTypeId());
         this.setDocumentStatusId(e.getDocumentStatusId());
+        this.setMovementDate(e.getMovementDate());
+        this.setPosted(e.getPosted());
+        this.setProcessed(e.getProcessed());
+        this.setProcessing(e.getProcessing());
+        this.setDateReceived(e.getDateReceived());
+        this.setDocumentTypeId(e.getDocumentTypeId());
+        this.setIsInTransit(e.getIsInTransit());
+        this.setIsApproved(e.getIsApproved());
+        this.setApprovalAmount(e.getApprovalAmount());
+        this.setShipperId(e.getShipperId());
+        this.setSalesRepresentativeId(e.getSalesRepresentativeId());
+        this.setBusinessPartnerId(e.getBusinessPartnerId());
+        this.setChargeAmount(e.getChargeAmount());
+        this.setCreateFrom(e.getCreateFrom());
+        this.setFreightAmount(e.getFreightAmount());
+        this.setReversalDocumentNumber(e.getReversalDocumentNumber());
+        this.setWarehouseIdFrom(e.getWarehouseIdFrom());
+        this.setWarehouseIdTo(e.getWarehouseIdTo());
         this.setDescription(e.getDescription());
         this.setActive(e.getActive());
 
@@ -239,6 +460,72 @@ public abstract class AbstractMovementState implements MovementState, Saveable
     {
         throwOnWrongEvent(e);
 
+        if (e.getDocumentStatusId() == null)
+        {
+            if (e.getIsPropertyDocumentStatusIdRemoved() != null && e.getIsPropertyDocumentStatusIdRemoved())
+            {
+                this.setDocumentStatusId(null);
+            }
+        }
+        else
+        {
+            this.setDocumentStatusId(e.getDocumentStatusId());
+        }
+        if (e.getMovementDate() == null)
+        {
+            if (e.getIsPropertyMovementDateRemoved() != null && e.getIsPropertyMovementDateRemoved())
+            {
+                this.setMovementDate(null);
+            }
+        }
+        else
+        {
+            this.setMovementDate(e.getMovementDate());
+        }
+        if (e.getPosted() == null)
+        {
+            if (e.getIsPropertyPostedRemoved() != null && e.getIsPropertyPostedRemoved())
+            {
+                this.setPosted(null);
+            }
+        }
+        else
+        {
+            this.setPosted(e.getPosted());
+        }
+        if (e.getProcessed() == null)
+        {
+            if (e.getIsPropertyProcessedRemoved() != null && e.getIsPropertyProcessedRemoved())
+            {
+                this.setProcessed(null);
+            }
+        }
+        else
+        {
+            this.setProcessed(e.getProcessed());
+        }
+        if (e.getProcessing() == null)
+        {
+            if (e.getIsPropertyProcessingRemoved() != null && e.getIsPropertyProcessingRemoved())
+            {
+                this.setProcessing(null);
+            }
+        }
+        else
+        {
+            this.setProcessing(e.getProcessing());
+        }
+        if (e.getDateReceived() == null)
+        {
+            if (e.getIsPropertyDateReceivedRemoved() != null && e.getIsPropertyDateReceivedRemoved())
+            {
+                this.setDateReceived(null);
+            }
+        }
+        else
+        {
+            this.setDateReceived(e.getDateReceived());
+        }
         if (e.getDocumentTypeId() == null)
         {
             if (e.getIsPropertyDocumentTypeIdRemoved() != null && e.getIsPropertyDocumentTypeIdRemoved())
@@ -250,16 +537,137 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         {
             this.setDocumentTypeId(e.getDocumentTypeId());
         }
-        if (e.getDocumentStatusId() == null)
+        if (e.getIsInTransit() == null)
         {
-            if (e.getIsPropertyDocumentStatusIdRemoved() != null && e.getIsPropertyDocumentStatusIdRemoved())
+            if (e.getIsPropertyIsInTransitRemoved() != null && e.getIsPropertyIsInTransitRemoved())
             {
-                this.setDocumentStatusId(null);
+                this.setIsInTransit(null);
             }
         }
         else
         {
-            this.setDocumentStatusId(e.getDocumentStatusId());
+            this.setIsInTransit(e.getIsInTransit());
+        }
+        if (e.getIsApproved() == null)
+        {
+            if (e.getIsPropertyIsApprovedRemoved() != null && e.getIsPropertyIsApprovedRemoved())
+            {
+                this.setIsApproved(null);
+            }
+        }
+        else
+        {
+            this.setIsApproved(e.getIsApproved());
+        }
+        if (e.getApprovalAmount() == null)
+        {
+            if (e.getIsPropertyApprovalAmountRemoved() != null && e.getIsPropertyApprovalAmountRemoved())
+            {
+                this.setApprovalAmount(null);
+            }
+        }
+        else
+        {
+            this.setApprovalAmount(e.getApprovalAmount());
+        }
+        if (e.getShipperId() == null)
+        {
+            if (e.getIsPropertyShipperIdRemoved() != null && e.getIsPropertyShipperIdRemoved())
+            {
+                this.setShipperId(null);
+            }
+        }
+        else
+        {
+            this.setShipperId(e.getShipperId());
+        }
+        if (e.getSalesRepresentativeId() == null)
+        {
+            if (e.getIsPropertySalesRepresentativeIdRemoved() != null && e.getIsPropertySalesRepresentativeIdRemoved())
+            {
+                this.setSalesRepresentativeId(null);
+            }
+        }
+        else
+        {
+            this.setSalesRepresentativeId(e.getSalesRepresentativeId());
+        }
+        if (e.getBusinessPartnerId() == null)
+        {
+            if (e.getIsPropertyBusinessPartnerIdRemoved() != null && e.getIsPropertyBusinessPartnerIdRemoved())
+            {
+                this.setBusinessPartnerId(null);
+            }
+        }
+        else
+        {
+            this.setBusinessPartnerId(e.getBusinessPartnerId());
+        }
+        if (e.getChargeAmount() == null)
+        {
+            if (e.getIsPropertyChargeAmountRemoved() != null && e.getIsPropertyChargeAmountRemoved())
+            {
+                this.setChargeAmount(null);
+            }
+        }
+        else
+        {
+            this.setChargeAmount(e.getChargeAmount());
+        }
+        if (e.getCreateFrom() == null)
+        {
+            if (e.getIsPropertyCreateFromRemoved() != null && e.getIsPropertyCreateFromRemoved())
+            {
+                this.setCreateFrom(null);
+            }
+        }
+        else
+        {
+            this.setCreateFrom(e.getCreateFrom());
+        }
+        if (e.getFreightAmount() == null)
+        {
+            if (e.getIsPropertyFreightAmountRemoved() != null && e.getIsPropertyFreightAmountRemoved())
+            {
+                this.setFreightAmount(null);
+            }
+        }
+        else
+        {
+            this.setFreightAmount(e.getFreightAmount());
+        }
+        if (e.getReversalDocumentNumber() == null)
+        {
+            if (e.getIsPropertyReversalDocumentNumberRemoved() != null && e.getIsPropertyReversalDocumentNumberRemoved())
+            {
+                this.setReversalDocumentNumber(null);
+            }
+        }
+        else
+        {
+            this.setReversalDocumentNumber(e.getReversalDocumentNumber());
+        }
+        if (e.getWarehouseIdFrom() == null)
+        {
+            if (e.getIsPropertyWarehouseIdFromRemoved() != null && e.getIsPropertyWarehouseIdFromRemoved())
+            {
+                this.setWarehouseIdFrom(null);
+            }
+        }
+        else
+        {
+            this.setWarehouseIdFrom(e.getWarehouseIdFrom());
+        }
+        if (e.getWarehouseIdTo() == null)
+        {
+            if (e.getIsPropertyWarehouseIdToRemoved() != null && e.getIsPropertyWarehouseIdToRemoved())
+            {
+                this.setWarehouseIdTo(null);
+            }
+        }
+        else
+        {
+            this.setWarehouseIdTo(e.getWarehouseIdTo());
         }
         if (e.getDescription() == null)
         {

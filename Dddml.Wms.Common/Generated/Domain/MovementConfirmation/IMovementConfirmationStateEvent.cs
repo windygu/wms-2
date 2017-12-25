@@ -17,8 +17,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         bool ReadOnly { get; set; }
 
-		string DocumentTypeId { get; set; }
-
 		string DocumentStatusId { get; set; }
 
 		string MovementDocumentNumber { get; set; }
@@ -27,9 +25,11 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		decimal? ApprovalAmount { get; set; }
 
+		bool? Processed { get; set; }
+
 		string Processing { get; set; }
 
-		bool? Processed { get; set; }
+		string DocumentTypeId { get; set; }
 
 		string Description { get; set; }
 
@@ -51,8 +51,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 	public interface IMovementConfirmationStateMergePatched : IMovementConfirmationStateEvent//, IMovementConfirmationStateProperties
 	{
-		bool IsPropertyDocumentTypeIdRemoved { get; set; }
-
 		bool IsPropertyDocumentStatusIdRemoved { get; set; }
 
 		bool IsPropertyMovementDocumentNumberRemoved { get; set; }
@@ -61,9 +59,11 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		bool IsPropertyApprovalAmountRemoved { get; set; }
 
+		bool IsPropertyProcessedRemoved { get; set; }
+
 		bool IsPropertyProcessingRemoved { get; set; }
 
-		bool IsPropertyProcessedRemoved { get; set; }
+		bool IsPropertyDocumentTypeIdRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 

@@ -45,35 +45,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "DocumentTypeId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "DocumentType",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "DocumentStatusId",
                     Type = typeof(string),
                     TypeName = "string",
@@ -190,6 +161,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "Processed",
+                    Type = typeof(bool),
+                    TypeName = "bool",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "Processing",
                     Type = typeof(string),
                     TypeName = "string",
@@ -219,16 +219,16 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Processed",
-                    Type = typeof(bool),
-                    TypeName = "bool",
+                    Name = "DocumentTypeId",
+                    Type = typeof(string),
+                    TypeName = "string",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
                     Description = "",
                     Length = 0,
                     GenericTypeName = "",
-                    ReferenceTypeName = "",
+                    ReferenceTypeName = "DocumentType",
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
@@ -521,8 +521,6 @@ namespace Dddml.Wms.Domain.Metadata
             var d = new Dictionary<string, string>();
             d.Add("DocumentNumber", "DocumentNumber");
             d.Add("documentNumber", "DocumentNumber");
-            d.Add("DocumentTypeId", "DocumentTypeId");
-            d.Add("documentTypeId", "DocumentTypeId");
             d.Add("DocumentStatusId", "DocumentStatusId");
             d.Add("documentStatusId", "DocumentStatusId");
             d.Add("MovementDocumentNumber", "MovementDocumentNumber");
@@ -531,10 +529,12 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("isApproved", "IsApproved");
             d.Add("ApprovalAmount", "ApprovalAmount");
             d.Add("approvalAmount", "ApprovalAmount");
-            d.Add("Processing", "Processing");
-            d.Add("processing", "Processing");
             d.Add("Processed", "Processed");
             d.Add("processed", "Processed");
+            d.Add("Processing", "Processing");
+            d.Add("processing", "Processing");
+            d.Add("DocumentTypeId", "DocumentTypeId");
+            d.Add("documentTypeId", "DocumentTypeId");
             d.Add("Description", "Description");
             d.Add("description", "Description");
             d.Add("Version", "Version");

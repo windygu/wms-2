@@ -360,6 +360,186 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             }
         }
 
+		public virtual string MovementDocumentStatusId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementDocumentStatusId"))
+                {
+                    return _state.MovementDocumentStatusId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementDocumentStatusId = value;
+            }
+        }
+
+        string IMovementLineMvoStateProperties.MovementDocumentStatusId
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementDocumentStatusId;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementDocumentStatusId = value;
+            }
+        }
+
+		public virtual DateTime? MovementMovementDate
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementMovementDate"))
+                {
+                    return _state.MovementMovementDate.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.MovementMovementDate;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementMovementDate = value.Value;
+                }
+            }
+        }
+
+        DateTime IMovementLineMvoStateProperties.MovementMovementDate
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementMovementDate;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementMovementDate = value;
+            }
+        }
+
+		public virtual bool? MovementPosted
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementPosted"))
+                {
+                    return _state.MovementPosted;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementPosted = value.Value;
+                }
+            }
+        }
+
+        bool IMovementLineMvoStateProperties.MovementPosted
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementPosted;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementPosted = value;
+            }
+        }
+
+		public virtual bool? MovementProcessed
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementProcessed"))
+                {
+                    return _state.MovementProcessed;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementProcessed = value.Value;
+                }
+            }
+        }
+
+        bool IMovementLineMvoStateProperties.MovementProcessed
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementProcessed;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementProcessed = value;
+            }
+        }
+
+		public virtual string MovementProcessing
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementProcessing"))
+                {
+                    return _state.MovementProcessing;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementProcessing = value;
+            }
+        }
+
+        string IMovementLineMvoStateProperties.MovementProcessing
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementProcessing;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementProcessing = value;
+            }
+        }
+
+		public virtual DateTime? MovementDateReceived
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementDateReceived"))
+                {
+                    return _state.MovementDateReceived.Date < default(DateTime).Date.AddDays(1) ? (DateTime?)null : _state.MovementDateReceived;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementDateReceived = value.Value;
+                }
+            }
+        }
+
+        DateTime IMovementLineMvoStateProperties.MovementDateReceived
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementDateReceived;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementDateReceived = value;
+            }
+        }
+
 		public virtual string MovementDocumentTypeId
 		{
             get
@@ -388,31 +568,354 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             }
         }
 
-		public virtual string MovementDocumentStatusId
-		{
+		public virtual bool? MovementIsInTransit
+        {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementDocumentStatusId"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementIsInTransit"))
                 {
-                    return _state.MovementDocumentStatusId;
+                    return _state.MovementIsInTransit;
                 }
                 return null;
             }
             set
             {
-                _state.MovementDocumentStatusId = value;
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementIsInTransit = value.Value;
+                }
             }
         }
 
-        string IMovementLineMvoStateProperties.MovementDocumentStatusId
+        bool IMovementLineMvoStateProperties.MovementIsInTransit
         {
             get 
             {
-                return (this._state as IMovementLineMvoStateProperties).MovementDocumentStatusId;
+                return (this._state as IMovementLineMvoStateProperties).MovementIsInTransit;
             }
             set 
             {
-                (this._state as IMovementLineMvoStateProperties).MovementDocumentStatusId = value;
+                (this._state as IMovementLineMvoStateProperties).MovementIsInTransit = value;
+            }
+        }
+
+		public virtual bool? MovementIsApproved
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementIsApproved"))
+                {
+                    return _state.MovementIsApproved;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementIsApproved = value.Value;
+                }
+            }
+        }
+
+        bool IMovementLineMvoStateProperties.MovementIsApproved
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementIsApproved;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementIsApproved = value;
+            }
+        }
+
+		public virtual decimal? MovementApprovalAmount
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementApprovalAmount"))
+                {
+                    return _state.MovementApprovalAmount;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementApprovalAmount = value.Value;
+                }
+            }
+        }
+
+        decimal IMovementLineMvoStateProperties.MovementApprovalAmount
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementApprovalAmount;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementApprovalAmount = value;
+            }
+        }
+
+		public virtual string MovementShipperId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementShipperId"))
+                {
+                    return _state.MovementShipperId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementShipperId = value;
+            }
+        }
+
+        string IMovementLineMvoStateProperties.MovementShipperId
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementShipperId;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementShipperId = value;
+            }
+        }
+
+		public virtual string MovementSalesRepresentativeId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementSalesRepresentativeId"))
+                {
+                    return _state.MovementSalesRepresentativeId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementSalesRepresentativeId = value;
+            }
+        }
+
+        string IMovementLineMvoStateProperties.MovementSalesRepresentativeId
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementSalesRepresentativeId;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementSalesRepresentativeId = value;
+            }
+        }
+
+		public virtual string MovementBusinessPartnerId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementBusinessPartnerId"))
+                {
+                    return _state.MovementBusinessPartnerId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementBusinessPartnerId = value;
+            }
+        }
+
+        string IMovementLineMvoStateProperties.MovementBusinessPartnerId
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementBusinessPartnerId;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementBusinessPartnerId = value;
+            }
+        }
+
+		public virtual decimal? MovementChargeAmount
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementChargeAmount"))
+                {
+                    return _state.MovementChargeAmount;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementChargeAmount = value.Value;
+                }
+            }
+        }
+
+        decimal IMovementLineMvoStateProperties.MovementChargeAmount
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementChargeAmount;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementChargeAmount = value;
+            }
+        }
+
+		public virtual string MovementCreateFrom
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementCreateFrom"))
+                {
+                    return _state.MovementCreateFrom;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementCreateFrom = value;
+            }
+        }
+
+        string IMovementLineMvoStateProperties.MovementCreateFrom
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementCreateFrom;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementCreateFrom = value;
+            }
+        }
+
+		public virtual decimal? MovementFreightAmount
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementFreightAmount"))
+                {
+                    return _state.MovementFreightAmount;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.MovementFreightAmount = value.Value;
+                }
+            }
+        }
+
+        decimal IMovementLineMvoStateProperties.MovementFreightAmount
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementFreightAmount;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementFreightAmount = value;
+            }
+        }
+
+		public virtual string MovementReversalDocumentNumber
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementReversalDocumentNumber"))
+                {
+                    return _state.MovementReversalDocumentNumber;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementReversalDocumentNumber = value;
+            }
+        }
+
+        string IMovementLineMvoStateProperties.MovementReversalDocumentNumber
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementReversalDocumentNumber;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementReversalDocumentNumber = value;
+            }
+        }
+
+		public virtual string MovementWarehouseIdFrom
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementWarehouseIdFrom"))
+                {
+                    return _state.MovementWarehouseIdFrom;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementWarehouseIdFrom = value;
+            }
+        }
+
+        string IMovementLineMvoStateProperties.MovementWarehouseIdFrom
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementWarehouseIdFrom;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementWarehouseIdFrom = value;
+            }
+        }
+
+		public virtual string MovementWarehouseIdTo
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementWarehouseIdTo"))
+                {
+                    return _state.MovementWarehouseIdTo;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementWarehouseIdTo = value;
+            }
+        }
+
+        string IMovementLineMvoStateProperties.MovementWarehouseIdTo
+        {
+            get 
+            {
+                return (this._state as IMovementLineMvoStateProperties).MovementWarehouseIdTo;
+            }
+            set 
+            {
+                (this._state as IMovementLineMvoStateProperties).MovementWarehouseIdTo = value;
             }
         }
 

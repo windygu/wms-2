@@ -76,12 +76,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set;
         }
 
-        string MovementConfirmationDocumentTypeId
-        {
-            get;
-            set;
-        }
-
         string MovementConfirmationDocumentStatusId
         {
             get;
@@ -106,13 +100,19 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set;
         }
 
+        bool? MovementConfirmationProcessed
+        {
+            get;
+            set;
+        }
+
         string MovementConfirmationProcessing
         {
             get;
             set;
         }
 
-        bool? MovementConfirmationProcessed
+        string MovementConfirmationDocumentTypeId
         {
             get;
             set;

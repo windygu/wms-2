@@ -52,11 +52,36 @@ namespace Dddml.Wms.Domain.Movement
             cmd.Version = ((IMovementStateProperties)state).Version;
 
             cmd.DocumentNumber = state.DocumentNumber;
+            cmd.MovementDate = state.MovementDate;
+            cmd.Posted = state.Posted;
+            cmd.Processed = state.Processed;
+            cmd.Processing = state.Processing;
+            cmd.DateReceived = state.DateReceived;
             cmd.DocumentTypeId = state.DocumentTypeId;
+            cmd.IsInTransit = state.IsInTransit;
+            cmd.IsApproved = state.IsApproved;
+            cmd.ApprovalAmount = state.ApprovalAmount;
+            cmd.ShipperId = state.ShipperId;
+            cmd.SalesRepresentativeId = state.SalesRepresentativeId;
+            cmd.BusinessPartnerId = state.BusinessPartnerId;
+            cmd.ChargeAmount = state.ChargeAmount;
+            cmd.CreateFrom = state.CreateFrom;
+            cmd.FreightAmount = state.FreightAmount;
+            cmd.ReversalDocumentNumber = state.ReversalDocumentNumber;
+            cmd.WarehouseIdFrom = state.WarehouseIdFrom;
+            cmd.WarehouseIdTo = state.WarehouseIdTo;
             cmd.Description = state.Description;
             cmd.Active = ((IMovementStateProperties)state).Active;
             
+            if (state.Processing == null) { cmd.IsPropertyProcessingRemoved = true; }
             if (state.DocumentTypeId == null) { cmd.IsPropertyDocumentTypeIdRemoved = true; }
+            if (state.ShipperId == null) { cmd.IsPropertyShipperIdRemoved = true; }
+            if (state.SalesRepresentativeId == null) { cmd.IsPropertySalesRepresentativeIdRemoved = true; }
+            if (state.BusinessPartnerId == null) { cmd.IsPropertyBusinessPartnerIdRemoved = true; }
+            if (state.CreateFrom == null) { cmd.IsPropertyCreateFromRemoved = true; }
+            if (state.ReversalDocumentNumber == null) { cmd.IsPropertyReversalDocumentNumberRemoved = true; }
+            if (state.WarehouseIdFrom == null) { cmd.IsPropertyWarehouseIdFromRemoved = true; }
+            if (state.WarehouseIdTo == null) { cmd.IsPropertyWarehouseIdToRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             foreach (var d in state.MovementLines)
             {
@@ -75,7 +100,24 @@ namespace Dddml.Wms.Domain.Movement
             cmd.Version = ((IMovementStateProperties)state).Version;
 
             cmd.DocumentNumber = state.DocumentNumber;
+            cmd.MovementDate = state.MovementDate;
+            cmd.Posted = state.Posted;
+            cmd.Processed = state.Processed;
+            cmd.Processing = state.Processing;
+            cmd.DateReceived = state.DateReceived;
             cmd.DocumentTypeId = state.DocumentTypeId;
+            cmd.IsInTransit = state.IsInTransit;
+            cmd.IsApproved = state.IsApproved;
+            cmd.ApprovalAmount = state.ApprovalAmount;
+            cmd.ShipperId = state.ShipperId;
+            cmd.SalesRepresentativeId = state.SalesRepresentativeId;
+            cmd.BusinessPartnerId = state.BusinessPartnerId;
+            cmd.ChargeAmount = state.ChargeAmount;
+            cmd.CreateFrom = state.CreateFrom;
+            cmd.FreightAmount = state.FreightAmount;
+            cmd.ReversalDocumentNumber = state.ReversalDocumentNumber;
+            cmd.WarehouseIdFrom = state.WarehouseIdFrom;
+            cmd.WarehouseIdTo = state.WarehouseIdTo;
             cmd.Description = state.Description;
             cmd.Active = ((IMovementStateProperties)state).Active;
             foreach (var d in state.MovementLines)

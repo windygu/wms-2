@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	public interface ICreateOrMergePatchOrDeleteMovementConfirmation : IMovementConfirmationCommand
 	{
 
-		string DocumentTypeId { get; set; }
-
 		string DocumentAction { get; set; }
 
 		string MovementDocumentNumber { get; set; }
@@ -33,9 +31,11 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		decimal? ApprovalAmount { get; set; }
 
+		bool? Processed { get; set; }
+
 		string Processing { get; set; }
 
-		bool? Processed { get; set; }
+		string DocumentTypeId { get; set; }
 
 		string Description { get; set; }
 
@@ -55,17 +55,17 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	public interface IMergePatchMovementConfirmation : ICreateOrMergePatchOrDeleteMovementConfirmation
 	{
 
-		bool IsPropertyDocumentTypeIdRemoved { get; set; }
-
 		bool IsPropertyMovementDocumentNumberRemoved { get; set; }
 
 		bool IsPropertyIsApprovedRemoved { get; set; }
 
 		bool IsPropertyApprovalAmountRemoved { get; set; }
 
+		bool IsPropertyProcessedRemoved { get; set; }
+
 		bool IsPropertyProcessingRemoved { get; set; }
 
-		bool IsPropertyProcessedRemoved { get; set; }
+		bool IsPropertyDocumentTypeIdRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 

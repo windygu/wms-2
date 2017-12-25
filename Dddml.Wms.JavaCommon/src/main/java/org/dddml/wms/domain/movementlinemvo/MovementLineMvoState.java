@@ -78,13 +78,81 @@ public interface MovementLineMvoState
 
     void setDeleted(Boolean deleted);
 
+    String getMovementDocumentStatusId();
+
+    void setMovementDocumentStatusId(String movementDocumentStatusId);
+
+    Date getMovementMovementDate();
+
+    void setMovementMovementDate(Date movementMovementDate);
+
+    Boolean getMovementPosted();
+
+    void setMovementPosted(Boolean movementPosted);
+
+    Boolean getMovementProcessed();
+
+    void setMovementProcessed(Boolean movementProcessed);
+
+    String getMovementProcessing();
+
+    void setMovementProcessing(String movementProcessing);
+
+    Date getMovementDateReceived();
+
+    void setMovementDateReceived(Date movementDateReceived);
+
     String getMovementDocumentTypeId();
 
     void setMovementDocumentTypeId(String movementDocumentTypeId);
 
-    String getMovementDocumentStatusId();
+    Boolean getMovementIsInTransit();
 
-    void setMovementDocumentStatusId(String movementDocumentStatusId);
+    void setMovementIsInTransit(Boolean movementIsInTransit);
+
+    Boolean getMovementIsApproved();
+
+    void setMovementIsApproved(Boolean movementIsApproved);
+
+    BigDecimal getMovementApprovalAmount();
+
+    void setMovementApprovalAmount(BigDecimal movementApprovalAmount);
+
+    String getMovementShipperId();
+
+    void setMovementShipperId(String movementShipperId);
+
+    String getMovementSalesRepresentativeId();
+
+    void setMovementSalesRepresentativeId(String movementSalesRepresentativeId);
+
+    String getMovementBusinessPartnerId();
+
+    void setMovementBusinessPartnerId(String movementBusinessPartnerId);
+
+    BigDecimal getMovementChargeAmount();
+
+    void setMovementChargeAmount(BigDecimal movementChargeAmount);
+
+    String getMovementCreateFrom();
+
+    void setMovementCreateFrom(String movementCreateFrom);
+
+    BigDecimal getMovementFreightAmount();
+
+    void setMovementFreightAmount(BigDecimal movementFreightAmount);
+
+    String getMovementReversalDocumentNumber();
+
+    void setMovementReversalDocumentNumber(String movementReversalDocumentNumber);
+
+    String getMovementWarehouseIdFrom();
+
+    void setMovementWarehouseIdFrom(String movementWarehouseIdFrom);
+
+    String getMovementWarehouseIdTo();
+
+    void setMovementWarehouseIdTo(String movementWarehouseIdTo);
 
     String getMovementDescription();
 

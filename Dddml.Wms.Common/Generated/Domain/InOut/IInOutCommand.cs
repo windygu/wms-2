@@ -27,9 +27,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		bool? Posted { get; set; }
 
-		bool? Processing { get; set; }
-
 		bool? Processed { get; set; }
+
+		string Processing { get; set; }
 
 		string DocumentTypeId { get; set; }
 
@@ -95,9 +95,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		bool IsPropertyPostedRemoved { get; set; }
 
-		bool IsPropertyProcessingRemoved { get; set; }
-
 		bool IsPropertyProcessedRemoved { get; set; }
+
+		bool IsPropertyProcessingRemoved { get; set; }
 
 		bool IsPropertyDocumentTypeIdRemoved { get; set; }
 

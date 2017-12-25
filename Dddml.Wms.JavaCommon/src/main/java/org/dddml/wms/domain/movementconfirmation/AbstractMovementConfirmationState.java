@@ -22,18 +22,6 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         this.documentNumber = documentNumber;
     }
 
-    private String documentTypeId;
-
-    public String getDocumentTypeId()
-    {
-        return this.documentTypeId;
-    }
-
-    public void setDocumentTypeId(String documentTypeId)
-    {
-        this.documentTypeId = documentTypeId;
-    }
-
     private String documentStatusId;
 
     public String getDocumentStatusId()
@@ -82,6 +70,18 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         this.approvalAmount = approvalAmount;
     }
 
+    private Boolean processed;
+
+    public Boolean getProcessed()
+    {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed)
+    {
+        this.processed = processed;
+    }
+
     private String processing;
 
     public String getProcessing()
@@ -94,16 +94,16 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         this.processing = processing;
     }
 
-    private Boolean processed;
+    private String documentTypeId;
 
-    public Boolean getProcessed()
+    public String getDocumentTypeId()
     {
-        return this.processed;
+        return this.documentTypeId;
     }
 
-    public void setProcessed(Boolean processed)
+    public void setDocumentTypeId(String documentTypeId)
     {
-        this.processed = processed;
+        this.documentTypeId = documentTypeId;
     }
 
     private String description;
@@ -279,13 +279,13 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
     {
         throwOnWrongEvent(e);
 
-        this.setDocumentTypeId(e.getDocumentTypeId());
         this.setDocumentStatusId(e.getDocumentStatusId());
         this.setMovementDocumentNumber(e.getMovementDocumentNumber());
         this.setIsApproved(e.getIsApproved());
         this.setApprovalAmount(e.getApprovalAmount());
-        this.setProcessing(e.getProcessing());
         this.setProcessed(e.getProcessed());
+        this.setProcessing(e.getProcessing());
+        this.setDocumentTypeId(e.getDocumentTypeId());
         this.setDescription(e.getDescription());
         this.setActive(e.getActive());
 
@@ -304,17 +304,6 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
     {
         throwOnWrongEvent(e);
 
-        if (e.getDocumentTypeId() == null)
-        {
-            if (e.getIsPropertyDocumentTypeIdRemoved() != null && e.getIsPropertyDocumentTypeIdRemoved())
-            {
-                this.setDocumentTypeId(null);
-            }
-        }
-        else
-        {
-            this.setDocumentTypeId(e.getDocumentTypeId());
-        }
         if (e.getDocumentStatusId() == null)
         {
             if (e.getIsPropertyDocumentStatusIdRemoved() != null && e.getIsPropertyDocumentStatusIdRemoved())
@@ -359,6 +348,17 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         {
             this.setApprovalAmount(e.getApprovalAmount());
         }
+        if (e.getProcessed() == null)
+        {
+            if (e.getIsPropertyProcessedRemoved() != null && e.getIsPropertyProcessedRemoved())
+            {
+                this.setProcessed(null);
+            }
+        }
+        else
+        {
+            this.setProcessed(e.getProcessed());
+        }
         if (e.getProcessing() == null)
         {
             if (e.getIsPropertyProcessingRemoved() != null && e.getIsPropertyProcessingRemoved())
@@ -370,16 +370,16 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         {
             this.setProcessing(e.getProcessing());
         }
-        if (e.getProcessed() == null)
+        if (e.getDocumentTypeId() == null)
         {
-            if (e.getIsPropertyProcessedRemoved() != null && e.getIsPropertyProcessedRemoved())
+            if (e.getIsPropertyDocumentTypeIdRemoved() != null && e.getIsPropertyDocumentTypeIdRemoved())
             {
-                this.setProcessed(null);
+                this.setDocumentTypeId(null);
             }
         }
         else
         {
-            this.setProcessed(e.getProcessed());
+            this.setDocumentTypeId(e.getDocumentTypeId());
         }
         if (e.getDescription() == null)
         {

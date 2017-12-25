@@ -131,18 +131,6 @@ public class MovementConfirmationLineMvoStateDto
         this.active = active;
     }
 
-    private String movementConfirmationDocumentTypeId;
-
-    public String getMovementConfirmationDocumentTypeId()
-    {
-        return this.movementConfirmationDocumentTypeId;
-    }
-
-    public void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId)
-    {
-        this.movementConfirmationDocumentTypeId = movementConfirmationDocumentTypeId;
-    }
-
     private String movementConfirmationDocumentStatusId;
 
     public String getMovementConfirmationDocumentStatusId()
@@ -191,6 +179,18 @@ public class MovementConfirmationLineMvoStateDto
         this.movementConfirmationApprovalAmount = movementConfirmationApprovalAmount;
     }
 
+    private Boolean movementConfirmationProcessed;
+
+    public Boolean getMovementConfirmationProcessed()
+    {
+        return this.movementConfirmationProcessed;
+    }
+
+    public void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed)
+    {
+        this.movementConfirmationProcessed = movementConfirmationProcessed;
+    }
+
     private String movementConfirmationProcessing;
 
     public String getMovementConfirmationProcessing()
@@ -203,16 +203,16 @@ public class MovementConfirmationLineMvoStateDto
         this.movementConfirmationProcessing = movementConfirmationProcessing;
     }
 
-    private Boolean movementConfirmationProcessed;
+    private String movementConfirmationDocumentTypeId;
 
-    public Boolean getMovementConfirmationProcessed()
+    public String getMovementConfirmationDocumentTypeId()
     {
-        return this.movementConfirmationProcessed;
+        return this.movementConfirmationDocumentTypeId;
     }
 
-    public void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed)
+    public void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId)
     {
-        this.movementConfirmationProcessed = movementConfirmationProcessed;
+        this.movementConfirmationDocumentTypeId = movementConfirmationDocumentTypeId;
     }
 
     private String movementConfirmationDescription;
@@ -415,9 +415,6 @@ public class MovementConfirmationLineMvoStateDto
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());
             }
-            if (returnedFieldsContains("MovementConfirmationDocumentTypeId")) {
-                dto.setMovementConfirmationDocumentTypeId(state.getMovementConfirmationDocumentTypeId());
-            }
             if (returnedFieldsContains("MovementConfirmationDocumentStatusId")) {
                 dto.setMovementConfirmationDocumentStatusId(state.getMovementConfirmationDocumentStatusId());
             }
@@ -430,11 +427,14 @@ public class MovementConfirmationLineMvoStateDto
             if (returnedFieldsContains("MovementConfirmationApprovalAmount")) {
                 dto.setMovementConfirmationApprovalAmount(state.getMovementConfirmationApprovalAmount());
             }
+            if (returnedFieldsContains("MovementConfirmationProcessed")) {
+                dto.setMovementConfirmationProcessed(state.getMovementConfirmationProcessed());
+            }
             if (returnedFieldsContains("MovementConfirmationProcessing")) {
                 dto.setMovementConfirmationProcessing(state.getMovementConfirmationProcessing());
             }
-            if (returnedFieldsContains("MovementConfirmationProcessed")) {
-                dto.setMovementConfirmationProcessed(state.getMovementConfirmationProcessed());
+            if (returnedFieldsContains("MovementConfirmationDocumentTypeId")) {
+                dto.setMovementConfirmationDocumentTypeId(state.getMovementConfirmationDocumentTypeId());
             }
             if (returnedFieldsContains("MovementConfirmationDescription")) {
                 dto.setMovementConfirmationDescription(state.getMovementConfirmationDescription());

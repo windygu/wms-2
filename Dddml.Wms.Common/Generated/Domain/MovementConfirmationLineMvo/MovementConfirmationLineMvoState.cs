@@ -193,8 +193,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
-			this.MovementConfirmationDocumentTypeId = e.MovementConfirmationDocumentTypeId;
-
 			this.MovementConfirmationDocumentStatusId = e.MovementConfirmationDocumentStatusId;
 
 			this.MovementConfirmationMovementDocumentNumber = e.MovementConfirmationMovementDocumentNumber;
@@ -203,9 +201,11 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
             this.MovementConfirmationApprovalAmount = (e.MovementConfirmationApprovalAmount != null && e.MovementConfirmationApprovalAmount.HasValue) ? e.MovementConfirmationApprovalAmount.Value : default(decimal);
 
+            this.MovementConfirmationProcessed = (e.MovementConfirmationProcessed != null && e.MovementConfirmationProcessed.HasValue) ? e.MovementConfirmationProcessed.Value : default(bool);
+
 			this.MovementConfirmationProcessing = e.MovementConfirmationProcessing;
 
-            this.MovementConfirmationProcessed = (e.MovementConfirmationProcessed != null && e.MovementConfirmationProcessed.HasValue) ? e.MovementConfirmationProcessed.Value : default(bool);
+			this.MovementConfirmationDocumentTypeId = e.MovementConfirmationDocumentTypeId;
 
 			this.MovementConfirmationDescription = e.MovementConfirmationDescription;
 
@@ -342,18 +342,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 				this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 			}
 
-			if (e.MovementConfirmationDocumentTypeId == null)
-			{
-				if (e.IsPropertyMovementConfirmationDocumentTypeIdRemoved)
-				{
-					this.MovementConfirmationDocumentTypeId = default(string);
-				}
-			}
-			else
-			{
-				this.MovementConfirmationDocumentTypeId = e.MovementConfirmationDocumentTypeId;
-			}
-
 			if (e.MovementConfirmationDocumentStatusId == null)
 			{
 				if (e.IsPropertyMovementConfirmationDocumentStatusIdRemoved)
@@ -402,6 +390,18 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 				this.MovementConfirmationApprovalAmount = (e.MovementConfirmationApprovalAmount != null && e.MovementConfirmationApprovalAmount.HasValue) ? e.MovementConfirmationApprovalAmount.Value : default(decimal);
 			}
 
+			if (e.MovementConfirmationProcessed == null)
+			{
+				if (e.IsPropertyMovementConfirmationProcessedRemoved)
+				{
+					this.MovementConfirmationProcessed = default(bool);
+				}
+			}
+			else
+			{
+				this.MovementConfirmationProcessed = (e.MovementConfirmationProcessed != null && e.MovementConfirmationProcessed.HasValue) ? e.MovementConfirmationProcessed.Value : default(bool);
+			}
+
 			if (e.MovementConfirmationProcessing == null)
 			{
 				if (e.IsPropertyMovementConfirmationProcessingRemoved)
@@ -414,16 +414,16 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 				this.MovementConfirmationProcessing = e.MovementConfirmationProcessing;
 			}
 
-			if (e.MovementConfirmationProcessed == null)
+			if (e.MovementConfirmationDocumentTypeId == null)
 			{
-				if (e.IsPropertyMovementConfirmationProcessedRemoved)
+				if (e.IsPropertyMovementConfirmationDocumentTypeIdRemoved)
 				{
-					this.MovementConfirmationProcessed = default(bool);
+					this.MovementConfirmationDocumentTypeId = default(string);
 				}
 			}
 			else
 			{
-				this.MovementConfirmationProcessed = (e.MovementConfirmationProcessed != null && e.MovementConfirmationProcessed.HasValue) ? e.MovementConfirmationProcessed.Value : default(bool);
+				this.MovementConfirmationDocumentTypeId = e.MovementConfirmationDocumentTypeId;
 			}
 
 			if (e.MovementConfirmationDescription == null)

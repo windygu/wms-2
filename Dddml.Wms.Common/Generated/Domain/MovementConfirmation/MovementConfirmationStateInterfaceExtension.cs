@@ -52,18 +52,18 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             cmd.Version = ((IMovementConfirmationStateProperties)state).Version;
 
             cmd.DocumentNumber = state.DocumentNumber;
-            cmd.DocumentTypeId = state.DocumentTypeId;
             cmd.MovementDocumentNumber = state.MovementDocumentNumber;
             cmd.IsApproved = state.IsApproved;
             cmd.ApprovalAmount = state.ApprovalAmount;
-            cmd.Processing = state.Processing;
             cmd.Processed = state.Processed;
+            cmd.Processing = state.Processing;
+            cmd.DocumentTypeId = state.DocumentTypeId;
             cmd.Description = state.Description;
             cmd.Active = ((IMovementConfirmationStateProperties)state).Active;
             
-            if (state.DocumentTypeId == null) { cmd.IsPropertyDocumentTypeIdRemoved = true; }
             if (state.MovementDocumentNumber == null) { cmd.IsPropertyMovementDocumentNumberRemoved = true; }
             if (state.Processing == null) { cmd.IsPropertyProcessingRemoved = true; }
+            if (state.DocumentTypeId == null) { cmd.IsPropertyDocumentTypeIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             foreach (var d in state.MovementConfirmationLines)
             {
@@ -82,12 +82,12 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             cmd.Version = ((IMovementConfirmationStateProperties)state).Version;
 
             cmd.DocumentNumber = state.DocumentNumber;
-            cmd.DocumentTypeId = state.DocumentTypeId;
             cmd.MovementDocumentNumber = state.MovementDocumentNumber;
             cmd.IsApproved = state.IsApproved;
             cmd.ApprovalAmount = state.ApprovalAmount;
-            cmd.Processing = state.Processing;
             cmd.Processed = state.Processed;
+            cmd.Processing = state.Processing;
+            cmd.DocumentTypeId = state.DocumentTypeId;
             cmd.Description = state.Description;
             cmd.Active = ((IMovementConfirmationStateProperties)state).Active;
             foreach (var d in state.MovementConfirmationLines)

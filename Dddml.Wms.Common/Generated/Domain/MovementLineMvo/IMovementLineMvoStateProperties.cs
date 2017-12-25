@@ -37,9 +37,43 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		bool Active { get; set; }
 
+		string MovementDocumentStatusId { get; set; }
+
+		DateTime MovementMovementDate { get; set; }
+
+		bool MovementPosted { get; set; }
+
+		bool MovementProcessed { get; set; }
+
+		string MovementProcessing { get; set; }
+
+		DateTime MovementDateReceived { get; set; }
+
 		string MovementDocumentTypeId { get; set; }
 
-		string MovementDocumentStatusId { get; set; }
+		bool MovementIsInTransit { get; set; }
+
+		bool MovementIsApproved { get; set; }
+
+		decimal MovementApprovalAmount { get; set; }
+
+		string MovementShipperId { get; set; }
+
+		string MovementSalesRepresentativeId { get; set; }
+
+		string MovementBusinessPartnerId { get; set; }
+
+		decimal MovementChargeAmount { get; set; }
+
+		string MovementCreateFrom { get; set; }
+
+		decimal MovementFreightAmount { get; set; }
+
+		string MovementReversalDocumentNumber { get; set; }
+
+		string MovementWarehouseIdFrom { get; set; }
+
+		string MovementWarehouseIdTo { get; set; }
 
 		string MovementDescription { get; set; }
 

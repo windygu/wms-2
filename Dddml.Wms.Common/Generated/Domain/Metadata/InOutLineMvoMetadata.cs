@@ -742,7 +742,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutProcessing",
+                    Name = "InOutProcessed",
                     Type = typeof(bool),
                     TypeName = "bool",
                     IsSimpleValueObjectType = true,
@@ -771,9 +771,9 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InOutProcessed",
-                    Type = typeof(bool),
-                    TypeName = "bool",
+                    Name = "InOutProcessing",
+                    Type = typeof(string),
+                    TypeName = "string",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
@@ -1819,10 +1819,10 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("inOutDocumentStatusId", "InOutDocumentStatusId");
             d.Add("InOutPosted", "InOutPosted");
             d.Add("inOutPosted", "InOutPosted");
-            d.Add("InOutProcessing", "InOutProcessing");
-            d.Add("inOutProcessing", "InOutProcessing");
             d.Add("InOutProcessed", "InOutProcessed");
             d.Add("inOutProcessed", "InOutProcessed");
+            d.Add("InOutProcessing", "InOutProcessing");
+            d.Add("inOutProcessing", "InOutProcessing");
             d.Add("InOutDocumentTypeId", "InOutDocumentTypeId");
             d.Add("inOutDocumentTypeId", "InOutDocumentTypeId");
             d.Add("InOutDescription", "InOutDescription");

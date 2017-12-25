@@ -44,11 +44,11 @@ aggregates:
         Posted:
           type: bool
 
-        Processing:
-          type: bool
-        
         Processed:
           type: bool 
+
+        Processing:
+          type: string
 
         DocumentTypeId:
           referenceType: DocumentType

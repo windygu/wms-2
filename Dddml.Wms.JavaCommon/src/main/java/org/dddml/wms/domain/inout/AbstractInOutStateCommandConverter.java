@@ -39,8 +39,8 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
 
         cmd.setDocumentNumber(state.getDocumentNumber());
         cmd.setPosted(state.getPosted());
-        cmd.setProcessing(state.getProcessing());
         cmd.setProcessed(state.getProcessed());
+        cmd.setProcessing(state.getProcessing());
         cmd.setDocumentTypeId(state.getDocumentTypeId());
         cmd.setDescription(state.getDescription());
         cmd.setOrderId(state.getOrderId());
@@ -67,8 +67,8 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setActive(state.getActive());
             
         if (state.getPosted() == null) { cmd.setIsPropertyPostedRemoved(true); }
-        if (state.getProcessing() == null) { cmd.setIsPropertyProcessingRemoved(true); }
         if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
+        if (state.getProcessing() == null) { cmd.setIsPropertyProcessingRemoved(true); }
         if (state.getDocumentTypeId() == null) { cmd.setIsPropertyDocumentTypeIdRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getOrderId() == null) { cmd.setIsPropertyOrderIdRemoved(true); }
@@ -108,8 +108,8 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setVersion(state.getVersion());
         cmd.setDocumentNumber(state.getDocumentNumber());
         cmd.setPosted(state.getPosted());
-        cmd.setProcessing(state.getProcessing());
         cmd.setProcessed(state.getProcessed());
+        cmd.setProcessing(state.getProcessing());
         cmd.setDocumentTypeId(state.getDocumentTypeId());
         cmd.setDescription(state.getDescription());
         cmd.setOrderId(state.getOrderId());

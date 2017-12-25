@@ -264,18 +264,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.inOutPosted = inOutPosted;
         }
 
-        private Boolean inOutProcessing;
-
-        public Boolean getInOutProcessing()
-        {
-            return this.inOutProcessing;
-        }
-
-        public void setInOutProcessing(Boolean inOutProcessing)
-        {
-            this.inOutProcessing = inOutProcessing;
-        }
-
         private Boolean inOutProcessed;
 
         public Boolean getInOutProcessed()
@@ -286,6 +274,18 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
         public void setInOutProcessed(Boolean inOutProcessed)
         {
             this.inOutProcessed = inOutProcessed;
+        }
+
+        private String inOutProcessing;
+
+        public String getInOutProcessing()
+        {
+            return this.inOutProcessing;
+        }
+
+        public void setInOutProcessing(String inOutProcessing)
+        {
+            this.inOutProcessing = inOutProcessing;
         }
 
         private String inOutDocumentTypeId;
@@ -870,18 +870,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.isPropertyInOutPostedRemoved = removed;
         }
 
-        private Boolean isPropertyInOutProcessingRemoved;
-
-        public Boolean getIsPropertyInOutProcessingRemoved()
-        {
-            return this.isPropertyInOutProcessingRemoved;
-        }
-
-        public void setIsPropertyInOutProcessingRemoved(Boolean removed)
-        {
-            this.isPropertyInOutProcessingRemoved = removed;
-        }
-
         private Boolean isPropertyInOutProcessedRemoved;
 
         public Boolean getIsPropertyInOutProcessedRemoved()
@@ -892,6 +880,18 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
         public void setIsPropertyInOutProcessedRemoved(Boolean removed)
         {
             this.isPropertyInOutProcessedRemoved = removed;
+        }
+
+        private Boolean isPropertyInOutProcessingRemoved;
+
+        public Boolean getIsPropertyInOutProcessingRemoved()
+        {
+            return this.isPropertyInOutProcessingRemoved;
+        }
+
+        public void setIsPropertyInOutProcessingRemoved(Boolean removed)
+        {
+            this.isPropertyInOutProcessingRemoved = removed;
         }
 
         private Boolean isPropertyInOutDocumentTypeIdRemoved;

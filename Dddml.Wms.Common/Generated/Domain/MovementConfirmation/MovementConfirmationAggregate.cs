@@ -107,13 +107,13 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 			var stateEventId = new MovementConfirmationStateEventId(c.DocumentNumber, c.Version);
             IMovementConfirmationStateCreated e = NewMovementConfirmationStateCreated(stateEventId);
 		
-            e.DocumentTypeId = c.DocumentTypeId;
             NewMovementConfirmationDocumentActionCommandAndExecute(c, _state, e);
             e.MovementDocumentNumber = c.MovementDocumentNumber;
             e.IsApproved = c.IsApproved;
             e.ApprovalAmount = c.ApprovalAmount;
-            e.Processing = c.Processing;
             e.Processed = c.Processed;
+            e.Processing = c.Processing;
+            e.DocumentTypeId = c.DocumentTypeId;
             e.Description = c.Description;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
@@ -140,21 +140,21 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 			var stateEventId = new MovementConfirmationStateEventId(c.DocumentNumber, c.Version);
             IMovementConfirmationStateMergePatched e = NewMovementConfirmationStateMergePatched(stateEventId);
 
-            e.DocumentTypeId = c.DocumentTypeId;
             NewMovementConfirmationDocumentActionCommandAndExecute(c, _state, e);
             e.MovementDocumentNumber = c.MovementDocumentNumber;
             e.IsApproved = c.IsApproved;
             e.ApprovalAmount = c.ApprovalAmount;
-            e.Processing = c.Processing;
             e.Processed = c.Processed;
+            e.Processing = c.Processing;
+            e.DocumentTypeId = c.DocumentTypeId;
             e.Description = c.Description;
             e.Active = c.Active;
-            e.IsPropertyDocumentTypeIdRemoved = c.IsPropertyDocumentTypeIdRemoved;
             e.IsPropertyMovementDocumentNumberRemoved = c.IsPropertyMovementDocumentNumberRemoved;
             e.IsPropertyIsApprovedRemoved = c.IsPropertyIsApprovedRemoved;
             e.IsPropertyApprovalAmountRemoved = c.IsPropertyApprovalAmountRemoved;
-            e.IsPropertyProcessingRemoved = c.IsPropertyProcessingRemoved;
             e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
+            e.IsPropertyProcessingRemoved = c.IsPropertyProcessingRemoved;
+            e.IsPropertyDocumentTypeIdRemoved = c.IsPropertyDocumentTypeIdRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 

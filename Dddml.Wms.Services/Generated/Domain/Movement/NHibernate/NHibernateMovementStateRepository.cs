@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.Movement.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentNumber", "DocumentTypeId", "DocumentStatusId", "Description", "MovementLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentNumber", "DocumentStatusId", "MovementDate", "Posted", "Processed", "Processing", "DateReceived", "DocumentTypeId", "IsInTransit", "IsApproved", "ApprovalAmount", "ShipperId", "SalesRepresentativeId", "BusinessPartnerId", "ChargeAmount", "CreateFrom", "FreightAmount", "ReversalDocumentNumber", "WarehouseIdFrom", "WarehouseIdTo", "Description", "MovementLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

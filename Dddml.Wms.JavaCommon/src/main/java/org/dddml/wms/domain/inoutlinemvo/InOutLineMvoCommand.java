@@ -118,13 +118,13 @@ public interface InOutLineMvoCommand extends Command
 
         void setInOutPosted(Boolean inOutPosted);
 
-        Boolean getInOutProcessing();
-
-        void setInOutProcessing(Boolean inOutProcessing);
-
         Boolean getInOutProcessed();
 
         void setInOutProcessed(Boolean inOutProcessed);
+
+        String getInOutProcessing();
+
+        void setInOutProcessing(String inOutProcessing);
 
         String getInOutDocumentTypeId();
 
@@ -322,13 +322,13 @@ public interface InOutLineMvoCommand extends Command
 
         void setIsPropertyInOutPostedRemoved(Boolean removed);
 
-        Boolean getIsPropertyInOutProcessingRemoved();
-
-        void setIsPropertyInOutProcessingRemoved(Boolean removed);
-
         Boolean getIsPropertyInOutProcessedRemoved();
 
         void setIsPropertyInOutProcessedRemoved(Boolean removed);
+
+        Boolean getIsPropertyInOutProcessingRemoved();
+
+        void setIsPropertyInOutProcessingRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutDocumentTypeIdRemoved();
 

@@ -137,13 +137,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        public virtual bool? InOutProcessing
+        public virtual bool? InOutProcessed
         {
             get;
             set;
         }
 
-        public virtual bool? InOutProcessed
+        public virtual string InOutProcessing
         {
             get;
             set;
@@ -376,8 +376,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             state.InOutDocumentStatusId = this.InOutDocumentStatusId;
             if (this.InOutPosted != null && this.InOutPosted.HasValue) { state.InOutPosted = this.InOutPosted.Value; }
-            if (this.InOutProcessing != null && this.InOutProcessing.HasValue) { state.InOutProcessing = this.InOutProcessing.Value; }
             if (this.InOutProcessed != null && this.InOutProcessed.HasValue) { state.InOutProcessed = this.InOutProcessed.Value; }
+            state.InOutProcessing = this.InOutProcessing;
             state.InOutDocumentTypeId = this.InOutDocumentTypeId;
             state.InOutDescription = this.InOutDescription;
             state.InOutOrderId = this.InOutOrderId;

@@ -36,8 +36,8 @@
 	<property name="deleted" ></property>
 	<property name="inOutDocumentStatusId" ></property>
 	<property name="inOutPosted" ></property>
-	<property name="inOutProcessing" ></property>
 	<property name="inOutProcessed" ></property>
+	<property name="inOutProcessing" ></property>
 	<property name="inOutDocumentTypeId" ></property>
 	<property name="inOutDescription" ></property>
 	<property name="inOutOrderId" ></property>

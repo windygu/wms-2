@@ -71,8 +71,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string MovementConfirmationDocumentTypeId { get; set; }
-
 		public virtual string DocumentAction { get; set; }
 
 		public virtual string MovementConfirmationMovementDocumentNumber { get; set; }
@@ -81,9 +79,11 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual decimal? MovementConfirmationApprovalAmount { get; set; }
 
+		public virtual bool? MovementConfirmationProcessed { get; set; }
+
 		public virtual string MovementConfirmationProcessing { get; set; }
 
-		public virtual bool? MovementConfirmationProcessed { get; set; }
+		public virtual string MovementConfirmationDocumentTypeId { get; set; }
 
 		public virtual string MovementConfirmationDescription { get; set; }
 
@@ -149,17 +149,17 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementConfirmationDocumentTypeIdRemoved { get; set; }
-
 		public virtual bool IsPropertyMovementConfirmationMovementDocumentNumberRemoved { get; set; }
 
 		public virtual bool IsPropertyMovementConfirmationIsApprovedRemoved { get; set; }
 
 		public virtual bool IsPropertyMovementConfirmationApprovalAmountRemoved { get; set; }
 
+		public virtual bool IsPropertyMovementConfirmationProcessedRemoved { get; set; }
+
 		public virtual bool IsPropertyMovementConfirmationProcessingRemoved { get; set; }
 
-		public virtual bool IsPropertyMovementConfirmationProcessedRemoved { get; set; }
+		public virtual bool IsPropertyMovementConfirmationDocumentTypeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyMovementConfirmationDescriptionRemoved { get; set; }
 

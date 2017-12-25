@@ -25,13 +25,13 @@ public interface InOutState
 
     void setPosted(Boolean posted);
 
-    Boolean getProcessing();
-
-    void setProcessing(Boolean processing);
-
     Boolean getProcessed();
 
     void setProcessed(Boolean processed);
+
+    String getProcessing();
+
+    void setProcessing(String processing);
 
     String getDocumentTypeId();
 

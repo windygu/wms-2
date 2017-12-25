@@ -56,9 +56,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? InOutPosted { get; set; }
 
-		bool? InOutProcessing { get; set; }
-
 		bool? InOutProcessed { get; set; }
+
+		string InOutProcessing { get; set; }
 
 		string InOutDocumentTypeId { get; set; }
 
@@ -166,9 +166,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool IsPropertyInOutPostedRemoved { get; set; }
 
-		bool IsPropertyInOutProcessingRemoved { get; set; }
-
 		bool IsPropertyInOutProcessedRemoved { get; set; }
+
+		bool IsPropertyInOutProcessingRemoved { get; set; }
 
 		bool IsPropertyInOutDocumentTypeIdRemoved { get; set; }
 

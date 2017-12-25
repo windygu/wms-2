@@ -251,18 +251,6 @@ public class InOutLineMvoStateDto
         this.inOutPosted = inOutPosted;
     }
 
-    private Boolean inOutProcessing;
-
-    public Boolean getInOutProcessing()
-    {
-        return this.inOutProcessing;
-    }
-
-    public void setInOutProcessing(Boolean inOutProcessing)
-    {
-        this.inOutProcessing = inOutProcessing;
-    }
-
     private Boolean inOutProcessed;
 
     public Boolean getInOutProcessed()
@@ -273,6 +261,18 @@ public class InOutLineMvoStateDto
     public void setInOutProcessed(Boolean inOutProcessed)
     {
         this.inOutProcessed = inOutProcessed;
+    }
+
+    private String inOutProcessing;
+
+    public String getInOutProcessing()
+    {
+        return this.inOutProcessing;
+    }
+
+    public void setInOutProcessing(String inOutProcessing)
+    {
+        this.inOutProcessing = inOutProcessing;
     }
 
     private String inOutDocumentTypeId;
@@ -769,11 +769,11 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("InOutPosted")) {
                 dto.setInOutPosted(state.getInOutPosted());
             }
-            if (returnedFieldsContains("InOutProcessing")) {
-                dto.setInOutProcessing(state.getInOutProcessing());
-            }
             if (returnedFieldsContains("InOutProcessed")) {
                 dto.setInOutProcessed(state.getInOutProcessed());
+            }
+            if (returnedFieldsContains("InOutProcessing")) {
+                dto.setInOutProcessing(state.getInOutProcessing());
             }
             if (returnedFieldsContains("InOutDocumentTypeId")) {
                 dto.setInOutDocumentTypeId(state.getInOutDocumentTypeId());

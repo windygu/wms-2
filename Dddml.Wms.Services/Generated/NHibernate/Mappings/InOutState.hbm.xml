@@ -11,8 +11,8 @@
 
     <property name="DocumentStatusId" ></property>
     <property name="Posted" ></property>
-    <property name="Processing" ></property>
     <property name="Processed" ></property>
+    <property name="Processing" ></property>
     <property name="DocumentTypeId" ></property>
     <property name="Description" ></property>
     <property name="OrderId" ></property>

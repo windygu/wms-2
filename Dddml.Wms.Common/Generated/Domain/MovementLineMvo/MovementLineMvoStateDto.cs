@@ -83,13 +83,115 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             set;
         }
 
+        public virtual string MovementDocumentStatusId
+        {
+            get;
+            set;
+        }
+
+        public virtual DateTime? MovementMovementDate
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? MovementPosted
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? MovementProcessed
+        {
+            get;
+            set;
+        }
+
+        public virtual string MovementProcessing
+        {
+            get;
+            set;
+        }
+
+        public virtual DateTime? MovementDateReceived
+        {
+            get;
+            set;
+        }
+
         public virtual string MovementDocumentTypeId
         {
             get;
             set;
         }
 
-        public virtual string MovementDocumentStatusId
+        public virtual bool? MovementIsInTransit
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? MovementIsApproved
+        {
+            get;
+            set;
+        }
+
+        public virtual decimal? MovementApprovalAmount
+        {
+            get;
+            set;
+        }
+
+        public virtual string MovementShipperId
+        {
+            get;
+            set;
+        }
+
+        public virtual string MovementSalesRepresentativeId
+        {
+            get;
+            set;
+        }
+
+        public virtual string MovementBusinessPartnerId
+        {
+            get;
+            set;
+        }
+
+        public virtual decimal? MovementChargeAmount
+        {
+            get;
+            set;
+        }
+
+        public virtual string MovementCreateFrom
+        {
+            get;
+            set;
+        }
+
+        public virtual decimal? MovementFreightAmount
+        {
+            get;
+            set;
+        }
+
+        public virtual string MovementReversalDocumentNumber
+        {
+            get;
+            set;
+        }
+
+        public virtual string MovementWarehouseIdFrom
+        {
+            get;
+            set;
+        }
+
+        public virtual string MovementWarehouseIdTo
         {
             get;
             set;
@@ -181,8 +283,25 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             state.ReversalLineNumber = this.ReversalLineNumber;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
-            state.MovementDocumentTypeId = this.MovementDocumentTypeId;
             state.MovementDocumentStatusId = this.MovementDocumentStatusId;
+            if (this.MovementMovementDate != null && this.MovementMovementDate.HasValue) { state.MovementMovementDate = this.MovementMovementDate.Value; }
+            if (this.MovementPosted != null && this.MovementPosted.HasValue) { state.MovementPosted = this.MovementPosted.Value; }
+            if (this.MovementProcessed != null && this.MovementProcessed.HasValue) { state.MovementProcessed = this.MovementProcessed.Value; }
+            state.MovementProcessing = this.MovementProcessing;
+            if (this.MovementDateReceived != null && this.MovementDateReceived.HasValue) { state.MovementDateReceived = this.MovementDateReceived.Value; }
+            state.MovementDocumentTypeId = this.MovementDocumentTypeId;
+            if (this.MovementIsInTransit != null && this.MovementIsInTransit.HasValue) { state.MovementIsInTransit = this.MovementIsInTransit.Value; }
+            if (this.MovementIsApproved != null && this.MovementIsApproved.HasValue) { state.MovementIsApproved = this.MovementIsApproved.Value; }
+            if (this.MovementApprovalAmount != null && this.MovementApprovalAmount.HasValue) { state.MovementApprovalAmount = this.MovementApprovalAmount.Value; }
+            state.MovementShipperId = this.MovementShipperId;
+            state.MovementSalesRepresentativeId = this.MovementSalesRepresentativeId;
+            state.MovementBusinessPartnerId = this.MovementBusinessPartnerId;
+            if (this.MovementChargeAmount != null && this.MovementChargeAmount.HasValue) { state.MovementChargeAmount = this.MovementChargeAmount.Value; }
+            state.MovementCreateFrom = this.MovementCreateFrom;
+            if (this.MovementFreightAmount != null && this.MovementFreightAmount.HasValue) { state.MovementFreightAmount = this.MovementFreightAmount.Value; }
+            state.MovementReversalDocumentNumber = this.MovementReversalDocumentNumber;
+            state.MovementWarehouseIdFrom = this.MovementWarehouseIdFrom;
+            state.MovementWarehouseIdTo = this.MovementWarehouseIdTo;
             state.MovementDescription = this.MovementDescription;
             state.MovementCreatedBy = this.MovementCreatedBy;
             if (this.MovementCreatedAt != null && this.MovementCreatedAt.HasValue) { state.MovementCreatedAt = this.MovementCreatedAt.Value; }

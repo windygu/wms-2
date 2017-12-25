@@ -6,18 +6,6 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementConfirmationCommandDto
 {
-    private String documentTypeId;
-
-    public String getDocumentTypeId()
-    {
-        return this.documentTypeId;
-    }
-
-    public void setDocumentTypeId(String documentTypeId)
-    {
-        this.documentTypeId = documentTypeId;
-    }
-
     private String documentAction;
 
     public String getDocumentAction()
@@ -66,6 +54,18 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.approvalAmount = approvalAmount;
     }
 
+    private Boolean processed;
+
+    public Boolean getProcessed()
+    {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed)
+    {
+        this.processed = processed;
+    }
+
     private String processing;
 
     public String getProcessing()
@@ -78,16 +78,16 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.processing = processing;
     }
 
-    private Boolean processed;
+    private String documentTypeId;
 
-    public Boolean getProcessed()
+    public String getDocumentTypeId()
     {
-        return this.processed;
+        return this.documentTypeId;
     }
 
-    public void setProcessed(Boolean processed)
+    public void setDocumentTypeId(String documentTypeId)
     {
-        this.processed = processed;
+        this.documentTypeId = documentTypeId;
     }
 
     private String description;
@@ -126,18 +126,6 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.movementConfirmationLines = movementConfirmationLines;
     }
 
-    private Boolean isPropertyDocumentTypeIdRemoved;
-
-    public Boolean getIsPropertyDocumentTypeIdRemoved()
-    {
-        return this.isPropertyDocumentTypeIdRemoved;
-    }
-
-    public void setIsPropertyDocumentTypeIdRemoved(Boolean removed)
-    {
-        this.isPropertyDocumentTypeIdRemoved = removed;
-    }
-
     private Boolean isPropertyMovementDocumentNumberRemoved;
 
     public Boolean getIsPropertyMovementDocumentNumberRemoved()
@@ -174,6 +162,18 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.isPropertyApprovalAmountRemoved = removed;
     }
 
+    private Boolean isPropertyProcessedRemoved;
+
+    public Boolean getIsPropertyProcessedRemoved()
+    {
+        return this.isPropertyProcessedRemoved;
+    }
+
+    public void setIsPropertyProcessedRemoved(Boolean removed)
+    {
+        this.isPropertyProcessedRemoved = removed;
+    }
+
     private Boolean isPropertyProcessingRemoved;
 
     public Boolean getIsPropertyProcessingRemoved()
@@ -186,16 +186,16 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.isPropertyProcessingRemoved = removed;
     }
 
-    private Boolean isPropertyProcessedRemoved;
+    private Boolean isPropertyDocumentTypeIdRemoved;
 
-    public Boolean getIsPropertyProcessedRemoved()
+    public Boolean getIsPropertyDocumentTypeIdRemoved()
     {
-        return this.isPropertyProcessedRemoved;
+        return this.isPropertyDocumentTypeIdRemoved;
     }
 
-    public void setIsPropertyProcessedRemoved(Boolean removed)
+    public void setIsPropertyDocumentTypeIdRemoved(Boolean removed)
     {
-        this.isPropertyProcessedRemoved = removed;
+        this.isPropertyDocumentTypeIdRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;
@@ -225,13 +225,13 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
     public void copyTo(AbstractMovementConfirmationCommand.AbstractCreateOrMergePatchMovementConfirmation command)
     {
         ((AbstractMovementConfirmationCommandDto) this).copyTo(command);
-        command.setDocumentTypeId(this.getDocumentTypeId());
         command.setDocumentAction(this.getDocumentAction());
         command.setMovementDocumentNumber(this.getMovementDocumentNumber());
         command.setIsApproved(this.getIsApproved());
         command.setApprovalAmount(this.getApprovalAmount());
-        command.setProcessing(this.getProcessing());
         command.setProcessed(this.getProcessed());
+        command.setProcessing(this.getProcessing());
+        command.setDocumentTypeId(this.getDocumentTypeId());
         command.setDescription(this.getDescription());
         command.setActive(this.getActive());
     }
@@ -268,12 +268,12 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
     public void copyTo(AbstractMovementConfirmationCommand.AbstractMergePatchMovementConfirmation command)
     {
         copyTo((AbstractMovementConfirmationCommand.AbstractCreateOrMergePatchMovementConfirmation) command);
-        command.setIsPropertyDocumentTypeIdRemoved(this.getIsPropertyDocumentTypeIdRemoved());
         command.setIsPropertyMovementDocumentNumberRemoved(this.getIsPropertyMovementDocumentNumberRemoved());
         command.setIsPropertyIsApprovedRemoved(this.getIsPropertyIsApprovedRemoved());
         command.setIsPropertyApprovalAmountRemoved(this.getIsPropertyApprovalAmountRemoved());
-        command.setIsPropertyProcessingRemoved(this.getIsPropertyProcessingRemoved());
         command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());
+        command.setIsPropertyProcessingRemoved(this.getIsPropertyProcessingRemoved());
+        command.setIsPropertyDocumentTypeIdRemoved(this.getIsPropertyDocumentTypeIdRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }

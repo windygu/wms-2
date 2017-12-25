@@ -26,8 +26,25 @@ public final class MovementLineMvoFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "movementDocumentTypeId",
             "movementDocumentStatusId",
+            "movementMovementDate",
+            "movementPosted",
+            "movementProcessed",
+            "movementProcessing",
+            "movementDateReceived",
+            "movementDocumentTypeId",
+            "movementIsInTransit",
+            "movementIsApproved",
+            "movementApprovalAmount",
+            "movementShipperId",
+            "movementSalesRepresentativeId",
+            "movementBusinessPartnerId",
+            "movementChargeAmount",
+            "movementCreateFrom",
+            "movementFreightAmount",
+            "movementReversalDocumentNumber",
+            "movementWarehouseIdFrom",
+            "movementWarehouseIdTo",
             "movementDescription",
             "movementVersion",
             "movementCreatedBy",
@@ -56,6 +73,23 @@ public final class MovementLineMvoFilteringProperties
             "Date",
             "Boolean",
             "Boolean",
+            "String",
+            "Date",
+            "Boolean",
+            "Boolean",
+            "String",
+            "Date",
+            "String",
+            "Boolean",
+            "Boolean",
+            "BigDecimal",
+            "String",
+            "String",
+            "String",
+            "BigDecimal",
+            "String",
+            "BigDecimal",
+            "String",
             "String",
             "String",
             "String",
@@ -112,10 +146,44 @@ public final class MovementLineMvoFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("movementDocumentTypeId", "movementDocumentTypeId");
-        aliasMap.put("MovementDocumentTypeId", "movementDocumentTypeId");
         aliasMap.put("movementDocumentStatusId", "movementDocumentStatusId");
         aliasMap.put("MovementDocumentStatusId", "movementDocumentStatusId");
+        aliasMap.put("movementMovementDate", "movementMovementDate");
+        aliasMap.put("MovementMovementDate", "movementMovementDate");
+        aliasMap.put("movementPosted", "movementPosted");
+        aliasMap.put("MovementPosted", "movementPosted");
+        aliasMap.put("movementProcessed", "movementProcessed");
+        aliasMap.put("MovementProcessed", "movementProcessed");
+        aliasMap.put("movementProcessing", "movementProcessing");
+        aliasMap.put("MovementProcessing", "movementProcessing");
+        aliasMap.put("movementDateReceived", "movementDateReceived");
+        aliasMap.put("MovementDateReceived", "movementDateReceived");
+        aliasMap.put("movementDocumentTypeId", "movementDocumentTypeId");
+        aliasMap.put("MovementDocumentTypeId", "movementDocumentTypeId");
+        aliasMap.put("movementIsInTransit", "movementIsInTransit");
+        aliasMap.put("MovementIsInTransit", "movementIsInTransit");
+        aliasMap.put("movementIsApproved", "movementIsApproved");
+        aliasMap.put("MovementIsApproved", "movementIsApproved");
+        aliasMap.put("movementApprovalAmount", "movementApprovalAmount");
+        aliasMap.put("MovementApprovalAmount", "movementApprovalAmount");
+        aliasMap.put("movementShipperId", "movementShipperId");
+        aliasMap.put("MovementShipperId", "movementShipperId");
+        aliasMap.put("movementSalesRepresentativeId", "movementSalesRepresentativeId");
+        aliasMap.put("MovementSalesRepresentativeId", "movementSalesRepresentativeId");
+        aliasMap.put("movementBusinessPartnerId", "movementBusinessPartnerId");
+        aliasMap.put("MovementBusinessPartnerId", "movementBusinessPartnerId");
+        aliasMap.put("movementChargeAmount", "movementChargeAmount");
+        aliasMap.put("MovementChargeAmount", "movementChargeAmount");
+        aliasMap.put("movementCreateFrom", "movementCreateFrom");
+        aliasMap.put("MovementCreateFrom", "movementCreateFrom");
+        aliasMap.put("movementFreightAmount", "movementFreightAmount");
+        aliasMap.put("MovementFreightAmount", "movementFreightAmount");
+        aliasMap.put("movementReversalDocumentNumber", "movementReversalDocumentNumber");
+        aliasMap.put("MovementReversalDocumentNumber", "movementReversalDocumentNumber");
+        aliasMap.put("movementWarehouseIdFrom", "movementWarehouseIdFrom");
+        aliasMap.put("MovementWarehouseIdFrom", "movementWarehouseIdFrom");
+        aliasMap.put("movementWarehouseIdTo", "movementWarehouseIdTo");
+        aliasMap.put("MovementWarehouseIdTo", "movementWarehouseIdTo");
         aliasMap.put("movementDescription", "movementDescription");
         aliasMap.put("MovementDescription", "movementDescription");
         aliasMap.put("movementVersion", "movementVersion");

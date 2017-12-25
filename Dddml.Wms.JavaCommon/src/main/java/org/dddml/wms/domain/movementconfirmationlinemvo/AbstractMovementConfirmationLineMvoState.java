@@ -191,18 +191,6 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         this.deleted = deleted;
     }
 
-    private String movementConfirmationDocumentTypeId;
-
-    public String getMovementConfirmationDocumentTypeId()
-    {
-        return this.movementConfirmationDocumentTypeId;
-    }
-
-    public void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId)
-    {
-        this.movementConfirmationDocumentTypeId = movementConfirmationDocumentTypeId;
-    }
-
     private String movementConfirmationDocumentStatusId;
 
     public String getMovementConfirmationDocumentStatusId()
@@ -251,6 +239,18 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         this.movementConfirmationApprovalAmount = movementConfirmationApprovalAmount;
     }
 
+    private Boolean movementConfirmationProcessed;
+
+    public Boolean getMovementConfirmationProcessed()
+    {
+        return this.movementConfirmationProcessed;
+    }
+
+    public void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed)
+    {
+        this.movementConfirmationProcessed = movementConfirmationProcessed;
+    }
+
     private String movementConfirmationProcessing;
 
     public String getMovementConfirmationProcessing()
@@ -263,16 +263,16 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         this.movementConfirmationProcessing = movementConfirmationProcessing;
     }
 
-    private Boolean movementConfirmationProcessed;
+    private String movementConfirmationDocumentTypeId;
 
-    public Boolean getMovementConfirmationProcessed()
+    public String getMovementConfirmationDocumentTypeId()
     {
-        return this.movementConfirmationProcessed;
+        return this.movementConfirmationDocumentTypeId;
     }
 
-    public void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed)
+    public void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId)
     {
-        this.movementConfirmationProcessed = movementConfirmationProcessed;
+        this.movementConfirmationDocumentTypeId = movementConfirmationDocumentTypeId;
     }
 
     private String movementConfirmationDescription;
@@ -444,13 +444,13 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         this.setProcessed(e.getProcessed());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
-        this.setMovementConfirmationDocumentTypeId(e.getMovementConfirmationDocumentTypeId());
         this.setMovementConfirmationDocumentStatusId(e.getMovementConfirmationDocumentStatusId());
         this.setMovementConfirmationMovementDocumentNumber(e.getMovementConfirmationMovementDocumentNumber());
         this.setMovementConfirmationIsApproved(e.getMovementConfirmationIsApproved());
         this.setMovementConfirmationApprovalAmount(e.getMovementConfirmationApprovalAmount());
-        this.setMovementConfirmationProcessing(e.getMovementConfirmationProcessing());
         this.setMovementConfirmationProcessed(e.getMovementConfirmationProcessed());
+        this.setMovementConfirmationProcessing(e.getMovementConfirmationProcessing());
+        this.setMovementConfirmationDocumentTypeId(e.getMovementConfirmationDocumentTypeId());
         this.setMovementConfirmationDescription(e.getMovementConfirmationDescription());
         this.setMovementConfirmationCreatedBy(e.getMovementConfirmationCreatedBy());
         this.setMovementConfirmationCreatedAt(e.getMovementConfirmationCreatedAt());
@@ -569,17 +569,6 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         {
             this.setActive(e.getActive());
         }
-        if (e.getMovementConfirmationDocumentTypeId() == null)
-        {
-            if (e.getIsPropertyMovementConfirmationDocumentTypeIdRemoved() != null && e.getIsPropertyMovementConfirmationDocumentTypeIdRemoved())
-            {
-                this.setMovementConfirmationDocumentTypeId(null);
-            }
-        }
-        else
-        {
-            this.setMovementConfirmationDocumentTypeId(e.getMovementConfirmationDocumentTypeId());
-        }
         if (e.getMovementConfirmationDocumentStatusId() == null)
         {
             if (e.getIsPropertyMovementConfirmationDocumentStatusIdRemoved() != null && e.getIsPropertyMovementConfirmationDocumentStatusIdRemoved())
@@ -624,6 +613,17 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         {
             this.setMovementConfirmationApprovalAmount(e.getMovementConfirmationApprovalAmount());
         }
+        if (e.getMovementConfirmationProcessed() == null)
+        {
+            if (e.getIsPropertyMovementConfirmationProcessedRemoved() != null && e.getIsPropertyMovementConfirmationProcessedRemoved())
+            {
+                this.setMovementConfirmationProcessed(null);
+            }
+        }
+        else
+        {
+            this.setMovementConfirmationProcessed(e.getMovementConfirmationProcessed());
+        }
         if (e.getMovementConfirmationProcessing() == null)
         {
             if (e.getIsPropertyMovementConfirmationProcessingRemoved() != null && e.getIsPropertyMovementConfirmationProcessingRemoved())
@@ -635,16 +635,16 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         {
             this.setMovementConfirmationProcessing(e.getMovementConfirmationProcessing());
         }
-        if (e.getMovementConfirmationProcessed() == null)
+        if (e.getMovementConfirmationDocumentTypeId() == null)
         {
-            if (e.getIsPropertyMovementConfirmationProcessedRemoved() != null && e.getIsPropertyMovementConfirmationProcessedRemoved())
+            if (e.getIsPropertyMovementConfirmationDocumentTypeIdRemoved() != null && e.getIsPropertyMovementConfirmationDocumentTypeIdRemoved())
             {
-                this.setMovementConfirmationProcessed(null);
+                this.setMovementConfirmationDocumentTypeId(null);
             }
         }
         else
         {
-            this.setMovementConfirmationProcessed(e.getMovementConfirmationProcessed());
+            this.setMovementConfirmationDocumentTypeId(e.getMovementConfirmationDocumentTypeId());
         }
         if (e.getMovementConfirmationDescription() == null)
         {

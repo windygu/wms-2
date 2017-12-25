@@ -78,8 +78,8 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setActive(c.getActive());
         newInOutLineMvoDocumentActionCommandAndExecute(c, state, e);
         e.setInOutPosted(c.getInOutPosted());
-        e.setInOutProcessing(c.getInOutProcessing());
         e.setInOutProcessed(c.getInOutProcessed());
+        e.setInOutProcessing(c.getInOutProcessing());
         e.setInOutDocumentTypeId(c.getInOutDocumentTypeId());
         e.setInOutDescription(c.getInOutDescription());
         e.setInOutOrderId(c.getInOutOrderId());
@@ -137,8 +137,8 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setActive(c.getActive());
         newInOutLineMvoDocumentActionCommandAndExecute(c, state, e);
         e.setInOutPosted(c.getInOutPosted());
-        e.setInOutProcessing(c.getInOutProcessing());
         e.setInOutProcessed(c.getInOutProcessed());
+        e.setInOutProcessing(c.getInOutProcessing());
         e.setInOutDocumentTypeId(c.getInOutDocumentTypeId());
         e.setInOutDescription(c.getInOutDescription());
         e.setInOutOrderId(c.getInOutOrderId());
@@ -186,8 +186,8 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setIsPropertyInOutPostedRemoved(c.getIsPropertyInOutPostedRemoved());
-        e.setIsPropertyInOutProcessingRemoved(c.getIsPropertyInOutProcessingRemoved());
         e.setIsPropertyInOutProcessedRemoved(c.getIsPropertyInOutProcessedRemoved());
+        e.setIsPropertyInOutProcessingRemoved(c.getIsPropertyInOutProcessingRemoved());
         e.setIsPropertyInOutDocumentTypeIdRemoved(c.getIsPropertyInOutDocumentTypeIdRemoved());
         e.setIsPropertyInOutDescriptionRemoved(c.getIsPropertyInOutDescriptionRemoved());
         e.setIsPropertyInOutOrderIdRemoved(c.getIsPropertyInOutOrderIdRemoved());

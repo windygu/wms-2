@@ -59,7 +59,24 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IMovementLineMvoStateProperties)state).Version;
             cmd.Active = ((IMovementLineMvoStateProperties)state).Active;
+            cmd.MovementMovementDate = state.MovementMovementDate;
+            cmd.MovementPosted = state.MovementPosted;
+            cmd.MovementProcessed = state.MovementProcessed;
+            cmd.MovementProcessing = state.MovementProcessing;
+            cmd.MovementDateReceived = state.MovementDateReceived;
             cmd.MovementDocumentTypeId = state.MovementDocumentTypeId;
+            cmd.MovementIsInTransit = state.MovementIsInTransit;
+            cmd.MovementIsApproved = state.MovementIsApproved;
+            cmd.MovementApprovalAmount = state.MovementApprovalAmount;
+            cmd.MovementShipperId = state.MovementShipperId;
+            cmd.MovementSalesRepresentativeId = state.MovementSalesRepresentativeId;
+            cmd.MovementBusinessPartnerId = state.MovementBusinessPartnerId;
+            cmd.MovementChargeAmount = state.MovementChargeAmount;
+            cmd.MovementCreateFrom = state.MovementCreateFrom;
+            cmd.MovementFreightAmount = state.MovementFreightAmount;
+            cmd.MovementReversalDocumentNumber = state.MovementReversalDocumentNumber;
+            cmd.MovementWarehouseIdFrom = state.MovementWarehouseIdFrom;
+            cmd.MovementWarehouseIdTo = state.MovementWarehouseIdTo;
             cmd.MovementDescription = state.MovementDescription;
             cmd.MovementCreatedBy = state.MovementCreatedBy;
             cmd.MovementCreatedAt = state.MovementCreatedAt;
@@ -74,7 +91,15 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             if (state.AttributeSetInstanceIdFrom == null) { cmd.IsPropertyAttributeSetInstanceIdFromRemoved = true; }
             if (state.AttributeSetInstanceIdTo == null) { cmd.IsPropertyAttributeSetInstanceIdToRemoved = true; }
             if (state.ReversalLineNumber == null) { cmd.IsPropertyReversalLineNumberRemoved = true; }
+            if (state.MovementProcessing == null) { cmd.IsPropertyMovementProcessingRemoved = true; }
             if (state.MovementDocumentTypeId == null) { cmd.IsPropertyMovementDocumentTypeIdRemoved = true; }
+            if (state.MovementShipperId == null) { cmd.IsPropertyMovementShipperIdRemoved = true; }
+            if (state.MovementSalesRepresentativeId == null) { cmd.IsPropertyMovementSalesRepresentativeIdRemoved = true; }
+            if (state.MovementBusinessPartnerId == null) { cmd.IsPropertyMovementBusinessPartnerIdRemoved = true; }
+            if (state.MovementCreateFrom == null) { cmd.IsPropertyMovementCreateFromRemoved = true; }
+            if (state.MovementReversalDocumentNumber == null) { cmd.IsPropertyMovementReversalDocumentNumberRemoved = true; }
+            if (state.MovementWarehouseIdFrom == null) { cmd.IsPropertyMovementWarehouseIdFromRemoved = true; }
+            if (state.MovementWarehouseIdTo == null) { cmd.IsPropertyMovementWarehouseIdToRemoved = true; }
             if (state.MovementDescription == null) { cmd.IsPropertyMovementDescriptionRemoved = true; }
             if (state.MovementCreatedBy == null) { cmd.IsPropertyMovementCreatedByRemoved = true; }
             if (state.MovementUpdatedBy == null) { cmd.IsPropertyMovementUpdatedByRemoved = true; }
@@ -99,7 +124,24 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IMovementLineMvoStateProperties)state).Version;
             cmd.Active = ((IMovementLineMvoStateProperties)state).Active;
+            cmd.MovementMovementDate = state.MovementMovementDate;
+            cmd.MovementPosted = state.MovementPosted;
+            cmd.MovementProcessed = state.MovementProcessed;
+            cmd.MovementProcessing = state.MovementProcessing;
+            cmd.MovementDateReceived = state.MovementDateReceived;
             cmd.MovementDocumentTypeId = state.MovementDocumentTypeId;
+            cmd.MovementIsInTransit = state.MovementIsInTransit;
+            cmd.MovementIsApproved = state.MovementIsApproved;
+            cmd.MovementApprovalAmount = state.MovementApprovalAmount;
+            cmd.MovementShipperId = state.MovementShipperId;
+            cmd.MovementSalesRepresentativeId = state.MovementSalesRepresentativeId;
+            cmd.MovementBusinessPartnerId = state.MovementBusinessPartnerId;
+            cmd.MovementChargeAmount = state.MovementChargeAmount;
+            cmd.MovementCreateFrom = state.MovementCreateFrom;
+            cmd.MovementFreightAmount = state.MovementFreightAmount;
+            cmd.MovementReversalDocumentNumber = state.MovementReversalDocumentNumber;
+            cmd.MovementWarehouseIdFrom = state.MovementWarehouseIdFrom;
+            cmd.MovementWarehouseIdTo = state.MovementWarehouseIdTo;
             cmd.MovementDescription = state.MovementDescription;
             cmd.MovementCreatedBy = state.MovementCreatedBy;
             cmd.MovementCreatedAt = state.MovementCreatedAt;

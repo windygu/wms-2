@@ -203,8 +203,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		public virtual void When(IMovementConfirmationStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.DocumentTypeId = e.DocumentTypeId;
-
 			this.DocumentStatusId = e.DocumentStatusId;
 
 			this.MovementDocumentNumber = e.MovementDocumentNumber;
@@ -213,9 +211,11 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
             this.ApprovalAmount = (e.ApprovalAmount != null && e.ApprovalAmount.HasValue) ? e.ApprovalAmount.Value : default(decimal);
 
+            this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+
 			this.Processing = e.Processing;
 
-            this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+			this.DocumentTypeId = e.DocumentTypeId;
 
 			this.Description = e.Description;
 
@@ -237,18 +237,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		public virtual void When(IMovementConfirmationStateMergePatched e)
 		{
 			ThrowOnWrongEvent(e);
-
-			if (e.DocumentTypeId == null)
-			{
-				if (e.IsPropertyDocumentTypeIdRemoved)
-				{
-					this.DocumentTypeId = default(string);
-				}
-			}
-			else
-			{
-				this.DocumentTypeId = e.DocumentTypeId;
-			}
 
 			if (e.DocumentStatusId == null)
 			{
@@ -298,6 +286,18 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 				this.ApprovalAmount = (e.ApprovalAmount != null && e.ApprovalAmount.HasValue) ? e.ApprovalAmount.Value : default(decimal);
 			}
 
+			if (e.Processed == null)
+			{
+				if (e.IsPropertyProcessedRemoved)
+				{
+					this.Processed = default(bool);
+				}
+			}
+			else
+			{
+				this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+			}
+
 			if (e.Processing == null)
 			{
 				if (e.IsPropertyProcessingRemoved)
@@ -310,16 +310,16 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 				this.Processing = e.Processing;
 			}
 
-			if (e.Processed == null)
+			if (e.DocumentTypeId == null)
 			{
-				if (e.IsPropertyProcessedRemoved)
+				if (e.IsPropertyDocumentTypeIdRemoved)
 				{
-					this.Processed = default(bool);
+					this.DocumentTypeId = default(string);
 				}
 			}
 			else
 			{
-				this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+				this.DocumentTypeId = e.DocumentTypeId;
 			}
 
 			if (e.Description == null)

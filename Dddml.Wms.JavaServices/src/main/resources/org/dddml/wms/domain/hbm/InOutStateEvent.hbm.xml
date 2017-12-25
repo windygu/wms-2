@@ -17,8 +17,8 @@
 
 	<property name="documentStatusId" ></property>
 	<property name="posted" ></property>
-	<property name="processing" ></property>
 	<property name="processed" ></property>
+	<property name="processing" ></property>
 	<property name="documentTypeId" ></property>
 	<property name="description" ></property>
 	<property name="orderId" ></property>
@@ -60,9 +60,9 @@
 
         <property name="isPropertyPostedRemoved" column="IsPropertyPostedRemoved"/>
 
-        <property name="isPropertyProcessingRemoved" column="IsPropertyProcessingRemoved"/>
-
         <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
+        <property name="isPropertyProcessingRemoved" column="IsPropertyProcessingRemoved"/>
 
         <property name="isPropertyDocumentTypeIdRemoved" column="IsPropertyDocumentTypeIdRemoved"/>
 

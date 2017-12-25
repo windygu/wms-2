@@ -311,18 +311,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutPosted = inOutPosted;
     }
 
-    private Boolean inOutProcessing;
-
-    public Boolean getInOutProcessing()
-    {
-        return this.inOutProcessing;
-    }
-
-    public void setInOutProcessing(Boolean inOutProcessing)
-    {
-        this.inOutProcessing = inOutProcessing;
-    }
-
     private Boolean inOutProcessed;
 
     public Boolean getInOutProcessed()
@@ -333,6 +321,18 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     public void setInOutProcessed(Boolean inOutProcessed)
     {
         this.inOutProcessed = inOutProcessed;
+    }
+
+    private String inOutProcessing;
+
+    public String getInOutProcessing()
+    {
+        return this.inOutProcessing;
+    }
+
+    public void setInOutProcessing(String inOutProcessing)
+    {
+        this.inOutProcessing = inOutProcessing;
     }
 
     private String inOutDocumentTypeId;
@@ -778,8 +778,8 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.setActive(e.getActive());
         this.setInOutDocumentStatusId(e.getInOutDocumentStatusId());
         this.setInOutPosted(e.getInOutPosted());
-        this.setInOutProcessing(e.getInOutProcessing());
         this.setInOutProcessed(e.getInOutProcessed());
+        this.setInOutProcessing(e.getInOutProcessing());
         this.setInOutDocumentTypeId(e.getInOutDocumentTypeId());
         this.setInOutDescription(e.getInOutDescription());
         this.setInOutOrderId(e.getInOutOrderId());
@@ -1030,17 +1030,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         {
             this.setInOutPosted(e.getInOutPosted());
         }
-        if (e.getInOutProcessing() == null)
-        {
-            if (e.getIsPropertyInOutProcessingRemoved() != null && e.getIsPropertyInOutProcessingRemoved())
-            {
-                this.setInOutProcessing(null);
-            }
-        }
-        else
-        {
-            this.setInOutProcessing(e.getInOutProcessing());
-        }
         if (e.getInOutProcessed() == null)
         {
             if (e.getIsPropertyInOutProcessedRemoved() != null && e.getIsPropertyInOutProcessedRemoved())
@@ -1051,6 +1040,17 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         else
         {
             this.setInOutProcessed(e.getInOutProcessed());
+        }
+        if (e.getInOutProcessing() == null)
+        {
+            if (e.getIsPropertyInOutProcessingRemoved() != null && e.getIsPropertyInOutProcessingRemoved())
+            {
+                this.setInOutProcessing(null);
+            }
+        }
+        else
+        {
+            this.setInOutProcessing(e.getInOutProcessing());
         }
         if (e.getInOutDocumentTypeId() == null)
         {

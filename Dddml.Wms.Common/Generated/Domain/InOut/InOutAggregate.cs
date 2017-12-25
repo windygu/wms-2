@@ -109,8 +109,8 @@ namespace Dddml.Wms.Domain.InOut
 		
             NewInOutDocumentActionCommandAndExecute(c, _state, e);
             e.Posted = c.Posted;
-            e.Processing = c.Processing;
             e.Processed = c.Processed;
+            e.Processing = c.Processing;
             e.DocumentTypeId = c.DocumentTypeId;
             e.Description = c.Description;
             e.OrderId = c.OrderId;
@@ -161,8 +161,8 @@ namespace Dddml.Wms.Domain.InOut
 
             NewInOutDocumentActionCommandAndExecute(c, _state, e);
             e.Posted = c.Posted;
-            e.Processing = c.Processing;
             e.Processed = c.Processed;
+            e.Processing = c.Processing;
             e.DocumentTypeId = c.DocumentTypeId;
             e.Description = c.Description;
             e.OrderId = c.OrderId;
@@ -188,8 +188,8 @@ namespace Dddml.Wms.Domain.InOut
             e.ReversalNumber = c.ReversalNumber;
             e.Active = c.Active;
             e.IsPropertyPostedRemoved = c.IsPropertyPostedRemoved;
-            e.IsPropertyProcessingRemoved = c.IsPropertyProcessingRemoved;
             e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
+            e.IsPropertyProcessingRemoved = c.IsPropertyProcessingRemoved;
             e.IsPropertyDocumentTypeIdRemoved = c.IsPropertyDocumentTypeIdRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyOrderIdRemoved = c.IsPropertyOrderIdRemoved;

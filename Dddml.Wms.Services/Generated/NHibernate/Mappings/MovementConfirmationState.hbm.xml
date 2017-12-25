@@ -9,13 +9,13 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="DocumentTypeId" ></property>
     <property name="DocumentStatusId" ></property>
     <property name="MovementDocumentNumber" ></property>
     <property name="IsApproved" ></property>
     <property name="ApprovalAmount" ></property>
-    <property name="Processing" ></property>
     <property name="Processed" ></property>
+    <property name="Processing" ></property>
+    <property name="DocumentTypeId" ></property>
     <property name="Description" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>

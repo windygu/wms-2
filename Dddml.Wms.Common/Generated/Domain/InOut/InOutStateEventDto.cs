@@ -46,9 +46,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool? Posted { get; set; }
 
-		public virtual bool? Processing { get; set; }
-
 		public virtual bool? Processed { get; set; }
+
+		public virtual string Processing { get; set; }
 
 		public virtual string DocumentTypeId { get; set; }
 
@@ -165,25 +165,6 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? IsPropertyProcessingRemoved { get; set; }
-
-        bool IInOutStateMergePatched.IsPropertyProcessingRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyProcessingRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyProcessingRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyProcessedRemoved { get; set; }
 
         bool IInOutStateMergePatched.IsPropertyProcessedRemoved
@@ -200,6 +181,25 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 this.IsPropertyProcessedRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyProcessingRemoved { get; set; }
+
+        bool IInOutStateMergePatched.IsPropertyProcessingRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyProcessingRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyProcessingRemoved = value;
             }
         }
 

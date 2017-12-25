@@ -55,16 +55,6 @@ public class InOutStateEventDto extends AbstractStateEvent
         this.posted = posted;
     }
 
-    private Boolean processing;
-
-    public Boolean getProcessing() {
-        return this.processing;
-    }
-
-    public void setProcessing(Boolean processing) {
-        this.processing = processing;
-    }
-
     private Boolean processed;
 
     public Boolean getProcessed() {
@@ -73,6 +63,16 @@ public class InOutStateEventDto extends AbstractStateEvent
 
     public void setProcessed(Boolean processed) {
         this.processed = processed;
+    }
+
+    private String processing;
+
+    public String getProcessing() {
+        return this.processing;
+    }
+
+    public void setProcessing(String processing) {
+        this.processing = processing;
     }
 
     private String documentTypeId;
@@ -355,16 +355,6 @@ public class InOutStateEventDto extends AbstractStateEvent
         this.isPropertyPostedRemoved = removed;
     }
 
-    private Boolean isPropertyProcessingRemoved;
-
-    public Boolean getIsPropertyProcessingRemoved() {
-        return this.isPropertyProcessingRemoved;
-    }
-
-    public void setIsPropertyProcessingRemoved(Boolean removed) {
-        this.isPropertyProcessingRemoved = removed;
-    }
-
     private Boolean isPropertyProcessedRemoved;
 
     public Boolean getIsPropertyProcessedRemoved() {
@@ -373,6 +363,16 @@ public class InOutStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyProcessedRemoved(Boolean removed) {
         this.isPropertyProcessedRemoved = removed;
+    }
+
+    private Boolean isPropertyProcessingRemoved;
+
+    public Boolean getIsPropertyProcessingRemoved() {
+        return this.isPropertyProcessingRemoved;
+    }
+
+    public void setIsPropertyProcessingRemoved(Boolean removed) {
+        this.isPropertyProcessingRemoved = removed;
     }
 
     private Boolean isPropertyDocumentTypeIdRemoved;

@@ -59,10 +59,6 @@ public interface MovementConfirmationLineMvoStateEvent extends Event
 
     void setActive(Boolean active);
 
-    String getMovementConfirmationDocumentTypeId();
-
-    void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId);
-
     String getMovementConfirmationDocumentStatusId();
 
     void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId);
@@ -79,13 +75,17 @@ public interface MovementConfirmationLineMvoStateEvent extends Event
 
     void setMovementConfirmationApprovalAmount(BigDecimal movementConfirmationApprovalAmount);
 
+    Boolean getMovementConfirmationProcessed();
+
+    void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed);
+
     String getMovementConfirmationProcessing();
 
     void setMovementConfirmationProcessing(String movementConfirmationProcessing);
 
-    Boolean getMovementConfirmationProcessed();
+    String getMovementConfirmationDocumentTypeId();
 
-    void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed);
+    void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId);
 
     String getMovementConfirmationDescription();
 
@@ -163,10 +163,6 @@ public interface MovementConfirmationLineMvoStateEvent extends Event
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementConfirmationDocumentTypeIdRemoved();
-
-        void setIsPropertyMovementConfirmationDocumentTypeIdRemoved(Boolean removed);
-
         Boolean getIsPropertyMovementConfirmationDocumentStatusIdRemoved();
 
         void setIsPropertyMovementConfirmationDocumentStatusIdRemoved(Boolean removed);
@@ -183,13 +179,17 @@ public interface MovementConfirmationLineMvoStateEvent extends Event
 
         void setIsPropertyMovementConfirmationApprovalAmountRemoved(Boolean removed);
 
+        Boolean getIsPropertyMovementConfirmationProcessedRemoved();
+
+        void setIsPropertyMovementConfirmationProcessedRemoved(Boolean removed);
+
         Boolean getIsPropertyMovementConfirmationProcessingRemoved();
 
         void setIsPropertyMovementConfirmationProcessingRemoved(Boolean removed);
 
-        Boolean getIsPropertyMovementConfirmationProcessedRemoved();
+        Boolean getIsPropertyMovementConfirmationDocumentTypeIdRemoved();
 
-        void setIsPropertyMovementConfirmationProcessedRemoved(Boolean removed);
+        void setIsPropertyMovementConfirmationDocumentTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyMovementConfirmationDescriptionRemoved();
 

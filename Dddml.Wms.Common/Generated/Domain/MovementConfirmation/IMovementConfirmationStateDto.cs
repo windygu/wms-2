@@ -20,12 +20,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             set;
         }
 
-        string DocumentTypeId
-        {
-            get;
-            set;
-        }
-
         string DocumentStatusId
         {
             get;
@@ -50,13 +44,19 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             set;
         }
 
+        bool? Processed
+        {
+            get;
+            set;
+        }
+
         string Processing
         {
             get;
             set;
         }
 
-        bool? Processed
+        string DocumentTypeId
         {
             get;
             set;

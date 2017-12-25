@@ -77,12 +77,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set;
         }
 
-        public virtual string MovementConfirmationDocumentTypeId
-        {
-            get;
-            set;
-        }
-
         public virtual string MovementConfirmationDocumentStatusId
         {
             get;
@@ -107,13 +101,19 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set;
         }
 
+        public virtual bool? MovementConfirmationProcessed
+        {
+            get;
+            set;
+        }
+
         public virtual string MovementConfirmationProcessing
         {
             get;
             set;
         }
 
-        public virtual bool? MovementConfirmationProcessed
+        public virtual string MovementConfirmationDocumentTypeId
         {
             get;
             set;
@@ -204,13 +204,13 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
-            state.MovementConfirmationDocumentTypeId = this.MovementConfirmationDocumentTypeId;
             state.MovementConfirmationDocumentStatusId = this.MovementConfirmationDocumentStatusId;
             state.MovementConfirmationMovementDocumentNumber = this.MovementConfirmationMovementDocumentNumber;
             if (this.MovementConfirmationIsApproved != null && this.MovementConfirmationIsApproved.HasValue) { state.MovementConfirmationIsApproved = this.MovementConfirmationIsApproved.Value; }
             if (this.MovementConfirmationApprovalAmount != null && this.MovementConfirmationApprovalAmount.HasValue) { state.MovementConfirmationApprovalAmount = this.MovementConfirmationApprovalAmount.Value; }
-            state.MovementConfirmationProcessing = this.MovementConfirmationProcessing;
             if (this.MovementConfirmationProcessed != null && this.MovementConfirmationProcessed.HasValue) { state.MovementConfirmationProcessed = this.MovementConfirmationProcessed.Value; }
+            state.MovementConfirmationProcessing = this.MovementConfirmationProcessing;
+            state.MovementConfirmationDocumentTypeId = this.MovementConfirmationDocumentTypeId;
             state.MovementConfirmationDescription = this.MovementConfirmationDescription;
             state.MovementConfirmationCreatedBy = this.MovementConfirmationCreatedBy;
             if (this.MovementConfirmationCreatedAt != null && this.MovementConfirmationCreatedAt.HasValue) { state.MovementConfirmationCreatedAt = this.MovementConfirmationCreatedAt.Value; }

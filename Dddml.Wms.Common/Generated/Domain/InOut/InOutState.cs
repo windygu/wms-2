@@ -207,9 +207,9 @@ namespace Dddml.Wms.Domain.InOut
 
             this.Posted = (e.Posted != null && e.Posted.HasValue) ? e.Posted.Value : default(bool);
 
-            this.Processing = (e.Processing != null && e.Processing.HasValue) ? e.Processing.Value : default(bool);
-
             this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+
+			this.Processing = e.Processing;
 
 			this.DocumentTypeId = e.DocumentTypeId;
 
@@ -300,18 +300,6 @@ namespace Dddml.Wms.Domain.InOut
 				this.Posted = (e.Posted != null && e.Posted.HasValue) ? e.Posted.Value : default(bool);
 			}
 
-			if (e.Processing == null)
-			{
-				if (e.IsPropertyProcessingRemoved)
-				{
-					this.Processing = default(bool);
-				}
-			}
-			else
-			{
-				this.Processing = (e.Processing != null && e.Processing.HasValue) ? e.Processing.Value : default(bool);
-			}
-
 			if (e.Processed == null)
 			{
 				if (e.IsPropertyProcessedRemoved)
@@ -322,6 +310,18 @@ namespace Dddml.Wms.Domain.InOut
 			else
 			{
 				this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+			}
+
+			if (e.Processing == null)
+			{
+				if (e.IsPropertyProcessingRemoved)
+				{
+					this.Processing = default(string);
+				}
+			}
+			else
+			{
+				this.Processing = e.Processing;
 			}
 
 			if (e.DocumentTypeId == null)

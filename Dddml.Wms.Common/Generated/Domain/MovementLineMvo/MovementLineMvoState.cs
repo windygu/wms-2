@@ -195,9 +195,43 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
+			this.MovementDocumentStatusId = e.MovementDocumentStatusId;
+
+            this.MovementMovementDate = (e.MovementMovementDate != null && e.MovementMovementDate.HasValue) ? e.MovementMovementDate.Value : default(DateTime);
+
+            this.MovementPosted = (e.MovementPosted != null && e.MovementPosted.HasValue) ? e.MovementPosted.Value : default(bool);
+
+            this.MovementProcessed = (e.MovementProcessed != null && e.MovementProcessed.HasValue) ? e.MovementProcessed.Value : default(bool);
+
+			this.MovementProcessing = e.MovementProcessing;
+
+            this.MovementDateReceived = (e.MovementDateReceived != null && e.MovementDateReceived.HasValue) ? e.MovementDateReceived.Value : default(DateTime);
+
 			this.MovementDocumentTypeId = e.MovementDocumentTypeId;
 
-			this.MovementDocumentStatusId = e.MovementDocumentStatusId;
+            this.MovementIsInTransit = (e.MovementIsInTransit != null && e.MovementIsInTransit.HasValue) ? e.MovementIsInTransit.Value : default(bool);
+
+            this.MovementIsApproved = (e.MovementIsApproved != null && e.MovementIsApproved.HasValue) ? e.MovementIsApproved.Value : default(bool);
+
+            this.MovementApprovalAmount = (e.MovementApprovalAmount != null && e.MovementApprovalAmount.HasValue) ? e.MovementApprovalAmount.Value : default(decimal);
+
+			this.MovementShipperId = e.MovementShipperId;
+
+			this.MovementSalesRepresentativeId = e.MovementSalesRepresentativeId;
+
+			this.MovementBusinessPartnerId = e.MovementBusinessPartnerId;
+
+            this.MovementChargeAmount = (e.MovementChargeAmount != null && e.MovementChargeAmount.HasValue) ? e.MovementChargeAmount.Value : default(decimal);
+
+			this.MovementCreateFrom = e.MovementCreateFrom;
+
+            this.MovementFreightAmount = (e.MovementFreightAmount != null && e.MovementFreightAmount.HasValue) ? e.MovementFreightAmount.Value : default(decimal);
+
+			this.MovementReversalDocumentNumber = e.MovementReversalDocumentNumber;
+
+			this.MovementWarehouseIdFrom = e.MovementWarehouseIdFrom;
+
+			this.MovementWarehouseIdTo = e.MovementWarehouseIdTo;
 
 			this.MovementDescription = e.MovementDescription;
 
@@ -346,6 +380,78 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 				this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 			}
 
+			if (e.MovementDocumentStatusId == null)
+			{
+				if (e.IsPropertyMovementDocumentStatusIdRemoved)
+				{
+					this.MovementDocumentStatusId = default(string);
+				}
+			}
+			else
+			{
+				this.MovementDocumentStatusId = e.MovementDocumentStatusId;
+			}
+
+			if (e.MovementMovementDate == null)
+			{
+				if (e.IsPropertyMovementMovementDateRemoved)
+				{
+					this.MovementMovementDate = default(DateTime);
+				}
+			}
+			else
+			{
+				this.MovementMovementDate = (e.MovementMovementDate != null && e.MovementMovementDate.HasValue) ? e.MovementMovementDate.Value : default(DateTime);
+			}
+
+			if (e.MovementPosted == null)
+			{
+				if (e.IsPropertyMovementPostedRemoved)
+				{
+					this.MovementPosted = default(bool);
+				}
+			}
+			else
+			{
+				this.MovementPosted = (e.MovementPosted != null && e.MovementPosted.HasValue) ? e.MovementPosted.Value : default(bool);
+			}
+
+			if (e.MovementProcessed == null)
+			{
+				if (e.IsPropertyMovementProcessedRemoved)
+				{
+					this.MovementProcessed = default(bool);
+				}
+			}
+			else
+			{
+				this.MovementProcessed = (e.MovementProcessed != null && e.MovementProcessed.HasValue) ? e.MovementProcessed.Value : default(bool);
+			}
+
+			if (e.MovementProcessing == null)
+			{
+				if (e.IsPropertyMovementProcessingRemoved)
+				{
+					this.MovementProcessing = default(string);
+				}
+			}
+			else
+			{
+				this.MovementProcessing = e.MovementProcessing;
+			}
+
+			if (e.MovementDateReceived == null)
+			{
+				if (e.IsPropertyMovementDateReceivedRemoved)
+				{
+					this.MovementDateReceived = default(DateTime);
+				}
+			}
+			else
+			{
+				this.MovementDateReceived = (e.MovementDateReceived != null && e.MovementDateReceived.HasValue) ? e.MovementDateReceived.Value : default(DateTime);
+			}
+
 			if (e.MovementDocumentTypeId == null)
 			{
 				if (e.IsPropertyMovementDocumentTypeIdRemoved)
@@ -358,16 +464,148 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 				this.MovementDocumentTypeId = e.MovementDocumentTypeId;
 			}
 
-			if (e.MovementDocumentStatusId == null)
+			if (e.MovementIsInTransit == null)
 			{
-				if (e.IsPropertyMovementDocumentStatusIdRemoved)
+				if (e.IsPropertyMovementIsInTransitRemoved)
 				{
-					this.MovementDocumentStatusId = default(string);
+					this.MovementIsInTransit = default(bool);
 				}
 			}
 			else
 			{
-				this.MovementDocumentStatusId = e.MovementDocumentStatusId;
+				this.MovementIsInTransit = (e.MovementIsInTransit != null && e.MovementIsInTransit.HasValue) ? e.MovementIsInTransit.Value : default(bool);
+			}
+
+			if (e.MovementIsApproved == null)
+			{
+				if (e.IsPropertyMovementIsApprovedRemoved)
+				{
+					this.MovementIsApproved = default(bool);
+				}
+			}
+			else
+			{
+				this.MovementIsApproved = (e.MovementIsApproved != null && e.MovementIsApproved.HasValue) ? e.MovementIsApproved.Value : default(bool);
+			}
+
+			if (e.MovementApprovalAmount == null)
+			{
+				if (e.IsPropertyMovementApprovalAmountRemoved)
+				{
+					this.MovementApprovalAmount = default(decimal);
+				}
+			}
+			else
+			{
+				this.MovementApprovalAmount = (e.MovementApprovalAmount != null && e.MovementApprovalAmount.HasValue) ? e.MovementApprovalAmount.Value : default(decimal);
+			}
+
+			if (e.MovementShipperId == null)
+			{
+				if (e.IsPropertyMovementShipperIdRemoved)
+				{
+					this.MovementShipperId = default(string);
+				}
+			}
+			else
+			{
+				this.MovementShipperId = e.MovementShipperId;
+			}
+
+			if (e.MovementSalesRepresentativeId == null)
+			{
+				if (e.IsPropertyMovementSalesRepresentativeIdRemoved)
+				{
+					this.MovementSalesRepresentativeId = default(string);
+				}
+			}
+			else
+			{
+				this.MovementSalesRepresentativeId = e.MovementSalesRepresentativeId;
+			}
+
+			if (e.MovementBusinessPartnerId == null)
+			{
+				if (e.IsPropertyMovementBusinessPartnerIdRemoved)
+				{
+					this.MovementBusinessPartnerId = default(string);
+				}
+			}
+			else
+			{
+				this.MovementBusinessPartnerId = e.MovementBusinessPartnerId;
+			}
+
+			if (e.MovementChargeAmount == null)
+			{
+				if (e.IsPropertyMovementChargeAmountRemoved)
+				{
+					this.MovementChargeAmount = default(decimal);
+				}
+			}
+			else
+			{
+				this.MovementChargeAmount = (e.MovementChargeAmount != null && e.MovementChargeAmount.HasValue) ? e.MovementChargeAmount.Value : default(decimal);
+			}
+
+			if (e.MovementCreateFrom == null)
+			{
+				if (e.IsPropertyMovementCreateFromRemoved)
+				{
+					this.MovementCreateFrom = default(string);
+				}
+			}
+			else
+			{
+				this.MovementCreateFrom = e.MovementCreateFrom;
+			}
+
+			if (e.MovementFreightAmount == null)
+			{
+				if (e.IsPropertyMovementFreightAmountRemoved)
+				{
+					this.MovementFreightAmount = default(decimal);
+				}
+			}
+			else
+			{
+				this.MovementFreightAmount = (e.MovementFreightAmount != null && e.MovementFreightAmount.HasValue) ? e.MovementFreightAmount.Value : default(decimal);
+			}
+
+			if (e.MovementReversalDocumentNumber == null)
+			{
+				if (e.IsPropertyMovementReversalDocumentNumberRemoved)
+				{
+					this.MovementReversalDocumentNumber = default(string);
+				}
+			}
+			else
+			{
+				this.MovementReversalDocumentNumber = e.MovementReversalDocumentNumber;
+			}
+
+			if (e.MovementWarehouseIdFrom == null)
+			{
+				if (e.IsPropertyMovementWarehouseIdFromRemoved)
+				{
+					this.MovementWarehouseIdFrom = default(string);
+				}
+			}
+			else
+			{
+				this.MovementWarehouseIdFrom = e.MovementWarehouseIdFrom;
+			}
+
+			if (e.MovementWarehouseIdTo == null)
+			{
+				if (e.IsPropertyMovementWarehouseIdToRemoved)
+				{
+					this.MovementWarehouseIdTo = default(string);
+				}
+			}
+			else
+			{
+				this.MovementWarehouseIdTo = e.MovementWarehouseIdTo;
 			}
 
 			if (e.MovementDescription == null)

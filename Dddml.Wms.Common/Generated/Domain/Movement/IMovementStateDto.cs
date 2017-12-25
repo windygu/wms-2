@@ -20,13 +20,115 @@ namespace Dddml.Wms.Domain.Movement
             set;
         }
 
+        string DocumentStatusId
+        {
+            get;
+            set;
+        }
+
+        DateTime? MovementDate
+        {
+            get;
+            set;
+        }
+
+        bool? Posted
+        {
+            get;
+            set;
+        }
+
+        bool? Processed
+        {
+            get;
+            set;
+        }
+
+        string Processing
+        {
+            get;
+            set;
+        }
+
+        DateTime? DateReceived
+        {
+            get;
+            set;
+        }
+
         string DocumentTypeId
         {
             get;
             set;
         }
 
-        string DocumentStatusId
+        bool? IsInTransit
+        {
+            get;
+            set;
+        }
+
+        bool? IsApproved
+        {
+            get;
+            set;
+        }
+
+        decimal? ApprovalAmount
+        {
+            get;
+            set;
+        }
+
+        string ShipperId
+        {
+            get;
+            set;
+        }
+
+        string SalesRepresentativeId
+        {
+            get;
+            set;
+        }
+
+        string BusinessPartnerId
+        {
+            get;
+            set;
+        }
+
+        decimal? ChargeAmount
+        {
+            get;
+            set;
+        }
+
+        string CreateFrom
+        {
+            get;
+            set;
+        }
+
+        decimal? FreightAmount
+        {
+            get;
+            set;
+        }
+
+        string ReversalDocumentNumber
+        {
+            get;
+            set;
+        }
+
+        string WarehouseIdFrom
+        {
+            get;
+            set;
+        }
+
+        string WarehouseIdTo
         {
             get;
             set;

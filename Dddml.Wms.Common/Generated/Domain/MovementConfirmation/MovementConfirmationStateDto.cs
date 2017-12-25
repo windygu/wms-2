@@ -21,12 +21,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             set;
         }
 
-        public virtual string DocumentTypeId
-        {
-            get;
-            set;
-        }
-
         public virtual string DocumentStatusId
         {
             get;
@@ -51,13 +45,19 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             set;
         }
 
+        public virtual bool? Processed
+        {
+            get;
+            set;
+        }
+
         public virtual string Processing
         {
             get;
             set;
         }
 
-        public virtual bool? Processed
+        public virtual string DocumentTypeId
         {
             get;
             set;
@@ -121,13 +121,13 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         {
             var state = new MovementConfirmationState(true);
             state.DocumentNumber = this.DocumentNumber;
-            state.DocumentTypeId = this.DocumentTypeId;
             state.DocumentStatusId = this.DocumentStatusId;
             state.MovementDocumentNumber = this.MovementDocumentNumber;
             if (this.IsApproved != null && this.IsApproved.HasValue) { state.IsApproved = this.IsApproved.Value; }
             if (this.ApprovalAmount != null && this.ApprovalAmount.HasValue) { state.ApprovalAmount = this.ApprovalAmount.Value; }
-            state.Processing = this.Processing;
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
+            state.Processing = this.Processing;
+            state.DocumentTypeId = this.DocumentTypeId;
             state.Description = this.Description;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }

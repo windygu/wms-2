@@ -17,9 +17,43 @@ namespace Dddml.Wms.Domain.Movement
 
         bool ReadOnly { get; set; }
 
+		string DocumentStatusId { get; set; }
+
+		DateTime? MovementDate { get; set; }
+
+		bool? Posted { get; set; }
+
+		bool? Processed { get; set; }
+
+		string Processing { get; set; }
+
+		DateTime? DateReceived { get; set; }
+
 		string DocumentTypeId { get; set; }
 
-		string DocumentStatusId { get; set; }
+		bool? IsInTransit { get; set; }
+
+		bool? IsApproved { get; set; }
+
+		decimal? ApprovalAmount { get; set; }
+
+		string ShipperId { get; set; }
+
+		string SalesRepresentativeId { get; set; }
+
+		string BusinessPartnerId { get; set; }
+
+		decimal? ChargeAmount { get; set; }
+
+		string CreateFrom { get; set; }
+
+		decimal? FreightAmount { get; set; }
+
+		string ReversalDocumentNumber { get; set; }
+
+		string WarehouseIdFrom { get; set; }
+
+		string WarehouseIdTo { get; set; }
 
 		string Description { get; set; }
 
@@ -41,9 +75,43 @@ namespace Dddml.Wms.Domain.Movement
 
 	public interface IMovementStateMergePatched : IMovementStateEvent//, IMovementStateProperties
 	{
+		bool IsPropertyDocumentStatusIdRemoved { get; set; }
+
+		bool IsPropertyMovementDateRemoved { get; set; }
+
+		bool IsPropertyPostedRemoved { get; set; }
+
+		bool IsPropertyProcessedRemoved { get; set; }
+
+		bool IsPropertyProcessingRemoved { get; set; }
+
+		bool IsPropertyDateReceivedRemoved { get; set; }
+
 		bool IsPropertyDocumentTypeIdRemoved { get; set; }
 
-		bool IsPropertyDocumentStatusIdRemoved { get; set; }
+		bool IsPropertyIsInTransitRemoved { get; set; }
+
+		bool IsPropertyIsApprovedRemoved { get; set; }
+
+		bool IsPropertyApprovalAmountRemoved { get; set; }
+
+		bool IsPropertyShipperIdRemoved { get; set; }
+
+		bool IsPropertySalesRepresentativeIdRemoved { get; set; }
+
+		bool IsPropertyBusinessPartnerIdRemoved { get; set; }
+
+		bool IsPropertyChargeAmountRemoved { get; set; }
+
+		bool IsPropertyCreateFromRemoved { get; set; }
+
+		bool IsPropertyFreightAmountRemoved { get; set; }
+
+		bool IsPropertyReversalDocumentNumberRemoved { get; set; }
+
+		bool IsPropertyWarehouseIdFromRemoved { get; set; }
+
+		bool IsPropertyWarehouseIdToRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 

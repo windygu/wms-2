@@ -21,13 +21,115 @@ namespace Dddml.Wms.Domain.Movement
             set;
         }
 
+        public virtual string DocumentStatusId
+        {
+            get;
+            set;
+        }
+
+        public virtual DateTime? MovementDate
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? Posted
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? Processed
+        {
+            get;
+            set;
+        }
+
+        public virtual string Processing
+        {
+            get;
+            set;
+        }
+
+        public virtual DateTime? DateReceived
+        {
+            get;
+            set;
+        }
+
         public virtual string DocumentTypeId
         {
             get;
             set;
         }
 
-        public virtual string DocumentStatusId
+        public virtual bool? IsInTransit
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? IsApproved
+        {
+            get;
+            set;
+        }
+
+        public virtual decimal? ApprovalAmount
+        {
+            get;
+            set;
+        }
+
+        public virtual string ShipperId
+        {
+            get;
+            set;
+        }
+
+        public virtual string SalesRepresentativeId
+        {
+            get;
+            set;
+        }
+
+        public virtual string BusinessPartnerId
+        {
+            get;
+            set;
+        }
+
+        public virtual decimal? ChargeAmount
+        {
+            get;
+            set;
+        }
+
+        public virtual string CreateFrom
+        {
+            get;
+            set;
+        }
+
+        public virtual decimal? FreightAmount
+        {
+            get;
+            set;
+        }
+
+        public virtual string ReversalDocumentNumber
+        {
+            get;
+            set;
+        }
+
+        public virtual string WarehouseIdFrom
+        {
+            get;
+            set;
+        }
+
+        public virtual string WarehouseIdTo
         {
             get;
             set;
@@ -91,8 +193,25 @@ namespace Dddml.Wms.Domain.Movement
         {
             var state = new MovementState(true);
             state.DocumentNumber = this.DocumentNumber;
-            state.DocumentTypeId = this.DocumentTypeId;
             state.DocumentStatusId = this.DocumentStatusId;
+            if (this.MovementDate != null && this.MovementDate.HasValue) { state.MovementDate = this.MovementDate.Value; }
+            if (this.Posted != null && this.Posted.HasValue) { state.Posted = this.Posted.Value; }
+            if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
+            state.Processing = this.Processing;
+            if (this.DateReceived != null && this.DateReceived.HasValue) { state.DateReceived = this.DateReceived.Value; }
+            state.DocumentTypeId = this.DocumentTypeId;
+            if (this.IsInTransit != null && this.IsInTransit.HasValue) { state.IsInTransit = this.IsInTransit.Value; }
+            if (this.IsApproved != null && this.IsApproved.HasValue) { state.IsApproved = this.IsApproved.Value; }
+            if (this.ApprovalAmount != null && this.ApprovalAmount.HasValue) { state.ApprovalAmount = this.ApprovalAmount.Value; }
+            state.ShipperId = this.ShipperId;
+            state.SalesRepresentativeId = this.SalesRepresentativeId;
+            state.BusinessPartnerId = this.BusinessPartnerId;
+            if (this.ChargeAmount != null && this.ChargeAmount.HasValue) { state.ChargeAmount = this.ChargeAmount.Value; }
+            state.CreateFrom = this.CreateFrom;
+            if (this.FreightAmount != null && this.FreightAmount.HasValue) { state.FreightAmount = this.FreightAmount.Value; }
+            state.ReversalDocumentNumber = this.ReversalDocumentNumber;
+            state.WarehouseIdFrom = this.WarehouseIdFrom;
+            state.WarehouseIdTo = this.WarehouseIdTo;
             state.Description = this.Description;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }

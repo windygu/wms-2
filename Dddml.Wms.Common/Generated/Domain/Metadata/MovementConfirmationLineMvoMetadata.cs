@@ -452,35 +452,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementConfirmationDocumentTypeId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "MovementConfirmationDocumentStatusId",
                     Type = typeof(string),
                     TypeName = "string",
@@ -597,6 +568,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "MovementConfirmationProcessed",
+                    Type = typeof(bool),
+                    TypeName = "bool",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "MovementConfirmationProcessing",
                     Type = typeof(string),
                     TypeName = "string",
@@ -626,9 +626,9 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "MovementConfirmationProcessed",
-                    Type = typeof(bool),
-                    TypeName = "bool",
+                    Name = "MovementConfirmationDocumentTypeId",
+                    Type = typeof(string),
+                    TypeName = "string",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
@@ -1016,8 +1016,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
-            d.Add("MovementConfirmationDocumentTypeId", "MovementConfirmationDocumentTypeId");
-            d.Add("movementConfirmationDocumentTypeId", "MovementConfirmationDocumentTypeId");
             d.Add("MovementConfirmationDocumentStatusId", "MovementConfirmationDocumentStatusId");
             d.Add("movementConfirmationDocumentStatusId", "MovementConfirmationDocumentStatusId");
             d.Add("MovementConfirmationMovementDocumentNumber", "MovementConfirmationMovementDocumentNumber");
@@ -1026,10 +1024,12 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("movementConfirmationIsApproved", "MovementConfirmationIsApproved");
             d.Add("MovementConfirmationApprovalAmount", "MovementConfirmationApprovalAmount");
             d.Add("movementConfirmationApprovalAmount", "MovementConfirmationApprovalAmount");
-            d.Add("MovementConfirmationProcessing", "MovementConfirmationProcessing");
-            d.Add("movementConfirmationProcessing", "MovementConfirmationProcessing");
             d.Add("MovementConfirmationProcessed", "MovementConfirmationProcessed");
             d.Add("movementConfirmationProcessed", "MovementConfirmationProcessed");
+            d.Add("MovementConfirmationProcessing", "MovementConfirmationProcessing");
+            d.Add("movementConfirmationProcessing", "MovementConfirmationProcessing");
+            d.Add("MovementConfirmationDocumentTypeId", "MovementConfirmationDocumentTypeId");
+            d.Add("movementConfirmationDocumentTypeId", "MovementConfirmationDocumentTypeId");
             d.Add("MovementConfirmationDescription", "MovementConfirmationDescription");
             d.Add("movementConfirmationDescription", "MovementConfirmationDescription");
             d.Add("MovementConfirmationVersion", "MovementConfirmationVersion");

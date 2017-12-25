@@ -41,13 +41,81 @@ public interface MovementCommand extends Command
 
     interface CreateOrMergePatchMovement extends MovementCommand
     {
+        String getDocumentAction();
+
+        void setDocumentAction(String documentAction);
+
+        Date getMovementDate();
+
+        void setMovementDate(Date movementDate);
+
+        Boolean getPosted();
+
+        void setPosted(Boolean posted);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        String getProcessing();
+
+        void setProcessing(String processing);
+
+        Date getDateReceived();
+
+        void setDateReceived(Date dateReceived);
+
         String getDocumentTypeId();
 
         void setDocumentTypeId(String documentTypeId);
 
-        String getDocumentAction();
+        Boolean getIsInTransit();
 
-        void setDocumentAction(String documentAction);
+        void setIsInTransit(Boolean isInTransit);
+
+        Boolean getIsApproved();
+
+        void setIsApproved(Boolean isApproved);
+
+        BigDecimal getApprovalAmount();
+
+        void setApprovalAmount(BigDecimal approvalAmount);
+
+        String getShipperId();
+
+        void setShipperId(String shipperId);
+
+        String getSalesRepresentativeId();
+
+        void setSalesRepresentativeId(String salesRepresentativeId);
+
+        String getBusinessPartnerId();
+
+        void setBusinessPartnerId(String businessPartnerId);
+
+        BigDecimal getChargeAmount();
+
+        void setChargeAmount(BigDecimal chargeAmount);
+
+        String getCreateFrom();
+
+        void setCreateFrom(String createFrom);
+
+        BigDecimal getFreightAmount();
+
+        void setFreightAmount(BigDecimal freightAmount);
+
+        String getReversalDocumentNumber();
+
+        void setReversalDocumentNumber(String reversalDocumentNumber);
+
+        String getWarehouseIdFrom();
+
+        void setWarehouseIdFrom(String warehouseIdFrom);
+
+        String getWarehouseIdTo();
+
+        void setWarehouseIdTo(String warehouseIdTo);
 
         String getDescription();
 
@@ -69,9 +137,77 @@ public interface MovementCommand extends Command
 
     interface MergePatchMovement extends CreateOrMergePatchMovement
     {
+        Boolean getIsPropertyMovementDateRemoved();
+
+        void setIsPropertyMovementDateRemoved(Boolean removed);
+
+        Boolean getIsPropertyPostedRemoved();
+
+        void setIsPropertyPostedRemoved(Boolean removed);
+
+        Boolean getIsPropertyProcessedRemoved();
+
+        void setIsPropertyProcessedRemoved(Boolean removed);
+
+        Boolean getIsPropertyProcessingRemoved();
+
+        void setIsPropertyProcessingRemoved(Boolean removed);
+
+        Boolean getIsPropertyDateReceivedRemoved();
+
+        void setIsPropertyDateReceivedRemoved(Boolean removed);
+
         Boolean getIsPropertyDocumentTypeIdRemoved();
 
         void setIsPropertyDocumentTypeIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyIsInTransitRemoved();
+
+        void setIsPropertyIsInTransitRemoved(Boolean removed);
+
+        Boolean getIsPropertyIsApprovedRemoved();
+
+        void setIsPropertyIsApprovedRemoved(Boolean removed);
+
+        Boolean getIsPropertyApprovalAmountRemoved();
+
+        void setIsPropertyApprovalAmountRemoved(Boolean removed);
+
+        Boolean getIsPropertyShipperIdRemoved();
+
+        void setIsPropertyShipperIdRemoved(Boolean removed);
+
+        Boolean getIsPropertySalesRepresentativeIdRemoved();
+
+        void setIsPropertySalesRepresentativeIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyBusinessPartnerIdRemoved();
+
+        void setIsPropertyBusinessPartnerIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyChargeAmountRemoved();
+
+        void setIsPropertyChargeAmountRemoved(Boolean removed);
+
+        Boolean getIsPropertyCreateFromRemoved();
+
+        void setIsPropertyCreateFromRemoved(Boolean removed);
+
+        Boolean getIsPropertyFreightAmountRemoved();
+
+        void setIsPropertyFreightAmountRemoved(Boolean removed);
+
+        Boolean getIsPropertyReversalDocumentNumberRemoved();
+
+        void setIsPropertyReversalDocumentNumberRemoved(Boolean removed);
+
+        Boolean getIsPropertyWarehouseIdFromRemoved();
+
+        void setIsPropertyWarehouseIdFromRemoved(Boolean removed);
+
+        Boolean getIsPropertyWarehouseIdToRemoved();
+
+        void setIsPropertyWarehouseIdToRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 

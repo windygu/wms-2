@@ -639,37 +639,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? InOutProcessing
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutProcessing"))
-                {
-                    return _state.InOutProcessing;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.InOutProcessing = value.Value;
-                }
-            }
-        }
-
-        bool IInOutLineMvoStateProperties.InOutProcessing
-        {
-            get 
-            {
-                return (this._state as IInOutLineMvoStateProperties).InOutProcessing;
-            }
-            set 
-            {
-                (this._state as IInOutLineMvoStateProperties).InOutProcessing = value;
-            }
-        }
-
 		public virtual bool? InOutProcessed
         {
             get
@@ -698,6 +667,34 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set 
             {
                 (this._state as IInOutLineMvoStateProperties).InOutProcessed = value;
+            }
+        }
+
+		public virtual string InOutProcessing
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutProcessing"))
+                {
+                    return _state.InOutProcessing;
+                }
+                return null;
+            }
+            set
+            {
+                _state.InOutProcessing = value;
+            }
+        }
+
+        string IInOutLineMvoStateProperties.InOutProcessing
+        {
+            get 
+            {
+                return (this._state as IInOutLineMvoStateProperties).InOutProcessing;
+            }
+            set 
+            {
+                (this._state as IInOutLineMvoStateProperties).InOutProcessing = value;
             }
         }
 

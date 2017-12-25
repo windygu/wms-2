@@ -34,8 +34,8 @@
     <property name="Deleted" ></property>
     <property name="InOutDocumentStatusId" ></property>
     <property name="InOutPosted" ></property>
-    <property name="InOutProcessing" ></property>
     <property name="InOutProcessed" ></property>
+    <property name="InOutProcessing" ></property>
     <property name="InOutDocumentTypeId" ></property>
     <property name="InOutDescription" ></property>
     <property name="InOutOrderId" ></property>

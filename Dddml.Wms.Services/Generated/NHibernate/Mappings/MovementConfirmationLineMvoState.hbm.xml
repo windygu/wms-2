@@ -24,13 +24,13 @@
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>
     <property name="Deleted" ></property>
-    <property name="MovementConfirmationDocumentTypeId" ></property>
     <property name="MovementConfirmationDocumentStatusId" ></property>
     <property name="MovementConfirmationMovementDocumentNumber" ></property>
     <property name="MovementConfirmationIsApproved" ></property>
     <property name="MovementConfirmationApprovalAmount" ></property>
-    <property name="MovementConfirmationProcessing" ></property>
     <property name="MovementConfirmationProcessed" ></property>
+    <property name="MovementConfirmationProcessing" ></property>
+    <property name="MovementConfirmationDocumentTypeId" ></property>
     <property name="MovementConfirmationDescription" ></property>
     <property name="MovementConfirmationCreatedBy" ></property>
     <property name="MovementConfirmationCreatedAt" ></property>

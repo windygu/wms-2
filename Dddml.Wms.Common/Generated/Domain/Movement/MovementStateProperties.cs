@@ -16,9 +16,43 @@ namespace Dddml.Wms.Domain.Movement
 	{
 		public virtual string DocumentNumber { get; set; }
 
+		public virtual string DocumentStatusId { get; set; }
+
+		public virtual DateTime MovementDate { get; set; }
+
+		public virtual bool Posted { get; set; }
+
+		public virtual bool Processed { get; set; }
+
+		public virtual string Processing { get; set; }
+
+		public virtual DateTime DateReceived { get; set; }
+
 		public virtual string DocumentTypeId { get; set; }
 
-		public virtual string DocumentStatusId { get; set; }
+		public virtual bool IsInTransit { get; set; }
+
+		public virtual bool IsApproved { get; set; }
+
+		public virtual decimal ApprovalAmount { get; set; }
+
+		public virtual string ShipperId { get; set; }
+
+		public virtual string SalesRepresentativeId { get; set; }
+
+		public virtual string BusinessPartnerId { get; set; }
+
+		public virtual decimal ChargeAmount { get; set; }
+
+		public virtual string CreateFrom { get; set; }
+
+		public virtual decimal FreightAmount { get; set; }
+
+		public virtual string ReversalDocumentNumber { get; set; }
+
+		public virtual string WarehouseIdFrom { get; set; }
+
+		public virtual string WarehouseIdTo { get; set; }
 
 		public virtual string Description { get; set; }
 

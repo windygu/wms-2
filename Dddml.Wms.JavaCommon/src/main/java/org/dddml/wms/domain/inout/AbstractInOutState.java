@@ -46,18 +46,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.posted = posted;
     }
 
-    private Boolean processing;
-
-    public Boolean getProcessing()
-    {
-        return this.processing;
-    }
-
-    public void setProcessing(Boolean processing)
-    {
-        this.processing = processing;
-    }
-
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -68,6 +56,18 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     public void setProcessed(Boolean processed)
     {
         this.processed = processed;
+    }
+
+    private String processing;
+
+    public String getProcessing()
+    {
+        return this.processing;
+    }
+
+    public void setProcessing(String processing)
+    {
+        this.processing = processing;
     }
 
     private String documentTypeId;
@@ -509,8 +509,8 @@ public abstract class AbstractInOutState implements InOutState, Saveable
 
         this.setDocumentStatusId(e.getDocumentStatusId());
         this.setPosted(e.getPosted());
-        this.setProcessing(e.getProcessing());
         this.setProcessed(e.getProcessed());
+        this.setProcessing(e.getProcessing());
         this.setDocumentTypeId(e.getDocumentTypeId());
         this.setDescription(e.getDescription());
         this.setOrderId(e.getOrderId());
@@ -573,17 +573,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         {
             this.setPosted(e.getPosted());
         }
-        if (e.getProcessing() == null)
-        {
-            if (e.getIsPropertyProcessingRemoved() != null && e.getIsPropertyProcessingRemoved())
-            {
-                this.setProcessing(null);
-            }
-        }
-        else
-        {
-            this.setProcessing(e.getProcessing());
-        }
         if (e.getProcessed() == null)
         {
             if (e.getIsPropertyProcessedRemoved() != null && e.getIsPropertyProcessedRemoved())
@@ -594,6 +583,17 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         else
         {
             this.setProcessed(e.getProcessed());
+        }
+        if (e.getProcessing() == null)
+        {
+            if (e.getIsPropertyProcessingRemoved() != null && e.getIsPropertyProcessingRemoved())
+            {
+                this.setProcessing(null);
+            }
+        }
+        else
+        {
+            this.setProcessing(e.getProcessing());
         }
         if (e.getDocumentTypeId() == null)
         {

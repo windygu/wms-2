@@ -20,9 +20,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool Posted { get; set; }
 
-		public virtual bool Processing { get; set; }
-
 		public virtual bool Processed { get; set; }
+
+		public virtual string Processing { get; set; }
 
 		public virtual string DocumentTypeId { get; set; }
 

@@ -53,8 +53,8 @@ namespace Dddml.Wms.Domain.InOut
 
             cmd.DocumentNumber = state.DocumentNumber;
             cmd.Posted = state.Posted;
-            cmd.Processing = state.Processing;
             cmd.Processed = state.Processed;
+            cmd.Processing = state.Processing;
             cmd.DocumentTypeId = state.DocumentTypeId;
             cmd.Description = state.Description;
             cmd.OrderId = state.OrderId;
@@ -80,6 +80,7 @@ namespace Dddml.Wms.Domain.InOut
             cmd.ReversalNumber = state.ReversalNumber;
             cmd.Active = ((IInOutStateProperties)state).Active;
             
+            if (state.Processing == null) { cmd.IsPropertyProcessingRemoved = true; }
             if (state.DocumentTypeId == null) { cmd.IsPropertyDocumentTypeIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.OrderId == null) { cmd.IsPropertyOrderIdRemoved = true; }
@@ -116,8 +117,8 @@ namespace Dddml.Wms.Domain.InOut
 
             cmd.DocumentNumber = state.DocumentNumber;
             cmd.Posted = state.Posted;
-            cmd.Processing = state.Processing;
             cmd.Processed = state.Processed;
+            cmd.Processing = state.Processing;
             cmd.DocumentTypeId = state.DocumentTypeId;
             cmd.Description = state.Description;
             cmd.OrderId = state.OrderId;

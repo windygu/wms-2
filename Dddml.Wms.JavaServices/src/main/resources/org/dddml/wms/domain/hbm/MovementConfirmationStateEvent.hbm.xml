@@ -15,13 +15,13 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="documentTypeId" ></property>
 	<property name="documentStatusId" ></property>
 	<property name="movementDocumentNumber" ></property>
 	<property name="isApproved" ></property>
 	<property name="approvalAmount" ></property>
-	<property name="processing" ></property>
 	<property name="processed" ></property>
+	<property name="processing" ></property>
+	<property name="documentTypeId" ></property>
 	<property name="description" ></property>
 	<property name="active" ></property>
 
@@ -37,8 +37,6 @@
 
     <subclass name="AbstractMovementConfirmationStateEvent$SimpleMovementConfirmationStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyDocumentTypeIdRemoved" column="IsPropertyDocumentTypeIdRemoved"/>
-
         <property name="isPropertyDocumentStatusIdRemoved" column="IsPropertyDocumentStatusIdRemoved"/>
 
         <property name="isPropertyMovementDocumentNumberRemoved" column="IsPropertyMovementDocumentNumberRemoved"/>
@@ -47,9 +45,11 @@
 
         <property name="isPropertyApprovalAmountRemoved" column="IsPropertyApprovalAmountRemoved"/>
 
+        <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
         <property name="isPropertyProcessingRemoved" column="IsPropertyProcessingRemoved"/>
 
-        <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+        <property name="isPropertyDocumentTypeIdRemoved" column="IsPropertyDocumentTypeIdRemoved"/>
 
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 

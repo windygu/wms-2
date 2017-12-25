@@ -44,8 +44,8 @@ namespace Dddml.Wms.Domain.InOut
             dto.CommandId = e.CommandId;
             dto.DocumentStatusId = e.DocumentStatusId;
             dto.Posted = e.Posted;
-            dto.Processing = e.Processing;
             dto.Processed = e.Processed;
+            dto.Processing = e.Processing;
             dto.DocumentTypeId = e.DocumentTypeId;
             dto.Description = e.Description;
             dto.OrderId = e.OrderId;
@@ -90,8 +90,8 @@ namespace Dddml.Wms.Domain.InOut
             dto.CommandId = e.CommandId;
             dto.DocumentStatusId = e.DocumentStatusId;
             dto.Posted = e.Posted;
-            dto.Processing = e.Processing;
             dto.Processed = e.Processed;
+            dto.Processing = e.Processing;
             dto.DocumentTypeId = e.DocumentTypeId;
             dto.Description = e.Description;
             dto.OrderId = e.OrderId;
@@ -118,8 +118,8 @@ namespace Dddml.Wms.Domain.InOut
             dto.Active = e.Active;
             dto.IsPropertyDocumentStatusIdRemoved = e.IsPropertyDocumentStatusIdRemoved;
             dto.IsPropertyPostedRemoved = e.IsPropertyPostedRemoved;
-            dto.IsPropertyProcessingRemoved = e.IsPropertyProcessingRemoved;
             dto.IsPropertyProcessedRemoved = e.IsPropertyProcessedRemoved;
+            dto.IsPropertyProcessingRemoved = e.IsPropertyProcessingRemoved;
             dto.IsPropertyDocumentTypeIdRemoved = e.IsPropertyDocumentTypeIdRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyOrderIdRemoved = e.IsPropertyOrderIdRemoved;

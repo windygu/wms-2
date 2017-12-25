@@ -341,34 +341,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             }
         }
 
-		public virtual string MovementConfirmationDocumentTypeId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationDocumentTypeId"))
-                {
-                    return _state.MovementConfirmationDocumentTypeId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.MovementConfirmationDocumentTypeId = value;
-            }
-        }
-
-        string IMovementConfirmationLineMvoStateProperties.MovementConfirmationDocumentTypeId
-        {
-            get 
-            {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDocumentTypeId;
-            }
-            set 
-            {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDocumentTypeId = value;
-            }
-        }
-
 		public virtual string MovementConfirmationDocumentStatusId
 		{
             get
@@ -487,34 +459,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             }
         }
 
-		public virtual string MovementConfirmationProcessing
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationProcessing"))
-                {
-                    return _state.MovementConfirmationProcessing;
-                }
-                return null;
-            }
-            set
-            {
-                _state.MovementConfirmationProcessing = value;
-            }
-        }
-
-        string IMovementConfirmationLineMvoStateProperties.MovementConfirmationProcessing
-        {
-            get 
-            {
-                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationProcessing;
-            }
-            set 
-            {
-                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationProcessing = value;
-            }
-        }
-
 		public virtual bool? MovementConfirmationProcessed
         {
             get
@@ -543,6 +487,62 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set 
             {
                 (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationProcessed = value;
+            }
+        }
+
+		public virtual string MovementConfirmationProcessing
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationProcessing"))
+                {
+                    return _state.MovementConfirmationProcessing;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementConfirmationProcessing = value;
+            }
+        }
+
+        string IMovementConfirmationLineMvoStateProperties.MovementConfirmationProcessing
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationProcessing;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationProcessing = value;
+            }
+        }
+
+		public virtual string MovementConfirmationDocumentTypeId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationDocumentTypeId"))
+                {
+                    return _state.MovementConfirmationDocumentTypeId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MovementConfirmationDocumentTypeId = value;
+            }
+        }
+
+        string IMovementConfirmationLineMvoStateProperties.MovementConfirmationDocumentTypeId
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDocumentTypeId;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationLineMvoStateProperties).MovementConfirmationDocumentTypeId = value;
             }
         }
 

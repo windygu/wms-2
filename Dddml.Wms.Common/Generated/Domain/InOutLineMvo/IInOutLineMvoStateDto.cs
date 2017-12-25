@@ -136,13 +136,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        bool? InOutProcessing
+        bool? InOutProcessed
         {
             get;
             set;
         }
 
-        bool? InOutProcessed
+        string InOutProcessing
         {
             get;
             set;

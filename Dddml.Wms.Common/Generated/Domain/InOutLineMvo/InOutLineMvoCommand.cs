@@ -91,9 +91,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? InOutPosted { get; set; }
 
-		public virtual bool? InOutProcessing { get; set; }
-
 		public virtual bool? InOutProcessed { get; set; }
+
+		public virtual string InOutProcessing { get; set; }
 
 		public virtual string InOutDocumentTypeId { get; set; }
 
@@ -221,9 +221,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool IsPropertyInOutPostedRemoved { get; set; }
 
-		public virtual bool IsPropertyInOutProcessingRemoved { get; set; }
-
 		public virtual bool IsPropertyInOutProcessedRemoved { get; set; }
+
+		public virtual bool IsPropertyInOutProcessingRemoved { get; set; }
 
 		public virtual bool IsPropertyInOutDocumentTypeIdRemoved { get; set; }
 

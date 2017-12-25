@@ -35,18 +35,6 @@ public abstract class AbstractMovementConfirmationCommand extends AbstractComman
 
     public static abstract class AbstractCreateOrMergePatchMovementConfirmation extends AbstractMovementConfirmationCommand implements CreateOrMergePatchMovementConfirmation
     {
-        private String documentTypeId;
-
-        public String getDocumentTypeId()
-        {
-            return this.documentTypeId;
-        }
-
-        public void setDocumentTypeId(String documentTypeId)
-        {
-            this.documentTypeId = documentTypeId;
-        }
-
         private String documentAction;
 
         public String getDocumentAction()
@@ -95,6 +83,18 @@ public abstract class AbstractMovementConfirmationCommand extends AbstractComman
             this.approvalAmount = approvalAmount;
         }
 
+        private Boolean processed;
+
+        public Boolean getProcessed()
+        {
+            return this.processed;
+        }
+
+        public void setProcessed(Boolean processed)
+        {
+            this.processed = processed;
+        }
+
         private String processing;
 
         public String getProcessing()
@@ -107,16 +107,16 @@ public abstract class AbstractMovementConfirmationCommand extends AbstractComman
             this.processing = processing;
         }
 
-        private Boolean processed;
+        private String documentTypeId;
 
-        public Boolean getProcessed()
+        public String getDocumentTypeId()
         {
-            return this.processed;
+            return this.documentTypeId;
         }
 
-        public void setProcessed(Boolean processed)
+        public void setDocumentTypeId(String documentTypeId)
         {
-            this.processed = processed;
+            this.documentTypeId = documentTypeId;
         }
 
         private String description;
@@ -192,18 +192,6 @@ public abstract class AbstractMovementConfirmationCommand extends AbstractComman
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
-        private Boolean isPropertyDocumentTypeIdRemoved;
-
-        public Boolean getIsPropertyDocumentTypeIdRemoved()
-        {
-            return this.isPropertyDocumentTypeIdRemoved;
-        }
-
-        public void setIsPropertyDocumentTypeIdRemoved(Boolean removed)
-        {
-            this.isPropertyDocumentTypeIdRemoved = removed;
-        }
-
         private Boolean isPropertyMovementDocumentNumberRemoved;
 
         public Boolean getIsPropertyMovementDocumentNumberRemoved()
@@ -240,6 +228,18 @@ public abstract class AbstractMovementConfirmationCommand extends AbstractComman
             this.isPropertyApprovalAmountRemoved = removed;
         }
 
+        private Boolean isPropertyProcessedRemoved;
+
+        public Boolean getIsPropertyProcessedRemoved()
+        {
+            return this.isPropertyProcessedRemoved;
+        }
+
+        public void setIsPropertyProcessedRemoved(Boolean removed)
+        {
+            this.isPropertyProcessedRemoved = removed;
+        }
+
         private Boolean isPropertyProcessingRemoved;
 
         public Boolean getIsPropertyProcessingRemoved()
@@ -252,16 +252,16 @@ public abstract class AbstractMovementConfirmationCommand extends AbstractComman
             this.isPropertyProcessingRemoved = removed;
         }
 
-        private Boolean isPropertyProcessedRemoved;
+        private Boolean isPropertyDocumentTypeIdRemoved;
 
-        public Boolean getIsPropertyProcessedRemoved()
+        public Boolean getIsPropertyDocumentTypeIdRemoved()
         {
-            return this.isPropertyProcessedRemoved;
+            return this.isPropertyDocumentTypeIdRemoved;
         }
 
-        public void setIsPropertyProcessedRemoved(Boolean removed)
+        public void setIsPropertyDocumentTypeIdRemoved(Boolean removed)
         {
-            this.isPropertyProcessedRemoved = removed;
+            this.isPropertyDocumentTypeIdRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;

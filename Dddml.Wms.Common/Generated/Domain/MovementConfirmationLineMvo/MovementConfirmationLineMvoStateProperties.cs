@@ -35,8 +35,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual bool Active { get; set; }
 
-		public virtual string MovementConfirmationDocumentTypeId { get; set; }
-
 		public virtual string MovementConfirmationDocumentStatusId { get; set; }
 
 		public virtual string MovementConfirmationMovementDocumentNumber { get; set; }
@@ -45,9 +43,11 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual decimal MovementConfirmationApprovalAmount { get; set; }
 
+		public virtual bool MovementConfirmationProcessed { get; set; }
+
 		public virtual string MovementConfirmationProcessing { get; set; }
 
-		public virtual bool MovementConfirmationProcessed { get; set; }
+		public virtual string MovementConfirmationDocumentTypeId { get; set; }
 
 		public virtual string MovementConfirmationDescription { get; set; }
 

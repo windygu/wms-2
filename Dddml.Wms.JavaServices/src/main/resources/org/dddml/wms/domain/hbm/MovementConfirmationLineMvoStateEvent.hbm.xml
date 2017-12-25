@@ -25,13 +25,13 @@
 	<property name="processed" ></property>
 	<property name="version" ></property>
 	<property name="active" ></property>
-	<property name="movementConfirmationDocumentTypeId" ></property>
 	<property name="movementConfirmationDocumentStatusId" ></property>
 	<property name="movementConfirmationMovementDocumentNumber" ></property>
 	<property name="movementConfirmationIsApproved" ></property>
 	<property name="movementConfirmationApprovalAmount" ></property>
-	<property name="movementConfirmationProcessing" ></property>
 	<property name="movementConfirmationProcessed" ></property>
+	<property name="movementConfirmationProcessing" ></property>
+	<property name="movementConfirmationDocumentTypeId" ></property>
 	<property name="movementConfirmationDescription" ></property>
 	<property name="movementConfirmationCreatedBy" ></property>
 	<property name="movementConfirmationCreatedAt" ></property>
@@ -70,8 +70,6 @@
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
-        <property name="isPropertyMovementConfirmationDocumentTypeIdRemoved" column="IsPropertyMovementConfirmationDocumentTypeIdRemoved"/>
-
         <property name="isPropertyMovementConfirmationDocumentStatusIdRemoved" column="IsPropertyMovementConfirmationDocumentStatusIdRemoved"/>
 
         <property name="isPropertyMovementConfirmationMovementDocumentNumberRemoved" column="IsPropertyMovementConfirmationMovementDocumentNumberRemoved"/>
@@ -80,9 +78,11 @@
 
         <property name="isPropertyMovementConfirmationApprovalAmountRemoved" column="IsPropertyMovementConfirmationApprovalAmountRemoved"/>
 
+        <property name="isPropertyMovementConfirmationProcessedRemoved" column="IsPropertyMovementConfirmationProcessedRemoved"/>
+
         <property name="isPropertyMovementConfirmationProcessingRemoved" column="IsPropertyMovementConfirmationProcessingRemoved"/>
 
-        <property name="isPropertyMovementConfirmationProcessedRemoved" column="IsPropertyMovementConfirmationProcessedRemoved"/>
+        <property name="isPropertyMovementConfirmationDocumentTypeIdRemoved" column="IsPropertyMovementConfirmationDocumentTypeIdRemoved"/>
 
         <property name="isPropertyMovementConfirmationDescriptionRemoved" column="IsPropertyMovementConfirmationDescriptionRemoved"/>
 

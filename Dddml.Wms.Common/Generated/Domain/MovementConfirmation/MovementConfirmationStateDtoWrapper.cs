@@ -67,34 +67,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             }
         }
 
-		public virtual string DocumentTypeId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DocumentTypeId"))
-                {
-                    return _state.DocumentTypeId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.DocumentTypeId = value;
-            }
-        }
-
-        string IMovementConfirmationStateProperties.DocumentTypeId
-        {
-            get 
-            {
-                return (this._state as IMovementConfirmationStateProperties).DocumentTypeId;
-            }
-            set 
-            {
-                (this._state as IMovementConfirmationStateProperties).DocumentTypeId = value;
-            }
-        }
-
 		public virtual string DocumentStatusId
 		{
             get
@@ -213,34 +185,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             }
         }
 
-		public virtual string Processing
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Processing"))
-                {
-                    return _state.Processing;
-                }
-                return null;
-            }
-            set
-            {
-                _state.Processing = value;
-            }
-        }
-
-        string IMovementConfirmationStateProperties.Processing
-        {
-            get 
-            {
-                return (this._state as IMovementConfirmationStateProperties).Processing;
-            }
-            set 
-            {
-                (this._state as IMovementConfirmationStateProperties).Processing = value;
-            }
-        }
-
 		public virtual bool? Processed
         {
             get
@@ -269,6 +213,62 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             set 
             {
                 (this._state as IMovementConfirmationStateProperties).Processed = value;
+            }
+        }
+
+		public virtual string Processing
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Processing"))
+                {
+                    return _state.Processing;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Processing = value;
+            }
+        }
+
+        string IMovementConfirmationStateProperties.Processing
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationStateProperties).Processing;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationStateProperties).Processing = value;
+            }
+        }
+
+		public virtual string DocumentTypeId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DocumentTypeId"))
+                {
+                    return _state.DocumentTypeId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.DocumentTypeId = value;
+            }
+        }
+
+        string IMovementConfirmationStateProperties.DocumentTypeId
+        {
+            get 
+            {
+                return (this._state as IMovementConfirmationStateProperties).DocumentTypeId;
+            }
+            set 
+            {
+                (this._state as IMovementConfirmationStateProperties).DocumentTypeId = value;
             }
         }
 

@@ -53,8 +53,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		public virtual string DocumentNumber { get; set; }
 
-		public virtual string DocumentTypeId { get; set; }
-
 		public virtual string DocumentAction { get; set; }
 
 		public virtual string MovementDocumentNumber { get; set; }
@@ -63,32 +61,15 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		public virtual decimal? ApprovalAmount { get; set; }
 
+		public virtual bool? Processed { get; set; }
+
 		public virtual string Processing { get; set; }
 
-		public virtual bool? Processed { get; set; }
+		public virtual string DocumentTypeId { get; set; }
 
 		public virtual string Description { get; set; }
 
 		public virtual bool? Active { get; set; }
-
-		public virtual bool? IsPropertyDocumentTypeIdRemoved { get; set; }
-
-        bool IMergePatchMovementConfirmation.IsPropertyDocumentTypeIdRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyDocumentTypeIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyDocumentTypeIdRemoved = value;
-            }
-        }
 
 		public virtual bool? IsPropertyMovementDocumentNumberRemoved { get; set; }
 
@@ -147,6 +128,25 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             }
         }
 
+		public virtual bool? IsPropertyProcessedRemoved { get; set; }
+
+        bool IMergePatchMovementConfirmation.IsPropertyProcessedRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyProcessedRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyProcessedRemoved = value;
+            }
+        }
+
 		public virtual bool? IsPropertyProcessingRemoved { get; set; }
 
         bool IMergePatchMovementConfirmation.IsPropertyProcessingRemoved
@@ -166,13 +166,13 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             }
         }
 
-		public virtual bool? IsPropertyProcessedRemoved { get; set; }
+		public virtual bool? IsPropertyDocumentTypeIdRemoved { get; set; }
 
-        bool IMergePatchMovementConfirmation.IsPropertyProcessedRemoved
+        bool IMergePatchMovementConfirmation.IsPropertyDocumentTypeIdRemoved
         {
             get
             {
-                var b = this.IsPropertyProcessedRemoved;
+                var b = this.IsPropertyDocumentTypeIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -181,7 +181,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             }
             set
             {
-                this.IsPropertyProcessedRemoved = value;
+                this.IsPropertyDocumentTypeIdRemoved = value;
             }
         }
 

@@ -14,10 +14,6 @@ public interface MovementConfirmationStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    String getDocumentTypeId();
-
-    void setDocumentTypeId(String documentTypeId);
-
     String getDocumentStatusId();
 
     void setDocumentStatusId(String documentStatusId);
@@ -34,13 +30,17 @@ public interface MovementConfirmationStateEvent extends Event
 
     void setApprovalAmount(BigDecimal approvalAmount);
 
+    Boolean getProcessed();
+
+    void setProcessed(Boolean processed);
+
     String getProcessing();
 
     void setProcessing(String processing);
 
-    Boolean getProcessed();
+    String getDocumentTypeId();
 
-    void setProcessed(Boolean processed);
+    void setDocumentTypeId(String documentTypeId);
 
     String getDescription();
 
@@ -76,10 +76,6 @@ public interface MovementConfirmationStateEvent extends Event
 
     interface MovementConfirmationStateMergePatched extends MovementConfirmationStateEvent
     {
-        Boolean getIsPropertyDocumentTypeIdRemoved();
-
-        void setIsPropertyDocumentTypeIdRemoved(Boolean removed);
-
         Boolean getIsPropertyDocumentStatusIdRemoved();
 
         void setIsPropertyDocumentStatusIdRemoved(Boolean removed);
@@ -96,13 +92,17 @@ public interface MovementConfirmationStateEvent extends Event
 
         void setIsPropertyApprovalAmountRemoved(Boolean removed);
 
+        Boolean getIsPropertyProcessedRemoved();
+
+        void setIsPropertyProcessedRemoved(Boolean removed);
+
         Boolean getIsPropertyProcessingRemoved();
 
         void setIsPropertyProcessingRemoved(Boolean removed);
 
-        Boolean getIsPropertyProcessedRemoved();
+        Boolean getIsPropertyDocumentTypeIdRemoved();
 
-        void setIsPropertyProcessedRemoved(Boolean removed);
+        void setIsPropertyDocumentTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 

@@ -52,8 +52,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             set { this.CommandId = value; }
         }
 
-		public virtual string DocumentTypeId { get; set; }
-
 		public virtual string DocumentAction { get; set; }
 
 		public virtual string MovementDocumentNumber { get; set; }
@@ -62,9 +60,11 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		public virtual decimal? ApprovalAmount { get; set; }
 
+		public virtual bool? Processed { get; set; }
+
 		public virtual string Processing { get; set; }
 
-		public virtual bool? Processed { get; set; }
+		public virtual string DocumentTypeId { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -127,17 +127,17 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	public class MergePatchMovementConfirmation :MovementConfirmationCommandBase, IMergePatchMovementConfirmation
 	{
 
-		public virtual bool IsPropertyDocumentTypeIdRemoved { get; set; }
-
 		public virtual bool IsPropertyMovementDocumentNumberRemoved { get; set; }
 
 		public virtual bool IsPropertyIsApprovedRemoved { get; set; }
 
 		public virtual bool IsPropertyApprovalAmountRemoved { get; set; }
 
+		public virtual bool IsPropertyProcessedRemoved { get; set; }
+
 		public virtual bool IsPropertyProcessingRemoved { get; set; }
 
-		public virtual bool IsPropertyProcessedRemoved { get; set; }
+		public virtual bool IsPropertyDocumentTypeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 

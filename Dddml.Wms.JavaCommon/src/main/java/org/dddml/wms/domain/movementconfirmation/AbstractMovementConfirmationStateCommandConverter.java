@@ -38,21 +38,21 @@ public abstract class AbstractMovementConfirmationStateCommandConverter<TCreateM
         cmd.setVersion(state.getVersion());
 
         cmd.setDocumentNumber(state.getDocumentNumber());
-        cmd.setDocumentTypeId(state.getDocumentTypeId());
         cmd.setMovementDocumentNumber(state.getMovementDocumentNumber());
         cmd.setIsApproved(state.getIsApproved());
         cmd.setApprovalAmount(state.getApprovalAmount());
-        cmd.setProcessing(state.getProcessing());
         cmd.setProcessed(state.getProcessed());
+        cmd.setProcessing(state.getProcessing());
+        cmd.setDocumentTypeId(state.getDocumentTypeId());
         cmd.setDescription(state.getDescription());
         cmd.setActive(state.getActive());
             
-        if (state.getDocumentTypeId() == null) { cmd.setIsPropertyDocumentTypeIdRemoved(true); }
         if (state.getMovementDocumentNumber() == null) { cmd.setIsPropertyMovementDocumentNumberRemoved(true); }
         if (state.getIsApproved() == null) { cmd.setIsPropertyIsApprovedRemoved(true); }
         if (state.getApprovalAmount() == null) { cmd.setIsPropertyApprovalAmountRemoved(true); }
-        if (state.getProcessing() == null) { cmd.setIsPropertyProcessingRemoved(true); }
         if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
+        if (state.getProcessing() == null) { cmd.setIsPropertyProcessingRemoved(true); }
+        if (state.getDocumentTypeId() == null) { cmd.setIsPropertyDocumentTypeIdRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         for (MovementConfirmationLineState d : state.getMovementConfirmationLines())
@@ -69,12 +69,12 @@ public abstract class AbstractMovementConfirmationStateCommandConverter<TCreateM
 
         cmd.setVersion(state.getVersion());
         cmd.setDocumentNumber(state.getDocumentNumber());
-        cmd.setDocumentTypeId(state.getDocumentTypeId());
         cmd.setMovementDocumentNumber(state.getMovementDocumentNumber());
         cmd.setIsApproved(state.getIsApproved());
         cmd.setApprovalAmount(state.getApprovalAmount());
-        cmd.setProcessing(state.getProcessing());
         cmd.setProcessed(state.getProcessed());
+        cmd.setProcessing(state.getProcessing());
+        cmd.setDocumentTypeId(state.getDocumentTypeId());
         cmd.setDescription(state.getDescription());
         cmd.setActive(state.getActive());
         for (MovementConfirmationLineState d : state.getMovementConfirmationLines())

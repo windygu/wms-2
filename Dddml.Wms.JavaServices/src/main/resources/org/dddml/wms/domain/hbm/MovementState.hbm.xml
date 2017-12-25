@@ -11,8 +11,25 @@
 	<id name="documentNumber" length="50" column="DocumentNumber"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
-	<property name="documentTypeId" ></property>
 	<property name="documentStatusId" ></property>
+	<property name="movementDate" ></property>
+	<property name="posted" ></property>
+	<property name="processed" ></property>
+	<property name="processing" ></property>
+	<property name="dateReceived" ></property>
+	<property name="documentTypeId" ></property>
+	<property name="isInTransit" ></property>
+	<property name="isApproved" ></property>
+	<property name="approvalAmount" ></property>
+	<property name="shipperId" ></property>
+	<property name="salesRepresentativeId" ></property>
+	<property name="businessPartnerId" ></property>
+	<property name="chargeAmount" ></property>
+	<property name="createFrom" ></property>
+	<property name="freightAmount" ></property>
+	<property name="reversalDocumentNumber" ></property>
+	<property name="warehouseIdFrom" ></property>
+	<property name="warehouseIdTo" ></property>
 	<property name="description" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>

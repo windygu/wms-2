@@ -57,8 +57,8 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
         cmd.setInOutPosted(state.getInOutPosted());
-        cmd.setInOutProcessing(state.getInOutProcessing());
         cmd.setInOutProcessed(state.getInOutProcessed());
+        cmd.setInOutProcessing(state.getInOutProcessing());
         cmd.setInOutDocumentTypeId(state.getInOutDocumentTypeId());
         cmd.setInOutDescription(state.getInOutDescription());
         cmd.setInOutOrderId(state.getInOutOrderId());
@@ -107,8 +107,8 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         if (state.getInOutPosted() == null) { cmd.setIsPropertyInOutPostedRemoved(true); }
-        if (state.getInOutProcessing() == null) { cmd.setIsPropertyInOutProcessingRemoved(true); }
         if (state.getInOutProcessed() == null) { cmd.setIsPropertyInOutProcessedRemoved(true); }
+        if (state.getInOutProcessing() == null) { cmd.setIsPropertyInOutProcessingRemoved(true); }
         if (state.getInOutDocumentTypeId() == null) { cmd.setIsPropertyInOutDocumentTypeIdRemoved(true); }
         if (state.getInOutDescription() == null) { cmd.setIsPropertyInOutDescriptionRemoved(true); }
         if (state.getInOutOrderId() == null) { cmd.setIsPropertyInOutOrderIdRemoved(true); }
@@ -165,8 +165,8 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
         cmd.setInOutPosted(state.getInOutPosted());
-        cmd.setInOutProcessing(state.getInOutProcessing());
         cmd.setInOutProcessed(state.getInOutProcessed());
+        cmd.setInOutProcessing(state.getInOutProcessing());
         cmd.setInOutDocumentTypeId(state.getInOutDocumentTypeId());
         cmd.setInOutDescription(state.getInOutDescription());
         cmd.setInOutOrderId(state.getInOutOrderId());

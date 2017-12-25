@@ -126,16 +126,6 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
         this.active = active;
     }
 
-    private String movementConfirmationDocumentTypeId;
-
-    public String getMovementConfirmationDocumentTypeId() {
-        return this.movementConfirmationDocumentTypeId;
-    }
-
-    public void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId) {
-        this.movementConfirmationDocumentTypeId = movementConfirmationDocumentTypeId;
-    }
-
     private String movementConfirmationDocumentStatusId;
 
     public String getMovementConfirmationDocumentStatusId() {
@@ -176,6 +166,16 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
         this.movementConfirmationApprovalAmount = movementConfirmationApprovalAmount;
     }
 
+    private Boolean movementConfirmationProcessed;
+
+    public Boolean getMovementConfirmationProcessed() {
+        return this.movementConfirmationProcessed;
+    }
+
+    public void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed) {
+        this.movementConfirmationProcessed = movementConfirmationProcessed;
+    }
+
     private String movementConfirmationProcessing;
 
     public String getMovementConfirmationProcessing() {
@@ -186,14 +186,14 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
         this.movementConfirmationProcessing = movementConfirmationProcessing;
     }
 
-    private Boolean movementConfirmationProcessed;
+    private String movementConfirmationDocumentTypeId;
 
-    public Boolean getMovementConfirmationProcessed() {
-        return this.movementConfirmationProcessed;
+    public String getMovementConfirmationDocumentTypeId() {
+        return this.movementConfirmationDocumentTypeId;
     }
 
-    public void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed) {
-        this.movementConfirmationProcessed = movementConfirmationProcessed;
+    public void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId) {
+        this.movementConfirmationDocumentTypeId = movementConfirmationDocumentTypeId;
     }
 
     private String movementConfirmationDescription;
@@ -376,16 +376,6 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
         this.isPropertyActiveRemoved = removed;
     }
 
-    private Boolean isPropertyMovementConfirmationDocumentTypeIdRemoved;
-
-    public Boolean getIsPropertyMovementConfirmationDocumentTypeIdRemoved() {
-        return this.isPropertyMovementConfirmationDocumentTypeIdRemoved;
-    }
-
-    public void setIsPropertyMovementConfirmationDocumentTypeIdRemoved(Boolean removed) {
-        this.isPropertyMovementConfirmationDocumentTypeIdRemoved = removed;
-    }
-
     private Boolean isPropertyMovementConfirmationDocumentStatusIdRemoved;
 
     public Boolean getIsPropertyMovementConfirmationDocumentStatusIdRemoved() {
@@ -426,6 +416,16 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
         this.isPropertyMovementConfirmationApprovalAmountRemoved = removed;
     }
 
+    private Boolean isPropertyMovementConfirmationProcessedRemoved;
+
+    public Boolean getIsPropertyMovementConfirmationProcessedRemoved() {
+        return this.isPropertyMovementConfirmationProcessedRemoved;
+    }
+
+    public void setIsPropertyMovementConfirmationProcessedRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationProcessedRemoved = removed;
+    }
+
     private Boolean isPropertyMovementConfirmationProcessingRemoved;
 
     public Boolean getIsPropertyMovementConfirmationProcessingRemoved() {
@@ -436,14 +436,14 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
         this.isPropertyMovementConfirmationProcessingRemoved = removed;
     }
 
-    private Boolean isPropertyMovementConfirmationProcessedRemoved;
+    private Boolean isPropertyMovementConfirmationDocumentTypeIdRemoved;
 
-    public Boolean getIsPropertyMovementConfirmationProcessedRemoved() {
-        return this.isPropertyMovementConfirmationProcessedRemoved;
+    public Boolean getIsPropertyMovementConfirmationDocumentTypeIdRemoved() {
+        return this.isPropertyMovementConfirmationDocumentTypeIdRemoved;
     }
 
-    public void setIsPropertyMovementConfirmationProcessedRemoved(Boolean removed) {
-        this.isPropertyMovementConfirmationProcessedRemoved = removed;
+    public void setIsPropertyMovementConfirmationDocumentTypeIdRemoved(Boolean removed) {
+        this.isPropertyMovementConfirmationDocumentTypeIdRemoved = removed;
     }
 
     private Boolean isPropertyMovementConfirmationDescriptionRemoved;

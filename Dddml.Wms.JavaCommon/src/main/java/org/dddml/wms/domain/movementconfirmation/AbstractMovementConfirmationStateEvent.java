@@ -33,18 +33,6 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String documentTypeId;
-
-    public String getDocumentTypeId()
-    {
-        return this.documentTypeId;
-    }
-
-    public void setDocumentTypeId(String documentTypeId)
-    {
-        this.documentTypeId = documentTypeId;
-    }
-
     private String documentStatusId;
 
     public String getDocumentStatusId()
@@ -93,6 +81,18 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
         this.approvalAmount = approvalAmount;
     }
 
+    private Boolean processed;
+
+    public Boolean getProcessed()
+    {
+        return this.processed;
+    }
+
+    public void setProcessed(Boolean processed)
+    {
+        this.processed = processed;
+    }
+
     private String processing;
 
     public String getProcessing()
@@ -105,16 +105,16 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
         this.processing = processing;
     }
 
-    private Boolean processed;
+    private String documentTypeId;
 
-    public Boolean getProcessed()
+    public String getDocumentTypeId()
     {
-        return this.processed;
+        return this.documentTypeId;
     }
 
-    public void setProcessed(Boolean processed)
+    public void setDocumentTypeId(String documentTypeId)
     {
-        this.processed = processed;
+        this.documentTypeId = documentTypeId;
     }
 
     private String description;
@@ -304,16 +304,6 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyDocumentTypeIdRemoved;
-
-        public Boolean getIsPropertyDocumentTypeIdRemoved() {
-            return this.isPropertyDocumentTypeIdRemoved;
-        }
-
-        public void setIsPropertyDocumentTypeIdRemoved(Boolean removed) {
-            this.isPropertyDocumentTypeIdRemoved = removed;
-        }
-
         private Boolean isPropertyDocumentStatusIdRemoved;
 
         public Boolean getIsPropertyDocumentStatusIdRemoved() {
@@ -354,6 +344,16 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
             this.isPropertyApprovalAmountRemoved = removed;
         }
 
+        private Boolean isPropertyProcessedRemoved;
+
+        public Boolean getIsPropertyProcessedRemoved() {
+            return this.isPropertyProcessedRemoved;
+        }
+
+        public void setIsPropertyProcessedRemoved(Boolean removed) {
+            this.isPropertyProcessedRemoved = removed;
+        }
+
         private Boolean isPropertyProcessingRemoved;
 
         public Boolean getIsPropertyProcessingRemoved() {
@@ -364,14 +364,14 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
             this.isPropertyProcessingRemoved = removed;
         }
 
-        private Boolean isPropertyProcessedRemoved;
+        private Boolean isPropertyDocumentTypeIdRemoved;
 
-        public Boolean getIsPropertyProcessedRemoved() {
-            return this.isPropertyProcessedRemoved;
+        public Boolean getIsPropertyDocumentTypeIdRemoved() {
+            return this.isPropertyDocumentTypeIdRemoved;
         }
 
-        public void setIsPropertyProcessedRemoved(Boolean removed) {
-            this.isPropertyProcessedRemoved = removed;
+        public void setIsPropertyDocumentTypeIdRemoved(Boolean removed) {
+            this.isPropertyDocumentTypeIdRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;

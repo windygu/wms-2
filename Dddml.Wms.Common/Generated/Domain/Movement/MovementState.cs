@@ -203,9 +203,43 @@ namespace Dddml.Wms.Domain.Movement
 		public virtual void When(IMovementStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
+			this.DocumentStatusId = e.DocumentStatusId;
+
+            this.MovementDate = (e.MovementDate != null && e.MovementDate.HasValue) ? e.MovementDate.Value : default(DateTime);
+
+            this.Posted = (e.Posted != null && e.Posted.HasValue) ? e.Posted.Value : default(bool);
+
+            this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+
+			this.Processing = e.Processing;
+
+            this.DateReceived = (e.DateReceived != null && e.DateReceived.HasValue) ? e.DateReceived.Value : default(DateTime);
+
 			this.DocumentTypeId = e.DocumentTypeId;
 
-			this.DocumentStatusId = e.DocumentStatusId;
+            this.IsInTransit = (e.IsInTransit != null && e.IsInTransit.HasValue) ? e.IsInTransit.Value : default(bool);
+
+            this.IsApproved = (e.IsApproved != null && e.IsApproved.HasValue) ? e.IsApproved.Value : default(bool);
+
+            this.ApprovalAmount = (e.ApprovalAmount != null && e.ApprovalAmount.HasValue) ? e.ApprovalAmount.Value : default(decimal);
+
+			this.ShipperId = e.ShipperId;
+
+			this.SalesRepresentativeId = e.SalesRepresentativeId;
+
+			this.BusinessPartnerId = e.BusinessPartnerId;
+
+            this.ChargeAmount = (e.ChargeAmount != null && e.ChargeAmount.HasValue) ? e.ChargeAmount.Value : default(decimal);
+
+			this.CreateFrom = e.CreateFrom;
+
+            this.FreightAmount = (e.FreightAmount != null && e.FreightAmount.HasValue) ? e.FreightAmount.Value : default(decimal);
+
+			this.ReversalDocumentNumber = e.ReversalDocumentNumber;
+
+			this.WarehouseIdFrom = e.WarehouseIdFrom;
+
+			this.WarehouseIdTo = e.WarehouseIdTo;
 
 			this.Description = e.Description;
 
@@ -228,6 +262,78 @@ namespace Dddml.Wms.Domain.Movement
 		{
 			ThrowOnWrongEvent(e);
 
+			if (e.DocumentStatusId == null)
+			{
+				if (e.IsPropertyDocumentStatusIdRemoved)
+				{
+					this.DocumentStatusId = default(string);
+				}
+			}
+			else
+			{
+				this.DocumentStatusId = e.DocumentStatusId;
+			}
+
+			if (e.MovementDate == null)
+			{
+				if (e.IsPropertyMovementDateRemoved)
+				{
+					this.MovementDate = default(DateTime);
+				}
+			}
+			else
+			{
+				this.MovementDate = (e.MovementDate != null && e.MovementDate.HasValue) ? e.MovementDate.Value : default(DateTime);
+			}
+
+			if (e.Posted == null)
+			{
+				if (e.IsPropertyPostedRemoved)
+				{
+					this.Posted = default(bool);
+				}
+			}
+			else
+			{
+				this.Posted = (e.Posted != null && e.Posted.HasValue) ? e.Posted.Value : default(bool);
+			}
+
+			if (e.Processed == null)
+			{
+				if (e.IsPropertyProcessedRemoved)
+				{
+					this.Processed = default(bool);
+				}
+			}
+			else
+			{
+				this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+			}
+
+			if (e.Processing == null)
+			{
+				if (e.IsPropertyProcessingRemoved)
+				{
+					this.Processing = default(string);
+				}
+			}
+			else
+			{
+				this.Processing = e.Processing;
+			}
+
+			if (e.DateReceived == null)
+			{
+				if (e.IsPropertyDateReceivedRemoved)
+				{
+					this.DateReceived = default(DateTime);
+				}
+			}
+			else
+			{
+				this.DateReceived = (e.DateReceived != null && e.DateReceived.HasValue) ? e.DateReceived.Value : default(DateTime);
+			}
+
 			if (e.DocumentTypeId == null)
 			{
 				if (e.IsPropertyDocumentTypeIdRemoved)
@@ -240,16 +346,148 @@ namespace Dddml.Wms.Domain.Movement
 				this.DocumentTypeId = e.DocumentTypeId;
 			}
 
-			if (e.DocumentStatusId == null)
+			if (e.IsInTransit == null)
 			{
-				if (e.IsPropertyDocumentStatusIdRemoved)
+				if (e.IsPropertyIsInTransitRemoved)
 				{
-					this.DocumentStatusId = default(string);
+					this.IsInTransit = default(bool);
 				}
 			}
 			else
 			{
-				this.DocumentStatusId = e.DocumentStatusId;
+				this.IsInTransit = (e.IsInTransit != null && e.IsInTransit.HasValue) ? e.IsInTransit.Value : default(bool);
+			}
+
+			if (e.IsApproved == null)
+			{
+				if (e.IsPropertyIsApprovedRemoved)
+				{
+					this.IsApproved = default(bool);
+				}
+			}
+			else
+			{
+				this.IsApproved = (e.IsApproved != null && e.IsApproved.HasValue) ? e.IsApproved.Value : default(bool);
+			}
+
+			if (e.ApprovalAmount == null)
+			{
+				if (e.IsPropertyApprovalAmountRemoved)
+				{
+					this.ApprovalAmount = default(decimal);
+				}
+			}
+			else
+			{
+				this.ApprovalAmount = (e.ApprovalAmount != null && e.ApprovalAmount.HasValue) ? e.ApprovalAmount.Value : default(decimal);
+			}
+
+			if (e.ShipperId == null)
+			{
+				if (e.IsPropertyShipperIdRemoved)
+				{
+					this.ShipperId = default(string);
+				}
+			}
+			else
+			{
+				this.ShipperId = e.ShipperId;
+			}
+
+			if (e.SalesRepresentativeId == null)
+			{
+				if (e.IsPropertySalesRepresentativeIdRemoved)
+				{
+					this.SalesRepresentativeId = default(string);
+				}
+			}
+			else
+			{
+				this.SalesRepresentativeId = e.SalesRepresentativeId;
+			}
+
+			if (e.BusinessPartnerId == null)
+			{
+				if (e.IsPropertyBusinessPartnerIdRemoved)
+				{
+					this.BusinessPartnerId = default(string);
+				}
+			}
+			else
+			{
+				this.BusinessPartnerId = e.BusinessPartnerId;
+			}
+
+			if (e.ChargeAmount == null)
+			{
+				if (e.IsPropertyChargeAmountRemoved)
+				{
+					this.ChargeAmount = default(decimal);
+				}
+			}
+			else
+			{
+				this.ChargeAmount = (e.ChargeAmount != null && e.ChargeAmount.HasValue) ? e.ChargeAmount.Value : default(decimal);
+			}
+
+			if (e.CreateFrom == null)
+			{
+				if (e.IsPropertyCreateFromRemoved)
+				{
+					this.CreateFrom = default(string);
+				}
+			}
+			else
+			{
+				this.CreateFrom = e.CreateFrom;
+			}
+
+			if (e.FreightAmount == null)
+			{
+				if (e.IsPropertyFreightAmountRemoved)
+				{
+					this.FreightAmount = default(decimal);
+				}
+			}
+			else
+			{
+				this.FreightAmount = (e.FreightAmount != null && e.FreightAmount.HasValue) ? e.FreightAmount.Value : default(decimal);
+			}
+
+			if (e.ReversalDocumentNumber == null)
+			{
+				if (e.IsPropertyReversalDocumentNumberRemoved)
+				{
+					this.ReversalDocumentNumber = default(string);
+				}
+			}
+			else
+			{
+				this.ReversalDocumentNumber = e.ReversalDocumentNumber;
+			}
+
+			if (e.WarehouseIdFrom == null)
+			{
+				if (e.IsPropertyWarehouseIdFromRemoved)
+				{
+					this.WarehouseIdFrom = default(string);
+				}
+			}
+			else
+			{
+				this.WarehouseIdFrom = e.WarehouseIdFrom;
+			}
+
+			if (e.WarehouseIdTo == null)
+			{
+				if (e.IsPropertyWarehouseIdToRemoved)
+				{
+					this.WarehouseIdTo = default(string);
+				}
+			}
+			else
+			{
+				this.WarehouseIdTo = e.WarehouseIdTo;
 			}
 
 			if (e.Description == null)

@@ -52,9 +52,43 @@ namespace Dddml.Wms.Domain.Movement
             set { this.CommandId = value; }
         }
 
+		public virtual string DocumentAction { get; set; }
+
+		public virtual DateTime? MovementDate { get; set; }
+
+		public virtual bool? Posted { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual string Processing { get; set; }
+
+		public virtual DateTime? DateReceived { get; set; }
+
 		public virtual string DocumentTypeId { get; set; }
 
-		public virtual string DocumentAction { get; set; }
+		public virtual bool? IsInTransit { get; set; }
+
+		public virtual bool? IsApproved { get; set; }
+
+		public virtual decimal? ApprovalAmount { get; set; }
+
+		public virtual string ShipperId { get; set; }
+
+		public virtual string SalesRepresentativeId { get; set; }
+
+		public virtual string BusinessPartnerId { get; set; }
+
+		public virtual decimal? ChargeAmount { get; set; }
+
+		public virtual string CreateFrom { get; set; }
+
+		public virtual decimal? FreightAmount { get; set; }
+
+		public virtual string ReversalDocumentNumber { get; set; }
+
+		public virtual string WarehouseIdFrom { get; set; }
+
+		public virtual string WarehouseIdTo { get; set; }
 
 		public virtual string Description { get; set; }
 
@@ -117,7 +151,41 @@ namespace Dddml.Wms.Domain.Movement
 	public class MergePatchMovement :MovementCommandBase, IMergePatchMovement
 	{
 
+		public virtual bool IsPropertyMovementDateRemoved { get; set; }
+
+		public virtual bool IsPropertyPostedRemoved { get; set; }
+
+		public virtual bool IsPropertyProcessedRemoved { get; set; }
+
+		public virtual bool IsPropertyProcessingRemoved { get; set; }
+
+		public virtual bool IsPropertyDateReceivedRemoved { get; set; }
+
 		public virtual bool IsPropertyDocumentTypeIdRemoved { get; set; }
+
+		public virtual bool IsPropertyIsInTransitRemoved { get; set; }
+
+		public virtual bool IsPropertyIsApprovedRemoved { get; set; }
+
+		public virtual bool IsPropertyApprovalAmountRemoved { get; set; }
+
+		public virtual bool IsPropertyShipperIdRemoved { get; set; }
+
+		public virtual bool IsPropertySalesRepresentativeIdRemoved { get; set; }
+
+		public virtual bool IsPropertyBusinessPartnerIdRemoved { get; set; }
+
+		public virtual bool IsPropertyChargeAmountRemoved { get; set; }
+
+		public virtual bool IsPropertyCreateFromRemoved { get; set; }
+
+		public virtual bool IsPropertyFreightAmountRemoved { get; set; }
+
+		public virtual bool IsPropertyReversalDocumentNumberRemoved { get; set; }
+
+		public virtual bool IsPropertyWarehouseIdFromRemoved { get; set; }
+
+		public virtual bool IsPropertyWarehouseIdToRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 

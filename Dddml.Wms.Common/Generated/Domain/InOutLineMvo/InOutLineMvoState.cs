@@ -213,9 +213,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
             this.InOutPosted = (e.InOutPosted != null && e.InOutPosted.HasValue) ? e.InOutPosted.Value : default(bool);
 
-            this.InOutProcessing = (e.InOutProcessing != null && e.InOutProcessing.HasValue) ? e.InOutProcessing.Value : default(bool);
-
             this.InOutProcessed = (e.InOutProcessed != null && e.InOutProcessed.HasValue) ? e.InOutProcessed.Value : default(bool);
+
+			this.InOutProcessing = e.InOutProcessing;
 
 			this.InOutDocumentTypeId = e.InOutDocumentTypeId;
 
@@ -516,18 +516,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 				this.InOutPosted = (e.InOutPosted != null && e.InOutPosted.HasValue) ? e.InOutPosted.Value : default(bool);
 			}
 
-			if (e.InOutProcessing == null)
-			{
-				if (e.IsPropertyInOutProcessingRemoved)
-				{
-					this.InOutProcessing = default(bool);
-				}
-			}
-			else
-			{
-				this.InOutProcessing = (e.InOutProcessing != null && e.InOutProcessing.HasValue) ? e.InOutProcessing.Value : default(bool);
-			}
-
 			if (e.InOutProcessed == null)
 			{
 				if (e.IsPropertyInOutProcessedRemoved)
@@ -538,6 +526,18 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			else
 			{
 				this.InOutProcessed = (e.InOutProcessed != null && e.InOutProcessed.HasValue) ? e.InOutProcessed.Value : default(bool);
+			}
+
+			if (e.InOutProcessing == null)
+			{
+				if (e.IsPropertyInOutProcessingRemoved)
+				{
+					this.InOutProcessing = default(string);
+				}
+			}
+			else
+			{
+				this.InOutProcessing = e.InOutProcessing;
 			}
 
 			if (e.InOutDocumentTypeId == null)

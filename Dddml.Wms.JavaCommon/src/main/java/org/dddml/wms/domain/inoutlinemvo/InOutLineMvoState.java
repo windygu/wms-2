@@ -114,13 +114,13 @@ public interface InOutLineMvoState
 
     void setInOutPosted(Boolean inOutPosted);
 
-    Boolean getInOutProcessing();
-
-    void setInOutProcessing(Boolean inOutProcessing);
-
     Boolean getInOutProcessed();
 
     void setInOutProcessed(Boolean inOutProcessed);
+
+    String getInOutProcessing();
+
+    void setInOutProcessing(String inOutProcessing);
 
     String getInOutDocumentTypeId();
 

@@ -12,13 +12,13 @@ public final class MovementConfirmationFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "documentNumber",
-            "documentTypeId",
             "documentStatusId",
             "movementDocumentNumber",
             "isApproved",
             "approvalAmount",
-            "processing",
             "processed",
+            "processing",
+            "documentTypeId",
             "description",
             "version",
             "createdBy",
@@ -33,11 +33,11 @@ public final class MovementConfirmationFilteringProperties
             "String",
             "String",
             "String",
-            "String",
             "Boolean",
             "BigDecimal",
-            "String",
             "Boolean",
+            "String",
+            "String",
             "String",
             "Long",
             "String",
@@ -62,8 +62,6 @@ public final class MovementConfirmationFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("documentNumber", "documentNumber");
         aliasMap.put("DocumentNumber", "documentNumber");
-        aliasMap.put("documentTypeId", "documentTypeId");
-        aliasMap.put("DocumentTypeId", "documentTypeId");
         aliasMap.put("documentStatusId", "documentStatusId");
         aliasMap.put("DocumentStatusId", "documentStatusId");
         aliasMap.put("movementDocumentNumber", "movementDocumentNumber");
@@ -72,10 +70,12 @@ public final class MovementConfirmationFilteringProperties
         aliasMap.put("IsApproved", "isApproved");
         aliasMap.put("approvalAmount", "approvalAmount");
         aliasMap.put("ApprovalAmount", "approvalAmount");
-        aliasMap.put("processing", "processing");
-        aliasMap.put("Processing", "processing");
         aliasMap.put("processed", "processed");
         aliasMap.put("Processed", "processed");
+        aliasMap.put("processing", "processing");
+        aliasMap.put("Processing", "processing");
+        aliasMap.put("documentTypeId", "documentTypeId");
+        aliasMap.put("DocumentTypeId", "documentTypeId");
         aliasMap.put("description", "description");
         aliasMap.put("Description", "description");
         aliasMap.put("version", "version");

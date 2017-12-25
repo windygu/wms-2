@@ -41,10 +41,6 @@ public interface MovementConfirmationCommand extends Command
 
     interface CreateOrMergePatchMovementConfirmation extends MovementConfirmationCommand
     {
-        String getDocumentTypeId();
-
-        void setDocumentTypeId(String documentTypeId);
-
         String getDocumentAction();
 
         void setDocumentAction(String documentAction);
@@ -61,13 +57,17 @@ public interface MovementConfirmationCommand extends Command
 
         void setApprovalAmount(BigDecimal approvalAmount);
 
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
         String getProcessing();
 
         void setProcessing(String processing);
 
-        Boolean getProcessed();
+        String getDocumentTypeId();
 
-        void setProcessed(Boolean processed);
+        void setDocumentTypeId(String documentTypeId);
 
         String getDescription();
 
@@ -89,10 +89,6 @@ public interface MovementConfirmationCommand extends Command
 
     interface MergePatchMovementConfirmation extends CreateOrMergePatchMovementConfirmation
     {
-        Boolean getIsPropertyDocumentTypeIdRemoved();
-
-        void setIsPropertyDocumentTypeIdRemoved(Boolean removed);
-
         Boolean getIsPropertyMovementDocumentNumberRemoved();
 
         void setIsPropertyMovementDocumentNumberRemoved(Boolean removed);
@@ -105,13 +101,17 @@ public interface MovementConfirmationCommand extends Command
 
         void setIsPropertyApprovalAmountRemoved(Boolean removed);
 
+        Boolean getIsPropertyProcessedRemoved();
+
+        void setIsPropertyProcessedRemoved(Boolean removed);
+
         Boolean getIsPropertyProcessingRemoved();
 
         void setIsPropertyProcessingRemoved(Boolean removed);
 
-        Boolean getIsPropertyProcessedRemoved();
+        Boolean getIsPropertyDocumentTypeIdRemoved();
 
-        void setIsPropertyProcessedRemoved(Boolean removed);
+        void setIsPropertyDocumentTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 
