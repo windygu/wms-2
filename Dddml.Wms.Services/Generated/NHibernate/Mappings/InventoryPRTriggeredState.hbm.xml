@@ -19,9 +19,9 @@
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
 
-    <property name="CreatedAt" column="CreatedAt" />
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
 
-    <property name="UpdatedAt" column="UpdatedAt" />
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
     <property name="CommandId" column="CommandId"/>
 
 

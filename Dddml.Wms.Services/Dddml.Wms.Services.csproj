@@ -681,6 +681,7 @@
     <EmbeddedResource Include="Config\TreesConfig.xml">
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Domain\NHibernate\Mappings\TypeDefs.hbm.xml" />
     <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

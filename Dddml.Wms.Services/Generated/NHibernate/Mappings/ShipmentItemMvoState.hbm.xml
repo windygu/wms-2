@@ -49,9 +49,9 @@
     <property name="ShipmentUpdatedAt" ></property>
     <property name="ShipmentActive" ></property>
 
-    <property name="CreatedAt" column="CreatedAt" />
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
 
-    <property name="UpdatedAt" column="UpdatedAt" />
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
 
 
   </class>

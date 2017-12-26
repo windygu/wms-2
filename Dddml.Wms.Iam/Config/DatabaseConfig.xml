@@ -52,14 +52,15 @@
     
   </object>
 
-  <object id="entityInterceptor" type="Dddml.Wms.Services.Specialization.NHibernate.LocalDateTimeInterceptor" />
+  <!--<object id="entityInterceptor" type="Dddml.Wms.Services.Specialization.NHibernate.LocalDateTimeInterceptor" />-->
+  
   <!-- Transaction Management Strategy - local database transactions -->
+  
   <object id="transactionManager"
         type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate4">
     <!--<property name="DbProvider" ref="DbProvider"/>-->
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-
-    <property name="EntityInterceptor" ref="entityInterceptor"/>
+    <!--<property name="EntityInterceptor" ref="entityInterceptor"/>-->
   </object>
   
   <!-- Exception translation object post processor -->

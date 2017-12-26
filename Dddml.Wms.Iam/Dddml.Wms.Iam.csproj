@@ -1453,6 +1453,9 @@
     <EmbeddedResource Include="Config\AggregatesIdGeneratorConfig.xml">
       <DependentUpon>GenerateAggregatesConfig.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\Dddml.Wms.Services\Domain\NHibernate\Mappings\TypeDefs.hbm.xml">
+      <Link>Domain\NHibernate\Mappings\TypeDefs.hbm.xml</Link>
+    </EmbeddedResource>
     <Content Include="Config\GenerateAggregatesConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesConfig.txt</LastGenOutput>

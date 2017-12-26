@@ -22,7 +22,7 @@
 
     <property name="CreatedBy" column="CreatedBy"/>
 
-    <property name="CreatedAt" column="CreatedAt" />
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
     <property name="CommandId" column="CommandId"/>
     <subclass name="ProductCategoryStateCreated" discriminator-value="Created">
     	
