@@ -126,7 +126,7 @@ namespace Dddml.Wms.Domain.Order
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
             foreach (ICreateOrderItem innerCommand in c.OrderItems)
@@ -201,7 +201,7 @@ namespace Dddml.Wms.Domain.Order
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 			var version = c.Version;
 
@@ -303,7 +303,7 @@ namespace Dddml.Wms.Domain.Order
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(ICreate... ////////////////////////////
@@ -391,7 +391,7 @@ namespace Dddml.Wms.Domain.Order
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(IMergePatch... ////////////////////////////
@@ -419,7 +419,7 @@ namespace Dddml.Wms.Domain.Order
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -432,7 +432,7 @@ namespace Dddml.Wms.Domain.Order
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }

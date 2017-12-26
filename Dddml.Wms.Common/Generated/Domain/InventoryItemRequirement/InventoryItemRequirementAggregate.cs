@@ -103,7 +103,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
             decimal quantity = default(decimal);
@@ -131,7 +131,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 			var version = c.Version;
 
@@ -200,7 +200,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             e.SourceEventId = c.SourceEventId;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(ICreate... ////////////////////////////
@@ -229,7 +229,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -242,7 +242,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }

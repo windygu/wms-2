@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.User
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
             foreach (ICreateUserRole innerCommand in c.UserRoles)
@@ -196,7 +196,7 @@ namespace Dddml.Wms.Domain.User
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 			var version = c.Version;
 
@@ -245,7 +245,7 @@ namespace Dddml.Wms.Domain.User
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 
             return e;
@@ -373,7 +373,7 @@ namespace Dddml.Wms.Domain.User
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(ICreate... ////////////////////////////
@@ -391,7 +391,7 @@ namespace Dddml.Wms.Domain.User
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(IMergePatch... ////////////////////////////
@@ -405,7 +405,7 @@ namespace Dddml.Wms.Domain.User
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
 
@@ -447,7 +447,7 @@ namespace Dddml.Wms.Domain.User
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(ICreate... ////////////////////////////
@@ -469,7 +469,7 @@ namespace Dddml.Wms.Domain.User
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(IMergePatch... ////////////////////////////
@@ -483,7 +483,7 @@ namespace Dddml.Wms.Domain.User
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
 
@@ -523,7 +523,7 @@ namespace Dddml.Wms.Domain.User
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(ICreate... ////////////////////////////
@@ -541,7 +541,7 @@ namespace Dddml.Wms.Domain.User
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(IMergePatch... ////////////////////////////
@@ -555,7 +555,7 @@ namespace Dddml.Wms.Domain.User
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
 
@@ -595,7 +595,7 @@ namespace Dddml.Wms.Domain.User
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(ICreate... ////////////////////////////
@@ -613,7 +613,7 @@ namespace Dddml.Wms.Domain.User
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(IMergePatch... ////////////////////////////
@@ -627,7 +627,7 @@ namespace Dddml.Wms.Domain.User
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
 
@@ -655,7 +655,7 @@ namespace Dddml.Wms.Domain.User
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -668,7 +668,7 @@ namespace Dddml.Wms.Domain.User
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -682,7 +682,7 @@ namespace Dddml.Wms.Domain.User
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }

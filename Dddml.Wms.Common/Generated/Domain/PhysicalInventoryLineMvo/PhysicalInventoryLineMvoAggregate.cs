@@ -140,7 +140,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var physicalInventoryVersion = c.PhysicalInventoryVersion;
 
 
@@ -212,7 +212,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 			var physicalInventoryVersion = c.PhysicalInventoryVersion;
 
@@ -229,7 +229,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 
             return e;
@@ -281,7 +281,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -294,7 +294,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -308,7 +308,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }

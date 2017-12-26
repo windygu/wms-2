@@ -103,7 +103,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
 
@@ -122,7 +122,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 			var version = c.Version;
 
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -165,7 +165,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }

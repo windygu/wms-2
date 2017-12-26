@@ -133,7 +133,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var userVersion = c.UserVersion;
 
 
@@ -192,7 +192,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 			var userVersion = c.UserVersion;
 
@@ -209,7 +209,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 
             return e;
@@ -237,7 +237,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -250,7 +250,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -264,7 +264,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }

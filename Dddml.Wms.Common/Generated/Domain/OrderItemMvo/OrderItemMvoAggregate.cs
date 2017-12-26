@@ -168,7 +168,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var orderVersion = c.OrderVersion;
 
 
@@ -317,7 +317,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 			var orderVersion = c.OrderVersion;
 
@@ -347,7 +347,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -360,7 +360,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }

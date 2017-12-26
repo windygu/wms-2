@@ -130,7 +130,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var attrSetInstEFGroupVersion = c.AttrSetInstEFGroupVersion;
 
 
@@ -183,7 +183,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 			var attrSetInstEFGroupVersion = c.AttrSetInstEFGroupVersion;
 
@@ -200,7 +200,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 
             return e;
@@ -228,7 +228,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -241,7 +241,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -255,7 +255,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }

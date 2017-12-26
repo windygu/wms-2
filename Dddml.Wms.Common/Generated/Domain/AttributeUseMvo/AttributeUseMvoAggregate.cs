@@ -127,7 +127,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var attributeSetVersion = c.AttributeSetVersion;
 
 
@@ -174,7 +174,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 			var attributeSetVersion = c.AttributeSetVersion;
 
@@ -191,7 +191,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 
             return e;
@@ -219,7 +219,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -232,7 +232,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -246,7 +246,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }

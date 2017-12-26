@@ -8,5 +8,7 @@ namespace Dddml.Wms.Specialization
         object this[string name] { get; }
 
         ITypeConverter TypeConverter { get; }
+
+        ITimestampService TimestampService { get; }
     }
 }

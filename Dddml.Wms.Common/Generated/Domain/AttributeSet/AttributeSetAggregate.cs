@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
             foreach (ICreateAttributeUse innerCommand in c.AttributeUses)
@@ -157,7 +157,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 			var version = c.Version;
 
@@ -182,7 +182,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 
             return e;
@@ -245,7 +245,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(ICreate... ////////////////////////////
@@ -265,7 +265,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(IMergePatch... ////////////////////////////
@@ -279,7 +279,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
 
@@ -307,7 +307,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -320,7 +320,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -334,7 +334,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }

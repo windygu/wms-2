@@ -101,7 +101,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
             decimal quantityOnHand = default(decimal);
@@ -141,7 +141,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 			var version = c.Version;
 
@@ -226,7 +226,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             e.Source = c.Source;
 
             e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
             return e;
 
         }// END Map(ICreate... ////////////////////////////
@@ -255,7 +255,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
@@ -268,7 +268,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             e.CommandId = commandId;
 
             e.CreatedBy = (string)requesterId;
-            e.CreatedAt = DateTime.Now;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
         }
