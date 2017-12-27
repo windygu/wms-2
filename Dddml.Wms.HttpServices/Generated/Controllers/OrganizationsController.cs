@@ -271,13 +271,13 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public static void SetNullIdOrThrowOnInconsistentIds(string id, CreateOrMergePatchOrDeleteOrganizationDto value)
         {
             var idObj = id;
-            if (value.OrganizationId == null)
+            if (value.PartyId == null)
             {
-                value.OrganizationId = idObj;
+                value.PartyId = idObj;
             }
-            else if (!((ICreateOrMergePatchOrDeleteOrganization)value).OrganizationId.Equals(idObj))
+            else if (!((ICreateOrMergePatchOrDeleteOrganization)value).PartyId.Equals(idObj))
             {
-                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, value.OrganizationId);
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, value.PartyId);
             }
         }
 
@@ -344,7 +344,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new OrganizationStateDtoWrapper();
-                dto.OrganizationId = id;
+                dto.PartyId = id;
                 states.Add(dto);
             }
             return states;
@@ -356,7 +356,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var s = new OrganizationState();
-                s.OrganizationId = id;
+                s.PartyId = id;
                 states.Add(s);
             }
             return states;

@@ -95,7 +95,7 @@ public abstract class AbstractOrganizationTreeApplicationService implements Orga
         @Override
         public Iterable<TreeNode<OrganizationState>> getChildren()
         {
-            return (Iterable) repository.getChildren(this.state.getOrganizationId(), (Iterable<Map.Entry<String, Object>>)null, null, null, null);
+            return (Iterable) repository.getChildren(this.state.getPartyId(), (Iterable<Map.Entry<String, Object>>)null, null, null, null);
         }
 
         @Override

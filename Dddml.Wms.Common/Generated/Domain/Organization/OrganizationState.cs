@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.Organization
 		{
 			get
 			{
-				return this.OrganizationId;
+				return this.PartyId;
 			}
 		}
 
@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Organization
         {
             if (events != null && events.Count() > 0)
             {
-                this.OrganizationId = ((IOrganizationStateEvent)events.First()).StateEventId.OrganizationId;
+                this.PartyId = ((IOrganizationStateEvent)events.First()).StateEventId.PartyId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -286,8 +286,8 @@ namespace Dddml.Wms.Domain.Organization
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Organization|");
 
-            var stateEntityId = this.OrganizationId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.OrganizationId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var stateEntityId = this.PartyId; // Aggregate Id
+            var eventEntityId = stateEvent.StateEventId.PartyId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

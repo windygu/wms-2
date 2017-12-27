@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.Organization
 
 		void When(IDeleteOrganization c);
 
- 		IOrganizationState Get(string organizationId);
+ 		IOrganizationState Get(string partyId);
 
         IEnumerable<IOrganizationState> GetAll(int firstResult, int maxResults);
 
@@ -35,9 +35,9 @@ namespace Dddml.Wms.Domain.Organization
 
         long GetCount(ICriterion filter);
 
-        IOrganizationStateEvent GetStateEvent(string organizationId, long version);
+        IOrganizationStateEvent GetStateEvent(string partyId, long version);
 
-        IOrganizationState GetHistoryState(string organizationId, long version);
+        IOrganizationState GetHistoryState(string partyId, long version);
 
 
 	}

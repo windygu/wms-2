@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Organization
 	{
 		long Version { get; set; }
 
-		string OrganizationId { get; set; }
+		string PartyId { get; set; }
 
 	}
 

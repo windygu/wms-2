@@ -26,7 +26,7 @@ public class HibernateOrganizationStateRepository implements OrganizationStateRe
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("OrganizationId", "OrganizationName", "Description", "Type", "IsSummary", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("PartyId", "OrganizationName", "Description", "Type", "IsSummary", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -43,7 +43,7 @@ public class HibernateOrganizationStateRepository implements OrganizationStateRe
         OrganizationState state = (OrganizationState)getCurrentSession().get(AbstractOrganizationState.SimpleOrganizationState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractOrganizationState.SimpleOrganizationState();
-            state.setOrganizationId(id);
+            state.setPartyId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
             return (OrganizationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrganizationState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);

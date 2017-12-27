@@ -14,14 +14,14 @@ namespace Dddml.Wms.Domain.Organization
 
 	public abstract class OrganizationCommandBase : IOrganizationCommand
 	{
-		public virtual string OrganizationId { get; set; }
+		public virtual string PartyId { get; set; }
 
 
 		string IAggregateCommand<string, long>.AggregateId
 		{
 			get
 			{
-				return this.OrganizationId;
+				return this.PartyId;
 			}
 		}
 

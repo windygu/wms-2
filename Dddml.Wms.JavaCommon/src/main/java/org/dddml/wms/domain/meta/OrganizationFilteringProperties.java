@@ -11,7 +11,7 @@ public final class OrganizationFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
-            "organizationId",
+            "partyId",
             "organizationName",
             "description",
             "type",
@@ -52,8 +52,8 @@ public final class OrganizationFilteringProperties
     }
 
     private static  void initAliasMap() {
-        aliasMap.put("organizationId", "organizationId");
-        aliasMap.put("OrganizationId", "organizationId");
+        aliasMap.put("partyId", "partyId");
+        aliasMap.put("PartyId", "partyId");
         aliasMap.put("organizationName", "organizationName");
         aliasMap.put("OrganizationName", "organizationName");
         aliasMap.put("description", "description");

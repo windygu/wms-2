@@ -88,6 +88,16 @@
       unique (Name),
       unique (Alias)
     );
+    alter table Organizations 
+        add column PartyId VARCHAR(50);
+    alter table OrganizationStateEvents 
+        add column PartyId VARCHAR(50);
+    alter table OrganizationStructureTypes 
+        add column Description VARCHAR(255);
+    alter table OrganizationStructureTypeStateEvents 
+        add column Description VARCHAR(255);
+    alter table OrganizationStructureTypeStateEvents 
+        add column IsPropertyDescriptionRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,

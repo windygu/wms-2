@@ -22,8 +22,8 @@ public class OrganizationStateEventIdFlattenedDtoFormatter extends AbstractIdFla
     protected void setFieldStringValue(OrganizationStateEventIdFlattenedDto dto, String fieldName, String fieldValue) {
         Class clazz = getFieldClass(fieldName);
         Object objVal = ApplicationContext.current.getTypeConverter().convertFromString(clazz, fieldValue);
-        if ("organizationId".equals(fieldName)) {
-            dto.setOrganizationId((String) objVal);
+        if ("partyId".equals(fieldName)) {
+            dto.setPartyId((String) objVal);
             return;
         }
         if ("version".equals(fieldName)) {
@@ -35,8 +35,8 @@ public class OrganizationStateEventIdFlattenedDtoFormatter extends AbstractIdFla
     @Override
     protected String getFieldStringValue(OrganizationStateEventIdFlattenedDto dto, String fieldName) {
         Class clazz = getFieldClass(fieldName);
-        if ("organizationId".equals(fieldName)) {
-            Object objVal = dto.getOrganizationId();
+        if ("partyId".equals(fieldName)) {
+            Object objVal = dto.getPartyId();
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }

@@ -174,6 +174,8 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 		public virtual void When(IOrganizationStructureTypeStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
+			this.Description = e.Description;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
@@ -188,6 +190,18 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 		public virtual void When(IOrganizationStructureTypeStateMergePatched e)
 		{
 			ThrowOnWrongEvent(e);
+
+			if (e.Description == null)
+			{
+				if (e.IsPropertyDescriptionRemoved)
+				{
+					this.Description = default(string);
+				}
+			}
+			else
+			{
+				this.Description = e.Description;
+			}
 
 			if (e.Active == null)
 			{

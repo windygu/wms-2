@@ -18,12 +18,12 @@ public abstract class AbstractOrganizationStateEvent extends AbstractStateEvent 
         this.stateEventId = stateEventId;
     }
     
-    public String getOrganizationId() {
-        return getStateEventId().getOrganizationId();
+    public String getPartyId() {
+        return getStateEventId().getPartyId();
     }
 
-    public void setOrganizationId(String organizationId) {
-        getStateEventId().setOrganizationId(organizationId);
+    public void setPartyId(String partyId) {
+        getStateEventId().setPartyId(partyId);
     }
 
     private boolean stateEventReadOnly;

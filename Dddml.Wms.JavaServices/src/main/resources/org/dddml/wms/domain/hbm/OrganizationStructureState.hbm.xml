@@ -8,7 +8,7 @@
   
   <class name="org.dddml.wms.domain.organizationstructure.AbstractOrganizationStructureState$SimpleOrganizationStructureState" table="OrganizationStructures">
 
-	<composite-id name="id" class="org.dddml.wms.domain.OrganizationStructureId">
+	<composite-id name="id" class="org.dddml.wms.domain.organizationstructure.OrganizationStructureId">
 		<key-property name="organizationStructureTypeId" ><column name="IdOrganizationStructureTypeId" /></key-property>
 		<key-property name="parentId" ><column name="IdParentId" /></key-property>
 		<key-property name="subsidiaryId" ><column name="IdSubsidiaryId" /></key-property>

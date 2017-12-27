@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.Organization.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "OrganizationId", "OrganizationName", "Description", "Type", "IsSummary", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "PartyId", "OrganizationName", "Description", "Type", "IsSummary", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Organization.NHibernate
 			IOrganizationState state = CurrentSession.Get<OrganizationState> (id);
 			if (!nullAllowed && state == null) {
 				state = new OrganizationState ();
-				(state as OrganizationState).OrganizationId = id;
+				(state as OrganizationState).PartyId = id;
 			}
             if (ReadOnlyProxyGenerator != null && state != null)
             {

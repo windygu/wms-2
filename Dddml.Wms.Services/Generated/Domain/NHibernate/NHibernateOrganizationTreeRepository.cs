@@ -112,7 +112,7 @@ namespace Dddml.Wms.Domain.NHibernate
             var ids = new List<string>();
             foreach (var state in states)
             {
-                ids.Add(state.OrganizationId);
+                ids.Add(state.PartyId);
             }
             return ids;
         }

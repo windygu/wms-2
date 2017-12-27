@@ -57,6 +57,7 @@ public abstract class AbstractOrganizationStructureTypeAggregate extends Abstrac
     protected OrganizationStructureTypeStateEvent map(OrganizationStructureTypeCommand.CreateOrganizationStructureType c) {
         OrganizationStructureTypeStateEventId stateEventId = new OrganizationStructureTypeStateEventId(c.getId(), c.getVersion());
         OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated e = newOrganizationStructureTypeStateCreated(stateEventId);
+        e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         ((AbstractOrganizationStructureTypeStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -67,7 +68,9 @@ public abstract class AbstractOrganizationStructureTypeAggregate extends Abstrac
     protected OrganizationStructureTypeStateEvent map(OrganizationStructureTypeCommand.MergePatchOrganizationStructureType c) {
         OrganizationStructureTypeStateEventId stateEventId = new OrganizationStructureTypeStateEventId(c.getId(), c.getVersion());
         OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched e = newOrganizationStructureTypeStateMergePatched(stateEventId);
+        e.setDescription(c.getDescription());
         e.setActive(c.getActive());
+        e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractOrganizationStructureTypeStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

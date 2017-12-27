@@ -2,8 +2,8 @@ package org.dddml.wms.domain.organizationstructure.hibernate;
 
 import java.io.Serializable;
 import java.util.*;
-import org.dddml.wms.domain.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.specialization.hibernate.AbstractHibernateEventStore;
 import org.hibernate.*;

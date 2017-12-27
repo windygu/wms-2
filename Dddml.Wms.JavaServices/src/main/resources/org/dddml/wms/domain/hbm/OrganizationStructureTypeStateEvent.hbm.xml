@@ -15,6 +15,7 @@
 
     <discriminator column="StateEventType" type="string" />
 
+	<property name="description" ></property>
 	<property name="active" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
@@ -28,6 +29,8 @@
     </subclass>
 
     <subclass name="AbstractOrganizationStructureTypeStateEvent$SimpleOrganizationStructureTypeStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

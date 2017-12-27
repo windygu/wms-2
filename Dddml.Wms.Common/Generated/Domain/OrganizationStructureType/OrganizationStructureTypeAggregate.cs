@@ -107,6 +107,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 			var stateEventId = new OrganizationStructureTypeStateEventId(c.Id, c.Version);
             IOrganizationStructureTypeStateCreated e = NewOrganizationStructureTypeStateCreated(stateEventId);
 		
+            e.Description = c.Description;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -124,7 +125,9 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 			var stateEventId = new OrganizationStructureTypeStateEventId(c.Id, c.Version);
             IOrganizationStructureTypeStateMergePatched e = NewOrganizationStructureTypeStateMergePatched(stateEventId);
 
+            e.Description = c.Description;
             e.Active = c.Active;
+            e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

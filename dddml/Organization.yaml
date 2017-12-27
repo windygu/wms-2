@@ -1,84 +1,70 @@
 #%DDDML 0.1
 
 ---
-# ------------------------------
-valueObjects:
-
-    # --------------- valueObject ---------------
-    
-    OrganizationStructureId:
-      
-      properties:
-        
-        OrganizationStructureTypeId:
-          referenceType: OrganizationStructureType
-          
-        ParentId:
-          referenceType: Organization
-
-        SubsidiaryId:
-          referenceType: Organization
-
 
 # ------------------------------
 aggregates:
 
     # --------------- aggregate ---------------
     Organization:
-      
       id:
-        name: OrganizationId
+        name: PartyId
         type: string
 
       properties:
-
         OrganizationName:
           type: string
-          
         Description:
           type: string
-          
         Type:
           type: string
-
         IsSummary:
           type: bool
-
+          
         # ad_replicationstrategy_id numeric,
 
-          
-    # --------------- aggregate ---------------
-    OrganizationStructureType:
-    
-      id: 
-        name: Id
-        type: string
-    
-          
+        
     # --------------- aggregate ---------------
     OrganizationStructure:
-
       id:
         name: Id
         type: OrganizationStructureId
 
       # properties:
+          
+      # ------------------------------
+      valueObjects:
+      
+        # --------------- valueObject ---------------
+        OrganizationStructureId:
+          properties:
+            OrganizationStructureTypeId:
+              referenceType: OrganizationStructureType
+            ParentId:
+              referenceType: Organization
+            SubsidiaryId:
+              referenceType: Organization
 
 
+    # --------------- aggregate ---------------
+    OrganizationStructureType:
+      id: 
+        name: Id
+        type: string
+      
+      properties:
+        Description:
+          type: string
+        
+        
 # -------------------------------------
-
 trees:
     
     OrganizationTree:
-    
       nodeContentType: Organization
-      
       structureType: OrganizationStructure
-      
       parentId: Id.ParentId
-      
       childId: Id.SubsidiaryId
-      
       rootParentIdValues: [""]
 
       

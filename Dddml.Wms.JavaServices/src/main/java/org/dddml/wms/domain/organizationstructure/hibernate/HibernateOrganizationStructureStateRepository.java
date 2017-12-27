@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.organizationstructure.hibernate;
 
 import java.util.*;
-import org.dddml.wms.domain.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.hibernate.Session;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;

@@ -140,7 +140,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         protected bool IsOnlyIdReturned(string fields)
         {
-            if (String.Equals(fields, "OrganizationId", StringComparison.InvariantCultureIgnoreCase))
+            if (String.Equals(fields, "PartyId", StringComparison.InvariantCultureIgnoreCase))
             {
                 return true;
             }

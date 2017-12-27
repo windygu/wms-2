@@ -32,9 +32,9 @@ namespace Dddml.Wms.Domain.Organization
             return this._value;
         }
 
-		public override string OrganizationId { 
-			get { return _value.OrganizationId; } 
-			set { _value.OrganizationId = value; } 
+		public override string PartyId { 
+			get { return _value.PartyId; } 
+			set { _value.PartyId = value; } 
 		}
 
 		public override long Version { 

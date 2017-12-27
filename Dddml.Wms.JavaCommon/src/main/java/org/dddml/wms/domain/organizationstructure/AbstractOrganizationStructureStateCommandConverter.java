@@ -1,8 +1,8 @@
 package org.dddml.wms.domain.organizationstructure;
 
 import java.util.*;
-import org.dddml.wms.domain.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 
 public abstract class AbstractOrganizationStructureStateCommandConverter<TCreateOrganizationStructure extends OrganizationStructureCommand.CreateOrganizationStructure, TMergePatchOrganizationStructure extends OrganizationStructureCommand.MergePatchOrganizationStructure, TDeleteOrganizationStructure extends OrganizationStructureCommand.DeleteOrganizationStructure>
 {

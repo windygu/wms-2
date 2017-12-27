@@ -23,6 +23,8 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             set { StateEventId.Id = value; }
         }
 
+		public virtual string Description { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -113,6 +115,8 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
 	public class OrganizationStructureTypeStateMergePatched : OrganizationStructureTypeStateEventBase, IOrganizationStructureTypeStateMergePatched
 	{
+		public virtual bool IsPropertyDescriptionRemoved { get; set; }
+
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
 

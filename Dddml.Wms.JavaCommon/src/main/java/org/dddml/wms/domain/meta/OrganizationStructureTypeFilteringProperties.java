@@ -12,6 +12,7 @@ public final class OrganizationStructureTypeFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "id",
+            "description",
             "version",
             "createdBy",
             "createdAt",
@@ -22,6 +23,7 @@ public final class OrganizationStructureTypeFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
             "String",
             "Long",
             "String",
@@ -46,6 +48,8 @@ public final class OrganizationStructureTypeFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("id", "id");
         aliasMap.put("Id", "id");
+        aliasMap.put("description", "description");
+        aliasMap.put("Description", "description");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

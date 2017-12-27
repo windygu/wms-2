@@ -86,19 +86,19 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
         return getStateQueryRepository().getCount(filter);
     }
 
-    public OrganizationStateEvent getStateEvent(String organizationId, long version) {
-        OrganizationStateEvent e = (OrganizationStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(organizationId), version);
+    public OrganizationStateEvent getStateEvent(String partyId, long version) {
+        OrganizationStateEvent e = (OrganizationStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(partyId), version);
         if (e != null)
         { e.setStateEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(organizationId, 0);
+            return getStateEvent(partyId, 0);
         }
         return e;
     }
 
-    public OrganizationState getHistoryState(String organizationId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractOrganizationStateEvent.class, toEventStoreAggregateId(organizationId), version - 1);
+    public OrganizationState getHistoryState(String partyId, long version) {
+        EventStream eventStream = getEventStore().loadEventStream(AbstractOrganizationStateEvent.class, toEventStoreAggregateId(partyId), version - 1);
         return new AbstractOrganizationState.SimpleOrganizationState(eventStream.getEvents());
     }
 
@@ -115,7 +115,7 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
 
     protected void update(OrganizationCommand c, Consumer<OrganizationAggregate> action)
     {
-        String aggregateId = c.getOrganizationId();
+        String aggregateId = c.getPartyId();
         OrganizationState state = getStateRepository().get(aggregateId, false);
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
@@ -138,9 +138,9 @@ public abstract class AbstractOrganizationApplicationService implements Organiza
     }
 
     public void initialize(OrganizationStateEvent.OrganizationStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getOrganizationId();
+        String aggregateId = stateCreated.getStateEventId().getPartyId();
         OrganizationState state = new AbstractOrganizationState.SimpleOrganizationState();
-        state.setOrganizationId(aggregateId);
+        state.setPartyId(aggregateId);
 
         OrganizationAggregate aggregate = getOrganizationAggregate(state);
         ((AbstractOrganizationAggregate) aggregate).apply(stateCreated);

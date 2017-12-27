@@ -8,9 +8,9 @@ import org.dddml.wms.specialization.DomainError;
 
 public interface OrganizationCommand extends Command
 {
-    String getOrganizationId();
+    String getPartyId();
 
-    void setOrganizationId(String organizationId);
+    void setPartyId(String partyId);
 
     Long getVersion();
 

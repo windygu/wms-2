@@ -2,8 +2,8 @@ package org.dddml.wms.domain.organizationstructure;
 
 import java.util.*;
 import org.dddml.support.criterion.Criterion;
-import org.dddml.wms.domain.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 
 public interface OrganizationStructureStateRepository
 {

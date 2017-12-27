@@ -18,12 +18,12 @@ public class OrganizationStateEventDto extends AbstractStateEvent
         this.stateEventId = stateEventId;
     }
 
-    public String getOrganizationId() {
-        return getStateEventId().getOrganizationId();
+    public String getPartyId() {
+        return getStateEventId().getPartyId();
     }
 
-    public void setOrganizationId(String organizationId) {
-        getStateEventId().setOrganizationId(organizationId);
+    public void setPartyId(String partyId) {
+        getStateEventId().setPartyId(partyId);
     }
 
     public Long getVersion() {

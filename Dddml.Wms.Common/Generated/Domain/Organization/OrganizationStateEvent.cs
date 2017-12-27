@@ -17,10 +17,10 @@ namespace Dddml.Wms.Domain.Organization
 
 		public virtual OrganizationStateEventId StateEventId { get; set; }
 
-        public virtual string OrganizationId
+        public virtual string PartyId
         {
-            get { return StateEventId.OrganizationId; }
-            set { StateEventId.OrganizationId = value; }
+            get { return StateEventId.PartyId; }
+            set { StateEventId.PartyId = value; }
         }
 
 		public virtual string OrganizationName { get; set; }

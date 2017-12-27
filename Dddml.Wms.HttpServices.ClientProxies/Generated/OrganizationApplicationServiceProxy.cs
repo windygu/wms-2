@@ -49,7 +49,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public async Task WhenAsync(CreateOrganizationDto c)
         {
-            var idObj = (c as ICreateOrganization).OrganizationId;
+            var idObj = (c as ICreateOrganization).PartyId;
             var uriParameters = new OrganizationUriParameters();
             uriParameters.Id = idObj;
 
@@ -66,7 +66,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public async Task WhenAsync(MergePatchOrganizationDto c)
         {
-            var idObj = (c as IMergePatchOrganization).OrganizationId;
+            var idObj = (c as IMergePatchOrganization).PartyId;
             var uriParameters = new OrganizationUriParameters();
             uriParameters.Id = idObj;
 
@@ -82,7 +82,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public async Task WhenAsync(DeleteOrganizationDto c)
         {
-            var idObj = (c as IDeleteOrganization).OrganizationId;
+            var idObj = (c as IDeleteOrganization).PartyId;
             var uriParameters = new OrganizationUriParameters();
             uriParameters.Id = idObj;
 
@@ -118,10 +118,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((DeleteOrganizationDto)c);
         }
 
-        public async Task<IOrganizationState> GetAsync(string organizationId)
+        public async Task<IOrganizationState> GetAsync(string partyId)
         {
             IOrganizationState state = null;
-            var idObj = organizationId;
+            var idObj = partyId;
             var uriParameters = new OrganizationUriParameters();
             uriParameters.Id = idObj;
 
@@ -133,9 +133,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return state;
         }
 
-        public IOrganizationState Get(string organizationId)
+        public IOrganizationState Get(string partyId)
         {
-            return GetAsync(organizationId).GetAwaiter().GetResult();
+            return GetAsync(partyId).GetAwaiter().GetResult();
         }
 
 
@@ -252,9 +252,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IOrganizationStateEvent> GetStateEventAsync(string organizationId, long version)
+        public async Task<IOrganizationStateEvent> GetStateEventAsync(string partyId, long version)
         {
-            var idObj = organizationId;
+            var idObj = partyId;
             var uriParameters = new OrganizationStateEventUriParameters();
             uriParameters.Id = idObj;
             uriParameters.Version = version.ToString();
@@ -265,15 +265,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IOrganizationStateEvent GetStateEvent(string organizationId, long version)
+        public IOrganizationStateEvent GetStateEvent(string partyId, long version)
         {
-            return GetStateEventAsync(organizationId, version).GetAwaiter().GetResult();
+            return GetStateEventAsync(partyId, version).GetAwaiter().GetResult();
         }
 
 
-        public async Task<IOrganizationState> GetHistoryStateAsync(string organizationId, long version)
+        public async Task<IOrganizationState> GetHistoryStateAsync(string partyId, long version)
         {
-            var idObj = organizationId;
+            var idObj = partyId;
             var uriParameters = new OrganizationHistoryStateUriParameters();
             uriParameters.Id = idObj;
             uriParameters.Version = version.ToString();
@@ -284,9 +284,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return (resp.Content == null) ? null : resp.Content.ToOrganizationState();
         }
 
-        public virtual IOrganizationState GetHistoryState(string organizationId, long version)
+        public virtual IOrganizationState GetHistoryState(string partyId, long version)
         {
-            return GetHistoryStateAsync(organizationId, version).GetAwaiter().GetResult();
+            return GetHistoryStateAsync(partyId, version).GetAwaiter().GetResult();
         }
 
 
@@ -465,7 +465,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             var ids = new List<string>();
             foreach (var s in states)
             {
-                ids.Add(s.OrganizationId);
+                ids.Add(s.PartyId);
             }
             return ids;
         }

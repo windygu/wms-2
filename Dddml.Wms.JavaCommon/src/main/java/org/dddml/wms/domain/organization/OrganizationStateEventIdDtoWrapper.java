@@ -24,15 +24,15 @@ public class OrganizationStateEventIdDtoWrapper extends OrganizationStateEventId
     }
 
     @Override
-    public String getOrganizationId()
+    public String getPartyId()
     {
-        return this.value.getOrganizationId();
+        return this.value.getPartyId();
     }
 
     @Override
-    public void setOrganizationId(String organizationId)
+    public void setPartyId(String partyId)
     {
-        this.value.setOrganizationId(organizationId);
+        this.value.setPartyId(partyId);
     }
 
     @Override

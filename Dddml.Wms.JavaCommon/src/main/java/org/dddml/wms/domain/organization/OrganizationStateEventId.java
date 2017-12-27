@@ -5,16 +5,16 @@ import org.dddml.wms.domain.*;
 
 public class OrganizationStateEventId implements Serializable
 {
-    private String organizationId;
+    private String partyId;
 
-    public String getOrganizationId()
+    public String getPartyId()
     {
-        return this.organizationId;
+        return this.partyId;
     }
 
-    public void setOrganizationId(String organizationId)
+    public void setPartyId(String partyId)
     {
-        this.organizationId = organizationId;
+        this.partyId = partyId;
     }
 
     private Long version;
@@ -33,9 +33,9 @@ public class OrganizationStateEventId implements Serializable
     {
     }
 
-    public OrganizationStateEventId(String organizationId, Long version)
+    public OrganizationStateEventId(String partyId, Long version)
     {
-        this.organizationId = organizationId;
+        this.partyId = partyId;
         this.version = version;
     }
 
@@ -51,7 +51,7 @@ public class OrganizationStateEventId implements Serializable
 
         OrganizationStateEventId other = (OrganizationStateEventId)obj;
         return true 
-            && (organizationId == other.organizationId || (organizationId != null && organizationId.equals(other.organizationId)))
+            && (partyId == other.partyId || (partyId != null && partyId.equals(other.partyId)))
             && (version == other.version || (version != null && version.equals(other.version)))
             ;
     }
@@ -60,8 +60,8 @@ public class OrganizationStateEventId implements Serializable
     public int hashCode()
     {
         int hash = 0;
-        if (this.organizationId != null) {
-            hash += 13 * this.organizationId.hashCode();
+        if (this.partyId != null) {
+            hash += 13 * this.partyId.hashCode();
         }
         if (this.version != null) {
             hash += 13 * this.version.hashCode();

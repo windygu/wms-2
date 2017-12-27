@@ -3,8 +3,8 @@ package org.dddml.wms.domain.organizationstructure;
 import java.util.Map;
 import java.util.List;
 import org.dddml.support.criterion.Criterion;
-import org.dddml.wms.domain.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 import org.dddml.wms.domain.Command;
 

@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Organization
 	public class OrganizationStateEventIdFlattenedDto : IIdFlattenedDto
 	{
 
-        private static string[] _flattenedPropertyNames = new string[] { "OrganizationId", "Version" };
+        private static string[] _flattenedPropertyNames = new string[] { "PartyId", "Version" };
 
         string[] IIdFlattenedDto.FieldNames
         {
@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.Organization
 
         Type IIdFlattenedDto.GetFieldType(string fieldName)
         {
-            if (fieldName.Equals("OrganizationId", StringComparison.InvariantCultureIgnoreCase))
+            if (fieldName.Equals("PartyId", StringComparison.InvariantCultureIgnoreCase))
             {
                 return typeof(string);
             }
@@ -74,9 +74,9 @@ namespace Dddml.Wms.Domain.Organization
             return this._value.ToOrganizationStateEventId();
         }
 
-		public virtual string OrganizationId { 
-			get { return _value.OrganizationId; } 
-			set { _value.OrganizationId = value; } 
+		public virtual string PartyId { 
+			get { return _value.PartyId; } 
+			set { _value.PartyId = value; } 
 		}
 
 		public virtual long Version { 

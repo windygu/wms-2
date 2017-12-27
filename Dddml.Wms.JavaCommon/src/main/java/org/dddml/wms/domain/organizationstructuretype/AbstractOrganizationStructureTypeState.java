@@ -21,6 +21,18 @@ public abstract class AbstractOrganizationStructureTypeState implements Organiza
         this.id = id;
     }
 
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -169,6 +181,7 @@ public abstract class AbstractOrganizationStructureTypeState implements Organiza
     {
         throwOnWrongEvent(e);
 
+        this.setDescription(e.getDescription());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -182,6 +195,17 @@ public abstract class AbstractOrganizationStructureTypeState implements Organiza
     {
         throwOnWrongEvent(e);
 
+        if (e.getDescription() == null)
+        {
+            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
+            {
+                this.setDescription(null);
+            }
+        }
+        else
+        {
+            this.setDescription(e.getDescription());
+        }
         if (e.getActive() == null)
         {
             if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved())

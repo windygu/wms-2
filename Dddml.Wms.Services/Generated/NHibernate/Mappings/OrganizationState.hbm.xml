@@ -5,7 +5,7 @@
   
   <class name="Dddml.Wms.Domain.Organization.OrganizationState" table="Organizations">
 
-	<id name="OrganizationId" length="50" column="OrganizationId"><generator class="assigned"/></id>
+	<id name="PartyId" length="50" column="PartyId"><generator class="assigned"/></id>
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 

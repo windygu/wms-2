@@ -5,7 +5,7 @@
   
   <class name="Dddml.Wms.Domain.OrganizationStructure.OrganizationStructureState" table="OrganizationStructures">
 
-    <composite-id name="Id" class="Dddml.Wms.Domain.OrganizationStructureId">
+    <composite-id name="Id" class="Dddml.Wms.Domain.OrganizationStructure.OrganizationStructureId">
         <key-property name="OrganizationStructureTypeId" ><column name="IdOrganizationStructureTypeId" /></key-property>
         <key-property name="ParentId" ><column name="IdParentId" /></key-property>
         <key-property name="SubsidiaryId" ><column name="IdSubsidiaryId" /></key-property>

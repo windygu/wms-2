@@ -34,7 +34,7 @@ public class HibernateOrganizationEventStore extends AbstractHibernateEventStore
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractOrganizationStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.organizationId", idObj));
+        criteria.add(Restrictions.eq("stateEventId.partyId", idObj));
         criteria.add(Restrictions.le("stateEventId.version", version));
         criteria.addOrder(Order.asc("stateEventId.version"));
         List es = criteria.list();

@@ -12,21 +12,21 @@ public class OrganizationStateEventIdDto
     public OrganizationStateEventId toOrganizationStateEventId()
     {
         OrganizationStateEventId v = new OrganizationStateEventId();
-        v.setOrganizationId(this.getOrganizationId());
+        v.setPartyId(this.getPartyId());
         v.setVersion(this.getVersion());
         return v;
     }
 
-    private String organizationId;
+    private String partyId;
 
-    public String getOrganizationId()
+    public String getPartyId()
     {
-        return this.organizationId;
+        return this.partyId;
     }
 
-    public void setOrganizationId(String organizationId)
+    public void setPartyId(String partyId)
     {
-        this.organizationId = organizationId;
+        this.partyId = partyId;
     }
 
     private Long version;
@@ -54,7 +54,7 @@ public class OrganizationStateEventIdDto
 
         OrganizationStateEventIdDto other = (OrganizationStateEventIdDto)obj;
         return true 
-            && (getOrganizationId() == other.getOrganizationId() || (getOrganizationId() != null && getOrganizationId().equals(other.getOrganizationId())))
+            && (getPartyId() == other.getPartyId() || (getPartyId() != null && getPartyId().equals(other.getPartyId())))
             && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
             ;
 
@@ -64,8 +64,8 @@ public class OrganizationStateEventIdDto
     public int hashCode()
     {
         int hash = 0;
-        if (this.getOrganizationId() != null) {
-            hash += 13 * this.getOrganizationId().hashCode();
+        if (this.getPartyId() != null) {
+            hash += 13 * this.getPartyId().hashCode();
         }
         if (this.getVersion() != null) {
             hash += 13 * this.getVersion().hashCode();

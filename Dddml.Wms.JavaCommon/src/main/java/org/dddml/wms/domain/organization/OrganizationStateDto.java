@@ -9,16 +9,16 @@ import org.dddml.wms.specialization.*;
 public class OrganizationStateDto
 {
 
-    private String organizationId;
+    private String partyId;
 
-    public String getOrganizationId()
+    public String getPartyId()
     {
-        return this.organizationId;
+        return this.partyId;
     }
 
-    public void setOrganizationId(String organizationId)
+    public void setPartyId(String partyId)
     {
-        this.organizationId = organizationId;
+        this.partyId = partyId;
     }
 
     private String organizationName;
@@ -167,8 +167,8 @@ public class OrganizationStateDto
                 return null;
             }
             OrganizationStateDto dto = new OrganizationStateDto();
-            if (returnedFieldsContains("OrganizationId")) {
-                dto.setOrganizationId(state.getOrganizationId());
+            if (returnedFieldsContains("PartyId")) {
+                dto.setPartyId(state.getPartyId());
             }
             if (returnedFieldsContains("OrganizationName")) {
                 dto.setOrganizationName(state.getOrganizationName());

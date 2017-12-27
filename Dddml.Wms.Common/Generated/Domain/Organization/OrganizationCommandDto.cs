@@ -20,7 +20,7 @@ namespace Dddml.Wms.Domain.Organization
 		{
 			get
 			{
-				return ((ICreateOrMergePatchOrDeleteOrganization)this).OrganizationId;
+				return ((ICreateOrMergePatchOrDeleteOrganization)this).PartyId;
 			}
 		}
 
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.Organization
             set { this.CommandId = value; }
         }
 
-		public virtual string OrganizationId { get; set; }
+		public virtual string PartyId { get; set; }
 
 		public virtual string OrganizationName { get; set; }
 

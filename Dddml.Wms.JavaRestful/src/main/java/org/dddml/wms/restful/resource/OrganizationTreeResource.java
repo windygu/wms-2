@@ -146,7 +146,7 @@ public class OrganizationTreeResource {
 		// /////////////////////////////////////////////////
 
     private boolean isOnlyIdReturned(String fields) {
-        if ("OrganizationId".equalsIgnoreCase(fields)) {
+        if ("PartyId".equalsIgnoreCase(fields)) {
             return true;
         }
         if ("Id.SubsidiaryId".equalsIgnoreCase(fields)) {

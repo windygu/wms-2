@@ -42,6 +42,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
+            dto.Description = e.Description;
             dto.Active = e.Active;
             return dto;
         }
@@ -53,7 +54,9 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
+            dto.Description = e.Description;
             dto.Active = e.Active;
+            dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 
             return dto;

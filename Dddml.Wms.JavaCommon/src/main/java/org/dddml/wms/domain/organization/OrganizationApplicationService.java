@@ -30,9 +30,9 @@ public interface OrganizationApplicationService
 
     long getCount(Criterion filter);
 
-    OrganizationStateEvent getStateEvent(String organizationId, long version);
+    OrganizationStateEvent getStateEvent(String partyId, long version);
 
-    OrganizationState getHistoryState(String organizationId, long version);
+    OrganizationState getHistoryState(String partyId, long version);
 
 }
 

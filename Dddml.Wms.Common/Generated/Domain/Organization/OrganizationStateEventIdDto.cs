@@ -22,12 +22,12 @@ namespace Dddml.Wms.Domain.Organization
         public virtual OrganizationStateEventId ToOrganizationStateEventId()
         {
             OrganizationStateEventId v = new OrganizationStateEventId();
-            v.OrganizationId = this.OrganizationId;
+            v.PartyId = this.PartyId;
             v.Version = this.Version;
             return v;
         }
 
-		public virtual string OrganizationId { 
+		public virtual string PartyId { 
 			get;
 			set;
 		}
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.Organization
 			}
 
 			return true 
-				&& Object.Equals (this.OrganizationId, other.OrganizationId)
+				&& Object.Equals (this.PartyId, other.PartyId)
 				&& Object.Equals (this.Version, other.Version)
 				;
 		}
@@ -58,8 +58,8 @@ namespace Dddml.Wms.Domain.Organization
 		public override int GetHashCode ()
 		{
 			int hash = 0;
-			if (this.OrganizationId != null) {
-				hash += 13 * this.OrganizationId.GetHashCode ();
+			if (this.PartyId != null) {
+				hash += 13 * this.PartyId.GetHashCode ();
 			}
 			if (this.Version != null) {
 				hash += 13 * this.Version.GetHashCode ();

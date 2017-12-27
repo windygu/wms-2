@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.Organization.NHibernate
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<OrganizationStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.OrganizationId", idObj));
+            criteria.Add(Restrictions.Eq("StateEventId.PartyId", idObj));
             criteria.Add(Restrictions.Le("StateEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
             var es = criteria.List<IEvent>();

@@ -16,6 +16,10 @@ public interface OrganizationStructureTypeState
 
     void setId(String id);
 
+    String getDescription();
+
+    void setDescription(String description);
+
     Long getVersion();
 
     void setVersion(Long version);

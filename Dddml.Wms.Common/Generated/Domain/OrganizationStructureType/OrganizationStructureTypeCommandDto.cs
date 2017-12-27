@@ -53,7 +53,28 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
 		public virtual string Id { get; set; }
 
+		public virtual string Description { get; set; }
+
 		public virtual bool? Active { get; set; }
+
+		public virtual bool? IsPropertyDescriptionRemoved { get; set; }
+
+        bool IMergePatchOrganizationStructureType.IsPropertyDescriptionRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyDescriptionRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyDescriptionRemoved = value;
+            }
+        }
 
 		public virtual bool? IsPropertyActiveRemoved { get; set; }
 

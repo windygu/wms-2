@@ -12,9 +12,9 @@ public interface OrganizationState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    String getOrganizationId();
+    String getPartyId();
 
-    void setOrganizationId(String organizationId);
+    void setPartyId(String partyId);
 
     String getOrganizationName();
 

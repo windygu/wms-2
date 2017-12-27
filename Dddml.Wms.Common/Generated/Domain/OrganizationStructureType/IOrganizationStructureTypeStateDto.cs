@@ -20,6 +20,12 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             set;
         }
 
+        string Description
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

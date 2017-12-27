@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.Organization
 
         protected virtual IOrganizationStateCreated Map(ICreateOrganization c)
         {
-			var stateEventId = new OrganizationStateEventId(c.OrganizationId, c.Version);
+			var stateEventId = new OrganizationStateEventId(c.PartyId, c.Version);
             IOrganizationStateCreated e = NewOrganizationStateCreated(stateEventId);
 		
             e.OrganizationName = c.OrganizationName;
@@ -125,7 +125,7 @@ namespace Dddml.Wms.Domain.Organization
 
         protected virtual IOrganizationStateMergePatched Map(IMergePatchOrganization c)
         {
-			var stateEventId = new OrganizationStateEventId(c.OrganizationId, c.Version);
+			var stateEventId = new OrganizationStateEventId(c.PartyId, c.Version);
             IOrganizationStateMergePatched e = NewOrganizationStateMergePatched(stateEventId);
 
             e.OrganizationName = c.OrganizationName;
@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.Organization
 
         protected virtual IOrganizationStateDeleted Map(IDeleteOrganization c)
         {
-			var stateEventId = new OrganizationStateEventId(c.OrganizationId, c.Version);
+			var stateEventId = new OrganizationStateEventId(c.PartyId, c.Version);
             IOrganizationStateDeleted e = NewOrganizationStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -182,7 +182,7 @@ namespace Dddml.Wms.Domain.Organization
 
         protected OrganizationStateCreated NewOrganizationStateCreated(string commandId, string requesterId)
         {
-            var stateEventId = new OrganizationStateEventId(_state.OrganizationId, ((IOrganizationStateProperties)_state).Version);
+            var stateEventId = new OrganizationStateEventId(_state.PartyId, ((IOrganizationStateProperties)_state).Version);
             var e = NewOrganizationStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -195,7 +195,7 @@ namespace Dddml.Wms.Domain.Organization
 
         protected OrganizationStateMergePatched NewOrganizationStateMergePatched(string commandId, string requesterId)
         {
-            var stateEventId = new OrganizationStateEventId(_state.OrganizationId, ((IOrganizationStateProperties)_state).Version);
+            var stateEventId = new OrganizationStateEventId(_state.PartyId, ((IOrganizationStateProperties)_state).Version);
             var e = NewOrganizationStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -209,7 +209,7 @@ namespace Dddml.Wms.Domain.Organization
 
         protected OrganizationStateDeleted NewOrganizationStateDeleted(string commandId, string requesterId)
         {
-            var stateEventId = new OrganizationStateEventId(_state.OrganizationId, ((IOrganizationStateProperties)_state).Version);
+            var stateEventId = new OrganizationStateEventId(_state.PartyId, ((IOrganizationStateProperties)_state).Version);
             var e = NewOrganizationStateDeleted(stateEventId);
 
             e.CommandId = commandId;

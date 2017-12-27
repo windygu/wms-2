@@ -16,6 +16,8 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 	{
 		public virtual string Id { get; set; }
 
+		public virtual string Description { get; set; }
+
 		public virtual long Version { get; set; }
 
 		public virtual bool Active { get; set; }

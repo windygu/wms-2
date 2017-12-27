@@ -23,6 +23,8 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 	public interface ICreateOrMergePatchOrDeleteOrganizationStructureType : IOrganizationStructureTypeCommand
 	{
 
+		string Description { get; set; }
+
 		bool? Active { get; set; }
 
 
@@ -34,6 +36,8 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
 	public interface IMergePatchOrganizationStructureType : ICreateOrMergePatchOrDeleteOrganizationStructureType
 	{
+
+		bool IsPropertyDescriptionRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

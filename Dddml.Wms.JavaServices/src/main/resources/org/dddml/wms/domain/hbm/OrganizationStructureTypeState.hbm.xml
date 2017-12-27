@@ -11,6 +11,7 @@
 	<id name="id" length="50" column="Id"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
+	<property name="description" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

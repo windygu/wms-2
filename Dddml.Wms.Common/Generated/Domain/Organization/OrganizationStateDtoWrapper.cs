@@ -39,31 +39,31 @@ namespace Dddml.Wms.Domain.Organization
 			return this._state;
 		}
 
-		public virtual string OrganizationId
+		public virtual string PartyId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OrganizationId"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PartyId"))
                 {
-                    return _state.OrganizationId;
+                    return _state.PartyId;
                 }
                 return null;
             }
             set
             {
-                _state.OrganizationId = value;
+                _state.PartyId = value;
             }
         }
 
-        string IOrganizationStateProperties.OrganizationId
+        string IOrganizationStateProperties.PartyId
         {
             get 
             {
-                return (this._state as IOrganizationStateProperties).OrganizationId;
+                return (this._state as IOrganizationStateProperties).PartyId;
             }
             set 
             {
-                (this._state as IOrganizationStateProperties).OrganizationId = value;
+                (this._state as IOrganizationStateProperties).PartyId = value;
             }
         }
 

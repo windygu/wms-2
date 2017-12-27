@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.Metadata
     {
         private static PropertyMetadata[] _properties = new PropertyMetadata[]{
                 new PropertyMetadata {
-                    Name = "OrganizationId",
+                    Name = "PartyId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -378,8 +378,8 @@ namespace Dddml.Wms.Domain.Metadata
         private static void InitFilteringPropertyAliasDictionary()
         {
             var d = new Dictionary<string, string>();
-            d.Add("OrganizationId", "OrganizationId");
-            d.Add("organizationId", "OrganizationId");
+            d.Add("PartyId", "PartyId");
+            d.Add("partyId", "PartyId");
             d.Add("OrganizationName", "OrganizationName");
             d.Add("organizationName", "OrganizationName");
             d.Add("Description", "Description");

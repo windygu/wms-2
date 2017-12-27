@@ -13,6 +13,10 @@ public interface OrganizationStructureTypeStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
+    String getDescription();
+
+    void setDescription(String description);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -37,6 +41,10 @@ public interface OrganizationStructureTypeStateEvent extends Event
 
     interface OrganizationStructureTypeStateMergePatched extends OrganizationStructureTypeStateEvent
     {
+        Boolean getIsPropertyDescriptionRemoved();
+
+        void setIsPropertyDescriptionRemoved(Boolean removed);
+
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);

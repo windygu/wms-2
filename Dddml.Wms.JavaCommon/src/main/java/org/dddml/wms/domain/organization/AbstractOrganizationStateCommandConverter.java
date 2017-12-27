@@ -24,7 +24,7 @@ public abstract class AbstractOrganizationStateCommandConverter<TCreateOrganizat
     public TDeleteOrganization toDeleteOrganization(OrganizationState state) //where TDeleteOrganization : IDeleteOrganization, new()
     {
         TDeleteOrganization cmd = newDeleteOrganization();
-        cmd.setOrganizationId(state.getOrganizationId());
+        cmd.setPartyId(state.getPartyId());
         cmd.setVersion(state.getVersion());
 
         return cmd;
@@ -36,7 +36,7 @@ public abstract class AbstractOrganizationStateCommandConverter<TCreateOrganizat
 
         cmd.setVersion(state.getVersion());
 
-        cmd.setOrganizationId(state.getOrganizationId());
+        cmd.setPartyId(state.getPartyId());
         cmd.setOrganizationName(state.getOrganizationName());
         cmd.setDescription(state.getDescription());
         cmd.setType(state.getType());
@@ -56,7 +56,7 @@ public abstract class AbstractOrganizationStateCommandConverter<TCreateOrganizat
         TCreateOrganization cmd = newCreateOrganization();
 
         cmd.setVersion(state.getVersion());
-        cmd.setOrganizationId(state.getOrganizationId());
+        cmd.setPartyId(state.getPartyId());
         cmd.setOrganizationName(state.getOrganizationName());
         cmd.setDescription(state.getDescription());
         cmd.setType(state.getType());

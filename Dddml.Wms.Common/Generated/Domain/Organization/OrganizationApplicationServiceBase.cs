@@ -59,9 +59,9 @@ namespace Dddml.Wms.Domain.Organization
 
         public virtual void Initialize(IOrganizationStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.OrganizationId;
+            var aggregateId = stateCreated.StateEventId.PartyId;
             var state = new OrganizationState();
-            state.OrganizationId = aggregateId;
+            state.PartyId = aggregateId;
             var aggregate = (OrganizationAggregate)GetOrganizationAggregate(state);
 
             var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
@@ -105,9 +105,9 @@ namespace Dddml.Wms.Domain.Organization
 			Update(c, ar => ar.Delete(c));
 		}
 
-        public virtual IOrganizationState Get(string organizationId)
+        public virtual IOrganizationState Get(string partyId)
         {
-            var state = StateRepository.Get(organizationId, true);
+            var state = StateRepository.Get(partyId, true);
             return state;
         }
 
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.Organization
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IOrganizationStateEvent GetStateEvent(string organizationId, long version)
+	    public virtual IOrganizationStateEvent GetStateEvent(string partyId, long version)
         {
-            var e = (IOrganizationStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(organizationId), version);
+            var e = (IOrganizationStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(partyId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(organizationId, 0);
+                return GetStateEvent(partyId, 0);
             }
             return e;
         }
 
-        public virtual IOrganizationState GetHistoryState(string organizationId, long version)
+        public virtual IOrganizationState GetHistoryState(string partyId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IOrganizationStateEvent), ToEventStoreAggregateId(organizationId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IOrganizationStateEvent), ToEventStoreAggregateId(partyId), version - 1);
             return new OrganizationState(eventStream.Events);
         }
 

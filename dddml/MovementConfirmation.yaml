@@ -92,8 +92,9 @@ aggregates:
               validationLogic:
                 PseudoCode: "TargetQuantity + DifferenceQuantity == ConfirmedQuantity + ScrappedQuantity"
                 CSharp: "{this}.TargetQuantity + {this}.DifferenceQuantity == {this}.ConfirmedQuantity + {this}.ScrappedQuantity"
+                Java: "getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity() .add (getScrappedQuantity()))"
 
-                
+
       # metadata:
         # NoEventSourcing: true
 

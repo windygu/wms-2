@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Organization
 
     public partial class OrganizationStateDto : IOrganizationStateDto
     {
-        public virtual string OrganizationId
+        public virtual string PartyId
         {
             get;
             set;
@@ -84,7 +84,7 @@ namespace Dddml.Wms.Domain.Organization
         public virtual IOrganizationState ToOrganizationState()
         {
             var state = new OrganizationState(true);
-            state.OrganizationId = this.OrganizationId;
+            state.PartyId = this.PartyId;
             state.OrganizationName = this.OrganizationName;
             state.Description = this.Description;
             state.Type = this.Type;

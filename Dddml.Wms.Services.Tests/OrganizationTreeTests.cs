@@ -46,34 +46,34 @@ namespace Dddml.Wms.Services.Tests
             organizationStructureTypeApplicationService.When(orgStructureType);
 
             var organization1 = new CreateOrganization();
-            organization1.OrganizationId = Guid.NewGuid().ToString();
-            organization1.OrganizationName = "Org_test_1" + organization1.OrganizationId;
+            organization1.PartyId = Guid.NewGuid().ToString();
+            organization1.OrganizationName = "Org_test_1" + organization1.PartyId;
             organizationApplicationService.When(organization1);
 
             var organization2 = new CreateOrganization();
-            organization2.OrganizationId = Guid.NewGuid().ToString();
-            organization2.OrganizationName = "Org_test_2" + organization2.OrganizationId;
+            organization2.PartyId = Guid.NewGuid().ToString();
+            organization2.OrganizationName = "Org_test_2" + organization2.PartyId;
             organizationApplicationService.When(organization2);
 
             var orgStructure_0_1 = new CreateOrganizationStructure();
-            var orgStructure_0_1_Id = new OrganizationStructureId(orgStructureTypeId, "", organization1.OrganizationId);
+            var orgStructure_0_1_Id = new OrganizationStructureId(orgStructureTypeId, "", organization1.PartyId);
             orgStructure_0_1.Id = orgStructure_0_1_Id;
             organizationStructureApplicationService.When(orgStructure_0_1);
 
             var orgStructure_1_2 = new CreateOrganizationStructure();
-            var orgStructure_1_2_Id = new OrganizationStructureId(orgStructureTypeId, organization1.OrganizationId, organization2.OrganizationId);
+            var orgStructure_1_2_Id = new OrganizationStructureId(orgStructureTypeId, organization1.PartyId, organization2.PartyId);
             orgStructure_1_2.Id = orgStructure_1_2_Id;
             organizationStructureApplicationService.When(orgStructure_1_2);
 
             var roots = organizationTreeRepository.GetRoots((IEnumerable<KeyValuePair<string, object>>)null, null).ToList();
             Assert.GreaterOrEqual(roots.Count, 1);
-            Console.WriteLine(roots[0].Content.OrganizationId);
+            Console.WriteLine(roots[0].Content.PartyId);
             if (roots != null && roots.Count > 0)
             {
                 Assert.GreaterOrEqual(roots[0].Children.Count(), 1);
                 foreach (var c in roots[0].Children)
                 {
-                    Console.WriteLine(c.Content.OrganizationId);
+                    Console.WriteLine(c.Content.PartyId);
                 }
             }
 

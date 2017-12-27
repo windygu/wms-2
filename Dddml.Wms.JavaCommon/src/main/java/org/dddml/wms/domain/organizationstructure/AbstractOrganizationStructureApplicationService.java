@@ -3,8 +3,8 @@ package org.dddml.wms.domain.organizationstructure;
 import java.util.*;
 import java.util.function.Consumer;
 import org.dddml.support.criterion.Criterion;
-import org.dddml.wms.domain.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
 public abstract class AbstractOrganizationStructureApplicationService implements OrganizationStructureApplicationService

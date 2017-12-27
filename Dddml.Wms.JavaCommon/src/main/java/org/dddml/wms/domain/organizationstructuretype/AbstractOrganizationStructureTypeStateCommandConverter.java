@@ -37,8 +37,10 @@ public abstract class AbstractOrganizationStructureTypeStateCommandConverter<TCr
         cmd.setVersion(state.getVersion());
 
         cmd.setId(state.getId());
+        cmd.setDescription(state.getDescription());
         cmd.setActive(state.getActive());
             
+        if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
     }
@@ -49,6 +51,7 @@ public abstract class AbstractOrganizationStructureTypeStateCommandConverter<TCr
 
         cmd.setVersion(state.getVersion());
         cmd.setId(state.getId());
+        cmd.setDescription(state.getDescription());
         cmd.setActive(state.getActive());
         return cmd;
     }

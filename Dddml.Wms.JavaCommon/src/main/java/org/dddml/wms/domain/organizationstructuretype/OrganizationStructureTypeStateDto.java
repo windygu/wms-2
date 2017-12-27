@@ -21,6 +21,18 @@ public class OrganizationStructureTypeStateDto
         this.id = id;
     }
 
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -121,6 +133,9 @@ public class OrganizationStructureTypeStateDto
             OrganizationStructureTypeStateDto dto = new OrganizationStructureTypeStateDto();
             if (returnedFieldsContains("Id")) {
                 dto.setId(state.getId());
+            }
+            if (returnedFieldsContains("Description")) {
+                dto.setDescription(state.getDescription());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

@@ -48,8 +48,10 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             cmd.Version = ((IOrganizationStructureTypeStateProperties)state).Version;
 
             cmd.Id = state.Id;
+            cmd.Description = state.Description;
             cmd.Active = ((IOrganizationStructureTypeStateProperties)state).Active;
             
+            if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             return cmd;
         }
 
@@ -61,6 +63,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             cmd.Version = ((IOrganizationStructureTypeStateProperties)state).Version;
 
             cmd.Id = state.Id;
+            cmd.Description = state.Description;
             cmd.Active = ((IOrganizationStructureTypeStateProperties)state).Active;
             return cmd;
         }

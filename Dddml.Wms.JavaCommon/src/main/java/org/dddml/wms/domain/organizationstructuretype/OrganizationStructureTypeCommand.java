@@ -40,6 +40,10 @@ public interface OrganizationStructureTypeCommand extends Command
 
     interface CreateOrMergePatchOrganizationStructureType extends OrganizationStructureTypeCommand
     {
+        String getDescription();
+
+        void setDescription(String description);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -52,6 +56,10 @@ public interface OrganizationStructureTypeCommand extends Command
 
     interface MergePatchOrganizationStructureType extends CreateOrMergePatchOrganizationStructureType
     {
+        Boolean getIsPropertyDescriptionRemoved();
+
+        void setIsPropertyDescriptionRemoved(Boolean removed);
+
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);

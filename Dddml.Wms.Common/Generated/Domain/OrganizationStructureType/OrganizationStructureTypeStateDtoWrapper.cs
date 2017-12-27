@@ -67,6 +67,34 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             }
         }
 
+		public virtual string Description
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Description"))
+                {
+                    return _state.Description;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Description = value;
+            }
+        }
+
+        string IOrganizationStructureTypeStateProperties.Description
+        {
+            get 
+            {
+                return (this._state as IOrganizationStructureTypeStateProperties).Description;
+            }
+            set 
+            {
+                (this._state as IOrganizationStructureTypeStateProperties).Description = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

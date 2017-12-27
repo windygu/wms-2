@@ -5,6 +5,18 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrganizationStructureTypeDto extends AbstractOrganizationStructureTypeCommandDto
 {
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -15,6 +27,18 @@ public class CreateOrMergePatchOrganizationStructureTypeDto extends AbstractOrga
     public void setActive(Boolean active)
     {
         this.active = active;
+    }
+
+    private Boolean isPropertyDescriptionRemoved;
+
+    public Boolean getIsPropertyDescriptionRemoved()
+    {
+        return this.isPropertyDescriptionRemoved;
+    }
+
+    public void setIsPropertyDescriptionRemoved(Boolean removed)
+    {
+        this.isPropertyDescriptionRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;
@@ -32,6 +56,7 @@ public class CreateOrMergePatchOrganizationStructureTypeDto extends AbstractOrga
     public void copyTo(AbstractOrganizationStructureTypeCommand.AbstractCreateOrMergePatchOrganizationStructureType command)
     {
         ((AbstractOrganizationStructureTypeCommandDto) this).copyTo(command);
+        command.setDescription(this.getDescription());
         command.setActive(this.getActive());
     }
 
@@ -57,6 +82,7 @@ public class CreateOrMergePatchOrganizationStructureTypeDto extends AbstractOrga
     public void copyTo(AbstractOrganizationStructureTypeCommand.AbstractMergePatchOrganizationStructureType command)
     {
         copyTo((AbstractOrganizationStructureTypeCommand.AbstractCreateOrMergePatchOrganizationStructureType) command);
+        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

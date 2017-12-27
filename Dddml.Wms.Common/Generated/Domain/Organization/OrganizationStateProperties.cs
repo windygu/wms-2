@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.Organization
 
 	public abstract class OrganizationStateProperties : IOrganizationStateProperties
 	{
-		public virtual string OrganizationId { get; set; }
+		public virtual string PartyId { get; set; }
 
 		public virtual string OrganizationName { get; set; }
 

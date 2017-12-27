@@ -42,6 +42,8 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             set { StateEventId.Version = value; }
         }
 
+		public virtual string Description { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -70,6 +72,25 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             set
             {
                 this.StateEventReadOnly = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDescriptionRemoved { get; set; }
+
+        bool IOrganizationStructureTypeStateMergePatched.IsPropertyDescriptionRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyDescriptionRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyDescriptionRemoved = value;
             }
         }
 

@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.Organization
 
 	public interface IOrganizationStateProperties
 	{
-		string OrganizationId { get; set; }
+		string PartyId { get; set; }
 
 		string OrganizationName { get; set; }
 

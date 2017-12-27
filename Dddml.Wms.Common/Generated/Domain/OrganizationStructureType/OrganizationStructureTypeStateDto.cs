@@ -21,6 +21,12 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             set;
         }
 
+        public virtual string Description
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -61,6 +67,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
         {
             var state = new OrganizationStructureTypeState(true);
             state.Id = this.Id;
+            state.Description = this.Description;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

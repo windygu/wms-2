@@ -7,16 +7,16 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrganizationCommand extends AbstractCommand implements OrganizationCommand
 {
-    private String organizationId;
+    private String partyId;
 
-    public String getOrganizationId()
+    public String getPartyId()
     {
-        return this.organizationId;
+        return this.partyId;
     }
 
-    public void setOrganizationId(String organizationId)
+    public void setPartyId(String partyId)
     {
-        this.organizationId = organizationId;
+        this.partyId = partyId;
     }
 
     private Long version;

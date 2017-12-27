@@ -251,6 +251,9 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
         } else {
             throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
+        if (!(getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity() .add (getScrappedQuantity())))) {
+            throw DomainError.named("constraintViolated", "Violated validation logic: %1$s", "getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity() .add (getScrappedQuantity()))");
+        }
     }
 
     public void when(MovementConfirmationLineStateCreated e)

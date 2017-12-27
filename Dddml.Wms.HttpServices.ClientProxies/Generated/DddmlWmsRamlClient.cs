@@ -6553,434 +6553,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class OrganizationStructureType
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal OrganizationStructureType(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.OrganizationStructureTypeGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.OrganizationStructureTypeGetResponse> Get(Models.OrganizationStructureTypeGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "OrganizationStructureTypes/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.Fields != null)
-                    url += "&fields=" + request.Query.Fields;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.OrganizationStructureTypeGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.OrganizationStructureTypePutRequest</param>
-        public virtual async Task<ApiResponse> Put(Models.OrganizationStructureTypePutRequest request)
-        {
-
-            var url = "OrganizationStructureTypes/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Put, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-            if(request.Formatter == null)
-                request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(CreateOrganizationStructureTypeDto), request.Content , request.Formatter);                           
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.OrganizationStructureTypePatchRequest</param>
-        public virtual async Task<ApiResponse> Patch(Models.OrganizationStructureTypePatchRequest request)
-        {
-
-            var url = "OrganizationStructureTypes/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-            if(request.Formatter == null)
-                request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(MergePatchOrganizationStructureTypeDto), request.Content , request.Formatter);                           
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.OrganizationStructureTypeDeleteRequest</param>
-        public virtual async Task<ApiResponse> Delete(Models.OrganizationStructureTypeDeleteRequest request)
-        {
-
-            var url = "OrganizationStructureTypes/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.CommandId != null)
-                    url += "&commandId=" + request.Query.CommandId;
-                if(request.Query.Version != null)
-                    url += "&version=" + request.Query.Version;
-                if(request.Query.RequesterId != null)
-                    url += "&requesterId=" + request.Query.RequesterId;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Delete, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class OrganizationStructureTypes
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal OrganizationStructureTypes(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.OrganizationStructureTypesGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.OrganizationStructureTypesGetResponse> Get(Models.OrganizationStructureTypesGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "OrganizationStructureTypes";
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.FirstResult != null)
-                    url += "&firstResult=" + request.Query.FirstResult;
-                if(request.Query.MaxResults != null)
-                    url += "&maxResults=" + request.Query.MaxResults;
-                if(request.Query.Sort != null)
-                    url += "&sort=" + request.Query.Sort;
-                if(request.Query.Fields != null)
-                    url += "&fields=" + request.Query.Fields;
-                if(request.Query.Filter != null)
-                    url += "&filter=" + request.Query.Filter;
-                if(request.Query.FilterTag != null)
-                    url += "&filterTag=" + request.Query.FilterTag;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.OrganizationStructureTypesGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class OrganizationStructureTypesCount
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal OrganizationStructureTypesCount(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.OrganizationStructureTypesCountGetRequest</param>
-        public virtual async Task<ApiResponse> Get(Models.OrganizationStructureTypesCountGetRequest request)
-        {
-
-            var url = "OrganizationStructureTypes/_count";
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.Filter != null)
-                    url += "&filter=" + request.Query.Filter;
-                if(request.Query.FilterTag != null)
-                    url += "&filterTag=" + request.Query.FilterTag;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class OrganizationStructureTypeStateEvent
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal OrganizationStructureTypeStateEvent(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.OrganizationStructureTypeStateEventGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.OrganizationStructureTypeStateEventGetResponse> Get(Models.OrganizationStructureTypeStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "OrganizationStructureTypes/{id}/_stateEvents/{version}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-			if(request.UriParameters.Version == null)
-				throw new InvalidOperationException("Uri Parameter Version cannot be null");
-
-            url = url.Replace("{version}", request.UriParameters.Version.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.OrganizationStructureTypeStateEventGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class OrganizationStructureTypeHistoryState
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal OrganizationStructureTypeHistoryState(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.OrganizationStructureTypeHistoryStateGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.OrganizationStructureTypeHistoryStateGetResponse> Get(Models.OrganizationStructureTypeHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "OrganizationStructureTypes/{id}/_historyStates/{version}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-			if(request.UriParameters.Version == null)
-				throw new InvalidOperationException("Uri Parameter Version cannot be null");
-
-            url = url.Replace("{version}", request.UriParameters.Version.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.OrganizationStructureTypeHistoryStateGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
     public partial class OrganizationStructure
     {
         private readonly DddmlWmsRamlClient proxy;
@@ -7397,6 +6969,434 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				
             }
             return new Models.OrganizationStructureHistoryStateGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrganizationStructureType
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrganizationStructureType(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrganizationStructureTypeGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrganizationStructureTypeGetResponse> Get(Models.OrganizationStructureTypeGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrganizationStructureTypes/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrganizationStructureTypeGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.OrganizationStructureTypePutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.OrganizationStructureTypePutRequest request)
+        {
+
+            var url = "OrganizationStructureTypes/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Put, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(CreateOrganizationStructureTypeDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.OrganizationStructureTypePatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.OrganizationStructureTypePatchRequest request)
+        {
+
+            var url = "OrganizationStructureTypes/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(MergePatchOrganizationStructureTypeDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.OrganizationStructureTypeDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.OrganizationStructureTypeDeleteRequest request)
+        {
+
+            var url = "OrganizationStructureTypes/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.CommandId != null)
+                    url += "&commandId=" + request.Query.CommandId;
+                if(request.Query.Version != null)
+                    url += "&version=" + request.Query.Version;
+                if(request.Query.RequesterId != null)
+                    url += "&requesterId=" + request.Query.RequesterId;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Delete, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrganizationStructureTypes
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrganizationStructureTypes(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrganizationStructureTypesGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrganizationStructureTypesGetResponse> Get(Models.OrganizationStructureTypesGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrganizationStructureTypes";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.FirstResult != null)
+                    url += "&firstResult=" + request.Query.FirstResult;
+                if(request.Query.MaxResults != null)
+                    url += "&maxResults=" + request.Query.MaxResults;
+                if(request.Query.Sort != null)
+                    url += "&sort=" + request.Query.Sort;
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrganizationStructureTypesGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrganizationStructureTypesCount
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrganizationStructureTypesCount(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrganizationStructureTypesCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.OrganizationStructureTypesCountGetRequest request)
+        {
+
+            var url = "OrganizationStructureTypes/_count";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrganizationStructureTypeStateEvent
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrganizationStructureTypeStateEvent(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrganizationStructureTypeStateEventGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrganizationStructureTypeStateEventGetResponse> Get(Models.OrganizationStructureTypeStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrganizationStructureTypes/{id}/_stateEvents/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrganizationStructureTypeStateEventGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrganizationStructureTypeHistoryState
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrganizationStructureTypeHistoryState(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrganizationStructureTypeHistoryStateGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrganizationStructureTypeHistoryStateGetResponse> Get(Models.OrganizationStructureTypeHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrganizationStructureTypes/{id}/_historyStates/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrganizationStructureTypeHistoryStateGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -18693,15 +18693,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual OrganizationStructureType OrganizationStructureType
-        {
-            get { return new OrganizationStructureType(this); }
-        }
-                
-
         public virtual OrganizationStructure OrganizationStructure
         {
             get { return new OrganizationStructure(this); }
+        }
+                
+
+        public virtual OrganizationStructureType OrganizationStructureType
+        {
+            get { return new OrganizationStructureType(this); }
         }
                 
 
@@ -18939,15 +18939,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual OrganizationStructureTypes OrganizationStructureTypes
-        {
-            get { return new OrganizationStructureTypes(this); }
-        }
-                
-
         public virtual OrganizationStructures OrganizationStructures
         {
             get { return new OrganizationStructures(this); }
+        }
+                
+
+        public virtual OrganizationStructureTypes OrganizationStructureTypes
+        {
+            get { return new OrganizationStructureTypes(this); }
         }
                 
 
@@ -19185,15 +19185,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual OrganizationStructureTypesCount OrganizationStructureTypesCount
-        {
-            get { return new OrganizationStructureTypesCount(this); }
-        }
-                
-
         public virtual OrganizationStructuresCount OrganizationStructuresCount
         {
             get { return new OrganizationStructuresCount(this); }
+        }
+                
+
+        public virtual OrganizationStructureTypesCount OrganizationStructureTypesCount
+        {
+            get { return new OrganizationStructureTypesCount(this); }
         }
                 
 
@@ -19431,15 +19431,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual OrganizationStructureTypeStateEvent OrganizationStructureTypeStateEvent
-        {
-            get { return new OrganizationStructureTypeStateEvent(this); }
-        }
-                
-
         public virtual OrganizationStructureStateEvent OrganizationStructureStateEvent
         {
             get { return new OrganizationStructureStateEvent(this); }
+        }
+                
+
+        public virtual OrganizationStructureTypeStateEvent OrganizationStructureTypeStateEvent
+        {
+            get { return new OrganizationStructureTypeStateEvent(this); }
         }
                 
 
@@ -19677,15 +19677,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual OrganizationStructureTypeHistoryState OrganizationStructureTypeHistoryState
-        {
-            get { return new OrganizationStructureTypeHistoryState(this); }
-        }
-                
-
         public virtual OrganizationStructureHistoryState OrganizationStructureHistoryState
         {
             get { return new OrganizationStructureHistoryState(this); }
+        }
+                
+
+        public virtual OrganizationStructureTypeHistoryState OrganizationStructureTypeHistoryState
+        {
+            get { return new OrganizationStructureTypeHistoryState(this); }
         }
                 
 
@@ -20733,62 +20733,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
-    public partial class  OrganizationStructureTypeGetQuery 
-    {
-		[JsonProperty("fields")]
-        public string Fields { get; set; }
-
-
-    } // end class
-
-    public partial class  OrganizationStructureTypeDeleteQuery 
-    {
-		[JsonProperty("commandId")]
-        public string CommandId { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-		[JsonProperty("requesterId")]
-        public string RequesterId { get; set; }
-
-
-    } // end class
-
-    public partial class  OrganizationStructureTypesGetQuery 
-    {
-		[JsonProperty("firstResult")]
-        public int? FirstResult { get; set; }
-
-		[JsonProperty("maxResults")]
-        public int? MaxResults { get; set; }
-
-		[JsonProperty("sort")]
-        public string Sort { get; set; }
-
-		[JsonProperty("fields")]
-        public string Fields { get; set; }
-
-		[JsonProperty("filter")]
-        public string Filter { get; set; }
-
-		[JsonProperty("filterTag")]
-        public string FilterTag { get; set; }
-
-
-    } // end class
-
-    public partial class  OrganizationStructureTypesCountGetQuery 
-    {
-		[JsonProperty("filter")]
-        public string Filter { get; set; }
-
-		[JsonProperty("filterTag")]
-        public string FilterTag { get; set; }
-
-
-    } // end class
-
     public partial class  OrganizationStructureGetQuery 
     {
 		[JsonProperty("fields")]
@@ -20835,6 +20779,62 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     public partial class  OrganizationStructuresCountGetQuery 
+    {
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  OrganizationStructureTypeGetQuery 
+    {
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+
+    } // end class
+
+    public partial class  OrganizationStructureTypeDeleteQuery 
+    {
+		[JsonProperty("commandId")]
+        public string CommandId { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+		[JsonProperty("requesterId")]
+        public string RequesterId { get; set; }
+
+
+    } // end class
+
+    public partial class  OrganizationStructureTypesGetQuery 
+    {
+		[JsonProperty("firstResult")]
+        public int? FirstResult { get; set; }
+
+		[JsonProperty("maxResults")]
+        public int? MaxResults { get; set; }
+
+		[JsonProperty("sort")]
+        public string Sort { get; set; }
+
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  OrganizationStructureTypesCountGetQuery 
     {
 		[JsonProperty("filter")]
         public string Filter { get; set; }
@@ -22956,45 +22956,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /OrganizationStructureTypes/{id}
-    /// </summary>
-    public partial class  OrganizationStructureTypeUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /OrganizationStructureTypes/{id}/_stateEvents/{version}
-    /// </summary>
-    public partial class  OrganizationStructureTypeStateEventUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /OrganizationStructureTypes/{id}/_historyStates/{version}
-    /// </summary>
-    public partial class  OrganizationStructureTypeHistoryStateUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-
-    } // end class
-
-    /// <summary>
     /// Uri Parameters for resource /OrganizationStructures/{id}
     /// </summary>
     public partial class  OrganizationStructureUriParameters 
@@ -23023,6 +22984,45 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     /// Uri Parameters for resource /OrganizationStructures/{id}/_historyStates/{version}
     /// </summary>
     public partial class  OrganizationStructureHistoryStateUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /OrganizationStructureTypes/{id}
+    /// </summary>
+    public partial class  OrganizationStructureTypeUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /OrganizationStructureTypes/{id}/_stateEvents/{version}
+    /// </summary>
+    public partial class  OrganizationStructureTypeStateEventUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /OrganizationStructureTypes/{id}/_historyStates/{version}
+    /// </summary>
+    public partial class  OrganizationStructureTypeHistoryStateUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -26525,172 +26525,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Request object for method Get of class OrganizationStructureType
-    /// </summary>
-    public partial class OrganizationStructureTypeGetRequest : ApiRequest
-    {
-        public OrganizationStructureTypeGetRequest(OrganizationStructureTypeUriParameters UriParameters, OrganizationStructureTypeGetQuery Query = null)
-        {
-            this.Query = Query;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public OrganizationStructureTypeGetQuery Query { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public OrganizationStructureTypeUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Put of class OrganizationStructureType
-    /// </summary>
-    public partial class OrganizationStructureTypePutRequest : ApiRequest
-    {
-        public OrganizationStructureTypePutRequest(OrganizationStructureTypeUriParameters UriParameters, CreateOrganizationStructureTypeDto Content = null, MediaTypeFormatter Formatter = null)
-        {
-            this.Content = Content;
-            this.Formatter = Formatter;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request content
-        /// </summary>
-        public CreateOrganizationStructureTypeDto Content { get; set; }
-        /// <summary>
-        /// Request formatter
-        /// </summary>
-        public MediaTypeFormatter Formatter { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public OrganizationStructureTypeUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Patch of class OrganizationStructureType
-    /// </summary>
-    public partial class OrganizationStructureTypePatchRequest : ApiRequest
-    {
-        public OrganizationStructureTypePatchRequest(OrganizationStructureTypeUriParameters UriParameters, MergePatchOrganizationStructureTypeDto Content = null, MediaTypeFormatter Formatter = null)
-        {
-            this.Content = Content;
-            this.Formatter = Formatter;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request content
-        /// </summary>
-        public MergePatchOrganizationStructureTypeDto Content { get; set; }
-        /// <summary>
-        /// Request formatter
-        /// </summary>
-        public MediaTypeFormatter Formatter { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public OrganizationStructureTypeUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Delete of class OrganizationStructureType
-    /// </summary>
-    public partial class OrganizationStructureTypeDeleteRequest : ApiRequest
-    {
-        public OrganizationStructureTypeDeleteRequest(OrganizationStructureTypeUriParameters UriParameters, OrganizationStructureTypeDeleteQuery Query = null)
-        {
-            this.Query = Query;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public OrganizationStructureTypeDeleteQuery Query { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public OrganizationStructureTypeUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class OrganizationStructureTypes
-    /// </summary>
-    public partial class OrganizationStructureTypesGetRequest : ApiRequest
-    {
-        public OrganizationStructureTypesGetRequest(OrganizationStructureTypesGetQuery Query = null)
-        {
-            this.Query = Query;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public OrganizationStructureTypesGetQuery Query { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class OrganizationStructureTypesCount
-    /// </summary>
-    public partial class OrganizationStructureTypesCountGetRequest : ApiRequest
-    {
-        public OrganizationStructureTypesCountGetRequest(OrganizationStructureTypesCountGetQuery Query = null)
-        {
-            this.Query = Query;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public OrganizationStructureTypesCountGetQuery Query { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class OrganizationStructureTypeStateEvent
-    /// </summary>
-    public partial class OrganizationStructureTypeStateEventGetRequest : ApiRequest
-    {
-        public OrganizationStructureTypeStateEventGetRequest(OrganizationStructureTypeStateEventUriParameters UriParameters)
-        {
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public OrganizationStructureTypeStateEventUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class OrganizationStructureTypeHistoryState
-    /// </summary>
-    public partial class OrganizationStructureTypeHistoryStateGetRequest : ApiRequest
-    {
-        public OrganizationStructureTypeHistoryStateGetRequest(OrganizationStructureTypeHistoryStateUriParameters UriParameters)
-        {
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public OrganizationStructureTypeHistoryStateUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
     /// Request object for method Get of class OrganizationStructure
     /// </summary>
     public partial class OrganizationStructureGetRequest : ApiRequest
@@ -26853,6 +26687,172 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// Request Uri Parameters
         /// </summary>
         public OrganizationStructureHistoryStateUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrganizationStructureType
+    /// </summary>
+    public partial class OrganizationStructureTypeGetRequest : ApiRequest
+    {
+        public OrganizationStructureTypeGetRequest(OrganizationStructureTypeUriParameters UriParameters, OrganizationStructureTypeGetQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrganizationStructureTypeGetQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrganizationStructureTypeUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Put of class OrganizationStructureType
+    /// </summary>
+    public partial class OrganizationStructureTypePutRequest : ApiRequest
+    {
+        public OrganizationStructureTypePutRequest(OrganizationStructureTypeUriParameters UriParameters, CreateOrganizationStructureTypeDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public CreateOrganizationStructureTypeDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrganizationStructureTypeUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Patch of class OrganizationStructureType
+    /// </summary>
+    public partial class OrganizationStructureTypePatchRequest : ApiRequest
+    {
+        public OrganizationStructureTypePatchRequest(OrganizationStructureTypeUriParameters UriParameters, MergePatchOrganizationStructureTypeDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public MergePatchOrganizationStructureTypeDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrganizationStructureTypeUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Delete of class OrganizationStructureType
+    /// </summary>
+    public partial class OrganizationStructureTypeDeleteRequest : ApiRequest
+    {
+        public OrganizationStructureTypeDeleteRequest(OrganizationStructureTypeUriParameters UriParameters, OrganizationStructureTypeDeleteQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrganizationStructureTypeDeleteQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrganizationStructureTypeUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrganizationStructureTypes
+    /// </summary>
+    public partial class OrganizationStructureTypesGetRequest : ApiRequest
+    {
+        public OrganizationStructureTypesGetRequest(OrganizationStructureTypesGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrganizationStructureTypesGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrganizationStructureTypesCount
+    /// </summary>
+    public partial class OrganizationStructureTypesCountGetRequest : ApiRequest
+    {
+        public OrganizationStructureTypesCountGetRequest(OrganizationStructureTypesCountGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrganizationStructureTypesCountGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrganizationStructureTypeStateEvent
+    /// </summary>
+    public partial class OrganizationStructureTypeStateEventGetRequest : ApiRequest
+    {
+        public OrganizationStructureTypeStateEventGetRequest(OrganizationStructureTypeStateEventUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrganizationStructureTypeStateEventUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrganizationStructureTypeHistoryState
+    /// </summary>
+    public partial class OrganizationStructureTypeHistoryStateGetRequest : ApiRequest
+    {
+        public OrganizationStructureTypeHistoryStateGetRequest(OrganizationStructureTypeHistoryStateUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrganizationStructureTypeHistoryStateUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -34267,202 +34267,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Response object for method Get of class OrganizationStructureType
-    /// </summary>
-
-    public partial class OrganizationStructureTypeGetResponse : ApiResponse
-    {
-
-
-	    private OrganizationStructureTypeStateDto typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public OrganizationStructureTypeStateDto Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (OrganizationStructureTypeStateDto)new XmlSerializer(typeof(OrganizationStructureTypeStateDto)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<OrganizationStructureTypeStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<OrganizationStructureTypeStateDto>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class OrganizationStructureTypes
-    /// </summary>
-
-    public partial class OrganizationStructureTypesGetResponse : ApiResponse
-    {
-
-
-	    private IList<OrganizationStructureTypeStateDto> typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public IList<OrganizationStructureTypeStateDto> Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (IList<OrganizationStructureTypeStateDto>)new XmlSerializer(typeof(IList<OrganizationStructureTypeStateDto>)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<IList<OrganizationStructureTypeStateDto>>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<IList<OrganizationStructureTypeStateDto>>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class OrganizationStructureTypeStateEvent
-    /// </summary>
-
-    public partial class OrganizationStructureTypeStateEventGetResponse : ApiResponse
-    {
-
-
-	    private OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class OrganizationStructureTypeHistoryState
-    /// </summary>
-
-    public partial class OrganizationStructureTypeHistoryStateGetResponse : ApiResponse
-    {
-
-
-	    private OrganizationStructureTypeStateDto typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public OrganizationStructureTypeStateDto Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (OrganizationStructureTypeStateDto)new XmlSerializer(typeof(OrganizationStructureTypeStateDto)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<OrganizationStructureTypeStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<OrganizationStructureTypeStateDto>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
     /// Response object for method Get of class OrganizationStructure
     /// </summary>
 
@@ -34645,6 +34449,202 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task =  Formatters != null && Formatters.Any() 
                                 ? RawContent.ReadAsAsync<OrganizationStructureStateDto>(Formatters).ConfigureAwait(false)
                                 : RawContent.ReadAsAsync<OrganizationStructureStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrganizationStructureType
+    /// </summary>
+
+    public partial class OrganizationStructureTypeGetResponse : ApiResponse
+    {
+
+
+	    private OrganizationStructureTypeStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public OrganizationStructureTypeStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (OrganizationStructureTypeStateDto)new XmlSerializer(typeof(OrganizationStructureTypeStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<OrganizationStructureTypeStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrganizationStructureTypeStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrganizationStructureTypes
+    /// </summary>
+
+    public partial class OrganizationStructureTypesGetResponse : ApiResponse
+    {
+
+
+	    private IList<OrganizationStructureTypeStateDto> typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public IList<OrganizationStructureTypeStateDto> Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (IList<OrganizationStructureTypeStateDto>)new XmlSerializer(typeof(IList<OrganizationStructureTypeStateDto>)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<IList<OrganizationStructureTypeStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<OrganizationStructureTypeStateDto>>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrganizationStructureTypeStateEvent
+    /// </summary>
+
+    public partial class OrganizationStructureTypeStateEventGetResponse : ApiResponse
+    {
+
+
+	    private OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrganizationStructureTypeHistoryState
+    /// </summary>
+
+    public partial class OrganizationStructureTypeHistoryStateGetResponse : ApiResponse
+    {
+
+
+	    private OrganizationStructureTypeStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public OrganizationStructureTypeStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (OrganizationStructureTypeStateDto)new XmlSerializer(typeof(OrganizationStructureTypeStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<OrganizationStructureTypeStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrganizationStructureTypeStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }

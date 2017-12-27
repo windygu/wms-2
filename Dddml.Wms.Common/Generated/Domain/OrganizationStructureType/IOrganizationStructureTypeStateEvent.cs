@@ -17,6 +17,8 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         bool ReadOnly { get; set; }
 
+		string Description { get; set; }
+
 		bool? Active { get; set; }
 
 	}
@@ -29,6 +31,8 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
 	public interface IOrganizationStructureTypeStateMergePatched : IOrganizationStructureTypeStateEvent//, IOrganizationStructureTypeStateProperties
 	{
+		bool IsPropertyDescriptionRemoved { get; set; }
+
 		bool IsPropertyActiveRemoved { get; set; }
 
 

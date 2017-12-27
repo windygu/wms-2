@@ -44,8 +44,8 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("Order");
             _aggregateNames.Add("OrderShipment");
             _aggregateNames.Add("Organization");
-            _aggregateNames.Add("OrganizationStructureType");
             _aggregateNames.Add("OrganizationStructure");
+            _aggregateNames.Add("OrganizationStructureType");
             _aggregateNames.Add("PhysicalInventory");
             _aggregateNames.Add("Product");
             _aggregateNames.Add("ProductCategory");
@@ -87,8 +87,8 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("Order", "Dddml.Wms.Domain.Order");
             _aggregateNamespaces.Add("OrderShipment", "Dddml.Wms.Domain.OrderShipment");
             _aggregateNamespaces.Add("Organization", "Dddml.Wms.Domain.Organization");
-            _aggregateNamespaces.Add("OrganizationStructureType", "Dddml.Wms.Domain.OrganizationStructureType");
             _aggregateNamespaces.Add("OrganizationStructure", "Dddml.Wms.Domain.OrganizationStructure");
+            _aggregateNamespaces.Add("OrganizationStructureType", "Dddml.Wms.Domain.OrganizationStructureType");
             _aggregateNamespaces.Add("PhysicalInventory", "Dddml.Wms.Domain.PhysicalInventory");
             _aggregateNamespaces.Add("Product", "Dddml.Wms.Domain.Product");
             _aggregateNamespaces.Add("ProductCategory", "Dddml.Wms.Domain.ProductCategory");

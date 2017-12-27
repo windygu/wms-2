@@ -6,16 +6,16 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrganizationCommandDto extends AbstractCommand
 {
-    private String organizationId;
+    private String partyId;
 
-    public String getOrganizationId()
+    public String getPartyId()
     {
-        return this.organizationId;
+        return this.partyId;
     }
 
-    public void setOrganizationId(String organizationId)
+    public void setPartyId(String partyId)
     {
-        this.organizationId = organizationId;
+        this.partyId = partyId;
     }
 
     private Long version;
@@ -33,7 +33,7 @@ public abstract class AbstractOrganizationCommandDto extends AbstractCommand
 
     public void copyTo(AbstractOrganizationCommand command)
     {
-        command.setOrganizationId(this.getOrganizationId());
+        command.setPartyId(this.getPartyId());
         command.setVersion(this.getVersion());
         
         command.setRequesterId(this.getRequesterId());

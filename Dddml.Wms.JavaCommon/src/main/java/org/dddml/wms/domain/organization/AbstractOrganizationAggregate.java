@@ -55,7 +55,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
     }
 
     protected OrganizationStateEvent map(OrganizationCommand.CreateOrganization c) {
-        OrganizationStateEventId stateEventId = new OrganizationStateEventId(c.getOrganizationId(), c.getVersion());
+        OrganizationStateEventId stateEventId = new OrganizationStateEventId(c.getPartyId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateCreated e = newOrganizationStateCreated(stateEventId);
         e.setOrganizationName(c.getOrganizationName());
         e.setDescription(c.getDescription());
@@ -69,7 +69,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
     }
 
     protected OrganizationStateEvent map(OrganizationCommand.MergePatchOrganization c) {
-        OrganizationStateEventId stateEventId = new OrganizationStateEventId(c.getOrganizationId(), c.getVersion());
+        OrganizationStateEventId stateEventId = new OrganizationStateEventId(c.getPartyId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateMergePatched e = newOrganizationStateMergePatched(stateEventId);
         e.setOrganizationName(c.getOrganizationName());
         e.setDescription(c.getDescription());
@@ -88,7 +88,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
     }
 
     protected OrganizationStateEvent map(OrganizationCommand.DeleteOrganization c) {
-        OrganizationStateEventId stateEventId = new OrganizationStateEventId(c.getOrganizationId(), c.getVersion());
+        OrganizationStateEventId stateEventId = new OrganizationStateEventId(c.getPartyId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateDeleted e = newOrganizationStateDeleted(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -100,7 +100,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
     ////////////////////////
 
     protected OrganizationStateEvent.OrganizationStateCreated newOrganizationStateCreated(String commandId, String requesterId) {
-        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getOrganizationId(), this.state.getVersion());
+        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getPartyId(), this.state.getVersion());
         OrganizationStateEvent.OrganizationStateCreated e = newOrganizationStateCreated(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -109,7 +109,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
     }
 
     protected OrganizationStateEvent.OrganizationStateMergePatched newOrganizationStateMergePatched(String commandId, String requesterId) {
-        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getOrganizationId(), this.state.getVersion());
+        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getPartyId(), this.state.getVersion());
         OrganizationStateEvent.OrganizationStateMergePatched e = newOrganizationStateMergePatched(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -118,7 +118,7 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
     }
 
     protected OrganizationStateEvent.OrganizationStateDeleted newOrganizationStateDeleted(String commandId, String requesterId) {
-        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getOrganizationId(), this.state.getVersion());
+        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getPartyId(), this.state.getVersion());
         OrganizationStateEvent.OrganizationStateDeleted e = newOrganizationStateDeleted(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

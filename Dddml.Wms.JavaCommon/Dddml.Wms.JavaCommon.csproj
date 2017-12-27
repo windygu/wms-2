@@ -933,11 +933,6 @@
 .\LocatorTreeApplicationService.java
 .\LocatorTreeNode.java
 .\LocatorTreeRepository.java
-.\OrganizationStructureId.java
-.\OrganizationStructureIdDto.java
-.\OrganizationStructureIdDtoWrapper.java
-.\OrganizationStructureIdFlattenedDto.java
-.\OrganizationStructureIdFlattenedDtoFormatter.java
 .\OrganizationTreeApplicationService.java
 .\OrganizationTreeNode.java
 .\OrganizationTreeRepository.java
@@ -3276,21 +3271,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\order\RemoveOrderItemDto.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStructureId.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStructureIdDto.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStructureIdDtoWrapper.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStructureIdFlattenedDto.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\OrganizationStructureIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\AbstractOrganizationStructureTypeAggregate.java">
       <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
     </Content>
@@ -3407,6 +3387,21 @@
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureCommand.java">
+      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureId.java">
+      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureIdDto.java">
+      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureIdDtoWrapper.java">
+      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureIdFlattenedDto.java">
+      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureState.java">
@@ -4971,6 +4966,11 @@
 .\OrganizationStructureAggregate.java
 .\OrganizationStructureApplicationService.java
 .\OrganizationStructureCommand.java
+.\OrganizationStructureId.java
+.\OrganizationStructureIdDto.java
+.\OrganizationStructureIdDtoWrapper.java
+.\OrganizationStructureIdFlattenedDto.java
+.\OrganizationStructureIdFlattenedDtoFormatter.java
 .\OrganizationStructureState.java
 .\OrganizationStructureStateDto.java
 .\OrganizationStructureStateEvent.java

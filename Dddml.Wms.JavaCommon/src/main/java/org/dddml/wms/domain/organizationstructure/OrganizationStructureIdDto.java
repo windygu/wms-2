@@ -1,4 +1,4 @@
-package org.dddml.wms.domain;
+package org.dddml.wms.domain.organizationstructure;
 
 import org.dddml.wms.domain.*;
 

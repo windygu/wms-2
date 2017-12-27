@@ -224,10 +224,10 @@ public class OrganizationResource {
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, OrganizationCommand value) {
             String idObj = id;
-            if (value.getOrganizationId() == null) {
-                value.setOrganizationId(idObj);
-            } else if (!value.getOrganizationId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getOrganizationId());
+            if (value.getPartyId() == null) {
+                value.setPartyId(idObj);
+            } else if (!value.getPartyId().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getPartyId());
             }
         }
     
@@ -276,7 +276,7 @@ public class OrganizationResource {
             List<OrganizationStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 OrganizationStateDto dto = new OrganizationStateDto();
-                dto.setOrganizationId(id);
+                dto.setPartyId(id);
                 states.add(dto);
             });
             return states.toArray(new OrganizationStateDto[0]);

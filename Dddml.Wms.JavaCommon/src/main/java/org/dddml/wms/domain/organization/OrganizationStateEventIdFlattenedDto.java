@@ -9,7 +9,7 @@ public class OrganizationStateEventIdFlattenedDto
 
 
     public static final String[] propertyNames = new String[]{
-            "organizationId",
+            "partyId",
             "version",
         };
 
@@ -49,14 +49,14 @@ public class OrganizationStateEventIdFlattenedDto
         return this.value.toOrganizationStateEventId();
     }
 
-    public String getOrganizationId()
+    public String getPartyId()
     {
-        return this.value.getOrganizationId();
+        return this.value.getPartyId();
     }
 
-    public void setOrganizationId(String organizationId)
+    public void setPartyId(String partyId)
     {
-        this.value.setOrganizationId(organizationId);
+        this.value.setPartyId(partyId);
     }
 
     public Long getVersion()

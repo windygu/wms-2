@@ -1772,7 +1772,7 @@
     );
 
     create table Organizations (
-        OrganizationId VARCHAR(50) not null,
+        PartyId VARCHAR(50) not null,
        Version BIGINT not null,
        OrganizationName VARCHAR(255),
        Description VARCHAR(255),
@@ -1784,11 +1784,11 @@
        Deleted TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (OrganizationId)
+       primary key (PartyId)
     );
 
     create table OrganizationStateEvents (
-        OrganizationId VARCHAR(50) not null,
+        PartyId VARCHAR(50) not null,
        Version BIGINT not null,
        StateEventType VARCHAR(255) not null,
        OrganizationName VARCHAR(255),
@@ -1804,12 +1804,13 @@
        IsPropertyTypeRemoved TINYINT(1),
        IsPropertyIsSummaryRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (OrganizationId, Version)
+       primary key (PartyId, Version)
     );
 
     create table OrganizationStructureTypes (
         Id VARCHAR(50) not null,
        Version BIGINT not null,
+       Description VARCHAR(255),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
@@ -1823,10 +1824,12 @@
         Id VARCHAR(50) not null,
        Version BIGINT not null,
        StateEventType VARCHAR(255) not null,
+       Description VARCHAR(255),
        Active TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
+       IsPropertyDescriptionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (Id, Version)
     );

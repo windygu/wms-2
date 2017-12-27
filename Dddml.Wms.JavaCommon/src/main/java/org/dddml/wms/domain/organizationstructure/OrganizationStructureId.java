@@ -1,4 +1,4 @@
-package org.dddml.wms.domain;
+package org.dddml.wms.domain.organizationstructure;
 
 import java.io.Serializable;
 import org.dddml.wms.domain.*;

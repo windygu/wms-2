@@ -30,10 +30,10 @@ namespace Dddml.Wms.Domain.Organization
             }
         }
 
-        public virtual string OrganizationId
+        public virtual string PartyId
         {
-            get { return StateEventId.OrganizationId; }
-            set { StateEventId.OrganizationId = value; }
+            get { return StateEventId.PartyId; }
+            set { StateEventId.PartyId = value; }
         }
 
         public virtual long Version

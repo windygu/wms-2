@@ -28,6 +28,7 @@ public class OrganizationStructureTypeStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
+        dto.setDescription(e.getDescription());
         dto.setActive(e.getActive());
         return dto;
     }
@@ -38,7 +39,9 @@ public class OrganizationStructureTypeStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
+        dto.setDescription(e.getDescription());
         dto.setActive(e.getActive());
+        dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         return dto;
     }

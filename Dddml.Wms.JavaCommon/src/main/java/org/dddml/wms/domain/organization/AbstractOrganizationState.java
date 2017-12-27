@@ -9,16 +9,16 @@ import org.dddml.wms.domain.organization.OrganizationStateEvent.*;
 public abstract class AbstractOrganizationState implements OrganizationState
 {
 
-    private String organizationId;
+    private String partyId;
 
-    public String getOrganizationId()
+    public String getPartyId()
     {
-        return this.organizationId;
+        return this.partyId;
     }
 
-    public void setOrganizationId(String organizationId)
+    public void setPartyId(String partyId)
     {
-        this.organizationId = organizationId;
+        this.partyId = partyId;
     }
 
     private String organizationName;
@@ -177,7 +177,7 @@ public abstract class AbstractOrganizationState implements OrganizationState
     public AbstractOrganizationState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setOrganizationId(((OrganizationStateEvent) events.get(0)).getStateEventId().getOrganizationId());
+            this.setPartyId(((OrganizationStateEvent) events.get(0)).getStateEventId().getPartyId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -311,8 +311,8 @@ public abstract class AbstractOrganizationState implements OrganizationState
 
     protected void throwOnWrongEvent(OrganizationStateEvent stateEvent)
     {
-        String stateEntityId = this.getOrganizationId(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getOrganizationId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String stateEntityId = this.getPartyId(); // Aggregate Id
+        String eventEntityId = stateEvent.getStateEventId().getPartyId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

@@ -3256,18 +3256,6 @@
     <Compile Include="Generated\Domain\Order\OrderStateProperties.cs">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructureId.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructureIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructureIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructureIdFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\OrganizationStructureType\IOrganizationStructureTypeAggregate.cs">
       <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
     </Compile>
@@ -3401,6 +3389,18 @@
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureCommandDto.cs">
+      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureId.cs">
+      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureIdDto.cs">
+      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureIdDtoWrapper.cs">
+      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureIdFlattenedDto.cs">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureState.cs">
@@ -5388,6 +5388,10 @@
 .\OrganizationStructureApplicationServiceFactory.cs
 .\OrganizationStructureCommand.cs
 .\OrganizationStructureCommandDto.cs
+.\OrganizationStructureId.cs
+.\OrganizationStructureIdDto.cs
+.\OrganizationStructureIdDtoWrapper.cs
+.\OrganizationStructureIdFlattenedDto.cs
 .\OrganizationStructureState.cs
 .\OrganizationStructureStateDto.cs
 .\OrganizationStructureStateDtoExtension.cs
@@ -7097,10 +7101,6 @@
 .\IOrganizationTreeApplicationService.cs
 .\LocatorTreeInterfaces.cs
 .\LocatorTreeNode.cs
-.\OrganizationStructureId.cs
-.\OrganizationStructureIdDto.cs
-.\OrganizationStructureIdDtoWrapper.cs
-.\OrganizationStructureIdFlattenedDto.cs
 .\OrganizationTreeInterfaces.cs
 .\OrganizationTreeNode.cs
 </LastOutputs>

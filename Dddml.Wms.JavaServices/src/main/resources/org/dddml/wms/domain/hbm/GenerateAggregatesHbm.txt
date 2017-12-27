@@ -61,10 +61,10 @@
         <mapping resource="org/dddml/wms/domain/hbm/OrderShipmentStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationStateEvent.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/OrganizationStructureTypeState.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/OrganizationStructureTypeStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationStructureState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrganizationStructureStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/OrganizationStructureTypeState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/OrganizationStructureTypeStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/PhysicalInventoryState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/PhysicalInventoryStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/PhysicalInventoryLineState.hbm.xml"/>

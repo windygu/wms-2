@@ -6,7 +6,7 @@
   <class name="OrganizationStateEventBase" table="OrganizationStateEvents" mutable="false" abstract="true">
 
     <composite-id name="StateEventId" class="Dddml.Wms.Domain.Organization.OrganizationStateEventId">
-        <key-property name="OrganizationId" ><column name="OrganizationId" length="50" /></key-property>
+        <key-property name="PartyId" ><column name="PartyId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>
     <discriminator column="StateEventType" type="String" />

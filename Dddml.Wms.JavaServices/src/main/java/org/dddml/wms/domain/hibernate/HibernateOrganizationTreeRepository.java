@@ -106,7 +106,7 @@ public class HibernateOrganizationTreeRepository implements OrganizationTreeRepo
         List<String> ids = new ArrayList<String>();
         for (OrganizationState state : states)
         {
-            ids.add(state.getOrganizationId());
+            ids.add(state.getPartyId());
         }
         return ids;
     }

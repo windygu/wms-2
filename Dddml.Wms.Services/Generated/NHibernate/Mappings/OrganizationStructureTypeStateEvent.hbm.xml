@@ -11,6 +11,7 @@
     </composite-id>
     <discriminator column="StateEventType" type="String" />
 
+    <property name="Description" ></property>
     <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
@@ -23,6 +24,8 @@
 
     <subclass name="OrganizationStructureTypeStateMergePatched"  discriminator-value="MergePatched">
 
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>

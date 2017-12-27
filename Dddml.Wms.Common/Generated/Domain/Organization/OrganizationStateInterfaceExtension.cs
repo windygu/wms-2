@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.Organization
             where TDeleteOrganization : IDeleteOrganization, new()
         {
             var cmd = new TDeleteOrganization();
-            cmd.OrganizationId = state.OrganizationId;
+            cmd.PartyId = state.PartyId;
             cmd.Version = ((IOrganizationStateProperties)state).Version;
 
             return cmd;
@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.Organization
 
             cmd.Version = ((IOrganizationStateProperties)state).Version;
 
-            cmd.OrganizationId = state.OrganizationId;
+            cmd.PartyId = state.PartyId;
             cmd.OrganizationName = state.OrganizationName;
             cmd.Description = state.Description;
             cmd.Type = state.Type;
@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain.Organization
 
             cmd.Version = ((IOrganizationStateProperties)state).Version;
 
-            cmd.OrganizationId = state.OrganizationId;
+            cmd.PartyId = state.PartyId;
             cmd.OrganizationName = state.OrganizationName;
             cmd.Description = state.Description;
             cmd.Type = state.Type;
