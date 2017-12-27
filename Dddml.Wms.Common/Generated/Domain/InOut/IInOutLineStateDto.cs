@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        string UomId
+        string QuantityUomId
         {
             get;
             set;

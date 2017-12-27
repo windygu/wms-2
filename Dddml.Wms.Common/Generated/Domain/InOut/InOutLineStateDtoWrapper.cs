@@ -179,31 +179,31 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual string UomId
+		public virtual string QuantityUomId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("UomId"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("QuantityUomId"))
                 {
-                    return _state.UomId;
+                    return _state.QuantityUomId;
                 }
                 return null;
             }
             set
             {
-                _state.UomId = value;
+                _state.QuantityUomId = value;
             }
         }
 
-        string IInOutLineStateProperties.UomId
+        string IInOutLineStateProperties.QuantityUomId
         {
             get 
             {
-                return (this._state as IInOutLineStateProperties).UomId;
+                return (this._state as IInOutLineStateProperties).QuantityUomId;
             }
             set 
             {
-                (this._state as IInOutLineStateProperties).UomId = value;
+                (this._state as IInOutLineStateProperties).QuantityUomId = value;
             }
         }
 

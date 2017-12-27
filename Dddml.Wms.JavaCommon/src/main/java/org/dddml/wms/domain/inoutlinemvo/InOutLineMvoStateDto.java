@@ -71,16 +71,16 @@ public class InOutLineMvoStateDto
         this.description = description;
     }
 
-    private String uomId;
+    private String quantityUomId;
 
-    public String getUomId()
+    public String getQuantityUomId()
     {
-        return this.uomId;
+        return this.quantityUomId;
     }
 
-    public void setUomId(String uomId)
+    public void setQuantityUomId(String quantityUomId)
     {
-        this.uomId = uomId;
+        this.quantityUomId = quantityUomId;
     }
 
     private BigDecimal movementQuantity;
@@ -712,8 +712,8 @@ public class InOutLineMvoStateDto
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
             }
-            if (returnedFieldsContains("UomId")) {
-                dto.setUomId(state.getUomId());
+            if (returnedFieldsContains("QuantityUomId")) {
+                dto.setQuantityUomId(state.getQuantityUomId());
             }
             if (returnedFieldsContains("MovementQuantity")) {
                 dto.setMovementQuantity(state.getMovementQuantity());

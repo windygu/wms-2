@@ -178,7 +178,7 @@ aggregates:
             # IsDescription:
               # type: bool
 
-            UomId:
+            QuantityUomId:
               type: string
 
             MovementQuantity: 

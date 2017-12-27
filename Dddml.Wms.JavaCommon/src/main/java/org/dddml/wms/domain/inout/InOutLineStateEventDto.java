@@ -67,14 +67,14 @@ public class InOutLineStateEventDto extends AbstractStateEvent
         this.description = description;
     }
 
-    private String uomId;
+    private String quantityUomId;
 
-    public String getUomId() {
-        return this.uomId;
+    public String getQuantityUomId() {
+        return this.quantityUomId;
     }
 
-    public void setUomId(String uomId) {
-        this.uomId = uomId;
+    public void setQuantityUomId(String quantityUomId) {
+        this.quantityUomId = quantityUomId;
     }
 
     private BigDecimal movementQuantity;
@@ -217,14 +217,14 @@ public class InOutLineStateEventDto extends AbstractStateEvent
         this.isPropertyDescriptionRemoved = removed;
     }
 
-    private Boolean isPropertyUomIdRemoved;
+    private Boolean isPropertyQuantityUomIdRemoved;
 
-    public Boolean getIsPropertyUomIdRemoved() {
-        return this.isPropertyUomIdRemoved;
+    public Boolean getIsPropertyQuantityUomIdRemoved() {
+        return this.isPropertyQuantityUomIdRemoved;
     }
 
-    public void setIsPropertyUomIdRemoved(Boolean removed) {
-        this.isPropertyUomIdRemoved = removed;
+    public void setIsPropertyQuantityUomIdRemoved(Boolean removed) {
+        this.isPropertyQuantityUomIdRemoved = removed;
     }
 
     private Boolean isPropertyMovementQuantityRemoved;

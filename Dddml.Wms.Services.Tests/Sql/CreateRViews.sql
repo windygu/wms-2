@@ -78,7 +78,7 @@ CREATE VIEW `InOutLine_RV` AS
         `InOutLines`.`ProductId`,
         `InOutLines`.`AttributeSetInstanceId`,
         `InOutLines`.`Description`,
-        `InOutLines`.`UomId`,
+        `InOutLines`.`QuantityUomId`,
         `InOutLines`.`MovementQuantity`,
         `InOutLines`.`PickedQuantity`,
         `InOutLines`.`IsInvoiced`,

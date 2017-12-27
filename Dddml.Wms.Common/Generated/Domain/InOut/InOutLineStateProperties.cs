@@ -24,7 +24,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string Description { get; set; }
 
-		public virtual string UomId { get; set; }
+		public virtual string QuantityUomId { get; set; }
 
 		public virtual decimal MovementQuantity { get; set; }
 

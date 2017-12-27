@@ -38,7 +38,7 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         cmd.setProductId(state.getProductId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
         cmd.setDescription(state.getDescription());
-        cmd.setUomId(state.getUomId());
+        cmd.setQuantityUomId(state.getQuantityUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());
         cmd.setPickedQuantity(state.getPickedQuantity());
         cmd.setIsInvoiced(state.getIsInvoiced());
@@ -52,7 +52,7 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
         if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
-        if (state.getUomId() == null) { cmd.setIsPropertyUomIdRemoved(true); }
+        if (state.getQuantityUomId() == null) { cmd.setIsPropertyQuantityUomIdRemoved(true); }
         if (state.getMovementQuantity() == null) { cmd.setIsPropertyMovementQuantityRemoved(true); }
         if (state.getPickedQuantity() == null) { cmd.setIsPropertyPickedQuantityRemoved(true); }
         if (state.getIsInvoiced() == null) { cmd.setIsPropertyIsInvoicedRemoved(true); }
@@ -72,7 +72,7 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         cmd.setProductId(state.getProductId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
         cmd.setDescription(state.getDescription());
-        cmd.setUomId(state.getUomId());
+        cmd.setQuantityUomId(state.getQuantityUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());
         cmd.setPickedQuantity(state.getPickedQuantity());
         cmd.setIsInvoiced(state.getIsInvoiced());

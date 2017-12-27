@@ -180,31 +180,31 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual string UomId
+		public virtual string QuantityUomId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("UomId"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("QuantityUomId"))
                 {
-                    return _state.UomId;
+                    return _state.QuantityUomId;
                 }
                 return null;
             }
             set
             {
-                _state.UomId = value;
+                _state.QuantityUomId = value;
             }
         }
 
-        string IInOutLineMvoStateProperties.UomId
+        string IInOutLineMvoStateProperties.QuantityUomId
         {
             get 
             {
-                return (this._state as IInOutLineMvoStateProperties).UomId;
+                return (this._state as IInOutLineMvoStateProperties).QuantityUomId;
             }
             set 
             {
-                (this._state as IInOutLineMvoStateProperties).UomId = value;
+                (this._state as IInOutLineMvoStateProperties).QuantityUomId = value;
             }
         }
 

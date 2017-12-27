@@ -316,7 +316,7 @@ namespace Dddml.Wms.Domain.InOut
             e.ProductId = c.ProductId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.Description = c.Description;
-            e.UomId = c.UomId;
+            e.QuantityUomId = c.QuantityUomId;
             e.MovementQuantity = c.MovementQuantity;
             e.PickedQuantity = c.PickedQuantity;
             e.IsInvoiced = c.IsInvoiced;
@@ -344,7 +344,7 @@ namespace Dddml.Wms.Domain.InOut
             e.ProductId = c.ProductId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.Description = c.Description;
-            e.UomId = c.UomId;
+            e.QuantityUomId = c.QuantityUomId;
             e.MovementQuantity = c.MovementQuantity;
             e.PickedQuantity = c.PickedQuantity;
             e.IsInvoiced = c.IsInvoiced;
@@ -356,7 +356,7 @@ namespace Dddml.Wms.Domain.InOut
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
             e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
-            e.IsPropertyUomIdRemoved = c.IsPropertyUomIdRemoved;
+            e.IsPropertyQuantityUomIdRemoved = c.IsPropertyQuantityUomIdRemoved;
             e.IsPropertyMovementQuantityRemoved = c.IsPropertyMovementQuantityRemoved;
             e.IsPropertyPickedQuantityRemoved = c.IsPropertyPickedQuantityRemoved;
             e.IsPropertyIsInvoicedRemoved = c.IsPropertyIsInvoicedRemoved;

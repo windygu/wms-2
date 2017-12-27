@@ -34,7 +34,7 @@ public class InOutLineStateEventDtoConverter {
         dto.setProductId(e.getProductId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setDescription(e.getDescription());
-        dto.setUomId(e.getUomId());
+        dto.setQuantityUomId(e.getQuantityUomId());
         dto.setMovementQuantity(e.getMovementQuantity());
         dto.setPickedQuantity(e.getPickedQuantity());
         dto.setIsInvoiced(e.getIsInvoiced());
@@ -56,7 +56,7 @@ public class InOutLineStateEventDtoConverter {
         dto.setProductId(e.getProductId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setDescription(e.getDescription());
-        dto.setUomId(e.getUomId());
+        dto.setQuantityUomId(e.getQuantityUomId());
         dto.setMovementQuantity(e.getMovementQuantity());
         dto.setPickedQuantity(e.getPickedQuantity());
         dto.setIsInvoiced(e.getIsInvoiced());
@@ -68,7 +68,7 @@ public class InOutLineStateEventDtoConverter {
         dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
         dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
-        dto.setIsPropertyUomIdRemoved(e.getIsPropertyUomIdRemoved());
+        dto.setIsPropertyQuantityUomIdRemoved(e.getIsPropertyQuantityUomIdRemoved());
         dto.setIsPropertyMovementQuantityRemoved(e.getIsPropertyMovementQuantityRemoved());
         dto.setIsPropertyPickedQuantityRemoved(e.getIsPropertyPickedQuantityRemoved());
         dto.setIsPropertyIsInvoicedRemoved(e.getIsPropertyIsInvoicedRemoved());

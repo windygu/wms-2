@@ -84,16 +84,16 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.description = description;
         }
 
-        private String uomId;
+        private String quantityUomId;
 
-        public String getUomId()
+        public String getQuantityUomId()
         {
-            return this.uomId;
+            return this.quantityUomId;
         }
 
-        public void setUomId(String uomId)
+        public void setQuantityUomId(String quantityUomId)
         {
-            this.uomId = uomId;
+            this.quantityUomId = quantityUomId;
         }
 
         private BigDecimal movementQuantity;
@@ -690,16 +690,16 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.isPropertyDescriptionRemoved = removed;
         }
 
-        private Boolean isPropertyUomIdRemoved;
+        private Boolean isPropertyQuantityUomIdRemoved;
 
-        public Boolean getIsPropertyUomIdRemoved()
+        public Boolean getIsPropertyQuantityUomIdRemoved()
         {
-            return this.isPropertyUomIdRemoved;
+            return this.isPropertyQuantityUomIdRemoved;
         }
 
-        public void setIsPropertyUomIdRemoved(Boolean removed)
+        public void setIsPropertyQuantityUomIdRemoved(Boolean removed)
         {
-            this.isPropertyUomIdRemoved = removed;
+            this.isPropertyQuantityUomIdRemoved = removed;
         }
 
         private Boolean isPropertyMovementQuantityRemoved;

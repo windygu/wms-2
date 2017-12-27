@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.ProductId = e.ProductId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Description = e.Description;
-            dto.UomId = e.UomId;
+            dto.QuantityUomId = e.QuantityUomId;
             dto.MovementQuantity = e.MovementQuantity;
             dto.PickedQuantity = e.PickedQuantity;
             dto.IsInvoiced = e.IsInvoiced;
@@ -106,7 +106,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.ProductId = e.ProductId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Description = e.Description;
-            dto.UomId = e.UomId;
+            dto.QuantityUomId = e.QuantityUomId;
             dto.MovementQuantity = e.MovementQuantity;
             dto.PickedQuantity = e.PickedQuantity;
             dto.IsInvoiced = e.IsInvoiced;
@@ -155,7 +155,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
             dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
-            dto.IsPropertyUomIdRemoved = e.IsPropertyUomIdRemoved;
+            dto.IsPropertyQuantityUomIdRemoved = e.IsPropertyQuantityUomIdRemoved;
             dto.IsPropertyMovementQuantityRemoved = e.IsPropertyMovementQuantityRemoved;
             dto.IsPropertyPickedQuantityRemoved = e.IsPropertyPickedQuantityRemoved;
             dto.IsPropertyIsInvoicedRemoved = e.IsPropertyIsInvoicedRemoved;

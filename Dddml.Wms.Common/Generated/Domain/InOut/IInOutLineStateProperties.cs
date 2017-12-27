@@ -24,7 +24,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		string Description { get; set; }
 
-		string UomId { get; set; }
+		string QuantityUomId { get; set; }
 
 		decimal MovementQuantity { get; set; }
 

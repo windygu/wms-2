@@ -20,7 +20,7 @@
 	<property name="productId" ></property>
 	<property name="attributeSetInstanceId" ></property>
 	<property name="description" ></property>
-	<property name="uomId" ></property>
+	<property name="quantityUomId" ></property>
 	<property name="movementQuantity" ></property>
 	<property name="pickedQuantity" ></property>
 	<property name="isInvoiced" ></property>
@@ -51,7 +51,7 @@
 
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="isPropertyUomIdRemoved" column="IsPropertyUomIdRemoved"/>
+        <property name="isPropertyQuantityUomIdRemoved" column="IsPropertyQuantityUomIdRemoved"/>
 
         <property name="isPropertyMovementQuantityRemoved" column="IsPropertyMovementQuantityRemoved"/>
 

@@ -34,9 +34,9 @@ public interface InOutLineStateEvent extends Event
 
     void setDescription(String description);
 
-    String getUomId();
+    String getQuantityUomId();
 
-    void setUomId(String uomId);
+    void setQuantityUomId(String quantityUomId);
 
     BigDecimal getMovementQuantity();
 
@@ -102,9 +102,9 @@ public interface InOutLineStateEvent extends Event
 
         void setIsPropertyDescriptionRemoved(Boolean removed);
 
-        Boolean getIsPropertyUomIdRemoved();
+        Boolean getIsPropertyQuantityUomIdRemoved();
 
-        void setIsPropertyUomIdRemoved(Boolean removed);
+        void setIsPropertyQuantityUomIdRemoved(Boolean removed);
 
         Boolean getIsPropertyMovementQuantityRemoved();
 

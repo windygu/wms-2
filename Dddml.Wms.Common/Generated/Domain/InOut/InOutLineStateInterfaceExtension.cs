@@ -48,7 +48,7 @@ namespace Dddml.Wms.Domain.InOut
             cmd.ProductId = state.ProductId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.Description = state.Description;
-            cmd.UomId = state.UomId;
+            cmd.QuantityUomId = state.QuantityUomId;
             cmd.MovementQuantity = state.MovementQuantity;
             cmd.PickedQuantity = state.PickedQuantity;
             cmd.IsInvoiced = state.IsInvoiced;
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain.InOut
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
-            if (state.UomId == null) { cmd.IsPropertyUomIdRemoved = true; }
+            if (state.QuantityUomId == null) { cmd.IsPropertyQuantityUomIdRemoved = true; }
             return cmd;
         }
 
@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.InOut
             cmd.ProductId = state.ProductId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.Description = state.Description;
-            cmd.UomId = state.UomId;
+            cmd.QuantityUomId = state.QuantityUomId;
             cmd.MovementQuantity = state.MovementQuantity;
             cmd.PickedQuantity = state.PickedQuantity;
             cmd.IsInvoiced = state.IsInvoiced;

@@ -202,7 +202,7 @@ namespace Dddml.Wms.Domain.InOut
 
 			this.Description = e.Description;
 
-			this.UomId = e.UomId;
+			this.QuantityUomId = e.QuantityUomId;
 
             this.MovementQuantity = (e.MovementQuantity != null && e.MovementQuantity.HasValue) ? e.MovementQuantity.Value : default(decimal);
 
@@ -279,16 +279,16 @@ namespace Dddml.Wms.Domain.InOut
 				this.Description = e.Description;
 			}
 
-			if (e.UomId == null)
+			if (e.QuantityUomId == null)
 			{
-				if (e.IsPropertyUomIdRemoved)
+				if (e.IsPropertyQuantityUomIdRemoved)
 				{
-					this.UomId = default(string);
+					this.QuantityUomId = default(string);
 				}
 			}
 			else
 			{
-				this.UomId = e.UomId;
+				this.QuantityUomId = e.QuantityUomId;
 			}
 
 			if (e.MovementQuantity == null)

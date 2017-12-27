@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        public virtual string UomId
+        public virtual string QuantityUomId
         {
             get;
             set;
@@ -355,7 +355,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             state.ProductId = this.ProductId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;
             state.Description = this.Description;
-            state.UomId = this.UomId;
+            state.QuantityUomId = this.QuantityUomId;
             if (this.MovementQuantity != null && this.MovementQuantity.HasValue) { state.MovementQuantity = this.MovementQuantity.Value; }
             if (this.PickedQuantity != null && this.PickedQuantity.HasValue) { state.PickedQuantity = this.PickedQuantity.Value; }
             if (this.IsInvoiced != null && this.IsInvoiced.HasValue) { state.IsInvoiced = this.IsInvoiced.Value; }

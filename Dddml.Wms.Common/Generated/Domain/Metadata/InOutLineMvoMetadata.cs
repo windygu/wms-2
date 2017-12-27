@@ -162,7 +162,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "UomId",
+                    Name = "QuantityUomId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1750,8 +1750,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("attributeSetInstanceId", "AttributeSetInstanceId");
             d.Add("Description", "Description");
             d.Add("description", "Description");
-            d.Add("UomId", "UomId");
-            d.Add("uomId", "UomId");
+            d.Add("QuantityUomId", "QuantityUomId");
+            d.Add("quantityUomId", "QuantityUomId");
             d.Add("MovementQuantity", "MovementQuantity");
             d.Add("movementQuantity", "MovementQuantity");
             d.Add("PickedQuantity", "PickedQuantity");

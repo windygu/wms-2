@@ -32,7 +32,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual string Description { get; set; }
 
-		public virtual string UomId { get; set; }
+		public virtual string QuantityUomId { get; set; }
 
 		public virtual decimal? MovementQuantity { get; set; }
 
@@ -218,7 +218,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
-		public virtual bool IsPropertyUomIdRemoved { get; set; }
+		public virtual bool IsPropertyQuantityUomIdRemoved { get; set; }
 
 		public virtual bool IsPropertyMovementQuantityRemoved { get; set; }
 

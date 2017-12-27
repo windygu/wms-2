@@ -37,9 +37,9 @@ public interface InOutLineState
 
     void setDescription(String description);
 
-    String getUomId();
+    String getQuantityUomId();
 
-    void setUomId(String uomId);
+    void setQuantityUomId(String quantityUomId);
 
     BigDecimal getMovementQuantity();
 

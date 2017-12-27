@@ -224,7 +224,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setProductId(c.getProductId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setDescription(c.getDescription());
-        e.setUomId(c.getUomId());
+        e.setQuantityUomId(c.getQuantityUomId());
         e.setMovementQuantity(c.getMovementQuantity());
         e.setPickedQuantity(c.getPickedQuantity());
         e.setIsInvoiced(c.getIsInvoiced());
@@ -249,7 +249,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setProductId(c.getProductId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setDescription(c.getDescription());
-        e.setUomId(c.getUomId());
+        e.setQuantityUomId(c.getQuantityUomId());
         e.setMovementQuantity(c.getMovementQuantity());
         e.setPickedQuantity(c.getPickedQuantity());
         e.setIsInvoiced(c.getIsInvoiced());
@@ -261,7 +261,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
         e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
-        e.setIsPropertyUomIdRemoved(c.getIsPropertyUomIdRemoved());
+        e.setIsPropertyQuantityUomIdRemoved(c.getIsPropertyQuantityUomIdRemoved());
         e.setIsPropertyMovementQuantityRemoved(c.getIsPropertyMovementQuantityRemoved());
         e.setIsPropertyPickedQuantityRemoved(c.getIsPropertyPickedQuantityRemoved());
         e.setIsPropertyIsInvoicedRemoved(c.getIsPropertyIsInvoicedRemoved());

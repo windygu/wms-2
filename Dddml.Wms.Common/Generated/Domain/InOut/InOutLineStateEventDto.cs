@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string Description { get; set; }
 
-		public virtual string UomId { get; set; }
+		public virtual string QuantityUomId { get; set; }
 
 		public virtual decimal? MovementQuantity { get; set; }
 
@@ -167,13 +167,13 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? IsPropertyUomIdRemoved { get; set; }
+		public virtual bool? IsPropertyQuantityUomIdRemoved { get; set; }
 
-        bool IInOutLineStateMergePatched.IsPropertyUomIdRemoved
+        bool IInOutLineStateMergePatched.IsPropertyQuantityUomIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyUomIdRemoved;
+                var b = this.IsPropertyQuantityUomIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -182,7 +182,7 @@ namespace Dddml.Wms.Domain.InOut
             }
             set 
             {
-                this.IsPropertyUomIdRemoved = value;
+                this.IsPropertyQuantityUomIdRemoved = value;
             }
         }
 

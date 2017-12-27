@@ -84,16 +84,16 @@ public abstract class AbstractInOutLineState implements InOutLineState
         this.description = description;
     }
 
-    private String uomId;
+    private String quantityUomId;
 
-    public String getUomId()
+    public String getQuantityUomId()
     {
-        return this.uomId;
+        return this.quantityUomId;
     }
 
-    public void setUomId(String uomId)
+    public void setQuantityUomId(String quantityUomId)
     {
-        this.uomId = uomId;
+        this.quantityUomId = quantityUomId;
     }
 
     private BigDecimal movementQuantity;
@@ -309,7 +309,7 @@ public abstract class AbstractInOutLineState implements InOutLineState
         this.setProductId(e.getProductId());
         this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         this.setDescription(e.getDescription());
-        this.setUomId(e.getUomId());
+        this.setQuantityUomId(e.getQuantityUomId());
         this.setMovementQuantity(e.getMovementQuantity());
         this.setPickedQuantity(e.getPickedQuantity());
         this.setIsInvoiced(e.getIsInvoiced());
@@ -373,16 +373,16 @@ public abstract class AbstractInOutLineState implements InOutLineState
         {
             this.setDescription(e.getDescription());
         }
-        if (e.getUomId() == null)
+        if (e.getQuantityUomId() == null)
         {
-            if (e.getIsPropertyUomIdRemoved() != null && e.getIsPropertyUomIdRemoved())
+            if (e.getIsPropertyQuantityUomIdRemoved() != null && e.getIsPropertyQuantityUomIdRemoved())
             {
-                this.setUomId(null);
+                this.setQuantityUomId(null);
             }
         }
         else
         {
-            this.setUomId(e.getUomId());
+            this.setQuantityUomId(e.getQuantityUomId());
         }
         if (e.getMovementQuantity() == null)
         {
