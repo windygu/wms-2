@@ -15,20 +15,22 @@ namespace Dddml.Wms.Domain.Attribute
 	public static partial class AttributeStateInterfaceExtension
 	{
 
-        public static IAttributeCommand ToCreateOrMergePatchAttribute<TCreateAttribute, TMergePatchAttribute, TCreateAttributeValue, TMergePatchAttributeValue>(this IAttributeState state)
+        public static IAttributeCommand ToCreateOrMergePatchAttribute<TCreateAttribute, TMergePatchAttribute, TCreateAttributeValue, TMergePatchAttributeValue, TCreateAttributeAlias, TMergePatchAttributeAlias>(this IAttributeState state)
             where TCreateAttribute : ICreateAttribute, new()
             where TMergePatchAttribute : IMergePatchAttribute, new()
             where TCreateAttributeValue : ICreateAttributeValue, new()
             where TMergePatchAttributeValue : IMergePatchAttributeValue, new()
+            where TCreateAttributeAlias : ICreateAttributeAlias, new()
+            where TMergePatchAttributeAlias : IMergePatchAttributeAlias, new()
         {
             bool bUnsaved = ((IAttributeState)state).IsUnsaved;
             if (bUnsaved)
             {
-                return state.ToCreateAttribute<TCreateAttribute, TCreateAttributeValue>();
+                return state.ToCreateAttribute<TCreateAttribute, TCreateAttributeValue, TCreateAttributeAlias>();
             }
             else 
             {
-                return state.ToMergePatchAttribute<TMergePatchAttribute, TCreateAttributeValue, TMergePatchAttributeValue>();
+                return state.ToMergePatchAttribute<TMergePatchAttribute, TCreateAttributeValue, TMergePatchAttributeValue, TCreateAttributeAlias, TMergePatchAttributeAlias>();
             }
         }
 
@@ -42,10 +44,12 @@ namespace Dddml.Wms.Domain.Attribute
             return cmd;
         }
 
-        public static TMergePatchAttribute ToMergePatchAttribute<TMergePatchAttribute, TCreateAttributeValue, TMergePatchAttributeValue>(this IAttributeState state)
+        public static TMergePatchAttribute ToMergePatchAttribute<TMergePatchAttribute, TCreateAttributeValue, TMergePatchAttributeValue, TCreateAttributeAlias, TMergePatchAttributeAlias>(this IAttributeState state)
             where TMergePatchAttribute : IMergePatchAttribute, new()
             where TCreateAttributeValue : ICreateAttributeValue, new()
             where TMergePatchAttributeValue : IMergePatchAttributeValue, new()
+            where TCreateAttributeAlias : ICreateAttributeAlias, new()
+            where TMergePatchAttributeAlias : IMergePatchAttributeAlias, new()
         {
             var cmd = new TMergePatchAttribute();
 
@@ -76,12 +80,18 @@ namespace Dddml.Wms.Domain.Attribute
                 var c = d.ToCreateOrMergePatchAttributeValue<TCreateAttributeValue, TMergePatchAttributeValue>();
                 cmd.AttributeValueCommands.Add(c);
             }
+            foreach (var d in state.Aliases)
+            {
+                var c = d.ToCreateOrMergePatchAttributeAlias<TCreateAttributeAlias, TMergePatchAttributeAlias>();
+                cmd.AttributeAliasCommands.Add(c);
+            }
             return cmd;
         }
 
-        public static TCreateAttribute ToCreateAttribute<TCreateAttribute, TCreateAttributeValue>(this IAttributeState state)
+        public static TCreateAttribute ToCreateAttribute<TCreateAttribute, TCreateAttributeValue, TCreateAttributeAlias>(this IAttributeState state)
             where TCreateAttribute : ICreateAttribute, new()
             where TCreateAttributeValue : ICreateAttributeValue, new()
+            where TCreateAttributeAlias : ICreateAttributeAlias, new()
         {
             var cmd = new TCreateAttribute();
 
@@ -103,6 +113,11 @@ namespace Dddml.Wms.Domain.Attribute
             {
                 var c = d.ToCreateAttributeValue<TCreateAttributeValue>();
                 cmd.AttributeValues.Add(c);
+            }
+            foreach (var d in state.Aliases)
+            {
+                var c = d.ToCreateAttributeAlias<TCreateAttributeAlias>();
+                cmd.Aliases.Add(c);
             }
             return cmd;
         }

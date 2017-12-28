@@ -15,6 +15,15 @@
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
+  <bean id="attributeAliasStateDao" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeAliasStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="attributeAliasStateEventDao" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeAliasStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
   <bean id="attributeStateRepository" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -712,6 +721,27 @@
     <constructor-arg ref="attributeValueMvoEventStore"/>
     <constructor-arg ref="attributeValueMvoStateRepository"/>
     <constructor-arg ref="attributeValueMvoStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="attributeAliasMvoStateRepository" class="org.dddml.wms.domain.attributealiasmvo.hibernate.HibernateAttributeAliasMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="attributeAliasMvoStateQueryRepository" class="org.dddml.wms.domain.attributealiasmvo.hibernate.HibernateAttributeAliasMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="attributeAliasMvoEventStore" class="org.dddml.wms.domain.attributealiasmvo.hibernate.HibernateAttributeAliasMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="attributeAliasMvoApplicationService" class="org.dddml.wms.domain.attributealiasmvo.AbstractAttributeAliasMvoApplicationService$SimpleAttributeAliasMvoApplicationService">
+    <constructor-arg ref="attributeAliasMvoEventStore"/>
+    <constructor-arg ref="attributeAliasMvoStateRepository"/>
+    <constructor-arg ref="attributeAliasMvoStateQueryRepository"/>
   </bean>
 
 

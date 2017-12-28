@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Attribute
 	public partial class AttributeStateDtoWrapper : StateDtoWrapperBase, IAttributeStateDto, IAttributeState
 	{
 
-        internal static IList<string> _collectionFieldNames = new string[] { "AttributeValues" };
+        internal static IList<string> _collectionFieldNames = new string[] { "AttributeValues", "Aliases" };
 
         protected override bool IsCollectionField(string fieldName)
         {
@@ -607,6 +607,52 @@ namespace Dddml.Wms.Domain.Attribute
             set { _state.AttributeValues = value; }
         }
 
+        public virtual IAttributeAliasStateDto[] Aliases
+        {
+            get 
+            {
+                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("Aliases"))
+                {
+                    return null;
+                }
+                var dtos = new List<IAttributeAliasStateDto>();
+                if (this._state.Aliases != null)
+                {
+                    foreach (var s in this._state.Aliases)
+                    {
+                        var dto = new AttributeAliasStateDtoWrapper((AttributeAliasState)s);
+                        var returnFS = CollectionUtils.DictionaryGetValueIgnoringCase(ReturnedFields, "Aliases");
+                        if (!String.IsNullOrWhiteSpace(returnFS))
+                        {
+                            (dto as IStateDtoWrapper).ReturnedFieldsString = returnFS;
+                        }
+                        else
+                        {
+                            (dto as IStateDtoWrapper).AllFieldsReturned = this.AllFieldsReturned;
+                        }
+                        dtos.Add(dto);
+                    }
+                }
+                return dtos.ToArray();
+            }
+            set 
+            {
+                if (value == null) { value = new AttributeAliasStateDtoWrapper[0]; }
+                var states = new List<IAttributeAliasState>();
+                foreach (var s in value)
+                {
+                    states.Add(s.ToAttributeAliasState());
+                }
+                this._state.Aliases = new DtoAttributeAliasStates(this._state, states);
+            }
+        }
+
+        IAttributeAliasStates IAttributeState.Aliases
+        {
+            get { return _state.Aliases; }
+            set { _state.Aliases = value; }
+        }
+
 		void IAttributeState.When(IAttributeStateCreated e)
 		{
             throw new NotSupportedException();
@@ -693,6 +739,67 @@ namespace Dddml.Wms.Domain.Attribute
             }
 
             public void AddToSave(IAttributeValueState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Save()
+            {
+                throw new NotSupportedException();
+            }
+        }
+
+        public class DtoAttributeAliasStates : IAttributeAliasStates
+        {
+
+            private IAttributeState _outerState;
+
+            private IEnumerable<IAttributeAliasState> _innerStates;
+
+            public DtoAttributeAliasStates(IAttributeState outerState, IEnumerable<IAttributeAliasState> innerStates)
+            {
+                this._outerState = outerState;
+                if (innerStates == null)
+                {
+                    this._innerStates = new IAttributeAliasState[] { };
+                }
+                else
+                {
+                    this._innerStates = innerStates;
+                }
+            }
+
+            public IEnumerator<IAttributeAliasState> GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            public IAttributeAliasState Get(string code)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IAttributeAliasState Get(string code, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IAttributeAliasState Get(string code, bool forCreation, bool nullAllowed)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Remove(IAttributeAliasState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void AddToSave(IAttributeAliasState state)
             {
                 throw new NotSupportedException();
             }

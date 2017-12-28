@@ -49,6 +49,12 @@ namespace Dddml.Wms.Domain.Attribute
 
 		IAttributeValueStateCreated NewAttributeValueStateCreated(string value);
 
+		IEnumerable<IAttributeAliasStateCreated> AttributeAliasEvents { get; }
+		
+		void AddAttributeAliasEvent(IAttributeAliasStateCreated e);
+
+		IAttributeAliasStateCreated NewAttributeAliasStateCreated(string code);
+
 	
 	}
 
@@ -87,6 +93,16 @@ namespace Dddml.Wms.Domain.Attribute
 
 		IAttributeValueStateRemoved NewAttributeValueStateRemoved(string value);
 
+		IEnumerable<IAttributeAliasStateEvent> AttributeAliasEvents { get; }
+		
+		void AddAttributeAliasEvent(IAttributeAliasStateEvent e);
+
+		IAttributeAliasStateCreated NewAttributeAliasStateCreated(string code);
+
+		IAttributeAliasStateMergePatched NewAttributeAliasStateMergePatched(string code);
+
+		IAttributeAliasStateRemoved NewAttributeAliasStateRemoved(string code);
+
 
 	}
 
@@ -97,6 +113,12 @@ namespace Dddml.Wms.Domain.Attribute
 		void AddAttributeValueEvent(IAttributeValueStateRemoved e);
 		
 		IAttributeValueStateRemoved NewAttributeValueStateRemoved(string value);
+
+		IEnumerable<IAttributeAliasStateRemoved> AttributeAliasEvents { get; }
+		
+		void AddAttributeAliasEvent(IAttributeAliasStateRemoved e);
+		
+		IAttributeAliasStateRemoved NewAttributeAliasStateRemoved(string code);
 
 	}
 

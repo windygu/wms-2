@@ -129,6 +129,33 @@ namespace Dddml.Wms.Domain.Attribute
 		}
 
 
+		protected IAttributeAliasStateEventDao AttributeAliasStateEventDao
+		{
+			get { return ApplicationContext.Current["AttributeAliasStateEventDao"] as IAttributeAliasStateEventDao; }
+		}
+
+        protected AttributeAliasStateEventId NewAttributeAliasStateEventId(string code)
+        {
+            var stateEventId = new AttributeAliasStateEventId(this.StateEventId.AttributeId, code, this.StateEventId.Version);
+            return stateEventId;
+        }
+
+
+        protected void ThrowOnInconsistentEventIds(IAttributeAliasStateEvent e)
+        {
+            ThrowOnInconsistentEventIds(this, e);
+        }
+
+		public static void ThrowOnInconsistentEventIds(IAttributeStateEvent oe, IAttributeAliasStateEvent e)
+		{
+			if (!oe.StateEventId.AttributeId.Equals(e.StateEventId.AttributeId))
+			{ 
+				throw DomainError.Named("inconsistentEventIds", "Outer Id AttributeId {0} but inner id AttributeId {1}", 
+					oe.StateEventId.AttributeId, e.StateEventId.AttributeId);
+			}
+		}
+
+
 
         string IStateEventDto.StateEventType
         {
@@ -199,10 +226,63 @@ namespace Dddml.Wms.Domain.Attribute
             return stateEvent;
         }
 
+		private Dictionary<AttributeAliasStateEventId, IAttributeAliasStateCreated> _attributeAliasEvents = new Dictionary<AttributeAliasStateEventId, IAttributeAliasStateCreated>();
+        
+        private IEnumerable<IAttributeAliasStateCreated> _readOnlyAttributeAliasEvents;
+
+        public virtual IEnumerable<IAttributeAliasStateCreated> AttributeAliasEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._attributeAliasEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyAttributeAliasEvents != null) { return _readOnlyAttributeAliasEvents; }
+                    var eventDao = AttributeAliasStateEventDao;
+                    var eL = new List<IAttributeAliasStateCreated>();
+                    foreach (var e in eventDao.FindByAttributeStateEventId(this.StateEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IAttributeAliasStateCreated)e);
+                    }
+                    return (_readOnlyAttributeAliasEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddAttributeAliasEvent(e);
+                    }
+                }
+                else { this._attributeAliasEvents.Clear(); }
+            }
+        }
+    
+		public virtual void AddAttributeAliasEvent(IAttributeAliasStateCreated e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._attributeAliasEvents[e.StateEventId] = e;
+		}
+
+        public virtual IAttributeAliasStateCreated NewAttributeAliasStateCreated(string code)
+        {
+            var stateEvent = new AttributeAliasStateCreated(NewAttributeAliasStateEventId(code));
+            return stateEvent;
+        }
+
 		public virtual void Save ()
 		{
 			foreach (IAttributeValueStateCreated e in this.AttributeValueEvents) {
 				AttributeValueStateEventDao.Save(e);
+			}
+			foreach (IAttributeAliasStateCreated e in this.AttributeAliasEvents) {
+				AttributeAliasStateEventDao.Save(e);
 			}
 		}
 
@@ -309,10 +389,75 @@ namespace Dddml.Wms.Domain.Attribute
             return stateEvent;
         }
 
+		private Dictionary<AttributeAliasStateEventId, IAttributeAliasStateEvent> _attributeAliasEvents = new Dictionary<AttributeAliasStateEventId, IAttributeAliasStateEvent>();
+
+        private IEnumerable<IAttributeAliasStateEvent> _readOnlyAttributeAliasEvents;
+        
+        public virtual IEnumerable<IAttributeAliasStateEvent> AttributeAliasEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._attributeAliasEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyAttributeAliasEvents != null) { return _readOnlyAttributeAliasEvents; }
+                    var eventDao = AttributeAliasStateEventDao;
+                    var eL = new List<IAttributeAliasStateEvent>();
+                    foreach (var e in eventDao.FindByAttributeStateEventId(this.StateEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IAttributeAliasStateEvent)e);
+                    }
+                    return (_readOnlyAttributeAliasEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddAttributeAliasEvent(e);
+                    }
+                }
+                else { this._attributeAliasEvents.Clear(); }
+            }
+        }
+
+		public virtual void AddAttributeAliasEvent(IAttributeAliasStateEvent e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._attributeAliasEvents[e.StateEventId] = e;
+		}
+
+        public virtual IAttributeAliasStateCreated NewAttributeAliasStateCreated(string code)
+        {
+            var stateEvent = new AttributeAliasStateCreated(NewAttributeAliasStateEventId(code));
+            return stateEvent;
+        }
+
+        public virtual IAttributeAliasStateMergePatched NewAttributeAliasStateMergePatched(string code)
+        {
+            var stateEvent = new AttributeAliasStateMergePatched(NewAttributeAliasStateEventId(code));
+            return stateEvent;
+        }
+
+        public virtual IAttributeAliasStateRemoved NewAttributeAliasStateRemoved(string code)
+        {
+            var stateEvent = new AttributeAliasStateRemoved(NewAttributeAliasStateEventId(code));
+            return stateEvent;
+        }
+
 		public virtual void Save ()
 		{
 			foreach (IAttributeValueStateEvent e in this.AttributeValueEvents) {
 				AttributeValueStateEventDao.Save(e);
+			}
+			foreach (IAttributeAliasStateEvent e in this.AttributeAliasEvents) {
+				AttributeAliasStateEventDao.Save(e);
 			}
 		}
 
@@ -389,10 +534,63 @@ namespace Dddml.Wms.Domain.Attribute
             return stateEvent;
         }
 
+		private Dictionary<AttributeAliasStateEventId, IAttributeAliasStateRemoved> _attributeAliasEvents = new Dictionary<AttributeAliasStateEventId, IAttributeAliasStateRemoved>();
+		
+        private IEnumerable<IAttributeAliasStateRemoved> _readOnlyAttributeAliasEvents;
+
+        public virtual IEnumerable<IAttributeAliasStateRemoved> AttributeAliasEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._attributeAliasEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyAttributeAliasEvents != null) { return _readOnlyAttributeAliasEvents; }
+                    var eventDao = AttributeAliasStateEventDao;
+                    var eL = new List<IAttributeAliasStateRemoved>();
+                    foreach (var e in eventDao.FindByAttributeStateEventId(this.StateEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IAttributeAliasStateRemoved)e);
+                    }
+                    return (_readOnlyAttributeAliasEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddAttributeAliasEvent(e);
+                    }
+                }
+                else { this._attributeAliasEvents.Clear(); }
+            }
+        }
+	
+		public virtual void AddAttributeAliasEvent(IAttributeAliasStateRemoved e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._attributeAliasEvents[e.StateEventId] = e;
+		}
+
+        public virtual IAttributeAliasStateRemoved NewAttributeAliasStateRemoved(string code)
+        {
+            var stateEvent = new AttributeAliasStateRemoved(NewAttributeAliasStateEventId(code));
+            return stateEvent;
+        }
+
 		public virtual void Save ()
 		{
 			foreach (IAttributeValueStateRemoved e in this.AttributeValueEvents) {
 				AttributeValueStateEventDao.Save(e);
+			}
+			foreach (IAttributeAliasStateRemoved e in this.AttributeAliasEvents) {
+				AttributeAliasStateEventDao.Save(e);
 			}
 		}
 

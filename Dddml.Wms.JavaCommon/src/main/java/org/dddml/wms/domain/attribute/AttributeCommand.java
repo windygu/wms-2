@@ -92,6 +92,10 @@ public interface AttributeCommand extends Command
 
         AttributeValueCommand.CreateAttributeValue newCreateAttributeValue();
 
+        CreateAttributeAliasCommands getAliases();
+
+        AttributeAliasCommand.CreateAttributeAlias newCreateAttributeAlias();
+
     }
 
     interface MergePatchAttribute extends CreateOrMergePatchAttribute
@@ -148,6 +152,14 @@ public interface AttributeCommand extends Command
 
         AttributeValueCommand.RemoveAttributeValue newRemoveAttributeValue();
 
+        AttributeAliasCommands getAttributeAliasCommands();
+
+        AttributeAliasCommand.CreateAttributeAlias newCreateAttributeAlias();
+
+        AttributeAliasCommand.MergePatchAttributeAlias newMergePatchAttributeAlias();
+
+        AttributeAliasCommand.RemoveAttributeAlias newRemoveAttributeAlias();
+
     }
 
 	interface DeleteAttribute extends AttributeCommand
@@ -168,6 +180,24 @@ public interface AttributeCommand extends Command
         void add(AttributeValueCommand c);
 
         void remove(AttributeValueCommand c);
+
+        void clear();
+    }
+
+    interface CreateAttributeAliasCommands extends Iterable<AttributeAliasCommand.CreateAttributeAlias>
+    {
+        void add(AttributeAliasCommand.CreateAttributeAlias c);
+
+        void remove(AttributeAliasCommand.CreateAttributeAlias c);
+
+        void clear();
+    }
+
+    interface AttributeAliasCommands extends Iterable<AttributeAliasCommand>
+    {
+        void add(AttributeAliasCommand c);
+
+        void remove(AttributeAliasCommand c);
 
         void clear();
     }

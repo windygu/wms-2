@@ -362,6 +362,12 @@ namespace Dddml.Wms.Domain.Product
             set;
         }
 
+        string AttributeSetId
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

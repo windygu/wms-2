@@ -35,6 +35,14 @@
 
     drop table if exists AttributeUseMvoStateEvents;
 
+    drop table if exists AttributeAlias;
+
+    drop table if exists AttributeAliasStateEvents;
+
+    drop table if exists AttributeAlias_RV;
+
+    drop table if exists AttributeAliasMvoStateEvents;
+
     drop table if exists InOuts;
 
     drop table if exists InOutStateEvents;

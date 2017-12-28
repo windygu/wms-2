@@ -27,6 +27,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/AttributeStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeValueState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeValueStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/AttributeAliasState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/AttributeAliasStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeUseState.hbm.xml"/>
@@ -96,6 +98,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeValueMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeValueMvoStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/AttributeAliasMvoState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/AttributeAliasMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeUseMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeUseMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutLineMvoState.hbm.xml"/>

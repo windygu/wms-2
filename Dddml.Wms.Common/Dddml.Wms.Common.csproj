@@ -70,6 +70,93 @@
     <Compile Include="Domain\Services\IAttributeSetService.cs" />
     <Compile Include="Domain\ShipmentType\ShipmentTypeIds.cs" />
     <Compile Include="Domain\StatusItem\StatusTypeIds.cs" />
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoAggregate.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoApplicationServiceBase.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoApplicationServiceFactory.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoCommand.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoCommandDto.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoState.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateDto.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateDtoExtension.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateDtoWrapper.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateEvent.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateEventDto.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateEventDtoConverter.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateEventId.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateEventIdDto.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateExtension.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateInterfaceExtension.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoStateProperties.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\IAttributeAliasMvoAggregate.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\IAttributeAliasMvoApplicationService.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\IAttributeAliasMvoApplicationServiceFactory.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\IAttributeAliasMvoCommand.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\IAttributeAliasMvoState.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\IAttributeAliasMvoStateDto.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\IAttributeAliasMvoStateEvent.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\IAttributeAliasMvoStateProperties.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\IAttributeAliasMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\IAttributeAliasMvoStateRepository.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldGroupAggregate.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Compile>
@@ -685,6 +772,69 @@
     <Compile Include="Generated\Domain\Attribute\AttributeAggregate.cs">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasCommand.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasCommandDto.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasId.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasIdDto.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasIdDtoWrapper.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasIdFlattenedDto.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasState.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateDto.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateDtoExtension.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateDtoWrapper.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateEvent.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateEventDto.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateEventDtoConverter.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateEventId.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateEventIdDto.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateExtension.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateInterfaceExtension.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStateProperties.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\AttributeAliasStates.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Attribute\AttributeApplicationServiceBase.cs">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
@@ -803,6 +953,30 @@
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Attribute\IAttributeAggregate.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\IAttributeAliasCommand.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\IAttributeAliasState.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\IAttributeAliasStateDao.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\IAttributeAliasStateDto.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\IAttributeAliasStateEvent.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\IAttributeAliasStateEventDao.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\IAttributeAliasStateProperties.cs">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\IAttributeAliasStates.cs">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Attribute\IAttributeApplicationService.cs">
@@ -2037,6 +2211,12 @@
     </Compile>
     <Compile Include="Generated\Domain\Locator\LocatorStateProperties.cs">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\AttributeAliasMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\AttributeAliasMvoMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\AttributeMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
@@ -4874,6 +5054,11 @@
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldUtils.tt</DependentUpon>
     </Compile>
     <Compile Include="Support\AuthorizationUtils.cs" />
+    <Content Include="Generated\Domain\AttributeAliasMvo\GenerateAttributeAliasMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\GenerateAttributeSetInstanceExtensionFieldGroupDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -5469,6 +5654,27 @@
       <LastGenOutput>GenerateAttributeDomain.txt</LastGenOutput>
       <LastOutputs>
 .\AttributeAggregate.cs
+.\AttributeAliasCommand.cs
+.\AttributeAliasCommandDto.cs
+.\AttributeAliasId.cs
+.\AttributeAliasIdDto.cs
+.\AttributeAliasIdDtoWrapper.cs
+.\AttributeAliasIdFlattenedDto.cs
+.\AttributeAliasState.cs
+.\AttributeAliasStateDto.cs
+.\AttributeAliasStateDtoExtension.cs
+.\AttributeAliasStateDtoWrapper.cs
+.\AttributeAliasStateEvent.cs
+.\AttributeAliasStateEventDto.cs
+.\AttributeAliasStateEventDtoConverter.cs
+.\AttributeAliasStateEventId.cs
+.\AttributeAliasStateEventIdDto.cs
+.\AttributeAliasStateEventIdDtoWrapper.cs
+.\AttributeAliasStateEventIdFlattenedDto.cs
+.\AttributeAliasStateExtension.cs
+.\AttributeAliasStateInterfaceExtension.cs
+.\AttributeAliasStateProperties.cs
+.\AttributeAliasStates.cs
 .\AttributeApplicationServiceBase.cs
 .\AttributeApplicationServiceFactory.cs
 .\AttributeCommand.cs
@@ -5510,6 +5716,14 @@
 .\AttributeValueStates.cs
 .\GenerateAttributeDomain.txt
 .\IAttributeAggregate.cs
+.\IAttributeAliasCommand.cs
+.\IAttributeAliasState.cs
+.\IAttributeAliasStateDao.cs
+.\IAttributeAliasStateDto.cs
+.\IAttributeAliasStateEvent.cs
+.\IAttributeAliasStateEventDao.cs
+.\IAttributeAliasStateProperties.cs
+.\IAttributeAliasStates.cs
 .\IAttributeApplicationService.cs
 .\IAttributeApplicationServiceFactory.cs
 .\IAttributeCommand.cs
@@ -6965,6 +7179,42 @@
 .\IAttributeSetInstanceExtensionFieldStateRepository.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\AttributeAliasMvo\GenerateAttributeAliasMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeAliasMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeAliasMvoAggregate.cs
+.\AttributeAliasMvoApplicationServiceBase.cs
+.\AttributeAliasMvoApplicationServiceFactory.cs
+.\AttributeAliasMvoCommand.cs
+.\AttributeAliasMvoCommandDto.cs
+.\AttributeAliasMvoState.cs
+.\AttributeAliasMvoStateDto.cs
+.\AttributeAliasMvoStateDtoExtension.cs
+.\AttributeAliasMvoStateDtoWrapper.cs
+.\AttributeAliasMvoStateEvent.cs
+.\AttributeAliasMvoStateEventDto.cs
+.\AttributeAliasMvoStateEventDtoConverter.cs
+.\AttributeAliasMvoStateEventId.cs
+.\AttributeAliasMvoStateEventIdDto.cs
+.\AttributeAliasMvoStateEventIdDtoWrapper.cs
+.\AttributeAliasMvoStateEventIdFlattenedDto.cs
+.\AttributeAliasMvoStateExtension.cs
+.\AttributeAliasMvoStateInterfaceExtension.cs
+.\AttributeAliasMvoStateProperties.cs
+.\GenerateAttributeAliasMvoDomain.txt
+.\IAttributeAliasMvoAggregate.cs
+.\IAttributeAliasMvoApplicationService.cs
+.\IAttributeAliasMvoApplicationServiceFactory.cs
+.\IAttributeAliasMvoCommand.cs
+.\IAttributeAliasMvoState.cs
+.\IAttributeAliasMvoStateDto.cs
+.\IAttributeAliasMvoStateEvent.cs
+.\IAttributeAliasMvoStateProperties.cs
+.\IAttributeAliasMvoStateQueryRepository.cs
+.\IAttributeAliasMvoStateRepository.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -7000,6 +7250,8 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDomainMetadata.txt</LastGenOutput>
       <LastOutputs>
+.\AttributeAliasMetadata.cs
+.\AttributeAliasMvoMetadata.cs
 .\AttributeMetadata.cs
 .\AttributeSetInstanceExtensionFieldGroupMetadata.cs
 .\AttributeSetInstanceExtensionFieldMetadata.cs

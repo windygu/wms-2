@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.Attribute.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "AttributeId", "AttributeName", "OrganizationId", "Description", "IsMandatory", "IsInstanceAttribute", "AttributeValueType", "AttributeValueLength", "IsList", "FieldName", "ReferenceId", "AttributeValues", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "AttributeId", "AttributeName", "OrganizationId", "Description", "IsMandatory", "IsInstanceAttribute", "AttributeValueType", "AttributeValueLength", "IsList", "FieldName", "ReferenceId", "AttributeValues", "Aliases", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
@@ -131,6 +131,13 @@ namespace Dddml.Wms.Domain.Attribute.NHibernate
         {
             var entityId = new AttributeValueId(attributeId, value);
             return CurrentSession.Get<AttributeValueState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual IAttributeAliasState GetAttributeAlias(string attributeId, string code)
+        {
+            var entityId = new AttributeAliasId(attributeId, code);
+            return CurrentSession.Get<AttributeAliasState>(entityId);
         }
 
 

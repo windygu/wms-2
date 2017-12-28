@@ -89,6 +89,18 @@
     <Compile Include="Domain\Listeners\InventoryItemEventListener.cs" />
     <Compile Include="Domain\NHibernate\NodaMoneyType.cs" />
     <Compile Include="Domain\Services\NHibernate\AttributeSetService.cs" />
+    <Compile Include="Generated\Domain\AttributeAliasMvo\NHibernate\AttributeAliasMvoApplicationService.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\NHibernate\NHibernateAttributeAliasMvoEventStore.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\NHibernate\NHibernateAttributeAliasMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\AttributeAliasMvo\NHibernate\NHibernateAttributeAliasMvoStateRepository.cs">
+      <DependentUpon>GenerateAttributeAliasMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\AttributeSetInstanceExtensionFieldGroupApplicationService.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -168,6 +180,12 @@
       <DependentUpon>GenerateAttributeValueMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Attribute\NHibernate\AttributeApplicationService.cs">
+      <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeAliasStateDao.cs">
+      <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeAliasStateEventDao.cs">
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeEventStore.cs">
@@ -676,6 +694,11 @@
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Domain\NHibernate\Mappings\TypeDefs.hbm.xml" />
+    <Content Include="Generated\Domain\AttributeAliasMvo\NHibernate\GenerateAttributeAliasMvoDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeAliasMvoDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -963,10 +986,26 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeUseMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeAliasState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeAliasStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeAliasMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeAliasMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="Generated\NHibernate\Mappings\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
       <LastOutputs>
+.\AttributeAliasMvoState.hbm.xml
+.\AttributeAliasMvoStateEvent.hbm.xml
+.\AttributeAliasState.hbm.xml
+.\AttributeAliasStateEvent.hbm.xml
 .\AttributeSetInstanceExtensionFieldGroupState.hbm.xml
 .\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml
 .\AttributeSetInstanceExtensionFieldState.hbm.xml
@@ -1335,6 +1374,8 @@
       <LastOutputs>
 .\AttributeApplicationService.cs
 .\GenerateAttributeDomainNHibernate.txt
+.\NHibernateAttributeAliasStateDao.cs
+.\NHibernateAttributeAliasStateEventDao.cs
 .\NHibernateAttributeEventStore.cs
 .\NHibernateAttributeStateQueryRepository.cs
 .\NHibernateAttributeStateRepository.cs
@@ -1793,6 +1834,17 @@
 .\NHibernateAttributeSetInstanceExtensionFieldEventStore.cs
 .\NHibernateAttributeSetInstanceExtensionFieldStateQueryRepository.cs
 .\NHibernateAttributeSetInstanceExtensionFieldStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\AttributeAliasMvo\NHibernate\GenerateAttributeAliasMvoDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeAliasMvoDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeAliasMvoApplicationService.cs
+.\GenerateAttributeAliasMvoDomainNHibernate.txt
+.\NHibernateAttributeAliasMvoEventStore.cs
+.\NHibernateAttributeAliasMvoStateQueryRepository.cs
+.\NHibernateAttributeAliasMvoStateRepository.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

@@ -190,6 +190,30 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
             return c;
         }
 
+        public AttributeAliasCommand.CreateAttributeAlias newCreateAttributeAlias()
+        {
+            AbstractAttributeAliasCommand.SimpleCreateAttributeAlias c = new AbstractAttributeAliasCommand.SimpleCreateAttributeAlias();
+            c.setAttributeId(this.getAttributeId());
+
+            return c;
+        }
+
+        public AttributeAliasCommand.MergePatchAttributeAlias newMergePatchAttributeAlias()
+        {
+            AbstractAttributeAliasCommand.SimpleMergePatchAttributeAlias c = new AbstractAttributeAliasCommand.SimpleMergePatchAttributeAlias();
+            c.setAttributeId(this.getAttributeId());
+
+            return c;
+        }
+
+        public AttributeAliasCommand.RemoveAttributeAlias newRemoveAttributeAlias()
+        {
+            AbstractAttributeAliasCommand.SimpleRemoveAttributeAlias c = new AbstractAttributeAliasCommand.SimpleRemoveAttributeAlias();
+            c.setAttributeId(this.getAttributeId());
+
+            return c;
+        }
+
     }
 
     public static abstract class AbstractCreateAttribute extends AbstractCreateOrMergePatchAttribute implements CreateAttribute
@@ -204,6 +228,13 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
         public CreateAttributeValueCommands getAttributeValues()
         {
             return this.attributeValues;
+        }
+
+        private CreateAttributeAliasCommands aliases = new SimpleCreateAttributeAliasCommands();
+
+        public CreateAttributeAliasCommands getAliases()
+        {
+            return this.aliases;
         }
 
     }
@@ -354,6 +385,13 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
             return this.attributeValueCommands;
         }
 
+        private AttributeAliasCommands attributeAliasCommands = new SimpleAttributeAliasCommands();
+
+        public AttributeAliasCommands getAttributeAliasCommands()
+        {
+            return this.attributeAliasCommands;
+        }
+
     }
 
     public static class SimpleCreateAttribute extends AbstractCreateAttribute
@@ -422,6 +460,58 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
 
         @Override
         public Iterator<AttributeValueCommand> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleCreateAttributeAliasCommands implements CreateAttributeAliasCommands
+    {
+        private List<AttributeAliasCommand.CreateAttributeAlias> innerCommands = new ArrayList<AttributeAliasCommand.CreateAttributeAlias>();
+
+        public void add(AttributeAliasCommand.CreateAttributeAlias c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(AttributeAliasCommand.CreateAttributeAlias c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<AttributeAliasCommand.CreateAttributeAlias> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleAttributeAliasCommands implements AttributeAliasCommands
+    {
+        private List<AttributeAliasCommand> innerCommands = new ArrayList<AttributeAliasCommand>();
+
+        public void add(AttributeAliasCommand c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(AttributeAliasCommand c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<AttributeAliasCommand> iterator()
         {
             return innerCommands.iterator();
         }

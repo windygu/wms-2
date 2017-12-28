@@ -11,6 +11,15 @@
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
+  <object id="attributeAliasStateDao" type="Dddml.Wms.Domain.Attribute.NHibernate.NHibernateAttributeAliasStateDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="attributeAliasStateEventDao" type="Dddml.Wms.Domain.Attribute.NHibernate.NHibernateAttributeAliasStateEventDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
 
   <object id="attributeStateRepository" type="Dddml.Wms.Domain.Attribute.NHibernate.NHibernateAttributeStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -739,6 +748,28 @@
     <constructor-arg ref="attributeValueMvoEventStore"/>
     <constructor-arg ref="attributeValueMvoStateRepository"/>
     <constructor-arg ref="attributeValueMvoStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="attributeAliasMvoStateRepository" type="Dddml.Wms.Domain.AttributeAliasMvo.NHibernate.NHibernateAttributeAliasMvoStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="attributeAliasMvoStateQueryRepository" type="Dddml.Wms.Domain.AttributeAliasMvo.NHibernate.NHibernateAttributeAliasMvoStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="attributeAliasMvoEventStore" type="Dddml.Wms.Domain.AttributeAliasMvo.NHibernate.NHibernateAttributeAliasMvoEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="attributeAliasMvoApplicationService" type="Dddml.Wms.Domain.AttributeAliasMvo.NHibernate.AttributeAliasMvoApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="attributeAliasMvoEventStore"/>
+    <constructor-arg ref="attributeAliasMvoStateRepository"/>
+    <constructor-arg ref="attributeAliasMvoStateQueryRepository"/>
   </object>
 
 

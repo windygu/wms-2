@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.AttributeAliasMvo">
+  
+  <class name="AttributeAliasMvoStateEventBase" table="AttributeAliasMvoStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeAliasMvo.AttributeAliasMvoStateEventId">
+        <key-property name="AttributeAliasIdAttributeId" ><column name="AttributeAliasIdAttributeId" length="50" /></key-property>
+        <key-property name="AttributeAliasIdCode" ><column name="AttributeAliasIdCode" length="50" /></key-property>
+        <key-property name="AttributeVersion" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="Name" ><column name="Name" unique-key="UniqueAttributeAliasName" /></property>
+    <property name="Version" ></property>
+    <property name="Active" ></property>
+    <property name="AttributeAttributeName" ></property>
+    <property name="AttributeOrganizationId" ></property>
+    <property name="AttributeDescription" ></property>
+    <property name="AttributeIsMandatory" ></property>
+    <property name="AttributeIsInstanceAttribute" ></property>
+    <property name="AttributeAttributeValueType" ></property>
+    <property name="AttributeAttributeValueLength" ></property>
+    <property name="AttributeIsList" ></property>
+    <property name="AttributeFieldName" ></property>
+    <property name="AttributeReferenceId" ></property>
+    <property name="AttributeCreatedBy" ></property>
+    <property name="AttributeCreatedAt" ></property>
+    <property name="AttributeUpdatedBy" ></property>
+    <property name="AttributeUpdatedAt" ></property>
+    <property name="AttributeActive" ></property>
+    <property name="AttributeDeleted" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="AttributeAliasMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AttributeAliasMvoStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
+
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+        <property name="IsPropertyAttributeAttributeNameRemoved" column="IsPropertyAttributeAttributeNameRemoved"/>
+
+        <property name="IsPropertyAttributeOrganizationIdRemoved" column="IsPropertyAttributeOrganizationIdRemoved"/>
+
+        <property name="IsPropertyAttributeDescriptionRemoved" column="IsPropertyAttributeDescriptionRemoved"/>
+
+        <property name="IsPropertyAttributeIsMandatoryRemoved" column="IsPropertyAttributeIsMandatoryRemoved"/>
+
+        <property name="IsPropertyAttributeIsInstanceAttributeRemoved" column="IsPropertyAttributeIsInstanceAttributeRemoved"/>
+
+        <property name="IsPropertyAttributeAttributeValueTypeRemoved" column="IsPropertyAttributeAttributeValueTypeRemoved"/>
+
+        <property name="IsPropertyAttributeAttributeValueLengthRemoved" column="IsPropertyAttributeAttributeValueLengthRemoved"/>
+
+        <property name="IsPropertyAttributeIsListRemoved" column="IsPropertyAttributeIsListRemoved"/>
+
+        <property name="IsPropertyAttributeFieldNameRemoved" column="IsPropertyAttributeFieldNameRemoved"/>
+
+        <property name="IsPropertyAttributeReferenceIdRemoved" column="IsPropertyAttributeReferenceIdRemoved"/>
+
+        <property name="IsPropertyAttributeCreatedByRemoved" column="IsPropertyAttributeCreatedByRemoved"/>
+
+        <property name="IsPropertyAttributeCreatedAtRemoved" column="IsPropertyAttributeCreatedAtRemoved"/>
+
+        <property name="IsPropertyAttributeUpdatedByRemoved" column="IsPropertyAttributeUpdatedByRemoved"/>
+
+        <property name="IsPropertyAttributeUpdatedAtRemoved" column="IsPropertyAttributeUpdatedAtRemoved"/>
+
+        <property name="IsPropertyAttributeActiveRemoved" column="IsPropertyAttributeActiveRemoved"/>
+
+        <property name="IsPropertyAttributeDeletedRemoved" column="IsPropertyAttributeDeletedRemoved"/>
+    </subclass>
+
+    <subclass name="AttributeAliasMvoStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

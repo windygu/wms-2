@@ -232,6 +232,32 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         }
     }
 
+    protected AttributeAliasStateEventDao getAttributeAliasStateEventDao() {
+        return (AttributeAliasStateEventDao)ApplicationContext.current.get("AttributeAliasStateEventDao");
+    }
+
+    protected AttributeAliasStateEventId newAttributeAliasStateEventId(String code)
+    {
+        AttributeAliasStateEventId stateEventId = new AttributeAliasStateEventId(this.getStateEventId().getAttributeId(), 
+            code, 
+            this.getStateEventId().getVersion());
+        return stateEventId;
+    }
+
+    protected void throwOnInconsistentEventIds(AttributeAliasStateEvent e)
+    {
+        throwOnInconsistentEventIds(this, e);
+    }
+
+    public static void throwOnInconsistentEventIds(AttributeStateEvent oe, AttributeAliasStateEvent e)
+    {
+        if (!oe.getStateEventId().getAttributeId().equals(e.getStateEventId().getAttributeId()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id AttributeId %1$s but inner id AttributeId %2$s", 
+                oe.getStateEventId().getAttributeId(), e.getStateEventId().getAttributeId());
+        }
+    }
+
     public AttributeValueStateEvent.AttributeValueStateCreated newAttributeValueStateCreated(String value) {
         return new AbstractAttributeValueStateEvent.SimpleAttributeValueStateCreated(newAttributeValueStateEventId(value));
     }
@@ -242,6 +268,18 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
 
     public AttributeValueStateEvent.AttributeValueStateRemoved newAttributeValueStateRemoved(String value) {
         return new AbstractAttributeValueStateEvent.SimpleAttributeValueStateRemoved(newAttributeValueStateEventId(value));
+    }
+
+    public AttributeAliasStateEvent.AttributeAliasStateCreated newAttributeAliasStateCreated(String code) {
+        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateCreated(newAttributeAliasStateEventId(code));
+    }
+
+    public AttributeAliasStateEvent.AttributeAliasStateMergePatched newAttributeAliasStateMergePatched(String code) {
+        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateMergePatched(newAttributeAliasStateEventId(code));
+    }
+
+    public AttributeAliasStateEvent.AttributeAliasStateRemoved newAttributeAliasStateRemoved(String code) {
+        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateRemoved(newAttributeAliasStateEventId(code));
     }
 
 
@@ -304,10 +342,55 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
             this.attributeValueEvents.put(e.getStateEventId(), e);
         }
 
+        private Map<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateCreated> attributeAliasEvents = new HashMap<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateCreated>();
+        
+        private Iterable<AttributeAliasStateEvent.AttributeAliasStateCreated> readOnlyAttributeAliasEvents;
+
+        public Iterable<AttributeAliasStateEvent.AttributeAliasStateCreated> getAttributeAliasEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
+                return this.attributeAliasEvents.values();
+            }
+            else
+            {
+                if (readOnlyAttributeAliasEvents != null) { return readOnlyAttributeAliasEvents; }
+                AttributeAliasStateEventDao eventDao = getAttributeAliasStateEventDao();
+                List<AttributeAliasStateEvent.AttributeAliasStateCreated> eL = new ArrayList<AttributeAliasStateEvent.AttributeAliasStateCreated>();
+                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                {
+                    e.setStateEventReadOnly(true);
+                    eL.add((AttributeAliasStateEvent.AttributeAliasStateCreated)e);
+                }
+                return (readOnlyAttributeAliasEvents = eL);
+            }
+        }
+
+        public void setAttributeAliasEvents(Iterable<AttributeAliasStateEvent.AttributeAliasStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (AttributeAliasStateEvent.AttributeAliasStateCreated e : es)
+                {
+                    addAttributeAliasEvent(e);
+                }
+            }
+            else { this.attributeAliasEvents.clear(); }
+        }
+        
+        public void addAttributeAliasEvent(AttributeAliasStateEvent.AttributeAliasStateCreated e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.attributeAliasEvents.put(e.getStateEventId(), e);
+        }
+
         public void save()
         {
             for (AttributeValueStateEvent.AttributeValueStateCreated e : this.getAttributeValueEvents()) {
                 getAttributeValueStateEventDao().save(e);
+            }
+            for (AttributeAliasStateEvent.AttributeAliasStateCreated e : this.getAttributeAliasEvents()) {
+                getAttributeAliasStateEventDao().save(e);
             }
         }
     }
@@ -479,10 +562,55 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
             this.attributeValueEvents.put(e.getStateEventId(), e);
         }
 
+        private Map<AttributeAliasStateEventId, AttributeAliasStateEvent> attributeAliasEvents = new HashMap<AttributeAliasStateEventId, AttributeAliasStateEvent>();
+        
+        private Iterable<AttributeAliasStateEvent> readOnlyAttributeAliasEvents;
+
+        public Iterable<AttributeAliasStateEvent> getAttributeAliasEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
+                return this.attributeAliasEvents.values();
+            }
+            else
+            {
+                if (readOnlyAttributeAliasEvents != null) { return readOnlyAttributeAliasEvents; }
+                AttributeAliasStateEventDao eventDao = getAttributeAliasStateEventDao();
+                List<AttributeAliasStateEvent> eL = new ArrayList<AttributeAliasStateEvent>();
+                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                {
+                    e.setStateEventReadOnly(true);
+                    eL.add((AttributeAliasStateEvent)e);
+                }
+                return (readOnlyAttributeAliasEvents = eL);
+            }
+        }
+
+        public void setAttributeAliasEvents(Iterable<AttributeAliasStateEvent> es)
+        {
+            if (es != null)
+            {
+                for (AttributeAliasStateEvent e : es)
+                {
+                    addAttributeAliasEvent(e);
+                }
+            }
+            else { this.attributeAliasEvents.clear(); }
+        }
+        
+        public void addAttributeAliasEvent(AttributeAliasStateEvent e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.attributeAliasEvents.put(e.getStateEventId(), e);
+        }
+
         public void save()
         {
             for (AttributeValueStateEvent e : this.getAttributeValueEvents()) {
                 getAttributeValueStateEventDao().save(e);
+            }
+            for (AttributeAliasStateEvent e : this.getAttributeAliasEvents()) {
+                getAttributeAliasStateEventDao().save(e);
             }
         }
     }
@@ -545,10 +673,56 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
             this.attributeValueEvents.put(e.getStateEventId(), e);
         }
 
+		
+        private Map<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateRemoved> attributeAliasEvents = new HashMap<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateRemoved>();
+        
+        private Iterable<AttributeAliasStateEvent.AttributeAliasStateRemoved> readOnlyAttributeAliasEvents;
+
+        public Iterable<AttributeAliasStateEvent.AttributeAliasStateRemoved> getAttributeAliasEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
+                return this.attributeAliasEvents.values();
+            }
+            else
+            {
+                if (readOnlyAttributeAliasEvents != null) { return readOnlyAttributeAliasEvents; }
+                AttributeAliasStateEventDao eventDao = getAttributeAliasStateEventDao();
+                List<AttributeAliasStateEvent.AttributeAliasStateRemoved> eL = new ArrayList<AttributeAliasStateEvent.AttributeAliasStateRemoved>();
+                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                {
+                    e.setStateEventReadOnly(true);
+                    eL.add((AttributeAliasStateEvent.AttributeAliasStateRemoved)e);
+                }
+                return (readOnlyAttributeAliasEvents = eL);
+            }
+        }
+
+        public void setAttributeAliasEvents(Iterable<AttributeAliasStateEvent.AttributeAliasStateRemoved> es)
+        {
+            if (es != null)
+            {
+                for (AttributeAliasStateEvent.AttributeAliasStateRemoved e : es)
+                {
+                    addAttributeAliasEvent(e);
+                }
+            }
+            else { this.attributeAliasEvents.clear(); }
+        }
+        
+        public void addAttributeAliasEvent(AttributeAliasStateEvent.AttributeAliasStateRemoved e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.attributeAliasEvents.put(e.getStateEventId(), e);
+        }
+
         public void save()
         {
             for (AttributeValueStateEvent.AttributeValueStateRemoved e : this.getAttributeValueEvents()) {
                 getAttributeValueStateEventDao().save(e);
+            }
+            for (AttributeAliasStateEvent.AttributeAliasStateRemoved e : this.getAttributeAliasEvents()) {
+                getAttributeAliasStateEventDao().save(e);
             }
         }
     }

@@ -705,6 +705,18 @@ public abstract class AbstractProductState implements ProductState
         this.lotIdFilledIn = lotIdFilledIn;
     }
 
+    private String attributeSetId;
+
+    public String getAttributeSetId()
+    {
+        return this.attributeSetId;
+    }
+
+    public void setAttributeSetId(String attributeSetId)
+    {
+        this.attributeSetId = attributeSetId;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -896,6 +908,7 @@ public abstract class AbstractProductState implements ProductState
         this.setInShippingBox(e.getInShippingBox());
         this.setDefaultShipmentBoxTypeId(e.getDefaultShipmentBoxTypeId());
         this.setLotIdFilledIn(e.getLotIdFilledIn());
+        this.setAttributeSetId(e.getAttributeSetId());
         this.setActive(e.getActive());
 
         this.setCreatedBy(e.getCreatedBy());
@@ -1533,6 +1546,17 @@ public abstract class AbstractProductState implements ProductState
         else
         {
             this.setLotIdFilledIn(e.getLotIdFilledIn());
+        }
+        if (e.getAttributeSetId() == null)
+        {
+            if (e.getIsPropertyAttributeSetIdRemoved() != null && e.getIsPropertyAttributeSetIdRemoved())
+            {
+                this.setAttributeSetId(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetId(e.getAttributeSetId());
         }
         if (e.getActive() == null)
         {

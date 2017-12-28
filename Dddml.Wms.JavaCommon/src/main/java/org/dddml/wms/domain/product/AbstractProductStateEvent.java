@@ -716,6 +716,18 @@ public abstract class AbstractProductStateEvent extends AbstractStateEvent imple
         this.lotIdFilledIn = lotIdFilledIn;
     }
 
+    private String attributeSetId;
+
+    public String getAttributeSetId()
+    {
+        return this.attributeSetId;
+    }
+
+    public void setAttributeSetId(String attributeSetId)
+    {
+        this.attributeSetId = attributeSetId;
+    }
+
     private String createdBy;
 
     public String getCreatedBy()
@@ -1373,6 +1385,16 @@ public abstract class AbstractProductStateEvent extends AbstractStateEvent imple
 
         public void setIsPropertyLotIdFilledInRemoved(Boolean removed) {
             this.isPropertyLotIdFilledInRemoved = removed;
+        }
+
+        private Boolean isPropertyAttributeSetIdRemoved;
+
+        public Boolean getIsPropertyAttributeSetIdRemoved() {
+            return this.isPropertyAttributeSetIdRemoved;
+        }
+
+        public void setIsPropertyAttributeSetIdRemoved(Boolean removed) {
+            this.isPropertyAttributeSetIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

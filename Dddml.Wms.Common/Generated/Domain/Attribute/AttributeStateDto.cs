@@ -129,6 +129,18 @@ namespace Dddml.Wms.Domain.Attribute
             set { this.AttributeValues = value.Select(e => ((AttributeValueStateDto)e)).ToArray(); }
         }
 
+        public virtual AttributeAliasStateDto[] Aliases
+        {
+            get;
+            set;
+        }
+
+        IAttributeAliasStateDto[] IAttributeStateDto.Aliases
+        {
+            get { return this.Aliases; }
+            set { this.Aliases = value.Select(e => ((AttributeAliasStateDto)e)).ToArray(); }
+        }
+
         public virtual IAttributeState ToAttributeState()
         {
             var state = new AttributeState(true);
@@ -150,6 +162,7 @@ namespace Dddml.Wms.Domain.Attribute
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
             if (this.AttributeValues != null) { foreach (var s in this.AttributeValues) { state.AttributeValues.AddToSave(s.ToAttributeValueState()); } };
+            if (this.Aliases != null) { foreach (var s in this.Aliases) { state.Aliases.AddToSave(s.ToAttributeAliasState()); } };
 
             return state;
         }

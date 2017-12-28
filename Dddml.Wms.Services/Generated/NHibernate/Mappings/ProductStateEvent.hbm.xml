@@ -68,6 +68,7 @@
     <property name="InShippingBox" ><column name="InShippingBox" sql-type="CHAR(1)" /></property>
     <property name="DefaultShipmentBoxTypeId" ><column name="DefaultShipmentBoxTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="LotIdFilledIn" ><column name="LotIdFilledIn" sql-type="VARCHAR(255)" /></property>
+    <property name="AttributeSetId" ></property>
     <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
@@ -194,6 +195,8 @@
         <property name="IsPropertyDefaultShipmentBoxTypeIdRemoved" column="IsPropertyDefaultShipmentBoxTypeIdRemoved"/>
 
         <property name="IsPropertyLotIdFilledInRemoved" column="IsPropertyLotIdFilledInRemoved"/>
+
+        <property name="IsPropertyAttributeSetIdRemoved" column="IsPropertyAttributeSetIdRemoved"/>
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>

@@ -133,6 +133,14 @@ namespace Dddml.Wms.Domain.Attribute
                 e.AddAttributeValueEvent(innerEvent);
             }
 
+            foreach (ICreateAttributeAlias innerCommand in c.Aliases)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IAttributeAliasStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
+                e.AddAttributeAliasEvent(innerEvent);
+            }
+
 
             return e;
         }
@@ -181,6 +189,14 @@ namespace Dddml.Wms.Domain.Attribute
                 e.AddAttributeValueEvent(innerEvent);
             }
 
+            foreach (IAttributeAliasCommand innerCommand in c.AttributeAliasCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IAttributeAliasStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                e.AddAttributeAliasEvent(innerEvent);
+            }
+
 
             return e;
         }
@@ -206,6 +222,28 @@ namespace Dddml.Wms.Domain.Attribute
 
             var properties =  command as ICreateOrMergePatchOrDeleteAttribute;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveAttributeValue;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.AttributeId == default(string))
+            {
+                innerProperties.AttributeId = properties.AttributeId;
+            }
+            else
+            {
+                var outerAttributeIdName = "AttributeId";
+                var outerAttributeIdValue = properties.AttributeId;
+                var innerAttributeIdName = "AttributeId";
+                var innerAttributeIdValue = innerProperties.AttributeId;
+                ThrowOnInconsistentIds(innerProperties, innerAttributeIdName, innerAttributeIdValue, outerAttributeIdName, outerAttributeIdValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
+
+
+        protected void ThrowOnInconsistentCommands(IAttributeCommand command, IAttributeAliasCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrDeleteAttribute;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveAttributeAlias;
             if (properties == null || innerProperties == null) { return; }
             if (innerProperties.AttributeId == default(string))
             {
@@ -303,6 +341,81 @@ namespace Dddml.Wms.Domain.Attribute
 
         }// END Map(IRemove... ////////////////////////////
 
+
+        protected virtual IAttributeAliasStateEvent Map(IAttributeAliasCommand c, IAttributeCommand outerCommand, long version, IAttributeState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateAttributeAlias) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchAttributeAlias) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveAttributeAlias) : null;
+            if (remove != null)
+            {
+                return MapRemove(remove, outerCommand, version);
+            }
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IAttributeAliasStateCreated MapCreate(ICreateAttributeAlias c, IAttributeCommand outerCommand, long version, IAttributeState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new AttributeAliasStateEventId(c.AttributeId, c.Code, version);
+            IAttributeAliasStateCreated e = NewAttributeAliasStateCreated(stateEventId);
+            var s = outerState.Aliases.Get(c.Code, true);
+
+            e.Name = c.Name;
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IAttributeAliasStateMergePatched MapMergePatch(IMergePatchAttributeAlias c, IAttributeCommand outerCommand, long version, IAttributeState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new AttributeAliasStateEventId(c.AttributeId, c.Code, version);
+            IAttributeAliasStateMergePatched e = NewAttributeAliasStateMergePatched(stateEventId);
+            var s = outerState.Aliases.Get(c.Code);
+
+            e.Name = c.Name;
+            e.Active = c.Active;
+            e.IsPropertyNameRemoved = c.IsPropertyNameRemoved;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
+        protected virtual IAttributeAliasStateRemoved MapRemove(IRemoveAttributeAlias c, IAttributeCommand outerCommand, long version)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new AttributeAliasStateEventId(c.AttributeId, c.Code, version);
+            IAttributeAliasStateRemoved e = NewAttributeAliasStateRemoved(stateEventId);
+
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            return e;
+
+        }// END Map(IRemove... ////////////////////////////
+
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
             if (!Object.Equals(innerIdValue, outerIdValue))
@@ -387,6 +500,22 @@ namespace Dddml.Wms.Domain.Attribute
         private AttributeValueStateRemoved NewAttributeValueStateRemoved(AttributeValueStateEventId stateEventId)
 		{
 			return new AttributeValueStateRemoved(stateEventId);
+		}
+
+
+		private AttributeAliasStateCreated NewAttributeAliasStateCreated(AttributeAliasStateEventId stateEventId)
+		{
+			return new AttributeAliasStateCreated(stateEventId);
+		}
+
+        private AttributeAliasStateMergePatched NewAttributeAliasStateMergePatched(AttributeAliasStateEventId stateEventId)
+		{
+			return new AttributeAliasStateMergePatched(stateEventId);
+		}
+
+        private AttributeAliasStateRemoved NewAttributeAliasStateRemoved(AttributeAliasStateEventId stateEventId)
+		{
+			return new AttributeAliasStateRemoved(stateEventId);
 		}
 
 

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.AttributeAliasMvo">
+  
+  <class name="Dddml.Wms.Domain.AttributeAliasMvo.AttributeAliasMvoState" table="AttributeAlias_RV">
+
+    <composite-id name="AttributeAliasId" class="Dddml.Wms.Domain.Attribute.AttributeAliasId">
+        <key-property name="AttributeId" ><column name="AttributeAliasIdAttributeId" length="50" /></key-property>
+        <key-property name="Code" ><column name="AttributeAliasIdCode" length="50" /></key-property>
+    </composite-id>
+
+	<version name="AttributeVersion" column="AttributeVersion" type="long" unsaved-value="0"/>
+
+    <property name="Name" ><column name="Name" unique-key="UniqueAttributeAliasName" /></property>
+    <property name="Version" ></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="Deleted" ></property>
+    <property name="AttributeAttributeName" ></property>
+    <property name="AttributeOrganizationId" ></property>
+    <property name="AttributeDescription" ></property>
+    <property name="AttributeIsMandatory" ></property>
+    <property name="AttributeIsInstanceAttribute" ></property>
+    <property name="AttributeAttributeValueType" ></property>
+    <property name="AttributeAttributeValueLength" ></property>
+    <property name="AttributeIsList" ></property>
+    <property name="AttributeFieldName" ></property>
+    <property name="AttributeReferenceId" ></property>
+    <property name="AttributeCreatedBy" ></property>
+    <property name="AttributeCreatedAt" ></property>
+    <property name="AttributeUpdatedBy" ></property>
+    <property name="AttributeUpdatedAt" ></property>
+    <property name="AttributeActive" ></property>
+    <property name="AttributeDeleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

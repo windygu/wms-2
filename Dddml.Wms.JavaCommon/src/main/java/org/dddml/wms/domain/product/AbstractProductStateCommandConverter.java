@@ -94,6 +94,7 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         cmd.setInShippingBox(state.getInShippingBox());
         cmd.setDefaultShipmentBoxTypeId(state.getDefaultShipmentBoxTypeId());
         cmd.setLotIdFilledIn(state.getLotIdFilledIn());
+        cmd.setAttributeSetId(state.getAttributeSetId());
         cmd.setActive(state.getActive());
             
         if (state.getProductTypeId() == null) { cmd.setIsPropertyProductTypeIdRemoved(true); }
@@ -153,6 +154,7 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         if (state.getInShippingBox() == null) { cmd.setIsPropertyInShippingBoxRemoved(true); }
         if (state.getDefaultShipmentBoxTypeId() == null) { cmd.setIsPropertyDefaultShipmentBoxTypeIdRemoved(true); }
         if (state.getLotIdFilledIn() == null) { cmd.setIsPropertyLotIdFilledInRemoved(true); }
+        if (state.getAttributeSetId() == null) { cmd.setIsPropertyAttributeSetIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
     }
@@ -220,6 +222,7 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         cmd.setInShippingBox(state.getInShippingBox());
         cmd.setDefaultShipmentBoxTypeId(state.getDefaultShipmentBoxTypeId());
         cmd.setLotIdFilledIn(state.getLotIdFilledIn());
+        cmd.setAttributeSetId(state.getAttributeSetId());
         cmd.setActive(state.getActive());
         return cmd;
     }

@@ -122,6 +122,12 @@ namespace Dddml.Wms.Domain.Attribute
             set;
         }
 
+        IAttributeAliasStateDto[] Aliases
+        {
+            get;
+            set;
+        }
+
         IAttributeState ToAttributeState();
 
     }

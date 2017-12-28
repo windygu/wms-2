@@ -68,6 +68,7 @@
 	<property name="inShippingBox" ><column name="InShippingBox" sql-type="CHAR(1)" /></property>
 	<property name="defaultShipmentBoxTypeId" ><column name="DefaultShipmentBoxTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="lotIdFilledIn" ><column name="LotIdFilledIn" sql-type="VARCHAR(255)" /></property>
+	<property name="attributeSetId" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

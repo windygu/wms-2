@@ -41,6 +41,8 @@ namespace Dddml.Wms.Domain.Attribute
 
         IAttributeValueState GetAttributeValue(string attributeId, string value);
 
+        IAttributeAliasState GetAttributeAlias(string attributeId, string code);
+
 
 	}
 

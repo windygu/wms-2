@@ -264,6 +264,10 @@ public interface ProductCommand extends Command
 
         void setLotIdFilledIn(String lotIdFilledIn);
 
+        String getAttributeSetId();
+
+        void setAttributeSetId(String attributeSetId);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -503,6 +507,10 @@ public interface ProductCommand extends Command
         Boolean getIsPropertyLotIdFilledInRemoved();
 
         void setIsPropertyLotIdFilledInRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetIdRemoved();
+
+        void setIsPropertyAttributeSetIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

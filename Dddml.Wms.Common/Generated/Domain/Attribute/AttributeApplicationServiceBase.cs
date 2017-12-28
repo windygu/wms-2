@@ -170,6 +170,11 @@ namespace Dddml.Wms.Domain.Attribute
             return StateQueryRepository.GetAttributeValue(attributeId, value);
         }
 
+        public virtual IAttributeAliasState GetAttributeAlias(string attributeId, string code)
+        {
+            return StateQueryRepository.GetAttributeAlias(attributeId, code);
+        }
+
 
 		public abstract IAttributeAggregate GetAttributeAggregate(IAttributeState state);
 

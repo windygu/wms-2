@@ -42,6 +42,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeAliasMvoResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
@@ -70,6 +73,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesResources.txt</LastGenOutput>
       <LastOutputs>
+.\AttributeAliasMvoResource.java
 .\AttributeResource.java
 .\AttributeSetInstanceExtensionFieldGroupResource.java
 .\AttributeSetInstanceExtensionFieldResource.java

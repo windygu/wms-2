@@ -241,6 +241,10 @@ public interface ProductStateEvent extends Event
 
     void setLotIdFilledIn(String lotIdFilledIn);
 
+    String getAttributeSetId();
+
+    void setAttributeSetId(String attributeSetId);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -492,6 +496,10 @@ public interface ProductStateEvent extends Event
         Boolean getIsPropertyLotIdFilledInRemoved();
 
         void setIsPropertyLotIdFilledInRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetIdRemoved();
+
+        void setIsPropertyAttributeSetIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

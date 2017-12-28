@@ -91,6 +91,8 @@ public interface AttributeState
 
     AttributeValueStates getAttributeValues();
 
+    AttributeAliasStates getAliases();
+
 
     void mutate(Event e);
 

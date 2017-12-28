@@ -306,6 +306,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetAttributeValueAsync(attributeId, value).GetAwaiter().GetResult();
         }
 
+        public async virtual Task<IAttributeAliasState> GetAttributeAliasAsync(string attributeId, string code)
+        {
+            var uriParameters = new AttributeAliasUriParameters();
+            uriParameters.AttributeId = attributeId;
+            uriParameters.Code = code;
+
+            var req = new AttributeAliasGetRequest(uriParameters);
+            var resp = await _ramlClient.AttributeAlias.Get(req);
+            AttributeProxyUtils.ThrowOnHttpResponseError(resp);
+            return (resp.Content == null) ? null : resp.Content.ToAttributeAliasState();
+        }
+
+        public virtual IAttributeAliasState GetAttributeAlias(string attributeId, string code)
+        {
+            return GetAttributeAliasAsync(attributeId, code).GetAwaiter().GetResult();
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

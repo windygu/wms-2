@@ -121,6 +121,31 @@ namespace Dddml.Wms.Domain.Attribute
 
 
 
+        private CreateAttributeAliasCommands _aliases = new CreateAttributeAliasCommands();
+
+        public ICreateAttributeAliasCommands Aliases
+        {
+            get
+            {
+                return this._aliases;
+            }
+        }
+
+        public CreateAttributeAlias NewCreateAttributeAlias()
+        {
+            var c = new CreateAttributeAlias();
+            c.AttributeId = this.AttributeId;
+
+            return c;
+        }
+
+        ICreateAttributeAlias ICreateAttribute.NewCreateAttributeAlias()
+        {
+            return this.NewCreateAttributeAlias();
+        }
+
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.Create;
@@ -210,6 +235,58 @@ namespace Dddml.Wms.Domain.Attribute
         }
 
 
+        private AttributeAliasCommands _attributeAliasCommands = new AttributeAliasCommands();
+
+        public IAttributeAliasCommands AttributeAliasCommands
+        {
+            get
+            {
+                return this._attributeAliasCommands;
+            }
+        }
+
+
+        public CreateAttributeAlias NewCreateAttributeAlias()
+        {
+            var c = new CreateAttributeAlias();
+            c.AttributeId = this.AttributeId;
+
+            return c;
+        }
+
+        ICreateAttributeAlias IMergePatchAttribute.NewCreateAttributeAlias()
+        {
+            return this.NewCreateAttributeAlias();
+        }
+
+        public MergePatchAttributeAlias NewMergePatchAttributeAlias()
+        {
+            var c = new MergePatchAttributeAlias();
+            c.AttributeId = this.AttributeId;
+
+            return c;
+        }
+
+        IMergePatchAttributeAlias IMergePatchAttribute.NewMergePatchAttributeAlias()
+        {
+            return this.NewMergePatchAttributeAlias();
+        }
+
+
+        public RemoveAttributeAlias NewRemoveAttributeAlias()
+        {
+            var c = new RemoveAttributeAlias();
+            c.AttributeId = this.AttributeId;
+
+            return c;
+        }
+
+        IRemoveAttributeAlias IMergePatchAttribute.NewRemoveAttributeAlias()
+        {
+            return this.NewRemoveAttributeAlias();
+        }
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.MergePatch;
@@ -282,6 +359,69 @@ namespace Dddml.Wms.Domain.Attribute
         }
 
         public IEnumerator<IAttributeValueCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+
+    public class CreateAttributeAliasCommands : ICreateAttributeAliasCommands
+    {
+        private List<ICreateAttributeAlias> _innerCommands = new List<ICreateAttributeAlias>();
+
+        public void Add(ICreateAttributeAlias c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateAttributeAlias c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateAttributeAlias> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class AttributeAliasCommands : IAttributeAliasCommands
+    {
+        private List<IAttributeAliasCommand> _innerCommands = new List<IAttributeAliasCommand>();
+
+        public void Add(IAttributeAliasCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IAttributeAliasCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IAttributeAliasCommand> GetEnumerator()
         {
             return _innerCommands.GetEnumerator();
         }

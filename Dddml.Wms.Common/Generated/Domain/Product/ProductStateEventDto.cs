@@ -156,6 +156,8 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual string LotIdFilledIn { get; set; }
 
+		public virtual string AttributeSetId { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -1267,6 +1269,25 @@ namespace Dddml.Wms.Domain.Product
             set 
             {
                 this.IsPropertyLotIdFilledInRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyAttributeSetIdRemoved { get; set; }
+
+        bool IProductStateMergePatched.IsPropertyAttributeSetIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyAttributeSetIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyAttributeSetIdRemoved = value;
             }
         }
 

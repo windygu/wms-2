@@ -689,6 +689,18 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.lotIdFilledIn = lotIdFilledIn;
     }
 
+    private String attributeSetId;
+
+    public String getAttributeSetId()
+    {
+        return this.attributeSetId;
+    }
+
+    public void setAttributeSetId(String attributeSetId)
+    {
+        this.attributeSetId = attributeSetId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -1385,6 +1397,18 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.isPropertyLotIdFilledInRemoved = removed;
     }
 
+    private Boolean isPropertyAttributeSetIdRemoved;
+
+    public Boolean getIsPropertyAttributeSetIdRemoved()
+    {
+        return this.isPropertyAttributeSetIdRemoved;
+    }
+
+    public void setIsPropertyAttributeSetIdRemoved(Boolean removed)
+    {
+        this.isPropertyAttributeSetIdRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -1457,6 +1481,7 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         command.setInShippingBox(this.getInShippingBox());
         command.setDefaultShipmentBoxTypeId(this.getDefaultShipmentBoxTypeId());
         command.setLotIdFilledIn(this.getLotIdFilledIn());
+        command.setAttributeSetId(this.getAttributeSetId());
         command.setActive(this.getActive());
     }
 
@@ -1539,6 +1564,7 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         command.setIsPropertyInShippingBoxRemoved(this.getIsPropertyInShippingBoxRemoved());
         command.setIsPropertyDefaultShipmentBoxTypeIdRemoved(this.getIsPropertyDefaultShipmentBoxTypeIdRemoved());
         command.setIsPropertyLotIdFilledInRemoved(this.getIsPropertyLotIdFilledInRemoved());
+        command.setIsPropertyAttributeSetIdRemoved(this.getIsPropertyAttributeSetIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

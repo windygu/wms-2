@@ -130,6 +130,8 @@ namespace Dddml.Wms.Domain.Product
 
 		string LotIdFilledIn { get; set; }
 
+		string AttributeSetId { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

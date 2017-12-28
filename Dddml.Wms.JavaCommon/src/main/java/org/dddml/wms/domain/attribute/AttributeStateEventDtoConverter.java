@@ -46,6 +46,13 @@ public class AttributeStateEventDtoConverter {
         }
         dto.setAttributeValueEvents(attributeValueEvents.toArray(new AttributeValueStateEventDto.AttributeValueStateCreatedDto[0]));
 
+        List<AttributeAliasStateEventDto.AttributeAliasStateCreatedDto> attributeAliasEvents = new ArrayList<>();
+        for (AttributeAliasStateEvent.AttributeAliasStateCreated ee : e.getAttributeAliasEvents()) {
+            AttributeAliasStateEventDto.AttributeAliasStateCreatedDto eeDto = getAttributeAliasStateEventDtoConverter().toAttributeAliasStateCreatedDto(ee);
+            attributeAliasEvents.add(eeDto);
+        }
+        dto.setAttributeAliasEvents(attributeAliasEvents.toArray(new AttributeAliasStateEventDto.AttributeAliasStateCreatedDto[0]));
+
         return dto;
     }
 
@@ -84,6 +91,13 @@ public class AttributeStateEventDtoConverter {
         }
         dto.setAttributeValueEvents(attributeValueEvents.toArray(new AttributeValueStateEventDto[0]));
 
+        List<AttributeAliasStateEventDto> attributeAliasEvents = new ArrayList<>();
+        for (AttributeAliasStateEvent ee : e.getAttributeAliasEvents()) {
+            AttributeAliasStateEventDto eeDto = getAttributeAliasStateEventDtoConverter().toAttributeAliasStateEventDto((AbstractAttributeAliasStateEvent) ee);
+            attributeAliasEvents.add(eeDto);
+        }
+        dto.setAttributeAliasEvents(attributeAliasEvents.toArray(new AttributeAliasStateEventDto[0]));
+
         return dto;
     }
 
@@ -101,11 +115,22 @@ public class AttributeStateEventDtoConverter {
         }
         dto.setAttributeValueEvents(attributeValueEvents.toArray(new AttributeValueStateEventDto.AttributeValueStateRemovedDto[0]));
 
+        List<AttributeAliasStateEventDto.AttributeAliasStateRemovedDto> attributeAliasEvents = new ArrayList<>();
+        for (AttributeAliasStateEvent.AttributeAliasStateRemoved ee : e.getAttributeAliasEvents()) {
+            AttributeAliasStateEventDto.AttributeAliasStateRemovedDto eeDto = getAttributeAliasStateEventDtoConverter().toAttributeAliasStateRemovedDto(ee);
+            attributeAliasEvents.add(eeDto);
+        }
+        dto.setAttributeAliasEvents(attributeAliasEvents.toArray(new AttributeAliasStateEventDto.AttributeAliasStateRemovedDto[0]));
+
         return dto;
     }
 
     protected AttributeValueStateEventDtoConverter getAttributeValueStateEventDtoConverter() {
         return new AttributeValueStateEventDtoConverter();
+    }
+
+    protected AttributeAliasStateEventDtoConverter getAttributeAliasStateEventDtoConverter() {
+        return new AttributeAliasStateEventDtoConverter();
     }
 
 }

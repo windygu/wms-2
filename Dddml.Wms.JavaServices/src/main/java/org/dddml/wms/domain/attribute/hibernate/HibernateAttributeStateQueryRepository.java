@@ -26,7 +26,7 @@ public class HibernateAttributeStateQueryRepository implements AttributeStateQue
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeId", "AttributeName", "OrganizationId", "Description", "IsMandatory", "IsInstanceAttribute", "AttributeValueType", "AttributeValueLength", "IsList", "FieldName", "ReferenceId", "AttributeValues", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeId", "AttributeName", "OrganizationId", "Description", "IsMandatory", "IsInstanceAttribute", "AttributeValueType", "AttributeValueLength", "IsList", "FieldName", "ReferenceId", "AttributeValues", "Aliases", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -137,6 +137,13 @@ public class HibernateAttributeStateQueryRepository implements AttributeStateQue
     {
         AttributeValueId entityId = new AttributeValueId(attributeId, value);
         return (AttributeValueState) getCurrentSession().get(AbstractAttributeValueState.SimpleAttributeValueState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public AttributeAliasState getAttributeAlias(String attributeId, String code)
+    {
+        AttributeAliasId entityId = new AttributeAliasId(attributeId, code);
+        return (AttributeAliasState) getCurrentSession().get(AbstractAttributeAliasState.SimpleAttributeAliasState.class, entityId);
     }
 
 

@@ -1,4 +1,8 @@
-﻿!Dddml.Core.Dom.DocumentRoot,%20Dddml.Core,%20Version=1.0.6550.21269,%20Culture=neutral,%20PublicKeyToken=null
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
 aggregates:
   Product: &o0
     id:
@@ -159,6 +163,12 @@ aggregates:
       # OrderDecimalQuantity:
         # description: use to indicate if decimal quantity can be ordered for this product. Default value is Y
         # type: indicator
+        
+      # ---------------------------------------
+      AttributeSetId:
+        type: string
+      #----------------------------------------
+      
     references:
       ProductCategory:
         displayName: ProductCategory
@@ -167,6 +177,7 @@ aggregates:
         properties:
         - PrimaryProductCategoryId
         foreignKeyName: PROD_PRIMARY_CAT
+        
     reservedProperties:
       # createdAt: CreatedDate
       # createdBy: CreatedByUserLogin

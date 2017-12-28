@@ -149,6 +149,18 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.attributeValues = attributeValues;
     }
 
+    private CreateOrMergePatchAttributeAliasDto[] aliases;
+
+    public CreateOrMergePatchAttributeAliasDto[] getAliases()
+    {
+        return this.aliases;
+    }
+
+    public void setAliases(CreateOrMergePatchAttributeAliasDto[] aliases)
+    {
+        this.aliases = aliases;
+    }
+
     private Boolean isPropertyAttributeNameRemoved;
 
     public Boolean getIsPropertyAttributeNameRemoved()
@@ -307,6 +319,11 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
                     command.getAttributeValues().add((AttributeValueCommand.CreateAttributeValue) cmd.toCommand());
                 }
             }
+            if (this.getAliases() != null) {
+                for (CreateOrMergePatchAttributeAliasDto cmd : this.getAliases()) {
+                    command.getAliases().add((AttributeAliasCommand.CreateAttributeAlias) cmd.toCommand());
+                }
+            }
             return command;
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractAttributeCommand.SimpleMergePatchAttribute command = new AbstractAttributeCommand.SimpleMergePatchAttribute();
@@ -314,6 +331,11 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
             if (this.getAttributeValues() != null) {
                 for (CreateOrMergePatchAttributeValueDto cmd : this.getAttributeValues()) {
                     command.getAttributeValueCommands().add(cmd.toCommand());
+                }
+            }
+            if (this.getAliases() != null) {
+                for (CreateOrMergePatchAttributeAliasDto cmd : this.getAliases()) {
+                    command.getAttributeAliasCommands().add(cmd.toCommand());
                 }
             }
             return command;

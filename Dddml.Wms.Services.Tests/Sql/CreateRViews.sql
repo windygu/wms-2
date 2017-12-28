@@ -37,6 +37,43 @@
         );
 
 
+CREATE VIEW `AttributeAlias_RV` AS
+    SELECT 
+        `AttributeAlias`.`AttributeAliasIdAttributeId`,
+        `AttributeAlias`.`AttributeAliasIdCode`,
+        `AttributeAlias`.`Name`,
+        `AttributeAlias`.`Version`,
+        `AttributeAlias`.`CreatedBy`,
+        `AttributeAlias`.`CreatedAt`,
+        `AttributeAlias`.`UpdatedBy`,
+        `AttributeAlias`.`UpdatedAt`,
+        `AttributeAlias`.`Active`,
+        `AttributeAlias`.`Deleted`,
+        `Attributes`.`AttributeName` AS `AttributeAttributeName`,
+        `Attributes`.`OrganizationId` AS `AttributeOrganizationId`,
+        `Attributes`.`Description` AS `AttributeDescription`,
+        `Attributes`.`IsMandatory` AS `AttributeIsMandatory`,
+        `Attributes`.`IsInstanceAttribute` AS `AttributeIsInstanceAttribute`,
+        `Attributes`.`AttributeValueType` AS `AttributeAttributeValueType`,
+        `Attributes`.`AttributeValueLength` AS `AttributeAttributeValueLength`,
+        `Attributes`.`IsList` AS `AttributeIsList`,
+        `Attributes`.`FieldName` AS `AttributeFieldName`,
+        `Attributes`.`ReferenceId` AS `AttributeReferenceId`,
+        `Attributes`.`Version` AS `AttributeVersion`,
+        `Attributes`.`CreatedBy` AS `AttributeCreatedBy`,
+        `Attributes`.`CreatedAt` AS `AttributeCreatedAt`,
+        `Attributes`.`UpdatedBy` AS `AttributeUpdatedBy`,
+        `Attributes`.`UpdatedAt` AS `AttributeUpdatedAt`,
+        `Attributes`.`Active` AS `AttributeActive`,
+        `Attributes`.`Deleted` AS `AttributeDeleted`
+    FROM
+        (`AttributeAlias`
+            JOIN `Attributes` ON ( 1=1 
+                and (`AttributeAlias`.`AttributeAliasIdAttributeId` = `Attributes`.`AttributeId`)
+            )
+        );
+
+
 CREATE VIEW `AttributeUse_RV` AS
     SELECT 
         `AttributeUses`.`AttributeSetAttributeUseIdAttributeSetId`,

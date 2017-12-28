@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.Attribute">
+  
+  <class name="AttributeAliasStateEventBase" table="AttributeAliasStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Attribute.AttributeAliasStateEventId">
+        <key-property name="AttributeId" ><column name="AttributeAliasIdAttributeId" length="50" /></key-property>
+        <key-property name="Code" ><column name="AttributeAliasIdCode" length="50" /></key-property>
+        <key-property name="AttributeVersion" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="Name" ><column name="Name" unique-key="UniqueAttributeAliasName" /></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <property name="Version" column="Version" not-null="true" />
+
+    <subclass name="AttributeAliasStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AttributeAliasStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyNameRemoved" column="IsPropertyNameRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="AttributeAliasStateRemoved"  discriminator-value="Removed">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

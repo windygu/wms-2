@@ -244,6 +244,10 @@ public interface ProductState
 
     void setLotIdFilledIn(String lotIdFilledIn);
 
+    String getAttributeSetId();
+
+    void setAttributeSetId(String attributeSetId);
+
     Long getVersion();
 
     void setVersion(Long version);

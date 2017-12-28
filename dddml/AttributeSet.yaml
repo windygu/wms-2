@@ -54,9 +54,12 @@ aggregates:
         ReferenceId:
           type: string
 
+        # -------------------------------
         AttributeValues:
           itemType: AttributeValue
-
+        Aliases:
+          itemType: AttributeAlias
+        # -------------------------------
           
       uniqueConstraints:
         UniqueFieldName: [FieldName]
@@ -64,23 +67,31 @@ aggregates:
         
       entities:
         
+        # -------------------------------
         AttributeValue:
-
           id:
             name: Value
             type: string
-
           properties:
-
             AttributeValueName:
               type: string
-
             Description:
               type: string
-
             ReferenceId:
               type: string
 
+        # -------------------------------
+        AttributeAlias:
+          id:
+            name: Code
+            type: string
+          properties:
+            Name:
+              type: string
+          uniqueConstraints:
+            UniqueAttributeAliasId: [Code]
+            UniqueAttributeAliasName: [Name]
+        # -------------------------------
               
     AttributeSet:
 

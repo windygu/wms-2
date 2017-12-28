@@ -35,6 +35,14 @@
 
     drop table if exists AttributeUseMvoStateEvents;
 
+    drop table if exists AttributeAlias;
+
+    drop table if exists AttributeAliasStateEvents;
+
+    drop table if exists AttributeAlias_RV;
+
+    drop table if exists AttributeAliasMvoStateEvents;
+
     drop table if exists InOuts;
 
     drop table if exists InOutStateEvents;
@@ -1073,6 +1081,120 @@
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
     );
 
+    create table AttributeAlias (
+        AttributeAliasIdAttributeId VARCHAR(50) not null,
+       AttributeAliasIdCode VARCHAR(50) not null,
+       Version BIGINT not null,
+       Name VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (AttributeAliasIdAttributeId, AttributeAliasIdCode),
+      unique (Name)
+    );
+
+    create table AttributeAliasStateEvents (
+        AttributeAliasIdAttributeId VARCHAR(50) not null,
+       AttributeAliasIdCode VARCHAR(50) not null,
+       AttributeVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (AttributeAliasIdAttributeId, AttributeAliasIdCode, AttributeVersion),
+      unique (Name)
+    );
+
+    create table AttributeAlias_RV (
+        AttributeAliasIdAttributeId VARCHAR(50) not null,
+       AttributeAliasIdCode VARCHAR(50) not null,
+       AttributeVersion BIGINT not null,
+       Name VARCHAR(255),
+       Version BIGINT,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       AttributeAttributeName VARCHAR(255),
+       AttributeOrganizationId VARCHAR(255),
+       AttributeDescription VARCHAR(255),
+       AttributeIsMandatory TINYINT(1),
+       AttributeIsInstanceAttribute TINYINT(1),
+       AttributeAttributeValueType VARCHAR(255),
+       AttributeAttributeValueLength INTEGER,
+       AttributeIsList TINYINT(1),
+       AttributeFieldName VARCHAR(255),
+       AttributeReferenceId VARCHAR(255),
+       AttributeCreatedBy VARCHAR(255),
+       AttributeCreatedAt DATETIME,
+       AttributeUpdatedBy VARCHAR(255),
+       AttributeUpdatedAt DATETIME,
+       AttributeActive TINYINT(1),
+       AttributeDeleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (AttributeAliasIdAttributeId, AttributeAliasIdCode),
+      unique (Name)
+    );
+
+    create table AttributeAliasMvoStateEvents (
+        AttributeAliasIdAttributeId VARCHAR(50) not null,
+       AttributeAliasIdCode VARCHAR(50) not null,
+       AttributeVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       Version BIGINT,
+       Active TINYINT(1),
+       AttributeAttributeName VARCHAR(255),
+       AttributeOrganizationId VARCHAR(255),
+       AttributeDescription VARCHAR(255),
+       AttributeIsMandatory TINYINT(1),
+       AttributeIsInstanceAttribute TINYINT(1),
+       AttributeAttributeValueType VARCHAR(255),
+       AttributeAttributeValueLength INTEGER,
+       AttributeIsList TINYINT(1),
+       AttributeFieldName VARCHAR(255),
+       AttributeReferenceId VARCHAR(255),
+       AttributeCreatedBy VARCHAR(255),
+       AttributeCreatedAt DATETIME,
+       AttributeUpdatedBy VARCHAR(255),
+       AttributeUpdatedAt DATETIME,
+       AttributeActive TINYINT(1),
+       AttributeDeleted TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       IsPropertyAttributeAttributeNameRemoved TINYINT(1),
+       IsPropertyAttributeOrganizationIdRemoved TINYINT(1),
+       IsPropertyAttributeDescriptionRemoved TINYINT(1),
+       IsPropertyAttributeIsMandatoryRemoved TINYINT(1),
+       IsPropertyAttributeIsInstanceAttributeRemoved TINYINT(1),
+       IsPropertyAttributeAttributeValueTypeRemoved TINYINT(1),
+       IsPropertyAttributeAttributeValueLengthRemoved TINYINT(1),
+       IsPropertyAttributeIsListRemoved TINYINT(1),
+       IsPropertyAttributeFieldNameRemoved TINYINT(1),
+       IsPropertyAttributeReferenceIdRemoved TINYINT(1),
+       IsPropertyAttributeCreatedByRemoved TINYINT(1),
+       IsPropertyAttributeCreatedAtRemoved TINYINT(1),
+       IsPropertyAttributeUpdatedByRemoved TINYINT(1),
+       IsPropertyAttributeUpdatedAtRemoved TINYINT(1),
+       IsPropertyAttributeActiveRemoved TINYINT(1),
+       IsPropertyAttributeDeletedRemoved TINYINT(1),
+       primary key (AttributeAliasIdAttributeId, AttributeAliasIdCode, AttributeVersion),
+      unique (Name)
+    );
+
     create table InOuts (
         DocumentNumber VARCHAR(50) not null,
        Version BIGINT not null,
@@ -1832,6 +1954,7 @@
        InShippingBox CHAR(1),
        DefaultShipmentBoxTypeId VARCHAR(20),
        LotIdFilledIn VARCHAR(255),
+       AttributeSetId VARCHAR(255),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
@@ -1901,6 +2024,7 @@
        InShippingBox CHAR(1),
        DefaultShipmentBoxTypeId VARCHAR(20),
        LotIdFilledIn VARCHAR(255),
+       AttributeSetId VARCHAR(255),
        Active TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
@@ -1962,6 +2086,7 @@
        IsPropertyInShippingBoxRemoved TINYINT(1),
        IsPropertyDefaultShipmentBoxTypeIdRemoved TINYINT(1),
        IsPropertyLotIdFilledInRemoved TINYINT(1),
+       IsPropertyAttributeSetIdRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (ProductId, Version)
     );

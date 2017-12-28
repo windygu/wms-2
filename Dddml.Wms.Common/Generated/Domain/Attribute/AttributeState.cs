@@ -146,6 +146,21 @@ namespace Dddml.Wms.Domain.Attribute
         }
 
 
+        private IAttributeAliasStates _aliases;
+      
+        public virtual IAttributeAliasStates Aliases
+        {
+            get
+            {
+                return this._aliases;
+            }
+            set
+            {
+                this._aliases = value;
+            }
+        }
+
+
         public virtual bool StateReadOnly { get; set; }
 
         bool IState.ReadOnly
@@ -184,6 +199,8 @@ namespace Dddml.Wms.Domain.Attribute
             this._forReapplying = forReapplying;
             _attributeValues = new AttributeValueStates(this);
 
+            _aliases = new AttributeAliasStates(this);
+
             InitializeProperties();
         }
 
@@ -193,6 +210,8 @@ namespace Dddml.Wms.Domain.Attribute
         public virtual void Save()
         {
             _attributeValues.Save();
+
+            _aliases.Save();
 
         }
 
@@ -232,6 +251,10 @@ namespace Dddml.Wms.Domain.Attribute
 
 			foreach (IAttributeValueStateCreated innerEvent in e.AttributeValueEvents) {
 				IAttributeValueState innerState = this.AttributeValues.Get(innerEvent.GlobalId.Value, true);
+				innerState.Mutate (innerEvent);
+			}
+			foreach (IAttributeAliasStateCreated innerEvent in e.AttributeAliasEvents) {
+				IAttributeAliasState innerState = this.Aliases.Get(innerEvent.GlobalId.Code, true);
 				innerState.Mutate (innerEvent);
 			}
 
@@ -392,6 +415,19 @@ namespace Dddml.Wms.Domain.Attribute
           
             }
 
+			foreach (IAttributeAliasStateEvent innerEvent in e.AttributeAliasEvents)
+            {
+                IAttributeAliasState innerState = this.Aliases.Get(innerEvent.GlobalId.Code);
+
+                innerState.Mutate(innerEvent);
+                var removed = innerEvent as IAttributeAliasStateRemoved;
+                if (removed != null)
+                {
+                    this.Aliases.Remove(innerState);
+                }
+          
+            }
+
 		}
 
 		public virtual void When(IAttributeStateDeleted e)
@@ -411,6 +447,18 @@ namespace Dddml.Wms.Domain.Attribute
                 ((AttributeValueStateEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddAttributeValueEvent(innerE);
+
+            }
+
+            foreach (var innerState in this.Aliases)
+            {
+                this.Aliases.Remove(innerState);
+                
+                var innerE = e.NewAttributeAliasStateRemoved(innerState.Code);
+                ((AttributeAliasStateEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((AttributeAliasStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                innerState.When(innerE);
+                //e.AddAttributeAliasEvent(innerE);
 
             }
 

@@ -429,6 +429,114 @@ namespace Dddml.Wms.Domain.Attribute
 
 
 
+        private AttributeAliasStateCreatedOrMergePatchedOrRemovedDtos _attributeAliasEvents = new AttributeAliasStateCreatedOrMergePatchedOrRemovedDtos();
+
+        public virtual AttributeAliasStateCreatedOrMergePatchedOrRemovedDto[] AttributeAliasEvents
+        {
+            get
+            {
+                return _attributeAliasEvents.ToArray();
+            }
+            set
+            {
+                _attributeAliasEvents.Clear();
+                _attributeAliasEvents.AddRange(value);
+            }
+        }
+
+
+
+        private AttributeAliasStateEventIdDto NewAttributeAliasStateEventId(string code)
+        {
+            var eId = new AttributeAliasStateEventIdDto();
+            eId.AttributeId = this.StateEventId.AttributeId;
+            eId.Code = code;
+            eId.AttributeVersion = this.StateEventId.Version;
+            return eId;
+        }
+
+        public virtual AttributeAliasStateCreatedDto NewAttributeAliasStateCreated(string code)
+        {
+            var e = new AttributeAliasStateCreatedDto();
+            var eId = NewAttributeAliasStateEventId(code);
+            e.StateEventId = eId;
+            return e;
+        }
+
+        public virtual AttributeAliasStateMergePatchedDto NewAttributeAliasStateMergePatched(string code)
+        {
+            var e = new AttributeAliasStateMergePatchedDto();
+            var eId = NewAttributeAliasStateEventId(code);
+            e.StateEventId = eId;
+            return e;
+        }
+
+        public virtual AttributeAliasStateRemovedDto NewAttributeAliasStateRemoved(string code)
+        {
+            var e = new AttributeAliasStateRemovedDto();
+            var eId = NewAttributeAliasStateEventId(code);
+            e.StateEventId = eId;
+            return e;
+        }
+
+        IEnumerable<IAttributeAliasStateCreated> IAttributeStateCreated.AttributeAliasEvents
+        {
+            get { return this._attributeAliasEvents; }
+        }
+
+        void IAttributeStateCreated.AddAttributeAliasEvent(IAttributeAliasStateCreated e)
+        {
+            this._attributeAliasEvents.AddAttributeAliasEvent(e);
+        }
+
+        IAttributeAliasStateCreated IAttributeStateCreated.NewAttributeAliasStateCreated(string code)
+        {
+            return NewAttributeAliasStateCreated(code);
+        }
+
+        IEnumerable<IAttributeAliasStateEvent> IAttributeStateMergePatched.AttributeAliasEvents
+        {
+            get { return this._attributeAliasEvents; }
+        }
+
+        void IAttributeStateMergePatched.AddAttributeAliasEvent(IAttributeAliasStateEvent e)
+        {
+            this._attributeAliasEvents.AddAttributeAliasEvent(e);
+        }
+
+        IAttributeAliasStateCreated IAttributeStateMergePatched.NewAttributeAliasStateCreated(string code)
+        {
+            return NewAttributeAliasStateCreated(code);
+        }
+
+        IAttributeAliasStateMergePatched IAttributeStateMergePatched.NewAttributeAliasStateMergePatched(string code)
+        {
+            return NewAttributeAliasStateMergePatched(code);
+        }
+
+        IAttributeAliasStateRemoved IAttributeStateMergePatched.NewAttributeAliasStateRemoved(string code)
+        {
+            return NewAttributeAliasStateRemoved(code);
+        }
+
+
+        IEnumerable<IAttributeAliasStateRemoved> IAttributeStateDeleted.AttributeAliasEvents
+        {
+            get { return this._attributeAliasEvents; }
+        }
+
+        void IAttributeStateDeleted.AddAttributeAliasEvent(IAttributeAliasStateRemoved e)
+        {
+            this._attributeAliasEvents.AddAttributeAliasEvent(e);
+        }
+
+        IAttributeAliasStateRemoved IAttributeStateDeleted.NewAttributeAliasStateRemoved(string code)
+        {
+            return NewAttributeAliasStateRemoved(code);
+        }
+
+
+
         AttributeStateEventId IAttributeStateEvent.StateEventId
         {
             get { return this.StateEventId.ToAttributeStateEventId(); }

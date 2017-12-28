@@ -61,6 +61,14 @@ namespace Dddml.Wms.Domain.Attribute
             }
             dto.AttributeValueEvents = attributeValueEvents.ToArray();
 
+            var attributeAliasEvents = new List<AttributeAliasStateCreatedDto>();
+            foreach (var ee in e.AttributeAliasEvents)
+            {
+                AttributeAliasStateCreatedDto eeDto = AttributeAliasStateEventDtoConverter.ToAttributeAliasStateCreatedDto(ee);
+                attributeAliasEvents.Add(eeDto);
+            }
+            dto.AttributeAliasEvents = attributeAliasEvents.ToArray();
+
             return dto;
         }
 
@@ -101,6 +109,14 @@ namespace Dddml.Wms.Domain.Attribute
             }
             dto.AttributeValueEvents = attributeValueEvents.ToArray();
 
+            var attributeAliasEvents = new List<AttributeAliasStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.AttributeAliasEvents)
+            {
+                AttributeAliasStateCreatedOrMergePatchedOrRemovedDto eeDto = AttributeAliasStateEventDtoConverter.ToAttributeAliasStateEventDto(ee);
+                attributeAliasEvents.Add(eeDto);
+            }
+            dto.AttributeAliasEvents = attributeAliasEvents.ToArray();
+
 
             return dto;
         }
@@ -121,6 +137,14 @@ namespace Dddml.Wms.Domain.Attribute
             }
             dto.AttributeValueEvents = attributeValueEvents.ToArray();
 
+            var attributeAliasEvents = new List<AttributeAliasStateRemovedDto>();
+            foreach (var ee in e.AttributeAliasEvents)
+            {
+                AttributeAliasStateRemovedDto eeDto = AttributeAliasStateEventDtoConverter.ToAttributeAliasStateRemovedDto(ee);
+                attributeAliasEvents.Add(eeDto);
+            }
+            dto.AttributeAliasEvents = attributeAliasEvents.ToArray();
+
 
             return dto;
         }
@@ -130,6 +154,14 @@ namespace Dddml.Wms.Domain.Attribute
             get
             {
                 return new AttributeValueStateEventDtoConverter();
+            }
+        }
+
+        protected virtual AttributeAliasStateEventDtoConverter AttributeAliasStateEventDtoConverter
+        {
+            get
+            {
+                return new AttributeAliasStateEventDtoConverter();
             }
         }
 

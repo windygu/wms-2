@@ -359,6 +359,81 @@ namespace Dddml.Wms.Domain.Attribute
             }
         }
 
+        ICreateAttributeAliasCommands ICreateAttribute.Aliases
+        {
+            get
+            {
+                return this._aliases;
+            }
+        }
+
+        IAttributeAliasCommands IMergePatchAttribute.AttributeAliasCommands
+        {
+            get
+            {
+                return this._aliases;
+            }
+        }
+
+        public virtual CreateAttributeAliasDto NewCreateAttributeAlias()
+        {
+            var c = new CreateAttributeAliasDto();
+            c.AttributeId = this.AttributeId;
+
+            return c;
+        }
+
+        ICreateAttributeAlias ICreateAttribute.NewCreateAttributeAlias()
+        {
+            return this.NewCreateAttributeAlias();
+        }
+
+        ICreateAttributeAlias IMergePatchAttribute.NewCreateAttributeAlias()
+        {
+            return this.NewCreateAttributeAlias();
+        }
+
+        public virtual MergePatchAttributeAliasDto NewMergePatchAttributeAlias()
+        {
+            var c = new MergePatchAttributeAliasDto();
+            c.AttributeId = this.AttributeId;
+
+            return c;
+        }
+
+        IMergePatchAttributeAlias IMergePatchAttribute.NewMergePatchAttributeAlias()
+        {
+            return this.NewMergePatchAttributeAlias();
+        }
+
+        public virtual RemoveAttributeAliasDto NewRemoveAttributeAlias()
+        {
+            var c = new RemoveAttributeAliasDto();
+            c.AttributeId = this.AttributeId;
+
+            return c;
+        }
+
+        IRemoveAttributeAlias IMergePatchAttribute.NewRemoveAttributeAlias()
+        {
+            return this.NewRemoveAttributeAlias();
+        }
+
+        private CreateOrMergePatchOrRemoveAttributeAliasDtos _aliases = new CreateOrMergePatchOrRemoveAttributeAliasDtos();
+
+        public virtual CreateOrMergePatchOrRemoveAttributeAliasDto[] Aliases
+        {
+            get
+            {
+                return _aliases.ToArray();
+            }
+            set
+            {
+                _aliases.Clear();
+                _aliases.AddRange(value);
+            }
+        }
+
 
         string ICommandDto.CommandType 
         {

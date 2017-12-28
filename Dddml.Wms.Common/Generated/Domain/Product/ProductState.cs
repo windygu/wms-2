@@ -275,6 +275,8 @@ namespace Dddml.Wms.Domain.Product
 
 			this.LotIdFilledIn = e.LotIdFilledIn;
 
+			this.AttributeSetId = e.AttributeSetId;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.CreatedBy = e.CreatedBy;
@@ -970,6 +972,18 @@ namespace Dddml.Wms.Domain.Product
 			else
 			{
 				this.LotIdFilledIn = e.LotIdFilledIn;
+			}
+
+			if (e.AttributeSetId == null)
+			{
+				if (e.IsPropertyAttributeSetIdRemoved)
+				{
+					this.AttributeSetId = default(string);
+				}
+			}
+			else
+			{
+				this.AttributeSetId = e.AttributeSetId;
 			}
 
 			if (e.Active == null)

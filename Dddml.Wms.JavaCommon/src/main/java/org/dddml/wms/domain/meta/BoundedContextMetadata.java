@@ -22,6 +22,7 @@ public class BoundedContextMetadata {
 
         map.put("Attribute", "Attribute");
         map.put("AttributeValue", "Attribute");
+        map.put("AttributeAlias", "Attribute");
         map.put("AttributeSet", "AttributeSet");
         map.put("AttributeUse", "AttributeSet");
         map.put("DocumentType", "DocumentType");
@@ -62,6 +63,7 @@ public class BoundedContextMetadata {
         map.put("AttributeSetInstanceExtensionField", "AttributeSetInstanceExtensionField");
         map.put("AttributeSetInstanceExtensionFieldGroup", "AttributeSetInstanceExtensionFieldGroup");
         map.put("AttributeValueMvo", "AttributeValueMvo");
+        map.put("AttributeAliasMvo", "AttributeAliasMvo");
         map.put("AttributeUseMvo", "AttributeUseMvo");
         map.put("InOutLineMvo", "InOutLineMvo");
         map.put("InventoryItemEntryMvo", "InventoryItemEntryMvo");

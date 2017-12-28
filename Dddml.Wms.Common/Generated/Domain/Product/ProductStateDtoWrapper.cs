@@ -1663,6 +1663,34 @@ namespace Dddml.Wms.Domain.Product
             }
         }
 
+		public virtual string AttributeSetId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetId"))
+                {
+                    return _state.AttributeSetId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.AttributeSetId = value;
+            }
+        }
+
+        string IProductStateProperties.AttributeSetId
+        {
+            get 
+            {
+                return (this._state as IProductStateProperties).AttributeSetId;
+            }
+            set 
+            {
+                (this._state as IProductStateProperties).AttributeSetId = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

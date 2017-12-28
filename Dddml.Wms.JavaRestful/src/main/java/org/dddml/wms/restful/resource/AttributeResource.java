@@ -204,6 +204,20 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{attributeId}/AttributeAlias/{code}") @GET
+    public AttributeAliasStateDto getAttributeAlias(@PathParam("attributeId") String attributeId, @PathParam("code") String code) {
+        try {
+
+            AttributeAliasState state = attributeApplicationService.getAttributeAlias(attributeId, code);
+            if (state == null) { return null; }
+            AttributeAliasStateDto.DtoConverter dtoConverter = new AttributeAliasStateDto.DtoConverter();
+            AttributeAliasStateDto stateDto = dtoConverter.toAttributeAliasStateDto(state);
+            dtoConverter.setAllFieldsReturned(true);
+            return stateDto;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  AttributeStateEventDtoConverter getAttributeStateEventDtoConverter() {
         return new AttributeStateEventDtoConverter();

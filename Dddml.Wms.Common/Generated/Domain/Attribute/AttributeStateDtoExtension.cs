@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         public static IAttributeCommand ToCreateOrMergePatchAttribute(this AttributeStateDtoWrapper state)
         {
-            return state.ToCreateOrMergePatchAttribute<CreateAttributeDto, MergePatchAttributeDto, CreateAttributeValueDto, MergePatchAttributeValueDto>();
+            return state.ToCreateOrMergePatchAttribute<CreateAttributeDto, MergePatchAttributeDto, CreateAttributeValueDto, MergePatchAttributeValueDto, CreateAttributeAliasDto, MergePatchAttributeAliasDto>();
         }
 
         public static DeleteAttributeDto ToDeleteAttribute(this AttributeStateDtoWrapper state)
@@ -27,12 +27,12 @@ namespace Dddml.Wms.Domain.Attribute
 
         public static MergePatchAttributeDto ToMergePatchAttribute(this AttributeStateDtoWrapper state)
         {
-            return state.ToMergePatchAttribute<MergePatchAttributeDto, CreateAttributeValueDto, MergePatchAttributeValueDto>();
+            return state.ToMergePatchAttribute<MergePatchAttributeDto, CreateAttributeValueDto, MergePatchAttributeValueDto, CreateAttributeAliasDto, MergePatchAttributeAliasDto>();
         }
 
         public static CreateAttributeDto ToCreateAttribute(this AttributeStateDtoWrapper state)
         {
-            return state.ToCreateAttribute<CreateAttributeDto, CreateAttributeValueDto>();
+            return state.ToCreateAttribute<CreateAttributeDto, CreateAttributeValueDto, CreateAttributeAliasDto>();
         }
 		
 

@@ -54,6 +54,83 @@
     <Content Include="src\main\java\org\dddml\wms\domain\AbstractStateEvent.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AbstractAttributeAliasMvoAggregate.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AbstractAttributeAliasMvoApplicationService.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AbstractAttributeAliasMvoCommand.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AbstractAttributeAliasMvoCommandDto.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AbstractAttributeAliasMvoState.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AbstractAttributeAliasMvoStateCommandConverter.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AbstractAttributeAliasMvoStateEvent.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoAggregate.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoApplicationService.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoCommand.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoState.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoStateDto.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoStateEvent.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoStateEventDto.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoStateEventDtoConverter.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoStateEventId.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoStateEventIdDto.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoStateQueryRepository.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\AttributeAliasMvoStateRepository.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\CreateOrMergePatchAttributeAliasMvoDto.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\DeleteAttributeAliasMvoDto.java">
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\GenerateAttributeAliasMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AbstractAttributeSetInstanceExtensionFieldGroupAggregate.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
@@ -600,6 +677,24 @@
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\AbstractAttributeAggregate.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AbstractAttributeAliasCommand.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AbstractAttributeAliasCommandDto.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AbstractAttributeAliasState.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AbstractAttributeAliasStateCommandConverter.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AbstractAttributeAliasStateEvent.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AbstractAttributeAliasStates.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\AbstractAttributeApplicationService.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
@@ -637,6 +732,63 @@
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAggregate.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasCommand.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasId.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasIdDto.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasIdDtoWrapper.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasIdFlattenedDto.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasState.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStateDao.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStateDto.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStateEvent.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStateEventDao.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStateEventDto.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStateEventDtoConverter.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStateEventId.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStateEventIdDto.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeAliasStates.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeApplicationService.java">
@@ -738,6 +890,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\AttributeValueStates.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\CreateOrMergePatchAttributeAliasDto.java">
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\CreateOrMergePatchAttributeDto.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
@@ -750,6 +905,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\GenerateAttributeDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attribute\RemoveAttributeAliasDto.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\RemoveAttributeValueDto.java">
@@ -1864,6 +2022,18 @@
     <Content Include="src\main\java\org\dddml\wms\domain\locator\LocatorTreeLocatorStateQueryRepository.java">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeAliasFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeAliasMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeAliasMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeAliasMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
@@ -1931,6 +2101,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomainAggregatesMetadata.txt</LastGenOutput>
       <LastOutputs>
+.\AttributeAliasFilteringProperties.java
+.\AttributeAliasMetadata.java
+.\AttributeAliasMvoFilteringProperties.java
+.\AttributeAliasMvoMetadata.java
 .\AttributeFilteringProperties.java
 .\AttributeMetadata.java
 .\AttributeSetFilteringProperties.java
@@ -5027,6 +5201,12 @@
       <LastGenOutput>GenerateAttributeDomain.txt</LastGenOutput>
       <LastOutputs>
 .\AbstractAttributeAggregate.java
+.\AbstractAttributeAliasCommand.java
+.\AbstractAttributeAliasCommandDto.java
+.\AbstractAttributeAliasState.java
+.\AbstractAttributeAliasStateCommandConverter.java
+.\AbstractAttributeAliasStateEvent.java
+.\AbstractAttributeAliasStates.java
 .\AbstractAttributeApplicationService.java
 .\AbstractAttributeCommand.java
 .\AbstractAttributeCommandDto.java
@@ -5040,6 +5220,25 @@
 .\AbstractAttributeValueStateEvent.java
 .\AbstractAttributeValueStates.java
 .\AttributeAggregate.java
+.\AttributeAliasCommand.java
+.\AttributeAliasId.java
+.\AttributeAliasIdDto.java
+.\AttributeAliasIdDtoWrapper.java
+.\AttributeAliasIdFlattenedDto.java
+.\AttributeAliasIdFlattenedDtoFormatter.java
+.\AttributeAliasState.java
+.\AttributeAliasStateDao.java
+.\AttributeAliasStateDto.java
+.\AttributeAliasStateEvent.java
+.\AttributeAliasStateEventDao.java
+.\AttributeAliasStateEventDto.java
+.\AttributeAliasStateEventDtoConverter.java
+.\AttributeAliasStateEventId.java
+.\AttributeAliasStateEventIdDto.java
+.\AttributeAliasStateEventIdDtoWrapper.java
+.\AttributeAliasStateEventIdFlattenedDto.java
+.\AttributeAliasStateEventIdFlattenedDtoFormatter.java
+.\AttributeAliasStates.java
 .\AttributeApplicationService.java
 .\AttributeCommand.java
 .\AttributeState.java
@@ -5073,10 +5272,12 @@
 .\AttributeValueStateEventIdFlattenedDto.java
 .\AttributeValueStateEventIdFlattenedDtoFormatter.java
 .\AttributeValueStates.java
+.\CreateOrMergePatchAttributeAliasDto.java
 .\CreateOrMergePatchAttributeDto.java
 .\CreateOrMergePatchAttributeValueDto.java
 .\DeleteAttributeDto.java
 .\GenerateAttributeDomain.txt
+.\RemoveAttributeAliasDto.java
 .\RemoveAttributeValueDto.java
 </LastOutputs>
     </Content>
@@ -6341,6 +6542,37 @@
 .\CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.java
 .\DeleteAttributeSetInstanceExtensionFieldDto.java
 .\GenerateAttributeSetInstanceExtensionFieldDomain.txt
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\GenerateAttributeAliasMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeAliasMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractAttributeAliasMvoAggregate.java
+.\AbstractAttributeAliasMvoApplicationService.java
+.\AbstractAttributeAliasMvoCommand.java
+.\AbstractAttributeAliasMvoCommandDto.java
+.\AbstractAttributeAliasMvoState.java
+.\AbstractAttributeAliasMvoStateCommandConverter.java
+.\AbstractAttributeAliasMvoStateEvent.java
+.\AttributeAliasMvoAggregate.java
+.\AttributeAliasMvoApplicationService.java
+.\AttributeAliasMvoCommand.java
+.\AttributeAliasMvoState.java
+.\AttributeAliasMvoStateDto.java
+.\AttributeAliasMvoStateEvent.java
+.\AttributeAliasMvoStateEventDto.java
+.\AttributeAliasMvoStateEventDtoConverter.java
+.\AttributeAliasMvoStateEventId.java
+.\AttributeAliasMvoStateEventIdDto.java
+.\AttributeAliasMvoStateEventIdDtoWrapper.java
+.\AttributeAliasMvoStateEventIdFlattenedDto.java
+.\AttributeAliasMvoStateEventIdFlattenedDtoFormatter.java
+.\AttributeAliasMvoStateQueryRepository.java
+.\AttributeAliasMvoStateRepository.java
+.\CreateOrMergePatchAttributeAliasMvoDto.java
+.\DeleteAttributeAliasMvoDto.java
+.\GenerateAttributeAliasMvoDomain.txt
 </LastOutputs>
     </Content>
   </ItemGroup>

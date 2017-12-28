@@ -166,6 +166,8 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual string LotIdFilledIn { get; set; }
 
+		public virtual string AttributeSetId { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 
@@ -313,6 +315,8 @@ namespace Dddml.Wms.Domain.Product
 		public virtual bool IsPropertyDefaultShipmentBoxTypeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyLotIdFilledInRemoved { get; set; }
+
+		public virtual bool IsPropertyAttributeSetIdRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

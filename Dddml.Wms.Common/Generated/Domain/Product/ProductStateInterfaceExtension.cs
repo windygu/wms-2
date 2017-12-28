@@ -105,6 +105,7 @@ namespace Dddml.Wms.Domain.Product
             cmd.InShippingBox = state.InShippingBox;
             cmd.DefaultShipmentBoxTypeId = state.DefaultShipmentBoxTypeId;
             cmd.LotIdFilledIn = state.LotIdFilledIn;
+            cmd.AttributeSetId = state.AttributeSetId;
             cmd.Active = ((IProductStateProperties)state).Active;
             
             if (state.ProductTypeId == null) { cmd.IsPropertyProductTypeIdRemoved = true; }
@@ -164,6 +165,7 @@ namespace Dddml.Wms.Domain.Product
             if (state.InShippingBox == null) { cmd.IsPropertyInShippingBoxRemoved = true; }
             if (state.DefaultShipmentBoxTypeId == null) { cmd.IsPropertyDefaultShipmentBoxTypeIdRemoved = true; }
             if (state.LotIdFilledIn == null) { cmd.IsPropertyLotIdFilledInRemoved = true; }
+            if (state.AttributeSetId == null) { cmd.IsPropertyAttributeSetIdRemoved = true; }
             return cmd;
         }
 
@@ -232,6 +234,7 @@ namespace Dddml.Wms.Domain.Product
             cmd.InShippingBox = state.InShippingBox;
             cmd.DefaultShipmentBoxTypeId = state.DefaultShipmentBoxTypeId;
             cmd.LotIdFilledIn = state.LotIdFilledIn;
+            cmd.AttributeSetId = state.AttributeSetId;
             cmd.Active = ((IProductStateProperties)state).Active;
             return cmd;
         }

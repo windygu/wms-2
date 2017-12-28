@@ -6,6 +6,14 @@
     (`AttributeId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+alter TABLE `AttributeAlias` add
+  CONSTRAINT `FK_AttributeAlias_Attribute_StateId` 
+  FOREIGN KEY 
+    (`AttributeAliasIdAttributeId`) 
+  REFERENCES `Attributes` 
+    (`AttributeId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 alter TABLE `AttributeUses` add
   CONSTRAINT `FK_AttributeUse_AttributeSet_StateId` 
   FOREIGN KEY 

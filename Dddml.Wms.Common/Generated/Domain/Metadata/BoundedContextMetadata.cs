@@ -61,6 +61,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("AttributeSetInstanceExtensionField");
             _aggregateNames.Add("AttributeSetInstanceExtensionFieldGroup");
             _aggregateNames.Add("AttributeValueMvo");
+            _aggregateNames.Add("AttributeAliasMvo");
             _aggregateNames.Add("AttributeUseMvo");
             _aggregateNames.Add("InOutLineMvo");
             _aggregateNames.Add("InventoryItemEntryMvo");
@@ -104,6 +105,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("AttributeSetInstanceExtensionField", "Dddml.Wms.Domain.AttributeSetInstanceExtensionField");
             _aggregateNamespaces.Add("AttributeSetInstanceExtensionFieldGroup", "Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup");
             _aggregateNamespaces.Add("AttributeValueMvo", "Dddml.Wms.Domain.AttributeValueMvo");
+            _aggregateNamespaces.Add("AttributeAliasMvo", "Dddml.Wms.Domain.AttributeAliasMvo");
             _aggregateNamespaces.Add("AttributeUseMvo", "Dddml.Wms.Domain.AttributeUseMvo");
             _aggregateNamespaces.Add("InOutLineMvo", "Dddml.Wms.Domain.InOutLineMvo");
             _aggregateNamespaces.Add("InventoryItemEntryMvo", "Dddml.Wms.Domain.InventoryItemEntryMvo");

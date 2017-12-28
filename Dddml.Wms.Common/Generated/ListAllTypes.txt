@@ -5,6 +5,7 @@
            
             //foreach (var t in allTypes)
             //{
+                dict.Add("AttributeAliasId", "_ATTRIBUTEALIASID_");
                 dict.Add("AttributeSetAttributeUseId", "_ATTRIBUTESETATTRIBUTEUSEID_");
                 dict.Add("AttributeValueId", "_ATTRIBUTEVALUEID_");
                 dict.Add("InOutLineId", "_INOUTLINEID_");
@@ -24,6 +25,7 @@
                 dict.Add("ShipmentItemId", "_SHIPMENTITEMID_");
                 dict.Add("SupplierProductId", "_SUPPLIERPRODUCTID_");
 // //////////////////////
+                dict.Add("AttributeAlias", "_ATTRIBUTEALIAS_");
                 dict.Add("AttributeUse", "_ATTRIBUTEUSE_");
                 dict.Add("AttributeValue", "_ATTRIBUTEVALUE_");
                 dict.Add("bool", "_BOOL_");

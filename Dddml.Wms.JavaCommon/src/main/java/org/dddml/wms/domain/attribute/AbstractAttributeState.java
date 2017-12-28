@@ -242,6 +242,18 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         this.attributeValues = attributeValues;
     }
 
+    private AttributeAliasStates aliases;
+
+    public AttributeAliasStates getAliases()
+    {
+        return this.aliases;
+    }
+
+    public void setAliases(AttributeAliasStates aliases)
+    {
+        this.aliases = aliases;
+    }
+
     private Boolean stateReadOnly;
 
     public Boolean getStateReadOnly() { return this.stateReadOnly; }
@@ -282,6 +294,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
     
     protected void initializeProperties() {
         attributeValues = new SimpleAttributeValueStates(this);
+        aliases = new SimpleAttributeAliasStates(this);
     }
 
 
@@ -321,6 +334,10 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
 
         for (AttributeValueStateEvent.AttributeValueStateCreated innerEvent : e.getAttributeValueEvents()) {
             AttributeValueState innerState = this.getAttributeValues().get(innerEvent.getStateEventId().getValue());
+            innerState.mutate(innerEvent);
+        }
+        for (AttributeAliasStateEvent.AttributeAliasStateCreated innerEvent : e.getAttributeAliasEvents()) {
+            AttributeAliasState innerState = this.getAliases().get(innerEvent.getStateEventId().getCode());
             innerState.mutate(innerEvent);
         }
     }
@@ -463,6 +480,15 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
                 this.getAttributeValues().remove(innerState);
             }
         }
+        for (AttributeAliasStateEvent innerEvent : e.getAttributeAliasEvents()) {
+            AttributeAliasState innerState = this.getAliases().get(innerEvent.getStateEventId().getCode());
+            innerState.mutate(innerEvent);
+            if (innerEvent instanceof AttributeAliasStateEvent.AttributeAliasStateRemoved)
+            {
+                //AttributeAliasStateEvent.AttributeAliasStateRemoved removed = (AttributeAliasStateEvent.AttributeAliasStateRemoved)innerEvent;
+                this.getAliases().remove(innerState);
+            }
+        }
     }
 
     public void when(AttributeStateDeleted e)
@@ -483,11 +509,23 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
             innerState.when(innerE);
             //e.addAttributeValueEvent(innerE);
         }
+        for (AttributeAliasState innerState : this.getAliases())
+        {
+            this.getAliases().remove(innerState);
+        
+            AttributeAliasStateEvent.AttributeAliasStateRemoved innerE = e.newAttributeAliasStateRemoved(innerState.getCode());
+            innerE.setCreatedAt(e.getCreatedAt());
+            innerE.setCreatedBy(e.getCreatedBy());
+            innerState.when(innerE);
+            //e.addAttributeAliasEvent(innerE);
+        }
     }
 
     public void save()
     {
         attributeValues.save();
+
+        aliases.save();
 
     }
 
@@ -531,6 +569,14 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
     static class SimpleAttributeValueStates extends AbstractAttributeValueStates
     {
         public SimpleAttributeValueStates(AbstractAttributeState outerState)
+        {
+            super(outerState);
+        }
+    }
+
+    static class SimpleAttributeAliasStates extends AbstractAttributeAliasStates
+    {
+        public SimpleAttributeAliasStates(AbstractAttributeState outerState)
         {
             super(outerState);
         }

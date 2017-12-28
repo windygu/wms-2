@@ -28,5 +28,7 @@ public interface AttributeStateQueryRepository
 
     AttributeValueState getAttributeValue(String attributeId, String value);
 
+    AttributeAliasState getAttributeAlias(String attributeId, String code);
+
 }
 

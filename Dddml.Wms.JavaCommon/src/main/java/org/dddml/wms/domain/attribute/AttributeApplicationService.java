@@ -36,5 +36,7 @@ public interface AttributeApplicationService
 
     AttributeValueState getAttributeValue(String attributeId, String value);
 
+    AttributeAliasState getAttributeAlias(String attributeId, String code);
+
 }
 

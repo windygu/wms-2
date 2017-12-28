@@ -286,6 +286,17 @@ public class AttributeStateEventDto extends AbstractStateEvent
     }
 
 
+    private AttributeAliasStateEventDto[] attributeAliasEvents;
+
+    public AttributeAliasStateEventDto[] getAttributeAliasEvents() {
+        return this.attributeAliasEvents;
+    }
+
+    public void setAttributeAliasEvents(AttributeAliasStateEventDto[] events) {
+        this.attributeAliasEvents = events;
+    }
+
+
 	public static class AttributeStateCreatedDto extends AttributeStateEventDto
 	{
         @Override

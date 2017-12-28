@@ -54,6 +54,10 @@ namespace Dddml.Wms.Domain.Attribute
 
         ICreateAttributeValue NewCreateAttributeValue();
 
+        ICreateAttributeAliasCommands Aliases { get; }
+
+        ICreateAttributeAlias NewCreateAttributeAlias();
+
 	}
 
 	public interface IMergePatchAttribute : ICreateOrMergePatchOrDeleteAttribute
@@ -89,6 +93,14 @@ namespace Dddml.Wms.Domain.Attribute
 
         IRemoveAttributeValue NewRemoveAttributeValue();
 
+        IAttributeAliasCommands AttributeAliasCommands { get; }
+
+        ICreateAttributeAlias NewCreateAttributeAlias();
+
+        IMergePatchAttributeAlias NewMergePatchAttributeAlias();
+
+        IRemoveAttributeAlias NewRemoveAttributeAlias();
+
 
 	}
 
@@ -111,6 +123,26 @@ namespace Dddml.Wms.Domain.Attribute
         void Add(IAttributeValueCommand c);
 
         void Remove(IAttributeValueCommand c);
+
+        void Clear();
+
+    }
+
+    public interface ICreateAttributeAliasCommands : IEnumerable<ICreateAttributeAlias>
+    {
+        void Add(ICreateAttributeAlias c);
+
+        void Remove(ICreateAttributeAlias c);
+
+        void Clear();
+
+    }
+
+    public interface IAttributeAliasCommands : IEnumerable<IAttributeAliasCommand>
+    {
+        void Add(IAttributeAliasCommand c);
+
+        void Remove(IAttributeAliasCommand c);
 
         void Clear();
 

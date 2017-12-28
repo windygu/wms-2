@@ -77,6 +77,12 @@ public interface AttributeStateEvent extends Event
 
         AttributeValueStateEvent.AttributeValueStateCreated newAttributeValueStateCreated(String value);
 
+        Iterable<AttributeAliasStateEvent.AttributeAliasStateCreated> getAttributeAliasEvents();
+        
+        void addAttributeAliasEvent(AttributeAliasStateEvent.AttributeAliasStateCreated e);
+
+        AttributeAliasStateEvent.AttributeAliasStateCreated newAttributeAliasStateCreated(String code);
+
     
     }
 
@@ -137,6 +143,16 @@ public interface AttributeStateEvent extends Event
 
         AttributeValueStateEvent.AttributeValueStateRemoved newAttributeValueStateRemoved(String value);
 
+        Iterable<AttributeAliasStateEvent> getAttributeAliasEvents();
+        
+        void addAttributeAliasEvent(AttributeAliasStateEvent e);
+
+        AttributeAliasStateEvent.AttributeAliasStateCreated newAttributeAliasStateCreated(String code);
+
+        AttributeAliasStateEvent.AttributeAliasStateMergePatched newAttributeAliasStateMergePatched(String code);
+
+        AttributeAliasStateEvent.AttributeAliasStateRemoved newAttributeAliasStateRemoved(String code);
+
 
     }
 
@@ -147,6 +163,12 @@ public interface AttributeStateEvent extends Event
         void addAttributeValueEvent(AttributeValueStateEvent.AttributeValueStateRemoved e);
         
         AttributeValueStateEvent.AttributeValueStateRemoved newAttributeValueStateRemoved(String value);
+
+        Iterable<AttributeAliasStateEvent.AttributeAliasStateRemoved> getAttributeAliasEvents();
+        
+        void addAttributeAliasEvent(AttributeAliasStateEvent.AttributeAliasStateRemoved e);
+        
+        AttributeAliasStateEvent.AttributeAliasStateRemoved newAttributeAliasStateRemoved(String code);
 
     }
 

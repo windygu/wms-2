@@ -272,6 +272,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Filters\SetRequesterIdAttribute.cs" />
+    <Compile Include="Generated\Controllers\AttributeAliasMvosController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\AttributesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -455,6 +458,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesControllers.txt</LastGenOutput>
       <LastOutputs>
+.\AttributeAliasMvosController.cs
 .\AttributesController.cs
 .\AttributeSetInstanceExtensionFieldGroupsController.cs
 .\AttributeSetInstanceExtensionFieldsController.cs

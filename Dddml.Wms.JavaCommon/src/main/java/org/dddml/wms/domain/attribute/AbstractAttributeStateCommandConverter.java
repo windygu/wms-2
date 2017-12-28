@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
-public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute extends AttributeCommand.CreateAttribute, TMergePatchAttribute extends AttributeCommand.MergePatchAttribute, TDeleteAttribute extends AttributeCommand.DeleteAttribute, TCreateAttributeValue extends AttributeValueCommand.CreateAttributeValue, TMergePatchAttributeValue extends AttributeValueCommand.MergePatchAttributeValue, TRemoveAttributeValue extends AttributeValueCommand.RemoveAttributeValue>
+public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute extends AttributeCommand.CreateAttribute, TMergePatchAttribute extends AttributeCommand.MergePatchAttribute, TDeleteAttribute extends AttributeCommand.DeleteAttribute, TCreateAttributeValue extends AttributeValueCommand.CreateAttributeValue, TMergePatchAttributeValue extends AttributeValueCommand.MergePatchAttributeValue, TRemoveAttributeValue extends AttributeValueCommand.RemoveAttributeValue, TCreateAttributeAlias extends AttributeAliasCommand.CreateAttributeAlias, TMergePatchAttributeAlias extends AttributeAliasCommand.MergePatchAttributeAlias, TRemoveAttributeAlias extends AttributeAliasCommand.RemoveAttributeAlias>
 {
     public AttributeCommand toCreateOrMergePatchAttribute(AttributeState state)
     {
@@ -65,6 +65,11 @@ public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute ex
             AttributeValueCommand c = getAttributeValueStateCommandConverter().toCreateOrMergePatchAttributeValue(d);
             cmd.getAttributeValueCommands().add(c);
         }
+        for (AttributeAliasState d : state.getAliases())
+        {
+            AttributeAliasCommand c = getAttributeAliasStateCommandConverter().toCreateOrMergePatchAttributeAlias(d);
+            cmd.getAttributeAliasCommands().add(c);
+        }
         return cmd;
     }
 
@@ -90,11 +95,19 @@ public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute ex
             AttributeValueCommand.CreateAttributeValue c = getAttributeValueStateCommandConverter().toCreateAttributeValue(d);
             cmd.getAttributeValues().add(c);
         }
+        for (AttributeAliasState d : state.getAliases())
+        {
+            AttributeAliasCommand.CreateAttributeAlias c = getAttributeAliasStateCommandConverter().toCreateAttributeAlias(d);
+            cmd.getAliases().add(c);
+        }
         return cmd;
     }
 
     protected abstract AbstractAttributeValueStateCommandConverter<TCreateAttributeValue, TMergePatchAttributeValue, TRemoveAttributeValue>
         getAttributeValueStateCommandConverter();
+
+    protected abstract AbstractAttributeAliasStateCommandConverter<TCreateAttributeAlias, TMergePatchAttributeAlias, TRemoveAttributeAlias>
+        getAttributeAliasStateCommandConverter();
 
     protected abstract TCreateAttribute newCreateAttribute();
 
@@ -102,7 +115,7 @@ public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute ex
 
     protected abstract TDeleteAttribute newDeleteAttribute();
 
-    public static class SimpleAttributeStateCommandConverter extends AbstractAttributeStateCommandConverter<AbstractAttributeCommand.SimpleCreateAttribute, AbstractAttributeCommand.SimpleMergePatchAttribute, AbstractAttributeCommand.SimpleDeleteAttribute, AbstractAttributeValueCommand.SimpleCreateAttributeValue, AbstractAttributeValueCommand.SimpleMergePatchAttributeValue, AbstractAttributeValueCommand.SimpleRemoveAttributeValue>
+    public static class SimpleAttributeStateCommandConverter extends AbstractAttributeStateCommandConverter<AbstractAttributeCommand.SimpleCreateAttribute, AbstractAttributeCommand.SimpleMergePatchAttribute, AbstractAttributeCommand.SimpleDeleteAttribute, AbstractAttributeValueCommand.SimpleCreateAttributeValue, AbstractAttributeValueCommand.SimpleMergePatchAttributeValue, AbstractAttributeValueCommand.SimpleRemoveAttributeValue, AbstractAttributeAliasCommand.SimpleCreateAttributeAlias, AbstractAttributeAliasCommand.SimpleMergePatchAttributeAlias, AbstractAttributeAliasCommand.SimpleRemoveAttributeAlias>
     {
         @Override
         protected AbstractAttributeCommand.SimpleCreateAttribute newCreateAttribute() {
@@ -123,6 +136,12 @@ public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute ex
         protected AbstractAttributeValueStateCommandConverter<AbstractAttributeValueCommand.SimpleCreateAttributeValue, AbstractAttributeValueCommand.SimpleMergePatchAttributeValue, AbstractAttributeValueCommand.SimpleRemoveAttributeValue> getAttributeValueStateCommandConverter()
         {
             return new AbstractAttributeValueStateCommandConverter.SimpleAttributeValueStateCommandConverter();
+        }
+
+        @Override
+        protected AbstractAttributeAliasStateCommandConverter<AbstractAttributeAliasCommand.SimpleCreateAttributeAlias, AbstractAttributeAliasCommand.SimpleMergePatchAttributeAlias, AbstractAttributeAliasCommand.SimpleRemoveAttributeAlias> getAttributeAliasStateCommandConverter()
+        {
+            return new AbstractAttributeAliasStateCommandConverter.SimpleAttributeAliasStateCommandConverter();
         }
 
 

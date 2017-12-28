@@ -225,10 +225,22 @@ public class AttributeStateDto
         this.attributeValues = attributeValues;
     }
 
+    private AttributeAliasStateDto[] aliases;
+
+    public AttributeAliasStateDto[] getAliases()
+    {
+        return this.aliases;
+    }	
+
+    public void setAliases(AttributeAliasStateDto[] aliases)
+    {
+        this.aliases = aliases;
+    }
+
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"AttributeValues"});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"AttributeValues", "Aliases"});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -313,6 +325,18 @@ public class AttributeStateDto
                     }
                 }
                 dto.setAttributeValues(arrayList.toArray(new AttributeValueStateDto[0]));
+            }
+            if (returnedFieldsContains("Aliases")) {
+                ArrayList<AttributeAliasStateDto> arrayList = new ArrayList();
+                if (state.getAliases() != null) {
+                    AttributeAliasStateDto.DtoConverter conv = new AttributeAliasStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "Aliases");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (AttributeAliasState s : state.getAliases()) {
+                        arrayList.add(conv.toAttributeAliasStateDto(s));
+                    }
+                }
+                dto.setAliases(arrayList.toArray(new AttributeAliasStateDto[0]));
             }
             return dto;
         }

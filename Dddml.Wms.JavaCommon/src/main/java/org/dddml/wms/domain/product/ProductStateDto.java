@@ -705,6 +705,18 @@ public class ProductStateDto
         this.lotIdFilledIn = lotIdFilledIn;
     }
 
+    private String attributeSetId;
+
+    public String getAttributeSetId()
+    {
+        return this.attributeSetId;
+    }
+
+    public void setAttributeSetId(String attributeSetId)
+    {
+        this.attributeSetId = attributeSetId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -976,6 +988,9 @@ public class ProductStateDto
             }
             if (returnedFieldsContains("LotIdFilledIn")) {
                 dto.setLotIdFilledIn(state.getLotIdFilledIn());
+            }
+            if (returnedFieldsContains("AttributeSetId")) {
+                dto.setAttributeSetId(state.getAttributeSetId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());
