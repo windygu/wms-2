@@ -29,7 +29,7 @@ public abstract class AbstractSellableInventoryItemEntryStateCommandConverter<TC
         TCreateSellableInventoryItemEntry cmd = newCreateSellableInventoryItemEntry();
 
         cmd.setEntrySeqId(state.getEntrySeqId());
-        cmd.setQuantitySellable(state.getQuantitySellable());
+        cmd.setSellableQuantity(state.getSellableQuantity());
         cmd.setSourceEventId(state.getSourceEventId());
         cmd.setSellableInventoryItemId(state.getSellableInventoryItemId());
         return cmd;

@@ -29,14 +29,14 @@ public class SellableInventoryItemEntryStateEventDto extends AbstractStateEvent
         getStateEventId().setEntrySeqId(entrySeqId);
     }
 
-    private BigDecimal quantitySellable;
+    private BigDecimal sellableQuantity;
 
-    public BigDecimal getQuantitySellable() {
-        return this.quantitySellable;
+    public BigDecimal getSellableQuantity() {
+        return this.sellableQuantity;
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable) {
-        this.quantitySellable = quantitySellable;
+    public void setSellableQuantity(BigDecimal sellableQuantity) {
+        this.sellableQuantity = sellableQuantity;
     }
 
     private InventoryPRTriggeredIdDto sourceEventId = new InventoryPRTriggeredIdDto();
@@ -79,14 +79,14 @@ public class SellableInventoryItemEntryStateEventDto extends AbstractStateEvent
         this.version = version;
     }
 
-    private Boolean isPropertyQuantitySellableRemoved;
+    private Boolean isPropertySellableQuantityRemoved;
 
-    public Boolean getIsPropertyQuantitySellableRemoved() {
-        return this.isPropertyQuantitySellableRemoved;
+    public Boolean getIsPropertySellableQuantityRemoved() {
+        return this.isPropertySellableQuantityRemoved;
     }
 
-    public void setIsPropertyQuantitySellableRemoved(Boolean removed) {
-        this.isPropertyQuantitySellableRemoved = removed;
+    public void setIsPropertySellableQuantityRemoved(Boolean removed) {
+        this.isPropertySellableQuantityRemoved = removed;
     }
 
     private Boolean isPropertySourceEventIdRemoved;

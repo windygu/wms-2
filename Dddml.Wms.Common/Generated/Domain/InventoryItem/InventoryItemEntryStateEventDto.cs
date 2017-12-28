@@ -36,15 +36,15 @@ namespace Dddml.Wms.Domain.InventoryItem
             set { StateEventId.EntrySeqId = value; }
         }
 
-		public virtual decimal? QuantityOnHand { get; set; }
+		public virtual decimal? OnHandQuantity { get; set; }
 
-		public virtual decimal? QuantityInTransit { get; set; }
+		public virtual decimal? InTransitQuantity { get; set; }
 
-		public virtual decimal? QuantityReserved { get; set; }
+		public virtual decimal? ReservedQuantity { get; set; }
 
-		public virtual decimal? QuantityOccupied { get; set; }
+		public virtual decimal? OccupiedQuantity { get; set; }
 
-		public virtual decimal? QuantityVirtual { get; set; }
+		public virtual decimal? VirtualQuantity { get; set; }
 
 		private InventoryItemSourceInfoDto _source = new InventoryItemSourceInfoDto();
 

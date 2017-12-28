@@ -14,7 +14,7 @@
 
 	<version name="SellableInventoryItemVersion" column="SellableInventoryItemVersion" type="long" unsaved-value="0"/>
 
-    <property name="QuantitySellable" ></property>
+    <property name="SellableQuantity" ></property>
     <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId" unique="true">
         <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
         <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
@@ -25,7 +25,7 @@
     <property name="Version" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
-    <property name="SellableInventoryItemQuantitySellable" ></property>
+    <property name="SellableInventoryItemSellableQuantity" ></property>
     <property name="SellableInventoryItemCreatedBy" ></property>
     <property name="SellableInventoryItemCreatedAt" ></property>
     <property name="SellableInventoryItemUpdatedBy" ></property>

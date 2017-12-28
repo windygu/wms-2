@@ -19,8 +19,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         public const string QuantityReservedUpdateProductRequiredTotal = "R->PrdRequiredTotal";
         public const string QuantityInTransitUpdateProductRequiredTotal = "IT->PrdRequiredTotal";
 
-        public const string OutputAccountNameQuantitySellable = "QuantitySellable";
-        public const string OutputAccountNameQuantityRequired = "QuantityRequired";
+        public const string OutputAccountNameSellableQuantity = "SellableQuantity";
+        public const string OutputAccountNameRequiredQuantity = "RequiredQuantity";
 
     }
 }

@@ -16,7 +16,7 @@
 	</composite-id>
 	<version name="sellableInventoryItemVersion" column="SellableInventoryItemVersion" type="long" />
 
-	<property name="quantitySellable" ></property>
+	<property name="sellableQuantity" ></property>
 	<component name="sourceEventId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId" unique="true">
 		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
 		<property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
@@ -27,7 +27,7 @@
 	<property name="version" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
-	<property name="sellableInventoryItemQuantitySellable" ></property>
+	<property name="sellableInventoryItemSellableQuantity" ></property>
 	<property name="sellableInventoryItemCreatedBy" ></property>
 	<property name="sellableInventoryItemCreatedAt" ></property>
 	<property name="sellableInventoryItemUpdatedBy" ></property>

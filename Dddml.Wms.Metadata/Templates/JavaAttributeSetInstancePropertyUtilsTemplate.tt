@@ -1,6 +1,5 @@
 ﻿<#@ template language="C#" debug="True" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" #>
 <#+
 // <copyright file="JavaAttributeSetInstanceExtensionFieldUtilsTemplate.tt" company="dddml.org">
 //  Copyright © . All Rights Reserved.
@@ -8,11 +7,16 @@
 
 public class JavaAttributeSetInstancePropertyUtilsTemplate : CSharpTemplate
 {
+    IList<ExtensionFieldMetadata> _extensionFields;
+
+    public JavaAttributeSetInstancePropertyUtilsTemplate(IList<ExtensionFieldMetadata> extensionFields)
+    {
+        this._extensionFields = extensionFields;
+    }
+
 	public override string TransformText()
 	{
 		base.TransformText();
-
-		var extensionFields = AttributeSetInstanceExtensionFieldMetadataUtils.GetAllExtensionFields();
 
 #>
 package org.dddml.wms.support;
@@ -71,7 +75,7 @@ public class AttributeSetInstancePropertyUtils {
         sb.append("Description").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
         sb.append("Active").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
 <#+ 
-			foreach (var fMeta in extensionFields)
+			foreach (var fMeta in this._extensionFields)
 			{
 				if (fMeta.Type.Equals("string", StringComparison.InvariantCultureIgnoreCase))
 				{ 
@@ -108,7 +112,7 @@ public class AttributeSetInstancePropertyUtils {
                 || !propertyEquals(instance1.getDescription(), instance2.getDescription())
                 || !propertyEquals(instance1.getActive(), instance2.getActive())
 <#+ 
-		foreach (var fMeta in extensionFields)
+		foreach (var fMeta in this._extensionFields)
 		{
 #>
                 || !propertyEquals(instance1.get<#= fMeta.Name #>(), instance2.get<#= fMeta.Name #>())

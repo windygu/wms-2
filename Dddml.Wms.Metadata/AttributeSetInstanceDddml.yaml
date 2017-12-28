@@ -1,6 +1,4 @@
-﻿
-
-#%DDDML 0.1
+﻿#%DDDML 0.1
 
 ---
 
@@ -1866,4 +1864,3 @@ aggregates:
           type: string
           length: 50
 
-        

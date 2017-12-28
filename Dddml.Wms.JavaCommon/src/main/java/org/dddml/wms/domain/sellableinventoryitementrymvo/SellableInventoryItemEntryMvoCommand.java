@@ -39,9 +39,9 @@ public interface SellableInventoryItemEntryMvoCommand extends Command
 
     interface CreateOrMergePatchSellableInventoryItemEntryMvo extends SellableInventoryItemEntryMvoCommand
     {
-        BigDecimal getQuantitySellable();
+        BigDecimal getSellableQuantity();
 
-        void setQuantitySellable(BigDecimal quantitySellable);
+        void setSellableQuantity(BigDecimal sellableQuantity);
 
         InventoryPRTriggeredId getSourceEventId();
 
@@ -55,9 +55,9 @@ public interface SellableInventoryItemEntryMvoCommand extends Command
 
         void setActive(Boolean active);
 
-        BigDecimal getSellableInventoryItemQuantitySellable();
+        BigDecimal getSellableInventoryItemSellableQuantity();
 
-        void setSellableInventoryItemQuantitySellable(BigDecimal sellableInventoryItemQuantitySellable);
+        void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity);
 
         String getSellableInventoryItemCreatedBy();
 
@@ -83,9 +83,9 @@ public interface SellableInventoryItemEntryMvoCommand extends Command
 
     interface MergePatchSellableInventoryItemEntryMvo extends CreateOrMergePatchSellableInventoryItemEntryMvo
     {
-        Boolean getIsPropertyQuantitySellableRemoved();
+        Boolean getIsPropertySellableQuantityRemoved();
 
-        void setIsPropertyQuantitySellableRemoved(Boolean removed);
+        void setIsPropertySellableQuantityRemoved(Boolean removed);
 
         Boolean getIsPropertySourceEventIdRemoved();
 
@@ -99,9 +99,9 @@ public interface SellableInventoryItemEntryMvoCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        Boolean getIsPropertySellableInventoryItemQuantitySellableRemoved();
+        Boolean getIsPropertySellableInventoryItemSellableQuantityRemoved();
 
-        void setIsPropertySellableInventoryItemQuantitySellableRemoved(Boolean removed);
+        void setIsPropertySellableInventoryItemSellableQuantityRemoved(Boolean removed);
 
         Boolean getIsPropertySellableInventoryItemCreatedByRemoved();
 

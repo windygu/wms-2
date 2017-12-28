@@ -68,13 +68,13 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             }
         }
 
-		public virtual decimal? QuantityOnHand
+		public virtual decimal? OnHandQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("QuantityOnHand"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OnHandQuantity"))
                 {
-                    return _state.QuantityOnHand;
+                    return _state.OnHandQuantity;
                 }
                 return null;
             }
@@ -82,30 +82,30 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.QuantityOnHand = value.Value;
+                    _state.OnHandQuantity = value.Value;
                 }
             }
         }
 
-        decimal IInventoryItemEntryMvoStateProperties.QuantityOnHand
+        decimal IInventoryItemEntryMvoStateProperties.OnHandQuantity
         {
             get 
             {
-                return (this._state as IInventoryItemEntryMvoStateProperties).QuantityOnHand;
+                return (this._state as IInventoryItemEntryMvoStateProperties).OnHandQuantity;
             }
             set 
             {
-                (this._state as IInventoryItemEntryMvoStateProperties).QuantityOnHand = value;
+                (this._state as IInventoryItemEntryMvoStateProperties).OnHandQuantity = value;
             }
         }
 
-		public virtual decimal? QuantityInTransit
+		public virtual decimal? InTransitQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("QuantityInTransit"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InTransitQuantity"))
                 {
-                    return _state.QuantityInTransit;
+                    return _state.InTransitQuantity;
                 }
                 return null;
             }
@@ -113,30 +113,30 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.QuantityInTransit = value.Value;
+                    _state.InTransitQuantity = value.Value;
                 }
             }
         }
 
-        decimal IInventoryItemEntryMvoStateProperties.QuantityInTransit
+        decimal IInventoryItemEntryMvoStateProperties.InTransitQuantity
         {
             get 
             {
-                return (this._state as IInventoryItemEntryMvoStateProperties).QuantityInTransit;
+                return (this._state as IInventoryItemEntryMvoStateProperties).InTransitQuantity;
             }
             set 
             {
-                (this._state as IInventoryItemEntryMvoStateProperties).QuantityInTransit = value;
+                (this._state as IInventoryItemEntryMvoStateProperties).InTransitQuantity = value;
             }
         }
 
-		public virtual decimal? QuantityReserved
+		public virtual decimal? ReservedQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("QuantityReserved"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ReservedQuantity"))
                 {
-                    return _state.QuantityReserved;
+                    return _state.ReservedQuantity;
                 }
                 return null;
             }
@@ -144,30 +144,30 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.QuantityReserved = value.Value;
+                    _state.ReservedQuantity = value.Value;
                 }
             }
         }
 
-        decimal IInventoryItemEntryMvoStateProperties.QuantityReserved
+        decimal IInventoryItemEntryMvoStateProperties.ReservedQuantity
         {
             get 
             {
-                return (this._state as IInventoryItemEntryMvoStateProperties).QuantityReserved;
+                return (this._state as IInventoryItemEntryMvoStateProperties).ReservedQuantity;
             }
             set 
             {
-                (this._state as IInventoryItemEntryMvoStateProperties).QuantityReserved = value;
+                (this._state as IInventoryItemEntryMvoStateProperties).ReservedQuantity = value;
             }
         }
 
-		public virtual decimal? QuantityOccupied
+		public virtual decimal? OccupiedQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("QuantityOccupied"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OccupiedQuantity"))
                 {
-                    return _state.QuantityOccupied;
+                    return _state.OccupiedQuantity;
                 }
                 return null;
             }
@@ -175,30 +175,30 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.QuantityOccupied = value.Value;
+                    _state.OccupiedQuantity = value.Value;
                 }
             }
         }
 
-        decimal IInventoryItemEntryMvoStateProperties.QuantityOccupied
+        decimal IInventoryItemEntryMvoStateProperties.OccupiedQuantity
         {
             get 
             {
-                return (this._state as IInventoryItemEntryMvoStateProperties).QuantityOccupied;
+                return (this._state as IInventoryItemEntryMvoStateProperties).OccupiedQuantity;
             }
             set 
             {
-                (this._state as IInventoryItemEntryMvoStateProperties).QuantityOccupied = value;
+                (this._state as IInventoryItemEntryMvoStateProperties).OccupiedQuantity = value;
             }
         }
 
-		public virtual decimal? QuantityVirtual
+		public virtual decimal? VirtualQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("QuantityVirtual"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("VirtualQuantity"))
                 {
-                    return _state.QuantityVirtual;
+                    return _state.VirtualQuantity;
                 }
                 return null;
             }
@@ -206,20 +206,20 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.QuantityVirtual = value.Value;
+                    _state.VirtualQuantity = value.Value;
                 }
             }
         }
 
-        decimal IInventoryItemEntryMvoStateProperties.QuantityVirtual
+        decimal IInventoryItemEntryMvoStateProperties.VirtualQuantity
         {
             get 
             {
-                return (this._state as IInventoryItemEntryMvoStateProperties).QuantityVirtual;
+                return (this._state as IInventoryItemEntryMvoStateProperties).VirtualQuantity;
             }
             set 
             {
-                (this._state as IInventoryItemEntryMvoStateProperties).QuantityVirtual = value;
+                (this._state as IInventoryItemEntryMvoStateProperties).VirtualQuantity = value;
             }
         }
 
@@ -282,13 +282,13 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             }
         }
 
-		public virtual decimal? InventoryItemQuantityOnHand
+		public virtual decimal? InventoryItemOnHandQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemQuantityOnHand"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemOnHandQuantity"))
                 {
-                    return _state.InventoryItemQuantityOnHand;
+                    return _state.InventoryItemOnHandQuantity;
                 }
                 return null;
             }
@@ -296,30 +296,30 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.InventoryItemQuantityOnHand = value.Value;
+                    _state.InventoryItemOnHandQuantity = value.Value;
                 }
             }
         }
 
-        decimal IInventoryItemEntryMvoStateProperties.InventoryItemQuantityOnHand
+        decimal IInventoryItemEntryMvoStateProperties.InventoryItemOnHandQuantity
         {
             get 
             {
-                return (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityOnHand;
+                return (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemOnHandQuantity;
             }
             set 
             {
-                (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityOnHand = value;
+                (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemOnHandQuantity = value;
             }
         }
 
-		public virtual decimal? InventoryItemQuantityInTransit
+		public virtual decimal? InventoryItemInTransitQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemQuantityInTransit"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemInTransitQuantity"))
                 {
-                    return _state.InventoryItemQuantityInTransit;
+                    return _state.InventoryItemInTransitQuantity;
                 }
                 return null;
             }
@@ -327,30 +327,30 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.InventoryItemQuantityInTransit = value.Value;
+                    _state.InventoryItemInTransitQuantity = value.Value;
                 }
             }
         }
 
-        decimal IInventoryItemEntryMvoStateProperties.InventoryItemQuantityInTransit
+        decimal IInventoryItemEntryMvoStateProperties.InventoryItemInTransitQuantity
         {
             get 
             {
-                return (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityInTransit;
+                return (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemInTransitQuantity;
             }
             set 
             {
-                (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityInTransit = value;
+                (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemInTransitQuantity = value;
             }
         }
 
-		public virtual decimal? InventoryItemQuantityReserved
+		public virtual decimal? InventoryItemReservedQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemQuantityReserved"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemReservedQuantity"))
                 {
-                    return _state.InventoryItemQuantityReserved;
+                    return _state.InventoryItemReservedQuantity;
                 }
                 return null;
             }
@@ -358,30 +358,30 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.InventoryItemQuantityReserved = value.Value;
+                    _state.InventoryItemReservedQuantity = value.Value;
                 }
             }
         }
 
-        decimal IInventoryItemEntryMvoStateProperties.InventoryItemQuantityReserved
+        decimal IInventoryItemEntryMvoStateProperties.InventoryItemReservedQuantity
         {
             get 
             {
-                return (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityReserved;
+                return (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemReservedQuantity;
             }
             set 
             {
-                (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityReserved = value;
+                (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemReservedQuantity = value;
             }
         }
 
-		public virtual decimal? InventoryItemQuantityOccupied
+		public virtual decimal? InventoryItemOccupiedQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemQuantityOccupied"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemOccupiedQuantity"))
                 {
-                    return _state.InventoryItemQuantityOccupied;
+                    return _state.InventoryItemOccupiedQuantity;
                 }
                 return null;
             }
@@ -389,30 +389,30 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.InventoryItemQuantityOccupied = value.Value;
+                    _state.InventoryItemOccupiedQuantity = value.Value;
                 }
             }
         }
 
-        decimal IInventoryItemEntryMvoStateProperties.InventoryItemQuantityOccupied
+        decimal IInventoryItemEntryMvoStateProperties.InventoryItemOccupiedQuantity
         {
             get 
             {
-                return (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityOccupied;
+                return (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemOccupiedQuantity;
             }
             set 
             {
-                (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityOccupied = value;
+                (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemOccupiedQuantity = value;
             }
         }
 
-		public virtual decimal? InventoryItemQuantityVirtual
+		public virtual decimal? InventoryItemVirtualQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemQuantityVirtual"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemVirtualQuantity"))
                 {
-                    return _state.InventoryItemQuantityVirtual;
+                    return _state.InventoryItemVirtualQuantity;
                 }
                 return null;
             }
@@ -420,20 +420,20 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.InventoryItemQuantityVirtual = value.Value;
+                    _state.InventoryItemVirtualQuantity = value.Value;
                 }
             }
         }
 
-        decimal IInventoryItemEntryMvoStateProperties.InventoryItemQuantityVirtual
+        decimal IInventoryItemEntryMvoStateProperties.InventoryItemVirtualQuantity
         {
             get 
             {
-                return (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityVirtual;
+                return (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemVirtualQuantity;
             }
             set 
             {
-                (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemQuantityVirtual = value;
+                (this._state as IInventoryItemEntryMvoStateProperties).InventoryItemVirtualQuantity = value;
             }
         }
 

@@ -54,10 +54,10 @@ public abstract class AbstractSellableInventoryItemEntryMvoAggregate extends Abs
     protected SellableInventoryItemEntryMvoStateEvent map(SellableInventoryItemEntryMvoCommand.CreateSellableInventoryItemEntryMvo c) {
         SellableInventoryItemEntryMvoStateEventId stateEventId = new SellableInventoryItemEntryMvoStateEventId(c.getSellableInventoryItemEntryId(), c.getSellableInventoryItemVersion());
         SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateCreated e = newSellableInventoryItemEntryMvoStateCreated(stateEventId);
-        e.setQuantitySellable(c.getQuantitySellable());
+        e.setSellableQuantity(c.getSellableQuantity());
         e.setSourceEventId(c.getSourceEventId());
         e.setVersion(c.getVersion());
-        e.setSellableInventoryItemQuantitySellable(c.getSellableInventoryItemQuantitySellable());
+        e.setSellableInventoryItemSellableQuantity(c.getSellableInventoryItemSellableQuantity());
         e.setSellableInventoryItemCreatedBy(c.getSellableInventoryItemCreatedBy());
         e.setSellableInventoryItemCreatedAt(c.getSellableInventoryItemCreatedAt());
         e.setSellableInventoryItemUpdatedBy(c.getSellableInventoryItemUpdatedBy());
@@ -71,18 +71,18 @@ public abstract class AbstractSellableInventoryItemEntryMvoAggregate extends Abs
     protected SellableInventoryItemEntryMvoStateEvent map(SellableInventoryItemEntryMvoCommand.MergePatchSellableInventoryItemEntryMvo c) {
         SellableInventoryItemEntryMvoStateEventId stateEventId = new SellableInventoryItemEntryMvoStateEventId(c.getSellableInventoryItemEntryId(), c.getSellableInventoryItemVersion());
         SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateMergePatched e = newSellableInventoryItemEntryMvoStateMergePatched(stateEventId);
-        e.setQuantitySellable(c.getQuantitySellable());
+        e.setSellableQuantity(c.getSellableQuantity());
         e.setSourceEventId(c.getSourceEventId());
         e.setVersion(c.getVersion());
-        e.setSellableInventoryItemQuantitySellable(c.getSellableInventoryItemQuantitySellable());
+        e.setSellableInventoryItemSellableQuantity(c.getSellableInventoryItemSellableQuantity());
         e.setSellableInventoryItemCreatedBy(c.getSellableInventoryItemCreatedBy());
         e.setSellableInventoryItemCreatedAt(c.getSellableInventoryItemCreatedAt());
         e.setSellableInventoryItemUpdatedBy(c.getSellableInventoryItemUpdatedBy());
         e.setSellableInventoryItemUpdatedAt(c.getSellableInventoryItemUpdatedAt());
-        e.setIsPropertyQuantitySellableRemoved(c.getIsPropertyQuantitySellableRemoved());
+        e.setIsPropertySellableQuantityRemoved(c.getIsPropertySellableQuantityRemoved());
         e.setIsPropertySourceEventIdRemoved(c.getIsPropertySourceEventIdRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
-        e.setIsPropertySellableInventoryItemQuantitySellableRemoved(c.getIsPropertySellableInventoryItemQuantitySellableRemoved());
+        e.setIsPropertySellableInventoryItemSellableQuantityRemoved(c.getIsPropertySellableInventoryItemSellableQuantityRemoved());
         e.setIsPropertySellableInventoryItemCreatedByRemoved(c.getIsPropertySellableInventoryItemCreatedByRemoved());
         e.setIsPropertySellableInventoryItemCreatedAtRemoved(c.getIsPropertySellableInventoryItemCreatedAtRemoved());
         e.setIsPropertySellableInventoryItemUpdatedByRemoved(c.getIsPropertySellableInventoryItemUpdatedByRemoved());

@@ -1,0 +1,17 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="Templates\AttributeSetInstanceDddmlTemplate.tt" #>
+<#@ include file="AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" #>
+<#
+// <copyright file="AttributeSetInstanceDddml.tt" company="dddml.org">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+    var extensionFields = AttributeSetInstanceExtensionFieldMetadataUtils.GetAllExtensionFields();
+
+	var attributeSetInstanceDddmlTemplate = new AttributeSetInstanceDddmlTemplate(extensionFields);
+	attributeSetInstanceDddmlTemplate.RenderToFile("AttributeSetInstanceDddml.yaml");
+
+
+#>

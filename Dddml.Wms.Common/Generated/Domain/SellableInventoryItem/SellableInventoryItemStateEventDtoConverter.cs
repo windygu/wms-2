@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.QuantitySellable = e.QuantitySellable;
+            dto.SellableQuantity = e.SellableQuantity;
             var sellableInventoryItemEntryEvents = new List<SellableInventoryItemEntryStateCreatedDto>();
             foreach (var ee in e.SellableInventoryItemEntryEvents)
             {
@@ -58,8 +58,8 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.QuantitySellable = e.QuantitySellable;
-            dto.IsPropertyQuantitySellableRemoved = e.IsPropertyQuantitySellableRemoved;
+            dto.SellableQuantity = e.SellableQuantity;
+            dto.IsPropertySellableQuantityRemoved = e.IsPropertySellableQuantityRemoved;
             var sellableInventoryItemEntryEvents = new List<SellableInventoryItemEntryStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.SellableInventoryItemEntryEvents)
             {

@@ -8,16 +8,16 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchSellableInventoryItemEntryDto extends AbstractSellableInventoryItemEntryCommandDto
 {
-    private BigDecimal quantitySellable;
+    private BigDecimal sellableQuantity;
 
-    public BigDecimal getQuantitySellable()
+    public BigDecimal getSellableQuantity()
     {
-        return this.quantitySellable;
+        return this.sellableQuantity;
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable)
+    public void setSellableQuantity(BigDecimal sellableQuantity)
     {
-        this.quantitySellable = quantitySellable;
+        this.sellableQuantity = sellableQuantity;
     }
 
     private InventoryPRTriggeredIdDto sourceEventId;
@@ -44,16 +44,16 @@ public class CreateOrMergePatchSellableInventoryItemEntryDto extends AbstractSel
         this.active = active;
     }
 
-    private Boolean isPropertyQuantitySellableRemoved;
+    private Boolean isPropertySellableQuantityRemoved;
 
-    public Boolean getIsPropertyQuantitySellableRemoved()
+    public Boolean getIsPropertySellableQuantityRemoved()
     {
-        return this.isPropertyQuantitySellableRemoved;
+        return this.isPropertySellableQuantityRemoved;
     }
 
-    public void setIsPropertyQuantitySellableRemoved(Boolean removed)
+    public void setIsPropertySellableQuantityRemoved(Boolean removed)
     {
-        this.isPropertyQuantitySellableRemoved = removed;
+        this.isPropertySellableQuantityRemoved = removed;
     }
 
     private Boolean isPropertySourceEventIdRemoved;
@@ -83,7 +83,7 @@ public class CreateOrMergePatchSellableInventoryItemEntryDto extends AbstractSel
     public void copyTo(AbstractSellableInventoryItemEntryCommand.AbstractCreateOrMergePatchSellableInventoryItemEntry command)
     {
         ((AbstractSellableInventoryItemEntryCommandDto) this).copyTo(command);
-        command.setQuantitySellable(this.getQuantitySellable());
+        command.setSellableQuantity(this.getSellableQuantity());
         command.setSourceEventId(this.getSourceEventId() == null ? null : this.getSourceEventId().toInventoryPRTriggeredId());
         command.setActive(this.getActive());
     }

@@ -106,17 +106,17 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
-            decimal quantitySellable = default(decimal);
+            decimal sellableQuantity = default(decimal);
             foreach (ICreateSellableInventoryItemEntry innerCommand in c.Entries)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
                 ISellableInventoryItemEntryStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
                 e.AddSellableInventoryItemEntryEvent(innerEvent);
-                quantitySellable = quantitySellable + (innerEvent.QuantitySellable != null ? innerEvent.QuantitySellable.GetValueOrDefault() : default(decimal));
+                sellableQuantity = sellableQuantity + (innerEvent.SellableQuantity != null ? innerEvent.SellableQuantity.GetValueOrDefault() : default(decimal));
             }
 
-            e.QuantitySellable = quantitySellable;
+            e.SellableQuantity = sellableQuantity;
 
             return e;
         }
@@ -135,7 +135,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 			var version = c.Version;
 
-            decimal quantitySellable = _state.QuantitySellable;
+            decimal sellableQuantity = _state.SellableQuantity;
             foreach (ISellableInventoryItemEntryCommand innerCommand in c.SellableInventoryItemEntryCommands)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
@@ -145,11 +145,11 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
                 // ////////////////
                 if (!(innerEvent is ISellableInventoryItemEntryStateCreated)) { continue; }
                 var entryCreated = (ISellableInventoryItemEntryStateCreated)innerEvent;
-                quantitySellable = quantitySellable + (entryCreated.QuantitySellable != null ? entryCreated.QuantitySellable.GetValueOrDefault() : default(decimal));
+                sellableQuantity = sellableQuantity + (entryCreated.SellableQuantity != null ? entryCreated.SellableQuantity.GetValueOrDefault() : default(decimal));
                 // ////////////////
             }
 
-            e.QuantitySellable = quantitySellable;
+            e.SellableQuantity = sellableQuantity;
 
             return e;
         }
@@ -196,7 +196,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             ISellableInventoryItemEntryStateCreated e = NewSellableInventoryItemEntryStateCreated(stateEventId);
             var s = outerState.Entries.Get(c.EntrySeqId, true);
 
-            e.QuantitySellable = c.QuantitySellable;
+            e.SellableQuantity = c.SellableQuantity;
             e.SourceEventId = c.SourceEventId;
 
             e.CreatedBy = (string)c.RequesterId;

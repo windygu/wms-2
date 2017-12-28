@@ -6,64 +6,64 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryItemEntryCommandDto
 {
-    private BigDecimal quantityOnHand;
+    private BigDecimal onHandQuantity;
 
-    public BigDecimal getQuantityOnHand()
+    public BigDecimal getOnHandQuantity()
     {
-        return this.quantityOnHand;
+        return this.onHandQuantity;
     }
 
-    public void setQuantityOnHand(BigDecimal quantityOnHand)
+    public void setOnHandQuantity(BigDecimal onHandQuantity)
     {
-        this.quantityOnHand = quantityOnHand;
+        this.onHandQuantity = onHandQuantity;
     }
 
-    private BigDecimal quantityInTransit;
+    private BigDecimal inTransitQuantity;
 
-    public BigDecimal getQuantityInTransit()
+    public BigDecimal getInTransitQuantity()
     {
-        return this.quantityInTransit;
+        return this.inTransitQuantity;
     }
 
-    public void setQuantityInTransit(BigDecimal quantityInTransit)
+    public void setInTransitQuantity(BigDecimal inTransitQuantity)
     {
-        this.quantityInTransit = quantityInTransit;
+        this.inTransitQuantity = inTransitQuantity;
     }
 
-    private BigDecimal quantityReserved;
+    private BigDecimal reservedQuantity;
 
-    public BigDecimal getQuantityReserved()
+    public BigDecimal getReservedQuantity()
     {
-        return this.quantityReserved;
+        return this.reservedQuantity;
     }
 
-    public void setQuantityReserved(BigDecimal quantityReserved)
+    public void setReservedQuantity(BigDecimal reservedQuantity)
     {
-        this.quantityReserved = quantityReserved;
+        this.reservedQuantity = reservedQuantity;
     }
 
-    private BigDecimal quantityOccupied;
+    private BigDecimal occupiedQuantity;
 
-    public BigDecimal getQuantityOccupied()
+    public BigDecimal getOccupiedQuantity()
     {
-        return this.quantityOccupied;
+        return this.occupiedQuantity;
     }
 
-    public void setQuantityOccupied(BigDecimal quantityOccupied)
+    public void setOccupiedQuantity(BigDecimal occupiedQuantity)
     {
-        this.quantityOccupied = quantityOccupied;
+        this.occupiedQuantity = occupiedQuantity;
     }
 
-    private BigDecimal quantityVirtual;
+    private BigDecimal virtualQuantity;
 
-    public BigDecimal getQuantityVirtual()
+    public BigDecimal getVirtualQuantity()
     {
-        return this.quantityVirtual;
+        return this.virtualQuantity;
     }
 
-    public void setQuantityVirtual(BigDecimal quantityVirtual)
+    public void setVirtualQuantity(BigDecimal virtualQuantity)
     {
-        this.quantityVirtual = quantityVirtual;
+        this.virtualQuantity = virtualQuantity;
     }
 
     private InventoryItemSourceInfoDto source;
@@ -90,64 +90,64 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.active = active;
     }
 
-    private Boolean isPropertyQuantityOnHandRemoved;
+    private Boolean isPropertyOnHandQuantityRemoved;
 
-    public Boolean getIsPropertyQuantityOnHandRemoved()
+    public Boolean getIsPropertyOnHandQuantityRemoved()
     {
-        return this.isPropertyQuantityOnHandRemoved;
+        return this.isPropertyOnHandQuantityRemoved;
     }
 
-    public void setIsPropertyQuantityOnHandRemoved(Boolean removed)
+    public void setIsPropertyOnHandQuantityRemoved(Boolean removed)
     {
-        this.isPropertyQuantityOnHandRemoved = removed;
+        this.isPropertyOnHandQuantityRemoved = removed;
     }
 
-    private Boolean isPropertyQuantityInTransitRemoved;
+    private Boolean isPropertyInTransitQuantityRemoved;
 
-    public Boolean getIsPropertyQuantityInTransitRemoved()
+    public Boolean getIsPropertyInTransitQuantityRemoved()
     {
-        return this.isPropertyQuantityInTransitRemoved;
+        return this.isPropertyInTransitQuantityRemoved;
     }
 
-    public void setIsPropertyQuantityInTransitRemoved(Boolean removed)
+    public void setIsPropertyInTransitQuantityRemoved(Boolean removed)
     {
-        this.isPropertyQuantityInTransitRemoved = removed;
+        this.isPropertyInTransitQuantityRemoved = removed;
     }
 
-    private Boolean isPropertyQuantityReservedRemoved;
+    private Boolean isPropertyReservedQuantityRemoved;
 
-    public Boolean getIsPropertyQuantityReservedRemoved()
+    public Boolean getIsPropertyReservedQuantityRemoved()
     {
-        return this.isPropertyQuantityReservedRemoved;
+        return this.isPropertyReservedQuantityRemoved;
     }
 
-    public void setIsPropertyQuantityReservedRemoved(Boolean removed)
+    public void setIsPropertyReservedQuantityRemoved(Boolean removed)
     {
-        this.isPropertyQuantityReservedRemoved = removed;
+        this.isPropertyReservedQuantityRemoved = removed;
     }
 
-    private Boolean isPropertyQuantityOccupiedRemoved;
+    private Boolean isPropertyOccupiedQuantityRemoved;
 
-    public Boolean getIsPropertyQuantityOccupiedRemoved()
+    public Boolean getIsPropertyOccupiedQuantityRemoved()
     {
-        return this.isPropertyQuantityOccupiedRemoved;
+        return this.isPropertyOccupiedQuantityRemoved;
     }
 
-    public void setIsPropertyQuantityOccupiedRemoved(Boolean removed)
+    public void setIsPropertyOccupiedQuantityRemoved(Boolean removed)
     {
-        this.isPropertyQuantityOccupiedRemoved = removed;
+        this.isPropertyOccupiedQuantityRemoved = removed;
     }
 
-    private Boolean isPropertyQuantityVirtualRemoved;
+    private Boolean isPropertyVirtualQuantityRemoved;
 
-    public Boolean getIsPropertyQuantityVirtualRemoved()
+    public Boolean getIsPropertyVirtualQuantityRemoved()
     {
-        return this.isPropertyQuantityVirtualRemoved;
+        return this.isPropertyVirtualQuantityRemoved;
     }
 
-    public void setIsPropertyQuantityVirtualRemoved(Boolean removed)
+    public void setIsPropertyVirtualQuantityRemoved(Boolean removed)
     {
-        this.isPropertyQuantityVirtualRemoved = removed;
+        this.isPropertyVirtualQuantityRemoved = removed;
     }
 
     private Boolean isPropertySourceRemoved;
@@ -177,11 +177,11 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
     public void copyTo(AbstractInventoryItemEntryCommand.AbstractCreateOrMergePatchInventoryItemEntry command)
     {
         ((AbstractInventoryItemEntryCommandDto) this).copyTo(command);
-        command.setQuantityOnHand(this.getQuantityOnHand());
-        command.setQuantityInTransit(this.getQuantityInTransit());
-        command.setQuantityReserved(this.getQuantityReserved());
-        command.setQuantityOccupied(this.getQuantityOccupied());
-        command.setQuantityVirtual(this.getQuantityVirtual());
+        command.setOnHandQuantity(this.getOnHandQuantity());
+        command.setInTransitQuantity(this.getInTransitQuantity());
+        command.setReservedQuantity(this.getReservedQuantity());
+        command.setOccupiedQuantity(this.getOccupiedQuantity());
+        command.setVirtualQuantity(this.getVirtualQuantity());
         command.setSource(this.getSource() == null ? null : this.getSource().toInventoryItemSourceInfo());
         command.setActive(this.getActive());
     }

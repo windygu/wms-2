@@ -18,13 +18,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 	{
 		public virtual SellableInventoryItemEntryId SellableInventoryItemEntryId { get; set; }
 
-		public virtual decimal QuantitySellable { get; set; }
+		public virtual decimal SellableQuantity { get; set; }
 
 		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
 
 		public virtual long Version { get; set; }
 
-		public virtual decimal SellableInventoryItemQuantitySellable { get; set; }
+		public virtual decimal SellableInventoryItemSellableQuantity { get; set; }
 
 		public virtual long SellableInventoryItemVersion { get; set; }
 

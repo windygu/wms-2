@@ -33,64 +33,64 @@ public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private BigDecimal quantityOnHand;
+    private BigDecimal onHandQuantity;
 
-    public BigDecimal getQuantityOnHand()
+    public BigDecimal getOnHandQuantity()
     {
-        return this.quantityOnHand;
+        return this.onHandQuantity;
     }
 
-    public void setQuantityOnHand(BigDecimal quantityOnHand)
+    public void setOnHandQuantity(BigDecimal onHandQuantity)
     {
-        this.quantityOnHand = quantityOnHand;
+        this.onHandQuantity = onHandQuantity;
     }
 
-    private BigDecimal quantityInTransit;
+    private BigDecimal inTransitQuantity;
 
-    public BigDecimal getQuantityInTransit()
+    public BigDecimal getInTransitQuantity()
     {
-        return this.quantityInTransit;
+        return this.inTransitQuantity;
     }
 
-    public void setQuantityInTransit(BigDecimal quantityInTransit)
+    public void setInTransitQuantity(BigDecimal inTransitQuantity)
     {
-        this.quantityInTransit = quantityInTransit;
+        this.inTransitQuantity = inTransitQuantity;
     }
 
-    private BigDecimal quantityReserved;
+    private BigDecimal reservedQuantity;
 
-    public BigDecimal getQuantityReserved()
+    public BigDecimal getReservedQuantity()
     {
-        return this.quantityReserved;
+        return this.reservedQuantity;
     }
 
-    public void setQuantityReserved(BigDecimal quantityReserved)
+    public void setReservedQuantity(BigDecimal reservedQuantity)
     {
-        this.quantityReserved = quantityReserved;
+        this.reservedQuantity = reservedQuantity;
     }
 
-    private BigDecimal quantityOccupied;
+    private BigDecimal occupiedQuantity;
 
-    public BigDecimal getQuantityOccupied()
+    public BigDecimal getOccupiedQuantity()
     {
-        return this.quantityOccupied;
+        return this.occupiedQuantity;
     }
 
-    public void setQuantityOccupied(BigDecimal quantityOccupied)
+    public void setOccupiedQuantity(BigDecimal occupiedQuantity)
     {
-        this.quantityOccupied = quantityOccupied;
+        this.occupiedQuantity = occupiedQuantity;
     }
 
-    private BigDecimal quantityVirtual;
+    private BigDecimal virtualQuantity;
 
-    public BigDecimal getQuantityVirtual()
+    public BigDecimal getVirtualQuantity()
     {
-        return this.quantityVirtual;
+        return this.virtualQuantity;
     }
 
-    public void setQuantityVirtual(BigDecimal quantityVirtual)
+    public void setVirtualQuantity(BigDecimal virtualQuantity)
     {
-        this.quantityVirtual = quantityVirtual;
+        this.virtualQuantity = virtualQuantity;
     }
 
     private String createdBy;
@@ -248,54 +248,54 @@ public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyQuantityOnHandRemoved;
+        private Boolean isPropertyOnHandQuantityRemoved;
 
-        public Boolean getIsPropertyQuantityOnHandRemoved() {
-            return this.isPropertyQuantityOnHandRemoved;
+        public Boolean getIsPropertyOnHandQuantityRemoved() {
+            return this.isPropertyOnHandQuantityRemoved;
         }
 
-        public void setIsPropertyQuantityOnHandRemoved(Boolean removed) {
-            this.isPropertyQuantityOnHandRemoved = removed;
+        public void setIsPropertyOnHandQuantityRemoved(Boolean removed) {
+            this.isPropertyOnHandQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyQuantityInTransitRemoved;
+        private Boolean isPropertyInTransitQuantityRemoved;
 
-        public Boolean getIsPropertyQuantityInTransitRemoved() {
-            return this.isPropertyQuantityInTransitRemoved;
+        public Boolean getIsPropertyInTransitQuantityRemoved() {
+            return this.isPropertyInTransitQuantityRemoved;
         }
 
-        public void setIsPropertyQuantityInTransitRemoved(Boolean removed) {
-            this.isPropertyQuantityInTransitRemoved = removed;
+        public void setIsPropertyInTransitQuantityRemoved(Boolean removed) {
+            this.isPropertyInTransitQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyQuantityReservedRemoved;
+        private Boolean isPropertyReservedQuantityRemoved;
 
-        public Boolean getIsPropertyQuantityReservedRemoved() {
-            return this.isPropertyQuantityReservedRemoved;
+        public Boolean getIsPropertyReservedQuantityRemoved() {
+            return this.isPropertyReservedQuantityRemoved;
         }
 
-        public void setIsPropertyQuantityReservedRemoved(Boolean removed) {
-            this.isPropertyQuantityReservedRemoved = removed;
+        public void setIsPropertyReservedQuantityRemoved(Boolean removed) {
+            this.isPropertyReservedQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyQuantityOccupiedRemoved;
+        private Boolean isPropertyOccupiedQuantityRemoved;
 
-        public Boolean getIsPropertyQuantityOccupiedRemoved() {
-            return this.isPropertyQuantityOccupiedRemoved;
+        public Boolean getIsPropertyOccupiedQuantityRemoved() {
+            return this.isPropertyOccupiedQuantityRemoved;
         }
 
-        public void setIsPropertyQuantityOccupiedRemoved(Boolean removed) {
-            this.isPropertyQuantityOccupiedRemoved = removed;
+        public void setIsPropertyOccupiedQuantityRemoved(Boolean removed) {
+            this.isPropertyOccupiedQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyQuantityVirtualRemoved;
+        private Boolean isPropertyVirtualQuantityRemoved;
 
-        public Boolean getIsPropertyQuantityVirtualRemoved() {
-            return this.isPropertyQuantityVirtualRemoved;
+        public Boolean getIsPropertyVirtualQuantityRemoved() {
+            return this.isPropertyVirtualQuantityRemoved;
         }
 
-        public void setIsPropertyQuantityVirtualRemoved(Boolean removed) {
-            this.isPropertyQuantityVirtualRemoved = removed;
+        public void setIsPropertyVirtualQuantityRemoved(Boolean removed) {
+            this.isPropertyVirtualQuantityRemoved = removed;
         }
 
         private Map<InventoryItemEntryStateEventId, InventoryItemEntryStateEvent> inventoryItemEntryEvents = new HashMap<InventoryItemEntryStateEventId, InventoryItemEntryStateEvent>();

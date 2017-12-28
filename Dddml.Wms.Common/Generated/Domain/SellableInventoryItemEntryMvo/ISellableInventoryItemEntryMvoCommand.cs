@@ -25,7 +25,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 	public interface ICreateOrMergePatchOrDeleteSellableInventoryItemEntryMvo : ISellableInventoryItemEntryMvoCommand
 	{
 
-		decimal? QuantitySellable { get; set; }
+		decimal? SellableQuantity { get; set; }
 
 		InventoryPRTriggeredId SourceEventId { get; set; }
 
@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
 		bool? Active { get; set; }
 
-		decimal? SellableInventoryItemQuantitySellable { get; set; }
+		decimal? SellableInventoryItemSellableQuantity { get; set; }
 
 		string SellableInventoryItemCreatedBy { get; set; }
 
@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 	public interface IMergePatchSellableInventoryItemEntryMvo : ICreateOrMergePatchOrDeleteSellableInventoryItemEntryMvo
 	{
 
-		bool IsPropertyQuantitySellableRemoved { get; set; }
+		bool IsPropertySellableQuantityRemoved { get; set; }
 
 		bool IsPropertySourceEventIdRemoved { get; set; }
 
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
 		bool IsPropertyActiveRemoved { get; set; }
 
-		bool IsPropertySellableInventoryItemQuantitySellableRemoved { get; set; }
+		bool IsPropertySellableInventoryItemSellableQuantityRemoved { get; set; }
 
 		bool IsPropertySellableInventoryItemCreatedByRemoved { get; set; }
 

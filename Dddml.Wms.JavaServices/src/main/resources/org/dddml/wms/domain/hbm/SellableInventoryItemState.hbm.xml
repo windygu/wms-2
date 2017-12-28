@@ -15,7 +15,7 @@
 	</composite-id>
 	<version name="version" column="Version" type="long" />
 
-	<property name="quantitySellable" ></property>
+	<property name="sellableQuantity" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 

@@ -24,7 +24,7 @@ public class HibernateSellableInventoryItemEntryStateDao implements SellableInve
         return this.sessionFactory.getCurrentSession();
     }
 
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("EntrySeqId", "QuantitySellable", "SourceEventId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "SellableInventoryItemId"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("EntrySeqId", "SellableQuantity", "SourceEventId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "SellableInventoryItemId"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
-                    Name = "QuantitySellable",
+                    Name = "SellableQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -411,8 +411,8 @@ namespace Dddml.Wms.Domain.Metadata
         private static void InitFilteringPropertyAliasDictionary()
         {
             var d = new Dictionary<string, string>();
-            d.Add("QuantitySellable", "QuantitySellable");
-            d.Add("quantitySellable", "QuantitySellable");
+            d.Add("SellableQuantity", "SellableQuantity");
+            d.Add("sellableQuantity", "SellableQuantity");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");

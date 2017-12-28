@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		public virtual void When(ISellableInventoryItemEntryStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-            this.QuantitySellable = (e.QuantitySellable != null && e.QuantitySellable.HasValue) ? e.QuantitySellable.Value : default(decimal);
+            this.SellableQuantity = (e.SellableQuantity != null && e.SellableQuantity.HasValue) ? e.SellableQuantity.Value : default(decimal);
 
 			this.SourceEventId = e.SourceEventId;
 

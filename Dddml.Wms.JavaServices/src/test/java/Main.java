@@ -49,7 +49,7 @@ public class Main {
 
         InventoryItemEntryCommand.CreateInventoryItemEntry iiEntry = ii.newCreateInventoryItemEntry();
         iiEntry.setEntrySeqId(new Date().getTime());
-        iiEntry.setQuantityOnHand(BigDecimal.valueOf(100));
+        iiEntry.setOnHandQuantity(BigDecimal.valueOf(100));
         InventoryItemSourceInfo iiEntrySrc = new InventoryItemSourceInfo("TEST_EVT_TYPE", "TEST_DOCUMENT_NO_1", UUID.randomUUID().toString());
         iiEntry.setSource(iiEntrySrc);
 

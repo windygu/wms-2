@@ -24,7 +24,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             set;
         }
 
-        public virtual decimal? QuantitySellable
+        public virtual decimal? SellableQuantity
         {
             get;
             set;
@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             set;
         }
 
-        public virtual decimal? SellableInventoryItemQuantitySellable
+        public virtual decimal? SellableInventoryItemSellableQuantity
         {
             get;
             set;
@@ -107,10 +107,10 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
         {
             var state = new SellableInventoryItemEntryMvoState(true);
             state.SellableInventoryItemEntryId = (this.SellableInventoryItemEntryId == null) ? null : this.SellableInventoryItemEntryId.ToSellableInventoryItemEntryId();
-            if (this.QuantitySellable != null && this.QuantitySellable.HasValue) { state.QuantitySellable = this.QuantitySellable.Value; }
+            if (this.SellableQuantity != null && this.SellableQuantity.HasValue) { state.SellableQuantity = this.SellableQuantity.Value; }
             state.SourceEventId = (this.SourceEventId == null) ? null : this.SourceEventId.ToInventoryPRTriggeredId();
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
-            if (this.SellableInventoryItemQuantitySellable != null && this.SellableInventoryItemQuantitySellable.HasValue) { state.SellableInventoryItemQuantitySellable = this.SellableInventoryItemQuantitySellable.Value; }
+            if (this.SellableInventoryItemSellableQuantity != null && this.SellableInventoryItemSellableQuantity.HasValue) { state.SellableInventoryItemSellableQuantity = this.SellableInventoryItemSellableQuantity.Value; }
             state.SellableInventoryItemCreatedBy = this.SellableInventoryItemCreatedBy;
             if (this.SellableInventoryItemCreatedAt != null && this.SellableInventoryItemCreatedAt.HasValue) { state.SellableInventoryItemCreatedAt = this.SellableInventoryItemCreatedAt.Value; }
             state.SellableInventoryItemUpdatedBy = this.SellableInventoryItemUpdatedBy;

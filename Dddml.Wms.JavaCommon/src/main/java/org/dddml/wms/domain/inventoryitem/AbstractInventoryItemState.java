@@ -22,64 +22,64 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
         this.inventoryItemId = inventoryItemId;
     }
 
-    private BigDecimal quantityOnHand;
+    private BigDecimal onHandQuantity;
 
-    public BigDecimal getQuantityOnHand()
+    public BigDecimal getOnHandQuantity()
     {
-        return this.quantityOnHand;
+        return this.onHandQuantity;
     }
 
-    public void setQuantityOnHand(BigDecimal quantityOnHand)
+    public void setOnHandQuantity(BigDecimal onHandQuantity)
     {
-        this.quantityOnHand = quantityOnHand;
+        this.onHandQuantity = onHandQuantity;
     }
 
-    private BigDecimal quantityInTransit;
+    private BigDecimal inTransitQuantity;
 
-    public BigDecimal getQuantityInTransit()
+    public BigDecimal getInTransitQuantity()
     {
-        return this.quantityInTransit;
+        return this.inTransitQuantity;
     }
 
-    public void setQuantityInTransit(BigDecimal quantityInTransit)
+    public void setInTransitQuantity(BigDecimal inTransitQuantity)
     {
-        this.quantityInTransit = quantityInTransit;
+        this.inTransitQuantity = inTransitQuantity;
     }
 
-    private BigDecimal quantityReserved;
+    private BigDecimal reservedQuantity;
 
-    public BigDecimal getQuantityReserved()
+    public BigDecimal getReservedQuantity()
     {
-        return this.quantityReserved;
+        return this.reservedQuantity;
     }
 
-    public void setQuantityReserved(BigDecimal quantityReserved)
+    public void setReservedQuantity(BigDecimal reservedQuantity)
     {
-        this.quantityReserved = quantityReserved;
+        this.reservedQuantity = reservedQuantity;
     }
 
-    private BigDecimal quantityOccupied;
+    private BigDecimal occupiedQuantity;
 
-    public BigDecimal getQuantityOccupied()
+    public BigDecimal getOccupiedQuantity()
     {
-        return this.quantityOccupied;
+        return this.occupiedQuantity;
     }
 
-    public void setQuantityOccupied(BigDecimal quantityOccupied)
+    public void setOccupiedQuantity(BigDecimal occupiedQuantity)
     {
-        this.quantityOccupied = quantityOccupied;
+        this.occupiedQuantity = occupiedQuantity;
     }
 
-    private BigDecimal quantityVirtual;
+    private BigDecimal virtualQuantity;
 
-    public BigDecimal getQuantityVirtual()
+    public BigDecimal getVirtualQuantity()
     {
-        return this.quantityVirtual;
+        return this.virtualQuantity;
     }
 
-    public void setQuantityVirtual(BigDecimal quantityVirtual)
+    public void setVirtualQuantity(BigDecimal virtualQuantity)
     {
-        this.quantityVirtual = quantityVirtual;
+        this.virtualQuantity = virtualQuantity;
     }
 
     private Long version;
@@ -217,11 +217,11 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
     {
         throwOnWrongEvent(e);
 
-        this.setQuantityOnHand(e.getQuantityOnHand());
-        this.setQuantityInTransit(e.getQuantityInTransit());
-        this.setQuantityReserved(e.getQuantityReserved());
-        this.setQuantityOccupied(e.getQuantityOccupied());
-        this.setQuantityVirtual(e.getQuantityVirtual());
+        this.setOnHandQuantity(e.getOnHandQuantity());
+        this.setInTransitQuantity(e.getInTransitQuantity());
+        this.setReservedQuantity(e.getReservedQuantity());
+        this.setOccupiedQuantity(e.getOccupiedQuantity());
+        this.setVirtualQuantity(e.getVirtualQuantity());
 
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
@@ -236,60 +236,60 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
     {
         throwOnWrongEvent(e);
 
-        if (e.getQuantityOnHand() == null)
+        if (e.getOnHandQuantity() == null)
         {
-            if (e.getIsPropertyQuantityOnHandRemoved() != null && e.getIsPropertyQuantityOnHandRemoved())
+            if (e.getIsPropertyOnHandQuantityRemoved() != null && e.getIsPropertyOnHandQuantityRemoved())
             {
-                this.setQuantityOnHand(null);
+                this.setOnHandQuantity(null);
             }
         }
         else
         {
-            this.setQuantityOnHand(e.getQuantityOnHand());
+            this.setOnHandQuantity(e.getOnHandQuantity());
         }
-        if (e.getQuantityInTransit() == null)
+        if (e.getInTransitQuantity() == null)
         {
-            if (e.getIsPropertyQuantityInTransitRemoved() != null && e.getIsPropertyQuantityInTransitRemoved())
+            if (e.getIsPropertyInTransitQuantityRemoved() != null && e.getIsPropertyInTransitQuantityRemoved())
             {
-                this.setQuantityInTransit(null);
+                this.setInTransitQuantity(null);
             }
         }
         else
         {
-            this.setQuantityInTransit(e.getQuantityInTransit());
+            this.setInTransitQuantity(e.getInTransitQuantity());
         }
-        if (e.getQuantityReserved() == null)
+        if (e.getReservedQuantity() == null)
         {
-            if (e.getIsPropertyQuantityReservedRemoved() != null && e.getIsPropertyQuantityReservedRemoved())
+            if (e.getIsPropertyReservedQuantityRemoved() != null && e.getIsPropertyReservedQuantityRemoved())
             {
-                this.setQuantityReserved(null);
+                this.setReservedQuantity(null);
             }
         }
         else
         {
-            this.setQuantityReserved(e.getQuantityReserved());
+            this.setReservedQuantity(e.getReservedQuantity());
         }
-        if (e.getQuantityOccupied() == null)
+        if (e.getOccupiedQuantity() == null)
         {
-            if (e.getIsPropertyQuantityOccupiedRemoved() != null && e.getIsPropertyQuantityOccupiedRemoved())
+            if (e.getIsPropertyOccupiedQuantityRemoved() != null && e.getIsPropertyOccupiedQuantityRemoved())
             {
-                this.setQuantityOccupied(null);
+                this.setOccupiedQuantity(null);
             }
         }
         else
         {
-            this.setQuantityOccupied(e.getQuantityOccupied());
+            this.setOccupiedQuantity(e.getOccupiedQuantity());
         }
-        if (e.getQuantityVirtual() == null)
+        if (e.getVirtualQuantity() == null)
         {
-            if (e.getIsPropertyQuantityVirtualRemoved() != null && e.getIsPropertyQuantityVirtualRemoved())
+            if (e.getIsPropertyVirtualQuantityRemoved() != null && e.getIsPropertyVirtualQuantityRemoved())
             {
-                this.setQuantityVirtual(null);
+                this.setVirtualQuantity(null);
             }
         }
         else
         {
-            this.setQuantityVirtual(e.getQuantityVirtual());
+            this.setVirtualQuantity(e.getVirtualQuantity());
         }
 
         this.setUpdatedBy(e.getCreatedBy());

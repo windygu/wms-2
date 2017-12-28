@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "SellableInventoryItemEntryId", "QuantitySellable", "SourceEventId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "SellableInventoryItemQuantitySellable", "SellableInventoryItemEntries", "SellableInventoryItemVersion", "SellableInventoryItemCreatedBy", "SellableInventoryItemCreatedAt", "SellableInventoryItemUpdatedBy", "SellableInventoryItemUpdatedAt" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "SellableInventoryItemEntryId", "SellableQuantity", "SourceEventId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "SellableInventoryItemSellableQuantity", "SellableInventoryItemEntries", "SellableInventoryItemVersion", "SellableInventoryItemCreatedBy", "SellableInventoryItemCreatedAt", "SellableInventoryItemUpdatedBy", "SellableInventoryItemUpdatedAt" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

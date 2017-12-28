@@ -18,22 +18,22 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="quantityOnHand" ></property>
-	<property name="quantityInTransit" ></property>
-	<property name="quantityReserved" ></property>
-	<property name="quantityOccupied" ></property>
-	<property name="quantityVirtual" ></property>
+	<property name="onHandQuantity" ></property>
+	<property name="inTransitQuantity" ></property>
+	<property name="reservedQuantity" ></property>
+	<property name="occupiedQuantity" ></property>
+	<property name="virtualQuantity" ></property>
 	<component name="source" class="org.dddml.wms.domain.inventoryitem.InventoryItemSourceInfo">
 		<property name="documentTypeId" ><column name="sourceDocumentTypeId" /></property>
 		<property name="documentNumber" ><column name="sourceDocumentNumber" /></property>
 		<property name="lineNumber" ><column name="sourceLineNumber" /></property>
 	</component>
 	<property name="version" ></property>
-	<property name="inventoryItemQuantityOnHand" ></property>
-	<property name="inventoryItemQuantityInTransit" ></property>
-	<property name="inventoryItemQuantityReserved" ></property>
-	<property name="inventoryItemQuantityOccupied" ></property>
-	<property name="inventoryItemQuantityVirtual" ></property>
+	<property name="inventoryItemOnHandQuantity" ></property>
+	<property name="inventoryItemInTransitQuantity" ></property>
+	<property name="inventoryItemReservedQuantity" ></property>
+	<property name="inventoryItemOccupiedQuantity" ></property>
+	<property name="inventoryItemVirtualQuantity" ></property>
 	<property name="inventoryItemCreatedBy" ></property>
 	<property name="inventoryItemCreatedAt" ></property>
 	<property name="inventoryItemUpdatedBy" ></property>
@@ -51,29 +51,29 @@
 
     <subclass name="AbstractInventoryItemEntryMvoStateEvent$SimpleInventoryItemEntryMvoStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyQuantityOnHandRemoved" column="IsPropertyQuantityOnHandRemoved"/>
+        <property name="isPropertyOnHandQuantityRemoved" column="IsPropertyOnHandQuantityRemoved"/>
 
-        <property name="isPropertyQuantityInTransitRemoved" column="IsPropertyQuantityInTransitRemoved"/>
+        <property name="isPropertyInTransitQuantityRemoved" column="IsPropertyInTransitQuantityRemoved"/>
 
-        <property name="isPropertyQuantityReservedRemoved" column="IsPropertyQuantityReservedRemoved"/>
+        <property name="isPropertyReservedQuantityRemoved" column="IsPropertyReservedQuantityRemoved"/>
 
-        <property name="isPropertyQuantityOccupiedRemoved" column="IsPropertyQuantityOccupiedRemoved"/>
+        <property name="isPropertyOccupiedQuantityRemoved" column="IsPropertyOccupiedQuantityRemoved"/>
 
-        <property name="isPropertyQuantityVirtualRemoved" column="IsPropertyQuantityVirtualRemoved"/>
+        <property name="isPropertyVirtualQuantityRemoved" column="IsPropertyVirtualQuantityRemoved"/>
 
         <property name="isPropertySourceRemoved" column="IsPropertySourceRemoved"/>
 
         <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 
-        <property name="isPropertyInventoryItemQuantityOnHandRemoved" column="IsPropertyInventoryItemQuantityOnHandRemoved"/>
+        <property name="isPropertyInventoryItemOnHandQuantityRemoved" column="IsPropertyInventoryItemOnHandQuantityRemoved"/>
 
-        <property name="isPropertyInventoryItemQuantityInTransitRemoved" column="IsPropertyInventoryItemQuantityInTransitRemoved"/>
+        <property name="isPropertyInventoryItemInTransitQuantityRemoved" column="IsPropertyInventoryItemInTransitQuantityRemoved"/>
 
-        <property name="isPropertyInventoryItemQuantityReservedRemoved" column="IsPropertyInventoryItemQuantityReservedRemoved"/>
+        <property name="isPropertyInventoryItemReservedQuantityRemoved" column="IsPropertyInventoryItemReservedQuantityRemoved"/>
 
-        <property name="isPropertyInventoryItemQuantityOccupiedRemoved" column="IsPropertyInventoryItemQuantityOccupiedRemoved"/>
+        <property name="isPropertyInventoryItemOccupiedQuantityRemoved" column="IsPropertyInventoryItemOccupiedQuantityRemoved"/>
 
-        <property name="isPropertyInventoryItemQuantityVirtualRemoved" column="IsPropertyInventoryItemQuantityVirtualRemoved"/>
+        <property name="isPropertyInventoryItemVirtualQuantityRemoved" column="IsPropertyInventoryItemVirtualQuantityRemoved"/>
 
         <property name="isPropertyInventoryItemCreatedByRemoved" column="IsPropertyInventoryItemCreatedByRemoved"/>
 

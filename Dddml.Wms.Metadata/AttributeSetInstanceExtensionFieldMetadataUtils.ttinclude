@@ -31,12 +31,12 @@
                 new ExtensionFieldGroupMetadata("_F_C1000_", "_", "string", 5, 1000)
             };    
 
-        public static ICollection<ExtensionFieldGroupMetadata> GetExtensionFieldGroups()
+        public static IList<ExtensionFieldGroupMetadata> GetExtensionFieldGroups()
 		{
 			return extensionFieldGroups;
 		}
 
-        public static ICollection<ExtensionFieldMetadata> GetAllExtensionFields()
+        public static IList<ExtensionFieldMetadata> GetAllExtensionFields()
         {
 
             var fields = new List<ExtensionFieldMetadata>();

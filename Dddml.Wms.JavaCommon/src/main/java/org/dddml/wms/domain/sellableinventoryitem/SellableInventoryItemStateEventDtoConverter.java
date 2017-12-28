@@ -28,7 +28,7 @@ public class SellableInventoryItemStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setQuantitySellable(e.getQuantitySellable());
+        dto.setSellableQuantity(e.getSellableQuantity());
         List<SellableInventoryItemEntryStateEventDto.SellableInventoryItemEntryStateCreatedDto> sellableInventoryItemEntryEvents = new ArrayList<>();
         for (SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated ee : e.getSellableInventoryItemEntryEvents()) {
             SellableInventoryItemEntryStateEventDto.SellableInventoryItemEntryStateCreatedDto eeDto = getSellableInventoryItemEntryStateEventDtoConverter().toSellableInventoryItemEntryStateCreatedDto(ee);
@@ -45,8 +45,8 @@ public class SellableInventoryItemStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setQuantitySellable(e.getQuantitySellable());
-        dto.setIsPropertyQuantitySellableRemoved(e.getIsPropertyQuantitySellableRemoved());
+        dto.setSellableQuantity(e.getSellableQuantity());
+        dto.setIsPropertySellableQuantityRemoved(e.getIsPropertySellableQuantityRemoved());
         List<SellableInventoryItemEntryStateEventDto> sellableInventoryItemEntryEvents = new ArrayList<>();
         for (SellableInventoryItemEntryStateEvent ee : e.getSellableInventoryItemEntryEvents()) {
             SellableInventoryItemEntryStateEventDto eeDto = getSellableInventoryItemEntryStateEventDtoConverter().toSellableInventoryItemEntryStateEventDto((AbstractSellableInventoryItemEntryStateEvent) ee);

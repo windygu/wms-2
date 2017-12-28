@@ -26,7 +26,7 @@ public class SellableInventoryItemEntryStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
-        dto.setQuantitySellable(e.getQuantitySellable());
+        dto.setSellableQuantity(e.getSellableQuantity());
         dto.setSourceEventId((e.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.getSourceEventId()));
         return dto;
     }

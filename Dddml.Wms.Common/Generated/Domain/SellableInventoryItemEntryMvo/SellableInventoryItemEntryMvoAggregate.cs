@@ -99,10 +99,10 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 			var stateEventId = new SellableInventoryItemEntryMvoStateEventId(c.SellableInventoryItemEntryId, c.SellableInventoryItemVersion);
             ISellableInventoryItemEntryMvoStateCreated e = NewSellableInventoryItemEntryMvoStateCreated(stateEventId);
 		
-            e.QuantitySellable = c.QuantitySellable;
+            e.SellableQuantity = c.SellableQuantity;
             e.SourceEventId = c.SourceEventId;
             e.Version = c.Version;
-            e.SellableInventoryItemQuantitySellable = c.SellableInventoryItemQuantitySellable;
+            e.SellableInventoryItemSellableQuantity = c.SellableInventoryItemSellableQuantity;
             e.SellableInventoryItemCreatedBy = c.SellableInventoryItemCreatedBy;
             e.SellableInventoryItemCreatedAt = c.SellableInventoryItemCreatedAt;
             e.SellableInventoryItemUpdatedBy = c.SellableInventoryItemUpdatedBy;
@@ -123,18 +123,18 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 			var stateEventId = new SellableInventoryItemEntryMvoStateEventId(c.SellableInventoryItemEntryId, c.SellableInventoryItemVersion);
             ISellableInventoryItemEntryMvoStateMergePatched e = NewSellableInventoryItemEntryMvoStateMergePatched(stateEventId);
 
-            e.QuantitySellable = c.QuantitySellable;
+            e.SellableQuantity = c.SellableQuantity;
             e.SourceEventId = c.SourceEventId;
             e.Version = c.Version;
-            e.SellableInventoryItemQuantitySellable = c.SellableInventoryItemQuantitySellable;
+            e.SellableInventoryItemSellableQuantity = c.SellableInventoryItemSellableQuantity;
             e.SellableInventoryItemCreatedBy = c.SellableInventoryItemCreatedBy;
             e.SellableInventoryItemCreatedAt = c.SellableInventoryItemCreatedAt;
             e.SellableInventoryItemUpdatedBy = c.SellableInventoryItemUpdatedBy;
             e.SellableInventoryItemUpdatedAt = c.SellableInventoryItemUpdatedAt;
-            e.IsPropertyQuantitySellableRemoved = c.IsPropertyQuantitySellableRemoved;
+            e.IsPropertySellableQuantityRemoved = c.IsPropertySellableQuantityRemoved;
             e.IsPropertySourceEventIdRemoved = c.IsPropertySourceEventIdRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
-            e.IsPropertySellableInventoryItemQuantitySellableRemoved = c.IsPropertySellableInventoryItemQuantitySellableRemoved;
+            e.IsPropertySellableInventoryItemSellableQuantityRemoved = c.IsPropertySellableInventoryItemSellableQuantityRemoved;
             e.IsPropertySellableInventoryItemCreatedByRemoved = c.IsPropertySellableInventoryItemCreatedByRemoved;
             e.IsPropertySellableInventoryItemCreatedAtRemoved = c.IsPropertySellableInventoryItemCreatedAtRemoved;
             e.IsPropertySellableInventoryItemUpdatedByRemoved = c.IsPropertySellableInventoryItemUpdatedByRemoved;

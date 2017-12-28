@@ -104,29 +104,29 @@ namespace Dddml.Wms.Domain.InventoryItem
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
-            decimal quantityOnHand = default(decimal);
-            decimal quantityInTransit = default(decimal);
-            decimal quantityReserved = default(decimal);
-            decimal quantityOccupied = default(decimal);
-            decimal quantityVirtual = default(decimal);
+            decimal onHandQuantity = default(decimal);
+            decimal inTransitQuantity = default(decimal);
+            decimal reservedQuantity = default(decimal);
+            decimal occupiedQuantity = default(decimal);
+            decimal virtualQuantity = default(decimal);
             foreach (ICreateInventoryItemEntry innerCommand in c.Entries)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
                 IInventoryItemEntryStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
                 e.AddInventoryItemEntryEvent(innerEvent);
-                quantityOnHand = quantityOnHand + (innerEvent.QuantityOnHand != null ? innerEvent.QuantityOnHand.GetValueOrDefault() : default(decimal));
-                quantityInTransit = quantityInTransit + (innerEvent.QuantityInTransit != null ? innerEvent.QuantityInTransit.GetValueOrDefault() : default(decimal));
-                quantityReserved = quantityReserved + (innerEvent.QuantityReserved != null ? innerEvent.QuantityReserved.GetValueOrDefault() : default(decimal));
-                quantityOccupied = quantityOccupied + (innerEvent.QuantityOccupied != null ? innerEvent.QuantityOccupied.GetValueOrDefault() : default(decimal));
-                quantityVirtual = quantityVirtual + (innerEvent.QuantityVirtual != null ? innerEvent.QuantityVirtual.GetValueOrDefault() : default(decimal));
+                onHandQuantity = onHandQuantity + (innerEvent.OnHandQuantity != null ? innerEvent.OnHandQuantity.GetValueOrDefault() : default(decimal));
+                inTransitQuantity = inTransitQuantity + (innerEvent.InTransitQuantity != null ? innerEvent.InTransitQuantity.GetValueOrDefault() : default(decimal));
+                reservedQuantity = reservedQuantity + (innerEvent.ReservedQuantity != null ? innerEvent.ReservedQuantity.GetValueOrDefault() : default(decimal));
+                occupiedQuantity = occupiedQuantity + (innerEvent.OccupiedQuantity != null ? innerEvent.OccupiedQuantity.GetValueOrDefault() : default(decimal));
+                virtualQuantity = virtualQuantity + (innerEvent.VirtualQuantity != null ? innerEvent.VirtualQuantity.GetValueOrDefault() : default(decimal));
             }
 
-            e.QuantityOnHand = quantityOnHand;
-            e.QuantityInTransit = quantityInTransit;
-            e.QuantityReserved = quantityReserved;
-            e.QuantityOccupied = quantityOccupied;
-            e.QuantityVirtual = quantityVirtual;
+            e.OnHandQuantity = onHandQuantity;
+            e.InTransitQuantity = inTransitQuantity;
+            e.ReservedQuantity = reservedQuantity;
+            e.OccupiedQuantity = occupiedQuantity;
+            e.VirtualQuantity = virtualQuantity;
 
             return e;
         }
@@ -145,11 +145,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 			var version = c.Version;
 
-            decimal quantityOnHand = _state.QuantityOnHand;
-            decimal quantityInTransit = _state.QuantityInTransit;
-            decimal quantityReserved = _state.QuantityReserved;
-            decimal quantityOccupied = _state.QuantityOccupied;
-            decimal quantityVirtual = _state.QuantityVirtual;
+            decimal onHandQuantity = _state.OnHandQuantity;
+            decimal inTransitQuantity = _state.InTransitQuantity;
+            decimal reservedQuantity = _state.ReservedQuantity;
+            decimal occupiedQuantity = _state.OccupiedQuantity;
+            decimal virtualQuantity = _state.VirtualQuantity;
             foreach (IInventoryItemEntryCommand innerCommand in c.InventoryItemEntryCommands)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
@@ -159,19 +159,19 @@ namespace Dddml.Wms.Domain.InventoryItem
                 // ////////////////
                 if (!(innerEvent is IInventoryItemEntryStateCreated)) { continue; }
                 var entryCreated = (IInventoryItemEntryStateCreated)innerEvent;
-                quantityOnHand = quantityOnHand + (entryCreated.QuantityOnHand != null ? entryCreated.QuantityOnHand.GetValueOrDefault() : default(decimal));
-                quantityInTransit = quantityInTransit + (entryCreated.QuantityInTransit != null ? entryCreated.QuantityInTransit.GetValueOrDefault() : default(decimal));
-                quantityReserved = quantityReserved + (entryCreated.QuantityReserved != null ? entryCreated.QuantityReserved.GetValueOrDefault() : default(decimal));
-                quantityOccupied = quantityOccupied + (entryCreated.QuantityOccupied != null ? entryCreated.QuantityOccupied.GetValueOrDefault() : default(decimal));
-                quantityVirtual = quantityVirtual + (entryCreated.QuantityVirtual != null ? entryCreated.QuantityVirtual.GetValueOrDefault() : default(decimal));
+                onHandQuantity = onHandQuantity + (entryCreated.OnHandQuantity != null ? entryCreated.OnHandQuantity.GetValueOrDefault() : default(decimal));
+                inTransitQuantity = inTransitQuantity + (entryCreated.InTransitQuantity != null ? entryCreated.InTransitQuantity.GetValueOrDefault() : default(decimal));
+                reservedQuantity = reservedQuantity + (entryCreated.ReservedQuantity != null ? entryCreated.ReservedQuantity.GetValueOrDefault() : default(decimal));
+                occupiedQuantity = occupiedQuantity + (entryCreated.OccupiedQuantity != null ? entryCreated.OccupiedQuantity.GetValueOrDefault() : default(decimal));
+                virtualQuantity = virtualQuantity + (entryCreated.VirtualQuantity != null ? entryCreated.VirtualQuantity.GetValueOrDefault() : default(decimal));
                 // ////////////////
             }
 
-            e.QuantityOnHand = quantityOnHand;
-            e.QuantityInTransit = quantityInTransit;
-            e.QuantityReserved = quantityReserved;
-            e.QuantityOccupied = quantityOccupied;
-            e.QuantityVirtual = quantityVirtual;
+            e.OnHandQuantity = onHandQuantity;
+            e.InTransitQuantity = inTransitQuantity;
+            e.ReservedQuantity = reservedQuantity;
+            e.OccupiedQuantity = occupiedQuantity;
+            e.VirtualQuantity = virtualQuantity;
 
             return e;
         }
@@ -218,11 +218,11 @@ namespace Dddml.Wms.Domain.InventoryItem
             IInventoryItemEntryStateCreated e = NewInventoryItemEntryStateCreated(stateEventId);
             var s = outerState.Entries.Get(c.EntrySeqId, true);
 
-            e.QuantityOnHand = c.QuantityOnHand;
-            e.QuantityInTransit = c.QuantityInTransit;
-            e.QuantityReserved = c.QuantityReserved;
-            e.QuantityOccupied = c.QuantityOccupied;
-            e.QuantityVirtual = c.QuantityVirtual;
+            e.OnHandQuantity = c.OnHandQuantity;
+            e.InTransitQuantity = c.InTransitQuantity;
+            e.ReservedQuantity = c.ReservedQuantity;
+            e.OccupiedQuantity = c.OccupiedQuantity;
+            e.VirtualQuantity = c.VirtualQuantity;
             e.Source = c.Source;
 
             e.CreatedBy = (string)c.RequesterId;

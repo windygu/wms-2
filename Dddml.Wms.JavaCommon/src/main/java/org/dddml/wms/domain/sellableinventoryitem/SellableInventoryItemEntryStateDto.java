@@ -24,16 +24,16 @@ public class SellableInventoryItemEntryStateDto
         this.entrySeqId = entrySeqId;
     }
 
-    private BigDecimal quantitySellable;
+    private BigDecimal sellableQuantity;
 
-    public BigDecimal getQuantitySellable()
+    public BigDecimal getSellableQuantity()
     {
-        return this.quantitySellable;
+        return this.sellableQuantity;
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable)
+    public void setSellableQuantity(BigDecimal sellableQuantity)
     {
-        this.quantitySellable = quantitySellable;
+        this.sellableQuantity = sellableQuantity;
     }
 
     private InventoryPRTriggeredIdDto sourceEventId;
@@ -149,8 +149,8 @@ public class SellableInventoryItemEntryStateDto
             if (returnedFieldsContains("EntrySeqId")) {
                 dto.setEntrySeqId(state.getEntrySeqId());
             }
-            if (returnedFieldsContains("QuantitySellable")) {
-                dto.setQuantitySellable(state.getQuantitySellable());
+            if (returnedFieldsContains("SellableQuantity")) {
+                dto.setSellableQuantity(state.getSellableQuantity());
             }
             if (returnedFieldsContains("SourceEventId")) {
                 dto.setSourceEventId((state.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(state.getSourceEventId()));

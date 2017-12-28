@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set { StateEventId.Version = value; }
         }
 
-		public virtual decimal? QuantitySellable { get; set; }
+		public virtual decimal? SellableQuantity { get; set; }
 
 		public virtual string CreatedBy { get; set; }
 
@@ -75,13 +75,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             }
         }
 
-		public virtual bool? IsPropertyQuantitySellableRemoved { get; set; }
+		public virtual bool? IsPropertySellableQuantityRemoved { get; set; }
 
-        bool ISellableInventoryItemStateMergePatched.IsPropertyQuantitySellableRemoved
+        bool ISellableInventoryItemStateMergePatched.IsPropertySellableQuantityRemoved
         {
             get 
             {
-                var b = this.IsPropertyQuantitySellableRemoved;
+                var b = this.IsPropertySellableQuantityRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             }
             set 
             {
-                this.IsPropertyQuantitySellableRemoved = value;
+                this.IsPropertySellableQuantityRemoved = value;
             }
         }
 

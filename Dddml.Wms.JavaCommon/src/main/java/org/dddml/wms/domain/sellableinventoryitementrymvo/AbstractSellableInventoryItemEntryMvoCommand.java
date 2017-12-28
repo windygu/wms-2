@@ -37,16 +37,16 @@ public abstract class AbstractSellableInventoryItemEntryMvoCommand extends Abstr
 
     public static abstract class AbstractCreateOrMergePatchSellableInventoryItemEntryMvo extends AbstractSellableInventoryItemEntryMvoCommand implements CreateOrMergePatchSellableInventoryItemEntryMvo
     {
-        private BigDecimal quantitySellable;
+        private BigDecimal sellableQuantity;
 
-        public BigDecimal getQuantitySellable()
+        public BigDecimal getSellableQuantity()
         {
-            return this.quantitySellable;
+            return this.sellableQuantity;
         }
 
-        public void setQuantitySellable(BigDecimal quantitySellable)
+        public void setSellableQuantity(BigDecimal sellableQuantity)
         {
-            this.quantitySellable = quantitySellable;
+            this.sellableQuantity = sellableQuantity;
         }
 
         private InventoryPRTriggeredId sourceEventId;
@@ -85,16 +85,16 @@ public abstract class AbstractSellableInventoryItemEntryMvoCommand extends Abstr
             this.active = active;
         }
 
-        private BigDecimal sellableInventoryItemQuantitySellable;
+        private BigDecimal sellableInventoryItemSellableQuantity;
 
-        public BigDecimal getSellableInventoryItemQuantitySellable()
+        public BigDecimal getSellableInventoryItemSellableQuantity()
         {
-            return this.sellableInventoryItemQuantitySellable;
+            return this.sellableInventoryItemSellableQuantity;
         }
 
-        public void setSellableInventoryItemQuantitySellable(BigDecimal sellableInventoryItemQuantitySellable)
+        public void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity)
         {
-            this.sellableInventoryItemQuantitySellable = sellableInventoryItemQuantitySellable;
+            this.sellableInventoryItemSellableQuantity = sellableInventoryItemSellableQuantity;
         }
 
         private String sellableInventoryItemCreatedBy;
@@ -163,16 +163,16 @@ public abstract class AbstractSellableInventoryItemEntryMvoCommand extends Abstr
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
-        private Boolean isPropertyQuantitySellableRemoved;
+        private Boolean isPropertySellableQuantityRemoved;
 
-        public Boolean getIsPropertyQuantitySellableRemoved()
+        public Boolean getIsPropertySellableQuantityRemoved()
         {
-            return this.isPropertyQuantitySellableRemoved;
+            return this.isPropertySellableQuantityRemoved;
         }
 
-        public void setIsPropertyQuantitySellableRemoved(Boolean removed)
+        public void setIsPropertySellableQuantityRemoved(Boolean removed)
         {
-            this.isPropertyQuantitySellableRemoved = removed;
+            this.isPropertySellableQuantityRemoved = removed;
         }
 
         private Boolean isPropertySourceEventIdRemoved;
@@ -211,16 +211,16 @@ public abstract class AbstractSellableInventoryItemEntryMvoCommand extends Abstr
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Boolean isPropertySellableInventoryItemQuantitySellableRemoved;
+        private Boolean isPropertySellableInventoryItemSellableQuantityRemoved;
 
-        public Boolean getIsPropertySellableInventoryItemQuantitySellableRemoved()
+        public Boolean getIsPropertySellableInventoryItemSellableQuantityRemoved()
         {
-            return this.isPropertySellableInventoryItemQuantitySellableRemoved;
+            return this.isPropertySellableInventoryItemSellableQuantityRemoved;
         }
 
-        public void setIsPropertySellableInventoryItemQuantitySellableRemoved(Boolean removed)
+        public void setIsPropertySellableInventoryItemSellableQuantityRemoved(Boolean removed)
         {
-            this.isPropertySellableInventoryItemQuantitySellableRemoved = removed;
+            this.isPropertySellableInventoryItemSellableQuantityRemoved = removed;
         }
 
         private Boolean isPropertySellableInventoryItemCreatedByRemoved;

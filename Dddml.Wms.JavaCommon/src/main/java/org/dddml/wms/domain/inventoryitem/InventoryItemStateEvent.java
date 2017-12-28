@@ -14,25 +14,25 @@ public interface InventoryItemStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    BigDecimal getQuantityOnHand();
+    BigDecimal getOnHandQuantity();
 
-    void setQuantityOnHand(BigDecimal quantityOnHand);
+    void setOnHandQuantity(BigDecimal onHandQuantity);
 
-    BigDecimal getQuantityInTransit();
+    BigDecimal getInTransitQuantity();
 
-    void setQuantityInTransit(BigDecimal quantityInTransit);
+    void setInTransitQuantity(BigDecimal inTransitQuantity);
 
-    BigDecimal getQuantityReserved();
+    BigDecimal getReservedQuantity();
 
-    void setQuantityReserved(BigDecimal quantityReserved);
+    void setReservedQuantity(BigDecimal reservedQuantity);
 
-    BigDecimal getQuantityOccupied();
+    BigDecimal getOccupiedQuantity();
 
-    void setQuantityOccupied(BigDecimal quantityOccupied);
+    void setOccupiedQuantity(BigDecimal occupiedQuantity);
 
-    BigDecimal getQuantityVirtual();
+    BigDecimal getVirtualQuantity();
 
-    void setQuantityVirtual(BigDecimal quantityVirtual);
+    void setVirtualQuantity(BigDecimal virtualQuantity);
 
     String getCreatedBy();
 
@@ -60,25 +60,25 @@ public interface InventoryItemStateEvent extends Event
 
     interface InventoryItemStateMergePatched extends InventoryItemStateEvent
     {
-        Boolean getIsPropertyQuantityOnHandRemoved();
+        Boolean getIsPropertyOnHandQuantityRemoved();
 
-        void setIsPropertyQuantityOnHandRemoved(Boolean removed);
+        void setIsPropertyOnHandQuantityRemoved(Boolean removed);
 
-        Boolean getIsPropertyQuantityInTransitRemoved();
+        Boolean getIsPropertyInTransitQuantityRemoved();
 
-        void setIsPropertyQuantityInTransitRemoved(Boolean removed);
+        void setIsPropertyInTransitQuantityRemoved(Boolean removed);
 
-        Boolean getIsPropertyQuantityReservedRemoved();
+        Boolean getIsPropertyReservedQuantityRemoved();
 
-        void setIsPropertyQuantityReservedRemoved(Boolean removed);
+        void setIsPropertyReservedQuantityRemoved(Boolean removed);
 
-        Boolean getIsPropertyQuantityOccupiedRemoved();
+        Boolean getIsPropertyOccupiedQuantityRemoved();
 
-        void setIsPropertyQuantityOccupiedRemoved(Boolean removed);
+        void setIsPropertyOccupiedQuantityRemoved(Boolean removed);
 
-        Boolean getIsPropertyQuantityVirtualRemoved();
+        Boolean getIsPropertyVirtualQuantityRemoved();
 
-        void setIsPropertyQuantityVirtualRemoved(Boolean removed);
+        void setIsPropertyVirtualQuantityRemoved(Boolean removed);
 
         Iterable<InventoryItemEntryStateEvent> getInventoryItemEntryEvents();
         

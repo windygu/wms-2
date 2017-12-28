@@ -17,11 +17,11 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="quantityOnHand" ></property>
-	<property name="quantityInTransit" ></property>
-	<property name="quantityReserved" ></property>
-	<property name="quantityOccupied" ></property>
-	<property name="quantityVirtual" ></property>
+	<property name="onHandQuantity" ></property>
+	<property name="inTransitQuantity" ></property>
+	<property name="reservedQuantity" ></property>
+	<property name="occupiedQuantity" ></property>
+	<property name="virtualQuantity" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
 
@@ -35,15 +35,15 @@
 
     <subclass name="AbstractInventoryItemStateEvent$SimpleInventoryItemStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyQuantityOnHandRemoved" column="IsPropertyQuantityOnHandRemoved"/>
+        <property name="isPropertyOnHandQuantityRemoved" column="IsPropertyOnHandQuantityRemoved"/>
 
-        <property name="isPropertyQuantityInTransitRemoved" column="IsPropertyQuantityInTransitRemoved"/>
+        <property name="isPropertyInTransitQuantityRemoved" column="IsPropertyInTransitQuantityRemoved"/>
 
-        <property name="isPropertyQuantityReservedRemoved" column="IsPropertyQuantityReservedRemoved"/>
+        <property name="isPropertyReservedQuantityRemoved" column="IsPropertyReservedQuantityRemoved"/>
 
-        <property name="isPropertyQuantityOccupiedRemoved" column="IsPropertyQuantityOccupiedRemoved"/>
+        <property name="isPropertyOccupiedQuantityRemoved" column="IsPropertyOccupiedQuantityRemoved"/>
 
-        <property name="isPropertyQuantityVirtualRemoved" column="IsPropertyQuantityVirtualRemoved"/>
+        <property name="isPropertyVirtualQuantityRemoved" column="IsPropertyVirtualQuantityRemoved"/>
 
 
     </subclass>

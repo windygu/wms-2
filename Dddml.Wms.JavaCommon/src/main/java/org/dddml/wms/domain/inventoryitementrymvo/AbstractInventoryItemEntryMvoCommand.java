@@ -36,64 +36,64 @@ public abstract class AbstractInventoryItemEntryMvoCommand extends AbstractComma
 
     public static abstract class AbstractCreateOrMergePatchInventoryItemEntryMvo extends AbstractInventoryItemEntryMvoCommand implements CreateOrMergePatchInventoryItemEntryMvo
     {
-        private BigDecimal quantityOnHand;
+        private BigDecimal onHandQuantity;
 
-        public BigDecimal getQuantityOnHand()
+        public BigDecimal getOnHandQuantity()
         {
-            return this.quantityOnHand;
+            return this.onHandQuantity;
         }
 
-        public void setQuantityOnHand(BigDecimal quantityOnHand)
+        public void setOnHandQuantity(BigDecimal onHandQuantity)
         {
-            this.quantityOnHand = quantityOnHand;
+            this.onHandQuantity = onHandQuantity;
         }
 
-        private BigDecimal quantityInTransit;
+        private BigDecimal inTransitQuantity;
 
-        public BigDecimal getQuantityInTransit()
+        public BigDecimal getInTransitQuantity()
         {
-            return this.quantityInTransit;
+            return this.inTransitQuantity;
         }
 
-        public void setQuantityInTransit(BigDecimal quantityInTransit)
+        public void setInTransitQuantity(BigDecimal inTransitQuantity)
         {
-            this.quantityInTransit = quantityInTransit;
+            this.inTransitQuantity = inTransitQuantity;
         }
 
-        private BigDecimal quantityReserved;
+        private BigDecimal reservedQuantity;
 
-        public BigDecimal getQuantityReserved()
+        public BigDecimal getReservedQuantity()
         {
-            return this.quantityReserved;
+            return this.reservedQuantity;
         }
 
-        public void setQuantityReserved(BigDecimal quantityReserved)
+        public void setReservedQuantity(BigDecimal reservedQuantity)
         {
-            this.quantityReserved = quantityReserved;
+            this.reservedQuantity = reservedQuantity;
         }
 
-        private BigDecimal quantityOccupied;
+        private BigDecimal occupiedQuantity;
 
-        public BigDecimal getQuantityOccupied()
+        public BigDecimal getOccupiedQuantity()
         {
-            return this.quantityOccupied;
+            return this.occupiedQuantity;
         }
 
-        public void setQuantityOccupied(BigDecimal quantityOccupied)
+        public void setOccupiedQuantity(BigDecimal occupiedQuantity)
         {
-            this.quantityOccupied = quantityOccupied;
+            this.occupiedQuantity = occupiedQuantity;
         }
 
-        private BigDecimal quantityVirtual;
+        private BigDecimal virtualQuantity;
 
-        public BigDecimal getQuantityVirtual()
+        public BigDecimal getVirtualQuantity()
         {
-            return this.quantityVirtual;
+            return this.virtualQuantity;
         }
 
-        public void setQuantityVirtual(BigDecimal quantityVirtual)
+        public void setVirtualQuantity(BigDecimal virtualQuantity)
         {
-            this.quantityVirtual = quantityVirtual;
+            this.virtualQuantity = virtualQuantity;
         }
 
         private InventoryItemSourceInfo source;
@@ -132,64 +132,64 @@ public abstract class AbstractInventoryItemEntryMvoCommand extends AbstractComma
             this.active = active;
         }
 
-        private BigDecimal inventoryItemQuantityOnHand;
+        private BigDecimal inventoryItemOnHandQuantity;
 
-        public BigDecimal getInventoryItemQuantityOnHand()
+        public BigDecimal getInventoryItemOnHandQuantity()
         {
-            return this.inventoryItemQuantityOnHand;
+            return this.inventoryItemOnHandQuantity;
         }
 
-        public void setInventoryItemQuantityOnHand(BigDecimal inventoryItemQuantityOnHand)
+        public void setInventoryItemOnHandQuantity(BigDecimal inventoryItemOnHandQuantity)
         {
-            this.inventoryItemQuantityOnHand = inventoryItemQuantityOnHand;
+            this.inventoryItemOnHandQuantity = inventoryItemOnHandQuantity;
         }
 
-        private BigDecimal inventoryItemQuantityInTransit;
+        private BigDecimal inventoryItemInTransitQuantity;
 
-        public BigDecimal getInventoryItemQuantityInTransit()
+        public BigDecimal getInventoryItemInTransitQuantity()
         {
-            return this.inventoryItemQuantityInTransit;
+            return this.inventoryItemInTransitQuantity;
         }
 
-        public void setInventoryItemQuantityInTransit(BigDecimal inventoryItemQuantityInTransit)
+        public void setInventoryItemInTransitQuantity(BigDecimal inventoryItemInTransitQuantity)
         {
-            this.inventoryItemQuantityInTransit = inventoryItemQuantityInTransit;
+            this.inventoryItemInTransitQuantity = inventoryItemInTransitQuantity;
         }
 
-        private BigDecimal inventoryItemQuantityReserved;
+        private BigDecimal inventoryItemReservedQuantity;
 
-        public BigDecimal getInventoryItemQuantityReserved()
+        public BigDecimal getInventoryItemReservedQuantity()
         {
-            return this.inventoryItemQuantityReserved;
+            return this.inventoryItemReservedQuantity;
         }
 
-        public void setInventoryItemQuantityReserved(BigDecimal inventoryItemQuantityReserved)
+        public void setInventoryItemReservedQuantity(BigDecimal inventoryItemReservedQuantity)
         {
-            this.inventoryItemQuantityReserved = inventoryItemQuantityReserved;
+            this.inventoryItemReservedQuantity = inventoryItemReservedQuantity;
         }
 
-        private BigDecimal inventoryItemQuantityOccupied;
+        private BigDecimal inventoryItemOccupiedQuantity;
 
-        public BigDecimal getInventoryItemQuantityOccupied()
+        public BigDecimal getInventoryItemOccupiedQuantity()
         {
-            return this.inventoryItemQuantityOccupied;
+            return this.inventoryItemOccupiedQuantity;
         }
 
-        public void setInventoryItemQuantityOccupied(BigDecimal inventoryItemQuantityOccupied)
+        public void setInventoryItemOccupiedQuantity(BigDecimal inventoryItemOccupiedQuantity)
         {
-            this.inventoryItemQuantityOccupied = inventoryItemQuantityOccupied;
+            this.inventoryItemOccupiedQuantity = inventoryItemOccupiedQuantity;
         }
 
-        private BigDecimal inventoryItemQuantityVirtual;
+        private BigDecimal inventoryItemVirtualQuantity;
 
-        public BigDecimal getInventoryItemQuantityVirtual()
+        public BigDecimal getInventoryItemVirtualQuantity()
         {
-            return this.inventoryItemQuantityVirtual;
+            return this.inventoryItemVirtualQuantity;
         }
 
-        public void setInventoryItemQuantityVirtual(BigDecimal inventoryItemQuantityVirtual)
+        public void setInventoryItemVirtualQuantity(BigDecimal inventoryItemVirtualQuantity)
         {
-            this.inventoryItemQuantityVirtual = inventoryItemQuantityVirtual;
+            this.inventoryItemVirtualQuantity = inventoryItemVirtualQuantity;
         }
 
         private String inventoryItemCreatedBy;
@@ -258,64 +258,64 @@ public abstract class AbstractInventoryItemEntryMvoCommand extends AbstractComma
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
-        private Boolean isPropertyQuantityOnHandRemoved;
+        private Boolean isPropertyOnHandQuantityRemoved;
 
-        public Boolean getIsPropertyQuantityOnHandRemoved()
+        public Boolean getIsPropertyOnHandQuantityRemoved()
         {
-            return this.isPropertyQuantityOnHandRemoved;
+            return this.isPropertyOnHandQuantityRemoved;
         }
 
-        public void setIsPropertyQuantityOnHandRemoved(Boolean removed)
+        public void setIsPropertyOnHandQuantityRemoved(Boolean removed)
         {
-            this.isPropertyQuantityOnHandRemoved = removed;
+            this.isPropertyOnHandQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyQuantityInTransitRemoved;
+        private Boolean isPropertyInTransitQuantityRemoved;
 
-        public Boolean getIsPropertyQuantityInTransitRemoved()
+        public Boolean getIsPropertyInTransitQuantityRemoved()
         {
-            return this.isPropertyQuantityInTransitRemoved;
+            return this.isPropertyInTransitQuantityRemoved;
         }
 
-        public void setIsPropertyQuantityInTransitRemoved(Boolean removed)
+        public void setIsPropertyInTransitQuantityRemoved(Boolean removed)
         {
-            this.isPropertyQuantityInTransitRemoved = removed;
+            this.isPropertyInTransitQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyQuantityReservedRemoved;
+        private Boolean isPropertyReservedQuantityRemoved;
 
-        public Boolean getIsPropertyQuantityReservedRemoved()
+        public Boolean getIsPropertyReservedQuantityRemoved()
         {
-            return this.isPropertyQuantityReservedRemoved;
+            return this.isPropertyReservedQuantityRemoved;
         }
 
-        public void setIsPropertyQuantityReservedRemoved(Boolean removed)
+        public void setIsPropertyReservedQuantityRemoved(Boolean removed)
         {
-            this.isPropertyQuantityReservedRemoved = removed;
+            this.isPropertyReservedQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyQuantityOccupiedRemoved;
+        private Boolean isPropertyOccupiedQuantityRemoved;
 
-        public Boolean getIsPropertyQuantityOccupiedRemoved()
+        public Boolean getIsPropertyOccupiedQuantityRemoved()
         {
-            return this.isPropertyQuantityOccupiedRemoved;
+            return this.isPropertyOccupiedQuantityRemoved;
         }
 
-        public void setIsPropertyQuantityOccupiedRemoved(Boolean removed)
+        public void setIsPropertyOccupiedQuantityRemoved(Boolean removed)
         {
-            this.isPropertyQuantityOccupiedRemoved = removed;
+            this.isPropertyOccupiedQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyQuantityVirtualRemoved;
+        private Boolean isPropertyVirtualQuantityRemoved;
 
-        public Boolean getIsPropertyQuantityVirtualRemoved()
+        public Boolean getIsPropertyVirtualQuantityRemoved()
         {
-            return this.isPropertyQuantityVirtualRemoved;
+            return this.isPropertyVirtualQuantityRemoved;
         }
 
-        public void setIsPropertyQuantityVirtualRemoved(Boolean removed)
+        public void setIsPropertyVirtualQuantityRemoved(Boolean removed)
         {
-            this.isPropertyQuantityVirtualRemoved = removed;
+            this.isPropertyVirtualQuantityRemoved = removed;
         }
 
         private Boolean isPropertySourceRemoved;
@@ -354,64 +354,64 @@ public abstract class AbstractInventoryItemEntryMvoCommand extends AbstractComma
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Boolean isPropertyInventoryItemQuantityOnHandRemoved;
+        private Boolean isPropertyInventoryItemOnHandQuantityRemoved;
 
-        public Boolean getIsPropertyInventoryItemQuantityOnHandRemoved()
+        public Boolean getIsPropertyInventoryItemOnHandQuantityRemoved()
         {
-            return this.isPropertyInventoryItemQuantityOnHandRemoved;
+            return this.isPropertyInventoryItemOnHandQuantityRemoved;
         }
 
-        public void setIsPropertyInventoryItemQuantityOnHandRemoved(Boolean removed)
+        public void setIsPropertyInventoryItemOnHandQuantityRemoved(Boolean removed)
         {
-            this.isPropertyInventoryItemQuantityOnHandRemoved = removed;
+            this.isPropertyInventoryItemOnHandQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyInventoryItemQuantityInTransitRemoved;
+        private Boolean isPropertyInventoryItemInTransitQuantityRemoved;
 
-        public Boolean getIsPropertyInventoryItemQuantityInTransitRemoved()
+        public Boolean getIsPropertyInventoryItemInTransitQuantityRemoved()
         {
-            return this.isPropertyInventoryItemQuantityInTransitRemoved;
+            return this.isPropertyInventoryItemInTransitQuantityRemoved;
         }
 
-        public void setIsPropertyInventoryItemQuantityInTransitRemoved(Boolean removed)
+        public void setIsPropertyInventoryItemInTransitQuantityRemoved(Boolean removed)
         {
-            this.isPropertyInventoryItemQuantityInTransitRemoved = removed;
+            this.isPropertyInventoryItemInTransitQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyInventoryItemQuantityReservedRemoved;
+        private Boolean isPropertyInventoryItemReservedQuantityRemoved;
 
-        public Boolean getIsPropertyInventoryItemQuantityReservedRemoved()
+        public Boolean getIsPropertyInventoryItemReservedQuantityRemoved()
         {
-            return this.isPropertyInventoryItemQuantityReservedRemoved;
+            return this.isPropertyInventoryItemReservedQuantityRemoved;
         }
 
-        public void setIsPropertyInventoryItemQuantityReservedRemoved(Boolean removed)
+        public void setIsPropertyInventoryItemReservedQuantityRemoved(Boolean removed)
         {
-            this.isPropertyInventoryItemQuantityReservedRemoved = removed;
+            this.isPropertyInventoryItemReservedQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyInventoryItemQuantityOccupiedRemoved;
+        private Boolean isPropertyInventoryItemOccupiedQuantityRemoved;
 
-        public Boolean getIsPropertyInventoryItemQuantityOccupiedRemoved()
+        public Boolean getIsPropertyInventoryItemOccupiedQuantityRemoved()
         {
-            return this.isPropertyInventoryItemQuantityOccupiedRemoved;
+            return this.isPropertyInventoryItemOccupiedQuantityRemoved;
         }
 
-        public void setIsPropertyInventoryItemQuantityOccupiedRemoved(Boolean removed)
+        public void setIsPropertyInventoryItemOccupiedQuantityRemoved(Boolean removed)
         {
-            this.isPropertyInventoryItemQuantityOccupiedRemoved = removed;
+            this.isPropertyInventoryItemOccupiedQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyInventoryItemQuantityVirtualRemoved;
+        private Boolean isPropertyInventoryItemVirtualQuantityRemoved;
 
-        public Boolean getIsPropertyInventoryItemQuantityVirtualRemoved()
+        public Boolean getIsPropertyInventoryItemVirtualQuantityRemoved()
         {
-            return this.isPropertyInventoryItemQuantityVirtualRemoved;
+            return this.isPropertyInventoryItemVirtualQuantityRemoved;
         }
 
-        public void setIsPropertyInventoryItemQuantityVirtualRemoved(Boolean removed)
+        public void setIsPropertyInventoryItemVirtualQuantityRemoved(Boolean removed)
         {
-            this.isPropertyInventoryItemQuantityVirtualRemoved = removed;
+            this.isPropertyInventoryItemVirtualQuantityRemoved = removed;
         }
 
         private Boolean isPropertyInventoryItemCreatedByRemoved;

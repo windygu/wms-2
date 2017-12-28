@@ -17,29 +17,29 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 	{
 		InventoryItemEntryId InventoryItemEntryId { get; set; }
 
-		decimal QuantityOnHand { get; set; }
+		decimal OnHandQuantity { get; set; }
 
-		decimal QuantityInTransit { get; set; }
+		decimal InTransitQuantity { get; set; }
 
-		decimal QuantityReserved { get; set; }
+		decimal ReservedQuantity { get; set; }
 
-		decimal QuantityOccupied { get; set; }
+		decimal OccupiedQuantity { get; set; }
 
-		decimal QuantityVirtual { get; set; }
+		decimal VirtualQuantity { get; set; }
 
 		InventoryItemSourceInfo Source { get; set; }
 
 		long Version { get; set; }
 
-		decimal InventoryItemQuantityOnHand { get; set; }
+		decimal InventoryItemOnHandQuantity { get; set; }
 
-		decimal InventoryItemQuantityInTransit { get; set; }
+		decimal InventoryItemInTransitQuantity { get; set; }
 
-		decimal InventoryItemQuantityReserved { get; set; }
+		decimal InventoryItemReservedQuantity { get; set; }
 
-		decimal InventoryItemQuantityOccupied { get; set; }
+		decimal InventoryItemOccupiedQuantity { get; set; }
 
-		decimal InventoryItemQuantityVirtual { get; set; }
+		decimal InventoryItemVirtualQuantity { get; set; }
 
 		long InventoryItemVersion { get; set; }
 

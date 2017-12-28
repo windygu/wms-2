@@ -22,31 +22,31 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set;
         }
 
-        decimal? QuantityOnHand
+        decimal? OnHandQuantity
         {
             get;
             set;
         }
 
-        decimal? QuantityInTransit
+        decimal? InTransitQuantity
         {
             get;
             set;
         }
 
-        decimal? QuantityReserved
+        decimal? ReservedQuantity
         {
             get;
             set;
         }
 
-        decimal? QuantityOccupied
+        decimal? OccupiedQuantity
         {
             get;
             set;
         }
 
-        decimal? QuantityVirtual
+        decimal? VirtualQuantity
         {
             get;
             set;
@@ -65,31 +65,31 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set;
         }
 
-        decimal? InventoryItemQuantityOnHand
+        decimal? InventoryItemOnHandQuantity
         {
             get;
             set;
         }
 
-        decimal? InventoryItemQuantityInTransit
+        decimal? InventoryItemInTransitQuantity
         {
             get;
             set;
         }
 
-        decimal? InventoryItemQuantityReserved
+        decimal? InventoryItemReservedQuantity
         {
             get;
             set;
         }
 
-        decimal? InventoryItemQuantityOccupied
+        decimal? InventoryItemOccupiedQuantity
         {
             get;
             set;
         }
 
-        decimal? InventoryItemQuantityVirtual
+        decimal? InventoryItemVirtualQuantity
         {
             get;
             set;

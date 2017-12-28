@@ -57,17 +57,17 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
         ((AbstractSellableInventoryItemStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        BigDecimal quantitySellable = BigDecimal.ZERO;
+        BigDecimal sellableQuantity = BigDecimal.ZERO;
         Long version = c.getVersion();
         for (SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry innerCommand : c.getEntries())
         {
             throwOnInconsistentCommands(c, innerCommand);
             SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addSellableInventoryItemEntryEvent(innerEvent);
-            quantitySellable = quantitySellable.add(innerEvent.getQuantitySellable() != null ? innerEvent.getQuantitySellable() : BigDecimal.ZERO);
+            sellableQuantity = sellableQuantity.add(innerEvent.getSellableQuantity() != null ? innerEvent.getSellableQuantity() : BigDecimal.ZERO);
         }
 
-        e.setQuantitySellable(quantitySellable);
+        e.setSellableQuantity(sellableQuantity);
         return e;
     }
 
@@ -77,7 +77,7 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
         ((AbstractSellableInventoryItemStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        BigDecimal quantitySellable = this.state.getQuantitySellable();
+        BigDecimal sellableQuantity = this.state.getSellableQuantity();
         Long version = c.getVersion();
         for (SellableInventoryItemEntryCommand innerCommand : c.getSellableInventoryItemEntryCommands())
         {
@@ -87,11 +87,11 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
             // ////////////////
             if (!(innerEvent instanceof SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated)) { continue; }
             SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated entryCreated = (SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated)innerEvent;
-            quantitySellable = quantitySellable.add(entryCreated.getQuantitySellable() != null ? entryCreated.getQuantitySellable() : BigDecimal.ZERO);
+            sellableQuantity = sellableQuantity.add(entryCreated.getSellableQuantity() != null ? entryCreated.getSellableQuantity() : BigDecimal.ZERO);
             // ////////////////
         }
 
-        e.setQuantitySellable(quantitySellable);
+        e.setSellableQuantity(sellableQuantity);
         return e;
     }
 
@@ -114,7 +114,7 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
         SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated e = newSellableInventoryItemEntryStateCreated(stateEventId);
         SellableInventoryItemEntryState s = outerState.getEntries().get(c.getEntrySeqId());
 
-        e.setQuantitySellable(c.getQuantitySellable());
+        e.setSellableQuantity(c.getSellableQuantity());
         e.setSourceEventId(c.getSourceEventId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));

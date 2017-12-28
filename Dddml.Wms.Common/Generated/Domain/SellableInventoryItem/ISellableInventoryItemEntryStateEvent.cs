@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 		long Version { get; set; }
 
-		decimal? QuantitySellable { get; set; }
+		decimal? SellableQuantity { get; set; }
 
 		InventoryPRTriggeredId SourceEventId { get; set; }
 

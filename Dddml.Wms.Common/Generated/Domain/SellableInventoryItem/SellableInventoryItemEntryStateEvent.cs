@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set { StateEventId.EntrySeqId = value; }
         }
 
-        public virtual decimal? QuantitySellable { get { return _state.QuantitySellable; } set { _state.QuantitySellable = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+        public virtual decimal? SellableQuantity { get { return _state.SellableQuantity; } set { _state.SellableQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
         public virtual InventoryPRTriggeredId SourceEventId { get { return _state.SourceEventId; } set { _state.SourceEventId = value; } }
 

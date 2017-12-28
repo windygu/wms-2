@@ -37,16 +37,16 @@ public abstract class AbstractSellableInventoryItemEntryCommand extends Abstract
 
     public static abstract class AbstractCreateOrMergePatchSellableInventoryItemEntry extends AbstractSellableInventoryItemEntryCommand implements CreateOrMergePatchSellableInventoryItemEntry
     {
-        private BigDecimal quantitySellable;
+        private BigDecimal sellableQuantity;
 
-        public BigDecimal getQuantitySellable()
+        public BigDecimal getSellableQuantity()
         {
-            return this.quantitySellable;
+            return this.sellableQuantity;
         }
 
-        public void setQuantitySellable(BigDecimal quantitySellable)
+        public void setSellableQuantity(BigDecimal sellableQuantity)
         {
-            this.quantitySellable = quantitySellable;
+            this.sellableQuantity = sellableQuantity;
         }
 
         private InventoryPRTriggeredId sourceEventId;

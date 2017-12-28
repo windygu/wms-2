@@ -12,11 +12,11 @@ public final class InventoryItemEntryFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "entrySeqId",
-            "quantityOnHand",
-            "quantityInTransit",
-            "quantityReserved",
-            "quantityOccupied",
-            "quantityVirtual",
+            "onHandQuantity",
+            "inTransitQuantity",
+            "reservedQuantity",
+            "occupiedQuantity",
+            "virtualQuantity",
             "version",
             "createdBy",
             "createdAt",
@@ -76,16 +76,16 @@ public final class InventoryItemEntryFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("entrySeqId", "inventoryItemEntryId.entrySeqId");
         aliasMap.put("EntrySeqId", "inventoryItemEntryId.entrySeqId");
-        aliasMap.put("quantityOnHand", "quantityOnHand");
-        aliasMap.put("QuantityOnHand", "quantityOnHand");
-        aliasMap.put("quantityInTransit", "quantityInTransit");
-        aliasMap.put("QuantityInTransit", "quantityInTransit");
-        aliasMap.put("quantityReserved", "quantityReserved");
-        aliasMap.put("QuantityReserved", "quantityReserved");
-        aliasMap.put("quantityOccupied", "quantityOccupied");
-        aliasMap.put("QuantityOccupied", "quantityOccupied");
-        aliasMap.put("quantityVirtual", "quantityVirtual");
-        aliasMap.put("QuantityVirtual", "quantityVirtual");
+        aliasMap.put("onHandQuantity", "onHandQuantity");
+        aliasMap.put("OnHandQuantity", "onHandQuantity");
+        aliasMap.put("inTransitQuantity", "inTransitQuantity");
+        aliasMap.put("InTransitQuantity", "inTransitQuantity");
+        aliasMap.put("reservedQuantity", "reservedQuantity");
+        aliasMap.put("ReservedQuantity", "reservedQuantity");
+        aliasMap.put("occupiedQuantity", "occupiedQuantity");
+        aliasMap.put("OccupiedQuantity", "occupiedQuantity");
+        aliasMap.put("virtualQuantity", "virtualQuantity");
+        aliasMap.put("VirtualQuantity", "virtualQuantity");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

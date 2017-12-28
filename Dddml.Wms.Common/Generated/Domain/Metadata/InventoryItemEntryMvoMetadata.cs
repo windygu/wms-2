@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
-                    Name = "QuantityOnHand",
+                    Name = "OnHandQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "QuantityInTransit",
+                    Name = "InTransitQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "QuantityReserved",
+                    Name = "ReservedQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -133,7 +133,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "QuantityOccupied",
+                    Name = "OccupiedQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -162,7 +162,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "QuantityVirtual",
+                    Name = "VirtualQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -423,7 +423,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InventoryItemQuantityOnHand",
+                    Name = "InventoryItemOnHandQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -452,7 +452,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InventoryItemQuantityInTransit",
+                    Name = "InventoryItemInTransitQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -481,7 +481,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InventoryItemQuantityReserved",
+                    Name = "InventoryItemReservedQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -510,7 +510,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InventoryItemQuantityOccupied",
+                    Name = "InventoryItemOccupiedQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -539,7 +539,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "InventoryItemQuantityVirtual",
+                    Name = "InventoryItemVirtualQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -969,16 +969,16 @@ namespace Dddml.Wms.Domain.Metadata
         private static void InitFilteringPropertyAliasDictionary()
         {
             var d = new Dictionary<string, string>();
-            d.Add("QuantityOnHand", "QuantityOnHand");
-            d.Add("quantityOnHand", "QuantityOnHand");
-            d.Add("QuantityInTransit", "QuantityInTransit");
-            d.Add("quantityInTransit", "QuantityInTransit");
-            d.Add("QuantityReserved", "QuantityReserved");
-            d.Add("quantityReserved", "QuantityReserved");
-            d.Add("QuantityOccupied", "QuantityOccupied");
-            d.Add("quantityOccupied", "QuantityOccupied");
-            d.Add("QuantityVirtual", "QuantityVirtual");
-            d.Add("quantityVirtual", "QuantityVirtual");
+            d.Add("OnHandQuantity", "OnHandQuantity");
+            d.Add("onHandQuantity", "OnHandQuantity");
+            d.Add("InTransitQuantity", "InTransitQuantity");
+            d.Add("inTransitQuantity", "InTransitQuantity");
+            d.Add("ReservedQuantity", "ReservedQuantity");
+            d.Add("reservedQuantity", "ReservedQuantity");
+            d.Add("OccupiedQuantity", "OccupiedQuantity");
+            d.Add("occupiedQuantity", "OccupiedQuantity");
+            d.Add("VirtualQuantity", "VirtualQuantity");
+            d.Add("virtualQuantity", "VirtualQuantity");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");
@@ -993,16 +993,16 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
-            d.Add("InventoryItemQuantityOnHand", "InventoryItemQuantityOnHand");
-            d.Add("inventoryItemQuantityOnHand", "InventoryItemQuantityOnHand");
-            d.Add("InventoryItemQuantityInTransit", "InventoryItemQuantityInTransit");
-            d.Add("inventoryItemQuantityInTransit", "InventoryItemQuantityInTransit");
-            d.Add("InventoryItemQuantityReserved", "InventoryItemQuantityReserved");
-            d.Add("inventoryItemQuantityReserved", "InventoryItemQuantityReserved");
-            d.Add("InventoryItemQuantityOccupied", "InventoryItemQuantityOccupied");
-            d.Add("inventoryItemQuantityOccupied", "InventoryItemQuantityOccupied");
-            d.Add("InventoryItemQuantityVirtual", "InventoryItemQuantityVirtual");
-            d.Add("inventoryItemQuantityVirtual", "InventoryItemQuantityVirtual");
+            d.Add("InventoryItemOnHandQuantity", "InventoryItemOnHandQuantity");
+            d.Add("inventoryItemOnHandQuantity", "InventoryItemOnHandQuantity");
+            d.Add("InventoryItemInTransitQuantity", "InventoryItemInTransitQuantity");
+            d.Add("inventoryItemInTransitQuantity", "InventoryItemInTransitQuantity");
+            d.Add("InventoryItemReservedQuantity", "InventoryItemReservedQuantity");
+            d.Add("inventoryItemReservedQuantity", "InventoryItemReservedQuantity");
+            d.Add("InventoryItemOccupiedQuantity", "InventoryItemOccupiedQuantity");
+            d.Add("inventoryItemOccupiedQuantity", "InventoryItemOccupiedQuantity");
+            d.Add("InventoryItemVirtualQuantity", "InventoryItemVirtualQuantity");
+            d.Add("inventoryItemVirtualQuantity", "InventoryItemVirtualQuantity");
             d.Add("InventoryItemVersion", "InventoryItemVersion");
             d.Add("inventoryItemVersion", "InventoryItemVersion");
             d.Add("InventoryItemCreatedBy", "InventoryItemCreatedBy");

@@ -23,9 +23,9 @@ public interface SellableInventoryItemEntryState
 
     void setEntrySeqId(Long entrySeqId);
 
-    BigDecimal getQuantitySellable();
+    BigDecimal getSellableQuantity();
 
-    void setQuantitySellable(BigDecimal quantitySellable);
+    void setSellableQuantity(BigDecimal sellableQuantity);
 
     InventoryPRTriggeredId getSourceEventId();
 

@@ -8,16 +8,16 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends AbstractSellableInventoryItemEntryMvoCommandDto
 {
-    private BigDecimal quantitySellable;
+    private BigDecimal sellableQuantity;
 
-    public BigDecimal getQuantitySellable()
+    public BigDecimal getSellableQuantity()
     {
-        return this.quantitySellable;
+        return this.sellableQuantity;
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable)
+    public void setSellableQuantity(BigDecimal sellableQuantity)
     {
-        this.quantitySellable = quantitySellable;
+        this.sellableQuantity = sellableQuantity;
     }
 
     private InventoryPRTriggeredIdDto sourceEventId;
@@ -56,16 +56,16 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.active = active;
     }
 
-    private BigDecimal sellableInventoryItemQuantitySellable;
+    private BigDecimal sellableInventoryItemSellableQuantity;
 
-    public BigDecimal getSellableInventoryItemQuantitySellable()
+    public BigDecimal getSellableInventoryItemSellableQuantity()
     {
-        return this.sellableInventoryItemQuantitySellable;
+        return this.sellableInventoryItemSellableQuantity;
     }
 
-    public void setSellableInventoryItemQuantitySellable(BigDecimal sellableInventoryItemQuantitySellable)
+    public void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity)
     {
-        this.sellableInventoryItemQuantitySellable = sellableInventoryItemQuantitySellable;
+        this.sellableInventoryItemSellableQuantity = sellableInventoryItemSellableQuantity;
     }
 
     private String sellableInventoryItemCreatedBy;
@@ -116,16 +116,16 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.sellableInventoryItemUpdatedAt = sellableInventoryItemUpdatedAt;
     }
 
-    private Boolean isPropertyQuantitySellableRemoved;
+    private Boolean isPropertySellableQuantityRemoved;
 
-    public Boolean getIsPropertyQuantitySellableRemoved()
+    public Boolean getIsPropertySellableQuantityRemoved()
     {
-        return this.isPropertyQuantitySellableRemoved;
+        return this.isPropertySellableQuantityRemoved;
     }
 
-    public void setIsPropertyQuantitySellableRemoved(Boolean removed)
+    public void setIsPropertySellableQuantityRemoved(Boolean removed)
     {
-        this.isPropertyQuantitySellableRemoved = removed;
+        this.isPropertySellableQuantityRemoved = removed;
     }
 
     private Boolean isPropertySourceEventIdRemoved;
@@ -164,16 +164,16 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.isPropertyActiveRemoved = removed;
     }
 
-    private Boolean isPropertySellableInventoryItemQuantitySellableRemoved;
+    private Boolean isPropertySellableInventoryItemSellableQuantityRemoved;
 
-    public Boolean getIsPropertySellableInventoryItemQuantitySellableRemoved()
+    public Boolean getIsPropertySellableInventoryItemSellableQuantityRemoved()
     {
-        return this.isPropertySellableInventoryItemQuantitySellableRemoved;
+        return this.isPropertySellableInventoryItemSellableQuantityRemoved;
     }
 
-    public void setIsPropertySellableInventoryItemQuantitySellableRemoved(Boolean removed)
+    public void setIsPropertySellableInventoryItemSellableQuantityRemoved(Boolean removed)
     {
-        this.isPropertySellableInventoryItemQuantitySellableRemoved = removed;
+        this.isPropertySellableInventoryItemSellableQuantityRemoved = removed;
     }
 
     private Boolean isPropertySellableInventoryItemCreatedByRemoved;
@@ -227,11 +227,11 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
     public void copyTo(AbstractSellableInventoryItemEntryMvoCommand.AbstractCreateOrMergePatchSellableInventoryItemEntryMvo command)
     {
         ((AbstractSellableInventoryItemEntryMvoCommandDto) this).copyTo(command);
-        command.setQuantitySellable(this.getQuantitySellable());
+        command.setSellableQuantity(this.getSellableQuantity());
         command.setSourceEventId(this.getSourceEventId() == null ? null : this.getSourceEventId().toInventoryPRTriggeredId());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
-        command.setSellableInventoryItemQuantitySellable(this.getSellableInventoryItemQuantitySellable());
+        command.setSellableInventoryItemSellableQuantity(this.getSellableInventoryItemSellableQuantity());
         command.setSellableInventoryItemCreatedBy(this.getSellableInventoryItemCreatedBy());
         command.setSellableInventoryItemCreatedAt(this.getSellableInventoryItemCreatedAt());
         command.setSellableInventoryItemUpdatedBy(this.getSellableInventoryItemUpdatedBy());
@@ -260,11 +260,11 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
     public void copyTo(AbstractSellableInventoryItemEntryMvoCommand.AbstractMergePatchSellableInventoryItemEntryMvo command)
     {
         copyTo((AbstractSellableInventoryItemEntryMvoCommand.AbstractCreateOrMergePatchSellableInventoryItemEntryMvo) command);
-        command.setIsPropertyQuantitySellableRemoved(this.getIsPropertyQuantitySellableRemoved());
+        command.setIsPropertySellableQuantityRemoved(this.getIsPropertySellableQuantityRemoved());
         command.setIsPropertySourceEventIdRemoved(this.getIsPropertySourceEventIdRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
-        command.setIsPropertySellableInventoryItemQuantitySellableRemoved(this.getIsPropertySellableInventoryItemQuantitySellableRemoved());
+        command.setIsPropertySellableInventoryItemSellableQuantityRemoved(this.getIsPropertySellableInventoryItemSellableQuantityRemoved());
         command.setIsPropertySellableInventoryItemCreatedByRemoved(this.getIsPropertySellableInventoryItemCreatedByRemoved());
         command.setIsPropertySellableInventoryItemCreatedAtRemoved(this.getIsPropertySellableInventoryItemCreatedAtRemoved());
         command.setIsPropertySellableInventoryItemUpdatedByRemoved(this.getIsPropertySellableInventoryItemUpdatedByRemoved());

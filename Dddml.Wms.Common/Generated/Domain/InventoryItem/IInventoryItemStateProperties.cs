@@ -16,15 +16,15 @@ namespace Dddml.Wms.Domain.InventoryItem
 	{
 		InventoryItemId InventoryItemId { get; set; }
 
-		decimal QuantityOnHand { get; set; }
+		decimal OnHandQuantity { get; set; }
 
-		decimal QuantityInTransit { get; set; }
+		decimal InTransitQuantity { get; set; }
 
-		decimal QuantityReserved { get; set; }
+		decimal ReservedQuantity { get; set; }
 
-		decimal QuantityOccupied { get; set; }
+		decimal OccupiedQuantity { get; set; }
 
-		decimal QuantityVirtual { get; set; }
+		decimal VirtualQuantity { get; set; }
 
 		long Version { get; set; }
 

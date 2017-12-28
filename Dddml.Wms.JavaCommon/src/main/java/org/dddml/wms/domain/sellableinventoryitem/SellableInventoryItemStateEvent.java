@@ -16,9 +16,9 @@ public interface SellableInventoryItemStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    BigDecimal getQuantitySellable();
+    BigDecimal getSellableQuantity();
 
-    void setQuantitySellable(BigDecimal quantitySellable);
+    void setSellableQuantity(BigDecimal sellableQuantity);
 
     String getCreatedBy();
 
@@ -46,9 +46,9 @@ public interface SellableInventoryItemStateEvent extends Event
 
     interface SellableInventoryItemStateMergePatched extends SellableInventoryItemStateEvent
     {
-        Boolean getIsPropertyQuantitySellableRemoved();
+        Boolean getIsPropertySellableQuantityRemoved();
 
-        void setIsPropertyQuantitySellableRemoved(Boolean removed);
+        void setIsPropertySellableQuantityRemoved(Boolean removed);
 
         Iterable<SellableInventoryItemEntryStateEvent> getSellableInventoryItemEntryEvents();
         

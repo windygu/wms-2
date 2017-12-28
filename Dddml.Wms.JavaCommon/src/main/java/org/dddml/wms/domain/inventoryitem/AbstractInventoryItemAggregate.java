@@ -55,29 +55,29 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         ((AbstractInventoryItemStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        BigDecimal quantityOnHand = BigDecimal.ZERO;
-        BigDecimal quantityInTransit = BigDecimal.ZERO;
-        BigDecimal quantityReserved = BigDecimal.ZERO;
-        BigDecimal quantityOccupied = BigDecimal.ZERO;
-        BigDecimal quantityVirtual = BigDecimal.ZERO;
+        BigDecimal onHandQuantity = BigDecimal.ZERO;
+        BigDecimal inTransitQuantity = BigDecimal.ZERO;
+        BigDecimal reservedQuantity = BigDecimal.ZERO;
+        BigDecimal occupiedQuantity = BigDecimal.ZERO;
+        BigDecimal virtualQuantity = BigDecimal.ZERO;
         Long version = c.getVersion();
         for (InventoryItemEntryCommand.CreateInventoryItemEntry innerCommand : c.getEntries())
         {
             throwOnInconsistentCommands(c, innerCommand);
             InventoryItemEntryStateEvent.InventoryItemEntryStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addInventoryItemEntryEvent(innerEvent);
-            quantityOnHand = quantityOnHand.add(innerEvent.getQuantityOnHand() != null ? innerEvent.getQuantityOnHand() : BigDecimal.ZERO);
-            quantityInTransit = quantityInTransit.add(innerEvent.getQuantityInTransit() != null ? innerEvent.getQuantityInTransit() : BigDecimal.ZERO);
-            quantityReserved = quantityReserved.add(innerEvent.getQuantityReserved() != null ? innerEvent.getQuantityReserved() : BigDecimal.ZERO);
-            quantityOccupied = quantityOccupied.add(innerEvent.getQuantityOccupied() != null ? innerEvent.getQuantityOccupied() : BigDecimal.ZERO);
-            quantityVirtual = quantityVirtual.add(innerEvent.getQuantityVirtual() != null ? innerEvent.getQuantityVirtual() : BigDecimal.ZERO);
+            onHandQuantity = onHandQuantity.add(innerEvent.getOnHandQuantity() != null ? innerEvent.getOnHandQuantity() : BigDecimal.ZERO);
+            inTransitQuantity = inTransitQuantity.add(innerEvent.getInTransitQuantity() != null ? innerEvent.getInTransitQuantity() : BigDecimal.ZERO);
+            reservedQuantity = reservedQuantity.add(innerEvent.getReservedQuantity() != null ? innerEvent.getReservedQuantity() : BigDecimal.ZERO);
+            occupiedQuantity = occupiedQuantity.add(innerEvent.getOccupiedQuantity() != null ? innerEvent.getOccupiedQuantity() : BigDecimal.ZERO);
+            virtualQuantity = virtualQuantity.add(innerEvent.getVirtualQuantity() != null ? innerEvent.getVirtualQuantity() : BigDecimal.ZERO);
         }
 
-        e.setQuantityOnHand(quantityOnHand);
-        e.setQuantityInTransit(quantityInTransit);
-        e.setQuantityReserved(quantityReserved);
-        e.setQuantityOccupied(quantityOccupied);
-        e.setQuantityVirtual(quantityVirtual);
+        e.setOnHandQuantity(onHandQuantity);
+        e.setInTransitQuantity(inTransitQuantity);
+        e.setReservedQuantity(reservedQuantity);
+        e.setOccupiedQuantity(occupiedQuantity);
+        e.setVirtualQuantity(virtualQuantity);
         return e;
     }
 
@@ -87,11 +87,11 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         ((AbstractInventoryItemStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        BigDecimal quantityOnHand = this.state.getQuantityOnHand();
-        BigDecimal quantityInTransit = this.state.getQuantityInTransit();
-        BigDecimal quantityReserved = this.state.getQuantityReserved();
-        BigDecimal quantityOccupied = this.state.getQuantityOccupied();
-        BigDecimal quantityVirtual = this.state.getQuantityVirtual();
+        BigDecimal onHandQuantity = this.state.getOnHandQuantity();
+        BigDecimal inTransitQuantity = this.state.getInTransitQuantity();
+        BigDecimal reservedQuantity = this.state.getReservedQuantity();
+        BigDecimal occupiedQuantity = this.state.getOccupiedQuantity();
+        BigDecimal virtualQuantity = this.state.getVirtualQuantity();
         Long version = c.getVersion();
         for (InventoryItemEntryCommand innerCommand : c.getInventoryItemEntryCommands())
         {
@@ -101,19 +101,19 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
             // ////////////////
             if (!(innerEvent instanceof InventoryItemEntryStateEvent.InventoryItemEntryStateCreated)) { continue; }
             InventoryItemEntryStateEvent.InventoryItemEntryStateCreated entryCreated = (InventoryItemEntryStateEvent.InventoryItemEntryStateCreated)innerEvent;
-            quantityOnHand = quantityOnHand.add(entryCreated.getQuantityOnHand() != null ? entryCreated.getQuantityOnHand() : BigDecimal.ZERO);
-            quantityInTransit = quantityInTransit.add(entryCreated.getQuantityInTransit() != null ? entryCreated.getQuantityInTransit() : BigDecimal.ZERO);
-            quantityReserved = quantityReserved.add(entryCreated.getQuantityReserved() != null ? entryCreated.getQuantityReserved() : BigDecimal.ZERO);
-            quantityOccupied = quantityOccupied.add(entryCreated.getQuantityOccupied() != null ? entryCreated.getQuantityOccupied() : BigDecimal.ZERO);
-            quantityVirtual = quantityVirtual.add(entryCreated.getQuantityVirtual() != null ? entryCreated.getQuantityVirtual() : BigDecimal.ZERO);
+            onHandQuantity = onHandQuantity.add(entryCreated.getOnHandQuantity() != null ? entryCreated.getOnHandQuantity() : BigDecimal.ZERO);
+            inTransitQuantity = inTransitQuantity.add(entryCreated.getInTransitQuantity() != null ? entryCreated.getInTransitQuantity() : BigDecimal.ZERO);
+            reservedQuantity = reservedQuantity.add(entryCreated.getReservedQuantity() != null ? entryCreated.getReservedQuantity() : BigDecimal.ZERO);
+            occupiedQuantity = occupiedQuantity.add(entryCreated.getOccupiedQuantity() != null ? entryCreated.getOccupiedQuantity() : BigDecimal.ZERO);
+            virtualQuantity = virtualQuantity.add(entryCreated.getVirtualQuantity() != null ? entryCreated.getVirtualQuantity() : BigDecimal.ZERO);
             // ////////////////
         }
 
-        e.setQuantityOnHand(quantityOnHand);
-        e.setQuantityInTransit(quantityInTransit);
-        e.setQuantityReserved(quantityReserved);
-        e.setQuantityOccupied(quantityOccupied);
-        e.setQuantityVirtual(quantityVirtual);
+        e.setOnHandQuantity(onHandQuantity);
+        e.setInTransitQuantity(inTransitQuantity);
+        e.setReservedQuantity(reservedQuantity);
+        e.setOccupiedQuantity(occupiedQuantity);
+        e.setVirtualQuantity(virtualQuantity);
         return e;
     }
 
@@ -136,11 +136,11 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         InventoryItemEntryStateEvent.InventoryItemEntryStateCreated e = newInventoryItemEntryStateCreated(stateEventId);
         InventoryItemEntryState s = outerState.getEntries().get(c.getEntrySeqId());
 
-        e.setQuantityOnHand(c.getQuantityOnHand());
-        e.setQuantityInTransit(c.getQuantityInTransit());
-        e.setQuantityReserved(c.getQuantityReserved());
-        e.setQuantityOccupied(c.getQuantityOccupied());
-        e.setQuantityVirtual(c.getQuantityVirtual());
+        e.setOnHandQuantity(c.getOnHandQuantity());
+        e.setInTransitQuantity(c.getInTransitQuantity());
+        e.setReservedQuantity(c.getReservedQuantity());
+        e.setOccupiedQuantity(c.getOccupiedQuantity());
+        e.setVirtualQuantity(c.getVirtualQuantity());
         e.setSource(c.getSource());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));

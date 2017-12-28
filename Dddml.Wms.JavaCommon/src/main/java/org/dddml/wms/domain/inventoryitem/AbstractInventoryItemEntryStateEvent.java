@@ -49,54 +49,54 @@ public abstract class AbstractInventoryItemEntryStateEvent extends AbstractState
         this.state.setVersion(version);
     }
 
-    public BigDecimal getQuantityOnHand()
+    public BigDecimal getOnHandQuantity()
     {
-        return this.state.getQuantityOnHand();
+        return this.state.getOnHandQuantity();
     }
 
-    public void setQuantityOnHand(BigDecimal quantityOnHand)
+    public void setOnHandQuantity(BigDecimal onHandQuantity)
     {
-        this.state.setQuantityOnHand(quantityOnHand);
+        this.state.setOnHandQuantity(onHandQuantity);
     }
 
-    public BigDecimal getQuantityInTransit()
+    public BigDecimal getInTransitQuantity()
     {
-        return this.state.getQuantityInTransit();
+        return this.state.getInTransitQuantity();
     }
 
-    public void setQuantityInTransit(BigDecimal quantityInTransit)
+    public void setInTransitQuantity(BigDecimal inTransitQuantity)
     {
-        this.state.setQuantityInTransit(quantityInTransit);
+        this.state.setInTransitQuantity(inTransitQuantity);
     }
 
-    public BigDecimal getQuantityReserved()
+    public BigDecimal getReservedQuantity()
     {
-        return this.state.getQuantityReserved();
+        return this.state.getReservedQuantity();
     }
 
-    public void setQuantityReserved(BigDecimal quantityReserved)
+    public void setReservedQuantity(BigDecimal reservedQuantity)
     {
-        this.state.setQuantityReserved(quantityReserved);
+        this.state.setReservedQuantity(reservedQuantity);
     }
 
-    public BigDecimal getQuantityOccupied()
+    public BigDecimal getOccupiedQuantity()
     {
-        return this.state.getQuantityOccupied();
+        return this.state.getOccupiedQuantity();
     }
 
-    public void setQuantityOccupied(BigDecimal quantityOccupied)
+    public void setOccupiedQuantity(BigDecimal occupiedQuantity)
     {
-        this.state.setQuantityOccupied(quantityOccupied);
+        this.state.setOccupiedQuantity(occupiedQuantity);
     }
 
-    public BigDecimal getQuantityVirtual()
+    public BigDecimal getVirtualQuantity()
     {
-        return this.state.getQuantityVirtual();
+        return this.state.getVirtualQuantity();
     }
 
-    public void setQuantityVirtual(BigDecimal quantityVirtual)
+    public void setVirtualQuantity(BigDecimal virtualQuantity)
     {
-        this.state.setQuantityVirtual(quantityVirtual);
+        this.state.setVirtualQuantity(virtualQuantity);
     }
 
     public InventoryItemSourceInfo getSource()

@@ -42,13 +42,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AttributeSetInstanceDddml.tt">
+    <Content Include="GenerateAttributeSetInstanceDddml.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AttributeSetInstanceDddml.yaml</LastGenOutput>
+      <LastGenOutput>GenerateAttributeSetInstanceDddml.txt</LastGenOutput>
+      <LastOutputs>.\AttributeSetInstanceDddml.yaml</LastOutputs>
     </Content>
-    <Content Include="AttributeSetInstanceExtensionFieldGroupDddml.tt">
+    <Content Include="GenerateAttributeSetInstanceDddml.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetInstanceDddml.tt</DependentUpon>
+    </Content>
+    <Content Include="GenerateAttributeSetInstanceExtensionFieldGroupDddml.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AttributeSetInstanceExtensionFieldGroupDddml.yaml</LastGenOutput>
+      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldGroupDddml.txt</LastGenOutput>
+      <LastOutputs>.\AttributeSetInstanceExtensionFieldGroupDddml.yaml</LastOutputs>
+    </Content>
+    <Content Include="GenerateAttributeSetInstanceExtensionFieldGroupDddml.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDddml.tt</DependentUpon>
     </Content>
     <Content Include="Templates\JavaAttributeSetInstancePropertyUtilsTemplate.tt" />
     <Content Include="Templates\AttributeSetInstancePropertyUtilsTemplate.tt" />
@@ -56,16 +68,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AttributeSetInstanceDddml.yaml">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AttributeSetInstanceDddml.tt</DependentUpon>
+      <DependentUpon>GenerateAttributeSetInstanceDddml.tt</DependentUpon>
     </None>
     <None Include="AttributeSetInstanceExtensionFieldGroupDddml.yaml">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AttributeSetInstanceExtensionFieldGroupDddml.tt</DependentUpon>
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDddml.tt</DependentUpon>
     </None>
-    <None Include="Templates\AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" />
+    <None Include="Templates\AttributeSetInstanceDddmlTemplate.tt" />
+    <None Include="AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" />
+    <None Include="Templates\AttributeSetInstanceExtensionFieldGroupDddmlTemplate.tt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

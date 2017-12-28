@@ -88,16 +88,56 @@
       unique (Name),
       unique (Alias)
     );
-    alter table Organizations 
-        add column PartyId VARCHAR(50);
-    alter table OrganizationStateEvents 
-        add column PartyId VARCHAR(50);
-    alter table OrganizationStructureTypes 
-        add column Description VARCHAR(255);
-    alter table OrganizationStructureTypeStateEvents 
-        add column Description VARCHAR(255);
-    alter table OrganizationStructureTypeStateEvents 
-        add column IsPropertyDescriptionRemoved TINYINT(1);
+    alter table InOutLines 
+        add column QuantityUomId VARCHAR(255);
+    alter table InOutLineStateEvents 
+        add column QuantityUomId VARCHAR(255);
+    alter table InOutLineStateEvents 
+        add column IsPropertyQuantityUomIdRemoved TINYINT(1);
+    alter table InventoryItems 
+        add column OnHandQuantity NUMERIC(19,5);
+    alter table InventoryItems 
+        add column InTransitQuantity NUMERIC(19,5);
+    alter table InventoryItems 
+        add column ReservedQuantity NUMERIC(19,5);
+    alter table InventoryItems 
+        add column OccupiedQuantity NUMERIC(19,5);
+    alter table InventoryItems 
+        add column VirtualQuantity NUMERIC(19,5);
+    alter table InventoryItemStateEvents 
+        add column OnHandQuantity NUMERIC(19,5);
+    alter table InventoryItemStateEvents 
+        add column InTransitQuantity NUMERIC(19,5);
+    alter table InventoryItemStateEvents 
+        add column ReservedQuantity NUMERIC(19,5);
+    alter table InventoryItemStateEvents 
+        add column OccupiedQuantity NUMERIC(19,5);
+    alter table InventoryItemStateEvents 
+        add column VirtualQuantity NUMERIC(19,5);
+    alter table InventoryItemStateEvents 
+        add column IsPropertyOnHandQuantityRemoved TINYINT(1);
+    alter table InventoryItemStateEvents 
+        add column IsPropertyInTransitQuantityRemoved TINYINT(1);
+    alter table InventoryItemStateEvents 
+        add column IsPropertyReservedQuantityRemoved TINYINT(1);
+    alter table InventoryItemStateEvents 
+        add column IsPropertyOccupiedQuantityRemoved TINYINT(1);
+    alter table InventoryItemStateEvents 
+        add column IsPropertyVirtualQuantityRemoved TINYINT(1);
+    alter table InventoryItemEntries 
+        add column OnHandQuantity NUMERIC(19,5);
+    alter table InventoryItemEntries 
+        add column InTransitQuantity NUMERIC(19,5);
+    alter table InventoryItemEntries 
+        add column ReservedQuantity NUMERIC(19,5);
+    alter table InventoryItemEntries 
+        add column OccupiedQuantity NUMERIC(19,5);
+    alter table InventoryItemEntries 
+        add column VirtualQuantity NUMERIC(19,5);
+    alter table SellableInventoryItems 
+        add column SellableQuantity NUMERIC(19,5);
+    alter table SellableInventoryItemEntries 
+        add column SellableQuantity NUMERIC(19,5);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,
@@ -106,7 +146,7 @@
        ProductId VARCHAR(255),
        AttributeSetInstanceId VARCHAR(255),
        Description VARCHAR(255),
-       UomId VARCHAR(255),
+       QuantityUomId VARCHAR(255),
        MovementQuantity NUMERIC(19,5),
        PickedQuantity NUMERIC(19,5),
        IsInvoiced TINYINT(1),
@@ -158,28 +198,32 @@
        UpdatedAt DATETIME,
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
+    alter table InOutLineMvoStateEvents 
+        add column QuantityUomId VARCHAR(255);
+    alter table InOutLineMvoStateEvents 
+        add column IsPropertyQuantityUomIdRemoved TINYINT(1);
     create table InventoryItemEntry_RV (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
        AttributeSetInstanceId VARCHAR(255) not null,
        EntrySeqId BIGINT not null,
        InventoryItemVersion BIGINT not null,
-       QuantityOnHand NUMERIC(19,5),
-       QuantityInTransit NUMERIC(19,5),
-       QuantityReserved NUMERIC(19,5),
-       QuantityOccupied NUMERIC(19,5),
-       QuantityVirtual NUMERIC(19,5),
+       OnHandQuantity NUMERIC(19,5),
+       InTransitQuantity NUMERIC(19,5),
+       ReservedQuantity NUMERIC(19,5),
+       OccupiedQuantity NUMERIC(19,5),
+       VirtualQuantity NUMERIC(19,5),
        SourceDocumentTypeId VARCHAR(255) not null,
        SourceDocumentNumber VARCHAR(255) not null,
        SourceLineNumber VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
-       InventoryItemQuantityOnHand NUMERIC(19,5),
-       InventoryItemQuantityInTransit NUMERIC(19,5),
-       InventoryItemQuantityReserved NUMERIC(19,5),
-       InventoryItemQuantityOccupied NUMERIC(19,5),
-       InventoryItemQuantityVirtual NUMERIC(19,5),
+       InventoryItemOnHandQuantity NUMERIC(19,5),
+       InventoryItemInTransitQuantity NUMERIC(19,5),
+       InventoryItemReservedQuantity NUMERIC(19,5),
+       InventoryItemOccupiedQuantity NUMERIC(19,5),
+       InventoryItemVirtualQuantity NUMERIC(19,5),
        InventoryItemCreatedBy VARCHAR(255),
        InventoryItemCreatedAt DATETIME,
        InventoryItemUpdatedBy VARCHAR(255),
@@ -189,6 +233,46 @@
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
       unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber)
     );
+    alter table InventoryItemEntryMvoStateEvents 
+        add column OnHandQuantity NUMERIC(19,5);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column InTransitQuantity NUMERIC(19,5);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column ReservedQuantity NUMERIC(19,5);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column OccupiedQuantity NUMERIC(19,5);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column VirtualQuantity NUMERIC(19,5);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column InventoryItemOnHandQuantity NUMERIC(19,5);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column InventoryItemInTransitQuantity NUMERIC(19,5);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column InventoryItemReservedQuantity NUMERIC(19,5);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column InventoryItemOccupiedQuantity NUMERIC(19,5);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column InventoryItemVirtualQuantity NUMERIC(19,5);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column IsPropertyOnHandQuantityRemoved TINYINT(1);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column IsPropertyInTransitQuantityRemoved TINYINT(1);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column IsPropertyReservedQuantityRemoved TINYINT(1);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column IsPropertyOccupiedQuantityRemoved TINYINT(1);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column IsPropertyVirtualQuantityRemoved TINYINT(1);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column IsPropertyInventoryItemOnHandQuantityRemoved TINYINT(1);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column IsPropertyInventoryItemInTransitQuantityRemoved TINYINT(1);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column IsPropertyInventoryItemReservedQuantityRemoved TINYINT(1);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column IsPropertyInventoryItemOccupiedQuantityRemoved TINYINT(1);
+    alter table InventoryItemEntryMvoStateEvents 
+        add column IsPropertyInventoryItemVirtualQuantityRemoved TINYINT(1);
     create table InventoryItemRequirementEntry_RV (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,
@@ -296,7 +380,7 @@
        AttributeSetInstanceId VARCHAR(255) not null,
        EntrySeqId BIGINT not null,
        SellableInventoryItemVersion BIGINT not null,
-       QuantitySellable NUMERIC(19,5),
+       SellableQuantity NUMERIC(19,5),
        SrcEventProductId VARCHAR(255),
        SrcEventLocatorId VARCHAR(255),
        SrcEventAttributeSetInstanceId VARCHAR(255),
@@ -305,7 +389,7 @@
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
-       SellableInventoryItemQuantitySellable NUMERIC(19,5),
+       SellableInventoryItemSellableQuantity NUMERIC(19,5),
        SellableInventoryItemCreatedBy VARCHAR(255),
        SellableInventoryItemCreatedAt DATETIME,
        SellableInventoryItemUpdatedBy VARCHAR(255),
@@ -315,6 +399,14 @@
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
       unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
     );
+    alter table SellableInventoryItemEntryMvoStateEvents 
+        add column SellableQuantity NUMERIC(19,5);
+    alter table SellableInventoryItemEntryMvoStateEvents 
+        add column SellableInventoryItemSellableQuantity NUMERIC(19,5);
+    alter table SellableInventoryItemEntryMvoStateEvents 
+        add column IsPropertySellableQuantityRemoved TINYINT(1);
+    alter table SellableInventoryItemEntryMvoStateEvents 
+        add column IsPropertySellableInventoryItemSellableQuantityRemoved TINYINT(1);
     create table ShipmentItem_RV (
         ShipmentItemIdShipmentId VARCHAR(20) not null,
        ShipmentItemIdShipmentItemSeqId VARCHAR(20) not null,

@@ -24,16 +24,16 @@ public class SellableInventoryItemEntryMvoStateDto
         this.sellableInventoryItemEntryId = sellableInventoryItemEntryId;
     }
 
-    private BigDecimal quantitySellable;
+    private BigDecimal sellableQuantity;
 
-    public BigDecimal getQuantitySellable()
+    public BigDecimal getSellableQuantity()
     {
-        return this.quantitySellable;
+        return this.sellableQuantity;
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable)
+    public void setSellableQuantity(BigDecimal sellableQuantity)
     {
-        this.quantitySellable = quantitySellable;
+        this.sellableQuantity = sellableQuantity;
     }
 
     private InventoryPRTriggeredIdDto sourceEventId;
@@ -60,16 +60,16 @@ public class SellableInventoryItemEntryMvoStateDto
         this.version = version;
     }
 
-    private BigDecimal sellableInventoryItemQuantitySellable;
+    private BigDecimal sellableInventoryItemSellableQuantity;
 
-    public BigDecimal getSellableInventoryItemQuantitySellable()
+    public BigDecimal getSellableInventoryItemSellableQuantity()
     {
-        return this.sellableInventoryItemQuantitySellable;
+        return this.sellableInventoryItemSellableQuantity;
     }
 
-    public void setSellableInventoryItemQuantitySellable(BigDecimal sellableInventoryItemQuantitySellable)
+    public void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity)
     {
-        this.sellableInventoryItemQuantitySellable = sellableInventoryItemQuantitySellable;
+        this.sellableInventoryItemSellableQuantity = sellableInventoryItemSellableQuantity;
     }
 
     private String sellableInventoryItemCreatedBy;
@@ -209,8 +209,8 @@ public class SellableInventoryItemEntryMvoStateDto
             if (returnedFieldsContains("SellableInventoryItemEntryId")) {
                 dto.setSellableInventoryItemEntryId((state.getSellableInventoryItemEntryId() == null) ? null : new SellableInventoryItemEntryIdDtoWrapper(state.getSellableInventoryItemEntryId()));
             }
-            if (returnedFieldsContains("QuantitySellable")) {
-                dto.setQuantitySellable(state.getQuantitySellable());
+            if (returnedFieldsContains("SellableQuantity")) {
+                dto.setSellableQuantity(state.getSellableQuantity());
             }
             if (returnedFieldsContains("SourceEventId")) {
                 dto.setSourceEventId((state.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(state.getSourceEventId()));
@@ -218,8 +218,8 @@ public class SellableInventoryItemEntryMvoStateDto
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());
             }
-            if (returnedFieldsContains("SellableInventoryItemQuantitySellable")) {
-                dto.setSellableInventoryItemQuantitySellable(state.getSellableInventoryItemQuantitySellable());
+            if (returnedFieldsContains("SellableInventoryItemSellableQuantity")) {
+                dto.setSellableInventoryItemSellableQuantity(state.getSellableInventoryItemSellableQuantity());
             }
             if (returnedFieldsContains("SellableInventoryItemCreatedBy")) {
                 dto.setSellableInventoryItemCreatedBy(state.getSellableInventoryItemCreatedBy());

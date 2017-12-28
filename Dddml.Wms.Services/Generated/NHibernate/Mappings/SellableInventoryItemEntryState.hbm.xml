@@ -15,7 +15,7 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="QuantitySellable" ></property>
+    <property name="SellableQuantity" ></property>
     <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId" unique="true">
         <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
         <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>

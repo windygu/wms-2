@@ -18,7 +18,7 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="quantitySellable" ></property>
+	<property name="sellableQuantity" ></property>
 	<component name="sourceEventId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId">
 		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
 		<property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
@@ -27,7 +27,7 @@
 		<property name="inventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" /></property>
 	</component>
 	<property name="version" ></property>
-	<property name="sellableInventoryItemQuantitySellable" ></property>
+	<property name="sellableInventoryItemSellableQuantity" ></property>
 	<property name="sellableInventoryItemCreatedBy" ></property>
 	<property name="sellableInventoryItemCreatedAt" ></property>
 	<property name="sellableInventoryItemUpdatedBy" ></property>
@@ -45,13 +45,13 @@
 
     <subclass name="AbstractSellableInventoryItemEntryMvoStateEvent$SimpleSellableInventoryItemEntryMvoStateMergePatched" discriminator-value="MergePatched">
 
-        <property name="isPropertyQuantitySellableRemoved" column="IsPropertyQuantitySellableRemoved"/>
+        <property name="isPropertySellableQuantityRemoved" column="IsPropertySellableQuantityRemoved"/>
 
         <property name="isPropertySourceEventIdRemoved" column="IsPropertySourceEventIdRemoved"/>
 
         <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 
-        <property name="isPropertySellableInventoryItemQuantitySellableRemoved" column="IsPropertySellableInventoryItemQuantitySellableRemoved"/>
+        <property name="isPropertySellableInventoryItemSellableQuantityRemoved" column="IsPropertySellableInventoryItemSellableQuantityRemoved"/>
 
         <property name="isPropertySellableInventoryItemCreatedByRemoved" column="IsPropertySellableInventoryItemCreatedByRemoved"/>
 

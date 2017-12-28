@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
-            dto.QuantitySellable = e.QuantitySellable;
+            dto.SellableQuantity = e.SellableQuantity;
             dto.SourceEventId = (e.SourceEventId == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.SourceEventId);
             return dto;
         }

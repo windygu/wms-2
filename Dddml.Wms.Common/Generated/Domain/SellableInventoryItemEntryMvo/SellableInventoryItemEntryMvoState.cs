@@ -154,13 +154,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 		public virtual void When(ISellableInventoryItemEntryMvoStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-            this.QuantitySellable = (e.QuantitySellable != null && e.QuantitySellable.HasValue) ? e.QuantitySellable.Value : default(decimal);
+            this.SellableQuantity = (e.SellableQuantity != null && e.SellableQuantity.HasValue) ? e.SellableQuantity.Value : default(decimal);
 
 			this.SourceEventId = e.SourceEventId;
 
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 
-            this.SellableInventoryItemQuantitySellable = (e.SellableInventoryItemQuantitySellable != null && e.SellableInventoryItemQuantitySellable.HasValue) ? e.SellableInventoryItemQuantitySellable.Value : default(decimal);
+            this.SellableInventoryItemSellableQuantity = (e.SellableInventoryItemSellableQuantity != null && e.SellableInventoryItemSellableQuantity.HasValue) ? e.SellableInventoryItemSellableQuantity.Value : default(decimal);
 
 			this.SellableInventoryItemCreatedBy = e.SellableInventoryItemCreatedBy;
 
@@ -181,16 +181,16 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.QuantitySellable == null)
+			if (e.SellableQuantity == null)
 			{
-				if (e.IsPropertyQuantitySellableRemoved)
+				if (e.IsPropertySellableQuantityRemoved)
 				{
-					this.QuantitySellable = default(decimal);
+					this.SellableQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantitySellable = (e.QuantitySellable != null && e.QuantitySellable.HasValue) ? e.QuantitySellable.Value : default(decimal);
+				this.SellableQuantity = (e.SellableQuantity != null && e.SellableQuantity.HasValue) ? e.SellableQuantity.Value : default(decimal);
 			}
 
 			if (e.SourceEventId == null)
@@ -217,16 +217,16 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 				this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 			}
 
-			if (e.SellableInventoryItemQuantitySellable == null)
+			if (e.SellableInventoryItemSellableQuantity == null)
 			{
-				if (e.IsPropertySellableInventoryItemQuantitySellableRemoved)
+				if (e.IsPropertySellableInventoryItemSellableQuantityRemoved)
 				{
-					this.SellableInventoryItemQuantitySellable = default(decimal);
+					this.SellableInventoryItemSellableQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.SellableInventoryItemQuantitySellable = (e.SellableInventoryItemQuantitySellable != null && e.SellableInventoryItemQuantitySellable.HasValue) ? e.SellableInventoryItemQuantitySellable.Value : default(decimal);
+				this.SellableInventoryItemSellableQuantity = (e.SellableInventoryItemSellableQuantity != null && e.SellableInventoryItemSellableQuantity.HasValue) ? e.SellableInventoryItemSellableQuantity.Value : default(decimal);
 			}
 
 			if (e.SellableInventoryItemCreatedBy == null)

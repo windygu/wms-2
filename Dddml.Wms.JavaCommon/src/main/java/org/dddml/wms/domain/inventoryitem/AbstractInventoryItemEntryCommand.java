@@ -35,64 +35,64 @@ public abstract class AbstractInventoryItemEntryCommand extends AbstractCommand 
 
     public static abstract class AbstractCreateOrMergePatchInventoryItemEntry extends AbstractInventoryItemEntryCommand implements CreateOrMergePatchInventoryItemEntry
     {
-        private BigDecimal quantityOnHand;
+        private BigDecimal onHandQuantity;
 
-        public BigDecimal getQuantityOnHand()
+        public BigDecimal getOnHandQuantity()
         {
-            return this.quantityOnHand;
+            return this.onHandQuantity;
         }
 
-        public void setQuantityOnHand(BigDecimal quantityOnHand)
+        public void setOnHandQuantity(BigDecimal onHandQuantity)
         {
-            this.quantityOnHand = quantityOnHand;
+            this.onHandQuantity = onHandQuantity;
         }
 
-        private BigDecimal quantityInTransit;
+        private BigDecimal inTransitQuantity;
 
-        public BigDecimal getQuantityInTransit()
+        public BigDecimal getInTransitQuantity()
         {
-            return this.quantityInTransit;
+            return this.inTransitQuantity;
         }
 
-        public void setQuantityInTransit(BigDecimal quantityInTransit)
+        public void setInTransitQuantity(BigDecimal inTransitQuantity)
         {
-            this.quantityInTransit = quantityInTransit;
+            this.inTransitQuantity = inTransitQuantity;
         }
 
-        private BigDecimal quantityReserved;
+        private BigDecimal reservedQuantity;
 
-        public BigDecimal getQuantityReserved()
+        public BigDecimal getReservedQuantity()
         {
-            return this.quantityReserved;
+            return this.reservedQuantity;
         }
 
-        public void setQuantityReserved(BigDecimal quantityReserved)
+        public void setReservedQuantity(BigDecimal reservedQuantity)
         {
-            this.quantityReserved = quantityReserved;
+            this.reservedQuantity = reservedQuantity;
         }
 
-        private BigDecimal quantityOccupied;
+        private BigDecimal occupiedQuantity;
 
-        public BigDecimal getQuantityOccupied()
+        public BigDecimal getOccupiedQuantity()
         {
-            return this.quantityOccupied;
+            return this.occupiedQuantity;
         }
 
-        public void setQuantityOccupied(BigDecimal quantityOccupied)
+        public void setOccupiedQuantity(BigDecimal occupiedQuantity)
         {
-            this.quantityOccupied = quantityOccupied;
+            this.occupiedQuantity = occupiedQuantity;
         }
 
-        private BigDecimal quantityVirtual;
+        private BigDecimal virtualQuantity;
 
-        public BigDecimal getQuantityVirtual()
+        public BigDecimal getVirtualQuantity()
         {
-            return this.quantityVirtual;
+            return this.virtualQuantity;
         }
 
-        public void setQuantityVirtual(BigDecimal quantityVirtual)
+        public void setVirtualQuantity(BigDecimal virtualQuantity)
         {
-            this.quantityVirtual = quantityVirtual;
+            this.virtualQuantity = virtualQuantity;
         }
 
         private InventoryItemSourceInfo source;

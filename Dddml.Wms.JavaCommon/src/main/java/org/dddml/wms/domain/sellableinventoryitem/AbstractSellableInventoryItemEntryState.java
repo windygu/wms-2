@@ -38,16 +38,16 @@ public abstract class AbstractSellableInventoryItemEntryState implements Sellabl
         this.getSellableInventoryItemEntryId().setEntrySeqId(entrySeqId);
     }
 
-    private BigDecimal quantitySellable;
+    private BigDecimal sellableQuantity;
 
-    public BigDecimal getQuantitySellable()
+    public BigDecimal getSellableQuantity()
     {
-        return this.quantitySellable;
+        return this.sellableQuantity;
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable)
+    public void setSellableQuantity(BigDecimal sellableQuantity)
     {
-        this.quantitySellable = quantitySellable;
+        this.sellableQuantity = sellableQuantity;
     }
 
     private InventoryPRTriggeredId sourceEventId;
@@ -181,7 +181,7 @@ public abstract class AbstractSellableInventoryItemEntryState implements Sellabl
     {
         throwOnWrongEvent(e);
 
-        this.setQuantitySellable(e.getQuantitySellable());
+        this.setSellableQuantity(e.getSellableQuantity());
         this.setSourceEventId(e.getSourceEventId());
 
         this.setCreatedBy(e.getCreatedBy());

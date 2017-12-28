@@ -50,10 +50,10 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             cmd.SellableInventoryItemVersion = ((ISellableInventoryItemEntryMvoStateProperties)state).SellableInventoryItemVersion;
 
             cmd.SellableInventoryItemEntryId = state.SellableInventoryItemEntryId;
-            cmd.QuantitySellable = state.QuantitySellable;
+            cmd.SellableQuantity = state.SellableQuantity;
             cmd.SourceEventId = state.SourceEventId;
             cmd.Version = ((ISellableInventoryItemEntryMvoStateProperties)state).Version;
-            cmd.SellableInventoryItemQuantitySellable = state.SellableInventoryItemQuantitySellable;
+            cmd.SellableInventoryItemSellableQuantity = state.SellableInventoryItemSellableQuantity;
             cmd.SellableInventoryItemCreatedBy = state.SellableInventoryItemCreatedBy;
             cmd.SellableInventoryItemCreatedAt = state.SellableInventoryItemCreatedAt;
             cmd.SellableInventoryItemUpdatedBy = state.SellableInventoryItemUpdatedBy;
@@ -73,10 +73,10 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             cmd.SellableInventoryItemVersion = ((ISellableInventoryItemEntryMvoStateProperties)state).SellableInventoryItemVersion;
 
             cmd.SellableInventoryItemEntryId = state.SellableInventoryItemEntryId;
-            cmd.QuantitySellable = state.QuantitySellable;
+            cmd.SellableQuantity = state.SellableQuantity;
             cmd.SourceEventId = state.SourceEventId;
             cmd.Version = ((ISellableInventoryItemEntryMvoStateProperties)state).Version;
-            cmd.SellableInventoryItemQuantitySellable = state.SellableInventoryItemQuantitySellable;
+            cmd.SellableInventoryItemSellableQuantity = state.SellableInventoryItemSellableQuantity;
             cmd.SellableInventoryItemCreatedBy = state.SellableInventoryItemCreatedBy;
             cmd.SellableInventoryItemCreatedAt = state.SellableInventoryItemCreatedAt;
             cmd.SellableInventoryItemUpdatedBy = state.SellableInventoryItemUpdatedBy;

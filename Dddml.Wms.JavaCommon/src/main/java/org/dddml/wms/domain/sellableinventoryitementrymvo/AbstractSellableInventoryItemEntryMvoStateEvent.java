@@ -35,16 +35,16 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends Ab
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private BigDecimal quantitySellable;
+    private BigDecimal sellableQuantity;
 
-    public BigDecimal getQuantitySellable()
+    public BigDecimal getSellableQuantity()
     {
-        return this.quantitySellable;
+        return this.sellableQuantity;
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable)
+    public void setSellableQuantity(BigDecimal sellableQuantity)
     {
-        this.quantitySellable = quantitySellable;
+        this.sellableQuantity = sellableQuantity;
     }
 
     private InventoryPRTriggeredId sourceEventId;
@@ -95,16 +95,16 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends Ab
         this.createdAt = createdAt;
     }
 
-    private BigDecimal sellableInventoryItemQuantitySellable;
+    private BigDecimal sellableInventoryItemSellableQuantity;
 
-    public BigDecimal getSellableInventoryItemQuantitySellable()
+    public BigDecimal getSellableInventoryItemSellableQuantity()
     {
-        return this.sellableInventoryItemQuantitySellable;
+        return this.sellableInventoryItemSellableQuantity;
     }
 
-    public void setSellableInventoryItemQuantitySellable(BigDecimal sellableInventoryItemQuantitySellable)
+    public void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity)
     {
-        this.sellableInventoryItemQuantitySellable = sellableInventoryItemQuantitySellable;
+        this.sellableInventoryItemSellableQuantity = sellableInventoryItemSellableQuantity;
     }
 
     private String sellableInventoryItemCreatedBy;
@@ -208,14 +208,14 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends Ab
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyQuantitySellableRemoved;
+        private Boolean isPropertySellableQuantityRemoved;
 
-        public Boolean getIsPropertyQuantitySellableRemoved() {
-            return this.isPropertyQuantitySellableRemoved;
+        public Boolean getIsPropertySellableQuantityRemoved() {
+            return this.isPropertySellableQuantityRemoved;
         }
 
-        public void setIsPropertyQuantitySellableRemoved(Boolean removed) {
-            this.isPropertyQuantitySellableRemoved = removed;
+        public void setIsPropertySellableQuantityRemoved(Boolean removed) {
+            this.isPropertySellableQuantityRemoved = removed;
         }
 
         private Boolean isPropertySourceEventIdRemoved;
@@ -238,14 +238,14 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends Ab
             this.isPropertyVersionRemoved = removed;
         }
 
-        private Boolean isPropertySellableInventoryItemQuantitySellableRemoved;
+        private Boolean isPropertySellableInventoryItemSellableQuantityRemoved;
 
-        public Boolean getIsPropertySellableInventoryItemQuantitySellableRemoved() {
-            return this.isPropertySellableInventoryItemQuantitySellableRemoved;
+        public Boolean getIsPropertySellableInventoryItemSellableQuantityRemoved() {
+            return this.isPropertySellableInventoryItemSellableQuantityRemoved;
         }
 
-        public void setIsPropertySellableInventoryItemQuantitySellableRemoved(Boolean removed) {
-            this.isPropertySellableInventoryItemQuantitySellableRemoved = removed;
+        public void setIsPropertySellableInventoryItemSellableQuantityRemoved(Boolean removed) {
+            this.isPropertySellableInventoryItemSellableQuantityRemoved = removed;
         }
 
         private Boolean isPropertySellableInventoryItemCreatedByRemoved;

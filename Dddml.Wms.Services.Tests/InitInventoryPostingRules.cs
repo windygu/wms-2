@@ -53,8 +53,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_62.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityInTransitUpdateProductRequiredTotal;
             inventoryPostingRule_62.TriggerInventoryItemId = triggerItemId;
             inventoryPostingRule_62.OutputInventoryItemId = outputItemId;
-            inventoryPostingRule_62.TriggerAccountName = "QuantityInTransit";
-            inventoryPostingRule_62.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameQuantityRequired;
+            inventoryPostingRule_62.TriggerAccountName = ReflectUtils.GetPropertyName<IInventoryItemStateCreated>(e => e.InTransitQuantity);//"QuantityInTransit";
+            inventoryPostingRule_62.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameRequiredQuantity;
             inventoryPostingRule_62.IsOutputNegated = true;
             inventoryPostingRule_62.Active = true;
             inventoryPostingRule_62.CommandId = Guid.NewGuid().ToString();
@@ -67,8 +67,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_32.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityReservedUpdateProductRequiredTotal;
             inventoryPostingRule_32.TriggerInventoryItemId = triggerItemId;
             inventoryPostingRule_32.OutputInventoryItemId = outputItemId;
-            inventoryPostingRule_32.TriggerAccountName = "QuantityReserved";
-            inventoryPostingRule_32.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameQuantityRequired;
+            inventoryPostingRule_32.TriggerAccountName = ReflectUtils.GetPropertyName<IInventoryItemStateCreated>(e => e.ReservedQuantity);//"QuantityReserved";
+            inventoryPostingRule_32.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameRequiredQuantity;
             inventoryPostingRule_32.IsOutputNegated = false;
             inventoryPostingRule_32.Active = true;
             inventoryPostingRule_32.CommandId = Guid.NewGuid().ToString();
@@ -81,8 +81,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_22.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityOccupiedUpdateProductRequiredTotal;
             inventoryPostingRule_22.TriggerInventoryItemId = triggerItemId;
             inventoryPostingRule_22.OutputInventoryItemId = outputItemId;
-            inventoryPostingRule_22.TriggerAccountName = "QuantityOccupied";
-            inventoryPostingRule_22.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameQuantityRequired;
+            inventoryPostingRule_22.TriggerAccountName = ReflectUtils.GetPropertyName<IInventoryItemStateCreated>(e => e.OccupiedQuantity);// "QuantityOccupied";
+            inventoryPostingRule_22.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameRequiredQuantity;
             inventoryPostingRule_22.IsOutputNegated = false;
             inventoryPostingRule_22.Active = true;
             inventoryPostingRule_22.CommandId = Guid.NewGuid().ToString();
@@ -95,8 +95,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_12.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityOnHandUpdateProductRequiredTotal;
             inventoryPostingRule_12.TriggerInventoryItemId = triggerItemId;
             inventoryPostingRule_12.OutputInventoryItemId = outputItemId;
-            inventoryPostingRule_12.TriggerAccountName = "QuantityOnHand";
-            inventoryPostingRule_12.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameQuantityRequired;
+            inventoryPostingRule_12.TriggerAccountName = ReflectUtils.GetPropertyName<IInventoryItemStateCreated>(e => e.OnHandQuantity);//"QuantityOnHand";
+            inventoryPostingRule_12.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameRequiredQuantity;
             inventoryPostingRule_12.IsOutputNegated = true;
             inventoryPostingRule_12.Active = true;
             inventoryPostingRule_12.CommandId = Guid.NewGuid().ToString();
@@ -116,8 +116,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_4.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityVirtualUpdateProductSellableTotal;
             inventoryPostingRule_4.TriggerInventoryItemId = triggerItemId;
             inventoryPostingRule_4.OutputInventoryItemId = outputItemId;
-            inventoryPostingRule_4.TriggerAccountName = "QuantityVirtual";
-            inventoryPostingRule_4.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameQuantitySellable;
+            inventoryPostingRule_4.TriggerAccountName = ReflectUtils.GetPropertyName<IInventoryItemStateCreated>(e => e.VirtualQuantity);// "QuantityVirtual";
+            inventoryPostingRule_4.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameSellableQuantity;
             inventoryPostingRule_4.IsOutputNegated = false;
             inventoryPostingRule_4.Active = true;
             inventoryPostingRule_4.CommandId = Guid.NewGuid().ToString();
@@ -130,8 +130,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_3.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityReservedUpdateProductSellableTotal;
             inventoryPostingRule_3.TriggerInventoryItemId = triggerItemId;
             inventoryPostingRule_3.OutputInventoryItemId = outputItemId;
-            inventoryPostingRule_3.TriggerAccountName = "QuantityReserved";
-            inventoryPostingRule_3.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameQuantitySellable;
+            inventoryPostingRule_3.TriggerAccountName = ReflectUtils.GetPropertyName<IInventoryItemStateCreated>(e => e.ReservedQuantity);//"QuantityReserved";
+            inventoryPostingRule_3.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameSellableQuantity;
             inventoryPostingRule_3.IsOutputNegated = true;
             inventoryPostingRule_3.Active = true;
             inventoryPostingRule_3.CommandId = Guid.NewGuid().ToString();
@@ -144,8 +144,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_2.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityOccupiedUpdateProductSellableTotal;
             inventoryPostingRule_2.TriggerInventoryItemId = triggerItemId;
             inventoryPostingRule_2.OutputInventoryItemId = outputItemId;
-            inventoryPostingRule_2.TriggerAccountName = "QuantityOccupied";
-            inventoryPostingRule_2.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameQuantitySellable;
+            inventoryPostingRule_2.TriggerAccountName = ReflectUtils.GetPropertyName<IInventoryItemStateCreated>(e => e.OccupiedQuantity);//"QuantityOccupied";
+            inventoryPostingRule_2.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameSellableQuantity;
             inventoryPostingRule_2.IsOutputNegated = true;
             inventoryPostingRule_2.Active = true;
             inventoryPostingRule_2.CommandId = Guid.NewGuid().ToString();
@@ -158,8 +158,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_1.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityOnHandUpdateProductSellableTotal;
             inventoryPostingRule_1.TriggerInventoryItemId = triggerItemId;
             inventoryPostingRule_1.OutputInventoryItemId = outputItemId;
-            inventoryPostingRule_1.TriggerAccountName = "QuantityOnHand";
-            inventoryPostingRule_1.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameQuantitySellable;
+            inventoryPostingRule_1.TriggerAccountName = ReflectUtils.GetPropertyName<IInventoryItemStateCreated>(e => e.OnHandQuantity);//"QuantityOnHand";
+            inventoryPostingRule_1.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameSellableQuantity;
             inventoryPostingRule_1.IsOutputNegated = false;
             inventoryPostingRule_1.Active = true;
             inventoryPostingRule_1.CommandId = Guid.NewGuid().ToString();
@@ -172,8 +172,8 @@ namespace Dddml.Wms.Services.Tests
             inventoryPostingRule_6.InventoryPostingRuleId = InventoryPostingRuleIds.QuantityInTransitUpdateProductSellableTotal;
             inventoryPostingRule_6.TriggerInventoryItemId = triggerItemId;
             inventoryPostingRule_6.OutputInventoryItemId = outputItemId;
-            inventoryPostingRule_6.TriggerAccountName = "QuantityInTransit";
-            inventoryPostingRule_6.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameQuantitySellable;
+            inventoryPostingRule_6.TriggerAccountName = ReflectUtils.GetPropertyName<IInventoryItemStateCreated>(e => e.InTransitQuantity);//"QuantityInTransit";
+            inventoryPostingRule_6.OutputAccountName = InventoryPostingRuleIds.OutputAccountNameSellableQuantity;
             inventoryPostingRule_6.IsOutputNegated = false;
             inventoryPostingRule_6.Active = true;
             inventoryPostingRule_6.CommandId = Guid.NewGuid().ToString();

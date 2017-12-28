@@ -19,9 +19,9 @@ public interface SellableInventoryItemState
 
     void setSellableInventoryItemId(InventoryItemId sellableInventoryItemId);
 
-    BigDecimal getQuantitySellable();
+    BigDecimal getSellableQuantity();
 
-    void setQuantitySellable(BigDecimal quantitySellable);
+    void setSellableQuantity(BigDecimal sellableQuantity);
 
     Long getVersion();
 

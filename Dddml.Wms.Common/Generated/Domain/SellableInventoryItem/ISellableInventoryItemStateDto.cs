@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set;
         }
 
-        decimal? QuantitySellable
+        decimal? SellableQuantity
         {
             get;
             set;

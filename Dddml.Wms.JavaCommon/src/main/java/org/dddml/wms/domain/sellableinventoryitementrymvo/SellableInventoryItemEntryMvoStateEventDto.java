@@ -37,14 +37,14 @@ public class SellableInventoryItemEntryMvoStateEventDto extends AbstractStateEve
         getStateEventId().setSellableInventoryItemVersion(sellableInventoryItemVersion);
     }
 
-    private BigDecimal quantitySellable;
+    private BigDecimal sellableQuantity;
 
-    public BigDecimal getQuantitySellable() {
-        return this.quantitySellable;
+    public BigDecimal getSellableQuantity() {
+        return this.sellableQuantity;
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable) {
-        this.quantitySellable = quantitySellable;
+    public void setSellableQuantity(BigDecimal sellableQuantity) {
+        this.sellableQuantity = sellableQuantity;
     }
 
     private InventoryPRTriggeredIdDto sourceEventId = new InventoryPRTriggeredIdDto();
@@ -67,14 +67,14 @@ public class SellableInventoryItemEntryMvoStateEventDto extends AbstractStateEve
         this.version = version;
     }
 
-    private BigDecimal sellableInventoryItemQuantitySellable;
+    private BigDecimal sellableInventoryItemSellableQuantity;
 
-    public BigDecimal getSellableInventoryItemQuantitySellable() {
-        return this.sellableInventoryItemQuantitySellable;
+    public BigDecimal getSellableInventoryItemSellableQuantity() {
+        return this.sellableInventoryItemSellableQuantity;
     }
 
-    public void setSellableInventoryItemQuantitySellable(BigDecimal sellableInventoryItemQuantitySellable) {
-        this.sellableInventoryItemQuantitySellable = sellableInventoryItemQuantitySellable;
+    public void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity) {
+        this.sellableInventoryItemSellableQuantity = sellableInventoryItemSellableQuantity;
     }
 
     private String sellableInventoryItemCreatedBy;
@@ -137,14 +137,14 @@ public class SellableInventoryItemEntryMvoStateEventDto extends AbstractStateEve
         this.createdAt = createdAt;
     }
 
-    private Boolean isPropertyQuantitySellableRemoved;
+    private Boolean isPropertySellableQuantityRemoved;
 
-    public Boolean getIsPropertyQuantitySellableRemoved() {
-        return this.isPropertyQuantitySellableRemoved;
+    public Boolean getIsPropertySellableQuantityRemoved() {
+        return this.isPropertySellableQuantityRemoved;
     }
 
-    public void setIsPropertyQuantitySellableRemoved(Boolean removed) {
-        this.isPropertyQuantitySellableRemoved = removed;
+    public void setIsPropertySellableQuantityRemoved(Boolean removed) {
+        this.isPropertySellableQuantityRemoved = removed;
     }
 
     private Boolean isPropertySourceEventIdRemoved;
@@ -167,14 +167,14 @@ public class SellableInventoryItemEntryMvoStateEventDto extends AbstractStateEve
         this.isPropertyVersionRemoved = removed;
     }
 
-    private Boolean isPropertySellableInventoryItemQuantitySellableRemoved;
+    private Boolean isPropertySellableInventoryItemSellableQuantityRemoved;
 
-    public Boolean getIsPropertySellableInventoryItemQuantitySellableRemoved() {
-        return this.isPropertySellableInventoryItemQuantitySellableRemoved;
+    public Boolean getIsPropertySellableInventoryItemSellableQuantityRemoved() {
+        return this.isPropertySellableInventoryItemSellableQuantityRemoved;
     }
 
-    public void setIsPropertySellableInventoryItemQuantitySellableRemoved(Boolean removed) {
-        this.isPropertySellableInventoryItemQuantitySellableRemoved = removed;
+    public void setIsPropertySellableInventoryItemSellableQuantityRemoved(Boolean removed) {
+        this.isPropertySellableInventoryItemSellableQuantityRemoved = removed;
     }
 
     private Boolean isPropertySellableInventoryItemCreatedByRemoved;

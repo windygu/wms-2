@@ -17,25 +17,25 @@ public interface InventoryItemState
 
     void setInventoryItemId(InventoryItemId inventoryItemId);
 
-    BigDecimal getQuantityOnHand();
+    BigDecimal getOnHandQuantity();
 
-    void setQuantityOnHand(BigDecimal quantityOnHand);
+    void setOnHandQuantity(BigDecimal onHandQuantity);
 
-    BigDecimal getQuantityInTransit();
+    BigDecimal getInTransitQuantity();
 
-    void setQuantityInTransit(BigDecimal quantityInTransit);
+    void setInTransitQuantity(BigDecimal inTransitQuantity);
 
-    BigDecimal getQuantityReserved();
+    BigDecimal getReservedQuantity();
 
-    void setQuantityReserved(BigDecimal quantityReserved);
+    void setReservedQuantity(BigDecimal reservedQuantity);
 
-    BigDecimal getQuantityOccupied();
+    BigDecimal getOccupiedQuantity();
 
-    void setQuantityOccupied(BigDecimal quantityOccupied);
+    void setOccupiedQuantity(BigDecimal occupiedQuantity);
 
-    BigDecimal getQuantityVirtual();
+    BigDecimal getVirtualQuantity();
 
-    void setQuantityVirtual(BigDecimal quantityVirtual);
+    void setVirtualQuantity(BigDecimal virtualQuantity);
 
     Long getVersion();
 

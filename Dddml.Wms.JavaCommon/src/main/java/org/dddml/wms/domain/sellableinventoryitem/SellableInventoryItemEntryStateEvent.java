@@ -20,9 +20,9 @@ public interface SellableInventoryItemEntryStateEvent extends Event
 
     void setVersion(Long version);
 
-    BigDecimal getQuantitySellable();
+    BigDecimal getSellableQuantity();
 
-    void setQuantitySellable(BigDecimal quantitySellable);
+    void setSellableQuantity(BigDecimal sellableQuantity);
 
     InventoryPRTriggeredId getSourceEventId();
 

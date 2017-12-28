@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             set { StateEventId.SellableInventoryItemVersion = value; }
         }
 
-		public virtual decimal? QuantitySellable { get; set; }
+		public virtual decimal? SellableQuantity { get; set; }
 
 		private InventoryPRTriggeredIdDto _sourceEventId = new InventoryPRTriggeredIdDto();
 
@@ -64,7 +64,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
 		public virtual long? Version { get; set; }
 
-		public virtual decimal? SellableInventoryItemQuantitySellable { get; set; }
+		public virtual decimal? SellableInventoryItemSellableQuantity { get; set; }
 
 		public virtual string SellableInventoryItemCreatedBy { get; set; }
 
@@ -103,13 +103,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             }
         }
 
-		public virtual bool? IsPropertyQuantitySellableRemoved { get; set; }
+		public virtual bool? IsPropertySellableQuantityRemoved { get; set; }
 
-        bool ISellableInventoryItemEntryMvoStateMergePatched.IsPropertyQuantitySellableRemoved
+        bool ISellableInventoryItemEntryMvoStateMergePatched.IsPropertySellableQuantityRemoved
         {
             get 
             {
-                var b = this.IsPropertyQuantitySellableRemoved;
+                var b = this.IsPropertySellableQuantityRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             }
             set 
             {
-                this.IsPropertyQuantitySellableRemoved = value;
+                this.IsPropertySellableQuantityRemoved = value;
             }
         }
 
@@ -160,13 +160,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             }
         }
 
-		public virtual bool? IsPropertySellableInventoryItemQuantitySellableRemoved { get; set; }
+		public virtual bool? IsPropertySellableInventoryItemSellableQuantityRemoved { get; set; }
 
-        bool ISellableInventoryItemEntryMvoStateMergePatched.IsPropertySellableInventoryItemQuantitySellableRemoved
+        bool ISellableInventoryItemEntryMvoStateMergePatched.IsPropertySellableInventoryItemSellableQuantityRemoved
         {
             get 
             {
-                var b = this.IsPropertySellableInventoryItemQuantitySellableRemoved;
+                var b = this.IsPropertySellableInventoryItemSellableQuantityRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -175,7 +175,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             }
             set 
             {
-                this.IsPropertySellableInventoryItemQuantitySellableRemoved = value;
+                this.IsPropertySellableInventoryItemSellableQuantityRemoved = value;
             }
         }
 

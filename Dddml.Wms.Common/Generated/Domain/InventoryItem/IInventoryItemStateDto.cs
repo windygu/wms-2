@@ -21,31 +21,31 @@ namespace Dddml.Wms.Domain.InventoryItem
             set;
         }
 
-        decimal? QuantityOnHand
+        decimal? OnHandQuantity
         {
             get;
             set;
         }
 
-        decimal? QuantityInTransit
+        decimal? InTransitQuantity
         {
             get;
             set;
         }
 
-        decimal? QuantityReserved
+        decimal? ReservedQuantity
         {
             get;
             set;
         }
 
-        decimal? QuantityOccupied
+        decimal? OccupiedQuantity
         {
             get;
             set;
         }
 
-        decimal? QuantityVirtual
+        decimal? VirtualQuantity
         {
             get;
             set;

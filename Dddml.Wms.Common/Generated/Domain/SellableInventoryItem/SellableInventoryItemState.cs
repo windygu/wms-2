@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		public virtual void When(ISellableInventoryItemStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-            this.QuantitySellable = (e.QuantitySellable != null && e.QuantitySellable.HasValue) ? e.QuantitySellable.Value : default(decimal);
+            this.SellableQuantity = (e.SellableQuantity != null && e.SellableQuantity.HasValue) ? e.SellableQuantity.Value : default(decimal);
 
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
@@ -202,16 +202,16 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.QuantitySellable == null)
+			if (e.SellableQuantity == null)
 			{
-				if (e.IsPropertyQuantitySellableRemoved)
+				if (e.IsPropertySellableQuantityRemoved)
 				{
-					this.QuantitySellable = default(decimal);
+					this.SellableQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantitySellable = (e.QuantitySellable != null && e.QuantitySellable.HasValue) ? e.QuantitySellable.Value : default(decimal);
+				this.SellableQuantity = (e.SellableQuantity != null && e.SellableQuantity.HasValue) ? e.SellableQuantity.Value : default(decimal);
 			}
 
 

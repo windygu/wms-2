@@ -24,16 +24,16 @@ public abstract class AbstractSellableInventoryItemEntryMvoState implements Sell
         this.sellableInventoryItemEntryId = sellableInventoryItemEntryId;
     }
 
-    private BigDecimal quantitySellable;
+    private BigDecimal sellableQuantity;
 
-    public BigDecimal getQuantitySellable()
+    public BigDecimal getSellableQuantity()
     {
-        return this.quantitySellable;
+        return this.sellableQuantity;
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable)
+    public void setSellableQuantity(BigDecimal sellableQuantity)
     {
-        this.quantitySellable = quantitySellable;
+        this.sellableQuantity = sellableQuantity;
     }
 
     private InventoryPRTriggeredId sourceEventId;
@@ -108,16 +108,16 @@ public abstract class AbstractSellableInventoryItemEntryMvoState implements Sell
         this.updatedAt = updatedAt;
     }
 
-    private BigDecimal sellableInventoryItemQuantitySellable;
+    private BigDecimal sellableInventoryItemSellableQuantity;
 
-    public BigDecimal getSellableInventoryItemQuantitySellable()
+    public BigDecimal getSellableInventoryItemSellableQuantity()
     {
-        return this.sellableInventoryItemQuantitySellable;
+        return this.sellableInventoryItemSellableQuantity;
     }
 
-    public void setSellableInventoryItemQuantitySellable(BigDecimal sellableInventoryItemQuantitySellable)
+    public void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity)
     {
-        this.sellableInventoryItemQuantitySellable = sellableInventoryItemQuantitySellable;
+        this.sellableInventoryItemSellableQuantity = sellableInventoryItemSellableQuantity;
     }
 
     private Long sellableInventoryItemVersion;
@@ -242,10 +242,10 @@ public abstract class AbstractSellableInventoryItemEntryMvoState implements Sell
     {
         throwOnWrongEvent(e);
 
-        this.setQuantitySellable(e.getQuantitySellable());
+        this.setSellableQuantity(e.getSellableQuantity());
         this.setSourceEventId(e.getSourceEventId());
         this.setVersion(e.getVersion());
-        this.setSellableInventoryItemQuantitySellable(e.getSellableInventoryItemQuantitySellable());
+        this.setSellableInventoryItemSellableQuantity(e.getSellableInventoryItemSellableQuantity());
         this.setSellableInventoryItemCreatedBy(e.getSellableInventoryItemCreatedBy());
         this.setSellableInventoryItemCreatedAt(e.getSellableInventoryItemCreatedAt());
         this.setSellableInventoryItemUpdatedBy(e.getSellableInventoryItemUpdatedBy());
@@ -260,16 +260,16 @@ public abstract class AbstractSellableInventoryItemEntryMvoState implements Sell
     {
         throwOnWrongEvent(e);
 
-        if (e.getQuantitySellable() == null)
+        if (e.getSellableQuantity() == null)
         {
-            if (e.getIsPropertyQuantitySellableRemoved() != null && e.getIsPropertyQuantitySellableRemoved())
+            if (e.getIsPropertySellableQuantityRemoved() != null && e.getIsPropertySellableQuantityRemoved())
             {
-                this.setQuantitySellable(null);
+                this.setSellableQuantity(null);
             }
         }
         else
         {
-            this.setQuantitySellable(e.getQuantitySellable());
+            this.setSellableQuantity(e.getSellableQuantity());
         }
         if (e.getSourceEventId() == null)
         {
@@ -293,16 +293,16 @@ public abstract class AbstractSellableInventoryItemEntryMvoState implements Sell
         {
             this.setVersion(e.getVersion());
         }
-        if (e.getSellableInventoryItemQuantitySellable() == null)
+        if (e.getSellableInventoryItemSellableQuantity() == null)
         {
-            if (e.getIsPropertySellableInventoryItemQuantitySellableRemoved() != null && e.getIsPropertySellableInventoryItemQuantitySellableRemoved())
+            if (e.getIsPropertySellableInventoryItemSellableQuantityRemoved() != null && e.getIsPropertySellableInventoryItemSellableQuantityRemoved())
             {
-                this.setSellableInventoryItemQuantitySellable(null);
+                this.setSellableInventoryItemSellableQuantity(null);
             }
         }
         else
         {
-            this.setSellableInventoryItemQuantitySellable(e.getSellableInventoryItemQuantitySellable());
+            this.setSellableInventoryItemSellableQuantity(e.getSellableInventoryItemSellableQuantity());
         }
         if (e.getSellableInventoryItemCreatedBy() == null)
         {

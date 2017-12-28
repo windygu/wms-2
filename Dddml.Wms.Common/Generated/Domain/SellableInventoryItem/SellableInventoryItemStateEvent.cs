@@ -25,7 +25,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set { StateEventId.SellableInventoryItemId = value; }
         }
 
-		public virtual decimal? QuantitySellable { get; set; }
+		public virtual decimal? SellableQuantity { get; set; }
 
 		public virtual string CreatedBy { get; set; }
 
@@ -172,7 +172,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 	public class SellableInventoryItemStateMergePatched : SellableInventoryItemStateEventBase, ISellableInventoryItemStateMergePatched
 	{
-		public virtual bool IsPropertyQuantitySellableRemoved { get; set; }
+		public virtual bool IsPropertySellableQuantityRemoved { get; set; }
 
 
 		public SellableInventoryItemStateMergePatched ()

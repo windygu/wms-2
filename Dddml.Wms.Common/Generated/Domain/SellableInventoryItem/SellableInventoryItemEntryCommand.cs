@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set { this.CommandId = value; }
         }
 
-		public virtual decimal? QuantitySellable { get; set; }
+		public virtual decimal? SellableQuantity { get; set; }
 
 		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
 

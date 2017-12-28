@@ -35,16 +35,16 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private BigDecimal quantitySellable;
+    private BigDecimal sellableQuantity;
 
-    public BigDecimal getQuantitySellable()
+    public BigDecimal getSellableQuantity()
     {
-        return this.quantitySellable;
+        return this.sellableQuantity;
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable)
+    public void setSellableQuantity(BigDecimal sellableQuantity)
     {
-        this.quantitySellable = quantitySellable;
+        this.sellableQuantity = sellableQuantity;
     }
 
     private String createdBy;
@@ -177,14 +177,14 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyQuantitySellableRemoved;
+        private Boolean isPropertySellableQuantityRemoved;
 
-        public Boolean getIsPropertyQuantitySellableRemoved() {
-            return this.isPropertyQuantitySellableRemoved;
+        public Boolean getIsPropertySellableQuantityRemoved() {
+            return this.isPropertySellableQuantityRemoved;
         }
 
-        public void setIsPropertyQuantitySellableRemoved(Boolean removed) {
-            this.isPropertyQuantitySellableRemoved = removed;
+        public void setIsPropertySellableQuantityRemoved(Boolean removed) {
+            this.isPropertySellableQuantityRemoved = removed;
         }
 
         private Map<SellableInventoryItemEntryStateEventId, SellableInventoryItemEntryStateEvent> sellableInventoryItemEntryEvents = new HashMap<SellableInventoryItemEntryStateEventId, SellableInventoryItemEntryStateEvent>();

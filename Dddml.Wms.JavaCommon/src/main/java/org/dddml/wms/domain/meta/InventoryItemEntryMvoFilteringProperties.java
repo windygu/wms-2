@@ -11,11 +11,11 @@ public final class InventoryItemEntryMvoFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
-            "quantityOnHand",
-            "quantityInTransit",
-            "quantityReserved",
-            "quantityOccupied",
-            "quantityVirtual",
+            "onHandQuantity",
+            "inTransitQuantity",
+            "reservedQuantity",
+            "occupiedQuantity",
+            "virtualQuantity",
             "version",
             "createdBy",
             "createdAt",
@@ -23,11 +23,11 @@ public final class InventoryItemEntryMvoFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "inventoryItemQuantityOnHand",
-            "inventoryItemQuantityInTransit",
-            "inventoryItemQuantityReserved",
-            "inventoryItemQuantityOccupied",
-            "inventoryItemQuantityVirtual",
+            "inventoryItemOnHandQuantity",
+            "inventoryItemInTransitQuantity",
+            "inventoryItemReservedQuantity",
+            "inventoryItemOccupiedQuantity",
+            "inventoryItemVirtualQuantity",
             "inventoryItemVersion",
             "inventoryItemCreatedBy",
             "inventoryItemCreatedAt",
@@ -86,16 +86,16 @@ public final class InventoryItemEntryMvoFilteringProperties
     }
 
     private static  void initAliasMap() {
-        aliasMap.put("quantityOnHand", "quantityOnHand");
-        aliasMap.put("QuantityOnHand", "quantityOnHand");
-        aliasMap.put("quantityInTransit", "quantityInTransit");
-        aliasMap.put("QuantityInTransit", "quantityInTransit");
-        aliasMap.put("quantityReserved", "quantityReserved");
-        aliasMap.put("QuantityReserved", "quantityReserved");
-        aliasMap.put("quantityOccupied", "quantityOccupied");
-        aliasMap.put("QuantityOccupied", "quantityOccupied");
-        aliasMap.put("quantityVirtual", "quantityVirtual");
-        aliasMap.put("QuantityVirtual", "quantityVirtual");
+        aliasMap.put("onHandQuantity", "onHandQuantity");
+        aliasMap.put("OnHandQuantity", "onHandQuantity");
+        aliasMap.put("inTransitQuantity", "inTransitQuantity");
+        aliasMap.put("InTransitQuantity", "inTransitQuantity");
+        aliasMap.put("reservedQuantity", "reservedQuantity");
+        aliasMap.put("ReservedQuantity", "reservedQuantity");
+        aliasMap.put("occupiedQuantity", "occupiedQuantity");
+        aliasMap.put("OccupiedQuantity", "occupiedQuantity");
+        aliasMap.put("virtualQuantity", "virtualQuantity");
+        aliasMap.put("VirtualQuantity", "virtualQuantity");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");
@@ -110,16 +110,16 @@ public final class InventoryItemEntryMvoFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("inventoryItemQuantityOnHand", "inventoryItemQuantityOnHand");
-        aliasMap.put("InventoryItemQuantityOnHand", "inventoryItemQuantityOnHand");
-        aliasMap.put("inventoryItemQuantityInTransit", "inventoryItemQuantityInTransit");
-        aliasMap.put("InventoryItemQuantityInTransit", "inventoryItemQuantityInTransit");
-        aliasMap.put("inventoryItemQuantityReserved", "inventoryItemQuantityReserved");
-        aliasMap.put("InventoryItemQuantityReserved", "inventoryItemQuantityReserved");
-        aliasMap.put("inventoryItemQuantityOccupied", "inventoryItemQuantityOccupied");
-        aliasMap.put("InventoryItemQuantityOccupied", "inventoryItemQuantityOccupied");
-        aliasMap.put("inventoryItemQuantityVirtual", "inventoryItemQuantityVirtual");
-        aliasMap.put("InventoryItemQuantityVirtual", "inventoryItemQuantityVirtual");
+        aliasMap.put("inventoryItemOnHandQuantity", "inventoryItemOnHandQuantity");
+        aliasMap.put("InventoryItemOnHandQuantity", "inventoryItemOnHandQuantity");
+        aliasMap.put("inventoryItemInTransitQuantity", "inventoryItemInTransitQuantity");
+        aliasMap.put("InventoryItemInTransitQuantity", "inventoryItemInTransitQuantity");
+        aliasMap.put("inventoryItemReservedQuantity", "inventoryItemReservedQuantity");
+        aliasMap.put("InventoryItemReservedQuantity", "inventoryItemReservedQuantity");
+        aliasMap.put("inventoryItemOccupiedQuantity", "inventoryItemOccupiedQuantity");
+        aliasMap.put("InventoryItemOccupiedQuantity", "inventoryItemOccupiedQuantity");
+        aliasMap.put("inventoryItemVirtualQuantity", "inventoryItemVirtualQuantity");
+        aliasMap.put("InventoryItemVirtualQuantity", "inventoryItemVirtualQuantity");
         aliasMap.put("inventoryItemVersion", "inventoryItemVersion");
         aliasMap.put("InventoryItemVersion", "inventoryItemVersion");
         aliasMap.put("inventoryItemCreatedBy", "inventoryItemCreatedBy");

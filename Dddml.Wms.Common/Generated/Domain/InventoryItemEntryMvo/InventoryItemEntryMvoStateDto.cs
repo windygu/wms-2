@@ -23,31 +23,31 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set;
         }
 
-        public virtual decimal? QuantityOnHand
+        public virtual decimal? OnHandQuantity
         {
             get;
             set;
         }
 
-        public virtual decimal? QuantityInTransit
+        public virtual decimal? InTransitQuantity
         {
             get;
             set;
         }
 
-        public virtual decimal? QuantityReserved
+        public virtual decimal? ReservedQuantity
         {
             get;
             set;
         }
 
-        public virtual decimal? QuantityOccupied
+        public virtual decimal? OccupiedQuantity
         {
             get;
             set;
         }
 
-        public virtual decimal? QuantityVirtual
+        public virtual decimal? VirtualQuantity
         {
             get;
             set;
@@ -66,31 +66,31 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set;
         }
 
-        public virtual decimal? InventoryItemQuantityOnHand
+        public virtual decimal? InventoryItemOnHandQuantity
         {
             get;
             set;
         }
 
-        public virtual decimal? InventoryItemQuantityInTransit
+        public virtual decimal? InventoryItemInTransitQuantity
         {
             get;
             set;
         }
 
-        public virtual decimal? InventoryItemQuantityReserved
+        public virtual decimal? InventoryItemReservedQuantity
         {
             get;
             set;
         }
 
-        public virtual decimal? InventoryItemQuantityOccupied
+        public virtual decimal? InventoryItemOccupiedQuantity
         {
             get;
             set;
         }
 
-        public virtual decimal? InventoryItemQuantityVirtual
+        public virtual decimal? InventoryItemVirtualQuantity
         {
             get;
             set;
@@ -154,18 +154,18 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         {
             var state = new InventoryItemEntryMvoState(true);
             state.InventoryItemEntryId = (this.InventoryItemEntryId == null) ? null : this.InventoryItemEntryId.ToInventoryItemEntryId();
-            if (this.QuantityOnHand != null && this.QuantityOnHand.HasValue) { state.QuantityOnHand = this.QuantityOnHand.Value; }
-            if (this.QuantityInTransit != null && this.QuantityInTransit.HasValue) { state.QuantityInTransit = this.QuantityInTransit.Value; }
-            if (this.QuantityReserved != null && this.QuantityReserved.HasValue) { state.QuantityReserved = this.QuantityReserved.Value; }
-            if (this.QuantityOccupied != null && this.QuantityOccupied.HasValue) { state.QuantityOccupied = this.QuantityOccupied.Value; }
-            if (this.QuantityVirtual != null && this.QuantityVirtual.HasValue) { state.QuantityVirtual = this.QuantityVirtual.Value; }
+            if (this.OnHandQuantity != null && this.OnHandQuantity.HasValue) { state.OnHandQuantity = this.OnHandQuantity.Value; }
+            if (this.InTransitQuantity != null && this.InTransitQuantity.HasValue) { state.InTransitQuantity = this.InTransitQuantity.Value; }
+            if (this.ReservedQuantity != null && this.ReservedQuantity.HasValue) { state.ReservedQuantity = this.ReservedQuantity.Value; }
+            if (this.OccupiedQuantity != null && this.OccupiedQuantity.HasValue) { state.OccupiedQuantity = this.OccupiedQuantity.Value; }
+            if (this.VirtualQuantity != null && this.VirtualQuantity.HasValue) { state.VirtualQuantity = this.VirtualQuantity.Value; }
             state.Source = (this.Source == null) ? null : this.Source.ToInventoryItemSourceInfo();
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
-            if (this.InventoryItemQuantityOnHand != null && this.InventoryItemQuantityOnHand.HasValue) { state.InventoryItemQuantityOnHand = this.InventoryItemQuantityOnHand.Value; }
-            if (this.InventoryItemQuantityInTransit != null && this.InventoryItemQuantityInTransit.HasValue) { state.InventoryItemQuantityInTransit = this.InventoryItemQuantityInTransit.Value; }
-            if (this.InventoryItemQuantityReserved != null && this.InventoryItemQuantityReserved.HasValue) { state.InventoryItemQuantityReserved = this.InventoryItemQuantityReserved.Value; }
-            if (this.InventoryItemQuantityOccupied != null && this.InventoryItemQuantityOccupied.HasValue) { state.InventoryItemQuantityOccupied = this.InventoryItemQuantityOccupied.Value; }
-            if (this.InventoryItemQuantityVirtual != null && this.InventoryItemQuantityVirtual.HasValue) { state.InventoryItemQuantityVirtual = this.InventoryItemQuantityVirtual.Value; }
+            if (this.InventoryItemOnHandQuantity != null && this.InventoryItemOnHandQuantity.HasValue) { state.InventoryItemOnHandQuantity = this.InventoryItemOnHandQuantity.Value; }
+            if (this.InventoryItemInTransitQuantity != null && this.InventoryItemInTransitQuantity.HasValue) { state.InventoryItemInTransitQuantity = this.InventoryItemInTransitQuantity.Value; }
+            if (this.InventoryItemReservedQuantity != null && this.InventoryItemReservedQuantity.HasValue) { state.InventoryItemReservedQuantity = this.InventoryItemReservedQuantity.Value; }
+            if (this.InventoryItemOccupiedQuantity != null && this.InventoryItemOccupiedQuantity.HasValue) { state.InventoryItemOccupiedQuantity = this.InventoryItemOccupiedQuantity.Value; }
+            if (this.InventoryItemVirtualQuantity != null && this.InventoryItemVirtualQuantity.HasValue) { state.InventoryItemVirtualQuantity = this.InventoryItemVirtualQuantity.Value; }
             state.InventoryItemCreatedBy = this.InventoryItemCreatedBy;
             if (this.InventoryItemCreatedAt != null && this.InventoryItemCreatedAt.HasValue) { state.InventoryItemCreatedAt = this.InventoryItemCreatedAt.Value; }
             state.InventoryItemUpdatedBy = this.InventoryItemUpdatedBy;

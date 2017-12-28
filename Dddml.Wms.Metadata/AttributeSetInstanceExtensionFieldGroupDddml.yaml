@@ -1,7 +1,4 @@
-﻿
-
-
-#%DDDML 0.1
+﻿#%DDDML 0.1
 
 ---
 
@@ -74,4 +71,3 @@ aggregates:
             UniqueName: [Name]
             UniqueAlias: [Alias]
 
-            

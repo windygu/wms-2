@@ -29,7 +29,7 @@ public class HibernateSellableInventoryItemEntryMvoStateRepository implements Se
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("SellableInventoryItemEntryId", "QuantitySellable", "SourceEventId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "SellableInventoryItemQuantitySellable", "SellableInventoryItemEntries", "SellableInventoryItemVersion", "SellableInventoryItemCreatedBy", "SellableInventoryItemCreatedAt", "SellableInventoryItemUpdatedBy", "SellableInventoryItemUpdatedAt"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("SellableInventoryItemEntryId", "SellableQuantity", "SourceEventId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "SellableInventoryItemSellableQuantity", "SellableInventoryItemEntries", "SellableInventoryItemVersion", "SellableInventoryItemCreatedBy", "SellableInventoryItemCreatedAt", "SellableInventoryItemUpdatedBy", "SellableInventoryItemUpdatedAt"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

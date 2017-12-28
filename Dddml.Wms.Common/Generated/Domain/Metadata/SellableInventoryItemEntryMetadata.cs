@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "QuantitySellable",
+                    Name = "SellableQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
                     IsSimpleValueObjectType = true,
@@ -758,8 +758,8 @@ namespace Dddml.Wms.Domain.Metadata
             var d = new Dictionary<string, string>();
             d.Add("EntrySeqId", "SellableInventoryItemEntryId.EntrySeqId");
             d.Add("entrySeqId", "SellableInventoryItemEntryId.EntrySeqId");
-            d.Add("QuantitySellable", "QuantitySellable");
-            d.Add("quantitySellable", "QuantitySellable");
+            d.Add("SellableQuantity", "SellableQuantity");
+            d.Add("sellableQuantity", "SellableQuantity");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");

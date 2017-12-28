@@ -24,7 +24,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set;
         }
 
-        public virtual decimal? QuantitySellable
+        public virtual decimal? SellableQuantity
         {
             get;
             set;
@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         {
             var state = new SellableInventoryItemState(true);
             state.SellableInventoryItemId = (this.SellableInventoryItemId == null) ? null : this.SellableInventoryItemId.ToInventoryItemId();
-            if (this.QuantitySellable != null && this.QuantitySellable.HasValue) { state.QuantitySellable = this.QuantitySellable.Value; }
+            if (this.SellableQuantity != null && this.SellableQuantity.HasValue) { state.SellableQuantity = this.SellableQuantity.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }

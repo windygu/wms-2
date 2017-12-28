@@ -27,11 +27,11 @@ public abstract class AbstractInventoryItemEntryStateCommandConverter<TCreateInv
         TCreateInventoryItemEntry cmd = newCreateInventoryItemEntry();
 
         cmd.setEntrySeqId(state.getEntrySeqId());
-        cmd.setQuantityOnHand(state.getQuantityOnHand());
-        cmd.setQuantityInTransit(state.getQuantityInTransit());
-        cmd.setQuantityReserved(state.getQuantityReserved());
-        cmd.setQuantityOccupied(state.getQuantityOccupied());
-        cmd.setQuantityVirtual(state.getQuantityVirtual());
+        cmd.setOnHandQuantity(state.getOnHandQuantity());
+        cmd.setInTransitQuantity(state.getInTransitQuantity());
+        cmd.setReservedQuantity(state.getReservedQuantity());
+        cmd.setOccupiedQuantity(state.getOccupiedQuantity());
+        cmd.setVirtualQuantity(state.getVirtualQuantity());
         cmd.setSource(state.getSource());
         cmd.setInventoryItemId(state.getInventoryItemId());
         return cmd;

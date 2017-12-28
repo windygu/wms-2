@@ -23,64 +23,64 @@ public class InventoryItemEntryMvoStateDto
         this.inventoryItemEntryId = inventoryItemEntryId;
     }
 
-    private BigDecimal quantityOnHand;
+    private BigDecimal onHandQuantity;
 
-    public BigDecimal getQuantityOnHand()
+    public BigDecimal getOnHandQuantity()
     {
-        return this.quantityOnHand;
+        return this.onHandQuantity;
     }
 
-    public void setQuantityOnHand(BigDecimal quantityOnHand)
+    public void setOnHandQuantity(BigDecimal onHandQuantity)
     {
-        this.quantityOnHand = quantityOnHand;
+        this.onHandQuantity = onHandQuantity;
     }
 
-    private BigDecimal quantityInTransit;
+    private BigDecimal inTransitQuantity;
 
-    public BigDecimal getQuantityInTransit()
+    public BigDecimal getInTransitQuantity()
     {
-        return this.quantityInTransit;
+        return this.inTransitQuantity;
     }
 
-    public void setQuantityInTransit(BigDecimal quantityInTransit)
+    public void setInTransitQuantity(BigDecimal inTransitQuantity)
     {
-        this.quantityInTransit = quantityInTransit;
+        this.inTransitQuantity = inTransitQuantity;
     }
 
-    private BigDecimal quantityReserved;
+    private BigDecimal reservedQuantity;
 
-    public BigDecimal getQuantityReserved()
+    public BigDecimal getReservedQuantity()
     {
-        return this.quantityReserved;
+        return this.reservedQuantity;
     }
 
-    public void setQuantityReserved(BigDecimal quantityReserved)
+    public void setReservedQuantity(BigDecimal reservedQuantity)
     {
-        this.quantityReserved = quantityReserved;
+        this.reservedQuantity = reservedQuantity;
     }
 
-    private BigDecimal quantityOccupied;
+    private BigDecimal occupiedQuantity;
 
-    public BigDecimal getQuantityOccupied()
+    public BigDecimal getOccupiedQuantity()
     {
-        return this.quantityOccupied;
+        return this.occupiedQuantity;
     }
 
-    public void setQuantityOccupied(BigDecimal quantityOccupied)
+    public void setOccupiedQuantity(BigDecimal occupiedQuantity)
     {
-        this.quantityOccupied = quantityOccupied;
+        this.occupiedQuantity = occupiedQuantity;
     }
 
-    private BigDecimal quantityVirtual;
+    private BigDecimal virtualQuantity;
 
-    public BigDecimal getQuantityVirtual()
+    public BigDecimal getVirtualQuantity()
     {
-        return this.quantityVirtual;
+        return this.virtualQuantity;
     }
 
-    public void setQuantityVirtual(BigDecimal quantityVirtual)
+    public void setVirtualQuantity(BigDecimal virtualQuantity)
     {
-        this.quantityVirtual = quantityVirtual;
+        this.virtualQuantity = virtualQuantity;
     }
 
     private InventoryItemSourceInfoDto source;
@@ -107,64 +107,64 @@ public class InventoryItemEntryMvoStateDto
         this.version = version;
     }
 
-    private BigDecimal inventoryItemQuantityOnHand;
+    private BigDecimal inventoryItemOnHandQuantity;
 
-    public BigDecimal getInventoryItemQuantityOnHand()
+    public BigDecimal getInventoryItemOnHandQuantity()
     {
-        return this.inventoryItemQuantityOnHand;
+        return this.inventoryItemOnHandQuantity;
     }
 
-    public void setInventoryItemQuantityOnHand(BigDecimal inventoryItemQuantityOnHand)
+    public void setInventoryItemOnHandQuantity(BigDecimal inventoryItemOnHandQuantity)
     {
-        this.inventoryItemQuantityOnHand = inventoryItemQuantityOnHand;
+        this.inventoryItemOnHandQuantity = inventoryItemOnHandQuantity;
     }
 
-    private BigDecimal inventoryItemQuantityInTransit;
+    private BigDecimal inventoryItemInTransitQuantity;
 
-    public BigDecimal getInventoryItemQuantityInTransit()
+    public BigDecimal getInventoryItemInTransitQuantity()
     {
-        return this.inventoryItemQuantityInTransit;
+        return this.inventoryItemInTransitQuantity;
     }
 
-    public void setInventoryItemQuantityInTransit(BigDecimal inventoryItemQuantityInTransit)
+    public void setInventoryItemInTransitQuantity(BigDecimal inventoryItemInTransitQuantity)
     {
-        this.inventoryItemQuantityInTransit = inventoryItemQuantityInTransit;
+        this.inventoryItemInTransitQuantity = inventoryItemInTransitQuantity;
     }
 
-    private BigDecimal inventoryItemQuantityReserved;
+    private BigDecimal inventoryItemReservedQuantity;
 
-    public BigDecimal getInventoryItemQuantityReserved()
+    public BigDecimal getInventoryItemReservedQuantity()
     {
-        return this.inventoryItemQuantityReserved;
+        return this.inventoryItemReservedQuantity;
     }
 
-    public void setInventoryItemQuantityReserved(BigDecimal inventoryItemQuantityReserved)
+    public void setInventoryItemReservedQuantity(BigDecimal inventoryItemReservedQuantity)
     {
-        this.inventoryItemQuantityReserved = inventoryItemQuantityReserved;
+        this.inventoryItemReservedQuantity = inventoryItemReservedQuantity;
     }
 
-    private BigDecimal inventoryItemQuantityOccupied;
+    private BigDecimal inventoryItemOccupiedQuantity;
 
-    public BigDecimal getInventoryItemQuantityOccupied()
+    public BigDecimal getInventoryItemOccupiedQuantity()
     {
-        return this.inventoryItemQuantityOccupied;
+        return this.inventoryItemOccupiedQuantity;
     }
 
-    public void setInventoryItemQuantityOccupied(BigDecimal inventoryItemQuantityOccupied)
+    public void setInventoryItemOccupiedQuantity(BigDecimal inventoryItemOccupiedQuantity)
     {
-        this.inventoryItemQuantityOccupied = inventoryItemQuantityOccupied;
+        this.inventoryItemOccupiedQuantity = inventoryItemOccupiedQuantity;
     }
 
-    private BigDecimal inventoryItemQuantityVirtual;
+    private BigDecimal inventoryItemVirtualQuantity;
 
-    public BigDecimal getInventoryItemQuantityVirtual()
+    public BigDecimal getInventoryItemVirtualQuantity()
     {
-        return this.inventoryItemQuantityVirtual;
+        return this.inventoryItemVirtualQuantity;
     }
 
-    public void setInventoryItemQuantityVirtual(BigDecimal inventoryItemQuantityVirtual)
+    public void setInventoryItemVirtualQuantity(BigDecimal inventoryItemVirtualQuantity)
     {
-        this.inventoryItemQuantityVirtual = inventoryItemQuantityVirtual;
+        this.inventoryItemVirtualQuantity = inventoryItemVirtualQuantity;
     }
 
     private String inventoryItemCreatedBy;
@@ -304,20 +304,20 @@ public class InventoryItemEntryMvoStateDto
             if (returnedFieldsContains("InventoryItemEntryId")) {
                 dto.setInventoryItemEntryId((state.getInventoryItemEntryId() == null) ? null : new InventoryItemEntryIdDtoWrapper(state.getInventoryItemEntryId()));
             }
-            if (returnedFieldsContains("QuantityOnHand")) {
-                dto.setQuantityOnHand(state.getQuantityOnHand());
+            if (returnedFieldsContains("OnHandQuantity")) {
+                dto.setOnHandQuantity(state.getOnHandQuantity());
             }
-            if (returnedFieldsContains("QuantityInTransit")) {
-                dto.setQuantityInTransit(state.getQuantityInTransit());
+            if (returnedFieldsContains("InTransitQuantity")) {
+                dto.setInTransitQuantity(state.getInTransitQuantity());
             }
-            if (returnedFieldsContains("QuantityReserved")) {
-                dto.setQuantityReserved(state.getQuantityReserved());
+            if (returnedFieldsContains("ReservedQuantity")) {
+                dto.setReservedQuantity(state.getReservedQuantity());
             }
-            if (returnedFieldsContains("QuantityOccupied")) {
-                dto.setQuantityOccupied(state.getQuantityOccupied());
+            if (returnedFieldsContains("OccupiedQuantity")) {
+                dto.setOccupiedQuantity(state.getOccupiedQuantity());
             }
-            if (returnedFieldsContains("QuantityVirtual")) {
-                dto.setQuantityVirtual(state.getQuantityVirtual());
+            if (returnedFieldsContains("VirtualQuantity")) {
+                dto.setVirtualQuantity(state.getVirtualQuantity());
             }
             if (returnedFieldsContains("Source")) {
                 dto.setSource((state.getSource() == null) ? null : new InventoryItemSourceInfoDtoWrapper(state.getSource()));
@@ -325,20 +325,20 @@ public class InventoryItemEntryMvoStateDto
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());
             }
-            if (returnedFieldsContains("InventoryItemQuantityOnHand")) {
-                dto.setInventoryItemQuantityOnHand(state.getInventoryItemQuantityOnHand());
+            if (returnedFieldsContains("InventoryItemOnHandQuantity")) {
+                dto.setInventoryItemOnHandQuantity(state.getInventoryItemOnHandQuantity());
             }
-            if (returnedFieldsContains("InventoryItemQuantityInTransit")) {
-                dto.setInventoryItemQuantityInTransit(state.getInventoryItemQuantityInTransit());
+            if (returnedFieldsContains("InventoryItemInTransitQuantity")) {
+                dto.setInventoryItemInTransitQuantity(state.getInventoryItemInTransitQuantity());
             }
-            if (returnedFieldsContains("InventoryItemQuantityReserved")) {
-                dto.setInventoryItemQuantityReserved(state.getInventoryItemQuantityReserved());
+            if (returnedFieldsContains("InventoryItemReservedQuantity")) {
+                dto.setInventoryItemReservedQuantity(state.getInventoryItemReservedQuantity());
             }
-            if (returnedFieldsContains("InventoryItemQuantityOccupied")) {
-                dto.setInventoryItemQuantityOccupied(state.getInventoryItemQuantityOccupied());
+            if (returnedFieldsContains("InventoryItemOccupiedQuantity")) {
+                dto.setInventoryItemOccupiedQuantity(state.getInventoryItemOccupiedQuantity());
             }
-            if (returnedFieldsContains("InventoryItemQuantityVirtual")) {
-                dto.setInventoryItemQuantityVirtual(state.getInventoryItemQuantityVirtual());
+            if (returnedFieldsContains("InventoryItemVirtualQuantity")) {
+                dto.setInventoryItemVirtualQuantity(state.getInventoryItemVirtualQuantity());
             }
             if (returnedFieldsContains("InventoryItemCreatedBy")) {
                 dto.setInventoryItemCreatedBy(state.getInventoryItemCreatedBy());

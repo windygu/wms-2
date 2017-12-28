@@ -37,11 +37,11 @@ namespace Dddml.Wms.Domain.InventoryItem
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.QuantityOnHand = e.QuantityOnHand;
-            dto.QuantityInTransit = e.QuantityInTransit;
-            dto.QuantityReserved = e.QuantityReserved;
-            dto.QuantityOccupied = e.QuantityOccupied;
-            dto.QuantityVirtual = e.QuantityVirtual;
+            dto.OnHandQuantity = e.OnHandQuantity;
+            dto.InTransitQuantity = e.InTransitQuantity;
+            dto.ReservedQuantity = e.ReservedQuantity;
+            dto.OccupiedQuantity = e.OccupiedQuantity;
+            dto.VirtualQuantity = e.VirtualQuantity;
             var inventoryItemEntryEvents = new List<InventoryItemEntryStateCreatedDto>();
             foreach (var ee in e.InventoryItemEntryEvents)
             {
@@ -60,16 +60,16 @@ namespace Dddml.Wms.Domain.InventoryItem
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.QuantityOnHand = e.QuantityOnHand;
-            dto.QuantityInTransit = e.QuantityInTransit;
-            dto.QuantityReserved = e.QuantityReserved;
-            dto.QuantityOccupied = e.QuantityOccupied;
-            dto.QuantityVirtual = e.QuantityVirtual;
-            dto.IsPropertyQuantityOnHandRemoved = e.IsPropertyQuantityOnHandRemoved;
-            dto.IsPropertyQuantityInTransitRemoved = e.IsPropertyQuantityInTransitRemoved;
-            dto.IsPropertyQuantityReservedRemoved = e.IsPropertyQuantityReservedRemoved;
-            dto.IsPropertyQuantityOccupiedRemoved = e.IsPropertyQuantityOccupiedRemoved;
-            dto.IsPropertyQuantityVirtualRemoved = e.IsPropertyQuantityVirtualRemoved;
+            dto.OnHandQuantity = e.OnHandQuantity;
+            dto.InTransitQuantity = e.InTransitQuantity;
+            dto.ReservedQuantity = e.ReservedQuantity;
+            dto.OccupiedQuantity = e.OccupiedQuantity;
+            dto.VirtualQuantity = e.VirtualQuantity;
+            dto.IsPropertyOnHandQuantityRemoved = e.IsPropertyOnHandQuantityRemoved;
+            dto.IsPropertyInTransitQuantityRemoved = e.IsPropertyInTransitQuantityRemoved;
+            dto.IsPropertyReservedQuantityRemoved = e.IsPropertyReservedQuantityRemoved;
+            dto.IsPropertyOccupiedQuantityRemoved = e.IsPropertyOccupiedQuantityRemoved;
+            dto.IsPropertyVirtualQuantityRemoved = e.IsPropertyVirtualQuantityRemoved;
             var inventoryItemEntryEvents = new List<InventoryItemEntryStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.InventoryItemEntryEvents)
             {

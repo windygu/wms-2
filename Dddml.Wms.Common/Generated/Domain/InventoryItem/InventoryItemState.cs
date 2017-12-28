@@ -181,15 +181,15 @@ namespace Dddml.Wms.Domain.InventoryItem
 		public virtual void When(IInventoryItemStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-            this.QuantityOnHand = (e.QuantityOnHand != null && e.QuantityOnHand.HasValue) ? e.QuantityOnHand.Value : default(decimal);
+            this.OnHandQuantity = (e.OnHandQuantity != null && e.OnHandQuantity.HasValue) ? e.OnHandQuantity.Value : default(decimal);
 
-            this.QuantityInTransit = (e.QuantityInTransit != null && e.QuantityInTransit.HasValue) ? e.QuantityInTransit.Value : default(decimal);
+            this.InTransitQuantity = (e.InTransitQuantity != null && e.InTransitQuantity.HasValue) ? e.InTransitQuantity.Value : default(decimal);
 
-            this.QuantityReserved = (e.QuantityReserved != null && e.QuantityReserved.HasValue) ? e.QuantityReserved.Value : default(decimal);
+            this.ReservedQuantity = (e.ReservedQuantity != null && e.ReservedQuantity.HasValue) ? e.ReservedQuantity.Value : default(decimal);
 
-            this.QuantityOccupied = (e.QuantityOccupied != null && e.QuantityOccupied.HasValue) ? e.QuantityOccupied.Value : default(decimal);
+            this.OccupiedQuantity = (e.OccupiedQuantity != null && e.OccupiedQuantity.HasValue) ? e.OccupiedQuantity.Value : default(decimal);
 
-            this.QuantityVirtual = (e.QuantityVirtual != null && e.QuantityVirtual.HasValue) ? e.QuantityVirtual.Value : default(decimal);
+            this.VirtualQuantity = (e.VirtualQuantity != null && e.VirtualQuantity.HasValue) ? e.VirtualQuantity.Value : default(decimal);
 
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
@@ -206,64 +206,64 @@ namespace Dddml.Wms.Domain.InventoryItem
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.QuantityOnHand == null)
+			if (e.OnHandQuantity == null)
 			{
-				if (e.IsPropertyQuantityOnHandRemoved)
+				if (e.IsPropertyOnHandQuantityRemoved)
 				{
-					this.QuantityOnHand = default(decimal);
+					this.OnHandQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityOnHand = (e.QuantityOnHand != null && e.QuantityOnHand.HasValue) ? e.QuantityOnHand.Value : default(decimal);
+				this.OnHandQuantity = (e.OnHandQuantity != null && e.OnHandQuantity.HasValue) ? e.OnHandQuantity.Value : default(decimal);
 			}
 
-			if (e.QuantityInTransit == null)
+			if (e.InTransitQuantity == null)
 			{
-				if (e.IsPropertyQuantityInTransitRemoved)
+				if (e.IsPropertyInTransitQuantityRemoved)
 				{
-					this.QuantityInTransit = default(decimal);
+					this.InTransitQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityInTransit = (e.QuantityInTransit != null && e.QuantityInTransit.HasValue) ? e.QuantityInTransit.Value : default(decimal);
+				this.InTransitQuantity = (e.InTransitQuantity != null && e.InTransitQuantity.HasValue) ? e.InTransitQuantity.Value : default(decimal);
 			}
 
-			if (e.QuantityReserved == null)
+			if (e.ReservedQuantity == null)
 			{
-				if (e.IsPropertyQuantityReservedRemoved)
+				if (e.IsPropertyReservedQuantityRemoved)
 				{
-					this.QuantityReserved = default(decimal);
+					this.ReservedQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityReserved = (e.QuantityReserved != null && e.QuantityReserved.HasValue) ? e.QuantityReserved.Value : default(decimal);
+				this.ReservedQuantity = (e.ReservedQuantity != null && e.ReservedQuantity.HasValue) ? e.ReservedQuantity.Value : default(decimal);
 			}
 
-			if (e.QuantityOccupied == null)
+			if (e.OccupiedQuantity == null)
 			{
-				if (e.IsPropertyQuantityOccupiedRemoved)
+				if (e.IsPropertyOccupiedQuantityRemoved)
 				{
-					this.QuantityOccupied = default(decimal);
+					this.OccupiedQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityOccupied = (e.QuantityOccupied != null && e.QuantityOccupied.HasValue) ? e.QuantityOccupied.Value : default(decimal);
+				this.OccupiedQuantity = (e.OccupiedQuantity != null && e.OccupiedQuantity.HasValue) ? e.OccupiedQuantity.Value : default(decimal);
 			}
 
-			if (e.QuantityVirtual == null)
+			if (e.VirtualQuantity == null)
 			{
-				if (e.IsPropertyQuantityVirtualRemoved)
+				if (e.IsPropertyVirtualQuantityRemoved)
 				{
-					this.QuantityVirtual = default(decimal);
+					this.VirtualQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityVirtual = (e.QuantityVirtual != null && e.QuantityVirtual.HasValue) ? e.QuantityVirtual.Value : default(decimal);
+				this.VirtualQuantity = (e.VirtualQuantity != null && e.VirtualQuantity.HasValue) ? e.VirtualQuantity.Value : default(decimal);
 			}
 
 

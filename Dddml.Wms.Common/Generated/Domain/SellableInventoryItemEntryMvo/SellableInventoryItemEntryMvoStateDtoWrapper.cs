@@ -69,13 +69,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             }
         }
 
-		public virtual decimal? QuantitySellable
+		public virtual decimal? SellableQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("QuantitySellable"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("SellableQuantity"))
                 {
-                    return _state.QuantitySellable;
+                    return _state.SellableQuantity;
                 }
                 return null;
             }
@@ -83,20 +83,20 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.QuantitySellable = value.Value;
+                    _state.SellableQuantity = value.Value;
                 }
             }
         }
 
-        decimal ISellableInventoryItemEntryMvoStateProperties.QuantitySellable
+        decimal ISellableInventoryItemEntryMvoStateProperties.SellableQuantity
         {
             get 
             {
-                return (this._state as ISellableInventoryItemEntryMvoStateProperties).QuantitySellable;
+                return (this._state as ISellableInventoryItemEntryMvoStateProperties).SellableQuantity;
             }
             set 
             {
-                (this._state as ISellableInventoryItemEntryMvoStateProperties).QuantitySellable = value;
+                (this._state as ISellableInventoryItemEntryMvoStateProperties).SellableQuantity = value;
             }
         }
 
@@ -159,13 +159,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             }
         }
 
-		public virtual decimal? SellableInventoryItemQuantitySellable
+		public virtual decimal? SellableInventoryItemSellableQuantity
         {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("SellableInventoryItemQuantitySellable"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("SellableInventoryItemSellableQuantity"))
                 {
-                    return _state.SellableInventoryItemQuantitySellable;
+                    return _state.SellableInventoryItemSellableQuantity;
                 }
                 return null;
             }
@@ -173,20 +173,20 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             {
                 if (value != null && value.HasValue)
                 {
-                    _state.SellableInventoryItemQuantitySellable = value.Value;
+                    _state.SellableInventoryItemSellableQuantity = value.Value;
                 }
             }
         }
 
-        decimal ISellableInventoryItemEntryMvoStateProperties.SellableInventoryItemQuantitySellable
+        decimal ISellableInventoryItemEntryMvoStateProperties.SellableInventoryItemSellableQuantity
         {
             get 
             {
-                return (this._state as ISellableInventoryItemEntryMvoStateProperties).SellableInventoryItemQuantitySellable;
+                return (this._state as ISellableInventoryItemEntryMvoStateProperties).SellableInventoryItemSellableQuantity;
             }
             set 
             {
-                (this._state as ISellableInventoryItemEntryMvoStateProperties).SellableInventoryItemQuantitySellable = value;
+                (this._state as ISellableInventoryItemEntryMvoStateProperties).SellableInventoryItemSellableQuantity = value;
             }
         }
 

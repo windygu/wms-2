@@ -19,9 +19,9 @@ public interface SellableInventoryItemEntryMvoState
 
     void setSellableInventoryItemEntryId(SellableInventoryItemEntryId sellableInventoryItemEntryId);
 
-    BigDecimal getQuantitySellable();
+    BigDecimal getSellableQuantity();
 
-    void setQuantitySellable(BigDecimal quantitySellable);
+    void setSellableQuantity(BigDecimal sellableQuantity);
 
     InventoryPRTriggeredId getSourceEventId();
 
@@ -47,9 +47,9 @@ public interface SellableInventoryItemEntryMvoState
 
     void setUpdatedAt(Date updatedAt);
 
-    BigDecimal getSellableInventoryItemQuantitySellable();
+    BigDecimal getSellableInventoryItemSellableQuantity();
 
-    void setSellableInventoryItemQuantitySellable(BigDecimal sellableInventoryItemQuantitySellable);
+    void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity);
 
     Long getSellableInventoryItemVersion();
 

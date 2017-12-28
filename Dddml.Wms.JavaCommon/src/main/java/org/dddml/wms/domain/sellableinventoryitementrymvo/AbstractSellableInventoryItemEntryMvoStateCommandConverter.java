@@ -40,19 +40,19 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateCommandConverter
         cmd.setSellableInventoryItemVersion(state.getSellableInventoryItemVersion());
 
         cmd.setSellableInventoryItemEntryId(state.getSellableInventoryItemEntryId());
-        cmd.setQuantitySellable(state.getQuantitySellable());
+        cmd.setSellableQuantity(state.getSellableQuantity());
         cmd.setSourceEventId(state.getSourceEventId());
         cmd.setVersion(state.getVersion());
-        cmd.setSellableInventoryItemQuantitySellable(state.getSellableInventoryItemQuantitySellable());
+        cmd.setSellableInventoryItemSellableQuantity(state.getSellableInventoryItemSellableQuantity());
         cmd.setSellableInventoryItemCreatedBy(state.getSellableInventoryItemCreatedBy());
         cmd.setSellableInventoryItemCreatedAt(state.getSellableInventoryItemCreatedAt());
         cmd.setSellableInventoryItemUpdatedBy(state.getSellableInventoryItemUpdatedBy());
         cmd.setSellableInventoryItemUpdatedAt(state.getSellableInventoryItemUpdatedAt());
             
-        if (state.getQuantitySellable() == null) { cmd.setIsPropertyQuantitySellableRemoved(true); }
+        if (state.getSellableQuantity() == null) { cmd.setIsPropertySellableQuantityRemoved(true); }
         if (state.getSourceEventId() == null) { cmd.setIsPropertySourceEventIdRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
-        if (state.getSellableInventoryItemQuantitySellable() == null) { cmd.setIsPropertySellableInventoryItemQuantitySellableRemoved(true); }
+        if (state.getSellableInventoryItemSellableQuantity() == null) { cmd.setIsPropertySellableInventoryItemSellableQuantityRemoved(true); }
         if (state.getSellableInventoryItemCreatedBy() == null) { cmd.setIsPropertySellableInventoryItemCreatedByRemoved(true); }
         if (state.getSellableInventoryItemCreatedAt() == null) { cmd.setIsPropertySellableInventoryItemCreatedAtRemoved(true); }
         if (state.getSellableInventoryItemUpdatedBy() == null) { cmd.setIsPropertySellableInventoryItemUpdatedByRemoved(true); }
@@ -66,10 +66,10 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateCommandConverter
 
         cmd.setSellableInventoryItemVersion(state.getSellableInventoryItemVersion());
         cmd.setSellableInventoryItemEntryId(state.getSellableInventoryItemEntryId());
-        cmd.setQuantitySellable(state.getQuantitySellable());
+        cmd.setSellableQuantity(state.getSellableQuantity());
         cmd.setSourceEventId(state.getSourceEventId());
         cmd.setVersion(state.getVersion());
-        cmd.setSellableInventoryItemQuantitySellable(state.getSellableInventoryItemQuantitySellable());
+        cmd.setSellableInventoryItemSellableQuantity(state.getSellableInventoryItemSellableQuantity());
         cmd.setSellableInventoryItemCreatedBy(state.getSellableInventoryItemCreatedBy());
         cmd.setSellableInventoryItemCreatedAt(state.getSellableInventoryItemCreatedAt());
         cmd.setSellableInventoryItemUpdatedBy(state.getSellableInventoryItemUpdatedBy());

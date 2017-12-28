@@ -1,6 +1,5 @@
 ﻿<#@ template language="C#" debug="True" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" #>
 <#+
 // <copyright file="AttributeSetInstanceExtensionFieldUtilsTemplate.tt" company="">
 //  Copyright © . All Rights Reserved.
@@ -8,19 +7,23 @@
 
 public class AttributeSetInstanceExtensionFieldUtilsTemplate : CSharpTemplate
 {
+    IList<ExtensionFieldGroupMetadata> _extensionFieldGroups;
+
+    public AttributeSetInstanceExtensionFieldUtilsTemplate(IList<ExtensionFieldGroupMetadata> extensionFieldGroups)
+    {
+        this._extensionFieldGroups = extensionFieldGroups;
+    }
+
 	public override string TransformText()
 	{
 		base.TransformText();
 
-		var extensionFieldGroups = AttributeSetInstanceExtensionFieldMetadataUtils.GetExtensionFieldGroups();
-
 #>
-using Dddml.Wms.Specialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup;
 
@@ -33,7 +36,7 @@ namespace Dddml.Wms.Support
         {
             var groups = new CreateAttributeSetInstanceExtensionFieldGroup[]{
 <#+ 
-		foreach (var gMeta in extensionFieldGroups)
+		foreach (var gMeta in this._extensionFieldGroups)
 		{
 #>
                 new CreateAttributeSetInstanceExtensionFieldGroup

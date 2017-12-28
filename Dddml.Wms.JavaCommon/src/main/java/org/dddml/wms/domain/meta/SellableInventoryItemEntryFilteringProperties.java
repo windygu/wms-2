@@ -12,7 +12,7 @@ public final class SellableInventoryItemEntryFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "entrySeqId",
-            "quantitySellable",
+            "sellableQuantity",
             "version",
             "createdBy",
             "createdAt",
@@ -72,8 +72,8 @@ public final class SellableInventoryItemEntryFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("entrySeqId", "sellableInventoryItemEntryId.entrySeqId");
         aliasMap.put("EntrySeqId", "sellableInventoryItemEntryId.entrySeqId");
-        aliasMap.put("quantitySellable", "quantitySellable");
-        aliasMap.put("QuantitySellable", "quantitySellable");
+        aliasMap.put("sellableQuantity", "sellableQuantity");
+        aliasMap.put("SellableQuantity", "sellableQuantity");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

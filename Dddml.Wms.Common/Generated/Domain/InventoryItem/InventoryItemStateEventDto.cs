@@ -42,15 +42,15 @@ namespace Dddml.Wms.Domain.InventoryItem
             set { StateEventId.Version = value; }
         }
 
-		public virtual decimal? QuantityOnHand { get; set; }
+		public virtual decimal? OnHandQuantity { get; set; }
 
-		public virtual decimal? QuantityInTransit { get; set; }
+		public virtual decimal? InTransitQuantity { get; set; }
 
-		public virtual decimal? QuantityReserved { get; set; }
+		public virtual decimal? ReservedQuantity { get; set; }
 
-		public virtual decimal? QuantityOccupied { get; set; }
+		public virtual decimal? OccupiedQuantity { get; set; }
 
-		public virtual decimal? QuantityVirtual { get; set; }
+		public virtual decimal? VirtualQuantity { get; set; }
 
 		public virtual string CreatedBy { get; set; }
 
@@ -81,13 +81,13 @@ namespace Dddml.Wms.Domain.InventoryItem
             }
         }
 
-		public virtual bool? IsPropertyQuantityOnHandRemoved { get; set; }
+		public virtual bool? IsPropertyOnHandQuantityRemoved { get; set; }
 
-        bool IInventoryItemStateMergePatched.IsPropertyQuantityOnHandRemoved
+        bool IInventoryItemStateMergePatched.IsPropertyOnHandQuantityRemoved
         {
             get 
             {
-                var b = this.IsPropertyQuantityOnHandRemoved;
+                var b = this.IsPropertyOnHandQuantityRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -96,17 +96,17 @@ namespace Dddml.Wms.Domain.InventoryItem
             }
             set 
             {
-                this.IsPropertyQuantityOnHandRemoved = value;
+                this.IsPropertyOnHandQuantityRemoved = value;
             }
         }
 
-		public virtual bool? IsPropertyQuantityInTransitRemoved { get; set; }
+		public virtual bool? IsPropertyInTransitQuantityRemoved { get; set; }
 
-        bool IInventoryItemStateMergePatched.IsPropertyQuantityInTransitRemoved
+        bool IInventoryItemStateMergePatched.IsPropertyInTransitQuantityRemoved
         {
             get 
             {
-                var b = this.IsPropertyQuantityInTransitRemoved;
+                var b = this.IsPropertyInTransitQuantityRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -115,17 +115,17 @@ namespace Dddml.Wms.Domain.InventoryItem
             }
             set 
             {
-                this.IsPropertyQuantityInTransitRemoved = value;
+                this.IsPropertyInTransitQuantityRemoved = value;
             }
         }
 
-		public virtual bool? IsPropertyQuantityReservedRemoved { get; set; }
+		public virtual bool? IsPropertyReservedQuantityRemoved { get; set; }
 
-        bool IInventoryItemStateMergePatched.IsPropertyQuantityReservedRemoved
+        bool IInventoryItemStateMergePatched.IsPropertyReservedQuantityRemoved
         {
             get 
             {
-                var b = this.IsPropertyQuantityReservedRemoved;
+                var b = this.IsPropertyReservedQuantityRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -134,17 +134,17 @@ namespace Dddml.Wms.Domain.InventoryItem
             }
             set 
             {
-                this.IsPropertyQuantityReservedRemoved = value;
+                this.IsPropertyReservedQuantityRemoved = value;
             }
         }
 
-		public virtual bool? IsPropertyQuantityOccupiedRemoved { get; set; }
+		public virtual bool? IsPropertyOccupiedQuantityRemoved { get; set; }
 
-        bool IInventoryItemStateMergePatched.IsPropertyQuantityOccupiedRemoved
+        bool IInventoryItemStateMergePatched.IsPropertyOccupiedQuantityRemoved
         {
             get 
             {
-                var b = this.IsPropertyQuantityOccupiedRemoved;
+                var b = this.IsPropertyOccupiedQuantityRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -153,17 +153,17 @@ namespace Dddml.Wms.Domain.InventoryItem
             }
             set 
             {
-                this.IsPropertyQuantityOccupiedRemoved = value;
+                this.IsPropertyOccupiedQuantityRemoved = value;
             }
         }
 
-		public virtual bool? IsPropertyQuantityVirtualRemoved { get; set; }
+		public virtual bool? IsPropertyVirtualQuantityRemoved { get; set; }
 
-        bool IInventoryItemStateMergePatched.IsPropertyQuantityVirtualRemoved
+        bool IInventoryItemStateMergePatched.IsPropertyVirtualQuantityRemoved
         {
             get 
             {
-                var b = this.IsPropertyQuantityVirtualRemoved;
+                var b = this.IsPropertyVirtualQuantityRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -172,7 +172,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             }
             set 
             {
-                this.IsPropertyQuantityVirtualRemoved = value;
+                this.IsPropertyVirtualQuantityRemoved = value;
             }
         }
 

@@ -13,7 +13,7 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="QuantitySellable" ></property>
+    <property name="SellableQuantity" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
 

@@ -39,15 +39,15 @@ namespace Dddml.Wms.Domain.InventoryItem
             set { StateEventId.EntrySeqId = value; }
         }
 
-        public virtual decimal? QuantityOnHand { get { return _state.QuantityOnHand; } set { _state.QuantityOnHand = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+        public virtual decimal? OnHandQuantity { get { return _state.OnHandQuantity; } set { _state.OnHandQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
-        public virtual decimal? QuantityInTransit { get { return _state.QuantityInTransit; } set { _state.QuantityInTransit = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+        public virtual decimal? InTransitQuantity { get { return _state.InTransitQuantity; } set { _state.InTransitQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
-        public virtual decimal? QuantityReserved { get { return _state.QuantityReserved; } set { _state.QuantityReserved = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+        public virtual decimal? ReservedQuantity { get { return _state.ReservedQuantity; } set { _state.ReservedQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
-        public virtual decimal? QuantityOccupied { get { return _state.QuantityOccupied; } set { _state.QuantityOccupied = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+        public virtual decimal? OccupiedQuantity { get { return _state.OccupiedQuantity; } set { _state.OccupiedQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
-        public virtual decimal? QuantityVirtual { get { return _state.QuantityVirtual; } set { _state.QuantityVirtual = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+        public virtual decimal? VirtualQuantity { get { return _state.VirtualQuantity; } set { _state.VirtualQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
 
         public virtual InventoryItemSourceInfo Source { get { return _state.Source; } set { _state.Source = value; } }
 

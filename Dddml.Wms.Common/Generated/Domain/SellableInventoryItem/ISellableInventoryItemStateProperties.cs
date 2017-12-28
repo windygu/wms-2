@@ -18,7 +18,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	{
 		InventoryItemId SellableInventoryItemId { get; set; }
 
-		decimal QuantitySellable { get; set; }
+		decimal SellableQuantity { get; set; }
 
 		long Version { get; set; }
 

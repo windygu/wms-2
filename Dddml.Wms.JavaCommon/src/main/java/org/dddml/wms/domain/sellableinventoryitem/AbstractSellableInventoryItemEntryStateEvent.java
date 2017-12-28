@@ -51,14 +51,14 @@ public abstract class AbstractSellableInventoryItemEntryStateEvent extends Abstr
         this.state.setVersion(version);
     }
 
-    public BigDecimal getQuantitySellable()
+    public BigDecimal getSellableQuantity()
     {
-        return this.state.getQuantitySellable();
+        return this.state.getSellableQuantity();
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable)
+    public void setSellableQuantity(BigDecimal sellableQuantity)
     {
-        this.state.setQuantitySellable(quantitySellable);
+        this.state.setSellableQuantity(sellableQuantity);
     }
 
     public InventoryPRTriggeredId getSourceEventId()

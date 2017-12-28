@@ -153,29 +153,29 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		public virtual void When(IInventoryItemEntryMvoStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-            this.QuantityOnHand = (e.QuantityOnHand != null && e.QuantityOnHand.HasValue) ? e.QuantityOnHand.Value : default(decimal);
+            this.OnHandQuantity = (e.OnHandQuantity != null && e.OnHandQuantity.HasValue) ? e.OnHandQuantity.Value : default(decimal);
 
-            this.QuantityInTransit = (e.QuantityInTransit != null && e.QuantityInTransit.HasValue) ? e.QuantityInTransit.Value : default(decimal);
+            this.InTransitQuantity = (e.InTransitQuantity != null && e.InTransitQuantity.HasValue) ? e.InTransitQuantity.Value : default(decimal);
 
-            this.QuantityReserved = (e.QuantityReserved != null && e.QuantityReserved.HasValue) ? e.QuantityReserved.Value : default(decimal);
+            this.ReservedQuantity = (e.ReservedQuantity != null && e.ReservedQuantity.HasValue) ? e.ReservedQuantity.Value : default(decimal);
 
-            this.QuantityOccupied = (e.QuantityOccupied != null && e.QuantityOccupied.HasValue) ? e.QuantityOccupied.Value : default(decimal);
+            this.OccupiedQuantity = (e.OccupiedQuantity != null && e.OccupiedQuantity.HasValue) ? e.OccupiedQuantity.Value : default(decimal);
 
-            this.QuantityVirtual = (e.QuantityVirtual != null && e.QuantityVirtual.HasValue) ? e.QuantityVirtual.Value : default(decimal);
+            this.VirtualQuantity = (e.VirtualQuantity != null && e.VirtualQuantity.HasValue) ? e.VirtualQuantity.Value : default(decimal);
 
 			this.Source = e.Source;
 
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 
-            this.InventoryItemQuantityOnHand = (e.InventoryItemQuantityOnHand != null && e.InventoryItemQuantityOnHand.HasValue) ? e.InventoryItemQuantityOnHand.Value : default(decimal);
+            this.InventoryItemOnHandQuantity = (e.InventoryItemOnHandQuantity != null && e.InventoryItemOnHandQuantity.HasValue) ? e.InventoryItemOnHandQuantity.Value : default(decimal);
 
-            this.InventoryItemQuantityInTransit = (e.InventoryItemQuantityInTransit != null && e.InventoryItemQuantityInTransit.HasValue) ? e.InventoryItemQuantityInTransit.Value : default(decimal);
+            this.InventoryItemInTransitQuantity = (e.InventoryItemInTransitQuantity != null && e.InventoryItemInTransitQuantity.HasValue) ? e.InventoryItemInTransitQuantity.Value : default(decimal);
 
-            this.InventoryItemQuantityReserved = (e.InventoryItemQuantityReserved != null && e.InventoryItemQuantityReserved.HasValue) ? e.InventoryItemQuantityReserved.Value : default(decimal);
+            this.InventoryItemReservedQuantity = (e.InventoryItemReservedQuantity != null && e.InventoryItemReservedQuantity.HasValue) ? e.InventoryItemReservedQuantity.Value : default(decimal);
 
-            this.InventoryItemQuantityOccupied = (e.InventoryItemQuantityOccupied != null && e.InventoryItemQuantityOccupied.HasValue) ? e.InventoryItemQuantityOccupied.Value : default(decimal);
+            this.InventoryItemOccupiedQuantity = (e.InventoryItemOccupiedQuantity != null && e.InventoryItemOccupiedQuantity.HasValue) ? e.InventoryItemOccupiedQuantity.Value : default(decimal);
 
-            this.InventoryItemQuantityVirtual = (e.InventoryItemQuantityVirtual != null && e.InventoryItemQuantityVirtual.HasValue) ? e.InventoryItemQuantityVirtual.Value : default(decimal);
+            this.InventoryItemVirtualQuantity = (e.InventoryItemVirtualQuantity != null && e.InventoryItemVirtualQuantity.HasValue) ? e.InventoryItemVirtualQuantity.Value : default(decimal);
 
 			this.InventoryItemCreatedBy = e.InventoryItemCreatedBy;
 
@@ -196,64 +196,64 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		{
 			ThrowOnWrongEvent(e);
 
-			if (e.QuantityOnHand == null)
+			if (e.OnHandQuantity == null)
 			{
-				if (e.IsPropertyQuantityOnHandRemoved)
+				if (e.IsPropertyOnHandQuantityRemoved)
 				{
-					this.QuantityOnHand = default(decimal);
+					this.OnHandQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityOnHand = (e.QuantityOnHand != null && e.QuantityOnHand.HasValue) ? e.QuantityOnHand.Value : default(decimal);
+				this.OnHandQuantity = (e.OnHandQuantity != null && e.OnHandQuantity.HasValue) ? e.OnHandQuantity.Value : default(decimal);
 			}
 
-			if (e.QuantityInTransit == null)
+			if (e.InTransitQuantity == null)
 			{
-				if (e.IsPropertyQuantityInTransitRemoved)
+				if (e.IsPropertyInTransitQuantityRemoved)
 				{
-					this.QuantityInTransit = default(decimal);
+					this.InTransitQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityInTransit = (e.QuantityInTransit != null && e.QuantityInTransit.HasValue) ? e.QuantityInTransit.Value : default(decimal);
+				this.InTransitQuantity = (e.InTransitQuantity != null && e.InTransitQuantity.HasValue) ? e.InTransitQuantity.Value : default(decimal);
 			}
 
-			if (e.QuantityReserved == null)
+			if (e.ReservedQuantity == null)
 			{
-				if (e.IsPropertyQuantityReservedRemoved)
+				if (e.IsPropertyReservedQuantityRemoved)
 				{
-					this.QuantityReserved = default(decimal);
+					this.ReservedQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityReserved = (e.QuantityReserved != null && e.QuantityReserved.HasValue) ? e.QuantityReserved.Value : default(decimal);
+				this.ReservedQuantity = (e.ReservedQuantity != null && e.ReservedQuantity.HasValue) ? e.ReservedQuantity.Value : default(decimal);
 			}
 
-			if (e.QuantityOccupied == null)
+			if (e.OccupiedQuantity == null)
 			{
-				if (e.IsPropertyQuantityOccupiedRemoved)
+				if (e.IsPropertyOccupiedQuantityRemoved)
 				{
-					this.QuantityOccupied = default(decimal);
+					this.OccupiedQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityOccupied = (e.QuantityOccupied != null && e.QuantityOccupied.HasValue) ? e.QuantityOccupied.Value : default(decimal);
+				this.OccupiedQuantity = (e.OccupiedQuantity != null && e.OccupiedQuantity.HasValue) ? e.OccupiedQuantity.Value : default(decimal);
 			}
 
-			if (e.QuantityVirtual == null)
+			if (e.VirtualQuantity == null)
 			{
-				if (e.IsPropertyQuantityVirtualRemoved)
+				if (e.IsPropertyVirtualQuantityRemoved)
 				{
-					this.QuantityVirtual = default(decimal);
+					this.VirtualQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.QuantityVirtual = (e.QuantityVirtual != null && e.QuantityVirtual.HasValue) ? e.QuantityVirtual.Value : default(decimal);
+				this.VirtualQuantity = (e.VirtualQuantity != null && e.VirtualQuantity.HasValue) ? e.VirtualQuantity.Value : default(decimal);
 			}
 
 			if (e.Source == null)
@@ -280,64 +280,64 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 				this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 			}
 
-			if (e.InventoryItemQuantityOnHand == null)
+			if (e.InventoryItemOnHandQuantity == null)
 			{
-				if (e.IsPropertyInventoryItemQuantityOnHandRemoved)
+				if (e.IsPropertyInventoryItemOnHandQuantityRemoved)
 				{
-					this.InventoryItemQuantityOnHand = default(decimal);
+					this.InventoryItemOnHandQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.InventoryItemQuantityOnHand = (e.InventoryItemQuantityOnHand != null && e.InventoryItemQuantityOnHand.HasValue) ? e.InventoryItemQuantityOnHand.Value : default(decimal);
+				this.InventoryItemOnHandQuantity = (e.InventoryItemOnHandQuantity != null && e.InventoryItemOnHandQuantity.HasValue) ? e.InventoryItemOnHandQuantity.Value : default(decimal);
 			}
 
-			if (e.InventoryItemQuantityInTransit == null)
+			if (e.InventoryItemInTransitQuantity == null)
 			{
-				if (e.IsPropertyInventoryItemQuantityInTransitRemoved)
+				if (e.IsPropertyInventoryItemInTransitQuantityRemoved)
 				{
-					this.InventoryItemQuantityInTransit = default(decimal);
+					this.InventoryItemInTransitQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.InventoryItemQuantityInTransit = (e.InventoryItemQuantityInTransit != null && e.InventoryItemQuantityInTransit.HasValue) ? e.InventoryItemQuantityInTransit.Value : default(decimal);
+				this.InventoryItemInTransitQuantity = (e.InventoryItemInTransitQuantity != null && e.InventoryItemInTransitQuantity.HasValue) ? e.InventoryItemInTransitQuantity.Value : default(decimal);
 			}
 
-			if (e.InventoryItemQuantityReserved == null)
+			if (e.InventoryItemReservedQuantity == null)
 			{
-				if (e.IsPropertyInventoryItemQuantityReservedRemoved)
+				if (e.IsPropertyInventoryItemReservedQuantityRemoved)
 				{
-					this.InventoryItemQuantityReserved = default(decimal);
+					this.InventoryItemReservedQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.InventoryItemQuantityReserved = (e.InventoryItemQuantityReserved != null && e.InventoryItemQuantityReserved.HasValue) ? e.InventoryItemQuantityReserved.Value : default(decimal);
+				this.InventoryItemReservedQuantity = (e.InventoryItemReservedQuantity != null && e.InventoryItemReservedQuantity.HasValue) ? e.InventoryItemReservedQuantity.Value : default(decimal);
 			}
 
-			if (e.InventoryItemQuantityOccupied == null)
+			if (e.InventoryItemOccupiedQuantity == null)
 			{
-				if (e.IsPropertyInventoryItemQuantityOccupiedRemoved)
+				if (e.IsPropertyInventoryItemOccupiedQuantityRemoved)
 				{
-					this.InventoryItemQuantityOccupied = default(decimal);
+					this.InventoryItemOccupiedQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.InventoryItemQuantityOccupied = (e.InventoryItemQuantityOccupied != null && e.InventoryItemQuantityOccupied.HasValue) ? e.InventoryItemQuantityOccupied.Value : default(decimal);
+				this.InventoryItemOccupiedQuantity = (e.InventoryItemOccupiedQuantity != null && e.InventoryItemOccupiedQuantity.HasValue) ? e.InventoryItemOccupiedQuantity.Value : default(decimal);
 			}
 
-			if (e.InventoryItemQuantityVirtual == null)
+			if (e.InventoryItemVirtualQuantity == null)
 			{
-				if (e.IsPropertyInventoryItemQuantityVirtualRemoved)
+				if (e.IsPropertyInventoryItemVirtualQuantityRemoved)
 				{
-					this.InventoryItemQuantityVirtual = default(decimal);
+					this.InventoryItemVirtualQuantity = default(decimal);
 				}
 			}
 			else
 			{
-				this.InventoryItemQuantityVirtual = (e.InventoryItemQuantityVirtual != null && e.InventoryItemQuantityVirtual.HasValue) ? e.InventoryItemQuantityVirtual.Value : default(decimal);
+				this.InventoryItemVirtualQuantity = (e.InventoryItemVirtualQuantity != null && e.InventoryItemVirtualQuantity.HasValue) ? e.InventoryItemVirtualQuantity.Value : default(decimal);
 			}
 
 			if (e.InventoryItemCreatedBy == null)

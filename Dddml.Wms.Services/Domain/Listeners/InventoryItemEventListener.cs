@@ -82,11 +82,11 @@ namespace Dddml.Wms.Domain.Listeners
 
         private void CreateOrUpdateOutputAccount(string outputAccountName, decimal outputQuantity, InventoryPRTriggeredId tid, InventoryItemId outputItemId)
         {
-            if (InventoryPostingRuleIds.OutputAccountNameQuantitySellable == outputAccountName)
+            if (InventoryPostingRuleIds.OutputAccountNameSellableQuantity == outputAccountName)
             {
                 CreateOrUpdateSellableInventoryItem(outputQuantity, tid, outputItemId);
             }
-            else if (InventoryPostingRuleIds.OutputAccountNameQuantityRequired == outputAccountName)
+            else if (InventoryPostingRuleIds.OutputAccountNameRequiredQuantity == outputAccountName)
             {
                 CreateOrUpdateInventoryItemRequirement(outputQuantity, tid, outputItemId);
             }
@@ -128,7 +128,7 @@ namespace Dddml.Wms.Domain.Listeners
         private static void SetCreateSellableInventoryItemEntry(decimal outputQuantity, InventoryPRTriggeredId tid, CreateSellableInventoryItemEntry createEntry)
         {
             createEntry.EntrySeqId = DateTime.Now.Ticks;//todo ??
-            createEntry.QuantitySellable = outputQuantity;
+            createEntry.SellableQuantity = outputQuantity;
             createEntry.SourceEventId = tid;
         }
 
@@ -207,9 +207,9 @@ namespace Dddml.Wms.Domain.Listeners
 
         private IEnumerable<IInventoryPostingRuleState> GetPostingRules(InventoryItemId triggerItemId)
         {
-            return InventoryPostingRuleApplicationService.GetByProperty("OutputAccountName", InventoryPostingRuleIds.OutputAccountNameQuantitySellable)
+            return InventoryPostingRuleApplicationService.GetByProperty("OutputAccountName", InventoryPostingRuleIds.OutputAccountNameSellableQuantity)
                 .Union(
-                    InventoryPostingRuleApplicationService.GetByProperty("OutputAccountName", InventoryPostingRuleIds.OutputAccountNameQuantityRequired)
+                    InventoryPostingRuleApplicationService.GetByProperty("OutputAccountName", InventoryPostingRuleIds.OutputAccountNameRequiredQuantity)
                 ).Where(pr =>
                     (pr.TriggerInventoryItemId.ProductId == InventoryItemIds.Wildcard || pr.TriggerInventoryItemId.ProductId == triggerItemId.ProductId) &&
                     (pr.TriggerInventoryItemId.LocatorId == InventoryItemIds.Wildcard || pr.TriggerInventoryItemId.LocatorId == triggerItemId.LocatorId) &&

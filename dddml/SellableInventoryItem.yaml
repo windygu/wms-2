@@ -12,7 +12,7 @@ aggregates:
         type: InventoryItemId
         
       properties:
-        QuantitySellable:
+        SellableQuantity:
           type: decimal
         Entries:
           itemType: SellableInventoryItemEntry
@@ -29,7 +29,7 @@ aggregates:
             type: long
             columnName: EntrySeqId
           properties:
-            QuantitySellable:
+            SellableQuantity:
               type: decimal
             SourceEventId:
               type: InventoryPRTriggeredId
@@ -44,9 +44,9 @@ aggregates:
           # ------------------------------
       
       accounts:
-        QuantitySellable:
+        SellableQuantity:
           entryEntityName: "SellableInventoryItemEntry"
-          entryAmountPropertyName: "QuantitySellable"
+          entryAmountPropertyName: "SellableQuantity"
           
       metadata:
         NoEventSourcing: true

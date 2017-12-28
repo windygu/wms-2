@@ -26,11 +26,11 @@ public class InventoryItemStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setQuantityOnHand(e.getQuantityOnHand());
-        dto.setQuantityInTransit(e.getQuantityInTransit());
-        dto.setQuantityReserved(e.getQuantityReserved());
-        dto.setQuantityOccupied(e.getQuantityOccupied());
-        dto.setQuantityVirtual(e.getQuantityVirtual());
+        dto.setOnHandQuantity(e.getOnHandQuantity());
+        dto.setInTransitQuantity(e.getInTransitQuantity());
+        dto.setReservedQuantity(e.getReservedQuantity());
+        dto.setOccupiedQuantity(e.getOccupiedQuantity());
+        dto.setVirtualQuantity(e.getVirtualQuantity());
         List<InventoryItemEntryStateEventDto.InventoryItemEntryStateCreatedDto> inventoryItemEntryEvents = new ArrayList<>();
         for (InventoryItemEntryStateEvent.InventoryItemEntryStateCreated ee : e.getInventoryItemEntryEvents()) {
             InventoryItemEntryStateEventDto.InventoryItemEntryStateCreatedDto eeDto = getInventoryItemEntryStateEventDtoConverter().toInventoryItemEntryStateCreatedDto(ee);
@@ -47,16 +47,16 @@ public class InventoryItemStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setQuantityOnHand(e.getQuantityOnHand());
-        dto.setQuantityInTransit(e.getQuantityInTransit());
-        dto.setQuantityReserved(e.getQuantityReserved());
-        dto.setQuantityOccupied(e.getQuantityOccupied());
-        dto.setQuantityVirtual(e.getQuantityVirtual());
-        dto.setIsPropertyQuantityOnHandRemoved(e.getIsPropertyQuantityOnHandRemoved());
-        dto.setIsPropertyQuantityInTransitRemoved(e.getIsPropertyQuantityInTransitRemoved());
-        dto.setIsPropertyQuantityReservedRemoved(e.getIsPropertyQuantityReservedRemoved());
-        dto.setIsPropertyQuantityOccupiedRemoved(e.getIsPropertyQuantityOccupiedRemoved());
-        dto.setIsPropertyQuantityVirtualRemoved(e.getIsPropertyQuantityVirtualRemoved());
+        dto.setOnHandQuantity(e.getOnHandQuantity());
+        dto.setInTransitQuantity(e.getInTransitQuantity());
+        dto.setReservedQuantity(e.getReservedQuantity());
+        dto.setOccupiedQuantity(e.getOccupiedQuantity());
+        dto.setVirtualQuantity(e.getVirtualQuantity());
+        dto.setIsPropertyOnHandQuantityRemoved(e.getIsPropertyOnHandQuantityRemoved());
+        dto.setIsPropertyInTransitQuantityRemoved(e.getIsPropertyInTransitQuantityRemoved());
+        dto.setIsPropertyReservedQuantityRemoved(e.getIsPropertyReservedQuantityRemoved());
+        dto.setIsPropertyOccupiedQuantityRemoved(e.getIsPropertyOccupiedQuantityRemoved());
+        dto.setIsPropertyVirtualQuantityRemoved(e.getIsPropertyVirtualQuantityRemoved());
         List<InventoryItemEntryStateEventDto> inventoryItemEntryEvents = new ArrayList<>();
         for (InventoryItemEntryStateEvent ee : e.getInventoryItemEntryEvents()) {
             InventoryItemEntryStateEventDto eeDto = getInventoryItemEntryStateEventDtoConverter().toInventoryItemEntryStateEventDto((AbstractInventoryItemEntryStateEvent) ee);

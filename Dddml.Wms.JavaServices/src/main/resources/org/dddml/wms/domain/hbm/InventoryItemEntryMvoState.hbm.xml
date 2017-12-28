@@ -16,11 +16,11 @@
 	</composite-id>
 	<version name="inventoryItemVersion" column="InventoryItemVersion" type="long" />
 
-	<property name="quantityOnHand" ></property>
-	<property name="quantityInTransit" ></property>
-	<property name="quantityReserved" ></property>
-	<property name="quantityOccupied" ></property>
-	<property name="quantityVirtual" ></property>
+	<property name="onHandQuantity" ></property>
+	<property name="inTransitQuantity" ></property>
+	<property name="reservedQuantity" ></property>
+	<property name="occupiedQuantity" ></property>
+	<property name="virtualQuantity" ></property>
 	<component name="source" class="org.dddml.wms.domain.inventoryitem.InventoryItemSourceInfo" unique="true">
 		<property name="documentTypeId" ><column name="sourceDocumentTypeId" not-null="true" /></property>
 		<property name="documentNumber" ><column name="sourceDocumentNumber" not-null="true" /></property>
@@ -29,11 +29,11 @@
 	<property name="version" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
-	<property name="inventoryItemQuantityOnHand" ></property>
-	<property name="inventoryItemQuantityInTransit" ></property>
-	<property name="inventoryItemQuantityReserved" ></property>
-	<property name="inventoryItemQuantityOccupied" ></property>
-	<property name="inventoryItemQuantityVirtual" ></property>
+	<property name="inventoryItemOnHandQuantity" ></property>
+	<property name="inventoryItemInTransitQuantity" ></property>
+	<property name="inventoryItemReservedQuantity" ></property>
+	<property name="inventoryItemOccupiedQuantity" ></property>
+	<property name="inventoryItemVirtualQuantity" ></property>
 	<property name="inventoryItemCreatedBy" ></property>
 	<property name="inventoryItemCreatedAt" ></property>
 	<property name="inventoryItemUpdatedBy" ></property>

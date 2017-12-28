@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             set;
         }
 
-        decimal? QuantitySellable
+        decimal? SellableQuantity
         {
             get;
             set;
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             set;
         }
 
-        decimal? SellableInventoryItemQuantitySellable
+        decimal? SellableInventoryItemSellableQuantity
         {
             get;
             set;

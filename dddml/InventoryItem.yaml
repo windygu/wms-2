@@ -14,15 +14,15 @@ aggregates:
 
       properties:
       
-        QuantityOnHand:
+        OnHandQuantity:
           type: decimal
-        QuantityInTransit:
+        InTransitQuantity:
           type: decimal
-        QuantityReserved:
+        ReservedQuantity:
           type: decimal
-        QuantityOccupied:
+        OccupiedQuantity:
           type: decimal
-        QuantityVirtual:
+        VirtualQuantity:
           type: decimal
         
         Entries:
@@ -45,15 +45,15 @@ aggregates:
             
           properties:
           
-            QuantityOnHand:
+            OnHandQuantity:
               type: decimal
-            QuantityInTransit:
+            InTransitQuantity:
               type: decimal
-            QuantityReserved:
+            ReservedQuantity:
               type: decimal
-            QuantityOccupied:
+            OccupiedQuantity:
               type: decimal
-            QuantityVirtual:
+            VirtualQuantity:
               type: decimal
             
             Source:
@@ -70,21 +70,21 @@ aggregates:
       
       # --------------- Accounts -------------------
       accounts:
-        QuantityOnHand:
+        OnHandQuantity:
           entryEntityName: "InventoryItemEntry"
-          entryAmountPropertyName: "QuantityOnHand"
-        QuantityInTransit:
+          entryAmountPropertyName: "OnHandQuantity"
+        InTransitQuantity:
           entryEntityName: "InventoryItemEntry"
-          entryAmountPropertyName: "QuantityInTransit"
-        QuantityReserved:
+          entryAmountPropertyName: "InTransitQuantity"
+        ReservedQuantity:
           entryEntityName: "InventoryItemEntry"
-          entryAmountPropertyName: "QuantityReserved"
-        QuantityOccupied:
+          entryAmountPropertyName: "ReservedQuantity"
+        OccupiedQuantity:
           entryEntityName: "InventoryItemEntry"
-          entryAmountPropertyName: "QuantityOccupied"
-        QuantityVirtual:
+          entryAmountPropertyName: "OccupiedQuantity"
+        VirtualQuantity:
           entryEntityName: "InventoryItemEntry"
-          entryAmountPropertyName: "QuantityVirtual"
+          entryAmountPropertyName: "VirtualQuantity"
       
       metadata:
         # NoEventSourcing: true

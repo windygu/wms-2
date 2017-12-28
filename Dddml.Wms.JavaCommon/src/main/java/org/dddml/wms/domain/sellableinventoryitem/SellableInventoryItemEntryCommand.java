@@ -21,9 +21,9 @@ public interface SellableInventoryItemEntryCommand extends Command
 
     interface CreateOrMergePatchSellableInventoryItemEntry extends SellableInventoryItemEntryCommand
     {
-        BigDecimal getQuantitySellable();
+        BigDecimal getSellableQuantity();
 
-        void setQuantitySellable(BigDecimal quantitySellable);
+        void setSellableQuantity(BigDecimal sellableQuantity);
 
         InventoryPRTriggeredId getSourceEventId();
 

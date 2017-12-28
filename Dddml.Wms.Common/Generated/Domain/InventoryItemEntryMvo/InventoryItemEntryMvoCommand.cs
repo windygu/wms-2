@@ -53,15 +53,15 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set { this.CommandId = value; }
         }
 
-		public virtual decimal? QuantityOnHand { get; set; }
+		public virtual decimal? OnHandQuantity { get; set; }
 
-		public virtual decimal? QuantityInTransit { get; set; }
+		public virtual decimal? InTransitQuantity { get; set; }
 
-		public virtual decimal? QuantityReserved { get; set; }
+		public virtual decimal? ReservedQuantity { get; set; }
 
-		public virtual decimal? QuantityOccupied { get; set; }
+		public virtual decimal? OccupiedQuantity { get; set; }
 
-		public virtual decimal? QuantityVirtual { get; set; }
+		public virtual decimal? VirtualQuantity { get; set; }
 
 		public virtual InventoryItemSourceInfo Source { get; set; }
 
@@ -69,15 +69,15 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		public virtual bool? Active { get; set; }
 
-		public virtual decimal? InventoryItemQuantityOnHand { get; set; }
+		public virtual decimal? InventoryItemOnHandQuantity { get; set; }
 
-		public virtual decimal? InventoryItemQuantityInTransit { get; set; }
+		public virtual decimal? InventoryItemInTransitQuantity { get; set; }
 
-		public virtual decimal? InventoryItemQuantityReserved { get; set; }
+		public virtual decimal? InventoryItemReservedQuantity { get; set; }
 
-		public virtual decimal? InventoryItemQuantityOccupied { get; set; }
+		public virtual decimal? InventoryItemOccupiedQuantity { get; set; }
 
-		public virtual decimal? InventoryItemQuantityVirtual { get; set; }
+		public virtual decimal? InventoryItemVirtualQuantity { get; set; }
 
 		public virtual string InventoryItemCreatedBy { get; set; }
 
@@ -119,15 +119,15 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 	public class MergePatchInventoryItemEntryMvo :InventoryItemEntryMvoCommandBase, IMergePatchInventoryItemEntryMvo
 	{
 
-		public virtual bool IsPropertyQuantityOnHandRemoved { get; set; }
+		public virtual bool IsPropertyOnHandQuantityRemoved { get; set; }
 
-		public virtual bool IsPropertyQuantityInTransitRemoved { get; set; }
+		public virtual bool IsPropertyInTransitQuantityRemoved { get; set; }
 
-		public virtual bool IsPropertyQuantityReservedRemoved { get; set; }
+		public virtual bool IsPropertyReservedQuantityRemoved { get; set; }
 
-		public virtual bool IsPropertyQuantityOccupiedRemoved { get; set; }
+		public virtual bool IsPropertyOccupiedQuantityRemoved { get; set; }
 
-		public virtual bool IsPropertyQuantityVirtualRemoved { get; set; }
+		public virtual bool IsPropertyVirtualQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertySourceRemoved { get; set; }
 
@@ -135,15 +135,15 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
-		public virtual bool IsPropertyInventoryItemQuantityOnHandRemoved { get; set; }
+		public virtual bool IsPropertyInventoryItemOnHandQuantityRemoved { get; set; }
 
-		public virtual bool IsPropertyInventoryItemQuantityInTransitRemoved { get; set; }
+		public virtual bool IsPropertyInventoryItemInTransitQuantityRemoved { get; set; }
 
-		public virtual bool IsPropertyInventoryItemQuantityReservedRemoved { get; set; }
+		public virtual bool IsPropertyInventoryItemReservedQuantityRemoved { get; set; }
 
-		public virtual bool IsPropertyInventoryItemQuantityOccupiedRemoved { get; set; }
+		public virtual bool IsPropertyInventoryItemOccupiedQuantityRemoved { get; set; }
 
-		public virtual bool IsPropertyInventoryItemQuantityVirtualRemoved { get; set; }
+		public virtual bool IsPropertyInventoryItemVirtualQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertyInventoryItemCreatedByRemoved { get; set; }
 

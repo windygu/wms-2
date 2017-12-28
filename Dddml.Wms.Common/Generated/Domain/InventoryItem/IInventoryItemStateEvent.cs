@@ -17,15 +17,15 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         bool ReadOnly { get; set; }
 
-		decimal? QuantityOnHand { get; set; }
+		decimal? OnHandQuantity { get; set; }
 
-		decimal? QuantityInTransit { get; set; }
+		decimal? InTransitQuantity { get; set; }
 
-		decimal? QuantityReserved { get; set; }
+		decimal? ReservedQuantity { get; set; }
 
-		decimal? QuantityOccupied { get; set; }
+		decimal? OccupiedQuantity { get; set; }
 
-		decimal? QuantityVirtual { get; set; }
+		decimal? VirtualQuantity { get; set; }
 
 	}
 
@@ -43,15 +43,15 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 	public interface IInventoryItemStateMergePatched : IInventoryItemStateEvent//, IInventoryItemStateProperties
 	{
-		bool IsPropertyQuantityOnHandRemoved { get; set; }
+		bool IsPropertyOnHandQuantityRemoved { get; set; }
 
-		bool IsPropertyQuantityInTransitRemoved { get; set; }
+		bool IsPropertyInTransitQuantityRemoved { get; set; }
 
-		bool IsPropertyQuantityReservedRemoved { get; set; }
+		bool IsPropertyReservedQuantityRemoved { get; set; }
 
-		bool IsPropertyQuantityOccupiedRemoved { get; set; }
+		bool IsPropertyOccupiedQuantityRemoved { get; set; }
 
-		bool IsPropertyQuantityVirtualRemoved { get; set; }
+		bool IsPropertyVirtualQuantityRemoved { get; set; }
 
 		IEnumerable<IInventoryItemEntryStateEvent> InventoryItemEntryEvents { get; }
 		

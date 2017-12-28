@@ -1,6 +1,5 @@
 ﻿<#@ template language="C#" debug="True" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" #>
 <#+
 // <copyright file="AttributeSetInstanceExtensionFieldUtilsTemplate.tt" company="">
 //  Copyright © . All Rights Reserved.
@@ -8,18 +7,23 @@
 
 public class AttributeSetInstancePropertyUtilsTemplate : CSharpTemplate
 {
+    IList<ExtensionFieldMetadata> _extensionFields;
+
+    public AttributeSetInstancePropertyUtilsTemplate(IList<ExtensionFieldMetadata> extensionFields)
+    {
+        this._extensionFields = extensionFields;
+    }
+
 	public override string TransformText()
 	{
 		base.TransformText();
 
-		var extensionFields = AttributeSetInstanceExtensionFieldMetadataUtils.GetAllExtensionFields();
-
 #>
-using Dddml.Wms.Domain;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.AttributeSetInstance;
 
 
@@ -62,7 +66,7 @@ namespace Dddml.Wms.Support
             sb.Append("Description").Append("=").Append(GetSafeStringValue(state.Description)).Append("|");
             sb.Append("Active").Append("=").Append(state.Active).Append("|");
 <#+ 
-			foreach (var fMeta in extensionFields)
+			foreach (var fMeta in _extensionFields)
 			{
 				if (fMeta.Type.Equals("string", StringComparison.InvariantCultureIgnoreCase))
 				{ 
@@ -98,7 +102,7 @@ namespace Dddml.Wms.Support
                 || !SafeEquals<string>(state1.Description, state2.Description)
                 || !SafeEquals<bool>(state1.Active, state2.Active)
 <#+ 
-		foreach (var fMeta in extensionFields)
+		foreach (var fMeta in _extensionFields)
 		{
 			var ft = fMeta.Type.EndsWith("?") ? fMeta.Type.Substring(0, fMeta.Type.Length - 1) : fMeta.Type;
 #>

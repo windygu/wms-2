@@ -24,11 +24,11 @@ public class InventoryItemEntryStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
-        dto.setQuantityOnHand(e.getQuantityOnHand());
-        dto.setQuantityInTransit(e.getQuantityInTransit());
-        dto.setQuantityReserved(e.getQuantityReserved());
-        dto.setQuantityOccupied(e.getQuantityOccupied());
-        dto.setQuantityVirtual(e.getQuantityVirtual());
+        dto.setOnHandQuantity(e.getOnHandQuantity());
+        dto.setInTransitQuantity(e.getInTransitQuantity());
+        dto.setReservedQuantity(e.getReservedQuantity());
+        dto.setOccupiedQuantity(e.getOccupiedQuantity());
+        dto.setVirtualQuantity(e.getVirtualQuantity());
         dto.setSource((e.getSource() == null) ? null : new InventoryItemSourceInfoDtoWrapper(e.getSource()));
         return dto;
     }

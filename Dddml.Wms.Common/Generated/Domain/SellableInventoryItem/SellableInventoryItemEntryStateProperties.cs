@@ -18,7 +18,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	{
 		public virtual long EntrySeqId { get; set; }
 
-		public virtual decimal QuantitySellable { get; set; }
+		public virtual decimal SellableQuantity { get; set; }
 
 		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
 

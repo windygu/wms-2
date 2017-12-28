@@ -24,16 +24,16 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
         this.sellableInventoryItemId = sellableInventoryItemId;
     }
 
-    private BigDecimal quantitySellable;
+    private BigDecimal sellableQuantity;
 
-    public BigDecimal getQuantitySellable()
+    public BigDecimal getSellableQuantity()
     {
-        return this.quantitySellable;
+        return this.sellableQuantity;
     }
 
-    public void setQuantitySellable(BigDecimal quantitySellable)
+    public void setSellableQuantity(BigDecimal sellableQuantity)
     {
-        this.quantitySellable = quantitySellable;
+        this.sellableQuantity = sellableQuantity;
     }
 
     private Long version;
@@ -181,7 +181,7 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
     {
         throwOnWrongEvent(e);
 
-        this.setQuantitySellable(e.getQuantitySellable());
+        this.setSellableQuantity(e.getSellableQuantity());
 
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
@@ -196,16 +196,16 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
     {
         throwOnWrongEvent(e);
 
-        if (e.getQuantitySellable() == null)
+        if (e.getSellableQuantity() == null)
         {
-            if (e.getIsPropertyQuantitySellableRemoved() != null && e.getIsPropertyQuantitySellableRemoved())
+            if (e.getIsPropertySellableQuantityRemoved() != null && e.getIsPropertySellableQuantityRemoved())
             {
-                this.setQuantitySellable(null);
+                this.setSellableQuantity(null);
             }
         }
         else
         {
-            this.setQuantitySellable(e.getQuantitySellable());
+            this.setSellableQuantity(e.getSellableQuantity());
         }
 
         this.setUpdatedBy(e.getCreatedBy());

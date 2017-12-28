@@ -18,25 +18,25 @@ public interface InventoryItemEntryMvoState
 
     void setInventoryItemEntryId(InventoryItemEntryId inventoryItemEntryId);
 
-    BigDecimal getQuantityOnHand();
+    BigDecimal getOnHandQuantity();
 
-    void setQuantityOnHand(BigDecimal quantityOnHand);
+    void setOnHandQuantity(BigDecimal onHandQuantity);
 
-    BigDecimal getQuantityInTransit();
+    BigDecimal getInTransitQuantity();
 
-    void setQuantityInTransit(BigDecimal quantityInTransit);
+    void setInTransitQuantity(BigDecimal inTransitQuantity);
 
-    BigDecimal getQuantityReserved();
+    BigDecimal getReservedQuantity();
 
-    void setQuantityReserved(BigDecimal quantityReserved);
+    void setReservedQuantity(BigDecimal reservedQuantity);
 
-    BigDecimal getQuantityOccupied();
+    BigDecimal getOccupiedQuantity();
 
-    void setQuantityOccupied(BigDecimal quantityOccupied);
+    void setOccupiedQuantity(BigDecimal occupiedQuantity);
 
-    BigDecimal getQuantityVirtual();
+    BigDecimal getVirtualQuantity();
 
-    void setQuantityVirtual(BigDecimal quantityVirtual);
+    void setVirtualQuantity(BigDecimal virtualQuantity);
 
     InventoryItemSourceInfo getSource();
 
@@ -62,25 +62,25 @@ public interface InventoryItemEntryMvoState
 
     void setUpdatedAt(Date updatedAt);
 
-    BigDecimal getInventoryItemQuantityOnHand();
+    BigDecimal getInventoryItemOnHandQuantity();
 
-    void setInventoryItemQuantityOnHand(BigDecimal inventoryItemQuantityOnHand);
+    void setInventoryItemOnHandQuantity(BigDecimal inventoryItemOnHandQuantity);
 
-    BigDecimal getInventoryItemQuantityInTransit();
+    BigDecimal getInventoryItemInTransitQuantity();
 
-    void setInventoryItemQuantityInTransit(BigDecimal inventoryItemQuantityInTransit);
+    void setInventoryItemInTransitQuantity(BigDecimal inventoryItemInTransitQuantity);
 
-    BigDecimal getInventoryItemQuantityReserved();
+    BigDecimal getInventoryItemReservedQuantity();
 
-    void setInventoryItemQuantityReserved(BigDecimal inventoryItemQuantityReserved);
+    void setInventoryItemReservedQuantity(BigDecimal inventoryItemReservedQuantity);
 
-    BigDecimal getInventoryItemQuantityOccupied();
+    BigDecimal getInventoryItemOccupiedQuantity();
 
-    void setInventoryItemQuantityOccupied(BigDecimal inventoryItemQuantityOccupied);
+    void setInventoryItemOccupiedQuantity(BigDecimal inventoryItemOccupiedQuantity);
 
-    BigDecimal getInventoryItemQuantityVirtual();
+    BigDecimal getInventoryItemVirtualQuantity();
 
-    void setInventoryItemQuantityVirtual(BigDecimal inventoryItemQuantityVirtual);
+    void setInventoryItemVirtualQuantity(BigDecimal inventoryItemVirtualQuantity);
 
     Long getInventoryItemVersion();
 

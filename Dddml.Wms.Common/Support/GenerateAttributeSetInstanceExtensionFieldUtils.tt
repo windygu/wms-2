@@ -1,12 +1,16 @@
 <#@ template language="C#" debug="True" #>
 <#@ output extension="txt" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="$(SolutionDir)Dddml.Wms.Metadata\Templates\AttributeSetInstanceExtensionFieldUtilsTemplate.tt" #><#
+<#@ include file="$(SolutionDir)Dddml.Wms.Metadata\Templates\AttributeSetInstanceExtensionFieldUtilsTemplate.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.Metadata\AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" #>
+<#
 // <copyright file="GenerateAttributeSetInstanceExtensionFieldUtils.tt" company="">
 //  Copyright © . All Rights Reserved.
 // </copyright>
 	
-	var attributeSetInstanceExtensionFieldUtilsTemplate = new AttributeSetInstanceExtensionFieldUtilsTemplate();
+    var extensionFieldGroups = AttributeSetInstanceExtensionFieldMetadataUtils.GetExtensionFieldGroups();
+
+	var attributeSetInstanceExtensionFieldUtilsTemplate = new AttributeSetInstanceExtensionFieldUtilsTemplate(extensionFieldGroups);
 	attributeSetInstanceExtensionFieldUtilsTemplate.RenderToFile("AttributeSetInstanceExtensionFieldUtils.cs");
 
 #>

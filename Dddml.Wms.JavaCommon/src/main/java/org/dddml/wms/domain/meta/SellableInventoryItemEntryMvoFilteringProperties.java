@@ -11,7 +11,7 @@ public final class SellableInventoryItemEntryMvoFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
-            "quantitySellable",
+            "sellableQuantity",
             "version",
             "createdBy",
             "createdAt",
@@ -19,7 +19,7 @@ public final class SellableInventoryItemEntryMvoFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "sellableInventoryItemQuantitySellable",
+            "sellableInventoryItemSellableQuantity",
             "sellableInventoryItemVersion",
             "sellableInventoryItemCreatedBy",
             "sellableInventoryItemCreatedAt",
@@ -74,8 +74,8 @@ public final class SellableInventoryItemEntryMvoFilteringProperties
     }
 
     private static  void initAliasMap() {
-        aliasMap.put("quantitySellable", "quantitySellable");
-        aliasMap.put("QuantitySellable", "quantitySellable");
+        aliasMap.put("sellableQuantity", "sellableQuantity");
+        aliasMap.put("SellableQuantity", "sellableQuantity");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");
@@ -90,8 +90,8 @@ public final class SellableInventoryItemEntryMvoFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("sellableInventoryItemQuantitySellable", "sellableInventoryItemQuantitySellable");
-        aliasMap.put("SellableInventoryItemQuantitySellable", "sellableInventoryItemQuantitySellable");
+        aliasMap.put("sellableInventoryItemSellableQuantity", "sellableInventoryItemSellableQuantity");
+        aliasMap.put("SellableInventoryItemSellableQuantity", "sellableInventoryItemSellableQuantity");
         aliasMap.put("sellableInventoryItemVersion", "sellableInventoryItemVersion");
         aliasMap.put("SellableInventoryItemVersion", "sellableInventoryItemVersion");
         aliasMap.put("sellableInventoryItemCreatedBy", "sellableInventoryItemCreatedBy");

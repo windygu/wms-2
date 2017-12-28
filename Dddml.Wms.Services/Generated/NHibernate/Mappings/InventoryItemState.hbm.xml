@@ -13,11 +13,11 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="QuantityOnHand" ></property>
-    <property name="QuantityInTransit" ></property>
-    <property name="QuantityReserved" ></property>
-    <property name="QuantityOccupied" ></property>
-    <property name="QuantityVirtual" ></property>
+    <property name="OnHandQuantity" ></property>
+    <property name="InTransitQuantity" ></property>
+    <property name="ReservedQuantity" ></property>
+    <property name="OccupiedQuantity" ></property>
+    <property name="VirtualQuantity" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
 

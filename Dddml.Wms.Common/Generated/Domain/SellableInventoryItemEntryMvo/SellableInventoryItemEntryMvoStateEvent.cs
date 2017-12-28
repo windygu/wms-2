@@ -25,13 +25,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             set { StateEventId.SellableInventoryItemEntryId = value; }
         }
 
-		public virtual decimal? QuantitySellable { get; set; }
+		public virtual decimal? SellableQuantity { get; set; }
 
 		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
 
 		public virtual long? Version { get; set; }
 
-		public virtual decimal? SellableInventoryItemQuantitySellable { get; set; }
+		public virtual decimal? SellableInventoryItemSellableQuantity { get; set; }
 
 		public virtual string SellableInventoryItemCreatedBy { get; set; }
 
@@ -129,13 +129,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
 	public class SellableInventoryItemEntryMvoStateMergePatched : SellableInventoryItemEntryMvoStateEventBase, ISellableInventoryItemEntryMvoStateMergePatched
 	{
-		public virtual bool IsPropertyQuantitySellableRemoved { get; set; }
+		public virtual bool IsPropertySellableQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertySourceEventIdRemoved { get; set; }
 
 		public virtual bool IsPropertyVersionRemoved { get; set; }
 
-		public virtual bool IsPropertySellableInventoryItemQuantitySellableRemoved { get; set; }
+		public virtual bool IsPropertySellableInventoryItemSellableQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertySellableInventoryItemCreatedByRemoved { get; set; }
 
