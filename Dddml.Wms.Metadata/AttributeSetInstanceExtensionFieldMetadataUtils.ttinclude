@@ -14,7 +14,18 @@
 
     public static class AttributeSetInstanceExtensionFieldMetadataUtils
     {
-      
+     
+        public static ISet<string> ReservedFieldNames = new SortedSet<string>(new string[] {
+            "AttributeSetInstanceId",
+            "AttributeSetId",
+            "OrganizationId",
+            "ReferenceId",
+            "SerialNumber",
+            "Lot",
+            "Description",
+            "Hash",
+            });
+
         // //////////////////////////////////////////
         // 分组的扩展字段
         // //////////////////////////////////////////

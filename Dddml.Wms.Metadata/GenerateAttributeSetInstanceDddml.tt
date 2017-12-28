@@ -1,14 +1,17 @@
 <#@ template language="C#" debug="True" #>
 <#@ output extension="txt" #>
+<#@ assembly name="System.Core" #>
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="Templates\AttributeSetInstanceDddmlTemplate.tt" #>
 <#@ include file="AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" #>
+<#@ import namespace="System.Linq" #>
 <#
 // <copyright file="AttributeSetInstanceDddml.tt" company="dddml.org">
 //  Copyright © . All Rights Reserved.
 // </copyright>
 
-    var extensionFields = AttributeSetInstanceExtensionFieldMetadataUtils.GetAllExtensionFields();
+    var extensionFields = AttributeSetInstanceExtensionFieldMetadataUtils.GetAllExtensionFields()
+        .Where(f => !AttributeSetInstanceExtensionFieldMetadataUtils.ReservedFieldNames.Contains(f.Name)).ToList();
 
 	var attributeSetInstanceDddmlTemplate = new AttributeSetInstanceDddmlTemplate(extensionFields);
     attributeSetInstanceDddmlTemplate.Output.Encoding = new System.Text.UTF8Encoding(false);

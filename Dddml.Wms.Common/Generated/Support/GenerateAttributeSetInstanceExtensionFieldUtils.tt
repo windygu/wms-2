@@ -1,5 +1,7 @@
 <#@ template language="C#" debug="True" #>
 <#@ output extension="txt" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="$(SolutionDir)Dddml.Wms.Metadata\Templates\AttributeSetInstanceExtensionFieldUtilsTemplate.tt" #>
 <#@ include file="$(SolutionDir)Dddml.Wms.Metadata\AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" #>
@@ -10,7 +12,8 @@
 	
     var extensionFieldGroups = AttributeSetInstanceExtensionFieldMetadataUtils.GetExtensionFieldGroups();
 
-    var extensionFields = AttributeSetInstanceExtensionFieldMetadataUtils.GetAllExtensionFields();
+    var extensionFields = AttributeSetInstanceExtensionFieldMetadataUtils.GetAllExtensionFields()
+        .Where(f => !AttributeSetInstanceExtensionFieldMetadataUtils.ReservedFieldNames.Contains(f.Name)).ToList();
 
 	var attributeSetInstanceExtensionFieldUtilsTemplate = new AttributeSetInstanceExtensionFieldUtilsTemplate(extensionFieldGroups, extensionFields);
 	attributeSetInstanceExtensionFieldUtilsTemplate.RenderToFile("AttributeSetInstanceExtensionFieldUtils.cs");
